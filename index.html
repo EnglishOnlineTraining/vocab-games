@@ -1,94 +1,647 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vocab Games</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .container {
-            text-align: center;
-            background: white;
-            padding: 50px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            max-width: 600px;
-        }
-        
-        h1 {
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 2.5em;
-        }
-        
-        p {
-            color: #666;
-            font-size: 1.1em;
-            margin-bottom: 30px;
-        }
-        
-        .button-group {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        button {
-            padding: 12px 30px;
-            font-size: 1em;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-        
-        .btn-primary {
-            background: #667eea;
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background: #5568d3;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        .btn-secondary {
-            background: #764ba2;
-            color: white;
-        }
-        
-        .btn-secondary:hover {
-            background: #653a8a;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
-        }
-    </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vocabulary Games — EnglishOnline.training</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1a6eb5;--blue-lt:#e8f2fb;--blue-dk:#14538a;
+  --accent:#f59e0b;--green:#16a34a;--red:#dc2626;
+  --dark:#1a202c;--mid:#4a5568;--light:#718096;
+  --border:#e2e8f0;--bg:#f7f9fc;--white:#fff;
+  --radius:10px;--shadow:0 4px 16px rgba(0,0,0,.10);
+}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--dark);min-height:100vh}
+a{color:var(--blue)}
+
+/* Header */
+.site-header{background:linear-gradient(135deg,#0f3460,var(--blue));color:#fff;padding:1.5rem 1rem;text-align:center}
+.site-header h1{font-size:clamp(1.4rem,4vw,2rem);font-weight:800;margin-bottom:.4rem}
+.site-header p{color:rgba(255,255,255,.8);font-size:.95rem}
+.back-link{display:inline-block;margin-top:.75rem;color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none}
+.back-link:hover{color:#fff}
+
+/* Level Toggle */
+.level-bar{display:flex;justify-content:center;gap:.5rem;padding:1.25rem 1rem .5rem;flex-wrap:wrap}
+.level-btn{padding:.6rem 1.5rem;border-radius:999px;border:2px solid var(--blue);background:var(--white);color:var(--blue);font-weight:700;font-size:.9rem;cursor:pointer;transition:.2s}
+.level-btn.active{background:var(--blue);color:#fff}
+.level-badge{display:inline-block;font-size:.75rem;background:rgba(255,255,255,.2);border-radius:4px;padding:.1rem .4rem;margin-left:.4rem;font-weight:400}
+
+/* Game Tabs */
+.tabs{display:flex;gap:.4rem;padding:.75rem 1rem;flex-wrap:wrap;justify-content:center;max-width:800px;margin:0 auto}
+.tab-btn{padding:.55rem 1.1rem;border-radius:var(--radius);border:2px solid var(--border);background:var(--white);color:var(--mid);font-weight:600;font-size:.85rem;cursor:pointer;transition:.2s;display:flex;align-items:center;gap:.4rem}
+.tab-btn.active{border-color:var(--blue);background:var(--blue-lt);color:var(--blue)}
+.tab-btn:hover:not(.active){border-color:var(--blue);color:var(--blue)}
+
+/* Game Container */
+.game-wrap{max-width:800px;margin:0 auto;padding:.5rem 1rem 3rem}
+.game-panel{display:none}
+.game-panel.active{display:block}
+.game-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.75rem;margin-bottom:1rem}
+.game-title{font-size:1.1rem;font-weight:700;margin-bottom:.3rem;color:var(--dark)}
+.game-desc{font-size:.88rem;color:var(--light);margin-bottom:1.5rem}
+
+/* Score bar */
+.score-bar{display:flex;align-items:center;justify-content:space-between;background:var(--bg);border-radius:var(--radius);padding:.6rem 1rem;margin-bottom:1.25rem;font-size:.88rem;font-weight:600;color:var(--mid)}
+.score-val{color:var(--blue);font-size:1.1rem;font-weight:800}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.25rem;border-radius:var(--radius);font-weight:600;font-size:.9rem;cursor:pointer;border:none;transition:.2s}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{background:var(--blue-dk)}
+.btn-sm{padding:.45rem .9rem;font-size:.82rem}
+.btn-ghost{background:transparent;border:2px solid var(--border);color:var(--mid)}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ===== MATCHING GAME ===== */
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.match-col{display:flex;flex-direction:column;gap:.6rem}
+.match-col-label{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--light);margin-bottom:.25rem}
+.match-card{padding:.75rem 1rem;border-radius:var(--radius);border:2px solid var(--border);background:var(--white);cursor:pointer;font-size:.9rem;font-weight:500;text-align:center;transition:.2s;user-select:none;min-height:50px;display:flex;align-items:center;justify-content:center}
+.match-card:hover{border-color:var(--blue);background:var(--blue-lt)}
+.match-card.selected{border-color:var(--blue);background:var(--blue);color:#fff}
+.match-card.matched{border-color:var(--green);background:#dcfce7;color:var(--green);cursor:default;pointer-events:none}
+.match-card.wrong{border-color:var(--red);background:#fee2e2;animation:shake .3s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* ===== FILL IN BLANK ===== */
+.fib-item{border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-bottom:.75rem;transition:.2s}
+.fib-item.correct{border-color:var(--green);background:#f0fdf4}
+.fib-item.incorrect{border-color:var(--red);background:#fef2f2}
+.fib-sentence{font-size:1rem;line-height:1.7;margin-bottom:.75rem}
+.fib-input{border:2px solid var(--border);border-radius:6px;padding:.4rem .75rem;font-size:.95rem;font-family:inherit;width:160px;outline:none;transition:.2s}
+.fib-input:focus{border-color:var(--blue)}
+.fib-input.correct{border-color:var(--green);background:#dcfce7}
+.fib-input.incorrect{border-color:var(--red);background:#fee2e2}
+.fib-feedback{font-size:.82rem;margin-top:.5rem;font-weight:600}
+.fib-feedback.correct{color:var(--green)}
+.fib-feedback.incorrect{color:var(--red)}
+.fib-hint{font-size:.78rem;color:var(--light);margin-top:.3rem}
+
+/* ===== MULTIPLE CHOICE ===== */
+.mc-question{font-size:1.05rem;font-weight:600;margin-bottom:1rem;line-height:1.5}
+.mc-word{color:var(--blue);font-style:italic}
+.mc-options{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.mc-opt{padding:.8rem 1rem;border:2px solid var(--border);border-radius:var(--radius);cursor:pointer;font-size:.9rem;font-weight:500;background:var(--white);transition:.2s;text-align:left}
+.mc-opt:hover:not(:disabled){border-color:var(--blue);background:var(--blue-lt)}
+.mc-opt.correct{border-color:var(--green);background:#dcfce7;color:var(--green)}
+.mc-opt.incorrect{border-color:var(--red);background:#fee2e2;color:var(--red)}
+.mc-opt:disabled{cursor:default}
+.mc-progress{font-size:.85rem;color:var(--light);margin-bottom:1rem}
+.mc-nav{display:flex;justify-content:space-between;align-items:center;margin-top:1rem}
+.mc-feedback{font-size:.9rem;font-weight:600;min-height:1.4em}
+.mc-feedback.correct{color:var(--green)}
+.mc-feedback.incorrect{color:var(--red)}
+
+/* ===== WORD SCRAMBLE ===== */
+.ws-word{font-size:2rem;font-weight:800;letter-spacing:.2em;color:var(--blue);text-align:center;padding:1rem;background:var(--blue-lt);border-radius:var(--radius);margin-bottom:1rem}
+.ws-hint{text-align:center;font-size:.9rem;color:var(--light);margin-bottom:1rem;font-style:italic}
+.ws-input-wrap{display:flex;gap:.5rem;margin-bottom:.75rem}
+.ws-input{flex:1;border:2px solid var(--border);border-radius:var(--radius);padding:.7rem 1rem;font-size:1.1rem;font-family:inherit;outline:none;transition:.2s;text-align:center;letter-spacing:.1em}
+.ws-input:focus{border-color:var(--blue)}
+.ws-input.correct{border-color:var(--green);background:#dcfce7}
+.ws-input.incorrect{border-color:var(--red);background:#fee2e2;animation:shake .3s ease}
+.ws-progress{text-align:center;font-size:.85rem;color:var(--light);margin-bottom:.5rem}
+.ws-result{text-align:center;font-size:1rem;font-weight:700;min-height:1.5em}
+.ws-result.correct{color:var(--green)}
+.ws-result.incorrect{color:var(--red)}
+.ws-actions{display:flex;gap:.5rem;justify-content:center;margin-top:.75rem;flex-wrap:wrap}
+
+/* Results overlay */
+.result-banner{border-radius:var(--radius);padding:1.5rem;text-align:center;margin-top:1rem}
+.result-banner h3{font-size:1.4rem;margin-bottom:.5rem}
+.result-banner p{color:var(--mid);margin-bottom:1rem}
+.result-banner.great{background:#f0fdf4;border:2px solid var(--green)}
+.result-banner.good{background:#fffbeb;border:2px solid var(--accent)}
+.result-banner.keep-going{background:var(--blue-lt);border:2px solid var(--blue)}
+.result-emoji{font-size:2.5rem;display:block;margin-bottom:.5rem}
+
+@media(max-width:540px){
+  .match-grid{grid-template-columns:1fr}
+  .mc-options{grid-template-columns:1fr}
+  .ws-input-wrap{flex-direction:column}
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>📚 Vocab Games</h1>
-        <p>Welcome to Vocab Games! Learn English vocabulary through interactive games.</p>
-        <div class="button-group">
-            <button class="btn-primary">Start Game</button>
-            <button class="btn-secondary">Learn More</button>
+
+<header class="site-header">
+  <h1>🎮 Vocabulary Games</h1>
+  <p>Practice your English vocabulary — choose your level and pick a game</p>
+  <a class="back-link" href="https://englishonline.training">← Back to EnglishOnline.training</a>
+</header>
+
+<!-- Level Toggle -->
+<div class="level-bar">
+  <button class="level-btn active" onclick="setLevel('sek1')" id="btn-sek1">
+    Sek I <span class="level-badge">A2–B1</span>
+  </button>
+  <button class="level-btn" onclick="setLevel('sek2')" id="btn-sek2">
+    Sek II <span class="level-badge">B2–C1</span>
+  </button>
+</div>
+
+<!-- Game Tabs -->
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('matching')" id="tab-matching">🃏 Matching Pairs</button>
+  <button class="tab-btn" onclick="showTab('fillin')" id="tab-fillin">✏️ Fill in the Blank</button>
+  <button class="tab-btn" onclick="showTab('mc')" id="tab-mc">❓ Multiple Choice</button>
+  <button class="tab-btn" onclick="showTab('scramble')" id="tab-scramble">🔀 Word Scramble</button>
+</div>
+
+<div class="game-wrap">
+
+  <!-- ===== MATCHING PAIRS ===== -->
+  <div class="game-panel active" id="panel-matching">
+    <div class="game-card">
+      <div class="game-title">🃏 Matching Pairs</div>
+      <div class="game-desc">Click a word on the left, then click its matching definition on the right.</div>
+      <div class="score-bar">
+        <span>Score: <span class="score-val" id="match-score">0</span> / <span id="match-total">0</span></span>
+        <button class="btn btn-primary btn-sm" onclick="initMatching()">🔄 New Round</button>
+      </div>
+      <div class="match-grid">
+        <div class="match-col">
+          <div class="match-col-label">Words</div>
+          <div id="match-words"></div>
         </div>
+        <div class="match-col">
+          <div class="match-col-label">Definitions / Translations</div>
+          <div id="match-defs"></div>
+        </div>
+      </div>
+      <div id="match-result" class="result-banner" style="display:none"></div>
     </div>
+  </div>
+
+  <!-- ===== FILL IN THE BLANK ===== -->
+  <div class="game-panel" id="panel-fillin">
+    <div class="game-card">
+      <div class="game-title">✏️ Fill in the Blank</div>
+      <div class="game-desc">Complete each sentence with the correct word. Type it and press Enter or click Check.</div>
+      <div class="score-bar">
+        <span>Score: <span class="score-val" id="fib-score">0</span> / <span id="fib-total">0</span></span>
+        <button class="btn btn-primary btn-sm" onclick="initFib()">🔄 New Round</button>
+      </div>
+      <div id="fib-items"></div>
+      <div id="fib-result" class="result-banner" style="display:none"></div>
+    </div>
+  </div>
+
+  <!-- ===== MULTIPLE CHOICE ===== -->
+  <div class="game-panel" id="panel-mc">
+    <div class="game-card">
+      <div class="game-title">❓ Multiple Choice</div>
+      <div class="game-desc">Choose the correct meaning for each word.</div>
+      <div class="score-bar">
+        <span>Score: <span class="score-val" id="mc-score">0</span> / <span id="mc-total">0</span></span>
+        <button class="btn btn-primary btn-sm" onclick="initMC()">🔄 Restart</button>
+      </div>
+      <div class="mc-progress" id="mc-progress">Question 1 of 8</div>
+      <div class="mc-question" id="mc-question"></div>
+      <div class="mc-options" id="mc-options"></div>
+      <div class="mc-nav">
+        <div class="mc-feedback" id="mc-feedback"></div>
+        <button class="btn btn-primary btn-sm" id="mc-next" onclick="mcNext()" style="display:none">Next →</button>
+      </div>
+      <div id="mc-result" class="result-banner" style="display:none"></div>
+    </div>
+  </div>
+
+  <!-- ===== WORD SCRAMBLE ===== -->
+  <div class="game-panel" id="panel-scramble">
+    <div class="game-card">
+      <div class="game-title">🔀 Word Scramble</div>
+      <div class="game-desc">Unscramble the letters to find the vocabulary word. Use the hint if you're stuck!</div>
+      <div class="score-bar">
+        <span>Score: <span class="score-val" id="ws-score">0</span> / <span id="ws-total">0</span></span>
+        <button class="btn btn-primary btn-sm" onclick="initScramble()">🔄 Restart</button>
+      </div>
+      <div class="ws-progress" id="ws-progress">Word 1 of 10</div>
+      <div class="ws-word" id="ws-scrambled"></div>
+      <div class="ws-hint" id="ws-hint-text"></div>
+      <div class="ws-input-wrap">
+        <input class="ws-input" id="ws-input" type="text" placeholder="Type your answer…" autocomplete="off" onkeydown="if(event.key==='Enter')wsCheck()"/>
+        <button class="btn btn-primary" onclick="wsCheck()">Check ✓</button>
+      </div>
+      <div class="ws-result" id="ws-result"></div>
+      <div class="ws-actions">
+        <button class="btn btn-ghost btn-sm" onclick="wsHint()">💡 Show Hint</button>
+        <button class="btn btn-ghost btn-sm" onclick="wsSkip()">Skip →</button>
+      </div>
+      <div id="ws-result-banner" class="result-banner" style="display:none"></div>
+    </div>
+  </div>
+
+</div><!-- /game-wrap -->
+
+<script>
+// =============================================
+//  VOCABULARY DATA
+// =============================================
+const data = {
+  sek1: {
+    pairs: [
+      {word:'curious',   def:'wanting to learn or know about something'},
+      {word:'improve',   def:'to make or become better'},
+      {word:'challenge', def:'something difficult that tests your ability'},
+      {word:'environment',def:'the natural world around us'},
+      {word:'responsible',def:'having a duty to do something or look after someone'},
+      {word:'discover',  def:'to find or learn something for the first time'},
+      {word:'adventure', def:'an exciting or unusual experience'},
+      {word:'confident', def:'feeling sure about yourself and your abilities'},
+      {word:'imagine',   def:'to form a picture or idea in your mind'},
+      {word:'friendship',def:'a relationship between people who like each other'},
+      {word:'achieve',   def:'to succeed in doing or completing something'},
+      {word:'opinion',   def:'what you think about something'},
+    ],
+    fib: [
+      {sentence:'She worked hard to ___ her English speaking skills.',  word:'improve',   hint:'make better'},
+      {sentence:'It is ___ to recycle and look after the ___.',         word:'important', hint:'very necessary', extra:'environment'},
+      {sentence:'He felt very ___ before his big presentation.',        word:'nervous',   hint:'worried and anxious'},
+      {sentence:'We need to ___ a solution to this problem together.',  word:'find',      hint:'discover or locate'},
+      {sentence:'The ___ between the two friends lasted many years.',   word:'friendship',hint:'a close relationship'},
+      {sentence:'She was very ___ about trying new things.',            word:'curious',   hint:'eager to learn'},
+      {sentence:'It takes ___ to speak in front of the whole class.',   word:'confidence',hint:'belief in yourself'},
+      {sentence:'He had an amazing ___ travelling through Europe.',     word:'adventure', hint:'exciting experience'},
+    ],
+    mc: [
+      {word:'curious',    correct:'eager to know or learn',              wrong:['feeling sad','very tired','in a hurry']},
+      {word:'improve',    correct:'to make better',                      wrong:['to damage','to ignore','to forget']},
+      {word:'confident',  correct:'sure about your own abilities',       wrong:['afraid of failure','very tall','feeling ill']},
+      {word:'discover',   correct:'to find or learn for the first time', wrong:['to forget completely','to break something','to sleep deeply']},
+      {word:'responsible',correct:'being the one who must deal with it', wrong:['being very funny','having no worries','feeling cold']},
+      {word:'challenge',  correct:'something difficult that tests you',  wrong:['an easy task','a type of food','a musical instrument']},
+      {word:'adventure',  correct:'an exciting unusual experience',      wrong:['a type of homework','a boring routine','a sleeping pattern']},
+      {word:'achieve',    correct:'to succeed in completing something',  wrong:['to give up easily','to feel confused','to fall asleep']},
+      {word:'opinion',    correct:'what you personally think about something', wrong:['a type of sport','a fact everyone agrees on','a piece of clothing']},
+      {word:'imagine',    correct:'to form a picture or idea in your mind', wrong:['to remember a name','to run very fast','to build a wall']},
+    ],
+    scramble: [
+      {word:'CURIOUS',    hint:'eager to know things'},
+      {word:'IMPROVE',    hint:'make better'},
+      {word:'CHALLENGE',  hint:'something difficult'},
+      {word:'DISCOVER',   hint:'find for the first time'},
+      {word:'CONFIDENT',  hint:'sure of yourself'},
+      {word:'ADVENTURE',  hint:'exciting experience'},
+      {word:'FRIENDSHIP', hint:'a close bond between people'},
+      {word:'ACHIEVE',    hint:'reach a goal'},
+      {word:'OPINION',    hint:'your personal view'},
+      {word:'IMAGINE',    hint:'picture in your mind'},
+    ]
+  },
+  sek2: {
+    pairs: [
+      {word:'ambiguous',   def:'having more than one possible meaning'},
+      {word:'inevitable',  def:'certain to happen; impossible to avoid'},
+      {word:'contemporary',def:'belonging to the present time; modern'},
+      {word:'elaborate',   def:'very detailed and complicated'},
+      {word:'fundamental', def:'forming the base or most important part of something'},
+      {word:'perceive',    def:'to become aware of through the senses or the mind'},
+      {word:'significant', def:'important or large enough to be noticed'},
+      {word:'substantial', def:'of considerable size, value, or importance'},
+      {word:'prejudice',   def:'an unfair opinion formed without enough thought or knowledge'},
+      {word:'phenomenon',  def:'a fact or event that can be observed in nature or society'},
+      {word:'controversial',def:'causing disagreement or strong debate'},
+      {word:'perspective', def:'a particular way of considering or viewing something'},
+    ],
+    fib: [
+      {sentence:'The results of the experiment were ___, attracting attention from scientists worldwide.', word:'significant', hint:'important enough to be noticed'},
+      {sentence:'It is ___ that technology will continue to shape our daily lives.',                      word:'inevitable',  hint:'certain to happen'},
+      {sentence:'The politician\'s statement was ___; many people interpreted it differently.',           word:'ambiguous',   hint:'unclear, two possible meanings'},
+      {sentence:'She gave an ___ explanation of the theory, covering every detail carefully.',           word:'elaborate',   hint:'detailed and complex'},
+      {sentence:'A ___ understanding of grammar is essential for effective communication.',              word:'fundamental', hint:'basic and essential'},
+      {sentence:'The way we ___ the world around us is shaped by our culture and upbringing.',          word:'perceive',    hint:'see or understand'},
+      {sentence:'Climate change is one of the most ___ issues of our time.',                            word:'controversial',hint:'causing strong debate'},
+      {sentence:'Gaining a different ___ can help you understand other people\'s experiences.',         word:'perspective', hint:'point of view'},
+    ],
+    mc: [
+      {word:'ambiguous',    correct:'having more than one possible meaning',        wrong:['very clear and precise','completely wrong','easy to understand']},
+      {word:'inevitable',   correct:'certain to happen, unavoidable',               wrong:['unlikely to occur','easy to stop','already finished']},
+      {word:'contemporary', correct:'belonging to the present time',                wrong:['from ancient history','impossible to understand','very expensive']},
+      {word:'elaborate',    correct:'very detailed and complicated',                 wrong:['simple and quick','completely false','badly organised']},
+      {word:'fundamental',  correct:'forming the most important base of something', wrong:['unimportant and trivial','difficult to pronounce','recently discovered']},
+      {word:'perceive',     correct:'to become aware of through senses or mind',    wrong:['to completely ignore','to sleep deeply','to write formally']},
+      {word:'significant',  correct:'important enough to be noticed',               wrong:['too small to matter','very difficult to spell','always changing']},
+      {word:'substantial',  correct:'of considerable size or importance',           wrong:['tiny and insignificant','imaginary','boring and dull']},
+      {word:'prejudice',    correct:'unfair opinion formed without proper knowledge',wrong:['a type of court ruling','a scientific experiment','a musical technique']},
+      {word:'phenomenon',   correct:'an observable fact or event in nature or society',wrong:['a type of argument','a grammar rule','a historical document']},
+    ],
+    scramble: [
+      {word:'AMBIGUOUS',    hint:'has more than one meaning'},
+      {word:'INEVITABLE',   hint:'impossible to avoid'},
+      {word:'ELABORATE',    hint:'very detailed'},
+      {word:'PERCEIVE',     hint:'to become aware of'},
+      {word:'FUNDAMENTAL',  hint:'most basic and important'},
+      {word:'SIGNIFICANT',  hint:'worth noting; important'},
+      {word:'PREJUDICE',    hint:'unfair preconceived opinion'},
+      {word:'PERSPECTIVE',  hint:'a point of view'},
+      {word:'SUBSTANTIAL',  hint:'of considerable size'},
+      {word:'CONTROVERSIAL',hint:'causes strong disagreement'},
+    ]
+  }
+};
+
+// =============================================
+//  STATE
+// =============================================
+let currentLevel = 'sek1';
+let matchSelected = null;
+let matchScoreVal = 0;
+let matchPairs = [];
+let fibItems = [];
+let mcItems = [];
+let mcIndex = 0;
+let mcScoreVal = 0;
+let mcAnswered = false;
+let wsItems = [];
+let wsIndex = 0;
+let wsScoreVal = 0;
+let wsHintShown = false;
+
+// =============================================
+//  LEVEL & TAB SWITCHING
+// =============================================
+function setLevel(level) {
+  currentLevel = level;
+  document.getElementById('btn-sek1').classList.toggle('active', level === 'sek1');
+  document.getElementById('btn-sek2').classList.toggle('active', level === 'sek2');
+  // Re-init all games
+  initMatching(); initFib(); initMC(); initScramble();
+}
+
+function showTab(name) {
+  document.querySelectorAll('.game-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+}
+
+// =============================================
+//  UTILITIES
+// =============================================
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+function pick(arr, n) { return shuffle(arr).slice(0, n); }
+function resultBanner(score, total) {
+  const pct = score / total;
+  let cls, emoji, msg;
+  if (pct >= 0.85) { cls = 'great'; emoji = '🏆'; msg = 'Excellent work! You\'re really nailing this vocabulary!'; }
+  else if (pct >= 0.6) { cls = 'good'; emoji = '👍'; msg = 'Good effort! A little more practice and you\'ll have it perfect.'; }
+  else { cls = 'keep-going'; emoji = '📚'; msg = 'Keep practising — every attempt helps it stick!'; }
+  return `<div class="result-banner ${cls}"><span class="result-emoji">${emoji}</span><h3>${score} / ${total} correct</h3><p>${msg}</p></div>`;
+}
+
+// =============================================
+//  MATCHING PAIRS
+// =============================================
+function initMatching() {
+  matchSelected = null;
+  matchScoreVal = 0;
+  matchPairs = pick(data[currentLevel].pairs, 6);
+  document.getElementById('match-score').textContent = 0;
+  document.getElementById('match-total').textContent = matchPairs.length;
+  document.getElementById('match-result').style.display = 'none';
+
+  const wordsEl = document.getElementById('match-words');
+  const defsEl  = document.getElementById('match-defs');
+  const words = shuffle(matchPairs.map(p => p.word));
+  const defs  = shuffle(matchPairs.map(p => p.def));
+
+  wordsEl.innerHTML = words.map(w =>
+    `<div class="match-card" data-type="word" data-val="${w}" onclick="matchClick(this)">${w}</div>`
+  ).join('');
+  defsEl.innerHTML = defs.map(d =>
+    `<div class="match-card" data-type="def" data-val="${d}" onclick="matchClick(this)">${d}</div>`
+  ).join('');
+}
+
+function matchClick(el) {
+  if (el.classList.contains('matched')) return;
+  const type = el.dataset.type;
+
+  if (!matchSelected) {
+    // First click
+    if (el.classList.contains('selected')) { el.classList.remove('selected'); return; }
+    document.querySelectorAll('.match-card.selected').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    matchSelected = el;
+    return;
+  }
+  // Second click — must be opposite type
+  if (el.dataset.type === matchSelected.dataset.type) {
+    document.querySelectorAll('.match-card.selected').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    matchSelected = el;
+    return;
+  }
+  // Check match
+  const wordEl = type === 'word' ? el : matchSelected;
+  const defEl  = type === 'def'  ? el : matchSelected;
+  const pair = matchPairs.find(p => p.word === wordEl.dataset.val);
+  if (pair && pair.def === defEl.dataset.val) {
+    wordEl.classList.remove('selected'); wordEl.classList.add('matched');
+    defEl.classList.remove('selected');  defEl.classList.add('matched');
+    matchScoreVal++;
+    document.getElementById('match-score').textContent = matchScoreVal;
+    if (matchScoreVal === matchPairs.length) {
+      const r = document.getElementById('match-result');
+      r.innerHTML = resultBanner(matchScoreVal, matchPairs.length);
+      r.style.display = 'block';
+    }
+  } else {
+    wordEl.classList.add('wrong'); defEl.classList.add('wrong');
+    setTimeout(() => {
+      wordEl.classList.remove('selected','wrong');
+      defEl.classList.remove('selected','wrong');
+    }, 600);
+  }
+  matchSelected = null;
+}
+
+// =============================================
+//  FILL IN THE BLANK
+// =============================================
+function initFib() {
+  fibItems = shuffle(data[currentLevel].fib).slice(0, 6);
+  document.getElementById('fib-score').textContent = 0;
+  document.getElementById('fib-total').textContent = fibItems.length;
+  document.getElementById('fib-result').style.display = 'none';
+  const container = document.getElementById('fib-items');
+  container.innerHTML = fibItems.map((item, i) => `
+    <div class="fib-item" id="fib-item-${i}">
+      <div class="fib-sentence">${item.sentence.replace('___', `<input class="fib-input" id="fib-inp-${i}" data-index="${i}" placeholder="…" autocomplete="off" onkeydown="if(event.key==='Enter')fibCheck(${i})"/>`)}</div>
+      <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+        <button class="btn btn-primary btn-sm" onclick="fibCheck(${i})">Check ✓</button>
+        <span class="fib-feedback" id="fib-fb-${i}"></span>
+      </div>
+      <div class="fib-hint" id="fib-hint-${i}" style="display:none">💡 Hint: ${item.hint}</div>
+      <div style="margin-top:.4rem"><button class="btn btn-ghost btn-sm" onclick="document.getElementById('fib-hint-${i}').style.display='block';this.style.display='none'">Show hint</button></div>
+    </div>
+  `).join('');
+}
+
+let fibChecked = {};
+function fibCheck(i) {
+  if (fibChecked[i]) return;
+  const item = fibItems[i];
+  const input = document.getElementById(`fib-inp-${i}`);
+  const fb    = document.getElementById(`fib-fb-${i}`);
+  const wrap  = document.getElementById(`fib-item-${i}`);
+  const val = input.value.trim().toLowerCase();
+  const correct = item.word.toLowerCase();
+  if (val === correct) {
+    input.classList.add('correct'); wrap.classList.add('correct');
+    fb.textContent = '✅ Correct!'; fb.className = 'fib-feedback correct';
+    fibChecked[i] = true;
+    const done = Object.keys(fibChecked).length;
+    document.getElementById('fib-score').textContent = Object.values(fibChecked).filter(Boolean).length;
+    if (done === fibItems.length) {
+      const r = document.getElementById('fib-result');
+      r.innerHTML = resultBanner(Object.values(fibChecked).filter(Boolean).length, fibItems.length);
+      r.style.display = 'block';
+    }
+  } else {
+    input.classList.add('incorrect'); wrap.classList.add('incorrect');
+    fb.textContent = `❌ Try again! (hint: ${item.hint})`; fb.className = 'fib-feedback incorrect';
+    setTimeout(() => { input.classList.remove('incorrect'); wrap.classList.remove('incorrect'); }, 800);
+    document.getElementById(`fib-hint-${i}`).style.display = 'block';
+  }
+}
+
+// =============================================
+//  MULTIPLE CHOICE
+// =============================================
+function initMC() {
+  mcItems = shuffle(data[currentLevel].mc).slice(0, 10);
+  mcIndex = 0; mcScoreVal = 0; mcAnswered = false;
+  document.getElementById('mc-score').textContent = 0;
+  document.getElementById('mc-total').textContent = mcItems.length;
+  document.getElementById('mc-result').style.display = 'none';
+  renderMC();
+}
+function renderMC() {
+  if (mcIndex >= mcItems.length) {
+    document.getElementById('mc-question').innerHTML = '';
+    document.getElementById('mc-options').innerHTML = '';
+    document.getElementById('mc-progress').textContent = '';
+    document.getElementById('mc-feedback').textContent = '';
+    document.getElementById('mc-next').style.display = 'none';
+    const r = document.getElementById('mc-result');
+    r.innerHTML = resultBanner(mcScoreVal, mcItems.length);
+    r.style.display = 'block';
+    return;
+  }
+  const item = mcItems[mcIndex];
+  const opts = shuffle([item.correct, ...item.wrong]);
+  document.getElementById('mc-progress').textContent = `Question ${mcIndex + 1} of ${mcItems.length}`;
+  document.getElementById('mc-question').innerHTML = `What does <span class="mc-word">"${item.word}"</span> mean?`;
+  document.getElementById('mc-options').innerHTML = opts.map(o =>
+    `<button class="mc-opt" onclick="mcAnswer(this,'${o.replace(/'/g,"\\'")}','${item.correct.replace(/'/g,"\\'")}')"> ${o}</button>`
+  ).join('');
+  document.getElementById('mc-feedback').textContent = '';
+  document.getElementById('mc-feedback').className = 'mc-feedback';
+  document.getElementById('mc-next').style.display = 'none';
+  mcAnswered = false;
+}
+function mcAnswer(el, chosen, correct) {
+  if (mcAnswered) return;
+  mcAnswered = true;
+  const opts = document.querySelectorAll('.mc-opt');
+  opts.forEach(o => { o.disabled = true; if (o.textContent.trim() === correct) o.classList.add('correct'); });
+  const fb = document.getElementById('mc-feedback');
+  if (chosen === correct) {
+    el.classList.add('correct');
+    fb.textContent = '✅ Correct!'; fb.className = 'mc-feedback correct';
+    mcScoreVal++;
+    document.getElementById('mc-score').textContent = mcScoreVal;
+  } else {
+    el.classList.add('incorrect');
+    fb.textContent = `❌ The correct answer is: "${correct}"`; fb.className = 'mc-feedback incorrect';
+  }
+  document.getElementById('mc-next').style.display = 'inline-flex';
+}
+function mcNext() { mcIndex++; renderMC(); }
+
+// =============================================
+//  WORD SCRAMBLE
+// =============================================
+function scrambleWord(word) {
+  let s;
+  do { s = shuffle(word.split('')).join(''); } while (s === word);
+  return s;
+}
+function initScramble() {
+  wsItems = shuffle(data[currentLevel].scramble).slice(0, 10);
+  wsIndex = 0; wsScoreVal = 0;
+  document.getElementById('ws-score').textContent = 0;
+  document.getElementById('ws-total').textContent = wsItems.length;
+  document.getElementById('ws-result-banner').style.display = 'none';
+  renderScramble();
+}
+function renderScramble() {
+  if (wsIndex >= wsItems.length) {
+    document.getElementById('ws-scrambled').textContent = '';
+    document.getElementById('ws-hint-text').textContent = '';
+    document.getElementById('ws-progress').textContent = '';
+    document.getElementById('ws-result').textContent = '';
+    document.getElementById('ws-input').value = '';
+    const r = document.getElementById('ws-result-banner');
+    r.innerHTML = resultBanner(wsScoreVal, wsItems.length);
+    r.style.display = 'block';
+    return;
+  }
+  const item = wsItems[wsIndex];
+  wsHintShown = false;
+  document.getElementById('ws-progress').textContent = `Word ${wsIndex + 1} of ${wsItems.length}`;
+  document.getElementById('ws-scrambled').textContent = scrambleWord(item.word);
+  document.getElementById('ws-hint-text').textContent = '';
+  document.getElementById('ws-result').textContent = '';
+  document.getElementById('ws-result').className = 'ws-result';
+  const inp = document.getElementById('ws-input');
+  inp.value = ''; inp.className = 'ws-input'; inp.disabled = false; inp.focus();
+}
+function wsCheck() {
+  const item = wsItems[wsIndex];
+  const inp  = document.getElementById('ws-input');
+  const res  = document.getElementById('ws-result');
+  const val  = inp.value.trim().toUpperCase();
+  if (!val) return;
+  if (val === item.word) {
+    inp.classList.add('correct'); inp.disabled = true;
+    res.textContent = '✅ Correct! Well done!'; res.className = 'ws-result correct';
+    wsScoreVal++;
+    document.getElementById('ws-score').textContent = wsScoreVal;
+    setTimeout(() => { wsIndex++; renderScramble(); }, 1200);
+  } else {
+    inp.classList.add('incorrect');
+    res.textContent = '❌ Not quite — try again!'; res.className = 'ws-result incorrect';
+    setTimeout(() => { inp.classList.remove('incorrect'); res.textContent = ''; }, 800);
+    inp.value = '';
+  }
+}
+function wsHint() {
+  const item = wsItems[wsIndex];
+  document.getElementById('ws-hint-text').textContent = `💡 Hint: ${item.hint}`;
+  wsHintShown = true;
+}
+function wsSkip() {
+  const item = wsItems[wsIndex];
+  const res = document.getElementById('ws-result');
+  res.textContent = `Answer: ${item.word}`; res.className = 'ws-result incorrect';
+  setTimeout(() => { wsIndex++; renderScramble(); }, 1400);
+}
+
+// =============================================
+//  INIT ON LOAD
+// =============================================
+window.onload = () => { initMatching(); initFib(); initMC(); initScramble(); };
+</script>
 </body>
 </html>
