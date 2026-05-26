@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>California – Interactive Exercises | englishonline.training</title>
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:    #1a3a5c;
+      --gold:    #c9a227;
+      --gold-lt: #f5e6b0;
+      --teal:    #2b7a78;
+      --red:     #c0392b;
+      --green:   #27ae60;
+      --bg:      #f7f9fc;
+      --card:    #ffffff;
+      --text:    #1d2b3a;
+      --muted:   #6b7a8d;
+      --border:  #dce3ec;
+      --radius:  12px;
+      --shadow:  0 2px 16px rgba(26,58,92,.1);
+      --font:    'Segoe UI', system-ui, sans-serif;
+    }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding-bottom: 3rem;
+    }
+
+    /* ===== HEADER / PROGRESS ===== */
+    .app-header {
+      background: var(--blue);
+      color: #fff;
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,.2);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .75rem 1.25rem;
+      gap: 1rem;
+    }
+    .header-logo {
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .header-meta {
+      font-size: .78rem;
+      text-align: right;
+      opacity: .9;
+    }
+    .header-meta strong { display: block; color: var(--gold); }
+    .progress-track {
+      height: 6px;
+      background: rgba(255,255,255,.2);
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--gold);
+      transition: width .4s ease;
+      width: 0%;
+    }
+
+    /* ===== STEP WRAPPER ===== */
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 2rem;
+    }
+
+    /* ===== EXERCISE BADGE ===== */
+    .ex-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--blue);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      padding: .25rem .7rem;
+      border-radius: 20px;
+      margin-bottom: .75rem;
+    }
+    .ex-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: .4rem;
+    }
+    .ex-subtitle {
+      font-size: .9rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ===== CARD ===== */
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: .75rem;
+    }
+
+    /* ===== READING TEXT ===== */
+    .reading-text {
+      font-size: .95rem;
+      line-height: 1.75;
+      color: var(--text);
+    }
+    .reading-text p { margin-bottom: .9rem; }
+    .reading-text p:last-child { margin-bottom: 0; }
+
+    /* ===== GDP CHART ===== */
+    .chart-wrap { margin: 1rem 0; }
+    .chart-title { font-size: .8rem; font-weight: 600; color: var(--muted); margin-bottom: .75rem; text-transform: uppercase; letter-spacing: .04em; }
+    .bar-row { display: flex; align-items: center; gap: .75rem; margin-bottom: .6rem; }
+    .bar-label { font-size: .82rem; width: 110px; flex-shrink: 0; text-align: right; font-weight: 500; }
+    .bar-outer { flex: 1; background: var(--border); border-radius: 4px; height: 22px; overflow: hidden; }
+    .bar-inner { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 8px; font-size: .72rem; font-weight: 700; color: #fff; white-space: nowrap; transition: width 1s ease; }
+    .bar-california { background: var(--gold); color: var(--blue); }
+    .bar-country { background: var(--blue); }
+    .bar-country-2 { background: var(--teal); }
+
+    /* ===== FORM ELEMENTS ===== */
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label {
+      display: block;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: .4rem;
+    }
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: .65rem .85rem;
+      font-family: var(--font);
+      font-size: .92rem;
+      color: var(--text);
+      background: #fff;
+      transition: border-color .2s;
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      outline: none;
+      border-color: var(--blue);
+    }
+    .form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+    .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+
+    /* ===== ARTICLE GAP-FILL ===== */
+    .gap-text {
+      font-size: .95rem;
+      line-height: 2.2;
+      color: var(--text);
+    }
+    .gap-select {
+      display: inline-block;
+      border: 1.5px solid var(--gold);
+      border-radius: 6px;
+      padding: .15rem .4rem;
+      font-family: var(--font);
+      font-size: .85rem;
+      background: var(--gold-lt);
+      color: var(--blue);
+      cursor: pointer;
+      vertical-align: middle;
+      margin: 0 2px;
+    }
+    .gap-select:focus { outline: none; border-color: var(--blue); }
+    .gap-correct { background: #d4edda; border-color: var(--green); }
+    .gap-wrong   { background: #fde8e8; border-color: var(--red); }
+    .gap-num {
+      font-size: .7rem;
+      color: var(--muted);
+      vertical-align: super;
+      margin-right: 1px;
+    }
+
+    /* ===== FEEDBACK STRIP ===== */
+    .feedback {
+      padding: .8rem 1rem;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 500;
+      margin-top: 1rem;
+      display: none;
+    }
+    .feedback.show { display: block; }
+    .feedback.ok   { background: #d4edda; color: #155724; }
+    .feedback.warn { background: #fff3cd; color: #856404; }
+    .feedback.err  { background: #fde8e8; color: #721c24; }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem 1.5rem;
+      border-radius: 8px;
+      font-family: var(--font);
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
+    .btn-primary:hover { background: #15304f; box-shadow: 0 4px 12px rgba(26,58,92,.4); }
+    .btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
+    .btn-gold:hover { background: #b8911f; }
+    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+    .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+    .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    /* ===== WEBCOME SCREEN ===== */
+    .welcome-hero {
+      text-align: center;
+      padding: 2.5rem 1rem 2rem;
+    }
+    .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
+    .welcome-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: .5rem;
+    }
+    .welcome-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .exercise-overview {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: .75rem;
+      margin-bottom: 2rem;
+    }
+    .ov-card {
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: .85rem 1rem;
+      font-size: .82rem;
+    }
+    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
+    .ov-card.locked { opacity: .5; }
+    .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+
+    /* ===== ABSTRACT NOUN EXAMPLES ===== */
+    .example-list { list-style: none; }
+    .example-list li {
+      padding: .5rem .85rem;
+      border-left: 3px solid var(--gold);
+      margin-bottom: .6rem;
+      background: var(--gold-lt);
+      border-radius: 0 6px 6px 0;
+      font-size: .9rem;
+      font-style: italic;
+    }
+    .example-list li em { color: var(--blue); font-weight: 700; font-style: normal; }
+
+    /* ===== COLLECTIVE NOUNS HIGHLIGHT ===== */
+    .cn-text { font-size: .92rem; line-height: 1.85; }
+    .cn-text .blank { border-bottom: 2px solid var(--gold); min-width: 80px; display: inline-block; }
+
+    /* ===== SUBMIT SCREEN ===== */
+    .submit-summary {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .summary-row {
+      border-bottom: 1px solid var(--border);
+      padding: .75rem 0;
+      font-size: .875rem;
+    }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
+    .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
+    .summary-a  { color: var(--text); white-space: pre-wrap; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 480px) {
+      .ex-title { font-size: 1.25rem; }
+      .bar-label { width: 80px; font-size: .75rem; }
+      .btn { padding: .65rem 1.1rem; }
+      .welcome-title { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== APP HEADER ===== -->
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Exercise 1 of 6</span>
+    </div>
+  </div>
+  <div class="progress-track">
+    <div class="progress-fill" id="progress-fill"></div>
+  </div>
+</header>
+
+<!-- ====================================================
+     STEP 0 – WELCOME
+===================================================== -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">🌴</div>
+      <h1 class="welcome-title">California – Unit Exercises</h1>
+      <p class="welcome-sub">Six interactive exercises on California: reading comprehension, grammar and vocabulary. Work through them in order.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">📖</div><strong>Ex 12 – Reading</strong>Before you read: California's economy</div>
+      <div class="ov-card locked"><div class="ov-icon">💬</div><strong>Ex 13 – Comprehension</strong>Understanding the text</div>
+      <div class="ov-card locked"><div class="ov-icon">📝</div><strong>Ex 14 – Articles</strong>The / a/an / no article</div>
+      <div class="ov-card locked"><div class="ov-icon">🔤</div><strong>Ex 15 – Abstract nouns</strong>Article or no article?</div>
+      <div class="ov-card locked"><div class="ov-icon">🛹</div><strong>Ex 18 – Reading</strong>Trendsetting California</div>
+      <div class="ov-card locked"><div class="ov-icon">🌾</div><strong>Ex 19 – Grammar</strong>Collective nouns</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. 11b" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     STEP 1 – EXERCISE 12: Before You Read
+===================================================== -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise 12</span>
+    <h2 class="ex-title">Before You Read</h2>
+    <p class="ex-subtitle">Study the chart below, then read the text about California.</p>
+
+    <!-- GDP Chart -->
+    <div class="card">
+      <div class="card-title">GDP Comparison: California vs Selected Economies (2023)</div>
+      <p style="font-size:.8rem;color:var(--muted);margin-bottom:1rem;">GDP in USD trillion. <em>Source: World Bank / IMF estimates</em></p>
+      <div class="chart-wrap" id="gdp-chart">
+        <div class="bar-row"><div class="bar-label">USA</div><div class="bar-outer"><div class="bar-inner bar-country" style="width:100%">$27.4tn</div></div></div>
+        <div class="bar-row"><div class="bar-label">China</div><div class="bar-outer"><div class="bar-inner bar-country" style="width:63%">$17.7tn</div></div></div>
+        <div class="bar-row"><div class="bar-label">Germany</div><div class="bar-outer"><div class="bar-inner bar-country-2" style="width:15%">$4.4tn</div></div></div>
+        <div class="bar-row"><div class="bar-label" style="font-weight:700;color:var(--gold)">California ★</div><div class="bar-outer"><div class="bar-inner bar-california" style="width:13%">$3.9tn</div></div></div>
+        <div class="bar-row"><div class="bar-label">UK</div><div class="bar-outer"><div class="bar-inner bar-country-2" style="width:11%">$3.1tn</div></div></div>
+        <div class="bar-row"><div class="bar-label">France</div><div class="bar-outer"><div class="bar-inner bar-country-2" style="width:10%">$2.9tn</div></div></div>
+        <div class="bar-row"><div class="bar-label">Brazil</div><div class="bar-outer"><div class="bar-inner bar-country" style="width:7%">$2.1tn</div></div></div>
+      </div>
+      <p style="font-size:.8rem;color:var(--muted);margin-top:.75rem;">★ California is a US state, not an independent country – but its economy would rank 5th in the world if it were.</p>
+    </div>
+
+    <!-- Reading Text -->
+    <div class="card">
+      <div class="card-title">Reading: California – America's Golden State?</div>
+      <div class="reading-text">
+        <p>With a GDP of nearly $3.9 trillion, California would rank as the world's fifth-largest economy if it were an independent nation – ahead of the UK and France, and not far behind Germany. But how did this sun-drenched state on America's Pacific coast become so extraordinarily wealthy?</p>
+        <p>The story of California's rise begins with the <strong>Gold Rush of 1848</strong>, when gold was discovered at Sutter's Mill in the foothills of the Sierra Nevada. The news spread rapidly, and within a year hundreds of thousands of prospectors had flooded into the territory from across the United States and beyond. Even after the gold ran out, many of them stayed. California's population exploded, and with it came roads, railways, businesses and a culture of risk-taking and reinvention that has shaped the state ever since.</p>
+        <p>Today, California's economic strength rests on three pillars: <strong>technology, agriculture and immigration</strong>. Silicon Valley, located to the south of San Francisco Bay, is home to the world's most powerful technology companies, including Apple, Google, Meta and Netflix. The combined market value of these companies runs into the trillions of dollars, and they attract top engineers and entrepreneurs from around the globe.</p>
+        <p>California's Central Valley, meanwhile, is one of the most productive agricultural regions on earth. It produces more than a third of the United States' vegetables and nearly two-thirds of its fruit and nuts. Much of this output depends on <strong>immigrant labour</strong>, particularly from Mexico and Central America. California's Hispanic community – now the state's largest ethnic group – contributes enormously to its economic and cultural life.</p>
+        <p>Yet California is far from a paradise for all its inhabitants. The state has some of the <strong>highest levels of income inequality</strong> in the United States. Homelessness has reached crisis levels in cities like Los Angeles and San Francisco, where property prices have made housing unaffordable for millions. Persistent <strong>drought and climate change</strong> are threatening agricultural output, and catastrophic wildfires have become a regular feature of life. And the millions of undocumented immigrants who form the backbone of the farm labour force live under the constant threat of deportation.</p>
+        <p>Is California truly a 'golden state'? The answer depends very much on who you ask – and where they stand in the economic hierarchy.</p>
+      </div>
+    </div>
+
+    <!-- Before-you-read question -->
+    <div class="card">
+      <div class="card-title">Before you read: your prediction</div>
+      <div class="form-group">
+        <label class="form-label" for="ex12-q1">Looking at the GDP chart, what surprises you most? What does it tell you about California?</label>
+        <textarea class="form-textarea" id="ex12-q1" placeholder="Write 2–3 sentences..." rows="3"></textarea>
+      </div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <button class="btn btn-primary btn-block" onclick="nextStep(1)">Continue to Exercise 13 →</button>
+  </div>
+</section>
+
+<!-- ====================================================
+     STEP 2 – EXERCISE 13: Understanding the Text
+===================================================== -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise 13</span>
+    <h2 class="ex-title">Understanding the Text</h2>
+    <p class="ex-subtitle">Answer the following questions in your own words. Use full sentences.</p>
+
+    <div class="card">
+      <div class="form-group">
+        <label class="form-label" for="ex13-a">a) How has California become one of the most successful regions in the world? Write a brief summary of the main reasons given in the text.</label>
+        <textarea class="form-textarea" id="ex13-a" placeholder="Write 3–5 sentences..." rows="5"></textarea>
+        <div class="form-hint">Aim for a concise summary – do not simply copy sentences from the text.</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ex13-b">b) Is California really a 'golden state' for all its inhabitants? Give reasons for and against, based on the text.</label>
+        <textarea class="form-textarea" id="ex13-b" placeholder="Write 3–5 sentences..." rows="5"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ex13-c">c) What might be the consequences if the US government built a wall along the border to stop illegal immigration? Think about the effects on California's economy and society.</label>
+        <textarea class="form-textarea" id="ex13-c" placeholder="Write 3–5 sentences, using evidence from the text..." rows="5"></textarea>
+      </div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <button class="btn btn-primary btn-block" onclick="nextStep(2)">Continue to Exercise 14 →</button>
+  </div>
+</section>
+
+<!-- ====================================================
+     STEP 3 – EXERCISE 14: Articles Gap-Fill
+===================================================== -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise 14</span>
+    <h2 class="ex-title">Language: Using <em>the</em>, <em>a/an</em> or No Article</h2>
+    <p class="ex-subtitle">Fill in the gaps with <strong>the</strong>, <strong>a</strong>, <strong>an</strong> or <strong>–</strong> (no article). Select your answer from each dropdown.</p>
+
+    <div class="card">
+      <div class="card-title">Text: Silicon Valley</div>
+      <div class="gap-text" id="gap-text">
+        <!-- Rendered by JS -->
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-outline btn-sm" onclick="checkArticles()">Check Answers</button>
+        <button class="btn btn-outline btn-sm" onclick="resetArticles()">Reset</button>
+      </div>
+      <div id="article-feedback" class="feedback"></div>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <button class="btn btn-primary btn-block" onclick="nextStep(3)">Continue to Exercise 15 →</button>
+  </div>
+</section>
+
+<!-- ====================================================
+     STEP 4 – EXERCISE 15: Abstract Nouns
+===================================================== -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise 15</span>
+    <h2 class="ex-title">Abstract Nouns: Article or No Article?</h2>
+    <p class="ex-subtitle">Study the examples, find the rule, and write your own sentences.</p>
+
+    <!-- Examples for rule-finding -->
+    <div class="card">
+      <div class="card-title">a) Study these sentences and find the rule</div>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:1rem;">Some abstract nouns take <em>the</em>; some take no article at all. What is the difference? Look at the examples below.</p>
+      <ul class="example-list">
+        <li><em><em>Success</em> is important in modern society.</em> <span style="font-size:.78rem;color:var(--muted)">(general / abstract idea)</span></li>
+        <li><em><em>The success</em> of Apple's iPhone changed the world.</em> <span style="font-size:.78rem;color:var(--muted)">(specific success)</span></li>
+        <li><em><em>Technology</em> has transformed agriculture.</em> <span style="font-size:.78rem;color:var(--muted)">(general concept)</span></li>
+        <li><em><em>The technology</em> used in Silicon Valley is cutting-edge.</em> <span style="font-size:.78rem;color:var(--muted)">(specific technology)</span></li>
+        <li><em><em>Climate</em> affects every aspect of farming.</em> <span style="font-size:.78rem;color:var(--muted)">(general concept)</span></li>
+        <li><em><em>The climate</em> in California is warm and dry.</em> <span style="font-size:.78rem;color:var(--muted)">(specific climate of a place)</span></li>
+      </ul>
+      <div class="form-group" style="margin-top:1rem">
+        <label class="form-label" for="ex15-rule">Write the rule in your own words:</label>
+        <textarea class="form-textarea" id="ex15-rule" placeholder="Abstract nouns take no article when..." rows="3"></textarea>
+      </div>
+    </div>
+
+    <!-- Write sentences -->
+    <div class="card">
+      <div class="card-title">b) Write two sentences for each word – one with <em>the</em>, one without any article</div>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:1.25rem;">Use the words below. Your sentences should show the difference in meaning.</p>
+
+      <div id="abstract-noun-fields">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- Explain the difference -->
+    <div class="card">
+      <div class="card-title">c) Explain in your own words</div>
+      <div class="form-group">
+        <label class="form-label" for="ex15-explain">How do abstract nouns differ from concrete nouns in terms of article use? Why do abstract nouns sometimes need <em>the</em> and sometimes no article at all?</label>
+        <textarea class="form-textarea" id="ex15-explain" placeholder="Write 2–4 sentences..." rows="4"></textarea>
+      </div>
+    </div>
+
+    <div id="step4-error" class="feedback err"></div>
+    <button class="btn btn-primary btn-block" onclick="nextStep(4)">Continue to Exercise 18 →</button>
+  </div>
+</section>
+
+<!-- ====================================================
+     STEP 5 – EXERCISE 18: Trendsetting California
+===================================================== -->
+<section id="step-5" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise 18</span>
+    <h2 class="ex-title">Trendsetting California</h2>
+    <p class="ex-subtitle">Read the text, then answer the questions below.</p>
+
+    <div class="card">
+      <div class="card-title">Reading: California Sets the Trends</div>
+      <div class="reading-text">
+        <p>California has long been at the forefront of global trends – in fashion, sport, technology and lifestyle. Many of the things we take for granted today were born on the sun-soaked streets and beaches of the Golden State.</p>
+        <p>Take <strong>denim jeans</strong>, for example. In 1853, a Bavarian-born immigrant named Levi Strauss arrived in San Francisco during the Gold Rush. Seeing the need for durable work clothing, he began selling heavy-duty canvas trousers to miners. Later, he patented the idea of reinforcing the pockets with metal rivets, and the blue jeans we know today were born. Levi Strauss &amp; Co. is still headquartered in San Francisco.</p>
+        <p><strong>Skateboarding</strong> is another Californian invention. It emerged in the 1950s when surfers in Santa Monica and Venice Beach began attaching roller-skate wheels to wooden boards so they could 'surf' on land when the waves were flat. By the 1970s, skateboarding had become a global phenomenon, complete with purpose-built skateparks and professional competitions.</p>
+        <p>The modern <strong>fitness and aerobics</strong> movement also has its roots in California. In the 1970s and 80s, studios in Los Angeles popularised aerobic exercise classes – workouts set to upbeat music, designed to improve cardiovascular fitness. The trend spread worldwide and gave rise to the global gym and fitness industry we know today.</p>
+        <p>More recently, California was the birthplace of <strong>inline skating</strong> as a mainstream sport. Developed in the 1980s as a cross-training tool for ice hockey players, inline skates were popularised in California and quickly spread across the world, becoming a craze of the 1990s.</p>
+        <p>Whether it is technology, fashion, sport or food, California has an extraordinary ability to create ideas that go on to conquer the world. Some analysts attribute this to the state's unique combination of diversity, sunshine, risk-taking culture and sheer economic power.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Comprehension</div>
+      <div class="form-group">
+        <label class="form-label" for="ex18-a">a) Choose TWO of the trends described in the text and explain in your own words how they originated in California.</label>
+        <textarea class="form-textarea" id="ex18-a" placeholder="Trend 1: ...\nTrend 2: ..." rows="5"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ex18-b">b) According to the final paragraph, why is California so good at creating global trends? Do you agree? Give your opinion.</label>
+        <textarea class="form-textarea" id="ex18-b" placeholder="Write 3–5 sentences..." rows="4"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ex18-c">c) Can you think of any other trend, product or idea that comes from California? Write one or two sentences.</label>
+        <textarea class="form-textarea" id="ex18-c" placeholder="e.g. I think ... also comes from California because ..." rows="3"></textarea>
+      </div>
+    </div>
+
+    <div id="step5-error" class="feedback err"></div>
+    <button class="btn btn-primary btn-block" onclick="nextStep(5)">Continue to Exercise 19 →</button>
+  </div>
+</section>
+
+<!-- ====================================================
+     STEP 6 – EXERCISE 19: My Life as a Farm Worker
+===================================================== -->
+<section id="step-6" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise 19</span>
+    <h2 class="ex-title">My Life as a Farm Worker</h2>
+    <p class="ex-subtitle">Read the personal account, then complete the grammar tasks below.</p>
+
+    <div class="card">
+      <div class="card-title">Reading: Personal Account</div>
+      <div class="reading-text">
+        <p>My name is Miguel. I came to California from Oaxaca, Mexico, twelve years ago with a <strong>group</strong> of men from my village. We had heard there was work in the fields of the Central Valley, and we were right.</p>
+        <p>For the first few years, I worked with a <strong>crew</strong> of about twenty people, picking strawberries near Watsonville. The work was backbreaking – we would start before dawn and work until dusk. Around us, a <strong>flock</strong> of starlings would follow the harvesting machines, eating the insects that the machinery disturbed.</p>
+        <p>I have since moved to the Napa Valley, where I work on a vineyard during the harvest season. The owner employs a large <strong>team</strong> of workers and treats us well. At night, we sleep in a <strong>cluster</strong> of cabins at the edge of the vineyard. In the morning, a <strong>herd</strong> of cattle from the neighbouring farm sometimes wanders past the fence.</p>
+        <p>Life here is not easy. A <strong>gang</strong> of young men from my home town were recently deported, leaving their families behind. I live with the fear that the same could happen to me. But I also feel pride: without people like us, the <strong>harvest</strong> of this rich land – and the wealth of California – would not be possible.</p>
+      </div>
+    </div>
+
+    <!-- Collective nouns task -->
+    <div class="card">
+      <div class="card-title">a) Collective nouns: find them in the text</div>
+      <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem;">Eight collective nouns have been highlighted in bold in the text. List them below and write what each one refers to (e.g. <em>a flock of birds</em>).</p>
+      <div id="collective-noun-fields">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- British vs American English -->
+    <div class="card">
+      <div class="card-title">b) British vs American English: collective nouns</div>
+      <div class="form-group">
+        <label class="form-label">Look at these two sentences. Which is British English and which is American English? How do you know?</label>
+        <ul class="example-list" style="margin:.75rem 0">
+          <li><em>The team <em>are</em> playing really well this season.</em></li>
+          <li><em>The team <em>is</em> playing really well this season.</em></li>
+        </ul>
+        <textarea class="form-textarea" id="ex19-bre-ame" placeholder="Sentence 1 is ... English because ...\nSentence 2 is ... English because ..." rows="4"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ex19-rule">Write the general rule for collective nouns in British and American English:</label>
+        <textarea class="form-textarea" id="ex19-rule" placeholder="In British English, collective nouns can take ... In American English, they usually take ..." rows="3"></textarea>
+      </div>
+    </div>
+
+    <div id="step6-error" class="feedback err"></div>
+    <button class="btn btn-gold btn-block" onclick="nextStep(6)">Review &amp; Submit →</button>
+  </div>
+</section>
+
+<!-- ====================================================
+     STEP 7 – REVIEW & SUBMIT
+===================================================== -->
+<section id="step-7" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+
+    <div id="summary-container">
+      <!-- Built by JS -->
+    </div>
+
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to open your email app with your answers pre-filled. Your teacher will receive them at <strong>shaun.trezise@docemus.de</strong>.</p>
+      <button class="btn btn-gold" style="font-size:1rem;padding:.85rem 2rem" onclick="submitByEmail()">📧 Send to Teacher</button>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:.75rem">This opens your email app. If it doesn't work, use the copy button below.</p>
+      <br>
+      <button class="btn btn-outline btn-sm" onclick="copyAnswers()">📋 Copy all answers</button>
+      <div id="copy-confirm" style="font-size:.8rem;color:var(--green);margin-top:.5rem;display:none">✓ Copied to clipboard!</div>
+    </div>
+  </div>
+</section>
+
+<script>
+/* =============================================
+   STATE
+============================================= */
+const state = {
+  name:  '',
+  class: '',
+  ex12:  {},
+  ex13:  {},
+  ex14:  {}, // article answers keyed 1-14
+  ex15:  {},
+  ex18:  {},
+  ex19:  {}
+};
+
+let currentStep = 0;
+const TOTAL_STEPS = 7; // 0 = welcome, 1–6 = exercises, 7 = submit
+
+/* =============================================
+   ARTICLE GAP DATA
+============================================= */
+const gapSegments = [
+  { type:'text', val:'Silicon Valley is ' },
+  { type:'gap',  id:1,  ans:'an' },
+  { type:'text', val:' area in ' },
+  { type:'gap',  id:2,  ans:'the' },
+  { type:'text', val:' south of San Francisco Bay that has become one of ' },
+  { type:'gap',  id:3,  ans:'the' },
+  { type:'text', val:' most important technology centres in ' },
+  { type:'gap',  id:4,  ans:'the' },
+  { type:'text', val:' world. ' },
+  { type:'gap',  id:5,  ans:'The' },
+  { type:'text', val:' name comes from ' },
+  { type:'gap',  id:6,  ans:'the' },
+  { type:'text', val:' silicon used to make computer chips. Since ' },
+  { type:'gap',  id:7,  ans:'the' },
+  { type:'text', val:' 1970s, companies such as Apple and Google have made this region ' },
+  { type:'gap',  id:8,  ans:'a' },
+  { type:'text', val:' symbol of American ' },
+  { type:'gap',  id:9,  ans:'–' },
+  { type:'text', val:' innovation and entrepreneurship. Today, Silicon Valley generates ' },
+  { type:'gap',  id:10, ans:'an' },
+  { type:'text', val:' annual revenue of over $275 billion. However, not everyone benefits equally: ' },
+  { type:'gap',  id:11, ans:'the' },
+  { type:'text', val:' gap between well-paid tech workers and low-income service staff has grown dramatically, and ' },
+  { type:'gap',  id:12, ans:'the' },
+  { type:'text', val:' average rent for ' },
+  { type:'gap',  id:13, ans:'a' },
+  { type:'text', val:' small apartment now exceeds $3,000 per month. ' },
+  { type:'gap',  id:14, ans:'The' },
+  { type:'text', val:' future of Silicon Valley may depend on how it addresses these inequalities.' }
+];
+
+const articleOptions = ['–', 'a', 'an', 'the', 'The', 'A', 'An'];
+
+/* =============================================
+   ABSTRACT NOUNS DATA
+============================================= */
+const abstractNouns = ['Income', 'Success', 'Jobs', 'Technology', 'Drought', 'Climate'];
+
+/* =============================================
+   COLLECTIVE NOUNS DATA (for the input fields)
+============================================= */
+const collectiveNounBlanks = 8; // group, crew, flock, team, cluster, herd, gang, harvest
+
+/* =============================================
+   RENDER DYNAMIC CONTENT
+============================================= */
+function renderGapText() {
+  const container = document.getElementById('gap-text');
+  let html = '';
+  gapSegments.forEach(seg => {
+    if (seg.type === 'text') {
+      html += seg.val;
+    } else {
+      html += `<sup class="gap-num">${seg.id}</sup><select class="gap-select" id="gap-${seg.id}" onchange="saveGapAnswer(${seg.id})">`;
+      html += `<option value="">___</option>`;
+      articleOptions.forEach(opt => {
+        html += `<option value="${opt}">${opt === '–' ? '– (no article)' : opt}</option>`;
+      });
+      html += '</select>';
+    }
+  });
+  container.innerHTML = html;
+}
+
+function saveGapAnswer(id) {
+  state.ex14[`gap${id}`] = document.getElementById(`gap-${id}`).value;
+}
+
+function checkArticles() {
+  let correct = 0, wrong = 0, empty = 0;
+  gapSegments.filter(s => s.type === 'gap').forEach(seg => {
+    const sel = document.getElementById(`gap-${seg.id}`);
+    const val = sel.value;
+    if (!val) { empty++; return; }
+    // Normalise: treat 'The'/'the' as same, 'A'/'a' same, 'An'/'an' same
+    const norm = v => v.toLowerCase().replace('–','');
+    if (norm(val) === norm(seg.ans)) {
+      sel.className = 'gap-select gap-correct';
+      correct++;
+    } else {
+      sel.className = 'gap-select gap-wrong';
+      wrong++;
+    }
+  });
+  const fb = document.getElementById('article-feedback');
+  fb.classList.add('show');
+  if (empty > 0) {
+    fb.className = 'feedback warn show';
+    fb.textContent = `${correct} correct, ${wrong} wrong. ${empty} gap(s) still unanswered.`;
+  } else if (wrong === 0) {
+    fb.className = 'feedback ok show';
+    fb.textContent = `✓ All ${correct} answers correct! Well done.`;
+  } else {
+    fb.className = 'feedback warn show';
+    fb.textContent = `${correct} correct, ${wrong} incorrect. Check the highlighted gaps and try again.`;
+  }
+}
+
+function resetArticles() {
+  gapSegments.filter(s => s.type === 'gap').forEach(seg => {
+    const sel = document.getElementById(`gap-${seg.id}`);
+    sel.value = '';
+    sel.className = 'gap-select';
+  });
+  const fb = document.getElementById('article-feedback');
+  fb.className = 'feedback';
+  fb.classList.remove('show');
+}
+
+function renderAbstractNounFields() {
+  const container = document.getElementById('abstract-noun-fields');
+  let html = '';
+  abstractNouns.forEach(noun => {
+    html += `
+      <div class="form-group">
+        <div class="form-label" style="margin-bottom:.6rem">
+          <span style="background:var(--blue);color:#fff;border-radius:4px;padding:.15rem .5rem;font-size:.8rem;margin-right:.5rem">${noun}</span>
+        </div>
+        <textarea class="form-textarea" id="noun-${noun.toLowerCase()}" rows="2"
+          placeholder="1) With 'the': The ${noun.toLowerCase()} of ...\n2) Without article: ${noun} is ..."></textarea>
+      </div>`;
+  });
+  container.innerHTML = html;
+}
+
+function renderCollectiveNounFields() {
+  const container = document.getElementById('collective-noun-fields');
+  let html = '';
+  for (let i = 1; i <= collectiveNounBlanks; i++) {
+    html += `
+      <div class="form-group" style="display:flex;gap:.75rem;align-items:flex-start">
+        <span style="background:var(--gold);color:var(--blue);border-radius:50%;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;flex-shrink:0;margin-top:.65rem">${i}</span>
+        <div style="flex:1">
+          <input class="form-input" id="cn-noun-${i}" placeholder="Collective noun (e.g. a crew)" style="margin-bottom:.4rem">
+          <input class="form-input" id="cn-ref-${i}"  placeholder="Refers to (e.g. a group of workers)">
+        </div>
+      </div>`;
+  }
+  container.innerHTML = html;
+}
+
+/* =============================================
+   NAVIGATION
+============================================= */
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById(`step-${n}`).classList.add('active');
+  document.getElementById('progress-fill').style.width = `${Math.round((n / TOTAL_STEPS) * 100)}%`;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  const meta = document.getElementById('header-meta');
+  if (n === 0) {
+    meta.style.display = 'none';
+  } else {
+    meta.style.display = 'block';
+    document.getElementById('header-name').textContent = state.name + (state.class ? ` · ${state.class}` : '');
+    if (n <= 6) {
+      const exNums = ['12','13','14','15','18','19'];
+      document.getElementById('header-step').textContent = `Exercise ${exNums[n-1]} of 6`;
+    } else {
+      document.getElementById('header-step').textContent = 'Submit';
+    }
+  }
+}
+
+function startExercises() {
+  const name  = document.getElementById('inp-name').value.trim();
+  const cls   = document.getElementById('inp-class').value.trim();
+  const err   = document.getElementById('welcome-error');
+  if (!name || !cls) {
+    err.textContent = 'Please enter both your name and your class.';
+    err.classList.add('show');
+    return;
+  }
+  err.classList.remove('show');
+  state.name  = name;
+  state.class = cls;
+  currentStep = 1;
+  showStep(1);
+}
+
+function nextStep(step) {
+  // Validate required fields per step
+  const err = document.getElementById(`step${step}-error`);
+  if (!validateStep(step)) {
+    err.textContent = 'Please answer all required questions before continuing.';
+    err.classList.add('show');
+    return;
+  }
+  err.classList.remove('show');
+  saveStepAnswers(step);
+
+  if (step === 6) {
+    buildSummary();
+    showStep(7);
+  } else {
+    showStep(step + 1);
+  }
+}
+
+function validateStep(step) {
+  switch(step) {
+    case 1: return document.getElementById('ex12-q1').value.trim().length > 0;
+    case 2:
+      return document.getElementById('ex13-a').value.trim().length > 0 &&
+             document.getElementById('ex13-b').value.trim().length > 0 &&
+             document.getElementById('ex13-c').value.trim().length > 0;
+    case 3:
+      // require at least 10 gaps answered
+      let answered = 0;
+      for (let i = 1; i <= 14; i++) {
+        const el = document.getElementById(`gap-${i}`);
+        if (el && el.value) answered++;
+      }
+      return answered >= 10;
+    case 4:
+      return document.getElementById('ex15-rule').value.trim().length > 0 &&
+             document.getElementById('ex15-explain').value.trim().length > 0;
+    case 5:
+      return document.getElementById('ex18-a').value.trim().length > 0 &&
+             document.getElementById('ex18-b').value.trim().length > 0;
+    case 6:
+      return document.getElementById('ex19-bre-ame').value.trim().length > 0 &&
+             document.getElementById('ex19-rule').value.trim().length > 0;
+    default: return true;
+  }
+}
+
+function saveStepAnswers(step) {
+  switch(step) {
+    case 1:
+      state.ex12.q1 = document.getElementById('ex12-q1').value.trim();
+      break;
+    case 2:
+      state.ex13.a = document.getElementById('ex13-a').value.trim();
+      state.ex13.b = document.getElementById('ex13-b').value.trim();
+      state.ex13.c = document.getElementById('ex13-c').value.trim();
+      break;
+    case 3:
+      for (let i = 1; i <= 14; i++) {
+        const el = document.getElementById(`gap-${i}`);
+        state.ex14[`gap${i}`] = el ? el.value : '';
+      }
+      break;
+    case 4:
+      state.ex15.rule = document.getElementById('ex15-rule').value.trim();
+      abstractNouns.forEach(n => {
+        state.ex15[n.toLowerCase()] = document.getElementById(`noun-${n.toLowerCase()}`).value.trim();
+      });
+      state.ex15.explain = document.getElementById('ex15-explain').value.trim();
+      break;
+    case 5:
+      state.ex18.a = document.getElementById('ex18-a').value.trim();
+      state.ex18.b = document.getElementById('ex18-b').value.trim();
+      state.ex18.c = document.getElementById('ex18-c').value.trim();
+      break;
+    case 6:
+      // Collective nouns
+      state.ex19.nouns = [];
+      for (let i = 1; i <= collectiveNounBlanks; i++) {
+        state.ex19.nouns.push({
+          noun: document.getElementById(`cn-noun-${i}`).value.trim(),
+          ref:  document.getElementById(`cn-ref-${i}`).value.trim()
+        });
+      }
+      state.ex19.breAme = document.getElementById('ex19-bre-ame').value.trim();
+      state.ex19.rule   = document.getElementById('ex19-rule').value.trim();
+      break;
+  }
+}
+
+/* =============================================
+   SUMMARY
+============================================= */
+function buildSummary() {
+  const c = document.getElementById('summary-container');
+
+  // Article answers
+  const articleAnswers = [];
+  for (let i = 1; i <= 14; i++) {
+    articleAnswers.push(`Gap ${i}: ${state.ex14[`gap${i}`] || '(blank)'}`);
+  }
+
+  // Noun sentences
+  const nounSentences = abstractNouns.map(n => `${n}: ${state.ex15[n.toLowerCase()] || '(blank)'}`).join('\n');
+
+  // Collective nouns
+  const cnLines = (state.ex19.nouns || []).map((row, i) => `${i+1}. ${row.noun || '—'} → ${row.ref || '—'}`).join('\n');
+
+  const rows = [
+    { ex:'Exercise 12', q:'Before you read: What surprises you about the GDP chart?', a: state.ex12.q1 },
+    { ex:'Exercise 13a', q:'Summarise California\'s economic success', a: state.ex13.a },
+    { ex:'Exercise 13b', q:'Is California a "golden state" for all?', a: state.ex13.b },
+    { ex:'Exercise 13c', q:'Consequences of a border wall?', a: state.ex13.c },
+    { ex:'Exercise 14', q:'Article gap-fill (gaps 1–14)', a: articleAnswers.join('\n') },
+    { ex:'Exercise 15a', q:'The rule for abstract nouns + articles', a: state.ex15.rule },
+    { ex:'Exercise 15b', q:'Sentences using abstract nouns', a: nounSentences },
+    { ex:'Exercise 15c', q:'Abstract nouns explained', a: state.ex15.explain },
+    { ex:'Exercise 18a', q:'Two California trends explained', a: state.ex18.a },
+    { ex:'Exercise 18b', q:'Why California sets trends (your opinion)', a: state.ex18.b },
+    { ex:'Exercise 18c', q:'Another California trend', a: state.ex18.c },
+    { ex:'Exercise 19a', q:'Collective nouns found in the text', a: cnLines },
+    { ex:'Exercise 19b', q:'British vs American English – collective nouns', a: state.ex19.breAme },
+    { ex:'Exercise 19 rule', q:'General rule for collective nouns', a: state.ex19.rule }
+  ];
+
+  let html = `<div class="submit-summary">
+    <div class="summary-row">
+      <div class="summary-ex">Student</div>
+      <div class="summary-q">${state.name} · ${state.class}</div>
+    </div>`;
+  rows.forEach(row => {
+    html += `<div class="summary-row">
+      <div class="summary-ex">${row.ex}</div>
+      <div class="summary-q">${row.q}</div>
+      <div class="summary-a">$y(row.a || '(no answer)').replace(/</g,'&lt;')}</div>
+    </div>`;
+  });
+  html += '</div>';
+  c.innerHTML = html;
+}
+
+function buildEmailBody() {
+  const articleAnswers = [];
+  for (let i = 1; i <= 14; i++) {
+    articleAnswers.push(`Gap ${i}: ${state.ex14[`gap${i}`] || '(blank)'}`);
+  }
+  const nounSentences = abstractNouns.map(n => `${n}: ${state.ex15[n.toLowerCase()] || '(blank)'}`).join('\n');
+  const cnLines = (state.ex19.nouns || []).map((row, i) => `${i+1}. ${row.noun || '—'} → ${row.ref || '—'}`).join('\n');
+
+  return `CALIFORNIA EXERCISES – SUBMISSION
+Student: ${state.name}
+Class:   ${state.class}
+Date:    ${new Date().toLocaleDateString('en-GB')}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+EXERCISE 12 – Before You Read
+━━━━━━━━━━━━━━━━━━━━━━━━━
+What surprises you about the GDP chart?
+${state.ex12.q1 || '(no answer)'}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+EXERCISE 13 – Comprehension
+━━━━━━━━━━━━━━━━━━━━━━━━━
+a) Summarise California's success:
+${state.ex13.a || '(no answer)'}
+
+b) Is California a "golden state" for all?
+${state.ex13.b || '(no answer)'}
+
+c) Consequences of a border wall:
+${state.ex13.c || '(no answer)'}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+EXERCISE 14 – Article Gap-Fill
+━━━━━━━━━━━━━━━━━━━━━━━━━
+${articleAnswers.join('\n')}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+EXERCISE 15 – Abstract Nouns
+━━━━━━━━━━━━━━━━━━━━━━━━━
+a) The rule:
+${state.ex15.rule || '(no answer)'}
+
+b) Sentences:
+${nounSentences}
+
+c) Explanation:
+${state.ex15.explain || '(no answer)'}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+EXERCISE 18 – Trendsetting California
+━━━━━━━━━━━━━━━━━━━━━━━━━
+a) Two trends explained:
+${state.ex18.a || '(no answer)'}
+
+b) Why California sets trends (opinion):
+${state.ex18.b || '(no answer)'}
+
+c) Another Californian trend:
+${state.ex18.c || '(no answer)'}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+EXERCISE 19 – Collective Nouns
+━━━━━━━━━━━━━━━━━━━━━━━━━
+a) Collective nouns found:
+${cnLines}
+
+b) British vs American English:
+${state.ex19.breAme || '(no answer)'}
+
+General rule:
+${state.ex19.rule || '(no answer)'}`;
+}
+
+function submitByEmail() {
+  const body = buildEmailBody();
+  const subject = encodeURIComponent(`California Exercises – ${state.name} – ${state.class}`);
+  const encodedBody = encodeURIComponent(body);
+  // mailto has character limits; split if needed
+  window.location.href = `mailto:shaun.trezise@docemus.de?subject=${subject}&body=${encodedBody}`;
+}
+
+function copyAnswers() {
+  const body = buildEmailBody();
+  navigator.clipboard.writeText(body).then(() => {
+    const el = document.getElementById('copy-confirm');
+    el.style.display = 'block';
+    setTimeout(() => el.style.display = 'none', 3000);
+  }).catch(() => {
+    prompt('Copy this text:', body);
+  });
+}
+
+/* =============================================
+   INIT
+============================================= */
+document.addEventListener('DOMContentLoaded', () => {
+  renderGapText();
+  renderAbstractNounFields();
+  renderCollectiveNounFields();
+  showStep(0);
+});
+</script>
+</body>
+</html>
