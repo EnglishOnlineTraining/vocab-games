@@ -237,7 +237,7 @@
     .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
     .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
 
-    /* ===== WEBCOME SCREEN ===== */
+    /* ===== WELCOME SCREEN ===== */
     .welcome-hero {
       text-align: center;
       padding: 2.5rem 1rem 2rem;
@@ -418,7 +418,10 @@
     </div>
 
     <div id="step1-error" class="feedback err"></div>
-    <button class="btn btn-primary btn-block" onclick="nextStep(1)">Continue to Exercise 13 →</button>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise 13 →</button>
+    </div>
   </div>
 </section>
 
@@ -448,7 +451,10 @@
     </div>
 
     <div id="step2-error" class="feedback err"></div>
-    <button class="btn btn-primary btn-block" onclick="nextStep(2)">Continue to Exercise 14 →</button>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise 14 →</button>
+    </div>
   </div>
 </section>
 
@@ -474,7 +480,10 @@
     </div>
 
     <div id="step3-error" class="feedback err"></div>
-    <button class="btn btn-primary btn-block" onclick="nextStep(3)">Continue to Exercise 15 →</button>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise 15 →</button>
+    </div>
   </div>
 </section>
 
@@ -525,7 +534,10 @@
     </div>
 
     <div id="step4-error" class="feedback err"></div>
-    <button class="btn btn-primary btn-block" onclick="nextStep(4)">Continue to Exercise 18 →</button>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(4)">Continue to Exercise 18 →</button>
+    </div>
   </div>
 </section>
 
@@ -567,7 +579,10 @@
     </div>
 
     <div id="step5-error" class="feedback err"></div>
-    <button class="btn btn-primary btn-block" onclick="nextStep(5)">Continue to Exercise 19 →</button>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(5)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(5)">Continue to Exercise 19 →</button>
+    </div>
   </div>
 </section>
 
@@ -617,7 +632,10 @@
     </div>
 
     <div id="step6-error" class="feedback err"></div>
-    <button class="btn btn-gold btn-block" onclick="nextStep(6)">Review &amp; Submit →</button>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(6)">← Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(6)">Review &amp; Submit →</button>
+    </div>
   </div>
 </section>
 
@@ -814,23 +832,84 @@ function renderCollectiveNounFields() {
    NAVIGATION
 ============================================= */
 function showStep(n) {
-  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
-  document.getElementById(`step-${n}`).classList.add('active');
-  document.getElementById('progress-fill').style.width = `${Math.round((n / TOTAL_STEPS) * 100)}%`;
+  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('step-' + n).classList.add('active');
+  document.getElementById('progress-fill').style.width = Math.round((n / TOTAL_STEPS) * 100) + '%';
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  const meta = document.getElementById('header-meta');
+  // Restore saved answers into the form fields
+  restoreStepAnswers(n);
+
+  var meta = document.getElementById('header-meta');
   if (n === 0) {
     meta.style.display = 'none';
   } else {
     meta.style.display = 'block';
-    document.getElementById('header-name').textContent = state.name + (state.class ? ` · ${state.class}` : '');
+    document.getElementById('header-name').textContent = state.name + (state.class ? ' - ' + state.class : '');
     if (n <= 6) {
-      const exNums = ['12','13','14','15','18','19'];
-      document.getElementById('header-step').textContent = `Exercise ${exNums[n-1]} of 6`;
+      var exNums = ['12','13','14','15','18','19'];
+      document.getElementById('header-step').textContent = 'Exercise ' + exNums[n-1] + ' of 6';
     } else {
       document.getElementById('header-step').textContent = 'Submit';
     }
+  }
+}
+
+function prevStep(step) {
+  // Save whatever is currently in the fields before navigating back
+  saveStepAnswers(step);
+  // Clear any validation error
+  var err = document.getElementById('step' + step + '-error');
+  if (err) err.classList.remove('show');
+  showStep(step - 1);
+}
+
+function restoreStepAnswers(step) {
+  var el;
+  switch(step) {
+    case 1:
+      el = document.getElementById('ex12-q1');
+      if (el && state.ex12.q1 !== undefined) el.value = state.ex12.q1;
+      break;
+    case 2:
+      el = document.getElementById('ex13-a'); if (el && state.ex13.a !== undefined) el.value = state.ex13.a;
+      el = document.getElementById('ex13-b'); if (el && state.ex13.b !== undefined) el.value = state.ex13.b;
+      el = document.getElementById('ex13-c'); if (el && state.ex13.c !== undefined) el.value = state.ex13.c;
+      break;
+    case 3:
+      for (var i = 1; i <= 14; i++) {
+        el = document.getElementById('gap-' + i);
+        var key = 'gap' + i;
+        if (el && state.ex14[key] !== undefined) el.value = state.ex14[key];
+      }
+      break;
+    case 4:
+      el = document.getElementById('ex15-rule');
+      if (el && state.ex15.rule !== undefined) el.value = state.ex15.rule;
+      abstractNouns.forEach(function(n) {
+        var f = document.getElementById('noun-' + n.toLowerCase());
+        if (f && state.ex15[n.toLowerCase()] !== undefined) f.value = state.ex15[n.toLowerCase()];
+      });
+      el = document.getElementById('ex15-explain');
+      if (el && state.ex15.explain !== undefined) el.value = state.ex15.explain;
+      break;
+    case 5:
+      el = document.getElementById('ex18-a'); if (el && state.ex18.a !== undefined) el.value = state.ex18.a;
+      el = document.getElementById('ex18-b'); if (el && state.ex18.b !== undefined) el.value = state.ex18.b;
+      el = document.getElementById('ex18-c'); if (el && state.ex18.c !== undefined) el.value = state.ex18.c;
+      break;
+    case 6:
+      if (state.ex19.nouns) {
+        state.ex19.nouns.forEach(function(row, i) {
+          var ne = document.getElementById('cn-noun-' + (i + 1));
+          var re = document.getElementById('cn-ref-'  + (i + 1));
+          if (ne) ne.value = row.noun || '';
+          if (re) re.value = row.ref  || '';
+        });
+      }
+      el = document.getElementById('ex19-bre-ame'); if (el && state.ex19.breAme !== undefined) el.value = state.ex19.breAme;
+      el = document.getElementById('ex19-rule');    if (el && state.ex19.rule   !== undefined) el.value = state.ex19.rule;
+      break;
   }
 }
 
@@ -941,6 +1020,15 @@ function saveStepAnswers(step) {
 }
 
 /* =============================================
+   HTML ESCAPE HELPER
+============================================= */
+function esc(str) {
+  const d = document.createElement('div');
+  d.textContent = String(str == null ? '' : str);
+  return d.innerHTML;
+}
+
+/* =============================================
    SUMMARY
 ============================================= */
 function buildSummary() {
@@ -949,44 +1037,51 @@ function buildSummary() {
   // Article answers
   const articleAnswers = [];
   for (let i = 1; i <= 14; i++) {
-    articleAnswers.push(`Gap ${i}: ${state.ex14[`gap${i}`] || '(blank)'}`);
+    const key = 'gap' + i;
+    articleAnswers.push('Gap ' + i + ': ' + (state.ex14[key] || '(blank)'));
   }
 
   // Noun sentences
-  const nounSentences = abstractNouns.map(n => `${n}: ${state.ex15[n.toLowerCase()] || '(blank)'}`).join('\n');
+  const nounSentences = abstractNouns.map(function(n) {
+    return n + ': ' + (state.ex15[n.toLowerCase()] || '(blank)');
+  }).join('\n');
 
   // Collective nouns
-  const cnLines = (state.ex19.nouns || []).map((row, i) => `${i+1}. ${row.noun || '—'} → ${row.ref || '—'}`).join('\n');
+  const cnLines = (state.ex19.nouns || []).map(function(row, i) {
+    return (i + 1) + '. ' + (row.noun || '-') + ' -> ' + (row.ref || '-');
+  }).join('\n');
 
   const rows = [
-    { ex:'Exercise 12', q:'Before you read: What surprises you about the GDP chart?', a: state.ex12.q1 },
-    { ex:'Exercise 13a', q:'Summarise California\'s economic success', a: state.ex13.a },
-    { ex:'Exercise 13b', q:'Is California a "golden state" for all?', a: state.ex13.b },
-    { ex:'Exercise 13c', q:'Consequences of a border wall?', a: state.ex13.c },
-    { ex:'Exercise 14', q:'Article gap-fill (gaps 1–14)', a: articleAnswers.join('\n') },
-    { ex:'Exercise 15a', q:'The rule for abstract nouns + articles', a: state.ex15.rule },
-    { ex:'Exercise 15b', q:'Sentences using abstract nouns', a: nounSentences },
-    { ex:'Exercise 15c', q:'Abstract nouns explained', a: state.ex15.explain },
-    { ex:'Exercise 18a', q:'Two California trends explained', a: state.ex18.a },
-    { ex:'Exercise 18b', q:'Why California sets trends (your opinion)', a: state.ex18.b },
-    { ex:'Exercise 18c', q:'Another California trend', a: state.ex18.c },
-    { ex:'Exercise 19a', q:'Collective nouns found in the text', a: cnLines },
-    { ex:'Exercise 19b', q:'British vs American English – collective nouns', a: state.ex19.breAme },
-    { ex:'Exercise 19 rule', q:'General rule for collective nouns', a: state.ex19.rule }
+    { ex:'Exercise 12',      q:'Before you read: What surprises you about the GDP chart?', a: state.ex12.q1 },
+    { ex:'Exercise 13a',     q:"Summarise California's economic success",                  a: state.ex13.a },
+    { ex:'Exercise 13b',     q:'Is California a "golden state" for all?',                  a: state.ex13.b },
+    { ex:'Exercise 13c',     q:'Consequences of a border wall?',                           a: state.ex13.c },
+    { ex:'Exercise 14',      q:'Article gap-fill (gaps 1-14)',                             a: articleAnswers.join('\n') },
+    { ex:'Exercise 15a',     q:'The rule for abstract nouns + articles',                   a: state.ex15.rule },
+    { ex:'Exercise 15b',     q:'Sentences using abstract nouns',                           a: nounSentences },
+    { ex:'Exercise 15c',     q:'Abstract nouns explained',                                 a: state.ex15.explain },
+    { ex:'Exercise 18a',     q:'Two California trends explained',                          a: state.ex18.a },
+    { ex:'Exercise 18b',     q:'Why California sets trends (your opinion)',                 a: state.ex18.b },
+    { ex:'Exercise 18c',     q:'Another California trend',                                 a: state.ex18.c },
+    { ex:'Exercise 19a',     q:'Collective nouns found in the text',                       a: cnLines },
+    { ex:'Exercise 19b',     q:'British vs American English - collective nouns',           a: state.ex19.breAme },
+    { ex:'Exercise 19 rule', q:'General rule for collective nouns',                        a: state.ex19.rule }
   ];
 
-  let html = `<div class="submit-summary">
-    <div class="summary-row">
-      <div class="summary-ex">Student</div>
-      <div class="summary-q">${state.name} · ${state.class}</div>
-    </div>`;
-  rows.forEach(row => {
-    html += `<div class="summary-row">
-      <div class="summary-ex">${row.ex}</div>
-      <div class="summary-q">${row.q}</div>
-      <div class="summary-a">$y(row.a || '(no answer)').replace(/</g,'&lt;')}</div>
-    </div>`;
+  var html = '<div class="submit-summary">';
+  html += '<div class="summary-row">';
+  html += '<div class="summary-ex">Student</div>';
+  html += '<div class="summary-q">' + esc(state.name) + ' - ' + esc(state.class) + '</div>';
+  html += '</div>';
+
+  rows.forEach(function(row) {
+    html += '<div class="summary-row">';
+    html += '<div class="summary-ex">' + esc(row.ex) + '</div>';
+    html += '<div class="summary-q">' + esc(row.q) + '</div>';
+    html += '<div class="summary-a">' + esc(row.a || '(no answer)') + '</div>';
+    html += '</div>';
   });
+
   html += '</div>';
   c.innerHTML = html;
 }
@@ -994,25 +1089,30 @@ function buildSummary() {
 function buildEmailBody() {
   const articleAnswers = [];
   for (let i = 1; i <= 14; i++) {
-    articleAnswers.push(`Gap ${i}: ${state.ex14[`gap${i}`] || '(blank)'}`);
+    const key = 'gap' + i;
+    articleAnswers.push('Gap ' + i + ': ' + (state.ex14[key] || '(blank)'));
   }
-  const nounSentences = abstractNouns.map(n => `${n}: ${state.ex15[n.toLowerCase()] || '(blank)'}`).join('\n');
-  const cnLines = (state.ex19.nouns || []).map((row, i) => `${i+1}. ${row.noun || '—'} → ${row.ref || '—'}`).join('\n');
+  const nounSentences = abstractNouns.map(function(n) {
+    return n + ': ' + (state.ex15[n.toLowerCase()] || '(blank)');
+  }).join('\n');
+  const cnLines = (state.ex19.nouns || []).map(function(row, i) {
+    return (i + 1) + '. ' + (row.noun || '-') + ' -> ' + (row.ref || '-');
+  }).join('\n');
 
-  return `CALIFORNIA EXERCISES – SUBMISSION
+  return `CALIFORNIA EXERCISES - SUBMISSION
 Student: ${state.name}
 Class:   ${state.class}
 Date:    ${new Date().toLocaleDateString('en-GB')}
 
-━━━━━━━━━━━━━━━━━━━━━━━━━
-EXERCISE 12 – Before You Read
-━━━━━━━━━━━━━━━━━━━━━━━━━
+-------------------------
+EXERCISE 12 - Before You Read
+-------------------------
 What surprises you about the GDP chart?
 ${state.ex12.q1 || '(no answer)'}
 
-━━━━━━━━━━━━━━━━━━━━━━━━━
-EXERCISE 13 – Comprehension
-━━━━━━━━━━━━━━━━━━━━━━━━━
+-------------------------
+EXERCISE 13 - Comprehension
+-------------------------
 a) Summarise California's success:
 ${state.ex13.a || '(no answer)'}
 
@@ -1022,14 +1122,14 @@ ${state.ex13.b || '(no answer)'}
 c) Consequences of a border wall:
 ${state.ex13.c || '(no answer)'}
 
-━━━━━━━━━━━━━━━━━━━━━━━━━
-EXERCISE 14 – Article Gap-Fill
-━━━━━━━━━━━━━━━━━━━━━━━━━
+-------------------------
+EXERCISE 14 - Article Gap-Fill
+-------------------------
 ${articleAnswers.join('\n')}
 
-━━━━━━━━━━━━━━━━━━━━━━━━━
-EXERCISE 15 – Abstract Nouns
-━━━━━━━━━━━━━━━━━━━━━━━━━
+-------------------------
+EXERCISE 15 - Abstract Nouns
+-------------------------
 a) The rule:
 ${state.ex15.rule || '(no answer)'}
 
@@ -1039,9 +1139,9 @@ ${nounSentences}
 c) Explanation:
 ${state.ex15.explain || '(no answer)'}
 
-━━━━━━━━━━━━━━━━━━━━━━━━━
-EXERCISE 18 – Trendsetting California
-━━━━━━━━━━━━━━━━━━━━━━━━━
+-------------------------
+EXERCISE 18 - Trendsetting California
+-------------------------
 a) Two trends explained:
 ${state.ex18.a || '(no answer)'}
 
@@ -1051,9 +1151,9 @@ ${state.ex18.b || '(no answer)'}
 c) Another Californian trend:
 ${state.ex18.c || '(no answer)'}
 
-━━━━━━━━━━━━━━━━━━━━━━━━━
-EXERCISE 19 – Collective Nouns
-━━━━━━━━━━━━━━━━━━━━━━━━━
+-------------------------
+EXERCISE 19 - Collective Nouns
+-------------------------
 a) Collective nouns found:
 ${cnLines}
 
@@ -1068,8 +1168,13 @@ function submitByEmail() {
   const body = buildEmailBody();
   const subject = encodeURIComponent(`California Exercises – ${state.name} – ${state.class}`);
   const encodedBody = encodeURIComponent(body);
-  // mailto has character limits; split if needed
-  window.location.href = `mailto:shaun.trezise@docemus.de?subject=${subject}&body=${encodedBody}`;
+  // Use a temporary <a> click so the page doesn't navigate away
+  const a = document.createElement('a');
+  a.href = `mailto:shaun.trezise@docemus.de?subject=${subject}&body=${encodedBody}`;
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => document.body.removeChild(a), 100);
 }
 
 function copyAnswers() {
