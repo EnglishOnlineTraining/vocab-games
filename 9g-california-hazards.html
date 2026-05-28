@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>California – Environment &amp; Natural Hazards | englishonline.training</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:    #1a3a5c;
+      --gold:    #c9a227;
+      --gold-lt: #f5e6b0;
+      --teal:    #2b7a78;
+      --red:     #c0392b;
+      --green:   #27ae60;
+      --bg:      #f7f9fc;
+      --card:    #ffffff;
+      --text:    #1d2b3a;
+      --muted:   #6b7a8d;
+      --border:  #dce3ec;
+      --radius:  12px;
+      --shadow:  0 2px 16px rgba(26,58,92,.1);
+      --font:    'Segoe UI', system-ui, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
+
+    .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
+    .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
+    .header-meta { font-size: .78rem; text-align: right; opacity: .9; }
+    .header-meta strong { display: block; color: var(--gold); }
+    .progress-track { height: 6px; background: rgba(255,255,255,.2); }
+    .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
+
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+
+    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
+    .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+    .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
+
+    .reading-text { font-size: .93rem; line-height: 1.85; color: var(--text); }
+    .reading-text p { margin-bottom: .85rem; }
+    .reading-text p:last-child { margin-bottom: 0; }
+    .speaker { font-weight: 700; }
+    .sp-kabc  { color: #1a3a5c; }
+    .sp-mario { color: #27ae60; }
+
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+    .form-input, .form-textarea {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+      padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
+      color: var(--text); background: #fff; transition: border-color .2s;
+    }
+    .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--blue); }
+    .form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+    .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+
+    /* Gap-fill */
+    .gap-text { font-size: .93rem; line-height: 2.6; color: var(--text); }
+    .gap-select {
+      display: inline-block; border: 1.5px solid var(--gold); border-radius: 6px;
+      padding: .18rem .45rem; font-family: var(--font); font-size: .82rem;
+      background: var(--gold-lt); color: var(--blue); cursor: pointer;
+      vertical-align: middle; margin: 0 2px; max-width: 200px;
+    }
+    .gap-select:focus { outline: none; border-color: var(--blue); }
+    .gap-correct { background: #d4edda; border-color: var(--green); color: #155724; }
+    .gap-wrong   { background: #fde8e8; border-color: var(--red);   color: #721c24; }
+    .gap-num { font-size: .68rem; color: var(--muted); vertical-align: super; margin-right: 1px; }
+
+    /* Word bank */
+    .word-bank { background: var(--gold-lt); border: 1.5px solid var(--gold); border-radius: 8px; padding: .75rem 1rem; margin-bottom: 1.25rem; }
+    .word-bank strong { display: block; color: var(--blue); margin-bottom: .5rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; }
+    .word-bank span { display: inline-block; margin: .2rem .3rem; background: var(--blue); color: #fff; border-radius: 4px; padding: .18rem .55rem; font-size: .8rem; font-weight: 600; }
+
+    /* Sentence transformation */
+    .transform-item { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: .85rem; background: #fafbfc; }
+    .transform-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 800; flex-shrink: 0; margin-bottom: .5rem; }
+    .transform-original { font-size: .9rem; color: var(--text); font-style: italic; margin-bottom: .65rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); }
+    .transform-hint { font-size: .75rem; color: var(--muted); margin-top: .3rem; }
+
+    .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
+    .feedback.show { display: block; }
+    .feedback.ok   { background: #d4edda; color: #155724; }
+    .feedback.warn { background: #fff3cd; color: #856404; }
+    .feedback.err  { background: #fde8e8; color: #721c24; }
+
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
+    .btn-primary:hover { background: #15304f; }
+    .btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
+    .btn-gold:hover { background: #b8911f; }
+    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+    .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+    .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
+    .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
+    .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+    .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+    .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; }
+    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
+    .ov-card.locked { opacity: .5; }
+    .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+
+    .hazard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: .5rem; }
+    .hazard-col-title { font-size: .78rem; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: .05em; margin-bottom: .5rem; }
+    .hazard-tag { display: inline-block; padding: .2rem .65rem; border-radius: 4px; font-size: .8rem; font-weight: 600; margin: .2rem 0; }
+
+    .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
+    .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
+    .summary-a  { color: var(--text); white-space: pre-wrap; }
+
+    @media (max-width: 480px) {
+      .ex-title { font-size: 1.25rem; }
+      .btn { padding: .65rem 1.1rem; }
+      .welcome-title { font-size: 1.4rem; }
+      .gap-select { max-width: 150px; font-size: .75rem; }
+      .hazard-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Exercise A of 4</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+
+<!-- ====================================================
+     STEP 0 – WELCOME
+===================================================== -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">🔥</div>
+      <h1 class="welcome-title">California – Environment &amp; Natural Hazards</h1>
+      <p class="welcome-sub">Four exercises on California's environmental challenges: reading comprehension, modal verbs, language practice, and a writing task.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">🎙️</div><strong>Ex A – Reading</strong>Radio interview: Should we be worried?</div>
+      <div class="ov-card locked"><div class="ov-icon">📝</div><strong>Ex B – Grammar</strong>Modal verbs: earthquakes</div>
+      <div class="ov-card locked"><div class="ov-icon">🌿</div><strong>Ex C – Language</strong>Brown is the new green</div>
+      <div class="ov-card locked"><div class="ov-icon">✍️</div><strong>Ex D – Writing</strong>Cause and effect</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. 9b" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     STEP 1 – EXERCISE A: Reading
+===================================================== -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">Should We Be Worried?</h2>
+    <p class="ex-subtitle">Read the radio interview, then answer the comprehension questions below.</p>
+
+    <div class="card">
+      <div class="card-title">Reading: L.A. Talk Radio KABC — Interview with Mario Ramirez</div>
+      <p style="font-size:.82rem;color:var(--muted);margin-bottom:1.1rem;font-style:italic">On its show today, L.A. Talk Radio KABC is speaking to helicopter pilot and firefighter Mario Ramirez about his work.</p>
+      <div class="reading-text">
+        <p><span class="speaker sp-kabc">KABC:</span> Our guest on the show today is CAL FIRE pilot Mario Ramirez. Welcome to the show, Mario, and thanks for taking the time to talk to us. I'm sure you must be busy right now.</p>
+        <p><span class="speaker sp-mario">Mario:</span> Hi, thanks. Yes, it's wildfire season again, and this is always a very busy time for us. Just this morning, we had to go out to three different incidents.</p>
+        <p><span class="speaker sp-kabc">KABC:</span> Dropping water onto fires from helicopters?</p>
+        <p><span class="speaker sp-mario">Mario:</span> Yes, that's right. But this morning, we were forced to use tanker planes too. They can carry a lot more water.</p>
+        <p><span class="speaker sp-kabc">KABC:</span> Should we be worried? It sounds like half of California is burning.</p>
+        <p><span class="speaker sp-mario">Mario:</span> Well, that would be exaggerating. But we're facing some serious problems because of the very hot and dry conditions that we have today. A few years ago, the wildfire season lasted only five months. Today it's seven, thanks to climate change, and the number of larger wildfires has increased dramatically too.</p>
+        <p><span class="speaker sp-kabc">KABC:</span> Sounds as if you're very busy in the dry season, but what happens when it does finally rain?</p>
+        <p><span class="speaker sp-mario">Mario:</span> Well, that's when we're expected to coordinate with the other emergency services. When you suddenly get a lot of rain after a long dry period, you get floods. Sometimes the only way to rescue people is by helicopter.</p>
+        <p><span class="speaker sp-kabc">KABC:</span> And there are mudslides too. They're said to go hand in hand with wildfires, aren't they?</p>
+        <p><span class="speaker sp-mario">Mario:</span> Yes, that's another major problem. People love to build nice homes on a beautiful hillside with a view, but then you get a lot of rain followed by a mudslide, and then collapsed houses half-covered in mud.</p>
+        <p><span class="speaker sp-kabc">KABC:</span> Yes. The fires destroy the trees, so there is nothing to hold the soil in place when the rain comes, is there?</p>
+        <p><span class="speaker sp-mario">Mario:</span> You know your stuff! But it isn't just fire that causes this problem. People aren't supposed to cut down trees but they do it anyway, especially farmers. They argue that letting the trees die of dehydration will cause disease and bugs that will then spread to other healthy trees.</p>
+        <p><span class="speaker sp-kabc">KABC:</span> Mario, I'm going to have to stop you there, but many thanks for sharing your experiences with us.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Understanding the interview</div>
+      <div class="form-group">
+        <label class="form-label" for="exA-a">a) Outline the environmental problems that Mario and his colleagues have to deal with. Mention at least three problems and give details from the interview.</label>
+        <textarea class="form-textarea" id="exA-a" placeholder="Write 3–5 sentences..." rows="5"></textarea>
+        <div class="form-hint">Think about: wildfires, floods, mudslides — and what triggers them.</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exA-b">b) Explain how the different environmental problems are connected to each other. How does one problem lead to another?</label>
+        <textarea class="form-textarea" id="exA-b" placeholder="Write 3–5 sentences..." rows="5"></textarea>
+        <div class="form-hint">Consider: climate change → longer dry season → wildfires → no trees → heavy rain → mudslides / floods.</div>
+      </div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     STEP 2 – EXERCISE B: Modal Verbs Gap-Fill
+===================================================== -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B</span>
+    <h2 class="ex-title">What Are People Supposed to Do?</h2>
+    <p class="ex-subtitle">Use the verbs from the word bank to fill in the gaps. Sometimes more than one answer is possible. Select your answers, then click <em>Check Answers</em>.</p>
+
+    <div class="word-bank">
+      <strong>Word bank</strong>
+      <span>be expected to</span><span>be to</span><span>should</span><span>be forced to</span>
+      <span>be supposed to</span><span>be required to</span><span>be said to</span><span>ought to</span><span>have to</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Text: Living with Earthquakes in California</div>
+      <div class="gap-text" id="modal-gap-text"></div>
+      <div class="btn-row">
+        <button class="btn btn-outline btn-sm" onclick="checkModalGaps()">Check Answers</button>
+        <button class="btn btn-outline btn-sm" onclick="resetModalGaps()">Reset</button>
+      </div>
+      <div id="modal-feedback" class="feedback"></div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     STEP 3 – EXERCISE C: Sentence Transformation
+===================================================== -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise C</span>
+    <h2 class="ex-title">Brown Is Said to Be the New Green!</h2>
+    <p class="ex-subtitle">Use the verbs from the word bank to rewrite each sentence. Sometimes more than one answer is possible.</p>
+
+    <div class="word-bank">
+      <strong>Word bank</strong>
+      <span>be to</span><span>be expected to</span><span>ought to</span>
+      <span>be said to</span><span>be supposed to</span><span>be required to</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Example</div>
+      <p style="font-size:.88rem;color:var(--muted);font-style:italic;margin-bottom:.4rem">People say that California has the best weather in the US.</p>
+      <p style="font-size:.9rem;color:var(--blue);font-weight:600">→ California <strong>is said to</strong> have the best weather in the US. ✓</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Rewrite these sentences using one of the verbs from the word bank</div>
+      <div id="transform-items"></div>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise D →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     STEP 4 – EXERCISE D: Writing
+===================================================== -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise D</span>
+    <h2 class="ex-title">Cause and Effect: California's Environmental Problems</h2>
+    <p class="ex-subtitle">Use the word bank and what you have learned in this unit to write a structured paragraph.</p>
+
+    <div class="word-bank">
+      <strong>Cause and effect language</strong>
+      <span>to affect</span><span>to cause</span><span>to be the consequence of</span>
+      <span>to contribute to</span><span>to influence</span><span>to lead to</span>
+      <span>to result in</span><span>to show the link between</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Los Angeles — a multi-hazard city</div>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:1rem">The following natural hazards and human activities are all connected in California:</p>
+      <div class="hazard-grid">
+        <div>
+          <div class="hazard-col-title">Natural hazards</div>
+          <div style="display:flex;flex-direction:column;gap:.3rem">
+            <span class="hazard-tag" style="background:#fee2e2;color:#991b1b">earthquakes</span>
+            <span class="hazard-tag" style="background:#dbeafe;color:#1e40af">tsunamis</span>
+            <span class="hazard-tag" style="background:#dcfce7;color:#166534">heavy rain / floods</span>
+            <span class="hazard-tag" style="background:#fef9c3;color:#854d0e">drought</span>
+            <span class="hazard-tag" style="background:#fed7aa;color:#9a3412">wildfires</span>
+            <span class="hazard-tag" style="background:#f3e8ff;color:#7e22ce">mudslides</span>
+          </div>
+        </div>
+        <div>
+          <div class="hazard-col-title">Human activities</div>
+          <div style="display:flex;flex-direction:column;gap:.3rem">
+            <span class="hazard-tag" style="background:#fee2e2;color:#991b1b">deforestation</span>
+            <span class="hazard-tag" style="background:#dbeafe;color:#1e40af">urbanisation of coast</span>
+            <span class="hazard-tag" style="background:#dcfce7;color:#166534">tourism / farming</span>
+            <span class="hazard-tag" style="background:#fef9c3;color:#854d0e">urban sprawl</span>
+            <span class="hazard-tag" style="background:#fed7aa;color:#9a3412">increase of traffic</span>
+            <span class="hazard-tag" style="background:#f3e8ff;color:#7e22ce">soil erosion / water shortage</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Writing tasks</div>
+      <div class="form-group">
+        <label class="form-label" for="exD-para">a) Write a paragraph (100–150 words) explaining how natural hazards and human activities in California are connected. Use at least four phrases from the word bank above.</label>
+        <textarea class="form-textarea" id="exD-para" placeholder="For example: Deforestation contributes to mudslides because..." rows="8" style="min-height:150px"></textarea>
+        <div class="form-hint">Try to explain at least two different connections between natural hazards and human activities.</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exD-opinion">b) In your opinion, which of California's environmental problems is the most serious? Give reasons. Write 2–3 sentences.</label>
+        <textarea class="form-textarea" id="exD-opinion" placeholder="I think ... is the most serious problem because..." rows="4"></textarea>
+      </div>
+    </div>
+
+    <div id="step4-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(4)">Review &amp; Submit →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     STEP 5 – REVIEW & SUBMIT
+===================================================== -->
+<section id="step-5" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission didn't work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+/* ============ CONFIG ============ */
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbw2eqOCB6XKREIOXuqn2fCL067CdMm20MmiTFMt9GmRUEn12vLl8gJbHL1UfbKmCP7W/exec';
+const TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+
+/* ============ STATE ============ */
+const state = { name:'', class:'', exA:{}, exB:{}, exC:{}, exD:{} };
+const TOTAL_STEPS = 5;
+
+/* ============ GAP DATA ============ */
+const modalGaps = [
+  { id:1, correct:['should','ought to','have to','has to'],
+    options:['___','should','ought to','have to','is supposed to','is required to','is expected to','is to'] },
+  { id:2, correct:['is said to be','is considered to be'],
+    options:['___','is said to be','is supposed to be','is expected to be','ought to be','has to be','is required to be'] },
+  { id:3, correct:['are required to','are expected to','are supposed to','are to','should','have to'],
+    options:['___','are required to','are expected to','are supposed to','are to','should','have to','ought to'] },
+  { id:4, correct:['should','ought to','have to','are supposed to','are expected to','are required to'],
+    options:['___','should','ought to','have to','are supposed to','are required to','are expected to','are to'] },
+  { id:5, correct:['should','ought to','have to','are supposed to','are forced to'],
+    options:['___','should','ought to','have to','are supposed to','are required to','are forced to','are expected to'] },
+  { id:6, correct:['are expected to','are supposed to','are required to','have to'],
+    options:['___','are expected to','are supposed to','are required to','have to','should','ought to','are to'] },
+  { id:7, correct:['have to','be forced to'],
+    options:['___','have to','be forced to','be expected to','be required to','be supposed to','be to'] },
+  { id:8, correct:['should','ought to','has to','is supposed to','is required to','is forced to'],
+    options:['___','should','ought to','has to','is supposed to','is required to','is forced to','is expected to'] }
+];
+
+const gapSegments = [
+  {t:'text', v:'Anybody who wants to avoid earthquakes '},
+  {t:'gap',  g:1},
+  {t:'text', v:' think about moving away from California. On average, there are around ten earthquakes every day. Most of them are very light, but it\'s not unusual to feel a slight movement and to see small cracks in the walls of buildings.\n\n'},
+  {t:'text', v:'The 1906 San Francisco earthquake '},
+  {t:'gap',  g:2},
+  {t:'text', v:' the deadliest in California\'s recorded history. It killed more than 3,000 people and destroyed much of the city. Today, architects in California '},
+  {t:'gap',  g:3},
+  {t:'text', v:' design new buildings which will remain standing in all but the worst earthquakes.\n\n'},
+  {t:'text', v:'You '},
+  {t:'gap',  g:4},
+  {t:'text', v:' know what to do if there\'s an earthquake. If you\'re indoors, stay there and try to get under a desk or table. If you\'re outdoors, stay away from buildings and trees. If you\'re driving, you '},
+  {t:'gap',  g:5},
+  {t:'text', v:' stop immediately but stay in the car until the earthquake stops.\n\n'},
+  {t:'text', v:'Remember that the emergency services '},
+  {t:'gap',  g:6},
+  {t:'text', v:' visit the worst-affected areas first, so you may '},
+  {t:'gap',  g:7},
+  {t:'text', v:' wait for hours or even days for help. First check for the smell of gas; then check for damage to your building. If you can smell gas or if there are serious cracks, everybody '},
+  {t:'gap',  g:8},
+  {t:'text', v:' leave the building immediately. Remember that there may be aftershocks – small earthquakes which follow the main one.'}
+];
+
+/* ============ TRANSFORM DATA ============ */
+const transforms = [
+  { id:1, original:'As a visitor to California, you must respect the environment at all times.',
+    hint:'Try: As a visitor, you are required to / are supposed to / are expected to …' },
+  { id:2, original:'You shouldn\'t have barbecues in dry areas or waste water.',
+    hint:'Try: You are not supposed to / are not expected to …' },
+  { id:3, original:'When you visit one of the national parks, you need to be careful with wild animals.',
+    hint:'Try: When you visit a national park, you are expected to / are supposed to …' },
+  { id:4, original:'When there\'s a drought, Californians have to stop using water for their gardens and outdoor swimming pools.',
+    hint:'Try: Californians are required to / are expected to / are forced to …' },
+  { id:5, original:'People in California should follow the water conservation rules, but many of them don\'t want to give up their lifestyle.',
+    hint:'Try: People in California are supposed to / are expected to …' },
+  { id:6, original:'Experts say that the new water restrictions will help solve the drought problem.',
+    hint:'Try: The new water restrictions are said to …' }
+];
+
+/* ============ RENDER GAP TEXT ============ */
+function renderModalGapText() {
+  var html = '';
+  gapSegments.forEach(function(seg) {
+    if (seg.t === 'text') {
+      html += seg.v.replace(/\n\n/g, '<br><br>');
+    } else {
+      var gap = modalGaps.find(function(g){ return g.id === seg.g; });
+      html += '<sup class="gap-num">' + seg.g + '</sup>';
+      html += '<select class="gap-select" id="mgap-' + seg.g + '" onchange="saveGap(' + seg.g + ')">';
+      gap.options.forEach(function(o){ html += '<option value="' + o + '">' + o + '</option>'; });
+      html += '</select>';
+    }
+  });
+  document.getElementById('modal-gap-text').innerHTML = html;
+}
+
+function saveGap(id) {
+  state.exB['g' + id] = document.getElementById('mgap-' + id).value;
+}
+
+function checkModalGaps() {
+  var correct = 0, wrong = 0, empty = 0;
+  modalGaps.forEach(function(gap) {
+    var sel = document.getElementById('mgap-' + gap.id);
+    var val = (sel.value || '').trim();
+    if (!val || val === '___') { empty++; sel.className = 'gap-select'; return; }
+    var ok = gap.correct.some(function(c){ return c.toLowerCase() === val.toLowerCase(); });
+    sel.className = ok ? 'gap-select gap-correct' : 'gap-select gap-wrong';
+    if (ok) correct++; else wrong++;
+  });
+  var fb = document.getElementById('modal-feedback');
+  fb.classList.add('show');
+  if (empty > 0) {
+    fb.className = 'feedback warn show';
+    fb.textContent = correct + ' correct, ' + wrong + ' incorrect. ' + empty + ' gap(s) still unanswered.';
+  } else if (wrong === 0) {
+    fb.className = 'feedback ok show';
+    fb.textContent = '✓ All ' + correct + ' answers accepted! Note: other answers may also be correct — this exercise has multiple possible solutions.';
+  } else {
+    fb.className = 'feedback warn show';
+    fb.textContent = correct + ' correct, ' + wrong + ' marked incorrect. Remember: sometimes more than one answer is possible. Check the red gaps and try again.';
+  }
+}
+
+function resetModalGaps() {
+  modalGaps.forEach(function(gap) {
+    var sel = document.getElementById('mgap-' + gap.id);
+    sel.value = '___'; sel.className = 'gap-select';
+  });
+  var fb = document.getElementById('modal-feedback');
+  fb.className = 'feedback'; fb.classList.remove('show');
+}
+
+/* ============ RENDER TRANSFORMS ============ */
+function renderTransformItems() {
+  var html = '';
+  transforms.forEach(function(item) {
+    html += '<div class="transform-item">';
+    html += '<span class="transform-num">' + item.id + '</span>';
+    html += '<div class="transform-original">' + item.original + '</div>';
+    html += '<textarea class="form-textarea" id="tr-' + item.id + '" rows="2" placeholder="Write your rewritten sentence here…" style="min-height:58px"></textarea>';
+    html += '<div class="transform-hint">' + item.hint + '</div>';
+    html += '</div>';
+  });
+  document.getElementById('transform-items').innerHTML = html;
+}
+
+/* ============ NAVIGATION ============ */
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(function(s){ s.classList.remove('active'); });
+  document.getElementById('step-' + n).classList.add('active');
+  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
+  window.scrollTo({ top:0, behavior:'smooth' });
+  restoreStep(n);
+  var meta = document.getElementById('header-meta');
+  if (n === 0) { meta.style.display = 'none'; return; }
+  meta.style.display = 'block';
+  document.getElementById('header-name').textContent = state.name + (state.class ? ' — ' + state.class : '');
+  var labels = ['A','B','C','D'];
+  document.getElementById('header-step').textContent = n <= 4 ? 'Exercise ' + labels[n-1] + ' of 4' : 'Submit';
+}
+
+function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
+
+function nextStep(n) {
+  if (!validateStep(n)) {
+    var err = document.getElementById('step' + n + '-error');
+    err.textContent = 'Please answer all required questions before continuing.';
+    err.classList.add('show'); return;
+  }
+  clearErr(n); saveStep(n);
+  if (n === 4) { buildSummary(); showStep(5); } else { showStep(n + 1); }
+}
+
+function clearErr(n) {
+  var err = document.getElementById('step' + n + '-error');
+  if (err) err.classList.remove('show');
+}
+
+function validateStep(n) {
+  switch(n) {
+    case 1: return val('exA-a') && val('exA-b');
+    case 2:
+      var answered = 0;
+      modalGaps.forEach(function(g){ var s = document.getElementById('mgap-' + g.id); if (s && s.value && s.value !== '___') answered++; });
+      return answered >= 6;
+    case 3:
+      var filled = 0;
+      transforms.forEach(function(t){ var el = document.getElementById('tr-' + t.id); if (el && el.value.trim()) filled++; });
+      return filled >= 4;
+    case 4: return val('exD-para') && val('exD-opinion');
+    default: return true;
+  }
+}
+function val(id) { var el = document.getElementById(id); return el && el.value.trim().length > 0; }
+
+function saveStep(n) {
+  switch(n) {
+    case 1: state.exA.a = g('exA-a'); state.exA.b = g('exA-b'); break;
+    case 2: modalGaps.forEach(function(gap){ var s = document.getElementById('mgap-' + gap.id); state.exB['g'+gap.id] = s ? s.value : ''; }); break;
+    case 3: transforms.forEach(function(t){ var el = document.getElementById('tr-' + t.id); state.exC['t'+t.id] = el ? el.value.trim() : ''; }); break;
+    case 4: state.exD.para = g('exD-para'); state.exD.opinion = g('exD-opinion'); break;
+  }
+}
+function g(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+
+function restoreStep(n) {
+  switch(n) {
+    case 1: set('exA-a', state.exA.a); set('exA-b', state.exA.b); break;
+    case 2: modalGaps.forEach(function(gap){ var s = document.getElementById('mgap-' + gap.id); if (s && state.exB['g'+gap.id]) s.value = state.exB['g'+gap.id]; }); break;
+    case 3: transforms.forEach(function(t){ set('tr-' + t.id, state.exC['t'+t.id]); }); break;
+    case 4: set('exD-para', state.exD.para); set('exD-opinion', state.exD.opinion); break;
+  }
+}
+function set(id, val) { var el = document.getElementById(id); if (el && val !== undefined) el.value = val; }
+
+function startExercises() {
+  var name = g('inp-name'), cls = g('inp-class'), err = document.getElementById('welcome-error');
+  if (!name || !cls) { err.textContent = 'Please enter both your name and your class.'; err.classList.add('show'); return; }
+  err.classList.remove('show'); state.name = name; state.class = cls; showStep(1);
+}
+
+/* ============ SUMMARY ============ */
+function esc(str) { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
+
+function buildSummary() {
+  var gapLines = modalGaps.map(function(gap){ return 'Gap ' + gap.id + ': ' + (state.exB['g'+gap.id] || '(blank)'); }).join('\n');
+  var trLines  = transforms.map(function(t, i){ return (i+1) + '. ' + (state.exC['t'+t.id] || '(blank)'); }).join('\n');
+  var rows = [
+    { ex:'Exercise A – Reading',           q:'a) Environmental problems',                  a:state.exA.a },
+    { ex:'Exercise A – Reading',           q:'b) How problems are connected',               a:state.exA.b },
+    { ex:'Exercise B – Modal verbs',       q:'Gap-fill (gaps 1–8)',                         a:gapLines    },
+    { ex:'Exercise C – Sentence transform',q:'Rewritten sentences (1–6)',                   a:trLines     },
+    { ex:'Exercise D – Writing',           q:'a) Cause and effect paragraph',               a:state.exD.para },
+    { ex:'Exercise D – Writing',           q:'b) Most serious environmental problem',       a:state.exD.opinion }
+  ];
+  var html = '<div class="submit-summary"><div class="summary-row"><div class="summary-ex">Student</div><div class="summary-q">' + esc(state.name) + ' — ' + esc(state.class) + '</div></div>';
+  rows.forEach(function(r){
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div><div class="summary-q">' + esc(r.q) + '</div><div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+}
+
+function buildEmailBody() {
+  var gapLines = modalGaps.map(function(gap){ return 'Gap ' + gap.id + ': ' + (state.exB['g'+gap.id] || '(blank)'); }).join('\n');
+  var trLines  = transforms.map(function(t, i){ return (i+1) + '. Original: ' + t.original + '\n   Answer: ' + (state.exC['t'+t.id] || '(blank)'); }).join('\n\n');
+  return 'CALIFORNIA – ENVIRONMENT & NATURAL HAZARDS\nStudent: ' + state.name + '\nClass:   ' + state.class + '\nDate:    ' + new Date().toLocaleDateString('en-GB') +
+    '\n\n---\nEXERCISE A – READING COMPREHENSION\n---\na) Environmental problems:\n' + (state.exA.a||'(none)') +
+    '\n\nb) How problems connect:\n' + (state.exA.b||'(none)') +
+    '\n\n---\nEXERCISE B – MODAL VERBS\n---\n' + gapLines +
+    '\n\n---\nEXERCISE C – SENTENCE TRANSFORMATION\n---\n' + trLines +
+    '\n\n---\nEXERCISE D – WRITING\n---\na) Cause & effect paragraph:\n' + (state.exD.para||'(none)') +
+    '\n\nb) Most serious problem:\n' + (state.exD.opinion||'(none)');
+}
+
+function submitToSheet() {
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true; btn.textContent = 'Sending…';
+  fetch(SHEET_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:'payload=' + encodeURIComponent(JSON.stringify({ name:state.name, cls:state.class, unit:'california-hazards', exA:state.exA, exB:state.exB, exC:state.exC, exD:state.exD }))
+  }).then(function(){ btn.style.display='none'; document.getElementById('submit-success').style.display='block'; document.getElementById('submit-fallback').style.display='block'; })
+    .catch(function(){ btn.disabled=false; btn.textContent='🚀 Submit to Teacher'; document.getElementById('submit-fallback').style.display='block'; });
+}
+
+function submitByEmail() {
+  var a = document.createElement('a');
+  a.href = 'mailto:' + TEACHER_EMAIL + '?subject=' + encodeURIComponent('California Hazards – ' + state.name + ' – ' + state.class) + '&body=' + encodeURIComponent(buildEmailBody());
+  a.style.display = 'none'; document.body.appendChild(a); a.click(); setTimeout(function(){ document.body.removeChild(a); }, 100);
+}
+
+function copyAnswers() {
+  navigator.clipboard.writeText(buildEmailBody()).then(function(){ alert('Answers copied! Paste them into an email to your teacher.'); }).catch(function(){ prompt('Copy this text:', buildEmailBody()); });
+}
+
+/* ============ INIT ============ */
+document.addEventListener('DOMContentLoaded', function() {
+  renderModalGapText();
+  renderTransformItems();
+  showStep(0);
+});
+</script>
+
+<script>
+/* ── Paste-block: prevent pasting into answer fields ── */
+document.addEventListener('paste', function(e) {
+  var t = e.target;
+  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
+    e.preventDefault();
+    var msg = document.createElement('div');
+    msg.textContent = '✏️ Pasting is not allowed';
+    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    document.body.appendChild(msg);
+    setTimeout(function() {
+      msg.style.opacity = '0';
+      setTimeout(function() { msg.remove(); }, 400);
+    }, 2000);
+  }
+});
+</script>
+</body>
+</html>
