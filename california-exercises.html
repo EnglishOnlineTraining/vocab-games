@@ -654,18 +654,30 @@
       <!-- Built by JS -->
     </div>
 
-    <div class="card" style="text-align:center">
-      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to open your email app with your answers pre-filled. Your teacher will receive them at <strong>shaun.trezise@docemus.de</strong>.</p>
-      <button class="btn btn-gold" style="font-size:1rem;padding:.85rem 2rem" onclick="submitByEmail()">📧 Send to Teacher</button>
-      <p style="font-size:.78rem;color:var(--muted);margin-top:.75rem">This opens your email app. If it doesn't work, use the copy button below.</p>
-      <br>
-      <button class="btn btn-outline btn-sm" onclick="copyAnswers()">📋 Copy all answers</button>
-      <div id="copy-confirm" style="font-size:.8rem;color:var(--green);margin-top:.5rem;display:none">✓ Copied to clipboard!</div>
+    <div class="card" style="text-align:center" id="submit-card">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission didn't work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
     </div>
   </div>
 </section>
 
 <script>
+/* =============================================
+   CONFIGURATION
+============================================= */
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyFmK71PseRmH8gBnuD3HLFU9b75eMPhE-LV8hNKSGM2RJ4bbMTIMrcoi3Qo4WG95qxIw/exec';
+const TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+
 /* =============================================
    STATE
 ============================================= */
@@ -1164,13 +1176,44 @@ General rule:
 ${state.ex19.rule || '(no answer)'}`;
 }
 
+function submitToSheet() {
+  buildSummary();
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  const payload = {
+    name: state.name,
+    cls:  state.class,
+    ex12: state.ex12,
+    ex13: state.ex13,
+    ex14: state.ex14,
+    ex15: state.ex15,
+    ex18: state.ex18,
+    ex19: state.ex19
+  };
+
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode:   'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+  }).then(() => {
+    btn.style.display = 'none';
+    document.getElementById('submit-success').style.display = 'block';
+    document.getElementById('submit-fallback').style.display = 'block';
+  }).catch(() => {
+    btn.disabled = false;
+    btn.textContent = '🚀 Submit to Teacher';
+    document.getElementById('submit-fallback').style.display = 'block';
+  });
+}
+
 function submitByEmail() {
   const body = buildEmailBody();
   const subject = encodeURIComponent(`California Exercises – ${state.name} – ${state.class}`);
-  const encodedBody = encodeURIComponent(body);
-  // Use a temporary <a> click so the page doesn't navigate away
   const a = document.createElement('a');
-  a.href = `mailto:shaun.trezise@docemus.de?subject=${subject}&body=${encodedBody}`;
+  a.href = `mailto:${TEACHER_EMAIL}?subject=${subject}&body=${encodeURIComponent(body)}`;
   a.style.display = 'none';
   document.body.appendChild(a);
   a.click();
@@ -1180,9 +1223,7 @@ function submitByEmail() {
 function copyAnswers() {
   const body = buildEmailBody();
   navigator.clipboard.writeText(body).then(() => {
-    const el = document.getElementById('copy-confirm');
-    el.style.display = 'block';
-    setTimeout(() => el.style.display = 'none', 3000);
+    alert('Answers copied! Paste them into an email to your teacher.');
   }).catch(() => {
     prompt('Copy this text:', body);
   });

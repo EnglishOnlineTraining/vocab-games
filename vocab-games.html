@@ -257,7 +257,7 @@ const data = {
     ],
     fib: [
       {sentence:'She worked hard to ___ her English speaking skills.',  word:'improve',   hint:'make better'},
-      {sentence:'It is ___ to recycle and look after the ___.',         word:'important', hint:'very necessary', extra:'environment'},
+      {sentence:'It is ___ to recycle and look after the environment.',   word:'important', hint:'very necessary'},
       {sentence:'He felt very ___ before his big presentation.',        word:'nervous',   hint:'worried and anxious'},
       {sentence:'We need to ___ a solution to this problem together.',  word:'find',      hint:'discover or locate'},
       {sentence:'The ___ between the two friends lasted many years.',   word:'friendship',hint:'a close relationship'},
@@ -469,6 +469,7 @@ function matchClick(el) {
 //  FILL IN THE BLANK
 // =============================================
 function initFib() {
+  fibChecked = {};
   fibItems = shuffle(data[currentLevel].fib).slice(0, 6);
   document.getElementById('fib-score').textContent = 0;
   document.getElementById('fib-total').textContent = fibItems.length;
