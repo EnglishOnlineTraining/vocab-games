@@ -676,13 +676,21 @@
 
     <div id="summary-container"></div>
 
-    <div class="card" style="text-align:center">
-      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem;">Click the button to open your email app — your answers will be in the message. Just press Send!</p>
-      <button class="btn btn-gold" style="justify-content:center;width:100%;max-width:360px" onclick="submitByEmail()">
-        ✉️ Send to Teacher
+    <div class="card" style="text-align:center" id="submit-card">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem;">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px" onclick="submitToSheet()">
+        🚀 Submit to Teacher
       </button>
-      <p style="font-size:.78rem;color:var(--muted);margin-top:.75rem;">If the email doesn't open automatically, use the Copy button below and paste into an email.</p>
-      <button class="btn btn-outline btn-sm" style="margin-top:.75rem" onclick="copyAnswers()">📋 Copy answers to clipboard</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted);">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem;">If the submission didn't work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
     </div>
   </div>
 </section>
@@ -694,6 +702,7 @@
 ============================================================ */
 var TOTAL_STEPS = 6;
 var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+var SHEET_URL = 'https://script.google.com/macros/s/AKfycbyFmK71PseRmH8gBnuD3HLFU9b75eMPhE-LV8hNKSGM2RJ4bbMTIMrcoi3Qo4WG95qxIw/exec';
 
 /* ============================================================
    STATE
@@ -1124,7 +1133,47 @@ function buildEmailBody() {
 }
 
 /* ============================================================
-   SUBMIT
+   SUBMIT TO GOOGLE SHEET
+============================================================ */
+function submitToSheet() {
+  saveStepAnswers(5);
+  buildSummary();
+
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  var payload = {
+    name: state.name,
+    cls:  state.cls,
+    ex2:  state.ex2,
+    ex3a: state.ex3a,
+    ex3b: state.ex3b,
+    ex5:  state.ex5,
+    ex6a: state.ex6a,
+    ex6b: state.ex6b,
+    ex7a: state.ex7a,
+    ex7b: state.ex7b
+  };
+
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode:   'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+  }).then(function() {
+    btn.style.display = 'none';
+    document.getElementById('submit-success').style.display = 'block';
+    document.getElementById('submit-fallback').style.display = 'block';
+  }).catch(function() {
+    btn.disabled = false;
+    btn.textContent = '🚀 Submit to Teacher';
+    document.getElementById('submit-fallback').style.display = 'block';
+  });
+}
+
+/* ============================================================
+   SUBMIT BY EMAIL (fallback)
 ============================================================ */
 function submitByEmail() {
   var body = buildEmailBody();
