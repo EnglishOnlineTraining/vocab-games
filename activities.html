@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Activities — docemus | EnglishOnline.training</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1a3a5c;
+  --blue-mid:#1a6eb5;
+  --blue-lt:#e8f2fb;
+  --gold:#c9a227;
+  --gold-lt:#f5e6b0;
+  --teal:#2b7a78;
+  --green:#27ae60;
+  --red:#c0392b;
+  --dark:#1d2b3a;
+  --mid:#4a5568;
+  --muted:#6b7a8d;
+  --border:#dce3ec;
+  --bg:#f0f8ff;
+  --white:#fff;
+  --radius:12px;
+  --shadow:0 2px 16px rgba(26,58,92,.1);
+}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;padding-bottom:4rem}
+
+/* ── Header ── */
+.site-header{background:var(--blue);color:#fff;padding:2rem 1rem 1.75rem;text-align:center}
+.site-header .logo{font-size:.8rem;font-weight:700;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.6rem;display:block}
+.site-header h1{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:800;margin-bottom:.4rem}
+.site-header p{color:rgba(255,255,255,.75);font-size:.95rem}
+.header-divider{height:4px;background:linear-gradient(90deg,var(--gold),var(--teal))}
+
+/* ── Main layout ── */
+.container{max-width:860px;margin:0 auto;padding:2rem 1rem}
+
+/* ── Year block ── */
+.year-block{margin-bottom:2.5rem}
+.year-heading{
+  display:flex;align-items:center;gap:.75rem;
+  font-size:1.25rem;font-weight:800;color:var(--blue);
+  margin-bottom:1.25rem;padding-bottom:.6rem;
+  border-bottom:2px solid var(--border);
+}
+.year-badge{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:2.2rem;height:2.2rem;border-radius:50%;
+  background:var(--blue);color:#fff;font-size:.85rem;font-weight:800;
+  flex-shrink:0;
+}
+
+/* ── School type subgroup ── */
+.school-group{margin-bottom:1.25rem}
+.school-label{
+  font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.65rem;padding-left:.1rem;
+  display:flex;align-items:center;gap:.5rem;
+}
+.school-label::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* ── Activity cards grid ── */
+.cards-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:.85rem;
+}
+
+/* ── Activity card ── */
+.activity-card{
+  background:var(--white);border-radius:var(--radius);
+  box-shadow:var(--shadow);border:1.5px solid var(--border);
+  padding:1.1rem 1.25rem;
+  text-decoration:none;color:inherit;
+  display:flex;flex-direction:column;gap:.35rem;
+  transition:border-color .2s,box-shadow .2s,transform .15s;
+}
+.activity-card:hover{
+  border-color:var(--blue-mid);
+  box-shadow:0 4px 20px rgba(26,110,181,.18);
+  transform:translateY(-2px);
+}
+.card-icon{font-size:1.4rem;line-height:1}
+.card-title{font-size:.97rem;font-weight:700;color:var(--blue)}
+.card-meta{font-size:.78rem;color:var(--muted)}
+.card-tag{
+  display:inline-block;margin-top:.3rem;
+  font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  padding:.15rem .55rem;border-radius:20px;
+  background:var(--blue-lt);color:var(--blue-mid);
+}
+
+/* ── Empty state ── */
+.empty-slot{
+  border:1.5px dashed var(--border);border-radius:var(--radius);
+  padding:1.1rem 1.25rem;color:var(--muted);
+  font-size:.85rem;display:flex;align-items:center;gap:.5rem;
+  background:transparent;
+}
+
+/* ── Footer ── */
+.site-footer{text-align:center;font-size:.8rem;color:var(--muted);margin-top:3rem}
+.site-footer a{color:var(--blue-mid)}
+
+@media(max-width:480px){
+  .cards-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <span class="logo">docemus · EnglishOnline.training</span>
+  <h1>📚 Activity Directory</h1>
+  <p>All learning activities, organised by year group and school type</p>
+</header>
+<div class="header-divider"></div>
+
+<main class="container">
+
+  <!-- ══════════════════════════════════
+       YEAR 7
+  ══════════════════════════════════ -->
+  <section class="year-block">
+    <h2 class="year-heading">
+      <span class="year-badge">7</span>
+      Year 7
+    </h2>
+
+    <!-- Year 7 · Gymnasium -->
+    <div class="school-group">
+      <div class="school-label">Gymnasium</div>
+      <div class="cards-grid">
+
+        <a class="activity-card" href="vocab-games.html">
+          <span class="card-icon">🎮</span>
+          <span class="card-title">Vocabulary Games</span>
+          <span class="card-meta">Matching, fill-in-blank, multiple choice &amp; word scramble</span>
+          <span class="card-tag">Interactive games</span>
+        </a>
+
+        <!-- Add more Year 7 Gymnasium activities below this line -->
+
+      </div>
+    </div>
+
+    <!-- Year 7 · Oberschule -->
+    <div class="school-group">
+      <div class="school-label">Oberschule</div>
+      <div class="cards-grid">
+
+        <a class="activity-card" href="7c-holidays.html">
+          <span class="card-icon">🏖️</span>
+          <span class="card-title">7C – Where can we stay?</span>
+          <span class="card-meta">Holidays vocabulary &amp; comprehension</span>
+          <span class="card-tag">Reading &amp; exercises</span>
+        </a>
+
+        <!-- Add more Year 7 Oberschule activities below this line -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       YEAR 9
+  ══════════════════════════════════ -->
+  <section class="year-block">
+    <h2 class="year-heading">
+      <span class="year-badge">9</span>
+      Year 9
+    </h2>
+
+    <!-- Year 9 · Gymnasium -->
+    <div class="school-group">
+      <div class="school-label">Gymnasium</div>
+      <div class="cards-grid">
+
+        <a class="activity-card" href="california-exercises.html">
+          <span class="card-icon">🌴</span>
+          <span class="card-title">California Exercises</span>
+          <span class="card-meta">Vocabulary &amp; language exercises</span>
+          <span class="card-tag">Exercises</span>
+        </a>
+
+        <!-- Add more Year 9 Gymnasium activities below this line -->
+
+      </div>
+    </div>
+
+    <!-- Year 9 · Oberschule -->
+    <div class="school-group">
+      <div class="school-label">Oberschule</div>
+      <div class="cards-grid">
+        <!-- Add Year 9 Oberschule activities here -->
+        <div class="empty-slot">➕ No activities yet — coming soon</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <a href="https://englishonline.training">EnglishOnline.training</a> · docemus activities
+</footer>
+
+</body>
+</html>
