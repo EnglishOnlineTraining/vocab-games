@@ -1258,6 +1258,19 @@ document.addEventListener('paste', function(e) {
     }, 2000);
   }
 });
+
+/* ── Copy-block: prevent copying text from the page ── */
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  var msg = document.createElement('div');
+  msg.textContent = '🚫 Copying is not allowed';
+  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+  document.body.appendChild(msg);
+  setTimeout(function() {
+    msg.style.opacity = '0';
+    setTimeout(function() { msg.remove(); }, 400);
+  }, 2000);
+});
 </script>
 </body>
 </html>
