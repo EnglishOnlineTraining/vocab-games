@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tudor England – The Past Perfect | englishonline.training</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:    #1a3a5c;
+      --gold:    #c9a227;
+      --gold-lt: #f5e6b0;
+      --teal:    #2b7a78;
+      --red:     #c0392b;
+      --green:   #27ae60;
+      --bg:      #f7f9fc;
+      --card:    #ffffff;
+      --text:    #1d2b3a;
+      --muted:   #6b7a8d;
+      --border:  #dce3ec;
+      --radius:  12px;
+      --shadow:  0 2px 16px rgba(26,58,92,.1);
+      --font:    'Segoe UI', system-ui, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
+
+    .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
+    .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
+    .header-meta { font-size: .78rem; text-align: right; opacity: .9; }
+    .header-meta strong { display: block; color: var(--gold); }
+    .progress-track { height: 6px; background: rgba(255,255,255,.2); }
+    .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
+
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+
+    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
+    .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+    .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
+
+    .reading-text { font-size: .93rem; line-height: 1.85; color: var(--text); }
+    .reading-text p { margin-bottom: .85rem; }
+    .reading-text p:last-child { margin-bottom: 0; }
+
+    /* Grammar rule box */
+    .grammar-box { background: #eef6ff; border-left: 4px solid var(--blue); border-radius: 0 var(--radius) var(--radius) 0; padding: 1rem 1.25rem; margin-bottom: 1rem; }
+    .grammar-box .rule-title { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--blue); margin-bottom: .6rem; }
+    .grammar-formula { display: inline-block; background: var(--blue); color: #fff; border-radius: 6px; padding: .25rem .75rem; font-size: .88rem; font-weight: 700; margin: .3rem 0; }
+    .grammar-example { margin-top: .75rem; font-size: .88rem; line-height: 1.7; }
+    .grammar-example table { border-collapse: collapse; width: 100%; margin-top: .5rem; }
+    .grammar-example td { border: 1px solid var(--border); padding: .5rem .75rem; font-size: .85rem; }
+    .grammar-example td:first-child { background: #dbeafe; color: #1e40af; font-weight: 600; width: 50%; }
+    .grammar-example td:last-child  { background: #dcfce7; color: #166534; font-weight: 600; width: 50%; }
+    .grammar-example th { background: var(--blue); color: #fff; padding: .4rem .75rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; }
+
+    /* Sentence matching */
+    .match-row { display: flex; align-items: center; gap: .75rem; margin-bottom: .75rem; flex-wrap: wrap; }
+    .match-num { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .78rem; font-weight: 800; flex-shrink: 0; }
+    .match-start { font-size: .9rem; font-style: italic; color: var(--text); flex: 1; min-width: 160px; }
+    .match-select { border: 1.5px solid var(--gold); border-radius: 6px; padding: .3rem .5rem; font-family: var(--font); font-size: .82rem; background: var(--gold-lt); color: var(--blue); cursor: pointer; min-width: 120px; }
+    .match-select:focus { outline: none; border-color: var(--blue); }
+    .match-correct { background: #d4edda; border-color: var(--green); color: #155724; }
+    .match-wrong   { background: #fde8e8; border-color: var(--red);   color: #721c24; }
+    .endings-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: .4rem; margin-top: .75rem; }
+    .endings-list li { font-size: .85rem; padding: .3rem .5rem; border-radius: 6px; background: #f0f4f8; }
+    .endings-list li strong { color: var(--blue); margin-right: .3rem; }
+
+    /* Timeline analysis */
+    .analysis-item { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: .85rem; background: #fafbfc; }
+    .analysis-sentence { font-size: .9rem; font-style: italic; color: var(--text); margin-bottom: .75rem; line-height: 1.6; }
+    .analysis-question { font-size: .82rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+    .radio-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .radio-opt { display: flex; align-items: center; gap: .4rem; font-size: .85rem; cursor: pointer; }
+    .radio-opt input { accent-color: var(--blue); width: 16px; height: 16px; cursor: pointer; }
+    .analysis-result { font-size: .82rem; margin-top: .5rem; font-weight: 600; display: none; }
+    .analysis-result.correct { color: var(--green); display: block; }
+    .analysis-result.wrong   { color: var(--red);   display: block; }
+
+    /* Gap-fill */
+    .gap-text { font-size: .93rem; line-height: 2.6; color: var(--text); }
+    .gap-select {
+      display: inline-block; border: 1.5px solid var(--gold); border-radius: 6px;
+      padding: .18rem .45rem; font-family: var(--font); font-size: .82rem;
+      background: var(--gold-lt); color: var(--blue); cursor: pointer;
+      vertical-align: middle; margin: 0 2px; max-width: 200px;
+    }
+    .gap-select:focus { outline: none; border-color: var(--blue); }
+    .gap-correct { background: #d4edda; border-color: var(--green); color: #155724; }
+    .gap-wrong   { background: #fde8e8; border-color: var(--red);   color: #721c24; }
+    .gap-num { font-size: .68rem; color: var(--muted); vertical-align: super; margin-right: 1px; }
+
+    /* Word bank */
+    .word-bank { background: var(--gold-lt); border: 1.5px solid var(--gold); border-radius: 8px; padding: .75rem 1rem; margin-bottom: 1.25rem; }
+    .word-bank strong { display: block; color: var(--blue); margin-bottom: .5rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; }
+    .word-bank span { display: inline-block; margin: .2rem .3rem; background: var(--blue); color: #fff; border-radius: 4px; padding: .18rem .55rem; font-size: .8rem; font-weight: 600; }
+
+    /* Francis Drake story cards */
+    .event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: .75rem; margin-bottom: 1.25rem; }
+    .event-card { background: #f0f4f8; border: 1px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; }
+    .event-card .event-label { font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--gold); background: var(--blue); display: inline-block; padding: .1rem .45rem; border-radius: 4px; margin-bottom: .4rem; }
+    .event-card p { color: var(--text); line-height: 1.5; }
+
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+    .form-input, .form-textarea { width: 100%; border: 1.5px solid var(--border); border-radius: 8px; padding: .65rem .85rem; font-family: var(--font); font-size: .92rem; color: var(--text); background: #fff; transition: border-color .2s; }
+    .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--blue); }
+    .form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+    .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+
+    .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
+    .feedback.show { display: block; }
+    .feedback.ok   { background: #d4edda; color: #155724; }
+    .feedback.warn { background: #fff3cd; color: #856404; }
+    .feedback.err  { background: #fde8e8; color: #721c24; }
+
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
+    .btn-primary:hover { background: #15304f; }
+    .btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
+    .btn-gold:hover { background: #b8911f; }
+    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+    .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+    .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
+    .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
+    .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+    .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+    .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; }
+    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
+    .ov-card.locked { opacity: .5; }
+    .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+
+    .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
+    .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
+    .summary-a  { color: var(--text); white-space: pre-wrap; }
+
+    @media (max-width: 480px) {
+      .ex-title { font-size: 1.25rem; }
+      .btn { padding: .65rem 1.1rem; }
+      .welcome-title { font-size: 1.4rem; }
+      .gap-select { max-width: 155px; font-size: .75rem; }
+      .endings-list { grid-template-columns: 1fr; }
+      .match-row { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Exercise A of 4</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+
+<!-- ====================================================
+     STEP 0 – WELCOME
+===================================================== -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">🏰</div>
+      <h1 class="welcome-title">Tudor England – The Past Perfect</h1>
+      <p class="welcome-sub">Four exercises on the past perfect tense using the context of Tudor England, Queen Elizabeth I, and Sir Francis Drake.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">🔗</div><strong>Ex A – Matching</strong>Match the sentence parts</div>
+      <div class="ov-card locked"><div class="ov-icon">📝</div><strong>Ex B – Grammar</strong>The past perfect: Miller family gap-fill</div>
+      <div class="ov-card locked"><div class="ov-icon">⚖️</div><strong>Ex C – Gap-fill</strong>Simple past or past perfect?</div>
+      <div class="ov-card locked"><div class="ov-icon">✍️</div><strong>Ex D – Writing</strong>The story of Francis Drake</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. 7b" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     STEP 1 – EXERCISE A: Sentence Matching
+===================================================== -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">Understanding the Text: Match the Sentence Parts</h2>
+    <p class="ex-subtitle">Read the text about Queen Elizabeth I, then match each sentence beginning (1–6) with the correct ending (a–f).</p>
+
+    <div class="card">
+      <div class="card-title">Reading: Queen Elizabeth I and Tudor England</div>
+      <div class="reading-text">
+        <p>Queen Elizabeth I (1533–1603) was one of England's most famous and powerful rulers. Before she became queen, there had never been such a powerful queen in English history. Her father, Henry VIII, had had six wives, and many people believed this was one reason why Elizabeth had always said she would never marry.</p>
+        <p>One of the most famous stories about Elizabeth involves her favourite sea captain, Sir Francis Drake. According to legend, Drake was playing a game of bowls at Plymouth when enemy ships were spotted approaching the coast. He hadn't finished his game, so his men had to wait for him before they could set sail — he refused to rush!</p>
+        <p>Life in Tudor England was very different from today. Many of the things we take for granted today simply didn't exist. People hadn't eaten many of the foods we enjoy now: potatoes, for example, had only just arrived from the Americas, so people were very excited about this strange new vegetable. And because nobody had invented electricity, central heating, or modern medicine, life could be cold, dark, and very short.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Match each beginning (1–6) with the correct ending (a–f)</div>
+      <p style="font-size:.82rem;color:var(--muted);margin-bottom:1.1rem">The endings are listed at the bottom. Select the correct letter for each sentence.</p>
+      <div id="match-rows"></div>
+      <ul class="endings-list" style="margin-top:1.1rem">
+        <li><strong>a)</strong> his men had to wait for him.</li>
+        <li><strong>b)</strong> she had said, "I'll never marry".</li>
+        <li><strong>c)</strong> he was a hero!</li>
+        <li><strong>d)</strong> there had never been such a powerful queen.</li>
+        <li><strong>e)</strong> they were very excited about new food.</li>
+        <li><strong>f)</strong> they hadn't invented all the fun things yet.</li>
+      </ul>
+      <div class="btn-row" style="margin-top:1rem">
+        <button class="btn btn-outline btn-sm" onclick="checkMatches()">Check Answers</button>
+        <button class="btn btn-outline btn-sm" onclick="resetMatches()">Reset</button>
+      </div>
+      <div id="match-feedback" class="feedback"></div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     STEP 2 – EXERCISE B: Past Perfect Gap-Fill
+===================================================== -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B</span>
+    <h2 class="ex-title">The Past Perfect</h2>
+    <p class="ex-subtitle">First study the grammar rule, then complete the gap-fill text using the past perfect.</p>
+
+    <!-- Grammar Box -->
+    <div class="grammar-box">
+      <div class="rule-title">Grammar rule: the past perfect</div>
+      <p style="font-size:.88rem;margin-bottom:.6rem">Use the past perfect to show that one action happened <strong>before</strong> another action in the past.</p>
+      <div class="grammar-formula">had + past participle</div>
+      <div class="grammar-example">
+        <table>
+          <tr><th>Past perfect (earlier action)</th><th>Simple past (later action)</th></tr>
+          <tr><td>After Elizabeth <strong>had decided</strong> not to marry,</td><td>she never <strong>changed</strong> her mind.</td></tr>
+          <tr><td>Life was boring because</td><td>they <strong>hadn't invented</strong> all the fun things yet.</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Timeline Analysis -->
+    <div class="card">
+      <div class="card-title">Which action happened first? Tick A or B.</div>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:1rem">Read each sentence carefully. Which event happened first in time?</p>
+      <div id="analysis-items"></div>
+      <div class="btn-row" style="margin-top:.5rem">
+        <button class="btn btn-outline btn-sm" onclick="checkAnalysis()">Check Answers</button>
+        <button class="btn btn-outline btn-sm" onclick="resetAnalysis()">Reset</button>
+      </div>
+      <div id="analysis-feedback" class="feedback"></div>
+    </div>
+
+    <!-- Miller Family Gap-Fill -->
+    <div class="card">
+      <div class="card-title">The Tudor Period: Everyday Life in Queen Elizabeth's Time</div>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:1rem">Put the verbs in brackets into the correct form of the <strong>past perfect</strong>.</p>
+      <div class="gap-text" id="miller-gap-text"></div>
+      <div class="btn-row">
+        <button class="btn btn-outline btn-sm" onclick="checkMillerGaps()">Check Answers</button>
+        <button class="btn btn-outline btn-sm" onclick="resetMillerGaps()">Reset</button>
+      </div>
+      <div id="miller-feedback" class="feedback"></div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     STEP 3 – EXERCISE C: Simple Past or Past Perfect?
+===================================================== -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise C</span>
+    <h2 class="ex-title">Simple Past or Past Perfect?</h2>
+    <p class="ex-subtitle">Put the verbs in brackets into the correct form — simple past or past perfect. Then click <em>Check Answers</em>.</p>
+
+    <div class="card">
+      <div class="card-title">Text: Elizabeth's Reign</div>
+      <div class="gap-text" id="elizabeth-gap-text"></div>
+      <div class="btn-row">
+        <button class="btn btn-outline btn-sm" onclick="checkElizabethGaps()">Check Answers</button>
+        <button class="btn btn-outline btn-sm" onclick="resetElizabethGaps()">Reset</button>
+      </div>
+      <div id="elizabeth-feedback" class="feedback"></div>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise D →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     STEP 4 – EXERCISE D: Writing — Francis Drake
+===================================================== -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise D</span>
+    <h2 class="ex-title">Write the Story about Francis Drake</h2>
+    <p class="ex-subtitle">Use the events below to write a story. Put the verbs in the simple past or past perfect, and link the events using the words from the word bank.</p>
+
+    <div class="word-bank">
+      <strong>Linking words</strong>
+      <span>after</span><span>as soon as</span><span>but</span>
+      <span>because</span><span>when</span><span>then</span><span>so</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">The events of Francis Drake's life — in order</div>
+      <p style="font-size:.82rem;color:var(--muted);margin-bottom:1rem">Use these events to write your story. The first sentence is given to help you start.</p>
+      <div class="event-grid" id="event-grid"></div>
+      <div style="background:var(--gold-lt);border:1.5px solid var(--gold);border-radius:8px;padding:.85rem 1rem;margin-top:.5rem">
+        <p style="font-size:.78rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem">Start like this:</p>
+        <p style="font-size:.9rem;color:var(--text);font-style:italic">"After Francis Drake <strong>had seen</strong> so many ships as a boy, he <strong>wanted</strong> to have his own adventures at sea. Then, on his first big adventure…"</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Writing tasks</div>
+      <div class="form-group">
+        <label class="form-label" for="exD-story">a) Write the story of Francis Drake (6–8 sentences). Use the simple past and the past perfect. Link events with the words from the word bank.</label>
+        <textarea class="form-textarea" id="exD-story" placeholder="After Francis Drake had seen so many ships as a boy, he wanted to have his own adventures at sea. Then, on his first big adventure…" rows="9" style="min-height:180px"></textarea>
+        <div class="form-hint">Try to use at least three different linking words from the word bank.</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exD-opinion">b) In your opinion, which event in Drake's life was the most important? Why? Write 2–3 sentences.</label>
+        <textarea class="form-textarea" id="exD-opinion" placeholder="I think the most important event was … because …" rows="4"></textarea>
+      </div>
+    </div>
+
+    <div id="step4-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(4)">Review &amp; Submit →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     STEP 5 – REVIEW & SUBMIT
+===================================================== -->
+<section id="step-5" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission didn't work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+/* ============ CONFIG ============ */
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbw2eqOCB6XKREIOXuqn2fCL067CdMm20MmiTFMt9GmRUEn12vLl8gJbHL1UfbKmCP7W/exec';
+const TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+
+/* ============ STATE ============ */
+const state = { name:'', class:'', exA:{}, exB:{}, exC:{}, exD:{} };
+const TOTAL_STEPS = 5;
+
+/* ============ EX A — SENTENCE MATCHING ============ */
+const matchData = [
+  { id:1, start:'Before Elizabeth became queen,',        correct:'d' },
+  { id:2, start:'Life was boring back then because',     correct:'f' },
+  { id:3, start:"He hadn't finished his game, so",       correct:'a' },
+  { id:4, start:"People hadn't eaten potatoes before, so", correct:'e' },
+  { id:5, start:'Before Elizabeth,',                     correct:'b' },
+  { id:6, start:'After Drake had defeated the Armada,',  correct:'c' }
+];
+const endingOptions = [
+  { v:'', label:'— choose an ending —' },
+  { v:'a', label:'a) his men had to wait for him.' },
+  { v:'b', label:"b) she had said, \"I'll never marry\"." },
+  { v:'c', label:'c) he was a hero!' },
+  { v:'d', label:'d) there had never been such a powerful queen.' },
+  { v:'e', label:'e) they were very excited about new food.' },
+  { v:'f', label:"f) they hadn't invented all the fun things yet." }
+];
+
+function renderMatchRows() {
+  var html = '';
+  matchData.forEach(function(item) {
+    html += '<div class="match-row">';
+    html += '<span class="match-num">' + item.id + '</span>';
+    html += '<span class="match-start">' + item.start + '</span>';
+    html += '<select class="match-select" id="match-' + item.id + '" onchange="saveMatch(' + item.id + ')">';
+    endingOptions.forEach(function(o) {
+      html += '<option value="' + o.v + '">' + o.label + '</option>';
+    });
+    html += '</select>';
+    html += '</div>';
+  });
+  document.getElementById('match-rows').innerHTML = html;
+}
+
+function saveMatch(id) {
+  state.exA['m' + id] = document.getElementById('match-' + id).value;
+}
+
+function checkMatches() {
+  var correct = 0, wrong = 0, empty = 0;
+  matchData.forEach(function(item) {
+    var sel = document.getElementById('match-' + item.id);
+    var val = sel.value;
+    if (!val) { empty++; sel.className = 'match-select'; return; }
+    if (val === item.correct) { sel.className = 'match-select match-correct'; correct++; }
+    else { sel.className = 'match-select match-wrong'; wrong++; }
+  });
+  var fb = document.getElementById('match-feedback');
+  fb.classList.add('show');
+  if (empty > 0) {
+    fb.className = 'feedback warn show';
+    fb.textContent = correct + ' correct, ' + wrong + ' incorrect. ' + empty + ' still unanswered.';
+  } else if (wrong === 0) {
+    fb.className = 'feedback ok show';
+    fb.textContent = '✓ All ' + correct + ' matches correct! Well done.';
+  } else {
+    fb.className = 'feedback warn show';
+    fb.textContent = correct + ' correct, ' + wrong + ' incorrect. Check the red dropdowns and try again.';
+  }
+}
+
+function resetMatches() {
+  matchData.forEach(function(item) {
+    var sel = document.getElementById('match-' + item.id);
+    sel.value = ''; sel.className = 'match-select';
+  });
+  var fb = document.getElementById('match-feedback');
+  fb.className = 'feedback'; fb.classList.remove('show');
+}
+
+/* ============ EX B — TIMELINE ANALYSIS ============ */
+const analysisData = [
+  { id:1,
+    sentence:'Before the Romans came, the Celts had already been in Britain for a long time.',
+    optA:'The Romans came to Britain.',
+    optB:'The Celts lived in Britain.',
+    correct:'B'
+  },
+  { id:2,
+    sentence:"Elizabeth's mother, Anne, had lived in France, so she spoke very good French.",
+    optA:'Anne lived in France.',
+    optB:'Anne spoke very good French.',
+    correct:'A'
+  },
+  { id:3,
+    sentence:'After William of Normandy had become king of England in 1066, more and more people learned French.',
+    optA:'William became king of England.',
+    optB:'People learned French.',
+    correct:'A'
+  },
+  { id:4,
+    sentence:'People in Victorian Britain were able to see more of their own country after the steam trains had made it quicker and easier to travel.',
+    optA:'Steam trains made travel quicker and easier.',
+    optB:'People saw more of their own country.',
+    correct:'A'
+  }
+];
+
+function renderAnalysisItems() {
+  var html = '';
+  analysisData.forEach(function(item) {
+    html += '<div class="analysis-item" id="analysis-item-' + item.id + '">';
+    html += '<div class="analysis-sentence">' + item.sentence + '</div>';
+    html += '<div class="analysis-question">Which happened first?</div>';
+    html += '<div class="radio-row">';
+    html += '<label class="radio-opt"><input type="radio" name="analysis-' + item.id + '" value="A" onchange="saveAnalysis(' + item.id + ')"> <span>A: ' + item.optA + '</span></label>';
+    html += '<label class="radio-opt"><input type="radio" name="analysis-' + item.id + '" value="B" onchange="saveAnalysis(' + item.id + ')"> <span>B: ' + item.optB + '</span></label>';
+    html += '</div>';
+    html += '<div class="analysis-result" id="analysis-result-' + item.id + '"></div>';
+    html += '</div>';
+  });
+  document.getElementById('analysis-items').innerHTML = html;
+}
+
+function saveAnalysis(id) {
+  var chosen = document.querySelector('input[name="analysis-' + id + '"]:checked');
+  state.exB['a' + id] = chosen ? chosen.value : '';
+}
+
+function checkAnalysis() {
+  var correct = 0, wrong = 0, empty = 0;
+  analysisData.forEach(function(item) {
+    var chosen = document.querySelector('input[name="analysis-' + item.id + '"]:checked');
+    var res = document.getElementById('analysis-result-' + item.id);
+    if (!chosen) { empty++; res.textContent = ''; res.className = 'analysis-result'; return; }
+    if (chosen.value === item.correct) {
+      res.textContent = '✓ Correct!'; res.className = 'analysis-result correct'; correct++;
+    } else {
+      var wrongLabel = chosen.value === 'A' ? item.optA : item.optB;
+      var correctLabel = item.correct === 'A' ? item.optA : item.optB;
+      res.textContent = '✗ Not quite. The correct answer is: ' + correctLabel;
+      res.className = 'analysis-result wrong'; wrong++;
+    }
+  });
+  var fb = document.getElementById('analysis-feedback');
+  fb.classList.add('show');
+  if (empty > 0) {
+    fb.className = 'feedback warn show';
+    fb.textContent = correct + ' correct, ' + wrong + ' incorrect. ' + empty + ' still unanswered.';
+  } else if (wrong === 0) {
+    fb.className = 'feedback ok show'; fb.textContent = '✓ All ' + correct + ' correct! Great work.';
+  } else {
+    fb.className = 'feedback warn show'; fb.textContent = correct + ' correct, ' + wrong + ' incorrect.';
+  }
+}
+
+function resetAnalysis() {
+  analysisData.forEach(function(item) {
+    var inputs = document.querySelectorAll('input[name="analysis-' + item.id + '"]');
+    inputs.forEach(function(inp){ inp.checked = false; });
+    var res = document.getElementById('analysis-result-' + item.id);
+    res.textContent = ''; res.className = 'analysis-result';
+  });
+  var fb = document.getElementById('analysis-feedback');
+  fb.className = 'feedback'; fb.classList.remove('show');
+}
+
+/* ============ EX B — MILLER FAMILY GAP-FILL ============ */
+const millerGaps = [
+  { id:1, correct:'had had',      options:['___','had had','had','have had','has had','had been'] },
+  { id:2, correct:'had died',     options:['___','had died','died','was dying','has died','had been dying'] },
+  { id:3, correct:'had had',      options:['___','had had','had','have had','has had','had been having'] },
+  { id:4, correct:'had been able',options:['___','had been able','was able','were able','has been able','had being able'] },
+  { id:5, correct:'had helped',   options:['___','had helped','helped','has helped','were helping','have helped'] },
+  { id:6, correct:'had fed',      options:['___','had fed','fed','has fed','were feeding','have fed'] }
+];
+
+const millerSegments = [
+  {t:'text', v:'Margaret Miller and her brother, Thomas, grew up in Tatley, where the Miller family '},
+  {t:'gap',  g:1},
+  {t:'text', v:' a home for over a hundred years. Their father '},
+  {t:'gap',  g:2},
+  {t:'text', v:" when they were very young and their mother "},
+  {t:'gap',  g:3},
+  {t:'text', v:' five children before them, so life wasn\'t easy. Before the 1580s, only a few children '},
+  {t:'gap',  g:4},
+  {t:'text', v:" to get an education, so the Millers were lucky to go to school. But they were often late when they arrived because they "},
+  {t:'gap',  g:5},
+  {t:'text', v:' their mother with lots of work at home first. And after they '},
+  {t:'gap',  g:6},
+  {t:'text', v:' all the animals and collected the wood, there was no more time for breakfast!'}
+];
+
+function renderMillerGaps() {
+  var html = '';
+  millerSegments.forEach(function(seg) {
+    if (seg.t === 'text') { html += seg.v; }
+    else {
+      var gap = millerGaps.find(function(g){ return g.id === seg.g; });
+      html += '<sup class="gap-num">' + seg.g + '</sup>';
+      html += '<select class="gap-select" id="mgap-' + seg.g + '" onchange="saveMillerGap(' + seg.g + ')">';
+      gap.options.forEach(function(o){ html += '<option value="' + o + '">' + o + '</option>'; });
+      html += '</select>';
+    }
+  });
+  document.getElementById('miller-gap-text').innerHTML = html;
+}
+
+function saveMillerGap(id) {
+  state.exB['mg' + id] = document.getElementById('mgap-' + id).value;
+}
+
+function checkMillerGaps() {
+  var correct = 0, wrong = 0, empty = 0;
+  millerGaps.forEach(function(gap) {
+    var sel = document.getElementById('mgap-' + gap.id);
+    var val = (sel.value || '').trim();
+    if (!val || val === '___') { empty++; sel.className = 'gap-select'; return; }
+    if (val === gap.correct) { sel.className = 'gap-select gap-correct'; correct++; }
+    else { sel.className = 'gap-select gap-wrong'; wrong++; }
+  });
+  var fb = document.getElementById('miller-feedback');
+  fb.classList.add('show');
+  if (empty > 0) {
+    fb.className = 'feedback warn show';
+    fb.textContent = correct + ' correct, ' + wrong + ' incorrect. ' + empty + ' gap(s) unanswered.';
+  } else if (wrong === 0) {
+    fb.className = 'feedback ok show';
+    fb.textContent = '✓ All ' + correct + ' answers correct! Excellent work.';
+  } else {
+    fb.className = 'feedback warn show';
+    fb.textContent = correct + ' correct, ' + wrong + ' incorrect. Check the red gaps and try again.';
+  }
+}
+
+function resetMillerGaps() {
+  millerGaps.forEach(function(gap) {
+    var sel = document.getElementById('mgap-' + gap.id);
+    sel.value = '___'; sel.className = 'gap-select';
+  });
+  var fb = document.getElementById('miller-feedback');
+  fb.className = 'feedback'; fb.classList.remove('show');
+}
+
+/* ============ EX C — ELIZABETH SP / PP ============ */
+const elizGaps = [
+  { id:1,  correct:'became',         label:'(become)', options:['___','became','had become'] },
+  { id:2,  correct:'had',            label:'(have)',   options:['___','had','had had'] },
+  { id:3,  correct:'were',           label:'(be)',     options:['___','were','had been'] },
+  { id:4,  correct:'had',            label:'(have)',   options:['___','had','had had'] },
+  { id:5,  correct:'died',           label:'(die)',    options:['___','died','had died'] },
+  { id:6,  correct:'had been',       label:'(be)',     options:['___','was','had been'] },
+  { id:7,  correct:'was',            label:'(be)',     options:['___','was','had been'] },
+  { id:8,  correct:'felt',           label:'(feel)',   options:['___','felt','had felt'] },
+  { id:9,  correct:'had been',       label:'(be)',     options:['___','was','had been'] },
+  { id:10, correct:'had also been',  label:'(also be)',options:['___','was also','had also been'] },
+  { id:11, correct:'had written',    label:'(write)',  options:['___','wrote','had written'] },
+  { id:12, correct:'died',           label:'(die)',    options:['___','died','had died'] }
+];
+
+const elizSegments = [
+  {t:'text', v:'After Elizabeth '},
+  {t:'gap',  g:1},
+  {t:'text', v:' queen, people '},
+  {t:'gap',  g:2},
+  {t:'text', v:' big parties in the streets. Many (but not all) people in England '},
+  {t:'gap',  g:3},
+  {t:'text', v:' happy that they '},
+  {t:'gap',  g:4},
+  {t:'text', v:' a young and very smart queen. When she finally '},
+  {t:'gap',  g:5},
+  {t:'text', v:' in 1603, she '},
+  {t:'gap',  g:6},
+  {t:'text', v:' queen for 45 years. She '},
+  {t:'gap',  g:7},
+  {t:'text', v:' the last of the Tudor monarchs. Most people '},
+  {t:'gap',  g:8},
+  {t:'text', v:' that Elizabeth\'s reign '},
+  {t:'gap',  g:9},
+  {t:'text', v:' a \'golden age\'. William Shakespeare '},
+  {t:'gap',  g:10},
+  {t:'text', v:' part of that golden age because he '},
+  {t:'gap',  g:11},
+  {t:'text', v:" so many wonderful plays for England's theatres before he "},
+  {t:'gap',  g:12},
+  {t:'text', v:' in 1616. 35 plays!'}
+];
+
+function renderElizabethGaps() {
+  var html = '';
+  elizSegments.forEach(function(seg) {
+    if (seg.t === 'text') { html += seg.v; }
+    else {
+      var gap = elizGaps.find(function(g){ return g.id === seg.g; });
+      html += '<sup class="gap-num">' + seg.g + '</sup>';
+      html += '<select class="gap-select" id="egap-' + seg.g + '" onchange="saveElizGap(' + seg.g + ')">';
+      gap.options.forEach(function(o){ html += '<option value="' + o + '">' + o + '</option>'; });
+      html += '</select>';
+      html += '<span style="font-size:.72rem;color:var(--muted);margin-right:2px"> ' + gap.label + '</span>';
+    }
+  });
+  document.getElementById('elizabeth-gap-text').innerHTML = html;
+}
+
+function saveElizGap(id) {
+  state.exC['eg' + id] = document.getElementById('egap-' + id).value;
+}
+
+function checkElizabethGaps() {
+  var correct = 0, wrong = 0, empty = 0;
+  elizGaps.forEach(function(gap) {
+    var sel = document.getElementById('egap-' + gap.id);
+    var val = (sel.value || '').trim();
+    if (!val || val === '___') { empty++; sel.className = 'gap-select'; return; }
+    if (val.toLowerCase() === gap.correct.toLowerCase()) { sel.className = 'gap-select gap-correct'; correct++; }
+    else { sel.className = 'gap-select gap-wrong'; wrong++; }
+  });
+  var fb = document.getElementById('elizabeth-feedback');
+  fb.classList.add('show');
+  if (empty > 0) {
+    fb.className = 'feedback warn show';
+    fb.textContent = correct + ' correct, ' + wrong + ' incorrect. ' + empty + ' gap(s) still unanswered.';
+  } else if (wrong === 0) {
+    fb.className = 'feedback ok show';
+    fb.textContent = '✓ All ' + correct + ' answers correct! Great work.';
+  } else {
+    fb.className = 'feedback warn show';
+    fb.textContent = correct + ' correct, ' + wrong + ' incorrect. Think about whether each action happened before or after another — and check the red gaps.';
+  }
+}
+
+function resetElizabethGaps() {
+  elizGaps.forEach(function(gap) {
+    var sel = document.getElementById('egap-' + gap.id);
+    sel.value = '___'; sel.className = 'gap-select';
+  });
+  var fb = document.getElementById('elizabeth-feedback');
+  fb.className = 'feedback'; fb.classList.remove('show');
+}
+
+/* ============ EX D — FRANCIS DRAKE EVENTS ============ */
+const drakeEvents = [
+  { label:'1 · As a boy', text:"Francis Drake saw many ships and wanted to have his own adventures at sea." },
+  { label:'2 · First adventure', text:"He went to America. Before the trip, he had captured slaves in Africa and sold them there." },
+  { label:'3 · In 1577', text:"He sailed around the world and stole gold and silver from Spanish ships. After this, the Spanish hated him." },
+  { label:'4 · America', text:"The Spanish attacked his ships, which made him very angry. He never forgot this." },
+  { label:'5 · In 1580', text:"He returned to England and gave the queen all his treasure — she was very happy." },
+  { label:'6 · In 1588', text:"He defeated the Spanish Armada. England felt safe again and he became a national hero." }
+];
+
+function renderEventGrid() {
+  var html = '';
+  drakeEvents.forEach(function(ev) {
+    html += '<div class="event-card"><div class="event-label">' + ev.label + '</div><p>' + ev.text + '</p></div>';
+  });
+  document.getElementById('event-grid').innerHTML = html;
+}
+
+/* ============ NAVIGATION ============ */
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(function(s){ s.classList.remove('active'); });
+  document.getElementById('step-' + n).classList.add('active');
+  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
+  window.scrollTo({ top:0, behavior:'smooth' });
+  restoreStep(n);
+  var meta = document.getElementById('header-meta');
+  if (n === 0) { meta.style.display = 'none'; return; }
+  meta.style.display = 'block';
+  document.getElementById('header-name').textContent = state.name + (state.class ? ' — ' + state.class : '');
+  var labels = ['A','B','C','D'];
+  document.getElementById('header-step').textContent = n <= 4 ? 'Exercise ' + labels[n-1] + ' of 4' : 'Submit';
+}
+
+function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
+
+function nextStep(n) {
+  if (!validateStep(n)) {
+    var err = document.getElementById('step' + n + '-error');
+    err.textContent = 'Please answer all required questions before continuing.';
+    err.classList.add('show'); return;
+  }
+  clearErr(n); saveStep(n);
+  if (n === 4) { buildSummary(); showStep(5); } else { showStep(n + 1); }
+}
+
+function clearErr(n) { var e = document.getElementById('step' + n + '-error'); if (e) e.classList.remove('show'); }
+
+function validateStep(n) {
+  switch(n) {
+    case 1:
+      var filled = 0;
+      matchData.forEach(function(item){ var s = document.getElementById('match-' + item.id); if (s && s.value) filled++; });
+      return filled >= 4;
+    case 2:
+      var answered = 0;
+      millerGaps.forEach(function(gap){ var s = document.getElementById('mgap-' + gap.id); if (s && s.value && s.value !== '___') answered++; });
+      return answered >= 5;
+    case 3:
+      var done = 0;
+      elizGaps.forEach(function(gap){ var s = document.getElementById('egap-' + gap.id); if (s && s.value && s.value !== '___') done++; });
+      return done >= 10;
+    case 4: return g('exD-story') && g('exD-opinion');
+    default: return true;
+  }
+}
+
+function saveStep(n) {
+  switch(n) {
+    case 1:
+      matchData.forEach(function(item){ var s = document.getElementById('match-' + item.id); state.exA['m' + item.id] = s ? s.value : ''; });
+      break;
+    case 2:
+      analysisData.forEach(function(item){ var c = document.querySelector('input[name="analysis-' + item.id + '"]:checked'); state.exB['a' + item.id] = c ? c.value : ''; });
+      millerGaps.forEach(function(gap){ var s = document.getElementById('mgap-' + gap.id); state.exB['mg' + gap.id] = s ? s.value : ''; });
+      break;
+    case 3:
+      elizGaps.forEach(function(gap){ var s = document.getElementById('egap-' + gap.id); state.exC['eg' + gap.id] = s ? s.value : ''; });
+      break;
+    case 4:
+      state.exD.story   = g('exD-story');
+      state.exD.opinion = g('exD-opinion');
+      break;
+  }
+}
+
+function restoreStep(n) {
+  switch(n) {
+    case 1:
+      matchData.forEach(function(item){ var s = document.getElementById('match-' + item.id); if (s && state.exA['m' + item.id]) s.value = state.exA['m' + item.id]; });
+      break;
+    case 2:
+      analysisData.forEach(function(item){
+        var saved = state.exB['a' + item.id];
+        if (saved) { var inp = document.querySelector('input[name="analysis-' + item.id + '"][value="' + saved + '"]'); if (inp) inp.checked = true; }
+      });
+      millerGaps.forEach(function(gap){ var s = document.getElementById('mgap-' + gap.id); if (s && state.exB['mg' + gap.id]) s.value = state.exB['mg' + gap.id]; });
+      break;
+    case 3:
+      elizGaps.forEach(function(gap){ var s = document.getElementById('egap-' + gap.id); if (s && state.exC['eg' + gap.id]) s.value = state.exC['eg' + gap.id]; });
+      break;
+    case 4:
+      set('exD-story',   state.exD.story);
+      set('exD-opinion', state.exD.opinion);
+      break;
+  }
+}
+
+function g(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+function set(id, val) { var el = document.getElementById(id); if (el && val !== undefined) el.value = val; }
+
+function startExercises() {
+  var name = g('inp-name'), cls = g('inp-class'), err = document.getElementById('welcome-error');
+  if (!name || !cls) { err.textContent = 'Please enter both your name and your class.'; err.classList.add('show'); return; }
+  err.classList.remove('show'); state.name = name; state.class = cls; showStep(1);
+}
+
+/* ============ SUMMARY ============ */
+function esc(str) { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
+
+function buildSummary() {
+  var matchLines = matchData.map(function(item){ return item.id + '. "' + item.start + '" → ' + (state.exA['m' + item.id] || '(blank)') + ')'; }).join('\n');
+  var analysisLines = analysisData.map(function(item){ return item.id + '. ' + (state.exB['a' + item.id] || '(blank)'); }).join('\n');
+  var millerLines = millerGaps.map(function(gap){ return 'Gap ' + gap.id + ': ' + (state.exB['mg' + gap.id] || '(blank)'); }).join('\n');
+  var elizLines = elizGaps.map(function(gap){ return 'Gap ' + gap.id + ' ' + gap.label + ': ' + (state.exC['eg' + gap.id] || '(blank)'); }).join('\n');
+
+  var rows = [
+    { ex:'Exercise A – Matching',     q:'Sentence matching answers (1–6)',      a: matchLines    },
+    { ex:'Exercise B – Timeline',     q:'Which happened first? (1–4)',           a: analysisLines },
+    { ex:'Exercise B – Gap-fill',     q:'Miller family – past perfect (1–6)',    a: millerLines   },
+    { ex:'Exercise C – Gap-fill',     q:"Elizabeth's reign – SP or PP (1–12)",   a: elizLines     },
+    { ex:'Exercise D – Writing',      q:'Story of Francis Drake',                a: state.exD.story   },
+    { ex:'Exercise D – Writing',      q:'Most important event (opinion)',         a: state.exD.opinion }
+  ];
+
+  var html = '<div class="submit-summary"><div class="summary-row"><div class="summary-ex">Student</div><div class="summary-q">' + esc(state.name) + ' — ' + esc(state.class) + '</div></div>';
+  rows.forEach(function(r){
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div><div class="summary-q">' + esc(r.q) + '</div><div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+}
+
+function buildEmailBody() {
+  var matchLines = matchData.map(function(item){ return item.id + '. ' + item.start + ' → ' + (state.exA['m' + item.id] || '(blank)') + ')'; }).join('\n');
+  var analysisLines = analysisData.map(function(item, i){ return (i+1) + '. Answer: ' + (state.exB['a' + item.id] || '(blank)'); }).join('\n');
+  var millerLines = millerGaps.map(function(gap){ return 'Gap ' + gap.id + ': ' + (state.exB['mg' + gap.id] || '(blank)'); }).join('\n');
+  var elizLines = elizGaps.map(function(gap){ return 'Gap ' + gap.id + ' ' + gap.label + ': ' + (state.exC['eg' + gap.id] || '(blank)'); }).join('\n');
+  return 'TUDOR ENGLAND – THE PAST PERFECT\nStudent: ' + state.name + '\nClass:   ' + state.class + '\nDate:    ' + new Date().toLocaleDateString('en-GB') +
+    '\n\n---\nEXERCISE A – SENTENCE MATCHING\n---\n' + matchLines +
+    '\n\n---\nEXERCISE B – TIMELINE ANALYSIS\n---\n' + analysisLines +
+    '\n\n---\nEXERCISE B – MILLER FAMILY GAP-FILL\n---\n' + millerLines +
+    "\n\n---\nEXERCISE C – ELIZABETH'S REIGN SP/PP\n---\n" + elizLines +
+    '\n\n---\nEXERCISE D – FRANCIS DRAKE STORY\n---\n' + (state.exD.story || '(none)') +
+    '\n\nMost important event:\n' + (state.exD.opinion || '(none)');
+}
+
+function submitToSheet() {
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true; btn.textContent = 'Sending…';
+  fetch(SHEET_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:'payload=' + encodeURIComponent(JSON.stringify({ name:state.name, cls:state.class, unit:'tudor-past-perfect', exA:state.exA, exB:state.exB, exC:state.exC, exD:state.exD }))
+  }).then(function(){ btn.style.display='none'; document.getElementById('submit-success').style.display='block'; document.getElementById('submit-fallback').style.display='block'; })
+    .catch(function(){ btn.disabled=false; btn.textContent='🚀 Submit to Teacher'; document.getElementById('submit-fallback').style.display='block'; });
+}
+
+function submitByEmail() {
+  var a = document.createElement('a');
+  a.href = 'mailto:' + TEACHER_EMAIL + '?subject=' + encodeURIComponent('Tudor Past Perfect – ' + state.name + ' – ' + state.class) + '&body=' + encodeURIComponent(buildEmailBody());
+  a.style.display = 'none'; document.body.appendChild(a); a.click(); setTimeout(function(){ document.body.removeChild(a); }, 100);
+}
+
+function copyAnswers() {
+  navigator.clipboard.writeText(buildEmailBody()).then(function(){ alert('Answers copied! Paste them into an email to your teacher.'); }).catch(function(){ prompt('Copy this text:', buildEmailBody()); });
+}
+
+/* ============ INIT ============ */
+document.addEventListener('DOMContentLoaded', function() {
+  renderMatchRows();
+  renderAnalysisItems();
+  renderMillerGaps();
+  renderElizabethGaps();
+  renderEventGrid();
+  showStep(0);
+});
+</script>
+</body>
+</html>
