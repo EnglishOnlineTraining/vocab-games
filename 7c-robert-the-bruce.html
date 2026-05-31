@@ -102,6 +102,9 @@
     .ov-card.locked { opacity: .5; }
     .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
 
+    /* Comic strip images */
+    .comic-img { width: 100%; border-radius: 8px; margin-bottom: 1rem; display: block; }
+
     .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
     .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
     .summary-row:last-child { border-bottom: none; }
@@ -144,7 +147,8 @@
     </div>
 
     <div class="exercise-overview">
-      <div class="ov-card"><div class="ov-icon">🧩</div><strong>Ex A – Who is it?</strong>Match clues to the right person</div>
+      <div class="ov-card"><div class="ov-icon">🗺️</div><strong>Reading</strong>Read the comic strip</div>
+      <div class="ov-card locked"><div class="ov-icon">🧩</div><strong>Ex A – Who is it?</strong>Match clues to the right person</div>
       <div class="ov-card locked"><div class="ov-icon">📖</div><strong>Ex B – Questions</strong>Answer questions about the story</div>
       <div class="ov-card locked"><div class="ov-icon">✍️</div><strong>Ex C – Writing</strong>Biography or dialogue</div>
     </div>
@@ -167,9 +171,28 @@
 
 
 <!-- ====================================================
-     STEP 1 – EXERCISE A: Who is it?
+     STEP 1 – READING: Comic strip
 ===================================================== -->
 <section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Reading</span>
+    <h2 class="ex-title">Robert the Bruce</h2>
+    <p class="ex-subtitle">Read the comic strip carefully. You will need it to answer the exercises.</p>
+    <img class="comic-img" src="rtb-1.png" alt="Robert the Bruce comic strip – panels 1 to 4">
+    <img class="comic-img" src="rtb-2.png" alt="Robert the Bruce comic strip – panels 5 to 7">
+    <img class="comic-img" src="rtb-3.png" alt="Robert the Bruce comic strip – panels 8 to 13">
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise A →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 2 – EXERCISE A: Who is it?
+===================================================== -->
+<section id="step-2" class="step">
   <div class="step-inner">
     <span class="ex-badge">Exercise A</span>
     <h2 class="ex-title">Who is it?</h2>
@@ -185,19 +208,19 @@
       <div id="who-feedback" class="feedback"></div>
     </div>
 
-    <div id="step1-error" class="feedback err"></div>
+    <div id="step2-error" class="feedback err"></div>
     <div class="btn-row">
-      <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
-      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B →</button>
+      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise B →</button>
     </div>
   </div>
 </section>
 
 
 <!-- ====================================================
-     STEP 2 – EXERCISE B: Answer the questions
+     STEP 3 – EXERCISE B: Answer the questions
 ===================================================== -->
-<section id="step-2" class="step">
+<section id="step-3" class="step">
   <div class="step-inner">
     <span class="ex-badge">Exercise B</span>
     <h2 class="ex-title">Answer the Questions</h2>
@@ -221,19 +244,19 @@
       </div>
     </div>
 
-    <div id="step2-error" class="feedback err"></div>
+    <div id="step3-error" class="feedback err"></div>
     <div class="btn-row">
-      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
-      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C →</button>
+      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise C →</button>
     </div>
   </div>
 </section>
 
 
 <!-- ====================================================
-     STEP 3 – EXERCISE C: Writing
+     STEP 4 – EXERCISE C: Writing
 ===================================================== -->
-<section id="step-3" class="step">
+<section id="step-4" class="step">
   <div class="step-inner">
     <span class="ex-badge">Exercise C</span>
     <h2 class="ex-title">Writing Task</h2>
@@ -281,19 +304,19 @@
       </div>
     </div>
 
-    <div id="step3-error" class="feedback err"></div>
+    <div id="step4-error" class="feedback err"></div>
     <div class="btn-row">
-      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
-      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(3)">Review &amp; Submit →</button>
+      <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(4)">Review &amp; Submit →</button>
     </div>
   </div>
 </section>
 
 
 <!-- ====================================================
-     STEP 4 – REVIEW & SUBMIT
+     STEP 5 – REVIEW & SUBMIT
 ===================================================== -->
-<section id="step-4" class="step">
+<section id="step-5" class="step">
   <div class="step-inner">
     <div style="text-align:center;padding:1.5rem 0 1rem">
       <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
@@ -324,7 +347,7 @@
 const SHEET_URL     = 'https://script.google.com/macros/s/AKfycbw2eqOCB6XKREIOXuqn2fCL067CdMm20MmiTFMt9GmRUEn12vLl8gJbHL1UfbKmCP7W/exec';
 const TEACHER_EMAIL = 'shaun.trezise@docemus.de';
 const UNIT          = 'robert-the-bruce-7c';
-const TOTAL_STEPS   = 4;
+const TOTAL_STEPS   = 5;
 
 /* ============ STATE ============ */
 const state = { name:'', cls:'', exA:{}, exB:{}, exC:{ task:'a', bio:'', dialogue:'' } };
@@ -406,8 +429,8 @@ function showStep(n) {
   if (n === 0) { meta.style.display = 'none'; return; }
   meta.style.display = 'block';
   document.getElementById('header-name').textContent = state.name + (state.cls ? ' — ' + state.cls : '');
-  var labels = ['A','B','C'];
-  document.getElementById('header-step').textContent = n < TOTAL_STEPS ? 'Exercise ' + labels[n-1] + ' of 3' : 'Submit';
+  var labels = ['Reading','A','B','C'];
+  document.getElementById('header-step').textContent = n < TOTAL_STEPS ? (n === 1 ? 'Reading' : 'Exercise ' + labels[n-1] + ' of 3') : 'Submit';
 }
 
 function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
@@ -437,14 +460,15 @@ function startExercises() {
 /* ============ VALIDATION ============ */
 function validateStep(n) {
   switch(n) {
-    case 1:
+    case 1: return true; /* reading — no validation needed */
+    case 2:
       var answered = whoItems.filter(function(item) {
         var sel = document.getElementById('who-' + item.id);
         return sel && sel.value && sel.value !== '___';
       }).length;
       return answered === whoItems.length;
-    case 2: return val('exB-q1') && val('exB-q2') && val('exB-q3');
-    case 3: return activeTab === 'a' ? val('exC-bio') : val('exC-dialogue');
+    case 3: return val('exB-q1') && val('exB-q2') && val('exB-q3');
+    case 4: return activeTab === 'a' ? val('exC-bio') : val('exC-dialogue');
     default: return true;
   }
 }
@@ -452,16 +476,17 @@ function validateStep(n) {
 /* ============ SAVE / RESTORE ============ */
 function saveStep(n) {
   switch(n) {
-    case 1:
+    case 1: break; /* reading step — nothing to save */
+    case 2:
       whoItems.forEach(function(item) {
         var sel = document.getElementById('who-' + item.id);
         state.exA['w' + item.id] = sel ? sel.value : '';
       }); break;
-    case 2:
+    case 3:
       state.exB.q1 = g('exB-q1');
       state.exB.q2 = g('exB-q2');
       state.exB.q3 = g('exB-q3'); break;
-    case 3:
+    case 4:
       state.exC.task     = activeTab;
       state.exC.bio      = g('exC-bio');
       state.exC.dialogue = g('exC-dialogue'); break;
@@ -470,16 +495,17 @@ function saveStep(n) {
 
 function restoreStep(n) {
   switch(n) {
-    case 1:
+    case 1: break; /* reading step — nothing to restore */
+    case 2:
       whoItems.forEach(function(item) {
         var sel = document.getElementById('who-' + item.id);
         if (sel && state.exA['w' + item.id]) sel.value = state.exA['w' + item.id];
       }); break;
-    case 2:
+    case 3:
       set('exB-q1', state.exB.q1);
       set('exB-q2', state.exB.q2);
       set('exB-q3', state.exB.q3); break;
-    case 3:
+    case 4:
       switchTab(state.exC.task || 'a');
       set('exC-bio', state.exC.bio);
       set('exC-dialogue', state.exC.dialogue); break;
