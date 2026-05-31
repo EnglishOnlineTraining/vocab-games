@@ -3,8 +3,9 @@
 ## What this project is
 Static HTML exercise pages for English language learners, hosted on GitHub Pages and linked from a WordPress site. No build system — every file is a standalone HTML page.
 
-**Live URL:** `https://englishonlinetraining.github.io/vocab-games/`  
-**Custom domain:** `https://englishonline.training` (CNAME points to GitHub Pages)  
+**Live URL:** `https://activities.englishonline.training/`  
+**GitHub Pages fallback:** `https://englishonlinetraining.github.io/vocab-games/`  
+**Custom domain:** `activities.englishonline.training` (DNS CNAME → `englishonlinetraining.github.io`)  
 **WordPress site:** `englishonline.training` (blog ID `65893384`, Simple plan — no SFTP)  
 **GitHub repo:** `https://github.com/EnglishOnlineTraining/vocab-games`  
 **Teacher email:** `shaun.trezise@docemus.de`
