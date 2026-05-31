@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>South Africa – Revision | englishonline.training</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:    #1a3a5c;
+      --gold:    #c9a227;
+      --gold-lt: #f5e6b0;
+      --teal:    #2b7a78;
+      --red:     #c0392b;
+      --green:   #27ae60;
+      --bg:      #f7f9fc;
+      --card:    #ffffff;
+      --text:    #1d2b3a;
+      --muted:   #6b7a8d;
+      --border:  #dce3ec;
+      --radius:  12px;
+      --shadow:  0 2px 16px rgba(26,58,92,.1);
+      --font:    'Segoe UI', system-ui, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
+
+    .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
+    .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
+    .header-meta { font-size: .78rem; text-align: right; opacity: .9; }
+    .header-meta strong { display: block; color: var(--gold); }
+    .progress-track { height: 6px; background: rgba(255,255,255,.2); }
+    .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
+
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+
+    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
+    .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+    .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
+
+    .reading-text { font-size: .93rem; line-height: 1.85; color: var(--text); }
+    .reading-text p { margin-bottom: .85rem; }
+    .reading-text p:last-child { margin-bottom: 0; }
+
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+    .form-input, .form-textarea {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+      padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
+      color: var(--text); background: #fff; transition: border-color .2s;
+    }
+    .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--blue); }
+    .form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+    .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+
+    /* Gap-fill */
+    .gap-text { font-size: .93rem; line-height: 2.6; color: var(--text); }
+    .gap-select {
+      display: inline-block; border: 1.5px solid var(--gold); border-radius: 6px;
+      padding: .18rem .45rem; font-family: var(--font); font-size: .82rem;
+      background: var(--gold-lt); color: var(--blue); cursor: pointer;
+      vertical-align: middle; margin: 0 2px; max-width: 160px;
+    }
+    .gap-select:focus { outline: none; border-color: var(--blue); }
+    .gap-correct { background: #d4edda; border-color: var(--green); color: #155724; }
+    .gap-wrong   { background: #fde8e8; border-color: var(--red);   color: #721c24; }
+    .gap-num { font-size: .68rem; color: var(--muted); vertical-align: super; margin-right: 1px; }
+
+    /* Word bank */
+    .word-bank { background: var(--gold-lt); border: 1.5px solid var(--gold); border-radius: 8px; padding: .75rem 1rem; margin-bottom: 1.25rem; }
+    .word-bank strong { display: block; color: var(--blue); margin-bottom: .5rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; }
+    .word-bank span { display: inline-block; margin: .2rem .3rem; background: var(--blue); color: #fff; border-radius: 4px; padding: .18rem .55rem; font-size: .8rem; font-weight: 600; }
+
+    /* Sentence transformation */
+    .transform-item { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: .85rem; background: #fafbfc; }
+    .transform-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 800; flex-shrink: 0; margin-bottom: .5rem; }
+    .transform-original { font-size: .9rem; color: var(--text); font-style: italic; margin-bottom: .65rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); }
+    .transform-hint { font-size: .75rem; color: var(--muted); margin-top: .3rem; }
+
+    .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
+    .feedback.show { display: block; }
+    .feedback.ok   { background: #d4edda; color: #155724; }
+    .feedback.warn { background: #fff3cd; color: #856404; }
+    .feedback.err  { background: #fde8e8; color: #721c24; }
+
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
+    .btn-primary:hover { background: #15304f; }
+    .btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
+    .btn-gold:hover { background: #b8911f; }
+    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+    .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+    .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
+    .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
+    .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+    .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+    .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; }
+    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
+    .ov-card.locked { opacity: .5; }
+    .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+
+    .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
+    .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
+    .summary-a  { color: var(--text); white-space: pre-wrap; }
+
+    /* Grammar section divider */
+    .section-label { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--gold); border-bottom: 2px solid var(--gold-lt); padding-bottom: .4rem; margin-bottom: 1rem; }
+
+    /* Picture frame */
+    .picture-frame { border-radius: 10px; overflow: hidden; margin-bottom: 1.25rem; box-shadow: var(--shadow); }
+    .picture-frame img { width: 100%; display: block; max-height: 380px; object-fit: cover; }
+    .picture-caption { font-size: .75rem; color: var(--muted); padding: .4rem .75rem; background: #f0f4f8; text-align: center; }
+
+    @media (max-width: 480px) {
+      .ex-title { font-size: 1.25rem; }
+      .btn { padding: .65rem 1.1rem; }
+      .welcome-title { font-size: 1.4rem; }
+      .gap-select { max-width: 130px; font-size: .75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Exercise A of 3</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+
+
+<!-- ====================================================
+     STEP 0 – WELCOME
+===================================================== -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">🇿🇦</div>
+      <h1 class="welcome-title">South Africa – Revision</h1>
+      <p class="welcome-sub">Three exercises covering reading comprehension, grammar revision, and a picture description task.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">📖</div><strong>Ex A – Reading</strong>About South Africa</div>
+      <div class="ov-card locked"><div class="ov-icon">📝</div><strong>Ex B – Grammar</strong>Relative clauses · Present &amp; past progressive</div>
+      <div class="ov-card locked"><div class="ov-icon">✍️</div><strong>Ex C – Writing</strong>Describe a picture (Caribbean)</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. 9c" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 1 – EXERCISE A: Reading
+===================================================== -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">About South Africa</h2>
+    <p class="ex-subtitle">Read the text carefully, then answer the comprehension questions below.</p>
+
+    <div class="card">
+      <div class="card-title">Reading: The Rainbow Nation</div>
+      <div class="reading-text">
+        <p>South Africa is a country of extraordinary contrasts. Located at the southern tip of the African continent, it is home to around 60 million people and 11 official languages – more than any other country in the world. Its landscape varies from dramatic coastlines and golden beaches to vast savannahs and the towering Drakensberg mountains.</p>
+        <p>South Africa's history is marked by a long period of racial separation known as <strong>apartheid</strong>, which lasted from 1948 to 1994. Under this system, the non-white majority was denied basic rights and forced to live apart from white South Africans. People could not choose where to live, which schools to attend, or even which park benches to sit on.</p>
+        <p>The fight against apartheid was led by <strong>Nelson Mandela</strong> and the African National Congress (ANC). Mandela spent 27 years in prison on Robben Island before being released in 1990. Four years later, South Africa held its first fully democratic elections, and Mandela became president. He called his country the <em>"rainbow nation"</em> – a term that celebrated its rich cultural and ethnic diversity.</p>
+        <p>Today, South Africa is famous for its incredible wildlife. The <strong>Big Five</strong> – lions, elephants, leopards, rhinoceroses, and buffaloes – can be seen in national parks such as Kruger, which is larger than some European countries. Every year, millions of tourists visit South Africa to go on safari, explore the vibrant city of Cape Town, or stand at the spectacular Cape of Good Hope.</p>
+        <p>However, South Africa also faces serious challenges. Unemployment is high, and many people still live in poverty in <strong>townships</strong> – informal settlements that were created during the apartheid era. Crime rates in some cities are among the highest in the world, and the gap between rich and poor remains a significant problem. Despite these difficulties, South Africa continues to be one of the most fascinating countries on the continent.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Comprehension questions</div>
+      <div class="form-group">
+        <label class="form-label" for="exA-a">a) What makes South Africa unusual compared to most other countries? Give two examples from the text.</label>
+        <textarea class="form-textarea" id="exA-a" placeholder="Write 2–3 sentences..." rows="4"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exA-b">b) Describe what life was like under apartheid. What happened to Nelson Mandela, and what did he achieve?</label>
+        <textarea class="form-textarea" id="exA-b" placeholder="Write 4–5 sentences..." rows="5"></textarea>
+        <div class="form-hint">Think about: what apartheid meant for people, Mandela's imprisonment, and the 1994 elections.</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exA-c">c) Why is South Africa popular with tourists? Mention at least two reasons from the text.</label>
+        <textarea class="form-textarea" id="exA-c" placeholder="Write 2–3 sentences..." rows="4"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exA-d">d) What problems does South Africa face today? Use your own words as much as possible.</label>
+        <textarea class="form-textarea" id="exA-d" placeholder="Write 3–4 sentences..." rows="4"></textarea>
+      </div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 2 – EXERCISE B: Grammar
+===================================================== -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B</span>
+    <h2 class="ex-title">Grammar Practice</h2>
+    <p class="ex-subtitle">Two grammar tasks: relative clauses, then present and past progressive.</p>
+
+    <!-- Part 1: Relative Clauses -->
+    <div class="section-label">Part 1 – Relative Clauses</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Choose the correct relative pronoun to complete each sentence. Then click <em>Check Answers</em>.</p>
+
+    <div class="word-bank">
+      <strong>Relative pronouns</strong>
+      <span>who</span><span>which</span><span>where</span><span>whose</span><span>that</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">South Africa – relative clause gap-fill</div>
+      <div class="gap-text" id="rel-gap-text"></div>
+      <div class="btn-row">
+        <button class="btn btn-outline btn-sm" onclick="checkRelGaps()">Check Answers</button>
+        <button class="btn btn-outline btn-sm" onclick="resetRelGaps()">Reset</button>
+      </div>
+      <div id="rel-feedback" class="feedback"></div>
+    </div>
+
+    <!-- Part 2: Progressive tenses -->
+    <div class="section-label" style="margin-top:1.75rem">Part 2 – Present &amp; Past Progressive</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Rewrite each sentence using the tense shown in brackets. Use the correct form of the <strong>present progressive</strong> (is/are + -ing) or <strong>past progressive</strong> (was/were + -ing).</p>
+
+    <div class="card">
+      <div class="card-title">Example</div>
+      <p style="font-size:.88rem;color:var(--muted);font-style:italic;margin-bottom:.4rem">The tourists visit Cape Town. <em>(present progressive)</em></p>
+      <p style="font-size:.9rem;color:var(--blue);font-weight:600">→ The tourists <strong>are visiting</strong> Cape Town. ✓</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Rewrite these sentences</div>
+      <div id="prog-items"></div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 3 – EXERCISE C: Writing
+===================================================== -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise C</span>
+    <h2 class="ex-title">Describe a Picture</h2>
+    <p class="ex-subtitle">Look at the picture carefully and answer the questions below. Use present and past progressive tenses in your descriptions.</p>
+
+    <div class="picture-frame">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Bavaro_beach_Punta_Cana_Dominican_Republic.jpg/1280px-Bavaro_beach_Punta_Cana_Dominican_Republic.jpg"
+           alt="Caribbean beach scene – Punta Cana, Dominican Republic"
+           onerror="this.style.display='none';document.getElementById('img-fallback').style.display='block'">
+      <div id="img-fallback" style="display:none;padding:2rem;text-align:center;background:#f0f4f8;color:var(--muted);font-size:.88rem">
+        🏖️ <em>Picture: A busy Caribbean beach in Punta Cana, Dominican Republic. Palm trees line the shore; tourists are relaxing on sun loungers, swimming in the turquoise sea, and walking along the water's edge. Vendors are selling refreshments. In the background, a sailboat is sailing across the bay.</em>
+      </div>
+      <div class="picture-caption">Bavaro Beach, Punta Cana – Dominican Republic (Caribbean)</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Writing tasks</div>
+
+      <div class="form-group">
+        <label class="form-label" for="exC-present">a) What can you see in the picture? Describe what people and things <strong>are doing</strong> right now. Use the <strong>present progressive</strong>. Write at least five sentences.</label>
+        <textarea class="form-textarea" id="exC-present" placeholder="In the picture, I can see… / Some tourists are… / In the background, a boat is…" rows="7" style="min-height:130px"></textarea>
+        <div class="form-hint">Use: is/are + verb + -ing &nbsp;·&nbsp; e.g. "A woman is sunbathing on the beach."</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="exC-past">b) Imagine you looked at the picture earlier. What <strong>were</strong> people <strong>doing</strong> when you first saw it? Use the <strong>past progressive</strong>. Write 3–4 sentences.</label>
+        <textarea class="form-textarea" id="exC-past" placeholder="When I first looked at the picture, a group of children were… / Two men were…" rows="5"></textarea>
+        <div class="form-hint">Use: was/were + verb + -ing &nbsp;·&nbsp; e.g. "A family was building a sandcastle."</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="exC-opinion">c) Would you like to visit a place like this? Give reasons and write 2–3 sentences.</label>
+        <textarea class="form-textarea" id="exC-opinion" placeholder="I would / wouldn't like to visit a place like this because…" rows="4"></textarea>
+      </div>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(3)">Review &amp; Submit →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 4 – REVIEW & SUBMIT
+===================================================== -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission didn't work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+/* ============ CONFIG ============ */
+const SHEET_URL    = 'https://script.google.com/macros/s/AKfycbw2eqOCB6XKREIOXuqn2fCL067CdMm20MmiTFMt9GmRUEn12vLl8gJbHL1UfbKmCP7W/exec';
+const TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+const TOTAL_STEPS   = 4;
+
+/* ============ STATE ============ */
+const state = { name:'', cls:'', exA:{}, exB:{}, exC:{} };
+
+/* ============ RELATIVE CLAUSE DATA ============ */
+const relGaps = [
+  { id:1, correct:['which','that'],
+    options:['___','who','which','where','whose','that'] },
+  { id:2, correct:['who','that'],
+    options:['___','who','which','where','whose','that'] },
+  { id:3, correct:['where'],
+    options:['___','who','which','where','whose','that'] },
+  { id:4, correct:['whose'],
+    options:['___','who','which','where','whose','that'] },
+  { id:5, correct:['which','that'],
+    options:['___','who','which','where','whose','that'] },
+  { id:6, correct:['where'],
+    options:['___','who','which','where','whose','that'] }
+];
+
+const relSegments = [
+  {t:'text', v:'South Africa, '},
+  {t:'gap',  g:1},
+  {t:'text', v:' is often called the Rainbow Nation, has 11 official languages. '},
+  {t:'text', v:'Nelson Mandela, '},
+  {t:'gap',  g:2},
+  {t:'text', v:' spent 27 years in prison, became the first black president in 1994. '},
+  {t:'text', v:'Robben Island, '},
+  {t:'gap',  g:3},
+  {t:'text', v:' Mandela was kept prisoner for many years, is now a museum and tourist attraction. '},
+  {t:'text', v:'Kruger National Park is a huge area '},
+  {t:'gap',  g:4},
+  {t:'text', v:' size is bigger than some European countries. '},
+  {t:'text', v:'The Big Five are the five animals '},
+  {t:'gap',  g:5},
+  {t:'text', v:' tourists most want to see on safari. '},
+  {t:'text', v:'Cape Town, '},
+  {t:'gap',  g:6},
+  {t:'text', v:' many festivals and cultural events take place, is considered one of the most beautiful cities in the world.'}
+];
+
+/* ============ PROGRESSIVE DATA ============ */
+const progItems = [
+  { id:1,
+    original:'The children swim in the turquoise sea. (present progressive)',
+    hint:'Use: are + swimming' },
+  { id:2,
+    original:'A vendor sold cold drinks on the beach. (past progressive)',
+    hint:'Use: was + selling' },
+  { id:3,
+    original:'Two tourists take photos of the palm trees. (present progressive)',
+    hint:'Use: are + taking' },
+  { id:4,
+    original:'The sailboat crossed the bay when we arrived. (past progressive)',
+    hint:'Use: was + crossing' },
+  { id:5,
+    original:'The birds fly over the water. (present progressive)',
+    hint:'Use: are + flying' },
+  { id:6,
+    original:'A family built a sandcastle when it started to rain. (past progressive)',
+    hint:'Use: was/were + building' }
+];
+
+/* ============ RENDER RELATIVE GAP TEXT ============ */
+function renderRelGapText() {
+  var html = '';
+  relSegments.forEach(function(seg) {
+    if (seg.t === 'text') {
+      html += seg.v;
+    } else {
+      var gap = relGaps.find(function(g){ return g.id === seg.g; });
+      html += '<sup class="gap-num">' + seg.g + '</sup>';
+      html += '<select class="gap-select" id="rgap-' + seg.g + '" onchange="saveRelGap(' + seg.g + ')">';
+      gap.options.forEach(function(o){ html += '<option value="' + o + '">' + o + '</option>'; });
+      html += '</select>';
+    }
+  });
+  document.getElementById('rel-gap-text').innerHTML = html;
+}
+
+function saveRelGap(id) {
+  state.exB['r' + id] = document.getElementById('rgap-' + id).value;
+}
+
+function checkRelGaps() {
+  var correct = 0, wrong = 0, empty = 0;
+  relGaps.forEach(function(gap) {
+    var sel = document.getElementById('rgap-' + gap.id);
+    var v = (sel.value || '').trim();
+    if (!v || v === '___') { empty++; sel.className = 'gap-select'; return; }
+    var ok = gap.correct.some(function(c){ return c.toLowerCase() === v.toLowerCase(); });
+    sel.className = ok ? 'gap-select gap-correct' : 'gap-select gap-wrong';
+    if (ok) correct++; else wrong++;
+  });
+  var fb = document.getElementById('rel-feedback');
+  fb.classList.add('show');
+  if (empty > 0) {
+    fb.className = 'feedback warn show';
+    fb.textContent = correct + ' correct, ' + wrong + ' incorrect. ' + empty + ' gap(s) still unanswered.';
+  } else if (wrong === 0) {
+    fb.className = 'feedback ok show';
+    fb.textContent = '✓ All ' + correct + ' answers correct! Note: some gaps accept more than one pronoun.';
+  } else {
+    fb.className = 'feedback warn show';
+    fb.textContent = correct + ' correct, ' + wrong + ' incorrect. Check the red gaps and try again.';
+  }
+}
+
+function resetRelGaps() {
+  relGaps.forEach(function(gap) {
+    var sel = document.getElementById('rgap-' + gap.id);
+    sel.value = '___'; sel.className = 'gap-select';
+  });
+  var fb = document.getElementById('rel-feedback');
+  fb.className = 'feedback'; fb.classList.remove('show');
+}
+
+/* ============ RENDER PROGRESSIVE ITEMS ============ */
+function renderProgItems() {
+  var html = '';
+  progItems.forEach(function(item) {
+    html += '<div class="transform-item">';
+    html += '<span class="transform-num">' + item.id + '</span>';
+    html += '<div class="transform-original">' + item.original + '</div>';
+    html += '<textarea class="form-textarea" id="prog-' + item.id + '" rows="2" placeholder="Rewrite the sentence here…" style="min-height:56px"></textarea>';
+    html += '<div class="transform-hint">' + item.hint + '</div>';
+    html += '</div>';
+  });
+  document.getElementById('prog-items').innerHTML = html;
+}
+
+/* ============ NAVIGATION ============ */
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(function(s){ s.classList.remove('active'); });
+  document.getElementById('step-' + n).classList.add('active');
+  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
+  window.scrollTo({ top:0, behavior:'smooth' });
+  restoreStep(n);
+  var meta = document.getElementById('header-meta');
+  if (n === 0) { meta.style.display = 'none'; return; }
+  meta.style.display = 'block';
+  document.getElementById('header-name').textContent = state.name + (state.cls ? ' — ' + state.cls : '');
+  var labels = ['A','B','C'];
+  document.getElementById('header-step').textContent = n <= 3
+    ? 'Exercise ' + labels[n-1] + ' of 3'
+    : 'Submit';
+}
+
+function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
+
+function nextStep(n) {
+  if (!validateStep(n)) {
+    var err = document.getElementById('step' + n + '-error');
+    err.textContent = 'Please answer all required questions before continuing.';
+    err.classList.add('show'); return;
+  }
+  clearErr(n); saveStep(n);
+  if (n === 3) { buildSummary(); showStep(4); } else { showStep(n + 1); }
+}
+
+function clearErr(n) {
+  var err = document.getElementById('step' + n + '-error');
+  if (err) err.classList.remove('show');
+}
+
+function validateStep(n) {
+  switch(n) {
+    case 1: return val('exA-a') && val('exA-b') && val('exA-c') && val('exA-d');
+    case 2:
+      var rFilled = 0;
+      relGaps.forEach(function(g){ var s = document.getElementById('rgap-' + g.id); if (s && s.value && s.value !== '___') rFilled++; });
+      var pFilled = 0;
+      progItems.forEach(function(p){ var el = document.getElementById('prog-' + p.id); if (el && el.value.trim()) pFilled++; });
+      return rFilled >= 5 && pFilled >= 4;
+    case 3: return val('exC-present') && val('exC-past') && val('exC-opinion');
+    default: return true;
+  }
+}
+
+function val(id) { var el = document.getElementById(id); return el && el.value.trim().length > 0; }
+
+function saveStep(n) {
+  switch(n) {
+    case 1:
+      state.exA.a = g('exA-a'); state.exA.b = g('exA-b');
+      state.exA.c = g('exA-c'); state.exA.d = g('exA-d'); break;
+    case 2:
+      relGaps.forEach(function(gap){ var s = document.getElementById('rgap-' + gap.id); state.exB['r'+gap.id] = s ? s.value : ''; });
+      progItems.forEach(function(p){ var el = document.getElementById('prog-' + p.id); state.exB['p'+p.id] = el ? el.value.trim() : ''; }); break;
+    case 3:
+      state.exC.present = g('exC-present'); state.exC.past = g('exC-past'); state.exC.opinion = g('exC-opinion'); break;
+  }
+}
+
+function g(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+
+function restoreStep(n) {
+  switch(n) {
+    case 1:
+      set('exA-a', state.exA.a); set('exA-b', state.exA.b);
+      set('exA-c', state.exA.c); set('exA-d', state.exA.d); break;
+    case 2:
+      relGaps.forEach(function(gap){ var s = document.getElementById('rgap-' + gap.id); if (s && state.exB['r'+gap.id]) s.value = state.exB['r'+gap.id]; });
+      progItems.forEach(function(p){ set('prog-' + p.id, state.exB['p'+p.id]); }); break;
+    case 3:
+      set('exC-present', state.exC.present); set('exC-past', state.exC.past); set('exC-opinion', state.exC.opinion); break;
+  }
+}
+
+function set(id, v) { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
+
+function startExercises() {
+  var name = g('inp-name'), cls = g('inp-class'), err = document.getElementById('welcome-error');
+  if (!name || !cls) { err.textContent = 'Please enter both your name and your class.'; err.classList.add('show'); return; }
+  err.classList.remove('show'); state.name = name; state.cls = cls; showStep(1);
+}
+
+/* ============ SUMMARY ============ */
+function esc(str) { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
+
+function buildSummary() {
+  var relLines = relGaps.map(function(g){ return 'Gap ' + g.id + ': ' + (state.exB['r'+g.id] || '(blank)'); }).join('\n');
+  var progLines = progItems.map(function(p, i){ return (i+1) + '. ' + (state.exB['p'+p.id] || '(blank)'); }).join('\n');
+
+  var rows = [
+    { ex:'Exercise A – Reading', q:'a) What makes SA unusual?',          a: state.exA.a },
+    { ex:'Exercise A – Reading', q:'b) Apartheid & Mandela',             a: state.exA.b },
+    { ex:'Exercise A – Reading', q:'c) Why tourists visit SA',           a: state.exA.c },
+    { ex:'Exercise A – Reading', q:'d) Problems SA faces today',         a: state.exA.d },
+    { ex:'Exercise B – Relative clauses', q:'Gap-fill (1–6)',            a: relLines },
+    { ex:'Exercise B – Progressive',      q:'Sentence rewrites (1–6)',   a: progLines },
+    { ex:'Exercise C – Writing', q:'a) Present progressive description', a: state.exC.present },
+    { ex:'Exercise C – Writing', q:'b) Past progressive description',    a: state.exC.past },
+    { ex:'Exercise C – Writing', q:'c) Personal opinion',                a: state.exC.opinion }
+  ];
+
+  var html = '<div class="submit-summary"><div class="summary-row"><div class="summary-ex">Student</div><div class="summary-q">'
+    + esc(state.name) + ' — ' + esc(state.cls) + '</div></div>';
+  rows.forEach(function(r){
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div>'
+      + '<div class="summary-q">' + esc(r.q) + '</div>'
+      + '<div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+}
+
+function buildEmailBody() {
+  var relLines  = relGaps.map(function(g){ return 'Gap ' + g.id + ': ' + (state.exB['r'+g.id] || '(blank)'); }).join('\n');
+  var progLines = progItems.map(function(p, i){
+    return (i+1) + '. Original: ' + p.original + '\n   Answer: ' + (state.exB['p'+p.id] || '(blank)');
+  }).join('\n\n');
+
+  return 'SOUTH AFRICA – REVISION (9C)'
+    + '\nStudent: ' + state.name + '\nClass:   ' + state.cls + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
+    + '\n\n--- EXERCISE A: READING ---'
+    + '\na) What makes SA unusual:\n' + (state.exA.a||'(none)')
+    + '\n\nb) Apartheid & Mandela:\n' + (state.exA.b||'(none)')
+    + '\n\nc) Tourists:\n' + (state.exA.c||'(none)')
+    + '\n\nd) Problems:\n' + (state.exA.d||'(none)')
+    + '\n\n--- EXERCISE B: RELATIVE CLAUSES ---\n' + relLines
+    + '\n\n--- EXERCISE B: PROGRESSIVE TENSES ---\n' + progLines
+    + '\n\n--- EXERCISE C: WRITING ---'
+    + '\na) Present progressive:\n' + (state.exC.present||'(none)')
+    + '\n\nb) Past progressive:\n' + (state.exC.past||'(none)')
+    + '\n\nc) Opinion:\n' + (state.exC.opinion||'(none)');
+}
+
+function submitToSheet() {
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true; btn.textContent = 'Sending…';
+  fetch(SHEET_URL, { method:'POST', mode:'no-cors',
+    headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:'payload=' + encodeURIComponent(JSON.stringify({
+      name:state.name, cls:state.cls, unit:'9c-south-africa-revision',
+      exA:state.exA, exB:state.exB, exC:state.exC
+    }))
+  }).then(function(){
+    btn.style.display='none';
+    document.getElementById('submit-success').style.display='block';
+    document.getElementById('submit-fallback').style.display='block';
+  }).catch(function(){
+    btn.disabled=false; btn.textContent='🚀 Submit to Teacher';
+    document.getElementById('submit-fallback').style.display='block';
+  });
+}
+
+function submitByEmail() {
+  var a = document.createElement('a');
+  a.href = 'mailto:' + TEACHER_EMAIL
+    + '?subject=' + encodeURIComponent('South Africa Revision – ' + state.name + ' – ' + state.cls)
+    + '&body='    + encodeURIComponent(buildEmailBody());
+  a.style.display='none'; document.body.appendChild(a); a.click();
+  setTimeout(function(){ document.body.removeChild(a); }, 100);
+}
+
+function copyAnswers() {
+  navigator.clipboard.writeText(buildEmailBody())
+    .then(function(){ alert('Answers copied! Paste them into an email to your teacher.'); })
+    .catch(function(){ prompt('Copy this text:', buildEmailBody()); });
+}
+
+/* ============ INIT ============ */
+document.addEventListener('DOMContentLoaded', function() {
+  renderRelGapText();
+  renderProgItems();
+  showStep(0);
+});
+</script>
+
+<script>
+/* ── Paste-block ── */
+document.addEventListener('paste', function(e) {
+  var t = e.target;
+  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
+    e.preventDefault();
+    var msg = document.createElement('div');
+    msg.textContent = '✏️ Pasting is not allowed';
+    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    document.body.appendChild(msg);
+    setTimeout(function(){ msg.style.opacity='0'; setTimeout(function(){ msg.remove(); }, 400); }, 2000);
+  }
+});
+
+/* ── Copy-block ── */
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  var msg = document.createElement('div');
+  msg.textContent = '🚫 Copying is not allowed';
+  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+  document.body.appendChild(msg);
+  setTimeout(function(){ msg.style.opacity='0'; setTimeout(function(){ msg.remove(); }, 400); }, 2000);
+});
+</script>
+
+</body>
+</html>

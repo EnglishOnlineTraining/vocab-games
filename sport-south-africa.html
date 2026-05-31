@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sport in South Africa | englishonline.training</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:    #1a3a5c;
+      --gold:    #c9a227;
+      --gold-lt: #f5e6b0;
+      --teal:    #2b7a78;
+      --red:     #c0392b;
+      --green:   #27ae60;
+      --bg:      #f7f9fc;
+      --card:    #ffffff;
+      --text:    #1d2b3a;
+      --muted:   #6b7a8d;
+      --border:  #dce3ec;
+      --radius:  12px;
+      --shadow:  0 2px 16px rgba(26,58,92,.1);
+      --font:    'Segoe UI', system-ui, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
+
+    .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
+    .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
+    .header-meta { font-size: .78rem; text-align: right; opacity: .9; }
+    .header-meta strong { display: block; color: var(--gold); }
+    .progress-track { height: 6px; background: rgba(255,255,255,.2); }
+    .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
+
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+
+    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
+    .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+    .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
+
+    .reading-text { font-size: .93rem; line-height: 1.85; color: var(--text); }
+    .reading-text p { margin-bottom: .85rem; }
+    .reading-text p:last-child { margin-bottom: 0; }
+
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+    .form-input, .form-textarea {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+      padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
+      color: var(--text); background: #fff; transition: border-color .2s;
+    }
+    .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--blue); }
+    .form-textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+    .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+
+    /* Gap-fill / inline selects */
+    .gap-select {
+      display: inline-block; border: 1.5px solid var(--gold); border-radius: 6px;
+      padding: .18rem .45rem; font-family: var(--font); font-size: .82rem;
+      background: var(--gold-lt); color: var(--blue); cursor: pointer;
+      vertical-align: middle; margin: 0 2px; max-width: 220px;
+    }
+    .gap-select:focus { outline: none; border-color: var(--blue); }
+    .gap-correct { background: #d4edda !important; border-color: var(--green) !important; color: #155724 !important; }
+    .gap-wrong   { background: #fde8e8 !important; border-color: var(--red)   !important; color: #721c24 !important; }
+
+    /* T/F/NG table */
+    .tfng-table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+    .tfng-table th { text-align: left; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); padding: .4rem .5rem .6rem; border-bottom: 2px solid var(--border); }
+    .tfng-table td { padding: .65rem .5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .tfng-table tr:last-child td { border-bottom: none; }
+    .tfng-num { width: 24px; font-weight: 700; color: var(--gold); }
+    .tfng-stmt { line-height: 1.5; }
+    .tfng-sel { width: 160px; }
+
+    /* MC radio */
+    .mc-item { border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1.1rem; margin-bottom: .65rem; background: #fafbfc; transition: border-color .2s, background .2s; }
+    .mc-item:has(input:checked) { border-color: var(--blue); background: #eef3fa; }
+    .mc-item label { display: flex; align-items: flex-start; gap: .65rem; cursor: pointer; font-size: .9rem; line-height: 1.5; }
+    .mc-item input[type=radio] { margin-top: .2rem; accent-color: var(--blue); flex-shrink: 0; }
+    .mc-item.correct { border-color: var(--green); background: #d4edda; }
+    .mc-item.wrong   { border-color: var(--red);   background: #fde8e8; }
+    .mc-q { font-weight: 600; color: var(--blue); margin-bottom: .6rem; font-size: .92rem; }
+    .mc-block { margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); }
+    .mc-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    /* Vocab matching */
+    .vm-row { display: flex; align-items: center; gap: .75rem; margin-bottom: .85rem; flex-wrap: wrap; }
+    .vm-word { font-weight: 700; color: var(--blue); min-width: 140px; font-size: .9rem; }
+    .vm-select {
+      flex: 1; min-width: 200px; border: 1.5px solid var(--gold); border-radius: 6px;
+      padding: .4rem .6rem; font-family: var(--font); font-size: .83rem;
+      background: var(--gold-lt); color: var(--blue); cursor: pointer;
+    }
+    .vm-select:focus { outline: none; border-color: var(--blue); }
+    .vm-select.gap-correct { background: #d4edda !important; border-color: var(--green) !important; color: #155724 !important; }
+    .vm-select.gap-wrong   { background: #fde8e8 !important; border-color: var(--red)   !important; color: #721c24 !important; }
+
+    /* Check button */
+    .btn-check { background: var(--teal); color: #fff; border: none; border-radius: 8px; padding: .6rem 1.25rem; font-family: var(--font); font-size: .85rem; font-weight: 600; cursor: pointer; margin-top: .75rem; transition: background .15s; }
+    .btn-check:hover { background: #225f5d; }
+
+    .check-result { font-size: .85rem; font-weight: 600; margin-top: .6rem; padding: .5rem .85rem; border-radius: 8px; display: none; }
+    .check-result.show { display: block; }
+    .check-result.ok  { background: #d4edda; color: #155724; }
+    .check-result.partial { background: #fff3cd; color: #856404; }
+    .check-result.bad { background: #fde8e8; color: #721c24; }
+
+    .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
+    .feedback.show { display: block; }
+    .feedback.ok   { background: #d4edda; color: #155724; }
+    .feedback.warn { background: #fff3cd; color: #856404; }
+    .feedback.err  { background: #fde8e8; color: #721c24; }
+
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
+    .btn-primary:hover { background: #15304f; }
+    .btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
+    .btn-gold:hover { background: #b8911f; }
+    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+    .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
+    .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
+    .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+    .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 460px; margin-left: auto; margin-right: auto; }
+    .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+    .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; }
+    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
+    .ov-card.locked { opacity: .5; }
+    .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+
+    .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
+    .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
+    .summary-a  { color: var(--text); white-space: pre-wrap; }
+
+    @media (max-width: 480px) {
+      .ex-title { font-size: 1.25rem; }
+      .btn { padding: .65rem 1.1rem; }
+      .welcome-title { font-size: 1.4rem; }
+      .vm-row { flex-direction: column; align-items: flex-start; }
+      .vm-select { width: 100%; }
+      .tfng-sel { width: 130px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Exercise A of 4</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+
+
+<!-- ====================================================
+     STEP 0 – WELCOME
+===================================================== -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">🏉</div>
+      <h1 class="welcome-title">Sport in South Africa</h1>
+      <p class="welcome-sub">Explore how sport has shaped South African society — from apartheid to the modern day.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">💭</div><strong>Ex A – Pre-reading</strong>Share your own ideas before you read</div>
+      <div class="ov-card locked"><div class="ov-icon">✅</div><strong>Ex B – True / False / NG</strong>Check statements against the text</div>
+      <div class="ov-card locked"><div class="ov-icon">🔘</div><strong>Ex C – Multiple Choice</strong>Select the best answer</div>
+      <div class="ov-card locked"><div class="ov-icon">🔤</div><strong>Ex D – Vocabulary</strong>Match words to their meanings</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. 9g" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 1 – EX A: PRE-READING QUESTIONS
+===================================================== -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">Before You Read</h2>
+    <p class="ex-subtitle">Answer these questions using your own ideas. There are no right or wrong answers — write in English.</p>
+
+    <div class="card">
+      <div class="card-title">💭 Pre-reading questions</div>
+
+      <div class="form-group">
+        <label class="form-label" for="exA-q1">1. What sports are popular in your country? Name two and say why people enjoy them.</label>
+        <textarea class="form-textarea" id="exA-q1" placeholder="Write your answer here..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="exA-q2">2. Do you think sport can help bring people from different backgrounds together? Give a reason for your answer.</label>
+        <textarea class="form-textarea" id="exA-q2" placeholder="Write your answer here..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="exA-q3">3. What do you already know about South Africa? Write two things.</label>
+        <textarea class="form-textarea" id="exA-q3" placeholder="Write your answer here..."></textarea>
+      </div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 2 – EX B: TRUE / FALSE / NOT GIVEN
+===================================================== -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B</span>
+    <h2 class="ex-title">True, False or Not Given?</h2>
+    <p class="ex-subtitle">Read the text below, then decide whether each statement is <strong>True</strong>, <strong>False</strong> or <strong>Not Given</strong> (the information is not in the text). Use the dropdown menus.</p>
+
+    <div class="card">
+      <div class="card-title">📄 The Text</div>
+      <div class="reading-text">
+        <p>Today it may seem difficult to believe, but under the apartheid system sport in South Africa was segregated. Teams with both black and white players weren't allowed. In the 1970s and 80s there were protests because of this all around the world, and South Africa was banned from international sport, including the Olympic Games. This only changed in 1994 when the government decided to hold democratic elections.</p>
+        <p>Today things are different. Everyone loves sport, and sports organisations have tried hard to break down racial barriers. In cricket and rugby, for example, there is a 'quota system'. This means that teams must always include a percentage of black players. However, there's a lot of discussion about this because white players might be disadvantaged now or black players might only be chosen because of the colour of their skin.</p>
+        <p>The 'big three' most popular sports are rugby, football and cricket. <strong>Rugby</strong> was always seen as a white man's game in South Africa. The Springboks — that's the nickname of the national team — are amazingly good at rugby, and it is not at all easy to beat them. The only other team that their proud supporters really respect are the New Zealand All Blacks. But in 1995, just after the end of apartheid, the Springboks beat the All Blacks, who were the favourites, and won the Rugby World Cup. The whole country celebrated when President Mandela put on a jersey with Springbok colours — the colours of a white man's sport — to present the cup. This was a truly proud moment for the new South Africa, which was on its way to becoming a more equal society. Five years after that match Mandela said, "Sport has the power to change the world. It has the power to inspire, it has the power to unite people in a way that little else does."</p>
+        <p><strong>Football</strong> is without question one of the most popular sports in South Africa with a huge number of supporters in the black community, especially among young people. In 2010 South Africa hosted the World Cup — it was the first time the competition was hosted by an African country. Although South Africa didn't do well in the competition, there was a great atmosphere in the stadiums and the cities. Many will remember the loud noise of the vuvuzelas — whether they liked it or not.</p>
+        <p><strong>Cricket</strong> was introduced by the British in the 19th century and it has a long history in South Africa. Today there are a number of successful young black players who are role models for the next generation.</p>
+        <p><strong>Swimming</strong> is another sport where the country has been successful in big international competitions. Three of its ten Olympic medals in 2016 were for swimming. The world's largest open-water swim, the Midmar Mile, takes place in a lake near the city of Durban every February.</p>
+        <p><strong>Horse racing</strong> is another popular sport. The Durban July race, which was first held in 1897, is Africa's greatest horse race with about 50,000 spectators every year. <strong>Cycle races</strong> attract many people who want to experience the country's most spectacular scenery very closely. With more than 35,000 cyclists, the Cape Town Cycle Tour is one of the largest cycle events in the world. The race begins in Cape Town and the 109-km route takes cyclists on a beautiful coastal road around the Cape Peninsula.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📝 Statements</div>
+      <table class="tfng-table">
+        <thead>
+          <tr>
+            <th class="tfng-num">#</th>
+            <th class="tfng-stmt">Statement</th>
+            <th class="tfng-sel">Your answer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="tfng-num">1</td>
+            <td class="tfng-stmt">Under apartheid, teams with both black and white players were not allowed.</td>
+            <td class="tfng-sel">
+              <select class="gap-select" id="tfng-1" style="width:100%">
+                <option value="">– choose –</option>
+                <option value="True">True</option>
+                <option value="False">False</option>
+                <option value="Not Given">Not Given</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td class="tfng-num">2</td>
+            <td class="tfng-stmt">South Africa was first banned from international sport in the 1960s.</td>
+            <td class="tfng-sel">
+              <select class="gap-select" id="tfng-2" style="width:100%">
+                <option value="">– choose –</option>
+                <option value="True">True</option>
+                <option value="False">False</option>
+                <option value="Not Given">Not Given</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td class="tfng-num">3</td>
+            <td class="tfng-stmt">The quota system means teams must always include a percentage of black players.</td>
+            <td class="tfng-sel">
+              <select class="gap-select" id="tfng-3" style="width:100%">
+                <option value="">– choose –</option>
+                <option value="True">True</option>
+                <option value="False">False</option>
+                <option value="Not Given">Not Given</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td class="tfng-num">4</td>
+            <td class="tfng-stmt">The New Zealand All Blacks are the only team that Springbok supporters truly respect.</td>
+            <td class="tfng-sel">
+              <select class="gap-select" id="tfng-4" style="width:100%">
+                <option value="">– choose –</option>
+                <option value="True">True</option>
+                <option value="False">False</option>
+                <option value="Not Given">Not Given</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td class="tfng-num">5</td>
+            <td class="tfng-stmt">South Africa won the FIFA World Cup in 2010.</td>
+            <td class="tfng-sel">
+              <select class="gap-select" id="tfng-5" style="width:100%">
+                <option value="">– choose –</option>
+                <option value="True">True</option>
+                <option value="False">False</option>
+                <option value="Not Given">Not Given</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td class="tfng-num">6</td>
+            <td class="tfng-stmt">The Midmar Mile open-water swim takes place every February near Durban.</td>
+            <td class="tfng-sel">
+              <select class="gap-select" id="tfng-6" style="width:100%">
+                <option value="">– choose –</option>
+                <option value="True">True</option>
+                <option value="False">False</option>
+                <option value="Not Given">Not Given</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button class="btn-check" onclick="checkTFNG()">Check Answers</button>
+      <div id="tfng-result" class="check-result"></div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 3 – EX C: MULTIPLE CHOICE
+===================================================== -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise C</span>
+    <h2 class="ex-title">Multiple Choice</h2>
+    <p class="ex-subtitle">Choose the best answer for each question. Use the text from Exercise B to help you.</p>
+
+    <div class="card">
+
+      <!-- Q1 -->
+      <div class="mc-block" id="mc-block-1">
+        <div class="mc-q">1. Why did things change for South African sport in 1994?</div>
+        <div class="mc-item" id="mc-1-a"><label><input type="radio" name="mc1" value="a"> South Africa won the Rugby World Cup that year.</label></div>
+        <div class="mc-item" id="mc-1-b"><label><input type="radio" name="mc1" value="b"> The government decided to hold democratic elections.</label></div>
+        <div class="mc-item" id="mc-1-c"><label><input type="radio" name="mc1" value="c"> New sports equality laws were introduced by the UN.</label></div>
+        <div class="mc-item" id="mc-1-d"><label><input type="radio" name="mc1" value="d"> The quota system was created for all sports teams.</label></div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="mc-block" id="mc-block-2">
+        <div class="mc-q">2. What does the 'quota system' require?</div>
+        <div class="mc-item" id="mc-2-a"><label><input type="radio" name="mc2" value="a"> Teams must play a minimum number of home games each season.</label></div>
+        <div class="mc-item" id="mc-2-b"><label><input type="radio" name="mc2" value="b"> Foreign players must be included in every national team.</label></div>
+        <div class="mc-item" id="mc-2-c"><label><input type="radio" name="mc2" value="c"> Teams must always include a percentage of black players.</label></div>
+        <div class="mc-item" id="mc-2-d"><label><input type="radio" name="mc2" value="d"> Black and white teams must play an equal number of matches.</label></div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="mc-block" id="mc-block-3">
+        <div class="mc-q">3. What did President Mandela do at the 1995 Rugby World Cup?</div>
+        <div class="mc-item" id="mc-3-a"><label><input type="radio" name="mc3" value="a"> He gave a speech calling for an end to the quota system.</label></div>
+        <div class="mc-item" id="mc-3-b"><label><input type="radio" name="mc3" value="b"> He put on a Springbok jersey to present the cup to the team.</label></div>
+        <div class="mc-item" id="mc-3-c"><label><input type="radio" name="mc3" value="c"> He announced that apartheid was officially over.</label></div>
+        <div class="mc-item" id="mc-3-d"><label><input type="radio" name="mc3" value="d"> He introduced football as South Africa's national sport.</label></div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="mc-block" id="mc-block-4">
+        <div class="mc-q">4. According to the text, what is special about the 2010 FIFA World Cup?</div>
+        <div class="mc-item" id="mc-4-a"><label><input type="radio" name="mc4" value="a"> South Africa performed better than expected in the competition.</label></div>
+        <div class="mc-item" id="mc-4-b"><label><input type="radio" name="mc4" value="b"> It was the first time the competition was hosted by an African country.</label></div>
+        <div class="mc-item" id="mc-4-c"><label><input type="radio" name="mc4" value="c"> It was watched by more people than any previous World Cup.</label></div>
+        <div class="mc-item" id="mc-4-d"><label><input type="radio" name="mc4" value="d"> Vuvuzelas were banned in stadiums for the first time.</label></div>
+      </div>
+
+      <button class="btn-check" onclick="checkMC()">Check Answers</button>
+      <div id="mc-result" class="check-result"></div>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise D →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 4 – EX D: VOCABULARY MATCHING
+===================================================== -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise D</span>
+    <h2 class="ex-title">Vocabulary Matching</h2>
+    <p class="ex-subtitle">Match each word or phrase from the text to the correct definition. Use the dropdown menus.</p>
+
+    <div class="card">
+      <div class="card-title">🔤 Words from the text</div>
+
+      <div class="vm-row">
+        <span class="vm-word">segregated</span>
+        <select class="vm-select" id="vm-1">
+          <option value="">– choose a definition –</option>
+          <option value="a">a fan or follower of a sports team</option>
+          <option value="b">kept separate, usually because of race</option>
+          <option value="c">a long plastic horn blown by football fans</option>
+          <option value="d">a sports shirt worn by a team</option>
+          <option value="e">someone that others look up to and want to copy</option>
+          <option value="f">to bring people together as one group</option>
+        </select>
+      </div>
+
+      <div class="vm-row">
+        <span class="vm-word">supporter</span>
+        <select class="vm-select" id="vm-2">
+          <option value="">– choose a definition –</option>
+          <option value="a">a fan or follower of a sports team</option>
+          <option value="b">kept separate, usually because of race</option>
+          <option value="c">a long plastic horn blown by football fans</option>
+          <option value="d">a sports shirt worn by a team</option>
+          <option value="e">someone that others look up to and want to copy</option>
+          <option value="f">to bring people together as one group</option>
+        </select>
+      </div>
+
+      <div class="vm-row">
+        <span class="vm-word">jersey</span>
+        <select class="vm-select" id="vm-3">
+          <option value="">– choose a definition –</option>
+          <option value="a">a fan or follower of a sports team</option>
+          <option value="b">kept separate, usually because of race</option>
+          <option value="c">a long plastic horn blown by football fans</option>
+          <option value="d">a sports shirt worn by a team</option>
+          <option value="e">someone that others look up to and want to copy</option>
+          <option value="f">to bring people together as one group</option>
+        </select>
+      </div>
+
+      <div class="vm-row">
+        <span class="vm-word">to unite</span>
+        <select class="vm-select" id="vm-4">
+          <option value="">– choose a definition –</option>
+          <option value="a">a fan or follower of a sports team</option>
+          <option value="b">kept separate, usually because of race</option>
+          <option value="c">a long plastic horn blown by football fans</option>
+          <option value="d">a sports shirt worn by a team</option>
+          <option value="e">someone that others look up to and want to copy</option>
+          <option value="f">to bring people together as one group</option>
+        </select>
+      </div>
+
+      <div class="vm-row">
+        <span class="vm-word">vuvuzela</span>
+        <select class="vm-select" id="vm-5">
+          <option value="">– choose a definition –</option>
+          <option value="a">a fan or follower of a sports team</option>
+          <option value="b">kept separate, usually because of race</option>
+          <option value="c">a long plastic horn blown by football fans</option>
+          <option value="d">a sports shirt worn by a team</option>
+          <option value="e">someone that others look up to and want to copy</option>
+          <option value="f">to bring people together as one group</option>
+        </select>
+      </div>
+
+      <div class="vm-row">
+        <span class="vm-word">role model</span>
+        <select class="vm-select" id="vm-6">
+          <option value="">– choose a definition –</option>
+          <option value="a">a fan or follower of a sports team</option>
+          <option value="b">kept separate, usually because of race</option>
+          <option value="c">a long plastic horn blown by football fans</option>
+          <option value="d">a sports shirt worn by a team</option>
+          <option value="e">someone that others look up to and want to copy</option>
+          <option value="f">to bring people together as one group</option>
+        </select>
+      </div>
+
+      <button class="btn-check" onclick="checkVocab()">Check Answers</button>
+      <div id="vm-result" class="check-result"></div>
+    </div>
+
+    <div id="step4-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(4)">Review &amp; Submit →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 5 – REVIEW & SUBMIT
+===================================================== -->
+<section id="step-5" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission did not work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+var UNIT         = 'sport-south-africa';
+var TOTAL_STEPS  = 5;
+var SHEET_URL    = 'https://script.google.com/macros/s/AKfycbw2eqOCB6XKREIOXuqn2fCL067CdMm20MmiTFMt9GmRUEn12vLl8gJbHL1UfbKmCP7W/exec';
+var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+
+/* Answer keys */
+var TFNG_ANSWERS = { 1: 'True', 2: 'Not Given', 3: 'True', 4: 'True', 5: 'False', 6: 'True' };
+var MC_ANSWERS   = { 1: 'b', 2: 'c', 3: 'b', 4: 'b' };
+var VM_ANSWERS   = { 1: 'b', 2: 'a', 3: 'd', 4: 'f', 5: 'c', 6: 'e' };
+
+var state = {
+  name: '', cls: '',
+  exA: { q1: '', q2: '', q3: '' },
+  exB: { q1: '', q2: '', q3: '', q4: '', q5: '', q6: '' },
+  exC: { q1: '', q2: '', q3: '', q4: '' },
+  exD: { q1: '', q2: '', q3: '', q4: '', q5: '', q6: '' }
+};
+
+/* ── Navigation ── */
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('step-' + n).classList.add('active');
+  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  restoreStep(n);
+  var meta = document.getElementById('header-meta');
+  if (n === 0) { meta.style.display = 'none'; return; }
+  meta.style.display = 'block';
+  document.getElementById('header-name').textContent = state.name + (state.cls ? ' — ' + state.cls : '');
+  var labels = ['A', 'B', 'C', 'D'];
+  document.getElementById('header-step').textContent = n < TOTAL_STEPS
+    ? 'Exercise ' + labels[n - 1] + ' of 4'
+    : 'Submit';
+}
+
+function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
+
+function nextStep(n) {
+  if (!validateStep(n)) {
+    var err = document.getElementById('step' + n + '-error');
+    if (err) { err.textContent = 'Please answer all required questions before continuing.'; err.classList.add('show'); }
+    return;
+  }
+  clearErr(n);
+  saveStep(n);
+  if (n === TOTAL_STEPS - 1) { buildSummary(); }
+  showStep(n + 1);
+}
+
+function clearErr(n) {
+  var err = document.getElementById('step' + n + '-error');
+  if (err) err.classList.remove('show');
+}
+
+function startExercises() {
+  var name = g('inp-name'), cls = g('inp-class');
+  var err = document.getElementById('welcome-error');
+  if (!name || !cls) {
+    err.textContent = 'Please enter both your name and your class.';
+    err.classList.add('show');
+    return;
+  }
+  err.classList.remove('show');
+  state.name = name;
+  state.cls  = cls;
+  showStep(1);
+}
+
+/* ── Validation ── */
+function validateStep(n) {
+  switch (n) {
+    case 1: return val('exA-q1') && val('exA-q2') && val('exA-q3');
+    case 2:
+      for (var i = 1; i <= 6; i++) { if (!g('tfng-' + i)) return false; }
+      return true;
+    case 3:
+      for (var j = 1; j <= 4; j++) {
+        var sel = document.querySelector('input[name="mc' + j + '"]:checked');
+        if (!sel) return false;
+      }
+      return true;
+    case 4:
+      for (var k = 1; k <= 6; k++) { if (!g('vm-' + k)) return false; }
+      return true;
+    default: return true;
+  }
+}
+
+/* ── Save / Restore ── */
+function saveStep(n) {
+  switch (n) {
+    case 1:
+      state.exA.q1 = g('exA-q1');
+      state.exA.q2 = g('exA-q2');
+      state.exA.q3 = g('exA-q3');
+      break;
+    case 2:
+      for (var i = 1; i <= 6; i++) state.exB['q' + i] = g('tfng-' + i);
+      break;
+    case 3:
+      for (var j = 1; j <= 4; j++) {
+        var sel = document.querySelector('input[name="mc' + j + '"]:checked');
+        state.exC['q' + j] = sel ? sel.value : '';
+      }
+      break;
+    case 4:
+      for (var k = 1; k <= 6; k++) state.exD['q' + k] = g('vm-' + k);
+      break;
+  }
+}
+
+function restoreStep(n) {
+  switch (n) {
+    case 1:
+      set('exA-q1', state.exA.q1);
+      set('exA-q2', state.exA.q2);
+      set('exA-q3', state.exA.q3);
+      break;
+    case 2:
+      for (var i = 1; i <= 6; i++) set('tfng-' + i, state.exB['q' + i]);
+      break;
+    case 3:
+      for (var j = 1; j <= 4; j++) {
+        if (state.exC['q' + j]) {
+          var r = document.querySelector('input[name="mc' + j + '"][value="' + state.exC['q' + j] + '"]');
+          if (r) r.checked = true;
+        }
+      }
+      break;
+    case 4:
+      for (var k = 1; k <= 6; k++) set('vm-' + k, state.exD['q' + k]);
+      break;
+  }
+}
+
+/* ── Check: T/F/NG ── */
+function checkTFNG() {
+  var correct = 0;
+  for (var i = 1; i <= 6; i++) {
+    var sel = document.getElementById('tfng-' + i);
+    var val2 = sel.value;
+    sel.className = 'gap-select';
+    if (!val2) continue;
+    if (val2 === TFNG_ANSWERS[i]) { sel.classList.add('gap-correct'); correct++; }
+    else                          { sel.classList.add('gap-wrong'); }
+  }
+  var res = document.getElementById('tfng-result');
+  res.textContent = correct + ' / 6 correct';
+  res.className = 'check-result show ' + (correct === 6 ? 'ok' : correct >= 4 ? 'partial' : 'bad');
+}
+
+/* ── Check: MC ── */
+function checkMC() {
+  var correct = 0;
+  for (var j = 1; j <= 4; j++) {
+    var chosen = document.querySelector('input[name="mc' + j + '"]:checked');
+    ['a','b','c','d'].forEach(function(opt) {
+      var el = document.getElementById('mc-' + j + '-' + opt);
+      el.classList.remove('correct', 'wrong');
+    });
+    if (!chosen) continue;
+    var ans = MC_ANSWERS[j];
+    document.getElementById('mc-' + j + '-' + ans).classList.add('correct');
+    if (chosen.value === ans) { correct++; }
+    else { document.getElementById('mc-' + j + '-' + chosen.value).classList.add('wrong'); }
+  }
+  var res = document.getElementById('mc-result');
+  res.textContent = correct + ' / 4 correct';
+  res.className = 'check-result show ' + (correct === 4 ? 'ok' : correct >= 2 ? 'partial' : 'bad');
+}
+
+/* ── Check: Vocab ── */
+function checkVocab() {
+  var correct = 0;
+  for (var k = 1; k <= 6; k++) {
+    var sel = document.getElementById('vm-' + k);
+    var val3 = sel.value;
+    sel.className = 'vm-select';
+    if (!val3) continue;
+    if (val3 === VM_ANSWERS[k]) { sel.classList.add('gap-correct'); correct++; }
+    else                        { sel.classList.add('gap-wrong'); }
+  }
+  var res = document.getElementById('vm-result');
+  res.textContent = correct + ' / 6 correct';
+  res.className = 'check-result show ' + (correct === 6 ? 'ok' : correct >= 4 ? 'partial' : 'bad');
+}
+
+/* ── Summary ── */
+function buildSummary() {
+  saveStep(1); saveStep(2); saveStep(3); saveStep(4);
+
+  var vmLabels = {
+    a: 'a fan or follower of a sports team',
+    b: 'kept separate, usually because of race',
+    c: 'a long plastic horn blown by football fans',
+    d: 'a sports shirt worn by a team',
+    e: 'someone that others look up to and want to copy',
+    f: 'to bring people together as one group'
+  };
+  var vmWords = ['segregated', 'supporter', 'jersey', 'to unite', 'vuvuzela', 'role model'];
+  var mcOptions = {
+    1: { a: 'South Africa won the Rugby World Cup', b: 'The government held democratic elections', c: 'New UN laws introduced', d: 'The quota system was created' },
+    2: { a: 'Minimum home games per season', b: 'Foreign players in every team', c: 'A percentage of black players required', d: 'Equal matches for black and white teams' },
+    3: { a: 'Speech about the quota system', b: 'Put on a Springbok jersey to present the cup', c: 'Announced end of apartheid', d: 'Made football the national sport' },
+    4: { a: 'South Africa performed better than expected', b: 'First time hosted by an African country', c: 'Most-watched World Cup ever', d: 'Vuvuzelas banned for first time' }
+  };
+
+  var rows = [
+    { ex: 'Exercise A – Pre-reading', q: 'Q1: Popular sports in your country', a: state.exA.q1 },
+    { ex: 'Exercise A – Pre-reading', q: 'Q2: Can sport unite people?', a: state.exA.q2 },
+    { ex: 'Exercise A – Pre-reading', q: 'Q3: What do you know about South Africa?', a: state.exA.q3 }
+  ];
+  for (var i = 1; i <= 6; i++) {
+    rows.push({ ex: 'Exercise B – True/False/NG', q: 'Statement ' + i, a: state.exB['q' + i] || '(no answer)' });
+  }
+  for (var j = 1; j <= 4; j++) {
+    var ans = state.exC['q' + j];
+    rows.push({ ex: 'Exercise C – Multiple Choice', q: 'Question ' + j, a: ans ? mcOptions[j][ans] : '(no answer)' });
+  }
+  for (var k = 1; k <= 6; k++) {
+    var v = state.exD['q' + k];
+    rows.push({ ex: 'Exercise D – Vocabulary', q: vmWords[k-1], a: v ? vmLabels[v] : '(no answer)' });
+  }
+
+  var html = '<div class="submit-summary">'
+    + '<div class="summary-row"><div class="summary-ex">Student</div>'
+    + '<div class="summary-q">' + esc(state.name) + ' — ' + esc(state.cls) + '</div></div>';
+  rows.forEach(function(r) {
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div>'
+      + '<div class="summary-q">' + esc(r.q) + '</div>'
+      + '<div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+}
+
+/* ── Email fallback ── */
+function buildEmailBody() {
+  var lines = ['Exercise: ' + UNIT, 'Student: ' + state.name, 'Class:   ' + state.cls, 'Date:    ' + new Date().toLocaleDateString('en-GB'), ''];
+  lines.push('--- Exercise A: Pre-reading ---');
+  lines.push('Q1: ' + (state.exA.q1 || '(none)'));
+  lines.push('Q2: ' + (state.exA.q2 || '(none)'));
+  lines.push('Q3: ' + (state.exA.q3 || '(none)'));
+  lines.push('');
+  lines.push('--- Exercise B: True/False/NG ---');
+  for (var i = 1; i <= 6; i++) lines.push('Statement ' + i + ': ' + (state.exB['q' + i] || '(none)'));
+  lines.push('');
+  lines.push('--- Exercise C: Multiple Choice ---');
+  for (var j = 1; j <= 4; j++) lines.push('Question ' + j + ': ' + (state.exC['q' + j] || '(none)'));
+  lines.push('');
+  lines.push('--- Exercise D: Vocabulary ---');
+  var vmWords = ['segregated', 'supporter', 'jersey', 'to unite', 'vuvuzela', 'role model'];
+  for (var k = 1; k <= 6; k++) lines.push(vmWords[k-1] + ': ' + (state.exD['q' + k] || '(none)'));
+  return lines.join('\n');
+}
+
+/* ── Submit ── */
+function submitToSheet() {
+  buildSummary();
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  var payload = { name: state.name, cls: state.cls, unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD };
+  fetch(SHEET_URL, {
+    method: 'POST', mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+  }).then(function() {
+    btn.style.display = 'none';
+    document.getElementById('submit-success').style.display = 'block';
+    document.getElementById('submit-fallback').style.display = 'block';
+  }).catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Submit to Teacher';
+    document.getElementById('submit-fallback').style.display = 'block';
+  });
+}
+
+function submitByEmail() {
+  var a = document.createElement('a');
+  a.href = 'mailto:' + TEACHER_EMAIL
+    + '?subject=' + encodeURIComponent(UNIT + ' - ' + state.name + ' - ' + state.cls)
+    + '&body='    + encodeURIComponent(buildEmailBody());
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function() { document.body.removeChild(a); }, 100);
+}
+
+function copyAnswers() {
+  var body = buildEmailBody();
+  navigator.clipboard.writeText(body)
+    .then(function() { alert('Answers copied! Paste them into an email to your teacher.'); })
+    .catch(function() { prompt('Copy this text:', body); });
+}
+
+/* ── Helpers ── */
+function g(id)      { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+function set(id, v) { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
+function val(id)    { return g(id).length > 0; }
+function esc(str)   { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
+
+document.addEventListener('DOMContentLoaded', function() { showStep(0); });
+</script>
+
+<script>
+/* ── Paste-block ── */
+document.addEventListener('paste', function(e) {
+  var t = e.target;
+  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
+    e.preventDefault();
+    var msg = document.createElement('div');
+    msg.textContent = 'Pasting is not allowed';
+    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    document.body.appendChild(msg);
+    setTimeout(function() { msg.style.opacity='0'; setTimeout(function(){ msg.remove(); }, 400); }, 2000);
+  }
+});
+
+/* ── Copy-block ── */
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  var msg = document.createElement('div');
+  msg.textContent = '🚫 Copying is not allowed';
+  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+  document.body.appendChild(msg);
+  setTimeout(function() { msg.style.opacity='0'; setTimeout(function(){ msg.remove(); }, 400); }, 2000);
+});
+</script>
+
+</body>
+</html>

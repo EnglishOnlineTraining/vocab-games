@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robert the Bruce | englishonline.training</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:    #1a3a5c;
+      --gold:    #c9a227;
+      --gold-lt: #f5e6b0;
+      --teal:    #2b7a78;
+      --red:     #c0392b;
+      --green:   #27ae60;
+      --bg:      #f7f9fc;
+      --card:    #ffffff;
+      --text:    #1d2b3a;
+      --muted:   #6b7a8d;
+      --border:  #dce3ec;
+      --radius:  12px;
+      --shadow:  0 2px 16px rgba(26,58,92,.1);
+      --font:    'Segoe UI', system-ui, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
+
+    .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
+    .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
+    .header-meta { font-size: .78rem; text-align: right; opacity: .9; }
+    .header-meta strong { display: block; color: var(--gold); }
+    .progress-track { height: 6px; background: rgba(255,255,255,.2); }
+    .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
+
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+
+    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
+    .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+    .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
+
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+    .form-input, .form-textarea {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+      padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
+      color: var(--text); background: #fff; transition: border-color .2s;
+    }
+    .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--blue); }
+    .form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+    .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+
+    /* Who-is-it items */
+    .who-item { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: .85rem; background: #fafbfc; display: flex; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
+    .who-num { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .8rem; font-weight: 800; flex-shrink: 0; margin-top: .1rem; }
+    .who-clue { flex: 1; font-size: .92rem; color: var(--text); min-width: 180px; }
+    .who-select {
+      border: 1.5px solid var(--gold); border-radius: 6px;
+      padding: .3rem .6rem; font-family: var(--font); font-size: .85rem;
+      background: var(--gold-lt); color: var(--blue); cursor: pointer;
+    }
+    .who-select:focus { outline: none; border-color: var(--blue); }
+    .who-correct { background: #d4edda; border-color: var(--green); color: #155724; }
+    .who-wrong   { background: #fde8e8; border-color: var(--red);   color: #721c24; }
+
+    /* Writing task tabs */
+    .tab-row { display: flex; gap: .5rem; margin-bottom: 1rem; }
+    .tab-btn { padding: .5rem 1rem; border-radius: 8px 8px 0 0; border: 1.5px solid var(--border); background: #f0f2f5; color: var(--muted); font-size: .85rem; font-weight: 600; cursor: pointer; }
+    .tab-btn.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
+    .feedback.show { display: block; }
+    .feedback.ok   { background: #d4edda; color: #155724; }
+    .feedback.warn { background: #fff3cd; color: #856404; }
+    .feedback.err  { background: #fde8e8; color: #721c24; }
+
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
+    .btn-primary:hover { background: #15304f; }
+    .btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
+    .btn-gold:hover { background: #b8911f; }
+    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+    .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+    .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
+    .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
+    .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+    .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+    .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; }
+    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
+    .ov-card.locked { opacity: .5; }
+    .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+
+    .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
+    .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
+    .summary-a  { color: var(--text); white-space: pre-wrap; }
+
+    @media (max-width: 480px) {
+      .ex-title { font-size: 1.25rem; }
+      .btn { padding: .65rem 1.1rem; }
+      .welcome-title { font-size: 1.4rem; }
+      .who-item { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step"></span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+
+
+<!-- ====================================================
+     STEP 0 – WELCOME
+===================================================== -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">⚔️</div>
+      <h1 class="welcome-title">Robert the Bruce</h1>
+      <p class="welcome-sub">Three exercises based on the comic strip: reading comprehension, questions about the story, and a writing task.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">🧩</div><strong>Ex A – Who is it?</strong>Match clues to the right person</div>
+      <div class="ov-card locked"><div class="ov-icon">📖</div><strong>Ex B – Questions</strong>Answer questions about the story</div>
+      <div class="ov-card locked"><div class="ov-icon">✍️</div><strong>Ex C – Writing</strong>Biography or dialogue</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. 7c" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 1 – EXERCISE A: Who is it?
+===================================================== -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">Who is it?</h2>
+    <p class="ex-subtitle">Read each clue and choose the correct person from the dropdown. Then click <em>Check Answers</em>.</p>
+
+    <div class="card">
+      <div class="card-title">Choose: Robert the Bruce / Edward I / Edward II</div>
+      <div id="who-items"></div>
+      <div class="btn-row">
+        <button class="btn btn-outline btn-sm" onclick="checkWho()">Check Answers</button>
+        <button class="btn btn-outline btn-sm" onclick="resetWho()">Reset</button>
+      </div>
+      <div id="who-feedback" class="feedback"></div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 2 – EXERCISE B: Answer the questions
+===================================================== -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B</span>
+    <h2 class="ex-title">Answer the Questions</h2>
+    <p class="ex-subtitle">Write your answers in complete sentences. Use information from the comic strip.</p>
+
+    <div class="card">
+      <div class="card-title">Questions about Robert the Bruce</div>
+      <div class="form-group">
+        <label class="form-label" for="exB-q1">1. Explain why Robert the Bruce decided to never give up.</label>
+        <textarea class="form-textarea" id="exB-q1" placeholder="Write 2–3 sentences..." rows="4"></textarea>
+        <div class="form-hint">Think about what he saw in the cave and how it inspired him.</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exB-q2">2. Who fought whom at Bannockburn?</label>
+        <textarea class="form-textarea" id="exB-q2" placeholder="Write 1–2 sentences..." rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exB-q3">3. Who won at Bannockburn and why did they win?</label>
+        <textarea class="form-textarea" id="exB-q3" placeholder="Write 2–3 sentences..." rows="4"></textarea>
+        <div class="form-hint">Think about the land, the tactics, and the conditions at Bannockburn.</div>
+      </div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 3 – EXERCISE C: Writing
+===================================================== -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise C</span>
+    <h2 class="ex-title">Writing Task</h2>
+    <p class="ex-subtitle">Choose one of the two tasks below. Click the tab to select your task, then write your answer.</p>
+
+    <div class="card">
+      <div class="tab-row">
+        <button class="tab-btn active" id="tab-a-btn" onclick="switchTab('a')">Task A – Biography</button>
+        <button class="tab-btn" id="tab-b-btn" onclick="switchTab('b')">Task B – Dialogue</button>
+      </div>
+
+      <!-- Task A: Biography -->
+      <div class="tab-panel active" id="tab-a">
+        <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Write a short biography of Robert the Bruce. Include the most important facts and dates from his life.</p>
+        <div style="background:var(--gold-lt);border:1.5px solid var(--gold);border-radius:8px;padding:.75rem 1rem;margin-bottom:1rem;font-size:.82rem;color:var(--blue)">
+          <strong style="display:block;margin-bottom:.4rem">Study Skill – Writing a biography</strong>
+          Note the most important facts and dates: when he was born / became king / won important battles / died. Use these to write in your own words.
+        </div>
+        <div style="background:#f0f2f5;border-radius:8px;padding:.75rem 1rem;margin-bottom:1rem;font-size:.82rem;color:var(--muted)">
+          Key dates from the comic: 14th century – battles between Scotland and England &nbsp;|&nbsp; 1306 – became king &nbsp;|&nbsp; 1314 – Battle of Bannockburn &nbsp;|&nbsp; 1329 – died
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="exC-bio">Your biography (80–120 words)</label>
+          <textarea class="form-textarea" id="exC-bio" placeholder="Robert the Bruce was born..." rows="8" style="min-height:140px"></textarea>
+        </div>
+      </div>
+
+      <!-- Task B: Dialogue -->
+      <div class="tab-panel" id="tab-b">
+        <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">It is 1329 and Robert has just died. An old Scottish soldier tells his son or daughter about the Battle of Bannockburn. Write the dialogue and give the people names.</p>
+        <div style="background:#f0f2f5;border-radius:8px;padding:.75rem 1rem;margin-bottom:1rem;font-size:.82rem;color:var(--blue)">
+          <strong>How to start:</strong><br>
+          A: I'll never forget it, that battle!<br>
+          B: Tell me more! …<br>
+          A: Well, …
+        </div>
+        <div style="background:var(--gold-lt);border:1.5px solid var(--gold);border-radius:8px;padding:.75rem 1rem;margin-bottom:1rem;font-size:.82rem;color:var(--blue)">
+          <strong style="display:block;margin-bottom:.3rem">Use these question words to keep the dialogue going:</strong>
+          When …? &nbsp;&nbsp; What …? &nbsp;&nbsp; Why …? &nbsp;&nbsp; Who …?
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="exC-dialogue">Your dialogue (at least 8 lines)</label>
+          <textarea class="form-textarea" id="exC-dialogue" placeholder="Give your characters names, e.g.&#10;Hamish: I'll never forget it, that battle!&#10;Isla: Tell me more!&#10;Hamish: Well, ..." rows="12" style="min-height:200px"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(3)">Review &amp; Submit →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 4 – REVIEW & SUBMIT
+===================================================== -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission didn't work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+/* ============ CONFIG ============ */
+const SHEET_URL     = 'https://script.google.com/macros/s/AKfycbw2eqOCB6XKREIOXuqn2fCL067CdMm20MmiTFMt9GmRUEn12vLl8gJbHL1UfbKmCP7W/exec';
+const TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+const UNIT          = 'robert-the-bruce-7c';
+const TOTAL_STEPS   = 4;
+
+/* ============ STATE ============ */
+const state = { name:'', cls:'', exA:{}, exB:{}, exC:{ task:'a', bio:'', dialogue:'' } };
+
+/* ============ WHO IS IT DATA ============ */
+const whoItems = [
+  { id:1, clue:'He became king of Scotland in 1306.',              correct:'Robert the Bruce' },
+  { id:2, clue:'He lost six battles against the English.',         correct:'Robert the Bruce' },
+  { id:3, clue:'He died before an important battle.',              correct:'Edward I'          },
+  { id:4, clue:'His army lost the Battle of Bannockburn in 1314.', correct:'Edward II'         }
+];
+const whoOptions = ['___', 'Robert the Bruce', 'Edward I', 'Edward II'];
+
+/* ============ RENDER WHO-IS-IT ============ */
+function renderWhoItems() {
+  var html = '';
+  whoItems.forEach(function(item) {
+    html += '<div class="who-item">';
+    html += '<span class="who-num">' + item.id + '</span>';
+    html += '<span class="who-clue">' + item.clue + '</span>';
+    html += '<select class="who-select" id="who-' + item.id + '">';
+    whoOptions.forEach(function(o) { html += '<option value="' + o + '">' + o + '</option>'; });
+    html += '</select></div>';
+  });
+  document.getElementById('who-items').innerHTML = html;
+}
+
+function checkWho() {
+  var correct = 0, wrong = 0, empty = 0;
+  whoItems.forEach(function(item) {
+    var sel = document.getElementById('who-' + item.id);
+    var val = sel.value;
+    if (!val || val === '___') { empty++; sel.className = 'who-select'; return; }
+    if (val === item.correct) { correct++; sel.className = 'who-select who-correct'; }
+    else                      { wrong++;   sel.className = 'who-select who-wrong';   }
+  });
+  var fb = document.getElementById('who-feedback');
+  fb.classList.add('show');
+  if (empty > 0) {
+    fb.className = 'feedback warn show';
+    fb.textContent = correct + ' correct, ' + wrong + ' incorrect, ' + empty + ' still unanswered.';
+  } else if (wrong === 0) {
+    fb.className = 'feedback ok show';
+    fb.textContent = '✓ All ' + correct + ' correct! Well done.';
+  } else {
+    fb.className = 'feedback warn show';
+    fb.textContent = correct + ' correct, ' + wrong + ' incorrect. Check the red ones and try again.';
+  }
+}
+
+function resetWho() {
+  whoItems.forEach(function(item) {
+    var sel = document.getElementById('who-' + item.id);
+    sel.value = '___'; sel.className = 'who-select';
+  });
+  var fb = document.getElementById('who-feedback');
+  fb.className = 'feedback'; fb.classList.remove('show');
+}
+
+/* ============ TAB SWITCHING ============ */
+var activeTab = 'a';
+function switchTab(tab) {
+  activeTab = tab;
+  state.exC.task = tab;
+  document.getElementById('tab-a-btn').className = 'tab-btn' + (tab === 'a' ? ' active' : '');
+  document.getElementById('tab-b-btn').className = 'tab-btn' + (tab === 'b' ? ' active' : '');
+  document.getElementById('tab-a').className = 'tab-panel' + (tab === 'a' ? ' active' : '');
+  document.getElementById('tab-b').className = 'tab-panel' + (tab === 'b' ? ' active' : '');
+}
+
+/* ============ NAVIGATION ============ */
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(function(s){ s.classList.remove('active'); });
+  document.getElementById('step-' + n).classList.add('active');
+  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
+  window.scrollTo({ top:0, behavior:'smooth' });
+  restoreStep(n);
+  var meta = document.getElementById('header-meta');
+  if (n === 0) { meta.style.display = 'none'; return; }
+  meta.style.display = 'block';
+  document.getElementById('header-name').textContent = state.name + (state.cls ? ' — ' + state.cls : '');
+  var labels = ['A','B','C'];
+  document.getElementById('header-step').textContent = n < TOTAL_STEPS ? 'Exercise ' + labels[n-1] + ' of 3' : 'Submit';
+}
+
+function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
+
+function nextStep(n) {
+  if (!validateStep(n)) {
+    var err = document.getElementById('step' + n + '-error');
+    err.textContent = 'Please answer all required questions before continuing.';
+    err.classList.add('show'); return;
+  }
+  clearErr(n); saveStep(n);
+  if (n === TOTAL_STEPS - 1) { buildSummary(); }
+  showStep(n + 1);
+}
+
+function clearErr(n) {
+  var err = document.getElementById('step' + n + '-error');
+  if (err) err.classList.remove('show');
+}
+
+function startExercises() {
+  var name = g('inp-name'), cls = g('inp-class'), err = document.getElementById('welcome-error');
+  if (!name || !cls) { err.textContent = 'Please enter both your name and your class.'; err.classList.add('show'); return; }
+  err.classList.remove('show'); state.name = name; state.cls = cls; showStep(1);
+}
+
+/* ============ VALIDATION ============ */
+function validateStep(n) {
+  switch(n) {
+    case 1:
+      var answered = whoItems.filter(function(item) {
+        var sel = document.getElementById('who-' + item.id);
+        return sel && sel.value && sel.value !== '___';
+      }).length;
+      return answered === whoItems.length;
+    case 2: return val('exB-q1') && val('exB-q2') && val('exB-q3');
+    case 3: return activeTab === 'a' ? val('exC-bio') : val('exC-dialogue');
+    default: return true;
+  }
+}
+
+/* ============ SAVE / RESTORE ============ */
+function saveStep(n) {
+  switch(n) {
+    case 1:
+      whoItems.forEach(function(item) {
+        var sel = document.getElementById('who-' + item.id);
+        state.exA['w' + item.id] = sel ? sel.value : '';
+      }); break;
+    case 2:
+      state.exB.q1 = g('exB-q1');
+      state.exB.q2 = g('exB-q2');
+      state.exB.q3 = g('exB-q3'); break;
+    case 3:
+      state.exC.task     = activeTab;
+      state.exC.bio      = g('exC-bio');
+      state.exC.dialogue = g('exC-dialogue'); break;
+  }
+}
+
+function restoreStep(n) {
+  switch(n) {
+    case 1:
+      whoItems.forEach(function(item) {
+        var sel = document.getElementById('who-' + item.id);
+        if (sel && state.exA['w' + item.id]) sel.value = state.exA['w' + item.id];
+      }); break;
+    case 2:
+      set('exB-q1', state.exB.q1);
+      set('exB-q2', state.exB.q2);
+      set('exB-q3', state.exB.q3); break;
+    case 3:
+      switchTab(state.exC.task || 'a');
+      set('exC-bio', state.exC.bio);
+      set('exC-dialogue', state.exC.dialogue); break;
+  }
+}
+
+/* ============ HELPERS ============ */
+function g(id)      { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+function set(id, v) { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
+function val(id)    { return g(id).length > 0; }
+function esc(str)   { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
+
+/* ============ SUMMARY ============ */
+function buildSummary() {
+  var whoLines = whoItems.map(function(item) {
+    return item.id + '. ' + item.clue + '\n   → ' + (state.exA['w' + item.id] || '(blank)');
+  }).join('\n');
+
+  var taskLabel = state.exC.task === 'b' ? 'Task B – Dialogue' : 'Task A – Biography';
+  var taskAnswer = state.exC.task === 'b' ? state.exC.dialogue : state.exC.bio;
+
+  var rows = [
+    { ex:'Exercise A – Who is it?',       q:'Clues 1–4',                                a:whoLines         },
+    { ex:'Exercise B – Questions',         q:'1. Why did Robert never give up?',          a:state.exB.q1     },
+    { ex:'Exercise B – Questions',         q:'2. Who fought at Bannockburn?',             a:state.exB.q2     },
+    { ex:'Exercise B – Questions',         q:'3. Who won and why?',                       a:state.exB.q3     },
+    { ex:'Exercise C – Writing (' + taskLabel + ')', q:taskLabel,                         a:taskAnswer       }
+  ];
+
+  var html = '<div class="submit-summary"><div class="summary-row"><div class="summary-ex">Student</div><div class="summary-q">' + esc(state.name) + ' — ' + esc(state.cls) + '</div></div>';
+  rows.forEach(function(r) {
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div><div class="summary-q">' + esc(r.q) + '</div><div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+}
+
+/* ============ EMAIL BODY ============ */
+function buildEmailBody() {
+  var whoLines = whoItems.map(function(item) {
+    return item.id + '. ' + item.clue + '\n   → ' + (state.exA['w' + item.id] || '(blank)');
+  }).join('\n');
+  var taskLabel  = state.exC.task === 'b' ? 'Task B – Dialogue' : 'Task A – Biography';
+  var taskAnswer = state.exC.task === 'b' ? state.exC.dialogue : state.exC.bio;
+  return 'ROBERT THE BRUCE\nStudent: ' + state.name + '\nClass:   ' + state.cls + '\nDate:    ' + new Date().toLocaleDateString('en-GB') +
+    '\n\n--- EXERCISE A – WHO IS IT? ---\n' + whoLines +
+    '\n\n--- EXERCISE B – QUESTIONS ---\n1. Why did Robert never give up?\n' + (state.exB.q1 || '(none)') +
+    '\n\n2. Who fought at Bannockburn?\n' + (state.exB.q2 || '(none)') +
+    '\n\n3. Who won and why?\n' + (state.exB.q3 || '(none)') +
+    '\n\n--- EXERCISE C – WRITING (' + taskLabel + ') ---\n' + (taskAnswer || '(none)');
+}
+
+/* ============ SUBMIT ============ */
+function submitToSheet() {
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true; btn.textContent = 'Sending…';
+  var payload = { name:state.name, cls:state.cls, unit:UNIT, exA:state.exA, exB:state.exB, exC:state.exC };
+  fetch(SHEET_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:'payload=' + encodeURIComponent(JSON.stringify(payload))
+  }).then(function() {
+    btn.style.display = 'none';
+    document.getElementById('submit-success').style.display = 'block';
+    document.getElementById('submit-fallback').style.display = 'block';
+  }).catch(function() {
+    btn.disabled = false; btn.textContent = '🚀 Submit to Teacher';
+    document.getElementById('submit-fallback').style.display = 'block';
+  });
+}
+
+function submitByEmail() {
+  var a = document.createElement('a');
+  a.href = 'mailto:' + TEACHER_EMAIL
+    + '?subject=' + encodeURIComponent('Robert the Bruce – ' + state.name + ' – ' + state.cls)
+    + '&body='    + encodeURIComponent(buildEmailBody());
+  a.style.display = 'none'; document.body.appendChild(a); a.click();
+  setTimeout(function(){ document.body.removeChild(a); }, 100);
+}
+
+function copyAnswers() {
+  navigator.clipboard.writeText(buildEmailBody())
+    .then(function(){ alert('Answers copied! Paste them into an email to your teacher.'); })
+    .catch(function(){ prompt('Copy this text:', buildEmailBody()); });
+}
+
+/* ============ INIT ============ */
+document.addEventListener('DOMContentLoaded', function() {
+  renderWhoItems();
+  showStep(0);
+});
+</script>
+
+<script>
+/* ── Paste-block ── */
+document.addEventListener('paste', function(e) {
+  var t = e.target;
+  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
+    e.preventDefault();
+    var msg = document.createElement('div');
+    msg.textContent = '✏️ Pasting is not allowed';
+    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    document.body.appendChild(msg);
+    setTimeout(function(){ msg.style.opacity='0'; setTimeout(function(){ msg.remove(); },400); },2000);
+  }
+});
+
+/* ── Copy-block ── */
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  var msg = document.createElement('div');
+  msg.textContent = '🚫 Copying is not allowed';
+  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+  document.body.appendChild(msg);
+  setTimeout(function(){ msg.style.opacity='0'; setTimeout(function(){ msg.remove(); },400); },2000);
+});
+</script>
+
+</body>
+</html>
