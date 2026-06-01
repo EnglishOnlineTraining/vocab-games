@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Summer Revision – 9g | englishonline.training</title>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:    #1a3a5c;
+      --gold:    #c9a227;
+      --gold-lt: #f5e6b0;
+      --teal:    #2b7a78;
+      --red:     #c0392b;
+      --green:   #27ae60;
+      --bg:      #f7f9fc;
+      --card:    #ffffff;
+      --text:    #1d2b3a;
+      --muted:   #6b7a8d;
+      --border:  #dce3ec;
+      --radius:  12px;
+      --shadow:  0 2px 16px rgba(26,58,92,.1);
+      --font:    'Segoe UI', system-ui, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
+
+    /* ── Header ── */
+    .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
+    .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
+    .header-meta { font-size: .78rem; text-align: right; opacity: .9; }
+    .header-meta strong { display: block; color: var(--gold); }
+    .progress-track { height: 6px; background: rgba(255,255,255,.2); }
+    .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
+
+    /* ── Steps ── */
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+
+    /* ── Exercise labels ── */
+    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
+    .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+    .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+    /* ── Cards ── */
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
+
+    /* ── Reading text ── */
+    .reading-text { font-size: .93rem; line-height: 1.85; color: var(--text); }
+    .reading-text p { margin-bottom: .85rem; }
+    .reading-text p:last-child { margin-bottom: 0; }
+    .speaker { font-weight: 700; }
+    .glossary { font-size: .78rem; color: var(--muted); margin-top: 1rem; border-top: 1px dashed var(--border); padding-top: .75rem; }
+    .glossary b { color: var(--blue); }
+
+    /* ── Forms ── */
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+    .form-input, .form-textarea {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+      padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
+      color: var(--text); background: #fff; transition: border-color .2s;
+    }
+    .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--blue); }
+    .form-textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+    .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+    .form-input.gap-correct { background: #d4edda; border-color: var(--green); color: #155724; }
+    .form-input.gap-wrong   { background: #fde8e8; border-color: var(--red);   color: #721c24; }
+
+    /* ── Gap-fill (dropdown) ── */
+    .gap-text { font-size: .95rem; line-height: 2.6; color: var(--text); margin-bottom: .4rem; }
+    .gap-select {
+      display: inline-block; border: 1.5px solid var(--gold); border-radius: 6px;
+      padding: .18rem .45rem; font-family: var(--font); font-size: .85rem;
+      background: var(--gold-lt); color: var(--blue); cursor: pointer;
+      vertical-align: middle; margin: 0 2px;
+    }
+    .gap-select:focus { outline: none; border-color: var(--blue); }
+    .gap-correct { background: #d4edda !important; border-color: var(--green) !important; color: #155724 !important; }
+    .gap-wrong   { background: #fde8e8 !important; border-color: var(--red)   !important; color: #721c24 !important; }
+    .gap-num { font-size: .68rem; color: var(--muted); vertical-align: super; margin-right: 1px; }
+
+    /* ── Word bank ── */
+    .word-bank { background: var(--gold-lt); border: 1.5px solid var(--gold); border-radius: 8px; padding: .75rem 1rem; margin-bottom: 1.25rem; }
+    .word-bank strong { display: block; color: var(--blue); margin-bottom: .5rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; }
+    .word-bank span { display: inline-block; margin: .2rem .3rem; background: var(--blue); color: #fff; border-radius: 4px; padding: .18rem .55rem; font-size: .8rem; font-weight: 600; }
+
+    /* ── Matching ── */
+    .def-list { list-style: none; font-size: .87rem; line-height: 1.7; margin-bottom: 1.25rem; }
+    .def-list li { margin-bottom: .35rem; }
+    .def-list b { color: var(--gold); }
+    .match-row { display: flex; align-items: center; gap: .6rem; margin-bottom: .7rem; }
+    .match-word { flex: 1; font-weight: 600; color: var(--blue); font-size: .92rem; }
+
+    /* ── Sentence transformation / combine ── */
+    .transform-item { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: .85rem; background: #fafbfc; }
+    .transform-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 800; flex-shrink: 0; margin-bottom: .5rem; }
+    .transform-original { font-size: .9rem; color: var(--text); margin-bottom: .65rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); }
+    .transform-original span { display: block; font-style: italic; }
+    .transform-hint { font-size: .75rem; color: var(--muted); margin-top: .3rem; }
+
+    /* ── Model answers reveal ── */
+    .model-box { display: none; background: #eef6ee; border: 1.5px solid var(--green); border-radius: 8px; padding: .9rem 1.1rem; margin-top: 1rem; font-size: .86rem; line-height: 1.6; }
+    .model-box.show { display: block; }
+    .model-box h4 { color: var(--green); font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .5rem; }
+    .model-box ol { margin-left: 1.1rem; }
+    .model-box li { margin-bottom: .35rem; }
+
+    /* ── Feedback banners ── */
+    .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
+    .feedback.show { display: block; }
+    .feedback.ok   { background: #d4edda; color: #155724; }
+    .feedback.warn { background: #fff3cd; color: #856404; }
+    .feedback.err  { background: #fde8e8; color: #721c24; }
+
+    /* ── Buttons ── */
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
+    .btn-primary:hover { background: #15304f; }
+    .btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
+    .btn-gold:hover { background: #b8911f; }
+    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+    .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+    .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    /* ── Welcome screen ── */
+    .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
+    .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
+    .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+    .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 460px; margin-left: auto; margin-right: auto; }
+    .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+    .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; }
+    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
+    .ov-card.locked { opacity: .5; }
+    .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+
+    /* ── Submit / summary ── */
+    .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
+    .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
+    .summary-a  { color: var(--text); white-space: pre-wrap; }
+
+    @media (max-width: 480px) {
+      .ex-title { font-size: 1.25rem; }
+      .btn { padding: .65rem 1.1rem; }
+      .welcome-title { font-size: 1.4rem; }
+      .gap-select { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Sticky header ── -->
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Exercise A of 5</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+
+
+<!-- ====================================================
+     STEP 0 – WELCOME
+===================================================== -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">☀️</div>
+      <h1 class="welcome-title">Summer Revision – Class 9AB</h1>
+      <p class="welcome-sub">Get ready for your class test! These five practice exercises cover exactly the same skills as the test — articles, relative clauses, California vocabulary, future tenses and reading. Different questions, same topics. Check your answers as you go.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">🔤</div><strong>Ex A – Articles</strong>a / an / the / – (zero article)</div>
+      <div class="ov-card locked"><div class="ov-icon">🔗</div><strong>Ex B – Relative Clauses</strong>Combine sentences with who, which, that, where, whose</div>
+      <div class="ov-card locked"><div class="ov-icon">🌅</div><strong>Ex C – Vocabulary</strong>California: matching + gap-fill</div>
+      <div class="ov-card locked"><div class="ov-icon">⏳</div><strong>Ex D – Future Tenses</strong>Future progressive & future perfect</div>
+      <div class="ov-card locked"><div class="ov-icon">📖</div><strong>Ex E – Reading</strong>"The Perfect Location" + questions</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. 9a" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Revision →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 1 – EXERCISE A · ARTICLES
+===================================================== -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">Articles</h2>
+    <p class="ex-subtitle">Choose the correct article in each gap: <b>a</b>, <b>an</b>, <b>the</b> or <b>–</b> (zero article / no article). 13 gaps.</p>
+
+    <div class="card">
+      <div class="card-title">Choose the correct article</div>
+
+      <div class="gap-text">
+        1. We watched <select class="gap-select" id="exA-g1"><option value="">—choose—</option><option>a</option><option>an</option><option>the</option><option>–</option></select> documentary about climate change last night.
+      </div>
+      <div class="gap-text">
+        2. <select class="gap-select" id="exA-g2"><option value="">—choose—</option><option>a</option><option>an</option><option>the</option><option>–</option></select> documentary explained how <select class="gap-select" id="exA-g3"><option value="">—choose—</option><option>a</option><option>an</option><option>the</option><option>–</option></select> solar energy works.
+      </div>
+      <div class="gap-text">
+        3. She works for <select class="gap-select" id="exA-g4"><option value="">—choose—</option><option>a</option><option>an</option><option>the</option><option>–</option></select> organisation that protects <select class="gap-select" id="exA-g5"><option value="">—choose—</option><option>a</option><option>an</option><option>the</option><option>–</option></select> environment.
+      </div>
+      <div class="gap-text">
+        4. <select class="gap-select" id="exA-g6"><option value="">—choose—</option><option>a</option><option>an</option><option>the</option><option>–</option></select> Great Barrier Reef is one of <select class="gap-select" id="exA-g7"><option value="">—choose—</option><option>a</option><option>an</option><option>the</option><option>–</option></select> most beautiful places on Earth.
+      </div>
+      <div class="gap-text">
+        5. <select class="gap-select" id="exA-g8"><option value="">—choose—</option><option>a</option><option>an</option><option>the</option><option>–</option></select> electric car uses <select class="gap-select" id="exA-g9"><option value="">—choose—</option><option>a</option><option>an</option><option>the</option><option>–</option></select> electricity instead of <select class="gap-select" id="exA-g10"><option value="">—choose—</option><option>a</option><option>an</option><option>the</option><option>–</option></select> petrol.
+      </div>
+      <div class="gap-text">
+        6. They built <select class="gap-select" id="exA-g11"><option value="">—choose—</option><option>a</option><option>an</option><option>the</option><option>–</option></select> wind farm near <select class="gap-select" id="exA-g12"><option value="">—choose—</option><option>a</option><option>an</option><option>the</option><option>–</option></select> small town on <select class="gap-select" id="exA-g13"><option value="">—choose—</option><option>a</option><option>an</option><option>the</option><option>–</option></select> coast.
+      </div>
+
+      <button class="btn btn-outline btn-sm" style="margin-top:1rem" onclick="checkArticles()">✓ Check my answers</button>
+      <div id="exA-result" class="feedback ok"></div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 2 – EXERCISE B · RELATIVE CLAUSES
+===================================================== -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B</span>
+    <h2 class="ex-title">Relative Clauses</h2>
+    <p class="ex-subtitle">Combine the two sentences into one using a relative clause (who, which, that, where, whose). Add commas where they are needed for non-defining clauses.</p>
+
+    <div class="card">
+      <div class="card-title">Combine the sentences</div>
+
+      <div class="transform-item">
+        <div class="transform-num">1</div>
+        <div class="transform-original"><span>This is the factory.</span><span>It produces the most CO₂ in the region.</span></div>
+        <input class="form-input" type="text" id="exB-r1" placeholder="This is the factory ...">
+      </div>
+      <div class="transform-item">
+        <div class="transform-num">2</div>
+        <div class="transform-original"><span>Greta Thunberg is a climate activist.</span><span>Her speeches have inspired millions.</span></div>
+        <input class="form-input" type="text" id="exB-r2" placeholder="Greta Thunberg ...">
+        <div class="transform-hint">Tip: a name is unique — this needs a non-defining clause with commas.</div>
+      </div>
+      <div class="transform-item">
+        <div class="transform-num">3</div>
+        <div class="transform-original"><span>This is the land.</span><span>The artefacts were found there.</span></div>
+        <input class="form-input" type="text" id="exB-r3" placeholder="This is the land ...">
+        <div class="transform-hint">Tip: a place → use <i>where</i>.</div>
+      </div>
+      <div class="transform-item">
+        <div class="transform-num">4</div>
+        <div class="transform-original"><span>This is the report.</span><span>Scientists published it last year.</span></div>
+        <input class="form-input" type="text" id="exB-r4" placeholder="This is the report ...">
+      </div>
+      <div class="transform-item">
+        <div class="transform-num">5</div>
+        <div class="transform-original"><span>The outback is a vast desert region.</span><span>Very few people live there.</span></div>
+        <input class="form-input" type="text" id="exB-r5" placeholder="The outback ...">
+        <div class="transform-hint">Tip: extra information about one unique place → non-defining (commas).</div>
+      </div>
+      <div class="transform-item">
+        <div class="transform-num">6</div>
+        <div class="transform-original"><span>Professor Clarkson led the research.</span><span>His findings changed our understanding of history.</span></div>
+        <input class="form-input" type="text" id="exB-r6" placeholder="Professor Clarkson ...">
+        <div class="transform-hint">Tip: belonging to a person → use <i>whose</i>.</div>
+      </div>
+
+      <button class="btn btn-outline btn-sm" style="margin-top:.5rem" onclick="toggleModel('exB-model','exB-model-btn')" id="exB-model-btn">💡 Show suggested answers</button>
+      <div id="exB-model" class="model-box">
+        <h4>Suggested answers</h4>
+        <ol>
+          <li>This is the factory <b>that/which</b> produces the most CO₂ in the region.</li>
+          <li>Greta Thunberg<b>, whose speeches have inspired millions,</b> is a climate activist.</li>
+          <li>This is the land <b>where</b> the artefacts were found.</li>
+          <li>This is the report <b>(that/which)</b> scientists published last year.</li>
+          <li>The outback<b>, where very few people live,</b> is a vast desert region.</li>
+          <li>Professor Clarkson<b>, whose findings changed our understanding of history,</b> led the research.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 3 – EXERCISE C · CALIFORNIA VOCABULARY
+===================================================== -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise C</span>
+    <h2 class="ex-title">California Vocabulary</h2>
+    <p class="ex-subtitle">Two parts: match the words to their definitions, then fill the gaps using the word bank.</p>
+
+    <div class="card">
+      <div class="card-title">Part 1 — Match the word to its definition</div>
+      <ul class="def-list">
+        <li><b>A.</b> Air pollution made of a mixture of smoke and fog, common over big cities.</li>
+        <li><b>B.</b> A law that is passed by a government or local authority.</li>
+        <li><b>C.</b> A sudden flow of wet earth and mud down a hillside, often after heavy rain.</li>
+        <li><b>D.</b> Belonging to the earliest people who lived in a place.</li>
+        <li><b>E.</b> An area of land where grapes are grown to make wine.</li>
+      </ul>
+      <div class="match-row"><span class="match-word">1. mudslide</span>
+        <select class="gap-select" id="exC-m1"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      <div class="match-row"><span class="match-word">2. vineyard</span>
+        <select class="gap-select" id="exC-m2"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      <div class="match-row"><span class="match-word">3. indigenous</span>
+        <select class="gap-select" id="exC-m3"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      <div class="match-row"><span class="match-word">4. smog</span>
+        <select class="gap-select" id="exC-m4"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      <div class="match-row"><span class="match-word">5. legislation</span>
+        <select class="gap-select" id="exC-m5"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+
+      <button class="btn btn-outline btn-sm" style="margin-top:1rem" onclick="checkMatch()">✓ Check matching</button>
+      <div id="exC-m-result" class="feedback ok"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Part 2 — Fill in the gaps</div>
+      <div class="word-bank">
+        <strong>Word Bank</strong>
+        <span>cattle call</span> <span>diverse</span> <span>Silicon Valley</span> <span>Gold Rush</span> <span>wildfires</span> <span>drought</span> <span>erosion</span>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exC-b1">1. In 1848, the California ______ attracted thousands of people hoping to find gold.</label>
+        <input class="form-input" type="text" id="exC-b1" placeholder="Type the missing word(s)">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exC-b2">2. Tech giants like Apple and Google have their headquarters in ______, near San Francisco.</label>
+        <input class="form-input" type="text" id="exC-b2" placeholder="Type the missing word(s)">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exC-b3">3. With residents from all over the world, Los Angeles is an extremely ______ city.</label>
+        <input class="form-input" type="text" id="exC-b3" placeholder="Type the missing word(s)">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exC-b4">4. After many months with almost no rain, the state suffered a severe ______.</label>
+        <input class="form-input" type="text" id="exC-b4" placeholder="Type the missing word(s)">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exC-b5">5. Hot, dry winds help ______ spread rapidly across the forests every autumn.</label>
+        <input class="form-input" type="text" id="exC-b5" placeholder="Type the missing word(s)">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exC-b6">6. Hundreds of hopeful actors lined up for the ______ in Hollywood.</label>
+        <input class="form-input" type="text" id="exC-b6" placeholder="Type the missing word(s)">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exC-b7">7. Coastal ______ is a serious problem, as the sea slowly wears away the cliffs.</label>
+        <input class="form-input" type="text" id="exC-b7" placeholder="Type the missing word(s)">
+      </div>
+
+      <button class="btn btn-outline btn-sm" onclick="checkGapfill()">✓ Check gap-fill</button>
+      <div id="exC-b-result" class="feedback ok"></div>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise D →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 4 – EXERCISE D · FUTURE TENSES
+===================================================== -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise D</span>
+    <h2 class="ex-title">Future Tenses</h2>
+    <p class="ex-subtitle">Complete each sentence using the <b>future progressive</b> (will be + -ing) or the <b>future perfect</b> (will have + past participle). Write the full verb form.</p>
+
+    <div class="card">
+      <div class="card-title">Complete the sentences</div>
+      <div class="form-group">
+        <label class="form-label" for="exD-f1">1. By 2050, scientists ______ (find) a solution to plastic pollution.</label>
+        <input class="form-input" type="text" id="exD-f1" placeholder="will ...">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exD-f2">2. This time next year, world leaders ______ (meet) to discuss the new climate deal.</label>
+        <input class="form-input" type="text" id="exD-f2" placeholder="will ...">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exD-f3">3. By 2035, many countries ______ (switch) to 100% renewable energy.</label>
+        <input class="form-input" type="text" id="exD-f3" placeholder="will ...">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exD-f4">4. In ten years' time, electric cars ______ (replace) most petrol vehicles.</label>
+        <input class="form-input" type="text" id="exD-f4" placeholder="will ...">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exD-f5">5. While we sleep tonight, the wind turbines ______ (generate) power for the city.</label>
+        <input class="form-input" type="text" id="exD-f5" placeholder="will ...">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exD-f6">6. By the end of the decade, sea levels ______ (rise) significantly.</label>
+        <input class="form-input" type="text" id="exD-f6" placeholder="will ...">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exD-f7">7. By the time the conference starts, the delegates ______ (arrive) from around the world.</label>
+        <input class="form-input" type="text" id="exD-f7" placeholder="will ...">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exD-f8">8. This time tomorrow, the students ______ (travel) to the climate summit.</label>
+        <input class="form-input" type="text" id="exD-f8" placeholder="will ...">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exD-f9">9. By next month, the new recycling programme ______ (run) for exactly one year.</label>
+        <input class="form-input" type="text" id="exD-f9" placeholder="will ...">
+        <div class="form-hint">Think: a finished period of time seen from a future point.</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exD-f10">10. In 2060, our children ______ (live) with the consequences of today's decisions.</label>
+        <input class="form-input" type="text" id="exD-f10" placeholder="will ...">
+      </div>
+
+      <button class="btn btn-outline btn-sm" onclick="checkFuture()">✓ Check my answers</button>
+      <div id="exD-result" class="feedback ok"></div>
+    </div>
+
+    <div id="step4-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(4)">Continue to Exercise E →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 5 – EXERCISE E · READING
+===================================================== -->
+<section id="step-5" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise E</span>
+    <h2 class="ex-title">Reading — The Perfect Location</h2>
+    <p class="ex-subtitle">Read the story carefully, then answer all three parts.</p>
+
+    <div class="card">
+      <div class="card-title">📖 The Perfect Location</div>
+      <div class="reading-text">
+        <p>Charlotte had been driving since eight that morning, looking for the perfect location. Mostly she really enjoyed her job, hunting for suitable places to shoot movies, but today she'd found nothing, and she was feeling tired, hungry and annoyed. How hard could it be to find a creepy old house for a silly werewolf movie? She saw a small diner along the road and stopped the car outside.</p>
+        <p>Inside, the diner was dark, dusty and old-fashioned. It looked like nothing had changed for decades. There were no other customers, but an elderly man was sitting behind the counter. "Well, hello there, ma'am. What can I get you? A nice cold drink? Some pie? Our apple pie was baked this morning." "Thank you, that sounds great. I'll have a piece of that with cream, please, and a coffee." As she was waiting for the pie, Charlotte noticed there were some photographs of local scenes on the wall. Eureka! There, above the old jukebox, was exactly what she was looking for. It was an old farmhouse, with a big veranda and broken gate. The house seemed abandoned and might be ideal for the werewolf movie. It looked really creepy, and it was just a four hour drive from the movie studio in L.A.</p>
+        <p>The man returned with the pie. "You won't taste a better pie for miles, I promise." Charlotte tried some. He was right. It was delicious. "Excuse me, but I was looking at your photographs here. The old house in that one looks amazing. Can you tell me about it?" "That? That's the old Waxenberg place. My wife's ma used to work there once, years ago. Been empty since old Jed Waxenberg died back in '85. The whole damn house is fallin' apart. They should pull it down. A few years ago, some local kids dared to go and spend the night there. Half scared themselves to death. Said there were strange noises and a really weird feeling about the place. Now nobody'll go near it." "Can you tell me how to get there?" said Charlotte. "I'd love to take a look at it, and get a few photographs." "Well, it's about six or seven miles down a track after the bridge, but you don't wanna go out there, ma'am. It's not safe. We've got much better things for tourists to visit than that. Our forest trails are always popular. This whole area's a national park, you know."</p>
+        <p>Charlotte finished her pie and coffee and thanked the man. She was excited to think that after a long disappointing day perhaps she'd actually found a suitable location. The road was full of holes – more of a rough track than a road. She was glad her car was big enough to deal with it. There were several signs saying 'Private! Keep out!' and in one place a small fallen tree was blocking the track. Charlotte decided to ignore the signs, and simply moved the tree out of the way. Finally, there it was. The old Waxenberg place. It was even more creepy in reality than in the photograph in the diner, and in even worse condition. The director would love it. Everything about it said 'werewolf movie'. She parked a few yards away from the broken gate and took her camera bag from the backseat of the car.</p>
+        <p>She'd get some shots of the place before it got dark. The light wasn't great, with so many tall trees around, but it was good enough. The front door was unlocked and ajar. Should she knock, just in case the owner was inside? No, that was impossible. There couldn't be anyone living there, surely, with the house in this condition. Feeling a little nervous, she stepped inside. The wooden floor of the corridor was covered in broken glass from a mirror that had fallen down. Charlotte was glad she was wearing strong shoes. She hoped the floorboards weren't rotten. Further along the corridor, someone had spray-painted some giant red question marks on the walls. A deep groan came from behind the door. It sounded like an old man who was waking up, or someone in pain. Starting to feel scared, she slowly opened the door – and took a step inside a big, very old-fashioned kitchen. Then suddenly she saw a huge hairy figure moving towards her fast. She ran, fell, and everything went black.</p>
+        <p>She woke up outside. A park ranger was standing over her. "Really sorry we hit you with that tranquillizer dart, ma'am, but we had to shoot. That bear was right on you." A bear. Not a werewolf.</p>
+        <div class="glossary">
+          <b>location</b> = Drehort &nbsp;·&nbsp; <b>werewolf</b> = Werwolf &nbsp;·&nbsp; <b>jukebox</b> = Musikautomat &nbsp;·&nbsp; <b>veranda</b> = Veranda &nbsp;·&nbsp; <b>tranquillizer dart</b> = Betäubungspfeil
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Part A — Right, Wrong, or Not in Text?</div>
+      <div class="match-row"><span class="match-word">1. Charlotte usually enjoys her job.</span>
+        <select class="gap-select" id="exE-a1"><option value="">—</option><option>Right</option><option>Wrong</option><option>Not in text</option></select></div>
+      <div class="match-row"><span class="match-word">2. Charlotte found the perfect location early in the morning.</span>
+        <select class="gap-select" id="exE-a2"><option value="">—</option><option>Right</option><option>Wrong</option><option>Not in text</option></select></div>
+      <div class="match-row"><span class="match-word">3. The old man baked the apple pie himself.</span>
+        <select class="gap-select" id="exE-a3"><option value="">—</option><option>Right</option><option>Wrong</option><option>Not in text</option></select></div>
+      <div class="match-row"><span class="match-word">4. The Waxenberg house looked worse in reality than in the photo.</span>
+        <select class="gap-select" id="exE-a4"><option value="">—</option><option>Right</option><option>Wrong</option><option>Not in text</option></select></div>
+      <div class="match-row"><span class="match-word">5. Charlotte phoned the film director from the diner.</span>
+        <select class="gap-select" id="exE-a5"><option value="">—</option><option>Right</option><option>Wrong</option><option>Not in text</option></select></div>
+      <div class="match-row"><span class="match-word">6. The creature in the house turned out to be a bear.</span>
+        <select class="gap-select" id="exE-a6"><option value="">—</option><option>Right</option><option>Wrong</option><option>Not in text</option></select></div>
+
+      <button class="btn btn-outline btn-sm" style="margin-top:1rem" onclick="checkReadingA()">✓ Check Part A</button>
+      <div id="exE-a-result" class="feedback ok"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Part B — Answer in full sentences</div>
+      <div class="form-group">
+        <label class="form-label" for="exE-b1">1. Why was Charlotte in a bad mood at the start of the story?</label>
+        <textarea class="form-textarea" id="exE-b1" rows="3" placeholder="Write a full sentence..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exE-b2">2. Where did Charlotte first see the Waxenberg house, and what made her think it was suitable?</label>
+        <textarea class="form-textarea" id="exE-b2" rows="3" placeholder="Write a full sentence..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exE-b3">3. Why did the man in the diner advise Charlotte not to go to the house?</label>
+        <textarea class="form-textarea" id="exE-b3" rows="3" placeholder="Write a full sentence..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exE-b4">4. What two things did Charlotte ignore on the way to the house?</label>
+        <textarea class="form-textarea" id="exE-b4" rows="3" placeholder="Write a full sentence..."></textarea>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Part C — Answer in detail</div>
+      <div class="form-group">
+        <label class="form-label" for="exE-c1">1. The story moves through several stages (the search, the diner, the house). Describe how the atmosphere changes from the beginning to the end.</label>
+        <textarea class="form-textarea" id="exE-c1" rows="5" placeholder="Write a detailed answer..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exE-c2">2. The ending is a surprise. What had the reader been led to believe was in the house, and how does the writer create this impression?</label>
+        <textarea class="form-textarea" id="exE-c2" rows="5" placeholder="Write a detailed answer..."></textarea>
+      </div>
+
+      <button class="btn btn-outline btn-sm" onclick="toggleModel('exE-model','exE-model-btn')" id="exE-model-btn">💡 Show ideas for Parts B &amp; C</button>
+      <div id="exE-model" class="model-box">
+        <h4>Ideas you could mention</h4>
+        <ol>
+          <li><b>B1:</b> She had been driving since 8 a.m., had found nothing all day, and felt tired, hungry and annoyed.</li>
+          <li><b>B2:</b> She saw it in a photograph above the jukebox in the diner; it was a creepy, abandoned farmhouse with a veranda and broken gate — perfect for a werewolf movie — and only a four-hour drive from L.A.</li>
+          <li><b>B3:</b> He said it wasn't safe / was falling apart; local kids who stayed overnight were terrified by strange noises; nobody goes near it.</li>
+          <li><b>B4:</b> The 'Private! Keep out!' signs and a small fallen tree blocking the track.</li>
+          <li><b>C1:</b> It moves from tired frustration → relief and excitement in the diner → growing tension and fear at the house → a shocking climax → a humorous, relieving twist at the end.</li>
+          <li><b>C2:</b> The reader expects a supernatural creature/werewolf: the "creepy" abandoned house, strange noises and groans, the smashed mirror, red question marks, the dark and the "huge hairy figure" — all build a horror atmosphere before the realistic explanation (a bear).</li>
+        </ol>
+      </div>
+    </div>
+
+    <div id="step5-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(5)">← Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(5)">Review &amp; Submit →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 6 – REVIEW & SUBMIT
+===================================================== -->
+<section id="step-6" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission did not work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+/* ============================================================
+   CONFIG
+============================================================ */
+var UNIT          = '9g-summer-revision';
+var TOTAL_STEPS   = 6;                  /* 5 exercises + submit */
+var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbw2eqOCB6XKREIOXuqn2fCL067CdMm20MmiTFMt9GmRUEn12vLl8gJbHL1UfbKmCP7W/exec';
+var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+
+/* ============================================================
+   ANSWER KEYS (for self-check)
+============================================================ */
+var ART_KEY  = ['a','the','–','an','the','the','the','an','–','–','a','a','the'];
+var MATCH_KEY = { m1:'C', m2:'E', m3:'D', m4:'A', m5:'B' };
+var GAP_KEY = {
+  b1:['gold rush'], b2:['silicon valley'], b3:['diverse'],
+  b4:['drought'], b5:['wildfires','wildfire'], b6:['cattle call'], b7:['erosion']
+};
+var FUT_KEY = {
+  f1:['will have found'],
+  f2:['will be meeting'],
+  f3:['will have switched'],
+  f4:['will have replaced'],
+  f5:['will be generating'],
+  f6:['will have risen'],
+  f7:['will have arrived'],
+  f8:['will be travelling','will be traveling'],
+  f9:['will have been running','will have run'],
+  f10:['will be living']
+};
+var READ_A_KEY = { a1:'Right', a2:'Wrong', a3:'Not in text', a4:'Right', a5:'Not in text', a6:'Right' };
+
+/* ============================================================
+   STATE
+============================================================ */
+var state = {
+  name: '', cls: '',
+  exA: {},   /* articles g1..g13 */
+  exB: {},   /* relative clauses r1..r6 */
+  exC: {},   /* m1..m5, b1..b7 */
+  exD: {},   /* f1..f10 */
+  exE: {}    /* a1..a6, b1..b4, c1..c2 */
+};
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('step-' + n).classList.add('active');
+  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  restoreStep(n);
+  var meta = document.getElementById('header-meta');
+  if (n === 0) { meta.style.display = 'none'; return; }
+  meta.style.display = 'block';
+  document.getElementById('header-name').textContent = state.name + (state.cls ? ' — ' + state.cls : '');
+  var labels = ['A', 'B', 'C', 'D', 'E'];
+  document.getElementById('header-step').textContent = n < TOTAL_STEPS
+    ? 'Exercise ' + labels[n - 1] + ' of ' + (TOTAL_STEPS - 1)
+    : 'Submit';
+}
+
+function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
+
+function nextStep(n) {
+  if (!validateStep(n)) {
+    var err = document.getElementById('step' + n + '-error');
+    if (err) { err.textContent = 'Please answer every question on this page before continuing.'; err.classList.add('show'); }
+    return;
+  }
+  clearErr(n);
+  saveStep(n);
+  if (n === TOTAL_STEPS - 1) { buildSummary(); }
+  showStep(n + 1);
+}
+
+function clearErr(n) {
+  var err = document.getElementById('step' + n + '-error');
+  if (err) err.classList.remove('show');
+}
+
+function startExercises() {
+  var name = g('inp-name'), cls = g('inp-class');
+  var err = document.getElementById('welcome-error');
+  if (!name || !cls) {
+    err.textContent = 'Please enter both your name and your class.';
+    err.classList.add('show');
+    return;
+  }
+  err.classList.remove('show');
+  state.name = name;
+  state.cls  = cls;
+  showStep(1);
+}
+
+/* ============================================================
+   VALIDATION  (every field required)
+============================================================ */
+function allFilled(ids) { for (var i = 0; i < ids.length; i++) { if (!val(ids[i])) return false; } return true; }
+function range(prefix, a, b) { var r = []; for (var i = a; i <= b; i++) r.push(prefix + i); return r; }
+
+function validateStep(n) {
+  switch (n) {
+    case 1: return allFilled(range('exA-g', 1, 13));
+    case 2: return allFilled(range('exB-r', 1, 6));
+    case 3: return allFilled(range('exC-m', 1, 5).concat(range('exC-b', 1, 7)));
+    case 4: return allFilled(range('exD-f', 1, 10));
+    case 5: return allFilled(range('exE-a', 1, 6).concat(range('exE-b', 1, 4)).concat(range('exE-c', 1, 2)));
+    default: return true;
+  }
+}
+
+/* ============================================================
+   SAVE / RESTORE
+============================================================ */
+function saveRange(obj, domPrefix, key, a, b) { for (var i = a; i <= b; i++) obj[key + i] = g(domPrefix + i); }
+function restoreRange(obj, domPrefix, key, a, b) { for (var i = a; i <= b; i++) set(domPrefix + i, obj[key + i]); }
+
+function saveStep(n) {
+  switch (n) {
+    case 1: saveRange(state.exA, 'exA-g', 'g', 1, 13); break;
+    case 2: saveRange(state.exB, 'exB-r', 'r', 1, 6); break;
+    case 3: saveRange(state.exC, 'exC-m', 'm', 1, 5); saveRange(state.exC, 'exC-b', 'b', 1, 7); break;
+    case 4: saveRange(state.exD, 'exD-f', 'f', 1, 10); break;
+    case 5: saveRange(state.exE, 'exE-a', 'a', 1, 6); saveRange(state.exE, 'exE-b', 'b', 1, 4); saveRange(state.exE, 'exE-c', 'c', 1, 2); break;
+  }
+}
+
+function restoreStep(n) {
+  switch (n) {
+    case 1: restoreRange(state.exA, 'exA-g', 'g', 1, 13); break;
+    case 2: restoreRange(state.exB, 'exB-r', 'r', 1, 6); break;
+    case 3: restoreRange(state.exC, 'exC-m', 'm', 1, 5); restoreRange(state.exC, 'exC-b', 'b', 1, 7); break;
+    case 4: restoreRange(state.exD, 'exD-f', 'f', 1, 10); break;
+    case 5: restoreRange(state.exE, 'exE-a', 'a', 1, 6); restoreRange(state.exE, 'exE-b', 'b', 1, 4); restoreRange(state.exE, 'exE-c', 'c', 1, 2); break;
+  }
+}
+
+/* ============================================================
+   SELF-CHECK
+============================================================ */
+function norm(s) { return String(s || '').toLowerCase().replace(/[.,!?]/g, '').replace(/\s+/g, ' ').trim(); }
+
+function markSelect(id, ok) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.classList.remove('gap-correct', 'gap-wrong');
+  el.classList.add(ok ? 'gap-correct' : 'gap-wrong');
+}
+function markInput(id, ok) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.classList.remove('gap-correct', 'gap-wrong');
+  el.classList.add(ok ? 'gap-correct' : 'gap-wrong');
+}
+function showScore(resultId, score, total) {
+  var box = document.getElementById(resultId);
+  box.classList.remove('ok', 'warn', 'err');
+  box.classList.add(score === total ? 'ok' : (score >= total / 2 ? 'warn' : 'err'));
+  box.textContent = 'You got ' + score + ' out of ' + total + ' correct. '
+    + (score === total ? 'Perfect! 🎉' : 'Green = correct, red = try again.');
+  box.classList.add('show');
+}
+
+function checkArticles() {
+  var score = 0;
+  for (var i = 1; i <= 13; i++) {
+    var ok = g('exA-g' + i) === ART_KEY[i - 1];
+    markSelect('exA-g' + i, ok);
+    if (ok) score++;
+  }
+  showScore('exA-result', score, 13);
+}
+
+function checkMatch() {
+  var score = 0, total = 0;
+  for (var k in MATCH_KEY) {
+    total++;
+    var ok = g('exC-' + k) === MATCH_KEY[k];
+    markSelect('exC-' + k, ok);
+    if (ok) score++;
+  }
+  showScore('exC-m-result', score, total);
+}
+
+function checkGapfill() {
+  var score = 0, total = 0;
+  for (var k in GAP_KEY) {
+    total++;
+    var ans = norm(g('exC-' + k));
+    var ok = GAP_KEY[k].indexOf(ans) !== -1;
+    markInput('exC-' + k, ok);
+    if (ok) score++;
+  }
+  showScore('exC-b-result', score, total);
+}
+
+function checkFuture() {
+  var score = 0, total = 0;
+  for (var k in FUT_KEY) {
+    total++;
+    var ans = norm(g('exD-' + k));
+    var ok = FUT_KEY[k].indexOf(ans) !== -1;
+    markInput('exD-' + k, ok);
+    if (ok) score++;
+  }
+  showScore('exD-result', score, total);
+}
+
+function checkReadingA() {
+  var score = 0, total = 0;
+  for (var k in READ_A_KEY) {
+    total++;
+    var ok = g('exE-' + k) === READ_A_KEY[k];
+    markSelect('exE-' + k, ok);
+    if (ok) score++;
+  }
+  showScore('exE-a-result', score, total);
+}
+
+function toggleModel(boxId, btnId) {
+  var box = document.getElementById(boxId);
+  var btn = document.getElementById(btnId);
+  box.classList.toggle('show');
+  btn.textContent = box.classList.contains('show') ? '🙈 Hide answers' : btn.getAttribute('data-label') || btn.textContent;
+}
+
+/* ============================================================
+   HELPERS
+============================================================ */
+function g(id)       { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+function set(id, v)  { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
+function val(id)     { return g(id).length > 0; }
+function esc(str)    { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
+
+/* ============================================================
+   SUMMARY
+============================================================ */
+function buildSummary() {
+  var rows = [];
+  var artTxt = [];
+  for (var i = 1; i <= 13; i++) artTxt.push(i + '. ' + (state.exA['g' + i] || '–'));
+  rows.push({ ex: 'Ex A — Articles', q: '13 gaps', a: artTxt.join('   ') });
+
+  for (var j = 1; j <= 6; j++) rows.push({ ex: 'Ex B — Relative Clauses', q: 'Sentence ' + j, a: state.exB['r' + j] });
+
+  var mTxt = [];
+  for (var m = 1; m <= 5; m++) mTxt.push(m + '→' + (state.exC['m' + m] || '?'));
+  rows.push({ ex: 'Ex C — Matching', q: 'mudslide / vineyard / indigenous / smog / legislation', a: mTxt.join('   ') });
+  for (var b = 1; b <= 7; b++) rows.push({ ex: 'Ex C — Gap-fill', q: 'Gap ' + b, a: state.exC['b' + b] });
+
+  for (var f = 1; f <= 10; f++) rows.push({ ex: 'Ex D — Future Tenses', q: 'Sentence ' + f, a: state.exD['f' + f] });
+
+  var aTxt = [];
+  for (var a = 1; a <= 6; a++) aTxt.push(a + '. ' + (state.exE['a' + a] || '?'));
+  rows.push({ ex: 'Ex E — Reading Part A', q: 'Right / Wrong / Not in text', a: aTxt.join('   ') });
+  for (var pb = 1; pb <= 4; pb++) rows.push({ ex: 'Ex E — Reading Part B', q: 'Question ' + pb, a: state.exE['b' + pb] });
+  for (var pc = 1; pc <= 2; pc++) rows.push({ ex: 'Ex E — Reading Part C', q: 'Question ' + pc, a: state.exE['c' + pc] });
+
+  var html = '<div class="submit-summary">'
+    + '<div class="summary-row"><div class="summary-ex">Student</div>'
+    + '<div class="summary-q">' + esc(state.name) + ' — ' + esc(state.cls) + '</div></div>';
+  rows.forEach(function(r) {
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div>'
+      + '<div class="summary-q">' + esc(r.q) + '</div>'
+      + '<div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+}
+
+/* ============================================================
+   EMAIL FALLBACK BODY
+============================================================ */
+function buildEmailBody() {
+  var L = [];
+  L.push('Exercise: ' + UNIT);
+  L.push('Student: ' + state.name);
+  L.push('Class:   ' + state.cls);
+  L.push('Date:    ' + new Date().toLocaleDateString('en-GB'));
+  L.push('');
+  L.push('--- Ex A: Articles ---');
+  for (var i = 1; i <= 13; i++) L.push(i + '. ' + (state.exA['g' + i] || '–'));
+  L.push('');
+  L.push('--- Ex B: Relative Clauses ---');
+  for (var j = 1; j <= 6; j++) L.push(j + '. ' + (state.exB['r' + j] || '(none)'));
+  L.push('');
+  L.push('--- Ex C: Vocabulary ---');
+  L.push('Matching: ' + [1,2,3,4,5].map(function(m){ return m + '→' + (state.exC['m' + m] || '?'); }).join('  '));
+  for (var b = 1; b <= 7; b++) L.push('Gap ' + b + ': ' + (state.exC['b' + b] || '(none)'));
+  L.push('');
+  L.push('--- Ex D: Future Tenses ---');
+  for (var f = 1; f <= 10; f++) L.push(f + '. ' + (state.exD['f' + f] || '(none)'));
+  L.push('');
+  L.push('--- Ex E: Reading ---');
+  L.push('Part A: ' + [1,2,3,4,5,6].map(function(a){ return a + '→' + (state.exE['a' + a] || '?'); }).join('  '));
+  for (var pb = 1; pb <= 4; pb++) L.push('B' + pb + ': ' + (state.exE['b' + pb] || '(none)'));
+  for (var pc = 1; pc <= 2; pc++) L.push('C' + pc + ': ' + (state.exE['c' + pc] || '(none)'));
+  return L.join('\n');
+}
+
+/* ============================================================
+   SUBMIT TO GOOGLE SHEET
+============================================================ */
+function submitToSheet() {
+  buildSummary();
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  var payload = { name: state.name, cls: state.cls, unit: UNIT,
+    exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD, exE: state.exE };
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+  }).then(function() {
+    btn.style.display = 'none';
+    document.getElementById('submit-success').style.display = 'block';
+    document.getElementById('submit-fallback').style.display = 'block';
+  }).catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Submit to Teacher';
+    document.getElementById('submit-fallback').style.display = 'block';
+  });
+}
+
+function submitByEmail() {
+  var a = document.createElement('a');
+  a.href = 'mailto:' + TEACHER_EMAIL
+    + '?subject=' + encodeURIComponent(UNIT + ' - ' + state.name + ' - ' + state.cls)
+    + '&body='    + encodeURIComponent(buildEmailBody());
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function() { document.body.removeChild(a); }, 100);
+}
+
+function copyAnswers() {
+  var body = buildEmailBody();
+  navigator.clipboard.writeText(body)
+    .then(function() { alert('Answers copied! Paste them into an email to your teacher.'); })
+    .catch(function() { prompt('Copy this text:', body); });
+}
+
+/* ============================================================
+   INIT
+============================================================ */
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('exB-model-btn').setAttribute('data-label', '💡 Show suggested answers');
+  document.getElementById('exE-model-btn').setAttribute('data-label', '💡 Show ideas for Parts B & C');
+  showStep(0);
+});
+</script>
+
+<script>
+/* ── Paste-block: prevent pasting into answer fields ── */
+document.addEventListener('paste', function(e) {
+  var t = e.target;
+  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
+    e.preventDefault();
+    var msg = document.createElement('div');
+    msg.textContent = '✏️ Pasting is not allowed';
+    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    document.body.appendChild(msg);
+    setTimeout(function() {
+      msg.style.opacity = '0';
+      setTimeout(function() { msg.remove(); }, 400);
+    }, 2000);
+  }
+});
+
+/* ── Copy-block: prevent copying text from the page ── */
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  var msg = document.createElement('div');
+  msg.textContent = '🚫 Copying is not allowed';
+  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+  document.body.appendChild(msg);
+  setTimeout(function() {
+    msg.style.opacity = '0';
+    setTimeout(function() { msg.remove(); }, 400);
+  }, 2000);
+});
+</script>
+
+</body>
+</html>
