@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Made in Scotland – Unit 3 | englishonline.training</title>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:    #1a3a5c;
+      --gold:    #c9a227;
+      --gold-lt: #f5e6b0;
+      --teal:    #2b7a78;
+      --red:     #c0392b;
+      --green:   #27ae60;
+      --bg:      #f7f9fc;
+      --card:    #ffffff;
+      --text:    #1d2b3a;
+      --muted:   #6b7a8d;
+      --border:  #dce3ec;
+      --radius:  12px;
+      --shadow:  0 2px 16px rgba(26,58,92,.1);
+      --font:    'Segoe UI', system-ui, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
+
+    .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
+    .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
+    .header-meta { font-size: .78rem; text-align: right; opacity: .9; }
+    .header-meta strong { display: block; color: var(--gold); }
+    .progress-track { height: 6px; background: rgba(255,255,255,.2); }
+    .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
+
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+
+    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
+    .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+    .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
+
+    .reading-text { font-size: .93rem; line-height: 1.85; color: var(--text); }
+    .reading-text p { margin-bottom: .85rem; }
+    .reading-text p:last-child { margin-bottom: 0; }
+
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+    .form-input, .form-textarea {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+      padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
+      color: var(--text); background: #fff; transition: border-color .2s;
+    }
+    .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--blue); }
+    .form-textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+    .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+
+    .gap-text { font-size: .93rem; line-height: 2.8; color: var(--text); }
+    .gap-select {
+      display: inline-block; border: 1.5px solid var(--gold); border-radius: 6px;
+      padding: .18rem .45rem; font-family: var(--font); font-size: .82rem;
+      background: var(--gold-lt); color: var(--blue); cursor: pointer;
+      vertical-align: middle; margin: 0 2px; max-width: 210px;
+    }
+    .gap-select:focus { outline: none; border-color: var(--blue); }
+
+    .word-bank { background: var(--gold-lt); border: 1.5px solid var(--gold); border-radius: 8px; padding: .75rem 1rem; margin-bottom: 1.25rem; }
+    .word-bank strong { display: block; color: var(--blue); margin-bottom: .5rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; }
+    .word-bank span { display: inline-block; margin: .2rem .3rem; background: var(--blue); color: #fff; border-radius: 4px; padding: .18rem .55rem; font-size: .8rem; font-weight: 600; }
+
+    .model-box { background: #eef6ff; border-left: 4px solid var(--blue); border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin-bottom: 1.25rem; font-size: .88rem; line-height: 1.7; }
+    .model-box strong { color: var(--blue); display: block; margin-bottom: .35rem; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; }
+
+    .scaffold-item { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: .85rem; background: #fafbfc; }
+    .scaffold-num { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 800; margin-bottom: .5rem; }
+    .scaffold-prompt { font-size: .9rem; color: var(--text); margin-bottom: .6rem; font-style: italic; }
+    .scaffold-hint { font-size: .75rem; color: var(--muted); margin-top: .3rem; }
+
+    .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
+    .feedback.show { display: block; }
+    .feedback.err  { background: #fde8e8; color: #721c24; }
+
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
+    .btn-primary:hover { background: #15304f; }
+    .btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
+    .btn-gold:hover { background: #b8911f; }
+    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+    .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+    .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
+    .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
+    .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+    .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 460px; margin-left: auto; margin-right: auto; }
+    .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+    .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; }
+    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
+    .ov-card.locked { opacity: .5; }
+    .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+
+    .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
+    .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
+    .summary-a  { color: var(--text); white-space: pre-wrap; }
+
+    @media (max-width: 480px) {
+      .ex-title { font-size: 1.25rem; }
+      .btn { padding: .65rem 1.1rem; }
+      .welcome-title { font-size: 1.4rem; }
+      .gap-select { max-width: 150px; font-size: .75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Exercise A of 3</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+
+
+<!-- STEP 0 – WELCOME -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</div>
+      <h1 class="welcome-title">Made in Scotland – Unit 3</h1>
+      <p class="welcome-sub">Learn about Scotland and its famous inventors, practise if-clauses, and write a short biography.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card">
+        <div class="ov-icon">📚</div>
+        <strong>Ex A – Vocabulary</strong>
+        Key words about Scotland and inventions
+      </div>
+      <div class="ov-card locked">
+        <div class="ov-icon">⚙️</div>
+        <strong>Ex B – Grammar</strong>
+        If-clauses type 1 — complete the sentences
+      </div>
+      <div class="ov-card locked">
+        <div class="ov-icon">✍️</div>
+        <strong>Ex C – Writing</strong>
+        Write a short biography using relative clauses
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Lena Schmidt" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. 7c" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 1 – EXERCISE A: Vocabulary -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">Vocabulary – Scotland and Inventions</h2>
+    <p class="ex-subtitle">Choose the correct word to complete each sentence. Use the word bank to help you.</p>
+
+    <div class="word-bank">
+      <strong>Word Bank</strong>
+      <span>invented</span> <span>capital</span> <span>born</span> <span>deaf</span>
+      <span>inventor</span> <span>experiment</span> <span>loch</span> <span>highland</span>
+      <span>telephone</span> <span>famous</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Complete the sentences</div>
+      <div class="gap-text">
+
+        <p>1. Edinburgh is the
+        <select class="gap-select" id="exA-g1">
+          <option value="">—</option>
+          <option>capital</option>
+          <option>loch</option>
+          <option>highland</option>
+        </select>
+        of Scotland.</p>
+
+        <p>2. Alexander Graham Bell was
+        <select class="gap-select" id="exA-g2">
+          <option value="">—</option>
+          <option>invented</option>
+          <option>born</option>
+          <option>famous</option>
+        </select>
+        in Edinburgh in 1847.</p>
+
+        <p>3. He
+        <select class="gap-select" id="exA-g3">
+          <option value="">—</option>
+          <option>born</option>
+          <option>invented</option>
+          <option>experimented</option>
+        </select>
+        the
+        <select class="gap-select" id="exA-g4">
+          <option value="">—</option>
+          <option>loch</option>
+          <option>experiment</option>
+          <option>telephone</option>
+        </select>
+        in 1876.</p>
+
+        <p>4. Bell opened a school for people who were
+        <select class="gap-select" id="exA-g5">
+          <option value="">—</option>
+          <option>famous</option>
+          <option>deaf</option>
+          <option>born</option>
+        </select>
+        — they could not hear.</p>
+
+        <p>5. A person who creates or discovers something new is called an
+        <select class="gap-select" id="exA-g6">
+          <option value="">—</option>
+          <option>experiment</option>
+          <option>inventor</option>
+          <option>highland</option>
+        </select>
+        .</p>
+
+        <p>6. In Scotland, a
+        <select class="gap-select" id="exA-g7">
+          <option value="">—</option>
+          <option>loch</option>
+          <option>capital</option>
+          <option>telephone</option>
+        </select>
+        is a lake. Loch Ness is one of the most
+        <select class="gap-select" id="exA-g8">
+          <option value="">—</option>
+          <option>deaf</option>
+          <option>born</option>
+          <option>famous</option>
+        </select>
+        lakes in the world.</p>
+
+      </div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 2 – EXERCISE B: If-clauses type 1 -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B</span>
+    <h2 class="ex-title">Grammar – If-clauses Type 1</h2>
+    <p class="ex-subtitle">Complete the sentences using the correct verb forms. Use the grammar box to help you.</p>
+
+    <div class="model-box">
+      <strong>💡 If-clause Type 1 — how it works</strong>
+      Use if-clauses type 1 for things that are <strong>possible in the future</strong>.<br>
+      <strong>If + simple present … , … will + infinitive</strong><br><br>
+      ✅ <em>If we <strong>go</strong> to Scotland, we <strong>will visit</strong> Edinburgh Castle.</em><br>
+      ✅ <em>We <strong>will see</strong> the Highlands if we <strong>travel</strong> by train.</em><br><br>
+      ⚠️ After <em>if</em>, use the <strong>present simple</strong> — NOT will.
+    </div>
+
+    <div class="card">
+      <div class="card-title">Complete the if-clauses</div>
+
+      <div class="scaffold-item">
+        <div class="scaffold-num">1</div>
+        <div class="scaffold-prompt">If the weather is good, we … (visit / the Highlands)</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="exB-t1">Write the full sentence:</label>
+          <input class="form-input" type="text" id="exB-t1" placeholder="If the weather is good, we will...">
+        </div>
+        <div class="scaffold-hint">Hint: will + visit</div>
+      </div>
+
+      <div class="scaffold-item">
+        <div class="scaffold-num">2</div>
+        <div class="scaffold-prompt">If you … (stay) at a campsite, you … (be) outside all day.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="exB-t2">Write the full sentence:</label>
+          <input class="form-input" type="text" id="exB-t2" placeholder="If you stay...">
+        </div>
+        <div class="scaffold-hint">Hint: stay (present simple) + will be</div>
+      </div>
+
+      <div class="scaffold-item">
+        <div class="scaffold-num">3</div>
+        <div class="scaffold-prompt">We … (not / see) Nessie if we … (not / go) to Loch Ness.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="exB-t3">Write the full sentence:</label>
+          <input class="form-input" type="text" id="exB-t3" placeholder="We won't see Nessie if we...">
+        </div>
+        <div class="scaffold-hint">Hint: won't see … don't go</div>
+      </div>
+
+      <div class="scaffold-item">
+        <div class="scaffold-num">4</div>
+        <div class="scaffold-prompt">If Anna … (book) a bed and breakfast, she … (have) a comfortable room.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="exB-t4">Write the full sentence:</label>
+          <input class="form-input" type="text" id="exB-t4" placeholder="If Anna books...">
+        </div>
+        <div class="scaffold-hint">Hint: books + will have</div>
+      </div>
+
+      <div class="scaffold-item">
+        <div class="scaffold-num">5</div>
+        <div class="scaffold-prompt">Write your own if-clause about a trip to Scotland. What will you do if you go there?</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="exB-t5">Your sentence:</label>
+          <input class="form-input" type="text" id="exB-t5" placeholder="If I go to Scotland, I will...">
+        </div>
+        <div class="scaffold-hint">Start with: If I go to Scotland, I will …</div>
+      </div>
+
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 3 – EXERCISE C: Biography writing -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise C</span>
+    <h2 class="ex-title">Writing – A Short Biography</h2>
+    <p class="ex-subtitle">Write a short biography (60–80 words) about Alexander Graham Bell. Use the fact file and sentence starters below.</p>
+
+    <div class="card" style="background:var(--gold-lt);border:1.5px solid var(--gold);">
+      <div class="card-title">📋 Fact File: Alexander Graham Bell</div>
+      <div class="reading-text">
+        <p>🗓 <strong>Born:</strong> 3 March 1847 in Edinburgh, Scotland</p>
+        <p>👨‍👩‍👦 <strong>Family:</strong> His mother and wife were deaf</p>
+        <p>🏫 <strong>Work:</strong> Opened a school for deaf people in Boston, USA</p>
+        <p>📞 <strong>Invention:</strong> The telephone — invented in 1876</p>
+        <p>🌍 <strong>Later life:</strong> Moved to the USA; continued scientific experiments</p>
+        <p>💀 <strong>Died:</strong> 2 August 1922 in Nova Scotia, Canada</p>
+      </div>
+    </div>
+
+    <div class="model-box">
+      <strong>💡 Relative clauses — how to use them</strong>
+      Use <strong>who</strong> for people: <em>Bell was a scientist <strong>who</strong> invented the telephone.</em><br>
+      Use <strong>which / that</strong> for things: <em>The telephone is an invention <strong>which</strong> changed the world.</em><br>
+      Use <strong>where</strong> for places: <em>Edinburgh is the city <strong>where</strong> Bell was born.</em>
+    </div>
+
+    <div class="card" style="background:var(--gold-lt);border:1.5px solid var(--gold);">
+      <div class="card-title">✍️ Sentence starters</div>
+      <div class="reading-text">
+        <p><strong>Introduction:</strong> Alexander Graham Bell was a Scottish inventor who …</p>
+        <p><strong>Early life:</strong> He was born in … in … · He grew up in …</p>
+        <p><strong>Work:</strong> He opened a school … · He worked with people who …</p>
+        <p><strong>Invention:</strong> In 1876, he invented … · The telephone is a device which …</p>
+        <p><strong>Later life / ending:</strong> Later, he … · He died in … · Today, he is remembered as …</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Your biography</div>
+      <div class="form-group">
+        <label class="form-label" for="exC-w1">Write your biography here (60–80 words):</label>
+        <textarea class="form-textarea" id="exC-w1" rows="8" placeholder="Alexander Graham Bell was a Scottish inventor who..."></textarea>
+        <div class="form-hint">Try to use at least one relative clause with <em>who</em>, <em>which</em>, or <em>where</em>.</div>
+      </div>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(3)">Review &amp; Submit →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 4 – REVIEW & SUBMIT -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission did not work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+var UNIT          = '7c-made-in-scotland';
+var TOTAL_STEPS   = 4;
+var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbyFmK71PseRmH8gBnuD3HLFU9b75eMPhE-LV8hNKSGM2RJ4bbMTIMrcoi3Qo4WG95qxIw/exec';
+var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+
+var state = {
+  name: '',
+  cls:  '',
+  exA:  { g1:'', g2:'', g3:'', g4:'', g5:'', g6:'', g7:'', g8:'' },
+  exB:  { t1:'', t2:'', t3:'', t4:'', t5:'' },
+  exC:  { w1:'' }
+};
+
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('step-' + n).classList.add('active');
+  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  restoreStep(n);
+  var meta = document.getElementById('header-meta');
+  if (n === 0) { meta.style.display = 'none'; return; }
+  meta.style.display = 'block';
+  document.getElementById('header-name').textContent = state.name + (state.cls ? ' — ' + state.cls : '');
+  var labels = ['A', 'B', 'C'];
+  document.getElementById('header-step').textContent = n < TOTAL_STEPS
+    ? 'Exercise ' + labels[n - 1] + ' of 3'
+    : 'Submit';
+}
+
+function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
+
+function nextStep(n) {
+  if (!validateStep(n)) {
+    var err = document.getElementById('step' + n + '-error');
+    if (err) { err.textContent = 'Please complete all questions before continuing.'; err.classList.add('show'); }
+    return;
+  }
+  clearErr(n);
+  saveStep(n);
+  if (n === TOTAL_STEPS - 1) { buildSummary(); }
+  showStep(n + 1);
+}
+
+function clearErr(n) {
+  var err = document.getElementById('step' + n + '-error');
+  if (err) err.classList.remove('show');
+}
+
+function startExercises() {
+  var name = g('inp-name'), cls = g('inp-class');
+  var err = document.getElementById('welcome-error');
+  if (!name || !cls) {
+    err.textContent = 'Please enter both your name and your class.';
+    err.classList.add('show');
+    return;
+  }
+  err.classList.remove('show');
+  state.name = name;
+  state.cls  = cls;
+  showStep(1);
+}
+
+function validateStep(n) {
+  switch (n) {
+    case 1:
+      return g('exA-g1') && g('exA-g2') && g('exA-g3') && g('exA-g4') &&
+             g('exA-g5') && g('exA-g6') && g('exA-g7') && g('exA-g8');
+    case 2:
+      return val('exB-t1') && val('exB-t2') && val('exB-t3') && val('exB-t4') && val('exB-t5');
+    case 3:
+      return val('exC-w1');
+    default: return true;
+  }
+}
+
+function saveStep(n) {
+  switch (n) {
+    case 1:
+      state.exA.g1=g('exA-g1'); state.exA.g2=g('exA-g2'); state.exA.g3=g('exA-g3'); state.exA.g4=g('exA-g4');
+      state.exA.g5=g('exA-g5'); state.exA.g6=g('exA-g6'); state.exA.g7=g('exA-g7'); state.exA.g8=g('exA-g8');
+      break;
+    case 2:
+      state.exB.t1=g('exB-t1'); state.exB.t2=g('exB-t2'); state.exB.t3=g('exB-t3');
+      state.exB.t4=g('exB-t4'); state.exB.t5=g('exB-t5');
+      break;
+    case 3:
+      state.exC.w1=g('exC-w1');
+      break;
+  }
+}
+
+function restoreStep(n) {
+  switch (n) {
+    case 1:
+      set('exA-g1',state.exA.g1); set('exA-g2',state.exA.g2); set('exA-g3',state.exA.g3); set('exA-g4',state.exA.g4);
+      set('exA-g5',state.exA.g5); set('exA-g6',state.exA.g6); set('exA-g7',state.exA.g7); set('exA-g8',state.exA.g8);
+      break;
+    case 2:
+      set('exB-t1',state.exB.t1); set('exB-t2',state.exB.t2); set('exB-t3',state.exB.t3);
+      set('exB-t4',state.exB.t4); set('exB-t5',state.exB.t5);
+      break;
+    case 3:
+      set('exC-w1',state.exC.w1);
+      break;
+  }
+}
+
+function g(id)      { var el=document.getElementById(id); return el ? el.value.trim() : ''; }
+function set(id,v)  { var el=document.getElementById(id); if(el && v!==undefined) el.value=v; }
+function val(id)    { return g(id).length > 0; }
+function esc(str)   { var d=document.createElement('div'); d.textContent=String(str==null?'':str); return d.innerHTML; }
+
+function buildSummary() {
+  var rows = [
+    { ex:'Exercise A – Vocabulary', q:'Gap 1 (capital of Scotland)',        a:state.exA.g1 },
+    { ex:'Exercise A – Vocabulary', q:'Gap 2 (Bell was... in Edinburgh)',   a:state.exA.g2 },
+    { ex:'Exercise A – Vocabulary', q:'Gap 3 (He... the...)',               a:state.exA.g3 },
+    { ex:'Exercise A – Vocabulary', q:'Gap 4 (the...)',                     a:state.exA.g4 },
+    { ex:'Exercise A – Vocabulary', q:'Gap 5 (people who were...)',         a:state.exA.g5 },
+    { ex:'Exercise A – Vocabulary', q:'Gap 6 (called an...)',               a:state.exA.g6 },
+    { ex:'Exercise A – Vocabulary', q:'Gap 7 (a... is a lake)',             a:state.exA.g7 },
+    { ex:'Exercise A – Vocabulary', q:'Gap 8 (most... lake)',               a:state.exA.g8 },
+    { ex:'Exercise B – If-clauses', q:'1. If the weather is good…',         a:state.exB.t1 },
+    { ex:'Exercise B – If-clauses', q:'2. If you stay at a campsite…',      a:state.exB.t2 },
+    { ex:'Exercise B – If-clauses', q:'3. We won\'t see Nessie if…',        a:state.exB.t3 },
+    { ex:'Exercise B – If-clauses', q:'4. If Anna books a B&B…',            a:state.exB.t4 },
+    { ex:'Exercise B – If-clauses', q:'5. My own if-clause',                a:state.exB.t5 },
+    { ex:'Exercise C – Writing',    q:'Biography of Alexander Graham Bell', a:state.exC.w1 }
+  ];
+  var html = '<div class="submit-summary">'
+    + '<div class="summary-row"><div class="summary-ex">Student</div>'
+    + '<div class="summary-q">'+esc(state.name)+' — '+esc(state.cls)+'</div></div>';
+  rows.forEach(function(r) {
+    html += '<div class="summary-row"><div class="summary-ex">'+esc(r.ex)+'</div>'
+      +'<div class="summary-q">'+esc(r.q)+'</div>'
+      +'<div class="summary-a">'+esc(r.a||'(no answer)')+'</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+}
+
+function buildEmailBody() {
+  return 'Exercise: '+UNIT
+    +'\nStudent: '+state.name
+    +'\nClass:   '+state.cls
+    +'\nDate:    '+new Date().toLocaleDateString('en-GB')
+    +'\n\n--- Exercise A: Vocabulary ---'
+    +'\nGap 1: '+(state.exA.g1||'(none)')
+    +'\nGap 2: '+(state.exA.g2||'(none)')
+    +'\nGap 3: '+(state.exA.g3||'(none)')
+    +'\nGap 4: '+(state.exA.g4||'(none)')
+    +'\nGap 5: '+(state.exA.g5||'(none)')
+    +'\nGap 6: '+(state.exA.g6||'(none)')
+    +'\nGap 7: '+(state.exA.g7||'(none)')
+    +'\nGap 8: '+(state.exA.g8||'(none)')
+    +'\n\n--- Exercise B: If-clauses ---'
+    +'\n1. '+(state.exB.t1||'(none)')
+    +'\n2. '+(state.exB.t2||'(none)')
+    +'\n3. '+(state.exB.t3||'(none)')
+    +'\n4. '+(state.exB.t4||'(none)')
+    +'\n5. '+(state.exB.t5||'(none)')
+    +'\n\n--- Exercise C: Biography ---'
+    +'\n'+(state.exC.w1||'(none)');
+}
+
+function submitToSheet() {
+  buildSummary();
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true; btn.textContent = 'Sending...';
+  var payload = { name:state.name, cls:state.cls, unit:UNIT, exA:state.exA, exB:state.exB, exC:state.exC };
+  fetch(SHEET_URL, {
+    method:'POST', mode:'no-cors',
+    headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:'payload='+encodeURIComponent(JSON.stringify(payload))
+  }).then(function() {
+    btn.style.display='none';
+    document.getElementById('submit-success').style.display='block';
+    document.getElementById('submit-fallback').style.display='block';
+  }).catch(function() {
+    btn.disabled=false; btn.textContent='Submit to Teacher';
+    document.getElementById('submit-fallback').style.display='block';
+  });
+}
+
+function submitByEmail() {
+  var a=document.createElement('a');
+  a.href='mailto:'+TEACHER_EMAIL
+    +'?subject='+encodeURIComponent(UNIT+' - '+state.name+' - '+state.cls)
+    +'&body='+encodeURIComponent(buildEmailBody());
+  a.style.display='none'; document.body.appendChild(a); a.click();
+  setTimeout(function(){document.body.removeChild(a);},100);
+}
+
+function copyAnswers() {
+  var body=buildEmailBody();
+  navigator.clipboard.writeText(body)
+    .then(function(){alert('Answers copied! Paste them into an email to your teacher.');})
+    .catch(function(){prompt('Copy this text:',body);});
+}
+
+document.addEventListener('DOMContentLoaded', function() { showStep(0); });
+</script>
+
+<script>
+document.addEventListener('paste', function(e) {
+  var t=e.target;
+  if(t.tagName==='INPUT'||t.tagName==='TEXTAREA'){
+    e.preventDefault();
+    var msg=document.createElement('div');
+    msg.textContent='Pasting is not allowed';
+    msg.style.cssText='position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    document.body.appendChild(msg);
+    setTimeout(function(){msg.style.opacity='0';setTimeout(function(){msg.remove();},400);},2000);
+  }
+});
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  var msg=document.createElement('div');
+  msg.textContent='🚫 Copying is not allowed';
+  msg.style.cssText='position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+  document.body.appendChild(msg);
+  setTimeout(function(){msg.style.opacity='0';setTimeout(function(){msg.remove();},400);},2000);
+});
+</script>
+
+</body>
+</html>
