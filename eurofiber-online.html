@@ -478,6 +478,9 @@
       <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
       <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Here is your score and the corrections. Review them below, then send your answers to your trainer.</p>
     </div>
+    <div id="check-wrap" style="text-align:center;margin-bottom:1.5rem">
+      <button class="btn btn-primary" id="check-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="checkAnswers()">✓ Check my answers</button>
+    </div>
     <div id="summary-container"></div>
     <div class="card" style="text-align:center">
       <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your trainer.</p>
@@ -548,7 +551,12 @@ function nextStep(n) {
   }
   clearErr(n);
   saveStep(n);
-  if (n === TOTAL_STEPS - 1) { buildSummary(); }
+  if (n === TOTAL_STEPS - 1) {
+    state.checked = false;
+    buildSummary(false);
+    var b = document.getElementById('check-btn');
+    if (b) b.style.display = '';
+  }
   showStep(n + 1);
 }
 
@@ -661,7 +669,7 @@ var KEY = {
 
 function norm(s) { return String(s == null ? '' : s).toLowerCase().trim().replace(/\s+/g, ' '); }
 
-function buildSummary() {
+function buildSummary(show) {
   var rows = [], score = 0, total = 0;
 
   A_IDS.forEach(function(i) {
@@ -690,22 +698,41 @@ function buildSummary() {
   });
 
   state.score = score; state.total = total;
-  var pct = total ? Math.round(score / total * 100) : 0;
 
-  var html = '<div class="score-banner"><strong>' + score + ' / ' + total + '</strong> correct &nbsp;(' + pct + '%)</div>';
+  var html = '';
+  if (show) {
+    var pct = total ? Math.round(score / total * 100) : 0;
+    html += '<div class="score-banner"><strong>' + score + ' / ' + total + '</strong> correct &nbsp;(' + pct + '%)</div>';
+  }
   html += '<div class="submit-summary">'
     + '<div class="summary-row"><div class="summary-ex">Participant</div>'
     + '<div class="summary-q">' + esc(state.name) + '</div></div>';
   rows.forEach(function(r) {
-    html += '<div class="summary-row ' + (r.ok ? 'correct' : 'incorrect') + '">'
-      + '<div class="summary-ex">' + esc(r.ex) + '</div>'
-      + '<div class="summary-q">' + esc(r.q) + '</div>'
-      + '<div class="summary-a"><span class="mark">' + (r.ok ? '✓' : '✗') + '</span>' + esc(r.a || '(no answer)') + '</div>'
-      + (r.ok ? '' : '<div class="correct-answer">Correct answer: <b>' + esc(r.correct) + '</b></div>')
-      + '</div>';
+    if (show) {
+      html += '<div class="summary-row ' + (r.ok ? 'correct' : 'incorrect') + '">'
+        + '<div class="summary-ex">' + esc(r.ex) + '</div>'
+        + '<div class="summary-q">' + esc(r.q) + '</div>'
+        + '<div class="summary-a"><span class="mark">' + (r.ok ? '✓' : '✗') + '</span>' + esc(r.a || '(no answer)') + '</div>'
+        + (r.ok ? '' : '<div class="correct-answer">Correct answer: <b>' + esc(r.correct) + '</b></div>')
+        + '</div>';
+    } else {
+      html += '<div class="summary-row">'
+        + '<div class="summary-ex">' + esc(r.ex) + '</div>'
+        + '<div class="summary-q">' + esc(r.q) + '</div>'
+        + '<div class="summary-a">' + esc(r.a || '(no answer)') + '</div>'
+        + '</div>';
+    }
   });
   html += '</div>';
   document.getElementById('summary-container').innerHTML = html;
+}
+
+function checkAnswers() {
+  state.checked = true;
+  buildSummary(true);
+  var b = document.getElementById('check-btn');
+  if (b) b.style.display = 'none';
+  document.getElementById('summary-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 /* ============================================================
@@ -730,7 +757,7 @@ function buildEmailBody() {
    SUBMIT TO GOOGLE SHEET
 ============================================================ */
 function submitToSheet() {
-  buildSummary();
+  buildSummary(!!state.checked);
   var btn = document.getElementById('submit-btn');
   btn.disabled = true;
   btn.textContent = 'Sending...';
