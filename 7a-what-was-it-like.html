@@ -77,6 +77,8 @@
     .transform-original { font-size: .9rem; color: var(--text); font-style: italic; margin-bottom: .65rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); }
     .transform-hint { font-size: .75rem; color: var(--muted); margin-top: .3rem; }
 
+    .gap-correct { background: #d4edda !important; border-color: var(--green) !important; color: #155724 !important; }
+    .gap-wrong   { background: #fde8e8 !important; border-color: var(--red)   !important; color: #721c24 !important; }
     .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
     .feedback.show { display: block; }
     .feedback.ok   { background: #d4edda; color: #155724; }
@@ -273,8 +275,10 @@
     </div>
 
     <div id="step1-error" class="feedback err"></div>
+    <div id="step1-fb" class="feedback"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+      <button class="btn btn-gold btn-sm" onclick="checkExA()">✓ Check</button>
       <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B →</button>
     </div>
   </div>
@@ -607,6 +611,23 @@ function buildEmailBody() {
     + '\n\n--- Exercise C: Writing ---'
     + '\nPlace: ' + (state.exC.w1 || '(none)')
     + '\n\n' + (state.exC.w2 || '(none)');
+}
+
+function checkExA() {
+  var answers = {g1:'ancient',g2:'restored',g3:'evidence',g4:'mysterious',g5:'historian',g6:'period',g7:'century',g8:'ruins'};
+  var correct=0,wrong=0,empty=0;
+  Object.keys(answers).forEach(function(k){
+    var sel=document.getElementById('exA-'+k);
+    if(!sel) return;
+    if(!sel.value){ sel.className='gap-select'; empty++; return; }
+    if(sel.value===answers[k]){ sel.className='gap-select gap-correct'; correct++; }
+    else{ sel.className='gap-select gap-wrong'; wrong++; }
+  });
+  var fb=document.getElementById('step1-fb');
+  fb.style.display='block';
+  if(empty===8){ fb.className='feedback err show'; fb.textContent='Please answer the gaps first.'; return; }
+  if(wrong===0&&empty===0){ fb.className='feedback ok show'; fb.textContent='✓ All '+correct+' correct! Well done.'; }
+  else{ fb.className='feedback warn show'; fb.textContent=correct+' correct, '+wrong+' wrong'+(empty?' ('+empty+' blank)':'')+'. Check the red gaps.'; }
 }
 
 function submitToSheet() {

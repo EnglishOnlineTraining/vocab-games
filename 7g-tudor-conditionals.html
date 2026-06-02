@@ -90,8 +90,14 @@
     .match-options p { margin-bottom: .4rem; line-height: 1.5; }
     .match-options strong { color: var(--blue); }
 
+    .match-correct { background: #d4edda !important; border-color: var(--green) !important; color: #155724 !important; }
+    .match-wrong   { background: #fde8e8 !important; border-color: var(--red)   !important; color: #721c24 !important; }
+    .gap-correct   { background: #d4edda !important; border-color: var(--green) !important; color: #155724 !important; }
+    .gap-wrong     { background: #fde8e8 !important; border-color: var(--red)   !important; color: #721c24 !important; }
     .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
     .feedback.show { display: block; }
+    .feedback.ok   { background: #d4edda; color: #155724; }
+    .feedback.warn { background: #fff3cd; color: #856404; }
     .feedback.err  { background: #fde8e8; color: #721c24; }
 
     .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
@@ -137,7 +143,7 @@
 <header class="app-header">
   <div class="header-inner">
     <a class="header-logo" href="https://englishonline.training/">englishonline.training</a>
-    <a class="header-logo" href="file:///Users/strezise/Downloads/activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
     <div class="header-meta" id="header-meta" style="display:none">
       <strong id="header-name"></strong>
       <span id="header-step"></span>
@@ -321,8 +327,10 @@
     </div>
 
     <div id="step2-error" class="feedback err"></div>
+    <div id="step2-fb" class="feedback"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-gold btn-sm" onclick="checkExB()">✓ Check</button>
       <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C →</button>
     </div>
   </div>
@@ -497,8 +505,10 @@
     </div>
 
     <div id="step4-error" class="feedback err"></div>
+    <div id="step4-fb" class="feedback"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
+      <button class="btn btn-gold btn-sm" onclick="checkExD()">✓ Check</button>
       <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(4)">Continue to Exercise E →</button>
     </div>
   </div>
@@ -567,8 +577,10 @@
     </div>
 
     <div id="step5-error" class="feedback err"></div>
+    <div id="step5-fb" class="feedback"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(5)">← Back</button>
+      <button class="btn btn-gold btn-sm" onclick="checkExE()">✓ Check</button>
       <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(5)">Continue to Exercise F →</button>
     </div>
   </div>
@@ -805,6 +817,41 @@ function val(id){return g(id).length>0;}
 function gSel(id){var e=document.getElementById(id);return e?e.value:'';}
 function setSel(id,v){var e=document.getElementById(id);if(e&&v)e.value=v;}
 function esc(s){var d=document.createElement('div');d.textContent=String(s==null?'':s);return d.innerHTML;}
+
+function checkDropdowns(ids, prefix, answers, fbId) {
+  var correct=0,wrong=0,empty=0;
+  ids.forEach(function(k){
+    var sel=document.getElementById(prefix+k);
+    if(!sel) return;
+    if(!sel.value){ sel.className=sel.className.replace(/ ?(match|gap)-(correct|wrong)/g,''); empty++; return; }
+    if(sel.value===answers[k]){ sel.className=sel.className.replace(/ ?(match|gap)-(correct|wrong)/g,'')+(prefix.indexOf('exB')>-1?' match-correct':' gap-correct'); correct++; }
+    else{ sel.className=sel.className.replace(/ ?(match|gap)-(correct|wrong)/g,'')+(prefix.indexOf('exB')>-1?' match-wrong':' gap-wrong'); wrong++; }
+  });
+  var fb=document.getElementById(fbId);
+  fb.style.display='block';
+  var total=ids.length;
+  if(empty===total){ fb.className='feedback err show'; fb.textContent='Please answer all the gaps first.'; return; }
+  if(wrong===0&&empty===0){ fb.className='feedback ok show'; fb.textContent='✓ All '+correct+' correct! Well done.'; }
+  else{ fb.className='feedback warn show'; fb.textContent=correct+' / '+total+' correct'+(wrong?' — check the red ones':'')+(empty?' ('+empty+' blank)':'')+'.'; }
+}
+
+function checkExB() {
+  var ans = {m1:'c',m2:'d',m3:'e',m4:'f',m5:'b',m6:'a'};
+  checkDropdowns(['m1','m2','m3','m4','m5','m6'],'exB-',ans,'step2-fb');
+}
+function checkExD() {
+  var ans = {g1:'had not come',g2:'would not have given',g3:'had not stayed',g4:'would not have influenced',
+             g5:'would not have come',g6:'had not believed',g7:'would not have given up',g8:'had not become',
+             g9:'had not loved',g10:'would not have written',g11:'would not have invented',g12:'had not written',
+             g13:'had not explored',g14:'would not have brought'};
+  checkDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10','g11','g12','g13','g14'],'exD-',ans,'step4-fb');
+}
+function checkExE() {
+  var ans = {g1:'had not always worn',g2:'would not have been',g3:'had not built',g4:'would have found',
+             g5:'had not spoken',g6:'would not have changed',g7:'had not wanted',g8:'would not have married',
+             g9:'had not wanted',g10:'would not have sent',g11:'had not reigned',g12:'would not have seen'};
+  checkDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10','g11','g12'],'exE-',ans,'step5-fb');
+}
 
 function buildSummary(){
   var rows=[

@@ -80,8 +80,12 @@
     .scaffold-prompt { font-size: .9rem; color: var(--text); margin-bottom: .6rem; font-style: italic; }
     .scaffold-hint { font-size: .75rem; color: var(--muted); margin-top: .3rem; }
 
+    .gap-correct { background: #d4edda !important; border-color: var(--green) !important; color: #155724 !important; }
+    .gap-wrong   { background: #fde8e8 !important; border-color: var(--red)   !important; color: #721c24 !important; }
     .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
     .feedback.show { display: block; }
+    .feedback.ok   { background: #d4edda; color: #155724; }
+    .feedback.warn { background: #fff3cd; color: #856404; }
     .feedback.err  { background: #fde8e8; color: #721c24; }
 
     .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
@@ -270,8 +274,10 @@
     </div>
 
     <div id="step1-error" class="feedback err"></div>
+    <div id="step1-fb" class="feedback"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+      <button class="btn btn-gold btn-sm" onclick="checkExA()">✓ Check</button>
       <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B →</button>
     </div>
   </div>
@@ -604,6 +610,23 @@ function buildEmailBody() {
     +'\n5. '+(state.exB.t5||'(none)')
     +'\n\n--- Exercise C: Biography ---'
     +'\n'+(state.exC.w1||'(none)');
+}
+
+function checkExA() {
+  var answers = {g1:'capital',g2:'born',g3:'invented',g4:'telephone',g5:'deaf',g6:'inventor',g7:'loch',g8:'famous'};
+  var correct=0, wrong=0, empty=0;
+  Object.keys(answers).forEach(function(k){
+    var sel=document.getElementById('exA-'+k);
+    if(!sel) return;
+    if(!sel.value){ sel.className='gap-select'; empty++; return; }
+    if(sel.value===answers[k]){ sel.className='gap-select gap-correct'; correct++; }
+    else{ sel.className='gap-select gap-wrong'; wrong++; }
+  });
+  var fb=document.getElementById('step1-fb');
+  fb.style.display='block';
+  if(empty===8){ fb.className='feedback err show'; fb.textContent='Please answer the gaps first.'; return; }
+  if(wrong===0&&empty===0){ fb.className='feedback ok show'; fb.textContent='✓ All '+correct+' correct! Well done.'; }
+  else{ fb.className='feedback warn show'; fb.textContent=correct+' correct, '+wrong+' wrong'+(empty?' ('+empty+' blank)':'')+'. Check the red gaps.'; }
 }
 
 function submitToSheet() {
