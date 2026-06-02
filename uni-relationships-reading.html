@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building Relationships: Reading (Guanxi) | englishonline.training</title>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:    #1a3a5c;
+      --gold:    #c9a227;
+      --gold-lt: #f5e6b0;
+      --teal:    #2b7a78;
+      --red:     #c0392b;
+      --green:   #27ae60;
+      --bg:      #f7f9fc;
+      --card:    #ffffff;
+      --text:    #1d2b3a;
+      --muted:   #6b7a8d;
+      --border:  #dce3ec;
+      --radius:  12px;
+      --shadow:  0 2px 16px rgba(26,58,92,.1);
+      --font:    'Segoe UI', system-ui, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
+
+    .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
+    .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
+    .header-meta { font-size: .78rem; text-align: right; opacity: .9; }
+    .header-meta strong { display: block; color: var(--gold); }
+    .progress-track { height: 6px; background: rgba(255,255,255,.2); }
+    .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
+
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+
+    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
+    .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+    .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
+
+    .article-card { background: #fffdf6; border: 1.5px solid var(--gold); }
+    .article-head { font-size: 1.15rem; font-weight: 800; color: var(--blue); margin-bottom: .15rem; }
+    .article-by { font-size: .8rem; color: var(--muted); font-style: italic; margin-bottom: .9rem; }
+    .reading-text { font-size: .93rem; line-height: 1.85; color: var(--text); }
+    .reading-text p { margin-bottom: .85rem; }
+    .reading-text p:last-child { margin-bottom: 0; }
+    .para-num { display: inline-block; font-weight: 800; color: var(--gold); margin-right: .4rem; }
+
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+    .form-input, .form-textarea {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+      padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
+      color: var(--text); background: #fff; transition: border-color .2s;
+    }
+    .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--blue); }
+    .form-textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+    .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+
+    .who-row, .find-row { display: flex; gap: .75rem; align-items: center; padding: .5rem 0; border-bottom: 1px solid var(--border); }
+    .who-row:last-child, .find-row:last-child { border-bottom: none; }
+    .who-name { font-weight: 700; color: var(--blue); min-width: 120px; font-size: .9rem; }
+    .find-clue { flex: 1; font-size: .86rem; }
+    .find-row .form-input { max-width: 220px; }
+
+    .match-item { display: flex; gap: .75rem; align-items: flex-start; padding: .6rem 0; border-bottom: 1px solid var(--border); }
+    .match-item:last-child { border-bottom: none; }
+    .match-num { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .78rem; font-weight: 800; flex-shrink: 0; margin-top: .1rem; }
+    .match-text { flex: 1; font-size: .88rem; }
+    .gap-select {
+      display: inline-block; border: 1.5px solid var(--gold); border-radius: 6px;
+      padding: .25rem .5rem; font-family: var(--font); font-size: .85rem;
+      background: var(--gold-lt); color: var(--blue); cursor: pointer;
+      vertical-align: middle; flex-shrink: 0;
+    }
+    .gap-select:focus { outline: none; border-color: var(--blue); }
+
+    .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
+    .feedback.show { display: block; }
+    .feedback.err  { background: #fde8e8; color: #721c24; }
+
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
+    .btn-primary:hover { background: #15304f; }
+    .btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
+    .btn-gold:hover { background: #b8911f; }
+    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+    .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+    .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
+    .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
+    .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+    .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 460px; margin-left: auto; margin-right: auto; }
+    .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+    .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; }
+    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
+    .ov-card.locked { opacity: .5; }
+    .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+
+    .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
+    .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
+    .summary-a  { color: var(--text); white-space: pre-wrap; }
+
+    @media (max-width: 480px) {
+      .ex-title { font-size: 1.25rem; }
+      .btn { padding: .65rem 1.1rem; }
+      .welcome-title { font-size: 1.4rem; }
+      .who-name { min-width: 90px; }
+      .find-row { flex-wrap: wrap; }
+      .find-row .form-input { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Exercise A of 4</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+
+
+<!-- STEP 0 – WELCOME -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">🌏</div>
+      <h1 class="welcome-title">Building Relationships — Reading</h1>
+      <p class="welcome-sub">Read <em>“How East is meeting West”</em> about <em>guanxi</em> — connections in Chinese business — then answer the comprehension and vocabulary tasks.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">💬</div><strong>Ex A – Warm-up</strong>Where to build relations</div>
+      <div class="ov-card locked"><div class="ov-icon">👤</div><strong>Ex B &amp; C – Who / Where</strong>Identify people &amp; paragraphs</div>
+      <div class="ov-card locked"><div class="ov-icon">❓</div><strong>Ex D &amp; E – Comprehension</strong>Questions &amp; key words</div>
+      <div class="ov-card locked"><div class="ov-icon">🗣️</div><strong>Ex F – Discussion</strong>Doing business in China</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your course / group</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. Business English B2" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 1 – EXERCISE A -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">Warm-up</h2>
+    <p class="ex-subtitle">Think about this before you read.</p>
+
+    <div class="card">
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label" for="exA-q1">Where can you meet people to build good business relations?</label>
+        <textarea class="form-textarea" id="exA-q1" placeholder="Write your ideas here..." rows="5"></textarea>
+      </div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Read &amp; Continue →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 2 – EXERCISE B & C -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B &amp; C</span>
+    <h2 class="ex-title">Read the article</h2>
+    <p class="ex-subtitle">Read quickly first, then answer the two tasks below. The paragraphs are numbered to help you.</p>
+
+    <div class="card article-card">
+      <div class="article-head">How East is meeting West</div>
+      <div class="article-by">by Frederik Balfour</div>
+      <div class="reading-text" id="article-b"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">B — Who are these people?</div>
+      <p class="form-hint" style="margin-bottom:.75rem">Read the article and write who each person is.</p>
+      <div class="who-row"><span class="who-name">1. Li Ka-shing</span><input class="form-input" id="exB-p1" placeholder="Who is this?"></div>
+      <div class="who-row"><span class="who-name">2. Gary Wang</span><input class="form-input" id="exB-p2" placeholder="Who is this?"></div>
+      <div class="who-row"><span class="who-name">3. Helen Wong</span><input class="form-input" id="exB-p3" placeholder="Who is this?"></div>
+      <div class="who-row"><span class="who-name">4. Zhou Junjun</span><input class="form-input" id="exB-p4" placeholder="Who is this?"></div>
+      <div class="who-row"><span class="who-name">5. Andrew Grant</span><input class="form-input" id="exB-p5" placeholder="Who is this?"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">C — Which paragraph …?</div>
+      <p class="form-hint" style="margin-bottom:.75rem">Choose the paragraph number (1–8) that matches each description.</p>
+      <div class="match-item"><span class="match-num">1</span><div class="match-text">begins by talking about the origins of <em>guanxi</em>?</div>
+        <select class="gap-select" id="exC-m1"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></div>
+      <div class="match-item"><span class="match-num">2</span><div class="match-text">gives examples of what can be achieved if you have connections?</div>
+        <select class="gap-select" id="exC-m2"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></div>
+      <div class="match-item"><span class="match-num">3</span><div class="match-text">talks about how <em>guanxi</em> is changing?</div>
+        <select class="gap-select" id="exC-m3"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></div>
+      <div class="match-item"><span class="match-num">4</span><div class="match-text">talks about top connections made at MBA programmes within China?</div>
+        <select class="gap-select" id="exC-m4"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></div>
+      <div class="match-item"><span class="match-num">5</span><div class="match-text">talks about how a business started through connections made at a European business school?</div>
+        <select class="gap-select" id="exC-m5"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></div>
+      <div class="match-item"><span class="match-num">6</span><div class="match-text">talks about networking through multinational companies?</div>
+        <select class="gap-select" id="exC-m6"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></div>
+      <div class="match-item"><span class="match-num">7</span><div class="match-text">talks about Chinese businesspeople wanting something in return for connections?</div>
+        <select class="gap-select" id="exC-m7"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></div>
+      <div class="match-item"><span class="match-num">8</span><div class="match-text">suggests that making connections might take time and effort?</div>
+        <select class="gap-select" id="exC-m8"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise D &amp; E →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 3 – EXERCISE D & E -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise D &amp; E</span>
+    <h2 class="ex-title">Comprehension &amp; key words</h2>
+    <p class="ex-subtitle">Use the article (shown again below) to answer the questions and find the words.</p>
+
+    <div class="card article-card">
+      <div class="article-head">How East is meeting West</div>
+      <div class="article-by">by Frederik Balfour</div>
+      <div class="reading-text" id="article-d"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">D — Answer these questions</div>
+      <div class="form-group"><label class="form-label" for="exD-q1">1. What is <em>guanxi</em>?</label>
+        <textarea class="form-textarea" id="exD-q1" placeholder="Your answer..." rows="3"></textarea></div>
+      <div class="form-group"><label class="form-label" for="exD-q2">2. What examples are given of things you can achieve if you have good <em>guanxi</em>?</label>
+        <textarea class="form-textarea" id="exD-q2" placeholder="Your answer..." rows="3"></textarea></div>
+      <div class="form-group"><label class="form-label" for="exD-q3">3. What can Western companies do if they are involved in informal groups?</label>
+        <textarea class="form-textarea" id="exD-q3" placeholder="Your answer..." rows="3"></textarea></div>
+      <div class="form-group"><label class="form-label" for="exD-q4">4. How is <em>guanxi</em> changing?</label>
+        <textarea class="form-textarea" id="exD-q4" placeholder="Your answer..." rows="3"></textarea></div>
+      <div class="form-group" style="margin-bottom:0"><label class="form-label" for="exD-q5">5. Why does Ogilvy Public Relations Worldwide hold annual parties for previous employees?</label>
+        <textarea class="form-textarea" id="exD-q5" placeholder="Your answer..." rows="3"></textarea></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">E — Find words or phrases in the article which mean the following</div>
+      <div class="find-row"><div class="find-clue">1. using or taking what you need from a supply of something <em>(paragraph 2)</em></div><input class="form-input" id="exE-w1" placeholder="word / phrase"></div>
+      <div class="find-row"><div class="find-clue">2. when someone always supports someone or something <em>(paragraph 3)</em></div><input class="form-input" id="exE-w2" placeholder="word / phrase"></div>
+      <div class="find-row"><div class="find-clue">3. being responsible for what you do and willing to explain it or accept criticism <em>(paragraph 3)</em></div><input class="form-input" id="exE-w3" placeholder="word / phrase"></div>
+      <div class="find-row"><div class="find-clue">4. a moral or legal duty to do something <em>(paragraph 3)</em></div><input class="form-input" id="exE-w4" placeholder="word / phrase"></div>
+      <div class="find-row"><div class="find-clue">5. people you know who can help you, especially because they are in positions of power <em>(paragraph 4)</em></div><input class="form-input" id="exE-w5" placeholder="word / phrase"></div>
+      <div class="find-row"><div class="find-clue">6. talking to other people who do similar work in order to help each other <em>(paragraph 6)</em></div><input class="form-input" id="exE-w6" placeholder="word / phrase"></div>
+      <div class="find-row"><div class="find-clue">7. determination to keep trying to do something difficult <em>(paragraph 7)</em></div><input class="form-input" id="exE-w7" placeholder="word / phrase"></div>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise F →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 4 – EXERCISE F -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise F</span>
+    <h2 class="ex-title">Discussion</h2>
+    <p class="ex-subtitle">Give your own opinion on each question.</p>
+
+    <div class="card">
+      <div class="form-group"><label class="form-label" for="exF-q1">1. What advice would you give to someone trying to develop business relationships in China?</label>
+        <textarea class="form-textarea" id="exF-q1" placeholder="Your answer..." rows="4"></textarea></div>
+      <div class="form-group"><label class="form-label" for="exF-q2">2. A foreign company is opening a branch in your country. What factors should it consider?</label>
+        <textarea class="form-textarea" id="exF-q2" placeholder="Your answer..." rows="4"></textarea></div>
+      <div class="form-group" style="margin-bottom:0"><label class="form-label" for="exF-q3">3. In your experience, are certain nationalities better at building relationships than others? If so, which ones?</label>
+        <textarea class="form-textarea" id="exF-q3" placeholder="Your answer..." rows="4"></textarea></div>
+    </div>
+
+    <div id="step4-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(4)">Review &amp; Submit →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- FINAL STEP – REVIEW & SUBMIT -->
+<section id="step-5" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission did not work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+/* ============================================================
+   CONFIG
+============================================================ */
+var UNIT         = 'uni-relationships-reading';
+var TOTAL_STEPS  = 5;
+/* University English sheet — replace the placeholder below with the
+   /exec URL of the new University Apps Script once it is deployed. */
+var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbwwbV6ufw7QX8meNGyOwiVdkqNpQ8yckdXmsbFqysJwWqAfCWaR_eC9RH41LaqmYyZOeA/exec';
+var TEACHER_EMAIL = 'sptrezise@proton.me';
+
+/* The article — one entry per paragraph (numbered 1–8 on the page) */
+var ARTICLE = [
+  'Guanxi. It’s the first word any businessperson learns upon arriving in China. Loosely translated, guanxi means “connections” and it is the key to everything: securing a business license, landing a distribution deal, even finding that special colonial villa in Shanghai. Fortunes have been made and lost based on whether the seeker has good or bad guanxi.',
+  'Now, like so many things in China, the old notion of guanxi is starting to make room for the new. Businesspeople—local and foreign—are tapping into emerging networks that revolve around shared work experiences or taking business classes together. Networking that once happened in private rooms at smart restaurants now goes on in plain view—at wine tastings for the nouveau riche, say, or at Davos-style get-togethers such as the annual China Entrepreneurs Forum held annually at China’s Yabuli ski resort. By tapping into these informal groups, Western companies can theoretically improve their understanding of the marketplace, hire the best talent, and find potential business partners.',
+  'Guanxi goes back thousands of years and is based on traditional values of loyalty, accountability, and obligation—the notion that if somebody does you a favor, you will be expected to repay it one day. One of Asia’s most successful businessmen, Hong Kong billionaire Li Ka-shing, has used his guanxi particularly astutely over the years, in the process winning valuable licenses and permission to build huge real-estate developments. Playing the guanxi game is still imperative, especially for foreign investors.',
+  'Many of China’s networkers meet through an American or European MBA program. Gary Wang attended INSEAD, the famous French business school outside Paris. Today, he runs a YouTube wannabe called Tudou that was built largely on connections made at business school. A fellow student who helped out with public relations works at Ogilvy & Mather Worldwide. And another INSEAD graduate, Helen Wong, a partner at Granite Global Ventures, helped Wang raise $8.5 million after a friend heard him speak at the China Europe International Business School (CEIBS) in Shanghai. “Without knowing all these people through INSEAD,” says Wang, “Tudou probably never would have happened.”',
+  'Executive MBA programs, all the rage now in China, have become Guanxi Central. Targeted at senior executives and high-powered entrepreneurs, the programs are attracting some of China’s most successful businesspeople. “It’s important to have friends in different industries and meet people from different cities,” says Zhou Junjun, who runs the Chinese operations of a South Korean systems company and did an Executive MBA at the Cheung Kong Graduate School of Business in Beijing.',
+  'Multinational companies, of course, provide rich opportunities for networking, too. Ogilvy Public Relations Worldwide holds an annual party for former employees, many of whom now work for the company’s clients, including Lenovo, Johnson & Johnson, and solar-panel maker Suntek. McKinsey has plenty of alumni who have moved into senior posts at major companies and start-ups. “Obviously, they became a valuable network for us,” says Andrew Grant, who runs the firm’s China practice in Shanghai.',
+  'If one thing has remained the same for foreigners in China, it is this: cracking the guanxi code still takes hard work and perseverance. Networking at an alumni barbecue or wine tasting goes only so far when trying to build relationships of any lasting value. After the first 30 minutes at these functions, say people who have attended, foreigners and locals almost invariably break off into separate groups.',
+  'What’s more, Chinese businesspeople are more experienced and globally savvy than they were just a few years ago. They’re looking for business connections who can help them expand outside China or get their company listed on a foreign exchange. “People want something more professional and strategic from their relationships,” says Li Yifei, Viacom’s chief representative in China. “They want to know how good your guanxi is back home.”'
+];
+
+/* ============================================================
+   STATE
+============================================================ */
+var state = {
+  name:  '',
+  cls:   '',
+  exA:   {},
+  exB:   {},
+  exC:   {},
+  exD:   {},
+  exE:   {},
+  exF:   {}
+};
+
+/* ============================================================
+   RENDER ARTICLE (into both containers)
+============================================================ */
+function renderArticle() {
+  var html = '';
+  ARTICLE.forEach(function(p, i) {
+    html += '<p><span class="para-num">' + (i + 1) + '</span>' + esc(p) + '</p>';
+  });
+  ['article-b', 'article-d'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.innerHTML = html;
+  });
+}
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('step-' + n).classList.add('active');
+  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  restoreStep(n);
+  var meta = document.getElementById('header-meta');
+  if (n === 0) { meta.style.display = 'none'; return; }
+  meta.style.display = 'block';
+  document.getElementById('header-name').textContent = state.name + (state.cls ? ' — ' + state.cls : '');
+  var labels = ['A', 'B & C', 'D & E', 'F'];
+  document.getElementById('header-step').textContent = n < TOTAL_STEPS
+    ? 'Exercise ' + labels[n - 1]
+    : 'Submit';
+}
+
+function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
+
+function nextStep(n) {
+  if (!validateStep(n)) {
+    var err = document.getElementById('step' + n + '-error');
+    if (err) { err.textContent = 'Please answer all the questions on this page before continuing.'; err.classList.add('show'); }
+    return;
+  }
+  clearErr(n);
+  saveStep(n);
+  if (n === TOTAL_STEPS - 1) { buildSummary(); }
+  showStep(n + 1);
+}
+
+function clearErr(n) {
+  var err = document.getElementById('step' + n + '-error');
+  if (err) err.classList.remove('show');
+}
+
+function startExercises() {
+  var name = g('inp-name'), cls = g('inp-class');
+  var err = document.getElementById('welcome-error');
+  if (!name || !cls) {
+    err.textContent = 'Please enter both your name and your course / group.';
+    err.classList.add('show');
+    return;
+  }
+  err.classList.remove('show');
+  state.name = name;
+  state.cls  = cls;
+  showStep(1);
+}
+
+/* ============================================================
+   VALIDATION
+============================================================ */
+function validateStep(n) {
+  switch (n) {
+    case 1: return val('exA-q1');
+    case 2:
+      return ['1','2','3','4','5'].every(function(k) { return g('exB-p' + k) !== ''; })
+          && ['1','2','3','4','5','6','7','8'].every(function(k) { return g('exC-m' + k) !== ''; });
+    case 3:
+      return ['1','2','3','4','5'].every(function(k) { return g('exD-q' + k) !== ''; })
+          && ['1','2','3','4','5','6','7'].every(function(k) { return g('exE-w' + k) !== ''; });
+    case 4:
+      return ['1','2','3'].every(function(k) { return g('exF-q' + k) !== ''; });
+    default: return true;
+  }
+}
+
+/* ============================================================
+   SAVE / RESTORE
+============================================================ */
+function saveStep(n) {
+  switch (n) {
+    case 1: state.exA.q1 = g('exA-q1'); break;
+    case 2:
+      for (var p = 1; p <= 5; p++) { state.exB['p' + p] = g('exB-p' + p); }
+      for (var m = 1; m <= 8; m++) { state.exC['m' + m] = g('exC-m' + m); }
+      break;
+    case 3:
+      for (var d = 1; d <= 5; d++) { state.exD['q' + d] = g('exD-q' + d); }
+      for (var e = 1; e <= 7; e++) { state.exE['w' + e] = g('exE-w' + e); }
+      break;
+    case 4:
+      for (var f = 1; f <= 3; f++) { state.exF['q' + f] = g('exF-q' + f); }
+      break;
+  }
+}
+
+function restoreStep(n) {
+  switch (n) {
+    case 1: set('exA-q1', state.exA.q1); break;
+    case 2:
+      for (var p = 1; p <= 5; p++) { set('exB-p' + p, state.exB['p' + p]); }
+      for (var m = 1; m <= 8; m++) { set('exC-m' + m, state.exC['m' + m]); }
+      break;
+    case 3:
+      for (var d = 1; d <= 5; d++) { set('exD-q' + d, state.exD['q' + d]); }
+      for (var e = 1; e <= 7; e++) { set('exE-w' + e, state.exE['w' + e]); }
+      break;
+    case 4:
+      for (var f = 1; f <= 3; f++) { set('exF-q' + f, state.exF['q' + f]); }
+      break;
+  }
+}
+
+/* ============================================================
+   HELPERS
+============================================================ */
+function g(id)       { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+function set(id, v)  { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
+function val(id)     { return g(id).length > 0; }
+function esc(str)    { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
+
+var WHO = ['Li Ka-shing', 'Gary Wang', 'Helen Wong', 'Zhou Junjun', 'Andrew Grant'];
+var C_QS = ['origins of guanxi', 'examples of what connections achieve', 'how guanxi is changing',
+  'top connections at MBA programmes in China', 'business started at a European business school',
+  'networking through multinationals', 'wanting something in return', 'takes time and effort'];
+var D_QS = ['What is guanxi?', 'Examples of what good guanxi can achieve?',
+  'What can Western companies do in informal groups?', 'How is guanxi changing?',
+  'Why does Ogilvy hold annual parties for former employees?'];
+var E_QS = ['taking what you need from a supply (¶2)', 'always supports someone/something (¶3)',
+  'responsible & willing to accept criticism (¶3)', 'a moral or legal duty (¶3)',
+  'helpful people in positions of power (¶4)', 'talking to others in similar work (¶6)',
+  'determination to keep trying (¶7)'];
+var F_QS = ['Advice for developing business relationships in China',
+  'Factors for a foreign company opening a branch here', 'Are some nationalities better at relationships?'];
+
+function exBText() { return WHO.map(function(w, i) { return (i + 1) + '. ' + w + ' — ' + (state.exB['p' + (i + 1)] || '—'); }).join('\n'); }
+function exCText() { return C_QS.map(function(q, i) { return (i + 1) + '. ' + q + ' → ¶' + (state.exC['m' + (i + 1)] || '—'); }).join('\n'); }
+function exDText() { return D_QS.map(function(q, i) { return (i + 1) + '. ' + q + '\n   ' + (state.exD['q' + (i + 1)] || '—'); }).join('\n'); }
+function exEText() { return E_QS.map(function(q, i) { return (i + 1) + '. ' + q + ' → ' + (state.exE['w' + (i + 1)] || '—'); }).join('\n'); }
+function exFText() { return F_QS.map(function(q, i) { return (i + 1) + '. ' + q + '\n   ' + (state.exF['q' + (i + 1)] || '—'); }).join('\n'); }
+
+/* ============================================================
+   SUMMARY
+============================================================ */
+function buildSummary() {
+  var rows = [
+    { ex: 'Exercise A', q: 'Where to build business relations', a: state.exA.q1 },
+    { ex: 'Exercise B', q: 'Who are these people?', a: exBText() },
+    { ex: 'Exercise C', q: 'Which paragraph?', a: exCText() },
+    { ex: 'Exercise D', q: 'Comprehension questions', a: exDText() },
+    { ex: 'Exercise E', q: 'Key words / phrases', a: exEText() },
+    { ex: 'Exercise F', q: 'Discussion', a: exFText() }
+  ];
+  var html = '<div class="submit-summary">'
+    + '<div class="summary-row"><div class="summary-ex">Student</div>'
+    + '<div class="summary-q">' + esc(state.name) + ' — ' + esc(state.cls) + '</div></div>';
+  rows.forEach(function(r) {
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div>'
+      + '<div class="summary-q">' + esc(r.q) + '</div>'
+      + '<div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+}
+
+/* ============================================================
+   EMAIL FALLBACK BODY
+============================================================ */
+function buildEmailBody() {
+  return 'Exercise: ' + UNIT
+    + '\nStudent: ' + state.name
+    + '\nCourse:  ' + state.cls
+    + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
+    + '\n\n--- Exercise A ---\n' + (state.exA.q1 || '(none)')
+    + '\n\n--- Exercise B (who are these people) ---\n' + exBText()
+    + '\n\n--- Exercise C (which paragraph) ---\n' + exCText()
+    + '\n\n--- Exercise D (comprehension) ---\n' + exDText()
+    + '\n\n--- Exercise E (key words) ---\n' + exEText()
+    + '\n\n--- Exercise F (discussion) ---\n' + exFText();
+}
+
+/* ============================================================
+   SUBMIT TO GOOGLE SHEET
+============================================================ */
+function submitToSheet() {
+  buildSummary();
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  var payload = { name: state.name, cls: state.cls, unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD, exE: state.exE, exF: state.exF };
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+  }).then(function() {
+    btn.style.display = 'none';
+    document.getElementById('submit-success').style.display = 'block';
+    document.getElementById('submit-fallback').style.display = 'block';
+  }).catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Submit to Teacher';
+    document.getElementById('submit-fallback').style.display = 'block';
+  });
+}
+
+function submitByEmail() {
+  var a = document.createElement('a');
+  a.href = 'mailto:' + TEACHER_EMAIL
+    + '?subject=' + encodeURIComponent(UNIT + ' - ' + state.name + ' - ' + state.cls)
+    + '&body='    + encodeURIComponent(buildEmailBody());
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function() { document.body.removeChild(a); }, 100);
+}
+
+function copyAnswers() {
+  var body = buildEmailBody();
+  navigator.clipboard.writeText(body)
+    .then(function() { alert('Answers copied! Paste them into an email to your teacher.'); })
+    .catch(function() { prompt('Copy this text:', body); });
+}
+
+/* ============================================================
+   INIT
+============================================================ */
+document.addEventListener('DOMContentLoaded', function() {
+  renderArticle();
+  showStep(0);
+});
+</script>
+
+<script>
+/* Paste-block */
+document.addEventListener('paste', function(e) {
+  var t = e.target;
+  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
+    e.preventDefault();
+    var msg = document.createElement('div');
+    msg.textContent = 'Pasting is not allowed';
+    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    document.body.appendChild(msg);
+    setTimeout(function() { msg.style.opacity = '0'; setTimeout(function() { msg.remove(); }, 400); }, 2000);
+  }
+});
+/* Copy-block */
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  var msg = document.createElement('div');
+  msg.textContent = '🚫 Copying is not allowed';
+  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+  document.body.appendChild(msg);
+  setTimeout(function() { msg.style.opacity = '0'; setTimeout(function() { msg.remove(); }, 400); }, 2000);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building Relationships: Multi-word Verbs | englishonline.training</title>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:    #1a3a5c;
+      --gold:    #c9a227;
+      --gold-lt: #f5e6b0;
+      --teal:    #2b7a78;
+      --red:     #c0392b;
+      --green:   #27ae60;
+      --bg:      #f7f9fc;
+      --card:    #ffffff;
+      --text:    #1d2b3a;
+      --muted:   #6b7a8d;
+      --border:  #dce3ec;
+      --radius:  12px;
+      --shadow:  0 2px 16px rgba(26,58,92,.1);
+      --font:    'Segoe UI', system-ui, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
+
+    .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
+    .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
+    .header-meta { font-size: .78rem; text-align: right; opacity: .9; }
+    .header-meta strong { display: block; color: var(--gold); }
+    .progress-track { height: 6px; background: rgba(255,255,255,.2); }
+    .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
+
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+
+    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
+    .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+    .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
+
+    .ref-card { background: #f0f5fb; border: 1.5px solid var(--blue); }
+    .ref-card .card-title { color: var(--blue); }
+    .ref-item { padding: .5rem 0; border-bottom: 1px dashed var(--border); font-size: .86rem; }
+    .ref-item:last-child { border-bottom: none; }
+    .ref-item b { color: var(--blue); }
+    .ref-item em { color: var(--teal); }
+
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+    .form-input, .form-textarea {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+      padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
+      color: var(--text); background: #fff; transition: border-color .2s;
+    }
+    .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--blue); }
+    .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+
+    /* word bank */
+    .word-bank { background: var(--gold-lt); border: 1.5px solid var(--gold); border-radius: 8px; padding: .75rem 1rem; margin-bottom: 1.25rem; }
+    .word-bank strong { display: block; color: var(--blue); margin-bottom: .5rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; }
+    .word-bank span { display: inline-block; margin: .2rem .3rem; background: var(--blue); color: #fff; border-radius: 4px; padding: .18rem .55rem; font-size: .8rem; font-weight: 600; }
+
+    /* order rows (Exercise A) */
+    .order-row { display: flex; gap: .65rem; align-items: flex-start; padding: .6rem 0; border-bottom: 1px solid var(--border); }
+    .order-row:last-child { border-bottom: none; }
+    .order-letter { font-weight: 800; color: var(--blue); width: 1.4rem; flex-shrink: 0; font-size: .9rem; padding-top: .35rem; }
+    .order-text { flex: 1; font-size: .87rem; line-height: 1.55; }
+    .order-select, .gap-select {
+      border: 1.5px solid var(--gold); border-radius: 6px;
+      padding: .3rem .45rem; font-family: var(--font); font-size: .85rem;
+      background: var(--gold-lt); color: var(--blue); cursor: pointer; flex-shrink: 0;
+    }
+    .order-select:focus, .gap-select:focus { outline: none; border-color: var(--blue); }
+    .order-select:disabled { opacity: .85; cursor: not-allowed; }
+
+    /* match rows (Exercise B) */
+    .match-item { display: flex; gap: .75rem; align-items: center; padding: .55rem 0; border-bottom: 1px solid var(--border); }
+    .match-item:last-child { border-bottom: none; }
+    .match-num { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .78rem; font-weight: 800; flex-shrink: 0; }
+    .match-text { flex: 1; font-size: .88rem; }
+
+    /* transform (Exercise C) */
+    .transform-item { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: .85rem; background: #fafbfc; }
+    .transform-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 800; margin-bottom: .5rem; }
+    .transform-original { font-size: .9rem; color: var(--text); font-style: italic; margin-bottom: .65rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); }
+    .transform-hint { font-size: .75rem; color: var(--muted); margin-top: .3rem; }
+    .transform-item.example { background: #eef7f0; border-color: var(--green); }
+    .transform-answer { font-size: .9rem; color: #155724; font-weight: 600; }
+
+    .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
+    .feedback.show { display: block; }
+    .feedback.err  { background: #fde8e8; color: #721c24; }
+
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
+    .btn-primary:hover { background: #15304f; }
+    .btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
+    .btn-gold:hover { background: #b8911f; }
+    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+    .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+    .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
+    .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
+    .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+    .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 460px; margin-left: auto; margin-right: auto; }
+    .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+    .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; }
+    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
+    .ov-card.locked { opacity: .5; }
+    .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+
+    .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
+    .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
+    .summary-a  { color: var(--text); white-space: pre-wrap; }
+
+    @media (max-width: 480px) {
+      .ex-title { font-size: 1.25rem; }
+      .btn { padding: .65rem 1.1rem; }
+      .welcome-title { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Exercise A of 3</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+
+
+<!-- STEP 0 – WELCOME -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">🔤</div>
+      <h1 class="welcome-title">Building Relationships — Multi-word Verbs</h1>
+      <p class="welcome-sub">Order a business conversation, match the meanings, and rephrase sentences using common multi-word verbs.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">🔢</div><strong>Ex A – Order the talk</strong>Sequence the conversation</div>
+      <div class="ov-card locked"><div class="ov-icon">🔗</div><strong>Ex B – Match meanings</strong>Phrase → multi-word verb</div>
+      <div class="ov-card locked"><div class="ov-icon">✍️</div><strong>Ex C – Rephrase</strong>Use the verbs in context</div>
+    </div>
+
+    <div class="card ref-card">
+      <div class="card-title">Grammar reference — multi-word verbs</div>
+      <div class="ref-item"><b>1. Without an object:</b> Networking now <em>goes on</em> in plain view.</div>
+      <div class="ref-item"><b>2. With an object — separable:</b> We'll <em>draw up</em> a new contract. / We'll <em>draw</em> a new contract <em>up</em>.</div>
+      <div class="ref-item"><b>3. With an object — inseparable:</b> They're <em>looking for</em> business connections.</div>
+      <div class="ref-item"><b>4. With two particles:</b> I'm really <em>looking forward to</em> meeting you next week.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your course / group</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. Business English B2" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 1 – EXERCISE A -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">Put the conversation in order</h2>
+    <p class="ex-subtitle">Two executives are talking about building relationships with clients. Choose the position (1–10) of each line. Line <strong>f</strong> is given as number 1.</p>
+
+    <div class="card">
+      <div class="order-row">
+        <span class="order-letter">a)</span>
+        <div class="order-text">They were both annoyed. My contact thought I had let him down, and his boss simply decided not to turn up at the meeting. We'd set up a meeting in Brussels by e-mail, but he called it off at the last minute. I'd already checked in at the hotel.</div>
+        <select class="order-select" id="exA-a"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
+      </div>
+      <div class="order-row">
+        <span class="order-letter">b)</span>
+        <div class="order-text">Oh, what went wrong?</div>
+        <select class="order-select" id="exA-b"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
+      </div>
+      <div class="order-row">
+        <span class="order-letter">c)</span>
+        <div class="order-text">Well, I'm going to carry on working until about six. We could meet after that.</div>
+        <select class="order-select" id="exA-c"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
+      </div>
+      <div class="order-row">
+        <span class="order-letter">d)</span>
+        <div class="order-text">How did you turn it round?</div>
+        <select class="order-select" id="exA-d"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
+      </div>
+      <div class="order-row">
+        <span class="order-letter">e)</span>
+        <div class="order-text">It's fine now, but at the start of the year, it was disastrous.</div>
+        <select class="order-select" id="exA-e"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
+      </div>
+      <div class="order-row">
+        <span class="order-letter">f)</span>
+        <div class="order-text">So, how's the relationship with Toyota going?</div>
+        <select class="order-select" id="exA-f" disabled><option>1</option></select>
+      </div>
+      <div class="order-row">
+        <span class="order-letter">g)</span>
+        <div class="order-text">Well, I went over my contact's head and went directly to his boss at Toyota Motors Europe. I was really trying to clinch a deal.</div>
+        <select class="order-select" id="exA-g"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
+      </div>
+      <div class="order-row">
+        <span class="order-letter">h)</span>
+        <div class="order-text">Glad it worked out. Anyway, are you free for a drink later?</div>
+        <select class="order-select" id="exA-h"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
+      </div>
+      <div class="order-row">
+        <span class="order-letter">i)</span>
+        <div class="order-text">Well, I had to build up my relationship with my original contact again. At first, he kept putting me off. But eventually we met up and I focused on our relationship, not the next sale. Now we get on really well and sometimes play golf together.</div>
+        <select class="order-select" id="exA-i"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
+      </div>
+      <div class="order-row">
+        <span class="order-letter">j)</span>
+        <div class="order-text">Was he annoyed?</div>
+        <select class="order-select" id="exA-j"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
+      </div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 2 – EXERCISE B -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B</span>
+    <h2 class="ex-title">Match the meanings</h2>
+    <p class="ex-subtitle">Choose the multi-word verb from the conversation that matches each meaning.</p>
+
+    <div class="word-bank">
+      <strong>Multi-word verbs</strong>
+      <span>get on</span> <span>check in</span> <span>build up</span> <span>turn round</span> <span>put off</span>
+      <span>turn up</span> <span>let down</span> <span>set up</span> <span>carry on</span> <span>call off</span>
+    </div>
+
+    <div class="card">
+      <div class="match-item"><span class="match-num">1</span><div class="match-text">have a friendly relationship</div>
+        <select class="gap-select" id="exB-g1"></select></div>
+      <div class="match-item"><span class="match-num">2</span><div class="match-text">registered (at a hotel)</div>
+        <select class="gap-select" id="exB-g2"></select></div>
+      <div class="match-item"><span class="match-num">3</span><div class="match-text">make stronger</div>
+        <select class="gap-select" id="exB-g3"></select></div>
+      <div class="match-item"><span class="match-num">4</span><div class="match-text">change something into something successful</div>
+        <select class="gap-select" id="exB-g4"></select></div>
+      <div class="match-item"><span class="match-num">5</span><div class="match-text">postponing / delaying</div>
+        <select class="gap-select" id="exB-g5"></select></div>
+      <div class="match-item"><span class="match-num">6</span><div class="match-text">appear / arrive somewhere</div>
+        <select class="gap-select" id="exB-g6"></select></div>
+      <div class="match-item"><span class="match-num">7</span><div class="match-text">disappoint</div>
+        <select class="gap-select" id="exB-g7"></select></div>
+      <div class="match-item"><span class="match-num">8</span><div class="match-text">arrange</div>
+        <select class="gap-select" id="exB-g8"></select></div>
+      <div class="match-item"><span class="match-num">9</span><div class="match-text">continue</div>
+        <select class="gap-select" id="exB-g9"></select></div>
+      <div class="match-item"><span class="match-num">10</span><div class="match-text">cancelled</div>
+        <select class="gap-select" id="exB-g10"></select></div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 3 – EXERCISE C -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise C</span>
+    <h2 class="ex-title">Rephrase the comments</h2>
+    <p class="ex-subtitle">Rewrite each comment using a multi-word verb from Exercise B. The first one is done for you.</p>
+
+    <div class="card">
+      <div class="transform-item example">
+        <div class="transform-num">1</div>
+        <div class="transform-original">We can't hold the meeting tomorrow.</div>
+        <div class="transform-answer">→ We'll have to <u>call off</u> the meeting tomorrow.</div>
+      </div>
+
+      <div class="transform-item">
+        <div class="transform-num">2</div>
+        <div class="transform-original">They've postponed the presentation until Thursday.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <input class="form-input" type="text" id="exC-t2" placeholder="Rewrite using a multi-word verb...">
+        </div>
+        <div class="transform-hint">Use: <strong>put off</strong></div>
+      </div>
+
+      <div class="transform-item">
+        <div class="transform-num">3</div>
+        <div class="transform-original">I'm sorry I've disappointed you.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <input class="form-input" type="text" id="exC-t3" placeholder="Rewrite using a multi-word verb...">
+        </div>
+        <div class="transform-hint">Use: <strong>let down</strong></div>
+      </div>
+
+      <div class="transform-item">
+        <div class="transform-num">4</div>
+        <div class="transform-original">She's arranged the conference call for nine o'clock.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <input class="form-input" type="text" id="exC-t4" placeholder="Rewrite using a multi-word verb...">
+        </div>
+        <div class="transform-hint">Use: <strong>set up</strong></div>
+      </div>
+
+      <div class="transform-item">
+        <div class="transform-num">5</div>
+        <div class="transform-original">This is a crucial meeting. Make sure you arrive on time.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <input class="form-input" type="text" id="exC-t5" placeholder="Rewrite using a multi-word verb...">
+        </div>
+        <div class="transform-hint">Use: <strong>turn up</strong></div>
+      </div>
+
+      <div class="transform-item">
+        <div class="transform-num">6</div>
+        <div class="transform-original">Everyone continued working as if nothing had happened.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <input class="form-input" type="text" id="exC-t6" placeholder="Rewrite using a multi-word verb...">
+        </div>
+        <div class="transform-hint">Use: <strong>carry on</strong></div>
+      </div>
+
+      <div class="transform-item">
+        <div class="transform-num">7</div>
+        <div class="transform-original">You'll need to register at the Hilton around four o'clock.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <input class="form-input" type="text" id="exC-t7" placeholder="Rewrite using a multi-word verb...">
+        </div>
+        <div class="transform-hint">Use: <strong>check in</strong></div>
+      </div>
+
+      <div class="transform-item">
+        <div class="transform-num">8</div>
+        <div class="transform-original">I have a good relationship with my new boss.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <input class="form-input" type="text" id="exC-t8" placeholder="Rewrite using a multi-word verb...">
+        </div>
+        <div class="transform-hint">Use: <strong>get on</strong></div>
+      </div>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(3)">Review &amp; Submit →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- FINAL STEP – REVIEW & SUBMIT -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission did not work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+/* ============================================================
+   CONFIG
+============================================================ */
+var UNIT         = 'uni-relationships-language';
+var TOTAL_STEPS  = 4;
+/* University English sheet — replace the placeholder below with the
+   /exec URL of the new University Apps Script once it is deployed. */
+var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbwwbV6ufw7QX8meNGyOwiVdkqNpQ8yckdXmsbFqysJwWqAfCWaR_eC9RH41LaqmYyZOeA/exec';
+var TEACHER_EMAIL = 'sptrezise@proton.me';
+
+var ORDER_LETTERS = ['a','b','c','d','e','f','g','h','i','j'];
+var MWV = ['get on','check in','build up','turn round','put off','turn up','let down','set up','carry on','call off'];
+var B_MEANINGS = ['have a friendly relationship','registered (at a hotel)','make stronger',
+  'change something into something successful','postponing / delaying','appear / arrive somewhere',
+  'disappoint','arrange','continue','cancelled'];
+var C_ORIGINALS = ['', 'We can’t hold the meeting tomorrow.', 'They’ve postponed the presentation until Thursday.',
+  'I’m sorry I’ve disappointed you.', 'She’s arranged the conference call for nine o’clock.',
+  'This is a crucial meeting. Make sure you arrive on time.', 'Everyone continued working as if nothing had happened.',
+  'You’ll need to register at the Hilton around four o’clock.', 'I have a good relationship with my new boss.'];
+
+/* ============================================================
+   STATE
+============================================================ */
+var state = {
+  name:  '',
+  cls:   '',
+  exA:   {},
+  exB:   {},
+  exC:   {}
+};
+
+/* ============================================================
+   RENDER (Exercise B dropdowns)
+============================================================ */
+function renderExB() {
+  for (var i = 1; i <= 10; i++) {
+    var sel = document.getElementById('exB-g' + i);
+    var html = '<option value="">—</option>';
+    MWV.forEach(function(v) { html += '<option>' + v + '</option>'; });
+    sel.innerHTML = html;
+  }
+}
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('step-' + n).classList.add('active');
+  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  restoreStep(n);
+  var meta = document.getElementById('header-meta');
+  if (n === 0) { meta.style.display = 'none'; return; }
+  meta.style.display = 'block';
+  document.getElementById('header-name').textContent = state.name + (state.cls ? ' — ' + state.cls : '');
+  var labels = ['A', 'B', 'C'];
+  document.getElementById('header-step').textContent = n < TOTAL_STEPS
+    ? 'Exercise ' + labels[n - 1] + ' of ' + (TOTAL_STEPS - 1)
+    : 'Submit';
+}
+
+function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
+
+function nextStep(n) {
+  if (!validateStep(n)) {
+    var err = document.getElementById('step' + n + '-error');
+    if (err) { err.textContent = 'Please answer all the questions on this page before continuing.'; err.classList.add('show'); }
+    return;
+  }
+  clearErr(n);
+  saveStep(n);
+  if (n === TOTAL_STEPS - 1) { buildSummary(); }
+  showStep(n + 1);
+}
+
+function clearErr(n) {
+  var err = document.getElementById('step' + n + '-error');
+  if (err) err.classList.remove('show');
+}
+
+function startExercises() {
+  var name = g('inp-name'), cls = g('inp-class');
+  var err = document.getElementById('welcome-error');
+  if (!name || !cls) {
+    err.textContent = 'Please enter both your name and your course / group.';
+    err.classList.add('show');
+    return;
+  }
+  err.classList.remove('show');
+  state.name = name;
+  state.cls  = cls;
+  showStep(1);
+}
+
+/* ============================================================
+   VALIDATION
+============================================================ */
+function validateStep(n) {
+  switch (n) {
+    case 1: return ORDER_LETTERS.every(function(l) { return g('exA-' + l) !== ''; });
+    case 2: return ['1','2','3','4','5','6','7','8','9','10'].every(function(k) { return g('exB-g' + k) !== ''; });
+    case 3: return ['2','3','4','5','6','7','8'].every(function(k) { return g('exC-t' + k) !== ''; });
+    default: return true;
+  }
+}
+
+/* ============================================================
+   SAVE / RESTORE
+============================================================ */
+function saveStep(n) {
+  switch (n) {
+    case 1: ORDER_LETTERS.forEach(function(l) { state.exA[l] = g('exA-' + l); }); break;
+    case 2: for (var b = 1; b <= 10; b++) { state.exB['g' + b] = g('exB-g' + b); } break;
+    case 3: for (var c = 2; c <= 8; c++) { state.exC['t' + c] = g('exC-t' + c); } break;
+  }
+}
+
+function restoreStep(n) {
+  switch (n) {
+    case 1:
+      ORDER_LETTERS.forEach(function(l) {
+        if (l === 'f') return; /* f is fixed at 1 */
+        set('exA-' + l, state.exA[l]);
+      });
+      break;
+    case 2: for (var b = 1; b <= 10; b++) { set('exB-g' + b, state.exB['g' + b]); } break;
+    case 3: for (var c = 2; c <= 8; c++) { set('exC-t' + c, state.exC['t' + c]); } break;
+  }
+}
+
+/* ============================================================
+   HELPERS
+============================================================ */
+function g(id)       { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+function set(id, v)  { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
+function val(id)     { return g(id).length > 0; }
+function esc(str)    { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
+
+function exAText() {
+  return ORDER_LETTERS.map(function(l) { return l + ') = ' + (state.exA[l] || '—'); }).join('   ');
+}
+function exBText() {
+  var out = [];
+  for (var b = 1; b <= 10; b++) { out.push(b + '. ' + B_MEANINGS[b - 1] + ' → ' + (state.exB['g' + b] || '—')); }
+  return out.join('\n');
+}
+function exCText() {
+  var out = ['1. ' + C_ORIGINALS[1] + ' → We’ll have to call off the meeting tomorrow. (example)'];
+  for (var c = 2; c <= 8; c++) { out.push(c + '. ' + C_ORIGINALS[c] + '\n   ' + (state.exC['t' + c] || '—')); }
+  return out.join('\n');
+}
+
+/* ============================================================
+   SUMMARY
+============================================================ */
+function buildSummary() {
+  var rows = [
+    { ex: 'Exercise A', q: 'Conversation order (letter = position)', a: exAText() },
+    { ex: 'Exercise B', q: 'Meaning → multi-word verb', a: exBText() },
+    { ex: 'Exercise C', q: 'Rephrased sentences', a: exCText() }
+  ];
+  var html = '<div class="submit-summary">'
+    + '<div class="summary-row"><div class="summary-ex">Student</div>'
+    + '<div class="summary-q">' + esc(state.name) + ' — ' + esc(state.cls) + '</div></div>';
+  rows.forEach(function(r) {
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div>'
+      + '<div class="summary-q">' + esc(r.q) + '</div>'
+      + '<div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+}
+
+/* ============================================================
+   EMAIL FALLBACK BODY
+============================================================ */
+function buildEmailBody() {
+  return 'Exercise: ' + UNIT
+    + '\nStudent: ' + state.name
+    + '\nCourse:  ' + state.cls
+    + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
+    + '\n\n--- Exercise A (conversation order) ---\n' + exAText()
+    + '\n\n--- Exercise B (match meanings) ---\n' + exBText()
+    + '\n\n--- Exercise C (rephrase) ---\n' + exCText();
+}
+
+/* ============================================================
+   SUBMIT TO GOOGLE SHEET
+============================================================ */
+function submitToSheet() {
+  buildSummary();
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  var payload = { name: state.name, cls: state.cls, unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC };
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+  }).then(function() {
+    btn.style.display = 'none';
+    document.getElementById('submit-success').style.display = 'block';
+    document.getElementById('submit-fallback').style.display = 'block';
+  }).catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Submit to Teacher';
+    document.getElementById('submit-fallback').style.display = 'block';
+  });
+}
+
+function submitByEmail() {
+  var a = document.createElement('a');
+  a.href = 'mailto:' + TEACHER_EMAIL
+    + '?subject=' + encodeURIComponent(UNIT + ' - ' + state.name + ' - ' + state.cls)
+    + '&body='    + encodeURIComponent(buildEmailBody());
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function() { document.body.removeChild(a); }, 100);
+}
+
+function copyAnswers() {
+  var body = buildEmailBody();
+  navigator.clipboard.writeText(body)
+    .then(function() { alert('Answers copied! Paste them into an email to your teacher.'); })
+    .catch(function() { prompt('Copy this text:', body); });
+}
+
+/* ============================================================
+   INIT
+============================================================ */
+document.addEventListener('DOMContentLoaded', function() {
+  renderExB();
+  showStep(0);
+});
+</script>
+
+<script>
+/* Paste-block */
+document.addEventListener('paste', function(e) {
+  var t = e.target;
+  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
+    e.preventDefault();
+    var msg = document.createElement('div');
+    msg.textContent = 'Pasting is not allowed';
+    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    document.body.appendChild(msg);
+    setTimeout(function() { msg.style.opacity = '0'; setTimeout(function() { msg.remove(); }, 400); }, 2000);
+  }
+});
+/* Copy-block */
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  var msg = document.createElement('div');
+  msg.textContent = '🚫 Copying is not allowed';
+  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+  document.body.appendChild(msg);
+  setTimeout(function() { msg.style.opacity = '0'; setTimeout(function() { msg.remove(); }, 400); }, 2000);
+});
+</script>
+
+</body>
+</html>
