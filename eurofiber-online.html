@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--
+  ================================================================
+  Eurofiber Online — Business English | englishonline.training
+  Built from the EOL task template. Standalone business page.
+  UNIT: eurofiber-online   (becomes the Google Sheet tab name)
+  ================================================================
+  -->
+  <title>Eurofiber Online – Business English | englishonline.training</title>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:    #1c5d5a;   /* Eurofiber teal (primary) */
+      --gold:    #c0552f;   /* Eurofiber rust (accent)  */
+      --gold-lt: #f5e1d7;
+      --teal:    #2b7a78;
+      --red:     #c0392b;
+      --green:   #27ae60;
+      --bg:      #f5f8f8;
+      --card:    #ffffff;
+      --text:    #1d2b2a;
+      --muted:   #67807e;
+      --border:  #d9e6e4;
+      --radius:  12px;
+      --shadow:  0 2px 16px rgba(28,93,90,.1);
+      --font:    'Segoe UI', system-ui, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
+
+    /* ── Header ── */
+    .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
+    .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
+    .header-meta { font-size: .78rem; text-align: right; opacity: .9; }
+    .header-meta strong { display: block; color: var(--gold); }
+    .progress-track { height: 6px; background: rgba(255,255,255,.2); }
+    .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
+
+    /* ── Steps ── */
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+
+    /* ── Exercise labels ── */
+    .ex-badge { display: inline-block; background: var(--gold); color: #fff; font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
+    .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+    .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+    /* ── Cards ── */
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
+
+    /* ── Reading / reference text ── */
+    .reading-text { font-size: .93rem; line-height: 1.85; color: var(--text); }
+    .reading-text p { margin-bottom: .85rem; }
+    .reading-text p:last-child { margin-bottom: 0; }
+    .ref-rule { margin-bottom: 1.1rem; }
+    .ref-rule:last-child { margin-bottom: 0; }
+    .ref-rule b { color: var(--blue); }
+    .ref-eg { display: block; font-style: italic; color: var(--muted); font-size: .88rem; margin-top: .25rem; padding-left: 1rem; border-left: 3px solid var(--gold-lt); }
+
+    /* ── Forms ── */
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+    .form-input, .form-textarea {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+      padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
+      color: var(--text); background: #fff; transition: border-color .2s;
+    }
+    .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--blue); }
+    .form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+    .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+
+    /* ── Sentence list (gap-fill with inline input) ── */
+    .q-item { padding: .85rem 0; border-bottom: 1px solid var(--border); font-size: .93rem; line-height: 1.7; }
+    .q-item:last-child { border-bottom: none; }
+    .q-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: #fff; font-size: .72rem; font-weight: 800; margin-right: .5rem; vertical-align: baseline; }
+    .q-item.example { opacity: .8; }
+    .inline-input {
+      display: inline-block; width: 150px; border: none; border-bottom: 2px solid var(--gold);
+      background: var(--gold-lt); border-radius: 4px 4px 0 0; padding: .1rem .4rem;
+      font-family: var(--font); font-size: .9rem; color: var(--blue); font-weight: 600;
+      margin: 0 2px; text-align: center;
+    }
+    .inline-input:focus { outline: none; background: #fff; border-bottom-color: var(--blue); }
+    .example-answer { display: inline-block; background: #d4edda; color: #155724; border-radius: 4px; padding: .05rem .45rem; font-weight: 600; font-size: .88rem; }
+
+    /* ── Gap-fill (dropdown) ── */
+    .gap-select {
+      display: inline-block; border: 1.5px solid var(--gold); border-radius: 6px;
+      padding: .18rem .45rem; font-family: var(--font); font-size: .82rem;
+      background: var(--gold-lt); color: var(--blue); cursor: pointer;
+      vertical-align: middle; margin: 0 2px; max-width: 220px;
+    }
+    .gap-select:focus { outline: none; border-color: var(--blue); }
+
+    /* ── Matching ── */
+    .match-grid { display: grid; grid-template-columns: 1fr; gap: .65rem; }
+    .match-item { display: flex; align-items: center; gap: .65rem; border: 1px solid var(--border); border-radius: 10px; padding: .7rem .9rem; background: #fafbfb; }
+    .match-item .q-num { flex-shrink: 0; margin-right: 0; }
+    .match-label { flex: 1; font-size: .92rem; font-weight: 600; color: var(--text); }
+
+    /* ── Word bank ── */
+    .word-bank { background: var(--gold-lt); border: 1.5px solid var(--gold); border-radius: 8px; padding: .75rem 1rem; margin-bottom: 1.25rem; }
+    .word-bank strong { display: block; color: var(--blue); margin-bottom: .5rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; }
+    .word-bank span { display: inline-block; margin: .2rem .3rem; background: var(--blue); color: #fff; border-radius: 4px; padding: .18rem .55rem; font-size: .8rem; font-weight: 600; }
+    .word-bank span.used { opacity: .4; text-decoration: line-through; }
+
+    /* ── Feedback banners ── */
+    .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
+    .feedback.show { display: block; }
+    .feedback.ok   { background: #d4edda; color: #155724; }
+    .feedback.warn { background: #fff3cd; color: #856404; }
+    .feedback.err  { background: #fde8e8; color: #721c24; }
+
+    /* ── Buttons ── */
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(28,93,90,.3); }
+    .btn-primary:hover { background: #164a48; }
+    .btn-gold { background: var(--gold); color: #fff; box-shadow: 0 2px 8px rgba(192,85,47,.3); }
+    .btn-gold:hover { background: #a8481f; }
+    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+    .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+    .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    /* ── Welcome screen ── */
+    .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
+    .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
+    .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+    .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 460px; margin-left: auto; margin-right: auto; }
+    .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+    .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; }
+    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
+    .ov-card.locked { opacity: .5; }
+    .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+
+    /* ── Submit / summary ── */
+    .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
+    .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
+    .summary-a  { color: var(--text); white-space: pre-wrap; }
+
+    @media (max-width: 480px) {
+      .ex-title { font-size: 1.25rem; }
+      .btn { padding: .65rem 1.1rem; }
+      .welcome-title { font-size: 1.4rem; }
+      .gap-select { max-width: 150px; font-size: .75rem; }
+      .inline-input { width: 110px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Sticky header ── -->
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="business.html" style="font-size:.75rem;opacity:.8">← Business tasks</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Exercise A of 4</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+
+
+<!-- ====================================================
+     STEP 0 – WELCOME
+===================================================== -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">🐘</div>
+      <h1 class="welcome-title">Eurofiber Online – Business English</h1>
+      <p class="welcome-sub">Four short exercises on company changes and meetings. Work through them in order, then send your answers to your trainer.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">🔄</div><strong>Ex A – Company Changes</strong>Complete sentences with the right verb.</div>
+      <div class="ov-card locked"><div class="ov-icon">🤝</div><strong>Ex B – Types of Meeting</strong>Match meetings to descriptions.</div>
+      <div class="ov-card locked"><div class="ov-icon">🗓️</div><strong>Ex C – Meeting Vocabulary</strong>Fill the gaps from a word box.</div>
+      <div class="ov-card locked"><div class="ov-icon">⏱️</div><strong>Ex D – Talking about Schedules</strong>Choose the correct tense.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your name to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Jan de Vries" autocomplete="name">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 1 – EXERCISE A : Company Changes
+===================================================== -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">Company Changes</h2>
+    <p class="ex-subtitle">Complete each sentence with the correct form of a verb from the word bank. Use a good dictionary to help you. Number 1 is done for you.</p>
+
+    <div class="word-bank">
+      <strong>Word bank — use the correct form</strong>
+      <span>decentralise</span> <span>deregulate</span> <span>rebrand</span> <span>redeploy</span>
+      <span>redevelop</span> <span>reduce</span> <span>relaunch</span> <span>relocate</span>
+      <span>reorganise</span> <span>replace</span> <span>restructure</span> <span>reassess</span>
+    </div>
+
+    <div class="card">
+      <div class="q-item example">
+        <span class="q-num">1</span>Following the merger, the office layout was <span class="example-answer">reorganised</span> to accommodate the new staff.
+      </div>
+      <div class="q-item">
+        <span class="q-num">2</span>The most successful change in our company was the decision to
+        <input class="inline-input" type="text" id="exA-q2" placeholder="verb..."> the company. Now there is more opportunity for promotion.
+      </div>
+      <div class="q-item">
+        <span class="q-num">3</span>It is now so expensive to rent offices in the city centre that many companies are
+        <input class="inline-input" type="text" id="exA-q3" placeholder="verb..."> their operations to purpose-built business parks at the city limits.
+      </div>
+      <div class="q-item">
+        <span class="q-num">4</span>The company has recently
+        <input class="inline-input" type="text" id="exA-q4" placeholder="verb..."> its workforce. Reducing the number of employees is the best way to stay profitable in the current economic climate.
+      </div>
+      <div class="q-item">
+        <span class="q-num">5</span>To improve efficiency, the company has introduced new working practices. The HR department will
+        <input class="inline-input" type="text" id="exA-q5" placeholder="verb..."> all sales staff.
+      </div>
+      <div class="q-item">
+        <span class="q-num">6</span>One of our products hasn't been selling well recently. The marketing team has decided to take it off the market and
+        <input class="inline-input" type="text" id="exA-q6" placeholder="verb..."> it next year with new packaging.
+      </div>
+      <div class="q-item">
+        <span class="q-num">7</span>The IT department report recommended that the company
+        <input class="inline-input" type="text" id="exA-q7" placeholder="verb..."> the computer system as soon as possible.
+      </div>
+      <div class="q-item">
+        <span class="q-num">8</span>The CEO thinks that too many decisions are made at Head Office. She wants to
+        <input class="inline-input" type="text" id="exA-q8" placeholder="verb..."> the decision-making process so that branch managers are more involved at an earlier stage.
+      </div>
+      <div class="q-item">
+        <span class="q-num">9</span>The company has finalised the plans to
+        <input class="inline-input" type="text" id="exA-q9" placeholder="verb..."> the disused car-park site. It is going to become a fitness centre for employees.
+      </div>
+      <div class="q-item">
+        <span class="q-num">10</span>The logo and slogan are very old-fashioned. We need to
+        <input class="inline-input" type="text" id="exA-q10" placeholder="verb..."> the whole image of the product and bring it into the 21st century.
+      </div>
+      <div class="q-item">
+        <span class="q-num">11</span>There is a lot of pressure on the government from consumer groups to
+        <input class="inline-input" type="text" id="exA-q11" placeholder="verb..."> the industry and remove controls, so customers can benefit from increased competition.
+      </div>
+      <div class="q-item">
+        <span class="q-num">12</span>Following the report by the legal department and changes in the tax laws, the management decided to
+        <input class="inline-input" type="text" id="exA-q12" placeholder="verb..."> the situation and delay making a decision on the takeover.
+      </div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 2 – EXERCISE B : Types of Meeting (matching)
+===================================================== -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B</span>
+    <h2 class="ex-title">Types of Meeting</h2>
+    <p class="ex-subtitle">Match each type of meeting (1–4) to the correct description (A–D) using the dropdowns.</p>
+
+    <div class="card">
+      <div class="card-title">Descriptions</div>
+      <div class="reading-text">
+        <p><b>A</b> &nbsp;A short daily meeting where people stand up and say what they are working on.</p>
+        <p><b>B</b> &nbsp;A large, formal meeting held once a year for shareholders or members.</p>
+        <p><b>C</b> &nbsp;The first meeting of a new project, where everyone agrees on the goals and plan.</p>
+        <p><b>D</b> &nbsp;A private meeting between a manager and one employee to discuss their work.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Match them</div>
+      <div class="match-grid">
+        <div class="match-item">
+          <span class="q-num">1</span>
+          <span class="match-label">stand-up meeting</span>
+          <select class="gap-select" id="exB-1"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option></select>
+        </div>
+        <div class="match-item">
+          <span class="q-num">2</span>
+          <span class="match-label">one-to-one</span>
+          <select class="gap-select" id="exB-2"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option></select>
+        </div>
+        <div class="match-item">
+          <span class="q-num">3</span>
+          <span class="match-label">kick-off meeting</span>
+          <select class="gap-select" id="exB-3"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option></select>
+        </div>
+        <div class="match-item">
+          <span class="q-num">4</span>
+          <span class="match-label">AGM (Annual General Meeting)</span>
+          <select class="gap-select" id="exB-4"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option></select>
+        </div>
+      </div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 3 – EXERCISE C : Meeting Vocabulary (gap-fill)
+===================================================== -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise C</span>
+    <h2 class="ex-title">Meeting Vocabulary</h2>
+    <p class="ex-subtitle">Complete the sentences with words from the box. Number 6 is done for you.</p>
+
+    <div class="word-bank">
+      <strong>Word box</strong>
+      <span>agenda</span> <span>reschedule</span> <span>chair</span>
+      <span class="used">minutes</span> <span>postpone</span> <span>run over</span>
+    </div>
+
+    <div class="card">
+      <div class="q-item">
+        <span class="q-num">1</span>We need to
+        <select class="gap-select" id="exC-1"><option value="">—</option><option>agenda</option><option>reschedule</option><option>chair</option><option>postpone</option><option>run over</option></select>
+        the meeting – Sofia can't come on Thursday.
+      </div>
+      <div class="q-item">
+        <span class="q-num">2</span>Please send everyone the
+        <select class="gap-select" id="exC-2"><option value="">—</option><option>agenda</option><option>reschedule</option><option>chair</option><option>postpone</option><option>run over</option></select>
+        so they know what we will discuss.
+      </div>
+      <div class="q-item">
+        <span class="q-num">3</span>The meeting
+        <select class="gap-select" id="exC-3"><option value="">—</option><option>agenda</option><option>reschedule</option><option>chair</option><option>postpone</option><option>ran over</option></select>
+        by 20 minutes because there were too many questions.
+      </div>
+      <div class="q-item">
+        <span class="q-num">4</span>Can you
+        <select class="gap-select" id="exC-4"><option value="">—</option><option>agenda</option><option>reschedule</option><option>chair</option><option>postpone</option><option>run over</option></select>
+        the next meeting? I'm the usual organiser but I'm on leave.
+      </div>
+      <div class="q-item">
+        <span class="q-num">5</span>We will
+        <select class="gap-select" id="exC-5"><option value="">—</option><option>agenda</option><option>reschedule</option><option>chair</option><option>postpone</option><option>run over</option></select>
+        the product launch meeting until the new data is ready.
+      </div>
+      <div class="q-item example">
+        <span class="q-num">6</span>After every meeting, Ana writes the <span class="example-answer">minutes</span> and sends them to the team.
+      </div>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise D →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 4 – EXERCISE D : Talking about Schedules
+===================================================== -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise D</span>
+    <h2 class="ex-title">Talking about Schedules</h2>
+    <p class="ex-subtitle">Read the grammar note, then choose the correct verb form in each sentence.</p>
+
+    <div class="card">
+      <div class="card-title">Grammar note: tenses for meetings &amp; schedules</div>
+      <div class="reading-text">
+        <div class="ref-rule">We use the <b>present simple</b> to talk about regular events or fixed timetables.
+          <span class="ref-eg">The board meeting <b>takes place</b> every Monday at 9 a.m. &nbsp; The train to Frankfurt <b>leaves</b> at 07:45.</span>
+        </div>
+        <div class="ref-rule">We use the <b>present continuous</b> to talk about a fixed, arranged future event.
+          <span class="ref-eg">I<b>'m presenting</b> the new figures at Thursday's meeting. &nbsp; We<b>'re meeting</b> the client at 2 p.m.</span>
+        </div>
+        <div class="ref-rule">We use the <b>present simple</b> (not present continuous) for official timetables and programmes.
+          <span class="ref-eg">The conference <b>starts</b> at 10:00 and <b>finishes</b> at 17:00. &nbsp; Registration <b>opens</b> at 9:30.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Choose the correct form</div>
+      <div class="q-item">
+        <span class="q-num">1</span>The board meeting
+        <select class="gap-select" id="exD-1"><option value="">—</option><option>takes place</option><option>is taking place</option></select>
+        every Monday at 9 a.m.
+      </div>
+      <div class="q-item">
+        <span class="q-num">2</span>I
+        <select class="gap-select" id="exD-2"><option value="">—</option><option>present</option><option>am presenting</option></select>
+        the new figures at Thursday's meeting.
+      </div>
+      <div class="q-item">
+        <span class="q-num">3</span>The conference
+        <select class="gap-select" id="exD-3"><option value="">—</option><option>starts</option><option>is starting</option></select>
+        at 10:00 and finishes at 17:00.
+      </div>
+      <div class="q-item">
+        <span class="q-num">4</span>We
+        <select class="gap-select" id="exD-4"><option value="">—</option><option>meet</option><option>are meeting</option></select>
+        the client at 2 p.m. tomorrow.
+      </div>
+      <div class="q-item">
+        <span class="q-num">5</span>The train to Frankfurt
+        <select class="gap-select" id="exD-5"><option value="">—</option><option>leaves</option><option>is leaving</option></select>
+        at 07:45.
+      </div>
+      <div class="q-item">
+        <span class="q-num">6</span>Registration
+        <select class="gap-select" id="exD-6"><option value="">—</option><option>opens</option><option>is opening</option></select>
+        at 9:30.
+      </div>
+    </div>
+
+    <div id="step4-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(4)">Review &amp; Submit →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     FINAL STEP – REVIEW & SUBMIT
+===================================================== -->
+<section id="step-5" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your trainer.</p>
+    </div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your trainer.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Trainer</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your trainer.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission did not work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+/* ============================================================
+   CONFIG
+============================================================ */
+var UNIT          = 'eurofiber-online';   /* Google Sheet tab name for this unit */
+var TOTAL_STEPS   = 5;                     /* exercise steps (1-4) + submit (5) */
+/* TODO: paste the /exec URL of your NEW Apps Script web app here (see setup notes) */
+var SHEET_URL     = 'PASTE_YOUR_NEW_APPS_SCRIPT_EXEC_URL_HERE';
+var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+
+var A_IDS = [2,3,4,5,6,7,8,9,10,11,12];   /* answerable items in Exercise A (1 is the example) */
+
+/* ============================================================
+   STATE
+============================================================ */
+var state = {
+  name: '',
+  exA:  {},
+  exB:  {},
+  exC:  {},
+  exD:  {}
+};
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('step-' + n).classList.add('active');
+  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  restoreStep(n);
+  var meta = document.getElementById('header-meta');
+  if (n === 0) { meta.style.display = 'none'; return; }
+  meta.style.display = 'block';
+  document.getElementById('header-name').textContent = state.name;
+  var labels = ['A', 'B', 'C', 'D'];
+  document.getElementById('header-step').textContent = n < TOTAL_STEPS
+    ? 'Exercise ' + labels[n - 1] + ' of ' + (TOTAL_STEPS - 1)
+    : 'Submit';
+}
+
+function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
+
+function nextStep(n) {
+  if (!validateStep(n)) {
+    var err = document.getElementById('step' + n + '-error');
+    if (err) { err.textContent = 'Please answer every question before continuing.'; err.classList.add('show'); }
+    return;
+  }
+  clearErr(n);
+  saveStep(n);
+  if (n === TOTAL_STEPS - 1) { buildSummary(); }
+  showStep(n + 1);
+}
+
+function clearErr(n) {
+  var err = document.getElementById('step' + n + '-error');
+  if (err) err.classList.remove('show');
+}
+
+function startExercises() {
+  var name = g('inp-name');
+  var err = document.getElementById('welcome-error');
+  if (!name) {
+    err.textContent = 'Please enter your name.';
+    err.classList.add('show');
+    return;
+  }
+  err.classList.remove('show');
+  state.name = name;
+  showStep(1);
+}
+
+/* ============================================================
+   VALIDATION
+============================================================ */
+function validateStep(n) {
+  switch (n) {
+    case 1: return A_IDS.every(function(i) { return val('exA-q' + i); });
+    case 2: return ['exB-1','exB-2','exB-3','exB-4'].every(val);
+    case 3: return ['exC-1','exC-2','exC-3','exC-4','exC-5'].every(val);
+    case 4: return ['exD-1','exD-2','exD-3','exD-4','exD-5','exD-6'].every(val);
+    default: return true;
+  }
+}
+
+/* ============================================================
+   SAVE / RESTORE
+============================================================ */
+function saveStep(n) {
+  switch (n) {
+    case 1: A_IDS.forEach(function(i) { state.exA['q' + i] = g('exA-q' + i); }); break;
+    case 2: [1,2,3,4].forEach(function(i) { state.exB['m' + i] = g('exB-' + i); }); break;
+    case 3: [1,2,3,4,5].forEach(function(i) { state.exC['g' + i] = g('exC-' + i); }); break;
+    case 4: [1,2,3,4,5,6].forEach(function(i) { state.exD['t' + i] = g('exD-' + i); }); break;
+  }
+}
+
+function restoreStep(n) {
+  switch (n) {
+    case 1: A_IDS.forEach(function(i) { set('exA-q' + i, state.exA['q' + i]); }); break;
+    case 2: [1,2,3,4].forEach(function(i) { set('exB-' + i, state.exB['m' + i]); }); break;
+    case 3: [1,2,3,4,5].forEach(function(i) { set('exC-' + i, state.exC['g' + i]); }); break;
+    case 4: [1,2,3,4,5,6].forEach(function(i) { set('exD-' + i, state.exD['t' + i]); }); break;
+  }
+}
+
+/* ============================================================
+   HELPERS
+============================================================ */
+function g(id)       { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+function set(id, v)  { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
+function val(id)     { return g(id).length > 0; }
+function esc(str)    { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
+
+/* ============================================================
+   SUMMARY
+============================================================ */
+var A_SENT = {
+  2:'…the company (more opportunity for promotion)',
+  3:'…their operations to business parks',
+  4:'…its workforce (reducing employees)',
+  5:'HR will …all sales staff',
+  6:'…it next year with new packaging',
+  7:'…the computer system as soon as possible',
+  8:'…the decision-making process',
+  9:'…the disused car-park site',
+  10:'…the whole image of the product',
+  11:'…the industry and remove controls',
+  12:'…the situation and delay a decision'
+};
+var C_SENT = {
+  1:'We need to ___ the meeting (Sofia can’t come)',
+  2:'Please send everyone the ___',
+  3:'The meeting ___ by 20 minutes',
+  4:'Can you ___ the next meeting?',
+  5:'We will ___ the product launch meeting'
+};
+var D_SENT = {
+  1:'The board meeting ___ every Monday',
+  2:'I ___ the new figures on Thursday',
+  3:'The conference ___ at 10:00',
+  4:'We ___ the client at 2 p.m. tomorrow',
+  5:'The train to Frankfurt ___ at 07:45',
+  6:'Registration ___ at 9:30'
+};
+
+function buildSummary() {
+  var rows = [];
+  A_IDS.forEach(function(i) { rows.push({ ex: 'A · Company Changes', q: i + '. ' + A_SENT[i], a: state.exA['q' + i] }); });
+  [1,2,3,4].forEach(function(i) { rows.push({ ex: 'B · Types of Meeting', q: i + ' → ', a: state.exB['m' + i] }); });
+  [1,2,3,4,5].forEach(function(i) { rows.push({ ex: 'C · Meeting Vocabulary', q: C_SENT[i], a: state.exC['g' + i] }); });
+  [1,2,3,4,5,6].forEach(function(i) { rows.push({ ex: 'D · Schedules', q: D_SENT[i], a: state.exD['t' + i] }); });
+
+  var html = '<div class="submit-summary">'
+    + '<div class="summary-row"><div class="summary-ex">Participant</div>'
+    + '<div class="summary-q">' + esc(state.name) + '</div></div>';
+  rows.forEach(function(r) {
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div>'
+      + '<div class="summary-q">' + esc(r.q) + '</div>'
+      + '<div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+}
+
+/* ============================================================
+   EMAIL FALLBACK BODY
+============================================================ */
+function buildEmailBody() {
+  var s = 'Exercise: ' + UNIT
+    + '\nParticipant: ' + state.name
+    + '\nDate:        ' + new Date().toLocaleDateString('en-GB')
+    + '\n\n--- A. Company Changes ---';
+  A_IDS.forEach(function(i) { s += '\n' + i + '. ' + (state.exA['q' + i] || '(none)'); });
+  s += '\n\n--- B. Types of Meeting ---';
+  [1,2,3,4].forEach(function(i) { s += '\n' + i + ' -> ' + (state.exB['m' + i] || '(none)'); });
+  s += '\n\n--- C. Meeting Vocabulary ---';
+  [1,2,3,4,5].forEach(function(i) { s += '\n' + i + '. ' + (state.exC['g' + i] || '(none)'); });
+  s += '\n\n--- D. Schedules ---';
+  [1,2,3,4,5,6].forEach(function(i) { s += '\n' + i + '. ' + (state.exD['t' + i] || '(none)'); });
+  return s;
+}
+
+/* ============================================================
+   SUBMIT TO GOOGLE SHEET
+============================================================ */
+function submitToSheet() {
+  buildSummary();
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  var payload = { name: state.name, cls: '', unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD };
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+  }).then(function() {
+    btn.style.display = 'none';
+    document.getElementById('submit-success').style.display = 'block';
+    document.getElementById('submit-fallback').style.display = 'block';
+  }).catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Submit to Trainer';
+    document.getElementById('submit-fallback').style.display = 'block';
+  });
+}
+
+function submitByEmail() {
+  var a = document.createElement('a');
+  a.href = 'mailto:' + TEACHER_EMAIL
+    + '?subject=' + encodeURIComponent(UNIT + ' - ' + state.name)
+    + '&body='    + encodeURIComponent(buildEmailBody());
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function() { document.body.removeChild(a); }, 100);
+}
+
+function copyAnswers() {
+  var body = buildEmailBody();
+  navigator.clipboard.writeText(body)
+    .then(function() { alert('Answers copied! Paste them into an email to your trainer.'); })
+    .catch(function() { prompt('Copy this text:', body); });
+}
+
+/* ============================================================
+   INIT
+============================================================ */
+document.addEventListener('DOMContentLoaded', function() {
+  showStep(0);
+});
+</script>
+
+<script>
+/* ── Paste-block: prevent pasting into answer fields ── */
+document.addEventListener('paste', function(e) {
+  var t = e.target;
+  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
+    e.preventDefault();
+    var msg = document.createElement('div');
+    msg.textContent = 'Pasting is not allowed';
+    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1c5d5a;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    document.body.appendChild(msg);
+    setTimeout(function() {
+      msg.style.opacity = '0';
+      setTimeout(function() { msg.remove(); }, 400);
+    }, 2000);
+  }
+});
+</script>
+
+</body>
+</html>

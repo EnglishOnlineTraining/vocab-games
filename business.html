@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business English Tasks | englishonline.training</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:   #1c5d5a;
+      --gold:   #c0552f;
+      --bg:     #f5f8f8;
+      --card:   #ffffff;
+      --text:   #1d2b2a;
+      --muted:  #67807e;
+      --border: #d9e6e4;
+      --shadow: 0 2px 16px rgba(28,93,90,.1);
+      --font:   'Segoe UI', system-ui, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    .app-header { background: var(--blue); color: #fff; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .85rem 1.25rem; gap: 1rem; max-width: 960px; margin: 0 auto; }
+    .header-logo { font-size: .85rem; font-weight: 700; color: var(--gold); text-decoration: none; }
+
+    .hero { text-align: center; padding: 3rem 1rem 1.5rem; }
+    .hero-icon { font-size: 3rem; margin-bottom: .75rem; }
+    .hero h1 { font-size: 1.9rem; color: var(--blue); margin-bottom: .5rem; }
+    .hero p { font-size: 1rem; color: var(--muted); max-width: 540px; margin: 0 auto; }
+
+    .wrap { max-width: 960px; margin: 0 auto; padding: 1rem 1rem 4rem; }
+    .section-label { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--gold); margin: 1.75rem 0 .85rem; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+    .task-card { display: flex; flex-direction: column; background: var(--card); border: 1.5px solid var(--border); border-radius: 14px; padding: 1.25rem; text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform .15s, border-color .15s; }
+    .task-card:hover { transform: translateY(-3px); border-color: var(--gold); }
+    .task-icon { font-size: 1.6rem; margin-bottom: .6rem; }
+    .task-card h3 { font-size: 1.05rem; color: var(--blue); margin-bottom: .35rem; }
+    .task-card p { font-size: .85rem; color: var(--muted); line-height: 1.5; flex: 1; }
+    .task-tags { margin-top: .85rem; display: flex; flex-wrap: wrap; gap: .35rem; }
+    .tag { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; background: #eef4f3; color: var(--blue); border-radius: 20px; padding: .2rem .6rem; }
+    .task-go { margin-top: .9rem; font-size: .82rem; font-weight: 700; color: var(--gold); }
+
+    .empty { background: var(--card); border: 1.5px dashed var(--border); border-radius: 14px; padding: 1.5rem; font-size: .88rem; color: var(--muted); }
+
+    footer { text-align: center; font-size: .78rem; color: var(--muted); padding: 1.5rem; }
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="https://englishonline.training" style="font-size:.78rem;opacity:.8">Home</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-icon">💼</div>
+  <h1>Business English Tasks</h1>
+  <p>Interactive practice for company clients. Pick a task and work through it online — your answers go straight to your trainer.</p>
+</div>
+
+<div class="wrap">
+
+  <div class="section-label">Eurofiber</div>
+  <div class="grid">
+    <a class="task-card" href="eurofiber-online.html">
+      <div class="task-icon">🐘</div>
+      <h3>Eurofiber Online</h3>
+      <p>Company changes, meeting types and vocabulary, and tenses for talking about schedules.</p>
+      <div class="task-tags">
+        <span class="tag">Vocabulary</span>
+        <span class="tag">Meetings</span>
+        <span class="tag">Grammar</span>
+      </div>
+      <div class="task-go">Start task →</div>
+    </a>
+  </div>
+
+  <div class="section-label">More clients</div>
+  <div class="empty">New business tasks will appear here as they are added.</div>
+
+</div>
+
+<footer>englishonline.training · Business English</footer>
+
+</body>
+</html>
