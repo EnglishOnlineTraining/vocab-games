@@ -118,6 +118,17 @@
     .feedback.warn { background: #fff3cd; color: #856404; }
     .feedback.err  { background: #fde8e8; color: #721c24; }
 
+    /* ── Corrections / score ── */
+    .score-banner { background: var(--blue); color: #fff; border-radius: var(--radius); padding: 1rem 1.25rem; text-align: center; font-size: .95rem; margin-bottom: 1.25rem; box-shadow: var(--shadow); }
+    .score-banner strong { font-size: 1.6rem; color: var(--gold); margin-right: .3rem; }
+    .summary-row.correct   { border-left: 4px solid var(--green); padding-left: .75rem; }
+    .summary-row.incorrect { border-left: 4px solid var(--red);   padding-left: .75rem; }
+    .summary-a .mark { font-weight: 800; margin-right: .4rem; }
+    .summary-row.correct   .mark { color: var(--green); }
+    .summary-row.incorrect .mark { color: var(--red); }
+    .correct-answer { margin-top: .35rem; font-size: .82rem; font-weight: 600; color: var(--green); }
+    .correct-answer b { color: var(--green); }
+
     /* ── Buttons ── */
     .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
     .btn:active { transform: scale(.97); }
@@ -465,7 +476,7 @@
     <div style="text-align:center;padding:1.5rem 0 1rem">
       <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
       <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
-      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your trainer.</p>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Here is your score and the corrections. Review them below, then send your answers to your trainer.</p>
     </div>
     <div id="summary-container"></div>
     <div class="card" style="text-align:center">
@@ -632,21 +643,66 @@ var D_SENT = {
   5:'The train to Frankfurt ___ at 07:45',
   6:'Registration ___ at 9:30'
 };
+var B_LABEL = { 1:'stand-up meeting', 2:'one-to-one', 3:'kick-off meeting', 4:'AGM' };
+
+/* ============================================================
+   ANSWER KEY  (free-text answers accept any listed variant)
+============================================================ */
+var KEY = {
+  exA: {
+    q2:['restructure'], q3:['relocating'], q4:['reduced'], q5:['redeploy'],
+    q6:['relaunch'], q7:['replace'], q8:['decentralise','decentralize'],
+    q9:['redevelop'], q10:['rebrand'], q11:['deregulate'], q12:['reassess']
+  },
+  exB: { m1:'A', m2:'D', m3:'C', m4:'B' },
+  exC: { g1:'reschedule', g2:'agenda', g3:'ran over', g4:'chair', g5:'postpone' },
+  exD: { t1:'takes place', t2:'am presenting', t3:'starts', t4:'are meeting', t5:'leaves', t6:'opens' }
+};
+
+function norm(s) { return String(s == null ? '' : s).toLowerCase().trim().replace(/\s+/g, ' '); }
 
 function buildSummary() {
-  var rows = [];
-  A_IDS.forEach(function(i) { rows.push({ ex: 'A · Company Changes', q: i + '. ' + A_SENT[i], a: state.exA['q' + i] }); });
-  [1,2,3,4].forEach(function(i) { rows.push({ ex: 'B · Types of Meeting', q: i + ' → ', a: state.exB['m' + i] }); });
-  [1,2,3,4,5].forEach(function(i) { rows.push({ ex: 'C · Meeting Vocabulary', q: C_SENT[i], a: state.exC['g' + i] }); });
-  [1,2,3,4,5,6].forEach(function(i) { rows.push({ ex: 'D · Schedules', q: D_SENT[i], a: state.exD['t' + i] }); });
+  var rows = [], score = 0, total = 0;
 
-  var html = '<div class="submit-summary">'
+  A_IDS.forEach(function(i) {
+    var ans = state.exA['q' + i] || '', accepted = KEY.exA['q' + i];
+    var ok = accepted.indexOf(norm(ans)) !== -1;
+    total++; if (ok) score++;
+    rows.push({ ex: 'A · Company Changes', q: i + '. ' + A_SENT[i], a: ans, ok: ok, correct: accepted[0] });
+  });
+  [1,2,3,4].forEach(function(i) {
+    var ans = state.exB['m' + i] || '', corr = KEY.exB['m' + i];
+    var ok = norm(ans) === norm(corr);
+    total++; if (ok) score++;
+    rows.push({ ex: 'B · Types of Meeting', q: i + '. ' + B_LABEL[i], a: ans, ok: ok, correct: corr });
+  });
+  [1,2,3,4,5].forEach(function(i) {
+    var ans = state.exC['g' + i] || '', corr = KEY.exC['g' + i];
+    var ok = norm(ans) === norm(corr);
+    total++; if (ok) score++;
+    rows.push({ ex: 'C · Meeting Vocabulary', q: C_SENT[i], a: ans, ok: ok, correct: corr });
+  });
+  [1,2,3,4,5,6].forEach(function(i) {
+    var ans = state.exD['t' + i] || '', corr = KEY.exD['t' + i];
+    var ok = norm(ans) === norm(corr);
+    total++; if (ok) score++;
+    rows.push({ ex: 'D · Schedules', q: D_SENT[i], a: ans, ok: ok, correct: corr });
+  });
+
+  state.score = score; state.total = total;
+  var pct = total ? Math.round(score / total * 100) : 0;
+
+  var html = '<div class="score-banner"><strong>' + score + ' / ' + total + '</strong> correct &nbsp;(' + pct + '%)</div>';
+  html += '<div class="submit-summary">'
     + '<div class="summary-row"><div class="summary-ex">Participant</div>'
     + '<div class="summary-q">' + esc(state.name) + '</div></div>';
   rows.forEach(function(r) {
-    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div>'
+    html += '<div class="summary-row ' + (r.ok ? 'correct' : 'incorrect') + '">'
+      + '<div class="summary-ex">' + esc(r.ex) + '</div>'
       + '<div class="summary-q">' + esc(r.q) + '</div>'
-      + '<div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+      + '<div class="summary-a"><span class="mark">' + (r.ok ? '✓' : '✗') + '</span>' + esc(r.a || '(no answer)') + '</div>'
+      + (r.ok ? '' : '<div class="correct-answer">Correct answer: <b>' + esc(r.correct) + '</b></div>')
+      + '</div>';
   });
   html += '</div>';
   document.getElementById('summary-container').innerHTML = html;
