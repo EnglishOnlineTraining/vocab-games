@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Famous &amp; Hollywood – 9g | englishonline.training</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:    #1a3a5c;
+      --gold:    #c9a227;
+      --gold-lt: #f5e6b0;
+      --teal:    #2b7a78;
+      --red:     #c0392b;
+      --green:   #27ae60;
+      --bg:      #f7f9fc;
+      --card:    #ffffff;
+      --text:    #1d2b3a;
+      --muted:   #6b7a8d;
+      --border:  #dce3ec;
+      --radius:  12px;
+      --shadow:  0 2px 16px rgba(26,58,92,.1);
+      --font:    'Segoe UI', system-ui, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
+
+    .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
+    .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
+    .header-meta { font-size: .78rem; text-align: right; opacity: .9; }
+    .header-meta strong { display: block; color: var(--gold); }
+    .progress-track { height: 6px; background: rgba(255,255,255,.2); }
+    .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
+
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+
+    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
+    .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+    .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
+
+    .reading-text { font-size: .93rem; line-height: 1.85; color: var(--text); }
+    .reading-text p { margin-bottom: .85rem; }
+    .reading-text p:last-child { margin-bottom: 0; }
+    .reading-text .narr { font-style: italic; color: var(--muted); }
+    .speaker { font-weight: 700; }
+
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+    .form-input, .form-textarea {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+      padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
+      color: var(--text); background: #fff; transition: border-color .2s;
+    }
+    .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--blue); }
+    .form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+    .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+
+    .gap-text { font-size: .93rem; line-height: 2.6; color: var(--text); }
+    .gap-line { margin-bottom: .35rem; }
+    .gap-select {
+      display: inline-block; border: 1.5px solid var(--gold); border-radius: 6px;
+      padding: .18rem .45rem; font-family: var(--font); font-size: .82rem;
+      background: var(--gold-lt); color: var(--blue); cursor: pointer;
+      vertical-align: middle; margin: 0 2px; max-width: 200px;
+    }
+    .gap-select:focus { outline: none; border-color: var(--blue); }
+    .gap-num { font-size: .68rem; color: var(--muted); vertical-align: super; margin-right: 1px; }
+
+    .word-bank { background: var(--gold-lt); border: 1.5px solid var(--gold); border-radius: 8px; padding: .75rem 1rem; margin-bottom: 1.25rem; }
+    .word-bank strong { display: block; color: var(--blue); margin-bottom: .5rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; }
+    .word-bank span { display: inline-block; margin: .2rem .3rem; background: var(--blue); color: #fff; border-radius: 4px; padding: .18rem .55rem; font-size: .8rem; font-weight: 600; }
+
+    .fib-item { display: flex; flex-wrap: wrap; align-items: baseline; gap: .4rem; padding: .85rem 0; border-bottom: 1px solid var(--border); font-size: .92rem; line-height: 1.7; }
+    .fib-item:last-child { border-bottom: none; }
+    .fib-num { font-weight: 800; color: var(--gold); }
+    .fib-item input { flex: 1 1 160px; min-width: 140px; border: 1.5px solid var(--border); border-radius: 8px; padding: .45rem .6rem; font-family: var(--font); font-size: .9rem; }
+    .fib-item input:focus { outline: none; border-color: var(--blue); }
+    .fib-cue { color: var(--muted); font-style: italic; }
+
+    .schedule { border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 1.1rem; }
+    .schedule div { display: flex; gap: .75rem; padding: .55rem .85rem; font-size: .86rem; border-bottom: 1px solid var(--border); }
+    .schedule div:last-child { border-bottom: none; }
+    .schedule div:nth-child(odd) { background: #fafbfc; }
+    .schedule b { color: var(--blue); white-space: nowrap; min-width: 92px; }
+
+    .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
+    .feedback.show { display: block; }
+    .feedback.ok   { background: #d4edda; color: #155724; }
+    .feedback.warn { background: #fff3cd; color: #856404; }
+    .feedback.err  { background: #fde8e8; color: #721c24; }
+
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
+    .btn-primary:hover { background: #15304f; }
+    .btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
+    .btn-gold:hover { background: #b8911f; }
+    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+    .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+    .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
+    .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
+    .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+    .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 460px; margin-left: auto; margin-right: auto; }
+    .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+    .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; }
+    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
+    .ov-card.locked { opacity: .5; }
+    .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+
+    .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
+    .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
+    .summary-a  { color: var(--text); white-space: pre-wrap; }
+
+    @media (max-width: 480px) {
+      .ex-title { font-size: 1.25rem; }
+      .btn { padding: .65rem 1.1rem; }
+      .welcome-title { font-size: 1.4rem; }
+      .gap-select { max-width: 150px; font-size: .75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Exercise A of 6</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+
+
+<!-- ===== STEP 0 – WELCOME ===== -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">📸</div>
+      <h1 class="welcome-title">Famous &amp; Hollywood</h1>
+      <p class="welcome-sub">Read the short story <em>“Famous”</em> by Todd Strasser, then practise relative pronouns and the future tenses. Year 9 · Gymnasium.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">📖</div><strong>Ex 1 – The Story</strong>Read “Famous” &amp; understand each part</div>
+      <div class="ov-card locked"><div class="ov-icon">🆚</div><strong>Ex 2 – Two Words</strong>Photographer vs. paparazzo</div>
+      <div class="ov-card locked"><div class="ov-icon">✍️</div><strong>Ex 3 – Dilemma &amp; Fame</strong>Jamie’s choice; at what price fame?</div>
+      <div class="ov-card locked"><div class="ov-icon">🔗</div><strong>Ex 4 – Relative Pronouns</strong>Hollywood Dream Factory</div>
+      <div class="ov-card locked"><div class="ov-icon">⏩</div><strong>Ex 5 – Future Progressive</strong>Welcome to the studios!</div>
+      <div class="ov-card locked"><div class="ov-icon">📅</div><strong>Ex 6 – Future Plans</strong>Future progressive &amp; perfect</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. 9g" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== STEP 1 – READING + UNDERSTANDING THE STORY ===== -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise 1</span>
+    <h2 class="ex-title">The story: “Famous”</h2>
+    <p class="ex-subtitle">Read the story by Todd Strasser (abridged and adapted), then answer the questions below.</p>
+
+    <div class="card">
+      <div class="card-title">Read the text</div>
+      <div class="reading-text">
+        <p>It started with a camera and a coffee shop. No, that’s not right. Any psychologist will tell you it started way before that. Like, when my brother Alex became seriously ill around the age of three, and five years later when my parents divorced, and all that psychological gobbledygook.</p>
+        <p>But that camera, a black Nikon P90 with a 24x zoom lens, a fourteenth-birthday present from my father, was the charm that changed everything. It was the bridge I crossed from being a typical, everyday eighth grader to someone completely different. An atypical eighth grader. A slightly almost-famous eighth grader. Not that it was my plan. It just happened.</p>
+        <p>The day was gray, wet, and chilly. The coffee shop was called Cafazine, and it provided two of life’s greatest pleasures – coffee and gossip. After a quick scan of the headlines, I turned my attention to a tall woman in front of me holding the hand of a little boy. She was wearing a long gray raincoat, wide-brimmed hat, and sunglasses, and suddenly I recognized her – it was Tatiana Frazee, the supermodel! I’d seen enough pictures of her in magazines and on TV to know. Besides, why would anyone <em>not</em> famous wear a hat and big sunglasses inside on a cloudy day?</p>
+        <p>Her son, Connor, was pointing at a large brownie with chocolate chips inside the glass counter. “I want that, Mommy!” he whined. “Not before dinner,” Tatiana answered. “But I want it!” Connor persisted. “I said no,” Tatiana repeated. “Yes!” The boy pulled at the gloved hand. “No,” Tatiana replied icily.</p>
+        <p>By now they had reached the counter. “What would you like, ma’am?” the young man by the cash register asked. As the supermodel turned away from her son to answer, Connor suddenly yanked her hand as hard as he could. Tatiana Frazee lost her balance and toppled forward, banging her perfect chin on a display of CDs, sending them crashing.</p>
+        <p>To this day I don’t know what compelled me to yank the camera from my pocket and slide the shutter into quick-shot mode just in time to catch Tatiana as she wheeled around and slapped Connor on the cheek. The next shots caught Tatiana glaring at me with a mixture of horror and fury. An instant later she scooped Connor up under her arm and ran out of the shop.</p>
+        <p>A photo agent friend of my dad’s sold the shots to a tabloid and to a website that specialized in celebrities’ most embarrassing moments. A few weeks later I received a check for what seemed like a fortune to a fourteen-year-old. Just for taking some pictures.</p>
+        <p class="narr">After more of her photos have been published, there’s an article about Jamie in the New York Weekly. On their way to school one day, Jamie talks about it with her boyfriend, Nasim.</p>
+        <p>“You’re famous,” Nasim said. It was the first time anyone ever told me that, and I had to admit that it felt good. Right up there with “You’re pretty” or “You’re smart.” No, even <em>better</em> than “You’re smart.” “Thank you,” I replied. “How many people do we know who have been profiled in a major magazine? New York City’s youngest paparazzo ever? I believe the correct answer would be one.”</p>
+        <p>I grabbed his arm to stop him and we kissed in the middle of the crowded sidewalk. “Thank you,” I said, our faces close. “Only, for the six hundred and seventy-fifth time, I am not a paparazzo. I am a celebrity photographer.” Nasim rolled his eyes, and we started to hurry again, our shoulders now and then bumping. “There is no difference.” “There’s a big difference,” I insisted. “I may take pictures of celebrities, but I don’t stalk or harass them or try to get them to punch me so that I can sue them for assault.” Nasim changed the subject.</p>
+        <p class="narr">Jamie receives an invitation to spend one week hanging out with teen superstar Willow Twine, photographing her and documenting her life. On day seven of her week in L.A., however, she wakes up and realizes that her camera is gone.</p>
+        <p>I know it sounds like a cliché, but I feel naked without my camera. Or even worse than naked, since these days who cares if you’re naked? The camera represents who I am. It’s my identity. With it, I’m a sixteen-year-old celebrity photographer. (And maybe something of a celebrity myself?) Without it, who am I? What am I?</p>
+        <p>The answers to these questions will have to wait. Right now I just need to find my Nikon. I try to remember last night. Last night was a party. I had my camera with me early this morning when I came upstairs to find a place to sleep. Normally I would have put the camera on a night table or dresser, but since there is no furniture in the room, I left it on the floor beside the mattress, close to the wall.</p>
+        <p>So where is it? I check the bathroom. Not there either. I walk barefoot out into the hallway, then downstairs and out across the grassy lawn. I head toward the pool, where Zach, the house boy, and Daphne, the house techie, are straightening up from last night’s frolic. “Either of you see a camera?” I ask. “Think I saw one on the kitchen counter,” Zach says.</p>
+        <p>The kitchen counter? That’s weird. I don’t recall even being in the kitchen last night. Passing through the French doors, the aroma of fresh-brewed coffee is in the air, and there on the marble kitchen counter, where I swear I wouldn’t – couldn’t – have left it, is my Nikon. “Buenos días, Miss Jamie. You like some breakfast?” Maria, the Mexican cook, hands me the mug of coffee she knows I crave.</p>
+        <p>The camera rests on the marble counter beside me while I sip my coffee. Now that it’s back in my sight, my anxiety has gone. I didn’t take many shots at the party last night. Willow asked me not to. But ‘they’ are Willow’s management, and ‘they’ have made it clear that my assignment is to show the world the Willow Twine ‘they’ want to see – the sweet, girlish pop star (her true age, twenty-one, is a more closely guarded secret than the president’s personal cell phone number).</p>
+        <p>All I’d taken the previous night were a few innocent party shots. I had intentionally not taken the shots that editors everywhere would have paid a lot of money for. As a result, this morning I’m in no rush to review what’s in the camera’s memory. I wonder if I can really make this idea of staying here in California work. It’s not <em>that</em> crazy, is it? I’ve earned the trust of Willow Twine, one of the biggest stars in Hollywood. She’s already introduced me to a bunch of her actor friends and has promised to hook me up with even more. If I stay, I have a chance to become the Annie Leibovitz of the L.A. young actor scene.</p>
+        <p>But what about Nasim? My insides clench and my heart beats wildly when I think of him and the fight we had before I left New York. I would so hate to lose him, but I know what my father would say: You’re young, you can’t let a guy influence the direction of your career.</p>
+        <p>I pick up the camera, turn the viewer on, and have a look at the previous day’s shots. Willow holding the red shoes she bought me for the party. Willow hanging out by the pool with her best friend, Anne-Marie. Willow and Anne-Marie trying on clothes for the party. I get to the last shot I remember taking the night before – Willow in a pink dress by the pool, welcoming guests. But the camera’s counter indicates that there are six more shots. How weird is this? First I wake up and my camera isn’t where I’m certain I left it. And now I discover I took pictures I don’t remember taking.</p>
+        <p>I flip to the first one … and freeze. I am staring at a shot I definitely don’t remember taking. And for good reason. I didn’t take it. But that hardly matters now. I’ve stopped breathing. My heart is thudding. Goose bumps race up my arms, and it might be imagination, but I think I can feel tiny beads of cold sweat seep out of my pores. In my camera is a shot that changes everything.</p>
+        <p class="narr">After finding the mysterious shot on her camera, Jamie hides in a bathroom and has an imaginary conversation with Carla Harris, her photo agent.</p>
+        <p>I’m sitting in the pink bathroom in Willow’s mansion – a digital gold mine in my hands – hearing voices in my head.</p>
+        <p><span class="speaker">Me:</span> “Can I really do this? Destroy Willow’s career in order to advance mine?”</p>
+        <p><span class="speaker">Carla:</span> “Darling, are you crazy? This is your ticket. Everything you’ve dreamed of since day one. People would kill for this kind of opportunity. You think if it was the other way around – if Willow Twine needed to wreck your career to advance her own – she’d hesitate for a second?”</p>
+        <p><span class="speaker">Me:</span> “But Willow and I are friends.”</p>
+        <p><span class="speaker">Carla:</span> “Oh, please! You’ve known her for exactly one week.”</p>
+        <p><span class="speaker">Me:</span> “You don’t know. You haven’t been out here with us.”</p>
+        <p><span class="speaker">Carla:</span> “My dear, they were calling me an old-timer in this business back when you were still in Pampers. I’ve seen and heard it all. Believe me, I know.”</p>
+        <p style="text-align:right;font-style:italic;color:var(--muted)">by Todd Strasser (abridged and adapted)</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">a) Understanding the story</div>
+      <p class="form-hint" style="margin-bottom:1rem">The story has four parts. Sum up each part in 2–3 sentences and give it a heading.</p>
+
+      <div class="form-group">
+        <label class="form-label" for="ex1-h1">Part 1 – heading (the coffee shop)</label>
+        <input class="form-input" type="text" id="ex1-h1" placeholder="Your heading...">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ex1-s1">Part 1 – summary</label>
+        <textarea class="form-textarea" id="ex1-s1" placeholder="Sum up part 1 in 2–3 sentences..." rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="ex1-h2">Part 2 – heading (Jamie &amp; Nasim in New York)</label>
+        <input class="form-input" type="text" id="ex1-h2" placeholder="Your heading...">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ex1-s2">Part 2 – summary</label>
+        <textarea class="form-textarea" id="ex1-s2" placeholder="Sum up part 2 in 2–3 sentences..." rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="ex1-h3">Part 3 – heading (a week with Willow in L.A.)</label>
+        <input class="form-input" type="text" id="ex1-h3" placeholder="Your heading...">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ex1-s3">Part 3 – summary</label>
+        <textarea class="form-textarea" id="ex1-s3" placeholder="Sum up part 3 in 2–3 sentences..." rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="ex1-h4">Part 4 – heading (the bathroom conversation)</label>
+        <input class="form-input" type="text" id="ex1-h4" placeholder="Your heading...">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ex1-s4">Part 4 – summary</label>
+        <textarea class="form-textarea" id="ex1-s4" placeholder="Sum up part 4 in 2–3 sentences..." rows="3"></textarea>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">b) Jamie’s character</div>
+      <div class="form-group">
+        <label class="form-label" for="ex1-adj">What adjectives would you use to describe Jamie? Give examples from the text to support your ideas.</label>
+        <textarea class="form-textarea" id="ex1-adj" placeholder="Jamie is ... For example, in the text ..." rows="5"></textarea>
+      </div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise 2 →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== STEP 2 – TWO WORDS, SAME MEANING? ===== -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise 2</span>
+    <h2 class="ex-title">Two words, same meaning?</h2>
+    <p class="ex-subtitle">‘Celebrity photographer’ or ‘paparazzo’?</p>
+
+    <div class="card">
+      <div class="form-group">
+        <label class="form-label" for="ex2-a">a) Jamie insists she is a ‘celebrity photographer’, not a ‘paparazzo’. Explain the difference between these two words from Jamie’s point of view.</label>
+        <textarea class="form-textarea" id="ex2-a" placeholder="From Jamie’s point of view, a celebrity photographer ... whereas a paparazzo ..." rows="4"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ex2-b">b) Read the first part of the story again (the coffee shop). Comment on her definitions. Would you agree that she is <strong>not</strong> a paparazzo?</label>
+        <textarea class="form-textarea" id="ex2-b" placeholder="I (dis)agree that Jamie is not a paparazzo, because ..." rows="4"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ex2-c">c) After the incident at the coffee shop, Tatiana Frazee sends a message to her best friend. Think about how she must have felt when she realised Jamie had taken photos of her embarrassing moment. Write Tatiana’s message.</label>
+        <textarea class="form-textarea" id="ex2-c" placeholder="Hi ... you won’t believe what just happened to me ..." rows="5"></textarea>
+      </div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise 3 →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== STEP 3 – JAMIE'S DILEMMA & AT WHAT PRICE FAME ===== -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise 3</span>
+    <h2 class="ex-title">Jamie’s dilemma &amp; the price of fame</h2>
+    <p class="ex-subtitle">Should Jamie use the photo? And what would you give up to be famous?</p>
+
+    <div class="card">
+      <div class="card-title">Jamie’s dilemma</div>
+      <div class="form-group">
+        <label class="form-label" for="ex3-advice">a) Imagine you are in Jamie’s shoes. Should she sell the photo or not? Write her a message with your advice.</label>
+        <textarea class="form-textarea" id="ex3-advice" placeholder="Hi Jamie, I think you should / shouldn’t ... because ..." rows="5"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ex3-statement">b) At the end, Carla’s voice in Jamie’s head says: “I’ve seen and heard it all. Believe me, I know.” Explain the meaning of this statement.</label>
+        <textarea class="form-textarea" id="ex3-statement" placeholder="Carla means that ..." rows="4"></textarea>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">At what price fame…?</div>
+      <div class="form-group">
+        <label class="form-label" for="ex3-compare">c) Compare the lives of Jamie and Willow. In what ways are they different; in what ways are they the same?</label>
+        <textarea class="form-textarea" id="ex3-compare" placeholder="Jamie and Willow are similar because ... but they are different because ..." rows="5"></textarea>
+      </div>
+
+      <div class="word-bank">
+        <strong>Word bank</strong>
+        <span>anonymity</span> <span>appearance</span> <span>family</span> <span>friends</span> <span>home</span> <span>identity</span> <span>normality</span> <span>personality</span> <span>school</span> <span>security</span> <span>values</span>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ex3-giveup">d) Look at the words above. What would or wouldn’t you give up to become famous? Explain why.</label>
+        <textarea class="form-textarea" id="ex3-giveup" placeholder="I would give up ... but I would never give up ... because ..." rows="5"></textarea>
+      </div>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise 4 →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== STEP 4 – RELATIVE PRONOUNS ===== -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise 4</span>
+    <h2 class="ex-title">Hollywood Dream Factory</h2>
+    <p class="ex-subtitle">Relative pronouns.</p>
+
+    <div class="card">
+      <div class="card-title">a) Put in relative pronouns only where necessary.</div>
+      <p class="form-hint" style="margin-bottom:1rem">If no relative pronoun is needed, choose “— (not needed)”.</p>
+      <div class="gap-text">
+        <div class="gap-line"><span class="gap-num">1</span> Every year thousands of people
+          <select class="gap-select" id="ex4-g1"><option value="">—</option><option>who</option><option>which</option><option>whose</option><option>that</option><option>— (not needed)</option></select>
+          have big hopes and dreams move to L.A.</div>
+        <div class="gap-line"><span class="gap-num">2</span> Although we think of aspiring actors first, there are also writers, directors, producers, musicians, comedians and others
+          <select class="gap-select" id="ex4-g2"><option value="">—</option><option>who</option><option>which</option><option>whose</option><option>that</option><option>— (not needed)</option></select>
+          want to chase their dreams in Hollywood.</div>
+        <div class="gap-line"><span class="gap-num">3</span> The professions
+          <select class="gap-select" id="ex4-g3"><option value="">—</option><option>who</option><option>which</option><option>whose</option><option>that</option><option>— (not needed)</option></select>
+          they choose depend on their skills and talents.</div>
+        <div class="gap-line"><span class="gap-num">4</span> The age
+          <select class="gap-select" id="ex4-g4"><option value="">—</option><option>who</option><option>which</option><option>whose</option><option>that</option><option>— (not needed)</option></select>
+          they are when they start their career is also an important factor.</div>
+        <div class="gap-line"><span class="gap-num">5</span> People
+          <select class="gap-select" id="ex4-g5"><option value="">—</option><option>who</option><option>which</option><option>whose</option><option>that</option><option>— (not needed)</option></select>
+          are under 30 have a better chance of becoming famous.</div>
+        <div class="gap-line"><span class="gap-num">6</span> And young people
+          <select class="gap-select" id="ex4-g6"><option value="">—</option><option>who</option><option>which</option><option>whose</option><option>that</option><option>— (not needed)</option></select>
+          parents are already in the business have even better chances.</div>
+        <div class="gap-line"><span class="gap-num">7</span> But the competition
+          <select class="gap-select" id="ex4-g7"><option value="">—</option><option>who</option><option>which</option><option>whose</option><option>that</option><option>— (not needed)</option></select>
+          they face is still hard.</div>
+        <div class="gap-line"><span class="gap-num">8</span> There are only about 70,000 people in the US
+          <select class="gap-select" id="ex4-g8"><option value="">—</option><option>who</option><option>which</option><option>whose</option><option>that</option><option>— (not needed)</option></select>
+          main income is from acting.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">b) Rewrite without the relative pronoun</div>
+      <p class="form-hint" style="margin-bottom:1rem">Look at the sentences that needed a relative pronoun in a). Rewrite them so you don’t need the relative pronoun any more.<br><em>Example: 1. Every year thousands of people with big hopes and dreams move to L.A.</em></p>
+      <div class="form-group">
+        <textarea class="form-textarea" id="ex4-rewrite" placeholder="1. Every year thousands of people with big hopes and dreams move to L.A.&#10;2. ...&#10;5. ...&#10;6. ...&#10;8. ..." rows="6"></textarea>
+      </div>
+    </div>
+
+    <div id="step4-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(4)">Continue to Exercise 5 →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== STEP 5 – WELCOME TO THE STUDIOS (FUTURE PROGRESSIVE) ===== -->
+<section id="step-5" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise 5</span>
+    <h2 class="ex-title">Welcome to the studios!</h2>
+    <p class="ex-subtitle">Future progressive.</p>
+
+    <div class="card">
+      <div class="card-title">a) Complete the sentences with the future progressive.</div>
+      <div class="fib-item"><span class="fib-num">1.</span> Welcome to the studios! I expect you <input type="text" id="ex5-a1" placeholder="will be coming"> <span class="fib-cue">(come)</span> to the meeting at 9:00, right?</div>
+      <div class="fib-item"><span class="fib-num">2.</span> Hi there! In an hour we <input type="text" id="ex5-a2" placeholder="(set up)"> <span class="fib-cue">(set up)</span> to shoot a new ad. Please be there!</div>
+      <div class="fib-item"><span class="fib-num">3.</span> I’m from Human Resources. We <input type="text" id="ex5-a3" placeholder="(observe)"> <span class="fib-cue">(observe)</span> you closely for the next six weeks. Relax!</div>
+      <div class="fib-item"><span class="fib-num">4.</span> I’m Sue. Next week the boss <input type="text" id="ex5-a4" placeholder="(nominate)"> <span class="fib-cue">(nominate)</span> employees for a workshop. Interested?</div>
+      <div class="fib-item"><span class="fib-num">5.</span> Hey man! Lots of people <input type="text" id="ex5-a5" placeholder="(urge)"> <span class="fib-cue">(urge)</span> you to work long hours. Don’t listen to them!</div>
+      <div class="fib-item"><span class="fib-num">6.</span> This is Sheila. She <input type="text" id="ex5-a6" placeholder="(take)"> <span class="fib-cue">(take)</span> photos of the new employees for the studio website.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">b) Complete these sentences with your own ideas. Use the future progressive.</div>
+      <p class="form-hint" style="margin-bottom:1rem"><em>Example: While you’re still going to school, I’ll be going to auditions in Hollywood.</em></p>
+      <div class="form-group">
+        <label class="form-label" for="ex5-b1">1. While you’re still going to school …</label>
+        <input class="form-input" type="text" id="ex5-b1" placeholder="… I’ll be …">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ex5-b2">2. When you read this letter …</label>
+        <input class="form-input" type="text" id="ex5-b2" placeholder="… I’ll be …">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ex5-b3">3. This time tomorrow my friends and I …</label>
+        <input class="form-input" type="text" id="ex5-b3" placeholder="… will be …">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ex5-b4">4. I can’t believe her luck. Next month …</label>
+        <input class="form-input" type="text" id="ex5-b4" placeholder="… she’ll be …">
+      </div>
+    </div>
+
+    <div id="step5-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(5)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(5)">Continue to Exercise 6 →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== STEP 6 – TALKING ABOUT FUTURE PLANS ===== -->
+<section id="step-6" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise 6</span>
+    <h2 class="ex-title">Talking about future plans</h2>
+    <p class="ex-subtitle">Future progressive &amp; future perfect.</p>
+
+    <div class="card">
+      <div class="card-title">a) Grant’s schedule</div>
+      <p class="form-hint" style="margin-bottom:1rem">Grant owns a start-up company in Silicon Valley. Say what <strong>will be happening</strong> or what <strong>will have happened</strong> at a certain time in the future.<br><em>Start like this: At 8:00 Grant will be … / By 1:00 he’ll have …</em></p>
+      <div class="schedule">
+        <div><b>7:00–8:30</b><span>breakfast with Phil</span></div>
+        <div><b>9:00–10:00</b><span>Young Inventors – meeting at Hilton Hotel</span></div>
+        <div><b>11:00–1:00</b><span>read new applications, choose applicant for new position</span></div>
+        <div><b>1:30</b><span>phone interview, reporter will send questions by 10:00</span></div>
+        <div><b>5:30</b><span>dinner with Joy, buy flowers on the way to restaurant</span></div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ex6-a">Write your sentences:</label>
+        <textarea class="form-textarea" id="ex6-a" placeholder="At 8:00 Grant will be having breakfast with Phil.&#10;By 1:00 he’ll have ..." rows="6"></textarea>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">b) Your own tech company</div>
+      <p class="form-hint" style="margin-bottom:1rem">Imagine you have your own tech company in Silicon Valley. Make a schedule for new inventions you plan for the future. Then use the <strong>future progressive</strong> and the <strong>future perfect</strong> to talk about these plans.<br><em>Examples: In 2029 we’ll be researching the use of robots in homes. By 2031 we’ll have launched a new robot onto the market.</em></p>
+      <div class="form-group">
+        <label class="form-label" for="ex6-b">Write your plans:</label>
+        <textarea class="form-textarea" id="ex6-b" placeholder="In 20.. we’ll be ...&#10;By 20.. we’ll have ..." rows="6"></textarea>
+      </div>
+    </div>
+
+    <div id="step6-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(6)">← Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(6)">Review &amp; Submit →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== FINAL STEP – REVIEW & SUBMIT ===== -->
+<section id="step-7" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission did not work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+/* ===== CONFIG ===== */
+var UNIT          = '9g-famous-hollywood';
+var TOTAL_STEPS   = 7;
+var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbw2eqOCB6XKREIOXuqn2fCL067CdMm20MmiTFMt9GmRUEn12vLl8gJbHL1UfbKmCP7W/exec';
+var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+
+/* ===== STATE ===== */
+var state = {
+  name: '',
+  cls:  '',
+  ex1:  {},   /* reading: headings, summaries, adjectives */
+  ex2:  {},   /* two words */
+  ex3:  {},   /* dilemma & fame */
+  ex4:  {},   /* relative pronouns */
+  ex5:  {},   /* future progressive */
+  ex6:  {}    /* future plans */
+};
+
+/* ===== NAVIGATION ===== */
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('step-' + n).classList.add('active');
+  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  restoreStep(n);
+  var meta = document.getElementById('header-meta');
+  if (n === 0) { meta.style.display = 'none'; return; }
+  meta.style.display = 'block';
+  document.getElementById('header-name').textContent = state.name + (state.cls ? ' — ' + state.cls : '');
+  var labels = ['1', '2', '3', '4', '5', '6'];
+  document.getElementById('header-step').textContent = n < TOTAL_STEPS
+    ? 'Exercise ' + labels[n - 1] + ' of ' + (TOTAL_STEPS - 1)
+    : 'Submit';
+}
+
+function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
+
+function nextStep(n) {
+  if (!validateStep(n)) {
+    var err = document.getElementById('step' + n + '-error');
+    if (err) { err.textContent = 'Please answer the required questions before continuing.'; err.classList.add('show'); }
+    return;
+  }
+  clearErr(n);
+  saveStep(n);
+  if (n === TOTAL_STEPS - 1) { buildSummary(); }
+  showStep(n + 1);
+}
+
+function clearErr(n) {
+  var err = document.getElementById('step' + n + '-error');
+  if (err) err.classList.remove('show');
+}
+
+function startExercises() {
+  var name = g('inp-name'), cls = g('inp-class');
+  var err = document.getElementById('welcome-error');
+  if (!name || !cls) {
+    err.textContent = 'Please enter both your name and your class.';
+    err.classList.add('show');
+    return;
+  }
+  err.classList.remove('show');
+  state.name = name;
+  state.cls  = cls;
+  showStep(1);
+}
+
+/* ===== VALIDATION ===== */
+function validateStep(n) {
+  switch (n) {
+    case 1: return val('ex1-s1') && val('ex1-s2') && val('ex1-s3') && val('ex1-s4') && val('ex1-adj');
+    case 2: return val('ex2-a') && val('ex2-b') && val('ex2-c');
+    case 3: return val('ex3-advice') && val('ex3-statement') && val('ex3-compare') && val('ex3-giveup');
+    case 4:
+      for (var i = 1; i <= 8; i++) { if (!g('ex4-g' + i)) return false; }
+      return val('ex4-rewrite');
+    case 5:
+      for (var j = 1; j <= 6; j++) { if (!g('ex5-a' + j)) return false; }
+      return val('ex5-b1') && val('ex5-b2') && val('ex5-b3') && val('ex5-b4');
+    case 6: return val('ex6-a') && val('ex6-b');
+    default: return true;
+  }
+}
+
+/* ===== SAVE / RESTORE ===== */
+function saveStep(n) {
+  switch (n) {
+    case 1:
+      state.ex1 = {
+        h1: g('ex1-h1'), s1: g('ex1-s1'),
+        h2: g('ex1-h2'), s2: g('ex1-s2'),
+        h3: g('ex1-h3'), s3: g('ex1-s3'),
+        h4: g('ex1-h4'), s4: g('ex1-s4'),
+        adjectives: g('ex1-adj')
+      };
+      break;
+    case 2:
+      state.ex2 = { a: g('ex2-a'), b: g('ex2-b'), tatiana_message: g('ex2-c') };
+      break;
+    case 3:
+      state.ex3 = { advice: g('ex3-advice'), statement: g('ex3-statement'), compare: g('ex3-compare'), give_up: g('ex3-giveup') };
+      break;
+    case 4:
+      state.ex4 = {};
+      for (var i = 1; i <= 8; i++) { state.ex4['g' + i] = g('ex4-g' + i); }
+      state.ex4.rewrite = g('ex4-rewrite');
+      break;
+    case 5:
+      state.ex5 = {};
+      for (var j = 1; j <= 6; j++) { state.ex5['a' + j] = g('ex5-a' + j); }
+      state.ex5.b1 = g('ex5-b1'); state.ex5.b2 = g('ex5-b2');
+      state.ex5.b3 = g('ex5-b3'); state.ex5.b4 = g('ex5-b4');
+      break;
+    case 6:
+      state.ex6 = { a: g('ex6-a'), b: g('ex6-b') };
+      break;
+  }
+}
+
+function restoreStep(n) {
+  switch (n) {
+    case 1:
+      set('ex1-h1', state.ex1.h1); set('ex1-s1', state.ex1.s1);
+      set('ex1-h2', state.ex1.h2); set('ex1-s2', state.ex1.s2);
+      set('ex1-h3', state.ex1.h3); set('ex1-s3', state.ex1.s3);
+      set('ex1-h4', state.ex1.h4); set('ex1-s4', state.ex1.s4);
+      set('ex1-adj', state.ex1.adjectives);
+      break;
+    case 2:
+      set('ex2-a', state.ex2.a); set('ex2-b', state.ex2.b); set('ex2-c', state.ex2.tatiana_message);
+      break;
+    case 3:
+      set('ex3-advice', state.ex3.advice); set('ex3-statement', state.ex3.statement);
+      set('ex3-compare', state.ex3.compare); set('ex3-giveup', state.ex3.give_up);
+      break;
+    case 4:
+      for (var i = 1; i <= 8; i++) { set('ex4-g' + i, state.ex4['g' + i]); }
+      set('ex4-rewrite', state.ex4.rewrite);
+      break;
+    case 5:
+      for (var j = 1; j <= 6; j++) { set('ex5-a' + j, state.ex5['a' + j]); }
+      set('ex5-b1', state.ex5.b1); set('ex5-b2', state.ex5.b2);
+      set('ex5-b3', state.ex5.b3); set('ex5-b4', state.ex5.b4);
+      break;
+    case 6:
+      set('ex6-a', state.ex6.a); set('ex6-b', state.ex6.b);
+      break;
+  }
+}
+
+/* ===== HELPERS ===== */
+function g(id)       { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+function set(id, v)  { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
+function val(id)     { return g(id).length > 0; }
+function esc(str)    { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
+
+/* ===== SUMMARY ===== */
+function buildSummary() {
+  var e1 = state.ex1, e2 = state.ex2, e3 = state.ex3, e4 = state.ex4, e5 = state.ex5, e6 = state.ex6;
+  var rel = [];
+  for (var i = 1; i <= 8; i++) { rel.push(i + '. ' + (e4['g' + i] || '(blank)')); }
+  var fp = [];
+  for (var j = 1; j <= 6; j++) { fp.push(j + '. ' + (e5['a' + j] || '(blank)')); }
+  var rows = [
+    { ex: 'Ex 1 – Story', q: 'Part 1: ' + (e1.h1 || '(no heading)'), a: e1.s1 },
+    { ex: 'Ex 1 – Story', q: 'Part 2: ' + (e1.h2 || '(no heading)'), a: e1.s2 },
+    { ex: 'Ex 1 – Story', q: 'Part 3: ' + (e1.h3 || '(no heading)'), a: e1.s3 },
+    { ex: 'Ex 1 – Story', q: 'Part 4: ' + (e1.h4 || '(no heading)'), a: e1.s4 },
+    { ex: 'Ex 1 – Story', q: 'Jamie’s character', a: e1.adjectives },
+    { ex: 'Ex 2 – Two words', q: 'a) Difference (Jamie’s view)', a: e2.a },
+    { ex: 'Ex 2 – Two words', q: 'b) Do you agree she is not a paparazzo?', a: e2.b },
+    { ex: 'Ex 2 – Two words', q: 'c) Tatiana’s message', a: e2.tatiana_message },
+    { ex: 'Ex 3 – Dilemma', q: 'a) Advice to Jamie', a: e3.advice },
+    { ex: 'Ex 3 – Dilemma', q: 'b) Carla’s statement explained', a: e3.statement },
+    { ex: 'Ex 3 – Fame', q: 'c) Jamie vs. Willow', a: e3.compare },
+    { ex: 'Ex 3 – Fame', q: 'd) What would you give up?', a: e3.give_up },
+    { ex: 'Ex 4 – Relative pronouns', q: 'a) Gaps 1–8', a: rel.join('\n') },
+    { ex: 'Ex 4 – Relative pronouns', q: 'b) Rewritten sentences', a: e4.rewrite },
+    { ex: 'Ex 5 – Future progressive', q: 'a) Sentences 1–6', a: fp.join('\n') },
+    { ex: 'Ex 5 – Future progressive', q: 'b1) While you’re still going to school …', a: e5.b1 },
+    { ex: 'Ex 5 – Future progressive', q: 'b2) When you read this letter …', a: e5.b2 },
+    { ex: 'Ex 5 – Future progressive', q: 'b3) This time tomorrow my friends and I …', a: e5.b3 },
+    { ex: 'Ex 5 – Future progressive', q: 'b4) Next month …', a: e5.b4 },
+    { ex: 'Ex 6 – Future plans', q: 'a) Grant’s schedule', a: e6.a },
+    { ex: 'Ex 6 – Future plans', q: 'b) Your own tech company', a: e6.b }
+  ];
+  var html = '<div class="submit-summary">'
+    + '<div class="summary-row"><div class="summary-ex">Student</div>'
+    + '<div class="summary-q">' + esc(state.name) + ' — ' + esc(state.cls) + '</div></div>';
+  rows.forEach(function(r) {
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div>'
+      + '<div class="summary-q">' + esc(r.q) + '</div>'
+      + '<div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+}
+
+/* ===== EMAIL FALLBACK BODY ===== */
+function buildEmailBody() {
+  var e1 = state.ex1, e2 = state.ex2, e3 = state.ex3, e4 = state.ex4, e5 = state.ex5, e6 = state.ex6;
+  var rel = [];
+  for (var i = 1; i <= 8; i++) { rel.push(i + '. ' + (e4['g' + i] || '(blank)')); }
+  var fp = [];
+  for (var j = 1; j <= 6; j++) { fp.push(j + '. ' + (e5['a' + j] || '(blank)')); }
+  return 'Exercise: ' + UNIT
+    + '\nStudent: ' + state.name
+    + '\nClass:   ' + state.cls
+    + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
+    + '\n\n--- Ex 1: The story ---'
+    + '\nPart 1 (' + (e1.h1 || '') + '): ' + (e1.s1 || '(none)')
+    + '\nPart 2 (' + (e1.h2 || '') + '): ' + (e1.s2 || '(none)')
+    + '\nPart 3 (' + (e1.h3 || '') + '): ' + (e1.s3 || '(none)')
+    + '\nPart 4 (' + (e1.h4 || '') + '): ' + (e1.s4 || '(none)')
+    + '\nCharacter: ' + (e1.adjectives || '(none)')
+    + '\n\n--- Ex 2: Two words, same meaning? ---'
+    + '\na) ' + (e2.a || '(none)')
+    + '\nb) ' + (e2.b || '(none)')
+    + '\nc) Tatiana’s message: ' + (e2.tatiana_message || '(none)')
+    + '\n\n--- Ex 3: Dilemma & fame ---'
+    + '\na) Advice: ' + (e3.advice || '(none)')
+    + '\nb) Statement: ' + (e3.statement || '(none)')
+    + '\nc) Jamie vs Willow: ' + (e3.compare || '(none)')
+    + '\nd) Give up: ' + (e3.give_up || '(none)')
+    + '\n\n--- Ex 4: Relative pronouns ---'
+    + '\na)\n' + rel.join('\n')
+    + '\nb) Rewritten:\n' + (e4.rewrite || '(none)')
+    + '\n\n--- Ex 5: Future progressive ---'
+    + '\na)\n' + fp.join('\n')
+    + '\nb1) ' + (e5.b1 || '(none)')
+    + '\nb2) ' + (e5.b2 || '(none)')
+    + '\nb3) ' + (e5.b3 || '(none)')
+    + '\nb4) ' + (e5.b4 || '(none)')
+    + '\n\n--- Ex 6: Future plans ---'
+    + '\na) Grant’s schedule:\n' + (e6.a || '(none)')
+    + '\nb) Own company:\n' + (e6.b || '(none)');
+}
+
+/* ===== SUBMIT TO GOOGLE SHEET ===== */
+function submitToSheet() {
+  buildSummary();
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  var payload = {
+    name: state.name, cls: state.cls, unit: UNIT,
+    ex1: state.ex1, ex2: state.ex2, ex3: state.ex3,
+    ex4: state.ex4, ex5: state.ex5, ex6: state.ex6
+  };
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+  }).then(function() {
+    btn.style.display = 'none';
+    document.getElementById('submit-success').style.display = 'block';
+    document.getElementById('submit-fallback').style.display = 'block';
+  }).catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Submit to Teacher';
+    document.getElementById('submit-fallback').style.display = 'block';
+  });
+}
+
+function submitByEmail() {
+  var a = document.createElement('a');
+  a.href = 'mailto:' + TEACHER_EMAIL
+    + '?subject=' + encodeURIComponent(UNIT + ' - ' + state.name + ' - ' + state.cls)
+    + '&body='    + encodeURIComponent(buildEmailBody());
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function() { document.body.removeChild(a); }, 100);
+}
+
+function copyAnswers() {
+  var body = buildEmailBody();
+  navigator.clipboard.writeText(body)
+    .then(function() { alert('Answers copied! Paste them into an email to your teacher.'); })
+    .catch(function() { prompt('Copy this text:', body); });
+}
+
+/* ===== INIT ===== */
+document.addEventListener('DOMContentLoaded', function() {
+  showStep(0);
+});
+</script>
+
+<script>
+/* ── Paste-block ── */
+document.addEventListener('paste', function(e) {
+  var t = e.target;
+  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
+    e.preventDefault();
+    var msg = document.createElement('div');
+    msg.textContent = '✏️ Pasting is not allowed';
+    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    document.body.appendChild(msg);
+    setTimeout(function() { msg.style.opacity='0'; setTimeout(function(){ msg.remove(); },400); },2000);
+  }
+});
+
+/* ── Copy-block ── */
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  var msg = document.createElement('div');
+  msg.textContent = '🚫 Copying is not allowed';
+  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+  document.body.appendChild(msg);
+  setTimeout(function() { msg.style.opacity='0'; setTimeout(function(){ msg.remove(); },400); },2000);
+});
+</script>
+
+</body>
+</html>
