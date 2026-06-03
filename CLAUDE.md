@@ -23,6 +23,7 @@ Static HTML exercise pages for English language learners, hosted on GitHub Pages
 | `7g-tudor-past-perfect.html` | 7 | Gymnasium | Past perfect grammar & Tudor reading |
 | `california-exercises.html` | 9 | Gymnasium | Economy, articles, abstract/collective nouns |
 | `9g-california-hazards.html` | 9 | Gymnasium | Wildfires, modal verbs, cause & effect |
+| `9g-famous-hollywood.html` | 9 | Gymnasium | Todd Strasser's "Famous", relative pronouns & future tenses |
 | `9c-south-africa-revision.html` | 9 | Oberschule | South Africa revision |
 | `sport-south-africa.html` | 9 | Oberschule | Sport in South Africa reading |
 | `_template.html` | — | — | **Start here for every new exercise** |
@@ -43,7 +44,7 @@ Used by: `7c-holidays.html`, `7c-robert-the-bruce.html`, `7g-tudor-past-perfect.
 ```
 https://script.google.com/macros/s/AKfycbw2eqOCB6XKREIOXuqn2fCL067CdMm20MmiTFMt9GmRUEn12vLl8gJbHL1UfbKmCP7W/exec
 ```
-Used by: `california-exercises.html`, `9g-california-hazards.html`, `9c-south-africa-revision.html`, `sport-south-africa.html`
+Used by: `california-exercises.html`, `9g-california-hazards.html`, `9g-famous-hollywood.html`, `9c-south-africa-revision.html`, `sport-south-africa.html`
 
 ### Unit identifiers → Sheet tabs
 
@@ -51,6 +52,7 @@ Used by: `california-exercises.html`, `9g-california-hazards.html`, `9c-south-af
 |------------|-----------|
 | `california-exercises` | California Exercises |
 | `california-hazards` | California Hazards |
+| `9g-famous-hollywood` | Famous & Hollywood |
 | `robert-the-bruce-7c` | Robert the Bruce |
 | `tudor-past-perfect` | Tudor Past Perfect |
 | `9c-south-africa-revision` | South Africa Revision |
@@ -183,6 +185,7 @@ function routeSubmission(ss, data) {
 
   if      (unit === 'california-exercises')      { tabName = 'California Exercises'; }
   else if (unit === 'california-hazards')        { tabName = 'California Hazards'; }
+  else if (unit === '9g-famous-hollywood')       { tabName = 'Famous & Hollywood'; }
   else if (unit === 'robert-the-bruce-7c')       { tabName = 'Robert the Bruce'; }
   else if (unit === 'tudor-past-perfect')        { tabName = 'Tudor Past Perfect'; }
   else if (unit === '9c-south-africa-revision')  { tabName = 'South Africa Revision'; }
