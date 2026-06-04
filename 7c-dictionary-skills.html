@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avalanche! – Dictionary Skills | englishonline.training</title>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:    #1a3a5c;
+      --gold:    #c9a227;
+      --gold-lt: #f5e6b0;
+      --teal:    #2b7a78;
+      --red:     #c0392b;
+      --green:   #27ae60;
+      --bg:      #f7f9fc;
+      --card:    #ffffff;
+      --text:    #1d2b3a;
+      --muted:   #6b7a8d;
+      --border:  #dce3ec;
+      --radius:  12px;
+      --shadow:  0 2px 16px rgba(26,58,92,.1);
+      --font:    'Segoe UI', system-ui, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
+
+    /* ── Header ── */
+    .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
+    .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
+    .header-meta { font-size: .78rem; text-align: right; opacity: .9; }
+    .header-meta strong { display: block; color: var(--gold); }
+    .progress-track { height: 6px; background: rgba(255,255,255,.2); }
+    .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
+
+    /* ── Steps ── */
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+
+    /* ── Exercise labels ── */
+    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
+    .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+    .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+    /* ── Cards ── */
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
+
+    /* ── Reading text ── */
+    .reading-text { font-size: .93rem; line-height: 1.85; color: var(--text); }
+    .reading-text p { margin-bottom: .85rem; }
+    .reading-text p:last-child { margin-bottom: 0; }
+    .reading-headline { font-size: 1.15rem; font-weight: 700; color: var(--teal); margin-bottom: .3rem; }
+    .reading-dateline { font-size: .82rem; font-style: italic; color: var(--muted); margin-bottom: 1rem; }
+    .reading-label { display: inline-block; background: var(--blue); color: #fff; font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; padding: .15rem .55rem; border-radius: 4px; margin-bottom: .75rem; }
+
+    /* ── Underline ── */
+    .ul-word { text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ── Forms ── */
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+    .form-input, .form-textarea {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+      padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
+      color: var(--text); background: #fff; transition: border-color .2s;
+    }
+    .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--blue); }
+    .form-textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
+    .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+
+    /* ── Sentence item ── */
+    .sentence-item { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: .85rem; background: #fafbfc; }
+    .sentence-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 800; flex-shrink: 0; margin-bottom: .5rem; }
+    .sentence-original { font-size: .9rem; color: var(--text); font-style: italic; margin-bottom: .65rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); }
+
+    /* ── Tip box ── */
+    .tip-box { background: var(--gold-lt); border: 1.5px solid var(--gold); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; font-size: .84rem; color: var(--blue); line-height: 1.6; }
+    .tip-box strong { display: block; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .35rem; }
+    .tip-box ul { padding-left: 1.25rem; margin-top: .35rem; }
+    .tip-box ul li { margin-bottom: .3rem; }
+
+    /* ── Dictionary entry box ── */
+    .dict-entry { background: #f9f7f2; border: 1.5px solid #c9a227; border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; font-size: .82rem; line-height: 1.7; font-family: Georgia, serif; color: #222; }
+    .dict-entry .hw { font-weight: 900; font-size: 1rem; color: #000; }
+    .dict-entry .phon { font-size: .78rem; color: #666; }
+    .dict-entry .pos { font-style: italic; color: #444; }
+    .dict-entry .sense-num { font-weight: 700; color: #1a3a5c; }
+    .dict-entry .italic { font-style: italic; }
+    .dict-entry .phrase { display: block; padding-left: 1rem; margin-top: .2rem; }
+    .dict-entry .phrase::before { content: '♦ '; color: #c9a227; }
+
+    /* ── Image placeholders ── */
+    .img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1rem; }
+    .img-placeholder { border-radius: 8px; overflow: hidden; position: relative; }
+    .img-placeholder img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; }
+    .img-placeholder .img-caption { font-size: .72rem; color: var(--muted); margin-top: .3rem; text-align: center; }
+
+    /* ── Map box ── */
+    .map-float { float: right; width: 200px; margin: 0 0 1rem 1.25rem; }
+    .map-float img { width: 100%; border-radius: 8px; border: 1px solid var(--border); }
+    .map-float .img-caption { font-size: .72rem; color: var(--muted); text-align: center; margin-top: .3rem; }
+    .clearfix::after { content: ''; display: table; clear: both; }
+
+    /* ── Feedback banners ── */
+    .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
+    .feedback.show { display: block; }
+    .feedback.ok   { background: #d4edda; color: #155724; }
+    .feedback.warn { background: #fff3cd; color: #856404; }
+    .feedback.err  { background: #fde8e8; color: #721c24; }
+
+    /* ── Buttons ── */
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
+    .btn-primary:hover { background: #15304f; }
+    .btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
+    .btn-gold:hover { background: #b8911f; }
+    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+    .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+    .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    /* ── Welcome screen ── */
+    .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
+    .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
+    .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+    .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+    .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; }
+    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
+    .ov-card.locked { opacity: .5; }
+    .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+
+    /* ── Submit / summary ── */
+    .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
+    .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
+    .summary-a  { color: var(--text); white-space: pre-wrap; }
+
+    @media (max-width: 480px) {
+      .ex-title { font-size: 1.25rem; }
+      .btn { padding: .65rem 1.1rem; }
+      .welcome-title { font-size: 1.4rem; }
+      .img-grid { grid-template-columns: 1fr; }
+      .map-float { float: none; width: 100%; margin: 0 0 1rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Sticky header ── -->
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step"></span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+
+
+<!-- ====================================================
+     STEP 0 – WELCOME
+===================================================== -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">⛰️</div>
+      <h1 class="welcome-title">Avalanche! – Dictionary Skills</h1>
+      <p class="welcome-sub">Read a news story about a dramatic rescue, then practise using a dictionary to find the right German meanings.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card">
+        <div class="ov-icon">📰</div>
+        <strong>Reading</strong>
+        Read the news story about four climbers in Scotland.
+      </div>
+      <div class="ov-card locked">
+        <div class="ov-icon">📖</div>
+        <strong>Ex 1 – Dictionary Entry</strong>
+        Use a dictionary entry to find the right German words.
+      </div>
+      <div class="ov-card locked">
+        <div class="ov-icon">🔍</div>
+        <strong>Ex 2a – Underlined Words</strong>
+        Find German meanings for words from the text.
+      </div>
+      <div class="ov-card locked">
+        <div class="ov-icon">✍️</div>
+        <strong>Ex 2b – New Contexts</strong>
+        Find new meanings for the same words.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. 7c" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 1 – READING
+===================================================== -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Reading</span>
+    <h2 class="ex-title">Avalanche hits rock climbers</h2>
+    <p class="ex-subtitle">Read the news article carefully. Pay attention to the underlined words — you will need them later.</p>
+
+    <div class="card">
+      <div class="reading-label">Internet</div>
+
+      <!-- Photos grid -->
+      <div class="img-grid">
+        <div class="img-placeholder">
+          <div style="background: linear-gradient(135deg, #7ea8c4 0%, #4a7fa0 40%, #a8c4d4 70%, #d0e4ef 100%); height:160px; border-radius:8px; display:flex; align-items:flex-end; justify-content:center; padding:.5rem;">
+            <span style="font-size:.7rem;color:#fff;background:rgba(0,0,0,.4);padding:.2rem .5rem;border-radius:4px;">Ben Nevis, Scottish Highlands</span>
+          </div>
+        </div>
+        <div class="img-placeholder">
+          <div style="background: linear-gradient(135deg, #c8dce8 0%, #e8f0f5 50%, #b0c8d8 100%); height:160px; border-radius:8px; display:flex; align-items:flex-end; justify-content:center; padding:.5rem;">
+            <span style="font-size:.7rem;color:#fff;background:rgba(0,0,0,.4);padding:.2rem .5rem;border-radius:4px;">Mountain rescue team</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article with floated map -->
+      <div class="clearfix">
+        <div class="map-float">
+          <div style="background: linear-gradient(160deg, #a8d8c0 0%, #7dc4a8 30%, #5aa888 60%, #3a8c6c 100%); height:220px; border-radius:8px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.5rem; border: 1px solid var(--border);">
+            <span style="font-size:1.5rem;">🗺️</span>
+            <span style="font-size:.7rem;font-weight:700;color:#1a3a5c;text-align:center;padding:0 .5rem;">Scotland<br><span style="font-weight:400;color:#2b5a3c;">Ben Nevis (1,345 m)</span></span>
+          </div>
+          <p class="img-caption">Map of Scotland</p>
+        </div>
+
+        <div class="reading-headline">Avalanche hits rock climbers</div>
+        <div class="reading-dateline">10:35 published Monday 8th January</div>
+
+        <div class="reading-text">
+          <p>Four rock climbers who set off an avalanche in the Scottish Highlands on Sunday 7th January were very lucky to <span class="ul-word">escape</span> with their lives.</p>
+          <p>The four young men, all from London, <span class="ul-word">were climbing</span> Ben Nevis, the highest mountain in the UK. At about 2 p.m. a huge <span class="ul-word">wave</span> of snow <span class="ul-word">swept</span> them 300 metres down the mountain.</p>
+          <p>In an interview later that day one of the men said, "I fell for a very long time. I didn't believe that I would survive. My friends and I, we all had safety equipment like red coats and red helmets. But still we were really lucky to walk out. It was a very scary adventure. The rescue helicopter had already started to <span class="ul-word">look for</span> us. It took us to hospital, but we were all OK. Only one of my friends had a twisted ankle."</p>
+          <p>Next year, the <span class="ul-word">climbers</span> will climb the highest mountain in Europe, Mont Blanc.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise 1 →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 2 – EXERCISE 1: DICTIONARY ENTRY
+===================================================== -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise 1</span>
+    <h2 class="ex-title">Look at the dictionary entry.</h2>
+    <p class="ex-subtitle">Use the entry for 'hit' to find the right German word(s) for each sentence below.</p>
+
+    <!-- Tips / scaffolding -->
+    <div class="tip-box">
+      <strong>💡 How to use a dictionary entry</strong>
+      <ul>
+        <li>The words in a dictionary are in groups or 'entries'. Each entry has a <strong>root word</strong>. Look for the root word first.</li>
+        <li>The letters in brackets <em>[ ]</em> tell you <strong>how to say the word</strong>.</li>
+        <li>Look for the letters <em>n</em>, <em>vt</em>, <em>vi</em>, <em>adj</em> — these tell you if the word is a <strong>noun, verb or adjective</strong>.</li>
+        <li>Numbers like <em>① ②</em> show that a word has <strong>more than one meaning</strong>.</li>
+        <li>Words in <em>italics</em> in brackets — like <em>(shoot)</em> — help you find the <strong>right meaning</strong>.</li>
+        <li>Phrases marked with ♦ show <strong>useful expressions</strong> with the word.</li>
+      </ul>
+    </div>
+
+    <!-- Dictionary entry reproduction -->
+    <div class="dict-entry">
+      <span class="hw">hit</span> <span class="phon">[hɪt]</span> <span class="pos">I. n</span>
+      <span class="sense-num">①</span> <em>Schlag m</em>
+      <span class="sense-num">②</span> <em>(shot)</em> Treffer <em>m</em>;
+      <strong>to suffer a direct ~ </strong> direkt getroffen werden
+      <span class="sense-num">③</span> <em>(success)</em> Hit <em>m</em>;
+      <strong>to be a [big] ~ with sb</strong> bei jdm gut ankommen
+      <span class="sense-num">④</span> <small>INET</small> Besuch <em>m</em> einer Webseite
+      <span class="sense-num">⑤</span> <small>COMPUT</small> <em>(match)</em> Treffer <em>m</em>
+      <span class="pos">II. vt</span> &lt;-tt-, hit, hit&gt;
+      <span class="sense-num">①</span> schlagen
+      <span class="sense-num">②</span> <em>button</em> drücken
+      <span class="sense-num">③</span> <em>(collide)</em> <strong>to ~ sth</strong> gegen etw akk stoßen; <em>car gegen etw akk</em> krachen
+      <span class="sense-num">④</span> <em>(shoot)</em> <strong>to be ~</strong> getroffen werden
+      <span class="sense-num">⑤</span> <em>(occur)</em> <strong>to ~ sb</strong> jdm auffallen
+      <span class="pos">III. vi</span> <strong>to ~ hard</strong> kräftig zuschlagen;
+      <strong>to ~ at sb</strong> nach jdm schlagen
+      <span class="sense-num">②</span> <em>(attack)</em> <strong>to ~ at sb</strong> jdn attackieren
+      <span class="phrase"><strong>♦ hit back</strong> <span class="pos">vi</span> zurückschlagen; <strong>to ~ back at sb</strong> jdm Kontra geben</span>
+      <span class="phrase"><strong>♦ hit it off</strong> <span class="pos">vt</span> <strong>to ~ it off [with sb]</strong> <em>[fam]</em> sich prächtig [mit jdm] verstehen</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Find the German word(s) for 'hit' in each sentence.</div>
+      <p style="font-size:.83rem;color:var(--muted);margin-bottom:1.25rem;">Look at the meaning of 'hit' in each sentence, then find the correct German translation in the entry above.</p>
+
+      <div class="sentence-item">
+        <div class="sentence-num">1</div>
+        <div class="sentence-original">The avalanche <u>hit</u> the climbers.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="ex1-s1">German word for 'hit' here:</label>
+          <input class="form-input" type="text" id="ex1-s1" placeholder="Your answer in German...">
+        </div>
+      </div>
+
+      <div class="sentence-item">
+        <div class="sentence-num">2</div>
+        <div class="sentence-original">The car <u>hit</u> a tree.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="ex1-s2">German word for 'hit' here:</label>
+          <input class="form-input" type="text" id="ex1-s2" placeholder="Your answer in German...">
+        </div>
+      </div>
+
+      <div class="sentence-item">
+        <div class="sentence-num">3</div>
+        <div class="sentence-original">The musical <em>Cats</em> is a real <u>hit</u>.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="ex1-s3">German word for 'hit' here:</label>
+          <input class="form-input" type="text" id="ex1-s3" placeholder="Your answer in German...">
+        </div>
+      </div>
+
+      <div class="sentence-item">
+        <div class="sentence-num">4</div>
+        <div class="sentence-original">The boy <u>hit</u> the ball very hard.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="ex1-s4">German word for 'hit' here:</label>
+          <input class="form-input" type="text" id="ex1-s4" placeholder="Your answer in German...">
+        </div>
+      </div>
+
+      <div class="sentence-item">
+        <div class="sentence-num">5</div>
+        <div class="sentence-original">There were 143 <u>hits</u> for this search.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="ex1-s5">German word for 'hits' here:</label>
+          <input class="form-input" type="text" id="ex1-s5" placeholder="Your answer in German...">
+        </div>
+      </div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise 2a →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 3 – EXERCISE 2a: UNDERLINED WORDS IN TEXT
+===================================================== -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise 2a</span>
+    <h2 class="ex-title">Work with a dictionary.</h2>
+    <p class="ex-subtitle">Find the right German meaning for the underlined words in the avalanche text. Use an English–German dictionary.</p>
+
+    <div class="tip-box">
+      <strong>💡 Remember</strong>
+      You can also use online dictionaries (e.g. <em>dict.cc</em> or <em>leo.org</em>). But be careful — don't just take the first meaning you find. It's always good to double-check the translation you choose in a German–English dictionary.
+    </div>
+
+    <div class="card">
+      <div class="card-title">Underlined words from the text — find the German meanings</div>
+      <p style="font-size:.83rem;color:var(--muted);margin-bottom:1.25rem;">Think about how the word is used <em>in the text</em> to find the right meaning.</p>
+
+      <div class="sentence-item">
+        <div class="sentence-num">1</div>
+        <div class="sentence-original">"…very lucky to <u>escape</u> with their lives."</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="ex2a-w1">German for 'escape' (as used in the text):</label>
+          <input class="form-input" type="text" id="ex2a-w1" placeholder="German translation...">
+        </div>
+      </div>
+
+      <div class="sentence-item">
+        <div class="sentence-num">2</div>
+        <div class="sentence-original">"The four young men <u>were climbing</u> Ben Nevis…"</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="ex2a-w2">German for 'were climbing':</label>
+          <input class="form-input" type="text" id="ex2a-w2" placeholder="German translation...">
+        </div>
+      </div>
+
+      <div class="sentence-item">
+        <div class="sentence-num">3</div>
+        <div class="sentence-original">"…a huge <u>wave</u> of snow swept them down…"</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="ex2a-w3">German for 'wave' (as used in the text):</label>
+          <input class="form-input" type="text" id="ex2a-w3" placeholder="German translation...">
+        </div>
+      </div>
+
+      <div class="sentence-item">
+        <div class="sentence-num">4</div>
+        <div class="sentence-original">"…a huge wave of snow <u>swept</u> them 300 metres down…"</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="ex2a-w4">German for 'swept' (as used in the text):</label>
+          <input class="form-input" type="text" id="ex2a-w4" placeholder="German translation...">
+        </div>
+      </div>
+
+      <div class="sentence-item">
+        <div class="sentence-num">5</div>
+        <div class="sentence-original">"The rescue helicopter had already started to <u>look for</u> us."</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="ex2a-w5">German for 'look for':</label>
+          <input class="form-input" type="text" id="ex2a-w5" placeholder="German translation...">
+        </div>
+      </div>
+
+      <div class="sentence-item">
+        <div class="sentence-num">6</div>
+        <div class="sentence-original">"Next year, the <u>climbers</u> will climb Mont Blanc."</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="ex2a-w6">German for 'climbers':</label>
+          <input class="form-input" type="text" id="ex2a-w6" placeholder="German translation...">
+        </div>
+      </div>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise 2b →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 4 – EXERCISE 2b: WORDS IN NEW CONTEXTS
+===================================================== -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise 2b</span>
+    <h2 class="ex-title">What do the same words mean here?</h2>
+    <p class="ex-subtitle">The same words from the text appear in new sentences. Find the correct German meaning for how they are used here.</p>
+
+    <div class="tip-box">
+      <strong>💡 Scaffolding tip</strong>
+      The underlined word is the same as in the article — but the meaning may be different! Always look at the <strong>context</strong> (the words around it) to find the right meaning. Check more than one entry in the dictionary if needed.
+    </div>
+
+    <div class="card">
+      <div class="card-title">Find the German meaning in each new context.</div>
+
+      <div class="sentence-item">
+        <div class="sentence-num">1</div>
+        <div class="sentence-original">The man <u>waved</u> wildly from the window.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="ex2b-s1">German for 'waved' here:</label>
+          <input class="form-input" type="text" id="ex2b-s1" placeholder="German translation...">
+        </div>
+      </div>
+
+      <div class="sentence-item">
+        <div class="sentence-num">2</div>
+        <div class="sentence-original">A tornado <u>swept through</u> the town.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="ex2b-s2">German for 'swept through' here:</label>
+          <input class="form-input" type="text" id="ex2b-s2" placeholder="German translation...">
+        </div>
+      </div>
+
+      <div class="sentence-item">
+        <div class="sentence-num">3</div>
+        <div class="sentence-original">Can I have a <u>look</u> at that magazine?</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="ex2b-s3">German for 'look' here:</label>
+          <input class="form-input" type="text" id="ex2b-s3" placeholder="German translation...">
+        </div>
+      </div>
+
+      <div class="sentence-item">
+        <div class="sentence-num">4</div>
+        <div class="sentence-original">The man <u>escaped</u> from prison in the night.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="ex2b-s4">German for 'escaped' here:</label>
+          <input class="form-input" type="text" id="ex2b-s4" placeholder="German translation...">
+        </div>
+      </div>
+
+      <div class="sentence-item">
+        <div class="sentence-num">5</div>
+        <div class="sentence-original">The plane went into a steep <u>climb</u>.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="ex2b-s5">German for 'climb' (noun) here:</label>
+          <input class="form-input" type="text" id="ex2b-s5" placeholder="German translation...">
+        </div>
+      </div>
+    </div>
+
+    <div id="step4-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(4)">Review &amp; Submit →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 5 – REVIEW & SUBMIT
+===================================================== -->
+<section id="step-5" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission did not work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+/* ============================================================
+   CONFIG
+============================================================ */
+var UNIT          = '7c-dictionary-skills';
+var TOTAL_STEPS   = 5;
+var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbyFmK71PseRmH8gBnuD3HLFU9b75eMPhE-LV8hNKSGM2RJ4bbMTIMrcoi3Qo4WG95qxIw/exec';
+var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+
+/* ============================================================
+   STATE
+============================================================ */
+var state = {
+  name:  '',
+  cls:   '',
+  ex1:   {},   /* dictionary entry sentences 1-5 */
+  ex2a:  {},   /* underlined words 1-6 */
+  ex2b:  {}    /* new context sentences 1-5 */
+};
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('step-' + n).classList.add('active');
+  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  restoreStep(n);
+  var meta = document.getElementById('header-meta');
+  if (n === 0) { meta.style.display = 'none'; return; }
+  meta.style.display = 'block';
+  document.getElementById('header-name').textContent = state.name + (state.cls ? ' — ' + state.cls : '');
+  var labels = ['Reading', 'Ex 1', 'Ex 2a', 'Ex 2b'];
+  document.getElementById('header-step').textContent = n < TOTAL_STEPS
+    ? labels[n - 1] + ' of 4'
+    : 'Submit';
+}
+
+function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
+
+function nextStep(n) {
+  if (!validateStep(n)) {
+    var err = document.getElementById('step' + n + '-error');
+    if (err) { err.textContent = 'Please answer all the questions before continuing.'; err.classList.add('show'); }
+    return;
+  }
+  clearErr(n);
+  saveStep(n);
+  if (n === TOTAL_STEPS - 1) { buildSummary(); }
+  showStep(n + 1);
+}
+
+function clearErr(n) {
+  var err = document.getElementById('step' + n + '-error');
+  if (err) err.classList.remove('show');
+}
+
+function startExercises() {
+  var name = g('inp-name'), cls = g('inp-class');
+  var err = document.getElementById('welcome-error');
+  if (!name || !cls) {
+    err.textContent = 'Please enter both your name and your class.';
+    err.classList.add('show');
+    return;
+  }
+  err.classList.remove('show');
+  state.name = name;
+  state.cls  = cls;
+  showStep(1);
+}
+
+/* ============================================================
+   VALIDATION
+============================================================ */
+function validateStep(n) {
+  switch (n) {
+    case 1: return true; /* reading step — no required answers */
+    case 2:
+      return val('ex1-s1') && val('ex1-s2') && val('ex1-s3') && val('ex1-s4') && val('ex1-s5');
+    case 3:
+      return val('ex2a-w1') && val('ex2a-w2') && val('ex2a-w3') && val('ex2a-w4') && val('ex2a-w5') && val('ex2a-w6');
+    case 4:
+      return val('ex2b-s1') && val('ex2b-s2') && val('ex2b-s3') && val('ex2b-s4') && val('ex2b-s5');
+    default: return true;
+  }
+}
+
+/* ============================================================
+   SAVE / RESTORE
+============================================================ */
+function saveStep(n) {
+  switch (n) {
+    case 2:
+      state.ex1.s1 = g('ex1-s1'); state.ex1.s2 = g('ex1-s2'); state.ex1.s3 = g('ex1-s3');
+      state.ex1.s4 = g('ex1-s4'); state.ex1.s5 = g('ex1-s5');
+      break;
+    case 3:
+      state.ex2a.w1 = g('ex2a-w1'); state.ex2a.w2 = g('ex2a-w2'); state.ex2a.w3 = g('ex2a-w3');
+      state.ex2a.w4 = g('ex2a-w4'); state.ex2a.w5 = g('ex2a-w5'); state.ex2a.w6 = g('ex2a-w6');
+      break;
+    case 4:
+      state.ex2b.s1 = g('ex2b-s1'); state.ex2b.s2 = g('ex2b-s2'); state.ex2b.s3 = g('ex2b-s3');
+      state.ex2b.s4 = g('ex2b-s4'); state.ex2b.s5 = g('ex2b-s5');
+      break;
+  }
+}
+
+function restoreStep(n) {
+  switch (n) {
+    case 2:
+      set('ex1-s1', state.ex1.s1); set('ex1-s2', state.ex1.s2); set('ex1-s3', state.ex1.s3);
+      set('ex1-s4', state.ex1.s4); set('ex1-s5', state.ex1.s5);
+      break;
+    case 3:
+      set('ex2a-w1', state.ex2a.w1); set('ex2a-w2', state.ex2a.w2); set('ex2a-w3', state.ex2a.w3);
+      set('ex2a-w4', state.ex2a.w4); set('ex2a-w5', state.ex2a.w5); set('ex2a-w6', state.ex2a.w6);
+      break;
+    case 4:
+      set('ex2b-s1', state.ex2b.s1); set('ex2b-s2', state.ex2b.s2); set('ex2b-s3', state.ex2b.s3);
+      set('ex2b-s4', state.ex2b.s4); set('ex2b-s5', state.ex2b.s5);
+      break;
+  }
+}
+
+/* ============================================================
+   HELPERS
+============================================================ */
+function g(id)       { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+function set(id, v)  { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
+function val(id)     { return g(id).length > 0; }
+function esc(str)    { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
+
+/* ============================================================
+   SUMMARY
+============================================================ */
+function buildSummary() {
+  var rows = [
+    { ex: 'Exercise 1', q: '1. "The avalanche hit the climbers."', a: state.ex1.s1 },
+    { ex: 'Exercise 1', q: '2. "The car hit a tree."', a: state.ex1.s2 },
+    { ex: 'Exercise 1', q: '3. "Cats is a real hit."', a: state.ex1.s3 },
+    { ex: 'Exercise 1', q: '4. "The boy hit the ball."', a: state.ex1.s4 },
+    { ex: 'Exercise 1', q: '5. "143 hits for this search."', a: state.ex1.s5 },
+    { ex: 'Exercise 2a', q: '1. escape', a: state.ex2a.w1 },
+    { ex: 'Exercise 2a', q: '2. were climbing', a: state.ex2a.w2 },
+    { ex: 'Exercise 2a', q: '3. wave', a: state.ex2a.w3 },
+    { ex: 'Exercise 2a', q: '4. swept', a: state.ex2a.w4 },
+    { ex: 'Exercise 2a', q: '5. look for', a: state.ex2a.w5 },
+    { ex: 'Exercise 2a', q: '6. climbers', a: state.ex2a.w6 },
+    { ex: 'Exercise 2b', q: '1. waved (from window)', a: state.ex2b.s1 },
+    { ex: 'Exercise 2b', q: '2. swept through (tornado)', a: state.ex2b.s2 },
+    { ex: 'Exercise 2b', q: '3. look (have a look)', a: state.ex2b.s3 },
+    { ex: 'Exercise 2b', q: '4. escaped (from prison)', a: state.ex2b.s4 },
+    { ex: 'Exercise 2b', q: '5. climb (steep climb)', a: state.ex2b.s5 }
+  ];
+  var html = '<div class="submit-summary">'
+    + '<div class="summary-row"><div class="summary-ex">Student</div>'
+    + '<div class="summary-q">' + esc(state.name) + ' — ' + esc(state.cls) + '</div></div>';
+  rows.forEach(function(r) {
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div>'
+      + '<div class="summary-q">' + esc(r.q) + '</div>'
+      + '<div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+}
+
+/* ============================================================
+   EMAIL FALLBACK
+============================================================ */
+function buildEmailBody() {
+  return 'Exercise: ' + UNIT
+    + '\nStudent: ' + state.name
+    + '\nClass:   ' + state.cls
+    + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
+    + '\n\n--- Exercise 1 (Dictionary Entry) ---'
+    + '\n1. avalanche hit: ' + (state.ex1.s1 || '(none)')
+    + '\n2. car hit: '       + (state.ex1.s2 || '(none)')
+    + '\n3. real hit: '      + (state.ex1.s3 || '(none)')
+    + '\n4. hit the ball: '  + (state.ex1.s4 || '(none)')
+    + '\n5. 143 hits: '      + (state.ex1.s5 || '(none)')
+    + '\n\n--- Exercise 2a (Underlined words) ---'
+    + '\n1. escape: '        + (state.ex2a.w1 || '(none)')
+    + '\n2. were climbing: ' + (state.ex2a.w2 || '(none)')
+    + '\n3. wave: '          + (state.ex2a.w3 || '(none)')
+    + '\n4. swept: '         + (state.ex2a.w4 || '(none)')
+    + '\n5. look for: '      + (state.ex2a.w5 || '(none)')
+    + '\n6. climbers: '      + (state.ex2a.w6 || '(none)')
+    + '\n\n--- Exercise 2b (New contexts) ---'
+    + '\n1. waved: '          + (state.ex2b.s1 || '(none)')
+    + '\n2. swept through: '  + (state.ex2b.s2 || '(none)')
+    + '\n3. look: '           + (state.ex2b.s3 || '(none)')
+    + '\n4. escaped: '        + (state.ex2b.s4 || '(none)')
+    + '\n5. climb: '          + (state.ex2b.s5 || '(none)');
+}
+
+/* ============================================================
+   SUBMIT
+============================================================ */
+function submitToSheet() {
+  buildSummary();
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  var payload = {
+    name: state.name, cls: state.cls, unit: UNIT,
+    ex1: state.ex1, ex2a: state.ex2a, ex2b: state.ex2b
+  };
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+  }).then(function() {
+    btn.style.display = 'none';
+    document.getElementById('submit-success').style.display = 'block';
+    document.getElementById('submit-fallback').style.display = 'block';
+  }).catch(function() {
+    btn.disabled = false;
+    btn.textContent = '🚀 Submit to Teacher';
+    document.getElementById('submit-fallback').style.display = 'block';
+  });
+}
+
+function submitByEmail() {
+  var a = document.createElement('a');
+  a.href = 'mailto:' + TEACHER_EMAIL
+    + '?subject=' + encodeURIComponent(UNIT + ' - ' + state.name + ' - ' + state.cls)
+    + '&body='    + encodeURIComponent(buildEmailBody());
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function() { document.body.removeChild(a); }, 100);
+}
+
+function copyAnswers() {
+  var body = buildEmailBody();
+  navigator.clipboard.writeText(body)
+    .then(function() { alert('Answers copied! Paste them into an email to your teacher.'); })
+    .catch(function() { prompt('Copy this text:', body); });
+}
+
+/* ============================================================
+   INIT
+============================================================ */
+document.addEventListener('DOMContentLoaded', function() {
+  showStep(0);
+});
+</script>
+
+<script>
+/* ── Paste-block ── */
+document.addEventListener('paste', function(e) {
+  var t = e.target;
+  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
+    e.preventDefault();
+    var msg = document.createElement('div');
+    msg.textContent = '✏️ Pasting is not allowed';
+    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    document.body.appendChild(msg);
+    setTimeout(function() { msg.style.opacity='0'; setTimeout(function(){ msg.remove(); },400); },2000);
+  }
+});
+
+/* ── Copy-block ── */
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  var msg = document.createElement('div');
+  msg.textContent = '🚫 Copying is not allowed';
+  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+  document.body.appendChild(msg);
+  setTimeout(function() { msg.style.opacity='0'; setTimeout(function(){ msg.remove(); },400); },2000);
+});
+</script>
+
+</body>
+</html>
