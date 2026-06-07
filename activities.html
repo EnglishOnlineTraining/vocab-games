@@ -25,87 +25,25 @@
   --shadow:0 2px 16px rgba(26,58,92,.1);
 }
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;padding-bottom:4rem}
-
-/* ── Header ── */
 .site-header{background:var(--blue);color:#fff;padding:2rem 1rem 1.75rem;text-align:center}
 .site-header .logo{font-size:.8rem;font-weight:700;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.6rem;display:block}
 .site-header h1{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:800;margin-bottom:.4rem}
 .site-header p{color:rgba(255,255,255,.75);font-size:.95rem}
 .header-divider{height:4px;background:linear-gradient(90deg,var(--gold),var(--teal))}
-
-/* ── Main layout ── */
 .container{max-width:860px;margin:0 auto;padding:2rem 1rem}
-
-/* ── Year block ── */
 .year-block{margin-bottom:2.5rem}
-.year-heading{
-  display:flex;align-items:center;gap:.75rem;
-  font-size:1.25rem;font-weight:800;color:var(--blue);
-  margin-bottom:1.25rem;padding-bottom:.6rem;
-  border-bottom:2px solid var(--border);
-}
-.year-badge{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:2.2rem;height:2.2rem;border-radius:50%;
-  background:var(--blue);color:#fff;font-size:.85rem;font-weight:800;
-  flex-shrink:0;
-}
-
-/* ── School type subgroup ── */
-.school-group{margin-bottom:1.25rem}
-.school-label{
-  font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:.65rem;padding-left:.1rem;
-  display:flex;align-items:center;gap:.5rem;
-}
-.school-label::after{content:'';flex:1;height:1px;background:var(--border)}
-
-/* ── Activity cards grid ── */
-.cards-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-  gap:.85rem;
-}
-
-/* ── Activity card ── */
-.activity-card{
-  background:var(--white);border-radius:var(--radius);
-  box-shadow:var(--shadow);border:1.5px solid var(--border);
-  padding:1.1rem 1.25rem;
-  text-decoration:none;color:inherit;
-  display:flex;flex-direction:column;gap:.35rem;
-  transition:border-color .2s,box-shadow .2s,transform .15s;
-}
-.activity-card:hover{
-  border-color:var(--blue-mid);
-  box-shadow:0 4px 20px rgba(26,110,181,.18);
-  transform:translateY(-2px);
-}
-.card-icon{font-size:1.4rem;line-height:1}
-.card-title{font-size:.97rem;font-weight:700;color:var(--blue)}
-.card-meta{font-size:.78rem;color:var(--muted)}
-.card-tag{
-  display:inline-block;margin-top:.3rem;
-  font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-  padding:.15rem .55rem;border-radius:20px;
-  background:var(--blue-lt);color:var(--blue-mid);
-}
-
-/* ── Empty state ── */
-.empty-slot{
-  border:1.5px dashed var(--border);border-radius:var(--radius);
-  padding:1.1rem 1.25rem;color:var(--muted);
-  font-size:.85rem;display:flex;align-items:center;gap:.5rem;
-  background:transparent;
-}
-
-/* ── Footer ── */
+.year-heading{display:flex;align-items:center;gap:.75rem;font-size:1.25rem;font-weight:800;color:var(--blue);margin-bottom:1.25rem;padding-bottom:.6rem;border-bottom:2px solid var(--border)}
+.year-badge{display:inline-flex;align-items:center;justify-content:center;width:2.2rem;height:2.2rem;border-radius:50%;background:var(--blue);color:#fff;font-size:.85rem;font-weight:800;flex-shrink:0}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.85rem}
+.group-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);border:1.5px solid var(--border);padding:1.5rem;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:.5rem;transition:border-color .2s,box-shadow .2s,transform .15s;align-items:center;text-align:center}
+.group-card:hover{border-color:var(--blue-mid);box-shadow:0 4px 20px rgba(26,110,181,.18);transform:translateY(-2px)}
+.group-icon{font-size:2rem;line-height:1;margin-bottom:.3rem}
+.group-title{font-size:1.05rem;font-weight:700;color:var(--blue)}
+.group-meta{font-size:.8rem;color:var(--muted)}
+.exercise-count{display:inline-block;margin-top:.5rem;font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.25rem .75rem;border-radius:20px;background:var(--blue-lt);color:var(--blue-mid)}
 .site-footer{text-align:center;font-size:.8rem;color:var(--muted);margin-top:3rem}
 .site-footer a{color:var(--blue-mid)}
-
-@media(max-width:480px){
-  .cards-grid{grid-template-columns:1fr}
-}
+@media(max-width:480px){.cards-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -113,272 +51,78 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 <header class="site-header">
   <span class="logo">docemus · EnglishOnline.training</span>
   <h1>📚 Activity Directory</h1>
-  <p>All learning activities, organised by year group and school type</p>
+  <p>Select your year and school type</p>
 </header>
 <div class="header-divider"></div>
 
 <main class="container">
 
-  <!-- ══════════════════════════════════
-       YEAR 7
-  ══════════════════════════════════ -->
   <section class="year-block">
     <h2 class="year-heading">
       <span class="year-badge">7</span>
       Year 7
     </h2>
 
-    <!-- Year 7 · Gymnasium -->
-    <div class="school-group">
-      <div class="school-label">Gymnasium</div>
-      <div class="cards-grid">
+    <div class="cards-grid">
+      <a class="group-card" href="7g-activities.html">
+        <span class="group-icon">🏫</span>
+        <span class="group-title">Gymnasium</span>
+        <span class="group-meta">Grammar, reading &amp; vocabulary</span>
+        <span class="exercise-count">6 Exercises</span>
+      </a>
 
-        <a class="activity-card" href="vocab-games.html">
-          <span class="card-icon">🎮</span>
-          <span class="card-title">Vocabulary Games</span>
-          <span class="card-meta">Matching, fill-in-blank, multiple choice &amp; word scramble</span>
-          <span class="card-tag">Interactive games</span>
-        </a>
-
-        <a class="activity-card" href="7g-tudor-past-perfect.html">
-          <span class="card-icon">🏰</span>
-          <span class="card-title">Tudor England – The Past Perfect</span>
-          <span class="card-meta">Sentence matching, gap-fill &amp; Francis Drake story</span>
-          <span class="card-tag">Grammar &amp; writing</span>
-        </a>
-
-        <a class="activity-card" href="7g-tudor-conditionals.html">
-          <span class="card-icon">👑</span>
-          <span class="card-title">Tudor Conditionals – Type 3</span>
-          <span class="card-meta">Conditional clauses type 3 with English history sentences</span>
-          <span class="card-tag">Grammar &amp; writing</span>
-        </a>
-
-        <a class="activity-card" href="7a-what-was-it-like.html">
-          <span class="card-icon">🏺</span>
-          <span class="card-title">7A – What was it like?</span>
-          <span class="card-meta">Vocabulary, past tenses &amp; descriptive writing about the past</span>
-          <span class="card-tag">Vocabulary &amp; writing</span>
-        </a>
-
-        <a class="activity-card" href="7g-london-landmarks.html">
-          <span class="card-icon">🇬🇧</span>
-          <span class="card-title">London Landmarks</span>
-          <span class="card-meta">Reading, vocabulary, prepositions of place &amp; writing</span>
-          <span class="card-tag">Reading &amp; vocabulary</span>
-        </a>
-
-        <a class="activity-card" href="7g-british-food.html">
-          <span class="card-icon">🍽️</span>
-          <span class="card-title">British Food &amp; Meals</span>
-          <span class="card-meta">Reading about British meals, food vocabulary &amp; comparing eating habits</span>
-          <span class="card-tag">Reading &amp; vocabulary</span>
-        </a>
-
-        <!-- Add more Year 7 Gymnasium activities below this line -->
-
-      </div>
-    </div>
-
-    <!-- Year 7 · Oberschule -->
-    <div class="school-group">
-      <div class="school-label">Oberschule</div>
-      <div class="cards-grid">
-
-        <a class="activity-card" href="7c-holidays.html">
-          <span class="card-icon">🏖️</span>
-          <span class="card-title">7C – Where can we stay?</span>
-          <span class="card-meta">Holidays vocabulary &amp; comprehension</span>
-          <span class="card-tag">Reading &amp; exercises</span>
-        </a>
-
-        <a class="activity-card" href="7c-robert-the-bruce.html">
-          <span class="card-icon">⚔️</span>
-          <span class="card-title">7C – Robert the Bruce</span>
-          <span class="card-meta">Who is it?, comprehension questions &amp; writing task</span>
-          <span class="card-tag">Reading &amp; writing</span>
-        </a>
-
-        <a class="activity-card" href="7c-made-in-scotland.html">
-          <span class="card-icon">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span>
-          <span class="card-title">7C – Made in Scotland</span>
-          <span class="card-meta">Vocabulary, grammar &amp; writing – Unit 3</span>
-          <span class="card-tag">Vocabulary &amp; writing</span>
-        </a>
-
-        <a class="activity-card" href="7c-england-now-and-then.html">
-          <span class="card-icon">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
-          <span class="card-title">7C – England: Now and Then</span>
-          <span class="card-meta">Vocabulary, directions &amp; writing</span>
-          <span class="card-tag">Vocabulary &amp; writing</span>
-        </a>
-
-        <a class="activity-card" href="7c-dictionary-skills.html">
-          <span class="card-icon">📖</span>
-          <span class="card-title">7C – Avalanche! Dictionary Skills</span>
-          <span class="card-meta">Finding German meanings &amp; using words in context</span>
-          <span class="card-tag">Vocabulary &amp; dictionary</span>
-        </a>
-
-        <!-- Add more Year 7 Oberschule activities below this line -->
-
-      </div>
+      <a class="group-card" href="7c-activities.html">
+        <span class="group-icon">🏫</span>
+        <span class="group-title">Oberschule</span>
+        <span class="group-meta">Reading, writing &amp; comprehension</span>
+        <span class="exercise-count">5 Exercises</span>
+      </a>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════
-       YEAR 9
-  ══════════════════════════════════ -->
   <section class="year-block">
     <h2 class="year-heading">
       <span class="year-badge">9</span>
       Year 9
     </h2>
 
-    <!-- Year 9 · Gymnasium -->
-    <div class="school-group">
-      <div class="school-label">Gymnasium</div>
-      <div class="cards-grid">
+    <div class="cards-grid">
+      <a class="group-card" href="9g-activities.html">
+        <span class="group-icon">🏫</span>
+        <span class="group-title">Gymnasium</span>
+        <span class="group-meta">California, revision &amp; literature</span>
+        <span class="exercise-count">4 Exercises</span>
+      </a>
 
-        <a class="activity-card" href="california-exercises.html">
-          <span class="card-icon">🌴</span>
-          <span class="card-title">California Exercises</span>
-          <span class="card-meta">Economy, articles, abstract nouns &amp; collective nouns</span>
-          <span class="card-tag">Exercises</span>
-        </a>
-
-        <a class="activity-card" href="9g-california-hazards.html">
-          <span class="card-icon">🔥</span>
-          <span class="card-title">California – Environment &amp; Hazards</span>
-          <span class="card-meta">Wildfires, modal verbs, cause &amp; effect writing</span>
-          <span class="card-tag">Reading &amp; writing</span>
-        </a>
-
-        <a class="activity-card" href="9g-summer-revision.html">
-          <span class="card-icon">☀️</span>
-          <span class="card-title">Summer Revision – Class Test</span>
-          <span class="card-meta">Articles, relative clauses, vocabulary, future tenses &amp; reading</span>
-          <span class="card-tag">Revision &amp; self-check</span>
-        </a>
-
-        <a class="activity-card" href="9g-famous-hollywood.html">
-          <span class="card-icon">📸</span>
-          <span class="card-title">Famous &amp; Hollywood</span>
-          <span class="card-meta">Todd Strasser&apos;s &ldquo;Famous&rdquo;, relative pronouns &amp; future tenses</span>
-          <span class="card-tag">Reading &amp; grammar</span>
-        </a>
-
-        <!-- Add more Year 9 Gymnasium activities below this line -->
-
-      </div>
-    </div>
-
-    <!-- Year 9 · Oberschule -->
-    <div class="school-group">
-      <div class="school-label">Oberschule</div>
-      <div class="cards-grid">
-        <a class="activity-card" href="sport-south-africa.html">
-          <span class="card-icon">🏉</span>
-          <span class="card-title">9C – Sport in South Africa</span>
-          <span class="card-meta">Pre-reading, true/false/NG, multiple choice &amp; vocabulary</span>
-          <span class="card-tag">Reading &amp; exercises</span>
-        </a>
-
-        <a class="activity-card" href="9c-south-africa-revision.html">
-          <span class="card-icon">🇿🇦</span>
-          <span class="card-title">9C – South Africa Revision</span>
-          <span class="card-meta">Revision exercises on South Africa</span>
-          <span class="card-tag">Revision</span>
-        </a>
-      </div>
+      <a class="group-card" href="9c-activities.html">
+        <span class="group-icon">🏫</span>
+        <span class="group-title">Oberschule</span>
+        <span class="group-meta">South Africa reading &amp; revision</span>
+        <span class="exercise-count">2 Exercises</span>
+      </a>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════
-       UNIVERSITY ENGLISH
-  ══════════════════════════════════ -->
   <section class="year-block">
     <h2 class="year-heading">
       <span class="year-badge">🎓</span>
-      University English
+      Professional English
     </h2>
 
-    <!-- University · Building Relationships -->
-    <div class="school-group">
-      <div class="school-label">Building Relationships</div>
-      <div class="cards-grid">
+    <div class="cards-grid">
+      <a class="group-card" href="uni-activities.html">
+        <span class="group-icon">🎓</span>
+        <span class="group-title">University English</span>
+        <span class="group-meta">Business relationships &amp; vocabulary</span>
+        <span class="exercise-count">4 Exercises</span>
+      </a>
 
-        <a class="activity-card" href="uni-relationships-vocab.html">
-          <span class="card-icon">🤝</span>
-          <span class="card-title">Relationships – Vocabulary</span>
-          <span class="card-meta">Positive / negative verbs, choose the verb, match halves &amp; discussion</span>
-          <span class="card-tag">Vocabulary</span>
-        </a>
-
-        <a class="activity-card" href="uni-relationships-reading.html">
-          <span class="card-icon">🌏</span>
-          <span class="card-title">Relationships – Reading</span>
-          <span class="card-meta">Guanxi article: comprehension, key words &amp; discussion</span>
-          <span class="card-tag">Reading &amp; comprehension</span>
-        </a>
-
-        <a class="activity-card" href="uni-relationships-language.html">
-          <span class="card-icon">🔤</span>
-          <span class="card-title">Relationships – Multi-word Verbs</span>
-          <span class="card-meta">Order a conversation, match meanings &amp; rephrase sentences</span>
-          <span class="card-tag">Language &amp; grammar</span>
-        </a>
-
-        <a class="activity-card" href="uni-building-relationships.html">
-          <span class="card-icon">🤝</span>
-          <span class="card-title">Building Business Relationships</span>
-          <span class="card-meta">Reading order, true/false, multi-word verbs, linkers &amp; writing — with self-check</span>
-          <span class="card-tag">Reading &amp; writing</span>
-        </a>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════
-       BUSINESS ENGLISH
-  ══════════════════════════════════ -->
-  <section class="year-block">
-    <h2 class="year-heading">
-      <span class="year-badge">💼</span>
-      Business English
-    </h2>
-
-    <!-- Business · Eurofiber -->
-    <div class="school-group">
-      <div class="school-label">Eurofiber</div>
-      <div class="cards-grid">
-
-        <a class="activity-card" href="eurofiber-online.html">
-          <span class="card-icon">🐘</span>
-          <span class="card-title">Eurofiber Online</span>
-          <span class="card-meta">Company changes, meeting types &amp; vocabulary, tenses for schedules</span>
-          <span class="card-tag">Vocabulary &amp; grammar</span>
-        </a>
-
-        <!-- Add more Eurofiber activities below this line -->
-
-      </div>
-    </div>
-
-    <!-- Business · Hub -->
-    <div class="school-group">
-      <div class="school-label">All business tasks</div>
-      <div class="cards-grid">
-
-        <a class="activity-card" href="business.html">
-          <span class="card-icon">💼</span>
-          <span class="card-title">Business English Hub</span>
-          <span class="card-meta">All company client tasks in one place</span>
-          <span class="card-tag">Hub page</span>
-        </a>
-
-      </div>
+      <a class="group-card" href="business-activities.html">
+        <span class="group-icon">💼</span>
+        <span class="group-title">Business English</span>
+        <span class="group-meta">Company tasks &amp; professional skills</span>
+        <span class="exercise-count">2 Tasks</span>
+      </a>
     </div>
   </section>
 
