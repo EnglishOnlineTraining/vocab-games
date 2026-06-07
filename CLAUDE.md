@@ -46,6 +46,12 @@ https://script.google.com/macros/s/AKfycbw2eqOCB6XKREIOXuqn2fCL067CdMm20MmiTFMt9
 ```
 Used by: `california-exercises.html`, `9g-california-hazards.html`, `9g-famous-hollywood.html`, `9c-south-africa-revision.html`, `sport-south-africa.html`
 
+### Business English & University Sheet URL
+```
+https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec
+```
+Used by: all Business English and University exercises. This sheet runs the same universal Apps Script, so new units auto-create their own tabs here with no redeploy.
+
 ### Unit identifiers → Sheet tabs
 
 | unit value | Sheet tab |
@@ -58,7 +64,7 @@ Used by: `california-exercises.html`, `9g-california-hazards.html`, `9g-famous-h
 | `9c-south-africa-revision` | South Africa Revision |
 | `sport-south-africa` | Sport in South Africa |
 
-When adding a new exercise, add a new entry to the Apps Script and redeploy as a new version (same URL).
+The Apps Script uses a universal handler that auto-creates a cleanly-named tab for any new `unit` and auto-adds answer columns, so **adding a new exercise no longer requires editing or redeploying the Apps Script**. Only edit the script if a new exercise needs a bespoke column layout (like `california-exercises` or `california-hazards`).
 
 ---
 
@@ -113,7 +119,7 @@ Both blocks go in a separate `<script>` tag just before `</body>`. They are alre
 2. **Fill in every `TODO`** comment in the file
 3. **Set `UNIT`** to a unique kebab-case string (e.g. `'9g-new-topic'`)
 4. **Set `SHEET_URL`** to the correct year's URL (see above)
-5. **Update the Apps Script** for that year's sheet — add an `else if` for the new unit and a write function, then redeploy as a new version
+5. **Apps Script — usually nothing to do.** The universal handler auto-creates a tab from the `unit` and auto-adds columns, so submissions route with no redeploy. Only touch the script if this exercise needs a bespoke column layout; then add a custom block and redeploy as a new version. Optionally add a friendly fixed tab name to the `TAB_NAMES` map.
 6. **Add a card in `activities.html`** under the correct year/school section
 7. **Commit and push to `main`** — GitHub Pages deploys automatically
 
@@ -151,7 +157,9 @@ Both blocks go in a separate `<script>` tag just before `</body>`. They are alre
 
 ## Apps Script — full current version
 
-Paste this into **both** year scripts (Year 7 sheet and Year 9 sheet) and redeploy as a new version each time the unit list changes:
+Paste this into **both** year scripts (Year 7 sheet and Year 9 sheet). The universal handler auto-creates a cleanly-named tab for any new `unit` and auto-adds answer columns, so **you only redeploy when adding a new bespoke column layout** — not for ordinary new exercises. The canonical copy of this script lives in `apps-script.gs` in the repo root.
+
+To install/update: open each sheet → Extensions → Apps Script → paste → Deploy → Manage deployments → edit → **New version** (keeps the same URL).
 
 ```javascript
 function doPost(e) {
@@ -179,38 +187,72 @@ function flatten(obj) {
   return Object.keys(obj).map(function(k) { return k + ': ' + (obj[k] || '(blank)'); }).join('\n');
 }
 
+// Turn a kebab-case unit like "9g-famous-hollywood" into a tidy tab title.
+function titleFromUnit(unit) {
+  var t = String(unit || 'unknown')
+    .replace(/[-_]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+  return t.substring(0, 95);
+}
+
+// Known units that should get a fixed, friendly tab name.
+var TAB_NAMES = {
+  'california-exercises':     'California Exercises',
+  'california-hazards':       'California Hazards',
+  '9g-famous-hollywood':      'Famous & Hollywood',
+  'robert-the-bruce-7c':      'Robert the Bruce',
+  'tudor-past-perfect':       'Tudor Past Perfect',
+  '9c-south-africa-revision': 'South Africa Revision',
+  'sport-south-africa':       'Sport in South Africa'
+};
+
 function routeSubmission(ss, data) {
   var unit = data.unit || 'unknown';
-  var tabName;
+  var tabName = TAB_NAMES[unit] || titleFromUnit(unit);
 
-  if      (unit === 'california-exercises')      { tabName = 'California Exercises'; }
-  else if (unit === 'california-hazards')        { tabName = 'California Hazards'; }
-  else if (unit === '9g-famous-hollywood')       { tabName = 'Famous & Hollywood'; }
-  else if (unit === 'robert-the-bruce-7c')       { tabName = 'Robert the Bruce'; }
-  else if (unit === 'tudor-past-perfect')        { tabName = 'Tudor Past Perfect'; }
-  else if (unit === '9c-south-africa-revision')  { tabName = 'South Africa Revision'; }
-  else if (unit === 'sport-south-africa')        { tabName = 'Sport in South Africa'; }
-  else                                           { tabName = 'Other – ' + unit; }
-
+  // ----- Custom layouts (bespoke columns) -----
   if (unit === 'california-exercises') {
     var sheet = getSheet(ss, tabName, ['Timestamp','Name','Class','Ex 12','Ex 13','Ex 14','Ex 15','Ex 18','Ex 19']);
     sheet.appendRow([new Date(), data.name||'', data.cls||'',
       JSON.stringify(data.ex12||''), JSON.stringify(data.ex13||''),
       JSON.stringify(data.ex14||''), JSON.stringify(data.ex15||''),
       JSON.stringify(data.ex18||''), JSON.stringify(data.ex19||'')]);
-  } else if (unit === 'california-hazards') {
+    return;
+  }
+
+  if (unit === 'california-hazards') {
     var exA=data.exA||{}, exB=data.exB||{}, exC=data.exC||{}, exD=data.exD||{};
     var gaps=[1,2,3,4,5,6,7,8].map(function(i){return 'Gap '+i+': '+(exB['g'+i]||'(blank)');}).join('\n');
     var trs=[1,2,3,4,5,6].map(function(i){return i+'. '+(exC['t'+i]||'(blank)');}).join('\n');
     var sheet = getSheet(ss, tabName, ['Timestamp','Name','Class','Ex A – Problems','Ex A – Connection','Ex B – Modal gaps','Ex C – Transforms','Ex D – Paragraph','Ex D – Opinion']);
     sheet.appendRow([new Date(), data.name||'', data.cls||'', exA.a||'', exA.b||'', gaps, trs, exD.para||'', exD.opinion||'']);
-  } else {
-    var keys = Object.keys(data).filter(function(k){ return k!=='name'&&k!=='cls'&&k!=='unit'; });
-    var headers = ['Timestamp','Name','Class'].concat(keys);
-    var sheet = getSheet(ss, tabName, headers);
-    var row = [new Date(), data.name||'', data.cls||''];
-    keys.forEach(function(k){ row.push(flatten(data[k])); });
-    sheet.appendRow(row);
+    return;
   }
+
+  // ----- Universal handler: works for every other unit, no redeploy needed -----
+  var keys = Object.keys(data).filter(function(k){ return k!=='name' && k!=='cls' && k!=='unit'; });
+  var headers = ['Timestamp','Name','Class'].concat(keys);
+
+  var sheet = ss.getSheetByName(tabName);
+  if (!sheet) {
+    sheet = ss.insertSheet(tabName);
+    sheet.appendRow(headers);
+  } else {
+    // If this exercise introduces new answer keys, append them to the header row.
+    var existing = sheet.getRange(1, 1, 1, Math.max(sheet.getLastColumn(), 1)).getValues()[0];
+    var added = false;
+    keys.forEach(function(k){
+      if (existing.indexOf(k) === -1) { existing.push(k); added = true; }
+    });
+    if (added) sheet.getRange(1, 1, 1, existing.length).setValues([existing]);
+    headers = existing;
+  }
+
+  var rowMap = { 'Timestamp': new Date(), 'Name': data.name||'', 'Class': data.cls||'' };
+  keys.forEach(function(k){ rowMap[k] = flatten(data[k]); });
+  var row = headers.map(function(h){ return (h in rowMap) ? rowMap[h] : ''; });
+  sheet.appendRow(row);
 }
 ```
