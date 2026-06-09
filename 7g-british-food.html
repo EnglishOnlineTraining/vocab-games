@@ -699,37 +699,30 @@ function checkExB() {
    SUBMIT TO GOOGLE SHEET
 ============================================================ */
 function submitToSheet() {
+  saveStepAnswers(Math.max(currentStep, 1));
   buildSummary();
+
   var btn = document.getElementById('submit-btn');
   btn.disabled = true;
-  btn.textContent = 'Sending...';
-
-  var answersList = [];
-  Object.keys(state).forEach(function(key) {
-    if (key === 'name' || key === 'cls') return;
-    var value = state[key];
-    if (typeof value === 'object' && value !== null) {
-      Object.keys(value).forEach(function(k) {
-        answersList.push({key: key + '-' + k, value: value[k] || ''});
-      });
-    } else {
-      answersList.push({key: key, value: value || ''});
-    }
-  });
+  btn.textContent = 'Sending…';
 
   var payload = {
     name: state.name,
     cls:  state.cls,
-    unit: UNIT,
-    answers: JSON.stringify(answersList)
+    unit: UNIT
   };
+
+  Object.keys(state).forEach(function(key) {
+    if (key !== 'name' && key !== 'cls') {
+      payload[key] = state[key];
+    }
+  });
 
   fetch(SHEET_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
-  }).then(function(r) { return r.json(); })
-  .then(function() {
+  }).then(function() {
     btn.style.display = 'none';
     document.getElementById('submit-success').style.display = 'block';
     document.getElementById('submit-fallback').style.display = 'block';
