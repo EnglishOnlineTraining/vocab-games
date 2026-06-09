@@ -568,7 +568,7 @@
 ============================================================ */
 var UNIT          = '7c-dictionary-skills';
 var TOTAL_STEPS   = 5;
-var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbyFmK71PseRmH8gBnuD3HLFU9b75eMPhE-LV8hNKSGM2RJ4bbMTIMrcoi3Qo4WG95qxIw/exec';
+var SHEET_URL     = 'https://hook.eu1.make.com/1gx46wea33yguetah95oy4j8asbyafqm';
 var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
 
 /* ============================================================
@@ -772,9 +772,8 @@ function submitToSheet() {
   };
   fetch(SHEET_URL, {
     method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
   }).then(function() {
     btn.style.display = 'none';
     document.getElementById('submit-success').style.display = 'block';
