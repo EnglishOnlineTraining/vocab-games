@@ -575,7 +575,14 @@ function submitToSheet() {
 
   Object.keys(state).forEach(function(key) {
     if (key !== 'name' && key !== 'cls') {
-      payload[key] = state[key];
+      var val = state[key];
+      if (typeof val === 'object' && val !== null) {
+        Object.keys(val).forEach(function(k) {
+          payload[key + '-' + k] = val[k] || '';
+        });
+      } else {
+        payload[key] = val || '';
+      }
     }
   });
 
