@@ -870,13 +870,15 @@ function submitToSheet() {
   btn.textContent = 'Sending...';
 
   var answersList = [];
-  Object.keys(state).forEach(function(section) {
-    if (section === 'name' || section === 'cls') return;
-    var sectionData = state[section];
-    if (typeof sectionData === 'object' && sectionData !== null) {
-      Object.keys(sectionData).forEach(function(k) {
-        answersList.push({key: section + '-' + k, value: sectionData[k] || ''});
+  Object.keys(state).forEach(function(key) {
+    if (key === 'name' || key === 'cls') return;
+    var value = state[key];
+    if (typeof value === 'object' && value !== null) {
+      Object.keys(value).forEach(function(k) {
+        answersList.push({key: key + '-' + k, value: value[k] || ''});
       });
+    } else {
+      answersList.push({key: key, value: value || ''});
     }
   });
 
