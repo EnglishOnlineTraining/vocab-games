@@ -272,6 +272,7 @@ body.exam-mode textarea{-webkit-user-select:text;user-select:text}
 /* ================================================================
    CONFIG
 ================================================================ */
+const UNIT        = 'uni-writing-task';
 const SHEET_URL   = 'https://script.google.com/macros/s/AKfycbwwbV6ufw7QX8meNGyOwiVdkqNpQ8yckdXmsbFqysJwWqAfCWaR_eC9RH41LaqmYyZOeA/exec';
 const EMAIL       = 'sptrezise@proton.me';
 const EXAM_MINS   = 60;
@@ -593,7 +594,8 @@ function autoSubmit(){if(document.getElementById('s-exam').classList.contains('a
    SEND TO SHEET
 ================================================================ */
 function send(data){
-  fetch(SHEET_URL,{method:'POST',mode:'no-cors',body:JSON.stringify({tab:'Writing Task',data})});
+  const payload={unit:UNIT,name:data.name,cls:data.group,...data};
+  fetch(SHEET_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(payload)});
 }
 
 /* ================================================================
