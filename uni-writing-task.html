@@ -579,13 +579,13 @@ function doSubmit(){
 
   clearInterval(timerID);
   document.getElementById('timer-wrap').style.display='none';
-  show('s-done');
 
   const m=Math.floor(el/60),s=el%60;
   document.getElementById('done-meta').textContent=
     `Scenario ${scenario.id} · ${payload.word_count} words · ${m}m ${s}s · Session: ${sid}`;
 
   send(payload);
+  setTimeout(function(){show('s-done');}, 500);
 }
 
 function autoSubmit(){if(document.getElementById('s-exam').classList.contains('active'))doSubmit()}
