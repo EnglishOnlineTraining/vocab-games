@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ireland &ndash; Gerunds &amp; Infinitives | englishonline.training</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:    #1a3a5c;
+      --gold:    #c9a227;
+      --gold-lt: #f5e6b0;
+      --teal:    #2b7a78;
+      --red:     #c0392b;
+      --green:   #27ae60;
+      --bg:      #f7f9fc;
+      --card:    #ffffff;
+      --text:    #1d2b3a;
+      --muted:   #6b7a8d;
+      --border:  #dce3ec;
+      --radius:  12px;
+      --shadow:  0 2px 16px rgba(26,58,92,.1);
+      --font:    'Segoe UI', system-ui, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
+
+    .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
+    .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
+    .header-meta { font-size: .78rem; text-align: right; opacity: .9; }
+    .header-meta strong { display: block; color: var(--gold); }
+    .progress-track { height: 6px; background: rgba(255,255,255,.2); }
+    .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
+
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+
+    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
+    .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+    .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
+
+    .reading-text { font-size: .93rem; line-height: 1.85; color: var(--text); }
+    .reading-text p { margin-bottom: .85rem; }
+    .reading-text p:last-child { margin-bottom: 0; }
+
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+    .form-input, .form-textarea {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+      padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
+      color: var(--text); background: #fff; transition: border-color .2s;
+    }
+    .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--blue); }
+    .form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+    .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+
+    .gap-text { font-size: .93rem; line-height: 2.6; color: var(--text); }
+    .gap-select {
+      display: inline-block; border: 1.5px solid var(--gold); border-radius: 6px;
+      padding: .18rem .45rem; font-family: var(--font); font-size: .82rem;
+      background: var(--gold-lt); color: var(--blue); cursor: pointer;
+      vertical-align: middle; margin: 0 2px; max-width: 200px;
+    }
+    .gap-select:focus { outline: none; border-color: var(--blue); }
+    .gap-correct { background: #d4edda; border-color: var(--green); color: #155724; }
+    .gap-wrong   { background: #fde8e8; border-color: var(--red);   color: #721c24; }
+    .gap-num { font-size: .68rem; color: var(--muted); vertical-align: super; margin-right: 1px; }
+
+    .word-bank { background: var(--gold-lt); border: 1.5px solid var(--gold); border-radius: 8px; padding: .75rem 1rem; margin-bottom: 1.25rem; }
+    .word-bank strong { display: block; color: var(--blue); margin-bottom: .5rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; }
+    .word-bank span { display: inline-block; margin: .2rem .3rem; background: var(--blue); color: #fff; border-radius: 4px; padding: .18rem .55rem; font-size: .8rem; font-weight: 600; }
+
+    .transform-item { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: .85rem; background: #fafbfc; }
+    .transform-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 800; flex-shrink: 0; margin-bottom: .5rem; }
+    .transform-original { font-size: .9rem; color: var(--text); font-style: italic; margin-bottom: .65rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); }
+    .transform-hint { font-size: .75rem; color: var(--muted); margin-top: .3rem; }
+
+    .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
+    .feedback.show { display: block; }
+    .feedback.ok   { background: #d4edda; color: #155724; }
+    .feedback.warn { background: #fff3cd; color: #856404; }
+    .feedback.err  { background: #fde8e8; color: #721c24; }
+
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
+    .btn-primary:hover { background: #15304f; }
+    .btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
+    .btn-gold:hover { background: #b8911f; }
+    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+    .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+    .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
+    .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
+    .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+    .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+    .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; }
+    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
+    .ov-card.locked { opacity: .5; }
+    .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+
+    .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
+    .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
+    .summary-a  { color: var(--text); white-space: pre-wrap; }
+
+    .mc-group { margin-bottom: 1rem; }
+    .mc-question { font-size: .9rem; font-weight: 600; color: var(--blue); margin-bottom: .5rem; }
+    .mc-option { display: block; padding: .5rem .75rem; margin-bottom: .35rem; border: 1.5px solid var(--border); border-radius: 8px; cursor: pointer; font-size: .88rem; transition: border-color .2s, background .2s; }
+    .mc-option:hover { border-color: var(--gold); background: var(--gold-lt); }
+    .mc-option input { margin-right: .5rem; }
+    .mc-option.selected { border-color: var(--blue); background: #e8edf3; }
+
+    @media (max-width: 480px) {
+      .ex-title { font-size: 1.25rem; }
+      .btn { padding: .65rem 1.1rem; }
+      .welcome-title { font-size: 1.4rem; }
+      .gap-select { max-width: 150px; font-size: .75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">&larr; Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Exercise A of 4</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+
+
+<!-- ═══════════════════════════════════════════
+     STEP 0 – WELCOME
+═══════════════════════════════════════════ -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">&#x1F1EE;&#x1F1EA;</div>
+      <h1 class="welcome-title">Ireland &ndash; Gerunds &amp; Infinitives</h1>
+      <p class="welcome-sub">Read about Ireland&rsquo;s culture and history, then practise using gerunds and infinitives correctly.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">&#x1F4D6;</div><strong>Ex A &ndash; Reading</strong>Read about Ireland and answer comprehension questions</div>
+      <div class="ov-card locked"><div class="ov-icon">&#x1F4DD;</div><strong>Ex B &ndash; Gap-fill</strong>Choose the correct gerund or infinitive form</div>
+      <div class="ov-card locked"><div class="ov-icon">&#x1F50D;</div><strong>Ex C &ndash; Sentence Completion</strong>Complete sentences using gerunds or infinitives</div>
+      <div class="ov-card locked"><div class="ov-icon">&#x270D;&#xFE0F;</div><strong>Ex D &ndash; Writing</strong>Write about what you would enjoy doing in Ireland</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna M&uuml;ller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. 9g" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     STEP 1 – EXERCISE A: Reading Comprehension
+═══════════════════════════════════════════ -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">Reading &ndash; The Emerald Isle</h2>
+    <p class="ex-subtitle">Read the text carefully, then answer the questions below.</p>
+
+    <div class="card">
+      <div class="card-title">Text</div>
+      <div class="reading-text">
+        <p>Ireland is an island on the western edge of Europe. It is divided into two parts: the Republic of Ireland, which is an independent country, and Northern Ireland, which belongs to the United Kingdom. People often call Ireland &ldquo;the Emerald Isle&rdquo; because of its bright green countryside, shaped by mild temperatures and frequent rain.</p>
+
+        <p>Ireland has two official languages: English and Irish (also called Gaeilge). Although most people speak English in their daily lives, the Irish language is taught in every school, and there are areas in the west of the country, known as the Gaeltacht, where Irish is still the main language of the community.</p>
+
+        <p>The Irish are famous for their love of storytelling. For centuries, people gathered around fires to listen to tales of heroes, fairies and ancient kings. This tradition has produced some of the world&rsquo;s greatest writers, including Oscar Wilde, James Joyce and Samuel Beckett, all of whom won international recognition for their work.</p>
+
+        <p>Music is another important part of Irish culture. Traditional Irish music uses instruments such as the fiddle, the tin whistle and the bodhr&aacute;n, a type of frame drum. Many young people in Ireland enjoy learning to play these instruments, and traditional music sessions in pubs are still a popular way to spend an evening.</p>
+
+        <p>Tourism plays a major role in Ireland&rsquo;s economy. Visitors come from all over the world to see the dramatic Cliffs of Moher, to explore the lively streets of Dublin, and to experience the wild beauty of the Atlantic coast. Many tourists also hope to visit ancient sites such as Newgrange, a 5,000-year-old passage tomb that is older than the Egyptian pyramids.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Comprehension Questions</div>
+
+      <div class="mc-group" id="mcA1">
+        <div class="mc-question">1. Why is Ireland called &ldquo;the Emerald Isle&rdquo;?</div>
+        <label class="mc-option"><input type="radio" name="mcA1" value="a"> Because it has many emerald mines</label>
+        <label class="mc-option"><input type="radio" name="mcA1" value="b"> Because of its bright green countryside</label>
+        <label class="mc-option"><input type="radio" name="mcA1" value="c"> Because the national flag is green</label>
+      </div>
+
+      <div class="mc-group" id="mcA2">
+        <div class="mc-question">2. What is the Gaeltacht?</div>
+        <label class="mc-option"><input type="radio" name="mcA2" value="a"> A type of traditional Irish music</label>
+        <label class="mc-option"><input type="radio" name="mcA2" value="b"> Areas where Irish is still the main language</label>
+        <label class="mc-option"><input type="radio" name="mcA2" value="c"> The capital city of Ireland</label>
+      </div>
+
+      <div class="mc-group" id="mcA3">
+        <div class="mc-question">3. Which of the following is NOT mentioned as a famous Irish writer?</div>
+        <label class="mc-option"><input type="radio" name="mcA3" value="a"> Oscar Wilde</label>
+        <label class="mc-option"><input type="radio" name="mcA3" value="b"> W.B. Yeats</label>
+        <label class="mc-option"><input type="radio" name="mcA3" value="c"> Samuel Beckett</label>
+      </div>
+
+      <div class="mc-group" id="mcA4">
+        <div class="mc-question">4. What is a bodhr&aacute;n?</div>
+        <label class="mc-option"><input type="radio" name="mcA4" value="a"> A stringed instrument like a guitar</label>
+        <label class="mc-option"><input type="radio" name="mcA4" value="b"> A type of frame drum</label>
+        <label class="mc-option"><input type="radio" name="mcA4" value="c"> A wind instrument similar to a flute</label>
+      </div>
+
+      <div class="mc-group" id="mcA5">
+        <div class="mc-question">5. What is special about Newgrange?</div>
+        <label class="mc-option"><input type="radio" name="mcA5" value="a"> It is the tallest cliff in Europe.</label>
+        <label class="mc-option"><input type="radio" name="mcA5" value="b"> It is a 5,000-year-old passage tomb, older than the pyramids.</label>
+        <label class="mc-option"><input type="radio" name="mcA5" value="c"> It is the oldest pub in the world.</label>
+      </div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div id="step1-fb" class="feedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">&larr; Back</button>
+      <button class="btn btn-gold btn-sm" onclick="checkExA()">&#10003; Check</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     STEP 2 – EXERCISE B: Gerund / Infinitive Gap-fill
+═══════════════════════════════════════════ -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B</span>
+    <h2 class="ex-title">Gerunds &amp; Infinitives &ndash; Gap-fill</h2>
+    <p class="ex-subtitle">Complete each sentence by choosing the correct gerund or infinitive form. All sentences are about Ireland.</p>
+
+    <div class="card">
+      <div class="card-title">Grammar Reminder</div>
+      <div class="reading-text">
+        <p>A <strong>gerund</strong> (verb + <em>-ing</em>) is used after certain verbs like <em>enjoy, avoid, mind, finish, suggest, keep, imagine, practise</em>.</p>
+        <p>An <strong>infinitive</strong> (<em>to</em> + verb) is used after verbs like <em>want, decide, hope, plan, agree, refuse, learn, promise</em>.</p>
+        <p>Example: <em>Many tourists <strong>enjoy visiting</strong> the Cliffs of Moher.</em> &nbsp;|&nbsp; <em>We <strong>decided to travel</strong> to Dublin.</em></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Fill in the gaps</div>
+      <div class="gap-text">
+        <p><span class="gap-num">1</span> Many young Irish people enjoy
+          <select class="gap-select" id="exB-g1">
+            <option value="">— choose —</option>
+            <option value="playing">playing</option>
+            <option value="to play">to play</option>
+            <option value="play">play</option>
+          </select>
+          traditional instruments.</p>
+
+        <p><span class="gap-num">2</span> Tourists often decide
+          <select class="gap-select" id="exB-g2">
+            <option value="">— choose —</option>
+            <option value="visiting">visiting</option>
+            <option value="to visit">to visit</option>
+            <option value="visit">visit</option>
+          </select>
+          the Cliffs of Moher.</p>
+
+        <p><span class="gap-num">3</span> Irish children learn
+          <select class="gap-select" id="exB-g3">
+            <option value="">— choose —</option>
+            <option value="speaking">speaking</option>
+            <option value="to speak">to speak</option>
+            <option value="speak">speak</option>
+          </select>
+          the Irish language at school.</p>
+
+        <p><span class="gap-num">4</span> Would you mind
+          <select class="gap-select" id="exB-g4">
+            <option value="">— choose —</option>
+            <option value="telling">telling</option>
+            <option value="to tell">to tell</option>
+            <option value="tell">tell</option>
+          </select>
+          me more about Irish history?</p>
+
+        <p><span class="gap-num">5</span> The guide suggested
+          <select class="gap-select" id="exB-g5">
+            <option value="">— choose —</option>
+            <option value="walking">walking</option>
+            <option value="to walk">to walk</option>
+            <option value="walk">walk</option>
+          </select>
+          along the coast for the best views.</p>
+
+        <p><span class="gap-num">6</span> We hope
+          <select class="gap-select" id="exB-g6">
+            <option value="">— choose —</option>
+            <option value="seeing">seeing</option>
+            <option value="to see">to see</option>
+            <option value="see">see</option>
+          </select>
+          a traditional music session in a pub.</p>
+
+        <p><span class="gap-num">7</span> My family is planning
+          <select class="gap-select" id="exB-g7">
+            <option value="">— choose —</option>
+            <option value="travelling">travelling</option>
+            <option value="to travel">to travel</option>
+            <option value="travel">travel</option>
+          </select>
+          to Ireland next summer.</p>
+
+        <p><span class="gap-num">8</span> You should avoid
+          <select class="gap-select" id="exB-g8">
+            <option value="">— choose —</option>
+            <option value="driving">driving</option>
+            <option value="to drive">to drive</option>
+            <option value="drive">drive</option>
+          </select>
+          on narrow country roads at night.</p>
+
+        <p><span class="gap-num">9</span> She refused
+          <select class="gap-select" id="exB-g9">
+            <option value="">— choose —</option>
+            <option value="eating">eating</option>
+            <option value="to eat">to eat</option>
+            <option value="eat">eat</option>
+          </select>
+          the traditional Irish stew because she is vegetarian.</p>
+
+        <p><span class="gap-num">10</span> I can&rsquo;t imagine
+          <select class="gap-select" id="exB-g10">
+            <option value="">— choose —</option>
+            <option value="living">living</option>
+            <option value="to live">to live</option>
+            <option value="live">live</option>
+          </select>
+          in Ireland without an umbrella!</p>
+      </div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div id="step2-fb" class="feedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">&larr; Back</button>
+      <button class="btn btn-gold btn-sm" onclick="checkExB()">&#10003; Check</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     STEP 3 – EXERCISE C: Sentence Completion
+═══════════════════════════════════════════ -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise C</span>
+    <h2 class="ex-title">Sentence Completion &ndash; Gerund or Infinitive?</h2>
+    <p class="ex-subtitle">Complete each sentence with the correct form of the verb in brackets: gerund (<em>-ing</em>) or infinitive (<em>to</em> + verb).</p>
+
+    <div class="card">
+      <div class="card-title">Example</div>
+      <div class="reading-text">
+        <p><em>I want __________ (explore) Dublin.</em> &rarr; <strong>I want to explore Dublin.</strong></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="transform-item">
+        <div class="transform-num">1</div>
+        <div class="transform-original">She finished __________ (read) a book about Irish legends.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <input class="form-input" type="text" id="exC-t1" placeholder="Type the correct form...">
+          <div class="transform-hint">Hint: <em>finish</em> + ?</div>
+        </div>
+      </div>
+
+      <div class="transform-item">
+        <div class="transform-num">2</div>
+        <div class="transform-original">They agreed __________ (meet) at the pub at 8 o&rsquo;clock.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <input class="form-input" type="text" id="exC-t2" placeholder="Type the correct form...">
+          <div class="transform-hint">Hint: <em>agree</em> + ?</div>
+        </div>
+      </div>
+
+      <div class="transform-item">
+        <div class="transform-num">3</div>
+        <div class="transform-original">He keeps __________ (talk) about his trip to Galway.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <input class="form-input" type="text" id="exC-t3" placeholder="Type the correct form...">
+          <div class="transform-hint">Hint: <em>keep</em> + ?</div>
+        </div>
+      </div>
+
+      <div class="transform-item">
+        <div class="transform-num">4</div>
+        <div class="transform-original">We promised __________ (send) postcards from Dublin.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <input class="form-input" type="text" id="exC-t4" placeholder="Type the correct form...">
+          <div class="transform-hint">Hint: <em>promise</em> + ?</div>
+        </div>
+      </div>
+
+      <div class="transform-item">
+        <div class="transform-num">5</div>
+        <div class="transform-original">Do you fancy __________ (go) to a traditional music festival?</div>
+        <div class="form-group" style="margin-bottom:0">
+          <input class="form-input" type="text" id="exC-t5" placeholder="Type the correct form...">
+          <div class="transform-hint">Hint: <em>fancy</em> + ?</div>
+        </div>
+      </div>
+
+      <div class="transform-item">
+        <div class="transform-num">6</div>
+        <div class="transform-original">The teacher asked us __________ (write) an essay about Ireland.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <input class="form-input" type="text" id="exC-t6" placeholder="Type the correct form...">
+          <div class="transform-hint">Hint: <em>ask someone</em> + ?</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">&larr; Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise D &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     STEP 4 – EXERCISE D: Writing
+═══════════════════════════════════════════ -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise D</span>
+    <h2 class="ex-title">Writing &ndash; A Trip to Ireland</h2>
+    <p class="ex-subtitle">Write a paragraph (80&ndash;120 words) about what you would enjoy doing if you visited Ireland. Use at least <strong>four gerunds or infinitives</strong>.</p>
+
+    <div class="card">
+      <div class="card-title">Useful verbs &amp; structures</div>
+      <div class="reading-text">
+        <p><em>I would enjoy visiting &hellip;</em> &nbsp;|&nbsp; <em>I would love to see &hellip;</em> &nbsp;|&nbsp; <em>I would avoid &hellip;-ing &hellip;</em> &nbsp;|&nbsp; <em>I hope to &hellip;</em> &nbsp;|&nbsp; <em>I imagine &hellip;-ing &hellip;</em> &nbsp;|&nbsp; <em>I plan to &hellip;</em> &nbsp;|&nbsp; <em>I would like to try &hellip;-ing &hellip;</em></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="form-group">
+        <label class="form-label" for="exD-para">Your paragraph</label>
+        <textarea class="form-textarea" id="exD-para" rows="8" placeholder="Write your paragraph here. Remember to use at least four gerunds or infinitives..."></textarea>
+        <div class="form-hint">Aim for 80&ndash;120 words. Underline or highlight the gerunds and infinitives you use.</div>
+      </div>
+    </div>
+
+    <div id="step4-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(4)">&larr; Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(4)">Review &amp; Submit &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     STEP 5 – REVIEW & SUBMIT
+═══════════════════════════════════════════ -->
+<section id="step-5" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">&#9989;</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">&#128640; Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">&#9989;</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission did not work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">&#9993;&#65039; Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">&#128203; Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+/* ============================================================
+   CONFIG
+============================================================ */
+var UNIT          = '9g-ireland-gerunds';
+var TOTAL_STEPS   = 5;
+var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbw2eqOCB6XKREIOXuqn2fCL067CdMm20MmiTFMt9GmRUEn12vLl8gJbHL1UfbKmCP7W/exec';
+var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+
+/* ============================================================
+   STATE
+============================================================ */
+var state = {
+  name: '', cls: '',
+  exA: {},
+  exB: {},
+  exC: {},
+  exD: {}
+};
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('step-' + n).classList.add('active');
+  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  restoreStep(n);
+  var meta = document.getElementById('header-meta');
+  if (n === 0) { meta.style.display = 'none'; return; }
+  meta.style.display = 'block';
+  document.getElementById('header-name').textContent = state.name + (state.cls ? ' — ' + state.cls : '');
+  var labels = ['A', 'B', 'C', 'D'];
+  document.getElementById('header-step').textContent = n < TOTAL_STEPS
+    ? 'Exercise ' + labels[n - 1] + ' of 4'
+    : 'Submit';
+}
+
+function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
+
+function nextStep(n) {
+  if (!validateStep(n)) {
+    var err = document.getElementById('step' + n + '-error');
+    if (err) { err.textContent = 'Please answer the required questions before continuing.'; err.classList.add('show'); }
+    return;
+  }
+  clearErr(n);
+  saveStep(n);
+  if (n === TOTAL_STEPS - 1) { buildSummary(); }
+  showStep(n + 1);
+}
+
+function clearErr(n) {
+  var err = document.getElementById('step' + n + '-error');
+  if (err) err.classList.remove('show');
+}
+
+function startExercises() {
+  var name = g('inp-name'), cls = g('inp-class');
+  var err = document.getElementById('welcome-error');
+  if (!name || !cls) {
+    err.textContent = 'Please enter both your name and your class.';
+    err.classList.add('show');
+    return;
+  }
+  err.classList.remove('show');
+  state.name = name;
+  state.cls  = cls;
+  showStep(1);
+}
+
+/* ============================================================
+   VALIDATION
+============================================================ */
+function validateStep(n) {
+  switch (n) {
+    case 1:
+      return getMC('mcA1') && getMC('mcA2') && getMC('mcA3') && getMC('mcA4') && getMC('mcA5');
+    case 2:
+      for (var i = 1; i <= 10; i++) { if (!g('exB-g'+i)) return false; }
+      return true;
+    case 3:
+      for (var j = 1; j <= 6; j++) { if (!val('exC-t'+j)) return false; }
+      return true;
+    case 4:
+      return val('exD-para');
+    default: return true;
+  }
+}
+
+/* ============================================================
+   SAVE / RESTORE
+============================================================ */
+function saveStep(n) {
+  switch (n) {
+    case 1:
+      state.exA = { q1: getMC('mcA1'), q2: getMC('mcA2'), q3: getMC('mcA3'), q4: getMC('mcA4'), q5: getMC('mcA5') };
+      break;
+    case 2:
+      state.exB = {};
+      for (var i = 1; i <= 10; i++) state.exB['g'+i] = g('exB-g'+i);
+      break;
+    case 3:
+      state.exC = {};
+      for (var j = 1; j <= 6; j++) state.exC['t'+j] = g('exC-t'+j);
+      break;
+    case 4:
+      state.exD = { para: g('exD-para') };
+      break;
+  }
+}
+
+function restoreStep(n) {
+  switch (n) {
+    case 1:
+      for (var k = 1; k <= 5; k++) setMC('mcA'+k, state.exA['q'+k]);
+      break;
+    case 2:
+      for (var i = 1; i <= 10; i++) set('exB-g'+i, state.exB['g'+i]);
+      break;
+    case 3:
+      for (var j = 1; j <= 6; j++) set('exC-t'+j, state.exC['t'+j]);
+      break;
+    case 4:
+      set('exD-para', state.exD.para);
+      break;
+  }
+}
+
+/* ============================================================
+   HELPERS
+============================================================ */
+function g(id)       { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+function set(id, v)  { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
+function val(id)     { return g(id).length > 0; }
+function esc(str)    { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
+
+function getMC(name) {
+  var checked = document.querySelector('input[name="'+name+'"]:checked');
+  return checked ? checked.value : '';
+}
+function setMC(name, val) {
+  if (!val) return;
+  var radio = document.querySelector('input[name="'+name+'"][value="'+val+'"]');
+  if (radio) radio.checked = true;
+}
+
+/* MC option highlighting */
+document.addEventListener('change', function(e) {
+  if (e.target.type === 'radio') {
+    var group = e.target.closest('.mc-group');
+    if (group) {
+      group.querySelectorAll('.mc-option').forEach(function(o) { o.classList.remove('selected'); });
+      e.target.closest('.mc-option').classList.add('selected');
+    }
+  }
+});
+
+/* ============================================================
+   SUMMARY
+============================================================ */
+function buildSummary() {
+  var mcLabels = {
+    mcA1: { q: '1. Why is Ireland called "the Emerald Isle"?', map: { a: 'Many emerald mines', b: 'Bright green countryside', c: 'National flag is green' } },
+    mcA2: { q: '2. What is the Gaeltacht?', map: { a: 'Traditional Irish music', b: 'Areas where Irish is the main language', c: 'Capital city' } },
+    mcA3: { q: '3. Which writer is NOT mentioned?', map: { a: 'Oscar Wilde', b: 'W.B. Yeats', c: 'Samuel Beckett' } },
+    mcA4: { q: '4. What is a bodhran?', map: { a: 'Stringed instrument', b: 'Frame drum', c: 'Wind instrument' } },
+    mcA5: { q: '5. What is special about Newgrange?', map: { a: 'Tallest cliff', b: '5,000-year-old passage tomb', c: 'Oldest pub' } }
+  };
+
+  var rows = [];
+  for (var k = 1; k <= 5; k++) {
+    var key = 'mcA'+k, info = mcLabels[key];
+    rows.push({ ex: 'Exercise A – Reading', q: info.q, a: info.map[state.exA['q'+k]] || '(no answer)' });
+  }
+  for (var i = 1; i <= 10; i++) {
+    rows.push({ ex: 'Exercise B – Gap-fill', q: 'Gap '+i, a: state.exB['g'+i] || '(no answer)' });
+  }
+  for (var j = 1; j <= 6; j++) {
+    rows.push({ ex: 'Exercise C – Sentence Completion', q: 'Sentence '+j, a: state.exC['t'+j] || '(no answer)' });
+  }
+  rows.push({ ex: 'Exercise D – Writing', q: 'Paragraph', a: state.exD.para || '(no answer)' });
+
+  var html = '<div class="submit-summary">'
+    + '<div class="summary-row"><div class="summary-ex">Student</div>'
+    + '<div class="summary-q">' + esc(state.name) + ' — ' + esc(state.cls) + '</div></div>';
+  rows.forEach(function(r) {
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div>'
+      + '<div class="summary-q">' + esc(r.q) + '</div>'
+      + '<div class="summary-a">' + esc(r.a) + '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+}
+
+/* ============================================================
+   EMAIL FALLBACK BODY
+============================================================ */
+function buildEmailBody() {
+  var body = 'Exercise: ' + UNIT
+    + '\nStudent: ' + state.name
+    + '\nClass:   ' + state.cls
+    + '\nDate:    ' + new Date().toLocaleDateString('en-GB');
+  body += '\n\n--- Exercise A: Reading Comprehension ---';
+  for (var k = 1; k <= 5; k++) body += '\nQ'+k+': ' + (state.exA['q'+k] || '(none)');
+  body += '\n\n--- Exercise B: Gap-fill ---';
+  for (var i = 1; i <= 10; i++) body += '\nGap '+i+': ' + (state.exB['g'+i] || '(none)');
+  body += '\n\n--- Exercise C: Sentence Completion ---';
+  for (var j = 1; j <= 6; j++) body += '\nSentence '+j+': ' + (state.exC['t'+j] || '(none)');
+  body += '\n\n--- Exercise D: Writing ---\n' + (state.exD.para || '(none)');
+  return body;
+}
+
+/* ============================================================
+   CHECK ANSWERS
+============================================================ */
+function checkDropdowns(ids, prefix, answers, fbId) {
+  var correct = 0, wrong = 0, empty = 0;
+  ids.forEach(function(k) {
+    var sel = document.getElementById(prefix + k);
+    if (!sel) return;
+    sel.className = sel.className.replace(/\s*(gap-correct|gap-wrong)/g, '');
+    if (!sel.value) { empty++; return; }
+    if (sel.value === answers[k]) { sel.className += ' gap-correct'; correct++; }
+    else                          { sel.className += ' gap-wrong';   wrong++;   }
+  });
+  var fb = document.getElementById(fbId);
+  fb.style.display = 'block';
+  var total = ids.length;
+  if (empty === total) {
+    fb.className = 'feedback err show';
+    fb.textContent = 'Please answer the gaps first.';
+  } else if (wrong === 0 && empty === 0) {
+    fb.className = 'feedback ok show';
+    fb.textContent = '✓ All ' + correct + ' correct! Well done.';
+  } else {
+    fb.className = 'feedback warn show';
+    fb.textContent = correct + ' / ' + total + ' correct'
+      + (wrong  ? ' — check the red gaps' : '')
+      + (empty  ? ' (' + empty + ' still blank)' : '') + '.';
+  }
+}
+
+/* Exercise A – MC check */
+function checkExA() {
+  var answers = { mcA1: 'b', mcA2: 'b', mcA3: 'b', mcA4: 'b', mcA5: 'b' };
+  var correct = 0, total = 5;
+  for (var k = 1; k <= 5; k++) {
+    var v = getMC('mcA'+k);
+    if (v === answers['mcA'+k]) correct++;
+  }
+  var fb = document.getElementById('step1-fb');
+  fb.style.display = 'block';
+  if (correct === total) {
+    fb.className = 'feedback ok show';
+    fb.textContent = '✓ All 5 correct! Well done.';
+  } else {
+    fb.className = 'feedback warn show';
+    fb.textContent = correct + ' / ' + total + ' correct — re-read the text and try again.';
+  }
+}
+
+/* Exercise B – gap-fill check */
+function checkExB() {
+  var answers = {
+    g1:  'playing',
+    g2:  'to visit',
+    g3:  'to speak',
+    g4:  'telling',
+    g5:  'walking',
+    g6:  'to see',
+    g7:  'to travel',
+    g8:  'driving',
+    g9:  'to eat',
+    g10: 'living'
+  };
+  checkDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10'], 'exB-', answers, 'step2-fb');
+}
+
+/* ============================================================
+   SUBMIT TO GOOGLE SHEET
+============================================================ */
+function submitToSheet() {
+  buildSummary();
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  var payload = { name: state.name, cls: state.cls, unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD };
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+  }).then(function() {
+    btn.style.display = 'none';
+    document.getElementById('submit-success').style.display = 'block';
+    document.getElementById('submit-fallback').style.display = 'block';
+  }).catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Submit to Teacher';
+    document.getElementById('submit-fallback').style.display = 'block';
+  });
+}
+
+function submitByEmail() {
+  var a = document.createElement('a');
+  a.href = 'mailto:' + TEACHER_EMAIL
+    + '?subject=' + encodeURIComponent(UNIT + ' - ' + state.name + ' - ' + state.cls)
+    + '&body='    + encodeURIComponent(buildEmailBody());
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function() { document.body.removeChild(a); }, 100);
+}
+
+function copyAnswers() {
+  var body = buildEmailBody();
+  navigator.clipboard.writeText(body)
+    .then(function() { alert('Answers copied! Paste them into an email to your teacher.'); })
+    .catch(function() { prompt('Copy this text:', body); });
+}
+
+/* ============================================================
+   INIT
+============================================================ */
+document.addEventListener('DOMContentLoaded', function() {
+  showStep(0);
+});
+</script>
+
+<script>
+/* ── Paste-block: prevent pasting into answer fields ── */
+document.addEventListener('paste', function(e) {
+  var t = e.target;
+  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
+    e.preventDefault();
+    var msg = document.createElement('div');
+    msg.textContent = 'Pasting is not allowed';
+    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    document.body.appendChild(msg);
+    setTimeout(function() {
+      msg.style.opacity = '0';
+      setTimeout(function() { msg.remove(); }, 400);
+    }, 2000);
+  }
+});
+
+/* ── Copy-block: prevent copying text from the page ── */
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  var msg = document.createElement('div');
+  msg.textContent = '🚫 Copying is not allowed';
+  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+  document.body.appendChild(msg);
+  setTimeout(function() {
+    msg.style.opacity = '0';
+    setTimeout(function() { msg.remove(); }, 400);
+  }, 2000);
+});
+</script>
+
+</body>
+</html>
