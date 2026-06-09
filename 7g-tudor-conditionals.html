@@ -238,20 +238,20 @@
       <div class="card-title">Answer the questions</div>
 
       <div class="form-group">
-        <label class="form-label" for="exA-q1">1. Why did Jay get lost?</label>
-        <textarea class="form-textarea" id="exA-q1" placeholder="Write your answer in English..." rows="3"></textarea>
+        <label class="form-label" for='ex1'-q1">1. Why did Jay get lost?</label>
+        <textarea class="form-textarea" id="ex1-q1" placeholder="Write your answer in English..." rows="3"></textarea>
       </div>
       <div class="form-group">
-        <label class="form-label" for="exA-q2">2. What tour did Jay end up joining by accident?</label>
-        <textarea class="form-textarea" id="exA-q2" placeholder="Write your answer in English..." rows="3"></textarea>
+        <label class="form-label" for='ex1'-q2">2. What tour did Jay end up joining by accident?</label>
+        <textarea class="form-textarea" id="ex1-q2" placeholder="Write your answer in English..." rows="3"></textarea>
       </div>
       <div class="form-group">
-        <label class="form-label" for="exA-q3">3. What did Jay find at the end of the story? Why was he happy about it?</label>
-        <textarea class="form-textarea" id="exA-q3" placeholder="Write your answer in English..." rows="3"></textarea>
+        <label class="form-label" for='ex1'-q3">3. What did Jay find at the end of the story? Why was he happy about it?</label>
+        <textarea class="form-textarea" id="ex1-q3" placeholder="Write your answer in English..." rows="3"></textarea>
       </div>
       <div class="form-group">
-        <label class="form-label" for="exA-q4">4. Find <strong>two</strong> conditional type 3 sentences in the story and write them here.</label>
-        <textarea class="form-textarea" id="exA-q4" placeholder="1. If I hadn&#39;t..." rows="4"></textarea>
+        <label class="form-label" for='ex1'-q4">4. Find <strong>two</strong> conditional type 3 sentences in the story and write them here.</label>
+        <textarea class="form-textarea" id="ex1-q4" placeholder="1. If I hadn&#39;t..." rows="4"></textarea>
       </div>
     </div>
 
@@ -729,7 +729,7 @@ var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
 
 var state = {
   name: '', cls: '',
-  exA: { q1:'', q2:'', q3:'', q4:'' },
+  ex1: { q1:'', q2:'', q3:'', q4:'' },
   exB: { m1:'', m2:'', m3:'', m4:'', m5:'', m6:'' },
   exC: { t1:'', t2:'', t3:'', t4:'', t5:'', t6:'', t7:'' },
   exD: { g1:'', g2:'', g3:'', g4:'', g5:'', g6:'', g7:'', g8:'', g9:'', g10:'', g11:'', g12:'', g13:'', g14:'' },
@@ -776,7 +776,7 @@ function startExercises(){
 
 function validateStep(n){
   switch(n){
-    case 1: return val('exA-q1')&&val('exA-q2')&&val('exA-q3')&&val('exA-q4');
+    case 1: return val('ex1'-q1')&&val('ex1'-q2')&&val('ex1'-q3')&&val('ex1'-q4');
     case 2: return gSel('exB-m1')&&gSel('exB-m2')&&gSel('exB-m3')&&gSel('exB-m4')&&gSel('exB-m5')&&gSel('exB-m6');
     case 3: return val('exC-t1')&&val('exC-t2')&&val('exC-t3')&&val('exC-t4')&&val('exC-t5')&&val('exC-t6')&&val('exC-t7');
     case 4: return gSel('exD-g1')&&gSel('exD-g2')&&gSel('exD-g3')&&gSel('exD-g4')&&gSel('exD-g5')&&gSel('exD-g6')&&gSel('exD-g7')&&gSel('exD-g8')&&gSel('exD-g9')&&gSel('exD-g10')&&gSel('exD-g11')&&gSel('exD-g12')&&gSel('exD-g13')&&gSel('exD-g14');
@@ -789,7 +789,7 @@ function validateStep(n){
 
 function saveStep(n){
   switch(n){
-    case 1: ['q1','q2','q3','q4'].forEach(function(k){state.exA[k]=g('exA-'+k);}); break;
+    case 1: ['q1','q2','q3','q4'].forEach(function(k){state.ex1[k]=g('ex1'-'+k);}); break;
     case 2: [1,2,3,4,5,6].forEach(function(i){state.exB['m'+i]=gSel('exB-m'+i);}); break;
     case 3: [1,2,3,4,5,6,7].forEach(function(i){state.exC['t'+i]=g('exC-t'+i);}); break;
     case 4: for(var i=1;i<=14;i++){state.exD['g'+i]=gSel('exD-g'+i);} break;
@@ -801,7 +801,7 @@ function saveStep(n){
 
 function restoreStep(n){
   switch(n){
-    case 1: ['q1','q2','q3','q4'].forEach(function(k){set('exA-'+k,state.exA[k]);}); break;
+    case 1: ['q1','q2','q3','q4'].forEach(function(k){set('ex1'-'+k,state.ex1[k]);}); break;
     case 2: [1,2,3,4,5,6].forEach(function(i){setSel('exB-m'+i,state.exB['m'+i]);}); break;
     case 3: [1,2,3,4,5,6,7].forEach(function(i){set('exC-t'+i,state.exC['t'+i]);}); break;
     case 4: for(var i=1;i<=14;i++){setSel('exD-g'+i,state.exD['g'+i]);} break;
@@ -856,10 +856,10 @@ function checkExE() {
 function buildSummary(){
   var rows=[
     {ex:'Student',q:state.name+' — '+state.cls,a:''},
-    {ex:'Ex A',q:'1. Why did Jay get lost?',a:state.exA.q1},
-    {ex:'Ex A',q:'2. What tour did Jay join?',a:state.exA.q2},
-    {ex:'Ex A',q:'3. What did Jay find?',a:state.exA.q3},
-    {ex:'Ex A',q:'4. Two type 3 sentences from the story',a:state.exA.q4},
+    {ex:'Ex A',q:'1. Why did Jay get lost?',a:state.ex1.q1},
+    {ex:'Ex A',q:'2. What tour did Jay join?',a:state.ex1.q2},
+    {ex:'Ex A',q:'3. What did Jay find?',a:state.ex1.q3},
+    {ex:'Ex A',q:'4. Two type 3 sentences from the story',a:state.ex1.q4},
     {ex:'Ex B',q:'Match 1',a:state.exB.m1},{ex:'Ex B',q:'Match 2',a:state.exB.m2},
     {ex:'Ex B',q:'Match 3',a:state.exB.m3},{ex:'Ex B',q:'Match 4',a:state.exB.m4},
     {ex:'Ex B',q:'Match 5',a:state.exB.m5},{ex:'Ex B',q:'Match 6',a:state.exB.m6},
@@ -901,7 +901,7 @@ function buildSummary(){
 
 function buildEmailBody(){
   return 'Exercise: '+UNIT+'\nStudent: '+state.name+'\nClass: '+state.cls+'\nDate: '+new Date().toLocaleDateString('en-GB')
-    +'\n\n--- Ex A: Reading ---\n1. '+state.exA.q1+'\n2. '+state.exA.q2+'\n3. '+state.exA.q3+'\n4. '+state.exA.q4
+    +'\n\n--- Ex A: Reading ---\n1. '+state.ex1.q1+'\n2. '+state.ex1.q2+'\n3. '+state.ex1.q3+'\n4. '+state.ex1.q4
     +'\n\n--- Ex B: Matching ---\n'+[1,2,3,4,5,6].map(function(i){return i+'. '+state.exB['m'+i];}).join('\n')
     +'\n\n--- Ex C: Transformation ---\n'+[1,2,3,4,5,6,7].map(function(i){return i+'. '+state.exC['t'+i];}).join('\n')
     +'\n\n--- Ex D: English would have been different ---\n'+[1,2,3,4,5,6,7].map(function(i){return 'S'+i+': gap1='+state.exD['g'+(2*i-1)]+' gap2='+state.exD['g'+(2*i)];}).join('\n')

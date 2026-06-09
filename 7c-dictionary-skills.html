@@ -402,7 +402,7 @@
         <div class="sentence-original">"…very lucky to <u>escape</u> with their lives."</div>
         <div class="form-group" style="margin-bottom:0">
           <label class="form-label" for="ex2a-w1">German for 'escape' (as used in the text):</label>
-          <input class="form-input" type="text" id="ex2a-w1" placeholder="German translation...">
+          <input class="form-input" type="text" id="ex2-w1" placeholder="German translation...">
         </div>
       </div>
 
@@ -411,7 +411,7 @@
         <div class="sentence-original">"The four young men <u>were climbing</u> Ben Nevis…"</div>
         <div class="form-group" style="margin-bottom:0">
           <label class="form-label" for="ex2a-w2">German for 'were climbing':</label>
-          <input class="form-input" type="text" id="ex2a-w2" placeholder="German translation...">
+          <input class="form-input" type="text" id="ex2-w2" placeholder="German translation...">
         </div>
       </div>
 
@@ -420,7 +420,7 @@
         <div class="sentence-original">"…a huge <u>wave</u> of snow swept them down…"</div>
         <div class="form-group" style="margin-bottom:0">
           <label class="form-label" for="ex2a-w3">German for 'wave' (as used in the text):</label>
-          <input class="form-input" type="text" id="ex2a-w3" placeholder="German translation...">
+          <input class="form-input" type="text" id="ex2-w3" placeholder="German translation...">
         </div>
       </div>
 
@@ -429,7 +429,7 @@
         <div class="sentence-original">"…a huge wave of snow <u>swept</u> them 300 metres down…"</div>
         <div class="form-group" style="margin-bottom:0">
           <label class="form-label" for="ex2a-w4">German for 'swept' (as used in the text):</label>
-          <input class="form-input" type="text" id="ex2a-w4" placeholder="German translation...">
+          <input class="form-input" type="text" id="ex2-w4" placeholder="German translation...">
         </div>
       </div>
 
@@ -438,7 +438,7 @@
         <div class="sentence-original">"The rescue helicopter had already started to <u>look for</u> us."</div>
         <div class="form-group" style="margin-bottom:0">
           <label class="form-label" for="ex2a-w5">German for 'look for':</label>
-          <input class="form-input" type="text" id="ex2a-w5" placeholder="German translation...">
+          <input class="form-input" type="text" id="ex2-w5" placeholder="German translation...">
         </div>
       </div>
 
@@ -447,7 +447,7 @@
         <div class="sentence-original">"Next year, the <u>climbers</u> will climb Mont Blanc."</div>
         <div class="form-group" style="margin-bottom:0">
           <label class="form-label" for="ex2a-w6">German for 'climbers':</label>
-          <input class="form-input" type="text" id="ex2a-w6" placeholder="German translation...">
+          <input class="form-input" type="text" id="ex2-w6" placeholder="German translation...">
         </div>
       </div>
     </div>
@@ -483,7 +483,7 @@
         <div class="sentence-original">The man <u>waved</u> wildly from the window.</div>
         <div class="form-group" style="margin-bottom:0">
           <label class="form-label" for="ex2b-s1">German for 'waved' here:</label>
-          <input class="form-input" type="text" id="ex2b-s1" placeholder="German translation...">
+          <input class="form-input" type="text" id="ex3-s1" placeholder="German translation...">
         </div>
       </div>
 
@@ -492,7 +492,7 @@
         <div class="sentence-original">A tornado <u>swept through</u> the town.</div>
         <div class="form-group" style="margin-bottom:0">
           <label class="form-label" for="ex2b-s2">German for 'swept through' here:</label>
-          <input class="form-input" type="text" id="ex2b-s2" placeholder="German translation...">
+          <input class="form-input" type="text" id="ex3-s2" placeholder="German translation...">
         </div>
       </div>
 
@@ -501,7 +501,7 @@
         <div class="sentence-original">Can I have a <u>look</u> at that magazine?</div>
         <div class="form-group" style="margin-bottom:0">
           <label class="form-label" for="ex2b-s3">German for 'look' here:</label>
-          <input class="form-input" type="text" id="ex2b-s3" placeholder="German translation...">
+          <input class="form-input" type="text" id="ex3-s3" placeholder="German translation...">
         </div>
       </div>
 
@@ -510,7 +510,7 @@
         <div class="sentence-original">The man <u>escaped</u> from prison in the night.</div>
         <div class="form-group" style="margin-bottom:0">
           <label class="form-label" for="ex2b-s4">German for 'escaped' here:</label>
-          <input class="form-input" type="text" id="ex2b-s4" placeholder="German translation...">
+          <input class="form-input" type="text" id="ex3-s4" placeholder="German translation...">
         </div>
       </div>
 
@@ -519,7 +519,7 @@
         <div class="sentence-original">The plane went into a steep <u>climb</u>.</div>
         <div class="form-group" style="margin-bottom:0">
           <label class="form-label" for="ex2b-s5">German for 'climb' (noun) here:</label>
-          <input class="form-input" type="text" id="ex2b-s5" placeholder="German translation...">
+          <input class="form-input" type="text" id="ex3-s5" placeholder="German translation...">
         </div>
       </div>
     </div>
@@ -578,8 +578,8 @@ var state = {
   name:  '',
   cls:   '',
   ex1:   {},   /* dictionary entry sentences 1-5 */
-  ex2a:  {},   /* underlined words 1-6 */
-  ex2b:  {}    /* new context sentences 1-5 */
+  ex2:  {},   /* underlined words 1-6 */
+  ex3:  {}    /* new context sentences 1-5 */
 };
 
 /* ============================================================
@@ -660,12 +660,12 @@ function saveStep(n) {
       state.ex1.s4 = g('ex1-s4'); state.ex1.s5 = g('ex1-s5');
       break;
     case 3:
-      state.ex2a.w1 = g('ex2a-w1'); state.ex2a.w2 = g('ex2a-w2'); state.ex2a.w3 = g('ex2a-w3');
-      state.ex2a.w4 = g('ex2a-w4'); state.ex2a.w5 = g('ex2a-w5'); state.ex2a.w6 = g('ex2a-w6');
+      state.ex2.w1 = g('ex2a-w1'); state.ex2.w2 = g('ex2a-w2'); state.ex2.w3 = g('ex2a-w3');
+      state.ex2.w4 = g('ex2a-w4'); state.ex2.w5 = g('ex2a-w5'); state.ex2.w6 = g('ex2a-w6');
       break;
     case 4:
-      state.ex2b.s1 = g('ex2b-s1'); state.ex2b.s2 = g('ex2b-s2'); state.ex2b.s3 = g('ex2b-s3');
-      state.ex2b.s4 = g('ex2b-s4'); state.ex2b.s5 = g('ex2b-s5');
+      state.ex3.s1 = g('ex2b-s1'); state.ex3.s2 = g('ex2b-s2'); state.ex3.s3 = g('ex2b-s3');
+      state.ex3.s4 = g('ex2b-s4'); state.ex3.s5 = g('ex2b-s5');
       break;
   }
 }
@@ -677,12 +677,12 @@ function restoreStep(n) {
       set('ex1-s4', state.ex1.s4); set('ex1-s5', state.ex1.s5);
       break;
     case 3:
-      set('ex2a-w1', state.ex2a.w1); set('ex2a-w2', state.ex2a.w2); set('ex2a-w3', state.ex2a.w3);
-      set('ex2a-w4', state.ex2a.w4); set('ex2a-w5', state.ex2a.w5); set('ex2a-w6', state.ex2a.w6);
+      set('ex2a-w1', state.ex2.w1); set('ex2a-w2', state.ex2.w2); set('ex2a-w3', state.ex2.w3);
+      set('ex2a-w4', state.ex2.w4); set('ex2a-w5', state.ex2.w5); set('ex2a-w6', state.ex2.w6);
       break;
     case 4:
-      set('ex2b-s1', state.ex2b.s1); set('ex2b-s2', state.ex2b.s2); set('ex2b-s3', state.ex2b.s3);
-      set('ex2b-s4', state.ex2b.s4); set('ex2b-s5', state.ex2b.s5);
+      set('ex2b-s1', state.ex3.s1); set('ex2b-s2', state.ex3.s2); set('ex2b-s3', state.ex3.s3);
+      set('ex2b-s4', state.ex3.s4); set('ex2b-s5', state.ex3.s5);
       break;
   }
 }
@@ -705,17 +705,17 @@ function buildSummary() {
     { ex: 'Exercise 1', q: '3. "Cats is a real hit."', a: state.ex1.s3 },
     { ex: 'Exercise 1', q: '4. "The boy hit the ball."', a: state.ex1.s4 },
     { ex: 'Exercise 1', q: '5. "143 hits for this search."', a: state.ex1.s5 },
-    { ex: 'Exercise 2a', q: '1. escape', a: state.ex2a.w1 },
-    { ex: 'Exercise 2a', q: '2. were climbing', a: state.ex2a.w2 },
-    { ex: 'Exercise 2a', q: '3. wave', a: state.ex2a.w3 },
-    { ex: 'Exercise 2a', q: '4. swept', a: state.ex2a.w4 },
-    { ex: 'Exercise 2a', q: '5. look for', a: state.ex2a.w5 },
-    { ex: 'Exercise 2a', q: '6. climbers', a: state.ex2a.w6 },
-    { ex: 'Exercise 2b', q: '1. waved (from window)', a: state.ex2b.s1 },
-    { ex: 'Exercise 2b', q: '2. swept through (tornado)', a: state.ex2b.s2 },
-    { ex: 'Exercise 2b', q: '3. look (have a look)', a: state.ex2b.s3 },
-    { ex: 'Exercise 2b', q: '4. escaped (from prison)', a: state.ex2b.s4 },
-    { ex: 'Exercise 2b', q: '5. climb (steep climb)', a: state.ex2b.s5 }
+    { ex: 'Exercise 2a', q: '1. escape', a: state.ex2.w1 },
+    { ex: 'Exercise 2a', q: '2. were climbing', a: state.ex2.w2 },
+    { ex: 'Exercise 2a', q: '3. wave', a: state.ex2.w3 },
+    { ex: 'Exercise 2a', q: '4. swept', a: state.ex2.w4 },
+    { ex: 'Exercise 2a', q: '5. look for', a: state.ex2.w5 },
+    { ex: 'Exercise 2a', q: '6. climbers', a: state.ex2.w6 },
+    { ex: 'Exercise 2b', q: '1. waved (from window)', a: state.ex3.s1 },
+    { ex: 'Exercise 2b', q: '2. swept through (tornado)', a: state.ex3.s2 },
+    { ex: 'Exercise 2b', q: '3. look (have a look)', a: state.ex3.s3 },
+    { ex: 'Exercise 2b', q: '4. escaped (from prison)', a: state.ex3.s4 },
+    { ex: 'Exercise 2b', q: '5. climb (steep climb)', a: state.ex3.s5 }
   ];
   var html = '<div class="submit-summary">'
     + '<div class="summary-row"><div class="summary-ex">Student</div>'
@@ -744,18 +744,18 @@ function buildEmailBody() {
     + '\n4. hit the ball: '  + (state.ex1.s4 || '(none)')
     + '\n5. 143 hits: '      + (state.ex1.s5 || '(none)')
     + '\n\n--- Exercise 2a (Underlined words) ---'
-    + '\n1. escape: '        + (state.ex2a.w1 || '(none)')
-    + '\n2. were climbing: ' + (state.ex2a.w2 || '(none)')
-    + '\n3. wave: '          + (state.ex2a.w3 || '(none)')
-    + '\n4. swept: '         + (state.ex2a.w4 || '(none)')
-    + '\n5. look for: '      + (state.ex2a.w5 || '(none)')
-    + '\n6. climbers: '      + (state.ex2a.w6 || '(none)')
+    + '\n1. escape: '        + (state.ex2.w1 || '(none)')
+    + '\n2. were climbing: ' + (state.ex2.w2 || '(none)')
+    + '\n3. wave: '          + (state.ex2.w3 || '(none)')
+    + '\n4. swept: '         + (state.ex2.w4 || '(none)')
+    + '\n5. look for: '      + (state.ex2.w5 || '(none)')
+    + '\n6. climbers: '      + (state.ex2.w6 || '(none)')
     + '\n\n--- Exercise 2b (New contexts) ---'
-    + '\n1. waved: '          + (state.ex2b.s1 || '(none)')
-    + '\n2. swept through: '  + (state.ex2b.s2 || '(none)')
-    + '\n3. look: '           + (state.ex2b.s3 || '(none)')
-    + '\n4. escaped: '        + (state.ex2b.s4 || '(none)')
-    + '\n5. climb: '          + (state.ex2b.s5 || '(none)');
+    + '\n1. waved: '          + (state.ex3.s1 || '(none)')
+    + '\n2. swept through: '  + (state.ex3.s2 || '(none)')
+    + '\n3. look: '           + (state.ex3.s3 || '(none)')
+    + '\n4. escaped: '        + (state.ex3.s4 || '(none)')
+    + '\n5. climb: '          + (state.ex3.s5 || '(none)');
 }
 
 /* ============================================================

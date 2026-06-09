@@ -220,7 +220,7 @@
       <div class="card-title">Comprehension Questions</div>
       <p class="gap-text">
         1. A "Full English" breakfast is usually eaten
-        <select class="gap-select" id="exA-g1">
+        <select class="gap-select" id="ex1-g1">
           <option value="">— choose —</option>
           <option value="every day">every day</option>
           <option value="at weekends">at weekends</option>
@@ -228,7 +228,7 @@
         </select>.<br>
 
         2. Black pudding is made from
-        <select class="gap-select" id="exA-g2">
+        <select class="gap-select" id="ex1-g2">
           <option value="">— choose —</option>
           <option value="chocolate">chocolate</option>
           <option value="blood and oats">blood and oats</option>
@@ -236,7 +236,7 @@
         </select>.<br>
 
         3. The most popular lunch during the week is
-        <select class="gap-select" id="exA-g3">
+        <select class="gap-select" id="ex1-g3">
           <option value="">— choose —</option>
           <option value="a Sunday roast">a Sunday roast</option>
           <option value="a sandwich">a sandwich</option>
@@ -244,7 +244,7 @@
         </select>.<br>
 
         4. Yorkshire pudding is
-        <select class="gap-select" id="exA-g4">
+        <select class="gap-select" id="ex1-g4">
           <option value="">— choose —</option>
           <option value="a sweet dessert">a sweet dessert</option>
           <option value="a crispy batter served with roast beef">a crispy batter served with roast beef</option>
@@ -252,7 +252,7 @@
         </select>.<br>
 
         5. One of the most popular dishes in Britain is
-        <select class="gap-select" id="exA-g5">
+        <select class="gap-select" id="ex1-g5">
           <option value="">— choose —</option>
           <option value="spaghetti bolognese">spaghetti bolognese</option>
           <option value="chicken tikka masala">chicken tikka masala</option>
@@ -260,7 +260,7 @@
         </select>.<br>
 
         6. British people usually drink their tea with
-        <select class="gap-select" id="exA-g6">
+        <select class="gap-select" id="ex1-g6">
           <option value="">— choose —</option>
           <option value="lemon">lemon</option>
           <option value="milk">milk</option>
@@ -469,7 +469,7 @@ var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
 var state = {
   name: '',
   cls:  '',
-  exA:  {},
+  ex1:  {},
   exB:  {},
   exC:  {}
 };
@@ -532,7 +532,7 @@ function startExercises() {
 function validateStep(n) {
   switch (n) {
     case 1:
-      return g('exA-g1') && g('exA-g2') && g('exA-g3') && g('exA-g4') && g('exA-g5') && g('exA-g6');
+      return g('ex1'-g1') && g('ex1'-g2') && g('ex1'-g3') && g('ex1'-g4') && g('ex1'-g5') && g('ex1'-g6');
     case 2:
       return g('exB-g1') && g('exB-g2') && g('exB-g3') && g('exB-g4') && g('exB-g5') && g('exB-g6') && g('exB-g7') && g('exB-g8');
     case 3:
@@ -550,7 +550,7 @@ function validateStep(n) {
 function saveStep(n) {
   switch (n) {
     case 1:
-      ['g1','g2','g3','g4','g5','g6'].forEach(function(k){ state.exA[k] = g('exA-'+k); });
+      ['g1','g2','g3','g4','g5','g6'].forEach(function(k){ state.ex1[k] = g('ex1'-'+k); });
       break;
     case 2:
       ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k){ state.exB[k] = g('exB-'+k); });
@@ -564,7 +564,7 @@ function saveStep(n) {
 function restoreStep(n) {
   switch (n) {
     case 1:
-      ['g1','g2','g3','g4','g5','g6'].forEach(function(k){ set('exA-'+k, state.exA[k]); });
+      ['g1','g2','g3','g4','g5','g6'].forEach(function(k){ set('ex1'-'+k, state.ex1[k]); });
       break;
     case 2:
       ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k){ set('exB-'+k, state.exB[k]); });
@@ -598,7 +598,7 @@ function buildSummary() {
     g6: '6. Tea is usually drunk with…'
   };
   ['g1','g2','g3','g4','g5','g6'].forEach(function(k){
-    rows.push({ ex: 'Exercise A – Reading', q: aLabels[k], a: state.exA[k] });
+    rows.push({ ex: 'Exercise A – Reading', q: aLabels[k], a: state.ex1[k] });
   });
   // Ex B
   ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k, i){
@@ -629,7 +629,7 @@ function buildEmailBody() {
     + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
     + '\n\n--- Exercise A – Reading Comprehension ---';
   ['g1','g2','g3','g4','g5','g6'].forEach(function(k, i){
-    body += '\n' + (i+1) + '. ' + (state.exA[k] || '(blank)');
+    body += '\n' + (i+1) + '. ' + (state.ex1[k] || '(blank)');
   });
   body += '\n\n--- Exercise B – Vocabulary ---';
   ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k, i){
@@ -678,7 +678,7 @@ function checkExA() {
     g5: 'chicken tikka masala',
     g6: 'milk'
   };
-  checkDropdowns(['g1','g2','g3','g4','g5','g6'], 'exA-', answers, 'step1-fb');
+  checkDropdowns(['g1','g2','g3','g4','g5','g6'], 'ex1'-', answers, 'step1-fb');
 }
 
 function checkExB() {

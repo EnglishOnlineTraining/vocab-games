@@ -218,27 +218,27 @@
 
       <div class="comp-item">
         <div class="comp-question"><span class="comp-num">1</span> How tall is the Elizabeth Tower (Big Ben)?</div>
-        <textarea class="form-textarea" id="exA-q1" rows="2" placeholder="Write your answer..."></textarea>
+        <textarea class="form-textarea" id="ex1-q1" rows="2" placeholder="Write your answer..."></textarea>
       </div>
 
       <div class="comp-item">
         <div class="comp-question"><span class="comp-num">2</span> Who started building the Tower of London, and when?</div>
-        <textarea class="form-textarea" id="exA-q2" rows="2" placeholder="Write your answer..."></textarea>
+        <textarea class="form-textarea" id="ex1-q2" rows="2" placeholder="Write your answer..."></textarea>
       </div>
 
       <div class="comp-item">
         <div class="comp-question"><span class="comp-num">3</span> How many rooms does Buckingham Palace have?</div>
-        <textarea class="form-textarea" id="exA-q3" rows="2" placeholder="Write your answer..."></textarea>
+        <textarea class="form-textarea" id="ex1-q3" rows="2" placeholder="Write your answer..."></textarea>
       </div>
 
       <div class="comp-item">
         <div class="comp-question"><span class="comp-num">4</span> What can you see from the top of the London Eye on a clear day?</div>
-        <textarea class="form-textarea" id="exA-q4" rows="2" placeholder="Write your answer..."></textarea>
+        <textarea class="form-textarea" id="ex1-q4" rows="2" placeholder="Write your answer..."></textarea>
       </div>
 
       <div class="comp-item">
         <div class="comp-question"><span class="comp-num">5</span> Why is Tower Bridge called "Tower Bridge"?</div>
-        <textarea class="form-textarea" id="exA-q5" rows="2" placeholder="Write your answer..."></textarea>
+        <textarea class="form-textarea" id="ex1-q5" rows="2" placeholder="Write your answer..."></textarea>
       </div>
     </div>
 
@@ -541,7 +541,7 @@ var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
 var state = {
   name: '',
   cls:  '',
-  exA:  {},
+  ex1:  {},
   exB:  {},
   exC:  {},
   exD:  {}
@@ -604,7 +604,7 @@ function startExercises() {
 ============================================================ */
 function validateStep(n) {
   switch (n) {
-    case 1: return val('exA-q1') && val('exA-q2') && val('exA-q3') && val('exA-q4') && val('exA-q5');
+    case 1: return val('ex1'-q1') && val('ex1'-q2') && val('ex1'-q3') && val('ex1'-q4') && val('ex1'-q5');
     case 2: return g('exB-g1') && g('exB-g2') && g('exB-g3') && g('exB-g4') && g('exB-g5') && g('exB-g6') && g('exB-g7') && g('exB-g8');
     case 3: return g('exC-g1') && g('exC-g2') && g('exC-g3') && g('exC-g4') && g('exC-g5') && g('exC-g6') && g('exC-g7') && g('exC-g8');
     case 4: return val('exD-text');
@@ -618,11 +618,11 @@ function validateStep(n) {
 function saveStep(n) {
   switch (n) {
     case 1:
-      state.exA.q1 = g('exA-q1');
-      state.exA.q2 = g('exA-q2');
-      state.exA.q3 = g('exA-q3');
-      state.exA.q4 = g('exA-q4');
-      state.exA.q5 = g('exA-q5');
+      state.ex1.q1 = g('ex1'-q1');
+      state.ex1.q2 = g('ex1'-q2');
+      state.ex1.q3 = g('ex1'-q3');
+      state.ex1.q4 = g('ex1'-q4');
+      state.ex1.q5 = g('ex1'-q5');
       break;
     case 2:
       ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k){ state.exB[k] = g('exB-'+k); });
@@ -639,9 +639,9 @@ function saveStep(n) {
 function restoreStep(n) {
   switch (n) {
     case 1:
-      set('exA-q1', state.exA.q1); set('exA-q2', state.exA.q2);
-      set('exA-q3', state.exA.q3); set('exA-q4', state.exA.q4);
-      set('exA-q5', state.exA.q5);
+      set('ex1'-q1', state.ex1.q1); set('ex1'-q2', state.ex1.q2);
+      set('ex1'-q3', state.ex1.q3); set('ex1'-q4', state.ex1.q4);
+      set('ex1'-q5', state.ex1.q5);
       break;
     case 2:
       ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k){ set('exB-'+k, state.exB[k]); });
@@ -714,11 +714,11 @@ function checkExC() {
 ============================================================ */
 function buildSummary() {
   var rows = [
-    { ex: 'Exercise A', q: 'Q1 – How tall is Big Ben?', a: state.exA.q1 },
-    { ex: 'Exercise A', q: 'Q2 – Who built the Tower?', a: state.exA.q2 },
-    { ex: 'Exercise A', q: 'Q3 – Rooms in Buckingham Palace?', a: state.exA.q3 },
-    { ex: 'Exercise A', q: 'Q4 – View from London Eye?', a: state.exA.q4 },
-    { ex: 'Exercise A', q: 'Q5 – Why "Tower Bridge"?', a: state.exA.q5 },
+    { ex: 'Exercise A', q: 'Q1 – How tall is Big Ben?', a: state.ex1.q1 },
+    { ex: 'Exercise A', q: 'Q2 – Who built the Tower?', a: state.ex1.q2 },
+    { ex: 'Exercise A', q: 'Q3 – Rooms in Buckingham Palace?', a: state.ex1.q3 },
+    { ex: 'Exercise A', q: 'Q4 – View from London Eye?', a: state.ex1.q4 },
+    { ex: 'Exercise A', q: 'Q5 – Why "Tower Bridge"?', a: state.ex1.q5 },
     { ex: 'Exercise B', q: 'Vocabulary gap-fill', a: ['g1','g2','g3','g4','g5','g6','g7','g8'].map(function(k,i){return (i+1)+'. '+( state.exB[k]||'(blank)');}).join('\n') },
     { ex: 'Exercise C', q: 'Prepositions gap-fill', a: ['g1','g2','g3','g4','g5','g6','g7','g8'].map(function(k,i){return (i+1)+'. '+( state.exC[k]||'(blank)');}).join('\n') },
     { ex: 'Exercise D', q: 'My day in London', a: state.exD.text }
@@ -744,11 +744,11 @@ function buildEmailBody() {
     + '\nClass:   ' + state.cls
     + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
     + '\n\n--- Exercise A: Comprehension ---'
-    + '\nQ1: ' + (state.exA.q1 || '(none)')
-    + '\nQ2: ' + (state.exA.q2 || '(none)')
-    + '\nQ3: ' + (state.exA.q3 || '(none)')
-    + '\nQ4: ' + (state.exA.q4 || '(none)')
-    + '\nQ5: ' + (state.exA.q5 || '(none)')
+    + '\nQ1: ' + (state.ex1.q1 || '(none)')
+    + '\nQ2: ' + (state.ex1.q2 || '(none)')
+    + '\nQ3: ' + (state.ex1.q3 || '(none)')
+    + '\nQ4: ' + (state.ex1.q4 || '(none)')
+    + '\nQ5: ' + (state.ex1.q5 || '(none)')
     + '\n\n--- Exercise B: Vocabulary ---'
     + '\n' + ['g1','g2','g3','g4','g5','g6','g7','g8'].map(function(k,i){return (i+1)+'. '+(state.exB[k]||'(blank)');}).join('\n')
     + '\n\n--- Exercise C: Prepositions ---'
