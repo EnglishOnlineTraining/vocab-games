@@ -766,21 +766,37 @@ function submitToSheet() {
   var btn = document.getElementById('submit-btn');
   btn.disabled = true;
   btn.textContent = 'Sending...';
+
+  var answersList = [];
+  Object.keys(state).forEach(function(section) {
+    if (section === 'name' || section === 'cls') return;
+    var sectionData = state[section];
+    if (typeof sectionData === 'object' && sectionData !== null) {
+      Object.keys(sectionData).forEach(function(k) {
+        answersList.push({key: section + '-' + k, value: sectionData[k] || ''});
+      });
+    }
+  });
+
   var payload = {
-    name: state.name, cls: state.cls, unit: UNIT,
-    ex1: state.ex1, ex2a: state.ex2a, ex2b: state.ex2b
+    name: state.name,
+    cls:  state.cls,
+    unit: UNIT,
+    answers: JSON.stringify(answersList)
   };
+
   fetch(SHEET_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
-  }).then(function() {
+  }).then(function(r) { return r.json(); })
+  .then(function() {
     btn.style.display = 'none';
     document.getElementById('submit-success').style.display = 'block';
     document.getElementById('submit-fallback').style.display = 'block';
   }).catch(function() {
     btn.disabled = false;
-    btn.textContent = '🚀 Submit to Teacher';
+    btn.textContent = 'Submit to Teacher';
     document.getElementById('submit-fallback').style.display = 'block';
   });
 }
