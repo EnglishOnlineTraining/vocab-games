@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing Assessment | englishonline.training</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f0f4f8;color:#1a202c;min-height:100vh}
+
+/* Header */
+header{background:#1b4332;color:white;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,0.25)}
+header a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.88rem}
+header .title{font-size:.95rem;font-weight:600}
+#timer-wrap{display:none;align-items:center;gap:8px}
+#timer-label{font-size:.75rem;opacity:.7;text-transform:uppercase;letter-spacing:.05em}
+#timer-display{font-size:1.1rem;font-weight:700;background:rgba(255,255,255,.2);padding:3px 12px;border-radius:20px;font-variant-numeric:tabular-nums;min-width:68px;text-align:center}
+#timer-display.warning{background:#f6ad55;color:#7b341e}
+#timer-display.danger{background:#fc8181;color:#742a2a;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+
+/* Screens */
+.screen{display:none}
+.screen.active{display:block}
+
+/* Layout */
+.container{max-width:740px;margin:0 auto;padding:24px 16px}
+.card{background:white;border-radius:12px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,.07);margin-bottom:20px}
+h2{font-size:1.35rem;margin-bottom:14px;color:#1a202c}
+h3{font-size:1rem;margin-bottom:8px;color:#276749}
+p{margin-bottom:10px;line-height:1.65;font-size:.95rem}
+
+/* Forms */
+.form-group{margin-bottom:16px}
+label{display:block;font-weight:600;margin-bottom:5px;font-size:.88rem;color:#4a5568}
+input[type=text]{width:100%;padding:10px 14px;border:2px solid #e2e8f0;border-radius:8px;font-size:1rem;transition:border-color .2s}
+input[type=text]:focus{outline:none;border-color:#2d6a4f}
+
+/* Buttons */
+.btn{display:inline-block;padding:11px 26px;border:none;border-radius:8px;font-size:.95rem;font-weight:600;cursor:pointer;transition:all .2s;text-align:center}
+.btn-primary{background:#2d6a4f;color:white}
+.btn-primary:hover{background:#1b4332}
+.btn-primary:disabled{background:#a0aec0;cursor:not-allowed;opacity:.7}
+.btn-secondary{background:#e2e8f0;color:#4a5568}
+.btn-secondary:hover{background:#cbd5e0}
+.btn-outline{background:transparent;border:2px solid #2d6a4f;color:#2d6a4f}
+.btn-outline:hover{background:#f0fff4}
+
+/* Rules */
+.rule-list{list-style:none;padding:0;margin:12px 0}
+.rule-list li{padding:9px 14px;border-left:3px solid #2d6a4f;margin-bottom:7px;background:#f7fafc;border-radius:0 7px 7px 0;font-size:.9rem;line-height:1.5}
+.rule-list li.red{border-color:#e53e3e;background:#fff5f5}
+
+/* Integrity notice */
+.notice{background:#fffff0;border:1px solid #ecc94b;border-radius:8px;padding:13px 16px;font-size:.88rem;line-height:1.5;margin-top:12px}
+
+/* Scenario box */
+.scenario-box{background:#ebf8ff;border:2px solid #bee3f8;border-radius:10px;padding:20px;margin-bottom:18px;-webkit-user-select:none;user-select:none}
+.scenario-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:#2b6cb0;font-weight:700;margin-bottom:7px}
+
+/* Vocab box */
+.vocab-box{background:#f0fff4;border:2px solid #9ae6b4;border-radius:10px;padding:16px 18px;margin-bottom:18px;-webkit-user-select:none;user-select:none}
+.vocab-section-label{font-size:.8rem;font-weight:700;color:#276749;margin:8px 0 5px}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{background:#c6f6d5;color:#22543d;padding:3px 11px;border-radius:20px;font-size:.82rem;font-weight:500;transition:all .2s}
+.chip.used{background:#2d6a4f;color:white}
+
+/* Writing area */
+.writing-wrapper{position:relative}
+.watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-25deg);font-size:1.9rem;font-weight:700;color:rgba(45,106,79,.06);pointer-events:none;white-space:nowrap;z-index:1;-webkit-user-select:none;user-select:none}
+textarea{width:100%;min-height:340px;padding:14px;border:2px solid #e2e8f0;border-radius:8px;font-size:1rem;line-height:1.7;resize:vertical;z-index:2;position:relative;background:transparent}
+textarea:focus{outline:none;border-color:#2d6a4f}
+
+/* Word count */
+.wc-row{display:flex;align-items:center;gap:10px;margin-top:8px;font-size:.85rem}
+#wc-num{font-weight:700;font-size:1rem;color:#2d6a4f;min-width:80px}
+#wc-num.short{color:#c05621}
+#wc-num.ok{color:#276749}
+#wc-num.over{color:#c53030}
+.wc-bar-outer{flex:1;height:7px;background:#e2e8f0;border-radius:4px;overflow:hidden}
+.wc-bar-inner{height:100%;background:#2d6a4f;border-radius:4px;transition:width .3s}
+.wc-hint{color:#718096}
+
+/* Alerts */
+.alert{border-radius:8px;padding:11px 16px;margin-bottom:14px;font-size:.9rem;display:none}
+.alert.show{display:block}
+.alert-warn{background:#fffbeb;border:1px solid #f6e05e;color:#744210}
+.alert-danger{background:#fff5f5;border:1px solid #feb2b2;color:#742a2a}
+.alert-info{background:#ebf8ff;border:1px solid #bee3f8;color:#2c5282}
+
+/* Integrity strip */
+.integrity-strip{font-size:.78rem;color:#a0aec0;margin-top:8px;text-align:right}
+.integrity-strip .flag{color:#e53e3e;font-weight:700}
+
+/* Vocab check */
+.vc-list{list-style:none;padding:0;margin:8px 0}
+.vc-list li{font-size:.88rem;padding:3px 0;color:#718096}
+.vc-list li.ok{color:#276749}
+.vc-list li.ok::before{content:"✓  "}
+.vc-list li.fail{color:#c53030}
+.vc-list li.fail::before{content:"✗  "}
+
+/* Submit area */
+#submit-area{text-align:center;padding:8px 0 20px}
+#time-gate-msg{font-size:.82rem;color:#718096;margin-top:7px}
+
+/* Submitted */
+.done-card{text-align:center;padding:36px 28px}
+.done-card .big-icon{font-size:3.5rem;margin-bottom:14px}
+.done-card h2{color:#276749;margin-bottom:8px}
+.done-meta{font-size:.85rem;color:#718096;margin-top:10px}
+.backup-bar{margin-top:20px;background:#f7fafc;border-radius:8px;padding:14px;text-align:left;font-size:.88rem}
+.backup-bar p{margin-bottom:10px;font-weight:600}
+.backup-btns{display:flex;gap:10px;flex-wrap:wrap}
+
+/* Exam mode — no text selection except textarea */
+body.exam-mode{-webkit-user-select:none;user-select:none}
+body.exam-mode textarea{-webkit-user-select:text;user-select:text}
+
+@media(max-width:600px){.card{padding:18px 14px}.btn{padding:10px 18px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="https://englishonline.training">englishonline.training</a>
+  <span class="title">✍️ Writing Assessment</span>
+  <div id="timer-wrap">
+    <span id="timer-label">Time left</span>
+    <span id="timer-display">60:00</span>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════ SCREEN 1: REGISTER -->
+<div id="s-register" class="screen active">
+  <div class="container">
+    <div class="card">
+      <h2>✍️ Building Business Relationships — Writing Assessment</h2>
+      <p>This is a timed, invigilated writing task based on the vocabulary and language from the <strong>Building Business Relationships</strong> unit. You will have <strong>60 minutes</strong>.</p>
+      <p>Please enter your details to begin.</p>
+
+      <div class="form-group" style="margin-top:20px">
+        <label for="inp-name">Your full name</label>
+        <input type="text" id="inp-name" placeholder="e.g. Maria Schmidt" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="form-group">
+        <label for="inp-group">Course / group</label>
+        <input type="text" id="inp-group" placeholder="e.g. English Communication Skills Online" autocomplete="off">
+      </div>
+
+      <div id="reg-err" class="alert alert-danger">Please enter both your name and your course before continuing.</div>
+
+      <button class="btn btn-primary" onclick="goRules()">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ SCREEN 2: RULES -->
+<div id="s-rules" class="screen">
+  <div class="container">
+    <div class="card">
+      <h2>📋 Assessment Rules</h2>
+      <p>Read these rules carefully before starting. The timer begins the moment you press <em>Start</em>.</p>
+
+      <ul class="rule-list">
+        <li>⏱ You have <strong>60 minutes</strong>. The timer cannot be paused or extended.</li>
+        <li class="red">🚫 <strong>Copy and paste is disabled.</strong> All text must be typed by hand.</li>
+        <li class="red">🚫 <strong>Do not switch tabs, open other windows, or use other applications.</strong> Every tab switch is logged and sent to your teacher.</li>
+        <li class="red">🚫 <strong>Do not use AI tools</strong> (ChatGPT, translation engines, grammar checkers, etc.) during the assessment.</li>
+        <li>📝 Write approximately <strong>250 words</strong> (200–320) in response to your assigned scenario.</li>
+        <li>✅ Use at least <strong>2 multiword verbs, 2 relationship verbs, and 1 linker</strong> from the unit word banks shown on screen.</li>
+        <li>⏳ The Submit button unlocks after <strong>10 minutes</strong> of writing time.</li>
+        <li>🔒 Your session is monitored. Integrity data (tab switches, paste attempts, typing patterns) is submitted alongside your writing.</li>
+        <li>🖥 Entering <strong>full screen</strong> is strongly recommended to minimise distractions.</li>
+      </ul>
+
+      <div class="notice">
+        ⚠️ <strong>Academic integrity:</strong> Submitting AI-generated, plagiarised, or copied text may result in a failing grade and formal disciplinary action. By clicking <em>Start</em> you confirm that everything you submit is your own independent work.
+      </div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;align-items:center">
+        <button class="btn btn-primary" onclick="startExam()">▶ Start — begin 60-minute timer</button>
+        <button class="btn btn-outline" id="fs-btn" onclick="goFullscreen()">🖥 Enter full screen</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ SCREEN 3: EXAM -->
+<div id="s-exam" class="screen">
+  <div class="container">
+
+    <div id="alert-tab" class="alert alert-danger">⚠️ <strong>Tab switch detected.</strong> You left this page — this has been logged and will be visible to your teacher. Please stay on this page.</div>
+    <div id="alert-paste" class="alert alert-warn">⛔ <strong>Paste blocked.</strong> Copy and paste is disabled. Please type your answer.</div>
+    <div id="alert-devtools" class="alert alert-danger">⚠️ <strong>Browser developer tools may be open.</strong> This has been logged.</div>
+
+    <div class="card">
+      <h2>Your Writing Task</h2>
+      <div class="scenario-box" id="scenario-box"><!-- injected --></div>
+
+      <div class="vocab-box">
+        <h3>📚 Required vocabulary — use these in your writing</h3>
+        <p style="font-size:.82rem;color:#276749;margin-bottom:2px">Words turn <strong style="color:#1b4332">green</strong> as you use them.</p>
+        <div class="vocab-section-label">Multiword verbs — use at least 2:</div>
+        <div class="chips" id="chips-mv"></div>
+        <div class="vocab-section-label">Relationship verbs — use at least 2:</div>
+        <div class="chips" id="chips-rv"></div>
+        <div class="vocab-section-label">Linkers — use at least 1:</div>
+        <div class="chips" id="chips-lk"></div>
+      </div>
+
+      <div class="writing-wrapper">
+        <div class="watermark" id="wm"></div>
+        <textarea id="essay"
+          placeholder="Begin typing your response here…"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="true"
+          oncontextmenu="return false"
+        ></textarea>
+      </div>
+
+      <div class="wc-row">
+        <span id="wc-num">0 words</span>
+        <div class="wc-bar-outer"><div class="wc-bar-inner" id="wc-bar" style="width:0%"></div></div>
+        <span class="wc-hint">Target: ~250 words (200–320)</span>
+      </div>
+
+      <div class="integrity-strip">
+        🔒 Session: <span id="sid-disp"></span> &nbsp;|&nbsp;
+        Tab switches: <span id="ts-disp">0</span> &nbsp;|&nbsp;
+        Paste attempts: <span id="pa-disp">0</span>
+      </div>
+    </div>
+
+    <!-- Vocab check result (appears on failed submit attempt) -->
+    <div class="card" id="vc-card" style="display:none">
+      <h3>📋 Vocabulary check — requirements not yet met</h3>
+      <p id="vc-msg" style="color:#c53030;font-size:.9rem;margin-bottom:8px"></p>
+      <ul class="vc-list" id="vc-list"></ul>
+    </div>
+
+    <div id="submit-area">
+      <button class="btn btn-primary" id="sub-btn" onclick="doSubmit()" disabled>Submit assessment</button>
+      <div id="time-gate-msg">⏳ Submit unlocks after 10 minutes</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ SCREEN 4: DONE -->
+<div id="s-done" class="screen">
+  <div class="container">
+    <div class="card done-card">
+      <div class="big-icon">✅</div>
+      <h2>Submitted successfully!</h2>
+      <p>Your writing has been sent to your teacher.</p>
+      <p class="done-meta" id="done-meta"></p>
+      <div class="backup-bar">
+        <p>If the automatic submission failed, use one of these backups:</p>
+        <div class="backup-btns">
+          <button class="btn btn-secondary" onclick="doEmailBackup()">✉️ Send by email</button>
+          <button class="btn btn-secondary" id="copy-btn" onclick="doCopyBackup()">📋 Copy to clipboard</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ================================================================
+   CONFIG
+================================================================ */
+const SHEET_URL   = 'https://script.google.com/macros/s/AKfycbwwbV6ufw7QX8meNGyOwiVdkqNpQ8yckdXmsbFqysJwWqAfCWaR_eC9RH41LaqmYyZOeA/exec';
+const EMAIL       = 'sptrezise@proton.me';
+const EXAM_MINS   = 60;
+const GATE_MINS   = 10;
+const MIN_W       = 200;
+const MAX_W       = 320;
+
+/* ================================================================
+   VOCABULARY
+================================================================ */
+const MV = ['count on','check in','go back','go over','look forward to','meet up','turn round','turn up','work out','carry on'];
+const RV = ['foster','restore','sever','undermine','strengthen','build up'];
+const LK = ['although','even though','in spite of','despite','nevertheless','nonetheless','however','yet','on the other hand'];
+
+/* ================================================================
+   SCENARIOS — 4 variants; assigned by name hash so reproducible
+================================================================ */
+const SCENARIOS = [
+  {
+    id:'A', title:'Scenario A — A damaged client relationship',
+    html:`<p>A long-standing client has stopped responding to your emails after a minor billing dispute. Your line manager has asked you to write a short internal memo (<strong>~250 words</strong>) explaining what went wrong and proposing a specific plan to <em>restore</em> the relationship. Make your plan concrete — what exactly will you do, and when?</p>`
+  },
+  {
+    id:'B', title:'Scenario B — A new international supplier',
+    html:`<p>Your company signed a contract with a new international supplier two months ago, but progress has been slower than expected due to recurring miscommunication. Write a short report (<strong>~250 words</strong>) to your supervisor assessing the relationship so far and recommending at least two practical steps to <em>strengthen</em> it going forward.</p>`
+  },
+  {
+    id:'C', title:'Scenario C — A competitor threat',
+    html:`<p>A key distributor has recently begun working with one of your competitors. Write a message to your team leader (<strong>~250 words</strong>) explaining why this is a risk, what may have caused the situation, and what specific steps you would take to prevent the relationship from deteriorating further and to <em>turn</em> things <em>round</em>.</p>`
+  },
+  {
+    id:'D', title:'Scenario D — Taking over a troubled account',
+    html:`<p>You have recently taken over a client account from a colleague who left the company. The client has expressed serious dissatisfaction with the transition and is considering <em>severing</em> the relationship. Write a message to your supervisor (<strong>~250 words</strong>) describing the situation and outlining your concrete plan to <em>build up</em> trust and turn the account around.</p>`
+  }
+];
+
+/* ================================================================
+   STATE
+================================================================ */
+let sName='', sGroup='', sid='', scenario=null;
+let t0=null, tabN=0, pasteN=0, anomalyN=0;
+let gateOpen=false, timerID=null;
+let lastLen=0, lastT=Date.now();
+let snapshots=[];
+let payload=null;
+
+/* ================================================================
+   SCREEN HELPER
+================================================================ */
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active')}
+
+/* ================================================================
+   SCREEN 1 → 2
+================================================================ */
+function goRules(){
+  sName=document.getElementById('inp-name').value.trim();
+  sGroup=document.getElementById('inp-group').value.trim();
+  if(!sName||!sGroup){document.getElementById('reg-err').classList.add('show');return}
+  document.getElementById('reg-err').classList.remove('show');
+  show('s-rules');
+}
+document.getElementById('inp-group').addEventListener('keydown',e=>{if(e.key==='Enter')goRules()});
+
+/* ================================================================
+   FULL SCREEN
+================================================================ */
+function goFullscreen(){
+  const el=document.documentElement;
+  (el.requestFullscreen||el.webkitRequestFullscreen||el.mozRequestFullScreen||el.msRequestFullscreen||function(){}).call(el);
+  document.getElementById('fs-btn').textContent='✅ Full screen active';
+}
+
+/* ================================================================
+   START EXAM
+================================================================ */
+function startExam(){
+  sid='SID-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).substr(2,5).toUpperCase();
+  document.getElementById('sid-disp').textContent=sid;
+
+  // Assign scenario by name hash (same name always → same scenario)
+  const h=Math.abs(hashStr(sName+sGroup))%SCENARIOS.length;
+  scenario=SCENARIOS[h];
+
+  // Render
+  const sb=document.getElementById('scenario-box');
+  sb.innerHTML=`<div class="scenario-label">📄 ${scenario.title}</div>${scenario.html}`;
+  buildChips('chips-mv',MV);
+  buildChips('chips-rv',RV);
+  buildChips('chips-lk',LK);
+  document.getElementById('wm').textContent=sName;
+
+  t0=Date.now();
+  startTimer();
+
+  // Time gate
+  setTimeout(()=>{
+    gateOpen=true;
+    document.getElementById('time-gate-msg').textContent='✅ You may now submit when ready.';
+    checkReady();
+  }, GATE_MINS*60*1000);
+
+  // Snapshots every 3 min
+  setInterval(snap, 3*60*1000);
+
+  document.body.classList.add('exam-mode');
+  show('s-exam');
+  document.getElementById('essay').focus();
+  document.getElementById('timer-wrap').style.display='flex';
+
+  // DevTools size check (runs periodically)
+  setInterval(checkDevTools,4000);
+}
+
+function hashStr(s){let h=0;for(let i=0;i<s.length;i++)h=Math.imul(31,h)+s.charCodeAt(i)|0;return h}
+
+function buildChips(id,words){
+  const c=document.getElementById(id);c.innerHTML='';
+  words.forEach(w=>{const sp=document.createElement('span');sp.className='chip';sp.textContent=w;sp.dataset.w=w.toLowerCase();c.appendChild(sp)});
+}
+
+/* ================================================================
+   TIMER
+================================================================ */
+function startTimer(){
+  timerID=setInterval(()=>{
+    const rem=EXAM_MINS*60*1000-(Date.now()-t0);
+    if(rem<=0){clearInterval(timerID);document.getElementById('timer-display').textContent='00:00';autoSubmit();return}
+    const m=Math.floor(rem/60000),s=Math.floor((rem%60000)/1000);
+    const td=document.getElementById('timer-display');
+    td.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+    td.className=m<5?'danger':m<10?'warning':'';
+  },500);
+}
+
+/* ================================================================
+   TAB / FOCUS DETECTION
+================================================================ */
+document.addEventListener('visibilitychange',()=>{
+  if(!t0)return;
+  if(document.hidden){
+    tabN++;
+    document.getElementById('ts-disp').textContent=tabN;
+  } else if(tabN>0){
+    flash('alert-tab');
+  }
+});
+window.addEventListener('blur',()=>{
+  if(!t0)return;
+  tabN++;
+  document.getElementById('ts-disp').textContent=tabN;
+});
+
+/* ================================================================
+   PASTE BLOCKING
+================================================================ */
+document.addEventListener('paste',e=>{
+  if(!t0)return;
+  e.preventDefault();
+  pasteN++;
+  document.getElementById('pa-disp').textContent=pasteN;
+  flash('alert-paste');
+});
+document.addEventListener('keydown',e=>{
+  if(!t0)return;
+  // Block Ctrl/Cmd+V
+  if((e.ctrlKey||e.metaKey)&&(e.key==='v'||e.key==='V')){
+    e.preventDefault();pasteN++;document.getElementById('pa-disp').textContent=pasteN;flash('alert-paste');
+  }
+  // Block Ctrl/Cmd+C (copying question to put in AI)
+  if((e.ctrlKey||e.metaKey)&&(e.key==='c'||e.key==='C')&&document.activeElement!==document.getElementById('essay')){
+    e.preventDefault();
+  }
+  // Block F12, Ctrl+Shift+I/J/U
+  if(e.key==='F12'){e.preventDefault()}
+  if((e.ctrlKey||e.metaKey)&&e.shiftKey&&['i','I','j','J'].includes(e.key)){e.preventDefault()}
+  if((e.ctrlKey||e.metaKey)&&(e.key==='u'||e.key==='U')){e.preventDefault()}
+});
+
+/* ================================================================
+   RIGHT-CLICK DISABLE (during exam)
+================================================================ */
+document.addEventListener('contextmenu',e=>{if(t0)e.preventDefault()});
+
+/* ================================================================
+   DEVTOOLS DETECTION (size heuristic)
+================================================================ */
+let devToolsFlagged=false;
+function checkDevTools(){
+  if(!t0||devToolsFlagged)return;
+  const threshold=160;
+  if((window.outerWidth-window.innerWidth>threshold)||(window.outerHeight-window.innerHeight>threshold)){
+    devToolsFlagged=true;
+    anomalyN++;
+    flash('alert-devtools');
+  }
+}
+// Also detect via navigator
+if(navigator.webdriver){anomalyN++}
+
+/* ================================================================
+   TYPING SPEED ANOMALY
+================================================================ */
+const essay=document.getElementById('essay');
+essay.addEventListener('input',()=>{
+  const now=Date.now(), len=essay.value.length;
+  const diff=len-lastLen, dt=now-lastT;
+  if(diff>60&&dt<500)anomalyN++;  // >60 chars in <0.5s = suspicious
+  lastLen=len; lastT=now;
+  updateWC(); updateChips(); checkReady();
+});
+
+/* ================================================================
+   WORD COUNT
+================================================================ */
+function wc(t){return t.trim().split(/\s+/).filter(x=>x).length}
+function updateWC(){
+  const n=wc(essay.value);
+  const el=document.getElementById('wc-num');
+  el.textContent=n+' words';
+  el.className=n<MIN_W?'short':n>MAX_W?'over':'ok';
+  const bar=document.getElementById('wc-bar');
+  bar.style.width=Math.min(100,n/MAX_W*100)+'%';
+  bar.style.background=n>MAX_W?'#e53e3e':n>=MIN_W?'#38a169':'#2d6a4f';
+}
+
+/* ================================================================
+   VOCAB CHIP HIGHLIGHTING
+================================================================ */
+function updateChips(){
+  const txt=essay.value.toLowerCase();
+  document.querySelectorAll('.chip').forEach(c=>{
+    c.className='chip'+(txt.includes(c.dataset.w)?' used':'');
+  });
+}
+
+/* ================================================================
+   SNAPSHOT
+================================================================ */
+function snap(){if(t0)snapshots.push({t:Math.round((Date.now()-t0)/1000),w:wc(essay.value)})}
+
+/* ================================================================
+   SUBMIT READINESS
+================================================================ */
+function checkReady(){
+  const n=wc(essay.value);
+  document.getElementById('sub-btn').disabled=!(gateOpen&&n>=MIN_W&&n<=MAX_W);
+}
+
+/* ================================================================
+   VOCABULARY CHECK
+================================================================ */
+function vocabCheck(){
+  const txt=essay.value.toLowerCase();
+  const mvF=MV.filter(w=>txt.includes(w));
+  const rvF=RV.filter(w=>txt.includes(w));
+  const lkF=LK.filter(w=>txt.includes(w));
+  return{mvF,rvF,lkF,ok:mvF.length>=2&&rvF.length>=2&&lkF.length>=1};
+}
+
+/* ================================================================
+   SUBMIT
+================================================================ */
+function doSubmit(){
+  snap();
+  const vc=vocabCheck();
+
+  // Show vocab check result regardless
+  const card=document.getElementById('vc-card');
+  const list=document.getElementById('vc-list');
+  list.innerHTML='';
+  const row=(lbl,found,req)=>{const li=document.createElement('li');li.className=found>=req?'ok':'fail';li.textContent=`${lbl}: ${found} found (need ${req})`;list.appendChild(li)};
+  row('Multiword verbs',vc.mvF.length,2);
+  row('Relationship verbs',vc.rvF.length,2);
+  row('Linkers',vc.lkF.length,1);
+
+  if(!vc.ok){
+    document.getElementById('vc-msg').textContent='⚠️ Please use all the required vocabulary before submitting.';
+    card.style.display='block';
+    card.scrollIntoView({behavior:'smooth'});
+    return;
+  }
+  card.style.display='none';
+
+  const el=Math.round((Date.now()-t0)/1000);
+  payload={
+    timestamp:new Date().toISOString(),
+    name:sName, group:sGroup,
+    session_id:sid,
+    scenario:scenario.id,
+    scenario_title:scenario.title,
+    writing:essay.value,
+    word_count:wc(essay.value),
+    time_spent_s:el,
+    tab_switches:tabN,
+    paste_attempts:pasteN,
+    typing_anomalies:anomalyN,
+    devtools_flagged:devToolsFlagged,
+    mv_used:vc.mvF.join(', '),
+    rv_used:vc.rvF.join(', '),
+    lk_used:vc.lkF.join(', '),
+    snapshots:JSON.stringify(snapshots),
+    user_agent:navigator.userAgent
+  };
+
+  clearInterval(timerID);
+  document.getElementById('timer-wrap').style.display='none';
+  show('s-done');
+
+  const m=Math.floor(el/60),s=el%60;
+  document.getElementById('done-meta').textContent=
+    `Scenario ${scenario.id} · ${payload.word_count} words · ${m}m ${s}s · Session: ${sid}`;
+
+  send(payload);
+}
+
+function autoSubmit(){if(document.getElementById('s-exam').classList.contains('active'))doSubmit()}
+
+/* ================================================================
+   SEND TO SHEET
+================================================================ */
+function send(data){
+  fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({tab:'Writing Task',data})});
+}
+
+/* ================================================================
+   BACKUP
+================================================================ */
+function doEmailBackup(){
+  if(!payload)return;
+  const sub=encodeURIComponent(`Writing Task — ${payload.name} — ${payload.session_id}`);
+  const body=encodeURIComponent(
+    `Name: ${payload.name}\nGroup: ${payload.group}\nScenario: ${payload.scenario_title}\n`+
+    `Words: ${payload.word_count} | Time: ${Math.floor(payload.time_spent_s/60)}m\n`+
+    `Tab switches: ${payload.tab_switches} | Paste attempts: ${payload.paste_attempts}\n`+
+    `Anomalies: ${payload.typing_anomalies} | DevTools: ${payload.devtools_flagged}\n`+
+    `Session: ${payload.session_id}\n\n--- WRITING ---\n${payload.writing}`
+  );
+  window.location.href=`mailto:${EMAIL}?subject=${sub}&body=${body}`;
+}
+
+function doCopyBackup(){
+  if(!payload)return;
+  const txt=`Name: ${payload.name}\nGroup: ${payload.group}\nScenario: ${payload.scenario_title}\n`+
+    `Words: ${payload.word_count} | Time: ${Math.floor(payload.time_spent_s/60)}m\n`+
+    `Tab switches: ${payload.tab_switches} | Paste attempts: ${payload.paste_attempts}\n`+
+    `Anomalies: ${payload.typing_anomalies} | DevTools: ${payload.devtools_flagged}\n`+
+    `Session: ${payload.session_id}\n\n--- WRITING ---\n${payload.writing}`;
+  navigator.clipboard.writeText(txt).then(()=>{
+    document.getElementById('copy-btn').textContent='✅ Copied!';
+  });
+}
+
+/* ================================================================
+   FLASH HELPER
+================================================================ */
+function flash(id){
+  const el=document.getElementById(id);
+  el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'),7000);
+}
+</script>
+</body>
+</html>
