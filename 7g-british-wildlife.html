@@ -40,7 +40,7 @@
     .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
 
     /* ── Exercise labels ── */
-    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
+    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 6px; margin-bottom: 1rem; }
     .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
     .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
 
@@ -82,7 +82,7 @@
     /* ── Comprehension questions ── */
     .q-item { border-bottom: 1px solid var(--border); padding: .9rem 0; }
     .q-item:last-child { border-bottom: none; }
-    .q-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 800; flex-shrink: 0; margin-right: .5rem; }
+    .q-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; }
     .q-label { font-size: .88rem; font-weight: 600; color: var(--text); margin-bottom: .5rem; display: flex; align-items: baseline; gap: .4rem; }
 
     /* ── Feedback banners ── */
@@ -93,7 +93,7 @@
     .feedback.err  { background: #fde8e8; color: #721c24; }
 
     /* ── Buttons ── */
-    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; transition: all .2s; }
     .btn:active { transform: scale(.97); }
     .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
     .btn-primary:hover { background: #15304f; }
@@ -138,7 +138,7 @@
 <header class="app-header">
   <div class="header-inner">
     <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
-    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
+    <a class="header-logo" href="7g-activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
     <div class="header-meta" id="header-meta" style="display:none">
       <strong id="header-name"></strong>
       <span id="header-step">Exercise A of 3</span>
@@ -206,12 +206,12 @@
     <div class="card">
       <div class="reading-text">
         <p class="reading-heading">🦊 The Red Fox</p>
-        <p>Britain is home to many wild animals, but the red fox is one of the most well-known. Foxes live in both the city and the countryside. They have bright red or orange fur, a bushy tail, and sharp eyes. Foxes eat almost anything — from small animals and birds to fruit and even rubbish from bins.</p>
-        <p>Foxes are <strong>nocturnal</strong>, which means they are most active at night. A group of foxes is called a <em>skulk</em>. Baby foxes are called <em>cubs</em> and are born in spring, usually in a cosy underground den.</p>
+        <p>Britain is home to many wild animals, but the red fox is one of the most well-known. Foxes live in both the city and the countryside. They have bright red or orange fur, a bushy tail, and long legs. Their big ears help them hear sounds from far away.</p>
+        <p>Foxes are <strong>nocturnal</strong>, which means they are most active at night. A group of foxes is called a <em>skulk</em>. Baby foxes are called <em>cubs</em> and are born in spring.</p>
 
         <p class="reading-heading">🦔 The Hedgehog</p>
-        <p>The hedgehog is a small mammal covered in about 5,000 sharp spines. When a hedgehog feels afraid, it rolls up into a tight ball to protect itself. Like foxes, hedgehogs are also nocturnal. They eat insects, worms, and snails.</p>
-        <p>In winter, hedgehogs <strong>hibernate</strong> — they sleep deeply from November until March or April. During this time they do not eat or drink. Today, hedgehogs are in danger because towns and cities are growing and their natural habitats are getting smaller.</p>
+        <p>The hedgehog is a small mammal covered in about 5,000 sharp spines. When a hedgehog feels afraid, it rolls up into a tight ball to protect itself. Like foxes, hedgehogs are also nocturnal. They eat insects, small snakes, frogs, and even eggs.</p>
+        <p>In winter, hedgehogs <strong>hibernate</strong> — they sleep deeply from November until March or April. During this time they do not eat or drink. Today, hedgehogs are in danger because their habitats are disappearing.</p>
       </div>
     </div>
 
@@ -435,6 +435,7 @@ var UNIT          = '7g-british-wildlife';
 var TOTAL_STEPS   = 4;
 var SHEET_URL     = 'https://hook.eu1.make.com/1gx46wea33yguetah95oy4j8asbyafqm';
 var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+var currentStep   = 0;
 
 /* ============================================================
    STATE
@@ -455,6 +456,7 @@ function showStep(n) {
   document.getElementById('step-' + n).classList.add('active');
   document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  currentStep = n;
   restoreStep(n);
   var meta = document.getElementById('header-meta');
   if (n === 0) { meta.style.display = 'none'; return; }
@@ -505,7 +507,7 @@ function startExercises() {
 function validateStep(n) {
   switch (n) {
     case 1:
-      return val('ex1'-q1') && val('ex1'-q2') && val('ex1'-q3') && val('ex1'-q4') && val('ex1'-q5');
+      return val('ex1-q1') && val('ex1-q2') && val('ex1-q3') && val('ex1-q4') && val('ex1-q5');
     case 2:
       /* require at least 6 of 8 gaps answered */
       var ids = ['g1','g2','g3','g4','g5','g6','g7','g8'];
@@ -524,11 +526,11 @@ function validateStep(n) {
 function saveStep(n) {
   switch (n) {
     case 1:
-      state.ex1.q1 = g('ex1'-q1');
-      state.ex1.q2 = g('ex1'-q2');
-      state.ex1.q3 = g('ex1'-q3');
-      state.ex1.q4 = g('ex1'-q4');
-      state.ex1.q5 = g('ex1'-q5');
+      state.ex1.q1 = g('ex1-q1');
+      state.ex1.q2 = g('ex1-q2');
+      state.ex1.q3 = g('ex1-q3');
+      state.ex1.q4 = g('ex1-q4');
+      state.ex1.q5 = g('ex1-q5');
       break;
     case 2:
       ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k) {
@@ -545,11 +547,11 @@ function saveStep(n) {
 function restoreStep(n) {
   switch (n) {
     case 1:
-      set('ex1'-q1', state.ex1.q1);
-      set('ex1'-q2', state.ex1.q2);
-      set('ex1'-q3', state.ex1.q3);
-      set('ex1'-q4', state.ex1.q4);
-      set('ex1'-q5', state.ex1.q5);
+      set('ex1-q1', state.ex1.q1);
+      set('ex1-q2', state.ex1.q2);
+      set('ex1-q3', state.ex1.q3);
+      set('ex1-q4', state.ex1.q4);
+      set('ex1-q5', state.ex1.q5);
       break;
     case 2:
       ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k) {
@@ -670,7 +672,7 @@ function buildEmailBody() {
    SUBMIT TO GOOGLE SHEET
 ============================================================ */
 function submitToSheet() {
-  saveStepAnswers(Math.max(currentStep, 1));
+  saveStep(currentStep);
   buildSummary();
 
   var btn = document.getElementById('submit-btn');
@@ -745,7 +747,7 @@ document.addEventListener('paste', function(e) {
     e.preventDefault();
     var msg = document.createElement('div');
     msg.textContent = '✏️ Pasting is not allowed';
-    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;';
     document.body.appendChild(msg);
     setTimeout(function() { msg.style.opacity='0'; setTimeout(function(){ msg.remove(); },400); },2000);
   }
@@ -756,7 +758,7 @@ document.addEventListener('copy', function(e) {
   e.preventDefault();
   var msg = document.createElement('div');
   msg.textContent = '🚫 Copying is not allowed';
-  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;';
   document.body.appendChild(msg);
   setTimeout(function() { msg.style.opacity='0'; setTimeout(function(){ msg.remove(); },400); },2000);
 });
