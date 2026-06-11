@@ -37,7 +37,7 @@
     .step.active { display: block; }
     .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
 
-    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 6px; margin-bottom: 1rem; }
+    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
     .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
     .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
 
@@ -73,7 +73,7 @@
     .word-bank span { display: inline-block; margin: .2rem .3rem; background: var(--blue); color: #fff; border-radius: 4px; padding: .18rem .55rem; font-size: .8rem; font-weight: 600; }
 
     .transform-item { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: .85rem; background: #fafbfc; }
-    .transform-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; margin-right: .5rem; }
+    .transform-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 800; flex-shrink: 0; margin-bottom: .5rem; }
     .transform-original { font-size: .9rem; color: var(--text); font-style: italic; margin-bottom: .65rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); }
     .transform-hint { font-size: .75rem; color: var(--muted); margin-top: .3rem; }
 
@@ -85,7 +85,7 @@
     .feedback.warn { background: #fff3cd; color: #856404; }
     .feedback.err  { background: #fde8e8; color: #721c24; }
 
-    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; transition: all .2s; }
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
     .btn:active { transform: scale(.97); }
     .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
     .btn-primary:hover { background: #15304f; }
@@ -204,7 +204,7 @@
       <div class="gap-text">
 
         <p>1. The castle walls were very old — archaeologists said they were from an
-        <select class="gap-select" id="ex1-g1">
+        <select class="gap-select" id="exA-g1">
           <option value="">—</option>
           <option>ancient</option>
           <option>modern</option>
@@ -213,7 +213,7 @@
         civilisation.</p>
 
         <p>2. After the fire, the old church was carefully
-        <select class="gap-select" id="ex1-g2">
+        <select class="gap-select" id="exA-g2">
           <option value="">—</option>
           <option>destroyed</option>
           <option>restored</option>
@@ -222,7 +222,7 @@
         using original materials.</p>
 
         <p>3. Scientists found
-        <select class="gap-select" id="ex1-g3">
+        <select class="gap-select" id="exA-g3">
           <option value="">—</option>
           <option>evidence</option>
           <option>legend</option>
@@ -231,7 +231,7 @@
         of a Viking settlement near the coast.</p>
 
         <p>4. Nobody knows exactly what happened — the disappearance remains completely
-        <select class="gap-select" id="ex1-g4">
+        <select class="gap-select" id="exA-g4">
           <option value="">—</option>
           <option>obvious</option>
           <option>boring</option>
@@ -240,14 +240,14 @@
         .</p>
 
         <p>5. The
-        <select class="gap-select" id="ex1-g5">
+        <select class="gap-select" id="exA-g5">
           <option value="">—</option>
           <option>legend</option>
           <option>evidence</option>
           <option>historian</option>
         </select>
         spent years studying records from the medieval
-        <select class="gap-select" id="ex1-g6">
+        <select class="gap-select" id="exA-g6">
           <option value="">—</option>
           <option>ruins</option>
           <option>period</option>
@@ -256,14 +256,14 @@
         .</p>
 
         <p>6. The old city walls had fallen apart over the
-        <select class="gap-select" id="ex1-g7">
+        <select class="gap-select" id="exA-g7">
           <option value="">—</option>
           <option>century</option>
           <option>period</option>
           <option>legend</option>
         </select>
         , leaving only
-        <select class="gap-select" id="ex1-g8">
+        <select class="gap-select" id="exA-g8">
           <option value="">—</option>
           <option>ruins</option>
           <option>evidence</option>
@@ -442,12 +442,11 @@ var UNIT          = '7a-what-was-it-like';
 var TOTAL_STEPS   = 4;
 var SHEET_URL     = 'https://hook.eu1.make.com/1gx46wea33yguetah95oy4j8asbyafqm';
 var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
-var currentStep   = 0;
 
 var state = {
   name: '',
   cls:  '',
-  ex1:  { g1:'', g2:'', g3:'', g4:'', g5:'', g6:'', g7:'', g8:'' },
+  exA:  { g1:'', g2:'', g3:'', g4:'', g5:'', g6:'', g7:'', g8:'' },
   exB:  { t1:'', t2:'', t3:'', t4:'', t5:'' },
   exC:  { w1:'', w2:'' }
 };
@@ -457,7 +456,6 @@ function showStep(n) {
   document.getElementById('step-' + n).classList.add('active');
   document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  currentStep = n;
   restoreStep(n);
   var meta = document.getElementById('header-meta');
   if (n === 0) { meta.style.display = 'none'; return; }
@@ -505,8 +503,8 @@ function startExercises() {
 function validateStep(n) {
   switch (n) {
     case 1:
-      return g('ex1-g1') && g('ex1-g2') && g('ex1-g3') && g('ex1-g4') &&
-             g('ex1-g5') && g('ex1-g6') && g('ex1-g7') && g('ex1-g8');
+      return g('exA-g1') && g('exA-g2') && g('exA-g3') && g('exA-g4') &&
+             g('exA-g5') && g('exA-g6') && g('exA-g7') && g('exA-g8');
     case 2:
       return val('exB-t1') && val('exB-t2') && val('exB-t3') && val('exB-t4') && val('exB-t5');
     case 3:
@@ -518,10 +516,10 @@ function validateStep(n) {
 function saveStep(n) {
   switch (n) {
     case 1:
-      state.ex1.g1 = g('ex1-g1'); state.ex1.g2 = g('ex1-g2');
-      state.ex1.g3 = g('ex1-g3'); state.ex1.g4 = g('ex1-g4');
-      state.ex1.g5 = g('ex1-g5'); state.ex1.g6 = g('ex1-g6');
-      state.ex1.g7 = g('ex1-g7'); state.ex1.g8 = g('ex1-g8');
+      state.exA.g1 = g('exA-g1'); state.exA.g2 = g('exA-g2');
+      state.exA.g3 = g('exA-g3'); state.exA.g4 = g('exA-g4');
+      state.exA.g5 = g('exA-g5'); state.exA.g6 = g('exA-g6');
+      state.exA.g7 = g('exA-g7'); state.exA.g8 = g('exA-g8');
       break;
     case 2:
       state.exB.t1 = g('exB-t1'); state.exB.t2 = g('exB-t2');
@@ -538,10 +536,10 @@ function saveStep(n) {
 function restoreStep(n) {
   switch (n) {
     case 1:
-      set('ex1-g1', state.ex1.g1); set('ex1-g2', state.ex1.g2);
-      set('ex1-g3', state.ex1.g3); set('ex1-g4', state.ex1.g4);
-      set('ex1-g5', state.ex1.g5); set('ex1-g6', state.ex1.g6);
-      set('ex1-g7', state.ex1.g7); set('ex1-g8', state.ex1.g8);
+      set('exA-g1', state.exA.g1); set('exA-g2', state.exA.g2);
+      set('exA-g3', state.exA.g3); set('exA-g4', state.exA.g4);
+      set('exA-g5', state.exA.g5); set('exA-g6', state.exA.g6);
+      set('exA-g7', state.exA.g7); set('exA-g8', state.exA.g8);
       break;
     case 2:
       set('exB-t1', state.exB.t1); set('exB-t2', state.exB.t2);
@@ -562,14 +560,14 @@ function esc(str)   { var d = document.createElement('div'); d.textContent = Str
 
 function buildSummary() {
   var rows = [
-    { ex: 'Exercise A – Vocabulary', q: 'Gap 1 (ancient civilisation)',            a: state.ex1.g1 },
-    { ex: 'Exercise A – Vocabulary', q: 'Gap 2 (church was...)',                   a: state.ex1.g2 },
-    { ex: 'Exercise A – Vocabulary', q: 'Gap 3 (scientists found...)',              a: state.ex1.g3 },
-    { ex: 'Exercise A – Vocabulary', q: 'Gap 4 (remains completely...)',            a: state.ex1.g4 },
-    { ex: 'Exercise A – Vocabulary', q: 'Gap 5 (the ___)',                          a: state.ex1.g5 },
-    { ex: 'Exercise A – Vocabulary', q: 'Gap 6 (medieval ___)',                     a: state.ex1.g6 },
-    { ex: 'Exercise A – Vocabulary', q: 'Gap 7 (over the ___)',                     a: state.ex1.g7 },
-    { ex: 'Exercise A – Vocabulary', q: 'Gap 8 (leaving only ___ behind)',          a: state.ex1.g8 },
+    { ex: 'Exercise A – Vocabulary', q: 'Gap 1 (ancient civilisation)',            a: state.exA.g1 },
+    { ex: 'Exercise A – Vocabulary', q: 'Gap 2 (church was...)',                   a: state.exA.g2 },
+    { ex: 'Exercise A – Vocabulary', q: 'Gap 3 (scientists found...)',              a: state.exA.g3 },
+    { ex: 'Exercise A – Vocabulary', q: 'Gap 4 (remains completely...)',            a: state.exA.g4 },
+    { ex: 'Exercise A – Vocabulary', q: 'Gap 5 (the ___)',                          a: state.exA.g5 },
+    { ex: 'Exercise A – Vocabulary', q: 'Gap 6 (medieval ___)',                     a: state.exA.g6 },
+    { ex: 'Exercise A – Vocabulary', q: 'Gap 7 (over the ___)',                     a: state.exA.g7 },
+    { ex: 'Exercise A – Vocabulary', q: 'Gap 8 (leaving only ___ behind)',          a: state.exA.g8 },
     { ex: 'Exercise B – Grammar',    q: '1. By the time the storm started…',        a: state.exB.t1 },
     { ex: 'Exercise B – Grammar',    q: '2. When we arrived, the museum…',          a: state.exB.t2 },
     { ex: 'Exercise B – Grammar',    q: '3. After the archaeologists…',             a: state.exB.t3 },
@@ -596,14 +594,14 @@ function buildEmailBody() {
     + '\nClass:   ' + state.cls
     + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
     + '\n\n--- Exercise A: Vocabulary ---'
-    + '\nGap 1: ' + (state.ex1.g1 || '(none)')
-    + '\nGap 2: ' + (state.ex1.g2 || '(none)')
-    + '\nGap 3: ' + (state.ex1.g3 || '(none)')
-    + '\nGap 4: ' + (state.ex1.g4 || '(none)')
-    + '\nGap 5: ' + (state.ex1.g5 || '(none)')
-    + '\nGap 6: ' + (state.ex1.g6 || '(none)')
-    + '\nGap 7: ' + (state.ex1.g7 || '(none)')
-    + '\nGap 8: ' + (state.ex1.g8 || '(none)')
+    + '\nGap 1: ' + (state.exA.g1 || '(none)')
+    + '\nGap 2: ' + (state.exA.g2 || '(none)')
+    + '\nGap 3: ' + (state.exA.g3 || '(none)')
+    + '\nGap 4: ' + (state.exA.g4 || '(none)')
+    + '\nGap 5: ' + (state.exA.g5 || '(none)')
+    + '\nGap 6: ' + (state.exA.g6 || '(none)')
+    + '\nGap 7: ' + (state.exA.g7 || '(none)')
+    + '\nGap 8: ' + (state.exA.g8 || '(none)')
     + '\n\n--- Exercise B: Grammar ---'
     + '\n1. ' + (state.exB.t1 || '(none)')
     + '\n2. ' + (state.exB.t2 || '(none)')
@@ -619,7 +617,7 @@ function checkExA() {
   var answers = {g1:'ancient',g2:'restored',g3:'evidence',g4:'mysterious',g5:'historian',g6:'period',g7:'century',g8:'ruins'};
   var correct=0,wrong=0,empty=0;
   Object.keys(answers).forEach(function(k){
-    var sel=document.getElementById('ex1-' + k);
+    var sel=document.getElementById('exA-'+k);
     if(!sel) return;
     if(!sel.value){ sel.className='gap-select'; empty++; return; }
     if(sel.value===answers[k]){ sel.className='gap-select gap-correct'; correct++; }
@@ -632,43 +630,34 @@ function checkExA() {
   else{ fb.className='feedback warn show'; fb.textContent=correct+' correct, '+wrong+' wrong'+(empty?' ('+empty+' blank)':'')+'. Check the red gaps.'; }
 }
 
-
-/* eol-flat-payload-patch */
-function eolFlat(o) {
-  if (o == null) return '';
-  if (typeof o !== 'object') return String(o);
-  return Object.keys(o).map(function(k) {
-    return k + ': ' + (o[k] === '' || o[k] == null ? '\u2014' : o[k]);
-  }).join(' | ');
-}
-
 function submitToSheet() {
-  saveStep(currentStep);
   buildSummary();
-
   var btn = document.getElementById('submit-btn');
   btn.disabled = true;
-  btn.textContent = 'Sending…';
-
+  btn.textContent = 'Sending...';
+  var ex1 = 'g1: ' + (state.exA.g1 || '-')
+    + ' | g2: ' + (state.exA.g2 || '-')
+    + ' | g3: ' + (state.exA.g3 || '-')
+    + ' | g4: ' + (state.exA.g4 || '-')
+    + ' | g5: ' + (state.exA.g5 || '-')
+    + ' | g6: ' + (state.exA.g6 || '-')
+    + ' | g7: ' + (state.exA.g7 || '-')
+    + ' | g8: ' + (state.exA.g8 || '-');
+  var ex2 = '1. ' + (state.exB.t1 || '-')
+    + '\n2. ' + (state.exB.t2 || '-')
+    + '\n3. ' + (state.exB.t3 || '-')
+    + '\n4. ' + (state.exB.t4 || '-')
+    + '\n5. ' + (state.exB.t5 || '-');
+  var ex3 = 'Place: ' + (state.exC.w1 || '-')
+    + '\n\n' + (state.exC.w2 || '-');
   var payload = {
-  name: state.name,
-  cls: state.cls,
-  unit: UNIT
-};
-
-  Object.keys(state).forEach(function(key) {
-    if (key !== 'name' && key !== 'cls') {
-      var val = state[key];
-      if (typeof val === 'object' && val !== null) {
-        Object.keys(val).forEach(function(k) {
-          payload[key + '-' + k] = val[k] || '';
-        });
-      } else {
-        payload[key] = val || '';
-      }
-    }
-  });
-
+    name: state.name,
+    cls:  state.cls,
+    unit: UNIT,
+    ex1:  ex1,
+    ex2:  ex2,
+    ex3:  ex3
+  };
   fetch(SHEET_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -714,7 +703,7 @@ document.addEventListener('paste', function(e) {
     e.preventDefault();
     var msg = document.createElement('div');
     msg.textContent = 'Pasting is not allowed';
-    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;';
+    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
     document.body.appendChild(msg);
     setTimeout(function() {
       msg.style.opacity = '0';
@@ -727,7 +716,7 @@ document.addEventListener('copy', function(e) {
   e.preventDefault();
   var msg = document.createElement('div');
   msg.textContent = '🚫 Copying is not allowed';
-  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;';
+  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
   document.body.appendChild(msg);
   setTimeout(function() {
     msg.style.opacity = '0';
