@@ -687,6 +687,16 @@ function checkExB() {
   else{ fb.className='feedback warn show'; fb.textContent=correct+' correct, '+wrong+' wrong'+(empty?' ('+empty+' blank)':'')+'. Check the red dropdowns.'; }
 }
 
+
+/* eol-flat-payload-patch */
+function eolFlat(o) {
+  if (o == null) return '';
+  if (typeof o !== 'object') return String(o);
+  return Object.keys(o).map(function(k) {
+    return k + ': ' + (o[k] === '' || o[k] == null ? '\u2014' : o[k]);
+  }).join(' | ');
+}
+
 function submitToSheet() {
   saveStepAnswers(Math.max(currentStep, 1));
   buildSummary();
@@ -696,10 +706,10 @@ function submitToSheet() {
   btn.textContent = 'Sending…';
 
   var payload = {
-    name: state.name,
-    cls:  state.cls,
-    unit: UNIT
-  };
+  name: state.name,
+  cls: state.cls,
+  unit: UNIT
+};
 
   Object.keys(state).forEach(function(key) {
     if (key !== 'name' && key !== 'cls') {
