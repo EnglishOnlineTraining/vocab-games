@@ -312,7 +312,7 @@
         <div class="scaffold-num">1</div>
         <div class="scaffold-prompt">Someone wants to get to the supermarket. They need to walk straight ahead and not turn.</div>
         <div class="form-group" style="margin-bottom:0">
-          <label class="form-label" for='ex2'-q1">The correct phrase is:</label>
+          <label class="form-label" for="ex2-q1">The correct phrase is:</label>
           <select class="gap-select" style="max-width:100%;width:100%;font-size:.88rem;padding:.45rem .6rem" id="ex2-q1">
             <option value="">— choose —</option>
             <option>Turn left at the corner.</option>
@@ -326,7 +326,7 @@
         <div class="scaffold-num">2</div>
         <div class="scaffold-prompt">The bakery is the second building on the right side of the street.</div>
         <div class="form-group" style="margin-bottom:0">
-          <label class="form-label" for='ex2'-q2">The correct phrase is:</label>
+          <label class="form-label" for="ex2-q2">The correct phrase is:</label>
           <select class="gap-select" style="max-width:100%;width:100%;font-size:.88rem;padding:.45rem .6rem" id="ex2-q2">
             <option value="">— choose —</option>
             <option>It's on the left.</option>
@@ -340,7 +340,7 @@
         <div class="scaffold-num">3</div>
         <div class="scaffold-prompt">Someone asks where the station is. It is directly across from the post office.</div>
         <div class="form-group" style="margin-bottom:0">
-          <label class="form-label" for='ex2'-q3">The correct phrase is:</label>
+          <label class="form-label" for="ex2-q3">The correct phrase is:</label>
           <select class="gap-select" style="max-width:100%;width:100%;font-size:.88rem;padding:.45rem .6rem" id="ex2-q3">
             <option value="">— choose —</option>
             <option>The station is next to the post office.</option>
@@ -354,7 +354,7 @@
         <div class="scaffold-num">4</div>
         <div class="scaffold-prompt">To get to the park, someone needs to turn right at the church and then take the first street on the left.</div>
         <div class="form-group" style="margin-bottom:0">
-          <label class="form-label" for='ex2'-q4">Put the directions in the correct order. Which comes first?</label>
+          <label class="form-label" for="ex2-q4">Put the directions in the correct order. Which comes first?</label>
           <select class="gap-select" style="max-width:100%;width:100%;font-size:.88rem;padding:.45rem .6rem" id="ex2-q4">
             <option value="">— choose —</option>
             <option>Take the first street on the left, then turn right at the church.</option>
@@ -368,7 +368,7 @@
         <div class="scaffold-num">5</div>
         <div class="scaffold-prompt">Now write your own directions. Imagine someone is standing outside your school. How do they get to the nearest bus stop?</div>
         <div class="form-group" style="margin-bottom:0">
-          <label class="form-label" for='ex2'-q5">Write 2–3 direction sentences:</label>
+          <label class="form-label" for="ex2-q5">Write 2–3 direction sentences:</label>
           <textarea class="form-textarea" id="ex2-q5" rows="3" placeholder="e.g. Go straight on. Turn left at the traffic lights..."></textarea>
         </div>
         <div class="scaffold-hint">Use phrases from the help box above. You can invent a place if you like!</div>
@@ -413,18 +413,18 @@
       <div class="card-title">Your writing</div>
 
       <div class="form-group">
-        <label class="form-label" for='ex3'-w1">Where do you live? (city, town or village name)</label>
+        <label class="form-label" for="ex3-w1">Where do you live? (city, town or village name)</label>
         <input class="form-input" type="text" id="ex3-w1" placeholder="e.g. Berlin, Potsdam, a small village near Hamburg...">
       </div>
 
       <div class="form-group">
-        <label class="form-label" for='ex3'-w2">Describe it NOW (2–3 sentences): What is it like? What is there?</label>
+        <label class="form-label" for="ex3-w2">Describe it NOW (2–3 sentences): What is it like? What is there?</label>
         <textarea class="form-textarea" id="ex3-w2" rows="4" placeholder="e.g. It is a big city in the north of Germany. There are many parks and museums..."></textarea>
         <div class="form-hint">Use: There is / There are … · It is … · It has …</div>
       </div>
 
       <div class="form-group">
-        <label class="form-label" for='ex3'-w3">Describe it IN THE PAST (2–3 sentences): What was different? What did people do?</label>
+        <label class="form-label" for="ex3-w3">Describe it IN THE PAST (2–3 sentences): What was different? What did people do?</label>
         <textarea class="form-textarea" id="ex3-w3" rows="4" placeholder="e.g. In the past, it was a small fishing village. People worked on boats..."></textarea>
         <div class="form-hint">Use the simple past: was / were / worked / had / lived …</div>
       </div>
@@ -534,12 +534,12 @@ function startExercises() {
 function validateStep(n) {
   switch (n) {
     case 1:
-      return g('ex1'-g1') && g('ex1'-g2') && g('ex1'-g3') && g('ex1'-g4') &&
-             g('ex1'-g5') && g('ex1'-g6') && g('ex1'-g7') && g('ex1'-g8');
+      return g('ex1-g1') && g('ex1-g2') && g('ex1-g3') && g('ex1-g4') &&
+             g('ex1-g5') && g('ex1-g6') && g('ex1-g7') && g('ex1-g8');
     case 2:
-      return g('ex2'-q1') && g('ex2'-q2') && g('ex2'-q3') && g('ex2'-q4') && val('ex2'-q5');
+      return g('ex2-q1') && g('ex2-q2') && g('ex2-q3') && g('ex2-q4') && val('ex2-q5');
     case 3:
-      return val('ex3'-w1') && val('ex3'-w2') && val('ex3'-w3');
+      return val('ex3-w1') && val('ex3-w2') && val('ex3-w3');
     default: return true;
   }
 }
@@ -547,20 +547,20 @@ function validateStep(n) {
 function saveStep(n) {
   switch (n) {
     case 1:
-      state.ex1.g1 = g('ex1'-g1'); state.ex1.g2 = g('ex1'-g2');
-      state.ex1.g3 = g('ex1'-g3'); state.ex1.g4 = g('ex1'-g4');
-      state.ex1.g5 = g('ex1'-g5'); state.ex1.g6 = g('ex1'-g6');
-      state.ex1.g7 = g('ex1'-g7'); state.ex1.g8 = g('ex1'-g8');
+      state.ex1.g1 = g('ex1-g1'); state.ex1.g2 = g('ex1-g2');
+      state.ex1.g3 = g('ex1-g3'); state.ex1.g4 = g('ex1-g4');
+      state.ex1.g5 = g('ex1-g5'); state.ex1.g6 = g('ex1-g6');
+      state.ex1.g7 = g('ex1-g7'); state.ex1.g8 = g('ex1-g8');
       break;
     case 2:
-      state.ex2.q1 = g('ex2'-q1'); state.ex2.q2 = g('ex2'-q2');
-      state.ex2.q3 = g('ex2'-q3'); state.ex2.q4 = g('ex2'-q4');
-      state.ex2.q5 = g('ex2'-q5');
+      state.ex2.q1 = g('ex2-q1'); state.ex2.q2 = g('ex2-q2');
+      state.ex2.q3 = g('ex2-q3'); state.ex2.q4 = g('ex2-q4');
+      state.ex2.q5 = g('ex2-q5');
       break;
     case 3:
-      state.ex3.w1 = g('ex3'-w1');
-      state.ex3.w2 = g('ex3'-w2');
-      state.ex3.w3 = g('ex3'-w3');
+      state.ex3.w1 = g('ex3-w1');
+      state.ex3.w2 = g('ex3-w2');
+      state.ex3.w3 = g('ex3-w3');
       break;
   }
 }
@@ -568,20 +568,20 @@ function saveStep(n) {
 function restoreStep(n) {
   switch (n) {
     case 1:
-      set('ex1'-g1', state.ex1.g1); set('ex1'-g2', state.ex1.g2);
-      set('ex1'-g3', state.ex1.g3); set('ex1'-g4', state.ex1.g4);
-      set('ex1'-g5', state.ex1.g5); set('ex1'-g6', state.ex1.g6);
-      set('ex1'-g7', state.ex1.g7); set('ex1'-g8', state.ex1.g8);
+      set('ex1-g1', state.ex1.g1); set('ex1-g2', state.ex1.g2);
+      set('ex1-g3', state.ex1.g3); set('ex1-g4', state.ex1.g4);
+      set('ex1-g5', state.ex1.g5); set('ex1-g6', state.ex1.g6);
+      set('ex1-g7', state.ex1.g7); set('ex1-g8', state.ex1.g8);
       break;
     case 2:
-      set('ex2'-q1', state.ex2.q1); set('ex2'-q2', state.ex2.q2);
-      set('ex2'-q3', state.ex2.q3); set('ex2'-q4', state.ex2.q4);
-      set('ex2'-q5', state.ex2.q5);
+      set('ex2-q1', state.ex2.q1); set('ex2-q2', state.ex2.q2);
+      set('ex2-q3', state.ex2.q3); set('ex2-q4', state.ex2.q4);
+      set('ex2-q5', state.ex2.q5);
       break;
     case 3:
-      set('ex3'-w1', state.ex3.w1);
-      set('ex3'-w2', state.ex3.w2);
-      set('ex3'-w3', state.ex3.w3);
+      set('ex3-w1', state.ex3.w1);
+      set('ex3-w2', state.ex3.w2);
+      set('ex3-w3', state.ex3.w3);
       break;
   }
 }
@@ -652,7 +652,7 @@ function checkExA() {
   var answers = {g1:'capital',g2:'ancient',g3:'tourists',g4:'castle',g5:'located',g6:'built',g7:'monument',g8:'popular'};
   var correct=0,wrong=0,empty=0;
   Object.keys(answers).forEach(function(k){
-    var sel=document.getElementById('ex1'-'+k);
+    var sel=document.getElementById('ex1-'+k);
     if(!sel) return;
     if(!sel.value){ sel.className='gap-select'; empty++; return; }
     if(sel.value===answers[k]){ sel.className='gap-select gap-correct'; correct++; }
@@ -674,7 +674,7 @@ function checkExB() {
   };
   var correct=0,wrong=0,empty=0;
   Object.keys(answers).forEach(function(k){
-    var sel=document.getElementById('ex2'-'+k);
+    var sel=document.getElementById('ex2-'+k);
     if(!sel) return;
     if(!sel.value){ sel.className='gap-select'; empty++; return; }
     if(sel.value===answers[k]){ sel.className='gap-select gap-correct'; correct++; }
@@ -698,32 +698,18 @@ function eolFlat(o) {
 }
 
 function submitToSheet() {
-  saveStepAnswers(Math.max(currentStep, 1));
   buildSummary();
-
   var btn = document.getElementById('submit-btn');
   btn.disabled = true;
-  btn.textContent = 'Sending…';
-
+  btn.textContent = 'Sending\u2026';
   var payload = {
-  name: state.name,
-  cls: state.cls,
-  unit: UNIT
-};
-
-  Object.keys(state).forEach(function(key) {
-    if (key !== 'name' && key !== 'cls') {
-      var val = state[key];
-      if (typeof val === 'object' && val !== null) {
-        Object.keys(val).forEach(function(k) {
-          payload[key + '-' + k] = val[k] || '';
-        });
-      } else {
-        payload[key] = val || '';
-      }
-    }
-  });
-
+    name: state.name,
+    cls:  state.cls,
+    unit: UNIT,
+    ex1:  eolFlat(state.ex1),
+    ex2:  eolFlat(state.ex2),
+    ex3:  eolFlat(state.ex3)
+  };
   fetch(SHEET_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

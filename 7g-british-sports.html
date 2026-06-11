@@ -413,7 +413,7 @@
 ============================================================ */
 var UNIT          = '7g-british-sports';
 var TOTAL_STEPS   = 4;
-var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbyFmK71PseRmH8gBnuD3HLFU9b75eMPhE-LV8hNKSGM2RJ4bbMTIMrcoi3Qo4WG95qxIw/exec';
+var SHEET_URL     = 'https://hook.eu1.make.com/1gx46wea33yguetah95oy4j8asbyafqm';
 var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
 
 /* ============================================================
@@ -657,17 +657,32 @@ function checkExB() {
 /* ============================================================
    SUBMIT TO GOOGLE SHEET
 ============================================================ */
+/* eol-flat-payload-patch */
+function eolFlat(o) {
+  if (o == null) return '';
+  if (typeof o !== 'object') return String(o);
+  return Object.keys(o).map(function(k) {
+    return k + ': ' + (o[k] === '' || o[k] == null ? '\u2014' : o[k]);
+  }).join(' | ');
+}
+
 function submitToSheet() {
   buildSummary();
   var btn = document.getElementById('submit-btn');
   btn.disabled = true;
-  btn.textContent = 'Sending...';
-  var payload = { name: state.name, cls: state.cls, unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC };
+  btn.textContent = 'Sending\u2026';
+  var payload = {
+    name: state.name,
+    cls:  state.cls,
+    unit: UNIT,
+    ex1:  eolFlat(state.exA),
+    ex2:  eolFlat(state.exB),
+    ex3:  eolFlat(state.exC)
+  };
   fetch(SHEET_URL, {
     method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
   }).then(function() {
     btn.style.display = 'none';
     document.getElementById('submit-success').style.display = 'block';

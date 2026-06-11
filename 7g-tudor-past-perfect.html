@@ -472,26 +472,32 @@ function eolFlat(o) {
 }
 
 function submitToSheet() {
-  saveStep(currentStep); buildSummary();
+  buildSummary();
   var btn = document.getElementById('submit-btn');
-  btn.disabled = true; btn.textContent = 'Sending…';
+  btn.disabled = true;
+  btn.textContent = 'Sending\u2026';
   var payload = {
-  name: state.name,
-  cls: state.cls,
-  unit: UNIT
-};
-  Object.keys(state).forEach(function(key) {
-    if (key !== 'name' && key !== 'cls') {
-      var v = state[key];
-      if (typeof v === 'object' && v !== null) { Object.keys(v).forEach(function(k) { payload[key+'-'+k] = v[k]||''; }); }
-      else { payload[key] = v||''; }
-    }
+    name: state.name,
+    cls:  state.cls,
+    unit: UNIT,
+    ex1:  eolFlat(state.ex1),
+    ex2:  eolFlat(state.ex2),
+    ex3:  eolFlat(state.ex3),
+    ex4:  eolFlat(state.ex4)
+  };
+  fetch(SHEET_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).then(function() {
+    btn.style.display = 'none';
+    document.getElementById('submit-success').style.display = 'block';
+    document.getElementById('submit-fallback').style.display = 'block';
+  }).catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Submit to Teacher';
+    document.getElementById('submit-fallback').style.display = 'block';
   });
-  setTimeout(function() {
-    fetch(SHEET_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
-      .then(function() { btn.style.display='none'; document.getElementById('submit-success').style.display='block'; document.getElementById('submit-fallback').style.display='block'; })
-      .catch(function() { btn.disabled=false; btn.textContent='Submit to Teacher'; document.getElementById('submit-fallback').style.display='block'; });
-  }, 500);
 }
 
 function submitByEmail() {

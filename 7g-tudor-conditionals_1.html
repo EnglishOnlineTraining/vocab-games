@@ -232,19 +232,19 @@
       <div class="card-title">Answer the questions</div>
 
       <div class="form-group">
-        <label class="form-label" for='ex1'-q1">1. Why did Jay get lost?</label>
+        <label class="form-label" for="ex1-q1">1. Why did Jay get lost?</label>
         <textarea class="form-textarea" id="ex1-q1" placeholder="Write your answer in English..." rows="3"></textarea>
       </div>
       <div class="form-group">
-        <label class="form-label" for='ex1'-q2">2. What tour did Jay end up joining by accident?</label>
+        <label class="form-label" for="ex1-q2">2. What tour did Jay end up joining by accident?</label>
         <textarea class="form-textarea" id="ex1-q2" placeholder="Write your answer in English..." rows="3"></textarea>
       </div>
       <div class="form-group">
-        <label class="form-label" for='ex1'-q3">3. What did Jay find at the end of the story? Why was he happy about it?</label>
+        <label class="form-label" for="ex1-q3">3. What did Jay find at the end of the story? Why was he happy about it?</label>
         <textarea class="form-textarea" id="ex1-q3" placeholder="Write your answer in English..." rows="3"></textarea>
       </div>
       <div class="form-group">
-        <label class="form-label" for='ex1'-q4">4. Find <strong>two</strong> conditional type 3 sentences in the story and write them here.</label>
+        <label class="form-label" for="ex1-q4">4. Find <strong>two</strong> conditional type 3 sentences in the story and write them here.</label>
         <textarea class="form-textarea" id="ex1-q4" placeholder="1. If I hadn't..." rows="4"></textarea>
       </div>
     </div>
@@ -764,7 +764,7 @@ function startExercises(){
 
 function validateStep(n){
   switch(n){
-    case 1: return val('ex1'-q1')&&val('ex1'-q2')&&val('ex1'-q3')&&val('ex1'-q4');
+    case 1: return val('ex1-q1')&&val('ex1-q2')&&val('ex1-q3')&&val('ex1-q4');
     case 2: return gSel('exB-m1')&&gSel('exB-m2')&&gSel('exB-m3')&&gSel('exB-m4')&&gSel('exB-m5')&&gSel('exB-m6');
     case 3: return val('exC-t1')&&val('exC-t2')&&val('exC-t3')&&val('exC-t4')&&val('exC-t5')&&val('exC-t6')&&val('exC-t7');
     case 4: return gSel('exD-g1')&&gSel('exD-g2')&&gSel('exD-g3')&&gSel('exD-g4')&&gSel('exD-g5')&&gSel('exD-g6')&&gSel('exD-g7')&&gSel('exD-g8')&&gSel('exD-g9')&&gSel('exD-g10')&&gSel('exD-g11')&&gSel('exD-g12')&&gSel('exD-g13')&&gSel('exD-g14');
@@ -777,7 +777,7 @@ function validateStep(n){
 
 function saveStep(n){
   switch(n){
-    case 1: ['q1','q2','q3','q4'].forEach(function(k){state.ex1[k]=g('ex1'-'+k);}); break;
+    case 1: ['q1','q2','q3','q4'].forEach(function(k){state.ex1[k]=g('ex1-'+k);}); break;
     case 2: [1,2,3,4,5,6].forEach(function(i){state.exB['m'+i]=gSel('exB-m'+i);}); break;
     case 3: [1,2,3,4,5,6,7].forEach(function(i){state.exC['t'+i]=g('exC-t'+i);}); break;
     case 4: for(var i=1;i<=14;i++){state.exD['g'+i]=gSel('exD-g'+i);} break;
@@ -789,7 +789,7 @@ function saveStep(n){
 
 function restoreStep(n){
   switch(n){
-    case 1: ['q1','q2','q3','q4'].forEach(function(k){set('ex1'-'+k,state.ex1[k]);}); break;
+    case 1: ['q1','q2','q3','q4'].forEach(function(k){set('ex1-'+k,state.ex1[k]);}); break;
     case 2: [1,2,3,4,5,6].forEach(function(i){setSel('exB-m'+i,state.exB['m'+i]);}); break;
     case 3: [1,2,3,4,5,6,7].forEach(function(i){set('exC-t'+i,state.exC['t'+i]);}); break;
     case 4: for(var i=1;i<=14;i++){setSel('exD-g'+i,state.exD['g'+i]);} break;
@@ -874,32 +874,22 @@ function eolFlat(o) {
 }
 
 function submitToSheet() {
-  saveStepAnswers(Math.max(currentStep, 1));
   buildSummary();
-
   var btn = document.getElementById('submit-btn');
   btn.disabled = true;
-  btn.textContent = 'Sending…';
-
+  btn.textContent = 'Sending\u2026';
   var payload = {
-  name: state.name,
-  cls: state.cls,
-  unit: UNIT
-};
-
-  Object.keys(state).forEach(function(key) {
-    if (key !== 'name' && key !== 'cls') {
-      var val = state[key];
-      if (typeof val === 'object' && val !== null) {
-        Object.keys(val).forEach(function(k) {
-          payload[key + '-' + k] = val[k] || '';
-        });
-      } else {
-        payload[key] = val || '';
-      }
-    }
-  });
-
+    name: state.name,
+    cls:  state.cls,
+    unit: UNIT,
+    ex1:  eolFlat(state.ex1),
+    ex2:  eolFlat(state.exB),
+    ex3:  eolFlat(state.exC),
+    ex4:  eolFlat(state.exD),
+    ex5:  eolFlat(state.exE),
+    ex6:  eolFlat(state.exF),
+    ex7:  eolFlat(state.exG)
+  };
   fetch(SHEET_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

@@ -682,32 +682,18 @@ function eolFlat(o) {
 }
 
 function submitToSheet() {
-  saveStep(currentStep);
   buildSummary();
-
   var btn = document.getElementById('submit-btn');
   btn.disabled = true;
-  btn.textContent = 'Sending…';
-
+  btn.textContent = 'Sending\u2026';
   var payload = {
-  name: state.name,
-  cls: state.cls,
-  unit: UNIT
-};
-
-  Object.keys(state).forEach(function(key) {
-    if (key !== 'name' && key !== 'cls') {
-      var val = state[key];
-      if (typeof val === 'object' && val !== null) {
-        Object.keys(val).forEach(function(k) {
-          payload[key + '-' + k] = val[k] || '';
-        });
-      } else {
-        payload[key] = val || '';
-      }
-    }
-  });
-
+    name: state.name,
+    cls:  state.cls,
+    unit: UNIT,
+    ex1:  eolFlat(state.ex1),
+    ex2:  eolFlat(state.exB),
+    ex3:  eolFlat(state.exC)
+  };
   fetch(SHEET_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

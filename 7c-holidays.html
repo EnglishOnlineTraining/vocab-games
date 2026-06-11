@@ -285,7 +285,7 @@
     <div class="card">
       <div class="card-title">Exercise 2b — Prediction</div>
       <div class="form-group">
-        <label class="form-label" for='ex1'-prediction">Where do you think they will stay? Say why you think so.</label>
+        <label class="form-label" for="ex1-prediction">Where do you think they will stay? Say why you think so.</label>
         <textarea class="form-textarea" id="ex1-prediction" rows="3" placeholder="I think they will stay at..."></textarea>
       </div>
     </div>
@@ -652,7 +652,7 @@
         If we have a party at the hostel, we'll go to bed late. If we go to bed late, …
       </div>
       <div class="form-group">
-        <label class="form-label" for='ex8'-chain">Continue the chain (write at least 3 more sentences):</label>
+        <label class="form-label" for="ex8-chain">Continue the chain (write at least 3 more sentences):</label>
         <textarea class="form-textarea" id="ex8-chain" rows="6" placeholder="If we go to bed late, we'll be tired. If we're tired, ..."></textarea>
       </div>
     </div>
@@ -795,7 +795,7 @@ function startExercises() {
 function validateStep(step) {
   var el, filled, i;
   if (step === 1) {
-    el = document.getElementById('ex1'-prediction');
+    el = document.getElementById('ex1-prediction');
     return el && el.value.trim().length > 0;
   }
   if (step === 2) {
@@ -811,12 +811,12 @@ function validateStep(step) {
   }
   if (step === 4) {
     filled = ['s2','s3','s4','s5','s6','s7'].filter(function(k) {
-      el = document.getElementById('ex4'-' + k); return el && el.value.trim().length > 0;
+      el = document.getElementById('ex4-' + k); return el && el.value.trim().length > 0;
     }).length;
     return filled >= 2;
   }
   if (step === 5) {
-    el = document.getElementById('ex8'-chain');
+    el = document.getElementById('ex8-chain');
     return el && el.value.trim().length > 0;
   }
   return true;
@@ -854,7 +854,7 @@ function saveStepAnswers(step) {
     el = document.getElementById('t-katie-why');   if (el) state.ex1.katieWhy   = el.value;
     el = document.getElementById('t-jake-where');  if (el) state.ex1.jakeWhere  = el.value;
     el = document.getElementById('t-jake-why');    if (el) state.ex1.jakeWhy    = el.value;
-    el = document.getElementById('ex1'-prediction');if (el) state.ex1.prediction = el.value;
+    el = document.getElementById('ex1-prediction');if (el) state.ex1.prediction = el.value;
   } else if (step === 2) {
     ['w1','w2','w3','w4','w5','w6'].forEach(function(k) {
       el = document.getElementById('m-' + k); if (el) state.ex1[k] = el.value;
@@ -868,16 +868,16 @@ function saveStepAnswers(step) {
     }
   } else if (step === 4) {
     ['s2','s3','s4','s5','s6','s7'].forEach(function(k) {
-      el = document.getElementById('ex4'-' + k); if (el) state.ex4[k] = el.value;
+      el = document.getElementById('ex4-' + k); if (el) state.ex4[k] = el.value;
     });
     ['s1','s2','s3','s4','s5','s6','s7'].forEach(function(k) {
-      el = document.getElementById('ex6'-' + k); if (el) state.ex6[k] = el.value;
+      el = document.getElementById('ex6-' + k); if (el) state.ex6[k] = el.value;
     });
   } else if (step === 5) {
     ['s1','s2','s3','s4','s5','s6'].forEach(function(k) {
-      el = document.getElementById('ex7'-' + k); if (el) state.ex7[k] = el.value;
+      el = document.getElementById('ex7-' + k); if (el) state.ex7[k] = el.value;
     });
-    el = document.getElementById('ex8'-chain'); if (el) state.ex8.chain = el.value;
+    el = document.getElementById('ex8-chain'); if (el) state.ex8.chain = el.value;
   }
 }
 
@@ -891,7 +891,7 @@ function restoreStepAnswers(step) {
     el = document.getElementById('t-katie-why');   if (el) el.value = state.ex1.katieWhy   || '';
     el = document.getElementById('t-jake-where');  if (el) el.value = state.ex1.jakeWhere  || '';
     el = document.getElementById('t-jake-why');    if (el) el.value = state.ex1.jakeWhy    || '';
-    el = document.getElementById('ex1'-prediction');if (el) el.value = state.ex1.prediction || '';
+    el = document.getElementById('ex1-prediction');if (el) el.value = state.ex1.prediction || '';
   } else if (step === 2) {
     ['w1','w2','w3','w4','w5','w6'].forEach(function(k) {
       el = document.getElementById('m-' + k); if (el && state.ex1[k]) el.value = state.ex1[k];
@@ -906,16 +906,16 @@ function restoreStepAnswers(step) {
     }
   } else if (step === 4) {
     ['s2','s3','s4','s5','s6','s7'].forEach(function(k) {
-      el = document.getElementById('ex4'-' + k); if (el) el.value = state.ex4[k] || '';
+      el = document.getElementById('ex4-' + k); if (el) el.value = state.ex4[k] || '';
     });
     ['s1','s2','s3','s4','s5','s6','s7'].forEach(function(k) {
-      el = document.getElementById('ex6'-' + k); if (el) el.value = state.ex6[k] || '';
+      el = document.getElementById('ex6-' + k); if (el) el.value = state.ex6[k] || '';
     });
   } else if (step === 5) {
     ['s1','s2','s3','s4','s5','s6'].forEach(function(k) {
-      el = document.getElementById('ex7'-' + k); if (el) el.value = state.ex7[k] || '';
+      el = document.getElementById('ex7-' + k); if (el) el.value = state.ex7[k] || '';
     });
-    el = document.getElementById('ex8'-chain'); if (el) el.value = state.ex8.chain || '';
+    el = document.getElementById('ex8-chain'); if (el) el.value = state.ex8.chain || '';
   }
 }
 
@@ -933,7 +933,7 @@ function checkEx3a() {
     if (el.value === EX1_CORRECT[k]) { el.classList.add('correct'); correct++; }
     else el.classList.add('wrong');
   });
-  var fb = document.getElementById('ex1'-feedback');
+  var fb = document.getElementById('ex1-feedback');
   if (correct === 6) {
     fb.className = 'feedback show ok';
     fb.textContent = '6/6 – All correct! Well done!';
@@ -960,7 +960,7 @@ function checkEx3b() {
     if (el.value === EX3_CORRECT[k]) { el.classList.add('correct'); correct++; }
     else el.classList.add('wrong');
   });
-  var fb = document.getElementById('ex3'-feedback');
+  var fb = document.getElementById('ex3-feedback');
   if (correct === 5) {
     fb.className = 'feedback show ok';
     fb.textContent = '5/5 – Perfect order!';
@@ -984,7 +984,7 @@ function checkEx5() {
     if (norm === EX4_CORRECT[i - 1]) { el.classList.add('correct'); correct++; }
     else if (el.value.trim() !== '') { el.classList.add('wrong'); }
   }
-  var fb = document.getElementById('ex4'-feedback');
+  var fb = document.getElementById('ex4-feedback');
   if (correct === 14) {
     fb.className = 'feedback show ok';
     fb.textContent = '14/14 – All correct! Excellent!';
@@ -1005,22 +1005,22 @@ function buildSummary() {
   var c = document.getElementById('summary-container');
   if (!c) return;
 
-  var 'ex4'Score = 0;
+  var ex4Score = 0;
   for (var i = 1; i <= 14; i++) {
-    if (normalizeVerb(state.ex4['g' + i] || '') === EX4_CORRECT[i - 1]) 'ex4'Score++;
+    if (normalizeVerb(state.ex4['g' + i] || '') === EX4_CORRECT[i - 1]) ex4Score++;
   }
-  var 'ex1'Score = 0;
+  var ex1Score = 0;
   ['w1','w2','w3','w4','w5','w6'].forEach(function(k) {
-    if ((state.ex1[k] || '') === EX1_CORRECT[k]) 'ex1'Score++;
+    if ((state.ex1[k] || '') === EX1_CORRECT[k]) ex1Score++;
   });
-  var 'ex3'Score = 0;
+  var ex3Score = 0;
   ['checkout','askprices','paybill','reservation','checkin'].forEach(function(k) {
-    if ((state.ex3[k] || '') === EX3_CORRECT[k]) 'ex3'Score++;
+    if ((state.ex3[k] || '') === EX3_CORRECT[k]) ex3Score++;
   });
 
-  var 'ex4'Lines = [];
+  var ex4Lines = [];
   for (var j = 1; j <= 14; j++) {
-    'ex4'Lines.push('Gap ' + j + ': ' + (state.ex4['g' + j] || '(blank)'));
+    ex4Lines.push('Gap ' + j + ': ' + (state.ex4['g' + j] || '(blank)'));
   }
 
   var words = ['hotel','campsite','bed and breakfast','youth hostel','caravan','holiday cottage'];
@@ -1045,9 +1045,9 @@ function buildSummary() {
     { ex:'Ex 2 – Table', q:'Jake: Where?',             a: state.ex1.jakeWhere },
     { ex:'Ex 2 – Table', q:'Jake: Why?',               a: state.ex1.jakeWhy },
     { ex:'Ex 2b',        q:'Prediction',               a: state.ex1.prediction },
-    { ex:'Ex 3a – Vocab (' + 'ex1'Score + '/6)', q:'Matching', a: matchText },
-    { ex:'Ex 3b – Order (' + 'ex3'Score + '/5)', q:'Hotel steps', a: stepText },
-    { ex:'Ex 5 (' + 'ex4'Score + '/14)', q:'First conditional gaps', a: 'ex4'Lines.join('\n') },
+    { ex:'Ex 3a – Vocab (' + ex1Score + '/6)', q:'Matching', a: matchText },
+    { ex:'Ex 3b – Order (' + ex3Score + '/5)', q:'Hotel steps', a: stepText },
+    { ex:'Ex 5 (' + ex4Score + '/14)', q:'First conditional gaps', a: ex4Lines.join('\n') },
     { ex:'Ex 6a', q:'Sentence 2', a: state.ex4.s2 },
     { ex:'Ex 6a', q:'Sentence 3', a: state.ex4.s3 },
     { ex:'Ex 6a', q:'Sentence 4', a: state.ex4.s4 },
@@ -1182,32 +1182,23 @@ function eolFlat(o) {
 }
 
 function submitToSheet() {
-  saveStepAnswers(Math.max(currentStep, 1));
   buildSummary();
-
   var btn = document.getElementById('submit-btn');
   btn.disabled = true;
-  btn.textContent = 'Sending…';
-
+  btn.textContent = 'Sending\u2026';
   var payload = {
-  name: state.name,
-  cls: state.cls,
-  unit: UNIT
-};
-
-  Object.keys(state).forEach(function(key) {
-    if (key !== 'name' && key !== 'cls') {
-      var val = state[key];
-      if (typeof val === 'object' && val !== null) {
-        Object.keys(val).forEach(function(k) {
-          payload[key + '-' + k] = val[k] || '';
-        });
-      } else {
-        payload[key] = val || '';
-      }
-    }
-  });
-
+    name: state.name,
+    cls:  state.cls,
+    unit: UNIT,
+    ex1:  eolFlat(state.ex1),
+    ex2:  eolFlat(state.ex2),
+    ex3:  eolFlat(state.ex3),
+    ex4:  eolFlat(state.ex4),
+    ex5:  eolFlat(state.ex5),
+    ex6:  eolFlat(state.ex6),
+    ex7:  eolFlat(state.ex7),
+    ex8:  eolFlat(state.ex8)
+  };
   fetch(SHEET_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
