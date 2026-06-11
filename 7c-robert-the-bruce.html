@@ -560,31 +560,33 @@ function buildEmailBody() {
 
 /* ============ SUBMIT ============ */
 function submitToSheet() {
-  saveStepAnswers(Math.max(currentStep, 1));
+  saveStep(2); saveStep(3); saveStep(4);
   buildSummary();
 
   var btn = document.getElementById('submit-btn');
   btn.disabled = true;
   btn.textContent = 'Sending…';
 
+  var ex1 = whoItems.map(function(item) {
+    return 'w' + item.id + ': ' + (state.exA['w' + item.id] || '-');
+  }).join(' | ');
+
+  var ex2 = '1. ' + (state.exB.q1 || '-')
+    + '\n2. ' + (state.exB.q2 || '-')
+    + '\n3. ' + (state.exB.q3 || '-');
+
+  var taskLabel  = state.exC.task === 'b' ? 'Task B – Dialogue' : 'Task A – Biography';
+  var taskAnswer = state.exC.task === 'b' ? state.exC.dialogue : state.exC.bio;
+  var ex3 = taskLabel + '\n\n' + (taskAnswer || '-');
+
   var payload = {
     name: state.name,
     cls:  state.cls,
-    unit: UNIT
+    unit: UNIT,
+    ex1:  ex1,
+    ex2:  ex2,
+    ex3:  ex3
   };
-
-  Object.keys(state).forEach(function(key) {
-    if (key !== 'name' && key !== 'cls') {
-      var val = state[key];
-      if (typeof val === 'object' && val !== null) {
-        Object.keys(val).forEach(function(k) {
-          payload[key + '-' + k] = val[k] || '';
-        });
-      } else {
-        payload[key] = val || '';
-      }
-    }
-  });
 
   fetch(SHEET_URL, {
     method: 'POST',
@@ -596,7 +598,7 @@ function submitToSheet() {
     document.getElementById('submit-fallback').style.display = 'block';
   }).catch(function() {
     btn.disabled = false;
-    btn.textContent = 'Submit to Teacher';
+    btn.textContent = '🚀 Submit to Teacher';
     document.getElementById('submit-fallback').style.display = 'block';
   });
 }
