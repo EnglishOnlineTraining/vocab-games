@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Presentation Skills: Finding Your Theme | englishonline.training</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f0f4f8;color:#1a202c;min-height:100vh}
+header{background:#1b4332;color:white;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+header a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.88rem}
+header .title{font-size:.95rem;font-weight:600}
+#progress-wrap{display:flex;align-items:center;gap:8px}
+#progress-label{font-size:.75rem;opacity:.75}
+.screen{display:none}.screen.active{display:block}
+.container{max-width:740px;margin:0 auto;padding:24px 16px}
+.card{background:white;border-radius:12px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,.07);margin-bottom:20px}
+h2{font-size:1.35rem;margin-bottom:14px;color:#1a202c}
+h3{font-size:1rem;margin-bottom:8px;color:#276749}
+p{margin-bottom:10px;line-height:1.65;font-size:.95rem}
+.form-group{margin-bottom:16px}
+label{display:block;font-weight:600;margin-bottom:5px;font-size:.88rem;color:#4a5568}
+input[type=text]{width:100%;padding:10px 14px;border:2px solid #e2e8f0;border-radius:8px;font-size:1rem;transition:border-color .2s}
+input[type=text]:focus{outline:none;border-color:#2d6a4f}
+.btn{display:inline-block;padding:11px 26px;border:none;border-radius:8px;font-size:.95rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#2d6a4f;color:white}
+.btn-primary:hover{background:#1b4332}
+.btn-primary:disabled{background:#a0aec0;cursor:not-allowed;opacity:.7}
+.btn-secondary{background:#e2e8f0;color:#4a5568}
+.btn-secondary:hover{background:#cbd5e0}
+.btn-outline{background:transparent;border:2px solid #2d6a4f;color:#2d6a4f}
+.btn-outline:hover{background:#f0fff4}
+.rule-list{list-style:none;padding:0;margin:12px 0}
+.rule-list li{padding:9px 14px;border-left:3px solid #2d6a4f;margin-bottom:7px;background:#f7fafc;border-radius:0 7px 7px 0;font-size:.9rem;line-height:1.5}
+.notice{background:#fffff0;border:1px solid #ecc94b;border-radius:8px;padding:13px 16px;font-size:.88rem;line-height:1.5;margin-top:12px}
+.scenario-box{background:#ebf8ff;border:2px solid #bee3f8;border-radius:10px;padding:20px;margin-bottom:18px}
+.scenario-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:#2b6cb0;font-weight:700;margin-bottom:7px}
+.vocab-box{background:#f0fff4;border:2px solid #9ae6b4;border-radius:10px;padding:16px 18px;margin-bottom:18px}
+.vocab-section-label{font-size:.8rem;font-weight:700;color:#276749;margin:8px 0 5px}
+.theme-grid{display:grid;grid-template-columns:1fr;gap:8px;margin:12px 0}
+.theme-item{background:#f7fafc;border-radius:8px;padding:10px 14px;font-size:.88rem;line-height:1.5}
+.theme-item strong{color:#276749}
+.alert{border-radius:8px;padding:11px 16px;margin-bottom:14px;font-size:.9rem;display:none}
+.alert.show{display:block}
+.alert-danger{background:#fff5f5;border:1px solid #feb2b2;color:#742a2a}
+.checkbox-row{display:flex;align-items:flex-start;gap:10px;background:#f7fafc;border-radius:8px;padding:14px;margin:16px 0}
+.checkbox-row input{margin-top:3px;width:18px;height:18px}
+.checkbox-row label{font-weight:500;margin-bottom:0;color:#1a202c}
+.done-card{text-align:center;padding:36px 28px}
+.done-card .big-icon{font-size:3.5rem;margin-bottom:14px}
+.done-card h2{color:#276749;margin-bottom:8px}
+.done-meta{font-size:.85rem;color:#718096;margin-top:10px}
+.backup-bar{margin-top:20px;background:#f7fafc;border-radius:8px;padding:14px;text-align:left;font-size:.88rem}
+.backup-bar p{margin-bottom:10px;font-weight:600}
+.nav-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;align-items:center}
+.step-pill{font-size:.78rem;color:#718096;margin-bottom:10px}
+@media(max-width:600px){.card{padding:18px 14px}.btn{padding:10px 18px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="https://englishonline.training">englishonline.training</a>
+  <span class="title">🎤 Presentation Skills</span>
+  <div id="progress-wrap"><span id="progress-label"></span></div>
+</header>
+
+<!-- SCREEN 1: WELCOME -->
+<div id="s-welcome" class="screen active">
+  <div class="container">
+    <div class="card">
+      <h2>🎤 Presentation Skills: Finding Your Theme</h2>
+      <p>This is a self-paced lesson — work through it at your own speed, there's no timer. You'll cover delivery technique, slide design, and a structure framework, then choose a presentation theme that fits your own background, and finish by submitting a PowerPoint file.</p>
+      <p>Please enter your details to begin.</p>
+      <div class="form-group" style="margin-top:20px">
+        <label for="inp-name">Your full name</label>
+        <input type="text" id="inp-name" placeholder="e.g. Maria Schmidt" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="form-group">
+        <label for="inp-group">Course / group</label>
+        <input type="text" id="inp-group" placeholder="e.g. English Communication Skills Online" autocomplete="off">
+      </div>
+      <div id="reg-err" class="alert alert-danger">Please enter both your name and your course before continuing.</div>
+      <button class="btn btn-primary" onclick="goScreen('s-delivery')">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 2: DELIVERY -->
+<div id="s-delivery" class="screen">
+  <div class="container">
+    <div class="card">
+      <div class="step-pill">Step 1 of 5 — Delivery</div>
+      <h2>🗣 Delivery &amp; Body Language</h2>
+      <p>How you say it matters as much as what you say. Keep these in mind when you practise:</p>
+      <ul class="rule-list">
+        <li>🗣 Vary your pace and volume — slow down for key points, speed up through less important detail.</li>
+        <li>⏸ Use a deliberate pause instead of filler words ("um", "like"). Silence sounds confident, not awkward.</li>
+        <li>👀 Make eye contact across the room — or look at the camera, if you're presenting online — instead of reading your slides.</li>
+        <li>🙌 Use open, purposeful gestures. Keep your hands visible and avoid crossing your arms.</li>
+        <li>❓ Open with a rhetorical question, a quick statistic, or a short story to pull the audience in.</li>
+        <li>🧭 Signpost clearly: tell the audience what's coming next before you move on to it.</li>
+        <li>😌 Rehearse your opening line until it's automatic — the first 30 seconds set the tone for everything after.</li>
+      </ul>
+      <div class="nav-row">
+        <button class="btn btn-secondary" onclick="goScreen('s-welcome')">← Back</button>
+        <button class="btn btn-primary" onclick="goScreen('s-visuals')">Continue →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 3: VISUALS -->
+<div id="s-visuals" class="screen">
+  <div class="container">
+    <div class="card">
+      <div class="step-pill">Step 2 of 5 — Visual design</div>
+      <h2>🎨 Slide Design Principles</h2>
+      <p>Slides support you — they shouldn't replace you. Apply these rules:</p>
+      <ul class="rule-list">
+        <li>📐 One idea per slide. If the slide title needs "and" in it, split it into two slides.</li>
+        <li>🔢 Follow the 6×6 rule: roughly 6 bullet points per slide, 6 words per bullet, maximum.</li>
+        <li>🔠 Body text no smaller than 24pt; titles big enough to read from the back of the room.</li>
+        <li>🎨 Pick one consistent template — same fonts, colours and layout from first slide to last.</li>
+        <li>📊 Replace blocks of text with a chart, diagram, or image wherever you can.</li>
+        <li>⚖️ Use high contrast — dark text on a light background (or vice versa). Never light grey on white.</li>
+        <li>🧱 Overall shape: title slide → agenda → 2–3 content sections → summary → thank you / questions.</li>
+      </ul>
+      <div class="nav-row">
+        <button class="btn btn-secondary" onclick="goScreen('s-delivery')">← Back</button>
+        <button class="btn btn-primary" onclick="goScreen('s-framework')">Continue →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 4: FRAMEWORK -->
+<div id="s-framework" class="screen">
+  <div class="container">
+    <div class="card">
+      <div class="step-pill">Step 3 of 5 — Structure</div>
+      <h2>🧭 Presentation Framework</h2>
+      <div class="scenario-box">
+        <div class="scenario-label">📄 Your task</div>
+        <p>You've been asked to give a <strong>5–7 minute presentation</strong> to colleagues or stakeholders, introducing a topic from your own professional field. Structure it like this:</p>
+        <p><strong>Opening (30–60s):</strong> a hook (a question, statistic, or short story) + a one-line agenda.</p>
+        <p><strong>Body (3–5 min):</strong> 2–3 clearly signposted sections, each backed by one strong visual.</p>
+        <p><strong>Closing (30–60s):</strong> a one-sentence summary, a clear call to action, and an invitation for questions.</p>
+      </div>
+      <div class="vocab-box">
+        <h3>📚 Useful signposting language</h3>
+        <div class="vocab-section-label">Opening:</div>
+        <p>"Today I'm going to talk about…" · "By the end of this presentation, you'll understand…"</p>
+        <div class="vocab-section-label">Transitions:</div>
+        <p>"Let's move on to…" · "That brings me to…" · "Building on that point…"</p>
+        <div class="vocab-section-label">Closing:</div>
+        <p>"To sum up…" · "The key takeaway is…" · "I'd be happy to take any questions."</p>
+      </div>
+      <div class="nav-row">
+        <button class="btn btn-secondary" onclick="goScreen('s-visuals')">← Back</button>
+        <button class="btn btn-primary" onclick="goScreen('s-theme')">Continue →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 5: THEME -->
+<div id="s-theme" class="screen">
+  <div class="container">
+    <div class="card">
+      <div class="step-pill">Step 4 of 5 — Find your theme</div>
+      <h2>💡 Find Your Theme</h2>
+      <p>Your presentation should be on a theme connected to your own background. Some starting points by field:</p>
+      <div class="theme-grid">
+        <div class="theme-item"><strong>Business / Management:</strong> a process improvement, a quarterly update, a new internal workflow</div>
+        <div class="theme-item"><strong>Healthcare / Nursing:</strong> a patient-care initiative, a public-health topic, a new protocol</div>
+        <div class="theme-item"><strong>IT / Engineering:</strong> a technical solution, a project update, a tool comparison</div>
+        <div class="theme-item"><strong>Education:</strong> a teaching method, a course or module overview, a learning resource</div>
+        <div class="theme-item"><strong>Hospitality / Tourism:</strong> a new service, a destination or marketing pitch</div>
+        <div class="theme-item"><strong>Other fields:</strong> any topic from your studies or work, framed for a professional audience</div>
+      </div>
+      <div class="form-group" style="margin-top:16px">
+        <label for="inp-bg">Your professional background or field of study</label>
+        <input type="text" id="inp-bg" placeholder="e.g. Mechanical engineering" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="inp-theme">Working title for your presentation</label>
+        <input type="text" id="inp-theme" placeholder="e.g. Reducing downtime on the assembly line" autocomplete="off">
+      </div>
+      <div id="theme-err" class="alert alert-danger">Please fill in both fields before continuing.</div>
+      <div class="nav-row">
+        <button class="btn btn-secondary" onclick="goScreen('s-framework')">← Back</button>
+        <button class="btn btn-primary" onclick="goTask()">Continue →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 6: TASK & SUBMISSION -->
+<div id="s-task" class="screen">
+  <div class="container">
+    <div class="card">
+      <div class="step-pill">Step 5 of 5 — Task &amp; submission</div>
+      <h2>📤 Build &amp; Submit Your Presentation</h2>
+      <p>Prepare a PowerPoint presentation (5–7 minutes) on the theme you chose, applying the delivery and design principles from this lesson.</p>
+      <ul class="rule-list">
+        <li>✅ Title slide + agenda</li>
+        <li>✅ 2–3 signposted sections, with one visual-led slide per section</li>
+        <li>✅ Summary, call to action, and a questions slide</li>
+        <li>✅ Slides follow the 6×6 rule and use one consistent template</li>
+      </ul>
+      <div class="notice">
+        📂 <strong>Submit your file:</strong> upload your finished <code>.pptx</code> to the Teams / OneDrive folder for this unit using the button below.
+      </div>
+      <div style="margin-top:16px">
+        <a class="btn btn-outline" id="upload-link" href="#" target="_blank" rel="noopener">📂 Open Teams / OneDrive upload folder</a>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="chk-uploaded" onchange="checkTaskReady()">
+        <label for="chk-uploaded">I have uploaded my finished PowerPoint file to the Teams / OneDrive folder above.</label>
+      </div>
+      <div class="nav-row">
+        <button class="btn btn-secondary" onclick="goScreen('s-theme')">← Back</button>
+        <button class="btn btn-primary" id="sub-btn" onclick="doSubmit()" disabled>Confirm submission</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 7: DONE -->
+<div id="s-done" class="screen">
+  <div class="container">
+    <div class="card done-card">
+      <div class="big-icon">✅</div>
+      <h2>Confirmed!</h2>
+      <p>Your submission has been logged. Double-check your file is visible in the Teams / OneDrive folder — if it isn't, please re-upload it there directly.</p>
+      <p class="done-meta" id="done-meta"></p>
+      <div class="backup-bar">
+        <p>If the automatic log failed, send a backup confirmation by email:</p>
+        <button class="btn btn-secondary" onclick="doEmailBackup()">✉️ Send by email</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── CONFIG ── */
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwwbV6ufw7QX8meNGyOwiVdkqNpQ8yckdXmsbFqysJwWqAfCWaR_eC9RH41LaqmYyZOeA/exec';
+const EMAIL     = 'sptrezise@proton.me';
+const SHEET_TAB = 'Presentation Task';
+const TEAMS_LINK = 'https://srhk-my.sharepoint.com/:f:/r/personal/shaun_trezise_extern_srh-hochschulen_de/Documents/Presentation%20Submissions?csf=1&web=1&e=y6Gazt';
+
+document.getElementById('upload-link').href = TEAMS_LINK;
+
+/* ── STATE ── */
+let sName='',sGroup='',sBg='',sTheme='',sid='';
+let payload=null;
+
+/* ── SCREENS ── */
+const STEP_LABELS={'s-welcome':'','s-delivery':'Step 1/5','s-visuals':'Step 2/5','s-framework':'Step 3/5','s-theme':'Step 4/5','s-task':'Step 5/5','s-done':''};
+function goScreen(id){
+  if(id==='s-delivery'||id==='s-visuals'||id==='s-framework'||id==='s-theme'){
+    if(!sName){
+      sName=document.getElementById('inp-name').value.trim();
+      sGroup=document.getElementById('inp-group').value.trim();
+      if(id==='s-delivery'&&(!sName||!sGroup)){document.getElementById('reg-err').classList.add('show');return}
+      document.getElementById('reg-err').classList.remove('show');
+    }
+  }
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.getElementById('progress-label').textContent=STEP_LABELS[id]||'';
+  window.scrollTo(0,0);
+}
+
+function goTask(){
+  sBg=document.getElementById('inp-bg').value.trim();
+  sTheme=document.getElementById('inp-theme').value.trim();
+  if(!sBg||!sTheme){document.getElementById('theme-err').classList.add('show');return}
+  document.getElementById('theme-err').classList.remove('show');
+  goScreen('s-task');
+}
+
+function checkTaskReady(){
+  document.getElementById('sub-btn').disabled=!document.getElementById('chk-uploaded').checked;
+}
+
+/* ── SUBMIT ── */
+function doSubmit(){
+  sid='SID-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).substr(2,5).toUpperCase();
+  payload={timestamp:new Date().toISOString(),name:sName,group:sGroup,session_id:sid,background:sBg,theme:sTheme,confirmed_upload:true,user_agent:navigator.userAgent};
+  goScreen('s-done');
+  document.getElementById('done-meta').textContent=`${sName} · ${sGroup} · Theme: ${sTheme} · Session: ${sid}`;
+  send(payload);
+}
+
+/* ── SEND ── */
+function send(data){fetch(SHEET_URL,{method:'POST',mode:'no-cors',body:JSON.stringify({tab:SHEET_TAB,data})})}
+
+/* ── BACKUP ── */
+function doEmailBackup(){
+  if(!payload)return;
+  const sub=encodeURIComponent(`Presentation Task — ${payload.name} — ${payload.session_id}`);
+  const body=encodeURIComponent(`Name: ${payload.name}\nGroup: ${payload.group}\nBackground: ${payload.background}\nTheme: ${payload.theme}\nSession: ${payload.session_id}\n\nFile uploaded to Teams/OneDrive folder — please confirm it has arrived.`);
+  window.location.href=`mailto:${EMAIL}?subject=${sub}&body=${body}`;
+}
+</script>
+</body>
+</html>
