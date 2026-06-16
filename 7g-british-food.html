@@ -460,7 +460,7 @@
 ============================================================ */
 var UNIT          = '7g-british-food';
 var TOTAL_STEPS   = 4;
-var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbyFmK71PseRmH8gBnuD3HLFU9b75eMPhE-LV8hNKSGM2RJ4bbMTIMrcoi3Qo4WG95qxIw/exec';
+var SHEET_URL     = 'https://hook.eu1.make.com/1gx46wea33yguetah95oy4j8asbyafqm';
 var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
 
 /* ============================================================
@@ -696,20 +696,45 @@ function checkExB() {
 }
 
 /* ============================================================
-   SUBMIT TO GOOGLE SHEET
+   SUBMIT TO MAKE.COM WEBHOOK
 ============================================================ */
 function submitToSheet() {
   buildSummary();
   var btn = document.getElementById('submit-btn');
   btn.disabled = true;
   btn.textContent = 'Sending...';
-  var payload = { name: state.name, cls: state.cls, unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC };
+
+  var answers = JSON.stringify([
+    {key: 'exA-g1', value: state.exA.g1 || ''},
+    {key: 'exA-g2', value: state.exA.g2 || ''},
+    {key: 'exA-g3', value: state.exA.g3 || ''},
+    {key: 'exA-g4', value: state.exA.g4 || ''},
+    {key: 'exA-g5', value: state.exA.g5 || ''},
+    {key: 'exA-g6', value: state.exA.g6 || ''},
+    {key: 'exB-g1', value: state.exB.g1 || ''},
+    {key: 'exB-g2', value: state.exB.g2 || ''},
+    {key: 'exB-g3', value: state.exB.g3 || ''},
+    {key: 'exB-g4', value: state.exB.g4 || ''},
+    {key: 'exB-g5', value: state.exB.g5 || ''},
+    {key: 'exB-g6', value: state.exB.g6 || ''},
+    {key: 'exB-g7', value: state.exB.g7 || ''},
+    {key: 'exB-g8', value: state.exB.g8 || ''},
+    {key: 'exC-text', value: state.exC.text || ''}
+  ]);
+
+  var payload = {
+    name: state.name,
+    cls:  state.cls,
+    unit: UNIT,
+    answers: answers
+  };
+
   fetch(SHEET_URL, {
     method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
-  }).then(function() {
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).then(function(r) { return r.json(); })
+  .then(function() {
     btn.style.display = 'none';
     document.getElementById('submit-success').style.display = 'block';
     document.getElementById('submit-fallback').style.display = 'block';

@@ -23,8 +23,6 @@
       --font:    'Segoe UI', system-ui, sans-serif;
     }
     body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
-
-    /* ── Header ── */
     .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
     .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
     .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
@@ -32,71 +30,37 @@
     .header-meta strong { display: block; color: var(--gold); }
     .progress-track { height: 6px; background: rgba(255,255,255,.2); }
     .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
-
-    /* ── Steps ── */
     .step { display: none; }
     .step.active { display: block; }
     .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
-
-    /* ── Exercise labels ── */
     .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
     .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
     .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
-
-    /* ── Cards ── */
     .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
     .card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
-
-    /* ── Reading text ── */
     .reading-text { font-size: .93rem; line-height: 1.85; color: var(--text); }
     .reading-text p { margin-bottom: .85rem; }
     .reading-text p:last-child { margin-bottom: 0; }
     .reading-text strong { color: var(--blue); }
-
-    /* ── Forms ── */
     .form-group { margin-bottom: 1.1rem; }
     .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
-    .form-input, .form-textarea {
-      width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
-      padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
-      color: var(--text); background: #fff; transition: border-color .2s;
-    }
+    .form-input, .form-textarea { width: 100%; border: 1.5px solid var(--border); border-radius: 8px; padding: .65rem .85rem; font-family: var(--font); font-size: .92rem; color: var(--text); background: #fff; transition: border-color .2s; }
     .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--blue); }
-    .form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
-    .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
-
-    /* ── Gap-fill (dropdown) ── */
-    .gap-text { font-size: .93rem; line-height: 2.6; color: var(--text); }
-    .gap-select {
-      display: inline-block; border: 1.5px solid var(--gold); border-radius: 6px;
-      padding: .18rem .45rem; font-family: var(--font); font-size: .82rem;
-      background: var(--gold-lt); color: var(--blue); cursor: pointer;
-      vertical-align: middle; margin: 0 2px; max-width: 200px;
-    }
+    .form-textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+    .gap-text { font-size: .93rem; line-height: 2.8; color: var(--text); }
+    .gap-select { display: inline-block; border: 1.5px solid var(--gold); border-radius: 6px; padding: .18rem .45rem; font-family: var(--font); font-size: .82rem; background: var(--gold-lt); color: var(--blue); cursor: pointer; vertical-align: middle; margin: 0 2px; max-width: 180px; }
     .gap-select:focus { outline: none; border-color: var(--blue); }
     .gap-correct { background: #d4edda !important; border-color: var(--green) !important; color: #155724 !important; }
-    .gap-wrong   { background: #fde8e8 !important; border-color: var(--red) !important;   color: #721c24 !important; }
-    .gap-num { font-size: .68rem; color: var(--muted); vertical-align: super; margin-right: 1px; }
-
-    /* ── Word bank ── */
+    .gap-wrong   { background: #fde8e8 !important; border-color: var(--red) !important; color: #721c24 !important; }
     .word-bank { background: var(--gold-lt); border: 1.5px solid var(--gold); border-radius: 8px; padding: .75rem 1rem; margin-bottom: 1.25rem; }
     .word-bank strong { display: block; color: var(--blue); margin-bottom: .5rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; }
     .word-bank span { display: inline-block; margin: .2rem .3rem; background: var(--blue); color: #fff; border-radius: 4px; padding: .18rem .55rem; font-size: .8rem; font-weight: 600; }
-
-    /* ── Comprehension questions ── */
-    .comp-item { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: .85rem; background: #fafbfc; }
-    .comp-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 800; flex-shrink: 0; margin-right: .5rem; }
-    .comp-question { font-size: .9rem; font-weight: 600; color: var(--blue); margin-bottom: .5rem; }
-
-    /* ── Feedback banners ── */
     .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
     .feedback.show { display: block; }
     .feedback.ok   { background: #d4edda; color: #155724; }
     .feedback.warn { background: #fff3cd; color: #856404; }
     .feedback.err  { background: #fde8e8; color: #721c24; }
-
-    /* ── Buttons ── */
-    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; transition: all .2s; }
     .btn:active { transform: scale(.97); }
     .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
     .btn-primary:hover { background: #15304f; }
@@ -107,8 +71,6 @@
     .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
     .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
     .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
-
-    /* ── Welcome screen ── */
     .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
     .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
     .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
@@ -118,30 +80,26 @@
     .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
     .ov-card.locked { opacity: .5; }
     .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
-
-    /* ── Submit / summary ── */
     .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
     .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
     .summary-row:last-child { border-bottom: none; }
     .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
     .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
     .summary-a  { color: var(--text); white-space: pre-wrap; }
-
     @media (max-width: 480px) {
       .ex-title { font-size: 1.25rem; }
       .btn { padding: .65rem 1.1rem; }
       .welcome-title { font-size: 1.4rem; }
-      .gap-select { max-width: 150px; font-size: .75rem; }
+      .gap-select { max-width: 140px; font-size: .75rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- ── Sticky header ── -->
 <header class="app-header">
   <div class="header-inner">
     <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
-    <a class="header-logo" href="7g-activities.html" style="font-size:.75rem;opacity:.8">&larr; Activities</a>
+    <a class="header-logo" href="7g-activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
     <div class="header-meta" id="header-meta" style="display:none">
       <strong id="header-name"></strong>
       <span id="header-step">Exercise A of 4</span>
@@ -151,375 +109,221 @@
 </header>
 
 
-<!-- ====================================================
-     STEP 0 – WELCOME
-===================================================== -->
+<!-- STEP 0 – WELCOME -->
 <section id="step-0" class="step active">
   <div class="step-inner">
     <div class="welcome-hero">
-      <div class="welcome-flag">&#127468;&#127463;</div>
+      <div class="welcome-flag">🇬🇧</div>
       <h1 class="welcome-title">London Landmarks</h1>
-      <p class="welcome-sub">Read about famous places in London, practise vocabulary and prepositions of place, then write about your dream visit.</p>
+      <p class="welcome-sub">Read about famous London landmarks, practise prepositions of place, and write about a place you'd like to visit.</p>
     </div>
-
     <div class="exercise-overview">
-      <div class="ov-card"><div class="ov-icon">&#128214;</div><strong>Ex A &ndash; Reading</strong>Read about five famous London landmarks</div>
-      <div class="ov-card locked"><div class="ov-icon">&#128218;</div><strong>Ex B &ndash; Vocabulary</strong>Fill in the correct words about London</div>
-      <div class="ov-card locked"><div class="ov-icon">&#128205;</div><strong>Ex C &ndash; Prepositions</strong>Choose the right preposition of place</div>
-      <div class="ov-card locked"><div class="ov-icon">&#9997;&#65039;</div><strong>Ex D &ndash; Writing</strong>Describe your dream day in London</div>
+      <div class="ov-card"><div class="ov-icon">📖</div><strong>Ex A – Reading</strong>Read about London landmarks and answer comprehension questions</div>
+      <div class="ov-card locked"><div class="ov-icon">📍</div><strong>Ex B – Vocabulary</strong>Describe where famous buildings are using prepositions</div>
+      <div class="ov-card locked"><div class="ov-icon">🔍</div><strong>Ex C – Gap-fill</strong>Complete sentences with the correct preposition of place</div>
+      <div class="ov-card locked"><div class="ov-icon">✍️</div><strong>Ex D – Writing</strong>Write a short paragraph about a London landmark</div>
     </div>
-
     <div class="card">
       <div class="card-title">Enter your details to begin</div>
       <div class="form-group">
         <label class="form-label" for="inp-name">Your name</label>
-        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna M&uuml;ller" autocomplete="name">
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Lena Müller" autocomplete="name">
       </div>
       <div class="form-group">
         <label class="form-label" for="inp-class">Your class</label>
         <input class="form-input" type="text" id="inp-class" placeholder="e.g. 7g" autocomplete="off">
       </div>
       <div id="welcome-error" class="feedback err"></div>
-      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises &rarr;</button>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises →</button>
     </div>
   </div>
 </section>
 
 
-<!-- ====================================================
-     STEP 1 – EXERCISE A: READING
-===================================================== -->
+<!-- STEP 1 – EXERCISE A: Reading -->
 <section id="step-1" class="step">
   <div class="step-inner">
     <span class="ex-badge">Exercise A</span>
-    <h2 class="ex-title">Famous Places in London</h2>
-    <p class="ex-subtitle">Read the text carefully, then answer the questions below.</p>
+    <h2 class="ex-title">Reading – London's Famous Landmarks</h2>
+    <p class="ex-subtitle">Read the text carefully, then answer the three questions below.</p>
 
     <div class="card">
-      <div class="card-title">&#128214; Reading text</div>
+      <div class="card-title">Read the text</div>
       <div class="reading-text">
-        <p>London is the capital of the United Kingdom and one of the most visited cities in the world. Every year, millions of tourists come to see its famous landmarks.</p>
-
-        <p><strong>Big Ben</strong> is probably the most famous clock in the world. It stands next to the Houses of Parliament, right beside the River Thames. The clock tower is over 96 metres tall, and you can hear its bell from far away. The tower was actually renamed "Elizabeth Tower" in 2012, but most people still call it Big Ben.</p>
-
-        <p><strong>The Tower of London</strong> is almost 1,000 years old. William the Conqueror started building it in 1066 after he became King of England. Today, you can see the Crown Jewels there &ndash; the diamonds and gold that belong to the royal family. Special guards called "Beefeaters" look after the tower, and there are also famous ravens that live there. People say that if the ravens ever leave, the tower will fall down!</p>
-
-        <p><strong>Buckingham Palace</strong> is where the King lives and works. It has 775 rooms, including 78 bathrooms! Every day, tourists stand in front of the palace to watch the Changing of the Guard. The soldiers wear tall black hats made of bearskin and red uniforms.</p>
-
-        <p><strong>The London Eye</strong> is a giant wheel on the South Bank of the Thames, opposite the Houses of Parliament. It is 135 metres tall and has 32 glass capsules. On a clear day, you can see up to 40 kilometres from the top. A ride takes about 30 minutes.</p>
-
-        <p><strong>Tower Bridge</strong> is one of the most beautiful bridges in London. It was built between 1886 and 1894. The middle part of the bridge can open to let tall ships pass through. It opens about 800 times a year! Tower Bridge is near the Tower of London &ndash; that is why it has the same name.</p>
+        <p>London is the capital city of England and the United Kingdom. It is one of the most visited cities in the world, and it is famous for its many historic buildings and landmarks. Millions of tourists come every year to see them.</p>
+        <p>One of the most famous landmarks is <strong>Big Ben</strong>, the large clock tower at the northern end of the Palace of Westminster. The name "Big Ben" actually refers to the bell inside the tower, not the tower itself. Big Ben has been telling Londoners the time since 1859.</p>
+        <p>Not far from Big Ben is <strong>Westminster Bridge</strong>, which crosses the River Thames. From the bridge you can get a beautiful view of both the Houses of Parliament and the South Bank of the river.</p>
+        <p><strong>Buckingham Palace</strong> is the official London residence of the British monarch. It is located at the end of The Mall, a long straight road in the heart of the city. Tourists often come to watch the Changing of the Guard, a colourful military ceremony that takes place in front of the palace.</p>
+        <p>In the east of the city stands the <strong>Tower of London</strong>, a historic castle on the north bank of the Thames. It was built by William the Conqueror in 1078 and has been used as a royal palace, a prison, and even a zoo. Today, the Crown Jewels are kept there.</p>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-title">&#128221; Comprehension questions</div>
-      <p class="ex-subtitle" style="margin-bottom:1rem">Answer in full sentences.</p>
-
-      <div class="comp-item">
-        <div class="comp-question"><span class="comp-num">1</span> How tall is the Elizabeth Tower (Big Ben)?</div>
-        <textarea class="form-textarea" id="exA-q1" rows="2" placeholder="Write your answer..."></textarea>
+      <div class="card-title">Comprehension questions</div>
+      <div class="form-group">
+        <label class="form-label" for="ex1-q1">1. What does the name "Big Ben" actually refer to?</label>
+        <textarea class="form-textarea" id="ex1-q1" placeholder="Write your answer in a full sentence..." rows="3"></textarea>
       </div>
-
-      <div class="comp-item">
-        <div class="comp-question"><span class="comp-num">2</span> Who started building the Tower of London, and when?</div>
-        <textarea class="form-textarea" id="exA-q2" rows="2" placeholder="Write your answer..."></textarea>
+      <div class="form-group">
+        <label class="form-label" for="ex1-q2">2. What can you see from Westminster Bridge?</label>
+        <textarea class="form-textarea" id="ex1-q2" placeholder="Write your answer in a full sentence..." rows="3"></textarea>
       </div>
-
-      <div class="comp-item">
-        <div class="comp-question"><span class="comp-num">3</span> How many rooms does Buckingham Palace have?</div>
-        <textarea class="form-textarea" id="exA-q3" rows="2" placeholder="Write your answer..."></textarea>
-      </div>
-
-      <div class="comp-item">
-        <div class="comp-question"><span class="comp-num">4</span> What can you see from the top of the London Eye on a clear day?</div>
-        <textarea class="form-textarea" id="exA-q4" rows="2" placeholder="Write your answer..."></textarea>
-      </div>
-
-      <div class="comp-item">
-        <div class="comp-question"><span class="comp-num">5</span> Why is Tower Bridge called "Tower Bridge"?</div>
-        <textarea class="form-textarea" id="exA-q5" rows="2" placeholder="Write your answer..."></textarea>
+      <div class="form-group">
+        <label class="form-label" for="ex1-q3">3. Name two things the Tower of London has been used for in history.</label>
+        <textarea class="form-textarea" id="ex1-q3" placeholder="Write your answer in a full sentence..." rows="3"></textarea>
       </div>
     </div>
 
     <div id="step1-error" class="feedback err"></div>
     <div class="btn-row">
-      <button class="btn btn-outline" onclick="prevStep(1)">&larr; Back</button>
-      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B &rarr;</button>
+      <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B →</button>
     </div>
   </div>
 </section>
 
 
-<!-- ====================================================
-     STEP 2 – EXERCISE B: VOCABULARY GAP-FILL
-===================================================== -->
+<!-- STEP 2 – EXERCISE B: Prepositions of place -->
 <section id="step-2" class="step">
   <div class="step-inner">
     <span class="ex-badge">Exercise B</span>
-    <h2 class="ex-title">London Vocabulary</h2>
-    <p class="ex-subtitle">Choose the correct word for each gap. Use information from the reading text to help you.</p>
+    <h2 class="ex-title">Vocabulary – Where Is It?</h2>
+    <p class="ex-subtitle">Use the map description and the text to answer these questions about the locations of London landmarks.</p>
 
-    <div class="word-bank">
-      <strong>Word bank</strong>
-      <span>ravens</span>
-      <span>capsules</span>
-      <span>palace</span>
-      <span>tower</span>
-      <span>bridge</span>
-      <span>guard</span>
-      <span>jewels</span>
-      <span>tourists</span>
+    <div class="card">
+      <div class="card-title">Prepositions of place reminder</div>
+      <div class="reading-text">
+        <p>Use these prepositions to describe where things are: <strong>next to</strong> · <strong>opposite</strong> · <strong>in front of</strong> · <strong>behind</strong> · <strong>between</strong> · <strong>on the corner of</strong> · <strong>near</strong> · <strong>at the end of</strong></p>
+      </div>
     </div>
 
     <div class="card">
-      <div class="card-title">Fill in the gaps</div>
-      <div class="gap-text">
-        <p>1. Every year, millions of <span class="gap-num">(1)</span>
-          <select class="gap-select" id="exB-g1">
-            <option value="">choose...</option>
-            <option value="tourists">tourists</option>
-            <option value="ravens">ravens</option>
-            <option value="capsules">capsules</option>
-            <option value="guard">guard</option>
-          </select> visit London to see its famous landmarks.</p>
-
-        <p>2. Big Ben is a famous clock <span class="gap-num">(2)</span>
-          <select class="gap-select" id="exB-g2">
-            <option value="">choose...</option>
-            <option value="bridge">bridge</option>
-            <option value="palace">palace</option>
-            <option value="tower">tower</option>
-            <option value="jewels">jewels</option>
-          </select> next to the Houses of Parliament.</p>
-
-        <p>3. You can see the Crown <span class="gap-num">(3)</span>
-          <select class="gap-select" id="exB-g3">
-            <option value="">choose...</option>
-            <option value="jewels">jewels</option>
-            <option value="guard">guard</option>
-            <option value="capsules">capsules</option>
-            <option value="tourists">tourists</option>
-          </select> at the Tower of London.</p>
-
-        <p>4. The famous <span class="gap-num">(4)</span>
-          <select class="gap-select" id="exB-g4">
-            <option value="">choose...</option>
-            <option value="tourists">tourists</option>
-            <option value="capsules">capsules</option>
-            <option value="ravens">ravens</option>
-            <option value="tower">tower</option>
-          </select> must never leave the Tower of London.</p>
-
-        <p>5. Buckingham <span class="gap-num">(5)</span>
-          <select class="gap-select" id="exB-g5">
-            <option value="">choose...</option>
-            <option value="tower">tower</option>
-            <option value="palace">palace</option>
-            <option value="bridge">bridge</option>
-            <option value="guard">guard</option>
-          </select> is where the King lives.</p>
-
-        <p>6. Tourists love to watch the Changing of the <span class="gap-num">(6)</span>
-          <select class="gap-select" id="exB-g6">
-            <option value="">choose...</option>
-            <option value="guard">guard</option>
-            <option value="jewels">jewels</option>
-            <option value="ravens">ravens</option>
-            <option value="tourists">tourists</option>
-          </select> at Buckingham Palace.</p>
-
-        <p>7. The London Eye has 32 glass <span class="gap-num">(7)</span>
-          <select class="gap-select" id="exB-g7">
-            <option value="">choose...</option>
-            <option value="capsules">capsules</option>
-            <option value="jewels">jewels</option>
-            <option value="tower">tower</option>
-            <option value="palace">palace</option>
-          </select> where passengers can enjoy the view.</p>
-
-        <p>8. Tower <span class="gap-num">(8)</span>
-          <select class="gap-select" id="exB-g8">
-            <option value="">choose...</option>
-            <option value="palace">palace</option>
-            <option value="bridge">bridge</option>
-            <option value="guard">guard</option>
-            <option value="ravens">ravens</option>
-          </select> can open in the middle to let tall ships pass through.</p>
+      <div class="card-title">Answer in full sentences</div>
+      <div class="form-group">
+        <label class="form-label" for="ex2-q1">1. Where is Westminster Bridge? Use a preposition of place in your answer.</label>
+        <textarea class="form-textarea" id="ex2-q1" placeholder="e.g. Westminster Bridge is next to..." rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ex2-q2">2. Describe the location of Buckingham Palace. Use at least one preposition of place.</label>
+        <textarea class="form-textarea" id="ex2-q2" placeholder="e.g. Buckingham Palace is at the end of..." rows="3"></textarea>
       </div>
     </div>
 
     <div id="step2-error" class="feedback err"></div>
-    <div id="step2-fb" class="feedback"></div>
     <div class="btn-row">
-      <button class="btn btn-outline" onclick="prevStep(2)">&larr; Back</button>
-      <button class="btn btn-gold btn-sm" onclick="checkExB()">&#10003; Check</button>
-      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C &rarr;</button>
+      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C →</button>
     </div>
   </div>
 </section>
 
 
-<!-- ====================================================
-     STEP 3 – EXERCISE C: PREPOSITIONS OF PLACE
-===================================================== -->
+<!-- STEP 3 – EXERCISE C: Gap-fill -->
 <section id="step-3" class="step">
   <div class="step-inner">
     <span class="ex-badge">Exercise C</span>
-    <h2 class="ex-title">Prepositions of Place</h2>
+    <h2 class="ex-title">Gap-fill – Prepositions of Place</h2>
     <p class="ex-subtitle">Choose the correct preposition to complete each sentence about London.</p>
 
-    <div class="word-bank">
-      <strong>Prepositions</strong>
-      <span>next to</span>
-      <span>in front of</span>
-      <span>on</span>
-      <span>opposite</span>
-      <span>near</span>
-      <span>between</span>
-      <span>in</span>
-      <span>beside</span>
-    </div>
-
     <div class="card">
-      <div class="card-title">Fill in the prepositions</div>
+      <div class="card-title">Complete the sentences</div>
       <div class="gap-text">
-        <p>1. Big Ben stands <span class="gap-num">(1)</span>
-          <select class="gap-select" id="exC-g1">
-            <option value="">choose...</option>
-            <option value="next to">next to</option>
-            <option value="in">in</option>
-            <option value="on">on</option>
-            <option value="between">between</option>
-          </select> the Houses of Parliament.</p>
 
-        <p>2. The Tower of London is <span class="gap-num">(2)</span>
-          <select class="gap-select" id="exC-g2">
-            <option value="">choose...</option>
-            <option value="in front of">in front of</option>
-            <option value="near">near</option>
-            <option value="on">on</option>
-            <option value="opposite">opposite</option>
-          </select> Tower Bridge.</p>
+        <p><span style="font-size:.72rem;color:var(--muted);vertical-align:super">1</span>
+        Big Ben is located
+        <select class="gap-select" id="ex3-g1"><option value="">—</option><option>at</option><option>on</option><option>in</option><option>next to</option></select>
+        the northern end of the Palace of Westminster.</p>
 
-        <p>3. The London Eye is <span class="gap-num">(3)</span>
-          <select class="gap-select" id="exC-g3">
-            <option value="">choose...</option>
-            <option value="on">on</option>
-            <option value="in">in</option>
-            <option value="next to">next to</option>
-            <option value="between">between</option>
-          </select> the South Bank of the Thames.</p>
+        <p><span style="font-size:.72rem;color:var(--muted);vertical-align:super">2</span>
+        Westminster Bridge crosses
+        <select class="gap-select" id="ex3-g2"><option value="">—</option><option>over</option><option>under</option><option>behind</option><option>opposite</option></select>
+        the River Thames.</p>
 
-        <p>4. Tourists stand <span class="gap-num">(4)</span>
-          <select class="gap-select" id="exC-g4">
-            <option value="">choose...</option>
-            <option value="beside">beside</option>
-            <option value="in front of">in front of</option>
-            <option value="between">between</option>
-            <option value="on">on</option>
-          </select> Buckingham Palace to watch the guards.</p>
+        <p><span style="font-size:.72rem;color:var(--muted);vertical-align:super">3</span>
+        Buckingham Palace is
+        <select class="gap-select" id="ex3-g3"><option value="">—</option><option>at the end of</option><option>in front of</option><option>between</option><option>behind</option></select>
+        The Mall.</p>
 
-        <p>5. The London Eye sits <span class="gap-num">(5)</span>
-          <select class="gap-select" id="exC-g5">
-            <option value="">choose...</option>
-            <option value="next to">next to</option>
-            <option value="in">in</option>
-            <option value="opposite">opposite</option>
-            <option value="near">near</option>
-          </select> the Houses of Parliament, on the other side of the river.</p>
+        <p><span style="font-size:.72rem;color:var(--muted);vertical-align:super">4</span>
+        The Tower of London stands
+        <select class="gap-select" id="ex3-g4"><option value="">—</option><option>on</option><option>above</option><option>behind</option><option>below</option></select>
+        the north bank of the Thames.</p>
 
-        <p>6. The Crown Jewels are kept <span class="gap-num">(6)</span>
-          <select class="gap-select" id="exC-g6">
-            <option value="">choose...</option>
-            <option value="on">on</option>
-            <option value="in">in</option>
-            <option value="beside">beside</option>
-            <option value="in front of">in front of</option>
-          </select> the Tower of London.</p>
+        <p><span style="font-size:.72rem;color:var(--muted);vertical-align:super">5</span>
+        The Changing of the Guard takes place
+        <select class="gap-select" id="ex3-g5"><option value="">—</option><option>in front of</option><option>behind</option><option>next to</option><option>opposite</option></select>
+        Buckingham Palace.</p>
 
-        <p>7. The clock tower is right <span class="gap-num">(7)</span>
-          <select class="gap-select" id="exC-g7">
-            <option value="">choose...</option>
-            <option value="beside">beside</option>
-            <option value="in">in</option>
-            <option value="opposite">opposite</option>
-            <option value="between">between</option>
-          </select> the River Thames.</p>
+        <p><span style="font-size:.72rem;color:var(--muted);vertical-align:super">6</span>
+        From Westminster Bridge, you have a beautiful view
+        <select class="gap-select" id="ex3-g6"><option value="">—</option><option>of</option><option>from</option><option>at</option><option>over</option></select>
+        the Houses of Parliament.</p>
 
-        <p>8. Westminster Bridge runs <span class="gap-num">(8)</span>
-          <select class="gap-select" id="exC-g8">
-            <option value="">choose...</option>
-            <option value="in front of">in front of</option>
-            <option value="near">near</option>
-            <option value="between">between</option>
-            <option value="on">on</option>
-          </select> the South Bank and the Houses of Parliament.</p>
       </div>
     </div>
 
     <div id="step3-error" class="feedback err"></div>
-    <div id="step3-fb" class="feedback"></div>
     <div class="btn-row">
-      <button class="btn btn-outline" onclick="prevStep(3)">&larr; Back</button>
-      <button class="btn btn-gold btn-sm" onclick="checkExC()">&#10003; Check</button>
-      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise D &rarr;</button>
+      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise D →</button>
     </div>
   </div>
 </section>
 
 
-<!-- ====================================================
-     STEP 4 – EXERCISE D: WRITING
-===================================================== -->
+<!-- STEP 4 – EXERCISE D: Writing -->
 <section id="step-4" class="step">
   <div class="step-inner">
     <span class="ex-badge">Exercise D</span>
-    <h2 class="ex-title">Your Dream Day in London</h2>
-    <p class="ex-subtitle">Imagine you are spending one day in London. Write a short text (6&ndash;8 sentences) about what you would do. Use the landmarks from Exercise A and some prepositions of place.</p>
+    <h2 class="ex-title">Writing – A London Landmark</h2>
+    <p class="ex-subtitle">Write a short paragraph (60–100 words) about one London landmark. Use prepositions of place to describe its location.</p>
 
     <div class="card">
-      <div class="card-title">&#9997;&#65039; Writing task</div>
-      <p class="form-hint" style="margin-bottom:.75rem">Think about: Which places would you visit? What would you see there? What would you eat? Who would you go with?</p>
+      <div class="card-title">Useful language</div>
+      <div class="reading-text">
+        <p>Choose one landmark: <strong>Big Ben · Westminster Bridge · Buckingham Palace · The Tower of London</strong></p>
+        <p>Try to include: where it is / what it looks like / why it is famous / whether you would like to visit it and why.</p>
+        <p><em>Example: "Big Ben is located at the northern end of the Palace of Westminster, next to the River Thames. It is a tall clock tower that has been standing since 1859..."</em></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Your paragraph (60–100 words)</div>
       <div class="form-group">
-        <label class="form-label" for="exD-text">My day in London</label>
-        <textarea class="form-textarea" id="exD-text" rows="8" placeholder="First, I would visit Big Ben. It is next to the Houses of Parliament..."></textarea>
-        <div class="form-hint">Write at least 6 sentences.</div>
+        <textarea class="form-textarea" id="ex4-text" placeholder="Write about the landmark you chose. Use full sentences and try to include prepositions of place." rows="8" style="min-height:160px"></textarea>
       </div>
     </div>
 
     <div id="step4-error" class="feedback err"></div>
     <div class="btn-row">
-      <button class="btn btn-outline" onclick="prevStep(4)">&larr; Back</button>
-      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(4)">Review &amp; Submit &rarr;</button>
+      <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(4)">Review &amp; Submit →</button>
     </div>
   </div>
 </section>
 
 
-<!-- ====================================================
-     STEP 5 – REVIEW & SUBMIT
-===================================================== -->
+<!-- STEP 5 – SUBMIT -->
 <section id="step-5" class="step">
   <div class="step-inner">
     <div style="text-align:center;padding:1.5rem 0 1rem">
-      <div style="font-size:2.5rem;margin-bottom:.75rem">&#9989;</div>
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
       <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
       <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
     </div>
     <div id="summary-container"></div>
     <div class="card" style="text-align:center">
       <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
-      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">&#128640; Submit to Teacher</button>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
       <div id="submit-success" style="display:none;margin-top:1.25rem">
-        <div style="font-size:2rem;margin-bottom:.5rem">&#9989;</div>
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
         <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
         <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
       </div>
       <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
         <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission did not work, use one of these backups:</p>
-        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">&#9993;&#65039; Send by email instead</button>
-        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">&#128203; Copy to clipboard</button>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
       </div>
     </div>
   </div>
@@ -527,42 +331,35 @@
 
 
 <script>
-/* ============================================================
-   CONFIG
-============================================================ */
 var UNIT          = '7g-london-landmarks';
 var TOTAL_STEPS   = 5;
-var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbyFmK71PseRmH8gBnuD3HLFU9b75eMPhE-LV8hNKSGM2RJ4bbMTIMrcoi3Qo4WG95qxIw/exec';
+var SHEET_URL     = 'https://hook.eu1.make.com/1gx46wea33yguetah95oy4j8asbyafqm';
 var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+var currentStep   = 0;
 
-/* ============================================================
-   STATE
-============================================================ */
 var state = {
   name: '',
   cls:  '',
-  exA:  {},
-  exB:  {},
-  exC:  {},
-  exD:  {}
+  ex1:  { q1: '', q2: '', q3: '' },
+  ex2:  { q1: '', q2: '' },
+  ex3:  { g1: '', g2: '', g3: '', g4: '', g5: '', g6: '' },
+  ex4:  { text: '' }
 };
 
-/* ============================================================
-   NAVIGATION
-============================================================ */
 function showStep(n) {
   document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
   document.getElementById('step-' + n).classList.add('active');
   document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  currentStep = n;
   restoreStep(n);
   var meta = document.getElementById('header-meta');
   if (n === 0) { meta.style.display = 'none'; return; }
   meta.style.display = 'block';
   document.getElementById('header-name').textContent = state.name + (state.cls ? ' — ' + state.cls : '');
-  var labels = ['A','B','C','D'];
+  var labels = ['A', 'B', 'C', 'D'];
   document.getElementById('header-step').textContent = n < TOTAL_STEPS
-    ? 'Exercise ' + labels[n - 1] + ' of ' + (TOTAL_STEPS - 1)
+    ? 'Exercise ' + labels[n - 1] + ' of 4'
     : 'Submit';
 }
 
@@ -571,7 +368,7 @@ function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
 function nextStep(n) {
   if (!validateStep(n)) {
     var err = document.getElementById('step' + n + '-error');
-    if (err) { err.textContent = 'Please answer the required questions before continuing.'; err.classList.add('show'); }
+    if (err) { err.textContent = 'Please answer all required questions before continuing.'; err.classList.add('show'); }
     return;
   }
   clearErr(n);
@@ -599,39 +396,39 @@ function startExercises() {
   showStep(1);
 }
 
-/* ============================================================
-   VALIDATION
-============================================================ */
 function validateStep(n) {
   switch (n) {
-    case 1: return val('exA-q1') && val('exA-q2') && val('exA-q3') && val('exA-q4') && val('exA-q5');
-    case 2: return g('exB-g1') && g('exB-g2') && g('exB-g3') && g('exB-g4') && g('exB-g5') && g('exB-g6') && g('exB-g7') && g('exB-g8');
-    case 3: return g('exC-g1') && g('exC-g2') && g('exC-g3') && g('exC-g4') && g('exC-g5') && g('exC-g6') && g('exC-g7') && g('exC-g8');
-    case 4: return val('exD-text');
-    default: return true;
+    case 1:
+      return val('ex1-q1') && val('ex1-q2') && val('ex1-q3');
+    case 2:
+      return val('ex2-q1') && val('ex2-q2');
+    case 3:
+      var ids = ['g1','g2','g3','g4','g5','g6'];
+      var answered = ids.filter(function(k) { return g('ex3-' + k) !== ''; }).length;
+      return answered >= 5;
+    case 4:
+      return val('ex4-text') && g('ex4-text').length >= 40;
+    default:
+      return true;
   }
 }
 
-/* ============================================================
-   SAVE / RESTORE
-============================================================ */
 function saveStep(n) {
   switch (n) {
     case 1:
-      state.exA.q1 = g('exA-q1');
-      state.exA.q2 = g('exA-q2');
-      state.exA.q3 = g('exA-q3');
-      state.exA.q4 = g('exA-q4');
-      state.exA.q5 = g('exA-q5');
+      state.ex1.q1 = g('ex1-q1');
+      state.ex1.q2 = g('ex1-q2');
+      state.ex1.q3 = g('ex1-q3');
       break;
     case 2:
-      ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k){ state.exB[k] = g('exB-'+k); });
+      state.ex2.q1 = g('ex2-q1');
+      state.ex2.q2 = g('ex2-q2');
       break;
     case 3:
-      ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k){ state.exC[k] = g('exC-'+k); });
+      ['g1','g2','g3','g4','g5','g6'].forEach(function(k) { state.ex3[k] = g('ex3-' + k); });
       break;
     case 4:
-      state.exD.text = g('exD-text');
+      state.ex4.text = g('ex4-text');
       break;
   }
 }
@@ -639,138 +436,75 @@ function saveStep(n) {
 function restoreStep(n) {
   switch (n) {
     case 1:
-      set('exA-q1', state.exA.q1); set('exA-q2', state.exA.q2);
-      set('exA-q3', state.exA.q3); set('exA-q4', state.exA.q4);
-      set('exA-q5', state.exA.q5);
-      break;
+      set('ex1-q1', state.ex1.q1); set('ex1-q2', state.ex1.q2); set('ex1-q3', state.ex1.q3); break;
     case 2:
-      ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k){ set('exB-'+k, state.exB[k]); });
-      break;
+      set('ex2-q1', state.ex2.q1); set('ex2-q2', state.ex2.q2); break;
     case 3:
-      ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k){ set('exC-'+k, state.exC[k]); });
-      break;
+      ['g1','g2','g3','g4','g5','g6'].forEach(function(k) { set('ex3-' + k, state.ex3[k]); }); break;
     case 4:
-      set('exD-text', state.exD.text);
-      break;
+      set('ex4-text', state.ex4.text); break;
   }
 }
 
-/* ============================================================
-   HELPERS
-============================================================ */
-function g(id)      { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+function g(id)    { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
 function set(id, v) { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
-function val(id)    { return g(id).length > 0; }
-function esc(str)   { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
+function val(id)  { return g(id).length > 0; }
+function esc(str) { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
 
-/* ============================================================
-   CHECK ANSWERS
-============================================================ */
-function checkDropdowns(ids, prefix, answers, fbId) {
-  var correct = 0, wrong = 0, empty = 0;
-  ids.forEach(function(k) {
-    var sel = document.getElementById(prefix + k);
-    if (!sel) return;
-    sel.className = sel.className.replace(/\s*(gap-correct|gap-wrong)/g, '');
-    if (!sel.value) { empty++; return; }
-    if (sel.value === answers[k]) { sel.className += ' gap-correct'; correct++; }
-    else                          { sel.className += ' gap-wrong';   wrong++;   }
-  });
-  var fb = document.getElementById(fbId);
-  fb.style.display = 'block';
-  var total = ids.length;
-  if (empty === total) {
-    fb.className = 'feedback err show';
-    fb.textContent = 'Please answer the gaps first.';
-  } else if (wrong === 0 && empty === 0) {
-    fb.className = 'feedback ok show';
-    fb.textContent = '✓ All ' + correct + ' correct! Well done.';
-  } else {
-    fb.className = 'feedback warn show';
-    fb.textContent = correct + ' / ' + total + ' correct'
-      + (wrong  ? ' — check the red gaps' : '')
-      + (empty  ? ' (' + empty + ' still blank)' : '') + '.';
-  }
-}
-
-function checkExB() {
-  var answers = {
-    g1: 'tourists', g2: 'tower', g3: 'jewels', g4: 'ravens',
-    g5: 'palace',   g6: 'guard', g7: 'capsules', g8: 'bridge'
-  };
-  checkDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8'], 'exB-', answers, 'step2-fb');
-}
-
-function checkExC() {
-  var answers = {
-    g1: 'next to', g2: 'near',     g3: 'on',          g4: 'in front of',
-    g5: 'opposite', g6: 'in',      g7: 'beside',      g8: 'between'
-  };
-  checkDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8'], 'exC-', answers, 'step3-fb');
-}
-
-/* ============================================================
-   SUMMARY
-============================================================ */
 function buildSummary() {
   var rows = [
-    { ex: 'Exercise A', q: 'Q1 – How tall is Big Ben?', a: state.exA.q1 },
-    { ex: 'Exercise A', q: 'Q2 – Who built the Tower?', a: state.exA.q2 },
-    { ex: 'Exercise A', q: 'Q3 – Rooms in Buckingham Palace?', a: state.exA.q3 },
-    { ex: 'Exercise A', q: 'Q4 – View from London Eye?', a: state.exA.q4 },
-    { ex: 'Exercise A', q: 'Q5 – Why "Tower Bridge"?', a: state.exA.q5 },
-    { ex: 'Exercise B', q: 'Vocabulary gap-fill', a: ['g1','g2','g3','g4','g5','g6','g7','g8'].map(function(k,i){return (i+1)+'. '+( state.exB[k]||'(blank)');}).join('\n') },
-    { ex: 'Exercise C', q: 'Prepositions gap-fill', a: ['g1','g2','g3','g4','g5','g6','g7','g8'].map(function(k,i){return (i+1)+'. '+( state.exC[k]||'(blank)');}).join('\n') },
-    { ex: 'Exercise D', q: 'My day in London', a: state.exD.text }
+    { ex: 'Exercise A', q: 'Q1 – What does "Big Ben" refer to?',     a: state.ex1.q1 },
+    { ex: 'Exercise A', q: 'Q2 – View from Westminster Bridge',       a: state.ex1.q2 },
+    { ex: 'Exercise A', q: 'Q3 – Tower of London uses',               a: state.ex1.q3 },
+    { ex: 'Exercise B', q: 'Q1 – Location of Westminster Bridge',     a: state.ex2.q1 },
+    { ex: 'Exercise B', q: 'Q2 – Location of Buckingham Palace',      a: state.ex2.q2 },
+    { ex: 'Exercise C', q: 'Gap-fill', a: ['g1','g2','g3','g4','g5','g6'].map(function(k,i){ return (i+1)+'. '+(state.ex3[k]||'(blank)'); }).join('\n') },
+    { ex: 'Exercise D', q: 'Writing paragraph', a: state.ex4.text }
   ];
-  var html = '<div class="submit-summary">'
-    + '<div class="summary-row"><div class="summary-ex">Student</div>'
-    + '<div class="summary-q">' + esc(state.name) + ' — ' + esc(state.cls) + '</div></div>';
+  var html = '<div class="submit-summary"><div class="summary-row"><div class="summary-ex">Student</div><div class="summary-q">' + esc(state.name) + ' — ' + esc(state.cls) + '</div></div>';
   rows.forEach(function(r) {
-    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div>'
-      + '<div class="summary-q">' + esc(r.q) + '</div>'
-      + '<div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div><div class="summary-q">' + esc(r.q) + '</div><div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
   });
   html += '</div>';
   document.getElementById('summary-container').innerHTML = html;
 }
 
-/* ============================================================
-   EMAIL FALLBACK
-============================================================ */
 function buildEmailBody() {
-  return 'Exercise: ' + UNIT
-    + '\nStudent: ' + state.name
-    + '\nClass:   ' + state.cls
-    + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
-    + '\n\n--- Exercise A: Comprehension ---'
-    + '\nQ1: ' + (state.exA.q1 || '(none)')
-    + '\nQ2: ' + (state.exA.q2 || '(none)')
-    + '\nQ3: ' + (state.exA.q3 || '(none)')
-    + '\nQ4: ' + (state.exA.q4 || '(none)')
-    + '\nQ5: ' + (state.exA.q5 || '(none)')
-    + '\n\n--- Exercise B: Vocabulary ---'
-    + '\n' + ['g1','g2','g3','g4','g5','g6','g7','g8'].map(function(k,i){return (i+1)+'. '+(state.exB[k]||'(blank)');}).join('\n')
-    + '\n\n--- Exercise C: Prepositions ---'
-    + '\n' + ['g1','g2','g3','g4','g5','g6','g7','g8'].map(function(k,i){return (i+1)+'. '+(state.exC[k]||'(blank)');}).join('\n')
-    + '\n\n--- Exercise D: Writing ---'
-    + '\n' + (state.exD.text || '(none)');
+  return 'Exercise: ' + UNIT + '\nStudent: ' + state.name + '\nClass: ' + state.cls + '\nDate: ' + new Date().toLocaleDateString('en-GB')
+    + '\n\n--- Exercise A ---\nQ1: ' + (state.ex1.q1||'') + '\nQ2: ' + (state.ex1.q2||'') + '\nQ3: ' + (state.ex1.q3||'')
+    + '\n\n--- Exercise B ---\nQ1: ' + (state.ex2.q1||'') + '\nQ2: ' + (state.ex2.q2||'')
+    + '\n\n--- Exercise C ---\n' + ['g1','g2','g3','g4','g5','g6'].map(function(k,i){ return (i+1)+'. '+(state.ex3[k]||''); }).join('\n')
+    + '\n\n--- Exercise D ---\n' + (state.ex4.text||'');
 }
 
-/* ============================================================
-   SUBMIT TO GOOGLE SHEET
-============================================================ */
+
+/* eol-flat-payload-patch */
+function eolFlat(o) {
+  if (o == null) return '';
+  if (typeof o !== 'object') return String(o);
+  return Object.keys(o).map(function(k) {
+    return k + ': ' + (o[k] === '' || o[k] == null ? '—' : o[k]);
+  }).join(' | ');
+}
+
 function submitToSheet() {
   buildSummary();
   var btn = document.getElementById('submit-btn');
   btn.disabled = true;
-  btn.textContent = 'Sending...';
-  var payload = { name: state.name, cls: state.cls, unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD };
+  btn.textContent = 'Sending…';
+  var payload = {
+    name: state.name,
+    cls:  state.cls,
+    unit: UNIT,
+    ex1:  eolFlat(state.ex1),
+    ex2:  eolFlat(state.ex2),
+    ex3:  eolFlat(state.ex3),
+    ex4:  eolFlat(state.ex4)
+  };
   fetch(SHEET_URL, {
     method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
   }).then(function() {
     btn.style.display = 'none';
     document.getElementById('submit-success').style.display = 'block';
@@ -784,32 +518,21 @@ function submitToSheet() {
 
 function submitByEmail() {
   var a = document.createElement('a');
-  a.href = 'mailto:' + TEACHER_EMAIL
-    + '?subject=' + encodeURIComponent(UNIT + ' - ' + state.name + ' - ' + state.cls)
-    + '&body='    + encodeURIComponent(buildEmailBody());
-  a.style.display = 'none';
-  document.body.appendChild(a);
-  a.click();
+  a.href = 'mailto:' + TEACHER_EMAIL + '?subject=' + encodeURIComponent(UNIT + ' - ' + state.name + ' - ' + state.cls) + '&body=' + encodeURIComponent(buildEmailBody());
+  a.style.display = 'none'; document.body.appendChild(a); a.click();
   setTimeout(function() { document.body.removeChild(a); }, 100);
 }
 
 function copyAnswers() {
-  var body = buildEmailBody();
-  navigator.clipboard.writeText(body)
+  navigator.clipboard.writeText(buildEmailBody())
     .then(function() { alert('Answers copied! Paste them into an email to your teacher.'); })
-    .catch(function() { prompt('Copy this text:', body); });
+    .catch(function() { prompt('Copy this text:', buildEmailBody()); });
 }
 
-/* ============================================================
-   INIT
-============================================================ */
-document.addEventListener('DOMContentLoaded', function() {
-  showStep(0);
-});
+document.addEventListener('DOMContentLoaded', function() { showStep(0); });
 </script>
 
 <script>
-/* ── Paste-block: prevent pasting into answer fields ── */
 document.addEventListener('paste', function(e) {
   var t = e.target;
   if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
@@ -818,24 +541,16 @@ document.addEventListener('paste', function(e) {
     msg.textContent = 'Pasting is not allowed';
     msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
     document.body.appendChild(msg);
-    setTimeout(function() {
-      msg.style.opacity = '0';
-      setTimeout(function() { msg.remove(); }, 400);
-    }, 2000);
+    setTimeout(function() { msg.style.opacity='0'; setTimeout(function(){msg.remove();},400); }, 2000);
   }
 });
-
-/* ── Copy-block: prevent copying text from the page ── */
 document.addEventListener('copy', function(e) {
   e.preventDefault();
   var msg = document.createElement('div');
   msg.textContent = '🚫 Copying is not allowed';
   msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
   document.body.appendChild(msg);
-  setTimeout(function() {
-    msg.style.opacity = '0';
-    setTimeout(function() { msg.remove(); }, 400);
-  }, 2000);
+  setTimeout(function() { msg.style.opacity='0'; setTimeout(function(){msg.remove();},400); }, 2000);
 });
 </script>
 
