@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Present Perfect – Year 7 | englishonline.training</title>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:    #1a3a5c;
+      --gold:    #c9a227;
+      --gold-lt: #f5e6b0;
+      --teal:    #2b7a78;
+      --red:     #c0392b;
+      --green:   #27ae60;
+      --bg:      #f7f9fc;
+      --card:    #ffffff;
+      --text:    #1d2b3a;
+      --muted:   #6b7a8d;
+      --border:  #dce3ec;
+      --radius:  12px;
+      --shadow:  0 2px 16px rgba(26,58,92,.1);
+      --font:    'Segoe UI', system-ui, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
+
+    /* ── Header ── */
+    .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
+    .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
+    .header-meta { font-size: .78rem; text-align: right; opacity: .9; }
+    .header-meta strong { display: block; color: var(--gold); }
+    .progress-track { height: 6px; background: rgba(255,255,255,.2); }
+    .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
+
+    /* ── Steps ── */
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+
+    /* ── Exercise labels ── */
+    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
+    .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+    .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+    /* ── Cards ── */
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
+
+    /* ── Reading text ── */
+    .reading-text { font-size: .93rem; line-height: 1.85; color: var(--text); }
+    .reading-text p { margin-bottom: .85rem; }
+    .reading-text p:last-child { margin-bottom: 0; }
+    .speaker { font-weight: 700; }
+
+    /* ── Forms ── */
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+    .form-input, .form-textarea {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+      padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
+      color: var(--text); background: #fff; transition: border-color .2s;
+    }
+    .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--blue); }
+    .form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+    .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+
+    /* ── Gap-fill (dropdown) ── */
+    .gap-text { font-size: .96rem; line-height: 2.7; color: var(--text); }
+    .gap-select {
+      display: inline-block; border: 1.5px solid var(--gold); border-radius: 6px;
+      padding: .18rem .45rem; font-family: var(--font); font-size: .82rem;
+      background: var(--gold-lt); color: var(--blue); cursor: pointer;
+      vertical-align: middle; margin: 0 2px; max-width: 200px;
+    }
+    .gap-select:focus { outline: none; border-color: var(--blue); }
+    .gap-correct { background: #d4edda; border-color: var(--green); color: #155724; }
+    .gap-wrong   { background: #fde8e8; border-color: var(--red);   color: #721c24; }
+    .gap-num { font-size: .68rem; color: var(--muted); vertical-align: super; margin-right: 1px; }
+    .gap-item { margin-bottom: .9rem; }
+
+    /* ── Word bank ── */
+    .word-bank { background: var(--gold-lt); border: 1.5px solid var(--gold); border-radius: 8px; padding: .75rem 1rem; margin-bottom: 1.25rem; }
+    .word-bank strong { display: block; color: var(--blue); margin-bottom: .5rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; }
+    .word-bank span { display: inline-block; margin: .2rem .3rem; background: var(--blue); color: #fff; border-radius: 4px; padding: .18rem .55rem; font-size: .8rem; font-weight: 600; }
+
+    /* ── Feedback banners ── */
+    .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
+    .feedback.show { display: block; }
+    .feedback.ok   { background: #d4edda; color: #155724; }
+    .feedback.warn { background: #fff3cd; color: #856404; }
+    .feedback.err  { background: #fde8e8; color: #721c24; }
+
+    /* ── Buttons ── */
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
+    .btn-primary:hover { background: #15304f; }
+    .btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
+    .btn-gold:hover { background: #b8911f; }
+    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+    .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+    .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    /* ── Welcome screen ── */
+    .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
+    .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
+    .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+    .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+    .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; }
+    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
+    .ov-card.locked { opacity: .5; }
+    .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+
+    /* ── Submit / summary ── */
+    .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
+    .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
+    .summary-a  { color: var(--text); white-space: pre-wrap; }
+    .summary-a.right { color: var(--green); font-weight: 600; }
+    .summary-a.wrong { color: var(--red); font-weight: 600; }
+    .summary-correct-hint { font-size: .78rem; color: var(--muted); margin-top: .15rem; }
+
+    /* ── Grade banner ── */
+    .grade-card { text-align: center; }
+    .grade-big { font-size: 2.4rem; font-weight: 800; color: var(--blue); margin-bottom: .15rem; }
+    .grade-label { font-size: .9rem; color: var(--muted); margin-bottom: .6rem; }
+    .grade-score { font-size: .92rem; color: var(--text); }
+
+    @media (max-width: 480px) {
+      .ex-title { font-size: 1.25rem; }
+      .btn { padding: .65rem 1.1rem; }
+      .welcome-title { font-size: 1.4rem; }
+      .gap-select { max-width: 150px; font-size: .75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Sticky header ── -->
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Exercise A of 4</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+
+
+<!-- ====================================================
+     STEP 0 – WELCOME
+===================================================== -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">⏰</div>
+      <h1 class="welcome-title">Present Perfect Practice</h1>
+      <p class="welcome-sub">Practise been/gone, irregular verb forms, just/already/yet, and ever/never with the present perfect tense. You'll get your grade instantly at the end!</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">🧳</div><strong>Ex A – Been or Gone?</strong>Choose the right form</div>
+      <div class="ov-card locked"><div class="ov-icon">🔧</div><strong>Ex B – Verb Forms</strong>Build the present perfect</div>
+      <div class="ov-card locked"><div class="ov-icon">⏳</div><strong>Ex C – Just/Already/Yet</strong>Choose the right word</div>
+      <div class="ov-card locked"><div class="ov-icon">❗</div><strong>Ex D – Ever/Never</strong>Talk about experiences</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. 7g" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 1 – EXERCISE A: Been or Gone?
+===================================================== -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">Been or Gone?</h2>
+    <p class="ex-subtitle">Choose <strong>been</strong> if the person went somewhere and came back. Choose <strong>gone</strong> if the person is still there now.</p>
+
+    <div class="card">
+      <div class="card-title">Choose the correct word</div>
+
+      <div class="gap-item gap-text"><span class="gap-num">1</span>Tom isn't at his desk. He's
+        <select class="gap-select" id="exA-g1">
+          <option value="">--</option>
+          <option value="been">been</option>
+          <option value="gone">gone</option>
+        </select>
+        to lunch.
+      </div>
+
+      <div class="gap-item gap-text"><span class="gap-num">2</span>I've
+        <select class="gap-select" id="exA-g2">
+          <option value="">--</option>
+          <option value="been">been</option>
+          <option value="gone">gone</option>
+        </select>
+        to Berlin three times — it's a great city.
+      </div>
+
+      <div class="gap-item gap-text"><span class="gap-num">3</span>We've
+        <select class="gap-select" id="exA-g3">
+          <option value="">--</option>
+          <option value="been">been</option>
+          <option value="gone">gone</option>
+        </select>
+        to that new restaurant before; the food was excellent.
+      </div>
+
+      <div class="gap-item gap-text"><span class="gap-num">4</span>Where's Maria? She's
+        <select class="gap-select" id="exA-g4">
+          <option value="">--</option>
+          <option value="been">been</option>
+          <option value="gone">gone</option>
+        </select>
+        to the shops. She'll be back soon.
+      </div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 2 – EXERCISE B: Present Perfect Forms
+===================================================== -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B</span>
+    <h2 class="ex-title">Present Perfect Forms</h2>
+    <p class="ex-subtitle">Choose the verb form that correctly completes each sentence.</p>
+
+    <div class="card">
+      <div class="card-title">Choose the correct form</div>
+
+      <div class="gap-item gap-text"><span class="gap-num">1</span>My brother
+        <select class="gap-select" id="exB-g1">
+          <option value="">--</option>
+          <option value="has lost">has lost</option>
+          <option value="have lost">have lost</option>
+          <option value="lost">lost</option>
+        </select>
+        his keys again!
+      </div>
+
+      <div class="gap-item gap-text"><span class="gap-num">2</span>These trees
+        <select class="gap-select" id="exB-g2">
+          <option value="">--</option>
+          <option value="have grown">have grown</option>
+          <option value="has grown">has grown</option>
+          <option value="grew">grew</option>
+        </select>
+        a lot since we planted them.
+      </div>
+
+      <div class="gap-item gap-text"><span class="gap-num">3</span>The company
+        <select class="gap-select" id="exB-g3">
+          <option value="">--</option>
+          <option value="hasn't announced">hasn't announced</option>
+          <option value="haven't announced">haven't announced</option>
+          <option value="didn't announce">didn't announce</option>
+        </select>
+        its results yet.
+      </div>
+
+      <div class="gap-item gap-text"><span class="gap-num">4</span>Somebody
+        <select class="gap-select" id="exB-g4">
+          <option value="">--</option>
+          <option value="has broken">has broken</option>
+          <option value="have broken">have broken</option>
+          <option value="broke">broke</option>
+        </select>
+        the window in the kitchen.
+      </div>
+
+      <div class="gap-item gap-text"><span class="gap-num">5</span>Petrol prices
+        <select class="gap-select" id="exB-g5">
+          <option value="">--</option>
+          <option value="have gone up">have gone up</option>
+          <option value="has gone up">has gone up</option>
+          <option value="went up">went up</option>
+        </select>
+        again this month.
+      </div>
+
+      <div class="gap-item gap-text"><span class="gap-num">6</span>She
+        <select class="gap-select" id="exB-g6">
+          <option value="">--</option>
+          <option value="has just learned">has just learned</option>
+          <option value="have just learned">have just learned</option>
+          <option value="just learned">just learned</option>
+        </select>
+        to drive.
+      </div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 3 – EXERCISE C: Just, Already, or Yet?
+===================================================== -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise C</span>
+    <h2 class="ex-title">Just, Already, or Yet?</h2>
+    <p class="ex-subtitle">Choose <strong>just</strong> (very recently), <strong>already</strong> (sooner than expected), or <strong>yet</strong> (up to now, in questions/negatives).</p>
+
+    <div class="card">
+      <div class="card-title">Choose the correct word</div>
+
+      <div class="gap-item gap-text"><span class="gap-num">1</span>I've
+        <select class="gap-select" id="exC-g1">
+          <option value="">--</option>
+          <option value="just">just</option>
+          <option value="already">already</option>
+          <option value="yet">yet</option>
+        </select>
+        finished my homework — five minutes ago!
+      </div>
+
+      <div class="gap-item gap-text"><span class="gap-num">2</span>Don't worry, I have
+        <select class="gap-select" id="exC-g2">
+          <option value="">--</option>
+          <option value="just">just</option>
+          <option value="already">already</option>
+          <option value="yet">yet</option>
+        </select>
+        sent the email.
+      </div>
+
+      <div class="gap-item gap-text"><span class="gap-num">3</span>Has the bus arrived
+        <select class="gap-select" id="exC-g3">
+          <option value="">--</option>
+          <option value="just">just</option>
+          <option value="already">already</option>
+          <option value="yet">yet</option>
+        </select>
+        ?
+      </div>
+
+      <div class="gap-item gap-text"><span class="gap-num">4</span>We haven't decided where to go
+        <select class="gap-select" id="exC-g4">
+          <option value="">--</option>
+          <option value="just">just</option>
+          <option value="already">already</option>
+          <option value="yet">yet</option>
+        </select>
+        .
+      </div>
+
+      <div class="gap-item gap-text"><span class="gap-num">5</span>They have
+        <select class="gap-select" id="exC-g5">
+          <option value="">--</option>
+          <option value="just">just</option>
+          <option value="already">already</option>
+          <option value="yet">yet</option>
+        </select>
+        left for the airport, so we missed them.
+      </div>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise D →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 4 – EXERCISE D: Ever, Never & First Time
+===================================================== -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise D</span>
+    <h2 class="ex-title">Ever, Never &amp; First Time</h2>
+    <p class="ex-subtitle">Choose the correct word or form to talk about life experiences.</p>
+
+    <div class="card">
+      <div class="card-title">Choose the correct word or form</div>
+
+      <div class="gap-item gap-text"><span class="gap-num">1</span>I
+        <select class="gap-select" id="exD-g1">
+          <option value="">--</option>
+          <option value="have ridden">have ridden</option>
+          <option value="has ridden">has ridden</option>
+          <option value="ride">ride</option>
+        </select>
+        a horse before — this is my first time!
+      </div>
+
+      <div class="gap-item gap-text"><span class="gap-num">2</span>My grandfather has
+        <select class="gap-select" id="exD-g2">
+          <option value="">--</option>
+          <option value="never">never</option>
+          <option value="ever">ever</option>
+          <option value="just">just</option>
+        </select>
+        used a smartphone.
+      </div>
+
+      <div class="gap-item gap-text"><span class="gap-num">3</span>Have you
+        <select class="gap-select" id="exD-g3">
+          <option value="">--</option>
+          <option value="never">never</option>
+          <option value="ever">ever</option>
+          <option value="already">already</option>
+        </select>
+        visited London?
+      </div>
+
+      <div class="gap-item gap-text"><span class="gap-num">4</span>Such a strange thing
+        <select class="gap-select" id="exD-g4">
+          <option value="">--</option>
+          <option value="has happened">has happened</option>
+          <option value="have happened">have happened</option>
+          <option value="happened">happened</option>
+        </select>
+        to me before.
+      </div>
+    </div>
+
+    <div id="step4-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(4)">Review &amp; Submit →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 5 – REVIEW & SUBMIT
+===================================================== -->
+<section id="step-5" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+    <div id="grade-container"></div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission did not work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+/* ============================================================
+   CONFIG
+============================================================ */
+var UNIT          = '7g-present-perfect-1';
+var TOTAL_STEPS   = 5;   /* 4 exercise steps + 1 submit step */
+var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbyFmK71PseRmH8gBnuD3HLFU9b75eMPhE-LV8hNKSGM2RJ4bbMTIMrcoi3Qo4WG95qxIw/exec';
+var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+
+/* ============================================================
+   STATE
+============================================================ */
+var state = {
+  name: '',
+  cls:  '',
+  exA:  {},
+  exB:  {},
+  exC:  {},
+  exD:  {}
+};
+
+/* ============================================================
+   CORRECT ANSWERS (for instant auto-grading)
+============================================================ */
+var CORRECT = {
+  exA: { g1: 'gone', g2: 'been', g3: 'been', g4: 'gone' },
+  exB: { g1: 'has lost', g2: 'have grown', g3: "hasn't announced", g4: 'has broken', g5: 'have gone up', g6: 'has just learned' },
+  exC: { g1: 'just', g2: 'already', g3: 'yet', g4: 'yet', g5: 'already' },
+  exD: { g1: 'have ridden', g2: 'never', g3: 'ever', g4: 'has happened' }
+};
+
+/* Question labels used in the summary table */
+var QLABELS = {
+  exA: { g1: "1. He's ___ to lunch.", g2: "2. I've ___ to Berlin three times.", g3: "3. We've ___ to that restaurant before.", g4: "4. She's ___ to the shops." },
+  exB: { g1: '1. My brother ___ his keys again!', g2: '2. These trees ___ a lot.', g3: '3. The company ___ its results yet.', g4: '4. Somebody ___ the window.', g5: '5. Petrol prices ___ again this month.', g6: '6. She ___ to drive.' },
+  exC: { g1: "1. I've ___ finished my homework.", g2: '2. I have ___ sent the email.', g3: '3. Has the bus arrived ___?', g4: "4. We haven't decided ___.", g5: '5. They have ___ left for the airport.' },
+  exD: { g1: '1. I ___ a horse before.', g2: '2. My grandfather has ___ used a smartphone.', g3: '3. Have you ___ visited London?', g4: '4. Such a strange thing ___ to me before.' }
+};
+
+/* ============================================================
+   GRADING (PMG/BAO Sek I percentage → grade scale)
+============================================================ */
+function gradeFromPercent(p) {
+  if (p >= 96) return 1;
+  if (p >= 80) return 2;
+  if (p >= 60) return 3;
+  if (p >= 45) return 4;
+  if (p >= 16) return 5;
+  return 6;
+}
+
+function calculateGrade() {
+  var total = 0, correct = 0;
+  ['exA', 'exB', 'exC', 'exD'].forEach(function(ex) {
+    Object.keys(CORRECT[ex]).forEach(function(k) {
+      total++;
+      if ((state[ex][k] || '') === CORRECT[ex][k]) correct++;
+    });
+  });
+  var pct = total > 0 ? Math.round(correct / total * 100) : 0;
+  return { correct: correct, total: total, pct: pct, grade: gradeFromPercent(pct) };
+}
+
+var GRADE_LABELS = { 1: 'sehr gut', 2: 'gut', 3: 'befriedigend', 4: 'ausreichend', 5: 'mangelhaft', 6: 'ungenügend' };
+
+function renderGrade() {
+  var res = calculateGrade();
+  var html = '<div class="card grade-card">'
+    + '<div class="card-title">Your Result</div>'
+    + '<div class="grade-big">Note ' + res.grade + '</div>'
+    + '<div class="grade-label">' + esc(GRADE_LABELS[res.grade]) + '</div>'
+    + '<div class="grade-score">' + res.correct + ' / ' + res.total + ' correct (' + res.pct + '%)</div>'
+    + '</div>';
+  document.getElementById('grade-container').innerHTML = html;
+}
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('step-' + n).classList.add('active');
+  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  restoreStep(n);
+  var meta = document.getElementById('header-meta');
+  if (n === 0) { meta.style.display = 'none'; return; }
+  meta.style.display = 'block';
+  document.getElementById('header-name').textContent = state.name + (state.cls ? ' — ' + state.cls : '');
+  var labels = ['A', 'B', 'C', 'D', 'E'];
+  document.getElementById('header-step').textContent = n < TOTAL_STEPS
+    ? 'Exercise ' + labels[n - 1] + ' of ' + (TOTAL_STEPS - 1)
+    : 'Submit';
+}
+
+function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
+
+function nextStep(n) {
+  if (!validateStep(n)) {
+    var err = document.getElementById('step' + n + '-error');
+    if (err) { err.textContent = 'Please answer the required questions before continuing.'; err.classList.add('show'); }
+    return;
+  }
+  clearErr(n);
+  saveStep(n);
+  if (n === TOTAL_STEPS - 1) { renderGrade(); buildSummary(); }
+  showStep(n + 1);
+}
+
+function clearErr(n) {
+  var err = document.getElementById('step' + n + '-error');
+  if (err) err.classList.remove('show');
+}
+
+function startExercises() {
+  var name = g('inp-name'), cls = g('inp-class');
+  var err = document.getElementById('welcome-error');
+  if (!name || !cls) {
+    err.textContent = 'Please enter both your name and your class.';
+    err.classList.add('show');
+    return;
+  }
+  err.classList.remove('show');
+  state.name = name;
+  state.cls  = cls;
+  showStep(1);
+}
+
+/* ============================================================
+   VALIDATION
+============================================================ */
+function validateStep(n) {
+  switch (n) {
+    case 1: return val('exA-g1') && val('exA-g2') && val('exA-g3') && val('exA-g4');
+    case 2: return val('exB-g1') && val('exB-g2') && val('exB-g3') && val('exB-g4') && val('exB-g5') && val('exB-g6');
+    case 3: return val('exC-g1') && val('exC-g2') && val('exC-g3') && val('exC-g4') && val('exC-g5');
+    case 4: return val('exD-g1') && val('exD-g2') && val('exD-g3') && val('exD-g4');
+    default: return true;
+  }
+}
+
+/* ============================================================
+   SAVE / RESTORE
+============================================================ */
+function saveStep(n) {
+  switch (n) {
+    case 1:
+      state.exA.g1 = g('exA-g1'); state.exA.g2 = g('exA-g2');
+      state.exA.g3 = g('exA-g3'); state.exA.g4 = g('exA-g4');
+      break;
+    case 2:
+      state.exB.g1 = g('exB-g1'); state.exB.g2 = g('exB-g2'); state.exB.g3 = g('exB-g3');
+      state.exB.g4 = g('exB-g4'); state.exB.g5 = g('exB-g5'); state.exB.g6 = g('exB-g6');
+      break;
+    case 3:
+      state.exC.g1 = g('exC-g1'); state.exC.g2 = g('exC-g2'); state.exC.g3 = g('exC-g3');
+      state.exC.g4 = g('exC-g4'); state.exC.g5 = g('exC-g5');
+      break;
+    case 4:
+      state.exD.g1 = g('exD-g1'); state.exD.g2 = g('exD-g2');
+      state.exD.g3 = g('exD-g3'); state.exD.g4 = g('exD-g4');
+      break;
+  }
+}
+
+function restoreStep(n) {
+  switch (n) {
+    case 1:
+      set('exA-g1', state.exA.g1); set('exA-g2', state.exA.g2);
+      set('exA-g3', state.exA.g3); set('exA-g4', state.exA.g4);
+      break;
+    case 2:
+      set('exB-g1', state.exB.g1); set('exB-g2', state.exB.g2); set('exB-g3', state.exB.g3);
+      set('exB-g4', state.exB.g4); set('exB-g5', state.exB.g5); set('exB-g6', state.exB.g6);
+      break;
+    case 3:
+      set('exC-g1', state.exC.g1); set('exC-g2', state.exC.g2); set('exC-g3', state.exC.g3);
+      set('exC-g4', state.exC.g4); set('exC-g5', state.exC.g5);
+      break;
+    case 4:
+      set('exD-g1', state.exD.g1); set('exD-g2', state.exD.g2);
+      set('exD-g3', state.exD.g3); set('exD-g4', state.exD.g4);
+      break;
+  }
+}
+
+/* ============================================================
+   HELPERS
+============================================================ */
+function g(id)       { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+function set(id, v)  { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
+function val(id)     { return g(id).length > 0; }
+function esc(str)    { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
+
+/* ============================================================
+   SUMMARY
+============================================================ */
+function buildSummary() {
+  var rows = [];
+  ['exA', 'exB', 'exC', 'exD'].forEach(function(ex) {
+    var exName = { exA: 'Exercise A — Been or Gone?', exB: 'Exercise B — Present Perfect Forms', exC: 'Exercise C — Just, Already, or Yet?', exD: 'Exercise D — Ever, Never & First Time' }[ex];
+    Object.keys(CORRECT[ex]).forEach(function(k) {
+      var ans = state[ex][k] || '';
+      var isRight = ans === CORRECT[ex][k];
+      rows.push({ ex: exName, q: QLABELS[ex][k], a: ans, right: isRight, correctAns: CORRECT[ex][k] });
+    });
+  });
+
+  var html = '<div class="submit-summary">'
+    + '<div class="summary-row"><div class="summary-ex">Student</div>'
+    + '<div class="summary-q">' + esc(state.name) + ' — ' + esc(state.cls) + '</div></div>';
+  rows.forEach(function(r) {
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div>'
+      + '<div class="summary-q">' + esc(r.q) + '</div>'
+      + '<div class="summary-a ' + (r.right ? 'right' : 'wrong') + '">' + esc(r.a || '(no answer)') + (r.right ? ' ✓' : ' ✗') + '</div>'
+      + (!r.right ? '<div class="summary-correct-hint">Correct answer: ' + esc(r.correctAns) + '</div>' : '')
+      + '</div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+}
+
+/* ============================================================
+   EMAIL FALLBACK BODY
+============================================================ */
+function buildEmailBody() {
+  var res = calculateGrade();
+  var body = 'Exercise: ' + UNIT
+    + '\nStudent: ' + state.name
+    + '\nClass:   ' + state.cls
+    + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
+    + '\nScore:   ' + res.correct + '/' + res.total + ' (' + res.pct + '%) — Note ' + res.grade + ' (' + GRADE_LABELS[res.grade] + ')';
+
+  body += '\n\n--- Exercise A: Been or Gone? ---';
+  ['g1', 'g2', 'g3', 'g4'].forEach(function(k) { body += '\n' + QLABELS.exA[k] + ' -> ' + (state.exA[k] || '(none)'); });
+
+  body += '\n\n--- Exercise B: Present Perfect Forms ---';
+  ['g1', 'g2', 'g3', 'g4', 'g5', 'g6'].forEach(function(k) { body += '\n' + QLABELS.exB[k] + ' -> ' + (state.exB[k] || '(none)'); });
+
+  body += '\n\n--- Exercise C: Just, Already, or Yet? ---';
+  ['g1', 'g2', 'g3', 'g4', 'g5'].forEach(function(k) { body += '\n' + QLABELS.exC[k] + ' -> ' + (state.exC[k] || '(none)'); });
+
+  body += '\n\n--- Exercise D: Ever, Never & First Time ---';
+  ['g1', 'g2', 'g3', 'g4'].forEach(function(k) { body += '\n' + QLABELS.exD[k] + ' -> ' + (state.exD[k] || '(none)'); });
+
+  return body;
+}
+
+/* ============================================================
+   SUBMIT TO GOOGLE SHEET
+============================================================ */
+function submitToSheet() {
+  var res = calculateGrade();
+  buildSummary();
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  var payload = {
+    name: state.name, cls: state.cls, unit: UNIT,
+    exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD,
+    score: res
+  };
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+  }).then(function() {
+    btn.style.display = 'none';
+    document.getElementById('submit-success').style.display = 'block';
+    document.getElementById('submit-fallback').style.display = 'block';
+  }).catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Submit to Teacher';
+    document.getElementById('submit-fallback').style.display = 'block';
+  });
+}
+
+function submitByEmail() {
+  var a = document.createElement('a');
+  a.href = 'mailto:' + TEACHER_EMAIL
+    + '?subject=' + encodeURIComponent(UNIT + ' - ' + state.name + ' - ' + state.cls)
+    + '&body='    + encodeURIComponent(buildEmailBody());
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function() { document.body.removeChild(a); }, 100);
+}
+
+function copyAnswers() {
+  var body = buildEmailBody();
+  navigator.clipboard.writeText(body)
+    .then(function() { alert('Answers copied! Paste them into an email to your teacher.'); })
+    .catch(function() { prompt('Copy this text:', body); });
+}
+
+/* ============================================================
+   INIT
+============================================================ */
+document.addEventListener('DOMContentLoaded', function() {
+  showStep(0);
+});
+</script>
+
+<script>
+/* ── Paste-block: prevent pasting into answer fields ── */
+document.addEventListener('paste', function(e) {
+  var t = e.target;
+  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
+    e.preventDefault();
+    var msg = document.createElement('div');
+    msg.textContent = 'Pasting is not allowed';
+    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    document.body.appendChild(msg);
+    setTimeout(function() {
+      msg.style.opacity = '0';
+      setTimeout(function() { msg.remove(); }, 400);
+    }, 2000);
+  }
+});
+
+/* ── Copy-block: prevent copying text from the page ── */
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  var msg = document.createElement('div');
+  msg.textContent = '🚫 Copying is not allowed';
+  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+  document.body.appendChild(msg);
+  setTimeout(function() {
+    msg.style.opacity = '0';
+    setTimeout(function() { msg.remove(); }, 400);
+  }, 2000);
+});
+</script>
+
+</body>
+</html>
