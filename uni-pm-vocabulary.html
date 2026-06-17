@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Management Vocabulary — Test | englishonline.training</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f0f4f8;color:#1a202c;min-height:100vh}
+header{background:#1b4332;color:white;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+header a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.88rem}
+header .title{font-size:.95rem;font-weight:600}
+#timer-wrap{display:none;align-items:center;gap:8px}
+#timer-label{font-size:.75rem;opacity:.7;text-transform:uppercase;letter-spacing:.05em}
+#timer-display{font-size:1.1rem;font-weight:700;background:rgba(255,255,255,.2);padding:3px 12px;border-radius:20px;font-variant-numeric:tabular-nums;min-width:68px;text-align:center}
+#timer-display.warning{background:#f6ad55;color:#7b341e}
+#timer-display.danger{background:#fc8181;color:#742a2a;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+.screen{display:none}.screen.active{display:block}
+.container{max-width:780px;margin:0 auto;padding:24px 16px}
+.card{background:white;border-radius:12px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,.07);margin-bottom:20px}
+h2{font-size:1.35rem;margin-bottom:14px;color:#1a202c}
+h3{font-size:1rem;margin-bottom:8px;color:#276749}
+p{margin-bottom:10px;line-height:1.65;font-size:.95rem}
+.form-group{margin-bottom:16px}
+label{display:block;font-weight:600;margin-bottom:5px;font-size:.88rem;color:#4a5568}
+input[type=text]{width:100%;padding:10px 14px;border:2px solid #e2e8f0;border-radius:8px;font-size:1rem;transition:border-color .2s}
+input[type=text]:focus{outline:none;border-color:#2d6a4f}
+select{width:100%;padding:10px 12px;border:2px solid #e2e8f0;border-radius:8px;font-size:.95rem;background:white}
+select:focus{outline:none;border-color:#2d6a4f}
+.btn{display:inline-block;padding:11px 26px;border:none;border-radius:8px;font-size:.95rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#2d6a4f;color:white}
+.btn-primary:hover{background:#1b4332}
+.btn-primary:disabled{background:#a0aec0;cursor:not-allowed;opacity:.7}
+.btn-secondary{background:#e2e8f0;color:#4a5568}
+.btn-secondary:hover{background:#cbd5e0}
+.btn-outline{background:transparent;border:2px solid #2d6a4f;color:#2d6a4f}
+.btn-outline:hover{background:#f0fff4}
+.rule-list{list-style:none;padding:0;margin:12px 0}
+.rule-list li{padding:9px 14px;border-left:3px solid #2d6a4f;margin-bottom:7px;background:#f7fafc;border-radius:0 7px 7px 0;font-size:.9rem;line-height:1.5}
+.rule-list li.red{border-color:#e53e3e;background:#fff5f5}
+.notice{background:#fffff0;border:1px solid #ecc94b;border-radius:8px;padding:13px 16px;font-size:.88rem;line-height:1.5;margin-top:12px}
+.section-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:#2b6cb0;font-weight:700;margin-bottom:10px}
+.qa-row{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid #edf2f7}
+.qa-row:last-child{border-bottom:none}
+.qa-num{flex:0 0 26px;height:26px;border-radius:50%;background:#e6fffa;color:#276749;font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.qa-def{flex:1;font-size:.92rem;line-height:1.5;-webkit-user-select:none;user-select:none;padding-top:3px}
+.qa-select,.qa-input{flex:0 0 220px}
+.qa-row.correct .qa-def{color:#276749}
+.qa-row.incorrect .qa-def{color:#c53030}
+.qa-answer-tag{font-size:.78rem;margin-top:4px;color:#718096}
+.alert{border-radius:8px;padding:11px 16px;margin-bottom:14px;font-size:.9rem;display:none}
+.alert.show{display:block}
+.alert-warn{background:#fffbeb;border:1px solid #f6e05e;color:#744210}
+.alert-danger{background:#fff5f5;border:1px solid #feb2b2;color:#742a2a}
+.integrity-strip{font-size:.78rem;color:#a0aec0;margin-top:10px;text-align:right}
+#submit-area{text-align:center;padding:8px 0 20px}
+#time-gate-msg{font-size:.82rem;color:#718096;margin-top:7px}
+.progress-strip{font-size:.82rem;color:#4a5568;margin-bottom:6px}
+.done-card{text-align:center;padding:36px 28px}
+.done-card .big-icon{font-size:3.5rem;margin-bottom:14px}
+.done-card h2{color:#276749;margin-bottom:8px}
+.score-big{font-size:2.4rem;font-weight:800;color:#2d6a4f;margin:10px 0}
+.done-meta{font-size:.85rem;color:#718096;margin-top:10px}
+.backup-bar{margin-top:20px;background:#f7fafc;border-radius:8px;padding:14px;text-align:left;font-size:.88rem}
+.backup-bar p{margin-bottom:10px;font-weight:600}
+.backup-btns{display:flex;gap:10px;flex-wrap:wrap}
+.review-toggle{margin-top:18px}
+body.exam-mode{-webkit-user-select:none;user-select:none}
+body.exam-mode input[type=text]{-webkit-user-select:text;user-select:text}
+@media(max-width:600px){.card{padding:18px 14px}.btn{padding:10px 18px}.qa-row{flex-wrap:wrap}.qa-select,.qa-input{flex:1 1 100%}}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="https://englishonline.training">englishonline.training</a>
+  <span class="title">📚 PM Vocabulary Test</span>
+  <div id="timer-wrap">
+    <span id="timer-label">Time left</span>
+    <span id="timer-display">15:00</span>
+  </div>
+</header>
+
+<!-- SCREEN 1: REGISTER -->
+<div id="s-register" class="screen active">
+  <div class="container">
+    <div class="card">
+      <h2>📚 Project Management Vocabulary — Test</h2>
+      <p>This is a timed, invigilated vocabulary test drawn from a bank of <strong>236 project management terms</strong>. Each time you take it, <strong>20 terms</strong> are chosen at random, so no two attempts are the same. You will have <strong>15 minutes</strong>.</p>
+      <p>Please enter your details to begin.</p>
+      <div class="form-group" style="margin-top:20px">
+        <label for="inp-name">Your full name</label>
+        <input type="text" id="inp-name" placeholder="e.g. Maria Schmidt" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="form-group">
+        <label for="inp-group">Course / group</label>
+        <input type="text" id="inp-group" placeholder="e.g. English Communication Skills Online" autocomplete="off">
+      </div>
+      <div id="reg-err" class="alert alert-danger">Please enter both your name and your course before continuing.</div>
+      <button class="btn btn-primary" onclick="goRules()">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 2: RULES -->
+<div id="s-rules" class="screen">
+  <div class="container">
+    <div class="card">
+      <h2>📋 Test Rules</h2>
+      <p>Read these rules carefully before starting. The timer begins the moment you press <em>Start</em>.</p>
+      <ul class="rule-list">
+        <li>⏱ You have <strong>15 minutes</strong>. The timer cannot be paused or extended.</li>
+        <li class="red">🚫 <strong>Copy and paste is disabled.</strong> All answers must be typed or selected by hand.</li>
+        <li class="red">🚫 <strong>Do not switch tabs, open other windows, or use other applications.</strong> Every tab switch is logged and sent to your teacher.</li>
+        <li class="red">🚫 <strong>Do not use AI tools, dictionaries, or translation engines</strong> during the test.</li>
+        <li>📝 The test has <strong>20 questions</strong> in two sections: <strong>Section A</strong> — match the term to each definition (dropdown); <strong>Section B</strong> — type the term that matches each definition.</li>
+        <li>✅ All 20 questions must be answered before you can submit.</li>
+        <li>⏳ The Submit button unlocks after <strong>2 minutes</strong>.</li>
+        <li>🔒 Your session is monitored. Integrity data (tab switches, paste attempts, typing patterns) is submitted alongside your answers.</li>
+        <li>🖥 Entering <strong>full screen</strong> is strongly recommended.</li>
+      </ul>
+      <div class="notice">
+        ⚠️ <strong>Academic integrity:</strong> Using outside help, AI tools, or another person's answers may result in a failing grade. By clicking <em>Start</em> you confirm this is your own independent work.
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;align-items:center">
+        <button class="btn btn-primary" onclick="startExam()">▶ Start — begin 15-minute timer</button>
+        <button class="btn btn-outline" id="fs-btn" onclick="goFullscreen()">🖥 Enter full screen</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 3: TEST -->
+<div id="s-exam" class="screen">
+  <div class="container">
+    <div id="alert-tab" class="alert alert-danger">⚠️ <strong>Tab switch detected.</strong> You left this page — this has been logged and will be visible to your teacher. Please stay on this page.</div>
+    <div id="alert-paste" class="alert alert-warn">⛔ <strong>Paste blocked.</strong> Copy and paste is disabled. Please type your answer.</div>
+    <div id="alert-devtools" class="alert alert-danger">⚠️ <strong>Browser developer tools may be open.</strong> This has been logged.</div>
+
+    <div class="card">
+      <div class="section-label">Section A — Matching (1–10)</div>
+      <p>Select the term that matches each definition.</p>
+      <div id="match-list"></div>
+    </div>
+
+    <div class="card">
+      <div class="section-label">Section B — Type the Term (11–20)</div>
+      <p>Type the term that matches each definition.</p>
+      <div id="fill-list"></div>
+    </div>
+
+    <div class="progress-strip" id="progress-disp">0 / 20 answered</div>
+    <div class="integrity-strip">
+      🔒 Session: <span id="sid-disp"></span> &nbsp;|&nbsp;
+      Tab switches: <span id="ts-disp">0</span> &nbsp;|&nbsp;
+      Paste attempts: <span id="pa-disp">0</span>
+    </div>
+    <div id="submit-area">
+      <button class="btn btn-primary" id="sub-btn" onclick="doSubmit()" disabled>Submit test</button>
+      <div id="time-gate-msg">⏳ Submit unlocks after 2 minutes and once all 20 questions are answered</div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 4: DONE -->
+<div id="s-done" class="screen">
+  <div class="container">
+    <div class="card done-card">
+      <div class="big-icon">✅</div>
+      <h2>Submitted successfully!</h2>
+      <div class="score-big" id="score-big"></div>
+      <p>Your result has been sent to your teacher.</p>
+      <p class="done-meta" id="done-meta"></p>
+      <div class="review-toggle">
+        <button class="btn btn-outline" onclick="toggleReview()">📖 Review my answers</button>
+      </div>
+      <div class="backup-bar">
+        <p>If the automatic submission failed, use one of these backups:</p>
+        <div class="backup-btns">
+          <button class="btn btn-secondary" onclick="doEmailBackup()">✉️ Send by email</button>
+          <button class="btn btn-secondary" id="copy-btn" onclick="doCopyBackup()">📋 Copy to clipboard</button>
+        </div>
+      </div>
+    </div>
+    <div class="card" id="review-card" style="display:none">
+      <h3>Review</h3>
+      <div id="review-list"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── CONFIG ── */
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwwbV6ufw7QX8meNGyOwiVdkqNpQ8yckdXmsbFqysJwWqAfCWaR_eC9RH41LaqmYyZOeA/exec';
+const EMAIL     = 'sptrezise@proton.me';
+const EXAM_MINS = 15;
+const GATE_MINS = 2;
+const SHEET_TAB = 'PM Vocabulary Quiz';
+const Q_TOTAL   = 20;
+const MATCH_N   = 10;
+const FILL_N    = 10;
+
+/* ── VOCABULARY BANK (236 terms) ── */
+const VOCAB_BANK = [{"t": "Adoption", "d": "Refers to how the customer uses and adapts a product or service without any issues"}, {"t": "Asana", "d": "A work management platform that helps teams plan and coordinate their work; useful for building project plans, assigning tasks, automating workflows, tracking progress, and communicating with stakeholders"}, {"t": "Benchmark", "d": "A point of reference"}, {"t": "Benefits", "d": "Expected gains of a project"}, {"t": "Budget", "d": "An estimate of the amount of money a project will cost to complete"}, {"t": "Business case", "d": "The reason for initiating a project"}, {"t": "Collaboration tools", "d": "Tools used to quickly and efficiently check in with team members on questions, comments, and other topics related to a project"}, {"t": "Conditional formatting", "d": "A feature that adds automatic color coding to cells in a spreadsheet"}, {"t": "Cost-benefit analysis", "d": "The process of adding up the expected value of a project—the benefits—and comparing them to the dollar costs"}, {"t": "Customers", "d": "The people who will get some value from a successfully-landed project"}, {"t": "Data validation", "d": "A feature that adds dropdown lists to cells in a spreadsheet"}, {"t": "Docs", "d": "A digital word processing application"}, {"t": "Engagement", "d": "Refers to how often or meaningful customer interaction and participation is over time"}, {"t": "Function", "d": "A feature that generates formulas which can be used to manipulate data and perform calculations in a spreadsheet"}, {"t": "Header", "d": "The top cell or cells in a column in a spreadsheet"}, {"t": "Influence", "d": "Measures how much power a stakeholder has and how much the stakeholder's actions affect the project outcome"}, {"t": "In-scope", "d": "Tasks that are included in the project plan and contribute to the project's goal"}, {"t": "Intangible benefits", "d": "Gains that are not measurable or quantifiable, such as customer or employee satisfaction or brand recognition"}, {"t": "Intangible costs", "d": "A cost that cannot easily be quantified, such as loss of employee morale or brand damage."}, {"t": "Interest", "d": "Refers to how much the needs of the stakeholder will be affected by project outcomes"}, {"t": "Key results", "d": "The part of an OKR that describes measurable outcomes that objectively define when the objective has been met"}, {"t": "Key stakeholders", "d": "The people with the highest amount of influence on and interest in a project; also called \"key players\""}, {"t": "Land", "d": "To measure the success of a project using the success criteria established at the outset of the project"}, {"t": "Launch", "d": "To deliver the final result of a project to the client or user"}, {"t": "Materials", "d": "Items needed to help get the project done"}, {"t": "Metrics", "d": "Data used to measure something, like numbers or figures"}, {"t": "Objective", "d": "The part of an OKR that defines what needs to be achieved and describes a desired outcome"}, {"t": "Objectives and key results (OKRs)", "d": "A combination of a goal and a metric to determine a measurable outcome"}, {"t": "Out-of-scope", "d": "Tasks that are not included in the project plan and don't contribute to the project's goal"}, {"t": "Pivot table", "d": "A basic analysis tool used to summarize data and show the relationships between data points, making it easier to understand the information contained in a spreadsheet"}, {"t": "Power grid", "d": "A two-by-two grid used for conducting a stakeholder analysis; shows stakeholder interest in the project versus their influence over the project"}, {"t": "Primary stakeholders", "d": "People who will benefit directly from a project's success"}, {"t": "Productivity tools", "d": "Tools used to manage project tasks, including word processing software, spreadsheets, and presentations"}, {"t": "Project charter", "d": "A document that clearly defines the key details of a project"}, {"t": "Project goal", "d": "The desired outcome of a project"}, {"t": "Project proposal", "d": "Documentation written at the beginning of a project; kicks off the initiation phase by influencing and persuading the company to move forward with the project"}, {"t": "Project sponsor", "d": "The person who's accountable for the project and who ensures the project delivers the agreed-upon business benefits"}, {"t": "RACI chart", "d": "A visual that helps to define roles and responsibilities for individuals or teams to ensure work gets done efficiently; lists who is \"responsible,\" \"accountable,\" \"consulted,\" and \"informed\" for project tasks"}, {"t": "Return on investment (ROI)", "d": "A metric used to calculate the return on an investment relative to its cost."}, {"t": "Scheduling and work management software", "d": "Tools used for assigning tasks to multiple teammates and for tracking and visualizing progress; most useful for bigger projects with a larger number of tasks and a bigger team of people to manage"}, {"t": "Scope", "d": "The boundaries of a project; an agreed-upon understanding as to what is included or excluded from a project"}, {"t": "Scope management", "d": "Understanding and negotiating how changes will be evaluated, accepted, and performed"}, {"t": "Silo", "d": "A situation in which the knowledge and responsibility for a task falls on one person"}, {"t": "Secondary stakeholders", "d": "People who are indirectly impacted by a project's success"}, {"t": "Slides", "d": "Google's digital presentation application"}, {"t": "SMART goals", "d": "A method to evaluate goals; states that goals should be \"specific,\" \"measurable,\" \"attainable,\" \"relevant,\" and \"time-bound\""}, {"t": "Spreadsheet", "d": "A tool used for organizing, transforming, visualizing, and manipulating information; useful for a wide range of tasks, such as creating timelines, building charts, managing budgets, and tracking tasks"}, {"t": "Stakes", "d": "The important parts of a business, situation, or project that might be at risk if something goes wrong"}, {"t": "Stakeholders", "d": "Anyone involved in the project who has a vested interest in the project's success"}, {"t": "Stakeholder analysis", "d": "A visual representation of all the stakeholders that illustrates which stakeholders are taking on which responsibilities; also called \"stakeholder mapping\""}, {"t": "Stakeholder buy-in", "d": "The process of involving stakeholders in decision-making to hopefully reach a broader consensus on the organization's future"}, {"t": "Steering committee", "d": "The most senior decision-making body on any project; they have the authority to make changes to the budget and approve updates to the timeline or scope"}, {"t": "Success criteria", "d": "The standards that measure how successful a project was in reaching its goals"}, {"t": "Team members", "d": "The people doing the day-to-day work and making the project happen"}, {"t": "Tools", "d": "Aids that make it easier for a project manager or team to manage resources and organize work"}, {"t": "Triple constraint", "d": "The combination of the three most significant restrictions of any project: scope, time, and cost."}, {"t": "Agile", "d": "A project management approach in which project phases overlap and tasks are completed in iterations"}, {"t": "Authority", "d": "Refers to one's ability to make decisions for the project that impact the organization"}, {"t": "Barrier", "d": "Something that can get in the way of project progress"}, {"t": "Buzzword", "d": "A word or phrase that is popular for a period of time or in a particular industry"}, {"t": "C-Suite", "d": "All the \"chief\" level officers in an organization"}, {"t": "Change agent", "d": "A person from inside an organization who helps the organization transform by focusing on improving organizational effectiveness and development"}, {"t": "Change management", "d": "The process of delivering a completed project and getting people to adopt it"}, {"t": "Classic structure", "d": "An organizational structure with a traditional, top-down reporting hierarchy"}, {"t": "Closing", "d": "The phase at the end of a project during which team members' work is celebrated and how the project went is evaluated"}, {"t": "Contract work", "d": "Work done for a company by non-employees on a project-by-project basis"}, {"t": "Corporate governance", "d": "The framework by which an organization achieves its goals and objectives"}, {"t": "Cross-functional team", "d": "Team members who have different skill sets and may even work in different departments but are all working towards the successful completion of a project"}, {"t": "Culture mapping", "d": "A tool that can illustrate a company's culture and how the company's values, norms, and employee behavior may be affected by change"}, {"t": "Delegation", "d": "Assigning tasks to individuals or resources who can best complete the work"}, {"t": "Deliverable", "d": "A specific task or outcome"}, {"t": "Effective communication", "d": "Refers to being transparent, upfront with plans and ideas, and making information available"}, {"t": "Escalation paths", "d": "Refers to the courses for communicating risks to the right people at the right time"}, {"t": "Executing", "d": "Completing the tasks necessary to achieve the project goals"}, {"t": "Feedback mechanism", "d": "A tool that can capture input from stakeholders, such as a survey"}, {"t": "Floating task", "d": "A task for which a change in its delivery would not affect the project's overall success or impact its timeline"}, {"t": "Flowchart", "d": "A tool that can visualize a project's development process"}, {"t": "Functional manager", "d": "The leader of a department in a functional (Classic) organization"}, {"t": "Functional organizations", "d": "An organization divided into departments based on function; also called a Classic organization"}, {"t": "Governance", "d": "The management framework within which decisions are made and accountability and responsibility are determined"}, {"t": "Influencing without authority", "d": "Refers to a project manager's ability to guide teammates to complete their assigned work without acting as their direct managers"}, {"t": "Initiation", "d": "The project phase that is the launchpad for the entire project; project goals, deliverables, resources, budget, and people are identified at this stage"}, {"t": "Internship", "d": "A short-term way to get hands-on experience in an industry"}, {"t": "Interpersonal skills", "d": "The behaviors used to interact with others; skills than can help one influence without authority, including communication, negotiation, conflict mediation, and understanding motivations"}, {"t": "Iterative", "d": "Refers to phases and tasks that overlap or happen at the same time that other tasks are being worked on"}, {"t": "Kanban", "d": "An Agile approach and a tool that provides visual feedback about the status of the work in progress through the use of Kanban boards or charts."}, {"t": "Lean", "d": "A methodology in which the main principle is the removal of waste within an operation"}, {"t": "Lean Six Sigma", "d": "A combination of two \"parent\" project management methodologies: Lean and Six Sigma; used for projects that have goals to save money, improve quality, and move through processes quickly"}, {"t": "Linear", "d": "A project structure in which the previous phase or task has to be completed before the next can start"}, {"t": "Matrix structure", "d": "A hybrid organizational structure that is like a grid; includes direct higher-ups to report to, as well as stakeholders from other departments or programs"}, {"t": "Mission", "d": "Clarifies what the \"what,\" \"who,\" and \"why\" of the organization"}, {"t": "Organizational culture", "d": "Employees' shared values and the organization's values, mission, history, and so on; a company's personality"}, {"t": "Organizational structure", "d": "The way a company or organization is arranged"}, {"t": "Ownership", "d": "When people feel like they are empowered to take responsibility for the successful completion of their tasks"}, {"t": "Planning", "d": "Making use of productivity tools and creating processes; creating and maintaining plans, timelines, schedules, and other forms of documentation to track project completion"}, {"t": "Program manager", "d": "A project manager who manages multiple projects for specific products, teams, or programs"}, {"t": "Project", "d": "A unique endeavor which usually includes a set of unique deliverables; a series of tasks that need to be completed to reach a desired outcome"}, {"t": "Project governance", "d": "The framework for how project decisions are made"}, {"t": "Project life cycle", "d": "The basic structure for a project; consists of four different phases: initiate the project, make a plan, execute and complete tasks, and close the project"}, {"t": "Project management", "d": "The application of knowledge, skills, tools, and techniques to project activities to meet the project requirements"}, {"t": "Project management methodology", "d": "A set of guiding principles and processes for owning a project throughout its life cycle"}, {"t": "Project management office", "d": "An internal group at a company that defines and maintains project management standards across the organization"}, {"t": "Project manager", "d": "Individual who shepherds projects from start to finish and serves as a guide for their team, using their impeccable organizational and interpersonal skills every step of the way"}, {"t": "Reporting chart", "d": "A diagram showing the relationships among people and groups within the organization and who each person or group reports to"}, {"t": "Resource availability", "d": "Knowing how to access the people, equipment, and budget needed for a project"}, {"t": "Resources", "d": "Anything needed to complete a project, such as people, equipment, software programs, vendors, and physical space or locations"}, {"t": "Scrum", "d": "An Agile framework that focuses on developing complex projects through collaboration and an iterative process. Work is completed by small, cross-functional teams led by a Scrum Master and is divided into short Sprints with a set list of deliverables."}, {"t": "Six Sigma", "d": "A methodology used to reduce variations by ensuring that quality processes are followed every time"}, {"t": "Sprint", "d": "A phase in the Agile project management approach which has a defined duration with a set list of deliverables"}, {"t": "Stakeholder", "d": "People who are interested in and affected by the project's completion and success"}, {"t": "Steering committees", "d": "A group that decides on the priorities of an organization and manages the general course of its operations"}, {"t": "Transferable skill", "d": "An ability that can be used in many different jobs and career paths"}, {"t": "Urgency", "d": "Getting team members to understand that the project is important and to identify what actions need to be taken to move the project along"}, {"t": "Values", "d": "Principles that describe how employees are expected to behave"}, {"t": "Waterfall", "d": "A project management methodology that refers to the sequential ordering of phases"}, {"t": "Abandoned project", "d": "A project in which inadequate handoff or transition on the project deliverables occurs"}, {"t": "Acceptance criteria", "d": "Pre-established standards or requirements that a product, service, or process must meet"}, {"t": "Accessible", "d": "Something that is easily used, accessed, or adapted for use by people experiencing disabilities"}, {"t": "Action item", "d": "A task that needs to be completed"}, {"t": "Adoption metrics", "d": "Metrics that indicate whether or not a product, service, or process is accepted and used"}, {"t": "Air cover", "d": "Support for and protection of a team in the face of out-of-scope requests or criticism from leadership"}, {"t": "Analytics", "d": "The process of answering business questions, discovering relationships, and predicting outcomes based on the analysis of data"}, {"t": "Bad compromise", "d": "A situation that occurs when two parties settle on a so-called solution but the end product still suffers"}, {"t": "Bar chart", "d": "A type of chart that uses color and length to compare categories in a data set; useful for comparing values"}, {"t": "Bug", "d": "A technical issue"}, {"t": "Burndown chart", "d": "A line chart that measures the time against the amount of work done and the amount of work remaining; useful for projects that require a granular, broken-down look at each task"}, {"t": "Change", "d": "Anything that alters or impacts the tasks, structures, or processes within a project"}, {"t": "Change log", "d": "A record of all notable changes on a project"}, {"t": "Character", "d": "The qualities or features that make up and distinguish a person, like honesty, integrity, and kindness"}, {"t": "Collaboration", "d": "People working together on an activity"}, {"t": "Confirmation bias", "d": "A type of data bias that refers to the tendency to search for information that confirms preexisting beliefs"}, {"t": "Conger's four steps", "d": "Refers to Jay A. Conger's four-step approach to effectively persuade and influence another person to consider new ideas: establish credibility, frame for common ground, provide evidence, and connect emotionally"}, {"t": "Continuous improvement", "d": "An ongoing effort to improve products or services; begins with recognizing when processes and tasks need to be created, eliminated, or improved"}, {"t": "Control", "d": "An experiment or observation designed to minimize the effects of variables"}, {"t": "Cost variance", "d": "The difference between actual cost and budgeted cost"}, {"t": "Critical user journey", "d": "The sequence of steps a user follows to accomplish tasks in a product"}, {"t": "Customer satisfaction score", "d": "A metric that indicates how well the project delivered what it set out to do and how well it satisfies customer and stakeholder needs"}, {"t": "Dashboard", "d": "A type of user interface—typically a graph or summary chart— that provides a snapshot view of a project's progress or performance"}, {"t": "Data", "d": "A collection of facts or information; the numbers and feedback available about different aspects of a project"}, {"t": "Data analysis", "d": "The collection, transformation, and organization of data to draw conclusions, make predictions, and drive informed decision-making"}, {"t": "Data bias", "d": "A type of error that is influenced by one's inherent beliefs"}, {"t": "Data ethics", "d": "The well-founded standards of right and wrong that dictate how data is collected, shared, and used"}, {"t": "Data privacy", "d": "The act of protecting a data subject's information and activity any time a data transaction occurs"}, {"t": "Data visualization", "d": "A graphical representation of information to facilitate understanding"}, {"t": "Data-driven improvement frameworks", "d": "Techniques used to make decisions based on actual data"}, {"t": "Dependability", "d": "A quality indicating team members are reliable and complete their work on time"}, {"t": "Dependencies", "d": "Tasks, activities, or milestones that are reliant on one another"}, {"t": "Dependency management", "d": "The process of managing interrelated tasks and resources within a project to ensure that the overall project is completed successfully, on time, and on budget"}, {"t": "Deviation", "d": "Anything that alters the original course of action"}, {"t": "Discretionary dependencies", "d": "Dependencies that could occur on their own, but the team saw a need to make those dependencies reliant on one another"}, {"t": "Diversity", "d": "The set of differences each individual possesses, whether visible or invisible, that gives them a unique perspective on the world and their work"}, {"t": "DMAIC", "d": "The five steps to take when working toward continuous improvements: define, measure, analyze, improve, and control"}, {"t": "Duration", "d": "The amount of time it takes to complete or produce something"}, {"t": "Edge case", "d": "Rare outliers that the original requirements of the project didn't account for; deals with the extreme maximums and minimums of parameters"}, {"t": "Engagement metrics", "d": "Metrics that indicate the degree to which a product or service is used—the frequency of use, amount of time spent using it, and the range of use"}, {"t": "Escalation", "d": "The process of enlisting the help of higher-level project leadership or management to remove an obstacle, clarify or reinforce priorities, and validate next steps"}, {"t": "Ethical leadership", "d": "A form of leadership that promotes and values honesty, justice, respect, community, and integrity"}, {"t": "Expressiveness", "d": "Refers to one's ability to communicate with others"}, {"t": "External dependencies", "d": "Asks that are reliant on outside factors, like regulatory agencies or other projects"}, {"t": "Feedback survey", "d": "A survey in which users provide feedback on features of a product that they like or dislike"}, {"t": "Force majeure", "d": "An unforeseen circumstance that prevents someone from fulfilling a contract due to a major crisis"}, {"t": "Gantt chart", "d": "A project-tracking visual that is useful for staying on schedule; ideal for projects with many dependencies and larger project teams"}, {"t": "Happiness metrics", "d": "Metrics that relate to different aspects of the user's overall satisfaction with a product or service"}, {"t": "Headline", "d": "The one-sentence main point that illustrates a slide"}, {"t": "History", "d": "Refers to the level of personal history between oneself and another person"}, {"t": "Impact", "d": "The belief that the results of one's work matter and create change"}, {"t": "Impact report", "d": "A presentation guided by a deck or slideshow that shows key stakeholders others the value that's been added by the project"}, {"t": "Inclusive leadership", "d": "A form of leadership where everyone's unique identity, background, and experiences are respected, valued, and integrated into how the team operates"}, {"t": "Inclusivity", "d": "The practice or policy of including people who might otherwise be excluded or marginalized"}, {"t": "Influencing", "d": "The ability to alter another person's thinking or behaviors"}, {"t": "Influencing statement", "d": "A conversation opener that sets a person up for success with their audience"}, {"t": "Infographic", "d": "A visual representation of information or data intended to present information quickly and clearly"}, {"t": "Informational power", "d": "An organizational source of power that refers to one's level of access and control over information"}, {"t": "Internal dependencies", "d": "The relationship between two tasks within the same project"}, {"t": "Interpretation bias", "d": "A type of data bias that refers to the tendency to always interpret ambiguous situations as either negative or positive"}, {"t": "Issue", "d": "A known and real problem that may affect the ability to complete a task"}, {"t": "Knowledge", "d": "Refers to the power drawn from one's expertise in certain subjects, unique abilities and skill sets, and ability to learn new things"}, {"t": "Key performance indicator (KPI)", "d": "A measurable value that demonstrates how effective a company is at achieving business objectives"}, {"t": "Legend", "d": "The bottom or side section of a chart that gives a small description of each section"}, {"t": "Line chart", "d": "A type of chart that displays information as a series of data point markers; helpful for showing trends and behaviors over set periods of time or overall"}, {"t": "Mandatory dependencies", "d": "Tasks that are legally or contractually required"}, {"t": "Metric", "d": "A quantifiable measurement that is used to track and assess a business objective"}, {"t": "Milestone", "d": "An important point within the project schedule that indicates progress and usually signifies the completion of a deliverable or phase of the project"}, {"t": "Network", "d": "The people one is connected with professionally and personally"}, {"t": "Never-ending project", "d": "A project in which the project deliverables and tasks cannot be completed"}, {"t": "Observer bias", "d": "A type of data bias that refers to the tendency for different people to observe different things"}, {"t": "On-time completion rate", "d": "A productivity metric that helps illustrate to clients and stakeholders how the project is progressing and when they can expect certain deliverables to be ready"}, {"t": "PDCA", "d": "A four-step process that focuses on identifying a problem, fixing the issue, assessing whether the fix was successful, and fine-tuning the final fix; stands for: plan, do, check, and act"}, {"t": "Pie chart", "d": "A type of chart divided into sections that each represent a portion of a whole; useful for making comparisons"}, {"t": "Portfolio", "d": "A collection of programs and projects across a whole organization"}, {"t": "Probability and impact matrix", "d": "A tool used to prioritize project risks"}, {"t": "Process improvement", "d": "The practice of identifying, analyzing, and improving existing processes to enhance performance, meet best practices, or optimize consumer experiences"}, {"t": "Productivity metrics", "d": "Metrics that track the effectiveness and efficiency of a project, including items like tasks, milestones, projections, and duration"}, {"t": "Program", "d": "A collection of projects"}, {"t": "Project closeout report", "d": "A document that describes what the team did, how they did it, and what they delivered; evaluates the quality of work and the project's performance with respect to budget and schedule"}, {"t": "Project closing", "d": "A process performed to formally complete a project, the current phase, and contractual obligations"}, {"t": "Project status report", "d": "An update that gives an overview of all of a project's common elements and summarizes them at a given point in time"}, {"t": "Project task", "d": "An activity that needs to be accomplished within a set period of time"}, {"t": "Projection", "d": "A prediction of a future outcome—such as future productivity trends, project durations, costs, performance, or quality—based on current information; also called a forecast"}, {"t": "Psychological safety", "d": "An individual's perception of the consequences of taking an interpersonal risk"}, {"t": "Qualitative data", "d": "Information about subjective qualities that can't be measured with numerical data"}, {"t": "Quality", "d": "Refers to when the outlined requirements for the deliverable are fulfilled and meet or exceed the needs and expectations of customers"}, {"t": "Quality assurance", "d": "A review process that evaluates whether a project is moving towards delivering a high-quality service or product; also called QA"}, {"t": "Quality control", "d": "Techniques used to ensure quality standards when a problem is identified; also called QC"}, {"t": "Quality metrics", "d": "Metrics that relate to achieving acceptable outcomes, such as number of changes, issues, and cost variance"}, {"t": "Quality planning", "d": "The actions of the project manager or team to establish and conduct a process for identifying and determining exactly which standards of quality are relevant to the project as a whole and how to satisfy them"}, {"t": "Quality standards", "d": "Requirements, specifications, or guidelines that can be used to ensure that materials, products, processes, and services are fit for achieving the desired outcome"}, {"t": "Quantitative data", "d": "Statistical and numerical facts"}, {"t": "RAG status report", "d": "A report that follow a traffic light pattern to indicate progress and status: \"red\" indicates there are critical issues that need resolution, \"amber/yellow' means that there are potential issues with schedule or budget, and \"green\" means the that the project is on track"}, {"t": "Reputation", "d": "Refers to how others perceive a person overall"}, {"t": "Retrospective", "d": "A meeting in which project teams discuss successes, failures, and possible future improvements on a project"}, {"t": "Risk", "d": "A potential event that could occur and impact a project"}, {"t": "Risk exposure", "d": "A way to measure potential future loss resulting from a specific activity or event"}, {"t": "Risk management", "d": "The process of identifying, evaluating, and addressing potential risks and issues that could impact a project"}, {"t": "Risk register", "d": "A table or chart that contains a list of risks"}, {"t": "Roadmap", "d": "A project-tracking visual that is useful for high-level tracking of large milestones"}, {"t": "ROAM technique", "d": "A strategy used to help manage actions after risks arise; stands for resolved, owned, accepted, and mitigated"}, {"t": "ROCCC", "d": "An acronym used in data ethics best practices to ensure that data is reliable, original, comprehensive, current, and cited"}, {"t": "Role", "d": "One's position within an organization or team"}, {"t": "Sampling bias", "d": "A type of data bias in which the sample isn't representative of the population as the whole"}, {"t": "Scope creep", "d": "When changes, growth, and other factors affect a project's scope"}, {"t": "Signal", "d": "An observable change"}, {"t": "Signpost", "d": "A way to clue the audience in to where a presentation is going and what to expect"}, {"t": "Stacked bar chart", "d": "A type of bar chart that can show part-to-whole variables simultaneously; useful when comparing numerical information; also called a marimekko chart"}, {"t": "Storytelling", "d": "The process of turning facts into narrative to communicate something to an audience"}, {"t": "Team", "d": "A group of people who plan work, solve problems, make decisions, and review progress in service of a specific project or objective"}, {"t": "Team dynamics", "d": "The forces, both conscious and unconscious, that impact team behavior and performance"}, {"t": "Teamwork", "d": "An effective, collaborative way of working in which each person is committed to and heading towards a shared goal"}, {"t": "Test case", "d": "A sequence of steps and its expected results"}, {"t": "Timeboxing", "d": "Refers to setting a time limit"}, {"t": "Timeout", "d": "Refers to taking a moment away from the project to regroup and adjust the game plan"}, {"t": "Tracking", "d": "A method of following the progress of project activities"}, {"t": "Trench wars", "d": "Conflicts that occur when two peers or groups can't come to an agreement and neither party is willing to give in"}, {"t": "User acceptance test", "d": "A trial that helps a business make sure a product or solution works for its users; also called a UAT"}, {"t": "User story", "d": "An informal, general explanation of a feature written from the perspective of the end user"}, {"t": "Work groups", "d": "People in an organization who work toward a common goal; based on and assigned by organizational or managerial hierarchy"}];
+
+/* ── STATE ── */
+let sName='',sGroup='',sid='';
+let t0=null,tabN=0,pasteN=0,anomalyN=0;
+let gateOpen=false,timerID=null;
+let lastLen=0,lastT=Date.now();
+let snapshots=[];
+let payload=null;
+let devToolsFlagged=false;
+let matchItems=[],fillItems=[],matchOptions=[];
+
+/* ── SCREENS ── */
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active')}
+
+/* ── ESCAPE ── */
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+
+/* ── REGISTER ── */
+function goRules(){
+  sName=document.getElementById('inp-name').value.trim();
+  sGroup=document.getElementById('inp-group').value.trim();
+  if(!sName||!sGroup){document.getElementById('reg-err').classList.add('show');return}
+  document.getElementById('reg-err').classList.remove('show');
+  show('s-rules');
+}
+document.getElementById('inp-group').addEventListener('keydown',e=>{if(e.key==='Enter')goRules()});
+
+/* ── FULLSCREEN ── */
+function goFullscreen(){
+  const el=document.documentElement;
+  (el.requestFullscreen||el.webkitRequestFullscreen||el.mozRequestFullScreen||el.msRequestFullscreen||function(){}).call(el);
+  document.getElementById('fs-btn').textContent='✅ Full screen active';
+}
+
+/* ── SHUFFLE ── */
+function shuffle(arr){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+/* ── BUILD QUESTIONS ── */
+function buildQuestions(){
+  const pick=shuffle(VOCAB_BANK).slice(0,Q_TOTAL);
+  matchItems=pick.slice(0,MATCH_N);
+  fillItems=pick.slice(MATCH_N,MATCH_N+FILL_N);
+  matchOptions=shuffle(matchItems.map(x=>x.t));
+
+  const mWrap=document.getElementById('match-list');
+  mWrap.innerHTML='';
+  matchItems.forEach((item,i)=>{
+    const row=document.createElement('div');
+    row.className='qa-row';
+    row.innerHTML=`<div class="qa-num">${i+1}</div><div class="qa-def">${esc(item.d)}</div>
+      <select class="qa-select" data-idx="${i}" onchange="onAnswerChange()"><option value="">— select —</option>${matchOptions.map(t=>`<option value="${esc(t)}">${esc(t)}</option>`).join('')}</select>`;
+    mWrap.appendChild(row);
+  });
+
+  const fWrap=document.getElementById('fill-list');
+  fWrap.innerHTML='';
+  fillItems.forEach((item,i)=>{
+    const row=document.createElement('div');
+    row.className='qa-row';
+    row.innerHTML=`<div class="qa-num">${i+11}</div><div class="qa-def">${esc(item.d)}</div>
+      <input type="text" class="qa-input" data-idx="${i}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Type the term…" oninput="onAnswerInput()">`;
+    fWrap.appendChild(row);
+  });
+}
+
+/* ── START ── */
+function startExam(){
+  sid='SID-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).substr(2,5).toUpperCase();
+  document.getElementById('sid-disp').textContent=sid;
+  buildQuestions();
+  t0=Date.now();
+  startTimer();
+  setTimeout(()=>{gateOpen=true;document.getElementById('time-gate-msg').textContent='✅ You may submit once all 20 questions are answered.';checkReady()},GATE_MINS*60*1000);
+  setInterval(snap,3*60*1000);
+  setInterval(checkDevTools,4000);
+  document.body.classList.add('exam-mode');
+  show('s-exam');
+  document.getElementById('timer-wrap').style.display='flex';
+  if(navigator.webdriver)anomalyN++;
+}
+
+/* ── TIMER ── */
+function startTimer(){
+  timerID=setInterval(()=>{
+    const rem=EXAM_MINS*60*1000-(Date.now()-t0);
+    if(rem<=0){clearInterval(timerID);document.getElementById('timer-display').textContent='00:00';autoSubmit();return}
+    const m=Math.floor(rem/60000),s=Math.floor((rem%60000)/1000);
+    const td=document.getElementById('timer-display');
+    td.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+    td.className=m<2?'danger':m<5?'warning':'';
+  },500);
+}
+
+/* ── TAB DETECTION ── */
+document.addEventListener('visibilitychange',()=>{if(!t0)return;if(document.hidden){tabN++;document.getElementById('ts-disp').textContent=tabN}else if(tabN>0)flash('alert-tab')});
+window.addEventListener('blur',()=>{if(!t0)return;tabN++;document.getElementById('ts-disp').textContent=tabN});
+
+/* ── PASTE BLOCKING ── */
+document.addEventListener('paste',e=>{if(!t0)return;e.preventDefault();pasteN++;document.getElementById('pa-disp').textContent=pasteN;flash('alert-paste')});
+document.addEventListener('keydown',e=>{
+  if(!t0)return;
+  if((e.ctrlKey||e.metaKey)&&(e.key==='v'||e.key==='V')){e.preventDefault();pasteN++;document.getElementById('pa-disp').textContent=pasteN;flash('alert-paste')}
+  if((e.ctrlKey||e.metaKey)&&e.shiftKey&&['i','I','j','J'].includes(e.key))e.preventDefault();
+  if(e.key==='F12')e.preventDefault();
+  if((e.ctrlKey||e.metaKey)&&(e.key==='u'||e.key==='U'))e.preventDefault();
+  if((e.ctrlKey||e.metaKey)&&(e.key==='c'||e.key==='C')&&document.activeElement.tagName!=='INPUT')e.preventDefault();
+});
+document.addEventListener('contextmenu',e=>{if(t0)e.preventDefault()});
+
+/* ── DEVTOOLS ── */
+function checkDevTools(){if(!t0||devToolsFlagged)return;if(window.outerWidth-window.innerWidth>160||window.outerHeight-window.innerHeight>160){devToolsFlagged=true;anomalyN++;flash('alert-devtools')}}
+
+/* ── TYPING SPEED ANOMALY (fill-in inputs) ── */
+function onAnswerInput(){
+  const now=Date.now();
+  let totalLen=0;
+  document.querySelectorAll('.qa-input').forEach(i=>totalLen+=i.value.length);
+  const diff=totalLen-lastLen,dt=now-lastT;
+  if(diff>40&&dt<500)anomalyN++;
+  lastLen=totalLen;lastT=now;
+  updateProgress();checkReady();
+}
+function onAnswerChange(){updateProgress();checkReady()}
+
+/* ── PROGRESS ── */
+function answeredCount(){
+  let n=0;
+  document.querySelectorAll('.qa-select').forEach(s=>{if(s.value.trim())n++});
+  document.querySelectorAll('.qa-input').forEach(i=>{if(i.value.trim())n++});
+  return n;
+}
+function updateProgress(){document.getElementById('progress-disp').textContent=answeredCount()+' / '+Q_TOTAL+' answered'}
+
+/* ── SNAPSHOT ── */
+function snap(){if(t0)snapshots.push({t:Math.round((Date.now()-t0)/1000),answered:answeredCount()})}
+
+/* ── READY CHECK ── */
+function checkReady(){document.getElementById('sub-btn').disabled=!(gateOpen&&answeredCount()>=Q_TOTAL)}
+
+/* ── SUBMIT ── */
+function doSubmit(){
+  snap();
+  const results=[];
+  let correct=0;
+  document.querySelectorAll('.qa-select').forEach((s,i)=>{
+    const item=matchItems[i],given=s.value.trim(),isOk=given===item.t;
+    if(isOk)correct++;
+    results.push({type:'match',term:item.t,definition:item.d,given:given||'(blank)',isCorrect:isOk});
+  });
+  document.querySelectorAll('.qa-input').forEach((inp,i)=>{
+    const item=fillItems[i],given=inp.value.trim(),isOk=given.toLowerCase()===item.t.trim().toLowerCase();
+    if(isOk)correct++;
+    results.push({type:'fill',term:item.t,definition:item.d,given:given||'(blank)',isCorrect:isOk});
+  });
+  const pct=Math.round(correct/Q_TOTAL*100);
+  const el=Math.round((Date.now()-t0)/1000);
+  payload={timestamp:new Date().toISOString(),name:sName,group:sGroup,session_id:sid,score:correct,total:Q_TOTAL,percent:pct,time_spent_s:el,tab_switches:tabN,paste_attempts:pasteN,typing_anomalies:anomalyN,devtools_flagged:devToolsFlagged,answers:JSON.stringify(results),snapshots:JSON.stringify(snapshots),user_agent:navigator.userAgent};
+  clearInterval(timerID);document.getElementById('timer-wrap').style.display='none';
+  buildReview(results);
+  show('s-done');
+  const m=Math.floor(el/60),s=el%60;
+  document.getElementById('score-big').textContent=correct+' / '+Q_TOTAL+' ('+pct+'%)';
+  document.getElementById('done-meta').textContent=`${m}m ${s}s · Session: ${sid}`;
+  send(payload);
+}
+function autoSubmit(){
+  if(!document.getElementById('s-exam').classList.contains('active'))return;
+  // fill unanswered with blanks so scoring still works, then submit
+  doSubmit();
+}
+
+/* ── REVIEW ── */
+function buildReview(results){
+  const wrap=document.getElementById('review-list');
+  wrap.innerHTML='';
+  results.forEach((r,i)=>{
+    const row=document.createElement('div');
+    row.className='qa-row '+(r.isCorrect?'correct':'incorrect');
+    row.innerHTML=`<div class="qa-num">${i+1}</div><div style="flex:1">
+      <div class="qa-def">${esc(r.definition)}</div>
+      <div class="qa-answer-tag">${r.isCorrect?'✓':'✗'} Your answer: <strong>${esc(r.given)}</strong>${r.isCorrect?'':' — Correct: <strong>'+esc(r.term)+'</strong>'}</div>
+      </div>`;
+    wrap.appendChild(row);
+  });
+}
+function toggleReview(){
+  const c=document.getElementById('review-card');
+  c.style.display=c.style.display==='none'?'block':'none';
+  if(c.style.display==='block')c.scrollIntoView({behavior:'smooth'});
+}
+
+/* ── SEND ── */
+function send(data){fetch(SHEET_URL,{method:'POST',mode:'no-cors',body:JSON.stringify({tab:SHEET_TAB,data})})}
+
+/* ── BACKUPS ── */
+function doEmailBackup(){
+  if(!payload)return;
+  const sub=encodeURIComponent(`PM Vocabulary Test — ${payload.name} — ${payload.session_id}`);
+  const body=encodeURIComponent(`Name: ${payload.name}\nGroup: ${payload.group}\nScore: ${payload.score}/${payload.total} (${payload.percent}%)\nTime: ${Math.floor(payload.time_spent_s/60)}m\nTab switches: ${payload.tab_switches} | Paste attempts: ${payload.paste_attempts}\nAnomalies: ${payload.typing_anomalies} | DevTools: ${payload.devtools_flagged}\nSession: ${payload.session_id}`);
+  window.location.href=`mailto:${EMAIL}?subject=${sub}&body=${body}`;
+}
+function doCopyBackup(){
+  if(!payload)return;
+  const txt=`Name: ${payload.name}\nGroup: ${payload.group}\nScore: ${payload.score}/${payload.total} (${payload.percent}%)\nTime: ${Math.floor(payload.time_spent_s/60)}m\nTab switches: ${payload.tab_switches} | Paste attempts: ${payload.paste_attempts}\nAnomalies: ${payload.typing_anomalies} | DevTools: ${payload.devtools_flagged}\nSession: ${payload.session_id}`;
+  navigator.clipboard.writeText(txt).then(()=>{document.getElementById('copy-btn').textContent='✅ Copied!'});
+}
+
+/* ── FLASH ── */
+function flash(id){const el=document.getElementById(id);el.classList.add('show');setTimeout(()=>el.classList.remove('show'),7000)}
+</script>
+</body>
+</html>
