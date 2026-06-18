@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Al-Munir Hotel Group – Building Customer Relationships | englishonline.training</title>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:    #1a3a5c;
+      --gold:    #c9a227;
+      --gold-lt: #f5e6b0;
+      --teal:    #2b7a78;
+      --red:     #c0392b;
+      --green:   #27ae60;
+      --bg:      #f7f9fc;
+      --card:    #ffffff;
+      --text:    #1d2b3a;
+      --muted:   #6b7a8d;
+      --border:  #dce3ec;
+      --radius:  12px;
+      --shadow:  0 2px 16px rgba(26,58,92,.1);
+      --font:    'Segoe UI', system-ui, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
+
+    .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
+    .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
+    .header-meta { font-size: .78rem; text-align: right; opacity: .9; }
+    .header-meta strong { display: block; color: var(--gold); }
+    .progress-track { height: 6px; background: rgba(255,255,255,.2); }
+    .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
+
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+
+    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
+    .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+    .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
+
+    .reading-text { font-size: .93rem; line-height: 1.85; color: var(--text); }
+    .reading-text p { margin-bottom: .85rem; }
+    .reading-text p:last-child { margin-bottom: 0; }
+    .reading-text ul { margin: .5rem 0 .85rem 1.25rem; }
+    .reading-text li { margin-bottom: .3rem; }
+
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+    .form-input, .form-textarea, .form-select {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+      padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
+      color: var(--text); background: #fff; transition: border-color .2s;
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus { outline: none; border-color: var(--blue); }
+    .form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+    .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+
+    .survey-table { width: 100%; border-collapse: collapse; font-size: .9rem; margin-bottom: .5rem; }
+    .survey-table th, .survey-table td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid var(--border); }
+    .survey-table th { color: var(--blue); font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; }
+    .survey-table td.score { font-weight: 700; color: var(--blue); }
+
+    .role-box { background: var(--gold-lt); border: 1.5px solid var(--gold); border-radius: 8px; padding: .9rem 1.1rem; margin-bottom: 1.25rem; font-size: .88rem; line-height: 1.6; }
+    .role-box strong { color: var(--blue); }
+    .role-box ol, .role-box ul { margin: .5rem 0 0 1.25rem; }
+    .role-box li { margin-bottom: .3rem; }
+
+    .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
+    .feedback.show { display: block; }
+    .feedback.ok   { background: #d4edda; color: #155724; }
+    .feedback.err  { background: #fde8e8; color: #721c24; }
+
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
+    .btn-primary:hover { background: #15304f; }
+    .btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
+    .btn-gold:hover { background: #b8911f; }
+    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+    .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+    .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
+    .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
+    .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+    .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+    .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; }
+    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
+    .ov-card.locked { opacity: .5; }
+    .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+
+    .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
+    .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
+    .summary-a  { color: var(--text); white-space: pre-wrap; }
+
+    @media (max-width: 480px) {
+      .ex-title { font-size: 1.25rem; }
+      .btn { padding: .65rem 1.1rem; }
+      .welcome-title { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="uni-activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Exercise A of 4</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+
+
+<!-- ====================================================
+     STEP 0 – WELCOME
+===================================================== -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">🏨</div>
+      <h1 class="welcome-title">Al-Munir Hotel Group: Building Customer Relationships</h1>
+      <p class="welcome-sub">A hospitality management case study. Work through the background and survey data, discuss the meeting agenda with your department group, agree an action plan, and write a personalised sales letter.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">📊</div><strong>Ex A – Background &amp; Survey</strong>Analyse the case background and the customer satisfaction survey</div>
+      <div class="ov-card locked"><div class="ov-icon">🗣️</div><strong>Ex B – Group Discussion</strong>Discuss the meeting agenda with your department</div>
+      <div class="ov-card locked"><div class="ov-icon">🤝</div><strong>Ex C – Action Plan</strong>Run the live meeting and agree an action plan</div>
+      <div class="ov-card locked"><div class="ov-icon">✍️</div><strong>Ex D – Sales Letter</strong>Write a personalised offer letter to a loyal customer</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Seminar / group number</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. Group 3" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-dept">Your department for this meeting</label>
+        <select class="form-select" id="inp-dept">
+          <option value="">— Select —</option>
+          <option value="Guest Relations">Guest Relations</option>
+          <option value="Marketing">Marketing</option>
+        </select>
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Task →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 1 – EXERCISE A: BACKGROUND & SURVEY
+===================================================== -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">Background &amp; Customer Satisfaction Survey</h2>
+    <p class="ex-subtitle">Read the background, study the survey results, then answer the questions.</p>
+
+    <div class="card">
+      <div class="card-title">Background</div>
+      <div class="reading-text">
+        <p>Vanessa Schultz has recently been appointed Director of Customer Relations at the Al-Munir Hotel and Spa Group, which operates hotels in Oman and the United Arab Emirates. Her first priority is to build stronger, longer-term relationships with guests — especially those who could become regular visitors.</p>
+        <p>Over the last five years the group has seen some worrying trends:</p>
+        <ul>
+          <li>Staff turnover has fallen by 22%</li>
+          <li>Room occupancy has dropped from 81% to 62%</li>
+          <li>Customer surveys show increasing dissatisfaction</li>
+          <li>Guest retention has fallen from 25% to just 8%</li>
+          <li>There is little sign of customer loyalty across the group</li>
+          <li>Two hotels have recently been downgraded from four stars to three</li>
+        </ul>
+        <p>A local hospitality consultant, Abd Al-Halim Hamdi, has been interviewing guests by phone and questionnaire to find out why so many do not return — and is about to report his findings to Vanessa.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Results of the Customer Satisfaction Survey</div>
+      <p class="form-hint" style="margin-bottom:.75rem">Average scores this year (5 = outstanding, 4 = good, 3 = average, 2 = below average, 1 = poor)</p>
+      <table class="survey-table">
+        <tr><th>Category</th><th>Score</th></tr>
+        <tr><td>Location</td><td class="score">5</td></tr>
+        <tr><td>Rooms</td><td class="score">4</td></tr>
+        <tr><td>Amenities (restaurant, spa, gym, etc.)</td><td class="score">3</td></tr>
+        <tr><td>Service</td><td class="score">2</td></tr>
+        <tr><td>Staff (helpfulness, enthusiasm, knowledge)</td><td class="score">2</td></tr>
+        <tr><td>Information (about the hotel, local sites &amp; attractions)</td><td class="score">1</td></tr>
+        <tr><td>Value for money</td><td class="score">3</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Your analysis</div>
+      <div class="form-group">
+        <label class="form-label" for="exA-q1">1. What conclusions should Vanessa Schultz draw from these survey results?</label>
+        <textarea class="form-textarea" id="exA-q1" placeholder="Write your answer here..." rows="4"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exA-q2">2. In your opinion, what are the main reasons why guests do not return to the hotel group?</label>
+        <textarea class="form-textarea" id="exA-q2" placeholder="Write your answer here..." rows="4"></textarea>
+      </div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 2 – EXERCISE B: MEETING AGENDA DISCUSSION
+===================================================== -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B</span>
+    <h2 class="ex-title">Meeting Agenda – Group Discussion</h2>
+    <p class="ex-subtitle">Vanessa Schultz has called a meeting of the Guest Relations and Marketing departments. Discuss each agenda item with your group (breakout room) and note your combined ideas.</p>
+
+    <div class="card">
+      <div class="card-title">Agenda item 1–2: Making guests feel valued</div>
+      <div class="reading-text">
+        <ul>
+          <li>How can the group make guests feel "special" and "highly valued"?</li>
+          <li>What can be done to reward loyal guests, and to persuade first-time guests to return?</li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exB-p1">Your group's ideas</label>
+        <textarea class="form-textarea" id="exB-p1" placeholder="Write your group's combined ideas here..." rows="4"></textarea>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Agenda item 3–4: Staff &amp; guest information</div>
+      <div class="reading-text">
+        <ul>
+          <li>What can be done to make staff more motivated and customer-focused?</li>
+          <li>What information should management gather to build an accurate, up-to-date profile of each guest (e.g. how did they hear about the hotel)?</li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exB-p2">Your group's ideas</label>
+        <textarea class="form-textarea" id="exB-p2" placeholder="Write your group's combined ideas here..." rows="4"></textarea>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Agenda item 5–6: Long-term relationships &amp; next steps</div>
+      <div class="reading-text">
+        <ul>
+          <li>How can the group maintain its relationship with guests after they have left the hotel?</li>
+          <li>What other actions could improve loyalty, raise survey scores, and help the group regain its four-star rating?</li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exB-p3">Your group's ideas</label>
+        <textarea class="form-textarea" id="exB-p3" placeholder="Write your group's combined ideas here..." rows="4"></textarea>
+      </div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 3 – EXERCISE C: LIVE MEETING & ACTION PLAN
+===================================================== -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise C</span>
+    <h2 class="ex-title">Live Meeting &amp; Action Plan</h2>
+    <p class="ex-subtitle">Now bring both departments together in your video call and turn your ideas into a single action plan.</p>
+
+    <div class="role-box">
+      <strong>Running this step live (for the whole class):</strong>
+      <ol>
+        <li>Split into breakout rooms by department: Guest Relations and Marketing.</li>
+        <li>One member of each room leads the discussion and takes notes (this is Exercise B).</li>
+        <li>Bring both rooms back together as one group.</li>
+        <li>One student plays the role of <strong>Head of Guest Relations</strong> and chairs the joint meeting.</li>
+        <li>Share ideas on every agenda item, then agree on a single action plan.</li>
+        <li>One student presents the action plan, as if to the Al-Munir Board of Directors.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Record the outcome of your meeting</div>
+      <div class="form-group">
+        <label class="form-label" for="exC-leader">Who chaired your joint meeting (played Head of Guest Relations)?</label>
+        <input class="form-input" type="text" id="exC-leader" placeholder="Name of student">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exC-plan">Summarise your group's agreed action plan (aim for 3–5 clear points) to present to the Board of Directors</label>
+        <textarea class="form-textarea" id="exC-plan" placeholder="1. ...&#10;2. ...&#10;3. ..." rows="6"></textarea>
+      </div>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise D →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 4 – EXERCISE D: WRITING TASK (SALES LETTER)
+===================================================== -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise D</span>
+    <h2 class="ex-title">Writing Task: Sales Letter</h2>
+    <p class="ex-subtitle">Apply your action plan to one real guest.</p>
+
+    <div class="card">
+      <div class="card-title">Task</div>
+      <div class="reading-text">
+        <p>Write a sales letter to Marion Wise, a businesswoman who stays frequently at Al-Munir hotels and is one of the group's most loyal customers. Describe a special offer you are making to a small group of priority customers like her. Make the letter as personalised as possible — use an appropriate greeting, sign-off, and a tone that reflects the relationship-building ideas from your earlier discussion.</p>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exD-letter">Your sales letter</label>
+        <textarea class="form-textarea" id="exD-letter" placeholder="Dear Ms Wise, ..." rows="10"></textarea>
+      </div>
+    </div>
+
+    <div id="step4-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(4)">Review &amp; Submit →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     FINAL STEP – REVIEW & SUBMIT
+===================================================== -->
+<section id="step-5" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">Task complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission did not work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+/* ============================================================
+   CONFIG
+   NOTE: SHEET_URL is a PLACEHOLDER. There is no Google Sheet /
+   Apps Script deployment for university submissions yet — Shaun
+   needs to create one (see manual steps) and paste the real
+   /exec URL in here before this page can submit successfully.
+============================================================ */
+var UNIT          = 'uni-al-munir-relationships';
+var TOTAL_STEPS    = 5;
+var SHEET_URL      = 'PASTE_UNIVERSITY_APPS_SCRIPT_EXEC_URL_HERE';
+var TEACHER_EMAIL  = 'shaun.trezise@docemus.de';
+
+/* ============================================================
+   STATE
+============================================================ */
+var state = {
+  name: '',
+  cls:  '',
+  dept: '',
+  exA:  { q1: '', q2: '' },
+  exB:  { p1: '', p2: '', p3: '' },
+  exC:  { leader: '', plan: '' },
+  exD:  { letter: '' }
+};
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('step-' + n).classList.add('active');
+  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  restoreStep(n);
+  var meta = document.getElementById('header-meta');
+  if (n === 0) { meta.style.display = 'none'; return; }
+  meta.style.display = 'block';
+  document.getElementById('header-name').textContent = state.name + (state.dept ? ' — ' + state.dept : '');
+  var labels = ['A', 'B', 'C', 'D'];
+  document.getElementById('header-step').textContent = n < TOTAL_STEPS
+    ? 'Exercise ' + labels[n - 1] + ' of ' + (TOTAL_STEPS - 1)
+    : 'Submit';
+}
+
+function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
+
+function nextStep(n) {
+  if (!validateStep(n)) {
+    var err = document.getElementById('step' + n + '-error');
+    if (err) { err.textContent = 'Please answer the required questions before continuing.'; err.classList.add('show'); }
+    return;
+  }
+  clearErr(n);
+  saveStep(n);
+  if (n === TOTAL_STEPS - 1) { buildSummary(); }
+  showStep(n + 1);
+}
+
+function clearErr(n) {
+  var err = document.getElementById('step' + n + '-error');
+  if (err) err.classList.remove('show');
+}
+
+function startExercises() {
+  var name = g('inp-name'), cls = g('inp-class'), dept = g('inp-dept');
+  var err = document.getElementById('welcome-error');
+  if (!name || !cls || !dept) {
+    err.textContent = 'Please enter your name, your group number, and choose a department.';
+    err.classList.add('show');
+    return;
+  }
+  err.classList.remove('show');
+  state.name = name;
+  state.cls  = cls;
+  state.dept = dept;
+  showStep(1);
+}
+
+/* ============================================================
+   VALIDATION
+============================================================ */
+function validateStep(n) {
+  switch (n) {
+    case 1: return val('exA-q1') && val('exA-q2');
+    case 2: return val('exB-p1') && val('exB-p2') && val('exB-p3');
+    case 3: return val('exC-leader') && val('exC-plan');
+    case 4: return val('exD-letter');
+    default: return true;
+  }
+}
+
+/* ============================================================
+   SAVE / RESTORE
+============================================================ */
+function saveStep(n) {
+  switch (n) {
+    case 1: state.exA.q1 = g('exA-q1'); state.exA.q2 = g('exA-q2'); break;
+    case 2: state.exB.p1 = g('exB-p1'); state.exB.p2 = g('exB-p2'); state.exB.p3 = g('exB-p3'); break;
+    case 3: state.exC.leader = g('exC-leader'); state.exC.plan = g('exC-plan'); break;
+    case 4: state.exD.letter = g('exD-letter'); break;
+  }
+}
+
+function restoreStep(n) {
+  switch (n) {
+    case 1: set('exA-q1', state.exA.q1); set('exA-q2', state.exA.q2); break;
+    case 2: set('exB-p1', state.exB.p1); set('exB-p2', state.exB.p2); set('exB-p3', state.exB.p3); break;
+    case 3: set('exC-leader', state.exC.leader); set('exC-plan', state.exC.plan); break;
+    case 4: set('exD-letter', state.exD.letter); break;
+  }
+}
+
+/* ============================================================
+   HELPERS
+============================================================ */
+function g(id)       { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+function set(id, v)  { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
+function val(id)     { return g(id).length > 0; }
+function esc(str)    { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
+
+/* ============================================================
+   SUMMARY
+============================================================ */
+function buildSummary() {
+  var rows = [
+    { ex: 'Exercise A', q: 'Conclusions from the survey', a: state.exA.q1 },
+    { ex: 'Exercise A', q: 'Reasons guests do not return', a: state.exA.q2 },
+    { ex: 'Exercise B', q: 'Agenda 1–2: Making guests feel valued', a: state.exB.p1 },
+    { ex: 'Exercise B', q: 'Agenda 3–4: Staff & guest information', a: state.exB.p2 },
+    { ex: 'Exercise B', q: 'Agenda 5–6: Long-term relationships & next steps', a: state.exB.p3 },
+    { ex: 'Exercise C', q: 'Meeting chaired by', a: state.exC.leader },
+    { ex: 'Exercise C', q: 'Agreed action plan', a: state.exC.plan },
+    { ex: 'Exercise D', q: 'Sales letter to Marion Wise', a: state.exD.letter }
+  ];
+  var html = '<div class="submit-summary">'
+    + '<div class="summary-row"><div class="summary-ex">Student</div>'
+    + '<div class="summary-q">' + esc(state.name) + ' — ' + esc(state.cls) + ' — ' + esc(state.dept) + '</div></div>';
+  rows.forEach(function(r) {
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div>'
+      + '<div class="summary-q">' + esc(r.q) + '</div>'
+      + '<div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+}
+
+/* ============================================================
+   EMAIL FALLBACK BODY
+============================================================ */
+function buildEmailBody() {
+  return 'Exercise: ' + UNIT
+    + '\nStudent: ' + state.name
+    + '\nGroup:   ' + state.cls
+    + '\nDept:    ' + state.dept
+    + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
+    + '\n\n--- Exercise A: Background & Survey ---'
+    + '\nConclusions from survey: ' + (state.exA.q1 || '(none)')
+    + '\nReasons guests do not return: ' + (state.exA.q2 || '(none)')
+    + '\n\n--- Exercise B: Meeting Agenda Discussion ---'
+    + '\nAgenda 1-2 (guest value & loyalty): ' + (state.exB.p1 || '(none)')
+    + '\nAgenda 3-4 (staff & guest info): ' + (state.exB.p2 || '(none)')
+    + '\nAgenda 5-6 (long-term relationships): ' + (state.exB.p3 || '(none)')
+    + '\n\n--- Exercise C: Live Meeting & Action Plan ---'
+    + '\nChaired by: ' + (state.exC.leader || '(none)')
+    + '\nAction plan: ' + (state.exC.plan || '(none)')
+    + '\n\n--- Exercise D: Sales Letter ---\n' + (state.exD.letter || '(none)');
+}
+
+/* ============================================================
+   SUBMIT TO GOOGLE SHEET
+============================================================ */
+function submitToSheet() {
+  buildSummary();
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  var payload = { name: state.name, cls: state.cls, dept: state.dept, unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD };
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+  }).then(function() {
+    btn.style.display = 'none';
+    document.getElementById('submit-success').style.display = 'block';
+    document.getElementById('submit-fallback').style.display = 'block';
+  }).catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Submit to Teacher';
+    document.getElementById('submit-fallback').style.display = 'block';
+  });
+}
+
+function submitByEmail() {
+  var a = document.createElement('a');
+  a.href = 'mailto:' + TEACHER_EMAIL
+    + '?subject=' + encodeURIComponent(UNIT + ' - ' + state.name + ' - ' + state.cls)
+    + '&body='    + encodeURIComponent(buildEmailBody());
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function() { document.body.removeChild(a); }, 100);
+}
+
+function copyAnswers() {
+  var body = buildEmailBody();
+  navigator.clipboard.writeText(body)
+    .then(function() { alert('Answers copied! Paste them into an email to your teacher.'); })
+    .catch(function() { prompt('Copy this text:', body); });
+}
+
+/* ============================================================
+   INIT
+============================================================ */
+document.addEventListener('DOMContentLoaded', function() {
+  showStep(0);
+});
+</script>
+
+<script>
+/* ── Paste-block: prevent pasting into answer fields ── */
+document.addEventListener('paste', function(e) {
+  var t = e.target;
+  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
+    e.preventDefault();
+    var msg = document.createElement('div');
+    msg.textContent = 'Pasting is not allowed';
+    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    document.body.appendChild(msg);
+    setTimeout(function() {
+      msg.style.opacity = '0';
+      setTimeout(function() { msg.remove(); }, 400);
+    }, 2000);
+  }
+});
+
+/* ── Copy-block: prevent copying text from the page ── */
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  var msg = document.createElement('div');
+  msg.textContent = '🚫 Copying is not allowed';
+  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+  document.body.appendChild(msg);
+  setTimeout(function() {
+    msg.style.opacity = '0';
+    setTimeout(function() { msg.remove(); }, 400);
+  }, 2000);
+});
+</script>
+
+</body>
+</html>
