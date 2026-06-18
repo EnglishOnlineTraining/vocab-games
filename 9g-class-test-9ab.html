@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class Test: 9AB | englishonline.training</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blue:    #1a3a5c;
+  --gold:    #c9a227;
+  --gold-lt: #f5e6b0;
+  --teal:    #2b7a78;
+  --red:     #c0392b;
+  --green:   #27ae60;
+  --bg:      #f7f9fc;
+  --card:    #ffffff;
+  --text:    #1d2b3a;
+  --muted:   #6b7a8d;
+  --border:  #dce3ec;
+  --radius:  12px;
+  --shadow:  0 2px 16px rgba(26,58,92,.1);
+  --font:    'Segoe UI', system-ui, sans-serif;
+}
+body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
+
+/* Header */
+.app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; flex-wrap: wrap; }
+.header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
+.header-meta { font-size: .78rem; text-align: right; opacity: .9; }
+.header-meta strong { display: block; color: var(--gold); }
+.progress-track { height: 6px; background: rgba(255,255,255,.2); }
+.progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
+#timer-wrap { display:none; align-items:center; gap:8px; }
+#timer-label { font-size:.7rem; opacity:.75; text-transform:uppercase; letter-spacing:.05em; }
+#timer-display { font-size:1.05rem; font-weight:700; background:rgba(255,255,255,.18); padding:3px 12px; border-radius:20px; font-variant-numeric:tabular-nums; min-width:64px; text-align:center; }
+#timer-display.warning { background:#f6ad55; color:#7b341e; }
+#timer-display.danger { background:#fc8181; color:#742a2a; animation:pulse 1s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.7} }
+
+/* Screens / steps */
+.screen, .step { display: none; }
+.screen.active, .step.active { display: block; }
+.step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+
+.ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
+.ex-title { font-size: 1.4rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+.ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+.card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
+.card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
+
+.reading-text { font-size: .93rem; line-height: 1.85; color: var(--text); user-select: none; }
+.reading-text p { margin-bottom: .85rem; }
+.reading-text p:last-child { margin-bottom: 0; }
+
+.form-group { margin-bottom: 1.1rem; }
+.form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+.form-input, .form-textarea, .form-select {
+  width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+  padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
+  color: var(--text); background: #fff; transition: border-color .2s;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus { outline: none; border-color: var(--blue); }
+.form-textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+.form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+
+.gap-select { display:inline-block; border:1.5px solid var(--gold); border-radius:6px; padding:.18rem .4rem; font-family:var(--font); font-size:.82rem; background:var(--gold-lt); color:var(--blue); cursor:pointer; vertical-align:middle; margin:2px 3px; }
+.gap-select:focus { outline:none; border-color:var(--blue); }
+
+.numbered-item { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: .85rem; background: #fafbfc; }
+.item-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 800; flex-shrink: 0; margin-bottom: .5rem; }
+.item-sentence { font-size: .92rem; line-height: 2.4; }
+.item-original { font-size: .88rem; color: var(--text); font-style: italic; margin-bottom: .65rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); user-select: none; }
+
+.word-bank { background: var(--gold-lt); border: 1.5px solid var(--gold); border-radius: 8px; padding: .75rem 1rem; margin-bottom: 1.25rem; user-select: none; }
+.word-bank strong { display: block; color: var(--blue); margin-bottom: .5rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; }
+.word-bank span { display: inline-block; margin: .2rem .3rem; background: var(--blue); color: #fff; border-radius: 4px; padding: .18rem .55rem; font-size: .8rem; font-weight: 600; }
+
+.match-table, .ab-table { width: 100%; border-collapse: collapse; font-size: .88rem; margin-bottom: 1rem; }
+.match-table th, .match-table td, .ab-table th, .ab-table td { border: 1px solid var(--border); padding: .55rem .65rem; text-align: left; }
+.match-table th, .ab-table th { background: var(--gold-lt); color: var(--blue); font-size: .78rem; text-transform: uppercase; letter-spacing: .03em; }
+.ab-table td.radio-cell { text-align: center; width: 70px; }
+
+.feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
+.feedback.show { display: block; }
+.feedback.ok   { background: #d4edda; color: #155724; }
+.feedback.warn { background: #fff3cd; color: #856404; }
+.feedback.err  { background: #fde8e8; color: #721c24; }
+.alert { border-radius:8px; padding:.7rem 1rem; margin-bottom:1rem; font-size:.85rem; display:none; }
+.alert.show { display:block; }
+.alert-warn { background:#fffbeb; border:1px solid #f6e05e; color:#744210; }
+.alert-danger { background:#fff5f5; border:1px solid #feb2b2; color:#742a2a; }
+
+.btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+.btn:active { transform: scale(.97); }
+.btn:disabled { opacity:.55; cursor:not-allowed; }
+.btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
+.btn-primary:hover { background: #15304f; }
+.btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
+.btn-gold:hover { background: #b8911f; }
+.btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+.btn-outline:hover { background: var(--blue); color: #fff; }
+.btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+.btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+.btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+.welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
+.welcome-flag { font-size: 2.6rem; margin-bottom: 1rem; }
+.welcome-title { font-size: 1.7rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+.welcome-sub { font-size: .95rem; color: var(--muted); margin-bottom: 2rem; max-width: 460px; margin-left: auto; margin-right: auto; }
+.exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+.ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .8rem; }
+.ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .86rem; }
+.ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+
+.rule-list { list-style: none; padding: 0; margin: 12px 0; }
+.rule-list li { padding: 9px 14px; border-left: 3px solid var(--blue); margin-bottom: 7px; background: #f7fafc; border-radius: 0 7px 7px 0; font-size: .88rem; line-height: 1.5; }
+.rule-list li.red { border-color: var(--red); background: #fff5f5; }
+.notice { background: #fffff0; border: 1px solid #ecc94b; border-radius: 8px; padding: 13px 16px; font-size: .86rem; line-height: 1.5; margin-top: 12px; }
+
+.submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
+.summary-row { border-bottom: 1px solid var(--border); padding: .65rem 0; font-size: .85rem; }
+.summary-row:last-child { border-bottom: none; }
+.summary-ex { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
+.summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .25rem; }
+.summary-a  { color: var(--text); white-space: pre-wrap; }
+
+.integrity-strip { font-size:.74rem; color:var(--muted); margin-top:.6rem; text-align:right; }
+.done-card { text-align:center; padding:36px 28px; }
+.done-card .big-icon { font-size:3.2rem; margin-bottom:14px; }
+.done-meta { font-size:.85rem; color:var(--muted); margin-top:10px; }
+.backup-bar { margin-top:20px; background:#f7fafc; border-radius:8px; padding:14px; text-align:left; font-size:.86rem; }
+.backup-bar p { margin-bottom:10px; font-weight:600; }
+.backup-btns { display:flex; gap:10px; flex-wrap:wrap; }
+
+body.exam-mode { -webkit-user-select: none; user-select: none; }
+body.exam-mode input, body.exam-mode textarea, body.exam-mode select { -webkit-user-select: text; user-select: text; }
+
+@media (max-width: 480px) {
+  .ex-title { font-size: 1.2rem; }
+  .btn { padding: .65rem 1.1rem; }
+  .welcome-title { font-size: 1.35rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <div id="timer-wrap">
+      <span id="timer-label">Time left</span>
+      <span id="timer-display">60:00</span>
+    </div>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Section 1 of 5</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+
+<!-- ============ SCREEN 0: WELCOME / REGISTER ============ -->
+<div id="s-welcome" class="screen active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">📝</div>
+      <h1 class="welcome-title">Class Test: 9AB</h1>
+      <p class="welcome-sub">This is the online version of your class test. It covers articles, relative clauses, vocabulary, future tenses, and reading comprehension — 60 points in total, 60 minutes on the clock.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">🔤</div><strong>S1 — Articles</strong>10 points</div>
+      <div class="ov-card"><div class="ov-icon">🔗</div><strong>S2 — Relative Clauses</strong>8 points</div>
+      <div class="ov-card"><div class="ov-icon">📚</div><strong>S3 — Vocabulary</strong>12 points</div>
+      <div class="ov-card"><div class="ov-icon">⏳</div><strong>S4 — Future Tenses</strong>10 points</div>
+      <div class="ov-card"><div class="ov-icon">📖</div><strong>S5 — Reading</strong>20 points</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your full name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. 9A or 9B" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="goRules()">Continue to Test Rules →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SCREEN 1: RULES ============ -->
+<div id="s-rules" class="screen">
+  <div class="step-inner">
+    <div class="card">
+      <div class="card-title">📋 Test Rules — Please Read Carefully</div>
+      <p style="font-size:.9rem;margin-bottom:.5rem">The timer starts the moment you press <strong>Start Test</strong> below. It cannot be paused.</p>
+      <ul class="rule-list">
+        <li>⏱ You have <strong>60 minutes</strong> for all 5 sections. The test submits automatically when time runs out.</li>
+        <li class="red">🚫 <strong>Copy and paste is disabled.</strong> Right-click and browser developer tools are also blocked.</li>
+        <li class="red">🚫 <strong>Do not switch tabs or windows.</strong> Every switch is recorded and sent to your teacher.</li>
+        <li>✅ You can move freely between sections and submit early once you're happy with your answers.</li>
+        <li>🔒 Your session is monitored — tab switches, paste attempts and unusual typing patterns are logged and submitted with your test.</li>
+        <li>👤 Work alone and in silence, exactly as you would for the paper version of this test.</li>
+      </ul>
+      <div class="notice">⚠️ By clicking <strong>Start Test</strong> you confirm this is your own independent work, completed without help or AI tools.</div>
+      <button class="btn btn-primary btn-block" onclick="startExam()">▶ Start Test — begin 60-minute timer</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SCREEN 2: EXAM ============ -->
+<div id="s-exam" class="screen">
+  <div class="step-inner" style="padding-top:1rem">
+    <div id="alert-tab" class="alert alert-danger">⚠️ <strong>Tab switch detected.</strong> Please stay on this page — this has been logged.</div>
+    <div id="alert-paste" class="alert alert-warn">⛔ <strong>Paste blocked.</strong> Please type your answer.</div>
+    <div id="alert-devtools" class="alert alert-danger">⚠️ <strong>Developer tools may be open.</strong> This has been logged.</div>
+
+    <!-- STEP 1: ARTICLES -->
+    <section id="step-1" class="step active">
+      <span class="ex-badge">Section 1 · 10 points</span>
+      <h2 class="ex-title">Language — Articles</h2>
+      <p class="ex-subtitle">Choose the correct article for each gap: <strong>a</strong>, <strong>an</strong>, <strong>the</strong>, or <strong>–</strong> (no article).</p>
+      <div class="card">
+        <div class="numbered-item"><span class="item-num">1</span>
+          <div class="item-sentence">
+            <select class="gap-select" id="s1-1a"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select>
+            environment is everyone's responsibility.
+          </div>
+        </div>
+        <div class="numbered-item"><span class="item-num">2</span>
+          <div class="item-sentence">
+            She works for <select class="gap-select" id="s1-2a"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select>
+            organisation that fights for <select class="gap-select" id="s1-2b"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select> climate justice.
+          </div>
+        </div>
+        <div class="numbered-item"><span class="item-num">3</span>
+          <div class="item-sentence">
+            <select class="gap-select" id="s1-3a"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select>
+            solar energy is becoming cheaper every year.
+          </div>
+        </div>
+        <div class="numbered-item"><span class="item-num">4</span>
+          <div class="item-sentence">
+            We saw <select class="gap-select" id="s1-4a"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select>
+            documentary about <select class="gap-select" id="s1-4b"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select> ozone layer last night.
+          </div>
+        </div>
+        <div class="numbered-item"><span class="item-num">5</span>
+          <div class="item-sentence">
+            There was <select class="gap-select" id="s1-5a"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select>
+            interesting article about <select class="gap-select" id="s1-5b"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select>
+            deforestation in <select class="gap-select" id="s1-5c"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select> Guardian.
+          </div>
+        </div>
+        <div class="numbered-item"><span class="item-num">6</span>
+          <div class="item-sentence">
+            <select class="gap-select" id="s1-6a"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select>
+            scientists who published <select class="gap-select" id="s1-6b"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select>
+            report last year came from <select class="gap-select" id="s1-6c"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select> University of Queensland.
+          </div>
+        </div>
+        <div class="numbered-item"><span class="item-num">7</span>
+          <div class="item-sentence">
+            <select class="gap-select" id="s1-7a"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select>
+            electric car uses <select class="gap-select" id="s1-7b"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select>
+            electricity instead of <select class="gap-select" id="s1-7c"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select> petrol.
+          </div>
+        </div>
+        <div class="numbered-item"><span class="item-num">8</span>
+          <div class="item-sentence">
+            He gave <select class="gap-select" id="s1-8a"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select>
+            speech about <select class="gap-select" id="s1-8b"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select>
+            importance of <select class="gap-select" id="s1-8c"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select> recycling.
+          </div>
+        </div>
+        <div class="numbered-item"><span class="item-num">9</span>
+          <div class="item-sentence">
+            <select class="gap-select" id="s1-9a"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select>
+            outback in <select class="gap-select" id="s1-9b"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select>
+            Australia is one of <select class="gap-select" id="s1-9c"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select> most remote places on Earth.
+          </div>
+        </div>
+        <div class="numbered-item"><span class="item-num">10</span>
+          <div class="item-sentence">
+            They set up <select class="gap-select" id="s1-10a"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select>
+            wind farm on <select class="gap-select" id="s1-10b"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select>
+            coast near <select class="gap-select" id="s1-10c"><option value="">choose</option><option>a</option><option>an</option><option>the</option><option>–</option></select> small town.
+          </div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <span></span>
+        <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="goStep(2)">Continue to Section 2 →</button>
+      </div>
+    </section>
+
+    <!-- STEP 2: RELATIVE CLAUSES -->
+    <section id="step-2" class="step">
+      <span class="ex-badge">Section 2 · 8 points</span>
+      <h2 class="ex-title">Language — Relative Clauses</h2>
+      <p class="ex-subtitle">Combine the two sentences using a relative clause. Add commas where necessary for non-defining relative clauses.</p>
+      <div class="card">
+        <div class="numbered-item"><span class="item-num">1</span>
+          <div class="item-original">That is the factory. It produces the most CO2 in the region.</div>
+          <input class="form-input" type="text" id="s2-1" placeholder="Your combined sentence...">
+        </div>
+        <div class="numbered-item"><span class="item-num">2</span>
+          <div class="item-original">Solar energy is a renewable source. It can power entire cities.</div>
+          <input class="form-input" type="text" id="s2-2" placeholder="Your combined sentence...">
+        </div>
+        <div class="numbered-item"><span class="item-num">3</span>
+          <div class="item-original">The Mirarr people own the land. The artefacts were found there.</div>
+          <input class="form-input" type="text" id="s2-3" placeholder="Your combined sentence...">
+        </div>
+        <div class="numbered-item"><span class="item-num">4</span>
+          <div class="item-original">Greta Thunberg is a climate activist. Her speeches have inspired millions.</div>
+          <input class="form-input" type="text" id="s2-4" placeholder="Your combined sentence...">
+        </div>
+        <div class="numbered-item"><span class="item-num">5</span>
+          <div class="item-original">This is the report. Scientists published it last year.</div>
+          <input class="form-input" type="text" id="s2-5" placeholder="Your combined sentence...">
+        </div>
+        <div class="numbered-item"><span class="item-num">6</span>
+          <div class="item-original">The outback is a vast desert region. Very few people live there.</div>
+          <input class="form-input" type="text" id="s2-6" placeholder="Your combined sentence...">
+        </div>
+        <div class="numbered-item"><span class="item-num">7</span>
+          <div class="item-original">Professor Clarkson led the research. His findings changed our understanding of history.</div>
+          <input class="form-input" type="text" id="s2-7" placeholder="Your combined sentence...">
+        </div>
+        <div class="numbered-item"><span class="item-num">8</span>
+          <div class="item-original">The recycling centre opened last month. We visited it on our school trip.</div>
+          <input class="form-input" type="text" id="s2-8" placeholder="Your combined sentence...">
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-outline" onclick="goStep(1)">← Back</button>
+        <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="goStep(3)">Continue to Section 3 →</button>
+      </div>
+    </section>
+
+    <!-- STEP 3: VOCABULARY -->
+    <section id="step-3" class="step">
+      <span class="ex-badge">Section 3 · 12 points</span>
+      <h2 class="ex-title">Vocabulary — California</h2>
+      <p class="ex-subtitle">3a: Match each word to its definition. 3b: Fill the gaps using the word bank.</p>
+      <div class="card">
+        <div class="card-title">3a — Match the word to its definition (5 points)</div>
+        <table class="match-table">
+          <tr><th>Word / Phrase</th><th>Definition</th><th>Your answer</th></tr>
+          <tr><td>1. mudslide</td><td>A sudden flow of wet earth down a hillside, often after heavy rain</td><td><select class="gap-select" id="s3a-1"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></td></tr>
+          <tr><td>2. vineyard</td><td>A land used for growing grapes to make wine</td><td><select class="gap-select" id="s3a-2"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></td></tr>
+          <tr><td>3. indigenous</td><td>A person originally from a place, belonging to its earliest inhabitants</td><td><select class="gap-select" id="s3a-3"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></td></tr>
+          <tr><td>4. smog</td><td>A mixture of smoke and fog that creates air pollution in cities</td><td><select class="gap-select" id="s3a-4"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></td></tr>
+          <tr><td>5. legislation</td><td>A law passed by a government or local authority</td><td><select class="gap-select" id="s3a-5"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></td></tr>
+        </table>
+        <p class="form-hint">Choose the letter (A–E) that corresponds to each word's true definition above (the definitions shown are scrambled, as in the original test).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">3b — Fill in the gaps (7 points)</div>
+        <div class="word-bank"><strong>Word Bank</strong>
+          <span>cattle call</span><span>diverse</span><span>Silicon Valley</span><span>Gold Rush</span><span>wildfires</span><span>drought</span><span>erosion</span>
+        </div>
+        <div class="numbered-item"><span class="item-num">1</span>In 1848, the California <input class="form-input" type="text" id="s3b-1" placeholder="..."></div>
+        <div class="numbered-item"><span class="item-num">2</span>Many of the world's biggest technology companies are based in <input class="form-input" type="text" id="s3b-2" placeholder="..."> near San Francisco.</div>
+        <div class="numbered-item"><span class="item-num">3</span>Los Angeles is one of the most <input class="form-input" type="text" id="s3b-3" placeholder="..."> cities in the world.</div>
+        <div class="numbered-item"><span class="item-num">4</span>Every autumn, <input class="form-input" type="text" id="s3b-4" placeholder="..."> spread rapidly across the dry hills of Southern California.</div>
+        <div class="numbered-item"><span class="item-num">5</span>California often experiences <input class="form-input" type="text" id="s3b-5" placeholder="..."> because of a lack of rainfall.</div>
+        <div class="numbered-item"><span class="item-num">6</span>An open audition where many actors try out for a role is sometimes called a <input class="form-input" type="text" id="s3b-6" placeholder="..."></div>
+        <div class="numbered-item"><span class="item-num">7</span>Coastal <input class="form-input" type="text" id="s3b-7" placeholder="..."> is a serious problem in California.</div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-outline" onclick="goStep(2)">← Back</button>
+        <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="goStep(4)">Continue to Section 4 →</button>
+      </div>
+    </section>
+
+    <!-- STEP 4: FUTURE TENSES -->
+    <section id="step-4" class="step">
+      <span class="ex-badge">Section 4 · 10 points</span>
+      <h2 class="ex-title">Language — Future Tenses</h2>
+      <p class="ex-subtitle">Complete each sentence using the future progressive (will be + -ing) or future perfect (will have + past participle).</p>
+      <div class="card">
+        <div class="numbered-item"><span class="item-num">1</span>This time next year, world leaders <input class="form-input" type="text" id="s4-1" placeholder="(meet)"> to discuss the new climate deal.</div>
+        <div class="numbered-item"><span class="item-num">2</span>By 2030, many countries <input class="form-input" type="text" id="s4-2" placeholder="(switch)"> to 100% renewable energy.</div>
+        <div class="numbered-item"><span class="item-num">3</span>In ten years' time, electric cars <input class="form-input" type="text" id="s4-3" placeholder="(replace)"> most petrol vehicles on our roads.</div>
+        <div class="numbered-item"><span class="item-num">4</span>By the end of this decade, temperatures <input class="form-input" type="text" id="s4-4" placeholder="(rise)"> by at least 1.5°C.</div>
+        <div class="numbered-item"><span class="item-num">5</span>While we sleep tonight, wind turbines <input class="form-input" type="text" id="s4-5" placeholder="(generate)"> enough power for the whole city.</div>
+        <div class="numbered-item"><span class="item-num">6</span>Scientists hope that by 2040, they <input class="form-input" type="text" id="s4-6" placeholder="(develop)"> technology to remove CO2 from the atmosphere.</div>
+        <div class="numbered-item"><span class="item-num">7</span>Next summer, the solar panels on our school <input class="form-input" type="text" id="s4-7" placeholder="(produce)"> electricity for three years.</div>
+        <div class="numbered-item"><span class="item-num">8</span>By the time the conference starts, the delegates <input class="form-input" type="text" id="s4-8" placeholder="(arrive)"> from around the world.</div>
+        <div class="numbered-item"><span class="item-num">9</span>In 2060, our children <input class="form-input" type="text" id="s4-9" placeholder="(live)"> with the consequences of the decisions we make today.</div>
+        <div class="numbered-item"><span class="item-num">10</span>By next month, the new recycling programme <input class="form-input" type="text" id="s4-10" placeholder="(run)"> for exactly one year.</div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-outline" onclick="goStep(3)">← Back</button>
+        <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="goStep(5)">Continue to Section 5 →</button>
+      </div>
+    </section>
+
+    <!-- STEP 5: READING -->
+    <section id="step-5" class="step">
+      <span class="ex-badge">Section 5 · 20 points</span>
+      <h2 class="ex-title">Reading — The Perfect Location</h2>
+      <p class="ex-subtitle">Read the story carefully, then answer the questions below.</p>
+      <div class="card">
+        <div class="card-title">The Perfect Location</div>
+        <div class="reading-text">
+          <p>Charlotte had been driving since eight that morning, looking for the perfect location. Mostly she really enjoyed her job, hunting for suitable places to shoot movies, but today she'd found nothing, and she was feeling tired, hungry and annoyed. How hard could it be to find a creepy old house for a silly werewolf movie? She saw a small diner along the road and stopped the car outside.</p>
+          <p>Inside, the diner was dark, dusty and old-fashioned. It looked like nothing had changed for decades. There were no other customers, but an elderly man was sitting behind the counter. "Well, hello there, ma'am. What can I get you? A nice cold drink? Some pie? Our apple pie was baked this morning." "Thank you, that sounds great. I'll have a piece of that with cream, please, and a coffee."</p>
+          <p>As she was waiting for the pie, Charlotte noticed there were some photographs of local scenes on the wall. Eureka! There, above the old jukebox, was exactly what she was looking for. It was an old farmhouse, with a big veranda and broken gate. The house seemed abandoned and might be ideal for the werewolf movie. It looked really creepy, and it was just a four hour drive from the movie studio in L.A.</p>
+          <p>The man returned with the pie. "You won't taste a better pie for miles, I promise." Charlotte tried some. He was right. It was delicious. "Excuse me, but I was looking at your photographs here. The old house in that one looks amazing. Can you tell me about it?" "That? That's the old Waxenberg place. My wife's ma used to work there once, years ago. Been empty since old Jed Waxenberg died back in '85. The whole damn house is fallin' apart. They should pull it down. A few years ago, some local kids dared to go and spend the night there. Half scared themselves to death. Said there were strange noises and a really weird feeling about the place. Now nobody'll go near it."</p>
+          <p>"Can you tell me how to get there?" said Charlotte. "I'd love to take a look at it, and get a few photographs." "Well, it's about six or seven miles down a track after the bridge, but you don't wanna go out there, ma'am. It's not safe. We've got much better things for tourists to visit than that. Our forest trails are always popular. This whole area's a national park, you know."</p>
+          <p>Charlotte finished her pie and coffee and thanked the man. She was excited to think that after a long disappointing day perhaps she'd actually found a suitable location. The road was full of holes – more of a rough track than a road. She was glad her car was big enough to deal with it. There were several signs saying 'Private! Keep out!' and in one place a small fallen tree was blocking the track. Charlotte decided to ignore the signs, and simply moved the tree out of the way.</p>
+          <p>Finally, there it was. The old Waxenberg place. It was even more creepy in reality than in the photograph in the diner, and in even worse condition. The director would love it. Everything about it said 'werewolf movie'. She parked a few yards away from the broken gate and took her camera bag from the backseat of the car. She'd get some shots of the place before it got dark. The light wasn't great, with so many tall trees around, but it was good enough.</p>
+          <p>The front door was unlocked and ajar. Should she knock, just in case the owner – whoever that was – was inside? No, that was impossible. There couldn't be anyone living there, surely, with the house in this condition. Feeling a little nervous, she stepped inside. The wooden floor of the corridor was covered in broken glass from a mirror that had fallen down. Charlotte was glad she was wearing strong shoes. She hoped the floorboards weren't rotten. Further along the corridor, someone had spray-painted some giant red question marks on the walls.</p>
+          <p>A deep groan came from behind the door. It sounded like an old man who was waking up, or someone in pain. Starting to feel scared, she slowly opened the door – and took a step inside a big, very old-fashioned kitchen. Then suddenly she saw a huge hairy figure moving towards her fast. She ran, fell, and everything went black.</p>
+          <p>She woke up outside. A park ranger was standing over her. "Really sorry we hit you with that tranquillizer dart, ma'am, but we had to shoot. That bear was right on you." A bear. Not a werewolf.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Part A — Right, Wrong or Not in Text? (6 points)</div>
+        <table class="ab-table">
+          <tr><th>Statement</th><th>Right</th><th>Wrong</th><th>Not in text</th></tr>
+          <tr><td>1. Charlotte was looking for a location for a horror film.</td><td class="radio-cell"><input type="radio" name="s5a-1" value="right"></td><td class="radio-cell"><input type="radio" name="s5a-1" value="wrong"></td><td class="radio-cell"><input type="radio" name="s5a-1" value="notintext"></td></tr>
+          <tr><td>2. The diner had been open for only a few years.</td><td class="radio-cell"><input type="radio" name="s5a-2" value="right"></td><td class="radio-cell"><input type="radio" name="s5a-2" value="wrong"></td><td class="radio-cell"><input type="radio" name="s5a-2" value="notintext"></td></tr>
+          <tr><td>3. The Waxenberg house had been empty since 1985.</td><td class="radio-cell"><input type="radio" name="s5a-3" value="right"></td><td class="radio-cell"><input type="radio" name="s5a-3" value="wrong"></td><td class="radio-cell"><input type="radio" name="s5a-3" value="notintext"></td></tr>
+          <tr><td>4. Charlotte paid for directions to the house.</td><td class="radio-cell"><input type="radio" name="s5a-4" value="right"></td><td class="radio-cell"><input type="radio" name="s5a-4" value="wrong"></td><td class="radio-cell"><input type="radio" name="s5a-4" value="notintext"></td></tr>
+          <tr><td>5. The road to the house was in poor condition.</td><td class="radio-cell"><input type="radio" name="s5a-5" value="right"></td><td class="radio-cell"><input type="radio" name="s5a-5" value="wrong"></td><td class="radio-cell"><input type="radio" name="s5a-5" value="notintext"></td></tr>
+          <tr><td>6. A park ranger shot Charlotte with a tranquillizer dart.</td><td class="radio-cell"><input type="radio" name="s5a-6" value="right"></td><td class="radio-cell"><input type="radio" name="s5a-6" value="wrong"></td><td class="radio-cell"><input type="radio" name="s5a-6" value="notintext"></td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Part B — Answer in full sentences (8 points)</div>
+        <div class="numbered-item"><span class="item-num">1</span><div class="form-label">Why was Charlotte in a bad mood at the start of the story?</div><textarea class="form-textarea" id="s5b-1" rows="2"></textarea></div>
+        <div class="numbered-item"><span class="item-num">2</span><div class="form-label">What made Charlotte think the Waxenberg house was suitable for the film?</div><textarea class="form-textarea" id="s5b-2" rows="2"></textarea></div>
+        <div class="numbered-item"><span class="item-num">3</span><div class="form-label">Why did the man in the diner advise Charlotte not to go to the house?</div><textarea class="form-textarea" id="s5b-3" rows="2"></textarea></div>
+        <div class="numbered-item"><span class="item-num">4</span><div class="form-label">What two things did Charlotte ignore on the way to the house?</div><textarea class="form-textarea" id="s5b-4" rows="2"></textarea></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Part C — Answer in detail (6 points)</div>
+        <div class="numbered-item"><span class="item-num">1</span><div class="form-label">The story is divided into three parts. Describe what happens in each part and explain how the atmosphere changes. (3 points)</div><textarea class="form-textarea" id="s5c-1" rows="4"></textarea></div>
+        <div class="numbered-item"><span class="item-num">2</span><div class="form-label">The ending of the story is a surprise. What had the reader been led to believe was in the house? How does the writer create this impression? (3 points)</div><textarea class="form-textarea" id="s5c-2" rows="4"></textarea></div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-outline" onclick="goStep(4)">← Back</button>
+        <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="goReview()">Review & Submit →</button>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ============ SCREEN 3: REVIEW ============ -->
+<div id="s-review" class="screen">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1rem 0 1rem">
+      <div style="font-size:2.2rem;margin-bottom:.5rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All sections complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Check your answers below, then submit your test. You can still go back and change anything before submitting.</p>
+    </div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.1rem">Once you submit, your test is sent straight to your teacher and cannot be changed.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:380px;font-size:1rem;padding:.85rem 2rem" onclick="doSubmit()">🚀 Submit Test</button>
+      <div id="submit-success" style="display:none;margin-top:1.1rem">
+        <div style="font-size:1.8rem;margin-bottom:.4rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem">Submitted successfully!</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.1rem;border-top:1px solid var(--border);padding-top:1rem">
+        <p style="font-size:.8rem;color:var(--muted);margin-bottom:.6rem">If the submission didn't go through, use a backup:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SCREEN 4: DONE ============ -->
+<div id="s-done" class="screen">
+  <div class="step-inner">
+    <div class="card done-card">
+      <div class="big-icon">✅</div>
+      <h2 class="ex-title" style="text-align:center">Test submitted</h2>
+      <p>Your answers have been sent to your teacher. You may close this page.</p>
+      <p class="done-meta" id="done-meta"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===================== CONFIG ===================== */
+var UNIT          = '9g-class-test-9ab';
+var SHEET_URL     = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj';
+var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+var EXAM_MINS     = 60;
+var TOTAL_STEPS   = 5;
+
+/* ===================== ANSWER KEYS (auto-graded sections) ===================== */
+var S1_KEY = {
+  1:['the'], 2:['an','–'], 3:['–'], 4:['a','the'], 5:['an','–','the'],
+  6:['the','a','the'], 7:['an','–','–'], 8:['a','the','–'], 9:['the','–','the'], 10:['a','the','a']
+};
+var S3A_KEY = { 1:'B', 2:'C', 3:'A', 4:'E', 5:'D' };
+var S3B_KEY = { 1:'gold rush', 2:'silicon valley', 3:'diverse', 4:'wildfires', 5:'drought', 6:'cattle call', 7:'erosion' };
+var S4_KEY = {
+  1:'will be meeting', 2:'will have switched', 3:'will have replaced', 4:'will have risen',
+  5:'will be generating', 6:'will have developed', 7:'will have produced', 8:'will have arrived',
+  9:'will be living', 10:'will have run'
+};
+var S5A_KEY = { 1:'right', 2:'wrong', 3:'right', 4:'notintext', 5:'right', 6:'right' };
+
+/* ===================== STATE ===================== */
+var name='', cls='', currentStep=1;
+var sid='', t0=null, tabN=0, pasteN=0, anomalyN=0, devToolsFlagged=false, timerID=null;
+var snapshots=[];
+
+/* ===================== HELPERS ===================== */
+function g(id){ var el=document.getElementById(id); return el ? el.value.trim() : ''; }
+function gRadio(name){ var els=document.getElementsByName(name); for(var i=0;i<els.length;i++){ if(els[i].checked) return els[i].value; } return ''; }
+function esc(s){ var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
+function norm(s){ return (s||'').toLowerCase().replace(/['’]/g,'').replace(/\s+/g,' ').trim(); }
+
+/* ===================== NAVIGATION: WELCOME -> RULES -> EXAM ===================== */
+function show(id){ document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); }); document.getElementById(id).classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
+
+function goRules(){
+  name = g('inp-name'); cls = g('inp-class');
+  var err = document.getElementById('welcome-error');
+  if(!name || !cls){ err.textContent='Please enter both your name and your class.'; err.classList.add('show'); return; }
+  err.classList.remove('show');
+  show('s-rules');
+}
+
+function startExam(){
+  sid = 'SID-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).substr(2,5).toUpperCase();
+  t0 = Date.now();
+  document.body.classList.add('exam-mode');
+  document.getElementById('header-meta').style.display='block';
+  document.getElementById('header-name').textContent = name + (cls ? ' — '+cls : '');
+  document.getElementById('timer-wrap').style.display='flex';
+  show('s-exam');
+  goStep(1, true);
+  startTimer();
+  setInterval(snap, 3*60*1000);
+  setInterval(checkDevTools, 4000);
+  if(navigator.webdriver) anomalyN++;
+}
+
+/* ===================== EXAM STEP NAVIGATION ===================== */
+function goStep(n, isFirst){
+  if(!isFirst) {}
+  document.querySelectorAll('#s-exam .step').forEach(function(s){ s.classList.remove('active'); });
+  document.getElementById('step-'+n).classList.add('active');
+  currentStep = n;
+  document.getElementById('progress-fill').style.width = Math.round(n/TOTAL_STEPS*100)+'%';
+  document.getElementById('header-step').textContent = 'Section '+n+' of '+TOTAL_STEPS;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function goReview(){
+  buildSummary();
+  document.getElementById('header-meta').style.display='none';
+  show('s-review');
+}
+
+/* ===================== TIMER ===================== */
+function startTimer(){
+  timerID = setInterval(function(){
+    var rem = EXAM_MINS*60*1000 - (Date.now()-t0);
+    if(rem<=0){ clearInterval(timerID); document.getElementById('timer-display').textContent='00:00'; forceSubmit(); return; }
+    var m = Math.floor(rem/60000), s = Math.floor((rem%60000)/1000);
+    var td = document.getElementById('timer-display');
+    td.textContent = String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+    td.className = m<5 ? 'danger' : (m<10 ? 'warning' : '');
+  }, 500);
+}
+
+function forceSubmit(){
+  if(document.getElementById('s-done').classList.contains('active')) return;
+  buildSummary();
+  show('s-review');
+  doSubmit();
+}
+
+/* ===================== ANTI-CHEAT ===================== */
+document.addEventListener('visibilitychange', function(){ if(!t0) return; if(document.hidden){ tabN++; } else if(tabN>0) flash('alert-tab'); });
+window.addEventListener('blur', function(){ if(!t0) return; tabN++; });
+
+document.addEventListener('paste', function(e){
+  if(!t0) return;
+  var t = e.target;
+  if(t.tagName==='INPUT' || t.tagName==='TEXTAREA' || t.tagName==='SELECT'){ e.preventDefault(); pasteN++; flash('alert-paste'); }
+});
+document.addEventListener('copy', function(e){ if(!t0) return; e.preventDefault(); });
+document.addEventListener('keydown', function(e){
+  if(!t0) return;
+  if((e.ctrlKey||e.metaKey) && (e.key==='v'||e.key==='V')){ e.preventDefault(); pasteN++; flash('alert-paste'); }
+  if((e.ctrlKey||e.metaKey) && e.shiftKey && ['i','I','j','J'].indexOf(e.key)>-1) e.preventDefault();
+  if(e.key==='F12') e.preventDefault();
+  if((e.ctrlKey||e.metaKey) && (e.key==='u'||e.key==='U')) e.preventDefault();
+  if((e.ctrlKey||e.metaKey) && (e.key==='c'||e.key==='C') && ['INPUT','TEXTAREA'].indexOf(document.activeElement.tagName)===-1) e.preventDefault();
+});
+document.addEventListener('contextmenu', function(e){ if(t0) e.preventDefault(); });
+
+function checkDevTools(){
+  if(!t0 || devToolsFlagged) return;
+  if(window.outerWidth-window.innerWidth>160 || window.outerHeight-window.innerHeight>160){ devToolsFlagged=true; anomalyN++; flash('alert-devtools'); }
+}
+
+document.addEventListener('input', function(e){
+  if(!t0) return;
+  var t = e.target;
+  if(t.tagName!=='INPUT' && t.tagName!=='TEXTAREA') return;
+  var now = Date.now();
+  var len = t.value.length;
+  var prevLen = parseInt(t.dataset.prevLen||'0',10);
+  var prevT = parseInt(t.dataset.prevT||now,10);
+  var diff = len-prevLen, dt = now-prevT;
+  if(diff>60 && dt<500) anomalyN++;
+  t.dataset.prevLen = len;
+  t.dataset.prevT = now;
+});
+
+function flash(id){ var el=document.getElementById(id); el.classList.add('show'); setTimeout(function(){ el.classList.remove('show'); }, 6000); }
+function snap(){ if(t0) snapshots.push({ t: Math.round((Date.now()-t0)/1000), step: currentStep }); }
+
+/* ===================== COLLECT ANSWERS ===================== */
+function collect(){
+  var s1={}, i;
+  for(i=1;i<=10;i++){
+    if(i===1||i===3) s1[i]=[g('s1-'+i+'a')];
+    else if(i===4) s1[i]=[g('s1-4a'),g('s1-4b')];
+    else if(i===2) s1[i]=[g('s1-2a'),g('s1-2b')];
+    else s1[i]=[g('s1-'+i+'a'),g('s1-'+i+'b'),g('s1-'+i+'c')];
+  }
+  var s2={}; for(i=1;i<=8;i++) s2[i]=g('s2-'+i);
+  var s3a={}; for(i=1;i<=5;i++) s3a[i]=g('s3a-'+i);
+  var s3b={}; for(i=1;i<=7;i++) s3b[i]=g('s3b-'+i);
+  var s4={}; for(i=1;i<=10;i++) s4[i]=g('s4-'+i);
+  var s5a={}; for(i=1;i<=6;i++) s5a[i]=gRadio('s5a-'+i);
+  var s5b={}; for(i=1;i<=4;i++) s5b[i]=g('s5b-'+i);
+  var s5c={}; for(i=1;i<=2;i++) s5c[i]=g('s5c-'+i);
+  return {s1:s1,s2:s2,s3a:s3a,s3b:s3b,s4:s4,s5a:s5a,s5b:s5b,s5c:s5c};
+}
+
+/* ===================== AUTO-GRADING ===================== */
+function gradeAll(ans){
+  var score=0, max=38, details={};
+  var i, ok;
+
+  var s1pts=0;
+  for(i=1;i<=10;i++){
+    var given = ans.s1[i].map(function(v){ return norm(v); });
+    var key = S1_KEY[i].map(function(v){ return norm(v); });
+    ok = given.length===key.length && given.every(function(v,idx){ return v===key[idx]; });
+    if(ok) s1pts++;
+  }
+  details.s1 = s1pts; score += s1pts;
+
+  var s3aPts=0;
+  for(i=1;i<=5;i++){ if((ans.s3a[i]||'').toUpperCase()===S3A_KEY[i]) s3aPts++; }
+  details.s3a = s3aPts; score += s3aPts;
+
+  var s3bPts=0;
+  for(i=1;i<=7;i++){ if(norm(ans.s3b[i])===S3B_KEY[i]) s3bPts++; }
+  details.s3b = s3bPts; score += s3bPts;
+
+  var s4Pts=0;
+  for(i=1;i<=10;i++){ if(norm(ans.s4[i])===S4_KEY[i]) s4Pts++; }
+  details.s4 = s4Pts; score += s4Pts;
+
+  var s5aPts=0;
+  for(i=1;i<=6;i++){ if((ans.s5a[i]||'')===S5A_KEY[i]) s5aPts++; }
+  details.s5a = s5aPts; score += s5aPts;
+
+  return { score:score, max:max, details:details, manualMax:22 };
+}
+
+/* ===================== SUMMARY (shown to student, no correctness revealed) ===================== */
+function buildSummary(){
+  var ans = collect();
+  var rows = [];
+  var i;
+  for(i=1;i<=10;i++) rows.push({ ex:'Section 1', q:'Articles — sentence '+i, a: ans.s1[i].join(' / ') });
+  for(i=1;i<=8;i++) rows.push({ ex:'Section 2', q:'Relative clause '+i, a: ans.s2[i] });
+  for(i=1;i<=5;i++) rows.push({ ex:'Section 3a', q:'Match '+i, a: ans.s3a[i] });
+  for(i=1;i<=7;i++) rows.push({ ex:'Section 3b', q:'Gap '+i, a: ans.s3b[i] });
+  for(i=1;i<=10;i++) rows.push({ ex:'Section 4', q:'Future tense '+i, a: ans.s4[i] });
+  for(i=1;i<=6;i++) rows.push({ ex:'Section 5a', q:'Statement '+i, a: ans.s5a[i] });
+  for(i=1;i<=4;i++) rows.push({ ex:'Section 5b', q:'Question '+i, a: ans.s5b[i] });
+  for(i=1;i<=2;i++) rows.push({ ex:'Section 5c', q:'Question '+i, a: ans.s5c[i] });
+
+  var html = '<div class="submit-summary">'
+    + '<div class="summary-row"><div class="summary-ex">Student</div><div class="summary-q">'+esc(name)+' — '+esc(cls)+'</div></div>';
+  rows.forEach(function(r){
+    html += '<div class="summary-row"><div class="summary-ex">'+esc(r.ex)+'</div><div class="summary-q">'+esc(r.q)+'</div><div class="summary-a">'+esc(r.a || '(no answer)')+'</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+}
+
+/* ===================== SUBMIT ===================== */
+var lastPayload = null;
+
+/* flatten an {index: value} or {index: [values]} object into a single
+   readable "1: x | 2: y" string for one Excel column — same convention
+   used by the other live Year 9 task pages (see eolFlat in 9g-california-hazards.html) */
+function eolFlat(o){
+  if(o==null) return '';
+  var keys = Object.keys(o);
+  return keys.map(function(k){
+    var v = o[k];
+    if(Array.isArray(v)) v = v.join(',');
+    return k+': '+(v===''||v==null?'—':v);
+  }).join(' | ');
+}
+
+function doSubmit(){
+  var btn = document.getElementById('submit-btn');
+  if(btn){ btn.disabled = true; btn.textContent = 'Sending...'; }
+  snap();
+  var ans = collect();
+  var grade = gradeAll(ans);
+  var elapsed = Math.round((Date.now()-t0)/1000);
+  var m = Math.floor(elapsed/60), s = elapsed%60;
+
+  var payload = {
+    name: name, cls: cls, unit: UNIT,
+    ex1: eolFlat(ans.s1),
+    ex2: eolFlat(ans.s2),
+    ex3: eolFlat(ans.s3a),
+    ex4: eolFlat(ans.s3b),
+    ex5: eolFlat(ans.s4),
+    ex6: eolFlat(ans.s5a),
+    ex7: eolFlat(ans.s5b),
+    ex8: eolFlat(ans.s5c),
+    ex9: 'AUTO-GRADE '+grade.score+'/'+grade.max+' (objective sections only; '+grade.manualMax+' pts still need manual marking — Section 2, Part B, Part C) — breakdown: Articles '+grade.details.s1+'/10, Matching '+grade.details.s3a+'/5, Gap-fill '+grade.details.s3b+'/7, Future tenses '+grade.details.s4+'/10, Right-Wrong-NotInText '+grade.details.s5a+'/6',
+    ex10: 'INTEGRITY session='+sid+' time='+m+'m'+s+'s tab_switches='+tabN+' paste_attempts='+pasteN+' typing_anomalies='+anomalyN+' devtools_flagged='+devToolsFlagged
+  };
+  lastPayload = payload;
+
+  fetch(SHEET_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).then(function(){
+    finishSubmit(elapsed);
+  }).catch(function(){
+    if(btn){ btn.disabled=false; btn.textContent='🚀 Submit Test'; }
+    document.getElementById('submit-fallback').style.display='block';
+  });
+}
+
+function finishSubmit(elapsed){
+  clearInterval(timerID);
+  document.getElementById('timer-wrap').style.display='none';
+  document.body.classList.remove('exam-mode');
+  var m = Math.floor(elapsed/60), s = elapsed%60;
+  document.getElementById('done-meta').textContent = 'Time used: '+m+'m '+s+'s · Session: '+sid;
+  show('s-done');
+}
+
+function buildEmailBody(){
+  if(!lastPayload) doSubmit();
+  var p = lastPayload;
+  return 'Class Test: 9AB\nStudent: '+name+'\nClass: '+cls+'\nDate: '+new Date().toLocaleDateString('en-GB')
+    + '\n\nFull answers were collected on screen — please ask the student to use the Copy to Clipboard backup if this email is incomplete.';
+}
+
+function submitByEmail(){
+  var a = document.createElement('a');
+  a.href = 'mailto:'+TEACHER_EMAIL+'?subject='+encodeURIComponent('9AB Class Test — '+name+' — '+cls)+'&body='+encodeURIComponent(JSON.stringify(lastPayload||collect(), null, 2));
+  a.style.display='none'; document.body.appendChild(a); a.click();
+  setTimeout(function(){ document.body.removeChild(a); }, 100);
+}
+
+function copyAnswers(){
+  var txt = JSON.stringify(lastPayload || collect(), null, 2);
+  navigator.clipboard.writeText(txt).then(function(){ alert('Answers copied! Paste them into an email to your teacher.'); }).catch(function(){ prompt('Copy this text:', txt); });
+}
+
+/* ===================== INIT ===================== */
+document.addEventListener('DOMContentLoaded', function(){ show('s-welcome'); });
+</script>
+
+</body>
+</html>
