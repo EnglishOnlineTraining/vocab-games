@@ -120,7 +120,7 @@
     <a class="header-logo" href="uni-activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
     <div class="header-meta" id="header-meta" style="display:none">
       <strong id="header-name"></strong>
-      <span id="header-step">Exercise A of 4</span>
+      <span id="header-step">Exercise A — Step 1 of 5</span>
     </div>
   </div>
   <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
@@ -135,14 +135,28 @@
     <div class="welcome-hero">
       <div class="welcome-flag">🏨</div>
       <h1 class="welcome-title">Al-Munir Hotel Group: Building Customer Relationships</h1>
-      <p class="welcome-sub">A hospitality management case study. Work through the background and survey data, discuss the meeting agenda with your department group, agree an action plan, and write a personalised sales letter.</p>
+      <p class="welcome-sub">A hospitality management case study. Work through the background and survey data, listen and compare, discuss the meeting agenda with your department group, agree an action plan, and write a personalised sales letter.</p>
     </div>
 
     <div class="exercise-overview">
       <div class="ov-card"><div class="ov-icon">📊</div><strong>Ex A – Background &amp; Survey</strong>Analyse the case background and the customer satisfaction survey</div>
+      <div class="ov-card locked"><div class="ov-icon">🎧</div><strong>Listening Task</strong>Listen to a conversation and compare it with your own answers</div>
       <div class="ov-card locked"><div class="ov-icon">🗣️</div><strong>Ex B – Group Discussion</strong>Discuss the meeting agenda with your department</div>
       <div class="ov-card locked"><div class="ov-icon">🤝</div><strong>Ex C – Action Plan</strong>Run the live meeting and agree an action plan</div>
       <div class="ov-card locked"><div class="ov-icon">✍️</div><strong>Ex D – Sales Letter</strong>Write a personalised offer letter to a loyal customer</div>
+    </div>
+
+    <div class="role-box">
+      <strong>How this session will run:</strong>
+      <ol>
+        <li>Work through Exercise A and the listening task individually.</li>
+        <li>Split into breakout rooms by department: Guest Relations and Marketing.</li>
+        <li>One member of each room leads the discussion and takes notes (this is Exercise B).</li>
+        <li>Bring both rooms back together as one group.</li>
+        <li>One student plays the role of <strong>Head of Guest Relations</strong> and chairs the joint meeting.</li>
+        <li>Share ideas on every agenda item, then agree on a single action plan.</li>
+        <li>One student presents the action plan, as if to the Al-Munir Board of Directors.</li>
+      </ol>
     </div>
 
     <div class="card">
@@ -226,16 +240,52 @@
     <div id="step1-error" class="feedback err"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
-      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B →</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Listening Task →</button>
     </div>
   </div>
 </section>
 
 
 <!-- ====================================================
-     STEP 2 – EXERCISE B: MEETING AGENDA DISCUSSION
+     STEP 2 – LISTENING TASK
 ===================================================== -->
 <section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Listening Task</span>
+    <h2 class="ex-title">Listen &amp; Compare</h2>
+    <p class="ex-subtitle">Listen to the conversation and compare it with your own answers from Exercise A.</p>
+
+    <div class="card">
+      <div class="card-title">Audio</div>
+      <p class="form-hint" style="margin-bottom:.75rem">Listen to the conversation between Vanessa Schultz and the hospitality consultant.</p>
+      <!-- TODO (Shaun): replace the src below with the real audio file URL -->
+      <audio controls style="width:100%">
+        <source src="PASTE_AUDIO_URL_HERE.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Compare your answers</div>
+      <div class="form-group">
+        <label class="form-label" for="exL-compare">Listen to the conversation and compare — are your answers the same? Note any differences or new information you heard.</label>
+        <textarea class="form-textarea" id="exL-compare" placeholder="Write your comparison here..." rows="5"></textarea>
+      </div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise B →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 3 – EXERCISE B: MEETING AGENDA DISCUSSION
+===================================================== -->
+<section id="step-3" class="step">
   <div class="step-inner">
     <span class="ex-badge">Exercise B</span>
     <h2 class="ex-title">Meeting Agenda – Group Discussion</h2>
@@ -283,35 +333,23 @@
       </div>
     </div>
 
-    <div id="step2-error" class="feedback err"></div>
+    <div id="step3-error" class="feedback err"></div>
     <div class="btn-row">
-      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
-      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C →</button>
+      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise C →</button>
     </div>
   </div>
 </section>
 
 
 <!-- ====================================================
-     STEP 3 – EXERCISE C: LIVE MEETING & ACTION PLAN
+     STEP 4 – EXERCISE C: LIVE MEETING & ACTION PLAN
 ===================================================== -->
-<section id="step-3" class="step">
+<section id="step-4" class="step">
   <div class="step-inner">
     <span class="ex-badge">Exercise C</span>
     <h2 class="ex-title">Live Meeting &amp; Action Plan</h2>
     <p class="ex-subtitle">Now bring both departments together in your video call and turn your ideas into a single action plan.</p>
-
-    <div class="role-box">
-      <strong>Running this step live (for the whole class):</strong>
-      <ol>
-        <li>Split into breakout rooms by department: Guest Relations and Marketing.</li>
-        <li>One member of each room leads the discussion and takes notes (this is Exercise B).</li>
-        <li>Bring both rooms back together as one group.</li>
-        <li>One student plays the role of <strong>Head of Guest Relations</strong> and chairs the joint meeting.</li>
-        <li>Share ideas on every agenda item, then agree on a single action plan.</li>
-        <li>One student presents the action plan, as if to the Al-Munir Board of Directors.</li>
-      </ol>
-    </div>
 
     <div class="card">
       <div class="card-title">Record the outcome of your meeting</div>
@@ -325,19 +363,19 @@
       </div>
     </div>
 
-    <div id="step3-error" class="feedback err"></div>
+    <div id="step4-error" class="feedback err"></div>
     <div class="btn-row">
-      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
-      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise D →</button>
+      <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(4)">Continue to Exercise D →</button>
     </div>
   </div>
 </section>
 
 
 <!-- ====================================================
-     STEP 4 – EXERCISE D: WRITING TASK (SALES LETTER)
+     STEP 5 – EXERCISE D: WRITING TASK (SALES LETTER)
 ===================================================== -->
-<section id="step-4" class="step">
+<section id="step-5" class="step">
   <div class="step-inner">
     <span class="ex-badge">Exercise D</span>
     <h2 class="ex-title">Writing Task: Sales Letter</h2>
@@ -354,10 +392,10 @@
       </div>
     </div>
 
-    <div id="step4-error" class="feedback err"></div>
+    <div id="step5-error" class="feedback err"></div>
     <div class="btn-row">
-      <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
-      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(4)">Review &amp; Submit →</button>
+      <button class="btn btn-outline" onclick="prevStep(5)">← Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(5)">Review &amp; Submit →</button>
     </div>
   </div>
 </section>
@@ -366,7 +404,7 @@
 <!-- ====================================================
      FINAL STEP – REVIEW & SUBMIT
 ===================================================== -->
-<section id="step-5" class="step">
+<section id="step-6" class="step">
   <div class="step-inner">
     <div style="text-align:center;padding:1.5rem 0 1rem">
       <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
@@ -399,11 +437,23 @@
    Apps Script deployment for university submissions yet — Shaun
    needs to create one (see manual steps) and paste the real
    /exec URL in here before this page can submit successfully.
+
+   NOTE: the audio <source src="PASTE_AUDIO_URL_HERE.mp3"> in the
+   Listening Task step (step-2) is also a placeholder — Shaun will
+   add the real audio file URL.
 ============================================================ */
 var UNIT          = 'uni-al-munir-relationships';
-var TOTAL_STEPS    = 5;
-var SHEET_URL      = 'https://script.google.com/macros/s/AKfycbzCj-D1jWSMW7ep1IRBN_Nu_gLBrLq077UPl2ml9AXavgA5aEcC1VNko2TUJZiuVF9mGg/exec';
+var TOTAL_STEPS    = 6;
+var SHEET_URL      = 'PASTE_UNIVERSITY_APPS_SCRIPT_EXEC_URL_HERE';
 var TEACHER_EMAIL  = 'shaun.trezise@docemus.de';
+
+var STEP_LABELS = {
+  1: 'Exercise A',
+  2: 'Listening Task',
+  3: 'Exercise B',
+  4: 'Exercise C',
+  5: 'Exercise D'
+};
 
 /* ============================================================
    STATE
@@ -412,10 +462,11 @@ var state = {
   name: '',
   cls:  '',
   dept: '',
-  exA:  { q1: '', q2: '' },
-  exB:  { p1: '', p2: '', p3: '' },
-  exC:  { leader: '', plan: '' },
-  exD:  { letter: '' }
+  exA:    { q1: '', q2: '' },
+  listen: { compare: '' },
+  exB:    { p1: '', p2: '', p3: '' },
+  exC:    { leader: '', plan: '' },
+  exD:    { letter: '' }
 };
 
 /* ============================================================
@@ -431,9 +482,8 @@ function showStep(n) {
   if (n === 0) { meta.style.display = 'none'; return; }
   meta.style.display = 'block';
   document.getElementById('header-name').textContent = state.name + (state.dept ? ' — ' + state.dept : '');
-  var labels = ['A', 'B', 'C', 'D'];
   document.getElementById('header-step').textContent = n < TOTAL_STEPS
-    ? 'Exercise ' + labels[n - 1] + ' of ' + (TOTAL_STEPS - 1)
+    ? STEP_LABELS[n] + ' — Step ' + n + ' of ' + (TOTAL_STEPS - 1)
     : 'Submit';
 }
 
@@ -477,9 +527,10 @@ function startExercises() {
 function validateStep(n) {
   switch (n) {
     case 1: return val('exA-q1') && val('exA-q2');
-    case 2: return val('exB-p1') && val('exB-p2') && val('exB-p3');
-    case 3: return val('exC-leader') && val('exC-plan');
-    case 4: return val('exD-letter');
+    case 2: return val('exL-compare');
+    case 3: return val('exB-p1') && val('exB-p2') && val('exB-p3');
+    case 4: return val('exC-leader') && val('exC-plan');
+    case 5: return val('exD-letter');
     default: return true;
   }
 }
@@ -490,18 +541,20 @@ function validateStep(n) {
 function saveStep(n) {
   switch (n) {
     case 1: state.exA.q1 = g('exA-q1'); state.exA.q2 = g('exA-q2'); break;
-    case 2: state.exB.p1 = g('exB-p1'); state.exB.p2 = g('exB-p2'); state.exB.p3 = g('exB-p3'); break;
-    case 3: state.exC.leader = g('exC-leader'); state.exC.plan = g('exC-plan'); break;
-    case 4: state.exD.letter = g('exD-letter'); break;
+    case 2: state.listen.compare = g('exL-compare'); break;
+    case 3: state.exB.p1 = g('exB-p1'); state.exB.p2 = g('exB-p2'); state.exB.p3 = g('exB-p3'); break;
+    case 4: state.exC.leader = g('exC-leader'); state.exC.plan = g('exC-plan'); break;
+    case 5: state.exD.letter = g('exD-letter'); break;
   }
 }
 
 function restoreStep(n) {
   switch (n) {
     case 1: set('exA-q1', state.exA.q1); set('exA-q2', state.exA.q2); break;
-    case 2: set('exB-p1', state.exB.p1); set('exB-p2', state.exB.p2); set('exB-p3', state.exB.p3); break;
-    case 3: set('exC-leader', state.exC.leader); set('exC-plan', state.exC.plan); break;
-    case 4: set('exD-letter', state.exD.letter); break;
+    case 2: set('exL-compare', state.listen.compare); break;
+    case 3: set('exB-p1', state.exB.p1); set('exB-p2', state.exB.p2); set('exB-p3', state.exB.p3); break;
+    case 4: set('exC-leader', state.exC.leader); set('exC-plan', state.exC.plan); break;
+    case 5: set('exD-letter', state.exD.letter); break;
   }
 }
 
@@ -520,6 +573,7 @@ function buildSummary() {
   var rows = [
     { ex: 'Exercise A', q: 'Conclusions from the survey', a: state.exA.q1 },
     { ex: 'Exercise A', q: 'Reasons guests do not return', a: state.exA.q2 },
+    { ex: 'Listening Task', q: 'Comparison with conversation heard', a: state.listen.compare },
     { ex: 'Exercise B', q: 'Agenda 1–2: Making guests feel valued', a: state.exB.p1 },
     { ex: 'Exercise B', q: 'Agenda 3–4: Staff & guest information', a: state.exB.p2 },
     { ex: 'Exercise B', q: 'Agenda 5–6: Long-term relationships & next steps', a: state.exB.p3 },
@@ -551,6 +605,8 @@ function buildEmailBody() {
     + '\n\n--- Exercise A: Background & Survey ---'
     + '\nConclusions from survey: ' + (state.exA.q1 || '(none)')
     + '\nReasons guests do not return: ' + (state.exA.q2 || '(none)')
+    + '\n\n--- Listening Task ---'
+    + '\nComparison with conversation heard: ' + (state.listen.compare || '(none)')
     + '\n\n--- Exercise B: Meeting Agenda Discussion ---'
     + '\nAgenda 1-2 (guest value & loyalty): ' + (state.exB.p1 || '(none)')
     + '\nAgenda 3-4 (staff & guest info): ' + (state.exB.p2 || '(none)')
@@ -569,7 +625,7 @@ function submitToSheet() {
   var btn = document.getElementById('submit-btn');
   btn.disabled = true;
   btn.textContent = 'Sending...';
-  var payload = { name: state.name, cls: state.cls, dept: state.dept, unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD };
+  var payload = { name: state.name, cls: state.cls, dept: state.dept, unit: UNIT, exA: state.exA, listen: state.listen, exB: state.exB, exC: state.exC, exD: state.exD };
   fetch(SHEET_URL, {
     method: 'POST',
     mode: 'no-cors',
