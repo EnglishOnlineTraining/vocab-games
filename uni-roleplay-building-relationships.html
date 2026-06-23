@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Building Relationships Roleplay | englishonline.training</title>
+  <title>Building Relationships Through Communication | englishonline.training</title>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -13,6 +13,7 @@
       --gold:    #c9a227;
       --gold-lt: #f5e6b0;
       --teal:    #2b7a78;
+      --teal-lt: #e6f2f1;
       --red:     #c0392b;
       --green:   #27ae60;
       --bg:      #f7f9fc;
@@ -48,8 +49,15 @@
     .reading-text { font-size: .93rem; line-height: 1.85; color: var(--text); }
     .reading-text p { margin-bottom: .85rem; }
     .reading-text p:last-child { margin-bottom: 0; }
-    .reading-text ul { margin: .25rem 0 .25rem 1.25rem; }
+    .reading-text ul { margin: .25rem 0 .85rem 1.25rem; }
     .reading-text li { margin-bottom: .4rem; }
+    .reading-text ol { margin: .25rem 0 .85rem 1.25rem; }
+    .reading-text ol li { margin-bottom: .55rem; }
+
+    .info-banner { background: var(--teal-lt); border: 1.5px solid var(--teal); border-radius: 8px; padding: .7rem 1rem; margin-bottom: 1.1rem; font-size: .85rem; color: var(--blue); }
+    .info-banner strong { color: var(--teal); }
+
+    .goal-banner { background: var(--gold-lt); border: 1.5px solid var(--gold); border-radius: 8px; padding: .7rem 1rem; margin-top: .25rem; font-size: .85rem; color: var(--blue); }
 
     .form-group { margin-bottom: 1.1rem; }
     .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
@@ -59,13 +67,17 @@
       color: var(--text); background: #fff; transition: border-color .2s;
     }
     .form-input:focus, .form-textarea:focus, .form-select:focus { outline: none; border-color: var(--blue); }
-    .form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+    .form-textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
     .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
-    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
 
     .role-block { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.1rem; margin-bottom: .85rem; background: #fafbfc; }
-    .role-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 800; flex-shrink: 0; margin-bottom: .5rem; }
+    .role-letter { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .85rem; font-weight: 800; flex-shrink: 0; margin-bottom: .5rem; }
+    .role-desc { font-size: .85rem; color: var(--muted); margin-bottom: .6rem; }
+
+    .check-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: .55rem; margin-bottom: .5rem; }
+    .check-item { display: flex; align-items: flex-start; gap: .55rem; font-size: .87rem; background: #fafbfc; border: 1px solid var(--border); border-radius: 8px; padding: .6rem .75rem; cursor: pointer; }
+    .check-item input { margin-top: .2rem; flex-shrink: 0; }
+    .check-item:hover { border-color: var(--gold); }
 
     .word-bank { background: var(--gold-lt); border: 1.5px solid var(--gold); border-radius: 8px; padding: .75rem 1rem; margin-bottom: 1.25rem; }
     .word-bank strong { display: block; color: var(--blue); margin-bottom: .5rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; }
@@ -91,11 +103,17 @@
 
     .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
     .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
-    .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
-    .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto; }
-    .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
-    .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; }
-    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
+    .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+    .welcome-kicker { font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin-bottom: .6rem; }
+    .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 1.5rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .welcome-focus { text-align: left; max-width: 420px; margin: 0 auto 2rem; background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; }
+    .welcome-focus strong { display: block; color: var(--blue); font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .5rem; }
+    .welcome-focus ul { margin-left: 1.1rem; font-size: .9rem; }
+    .welcome-focus li { margin-bottom: .25rem; }
+
+    .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+    .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .8rem; }
+    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .86rem; }
     .ov-card.locked { opacity: .5; }
     .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
 
@@ -121,7 +139,7 @@
     <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
     <div class="header-meta" id="header-meta" style="display:none">
       <strong id="header-name"></strong>
-      <span id="header-step">Exercise A of 3</span>
+      <span id="header-step">Slide 1 of 13</span>
     </div>
   </div>
   <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
@@ -129,20 +147,31 @@
 
 
 <!-- ====================================================
-     STEP 0 – WELCOME
+     STEP 0 — SLIDE 1: TITLE / INTRO
 ===================================================== -->
 <section id="step-0" class="step active">
   <div class="step-inner">
     <div class="welcome-hero">
       <div class="welcome-flag">🤝</div>
-      <h1 class="welcome-title">Building Relationships: A Roleplay</h1>
-      <p class="welcome-sub">Work in threes. Plan a short roleplay that shows how (not) to do something — and discover what good communication has to do with building relationships.</p>
+      <div class="welcome-kicker">University Communication Skills</div>
+      <h1 class="welcome-title">Building Relationships Through Communication</h1>
+      <p class="welcome-sub">Roleplay Activity — work in groups of three to explore how communication makes or breaks a professional relationship.</p>
+      <div class="welcome-focus">
+        <strong>Learning Focus</strong>
+        <ul>
+          <li>Building professional relationships</li>
+          <li>Effective communication</li>
+          <li>Networking and collaboration</li>
+          <li>Trust and rapport</li>
+        </ul>
+      </div>
     </div>
 
     <div class="exercise-overview">
-      <div class="ov-card"><div class="ov-icon">🎭</div><strong>Ex A – Topic &amp; Roles</strong>Choose your topic and decide who plays which role</div>
-      <div class="ov-card locked"><div class="ov-icon">✅❌</div><strong>Ex B – Plan It</strong>Plan what good and bad communication will look like</div>
-      <div class="ov-card locked"><div class="ov-icon">💭</div><strong>Ex C – Reflection</strong>Reflect on what you learned</div>
+      <div class="ov-card"><div class="ov-icon">🎯</div><strong>Learn</strong>Objectives &amp; task</div>
+      <div class="ov-card locked"><div class="ov-icon">🎭</div><strong>Plan</strong>Scenario &amp; roles</div>
+      <div class="ov-card locked"><div class="ov-icon">✅❌</div><strong>Perform</strong>Wrong way / right way</div>
+      <div class="ov-card locked"><div class="ov-icon">💭</div><strong>Reflect</strong>Discuss &amp; review</div>
     </div>
 
     <div class="card">
@@ -156,177 +185,398 @@
         <input class="form-input" type="text" id="inp-class" placeholder="e.g. BA English Communication, Group 2" autocomplete="off">
       </div>
       <div id="welcome-error" class="feedback err"></div>
-      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Planning →</button>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start →</button>
     </div>
   </div>
 </section>
 
 
 <!-- ====================================================
-     STEP 1 – EXERCISE A: TOPIC & ROLES
+     STEP 1 — SLIDE 2: LEARNING OBJECTIVES
 ===================================================== -->
 <section id="step-1" class="step">
   <div class="step-inner">
-    <span class="ex-badge">Exercise A</span>
-    <h2 class="ex-title">Choose Your Topic &amp; Roles</h2>
-    <p class="ex-subtitle">Work in threes. You're going to create a roleplay that explains how (not) to do something.</p>
+    <span class="ex-badge">Slide 2</span>
+    <h2 class="ex-title">Learning Objectives</h2>
+    <p class="ex-subtitle">By the end of this activity, you will be able to:</p>
 
     <div class="card">
-      <div class="card-title">How this roleplay works</div>
       <div class="reading-text">
-        <p>Your roleplay should show <strong>both</strong> sides: a version where communication goes badly, and a version where it goes well. You decide the order — bad-then-good, or good-then-bad — as long as the contrast is clear to your audience.</p>
-        <p>Choose a topic from the list below, or pick your own "how (not) to" idea if you know one well.</p>
-      </div>
-      <div class="word-bank">
-        <strong>Topic ideas</strong>
-        <span>How to appear busy at work</span>
-        <span>How (not) to build a good team</span>
-        <span>How (not) to conduct a job interview</span>
-        <span>How (not) to choose a holiday</span>
-        <span>How (not) to prepare dinner for 12 guests</span>
-        <span>How to form a rock band</span>
+        <ul>
+          <li>✓ Build rapport in professional situations</li>
+          <li>✓ Use effective communication strategies</li>
+          <li>✓ Recognise behaviours that damage relationships</li>
+          <li>✓ Demonstrate active listening and empathy</li>
+          <li>✓ Reflect on relationship-building skills for your future career</li>
+        </ul>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-title">Your topic</div>
-      <div class="form-group">
-        <label class="form-label" for="exA-topic">Pick a topic for your roleplay</label>
-        <select class="form-select" id="exA-topic">
-          <option value="">— Select a topic —</option>
-          <option>How to appear busy at work</option>
-          <option>How (not) to build a good team</option>
-          <option>How (not) to conduct a job interview</option>
-          <option>How (not) to choose a holiday</option>
-          <option>How (not) to prepare dinner for 12 guests</option>
-          <option>How to form a rock band</option>
-          <option>Other (our own topic)</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="exA-othertopic">If you chose "Other", describe your topic here</label>
-        <input class="form-input" type="text" id="exA-othertopic" placeholder="e.g. How (not) to give feedback to a colleague">
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">Who plays which role?</div>
-      <p class="form-hint" style="margin-bottom:1rem">Give each group member a character name or job title for the roleplay.</p>
-
-      <div class="role-block">
-        <div class="role-num">1</div>
-        <div class="form-row">
-          <div class="form-group" style="margin-bottom:0">
-            <label class="form-label" for="exA-member1">Student name</label>
-            <input class="form-input" type="text" id="exA-member1" placeholder="Group member 1">
-          </div>
-          <div class="form-group" style="margin-bottom:0">
-            <label class="form-label" for="exA-role1">Character / role</label>
-            <input class="form-input" type="text" id="exA-role1" placeholder="e.g. The Manager">
-          </div>
-        </div>
-      </div>
-
-      <div class="role-block">
-        <div class="role-num">2</div>
-        <div class="form-row">
-          <div class="form-group" style="margin-bottom:0">
-            <label class="form-label" for="exA-member2">Student name</label>
-            <input class="form-input" type="text" id="exA-member2" placeholder="Group member 2">
-          </div>
-          <div class="form-group" style="margin-bottom:0">
-            <label class="form-label" for="exA-role2">Character / role</label>
-            <input class="form-input" type="text" id="exA-role2" placeholder="e.g. The New Employee">
-          </div>
-        </div>
-      </div>
-
-      <div class="role-block">
-        <div class="role-num">3</div>
-        <div class="form-row">
-          <div class="form-group" style="margin-bottom:0">
-            <label class="form-label" for="exA-member3">Student name</label>
-            <input class="form-input" type="text" id="exA-member3" placeholder="Group member 3">
-          </div>
-          <div class="form-group" style="margin-bottom:0">
-            <label class="form-label" for="exA-role3">Character / role</label>
-            <input class="form-input" type="text" id="exA-role3" placeholder="e.g. The Narrator / Observer">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="step1-error" class="feedback err"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
-      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B →</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue →</button>
     </div>
   </div>
 </section>
 
 
 <!-- ====================================================
-     STEP 2 – EXERCISE B: PLAN THE ROLEPLAY
+     STEP 2 — SLIDE 3: THE TASK
 ===================================================== -->
 <section id="step-2" class="step">
   <div class="step-inner">
-    <span class="ex-badge">Exercise B</span>
-    <h2 class="ex-title">Plan the Roleplay: Do's &amp; Don'ts</h2>
-    <p class="ex-subtitle">Before you perform, agree on exactly what "bad" communication and "good" communication will look like in your scene.</p>
+    <span class="ex-badge">Slide 3</span>
+    <h2 class="ex-title">The Task</h2>
+    <p class="ex-subtitle">Work in groups of three.</p>
 
     <div class="card">
-      <div class="card-title">Task</div>
-      <div class="form-group">
-        <label class="form-label" for="exB-dos">List 2–3 things your characters will DO well (good communication)</label>
-        <textarea class="form-textarea" id="exB-dos" placeholder="e.g. active listening, asking open questions, checking understanding, giving clear feedback..." rows="4"></textarea>
-        <p class="form-hint">Think about: eye contact, listening, tone of voice, asking questions, showing empathy, being clear.</p>
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="exB-donts">List 2–3 things your characters will get WRONG (bad communication)</label>
-        <textarea class="form-textarea" id="exB-donts" placeholder="e.g. interrupting, not listening, being vague, ignoring body language..." rows="4"></textarea>
-        <p class="form-hint">Think about: interrupting, talking over people, ignoring questions, being dismissive, poor body language.</p>
+      <div class="reading-text">
+        <p>Create and perform a roleplay that demonstrates:</p>
+        <p style="font-weight:700;color:var(--blue)">How to build professional relationships<br>OR<br>How NOT to build professional relationships</p>
+        <p>Your roleplay should clearly show the difference between effective and ineffective communication.</p>
       </div>
     </div>
 
-    <div id="step2-error" class="feedback err"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
-      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C →</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue →</button>
     </div>
   </div>
 </section>
 
 
 <!-- ====================================================
-     STEP 3 – EXERCISE C: REFLECTION
+     STEP 3 — SLIDE 4: CHOOSE A SCENARIO
 ===================================================== -->
 <section id="step-3" class="step">
   <div class="step-inner">
-    <span class="ex-badge">Exercise C</span>
-    <h2 class="ex-title">Reflection</h2>
-    <p class="ex-subtitle">Once your group has performed (or is ready to perform), answer this together.</p>
+    <span class="ex-badge">Slide 4</span>
+    <h2 class="ex-title">Choose a Scenario</h2>
+    <p class="ex-subtitle">Select ONE scenario, or create your own.</p>
 
     <div class="card">
-      <div class="card-title">Task</div>
+      <div class="card-title">Scenario</div>
       <div class="form-group">
-        <label class="form-label" for="exC-reflection">Why does good communication matter for building relationships in this scenario? What did your group notice when planning the "bad" version?</label>
-        <textarea class="form-textarea" id="exC-reflection" placeholder="Write your group's reflection here..." rows="6"></textarea>
+        <label class="form-label" for="sc-scenario">Pick your scenario</label>
+        <select class="form-select" id="sc-scenario">
+          <option value="">— Select a scenario —</option>
+          <option>Making a good first impression at a networking event</option>
+          <option>Building relationships with new colleagues</option>
+          <option>Working with international team members</option>
+          <option>Maintaining professional contacts after meeting them</option>
+          <option>Building trust in a project team</option>
+          <option>Connecting with people during an internship</option>
+          <option>Starting conversations at a conference</option>
+          <option>Collaborating with someone you have never met before</option>
+          <option>Other (our own scenario)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="sc-custom">If you chose "Other", describe your scenario here</label>
+        <input class="form-input" type="text" id="sc-custom" placeholder="e.g. Reconnecting with a contact after a long time">
       </div>
     </div>
 
-    <div id="step3-error" class="feedback err"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
-      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(3)">Review &amp; Submit →</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue →</button>
     </div>
   </div>
 </section>
 
 
 <!-- ====================================================
-     STEP 4 – REVIEW & SUBMIT
+     STEP 4 — SLIDE 5: CHARACTER ROLES
 ===================================================== -->
 <section id="step-4" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Slide 5</span>
+    <h2 class="ex-title">Character Roles</h2>
+    <p class="ex-subtitle">Remember: everyone should have a speaking role.</p>
+
+    <div class="role-block">
+      <div class="role-letter">A</div>
+      <div class="role-desc">Person A — Attempts to build a positive relationship.</div>
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label" for="role-a">Who is playing Person A?</label>
+        <input class="form-input" type="text" id="role-a" placeholder="Student name">
+      </div>
+    </div>
+
+    <div class="role-block">
+      <div class="role-letter">B</div>
+      <div class="role-desc">Person B — Responds to the situation.</div>
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label" for="role-b">Who is playing Person B?</label>
+        <input class="form-input" type="text" id="role-b" placeholder="Student name">
+      </div>
+    </div>
+
+    <div class="role-block">
+      <div class="role-letter">C</div>
+      <div class="role-desc">Person C — Creates challenges, misunderstandings, or demonstrates poor relationship-building behaviour.</div>
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label" for="role-c">Who is playing Person C?</label>
+        <input class="form-input" type="text" id="role-c" placeholder="Student name">
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(4)">Continue →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 5 — SLIDE 6: PART 1 – THE WRONG WAY
+===================================================== -->
+<section id="step-5" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Slide 6</span>
+    <h2 class="ex-title">Part 1 – The Wrong Way</h2>
+    <p class="ex-subtitle">Act out the situation using poor communication skills.</p>
+
+    <div class="info-banner"><strong>Duration:</strong> 2–3 minutes</div>
+
+    <div class="card">
+      <div class="card-title">Possible behaviours — tick the ones your group will use</div>
+      <div class="check-grid">
+        <label class="check-item"><input type="checkbox" name="wrongBehaviours" value="Interrupting others">Interrupting others</label>
+        <label class="check-item"><input type="checkbox" name="wrongBehaviours" value="Talking only about yourself">Talking only about yourself</label>
+        <label class="check-item"><input type="checkbox" name="wrongBehaviours" value="Ignoring ideas">Ignoring ideas</label>
+        <label class="check-item"><input type="checkbox" name="wrongBehaviours" value="Being distracted">Being distracted</label>
+        <label class="check-item"><input type="checkbox" name="wrongBehaviours" value="Making assumptions">Making assumptions</label>
+        <label class="check-item"><input type="checkbox" name="wrongBehaviours" value="Not remembering names">Not remembering names</label>
+        <label class="check-item"><input type="checkbox" name="wrongBehaviours" value="Giving short or unfriendly responses">Giving short or unfriendly responses</label>
+        <label class="check-item"><input type="checkbox" name="wrongBehaviours" value="Excluding people from the conversation">Excluding people from the conversation</label>
+      </div>
+      <div class="goal-banner"><strong>Goal:</strong> Show how relationships can fail to develop.</div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(5)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(5)">Continue →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 6 — SLIDE 7: PART 2 – THE RIGHT WAY
+===================================================== -->
+<section id="step-6" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Slide 7</span>
+    <h2 class="ex-title">Part 2 – The Right Way</h2>
+    <p class="ex-subtitle">Replay the same situation using effective communication techniques.</p>
+
+    <div class="info-banner"><strong>Duration:</strong> 2–3 minutes</div>
+
+    <div class="card">
+      <div class="card-title">Examples — tick the ones your group will use</div>
+      <div class="check-grid">
+        <label class="check-item"><input type="checkbox" name="rightTechniques" value="Active listening">Active listening</label>
+        <label class="check-item"><input type="checkbox" name="rightTechniques" value="Showing genuine interest">Showing genuine interest</label>
+        <label class="check-item"><input type="checkbox" name="rightTechniques" value="Asking follow-up questions">Asking follow-up questions</label>
+        <label class="check-item"><input type="checkbox" name="rightTechniques" value="Encouraging participation">Encouraging participation</label>
+        <label class="check-item"><input type="checkbox" name="rightTechniques" value="Being respectful and supportive">Being respectful and supportive</label>
+        <label class="check-item"><input type="checkbox" name="rightTechniques" value="Finding common interests">Finding common interests</label>
+        <label class="check-item"><input type="checkbox" name="rightTechniques" value="Building trust and rapport">Building trust and rapport</label>
+      </div>
+      <div class="goal-banner"><strong>Goal:</strong> Demonstrate successful relationship-building.</div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(6)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(6)">Continue →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 7 — SLIDE 8: EFFECTIVE COMMUNICATION SKILLS
+===================================================== -->
+<section id="step-7" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Slide 8</span>
+    <h2 class="ex-title">Effective Communication Skills</h2>
+    <p class="ex-subtitle">Your roleplay should include at least THREE of these.</p>
+
+    <div class="card">
+      <div class="check-grid">
+        <label class="check-item"><input type="checkbox" name="commSkills" value="Active listening">Active listening</label>
+        <label class="check-item"><input type="checkbox" name="commSkills" value="Asking open-ended questions">Asking open-ended questions</label>
+        <label class="check-item"><input type="checkbox" name="commSkills" value="Finding common ground">Finding common ground</label>
+        <label class="check-item"><input type="checkbox" name="commSkills" value="Showing empathy">Showing empathy</label>
+        <label class="check-item"><input type="checkbox" name="commSkills" value="Giving constructive feedback">Giving constructive feedback</label>
+        <label class="check-item"><input type="checkbox" name="commSkills" value="Remembering personal details">Remembering personal details</label>
+        <label class="check-item"><input type="checkbox" name="commSkills" value="Following up after meetings">Following up after meetings</label>
+        <label class="check-item"><input type="checkbox" name="commSkills" value="Including quieter group members">Including quieter group members</label>
+        <label class="check-item"><input type="checkbox" name="commSkills" value="Showing appreciation">Showing appreciation</label>
+        <label class="check-item"><input type="checkbox" name="commSkills" value="Offering help and support">Offering help and support</label>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(7)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(7)">Continue →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 8 — SLIDE 9: USEFUL EXPRESSIONS
+===================================================== -->
+<section id="step-8" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Slide 9</span>
+    <h2 class="ex-title">Useful Expressions</h2>
+    <p class="ex-subtitle">Try to include at least FIVE expressions.</p>
+
+    <div class="card">
+      <div class="check-grid">
+        <label class="check-item"><input type="checkbox" name="expressions" value="Tell me more about that.">"Tell me more about that."</label>
+        <label class="check-item"><input type="checkbox" name="expressions" value="That's an interesting point.">"That's an interesting point."</label>
+        <label class="check-item"><input type="checkbox" name="expressions" value="What do you think?">"What do you think?"</label>
+        <label class="check-item"><input type="checkbox" name="expressions" value="I completely understand.">"I completely understand."</label>
+        <label class="check-item"><input type="checkbox" name="expressions" value="I'd be happy to help.">"I'd be happy to help."</label>
+        <label class="check-item"><input type="checkbox" name="expressions" value="Can you elaborate on that?">"Can you elaborate on that?"</label>
+        <label class="check-item"><input type="checkbox" name="expressions" value="Let's stay in touch.">"Let's stay in touch."</label>
+        <label class="check-item"><input type="checkbox" name="expressions" value="I appreciate your perspective.">"I appreciate your perspective."</label>
+        <label class="check-item"><input type="checkbox" name="expressions" value="It's great to meet you.">"It's great to meet you."</label>
+        <label class="check-item"><input type="checkbox" name="expressions" value="We seem to have something in common.">"We seem to have something in common."</label>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(8)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(8)">Continue →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 9 — SLIDE 10: PLANNING TIME
+===================================================== -->
+<section id="step-9" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Slide 10</span>
+    <h2 class="ex-title">Planning Time</h2>
+    <p class="ex-subtitle">Discuss these questions as a group.</p>
+
+    <div class="info-banner"><strong>Preparation Time:</strong> 10–15 minutes</div>
+
+    <div class="card">
+      <div class="form-group">
+        <label class="form-label" for="plan-q1">1. Which scenario will you choose?</label>
+        <input class="form-input" type="text" id="plan-q1" placeholder="Write your answer here...">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="plan-q2">2. What relationship-building mistakes will you show?</label>
+        <textarea class="form-textarea" id="plan-q2" placeholder="Write your answer here..." rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="plan-q3">3. Which communication skills will you demonstrate?</label>
+        <textarea class="form-textarea" id="plan-q3" placeholder="Write your answer here..." rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="plan-q4">4. Who will play each role?</label>
+        <textarea class="form-textarea" id="plan-q4" placeholder="Write your answer here..." rows="3"></textarea>
+      </div>
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label" for="plan-q5">5. How will the "wrong" and "right" versions differ?</label>
+        <textarea class="form-textarea" id="plan-q5" placeholder="Write your answer here..." rows="3"></textarea>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(9)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(9)">Continue →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 10 — SLIDE 11: REFLECTION QUESTIONS
+===================================================== -->
+<section id="step-10" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Slide 11</span>
+    <h2 class="ex-title">Reflection Questions</h2>
+    <p class="ex-subtitle">After each performance, discuss these as a group.</p>
+
+    <div class="card">
+      <div class="form-group">
+        <label class="form-label" for="refl-q1">1. Which behaviours helped build relationships?</label>
+        <textarea class="form-textarea" id="refl-q1" placeholder="Write your answer here..." rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="refl-q2">2. Which behaviours damaged trust or rapport?</label>
+        <textarea class="form-textarea" id="refl-q2" placeholder="Write your answer here..." rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="refl-q3">3. Which communication skills were most effective?</label>
+        <textarea class="form-textarea" id="refl-q3" placeholder="Write your answer here..." rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="refl-q4">4. Have you experienced similar situations?</label>
+        <textarea class="form-textarea" id="refl-q4" placeholder="Write your answer here..." rows="3"></textarea>
+      </div>
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label" for="refl-q5">5. How important are relationship-building skills in your future career?</label>
+        <textarea class="form-textarea" id="refl-q5" placeholder="Write your answer here..." rows="3"></textarea>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(10)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(10)">Continue →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 11 — SLIDE 12: KEY TAKEAWAY
+===================================================== -->
+<section id="step-11" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Slide 12</span>
+    <h2 class="ex-title">Key Takeaway</h2>
+    <p class="ex-subtitle" style="font-weight:700;color:var(--blue)">Strong Relationships Start with Strong Communication</p>
+
+    <div class="card">
+      <div class="card-title">Remember</div>
+      <div class="reading-text">
+        <ul>
+          <li>Listen actively</li>
+          <li>Show genuine interest</li>
+          <li>Include others</li>
+          <li>Build trust</li>
+          <li>Communicate respectfully</li>
+        </ul>
+        <p style="margin-top:.5rem">These skills are essential for success at university and in the workplace.</p>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(11)">← Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(11)">Review &amp; Submit →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 12 — REVIEW & SUBMIT
+===================================================== -->
+<section id="step-12" class="step">
   <div class="step-inner">
     <div style="text-align:center;padding:1.5rem 0 1rem">
       <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
@@ -357,7 +607,7 @@
    CONFIG
 ============================================================ */
 var UNIT          = 'uni-roleplay-building-relationships';
-var TOTAL_STEPS   = 4;   /* A, B, C + submit */
+var TOTAL_STEPS   = 12;   /* index of the final Review & Submit step */
 var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbzCj-D1jWSMW7ep1IRBN_Nu_gLBrLq077UPl2ml9AXavgA5aEcC1VNko2TUJZiuVF9mGg/exec';
 var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
 
@@ -367,13 +617,20 @@ var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
 var state = {
   name: '',
   cls:  '',
-  exA:  {},
-  exB:  {},
-  exC:  {}
+  scenario: {},
+  roles: {},
+  wrongBehaviours: [],
+  rightTechniques: [],
+  commSkills: [],
+  expressions: [],
+  planning: {},
+  reflection: {}
 };
 
 /* ============================================================
    NAVIGATION
+   No required fields on any slide — students can move forward
+   or backward freely, with or without entering information.
 ============================================================ */
 function showStep(n) {
   document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
@@ -385,29 +642,17 @@ function showStep(n) {
   if (n === 0) { meta.style.display = 'none'; return; }
   meta.style.display = 'block';
   document.getElementById('header-name').textContent = state.name + (state.cls ? ' — ' + state.cls : '');
-  var labels = ['A', 'B', 'C', 'D', 'E'];
   document.getElementById('header-step').textContent = n < TOTAL_STEPS
-    ? 'Exercise ' + labels[n - 1] + ' of ' + (TOTAL_STEPS - 1)
+    ? 'Slide ' + (n + 1) + ' of ' + (TOTAL_STEPS + 1)
     : 'Submit';
 }
 
-function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
+function prevStep(n) { saveStep(n); showStep(n - 1); }
 
 function nextStep(n) {
-  if (!validateStep(n)) {
-    var err = document.getElementById('step' + n + '-error');
-    if (err) { err.textContent = 'Please answer the required questions before continuing.'; err.classList.add('show'); }
-    return;
-  }
-  clearErr(n);
   saveStep(n);
   if (n === TOTAL_STEPS - 1) { buildSummary(); }
   showStep(n + 1);
-}
-
-function clearErr(n) {
-  var err = document.getElementById('step' + n + '-error');
-  if (err) err.classList.remove('show');
 }
 
 function startExercises() {
@@ -425,60 +670,85 @@ function startExercises() {
 }
 
 /* ============================================================
-   VALIDATION
-============================================================ */
-function validateStep(n) {
-  switch (n) {
-    case 1: return val('exA-topic') && val('exA-member1') && val('exA-member2') && val('exA-member3');
-    case 2: return val('exB-dos') && val('exB-donts');
-    case 3: return val('exC-reflection');
-    default: return true;
-  }
-}
-
-/* ============================================================
    SAVE / RESTORE
 ============================================================ */
 function saveStep(n) {
   switch (n) {
-    case 1:
-      state.exA.topic      = g('exA-topic');
-      state.exA.otherTopic = g('exA-othertopic');
-      state.exA.member1    = g('exA-member1');
-      state.exA.role1      = g('exA-role1');
-      state.exA.member2    = g('exA-member2');
-      state.exA.role2      = g('exA-role2');
-      state.exA.member3    = g('exA-member3');
-      state.exA.role3      = g('exA-role3');
-      break;
-    case 2:
-      state.exB.dos    = g('exB-dos');
-      state.exB.donts  = g('exB-donts');
-      break;
     case 3:
-      state.exC.reflection = g('exC-reflection');
+      state.scenario.choice = g('sc-scenario');
+      state.scenario.custom = g('sc-custom');
       break;
+    case 4:
+      state.roles.personA = g('role-a');
+      state.roles.personB = g('role-b');
+      state.roles.personC = g('role-c');
+      break;
+    case 5:
+      state.wrongBehaviours = getChecked('wrongBehaviours');
+      break;
+    case 6:
+      state.rightTechniques = getChecked('rightTechniques');
+      break;
+    case 7:
+      state.commSkills = getChecked('commSkills');
+      break;
+    case 8:
+      state.expressions = getChecked('expressions');
+      break;
+    case 9:
+      state.planning.q1 = g('plan-q1');
+      state.planning.q2 = g('plan-q2');
+      state.planning.q3 = g('plan-q3');
+      state.planning.q4 = g('plan-q4');
+      state.planning.q5 = g('plan-q5');
+      break;
+    case 10:
+      state.reflection.q1 = g('refl-q1');
+      state.reflection.q2 = g('refl-q2');
+      state.reflection.q3 = g('refl-q3');
+      state.reflection.q4 = g('refl-q4');
+      state.reflection.q5 = g('refl-q5');
+      break;
+    /* steps 1, 2, 11 are informational only — nothing to save */
   }
 }
 
 function restoreStep(n) {
   switch (n) {
-    case 1:
-      set('exA-topic', state.exA.topic);
-      set('exA-othertopic', state.exA.otherTopic);
-      set('exA-member1', state.exA.member1);
-      set('exA-role1', state.exA.role1);
-      set('exA-member2', state.exA.member2);
-      set('exA-role2', state.exA.role2);
-      set('exA-member3', state.exA.member3);
-      set('exA-role3', state.exA.role3);
-      break;
-    case 2:
-      set('exB-dos', state.exB.dos);
-      set('exB-donts', state.exB.donts);
-      break;
     case 3:
-      set('exC-reflection', state.exC.reflection);
+      set('sc-scenario', state.scenario.choice);
+      set('sc-custom', state.scenario.custom);
+      break;
+    case 4:
+      set('role-a', state.roles.personA);
+      set('role-b', state.roles.personB);
+      set('role-c', state.roles.personC);
+      break;
+    case 5:
+      setChecked('wrongBehaviours', state.wrongBehaviours);
+      break;
+    case 6:
+      setChecked('rightTechniques', state.rightTechniques);
+      break;
+    case 7:
+      setChecked('commSkills', state.commSkills);
+      break;
+    case 8:
+      setChecked('expressions', state.expressions);
+      break;
+    case 9:
+      set('plan-q1', state.planning.q1);
+      set('plan-q2', state.planning.q2);
+      set('plan-q3', state.planning.q3);
+      set('plan-q4', state.planning.q4);
+      set('plan-q5', state.planning.q5);
+      break;
+    case 10:
+      set('refl-q1', state.reflection.q1);
+      set('refl-q2', state.reflection.q2);
+      set('refl-q3', state.reflection.q3);
+      set('refl-q4', state.reflection.q4);
+      set('refl-q5', state.reflection.q5);
       break;
   }
 }
@@ -488,25 +758,43 @@ function restoreStep(n) {
 ============================================================ */
 function g(id)       { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
 function set(id, v)  { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
-function val(id)     { return g(id).length > 0; }
 function esc(str)    { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
+function getChecked(name) {
+  return Array.prototype.slice.call(document.querySelectorAll('input[name="' + name + '"]:checked')).map(function(el) { return el.value; });
+}
+function setChecked(name, arr) {
+  arr = arr || [];
+  Array.prototype.slice.call(document.querySelectorAll('input[name="' + name + '"]')).forEach(function(el) {
+    el.checked = arr.indexOf(el.value) !== -1;
+  });
+}
 
 /* ============================================================
    SUMMARY
 ============================================================ */
 function buildSummary() {
-  var topicLine = state.exA.topic === 'Other (our own topic)' && state.exA.otherTopic
-    ? state.exA.otherTopic
-    : state.exA.topic;
-  var rolesLine = [state.exA.member1, state.exA.role1, state.exA.member2, state.exA.role2, state.exA.member3, state.exA.role3]
-    .map(esc).join(' | ');
+  var scenarioLine = state.scenario.choice === 'Other (our own scenario)' && state.scenario.custom
+    ? state.scenario.custom
+    : (state.scenario.choice || '');
+  var rolesLine = 'A: ' + (state.roles.personA || '—') + ' | B: ' + (state.roles.personB || '—') + ' | C: ' + (state.roles.personC || '—');
 
   var rows = [
-    { ex: 'Exercise A', q: 'Topic', a: topicLine },
-    { ex: 'Exercise A', q: 'Roles (Member1, Role1, Member2, Role2, Member3, Role3)', a: rolesLine },
-    { ex: 'Exercise B', q: 'What we will DO well', a: state.exB.dos },
-    { ex: 'Exercise B', q: "What we will get WRONG", a: state.exB.donts },
-    { ex: 'Exercise C', q: 'Reflection', a: state.exC.reflection }
+    { ex: 'Slide 4', q: 'Scenario', a: scenarioLine },
+    { ex: 'Slide 5', q: 'Character roles', a: rolesLine },
+    { ex: 'Slide 6', q: 'Wrong-way behaviours chosen', a: state.wrongBehaviours.join(', ') },
+    { ex: 'Slide 7', q: 'Right-way techniques chosen', a: state.rightTechniques.join(', ') },
+    { ex: 'Slide 8', q: 'Communication skills chosen', a: state.commSkills.join(', ') },
+    { ex: 'Slide 9', q: 'Expressions chosen', a: state.expressions.join(', ') },
+    { ex: 'Slide 10', q: '1. Scenario', a: state.planning.q1 },
+    { ex: 'Slide 10', q: '2. Mistakes to show', a: state.planning.q2 },
+    { ex: 'Slide 10', q: '3. Skills to demonstrate', a: state.planning.q3 },
+    { ex: 'Slide 10', q: '4. Who plays each role', a: state.planning.q4 },
+    { ex: 'Slide 10', q: '5. How the versions differ', a: state.planning.q5 },
+    { ex: 'Slide 11', q: '1. Behaviours that helped', a: state.reflection.q1 },
+    { ex: 'Slide 11', q: '2. Behaviours that damaged trust', a: state.reflection.q2 },
+    { ex: 'Slide 11', q: '3. Most effective skills', a: state.reflection.q3 },
+    { ex: 'Slide 11', q: '4. Similar situations experienced', a: state.reflection.q4 },
+    { ex: 'Slide 11', q: '5. Importance for future career', a: state.reflection.q5 }
   ];
   var html = '<div class="submit-summary">'
     + '<div class="summary-row"><div class="summary-ex">Student</div>'
@@ -524,22 +812,34 @@ function buildSummary() {
    EMAIL FALLBACK BODY
 ============================================================ */
 function buildEmailBody() {
-  var topicLine = state.exA.topic === 'Other (our own topic)' && state.exA.otherTopic
-    ? state.exA.otherTopic
-    : state.exA.topic;
+  var scenarioLine = state.scenario.choice === 'Other (our own scenario)' && state.scenario.custom
+    ? state.scenario.custom
+    : (state.scenario.choice || '(none)');
   return 'Exercise: ' + UNIT
     + '\nStudent: ' + state.name
     + '\nCourse/Group: ' + state.cls
-    + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
-    + '\n\n--- Exercise A: Topic & Roles ---'
-    + '\nTopic: ' + (topicLine || '(none)')
-    + '\nMember 1: ' + (state.exA.member1 || '(none)') + ' as ' + (state.exA.role1 || '(no role)')
-    + '\nMember 2: ' + (state.exA.member2 || '(none)') + ' as ' + (state.exA.role2 || '(no role)')
-    + '\nMember 3: ' + (state.exA.member3 || '(none)') + ' as ' + (state.exA.role3 || '(no role)')
-    + '\n\n--- Exercise B: Do\'s & Don\'ts ---'
-    + '\nDo well: ' + (state.exB.dos || '(none)')
-    + '\nGet wrong: ' + (state.exB.donts || '(none)')
-    + '\n\n--- Exercise C: Reflection ---\n' + (state.exC.reflection || '(none)');
+    + '\nDate: ' + new Date().toLocaleDateString('en-GB')
+    + '\n\n--- Scenario & Roles ---'
+    + '\nScenario: ' + scenarioLine
+    + '\nPerson A: ' + (state.roles.personA || '(none)')
+    + '\nPerson B: ' + (state.roles.personB || '(none)')
+    + '\nPerson C: ' + (state.roles.personC || '(none)')
+    + '\n\n--- Wrong-way behaviours ---\n' + (state.wrongBehaviours.join(', ') || '(none selected)')
+    + '\n\n--- Right-way techniques ---\n' + (state.rightTechniques.join(', ') || '(none selected)')
+    + '\n\n--- Communication skills ---\n' + (state.commSkills.join(', ') || '(none selected)')
+    + '\n\n--- Expressions ---\n' + (state.expressions.join(', ') || '(none selected)')
+    + '\n\n--- Planning ---'
+    + '\n1. Scenario: ' + (state.planning.q1 || '(none)')
+    + '\n2. Mistakes: ' + (state.planning.q2 || '(none)')
+    + '\n3. Skills: ' + (state.planning.q3 || '(none)')
+    + '\n4. Roles: ' + (state.planning.q4 || '(none)')
+    + '\n5. Differences: ' + (state.planning.q5 || '(none)')
+    + '\n\n--- Reflection ---'
+    + '\n1. ' + (state.reflection.q1 || '(none)')
+    + '\n2. ' + (state.reflection.q2 || '(none)')
+    + '\n3. ' + (state.reflection.q3 || '(none)')
+    + '\n4. ' + (state.reflection.q4 || '(none)')
+    + '\n5. ' + (state.reflection.q5 || '(none)');
 }
 
 /* ============================================================
@@ -550,7 +850,13 @@ function submitToSheet() {
   var btn = document.getElementById('submit-btn');
   btn.disabled = true;
   btn.textContent = 'Sending...';
-  var payload = { name: state.name, cls: state.cls, unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC };
+  var payload = {
+    name: state.name, cls: state.cls, unit: UNIT,
+    scenario: state.scenario, roles: state.roles,
+    wrongBehaviours: state.wrongBehaviours, rightTechniques: state.rightTechniques,
+    commSkills: state.commSkills, expressions: state.expressions,
+    planning: state.planning, reflection: state.reflection
+  };
   fetch(SHEET_URL, {
     method: 'POST',
     mode: 'no-cors',
