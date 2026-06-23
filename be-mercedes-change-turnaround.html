@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mercedes: Change &amp; Turnaround | englishonline.training</title>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:    #1a3a5c;
+      --gold:    #c9a227;
+      --gold-lt: #f5e6b0;
+      --teal:    #2b7a78;
+      --red:     #c0392b;
+      --green:   #27ae60;
+      --bg:      #f7f9fc;
+      --card:    #ffffff;
+      --text:    #1d2b3a;
+      --muted:   #6b7a8d;
+      --border:  #dce3ec;
+      --radius:  12px;
+      --shadow:  0 2px 16px rgba(26,58,92,.1);
+      --font:    'Segoe UI', system-ui, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
+
+    /* ── Header ── */
+    .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
+    .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
+    .header-meta { font-size: .78rem; text-align: right; opacity: .9; }
+    .header-meta strong { display: block; color: var(--gold); }
+    .progress-track { height: 6px; background: rgba(255,255,255,.2); }
+    .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
+
+    /* ── Steps ── */
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+
+    /* ── Exercise labels ── */
+    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
+    .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+    .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+    /* ── Cards ── */
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
+
+    /* ── Reading text ── */
+    .reading-text { font-size: .93rem; line-height: 1.85; color: var(--text); }
+    .reading-text p { margin-bottom: .85rem; }
+    .reading-text p:last-child { margin-bottom: 0; }
+    .reading-byline { font-size: .82rem; color: var(--muted); font-style: italic; margin-bottom: .9rem; }
+    .speaker { font-weight: 700; }
+
+    /* ── Forms ── */
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+    .form-input, .form-textarea {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+      padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
+      color: var(--text); background: #fff; transition: border-color .2s;
+    }
+    .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--blue); }
+    .form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+    .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+
+    /* ── Gap-fill (dropdown) ── */
+    .gap-text { font-size: .93rem; line-height: 2.6; color: var(--text); }
+    .gap-select {
+      display: inline-block; border: 1.5px solid var(--gold); border-radius: 6px;
+      padding: .18rem .45rem; font-family: var(--font); font-size: .82rem;
+      background: var(--gold-lt); color: var(--blue); cursor: pointer;
+      vertical-align: middle; margin: 0 2px; max-width: 200px;
+    }
+    .gap-select:focus { outline: none; border-color: var(--blue); }
+    .gap-correct { background: #d4edda; border-color: var(--green); color: #155724; }
+    .gap-wrong   { background: #fde8e8; border-color: var(--red);   color: #721c24; }
+    .gap-num { font-size: .68rem; color: var(--muted); vertical-align: super; margin-right: 1px; }
+
+    /* ── Word bank ── */
+    .word-bank { background: var(--gold-lt); border: 1.5px solid var(--gold); border-radius: 8px; padding: .75rem 1rem; margin-bottom: 1.25rem; }
+    .word-bank strong { display: block; color: var(--blue); margin-bottom: .5rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; }
+    .word-bank span { display: inline-block; margin: .2rem .3rem; background: var(--blue); color: #fff; border-radius: 4px; padding: .18rem .55rem; font-size: .8rem; font-weight: 600; }
+
+    /* ── True / False options ── */
+    .tf-options { display: flex; gap: 1.25rem; margin-top: .45rem; }
+    .tf-options label { display: flex; align-items: center; gap: .35rem; font-size: .88rem; cursor: pointer; }
+    .tf-options input { accent-color: var(--blue); width: 16px; height: 16px; cursor: pointer; }
+
+    /* ── Matching rows (Exercise C) ── */
+    .match-row { display: flex; align-items: center; gap: .75rem; margin-bottom: .65rem; font-size: .9rem; flex-wrap: wrap; }
+    .match-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 800; flex-shrink: 0; }
+    .match-label { flex: 0 0 140px; font-weight: 600; color: var(--blue); }
+    .match-row.is-example { opacity: .65; }
+    .match-select { max-width: 230px; }
+
+    /* ── Checkbox list (Exercise D) ── */
+    .check-list { display: flex; flex-direction: column; gap: .6rem; }
+    .check-list label { display: flex; align-items: flex-start; gap: .6rem; font-size: .88rem; cursor: pointer; }
+    .check-list input { margin-top: .2rem; accent-color: var(--blue); width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* ── Sentence transformation ── */
+    .transform-item { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: .85rem; background: #fafbfc; }
+    .transform-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 800; flex-shrink: 0; margin-bottom: .5rem; }
+    .transform-original { font-size: .9rem; color: var(--text); font-style: italic; margin-bottom: .65rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); }
+    .transform-hint { font-size: .75rem; color: var(--muted); margin-top: .3rem; }
+
+    /* ── Feedback banners ── */
+    .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
+    .feedback.show { display: block; }
+    .feedback.ok   { background: #d4edda; color: #155724; }
+    .feedback.warn { background: #fff3cd; color: #856404; }
+    .feedback.err  { background: #fde8e8; color: #721c24; }
+
+    /* ── Buttons ── */
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
+    .btn-primary:hover { background: #15304f; }
+    .btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
+    .btn-gold:hover { background: #b8911f; }
+    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+    .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+    .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    /* ── Welcome screen ── */
+    .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
+    .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
+    .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+    .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+    .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; }
+    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
+    .ov-card.locked { opacity: .5; }
+    .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+
+    /* ── Submit / summary ── */
+    .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
+    .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
+    .summary-a  { color: var(--text); white-space: pre-wrap; }
+
+    @media (max-width: 480px) {
+      .ex-title { font-size: 1.25rem; }
+      .btn { padding: .65rem 1.1rem; }
+      .welcome-title { font-size: 1.4rem; }
+      .gap-select { max-width: 150px; font-size: .75rem; }
+      .match-label { flex-basis: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Sticky header ── -->
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Exercise A of 5</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+
+
+<!-- ====================================================
+     STEP 0 – WELCOME
+===================================================== -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">🚗</div>
+      <h1 class="welcome-title">Mercedes: Change &amp; Turnaround</h1>
+      <p class="welcome-sub">Read a Financial Times article about Mercedes' dramatic business turnaround and practise key business vocabulary.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">📖</div><strong>Ex A – Reading</strong>Read the article and answer True/False questions</div>
+      <div class="ov-card locked"><div class="ov-icon">🔤</div><strong>Ex B – Vocabulary</strong>Find words and phrases with the same meaning</div>
+      <div class="ov-card locked"><div class="ov-icon">🔗</div><strong>Ex C – Word Partnerships</strong>Match words to form common collocations</div>
+      <div class="ov-card locked"><div class="ov-icon">✅</div><strong>Ex D – Comprehension</strong>Identify the factors behind Mercedes' improvement</div>
+      <div class="ov-card locked"><div class="ov-icon">✍️</div><strong>Ex E – Reflection</strong>Imagine you are Mr Zetsche</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class / group</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. Business English" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 1 – EXERCISE A: READING + TRUE/FALSE
+===================================================== -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">Reading</h2>
+    <p class="ex-subtitle">Read the article below, then decide if the statements are True (T) or False (F).</p>
+
+    <div class="card">
+      <div class="card-title">Mercedes star twinkles once more</div>
+      <div class="reading-byline">by Richard Milne</div>
+      <div class="reading-text">
+        <p>The Mercedes star is gleaming again. In 2002, it suffered as dramatic a fall as any luxury brand could, as it reported its first losses for nearly two decades and saw its quality slip so far that newspapers were full of stories of cars that kept on breaking down.</p>
+        <p>'Mercedes should not make losses. That is absolutely clear,' says Dieter Zetsche, who became Head of Mercedes in September 2005 and Chief Executive of its parent company, Daimler, three months later. 'But we have great results now and we are starting to change the culture in many ways.'</p>
+        <p>Indeed, so much has Mercedes changed in three years that it has gone from the worst-performing of the large luxury car makers to the trailblazer. Executives at its bigger-selling rival BMW look enviously at its 9.1-per-cent return on sales last year (and even more so at the 10.4 per cent it made in the fourth quarter – compared with BMW's 5.4 per cent in the third quarter).</p>
+        <p>Much of that turnaround is due to Mr Zetsche, famous for his walrus moustache. He was not the first automotive executive to take on two jobs, but he has been one of the most successful with it, using his operational experience at Mercedes to help him at Daimler. Mr Zetsche says that combining roles is essential for his management style. He is also keen to stress that Mercedes has a team approach.</p>
+        <p>Mr Zetsche was hard from the outset, cutting 14,500 jobs – 8,500 in production and 6,000 administrative staff. That broke the pattern of Mercedes providing a job for life to workers. But it had a dramatic effect on the bottom line. Mr Zetsche says: 'Productivity gains don't get you anything if you don't reduce personnel.' Mercedes' recent success is also linked to a big improvement in its product quality and the launch of some well-praised models, headed by the new C-Class saloon. 'Mercedes is building cars that people want to buy again and, for once, they even look better than BMWs,' says one London-based analyst.</p>
+        <p>The debate on reducing carbon-dioxide emissions could hit Mercedes hard. But the company, for now, is choosing to highlight the launch of 20 fuel-efficient models this year.</p>
+        <p>All of this has put a spring back in the step of a company that, in Mr Zetsche's words, also acts as a 'mirror on German society'. It has also restored lustre to Mr Zetsche's star, which was tarnished by the poor performance of Chrysler, the US car maker that was owned by Daimler.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">True or False?</div>
+
+      <div class="form-group">
+        <label class="form-label">1. The fall of the Mercedes luxury brand was not as severe as other brands.</label>
+        <div class="tf-options">
+          <label><input type="radio" name="exA-q1" value="True"> True</label>
+          <label><input type="radio" name="exA-q1" value="False"> False</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">2. In 2002, Mercedes' losses were its first for three decades.</label>
+        <div class="tf-options">
+          <label><input type="radio" name="exA-q2" value="True"> True</label>
+          <label><input type="radio" name="exA-q2" value="False"> False</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">3. In 2002, Mercedes cars were famous for their reliability.</label>
+        <div class="tf-options">
+          <label><input type="radio" name="exA-q3" value="True"> True</label>
+          <label><input type="radio" name="exA-q3" value="False"> False</label>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label">4. Dieter Zetsche is the boss of Mercedes and Daimler.</label>
+        <div class="tf-options">
+          <label><input type="radio" name="exA-q4" value="True"> True</label>
+          <label><input type="radio" name="exA-q4" value="False"> False</label>
+        </div>
+      </div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div id="step1-check" class="feedback" style="display:none"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="checkAnswers(1)">✓ Check Answers</button>
+      <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 2 – EXERCISE B: VOCABULARY
+===================================================== -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B</span>
+    <h2 class="ex-title">Vocabulary</h2>
+    <p class="ex-subtitle">Find words and phrases in the first five paragraphs of the article that mean the same as the following. (Use Back to re-read the article.)</p>
+
+    <div class="card">
+      <div class="form-group">
+        <label class="form-label" for="exB-q1">1. sudden and surprising</label>
+        <input class="form-input" type="text" id="exB-q1" placeholder="Type the word from the article...">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exB-q2">2. a period of 10 years</label>
+        <input class="form-input" type="text" id="exB-q2" placeholder="Type the word from the article...">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exB-q3">3. failing</label>
+        <input class="form-input" type="text" id="exB-q3" placeholder="Type the word from the article...">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exB-q4">4. the first company to develop new methods of doing something</label>
+        <input class="form-input" type="text" id="exB-q4" placeholder="Type the word from the article...">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exB-q5">5. someone that you compete with</label>
+        <input class="form-input" type="text" id="exB-q5" placeholder="Type the word from the article...">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exB-q6">6. jealousy</label>
+        <input class="form-input" type="text" id="exB-q6" placeholder="Type the word from the article...">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exB-q7">7. a complete change from a bad situation to a good one</label>
+        <input class="form-input" type="text" id="exB-q7" placeholder="Type the word from the article...">
+      </div>
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label" for="exB-q8">8. the financial result of a company's business (i.e. profit or loss)</label>
+        <input class="form-input" type="text" id="exB-q8" placeholder="Type the word from the article...">
+      </div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div id="step2-check" class="feedback" style="display:none"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="checkAnswers(2)">✓ Check Answers</button>
+      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 3 – EXERCISE C: WORD PARTNERSHIPS
+===================================================== -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise C</span>
+    <h2 class="ex-title">Word Partnerships</h2>
+    <p class="ex-subtitle">Without looking back at the article, try to match the words to form common word partnerships. Item 1 has been done for you as an example.</p>
+
+    <div class="card">
+      <div class="match-row is-example">
+        <div class="match-num">1</div>
+        <div class="match-label">luxury</div>
+        <select class="form-input match-select" disabled>
+          <option selected>e) brand</option>
+        </select>
+      </div>
+
+      <div class="match-row">
+        <div class="match-num">2</div>
+        <div class="match-label">chief</div>
+        <select class="form-input match-select" id="exC-q2">
+          <option value="">— choose —</option>
+          <option value="a">a) executive</option>
+          <option value="b">b) models</option>
+          <option value="c">c) effect</option>
+          <option value="d">d) company</option>
+          <option value="f">f) style</option>
+          <option value="g">g) approach</option>
+          <option value="h">h) quarter</option>
+        </select>
+      </div>
+
+      <div class="match-row">
+        <div class="match-num">3</div>
+        <div class="match-label">parent</div>
+        <select class="form-input match-select" id="exC-q3">
+          <option value="">— choose —</option>
+          <option value="a">a) executive</option>
+          <option value="b">b) models</option>
+          <option value="c">c) effect</option>
+          <option value="d">d) company</option>
+          <option value="f">f) style</option>
+          <option value="g">g) approach</option>
+          <option value="h">h) quarter</option>
+        </select>
+      </div>
+
+      <div class="match-row">
+        <div class="match-num">4</div>
+        <div class="match-label">fourth</div>
+        <select class="form-input match-select" id="exC-q4">
+          <option value="">— choose —</option>
+          <option value="a">a) executive</option>
+          <option value="b">b) models</option>
+          <option value="c">c) effect</option>
+          <option value="d">d) company</option>
+          <option value="f">f) style</option>
+          <option value="g">g) approach</option>
+          <option value="h">h) quarter</option>
+        </select>
+      </div>
+
+      <div class="match-row">
+        <div class="match-num">5</div>
+        <div class="match-label">management</div>
+        <select class="form-input match-select" id="exC-q5">
+          <option value="">— choose —</option>
+          <option value="a">a) executive</option>
+          <option value="b">b) models</option>
+          <option value="c">c) effect</option>
+          <option value="d">d) company</option>
+          <option value="f">f) style</option>
+          <option value="g">g) approach</option>
+          <option value="h">h) quarter</option>
+        </select>
+      </div>
+
+      <div class="match-row">
+        <div class="match-num">6</div>
+        <div class="match-label">fuel-efficient</div>
+        <select class="form-input match-select" id="exC-q6">
+          <option value="">— choose —</option>
+          <option value="a">a) executive</option>
+          <option value="b">b) models</option>
+          <option value="c">c) effect</option>
+          <option value="d">d) company</option>
+          <option value="f">f) style</option>
+          <option value="g">g) approach</option>
+          <option value="h">h) quarter</option>
+        </select>
+      </div>
+
+      <div class="match-row">
+        <div class="match-num">7</div>
+        <div class="match-label">team</div>
+        <select class="form-input match-select" id="exC-q7">
+          <option value="">— choose —</option>
+          <option value="a">a) executive</option>
+          <option value="b">b) models</option>
+          <option value="c">c) effect</option>
+          <option value="d">d) company</option>
+          <option value="f">f) style</option>
+          <option value="g">g) approach</option>
+          <option value="h">h) quarter</option>
+        </select>
+      </div>
+
+      <div class="match-row" style="margin-bottom:0">
+        <div class="match-num">8</div>
+        <div class="match-label">dramatic</div>
+        <select class="form-input match-select" id="exC-q8">
+          <option value="">— choose —</option>
+          <option value="a">a) executive</option>
+          <option value="b">b) models</option>
+          <option value="c">c) effect</option>
+          <option value="d">d) company</option>
+          <option value="f">f) style</option>
+          <option value="g">g) approach</option>
+          <option value="h">h) quarter</option>
+        </select>
+      </div>
+    </div>
+
+    <p class="form-hint" style="margin-bottom:1rem">Now check your answers by re-reading the article (use Back).</p>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div id="step3-check" class="feedback" style="display:none"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="checkAnswers(3)">✓ Check Answers</button>
+      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise D →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 4 – EXERCISE D: COMPREHENSION
+===================================================== -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise D</span>
+    <h2 class="ex-title">Comprehension</h2>
+    <p class="ex-subtitle">According to the article, which of these factors helped Mercedes improve its performance? Tick all that apply.</p>
+
+    <div class="card">
+      <div class="check-list">
+        <label><input type="checkbox" id="exD-o1" data-label="Mr Zetsche's walrus moustache"> Mr Zetsche's walrus moustache</label>
+        <label><input type="checkbox" id="exD-o2" data-label="Having BMW as a rival"> Having BMW as a rival</label>
+        <label><input type="checkbox" id="exD-o3" data-label="Being hard"> Being hard</label>
+        <label><input type="checkbox" id="exD-o4" data-label="Increasing jobs"> Increasing jobs</label>
+        <label><input type="checkbox" id="exD-o5" data-label="Giving workers security for life"> Giving workers security for life</label>
+        <label><input type="checkbox" id="exD-o6" data-label="Using Mr Zetsche's operational experience"> Using Mr Zetsche's operational experience</label>
+        <label><input type="checkbox" id="exD-o7" data-label="Cutting jobs"> Cutting jobs</label>
+        <label><input type="checkbox" id="exD-o8" data-label="Building cars the experts want them to build"> Building cars the experts want them to build</label>
+        <label><input type="checkbox" id="exD-o9" data-label="Lowering product quality"> Lowering product quality</label>
+        <label><input type="checkbox" id="exD-o10" data-label="Improving the looks of new Mercedes cars"> Improving the looks of new Mercedes cars</label>
+        <label><input type="checkbox" id="exD-o11" data-label="Producing new models"> Producing new models</label>
+        <label><input type="checkbox" id="exD-o12" data-label="Using a team approach"> Using a team approach</label>
+      </div>
+    </div>
+
+    <div id="step4-error" class="feedback err"></div>
+    <div id="step4-check" class="feedback" style="display:none"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="checkAnswers(4)">✓ Check Answers</button>
+      <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(4)">Continue to Exercise E →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 5 – EXERCISE E: REFLECTION
+===================================================== -->
+<section id="step-5" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise E</span>
+    <h2 class="ex-title">Reflection</h2>
+    <p class="ex-subtitle">Imagine you are Mr Zetsche. What other actions would you have taken at Mercedes?</p>
+
+    <div class="card">
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label" for="exE-q1">Your answer</label>
+        <textarea class="form-textarea" id="exE-q1" placeholder="Write your answer here..." rows="6"></textarea>
+      </div>
+    </div>
+
+    <div id="step5-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(5)">← Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(5)">Review &amp; Submit →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     FINAL STEP – REVIEW & SUBMIT
+===================================================== -->
+<section id="step-6" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission did not work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+/* ============================================================
+   CONFIG
+============================================================ */
+var UNIT          = 'be-mercedes-change-turnaround';
+var TOTAL_STEPS   = 6;   /* 5 exercise steps + 1 submit step */
+var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbwHUzZTHYccgb_niNIS5KLBd8NLbtNOwKd0X_NYY-lbWAQkepy-rtHxuNvaD9O1SPha/exec';
+var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+
+/* ============================================================
+   ANSWER KEYS FOR AUTO-CHECKING
+============================================================ */
+var ANSWER_KEYS = {
+  exA: { q1: 'False', q2: 'False', q3: 'False', q4: 'True' },
+  exB: { q1: 'dramatic', q2: 'decade', q3: 'worst-performing', q4: 'trailblazer', q5: 'rival', q6: 'envy', q7: 'turnaround', q8: 'bottom line' },
+  exC: { q2: 'a', q3: 'd', q4: 'h', q5: 'f', q6: 'b', q7: 'g', q8: 'c' },
+  exD: { correct: ['Being hard', 'Using Mr Zetsche\'s operational experience', 'Cutting jobs', 'Improving the looks of new Mercedes cars', 'Producing new models', 'Using a team approach'] }
+};
+
+/* ============================================================
+   STATE
+============================================================ */
+var state = {
+  name: '',
+  cls:  '',
+  exA:  {},  /* q1-q4: True/False */
+  exB:  {},  /* q1-q8: vocabulary */
+  exC:  {},  /* q2-q8: matching letters */
+  exD:  {},  /* selected: array of ticked factors */
+  exE:  {}   /* q1: open reflection */
+};
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('step-' + n).classList.add('active');
+  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  restoreStep(n);
+  var meta = document.getElementById('header-meta');
+  if (n === 0) { meta.style.display = 'none'; return; }
+  meta.style.display = 'block';
+  document.getElementById('header-name').textContent = state.name + (state.cls ? ' — ' + state.cls : '');
+  var labels = ['A', 'B', 'C', 'D', 'E'];
+  document.getElementById('header-step').textContent = n < TOTAL_STEPS
+    ? 'Exercise ' + labels[n - 1] + ' of ' + (TOTAL_STEPS - 1)
+    : 'Submit';
+}
+
+function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
+
+function nextStep(n) {
+  if (!validateStep(n)) {
+    var err = document.getElementById('step' + n + '-error');
+    if (err) { err.textContent = 'Please answer the required questions before continuing.'; err.classList.add('show'); }
+    return;
+  }
+  clearErr(n);
+  saveStep(n);
+  if (n === TOTAL_STEPS - 1) { buildSummary(); }
+  showStep(n + 1);
+}
+
+function clearErr(n) {
+  var err = document.getElementById('step' + n + '-error');
+  if (err) err.classList.remove('show');
+}
+
+function startExercises() {
+  var name = g('inp-name'), cls = g('inp-class');
+  var err = document.getElementById('welcome-error');
+  if (!name || !cls) {
+    err.textContent = 'Please enter both your name and your class.';
+    err.classList.add('show');
+    return;
+  }
+  err.classList.remove('show');
+  state.name = name;
+  state.cls  = cls;
+  showStep(1);
+}
+
+/* ============================================================
+   VALIDATION
+============================================================ */
+function validateStep(n) {
+  switch (n) {
+    case 1: return !!(getRadio('exA-q1') && getRadio('exA-q2') && getRadio('exA-q3') && getRadio('exA-q4'));
+    case 2: return val('exB-q1') && val('exB-q2') && val('exB-q3') && val('exB-q4') && val('exB-q5') && val('exB-q6') && val('exB-q7') && val('exB-q8');
+    case 3: return val('exC-q2') && val('exC-q3') && val('exC-q4') && val('exC-q5') && val('exC-q6') && val('exC-q7') && val('exC-q8');
+    case 4: return getChecked('exD-o', 12).length > 0;
+    case 5: return val('exE-q1');
+    default: return true;
+  }
+}
+
+/* ============================================================
+   CHECK ANSWERS
+============================================================ */
+function checkAnswers(n) {
+  var feedback = document.getElementById('step' + n + '-check');
+  if (!feedback) { alert('Error: feedback element not found'); return; }
+
+  if (!validateStep(n)) {
+    feedback.textContent = 'Please answer all questions before checking.';
+    feedback.style.display = 'block';
+    feedback.style.background = '#fde8e8';
+    feedback.style.color = '#721c24';
+    return;
+  }
+
+  var correct = 0, total = 0;
+
+  if (n === 1) {
+    var keys = ANSWER_KEYS.exA;
+    total = 4;
+    for (var i = 1; i <= 4; i++) {
+      var ans = getRadio('exA-q' + i);
+      if (ans === keys['q' + i]) correct++;
+    }
+  }
+  else if (n === 2) {
+    var keys = ANSWER_KEYS.exB;
+    total = 8;
+    var normalize = function(s) { return s.toLowerCase().trim().replace(/\s+/g, ' '); };
+    for (var i = 1; i <= 8; i++) {
+      var ans = normalize(g('exB-q' + i));
+      var key = normalize(keys['q' + i]);
+      if (ans === key || ans.indexOf(key) !== -1 || key.indexOf(ans) !== -1) correct++;
+    }
+  }
+  else if (n === 3) {
+    var keys = ANSWER_KEYS.exC;
+    total = 7;
+    for (var i = 2; i <= 8; i++) {
+      if (g('exC-q' + i) === keys['q' + i]) correct++;
+    }
+  }
+  else if (n === 4) {
+    var keys = ANSWER_KEYS.exD.correct;
+    var checked = getChecked('exD-o', 12);
+    total = keys.length;
+    correct = 0;
+    for (var i = 0; i < checked.length; i++) {
+      if (keys.indexOf(checked[i]) !== -1) correct++;
+    }
+  }
+
+  var pct = Math.round(correct / total * 100);
+  var msg = correct + ' of ' + total + ' correct (' + pct + '%) — ';
+  var bgColor, textColor;
+
+  if (pct === 100) {
+    msg += '🎉 Perfect!';
+    bgColor = '#d4edda'; textColor = '#155724';
+  } else if (pct >= 75) {
+    msg += '👍 Good work!';
+    bgColor = '#d4edda'; textColor = '#155724';
+  } else if (pct >= 50) {
+    msg += '⚠️ Review your answers';
+    bgColor = '#fff3cd'; textColor = '#856404';
+  } else {
+    msg += '❌ Try again';
+    bgColor = '#fde8e8'; textColor = '#721c24';
+  }
+
+  feedback.textContent = msg;
+  feedback.style.display = 'block';
+  feedback.style.background = bgColor;
+  feedback.style.color = textColor;
+}
+
+/* ============================================================
+   SAVE / RESTORE
+============================================================ */
+function saveStep(n) {
+  switch (n) {
+    case 1:
+      state.exA = { q1: getRadio('exA-q1'), q2: getRadio('exA-q2'), q3: getRadio('exA-q3'), q4: getRadio('exA-q4') };
+      break;
+    case 2:
+      state.exB = {
+        q1: g('exB-q1'), q2: g('exB-q2'), q3: g('exB-q3'), q4: g('exB-q4'),
+        q5: g('exB-q5'), q6: g('exB-q6'), q7: g('exB-q7'), q8: g('exB-q8')
+      };
+      break;
+    case 3:
+      state.exC = {
+        q2: g('exC-q2'), q3: g('exC-q3'), q4: g('exC-q4'), q5: g('exC-q5'),
+        q6: g('exC-q6'), q7: g('exC-q7'), q8: g('exC-q8')
+      };
+      break;
+    case 4:
+      state.exD = { selected: getChecked('exD-o', 12) };
+      break;
+    case 5:
+      state.exE = { q1: g('exE-q1') };
+      break;
+  }
+}
+
+function restoreStep(n) {
+  switch (n) {
+    case 1:
+      setRadio('exA-q1', state.exA.q1); setRadio('exA-q2', state.exA.q2);
+      setRadio('exA-q3', state.exA.q3); setRadio('exA-q4', state.exA.q4);
+      break;
+    case 2:
+      set('exB-q1', state.exB.q1); set('exB-q2', state.exB.q2); set('exB-q3', state.exB.q3); set('exB-q4', state.exB.q4);
+      set('exB-q5', state.exB.q5); set('exB-q6', state.exB.q6); set('exB-q7', state.exB.q7); set('exB-q8', state.exB.q8);
+      break;
+    case 3:
+      set('exC-q2', state.exC.q2); set('exC-q3', state.exC.q3); set('exC-q4', state.exC.q4); set('exC-q5', state.exC.q5);
+      set('exC-q6', state.exC.q6); set('exC-q7', state.exC.q7); set('exC-q8', state.exC.q8);
+      break;
+    case 4:
+      setChecked('exD-o', 12, state.exD.selected);
+      break;
+    case 5:
+      set('exE-q1', state.exE.q1);
+      break;
+  }
+}
+
+/* ============================================================
+   HELPERS
+============================================================ */
+function g(id)       { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+function set(id, v)  { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
+function val(id)     { return g(id).length > 0; }
+function esc(str)    { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
+
+function getRadio(name) {
+  var els = document.getElementsByName(name);
+  for (var i = 0; i < els.length; i++) { if (els[i].checked) return els[i].value; }
+  return '';
+}
+function setRadio(name, v) {
+  var els = document.getElementsByName(name);
+  for (var i = 0; i < els.length; i++) { els[i].checked = (els[i].value === v); }
+}
+function getChecked(prefix, count) {
+  var arr = [];
+  for (var i = 1; i <= count; i++) {
+    var el = document.getElementById(prefix + i);
+    if (el && el.checked) arr.push(el.dataset.label);
+  }
+  return arr;
+}
+function setChecked(prefix, count, arr) {
+  arr = arr || [];
+  for (var i = 1; i <= count; i++) {
+    var el = document.getElementById(prefix + i);
+    if (el) el.checked = arr.indexOf(el.dataset.label) > -1;
+  }
+}
+
+/* ============================================================
+   SUMMARY
+============================================================ */
+function buildSummary() {
+  var letterMap = { a: 'a) executive', b: 'b) models', c: 'c) effect', d: 'd) company', f: 'f) style', g: 'g) approach', h: 'h) quarter' };
+  function mapLetter(v) { return letterMap[v] || '(no answer)'; }
+
+  var rows = [
+    { ex: 'Exercise A — True/False', q: '1. The fall of the Mercedes luxury brand was not as severe as other brands.', a: state.exA.q1 },
+    { ex: 'Exercise A — True/False', q: "2. In 2002, Mercedes' losses were its first for three decades.", a: state.exA.q2 },
+    { ex: 'Exercise A — True/False', q: '3. In 2002, Mercedes cars were famous for their reliability.', a: state.exA.q3 },
+    { ex: 'Exercise A — True/False', q: '4. Dieter Zetsche is the boss of Mercedes and Daimler.', a: state.exA.q4 },
+
+    { ex: 'Exercise B — Vocabulary', q: '1. sudden and surprising', a: state.exB.q1 },
+    { ex: 'Exercise B — Vocabulary', q: '2. a period of 10 years', a: state.exB.q2 },
+    { ex: 'Exercise B — Vocabulary', q: '3. failing', a: state.exB.q3 },
+    { ex: 'Exercise B — Vocabulary', q: '4. the first company to develop new methods of doing something', a: state.exB.q4 },
+    { ex: 'Exercise B — Vocabulary', q: '5. someone that you compete with', a: state.exB.q5 },
+    { ex: 'Exercise B — Vocabulary', q: '6. jealousy', a: state.exB.q6 },
+    { ex: 'Exercise B — Vocabulary', q: '7. a complete change from a bad situation to a good one', a: state.exB.q7 },
+    { ex: 'Exercise B — Vocabulary', q: "8. the financial result of a company's business", a: state.exB.q8 },
+
+    { ex: 'Exercise C — Word Partnerships', q: '1. luxury (example)', a: 'e) brand' },
+    { ex: 'Exercise C — Word Partnerships', q: '2. chief', a: mapLetter(state.exC.q2) },
+    { ex: 'Exercise C — Word Partnerships', q: '3. parent', a: mapLetter(state.exC.q3) },
+    { ex: 'Exercise C — Word Partnerships', q: '4. fourth', a: mapLetter(state.exC.q4) },
+    { ex: 'Exercise C — Word Partnerships', q: '5. management', a: mapLetter(state.exC.q5) },
+    { ex: 'Exercise C — Word Partnerships', q: '6. fuel-efficient', a: mapLetter(state.exC.q6) },
+    { ex: 'Exercise C — Word Partnerships', q: '7. team', a: mapLetter(state.exC.q7) },
+    { ex: 'Exercise C — Word Partnerships', q: '8. dramatic', a: mapLetter(state.exC.q8) },
+
+    { ex: 'Exercise D — Comprehension', q: 'Factors that helped Mercedes improve', a: (state.exD.selected || []).join(', ') || '(none selected)' },
+
+    { ex: 'Exercise E — Reflection', q: 'What other actions would you have taken as Mr Zetsche?', a: state.exE.q1 }
+  ];
+
+  var html = '<div class="submit-summary">'
+    + '<div class="summary-row"><div class="summary-ex">Student</div>'
+    + '<div class="summary-q">' + esc(state.name) + ' — ' + esc(state.cls) + '</div></div>';
+  rows.forEach(function(r) {
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div>'
+      + '<div class="summary-q">' + esc(r.q) + '</div>'
+      + '<div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+}
+
+/* ============================================================
+   EMAIL FALLBACK BODY
+============================================================ */
+function buildEmailBody() {
+  var letterMap = { a: 'a) executive', b: 'b) models', c: 'c) effect', d: 'd) company', f: 'f) style', g: 'g) approach', h: 'h) quarter' };
+  function mapLetter(v) { return letterMap[v] || '(no answer)'; }
+
+  return 'Exercise: ' + UNIT
+    + '\nStudent: ' + state.name
+    + '\nClass:   ' + state.cls
+    + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
+    + '\n\n--- Exercise A: True/False ---'
+    + '\n1. ' + (state.exA.q1 || '(none)')
+    + '\n2. ' + (state.exA.q2 || '(none)')
+    + '\n3. ' + (state.exA.q3 || '(none)')
+    + '\n4. ' + (state.exA.q4 || '(none)')
+    + '\n\n--- Exercise B: Vocabulary ---'
+    + '\n1. ' + (state.exB.q1 || '(none)')
+    + '\n2. ' + (state.exB.q2 || '(none)')
+    + '\n3. ' + (state.exB.q3 || '(none)')
+    + '\n4. ' + (state.exB.q4 || '(none)')
+    + '\n5. ' + (state.exB.q5 || '(none)')
+    + '\n6. ' + (state.exB.q6 || '(none)')
+    + '\n7. ' + (state.exB.q7 || '(none)')
+    + '\n8. ' + (state.exB.q8 || '(none)')
+    + '\n\n--- Exercise C: Word Partnerships ---'
+    + '\n1. luxury = e) brand (example)'
+    + '\n2. chief = ' + mapLetter(state.exC.q2)
+    + '\n3. parent = ' + mapLetter(state.exC.q3)
+    + '\n4. fourth = ' + mapLetter(state.exC.q4)
+    + '\n5. management = ' + mapLetter(state.exC.q5)
+    + '\n6. fuel-efficient = ' + mapLetter(state.exC.q6)
+    + '\n7. team = ' + mapLetter(state.exC.q7)
+    + '\n8. dramatic = ' + mapLetter(state.exC.q8)
+    + '\n\n--- Exercise D: Comprehension ---'
+    + '\n' + ((state.exD.selected || []).join('\n') || '(none selected)')
+    + '\n\n--- Exercise E: Reflection ---'
+    + '\n' + (state.exE.q1 || '(none)');
+}
+
+/* ============================================================
+   SUBMIT TO GOOGLE SHEET
+============================================================ */
+function submitToSheet() {
+  buildSummary();
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  var payload = { name: state.name, cls: state.cls, unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD, exE: state.exE };
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+  }).then(function() {
+    btn.style.display = 'none';
+    document.getElementById('submit-success').style.display = 'block';
+    document.getElementById('submit-fallback').style.display = 'block';
+  }).catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Submit to Teacher';
+    document.getElementById('submit-fallback').style.display = 'block';
+  });
+}
+
+function submitByEmail() {
+  var a = document.createElement('a');
+  a.href = 'mailto:' + TEACHER_EMAIL
+    + '?subject=' + encodeURIComponent(UNIT + ' - ' + state.name + ' - ' + state.cls)
+    + '&body='    + encodeURIComponent(buildEmailBody());
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function() { document.body.removeChild(a); }, 100);
+}
+
+function copyAnswers() {
+  var body = buildEmailBody();
+  navigator.clipboard.writeText(body)
+    .then(function() { alert('Answers copied! Paste them into an email to your teacher.'); })
+    .catch(function() { prompt('Copy this text:', body); });
+}
+
+/* ============================================================
+   INIT
+============================================================ */
+document.addEventListener('DOMContentLoaded', function() {
+  showStep(0);
+});
+</script>
+
+<script>
+/* ── Paste-block: prevent pasting into answer fields ── */
+document.addEventListener('paste', function(e) {
+  var t = e.target;
+  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
+    e.preventDefault();
+    var msg = document.createElement('div');
+    msg.textContent = 'Pasting is not allowed';
+    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    document.body.appendChild(msg);
+    setTimeout(function() {
+      msg.style.opacity = '0';
+      setTimeout(function() { msg.remove(); }, 400);
+    }, 2000);
+  }
+});
+
+/* ── Copy-block: prevent copying text from the page ── */
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  var msg = document.createElement('div');
+  msg.textContent = '🚫 Copying is not allowed';
+  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+  document.body.appendChild(msg);
+  setTimeout(function() {
+    msg.style.opacity = '0';
+    setTimeout(function() { msg.remove(); }, 400);
+  }, 2000);
+});
+</script>
+
+</body>
+</html>
