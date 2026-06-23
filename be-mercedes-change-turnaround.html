@@ -268,7 +268,9 @@
     </div>
 
     <div id="step1-error" class="feedback err"></div>
+    <div id="step1-check" class="feedback" style="display:none"></div>
     <div class="btn-row">
+      <button class="btn btn-outline" onclick="checkAnswers(1)">✓ Check Answers</button>
       <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
       <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B →</button>
     </div>
@@ -321,7 +323,9 @@
     </div>
 
     <div id="step2-error" class="feedback err"></div>
+    <div id="step2-check" class="feedback" style="display:none"></div>
     <div class="btn-row">
+      <button class="btn btn-outline" onclick="checkAnswers(2)">✓ Check Answers</button>
       <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
       <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C →</button>
     </div>
@@ -456,7 +460,9 @@
     <p class="form-hint" style="margin-bottom:1rem">Now check your answers by re-reading the article (use Back).</p>
 
     <div id="step3-error" class="feedback err"></div>
+    <div id="step3-check" class="feedback" style="display:none"></div>
     <div class="btn-row">
+      <button class="btn btn-outline" onclick="checkAnswers(3)">✓ Check Answers</button>
       <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
       <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise D →</button>
     </div>
@@ -491,7 +497,9 @@
     </div>
 
     <div id="step4-error" class="feedback err"></div>
+    <div id="step4-check" class="feedback" style="display:none"></div>
     <div class="btn-row">
+      <button class="btn btn-outline" onclick="checkAnswers(4)">✓ Check Answers</button>
       <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
       <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(4)">Continue to Exercise E →</button>
     </div>
@@ -561,6 +569,16 @@ var UNIT          = 'be-mercedes-change-turnaround';
 var TOTAL_STEPS   = 6;   /* 5 exercise steps + 1 submit step */
 var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbwHUzZTHYccgb_niNIS5KLBd8NLbtNOwKd0X_NYY-lbWAQkepy-rtHxuNvaD9O1SPha/exec';
 var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+
+/* ============================================================
+   ANSWER KEYS FOR AUTO-CHECKING
+============================================================ */
+var ANSWER_KEYS = {
+  exA: { q1: 'False', q2: 'False', q3: 'False', q4: 'True' },
+  exB: { q1: 'dramatic', q2: 'decade', q3: 'worst-performing', q4: 'trailblazer', q5: 'rival', q6: 'envy', q7: 'turnaround', q8: 'bottom line' },
+  exC: { q2: 'a', q3: 'd', q4: 'h', q5: 'f', q6: 'b', q7: 'g', q8: 'c' },
+  exD: { correct: ['Being hard', 'Using Mr Zetsche\'s operational experience', 'Cutting jobs', 'Improving the looks of new Mercedes cars', 'Producing new models', 'Using a team approach'] }
+};
 
 /* ============================================================
    STATE
@@ -639,6 +657,80 @@ function validateStep(n) {
     case 5: return val('exE-q1');
     default: return true;
   }
+}
+
+/* ============================================================
+   CHECK ANSWERS
+============================================================ */
+function checkAnswers(n) {
+  var feedback = document.getElementById('step' + n + '-check');
+  if (!validateStep(n)) {
+    feedback.textContent = 'Please answer all questions before checking.';
+    feedback.classList.remove('ok', 'warn');
+    feedback.classList.add('err', 'show');
+    return;
+  }
+
+  var correct = 0, total = 0;
+
+  if (n === 1) {
+    var keys = ANSWER_KEYS.exA;
+    total = 4;
+    for (var i = 1; i <= 4; i++) {
+      var ans = getRadio('exA-q' + i);
+      if (ans === keys['q' + i]) correct++;
+    }
+  }
+  else if (n === 2) {
+    var keys = ANSWER_KEYS.exB;
+    total = 8;
+    var normalize = function(s) { return s.toLowerCase().trim().replace(/\s+/g, ' '); };
+    for (var i = 1; i <= 8; i++) {
+      var ans = normalize(g('exB-q' + i));
+      var key = normalize(keys['q' + i]);
+      if (ans === key || ans.indexOf(key) !== -1 || key.indexOf(ans) !== -1) correct++;
+    }
+  }
+  else if (n === 3) {
+    var keys = ANSWER_KEYS.exC;
+    total = 7;
+    for (var i = 2; i <= 8; i++) {
+      if (g('exC-q' + i) === keys['q' + i]) correct++;
+    }
+  }
+  else if (n === 4) {
+    var keys = ANSWER_KEYS.exD.correct;
+    var checked = getChecked('exD-o', 12);
+    total = keys.length;
+    correct = 0;
+    for (var i = 0; i < checked.length; i++) {
+      if (keys.indexOf(checked[i]) !== -1) correct++;
+    }
+  }
+
+  var pct = Math.round(correct / total * 100);
+  var msg = correct + ' of ' + total + ' correct (' + pct + '%) — ';
+
+  if (pct === 100) {
+    msg += '🎉 Perfect!';
+    feedback.classList.add('ok');
+  } else if (pct >= 75) {
+    msg += '👍 Good work!';
+    feedback.classList.add('ok');
+  } else if (pct >= 50) {
+    msg += '⚠️ Review your answers';
+    feedback.classList.add('warn');
+  } else {
+    msg += '❌ Try again';
+    feedback.classList.add('err');
+  }
+
+  feedback.textContent = msg;
+  feedback.classList.remove('warn', 'err', 'ok');
+  if (pct >= 75) feedback.classList.add('ok');
+  else if (pct >= 50) feedback.classList.add('warn');
+  else feedback.classList.add('err');
+  feedback.classList.add('show');
 }
 
 /* ============================================================
