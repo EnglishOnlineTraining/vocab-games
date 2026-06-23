@@ -664,10 +664,13 @@ function validateStep(n) {
 ============================================================ */
 function checkAnswers(n) {
   var feedback = document.getElementById('step' + n + '-check');
+  if (!feedback) { alert('Error: feedback element not found'); return; }
+
   if (!validateStep(n)) {
     feedback.textContent = 'Please answer all questions before checking.';
-    feedback.classList.remove('ok', 'warn');
-    feedback.classList.add('err', 'show');
+    feedback.style.display = 'block';
+    feedback.style.background = '#fde8e8';
+    feedback.style.color = '#721c24';
     return;
   }
 
@@ -710,27 +713,26 @@ function checkAnswers(n) {
 
   var pct = Math.round(correct / total * 100);
   var msg = correct + ' of ' + total + ' correct (' + pct + '%) — ';
+  var bgColor, textColor;
 
   if (pct === 100) {
     msg += '🎉 Perfect!';
-    feedback.classList.add('ok');
+    bgColor = '#d4edda'; textColor = '#155724';
   } else if (pct >= 75) {
     msg += '👍 Good work!';
-    feedback.classList.add('ok');
+    bgColor = '#d4edda'; textColor = '#155724';
   } else if (pct >= 50) {
     msg += '⚠️ Review your answers';
-    feedback.classList.add('warn');
+    bgColor = '#fff3cd'; textColor = '#856404';
   } else {
     msg += '❌ Try again';
-    feedback.classList.add('err');
+    bgColor = '#fde8e8'; textColor = '#721c24';
   }
 
   feedback.textContent = msg;
-  feedback.classList.remove('warn', 'err', 'ok');
-  if (pct >= 75) feedback.classList.add('ok');
-  else if (pct >= 50) feedback.classList.add('warn');
-  else feedback.classList.add('err');
-  feedback.classList.add('show');
+  feedback.style.display = 'block';
+  feedback.style.background = bgColor;
+  feedback.style.color = textColor;
 }
 
 /* ============================================================
