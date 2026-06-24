@@ -435,6 +435,8 @@ document.addEventListener('paste',e=>{
   document.getElementById('pa-disp').textContent=pasteN;
   flash('alert-paste');
 });
+/* Native copy event (covers right-click "Copy" / menu, not just Ctrl/Cmd+C) */
+document.addEventListener('copy',e=>{ e.preventDefault(); });
 document.addEventListener('keydown',e=>{
   if(!t0)return;
   // Block Ctrl/Cmd+V
