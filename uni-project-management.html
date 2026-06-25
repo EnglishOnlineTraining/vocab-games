@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Management: Fine-Tuning Your Schedule | englishonline.training</title>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:    #1a3a5c;
+      --gold:    #c9a227;
+      --gold-lt: #f5e6b0;
+      --teal:    #2b7a78;
+      --red:     #c0392b;
+      --green:   #27ae60;
+      --bg:      #f7f9fc;
+      --card:    #ffffff;
+      --text:    #1d2b3a;
+      --muted:   #6b7a8d;
+      --border:  #dce3ec;
+      --radius:  12px;
+      --shadow:  0 2px 16px rgba(26,58,92,.1);
+      --font:    'Segoe UI', system-ui, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
+
+    .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
+    .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
+    .header-meta { font-size: .78rem; text-align: right; opacity: .9; }
+    .header-meta strong { display: block; color: var(--gold); }
+    .progress-track { height: 6px; background: rgba(255,255,255,.2); }
+    .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
+
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+
+    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
+    .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+    .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
+
+    .reading-text { font-size: .93rem; line-height: 1.85; color: var(--text); }
+    .reading-text p { margin-bottom: .85rem; }
+    .reading-text p:last-child { margin-bottom: 0; }
+    .reading-text h4 { color: var(--blue); font-size: .85rem; text-transform: uppercase; letter-spacing: .04em; margin: 1rem 0 .5rem; }
+
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+    .form-input, .form-textarea, .form-select {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+      padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
+      color: var(--text); background: #fff; transition: border-color .2s;
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus { outline: none; border-color: var(--blue); }
+    .form-textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+    .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+
+    .word-bank { background: var(--gold-lt); border: 1.5px solid var(--gold); border-radius: 8px; padding: .75rem 1rem; margin-bottom: 1.25rem; }
+    .word-bank strong { display: block; color: var(--blue); margin-bottom: .5rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; }
+    .word-bank span { display: inline-block; margin: .2rem .3rem; background: var(--blue); color: #fff; border-radius: 4px; padding: .18rem .55rem; font-size: .8rem; font-weight: 600; }
+
+    .statement-item, .def-item, .tech-item { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: .85rem; background: #fafbfc; }
+    .statement-num, .def-num, .tech-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 800; flex-shrink: 0; margin-bottom: .5rem; }
+    .statement-text { font-size: .92rem; color: var(--text); margin-bottom: .65rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); }
+    .row-2 { display: grid; grid-template-columns: 160px 1fr; gap: .6rem; align-items: start; }
+
+    .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
+    .feedback.show { display: block; }
+    .feedback.ok   { background: #d4edda; color: #155724; }
+    .feedback.warn { background: #fff3cd; color: #856404; }
+    .feedback.err  { background: #fde8e8; color: #721c24; }
+
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
+    .btn-primary:hover { background: #15304f; }
+    .btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
+    .btn-gold:hover { background: #b8911f; }
+    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+    .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+    .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
+    .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
+    .welcome-title { font-size: 1.7rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+    .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+    .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; }
+    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
+    .ov-card.locked { opacity: .5; }
+    .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+
+    .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
+    .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
+    .summary-a  { color: var(--text); white-space: pre-wrap; }
+
+    .copy-block { width: 100%; min-height: 260px; border: 1.5px solid var(--border); border-radius: 8px; padding: .85rem; font-family: 'Courier New', monospace; font-size: .8rem; line-height: 1.5; color: var(--text); background: #fafbfc; resize: vertical; }
+
+    @media (max-width: 480px) {
+      .ex-title { font-size: 1.2rem; }
+      .btn { padding: .65rem 1.1rem; }
+      .welcome-title { font-size: 1.3rem; }
+      .row-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Exercise A of 7</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+
+
+<!-- STEP 0 — WELCOME -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">📊</div>
+      <h1 class="welcome-title">Project Management: Fine-Tuning Your Schedule</h1>
+      <p class="welcome-sub">A solo Business English task: discuss project planning, read about scheduling techniques, and practise vocabulary and style in context.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">💬</div><strong>A — Discuss</strong>Delegating work</div>
+      <div class="ov-card locked"><div class="ov-icon">🤔</div><strong>B — Agree/disagree</strong>Project planning statements</div>
+      <div class="ov-card locked"><div class="ov-icon">📖</div><strong>C — Reading</strong>Fine-tune your schedule</div>
+      <div class="ov-card locked"><div class="ov-icon">🔤</div><strong>D — Vocabulary</strong>Match words to definitions</div>
+      <div class="ov-card locked"><div class="ov-icon">🎭</div><strong>E — Style</strong>Formal vs informal</div>
+      <div class="ov-card locked"><div class="ov-icon">✍️</div><strong>F — Writer's craft</strong>Techniques &amp; effect</div>
+      <div class="ov-card locked"><div class="ov-icon">🎬</div><strong>G — Roleplay</strong>How (not) to do it</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your module / group</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. Business English BA3" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 1 — EXERCISE A -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">Discussion</h2>
+    <p class="ex-subtitle">Think about these questions and write a short answer to each (2–4 sentences).</p>
+
+    <div class="card">
+      <div class="card-title">Task</div>
+      <div class="form-group">
+        <label class="form-label" for="exA-q1">1. How important is it for managers to know how to delegate work?</label>
+        <textarea class="form-textarea" id="exA-q1" placeholder="Write your answer here..." rows="4"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exA-q2">2. What advice would you give to someone with a heavy workload?</label>
+        <textarea class="form-textarea" id="exA-q2" placeholder="Write your answer here..." rows="4"></textarea>
+      </div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 2 — EXERCISE B -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B</span>
+    <h2 class="ex-title">Agree or disagree?</h2>
+    <p class="ex-subtitle">Do you agree with these statements related to project planning? Choose a response and briefly explain why / why not.</p>
+
+    <div class="card">
+      <div class="card-title">Statements</div>
+
+      <div class="statement-item">
+        <div class="statement-num">1</div>
+        <div class="statement-text">One minor aspect of project planning is knowing which tasks are dependent on other ones.</div>
+        <div class="row-2">
+          <select class="form-select" id="exB-s1"><option value="">— Choose —</option><option>Agree</option><option>Disagree</option><option>Not sure</option></select>
+          <input class="form-input" type="text" id="exB-r1" placeholder="Why? / Why not?">
+        </div>
+      </div>
+
+      <div class="statement-item">
+        <div class="statement-num">2</div>
+        <div class="statement-text">Project managers often set their expectations too high, and clients complain that timelines are unrealistic.</div>
+        <div class="row-2">
+          <select class="form-select" id="exB-s2"><option value="">— Choose —</option><option>Agree</option><option>Disagree</option><option>Not sure</option></select>
+          <input class="form-input" type="text" id="exB-r2" placeholder="Why? / Why not?">
+        </div>
+      </div>
+
+      <div class="statement-item">
+        <div class="statement-num">3</div>
+        <div class="statement-text">Periods of non-productivity or inactivity are unacceptable at any time during a project.</div>
+        <div class="row-2">
+          <select class="form-select" id="exB-s3"><option value="">— Choose —</option><option>Agree</option><option>Disagree</option><option>Not sure</option></select>
+          <input class="form-input" type="text" id="exB-r3" placeholder="Why? / Why not?">
+        </div>
+      </div>
+
+      <div class="statement-item">
+        <div class="statement-num">4</div>
+        <div class="statement-text">All the team should devote as many hours as necessary to complete critical tasks.</div>
+        <div class="row-2">
+          <select class="form-select" id="exB-s4"><option value="">— Choose —</option><option>Agree</option><option>Disagree</option><option>Not sure</option></select>
+          <input class="form-input" type="text" id="exB-r4" placeholder="Why? / Why not?">
+        </div>
+      </div>
+
+      <div class="statement-item">
+        <div class="statement-num">5</div>
+        <div class="statement-text">One way of speeding up a project is getting more than one person to work on a critical task at the same time.</div>
+        <div class="row-2">
+          <select class="form-select" id="exB-s5"><option value="">— Choose —</option><option>Agree</option><option>Disagree</option><option>Not sure</option></select>
+          <input class="form-input" type="text" id="exB-r5" placeholder="Why? / Why not?">
+        </div>
+      </div>
+
+      <div class="statement-item">
+        <div class="statement-num">6</div>
+        <div class="statement-text">By focusing on key tasks, a project manager can ensure the project is delivered on time or is finished ahead of schedule.</div>
+        <div class="row-2">
+          <select class="form-select" id="exB-s6"><option value="">— Choose —</option><option>Agree</option><option>Disagree</option><option>Not sure</option></select>
+          <input class="form-input" type="text" id="exB-r6" placeholder="Why? / Why not?">
+        </div>
+      </div>
+
+      <div class="statement-item">
+        <div class="statement-num">7</div>
+        <div class="statement-text">The project manager's aim should be to complete the project as soon as possible without compromising the original schedule.</div>
+        <div class="row-2">
+          <select class="form-select" id="exB-s7"><option value="">— Choose —</option><option>Agree</option><option>Disagree</option><option>Not sure</option></select>
+          <input class="form-input" type="text" id="exB-r7" placeholder="Why? / Why not?">
+        </div>
+      </div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 3 — EXERCISE C -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise C</span>
+    <h2 class="ex-title">Reading</h2>
+    <p class="ex-subtitle">Read the article, then rewrite your Exercise B statements if necessary, according to the writer's ideas.</p>
+
+    <div class="card">
+      <div class="card-title">Fine-tune your project schedule</div>
+      <div class="reading-text">
+        <p>Do you have a staff member sitting idly in the midst of the other busy ones? If so, your project schedule might need fine-tuning. One of the most common problems that project managers weep about is 'unrealistic timelines', a common consequence of clients having set their expectations too high. Ironically, there are times in a project when a staff member is waiting for a colleague to finish so he can start his own task. Does the project manager shout foul and blame other people? Chances are, the project schedule needs a second look.</p>
+        <p>The basic foundation of managing a project is creating an efficient and realistic project schedule. During project planning, the project manager is given the chance to give it some fine-tuning. Given that most projects do not have the luxury of time, the project manager's objective is to create the shortest schedule possible without sacrificing its scope and quality.</p>
+        <h4>The Critical Path</h4>
+        <p>If you want to deliver on time, or shorten the project duration, focus your attention on the critical path. When the path is shortened, the project is finished early. When the critical path is maintained, the project is finished on time. When the critical path is extended, the project is delayed. It cannot be overemphasised here that if there are any tasks in the schedule that a manager should pay close attention to, it is always those in the critical path.</p>
+        <p>It is quite funny to note that some managers simply stretch the bars in the Gantt chart so that all tasks finish in parallel; doing so simply clouds the entire project schedule. Doing the right things and doing them right are two important ingredients to successful project planning. Here are some right things to do:</p>
+        <p>1. Estimate the tasks individually. Make a list of tasks first. Do not group them directly into the Gantt chart, because doing so may influence the estimates and the timeline.<br>2. Identify the task dependencies. Some tasks cannot start until prior tasks are finished. Obviously, you can't install a roof over a house with no walls.<br>3. Create your Gantt chart. Make sure you use the original estimates and adjust the task based on dependencies. Don't try to schedule putting on the roof and building walls in parallel.<br>4. Identify your critical path(s). Find the longest path of tasks in the Gantt chart. Take note that you may have more than one critical path in your schedule; and not all tasks are part of the critical path.</p>
+        <h4>Slack Time</h4>
+        <p>Slack time, as the name implies, is the time when one can relax, delay a task but still finish the project on time. Managers tend to remove it from the schedule to impress their bosses or clients. While this may look good on the surface, there are consequences when it is not done properly. For starters, accept the fact that slack times are a normal phenomenon in project schedules. The role of a manager is to identify and minimise them. Once there is acceptance, start thinking of ways to reduce slack times and improve productivity.</p>
+        <h4>Crashing</h4>
+        <p>Crashing is the process of shortening delivery time. It is used when stakeholders ask for a faster delivery without reducing the scope of work. For one, do not crash tasks that are strictly interdependent on one another, such as applying a second coat of paint. Note that crashing works only on tasks in the critical path because reducing time on non-critical tasks will not affect the project delivery time.</p>
+        <p>You can put two people to work in parallel and have the task completed in half the time. Or you can assign a more productive resource who can finish the work earlier. In any case, make sure you assess the risks. Also, make sure you are not over-assigning critical tasks to your best team member. It is mindless to assume that your best resource can work 16 hours a day for three weeks.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Rewrite your statements from Exercise B (only where the article changes your view)</div>
+      <div class="form-group"><label class="form-label" for="exC-r1">1.</label><textarea class="form-textarea" id="exC-r1" rows="2" placeholder="Rewrite, or write 'no change' if your view stays the same"></textarea></div>
+      <div class="form-group"><label class="form-label" for="exC-r2">2.</label><textarea class="form-textarea" id="exC-r2" rows="2" placeholder="Rewrite, or write 'no change' if your view stays the same"></textarea></div>
+      <div class="form-group"><label class="form-label" for="exC-r3">3.</label><textarea class="form-textarea" id="exC-r3" rows="2" placeholder="Rewrite, or write 'no change' if your view stays the same"></textarea></div>
+      <div class="form-group"><label class="form-label" for="exC-r4">4.</label><textarea class="form-textarea" id="exC-r4" rows="2" placeholder="Rewrite, or write 'no change' if your view stays the same"></textarea></div>
+      <div class="form-group"><label class="form-label" for="exC-r5">5.</label><textarea class="form-textarea" id="exC-r5" rows="2" placeholder="Rewrite, or write 'no change' if your view stays the same"></textarea></div>
+      <div class="form-group"><label class="form-label" for="exC-r6">6.</label><textarea class="form-textarea" id="exC-r6" rows="2" placeholder="Rewrite, or write 'no change' if your view stays the same"></textarea></div>
+      <div class="form-group"><label class="form-label" for="exC-r7">7.</label><textarea class="form-textarea" id="exC-r7" rows="2" placeholder="Rewrite, or write 'no change' if your view stays the same"></textarea></div>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise D →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 4 — EXERCISE D -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise D</span>
+    <h2 class="ex-title">Vocabulary: Match the words</h2>
+    <p class="ex-subtitle">Match a word or expression from the article to each definition below. Scroll back to Exercise C to re-read the article if needed.</p>
+
+    <div class="word-bank">
+      <strong>Word bank</strong>
+      <span>idly</span> <span>weep</span> <span>shout foul</span> <span>chances are</span> <span>fine-tuning</span> <span>scope</span> <span>clouds</span> <span>slack</span> <span>for one</span> <span>over-assigning</span> <span>mindless</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Definitions</div>
+
+      <div class="def-item"><div class="def-num">1</div><div class="statement-text">Making very small changes to something so that it works as well as possible.</div><input class="form-input" type="text" id="exD-w1" placeholder="Your answer"></div>
+      <div class="def-item"><div class="def-num">2</div><div class="statement-text">The range that an activity, subject, etc. deals with.</div><input class="form-input" type="text" id="exD-w2" placeholder="Your answer"></div>
+      <div class="def-item"><div class="def-num">3</div><div class="statement-text">Used to give an example of someone or something.</div><input class="form-input" type="text" id="exD-w3" placeholder="Your answer"></div>
+      <div class="def-item"><div class="def-num">4</div><div class="statement-text">It is likely.</div><input class="form-input" type="text" id="exD-w4" placeholder="Your answer"></div>
+      <div class="def-item"><div class="def-num">5</div><div class="statement-text">Completely stupid and without any purpose.</div><input class="form-input" type="text" id="exD-w5" placeholder="Your answer"></div>
+      <div class="def-item"><div class="def-num">6</div><div class="statement-text">Makes a subject or problem more difficult to understand, especially by introducing unnecessary ideas or terms.</div><input class="form-input" type="text" id="exD-w6" placeholder="Your answer"></div>
+      <div class="def-item"><div class="def-num">7</div><div class="statement-text">Say that something is not allowed by the rules, especially in sport.</div><input class="form-input" type="text" id="exD-w7" placeholder="Your answer"></div>
+      <div class="def-item"><div class="def-num">8</div><div class="statement-text">Resources, such as money, space, people or time, that are not being used fully.</div><input class="form-input" type="text" id="exD-w8" placeholder="Your answer"></div>
+      <div class="def-item"><div class="def-num">9</div><div class="statement-text">Cry or complain about something bitterly.</div><input class="form-input" type="text" id="exD-w9" placeholder="Your answer"></div>
+      <div class="def-item"><div class="def-num">10</div><div class="statement-text">Giving someone too much work or too much responsibility for a particular job.</div><input class="form-input" type="text" id="exD-w10" placeholder="Your answer"></div>
+      <div class="def-item"><div class="def-num">11</div><div class="statement-text">Not working, or doing something without any specific purpose, intent or effort.</div><input class="form-input" type="text" id="exD-w11" placeholder="Your answer"></div>
+    </div>
+
+    <div id="step4-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(4)">Continue to Exercise E →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 5 — EXERCISE E -->
+<section id="step-5" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise E</span>
+    <h2 class="ex-title">Style: formal, informal or neutral?</h2>
+    <p class="ex-subtitle">For each word/expression from Exercise D, decide whether it is formal/literary, informal, or neutral.</p>
+
+    <div class="card">
+      <div class="card-title">Classify each word</div>
+      <div class="row-2" style="margin-bottom:.5rem"><strong style="font-size:.8rem;color:var(--muted)">Word</strong><strong style="font-size:.8rem;color:var(--muted)">Style</strong></div>
+
+      <div class="row-2" style="margin-bottom:.6rem"><span>1. fine-tuning</span><select class="form-select" id="exE-c1"><option value="">— Choose —</option><option>Formal / literary</option><option>Informal</option><option>Neutral</option></select></div>
+      <div class="row-2" style="margin-bottom:.6rem"><span>2. scope</span><select class="form-select" id="exE-c2"><option value="">— Choose —</option><option>Formal / literary</option><option>Informal</option><option>Neutral</option></select></div>
+      <div class="row-2" style="margin-bottom:.6rem"><span>3. for one</span><select class="form-select" id="exE-c3"><option value="">— Choose —</option><option>Formal / literary</option><option>Informal</option><option>Neutral</option></select></div>
+      <div class="row-2" style="margin-bottom:.6rem"><span>4. chances are</span><select class="form-select" id="exE-c4"><option value="">— Choose —</option><option>Formal / literary</option><option>Informal</option><option>Neutral</option></select></div>
+      <div class="row-2" style="margin-bottom:.6rem"><span>5. mindless</span><select class="form-select" id="exE-c5"><option value="">— Choose —</option><option>Formal / literary</option><option>Informal</option><option>Neutral</option></select></div>
+      <div class="row-2" style="margin-bottom:.6rem"><span>6. clouds (verb)</span><select class="form-select" id="exE-c6"><option value="">— Choose —</option><option>Formal / literary</option><option>Informal</option><option>Neutral</option></select></div>
+      <div class="row-2" style="margin-bottom:.6rem"><span>7. shout foul</span><select class="form-select" id="exE-c7"><option value="">— Choose —</option><option>Formal / literary</option><option>Informal</option><option>Neutral</option></select></div>
+      <div class="row-2" style="margin-bottom:.6rem"><span>8. slack</span><select class="form-select" id="exE-c8"><option value="">— Choose —</option><option>Formal / literary</option><option>Informal</option><option>Neutral</option></select></div>
+      <div class="row-2" style="margin-bottom:.6rem"><span>9. weep</span><select class="form-select" id="exE-c9"><option value="">— Choose —</option><option>Formal / literary</option><option>Informal</option><option>Neutral</option></select></div>
+      <div class="row-2" style="margin-bottom:.6rem"><span>10. over-assigning</span><select class="form-select" id="exE-c10"><option value="">— Choose —</option><option>Formal / literary</option><option>Informal</option><option>Neutral</option></select></div>
+      <div class="row-2" style="margin-bottom:0"><span>11. idly</span><select class="form-select" id="exE-c11"><option value="">— Choose —</option><option>Formal / literary</option><option>Informal</option><option>Neutral</option></select></div>
+    </div>
+
+    <div class="card">
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label" for="exE-why">Why do you think the writer mixes styles?</label>
+        <textarea class="form-textarea" id="exE-why" rows="4" placeholder="Write your answer here..."></textarea>
+      </div>
+    </div>
+
+    <div id="step5-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(5)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(5)">Continue to Exercise F →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 6 — EXERCISE F -->
+<section id="step-6" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise F</span>
+    <h2 class="ex-title">The writer's techniques</h2>
+    <p class="ex-subtitle">Look at the article again (Exercise C) and find two examples of each technique below.</p>
+
+    <div class="card">
+      <div class="tech-item">
+        <div class="tech-num">1</div>
+        <div class="statement-text">Gives definitions</div>
+        <input class="form-input" type="text" id="exF-t1e1" placeholder="Example 1" style="margin-bottom:.5rem">
+        <input class="form-input" type="text" id="exF-t1e2" placeholder="Example 2">
+      </div>
+      <div class="tech-item">
+        <div class="tech-num">2</div>
+        <div class="statement-text">Illustrates points with examples</div>
+        <input class="form-input" type="text" id="exF-t2e1" placeholder="Example 1" style="margin-bottom:.5rem">
+        <input class="form-input" type="text" id="exF-t2e2" placeholder="Example 2">
+      </div>
+      <div class="tech-item">
+        <div class="tech-num">3</div>
+        <div class="statement-text">Uses imperative forms</div>
+        <input class="form-input" type="text" id="exF-t3e1" placeholder="Example 1" style="margin-bottom:.5rem">
+        <input class="form-input" type="text" id="exF-t3e2" placeholder="Example 2">
+      </div>
+      <div class="tech-item">
+        <div class="tech-num">4</div>
+        <div class="statement-text">Exaggerates for dramatic or humorous effect</div>
+        <input class="form-input" type="text" id="exF-t4e1" placeholder="Example 1" style="margin-bottom:.5rem">
+        <input class="form-input" type="text" id="exF-t4e2" placeholder="Example 2">
+      </div>
+      <div class="tech-item">
+        <div class="tech-num">5</div>
+        <div class="statement-text">Repeats certain words/grammatical forms to make the text easier to follow (e.g. "Doing the right things and doing them right...")</div>
+        <input class="form-input" type="text" id="exF-t5e1" placeholder="Example 1" style="margin-bottom:.5rem">
+        <input class="form-input" type="text" id="exF-t5e2" placeholder="Example 2">
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label" for="exF-effect">What effect does the writer's style have on you, or might have on other readers?</label>
+        <textarea class="form-textarea" id="exF-effect" rows="4" placeholder="Write your answer here..."></textarea>
+      </div>
+    </div>
+
+    <div id="step6-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(6)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(6)">Continue to Exercise G →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 7 — EXERCISE G -->
+<section id="step-7" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise G</span>
+    <h2 class="ex-title">Roleplay: how (not) to do it</h2>
+    <p class="ex-subtitle">This is normally a group roleplay activity. As a solo task, choose one topic and write the script you would use to explain how (not) to do it — imagine performing it for classmates.</p>
+
+    <div class="card">
+      <div class="card-title">1. Choose a topic</div>
+      <select class="form-select" id="exG-topic">
+        <option value="">— Choose a topic —</option>
+        <option>How to appear busy at work</option>
+        <option>How (not) to build a good team</option>
+        <option>How (not) to conduct a job interview</option>
+        <option>How (not) to choose a holiday</option>
+        <option>How (not) to prepare dinner for 12 guests</option>
+        <option>How to form a rock band</option>
+        <option>Other (something I know how to do well)</option>
+      </select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">2. Write your roleplay script</div>
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label" for="exG-script">Write 8–12 lines of dialogue or narration.</label>
+        <textarea class="form-textarea" id="exG-script" rows="8" placeholder="Write your roleplay script here..."></textarea>
+        <p class="form-hint">Tip: try using some of the language from this unit (e.g. critical path, slack time, delegate, fine-tune).</p>
+      </div>
+    </div>
+
+    <div id="step7-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(7)">← Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(7)">Review &amp; Finish →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- FINAL STEP — REVIEW & COPY -->
+<section id="step-8" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then copy them and paste into your submission (e.g. your LMS or an email to your tutor).</p>
+    </div>
+    <div id="summary-container"></div>
+
+    <div class="card">
+      <div class="card-title">📋 Copy your answers</div>
+      <p class="form-hint" style="margin-bottom:.75rem">Click "Copy to Clipboard", then paste (Ctrl+V / Cmd+V) into your assignment submission.</p>
+      <textarea class="copy-block" id="copy-block" readonly></textarea>
+      <div class="btn-row">
+        <button class="btn btn-gold" style="flex:1;justify-content:center" id="copy-btn" onclick="copyAnswers()">📋 Copy to Clipboard</button>
+        <button class="btn btn-outline" onclick="submitByEmail()">✉️ Send by email instead</button>
+      </div>
+      <div id="copy-success" class="feedback ok" style="margin-top:1rem"></div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(8)">← Back to Exercise G</button>
+    </div>
+  </div>
+</section>
+
+
+<script>
+var UNIT        = 'uni-project-management';
+var TOTAL_STEPS = 8;
+var SHEET_URL   = 'https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec';
+var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+
+var state = {
+  name: '', cls: '',
+  exA: {}, exB: {}, exC: {}, exD: {}, exE: {}, exF: {}, exG: {}
+};
+
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('step-' + n).classList.add('active');
+  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  restoreStep(n);
+  var meta = document.getElementById('header-meta');
+  if (n === 0) { meta.style.display = 'none'; return; }
+  meta.style.display = 'block';
+  document.getElementById('header-name').textContent = state.name + (state.cls ? ' — ' + state.cls : '');
+  var labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+  document.getElementById('header-step').textContent = n < TOTAL_STEPS
+    ? 'Exercise ' + labels[n - 1] + ' of 7'
+    : 'Review';
+}
+
+function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
+
+function nextStep(n) {
+  if (!validateStep(n)) {
+    var err = document.getElementById('step' + n + '-error');
+    if (err) { err.textContent = 'Please answer the required questions before continuing.'; err.classList.add('show'); }
+    return;
+  }
+  clearErr(n);
+  saveStep(n);
+  if (n === TOTAL_STEPS - 1) { buildSummary(); }
+  showStep(n + 1);
+}
+
+function clearErr(n) {
+  var err = document.getElementById('step' + n + '-error');
+  if (err) err.classList.remove('show');
+}
+
+function startExercises() {
+  var name = g('inp-name'), cls = g('inp-class');
+  var err = document.getElementById('welcome-error');
+  if (!name || !cls) {
+    err.textContent = 'Please enter both your name and your module/group.';
+    err.classList.add('show');
+    return;
+  }
+  err.classList.remove('show');
+  state.name = name;
+  state.cls  = cls;
+  showStep(1);
+}
+
+function validateStep(n) {
+  switch (n) {
+    case 1: return val('exA-q1') && val('exA-q2');
+    default: return true;
+  }
+}
+
+function saveStep(n) {
+  switch (n) {
+    case 1:
+      state.exA.q1 = g('exA-q1'); state.exA.q2 = g('exA-q2');
+      break;
+    case 2:
+      for (var i = 1; i <= 7; i++) { state.exB['s' + i] = g('exB-s' + i); state.exB['r' + i] = g('exB-r' + i); }
+      break;
+    case 3:
+      for (var i = 1; i <= 7; i++) { state.exC['r' + i] = g('exC-r' + i); }
+      break;
+    case 4:
+      for (var i = 1; i <= 11; i++) { state.exD['w' + i] = g('exD-w' + i); }
+      break;
+    case 5:
+      for (var i = 1; i <= 11; i++) { state.exE['c' + i] = g('exE-c' + i); }
+      state.exE.why = g('exE-why');
+      break;
+    case 6:
+      for (var i = 1; i <= 5; i++) { state.exF['t' + i + 'e1'] = g('exF-t' + i + 'e1'); state.exF['t' + i + 'e2'] = g('exF-t' + i + 'e2'); }
+      state.exF.effect = g('exF-effect');
+      break;
+    case 7:
+      state.exG.topic = g('exG-topic'); state.exG.script = g('exG-script');
+      break;
+  }
+}
+
+function restoreStep(n) {
+  switch (n) {
+    case 1:
+      set('exA-q1', state.exA.q1); set('exA-q2', state.exA.q2);
+      break;
+    case 2:
+      for (var i = 1; i <= 7; i++) { set('exB-s' + i, state.exB['s' + i]); set('exB-r' + i, state.exB['r' + i]); }
+      break;
+    case 3:
+      for (var i = 1; i <= 7; i++) { set('exC-r' + i, state.exC['r' + i]); }
+      break;
+    case 4:
+      for (var i = 1; i <= 11; i++) { set('exD-w' + i, state.exD['w' + i]); }
+      break;
+    case 5:
+      for (var i = 1; i <= 11; i++) { set('exE-c' + i, state.exE['c' + i]); }
+      set('exE-why', state.exE.why);
+      break;
+    case 6:
+      for (var i = 1; i <= 5; i++) { set('exF-t' + i + 'e1', state.exF['t' + i + 'e1']); set('exF-t' + i + 'e2', state.exF['t' + i + 'e2']); }
+      set('exF-effect', state.exF.effect);
+      break;
+    case 7:
+      set('exG-topic', state.exG.topic); set('exG-script', state.exG.script);
+      break;
+  }
+}
+
+function g(id)       { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+function set(id, v)  { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
+function val(id)     { return g(id).length > 0; }
+function esc(str)    { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
+
+function buildSummary() {
+  var rows = [
+    { ex: 'A', q: '1. Importance of delegating', a: state.exA.q1 },
+    { ex: 'A', q: '2. Advice for a heavy workload', a: state.exA.q2 }
+  ];
+  for (var i = 1; i <= 7; i++) {
+    rows.push({ ex: 'B', q: 'Statement ' + i + ' — response & reason', a: (state.exB['s' + i] || '—') + ' / ' + (state.exB['r' + i] || '(no reason given)') });
+  }
+  for (var i = 1; i <= 7; i++) {
+    rows.push({ ex: 'C', q: 'Rewritten statement ' + i, a: state.exC['r' + i] });
+  }
+  for (var i = 1; i <= 11; i++) {
+    rows.push({ ex: 'D', q: 'Word for definition ' + i, a: state.exD['w' + i] });
+  }
+  for (var i = 1; i <= 11; i++) {
+    rows.push({ ex: 'E', q: 'Style of word ' + i, a: state.exE['c' + i] });
+  }
+  rows.push({ ex: 'E', q: 'Why the writer mixes styles', a: state.exE.why });
+  for (var i = 1; i <= 5; i++) {
+    rows.push({ ex: 'F', q: 'Technique ' + i + ' — examples', a: (state.exF['t' + i + 'e1'] || '—') + ' | ' + (state.exF['t' + i + 'e2'] || '—') });
+  }
+  rows.push({ ex: 'F', q: 'Effect of writer\'s style', a: state.exF.effect });
+  rows.push({ ex: 'G', q: 'Topic chosen', a: state.exG.topic });
+  rows.push({ ex: 'G', q: 'Roleplay script', a: state.exG.script });
+
+  var html = '<div class="submit-summary">'
+    + '<div class="summary-row"><div class="summary-ex">Student</div>'
+    + '<div class="summary-q">' + esc(state.name) + ' — ' + esc(state.cls) + '</div></div>';
+  rows.forEach(function(r) {
+    html += '<div class="summary-row"><div class="summary-ex">Exercise ' + esc(r.ex) + '</div>'
+      + '<div class="summary-q">' + esc(r.q) + '</div>'
+      + '<div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+
+  document.getElementById('copy-block').value = buildAnswerText();
+}
+
+function buildAnswerText() {
+  var lines = [];
+  lines.push('PROJECT MANAGEMENT: FINE-TUNING YOUR SCHEDULE');
+  lines.push('Student: ' + state.name);
+  lines.push('Module/Group: ' + state.cls);
+  lines.push('Date: ' + new Date().toLocaleDateString('en-GB'));
+  lines.push('');
+  lines.push('--- EXERCISE A: Discussion ---');
+  lines.push('1. How important is it for managers to know how to delegate work?');
+  lines.push(state.exA.q1 || '(no answer)');
+  lines.push('2. What advice would you give to someone with a heavy workload?');
+  lines.push(state.exA.q2 || '(no answer)');
+  lines.push('');
+  lines.push('--- EXERCISE B: Agree or disagree ---');
+  for (var i = 1; i <= 7; i++) {
+    lines.push((i) + '. ' + (state.exB['s' + i] || '(no response)') + ' — ' + (state.exB['r' + i] || '(no reason given)'));
+  }
+  lines.push('');
+  lines.push('--- EXERCISE C: Rewritten statements (after reading) ---');
+  for (var i = 1; i <= 7; i++) {
+    lines.push(i + '. ' + (state.exC['r' + i] || '(no answer)'));
+  }
+  lines.push('');
+  lines.push('--- EXERCISE D: Vocabulary matching ---');
+  for (var i = 1; i <= 11; i++) {
+    lines.push(i + '. ' + (state.exD['w' + i] || '(no answer)'));
+  }
+  lines.push('');
+  lines.push('--- EXERCISE E: Style ---');
+  for (var i = 1; i <= 11; i++) {
+    lines.push(i + '. ' + (state.exE['c' + i] || '(no answer)'));
+  }
+  lines.push('Why the writer mixes styles: ' + (state.exE.why || '(no answer)'));
+  lines.push('');
+  lines.push('--- EXERCISE F: Writer\'s techniques ---');
+  for (var i = 1; i <= 5; i++) {
+    lines.push('Technique ' + i + ': ' + (state.exF['t' + i + 'e1'] || '—') + ' | ' + (state.exF['t' + i + 'e2'] || '—'));
+  }
+  lines.push('Effect on reader: ' + (state.exF.effect || '(no answer)'));
+  lines.push('');
+  lines.push('--- EXERCISE G: Roleplay ---');
+  lines.push('Topic: ' + (state.exG.topic || '(none chosen)'));
+  lines.push('Script:');
+  lines.push(state.exG.script || '(no answer)');
+  return lines.join('\n');
+}
+
+function copyAnswers() {
+  var body = buildAnswerText();
+  var box = document.getElementById('copy-block');
+  box.value = body;
+  navigator.clipboard.writeText(body).then(function() {
+    showCopySuccess('✅ Copied! Paste it (Ctrl+V / Cmd+V) into your submission.');
+  }).catch(function() {
+    box.focus();
+    box.select();
+    showCopySuccess('Select-all is ready — press Ctrl+C / Cmd+C to copy.');
+  });
+}
+
+function showCopySuccess(msg) {
+  var el = document.getElementById('copy-success');
+  el.textContent = msg;
+  el.classList.add('show');
+}
+
+function submitByEmail() {
+  var a = document.createElement('a');
+  a.href = 'mailto:' + TEACHER_EMAIL
+    + '?subject=' + encodeURIComponent(UNIT + ' - ' + state.name + ' - ' + state.cls)
+    + '&body='    + encodeURIComponent(buildAnswerText());
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function() { document.body.removeChild(a); }, 100);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  showStep(0);
+});
+</script>
+
+</body>
+</html>
