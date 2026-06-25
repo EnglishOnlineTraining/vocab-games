@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>The Amazon Rainforest – Reading Skills | englishonline.training</title>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:    #1a3a5c;
+      --gold:    #c9a227;
+      --gold-lt: #f5e6b0;
+      --teal:    #2b7a78;
+      --red:     #c0392b;
+      --green:   #27ae60;
+      --bg:      #f7f9fc;
+      --card:    #ffffff;
+      --text:    #1d2b3a;
+      --muted:   #6b7a8d;
+      --border:  #dce3ec;
+      --radius:  12px;
+      --shadow:  0 2px 16px rgba(26,58,92,.1);
+      --font:    'Segoe UI', system-ui, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
+
+    .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
+    .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
+    .header-meta { font-size: .78rem; text-align: right; opacity: .9; }
+    .header-meta strong { display: block; color: var(--gold); }
+    .progress-track { height: 6px; background: rgba(255,255,255,.2); }
+    .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
+
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+
+    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
+    .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+    .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
+
+    .reading-text { font-size: .93rem; line-height: 1.85; color: var(--text); }
+    .reading-text p { margin-bottom: .85rem; }
+    .reading-text p:last-child { margin-bottom: 0; }
+
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+    .form-input, .form-textarea {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+      padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
+      color: var(--text); background: #fff; transition: border-color .2s;
+    }
+    .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--blue); }
+    .form-textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
+    .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+
+    .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
+    .feedback.show { display: block; }
+    .feedback.ok   { background: #d4edda; color: #155724; }
+    .feedback.warn { background: #fff3cd; color: #856404; }
+    .feedback.err  { background: #fde8e8; color: #721c24; }
+
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
+    .btn-primary:hover { background: #15304f; }
+    .btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
+    .btn-gold:hover { background: #b8911f; }
+    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+    .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+    .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
+    .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
+    .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+    .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+    .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; }
+    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
+    .ov-card.locked { opacity: .5; }
+    .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+
+    .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
+    .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
+    .summary-a  { color: var(--text); white-space: pre-wrap; }
+
+    @media (max-width: 480px) {
+      .ex-title { font-size: 1.25rem; }
+      .btn { padding: .65rem 1.1rem; }
+      .welcome-title { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Exercise A of 2</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+
+
+<!-- STEP 0 – WELCOME -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">🌳</div>
+      <h1 class="welcome-title">The Amazon Rainforest</h1>
+      <p class="welcome-sub">Read the text carefully, then answer five questions to show you understand the key facts.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">📖</div><strong>Ex A – Finding Facts</strong>Read the text and answer 3 questions (Where / How big / How much)</div>
+      <div class="ov-card locked"><div class="ov-icon">🔍</div><strong>Ex B – More Detail</strong>Answer 2 more questions (How many / What)</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. 7g" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 1 – EXERCISE A: Finding Facts -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">Finding Facts</h2>
+    <p class="ex-subtitle">Read the text below, then answer the questions. Look for the exact information — you don't need to guess.</p>
+
+    <div class="card">
+      <div class="card-title">Read the text</div>
+      <div class="reading-text">
+        <p>The Amazon Rainforest is located in South America, stretching across nine countries including Brazil, Peru, and Colombia. It covers an area of around 5.5 million square kilometres, making it the largest rainforest on Earth.</p>
+        <p>Scientists estimate that the Amazon is home to roughly 10% of all known species on the planet, including thousands of plants, birds, insects, and mammals that cannot be found anywhere else.</p>
+        <p>Each year, around 10 million tourists visit the region to explore its rivers, wildlife, and indigenous communities. However, the rainforest faces a serious threat from deforestation. Over the last 50 years, approximately 17% of the Amazon has been destroyed, mainly due to logging, farming, and mining. Conservationists are working to protect what remains.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Questions</div>
+      <div class="form-group">
+        <label class="form-label" for="exA-q1">1. WHERE is the Amazon Rainforest located?</label>
+        <textarea class="form-textarea" id="exA-q1" placeholder="Write your answer here..." rows="2"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exA-q2">2. HOW BIG is the Amazon Rainforest?</label>
+        <textarea class="form-textarea" id="exA-q2" placeholder="Write your answer here..." rows="2"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exA-q3">3. HOW MUCH of the world's species does the Amazon contain?</label>
+        <textarea class="form-textarea" id="exA-q3" placeholder="Write your answer here..." rows="2"></textarea>
+      </div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 2 – EXERCISE B: More Detail -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B</span>
+    <h2 class="ex-title">More Detail</h2>
+    <p class="ex-subtitle">Scroll back to Exercise A if you need to re-read the text. Answer these two questions.</p>
+
+    <div class="card">
+      <div class="card-title">Questions</div>
+      <div class="form-group">
+        <label class="form-label" for="exB-q4">4. HOW MANY tourists visit the Amazon every year?</label>
+        <textarea class="form-textarea" id="exB-q4" placeholder="Write your answer here..." rows="2"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="exB-q5">5. WHAT is the main threat facing the Amazon Rainforest?</label>
+        <textarea class="form-textarea" id="exB-q5" placeholder="Write your answer here..." rows="2"></textarea>
+      </div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(2)">Review &amp; Submit →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- FINAL STEP – REVIEW & SUBMIT -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission did not work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+/* CONFIG */
+var UNIT          = '7g-amazon-rainforest-reading';
+var TOTAL_STEPS   = 3;
+var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbyFmK71PseRmH8gBnuD3HLFU9b75eMPhE-LV8hNKSGM2RJ4bbMTIMrcoi3Qo4WG95qxIw/exec';
+var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+
+var state = {
+  name: '',
+  cls:  '',
+  exA:  {},
+  exB:  {}
+};
+
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('step-' + n).classList.add('active');
+  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  restoreStep(n);
+  var meta = document.getElementById('header-meta');
+  if (n === 0) { meta.style.display = 'none'; return; }
+  meta.style.display = 'block';
+  document.getElementById('header-name').textContent = state.name + (state.cls ? ' — ' + state.cls : '');
+  var labels = ['A', 'B'];
+  document.getElementById('header-step').textContent = n < TOTAL_STEPS
+    ? 'Exercise ' + labels[n - 1] + ' of ' + (TOTAL_STEPS - 1)
+    : 'Submit';
+}
+
+function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
+
+function nextStep(n) {
+  if (!validateStep(n)) {
+    var err = document.getElementById('step' + n + '-error');
+    if (err) { err.textContent = 'Please answer the required questions before continuing.'; err.classList.add('show'); }
+    return;
+  }
+  clearErr(n);
+  saveStep(n);
+  if (n === TOTAL_STEPS - 1) { buildSummary(); }
+  showStep(n + 1);
+}
+
+function clearErr(n) {
+  var err = document.getElementById('step' + n + '-error');
+  if (err) err.classList.remove('show');
+}
+
+function startExercises() {
+  var name = g('inp-name'), cls = g('inp-class');
+  var err = document.getElementById('welcome-error');
+  if (!name || !cls) {
+    err.textContent = 'Please enter both your name and your class.';
+    err.classList.add('show');
+    return;
+  }
+  err.classList.remove('show');
+  state.name = name;
+  state.cls  = cls;
+  showStep(1);
+}
+
+function validateStep(n) {
+  switch (n) {
+    case 1: return val('exA-q1') && val('exA-q2') && val('exA-q3');
+    case 2: return val('exB-q4') && val('exB-q5');
+    default: return true;
+  }
+}
+
+function saveStep(n) {
+  switch (n) {
+    case 1:
+      state.exA.q1 = g('exA-q1');
+      state.exA.q2 = g('exA-q2');
+      state.exA.q3 = g('exA-q3');
+      break;
+    case 2:
+      state.exB.q4 = g('exB-q4');
+      state.exB.q5 = g('exB-q5');
+      break;
+  }
+}
+
+function restoreStep(n) {
+  switch (n) {
+    case 1:
+      set('exA-q1', state.exA.q1);
+      set('exA-q2', state.exA.q2);
+      set('exA-q3', state.exA.q3);
+      break;
+    case 2:
+      set('exB-q4', state.exB.q4);
+      set('exB-q5', state.exB.q5);
+      break;
+  }
+}
+
+function g(id)       { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+function set(id, v)  { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
+function val(id)     { return g(id).length > 0; }
+function esc(str)    { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
+
+function buildSummary() {
+  var rows = [
+    { ex: 'Exercise A', q: 'WHERE is the Amazon Rainforest located?', a: state.exA.q1 },
+    { ex: 'Exercise A', q: 'HOW BIG is the Amazon Rainforest?', a: state.exA.q2 },
+    { ex: 'Exercise A', q: "HOW MUCH of the world's species does the Amazon contain?", a: state.exA.q3 },
+    { ex: 'Exercise B', q: 'HOW MANY tourists visit the Amazon every year?', a: state.exB.q4 },
+    { ex: 'Exercise B', q: 'WHAT is the main threat facing the Amazon Rainforest?', a: state.exB.q5 }
+  ];
+  var html = '<div class="submit-summary">'
+    + '<div class="summary-row"><div class="summary-ex">Student</div>'
+    + '<div class="summary-q">' + esc(state.name) + ' — ' + esc(state.cls) + '</div></div>';
+  rows.forEach(function(r) {
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div>'
+      + '<div class="summary-q">' + esc(r.q) + '</div>'
+      + '<div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+}
+
+function buildEmailBody() {
+  return 'Exercise: ' + UNIT
+    + '\nStudent: ' + state.name
+    + '\nClass:   ' + state.cls
+    + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
+    + '\n\n--- Exercise A: Finding Facts ---'
+    + '\n1. WHERE: ' + (state.exA.q1 || '(none)')
+    + '\n2. HOW BIG: ' + (state.exA.q2 || '(none)')
+    + '\n3. HOW MUCH: ' + (state.exA.q3 || '(none)')
+    + '\n\n--- Exercise B: More Detail ---'
+    + '\n4. HOW MANY: ' + (state.exB.q4 || '(none)')
+    + '\n5. WHAT: ' + (state.exB.q5 || '(none)');
+}
+
+function submitToSheet() {
+  buildSummary();
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  var payload = { name: state.name, cls: state.cls, unit: UNIT, exA: state.exA, exB: state.exB };
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+  }).then(function() {
+    btn.style.display = 'none';
+    document.getElementById('submit-success').style.display = 'block';
+    document.getElementById('submit-fallback').style.display = 'block';
+  }).catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Submit to Teacher';
+    document.getElementById('submit-fallback').style.display = 'block';
+  });
+}
+
+function submitByEmail() {
+  var a = document.createElement('a');
+  a.href = 'mailto:' + TEACHER_EMAIL
+    + '?subject=' + encodeURIComponent(UNIT + ' - ' + state.name + ' - ' + state.cls)
+    + '&body='    + encodeURIComponent(buildEmailBody());
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function() { document.body.removeChild(a); }, 100);
+}
+
+function copyAnswers() {
+  var body = buildEmailBody();
+  navigator.clipboard.writeText(body)
+    .then(function() { alert('Answers copied! Paste them into an email to your teacher.'); })
+    .catch(function() { prompt('Copy this text:', body); });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  showStep(0);
+});
+</script>
+
+<script>
+document.addEventListener('paste', function(e) {
+  var t = e.target;
+  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
+    e.preventDefault();
+    var msg = document.createElement('div');
+    msg.textContent = 'Pasting is not allowed';
+    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    document.body.appendChild(msg);
+    setTimeout(function() {
+      msg.style.opacity = '0';
+      setTimeout(function() { msg.remove(); }, 400);
+    }, 2000);
+  }
+});
+
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  var msg = document.createElement('div');
+  msg.textContent = '🚫 Copying is not allowed';
+  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    document.body.appendChild(msg);
+    setTimeout(function() {
+      msg.style.opacity = '0';
+      setTimeout(function() { msg.remove(); }, 400);
+    }, 2000);
+});
+</script>
+
+</body>
+</html>
