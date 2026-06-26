@@ -503,12 +503,22 @@
     <div id="summary-container"></div>
 
     <div class="card">
-      <div class="card-title">📋 Copy your answers</div>
-      <p class="form-hint" style="margin-bottom:.75rem">Click "Copy to Clipboard", then paste (Ctrl+V / Cmd+V) into your assignment submission.</p>
-      <textarea class="copy-block" id="copy-block" readonly></textarea>
-      <div class="btn-row">
-        <button class="btn btn-gold" style="flex:1;justify-content:center" id="copy-btn" onclick="copyAnswers()">📋 Copy to Clipboard</button>
-        <button class="btn btn-outline" onclick="submitByEmail()">✉️ Send by email instead</button>
+      <div class="card-title">📤 Submit your answers</div>
+      <p class="form-hint" style="margin-bottom:.75rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="flex:1;justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">✉️ Submit to Teacher</button>
+
+      <div id="submit-success" style="display:none;margin-top:1.25rem;text-align:center">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:#27ae60;font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:#6b7a8d">Your answers have been sent to your teacher.</p>
+      </div>
+
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid #dce3ec;padding-top:1.1rem">
+        <p style="font-size:.82rem;color:#6b7a8d;margin-bottom:.75rem">If the submission did not work, use one of these alternatives:</p>
+        <div class="btn-row">
+          <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+          <button class="btn btn-outline btn-sm" id="copy-answers-btn" onclick="copyAnswers()">📋 Copy to clipboard</button>
+        </div>
       </div>
       <div id="copy-success" class="feedback ok" style="margin-top:1rem"></div>
     </div>
@@ -751,6 +761,35 @@ function showCopySuccess(msg) {
   var el = document.getElementById('copy-success');
   el.textContent = msg;
   el.classList.add('show');
+}
+
+function submitToSheet() {
+  var payload = {
+    name: state.name,
+    cls: state.cls,
+    unit: UNIT,
+    exA: state.exA,
+    exB: state.exB,
+    exC: state.exC,
+    exD: state.exD,
+    exE: state.exE,
+    exF: state.exF,
+    exG: state.exG
+  };
+
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+  }).then(function() {
+    alert('✅ Submitted to teacher!');
+    document.getElementById('copy-answers-btn').style.display = 'none';
+    document.getElementById('email-btn').style.display = 'none';
+  }).catch(function(err) {
+    console.error('Submission error:', err);
+    alert('⚠️ Submission failed. Use email or copy-to-clipboard instead.');
+  });
 }
 
 function submitByEmail() {
