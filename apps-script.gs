@@ -49,13 +49,15 @@ function titleFromUnit(unit) {
 
 // Known units that should get a fixed, friendly tab name.
 var TAB_NAMES = {
-  'california-exercises':     'California Exercises',
-  'california-hazards':       'California Hazards',
-  '9g-famous-hollywood':      'Famous & Hollywood',
-  'robert-the-bruce-7c':      'Robert the Bruce',
-  'tudor-past-perfect':       'Tudor Past Perfect',
-  '9c-south-africa-revision': 'South Africa Revision',
-  'sport-south-africa':       'Sport in South Africa'
+  'california-exercises':        'California Exercises',
+  'california-hazards':          'California Hazards',
+  '9g-famous-hollywood':         'Famous & Hollywood',
+  'robert-the-bruce-7c':         'Robert the Bruce',
+  'tudor-past-perfect':          'Tudor Past Perfect',
+  '9c-south-africa-revision':    'South Africa Revision',
+  'sport-south-africa':          'Sport in South Africa',
+  '7g-amazon-rainforest-reading': 'Amazon Rainforest Reading',
+  '9g-ev-renewable-energy-reading': 'EV & Renewable Energy Reading'
 };
 
 function routeSubmission(ss, data) {
@@ -78,6 +80,18 @@ function routeSubmission(ss, data) {
     var trs=[1,2,3,4,5,6].map(function(i){return i+'. '+(exC['t'+i]||'(blank)');}).join('\n');
     var sheet = getSheet(ss, tabName, ['Timestamp','Name','Class','Ex A – Problems','Ex A – Connection','Ex B – Modal gaps','Ex C – Transforms','Ex D – Paragraph','Ex D – Opinion']);
     sheet.appendRow([new Date(), data.name||'', data.cls||'', exA.a||'', exA.b||'', gaps, trs, exD.para||'', exD.opinion||'']);
+    return;
+  }
+
+  if (unit === '7g-amazon-rainforest-reading') {
+    var sheet = getSheet(ss, tabName, ['Timestamp','Name','Class','Ex A – Finding Facts','Ex B – More Detail']);
+    sheet.appendRow([new Date(), data.name||'', data.cls||'', JSON.stringify(data.exA||{}), JSON.stringify(data.exB||{})]);
+    return;
+  }
+
+  if (unit === '9g-ev-renewable-energy-reading') {
+    var sheet = getSheet(ss, tabName, ['Timestamp','Name','Class','Ex A – Electric Vehicles','Ex B – Renewable Energy']);
+    sheet.appendRow([new Date(), data.name||'', data.cls||'', JSON.stringify(data.exA||{}), JSON.stringify(data.exB||{})]);
     return;
   }
 

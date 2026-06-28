@@ -30,41 +30,138 @@ Static HTML exercise pages for English language learners, hosted on GitHub Pages
 
 ---
 
-## Google Sheets submission
+## Year 7 & Year 9 — paused
 
-All exercises submit answers via `fetch()` with `mode: 'no-cors'` to a Google Apps Script web app. Each exercise has a `unit` identifier that routes the data to a separate tab within the sheet.
+Year 7 and Year 9 exercise **drafting is paused** (decided 2025-06-25). Existing Y7/Y9 exercises remain live; the `daily-exercise-draft` scheduled task no longer generates new ones for these years. When Shaun wants to resume, re-add Y7/Y9 slots to the rotation.
 
-### Year 7 Sheet URL
-```
-https://script.google.com/macros/s/AKfycbyFmK71PseRmH8gBnuD3HLFU9b75eMPhE-LV8hNKSGM2RJ4bbMTIMrcoi3Qo4WG95qxIw/exec
-```
-Used by: `7c-holidays.html`, `7c-robert-the-bruce.html`, `7g-tudor-past-perfect.html`
+---
 
-### Year 9 Sheet URL
-```
-https://script.google.com/macros/s/AKfycbw2eqOCB6XKREIOXuqn2fCL067CdMm20MmiTFMt9GmRUEn12vLl8gJbHL1UfbKmCP7W/exec
-```
-Used by: `california-exercises.html`, `9g-california-hazards.html`, `9g-famous-hollywood.html`, `9c-south-africa-revision.html`, `sport-south-africa.html`
+## Year 8 & Year 10 — active
 
-### Business English & University Sheet URL
+Year 8 and Year 10 exercises are **now active** in the daily rotation (started 2026-06-25). They follow the same Gymnasium / Oberschule split as Year 7 / Year 9.
+
+### CEFR levels
+| Category | Prefix | CEFR | Textbook |
+|----------|--------|------|----------|
+| Year 8 · Gymnasium | `8g-` | ~B1 | Klett Green Line 4 |
+| Year 8 · Oberschule | `8c-` | ~A2 | Klett Orange Line 4 |
+| Year 10 · Gymnasium | `10g-` | ~B2/C1 | Klett Green Line 6 |
+| Year 10 · Oberschule | `10c-` | ~B1/B2 | Klett Orange Line 6 |
+
+### Webhook routing
+- **Year 8** exercises (both `8g-` and `8c-`) use the **Year 7 Make webhook** — same URL, same Excel table, differentiated by Unit and Class columns.
+- **Year 10** exercises (both `10g-` and `10c-`) use the **Year 9 Make webhook** — same URL, same Excel table.
+
+See "Year 8 & 10 — combined with Year 7 & 9" under Submission routing below for the technical rationale.
+
+### Topic pools
+
+Exercises must be drawn from these textbook topic pools. Pick a topic that hasn't already been built (check existing files in the repo), and combine the thematic content with the grammar point listed.
+
+#### Year 8 Gymnasium (Green Line 4 — USA theme, ~B1)
+
+| # | Unit | Topic | Key Grammar |
+|---|------|-------|-------------|
+| 1 | Across cultures 1 | The USA: Country of contrasts | Adjective + noun collocations |
+| 2 | Unit 1 | Kids in America — teen life, Thanksgiving, American schools | Gerunds, infinitives (with/without to), object + infinitive |
+| 3 | Text smart 1 | Advertisements — analysing & rewriting ads | — |
+| 4 | Across cultures 2 | School life – dos and don'ts — US school rules | Persuading, expressing attitude |
+| 5 | Unit 2 | City of dreams: New York — food, living, graphic novels | Relative clauses (defining/non-defining), present/past perfect progressive |
+| 6 | Text smart 2 | Internet texts — Wiki articles, blogs, hoaxes, online ratings | — |
+| 7 | Across cultures 3 | What you say and how you say it — American vs British English | Formal vs informal register |
+| 8 | Unit 3 | A nation invents itself — American history, inventions, statistics | Adjective/adverb, participles as adjectives, linking words, conditionals |
+| 9 | Text smart 3 | Travel texts — travel blogs, travel guides, Montana, hitchhiking | Collocations for travel writing |
+| 10 | Across cultures 4 | At home with an American family — chores, host family | Household vocabulary |
+| 11 | Unit 4 | The Pacific Northwest — Native Americans, national parks, surveys | Question tags, articles, abstract nouns, transitive/intransitive verbs, future perfect |
+
+#### Year 8 Oberschule (Orange Line 4 — USA regions theme, ~A2)
+
+| # | Unit | Topic | Key Grammar |
+|---|------|-------|-------------|
+| 1 | Zoom in | Five teenagers from the USA | — |
+| 2 | Unit 1 | Arriving in the Northeast — New York sights, teen life | Simple past, comparison of adjectives |
+| 3 | Unit 2 | Off to the Midwest — school life, holidays & festivals, Thanksgiving, Great Lakes | Simple present, present progressive |
+| 4 | Unit 3 | Going to the West — product life cycles, social projects, volunteering, Alaska | Passive (simple present), gerund |
+| 5 | Unit 4 | Around the Southwest — role models, character traits, life in a small town | Present perfect, present perfect with since/for |
+| 6 | Unit 5 | Settling in the South — discrimination, respect, expressing opinions, music | Modal verbs & substitutes, defining relative clauses |
+
+#### Year 10 Gymnasium (Green Line 6 — Scotland & Black America & Youth culture, ~B2/C1)
+
+| # | Section | Topic | Key Content |
+|---|---------|-------|-------------|
+| 1 | Across cultures 1 | "Same same but different?" — cultural diversity | Diverse societies |
+| 2 | Focus 1 | Scottish history — clans, Scotland–England, independence | Essay, balloon debate |
+| 3 | Unit 1 | Scotland: Highlands — life, mythical creatures, *Sea Change* novel | Diary writing, mediation |
+| 4 | Unit 1 | Scotland: Lowlands — Glasgow, Edinburgh, festivals | Podcasts, video blogs |
+| 5 | Unit 1 | Scotland: Young people's issues — Scottish Youth Parliament | Manifesto writing |
+| 6 | Unit 1 | Green Scotland — environmental protection, renewable energy | Blog responses |
+| 7 | Focus 2 | Scottish identity — Scots language, Scotland's UK role, Nicola Sturgeon | Poetry, speeches |
+| 8 | Across cultures 2 | Folk and folk-inspired music | Song comparison, presentations |
+| 9 | Focus 3 | Slavery and the Civil War — slave trade, Lincoln | Historical analysis |
+| 10 | Unit 2 | Black in America: Growing up Black — *The Hate U Give*, Black English, Harlem | Novel excerpts, diary entries |
+| 11 | Unit 2 | Proud to be Black — Black culture, cultural appropriation | Biographical texts, presentations |
+| 12 | Unit 2 | Towards a post-racial society — Barack Obama | Sport & politics, mediation |
+| 13 | Focus 4 | Fight for your rights! — civil rights, Rosa Parks, MLK vs Malcolm X, BLM | Comment writing |
+| 14 | Across cultures 3 | Black roots of pop music — history of pop, Black influence | Essays, surveys |
+| 15 | Focus 5 | My generation? — generational differences, youth subcultures | Song comparison |
+| 16 | Unit 3 | Youth & culture: Teenage lifestyles — *Schooled*, *Hairstyles of the Damned* | Narrative perspective, stylistic devices |
+| 17 | Unit 3 | Rap and hip hop — 2Pac, hip-hop's commercial success | Articles, mediation |
+| 18 | Unit 3 | The digital age — video games, editing apps, youth culture | Argumentative essays, reader's letters |
+| 19 | Unit 3 | Social media — surveys, criteria for social media use | Speaking/skills |
+| 20 | Across cultures 4 | The soundtrack to history — protest songs, anti-war movement | Essays on art & society |
+
+**Grammar covered:** Past tenses, future tenses, conditionals, passive voice, linking ideas, describing and commenting.
+
+#### Year 10 Oberschule (Orange Line 6 — Commonwealth theme, ~B1/B2)
+
+| # | Section | Topic | Key Grammar |
+|---|---------|-------|-------------|
+| 1 | Zoom in | Faces of the Commonwealth | — |
+| 2 | Unit 1 | Discover Canada — sport & free time, environment, Arctic animals, schools | Present tenses (revision), present perfect |
+| 3 | Unit 2 | Inside India — volunteering, fair wages, Indian companies, Mumbai | If-clauses I & II, passive voice |
+| 4 | Unit 3 | New Zealand news — relationships, Christchurch earthquake, Lord of the Rings | Past tenses, past perfect, if-clauses III |
+| 5 | Extra | MLK biography, government systems, stereotypes, EU & UK, London slang ban, *A Pair of Jeans* | — |
+
+---
+
+## Submission routing
+
+All exercises submit answers via `fetch()` with `mode: 'no-cors'` to whatever URL is in `SHEET_URL`. The template code doesn't care whether that URL is a Google Apps Script web app or a Make.com webhook — both accept the same `payload=` form-encoded POST, so swapping the backend is just a URL change, not a template change. Each exercise has a `unit` identifier that the receiving end uses to route the data.
+
+### Year 7 & Year 9 — Make → Excel (live)
+Year 7 and Year 9 submissions go to **Excel via Make.com webhooks, not Google Sheets.** This has been live for weeks across the current Y7/Y9 exercises.
+
+**Year 7 Make webhook:**
+```
+https://hook.eu1.make.com/1gx46wea33yguetah95oy4j8asbyafqm
+```
+Used by: `7a-what-was-it-like.html`, `7c-dictionary-skills.html`, `7c-england-now-and-then.html`, `7c-holidays.html`, `7c-made-in-scotland.html`, `7c-robert-the-bruce.html`, `7g-british-food.html`, `7g-british-sports.html`, `7g-british-wildlife.html`, `7g-london-landmarks.html`, `7g-tudor-conditionals.html`, `7g-tudor-conditionals_1.html`, `7g-tudor-past-perfect.html`
+
+**Year 9 Make webhook:**
+```
+https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj
+```
+Used by: `9c-plastic-pollution.html`, `9c-south-africa-revision.html`, `9g-california-hazards.html`, `9g-canada-conditionals.html`, `9g-class-test-9ab.html`, `9g-famous-hollywood.html`, `9g-great-barrier-reef.html`, `9g-ireland-gerunds.html`, `9g-summer-revision.html`
+
+`california-exercises.html` and `sport-south-africa.html` predated the Make migration and were still on the old Apps Script Y9 URL — both repointed to the Year 9 Make webhook above on 2026-06-22, so all live Y7/Y9 exercises are now consistently on Make.
+
+`_template.html`'s default `SHEET_URL` is still the old Apps Script URL — when starting a new Y7/Y9 exercise from the template, replace it with the correct Make webhook above, not the Apps Script URL.
+
+### Year 8 & 10 — combined with Year 7 & 9
+Inspecting both live Make scenario blueprints (2026-06-22) showed each one is a simple two-module flow — webhook trigger → a single `microsoft-excel:addATableRow` action — with **no Router/Filter module and no unit-based branching**. Every submission to the Year 7 webhook lands in one flat Excel table (`yr7subs`, in `/online task submission year 7.xlsx`); every submission to the Year 9 webhook lands in `yr9subs` (in `/online tasks submission year 9.xlsx`). Since Make scenarios only support one trigger each, two separate webhooks can't be wired into the same scenario — but because routing is already flat (not per-unit), there's no need to: Year 8 exercises can just POST to the **same Year 7 webhook URL** above, and Year 10 exercises to the **same Year 9 webhook URL** above. Submissions land in the same Excel table as their paired year, distinguishable by the `Unit` and `Class` columns. No scenario edits required.
+
+The standalone "year 8 webhook" and "year 10 webhook" created in Make during this exploration were never attached to any scenario and have since been deleted — Y8/Y10 will route through the existing Year 7/Year 9 webhooks above, per the plan in this section.
+
+### Business English & University Sheet URL (Google Apps Script — not part of the Make migration)
 ```
 https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec
 ```
-Used by: all Business English and University exercises. This sheet runs the same universal Apps Script, so new units auto-create their own tabs here with no redeploy.
+Used by: all Business English and University exercises (e.g. `be-professional-emails.html`, `uni-ai-ethics.html`, `uni-writing-task.html`, `uni-pm-vocabulary.html`, and others — several university exercises use a second Apps Script sheet, `.../AKfycbwwbV6ufw7QX8meNGyOwiVdkqNpQ8yckdXmsbFqysJwWqAfCWaR_eC9RH41LaqmYyZOeA/exec`; check the live file before assuming which one). This still runs the same universal Apps Script, so new units auto-create their own tabs here with no redeploy.
 
-### Unit identifiers → Sheet tabs
+### What the Make scenario does
+Unlike the Apps Script `routeSubmission()` below, the Make scenarios do **not** do per-unit routing — confirmed by inspecting both blueprints directly (2026-06-22). Each scenario is just webhook → one fixed `addATableRow` action writing into one Excel table, with a fixed column mapping (Timestamp, Name, Class, Unit, plus generic `ex1`–`ex48`-style slots, and now Score/Grade — see below). The page just POSTs `{name, cls, unit, ...answers, score, grade}` to the webhook above; every submission (regardless of `unit`) lands in that one table.
 
-| unit value | Sheet tab |
-|------------|-----------|
-| `california-exercises` | California Exercises |
-| `california-hazards` | California Hazards |
-| `9g-famous-hollywood` | Famous & Hollywood |
-| `robert-the-bruce-7c` | Robert the Bruce |
-| `tudor-past-perfect` | Tudor Past Perfect |
-| `9c-south-africa-revision` | South Africa Revision |
-| `sport-south-africa` | Sport in South Africa |
-
-The Apps Script uses a universal handler that auto-creates a cleanly-named tab for any new `unit` and auto-adds answer columns, so **adding a new exercise no longer requires editing or redeploying the Apps Script**. Only edit the script if a new exercise needs a bespoke column layout (like `california-exercises` or `california-hazards`).
+**Score/Grade gap — fixed 2026-06-23.** `score` and `grade` used to be silently dropped for every Make-routed exercise because neither the Excel tables nor the scenario mappers had columns for them. Both halves are now fixed: a `Score` and `Grade` column were added to both Excel tables (`yr7subs` in `/online task submission year 7.xlsx`, `yr9subs` in `/online tasks submission year 9.xlsx`), and both Make scenarios (Year 7 id `6103998`, Year 9 id `6143765`) now map `{{1.score}}`/`{{1.grade}}` into those columns. Student score/grade data flows through end-to-end for both years.
 
 ---
 
@@ -109,7 +206,13 @@ document.addEventListener('copy', function(e) {
 });
 ```
 
-Both blocks go in a separate `<script>` tag just before `</body>`. They are already pre-built in `_template.html`.
+Both blocks go in a separate `<script>` tag just before `</body>`. They are already pre-built in `_template.html`. The native `copy` listener above is what blocks right-click → Copy / menu copy, not just Ctrl/Cmd+C — every exercise needs both the `copy` and `paste` listeners, not just a `keydown` check. (Audit note: `uni-pm-vocabulary.html` and `uni-writing-task.html` were missing the native `copy` listener and have been fixed; `uni-presentation-task.html` has no free-text fields — it's a logistics/confirmation screen, not a graded exercise — so blocking was judged not applicable there.)
+
+### 4. Step navigation
+A clickable step-jump bar (`<nav class="step-nav" id="step-nav"></nav>`) sits right after the sticky header. It's rendered by `renderStepNav(current)` and lets a student click back to any step they've already visited (tracked via `maxStepReached`); jumping ahead to a step not yet reached is blocked. `showStep(n)` calls `renderStepNav` automatically — nothing to wire up per-exercise. Pre-built in `_template.html`.
+
+### 5. Score + Note (grade table)
+Each `checkDropdowns(ids, prefix, answers, fbId, scoreKey)` call now takes a `scoreKey` (e.g. `'exA'`) and records `{correct, total}` into `state.scores[scoreKey]`. At submit time, `totalScore()` sums every recorded `scoreKey`, and `lookupGrade(earned, possible)` looks the raw point totals up against `GRADE_TABLE` — the same 91-row Punktetabelle (PMG/BAO Sek I, max points 10–100 → Note 1–5) used by the "Notengrenzen Rechner" artifact. If the total possible points fall in the 10–100 range the table row is used directly; fewer than 10 points are scaled up to 10, more than 100 scaled down to 100. Returns a Note (1–5) and label (Sehr gut … Nicht genügend). The result is shown to the student on the summary screen (`renderScore()`) and included in both the Sheet/Make payload and the email fallback as `score` and `grade` fields. If an exercise has no auto-gradable sections (no `scoreKey`s passed), the score card stays hidden — this is optional, not mandatory, for exercises that are pure free-text/discussion. Pre-built in `_template.html`; the only thing a new exercise needs to do is pass a unique `scoreKey` string to each `checkDropdowns()` call it wants graded.
 
 ---
 
@@ -118,10 +221,15 @@ Both blocks go in a separate `<script>` tag just before `</body>`. They are alre
 1. **Copy `_template.html`** and rename it (e.g. `9g-new-topic.html`)
 2. **Fill in every `TODO`** comment in the file
 3. **Set `UNIT`** to a unique kebab-case string (e.g. `'9g-new-topic'`)
-4. **Set `SHEET_URL`** to the correct year's URL (see above)
+4. **Set `SHEET_URL`** to the correct year's URL:
+   - Y7 or Y8 → Year 7 Make webhook
+   - Y9 or Y10 → Year 9 Make webhook
+   - Business English or University → Apps Script URL (see Submission routing)
 5. **Apps Script — usually nothing to do.** The universal handler auto-creates a tab from the `unit` and auto-adds columns, so submissions route with no redeploy. Only touch the script if this exercise needs a bespoke column layout; then add a custom block and redeploy as a new version. Optionally add a friendly fixed tab name to the `TAB_NAMES` map.
-6. **Add a card in `activities.html`** under the correct year/school section
-7. **Commit and push to `main`** — GitHub Pages deploys automatically
+6. **Step nav, copy/paste blocking — nothing to do.** Both are pre-built in `_template.html` and work automatically.
+7. **Pass a `scoreKey`** to each `checkDropdowns()` call you want auto-graded (e.g. `'exA'`, `'exB'`) if the exercise has gradable sections — this feeds the score/Note shown to the student and sent to the teacher. Skip this for pure free-text/discussion exercises.
+8. **Add a card in `activities.html`** under the correct year/school section
+9. **Commit and push to `main`** — GitHub Pages deploys automatically
 
 ---
 
