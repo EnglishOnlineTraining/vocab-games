@@ -146,7 +146,7 @@
 <header class="app-header">
   <div class="header-inner">
     <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
-    <a class="header-logo" href="7g-activities.html" style="font-size:.75rem;opacity:.8">&larr; Activities</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">&larr; Activities</a>
     <div class="header-meta" id="header-meta" style="display:none">
       <strong id="header-name"></strong>
       <span id="header-step">Exercise A of 3</span>
@@ -203,23 +203,23 @@
       <div class="card-title">British Meals</div>
       <div class="reading-text">
         <p class="reading-heading">Breakfast</p>
-        <p>Many British people start the day with a bowl of cereal or some toast with butter and jam. But at weekends, families often cook a "Full English" breakfast. This famous meal includes bacon, sausages, eggs, baked beans, toast, mushrooms and grilled tomatoes. Some people also add black pudding, which is made from blood and oats. It sounds strange, but many people love it! A Full English is very filling, so you usually do not need lunch after eating one.</p>
+        <p>Many British people start the day with a bowl of cereal or some toast with butter and jam. But at weekends, families often cook a “Full English” breakfast. This famous meal includes bacon, sausages, eggs, baked beans, toast, mushrooms and grilled tomatoes. Some people also add black pudding, which is made from blood and oats. It sounds strange, but many people love it! A Full English is very filling, so you usually do not need lunch after eating one.</p>
 
         <p class="reading-heading">Lunch</p>
-        <p>During the week, most people have a quick lunch. A sandwich is the most popular choice — for example, cheese and pickle, tuna mayonnaise, or ham and salad. Many school children bring a packed lunch from home with a sandwich, some fruit, crisps and a drink. At the weekend, some families enjoy a "Sunday roast" for lunch. This is a big meal with roast meat (usually beef, chicken or lamb), roast potatoes, vegetables and gravy. Yorkshire pudding is a light, crispy batter that is always served with roast beef — it is not a dessert!</p>
+        <p>During the week, most people have a quick lunch. A sandwich is the most popular choice — for example, cheese and pickle, tuna mayonnaise, or ham and salad. Many school children bring a packed lunch from home with a sandwich, some fruit, crisps and a drink. At the weekend, some families enjoy a “Sunday roast” for lunch. This is a big meal with roast meat (usually beef, chicken or lamb), roast potatoes, vegetables and gravy. Yorkshire pudding is a light, crispy batter that is always served with roast beef — it is not a dessert!</p>
 
         <p class="reading-heading">Dinner</p>
-        <p>The evening meal is called "dinner" or "tea" in different parts of Britain. Popular dishes include fish and chips, shepherd's pie (minced lamb with mashed potato on top), bangers and mash (sausages with mashed potato and gravy), and curry. In fact, chicken tikka masala — an Indian-style curry — is one of the most popular dishes in the whole country. Many British people also enjoy a takeaway on Friday evenings: Chinese, Indian or pizza.</p>
+        <p>The evening meal is called “dinner” or “tea” in different parts of Britain. Popular dishes include fish and chips, shepherd’s pie (minced lamb with mashed potato on top), bangers and mash (sausages with mashed potato and gravy), and curry. In fact, chicken tikka masala — an Indian-style curry — is one of the most popular dishes in the whole country. Many British people also enjoy a takeaway on Friday evenings: Chinese, Indian or pizza.</p>
 
         <p class="reading-heading">Snacks &amp; Drinks</p>
-        <p>Tea is the national drink of Britain. Most people drink it with milk and sometimes sugar. "Afternoon tea" is a tradition where people eat small sandwiches, scones with cream and jam, and little cakes. Crisps (called "chips" in America) are a very popular snack, and they come in unusual flavours like prawn cocktail, cheese and onion, or salt and vinegar.</p>
+        <p>Tea is the national drink of Britain. Most people drink it with milk and sometimes sugar. “Afternoon tea” is a tradition where people eat small sandwiches, scones with cream and jam, and little cakes. Crisps (called “chips” in America) are a very popular snack, and they come in unusual flavours like prawn cocktail, cheese and onion, or salt and vinegar.</p>
       </div>
     </div>
 
     <div class="card">
       <div class="card-title">Comprehension Questions</div>
       <p class="gap-text">
-        1. A "Full English" breakfast is usually eaten
+        1. A “Full English” breakfast is usually eaten
         <select class="gap-select" id="exA-g1">
           <option value="">— choose —</option>
           <option value="every day">every day</option>
@@ -698,43 +698,33 @@ function checkExB() {
 /* ============================================================
    SUBMIT TO MAKE.COM WEBHOOK
 ============================================================ */
+function eolFlat(o) {
+  if (o == null) return '';
+  if (typeof o !== 'object') return String(o);
+  return Object.keys(o).map(function(k) {
+    return k + ': ' + (o[k] === '' || o[k] == null ? '—' : o[k]);
+  }).join(' | ');
+}
+
 function submitToSheet() {
   buildSummary();
   var btn = document.getElementById('submit-btn');
   btn.disabled = true;
-  btn.textContent = 'Sending...';
-
-  var answers = JSON.stringify([
-    {key: 'exA-g1', value: state.exA.g1 || ''},
-    {key: 'exA-g2', value: state.exA.g2 || ''},
-    {key: 'exA-g3', value: state.exA.g3 || ''},
-    {key: 'exA-g4', value: state.exA.g4 || ''},
-    {key: 'exA-g5', value: state.exA.g5 || ''},
-    {key: 'exA-g6', value: state.exA.g6 || ''},
-    {key: 'exB-g1', value: state.exB.g1 || ''},
-    {key: 'exB-g2', value: state.exB.g2 || ''},
-    {key: 'exB-g3', value: state.exB.g3 || ''},
-    {key: 'exB-g4', value: state.exB.g4 || ''},
-    {key: 'exB-g5', value: state.exB.g5 || ''},
-    {key: 'exB-g6', value: state.exB.g6 || ''},
-    {key: 'exB-g7', value: state.exB.g7 || ''},
-    {key: 'exB-g8', value: state.exB.g8 || ''},
-    {key: 'exC-text', value: state.exC.text || ''}
-  ]);
-
+  btn.textContent = 'Sending…';
   var payload = {
     name: state.name,
     cls:  state.cls,
     unit: UNIT,
-    answers: answers
+    exA:  eolFlat(state.exA),
+    exB:  eolFlat(state.exB),
+    exC:  state.exC.text || ''
   };
-
   fetch(SHEET_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  }).then(function(r) { return r.json(); })
-  .then(function() {
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+  }).then(function() {
     btn.style.display = 'none';
     document.getElementById('submit-success').style.display = 'block';
     document.getElementById('submit-fallback').style.display = 'block';
