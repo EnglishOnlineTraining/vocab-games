@@ -11,17 +11,14 @@
     1. Save a copy with a descriptive filename, e.g. 9g-new-topic.html
     2. Find every TODO comment and fill in the blanks
     3. Add your exercise steps between the STEP markers
-    4. Update validateStep(), saveStep(), restoreStep(), buildSummary()
-       and buildEmailBody() to match your step data
+    4. Update validateStep(), saveStep(), restoreStep(), buildSummary(),
+       buildEmailBody() and buildPayload() to match your step data
     5. For every dropdown-gap check function, pass a scoreKey to
        checkDropdowns() (e.g. 'exA') — the score + Note are then
-       calculated and shown to the student automatically, no further
-       setup needed. Open-ended writing steps just don't add a scoreKey.
-    6. Set SHEET_URL to the correct year's Google Sheet / Make webhook
-       URL (see CLAUDE.md) — usually nothing else to do, the universal
-       handler auto-creates a tab/row for any new 'unit'
-    7. Step navigation (jump back to visited steps) and the copy/paste
-       block are already built in below — no changes needed
+       calculated and shown to the student automatically
+    6. Set SHEET_URL to the correct year's Make webhook or Apps Script URL
+       (see CLAUDE.md) — the universal handler auto-creates a tab/row
+    7. Step navigation and copy/paste blocking are in exercise.js — nothing to wire up
     8. Add a card for the new page in activities.html
   ================================================================
   -->
@@ -29,145 +26,7 @@
   <!-- TODO: Update the page title -->
   <title>Exercise Title | englishonline.training</title>
 
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --blue:    #1a3a5c;
-      --gold:    #c9a227;
-      --gold-lt: #f5e6b0;
-      --teal:    #2b7a78;
-      --red:     #c0392b;
-      --green:   #27ae60;
-      --bg:      #f7f9fc;
-      --card:    #ffffff;
-      --text:    #1d2b3a;
-      --muted:   #6b7a8d;
-      --border:  #dce3ec;
-      --radius:  12px;
-      --shadow:  0 2px 16px rgba(26,58,92,.1);
-      --font:    'Segoe UI', system-ui, sans-serif;
-    }
-    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
-
-    /* ── Header ── */
-    .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
-    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
-    .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
-    .header-meta { font-size: .78rem; text-align: right; opacity: .9; }
-    .header-meta strong { display: block; color: var(--gold); }
-    .progress-track { height: 6px; background: rgba(255,255,255,.2); }
-    .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
-
-    /* ── Step navigation (jump back to any visited step) ── */
-    .step-nav { display: none; gap: .4rem; padding: .6rem 1rem; background: #f0f3f8; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
-    .step-nav.show { display: flex; }
-    .step-nav-btn { border: 1.5px solid var(--border); background: #fff; color: var(--muted); font-family: var(--font); font-size: .78rem; font-weight: 600; padding: .3rem .7rem; border-radius: 20px; cursor: pointer; transition: background .15s, color .15s, border-color .15s; }
-    .step-nav-btn.visited { border-color: var(--blue); color: var(--blue); cursor: pointer; }
-    .step-nav-btn.current { background: var(--blue); border-color: var(--blue); color: #fff; cursor: default; }
-    .step-nav-btn.locked { opacity: .45; cursor: not-allowed; }
-
-    /* ── Steps ── */
-    .step { display: none; }
-    .step.active { display: block; }
-    .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
-
-    /* ── Exercise labels ── */
-    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
-    .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
-    .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
-
-    /* ── Cards ── */
-    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
-    .card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
-
-    /* ── Reading text ── */
-    .reading-text { font-size: .93rem; line-height: 1.85; color: var(--text); }
-    .reading-text p { margin-bottom: .85rem; }
-    .reading-text p:last-child { margin-bottom: 0; }
-    .speaker { font-weight: 700; }
-
-    /* ── Forms ── */
-    .form-group { margin-bottom: 1.1rem; }
-    .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
-    .form-input, .form-textarea {
-      width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
-      padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
-      color: var(--text); background: #fff; transition: border-color .2s;
-    }
-    .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--blue); }
-    .form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
-    .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
-
-    /* ── Gap-fill (dropdown) ── */
-    .gap-text { font-size: .93rem; line-height: 2.6; color: var(--text); }
-    .gap-select {
-      display: inline-block; border: 1.5px solid var(--gold); border-radius: 6px;
-      padding: .18rem .45rem; font-family: var(--font); font-size: .82rem;
-      background: var(--gold-lt); color: var(--blue); cursor: pointer;
-      vertical-align: middle; margin: 0 2px; max-width: 200px;
-    }
-    .gap-select:focus { outline: none; border-color: var(--blue); }
-    .gap-correct { background: #d4edda; border-color: var(--green); color: #155724; }
-    .gap-wrong   { background: #fde8e8; border-color: var(--red);   color: #721c24; }
-    .gap-num { font-size: .68rem; color: var(--muted); vertical-align: super; margin-right: 1px; }
-
-    /* ── Word bank ── */
-    .word-bank { background: var(--gold-lt); border: 1.5px solid var(--gold); border-radius: 8px; padding: .75rem 1rem; margin-bottom: 1.25rem; }
-    .word-bank strong { display: block; color: var(--blue); margin-bottom: .5rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; }
-    .word-bank span { display: inline-block; margin: .2rem .3rem; background: var(--blue); color: #fff; border-radius: 4px; padding: .18rem .55rem; font-size: .8rem; font-weight: 600; }
-
-    /* ── Sentence transformation ── */
-    .transform-item { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: .85rem; background: #fafbfc; }
-    .transform-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 800; flex-shrink: 0; margin-bottom: .5rem; }
-    .transform-original { font-size: .9rem; color: var(--text); font-style: italic; margin-bottom: .65rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); }
-    .transform-hint { font-size: .75rem; color: var(--muted); margin-top: .3rem; }
-
-    /* ── Feedback banners ── */
-    .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
-    .feedback.show { display: block; }
-    .feedback.ok   { background: #d4edda; color: #155724; }
-    .feedback.warn { background: #fff3cd; color: #856404; }
-    .feedback.err  { background: #fde8e8; color: #721c24; }
-
-    /* ── Buttons ── */
-    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
-    .btn:active { transform: scale(.97); }
-    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
-    .btn-primary:hover { background: #15304f; }
-    .btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
-    .btn-gold:hover { background: #b8911f; }
-    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
-    .btn-outline:hover { background: var(--blue); color: #fff; }
-    .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
-    .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
-    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
-
-    /* ── Welcome screen ── */
-    .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
-    .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
-    .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
-    .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 440px; margin-left: auto; margin-right: auto; }
-    .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
-    .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; }
-    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
-    .ov-card.locked { opacity: .5; }
-    .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
-
-    /* ── Submit / summary ── */
-    .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
-    .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
-    .summary-row:last-child { border-bottom: none; }
-    .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
-    .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
-    .summary-a  { color: var(--text); white-space: pre-wrap; }
-
-    @media (max-width: 480px) {
-      .ex-title { font-size: 1.25rem; }
-      .btn { padding: .65rem 1.1rem; }
-      .welcome-title { font-size: 1.4rem; }
-      .gap-select { max-width: 150px; font-size: .75rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -175,7 +34,7 @@
 <header class="app-header">
   <div class="header-inner">
     <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
-    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">&larr; Activities</a>
     <div class="header-meta" id="header-meta" style="display:none">
       <strong id="header-name"></strong>
       <span id="header-step">Exercise A of 4</span>
@@ -183,7 +42,7 @@
   </div>
   <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
 </header>
-<!-- Step navigation — auto-built by renderStepNav(), lets students jump back to any step they've already visited -->
+<!-- Step navigation — auto-built by renderStepNav() in exercise.js -->
 <nav class="step-nav" id="step-nav"></nav>
 
 
@@ -217,7 +76,7 @@
         <input class="form-input" type="text" id="inp-class" placeholder="e.g. 9g" autocomplete="off">
       </div>
       <div id="welcome-error" class="feedback err"></div>
-      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises →</button>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises &rarr;</button>
     </div>
   </div>
 </section>
@@ -247,9 +106,9 @@
          Remove both lines if the step is open-ended writing only. -->
     <div id="step1-fb" class="feedback"></div>
     <div class="btn-row">
-      <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
-      <button class="btn btn-gold btn-sm" onclick="checkExA()">✓ Check</button><!-- TODO: remove if no dropdown answers -->
-      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B →</button>
+      <button class="btn btn-outline" onclick="prevStep(1)">&larr; Back</button>
+      <button class="btn btn-gold btn-sm" onclick="checkExA()">&#10003; Check</button><!-- TODO: remove if no dropdown answers -->
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B &rarr;</button>
     </div>
   </div>
 </section>
@@ -272,8 +131,8 @@
 
     <div id="step2-error" class="feedback err"></div>
     <div class="btn-row">
-      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
-      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(2)">Review &amp; Submit →</button>
+      <button class="btn btn-outline" onclick="prevStep(2)">&larr; Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(2)">Review &amp; Submit &rarr;</button>
     </div>
   </div>
 </section>
@@ -310,34 +169,16 @@
 </section>
 
 
+<script src="exercise.js"></script>
 <script>
 /* ============================================================
    CONFIG
-   TODO: set the unit name — this becomes the Google Sheet tab
+   TODO: set these four values
 ============================================================ */
-var UNIT         = 'my-exercise-unit';   /* TODO: change this — must be unique per exercise */
-var TOTAL_STEPS  = 3;                    /* TODO: total number of steps including submit step */
-var SHEET_URL    = 'https://script.google.com/macros/s/AKfycbw2eqOCB6XKREIOXuqn2fCL067CdMm20MmiTFMt9GmRUEn12vLl8gJbHL1UfbKmCP7W/exec';
+var UNIT          = 'my-exercise-unit';   /* TODO: change — must be unique per exercise */
+var TOTAL_STEPS   = 3;                    /* TODO: total steps including submit step */
+var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbw2eqOCB6XKREIOXuqn2fCL067CdMm20MmiTFMt9GmRUEn12vLl8gJbHL1UfbKmCP7W/exec';
 var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
-
-/* ============================================================
-   TEST MODE (localhost detection)
-============================================================ */
-function isTestMode() {
-  return window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-}
-
-function showToast(message, duration) {
-  duration = duration || 2500;
-  var toast = document.createElement('div');
-  toast.textContent = message;
-  toast.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.75rem 1.5rem;border-radius:8px;font-size:.9rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .3s;box-shadow:0 2px 8px rgba(0,0,0,.3)';
-  document.body.appendChild(toast);
-  setTimeout(function() {
-    toast.style.opacity = '0';
-    setTimeout(function() { toast.remove(); }, 300);
-  }, duration);
-}
 
 /* ============================================================
    STATE
@@ -348,96 +189,9 @@ var state = {
   cls:    '',
   exA:    {},   /* TODO: add more sections as needed */
   exB:    {},
-  scores: {}    /* NEW: populated automatically by checkDropdowns() — { stepKey: {correct, total} } */
+  scores: {}    /* auto-populated by checkDropdowns() */
 };
-var maxStepReached = 0;   /* NEW: highest step index the student has reached, for step-nav locking */
-
-/* ============================================================
-   NAVIGATION
-   (no changes needed here)
-============================================================ */
-function showStep(n) {
-  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
-  document.getElementById('step-' + n).classList.add('active');
-  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  restoreStep(n);
-  if (n > maxStepReached) maxStepReached = n;
-  renderStepNav(n);
-  var meta = document.getElementById('header-meta');
-  if (n === 0) { meta.style.display = 'none'; return; }
-  meta.style.display = 'block';
-  document.getElementById('header-name').textContent = state.name + (state.cls ? ' — ' + state.cls : '');
-  /* TODO: update label list and count to match your exercises */
-  var labels = ['A', 'B', 'C', 'D', 'E'];
-  document.getElementById('header-step').textContent = n < TOTAL_STEPS
-    ? 'Exercise ' + labels[n - 1] + ' of ' + (TOTAL_STEPS - 1)
-    : 'Submit';
-}
-
-/* NEW: builds the row of step-navigation buttons (Ex A, Ex B, … Submit).
-   Visited steps are clickable; steps beyond maxStepReached are locked.
-   (no changes needed here — runs off TOTAL_STEPS automatically) */
-function renderStepNav(current) {
-  var nav = document.getElementById('step-nav');
-  if (current === 0) { nav.classList.remove('show'); nav.innerHTML = ''; return; }
-  var labels = ['A', 'B', 'C', 'D', 'E'];
-  var html = '';
-  for (var i = 1; i < TOTAL_STEPS; i++) {
-    var cls = 'step-nav-btn';
-    if (i === current) cls += ' current';
-    else if (i <= maxStepReached) cls += ' visited';
-    else cls += ' locked';
-    html += '<button class="' + cls + '" ' + (i <= maxStepReached && i !== current ? 'onclick="goToStep(' + i + ')"' : 'disabled') + '>Ex ' + labels[i - 1] + '</button>';
-  }
-  var submitCls = 'step-nav-btn' + (current === TOTAL_STEPS - 1 ? ' current' : (maxStepReached >= TOTAL_STEPS - 1 ? ' visited' : ' locked'));
-  html += '<button class="' + submitCls + '" ' + (maxStepReached >= TOTAL_STEPS - 1 && current !== TOTAL_STEPS - 1 ? 'onclick="goToStep(' + (TOTAL_STEPS - 1) + ')"' : 'disabled') + '>Submit</button>';
-  nav.innerHTML = html;
-  nav.classList.add('show');
-}
-
-/* NEW: jump directly to any step already visited (does not skip validation
-   for steps not yet reached — those buttons are disabled in renderStepNav). */
-function goToStep(n) {
-  if (n > maxStepReached) return;
-  var current = document.querySelector('.step.active');
-  if (current) { var curN = parseInt(current.id.replace('step-', ''), 10); saveStep(curN); }
-  if (n === TOTAL_STEPS - 1) { buildSummary(); }
-  showStep(n);
-}
-
-function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
-
-function nextStep(n) {
-  if (!validateStep(n)) {
-    var err = document.getElementById('step' + n + '-error');
-    if (err) { err.textContent = 'Please answer the required questions before continuing.'; err.classList.add('show'); }
-    return;
-  }
-  clearErr(n);
-  saveStep(n);
-  if (n === TOTAL_STEPS - 1) { buildSummary(); }
-  showStep(n + 1);
-}
-
-function clearErr(n) {
-  var err = document.getElementById('step' + n + '-error');
-  if (err) err.classList.remove('show');
-}
-
-function startExercises() {
-  var name = g('inp-name'), cls = g('inp-class');
-  var err = document.getElementById('welcome-error');
-  if (!name || !cls) {
-    err.textContent = 'Please enter both your name and your class.';
-    err.classList.add('show');
-    return;
-  }
-  err.classList.remove('show');
-  state.name = name;
-  state.cls  = cls;
-  showStep(1);
-}
+var maxStepReached = 0;
 
 /* ============================================================
    VALIDATION
@@ -445,8 +199,8 @@ function startExercises() {
 ============================================================ */
 function validateStep(n) {
   switch (n) {
-    case 1: return val('exA-q1');               /* TODO: check your actual field IDs */
-    case 2: return true;                        /* TODO: add validation for step 2 */
+    case 1: return val('exA-q1');    /* TODO: check your actual field IDs */
+    case 2: return true;             /* TODO: add validation for step 2 */
     default: return true;
   }
 }
@@ -470,21 +224,13 @@ function restoreStep(n) {
 }
 
 /* ============================================================
-   HELPERS
-============================================================ */
-function g(id)       { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
-function set(id, v)  { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
-function val(id)     { return g(id).length > 0; }
-function esc(str)    { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
-
-/* ============================================================
    SUMMARY
    TODO: add a row for every question you want to show
 ============================================================ */
 function buildSummary() {
   var rows = [
-    /* TODO: { ex: 'Exercise A', q: 'Question label', a: state.exA.q1 }, */
     { ex: 'Exercise A', q: 'Question 1', a: state.exA.q1 }
+    /* TODO: add more rows */
   ];
   var html = '<div class="submit-summary">'
     + '<div class="summary-row"><div class="summary-ex">Student</div>'
@@ -497,22 +243,6 @@ function buildSummary() {
   html += '</div>';
   document.getElementById('summary-container').innerHTML = html;
   renderScore();
-}
-
-/* NEW: shows the auto-graded score + Note to the student on the final step.
-   (no changes needed here — reads whatever checkDropdowns() recorded) */
-function renderScore() {
-  var box = document.getElementById('score-display');
-  var sc = totalScore();
-  if (!sc.possible) { box.style.display = 'none'; return; }   /* writing-only exercise — nothing auto-gradable */
-  var grade = lookupGrade(sc.earned, sc.possible);
-  box.style.display = 'block';
-  box.innerHTML = '<div class="card" style="text-align:center;background:var(--gold-lt);border:1.5px solid var(--gold)">'
-    + '<div style="font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--blue);font-weight:700;margin-bottom:.3rem">Your score (auto-graded sections)</div>'
-    + '<div style="font-size:1.5rem;font-weight:800;color:var(--blue)">' + sc.earned + ' / ' + sc.possible + ' points</div>'
-    + (grade ? '<div style="font-size:1rem;color:var(--blue);margin-top:.2rem">Note ' + grade.note + ' (' + grade.label + ')</div>' : '')
-    + '<div style="font-size:.78rem;color:var(--muted);margin-top:.4rem">This score is also sent to your teacher. Open-ended writing answers are graded by your teacher separately.</div>'
-    + '</div>';
 }
 
 /* ============================================================
@@ -532,63 +262,28 @@ function buildEmailBody() {
 }
 
 /* ============================================================
-   CHECK ANSWERS — helper + one example function
-   -------------------------------------------------------
-   Use this for any step that has dropdown (<select>) answers
-   with a single correct answer per gap.
-
-   HOW TO USE:
-     1. Call checkDropdowns() from a check function for that step.
-     2. Pass:
-          ids      — array of gap key strings, e.g. ['g1','g2','g3']
-          prefix   — element id prefix,         e.g. 'exA-'
-          answers  — object of correct values,  e.g. {g1:'capital', g2:'born'}
-          fbId     — id of the feedback div,    e.g. 'step1-fb'
-          scoreKey — NEW: unique key for this check, e.g. 'exA' — feeds the
-                     auto-graded score shown to the student + sent to the teacher
-     3. Correct gaps turn green; wrong gaps turn red.
-     4. A score message appears in the feedback div.
-
-   Delete checkExA() and replace with your own function(s).
-   Remove entirely if your exercise has no dropdown gaps (open-ended writing
-   exercises are reviewed by the teacher manually and aren't auto-scored).
+   PAYLOAD
+   TODO: include all your exercise state objects
 ============================================================ */
-function checkDropdowns(ids, prefix, answers, fbId, scoreKey) {
-  var correct = 0, wrong = 0, empty = 0;
-  ids.forEach(function(k) {
-    var sel = document.getElementById(prefix + k);
-    if (!sel) return;
-    /* reset previous colouring */
-    sel.className = sel.className.replace(/\s*(gap-correct|gap-wrong)/g, '');
-    if (!sel.value) { empty++; return; }
-    if (sel.value === answers[k]) { sel.className += ' gap-correct'; correct++; }
-    else                          { sel.className += ' gap-wrong';   wrong++;   }
-  });
-  var fb = document.getElementById(fbId);
-  fb.style.display = 'block';
-  var total = ids.length;
-  if (empty === total) {
-    fb.className = 'feedback err show';
-    fb.textContent = 'Please answer the gaps first.';
-  } else if (wrong === 0 && empty === 0) {
-    fb.className = 'feedback ok show';
-    fb.textContent = '✓ All ' + correct + ' correct! Well done.';
-  } else {
-    fb.className = 'feedback warn show';
-    fb.textContent = correct + ' / ' + total + ' correct'
-      + (wrong  ? ' — check the red gaps' : '')
-      + (empty  ? ' (' + empty + ' still blank)' : '') + '.';
-  }
-  /* NEW: record this check's result into state.scores so the final score/grade can sum it up */
-  if (scoreKey) state.scores[scoreKey] = { correct: correct, total: total };
+function buildPayload() {
+  var sc = totalScore();
+  var grade = lookupGrade(sc.earned, sc.possible);
+  return {
+    name: state.name, cls: state.cls, unit: UNIT,
+    exA: state.exA, exB: state.exB,   /* TODO: add more state objects */
+    score: sc.possible ? (sc.earned + ' / ' + sc.possible) : '(no auto-graded sections)',
+    grade: grade ? ('Note ' + grade.note + ' (' + grade.label + ')') : ''
+  };
 }
 
-/* TODO: replace this with your actual check function(s).
-   One function per exercise step that has dropdown gaps.
-   Example — Exercise A with gaps exA-g1 … exA-g4: */
+/* ============================================================
+   CHECK ANSWERS
+   TODO: one function per step that has dropdown gaps
+   Example — Exercise A with gaps exA-g1 … exA-g4:
+============================================================ */
 function checkExA() {
   var answers = {
-    g1: 'TODO-correct-answer',   /* TODO: fill in the correct answer for each gap */
+    g1: 'TODO-correct-answer',
     g2: 'TODO-correct-answer',
     g3: 'TODO-correct-answer',
     g4: 'TODO-correct-answer'
@@ -597,178 +292,11 @@ function checkExA() {
 }
 
 /* ============================================================
-   SCORE + GRADE (Note) — uses the SAME Punktetabelle (PMG/BAO Sek I)
-   as the Notengrenzen-Rechner artifact, so a score from any exercise
-   maps to the same Note 1–5 boundaries Shaun uses everywhere else.
-   (no changes needed here — sums every checkDropdowns() call automatically)
-============================================================ */
-var GRADE_TABLE = [
-  [100,96,80,60,45,16],[99,96,80,60,45,16],[98,95,79,59,45,16],[97,94,78,59,44,16],
-  [96,93,77,58,44,16],[95,92,76,57,43,16],[94,91,76,57,43,16],[93,90,75,56,42,15],
-  [92,89,74,56,42,15],[91,88,73,55,41,15],[90,87,72,54,41,15],[89,86,72,54,41,15],
-  [88,85,71,53,40,15],[87,84,70,53,40,14],[86,83,69,52,39,14],[85,82,68,51,39,14],
-  [84,81,68,51,38,14],[83,80,67,50,38,14],[82,79,66,50,37,14],[81,78,65,49,37,13],
-  [80,77,64,48,36,13],[79,76,64,48,36,13],[78,75,63,47,36,13],[77,74,62,47,35,13],
-  [76,73,61,46,35,13],[75,72,60,45,34,12],[74,72,60,45,34,12],[73,71,59,44,33,12],
-  [72,70,58,44,33,12],[71,69,57,43,32,12],[70,68,56,42,32,12],[69,67,56,42,32,12],
-  [68,66,55,41,31,11],[67,65,54,41,31,11],[66,64,53,40,30,11],[65,63,52,39,30,11],
-  [64,62,52,39,29,11],[63,61,51,38,29,11],[62,60,50,38,28,10],[61,59,49,37,28,10],
-  [60,58,48,36,27,10],[59,57,48,36,27,10],[58,56,47,35,27,10],[57,55,46,35,26,10],
-  [56,54,45,34,26,9],[55,53,44,33,25,9],[54,52,44,33,25,9],[53,51,43,32,24,9],
-  [52,50,42,32,24,9],[51,49,41,31,23,9],[50,48,40,30,23,8],[49,48,40,30,23,8],
-  [48,47,39,29,22,8],[47,46,38,29,22,8],[46,45,37,28,21,8],[45,44,36,27,21,8],
-  [44,43,36,27,20,8],[43,42,35,26,20,7],[42,41,34,26,19,7],[41,40,33,25,19,7],
-  [40,39,32,24,18,7],[39,38,32,24,18,7],[38,37,31,23,18,7],[37,36,30,23,17,6],
-  [36,35,29,22,17,6],[35,34,28,21,16,6],[34,33,28,21,16,6],[33,32,27,20,15,6],
-  [32,31,26,20,15,6],[31,30,25,19,14,5],[30,29,24,18,14,5],[29,28,24,18,14,5],
-  [28,27,23,17,13,5],[27,26,22,17,13,5],[26,25,21,16,12,5],[25,24,20,15,12,4],
-  [24,24,20,15,11,4],[23,23,19,14,11,4],[22,22,18,14,10,4],[21,21,17,13,10,4],
-  [20,20,16,12,9,4],[19,19,16,12,9,4],[18,18,15,11,9,3],[17,17,14,11,8,3],
-  [16,16,13,10,8,3],[15,15,12,9,7,3],[14,14,12,9,7,3],[13,13,11,8,6,3],
-  [12,12,10,8,6,2],[11,11,9,7,5,2],[10,10,8,6,5,2]
-];
-var GRADE_LABELS = ['Sehr gut', 'Gut', 'Befriedigend', 'Genügend', 'Nicht genügend'];
-
-/* Sums every checkDropdowns() result recorded in state.scores. */
-function totalScore() {
-  var earned = 0, possible = 0;
-  Object.keys(state.scores).forEach(function(k) {
-    earned   += state.scores[k].correct;
-    possible += state.scores[k].total;
-  });
-  return { earned: earned, possible: possible };
-}
-
-/* Looks up a Note (1–5) from GRADE_TABLE using the raw earned/possible
-   point totals. If the exercise has 10–100 gradable points the table is
-   used directly; fewer than 10 are scaled up to 10, more than 100 are
-   scaled down to 100 — so the same Punktetabelle boundaries apply. */
-function lookupGrade(earned, possible) {
-  if (!possible) return null;   /* nothing auto-gradable in this exercise */
-  var score, maxPts;
-  if (possible < 10) {
-    maxPts = 10;
-    score = Math.round((earned / possible) * 10);
-  } else if (possible > 100) {
-    maxPts = 100;
-    score = Math.round((earned / possible) * 100);
-  } else {
-    maxPts = possible;
-    score = earned;
-  }
-  score = Math.max(0, Math.min(maxPts, score));
-  var row = GRADE_TABLE.filter(function(r) { return r[0] === maxPts; })[0];
-  if (!row) return null;
-  for (var i = 1; i <= 5; i++) {
-    if (score >= row[i]) return { note: i, label: GRADE_LABELS[i - 1] };
-  }
-  return { note: 5, label: GRADE_LABELS[4] };
-}
-
-/* ============================================================
-   SUBMIT TO GOOGLE SHEET / MAKE WEBHOOK
-   (no changes needed here — UNIT controls which tab it goes to)
-============================================================ */
-function submitToSheet() {
-  buildSummary();
-  var btn = document.getElementById('submit-btn');
-  btn.disabled = true;
-  btn.textContent = 'Sending...';
-  var sc = totalScore();
-  var grade = lookupGrade(sc.earned, sc.possible);
-  var payload = {
-    name: state.name, cls: state.cls, unit: UNIT, exA: state.exA, exB: state.exB,
-    /* NEW: auto-graded score + Note, sent to the teacher alongside the answers */
-    score: sc.possible ? (sc.earned + ' / ' + sc.possible) : '(no auto-graded sections)',
-    grade: grade ? ('Note ' + grade.note + ' (' + grade.label + ')') : ''
-  };
-  /* TODO: update payload to include all your exercise state objects */
-
-  if (isTestMode()) {
-    console.log('📝 TEST MODE - Submission payload:', payload);
-    console.log('Sheet/Webhook URL:', SHEET_URL);
-    setTimeout(function() {
-      btn.style.display = 'none';
-      showToast('✅ Test submission logged to console');
-      document.getElementById('submit-success').style.display = 'block';
-      document.getElementById('submit-fallback').style.display = 'block';
-    }, 600);
-    return;
-  }
-
-  fetch(SHEET_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
-  }).then(function() {
-    btn.style.display = 'none';
-    showToast('✅ Submitted to teacher!');
-    document.getElementById('submit-success').style.display = 'block';
-    document.getElementById('submit-fallback').style.display = 'block';
-  }).catch(function() {
-    btn.disabled = false;
-    btn.textContent = 'Submit to Teacher';
-    showToast('⚠️ Submission failed - check connection');
-    document.getElementById('submit-fallback').style.display = 'block';
-  });
-}
-
-function submitByEmail() {
-  var a = document.createElement('a');
-  a.href = 'mailto:' + TEACHER_EMAIL
-    + '?subject=' + encodeURIComponent(UNIT + ' - ' + state.name + ' - ' + state.cls)
-    + '&body='    + encodeURIComponent(buildEmailBody());
-  a.style.display = 'none';
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(function() { document.body.removeChild(a); }, 100);
-}
-
-function copyAnswers() {
-  var body = buildEmailBody();
-  navigator.clipboard.writeText(body)
-    .then(function() { alert('Answers copied! Paste them into an email to your teacher.'); })
-    .catch(function() { prompt('Copy this text:', body); });
-}
-
-/* ============================================================
    INIT
 ============================================================ */
 document.addEventListener('DOMContentLoaded', function() {
   /* TODO: call any render functions needed before step 0 shows */
   showStep(0);
-});
-</script>
-
-<script>
-/* ── Paste-block: prevent pasting into answer fields ── */
-document.addEventListener('paste', function(e) {
-  var t = e.target;
-  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
-    e.preventDefault();
-    var msg = document.createElement('div');
-    msg.textContent = 'Pasting is not allowed';
-    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
-    document.body.appendChild(msg);
-    setTimeout(function() {
-      msg.style.opacity = '0';
-      setTimeout(function() { msg.remove(); }, 400);
-    }, 2000);
-  }
-});
-
-/* ── Copy-block: prevent copying text from the page ── */
-document.addEventListener('copy', function(e) {
-  e.preventDefault();
-  var msg = document.createElement('div');
-  msg.textContent = '🚫 Copying is not allowed';
-  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
-  document.body.appendChild(msg);
-  setTimeout(function() {
-    msg.style.opacity = '0';
-    setTimeout(function() { msg.remove(); }, 400);
-  }, 2000);
 });
 </script>
 
