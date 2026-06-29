@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tudor Conditionals – Type 3 | englishonline.training</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:    #1a3a5c;
+      --gold:    #c9a227;
+      --gold-lt: #f5e6b0;
+      --teal:    #2b7a78;
+      --red:     #c0392b;
+      --green:   #27ae60;
+      --bg:      #f7f9fc;
+      --card:    #ffffff;
+      --text:    #1d2b3a;
+      --muted:   #6b7a8d;
+      --border:  #dce3ec;
+      --radius:  12px;
+      --shadow:  0 2px 16px rgba(26,58,92,.1);
+      --font:    'Segoe UI', system-ui, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
+
+    .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
+    .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
+    .header-meta { font-size: .78rem; text-align: right; opacity: .9; }
+    .header-meta strong { display: block; color: var(--gold); }
+    .progress-track { height: 6px; background: rgba(255,255,255,.2); }
+    .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
+
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+
+    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
+    .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+    .ex-subtitle { font-size: .92rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.6; }
+
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
+
+    /* Grammar explanation box */
+    .grammar-box { background: var(--gold-lt); border-left: 4px solid var(--gold); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1.25rem; }
+    .grammar-box h3 { font-size: .95rem; font-weight: 700; color: var(--blue); margin-bottom: .6rem; }
+    .grammar-box p { font-size: .88rem; color: var(--text); line-height: 1.7; margin-bottom: .5rem; }
+    .grammar-box p:last-child { margin-bottom: 0; }
+    .grammar-box .formula { font-family: monospace; background: rgba(255,255,255,.7); border-radius: 6px; padding: .4rem .8rem; display: inline-block; margin: .3rem 0; font-size: .85rem; color: var(--blue); font-weight: 600; }
+    .grammar-box .example { font-style: italic; color: var(--teal); font-size: .88rem; margin-top: .4rem; }
+
+    /* Reading text */
+    .reading-text { font-size: .9rem; line-height: 1.9; color: var(--text); border-left: 3px solid var(--gold); padding-left: 1rem; margin-bottom: 1rem; }
+    .reading-text p { margin-bottom: .75rem; }
+
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+    .form-input, .form-textarea {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+      padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
+      color: var(--text); background: #fff; transition: border-color .2s;
+    }
+    .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--blue); }
+    .form-textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
+
+    .gap-text { font-size: .93rem; line-height: 2.8; color: var(--text); }
+    .gap-select {
+      display: inline-block; border: 1.5px solid var(--gold); border-radius: 6px;
+      padding: .18rem .45rem; font-family: var(--font); font-size: .82rem;
+      background: var(--gold-lt); color: var(--blue); cursor: pointer;
+      vertical-align: middle; margin: 0 2px; max-width: 230px;
+    }
+    .gap-select:focus { outline: none; border-color: var(--blue); }
+
+    .transform-item { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: .85rem; background: #fafbfc; }
+    .transform-num { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 800; flex-shrink: 0; margin-bottom: .5rem; }
+    .transform-original { font-size: .9rem; color: var(--text); font-style: italic; margin-bottom: .65rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); }
+
+    /* Matching */
+    .match-table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+    .match-table td { padding: .6rem .75rem; vertical-align: top; }
+    .match-table tr:nth-child(even) td { background: #f7f9fc; }
+    .match-table .match-num { font-weight: 700; color: var(--blue); width: 28px; }
+    .match-table .match-text { color: var(--text); line-height: 1.5; }
+    .match-select { border: 1.5px solid var(--gold); border-radius: 6px; padding: .25rem .5rem; font-family: var(--font); font-size: .82rem; background: var(--gold-lt); color: var(--blue); cursor: pointer; min-width: 50px; }
+    .match-select:focus { outline: none; border-color: var(--blue); }
+    .match-options { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: .85rem; }
+    .match-options p { margin-bottom: .4rem; line-height: 1.5; }
+    .match-options strong { color: var(--blue); }
+
+    .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
+    .feedback.show { display: block; }
+    .feedback.err  { background: #fde8e8; color: #721c24; }
+
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
+    .btn-primary:hover { background: #15304f; }
+    .btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
+    .btn-gold:hover { background: #b8911f; }
+    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+    .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+    .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
+    .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
+    .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+    .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+    .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+    .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; line-height: 1.5; }
+    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .85rem; }
+    .ov-card.locked { opacity: .45; }
+    .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+
+    .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
+    .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
+    .summary-a  { color: var(--text); white-space: pre-wrap; }
+
+    @media (max-width: 480px) {
+      .ex-title { font-size: 1.25rem; }
+      .btn { padding: .65rem 1.1rem; }
+      .welcome-title { font-size: 1.4rem; }
+      .gap-select { max-width: 160px; font-size: .75rem; }
+      .exercise-overview { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step"></span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+
+
+<!-- ── STEP 0: WELCOME ── -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">🏰</div>
+      <h1 class="welcome-title">Tudor Conditionals – Type 3</h1>
+      <p class="welcome-sub">Read a story, learn the grammar, and practise conditional clauses type 3 with sentences about English and Tudor history.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card">
+        <div class="ov-icon">📖</div>
+        <strong>Ex A – Reading</strong>
+        Read the story and answer questions
+      </div>
+      <div class="ov-card locked">
+        <div class="ov-icon">🔗</div>
+        <strong>Ex B – Matching</strong>
+        Shakespeare's Globe — match sentence halves
+      </div>
+      <div class="ov-card locked">
+        <div class="ov-icon">✍️</div>
+        <strong>Ex C – Transformation</strong>
+        Rewrite sentences as type 3 conditionals
+      </div>
+      <div class="ov-card locked">
+        <div class="ov-icon">🔤</div>
+        <strong>Ex D – Gap-fill</strong>
+        English would have been different!
+      </div>
+      <div class="ov-card locked">
+        <div class="ov-icon">🔤</div>
+        <strong>Ex E – Gap-fill</strong>
+        Imagine… (Workbook Ex 12)
+      </div>
+      <div class="ov-card locked">
+        <div class="ov-icon">💬</div>
+        <strong>Ex F – Your Turn</strong>
+        What would you have done?
+      </div>
+      <div class="ov-card locked">
+        <div class="ov-icon">🌍</div>
+        <strong>Ex G – History chain</strong>
+        The world would have been different!
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. 7g" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── STEP 1: EXERCISE A – Reading ── -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">If I hadn't talked so much…</h2>
+    <p class="ex-subtitle">Read the story about Jay's adventure in London. Then answer the questions below.</p>
+
+    <div class="card">
+      <div class="card-title">📖 Read the story</div>
+      <div class="reading-text">
+        <p>"The Globe sounds cool," Jay said to Holly and the others as they walked along a dark little road. "I'm sure it was great fun: People walked around and shouted during the plays back then! And there were <em>animals</em> there too! How funny." Jay talked and talked and talked. But then he noticed he was talking to — nobody. Where were the others?! He had turned into another dark little road and he could only hear the sound of water. "I'm close to the river," he thought. "But I'm really stupid! If I hadn't talked so much, I'd have noticed that the others had gone somewhere else." Jay tried to turn back but found himself in another dark road. Now he was scared. "The others could have helped me if they hadn't turned off their phones," he thought.</p>
+        <p>Suddenly, he could hear a voice which was telling a scary story about a murder which had happened right here in this street! He moved towards the voice and found himself in a new tour group: the Victorian tour. What luck! The guide was talking about blood and crime and dirt and rats. He knew the Victorian period was interesting, but <em>this</em> interesting? Wow! He hadn't realised that people had lived like this — in London!</p>
+        <p>Of course, they would have lived in a better part of the city if they had had money. But there was probably much more action here. "I'd have missed these cool stories if I'd stayed with the others!" he thought. The guide suddenly said "Stop!" Everyone stopped and listened. Then, a man in Victorian clothes walked past them, slowly, like a ghost. He didn't make a sound. A moment later, a woman's voice came from one of the houses. She was screaming!</p>
+        <p>Then Jay saw that the 'ghost' had dropped something — his pipe? Jay ran forward and picked it up. "If I hadn't joined the wrong tour, I wouldn't have seen a man in Victorian clothes with a pipe," he thought. "And if I hadn't been so quick, I wouldn't have got a Victorian pipe for my calendar photo! Just wait till I tell the others — they'll never believe me!"</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Answer the questions</div>
+
+      <div class="form-group">
+        <label class="form-label" for="ex1-q1">1. Why did Jay get lost?</label>
+        <textarea class="form-textarea" id="ex1-q1" placeholder="Write your answer in English..." rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ex1-q2">2. What tour did Jay end up joining by accident?</label>
+        <textarea class="form-textarea" id="ex1-q2" placeholder="Write your answer in English..." rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ex1-q3">3. What did Jay find at the end of the story? Why was he happy about it?</label>
+        <textarea class="form-textarea" id="ex1-q3" placeholder="Write your answer in English..." rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ex1-q4">4. Find <strong>two</strong> conditional type 3 sentences in the story and write them here.</label>
+        <textarea class="form-textarea" id="ex1-q4" placeholder="1. If I hadn't..." rows="4"></textarea>
+      </div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── STEP 2: EXERCISE B – Matching (Shakespeare's Globe) ── -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B</span>
+    <h2 class="ex-title">Shakespeare's Globe</h2>
+    <p class="ex-subtitle">Match the two parts to make correct conditional type 3 sentences. Choose the correct letter (a–f) for each sentence.</p>
+
+    <div class="grammar-box">
+      <h3>🔑 Grammar reminder: Conditional clauses type 3</h3>
+      <p>We use <strong>type 3 conditionals</strong> to talk about <strong>imaginary situations in the past</strong> — things that didn't happen, and their imaginary results.</p>
+      <div class="formula">If + past perfect &nbsp;→&nbsp; would have + past participle</div>
+      <p class="example">Example: "If I <strong>had studied</strong> harder, I <strong>would have passed</strong> the test." (But I didn't study, so I didn't pass.)</p>
+      <p>We can also use <em>could have</em> or <em>might have</em> instead of <em>would have</em> in the result clause.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Match the sentence halves</div>
+      <table class="match-table">
+        <tbody>
+          <tr>
+            <td class="match-num">1.</td>
+            <td class="match-text">Men and boys <strong>wouldn't have had</strong> all the best roles</td>
+            <td><select class="match-select" id="exB-m1"><option value="">—</option><option>a</option><option>b</option><option>c</option><option>d</option><option>e</option><option>f</option></select></td>
+          </tr>
+          <tr>
+            <td class="match-num">2.</td>
+            <td class="match-text">If the Globe hadn't been built with wood,</td>
+            <td><select class="match-select" id="exB-m2"><option value="">—</option><option>a</option><option>b</option><option>c</option><option>d</option><option>e</option><option>f</option></select></td>
+          </tr>
+          <tr>
+            <td class="match-num">3.</td>
+            <td class="match-text">They could have used electric lights</td>
+            <td><select class="match-select" id="exB-m3"><option value="">—</option><option>a</option><option>b</option><option>c</option><option>d</option><option>e</option><option>f</option></select></td>
+          </tr>
+          <tr>
+            <td class="match-num">4.</td>
+            <td class="match-text">The Globe wouldn't have been so popular</td>
+            <td><select class="match-select" id="exB-m4"><option value="">—</option><option>a</option><option>b</option><option>c</option><option>d</option><option>e</option><option>f</option></select></td>
+          </tr>
+          <tr>
+            <td class="match-num">5.</td>
+            <td class="match-text">If the theatre had had a roof,</td>
+            <td><select class="match-select" id="exB-m5"><option value="">—</option><option>a</option><option>b</option><option>c</option><option>d</option><option>e</option><option>f</option></select></td>
+          </tr>
+          <tr>
+            <td class="match-num">6.</td>
+            <td class="match-text">If they hadn't had pictures of the old Globe,</td>
+            <td><select class="match-select" id="exB-m6"><option value="">—</option><option>a</option><option>b</option><option>c</option><option>d</option><option>e</option><option>f</option></select></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="match-options">
+        <p><strong>a)</strong> they couldn't have rebuilt it so well in the 1990s.</p>
+        <p><strong>b)</strong> people could have stayed dry when it rained.</p>
+        <p><strong>c)</strong> if girls and women <strong>had been allowed</strong> to act in plays.</p>
+        <p><strong>d)</strong> it wouldn't have burnt down.</p>
+        <p><strong>e)</strong> if they had had electricity.</p>
+        <p><strong>f)</strong> if it hadn't been so cheap.</p>
+      </div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── STEP 3: EXERCISE C – Sentence Transformation ── -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise C</span>
+    <h2 class="ex-title">Imagine …</h2>
+    <p class="ex-subtitle">Imagine how things would have been different. Read each sentence and rewrite it as a <strong>conditional clause type 3</strong>.</p>
+
+    <div class="grammar-box">
+      <h3>💡 How to transform these sentences</h3>
+      <p>Each sentence gives you a <em>cause</em> and an <em>effect</em>. You need to turn both into a type 3 conditional.</p>
+      <p><strong>Original:</strong> <em>The Celts worked in dark places, so it was difficult for them.</em></p>
+      <p><strong>Type 3:</strong> <em>If the Celts <strong>hadn't worked</strong> in dark places, it <strong>would have been</strong> easier for them.</em></p>
+      <p style="margin-top:.5rem">Notice: the original verb becomes <strong>hadn't + past participle</strong> in the if-clause, and the result uses <strong>would have + past participle</strong>.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Rewrite each sentence as a type 3 conditional</div>
+
+      <div class="transform-item">
+        <div class="transform-num">1</div>
+        <div class="transform-original">The Celts worked in dark and smoky places, so it was very difficult for them.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="exC-t1">Your sentence:</label>
+          <input class="form-input" type="text" id="exC-t1" placeholder="If the Celts hadn't worked …">
+        </div>
+      </div>
+
+      <div class="transform-item">
+        <div class="transform-num">2</div>
+        <div class="transform-original">A Celtic king always wore beautiful jewellery so it was clear to others how important he was.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="exC-t2">Your sentence:</label>
+          <input class="form-input" type="text" id="exC-t2" placeholder="If a Celtic king …">
+        </div>
+      </div>
+
+      <div class="transform-item">
+        <div class="transform-num">3</div>
+        <div class="transform-original">The Romans built baths because they found Britain too cold for them.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="exC-t3">Your sentence:</label>
+          <input class="form-input" type="text" id="exC-t3" placeholder="If the Romans …">
+        </div>
+      </div>
+
+      <div class="transform-item">
+        <div class="transform-num">4</div>
+        <div class="transform-original">The Normans spoke French so the English language changed.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="exC-t4">Your sentence:</label>
+          <input class="form-input" type="text" id="exC-t4" placeholder="If the Normans …">
+        </div>
+      </div>
+
+      <div class="transform-item">
+        <div class="transform-num">5</div>
+        <div class="transform-original">Henry VIII married six times because he wanted a son to be the next monarch.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="exC-t5">Your sentence:</label>
+          <input class="form-input" type="text" id="exC-t5" placeholder="If Henry VIII …">
+        </div>
+      </div>
+
+      <div class="transform-item">
+        <div class="transform-num">6</div>
+        <div class="transform-original">Elizabeth wanted to know more about the world so she sent sailors to America.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="exC-t6">Your sentence:</label>
+          <input class="form-input" type="text" id="exC-t6" placeholder="If Elizabeth …">
+        </div>
+      </div>
+
+      <div class="transform-item">
+        <div class="transform-num">7</div>
+        <div class="transform-original">Queen Victoria reigned for 64 years so she saw a lot of changes.</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="exC-t7">Your sentence:</label>
+          <input class="form-input" type="text" id="exC-t7" placeholder="If Queen Victoria …">
+        </div>
+      </div>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise D →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── STEP 4: EXERCISE D – Gap-fill "English would have been different!" ── -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise D</span>
+    <h2 class="ex-title">English would have been different!</h2>
+    <p class="ex-subtitle">Finish these sentences to say how English <strong>would have been</strong> different. Choose the correct verb form for each gap — remember the type 3 conditional structure!</p>
+
+    <div class="grammar-box">
+      <h3>⚠️ Watch out! Two gaps per sentence</h3>
+      <p>Each sentence has <strong>two gaps</strong>. One gap is in the <em>if-clause</em> (past perfect: <em>had not + past participle</em>) and one is in the <em>result clause</em> (would have / could have + past participle).</p>
+      <p class="example">Example: If the Romans <strong>had not come</strong> to England, they <strong>would not have given</strong> it a new name.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Choose the correct verb forms</div>
+      <div class="gap-text">
+
+        <p style="margin-bottom:1.2rem">
+          <strong>1.</strong> If the Romans
+          <select class="gap-select" id="exD-g1"><option value="">—</option><option>had not come</option><option>would not have come</option><option>did not come</option></select>
+          to England, they
+          <select class="gap-select" id="exD-g2"><option value="">—</option><option>would not have given</option><option>had not given</option><option>did not give</option></select>
+          a new name to this country — Britain.
+        </p>
+
+        <p style="margin-bottom:1.2rem">
+          <strong>2.</strong> If the Romans
+          <select class="gap-select" id="exD-g3"><option value="">—</option><option>had not stayed</option><option>would not have stayed</option><option>did not stay</option></select>
+          for such a long time, their language
+          <select class="gap-select" id="exD-g4"><option value="">—</option><option>would not have influenced</option><option>had not influenced</option><option>did not influence</option></select>
+          the English language so much.
+        </p>
+
+        <p style="margin-bottom:1.2rem">
+          <strong>3.</strong> The Normans
+          <select class="gap-select" id="exD-g5"><option value="">—</option><option>would not have come</option><option>had not come</option><option>did not come</option></select>
+          to England if William the Conqueror
+          <select class="gap-select" id="exD-g6"><option value="">—</option><option>had not believed</option><option>would not have believed</option><option>did not believe</option></select>
+          he had a right to be king of England.
+        </p>
+
+        <p style="margin-bottom:1.2rem">
+          <strong>4.</strong> The people in England
+          <select class="gap-select" id="exD-g7"><option value="">—</option><option>would not have given up</option><option>had not given up</option><option>did not give up</option></select>
+          so many of their English words if French
+          <select class="gap-select" id="exD-g8"><option value="">—</option><option>had not become</option><option>would not have become</option><option>did not become</option></select>
+          so popular after the Normans had arrived.
+        </p>
+
+        <p style="margin-bottom:1.2rem">
+          <strong>5.</strong> If the people in the 16th century
+          <select class="gap-select" id="exD-g9"><option value="">—</option><option>had not loved</option><option>would not have loved</option><option>did not love</option></select>
+          the theatre so much, Shakespeare
+          <select class="gap-select" id="exD-g10"><option value="">—</option><option>would not have written</option><option>had not written</option><option>did not write</option></select>
+          so many plays.
+        </p>
+
+        <p style="margin-bottom:1.2rem">
+          <strong>6.</strong> Shakespeare
+          <select class="gap-select" id="exD-g11"><option value="">—</option><option>would not have invented</option><option>had not invented</option><option>did not invent</option></select>
+          so many new words if he
+          <select class="gap-select" id="exD-g12"><option value="">—</option><option>had not written</option><option>would not have written</option><option>did not write</option></select>
+          so many plays and poems.
+        </p>
+
+        <p style="margin-bottom:1.2rem">
+          <strong>7.</strong> If English sailors
+          <select class="gap-select" id="exD-g13"><option value="">—</option><option>had not explored</option><option>would not have explored</option><option>did not explore</option></select>
+          so many countries, they
+          <select class="gap-select" id="exD-g14"><option value="">—</option><option>would not have brought</option><option>had not brought</option><option>did not bring</option></select>
+          new things and words with them back to England.
+        </p>
+
+      </div>
+    </div>
+
+    <div id="step4-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(4)">Continue to Exercise E →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── STEP 5: EXERCISE E – Gap-fill "Imagine…" (WB Ex 12) ── -->
+<section id="step-5" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise E</span>
+    <h2 class="ex-title">Imagine …</h2>
+    <p class="ex-subtitle">Imagine how things would have been. Put the verbs into the correct tenses to make sentences with <strong>conditional clauses type 3</strong>. Choose carefully — both gaps in each sentence must be correct!</p>
+
+    <div class="card">
+      <div class="card-title">Choose the correct verb forms</div>
+      <div class="gap-text">
+
+        <p style="margin-bottom:1.2rem">
+          <strong>1.</strong> If a Celtic king
+          <select class="gap-select" id="exE-g1"><option value="">—</option><option>had not always worn</option><option>would not have always worn</option><option>did not always wear</option></select>
+          beautiful jewellery, it
+          <select class="gap-select" id="exE-g2"><option value="">—</option><option>would not have been</option><option>had not been</option><option>was not</option></select>
+          clear to others how important he was.
+        </p>
+
+        <p style="margin-bottom:1.2rem">
+          <strong>2.</strong> If the Romans
+          <select class="gap-select" id="exE-g3"><option value="">—</option><option>had not built</option><option>would not have built</option><option>did not build</option></select>
+          baths, they
+          <select class="gap-select" id="exE-g4"><option value="">—</option><option>would have found</option><option>had found</option><option>found</option></select>
+          Britain too cold for them.
+        </p>
+
+        <p style="margin-bottom:1.2rem">
+          <strong>3.</strong> If the Normans
+          <select class="gap-select" id="exE-g5"><option value="">—</option><option>had not spoken</option><option>would not have spoken</option><option>did not speak</option></select>
+          French, the English language
+          <select class="gap-select" id="exE-g6"><option value="">—</option><option>would not have changed</option><option>had not changed</option><option>did not change</option></select>.
+        </p>
+
+        <p style="margin-bottom:1.2rem">
+          <strong>4.</strong> If Henry VIII
+          <select class="gap-select" id="exE-g7"><option value="">—</option><option>had not wanted</option><option>would not have wanted</option><option>did not want</option></select>
+          a son to be the next monarch, he
+          <select class="gap-select" id="exE-g8"><option value="">—</option><option>would not have married</option><option>had not married</option><option>did not marry</option></select>
+          six times.
+        </p>
+
+        <p style="margin-bottom:1.2rem">
+          <strong>5.</strong> If Elizabeth
+          <select class="gap-select" id="exE-g9"><option value="">—</option><option>had not wanted</option><option>would not have wanted</option><option>did not want</option></select>
+          to know more about the world, she
+          <select class="gap-select" id="exE-g10"><option value="">—</option><option>would not have sent</option><option>had not sent</option><option>did not send</option></select>
+          sailors to America.
+        </p>
+
+        <p style="margin-bottom:1.2rem">
+          <strong>6.</strong> If Queen Victoria
+          <select class="gap-select" id="exE-g11"><option value="">—</option><option>had not reigned</option><option>would not have reigned</option><option>did not reign</option></select>
+          for 64 years, she
+          <select class="gap-select" id="exE-g12"><option value="">—</option><option>would not have seen</option><option>had not seen</option><option>did not see</option></select>
+          so many changes in the time she lived.
+        </p>
+
+      </div>
+    </div>
+
+    <div id="step5-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(5)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(5)">Continue to Exercise F →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── STEP 6: EXERCISE F – Your Turn ── -->
+<section id="step-6" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise F</span>
+    <h2 class="ex-title">Your turn: What would you have done?</h2>
+    <p class="ex-subtitle">Write your own answers to these questions using <strong>conditional clauses type 3</strong>. Think about what you would have done in each situation — and explain why!</p>
+
+    <div class="grammar-box">
+      <h3>✏️ How to answer</h3>
+      <p>Use the type 3 structure in your answer:</p>
+      <p class="example"><em>If I had got up late this morning, I <strong>would have</strong> run to school / <strong>would have missed</strong> breakfast / <strong>wouldn't have had</strong> time to eat.</em></p>
+      <p style="margin-top:.5rem">Try to write <strong>at least one full sentence</strong> for each question. You can also explain your thinking!</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">What would you have done if …</div>
+
+      <div class="form-group">
+        <label class="form-label" for="exF-q1">1. … you had got up late this morning?</label>
+        <textarea class="form-textarea" id="exF-q1" placeholder="If I had got up late this morning, I would have …" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="exF-q2">2. … you had arrived at school and noticed your left and right shoes didn't match?</label>
+        <textarea class="form-textarea" id="exF-q2" placeholder="If I had arrived at school and noticed …" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="exF-q3">3. … your computer had crashed while you were doing your homework last night?</label>
+        <textarea class="form-textarea" id="exF-q3" placeholder="If my computer had crashed …" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="exF-q4">4. … you had found an expensive object (e.g. a gold bracelet) on your way to school this morning?</label>
+        <textarea class="form-textarea" id="exF-q4" placeholder="If I had found an expensive object …" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="exF-q5">5. … you had found an old historical object on your last holiday?</label>
+        <textarea class="form-textarea" id="exF-q5" placeholder="If I had found an old historical object …" rows="3"></textarea>
+      </div>
+    </div>
+
+    <div id="step6-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(6)">← Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(6)">Continue to Exercise G →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── STEP 7: EXERCISE G – History chain ── -->
+<section id="step-7" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise G</span>
+    <h2 class="ex-title">The world would have been different!</h2>
+    <p class="ex-subtitle">Think about important events in history. Write a <strong>chain of conditional sentences</strong> — each one follows on from the last. How long can you make your chain?</p>
+
+    <div class="grammar-box">
+      <h3>🌍 How the chain works</h3>
+      <p>Start with a historical event, then imagine what would <em>not</em> have happened without it. The next sentence picks up from there!</p>
+      <p class="example"><strong>Example chain:</strong></p>
+      <p class="example">A: If Christopher Columbus <strong>hadn't sailed</strong> west, he <strong>wouldn't have discovered</strong> America and the New World.</p>
+      <p class="example">B: If Columbus <strong>hadn't discovered</strong> the New World, Francis Drake <strong>wouldn't have travelled</strong> there.</p>
+      <p class="example">A: If Francis Drake <strong>hadn't travelled</strong> there …</p>
+      <p style="margin-top:.6rem">You can write about any historical event — Tudor history, Roman Britain, World War II, the invention of the internet, anything you like!</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Write your history chain (at least 3 sentences)</div>
+
+      <div class="form-group">
+        <label class="form-label" for="exG-s1">Sentence 1 — Start your chain:</label>
+        <textarea class="form-textarea" id="exG-s1" placeholder="If … hadn't …, … would/wouldn't have …" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="exG-s2">Sentence 2 — Continue the chain:</label>
+        <textarea class="form-textarea" id="exG-s2" placeholder="If … hadn't …, … would/wouldn't have …" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="exG-s3">Sentence 3 — Continue:</label>
+        <textarea class="form-textarea" id="exG-s3" placeholder="If … hadn't …, … would/wouldn't have …" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="exG-s4">Sentence 4 — Can you keep going? (optional)</label>
+        <textarea class="form-textarea" id="exG-s4" placeholder="If … hadn't …, … would/wouldn't have …" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="exG-s5">Sentence 5 — Keep the chain going! (optional)</label>
+        <textarea class="form-textarea" id="exG-s5" placeholder="If … hadn't …, … would/wouldn't have …" rows="3"></textarea>
+      </div>
+    </div>
+
+    <div id="step7-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(7)">← Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(7)">Review &amp; Submit →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── STEP 8: REVIEW & SUBMIT ── -->
+<section id="step-8" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission did not work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+var UNIT          = 'tudor-conditionals-7g';
+var TOTAL_STEPS   = 8;
+var SHEET_URL     = 'https://hook.eu1.make.com/1gx46wea33yguetah95oy4j8asbyafqm';
+var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+
+var state = {
+  name: '', cls: '',
+  ex1: { q1:'', q2:'', q3:'', q4:'' },
+  exB: { m1:'', m2:'', m3:'', m4:'', m5:'', m6:'' },
+  exC: { t1:'', t2:'', t3:'', t4:'', t5:'', t6:'', t7:'' },
+  exD: { g1:'', g2:'', g3:'', g4:'', g5:'', g6:'', g7:'', g8:'', g9:'', g10:'', g11:'', g12:'', g13:'', g14:'' },
+  exE: { g1:'', g2:'', g3:'', g4:'', g5:'', g6:'', g7:'', g8:'', g9:'', g10:'', g11:'', g12:'' },
+  exF: { q1:'', q2:'', q3:'', q4:'', q5:'' },
+  exG: { s1:'', s2:'', s3:'', s4:'', s5:'' }
+};
+
+var LABELS = ['A','B','C','D','E','F','G'];
+
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(function(s){ s.classList.remove('active'); });
+  document.getElementById('step-'+n).classList.add('active');
+  document.getElementById('progress-fill').style.width = Math.round(n/TOTAL_STEPS*100)+'%';
+  window.scrollTo({top:0,behavior:'smooth'});
+  restoreStep(n);
+  var meta = document.getElementById('header-meta');
+  if (n===0){ meta.style.display='none'; return; }
+  meta.style.display='block';
+  document.getElementById('header-name').textContent = state.name + (state.cls?' — '+state.cls:'');
+  document.getElementById('header-step').textContent = n < TOTAL_STEPS ? 'Exercise '+LABELS[n-1]+' of 7' : 'Submit';
+}
+
+function prevStep(n){ saveStep(n); clearErr(n); showStep(n-1); }
+function nextStep(n){
+  if(!validateStep(n)){
+    var e=document.getElementById('step'+n+'-error');
+    if(e){e.textContent='Please answer the required questions before continuing.';e.classList.add('show');}
+    return;
+  }
+  clearErr(n); saveStep(n);
+  if(n===TOTAL_STEPS-1){ buildSummary(); }
+  showStep(n+1);
+}
+function clearErr(n){ var e=document.getElementById('step'+n+'-error'); if(e) e.classList.remove('show'); }
+
+function startExercises(){
+  var name=g('inp-name'), cls=g('inp-class');
+  var e=document.getElementById('welcome-error');
+  if(!name||!cls){e.textContent='Please enter both your name and your class.';e.classList.add('show');return;}
+  e.classList.remove('show');
+  state.name=name; state.cls=cls; showStep(1);
+}
+
+function validateStep(n){
+  switch(n){
+    case 1: return val('ex1-q1')&&val('ex1-q2')&&val('ex1-q3')&&val('ex1-q4');
+    case 2: return gSel('exB-m1')&&gSel('exB-m2')&&gSel('exB-m3')&&gSel('exB-m4')&&gSel('exB-m5')&&gSel('exB-m6');
+    case 3: return val('exC-t1')&&val('exC-t2')&&val('exC-t3')&&val('exC-t4')&&val('exC-t5')&&val('exC-t6')&&val('exC-t7');
+    case 4: return gSel('exD-g1')&&gSel('exD-g2')&&gSel('exD-g3')&&gSel('exD-g4')&&gSel('exD-g5')&&gSel('exD-g6')&&gSel('exD-g7')&&gSel('exD-g8')&&gSel('exD-g9')&&gSel('exD-g10')&&gSel('exD-g11')&&gSel('exD-g12')&&gSel('exD-g13')&&gSel('exD-g14');
+    case 5: return gSel('exE-g1')&&gSel('exE-g2')&&gSel('exE-g3')&&gSel('exE-g4')&&gSel('exE-g5')&&gSel('exE-g6')&&gSel('exE-g7')&&gSel('exE-g8')&&gSel('exE-g9')&&gSel('exE-g10')&&gSel('exE-g11')&&gSel('exE-g12');
+    case 6: return val('exF-q1')&&val('exF-q2')&&val('exF-q3')&&val('exF-q4')&&val('exF-q5');
+    case 7: return val('exG-s1')&&val('exG-s2')&&val('exG-s3');
+    default: return true;
+  }
+}
+
+function saveStep(n){
+  switch(n){
+    case 1: ['q1','q2','q3','q4'].forEach(function(k){state.ex1[k]=g('ex1-'+k);}); break;
+    case 2: [1,2,3,4,5,6].forEach(function(i){state.exB['m'+i]=gSel('exB-m'+i);}); break;
+    case 3: [1,2,3,4,5,6,7].forEach(function(i){state.exC['t'+i]=g('exC-t'+i);}); break;
+    case 4: for(var i=1;i<=14;i++){state.exD['g'+i]=gSel('exD-g'+i);} break;
+    case 5: for(var j=1;j<=12;j++){state.exE['g'+j]=gSel('exE-g'+j);} break;
+    case 6: [1,2,3,4,5].forEach(function(i){state.exF['q'+i]=g('exF-q'+i);}); break;
+    case 7: [1,2,3,4,5].forEach(function(i){state.exG['s'+i]=g('exG-s'+i);}); break;
+  }
+}
+
+function restoreStep(n){
+  switch(n){
+    case 1: ['q1','q2','q3','q4'].forEach(function(k){set('ex1-'+k,state.ex1[k]);}); break;
+    case 2: [1,2,3,4,5,6].forEach(function(i){setSel('exB-m'+i,state.exB['m'+i]);}); break;
+    case 3: [1,2,3,4,5,6,7].forEach(function(i){set('exC-t'+i,state.exC['t'+i]);}); break;
+    case 4: for(var i=1;i<=14;i++){setSel('exD-g'+i,state.exD['g'+i]);} break;
+    case 5: for(var j=1;j<=12;j++){setSel('exE-g'+j,state.exE['g'+j]);} break;
+    case 6: [1,2,3,4,5].forEach(function(i){set('exF-q'+i,state.exF['q'+i]);}); break;
+    case 7: [1,2,3,4,5].forEach(function(i){set('exG-s'+i,state.exG['s'+i]);}); break;
+  }
+}
+
+function g(id){var e=document.getElementById(id);return e?e.value.trim():'';}
+function set(id,v){var e=document.getElementById(id);if(e&&v!==undefined)e.value=v;}
+function val(id){return g(id).length>0;}
+function gSel(id){var e=document.getElementById(id);return e?e.value:'';}
+function setSel(id,v){var e=document.getElementById(id);if(e&&v)e.value=v;}
+function esc(s){var d=document.createElement('div');d.textContent=String(s==null?'':s);return d.innerHTML;}
+
+function buildSummary(){
+  var rows=[
+    {ex:'Student',q:state.name+' — '+state.cls,a:''},
+    {ex:'Ex A',q:'1. Why did Jay get lost?',a:state.ex1.q1},
+    {ex:'Ex A',q:'2. What tour did Jay join?',a:state.ex1.q2},
+    {ex:'Ex A',q:'3. What did Jay find?',a:state.ex1.q3},
+    {ex:'Ex A',q:'4. Two type 3 sentences from the story',a:state.ex1.q4},
+    {ex:'Ex B',q:'Match 1',a:state.exB.m1},{ex:'Ex B',q:'Match 2',a:state.exB.m2},
+    {ex:'Ex B',q:'Match 3',a:state.exB.m3},{ex:'Ex B',q:'Match 4',a:state.exB.m4},
+    {ex:'Ex B',q:'Match 5',a:state.exB.m5},{ex:'Ex B',q:'Match 6',a:state.exB.m6},
+    {ex:'Ex C',q:'1. The Celts worked…',a:state.exC.t1},{ex:'Ex C',q:'2. A Celtic king wore…',a:state.exC.t2},
+    {ex:'Ex C',q:'3. The Romans built baths…',a:state.exC.t3},{ex:'Ex C',q:'4. The Normans spoke French…',a:state.exC.t4},
+    {ex:'Ex C',q:'5. Henry VIII married…',a:state.exC.t5},{ex:'Ex C',q:'6. Elizabeth sent sailors…',a:state.exC.t6},
+    {ex:'Ex C',q:'7. Queen Victoria reigned…',a:state.exC.t7},
+    {ex:'Ex D',q:'Sentence 1 gap 1',a:state.exD.g1},{ex:'Ex D',q:'Sentence 1 gap 2',a:state.exD.g2},
+    {ex:'Ex D',q:'Sentence 2 gap 1',a:state.exD.g3},{ex:'Ex D',q:'Sentence 2 gap 2',a:state.exD.g4},
+    {ex:'Ex D',q:'Sentence 3 gap 1',a:state.exD.g5},{ex:'Ex D',q:'Sentence 3 gap 2',a:state.exD.g6},
+    {ex:'Ex D',q:'Sentence 4 gap 1',a:state.exD.g7},{ex:'Ex D',q:'Sentence 4 gap 2',a:state.exD.g8},
+    {ex:'Ex D',q:'Sentence 5 gap 1',a:state.exD.g9},{ex:'Ex D',q:'Sentence 5 gap 2',a:state.exD.g10},
+    {ex:'Ex D',q:'Sentence 6 gap 1',a:state.exD.g11},{ex:'Ex D',q:'Sentence 6 gap 2',a:state.exD.g12},
+    {ex:'Ex D',q:'Sentence 7 gap 1',a:state.exD.g13},{ex:'Ex D',q:'Sentence 7 gap 2',a:state.exD.g14},
+    {ex:'Ex E',q:'Sentence 1 gap 1',a:state.exE.g1},{ex:'Ex E',q:'Sentence 1 gap 2',a:state.exE.g2},
+    {ex:'Ex E',q:'Sentence 2 gap 1',a:state.exE.g3},{ex:'Ex E',q:'Sentence 2 gap 2',a:state.exE.g4},
+    {ex:'Ex E',q:'Sentence 3 gap 1',a:state.exE.g5},{ex:'Ex E',q:'Sentence 3 gap 2',a:state.exE.g6},
+    {ex:'Ex E',q:'Sentence 4 gap 1',a:state.exE.g7},{ex:'Ex E',q:'Sentence 4 gap 2',a:state.exE.g8},
+    {ex:'Ex E',q:'Sentence 5 gap 1',a:state.exE.g9},{ex:'Ex E',q:'Sentence 5 gap 2',a:state.exE.g10},
+    {ex:'Ex E',q:'Sentence 6 gap 1',a:state.exE.g11},{ex:'Ex E',q:'Sentence 6 gap 2',a:state.exE.g12},
+    {ex:'Ex F',q:'1. Got up late',a:state.exF.q1},{ex:'Ex F',q:'2. Wrong shoes',a:state.exF.q2},
+    {ex:'Ex F',q:'3. Computer crashed',a:state.exF.q3},{ex:'Ex F',q:'4. Found expensive object',a:state.exF.q4},
+    {ex:'Ex F',q:'5. Found historical object',a:state.exF.q5},
+    {ex:'Ex G',q:'Chain sentence 1',a:state.exG.s1},{ex:'Ex G',q:'Chain sentence 2',a:state.exG.s2},
+    {ex:'Ex G',q:'Chain sentence 3',a:state.exG.s3},{ex:'Ex G',q:'Chain sentence 4',a:state.exG.s4},
+    {ex:'Ex G',q:'Chain sentence 5',a:state.exG.s5}
+  ];
+  var html='<div class="submit-summary">';
+  rows.forEach(function(r){
+    if(r.a===''&&r.ex==='Student'){
+      html+='<div class="summary-row"><div class="summary-ex">'+esc(r.ex)+'</div><div class="summary-q">'+esc(r.q)+'</div></div>';
+    } else {
+      html+='<div class="summary-row"><div class="summary-ex">'+esc(r.ex)+'</div><div class="summary-q">'+esc(r.q)+'</div><div class="summary-a">'+esc(r.a||'(no answer)')+'</div></div>';
+    }
+  });
+  html+='</div>';
+  document.getElementById('summary-container').innerHTML=html;
+}
+
+function buildEmailBody(){
+  return 'Exercise: '+UNIT+'\nStudent: '+state.name+'\nClass: '+state.cls+'\nDate: '+new Date().toLocaleDateString('en-GB')
+    +'\n\n--- Ex A: Reading ---\n1. '+state.ex1.q1+'\n2. '+state.ex1.q2+'\n3. '+state.ex1.q3+'\n4. '+state.ex1.q4
+    +'\n\n--- Ex B: Matching ---\n'+[1,2,3,4,5,6].map(function(i){return i+'. '+state.exB['m'+i];}).join('\n')
+    +'\n\n--- Ex C: Transformation ---\n'+[1,2,3,4,5,6,7].map(function(i){return i+'. '+state.exC['t'+i];}).join('\n')
+    +'\n\n--- Ex D: English would have been different ---\n'+[1,2,3,4,5,6,7].map(function(i){return 'S'+i+': gap1='+state.exD['g'+(2*i-1)]+' gap2='+state.exD['g'+(2*i)];}).join('\n')
+    +'\n\n--- Ex E: Imagine ---\n'+[1,2,3,4,5,6].map(function(i){return 'S'+i+': gap1='+state.exE['g'+(2*i-1)]+' gap2='+state.exE['g'+(2*i)];}).join('\n')
+    +'\n\n--- Ex F: Your Turn ---\n'+[1,2,3,4,5].map(function(i){return i+'. '+state.exF['q'+i];}).join('\n')
+    +'\n\n--- Ex G: History Chain ---\n'+[1,2,3,4,5].map(function(i){return i+'. '+state.exG['s'+i];}).join('\n');
+}
+
+
+/* eol-flat-payload-patch */
+function eolFlat(o) {
+  if (o == null) return '';
+  if (typeof o !== 'object') return String(o);
+  return Object.keys(o).map(function(k) {
+    return k + ': ' + (o[k] === '' || o[k] == null ? '—' : o[k]);
+  }).join(' | ');
+}
+
+function submitToSheet() {
+  buildSummary();
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  var payload = {
+    name: state.name,
+    cls:  state.cls,
+    unit: UNIT,
+    ex1:  eolFlat(state.ex1),
+    ex2:  eolFlat(state.exB),
+    ex3:  eolFlat(state.exC),
+    ex4:  eolFlat(state.exD),
+    ex5:  eolFlat(state.exE),
+    ex6:  eolFlat(state.exF),
+    ex7:  eolFlat(state.exG)
+  };
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+  }).then(function() {
+    btn.style.display = 'none';
+    document.getElementById('submit-success').style.display = 'block';
+    document.getElementById('submit-fallback').style.display = 'block';
+  }).catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Submit to Teacher';
+    document.getElementById('submit-fallback').style.display = 'block';
+  });
+}
+
+function submitByEmail(){
+  var a=document.createElement('a');
+  a.href='mailto:'+TEACHER_EMAIL+'?subject='+encodeURIComponent(UNIT+' - '+state.name+' - '+state.cls)+'&body='+encodeURIComponent(buildEmailBody());
+  a.style.display='none'; document.body.appendChild(a); a.click();
+  setTimeout(function(){document.body.removeChild(a);},100);
+}
+
+function copyAnswers(){
+  navigator.clipboard.writeText(buildEmailBody())
+    .then(function(){alert('Answers copied! Paste them into an email to your teacher.');})
+    .catch(function(){prompt('Copy this text:',buildEmailBody());});
+}
+
+document.addEventListener('DOMContentLoaded',function(){showStep(0);});
+</script>
+
+<script>
+document.addEventListener('paste',function(e){
+  var t=e.target;
+  if(t.tagName==='INPUT'||t.tagName==='TEXTAREA'){
+    e.preventDefault();
+    var msg=document.createElement('div');
+    msg.textContent='✏️ Pasting is not allowed';
+    msg.style.cssText='position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    document.body.appendChild(msg);
+    setTimeout(function(){msg.style.opacity='0';setTimeout(function(){msg.remove();},400);},2000);
+  }
+});
+document.addEventListener('copy',function(e){
+  e.preventDefault();
+  var msg=document.createElement('div');
+  msg.textContent='🚫 Copying is not allowed';
+  msg.style.cssText='position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+  document.body.appendChild(msg);
+  setTimeout(function(){msg.style.opacity='0';setTimeout(function(){msg.remove();},400);},2000);
+});
+</script>
+
+</body>
+</html>
