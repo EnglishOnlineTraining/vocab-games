@@ -131,7 +131,7 @@
 <header class="app-header">
   <div class="header-inner">
     <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
-    <a class="header-logo" href="7c-activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">← Activities</a>
     <div class="header-meta" id="header-meta" style="display:none">
       <strong id="header-name"></strong>
       <span id="header-step">Exercise A of 3</span>
@@ -693,7 +693,7 @@ function eolFlat(o) {
   if (o == null) return '';
   if (typeof o !== 'object') return String(o);
   return Object.keys(o).map(function(k) {
-    return k + ': ' + (o[k] === '' || o[k] == null ? '\u2014' : o[k]);
+    return k + ': ' + (o[k] === '' || o[k] == null ? '—' : o[k]);
   }).join(' | ');
 }
 
@@ -701,7 +701,7 @@ function submitToSheet() {
   buildSummary();
   var btn = document.getElementById('submit-btn');
   btn.disabled = true;
-  btn.textContent = 'Sending\u2026';
+  btn.textContent = 'Sending…';
   var payload = {
     name: state.name,
     cls:  state.cls,
@@ -712,8 +712,9 @@ function submitToSheet() {
   };
   fetch(SHEET_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
   }).then(function() {
     btn.style.display = 'none';
     document.getElementById('submit-success').style.display = 'block';
