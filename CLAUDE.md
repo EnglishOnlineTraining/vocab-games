@@ -34,6 +34,9 @@ Static HTML exercise pages for English language learners, hosted on GitHub Pages
 
 Year 7 and Year 9 exercise **drafting is paused** (decided 2025-06-25). Existing Y7/Y9 exercises remain live; the `daily-exercise-draft` scheduled task no longer generates new ones for these years. When Shaun wants to resume, re-add Y7/Y9 slots to the rotation.
 
+### Class prefix note — `7a-`
+`7a-what-was-it-like.html` carries a `7a-` prefix because it was written for class 7a rather than 7g. Class 7a follows the Gymnasium curriculum, so the file lives in the `7g-activities.html` hub and uses the Year 7 Make webhook. Any future exercise for a similarly-named Gymnasium class (7a, 7b, etc.) should use the `7g-` hub and webhook, with the class letter in the filename prefix.
+
 ---
 
 ## Year 8 & Year 10 — active
