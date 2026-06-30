@@ -1095,8 +1095,9 @@ function submitToSheet() {
 
   fetch(SHEET_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
   }).then(function() {
     btn.style.display = 'none';
     showToast('✅ Submitted to teacher!');
