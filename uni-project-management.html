@@ -783,12 +783,12 @@ function submitToSheet() {
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
   }).then(function() {
-    alert('✅ Submitted to teacher!');
-    document.getElementById('copy-answers-btn').style.display = 'none';
-    document.getElementById('email-btn').style.display = 'none';
+    document.getElementById('submit-btn').style.display = 'none';
+    document.getElementById('submit-success').style.display = 'block';
+    document.getElementById('submit-fallback').style.display = 'block';
   }).catch(function(err) {
     console.error('Submission error:', err);
-    alert('⚠️ Submission failed. Use email or copy-to-clipboard instead.');
+    document.getElementById('submit-fallback').style.display = 'block';
   });
 }
 
