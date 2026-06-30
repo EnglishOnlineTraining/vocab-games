@@ -36,12 +36,16 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 .container{max-width:860px;margin:0 auto;padding:2rem 1rem}
 .page-title{font-size:1.4rem;font-weight:800;color:var(--blue);margin-bottom:.5rem}
 .page-subtitle{font-size:.95rem;color:var(--muted);margin-bottom:1.5rem}
-.coming-soon{text-align:center;padding:3rem 1rem;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);border:1.5px solid var(--border)}
-.coming-soon-icon{font-size:3rem;margin-bottom:1rem}
-.coming-soon-title{font-size:1.3rem;font-weight:700;color:var(--blue);margin-bottom:.5rem}
-.coming-soon-text{color:var(--muted);font-size:.95rem}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.85rem;margin-bottom:2rem}
+.activity-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);border:1.5px solid var(--border);padding:1.1rem 1.25rem;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:.35rem;transition:border-color .2s,box-shadow .2s,transform .15s}
+.activity-card:hover{border-color:var(--blue-mid);box-shadow:0 4px 20px rgba(26,110,181,.18);transform:translateY(-2px)}
+.card-icon{font-size:1.4rem;line-height:1}
+.card-title{font-size:.97rem;font-weight:700;color:var(--blue)}
+.card-meta{font-size:.78rem;color:var(--muted)}
+.card-tag{display:inline-block;margin-top:.3rem;font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.15rem .55rem;border-radius:20px;background:var(--blue-lt);color:var(--blue-mid)}
 .site-footer{text-align:center;font-size:.8rem;color:var(--muted);margin-top:3rem}
 .site-footer a{color:var(--blue-mid)}
+@media(max-width:480px){.cards-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -49,7 +53,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 <header class="site-header">
   <span class="logo">docemus · EnglishOnline.training</span>
   <h1>📚 Year 8 Oberschule</h1>
-  <p>Coming soon</p>
+  <p>Orange Line 4 · ~A2</p>
 </header>
 <div class="header-divider"></div>
 
@@ -60,12 +64,17 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 <main class="container">
 
   <h2 class="page-title">Year 8 Oberschule</h2>
-  <p class="page-subtitle">Exercises coming soon</p>
+  <p class="page-subtitle">All exercises for Year 8 Oberschule (Orange Line 4)</p>
 
-  <div class="coming-soon">
-    <div class="coming-soon-icon">🚀</div>
-    <h3 class="coming-soon-title">Coming Soon</h3>
-    <p class="coming-soon-text">Exercises for Year 8 Oberschule are currently in development. Check back soon!</p>
+  <div class="cards-grid">
+
+    <a class="activity-card" href="8c-arriving-northeast.html">
+      <span class="card-icon">🗽</span>
+      <span class="card-title">Arriving in the Northeast — New York</span>
+      <span class="card-meta">Simple past, comparison of adjectives &amp; writing about a trip</span>
+      <span class="card-tag">Reading &amp; grammar</span>
+    </a>
+
   </div>
 
 </main>
