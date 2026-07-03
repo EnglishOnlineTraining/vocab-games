@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Year 7 End-of-Year Wall</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+  --sun:#FFC93C;
+  --coral:#FF6B5B;
+  --teal:#00A896;
+  --navy:#16324F;
+  --cream:#FFFBF2;
+  --mint:#CFFFE5;
+  --shadow: 0 6px 0 rgba(22,50,79,0.15);
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background: linear-gradient(160deg, var(--cream) 0%, #FFF3D6 45%, var(--mint) 100%);
+  color:var(--navy);
+  min-height:100vh;
+  overflow-x:hidden;
+  position:relative;
+}
+h1,h2,h3,.display{ font-family:'Fredoka',sans-serif; }
+
+/* floating background shapes */
+.bg-shape{
+  position:fixed;
+  border-radius:50%;
+  opacity:0.35;
+  filter:blur(1px);
+  z-index:0;
+  animation: drift 14s ease-in-out infinite;
+}
+@keyframes drift{
+  0%,100%{ transform: translateY(0) rotate(0deg); }
+  50%{ transform: translateY(-24px) rotate(8deg); }
+}
+.s1{ width:180px;height:180px; background:var(--sun); top:-60px; left:-40px; animation-duration:16s;}
+.s2{ width:120px;height:120px; background:var(--coral); bottom:10%; right:-30px; animation-duration:12s;}
+.s3{ width:90px;height:90px; background:var(--teal); top:40%; left:-30px; animation-duration:18s;}
+.s4{ width:60px;height:60px; background:var(--sun); bottom:-20px; left:30%; animation-duration:10s;}
+
+.wrap{ position:relative; z-index:1; max-width:900px; margin:0 auto; padding:32px 20px 60px; }
+
+.eyebrow{
+  display:inline-block;
+  font-family:'Fredoka',sans-serif;
+  font-weight:600;
+  font-size:13px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  background:var(--navy);
+  color:var(--cream);
+  padding:6px 14px;
+  border-radius:999px;
+}
+.hero-title{
+  font-size:44px;
+  font-weight:700;
+  line-height:1.05;
+  margin:14px 0 6px;
+}
+.hero-sub{ color:#3d5a76; font-size:16px; margin-bottom:28px; max-width:560px; }
+
+.card{
+  background:#fff;
+  border:3px solid var(--navy);
+  border-radius:22px;
+  box-shadow: var(--shadow);
+  padding:28px;
+  margin-bottom:22px;
+}
+
+.btn{
+  font-family:'Fredoka',sans-serif;
+  font-weight:600;
+  font-size:16px;
+  border:3px solid var(--navy);
+  background:var(--sun);
+  color:var(--navy);
+  padding:14px 24px;
+  border-radius:14px;
+  cursor:pointer;
+  box-shadow: 0 4px 0 var(--navy);
+  transition: transform 0.08s ease;
+}
+.btn:hover{ filter:brightness(1.03); }
+.btn:active{ transform: translateY(3px); box-shadow:0 1px 0 var(--navy); }
+.btn.secondary{ background:#fff; }
+.btn.coral{ background:var(--coral); color:#fff; }
+.btn.teal{ background:var(--teal); color:#fff; }
+.btn.small{ padding:8px 14px; font-size:13px; box-shadow:0 3px 0 var(--navy); }
+.btn:disabled{ opacity:0.4; cursor:not-allowed; }
+
+.role-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+@media(max-width:600px){ .role-grid{ grid-template-columns:1fr; } .hero-title{ font-size:32px; } }
+
+.role-card{
+  cursor:pointer;
+  text-align:left;
+}
+.role-card .emoji{ font-size:38px; }
+.role-card h3{ margin:10px 0 4px; font-size:22px; }
+.role-card p{ margin:0; color:#3d5a76; font-size:14px; }
+
+input[type=text]{
+  width:100%;
+  font-family:'Inter',sans-serif;
+  font-size:16px;
+  padding:14px 16px;
+  border-radius:12px;
+  border:2px solid #cfd8e3;
+  outline:none;
+}
+input[type=text]:focus{ border-color:var(--teal); }
+
+.q-label{ font-size:13px; text-transform:uppercase; letter-spacing:0.06em; color:var(--teal); font-weight:700; }
+.q-text{ font-size:26px; font-weight:700; margin:6px 0 20px; line-height:1.2; }
+
+.wall{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  min-height:120px;
+  align-items:flex-start;
+}
+.bubble{
+  font-family:'Fredoka',sans-serif;
+  font-weight:600;
+  background:var(--mint);
+  border:2.5px solid var(--navy);
+  border-radius:16px;
+  padding:10px 16px;
+  animation: pop 0.35s cubic-bezier(.34,1.56,.64,1) both;
+  box-shadow: 0 3px 0 rgba(22,50,79,0.25);
+}
+.bubble .count{
+  display:inline-block;
+  margin-left:8px;
+  background:var(--coral);
+  color:#fff;
+  border-radius:999px;
+  padding:1px 9px;
+  font-size:12px;
+}
+@keyframes pop{
+  0%{ transform:scale(0) rotate(-8deg); opacity:0; }
+  100%{ transform:scale(1) rotate(var(--r,0deg)); opacity:1; }
+}
+.bubble:nth-child(3n){ background:#FFE3B0; }
+.bubble:nth-child(3n+1){ background:var(--mint); }
+.bubble:nth-child(3n+2){ background:#FFD6D0; }
+
+.host-toolbar{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:22px; }
+.progress-dots{ display:flex; gap:6px; margin:14px 0; }
+.dot{ width:10px;height:10px;border-radius:50%; background:#dbe4ec; }
+.dot.active{ background:var(--coral); }
+
+.tiny{ font-size:12px; color:#6b7f92; }
+.link-row{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-top:10px;}
+.link-box{ background:#f2f6f9; border-radius:10px; padding:8px 12px; font-size:13px; word-break:break-all; }
+
+.confirm{
+  text-align:center;
+  padding:40px 20px;
+}
+.confirm .big{ font-size:56px; }
+
+.settings-list{ display:flex; flex-direction:column; gap:10px; }
+.settings-row{ display:flex; gap:8px; align-items:center; }
+.settings-row input{ flex:1; }
+.qnum{ font-family:'Fredoka',sans-serif; font-weight:700; color:var(--teal); width:22px; }
+
+.hidden{ display:none !important; }
+</style>
+</head>
+<body>
+
+<div class="bg-shape s1"></div>
+<div class="bg-shape s2"></div>
+<div class="bg-shape s3"></div>
+<div class="bg-shape s4"></div>
+
+<div class="wrap" id="app"></div>
+
+<script>
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzLNv0oQKfjPF6ljDIn63IiIU70sgJyiSXRNH__PokRrw2g8HmhXlQH8aZkiXrpt75A/exec';
+
+let state = { currentIndex: 0, revealed: true, questions: [] };
+let role = null; // 'host' | 'student'
+let pollTimer = null;
+let submitted = false;
+
+const app = document.getElementById('app');
+
+async function apiGet(params){
+  const url = SCRIPT_URL + '?' + new URLSearchParams(params).toString();
+  const res = await fetch(url);
+  return res.json();
+}
+
+async function loadState(){
+  try{
+    const data = await apiGet({ action:'getState' });
+    if(data && data.state) state = data.state;
+  }catch(e){ /* keep last known state */ }
+}
+async function saveState(){
+  await apiGet({ action:'setState', state: JSON.stringify(state) });
+}
+
+async function getAnswers(i){
+  try{
+    const data = await apiGet({ action:'getAnswers', questionIndex: i });
+    if(data && data.answers) return data.answers.map(t=>({ text:t }));
+  }catch(e){}
+  return [];
+}
+async function addAnswer(i, text){
+  await apiGet({ action:'submit', questionIndex: i, text });
+}
+async function clearAnswers(i){
+  await apiGet({ action:'clearAnswers', questionIndex: i });
+}
+
+function groupAnswers(list){
+  const map = new Map();
+  list.forEach(a=>{
+    const key = a.text.trim().toLowerCase();
+    if(!key) return;
+    if(!map.has(key)) map.set(key, { text:a.text.trim(), count:0 });
+    map.get(key).count++;
+  });
+  return [...map.values()].sort((a,b)=> b.count - a.count);
+}
+
+/* ---------- Screens ---------- */
+
+function renderHome(){
+  app.innerHTML = `
+    <span class="eyebrow">End of Year · 7th Grade</span>
+    <h1 class="hero-title">The Class Wall 🎉</h1>
+    <p class="hero-sub">A live, slightly ridiculous poll for the last day of English class. Pick your role to jump in.</p>
+    <div class="role-grid">
+      <div class="card role-card" id="pick-host">
+        <div class="emoji">🖥️</div>
+        <h3>I'm running it</h3>
+        <p>Big screen view. Control the questions, watch answers pop in live.</p>
+      </div>
+      <div class="card role-card" id="pick-student">
+        <div class="emoji">📱</div>
+        <h3>I'm a student</h3>
+        <p>Type your answer on your own phone or laptop and send it in.</p>
+      </div>
+    </div>
+  `;
+  document.getElementById('pick-host').onclick = () => { role='host'; startHost(); };
+  document.getElementById('pick-student').onclick = () => { role='student'; startStudent(); };
+}
+
+/* ---------- Host ---------- */
+
+async function startHost(){
+  await loadState();
+  renderHost();
+  pollTimer = setInterval(renderHost, 2500);
+}
+
+async function renderHost(){
+  const answers = await getAnswers(state.currentIndex);
+  const grouped = groupAnswers(answers);
+  const dots = state.questions.map((_,i)=>`<span class="dot ${i===state.currentIndex?'active':''}"></span>`).join('');
+
+  app.innerHTML = `
+    <span class="eyebrow">Host View</span>
+    <h1 class="hero-title" style="font-size:30px;">The Class Wall 🎉</h1>
+    <div class="progress-dots">${dots}</div>
+
+    <div class="card">
+      <div class="q-label">Question ${state.currentIndex+1} of ${state.questions.length}</div>
+      <div class="q-text">${escapeHtml(state.questions[state.currentIndex])}</div>
+
+      <div class="host-toolbar" style="margin-top:0; margin-bottom:18px;">
+        <button class="btn small secondary" id="prevQ" ${state.currentIndex===0?'disabled':''}>← Prev</button>
+        <button class="btn small teal" id="nextQ" ${state.currentIndex===state.questions.length-1?'disabled':''}>Next →</button>
+        <button class="btn small ${state.revealed?'coral':''}" id="toggleReveal">${state.revealed?'Hide answers':'Reveal answers'}</button>
+        <button class="btn small secondary" id="clearQ">Clear this question</button>
+        <button class="btn small secondary" id="editQs">✏️ Edit questions</button>
+      </div>
+
+      ${state.revealed ? `
+        <div class="wall" id="wall">
+          ${grouped.length===0 ? `<p class="tiny">Waiting for answers to roll in…</p>` :
+            grouped.map((g,idx)=>`<div class="bubble" style="--r:${(idx%5-2)*2}deg">${escapeHtml(g.text)}${g.count>1?`<span class="count">×${g.count}</span>`:''}</div>`).join('')}
+        </div>
+        <p class="tiny" style="margin-top:14px;">${answers.length} response${answers.length===1?'':'s'} so far · updates automatically</p>
+      ` : `<p class="tiny">Answers are hidden — hit "Reveal answers" when everyone's ready to see the wall.</p>`}
+    </div>
+
+    <div class="card">
+      <div class="q-label">Share with your class</div>
+      <p class="tiny" style="margin:6px 0 0;">Host this HTML file on your own site (e.g. englishonline.training) and share that link or QR code with students. Everyone — no Claude account needed — sees this same live wall.</p>
+    </div>
+  `;
+
+  document.getElementById('prevQ').onclick = async ()=>{ state.currentIndex=Math.max(0,state.currentIndex-1); await saveState(); renderHost(); };
+  document.getElementById('nextQ').onclick = async ()=>{ state.currentIndex=Math.min(state.questions.length-1,state.currentIndex+1); await saveState(); renderHost(); };
+  document.getElementById('toggleReveal').onclick = async ()=>{ state.revealed=!state.revealed; await saveState(); renderHost(); };
+  document.getElementById('clearQ').onclick = async ()=>{ if(confirm('Clear all answers for this question?')){ await clearAnswers(state.currentIndex); renderHost(); } };
+  document.getElementById('editQs').onclick = renderEditQuestions;
+}
+
+function renderEditQuestions(){
+  clearInterval(pollTimer);
+  app.innerHTML = `
+    <span class="eyebrow">Host View</span>
+    <h1 class="hero-title" style="font-size:30px;">Edit questions</h1>
+    <div class="card">
+      <div class="settings-list" id="qList"></div>
+      <button class="btn small secondary" id="addQ" style="margin-top:14px;">+ Add question</button>
+    </div>
+    <div style="display:flex; gap:10px;">
+      <button class="btn coral" id="saveQs">Save & go live</button>
+      <button class="btn secondary" id="cancelQs">Cancel</button>
+    </div>
+  `;
+  const list = document.getElementById('qList');
+  function draw(){
+    list.innerHTML = state.questions.map((q,i)=>`
+      <div class="settings-row">
+        <span class="qnum">${i+1}.</span>
+        <input type="text" value="${escapeAttr(q)}" data-i="${i}">
+        <button class="btn small secondary" data-remove="${i}">✕</button>
+      </div>`).join('');
+    list.querySelectorAll('input').forEach(inp=>{
+      inp.oninput = ()=>{ state.questions[+inp.dataset.i] = inp.value; };
+    });
+    list.querySelectorAll('[data-remove]').forEach(btn=>{
+      btn.onclick = ()=>{
+        if(state.questions.length<=1) return;
+        state.questions.splice(+btn.dataset.remove,1);
+        if(state.currentIndex>=state.questions.length) state.currentIndex=state.questions.length-1;
+        draw();
+      };
+    });
+  }
+  draw();
+  document.getElementById('addQ').onclick = ()=>{ state.questions.push('New question…'); draw(); };
+  document.getElementById('saveQs').onclick = async ()=>{ await saveState(); pollTimer=setInterval(renderHost,2500); renderHost(); };
+  document.getElementById('cancelQs').onclick = async ()=>{ await loadState(); pollTimer=setInterval(renderHost,2500); renderHost(); };
+}
+
+/* ---------- Student ---------- */
+
+async function startStudent(){
+  await loadState();
+  renderStudent();
+  pollTimer = setInterval(async ()=>{
+    const prevIndex = state.currentIndex;
+    await loadState();
+    if(state.currentIndex !== prevIndex){ submitted=false; }
+    if(!submitted) renderStudent();
+  }, 2500);
+}
+
+function renderStudent(){
+  app.innerHTML = `
+    <span class="eyebrow">You're in 🎉</span>
+    <h1 class="hero-title" style="font-size:30px;">The Class Wall</h1>
+    <div class="card">
+      <div class="q-label">Question ${state.currentIndex+1} of ${state.questions.length}</div>
+      <div class="q-text">${escapeHtml(state.questions[state.currentIndex])}</div>
+      <input type="text" id="ansInput" placeholder="Type your answer…" maxlength="80">
+      <div style="margin-top:16px;">
+        <button class="btn coral" id="sendAns">Send it 🚀</button>
+      </div>
+      <p class="tiny" style="margin-top:12px;">Keep it kind — your teacher can see everything on the big screen.</p>
+    </div>
+  `;
+  const input = document.getElementById('ansInput');
+  input.focus();
+  const send = async ()=>{
+    const val = input.value.trim();
+    if(!val) return;
+    document.getElementById('sendAns').disabled = true;
+    await addAnswer(state.currentIndex, val);
+    submitted = true;
+    renderStudentConfirm();
+  };
+  document.getElementById('sendAns').onclick = send;
+  input.addEventListener('keydown', e=>{ if(e.key==='Enter') send(); });
+}
+
+function renderStudentConfirm(){
+  app.innerHTML = `
+    <span class="eyebrow">You're in 🎉</span>
+    <h1 class="hero-title" style="font-size:30px;">The Class Wall</h1>
+    <div class="card confirm">
+      <div class="big">🎊</div>
+      <h2>Sent!</h2>
+      <p class="tiny">Look up at the big screen. We'll ping you here when the next question is up.</p>
+    </div>
+  `;
+}
+
+/* ---------- utils ---------- */
+function escapeHtml(s){ return s.replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function escapeAttr(s){ return escapeHtml(s); }
+
+renderHome();
+</script>
+</body>
+</html>
