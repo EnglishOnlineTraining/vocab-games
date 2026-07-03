@@ -161,6 +161,7 @@ body.exam-mode input, body.exam-mode textarea, body.exam-mode select { -webkit-u
   </div>
   <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
 </header>
+<nav class="step-nav" id="step-nav"></nav>
 
 <!-- ============ SCREEN 0: WELCOME / REGISTER ============ -->
 <div id="s-welcome" class="screen active">
@@ -503,6 +504,7 @@ body.exam-mode input, body.exam-mode textarea, body.exam-mode select { -webkit-u
 var UNIT          = '9g-class-test-9ab';
 var SHEET_URL     = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj';
 var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+var maxStepReached = 0;
 var EXAM_MINS     = 60;
 var TOTAL_STEPS   = 5;
 
@@ -562,7 +564,6 @@ function goStep(n, isFirst){
   if(!isFirst) {}
   document.querySelectorAll('#s-exam .step').forEach(function(s){ s.classList.remove('active'); });
   document.getElementById('step-'+n).classList.add('active');
-  currentStep = n;
   document.getElementById('progress-fill').style.width = Math.round(n/TOTAL_STEPS*100)+'%';
   document.getElementById('header-step').textContent = 'Section '+n+' of '+TOTAL_STEPS;
   window.scrollTo({top:0,behavior:'smooth'});
