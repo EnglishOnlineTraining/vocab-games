@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paraphrasing &amp; Summarizing | englishonline.training</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── Sticky header ── -->
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">&larr; Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Exercise A of 4</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+<nav class="step-nav" id="step-nav"></nav>
+
+
+<!-- ====================================================
+     STEP 0 – WELCOME
+===================================================== -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">&#x1F4DD;</div>
+      <h1 class="welcome-title">Paraphrasing &amp; Summarizing</h1>
+      <p class="welcome-sub">Master two essential academic skills: restating ideas in your own words and condensing longer texts into concise summaries.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">&#x1F4D6;</div><strong>Ex A &ndash; Key Concepts</strong>Gap-fill: paraphrasing vs summarizing</div>
+      <div class="ov-card locked"><div class="ov-icon">&#x1F50D;</div><strong>Ex B &ndash; Recognising Good Paraphrases</strong>Choose the best paraphrase for each sentence</div>
+      <div class="ov-card locked"><div class="ov-icon">&#x270D;&#xFE0F;</div><strong>Ex C &ndash; Paraphrasing Practice</strong>Rewrite sentences in your own words</div>
+      <div class="ov-card locked"><div class="ov-icon">&#x1F4C4;</div><strong>Ex D &ndash; Summarizing a Passage</strong>Write a summary of an academic text</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna M&uuml;ller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class / course</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. WS2026 Academic English" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 1 – EXERCISE A: Key Concepts (gap-fill)
+===================================================== -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">Paraphrasing vs Summarizing &ndash; Key Concepts</h2>
+    <p class="ex-subtitle">Read the text below and choose the correct word or phrase for each gap.</p>
+
+    <div class="card">
+      <div class="card-title">Academic Writing: Using Sources Effectively</div>
+      <div class="reading-text gap-text">
+        <p>When you write an academic essay, you need to engage with the ideas of other researchers. Two fundamental techniques for doing this are <strong>paraphrasing</strong> and <strong>summarizing</strong>. Although both involve restating someone else&rsquo;s ideas in your own words, they serve different purposes and differ in important ways.</p>
+
+        <p><strong>Paraphrasing</strong> means restating a specific passage in your own words. A good paraphrase is roughly the
+          <select class="gap-select" id="exA-g1">
+            <option value="">choose&hellip;</option>
+            <option value="same length">same length</option>
+            <option value="much shorter">much shorter</option>
+            <option value="much longer">much longer</option>
+          </select>
+        as the original text. The key techniques include using
+          <select class="gap-select" id="exA-g2">
+            <option value="">choose&hellip;</option>
+            <option value="footnotes">footnotes</option>
+            <option value="quotations">quotations</option>
+            <option value="synonyms">synonyms</option>
+          </select>
+        to replace key words and changing the
+          <select class="gap-select" id="exA-g3">
+            <option value="">choose&hellip;</option>
+            <option value="font size">font size</option>
+            <option value="grammatical structure">grammatical structure</option>
+            <option value="page number">page number</option>
+          </select>
+        of the sentence. However, the
+          <select class="gap-select" id="exA-g4">
+            <option value="">choose&hellip;</option>
+            <option value="author">author</option>
+            <option value="length">length</option>
+            <option value="meaning">meaning</option>
+          </select>
+        must remain exactly the same as in the original.</p>
+
+        <p><strong>Summarizing</strong>, on the other hand, involves condensing a longer text &mdash; perhaps several paragraphs, a chapter, or an entire article &mdash; into a much
+          <select class="gap-select" id="exA-g5">
+            <option value="">choose&hellip;</option>
+            <option value="shorter">shorter</option>
+            <option value="more detailed">more detailed</option>
+            <option value="longer">longer</option>
+          </select>
+        version. A summary focuses only on the
+          <select class="gap-select" id="exA-g6">
+            <option value="">choose&hellip;</option>
+            <option value="main ideas">main ideas</option>
+            <option value="minor details">minor details</option>
+            <option value="examples and anecdotes">examples and anecdotes</option>
+          </select>
+        and leaves out supporting details, examples, and illustrations.</p>
+
+        <p>Both skills help you avoid
+          <select class="gap-select" id="exA-g7">
+            <option value="">choose&hellip;</option>
+            <option value="referencing">referencing</option>
+            <option value="research">research</option>
+            <option value="plagiarism">plagiarism</option>
+          </select>
+        while demonstrating that you have understood the source material. Even when you paraphrase or summarize, you must still include a proper
+          <select class="gap-select" id="exA-g8">
+            <option value="">choose&hellip;</option>
+            <option value="in-text citation">in-text citation</option>
+            <option value="table of contents">table of contents</option>
+            <option value="title page">title page</option>
+          </select>
+        to credit the original author.</p>
+      </div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div id="step1-fb" class="feedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">&larr; Back</button>
+      <button class="btn btn-gold btn-sm" onclick="checkExA()">&#10003; Check</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 2 – EXERCISE B: Recognising Good Paraphrases (gap-fill)
+===================================================== -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B</span>
+    <h2 class="ex-title">Recognising Good Paraphrases</h2>
+    <p class="ex-subtitle">For each original sentence, choose the option that is the <strong>best</strong> paraphrase. A good paraphrase changes the words <em>and</em> the structure while keeping the meaning.</p>
+
+    <div class="card">
+      <div class="card-title">1. Original sentence</div>
+      <p class="reading-text" style="margin-bottom:1rem;font-style:italic">&ldquo;Climate change is widely regarded as one of the most significant challenges facing humanity in the twenty-first century.&rdquo;</p>
+      <div class="form-group">
+        <label class="form-label">Choose the best paraphrase:</label>
+        <select class="gap-select" id="exB-g1" style="max-width:100%;width:100%;white-space:normal;height:auto;padding:.5rem .85rem">
+          <option value="">choose&hellip;</option>
+          <option value="b">Climate change is widely regarded as one of the most significant challenges facing humanity today.</option>
+          <option value="a">Many experts consider global warming to be among the greatest threats confronting people in the current century.</option>
+          <option value="c">Climate change is a challenge for humanity and is very significant in the twenty-first century.</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">2. Original sentence</div>
+      <p class="reading-text" style="margin-bottom:1rem;font-style:italic">&ldquo;Regular physical exercise has been shown to reduce the risk of cardiovascular disease and improve mental health.&rdquo;</p>
+      <div class="form-group">
+        <label class="form-label">Choose the best paraphrase:</label>
+        <select class="gap-select" id="exB-g2" style="max-width:100%;width:100%;white-space:normal;height:auto;padding:.5rem .85rem">
+          <option value="">choose&hellip;</option>
+          <option value="c">Research indicates that consistent physical activity can lower heart disease risk and enhance psychological well-being.</option>
+          <option value="a">Regular physical exercise has been shown to reduce cardiovascular disease risk and improve mental health outcomes.</option>
+          <option value="b">Doing exercise regularly is good for your heart and your head.</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">3. Original sentence</div>
+      <p class="reading-text" style="margin-bottom:1rem;font-style:italic">&ldquo;The rapid growth of social media platforms has fundamentally transformed how people communicate and access information.&rdquo;</p>
+      <div class="form-group">
+        <label class="form-label">Choose the best paraphrase:</label>
+        <select class="gap-select" id="exB-g3" style="max-width:100%;width:100%;white-space:normal;height:auto;padding:.5rem .85rem">
+          <option value="">choose&hellip;</option>
+          <option value="b">Social media has fundamentally transformed how people communicate and get their information.</option>
+          <option value="c">The way individuals interact and obtain news has been revolutionised by the swift expansion of online networking services.</option>
+          <option value="a">Social media platforms have grown rapidly and transformed communication and information access.</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">4. Original sentence</div>
+      <p class="reading-text" style="margin-bottom:1rem;font-style:italic">&ldquo;University graduates earn, on average, significantly more over their lifetimes than those who do not hold a degree.&rdquo;</p>
+      <div class="form-group">
+        <label class="form-label">Choose the best paraphrase:</label>
+        <select class="gap-select" id="exB-g4" style="max-width:100%;width:100%;white-space:normal;height:auto;padding:.5rem .85rem">
+          <option value="">choose&hellip;</option>
+          <option value="a">People who complete higher education tend to accumulate considerably higher lifetime earnings compared to non-graduates.</option>
+          <option value="b">University graduates earn significantly more over their lifetimes than people without degrees.</option>
+          <option value="c">Graduates from universities earn more money than non-graduates on average over their lifetimes.</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">5. Original sentence</div>
+      <p class="reading-text" style="margin-bottom:1rem;font-style:italic">&ldquo;Artificial intelligence is increasingly being used in healthcare to assist with diagnosis and treatment planning.&rdquo;</p>
+      <div class="form-group">
+        <label class="form-label">Choose the best paraphrase:</label>
+        <select class="gap-select" id="exB-g5" style="max-width:100%;width:100%;white-space:normal;height:auto;padding:.5rem .85rem">
+          <option value="">choose&hellip;</option>
+          <option value="c">AI is increasingly being used in the healthcare sector to help with diagnosing patients and planning treatment.</option>
+          <option value="b">The medical field is making growing use of AI-powered tools to support diagnostic processes and the design of therapeutic strategies.</option>
+          <option value="a">Artificial intelligence is more and more used in healthcare for diagnosis and treatment planning.</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div id="step2-fb" class="feedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">&larr; Back</button>
+      <button class="btn btn-gold btn-sm" onclick="checkExB()">&#10003; Check</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 3 – EXERCISE C: Paraphrasing Practice (free text)
+===================================================== -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise C</span>
+    <h2 class="ex-title">Paraphrasing Practice</h2>
+    <p class="ex-subtitle">Read each original sentence carefully, then write your own paraphrase in the box below. Remember: change <strong>both</strong> the vocabulary <strong>and</strong> the sentence structure while keeping the same meaning. Do <em>not</em> simply replace one or two words.</p>
+
+    <div class="card" style="margin-bottom:1rem;background:var(--gold-lt);border:1.5px solid var(--gold)">
+      <div class="card-title" style="font-size:.82rem;text-transform:uppercase;letter-spacing:.04em">&#x1F4A1; Paraphrasing tips</div>
+      <ul style="font-size:.85rem;line-height:1.7;padding-left:1.2rem;color:var(--text)">
+        <li>Read the sentence, then put it aside and write from memory.</li>
+        <li>Use synonyms: <em>significant &rarr; considerable</em>, <em>reduce &rarr; lower</em></li>
+        <li>Change the structure: active &rarr; passive, or rearrange clauses.</li>
+        <li>Change word forms: verb &rarr; noun (<em>develop &rarr; development</em>)</li>
+        <li>Keep the original meaning &mdash; do not add your opinion.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">1. Original</div>
+      <p class="reading-text" style="font-style:italic;margin-bottom:.8rem">&ldquo;Renewable energy sources such as wind and solar power are becoming increasingly cost-effective compared to fossil fuels.&rdquo;</p>
+      <div class="form-group">
+        <label class="form-label" for="exC-q1">Your paraphrase:</label>
+        <textarea class="form-textarea" id="exC-q1" placeholder="Write your paraphrase here..." rows="3"></textarea>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">2. Original</div>
+      <p class="reading-text" style="font-style:italic;margin-bottom:.8rem">&ldquo;Studies have demonstrated that bilingual individuals often outperform monolinguals on tasks requiring cognitive flexibility.&rdquo;</p>
+      <div class="form-group">
+        <label class="form-label" for="exC-q2">Your paraphrase:</label>
+        <textarea class="form-textarea" id="exC-q2" placeholder="Write your paraphrase here..." rows="3"></textarea>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">3. Original</div>
+      <p class="reading-text" style="font-style:italic;margin-bottom:.8rem">&ldquo;The widespread adoption of remote working during the pandemic has led many companies to reconsider the necessity of traditional office spaces.&rdquo;</p>
+      <div class="form-group">
+        <label class="form-label" for="exC-q3">Your paraphrase:</label>
+        <textarea class="form-textarea" id="exC-q3" placeholder="Write your paraphrase here..." rows="3"></textarea>
+      </div>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">&larr; Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise D &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 4 – EXERCISE D: Summarizing a Passage (free text)
+===================================================== -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise D</span>
+    <h2 class="ex-title">Summarizing a Passage</h2>
+    <p class="ex-subtitle">Read the passage below carefully. Then write a summary of <strong>60&ndash;80 words</strong> that captures the main ideas. Leave out minor details and examples.</p>
+
+    <div class="card">
+      <div class="card-title">&#x1F4D6; Read this passage</div>
+      <div class="reading-text">
+        <p>Sleep is essential for both physical and mental health, yet a growing number of university students report getting fewer than six hours per night. Research conducted at several European universities found that students who consistently slept fewer than seven hours performed worse on exams, had higher rates of anxiety, and were more likely to miss lectures. The study also revealed that the use of screens before bedtime &mdash; particularly smartphones &mdash; was the single biggest factor in poor sleep quality.</p>
+
+        <p>Experts recommend that young adults aim for seven to nine hours of sleep and establish a regular bedtime routine that limits screen exposure in the hour before going to sleep. Some universities have introduced &ldquo;sleep hygiene&rdquo; workshops as part of their student well-being programmes, and early evaluations suggest these initiatives have had a positive effect on both academic performance and mental health.</p>
+
+        <p>Despite the evidence, many students continue to prioritise socialising and studying late at night over adequate rest. Researchers argue that changing this culture requires not just individual effort but also institutional support, such as scheduling fewer early-morning lectures and providing quiet study spaces that close at reasonable hours.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Your summary (60&ndash;80 words)</div>
+      <div class="form-group">
+        <label class="form-label" for="exD-q1">Write your summary below. Focus on the main ideas only.</label>
+        <textarea class="form-textarea" id="exD-q1" placeholder="Write your summary here..." rows="6"></textarea>
+        <div class="form-hint" id="exD-wc">Word count: 0</div>
+      </div>
+    </div>
+
+    <div id="step4-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(4)">&larr; Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(4)">Review &amp; Submit &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 5 – REVIEW & SUBMIT
+===================================================== -->
+<section id="step-5" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">&#x2705;</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+    <div id="score-display" style="display:none"></div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">&#x1F680; Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">&#x2705;</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission did not work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">&#x2709;&#xFE0F; Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">&#x1F4CB; Copy to clipboard</button>
+      </div>
+      <textarea id="copy-block" class="copy-block" style="display:none" readonly></textarea>
+      <div id="copy-success" class="feedback ok" style="margin-top:1rem"></div>
+    </div>
+  </div>
+</section>
+
+
+<script src="exercise.js"></script>
+<script>
+/* ============================================================
+   CONFIG
+============================================================ */
+var UNIT          = 'uni-paraphrasing-summarizing';
+var TOTAL_STEPS   = 6;
+var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec';
+var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+
+/* ============================================================
+   STATE
+============================================================ */
+var state = {
+  name:   '',
+  cls:    '',
+  exA:    {},
+  exB:    {},
+  exC:    {},
+  exD:    {},
+  scores: {}
+};
+var maxStepReached = 0;
+
+/* ============================================================
+   VALIDATION
+============================================================ */
+function validateStep(n) {
+  switch (n) {
+    case 1: return true;  /* dropdowns optional for navigation */
+    case 2: return true;
+    case 3: return val('exC-q1') && val('exC-q2') && val('exC-q3');
+    case 4: return val('exD-q1');
+    default: return true;
+  }
+}
+
+/* ============================================================
+   SAVE / RESTORE
+============================================================ */
+function saveStep(n) {
+  switch (n) {
+    case 1:
+      ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k) { state.exA[k] = g('exA-' + k); });
+      break;
+    case 2:
+      ['g1','g2','g3','g4','g5'].forEach(function(k) { state.exB[k] = g('exB-' + k); });
+      break;
+    case 3:
+      state.exC.q1 = g('exC-q1');
+      state.exC.q2 = g('exC-q2');
+      state.exC.q3 = g('exC-q3');
+      break;
+    case 4:
+      state.exD.q1 = g('exD-q1');
+      break;
+  }
+}
+
+function restoreStep(n) {
+  switch (n) {
+    case 1:
+      ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k) { set('exA-' + k, state.exA[k]); });
+      break;
+    case 2:
+      ['g1','g2','g3','g4','g5'].forEach(function(k) { set('exB-' + k, state.exB[k]); });
+      break;
+    case 3:
+      set('exC-q1', state.exC.q1);
+      set('exC-q2', state.exC.q2);
+      set('exC-q3', state.exC.q3);
+      break;
+    case 4:
+      set('exD-q1', state.exD.q1);
+      break;
+  }
+}
+
+/* ============================================================
+   SUMMARY
+============================================================ */
+function buildSummary() {
+  var rows = [
+    { ex: 'Exercise A', q: 'Key Concepts (gap-fill)', a: ['g1','g2','g3','g4','g5','g6','g7','g8'].map(function(k,i){ return (i+1)+'. '+(state.exA[k]||'(blank)'); }).join(', ') },
+    { ex: 'Exercise B', q: 'Best Paraphrase (multiple choice)', a: ['g1','g2','g3','g4','g5'].map(function(k,i){ return (i+1)+'. '+(state.exB[k]||'(blank)'); }).join(', ') },
+    { ex: 'Exercise C', q: 'Paraphrase 1', a: state.exC.q1 },
+    { ex: 'Exercise C', q: 'Paraphrase 2', a: state.exC.q2 },
+    { ex: 'Exercise C', q: 'Paraphrase 3', a: state.exC.q3 },
+    { ex: 'Exercise D', q: 'Summary (60-80 words)', a: state.exD.q1 }
+  ];
+  var html = '<div class="submit-summary">'
+    + '<div class="summary-row"><div class="summary-ex">Student</div>'
+    + '<div class="summary-q">' + esc(state.name) + ' &mdash; ' + esc(state.cls) + '</div></div>';
+  rows.forEach(function(r) {
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div>'
+      + '<div class="summary-q">' + esc(r.q) + '</div>'
+      + '<div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+  renderScore();
+}
+
+/* ============================================================
+   EMAIL FALLBACK
+============================================================ */
+function buildEmailBody() {
+  var sc = totalScore();
+  var grade = lookupGrade(sc.earned, sc.possible);
+  return 'Exercise: ' + UNIT
+    + '\nStudent: ' + state.name
+    + '\nClass:   ' + state.cls
+    + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
+    + '\nScore:   ' + (sc.possible ? (sc.earned + ' / ' + sc.possible + (grade ? ' — Note ' + grade.note + ' (' + grade.label + ')' : '')) : '(no auto-graded sections)')
+    + '\n\n--- Exercise A: Key Concepts ---'
+    + '\n' + ['g1','g2','g3','g4','g5','g6','g7','g8'].map(function(k,i){ return (i+1)+'. '+(state.exA[k]||'(blank)'); }).join('\n')
+    + '\n\n--- Exercise B: Best Paraphrase ---'
+    + '\n' + ['g1','g2','g3','g4','g5'].map(function(k,i){ return (i+1)+'. '+(state.exB[k]||'(blank)'); }).join('\n')
+    + '\n\n--- Exercise C: Paraphrasing Practice ---'
+    + '\n1. ' + (state.exC.q1 || '(none)')
+    + '\n2. ' + (state.exC.q2 || '(none)')
+    + '\n3. ' + (state.exC.q3 || '(none)')
+    + '\n\n--- Exercise D: Summary ---'
+    + '\n' + (state.exD.q1 || '(none)');
+}
+
+/* ============================================================
+   PAYLOAD
+============================================================ */
+function buildPayload() {
+  var sc = totalScore();
+  var grade = lookupGrade(sc.earned, sc.possible);
+  return {
+    name: state.name, cls: state.cls, unit: UNIT,
+    exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD,
+    score: sc.possible ? (sc.earned + ' / ' + sc.possible) : '(no auto-graded sections)',
+    grade: grade ? ('Note ' + grade.note + ' (' + grade.label + ')') : ''
+  };
+}
+
+/* ============================================================
+   CHECK ANSWERS
+============================================================ */
+function checkExA() {
+  var answers = {
+    g1: 'same length',
+    g2: 'synonyms',
+    g3: 'grammatical structure',
+    g4: 'meaning',
+    g5: 'shorter',
+    g6: 'main ideas',
+    g7: 'plagiarism',
+    g8: 'in-text citation'
+  };
+  checkDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8'], 'exA-', answers, 'step1-fb', 'exA');
+}
+
+function checkExB() {
+  var answers = {
+    g1: 'a',  /* synonyms + structure change */
+    g2: 'c',  /* synonyms + structure change */
+    g3: 'c',  /* synonyms + structure change */
+    g4: 'a',  /* synonyms + structure change */
+    g5: 'b'   /* synonyms + structure change */
+  };
+  checkDropdowns(['g1','g2','g3','g4','g5'], 'exB-', answers, 'step2-fb', 'exB');
+}
+
+/* ============================================================
+   WORD COUNT (Exercise D)
+============================================================ */
+function updateWordCount() {
+  var text = document.getElementById('exD-q1').value.trim();
+  var count = text ? text.split(/\s+/).length : 0;
+  var el = document.getElementById('exD-wc');
+  el.textContent = 'Word count: ' + count;
+  if (count >= 60 && count <= 80) { el.style.color = 'var(--green)'; el.style.fontWeight = '600'; }
+  else if (count > 80) { el.style.color = 'var(--red)'; el.style.fontWeight = '600'; }
+  else { el.style.color = 'var(--muted)'; el.style.fontWeight = '400'; }
+}
+
+/* ============================================================
+   INIT
+============================================================ */
+document.addEventListener('DOMContentLoaded', function() {
+  showStep(0);
+  var ta = document.getElementById('exD-q1');
+  if (ta) ta.addEventListener('input', updateWordCount);
+});
+</script>
+
+</body>
+</html>
