@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Off to the Midwest — School Life &amp; Thanksgiving | englishonline.training</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── Sticky header ── -->
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">&larr; Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Exercise A of 4</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+<nav class="step-nav" id="step-nav"></nav>
+
+
+<!-- ====================================================
+     STEP 0 – WELCOME
+===================================================== -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">🌽</div>
+      <h1 class="welcome-title">Off to the Midwest</h1>
+      <p class="welcome-sub">Read about school life and Thanksgiving in the American Midwest, then practise the simple present and present progressive.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">📖</div><strong>Ex A – Reading</strong>Read about Jake's life in Wisconsin and answer questions</div>
+      <div class="ov-card locked"><div class="ov-icon">🔤</div><strong>Ex B – Simple Present</strong>Complete sentences about daily routines</div>
+      <div class="ov-card locked"><div class="ov-icon">🔄</div><strong>Ex C – Present Progressive</strong>Choose the correct form for things happening right now</div>
+      <div class="ov-card locked"><div class="ov-icon">✍️</div><strong>Ex D – Writing</strong>Write about your school day and what you are doing right now</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. 8c" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 1 – EXERCISE A: Reading Comprehension
+===================================================== -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">Jake's Life in the Midwest</h2>
+    <p class="ex-subtitle">Read the text carefully, then answer the questions below.</p>
+
+    <div class="card">
+      <div class="card-title">Read the text</div>
+      <div class="reading-text">
+        <p>Jake is fourteen years old and lives in <strong>Milwaukee, Wisconsin</strong> — a city on the shore of <strong>Lake Michigan</strong>, one of the five Great Lakes. Milwaukee is in the American Midwest, a large region of flat land, farms and friendly people.</p>
+        <p>Jake goes to <strong>Lincoln Middle School</strong>. His school day starts at 7:45 a.m. and finishes at 2:30 p.m. He takes a yellow school bus every morning. At school, he studies English, maths, science, social studies and art. His favourite subject is science because they do lots of experiments. After school, he plays basketball in the school gym or goes to drama club.</p>
+        <p>In November, Jake's family celebrates <strong>Thanksgiving</strong>. It is one of the most important holidays in the USA. Jake's mum cooks a big turkey with mashed potatoes, cranberry sauce and pumpkin pie. The whole family comes together — grandparents, aunts, uncles and cousins. Before they eat, everyone says what they are <strong>thankful</strong> for. Jake always says he is thankful for his dog, Buddy.</p>
+        <p>In summer, Jake's family often drives to the shore of <strong>Lake Michigan</strong>. They go swimming, build sandcastles and have barbecues. Jake says the lake is so big that it looks like the sea. "You can't see the other side!" he tells his friends in Germany.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Answer the questions</div>
+
+      <div class="gap-text">1. Where does Jake live?
+        <select class="gap-select" id="exA-g1"><option value="">—</option><option>Chicago, Illinois</option><option>Milwaukee, Wisconsin</option><option>Detroit, Michigan</option></select>
+      </div>
+
+      <div class="gap-text">2. How does Jake get to school?
+        <select class="gap-select" id="exA-g2"><option value="">—</option><option>He walks</option><option>His mum drives him</option><option>He takes the school bus</option></select>
+      </div>
+
+      <div class="gap-text">3. What is Jake's favourite subject?
+        <select class="gap-select" id="exA-g3"><option value="">—</option><option>art</option><option>English</option><option>science</option></select>
+      </div>
+
+      <div class="gap-text">4. What does Jake's family eat at Thanksgiving?
+        <select class="gap-select" id="exA-g4"><option value="">—</option><option>pizza and salad</option><option>turkey with mashed potatoes</option><option>hamburgers and fries</option></select>
+      </div>
+
+      <div class="gap-text">5. What does Jake say he is thankful for?
+        <select class="gap-select" id="exA-g5"><option value="">—</option><option>his school</option><option>his dog, Buddy</option><option>his basketball team</option></select>
+      </div>
+
+      <div class="gap-text">6. What does the family do at Lake Michigan in summer?
+        <select class="gap-select" id="exA-g6"><option value="">—</option><option>go skiing</option><option>go fishing</option><option>go swimming and have barbecues</option></select>
+      </div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div id="step1-fb" class="feedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">&larr; Back</button>
+      <button class="btn btn-gold btn-sm" onclick="checkExA()">&#10003; Check</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 2 – EXERCISE B: Simple Present
+===================================================== -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B</span>
+    <h2 class="ex-title">Simple Present — Daily Routines</h2>
+    <p class="ex-subtitle">Complete each sentence with the correct <strong>simple present</strong> form of the verb in brackets. Remember: he/she/it adds <em>-s</em> or <em>-es</em>.</p>
+
+    <div class="card">
+      <div class="card-title">Grammar reminder</div>
+      <div class="reading-text" style="font-size:.88rem">
+        <p>We use the <strong>simple present</strong> for things that happen regularly or are always true.</p>
+        <p><strong>I/you/we/they</strong> → base form: <em>I play basketball.</em></p>
+        <p><strong>He/she/it</strong> → add <em>-s</em> or <em>-es</em>: <em>She plays basketball. He watches TV.</em></p>
+        <p><strong>Negative:</strong> <em>I don't like…</em> / <em>He doesn't like…</em></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Fill in the gaps</div>
+
+      <div class="gap-text">1. Jake _____ to school at 7:30 every morning. (go)
+        <select class="gap-select" id="exB-g1"><option value="">—</option><option>go</option><option>going</option><option>goes</option></select>
+      </div>
+
+      <div class="gap-text">2. His school day _____ at 2:30 p.m. (finish)
+        <select class="gap-select" id="exB-g2"><option value="">—</option><option>finishes</option><option>finish</option><option>finishing</option></select>
+      </div>
+
+      <div class="gap-text">3. Jake and his friends _____ basketball after school. (play)
+        <select class="gap-select" id="exB-g3"><option value="">—</option><option>plays</option><option>play</option><option>playing</option></select>
+      </div>
+
+      <div class="gap-text">4. His mum _____ a big turkey at Thanksgiving. (cook)
+        <select class="gap-select" id="exB-g4"><option value="">—</option><option>cook</option><option>cooks</option><option>cooking</option></select>
+      </div>
+
+      <div class="gap-text">5. The family _____ to the lake every summer. (drive)
+        <select class="gap-select" id="exB-g5"><option value="">—</option><option>drives</option><option>driving</option><option>drive</option></select>
+      </div>
+
+      <div class="gap-text">6. Jake _____ science because they do experiments. (like)
+        <select class="gap-select" id="exB-g6"><option value="">—</option><option>liking</option><option>likes</option><option>like</option></select>
+      </div>
+
+      <div class="gap-text">7. The students _____ English, maths and art at school. (study)
+        <select class="gap-select" id="exB-g7"><option value="">—</option><option>study</option><option>studies</option><option>studying</option></select>
+      </div>
+
+      <div class="gap-text">8. Jake's dog Buddy _____ in the garden every afternoon. (run)
+        <select class="gap-select" id="exB-g8"><option value="">—</option><option>running</option><option>run</option><option>runs</option></select>
+      </div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div id="step2-fb" class="feedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">&larr; Back</button>
+      <button class="btn btn-gold btn-sm" onclick="checkExB()">&#10003; Check</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 3 – EXERCISE C: Present Progressive
+===================================================== -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise C</span>
+    <h2 class="ex-title">Present Progressive — What's Happening Now?</h2>
+    <p class="ex-subtitle">It is Thanksgiving Day at Jake's house. Choose the correct <strong>present progressive</strong> form to describe what everyone is doing <strong>right now</strong>.</p>
+
+    <div class="card">
+      <div class="card-title">Grammar reminder</div>
+      <div class="reading-text" style="font-size:.88rem">
+        <p>We use the <strong>present progressive</strong> (also called present continuous) for things happening <strong>right now</strong> or <strong>at this moment</strong>.</p>
+        <p><strong>Form:</strong> am / is / are + verb<em>-ing</em></p>
+        <p><em>I am watching TV.</em> / <em>She is cooking dinner.</em> / <em>They are playing outside.</em></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Fill in the gaps</div>
+
+      <div class="gap-text">1. Jake's mum _____ the turkey in the kitchen. (prepare)
+        <select class="gap-select" id="exC-g1"><option value="">—</option><option>is preparing</option><option>prepares</option><option>are preparing</option></select>
+      </div>
+
+      <div class="gap-text">2. Jake and his brother _____ the table for dinner. (set)
+        <select class="gap-select" id="exC-g2"><option value="">—</option><option>is setting</option><option>sets</option><option>are setting</option></select>
+      </div>
+
+      <div class="gap-text">3. Grandma _____ pumpkin pie in the oven. (bake)
+        <select class="gap-select" id="exC-g3"><option value="">—</option><option>bakes</option><option>is baking</option><option>are baking</option></select>
+      </div>
+
+      <div class="gap-text">4. The cousins _____ a football game on TV. (watch)
+        <select class="gap-select" id="exC-g4"><option value="">—</option><option>are watching</option><option>watches</option><option>is watching</option></select>
+      </div>
+
+      <div class="gap-text">5. Dad _____ with Uncle Tom about the football scores. (talk)
+        <select class="gap-select" id="exC-g5"><option value="">—</option><option>talks</option><option>are talking</option><option>is talking</option></select>
+      </div>
+
+      <div class="gap-text">6. Buddy the dog _____ under the kitchen table. (sleep)
+        <select class="gap-select" id="exC-g6"><option value="">—</option><option>are sleeping</option><option>sleeps</option><option>is sleeping</option></select>
+      </div>
+
+      <div class="gap-text">7. Jake _____ cranberry sauce on the turkey. (put)
+        <select class="gap-select" id="exC-g7"><option value="">—</option><option>puts</option><option>is putting</option><option>are putting</option></select>
+      </div>
+
+      <div class="gap-text">8. Everyone _____ because they are thankful for the meal. (smile)
+        <select class="gap-select" id="exC-g8"><option value="">—</option><option>smiles</option><option>is smiling</option><option>are smiling</option></select>
+      </div>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div id="step3-fb" class="feedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">&larr; Back</button>
+      <button class="btn btn-gold btn-sm" onclick="checkExC()">&#10003; Check</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise D &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 4 – EXERCISE D: Writing
+===================================================== -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise D</span>
+    <h2 class="ex-title">Writing — My School Day &amp; Right Now</h2>
+    <p class="ex-subtitle">Write <strong>two short paragraphs</strong> (6–8 sentences total). Use the <strong>simple present</strong> in the first paragraph and the <strong>present progressive</strong> in the second.</p>
+
+    <div class="card">
+      <div class="card-title">What to write</div>
+      <div class="reading-text" style="font-size:.88rem">
+        <p><strong>Paragraph 1 — My typical school day</strong> (simple present): What time do you get up? How do you get to school? What subjects do you have? What do you do after school?</p>
+        <p><strong>Paragraph 2 — Right now</strong> (present progressive): What are you doing at this moment? What are your classmates doing? Is anyone talking or laughing?</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Helpful phrases</div>
+      <div class="word-bank">
+        <strong>Simple present:</strong>
+        <span>I get up at…</span> <span>I go to school by…</span> <span>My first lesson starts at…</span> <span>I usually eat…</span> <span>After school, I…</span>
+      </div>
+      <div class="word-bank" style="margin-top:.75rem">
+        <strong>Present progressive:</strong>
+        <span>I am sitting…</span> <span>We are doing…</span> <span>My teacher is…</span> <span>My friend is writing…</span> <span>Right now, I…</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Your text</div>
+      <div class="form-group">
+        <label class="form-label" for="exD-text">Write your two paragraphs here:</label>
+        <textarea class="form-textarea" id="exD-text" placeholder="My typical school day: I get up at 6:30 every morning...&#10;&#10;Right now: I am sitting in class and..." rows="10"></textarea>
+      </div>
+    </div>
+
+    <div id="step4-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(4)">&larr; Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(4)">Review &amp; Submit &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 5 – REVIEW & SUBMIT
+===================================================== -->
+<section id="step-5" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+    <div id="score-display" style="display:none"></div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission did not work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script src="exercise.js"></script>
+<script>
+/* ============================================================
+   CONFIG
+============================================================ */
+var UNIT          = '8c-off-to-midwest';
+var TOTAL_STEPS   = 5;
+var SHEET_URL     = 'https://hook.eu1.make.com/1gx46wea33yguetah95oy4j8asbyafqm';
+var TEACHER_EMAIL = 'englishonlinetraining@pm.me';
+
+/* ============================================================
+   STATE
+============================================================ */
+var state = {
+  name:   '',
+  cls:    '',
+  exA:    {},
+  exB:    {},
+  exC:    {},
+  exD:    {},
+  scores: {}
+};
+var maxStepReached = 0;
+
+/* ============================================================
+   VALIDATION
+============================================================ */
+function validateStep(n) {
+  switch (n) {
+    case 1: return g('exA-g1') && g('exA-g2') && g('exA-g3') && g('exA-g4') && g('exA-g5') && g('exA-g6');
+    case 2: return g('exB-g1') && g('exB-g2') && g('exB-g3') && g('exB-g4') && g('exB-g5') && g('exB-g6') && g('exB-g7') && g('exB-g8');
+    case 3: return g('exC-g1') && g('exC-g2') && g('exC-g3') && g('exC-g4') && g('exC-g5') && g('exC-g6') && g('exC-g7') && g('exC-g8');
+    case 4: return val('exD-text');
+    default: return true;
+  }
+}
+
+/* ============================================================
+   SAVE / RESTORE
+============================================================ */
+function saveStep(n) {
+  switch (n) {
+    case 1:
+      ['g1','g2','g3','g4','g5','g6'].forEach(function(k) { state.exA[k] = g('exA-' + k); });
+      break;
+    case 2:
+      ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k) { state.exB[k] = g('exB-' + k); });
+      break;
+    case 3:
+      ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k) { state.exC[k] = g('exC-' + k); });
+      break;
+    case 4:
+      state.exD.text = g('exD-text');
+      break;
+  }
+}
+
+function restoreStep(n) {
+  switch (n) {
+    case 1:
+      ['g1','g2','g3','g4','g5','g6'].forEach(function(k) { set('exA-' + k, state.exA[k]); });
+      break;
+    case 2:
+      ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k) { set('exB-' + k, state.exB[k]); });
+      break;
+    case 3:
+      ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k) { set('exC-' + k, state.exC[k]); });
+      break;
+    case 4:
+      set('exD-text', state.exD.text);
+      break;
+  }
+}
+
+/* ============================================================
+   SUMMARY
+============================================================ */
+function buildSummary() {
+  var rows = [];
+  ['g1','g2','g3','g4','g5','g6'].forEach(function(k, i) {
+    rows.push({ ex: 'Ex A – Reading', q: 'Q' + (i+1), a: state.exA[k] });
+  });
+  ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k, i) {
+    rows.push({ ex: 'Ex B – Simple Present', q: 'Gap ' + (i+1), a: state.exB[k] });
+  });
+  ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k, i) {
+    rows.push({ ex: 'Ex C – Present Progressive', q: 'Gap ' + (i+1), a: state.exC[k] });
+  });
+  rows.push({ ex: 'Ex D – Writing', q: 'My School Day & Right Now', a: state.exD.text });
+
+  var html = '<div class="submit-summary">'
+    + '<div class="summary-row"><div class="summary-ex">Student</div>'
+    + '<div class="summary-q">' + esc(state.name) + ' — ' + esc(state.cls) + '</div></div>';
+  rows.forEach(function(r) {
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div>'
+      + '<div class="summary-q">' + esc(r.q) + '</div>'
+      + '<div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+  renderScore();
+}
+
+/* ============================================================
+   EMAIL FALLBACK BODY
+============================================================ */
+function buildEmailBody() {
+  var sc = totalScore();
+  var grade = lookupGrade(sc.earned, sc.possible);
+  var body = 'Exercise: ' + UNIT
+    + '\nStudent: ' + state.name
+    + '\nClass:   ' + state.cls
+    + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
+    + '\nScore:   ' + (sc.possible ? (sc.earned + ' / ' + sc.possible + (grade ? ' — Note ' + grade.note + ' (' + grade.label + ')' : '')) : '(no auto-graded sections)');
+  body += '\n\n--- Exercise A: Reading ---';
+  ['g1','g2','g3','g4','g5','g6'].forEach(function(k, i) {
+    body += '\nQ' + (i+1) + ': ' + (state.exA[k] || '(blank)');
+  });
+  body += '\n\n--- Exercise B: Simple Present ---';
+  ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k, i) {
+    body += '\nGap ' + (i+1) + ': ' + (state.exB[k] || '(blank)');
+  });
+  body += '\n\n--- Exercise C: Present Progressive ---';
+  ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k, i) {
+    body += '\nGap ' + (i+1) + ': ' + (state.exC[k] || '(blank)');
+  });
+  body += '\n\n--- Exercise D: Writing ---\n' + (state.exD.text || '(none)');
+  return body;
+}
+
+/* ============================================================
+   PAYLOAD
+============================================================ */
+function buildPayload() {
+  var sc = totalScore();
+  var grade = lookupGrade(sc.earned, sc.possible);
+  return {
+    name: state.name, cls: state.cls, unit: UNIT,
+    exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD,
+    score: sc.possible ? (sc.earned + ' / ' + sc.possible) : '(no auto-graded sections)',
+    grade: grade ? ('Note ' + grade.note + ' (' + grade.label + ')') : ''
+  };
+}
+
+/* ============================================================
+   CHECK ANSWERS
+============================================================ */
+function checkExA() {
+  var answers = {
+    g1: 'Milwaukee, Wisconsin',
+    g2: 'He takes the school bus',
+    g3: 'science',
+    g4: 'turkey with mashed potatoes',
+    g5: 'his dog, Buddy',
+    g6: 'go swimming and have barbecues'
+  };
+  checkDropdowns(['g1','g2','g3','g4','g5','g6'], 'exA-', answers, 'step1-fb', 'exA');
+}
+
+function checkExB() {
+  var answers = {
+    g1: 'goes',
+    g2: 'finishes',
+    g3: 'play',
+    g4: 'cooks',
+    g5: 'drive',
+    g6: 'likes',
+    g7: 'study',
+    g8: 'runs'
+  };
+  checkDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8'], 'exB-', answers, 'step2-fb', 'exB');
+}
+
+function checkExC() {
+  var answers = {
+    g1: 'is preparing',
+    g2: 'are setting',
+    g3: 'is baking',
+    g4: 'are watching',
+    g5: 'is talking',
+    g6: 'is sleeping',
+    g7: 'is putting',
+    g8: 'are smiling'
+  };
+  checkDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8'], 'exC-', answers, 'step3-fb', 'exC');
+}
+
+/* ============================================================
+   INIT
+============================================================ */
+document.addEventListener('DOMContentLoaded', function() {
+  showStep(0);
+});
+</script>
+
+<script>
+document.addEventListener('paste', function(e) {
+  var t = e.target;
+  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
+    e.preventDefault();
+    var msg = document.createElement('div');
+    msg.textContent = '✏️ Pasting is not allowed';
+    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    document.body.appendChild(msg);
+    setTimeout(function() { msg.style.opacity='0'; setTimeout(function(){ msg.remove(); },400); },2000);
+  }
+});
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  var msg = document.createElement('div');
+  msg.textContent = '🚫 Copying is not allowed';
+  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+  document.body.appendChild(msg);
+  setTimeout(function() { msg.style.opacity='0'; setTimeout(function(){ msg.remove(); },400); },2000);
+});
+</script>
+
+</body>
+</html>
