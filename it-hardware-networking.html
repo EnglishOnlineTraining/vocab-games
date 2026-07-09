@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hardware &amp; Networking Essentials | englishonline.training</title>
+<style>
+  /* ── Base ─────────────────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --brand:    #1a56db;
+    --brand-dk: #1e429f;
+    --accent:   #0e9f6e;
+    --warn:     #e3a008;
+    --danger:   #e02424;
+    --bg:       #f8fafc;
+    --surface:  #ffffff;
+    --border:   #e2e8f0;
+    --text:     #1e293b;
+    --muted:    #64748b;
+    --radius:   10px;
+    --shadow:   0 2px 12px rgba(0,0,0,.08);
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* ── Progress bar ─────────────────────────────────────────────── */
+  #progress-bar {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 4px; background: var(--border); z-index: 100;
+  }
+  #progress-fill {
+    height: 100%; background: var(--brand);
+    transition: width .4s ease; width: 0%;
+  }
+
+  /* ── Header ───────────────────────────────────────────────────── */
+  #site-header {
+    background: var(--brand-dk);
+    color: #fff;
+    padding: 14px 24px;
+    display: flex; align-items: center; gap: 12px;
+    position: sticky; top: 4px; z-index: 90;
+    box-shadow: 0 2px 8px rgba(0,0,0,.2);
+  }
+  #site-header .logo { font-size: .8rem; opacity: .7; white-space: nowrap; }
+  #site-header .step-label { font-weight: 600; font-size: .95rem; flex: 1; text-align: center; }
+  #header-score { font-size: .85rem; opacity: .85; white-space: nowrap; }
+
+  /* ── Layout ───────────────────────────────────────────────────── */
+  main { max-width: 740px; margin: 0 auto; padding: 28px 16px 80px; }
+
+  /* ── Step sections ────────────────────────────────────────────── */
+  .step { display: none; }
+  .step.active { display: block; }
+
+  /* ── Welcome screen ───────────────────────────────────────────── */
+  .welcome-hero {
+    text-align: center;
+    padding: 40px 24px 32px;
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+  }
+  .welcome-hero .icon { font-size: 3.5rem; margin-bottom: 12px; }
+  .welcome-hero h1 { font-size: 1.6rem; color: var(--brand-dk); margin-bottom: 8px; }
+  .welcome-hero .subtitle { color: var(--muted); font-size: 1rem; max-width: 480px; margin: 0 auto 20px; }
+  .welcome-hero .level-badge {
+    display: inline-block;
+    background: var(--brand);
+    color: #fff;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .05em;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+  .exercise-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .overview-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    text-align: left;
+  }
+  .overview-card .ex-label {
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--brand);
+    margin-bottom: 4px;
+  }
+  .overview-card .ex-title { font-weight: 600; font-size: .9rem; color: var(--text); }
+  .overview-card .ex-type { font-size: .8rem; color: var(--muted); margin-top: 2px; }
+
+  /* ── Cards & content ──────────────────────────────────────────── */
+  .card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 22px 24px;
+    margin-bottom: 16px;
+  }
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--brand-dk);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-badge {
+    display: inline-block;
+    background: var(--brand);
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 8px;
+  }
+  .section-instructions {
+    background: #eff6ff;
+    border-left: 4px solid var(--brand);
+    padding: 10px 14px;
+    border-radius: 0 6px 6px 0;
+    font-size: .9rem;
+    color: var(--brand-dk);
+    margin-bottom: 16px;
+  }
+
+  /* ── Reading text ─────────────────────────────────────────────── */
+  .reading-text {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-size: .95rem;
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+  .reading-text p + p { margin-top: .8em; }
+
+  /* ── Word bank ────────────────────────────────────────────────── */
+  .word-bank {
+    background: #fefce8;
+    border: 1px solid #fde68a;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    font-size: .9rem;
+  }
+  .word-bank strong { display: block; color: #92400e; margin-bottom: 6px; font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; }
+  .word-bank span {
+    display: inline-block;
+    background: #fff;
+    border: 1px solid #fde68a;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin: 2px 4px 2px 0;
+    font-family: monospace;
+    color: #1e293b;
+  }
+
+  /* ── Form elements ────────────────────────────────────────────── */
+  .form-group { margin-bottom: 16px; }
+  .form-label { display: block; font-size: .9rem; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .form-label .q-num { color: var(--brand); margin-right: 4px; }
+  .form-input, .form-textarea, .form-select {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 7px;
+    font-size: .95rem;
+    font-family: inherit;
+    color: var(--text);
+    background: var(--surface);
+    transition: border-color .2s;
+  }
+  .form-input:focus, .form-textarea:focus, .form-select:focus {
+    outline: none;
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px rgba(26,86,219,.12);
+  }
+  .form-textarea { resize: vertical; min-height: 90px; }
+
+  /* ── Gap-fill (inline dropdowns) ─────────────────────────────── */
+  .gap-sentence {
+    font-size: .95rem;
+    line-height: 2.2;
+    margin-bottom: 10px;
+    padding: 10px 14px;
+    background: var(--bg);
+    border-radius: 7px;
+    border: 1px solid var(--border);
+  }
+  .gap-sentence .q-num { font-weight: 700; color: var(--brand); margin-right: 6px; }
+  .gap-select {
+    display: inline-block;
+    width: auto;
+    min-width: 140px;
+    padding: 3px 8px;
+    border: 1.5px solid var(--brand);
+    border-radius: 5px;
+    font-size: .9rem;
+    font-family: inherit;
+    background: #fff;
+    color: var(--text);
+    cursor: pointer;
+    margin: 0 4px;
+    vertical-align: middle;
+  }
+  .gap-select:focus { outline: none; box-shadow: 0 0 0 3px rgba(26,86,219,.15); }
+
+  /* ── Matching exercise ────────────────────────────────────────── */
+  .match-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 10px 14px;
+    background: var(--bg);
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    align-items: center;
+  }
+  .match-term {
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--brand-dk);
+  }
+  .match-term .q-num { font-weight: 700; color: var(--brand); margin-right: 6px; }
+
+  /* ── True/False/Not Given ─────────────────────────────────────── */
+  .tfng-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px 14px;
+    background: var(--bg);
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    margin-bottom: 10px;
+  }
+  .tfng-statement { font-size: .9rem; }
+  .tfng-statement .q-num { font-weight: 700; color: var(--brand); margin-right: 6px; }
+  .tfng-options { display: flex; gap: 8px; }
+  .tfng-options button {
+    flex: 1;
+    padding: 6px 10px;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    background: #fff;
+    font-size: .82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .15s;
+    color: var(--muted);
+  }
+  .tfng-options button.selected { background: var(--brand); color: #fff; border-color: var(--brand); }
+
+  /* ── Score result (after checking) ───────────────────────────── */
+  .check-result {
+    margin-top: 12px;
+    padding: 10px 14px;
+    border-radius: 7px;
+    font-size: .9rem;
+    font-weight: 600;
+    display: none;
+  }
+  .check-result.show { display: block; }
+  .check-result.pass { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+  .check-result.fail { background: #fff7ed; color: #9a3412; border: 1px solid #fed7aa; }
+
+  /* ── Navigation ───────────────────────────────────────────────── */
+  .nav-bar {
+    display: flex; gap: 10px; margin-top: 24px;
+    position: sticky; bottom: 16px;
+  }
+  .btn {
+    padding: 11px 22px;
+    border: none;
+    border-radius: 8px;
+    font-size: .95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform .1s, opacity .2s;
+    font-family: inherit;
+  }
+  .btn:active { transform: scale(.97); }
+  .btn-primary { background: var(--brand); color: #fff; flex: 1; }
+  .btn-primary:hover { background: var(--brand-dk); }
+  .btn-secondary { background: var(--border); color: var(--text); }
+  .btn-secondary:hover { background: #cbd5e1; }
+  .btn-success { background: var(--accent); color: #fff; flex: 1; }
+  .btn-success:hover { background: #057a55; }
+  .btn-check { background: var(--warn); color: #fff; }
+  .btn-check:hover { background: #c07700; }
+  .btn:disabled { opacity: .45; cursor: not-allowed; }
+
+  /* ── Submit screen ────────────────────────────────────────────── */
+  .submit-intro {
+    text-align: center;
+    padding: 28px 20px 20px;
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+  }
+  .submit-intro h2 { font-size: 1.3rem; color: var(--brand-dk); margin-bottom: 6px; }
+  .submit-intro p { color: var(--muted); font-size: .9rem; }
+  .student-info-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+  .student-info-card h3 { font-size: 1rem; font-weight: 700; color: var(--brand-dk); margin-bottom: 14px; }
+  .summary-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+  .summary-card h3 { font-size: 1rem; font-weight: 700; color: var(--brand-dk); margin-bottom: 14px; }
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: .88rem;
+    gap: 16px;
+  }
+  .summary-row:last-child { border-bottom: none; }
+  .summary-q { color: var(--muted); flex: 0 0 40%; }
+  .summary-a { color: var(--text); font-weight: 500; flex: 1; text-align: right; word-break: break-word; }
+  .score-display {
+    background: linear-gradient(135deg, var(--brand-dk), var(--brand));
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .score-display .score-num { font-size: 2.4rem; font-weight: 800; }
+  .score-display .score-label { font-size: .85rem; opacity: .85; }
+  .score-display .grade { font-size: 1.8rem; font-weight: 800; background: rgba(255,255,255,.2); border-radius: 8px; padding: 4px 14px; }
+  #submit-btn-wrap { text-align: center; margin-top: 8px; }
+  #sending-msg { display: none; color: var(--muted); font-size: .9rem; margin-top: 10px; text-align: center; }
+  #success-msg {
+    display: none;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    text-align: center;
+    margin-top: 16px;
+  }
+  #success-msg h3 { font-size: 1.1rem; margin-bottom: 6px; }
+  #error-msg {
+    display: none;
+    background: #fff1f2;
+    border: 1px solid #fecdd3;
+    color: var(--danger);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    text-align: center;
+    margin-top: 12px;
+    font-size: .9rem;
+  }
+
+  /* ── Responsive ───────────────────────────────────────────────── */
+  @media (max-width: 520px) {
+    .match-pair { grid-template-columns: 1fr; }
+    .exercise-overview { grid-template-columns: 1fr 1fr; }
+    .score-display { flex-direction: column; text-align: center; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Progress bar -->
+<div id="progress-bar"><div id="progress-fill"></div></div>
+
+<!-- Header -->
+<header id="site-header">
+  <span class="logo">englishonline.training</span>
+  <span class="step-label" id="header-step-label">IT English</span>
+  <span id="header-score"></span>
+</header>
+
+<main>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     STEP 0 — Welcome
+═══════════════════════════════════════════════════════════════ -->
+<section class="step active" id="step-0">
+  <div class="welcome-hero">
+    <div class="icon">🖥️</div>
+    <h1>Hardware &amp; Networking Essentials</h1>
+    <p class="subtitle">Compare two server options, practise hardware vocabulary and the passive voice.</p>
+    <span class="level-badge">B1–B2 · IT English</span>
+
+    <div class="exercise-overview">
+      <!-- One card per exercise section. Copy/adapt as needed. -->
+      <div class="overview-card">
+        <div class="ex-label">Exercise A</div>
+        <div class="ex-title">Server Comparison</div>
+        <div class="ex-type">Reading comprehension</div>
+      </div>
+      <div class="overview-card">
+        <div class="ex-label">Exercise B</div>
+        <div class="ex-title">Hardware Vocabulary</div>
+        <div class="ex-type">Gap-fill with word bank</div>
+      </div>
+      <div class="overview-card">
+        <div class="ex-label">Exercise C</div>
+        <div class="ex-title">Passive Voice</div>
+        <div class="ex-type">Grammar: present simple passive</div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" onclick="showStep(1)">Start Exercise →</button>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     STEP 1 — Exercise A
+═══════════════════════════════════════════════════════════ -->
+<section class="step" id="step-1">
+  <div class="card">
+    <div class="card-title">
+      <span class="section-badge">A</span>Reading: Choosing a Server for the Branch Office
+    </div>
+    <div class="section-instructions">Read the internal recommendation, then choose the correct answer for each question.</div>
+
+    <div class="reading-text">
+      <p>Below is a summary of the two server options for the new branch office.</p>
+      <p>Option A is a tower server with a 12-core CPU, 64 GB of RAM and two 2 TB SSDs configured as RAID 1. Because the drives are mirrored, the system keeps running even if one disk fails. Option B is a rack server with the same CPU but 128 GB of RAM, which is better if we plan to run several virtual machines.</p>
+      <p>For the network, all workstations are connected to a central switch, and the switch is connected to the router, which manages traffic between our LAN and the internet. A hardware firewall is installed between the router and the internet connection to filter incoming traffic. The current bandwidth (250 Mbit/s) is sufficient, but the contract can be upgraded. My recommendation is Option B: virtualisation will save us money in the long term. — T. Krüger</p>
+    </div>
+
+    <div class="gap-sentence">
+      <span class="q-num">1.</span>
+      In a RAID 1 configuration, the data
+      <select class="gap-select" id="a1">
+        <option value="">— choose —</option>
+        <option value="a">is mirrored on two drives</option>
+        <option value="b">is deleted every night</option>
+        <option value="c">is stored in the cloud</option>
+      </select>.
+    </div>
+
+    <div class="gap-sentence">
+      <span class="q-num">2.</span>
+      Option B is better for virtualisation because it has
+      <select class="gap-select" id="a2">
+        <option value="">— choose —</option>
+        <option value="a">faster SSDs</option>
+        <option value="b">more RAM</option>
+        <option value="c">a second CPU</option>
+      </select>.
+    </div>
+
+    <div class="gap-sentence">
+      <span class="q-num">3.</span>
+      The workstations are connected to
+      <select class="gap-select" id="a3">
+        <option value="">— choose —</option>
+        <option value="a">the router directly</option>
+        <option value="b">the firewall</option>
+        <option value="c">a central switch</option>
+      </select>.
+    </div>
+
+    <div class="gap-sentence">
+      <span class="q-num">4.</span>
+      Traffic between the LAN and the internet is managed by
+      <select class="gap-select" id="a4">
+        <option value="">— choose —</option>
+        <option value="a">the router</option>
+        <option value="b">the SSDs</option>
+        <option value="c">the workstations</option>
+      </select>.
+    </div>
+
+    <div class="gap-sentence">
+      <span class="q-num">5.</span>
+      The firewall's job is to
+      <select class="gap-select" id="a5">
+        <option value="">— choose —</option>
+        <option value="a">increase bandwidth</option>
+        <option value="b">mirror the drives</option>
+        <option value="c">filter incoming traffic</option>
+      </select>.
+    </div>
+
+    <div class="gap-sentence">
+      <span class="q-num">6.</span>
+      T. Krüger recommends
+      <select class="gap-select" id="a6">
+        <option value="">— choose —</option>
+        <option value="a">upgrading the bandwidth first</option>
+        <option value="b">Option B</option>
+        <option value="c">Option A</option>
+      </select>.
+    </div>
+
+    <button class="btn btn-check" onclick="checkExA()">Check answers</button>
+    <div class="check-result" id="check-a"></div>
+  </div>
+
+  <div class="nav-bar">
+    <button class="btn btn-secondary" onclick="showStep(0)">← Back</button>
+    <button class="btn btn-primary" onclick="nextStep(1)">Next →</button>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     STEP 2 — Exercise B
+═══════════════════════════════════════════════════════════ -->
+<section class="step" id="step-2">
+  <div class="card">
+    <div class="card-title">
+      <span class="section-badge">B</span>Vocabulary: Hardware and Network Terms
+    </div>
+    <div class="section-instructions">Complete each sentence with the correct term. Two words in the bank are not needed.</div>
+
+    <div class="word-bank">
+      <strong>Word Bank</strong>
+      <span>CPU</span>
+      <span>RAM</span>
+      <span>SSD</span>
+      <span>router</span>
+      <span>switch</span>
+      <span>LAN</span>
+      <span>bandwidth</span>
+      <span>firewall</span>
+      <span>mentor</span>
+      <span>sprint</span>
+    </div>
+
+    <div class="gap-sentence">
+      <span class="q-num">1.</span>
+      The
+      <select class="gap-select" id="b1">
+        <option value="">— choose —</option>
+        <option value="a">CPU</option>
+        <option value="b">RAM</option>
+        <option value="c">SSD</option>
+      </select> is the 'brain' of the computer that executes instructions.
+    </div>
+
+    <div class="gap-sentence">
+      <span class="q-num">2.</span>
+      Data in
+      <select class="gap-select" id="b2">
+        <option value="">— choose —</option>
+        <option value="a">SSD</option>
+        <option value="b">RAM</option>
+        <option value="c">CPU</option>
+      </select> is lost when the computer is switched off.
+    </div>
+
+    <div class="gap-sentence">
+      <span class="q-num">3.</span>
+      An
+      <select class="gap-select" id="b3">
+        <option value="">— choose —</option>
+        <option value="a">LAN</option>
+        <option value="b">router</option>
+        <option value="c">SSD</option>
+      </select> has no moving parts and is much faster than a traditional hard drive.
+    </div>
+
+    <div class="gap-sentence">
+      <span class="q-num">4.</span>
+      The
+      <select class="gap-select" id="b4">
+        <option value="">— choose —</option>
+        <option value="a">router</option>
+        <option value="b">switch</option>
+        <option value="c">firewall</option>
+      </select> forwards data packets between different networks.
+    </div>
+
+    <div class="gap-sentence">
+      <span class="q-num">5.</span>
+      Inside the office, all devices are connected through a
+      <select class="gap-select" id="b5">
+        <option value="">— choose —</option>
+        <option value="a">bandwidth</option>
+        <option value="b">switch</option>
+        <option value="c">router</option>
+      </select>.
+    </div>
+
+    <div class="gap-sentence">
+      <span class="q-num">6.</span>
+      All the computers in our building belong to the same
+      <select class="gap-select" id="b6">
+        <option value="">— choose —</option>
+        <option value="a">firewall</option>
+        <option value="b">CPU</option>
+        <option value="c">LAN</option>
+      </select>.
+    </div>
+
+    <div class="gap-sentence">
+      <span class="q-num">7.</span>
+      Video conferences use a lot of
+      <select class="gap-select" id="b7">
+        <option value="">— choose —</option>
+        <option value="a">bandwidth</option>
+        <option value="b">LAN</option>
+        <option value="c">RAM</option>
+      </select>, so the connection feels slow.
+    </div>
+
+    <button class="btn btn-check" onclick="checkExB()">Check answers</button>
+    <div class="check-result" id="check-b"></div>
+  </div>
+
+  <div class="nav-bar">
+    <button class="btn btn-secondary" onclick="showStep(1)">← Back</button>
+    <button class="btn btn-primary" onclick="nextStep(2)">Next →</button>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     STEP 3 — Exercise C
+═══════════════════════════════════════════════════════════ -->
+<section class="step" id="step-3">
+  <div class="card">
+    <div class="card-title">
+      <span class="section-badge">C</span>Grammar: Describing Systems with the Passive
+    </div>
+    <div class="section-instructions">Choose the correct passive form to describe what each component or system does.</div>
+
+    <div class="gap-sentence">
+      <span class="q-num">1.</span>
+      Data
+      <select class="gap-select" id="c1">
+        <option value="">— choose —</option>
+        <option value="a">is mirrored</option>
+        <option value="b">mirrors</option>
+        <option value="c">is mirroring</option>
+      </select> between the two drives automatically.
+    </div>
+
+    <div class="gap-sentence">
+      <span class="q-num">2.</span>
+      The servers
+      <select class="gap-select" id="c2">
+        <option value="">— choose —</option>
+        <option value="a">keeps</option>
+        <option value="b">are kept</option>
+        <option value="c">is kept</option>
+      </select> in a locked room.
+    </div>
+
+    <div class="gap-sentence">
+      <span class="q-num">3.</span>
+      Incoming traffic
+      <select class="gap-select" id="c3">
+        <option value="">— choose —</option>
+        <option value="a">filters</option>
+        <option value="b">is filter</option>
+        <option value="c">is filtered</option>
+      </select> by the firewall.
+    </div>
+
+    <div class="gap-sentence">
+      <span class="q-num">4.</span>
+      Backups
+      <select class="gap-select" id="c4">
+        <option value="">— choose —</option>
+        <option value="a">are created</option>
+        <option value="b">is created</option>
+        <option value="c">creates</option>
+      </select> every night at 2 a.m.
+    </div>
+
+    <div class="gap-sentence">
+      <span class="q-num">5.</span>
+      The network
+      <select class="gap-select" id="c5">
+        <option value="">— choose —</option>
+        <option value="a">manages</option>
+        <option value="b">is managed</option>
+        <option value="c">are managed</option>
+      </select> by two administrators.
+    </div>
+
+    <div class="gap-sentence">
+      <span class="q-num">6.</span>
+      New hardware
+      <select class="gap-select" id="c6">
+        <option value="">— choose —</option>
+        <option value="a">tests</option>
+        <option value="b">is tests</option>
+        <option value="c">is tested</option>
+      </select> before it is installed.
+    </div>
+
+    <div class="gap-sentence">
+      <span class="q-num">7.</span>
+      IP addresses
+      <select class="gap-select" id="c7">
+        <option value="">— choose —</option>
+        <option value="a">are assigned</option>
+        <option value="b">assigns</option>
+        <option value="c">is assigned</option>
+      </select> automatically by the DHCP server.
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="c-free">
+        <span class="q-num">8.</span>Describe what a switch does using the passive voice (one sentence).
+      </label>
+      <input class="form-input" type="text" id="c-free" placeholder="Write your answer here…">
+    </div>
+
+    <button class="btn btn-check" onclick="checkExC()">Check answers</button>
+    <div class="check-result" id="check-c"></div>
+  </div>
+
+  <div class="nav-bar">
+    <button class="btn btn-secondary" onclick="showStep(2)">← Back</button>
+    <button class="btn btn-primary" onclick="nextStep(3)">Next →</button>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     STEP 4 — Submit  (always the last step; id = TOTAL_STEPS)
+     TOTAL_STEPS = number of exercise steps + 1
+     e.g. 3 exercises → TOTAL_STEPS = 4, this section id="step-4"
+═══════════════════════════════════════════════════════════════ -->
+<section class="step" id="step-4">
+
+  <div class="submit-intro">
+    <h2>✅ Well done!</h2>
+    <p>Review your answers below, then enter your details to send your work to your teacher.</p>
+  </div>
+
+  <!-- Score display (populated by JS) -->
+  <div class="score-display" id="score-display" style="display:none">
+    <div>
+      <div class="score-num" id="score-pct">—</div>
+      <div class="score-label">overall score</div>
+    </div>
+    <div class="grade" id="grade-val">—</div>
+  </div>
+
+  <!-- Answer summary (populated by buildSummary()) -->
+  <div class="summary-card">
+    <h3>Your answers</h3>
+    <div id="summary-rows"><!-- populated by JS --></div>
+  </div>
+
+  <!-- Student details -->
+  <div class="student-info-card">
+    <h3>Send to teacher</h3>
+    <div class="form-group">
+      <label class="form-label" for="student-name">Your name</label>
+      <input class="form-input" type="text" id="student-name" placeholder="First and last name">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="student-email">Your email address</label>
+      <input class="form-input" type="email" id="student-email" placeholder="your@email.com">
+      <small style="color:var(--muted);font-size:.8rem;margin-top:4px;display:block">
+        Your teacher will reply to this address with feedback.
+      </small>
+    </div>
+  </div>
+
+  <div class="nav-bar">
+    <button class="btn btn-secondary" onclick="showStep(4 - 1)">← Back</button>
+  </div>
+
+  <div id="submit-btn-wrap" style="margin-top:16px">
+    <button class="btn btn-success" style="width:100%;padding:14px" onclick="submitExercise()">
+      📤 Send to teacher
+    </button>
+    <p id="sending-msg">Sending… please wait.</p>
+  </div>
+
+  <div id="success-msg">
+    <h3>✅ Submitted successfully!</h3>
+    <p>Your teacher will review your work and reply to your email.</p>
+  </div>
+  <div id="error-msg">
+    ⚠️ Something went wrong. Please try again or email your teacher directly at
+    <a href="mailto:shaun.trezise@docemus.de">shaun.trezise@docemus.de</a>.
+  </div>
+
+</section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════════════ -->
+<script>
+/* ── Config ────────────────────────────────────────────────────── */
+const UNIT          = 'it-hardware-networking';      // e.g. 'it-networking'
+const TOTAL_STEPS   = 4;      // number of exercises + 1
+const TEACHER_EMAIL = 'shaun.trezise@docemus.de';  // shaun.trezise@docemus.de
+// Formsubmit endpoint — replace shaun.trezise@docemus.de with actual email in the fetch call below
+
+/* ── Answer keys (CORRECT values per dropdown id) ──────────────── */
+// List only dropdowns that have a single correct answer (not free-write).
+const ANSWER_KEYS = {
+  a1: 'a',
+  a2: 'b',
+  a3: 'c',
+  a4: 'a',
+  a5: 'c',
+  a6: 'b',
+  b1: 'a',
+  b2: 'b',
+  b3: 'c',
+  b4: 'a',
+  b5: 'b',
+  b6: 'c',
+  b7: 'a',
+  c1: 'a',
+  c2: 'b',
+  c3: 'c',
+  c4: 'a',
+  c5: 'b',
+  c6: 'c',
+  c7: 'a',
+};
+
+/* ── State ─────────────────────────────────────────────────────── */
+// One property per exercise section, collecting the relevant field IDs.
+// Add or remove sections to match the actual exercise.
+const EX_FIELDS = {
+  A: ['a1', 'a2', 'a3', 'a4', 'a5', 'a6'],
+  B: ['b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7'],
+  C: ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c-free'],
+};
+
+let currentStep = 0;
+let scores = {};   // e.g. { A: { got: 5, of: 6 }, B: { got: 7, of: 8 } }
+
+/* ── Navigation ─────────────────────────────────────────────────── */
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step-' + n).classList.add('active');
+  currentStep = n;
+  document.getElementById('progress-fill').style.width = (n / TOTAL_STEPS * 100) + '%';
+  updateHeader(n);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  if (n === TOTAL_STEPS) {
+    buildSummary();
+    showScores();
+  }
+}
+
+function nextStep(n) {
+  showStep(n + 1);
+}
+
+function updateHeader(n) {
+  const labels = ['Overview', 'Exercise A', 'Exercise B', 'Exercise C', 'Submit'];
+  // Extend labels array if you have more sections.
+  document.getElementById('header-step-label').textContent = labels[n] || 'Submit';
+  // Show cumulative score in header once any exercise is checked
+  const total = Object.values(scores).reduce((s, x) => s + x.got, 0);
+  const max   = Object.values(scores).reduce((s, x) => s + x.of,  0);
+  document.getElementById('header-score').textContent = max ? `${total}/${max}` : '';
+}
+
+/* ── Grading helpers ─────────────────────────────────────────────── */
+/**
+ * checkDropdowns(fieldIds, scoreKey)
+ * Grades all <select> elements in fieldIds against ANSWER_KEYS.
+ * Updates scores[scoreKey] and returns { got, of }.
+ */
+function checkDropdowns(fieldIds, scoreKey) {
+  let got = 0, of = 0;
+  fieldIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el || el.tagName !== 'SELECT') return;
+    of++;
+    if (el.value === ANSWER_KEYS[id]) {
+      got++;
+      el.style.borderColor = 'var(--accent)';
+    } else {
+      el.style.borderColor = 'var(--danger)';
+    }
+  });
+  scores[scoreKey] = { got, of };
+  return { got, of };
+}
+
+function showCheckResult(containerId, got, of) {
+  const el = document.getElementById(containerId);
+  const pct = of ? Math.round(got / of * 100) : 0;
+  el.textContent = `${got} / ${of} correct (${pct}%)`;
+  el.className = 'check-result show ' + (pct >= 60 ? 'pass' : 'fail');
+}
+
+/* ── Per-exercise check functions ───────────────────────────────── */
+function checkExA() {
+  const { got, of } = checkDropdowns(EX_FIELDS.A, 'A');
+  showCheckResult('check-a', got, of);
+}
+
+function checkExB() {
+  const { got, of } = checkDropdowns(EX_FIELDS.B, 'B');
+  showCheckResult('check-b', got, of);
+}
+
+function checkExC() {
+  // If Exercise C uses only free-write fields, skip checkDropdowns.
+  const dropdownFields = EX_FIELDS.C.filter(id => id in ANSWER_KEYS);
+  const { got, of } = checkDropdowns(dropdownFields, 'C');
+  if (of) showCheckResult('check-c', got, of);
+}
+
+/* ── Summary ────────────────────────────────────────────────────── */
+/**
+ * buildSummary()
+ * Adds one row per question to the #summary-rows container.
+ * Add a row for every question the student should see summarised.
+ */
+function buildSummary() {
+  const rows = [
+    { q: "A1 \u2013 RAID 1 means", id: "a1" },
+    { q: "A2 \u2013 why Option B for VMs", id: "a2" },
+    { q: "A3 \u2013 workstations connect to", id: "a3" },
+    { q: "A4 \u2013 LAN\u2013internet traffic", id: "a4" },
+    { q: "A5 \u2013 firewall job", id: "a5" },
+    { q: "A6 \u2013 recommendation", id: "a6" },
+    { q: "B1 \u2013 brain of the computer", id: "b1" },
+    { q: "B2 \u2013 lost when switched off", id: "b2" },
+    { q: "B3 \u2013 no moving parts", id: "b3" },
+    { q: "B4 \u2013 forwards between networks", id: "b4" },
+    { q: "B5 \u2013 connects devices inside office", id: "b5" },
+    { q: "B6 \u2013 computers in one building", id: "b6" },
+    { q: "B7 \u2013 video calls use a lot of", id: "b7" },
+    { q: "C1 \u2013 data \u2026 between drives", id: "c1" },
+    { q: "C2 \u2013 servers \u2026 in locked room", id: "c2" },
+    { q: "C3 \u2013 traffic \u2026 by firewall", id: "c3" },
+    { q: "C4 \u2013 backups \u2026 every night", id: "c4" },
+    { q: "C5 \u2013 network \u2026 by admins", id: "c5" },
+    { q: "C6 \u2013 hardware \u2026 before installation", id: "c6" },
+    { q: "C7 \u2013 IP addresses \u2026 by DHCP", id: "c7" },
+    { q: "C8 \u2013 free answer", id: 'c-free' },
+  ];
+
+  const container = document.getElementById('summary-rows');
+  container.innerHTML = rows.map(r => {
+    const el = document.getElementById(r.id);
+    let val = '—';
+    if (el) {
+      val = el.tagName === 'SELECT'
+        ? (el.options[el.selectedIndex]?.text || '—')
+        : (el.value.trim() || '—');
+    }
+    return `<div class="summary-row">
+      <span class="summary-q">${r.q}</span>
+      <span class="summary-a">${val}</span>
+    </div>`;
+  }).join('');
+}
+
+function showScores() {
+  const total = Object.values(scores).reduce((s, x) => s + x.got, 0);
+  const max   = Object.values(scores).reduce((s, x) => s + x.of,  0);
+  if (!max) return;
+
+  const pct = Math.round(total / max * 100);
+  // German Noten: 1–5
+  const note = pct >= 87 ? 1 : pct >= 73 ? 2 : pct >= 60 ? 3 : pct >= 45 ? 4 : 5;
+
+  document.getElementById('score-pct').textContent = pct + '%';
+  document.getElementById('grade-val').textContent = 'Note ' + note;
+  document.getElementById('score-display').style.display = 'flex';
+}
+
+/* ── Submission ─────────────────────────────────────────────────── */
+function buildEmailBody() {
+  const name  = document.getElementById('student-name').value.trim();
+  const email = document.getElementById('student-email').value.trim();
+  const total = Object.values(scores).reduce((s, x) => s + x.got, 0);
+  const max   = Object.values(scores).reduce((s, x) => s + x.of,  0);
+  const pct   = max ? Math.round(total / max * 100) : '—';
+
+  // Build plain-text summary of answers for the email body
+
+  let body = `IT English Exercise: ${UNIT}\nStudent: ${name} (${email})\nScore: ${total}/${max} (${pct}%)\n\n`;
+
+  // Exercise A
+  body += '=== Exercise A ===\n';
+  EX_FIELDS.A.forEach((id, i) => {
+    const el = document.getElementById(id);
+    const val = el ? (el.tagName === 'SELECT' ? el.options[el.selectedIndex]?.text : el.value.trim()) : '—';
+    body += `A${i+1}: ${val}\n`;
+  });
+
+  // Exercise B
+  body += '\n=== Exercise B ===\n';
+  EX_FIELDS.B.forEach((id, i) => {
+    const el = document.getElementById(id);
+    const val = el ? (el.tagName === 'SELECT' ? el.options[el.selectedIndex]?.text : el.value.trim()) : '—';
+    body += `B${i+1}: ${val}\n`;
+  });
+
+  // Exercise C
+  body += '\n=== Exercise C ===\n';
+  EX_FIELDS.C.forEach((id, i) => {
+    const el = document.getElementById(id);
+    const val = el ? (el.tagName === 'SELECT' ? el.options[el.selectedIndex]?.text : el.value.trim()) : '—';
+    body += `C${i+1}: ${val}\n`;
+  });
+
+  return body;
+}
+
+async function submitExercise() {
+  const name  = document.getElementById('student-name').value.trim();
+  const email = document.getElementById('student-email').value.trim();
+
+  if (!name) { alert('Please enter your name.'); return; }
+  if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+
+  document.getElementById('submit-btn-wrap').style.display = 'none';
+  document.getElementById('sending-msg').style.display = 'block';
+
+  const body = buildEmailBody();
+  const total = Object.values(scores).reduce((s, x) => s + x.got, 0);
+  const max   = Object.values(scores).reduce((s, x) => s + x.of,  0);
+  const pct   = max ? Math.round(total / max * 100) : '—';
+
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/shaun.trezise@docemus.de', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject:    `IT English: ${UNIT} — ${name} (${pct}%)`,
+        _replyto:    email,
+        name:        name,
+        email:       email,
+        unit:        UNIT,
+        score:       `${total}/${max} (${pct}%)`,
+        answers:     body,
+        _template:   'box',
+        _captcha:    'false',
+      })
+    });
+
+    const data = await res.json();
+    document.getElementById('sending-msg').style.display = 'none';
+
+    if (data.success === 'true' || data.success === true) {
+      document.getElementById('success-msg').style.display = 'block';
+    } else {
+      throw new Error('Non-success response');
+    }
+  } catch (err) {
+    document.getElementById('sending-msg').style.display = 'none';
+    document.getElementById('submit-btn-wrap').style.display = 'block';
+    document.getElementById('error-msg').style.display = 'block';
+  }
+}
+</script>
+
+</body>
+</html>
