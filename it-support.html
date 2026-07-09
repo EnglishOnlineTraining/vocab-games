@@ -813,7 +813,7 @@
   </div>
   <div id="error-msg">
     ⚠️ Something went wrong. Please try again or email your teacher directly at
-    <a href="mailto:shaun.trezise@docemus.de">shaun.trezise@docemus.de</a>.
+    <a href="mailto:englishonlinetraining@pm.me">englishonlinetraining@pm.me</a>.
   </div>
 
 </section>
@@ -827,8 +827,8 @@
 /* ── Config ────────────────────────────────────────────────────── */
 const UNIT          = 'it-support';      // e.g. 'it-networking'
 const TOTAL_STEPS   = 4;      // number of exercises + 1
-const TEACHER_EMAIL = 'shaun.trezise@docemus.de';  // shaun.trezise@docemus.de
-// Formsubmit endpoint — replace shaun.trezise@docemus.de with actual email in the fetch call below
+const TEACHER_EMAIL = 'englishonlinetraining@pm.me';  // englishonlinetraining@pm.me
+// Formsubmit endpoint — replace englishonlinetraining@pm.me with actual email in the fetch call below
 
 /* ── Answer keys (CORRECT values per dropdown id) ──────────────── */
 // List only dropdowns that have a single correct answer (not free-write).
@@ -1060,7 +1060,7 @@ async function submitExercise() {
   const pct   = max ? Math.round(total / max * 100) : '—';
 
   try {
-    const res = await fetch('https://formsubmit.co/ajax/shaun.trezise@docemus.de', {
+    const res = await fetch('https://formsubmit.co/ajax/englishonlinetraining@pm.me', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
