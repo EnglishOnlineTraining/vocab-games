@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Critical Thinking &amp; Evaluating Sources | englishonline.training</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── Sticky header ── -->
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">&larr; Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Exercise A of 4</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+<nav class="step-nav" id="step-nav"></nav>
+
+
+<!-- ====================================================
+     STEP 0 – WELCOME
+===================================================== -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">🔍</div>
+      <h1 class="welcome-title">Critical Thinking &amp; Evaluating Sources</h1>
+      <p class="welcome-sub">Learn to assess the reliability and credibility of academic sources &mdash; an essential skill for university-level research and writing.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">📖</div><strong>Ex A &ndash; Reading</strong>Read about source evaluation criteria and answer comprehension questions</div>
+      <div class="ov-card locked"><div class="ov-icon">🔗</div><strong>Ex B &ndash; Vocabulary</strong>Academic vocabulary for critical analysis in context</div>
+      <div class="ov-card locked"><div class="ov-icon">📝</div><strong>Ex C &ndash; Source Evaluation</strong>Assess the reliability of different sources</div>
+      <div class="ov-card locked"><div class="ov-icon">✍️</div><strong>Ex D &ndash; Writing</strong>Write a critical evaluation of a given claim</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class / course</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. Academic English C1" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 1 – EXERCISE A: Reading & Comprehension
+===================================================== -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">Reading: Why Sources Matter</h2>
+    <p class="ex-subtitle">Read the text carefully, then answer the comprehension questions below.</p>
+
+    <div class="info-box">
+      <strong>Why evaluate sources?</strong> At university, you are expected to support your arguments with credible evidence. Not all sources are equally trustworthy. Learning to distinguish between reliable, peer-reviewed research and unreliable or biased information is one of the most important academic skills you can develop.
+    </div>
+
+    <div class="card">
+      <div class="card-title">The CRAAP Test: A Framework for Evaluating Sources</div>
+      <div class="reading-text">
+        <p>When university students begin writing research papers, they often struggle with a fundamental question: how do I know whether a source is good enough to cite? A blog post may look professional, a Wikipedia article may seem comprehensive, and a YouTube video may sound convincing &mdash; but are these sources appropriate for academic work? To help answer this question, librarians at California State University developed the CRAAP Test, a widely used framework for evaluating the quality of information.</p>
+
+        <p>The acronym CRAAP stands for five evaluation criteria: <strong>Currency</strong>, <strong>Relevance</strong>, <strong>Authority</strong>, <strong>Accuracy</strong>, and <strong>Purpose</strong>. Currency asks whether the information is up to date. In fast-moving fields such as technology or medicine, a source from ten years ago may already be outdated. Relevance considers whether the source actually addresses your research question &mdash; a well-written article on a tangentially related topic is not useful if it does not support your specific argument.</p>
+
+        <p>Authority examines who wrote or published the source. Is the author an expert in the field? Has the work been published by a reputable institution or in a peer-reviewed journal? A research paper by a professor of neuroscience carries significantly more weight than an anonymous blog post on the same topic. Accuracy checks whether the claims in the source are supported by evidence, whether the methodology is sound, and whether other researchers have been able to replicate the findings. Finally, Purpose asks why the source was created. Was it written to inform, to persuade, to sell a product, or to entertain? Sources with a commercial or political agenda may present information selectively.</p>
+
+        <p>Beyond the CRAAP Test, scholars also distinguish between <strong>primary</strong> and <strong>secondary</strong> sources. A primary source presents original data or first-hand accounts &mdash; for example, a clinical trial report, an interview transcript, or a historical document. A secondary source analyses, interprets, or summarises primary sources &mdash; such as a literature review, a textbook chapter, or a newspaper article reporting on a scientific study. Both types are valuable, but understanding the difference helps researchers trace information back to its origin and assess how it may have been filtered or interpreted along the way.</p>
+
+        <p>In the age of social media and artificial intelligence, these skills are more important than ever. AI-generated content can produce plausible-sounding text that contains factual errors, while social media algorithms amplify sensational claims regardless of their accuracy. Students who can critically evaluate sources are better equipped not only for academic success but also for making informed decisions in their personal and professional lives.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Comprehension questions</div>
+
+      <div class="form-group">
+        <label class="form-label" for="exA-q1">1. What does the CRAAP Test help students do?</label>
+        <textarea class="form-textarea" id="exA-q1" rows="2" placeholder="Write your answer..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="exA-q2">2. Why might a source from ten years ago be problematic in some fields? Give an example of such a field.</label>
+        <textarea class="form-textarea" id="exA-q2" rows="2" placeholder="Write your answer..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="exA-q3">3. According to the text, what is the difference between a primary source and a secondary source? Give one example of each.</label>
+        <textarea class="form-textarea" id="exA-q3" rows="3" placeholder="Write your answer..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="exA-q4">4. The text mentions &ldquo;Purpose&rdquo; as one of the CRAAP criteria. Why is it important to consider why a source was created?</label>
+        <textarea class="form-textarea" id="exA-q4" rows="3" placeholder="Write your answer..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="exA-q5">5. Why does the author argue that critical evaluation skills are &ldquo;more important than ever&rdquo; today?</label>
+        <textarea class="form-textarea" id="exA-q5" rows="3" placeholder="Write your answer..."></textarea>
+      </div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">&larr; Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 2 – EXERCISE B: Academic Vocabulary Gap-fill
+===================================================== -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B</span>
+    <h2 class="ex-title">Academic Vocabulary for Critical Analysis</h2>
+    <p class="ex-subtitle">Complete each sentence by choosing the correct academic term from the dropdown. These are key words you need when discussing sources and evidence.</p>
+
+    <div class="word-bank">
+      <strong>Key vocabulary</strong>
+      <span>peer-reviewed</span> <span>bias</span> <span>credible</span>
+      <span>empirical</span> <span>anecdotal</span> <span>corroborate</span>
+      <span>methodology</span> <span>plagiarism</span> <span>citation</span>
+      <span>objective</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Choose the correct term</div>
+      <div class="gap-text">
+        <p><span class="gap-num">1</span> A journal article that has been checked and approved by independent experts in the same field is called a
+          <select class="gap-select" id="exB-g1">
+            <option value="">choose&hellip;</option>
+            <option value="credible">credible</option>
+            <option value="peer-reviewed">peer-reviewed</option>
+            <option value="anecdotal">anecdotal</option>
+          </select>
+        publication.</p>
+
+        <p><span class="gap-num">2</span> When a researcher&rsquo;s personal opinions or financial interests influence their findings, the study is said to have
+          <select class="gap-select" id="exB-g2">
+            <option value="">choose&hellip;</option>
+            <option value="methodology">methodology</option>
+            <option value="citation">citation</option>
+            <option value="bias">bias</option>
+          </select>.</p>
+
+        <p><span class="gap-num">3</span> Evidence based on personal stories or individual experiences rather than systematic research is called
+          <select class="gap-select" id="exB-g3">
+            <option value="">choose&hellip;</option>
+            <option value="empirical">empirical</option>
+            <option value="objective">objective</option>
+            <option value="anecdotal">anecdotal</option>
+          </select>
+        evidence.</p>
+
+        <p><span class="gap-num">4</span> The detailed plan of how a study was conducted &mdash; including how data was collected and analysed &mdash; is known as the
+          <select class="gap-select" id="exB-g4">
+            <option value="">choose&hellip;</option>
+            <option value="plagiarism">plagiarism</option>
+            <option value="methodology">methodology</option>
+            <option value="bias">bias</option>
+          </select>.</p>
+
+        <p><span class="gap-num">5</span>
+          <select class="gap-select" id="exB-g5">
+            <option value="">choose&hellip;</option>
+            <option value="Anecdotal">Anecdotal</option>
+            <option value="Objective">Objective</option>
+            <option value="Empirical">Empirical</option>
+          </select>
+        evidence is gathered through direct observation, experiments, or measurable data rather than through theory alone.</p>
+
+        <p><span class="gap-num">6</span> If two independent studies reach the same conclusion, we say that the second study helps to
+          <select class="gap-select" id="exB-g6">
+            <option value="">choose&hellip;</option>
+            <option value="corroborate">corroborate</option>
+            <option value="plagiarise">plagiarise</option>
+            <option value="cite">cite</option>
+          </select>
+        the findings of the first.</p>
+
+        <p><span class="gap-num">7</span> A source is considered
+          <select class="gap-select" id="exB-g7">
+            <option value="">choose&hellip;</option>
+            <option value="anecdotal">anecdotal</option>
+            <option value="credible">credible</option>
+            <option value="biased">biased</option>
+          </select>
+        when it comes from a trustworthy author, is supported by evidence, and has been published through a reputable channel.</p>
+
+        <p><span class="gap-num">8</span> Presenting someone else&rsquo;s words or ideas as your own, without proper acknowledgement, is a serious academic offence known as
+          <select class="gap-select" id="exB-g8">
+            <option value="">choose&hellip;</option>
+            <option value="bias">bias</option>
+            <option value="citation">citation</option>
+            <option value="plagiarism">plagiarism</option>
+          </select>.</p>
+
+        <p><span class="gap-num">9</span> A
+          <select class="gap-select" id="exB-g9">
+            <option value="">choose&hellip;</option>
+            <option value="plagiarism">plagiarism</option>
+            <option value="methodology">methodology</option>
+            <option value="citation">citation</option>
+          </select>
+        is a formal reference to a source used in your work, typically including the author, date, title, and publication details.</p>
+
+        <p><span class="gap-num">10</span> An
+          <select class="gap-select" id="exB-g10">
+            <option value="">choose&hellip;</option>
+            <option value="empirical">empirical</option>
+            <option value="objective">objective</option>
+            <option value="anecdotal">anecdotal</option>
+          </select>
+        analysis presents facts without being influenced by personal feelings or opinions.</p>
+      </div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div id="step2-fb" class="feedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">&larr; Back</button>
+      <button class="btn btn-gold btn-sm" onclick="checkExB()">&#10003; Check</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 3 – EXERCISE C: Source Evaluation
+===================================================== -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise C</span>
+    <h2 class="ex-title">Source Evaluation in Practice</h2>
+    <p class="ex-subtitle">Read each source description. Then decide how reliable it is and select the best reason from the dropdown.</p>
+
+    <div class="info-box">
+      <strong>Reminder &mdash; the CRAAP criteria:</strong> Currency (is it up to date?), Relevance (does it address your question?), Authority (who wrote it?), Accuracy (is it supported by evidence?), Purpose (why was it written?).
+    </div>
+
+    <div class="card">
+      <div class="card-title">Rate each source</div>
+
+      <div class="form-group" style="border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:.85rem;background:#fafbfc">
+        <div style="font-size:.88rem;line-height:1.7;margin-bottom:.75rem"><strong>Source 1:</strong> A 2024 article in <em>The Lancet</em> (a peer-reviewed medical journal) reporting the results of a clinical trial with 12,000 participants, conducted by researchers at three European universities.</div>
+        <label class="form-label">How reliable is this source?</label>
+        <select class="gap-select" id="exC-g1" style="display:block;margin-bottom:.4rem">
+          <option value="">choose&hellip;</option>
+          <option value="highly reliable">Highly reliable</option>
+          <option value="somewhat reliable">Somewhat reliable</option>
+          <option value="unreliable">Unreliable</option>
+        </select>
+        <label class="form-label" style="margin-top:.5rem">Why?</label>
+        <select class="gap-select" id="exC-g2" style="display:block">
+          <option value="">choose&hellip;</option>
+          <option value="peer-reviewed, large sample, expert authors">Peer-reviewed, large sample size, expert authors</option>
+          <option value="published recently so must be correct">Published recently, so it must be correct</option>
+          <option value="medical journals always tell the truth">Medical journals always tell the truth</option>
+        </select>
+      </div>
+
+      <div class="form-group" style="border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:.85rem;background:#fafbfc">
+        <div style="font-size:.88rem;line-height:1.7;margin-bottom:.75rem"><strong>Source 2:</strong> A blog post titled &ldquo;10 Superfoods That Cure Cancer&rdquo; on a wellness website that also sells dietary supplements. The author is described only as &ldquo;a health enthusiast.&rdquo; No scientific references are provided.</div>
+        <label class="form-label">How reliable is this source?</label>
+        <select class="gap-select" id="exC-g3" style="display:block;margin-bottom:.4rem">
+          <option value="">choose&hellip;</option>
+          <option value="highly reliable">Highly reliable</option>
+          <option value="somewhat reliable">Somewhat reliable</option>
+          <option value="unreliable">Unreliable</option>
+        </select>
+        <label class="form-label" style="margin-top:.5rem">Why?</label>
+        <select class="gap-select" id="exC-g4" style="display:block">
+          <option value="">choose&hellip;</option>
+          <option value="it uses strong language so it must be important">It uses strong language, so it must be important</option>
+          <option value="no expert author, commercial purpose, no evidence cited">No expert author, commercial purpose, no evidence cited</option>
+          <option value="blogs are always unreliable">Blogs are always unreliable</option>
+        </select>
+      </div>
+
+      <div class="form-group" style="border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:.85rem;background:#fafbfc">
+        <div style="font-size:.88rem;line-height:1.7;margin-bottom:.75rem"><strong>Source 3:</strong> A Wikipedia article on climate change. It includes 247 footnotes linking to scientific journals and government reports, and was last updated two weeks ago.</div>
+        <label class="form-label">How reliable is this source?</label>
+        <select class="gap-select" id="exC-g5" style="display:block;margin-bottom:.4rem">
+          <option value="">choose&hellip;</option>
+          <option value="highly reliable">Highly reliable</option>
+          <option value="somewhat reliable">Somewhat reliable</option>
+          <option value="unreliable">Unreliable</option>
+        </select>
+        <label class="form-label" style="margin-top:.5rem">Why?</label>
+        <select class="gap-select" id="exC-g6" style="display:block">
+          <option value="">choose&hellip;</option>
+          <option value="wikipedia is always wrong">Wikipedia is always wrong</option>
+          <option value="well-referenced and current but anyone can edit it">Well-referenced and current, but anyone can edit it &mdash; use the footnoted sources directly</option>
+          <option value="it has many footnotes so it is peer-reviewed">It has many footnotes, so it counts as peer-reviewed</option>
+        </select>
+      </div>
+
+      <div class="form-group" style="border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:.85rem;background:#fafbfc">
+        <div style="font-size:.88rem;line-height:1.7;margin-bottom:.75rem"><strong>Source 4:</strong> A 2019 government report from the German Federal Statistical Office (<em>Statistisches Bundesamt</em>) presenting data on higher education enrolment trends from 2010 to 2018.</div>
+        <label class="form-label">How reliable is this source?</label>
+        <select class="gap-select" id="exC-g7" style="display:block;margin-bottom:.4rem">
+          <option value="">choose&hellip;</option>
+          <option value="unreliable">Unreliable</option>
+          <option value="highly reliable">Highly reliable</option>
+          <option value="somewhat reliable">Somewhat reliable</option>
+        </select>
+        <label class="form-label" style="margin-top:.5rem">Why?</label>
+        <select class="gap-select" id="exC-g8" style="display:block">
+          <option value="">choose&hellip;</option>
+          <option value="government data is always biased">Government data is always biased</option>
+          <option value="authoritative source with transparent data but may be outdated for current trends">Authoritative source with transparent data, but may be outdated for current trends</option>
+          <option value="statistics are never useful for academic writing">Statistics are never useful for academic writing</option>
+        </select>
+      </div>
+
+      <div class="form-group" style="border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;background:#fafbfc">
+        <div style="font-size:.88rem;line-height:1.7;margin-bottom:.75rem"><strong>Source 5:</strong> A viral TikTok video in which a university student claims that &ldquo;studies show&rdquo; that listening to classical music doubles your exam scores. The video has 2.3 million views but does not name or link to any specific study.</div>
+        <label class="form-label">How reliable is this source?</label>
+        <select class="gap-select" id="exC-g9" style="display:block;margin-bottom:.4rem">
+          <option value="">choose&hellip;</option>
+          <option value="somewhat reliable">Somewhat reliable</option>
+          <option value="highly reliable">Highly reliable</option>
+          <option value="unreliable">Unreliable</option>
+        </select>
+        <label class="form-label" style="margin-top:.5rem">Why?</label>
+        <select class="gap-select" id="exC-g10" style="display:block">
+          <option value="">choose&hellip;</option>
+          <option value="millions of views prove the claim is correct">Millions of views prove the claim is correct</option>
+          <option value="university students are always credible sources">University students are always credible sources</option>
+          <option value="no verifiable evidence, unqualified source, exaggerated claim">No verifiable evidence, unqualified source, exaggerated claim</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div id="step3-fb" class="feedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">&larr; Back</button>
+      <button class="btn btn-gold btn-sm" onclick="checkExC()">&#10003; Check</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise D &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 4 – EXERCISE D: Critical Writing
+===================================================== -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise D</span>
+    <h2 class="ex-title">Critical Evaluation Writing</h2>
+    <p class="ex-subtitle">Read the claim below. Then write a critical evaluation paragraph (120&ndash;180 words) in which you assess whether this claim is likely to be true and what further evidence you would need.</p>
+
+    <div class="card">
+      <div class="card-title">The claim</div>
+      <div class="reading-text" style="margin-bottom:1rem">
+        <p style="font-style:italic;font-size:1rem;color:var(--blue)">&ldquo;A recent study found that students who use AI tools for their essays get 30% higher grades than students who write without AI assistance.&rdquo;</p>
+        <p style="font-size:.85rem;color:var(--muted);margin-top:.5rem">This claim appeared in an online news article. No link to the original study was provided, and the article did not name the researchers or the university where the study took place.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Your evaluation</div>
+      <div class="reading-text" style="margin-bottom:1rem">
+        <p>Your paragraph should address the following points:</p>
+        <p>&bull; How credible is this claim based on the information given?</p>
+        <p>&bull; Which CRAAP criteria does the source fail to meet?</p>
+        <p>&bull; What additional information would you need before accepting or rejecting the claim?</p>
+        <p>&bull; Could there be any bias or alternative explanations?</p>
+      </div>
+
+      <div class="word-bank">
+        <strong>Useful phrases for critical evaluation</strong>
+        <span>this claim lacks</span>
+        <span>there is insufficient evidence to</span>
+        <span>it is unclear whether</span>
+        <span>the source fails to provide</span>
+        <span>further research would be needed</span>
+        <span>one possible explanation is</span>
+        <span>this raises questions about</span>
+        <span>without peer review</span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="exD-para">Your critical evaluation</label>
+        <textarea class="form-textarea" id="exD-para" rows="10" placeholder="Write your evaluation paragraph here (120–180 words). Use the phrases above and apply the CRAAP criteria you have learned."></textarea>
+        <div class="form-hint" id="word-count">0 words</div>
+      </div>
+    </div>
+
+    <div id="step4-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(4)">&larr; Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(4)">Review &amp; Submit &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 5 – REVIEW & SUBMIT
+===================================================== -->
+<section id="step-5" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+    <div id="score-display" style="display:none"></div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission did not work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+      <textarea id="copy-block" class="copy-block" style="display:none" readonly></textarea>
+      <div id="copy-success" class="feedback ok" style="margin-top:1rem"></div>
+    </div>
+  </div>
+</section>
+
+
+<script src="exercise.js"></script>
+<script>
+/* ============================================================
+   CONFIG
+============================================================ */
+var UNIT          = 'uni-critical-thinking';
+var TOTAL_STEPS   = 5;
+var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec';
+var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+
+/* ============================================================
+   STATE
+============================================================ */
+var state = {
+  name:   '',
+  cls:    '',
+  exA:    {},
+  exB:    {},
+  exC:    {},
+  exD:    {},
+  scores: {}
+};
+var maxStepReached = 0;
+
+/* ============================================================
+   VALIDATION
+============================================================ */
+function validateStep(n) {
+  switch (n) {
+    case 1:
+      var count = 0;
+      if (val('exA-q1')) count++;
+      if (val('exA-q2')) count++;
+      if (val('exA-q3')) count++;
+      if (val('exA-q4')) count++;
+      if (val('exA-q5')) count++;
+      return count >= 4;
+    case 2: return countFilled('exB-g', 10) >= 8;
+    case 3: return countFilled('exC-g', 10) >= 8;
+    case 4: return g('exD-para').length >= 50;
+    default: return true;
+  }
+}
+
+function countFilled(prefix, n) {
+  var c = 0;
+  for (var i = 1; i <= n; i++) { if (g(prefix + i)) c++; }
+  return c;
+}
+
+/* ============================================================
+   SAVE / RESTORE
+============================================================ */
+function saveStep(n) {
+  switch (n) {
+    case 1:
+      state.exA.q1 = g('exA-q1');
+      state.exA.q2 = g('exA-q2');
+      state.exA.q3 = g('exA-q3');
+      state.exA.q4 = g('exA-q4');
+      state.exA.q5 = g('exA-q5');
+      break;
+    case 2: for (var i=1;i<=10;i++) state.exB['g'+i] = g('exB-g'+i); break;
+    case 3: for (var i=1;i<=10;i++) state.exC['g'+i] = g('exC-g'+i); break;
+    case 4: state.exD.para = g('exD-para'); break;
+  }
+}
+
+function restoreStep(n) {
+  switch (n) {
+    case 1:
+      set('exA-q1', state.exA.q1);
+      set('exA-q2', state.exA.q2);
+      set('exA-q3', state.exA.q3);
+      set('exA-q4', state.exA.q4);
+      set('exA-q5', state.exA.q5);
+      break;
+    case 2: for (var i=1;i<=10;i++) set('exB-g'+i, state.exB['g'+i]); break;
+    case 3: for (var i=1;i<=10;i++) set('exC-g'+i, state.exC['g'+i]); break;
+    case 4: set('exD-para', state.exD.para); updateWordCount(); break;
+  }
+}
+
+/* ============================================================
+   HELPERS
+============================================================ */
+function updateWordCount() {
+  var text = g('exD-para');
+  var words = text ? text.split(/\s+/).filter(function(w){return w.length>0;}).length : 0;
+  var el = document.getElementById('word-count');
+  if (el) {
+    el.textContent = words + ' word' + (words !== 1 ? 's' : '');
+    el.style.color = (words >= 120 && words <= 180) ? 'var(--green)' : (words > 180 ? 'var(--red)' : 'var(--muted)');
+  }
+}
+
+/* ============================================================
+   SUMMARY
+============================================================ */
+function buildSummary() {
+  var rows = [];
+
+  /* Ex A */
+  rows.push({ ex: 'Exercise A — Reading', q: '1. What does the CRAAP Test help students do?', a: state.exA.q1 });
+  rows.push({ ex: 'Exercise A — Reading', q: '2. Why might an old source be problematic?', a: state.exA.q2 });
+  rows.push({ ex: 'Exercise A — Reading', q: '3. Primary vs secondary sources', a: state.exA.q3 });
+  rows.push({ ex: 'Exercise A — Reading', q: '4. Why consider Purpose?', a: state.exA.q4 });
+  rows.push({ ex: 'Exercise A — Reading', q: '5. Why more important than ever?', a: state.exA.q5 });
+
+  /* Ex B */
+  var bAnswers = [];
+  for (var j = 1; j <= 10; j++) bAnswers.push('Gap ' + j + ': ' + (state.exB['g'+j] || '(blank)'));
+  rows.push({ ex: 'Exercise B — Vocabulary', q: '10 gap-fill answers', a: bAnswers.join('\n') });
+
+  /* Ex C */
+  var cLabels = ['Source 1 reliability','Source 1 reason','Source 2 reliability','Source 2 reason','Source 3 reliability','Source 3 reason','Source 4 reliability','Source 4 reason','Source 5 reliability','Source 5 reason'];
+  var cAnswers = [];
+  for (var k = 1; k <= 10; k++) cAnswers.push(cLabels[k-1] + ': ' + (state.exC['g'+k] || '(blank)'));
+  rows.push({ ex: 'Exercise C — Source Evaluation', q: '5 sources evaluated', a: cAnswers.join('\n') });
+
+  /* Ex D */
+  rows.push({ ex: 'Exercise D — Writing', q: 'Critical evaluation paragraph', a: state.exD.para || '(no answer)' });
+
+  var html = '<div class="submit-summary">'
+    + '<div class="summary-row"><div class="summary-ex">Student</div>'
+    + '<div class="summary-q">' + esc(state.name) + ' — ' + esc(state.cls) + '</div></div>';
+  rows.forEach(function(r) {
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div>'
+      + '<div class="summary-q">' + esc(r.q) + '</div>'
+      + '<div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+  renderScore();
+}
+
+/* ============================================================
+   EMAIL FALLBACK BODY
+============================================================ */
+function buildEmailBody() {
+  var sc = totalScore();
+  var grade = lookupGrade(sc.earned, sc.possible);
+  var body = 'Exercise: ' + UNIT
+    + '\nStudent: ' + state.name
+    + '\nClass:   ' + state.cls
+    + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
+    + '\nScore:   ' + (sc.possible ? (sc.earned + ' / ' + sc.possible + (grade ? ' — Note ' + grade.note + ' (' + grade.label + ')' : '')) : '(no auto-graded sections)');
+
+  body += '\n\n--- Exercise A: Reading ---';
+  body += '\n1. CRAAP Test purpose: ' + (state.exA.q1 || '(blank)');
+  body += '\n2. Old sources: ' + (state.exA.q2 || '(blank)');
+  body += '\n3. Primary vs secondary: ' + (state.exA.q3 || '(blank)');
+  body += '\n4. Purpose criterion: ' + (state.exA.q4 || '(blank)');
+  body += '\n5. More important than ever: ' + (state.exA.q5 || '(blank)');
+
+  body += '\n\n--- Exercise B: Vocabulary ---';
+  for (var j = 1; j <= 10; j++) body += '\nGap ' + j + ': ' + (state.exB['g'+j] || '(blank)');
+
+  body += '\n\n--- Exercise C: Source Evaluation ---';
+  var cLabels = ['Source 1 reliability','Source 1 reason','Source 2 reliability','Source 2 reason','Source 3 reliability','Source 3 reason','Source 4 reliability','Source 4 reason','Source 5 reliability','Source 5 reason'];
+  for (var k = 1; k <= 10; k++) body += '\n' + cLabels[k-1] + ': ' + (state.exC['g'+k] || '(blank)');
+
+  body += '\n\n--- Exercise D: Writing ---\n' + (state.exD.para || '(none)');
+  return body;
+}
+
+/* ============================================================
+   PAYLOAD
+============================================================ */
+function buildPayload() {
+  var sc = totalScore();
+  var grade = lookupGrade(sc.earned, sc.possible);
+  return {
+    name: state.name, cls: state.cls, unit: UNIT,
+    exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD,
+    score: sc.possible ? (sc.earned + ' / ' + sc.possible) : '(no auto-graded sections)',
+    grade: grade ? ('Note ' + grade.note + ' (' + grade.label + ')') : ''
+  };
+}
+
+/* ============================================================
+   CHECK ANSWERS
+============================================================ */
+function checkExB() {
+  var answers = {
+    g1:  'peer-reviewed',
+    g2:  'bias',
+    g3:  'anecdotal',
+    g4:  'methodology',
+    g5:  'Empirical',
+    g6:  'corroborate',
+    g7:  'credible',
+    g8:  'plagiarism',
+    g9:  'citation',
+    g10: 'objective'
+  };
+  checkDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10'], 'exB-', answers, 'step2-fb', 'exB');
+}
+
+function checkExC() {
+  var answers = {
+    g1:  'highly reliable',
+    g2:  'peer-reviewed, large sample, expert authors',
+    g3:  'unreliable',
+    g4:  'no expert author, commercial purpose, no evidence cited',
+    g5:  'somewhat reliable',
+    g6:  'well-referenced and current but anyone can edit it',
+    g7:  'highly reliable',
+    g8:  'authoritative source with transparent data but may be outdated for current trends',
+    g9:  'unreliable',
+    g10: 'no verifiable evidence, unqualified source, exaggerated claim'
+  };
+  checkDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10'], 'exC-', answers, 'step3-fb', 'exC');
+}
+
+/* ============================================================
+   INIT
+============================================================ */
+document.addEventListener('DOMContentLoaded', function() {
+  showStep(0);
+  var para = document.getElementById('exD-para');
+  if (para) para.addEventListener('input', updateWordCount);
+});
+</script>
+
+</body>
+</html>
