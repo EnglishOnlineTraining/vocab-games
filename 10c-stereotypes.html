@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stereotypes &amp; Cultural Awareness | englishonline.training</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── Sticky header (keep as-is) ── -->
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">&larr; Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Exercise A of 4</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+<!-- Step navigation — auto-built by renderStepNav() in exercise.js -->
+<nav class="step-nav" id="step-nav"></nav>
+
+
+<!-- ====================================================
+     STEP 0 – WELCOME
+===================================================== -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">🌍</div>
+      <h1 class="welcome-title">Stereotypes &amp; Cultural Awareness</h1>
+      <p class="welcome-sub">Explore what stereotypes are, how they form, and why cultural awareness matters — while revising passive voice and if-clauses.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">📖</div><strong>Ex A – Reading</strong>Read about stereotypes and cultural awareness, then answer comprehension questions</div>
+      <div class="ov-card locked"><div class="ov-icon">🔄</div><strong>Ex B – Passive Voice</strong>Choose the correct passive forms in sentences about stereotypes and prejudice</div>
+      <div class="ov-card locked"><div class="ov-icon">💬</div><strong>Ex C – If-Clauses III</strong>Complete hypothetical sentences about past situations using if-clauses type III</div>
+      <div class="ov-card locked"><div class="ov-icon">✍️</div><strong>Ex D – Writing</strong>Write a paragraph about stereotypes you have experienced or how to challenge them</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. 10c" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 1 – EXERCISE A: Reading Comprehension
+===================================================== -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">Stereotypes &amp; Cultural Awareness – Reading</h2>
+    <p class="ex-subtitle">Read the text carefully, then answer the comprehension questions below by choosing the correct option.</p>
+
+    <div class="card">
+      <div class="card-title">Reading Text</div>
+      <div class="reading-text">
+        <p>Stereotypes are simplified ideas or beliefs about a particular group of people. They are often based on generalisations — for example, the idea that all Germans are punctual, all British people drink tea constantly, or all Australians love surfing. While some stereotypes may contain a grain of truth, they rarely reflect the full picture. Every person is an individual, and reducing someone to a stereotype ignores their unique personality, interests, and experiences.</p>
+
+        <p>Stereotypes are formed in many ways. Young children often pick up stereotypes from their families, friends, and the media. Films, television shows, and social media can reinforce stereotypes by showing certain groups of people in a limited or one-sided way. For example, indigenous peoples in countries like Canada, Australia, and New Zealand are sometimes portrayed as if they still live exactly as their ancestors did centuries ago, while their modern achievements in science, art, and politics are ignored.</p>
+
+        <p>Stereotypes can lead to prejudice and discrimination. When people are judged based on stereotypes rather than as individuals, it can cause real harm. In schools, students from certain backgrounds may face bullying or exclusion because of assumptions about their culture, religion, or language. In the workplace, stereotypes can affect who gets hired or promoted. Research has shown that job applicants with foreign-sounding names sometimes receive fewer interview invitations, even when their qualifications are identical to those of other candidates.</p>
+
+        <p>However, there are effective ways to challenge stereotypes. Travel, reading, and having conversations with people from different backgrounds can help break down false assumptions. In many countries, schools now teach about cultural diversity and encourage students to question their own biases. Exchange programmes between countries — for example between Germany and Commonwealth nations such as Canada, India, or New Zealand — give young people the chance to experience other cultures first-hand and discover that stereotypes rarely tell the whole story.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Comprehension Questions</div>
+      <p class="gap-text">
+        <span class="gap-num">1</span> According to the text, stereotypes are
+        <select class="gap-select" id="exA-g1">
+          <option value="">— choose —</option>
+          <option value="detailed">detailed and accurate descriptions of people</option>
+          <option value="simplified">simplified ideas about a group of people</option>
+          <option value="scientific">scientific facts about different cultures</option>
+          <option value="personal">personal opinions shared by everyone</option>
+        </select>.
+      </p>
+      <p class="gap-text">
+        <span class="gap-num">2</span> The text says that stereotypes
+        <select class="gap-select" id="exA-g2">
+          <option value="">— choose —</option>
+          <option value="always">are always completely false</option>
+          <option value="grain">may contain a grain of truth but rarely reflect the full picture</option>
+          <option value="perfectly">perfectly describe most people in a group</option>
+          <option value="only">only exist in European countries</option>
+        </select>.
+      </p>
+      <p class="gap-text">
+        <span class="gap-num">3</span> Children often pick up stereotypes from
+        <select class="gap-select" id="exA-g3">
+          <option value="">— choose —</option>
+          <option value="textbooks">textbooks and dictionaries only</option>
+          <option value="nature">nature and animals</option>
+          <option value="families">their families, friends, and the media</option>
+          <option value="teachers">their teachers only</option>
+        </select>.
+      </p>
+      <p class="gap-text">
+        <span class="gap-num">4</span> Indigenous peoples in Commonwealth countries are sometimes portrayed
+        <select class="gap-select" id="exA-g4">
+          <option value="">— choose —</option>
+          <option value="modern">as leading modern, successful lives</option>
+          <option value="political">as important political leaders</option>
+          <option value="ancestors">as if they still live like their ancestors</option>
+          <option value="wealthy">as the wealthiest members of society</option>
+        </select>.
+      </p>
+      <p class="gap-text">
+        <span class="gap-num">5</span> In schools, stereotypes can lead to
+        <select class="gap-select" id="exA-g5">
+          <option value="">— choose —</option>
+          <option value="better">better friendships between students</option>
+          <option value="bullying">bullying or exclusion of some students</option>
+          <option value="higher">higher grades for everyone</option>
+          <option value="more">more cultural events</option>
+        </select>.
+      </p>
+      <p class="gap-text">
+        <span class="gap-num">6</span> Research about job applications showed that applicants with foreign-sounding names
+        <select class="gap-select" id="exA-g6">
+          <option value="">— choose —</option>
+          <option value="more">received more interview invitations</option>
+          <option value="same">received the same number of invitations</option>
+          <option value="fewer">sometimes received fewer interview invitations</option>
+          <option value="never">were never invited to interviews</option>
+        </select>.
+      </p>
+      <p class="gap-text">
+        <span class="gap-num">7</span> According to the text, one way to challenge stereotypes is
+        <select class="gap-select" id="exA-g7">
+          <option value="">— choose —</option>
+          <option value="avoiding">avoiding all contact with other cultures</option>
+          <option value="travel">travel, reading, and talking to people from different backgrounds</option>
+          <option value="watching">watching more television</option>
+          <option value="ignoring">ignoring people who are different from you</option>
+        </select>.
+      </p>
+      <p class="gap-text">
+        <span class="gap-num">8</span> Exchange programmes are mentioned as a way for young people to
+        <select class="gap-select" id="exA-g8">
+          <option value="">— choose —</option>
+          <option value="confirm">confirm that stereotypes are usually correct</option>
+          <option value="avoid">avoid learning about other cultures</option>
+          <option value="experience">experience other cultures first-hand</option>
+          <option value="compete">compete with students from other countries</option>
+        </select>.
+      </p>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div id="step1-fb" class="feedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">&larr; Back</button>
+      <button class="btn btn-gold btn-sm" onclick="checkExA()">&#10003; Check</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 2 – EXERCISE B: Passive Voice
+===================================================== -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B</span>
+    <h2 class="ex-title">Passive Voice – Stereotypes &amp; Prejudice</h2>
+    <p class="ex-subtitle">Choose the correct passive voice form for each sentence. Remember: passive = form of "be" + past participle. Think carefully about the tense!</p>
+
+    <div class="card">
+      <div class="card-title">Grammar reminder</div>
+      <div class="reading-text">
+        <p><strong>Present simple passive:</strong> Stereotypes <em>are created</em> by the media.</p>
+        <p><strong>Past simple passive:</strong> The students <em>were taught</em> about cultural diversity.</p>
+        <p><strong>Present perfect passive:</strong> Many stereotypes <em>have been challenged</em> in recent years.</p>
+        <p><strong>Present progressive passive:</strong> New programmes <em>are being developed</em> right now.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Fill in the Gaps</div>
+      <p class="gap-text">
+        <span class="gap-num">1</span> Stereotypes
+        <select class="gap-select" id="exB-g1">
+          <option value="">— choose —</option>
+          <option value="are often reinforced">are often reinforced</option>
+          <option value="often reinforces">often reinforces</option>
+          <option value="is often reinforced">is often reinforced</option>
+          <option value="often reinforcing">often reinforcing</option>
+        </select>
+        by films and television shows.
+      </p>
+      <p class="gap-text">
+        <span class="gap-num">2</span> In many schools, cultural awareness
+        <select class="gap-select" id="exB-g2">
+          <option value="">— choose —</option>
+          <option value="teaches">teaches</option>
+          <option value="is being taught">is being taught</option>
+          <option value="are taught">are taught</option>
+          <option value="is teaching">is teaching</option>
+        </select>
+        as part of the regular curriculum right now.
+      </p>
+      <p class="gap-text">
+        <span class="gap-num">3</span> Last year, several students
+        <select class="gap-select" id="exB-g3">
+          <option value="">— choose —</option>
+          <option value="were bullied">were bullied</option>
+          <option value="was bullied">was bullied</option>
+          <option value="are bullied">are bullied</option>
+          <option value="have bullied">have bullied</option>
+        </select>
+        because of stereotypes about their religion.
+      </p>
+      <p class="gap-text">
+        <span class="gap-num">4</span> People from other countries
+        <select class="gap-select" id="exB-g4">
+          <option value="">— choose —</option>
+          <option value="should be judged">should be judged</option>
+          <option value="should not be judged">should not be judged</option>
+          <option value="should not judged">should not judged</option>
+          <option value="should be not judged">should be not judged</option>
+        </select>
+        based on stereotypes alone.
+      </p>
+      <p class="gap-text">
+        <span class="gap-num">5</span> The exchange programme between our school and a school in Canada
+        <select class="gap-select" id="exB-g5">
+          <option value="">— choose —</option>
+          <option value="was organised">was organised</option>
+          <option value="organised">organised</option>
+          <option value="is organising">is organising</option>
+          <option value="were organised">were organised</option>
+        </select>
+        by both schools together in 2023.
+      </p>
+      <p class="gap-text">
+        <span class="gap-num">6</span> Many false assumptions about indigenous peoples
+        <select class="gap-select" id="exB-g6">
+          <option value="">— choose —</option>
+          <option value="has been spread">has been spread</option>
+          <option value="have been spread">have been spread</option>
+          <option value="are spreading">are spreading</option>
+          <option value="were spreading">were spreading</option>
+        </select>
+        through the media over the past decades.
+      </p>
+      <p class="gap-text">
+        <span class="gap-num">7</span> Right now, new anti-discrimination laws
+        <select class="gap-select" id="exB-g7">
+          <option value="">— choose —</option>
+          <option value="are discussed">are discussed</option>
+          <option value="is being discussed">is being discussed</option>
+          <option value="are being discussed">are being discussed</option>
+          <option value="have discussed">have discussed</option>
+        </select>
+        in the European Parliament.
+      </p>
+      <p class="gap-text">
+        <span class="gap-num">8</span> Job applicants with foreign-sounding names
+        <select class="gap-select" id="exB-g8">
+          <option value="">— choose —</option>
+          <option value="are sometimes rejected">are sometimes rejected</option>
+          <option value="sometimes rejected">sometimes rejected</option>
+          <option value="is sometimes rejected">is sometimes rejected</option>
+          <option value="sometimes rejecting">sometimes rejecting</option>
+        </select>
+        because of unconscious bias.
+      </p>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div id="step2-fb" class="feedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">&larr; Back</button>
+      <button class="btn btn-gold btn-sm" onclick="checkExB()">&#10003; Check</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 3 – EXERCISE C: If-Clauses Type III
+===================================================== -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise C</span>
+    <h2 class="ex-title">If-Clauses Type III – What Could Have Been Different?</h2>
+    <p class="ex-subtitle">Complete the sentences using if-clauses type III. Remember: If + past perfect &rarr; would have + past participle. These describe hypothetical situations in the past — things that did NOT happen.</p>
+
+    <div class="card">
+      <div class="card-title">Grammar reminder</div>
+      <div class="reading-text">
+        <p><strong>Type III (unreal past):</strong> If I <em>had known</em> about the exchange programme, I <em>would have applied</em>.</p>
+        <p>This means: I did NOT know about it, so I did NOT apply.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Fill in the Gaps</div>
+      <p class="gap-text">
+        <span class="gap-num">1</span> If the school
+        <select class="gap-select" id="exC-g1">
+          <option value="">— choose —</option>
+          <option value="has offered">has offered</option>
+          <option value="would offer">would offer</option>
+          <option value="had offered">had offered</option>
+          <option value="offered">offered</option>
+        </select>
+        a cultural awareness course, the students would have learned about stereotypes earlier.
+      </p>
+      <p class="gap-text">
+        <span class="gap-num">2</span> If Maria had travelled to India last summer, she
+        <select class="gap-select" id="exC-g2">
+          <option value="">— choose —</option>
+          <option value="will discover">will discover</option>
+          <option value="would have discovered">would have discovered</option>
+          <option value="would discover">would discover</option>
+          <option value="had discovered">had discovered</option>
+        </select>
+        that her stereotypes were wrong.
+      </p>
+      <p class="gap-text">
+        <span class="gap-num">3</span> The company
+        <select class="gap-select" id="exC-g3">
+          <option value="">— choose —</option>
+          <option value="would not have rejected">would not have rejected</option>
+          <option value="would not reject">would not reject</option>
+          <option value="will not have rejected">will not have rejected</option>
+          <option value="had not rejected">had not rejected</option>
+        </select>
+        the applicant if it had looked at his qualifications instead of his name.
+      </p>
+      <p class="gap-text">
+        <span class="gap-num">4</span> If the film
+        <select class="gap-select" id="exC-g4">
+          <option value="">— choose —</option>
+          <option value="showed">showed</option>
+          <option value="has shown">has shown</option>
+          <option value="would show">would show</option>
+          <option value="had shown">had shown</option>
+        </select>
+        a more balanced picture, it would not have reinforced so many stereotypes.
+      </p>
+      <p class="gap-text">
+        <span class="gap-num">5</span> If Tom had talked to his classmate from New Zealand, he
+        <select class="gap-select" id="exC-g5">
+          <option value="">— choose —</option>
+          <option value="would realise">would realise</option>
+          <option value="would have realised">would have realised</option>
+          <option value="had realised">had realised</option>
+          <option value="will have realised">will have realised</option>
+        </select>
+        that his assumptions were completely wrong.
+      </p>
+      <p class="gap-text">
+        <span class="gap-num">6</span> The class
+        <select class="gap-select" id="exC-g6">
+          <option value="">— choose —</option>
+          <option value="would understand">would understand</option>
+          <option value="had understood">had understood</option>
+          <option value="would have understood">would have understood</option>
+          <option value="will have understood">will have understood</option>
+        </select>
+        the problem better if the teacher had used real-life examples.
+      </p>
+      <p class="gap-text">
+        <span class="gap-num">7</span> If the journalist
+        <select class="gap-select" id="exC-g7">
+          <option value="">— choose —</option>
+          <option value="would have checked">would have checked</option>
+          <option value="had checked">had checked</option>
+          <option value="has checked">has checked</option>
+          <option value="checked">checked</option>
+        </select>
+        the facts, the article would not have been so one-sided.
+      </p>
+      <p class="gap-text">
+        <span class="gap-num">8</span> If we had invited students from different countries to our school, we
+        <select class="gap-select" id="exC-g8">
+          <option value="">— choose —</option>
+          <option value="would learn">would learn</option>
+          <option value="had learned">had learned</option>
+          <option value="will have learned">will have learned</option>
+          <option value="would have learned">would have learned</option>
+        </select>
+        much more about their cultures.
+      </p>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div id="step3-fb" class="feedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">&larr; Back</button>
+      <button class="btn btn-gold btn-sm" onclick="checkExC()">&#10003; Check</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise D &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 4 – EXERCISE D: Writing
+===================================================== -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise D</span>
+    <h2 class="ex-title">Writing – Challenging Stereotypes</h2>
+    <p class="ex-subtitle">Write a paragraph (80–120 words) about <strong>one</strong> of the following topics. Use at least two passive voice sentences and one if-clause (type II or III) in your text.</p>
+
+    <div class="card">
+      <div class="card-title">Choose one topic</div>
+      <div class="reading-text">
+        <p><strong>Topic 1:</strong> Think of a stereotype about Germans, or about people from another country you know. Is it fair? How could this stereotype be challenged? What would happen if people got to know each other better?</p>
+        <p><strong>Topic 2:</strong> Imagine your school is starting an exchange programme with a school in a Commonwealth country (Canada, India, or New Zealand). How could this programme help students overcome stereotypes? What would students learn?</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Useful vocabulary</div>
+      <div class="word-bank">
+        <strong>Word bank</strong>
+        <span>stereotype</span>
+        <span>prejudice</span>
+        <span>discrimination</span>
+        <span>cultural awareness</span>
+        <span>assumption</span>
+        <span>bias</span>
+        <span>to challenge</span>
+        <span>to overcome</span>
+        <span>to judge</span>
+        <span>exchange programme</span>
+        <span>diversity</span>
+        <span>open-minded</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Your text</div>
+      <div class="form-group">
+        <label class="form-label" for="exD-text">Write your paragraph here:</label>
+        <textarea class="form-textarea" id="exD-text" placeholder="In my opinion, stereotypes..." rows="8" style="min-height:160px"></textarea>
+        <div class="form-hint">Aim for 80–120 words. Use at least 2 passive voice sentences and 1 if-clause.</div>
+      </div>
+    </div>
+
+    <div id="step4-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(4)">&larr; Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(4)">Review &amp; Submit &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     FINAL STEP – REVIEW & SUBMIT
+===================================================== -->
+<section id="step-5" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">&#10004;&#65039;</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+    <div id="score-display" style="display:none"></div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">&#128640; Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">&#10004;&#65039;</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission did not work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">&#9993;&#65039; Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">&#128203; Copy to clipboard</button>
+      </div>
+      <textarea id="copy-block" class="copy-block" style="display:none" readonly></textarea>
+      <div id="copy-success" class="feedback ok" style="margin-top:1rem"></div>
+    </div>
+  </div>
+</section>
+
+
+<script src="exercise.js"></script>
+<script>
+/* ============================================================
+   CONFIG
+============================================================ */
+var UNIT          = '10c-stereotypes';
+var TOTAL_STEPS   = 6;   /* 0=welcome, 1=exA, 2=exB, 3=exC, 4=exD, 5=submit */
+var SHEET_URL     = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj';
+var TEACHER_EMAIL = 'shaun.trezise@docemus.de';
+
+/* ============================================================
+   STATE
+============================================================ */
+var state = {
+  name:   '',
+  cls:    '',
+  exA:    {},
+  exB:    {},
+  exC:    {},
+  exD:    {},
+  scores: {}
+};
+var maxStepReached = 0;
+
+/* ============================================================
+   HELPERS
+============================================================ */
+function allSelected(prefix, count) {
+  for (var i = 1; i <= count; i++) {
+    if (!g(prefix + i)) return false;
+  }
+  return true;
+}
+
+/* ============================================================
+   VALIDATION
+============================================================ */
+function validateStep(n) {
+  switch (n) {
+    case 1: return allSelected('exA-g', 8);
+    case 2: return allSelected('exB-g', 8);
+    case 3: return allSelected('exC-g', 8);
+    case 4: return val('exD-text');
+    default: return true;
+  }
+}
+
+/* ============================================================
+   SAVE / RESTORE
+============================================================ */
+function saveStep(n) {
+  switch (n) {
+    case 1:
+      for (var i = 1; i <= 8; i++) state.exA['g' + i] = g('exA-g' + i);
+      break;
+    case 2:
+      for (var i = 1; i <= 8; i++) state.exB['g' + i] = g('exB-g' + i);
+      break;
+    case 3:
+      for (var i = 1; i <= 8; i++) state.exC['g' + i] = g('exC-g' + i);
+      break;
+    case 4:
+      state.exD.text = g('exD-text');
+      break;
+  }
+}
+
+function restoreStep(n) {
+  switch (n) {
+    case 1:
+      for (var i = 1; i <= 8; i++) set('exA-g' + i, state.exA['g' + i]);
+      break;
+    case 2:
+      for (var i = 1; i <= 8; i++) set('exB-g' + i, state.exB['g' + i]);
+      break;
+    case 3:
+      for (var i = 1; i <= 8; i++) set('exC-g' + i, state.exC['g' + i]);
+      break;
+    case 4:
+      set('exD-text', state.exD.text);
+      break;
+  }
+}
+
+/* ============================================================
+   SUMMARY
+============================================================ */
+function buildSummary() {
+  saveStep(1); saveStep(2); saveStep(3); saveStep(4);
+  var rows = [];
+
+  /* Ex A */
+  var aLabels = {g1:'Stereotypes are…', g2:'Stereotypes may contain…', g3:'Children pick up stereotypes from…', g4:'Indigenous peoples portrayed as…', g5:'In schools, stereotypes lead to…', g6:'Applicants with foreign names…', g7:'One way to challenge stereotypes…', g8:'Exchange programmes help to…'};
+  for (var k in aLabels) rows.push({ ex: 'Exercise A – Reading', q: aLabels[k], a: state.exA[k] });
+
+  /* Ex B */
+  var bLabels = ['Stereotypes ___ by films', 'Cultural awareness ___ right now', 'Students ___ last year', 'People ___ based on stereotypes', 'Exchange programme ___ in 2023', 'False assumptions ___ over decades', 'Anti-discrimination laws ___ right now', 'Job applicants ___ because of bias'];
+  for (var i = 1; i <= 8; i++) rows.push({ ex: 'Exercise B – Passive Voice', q: bLabels[i-1], a: state.exB['g' + i] });
+
+  /* Ex C */
+  var cLabels = ['If the school ___ a course', 'Maria ___ stereotypes were wrong', 'Company ___ the applicant', 'If the film ___ a balanced picture', 'Tom ___ assumptions were wrong', 'The class ___ the problem', 'If the journalist ___ the facts', 'We ___ about their cultures'];
+  for (var i = 1; i <= 8; i++) rows.push({ ex: 'Exercise C – If-Clauses III', q: cLabels[i-1], a: state.exC['g' + i] });
+
+  /* Ex D */
+  rows.push({ ex: 'Exercise D – Writing', q: 'Challenging Stereotypes', a: state.exD.text });
+
+  var html = '<div class="submit-summary">'
+    + '<div class="summary-row"><div class="summary-ex">Student</div>'
+    + '<div class="summary-q">' + esc(state.name) + ' — ' + esc(state.cls) + '</div></div>';
+  rows.forEach(function(r) {
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div>'
+      + '<div class="summary-q">' + esc(r.q) + '</div>'
+      + '<div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+  renderScore();
+}
+
+/* ============================================================
+   EMAIL FALLBACK BODY
+============================================================ */
+function buildEmailBody() {
+  var sc = totalScore();
+  var grade = lookupGrade(sc.earned, sc.possible);
+  var body = 'Exercise: ' + UNIT
+    + '\nStudent: ' + state.name
+    + '\nClass:   ' + state.cls
+    + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
+    + '\nScore:   ' + (sc.possible ? (sc.earned + ' / ' + sc.possible + (grade ? ' — Note ' + grade.note + ' (' + grade.label + ')' : '')) : '(no auto-graded sections)');
+
+  body += '\n\n--- Exercise A: Reading Comprehension ---';
+  var aLabels = {g1:'Stereotypes are', g2:'Stereotypes may contain', g3:'Children pick up stereotypes from', g4:'Indigenous peoples portrayed as', g5:'In schools stereotypes lead to', g6:'Applicants with foreign names', g7:'Way to challenge stereotypes', g8:'Exchange programmes help to'};
+  for (var k in aLabels) body += '\n' + aLabels[k] + ': ' + (state.exA[k] || '(none)');
+
+  body += '\n\n--- Exercise B: Passive Voice ---';
+  for (var i = 1; i <= 8; i++) body += '\nGap ' + i + ': ' + (state.exB['g' + i] || '(none)');
+
+  body += '\n\n--- Exercise C: If-Clauses Type III ---';
+  for (var i = 1; i <= 8; i++) body += '\nGap ' + i + ': ' + (state.exC['g' + i] || '(none)');
+
+  body += '\n\n--- Exercise D: Writing ---\n' + (state.exD.text || '(none)');
+
+  return body;
+}
+
+/* ============================================================
+   PAYLOAD
+============================================================ */
+function buildPayload() {
+  var sc = totalScore();
+  var grade = lookupGrade(sc.earned, sc.possible);
+  return {
+    name: state.name, cls: state.cls, unit: UNIT,
+    exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD,
+    score: sc.possible ? (sc.earned + ' / ' + sc.possible) : '(no auto-graded sections)',
+    grade: grade ? ('Note ' + grade.note + ' (' + grade.label + ')') : ''
+  };
+}
+
+/* ============================================================
+   CHECK ANSWERS
+============================================================ */
+
+/* Exercise A — Reading comprehension */
+function checkExA() {
+  checkDropdowns(
+    ['g1','g2','g3','g4','g5','g6','g7','g8'],
+    'exA-',
+    { g1:'simplified', g2:'grain', g3:'families', g4:'ancestors', g5:'bullying', g6:'fewer', g7:'travel', g8:'experience' },
+    'step1-fb',
+    'exA'
+  );
+}
+
+/* Exercise B — Passive voice */
+function checkExB() {
+  checkDropdowns(
+    ['g1','g2','g3','g4','g5','g6','g7','g8'],
+    'exB-',
+    { g1:'are often reinforced', g2:'is being taught', g3:'were bullied', g4:'should not be judged', g5:'was organised', g6:'have been spread', g7:'are being discussed', g8:'are sometimes rejected' },
+    'step2-fb',
+    'exB'
+  );
+}
+
+/* Exercise C — If-clauses type III */
+function checkExC() {
+  checkDropdowns(
+    ['g1','g2','g3','g4','g5','g6','g7','g8'],
+    'exC-',
+    { g1:'had offered', g2:'would have discovered', g3:'would not have rejected', g4:'had shown', g5:'would have realised', g6:'would have understood', g7:'had checked', g8:'would have learned' },
+    'step3-fb',
+    'exC'
+  );
+}
+
+/* ============================================================
+   INIT
+============================================================ */
+document.addEventListener('DOMContentLoaded', function() {
+  showStep(0);
+});
+</script>
+
+</body>
+</html>
