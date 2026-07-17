@@ -535,6 +535,7 @@
 </section>
 
 
+<script src="exercise.js"></script>
 <script>
 /* ============================================================
    CONFIGURATION
@@ -583,15 +584,6 @@ var EX4_CORRECT = [
   'decide'      // g14 – if we ___ (decide) to stay at a B&B
 ];
 
-/* ============================================================
-   UTILITIES
-============================================================ */
-function esc(str) {
-  var d = document.createElement('div');
-  d.textContent = String(str == null ? '' : str);
-  return d.innerHTML;
-}
-
 function normalizeVerb(v) {
   v = String(v).trim().toLowerCase();
   v = v.replace(/^'ll\s+/, 'will ');
@@ -608,6 +600,8 @@ function showStep(n) {
   document.getElementById('progress-fill').style.width = Math.round((n / TOTAL_STEPS) * 100) + '%';
   window.scrollTo({ top: 0, behavior: 'smooth' });
   restoreStepAnswers(n);
+  if (n > maxStepReached) maxStepReached = n;
+  renderStepNav(n);
   var meta = document.getElementById('header-meta');
   if (n === 0) {
     meta.style.display = 'none';
@@ -617,18 +611,6 @@ function showStep(n) {
     var labels = { 1:'Exs 1-2', 2:'Ex 3', 3:'Ex 5', 4:'Ex 6', 5:'Ex 7', 6:'Submit' };
     document.getElementById('header-step').textContent = labels[n] || ('Step ' + n);
   }
-}
-
-function startExercises() {
-  var name = document.getElementById('inp-name').value.trim();
-  var cls  = document.getElementById('inp-class').value.trim();
-  var err  = document.getElementById('welcome-error');
-  if (!name) { err.textContent = 'Please enter your name.'; err.classList.add('show'); return; }
-  if (!cls)  { err.textContent = 'Please enter your class.'; err.classList.add('show'); return; }
-  err.classList.remove('show');
-  state.name = name;
-  state.cls  = cls;
-  showStep(1);
 }
 
 function validateStep(step) {
@@ -673,34 +655,6 @@ function nextStep(step) {
   showStep(step + 1);
 }
 
-function renderStepNav(current) {
-  var nav = document.getElementById('step-nav');
-  if (!nav) return;
-  if (current === 0) { nav.classList.remove('show'); nav.innerHTML = ''; return; }
-  var labels = ['A', 'B', 'C', 'D', 'E'];
-  var html = '';
-  for (var i = 1; i < TOTAL_STEPS; i++) {
-    var cls = 'step-nav-btn';
-    if (i === current) cls += ' current';
-    else if (i <= maxStepReached) cls += ' visited';
-    else cls += ' locked';
-    html += '<button class="' + cls + '" ' + (i <= maxStepReached && i !== current ? 'onclick="goToStep(' + i + ')"' : 'disabled') + '>Ex ' + labels[i - 1] + '</button>';
-  }
-  var submitCls = 'step-nav-btn' + (current === TOTAL_STEPS - 1 ? ' current' : (maxStepReached >= TOTAL_STEPS - 1 ? ' visited' : ' locked'));
-  html += '<button class="' + submitCls + '" ' + (maxStepReached >= TOTAL_STEPS - 1 && current !== TOTAL_STEPS - 1 ? 'onclick="goToStep(' + (TOTAL_STEPS - 1) + ')"' : 'disabled') + '>Submit</button>';
-  nav.innerHTML = html;
-  nav.classList.add('show');
-}
-
-function goToStep(n) {
-  if (n > maxStepReached) return;
-  var cur = document.querySelector('.step.active');
-  if (cur) { var curN = parseInt(cur.id.replace('step-', ''), 10); saveStep(curN); }
-  if (n === TOTAL_STEPS - 1) { buildSummary(); }
-  showStep(n);
-}
-
-
 function prevStep(step) {
   saveStepAnswers(step);
   var errEl = document.getElementById('step' + step + '-error');
@@ -711,6 +665,8 @@ function prevStep(step) {
 /* ============================================================
    SAVE / RESTORE ANSWERS
 ============================================================ */
+function saveStep(n) { saveStepAnswers(n); }
+function restoreStep(n) { restoreStepAnswers(n); }
 function saveStepAnswers(step) {
   var el;
   if (step === 1) {
@@ -1039,21 +995,8 @@ function buildEmailBody() {
    SUBMIT TO GOOGLE SHEET
 ============================================================ */
 
-/* eol-flat-payload-patch */
-function eolFlat(o) {
-  if (o == null) return '';
-  if (typeof o !== 'object') return String(o);
-  return Object.keys(o).map(function(k) {
-    return k + ': ' + (o[k] === '' || o[k] == null ? '\u2014' : o[k]);
-  }).join(' | ');
-}
-
-function submitToSheet() {
-  buildSummary();
-  var btn = document.getElementById('submit-btn');
-  btn.disabled = true;
-  btn.textContent = 'Sending\u2026';
-  var payload = {
+function buildPayload() {
+var payload = {
     name: state.name,
     cls:  state.cls,
     unit: UNIT,
@@ -1066,77 +1009,17 @@ function submitToSheet() {
     ex7:  eolFlat(state.ex7),
     ex8:  eolFlat(state.ex8)
   };
-  fetch(SHEET_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
-  }).then(function() {
-    btn.style.display = 'none';
-    document.getElementById('submit-success').style.display = 'block';
-    document.getElementById('submit-fallback').style.display = 'block';
-  }).catch(function() {
-    btn.disabled = false;
-    btn.textContent = 'Submit to Teacher';
-    document.getElementById('submit-fallback').style.display = 'block';
-  });
+  return payload;
 }
 
-/* ============================================================
-   SUBMIT BY EMAIL (fallback)
-============================================================ */
-function submitByEmail() {
-  var body = buildEmailBody();
-  var subject = encodeURIComponent('7C Holidays – ' + state.name + ' – ' + state.cls);
-  var a = document.createElement('a');
-  a.href = 'mailto:' + TEACHER_EMAIL + '?subject=' + subject + '&body=' + encodeURIComponent(body);
-  a.style.display = 'none';
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(function() { document.body.removeChild(a); }, 100);
-}
-
-function copyAnswers() {
-  var body = buildEmailBody();
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(body).then(function() {
-      alert('Answers copied! Paste them into an email to your teacher.');
-    });
-  } else {
-    prompt('Copy these answers and email them to your teacher:', body);
-  }
-}
 </script>
 
 <script>
 /* ── Paste-block: prevent pasting into answer fields ── */
-document.addEventListener('paste', function(e) {
-  var t = e.target;
-  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
-    e.preventDefault();
-    var msg = document.createElement('div');
-    msg.textContent = '✏️ Pasting is not allowed';
-    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
-    document.body.appendChild(msg);
-    setTimeout(function() {
-      msg.style.opacity = '0';
-      setTimeout(function() { msg.remove(); }, 400);
-    }, 2000);
-  }
-});
+
 
 /* ── Copy-block: prevent copying text from the page ── */
-document.addEventListener('copy', function(e) {
-  e.preventDefault();
-  var msg = document.createElement('div');
-  msg.textContent = '🚫 Copying is not allowed';
-  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
-  document.body.appendChild(msg);
-  setTimeout(function() {
-    msg.style.opacity = '0';
-    setTimeout(function() { msg.remove(); }, 400);
-  }, 2000);
-});
+
 </script>
 </body>
 </html>

@@ -267,10 +267,13 @@
   </div>
 </section>
 
+<script src="exercise.js"></script>
 <script>
 /* ============ CONFIG ============ */
 const SHEET_URL = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj';
+var UNIT = 'california-hazards';
 const TEACHER_EMAIL = 'englishonlinetraining@pm.me';
+var maxStepReached = 0;
 
 /* ============ STATE ============ */
 const state = { name:'', class:'', exA:{}, exB:{}, exC:{}, exD:{} };
@@ -403,68 +406,6 @@ function renderTransformItems() {
   document.getElementById('transform-items').innerHTML = html;
 }
 
-/* ============ NAVIGATION ============ */
-function showStep(n) {
-  document.querySelectorAll('.step').forEach(function(s){ s.classList.remove('active'); });
-  document.getElementById('step-' + n).classList.add('active');
-  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
-  window.scrollTo({ top:0, behavior:'smooth' });
-  restoreStep(n);
-  if (n > maxStepReached) maxStepReached = n;
-  renderStepNav(n);
-  var meta = document.getElementById('header-meta');
-  if (n === 0) { meta.style.display = 'none'; return; }
-  meta.style.display = 'block';
-  document.getElementById('header-name').textContent = state.name + (state.class ? ' — ' + state.class : '');
-  var labels = ['A','B','C','D'];
-  document.getElementById('header-step').textContent = n <= 4 ? 'Exercise ' + labels[n-1] + ' of 4' : 'Submit';
-}
-
-function renderStepNav(current) {
-  var nav = document.getElementById('step-nav');
-  if (!nav) return;
-  if (current === 0) { nav.classList.remove('show'); nav.innerHTML = ''; return; }
-  var labels = ['A', 'B', 'C', 'D', 'E'];
-  var html = '';
-  for (var i = 1; i < TOTAL_STEPS; i++) {
-    var cls = 'step-nav-btn';
-    if (i === current) cls += ' current';
-    else if (i <= maxStepReached) cls += ' visited';
-    else cls += ' locked';
-    html += '<button class="' + cls + '" ' + (i <= maxStepReached && i !== current ? 'onclick="goToStep(' + i + ')"' : 'disabled') + '>Ex ' + labels[i - 1] + '</button>';
-  }
-  var submitCls = 'step-nav-btn' + (current === TOTAL_STEPS - 1 ? ' current' : (maxStepReached >= TOTAL_STEPS - 1 ? ' visited' : ' locked'));
-  html += '<button class="' + submitCls + '" ' + (maxStepReached >= TOTAL_STEPS - 1 && current !== TOTAL_STEPS - 1 ? 'onclick="goToStep(' + (TOTAL_STEPS - 1) + ')"' : 'disabled') + '>Submit</button>';
-  nav.innerHTML = html;
-  nav.classList.add('show');
-}
-
-function goToStep(n) {
-  if (n > maxStepReached) return;
-  var cur = document.querySelector('.step.active');
-  if (cur) { var curN = parseInt(cur.id.replace('step-', ''), 10); saveStep(curN); }
-  if (n === TOTAL_STEPS - 1) { buildSummary(); }
-  showStep(n);
-}
-
-
-function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
-
-function nextStep(n) {
-  if (!validateStep(n)) {
-    var err = document.getElementById('step' + n + '-error');
-    err.textContent = 'Please answer all required questions before continuing.';
-    err.classList.add('show'); return;
-  }
-  clearErr(n); saveStep(n);
-  if (n === 4) { buildSummary(); showStep(5); } else { showStep(n + 1); }
-}
-
-function clearErr(n) {
-  var err = document.getElementById('step' + n + '-error');
-  if (err) err.classList.remove('show');
-}
-
 function validateStep(n) {
   switch(n) {
     case 1: return val('exA-a') && val('exA-b');
@@ -480,8 +421,6 @@ function validateStep(n) {
     default: return true;
   }
 }
-function val(id) { var el = document.getElementById(id); return el && el.value.trim().length > 0; }
-
 function saveStep(n) {
   switch(n) {
     case 1: state.exA.a = g('exA-a'); state.exA.b = g('exA-b'); break;
@@ -490,8 +429,6 @@ function saveStep(n) {
     case 4: state.exD.para = g('exD-para'); state.exD.opinion = g('exD-opinion'); break;
   }
 }
-function g(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
-
 function restoreStep(n) {
   switch(n) {
     case 1: set('exA-a', state.exA.a); set('exA-b', state.exA.b); break;
@@ -500,17 +437,6 @@ function restoreStep(n) {
     case 4: set('exD-para', state.exD.para); set('exD-opinion', state.exD.opinion); break;
   }
 }
-function set(id, val) { var el = document.getElementById(id); if (el && val !== undefined) el.value = val; }
-
-function startExercises() {
-  var name = g('inp-name'), cls = g('inp-class'), err = document.getElementById('welcome-error');
-  if (!name || !cls) { err.textContent = 'Please enter both your name and your class.'; err.classList.add('show'); return; }
-  err.classList.remove('show'); state.name = name; state.class = cls; showStep(1);
-}
-
-/* ============ SUMMARY ============ */
-function esc(str) { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
-
 function buildSummary() {
   var gapLines = modalGaps.map(function(gap){ return 'Gap ' + gap.id + ': ' + (state.exB['g'+gap.id] || '(blank)'); }).join('\n');
   var trLines  = transforms.map(function(t, i){ return (i+1) + '. ' + (state.exC['t'+t.id] || '(blank)'); }).join('\n');
@@ -522,7 +448,7 @@ function buildSummary() {
     { ex:'Exercise D – Writing',           q:'a) Cause and effect paragraph',               a:state.exD.para },
     { ex:'Exercise D – Writing',           q:'b) Most serious environmental problem',       a:state.exD.opinion }
   ];
-  var html = '<div class="submit-summary"><div class="summary-row"><div class="summary-ex">Student</div><div class="summary-q">' + esc(state.name) + ' — ' + esc(state.class) + '</div></div>';
+  var html = '<div class="submit-summary"><div class="summary-row"><div class="summary-ex">Student</div><div class="summary-q">' + esc(state.name) + ' — ' + esc(state.cls) + '</div></div>';
   rows.forEach(function(r){
     html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div><div class="summary-q">' + esc(r.q) + '</div><div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
   });
@@ -533,7 +459,7 @@ function buildSummary() {
 function buildEmailBody() {
   var gapLines = modalGaps.map(function(gap){ return 'Gap ' + gap.id + ': ' + (state.exB['g'+gap.id] || '(blank)'); }).join('\n');
   var trLines  = transforms.map(function(t, i){ return (i+1) + '. Original: ' + t.original + '\n   Answer: ' + (state.exC['t'+t.id] || '(blank)'); }).join('\n\n');
-  return 'CALIFORNIA – ENVIRONMENT & NATURAL HAZARDS\nStudent: ' + state.name + '\nClass:   ' + state.class + '\nDate:    ' + new Date().toLocaleDateString('en-GB') +
+  return 'CALIFORNIA – ENVIRONMENT & NATURAL HAZARDS\nStudent: ' + state.name + '\nClass:   ' + state.cls + '\nDate:    ' + new Date().toLocaleDateString('en-GB') +
     '\n\n---\nEXERCISE A – READING COMPREHENSION\n---\na) Environmental problems:\n' + (state.exA.a||'(none)') +
     '\n\nb) How problems connect:\n' + (state.exA.b||'(none)') +
     '\n\n---\nEXERCISE B – MODAL VERBS\n---\n' + gapLines +
@@ -542,53 +468,17 @@ function buildEmailBody() {
     '\n\nb) Most serious problem:\n' + (state.exD.opinion||'(none)');
 }
 
-/* eol-flat-payload-patch */
-function eolFlat(o) {
-  if (o == null) return '';
-  if (typeof o !== 'object') return String(o);
-  return Object.keys(o).map(function(k) {
-    return k + ': ' + (o[k] === '' || o[k] == null ? '\u2014' : o[k]);
-  }).join(' | ');
-}
-
-function submitToSheet() {
-  buildSummary();
-  var btn = document.getElementById('submit-btn');
-  btn.disabled = true;
-  btn.textContent = 'Sending\u2026';
-  var payload = {
+function buildPayload() {
+var payload = {
     name: state.name,
-    cls:  state.class,
+    cls:  state.cls,
     unit: UNIT,
     ex1:  eolFlat(state.exA),
     ex2:  eolFlat(state.exB),
     ex3:  eolFlat(state.exC),
     ex4:  eolFlat(state.exD)
   };
-  fetch(SHEET_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
-  }).then(function() {
-    btn.style.display = 'none';
-    document.getElementById('submit-success').style.display = 'block';
-    document.getElementById('submit-fallback').style.display = 'block';
-  }).catch(function() {
-    btn.disabled = false;
-    btn.textContent = 'Submit to Teacher';
-    document.getElementById('submit-fallback').style.display = 'block';
-  });
-}
-
-function submitByEmail() {
-  var a = document.createElement('a');
-  a.href = 'mailto:' + TEACHER_EMAIL + '?subject=' + encodeURIComponent('California Hazards – ' + state.name + ' – ' + state.class) + '&body=' + encodeURIComponent(buildEmailBody());
-  a.style.display = 'none'; document.body.appendChild(a); a.click(); setTimeout(function(){ document.body.removeChild(a); }, 100);
-}
-
-function copyAnswers() {
-  navigator.clipboard.writeText(buildEmailBody()).then(function(){ alert('Answers copied! Paste them into an email to your teacher.'); }).catch(function(){ prompt('Copy this text:', buildEmailBody()); });
+  return payload;
 }
 
 /* ============ INIT ============ */
@@ -601,33 +491,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <script>
 /* ── Paste-block: prevent pasting into answer fields ── */
-document.addEventListener('paste', function(e) {
-  var t = e.target;
-  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
-    e.preventDefault();
-    var msg = document.createElement('div');
-    msg.textContent = '✏️ Pasting is not allowed';
-    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
-    document.body.appendChild(msg);
-    setTimeout(function() {
-      msg.style.opacity = '0';
-      setTimeout(function() { msg.remove(); }, 400);
-    }, 2000);
-  }
-});
+
 
 /* ── Copy-block: prevent copying text from the page ── */
-document.addEventListener('copy', function(e) {
-  e.preventDefault();
-  var msg = document.createElement('div');
-  msg.textContent = '🚫 Copying is not allowed';
-  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
-  document.body.appendChild(msg);
-  setTimeout(function() {
-    msg.style.opacity = '0';
-    setTimeout(function() { msg.remove(); }, 400);
-  }, 2000);
-});
+
 </script>
 </body>
 </html>

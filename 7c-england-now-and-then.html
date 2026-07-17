@@ -350,6 +350,7 @@
 </section>
 
 
+<script src="exercise.js"></script>
 <script>
 var UNIT          = '7c-england-now-and-then';
 var TOTAL_STEPS   = 4;
@@ -364,85 +365,6 @@ var state = {
   ex2:  { q1:'', q2:'', q3:'', q4:'', q5:'' },
   ex3:  { w1:'', w2:'', w3:'' }
 };
-
-function showStep(n) {
-  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
-  document.getElementById('step-' + n).classList.add('active');
-  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  restoreStep(n);
-  if (n > maxStepReached) maxStepReached = n;
-  renderStepNav(n);
-  var meta = document.getElementById('header-meta');
-  if (n === 0) { meta.style.display = 'none'; return; }
-  meta.style.display = 'block';
-  document.getElementById('header-name').textContent = state.name + (state.cls ? ' — ' + state.cls : '');
-  var labels = ['A', 'B', 'C'];
-  document.getElementById('header-step').textContent = n < TOTAL_STEPS
-    ? 'Exercise ' + labels[n - 1] + ' of 3'
-    : 'Submit';
-}
-
-function renderStepNav(current) {
-  var nav = document.getElementById('step-nav');
-  if (!nav) return;
-  if (current === 0) { nav.classList.remove('show'); nav.innerHTML = ''; return; }
-  var labels = ['A', 'B', 'C', 'D', 'E'];
-  var html = '';
-  for (var i = 1; i < TOTAL_STEPS; i++) {
-    var cls = 'step-nav-btn';
-    if (i === current) cls += ' current';
-    else if (i <= maxStepReached) cls += ' visited';
-    else cls += ' locked';
-    html += '<button class="' + cls + '" ' + (i <= maxStepReached && i !== current ? 'onclick="goToStep(' + i + ')"' : 'disabled') + '>Ex ' + labels[i - 1] + '</button>';
-  }
-  var submitCls = 'step-nav-btn' + (current === TOTAL_STEPS - 1 ? ' current' : (maxStepReached >= TOTAL_STEPS - 1 ? ' visited' : ' locked'));
-  html += '<button class="' + submitCls + '" ' + (maxStepReached >= TOTAL_STEPS - 1 && current !== TOTAL_STEPS - 1 ? 'onclick="goToStep(' + (TOTAL_STEPS - 1) + ')"' : 'disabled') + '>Submit</button>';
-  nav.innerHTML = html;
-  nav.classList.add('show');
-}
-
-function goToStep(n) {
-  if (n > maxStepReached) return;
-  var cur = document.querySelector('.step.active');
-  if (cur) { var curN = parseInt(cur.id.replace('step-', ''), 10); saveStep(curN); }
-  if (n === TOTAL_STEPS - 1) { buildSummary(); }
-  showStep(n);
-}
-
-
-function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
-
-function nextStep(n) {
-  if (!validateStep(n)) {
-    var err = document.getElementById('step' + n + '-error');
-    if (err) { err.textContent = 'Please complete all questions before continuing.'; err.classList.add('show'); }
-    return;
-  }
-  clearErr(n);
-  saveStep(n);
-  if (n === TOTAL_STEPS - 1) { buildSummary(); }
-  showStep(n + 1);
-}
-
-function clearErr(n) {
-  var err = document.getElementById('step' + n + '-error');
-  if (err) err.classList.remove('show');
-}
-
-function startExercises() {
-  var name = g('inp-name'), cls = g('inp-class');
-  var err = document.getElementById('welcome-error');
-  if (!name || !cls) {
-    err.textContent = 'Please enter both your name and your class.';
-    err.classList.add('show');
-    return;
-  }
-  err.classList.remove('show');
-  state.name = name;
-  state.cls  = cls;
-  showStep(1);
-}
 
 function validateStep(n) {
   switch (n) {
@@ -498,11 +420,6 @@ function restoreStep(n) {
       break;
   }
 }
-
-function g(id)      { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
-function set(id, v) { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
-function val(id)    { return g(id).length > 0; }
-function esc(str)   { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
 
 function buildSummary() {
   var rows = [
@@ -601,21 +518,8 @@ function checkExB() {
 }
 
 
-/* eol-flat-payload-patch */
-function eolFlat(o) {
-  if (o == null) return '';
-  if (typeof o !== 'object') return String(o);
-  return Object.keys(o).map(function(k) {
-    return k + ': ' + (o[k] === '' || o[k] == null ? '—' : o[k]);
-  }).join(' | ');
-}
-
-function submitToSheet() {
-  buildSummary();
-  var btn = document.getElementById('submit-btn');
-  btn.disabled = true;
-  btn.textContent = 'Sending…';
-  var payload = {
+function buildPayload() {
+var payload = {
     name: state.name,
     cls:  state.cls,
     unit: UNIT,
@@ -623,64 +527,12 @@ function submitToSheet() {
     ex2:  eolFlat(state.ex2),
     ex3:  eolFlat(state.ex3)
   };
-  fetch(SHEET_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
-  }).then(function() {
-    btn.style.display = 'none';
-    document.getElementById('submit-success').style.display = 'block';
-    document.getElementById('submit-fallback').style.display = 'block';
-  }).catch(function() {
-    btn.disabled = false;
-    btn.textContent = 'Submit to Teacher';
-    document.getElementById('submit-fallback').style.display = 'block';
-  });
-}
-
-function submitByEmail() {
-  var a = document.createElement('a');
-  a.href = 'mailto:' + TEACHER_EMAIL
-    + '?subject=' + encodeURIComponent(UNIT + ' - ' + state.name + ' - ' + state.cls)
-    + '&body='    + encodeURIComponent(buildEmailBody());
-  a.style.display = 'none';
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(function() { document.body.removeChild(a); }, 100);
-}
-
-function copyAnswers() {
-  var body = buildEmailBody();
-  navigator.clipboard.writeText(body)
-    .then(function() { alert('Answers copied! Paste them into an email to your teacher.'); })
-    .catch(function() { prompt('Copy this text:', body); });
+  return payload;
 }
 
 document.addEventListener('DOMContentLoaded', function() { showStep(0); });
 </script>
 
-<script>
-document.addEventListener('paste', function(e) {
-  var t = e.target;
-  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
-    e.preventDefault();
-    var msg = document.createElement('div');
-    msg.textContent = 'Pasting is not allowed';
-    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
-    document.body.appendChild(msg);
-    setTimeout(function() { msg.style.opacity='0'; setTimeout(function(){msg.remove();},400); }, 2000);
-  }
-});
-document.addEventListener('copy', function(e) {
-  e.preventDefault();
-  var msg = document.createElement('div');
-  msg.textContent = '🚫 Copying is not allowed';
-  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
-  document.body.appendChild(msg);
-  setTimeout(function() { msg.style.opacity='0'; setTimeout(function(){msg.remove();},400); }, 2000);
-});
-</script>
 
 </body>
 </html>
