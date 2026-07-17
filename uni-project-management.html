@@ -531,11 +531,13 @@
 </section>
 
 
+<script src="exercise.js"></script>
 <script>
 var UNIT        = 'uni-project-management';
 var TOTAL_STEPS = 8;
 var SHEET_URL   = 'https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec';
 var TEACHER_EMAIL = 'englishonlinetraining@pm.me';
+var maxStepReached = 0;
 
 var state = {
   name: '', cls: '',
@@ -556,25 +558,6 @@ function showStep(n) {
   document.getElementById('header-step').textContent = n < TOTAL_STEPS
     ? 'Exercise ' + labels[n - 1] + ' of 7'
     : 'Review';
-}
-
-function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
-
-function nextStep(n) {
-  if (!validateStep(n)) {
-    var err = document.getElementById('step' + n + '-error');
-    if (err) { err.textContent = 'Please answer the required questions before continuing.'; err.classList.add('show'); }
-    return;
-  }
-  clearErr(n);
-  saveStep(n);
-  if (n === TOTAL_STEPS - 1) { buildSummary(); }
-  showStep(n + 1);
-}
-
-function clearErr(n) {
-  var err = document.getElementById('step' + n + '-error');
-  if (err) err.classList.remove('show');
 }
 
 function startExercises() {
@@ -653,11 +636,6 @@ function restoreStep(n) {
       break;
   }
 }
-
-function g(id)       { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
-function set(id, v)  { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
-function val(id)     { return g(id).length > 0; }
-function esc(str)    { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
 
 function buildSummary() {
   var rows = [
@@ -764,8 +742,8 @@ function showCopySuccess(msg) {
   el.classList.add('show');
 }
 
-function submitToSheet() {
-  var payload = {
+function buildPayload() {
+var payload = {
     name: state.name,
     cls: state.cls,
     unit: UNIT,
@@ -777,20 +755,7 @@ function submitToSheet() {
     exF: state.exF,
     exG: state.exG
   };
-
-  fetch(SHEET_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
-  }).then(function() {
-    document.getElementById('submit-btn').style.display = 'none';
-    document.getElementById('submit-success').style.display = 'block';
-    document.getElementById('submit-fallback').style.display = 'block';
-  }).catch(function(err) {
-    console.error('Submission error:', err);
-    document.getElementById('submit-fallback').style.display = 'block';
-  });
+  return payload;
 }
 
 function submitByEmail() {

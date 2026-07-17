@@ -602,6 +602,7 @@
 </section>
 
 
+<script src="exercise.js"></script>
 <script>
 /* ============================================================
    CONFIG
@@ -610,6 +611,7 @@ var UNIT          = 'uni-roleplay-building-relationships';
 var TOTAL_STEPS   = 12;   /* index of the final Review & Submit step */
 var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbzCj-D1jWSMW7ep1IRBN_Nu_gLBrLq077UPl2ml9AXavgA5aEcC1VNko2TUJZiuVF9mGg/exec';
 var TEACHER_EMAIL = 'englishonlinetraining@pm.me';
+var maxStepReached = 0;
 
 /* ============================================================
    STATE
@@ -646,8 +648,6 @@ function showStep(n) {
     ? 'Slide ' + (n + 1) + ' of ' + (TOTAL_STEPS + 1)
     : 'Submit';
 }
-
-function prevStep(n) { saveStep(n); showStep(n - 1); }
 
 function nextStep(n) {
   saveStep(n);
@@ -753,12 +753,6 @@ function restoreStep(n) {
   }
 }
 
-/* ============================================================
-   HELPERS
-============================================================ */
-function g(id)       { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
-function set(id, v)  { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
-function esc(str)    { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
 function getChecked(name) {
   return Array.prototype.slice.call(document.querySelectorAll('input[name="' + name + '"]:checked')).map(function(el) { return el.value; });
 }
@@ -842,46 +836,15 @@ function buildEmailBody() {
     + '\n5. ' + (state.reflection.q5 || '(none)');
 }
 
-/* ============================================================
-   SUBMIT TO GOOGLE SHEET
-============================================================ */
-function submitToSheet() {
-  buildSummary();
-  var btn = document.getElementById('submit-btn');
-  btn.disabled = true;
-  btn.textContent = 'Sending...';
-  var payload = {
+function buildPayload() {
+var payload = {
     name: state.name, cls: state.cls, unit: UNIT,
     scenario: state.scenario, roles: state.roles,
     wrongBehaviours: state.wrongBehaviours, rightTechniques: state.rightTechniques,
     commSkills: state.commSkills, expressions: state.expressions,
     planning: state.planning, reflection: state.reflection
   };
-  fetch(SHEET_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
-  }).then(function() {
-    btn.style.display = 'none';
-    document.getElementById('submit-success').style.display = 'block';
-    document.getElementById('submit-fallback').style.display = 'block';
-  }).catch(function() {
-    btn.disabled = false;
-    btn.textContent = 'Submit to Teacher';
-    document.getElementById('submit-fallback').style.display = 'block';
-  });
-}
-
-function submitByEmail() {
-  var a = document.createElement('a');
-  a.href = 'mailto:' + TEACHER_EMAIL
-    + '?subject=' + encodeURIComponent(UNIT + ' - ' + state.name + ' - ' + state.cls)
-    + '&body='    + encodeURIComponent(buildEmailBody());
-  a.style.display = 'none';
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(function() { document.body.removeChild(a); }, 100);
+  return payload;
 }
 
 function copyAnswers() {
@@ -899,30 +862,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<script>
-document.addEventListener('paste', function(e) {
-  var t = e.target;
-  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
-    e.preventDefault();
-    var msg = document.createElement('div');
-    msg.textContent = '✏️ Pasting is not allowed';
-    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
-    document.body.appendChild(msg);
-    setTimeout(function() { msg.style.opacity='0'; setTimeout(function(){ msg.remove(); },400); },2000);
-  }
-});
-</script>
 
-<script>
-document.addEventListener('copy', function(e) {
-  e.preventDefault();
-  var msg = document.createElement('div');
-  msg.textContent = '🚫 Copying is not allowed';
-  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
-  document.body.appendChild(msg);
-  setTimeout(function() { msg.style.opacity='0'; setTimeout(function(){ msg.remove(); },400); },2000);
-});
-</script>
 
 </body>
 </html>

@@ -38,26 +38,25 @@ function showStep(n) {
   if (n === 0) { meta.style.display = 'none'; return; }
   meta.style.display = 'block';
   document.getElementById('header-name').textContent = state.name + (state.cls ? ' — ' + state.cls : '');
-  var labels = ['A', 'B', 'C', 'D', 'E'];
   document.getElementById('header-step').textContent = n < TOTAL_STEPS
-    ? 'Exercise ' + labels[n - 1] + ' of ' + (TOTAL_STEPS - 1)
+    ? 'Exercise ' + String.fromCharCode(64 + n) + ' of ' + (TOTAL_STEPS - 1)
     : 'Submit';
 }
 
 function renderStepNav(current) {
   var nav = document.getElementById('step-nav');
+  if (!nav) return;
   if (current === 0) { nav.classList.remove('show'); nav.innerHTML = ''; return; }
-  var labels = ['A', 'B', 'C', 'D', 'E'];
   var html = '';
   for (var i = 1; i < TOTAL_STEPS; i++) {
     var cls = 'step-nav-btn';
     if (i === current) cls += ' current';
     else if (i <= maxStepReached) cls += ' visited';
     else cls += ' locked';
-    html += '<button class="' + cls + '" ' + (i <= maxStepReached && i !== current ? 'onclick="goToStep(' + i + ')"' : 'disabled') + '>Ex ' + labels[i - 1] + '</button>';
+    html += '<button class="' + cls + '" ' + (i <= maxStepReached && i !== current ? 'onclick="goToStep(' + i + ')"' : 'disabled') + '>Ex ' + String.fromCharCode(64 + i) + '</button>';
   }
-  var submitCls = 'step-nav-btn' + (current === TOTAL_STEPS - 1 ? ' current' : (maxStepReached >= TOTAL_STEPS - 1 ? ' visited' : ' locked'));
-  html += '<button class="' + submitCls + '" ' + (maxStepReached >= TOTAL_STEPS - 1 && current !== TOTAL_STEPS - 1 ? 'onclick="goToStep(' + (TOTAL_STEPS - 1) + ')"' : 'disabled') + '>Submit</button>';
+  var submitCls = 'step-nav-btn' + (current === TOTAL_STEPS ? ' current' : (maxStepReached >= TOTAL_STEPS ? ' visited' : ' locked'));
+  html += '<button class="' + submitCls + '" ' + (maxStepReached >= TOTAL_STEPS && current !== TOTAL_STEPS ? 'onclick="goToStep(' + TOTAL_STEPS + ')"' : 'disabled') + '>Submit</button>';
   nav.innerHTML = html;
   nav.classList.add('show');
 }
@@ -66,7 +65,7 @@ function goToStep(n) {
   if (n > maxStepReached) return;
   var current = document.querySelector('.step.active');
   if (current) { var curN = parseInt(current.id.replace('step-', ''), 10); saveStep(curN); }
-  if (n === TOTAL_STEPS - 1) { buildSummary(); }
+  if (n === TOTAL_STEPS) { buildSummary(); }
   showStep(n);
 }
 
@@ -108,6 +107,15 @@ function set(id, v) { var el = document.getElementById(id); if (el && v !== unde
 function val(id)    { return g(id).length > 0; }
 function esc(str)   { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
 
+/* Flatten an answers object into "k: v | k: v" for email bodies. */
+function eolFlat(o) {
+  if (o == null) return '';
+  if (typeof o !== 'object') return String(o);
+  return Object.keys(o).map(function(k) {
+    return k + ': ' + (o[k] === '' || o[k] == null ? '—' : o[k]);
+  }).join(' | ');
+}
+
 /*
  * checkDropdowns(ids, prefix, answers, fbId, scoreKey)
  *   ids      — array of gap key strings, e.g. ['g1','g2','g3']
@@ -115,33 +123,51 @@ function esc(str)   { var d = document.createElement('div'); d.textContent = Str
  *   answers  — object of correct values,  e.g. {g1:'capital', g2:'born'}
  *   fbId     — id of the feedback div,    e.g. 'step1-fb'
  *   scoreKey — unique key for this check, e.g. 'exA'
+ *
+ * Scoring counts each gap's FIRST checked answer only (tracked in
+ * state.firstTry). Re-checking still recolours the gaps so students can
+ * learn from mistakes, but changing an answer after a check cannot
+ * improve the recorded score.
  */
 function checkDropdowns(ids, prefix, answers, fbId, scoreKey) {
-  var correct = 0, wrong = 0, empty = 0;
+  var correct = 0, wrong = 0, empty = 0, firstTry = null;
+  if (scoreKey) {
+    if (!state.firstTry) state.firstTry = {};
+    firstTry = state.firstTry[scoreKey] = state.firstTry[scoreKey] || {};
+  }
   ids.forEach(function(k) {
     var sel = document.getElementById(prefix + k);
     if (!sel) return;
     sel.className = sel.className.replace(/\s*(gap-correct|gap-wrong)/g, '');
     if (!sel.value) { empty++; return; }
-    if (sel.value === answers[k]) { sel.className += ' gap-correct'; correct++; }
-    else                          { sel.className += ' gap-wrong';   wrong++;   }
+    var ok = sel.value === answers[k];
+    if (ok) { sel.className += ' gap-correct'; correct++; }
+    else    { sel.className += ' gap-wrong';   wrong++;   }
+    if (firstTry && !(k in firstTry)) firstTry[k] = ok;
   });
+  var total = ids.length, scored = correct;
+  if (firstTry) {
+    scored = 0;
+    Object.keys(firstTry).forEach(function(k) { if (firstTry[k]) scored++; });
+    state.scores[scoreKey] = { correct: scored, total: total };
+  }
+  var scoreNote = (scoreKey && scored !== correct)
+    ? ' Your recorded score counts your first answers: ' + scored + ' / ' + total + '.'
+    : '';
   var fb = document.getElementById(fbId);
   fb.style.display = 'block';
-  var total = ids.length;
   if (empty === total) {
     fb.className = 'feedback err show';
     fb.textContent = 'Please answer the gaps first.';
   } else if (wrong === 0 && empty === 0) {
     fb.className = 'feedback ok show';
-    fb.textContent = '✓ All ' + correct + ' correct! Well done.';
+    fb.textContent = '\u2713 All ' + correct + ' correct! Well done.' + scoreNote;
   } else {
     fb.className = 'feedback warn show';
     fb.textContent = correct + ' / ' + total + ' correct'
-      + (wrong ? ' — check the red gaps' : '')
-      + (empty ? ' (' + empty + ' still blank)' : '') + '.';
+      + (wrong ? ' \u2014 check the red gaps' : '')
+      + (empty ? ' (' + empty + ' still blank)' : '') + '.' + scoreNote;
   }
-  if (scoreKey) state.scores[scoreKey] = { correct: correct, total: total };
 }
 
 var GRADE_TABLE = [
@@ -212,7 +238,7 @@ function renderScore() {
     + '<div style="font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--blue);font-weight:700;margin-bottom:.3rem">Your score (auto-graded sections)</div>'
     + '<div style="font-size:1.5rem;font-weight:800;color:var(--blue)">' + sc.earned + ' / ' + sc.possible + ' points</div>'
     + (grade ? '<div style="font-size:1rem;color:var(--blue);margin-top:.2rem">Note ' + grade.note + ' (' + grade.label + ')</div>' : '')
-    + '<div style="font-size:.78rem;color:var(--muted);margin-top:.4rem">This score is also sent to your teacher. Open-ended writing answers are graded by your teacher separately.</div>'
+    + '<div style="font-size:.78rem;color:var(--muted);margin-top:.4rem">Scores count the first answer you checked for each gap — changing an answer later does not change the score. This score is also sent to your teacher. Open-ended writing answers are graded by your teacher separately.</div>'
     + '</div>';
 }
 
@@ -276,7 +302,7 @@ document.addEventListener('paste', function(e) {
   if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
     e.preventDefault();
     var msg = document.createElement('div');
-    msg.textContent = 'Pasting is not allowed';
+    msg.textContent = '✏️ Pasting is not allowed';
     msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
     document.body.appendChild(msg);
     setTimeout(function() {

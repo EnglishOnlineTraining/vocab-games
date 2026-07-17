@@ -157,6 +157,7 @@
   </div>
   <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
 </header>
+<nav class="step-nav" id="step-nav"></nav>
 
 
 <!-- ====================================================
@@ -507,6 +508,7 @@
 </section>
 
 
+<script src="exercise.js"></script>
 <script>
 /* ============================================================
    CONFIG
@@ -515,6 +517,7 @@ var UNIT          = 'be-professional-emails';
 var TOTAL_STEPS   = 5;
 var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec';
 var TEACHER_EMAIL = 'englishonlinetraining@pm.me';
+var maxStepReached = 0;
 
 /* ============================================================
    STATE
@@ -527,58 +530,6 @@ var state = {
   exC:  {},
   exD:  {}
 };
-
-/* ============================================================
-   NAVIGATION
-============================================================ */
-function showStep(n) {
-  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
-  document.getElementById('step-' + n).classList.add('active');
-  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  restoreStep(n);
-  var meta = document.getElementById('header-meta');
-  if (n === 0) { meta.style.display = 'none'; return; }
-  meta.style.display = 'block';
-  document.getElementById('header-name').textContent = state.name + (state.cls ? ' — ' + state.cls : '');
-  var labels = ['A', 'B', 'C', 'D'];
-  document.getElementById('header-step').textContent = n < TOTAL_STEPS
-    ? 'Exercise ' + labels[n - 1] + ' of ' + (TOTAL_STEPS - 1)
-    : 'Submit';
-}
-
-function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
-
-function nextStep(n) {
-  if (!validateStep(n)) {
-    var err = document.getElementById('step' + n + '-error');
-    if (err) { err.textContent = 'Please answer the required questions before continuing.'; err.classList.add('show'); }
-    return;
-  }
-  clearErr(n);
-  saveStep(n);
-  if (n === TOTAL_STEPS - 1) { buildSummary(); }
-  showStep(n + 1);
-}
-
-function clearErr(n) {
-  var err = document.getElementById('step' + n + '-error');
-  if (err) err.classList.remove('show');
-}
-
-function startExercises() {
-  var name = g('inp-name'), cls = g('inp-class');
-  var err = document.getElementById('welcome-error');
-  if (!name || !cls) {
-    err.textContent = 'Please enter both your name and your class.';
-    err.classList.add('show');
-    return;
-  }
-  err.classList.remove('show');
-  state.name = name;
-  state.cls  = cls;
-  showStep(1);
-}
 
 /* ============================================================
    VALIDATION
@@ -637,44 +588,6 @@ function restoreStep(n) {
       set('exD-subject', state.exD.subject);
       set('exD-body', state.exD.body);
       break;
-  }
-}
-
-/* ============================================================
-   HELPERS
-============================================================ */
-function g(id)       { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
-function set(id, v)  { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
-function val(id)     { return g(id).length > 0; }
-function esc(str)    { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
-
-/* ============================================================
-   CHECK ANSWERS
-============================================================ */
-function checkDropdowns(ids, prefix, answers, fbId) {
-  var correct = 0, wrong = 0, empty = 0;
-  ids.forEach(function(k) {
-    var sel = document.getElementById(prefix + k);
-    if (!sel) return;
-    sel.className = sel.className.replace(/\s*(gap-correct|gap-wrong)/g, '');
-    if (!sel.value) { empty++; return; }
-    if (sel.value === answers[k]) { sel.className += ' gap-correct'; correct++; }
-    else                          { sel.className += ' gap-wrong';   wrong++;   }
-  });
-  var fb = document.getElementById(fbId);
-  fb.style.display = 'block';
-  var total = ids.length;
-  if (empty === total) {
-    fb.className = 'feedback err show';
-    fb.textContent = 'Please answer the gaps first.';
-  } else if (wrong === 0 && empty === 0) {
-    fb.className = 'feedback ok show';
-    fb.textContent = '✓ All ' + correct + ' correct! Well done.';
-  } else {
-    fb.className = 'feedback warn show';
-    fb.textContent = correct + ' / ' + total + ' correct'
-      + (wrong  ? ' — check the red gaps' : '')
-      + (empty  ? ' (' + empty + ' still blank)' : '') + '.';
   }
 }
 
@@ -763,47 +676,9 @@ function buildEmailBody() {
   return b;
 }
 
-/* ============================================================
-   SUBMIT TO GOOGLE SHEET
-============================================================ */
-function submitToSheet() {
-  buildSummary();
-  var btn = document.getElementById('submit-btn');
-  btn.disabled = true;
-  btn.textContent = 'Sending...';
-  var payload = { name: state.name, cls: state.cls, unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD };
-  fetch(SHEET_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
-  }).then(function() {
-    btn.style.display = 'none';
-    document.getElementById('submit-success').style.display = 'block';
-    document.getElementById('submit-fallback').style.display = 'block';
-  }).catch(function() {
-    btn.disabled = false;
-    btn.textContent = 'Submit to Teacher';
-    document.getElementById('submit-fallback').style.display = 'block';
-  });
-}
-
-function submitByEmail() {
-  var a = document.createElement('a');
-  a.href = 'mailto:' + TEACHER_EMAIL
-    + '?subject=' + encodeURIComponent(UNIT + ' - ' + state.name + ' - ' + state.cls)
-    + '&body='    + encodeURIComponent(buildEmailBody());
-  a.style.display = 'none';
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(function() { document.body.removeChild(a); }, 100);
-}
-
-function copyAnswers() {
-  var body = buildEmailBody();
-  navigator.clipboard.writeText(body)
-    .then(function() { alert('Answers copied! Paste them into an email to your teacher.'); })
-    .catch(function() { prompt('Copy this text:', body); });
+function buildPayload() {
+var payload = { name: state.name, cls: state.cls, unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD };
+  return payload;
 }
 
 /* ============================================================
@@ -816,33 +691,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <script>
 /* ── Paste-block: prevent pasting into answer fields ── */
-document.addEventListener('paste', function(e) {
-  var t = e.target;
-  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
-    e.preventDefault();
-    var msg = document.createElement('div');
-    msg.textContent = '✏️ Pasting is not allowed';
-    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
-    document.body.appendChild(msg);
-    setTimeout(function() {
-      msg.style.opacity = '0';
-      setTimeout(function() { msg.remove(); }, 400);
-    }, 2000);
-  }
-});
+
 
 /* ── Copy-block: prevent copying text from the page ── */
-document.addEventListener('copy', function(e) {
-  e.preventDefault();
-  var msg = document.createElement('div');
-  msg.textContent = '🚫 Copying is not allowed';
-  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
-  document.body.appendChild(msg);
-  setTimeout(function() {
-    msg.style.opacity = '0';
-    setTimeout(function() { msg.remove(); }, 400);
-  }, 2000);
-});
+
 </script>
 
 </body>

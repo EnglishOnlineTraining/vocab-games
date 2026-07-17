@@ -361,12 +361,15 @@
   </div>
 </section>
 
+<script src="exercise.js"></script>
 <script>
 /* =============================================
    CONFIGURATION
 ============================================= */
 const SHEET_URL = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj';
+var UNIT = 'california-exercises';
 const TEACHER_EMAIL = 'englishonlinetraining@pm.me';
+var maxStepReached = 0;
 
 /* =============================================
    STATE
@@ -382,7 +385,6 @@ const state = {
   ex19:  {}
 };
 
-let currentStep = 0;
 const TOTAL_STEPS = 7; // 0 = welcome, 1–6 = exercises, 7 = submit
 
 /* =============================================
@@ -541,13 +543,15 @@ function showStep(n) {
 
   // Restore saved answers into the form fields
   restoreStepAnswers(n);
+  if (n > maxStepReached) maxStepReached = n;
+  renderStepNav(n);
 
   var meta = document.getElementById('header-meta');
   if (n === 0) {
     meta.style.display = 'none';
   } else {
     meta.style.display = 'block';
-    document.getElementById('header-name').textContent = state.name + (state.class ? ' - ' + state.class : '');
+    document.getElementById('header-name').textContent = state.name + (state.cls ? ' - ' + state.cls : '');
     if (n <= 6) {
       var exNums = ['12','13','14','15','18','19'];
       document.getElementById('header-step').textContent = 'Exercise ' + exNums[n-1] + ' of 6';
@@ -556,34 +560,6 @@ function showStep(n) {
     }
   }
 }
-
-function renderStepNav(current) {
-  var nav = document.getElementById('step-nav');
-  if (!nav) return;
-  if (current === 0) { nav.classList.remove('show'); nav.innerHTML = ''; return; }
-  var labels = ['A', 'B', 'C', 'D', 'E'];
-  var html = '';
-  for (var i = 1; i < TOTAL_STEPS; i++) {
-    var cls = 'step-nav-btn';
-    if (i === current) cls += ' current';
-    else if (i <= maxStepReached) cls += ' visited';
-    else cls += ' locked';
-    html += '<button class="' + cls + '" ' + (i <= maxStepReached && i !== current ? 'onclick="goToStep(' + i + ')"' : 'disabled') + '>Ex ' + labels[i - 1] + '</button>';
-  }
-  var submitCls = 'step-nav-btn' + (current === TOTAL_STEPS - 1 ? ' current' : (maxStepReached >= TOTAL_STEPS - 1 ? ' visited' : ' locked'));
-  html += '<button class="' + submitCls + '" ' + (maxStepReached >= TOTAL_STEPS - 1 && current !== TOTAL_STEPS - 1 ? 'onclick="goToStep(' + (TOTAL_STEPS - 1) + ')"' : 'disabled') + '>Submit</button>';
-  nav.innerHTML = html;
-  nav.classList.add('show');
-}
-
-function goToStep(n) {
-  if (n > maxStepReached) return;
-  var cur = document.querySelector('.step.active');
-  if (cur) { var curN = parseInt(cur.id.replace('step-', ''), 10); saveStep(curN); }
-  if (n === TOTAL_STEPS - 1) { buildSummary(); }
-  showStep(n);
-}
-
 
 function prevStep(step) {
   // Save whatever is currently in the fields before navigating back
@@ -643,22 +619,6 @@ function restoreStepAnswers(step) {
   }
 }
 
-function startExercises() {
-  const name  = document.getElementById('inp-name').value.trim();
-  const cls   = document.getElementById('inp-class').value.trim();
-  const err   = document.getElementById('welcome-error');
-  if (!name || !cls) {
-    err.textContent = 'Please enter both your name and your class.';
-    err.classList.add('show');
-    return;
-  }
-  err.classList.remove('show');
-  state.name  = name;
-  state.class = cls;
-  currentStep = 1;
-  showStep(1);
-}
-
 function nextStep(step) {
   // Validate required fields per step
   const err = document.getElementById(`step${step}-error`);
@@ -706,6 +666,8 @@ function validateStep(step) {
   }
 }
 
+function saveStep(n) { saveStepAnswers(n); }
+function restoreStep(n) { restoreStepAnswers(n); }
 function saveStepAnswers(step) {
   switch(step) {
     case 1:
@@ -747,15 +709,6 @@ function saveStepAnswers(step) {
       state.ex19.rule   = document.getElementById('ex19-rule').value.trim();
       break;
   }
-}
-
-/* =============================================
-   HTML ESCAPE HELPER
-============================================= */
-function esc(str) {
-  const d = document.createElement('div');
-  d.textContent = String(str == null ? '' : str);
-  return d.innerHTML;
 }
 
 /* =============================================
@@ -801,7 +754,7 @@ function buildSummary() {
   var html = '<div class="submit-summary">';
   html += '<div class="summary-row">';
   html += '<div class="summary-ex">Student</div>';
-  html += '<div class="summary-q">' + esc(state.name) + ' - ' + esc(state.class) + '</div>';
+  html += '<div class="summary-q">' + esc(state.name) + ' - ' + esc(state.cls) + '</div>';
   html += '</div>';
 
   rows.forEach(function(row) {
@@ -831,7 +784,7 @@ function buildEmailBody() {
 
   return `CALIFORNIA EXERCISES - SUBMISSION
 Student: ${state.name}
-Class:   ${state.class}
+Class:   ${state.cls}
 Date:    ${new Date().toLocaleDateString('en-GB')}
 
 -------------------------
@@ -894,15 +847,10 @@ General rule:
 ${state.ex19.rule || '(no answer)'}`;
 }
 
-function submitToSheet() {
-  buildSummary();
-  const btn = document.getElementById('submit-btn');
-  btn.disabled = true;
-  btn.textContent = 'Sending…';
-
-  const payload = {
+function buildPayload() {
+var payload = {
     name: state.name,
-    cls:  state.class,
+    cls:  state.cls,
     unit: 'california-exercises',
     ex12: state.ex12,
     ex13: state.ex13,
@@ -911,41 +859,7 @@ function submitToSheet() {
     ex18: state.ex18,
     ex19: state.ex19
   };
-
-  fetch(SHEET_URL, {
-    method: 'POST',
-    mode:   'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
-  }).then(() => {
-    btn.style.display = 'none';
-    document.getElementById('submit-success').style.display = 'block';
-    document.getElementById('submit-fallback').style.display = 'block';
-  }).catch(() => {
-    btn.disabled = false;
-    btn.textContent = '🚀 Submit to Teacher';
-    document.getElementById('submit-fallback').style.display = 'block';
-  });
-}
-
-function submitByEmail() {
-  const body = buildEmailBody();
-  const subject = encodeURIComponent(`California Exercises – ${state.name} – ${state.class}`);
-  const a = document.createElement('a');
-  a.href = `mailto:${TEACHER_EMAIL}?subject=${subject}&body=${encodeURIComponent(body)}`;
-  a.style.display = 'none';
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(() => document.body.removeChild(a), 100);
-}
-
-function copyAnswers() {
-  const body = buildEmailBody();
-  navigator.clipboard.writeText(body).then(() => {
-    alert('Answers copied! Paste them into an email to your teacher.');
-  }).catch(() => {
-    prompt('Copy this text:', body);
-  });
+  return payload;
 }
 
 /* =============================================
@@ -961,33 +875,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <script>
 /* ── Paste-block: prevent pasting into answer fields ── */
-document.addEventListener('paste', function(e) {
-  var t = e.target;
-  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
-    e.preventDefault();
-    var msg = document.createElement('div');
-    msg.textContent = '✏️ Pasting is not allowed';
-    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
-    document.body.appendChild(msg);
-    setTimeout(function() {
-      msg.style.opacity = '0';
-      setTimeout(function() { msg.remove(); }, 400);
-    }, 2000);
-  }
-});
+
 
 /* ── Copy-block: prevent copying text from the page ── */
-document.addEventListener('copy', function(e) {
-  e.preventDefault();
-  var msg = document.createElement('div');
-  msg.textContent = '🚫 Copying is not allowed';
-  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
-  document.body.appendChild(msg);
-  setTimeout(function() {
-    msg.style.opacity = '0';
-    setTimeout(function() { msg.remove(); }, 400);
-  }, 2000);
-});
+
 </script>
 </body>
 </html>
