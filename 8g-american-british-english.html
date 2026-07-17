@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>American vs British English | englishonline.training</title>
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blue:    #1a3a5c;
+  --gold:    #c9a227;
+  --gold-lt: #f5e6b0;
+  --teal:    #2b7a78;
+  --red:     #c0392b;
+  --green:   #27ae60;
+  --bg:      #f7f9fc;
+  --card:    #ffffff;
+  --text:    #1d2b3a;
+  --muted:   #6b7a8d;
+  --border:  #dce3ec;
+  --radius:  12px;
+  --shadow:  0 2px 16px rgba(26,58,92,.1);
+  --font:    'Segoe UI', system-ui, sans-serif;
+}
+body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
+.app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
+.header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
+.header-meta { font-size: .78rem; text-align: right; opacity: .9; }
+.header-meta strong { display: block; color: var(--gold); }
+.progress-track { height: 6px; background: rgba(255,255,255,.2); }
+.progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
+.step-nav { display: none; gap: .4rem; padding: .6rem 1rem; background: #f0f3f8; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+.step-nav.show { display: flex; }
+.step-nav-btn { border: 1.5px solid var(--border); background: #fff; color: var(--muted); font-family: var(--font); font-size: .78rem; font-weight: 600; padding: .3rem .7rem; border-radius: 20px; cursor: pointer; transition: background .15s, color .15s, border-color .15s; }
+.step-nav-btn.visited { border-color: var(--blue); color: var(--blue); cursor: pointer; }
+.step-nav-btn.current { background: var(--blue); border-color: var(--blue); color: #fff; cursor: default; }
+.step-nav-btn.locked { opacity: .45; cursor: not-allowed; }
+.step { display: none; }
+.step.active { display: block; }
+.step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+.ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
+.ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+.ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
+.card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
+.card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
+.reading-text { font-size: .93rem; line-height: 1.85; color: var(--text); }
+.reading-text p { margin-bottom: .85rem; }
+.reading-text p:last-child { margin-bottom: 0; }
+.form-group { margin-bottom: 1.1rem; }
+.form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+.form-input, .form-textarea { width: 100%; border: 1.5px solid var(--border); border-radius: 8px; padding: .65rem .85rem; font-family: var(--font); font-size: .92rem; color: var(--text); background: #fff; transition: border-color .2s; }
+.form-input:focus, .form-textarea:focus { outline: none; border-color: var(--blue); }
+.form-textarea { resize: vertical; min-height: 60px; line-height: 1.6; }
+.form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+.gap-text { font-size: .93rem; line-height: 2.0; color: var(--text); }
+.gap-num { font-size: .68rem; color: var(--muted); vertical-align: super; margin-right: 1px; }
+.gap-select { display: inline-block; border: 1.5px solid var(--gold); border-radius: 6px; padding: .18rem .45rem; font-family: var(--font); font-size: .82rem; background: var(--gold-lt); color: var(--blue); cursor: pointer; vertical-align: middle; margin: 0 2px; max-width: 220px; }
+.gap-select:focus { outline: none; border-color: var(--blue); }
+.gap-correct { background: #d4edda !important; border-color: var(--green) !important; color: #155724 !important; }
+.gap-wrong   { background: #fde8e8 !important; border-color: var(--red) !important;   color: #721c24 !important; }
+.feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
+.feedback.show { display: block; }
+.feedback.ok   { background: #d4edda; color: #155724; }
+.feedback.warn { background: #fff3cd; color: #856404; }
+.feedback.err  { background: #fde8e8; color: #721c24; }
+.btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+.btn:active { transform: scale(.97); }
+.btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
+.btn-primary:hover { background: #15304f; }
+.btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
+.btn-gold:hover { background: #b8911f; }
+.btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+.btn-outline:hover { background: var(--blue); color: #fff; }
+.btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+.btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+.btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+.welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
+.welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
+.welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+.welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 440px; margin-left: auto; margin-right: auto; }
+.exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+.ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; }
+.ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
+.ov-card.locked { opacity: .5; }
+.ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+.submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
+.summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
+.summary-row:last-child { border-bottom: none; }
+.summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
+.summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
+.summary-a  { color: var(--text); white-space: pre-wrap; }
+@media (max-width: 480px) {
+  .ex-title { font-size: 1.25rem; }
+  .btn { padding: .65rem 1.1rem; }
+  .welcome-title { font-size: 1.4rem; }
+}
+  </style>
+</head>
+<body>
+
+<!-- ── Sticky header ── -->
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">&larr; Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Exercise A of 4</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+<nav class="step-nav" id="step-nav"></nav>
+
+
+<!-- ====================================================
+     STEP 0 – WELCOME
+===================================================== -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">🇬🇧🇺🇸</div>
+      <h1 class="welcome-title">American vs British English</h1>
+      <p class="welcome-sub">Explore vocabulary, spelling and register differences between American and British English.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">📖</div><strong>Ex A – Vocabulary</strong>Match the American word to its British equivalent</div>
+      <div class="ov-card locked"><div class="ov-icon">✏️</div><strong>Ex B – Spelling</strong>Choose the correct British spelling</div>
+      <div class="ov-card locked"><div class="ov-icon">📝</div><strong>Ex C – Register</strong>Rewrite informal sentences in a formal style</div>
+      <div class="ov-card locked"><div class="ov-icon">📰</div><strong>Ex D – Reading</strong>Read about English around the world and fill the gaps</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. 8g" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 1 – EXERCISE A: Vocabulary (AmE → BrE)
+===================================================== -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">Vocabulary: American → British</h2>
+    <p class="ex-subtitle">Choose the correct <strong>British English</strong> word for each American English word.</p>
+
+    <div class="card">
+      <div class="card-title">Match the American word to its British equivalent</div>
+
+      <div class="form-group">
+        <label class="form-label">1. <strong>apartment</strong></label>
+        <select class="form-input" id="exA-g1">
+          <option value="">— choose —</option>
+          <option value="house">house</option>
+          <option value="flat">flat</option>
+          <option value="cottage">cottage</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">2. <strong>elevator</strong></label>
+        <select class="form-input" id="exA-g2">
+          <option value="">— choose —</option>
+          <option value="lift">lift</option>
+          <option value="stairs">stairs</option>
+          <option value="escalator">escalator</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">3. <strong>sidewalk</strong></label>
+        <select class="form-input" id="exA-g3">
+          <option value="">— choose —</option>
+          <option value="road">road</option>
+          <option value="driveway">driveway</option>
+          <option value="pavement">pavement</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">4. <strong>cookie</strong></label>
+        <select class="form-input" id="exA-g4">
+          <option value="">— choose —</option>
+          <option value="biscuit">biscuit</option>
+          <option value="cake">cake</option>
+          <option value="scone">scone</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">5. <strong>trunk</strong> (of a car)</label>
+        <select class="form-input" id="exA-g5">
+          <option value="">— choose —</option>
+          <option value="bonnet">bonnet</option>
+          <option value="boot">boot</option>
+          <option value="hood">hood</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">6. <strong>french fries</strong></label>
+        <select class="form-input" id="exA-g6">
+          <option value="">— choose —</option>
+          <option value="crisps">crisps</option>
+          <option value="wedges">wedges</option>
+          <option value="chips">chips</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">7. <strong>gas</strong> (fuel)</label>
+        <select class="form-input" id="exA-g7">
+          <option value="">— choose —</option>
+          <option value="diesel">diesel</option>
+          <option value="petrol">petrol</option>
+          <option value="oil">oil</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">8. <strong>vacation</strong></label>
+        <select class="form-input" id="exA-g8">
+          <option value="">— choose —</option>
+          <option value="holiday">holiday</option>
+          <option value="weekend">weekend</option>
+          <option value="trip">trip</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">9. <strong>candy</strong></label>
+        <select class="form-input" id="exA-g9">
+          <option value="">— choose —</option>
+          <option value="chocolate">chocolate</option>
+          <option value="toffee">toffee</option>
+          <option value="sweets">sweets</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">10. <strong>cell phone</strong></label>
+        <select class="form-input" id="exA-g10">
+          <option value="">— choose —</option>
+          <option value="mobile phone">mobile phone</option>
+          <option value="telephone">telephone</option>
+          <option value="smartphone">smartphone</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div id="step1-fb" class="feedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">&larr; Back</button>
+      <button class="btn btn-gold btn-sm" onclick="checkExA()">&#10003; Check</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 2 – EXERCISE B: Spelling differences
+===================================================== -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B</span>
+    <h2 class="ex-title">Spelling: American or British?</h2>
+    <p class="ex-subtitle">Choose the correct <strong>British</strong> spelling for each word.</p>
+
+    <div class="card">
+      <div class="card-title">Pick the British spelling</div>
+
+      <div class="form-group">
+        <label class="form-label">1. The _____ of the house was lovely.</label>
+        <select class="form-input" id="exB-g1">
+          <option value="">— choose —</option>
+          <option value="colour">colour</option>
+          <option value="color">color</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">2. She went to the cinema in the city _____.</label>
+        <select class="form-input" id="exB-g2">
+          <option value="">— choose —</option>
+          <option value="center">center</option>
+          <option value="centre">centre</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">3. I need to _____ my room before my friends arrive.</label>
+        <select class="form-input" id="exB-g3">
+          <option value="">— choose —</option>
+          <option value="organize">organize</option>
+          <option value="organise">organise</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">4. He is my favourite _____.</label>
+        <select class="form-input" id="exB-g4">
+          <option value="">— choose —</option>
+          <option value="neighbor">neighbor</option>
+          <option value="neighbour">neighbour</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">5. The _____ was very exciting to watch.</label>
+        <select class="form-input" id="exB-g5">
+          <option value="">— choose —</option>
+          <option value="programme">programme</option>
+          <option value="program">program</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">6. I didn't _____ how late it was.</label>
+        <select class="form-input" id="exB-g6">
+          <option value="">— choose —</option>
+          <option value="realize">realize</option>
+          <option value="realise">realise</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">7. She had to _____ for being late.</label>
+        <select class="form-input" id="exB-g7">
+          <option value="">— choose —</option>
+          <option value="apologise">apologise</option>
+          <option value="apologize">apologize</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">8. The children love the _____ of chocolate.</label>
+        <select class="form-input" id="exB-g8">
+          <option value="">— choose —</option>
+          <option value="flavor">flavor</option>
+          <option value="flavour">flavour</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div id="step2-fb" class="feedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">&larr; Back</button>
+      <button class="btn btn-gold btn-sm" onclick="checkExB()">&#10003; Check</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 3 – EXERCISE C: Formal vs Informal Register
+===================================================== -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise C</span>
+    <h2 class="ex-title">Register: Informal → Formal</h2>
+    <p class="ex-subtitle">Rewrite each informal sentence in a <strong>more formal</strong> style. Avoid contractions and slang. Use full forms and polite language.</p>
+
+    <div class="card">
+      <div class="card-title">Tip box</div>
+      <p style="font-size:.88rem;color:var(--muted);margin:0">
+        <strong>Informal → Formal changes:</strong><br>
+        &bull; Contractions → full forms (<em>I'm → I am</em>)<br>
+        &bull; Phrasal verbs → single verbs (<em>find out → discover</em>)<br>
+        &bull; Slang/casual words → neutral words (<em>kids → children</em>)<br>
+        &bull; Short sentences → longer, connected sentences
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Rewrite in formal English</div>
+
+      <div class="form-group">
+        <label class="form-label">1. <em>"Hey, I wanna find out about the school trip."</em></label>
+        <textarea class="form-textarea" id="exC-q1" placeholder="Write your formal version here..." rows="2"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">2. <em>"The kids can't come cos they're busy."</em></label>
+        <textarea class="form-textarea" id="exC-q2" placeholder="Write your formal version here..." rows="2"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">3. <em>"We gotta sort this out ASAP."</em></label>
+        <textarea class="form-textarea" id="exC-q3" placeholder="Write your formal version here..." rows="2"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">4. <em>"It's cool that you guys helped us out."</em></label>
+        <textarea class="form-textarea" id="exC-q4" placeholder="Write your formal version here..." rows="2"></textarea>
+      </div>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">&larr; Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Exercise D &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 4 – EXERCISE D: Reading + gap-fill
+===================================================== -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise D</span>
+    <h2 class="ex-title">Reading: English Around the World</h2>
+    <p class="ex-subtitle">Read the text and fill in the gaps with the correct word.</p>
+
+    <div class="card">
+      <div class="card-title">Text</div>
+      <div style="font-size:.92rem;line-height:1.9;color:var(--text)">
+        <p>English is spoken in many countries around the world, but it is not always the same everywhere. The two main varieties are <strong>American English</strong> and <strong>British English</strong>. Although speakers of both varieties can understand each other without much difficulty, there are some interesting differences in vocabulary, spelling and pronunciation.</p>
+
+        <p>One major area of difference is vocabulary. For example, what Americans call a
+          <select class="form-input" id="exD-g1" style="display:inline;width:auto;min-width:140px">
+            <option value="">— choose —</option>
+            <option value="sidewalk">sidewalk</option>
+            <option value="pavement">pavement</option>
+            <option value="road">road</option>
+          </select>,
+          the British call a <em>pavement</em>. When an American goes on
+          <select class="form-input" id="exD-g2" style="display:inline;width:auto;min-width:140px">
+            <option value="">— choose —</option>
+            <option value="holiday">holiday</option>
+            <option value="vacation">vacation</option>
+            <option value="trip">trip</option>
+          </select>,
+          a British person goes on a <em>holiday</em>. These vocabulary differences developed because the two countries were separated by the Atlantic Ocean for hundreds of years.</p>
+
+        <p>Spelling is another area where the two varieties differ. The British prefer to write
+          <select class="form-input" id="exD-g3" style="display:inline;width:auto;min-width:140px">
+            <option value="">— choose —</option>
+            <option value="color">color</option>
+            <option value="colour">colour</option>
+            <option value="coulor">coulor</option>
+          </select>
+          while Americans write <em>color</em>. Similarly, British people write <em>centre</em>, but Americans spell it
+          <select class="form-input" id="exD-g4" style="display:inline;width:auto;min-width:140px">
+            <option value="">— choose —</option>
+            <option value="center">center</option>
+            <option value="sentre">sentre</option>
+            <option value="centre">centre</option>
+          </select>.
+          Many of these spelling differences go back to Noah Webster, who published an American dictionary in 1828 and simplified many British spellings.</p>
+
+        <p>Register — how formal or informal your language is — also plays a role. In formal writing, you should avoid
+          <select class="form-input" id="exD-g5" style="display:inline;width:auto;min-width:160px">
+            <option value="">— choose —</option>
+            <option value="long sentences">long sentences</option>
+            <option value="contractions">contractions</option>
+            <option value="adjectives">adjectives</option>
+          </select>
+          like <em>don't</em> or <em>can't</em> and use the full forms instead. In informal language, people often use
+          <select class="form-input" id="exD-g6" style="display:inline;width:auto;min-width:160px">
+            <option value="">— choose —</option>
+            <option value="phrasal verbs">phrasal verbs</option>
+            <option value="passive voice">passive voice</option>
+            <option value="long words">long words</option>
+          </select>
+          like <em>find out</em> instead of the more formal <em>discover</em>.</p>
+      </div>
+    </div>
+
+    <div id="step4-error" class="feedback err"></div>
+    <div id="step4-fb" class="feedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(4)">&larr; Back</button>
+      <button class="btn btn-gold btn-sm" onclick="checkExD()">&#10003; Check</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(4)">Review &amp; Submit &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     STEP 5 – REVIEW & SUBMIT
+===================================================== -->
+<section id="step-5" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+    <div id="score-display" style="display:none"></div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission did not work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+      <div id="copy-success" class="feedback ok" style="margin-top:1rem"></div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+/* exercise.js — shared framework */
+function isTestMode() { return window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'; }
+function showToast(message, duration) {
+  duration = duration || 2500;
+  var toast = document.createElement('div');
+  toast.textContent = message;
+  toast.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.75rem 1.5rem;border-radius:8px;font-size:.9rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .3s;box-shadow:0 2px 8px rgba(0,0,0,.3)';
+  document.body.appendChild(toast);
+  setTimeout(function() { toast.style.opacity = '0'; setTimeout(function() { toast.remove(); }, 300); }, duration);
+}
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('step-' + n).classList.add('active');
+  document.getElementById('progress-fill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  restoreStep(n);
+  if (n > maxStepReached) maxStepReached = n;
+  renderStepNav(n);
+  var meta = document.getElementById('header-meta');
+  if (n === 0) { meta.style.display = 'none'; return; }
+  meta.style.display = 'block';
+  document.getElementById('header-name').textContent = state.name + (state.cls ? ' — ' + state.cls : '');
+  var labels = ['A', 'B', 'C', 'D', 'E'];
+  document.getElementById('header-step').textContent = n < TOTAL_STEPS ? 'Exercise ' + labels[n - 1] + ' of ' + (TOTAL_STEPS - 1) : 'Submit';
+}
+function renderStepNav(current) {
+  var nav = document.getElementById('step-nav');
+  if (current === 0) { nav.classList.remove('show'); nav.innerHTML = ''; return; }
+  var labels = ['A', 'B', 'C', 'D', 'E'];
+  var html = '';
+  for (var i = 1; i < TOTAL_STEPS; i++) {
+    var cls = 'step-nav-btn';
+    if (i === current) cls += ' current';
+    else if (i <= maxStepReached) cls += ' visited';
+    else cls += ' locked';
+    html += '<button class="' + cls + '" ' + (i <= maxStepReached && i !== current ? 'onclick="goToStep(' + i + ')"' : 'disabled') + '>Ex ' + labels[i - 1] + '</button>';
+  }
+  var submitCls = 'step-nav-btn' + (current === TOTAL_STEPS ? ' current' : (maxStepReached >= TOTAL_STEPS ? ' visited' : ' locked'));
+  html += '<button class="' + submitCls + '" ' + (maxStepReached >= TOTAL_STEPS && current !== TOTAL_STEPS ? 'onclick="goToStep(' + TOTAL_STEPS + ')"' : 'disabled') + '>Submit</button>';
+  nav.innerHTML = html;
+  nav.classList.add('show');
+}
+function goToStep(n) {
+  if (n > maxStepReached) return;
+  var current = document.querySelector('.step.active');
+  if (current) { var curN = parseInt(current.id.replace('step-', ''), 10); saveStep(curN); }
+  if (n === TOTAL_STEPS) { buildSummary(); }
+  showStep(n);
+}
+function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
+function nextStep(n) {
+  if (!validateStep(n)) {
+    var err = document.getElementById('step' + n + '-error');
+    if (err) { err.textContent = 'Please answer the required questions before continuing.'; err.classList.add('show'); }
+    return;
+  }
+  clearErr(n);
+  saveStep(n);
+  if (n === TOTAL_STEPS) { buildSummary(); }
+  showStep(n + 1);
+}
+function clearErr(n) { var err = document.getElementById('step' + n + '-error'); if (err) err.classList.remove('show'); }
+function startExercises() {
+  var name = g('inp-name'), cls = g('inp-class');
+  var err = document.getElementById('welcome-error');
+  if (!name || !cls) { err.textContent = 'Please enter both your name and your class.'; err.classList.add('show'); return; }
+  err.classList.remove('show');
+  state.name = name; state.cls = cls;
+  showStep(1);
+}
+function g(id)      { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+function set(id, v) { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
+function val(id)    { return g(id).length > 0; }
+function esc(str)   { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
+function checkDropdowns(ids, prefix, answers, fbId, scoreKey) {
+  var correct = 0, wrong = 0, empty = 0;
+  ids.forEach(function(k) {
+    var sel = document.getElementById(prefix + k);
+    if (!sel) return;
+    sel.className = sel.className.replace(/\s*(gap-correct|gap-wrong)/g, '');
+    if (!sel.value) { empty++; return; }
+    if (sel.value === answers[k]) { sel.className += ' gap-correct'; correct++; }
+    else                          { sel.className += ' gap-wrong';   wrong++; }
+  });
+  var fb = document.getElementById(fbId);
+  fb.style.display = 'block';
+  var total = ids.length;
+  if (empty === total) { fb.className = 'feedback err show'; fb.textContent = 'Please answer the gaps first.'; }
+  else if (wrong === 0 && empty === 0) { fb.className = 'feedback ok show'; fb.textContent = '✓ All ' + correct + ' correct! Well done.'; }
+  else { fb.className = 'feedback warn show'; fb.textContent = correct + ' / ' + total + ' correct' + (wrong ? ' — check the red gaps' : '') + (empty ? ' (' + empty + ' still blank)' : '') + '.'; }
+  if (scoreKey) state.scores[scoreKey] = { correct: correct, total: total };
+}
+var GRADE_TABLE = [
+  [100,96,80,60,45,16],[99,96,80,60,45,16],[98,95,79,59,45,16],[97,94,78,59,44,16],
+  [96,93,77,58,44,16],[95,92,76,57,43,16],[94,91,76,57,43,16],[93,90,75,56,42,15],
+  [92,89,74,56,42,15],[91,88,73,55,41,15],[90,87,72,54,41,15],[89,86,72,54,41,15],
+  [88,85,71,53,40,15],[87,84,70,53,40,14],[86,83,69,52,39,14],[85,82,68,51,39,14],
+  [84,81,68,51,38,14],[83,80,67,50,38,14],[82,79,66,50,37,14],[81,78,65,49,37,13],
+  [80,77,64,48,36,13],[79,76,64,48,36,13],[78,75,63,47,36,13],[77,74,62,47,35,13],
+  [76,73,61,46,35,13],[75,72,60,45,34,12],[74,72,60,45,34,12],[73,71,59,44,33,12],
+  [72,70,58,44,33,12],[71,69,57,43,32,12],[70,68,56,42,32,12],[69,67,56,42,32,12],
+  [68,66,55,41,31,11],[67,65,54,41,31,11],[66,64,53,40,30,11],[65,63,52,39,30,11],
+  [64,62,52,39,29,11],[63,61,51,38,29,11],[62,60,50,38,28,10],[61,59,49,37,28,10],
+  [60,58,48,36,27,10],[59,57,48,36,27,10],[58,56,47,35,27,10],[57,55,46,35,26,10],
+  [56,54,45,34,26,9],[55,53,44,33,25,9],[54,52,44,33,25,9],[53,51,43,32,24,9],
+  [52,50,42,32,24,9],[51,49,41,31,23,9],[50,48,40,30,23,8],[49,48,40,30,23,8],
+  [48,47,39,29,22,8],[47,46,38,29,22,8],[46,45,37,28,21,8],[45,44,36,27,21,8],
+  [44,43,36,27,20,8],[43,42,35,26,20,7],[42,41,34,26,19,7],[41,40,33,25,19,7],
+  [40,39,32,24,18,7],[39,38,32,24,18,7],[38,37,31,23,18,7],[37,36,30,23,17,6],
+  [36,35,29,22,17,6],[35,34,28,21,16,6],[34,33,28,21,16,6],[33,32,27,20,15,6],
+  [32,31,26,20,15,6],[31,30,25,19,14,5],[30,29,24,18,14,5],[29,28,24,18,14,5],
+  [28,27,23,17,13,5],[27,26,22,17,13,5],[26,25,21,16,12,5],[25,24,20,15,12,4],
+  [24,24,20,15,11,4],[23,23,19,14,11,4],[22,22,18,14,10,4],[21,21,17,13,10,4],
+  [20,20,16,12,9,4],[19,19,16,12,9,4],[18,18,15,11,9,3],[17,17,14,11,8,3],
+  [16,16,13,10,8,3],[15,15,12,9,7,3],[14,14,12,9,7,3],[13,13,11,8,6,3],
+  [12,12,10,8,6,2],[11,11,9,7,5,2],[10,10,8,6,5,2]
+];
+var GRADE_LABELS = ['Sehr gut', 'Gut', 'Befriedigend', 'Genügend', 'Nicht genügend'];
+function totalScore() {
+  var earned = 0, possible = 0;
+  Object.keys(state.scores).forEach(function(k) { earned += state.scores[k].correct; possible += state.scores[k].total; });
+  return { earned: earned, possible: possible };
+}
+function lookupGrade(earned, possible) {
+  if (!possible) return null;
+  var score, maxPts;
+  if (possible < 10) { maxPts = 10; score = Math.round((earned / possible) * 10); }
+  else if (possible > 100) { maxPts = 100; score = Math.round((earned / possible) * 100); }
+  else { maxPts = possible; score = earned; }
+  score = Math.max(0, Math.min(maxPts, score));
+  var row = GRADE_TABLE.filter(function(r) { return r[0] === maxPts; })[0];
+  if (!row) return null;
+  for (var i = 1; i <= 5; i++) { if (score >= row[i]) return { note: i, label: GRADE_LABELS[i - 1] }; }
+  return { note: 5, label: GRADE_LABELS[4] };
+}
+function renderScore() {
+  var box = document.getElementById('score-display');
+  var sc = totalScore();
+  if (!sc.possible) { box.style.display = 'none'; return; }
+  var grade = lookupGrade(sc.earned, sc.possible);
+  box.style.display = 'block';
+  box.innerHTML = '<div class="card" style="text-align:center;background:var(--gold-lt);border:1.5px solid var(--gold)">'
+    + '<div style="font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--blue);font-weight:700;margin-bottom:.3rem">Your score (auto-graded sections)</div>'
+    + '<div style="font-size:1.5rem;font-weight:800;color:var(--blue)">' + sc.earned + ' / ' + sc.possible + ' points</div>'
+    + (grade ? '<div style="font-size:1rem;color:var(--blue);margin-top:.2rem">Note ' + grade.note + ' (' + grade.label + ')</div>' : '')
+    + '<div style="font-size:.78rem;color:var(--muted);margin-top:.4rem">This score is also sent to your teacher. Open-ended writing answers are graded by your teacher separately.</div>'
+    + '</div>';
+}
+function submitToSheet() {
+  buildSummary();
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true; btn.textContent = 'Sending...';
+  var payload = buildPayload();
+  if (isTestMode()) {
+    console.log('TEST MODE payload:', payload);
+    setTimeout(function() { btn.style.display = 'none'; document.getElementById('submit-success').style.display = 'block'; document.getElementById('submit-fallback').style.display = 'block'; }, 600);
+    return;
+  }
+  fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: 'payload=' + encodeURIComponent(JSON.stringify(payload)) })
+    .then(function() { btn.style.display = 'none'; showToast('✅ Submitted to teacher!'); document.getElementById('submit-success').style.display = 'block'; document.getElementById('submit-fallback').style.display = 'block'; })
+    .catch(function() { btn.disabled = false; btn.textContent = 'Submit to Teacher'; document.getElementById('submit-fallback').style.display = 'block'; });
+}
+function submitByEmail() {
+  var a = document.createElement('a');
+  a.href = 'mailto:' + TEACHER_EMAIL + '?subject=' + encodeURIComponent(UNIT + ' - ' + state.name + ' - ' + state.cls) + '&body=' + encodeURIComponent(buildEmailBody());
+  a.style.display = 'none'; document.body.appendChild(a); a.click();
+  setTimeout(function() { document.body.removeChild(a); }, 100);
+}
+function copyAnswers() {
+  navigator.clipboard.writeText(buildEmailBody())
+    .then(function() { alert('Answers copied! Paste them into an email to your teacher.'); })
+    .catch(function() { prompt('Copy this text:', buildEmailBody()); });
+}
+document.addEventListener('paste', function(e) {
+  var t = e.target;
+  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
+    e.preventDefault();
+    var msg = document.createElement('div');
+    msg.textContent = '✏️ Pasting is not allowed';
+    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    document.body.appendChild(msg);
+    setTimeout(function() { msg.style.opacity = '0'; setTimeout(function() { msg.remove(); }, 400); }, 2000);
+  }
+});
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  var msg = document.createElement('div');
+  msg.textContent = '🚫 Copying is not allowed';
+  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+  document.body.appendChild(msg);
+  setTimeout(function() { msg.style.opacity = '0'; setTimeout(function() { msg.remove(); }, 400); }, 2000);
+});
+</script>
+<script>
+/* ============================================================
+   CONFIG
+============================================================ */
+var UNIT          = '8g-american-british-english';
+var TOTAL_STEPS   = 5;
+var SHEET_URL     = 'https://hook.eu1.make.com/1gx46wea33yguetah95oy4j8asbyafqm';
+var TEACHER_EMAIL = 'englishonlinetraining@pm.me';
+
+/* ============================================================
+   STATE
+============================================================ */
+var state = {
+  name:   '',
+  cls:    '',
+  exA:    {},
+  exB:    {},
+  exC:    {},
+  exD:    {},
+  scores: {}
+};
+var maxStepReached = 0;
+
+/* ============================================================
+   VALIDATION
+============================================================ */
+function validateStep(n) {
+  switch (n) {
+    case 1:
+      return g('exA-g1') && g('exA-g2') && g('exA-g3') && g('exA-g4') && g('exA-g5')
+          && g('exA-g6') && g('exA-g7') && g('exA-g8') && g('exA-g9') && g('exA-g10');
+    case 2:
+      return g('exB-g1') && g('exB-g2') && g('exB-g3') && g('exB-g4')
+          && g('exB-g5') && g('exB-g6') && g('exB-g7') && g('exB-g8');
+    case 3:
+      return val('exC-q1') && val('exC-q2') && val('exC-q3') && val('exC-q4');
+    case 4:
+      return g('exD-g1') && g('exD-g2') && g('exD-g3') && g('exD-g4') && g('exD-g5') && g('exD-g6');
+    default: return true;
+  }
+}
+
+/* ============================================================
+   SAVE / RESTORE
+============================================================ */
+function saveStep(n) {
+  switch (n) {
+    case 1: ['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10'].forEach(function(k) { state.exA[k] = g('exA-' + k); }); break;
+    case 2: ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k) { state.exB[k] = g('exB-' + k); }); break;
+    case 3: state.exC.q1 = g('exC-q1'); state.exC.q2 = g('exC-q2'); state.exC.q3 = g('exC-q3'); state.exC.q4 = g('exC-q4'); break;
+    case 4: ['g1','g2','g3','g4','g5','g6'].forEach(function(k) { state.exD[k] = g('exD-' + k); }); break;
+  }
+}
+function restoreStep(n) {
+  switch (n) {
+    case 1: ['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10'].forEach(function(k) { set('exA-' + k, state.exA[k]); }); break;
+    case 2: ['g1','g2','g3','g4','g5','g6','g7','g8'].forEach(function(k) { set('exB-' + k, state.exB[k]); }); break;
+    case 3: set('exC-q1', state.exC.q1); set('exC-q2', state.exC.q2); set('exC-q3', state.exC.q3); set('exC-q4', state.exC.q4); break;
+    case 4: ['g1','g2','g3','g4','g5','g6'].forEach(function(k) { set('exD-' + k, state.exD[k]); }); break;
+  }
+}
+
+/* ============================================================
+   SUMMARY
+============================================================ */
+function buildSummary() {
+  saveStep(1); saveStep(2); saveStep(3); saveStep(4);
+  var rows = [
+    { ex: 'Ex A – Vocabulary', q: 'AmE → BrE (10 gaps)', a: ['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10'].map(function(k,i){ return (i+1)+'. '+(state.exA[k]||'(blank)'); }).join('\n') },
+    { ex: 'Ex B – Spelling', q: 'British spelling (8 gaps)', a: ['g1','g2','g3','g4','g5','g6','g7','g8'].map(function(k,i){ return (i+1)+'. '+(state.exB[k]||'(blank)'); }).join('\n') },
+    { ex: 'Ex C – Register', q: '1. Formal rewrite', a: state.exC.q1 },
+    { ex: 'Ex C – Register', q: '2. Formal rewrite', a: state.exC.q2 },
+    { ex: 'Ex C – Register', q: '3. Formal rewrite', a: state.exC.q3 },
+    { ex: 'Ex C – Register', q: '4. Formal rewrite', a: state.exC.q4 },
+    { ex: 'Ex D – Reading', q: 'Gap-fill (6 gaps)', a: ['g1','g2','g3','g4','g5','g6'].map(function(k,i){ return (i+1)+'. '+(state.exD[k]||'(blank)'); }).join('\n') }
+  ];
+  var html = '<div class="submit-summary"><div class="summary-row"><div class="summary-ex">Student</div><div class="summary-q">' + esc(state.name) + ' — ' + esc(state.cls) + '</div></div>';
+  rows.forEach(function(r) {
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div><div class="summary-q">' + esc(r.q) + '</div><div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+  renderScore();
+}
+
+/* ============================================================
+   EMAIL BODY
+============================================================ */
+function buildEmailBody() {
+  var sc = totalScore();
+  var grade = lookupGrade(sc.earned, sc.possible);
+  return 'Exercise: ' + UNIT
+    + '\nStudent: ' + state.name
+    + '\nClass:   ' + state.cls
+    + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
+    + '\nScore:   ' + (sc.possible ? (sc.earned + ' / ' + sc.possible + (grade ? ' — Note ' + grade.note + ' (' + grade.label + ')' : '')) : '(no auto-graded sections)')
+    + '\n\n--- Exercise A: Vocabulary ---'
+    + '\n' + ['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10'].map(function(k,i){ return (i+1)+'. '+(state.exA[k]||'(blank)'); }).join('\n')
+    + '\n\n--- Exercise B: Spelling ---'
+    + '\n' + ['g1','g2','g3','g4','g5','g6','g7','g8'].map(function(k,i){ return (i+1)+'. '+(state.exB[k]||'(blank)'); }).join('\n')
+    + '\n\n--- Exercise C: Register (Informal → Formal) ---'
+    + '\n1. ' + (state.exC.q1 || '(none)')
+    + '\n2. ' + (state.exC.q2 || '(none)')
+    + '\n3. ' + (state.exC.q3 || '(none)')
+    + '\n4. ' + (state.exC.q4 || '(none)')
+    + '\n\n--- Exercise D: Reading ---'
+    + '\n' + ['g1','g2','g3','g4','g5','g6'].map(function(k,i){ return (i+1)+'. '+(state.exD[k]||'(blank)'); }).join('\n');
+}
+
+/* ============================================================
+   PAYLOAD
+============================================================ */
+function buildPayload() {
+  var sc = totalScore();
+  var grade = lookupGrade(sc.earned, sc.possible);
+  return {
+    name: state.name, cls: state.cls, unit: UNIT,
+    exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD,
+    score: sc.possible ? (sc.earned + ' / ' + sc.possible) : '(no auto-graded sections)',
+    grade: grade ? ('Note ' + grade.note + ' (' + grade.label + ')') : ''
+  };
+}
+
+/* ============================================================
+   CHECK ANSWERS
+============================================================ */
+function checkExA() {
+  checkDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10'], 'exA-',
+    { g1:'flat', g2:'lift', g3:'pavement', g4:'biscuit', g5:'boot', g6:'chips', g7:'petrol', g8:'holiday', g9:'sweets', g10:'mobile phone' },
+    'step1-fb', 'exA');
+}
+function checkExB() {
+  checkDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8'], 'exB-',
+    { g1:'colour', g2:'centre', g3:'organise', g4:'neighbour', g5:'programme', g6:'realise', g7:'apologise', g8:'flavour' },
+    'step2-fb', 'exB');
+}
+function checkExD() {
+  checkDropdowns(['g1','g2','g3','g4','g5','g6'], 'exD-',
+    { g1:'sidewalk', g2:'vacation', g3:'colour', g4:'center', g5:'contractions', g6:'phrasal verbs' },
+    'step4-fb', 'exD');
+}
+
+/* ============================================================
+   INIT
+============================================================ */
+document.addEventListener('DOMContentLoaded', function() {
+  showStep(0);
+});
+</script>
+
+</body>
+</html>
