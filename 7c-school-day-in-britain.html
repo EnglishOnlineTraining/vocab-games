@@ -713,7 +713,7 @@ function renderScore() {
     + '<div style="font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--blue);font-weight:700;margin-bottom:.3rem">Your score (auto-graded sections)</div>'
     + '<div style="font-size:1.5rem;font-weight:800;color:var(--blue)">' + sc.earned + ' / ' + sc.possible + ' points</div>'
     + (grade ? '<div style="font-size:1rem;color:var(--blue);margin-top:.2rem">Note ' + grade.note + ' (' + grade.label + ')</div>' : '')
-    + '<div style="font-size:.78rem;color:var(--muted);margin-top:.4rem">This score is also sent to your teacher. Open-ended writing answers are graded by your teacher separately.</div>'
+    + '<div style="font-size:.78rem;color:var(--muted);margin-top:.4rem">Scores count the first answer you checked for each gap — changing an answer later does not change the score. This score is also sent to your teacher. Open-ended writing answers are graded by your teacher separately.</div>'
     + '</div>';
 }
 
@@ -745,31 +745,44 @@ function buildEmailBody() {
    CHECK ANSWERS
 ============================================================ */
 function checkDropdowns(ids, prefix, answers, fbId, scoreKey) {
-  var correct = 0, wrong = 0, empty = 0;
+  var correct = 0, wrong = 0, empty = 0, firstTry = null;
+  if (scoreKey) {
+    if (!state.firstTry) state.firstTry = {};
+    firstTry = state.firstTry[scoreKey] = state.firstTry[scoreKey] || {};
+  }
   ids.forEach(function(k) {
     var sel = document.getElementById(prefix + k);
     if (!sel) return;
     sel.className = sel.className.replace(/\s*(gap-correct|gap-wrong)/g, '');
     if (!sel.value) { empty++; return; }
-    if (sel.value === answers[k]) { sel.className += ' gap-correct'; correct++; }
-    else                          { sel.className += ' gap-wrong';   wrong++;   }
+    var ok = sel.value === answers[k];
+    if (ok) { sel.className += ' gap-correct'; correct++; }
+    else    { sel.className += ' gap-wrong';   wrong++;   }
+    if (firstTry && !(k in firstTry)) firstTry[k] = ok;
   });
+  var total = ids.length, scored = correct;
+  if (firstTry) {
+    scored = 0;
+    Object.keys(firstTry).forEach(function(k) { if (firstTry[k]) scored++; });
+    state.scores[scoreKey] = { correct: scored, total: total };
+  }
+  var scoreNote = (scoreKey && scored !== correct)
+    ? ' Your recorded score counts your first answers: ' + scored + ' / ' + total + '.'
+    : '';
   var fb = document.getElementById(fbId);
   fb.style.display = 'block';
-  var total = ids.length;
   if (empty === total) {
     fb.className = 'feedback err show';
     fb.textContent = 'Please answer the gaps first.';
   } else if (wrong === 0 && empty === 0) {
     fb.className = 'feedback ok show';
-    fb.textContent = '✓ All ' + correct + ' correct! Well done.';
+    fb.textContent = '\u2713 All ' + correct + ' correct! Well done.' + scoreNote;
   } else {
     fb.className = 'feedback warn show';
     fb.textContent = correct + ' / ' + total + ' correct'
-      + (wrong  ? ' — check the red gaps' : '')
-      + (empty  ? ' (' + empty + ' still blank)' : '') + '.';
+      + (wrong ? ' \u2014 check the red gaps' : '')
+      + (empty ? ' (' + empty + ' still blank)' : '') + '.' + scoreNote;
   }
-  if (scoreKey) state.scores[scoreKey] = { correct: correct, total: total };
 }
 
 function checkExA() {

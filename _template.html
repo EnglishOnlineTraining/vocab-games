@@ -15,7 +15,10 @@
        buildEmailBody() and buildPayload() to match your step data
     5. For every dropdown-gap check function, pass a scoreKey to
        checkDropdowns() (e.g. 'exA') — the score + Note are then
-       calculated and shown to the student automatically
+       calculated and shown to the student automatically.
+       Scoring counts each gap's FIRST checked answer only — students
+       can re-check and fix answers to learn, but the recorded score
+       cannot be improved by changing answers after a check.
     6. Set SHEET_URL to the correct year's Make webhook or Apps Script URL
        (see CLAUDE.md) — the universal handler auto-creates a tab/row
     7. Step navigation and copy/paste blocking are in exercise.js — nothing to wire up
