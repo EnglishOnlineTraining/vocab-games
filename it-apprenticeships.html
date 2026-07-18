@@ -43,10 +43,6 @@
         <label class="form-label" for="inp-name">Your name</label>
         <input class="form-input" type="text" id="inp-name" placeholder="First and last name" autocomplete="name">
       </div>
-      <div class="form-group">
-        <label class="form-label" for="inp-class">Your course / group</label>
-        <input class="form-input" type="text" id="inp-class" placeholder="e.g. FI-23" autocomplete="off">
-      </div>
       <div id="welcome-error" class="feedback err"></div>
       <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises &rarr;</button>
     </div>
@@ -376,9 +372,18 @@
     </div>
     <div id="score-display" style="display:none"></div>
     <div id="summary-container"></div>
+    <div class="card">
+      <div class="card-title">Optional: get feedback</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-email">Your email address</label>
+        <input class="form-input" type="email" id="inp-email" placeholder="you@example.com" autocomplete="email">
+        <p style="font-size:.8rem;color:var(--muted);margin-top:.35rem">Leave this empty if you don't want feedback. If you enter your email, your teacher will reply with feedback on your answers.</p>
+      </div>
+      <div id="email-error" class="feedback err"></div>
+    </div>
     <div class="card" style="text-align:center">
       <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
-      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitWithEmailCheck()">🚀 Submit to Teacher</button>
       <div id="submit-success" style="display:none;margin-top:1.25rem">
         <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
         <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
@@ -460,7 +465,7 @@ function buildSummary() {
   ];
   var html = '<div class="submit-summary">'
     + '<div class="summary-row"><div class="summary-ex">Student</div>'
-    + '<div class="summary-q">' + esc(state.name) + ' &mdash; ' + esc(state.cls) + '</div></div>';
+    + '<div class="summary-q">' + esc(state.name) + '</div></div>';
   secs.forEach(function(s) {
     Object.keys(s[1]).forEach(function(k) {
       html += '<div class="summary-row"><div class="summary-ex">' + s[0] + '</div>'
@@ -478,7 +483,7 @@ function buildEmailBody() {
   var grade = lookupGrade(sc.earned, sc.possible);
   return 'Exercise: ' + UNIT
     + '\nStudent: ' + state.name
-    + '\nCourse:  ' + state.cls
+    + '\nFeedback email: ' + (g('inp-email') || '(none requested)')
     + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
     + '\nScore:   ' + (sc.possible ? (sc.earned + ' / ' + sc.possible + (grade ? ' \u2014 Note ' + grade.note + ' (' + grade.label + ')' : '')) : '(not checked)')
     + '\n\n--- Exercise A ---\n' + eolFlat(answersOf(FIELDS.A))
@@ -491,6 +496,7 @@ function buildPayload() {
   var grade = lookupGrade(sc.earned, sc.possible);
   return {
     name: state.name, cls: state.cls, unit: UNIT,
+    email: g('inp-email'),
     exA: answersOf(FIELDS.A), exB: answersOf(FIELDS.B), exC: answersOf(FIELDS.C, ['c-free']),
     score: sc.possible ? (sc.earned + ' / ' + sc.possible) : '(not checked)',
     grade: grade ? ('Note ' + grade.note + ' (' + grade.label + ')') : ''
@@ -501,6 +507,28 @@ function buildPayload() {
 function checkExA() { checkDropdowns(FIELDS.A, '', ANSWERS.A, 'step1-fb', 'exA'); }
 function checkExB() { checkDropdowns(FIELDS.B, '', ANSWERS.B, 'step2-fb', 'exB'); }
 function checkExC() { checkDropdowns(FIELDS.C, '', ANSWERS.C, 'step3-fb', 'exC'); }
+
+/* ── it-series overrides: name-only welcome, optional feedback email ── */
+function startExercises() {
+  var name = g('inp-name');
+  var err = document.getElementById('welcome-error');
+  if (!name) { err.textContent = 'Please enter your name.'; err.classList.add('show'); return; }
+  err.classList.remove('show');
+  state.name = name;
+  showStep(1);
+}
+
+function submitWithEmailCheck() {
+  var em = g('inp-email');
+  var err = document.getElementById('email-error');
+  if (em && em.indexOf('@') === -1) {
+    err.textContent = 'Please enter a valid email address, or leave the field empty.';
+    err.classList.add('show');
+    return;
+  }
+  err.classList.remove('show');
+  submitToSheet();
+}
 
 document.addEventListener('DOMContentLoaded', function() { showStep(0); });
 </script>
