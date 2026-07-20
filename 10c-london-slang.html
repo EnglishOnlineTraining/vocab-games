@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>London Slang & Language Change | englishonline.training</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">&larr; Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Exercise 1 of 4</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+
+<nav class="step-nav" id="step-nav"></nav>
+
+<!-- ====================================================
+     STEP 0 – WELCOME
+===================================================== -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">🇬🇧</div>
+      <h1 class="welcome-title">London Slang & Language Change</h1>
+      <p class="welcome-sub">Explore how English evolves through regional language and street culture.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">📖</div><strong>Ex A – Reading</strong>Understanding attitudes toward London slang</div>
+      <div class="ov-card locked"><div class="ov-icon">📝</div><strong>Ex B – Vocabulary</strong>Slang terms and their meanings</div>
+      <div class="ov-card locked"><div class="ov-icon">✍️</div><strong>Ex C – Discussion</strong>Your views on language and culture</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. 10c" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises &rarr;</button>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     STEP 1 – EXERCISE A: READING
+===================================================== -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">Reading: London Slang in the News</h2>
+    <p class="ex-subtitle">Read the article and answer the comprehension questions.</p>
+
+    <div class="card">
+      <div class="card-title">Is London Slang Dead?</div>
+      <div class="card-text">
+        <p>For centuries, London has been the birthplace of bold new language. From Cockney rhyming slang to modern "street speak," the capital's young people have always invented creative ways to talk. But is this tradition dying?</p>
+
+        <p>A recent study suggests that traditional Cockney slang is less common among London teenagers today. Words like "apples and pears" (stairs) and "dog and bone" (phone) were once understood by everyone in East London. Now, even young Londoners don't always know them. Meanwhile, new slang emerges online — "safe," "fam," "wet" — borrowed from music, social media, and youth culture across the UK and beyond.</p>
+
+        <p>Some educators worry that slang excludes people and complicates learning. Others argue that slang is how young people express identity and belong to a group. They say that dismissing slang as "bad English" ignores how language naturally evolves. After all, today's slang becomes tomorrow's standard English.</p>
+
+        <p>"Young people aren't abandoning London culture," says linguist Dr. James Chen. "They're redefining it. Slang always dies and is reborn. That's how languages stay alive."</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Comprehension Questions</div>
+      <div class="form-group">
+        <label class="form-label">What is the article mainly about?</label>
+        <div class="radio-group">
+          <label class="radio-label"><input type="radio" name="exA-q1" value="a"> Traditional Cockney rhyming slang and why it's better than modern slang</label>
+          <label class="radio-label"><input type="radio" name="exA-q1" value="b"> How London slang is changing and what that means for language and identity</label>
+          <label class="radio-label"><input type="radio" name="exA-q1" value="c"> Why teenagers should stop using slang in school</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">According to the study mentioned, what is happening to traditional Cockney slang?</label>
+        <div class="radio-group">
+          <label class="radio-label"><input type="radio" name="exA-q2" value="a"> It is becoming more popular among teenagers</label>
+          <label class="radio-label"><input type="radio" name="exA-q2" value="b"> It is less commonly understood by young Londoners today</label>
+          <label class="radio-label"><input type="radio" name="exA-q2" value="c"> It only exists in East London</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Which view do linguists like Dr. Chen support?</label>
+        <div class="radio-group">
+          <label class="radio-label"><input type="radio" name="exA-q3" value="a"> Slang should be forbidden because it is confusing</label>
+          <label class="radio-label"><input type="radio" name="exA-q3" value="b"> Slang is how young people express identity and how languages naturally evolve</label>
+          <label class="radio-label"><input type="radio" name="exA-q3" value="c"> Old Cockney slang is better than modern slang from social media</label>
+        </div>
+      </div>
+
+      <div id="step1-fb" class="feedback" style="margin-top:1.5rem"></div>
+      <button class="btn btn-gold btn-block" onclick="checkExA()" style="margin-top:1.5rem">Check Answers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     STEP 2 – EXERCISE B: VOCABULARY
+===================================================== -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B</span>
+    <h2 class="ex-title">Vocabulary: Slang Terms & Definitions</h2>
+    <p class="ex-subtitle">Match each slang term with the correct definition.</p>
+
+    <div class="card">
+      <div class="card-title">Match the terms to their meanings</div>
+      <div style="margin-bottom:1.5rem">
+        <p style="color:var(--muted);font-size:.9rem">Below are some real examples of London and UK youth slang. Read each definition and choose the correct term from the dropdown.</p>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">1. A close friend; someone you trust</label>
+        <select class="form-input" id="exB-g1">
+          <option value="">— Choose —</option>
+          <option value="fam">fam</option>
+          <option value="safe">safe</option>
+          <option value="wet">wet</option>
+          <option value="peng">peng</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">2. Something or someone that is attractive or excellent</label>
+        <select class="form-input" id="exB-g2">
+          <option value="">— Choose —</option>
+          <option value="fam">fam</option>
+          <option value="safe">safe</option>
+          <option value="wet">wet</option>
+          <option value="peng">peng</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">3. To acknowledge someone; to show respect or agreement</label>
+        <select class="form-input" id="exB-g3">
+          <option value="">— Choose —</option>
+          <option value="fam">fam</option>
+          <option value="safe">safe</option>
+          <option value="wet">wet</option>
+          <option value="peng">peng</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">4. Weak, pathetic, or not cool</label>
+        <select class="form-input" id="exB-g4">
+          <option value="">— Choose —</option>
+          <option value="fam">fam</option>
+          <option value="safe">safe</option>
+          <option value="wet">wet</option>
+          <option value="peng">peng</option>
+        </select>
+      </div>
+
+      <div id="step2-fb" class="feedback" style="margin-top:1.5rem"></div>
+      <button class="btn btn-gold btn-block" onclick="checkExB()" style="margin-top:1.5rem">Check Answers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     STEP 3 – EXERCISE C: DISCUSSION
+===================================================== -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise C</span>
+    <h2 class="ex-title">Discussion: Language, Culture & Change</h2>
+    <p class="ex-subtitle">Share your views on how language evolves and what it means for society.</p>
+
+    <div class="card">
+      <div class="card-title">Prompt</div>
+      <p style="margin-bottom:1rem">The article suggests that young people are redefining London culture through new slang, rather than abandoning it. Do you think this is a positive thing for English language and culture? Why or why not?</p>
+      <p style="color:var(--muted);font-size:.9rem">Write 100–150 words. Consider:</p>
+      <ul style="color:var(--muted);font-size:.9rem;padding-left:1.5rem">
+        <li>How does slang help young people express identity?</li>
+        <li>Are there risks when groups use language that others don't understand?</li>
+        <li>Is language change natural and healthy, or a problem to solve?</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Your Response</div>
+      <div class="form-group">
+        <textarea class="form-input" id="exC-response" placeholder="Write your response here..." rows="8" style="font-family:inherit"></textarea>
+      </div>
+
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:1rem">
+        <span id="word-count">0</span> / 150 words
+      </p>
+
+      <div id="step3-fb" class="feedback" style="margin-top:1rem"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     STEP 4 – SUBMIT
+===================================================== -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Summary</span>
+    <h2 class="ex-title">Review & Submit</h2>
+    <p class="ex-subtitle">Check your answers before submitting.</p>
+
+    <div class="card">
+      <div id="score-container" style="margin-bottom:1.5rem"></div>
+      <div id="summary-container"></div>
+    </div>
+
+    <div class="card" style="margin-top:1rem">
+      <button class="btn btn-gold btn-block" onclick="submitAnswers()" style="margin-bottom:.75rem">Submit Answers</button>
+      <button class="btn btn-outline btn-block" onclick="showStep(3)">← Back to Exercise C</button>
+
+      <div id="submit-status" class="feedback" style="margin-top:1.5rem;display:none"></div>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission did not work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+      <textarea id="copy-block" class="copy-block" style="display:none" readonly></textarea>
+      <div id="copy-success" class="feedback ok" style="margin-top:1rem"></div>
+    </div>
+  </div>
+</section>
+
+<script src="exercise.js"></script>
+<script>
+var UNIT          = '10c-london-slang';
+var TOTAL_STEPS   = 5;
+var SHEET_URL     = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj';
+var TEACHER_EMAIL = 'englishonlinetraining@pm.me';
+
+var state = {
+  name:   '',
+  cls:    '',
+  exA:    {},
+  exB:    {},
+  exC:    {},
+  scores: {}
+};
+var maxStepReached = 0;
+
+function validateStep(n) {
+  switch (n) {
+    case 1:
+      var q1 = document.querySelector('input[name="exA-q1"]:checked');
+      var q2 = document.querySelector('input[name="exA-q2"]:checked');
+      var q3 = document.querySelector('input[name="exA-q3"]:checked');
+      if (!q1 || !q2 || !q3) {
+        showMsg('Please answer all three questions.', 'err');
+        return false;
+      }
+      return true;
+    case 2:
+      if (!val('exB-g1') || !val('exB-g2') || !val('exB-g3') || !val('exB-g4')) {
+        showMsg('Please complete all four vocabulary matches.', 'err');
+        return false;
+      }
+      return true;
+    case 3:
+      var txt = val('exC-response').trim();
+      if (!txt || txt.split(/\s+/).length < 50) {
+        showMsg('Please write at least 50 words in your response.', 'err');
+        return false;
+      }
+      return true;
+    default:
+      return true;
+  }
+}
+
+function saveStep(n) {
+  switch (n) {
+    case 1:
+      var q1 = document.querySelector('input[name="exA-q1"]:checked');
+      var q2 = document.querySelector('input[name="exA-q2"]:checked');
+      var q3 = document.querySelector('input[name="exA-q3"]:checked');
+      state.exA.q1 = q1 ? q1.value : '';
+      state.exA.q2 = q2 ? q2.value : '';
+      state.exA.q3 = q3 ? q3.value : '';
+      break;
+    case 2:
+      state.exB.g1 = val('exB-g1');
+      state.exB.g2 = val('exB-g2');
+      state.exB.g3 = val('exB-g3');
+      state.exB.g4 = val('exB-g4');
+      break;
+    case 3:
+      state.exC.response = val('exC-response');
+      break;
+  }
+}
+
+function restoreStep(n) {
+  switch (n) {
+    case 1:
+      if (state.exA.q1) document.querySelector('input[name="exA-q1"][value="' + state.exA.q1 + '"]').checked = true;
+      if (state.exA.q2) document.querySelector('input[name="exA-q2"][value="' + state.exA.q2 + '"]').checked = true;
+      if (state.exA.q3) document.querySelector('input[name="exA-q3"][value="' + state.exA.q3 + '"]').checked = true;
+      break;
+    case 2:
+      if (state.exB.g1) set('exB-g1', state.exB.g1);
+      if (state.exB.g2) set('exB-g2', state.exB.g2);
+      if (state.exB.g3) set('exB-g3', state.exB.g3);
+      if (state.exB.g4) set('exB-g4', state.exB.g4);
+      break;
+    case 3:
+      if (state.exC.response) set('exC-response', state.exC.response);
+      updateWordCount();
+      break;
+  }
+}
+
+function buildSummary() {
+  var answerMap = { a: 'A', b: 'B', c: 'C' };
+  var rows = [
+    { ex: 'Exercise A', q: 'Question 1', a: 'Answer: ' + answerMap[state.exA.q1] },
+    { ex: 'Exercise A', q: 'Question 2', a: 'Answer: ' + answerMap[state.exA.q2] },
+    { ex: 'Exercise A', q: 'Question 3', a: 'Answer: ' + answerMap[state.exA.q3] },
+    { ex: 'Exercise B', q: 'Vocab G1', a: state.exB.g1 },
+    { ex: 'Exercise B', q: 'Vocab G2', a: state.exB.g2 },
+    { ex: 'Exercise B', q: 'Vocab G3', a: state.exB.g3 },
+    { ex: 'Exercise B', q: 'Vocab G4', a: state.exB.g4 },
+    { ex: 'Exercise C', q: 'Discussion Response', a: (state.exC.response || '(no response)').substring(0, 100) + '...' }
+  ];
+  var html = '<div class="submit-summary">'
+    + '<div class="summary-row"><div class="summary-ex">Student</div>'
+    + '<div class="summary-q">' + esc(state.name) + ' — ' + esc(state.cls) + '</div></div>';
+  rows.forEach(function(r) {
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div>'
+      + '<div class="summary-q">' + esc(r.q) + '</div>'
+      + '<div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+  renderScore();
+}
+
+function buildEmailBody() {
+  var sc = totalScore();
+  var grade = lookupGrade(sc.earned, sc.possible);
+  return 'Exercise: ' + UNIT
+    + '\nStudent: ' + state.name
+    + '\nClass:   ' + state.cls
+    + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
+    + '\nScore:   ' + (sc.possible ? (sc.earned + ' / ' + sc.possible + (grade ? ' — Note ' + grade.note + ' (' + grade.label + ')' : '')) : '(no auto-graded sections)')
+    + '\n\n--- Exercise A: Reading ---'
+    + '\nQ1: ' + (state.exA.q1 || '(none)')
+    + '\nQ2: ' + (state.exA.q2 || '(none)')
+    + '\nQ3: ' + (state.exA.q3 || '(none)')
+    + '\n\n--- Exercise B: Vocabulary ---'
+    + '\nG1: ' + (state.exB.g1 || '(none)')
+    + '\nG2: ' + (state.exB.g2 || '(none)')
+    + '\nG3: ' + (state.exB.g3 || '(none)')
+    + '\nG4: ' + (state.exB.g4 || '(none)')
+    + '\n\n--- Exercise C: Discussion ---'
+    + '\n' + (state.exC.response || '(no response)');
+}
+
+function buildPayload() {
+  var sc = totalScore();
+  var grade = lookupGrade(sc.earned, sc.possible);
+  return {
+    name: state.name, cls: state.cls, unit: UNIT,
+    exA: state.exA,
+    exB: state.exB,
+    exC: state.exC,
+    score: sc.possible ? (sc.earned + ' / ' + sc.possible) : '(no auto-graded sections)',
+    grade: grade ? ('Note ' + grade.note + ' (' + grade.label + ')') : ''
+  };
+}
+
+function checkExA() {
+  var answers = {
+    q1: 'b',
+    q2: 'b',
+    q3: 'b'
+  };
+  var ids = ['q1', 'q2', 'q3'];
+  var fb = '';
+  var correct = 0;
+  ids.forEach(function(id) {
+    var selected = document.querySelector('input[name="exA-' + id + '"]:checked');
+    var val = selected ? selected.value : '';
+    if (val === answers[id]) {
+      correct++;
+      fb += '<div style="color:var(--green);margin:.5rem 0">✓ Q' + id[1] + ' correct</div>';
+    } else {
+      fb += '<div style="color:var(--red);margin:.5rem 0">✗ Q' + id[1] + ' — expected "' + answers[id] + '", got "' + val + '"</div>';
+    }
+  });
+  state.scores.exA = { correct: correct, total: 3 };
+  document.getElementById('step1-fb').innerHTML = '<strong>' + correct + '/3 correct</strong><br>' + fb;
+  document.getElementById('step1-fb').className = 'feedback ' + (correct === 3 ? 'ok' : 'warn');
+}
+
+function checkExB() {
+  var answers = {
+    g1: 'fam',
+    g2: 'peng',
+    g3: 'safe',
+    g4: 'wet'
+  };
+  var ids = ['g1', 'g2', 'g3', 'g4'];
+  var fb = '';
+  var correct = 0;
+  ids.forEach(function(id) {
+    var val = document.getElementById('exB-' + id).value;
+    if (val === answers[id]) {
+      correct++;
+      fb += '<div style="color:var(--green);margin:.5rem 0">✓ Item ' + id[1] + ' correct</div>';
+    } else {
+      fb += '<div style="color:var(--red);margin:.5rem 0">✗ Item ' + id[1] + ' — expected "' + answers[id] + '", got "' + val + '"</div>';
+    }
+  });
+  state.scores.exB = { correct: correct, total: 4 };
+  document.getElementById('step2-fb').innerHTML = '<strong>' + correct + '/4 correct</strong><br>' + fb;
+  document.getElementById('step2-fb').className = 'feedback ' + (correct === 4 ? 'ok' : 'warn');
+}
+
+function updateWordCount() {
+  var txt = val('exC-response').trim();
+  var count = txt ? txt.split(/\s+/).length : 0;
+  document.getElementById('word-count').textContent = count;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('exC-response').addEventListener('input', updateWordCount);
+  showStep(0);
+});
+</script>
+
+<!-- Standard copy/paste blocking (already in exercise.js) -->
+<script>
+document.addEventListener('paste', function(e) {
+  var t = e.target;
+  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
+    e.preventDefault();
+    var msg = document.createElement('div');
+    msg.textContent = '✏️ Pasting is not allowed';
+    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    document.body.appendChild(msg);
+    setTimeout(function() { msg.style.opacity='0'; setTimeout(function(){ msg.remove(); },400); },2000);
+  }
+});
+
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  var msg = document.createElement('div');
+  msg.textContent = '🚫 Copying is not allowed';
+  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+  document.body.appendChild(msg);
+  setTimeout(function() { msg.style.opacity='0'; setTimeout(function(){ msg.remove(); },400); },2000);
+});
+</script>
+
+</body>
+</html>
