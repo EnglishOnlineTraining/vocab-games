@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is Management? | englishonline.training</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); overflow: hidden; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; }
+        .header-left h1 { font-size: 24px; margin-bottom: 5px; }
+        .progress-bar { width: 100%; height: 6px; background: rgba(255, 255, 255, 0.3); border-radius: 3px; overflow: hidden; margin-top: 10px; }
+        .progress-fill { height: 100%; background: #4ade80; width: 0%; transition: width 0.3s ease; }
+        .content { padding: 40px; }
+        section { display: none; }
+        section.active { display: block; }
+        .welcome-screen { text-align: center; }
+        .emoji { font-size: 64px; margin: 20px 0; }
+        .welcome-screen h2 { font-size: 32px; margin: 20px 0 10px; color: #333; }
+        .welcome-screen .subtitle { font-size: 18px; color: #666; margin-bottom: 30px; }
+        .overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0; }
+        .overview-card { padding: 20px; border: 2px solid #e5e7eb; border-radius: 8px; background: #f9fafb; }
+        .overview-card.locked { opacity: 0.5; }
+        .overview-card .badge { display: inline-block; background: #667eea; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; margin-bottom: 10px; }
+        .overview-card h3 { font-size: 16px; margin: 10px 0; }
+        .overview-card p { font-size: 14px; color: #666; }
+        .exercise-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .badge { display: inline-block; background: #667eea; color: white; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        .card { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 25px; margin: 20px 0; }
+        .card-title { font-size: 18px; font-weight: bold; color: #333; margin-bottom: 15px; }
+        .reading-text { background: #faf5ff; border-left: 4px solid #a78bfa; padding: 20px; border-radius: 4px; line-height: 1.8; font-size: 16px; margin: 15px 0; }
+        .reading-text p { margin-bottom: 12px; }
+        .form-group { margin-bottom: 20px; }
+        .form-label { display: block; font-weight: 600; color: #333; margin-bottom: 8px; font-size: 15px; }
+        .form-input, .form-textarea, .form-select { width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 15px; font-family: inherit; }
+        .form-textarea { resize: vertical; min-height: 100px; }
+        .gap-select { padding: 8px 12px; margin: 0 5px; font-size: 15px; }
+        .word-bank { background: #fef3c7; border: 2px solid #fbbf24; padding: 15px; border-radius: 6px; margin-bottom: 20px; font-weight: 600; }
+        .word-bank span { display: inline-block; background: white; padding: 6px 12px; margin: 5px; border-radius: 4px; border: 1px solid #fbbf24; font-size: 14px; }
+        .summary-section { background: #f3f4f6; padding: 20px; border-radius: 6px; margin: 20px 0; }
+        .summary-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .summary-table th, .summary-table td { padding: 12px; text-align: left; border-bottom: 1px solid #d1d5db; }
+        .summary-table th { background: #e5e7eb; font-weight: bold; }
+        .footer { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background: #f9fafb; border-top: 1px solid #e5e7eb; gap: 15px; }
+        .button { padding: 12px 24px; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; }
+        .button-primary { background: #667eea; color: white; }
+        .button-primary:disabled { background: #cbd5e1; cursor: not-allowed; }
+        .button-secondary { background: #e5e7eb; color: #333; }
+        .error-message { background: #fee2e2; color: #991b1b; padding: 12px; border-radius: 6px; border-left: 4px solid #dc2626; }
+        @media (max-width: 768px) { .header { flex-direction: column; } .content { padding: 20px; } .overview-grid { grid-template-columns: 1fr; } .footer { flex-direction: column; } .button { width: 100%; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-left">
+                <h1>What is Management?</h1>
+                <div class="progress-bar"><div class="progress-fill"></div></div>
+            </div>
+            <div class="header-right"><div id="stepDisplay">Step 1 of 4</div></div>
+        </div>
+
+        <div class="content">
+            <section id="step-0" class="active welcome-screen">
+                <div class="emoji">👔</div>
+                <h2>What is Management?</h2>
+                <p class="subtitle">Learn the core functions and importance of management.</p>
+                <p>Level: <strong>B2</strong></p>
+                <p style="margin-top: 20px; color: #666;">This exercise contains 3 sections. Complete all sections and submit your answers.</p>
+                <div class="overview-grid">
+                    <div class="overview-card"><div class="badge">Exercise A</div><h3>Reading: Management Functions</h3><p>Understand the four core functions of management with comprehension questions.</p></div>
+                    <div class="overview-card locked"><div class="badge">Exercise B</div><h3>Vocabulary: Key Terms</h3><p>Practice management terminology through gap-fill sentences.</p></div>
+                    <div class="overview-card locked"><div class="badge">Exercise C</div><h3>Discussion: Application</h3><p>Explore why management is important and when it's needed.</p></div>
+                </div>
+            </section>
+
+            <section id="step-1">
+                <div class="exercise-header"><div class="badge">Exercise A</div><h2>Reading: Management Functions</h2></div>
+                <p>Read the text below and answer the comprehension questions.</p>
+                <div class="card">
+                    <div class="card-title">What is Management?</div>
+                    <div class="reading-text">
+                        <p>Management is the process of coordinating people and resources to achieve organizational goals. Managers carry out four main functions: planning, organizing, directing, and controlling.</p>
+                        <p>Planning involves setting objectives and deciding how to achieve them. Managers develop strategies and action plans for the future. Organizing means arranging people and resources in an efficient structure. Managers assign roles and responsibilities so everyone knows what they should do. Directing is about motivating and guiding employees to perform their work effectively. Managers communicate expectations and provide feedback. Controlling is the process of monitoring performance and making adjustments. Managers measure results against objectives and take corrective actions if needed.</p>
+                        <p>Effective management ensures that organizations can adapt to change, use resources wisely, and achieve their long-term vision.</p>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="exA-q1">What are the four main functions of management?</label>
+                        <select class="gap-select" id="exA-q1">
+                            <option value="">— Select an answer —</option>
+                            <option value="a">Planning, organizing, directing, and controlling</option>
+                            <option value="b">Hiring, training, monitoring, and evaluating</option>
+                            <option value="c">Setting budgets, delegating tasks, reviewing performance, and reporting</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="exA-q2">What is the purpose of the "directing" function?</label>
+                        <select class="gap-select" id="exA-q2">
+                            <option value="">— Select an answer —</option>
+                            <option value="a">To measure results against objectives</option>
+                            <option value="b">To motivate and guide employees to perform effectively</option>
+                            <option value="c">To arrange people and resources efficiently</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="exA-q3">Why is controlling important in management?</label>
+                        <select class="gap-select" id="exA-q3">
+                            <option value="">— Select an answer —</option>
+                            <option value="a">Because it helps managers make long-term plans</option>
+                            <option value="b">Because it allows managers to monitor performance and make adjustments</option>
+                            <option value="c">Because it ensures all employees have clear roles</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <section id="step-2">
+                <div class="exercise-header"><div class="badge">Exercise B</div><h2>Vocabulary: Key Management Terms</h2></div>
+                <p>Fill in the gaps using the words from the word bank. Each word is used only once.</p>
+                <div class="card">
+                    <div class="word-bank">
+                        <span>goals</span><span>management</span><span>resources</span><span>objectives</span>
+                        <span>motivation</span><span>performance</span><span>delegation</span><span>coordination</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="exB-q1">Setting clear _____ is the first step in effective planning.</label>
+                        <select class="gap-select" id="exB-q1">
+                            <option value="">— Select an answer —</option>
+                            <option value="a">objectives</option>
+                            <option value="b">motivation</option>
+                            <option value="c">delegation</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="exB-q2">Good _____ ensures that people and budgets work together effectively.</label>
+                        <select class="gap-select" id="exB-q2">
+                            <option value="">— Select an answer —</option>
+                            <option value="a">delegation</option>
+                            <option value="b">coordination</option>
+                            <option value="c">performance</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="exB-q3">Managers must allocate _____ wisely to maximize productivity.</label>
+                        <select class="gap-select" id="exB-q3">
+                            <option value="">— Select an answer —</option>
+                            <option value="a">resources</option>
+                            <option value="b">goals</option>
+                            <option value="c">management</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="exB-q4">Employee _____ is crucial for a productive workplace.</label>
+                        <select class="gap-select" id="exB-q4">
+                            <option value="">— Select an answer —</option>
+                            <option value="a">coordination</option>
+                            <option value="b">motivation</option>
+                            <option value="c">resources</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <section id="step-3">
+                <div class="exercise-header"><div class="badge">Exercise C</div><h2>Discussion: Why is Management Important?</h2></div>
+                <p>Answer the following questions in your own words. There are no wrong answers — think about your own experience or knowledge.</p>
+                <div class="card">
+                    <div class="form-group">
+                        <label class="form-label" for="exC-q1">Describe one situation at work or school where good management was important. What happened?</label>
+                        <textarea class="form-textarea" id="exC-q1" placeholder="Your answer here..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="exC-q2">In your opinion, which of the four management functions (planning, organizing, directing, controlling) is most important? Why?</label>
+                        <textarea class="form-textarea" id="exC-q2" placeholder="Your answer here..."></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <section id="step-4">
+                <div class="exercise-header"><h2>Review & Submit</h2></div>
+                <p>Please review your answers before submitting.</p>
+                <div class="summary-section"><h3>Your Answers</h3><div id="summaryContent"></div></div>
+                <div class="form-group">
+                    <label class="form-label" for="studentName">Your name (optional):</label>
+                    <input class="form-input" type="text" id="studentName" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="studentEmail">Your email (optional):</label>
+                    <input class="form-input" type="email" id="studentEmail" placeholder="your.email@example.com">
+                </div>
+                <div id="submitMessage"></div>
+            </section>
+        </div>
+
+        <div class="footer">
+            <button class="button button-secondary" id="prevBtn" onclick="changeStep(-1)">← Previous</button>
+            <div style="text-align: center; font-size: 14px;"><span id="stepNav">Step 1 of 4</span></div>
+            <button class="button button-primary" id="nextBtn" onclick="changeStep(1)">Next →</button>
+        </div>
+    </div>
+
+    <script>
+        const UNIT = 'business-what-is-management';
+        const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec';
+        const TOTAL_STEPS = 4;
+        const TEACHER_EMAIL = 'englishonlinetraining@pm.me';
+
+        let currentStep = 0;
+        let exerciseState = {
+            exA: { q1: '', q2: '', q3: '' },
+            exB: { q1: '', q2: '', q3: '', q4: '' },
+            exC: { q1: '', q2: '' },
+            studentName: '',
+            studentEmail: ''
+        };
+
+        document.addEventListener('DOMContentLoaded', function() { restoreStep(currentStep); showStep(currentStep); });
+
+        function changeStep(direction) {
+            if (!validateStep(currentStep)) { alert('Please complete all required fields in this section.'); return; }
+            saveStep(currentStep);
+            currentStep += direction;
+            if (currentStep < 0) currentStep = 0;
+            if (currentStep > TOTAL_STEPS) currentStep = TOTAL_STEPS;
+            restoreStep(currentStep);
+            showStep(currentStep);
+            window.scrollTo(0, 0);
+        }
+
+        function showStep(n) {
+            document.querySelectorAll('section').forEach(function(s) { s.classList.remove('active'); });
+            document.getElementById('step-' + n).classList.add('active');
+            document.querySelector('.progress-fill').style.width = (n / TOTAL_STEPS * 100) + '%';
+            var stepLabel = n >= TOTAL_STEPS ? 'Submit' : 'Step ' + (n + 1) + ' of ' + TOTAL_STEPS;
+            var headerDisplay = document.getElementById('stepDisplay');
+            var navDisplay = document.getElementById('stepNav');
+            if (headerDisplay) headerDisplay.textContent = stepLabel;
+            if (navDisplay) navDisplay.textContent = stepLabel;
+            var prevBtn = document.getElementById('prevBtn');
+            var nextBtn = document.getElementById('nextBtn');
+            prevBtn.disabled = n === 0;
+            nextBtn.textContent = n >= TOTAL_STEPS - 1 ? 'Submit' : 'Next →';
+            nextBtn.onclick = n >= TOTAL_STEPS - 1 ? function() { submit(); } : function() { changeStep(1); };
+        }
+
+        function validateStep(n) {
+            if (n === 0) return true;
+            if (n === 1) return exerciseState.exA.q1 && exerciseState.exA.q2 && exerciseState.exA.q3;
+            if (n === 2) return exerciseState.exB.q1 && exerciseState.exB.q2 && exerciseState.exB.q3 && exerciseState.exB.q4;
+            if (n === 3) return exerciseState.exC.q1.trim() && exerciseState.exC.q2.trim();
+            return true;
+        }
+
+        function saveStep(n) {
+            if (n === 1) {
+                exerciseState.exA.q1 = document.getElementById('exA-q1').value;
+                exerciseState.exA.q2 = document.getElementById('exA-q2').value;
+                exerciseState.exA.q3 = document.getElementById('exA-q3').value;
+            } else if (n === 2) {
+                exerciseState.exB.q1 = document.getElementById('exB-q1').value;
+                exerciseState.exB.q2 = document.getElementById('exB-q2').value;
+                exerciseState.exB.q3 = document.getElementById('exB-q3').value;
+                exerciseState.exB.q4 = document.getElementById('exB-q4').value;
+            } else if (n === 3) {
+                exerciseState.exC.q1 = document.getElementById('exC-q1').value;
+                exerciseState.exC.q2 = document.getElementById('exC-q2').value;
+            } else if (n === TOTAL_STEPS) {
+                exerciseState.studentName = document.getElementById('studentName').value;
+                exerciseState.studentEmail = document.getElementById('studentEmail').value;
+                buildSummary();
+            }
+        }
+
+        function restoreStep(n) {
+            if (n === 1) {
+                document.getElementById('exA-q1').value = exerciseState.exA.q1;
+                document.getElementById('exA-q2').value = exerciseState.exA.q2;
+                document.getElementById('exA-q3').value = exerciseState.exA.q3;
+            } else if (n === 2) {
+                document.getElementById('exB-q1').value = exerciseState.exB.q1;
+                document.getElementById('exB-q2').value = exerciseState.exB.q2;
+                document.getElementById('exB-q3').value = exerciseState.exB.q3;
+                document.getElementById('exB-q4').value = exerciseState.exB.q4;
+            } else if (n === 3) {
+                document.getElementById('exC-q1').value = exerciseState.exC.q1;
+                document.getElementById('exC-q2').value = exerciseState.exC.q2;
+            } else if (n === TOTAL_STEPS) {
+                document.getElementById('studentName').value = exerciseState.studentName;
+                document.getElementById('studentEmail').value = exerciseState.studentEmail;
+            }
+        }
+
+        function buildSummary() {
+            var html = '<table class="summary-table"><tr><th>Question</th><th>Your Answer</th></tr>';
+            html += '<tr><td>A1: Four management functions</td><td>' + exerciseState.exA.q1 + '</td></tr>';
+            html += '<tr><td>A2: Purpose of directing</td><td>' + exerciseState.exA.q2 + '</td></tr>';
+            html += '<tr><td>A3: Why controlling matters</td><td>' + exerciseState.exA.q3 + '</td></tr>';
+            html += '<tr><td>B1–B4: Vocabulary</td><td>Completed</td></tr>';
+            html += '<tr><td>C1: Management situation</td><td>' + exerciseState.exC.q1.substring(0, 60) + '...</td></tr>';
+            html += '<tr><td>C2: Most important function</td><td>' + exerciseState.exC.q2.substring(0, 60) + '...</td></tr>';
+            html += '</table>';
+            document.getElementById('summaryContent').innerHTML = html;
+        }
+
+        function submit() {
+            if (!validateStep(currentStep)) { alert('Please complete all required fields.'); return; }
+            saveStep(currentStep);
+            var sName = document.getElementById('studentName') ? document.getElementById('studentName').value : '';
+            var sEmail = document.getElementById('studentEmail') ? document.getElementById('studentEmail').value : '';
+            var payload = {
+                unit: UNIT,
+                timestamp: new Date().toISOString(),
+                studentName: sName || 'Anonymous',
+                studentEmail: sEmail || '',
+                answers: exerciseState
+            };
+            document.getElementById('submitMessage').innerHTML = '<div class="error-message">Submitting...</div>';
+            fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) })
+            .then(function() {
+                document.getElementById('submitMessage').innerHTML = '<div style="background:#dcfce7;color:#166534;padding:12px;border-radius:6px;border-left:4px solid #22c55e;">✓ Submitted successfully!</div>';
+                document.getElementById('nextBtn').disabled = true;
+            })
+            .catch(function(error) {
+                document.getElementById('submitMessage').innerHTML = '<div class="error-message">⚠ Failed: ' + error.message + '</div>';
+            });
+        }
+    </script>
+
+<script>
+document.addEventListener('paste', function(e) {
+  var t = e.target;
+  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
+    e.preventDefault();
+    var msg = document.createElement('div');
+    msg.textContent = '✏️ Pasting is not allowed';
+    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    document.body.appendChild(msg);
+    setTimeout(function() { msg.style.opacity='0'; setTimeout(function(){ msg.remove(); },400); },2000);
+  }
+});
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  var msg = document.createElement('div');
+  msg.textContent = '🚫 Copying is not allowed';
+  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+  document.body.appendChild(msg);
+  setTimeout(function() { msg.style.opacity='0'; setTimeout(function(){ msg.remove(); },400); },2000);
+});
+</script>
+</body>
+</html>
