@@ -1,60 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Recruitment & Hiring | englishonline.training</title><style>* {margin: 0; padding: 0; box-sizing: border-box;} body {font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); min-height: 100vh; padding: 20px;} .container {max-width: 900px; margin: 0 auto; background: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); overflow: hidden;} .header {background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center;} .header-left h1 {font-size: 24px; margin-bottom: 5px;} .progress-bar {width: 100%; height: 6px; background: rgba(255, 255, 255, 0.3); border-radius: 3px; overflow: hidden; margin-top: 10px;} .progress-fill {height: 100%; background: #4ade80; width: 0%; transition: width 0.3s ease;} .content {padding: 40px;} section {display: none;} section.active {display: block;} .welcome-screen {text-align: center;} .emoji {font-size: 64px; margin: 20px 0;} .welcome-screen h2 {font-size: 32px; margin: 20px 0 10px;} .welcome-screen .subtitle {font-size: 18px; color: #666; margin-bottom: 30px;} .overview-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0;} .overview-card {padding: 20px; border: 2px solid #e5e7eb; border-radius: 8px; background: #f9fafb;} .overview-card.locked {opacity: 0.5;} .overview-card .badge {display: inline-block; background: #667eea; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; margin-bottom: 10px;} .overview-card h3 {font-size: 16px; margin: 10px 0;} .overview-card p {font-size: 14px; color: #666;} .exercise-header {display: flex; align-items: center; gap: 15px; margin-bottom: 20px;} .badge {display: inline-block; background: #667eea; color: white; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;} .card {background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 25px; margin: 20px 0;} .card-title {font-size: 18px; font-weight: bold; color: #333; margin-bottom: 15px;} .reading-text {background: #faf5ff; border-left: 4px solid #a78bfa; padding: 20px; border-radius: 4px; line-height: 1.8; font-size: 16px; margin: 15px 0;} .form-group {margin-bottom: 20px;} .form-label {display: block; font-weight: 600; color: #333; margin-bottom: 8px; font-size: 15px;} .form-input, .form-textarea, .form-select {width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 15px;} .form-textarea {resize: vertical; min-height: 100px;} .gap-select {padding: 8px 12px; margin: 0 5px; font-size: 15px;} .word-bank {background: #fef3c7; border: 2px solid #fbbf24; padding: 15px; border-radius: 6px; margin-bottom: 20px; font-weight: 600;} .word-bank span {display: inline-block; background: white; padding: 6px 12px; margin: 5px; border-radius: 4px; border: 1px solid #fbbf24; font-size: 14px;} .summary-section {background: #f3f4f6; padding: 20px; border-radius: 6px; margin: 20px 0;} .summary-table {width: 100%; border-collapse: collapse; margin-top: 15px;} .summary-table th, .summary-table td {padding: 12px; text-align: left; border-bottom: 1px solid #d1d5db;} .summary-table th {background: #e5e7eb; font-weight: bold;} .footer {display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background: #f9fafb; border-top: 1px solid #e5e7eb; gap: 15px;} .button {padding: 12px 24px; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer;} .button-primary {background: #667eea; color: white;} .button-primary:disabled {background: #cbd5e1; cursor: not-allowed;} .button-secondary {background: #e5e7eb; color: #333;} .error-message {background: #fee2e2; color: #991b1b; padding: 12px; border-radius: 6px; border-left: 4px solid #dc2626;} @media (max-width: 768px) {.header {flex-direction: column;} .content {padding: 20px;} .overview-grid {grid-template-columns: 1fr;} .footer {flex-direction: column;} .button {width: 100%;}}</style>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recruitment & Hiring | englishonline.training</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
-<div class="header"><div class="header-left"><h1>Recruitment & Hiring</h1><div class="progress-bar"><div class="progress-fill"></div></div></div><div class="header-right"><div id="stepDisplay">Step 1 of 4</div></div></div>
-<div class="content">
-<section id="step-0" class="active welcome-screen"><div class="emoji">📋</div><h2>Recruitment & the Hiring Process</h2><p class="subtitle">Master the language of job descriptions and recruitment.</p><p>Level: <strong>B1</strong></p><p style="margin-top: 20px; color: #666;">This exercise contains 3 sections. Complete all and submit.</p><div class="overview-grid"><div class="overview-card"><div class="badge">Exercise A</div><h3>Reading: Job Advertisement</h3><p>Analyze a real job posting and answer comprehension questions.</p></div><div class="overview-card locked"><div class="badge">Exercise B</div><h3>Vocabulary: Recruitment Terms</h3><p>Practice key recruitment vocabulary in context.</p></div><div class="overview-card locked"><div class="badge">Exercise C</div><h3>Writing: Ideal Candidate</h3><p>Describe an ideal candidate for a position.</p></div></div></section>
 
-<section id="step-1"><div class="exercise-header"><div class="badge">Exercise A</div><h2>Reading: Job Advertisement</h2></div><p>Read the job posting and answer the questions.</p><div class="card"><div class="card-title">Marketing Manager – Experience Required</div><div class="reading-text"><p><strong>Position:</strong> Marketing Manager<br><strong>Location:</strong> Frankfurt, Germany<br><strong>Type:</strong> Full-time, Permanent<br><br>We are seeking a Marketing Manager to lead our marketing team. The ideal candidate will have 3+ years of marketing experience, strong communication skills, and proficiency in digital marketing tools. Responsibilities include developing marketing strategies, managing campaigns, and analyzing market trends. A university degree in Marketing, Business, or related field is required. Fluent English and German are essential.</p></div><div class="form-group"><label class="form-label" for="exA-q1">What is the main responsibility of this position?</label><select class="gap-select" id="exA-q1"><option value="">— Select —</option><option value="a">Lead the marketing team and develop strategies</option><option value="b">Manage the company finances</option><option value="c">Train new employees</option></select></div><div class="form-group"><label class="form-label" for="exA-q2">What experience is required?</label><select class="gap-select" id="exA-q2"><option value="">— Select —</option><option value="a">2+ years of experience</option><option value="b">3+ years of marketing experience</option><option value="c">5+ years of management experience</option></select></div><div class="form-group"><label class="form-label" for="exA-q3">What is a requirement for this job?</label><select class="gap-select" id="exA-q3"><option value="">— Select —</option><option value="a">Proficiency in digital marketing tools</option><option value="b">A driver's license</option><option value="c">Working night shifts</option></select></div></div></section>
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="business-activities.html" style="font-size:.75rem;opacity:.8">&larr; Business English</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step"></span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+<nav class="step-nav" id="step-nav"></nav>
 
-<section id="step-2"><div class="exercise-header"><div class="badge">Exercise B</div><h2>Vocabulary: Recruitment Terms</h2></div><div class="card"><div class="word-bank"><span>candidate</span><span>qualifications</span><span>shortlist</span><span>interview</span><span>competency</span><span>recruitment</span><span>job description</span><span>hire</span></div><div class="form-group"><label class="form-label" for="exB-q1">A _____ is a person who applies for a job.</label><select class="gap-select" id="exB-q1"><option value="">— Select —</option><option value="a">candidate</option><option value="b">manager</option><option value="c">applicant</option></select></div><div class="form-group"><label class="form-label" for="exB-q2">The _____ lists all duties and responsibilities of the role.</label><select class="gap-select" id="exB-q2"><option value="">— Select —</option><option value="a">job description</option><option value="b">contract</option><option value="c">application form</option></select></div><div class="form-group"><label class="form-label" for="exB-q3">Companies _____ new employees to fill open positions.</label><select class="gap-select" id="exB-q3"><option value="">— Select —</option><option value="a">hire</option><option value="b">interview</option><option value="c">train</option></select></div><div class="form-group"><label class="form-label" for="exB-q4">Strong communication is an important _____ for managers.</label><select class="gap-select" id="exB-q4"><option value="">— Select —</option><option value="a">requirement</option><option value="b">competency</option><option value="c">qualification</option></select></div></div></section>
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">📋</div>
+      <h1 class="welcome-title">Recruitment & the Hiring Process</h1>
+      <p class="welcome-sub">Master the language of job descriptions and recruitment.</p>
+      <div><span class="level-badge">Level: B1</span></div>
+    </div>
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">📖</div><strong>Ex A</strong>Reading: Job Advertisement</div>
+      <div class="ov-card locked"><div class="ov-icon">📝</div><strong>Ex B</strong>Vocabulary: Recruitment Terms</div>
+      <div class="ov-card locked"><div class="ov-icon">✍️</div><strong>Ex C</strong>Writing: Ideal Candidate</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Schmidt" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class / group</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. B2 Business" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises &rarr;</button>
+    </div>
+  </div>
+</section>
 
-<section id="step-3"><div class="exercise-header"><div class="badge">Exercise C</div><h2>Writing: The Ideal Candidate</h2></div><div class="card"><div class="form-group"><label class="form-label" for="exC-q1">Describe your ideal candidate for a Marketing Manager position. What skills and experience should they have?</label><textarea class="form-textarea" id="exC-q1" placeholder="Your answer..."></textarea></div></div></section>
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise A</span>
+    <h2 class="ex-title">Reading: Job Advertisement</h2>
+    <p class="ex-subtitle">Read the job posting and answer the questions.</p>
+    <div class="card">
+      <div class="card-title">Marketing Manager – Experience Required</div>
+      <div class="reading-text">
+        <p><strong>Position:</strong> Marketing Manager<br><strong>Location:</strong> Frankfurt, Germany<br><strong>Type:</strong> Full-time, Permanent<br><br>We are seeking a Marketing Manager to lead our marketing team. The ideal candidate will have 3+ years of marketing experience, strong communication skills, and proficiency in digital marketing tools. Responsibilities include developing marketing strategies, managing campaigns, and analyzing market trends. A university degree in Marketing, Business, or related field is required. Fluent English and German are essential.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Questions</div>
+      <div class="form-group">
+        <label class="form-label">What is the main responsibility of this position?</label>
+        <select class="gap-select" id="exA-g1">
+          <option value="">&mdash;</option>
+          <option>Lead the marketing team and develop strategies</option>
+          <option>Manage the company finances</option>
+          <option>Train new employees</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">What experience is required?</label>
+        <select class="gap-select" id="exA-g2">
+          <option value="">&mdash;</option>
+          <option>2+ years of experience</option>
+          <option>3+ years of marketing experience</option>
+          <option>5+ years of management experience</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">What is a requirement for this job?</label>
+        <select class="gap-select" id="exA-g3">
+          <option value="">&mdash;</option>
+          <option>Proficiency in digital marketing tools</option>
+          <option>A driver's license</option>
+          <option>Working night shifts</option>
+        </select>
+      </div>
+    </div>
+    <div id="step1-error" class="feedback err"></div>
+    <div id="step1-fb" class="feedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">&larr; Back</button>
+        <button class="btn btn-gold btn-sm" onclick="checkExA()">&#10003; Check</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B &rarr;</button>
+    </div>
+  </div>
+</section>
 
-<section id="step-4"><div class="exercise-header"><h2>Review & Submit</h2></div><div class="summary-section"><h3>Your Answers</h3><div id="summaryContent"></div></div><div class="form-group"><label class="form-label" for="studentName">Your name (optional):</label><input class="form-input" type="text" id="studentName"></div><div class="form-group"><label class="form-label" for="studentEmail">Your email (optional):</label><input class="form-input" type="email" id="studentEmail"></div><div id="submitMessage"></div></section></div>
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise B</span>
+    <h2 class="ex-title">Vocabulary: Recruitment Terms</h2>
+    <p class="ex-subtitle">Complete each sentence using the correct word.</p>
+    <div class="card">
+      <div class="card-title">Questions</div>
+      <div class="word-bank"><strong>Word bank</strong><span>candidate</span><span>qualifications</span><span>shortlist</span><span>interview</span><span>competency</span><span>recruitment</span><span>job description</span><span>hire</span></div>
+      <div class="form-group">
+        <label class="form-label">A _____ is a person who applies for a job.</label>
+        <select class="gap-select" id="exB-g1">
+          <option value="">&mdash;</option>
+          <option>candidate</option>
+          <option>manager</option>
+          <option>applicant</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">The _____ lists all duties and responsibilities of the role.</label>
+        <select class="gap-select" id="exB-g2">
+          <option value="">&mdash;</option>
+          <option>job description</option>
+          <option>contract</option>
+          <option>application form</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Companies _____ new employees to fill open positions.</label>
+        <select class="gap-select" id="exB-g3">
+          <option value="">&mdash;</option>
+          <option>hire</option>
+          <option>interview</option>
+          <option>train</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Strong communication is an important _____ for managers.</label>
+        <select class="gap-select" id="exB-g4">
+          <option value="">&mdash;</option>
+          <option>requirement</option>
+          <option>competency</option>
+          <option>qualification</option>
+        </select>
+      </div>
+    </div>
+    <div id="step2-error" class="feedback err"></div>
+    <div id="step2-fb" class="feedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">&larr; Back</button>
+        <button class="btn btn-gold btn-sm" onclick="checkExB()">&#10003; Check</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C &rarr;</button>
+    </div>
+  </div>
+</section>
 
-<div class="footer"><button class="button button-secondary" id="prevBtn" onclick="changeStep(-1)">← Previous</button><div style="text-align: center; font-size: 14px;"><span id="stepNav">Step 1 of 4</span></div><button class="button button-primary" id="nextBtn" onclick="changeStep(1)">Next →</button></div></div>
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Exercise C</span>
+    <h2 class="ex-title">Writing: The Ideal Candidate</h2>
+    <p class="ex-subtitle">Write your answer in the box below.</p>
+    <div class="card">
+      <div class="card-title">Questions</div>
+      <div class="form-group">
+        <label class="form-label">Describe your ideal candidate for a Marketing Manager position. What skills and experience should they have?</label>
+        <textarea class="form-textarea" id="exC-q1" placeholder="Your answer..." rows="5"></textarea>
+      </div>
+    </div>
+    <div id="step3-error" class="feedback err"></div>
+    <div id="step3-fb" class="feedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">&larr; Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Review &amp; Submit &rarr;</button>
+    </div>
+  </div>
+</section>
 
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
+    </div>
+    <div id="score-display" style="display:none"></div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your answers have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission did not work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+      <textarea id="copy-block" class="copy-block" style="display:none" readonly></textarea>
+      <div id="copy-success" class="feedback ok" style="margin-top:1rem"></div>
+    </div>
+  </div>
+</section>
+
+<script src="exercise.js"></script>
 <script>
-const UNIT = 'business-recruitment-hiring';
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec';
-const TEACHER_EMAIL = 'englishonlinetraining@pm.me';
-const TOTAL_STEPS = 4;
-var currentStep = 0;
-var exerciseState = {exA: {q1: '', q2: '', q3: ''}, exB: {q1: '', q2: '', q3: '', q4: ''}, exC: {q1: ''}, studentName: '', studentEmail: ''};
+var UNIT          = 'business-recruitment-hiring';
+var TOTAL_STEPS   = 4;
+var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec';
+var TEACHER_EMAIL = 'englishonlinetraining@pm.me';
 
-document.addEventListener('DOMContentLoaded', function() {restoreStep(currentStep); showStep(currentStep);});
-function changeStep(d) {if (!validateStep(currentStep)) {alert('Please complete all required fields.'); return;} saveStep(currentStep); currentStep += d; if (currentStep < 0) currentStep = 0; if (currentStep > TOTAL_STEPS) currentStep = TOTAL_STEPS; restoreStep(currentStep); showStep(currentStep); window.scrollTo(0, 0);}
-function showStep(n) {document.querySelectorAll('section').forEach(function(s) {s.classList.remove('active');}); document.getElementById('step-' + n).classList.add('active'); document.querySelector('.progress-fill').style.width = (n / TOTAL_STEPS * 100) + '%'; var label = n >= TOTAL_STEPS ? 'Submit' : 'Step ' + (n + 1) + ' of ' + TOTAL_STEPS; var nav = document.getElementById('stepNav'); if (nav) nav.textContent = label; var prevBtn = document.getElementById('prevBtn'); var nextBtn = document.getElementById('nextBtn'); prevBtn.disabled = n === 0; nextBtn.textContent = n >= TOTAL_STEPS - 1 ? 'Submit' : 'Next →'; nextBtn.onclick = n >= TOTAL_STEPS - 1 ? function() {submit();} : function() {changeStep(1);};}
-function validateStep(n) {if (n === 0) return true; if (n === 1) return exerciseState.exA.q1 && exerciseState.exA.q2 && exerciseState.exA.q3; if (n === 2) return exerciseState.exB.q1 && exerciseState.exB.q2 && exerciseState.exB.q3 && exerciseState.exB.q4; if (n === 3) return exerciseState.exC.q1.trim(); return true;}
-function saveStep(n) {if (n === 1) {exerciseState.exA.q1 = document.getElementById('exA-q1').value; exerciseState.exA.q2 = document.getElementById('exA-q2').value; exerciseState.exA.q3 = document.getElementById('exA-q3').value;} else if (n === 2) {exerciseState.exB.q1 = document.getElementById('exB-q1').value; exerciseState.exB.q2 = document.getElementById('exB-q2').value; exerciseState.exB.q3 = document.getElementById('exB-q3').value; exerciseState.exB.q4 = document.getElementById('exB-q4').value;} else if (n === 3) {exerciseState.exC.q1 = document.getElementById('exC-q1').value;} else if (n === TOTAL_STEPS) {exerciseState.studentName = document.getElementById('studentName').value; exerciseState.studentEmail = document.getElementById('studentEmail').value; var html = '<table class="summary-table"><tr><th>Question</th><th>Answer</th></tr><tr><td>A1-A3</td><td>Completed</td></tr><tr><td>B1-B4</td><td>Completed</td></tr><tr><td>C1: Ideal candidate</td><td>' + exerciseState.exC.q1.substring(0, 50) + '...</td></tr></table>'; document.getElementById('summaryContent').innerHTML = html;}}
-function restoreStep(n) {if (n === 1) {document.getElementById('exA-q1').value = exerciseState.exA.q1; document.getElementById('exA-q2').value = exerciseState.exA.q2; document.getElementById('exA-q3').value = exerciseState.exA.q3;} else if (n === 2) {document.getElementById('exB-q1').value = exerciseState.exB.q1; document.getElementById('exB-q2').value = exerciseState.exB.q2; document.getElementById('exB-q3').value = exerciseState.exB.q3; document.getElementById('exB-q4').value = exerciseState.exB.q4;} else if (n === 3) {document.getElementById('exC-q1').value = exerciseState.exC.q1;} else if (n === TOTAL_STEPS) {document.getElementById('studentName').value = exerciseState.studentName; document.getElementById('studentEmail').value = exerciseState.studentEmail;}}
-function submit() {if (!validateStep(currentStep)) {alert('Please complete all required fields.'); return;} saveStep(currentStep); var sName = document.getElementById('studentName') ? document.getElementById('studentName').value : ''; var sEmail = document.getElementById('studentEmail') ? document.getElementById('studentEmail').value : ''; var payload = {unit: UNIT, timestamp: new Date().toISOString(), studentName: sName || 'Anonymous', studentEmail: sEmail || '', answers: exerciseState}; document.getElementById('submitMessage').innerHTML = '<div class="error-message">Submitting...</div>'; fetch(SHEET_URL, {method: 'POST', mode: 'no-cors', body: JSON.stringify(payload)}).then(function() {document.getElementById('submitMessage').innerHTML = '<div style="background:#dcfce7;color:#166534;padding:12px;border-radius:6px;border-left:4px solid #22c55e;">✓ Submitted successfully!</div>'; document.getElementById('nextBtn').disabled = true;}).catch(function(error) {document.getElementById('submitMessage').innerHTML = '<div class="error-message">⚠ Failed: ' + error.message + '</div>';});}
-</script>
+var state = {
+  name: '', cls: '',
+  exA: {},
+  exB: {},
+  exC: {},
+  scores: {}
+};
+var maxStepReached = 0;
 
-<script>
-document.addEventListener('paste', function(e) {
-  var t = e.target;
-  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
-    e.preventDefault();
-    var msg = document.createElement('div');
-    msg.textContent = '✏️ Pasting is not allowed';
-    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
-    document.body.appendChild(msg);
-    setTimeout(function() { msg.style.opacity='0'; setTimeout(function(){ msg.remove(); },400); },2000);
+function validateStep(n) {
+  switch (n) {
+  case 1: return val('exA-g1') && val('exA-g2') && val('exA-g3');
+  case 2: return val('exB-g1') && val('exB-g2') && val('exB-g3') && val('exB-g4');
+  case 3: return g('exC-q1').length > 20;
+    default: return true;
   }
-});
-document.addEventListener('copy', function(e) {
-  e.preventDefault();
-  var msg = document.createElement('div');
-  msg.textContent = '🚫 Copying is not allowed';
-  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
-  document.body.appendChild(msg);
-  setTimeout(function() { msg.style.opacity='0'; setTimeout(function(){ msg.remove(); },400); },2000);
-});
+}
+
+function saveStep(n) {
+  switch (n) {
+  case 1:
+    ['g1','g2','g3'].forEach(function(k){ state.exA[k] = g('exA-'+k); });
+    break;
+  case 2:
+    ['g1','g2','g3','g4'].forEach(function(k){ state.exB[k] = g('exB-'+k); });
+    break;
+  case 3:
+    state.exC.q1 = g('exC-q1');
+    break;
+  }
+}
+
+function restoreStep(n) {
+  switch (n) {
+  case 1:
+    ['g1','g2','g3'].forEach(function(k){ set('exA-'+k, state.exA[k]); });
+    break;
+  case 2:
+    ['g1','g2','g3','g4'].forEach(function(k){ set('exB-'+k, state.exB[k]); });
+    break;
+  case 3:
+    set('exC-q1', state.exC.q1);
+    break;
+  }
+}
+
+function buildSummary() {
+  var rows = [
+    { ex: 'Exercise A', q: 'What is the main responsibility of this position?', a: state.exA.g1 },
+    { ex: 'Exercise A', q: 'What experience is required?', a: state.exA.g2 },
+    { ex: 'Exercise A', q: 'What is a requirement for this job?', a: state.exA.g3 },
+    { ex: 'Exercise B', q: 'A _____ is a person who applies for a job.', a: state.exB.g1 },
+    { ex: 'Exercise B', q: 'The _____ lists all duties and responsibilities of the role.', a: state.exB.g2 },
+    { ex: 'Exercise B', q: 'Companies _____ new employees to fill open positions.', a: state.exB.g3 },
+    { ex: 'Exercise B', q: 'Strong communication is an important _____ for managers.', a: state.exB.g4 },
+    { ex: 'Exercise C', q: 'Describe your ideal candidate for a Marketing Manager position. What skills and experience should they have?', a: state.exC.q1 },
+  ];
+  var html = '<div class="submit-summary">'
+    + '<div class="summary-row"><div class="summary-ex">Student</div>'
+    + '<div class="summary-q">' + esc(state.name) + ' &mdash; ' + esc(state.cls) + '</div></div>';
+  rows.forEach(function(r) {
+    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div>'
+      + '<div class="summary-q">' + esc(r.q) + '</div>'
+      + '<div class="summary-a">' + esc(r.a || '(no answer)') + '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+  renderScore();
+}
+
+function buildEmailBody() {
+  var sc = totalScore();
+  var grade = lookupGrade(sc.earned, sc.possible);
+  return 'Exercise: ' + UNIT
+    + '\nStudent: ' + state.name
+    + '\nClass:   ' + state.cls
+    + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
+    + '\nScore:   ' + (sc.possible ? (sc.earned + ' / ' + sc.possible + (grade ? ' \u2014 Note ' + grade.note + ' (' + grade.label + ')' : '')) : '(no auto-graded sections)')
+    + '\n\n--- Exercise A ---\n' + eolFlat(state.exA)
+    + '\n\n--- Exercise B ---\n' + eolFlat(state.exB)
+    + '\n\n--- Exercise C ---\n' + eolFlat(state.exC);
+}
+
+function buildPayload() {
+  var sc = totalScore();
+  var grade = lookupGrade(sc.earned, sc.possible);
+  return {
+    name: state.name, cls: state.cls, unit: UNIT,
+    exA: state.exA, exB: state.exB, exC: state.exC,
+    score: sc.possible ? (sc.earned + ' / ' + sc.possible) : '(no auto-graded sections)',
+    grade: grade ? ('Note ' + grade.note + ' (' + grade.label + ')') : ''
+  };
+}
+
+function checkExA() {
+  var answers = {
+    g1: 'Lead the marketing team and develop strategies',
+    g2: '3+ years of marketing experience',
+    g3: 'Proficiency in digital marketing tools',
+  };
+  checkDropdowns(['g1','g2','g3'], 'exA-', answers, 'step1-fb', 'exA');
+}
+
+function checkExB() {
+  var answers = {
+    g1: 'candidate',
+    g2: 'job description',
+    g3: 'hire',
+    g4: 'competency',
+  };
+  checkDropdowns(['g1','g2','g3','g4'], 'exB-', answers, 'step2-fb', 'exB');
+}
+
+document.addEventListener('DOMContentLoaded', function() { showStep(0); });
 </script>
+
 </body>
 </html>
