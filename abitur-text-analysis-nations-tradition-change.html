@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text Analysis: Nations Between Tradition and Change — Abitur English</title>
+<style>
+  :root{
+    --accent:#0070C0;--accent-dark:#004e87;--gold:#FFD700;--green:#1e8e3e;--red:#d93025;--yellow:#e6a700;
+    --bg:#f4f6f9;--card:#ffffff;--text:#1c2b36;--muted:#5b6b76;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;}
+  .wrap{max-width:840px;margin:0 auto;padding:0 18px 60px;}
+  header{background:linear-gradient(135deg,var(--accent-dark),var(--accent));color:#fff;padding:34px 18px 26px;}
+  header .inner{max-width:840px;margin:0 auto;}
+  header h1{margin:0 0 6px;font-size:1.7rem;}
+  header .tag{font-size:.92rem;opacity:.9;margin-bottom:18px;}
+  .progress-outer{background:rgba(255,255,255,.25);border-radius:20px;height:10px;overflow:hidden;}
+  .progress-inner{background:var(--gold);height:100%;width:0%;transition:width .4s ease;}
+  #progressLabel{font-size:.82rem;margin-top:6px;opacity:.9;}
+  details.guide{background:var(--card);border-radius:10px;margin:22px 0;box-shadow:0 1px 4px rgba(0,0,0,.08);}
+  details.guide summary{cursor:pointer;padding:14px 18px;font-weight:600;color:var(--accent-dark);}
+  .guide-body{padding:0 18px 18px;}
+  .device{border-left:3px solid var(--accent);padding:8px 12px;margin:10px 0;background:#f0f6fc;border-radius:0 6px 6px 0;}
+  .device b{color:var(--accent-dark);}
+  .exercise{display:none;background:var(--card);border-radius:12px;padding:24px 22px;margin:22px 0;box-shadow:0 1px 6px rgba(0,0,0,.08);}
+  .exercise.active{display:block;}
+  .exercise h2{color:var(--accent-dark);margin-top:0;font-size:1.25rem;border-bottom:2px solid #eef2f5;padding-bottom:10px;}
+  .instructions{color:var(--muted);font-size:.94rem;margin-bottom:16px;}
+  .article-box{background:#f8fafc;border:1px solid #e1e8ee;border-radius:8px;padding:18px 20px;margin-bottom:18px;font-size:.97rem;}
+  .article-box h3{margin-top:0;color:var(--accent-dark);}
+  .article-box .byline{font-style:italic;color:var(--muted);font-size:.85rem;margin-bottom:12px;}
+  .hl{background:#fff3b0;padding:1px 3px;border-radius:3px;}
+  details.reread{margin-bottom:16px;background:#f8fafc;border:1px solid #e1e8ee;border-radius:8px;}
+  details.reread summary{cursor:pointer;padding:10px 14px;font-weight:600;color:var(--accent-dark);font-size:.9rem;}
+  details.reread .article-box{border:none;background:none;padding:4px 14px 14px;}
+  .match-row{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px dashed #e1e8ee;}
+  .match-row:last-child{border-bottom:none;}
+  .match-quote{flex:1;font-style:italic;color:var(--text);}
+  .match-row select{flex:0 0 230px;padding:8px;border-radius:6px;border:1px solid #cbd5e0;font-size:.9rem;}
+  .match-row select.correct{border-color:var(--green);background:#e6f4ea;}
+  .match-row select.wrong{border-color:var(--red);background:#fdeceb;}
+  .mc-q{margin-bottom:18px;}
+  .mc-q p.qtext{font-weight:600;margin-bottom:8px;}
+  .mc-opt{display:block;padding:10px 14px;margin-bottom:8px;border:1px solid #cbd5e0;border-radius:7px;cursor:pointer;transition:.15s;}
+  .mc-opt:hover{border-color:var(--accent);}
+  .mc-opt.selected{border-color:var(--accent);background:#eaf3fb;}
+  .mc-opt.correct{border-color:var(--green);background:#e6f4ea;}
+  .mc-opt.wrong{border-color:var(--red);background:#fdeceb;}
+  .mc-q.locked .mc-opt{cursor:default;pointer-events:none;}
+  .order-pool{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+  .order-item{background:#eaf3fb;border:1px solid var(--accent);color:var(--accent-dark);padding:10px 14px;border-radius:7px;cursor:pointer;font-size:.9rem;}
+  .order-item.used{opacity:.35;pointer-events:none;}
+  .order-slots{display:flex;flex-direction:column;gap:8px;}
+  .order-slot{min-height:44px;border:2px dashed #cbd5e0;border-radius:7px;padding:8px 12px;display:flex;align-items:center;gap:10px;background:#fbfcfd;}
+  .order-slot .badge{background:var(--accent);color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;}
+  .order-slot.correct{border-color:var(--green);background:#e6f4ea;}
+  .order-slot.wrong{border-color:var(--red);background:#fdeceb;}
+  textarea{width:100%;min-height:220px;padding:14px;border:1px solid #cbd5e0;border-radius:8px;font-family:inherit;font-size:.95rem;resize:vertical;}
+  .wordcount{text-align:right;font-size:.82rem;color:var(--muted);margin-top:4px;}
+  .prompt-card{border:1px solid #cbd5e0;border-radius:8px;padding:12px 14px;margin-bottom:10px;}
+  .prompt-card.selected{border-color:var(--accent);background:#eaf3fb;}
+  .rubric-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #eef2f5;}
+  .rubric-item input{margin-top:4px;}
+  .model-para{background:#f8fafc;border-left:4px solid var(--accent);padding:14px 16px;margin-top:16px;border-radius:0 8px 8px 0;font-size:.93rem;}
+  .annot{color:var(--accent-dark);font-weight:600;}
+  .btn{display:inline-block;background:var(--accent);color:#fff;border:none;padding:11px 22px;border-radius:7px;font-size:.95rem;cursor:pointer;font-weight:600;}
+  .btn:hover{background:var(--accent-dark);}
+  .btn.secondary{background:transparent;color:var(--accent-dark);border:1px solid #cbd5e0;font-weight:500;}
+  .btn.secondary:hover{background:#eef2f5;}
+  .btn-row{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap;}
+  .feedback{margin-top:16px;padding:12px 16px;border-radius:8px;font-size:.92rem;display:none;}
+  .feedback.show{display:block;}
+  .feedback.perfect{background:#e6f4ea;color:#1e8e3e;border:1px solid #bfe4c9;}
+  .feedback.good{background:#fff8e1;color:#8a6500;border:1px solid #ffe6a0;}
+  .feedback.poor{background:#fdeceb;color:#b3261e;border:1px solid #f7c6c2;}
+  #finalScore{display:none;background:var(--card);border-radius:12px;padding:28px 24px;margin:22px 0;box-shadow:0 1px 6px rgba(0,0,0,.08);text-align:center;}
+  #finalScore h2{color:var(--accent-dark);}
+  .score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px;text-align:left;}
+  .score-card{background:#f8fafc;border-radius:8px;padding:12px 14px;border:1px solid #e1e8ee;}
+  .score-card .name{font-size:.8rem;color:var(--muted);}
+  .score-card .val{font-size:1.3rem;font-weight:700;color:var(--accent-dark);}
+</style>
+</head>
+<body>
+<header>
+  <div class="inner">
+    <h1>Text Analysis: Nations Between Tradition and Change</h1>
+    <div class="tag">Abitur English · 5 Übungen · Sofortiges Feedback</div>
+    <div class="progress-outer"><div class="progress-inner" id="progressBar"></div></div>
+    <div id="progressLabel">Übung 0 von 5 abgeschlossen</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<details class="guide">
+  <summary>📘 Referenzleitfaden: Rhetorische Mittel (zum Nachschlagen)</summary>
+  <div class="guide-body">
+    <div class="device"><b>Rhetorical question</b> — a question asked to make a point rather than to get an answer. <br><i>Example: "Isn't it time we asked what success really costs?"</i></div>
+    <div class="device"><b>Anecdote</b> — a short personal story used to illustrate a wider point. <br><i>Example: "When Maria was twelve, she watched her father work three jobs to pay the rent."</i></div>
+    <div class="device"><b>Statistic</b> — a number or piece of data used as evidence. <br><i>Example: "Nearly 40% of graduates now say they would take a pay cut for a shorter working week."</i></div>
+    <div class="device"><b>Metaphor</b> — describing something as if it were something else, without using "like" or "as". <br><i>Example: "The corporate ladder has become a treadmill."</i></div>
+    <div class="device"><b>Direct address</b> — speaking straight to the reader using "you" or "your". <br><i>Example: "You already know the feeling — that quiet dread on Sunday evening."</i></div>
+    <div class="device"><b>Tricolon (list of three)</b> — three parallel words or phrases for rhythm and emphasis. <br><i>Example: "They wanted freedom, flexibility, and a reason to get out of bed."</i></div>
+    <div class="device"><b>Antithesis / contrast</b> — placing two opposing ideas close together for effect. <br><i>Example: "Our parents chased security; we chase meaning."</i></div>
+  </div>
+</details>
+
+<!-- EXERCISE 1 -->
+<div class="exercise active" id="ex1">
+  <h2>Übung 1 · Rhetorische Mittel zuordnen</h2>
+  <p class="instructions">Read the article below. Match each highlighted quotation to the rhetorical/stylistic device it demonstrates.</p>
+
+  <div class="article-box">
+    <h3>Crown and Change: What Does It Mean to Be British Now?</h3>
+    <div class="byline">Adapted from a UK current-affairs feature</div>
+    <p>Walk down any high street in Britain and you will find the old and the new standing shoulder to shoulder: a parish church beside a halal butcher, a red telephone box beside a bubble-tea shop. <span class="hl" id="q1">Is this clash of old and new a crisis of identity, or simply what identity has always looked like?</span></p>
+    <p>Take the town of Wrexham. <span class="hl" id="q2">Sixteen-year-old Priya Chowdhury sings in the Welsh-language school choir on Mondays and celebrates Diwali with her grandmother on Fridays, and sees no contradiction whatsoever in either.</span> For her generation, Britishness is not inherited whole; it is assembled, piece by piece, from whatever fits.</p>
+    <p>The numbers tell a similar story. <span class="hl" id="q3">A 2024 British Social Attitudes survey found that 57% of under-35s now describe their identity as "British and something else", compared with just 24% of over-65s.</span> The monolithic idea of what it means to be British is, for younger generations, quietly dissolving.</p>
+    <p>Yet the old symbols have not vanished — they have simply been asked to share the stage. The monarchy still draws crowds; the Highland games still sell out; the Sunday roast still anchors a million kitchens. <span class="hl" id="q4">Tradition, it turns out, is not a museum piece gathering dust — it is a living, breathing negotiation, rewritten by every generation that inherits it.</span></p>
+    <p>Perhaps the real story of modern Britain is not a battle between tradition and change at all. <span class="hl" id="q5">It is a nation slowly discovering that it can hold the crown in one hand and the future in the other.</span></p>
+  </div>
+
+  <div id="matchList"></div>
+
+  <div class="btn-row">
+    <button class="btn" onclick="checkEx1()">Check Answers</button>
+    <button class="btn" id="next1" style="display:none" onclick="goTo(2)">Next Exercise →</button>
+  </div>
+  <div class="feedback" id="fb1"></div>
+</div>
+
+<!-- EXERCISE 2 -->
+<div class="exercise" id="ex2">
+  <h2>Übung 2 · Purpose, Audience &amp; Tone</h2>
+  <p class="instructions">Answer the following questions about the article's purpose, intended audience, and tone.</p>
+  <details class="reread">
+    <summary>📄 Read the article again</summary>
+    <div class="article-box">
+      <p>Walk down any high street in Britain and you will find the old and the new standing shoulder to shoulder: a parish church beside a halal butcher, a red telephone box beside a bubble-tea shop. Is this clash of old and new a crisis of identity, or simply what identity has always looked like?</p>
+      <p>Take the town of Wrexham. Sixteen-year-old Priya Chowdhury sings in the Welsh-language school choir on Mondays and celebrates Diwali with her grandmother on Fridays, and sees no contradiction whatsoever in either. For her generation, Britishness is not inherited whole; it is assembled, piece by piece, from whatever fits.</p>
+      <p>The numbers tell a similar story. A 2024 British Social Attitudes survey found that 57% of under-35s now describe their identity as "British and something else", compared with just 24% of over-65s. The monolithic idea of what it means to be British is, for younger generations, quietly dissolving.</p>
+      <p>Yet the old symbols have not vanished — they have simply been asked to share the stage. The monarchy still draws crowds; the Highland games still sell out; the Sunday roast still anchors a million kitchens. Tradition, it turns out, is not a museum piece gathering dust — it is a living, breathing negotiation, rewritten by every generation that inherits it.</p>
+      <p>Perhaps the real story of modern Britain is not a battle between tradition and change at all. It is a nation slowly discovering that it can hold the crown in one hand and the future in the other.</p>
+    </div>
+  </details>
+  <div id="mcList2"></div>
+  <div class="btn-row">
+    <button class="btn secondary" onclick="goTo(1)">← Back</button>
+    <button class="btn" onclick="checkEx2()">Check Answers</button>
+    <button class="btn" id="next2" style="display:none" onclick="goTo(3)">Next Exercise →</button>
+  </div>
+  <div class="feedback" id="fb2"></div>
+</div>
+
+<!-- EXERCISE 3 -->
+<div class="exercise" id="ex3">
+  <h2>Übung 3 · Wirkung analysieren (Effect Analysis)</h2>
+  <p class="instructions">For each technique below, choose the answer that best explains its effect on the reader.</p>
+  <details class="reread">
+    <summary>📄 Read the article again</summary>
+    <div class="article-box">
+      <p>Walk down any high street in Britain and you will find the old and the new standing shoulder to shoulder: a parish church beside a halal butcher, a red telephone box beside a bubble-tea shop. Is this clash of old and new a crisis of identity, or simply what identity has always looked like?</p>
+      <p>Take the town of Wrexham. Sixteen-year-old Priya Chowdhury sings in the Welsh-language school choir on Mondays and celebrates Diwali with her grandmother on Fridays, and sees no contradiction whatsoever in either. For her generation, Britishness is not inherited whole; it is assembled, piece by piece, from whatever fits.</p>
+      <p>The numbers tell a similar story. A 2024 British Social Attitudes survey found that 57% of under-35s now describe their identity as "British and something else", compared with just 24% of over-65s. The monolithic idea of what it means to be British is, for younger generations, quietly dissolving.</p>
+      <p>Yet the old symbols have not vanished — they have simply been asked to share the stage. The monarchy still draws crowds; the Highland games still sell out; the Sunday roast still anchors a million kitchens. Tradition, it turns out, is not a museum piece gathering dust — it is a living, breathing negotiation, rewritten by every generation that inherits it.</p>
+      <p>Perhaps the real story of modern Britain is not a battle between tradition and change at all. It is a nation slowly discovering that it can hold the crown in one hand and the future in the other.</p>
+    </div>
+  </details>
+  <div id="mcList3"></div>
+  <div class="btn-row">
+    <button class="btn secondary" onclick="goTo(2)">← Back</button>
+    <button class="btn" onclick="checkEx3()">Check Answers</button>
+    <button class="btn" id="next3" style="display:none" onclick="goTo(4)">Next Exercise →</button>
+  </div>
+  <div class="feedback" id="fb3"></div>
+</div>
+
+<!-- EXERCISE 4 -->
+<div class="exercise" id="ex4">
+  <h2>Übung 4 · Aufbau eines Analyseaufsatzes ordnen</h2>
+  <p class="instructions">Click the paragraph descriptions below in the correct order to build a well-structured analysis essay.</p>
+  <div class="order-pool" id="orderPool4"></div>
+  <div class="order-slots" id="orderSlots4"></div>
+  <div class="btn-row">
+    <button class="btn secondary" onclick="goTo(3)">← Back</button>
+    <button class="btn" onclick="checkEx4()">Check Answers</button>
+    <button class="btn" id="next4" style="display:none" onclick="goTo(5)">Next Exercise →</button>
+  </div>
+  <div class="feedback" id="fb4"></div>
+</div>
+
+<!-- EXERCISE 5 -->
+<div class="exercise" id="ex5">
+  <h2>Übung 5 · Vollständige Analyse schreiben</h2>
+  <p class="instructions">Write a full analysis paragraph (150–200 words) examining how the writer uses language to convey her message.</p>
+  <details class="reread">
+    <summary>📄 Read the article again</summary>
+    <div class="article-box">
+      <p>Walk down any high street in Britain and you will find the old and the new standing shoulder to shoulder: a parish church beside a halal butcher, a red telephone box beside a bubble-tea shop. Is this clash of old and new a crisis of identity, or simply what identity has always looked like?</p>
+      <p>Take the town of Wrexham. Sixteen-year-old Priya Chowdhury sings in the Welsh-language school choir on Mondays and celebrates Diwali with her grandmother on Fridays, and sees no contradiction whatsoever in either. For her generation, Britishness is not inherited whole; it is assembled, piece by piece, from whatever fits.</p>
+      <p>The numbers tell a similar story. A 2024 British Social Attitudes survey found that 57% of under-35s now describe their identity as "British and something else", compared with just 24% of over-65s. The monolithic idea of what it means to be British is, for younger generations, quietly dissolving.</p>
+      <p>Yet the old symbols have not vanished — they have simply been asked to share the stage. The monarchy still draws crowds; the Highland games still sell out; the Sunday roast still anchors a million kitchens. Tradition, it turns out, is not a museum piece gathering dust — it is a living, breathing negotiation, rewritten by every generation that inherits it.</p>
+      <p>Perhaps the real story of modern Britain is not a battle between tradition and change at all. It is a nation slowly discovering that it can hold the crown in one hand and the future in the other.</p>
+    </div>
+  </details>
+  <div class="prompt-card selected">
+    <b>Focus:</b> Analyse how the writer uses the extended image of "sharing the stage" and the closing metaphor of holding "the crown in one hand and the future in the other" to convey her argument about modern British identity.
+  </div>
+  <textarea id="essayText" oninput="updateWordCount()" placeholder="Write your analysis paragraph here..."></textarea>
+  <div class="wordcount"><span id="wc">0</span> Wörter</div>
+  <div class="btn-row">
+    <button class="btn secondary" onclick="goTo(4)">← Back</button>
+    <button class="btn" onclick="submitEx5()">Submit &amp; Show Rubric</button>
+  </div>
+  <div id="ex5feedback" style="display:none">
+    <h3 style="color:var(--accent-dark);margin-top:24px;">Selbsteinschätzung</h3>
+    <div id="rubricList"></div>
+    <div class="model-para">
+      <b>Model paragraph:</b><br><br>
+      The writer closes her argument with a striking <span class="annot">balanced metaphor</span> — the image of a nation that "can hold the crown in one hand and the future in the other" — which neatly resolves the tension the article has built between tradition and change. This is reinforced throughout by a pattern of <span class="annot">juxtaposition</span>: "a parish church beside a halal butcher", "a red telephone box beside a bubble-tea shop". By placing symbols of old and new Britain directly next to one another, the writer visually enacts her central claim that these elements coexist rather than compete. The personification of tradition as something that is not "a museum piece gathering dust" but instead "a living, breathing negotiation" further reframes cultural change as natural and ongoing rather than threatening. Together, these devices guide the reader towards a hopeful, inclusive reading of British identity as something flexible and continually renewed.
+    </div>
+    <div class="btn-row">
+      <button class="btn" id="finalBtn" style="display:none" onclick="showFinal()">See Final Score →</button>
+    </div>
+  </div>
+</div>
+
+<div id="finalScore">
+  <h2>🎉 Alle Übungen abgeschlossen!</h2>
+  <p id="finalSummary"></p>
+  <div class="score-grid" id="scoreGrid"></div>
+</div>
+
+</div>
+
+<script>
+const scores = {ex1:0,ex2:0,ex3:0,ex4:0,ex5:0};
+const maxScores = {ex1:5,ex2:4,ex3:4,ex4:5,ex5:10};
+
+function goTo(n){
+  document.querySelectorAll('.exercise').forEach(e=>e.classList.remove('active'));
+  document.getElementById('ex'+n).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function updateProgress(n){
+  document.getElementById('progressBar').style.width=(n/5*100)+'%';
+  document.getElementById('progressLabel').textContent=`Übung ${n} von 5 abgeschlossen`;
+}
+function showFeedbackBox(id,correct,max){
+  const fb=document.getElementById(id);
+  const pct=correct/max;
+  fb.className='feedback show '+(pct===1?'perfect':pct>=0.6?'good':'poor');
+  fb.textContent=(pct===1?'✅ Perfekt! ':pct>=0.6?'👍 Gut gemacht! ':'❌ Noch nicht ganz. ')+`Punktzahl: ${correct}/${max}`;
+}
+
+const ex1Data=[
+  {id:'q1', text:'"Is this clash of old and new a crisis of identity, or simply what identity has always looked like?"', answer:'Rhetorical question'},
+  {id:'q2', text:'"Sixteen-year-old Priya Chowdhury sings in the Welsh-language school choir on Mondays and celebrates Diwali with her grandmother on Fridays, and sees no contradiction whatsoever in either."', answer:'Anecdote'},
+  {id:'q3', text:'"A 2024 British Social Attitudes survey found that 57% of under-35s now describe their identity as \\"British and something else\\", compared with just 24% of over-65s."', answer:'Statistic'},
+  {id:'q4', text:'"Tradition, it turns out, is not a museum piece gathering dust — it is a living, breathing negotiation, rewritten by every generation that inherits it."', answer:'Metaphor'},
+  {id:'q5', text:'"It is a nation slowly discovering that it can hold the crown in one hand and the future in the other."', answer:'Antithesis / contrast'}
+];
+const deviceOptions=['Rhetorical question','Anecdote','Statistic','Metaphor','Direct address','Tricolon (list of three)','Antithesis / contrast'];
+
+function buildEx1(){
+  const container=document.getElementById('matchList');
+  ex1Data.forEach(d=>{
+    const row=document.createElement('div');
+    row.className='match-row';
+    const shuffled=[...deviceOptions].sort(()=>Math.random()-0.5);
+    let opts=`<option value="">-- choose --</option>`+shuffled.map(o=>`<option value="${o}">${o}</option>`).join('');
+    row.innerHTML=`<div class="match-quote">${d.text}</div><select id="sel_${d.id}">${opts}</select>`;
+    container.appendChild(row);
+  });
+}
+function checkEx1(){
+  let correct=0;
+  ex1Data.forEach(d=>{
+    const sel=document.getElementById('sel_'+d.id);
+    sel.disabled=true;
+    if(sel.value===d.answer){sel.classList.add('correct');correct++;}
+    else{sel.classList.add('wrong');}
+  });
+  scores.ex1=correct;
+  showFeedbackBox('fb1',correct,5);
+  document.getElementById('next1').style.display='inline-block';
+  updateProgress(1);
+}
+
+const ex2Data=[
+  {q:'What is the primary purpose of this article?', opts:['To criticise young Britons for abandoning tradition','To explore how British national identity is being reshaped by younger generations','To give tourists advice on British customs','To report on a change in the law'], correct:1},
+  {q:'Who is the most likely intended audience?', opts:['Primary school children','General adult readers interested in social/cultural trends','Officials at Buckingham Palace only','Non-English-speaking tourists'], correct:1},
+  {q:'How would you best describe the overall tone?', opts:['Mocking and dismissive','Reflective and ultimately hopeful','Angry and confrontational','Purely neutral and statistical'], correct:1},
+  {q:'What kind of publication does this text most resemble?', opts:['A scientific lab report','A current-affairs feature article','A private diary entry','A legal contract'], correct:1}
+];
+function buildMC(containerId,data){
+  const container=document.getElementById(containerId);
+  data.forEach((item,qi)=>{
+    const block=document.createElement('div');
+    block.className='mc-q';
+    block.id=containerId+'_q'+qi;
+    let optsHtml=item.opts.map((o,oi)=>`<div class="mc-opt" data-oi="${oi}" onclick="selectOpt('${containerId}_q${qi}',${oi})">${o}</div>`).join('');
+    block.innerHTML=`<p class="qtext">${qi+1}. ${item.q}</p>${optsHtml}`;
+    container.appendChild(block);
+  });
+}
+function selectOpt(blockId,oi){
+  const block=document.getElementById(blockId);
+  if(block.classList.contains('locked'))return;
+  block.querySelectorAll('.mc-opt').forEach(o=>o.classList.remove('selected'));
+  block.querySelector(`.mc-opt[data-oi="${oi}"]`).classList.add('selected');
+  block.dataset.selected=oi;
+}
+function checkMC(containerId,data,scoreKey,fbId,nextId){
+  let correct=0;
+  data.forEach((item,qi)=>{
+    const block=document.getElementById(containerId+'_q'+qi);
+    block.classList.add('locked');
+    const sel=block.dataset.selected;
+    block.querySelectorAll('.mc-opt').forEach(o=>{
+      const oi=parseInt(o.dataset.oi);
+      if(oi===item.correct)o.classList.add('correct');
+      else if(sel!==undefined && parseInt(sel)===oi)o.classList.add('wrong');
+    });
+    if(sel!==undefined && parseInt(sel)===item.correct)correct++;
+  });
+  scores[scoreKey]=correct;
+  showFeedbackBox(fbId,correct,data.length);
+  document.getElementById(nextId).style.display='inline-block';
+}
+function checkEx2(){checkMC('mcList2',ex2Data,'ex2','fb2','next2');updateProgress(2);}
+
+const ex3Data=[
+  {q:'What effect does the anecdote about Priya Chowdhury create?', opts:['It makes the abstract idea of "blended identity" concrete and relatable','It proves the survey statistic is inaccurate','It confuses the reader with irrelevant detail','It shifts the topic away from identity entirely'], correct:0},
+  {q:'What is the effect of the statistic about under-35s and over-65s?', opts:['It weakens the argument by being too vague','It gives the personal anecdote broader, evidence-based credibility','It contradicts the anecdote about Priya','It is purely decorative and adds nothing'], correct:1},
+  {q:'What effect does the personification of tradition as "living, breathing" have?', opts:['It makes tradition seem outdated and irrelevant','It reframes tradition as dynamic and adaptable rather than fixed','It has no effect on the reader','It suggests tradition is dangerous'], correct:1},
+  {q:'What is the effect of ending the article with the "crown...future" image?', opts:['It provides a memorable, balanced image that resolves the article\'s central tension','It introduces a totally new, unrelated topic','It undermines everything argued before it','It directly quotes Priya Chowdhury'], correct:0}
+];
+function checkEx3(){checkMC('mcList3',ex3Data,'ex3','fb3','next3');updateProgress(3);}
+
+const ex4Items=[
+  {id:0,text:'Introduction: names the text, author/source, and states the overall purpose and main argument.'},
+  {id:1,text:'Body paragraph 1: analyses content/structure — what claims the article makes and how it is organised.'},
+  {id:2,text:'Body paragraph 2: analyses language and style — key rhetorical devices and their effect on the reader.'},
+  {id:3,text:'Body paragraph 3: evaluates effectiveness — how convincingly the writer achieves her purpose for the intended audience.'},
+  {id:4,text:'Conclusion: summarises the analysis and offers a final judgement on the text\'s overall impact.'}
+];
+let ex4Order=[];
+function buildEx4(){
+  const pool=document.getElementById('orderPool4');
+  const slots=document.getElementById('orderSlots4');
+  const shuffled=[...ex4Items].sort(()=>Math.random()-0.5);
+  shuffled.forEach(item=>{
+    const el=document.createElement('div');
+    el.className='order-item';
+    el.textContent=item.text;
+    el.dataset.id=item.id;
+    el.onclick=()=>addToOrder(item.id,el);
+    pool.appendChild(el);
+  });
+  for(let i=0;i<5;i++){
+    const slot=document.createElement('div');
+    slot.className='order-slot';
+    slot.id='slot4_'+i;
+    slot.innerHTML=`<span class="badge">${i+1}</span><span class="slot-text" style="color:var(--muted)">—</span>`;
+    slots.appendChild(slot);
+  }
+}
+function addToOrder(id,el){
+  if(ex4Order.length>=5)return;
+  el.classList.add('used');
+  ex4Order.push(id);
+  const idx=ex4Order.length-1;
+  const slot=document.getElementById('slot4_'+idx);
+  slot.querySelector('.slot-text').textContent=ex4Items.find(i=>i.id===id).text;
+  slot.querySelector('.slot-text').style.color='var(--text)';
+  slot.dataset.itemId=id;
+}
+function checkEx4(){
+  let correct=0;
+  for(let i=0;i<5;i++){
+    const slot=document.getElementById('slot4_'+i);
+    const itemId=parseInt(slot.dataset.itemId);
+    if(itemId===i){slot.classList.add('correct');correct++;}
+    else{slot.classList.add('wrong');}
+  }
+  scores.ex4=correct;
+  showFeedbackBox('fb4',correct,5);
+  document.getElementById('next4').style.display='inline-block';
+  updateProgress(4);
+}
+
+function updateWordCount(){
+  const t=document.getElementById('essayText').value.trim();
+  document.getElementById('wc').textContent=t?t.split(/\s+/).length:0;
+}
+const rubricCriteria=[
+  'I named the text type, source, and author.',
+  'I stated the main purpose and argument of the text.',
+  'I identified at least two specific rhetorical/stylistic devices with quotations.',
+  'I explained the effect of each device on the reader, not just named it.',
+  'I discussed the intended audience.',
+  'I discussed the overall tone.',
+  'I used appropriate analytical vocabulary (e.g. "conveys", "reinforces", "juxtaposes").',
+  'I linked my points back to the writer\'s overall purpose.',
+  'My paragraph has a clear structure (topic sentence, evidence, analysis).',
+  'My English is grammatically accurate and my register is formal/academic.'
+];
+function submitEx5(){
+  const list=document.getElementById('rubricList');
+  list.innerHTML='';
+  rubricCriteria.forEach((c,i)=>{
+    const row=document.createElement('label');
+    row.className='rubric-item';
+    row.innerHTML=`<input type="checkbox" onchange="updateRubricScore()" id="rub5_${i}"><span>${c}</span>`;
+    list.appendChild(row);
+  });
+  document.getElementById('ex5feedback').style.display='block';
+}
+function updateRubricScore(){
+  let ticked=0;
+  rubricCriteria.forEach((c,i)=>{if(document.getElementById('rub5_'+i).checked)ticked++;});
+  scores.ex5=ticked;
+  document.getElementById('finalBtn').style.display = ticked>=7 ? 'inline-block':'none';
+  updateProgress(5);
+}
+
+function showFinal(){
+  document.querySelectorAll('.exercise').forEach(e=>e.classList.remove('active'));
+  const grid=document.getElementById('scoreGrid');
+  grid.innerHTML='';
+  const names={ex1:'Übung 1 · Rhetorical Devices',ex2:'Übung 2 · Purpose/Audience/Tone',ex3:'Übung 3 · Effect Analysis',ex4:'Übung 4 · Essay Structure',ex5:'Übung 5 · Full Analysis'};
+  let total=0,max=0;
+  Object.keys(scores).forEach(k=>{
+    total+=scores[k];max+=maxScores[k];
+    const card=document.createElement('div');
+    card.className='score-card';
+    card.innerHTML=`<div class="name">${names[k]}</div><div class="val">${scores[k]}/${maxScores[k]}</div>`;
+    grid.appendChild(card);
+  });
+  document.getElementById('finalSummary').textContent=`Gesamtpunktzahl: ${total} von ${max}`;
+  document.getElementById('finalScore').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+buildEx1();
+buildMC('mcList2',ex2Data);
+buildMC('mcList3',ex3Data);
+buildEx4();
+</script>
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mediation: The Impact of Media on Society — Abitur English</title>
+<style>
+  :root{--accent:#00756a;--accent-dark:#00504a;--gold:#FFD700;--green:#1e8e3e;--red:#d93025;--bg:#f4f6f9;--card:#ffffff;--text:#1c2b36;--muted:#5b6b76;}
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;}
+  .wrap{max-width:840px;margin:0 auto;padding:0 18px 60px;}
+  header{background:linear-gradient(135deg,var(--accent-dark),var(--accent));color:#fff;padding:34px 18px 26px;}
+  header .inner{max-width:840px;margin:0 auto;}
+  header h1{margin:0 0 6px;font-size:1.7rem;}
+  header .tag{font-size:.92rem;opacity:.9;margin-bottom:18px;}
+  .progress-outer{background:rgba(255,255,255,.25);border-radius:20px;height:10px;overflow:hidden;}
+  .progress-inner{background:var(--gold);height:100%;width:0%;transition:width .4s ease;}
+  #progressLabel{font-size:.82rem;margin-top:6px;opacity:.9;}
+  details.guide{background:var(--card);border-radius:10px;margin:22px 0;box-shadow:0 1px 4px rgba(0,0,0,.08);}
+  details.guide summary{cursor:pointer;padding:14px 18px;font-weight:600;color:var(--accent-dark);}
+  .guide-body{padding:0 18px 18px;}
+  .device{border-left:3px solid var(--accent);padding:8px 12px;margin:10px 0;background:#eaf5f3;border-radius:0 6px 6px 0;}
+  .device b{color:var(--accent-dark);}
+  .task-box{background:#eaf5f3;border:1px solid #bcdedb;border-radius:8px;padding:16px 18px;margin-bottom:18px;font-size:.97rem;}
+  .task-box b{color:var(--accent-dark);}
+  .article-box{background:#f8fafc;border:1px solid #e1e8ee;border-radius:8px;padding:18px 20px;margin-bottom:18px;font-size:.97rem;}
+  .article-box h3{margin-top:0;color:var(--accent-dark);}
+  .article-box .byline{font-style:italic;color:var(--muted);font-size:.85rem;margin-bottom:12px;}
+  details.reread{margin-bottom:16px;background:#f8fafc;border:1px solid #e1e8ee;border-radius:8px;}
+  details.reread summary{cursor:pointer;padding:10px 14px;font-weight:600;color:var(--accent-dark);font-size:.9rem;}
+  details.reread .article-box{border:none;background:none;padding:4px 14px 14px;}
+  .exercise{display:none;background:var(--card);border-radius:12px;padding:24px 22px;margin:22px 0;box-shadow:0 1px 6px rgba(0,0,0,.08);}
+  .exercise.active{display:block;}
+  .exercise h2{color:var(--accent-dark);margin-top:0;font-size:1.25rem;border-bottom:2px solid #eef2f5;padding-bottom:10px;}
+  .instructions{color:var(--muted);font-size:.94rem;margin-bottom:16px;}
+  .match-row{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px dashed #e1e8ee;}
+  .match-row:last-child{border-bottom:none;}
+  .match-quote{flex:1;font-style:italic;color:var(--text);}
+  .match-row select{flex:0 0 230px;padding:8px;border-radius:6px;border:1px solid #cbd5e0;font-size:.9rem;}
+  .match-row select.correct{border-color:var(--green);background:#e6f4ea;}
+  .match-row select.wrong{border-color:var(--red);background:#fdeceb;}
+  .mc-q{margin-bottom:18px;}
+  .mc-q p.qtext{font-weight:600;margin-bottom:8px;}
+  .mc-opt{display:block;padding:10px 14px;margin-bottom:8px;border:1px solid #cbd5e0;border-radius:7px;cursor:pointer;transition:.15s;}
+  .mc-opt:hover{border-color:var(--accent);}
+  .mc-opt.selected{border-color:var(--accent);background:#eaf5f3;}
+  .mc-opt.correct{border-color:var(--green);background:#e6f4ea;}
+  .mc-opt.wrong{border-color:var(--red);background:#fdeceb;}
+  .mc-q.locked .mc-opt{cursor:default;pointer-events:none;}
+  textarea{width:100%;min-height:200px;padding:14px;border:1px solid #cbd5e0;border-radius:8px;font-family:inherit;font-size:.95rem;resize:vertical;}
+  .wordcount{text-align:right;font-size:.82rem;color:var(--muted);margin-top:4px;}
+  .rubric-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #eef2f5;}
+  .rubric-item input{margin-top:4px;}
+  .model-para{background:#f8fafc;border-left:4px solid var(--accent);padding:14px 16px;margin-top:16px;border-radius:0 8px 8px 0;font-size:.93rem;}
+  .annot{color:var(--accent-dark);font-weight:600;}
+  .btn{display:inline-block;background:var(--accent);color:#fff;border:none;padding:11px 22px;border-radius:7px;font-size:.95rem;cursor:pointer;font-weight:600;}
+  .btn:hover{background:var(--accent-dark);}
+  .btn.secondary{background:transparent;color:var(--accent-dark);border:1px solid #cbd5e0;font-weight:500;}
+  .btn.secondary:hover{background:#eef2f5;}
+  .btn-row{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap;}
+  .feedback{margin-top:16px;padding:12px 16px;border-radius:8px;font-size:.92rem;display:none;}
+  .feedback.show{display:block;}
+  .feedback.perfect{background:#e6f4ea;color:#1e8e3e;border:1px solid #bfe4c9;}
+  .feedback.good{background:#fff8e1;color:#8a6500;border:1px solid #ffe6a0;}
+  .feedback.poor{background:#fdeceb;color:#b3261e;border:1px solid #f7c6c2;}
+  #finalScore{display:none;background:var(--card);border-radius:12px;padding:28px 24px;margin:22px 0;box-shadow:0 1px 6px rgba(0,0,0,.08);text-align:center;}
+  #finalScore h2{color:var(--accent-dark);}
+  .score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px;text-align:left;}
+  .score-card{background:#f8fafc;border-radius:8px;padding:12px 14px;border:1px solid #e1e8ee;}
+  .score-card .name{font-size:.8rem;color:var(--muted);}
+  .score-card .val{font-size:1.3rem;font-weight:700;color:var(--accent-dark);}
+</style>
+</head>
+<body>
+<header>
+  <div class="inner">
+    <h1>Mediation: The Impact of Media on Society</h1>
+    <div class="tag">Abitur English · 5 Übungen · Sofortiges Feedback</div>
+    <div class="progress-outer"><div class="progress-inner" id="progressBar"></div></div>
+    <div id="progressLabel">Übung 0 von 5 abgeschlossen</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="task-box">
+  <b>Mediation task:</b> You are contributing to your school's English-language blog. Read the German article below and convey its relevant content in English (about 100–150 words) for your international readers.
+</div>
+
+<details class="guide">
+  <summary>📘 Referenzleitfaden: Sprachmittlung (zum Nachschlagen)</summary>
+  <div class="guide-body">
+    <div class="device"><b>Select, don't translate everything</b> — only convey content relevant to the task, not every sentence.</div>
+    <div class="device"><b>Paraphrase, don't translate word-for-word</b> — express the meaning naturally in English. <br><i>German: "Viele stellen ihre Karriereziele infrage." → English: "Many are reconsidering their career goals" (not "put their career goals into question").</i></div>
+    <div class="device"><b>Match the register to the task</b> — a school blog needs clear, engaging, semi-formal English.</div>
+    <div class="device"><b>Avoid Germanisms</b> — watch out for direct translations that sound unnatural in English.</div>
+    <div class="device"><b>Add brief explanations for culture-specific terms</b> where the target audience might not know them.</div>
+  </div>
+</details>
+
+<!-- EXERCISE 1 -->
+<div class="exercise active" id="ex1">
+  <h2>Übung 1 · Relevante Informationen auswählen</h2>
+  <p class="instructions">Read the German article. Classify each point below as Relevant (should be included) or Not relevant (can be left out for this task).</p>
+
+  <div class="article-box">
+    <h3>Der Feed, der niemals schläft: Wie soziale Medien das amerikanische Nachrichtenverhalten verändert haben</h3>
+    <div class="byline">Übersetzt und bearbeitet aus einem deutschen Medienmagazin</div>
+    <p>Vor zwanzig Jahren bezog der durchschnittliche Amerikaner seine Nachrichten aus wenigen Abendsendungen und einer gefalteten Zeitung. Wo informieren Sie sich heute – und können Sie sich ehrlich erinnern, wann Sie zuletzt nur einmal am Tag Nachrichten gecheckt haben? Für die meisten Menschen lautet die Antwort: nie.</p>
+    <p>Ein Beispiel ist Jordan Mills, ein neunzehnjähriger Student aus Atlanta. Er greift innerhalb von neunzig Sekunden nach dem Aufwachen zu seinem Handy, scrollt vor dem Frühstück durch sechs verschiedene Nachrichten-Apps und schätzt, dass er über 200 Schlagzeilen sieht, bevor sein erster Kurs überhaupt beginnt. Er gibt selbst zu, von Informationen erschöpft zu sein, die er nie angefordert hat.</p>
+    <p>Er ist damit nicht allein. Eine Pew-Research-Studie aus dem Jahr 2023 ergab, dass 86 Prozent der amerikanischen Erwachsenen mittlerweile zumindest einen Teil ihrer Nachrichten über das Smartphone beziehen, und fast die Hälfte gibt an, sich durch die schiere Menge an Nachrichten „ausgelaugt" zu fühlen.</p>
+    <p>Medienunternehmen behaupten, sie würden lediglich die Nachfrage bedienen. Kritiker entgegnen, dass sie diese Nachfrage selbst geschaffen haben. Dem Algorithmus ist es egal, ob eine Schlagzeile informiert oder lediglich aufregt – wichtig ist nur, dass man weiterscrollt. Aufmerksamkeit, einst freiwillig gegeben, ist heute die wertvollste Währung Amerikas.</p>
+    <p>Wie man diese Entwicklung auch bewertet: Der Feed schläft nie – und zunehmend schlafen auch wir immer weniger.</p>
+  </div>
+
+  <div id="matchList"></div>
+
+  <div class="btn-row">
+    <button class="btn" onclick="checkEx1()">Check Answers</button>
+    <button class="btn" id="next1" style="display:none" onclick="goTo(2)">Next Exercise →</button>
+  </div>
+  <div class="feedback" id="fb1"></div>
+</div>
+
+<!-- EXERCISE 2 -->
+<div class="exercise" id="ex2">
+  <h2>Übung 2 · Register wählen</h2>
+  <p class="instructions">For a school blog, choose the more appropriate English phrasing.</p>
+  <div id="mcList2"></div>
+  <div class="btn-row">
+    <button class="btn secondary" onclick="goTo(1)">← Back</button>
+    <button class="btn" onclick="checkEx2()">Check Answers</button>
+    <button class="btn" id="next2" style="display:none" onclick="goTo(3)">Next Exercise →</button>
+  </div>
+  <div class="feedback" id="fb2"></div>
+</div>
+
+<!-- EXERCISE 3 -->
+<div class="exercise" id="ex3">
+  <h2>Übung 3 · Umschreibungen zuordnen (Paraphrasing)</h2>
+  <p class="instructions">Match each German phrase from the article to its best natural English paraphrase.</p>
+  <div id="matchList3"></div>
+  <div class="btn-row">
+    <button class="btn secondary" onclick="goTo(2)">← Back</button>
+    <button class="btn" onclick="checkEx3()">Check Answers</button>
+    <button class="btn" id="next3" style="display:none" onclick="goTo(4)">Next Exercise →</button>
+  </div>
+  <div class="feedback" id="fb3"></div>
+</div>
+
+<!-- EXERCISE 4 -->
+<div class="exercise" id="ex4">
+  <h2>Übung 4 · Germanismen vermeiden</h2>
+  <p class="instructions">Choose the version that avoids a "Germanism".</p>
+  <div id="mcList4"></div>
+  <div class="btn-row">
+    <button class="btn secondary" onclick="goTo(3)">← Back</button>
+    <button class="btn" onclick="checkEx4()">Check Answers</button>
+    <button class="btn" id="next4" style="display:none" onclick="goTo(5)">Next Exercise →</button>
+  </div>
+  <div class="feedback" id="fb4"></div>
+</div>
+
+<!-- EXERCISE 5 -->
+<div class="exercise" id="ex5">
+  <h2>Übung 5 · Vollständige Sprachmittlung schreiben</h2>
+  <p class="instructions">Now complete the full mediation task: convey the relevant content of the German article in English (100–150 words) for your school's English-language blog.</p>
+  <details class="reread">
+    <summary>📄 Read the article again</summary>
+    <div class="article-box">
+      <p>Vor zwanzig Jahren bezog der durchschnittliche Amerikaner seine Nachrichten aus wenigen Abendsendungen und einer gefalteten Zeitung. Heute checken die meisten Menschen Nachrichten den ganzen Tag über.</p>
+      <p>Jordan Mills, ein neunzehnjähriger Student aus Atlanta, greift innerhalb von neunzig Sekunden nach dem Aufwachen zu seinem Handy und sieht über 200 Schlagzeilen, bevor sein erster Kurs beginnt.</p>
+      <p>Eine Pew-Research-Studie aus 2023 ergab, dass 86 Prozent der amerikanischen Erwachsenen zumindest einen Teil ihrer Nachrichten über das Smartphone beziehen, und fast die Hälfte fühlt sich davon „ausgelaugt".</p>
+      <p>Medienunternehmen behaupten, sie würden die Nachfrage bedienen; Kritiker sagen, sie hätten die Nachfrage selbst geschaffen, da Algorithmen auf Aufmerksamkeit statt Information ausgelegt sind.</p>
+      <p>Der Feed schläft nie – und zunehmend schlafen auch wir immer weniger.</p>
+    </div>
+  </details>
+  <textarea id="essayText" oninput="updateWordCount()" placeholder="Write your mediation text here..."></textarea>
+  <div class="wordcount"><span id="wc">0</span> Wörter</div>
+  <div class="btn-row">
+    <button class="btn secondary" onclick="goTo(4)">← Back</button>
+    <button class="btn" onclick="submitEx5()">Submit &amp; Show Rubric</button>
+  </div>
+  <div id="ex5feedback" style="display:none">
+    <h3 style="color:var(--accent-dark);margin-top:24px;">Selbsteinschätzung</h3>
+    <div id="rubricList"></div>
+    <div class="model-para">
+      <b>Model mediation:</b><br><br>
+      Constant access to news through smartphones has fundamentally changed how Americans stay informed. Jordan Mills, a 19-year-old student from Atlanta, illustrates this well: he checks his phone within ninety seconds of waking up and sees over 200 headlines before his first class even starts. This isn't unusual — a 2023 Pew Research study found that 86% of American adults now get at least some of their news from smartphones, and nearly half feel "worn out" by the sheer volume. Media companies claim they are simply meeting demand, but critics argue that algorithms are designed to maximise attention rather than to inform, meaning the constant news cycle may be as manufactured as it is consumed.
+    </div>
+    <div class="btn-row">
+      <button class="btn" id="finalBtn" style="display:none" onclick="showFinal()">See Final Score →</button>
+    </div>
+  </div>
+</div>
+
+<div id="finalScore">
+  <h2>🎉 Alle Übungen abgeschlossen!</h2>
+  <p id="finalSummary"></p>
+  <div class="score-grid" id="scoreGrid"></div>
+</div>
+
+</div>
+
+<script>
+const scores = {ex1:0,ex2:0,ex3:0,ex4:0,ex5:0};
+const maxScores = {ex1:6,ex2:4,ex3:5,ex4:4,ex5:10};
+function goTo(n){document.querySelectorAll('.exercise').forEach(e=>e.classList.remove('active'));document.getElementById('ex'+n).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+function updateProgress(n){document.getElementById('progressBar').style.width=(n/5*100)+'%';document.getElementById('progressLabel').textContent=`Übung ${n} von 5 abgeschlossen`;}
+function showFeedbackBox(id,correct,max){const fb=document.getElementById(id);const pct=correct/max;fb.className='feedback show '+(pct===1?'perfect':pct>=0.6?'good':'poor');fb.textContent=(pct===1?'✅ Perfekt! ':pct>=0.6?'👍 Gut gemacht! ':'❌ Noch nicht ganz. ')+`Punktzahl: ${correct}/${max}`;}
+
+const ex1Data=[
+  {id:'s1', text:'"Konstanter Handyzugang hat verändert, wie Amerikaner sich über Nachrichten informieren."', answer:'Relevant'},
+  {id:'s2', text:'"Jordan Mills ist neunzehn Jahre alt und Student in Atlanta."', answer:'Relevant'},
+  {id:'s3', text:'"86 Prozent der amerikanischen Erwachsenen beziehen Nachrichten über das Smartphone (Pew-Studie 2023)."', answer:'Relevant'},
+  {id:'s4', text:'"Der Artikel stammt aus einem deutschen Medienmagazin."', answer:'Not relevant'},
+  {id:'s5', text:'"Es gibt eine Debatte darüber, wer für den Nachrichtenüberkonsum verantwortlich ist."', answer:'Relevant'},
+  {id:'s6', text:'"Jordan sieht über 200 Schlagzeilen vor seinem ersten Kurs."', answer:'Relevant'}
+];
+const classifyOptions=['Relevant','Not relevant'];
+function buildEx1(){
+  const container=document.getElementById('matchList');
+  ex1Data.forEach(d=>{
+    const row=document.createElement('div');row.className='match-row';
+    const shuffled=[...classifyOptions].sort(()=>Math.random()-0.5);
+    let opts=`<option value="">-- choose --</option>`+shuffled.map(o=>`<option value="${o}">${o}</option>`).join('');
+    row.innerHTML=`<div class="match-quote">${d.text}</div><select id="sel_${d.id}">${opts}</select>`;
+    container.appendChild(row);
+  });
+}
+function checkEx1(){
+  let correct=0;
+  ex1Data.forEach(d=>{
+    const sel=document.getElementById('sel_'+d.id);sel.disabled=true;
+    if(sel.value===d.answer){sel.classList.add('correct');correct++;}else{sel.classList.add('wrong');}
+  });
+  scores.ex1=correct;showFeedbackBox('fb1',correct,6);document.getElementById('next1').style.display='inline-block';updateProgress(1);
+}
+
+function buildMC(containerId,data){
+  const container=document.getElementById(containerId);
+  data.forEach((item,qi)=>{
+    const block=document.createElement('div');block.className='mc-q';block.id=containerId+'_q'+qi;
+    let optsHtml=item.opts.map((o,oi)=>`<div class="mc-opt" data-oi="${oi}" onclick="selectOpt('${containerId}_q${qi}',${oi})">${o}</div>`).join('');
+    block.innerHTML=`<p class="qtext">${qi+1}. ${item.q}</p>${optsHtml}`;
+    container.appendChild(block);
+  });
+}
+function selectOpt(blockId,oi){
+  const block=document.getElementById(blockId);if(block.classList.contains('locked'))return;
+  block.querySelectorAll('.mc-opt').forEach(o=>o.classList.remove('selected'));
+  block.querySelector(`.mc-opt[data-oi="${oi}"]`).classList.add('selected');block.dataset.selected=oi;
+}
+function checkMC(containerId,data,scoreKey,fbId,nextId){
+  let correct=0;
+  data.forEach((item,qi)=>{
+    const block=document.getElementById(containerId+'_q'+qi);block.classList.add('locked');
+    const sel=block.dataset.selected;
+    block.querySelectorAll('.mc-opt').forEach(o=>{
+      const oi=parseInt(o.dataset.oi);
+      if(oi===item.correct)o.classList.add('correct');
+      else if(sel!==undefined && parseInt(sel)===oi)o.classList.add('wrong');
+    });
+    if(sel!==undefined && parseInt(sel)===item.correct)correct++;
+  });
+  scores[scoreKey]=correct;showFeedbackBox(fbId,correct,data.length);document.getElementById(nextId).style.display='inline-block';
+}
+
+const ex2Data=[
+  {q:'Which opening suits a school blog post?', opts:['News consumption has become a nonstop thing for basically everyone now, ugh.','Constant access to news through smartphones has fundamentally changed how Americans stay informed.'], correct:1},
+  {q:'Which phrasing best fits a semi-formal blog post?', opts:['Jordan checks his phone within ninety seconds of waking up.','Jordan is literally glued to his phone the second he wakes up, it\'s kind of intense.'], correct:0},
+  {q:'Which is a natural way to present the Pew Research statistic?', opts:['A 2023 Pew Research study found that 86% of American adults now get at least some news from smartphones.','Research data from Pew suggests a percentage approximating eighty-six regarding smartphone-based news consumption.'], correct:0},
+  {q:'Which closing line fits a blog post for international readers?', opts:['The constant news cycle may be as manufactured as it is consumed.','It is what it is, algorithms gonna algorithm.'], correct:0}
+];
+function checkEx2(){checkMC('mcList2',ex2Data,'ex2','fb2','next2');updateProgress(2);}
+
+const ex3Data=[
+  {id:'p1', text:'"gibt selbst zu, erschöpft zu sein"', answer:'admits to feeling exhausted'},
+  {id:'p2', text:'"die schiere Menge an Nachrichten"', answer:'the sheer volume of news'},
+  {id:'p3', text:'"die wertvollste Währung Amerikas"', answer:'America\'s most valuable currency'},
+  {id:'p4', text:'"diese Nachfrage selbst geschaffen"', answer:'created this demand themselves'},
+  {id:'p5', text:'"schlafen auch wir immer weniger"', answer:'we, too, increasingly get less sleep'}
+];
+const paraphraseOptions=['admits to feeling exhausted','the sheer volume of news','America\'s most valuable currency','created this demand themselves','we, too, increasingly get less sleep'];
+function buildEx3(){
+  const container=document.getElementById('matchList3');
+  ex3Data.forEach(d=>{
+    const row=document.createElement('div');row.className='match-row';
+    const shuffled=[...paraphraseOptions].sort(()=>Math.random()-0.5);
+    let opts=`<option value="">-- choose --</option>`+shuffled.map(o=>`<option value="${o}">${o}</option>`).join('');
+    row.innerHTML=`<div class="match-quote">${d.text}</div><select id="sel3_${d.id}">${opts}</select>`;
+    container.appendChild(row);
+  });
+}
+function checkEx3(){
+  let correct=0;
+  ex3Data.forEach(d=>{
+    const sel=document.getElementById('sel3_'+d.id);sel.disabled=true;
+    if(sel.value===d.answer){sel.classList.add('correct');correct++;}else{sel.classList.add('wrong');}
+  });
+  scores.ex3=correct;showFeedbackBox('fb3',correct,5);document.getElementById('next3').style.display='inline-block';updateProgress(3);
+}
+
+const ex4Data=[
+  {q:'"Ich bin sehr interessiert daran." — best English version?', opts:['I am very interested in that.','I am very interested therein.'], correct:0},
+  {q:'"Seit 2023" — best English version?', opts:['Since 2023.','From 2023.'], correct:0},
+  {q:'"Das gibt Sinn." — best English version?', opts:['That gives sense.','That makes sense.'], correct:1},
+  {q:'"Er bekommt viele Nachrichten mit." — best English version?', opts:['He gets a lot of news along.','He receives a lot of news.'], correct:1}
+];
+function checkEx4(){checkMC('mcList4',ex4Data,'ex4','fb4','next4');updateProgress(4);}
+
+function updateWordCount(){const t=document.getElementById('essayText').value.trim();document.getElementById('wc').textContent=t?t.split(/\s+/).length:0;}
+const rubricCriteria=[
+  'I selected only content relevant to the task (school blog post).',
+  'I did not translate word-for-word; I paraphrased naturally.',
+  'I used an appropriate, engaging but semi-formal register.',
+  'I avoided Germanisms and false friends.',
+  'I explained any culture-specific terms briefly for the target audience.',
+  'I included the key facts and figures (e.g. the Pew Research statistic).',
+  'I organised the information logically, not just in source-text order.',
+  'My mediation is within the word range (100–150 words).',
+  'My English is grammatically accurate.',
+  'The text reads naturally, as if originally written in English.'
+];
+function submitEx5(){
+  const list=document.getElementById('rubricList');list.innerHTML='';
+  rubricCriteria.forEach((c,i)=>{
+    const row=document.createElement('label');row.className='rubric-item';
+    row.innerHTML=`<input type="checkbox" onchange="updateRubricScore()" id="rub5_${i}"><span>${c}</span>`;
+    list.appendChild(row);
+  });
+  document.getElementById('ex5feedback').style.display='block';
+}
+function updateRubricScore(){
+  let ticked=0;rubricCriteria.forEach((c,i)=>{if(document.getElementById('rub5_'+i).checked)ticked++;});
+  scores.ex5=ticked;document.getElementById('finalBtn').style.display = ticked>=7 ? 'inline-block':'none';updateProgress(5);
+}
+function showFinal(){
+  document.querySelectorAll('.exercise').forEach(e=>e.classList.remove('active'));
+  const grid=document.getElementById('scoreGrid');grid.innerHTML='';
+  const names={ex1:'Übung 1 · Relevante Infos',ex2:'Übung 2 · Register',ex3:'Übung 3 · Paraphrasing',ex4:'Übung 4 · Germanismen',ex5:'Übung 5 · Vollständige Sprachmittlung'};
+  let total=0,max=0;
+  Object.keys(scores).forEach(k=>{
+    total+=scores[k];max+=maxScores[k];
+    const card=document.createElement('div');card.className='score-card';
+    card.innerHTML=`<div class="name">${names[k]}</div><div class="val">${scores[k]}/${maxScores[k]}</div>`;
+    grid.appendChild(card);
+  });
+  document.getElementById('finalSummary').textContent=`Gesamtpunktzahl: ${total} von ${max}`;
+  document.getElementById('finalScore').style.display='block';window.scrollTo({top:0,behavior:'smooth'});
+}
+buildEx1();buildMC('mcList2',ex2Data);buildEx3();buildMC('mcList4',ex4Data);
+</script>
+</body>
+</html>

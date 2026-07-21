@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text Analysis: Aims and Ambitions — Abitur English</title>
+<style>
+  :root{
+    --accent:#0070C0;
+    --accent-dark:#004e87;
+    --gold:#FFD700;
+    --green:#1e8e3e;
+    --red:#d93025;
+    --yellow:#e6a700;
+    --bg:#f4f6f9;
+    --card:#ffffff;
+    --text:#1c2b36;
+    --muted:#5b6b76;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;}
+  .wrap{max-width:840px;margin:0 auto;padding:0 18px 60px;}
+  header{background:linear-gradient(135deg,var(--accent-dark),var(--accent));color:#fff;padding:34px 18px 26px;}
+  header .inner{max-width:840px;margin:0 auto;}
+  header h1{margin:0 0 6px;font-size:1.7rem;}
+  header .tag{font-size:.92rem;opacity:.9;margin-bottom:18px;}
+  .progress-outer{background:rgba(255,255,255,.25);border-radius:20px;height:10px;overflow:hidden;}
+  .progress-inner{background:var(--gold);height:100%;width:0%;transition:width .4s ease;}
+  #progressLabel{font-size:.82rem;margin-top:6px;opacity:.9;}
+
+  details.guide{background:var(--card);border-radius:10px;margin:22px 0;box-shadow:0 1px 4px rgba(0,0,0,.08);}
+  details.guide summary{cursor:pointer;padding:14px 18px;font-weight:600;color:var(--accent-dark);}
+  .guide-body{padding:0 18px 18px;}
+  .device{border-left:3px solid var(--accent);padding:8px 12px;margin:10px 0;background:#f0f6fc;border-radius:0 6px 6px 0;}
+  .device b{color:var(--accent-dark);}
+
+  .exercise{display:none;background:var(--card);border-radius:12px;padding:24px 22px;margin:22px 0;box-shadow:0 1px 6px rgba(0,0,0,.08);}
+  .exercise.active{display:block;}
+  .exercise h2{color:var(--accent-dark);margin-top:0;font-size:1.25rem;border-bottom:2px solid #eef2f5;padding-bottom:10px;}
+  .instructions{color:var(--muted);font-size:.94rem;margin-bottom:16px;}
+
+  .article-box{background:#f8fafc;border:1px solid #e1e8ee;border-radius:8px;padding:18px 20px;margin-bottom:18px;font-size:.97rem;}
+  .article-box h3{margin-top:0;color:var(--accent-dark);}
+  .article-box .byline{font-style:italic;color:var(--muted);font-size:.85rem;margin-bottom:12px;}
+  .hl{background:#fff3b0;padding:1px 3px;border-radius:3px;}
+  .hl-label{font-size:.7rem;background:var(--accent);color:#fff;border-radius:4px;padding:1px 6px;margin-left:4px;vertical-align:middle;}
+
+  details.reread{margin-bottom:16px;background:#f8fafc;border:1px solid #e1e8ee;border-radius:8px;}
+  details.reread summary{cursor:pointer;padding:10px 14px;font-weight:600;color:var(--accent-dark);font-size:.9rem;}
+  details.reread .article-box{border:none;background:none;padding:4px 14px 14px;}
+
+  .match-row{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px dashed #e1e8ee;}
+  .match-row:last-child{border-bottom:none;}
+  .match-quote{flex:1;font-style:italic;color:var(--text);}
+  .match-row select{flex:0 0 230px;padding:8px;border-radius:6px;border:1px solid #cbd5e0;font-size:.9rem;}
+  .match-row select.correct{border-color:var(--green);background:#e6f4ea;}
+  .match-row select.wrong{border-color:var(--red);background:#fdeceb;}
+
+  .mc-q{margin-bottom:18px;}
+  .mc-q p.qtext{font-weight:600;margin-bottom:8px;}
+  .mc-opt{display:block;padding:10px 14px;margin-bottom:8px;border:1px solid #cbd5e0;border-radius:7px;cursor:pointer;transition:.15s;}
+  .mc-opt:hover{border-color:var(--accent);}
+  .mc-opt.selected{border-color:var(--accent);background:#eaf3fb;}
+  .mc-opt.correct{border-color:var(--green);background:#e6f4ea;}
+  .mc-opt.wrong{border-color:var(--red);background:#fdeceb;}
+  .mc-q.locked .mc-opt{cursor:default;pointer-events:none;}
+
+  .order-pool{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+  .order-item{background:#eaf3fb;border:1px solid var(--accent);color:var(--accent-dark);padding:10px 14px;border-radius:7px;cursor:pointer;font-size:.9rem;}
+  .order-item.used{opacity:.35;pointer-events:none;}
+  .order-slots{display:flex;flex-direction:column;gap:8px;}
+  .order-slot{min-height:44px;border:2px dashed #cbd5e0;border-radius:7px;padding:8px 12px;display:flex;align-items:center;gap:10px;background:#fbfcfd;}
+  .order-slot .badge{background:var(--accent);color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;}
+  .order-slot.correct{border-color:var(--green);background:#e6f4ea;}
+  .order-slot.wrong{border-color:var(--red);background:#fdeceb;}
+
+  textarea{width:100%;min-height:220px;padding:14px;border:1px solid #cbd5e0;border-radius:8px;font-family:inherit;font-size:.95rem;resize:vertical;}
+  .wordcount{text-align:right;font-size:.82rem;color:var(--muted);margin-top:4px;}
+  .prompt-card{border:1px solid #cbd5e0;border-radius:8px;padding:12px 14px;margin-bottom:10px;cursor:pointer;}
+  .prompt-card.selected{border-color:var(--accent);background:#eaf3fb;}
+  .rubric-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #eef2f5;}
+  .rubric-item input{margin-top:4px;}
+  .model-para{background:#f8fafc;border-left:4px solid var(--accent);padding:14px 16px;margin-top:16px;border-radius:0 8px 8px 0;font-size:.93rem;}
+  .annot{color:var(--accent-dark);font-weight:600;}
+
+  .btn{display:inline-block;background:var(--accent);color:#fff;border:none;padding:11px 22px;border-radius:7px;font-size:.95rem;cursor:pointer;font-weight:600;}
+  .btn:hover{background:var(--accent-dark);}
+  .btn.secondary{background:transparent;color:var(--accent-dark);border:1px solid #cbd5e0;font-weight:500;}
+  .btn.secondary:hover{background:#eef2f5;}
+  .btn[disabled]{opacity:.4;pointer-events:none;}
+  .btn-row{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap;}
+
+  .feedback{margin-top:16px;padding:12px 16px;border-radius:8px;font-size:.92rem;display:none;}
+  .feedback.show{display:block;}
+  .feedback.perfect{background:#e6f4ea;color:#1e8e3e;border:1px solid #bfe4c9;}
+  .feedback.good{background:#fff8e1;color:#8a6500;border:1px solid #ffe6a0;}
+  .feedback.poor{background:#fdeceb;color:#b3261e;border:1px solid #f7c6c2;}
+
+  #finalScore{display:none;background:var(--card);border-radius:12px;padding:28px 24px;margin:22px 0;box-shadow:0 1px 6px rgba(0,0,0,.08);text-align:center;}
+  #finalScore h2{color:var(--accent-dark);}
+  .score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px;text-align:left;}
+  .score-card{background:#f8fafc;border-radius:8px;padding:12px 14px;border:1px solid #e1e8ee;}
+  .score-card .name{font-size:.8rem;color:var(--muted);}
+  .score-card .val{font-size:1.3rem;font-weight:700;color:var(--accent-dark);}
+</style>
+</head>
+<body>
+<header>
+  <div class="inner">
+    <h1>Text Analysis: Aims and Ambitions</h1>
+    <div class="tag">Abitur English · 5 Übungen · Sofortiges Feedback</div>
+    <div class="progress-outer"><div class="progress-inner" id="progressBar"></div></div>
+    <div id="progressLabel">Übung 0 von 5 abgeschlossen</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<details class="guide">
+  <summary>📘 Referenzleitfaden: Rhetorische Mittel (zum Nachschlagen)</summary>
+  <div class="guide-body">
+    <div class="device"><b>Rhetorical question</b> — a question asked to make a point rather than to get an answer. <br><i>Example: "Isn't it time we asked what success really costs?"</i></div>
+    <div class="device"><b>Anecdote</b> — a short personal story used to illustrate a wider point. <br><i>Example: "When Maria was twelve, she watched her father work three jobs to pay the rent."</i></div>
+    <div class="device"><b>Statistic</b> — a number or piece of data used as evidence. <br><i>Example: "Nearly 40% of graduates now say they would take a pay cut for a shorter working week."</i></div>
+    <div class="device"><b>Metaphor</b> — describing something as if it were something else, without using "like" or "as". <br><i>Example: "The corporate ladder has become a treadmill."</i></div>
+    <div class="device"><b>Direct address</b> — speaking straight to the reader using "you" or "your". <br><i>Example: "You already know the feeling — that quiet dread on Sunday evening."</i></div>
+    <div class="device"><b>Tricolon (list of three)</b> — three parallel words or phrases for rhythm and emphasis. <br><i>Example: "They wanted freedom, flexibility, and a reason to get out of bed."</i></div>
+    <div class="device"><b>Antithesis / contrast</b> — placing two opposing ideas close together for effect. <br><i>Example: "Our parents chased security; we chase meaning."</i></div>
+  </div>
+</details>
+
+<!-- EXERCISE 1 -->
+<div class="exercise active" id="ex1">
+  <h2>Übung 1 · Rhetorische Mittel zuordnen</h2>
+  <p class="instructions">Read the article below. Match each highlighted quotation to the rhetorical/stylistic device it demonstrates. The devices used here are <b>different</b> from the ones in the reference guide above — use your own analytical judgement.</p>
+
+  <div class="article-box">
+    <h3>The Ambition Gap: Why Young Americans Are Rewriting the Rules of Success</h3>
+    <div class="byline">Adapted from a US current-affairs magazine feature</div>
+    <p>For most of the twentieth century, the American Dream had a simple shape: work hard, climb the ladder, and the good life would follow. <span class="hl" id="q1">Ask any twenty-five-year-old today whether that promise still holds, and you will likely be met with a tired laugh.</span> Something has shifted, and it is not merely a matter of economics.</p>
+    <p>Consider Daniel Ruiz, a 27-year-old marketing associate in Ohio. <span class="hl" id="q2">He grew up watching his father clock sixty-hour weeks at a steel plant that closed twice and reopened once, chasing a stability that never quite arrived.</span> Daniel now works four days a week by choice, earning less than his father did, and describes himself as happier than his parents ever were.</p>
+    <p>He is far from alone. <span class="hl" id="q3">A recent Pew survey found that 61% of American workers under thirty now rank "time for life outside work" above salary when choosing a job.</span> Employers who once dangled titles and corner offices are discovering that a new generation simply is not biting.</p>
+    <p>Critics call this laziness. Sociologists call it something else entirely: a rational response to a broken bargain. <span class="hl" id="q4">Their grandparents built companies; their parents built portfolios; they are building, above all, boundaries.</span> The ambition has not disappeared — it has relocated, from the office to the self.</p>
+    <p>Whether this shift represents decline or wisdom will be argued for years. <span class="hl" id="q5">But one thing is already clear: the old ladder is rusting, and nobody under thirty seems particularly interested in climbing it.</span></p>
+  </div>
+
+  <div id="matchList"></div>
+
+  <div class="btn-row">
+    <button class="btn" onclick="checkEx1()">Check Answers</button>
+    <button class="btn" id="next1" style="display:none" onclick="goTo(2)">Next Exercise →</button>
+  </div>
+  <div class="feedback" id="fb1"></div>
+</div>
+
+<!-- EXERCISE 2 -->
+<div class="exercise" id="ex2">
+  <h2>Übung 2 · Purpose, Audience &amp; Tone</h2>
+  <p class="instructions">Answer the following questions about the article's purpose, intended audience, and tone.</p>
+
+  <details class="reread">
+    <summary>📄 Read the article again</summary>
+    <div class="article-box">
+      <p>For most of the twentieth century, the American Dream had a simple shape: work hard, climb the ladder, and the good life would follow. Ask any twenty-five-year-old today whether that promise still holds, and you will likely be met with a tired laugh. Something has shifted, and it is not merely a matter of economics.</p>
+      <p>Consider Daniel Ruiz, a 27-year-old marketing associate in Ohio. He grew up watching his father clock sixty-hour weeks at a steel plant that closed twice and reopened once, chasing a stability that never quite arrived. Daniel now works four days a week by choice, earning less than his father did, and describes himself as happier than his parents ever were.</p>
+      <p>He is far from alone. A recent Pew survey found that 61% of American workers under thirty now rank "time for life outside work" above salary when choosing a job. Employers who once dangled titles and corner offices are discovering that a new generation simply is not biting.</p>
+      <p>Critics call this laziness. Sociologists call it something else entirely: a rational response to a broken bargain. Their grandparents built companies; their parents built portfolios; they are building, above all, boundaries. The ambition has not disappeared — it has relocated, from the office to the self.</p>
+      <p>Whether this shift represents decline or wisdom will be argued for years. But one thing is already clear: the old ladder is rusting, and nobody under thirty seems particularly interested in climbing it.</p>
+    </div>
+  </details>
+
+  <div id="mcList2"></div>
+  <div class="btn-row">
+    <button class="btn secondary" onclick="goTo(1)">← Back</button>
+    <button class="btn" onclick="checkEx2()">Check Answers</button>
+    <button class="btn" id="next2" style="display:none" onclick="goTo(3)">Next Exercise →</button>
+  </div>
+  <div class="feedback" id="fb2"></div>
+</div>
+
+<!-- EXERCISE 3 -->
+<div class="exercise" id="ex3">
+  <h2>Übung 3 · Wirkung analysieren (Effect Analysis)</h2>
+  <p class="instructions">For each technique below, choose the answer that best explains its effect on the reader.</p>
+
+  <details class="reread">
+    <summary>📄 Read the article again</summary>
+    <div class="article-box">
+      <p>For most of the twentieth century, the American Dream had a simple shape: work hard, climb the ladder, and the good life would follow. Ask any twenty-five-year-old today whether that promise still holds, and you will likely be met with a tired laugh. Something has shifted, and it is not merely a matter of economics.</p>
+      <p>Consider Daniel Ruiz, a 27-year-old marketing associate in Ohio. He grew up watching his father clock sixty-hour weeks at a steel plant that closed twice and reopened once, chasing a stability that never quite arrived. Daniel now works four days a week by choice, earning less than his father did, and describes himself as happier than his parents ever were.</p>
+      <p>He is far from alone. A recent Pew survey found that 61% of American workers under thirty now rank "time for life outside work" above salary when choosing a job. Employers who once dangled titles and corner offices are discovering that a new generation simply is not biting.</p>
+      <p>Critics call this laziness. Sociologists call it something else entirely: a rational response to a broken bargain. Their grandparents built companies; their parents built portfolios; they are building, above all, boundaries. The ambition has not disappeared — it has relocated, from the office to the self.</p>
+      <p>Whether this shift represents decline or wisdom will be argued for years. But one thing is already clear: the old ladder is rusting, and nobody under thirty seems particularly interested in climbing it.</p>
+    </div>
+  </details>
+
+  <div id="mcList3"></div>
+  <div class="btn-row">
+    <button class="btn secondary" onclick="goTo(2)">← Back</button>
+    <button class="btn" onclick="checkEx3()">Check Answers</button>
+    <button class="btn" id="next3" style="display:none" onclick="goTo(4)">Next Exercise →</button>
+  </div>
+  <div class="feedback" id="fb3"></div>
+</div>
+
+<!-- EXERCISE 4 -->
+<div class="exercise" id="ex4">
+  <h2>Übung 4 · Aufbau eines Analyseaufsatzes ordnen</h2>
+  <p class="instructions">Click the paragraph descriptions below in the correct order to build a well-structured analysis essay (introduction → body → conclusion).</p>
+
+  <div class="order-pool" id="orderPool4"></div>
+  <div class="order-slots" id="orderSlots4"></div>
+
+  <div class="btn-row">
+    <button class="btn secondary" onclick="goTo(3)">← Back</button>
+    <button class="btn" onclick="checkEx4()">Check Answers</button>
+    <button class="btn" id="next4" style="display:none" onclick="goTo(5)">Next Exercise →</button>
+  </div>
+  <div class="feedback" id="fb4"></div>
+</div>
+
+<!-- EXERCISE 5 -->
+<div class="exercise" id="ex5">
+  <h2>Übung 5 · Vollständige Analyse schreiben</h2>
+  <p class="instructions">Choose a focus and write a full analysis paragraph (150–200 words) examining how the writer uses language to convey their message.</p>
+
+  <details class="reread">
+    <summary>📄 Read the article again</summary>
+    <div class="article-box">
+      <p>For most of the twentieth century, the American Dream had a simple shape: work hard, climb the ladder, and the good life would follow. Ask any twenty-five-year-old today whether that promise still holds, and you will likely be met with a tired laugh. Something has shifted, and it is not merely a matter of economics.</p>
+      <p>Consider Daniel Ruiz, a 27-year-old marketing associate in Ohio. He grew up watching his father clock sixty-hour weeks at a steel plant that closed twice and reopened once, chasing a stability that never quite arrived. Daniel now works four days a week by choice, earning less than his father did, and describes himself as happier than his parents ever were.</p>
+      <p>He is far from alone. A recent Pew survey found that 61% of American workers under thirty now rank "time for life outside work" above salary when choosing a job. Employers who once dangled titles and corner offices are discovering that a new generation simply is not biting.</p>
+      <p>Critics call this laziness. Sociologists call it something else entirely: a rational response to a broken bargain. Their grandparents built companies; their parents built portfolios; they are building, above all, boundaries. The ambition has not disappeared — it has relocated, from the office to the self.</p>
+      <p>Whether this shift represents decline or wisdom will be argued for years. But one thing is already clear: the old ladder is rusting, and nobody under thirty seems particularly interested in climbing it.</p>
+    </div>
+  </details>
+
+  <div class="prompt-card selected" id="promptCard">
+    <b>Focus:</b> Analyse how the writer uses the extended metaphor of the "ladder" and the contrast between generations to convey her argument about changing attitudes to ambition.
+  </div>
+
+  <textarea id="essayText" oninput="updateWordCount()" placeholder="Write your analysis paragraph here..."></textarea>
+  <div class="wordcount"><span id="wc">0</span> Wörter</div>
+
+  <div class="btn-row">
+    <button class="btn secondary" onclick="goTo(4)">← Back</button>
+    <button class="btn" onclick="submitEx5()">Submit &amp; Show Rubric</button>
+  </div>
+
+  <div id="ex5feedback" style="display:none">
+    <h3 style="color:var(--accent-dark);margin-top:24px;">Selbsteinschätzung</h3>
+    <div id="rubricList"></div>
+
+    <div class="model-para">
+      <b>Model paragraph:</b><br><br>
+      The writer builds her argument around a carefully sustained <span class="annot">extended metaphor</span> of the career "ladder", which she introduces early ("climb the ladder") and returns to in her closing line ("the old ladder is rusting"). This structural echo gives the piece a sense of closure while reinforcing her central claim: that a once-trusted system is now in decay. The metaphor is reinforced by a clear <span class="annot">generational contrast</span> — "their grandparents built companies; their parents built portfolios; they are building, above all, boundaries" — a triadic structure that traces a subtle narrative of change across three generations, ending pointedly on the abstract noun "boundaries" rather than a material achievement. This contrast positions the younger generation not as lazy, but as making a considered, almost architectural choice. Together, these devices work to reframe what might be read as a loss of ambition as, instead, a rational and even admirable adaptation to a changed world.
+    </div>
+
+    <div class="btn-row">
+      <button class="btn" id="finalBtn" style="display:none" onclick="showFinal()">See Final Score →</button>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL SCORE -->
+<div id="finalScore">
+  <h2>🎉 Alle Übungen abgeschlossen!</h2>
+  <p id="finalSummary"></p>
+  <div class="score-grid" id="scoreGrid"></div>
+</div>
+
+</div>
+
+<script>
+const scores = {ex1:0,ex2:0,ex3:0,ex4:0,ex5:0};
+const maxScores = {ex1:5,ex2:4,ex3:4,ex4:5,ex5:10};
+
+function goTo(n){
+  document.querySelectorAll('.exercise').forEach(e=>e.classList.remove('active'));
+  document.getElementById('ex'+n).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function updateProgress(n){
+  document.getElementById('progressBar').style.width=(n/5*100)+'%';
+  document.getElementById('progressLabel').textContent=`Übung ${n} von 5 abgeschlossen`;
+}
+function showFeedbackBox(id,correct,max){
+  const fb=document.getElementById(id);
+  const pct=correct/max;
+  fb.className='feedback show '+(pct===1?'perfect':pct>=0.6?'good':'poor');
+  fb.textContent=(pct===1?'✅ Perfekt! ':pct>=0.6?'👍 Gut gemacht! ':'❌ Noch nicht ganz. ')+`Punktzahl: ${correct}/${max}`;
+}
+
+/* ---------- EXERCISE 1: dropdown matching ---------- */
+const ex1Data=[
+  {id:'q1', text:'"Ask any twenty-five-year-old today whether that promise still holds, and you will likely be met with a tired laugh."', answer:'Rhetorical question'},
+  {id:'q2', text:'"He grew up watching his father clock sixty-hour weeks at a steel plant that closed twice and reopened once, chasing a stability that never quite arrived."', answer:'Anecdote'},
+  {id:'q3', text:'"A recent Pew survey found that 61% of American workers under thirty now rank \\"time for life outside work\\" above salary when choosing a job."', answer:'Statistic'},
+  {id:'q4', text:'"Their grandparents built companies; their parents built portfolios; they are building, above all, boundaries."', answer:'Tricolon (list of three)'},
+  {id:'q5', text:'"But one thing is already clear: the old ladder is rusting, and nobody under thirty seems particularly interested in climbing it."', answer:'Metaphor'}
+];
+const deviceOptions=['Rhetorical question','Anecdote','Statistic','Metaphor','Direct address','Tricolon (list of three)','Antithesis / contrast'];
+
+function buildEx1(){
+  const container=document.getElementById('matchList');
+  ex1Data.forEach(d=>{
+    const row=document.createElement('div');
+    row.className='match-row';
+    const shuffled=[...deviceOptions].sort(()=>Math.random()-0.5);
+    let opts=`<option value="">-- choose --</option>`+shuffled.map(o=>`<option value="${o}">${o}</option>`).join('');
+    row.innerHTML=`<div class="match-quote">${d.text}</div><select id="sel_${d.id}">${opts}</select>`;
+    container.appendChild(row);
+  });
+}
+function checkEx1(){
+  let correct=0;
+  ex1Data.forEach(d=>{
+    const sel=document.getElementById('sel_'+d.id);
+    sel.disabled=true;
+    if(sel.value===d.answer){sel.classList.add('correct');correct++;}
+    else{sel.classList.add('wrong');}
+  });
+  scores.ex1=correct;
+  showFeedbackBox('fb1',correct,5);
+  document.getElementById('next1').style.display='inline-block';
+  updateProgress(1);
+}
+
+/* ---------- EXERCISE 2: purpose/audience/tone MC ---------- */
+const ex2Data=[
+  {q:'What is the primary purpose of this article?', opts:['To criticise young Americans for lacking ambition','To explain and interpret a generational shift in attitudes to work','To give practical career advice','To report breaking economic news'], correct:1},
+  {q:'Who is the most likely intended audience?', opts:['Teenagers choosing a school subject','General adult readers interested in social/economic trends','Steel plant workers specifically','Non-English-speaking tourists'], correct:1},
+  {q:'How would you best describe the overall tone?', opts:['Mocking and dismissive','Analytical and sympathetic','Angry and accusatory','Purely neutral and statistical'], correct:1},
+  {q:'What kind of publication does this text most resemble?', opts:['A scientific lab report','A current-affairs magazine feature','A private diary entry','A legal contract'], correct:1}
+];
+function buildMC(containerId,data){
+  const container=document.getElementById(containerId);
+  data.forEach((item,qi)=>{
+    const block=document.createElement('div');
+    block.className='mc-q';
+    block.id=containerId+'_q'+qi;
+    let optsHtml=item.opts.map((o,oi)=>`<div class="mc-opt" data-oi="${oi}" onclick="selectOpt('${containerId}_q${qi}',${oi})">${o}</div>`).join('');
+    block.innerHTML=`<p class="qtext">${qi+1}. ${item.q}</p>${optsHtml}`;
+    container.appendChild(block);
+  });
+}
+function selectOpt(blockId,oi){
+  const block=document.getElementById(blockId);
+  if(block.classList.contains('locked'))return;
+  block.querySelectorAll('.mc-opt').forEach(o=>o.classList.remove('selected'));
+  block.querySelector(`.mc-opt[data-oi="${oi}"]`).classList.add('selected');
+  block.dataset.selected=oi;
+}
+function checkMC(containerId,data,scoreKey,fbId,nextId){
+  let correct=0;
+  data.forEach((item,qi)=>{
+    const block=document.getElementById(containerId+'_q'+qi);
+    block.classList.add('locked');
+    const sel=block.dataset.selected;
+    block.querySelectorAll('.mc-opt').forEach(o=>{
+      const oi=parseInt(o.dataset.oi);
+      if(oi===item.correct)o.classList.add('correct');
+      else if(sel!==undefined && parseInt(sel)===oi)o.classList.add('wrong');
+    });
+    if(sel!==undefined && parseInt(sel)===item.correct)correct++;
+  });
+  scores[scoreKey]=correct;
+  showFeedbackBox(fbId,correct,data.length);
+  document.getElementById(nextId).style.display='inline-block';
+}
+
+function checkEx2(){checkMC('mcList2',ex2Data,'ex2','fb2','next2');updateProgress(2);}
+
+/* ---------- EXERCISE 3: effect analysis MC ---------- */
+const ex3Data=[
+  {q:'What effect does the anecdote about Daniel Ruiz create?', opts:['It makes the argument more personal and relatable through a concrete example','It confuses the reader with irrelevant detail','It proves the statistic is false','It shifts the topic away from ambition entirely'], correct:0},
+  {q:'What is the effect of the statistic ("61% of American workers under thirty...")?', opts:['It weakens the argument by being too vague','It lends the personal anecdote broader, evidence-based credibility','It contradicts the rest of the article','It is purely decorative and adds nothing'], correct:1},
+  {q:'What effect does the phrase "the old ladder is rusting" have at the end of the article?', opts:['It provides a memorable, image-based conclusion that reinforces the central metaphor','It introduces a completely new idea with no connection to the rest of the text','It softens the argument by adding humour','It directly quotes Daniel Ruiz'], correct:0},
+  {q:'What is the effect of structuring the article around one detailed case study plus wider evidence?', opts:['It makes the article feel like pure fiction','It balances emotional engagement (the anecdote) with credibility (the data), strengthening the overall argument','It makes the article too short to be persuasive','It removes any need for a clear argument'], correct:1}
+];
+function checkEx3(){buildMC3Once();checkMC('mcList3',ex3Data,'ex3','fb3','next3');updateProgress(3);}
+let mc3Built=false;
+function buildMC3Once(){if(!mc3Built){}}
+
+/* ---------- EXERCISE 4: essay structure ordering ---------- */
+const ex4Items=[
+  {id:0,text:'Introduction: names the text, author/source, and states the overall purpose and main argument.'},
+  {id:1,text:'Body paragraph 1: analyses content/structure — what claims the article makes and how it is organised.'},
+  {id:2,text:'Body paragraph 2: analyses language and style — key rhetorical devices and their effect on the reader.'},
+  {id:3,text:'Body paragraph 3: evaluates effectiveness — how convincingly the writer achieves her purpose for the intended audience.'},
+  {id:4,text:'Conclusion: summarises the analysis and offers a final judgement on the text\'s overall impact.'}
+];
+let ex4Order=[];
+function buildEx4(){
+  const pool=document.getElementById('orderPool4');
+  const slots=document.getElementById('orderSlots4');
+  const shuffled=[...ex4Items].sort(()=>Math.random()-0.5);
+  shuffled.forEach(item=>{
+    const el=document.createElement('div');
+    el.className='order-item';
+    el.textContent=item.text;
+    el.dataset.id=item.id;
+    el.onclick=()=>addToOrder(item.id,el);
+    pool.appendChild(el);
+  });
+  for(let i=0;i<5;i++){
+    const slot=document.createElement('div');
+    slot.className='order-slot';
+    slot.id='slot4_'+i;
+    slot.innerHTML=`<span class="badge">${i+1}</span><span class="slot-text" style="color:var(--muted)">—</span>`;
+    slots.appendChild(slot);
+  }
+}
+function addToOrder(id,el){
+  if(ex4Order.length>=5)return;
+  el.classList.add('used');
+  ex4Order.push(id);
+  const idx=ex4Order.length-1;
+  const slot=document.getElementById('slot4_'+idx);
+  slot.querySelector('.slot-text').textContent=ex4Items.find(i=>i.id===id).text;
+  slot.querySelector('.slot-text').style.color='var(--text)';
+  slot.dataset.itemId=id;
+}
+function checkEx4(){
+  let correct=0;
+  for(let i=0;i<5;i++){
+    const slot=document.getElementById('slot4_'+i);
+    const itemId=parseInt(slot.dataset.itemId);
+    if(itemId===i){slot.classList.add('correct');correct++;}
+    else{slot.classList.add('wrong');}
+  }
+  scores.ex4=correct;
+  showFeedbackBox('fb4',correct,5);
+  document.getElementById('next4').style.display='inline-block';
+  updateProgress(4);
+}
+
+/* ---------- EXERCISE 5 ---------- */
+function updateWordCount(){
+  const t=document.getElementById('essayText').value.trim();
+  document.getElementById('wc').textContent=t?t.split(/\s+/).length:0;
+}
+const rubricCriteria=[
+  'I named the text type, source, and author.',
+  'I stated the main purpose and argument of the text.',
+  'I identified at least two specific rhetorical/stylistic devices with quotations.',
+  'I explained the effect of each device on the reader, not just named it.',
+  'I discussed the intended audience.',
+  'I discussed the overall tone.',
+  'I used appropriate analytical vocabulary (e.g. "conveys", "reinforces", "juxtaposes").',
+  'I linked my points back to the writer\'s overall purpose.',
+  'My paragraph has a clear structure (topic sentence, evidence, analysis).',
+  'My English is grammatically accurate and my register is formal/academic.'
+];
+function submitEx5(){
+  const list=document.getElementById('rubricList');
+  list.innerHTML='';
+  rubricCriteria.forEach((c,i)=>{
+    const row=document.createElement('label');
+    row.className='rubric-item';
+    row.innerHTML=`<input type="checkbox" onchange="updateRubricScore()" id="rub5_${i}"><span>${c}</span>`;
+    list.appendChild(row);
+  });
+  document.getElementById('ex5feedback').style.display='block';
+}
+function updateRubricScore(){
+  let ticked=0;
+  rubricCriteria.forEach((c,i)=>{if(document.getElementById('rub5_'+i).checked)ticked++;});
+  scores.ex5=ticked;
+  document.getElementById('finalBtn').style.display = ticked>=7 ? 'inline-block':'none';
+  updateProgress(5);
+}
+
+/* ---------- FINAL SCORE ---------- */
+function showFinal(){
+  document.querySelectorAll('.exercise').forEach(e=>e.classList.remove('active'));
+  const grid=document.getElementById('scoreGrid');
+  grid.innerHTML='';
+  const names={ex1:'Übung 1 · Rhetorical Devices',ex2:'Übung 2 · Purpose/Audience/Tone',ex3:'Übung 3 · Effect Analysis',ex4:'Übung 4 · Essay Structure',ex5:'Übung 5 · Full Analysis'};
+  let total=0,max=0;
+  Object.keys(scores).forEach(k=>{
+    total+=scores[k];max+=maxScores[k];
+    const card=document.createElement('div');
+    card.className='score-card';
+    card.innerHTML=`<div class="name">${names[k]}</div><div class="val">${scores[k]}/${maxScores[k]}</div>`;
+    grid.appendChild(card);
+  });
+  document.getElementById('finalSummary').textContent=`Gesamtpunktzahl: ${total} von ${max}`;
+  document.getElementById('finalScore').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ---------- init ---------- */
+buildEx1();
+buildMC('mcList2',ex2Data);
+buildMC('mcList3',ex3Data);
+buildEx4();
+</script>
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mediation: Science and Technology — Abitur English</title>
+<style>
+  :root{--accent:#00756a;--accent-dark:#00504a;--gold:#FFD700;--green:#1e8e3e;--red:#d93025;--bg:#f4f6f9;--card:#ffffff;--text:#1c2b36;--muted:#5b6b76;}
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;}
+  .wrap{max-width:840px;margin:0 auto;padding:0 18px 60px;}
+  header{background:linear-gradient(135deg,var(--accent-dark),var(--accent));color:#fff;padding:34px 18px 26px;}
+  header .inner{max-width:840px;margin:0 auto;}
+  header h1{margin:0 0 6px;font-size:1.7rem;}
+  header .tag{font-size:.92rem;opacity:.9;margin-bottom:18px;}
+  .progress-outer{background:rgba(255,255,255,.25);border-radius:20px;height:10px;overflow:hidden;}
+  .progress-inner{background:var(--gold);height:100%;width:0%;transition:width .4s ease;}
+  #progressLabel{font-size:.82rem;margin-top:6px;opacity:.9;}
+  details.guide{background:var(--card);border-radius:10px;margin:22px 0;box-shadow:0 1px 4px rgba(0,0,0,.08);}
+  details.guide summary{cursor:pointer;padding:14px 18px;font-weight:600;color:var(--accent-dark);}
+  .guide-body{padding:0 18px 18px;}
+  .device{border-left:3px solid var(--accent);padding:8px 12px;margin:10px 0;background:#eaf5f3;border-radius:0 6px 6px 0;}
+  .device b{color:var(--accent-dark);}
+  .task-box{background:#eaf5f3;border:1px solid #bcdedb;border-radius:8px;padding:16px 18px;margin-bottom:18px;font-size:.97rem;}
+  .task-box b{color:var(--accent-dark);}
+  .article-box{background:#f8fafc;border:1px solid #e1e8ee;border-radius:8px;padding:18px 20px;margin-bottom:18px;font-size:.97rem;}
+  .article-box h3{margin-top:0;color:var(--accent-dark);}
+  .article-box .byline{font-style:italic;color:var(--muted);font-size:.85rem;margin-bottom:12px;}
+  details.reread{margin-bottom:16px;background:#f8fafc;border:1px solid #e1e8ee;border-radius:8px;}
+  details.reread summary{cursor:pointer;padding:10px 14px;font-weight:600;color:var(--accent-dark);font-size:.9rem;}
+  details.reread .article-box{border:none;background:none;padding:4px 14px 14px;}
+  .exercise{display:none;background:var(--card);border-radius:12px;padding:24px 22px;margin:22px 0;box-shadow:0 1px 6px rgba(0,0,0,.08);}
+  .exercise.active{display:block;}
+  .exercise h2{color:var(--accent-dark);margin-top:0;font-size:1.25rem;border-bottom:2px solid #eef2f5;padding-bottom:10px;}
+  .instructions{color:var(--muted);font-size:.94rem;margin-bottom:16px;}
+  .match-row{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px dashed #e1e8ee;}
+  .match-row:last-child{border-bottom:none;}
+  .match-quote{flex:1;font-style:italic;color:var(--text);}
+  .match-row select{flex:0 0 230px;padding:8px;border-radius:6px;border:1px solid #cbd5e0;font-size:.9rem;}
+  .match-row select.correct{border-color:var(--green);background:#e6f4ea;}
+  .match-row select.wrong{border-color:var(--red);background:#fdeceb;}
+  .mc-q{margin-bottom:18px;}
+  .mc-q p.qtext{font-weight:600;margin-bottom:8px;}
+  .mc-opt{display:block;padding:10px 14px;margin-bottom:8px;border:1px solid #cbd5e0;border-radius:7px;cursor:pointer;transition:.15s;}
+  .mc-opt:hover{border-color:var(--accent);}
+  .mc-opt.selected{border-color:var(--accent);background:#eaf5f3;}
+  .mc-opt.correct{border-color:var(--green);background:#e6f4ea;}
+  .mc-opt.wrong{border-color:var(--red);background:#fdeceb;}
+  .mc-q.locked .mc-opt{cursor:default;pointer-events:none;}
+  textarea{width:100%;min-height:200px;padding:14px;border:1px solid #cbd5e0;border-radius:8px;font-family:inherit;font-size:.95rem;resize:vertical;}
+  .wordcount{text-align:right;font-size:.82rem;color:var(--muted);margin-top:4px;}
+  .rubric-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #eef2f5;}
+  .rubric-item input{margin-top:4px;}
+  .model-para{background:#f8fafc;border-left:4px solid var(--accent);padding:14px 16px;margin-top:16px;border-radius:0 8px 8px 0;font-size:.93rem;}
+  .annot{color:var(--accent-dark);font-weight:600;}
+  .btn{display:inline-block;background:var(--accent);color:#fff;border:none;padding:11px 22px;border-radius:7px;font-size:.95rem;cursor:pointer;font-weight:600;}
+  .btn:hover{background:var(--accent-dark);}
+  .btn.secondary{background:transparent;color:var(--accent-dark);border:1px solid #cbd5e0;font-weight:500;}
+  .btn.secondary:hover{background:#eef2f5;}
+  .btn-row{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap;}
+  .feedback{margin-top:16px;padding:12px 16px;border-radius:8px;font-size:.92rem;display:none;}
+  .feedback.show{display:block;}
+  .feedback.perfect{background:#e6f4ea;color:#1e8e3e;border:1px solid #bfe4c9;}
+  .feedback.good{background:#fff8e1;color:#8a6500;border:1px solid #ffe6a0;}
+  .feedback.poor{background:#fdeceb;color:#b3261e;border:1px solid #f7c6c2;}
+  #finalScore{display:none;background:var(--card);border-radius:12px;padding:28px 24px;margin:22px 0;box-shadow:0 1px 6px rgba(0,0,0,.08);text-align:center;}
+  #finalScore h2{color:var(--accent-dark);}
+  .score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px;text-align:left;}
+  .score-card{background:#f8fafc;border-radius:8px;padding:12px 14px;border:1px solid #e1e8ee;}
+  .score-card .name{font-size:.8rem;color:var(--muted);}
+  .score-card .val{font-size:1.3rem;font-weight:700;color:var(--accent-dark);}
+</style>
+</head>
+<body>
+<header>
+  <div class="inner">
+    <h1>Mediation: Science and Technology</h1>
+    <div class="tag">Abitur English · 5 Übungen · Sofortiges Feedback</div>
+    <div class="progress-outer"><div class="progress-inner" id="progressBar"></div></div>
+    <div id="progressLabel">Übung 0 von 5 abgeschlossen</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="task-box">
+  <b>Mediation task:</b> You are helping edit an English-language newsletter for an international science club. Read the German article below and convey its relevant content in English (about 100–150 words) for club members.
+</div>
+
+<details class="guide">
+  <summary>📘 Referenzleitfaden: Sprachmittlung (zum Nachschlagen)</summary>
+  <div class="guide-body">
+    <div class="device"><b>Select, don't translate everything</b> — only convey content relevant to the task, not every sentence.</div>
+    <div class="device"><b>Paraphrase, don't translate word-for-word</b> — express the meaning naturally in English. <br><i>German: "Viele stellen ihre Karriereziele infrage." → English: "Many are reconsidering their career goals" (not "put their career goals into question").</i></div>
+    <div class="device"><b>Match the register to the task</b> — a newsletter needs clear, engaging but informative English.</div>
+    <div class="device"><b>Avoid Germanisms</b> — watch out for direct translations that sound unnatural in English.</div>
+    <div class="device"><b>Add brief explanations for culture-specific or technical terms</b> where the target audience might not know them.</div>
+  </div>
+</details>
+
+<!-- EXERCISE 1 -->
+<div class="exercise active" id="ex1">
+  <h2>Übung 1 · Relevante Informationen auswählen</h2>
+  <p class="instructions">Read the German article. Classify each point below as Relevant (should be included) or Not relevant (can be left out for this task).</p>
+
+  <div class="article-box">
+    <h3>Die Maschinen, die wir zum Denken gebracht haben: Leben mit Künstlicher Intelligenz</h3>
+    <div class="byline">Übersetzt und bearbeitet aus einem deutschen Wissenschaftsmagazin</div>
+    <p>Vor fünfzig Jahren gehörte ein Computer, der ein Gespräch führen kann, eindeutig ins Reich der Science-Fiction. Hätte 1975 irgendjemand geglaubt, dass eine Maschine eines Tages Gedichte schreiben, Krankheiten diagnostizieren und philosophische Debatten führen könnte – noch vor dem Frühstück? Heute steckt eine solche Maschine still in Millionen von Hosentaschen.</p>
+    <p>Ein Beispiel ist Dr. Amara Okafor, Radiologin in Toronto. Letztes Jahr entdeckte ein KI-System einen Tumor auf einem ihrer Röntgenbilder, den sie selbst bei der ersten Durchsicht übersehen hatte. Seitdem betrachtet sie medizinische Bilder mit anderen Augen. Für sie ist künstliche Intelligenz keine futuristische Spielerei mehr, sondern eine Kollegin, die sie sich nicht ausgesucht hat, auf die sie sich aber inzwischen verlässt.</p>
+    <p>Das Ausmaß dieser Entwicklung ist beachtlich. Ein aktueller Branchenbericht schätzt, dass KI-Systeme mittlerweile bei über 30 Prozent der medizinischen Diagnosen in führenden Krankenhäusern weltweit unterstützend eingesetzt werden. Was einst ein Laborexperiment war, ist inzwischen fest etablierte Infrastruktur.</p>
+    <p>Doch jeder Effizienzgewinn wirft auch Fragen auf. Wir haben Maschinen beigebracht, Muster zu erkennen, die wir selbst nicht sehen konnten – nun müssen wir entscheiden, wie viel von unserem eigenen Urteilsvermögen wir dafür abgeben wollen. Optimisten sehen ein längeres, gesünderes Leben voraus. Skeptiker befürchten einen schleichenden Verlust menschlicher Fachkompetenz und Verantwortlichkeit.</p>
+    <p>Beide Seiten sind sich in einem Punkt einig: Die Technologie kommt nicht erst noch – sie ist bereits da. Die eigentliche Frage ist nicht mehr, ob künstliche Intelligenz unsere Zukunft prägen wird, sondern wie klug wir sie mitgestalten.</p>
+  </div>
+
+  <div id="matchList"></div>
+
+  <div class="btn-row">
+    <button class="btn" onclick="checkEx1()">Check Answers</button>
+    <button class="btn" id="next1" style="display:none" onclick="goTo(2)">Next Exercise →</button>
+  </div>
+  <div class="feedback" id="fb1"></div>
+</div>
+
+<!-- EXERCISE 2 -->
+<div class="exercise" id="ex2">
+  <h2>Übung 2 · Register wählen</h2>
+  <p class="instructions">For an English-language newsletter, choose the more appropriate phrasing.</p>
+  <div id="mcList2"></div>
+  <div class="btn-row">
+    <button class="btn secondary" onclick="goTo(1)">← Back</button>
+    <button class="btn" onclick="checkEx2()">Check Answers</button>
+    <button class="btn" id="next2" style="display:none" onclick="goTo(3)">Next Exercise →</button>
+  </div>
+  <div class="feedback" id="fb2"></div>
+</div>
+
+<!-- EXERCISE 3 -->
+<div class="exercise" id="ex3">
+  <h2>Übung 3 · Umschreibungen zuordnen (Paraphrasing)</h2>
+  <p class="instructions">Match each German phrase from the article to its best natural English paraphrase.</p>
+  <div id="matchList3"></div>
+  <div class="btn-row">
+    <button class="btn secondary" onclick="goTo(2)">← Back</button>
+    <button class="btn" onclick="checkEx3()">Check Answers</button>
+    <button class="btn" id="next3" style="display:none" onclick="goTo(4)">Next Exercise →</button>
+  </div>
+  <div class="feedback" id="fb3"></div>
+</div>
+
+<!-- EXERCISE 4 -->
+<div class="exercise" id="ex4">
+  <h2>Übung 4 · Germanismen vermeiden</h2>
+  <p class="instructions">Choose the version that avoids a "Germanism".</p>
+  <div id="mcList4"></div>
+  <div class="btn-row">
+    <button class="btn secondary" onclick="goTo(3)">← Back</button>
+    <button class="btn" onclick="checkEx4()">Check Answers</button>
+    <button class="btn" id="next4" style="display:none" onclick="goTo(5)">Next Exercise →</button>
+  </div>
+  <div class="feedback" id="fb4"></div>
+</div>
+
+<!-- EXERCISE 5 -->
+<div class="exercise" id="ex5">
+  <h2>Übung 5 · Vollständige Sprachmittlung schreiben</h2>
+  <p class="instructions">Now complete the full mediation task: convey the relevant content of the German article in English (100–150 words) for an international science club newsletter.</p>
+  <details class="reread">
+    <summary>📄 Read the article again</summary>
+    <div class="article-box">
+      <p>Vor fünfzig Jahren gehörte ein Computer, der ein Gespräch führen kann, eindeutig ins Reich der Science-Fiction. Heute steckt eine solche Maschine still in Millionen von Hosentaschen.</p>
+      <p>Dr. Amara Okafor, Radiologin in Toronto, entdeckte letztes Jahr mithilfe eines KI-Systems einen Tumor, den sie selbst übersehen hatte. Für sie ist KI keine Spielerei mehr, sondern eine verlässliche Kollegin.</p>
+      <p>Ein aktueller Bericht schätzt, dass KI-Systeme bei über 30 Prozent der medizinischen Diagnosen in führenden Krankenhäusern weltweit unterstützend eingesetzt werden.</p>
+      <p>Optimisten sehen ein längeres, gesünderes Leben voraus. Skeptiker befürchten einen Verlust menschlicher Fachkompetenz und Verantwortlichkeit.</p>
+      <p>Die eigentliche Frage ist nicht mehr, ob künstliche Intelligenz unsere Zukunft prägen wird, sondern wie klug wir sie mitgestalten.</p>
+    </div>
+  </details>
+  <textarea id="essayText" oninput="updateWordCount()" placeholder="Write your mediation text here..."></textarea>
+  <div class="wordcount"><span id="wc">0</span> Wörter</div>
+  <div class="btn-row">
+    <button class="btn secondary" onclick="goTo(4)">← Back</button>
+    <button class="btn" onclick="submitEx5()">Submit &amp; Show Rubric</button>
+  </div>
+  <div id="ex5feedback" style="display:none">
+    <h3 style="color:var(--accent-dark);margin-top:24px;">Selbsteinschätzung</h3>
+    <div id="rubricList"></div>
+    <div class="model-para">
+      <b>Model mediation:</b><br><br>
+      Fifty years ago, a computer capable of holding a conversation was purely science fiction — today, similar technology fits quietly in millions of pockets. Dr. Amara Okafor, a radiologist in Toronto, experienced this shift firsthand last year when an AI system detected a tumour on a scan that she herself had initially missed. For her, artificial intelligence is no longer a novelty but a reliable colleague. According to a recent industry report, AI tools now assist in over 30% of medical diagnoses in leading hospitals worldwide. While optimists expect AI to bring longer, healthier lives, sceptics worry about a loss of human expertise and accountability. Either way, the technology is already here — the real question is how wisely we choose to guide it.
+    </div>
+    <div class="btn-row">
+      <button class="btn" id="finalBtn" style="display:none" onclick="showFinal()">See Final Score →</button>
+    </div>
+  </div>
+</div>
+
+<div id="finalScore">
+  <h2>🎉 Alle Übungen abgeschlossen!</h2>
+  <p id="finalSummary"></p>
+  <div class="score-grid" id="scoreGrid"></div>
+</div>
+
+</div>
+
+<script>
+const scores = {ex1:0,ex2:0,ex3:0,ex4:0,ex5:0};
+const maxScores = {ex1:6,ex2:4,ex3:5,ex4:4,ex5:10};
+function goTo(n){document.querySelectorAll('.exercise').forEach(e=>e.classList.remove('active'));document.getElementById('ex'+n).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+function updateProgress(n){document.getElementById('progressBar').style.width=(n/5*100)+'%';document.getElementById('progressLabel').textContent=`Übung ${n} von 5 abgeschlossen`;}
+function showFeedbackBox(id,correct,max){const fb=document.getElementById(id);const pct=correct/max;fb.className='feedback show '+(pct===1?'perfect':pct>=0.6?'good':'poor');fb.textContent=(pct===1?'✅ Perfekt! ':pct>=0.6?'👍 Gut gemacht! ':'❌ Noch nicht ganz. ')+`Punktzahl: ${correct}/${max}`;}
+
+const ex1Data=[
+  {id:'s1', text:'"KI-Systeme werden zunehmend in medizinischen Diagnosen eingesetzt."', answer:'Relevant'},
+  {id:'s2', text:'"Dr. Amara Okafor arbeitet als Radiologin in Toronto."', answer:'Relevant'},
+  {id:'s3', text:'"Über 30 Prozent der Diagnosen in führenden Krankenhäusern werden KI-unterstützt (Branchenbericht)."', answer:'Relevant'},
+  {id:'s4', text:'"Der Artikel stammt aus einem deutschen Wissenschaftsmagazin."', answer:'Not relevant'},
+  {id:'s5', text:'"Es gibt eine Debatte zwischen Optimisten und Skeptikern über die Folgen von KI."', answer:'Relevant'},
+  {id:'s6', text:'"1975 hätte niemand an sprechende Computer geglaubt."', answer:'Not relevant'}
+];
+const classifyOptions=['Relevant','Not relevant'];
+function buildEx1(){
+  const container=document.getElementById('matchList');
+  ex1Data.forEach(d=>{
+    const row=document.createElement('div');row.className='match-row';
+    const shuffled=[...classifyOptions].sort(()=>Math.random()-0.5);
+    let opts=`<option value="">-- choose --</option>`+shuffled.map(o=>`<option value="${o}">${o}</option>`).join('');
+    row.innerHTML=`<div class="match-quote">${d.text}</div><select id="sel_${d.id}">${opts}</select>`;
+    container.appendChild(row);
+  });
+}
+function checkEx1(){
+  let correct=0;
+  ex1Data.forEach(d=>{
+    const sel=document.getElementById('sel_'+d.id);sel.disabled=true;
+    if(sel.value===d.answer){sel.classList.add('correct');correct++;}else{sel.classList.add('wrong');}
+  });
+  scores.ex1=correct;showFeedbackBox('fb1',correct,6);document.getElementById('next1').style.display='inline-block';updateProgress(1);
+}
+
+function buildMC(containerId,data){
+  const container=document.getElementById(containerId);
+  data.forEach((item,qi)=>{
+    const block=document.createElement('div');block.className='mc-q';block.id=containerId+'_q'+qi;
+    let optsHtml=item.opts.map((o,oi)=>`<div class="mc-opt" data-oi="${oi}" onclick="selectOpt('${containerId}_q${qi}',${oi})">${o}</div>`).join('');
+    block.innerHTML=`<p class="qtext">${qi+1}. ${item.q}</p>${optsHtml}`;
+    container.appendChild(block);
+  });
+}
+function selectOpt(blockId,oi){
+  const block=document.getElementById(blockId);if(block.classList.contains('locked'))return;
+  block.querySelectorAll('.mc-opt').forEach(o=>o.classList.remove('selected'));
+  block.querySelector(`.mc-opt[data-oi="${oi}"]`).classList.add('selected');block.dataset.selected=oi;
+}
+function checkMC(containerId,data,scoreKey,fbId,nextId){
+  let correct=0;
+  data.forEach((item,qi)=>{
+    const block=document.getElementById(containerId+'_q'+qi);block.classList.add('locked');
+    const sel=block.dataset.selected;
+    block.querySelectorAll('.mc-opt').forEach(o=>{
+      const oi=parseInt(o.dataset.oi);
+      if(oi===item.correct)o.classList.add('correct');
+      else if(sel!==undefined && parseInt(sel)===oi)o.classList.add('wrong');
+    });
+    if(sel!==undefined && parseInt(sel)===item.correct)correct++;
+  });
+  scores[scoreKey]=correct;showFeedbackBox(fbId,correct,data.length);document.getElementById(nextId).style.display='inline-block';
+}
+
+const ex2Data=[
+  {q:'Which opening suits a science club newsletter?', opts:['AI is honestly kind of wild if you think about it.','Artificial intelligence has moved from science fiction to everyday medical practice.'], correct:1},
+  {q:'Which phrasing best fits an informative newsletter?', opts:['A radiologist in Toronto now relies on AI to help catch things she might miss.','Some doctor or whatever uses a computer thing now to find tumours.'], correct:0},
+  {q:'Which is a natural way to present the industry statistic?', opts:['AI tools now assist in over 30% of medical diagnoses in leading hospitals worldwide.','Statistical estimation suggests a percentage exceeding thirty regarding AI-assisted diagnostic procedures.'], correct:0},
+  {q:'Which closing line fits a newsletter for club members?', opts:['The real challenge now is deciding how wisely we use this powerful technology.','Basically it is what it is, technology just does its thing now.'], correct:0}
+];
+function checkEx2(){checkMC('mcList2',ex2Data,'ex2','fb2','next2');updateProgress(2);}
+
+const ex3Data=[
+  {id:'p1', text:'"betrachtet sie medizinische Bilder mit anderen Augen"', answer:'she now looks at medical scans differently'},
+  {id:'p2', text:'"das Ausmaß dieser Entwicklung ist beachtlich"', answer:'the scale of this shift is considerable'},
+  {id:'p3', text:'"fest etablierte Infrastruktur"', answer:'firmly established infrastructure'},
+  {id:'p4', text:'"wie viel... wir abgeben wollen"', answer:'how much... we are willing to give up'},
+  {id:'p5', text:'"wie klug wir sie mitgestalten"', answer:'how wisely we help shape it'}
+];
+const paraphraseOptions=['she now looks at medical scans differently','the scale of this shift is considerable','firmly established infrastructure','how much... we are willing to give up','how wisely we help shape it'];
+function buildEx3(){
+  const container=document.getElementById('matchList3');
+  ex3Data.forEach(d=>{
+    const row=document.createElement('div');row.className='match-row';
+    const shuffled=[...paraphraseOptions].sort(()=>Math.random()-0.5);
+    let opts=`<option value="">-- choose --</option>`+shuffled.map(o=>`<option value="${o}">${o}</option>`).join('');
+    row.innerHTML=`<div class="match-quote">${d.text}</div><select id="sel3_${d.id}">${opts}</select>`;
+    container.appendChild(row);
+  });
+}
+function checkEx3(){
+  let correct=0;
+  ex3Data.forEach(d=>{
+    const sel=document.getElementById('sel3_'+d.id);sel.disabled=true;
+    if(sel.value===d.answer){sel.classList.add('correct');correct++;}else{sel.classList.add('wrong');}
+  });
+  scores.ex3=correct;showFeedbackBox('fb3',correct,5);document.getElementById('next3').style.display='inline-block';updateProgress(3);
+}
+
+const ex4Data=[
+  {q:'"Das macht Sinn für mich." — best English version?', opts:['That makes sense to me.','That makes sense for me.'], correct:0},
+  {q:'"Sie arbeitet seit 2019 als Radiologin." — best English version?', opts:['She has worked as a radiologist since 2019.','She works since 2019 as a radiologist.'], correct:0},
+  {q:'"Ich bin interessiert an KI." — best English version?', opts:['I am interested in AI.','I am interested on AI.'], correct:0},
+  {q:'"Das Krankenhaus hat 30 Prozent." (referring to AI use) — best English version?', opts:['The hospital has 30 percent.','AI is used in around 30% of the hospital\'s diagnoses.'], correct:1}
+];
+function checkEx4(){checkMC('mcList4',ex4Data,'ex4','fb4','next4');updateProgress(4);}
+
+function updateWordCount(){const t=document.getElementById('essayText').value.trim();document.getElementById('wc').textContent=t?t.split(/\s+/).length:0;}
+const rubricCriteria=[
+  'I selected only content relevant to the task (science club newsletter).',
+  'I did not translate word-for-word; I paraphrased naturally.',
+  'I used an appropriate, informative newsletter register.',
+  'I avoided Germanisms and false friends.',
+  'I explained any technical or culture-specific terms briefly.',
+  'I included the key facts and figures (e.g. the industry statistic).',
+  'I organised the information logically, not just in source-text order.',
+  'My mediation is within the word range (100–150 words).',
+  'My English is grammatically accurate.',
+  'The text reads naturally, as if originally written in English.'
+];
+function submitEx5(){
+  const list=document.getElementById('rubricList');list.innerHTML='';
+  rubricCriteria.forEach((c,i)=>{
+    const row=document.createElement('label');row.className='rubric-item';
+    row.innerHTML=`<input type="checkbox" onchange="updateRubricScore()" id="rub5_${i}"><span>${c}</span>`;
+    list.appendChild(row);
+  });
+  document.getElementById('ex5feedback').style.display='block';
+}
+function updateRubricScore(){
+  let ticked=0;rubricCriteria.forEach((c,i)=>{if(document.getElementById('rub5_'+i).checked)ticked++;});
+  scores.ex5=ticked;document.getElementById('finalBtn').style.display = ticked>=7 ? 'inline-block':'none';updateProgress(5);
+}
+function showFinal(){
+  document.querySelectorAll('.exercise').forEach(e=>e.classList.remove('active'));
+  const grid=document.getElementById('scoreGrid');grid.innerHTML='';
+  const names={ex1:'Übung 1 · Relevante Infos',ex2:'Übung 2 · Register',ex3:'Übung 3 · Paraphrasing',ex4:'Übung 4 · Germanismen',ex5:'Übung 5 · Vollständige Sprachmittlung'};
+  let total=0,max=0;
+  Object.keys(scores).forEach(k=>{
+    total+=scores[k];max+=maxScores[k];
+    const card=document.createElement('div');card.className='score-card';
+    card.innerHTML=`<div class="name">${names[k]}</div><div class="val">${scores[k]}/${maxScores[k]}</div>`;
+    grid.appendChild(card);
+  });
+  document.getElementById('finalSummary').textContent=`Gesamtpunktzahl: ${total} von ${max}`;
+  document.getElementById('finalScore').style.display='block';window.scrollTo({top:0,behavior:'smooth'});
+}
+buildEx1();buildMC('mcList2',ex2Data);buildEx3();buildMC('mcList4',ex4Data);
+</script>
+</body>
+</html>
