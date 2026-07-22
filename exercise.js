@@ -297,6 +297,97 @@ function copyAnswers() {
     .catch(function() { prompt('Copy this text:', body); });
 }
 
+/*
+ * initListening(elementId, script, opts)
+ *   Renders a play-limited listening player into #elementId and speaks the
+ *   script aloud via the browser's speech synthesis — no readable transcript.
+ *   script  — array of segments: { voice:'female'|'male', rate:0.95, text:'…' }
+ *   opts    — { maxPlays: 2 }  (default 2, like the MSA exam: heard twice)
+ *
+ * The audio is generated on the student's device, so nothing needs hosting.
+ * If the browser has no speech synthesis, a clear fallback message is shown
+ * instead of a silent, broken player.
+ */
+function initListening(elementId, script, opts) {
+  opts = opts || {};
+  var maxPlays = opts.maxPlays || 2;
+  var el = document.getElementById(elementId);
+  if (!el) return;
+
+  var supported = ('speechSynthesis' in window) && (typeof SpeechSynthesisUtterance !== 'undefined');
+  if (!supported) {
+    el.innerHTML = '<div class="listen-player"><div class="listen-title">🎧 Listening</div>'
+      + '<p class="listen-status" style="color:var(--red)">Sorry, your browser can\'t play this listening audio. '
+      + 'Please try a different browser (e.g. Chrome, Edge or Safari) or ask your teacher.</p></div>';
+    return;
+  }
+
+  var playsUsed = 0, playing = false;
+  el.innerHTML = '<div class="listen-player">'
+    + '<div class="listen-title">🎧 Listening</div>'
+    + '<button type="button" class="btn btn-gold listen-play" id="' + elementId + '-play">▶ Play recording</button>'
+    + '<div class="listen-status" id="' + elementId + '-status" aria-live="polite"></div>'
+    + '<div class="listen-plays" id="' + elementId + '-plays"></div>'
+    + '</div>';
+  var btn    = document.getElementById(elementId + '-play');
+  var status = document.getElementById(elementId + '-status');
+  var plays  = document.getElementById(elementId + '-plays');
+
+  function pickVoice(kind) {
+    var voices = window.speechSynthesis.getVoices() || [];
+    var en = voices.filter(function(v) { return /^en(-|_|$)/i.test(v.lang); });
+    if (!en.length) en = voices;
+    if (!en.length) return null;
+    var wantFemale = kind !== 'male';
+    var hint = wantFemale ? /female|zira|samantha|susan|karen|serena|fiona|moira|tessa|hazel|amelia/i
+                          : /male|david|daniel|george|fred|alex|arthur|oliver/i;
+    var match = en.filter(function(v) { return hint.test(v.name); })[0];
+    return match || en[0];
+  }
+
+  function render() {
+    var left = maxPlays - playsUsed;
+    plays.textContent = playing ? '' : (left > 0
+      ? 'You can play the recording ' + left + ' more time' + (left === 1 ? '' : 's') + '.'
+      : 'No plays remaining — answer the questions from what you heard.');
+    btn.disabled = playing || left <= 0;
+    btn.textContent = playing ? '▶ Playing…' : (playsUsed === 0 ? '▶ Play recording' : '▶ Play again');
+  }
+
+  function speak() {
+    if (playing || playsUsed >= maxPlays) return;
+    playing = true; playsUsed++;
+    status.textContent = 'Playing…';
+    render();
+    window.speechSynthesis.cancel();
+    var i = 0;
+    (function next() {
+      if (i >= script.length) {
+        playing = false;
+        status.textContent = 'Finished.';
+        render();
+        return;
+      }
+      var seg = script[i++];
+      var u = new SpeechSynthesisUtterance(seg.text);
+      u.rate = seg.rate || 1;
+      u.lang = 'en-GB';
+      var v = pickVoice(seg.voice);
+      if (v) u.voice = v;
+      u.onend = next;
+      u.onerror = next;
+      window.speechSynthesis.speak(u);
+    })();
+  }
+
+  btn.addEventListener('click', speak);
+  // Voices can load asynchronously; refresh the (already-correct) UI when they arrive.
+  if (typeof window.speechSynthesis.onvoiceschanged !== 'undefined') {
+    window.speechSynthesis.onvoiceschanged = function() { /* voices now available for pickVoice */ };
+  }
+  render();
+}
+
 document.addEventListener('paste', function(e) {
   var t = e.target;
   if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
