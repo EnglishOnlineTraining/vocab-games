@@ -228,11 +228,39 @@ function lookupGrade(earned, possible) {
   return { note: 5, label: GRADE_LABELS[4] };
 }
 
+/*
+ * MSA (Mittlerer Schulabschluss) grading — 2018 Berlin/Brandenburg
+ * Bewertungstabelle. The written exam is out of 75 points; a page's
+ * auto-graded points are scaled onto that 75-point scale, then the Note
+ * (1–6) is read off the official thresholds. Pages opt in with
+ * `var GRADE_SYSTEM = 'msa';` — everything else keeps the classroom table.
+ */
+var MSA_MAX_POINTS = 75;
+var MSA_GRADE_THRESHOLDS = [70, 63, 55, 45, 23];   // min points (of 75) for Note 1,2,3,4,5; below 23 → Note 6
+var MSA_GRADE_LABELS = ['Sehr gut', 'Gut', 'Befriedigend', 'Ausreichend', 'Mangelhaft', 'Ungenügend'];
+
+function lookupMsaGrade(earned, possible) {
+  if (!possible) return null;
+  var pts = Math.round((earned / possible) * MSA_MAX_POINTS);
+  pts = Math.max(0, Math.min(MSA_MAX_POINTS, pts));
+  for (var i = 0; i < MSA_GRADE_THRESHOLDS.length; i++) {
+    if (pts >= MSA_GRADE_THRESHOLDS[i]) return { note: i + 1, label: MSA_GRADE_LABELS[i] };
+  }
+  return { note: 6, label: MSA_GRADE_LABELS[5] };
+}
+
+/* Pick the grade table the current page asked for (MSA vs classroom). */
+function currentGradeLookup(earned, possible) {
+  return (typeof GRADE_SYSTEM !== 'undefined' && GRADE_SYSTEM === 'msa')
+    ? lookupMsaGrade(earned, possible)
+    : lookupGrade(earned, possible);
+}
+
 function renderScore() {
   var box = document.getElementById('score-display');
   var sc = totalScore();
   if (!sc.possible) { box.style.display = 'none'; return; }
-  var grade = lookupGrade(sc.earned, sc.possible);
+  var grade = currentGradeLookup(sc.earned, sc.possible);
   box.style.display = 'block';
   box.innerHTML = '<div class="card" style="text-align:center;background:var(--gold-lt);border:1.5px solid var(--gold)">'
     + '<div style="font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--blue);font-weight:700;margin-bottom:.3rem">Your score (auto-graded sections)</div>'
@@ -295,6 +323,97 @@ function copyAnswers() {
   navigator.clipboard.writeText(body)
     .then(function() { alert('Answers copied! Paste them into an email to your teacher.'); })
     .catch(function() { prompt('Copy this text:', body); });
+}
+
+/*
+ * initListening(elementId, script, opts)
+ *   Renders a play-limited listening player into #elementId and speaks the
+ *   script aloud via the browser's speech synthesis — no readable transcript.
+ *   script  — array of segments: { voice:'female'|'male', rate:0.95, text:'…' }
+ *   opts    — { maxPlays: 2 }  (default 2, like the MSA exam: heard twice)
+ *
+ * The audio is generated on the student's device, so nothing needs hosting.
+ * If the browser has no speech synthesis, a clear fallback message is shown
+ * instead of a silent, broken player.
+ */
+function initListening(elementId, script, opts) {
+  opts = opts || {};
+  var maxPlays = opts.maxPlays || 2;
+  var el = document.getElementById(elementId);
+  if (!el) return;
+
+  var supported = ('speechSynthesis' in window) && (typeof SpeechSynthesisUtterance !== 'undefined');
+  if (!supported) {
+    el.innerHTML = '<div class="listen-player"><div class="listen-title">🎧 Listening</div>'
+      + '<p class="listen-status" style="color:var(--red)">Sorry, your browser can\'t play this listening audio. '
+      + 'Please try a different browser (e.g. Chrome, Edge or Safari) or ask your teacher.</p></div>';
+    return;
+  }
+
+  var playsUsed = 0, playing = false;
+  el.innerHTML = '<div class="listen-player">'
+    + '<div class="listen-title">🎧 Listening</div>'
+    + '<button type="button" class="btn btn-gold listen-play" id="' + elementId + '-play">▶ Play recording</button>'
+    + '<div class="listen-status" id="' + elementId + '-status" aria-live="polite"></div>'
+    + '<div class="listen-plays" id="' + elementId + '-plays"></div>'
+    + '</div>';
+  var btn    = document.getElementById(elementId + '-play');
+  var status = document.getElementById(elementId + '-status');
+  var plays  = document.getElementById(elementId + '-plays');
+
+  function pickVoice(kind) {
+    var voices = window.speechSynthesis.getVoices() || [];
+    var en = voices.filter(function(v) { return /^en(-|_|$)/i.test(v.lang); });
+    if (!en.length) en = voices;
+    if (!en.length) return null;
+    var wantFemale = kind !== 'male';
+    var hint = wantFemale ? /female|zira|samantha|susan|karen|serena|fiona|moira|tessa|hazel|amelia/i
+                          : /male|david|daniel|george|fred|alex|arthur|oliver/i;
+    var match = en.filter(function(v) { return hint.test(v.name); })[0];
+    return match || en[0];
+  }
+
+  function render() {
+    var left = maxPlays - playsUsed;
+    plays.textContent = playing ? '' : (left > 0
+      ? 'You can play the recording ' + left + ' more time' + (left === 1 ? '' : 's') + '.'
+      : 'No plays remaining — answer the questions from what you heard.');
+    btn.disabled = playing || left <= 0;
+    btn.textContent = playing ? '▶ Playing…' : (playsUsed === 0 ? '▶ Play recording' : '▶ Play again');
+  }
+
+  function speak() {
+    if (playing || playsUsed >= maxPlays) return;
+    playing = true; playsUsed++;
+    status.textContent = 'Playing…';
+    render();
+    window.speechSynthesis.cancel();
+    var i = 0;
+    (function next() {
+      if (i >= script.length) {
+        playing = false;
+        status.textContent = 'Finished.';
+        render();
+        return;
+      }
+      var seg = script[i++];
+      var u = new SpeechSynthesisUtterance(seg.text);
+      u.rate = seg.rate || 1;
+      u.lang = 'en-GB';
+      var v = pickVoice(seg.voice);
+      if (v) u.voice = v;
+      u.onend = next;
+      u.onerror = next;
+      window.speechSynthesis.speak(u);
+    })();
+  }
+
+  btn.addEventListener('click', speak);
+  // Voices can load asynchronously; refresh the (already-correct) UI when they arrive.
+  if (typeof window.speechSynthesis.onvoiceschanged !== 'undefined') {
+    window.speechSynthesis.onvoiceschanged = function() { /* voices now available for pickVoice */ };
+  }
+  render();
 }
 
 document.addEventListener('paste', function(e) {
