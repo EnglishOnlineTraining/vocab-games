@@ -228,11 +228,39 @@ function lookupGrade(earned, possible) {
   return { note: 5, label: GRADE_LABELS[4] };
 }
 
+/*
+ * MSA (Mittlerer Schulabschluss) grading — 2018 Berlin/Brandenburg
+ * Bewertungstabelle. The written exam is out of 75 points; a page's
+ * auto-graded points are scaled onto that 75-point scale, then the Note
+ * (1–6) is read off the official thresholds. Pages opt in with
+ * `var GRADE_SYSTEM = 'msa';` — everything else keeps the classroom table.
+ */
+var MSA_MAX_POINTS = 75;
+var MSA_GRADE_THRESHOLDS = [70, 63, 55, 45, 23];   // min points (of 75) for Note 1,2,3,4,5; below 23 → Note 6
+var MSA_GRADE_LABELS = ['Sehr gut', 'Gut', 'Befriedigend', 'Ausreichend', 'Mangelhaft', 'Ungenügend'];
+
+function lookupMsaGrade(earned, possible) {
+  if (!possible) return null;
+  var pts = Math.round((earned / possible) * MSA_MAX_POINTS);
+  pts = Math.max(0, Math.min(MSA_MAX_POINTS, pts));
+  for (var i = 0; i < MSA_GRADE_THRESHOLDS.length; i++) {
+    if (pts >= MSA_GRADE_THRESHOLDS[i]) return { note: i + 1, label: MSA_GRADE_LABELS[i] };
+  }
+  return { note: 6, label: MSA_GRADE_LABELS[5] };
+}
+
+/* Pick the grade table the current page asked for (MSA vs classroom). */
+function currentGradeLookup(earned, possible) {
+  return (typeof GRADE_SYSTEM !== 'undefined' && GRADE_SYSTEM === 'msa')
+    ? lookupMsaGrade(earned, possible)
+    : lookupGrade(earned, possible);
+}
+
 function renderScore() {
   var box = document.getElementById('score-display');
   var sc = totalScore();
   if (!sc.possible) { box.style.display = 'none'; return; }
-  var grade = lookupGrade(sc.earned, sc.possible);
+  var grade = currentGradeLookup(sc.earned, sc.possible);
   box.style.display = 'block';
   box.innerHTML = '<div class="card" style="text-align:center;background:var(--gold-lt);border:1.5px solid var(--gold)">'
     + '<div style="font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--blue);font-weight:700;margin-bottom:.3rem">Your score (auto-graded sections)</div>'
