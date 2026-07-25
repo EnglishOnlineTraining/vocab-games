@@ -61,6 +61,11 @@ See "Year 8 & 10 — combined with Year 7 & 9" under Submission routing below fo
 
 Exercises must be drawn from these textbook topic pools. Pick a topic that hasn't already been built (check existing files in the repo), and combine the thematic content with the grammar point listed.
 
+**Live status → `topic-pool.json` (the registry, added 2026-07-25).** The tables below are the background reference, but the machine-readable **`topic-pool.json`** in the repo root is the single source of truth for *what's built vs. open*. Each topic has `status: "idea"` (queued) or `"built"` (live, with its `file`), plus a `grammar` focus and an `angle` (grammar / vocab / reading / writing / skills) — so one textbook unit can spawn several non-overlapping exercises. It covers the four textbook-driven categories (8g/8c/10g/10c); MSA stays open-ended under `msa-exercise-draft`.
+- **See what's open:** `node topic-pool.js` (or `node topic-pool.js 10g`) — lists open topics per category and integrity-checks the registry against the repo (built files exist, no orphans).
+- **`daily-exercise-draft`** picks the next `idea` for a category from the registry, builds it, then flips it to `built` with its filename.
+- **`add-topics`** skill grows the pool — proposes fresh ideas (remaining textbook units, new angles on built units, or supplementary topics) and appends them as `idea` entries after Shaun approves. Use it when a category's open count runs low.
+
 #### Year 8 Gymnasium (Green Line 4 — USA theme, ~B1)
 
 | # | Unit | Topic | Key Grammar |

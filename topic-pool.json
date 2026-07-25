@@ -1,0 +1,88 @@
+{
+  "_readme": "Single source of truth for exercise topics across the textbook-driven categories (8g/8c/10g/10c). status:'idea' = not built yet; status:'built' = live (with its file). WORKFLOW: the daily-exercise-draft skill reads this file, picks the next 'idea' for the requested category, builds it, then flips status to 'built' and fills in 'file'. Grow the pool by hand or with the add-topics skill. Run `node topic-pool.js` to see what's open and to check the registry against the repo. MSA has its own open-ended pool (everyday scenarios) handled by msa-exercise-draft and is intentionally not tracked here.",
+  "categories": {
+    "8g": { "label": "Year 8 Gymnasium",  "cefr": "~B1",    "textbook": "Klett Green Line 4",  "webhook": "year7" },
+    "8c": { "label": "Year 8 Oberschule", "cefr": "~A2",    "textbook": "Klett Orange Line 4", "webhook": "year7" },
+    "10g":{ "label": "Year 10 Gymnasium", "cefr": "~B2/C1", "textbook": "Klett Green Line 6",  "webhook": "year9" },
+    "10c":{ "label": "Year 10 Oberschule","cefr": "~B1/B2", "textbook": "Klett Orange Line 6", "webhook": "year9" }
+  },
+  "angles": {
+    "_note": "An 'angle' is the lens a given unit's exercise takes, so one textbook unit can yield several exercises without repeating itself.",
+    "grammar": "A grammar drill built around the unit's key structure",
+    "vocab": "Topic vocabulary / collocations",
+    "reading": "Reading comprehension of a text or dialogue",
+    "writing": "Guided free-writing task",
+    "skills": "Mixed / real-world skills (register, mediation, persuasion)"
+  },
+  "topics": [
+    { "id": "8g-usa-contrasts",          "category": "8g", "unit": "Across cultures 1", "topic": "The USA: Country of contrasts",      "grammar": "Adjective + noun collocations",        "angle": "vocab",   "status": "built", "file": "8g-usa-contrasts.html" },
+    { "id": "8g-kids-in-america",        "category": "8g", "unit": "Unit 1",            "topic": "Kids in America",                     "grammar": "Gerunds & infinitives, object + infinitive", "angle": "grammar", "status": "built", "file": "8g-kids-in-america.html" },
+    { "id": "8g-advertisements",         "category": "8g", "unit": "Text smart 1",      "topic": "Advertisements",                      "grammar": "Persuasive language",                  "angle": "skills",  "status": "built", "file": "8g-advertisements.html" },
+    { "id": "8g-school-life-rules",      "category": "8g", "unit": "Across cultures 2", "topic": "School life – dos and don'ts",         "grammar": "Modal verbs of obligation",            "angle": "grammar", "status": "built", "file": "8g-school-life-rules.html" },
+    { "id": "8g-new-york",               "category": "8g", "unit": "Unit 2",            "topic": "City of dreams: New York",            "grammar": "Relative clauses, perfect progressive","angle": "grammar", "status": "built", "file": "8g-new-york.html" },
+    { "id": "8g-internet-texts",         "category": "8g", "unit": "Text smart 2",      "topic": "Internet texts",                      "grammar": "Digital vocabulary / evaluating sources","angle": "vocab", "status": "built", "file": "8g-internet-texts.html" },
+    { "id": "8g-american-british-english","category":"8g", "unit": "Across cultures 3", "topic": "American vs British English",          "grammar": "Formal vs informal register",          "angle": "skills",  "status": "built", "file": "8g-american-british-english.html" },
+    { "id": "8g-american-inventions",    "category": "8g", "unit": "Unit 3",            "topic": "A nation invents itself",             "grammar": "Adjective/adverb, participles, linkers","angle": "grammar","status": "built", "file": "8g-american-inventions.html" },
+    { "id": "8g-travel-texts",           "category": "8g", "unit": "Text smart 3",      "topic": "Travel texts",                        "grammar": "Collocations for travel writing",      "angle": "writing", "status": "built", "file": "8g-travel-texts.html" },
+    { "id": "8g-american-family",        "category": "8g", "unit": "Across cultures 4", "topic": "At home with an American family",      "grammar": "Household & chores vocabulary",        "angle": "vocab",   "status": "built", "file": "8g-american-family.html" },
+    { "id": "8g-pacific-northwest",      "category": "8g", "unit": "Unit 4",            "topic": "The Pacific Northwest",               "grammar": "Question tags",                        "angle": "grammar", "status": "built", "file": "8g-pacific-northwest.html" },
+
+    { "id": "8g-kids-in-america-thanksgiving", "category": "8g", "unit": "Unit 1",      "topic": "Kids in America — Thanksgiving",       "grammar": "Festival & food vocabulary",           "angle": "reading", "status": "idea" },
+    { "id": "8g-new-york-food-culture",  "category": "8g", "unit": "Unit 2",            "topic": "New York — food & graphic novels",    "grammar": "Present & past perfect progressive",   "angle": "reading", "status": "idea" },
+    { "id": "8g-american-inventions-conditionals", "category": "8g", "unit": "Unit 3",  "topic": "A nation invents itself — statistics", "grammar": "Conditionals (type 1 & 2)",            "angle": "grammar", "status": "idea" },
+    { "id": "8g-pacific-northwest-future-perfect", "category": "8g", "unit": "Unit 4",  "topic": "The Pacific Northwest — surveys",      "grammar": "Future perfect",                       "angle": "grammar", "status": "idea" },
+    { "id": "8g-pacific-northwest-articles", "category": "8g", "unit": "Unit 4",        "topic": "The Pacific Northwest — national parks","grammar": "Articles & abstract nouns",           "angle": "grammar", "status": "idea" },
+    { "id": "8g-american-festivals",     "category": "8g", "unit": "Supplementary",     "topic": "American festivals & holidays",       "grammar": "Festival vocabulary",                  "angle": "vocab",   "status": "idea" },
+    { "id": "8g-us-environment",         "category": "8g", "unit": "Supplementary",     "topic": "US national parks & the environment", "grammar": "Comparatives & superlatives",          "angle": "grammar", "status": "idea" },
+
+    { "id": "8c-arriving-northeast",     "category": "8c", "unit": "Unit 1",            "topic": "Arriving in the Northeast",           "grammar": "Simple past, comparison of adjectives","angle": "grammar", "status": "built", "file": "8c-arriving-northeast.html" },
+    { "id": "8c-off-to-midwest",         "category": "8c", "unit": "Unit 2",            "topic": "Off to the Midwest",                 "grammar": "Simple present, present progressive",  "angle": "grammar", "status": "built", "file": "8c-off-to-midwest.html" },
+    { "id": "8c-going-west",             "category": "8c", "unit": "Unit 3",            "topic": "Going to the West",                  "grammar": "Passive (simple present), gerund",     "angle": "grammar", "status": "built", "file": "8c-going-west.html" },
+    { "id": "8c-five-teenagers",         "category": "8c", "unit": "Zoom in",           "topic": "Five teenagers from the USA",        "grammar": "Present simple",                       "angle": "reading", "status": "built", "file": "8c-five-teenagers.html" },
+    { "id": "8c-around-southwest",       "category": "8c", "unit": "Unit 4",            "topic": "Around the Southwest",               "grammar": "Present perfect with since/for",       "angle": "grammar", "status": "built", "file": "8c-around-southwest.html" },
+    { "id": "8c-settling-south",         "category": "8c", "unit": "Unit 5",            "topic": "Settling in the South",              "grammar": "Defining relative clauses",            "angle": "grammar", "status": "built", "file": "8c-settling-south.html" },
+
+    { "id": "8c-northeast-comparatives", "category": "8c", "unit": "Unit 1",            "topic": "Arriving in the Northeast — NY sights","grammar": "Comparatives & superlatives",          "angle": "grammar", "status": "idea" },
+    { "id": "8c-midwest-festivals",      "category": "8c", "unit": "Unit 2",            "topic": "Off to the Midwest — festivals",     "grammar": "Holidays & festivals vocabulary",      "angle": "vocab",   "status": "idea" },
+    { "id": "8c-going-west-gerunds",     "category": "8c", "unit": "Unit 3",            "topic": "Going to the West — volunteering",    "grammar": "Gerunds after verbs",                  "angle": "grammar", "status": "idea" },
+    { "id": "8c-american-food",          "category": "8c", "unit": "Supplementary",     "topic": "American food & eating out",         "grammar": "some / any / much / many",             "angle": "grammar", "status": "idea" },
+    { "id": "8c-teen-daily-routine",     "category": "8c", "unit": "Supplementary",     "topic": "A US teenager's daily routine",      "grammar": "Present simple & adverbs of frequency","angle": "grammar", "status": "idea" },
+    { "id": "8c-school-day-usa",         "category": "8c", "unit": "Supplementary",     "topic": "A school day in the USA",            "grammar": "can / can't & school vocabulary",      "angle": "vocab",   "status": "idea" },
+
+    { "id": "10g-cultural-diversity",    "category": "10g","unit": "Across cultures 1", "topic": "Same same but different? — cultural diversity","grammar": "Describing & commenting",     "angle": "reading", "status": "built", "file": "10g-cultural-diversity.html" },
+    { "id": "10g-scottish-history",      "category": "10g","unit": "Focus 1",           "topic": "Scottish history",                   "grammar": "Past tenses",                          "angle": "reading", "status": "built", "file": "10g-scottish-history.html" },
+    { "id": "10g-scottish-highlands",    "category": "10g","unit": "Unit 1",            "topic": "Scotland: Highlands",                "grammar": "Narrative tenses",                     "angle": "writing", "status": "built", "file": "10g-scottish-highlands.html" },
+    { "id": "10g-green-scotland",        "category": "10g","unit": "Unit 1",            "topic": "Green Scotland — renewable energy",  "grammar": "Passive voice",                        "angle": "reading", "status": "built", "file": "10g-green-scotland.html" },
+
+    { "id": "10g-scottish-lowlands",     "category": "10g","unit": "Unit 1",            "topic": "Scotland: Lowlands — Glasgow & Edinburgh","grammar": "Relative clauses",                 "angle": "reading", "status": "idea" },
+    { "id": "10g-youth-parliament",      "category": "10g","unit": "Unit 1",            "topic": "Scotland: young people's issues",    "grammar": "Modal verbs of possibility",           "angle": "writing", "status": "idea" },
+    { "id": "10g-scottish-identity",     "category": "10g","unit": "Focus 2",           "topic": "Scottish identity & the Scots language","grammar": "Linking ideas",                     "angle": "reading", "status": "idea" },
+    { "id": "10g-folk-music",            "category": "10g","unit": "Across cultures 2",  "topic": "Folk and folk-inspired music",       "grammar": "Comparing & contrasting",              "angle": "skills",  "status": "idea" },
+    { "id": "10g-slavery-civil-war",     "category": "10g","unit": "Focus 3",           "topic": "Slavery and the Civil War",          "grammar": "Past perfect",                         "angle": "reading", "status": "idea" },
+    { "id": "10g-growing-up-black",      "category": "10g","unit": "Unit 2",            "topic": "Growing up Black — The Hate U Give", "grammar": "Reported speech",                      "angle": "reading", "status": "idea" },
+    { "id": "10g-proud-to-be-black",     "category": "10g","unit": "Unit 2",            "topic": "Proud to be Black — cultural appropriation","grammar": "Describing & commenting",       "angle": "writing", "status": "idea" },
+    { "id": "10g-post-racial-obama",     "category": "10g","unit": "Unit 2",            "topic": "Towards a post-racial society — Obama","grammar": "Present perfect vs past simple",      "angle": "reading", "status": "idea" },
+    { "id": "10g-civil-rights",          "category": "10g","unit": "Focus 4",           "topic": "Fight for your rights! — MLK vs Malcolm X","grammar": "Linking ideas / argument",         "angle": "writing", "status": "idea" },
+    { "id": "10g-black-roots-pop",       "category": "10g","unit": "Across cultures 3",  "topic": "Black roots of pop music",           "grammar": "Passive voice",                        "angle": "reading", "status": "idea" },
+    { "id": "10g-my-generation",         "category": "10g","unit": "Focus 5",           "topic": "My generation? — youth subcultures", "grammar": "Comparatives & contrast",              "angle": "skills",  "status": "idea" },
+    { "id": "10g-teenage-lifestyles",    "category": "10g","unit": "Unit 3",            "topic": "Teenage lifestyles — Schooled",      "grammar": "Narrative perspective / stylistic devices","angle":"reading","status": "idea" },
+    { "id": "10g-rap-hip-hop",           "category": "10g","unit": "Unit 3",            "topic": "Rap and hip hop",                    "grammar": "Reported speech / mediation",          "angle": "skills",  "status": "idea" },
+    { "id": "10g-digital-age",           "category": "10g","unit": "Unit 3",            "topic": "The digital age — video games",      "grammar": "Conditionals (all types)",             "angle": "writing", "status": "idea" },
+    { "id": "10g-social-media",          "category": "10g","unit": "Unit 3",            "topic": "Social media — criteria for use",    "grammar": "Future tenses",                        "angle": "skills",  "status": "idea" },
+    { "id": "10g-protest-songs",         "category": "10g","unit": "Across cultures 4",  "topic": "The soundtrack to history — protest songs","grammar": "Describing & commenting",        "angle": "writing", "status": "idea" },
+
+    { "id": "10c-faces-commonwealth",    "category": "10c","unit": "Zoom in",           "topic": "Faces of the Commonwealth",          "grammar": "Present tenses (revision)",            "angle": "reading", "status": "built", "file": "10c-faces-commonwealth.html" },
+    { "id": "10c-discover-canada",       "category": "10c","unit": "Unit 1",            "topic": "Discover Canada",                    "grammar": "Present tenses & present perfect",     "angle": "grammar", "status": "built", "file": "10c-discover-canada.html" },
+    { "id": "10c-inside-india",          "category": "10c","unit": "Unit 2",            "topic": "Inside India",                       "grammar": "If-clauses I & II, passive",           "angle": "grammar", "status": "built", "file": "10c-inside-india.html" },
+    { "id": "10c-new-zealand-news",      "category": "10c","unit": "Unit 3",            "topic": "New Zealand news",                   "grammar": "Past tenses, past perfect, if-clauses III","angle": "grammar","status": "built", "file": "10c-new-zealand-news.html" },
+    { "id": "10c-mlk-biography",         "category": "10c","unit": "Extra",             "topic": "Martin Luther King — biography",     "grammar": "Past tenses",                          "angle": "reading", "status": "built", "file": "10c-mlk-biography.html" },
+    { "id": "10c-stereotypes",           "category": "10c","unit": "Extra",             "topic": "Stereotypes",                        "grammar": "Describing & commenting",              "angle": "skills",  "status": "built", "file": "10c-stereotypes.html" },
+    { "id": "10c-london-slang",          "category": "10c","unit": "Extra",             "topic": "London slang ban",                   "grammar": "Register (formal/informal)",           "angle": "skills",  "status": "built", "file": "10c-london-slang.html" },
+
+    { "id": "10c-government-systems",     "category": "10c","unit": "Extra",             "topic": "Government systems (UK vs USA)",      "grammar": "Passive voice",                        "angle": "reading", "status": "idea" },
+    { "id": "10c-eu-and-uk",             "category": "10c","unit": "Extra",             "topic": "The EU and the UK",                  "grammar": "Present perfect & linking words",      "angle": "reading", "status": "idea" },
+    { "id": "10c-pair-of-jeans",         "category": "10c","unit": "Extra",             "topic": "A Pair of Jeans (short story)",      "grammar": "Narrative tenses",                     "angle": "reading", "status": "idea" },
+    { "id": "10c-canada-environment",    "category": "10c","unit": "Unit 1",            "topic": "Discover Canada — Arctic environment","grammar": "Present perfect",                      "angle": "reading", "status": "idea" },
+    { "id": "10c-india-mumbai",          "category": "10c","unit": "Unit 2",            "topic": "Inside India — Mumbai & fair wages", "grammar": "Passive voice",                        "angle": "reading", "status": "idea" }
+  ]
+}
