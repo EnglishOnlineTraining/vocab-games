@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSA Speaking: Discussion Practice | englishonline.training</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="msa-activities.html" style="font-size:.75rem;opacity:.8">&larr; MSA Preparation</a>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Topic 1 of 4</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+<nav class="step-nav" id="step-nav"></nav>
+
+
+<!-- STEP 0 – WELCOME -->
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">🗣️</div>
+      <h1 class="welcome-title">MSA Speaking: Discussion Practice</h1>
+      <p class="welcome-sub">Prepare for the <strong>oral (mündliche) MSA exam</strong>. For each of the four discussion topics, plan your arguments and your opinion — then practise speaking about it for two to three minutes. Your notes are sent to your teacher, but there is no automatic mark: speaking is graded by your teacher.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">🌍</div><strong>Topic 1 – Climate Action</strong>Are the Friday demonstrations too radical, or not radical enough?</div>
+      <div class="ov-card locked"><div class="ov-icon">🤝</div><strong>Topic 2 – Volunteering</strong>A year of volunteering after school — useful or useless?</div>
+      <div class="ov-card locked"><div class="ov-icon">🗽</div><strong>Topic 3 – The American Dream</strong>What do you like and dislike about it?</div>
+      <div class="ov-card locked"><div class="ov-icon">🏙️</div><strong>Topic 4 – Multicultural Cities</strong>Would you live in a multicultural neighbourhood?</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. 10c" autocomplete="off">
+      </div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Preparing &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 1 – TOPIC 1: CLIMATE ACTION -->
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Topic 1</span>
+    <h2 class="ex-title">Climate Action</h2>
+    <p class="ex-subtitle">Discussion question — prepare to speak about it for 2–3 minutes.</p>
+
+    <div class="card">
+      <div class="card-title">Your discussion question</div>
+      <div class="reading-text">
+        <p><strong>Young people demonstrate every Friday for more climate action. Are these protests too radical, or not radical enough?</strong> Give reasons and examples for your opinion.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Useful language for a discussion</div>
+      <div class="word-bank">
+        <strong>Opinion:</strong> <span>In my opinion…</span> <span>I strongly believe…</span> <span>As far as I am concerned…</span>
+        <strong style="margin-left:.5rem">Both sides:</strong> <span>On the one hand… on the other hand…</span> <span>Some people argue… however…</span>
+        <strong style="margin-left:.5rem">Examples:</strong> <span>For example…</span> <span>A good example is…</span> <span>such as…</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Plan your answer</div>
+      <div class="form-group">
+        <label class="form-label" for="t1-args">Arguments — one side and the other</label>
+        <textarea class="form-textarea" id="t1-args" placeholder="On the one hand, the protests raise awareness... On the other hand, some people think..." rows="4"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="t1-op">Your opinion, with an example</label>
+        <textarea class="form-textarea" id="t1-op" placeholder="In my opinion... For example..." rows="4"></textarea>
+        <div class="form-hint">🎤 When your notes are ready, practise speaking for 2–3 minutes without reading them out word for word.</div>
+      </div>
+    </div>
+
+    <div id="step1-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(1)">&larr; Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Topic 2 &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 2 – TOPIC 2: VOLUNTEERING -->
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Topic 2</span>
+    <h2 class="ex-title">Volunteering</h2>
+    <p class="ex-subtitle">Discussion question — prepare to speak about it for 2–3 minutes.</p>
+
+    <div class="card">
+      <div class="card-title">Your discussion question</div>
+      <div class="reading-text">
+        <p><strong>One year of volunteering after school — useful or useless?</strong> Would you spend a year volunteering before starting work or university? Give reasons and examples.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Useful language for a discussion</div>
+      <div class="word-bank">
+        <strong>Advantages:</strong> <span>One advantage is…</span> <span>It helps you to…</span> <span>You gain experience…</span>
+        <strong style="margin-left:.5rem">Disadvantages:</strong> <span>One drawback is…</span> <span>It can be a waste of time if…</span>
+        <strong style="margin-left:.5rem">Deciding:</strong> <span>All in all…</span> <span>On balance, I would…</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Plan your answer</div>
+      <div class="form-group">
+        <label class="form-label" for="t2-args">Arguments — useful vs. useless</label>
+        <textarea class="form-textarea" id="t2-args" placeholder="One advantage is that you gain experience... One drawback is that..." rows="4"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="t2-op">Your opinion, with an example</label>
+        <textarea class="form-textarea" id="t2-op" placeholder="On balance, I think... For example..." rows="4"></textarea>
+        <div class="form-hint">🎤 When your notes are ready, practise speaking for 2–3 minutes.</div>
+      </div>
+    </div>
+
+    <div id="step2-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">&larr; Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Topic 3 &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 3 – TOPIC 3: AMERICAN DREAM -->
+<section id="step-3" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Topic 3</span>
+    <h2 class="ex-title">The American Dream</h2>
+    <p class="ex-subtitle">Discussion question — prepare to speak about it for 2–3 minutes.</p>
+
+    <div class="card">
+      <div class="card-title">Your discussion question</div>
+      <div class="reading-text">
+        <p><strong>What is your opinion of the American Dream? Which aspects of it do you like or dislike, and why?</strong> Think about ideas such as freedom, hard work, success and equality.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Useful language for a discussion</div>
+      <div class="word-bank">
+        <strong>Describing:</strong> <span>The American Dream is the idea that…</span> <span>It stands for…</span>
+        <strong style="margin-left:.5rem">Positive:</strong> <span>I admire…</span> <span>What I like is…</span>
+        <strong style="margin-left:.5rem">Critical:</strong> <span>However, in reality…</span> <span>The problem is that…</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Plan your answer</div>
+      <div class="form-group">
+        <label class="form-label" for="t3-args">Aspects you like and dislike</label>
+        <textarea class="form-textarea" id="t3-args" placeholder="What I like is the idea that... However, in reality..." rows="4"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="t3-op">Your opinion, with an example</label>
+        <textarea class="form-textarea" id="t3-op" placeholder="As far as I am concerned... A good example is..." rows="4"></textarea>
+        <div class="form-hint">🎤 When your notes are ready, practise speaking for 2–3 minutes.</div>
+      </div>
+    </div>
+
+    <div id="step3-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">&larr; Back</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(3)">Continue to Topic 4 &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 4 – TOPIC 4: MULTICULTURAL CITIES -->
+<section id="step-4" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Topic 4</span>
+    <h2 class="ex-title">Multicultural Cities</h2>
+    <p class="ex-subtitle">Discussion question — prepare to speak about it for 2–3 minutes.</p>
+
+    <div class="card">
+      <div class="card-title">Your discussion question</div>
+      <div class="reading-text">
+        <p><strong>Would you like to live in a multicultural neighbourhood of Berlin? If not, where would you prefer to live, and why?</strong> Give reasons and examples.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Useful language for a discussion</div>
+      <div class="word-bank">
+        <strong>Preferences:</strong> <span>I would prefer to live…</span> <span>What appeals to me is…</span>
+        <strong style="margin-left:.5rem">Advantages:</strong> <span>You get to know different cultures…</span> <span>There is a lively atmosphere…</span>
+        <strong style="margin-left:.5rem">Concerns:</strong> <span>Some people worry that…</span> <span>It can be noisy / crowded…</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Plan your answer</div>
+      <div class="form-group">
+        <label class="form-label" for="t4-args">Advantages and possible concerns</label>
+        <textarea class="form-textarea" id="t4-args" placeholder="You get to know different cultures... On the other hand, some people worry that..." rows="4"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="t4-op">Your opinion, with an example</label>
+        <textarea class="form-textarea" id="t4-op" placeholder="Personally, I would prefer... because... For example..." rows="4"></textarea>
+        <div class="form-hint">🎤 When your notes are ready, practise speaking for 2–3 minutes.</div>
+      </div>
+    </div>
+
+    <div id="step4-error" class="feedback err"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(4)">&larr; Back</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(4)">Review &amp; Submit &rarr;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- STEP 5 – SUBMIT -->
+<section id="step-5" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">Preparation complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your notes below, then send them to your teacher. Remember: the real exam is spoken, so practise saying your answers aloud.</p>
+    </div>
+    <div id="score-display" style="display:none"></div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your preparation notes to your teacher.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <div id="submit-success" style="display:none;margin-top:1.25rem">
+        <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
+        <p style="font-weight:700;color:var(--green);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Your notes have been sent to your teacher.</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.1rem">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:.75rem">If the submission did not work, use one of these backups:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email instead</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+      <textarea id="copy-block" class="copy-block" style="display:none" readonly></textarea>
+      <div id="copy-success" class="feedback ok" style="margin-top:1rem"></div>
+    </div>
+  </div>
+</section>
+
+
+<script src="exercise.js"></script>
+<script>
+/* ============================================================
+   CONFIG  — speaking prep: free-text only, no automatic grade
+============================================================ */
+var UNIT          = 'msa-c-speaking-discussion';
+var TOTAL_STEPS   = 5;   /* 0=welcome, 1-4=topics, 5=submit */
+var SHEET_URL     = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj';
+var TEACHER_EMAIL = 'englishonlinetraining@pm.me';
+
+var state = { name:'', cls:'', t1:{}, t2:{}, t3:{}, t4:{}, scores:{} };
+var maxStepReached = 0;
+
+var TOPICS = {
+  1: 'Climate Action', 2: 'Volunteering', 3: 'The American Dream', 4: 'Multicultural Cities'
+};
+
+/* Require at least the opinion field on each topic */
+function validateStep(n) {
+  if (n >= 1 && n <= 4) return val('t' + n + '-op');
+  return true;
+}
+
+function saveStep(n) {
+  if (n >= 1 && n <= 4) {
+    state['t' + n] = { args: g('t' + n + '-args'), op: g('t' + n + '-op') };
+  }
+}
+function restoreStep(n) {
+  if (n >= 1 && n <= 4) {
+    set('t' + n + '-args', (state['t' + n] || {}).args || '');
+    set('t' + n + '-op',   (state['t' + n] || {}).op   || '');
+  }
+}
+
+function buildSummary() {
+  saveStep(1); saveStep(2); saveStep(3); saveStep(4);
+  var html = '<div class="submit-summary">'
+    + '<div class="summary-row"><div class="summary-ex">Student</div>'
+    + '<div class="summary-q">' + esc(state.name) + ' — ' + esc(state.cls) + '</div></div>';
+  for (var i = 1; i <= 4; i++) {
+    var t = state['t' + i] || {};
+    html += '<div class="summary-row"><div class="summary-ex">Topic ' + i + '</div>'
+      + '<div class="summary-q">' + esc(TOPICS[i]) + ' — arguments</div>'
+      + '<div class="summary-a">' + esc(t.args || '(no notes)') + '</div></div>';
+    html += '<div class="summary-row"><div class="summary-ex">Topic ' + i + '</div>'
+      + '<div class="summary-q">' + esc(TOPICS[i]) + ' — opinion</div>'
+      + '<div class="summary-a">' + esc(t.op || '(no notes)') + '</div></div>';
+  }
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+  renderScore(); /* no scoreKeys → score card stays hidden */
+}
+
+function buildEmailBody() {
+  var body = 'Exercise: ' + UNIT
+    + '\nStudent: ' + state.name
+    + '\nClass:   ' + state.cls
+    + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
+    + '\n(Speaking preparation — graded by teacher, no automatic score.)';
+  for (var i = 1; i <= 4; i++) {
+    var t = state['t' + i] || {};
+    body += '\n\n--- Topic ' + i + ': ' + TOPICS[i] + ' ---'
+      + '\nArguments: ' + (t.args || '(none)')
+      + '\nOpinion:   ' + (t.op || '(none)');
+  }
+  return body;
+}
+
+function buildPayload() {
+  return {
+    name: state.name, cls: state.cls, unit: UNIT,
+    t1: state.t1, t2: state.t2, t3: state.t3, t4: state.t4,
+    score: '(speaking — graded by teacher)', grade: ''
+  };
+}
+
+document.addEventListener('DOMContentLoaded', function() { showStep(0); });
+</script>
+
+</body>
+</html>
