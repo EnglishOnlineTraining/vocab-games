@@ -3,9 +3,13 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Interactive English exercises for learners at englishonline.training — Years 7 to 10, Abitur, MSA exam practice, and Professional English."/>
+<meta name="theme-color" content="#1a3a5c"/>
 <title>Activities | EnglishOnline.training</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ── Design tokens ── */
 :root{
   --blue:#1a3a5c;
   --blue-mid:#1a6eb5;
@@ -20,202 +24,360 @@
   --muted:#6b7a8d;
   --border:#dce3ec;
   --bg:#f0f8ff;
-  --white:#fff;
-  --radius:12px;
+  --card:#ffffff;
+  --brand-title:#1a3a5c;   /* branded heading text */
+  --badge-bg:#1a3a5c;      /* year badge circle */
+  --hero-from:#12314f;
+  --hero-to:#1a3a5c;
+  --radius:14px;
   --shadow:0 2px 16px rgba(26,58,92,.1);
+  --shadow-hover:0 6px 24px rgba(26,110,181,.20);
+  --gap:clamp(.7rem,2vw,1rem);
+  --pad-block:clamp(1.6rem,5vw,2.75rem);
 }
-body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;padding-bottom:4rem}
-.site-header{background:var(--blue);color:#fff;padding:2rem 1rem 1.75rem;text-align:center}
-.site-header .logo{font-size:.8rem;font-weight:700;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.6rem;display:block}
-.site-header h1{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:800;margin-bottom:.4rem}
-.site-header p{color:rgba(255,255,255,.75);font-size:.95rem}
-.header-divider{height:4px;background:linear-gradient(90deg,var(--gold),var(--teal))}
-.container{max-width:860px;margin:0 auto;padding:2rem 1rem}
-.year-block{margin-bottom:2.5rem}
-.year-heading{display:flex;align-items:center;gap:.75rem;font-size:1.25rem;font-weight:800;color:var(--blue);margin-bottom:1.25rem;padding-bottom:.6rem;border-bottom:2px solid var(--border)}
-.year-badge{display:inline-flex;align-items:center;justify-content:center;width:2.2rem;height:2.2rem;border-radius:50%;background:var(--blue);color:#fff;font-size:.85rem;font-weight:800;flex-shrink:0}
-.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.85rem}
-.group-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);border:1.5px solid var(--border);padding:1.5rem;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:.5rem;transition:border-color .2s,box-shadow .2s,transform .15s;align-items:center;text-align:center}
-.group-card:hover{border-color:var(--blue-mid);box-shadow:0 4px 20px rgba(26,110,181,.18);transform:translateY(-2px)}
-.group-icon{font-size:2rem;line-height:1;margin-bottom:.3rem}
-.group-title{font-size:1.05rem;font-weight:700;color:var(--blue)}
+
+/* ── Automatic dark mode ── */
+@media (prefers-color-scheme: dark){
+  :root{
+    --blue-lt:#14324c;
+    --dark:#e7eef6;
+    --mid:#b3c0cf;
+    --muted:#8a99aa;
+    --border:#28394d;
+    --bg:#0e1620;
+    --card:#16212e;
+    --brand-title:#cfe0f4;
+    --badge-bg:#1a6eb5;
+    --blue-mid:#5aa8f0;
+    --hero-from:#0b1c30;
+    --hero-to:#122a41;
+    --shadow:0 2px 18px rgba(0,0,0,.45);
+    --shadow-hover:0 6px 26px rgba(0,0,0,.6);
+  }
+}
+
+html{scroll-behavior:smooth}
+body{
+  font-family:'Segoe UI',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--dark);
+  min-height:100vh;
+  padding-bottom:clamp(2.5rem,6vw,4rem);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Skip link for keyboard/screen-reader users */
+.skip-link{
+  position:absolute;left:.5rem;top:-3rem;z-index:100;
+  background:var(--gold);color:#1a1a1a;font-weight:700;
+  padding:.5rem 1rem;border-radius:8px;transition:top .2s;
+}
+.skip-link:focus{top:.5rem}
+
+/* ── Hero ── */
+.site-header{
+  position:relative;
+  background:linear-gradient(160deg,var(--hero-from),var(--hero-to));
+  color:#fff;
+  padding:clamp(2.25rem,6vw,3.5rem) 1rem clamp(2rem,5vw,3rem);
+  text-align:center;
+  overflow:hidden;
+}
+.site-header::after{                     /* replaces the old .header-divider div */
+  content:"";position:absolute;left:0;right:0;bottom:0;height:4px;
+  background:linear-gradient(90deg,var(--gold),var(--teal));
+}
+.site-header .logo{
+  font-size:.8rem;font-weight:700;color:var(--gold-lt);
+  letter-spacing:.14em;text-transform:uppercase;margin-bottom:.75rem;display:block;
+}
+.site-header h1{
+  font-size:clamp(1.9rem,5.5vw,3rem);font-weight:800;
+  line-height:1.1;margin-bottom:.6rem;letter-spacing:-.01em;
+}
+.site-header .tagline{
+  color:rgba(255,255,255,.82);font-size:clamp(.95rem,2.4vw,1.15rem);
+  max-width:34rem;margin:0 auto;
+}
+
+/* ── "At a glance" stats strip (static, animated) ── */
+.stats{
+  list-style:none;display:flex;flex-wrap:wrap;justify-content:center;
+  gap:clamp(1rem,5vw,3rem);margin-top:clamp(1.5rem,4vw,2.25rem);
+}
+.stats li{min-width:5.5rem}
+.stat-num{
+  display:block;font-size:clamp(1.7rem,5vw,2.6rem);font-weight:800;
+  color:var(--gold);font-variant-numeric:tabular-nums;line-height:1;
+}
+.stat-label{
+  display:block;margin-top:.35rem;font-size:.72rem;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.72);
+}
+
+/* ── Layout ── */
+.container{max-width:900px;margin:0 auto;padding:var(--pad-block) 1rem 0}
+.year-block{margin-bottom:clamp(2rem,5vw,2.75rem)}
+.year-heading{
+  display:flex;align-items:center;gap:.85rem;
+  margin-bottom:1.1rem;padding-bottom:.65rem;border-bottom:2px solid var(--border);
+}
+.year-badge{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:2.3rem;height:2.3rem;border-radius:50%;
+  background:var(--badge-bg);color:#fff;font-size:.9rem;font-weight:800;flex-shrink:0;
+}
+.year-heading .htext{display:flex;flex-direction:column;gap:.1rem}
+.year-heading .eyebrow{
+  font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);
+}
+.year-heading .htitle{font-size:clamp(1.15rem,3vw,1.35rem);font-weight:800;color:var(--brand-title)}
+
+/* ── Card grid — now a semantic list of links ── */
+.cards-grid{
+  list-style:none;display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));
+  gap:var(--gap);
+}
+.group-card{
+  background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  border:1.5px solid var(--border);padding:1.5rem 1.25rem;
+  text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:.45rem;
+  align-items:center;text-align:center;height:100%;
+  transition:border-color .2s,box-shadow .2s,transform .15s;
+}
+.group-card:hover,.group-card:focus-visible{
+  border-color:var(--blue-mid);box-shadow:var(--shadow-hover);transform:translateY(-3px);outline:none;
+}
+.group-card:focus-visible{outline:3px solid var(--blue-mid);outline-offset:2px}
+.group-icon{font-size:2.1rem;line-height:1;margin-bottom:.2rem}
+.group-title{font-size:1.05rem;font-weight:700;color:var(--brand-title)}
 .group-meta{font-size:.8rem;color:var(--muted)}
-.exercise-count{display:inline-block;margin-top:.5rem;font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.25rem .75rem;border-radius:20px;background:var(--blue-lt);color:var(--blue-mid)}
-.site-footer{text-align:center;font-size:.8rem;color:var(--muted);margin-top:3rem}
+.exercise-count{
+  margin-top:.55rem;font-size:.72rem;font-weight:800;letter-spacing:.05em;
+  text-transform:uppercase;padding:.28rem .8rem;border-radius:20px;
+  background:var(--blue-lt);color:var(--blue-mid);font-variant-numeric:tabular-nums;
+}
+
+/* ── Help / contact line ── */
+.help-note{
+  max-width:900px;margin:clamp(1.5rem,4vw,2.5rem) auto 0;padding:1.1rem 1.25rem;
+  background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);
+  text-align:center;font-size:.9rem;color:var(--mid);box-shadow:var(--shadow);
+}
+.help-note a{color:var(--blue-mid);font-weight:700;text-decoration:none}
+.help-note a:hover{text-decoration:underline}
+
+/* ── Footer ── */
+.site-footer{text-align:center;font-size:.8rem;color:var(--muted);margin-top:clamp(2rem,5vw,3rem);padding:0 1rem}
 .site-footer a{color:var(--blue-mid)}
-@media(max-width:480px){.cards-grid{grid-template-columns:1fr}}
+
+@media (max-width:480px){.cards-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.group-card{transition:none}}
 </style>
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to activities</a>
+
 <header class="site-header">
   <span class="logo">EnglishOnline.training</span>
   <h1>📚 Activity Directory</h1>
-  <p>Select your year and school type</p>
+  <p class="tagline">Interactive English practice, made by your teacher — pick your year and school type to jump straight in.</p>
+
+  <!-- Static "at a glance" figures. Numbers are baked in and animate on load.
+       If a section count below changes, update the matching stat here too. -->
+  <ul class="stats" aria-label="At a glance">
+    <li><span class="stat-num" data-target="137">137</span><span class="stat-label">Interactive exercises</span></li>
+    <li><span class="stat-num" data-target="13">13</span><span class="stat-label">Course collections</span></li>
+    <li><span class="stat-num" data-target="7">7</span><span class="stat-label">Study areas</span></li>
+  </ul>
 </header>
-<div class="header-divider"></div>
 
-<main class="container">
+<main class="container" id="main">
 
-  <section class="year-block">
-    <h2 class="year-heading">
+  <section class="year-block" aria-labelledby="y7">
+    <h2 class="year-heading" id="y7">
       <span class="year-badge">7</span>
-      Year 7
+      <span class="htext"><span class="eyebrow">Sekundarstufe I</span><span class="htitle">Year 7</span></span>
     </h2>
-
-    <div class="cards-grid">
-      <a class="group-card" href="7g-activities.html">
+    <ul class="cards-grid">
+      <li><a class="group-card" href="7g-activities.html">
         <span class="group-icon">🏫</span>
         <span class="group-title">Gymnasium</span>
         <span class="group-meta">Grammar, reading &amp; vocabulary</span>
         <span class="exercise-count">8 Exercises</span>
-      </a>
-
-      <a class="group-card" href="7c-activities.html">
+      </a></li>
+      <li><a class="group-card" href="7c-activities.html">
         <span class="group-icon">🏫</span>
         <span class="group-title">Oberschule</span>
         <span class="group-meta">Reading, writing &amp; comprehension</span>
         <span class="exercise-count">7 Exercises</span>
-      </a>
-    </div>
+      </a></li>
+    </ul>
   </section>
 
-  <section class="year-block">
-    <h2 class="year-heading">
+  <section class="year-block" aria-labelledby="y8">
+    <h2 class="year-heading" id="y8">
       <span class="year-badge">8</span>
-      Year 8
+      <span class="htext"><span class="eyebrow">Sekundarstufe I</span><span class="htitle">Year 8</span></span>
     </h2>
-
-    <div class="cards-grid">
-      <a class="group-card" href="8g-activities.html">
+    <ul class="cards-grid">
+      <li><a class="group-card" href="8g-activities.html">
         <span class="group-icon">🏫</span>
         <span class="group-title">Gymnasium</span>
         <span class="group-meta">Green Line 4 · ~B1</span>
         <span class="exercise-count">11 Exercises</span>
-      </a>
-
-      <a class="group-card" href="8c-activities.html">
+      </a></li>
+      <li><a class="group-card" href="8c-activities.html">
         <span class="group-icon">🏫</span>
         <span class="group-title">Oberschule</span>
         <span class="group-meta">Orange Line 4 · ~A2</span>
         <span class="exercise-count">6 Exercises</span>
-      </a>
-    </div>
+      </a></li>
+    </ul>
   </section>
 
-  <section class="year-block">
-    <h2 class="year-heading">
+  <section class="year-block" aria-labelledby="y9">
+    <h2 class="year-heading" id="y9">
       <span class="year-badge">9</span>
-      Year 9
+      <span class="htext"><span class="eyebrow">Sekundarstufe I</span><span class="htitle">Year 9</span></span>
     </h2>
-
-    <div class="cards-grid">
-      <a class="group-card" href="9g-activities.html">
+    <ul class="cards-grid">
+      <li><a class="group-card" href="9g-activities.html">
         <span class="group-icon">🏫</span>
         <span class="group-title">Gymnasium</span>
         <span class="group-meta">California, Australia, Canada, Ireland, India, New Zealand &amp; literature</span>
         <span class="exercise-count">9 Exercises</span>
-      </a>
-
-      <a class="group-card" href="9c-activities.html">
+      </a></li>
+      <li><a class="group-card" href="9c-activities.html">
         <span class="group-icon">🏫</span>
         <span class="group-title">Oberschule</span>
         <span class="group-meta">South Africa reading &amp; revision</span>
         <span class="exercise-count">3 Exercises</span>
-      </a>
-    </div>
+      </a></li>
+    </ul>
   </section>
 
-  <section class="year-block">
-    <h2 class="year-heading">
+  <section class="year-block" aria-labelledby="y10">
+    <h2 class="year-heading" id="y10">
       <span class="year-badge">10</span>
-      Year 10
+      <span class="htext"><span class="eyebrow">Sekundarstufe I</span><span class="htitle">Year 10</span></span>
     </h2>
-
-    <div class="cards-grid">
-      <a class="group-card" href="10g-activities.html">
+    <ul class="cards-grid">
+      <li><a class="group-card" href="10g-activities.html">
         <span class="group-icon">🏫</span>
         <span class="group-title">Gymnasium</span>
         <span class="group-meta">Scotland: history, environment, highlands &amp; cultural diversity</span>
         <span class="exercise-count">9 Exercises</span>
-      </a>
-
-      <a class="group-card" href="10c-activities.html">
+      </a></li>
+      <li><a class="group-card" href="10c-activities.html">
         <span class="group-icon">🏫</span>
         <span class="group-title">Oberschule</span>
         <span class="group-meta">Commonwealth countries, grammar &amp; civil rights</span>
         <span class="exercise-count">12 Exercises</span>
-      </a>
-    </div>
+      </a></li>
+    </ul>
   </section>
 
-  <section class="year-block">
-    <h2 class="year-heading">
+  <section class="year-block" aria-labelledby="abi">
+    <h2 class="year-heading" id="abi">
       <span class="year-badge">🎓</span>
-      Abitur (Sek II)
+      <span class="htext"><span class="eyebrow">Sekundarstufe II</span><span class="htitle">Abitur</span></span>
     </h2>
-
-    <div class="cards-grid">
-      <a class="group-card" href="abitur-activities.html">
+    <ul class="cards-grid">
+      <li><a class="group-card" href="abitur-activities.html">
         <span class="group-icon">🎓</span>
         <span class="group-title">Abitur English</span>
         <span class="group-meta">Text analysis, argumentative writing, summaries &amp; mediation</span>
         <span class="exercise-count">16 Exercises</span>
-      </a>
-    </div>
+      </a></li>
+    </ul>
   </section>
 
-  <section class="year-block">
-    <h2 class="year-heading">
+  <section class="year-block" aria-labelledby="msa">
+    <h2 class="year-heading" id="msa">
       <span class="year-badge">🎧</span>
-      MSA (Mittlerer Schulabschluss)
+      <span class="htext"><span class="eyebrow">Oberschule · Exam prep</span><span class="htitle">MSA (Mittlerer Schulabschluss)</span></span>
     </h2>
-
-    <div class="cards-grid">
-      <a class="group-card" href="msa-activities.html">
+    <ul class="cards-grid">
+      <li><a class="group-card" href="msa-activities.html">
         <span class="group-icon">🎧</span>
         <span class="group-title">MSA English</span>
         <span class="group-meta">Full-skills listening, reading &amp; writing exam practice</span>
         <span class="exercise-count">20 Exercises</span>
-      </a>
-    </div>
+      </a></li>
+    </ul>
   </section>
 
-  <section class="year-block">
-    <h2 class="year-heading">
+  <section class="year-block" aria-labelledby="prof">
+    <h2 class="year-heading" id="prof">
       <span class="year-badge">🎓</span>
-      Professional English
+      <span class="htext"><span class="eyebrow">Adults · Vocational</span><span class="htitle">Professional English</span></span>
     </h2>
-
-    <div class="cards-grid">
-      <a class="group-card" href="uni-activities.html">
+    <ul class="cards-grid">
+      <li><a class="group-card" href="uni-activities.html">
         <span class="group-icon">🎓</span>
         <span class="group-title">University English</span>
         <span class="group-meta">Business relationships, case studies &amp; vocabulary</span>
         <span class="exercise-count">10 Exercises</span>
-      </a>
-
-      <a class="group-card" href="it-activities.html">
+      </a></li>
+      <li><a class="group-card" href="it-activities.html">
         <span class="group-icon">💻</span>
         <span class="group-title">IT English</span>
         <span class="group-meta">Vocational IT trainees · B1–B2</span>
         <span class="exercise-count">10 Exercises</span>
-      </a>
-
-      <a class="group-card" href="business-activities.html">
+      </a></li>
+      <li><a class="group-card" href="business-activities.html">
         <span class="group-icon">💼</span>
         <span class="group-title">Business English</span>
         <span class="group-meta">Company tasks &amp; professional skills</span>
         <span class="exercise-count">16 Exercises</span>
-      </a>
-    </div>
+      </a></li>
+    </ul>
   </section>
+
+  <p class="help-note">Can’t find your class? Ask your teacher, or email
+    <a href="mailto:englishonlinetraining@pm.me">englishonlinetraining@pm.me</a>.</p>
 
 </main>
 
 <footer class="site-footer">
   <a href="https://englishonline.training">EnglishOnline.training</a>
 </footer>
+
+<script>
+/* Count-up for the "at a glance" figures. Respects reduced-motion,
+   degrades gracefully with no IntersectionObserver, and the final
+   values are already in the HTML so no-JS users see them too. */
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nums = document.querySelectorAll('.stat-num');
+  function animate(el){
+    var target = +el.dataset.target || 0;
+    if (reduce) { el.textContent = target.toLocaleString(); return; }
+    var dur = 1100, start = null;
+    function step(ts){
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(eased * target).toLocaleString();
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting){ animate(e.target); io.unobserve(e.target); } });
+    }, { threshold: 0.4 });
+    nums.forEach(function(n){ n.textContent = '0'; io.observe(n); });
+  } else {
+    nums.forEach(animate);
+  }
+})();
+</script>
 
 </body>
 </html>
