@@ -3,93 +3,102 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Interactive English exercises at englishonline.training."/>
+<meta name="theme-color" content="#1a3a5c"/>
 <title>Year 9 Oberschule | EnglishOnline.training</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --blue:#1a3a5c;
-  --blue-mid:#1a6eb5;
-  --blue-lt:#e8f2fb;
-  --gold:#c9a227;
-  --gold-lt:#f5e6b0;
-  --teal:#2b7a78;
-  --green:#27ae60;
-  --red:#c0392b;
-  --dark:#1d2b3a;
-  --mid:#4a5568;
-  --muted:#6b7a8d;
-  --border:#dce3ec;
-  --bg:#f0f8ff;
-  --white:#fff;
-  --radius:12px;
-  --shadow:0 2px 16px rgba(26,58,92,.1);
+  --blue:#1a3a5c;--blue-mid:#1a6eb5;--blue-lt:#e8f2fb;
+  --gold:#c9a227;--gold-lt:#f5e6b0;--teal:#2b7a78;--green:#27ae60;--red:#c0392b;
+  --dark:#1d2b3a;--mid:#4a5568;--muted:#6b7a8d;--border:#dce3ec;--bg:#f0f8ff;--white:#ffffff;
+  --brand-title:#1a3a5c;--hero-from:#12314f;--hero-to:#1a3a5c;
+  --radius:12px;--shadow:0 2px 16px rgba(26,58,92,.1);--shadow-hover:0 4px 20px rgba(26,110,181,.18);
 }
-body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;padding-bottom:4rem}
-.site-header{background:var(--blue);color:#fff;padding:2rem 1rem 1.75rem;text-align:center}
-.site-header .logo{font-size:.8rem;font-weight:700;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.6rem;display:block}
-.site-header h1{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:800;margin-bottom:.4rem}
-.site-header p{color:rgba(255,255,255,.75);font-size:.95rem}
-.header-divider{height:4px;background:linear-gradient(90deg,var(--gold),var(--teal))}
+@media (prefers-color-scheme:dark){
+  :root{
+    --blue-lt:#14324c;--dark:#e7eef6;--mid:#b3c0cf;--muted:#8a99aa;--border:#28394d;
+    --bg:#0e1620;--white:#16212e;--brand-title:#cfe0f4;--blue-mid:#5aa8f0;
+    --hero-from:#0b1c30;--hero-to:#122a41;
+    --shadow:0 2px 18px rgba(0,0,0,.45);--shadow-hover:0 6px 26px rgba(0,0,0,.6);
+  }
+}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;padding-bottom:clamp(2.5rem,6vw,4rem);line-height:1.5;-webkit-font-smoothing:antialiased}
+.skip-link{position:absolute;left:.5rem;top:-3rem;z-index:100;background:var(--gold);color:#1a1a1a;font-weight:700;padding:.5rem 1rem;border-radius:8px;transition:top .2s}
+.skip-link:focus{top:.5rem}
+.site-header{position:relative;background:linear-gradient(160deg,var(--hero-from),var(--hero-to));color:#fff;padding:clamp(1.8rem,5vw,2.5rem) 1rem clamp(1.6rem,4vw,2rem);text-align:center;overflow:hidden}
+.site-header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--teal))}
+.site-header .logo{font-size:.8rem;font-weight:700;color:var(--gold-lt);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.6rem;display:block}
+.site-header h1{font-size:clamp(1.5rem,4.5vw,2.3rem);font-weight:800;line-height:1.12;margin-bottom:.4rem}
+.site-header p{color:rgba(255,255,255,.8);font-size:clamp(.9rem,2.2vw,1rem);max-width:34rem;margin:0 auto}
 .breadcrumb{background:var(--white);border-bottom:1px solid var(--border);padding:.75rem 1rem;margin-bottom:1rem}
 .breadcrumb a{color:var(--blue-mid);text-decoration:none;font-size:.9rem}
 .breadcrumb a:hover{text-decoration:underline}
-.container{max-width:860px;margin:0 auto;padding:2rem 1rem}
-.page-title{font-size:1.4rem;font-weight:800;color:var(--blue);margin-bottom:.5rem}
+.container{max-width:880px;margin:0 auto;padding:clamp(1.4rem,4vw,2rem) 1rem}
+.page-title{font-size:clamp(1.25rem,3.4vw,1.5rem);font-weight:800;color:var(--brand-title);margin-bottom:.5rem}
 .page-subtitle{font-size:.95rem;color:var(--muted);margin-bottom:1.5rem}
-.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.85rem;margin-bottom:2rem}
-.activity-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);border:1.5px solid var(--border);padding:1.1rem 1.25rem;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:.35rem;transition:border-color .2s,box-shadow .2s,transform .15s}
-.activity-card:hover{border-color:var(--blue-mid);box-shadow:0 4px 20px rgba(26,110,181,.18);transform:translateY(-2px)}
-.card-icon{font-size:1.4rem;line-height:1}
-.card-title{font-size:.97rem;font-weight:700;color:var(--blue)}
+.info-box{background:var(--gold-lt);border:1.5px solid var(--gold);border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1.75rem;font-size:.85rem;color:#1a3a5c}
+.group-heading{font-size:1.1rem;font-weight:800;color:var(--brand-title);margin:1.5rem 0 .9rem}
+.cta-button{display:inline-block;margin-bottom:2rem;padding:.75rem 1.5rem;background:var(--teal);color:#fff;border-radius:var(--radius);text-decoration:none;font-weight:600;font-size:.95rem;transition:background .2s,transform .15s}
+.cta-button:hover{background:#1f5a57;transform:translateY(-2px)}
+.cards-grid{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:clamp(.7rem,2vw,.9rem);margin-bottom:2rem}
+.cards-grid li{display:flex}
+.activity-card,.exercise-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);border:1.5px solid var(--border);padding:1.2rem 1.25rem;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:.4rem;width:100%;transition:border-color .2s,box-shadow .2s,transform .15s}
+.activity-card:hover,.exercise-card:hover,.activity-card:focus-visible,.exercise-card:focus-visible{border-color:var(--blue-mid);box-shadow:var(--shadow-hover);transform:translateY(-2px);outline:none}
+.activity-card:focus-visible,.exercise-card:focus-visible{outline:3px solid var(--blue-mid);outline-offset:2px}
+.card-icon{font-size:1.5rem;line-height:1}
+.card-title{font-size:.98rem;font-weight:700;color:var(--brand-title)}
 .card-meta{font-size:.78rem;color:var(--muted)}
 .card-tag{display:inline-block;margin-top:.3rem;font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.15rem .55rem;border-radius:20px;background:var(--blue-lt);color:var(--blue-mid)}
-.site-footer{text-align:center;font-size:.8rem;color:var(--muted);margin-top:3rem}
+.site-footer{text-align:center;font-size:.8rem;color:var(--muted);margin-top:clamp(2rem,5vw,3rem);padding:0 1rem}
 .site-footer a{color:var(--blue-mid)}
 @media(max-width:480px){.cards-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.activity-card,.exercise-card{transition:none}}
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#main">Skip to activities</a>
 
 <header class="site-header">
   <span class="logo">EnglishOnline.training</span>
   <h1>📚 Year 9 Oberschule</h1>
   <p>South Africa reading &amp; revision exercises</p>
 </header>
-<div class="header-divider"></div>
 
 <nav class="breadcrumb">
   <a href="activities.html">← Back to Activities</a>
 </nav>
 
-<main class="container">
+<main class="container" id="main">
 
   <h2 class="page-title">Year 9 Oberschule</h2>
   <p class="page-subtitle">All exercises for this year and school type</p>
 
-  <div class="cards-grid">
+  <ul class="cards-grid">
 
-    <a class="activity-card" href="sport-south-africa.html">
+    <li><a class="activity-card" href="sport-south-africa.html">
       <span class="card-icon">🏉</span>
       <span class="card-title">9C – Sport in South Africa</span>
       <span class="card-meta">Pre-reading, true/false/NG, multiple choice &amp; vocabulary</span>
       <span class="card-tag">Reading &amp; exercises</span>
-    </a>
+    </a></li>
 
-    <a class="activity-card" href="9c-south-africa-revision.html">
+    <li><a class="activity-card" href="9c-south-africa-revision.html">
       <span class="card-icon">🇿🇦</span>
       <span class="card-title">9C – South Africa Revision</span>
       <span class="card-meta">Revision exercises on South Africa</span>
       <span class="card-tag">Revision</span>
-    </a>
+    </a></li>
 
-    <a class="activity-card" href="9c-plastic-pollution.html">
+    <li><a class="activity-card" href="9c-plastic-pollution.html">
       <span class="card-icon">♻️</span>
       <span class="card-title">9C – Plastic Pollution</span>
       <span class="card-meta">Environmental reading, passive voice &amp; comprehension</span>
       <span class="card-tag">Reading &amp; grammar</span>
-    </a>
+    </a></li>
 
-  </div>
+  </ul>
 
 </main>
 
