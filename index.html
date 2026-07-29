@@ -44,6 +44,22 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 .site-footer{text-align:center;font-size:.8rem;color:var(--muted);margin-top:3rem}
 .site-footer a{color:var(--blue-mid)}
 @media(max-width:480px){.cards-grid{grid-template-columns:1fr}}
+
+/* ── Automatic dark mode (added; light values untouched) ── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1620;
+    --blue: #4a86c9;
+    --blue-lt: #12324c;
+    --blue-mid: #6ea6de;
+    --border: #28394d;
+    --dark: #e7eef6;
+    --mid: #9aa8b8;
+    --muted: #8a99aa;
+    --shadow: 0 2px 18px rgba(0,0,0,.45);
+    --white: #16212e;
+  }
+}
 </style>
 </head>
 <body>
