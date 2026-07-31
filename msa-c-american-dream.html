@@ -329,6 +329,27 @@
       <textarea id="copy-block" class="copy-block" style="display:none" readonly></textarea>
       <div id="copy-success" class="feedback ok" style="margin-top:1rem"></div>
     </div>
+
+    <!-- MailerLite lead capture — optional & skippable, shown after the score (EOL – MSA) -->
+    <div class="card" id="ml-capture" style="margin-top:1.25rem">
+      <h3 style="color:var(--blue);font-size:1.05rem;margin-bottom:.4rem;text-align:center">📧 Dein Ergebnis + gratis MSA-Lernpaket</h3>
+      <p style="font-size:.88rem;color:var(--muted);text-align:center;margin-bottom:1rem">Trag dich ein, und wir schicken dir dein Ergebnis und eine kostenlose MSA-Prüfungs-Checkliste per E-Mail. Freiwillig — du kannst diesen Schritt überspringen.</p>
+      <div id="ml-form-wrap" style="max-width:360px;margin:0 auto;text-align:left">
+        <input type="text" id="ml-name" placeholder="Vorname" autocomplete="given-name" style="width:100%;padding:.6rem .75rem;margin-bottom:.6rem;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:.95rem">
+        <input type="email" id="ml-email" placeholder="deine@email.de" autocomplete="email" inputmode="email" style="width:100%;padding:.6rem .75rem;margin-bottom:.6rem;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:.95rem">
+        <label style="display:flex;gap:.5rem;align-items:flex-start;font-size:.8rem;color:var(--text);margin-bottom:.85rem;cursor:pointer">
+          <input type="checkbox" id="ml-consent" style="margin-top:.15rem;flex:0 0 auto">
+          <span>Ja, schickt mir mein Ergebnis und Lerntipps per E-Mail. Ich kann mich jederzeit abmelden. <a href="https://englishonline.training/privacy-policy/" target="_blank" rel="noopener" style="color:var(--teal)">Datenschutz</a></span>
+        </label>
+        <button class="btn btn-gold" id="ml-submit" disabled style="width:100%;justify-content:center;opacity:.55;cursor:not-allowed">Ergebnis per E-Mail erhalten</button>
+        <p id="ml-error" style="display:none;color:var(--red);font-size:.8rem;margin-top:.5rem"></p>
+      </div>
+      <div id="ml-done" style="display:none;text-align:center;padding:.5rem 0">
+        <div style="font-size:1.8rem">📬</div>
+        <p style="font-weight:700;color:var(--green);margin:.3rem 0 .2rem">Fast geschafft!</p>
+        <p style="font-size:.85rem;color:var(--muted)">Bitte bestätige den Link in der E-Mail, die wir dir gerade geschickt haben.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -457,9 +478,62 @@ function checkExB() {
   );
 }
 
+// ---- MailerLite lead capture (group EOL – MSA) ----
+// Posts to the MSA capture form's subscribe endpoint. No API key is used or
+// exposed; group assignment + double opt-in come from the form's own config.
+// NOTE: endpoint format pending a live self-test before this goes to main.
+var ML_ACCOUNT  = '2491182';
+var ML_FORM_ID  = '194481680761750752';   // EOL Task Capture — MSA
+var ML_ENDPOINT = 'https://assets.mailerlite.com/jsonp/' + ML_ACCOUNT + '/forms/' + ML_FORM_ID + '/subscribe';
+
+function initCapture() {
+  var email   = document.getElementById('ml-email');
+  var name    = document.getElementById('ml-name');
+  var consent = document.getElementById('ml-consent');
+  var btn     = document.getElementById('ml-submit');
+  if (!btn) return;
+  // Reuse the name the student already gave on the welcome step, if any.
+  try { if (typeof state !== 'undefined' && state.name && !name.value) name.value = state.name; } catch (e) {}
+  function valid() { return consent.checked && /.+@.+\..+/.test(email.value.trim()); }
+  function refresh() {
+    btn.disabled = !valid();
+    btn.style.opacity = btn.disabled ? '.55' : '1';
+    btn.style.cursor  = btn.disabled ? 'not-allowed' : 'pointer';
+  }
+  [email, consent].forEach(function (el) {
+    el.addEventListener('input', refresh);
+    el.addEventListener('change', refresh);
+  });
+  // Let students paste their email/name here — stop the event before the shared
+  // document-level paste-blocker (exercise.js) sees it, without editing that file.
+  [email, name].forEach(function (el) {
+    el.addEventListener('paste', function (ev) { ev.stopPropagation(); });
+  });
+  btn.addEventListener('click', function () {
+    if (!valid()) return;
+    var pct = '';
+    try { var sc = totalScore(); if (sc && sc.possible) pct = Math.round(sc.earned / sc.possible * 100); } catch (e) {}
+    var body = 'fields[email]=' + encodeURIComponent(email.value.trim())
+             + '&fields[name]=' + encodeURIComponent(name.value.trim())
+             + '&fields[source_task]=' + encodeURIComponent(UNIT)
+             + '&fields[last_score]=' + encodeURIComponent(pct)
+             + '&ml-submit=1&anticsrf=true';
+    // Fire-and-forget: no-cors makes the response opaque, so the double opt-in
+    // email is the real confirmation — matching the site's existing submit pattern.
+    fetch(ML_ENDPOINT, {
+      method: 'POST', mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body
+    }).catch(function () {});
+    document.getElementById('ml-form-wrap').style.display = 'none';
+    document.getElementById('ml-done').style.display = 'block';
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   initListening('listen-A', LISTENING_SCRIPT_A, { maxPlays: 2 });
   initListening('listen-B', LISTENING_SCRIPT_B, { maxPlays: 2 });
+  initCapture();
   showStep(0);
 });
 </script>
