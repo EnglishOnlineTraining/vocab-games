@@ -329,6 +329,23 @@
       <textarea id="copy-block" class="copy-block" style="display:none" readonly></textarea>
       <div id="copy-success" class="feedback ok" style="margin-top:1rem"></div>
     </div>
+
+    <!-- MailerLite lead capture — official universal embed (form 1gw3aR → group EOL – MSA).
+         Optional & skippable; submission, consent and double opt-in are handled by MailerLite. -->
+    <div class="card" id="ml-capture" style="margin-top:1.25rem">
+      <h3 style="color:var(--blue);font-size:1.05rem;margin-bottom:.4rem;text-align:center">📧 Dein Ergebnis + gratis MSA-Lernpaket</h3>
+      <p style="font-size:.88rem;color:var(--muted);text-align:center;margin-bottom:1rem">Trag dich ein, und wir schicken dir dein Ergebnis und eine kostenlose MSA-Prüfungs-Checkliste per E-Mail. Freiwillig — du kannst diesen Schritt überspringen.</p>
+      <!-- MailerLite Universal -->
+      <script>
+        (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+        .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+        n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+        (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+        ml('account', '2491182');
+      </script>
+      <!-- End MailerLite Universal -->
+      <div class="ml-embedded" data-form="1gw3aR"></div>
+    </div>
   </div>
 </section>
 
@@ -457,9 +474,38 @@ function checkExB() {
   );
 }
 
+// ---- MailerLite lead capture (group EOL – MSA) ----
+// The form is MailerLite's official universal embed (slug 1gw3aR), so it owns
+// submission, consent and double opt-in — no API key or endpoint lives here.
+// This only enriches the rendered form with the page's own data: it fills the
+// hidden source_task + last_score fields IF the form design includes them.
+function fillCaptureMeta() {
+  var wrap = document.getElementById('ml-capture');
+  if (!wrap) return;
+  function score() {
+    try { var s = totalScore(); return (s && s.possible) ? String(Math.round(s.earned / s.possible * 100)) : ''; }
+    catch (e) { return ''; }
+  }
+  function set() {
+    var st = wrap.querySelector('input[name="fields[source_task]"]');
+    var ls = wrap.querySelector('input[name="fields[last_score]"]');
+    if (st) st.value = UNIT;
+    if (ls) ls.value = score();
+  }
+  // MailerLite injects the form asynchronously — set values once it appears,
+  // and again just before submit in case the widget rewrites them.
+  new MutationObserver(set).observe(wrap, { childList: true, subtree: true });
+  set();
+  wrap.addEventListener('submit', set, true);
+  // Allow paste inside the capture form (email address) — stop the event in the
+  // capture phase before the shared document-level paste-blocker can cancel it.
+  wrap.addEventListener('paste', function (ev) { ev.stopPropagation(); }, true);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   initListening('listen-A', LISTENING_SCRIPT_A, { maxPlays: 2 });
   initListening('listen-B', LISTENING_SCRIPT_B, { maxPlays: 2 });
+  fillCaptureMeta();
   showStep(0);
 });
 </script>
