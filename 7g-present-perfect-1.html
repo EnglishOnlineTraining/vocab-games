@@ -109,6 +109,8 @@
       </div>
     </div>
 
+    <div style="text-align:center;margin:.25rem 0 .5rem"><button class="btn btn-gold btn-sm" onclick="checkExA()">&#10003; Check answers</button></div>
+    <div id="step1-fb" class="feedback"></div>
     <div id="step1-error" class="feedback err"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
@@ -191,6 +193,8 @@
       </div>
     </div>
 
+    <div style="text-align:center;margin:.25rem 0 .5rem"><button class="btn btn-gold btn-sm" onclick="checkExB()">&#10003; Check answers</button></div>
+    <div id="step2-fb" class="feedback"></div>
     <div id="step2-error" class="feedback err"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
@@ -263,6 +267,8 @@
       </div>
     </div>
 
+    <div style="text-align:center;margin:.25rem 0 .5rem"><button class="btn btn-gold btn-sm" onclick="checkExC()">&#10003; Check answers</button></div>
+    <div id="step3-fb" class="feedback"></div>
     <div id="step3-error" class="feedback err"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
@@ -284,14 +290,14 @@
     <div class="card">
       <div class="card-title">Choose the correct word or form</div>
 
-      <div class="gap-item gap-text"><span class="gap-num">1</span>I
+      <div class="gap-item gap-text"><span class="gap-num">1</span>I have
         <select class="gap-select" id="exD-g1">
           <option value="">--</option>
-          <option value="have ridden">have ridden</option>
-          <option value="has ridden">has ridden</option>
-          <option value="ride">ride</option>
+          <option value="never">never</option>
+          <option value="ever">ever</option>
+          <option value="already">already</option>
         </select>
-        a horse before — this is my first time!
+        ridden a horse before — this is my first time!
       </div>
 
       <div class="gap-item gap-text"><span class="gap-num">2</span>My grandfather has
@@ -314,21 +320,23 @@
         visited London?
       </div>
 
-      <div class="gap-item gap-text"><span class="gap-num">4</span>Such a strange thing
+      <div class="gap-item gap-text"><span class="gap-num">4</span>This is the strangest thing that
         <select class="gap-select" id="exD-g4">
           <option value="">--</option>
           <option value="has happened">has happened</option>
           <option value="have happened">have happened</option>
           <option value="happened">happened</option>
         </select>
-        to me before.
+        to me!
       </div>
     </div>
 
+    <div style="text-align:center;margin:.25rem 0 .5rem"><button class="btn btn-gold btn-sm" onclick="checkExD()">&#10003; Check answers</button></div>
+    <div id="step4-fb" class="feedback"></div>
     <div id="step4-error" class="feedback err"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
-      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(4)">Review &amp; Submit →</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(4)">Review &amp; Submit →</button>
     </div>
   </div>
 </section>
@@ -344,7 +352,7 @@
       <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
       <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
     </div>
-    <div id="grade-container"></div>
+    <div id="score-display" style="display:none"></div>
     <div id="summary-container"></div>
     <div class="card" style="text-align:center">
       <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
@@ -371,88 +379,39 @@
 ============================================================ */
 var UNIT          = '7g-present-perfect-1';
 var TOTAL_STEPS   = 5;   /* 4 exercise steps + 1 submit step */
-var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbyFmK71PseRmH8gBnuD3HLFU9b75eMPhE-LV8hNKSGM2RJ4bbMTIMrcoi3Qo4WG95qxIw/exec';
+var SHEET_URL     = 'https://hook.eu1.make.com/1gx46wea33yguetah95oy4j8asbyafqm';  /* Year 7 Make webhook */
 var TEACHER_EMAIL = 'englishonlinetraining@pm.me';
-var maxStepReached = 0;
 
 /* ============================================================
    STATE
 ============================================================ */
-var state = {
-  name: '',
-  cls:  '',
-  exA:  {},
-  exB:  {},
-  exC:  {},
-  exD:  {}
-};
+var state = { name: '', cls: '', scores: {}, firstTry: {}, exA: {}, exB: {}, exC: {}, exD: {} };
+var maxStepReached = 0;
 
 /* ============================================================
-   CORRECT ANSWERS (for instant auto-grading)
+   ANSWER KEYS  (values must match each <option value>)
 ============================================================ */
 var CORRECT = {
   exA: { g1: 'gone', g2: 'been', g3: 'been', g4: 'gone' },
   exB: { g1: 'has lost', g2: 'have grown', g3: "hasn't announced", g4: 'has broken', g5: 'have gone up', g6: 'has just learned' },
   exC: { g1: 'just', g2: 'already', g3: 'yet', g4: 'yet', g5: 'already' },
-  exD: { g1: 'have ridden', g2: 'never', g3: 'ever', g4: 'has happened' }
+  exD: { g1: 'never', g2: 'never', g3: 'ever', g4: 'has happened' }
 };
 
-/* Question labels used in the summary table */
 var QLABELS = {
   exA: { g1: "1. He's ___ to lunch.", g2: "2. I've ___ to Berlin three times.", g3: "3. We've ___ to that restaurant before.", g4: "4. She's ___ to the shops." },
   exB: { g1: '1. My brother ___ his keys again!', g2: '2. These trees ___ a lot.', g3: '3. The company ___ its results yet.', g4: '4. Somebody ___ the window.', g5: '5. Petrol prices ___ again this month.', g6: '6. She ___ to drive.' },
   exC: { g1: "1. I've ___ finished my homework.", g2: '2. I have ___ sent the email.', g3: '3. Has the bus arrived ___?', g4: "4. We haven't decided ___.", g5: '5. They have ___ left for the airport.' },
-  exD: { g1: '1. I ___ a horse before.', g2: '2. My grandfather has ___ used a smartphone.', g3: '3. Have you ___ visited London?', g4: '4. Such a strange thing ___ to me before.' }
+  exD: { g1: '1. I have ___ ridden a horse before.', g2: '2. My grandfather has ___ used a smartphone.', g3: '3. Have you ___ visited London?', g4: '4. This is the strangest thing that ___ to me.' }
 };
 
 /* ============================================================
-   GRADING (PMG/BAO Sek I percentage → grade scale)
+   CHECK ANSWERS  (per exercise — instant feedback + scoring)
 ============================================================ */
-function gradeFromPercent(p) {
-  if (p >= 96) return 1;
-  if (p >= 80) return 2;
-  if (p >= 60) return 3;
-  if (p >= 45) return 4;
-  if (p >= 16) return 5;
-  return 6;
-}
-
-function calculateGrade() {
-  var total = 0, correct = 0;
-  ['exA', 'exB', 'exC', 'exD'].forEach(function(ex) {
-    Object.keys(CORRECT[ex]).forEach(function(k) {
-      total++;
-      if ((state[ex][k] || '') === CORRECT[ex][k]) correct++;
-    });
-  });
-  var pct = total > 0 ? Math.round(correct / total * 100) : 0;
-  return { correct: correct, total: total, pct: pct, grade: gradeFromPercent(pct) };
-}
-
-var GRADE_LABELS = { 1: 'sehr gut', 2: 'gut', 3: 'befriedigend', 4: 'ausreichend', 5: 'mangelhaft', 6: 'ungenügend' };
-
-function renderGrade() {
-  var res = calculateGrade();
-  var html = '<div class="card grade-card">'
-    + '<div class="card-title">Your Result</div>'
-    + '<div class="grade-big">Note ' + res.grade + '</div>'
-    + '<div class="grade-label">' + esc(GRADE_LABELS[res.grade]) + '</div>'
-    + '<div class="grade-score">' + res.correct + ' / ' + res.total + ' correct (' + res.pct + '%)</div>'
-    + '</div>';
-  document.getElementById('grade-container').innerHTML = html;
-}
-
-function nextStep(n) {
-  if (!validateStep(n)) {
-    var err = document.getElementById('step' + n + '-error');
-    if (err) { err.textContent = 'Please answer the required questions before continuing.'; err.classList.add('show'); }
-    return;
-  }
-  clearErr(n);
-  saveStep(n);
-  if (n === TOTAL_STEPS - 1) { renderGrade(); buildSummary(); }
-  showStep(n + 1);
-}
+function checkExA() { checkDropdowns(['g1','g2','g3','g4'],           'exA-', CORRECT.exA, 'step1-fb', 'exA'); }
+function checkExB() { checkDropdowns(['g1','g2','g3','g4','g5','g6'], 'exB-', CORRECT.exB, 'step2-fb', 'exB'); }
+function checkExC() { checkDropdowns(['g1','g2','g3','g4','g5'],      'exC-', CORRECT.exC, 'step3-fb', 'exC'); }
+function checkExD() { checkDropdowns(['g1','g2','g3','g4'],           'exD-', CORRECT.exD, 'step4-fb', 'exD'); }
 
 /* ============================================================
    VALIDATION
@@ -470,110 +429,74 @@ function validateStep(n) {
 /* ============================================================
    SAVE / RESTORE
 ============================================================ */
+var GAPS = { 1: ['exA', ['g1','g2','g3','g4']], 2: ['exB', ['g1','g2','g3','g4','g5','g6']], 3: ['exC', ['g1','g2','g3','g4','g5']], 4: ['exD', ['g1','g2','g3','g4']] };
+
 function saveStep(n) {
-  switch (n) {
-    case 1:
-      state.exA.g1 = g('exA-g1'); state.exA.g2 = g('exA-g2');
-      state.exA.g3 = g('exA-g3'); state.exA.g4 = g('exA-g4');
-      break;
-    case 2:
-      state.exB.g1 = g('exB-g1'); state.exB.g2 = g('exB-g2'); state.exB.g3 = g('exB-g3');
-      state.exB.g4 = g('exB-g4'); state.exB.g5 = g('exB-g5'); state.exB.g6 = g('exB-g6');
-      break;
-    case 3:
-      state.exC.g1 = g('exC-g1'); state.exC.g2 = g('exC-g2'); state.exC.g3 = g('exC-g3');
-      state.exC.g4 = g('exC-g4'); state.exC.g5 = g('exC-g5');
-      break;
-    case 4:
-      state.exD.g1 = g('exD-g1'); state.exD.g2 = g('exD-g2');
-      state.exD.g3 = g('exD-g3'); state.exD.g4 = g('exD-g4');
-      break;
-  }
+  if (!GAPS[n]) return;
+  var ex = GAPS[n][0];
+  GAPS[n][1].forEach(function(k) { state[ex][k] = g(ex + '-' + k); });
 }
 
 function restoreStep(n) {
-  switch (n) {
-    case 1:
-      set('exA-g1', state.exA.g1); set('exA-g2', state.exA.g2);
-      set('exA-g3', state.exA.g3); set('exA-g4', state.exA.g4);
-      break;
-    case 2:
-      set('exB-g1', state.exB.g1); set('exB-g2', state.exB.g2); set('exB-g3', state.exB.g3);
-      set('exB-g4', state.exB.g4); set('exB-g5', state.exB.g5); set('exB-g6', state.exB.g6);
-      break;
-    case 3:
-      set('exC-g1', state.exC.g1); set('exC-g2', state.exC.g2); set('exC-g3', state.exC.g3);
-      set('exC-g4', state.exC.g4); set('exC-g5', state.exC.g5);
-      break;
-    case 4:
-      set('exD-g1', state.exD.g1); set('exD-g2', state.exD.g2);
-      set('exD-g3', state.exD.g3); set('exD-g4', state.exD.g4);
-      break;
-  }
+  if (!GAPS[n]) return;
+  var ex = GAPS[n][0];
+  GAPS[n][1].forEach(function(k) { set(ex + '-' + k, state[ex][k]); });
 }
 
 /* ============================================================
-   SUMMARY
+   SUMMARY + SCORE
 ============================================================ */
 function buildSummary() {
-  var rows = [];
-  ['exA', 'exB', 'exC', 'exD'].forEach(function(ex) {
-    var exName = { exA: 'Exercise A — Been or Gone?', exB: 'Exercise B — Present Perfect Forms', exC: 'Exercise C — Just, Already, or Yet?', exD: 'Exercise D — Ever, Never & First Time' }[ex];
-    Object.keys(CORRECT[ex]).forEach(function(k) {
-      var ans = state[ex][k] || '';
-      var isRight = ans === CORRECT[ex][k];
-      rows.push({ ex: exName, q: QLABELS[ex][k], a: ans, right: isRight, correctAns: CORRECT[ex][k] });
-    });
-  });
-
+  var names = { exA: 'Exercise A — Been or Gone?', exB: 'Exercise B — Present Perfect Forms', exC: 'Exercise C — Just, Already, or Yet?', exD: 'Exercise D — Ever, Never & First Time' };
+  var order = { exA: ['g1','g2','g3','g4'], exB: ['g1','g2','g3','g4','g5','g6'], exC: ['g1','g2','g3','g4','g5'], exD: ['g1','g2','g3','g4'] };
   var html = '<div class="submit-summary">'
     + '<div class="summary-row"><div class="summary-ex">Student</div>'
     + '<div class="summary-q">' + esc(state.name) + ' — ' + esc(state.cls) + '</div></div>';
-  rows.forEach(function(r) {
-    html += '<div class="summary-row"><div class="summary-ex">' + esc(r.ex) + '</div>'
-      + '<div class="summary-q">' + esc(r.q) + '</div>'
-      + '<div class="summary-a ' + (r.right ? 'right' : 'wrong') + '">' + esc(r.a || '(no answer)') + (r.right ? ' ✓' : ' ✗') + '</div>'
-      + (!r.right ? '<div class="summary-correct-hint">Correct answer: ' + esc(r.correctAns) + '</div>' : '')
-      + '</div>';
+  ['exA','exB','exC','exD'].forEach(function(ex) {
+    order[ex].forEach(function(k) {
+      var ans = state[ex][k] || '';
+      var right = ans === CORRECT[ex][k];
+      html += '<div class="summary-row"><div class="summary-ex">' + esc(names[ex]) + '</div>'
+        + '<div class="summary-q">' + esc(QLABELS[ex][k]) + '</div>'
+        + '<div class="summary-a ' + (right ? 'right' : 'wrong') + '">' + esc(ans || '(no answer)') + (right ? ' ✓' : ' ✗') + '</div>'
+        + (!right ? '<div class="summary-correct-hint">Correct answer: ' + esc(CORRECT[ex][k]) + '</div>' : '')
+        + '</div>';
+    });
   });
   html += '</div>';
   document.getElementById('summary-container').innerHTML = html;
+  renderScore();
 }
 
 /* ============================================================
-   EMAIL FALLBACK BODY
+   PAYLOAD + EMAIL FALLBACK
 ============================================================ */
+function buildPayload() {
+  var sc = totalScore();
+  var gr = lookupGrade(sc.earned, sc.possible);
+  return {
+    name: state.name, cls: state.cls, unit: UNIT,
+    exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD,
+    score: sc.earned + ' / ' + sc.possible,
+    grade: gr ? ('Note ' + gr.note + ' (' + gr.label + ')') : ''
+  };
+}
+
 function buildEmailBody() {
-  var res = calculateGrade();
+  var sc = totalScore();
+  var gr = lookupGrade(sc.earned, sc.possible);
+  var names = { exA: 'A: Been or Gone?', exB: 'B: Present Perfect Forms', exC: 'C: Just, Already, or Yet?', exD: 'D: Ever, Never & First Time' };
+  var order = { exA: ['g1','g2','g3','g4'], exB: ['g1','g2','g3','g4','g5','g6'], exC: ['g1','g2','g3','g4','g5'], exD: ['g1','g2','g3','g4'] };
   var body = 'Exercise: ' + UNIT
     + '\nStudent: ' + state.name
     + '\nClass:   ' + state.cls
     + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
-    + '\nScore:   ' + res.correct + '/' + res.total + ' (' + res.pct + '%) — Note ' + res.grade + ' (' + GRADE_LABELS[res.grade] + ')';
-
-  body += '\n\n--- Exercise A: Been or Gone? ---';
-  ['g1', 'g2', 'g3', 'g4'].forEach(function(k) { body += '\n' + QLABELS.exA[k] + ' -> ' + (state.exA[k] || '(none)'); });
-
-  body += '\n\n--- Exercise B: Present Perfect Forms ---';
-  ['g1', 'g2', 'g3', 'g4', 'g5', 'g6'].forEach(function(k) { body += '\n' + QLABELS.exB[k] + ' -> ' + (state.exB[k] || '(none)'); });
-
-  body += '\n\n--- Exercise C: Just, Already, or Yet? ---';
-  ['g1', 'g2', 'g3', 'g4', 'g5'].forEach(function(k) { body += '\n' + QLABELS.exC[k] + ' -> ' + (state.exC[k] || '(none)'); });
-
-  body += '\n\n--- Exercise D: Ever, Never & First Time ---';
-  ['g1', 'g2', 'g3', 'g4'].forEach(function(k) { body += '\n' + QLABELS.exD[k] + ' -> ' + (state.exD[k] || '(none)'); });
-
+    + '\nScore:   ' + sc.earned + ' / ' + sc.possible + (gr ? (' — Note ' + gr.note + ' (' + gr.label + ')') : '');
+  ['exA','exB','exC','exD'].forEach(function(ex) {
+    body += '\n\n--- Exercise ' + names[ex] + ' ---';
+    order[ex].forEach(function(k) { body += '\n' + QLABELS[ex][k] + ' -> ' + (state[ex][k] || '(none)'); });
+  });
   return body;
-}
-
-function buildPayload() {
-  var res = calculateGrade();
-var payload = {
-    name: state.name, cls: state.cls, unit: UNIT,
-    exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD,
-    score: res
-  };
-  return payload;
 }
 
 /* ============================================================
