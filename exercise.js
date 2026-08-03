@@ -170,6 +170,58 @@ function checkDropdowns(ids, prefix, answers, fbId, scoreKey) {
   }
 }
 
+/*
+ * checkDropdownsMulti(ids, prefix, answers, fbId, scoreKey)
+ *   Same contract as checkDropdowns, but answers[k] may be either a single
+ *   string OR an array of acceptable values \u2014 any one of which scores the gap
+ *   correct. Use for exercises with more than one defensible answer (e.g.
+ *   relative pronouns: who / that both fine; object pronouns optional).
+ *   First-answer scoring and the state.scores/state.firstTry wiring are
+ *   identical to checkDropdowns, so renderScore() works unchanged.
+ */
+function checkDropdownsMulti(ids, prefix, answers, fbId, scoreKey) {
+  var correct = 0, wrong = 0, empty = 0, firstTry = null;
+  if (scoreKey) {
+    if (!state.firstTry) state.firstTry = {};
+    firstTry = state.firstTry[scoreKey] = state.firstTry[scoreKey] || {};
+  }
+  ids.forEach(function(k) {
+    var sel = document.getElementById(prefix + k);
+    if (!sel) return;
+    sel.className = sel.className.replace(/\s*(gap-correct|gap-wrong)/g, '');
+    if (!sel.value) { empty++; return; }
+    var acc = answers[k];
+    if (!Array.isArray(acc)) acc = [acc];
+    var ok = acc.indexOf(sel.value) !== -1;
+    if (ok) { sel.className += ' gap-correct'; correct++; }
+    else    { sel.className += ' gap-wrong';   wrong++;   }
+    if (firstTry && !(k in firstTry)) firstTry[k] = ok;
+  });
+  var total = ids.length, scored = correct;
+  if (firstTry) {
+    scored = 0;
+    Object.keys(firstTry).forEach(function(k) { if (firstTry[k]) scored++; });
+    state.scores[scoreKey] = { correct: scored, total: total };
+  }
+  var scoreNote = (scoreKey && scored !== correct)
+    ? ' Your recorded score counts your first answers: ' + scored + ' / ' + total + '.'
+    : '';
+  var fb = document.getElementById(fbId);
+  fb.style.display = 'block';
+  if (empty === total) {
+    fb.className = 'feedback err show';
+    fb.textContent = 'Please answer the gaps first.';
+  } else if (wrong === 0 && empty === 0) {
+    fb.className = 'feedback ok show';
+    fb.textContent = '\u2713 All ' + correct + ' correct! Well done.' + scoreNote;
+  } else {
+    fb.className = 'feedback warn show';
+    fb.textContent = correct + ' / ' + total + ' correct'
+      + (wrong ? ' \u2014 check the red gaps' : '')
+      + (empty ? ' (' + empty + ' still blank)' : '') + '.' + scoreNote;
+  }
+}
+
 var GRADE_TABLE = [
   [100,96,80,60,45,16],[99,96,80,60,45,16],[98,95,79,59,45,16],[97,94,78,59,44,16],
   [96,93,77,58,44,16],[95,92,76,57,43,16],[94,91,76,57,43,16],[93,90,75,56,42,15],
