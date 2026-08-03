@@ -240,6 +240,8 @@
         <select class="gap-select" id="exC-m8"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></div>
     </div>
 
+    <div style="text-align:center;margin:.25rem 0 .5rem"><button class="btn btn-gold btn-sm" onclick="checkExC()">&#10003; Check paragraph answers (Ex C)</button></div>
+    <div id="step2-fb" class="feedback"></div>
     <div id="step2-error" class="feedback err"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
@@ -329,6 +331,7 @@
       <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
       <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
     </div>
+    <div id="score-display" style="display:none"></div>
     <div id="summary-container"></div>
     <div class="card" style="text-align:center">
       <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
@@ -379,6 +382,7 @@ var ARTICLE = [
 var state = {
   name:  '',
   cls:   '',
+  scores: {}, firstTry: {},
   exA:   {},
   exB:   {},
   exC:   {},
@@ -514,6 +518,12 @@ function exFText() { return F_QS.map(function(q, i) { return (i + 1) + '. ' + q 
 /* ============================================================
    SUMMARY
 ============================================================ */
+function checkExC() {
+  checkDropdowns(['m1','m2','m3','m4','m5','m6','m7','m8'], 'exC-',
+    { m1:'3', m2:'1', m3:'2', m4:'5', m5:'4', m6:'6', m7:'8', m8:'7' },
+    'step2-fb', 'exC');
+}
+
 function buildSummary() {
   var rows = [
     { ex: 'Exercise A', q: 'Where to build business relations', a: state.exA.q1 },
@@ -533,6 +543,7 @@ function buildSummary() {
   });
   html += '</div>';
   document.getElementById('summary-container').innerHTML = html;
+  renderScore();
 }
 
 /* ============================================================
@@ -552,7 +563,9 @@ function buildEmailBody() {
 }
 
 function buildPayload() {
-var payload = { name: state.name, cls: state.cls, unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD, exE: state.exE, exF: state.exF };
+var sc = totalScore(); var gr = lookupGrade(sc.earned, sc.possible);
+  var payload = { name: state.name, cls: state.cls, unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD, exE: state.exE, exF: state.exF,
+    score: sc.earned + ' / ' + sc.possible, grade: gr ? ('Note ' + gr.note + ' (' + gr.label + ')') : '' };
   return payload;
 }
 
