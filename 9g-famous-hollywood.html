@@ -279,6 +279,8 @@
       </div>
     </div>
 
+    <div style="text-align:center;margin:.25rem 0 .5rem"><button class="btn btn-gold btn-sm" onclick="checkEx4()">&#10003; Check answers (part a)</button></div>
+    <div id="step4-fb" class="feedback"></div>
     <div id="step4-error" class="feedback err"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
@@ -384,6 +386,7 @@
       <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
       <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
     </div>
+    <div id="score-display" style="display:none"></div>
     <div id="summary-container"></div>
     <div class="card" style="text-align:center">
       <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
@@ -416,6 +419,7 @@ var maxStepReached = 0;
 var state = {
   name: '',
   cls:  '',
+  scores: {}, firstTry: {},
   ex1:  {},   /* reading: headings, summaries, adjectives */
   ex2:  {},   /* two words */
   ex3:  {},   /* dilemma & fame */
@@ -526,6 +530,22 @@ function restoreStep(n) {
   }
 }
 
+/* ===== CHECK (Ex 4 — relative pronouns; multiple answers accepted) ===== */
+function checkEx4() {
+  checkDropdownsMulti(
+    ['g1','g2','g3','g4','g5','g6','g7','g8'], 'ex4-',
+    { g1: ['who','that'],
+      g2: ['who','that'],
+      g3: ['— (not needed)','which','that'],
+      g4: ['— (not needed)','that','which'],
+      g5: ['who','that'],
+      g6: ['whose'],
+      g7: ['— (not needed)','which','that'],
+      g8: ['whose'] },
+    'step4-fb', 'ex4rel'
+  );
+}
+
 /* ===== SUMMARY ===== */
 function buildSummary() {
   var e1 = state.ex1, e2 = state.ex2, e3 = state.ex3, e4 = state.ex4, e5 = state.ex5, e6 = state.ex6;
@@ -566,6 +586,7 @@ function buildSummary() {
   });
   html += '</div>';
   document.getElementById('summary-container').innerHTML = html;
+  renderScore();
 }
 
 /* ===== EMAIL FALLBACK BODY ===== */
@@ -610,7 +631,9 @@ function buildEmailBody() {
 
 /* ===== SUBMIT TO GOOGLE SHEET ===== */
 function buildPayload() {
-var payload = {
+  var sc = totalScore();
+  var gr = lookupGrade(sc.earned, sc.possible);
+  var payload = {
     name: state.name,
     cls:  state.cls,
     unit: UNIT,
@@ -619,7 +642,9 @@ var payload = {
     ex3:  eolFlat(state.ex3),
     ex4:  eolFlat(state.ex4),
     ex5:  eolFlat(state.ex5),
-    ex6:  eolFlat(state.ex6)
+    ex6:  eolFlat(state.ex6),
+    score: sc.earned + ' / ' + sc.possible,
+    grade: gr ? ('Note ' + gr.note + ' (' + gr.label + ')') : ''
   };
   return payload;
 }
