@@ -190,6 +190,8 @@
       <div id="exA-list"></div>
     </div>
 
+    <div style="text-align:center;margin:.25rem 0 .5rem"><button class="btn btn-gold btn-sm" onclick="checkExA()">&#10003; Check answers</button></div>
+    <div id="step1-fb" class="feedback"></div>
     <div id="step1-error" class="feedback err"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
@@ -241,6 +243,8 @@
       </div>
     </div>
 
+    <div style="text-align:center;margin:.25rem 0 .5rem"><button class="btn btn-gold btn-sm" onclick="checkExB()">&#10003; Check answers</button></div>
+    <div id="step2-fb" class="feedback"></div>
     <div id="step2-error" class="feedback err"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
@@ -303,6 +307,8 @@
       </div>
     </div>
 
+    <div style="text-align:center;margin:.25rem 0 .5rem"><button class="btn btn-gold btn-sm" onclick="checkExC()">&#10003; Check answers</button></div>
+    <div id="step3-fb" class="feedback"></div>
     <div id="step3-error" class="feedback err"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
@@ -343,6 +349,7 @@
       <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
       <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
     </div>
+    <div id="score-display" style="display:none"></div>
     <div id="summary-container"></div>
     <div class="card" style="text-align:center">
       <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
@@ -385,11 +392,28 @@ var VERBS_A = ['cement','cultivate','cut off','damage','develop','disrupt','enco
 var state = {
   name:  '',
   cls:   '',
+  scores: {}, firstTry: {},
   exA:   {},
   exB:   {},
   exC:   {},
   exD:   {}
 };
+
+function checkExA() {
+  checkDropdowns(['v0','v1','v2','v3','v4','v5','v6','v7','v8','v9','v10','v11','v12','v13','v14','v15','v16','v17','v18'], 'exA-',
+    { v0:'Positive', v1:'Positive', v2:'Negative', v3:'Negative', v4:'Positive', v5:'Negative', v6:'Positive', v7:'Positive',
+      v8:'Positive', v9:'Positive', v10:'Negative', v11:'Positive', v12:'Positive', v13:'Positive', v14:'Positive',
+      v15:'Negative', v16:'Negative', v17:'Positive', v18:'Negative' }, 'step1-fb', 'exA');
+}
+function checkExB() {
+  checkDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10'], 'exB-',
+    { g1:'damage', g2:'establish', g3:'strengthened', g4:'undermined', g5:'improving',
+      g6:'disrupted', g7:'broke off', g8:'jeopardised', g9:'building up', g10:'fostered' }, 'step2-fb', 'exB');
+}
+function checkExC() {
+  checkDropdowns(['m1','m2','m3','m4','m5'], 'exC-',
+    { m1:'e', m2:'d', m3:'b', m4:'a', m5:'c' }, 'step3-fb', 'exC');
+}
 
 /* ============================================================
    RENDER (Exercise A built dynamically)
@@ -506,6 +530,7 @@ function buildSummary() {
   });
   html += '</div>';
   document.getElementById('summary-container').innerHTML = html;
+  renderScore();
 }
 
 /* ============================================================
@@ -524,7 +549,9 @@ function buildEmailBody() {
 }
 
 function buildPayload() {
-var payload = { name: state.name, cls: state.cls, unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD };
+var sc = totalScore(); var gr = lookupGrade(sc.earned, sc.possible);
+  var payload = { name: state.name, cls: state.cls, unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD,
+    score: sc.earned + ' / ' + sc.possible, grade: gr ? ('Note ' + gr.note + ' (' + gr.label + ')') : '' };
   return payload;
 }
 
