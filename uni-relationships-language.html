@@ -249,6 +249,8 @@
       </div>
     </div>
 
+    <div style="text-align:center;margin:.25rem 0 .5rem"><button class="btn btn-gold btn-sm" onclick="checkExA()">&#10003; Check order</button></div>
+    <div id="step1-fb" class="feedback"></div>
     <div id="step1-error" class="feedback err"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
@@ -294,6 +296,8 @@
         <select class="gap-select" id="exB-g10"></select></div>
     </div>
 
+    <div style="text-align:center;margin:.25rem 0 .5rem"><button class="btn btn-gold btn-sm" onclick="checkExB()">&#10003; Check answers</button></div>
+    <div id="step2-fb" class="feedback"></div>
     <div id="step2-error" class="feedback err"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
@@ -398,6 +402,7 @@
       <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
       <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
     </div>
+    <div id="score-display" style="display:none"></div>
     <div id="summary-container"></div>
     <div class="card" style="text-align:center">
       <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
@@ -446,10 +451,22 @@ var C_ORIGINALS = ['', 'We can’t hold the meeting tomorrow.', 'They’ve postp
 var state = {
   name:  '',
   cls:   '',
+  scores: {}, firstTry: {},
   exA:   {},
   exB:   {},
   exC:   {}
 };
+
+function checkExA() {
+  /* line f is given (position 1, disabled) — grade the other nine the student orders */
+  checkDropdowns(['a','b','c','d','e','g','h','i','j'], 'exA-',
+    { a:'6', b:'3', c:'10', d:'7', e:'2', g:'4', h:'9', i:'8', j:'5' }, 'step1-fb', 'exA');
+}
+function checkExB() {
+  checkDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10'], 'exB-',
+    { g1:'get on', g2:'check in', g3:'build up', g4:'turn round', g5:'put off',
+      g6:'turn up', g7:'let down', g8:'set up', g9:'carry on', g10:'call off' }, 'step2-fb', 'exB');
+}
 
 /* ============================================================
    RENDER (Exercise B dropdowns)
@@ -546,6 +563,7 @@ function buildSummary() {
   });
   html += '</div>';
   document.getElementById('summary-container').innerHTML = html;
+  renderScore();
 }
 
 /* ============================================================
@@ -562,7 +580,9 @@ function buildEmailBody() {
 }
 
 function buildPayload() {
-var payload = { name: state.name, cls: state.cls, unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC };
+var sc = totalScore(); var gr = lookupGrade(sc.earned, sc.possible);
+  var payload = { name: state.name, cls: state.cls, unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC,
+    score: sc.earned + ' / ' + sc.possible, grade: gr ? ('Note ' + gr.note + ' (' + gr.label + ')') : '' };
   return payload;
 }
 
