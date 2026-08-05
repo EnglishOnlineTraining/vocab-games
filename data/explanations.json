@@ -1,0 +1,424 @@
+{
+  "10g-scottish-history": {
+    "exA": {
+      "g1": {
+        "label": "1. What does “clann” mean?",
+        "correct": "children or descendants",
+        "why": "The text says clann is Gaelic for “children” or “descendants”."
+      },
+      "g2": {
+        "label": "2. The clan system after Culloden",
+        "correct": "it was destroyed",
+        "why": "The clan system was destroyed after the Battle of Culloden in 1746."
+      },
+      "g3": {
+        "label": "3. Why Edward I got involved",
+        "correct": "he was invited to help choose a new king",
+        "why": "He was invited to help choose a king, then used the chance to claim power himself."
+      },
+      "g4": {
+        "label": "4. How Wallace won at Stirling Bridge",
+        "correct": "he used the narrow bridge to neutralise the English advantage",
+        "why": "The narrow bridge cancelled England’s advantage in numbers and cavalry."
+      },
+      "g5": {
+        "label": "5. What happened to Wallace in 1305",
+        "correct": "he was captured and executed",
+        "why": "Wallace was captured in 1305 and executed in London."
+      },
+      "g6": {
+        "label": "6. Bruce’s greatest victory",
+        "correct": "the Battle of Bannockburn",
+        "why": "At Bannockburn (1314) his outnumbered forces defeated Edward II’s army."
+      },
+      "g7": {
+        "label": "7. What the Declaration of Arbroath argued",
+        "correct": "that Scotland had always been independent and could choose its own king",
+        "why": "It argued Scotland had always been free and could choose its own king."
+      },
+      "g8": {
+        "label": "8. Result of the 2014 referendum",
+        "correct": "55% voted to remain in the UK",
+        "why": "In 2014, 55% voted to stay part of the United Kingdom."
+      }
+    },
+    "exB": {
+      "g1": {
+        "label": "1. The Stone of Destiny … by Edward I",
+        "correct": "was seized",
+        "why": "Passive, simple past: the stone received the action → was + past participle (seize → seized)."
+      },
+      "g2": {
+        "label": "2. William Wallace … Guardian of Scotland",
+        "correct": "was appointed",
+        "why": "Passive, simple past: he was given the title → was + appointed."
+      },
+      "g3": {
+        "label": "3. The Scottish army … at Falkirk",
+        "correct": "was crushed",
+        "why": "Singular subject “army” takes was, not were → was + crushed."
+      },
+      "g4": {
+        "label": "4. Before Bruce became king, Wallace …",
+        "correct": "had already been captured",
+        "why": "It happened before another past event → past perfect passive: had (already) been + captured."
+      },
+      "g5": {
+        "label": "5. The Declaration of Arbroath … a statement",
+        "correct": "is considered",
+        "why": "Still true today → present passive: is + considered."
+      },
+      "g6": {
+        "label": "6. Robert the Bruce … King of Scots",
+        "correct": "was crowned",
+        "why": "Passive, simple past: he received the crown → was + crowned."
+      },
+      "g7": {
+        "label": "7. Scotland’s independence … by England",
+        "correct": "was finally recognised",
+        "why": "Passive, simple past: independence was recognised by England → was + recognised."
+      },
+      "g8": {
+        "label": "8. The clan system … before Culloden",
+        "correct": "had been weakened",
+        "why": "An earlier past state → past perfect passive: had been + weakened."
+      }
+    },
+    "exC": {
+      "g1": {
+        "label": "1. … Wallace won, he couldn’t hold on",
+        "correct": "Although",
+        "why": "“Although” opens a concession — a win, but he still couldn’t hold off the English."
+      },
+      "g2": {
+        "label": "2. Edward invaded … forced loyalty",
+        "correct": "Furthermore",
+        "why": "“Furthermore” adds a second thing Edward did."
+      },
+      "g3": {
+        "label": "3. Outnumbered … decisive victory",
+        "correct": "Nevertheless",
+        "why": "“Nevertheless” signals contrast: outnumbered, yet they won."
+      },
+      "g4": {
+        "label": "4. Letter to the Pope … recognition",
+        "correct": "As a result",
+        "why": "“As a result” shows cause and effect: the letter led to recognition."
+      },
+      "g5": {
+        "label": "5. Identity … also protection",
+        "correct": "Moreover",
+        "why": "“Moreover” adds a further benefit of the clan system."
+      },
+      "g6": {
+        "label": "6. Wallace’s tactics vs Edward’s armies",
+        "correct": "In contrast",
+        "why": "“In contrast” compares two opposite ways of fighting."
+      },
+      "g7": {
+        "label": "7. Opposed by Scots … went ahead",
+        "correct": "However",
+        "why": "“However” marks contrast: opposed by many, but it still happened."
+      },
+      "g8": {
+        "label": "8. Voted to remain … movement grew",
+        "correct": "Nevertheless",
+        "why": "“Nevertheless” shows contrast: they voted to remain, yet the movement grew."
+      }
+    }
+  },
+  "9g-famous-hollywood": {
+    "ex4rel": {
+      "prefix": "ex4-",
+      "gaps": {
+        "g1": {
+          "label": "1. thousands of people ___ have big hopes",
+          "correct": "who / that",
+          "accept": [
+            "who",
+            "that"
+          ],
+          "why": "People as the subject of the clause take “who” (or “that”)."
+        },
+        "g2": {
+          "label": "2. actors ___ want to chase their dreams",
+          "correct": "who / that",
+          "accept": [
+            "who",
+            "that"
+          ],
+          "why": "“who” (or “that”) — people acting as the subject."
+        },
+        "g3": {
+          "label": "3. The professions ___ they choose",
+          "correct": "which / that / — (not needed)",
+          "accept": [
+            "— (not needed)",
+            "which",
+            "that"
+          ],
+          "why": "A thing as the object: use “which”/“that”, or leave the pronoun out."
+        },
+        "g4": {
+          "label": "4. The age ___ they are",
+          "correct": "which / that / — (not needed)",
+          "accept": [
+            "— (not needed)",
+            "that",
+            "which"
+          ],
+          "why": "A thing as the object — “which”/“that”, or omit it."
+        },
+        "g5": {
+          "label": "5. People ___ are under 30",
+          "correct": "who / that",
+          "accept": [
+            "who",
+            "that"
+          ],
+          "why": "People as the subject — “who”/“that”; it cannot be dropped."
+        },
+        "g6": {
+          "label": "6. young people ___ parents are in the business",
+          "correct": "whose",
+          "accept": [
+            "whose"
+          ],
+          "why": "“whose” shows possession (the people’s parents)."
+        },
+        "g7": {
+          "label": "7. the competition ___ they face",
+          "correct": "which / that / — (not needed)",
+          "accept": [
+            "— (not needed)",
+            "which",
+            "that"
+          ],
+          "why": "A thing as the object — “which”/“that”, or omit it."
+        },
+        "g8": {
+          "label": "8. people ___ main income is from acting",
+          "correct": "whose",
+          "accept": [
+            "whose"
+          ],
+          "why": "“whose” shows possession (the people’s income)."
+        }
+      }
+    }
+  },
+  "7g-tudor-past-perfect": {
+    "exB": {
+      "prefix": "ex2-",
+      "gaps": {
+        "g1": {
+          "label": "1. By the time Drake set sail, he ___ to navigate",
+          "correct": "had already learned",
+          "why": "The learning came before he set sail → past perfect: had + past participle."
+        },
+        "g2": {
+          "label": "2. When the Queen knighted him, Drake ___ wealthy",
+          "correct": "had become",
+          "why": "He became wealthy before the knighting → past perfect: had become."
+        },
+        "g3": {
+          "label": "3. After Drake ___ his voyage, he returned",
+          "correct": "had completed",
+          "why": "“After” marks the earlier action → past perfect: had completed."
+        },
+        "g4": {
+          "label": "4. The soldiers were tired because they ___ all day",
+          "correct": "had fought",
+          "why": "The fighting happened before the tiredness → past perfect: had fought."
+        },
+        "g5": {
+          "label": "5. By 1588, the Spanish ___ the largest fleet",
+          "correct": "had built",
+          "why": "Completed before 1588 → past perfect: had built."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "ex3-",
+      "gaps": {
+        "g1": {
+          "label": "1. When Henry VIII became king, …",
+          "correct": "his father had already died",
+          "why": "His father died before Henry became king → past perfect (had already died)."
+        },
+        "g2": {
+          "label": "2. By the time the Armada arrived, …",
+          "correct": "Drake had warned the English fleet",
+          "why": "The warning came before the Armada arrived → past perfect."
+        },
+        "g3": {
+          "label": "3. After Drake …, the Queen rewarded him",
+          "correct": "had returned to England",
+          "why": "“After” marks the earlier action → past perfect: had returned."
+        },
+        "g4": {
+          "label": "4. The sailors were exhausted because they …",
+          "correct": "had not slept for days",
+          "why": "No sleep came before the exhaustion → past perfect: had not slept."
+        },
+        "g5": {
+          "label": "5. Elizabeth was relieved because the Spanish …",
+          "correct": "had not managed to land",
+          "why": "The failure to land came before her relief → past perfect."
+        },
+        "g6": {
+          "label": "6. Before Drake became famous, …",
+          "correct": "he had worked on merchant ships",
+          "why": "“Before he became famous” → the earlier job takes past perfect: had worked."
+        },
+        "g7": {
+          "label": "7. Drake told the Queen that he …",
+          "correct": "had captured many Spanish ships",
+          "why": "Reporting an earlier completed action → past perfect: had captured."
+        },
+        "g8": {
+          "label": "8. By 1580, …",
+          "correct": "Drake had sailed around the world",
+          "why": "Completed by that date → past perfect: had sailed."
+        }
+      }
+    }
+  },
+  "10c-government-systems": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. The UK is a constitutional ___",
+          "correct": "monarchy",
+          "why": "The UK keeps a monarch as head of state → constitutional monarchy."
+        },
+        "g2": {
+          "label": "2. Real political power is held by ___",
+          "correct": "Parliament",
+          "why": "In the UK, real power lies with the elected Parliament, not the King."
+        },
+        "g3": {
+          "label": "3. Members of the House of Commons are ___",
+          "correct": "elected",
+          "why": "MPs are chosen by voters → elected."
+        },
+        "g4": {
+          "label": "4. The leader of the UK government is the ___",
+          "correct": "Prime Minister",
+          "why": "The head of the UK government is the Prime Minister."
+        },
+        "g5": {
+          "label": "5. The US Constitution was signed in ___",
+          "correct": "1787",
+          "why": "The US Constitution was signed in 1787."
+        },
+        "g6": {
+          "label": "6. The US head of state is the ___",
+          "correct": "President",
+          "why": "In the USA the head of state is the President."
+        },
+        "g7": {
+          "label": "7. Power is divided between the federal government and the fifty ___",
+          "correct": "states",
+          "why": "US power is split between the federal government and the fifty states."
+        },
+        "g8": {
+          "label": "8. The system that stops anyone becoming too powerful",
+          "correct": "checks and balances",
+          "why": "The system that limits each branch’s power is called checks and balances."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. In the UK, laws ___ by Parliament",
+          "correct": "are made",
+          "why": "Passive, present: laws receive the action → are + made."
+        },
+        "g2": {
+          "label": "2. The US Constitution ___ in 1787",
+          "correct": "was signed",
+          "why": "Passive, past (1787) → was + signed."
+        },
+        "g3": {
+          "label": "3. The Prime Minister ___ by the King",
+          "correct": "is asked",
+          "why": "Passive, present → is + asked."
+        },
+        "g4": {
+          "label": "4. Members of the House of Commons ___ by the people",
+          "correct": "are elected",
+          "why": "Passive, present, plural subject → are + elected."
+        },
+        "g5": {
+          "label": "5. Last year, a new law ___",
+          "correct": "was passed",
+          "why": "Passive, past (last year) → was + passed."
+        },
+        "g6": {
+          "label": "6. The American President ___ every four years",
+          "correct": "is elected",
+          "why": "Passive, present, singular subject → is + elected."
+        },
+        "g7": {
+          "label": "7. Many important decisions ___ in Washington",
+          "correct": "are made",
+          "why": "Passive, present, plural subject → are + made."
+        },
+        "g8": {
+          "label": "8. The White House ___ in the late 18th century",
+          "correct": "was built",
+          "why": "Passive, past → was + built."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. The people elect the President →",
+          "correct": "is elected",
+          "why": "Present passive: is + elected."
+        },
+        "g2": {
+          "label": "2. Parliament makes the laws →",
+          "correct": "are made",
+          "why": "Present passive, plural → are + made."
+        },
+        "g3": {
+          "label": "3. Congress passed the law in 2020 →",
+          "correct": "was passed",
+          "why": "Past passive → was + passed."
+        },
+        "g4": {
+          "label": "4. They will hold an election next year →",
+          "correct": "will be held",
+          "why": "Future passive → will be + held."
+        },
+        "g5": {
+          "label": "5. The government has increased taxes →",
+          "correct": "have been increased",
+          "why": "Present perfect passive → have been + increased."
+        },
+        "g6": {
+          "label": "6. Workers built the Capitol in 1800 →",
+          "correct": "was built",
+          "why": "Past passive → was + built."
+        },
+        "g7": {
+          "label": "7. The King opens Parliament every year →",
+          "correct": "is opened",
+          "why": "Present passive → is + opened."
+        },
+        "g8": {
+          "label": "8. People speak English in both countries →",
+          "correct": "is spoken",
+          "why": "Present passive → is + spoken."
+        }
+      }
+    }
+  }
+}
