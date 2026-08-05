@@ -388,6 +388,7 @@
     </div>
     <div id="score-display" style="display:none"></div>
     <div id="summary-container"></div>
+    <div id="explanations" style="display:none"></div>
     <div class="card" style="text-align:center">
       <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
       <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
@@ -547,6 +548,23 @@ function checkEx4() {
 }
 
 /* ===== SUMMARY ===== */
+/* Review-page explanations (relative pronouns). Accept = every correct option. */
+var EXPLAIN = {
+  ex4rel: {
+    prefix: 'ex4-',
+    gaps: {
+      g1: { label: '1. thousands of people ___ have big hopes', correct: 'who / that', accept: ['who','that'], why: 'People as the subject of the clause take “who” (or “that”).' },
+      g2: { label: '2. actors ___ want to chase their dreams',   correct: 'who / that', accept: ['who','that'], why: '“who” (or “that”) — people acting as the subject.' },
+      g3: { label: '3. The professions ___ they choose',         correct: 'which / that / — (not needed)', accept: ['— (not needed)','which','that'], why: 'A thing as the object: use “which”/“that”, or leave the pronoun out.' },
+      g4: { label: '4. The age ___ they are',                    correct: 'which / that / — (not needed)', accept: ['— (not needed)','that','which'], why: 'A thing as the object — “which”/“that”, or omit it.' },
+      g5: { label: '5. People ___ are under 30',                 correct: 'who / that', accept: ['who','that'], why: 'People as the subject — “who”/“that”; it cannot be dropped.' },
+      g6: { label: '6. young people ___ parents are in the business', correct: 'whose', accept: ['whose'], why: '“whose” shows possession (the people’s parents).' },
+      g7: { label: '7. the competition ___ they face',           correct: 'which / that / — (not needed)', accept: ['— (not needed)','which','that'], why: 'A thing as the object — “which”/“that”, or omit it.' },
+      g8: { label: '8. people ___ main income is from acting',   correct: 'whose', accept: ['whose'], why: '“whose” shows possession (the people’s income).' }
+    }
+  }
+};
+
 function buildSummary() {
   var e1 = state.ex1, e2 = state.ex2, e3 = state.ex3, e4 = state.ex4, e5 = state.ex5, e6 = state.ex6;
   var rel = [];
