@@ -14,6 +14,113 @@ function isTestMode() {
   return window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 }
 
+/* ============================================================
+   PRACTISE-ONLY MODE (no submission)
+   A public visitor can do any exercise without entering a name.
+   Shaun's classes still submit exactly as before.
+     ?mode=practise  — skip the gate entirely
+     ?mode=class     — force the name/class gate (hide practise option)
+   Everything here is gated behind practiseMode, so the normal
+   submission flow is untouched.
+============================================================ */
+var practiseMode = false;
+
+function eolUrlMode() {
+  try { return (new URLSearchParams(window.location.search)).get('mode') || ''; }
+  catch (e) { return ''; }
+}
+
+function startPractise() {
+  practiseMode = true;
+  state.name = 'Übungsmodus';
+  state.cls  = '';
+  var err = document.getElementById('welcome-error');
+  if (err) err.classList.remove('show');
+  eolRelabelForPractise();
+  showStep(1);
+}
+
+/* Relabel the last exercise's "Review & Submit" button — no submission in practise mode. */
+function eolRelabelForPractise() {
+  var lastEx = TOTAL_STEPS - 1;
+  var btn = document.querySelector('#step-' + lastEx + ' [onclick*="nextStep(' + lastEx + ')"]');
+  if (btn) btn.innerHTML = 'Ergebnis anzeigen &rarr;';
+}
+
+/* Inject the "just practise" button into the welcome gate and honour ?mode=. */
+function eolInitPractise() {
+  var mode = eolUrlMode();
+  var startBtn = document.querySelector('#step-0 [onclick*="startExercises"]');
+  if (startBtn && mode !== 'class' && !document.getElementById('practise-btn')) {
+    var b = document.createElement('button');
+    b.id = 'practise-btn';
+    b.className = 'btn btn-outline btn-block';
+    b.style.marginTop = '.6rem';
+    b.innerHTML = 'Nur üben — ohne Abgabe &middot; <span style="opacity:.75">Just practise</span>';
+    b.setAttribute('type', 'button');
+    b.setAttribute('onclick', 'startPractise()');
+    startBtn.parentNode.insertBefore(b, startBtn.nextSibling);
+  }
+  if (mode === 'practise') { setTimeout(startPractise, 0); }   // after the page's own DOMContentLoaded
+}
+document.addEventListener('DOMContentLoaded', eolInitPractise);
+
+/* Turn the submit step into a results screen when practising. Called from showStep. */
+function eolPractiseResults() {
+  var step = document.getElementById('step-' + TOTAL_STEPS);
+  if (!step) return;
+  var submitBtn = document.getElementById('submit-btn');
+  if (submitBtn && submitBtn.closest) {
+    var card = submitBtn.closest('.card');
+    if (card) card.style.display = 'none';
+  }
+  var head = step.querySelector('.ex-title');
+  if (head) head.textContent = 'Übung abgeschlossen!';
+  var sub = step.querySelector('.ex-subtitle');
+  if (sub) sub.textContent = 'Übungsmodus — deine Ergebnisse. Nichts wird abgeschickt.';
+  renderScore();
+  var panel = document.getElementById('practise-results');
+  if (panel) panel.remove();
+  panel = document.createElement('div');
+  panel.id = 'practise-results';
+  panel.innerHTML = eolPractisePanelHtml();
+  var scoreEl = document.getElementById('score-display');
+  if (scoreEl) scoreEl.parentNode.insertBefore(panel, scoreEl.nextSibling);
+  else step.querySelector('.step-inner').appendChild(panel);
+}
+
+function eolPractisePanelHtml() {
+  var keys = Object.keys(state.scores || {});
+  var rows = keys.map(function(k) {
+    var s = state.scores[k];
+    var letter = k.replace(/^ex/i, '');
+    return '<div style="display:flex;justify-content:space-between;padding:.4rem 0;border-top:1px solid var(--border)">'
+      + '<span>Exercise ' + esc(letter) + '</span><strong>' + fmtPts(s.correct) + ' / ' + s.total + '</strong></div>';
+  }).join('');
+  var breakdown = rows
+    ? '<div class="card"><div class="card-title">Deine Punkte pro Übung</div>' + rows + '</div>'
+    : '';
+  var hasWriting = !!document.querySelector('.step textarea');
+  var selfcheck = hasWriting
+    ? '<div class="card"><div class="card-title">Schreibaufgabe — selbst prüfen</div>'
+      + '<ul style="margin:.3rem 0 0 1.1rem;font-size:.9rem;line-height:1.7;color:var(--text)">'
+      + '<li>Hast du alle Inhaltspunkte der Aufgabe behandelt?</li>'
+      + '<li>Ist dein Text klar gegliedert (Einleitung – Hauptteil – Schluss)?</li>'
+      + '<li>Hast du Verknüpfungswörter benutzt (however, therefore, although …)?</li>'
+      + '<li>Zeiten, 3rd-person -s und Rechtschreibung noch einmal geprüft?</li>'
+      + '</ul></div>'
+    : '';
+  var buttons = '<div class="card" style="text-align:center">'
+    + '<button class="btn btn-gold" type="button" style="width:100%;max-width:360px;justify-content:center" onclick="eolPractiseRetry()">↻ Nochmal üben · Try again</button>'
+    + '<div style="margin-top:.7rem"><a class="btn btn-outline btn-sm" href="activities.html">← Alle Übungen</a></div>'
+    + '</div>';
+  return breakdown + selfcheck + buttons;
+}
+
+function eolPractiseRetry() {
+  window.location.href = window.location.pathname + '?mode=practise';
+}
+
 function showToast(message, duration) {
   duration = duration || 2500;
   var toast = document.createElement('div');
@@ -37,10 +144,12 @@ function showStep(n) {
   var meta = document.getElementById('header-meta');
   if (n === 0) { meta.style.display = 'none'; return; }
   meta.style.display = 'block';
-  document.getElementById('header-name').textContent = state.name + (state.cls ? ' — ' + state.cls : '');
+  document.getElementById('header-name').textContent = practiseMode
+    ? 'Übungsmodus' : (state.name + (state.cls ? ' — ' + state.cls : ''));
   document.getElementById('header-step').textContent = n < TOTAL_STEPS
     ? 'Exercise ' + String.fromCharCode(64 + n) + ' of ' + (TOTAL_STEPS - 1)
-    : 'Submit';
+    : (practiseMode ? 'Ergebnis' : 'Submit');
+  if (practiseMode && n === TOTAL_STEPS) eolPractiseResults();
 }
 
 function renderStepNav(current) {
@@ -277,9 +386,10 @@ var GRADE_LABELS = ['Sehr gut', 'Gut', 'Befriedigend', 'Genügend', 'Nicht genü
 
 function totalScore() {
   var earned = 0, possible = 0;
-  Object.keys(state.scores).forEach(function(k) {
-    earned   += state.scores[k].correct;
-    possible += state.scores[k].total;
+  var scores = state.scores || {};   // pages with no graded sections may omit it
+  Object.keys(scores).forEach(function(k) {
+    earned   += scores[k].correct;
+    possible += scores[k].total;
   });
   return { earned: earned, possible: possible };
 }
@@ -336,6 +446,7 @@ function currentGradeLookup(earned, possible) {
 
 function renderScore() {
   var box = document.getElementById('score-display');
+  if (!box) return;   // pages without a score card (older/free-text) simply skip it
   var sc = totalScore();
   if (!sc.possible) { box.style.display = 'none'; return; }
   var grade = currentGradeLookup(sc.earned, sc.possible);
