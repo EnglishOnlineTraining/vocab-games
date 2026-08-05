@@ -445,6 +445,10 @@ function currentGradeLookup(earned, possible) {
 }
 
 function renderScore() {
+  // Render review-page explanations here too: some pages override showStep
+  // (bypassing that hook) but still call the shared renderScore from buildSummary.
+  // Idempotent, so double-rendering with the showStep hook is harmless.
+  renderExplanations('explanations', eolCollectExplanations());
   var box = document.getElementById('score-display');
   if (!box) return;   // pages without a score card (older/free-text) simply skip it
   var sc = totalScore();
