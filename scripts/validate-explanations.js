@@ -42,7 +42,7 @@ Object.keys(data).forEach(unit => {
   const sections = data[unit];
   Object.keys(sections).forEach(sk => {
     const sec = sections[sk];
-    const prefix = sec.prefix || (sk + '-');
+    const prefix = (sec.prefix != null) ? sec.prefix : (sk + '-');
     const gapsObj = sec.gaps || sec;
     Object.keys(gapsObj).forEach(g => {
       if (g === 'prefix' || g === 'gaps') return;

@@ -8066,5 +8066,536 @@
         }
       }
     }
+  },
+  "it-ai-industry4": {
+    "exA": {
+      "prefix": "",
+      "gaps": {
+        "a1": {
+          "label": "1. From January, invoices...",
+          "correct": "will be processed automatically",
+          "why": "The text says invoices will be processed automatically by a document-recognition system from January.",
+          "accept": [
+            "a"
+          ]
+        },
+        "a2": {
+          "label": "2. Accounting employees will...",
+          "correct": "spend more time checking unusual cases",
+          "why": "The text says employees will spend less time on data entry and more time checking unusual cases.",
+          "accept": [
+            "b"
+          ]
+        },
+        "a3": {
+          "label": "3. Complex HR requests will be handled by...",
+          "correct": "real people",
+          "why": "The text says complex requests will still be handled by real people.",
+          "accept": [
+            "c"
+          ]
+        },
+        "a4": {
+          "label": "4. IoT sensor data will be used to...",
+          "correct": "predict machine failures",
+          "why": "The text says the data will be used to predict failures before they happen.",
+          "accept": [
+            "a"
+          ]
+        },
+        "a5": {
+          "label": "5. Downtime is expected to fall by...",
+          "correct": "30 per cent",
+          "why": "The text says the CTO expects downtime to fall by 30 per cent.",
+          "accept": [
+            "c"
+          ]
+        },
+        "a6": {
+          "label": "6. The working group will review...",
+          "correct": "data quality",
+          "why": "The text says a working group will review data quality every quarter.",
+          "accept": [
+            "b"
+          ]
+        }
+      }
+    },
+    "exB": {
+      "prefix": "",
+      "gaps": {
+        "b1": {
+          "label": "1. Replacing manual tasks with machines/software",
+          "correct": "automation",
+          "why": "‘Automation’ means replacing manual tasks with machines or software.",
+          "accept": [
+            "a"
+          ]
+        },
+        "b2": {
+          "label": "2. Connects devices and sensors to the internet",
+          "correct": "IoT",
+          "why": "‘IoT’ (Internet of Things) connects everyday devices and sensors to the internet.",
+          "accept": [
+            "b"
+          ]
+        },
+        "b3": {
+          "label": "3. Systems learn patterns from data",
+          "correct": "machine learning",
+          "why": "‘Machine learning’ is when systems learn patterns from data instead of following fixed rules.",
+          "accept": [
+            "c"
+          ]
+        },
+        "b4": {
+          "label": "4. Answers customer questions in a chat window",
+          "correct": "chatbot",
+          "why": "A ‘chatbot’ answers simple customer questions in a chat window.",
+          "accept": [
+            "a"
+          ]
+        },
+        "b5": {
+          "label": "5. Describes the fourth industrial revolution",
+          "correct": "Industry 4.0",
+          "why": "‘Industry 4.0’ describes the fourth industrial revolution.",
+          "accept": [
+            "b"
+          ]
+        },
+        "b6": {
+          "label": "6. Repairing machines before they break down",
+          "correct": "predictive maintenance",
+          "why": "‘Predictive maintenance’ means repairing machines before they break down.",
+          "accept": [
+            "c"
+          ]
+        },
+        "b7": {
+          "label": "7. Overlays digital information onto the real world",
+          "correct": "Augmented reality",
+          "why": "‘Augmented reality’ overlays digital information onto the real world.",
+          "accept": [
+            "a"
+          ]
+        }
+      }
+    },
+    "exC": {
+      "prefix": "",
+      "gaps": {
+        "c1": {
+          "label": "1. Invoices ___ processed automatically",
+          "correct": "will be",
+          "why": "The passive future ‘will be’ + past participle describes a planned future process.",
+          "accept": [
+            "a"
+          ]
+        },
+        "c2": {
+          "label": "2. The chatbot ___ to answer HR questions",
+          "correct": "is going",
+          "why": "‘Is going to’ describes a planned future arrangement, matching the reading text.",
+          "accept": [
+            "b"
+          ]
+        },
+        "c3": {
+          "label": "3. Experts believe downtime ___ fall",
+          "correct": "is likely to",
+          "why": "‘Is likely to’ agrees with the singular subject ‘downtime’ and expresses a probable prediction.",
+          "accept": [
+            "c"
+          ]
+        },
+        "c4": {
+          "label": "4. The server ___ crash soon!",
+          "correct": "is going to",
+          "why": "‘Is going to’ is used for a prediction based on present evidence (the error rates).",
+          "accept": [
+            "a"
+          ]
+        },
+        "c5": {
+          "label": "5. I think AI ___ change our jobs",
+          "correct": "will",
+          "why": "‘Will’ is used for a personal opinion or prediction.",
+          "accept": [
+            "b"
+          ]
+        },
+        "c6": {
+          "label": "6. The sensors ___ installed by December",
+          "correct": "will have been",
+          "why": "‘Will have been’ + past participle is the future perfect passive, matching ‘by December’.",
+          "accept": [
+            "c"
+          ]
+        },
+        "c7": {
+          "label": "7. We ___ probably need new rules",
+          "correct": "will",
+          "why": "‘Will’ + adverb ‘probably’ expresses a prediction.",
+          "accept": [
+            "a"
+          ]
+        }
+      }
+    }
+  },
+  "it-ai-programming": {
+    "exA": {
+      "prefix": "",
+      "gaps": {
+        "a1": {
+          "label": "1. Advantage of conventional programming?",
+          "correct": "every line is understood by a human",
+          "why": "The text says every line is written and understood by a human in conventional programming.",
+          "accept": [
+            "a"
+          ]
+        },
+        "a2": {
+          "label": "2. AI assistants make routine tasks...",
+          "correct": "up to 40 per cent faster",
+          "why": "The text says developers complete routine tasks up to 40 per cent faster with AI tools.",
+          "accept": [
+            "b"
+          ]
+        },
+        "a3": {
+          "label": "3. AI assistants draw suggestions from...",
+          "correct": "millions of open-source examples",
+          "why": "The text says AI assistants draw on millions of open-source examples.",
+          "accept": [
+            "c"
+          ]
+        },
+        "a4": {
+          "label": "4. One risk of AI-suggested code?",
+          "correct": "may contain bugs the developer does not notice",
+          "why": "The text says suggested code may contain bugs the developer does not notice.",
+          "accept": [
+            "a"
+          ]
+        },
+        "a5": {
+          "label": "5. Why does the IP question exist?",
+          "correct": "can resemble existing licensed code",
+          "why": "The text says suggestions can resemble existing licensed code.",
+          "accept": [
+            "c"
+          ]
+        },
+        "a6": {
+          "label": "6. The recommendation is to...",
+          "correct": "use Copilot internally with strict review for customer code",
+          "why": "The text recommends adopting Copilot internally but keeping strict review for customer-facing code.",
+          "accept": [
+            "b"
+          ]
+        }
+      }
+    },
+    "exB": {
+      "prefix": "",
+      "gaps": {
+        "b1": {
+          "label": "1. Finding and fixing errors in code",
+          "correct": "debugging",
+          "why": "‘Debugging’ means finding and fixing errors in code.",
+          "accept": [
+            "a"
+          ]
+        },
+        "b2": {
+          "label": "2. Colleagues check your code before merging",
+          "correct": "code review",
+          "why": "A ‘code review’ is when colleagues check your code before it is merged.",
+          "accept": [
+            "b"
+          ]
+        },
+        "b3": {
+          "label": "3. A step-by-step procedure",
+          "correct": "algorithm",
+          "why": "An ‘algorithm’ is a step-by-step procedure for solving a problem.",
+          "accept": [
+            "c"
+          ]
+        },
+        "b4": {
+          "label": "4. Can be read, modified, shared by anyone",
+          "correct": "Open-source",
+          "why": "‘Open-source’ software can be read, modified and shared by anyone.",
+          "accept": [
+            "a"
+          ]
+        },
+        "b5": {
+          "label": "5. Copyright and patents protect...",
+          "correct": "intellectual property",
+          "why": "Copyright and patents protect intellectual property.",
+          "accept": [
+            "b"
+          ]
+        },
+        "b6": {
+          "label": "6. Unbalanced training data causes...",
+          "correct": "bias",
+          "why": "Unbalanced training data can cause a model to show bias.",
+          "accept": [
+            "c"
+          ]
+        },
+        "b7": {
+          "label": "7. Describes all phases of development",
+          "correct": "SDLC",
+          "why": "The ‘SDLC’ (Software Development Life Cycle) describes all phases from planning to maintenance.",
+          "accept": [
+            "a"
+          ]
+        }
+      }
+    },
+    "exC": {
+      "prefix": "",
+      "gaps": {
+        "c1": {
+          "label": "1. Copilot is a tool ___ suggests code",
+          "correct": "that",
+          "why": "‘That’ introduces a defining relative clause about a thing (a tool).",
+          "accept": [
+            "a"
+          ]
+        },
+        "c2": {
+          "label": "2. Slower; ___, it gives full control",
+          "correct": "however",
+          "why": "‘X; however, Y’ is the standard pattern for a contrast after a semicolon.",
+          "accept": [
+            "b"
+          ]
+        },
+        "c3": {
+          "label": "3. ___ AI tools are fast, suggestions must be checked",
+          "correct": "Although",
+          "why": "‘Although X, Y’ is the standard pattern for a concession at the start of a sentence.",
+          "accept": [
+            "c"
+          ]
+        },
+        "c4": {
+          "label": "4. A developer ___ uses AI tools...",
+          "correct": "who",
+          "why": "‘Who’ introduces a defining relative clause about a person.",
+          "accept": [
+            "a"
+          ]
+        },
+        "c5": {
+          "label": "5. Copilot uses open-source code, ___ conventional programming...",
+          "correct": "whereas",
+          "why": "‘X, whereas Y’ is the standard pattern for a direct contrast between two clauses.",
+          "accept": [
+            "b"
+          ]
+        },
+        "c6": {
+          "label": "6. Bias is a problem ___ can cause unfair results",
+          "correct": "that",
+          "why": "‘That’ introduces a defining relative clause about a thing (a problem).",
+          "accept": [
+            "c"
+          ]
+        },
+        "c7": {
+          "label": "7. The code ___ the AI suggested...",
+          "correct": "which",
+          "why": "‘Which’ introduces a defining relative clause about a thing (the code).",
+          "accept": [
+            "a"
+          ]
+        }
+      }
+    }
+  },
+  "it-apprenticeships": {
+    "exA": {
+      "prefix": "",
+      "gaps": {
+        "a1": {
+          "label": "1. Lena spends two days per week...",
+          "correct": "at vocational school",
+          "why": "The text says Lena spends two days in class at vocational school.",
+          "accept": [
+            "a"
+          ]
+        },
+        "a2": {
+          "label": "2. Her main responsibility at work is...",
+          "correct": "first-level support",
+          "why": "The text says Lena's main responsibility is first-level support.",
+          "accept": [
+            "b"
+          ]
+        },
+        "a3": {
+          "label": "3. Tobias gives Lena feedback...",
+          "correct": "every Friday",
+          "why": "The text says her mentor Tobias gives feedback every Friday.",
+          "accept": [
+            "c"
+          ]
+        },
+        "a4": {
+          "label": "4. During the probation period...",
+          "correct": "both sides checked whether the match was right",
+          "why": "The text says both the company and Lena checked whether it was a good fit.",
+          "accept": [
+            "a"
+          ]
+        },
+        "a5": {
+          "label": "5. Lena is now preparing for...",
+          "correct": "her intermediate exam",
+          "why": "The text says Lena is now preparing for her intermediate exam.",
+          "accept": [
+            "c"
+          ]
+        },
+        "a6": {
+          "label": "6. Her advice to new apprentices?",
+          "correct": "ask questions",
+          "why": "The text says Lena's advice is to ask questions.",
+          "accept": [
+            "b"
+          ]
+        }
+      }
+    },
+    "exB": {
+      "prefix": "",
+      "gaps": {
+        "b1": {
+          "label": "1. A dual ___ combines work and school",
+          "correct": "apprenticeship",
+          "why": "A ‘dual apprenticeship’ combines practical work with vocational school.",
+          "accept": [
+            "a"
+          ]
+        },
+        "b2": {
+          "label": "2. An experienced colleague who guides you",
+          "correct": "mentor",
+          "why": "A ‘mentor’ is an experienced colleague who guides and supports you.",
+          "accept": [
+            "b"
+          ]
+        },
+        "b3": {
+          "label": "3. The first months of employment",
+          "correct": "probation",
+          "why": "The first months of employment are usually a probation period.",
+          "accept": [
+            "c"
+          ]
+        },
+        "b4": {
+          "label": "4. Constructive ___ helps you improve",
+          "correct": "feedback",
+          "why": "Constructive feedback helps you understand what you can improve.",
+          "accept": [
+            "a"
+          ]
+        },
+        "b5": {
+          "label": "5. Keeping the ticket system updated is part of my ___",
+          "correct": "responsibility",
+          "why": "This task is part of the trainee's job responsibility.",
+          "accept": [
+            "b"
+          ]
+        },
+        "b6": {
+          "label": "6. Both sides sign an employment ___",
+          "correct": "contract",
+          "why": "Both sides sign an employment contract before starting.",
+          "accept": [
+            "c"
+          ]
+        },
+        "b7": {
+          "label": "7. Attending workshops is part of your ___",
+          "correct": "professional development",
+          "why": "Attending workshops and getting certificates is part of professional development.",
+          "accept": [
+            "a"
+          ]
+        }
+      }
+    },
+    "exC": {
+      "prefix": "",
+      "gaps": {
+        "c1": {
+          "label": "1. An apprentice is someone ___ learns...",
+          "correct": "who",
+          "why": "‘Who’ introduces a relative clause about a person.",
+          "accept": [
+            "b"
+          ]
+        },
+        "c2": {
+          "label": "2. A mentor is a person ___ experience helps...",
+          "correct": "whose",
+          "why": "‘Whose’ shows possession — the mentor's experience.",
+          "accept": [
+            "a"
+          ]
+        },
+        "c3": {
+          "label": "3. A service desk is the place ___ requests arrive",
+          "correct": "where",
+          "why": "‘Where’ introduces a relative clause about a place.",
+          "accept": [
+            "c"
+          ]
+        },
+        "c4": {
+          "label": "4. A ticket is a record ___ describes...",
+          "correct": "that",
+          "why": "‘That’ introduces a defining relative clause about a thing (a record).",
+          "accept": [
+            "a"
+          ]
+        },
+        "c5": {
+          "label": "5. Probation is the period ___ performance is reviewed",
+          "correct": "when",
+          "why": "‘When’ introduces a relative clause about a time period.",
+          "accept": [
+            "b"
+          ]
+        },
+        "c6": {
+          "label": "6. A trainee ___ asks good questions...",
+          "correct": "who",
+          "why": "‘Who’ introduces a relative clause about a person.",
+          "accept": [
+            "c"
+          ]
+        },
+        "c7": {
+          "label": "7. The report ___ Lena wrote...",
+          "correct": "which",
+          "why": "‘Which’ introduces a defining relative clause about a thing (the report).",
+          "accept": [
+            "a"
+          ]
+        }
+      }
+    }
   }
 }
