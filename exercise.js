@@ -759,6 +759,7 @@ function eolCrumbLabel() {
   if (/^uni-/.test(f)) return 'Universität';
   if (/^it-/.test(f))  return 'IT English';
   if (/^be-/.test(f))  return 'Business English';
+  if (/^quiz-/.test(f)) return 'Quiz';
   return 'Übungen';
 }
 

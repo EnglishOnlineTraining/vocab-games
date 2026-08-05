@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Grammar Quiz — Medium | englishonline.training</title>
+  <meta name="description" content="English Grammar Quiz — Medium — a free, self-scoring English grammar quiz. No sign-up, instant score.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">&larr; Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none"><strong id="header-name"></strong> <span id="header-step"></span></div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+<nav class="step-nav" id="step-nav"></nav>
+
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">🟡</div>
+      <h1 class="welcome-title">English Grammar Quiz — Medium</h1>
+      <p class="welcome-sub">Nine questions on gerunds, the passive, relative clauses and conditionals. Test yourself — no sign-up needed.</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.92rem;color:var(--muted);margin-bottom:1.1rem">9 questions · pick the best answer · get your score instantly. Nothing is submitted.</p>
+      <button class="btn btn-gold btn-block" onclick="startQuiz()">Start the quiz &rarr;</button>
+    </div>
+  </div>
+</section>
+
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Quiz</span>
+    <h2 class="ex-title">English Grammar Quiz — Medium</h2>
+    <p class="ex-subtitle">Choose the best answer for each question, then see your score.</p>
+
+    <div class="card">
+      <div class="card-title">Question 1</div>
+      <p style="margin-bottom:.7rem">Which sentence is written in the subjunctive mood?</p>
+      <select class="gap-select" id="q-g1" style="max-width:100%"><option value="">— choose —</option><option value="I wish I was at the beach.">I wish I was at the beach.</option><option value="If I were you, I would go to the party.">If I were you, I would go to the party.</option><option value="She demanded that he leaves immediately.">She demanded that he leaves immediately.</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 2</div>
+      <p style="margin-bottom:.7rem">Which sentence contains a gerund?</p>
+      <select class="gap-select" id="q-g2" style="max-width:100%"><option value="">— choose —</option><option value="The dog barks loudly at night.">The dog barks loudly at night.</option><option value="He went to the store for some bread.">He went to the store for some bread.</option><option value="I like swimming in the ocean.">I like swimming in the ocean.</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 3</div>
+      <p style="margin-bottom:.7rem">Which sentence is written in the passive voice?</p>
+      <select class="gap-select" id="q-g3" style="max-width:100%"><option value="">— choose —</option><option value="The students took the test.">The students took the test.</option><option value="The students were given a test by the teacher.">The students were given a test by the teacher.</option><option value="The teacher gave the students a test.">The teacher gave the students a test.</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 4</div>
+      <p style="margin-bottom:.7rem">Which sentence contains a non-restrictive clause?</p>
+      <select class="gap-select" id="q-g4" style="max-width:100%"><option value="">— choose —</option><option value="The car that I bought last month is very reliable.">The car that I bought last month is very reliable.</option><option value="My sister, who is a doctor, is visiting next week.">My sister, who is a doctor, is visiting next week.</option><option value="I need to buy some groceries that are on sale.">I need to buy some groceries that are on sale.</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 5</div>
+      <p style="margin-bottom:.7rem">Which sentence contains an appositive phrase?</p>
+      <select class="gap-select" id="q-g5" style="max-width:100%"><option value="">— choose —</option><option value="The book on the shelf is mine.">The book on the shelf is mine.</option><option value="My friend, a doctor, is coming to visit next week.">My friend, a doctor, is coming to visit next week.</option><option value="The dog barked at the mailman.">The dog barked at the mailman.</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 6</div>
+      <p style="margin-bottom:.7rem">Which sentence is an idiomatic expression?</p>
+      <select class="gap-select" id="q-g6" style="max-width:100%"><option value="">— choose —</option><option value="She's feeling under the weather today.">She's feeling under the weather today.</option><option value="I like to eat pizza on Fridays.">I like to eat pizza on Fridays.</option><option value="He drove to work this morning.">He drove to work this morning.</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 7</div>
+      <p style="margin-bottom:.7rem">Which sentence is in the conditional perfect tense?</p>
+      <select class="gap-select" id="q-g7" style="max-width:100%"><option value="">— choose —</option><option value="I will study hard so that I can pass the test.">I will study hard so that I can pass the test.</option><option value="If I had studied harder, I would have passed the test.">If I had studied harder, I would have passed the test.</option><option value="I have studied for the test, but I'm not sure if I passed.">I have studied for the test, but I'm not sure if I passed.</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 8</div>
+      <p style="margin-bottom:.7rem">Which word is a conjunction?</p>
+      <select class="gap-select" id="q-g8" style="max-width:100%"><option value="">— choose —</option><option value="quickly">quickly</option><option value="and">and</option><option value="on">on</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 9</div>
+      <p style="margin-bottom:.7rem">Which sentence is in the active voice?</p>
+      <select class="gap-select" id="q-g9" style="max-width:100%"><option value="">— choose —</option><option value="The author wrote the book.">The author wrote the book.</option><option value="The book was written by the author.">The book was written by the author.</option><option value="The book is being written by the author.">The book is being written by the author.</option></select>
+    </div>
+
+    <div id="q-fb" class="feedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline btn-sm" onclick="checkQuiz()">&#10003; Check answers</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="finishQuiz()">See my score &rarr;</button>
+    </div>
+  </div>
+</section>
+
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">🏁</div>
+      <h2 class="ex-title" style="text-align:center">Quiz complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Here is how you did.</p>
+    </div>
+    <div id="score-display" style="display:none"></div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center;display:none" id="submit-card">
+      <button class="btn btn-gold" id="submit-btn" onclick="submitToSheet()">Submit</button>
+    </div>
+  </div>
+</section>
+
+<script src="exercise.js"></script>
+<script>
+var UNIT          = "quiz-grammar-medium";
+var TOTAL_STEPS   = 2;
+var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec';
+var TEACHER_EMAIL = 'englishonlinetraining@pm.me';
+
+var state = { name: '', cls: '', quiz: {}, scores: {} };
+var maxStepReached = 0;
+
+var QUIZ_IDS = ['g1', 'g2', 'g3', 'g4', 'g5', 'g6', 'g7', 'g8', 'g9'];
+var QUIZ_ANSWERS = {
+    g1: "If I were you, I would go to the party.",
+    g2: "I like swimming in the ocean.",
+    g3: "The students were given a test by the teacher.",
+    g4: "My sister, who is a doctor, is visiting next week.",
+    g5: "My friend, a doctor, is coming to visit next week.",
+    g6: "She's feeling under the weather today.",
+    g7: "If I had studied harder, I would have passed the test.",
+    g8: "and",
+    g9: "The author wrote the book."
+};
+
+function startQuiz() { startPractise(); }
+
+function validateStep(n) { return true; }
+function saveStep(n) { if (n === 1) { QUIZ_IDS.forEach(function(k){ state.quiz[k] = g('q-' + k); }); } }
+function restoreStep(n) { if (n === 1) { QUIZ_IDS.forEach(function(k){ set('q-' + k, state.quiz[k]); }); } }
+
+function checkQuiz() { checkDropdowns(QUIZ_IDS, 'q-', QUIZ_ANSWERS, 'q-fb', 'quiz'); }
+function finishQuiz() { checkQuiz(); saveStep(1); buildSummary(); showStep(2); }
+
+function buildSummary() { renderScore(); }
+function buildPayload() { var sc = totalScore(); return { unit: UNIT, quiz: state.quiz, score: sc.earned + ' / ' + sc.possible }; }
+function buildEmailBody() { var sc = totalScore(); return UNIT + ': ' + sc.earned + ' / ' + sc.possible; }
+
+document.addEventListener('DOMContentLoaded', function() { showStep(0); });
+</script>
+</body>
+</html>
