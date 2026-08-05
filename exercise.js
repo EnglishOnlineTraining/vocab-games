@@ -554,7 +554,7 @@ function eolCollectExplanations() {
   var items = [];
   Object.keys(data).forEach(function(sk) {
     var sec = data[sk];
-    var prefix = sec.prefix || (sk + '-');
+    var prefix = (sec.prefix != null) ? sec.prefix : (sk + '-');   // respect an explicit '' prefix
     var gaps = sec.gaps || sec;
     Object.keys(gaps).forEach(function(g) {
       if (g === 'prefix' || g === 'gaps') return;   // skip config keys on flat entries
