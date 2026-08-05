@@ -457,5 +457,1869 @@
         }
       }
     }
+  },
+  "8c-around-southwest": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Land of hot ___",
+          "correct": "deserts",
+          "why": "The Southwest is known for its hot deserts, not oceans or forests."
+        },
+        "g2": {
+          "label": "2. Many people live in small ___",
+          "correct": "towns",
+          "why": "The text describes people living in small towns, not big cities."
+        },
+        "g3": {
+          "label": "3. A rich ___",
+          "correct": "history",
+          "why": "The text says the Southwest has a rich history shaped by Native American and Mexican cultures."
+        },
+        "g4": {
+          "label": "4. A famous ___ model",
+          "correct": "role",
+          "why": "“Role model” is the fixed phrase describing Ellen Ochoa, not “rope” or “rose”."
+        },
+        "g5": {
+          "label": "5. She ___ young people",
+          "correct": "inspires",
+          "why": "The text says Ochoa inspires young people to work hard, not ignores or invents them."
+        },
+        "g6": {
+          "label": "6. The Grand ___",
+          "correct": "Canyon",
+          "why": "The text names the famous Grand Canyon, not a camera or candle."
+        },
+        "g7": {
+          "label": "7. The warm ___",
+          "correct": "weather",
+          "why": "Tourists come to enjoy the warm weather, not a window or wallet."
+        },
+        "g8": {
+          "label": "8. A popular ___",
+          "correct": "destination",
+          "why": "The Grand Canyon has become a popular destination for holidays."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. I ___ lived in Arizona",
+          "correct": "have",
+          "why": "The subject ‘I’ takes ‘have’ in the present perfect, not ‘has’."
+        },
+        "g2": {
+          "label": "2. She ___ visited the Grand Canyon",
+          "correct": "has",
+          "why": "He/she/it takes ‘has’ in the present perfect, not ‘have’."
+        },
+        "g3": {
+          "label": "3. We have known each other ___ 2019",
+          "correct": "since",
+          "why": "‘Since’ introduces a specific starting point in time; ‘for’ introduces a duration."
+        },
+        "g4": {
+          "label": "4. They have lived here ___ ten years",
+          "correct": "for",
+          "why": "‘For’ introduces a duration of time; ‘since’ introduces a starting point."
+        },
+        "g5": {
+          "label": "5. Ellen Ochoa ___ inspired",
+          "correct": "has",
+          "why": "He/she/it takes ‘has’ in the present perfect."
+        },
+        "g6": {
+          "label": "6. I have ___ been to New Mexico",
+          "correct": "never",
+          "why": "‘Never’ (= not at any time) is the standard present perfect word for talking about experience."
+        },
+        "g7": {
+          "label": "7. He has worked in the same town ___ he was young",
+          "correct": "since",
+          "why": "‘Since’ introduces the starting point of the action, not a duration like ‘for’."
+        },
+        "g8": {
+          "label": "8. Have you ___ eaten Mexican food?",
+          "correct": "ever",
+          "why": "‘Ever’ is used in present perfect questions asking about experience."
+        }
+      }
+    }
+  },
+  "8c-arriving-northeast": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Where did Lisa go?",
+          "correct": "New York",
+          "why": "The text says Lisa travelled to New York."
+        },
+        "g2": {
+          "label": "2. How did she travel from Frankfurt?",
+          "correct": "by plane",
+          "why": "The text says she flew from Frankfurt, so she travelled by plane."
+        },
+        "g3": {
+          "label": "3. What did she visit on the first day?",
+          "correct": "the Statue of Liberty",
+          "why": "The text says she visited the Statue of Liberty on the first day."
+        },
+        "g4": {
+          "label": "4. What did Lisa think about Times Square?",
+          "correct": "It was exciting",
+          "why": "The text describes Lisa’s reaction to Times Square as exciting."
+        },
+        "g5": {
+          "label": "5. What did Lisa buy in Times Square?",
+          "correct": "a souvenir T-shirt",
+          "why": "The text says she bought a souvenir T-shirt in Times Square."
+        },
+        "g6": {
+          "label": "6. How many days did they stay?",
+          "correct": "five days",
+          "why": "The text says the family stayed in New York for five days."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Lisa ___ to New York (go)",
+          "correct": "went",
+          "why": "‘Go’ is irregular: its simple past form is ‘went’, not ‘goed’."
+        },
+        "g2": {
+          "label": "2. She ___ the Statue of Liberty (see)",
+          "correct": "saw",
+          "why": "‘See’ is irregular: its simple past form is ‘saw’."
+        },
+        "g3": {
+          "label": "3. They ___ a yellow taxi (take)",
+          "correct": "took",
+          "why": "‘Take’ is irregular: its simple past form is ‘took’."
+        },
+        "g4": {
+          "label": "4. She ___ a souvenir (buy)",
+          "correct": "bought",
+          "why": "‘Buy’ is irregular: its simple past form is ‘bought’."
+        },
+        "g5": {
+          "label": "5. Her brother ___ hot dogs (eat)",
+          "correct": "ate",
+          "why": "‘Eat’ is irregular: its simple past form is ‘ate’."
+        },
+        "g6": {
+          "label": "6. They ___ a wonderful time (have)",
+          "correct": "had",
+          "why": "‘Have’ is irregular: its simple past form is ‘had’."
+        },
+        "g7": {
+          "label": "7. Lisa ___ postcards (write)",
+          "correct": "wrote",
+          "why": "‘Write’ is irregular: its simple past form is ‘wrote’."
+        },
+        "g8": {
+          "label": "8. She ___ New York was the best city (think)",
+          "correct": "thought",
+          "why": "‘Think’ is irregular: its simple past form is ‘thought’."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. The Empire State Building is ___ (tall)",
+          "correct": "taller",
+          "why": "Short adjectives like ‘tall’ form the comparative by adding ‘-er’."
+        },
+        "g2": {
+          "label": "2. New York is ___ (big)",
+          "correct": "bigger",
+          "why": "‘Big’ doubles its final consonant before adding ‘-er’: bigger."
+        },
+        "g3": {
+          "label": "3. Times Square is the ___ place (busy)",
+          "correct": "busiest",
+          "why": "‘Busy’ changes y to i before adding ‘-est’ for the superlative."
+        },
+        "g4": {
+          "label": "4. Central Park is ___ (beautiful)",
+          "correct": "more beautiful",
+          "why": "Longer adjectives like ‘beautiful’ form the comparative with ‘more’, not an ending."
+        },
+        "g5": {
+          "label": "5. The subway is ___ (fast)",
+          "correct": "faster",
+          "why": "Short adjectives like ‘fast’ form the comparative by adding ‘-er’."
+        },
+        "g6": {
+          "label": "6. Hot dogs are ___ (cheap)",
+          "correct": "cheaper",
+          "why": "Short adjectives like ‘cheap’ form the comparative by adding ‘-er’."
+        },
+        "g7": {
+          "label": "7. New York is one of the ___ cities (famous)",
+          "correct": "most famous",
+          "why": "Longer adjectives like ‘famous’ form the superlative with ‘most’."
+        },
+        "g8": {
+          "label": "8. Lisa’s trip was the ___ holiday (good)",
+          "correct": "best",
+          "why": "‘Good’ is irregular: its superlative form is ‘best’, not ‘goodest’."
+        }
+      }
+    }
+  },
+  "8c-five-teenagers": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Jake ___ basketball",
+          "correct": "plays",
+          "why": "The text says Jake plays basketball every day after school."
+        },
+        "g2": {
+          "label": "2. Maria wants to be a ___",
+          "correct": "vet",
+          "why": "The text says Maria loves horses and wants to be a vet."
+        },
+        "g3": {
+          "label": "3. Emily lives close to the ___",
+          "correct": "beach",
+          "why": "The text says Emily lives close to the beach and goes surfing."
+        },
+        "g4": {
+          "label": "4. Tyler’s favourite ___",
+          "correct": "subject",
+          "why": "The text says Tyler’s favourite subject is science."
+        },
+        "g5": {
+          "label": "5. Aisha lives with her big ___",
+          "correct": "family",
+          "why": "The text says Aisha lives in Florida with her big family."
+        },
+        "g6": {
+          "label": "6. All five teenagers are very ___",
+          "correct": "different",
+          "why": "The text contrasts the teenagers, describing them as very different."
+        },
+        "g7": {
+          "label": "7. They enjoy spending time with their ___",
+          "correct": "friends",
+          "why": "The text says they enjoy spending time with their friends."
+        },
+        "g8": {
+          "label": "8. They share ___ online",
+          "correct": "photos",
+          "why": "The text says they send messages and share photos online every day."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Jake ___ basketball",
+          "correct": "plays",
+          "why": "He/she in the simple present adds ‘-s’: Jake plays."
+        },
+        "g2": {
+          "label": "2. Maria ___ horses",
+          "correct": "loves",
+          "why": "He/she in the simple present adds ‘-s’: Maria loves."
+        },
+        "g3": {
+          "label": "3. Emily and her friends ___ surfing",
+          "correct": "go",
+          "why": "‘Emily and her friends’ is a plural subject, so it takes the base form ‘go’."
+        },
+        "g4": {
+          "label": "4. Tyler ___ science best",
+          "correct": "likes",
+          "why": "He/she in the simple present adds ‘-s’: Tyler likes."
+        },
+        "g5": {
+          "label": "5. Aisha ___ in Florida",
+          "correct": "lives",
+          "why": "He/she in the simple present adds ‘-s’: Aisha lives."
+        },
+        "g6": {
+          "label": "6. The five teenagers ___ messages",
+          "correct": "send",
+          "why": "‘The five teenagers’ is a plural subject, so it takes the base form ‘send’."
+        },
+        "g7": {
+          "label": "7. Jake ___ not live in Texas",
+          "correct": "does",
+          "why": "Simple present negatives for he/she/it use ‘does not’, not ‘do not’."
+        },
+        "g8": {
+          "label": "8. ___ Maria want to be a vet?",
+          "correct": "Does",
+          "why": "Simple present yes/no questions for he/she/it start with ‘Does’."
+        }
+      }
+    }
+  },
+  "8c-going-west": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Where does Maria live?",
+          "correct": "Anchorage, Alaska",
+          "why": "The text says Maria lives in Anchorage, Alaska."
+        },
+        "g2": {
+          "label": "2. What is Alaska famous for?",
+          "correct": "mountains, forests and wild animals",
+          "why": "The text describes Alaska as famous for its mountains, forests and wild animals."
+        },
+        "g3": {
+          "label": "3. What do students collect during Clean Alaska?",
+          "correct": "plastic bottles, bags and old cans",
+          "why": "The text says students collect plastic bottles, bags and old cans."
+        },
+        "g4": {
+          "label": "4. First step of a product life cycle",
+          "correct": "Raw materials are collected",
+          "why": "The text says the first step in a product life cycle is collecting raw materials."
+        },
+        "g5": {
+          "label": "5. Where did Maria volunteer?",
+          "correct": "at a wildlife centre",
+          "why": "The text says Maria volunteered at a wildlife centre last month."
+        },
+        "g6": {
+          "label": "6. Why does Maria enjoy volunteering?",
+          "correct": "because she likes helping animals",
+          "why": "The text says Maria enjoys volunteering because she likes helping animals."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Plastic bottles ___ in factories (make)",
+          "correct": "are made",
+          "why": "‘Plastic bottles’ is plural, so the passive uses ‘are made’, not ‘is made’."
+        },
+        "g2": {
+          "label": "2. Rubbish ___ by students (collect)",
+          "correct": "is collected",
+          "why": "‘Rubbish’ is uncountable/singular, so the passive uses ‘is collected’."
+        },
+        "g3": {
+          "label": "3. Old paper ___ to the recycling centre (take)",
+          "correct": "is taken",
+          "why": "‘Old paper’ is uncountable/singular, so the passive uses ‘is taken’."
+        },
+        "g4": {
+          "label": "4. Baby birds ___ three times a day (feed)",
+          "correct": "are fed",
+          "why": "‘Baby birds’ is plural, so the passive uses ‘are fed’."
+        },
+        "g5": {
+          "label": "5. The beaches ___ by volunteers (clean)",
+          "correct": "are cleaned",
+          "why": "‘The beaches’ is plural, so the passive uses ‘are cleaned’."
+        },
+        "g6": {
+          "label": "6. New products ___ in shops (sell)",
+          "correct": "are sold",
+          "why": "‘New products’ is plural, so the passive uses ‘are sold’."
+        },
+        "g7": {
+          "label": "7. Alaska ___ by millions of tourists (visit)",
+          "correct": "is visited",
+          "why": "‘Alaska’ is singular, so the passive uses ‘is visited’."
+        },
+        "g8": {
+          "label": "8. The animal cages ___ every morning (wash)",
+          "correct": "are washed",
+          "why": "‘The animal cages’ is plural, so the passive uses ‘are washed’."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. ___ rubbish is important (collect)",
+          "correct": "Collecting",
+          "why": "A gerund (-ing form) is used when a verb acts as the subject of a sentence."
+        },
+        "g2": {
+          "label": "2. Maria enjoys ___ (work)",
+          "correct": "working",
+          "why": "‘Enjoy’ is always followed by the gerund (-ing) form, not the infinitive."
+        },
+        "g3": {
+          "label": "3. ___ in cold water is dangerous (swim)",
+          "correct": "Swimming",
+          "why": "A gerund (-ing form) is used when a verb acts as the subject of a sentence."
+        },
+        "g4": {
+          "label": "4. The students finished ___ (clean)",
+          "correct": "cleaning",
+          "why": "‘Finish’ is always followed by the gerund (-ing) form."
+        },
+        "g5": {
+          "label": "5. Maria keeps ___ (talk)",
+          "correct": "talking",
+          "why": "‘Keep’ is always followed by the gerund (-ing) form."
+        },
+        "g6": {
+          "label": "6. We should avoid ___ plastic bags (use)",
+          "correct": "using",
+          "why": "‘Avoid’ is always followed by the gerund (-ing) form."
+        },
+        "g7": {
+          "label": "7. ___ about product life cycles helps (learn)",
+          "correct": "Learning",
+          "why": "A gerund (-ing form) is used when a verb acts as the subject of a sentence."
+        },
+        "g8": {
+          "label": "8. The volunteers suggested ___ (visit)",
+          "correct": "visiting",
+          "why": "‘Suggest’ is always followed by the gerund (-ing) form."
+        }
+      }
+    }
+  },
+  "8c-off-to-midwest": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Where does Jake live?",
+          "correct": "Milwaukee, Wisconsin",
+          "why": "The text says Jake lives in Milwaukee, Wisconsin."
+        },
+        "g2": {
+          "label": "2. How does Jake get to school?",
+          "correct": "He takes the school bus",
+          "why": "The text says Jake takes the school bus to school."
+        },
+        "g3": {
+          "label": "3. What is Jake’s favourite subject?",
+          "correct": "science",
+          "why": "The text says Jake’s favourite subject is science."
+        },
+        "g4": {
+          "label": "4. What does the family eat at Thanksgiving?",
+          "correct": "turkey with mashed potatoes",
+          "why": "The text says the family eats turkey with mashed potatoes at Thanksgiving."
+        },
+        "g5": {
+          "label": "5. What is Jake thankful for?",
+          "correct": "his dog, Buddy",
+          "why": "The text says Jake is thankful for his dog, Buddy."
+        },
+        "g6": {
+          "label": "6. What does the family do at the lake in summer?",
+          "correct": "go swimming and have barbecues",
+          "why": "The text says the family goes swimming and has barbecues at the lake in summer."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Jake ___ to school at 7:30 (go)",
+          "correct": "goes",
+          "why": "He/she in the simple present adds ‘-s’: Jake goes."
+        },
+        "g2": {
+          "label": "2. His school day ___ at 2:30 (finish)",
+          "correct": "finishes",
+          "why": "Verbs ending in -sh add ‘-es’ in the simple present: finishes."
+        },
+        "g3": {
+          "label": "3. Jake and his friends ___ basketball (play)",
+          "correct": "play",
+          "why": "‘Jake and his friends’ is a plural subject, so it takes the base form ‘play’."
+        },
+        "g4": {
+          "label": "4. His mum ___ a big turkey (cook)",
+          "correct": "cooks",
+          "why": "He/she in the simple present adds ‘-s’: mum cooks."
+        },
+        "g5": {
+          "label": "5. The family ___ to the lake (drive)",
+          "correct": "drive",
+          "why": "‘The family’ is treated here as a group of people, so it takes the base form ‘drive’."
+        },
+        "g6": {
+          "label": "6. Jake ___ science (like)",
+          "correct": "likes",
+          "why": "He/she in the simple present adds ‘-s’: Jake likes."
+        },
+        "g7": {
+          "label": "7. The students ___ English, maths and art (study)",
+          "correct": "study",
+          "why": "‘The students’ is a plural subject, so it takes the base form ‘study’."
+        },
+        "g8": {
+          "label": "8. Jake’s dog Buddy ___ in the garden (run)",
+          "correct": "runs",
+          "why": "He/she/it in the simple present adds ‘-s’: Buddy runs."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. Jake’s mum ___ the turkey (prepare)",
+          "correct": "is preparing",
+          "why": "A singular subject (mum) takes ‘is’ + verb-ing in the present progressive."
+        },
+        "g2": {
+          "label": "2. Jake and his brother ___ the table (set)",
+          "correct": "are setting",
+          "why": "A plural subject takes ‘are’ + verb-ing in the present progressive."
+        },
+        "g3": {
+          "label": "3. Grandma ___ pumpkin pie (bake)",
+          "correct": "is baking",
+          "why": "A singular subject (Grandma) takes ‘is’ + verb-ing in the present progressive."
+        },
+        "g4": {
+          "label": "4. The cousins ___ a football game (watch)",
+          "correct": "are watching",
+          "why": "A plural subject (the cousins) takes ‘are’ + verb-ing in the present progressive."
+        },
+        "g5": {
+          "label": "5. Dad ___ with Uncle Tom (talk)",
+          "correct": "is talking",
+          "why": "A singular subject (Dad) takes ‘is’ + verb-ing in the present progressive."
+        },
+        "g6": {
+          "label": "6. Buddy the dog ___ under the table (sleep)",
+          "correct": "is sleeping",
+          "why": "A singular subject (Buddy) takes ‘is’ + verb-ing in the present progressive."
+        },
+        "g7": {
+          "label": "7. Jake ___ cranberry sauce (put)",
+          "correct": "is putting",
+          "why": "A singular subject (Jake) takes ‘is’ + verb-ing in the present progressive."
+        },
+        "g8": {
+          "label": "8. Everyone ___ (smile)",
+          "correct": "are smiling",
+          "why": "Here ‘everyone’ is treated as the whole group, matching the plural ‘they’ later in the sentence."
+        }
+      }
+    }
+  },
+  "8c-settling-south": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Famous for its warm ___",
+          "correct": "climate",
+          "why": "The text describes the South as famous for its warm climate."
+        },
+        "g2": {
+          "label": "2. The South is the ___ of many kinds of music",
+          "correct": "home",
+          "why": "The text says the South is the home of jazz, blues and country music."
+        },
+        "g3": {
+          "label": "3. Jazz, blues and country music all ___ here",
+          "correct": "began",
+          "why": "The text says these types of music all began in the South."
+        },
+        "g4": {
+          "label": "4. Southern people are known for good ___",
+          "correct": "manners",
+          "why": "The text says Southern people are known for their good manners."
+        },
+        "g5": {
+          "label": "5. Showing ___ to others is important",
+          "correct": "respect",
+          "why": "The text says showing respect to others is important in Southern culture."
+        },
+        "g6": {
+          "label": "6. A difficult ___",
+          "correct": "past",
+          "why": "The text says the South also has a difficult past."
+        },
+        "g7": {
+          "label": "7. Today, people ___ this history",
+          "correct": "remember",
+          "why": "The text says people today remember this history and work for a fairer future."
+        },
+        "g8": {
+          "label": "8. Visitors love the South for its warm ___",
+          "correct": "welcome",
+          "why": "The text says visitors love the South for its music, food, and warm welcome."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. New Orleans is a city ___ is famous for jazz",
+          "correct": "which",
+          "why": "‘Which’ introduces a defining relative clause about a thing (a city), not a person."
+        },
+        "g2": {
+          "label": "2. Louis Armstrong was a musician ___ came from New Orleans",
+          "correct": "who",
+          "why": "‘Who’ introduces a defining relative clause about a person."
+        },
+        "g3": {
+          "label": "3. Blues is a type of music ___ started in the South",
+          "correct": "which",
+          "why": "‘Which’ introduces a defining relative clause about a thing (a type of music)."
+        },
+        "g4": {
+          "label": "4. The friendly people ___ live in the South",
+          "correct": "who",
+          "why": "‘Who’ introduces a defining relative clause about people."
+        },
+        "g5": {
+          "label": "5. A person ___ says ‘please’ is polite",
+          "correct": "who",
+          "why": "‘Who’ introduces a defining relative clause about a person."
+        },
+        "g6": {
+          "label": "6. New Orleans is the place ___ jazz was born",
+          "correct": "where",
+          "why": "‘Where’ introduces a defining relative clause about a place."
+        },
+        "g7": {
+          "label": "7. My favourite singer is someone ___ grew up in Georgia",
+          "correct": "who",
+          "why": "‘Who’ introduces a defining relative clause about a person."
+        },
+        "g8": {
+          "label": "8. Gumbo is a dish ___ people eat in the South",
+          "correct": "which",
+          "why": "‘Which’ introduces a defining relative clause about a thing (a dish)."
+        }
+      }
+    }
+  },
+  "8g-advertisements": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Spend billions to ___ us",
+          "correct": "persuade",
+          "why": "The text says companies want to persuade us to buy their products, not forget or ignore us."
+        },
+        "g2": {
+          "label": "2. Grabs your ___",
+          "correct": "attention",
+          "why": "The text says a good advert grabs your attention immediately."
+        },
+        "g3": {
+          "label": "3. A catchy ___",
+          "correct": "slogan",
+          "why": "‘Catchy slogan’ is the fixed phrase describing a memorable advertising line."
+        },
+        "g4": {
+          "label": "4. Famous people, or ___",
+          "correct": "celebrities",
+          "why": "The text says adverts use famous people, i.e. celebrities, whose products we trust."
+        },
+        "g5": {
+          "label": "5. Special ___",
+          "correct": "offers",
+          "why": "‘Special offers’ (like buy one get one free) is the fixed advertising phrase."
+        },
+        "g6": {
+          "label": "6. \"Brand ___\"",
+          "correct": "new",
+          "why": "‘Brand new’ is the fixed advertising phrase, not ‘brand old’ or ‘brand broken’."
+        },
+        "g7": {
+          "label": "7. \"Limited ___\"",
+          "correct": "edition",
+          "why": "‘Limited edition’ is the fixed advertising phrase making a product sound rare."
+        },
+        "g8": {
+          "label": "8. We ___ something we never wanted",
+          "correct": "need",
+          "why": "The text says adverts make us feel we need things, not hate or lose them."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. \"___ our brand new range!\"",
+          "correct": "Discover",
+          "why": "Adverts use the imperative (command) form, so the base verb ‘Discover’ is used."
+        },
+        "g2": {
+          "label": "2. \"The ___ pizza in town!\"",
+          "correct": "best",
+          "why": "‘The’ + superlative ‘best’ makes the strongest claim, not the comparative ‘better’."
+        },
+        "g3": {
+          "label": "3. \"Don't ___ this deal!\"",
+          "correct": "miss",
+          "why": "Negative imperatives use ‘Don’t’ + the base verb: ‘Don’t miss’."
+        },
+        "g4": {
+          "label": "4. \"___ it now!\"",
+          "correct": "Try",
+          "why": "Adverts use the imperative (command) form, so the base verb ‘Try’ is used."
+        },
+        "g5": {
+          "label": "5. \"An ___ new taste!\"",
+          "correct": "amazing",
+          "why": "An adjective is needed before the noun, so the -ing adjective ‘amazing’ is used, not the verb ‘amaze’."
+        },
+        "g6": {
+          "label": "6. \"This is a ___ offer!\"",
+          "correct": "limited",
+          "why": "‘Limited offer’ is the fixed phrase for a short-time deal."
+        },
+        "g7": {
+          "label": "7. \"Buy one, get one ___!\"",
+          "correct": "free",
+          "why": "‘Buy one, get one free’ is the fixed phrase for this kind of offer."
+        },
+        "g8": {
+          "label": "8. \"Introducing our ___ design!\"",
+          "correct": "new",
+          "why": "Adverts promote new products, so ‘new’ fits the promotional tone, not ‘old’ or ‘broken’."
+        }
+      }
+    }
+  },
+  "8g-american-british-english": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. apartment",
+          "correct": "flat",
+          "why": "In British English, an apartment is called a ‘flat’."
+        },
+        "g2": {
+          "label": "2. elevator",
+          "correct": "lift",
+          "why": "In British English, an elevator is called a ‘lift’."
+        },
+        "g3": {
+          "label": "3. sidewalk",
+          "correct": "pavement",
+          "why": "In British English, a sidewalk is called the ‘pavement’."
+        },
+        "g4": {
+          "label": "4. cookie",
+          "correct": "biscuit",
+          "why": "In British English, a cookie is called a ‘biscuit’."
+        },
+        "g5": {
+          "label": "5. trunk (of a car)",
+          "correct": "boot",
+          "why": "In British English, the trunk of a car is called the ‘boot’."
+        },
+        "g6": {
+          "label": "6. french fries",
+          "correct": "chips",
+          "why": "In British English, french fries are called ‘chips’."
+        },
+        "g7": {
+          "label": "7. gas (fuel)",
+          "correct": "petrol",
+          "why": "In British English, gas (fuel) is called ‘petrol’."
+        },
+        "g8": {
+          "label": "8. vacation",
+          "correct": "holiday",
+          "why": "In British English, a vacation is called a ‘holiday’."
+        },
+        "g9": {
+          "label": "9. candy",
+          "correct": "sweets",
+          "why": "In British English, candy is called ‘sweets’."
+        },
+        "g10": {
+          "label": "10. cell phone",
+          "correct": "mobile phone",
+          "why": "In British English, a cell phone is called a ‘mobile phone’."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. The ___ of the house was lovely",
+          "correct": "colour",
+          "why": "British English keeps the ‘-our’ ending: colour (American: color)."
+        },
+        "g2": {
+          "label": "2. The city ___",
+          "correct": "centre",
+          "why": "British English uses ‘-re’ at the end: centre (American: center)."
+        },
+        "g3": {
+          "label": "3. ___ my room",
+          "correct": "organise",
+          "why": "British English commonly uses ‘-ise’ endings: organise (American: organize)."
+        },
+        "g4": {
+          "label": "4. My favourite ___",
+          "correct": "neighbour",
+          "why": "British English keeps the ‘-our’ ending: neighbour (American: neighbor)."
+        },
+        "g5": {
+          "label": "5. The ___ was exciting",
+          "correct": "programme",
+          "why": "British English uses ‘programme’ for a TV or radio show (American: program)."
+        },
+        "g6": {
+          "label": "6. I didn't ___ how late it was",
+          "correct": "realise",
+          "why": "British English commonly uses ‘-ise’ endings: realise (American: realize)."
+        },
+        "g7": {
+          "label": "7. She had to ___ for being late",
+          "correct": "apologise",
+          "why": "British English commonly uses ‘-ise’ endings: apologise (American: apologize)."
+        },
+        "g8": {
+          "label": "8. The ___ of chocolate",
+          "correct": "flavour",
+          "why": "British English keeps the ‘-our’ ending: flavour (American: flavor)."
+        }
+      }
+    },
+    "exD": {
+      "prefix": "exD-",
+      "gaps": {
+        "g1": {
+          "label": "1. Americans call a ___",
+          "correct": "sidewalk",
+          "why": "The text compares the American word ‘sidewalk’ with the British ‘pavement’."
+        },
+        "g2": {
+          "label": "2. An American goes on ___",
+          "correct": "vacation",
+          "why": "The text compares an American ‘vacation’ with the British ‘holiday’."
+        },
+        "g3": {
+          "label": "3. The British write ___",
+          "correct": "colour",
+          "why": "British spelling keeps the ‘-our’ ending: colour, while Americans write ‘color’."
+        },
+        "g4": {
+          "label": "4. Americans spell it ___",
+          "correct": "center",
+          "why": "American spelling drops the ‘-re’ ending and uses ‘-er’: center."
+        },
+        "g5": {
+          "label": "5. Formal writing avoids ___",
+          "correct": "contractions",
+          "why": "‘Don’t’ and ‘can’t’ are contractions, which should be avoided in formal writing."
+        },
+        "g6": {
+          "label": "6. Informal language often uses ___",
+          "correct": "phrasal verbs",
+          "why": "‘Find out’ is a phrasal verb, common in informal English instead of formal words like ‘discover’."
+        }
+      }
+    }
+  },
+  "8g-american-family": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Spending a year with a host ___",
+          "correct": "family",
+          "why": "The text says Lena is spending a year with a host family in Ohio."
+        },
+        "g2": {
+          "label": "2. Everyone helped with the ___",
+          "correct": "chores",
+          "why": "The text says everyone helped with the chores around the house."
+        },
+        "g3": {
+          "label": "3. Make her ___",
+          "correct": "bed",
+          "why": "The text says Lena had to make her bed each morning."
+        },
+        "g4": {
+          "label": "4. Load the ___",
+          "correct": "dishwasher",
+          "why": "The text says it was Lena's job to load the dishwasher."
+        },
+        "g5": {
+          "label": "5. Took out the ___",
+          "correct": "rubbish",
+          "why": "The text says her host brother took out the rubbish every evening."
+        },
+        "g6": {
+          "label": "6. Worked in the ___",
+          "correct": "garden",
+          "why": "The text says the family worked in the garden at the weekend."
+        },
+        "g7": {
+          "label": "7. Do her own ___",
+          "correct": "laundry",
+          "why": "The text says Lena learned to do her own laundry."
+        },
+        "g8": {
+          "label": "8. Her host parents were very ___",
+          "correct": "welcoming",
+          "why": "The text says her host parents were very welcoming."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. It is my job to ___ the beds",
+          "correct": "make",
+          "why": "‘Make the bed’ is the fixed collocation for this chore."
+        },
+        "g2": {
+          "label": "2. Can you ___ the rubbish?",
+          "correct": "take out",
+          "why": "‘Take out the rubbish’ is the fixed collocation for this chore."
+        },
+        "g3": {
+          "label": "3. We ___ the dishwasher",
+          "correct": "load",
+          "why": "‘Load the dishwasher’ is the fixed collocation for this chore."
+        },
+        "g4": {
+          "label": "4. I have to ___ my homework",
+          "correct": "do",
+          "why": "‘Do homework’ is the fixed collocation for this chore."
+        },
+        "g5": {
+          "label": "5. We ___ the grass",
+          "correct": "cut",
+          "why": "‘Cut the grass’ is the fixed collocation for this chore."
+        },
+        "g6": {
+          "label": "6. Please ___ your room",
+          "correct": "tidy",
+          "why": "‘Tidy your room’ is the fixed collocation for this chore."
+        },
+        "g7": {
+          "label": "7. We ___ the table",
+          "correct": "set",
+          "why": "‘Set the table’ is the fixed collocation for this chore."
+        },
+        "g8": {
+          "label": "8. I ___ the dog",
+          "correct": "walk",
+          "why": "‘Walk the dog’ is the fixed collocation for this chore."
+        }
+      }
+    }
+  },
+  "8g-american-inventions": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. What did Edison invent in 1879?",
+          "correct": "the electric light bulb",
+          "why": "The text says Edison invented the electric light bulb in 1879."
+        },
+        "g2": {
+          "label": "2. How many materials did Edison test?",
+          "correct": "more than 1,000",
+          "why": "The text says Edison tested more than 1,000 materials for the filament."
+        },
+        "g3": {
+          "label": "3. When did Bell make the first call?",
+          "correct": "1876",
+          "why": "The text says Bell made the first telephone call in 1876."
+        },
+        "g4": {
+          "label": "4. How long did the first flight last?",
+          "correct": "twelve seconds",
+          "why": "The text says the Wright Brothers’ first flight lasted twelve seconds."
+        },
+        "g5": {
+          "label": "5. Why did Salk refuse to patent the vaccine?",
+          "correct": "so that everyone could afford it",
+          "why": "The text says Salk refused to patent the vaccine so that everyone could afford it."
+        },
+        "g6": {
+          "label": "6. How did people communicate before the telephone?",
+          "correct": "by sending telegrams",
+          "why": "The text says people communicated quickly by sending telegrams before the telephone."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Edison worked ___",
+          "correct": "hard",
+          "why": "‘Hard’ is both the adjective and adverb form here (‘hardly’ means ‘barely’, a different meaning)."
+        },
+        "g2": {
+          "label": "2. An ___ important invention",
+          "correct": "incredibly",
+          "why": "An adverb is needed to modify the adjective ‘important’, so ‘incredibly’ is used, not ‘incredible’."
+        },
+        "g3": {
+          "label": "3. A ___ moment",
+          "correct": "remarkable",
+          "why": "An adjective is needed after ‘was’ to describe the moment, so ‘remarkable’ is used, not the adverb ‘remarkably’."
+        },
+        "g4": {
+          "label": "4. Flew their plane ___",
+          "correct": "successfully",
+          "why": "An adverb is needed to modify the verb ‘flew’, so ‘successfully’ is used, not the adjective ‘successful’."
+        },
+        "g5": {
+          "label": "5. Salk ___ refused",
+          "correct": "generously",
+          "why": "An adverb is needed to modify the verb ‘refused’, so ‘generously’ is used, not the adjective ‘generous’."
+        },
+        "g6": {
+          "label": "6. Changed our lives ___",
+          "correct": "dramatically",
+          "why": "An adverb is needed to modify the verb ‘changed’, so ‘dramatically’ is used, not the adjective ‘dramatic’."
+        },
+        "g7": {
+          "label": "7. Polio was a ___ disease",
+          "correct": "terrible",
+          "why": "An adjective is needed after ‘was’ to describe the disease, so ‘terrible’ is used, not the adverb ‘terribly’."
+        },
+        "g8": {
+          "label": "8. The first flight was ___ short",
+          "correct": "extremely",
+          "why": "An adverb is needed to modify the adjective ‘short’, so ‘extremely’ is used, not the adjective ‘extreme’."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. The story is really ___",
+          "correct": "fascinating",
+          "why": "The -ing participle describes the thing causing the feeling: the story is fascinating."
+        },
+        "g2": {
+          "label": "2. People were ___",
+          "correct": "amazed",
+          "why": "The -ed participle describes how people felt: people were amazed."
+        },
+        "g3": {
+          "label": "3. The achievement was truly ___",
+          "correct": "astonishing",
+          "why": "The -ing participle describes the thing causing the feeling: the achievement was astonishing."
+        },
+        "g4": {
+          "label": "4. Students are often ___",
+          "correct": "interested",
+          "why": "The -ed participle describes how people feel: students are interested."
+        },
+        "g5": {
+          "label": "5. Salk's decision was ___",
+          "correct": "surprising",
+          "why": "The -ing participle describes the thing causing the feeling: the decision was surprising."
+        },
+        "g6": {
+          "label": "6. Children with polio were often ___",
+          "correct": "frightened",
+          "why": "The -ed participle describes how people felt: children were frightened."
+        },
+        "g7": {
+          "label": "7. The growth of the internet has been ___",
+          "correct": "shocking",
+          "why": "The -ing participle describes the thing causing the feeling: the growth has been shocking."
+        },
+        "g8": {
+          "label": "8. Many young people feel ___",
+          "correct": "excited",
+          "why": "The -ed participle describes how people feel: young people feel excited."
+        }
+      }
+    }
+  },
+  "8g-internet-texts": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Not all of it is ___",
+          "correct": "reliable",
+          "why": "The text warns that not all internet information is reliable."
+        },
+        "g2": {
+          "label": "2. Anyone can write a ___",
+          "correct": "blog",
+          "why": "The text says anyone can create a website or write a blog."
+        },
+        "g3": {
+          "label": "3. Edited by thousands of ___",
+          "correct": "volunteers",
+          "why": "The text says a wiki like Wikipedia is written and edited by thousands of volunteers."
+        },
+        "g4": {
+          "label": "4. It can contain ___",
+          "correct": "mistakes",
+          "why": "The text says wikis are up to date but can also contain mistakes."
+        },
+        "g5": {
+          "label": "5. Check the ___",
+          "correct": "sources",
+          "why": "The text says you should check the sources listed at the bottom of an article."
+        },
+        "g6": {
+          "label": "6. Websites spread ___",
+          "correct": "hoaxes",
+          "why": "The text says some websites spread hoaxes — false stories designed to trick people."
+        },
+        "g7": {
+          "label": "7. A trusted ___",
+          "correct": "source",
+          "why": "The text says to check whether something comes from a trusted source."
+        },
+        "g8": {
+          "label": "8. Online ___",
+          "correct": "reviews",
+          "why": "The text says online reviews from other users can help you judge a product."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. A website you can trust",
+          "correct": "reliable",
+          "why": "‘Reliable’ means a website you can trust and believe."
+        },
+        "g2": {
+          "label": "2. Google and Bing",
+          "correct": "search engine",
+          "why": "Google and Bing are examples of a search engine."
+        },
+        "g3": {
+          "label": "3. A personal online diary",
+          "correct": "blog",
+          "why": "A personal online diary where someone shares opinions is called a blog."
+        },
+        "g4": {
+          "label": "4. A false story to trick people",
+          "correct": "hoax",
+          "why": "A false story created to trick people is called a hoax."
+        },
+        "g5": {
+          "label": "5. Where information comes from",
+          "correct": "source",
+          "why": "The place information originally comes from is called the source."
+        },
+        "g6": {
+          "label": "6. A changed wiki gets an ___",
+          "correct": "update",
+          "why": "When a wiki is changed to add new information, it gets an update."
+        },
+        "g7": {
+          "label": "7. A customer comment",
+          "correct": "review",
+          "why": "A comment from a customer about a product is called a review."
+        },
+        "g8": {
+          "label": "8. Information that is not true",
+          "correct": "fake",
+          "why": "Information that is not true or not real is called fake."
+        }
+      }
+    }
+  },
+  "8g-kids-in-america": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Classes start at what time?",
+          "correct": "7:45",
+          "why": "The text says classes start at 7:45 at Lena's American school."
+        },
+        "g2": {
+          "label": "2. How does Lena get to school in Germany?",
+          "correct": "on foot or by bike",
+          "why": "The text says Lena usually gets to school in Germany on foot or by bike."
+        },
+        "g3": {
+          "label": "3. Which activity did Lena join?",
+          "correct": "the school newspaper",
+          "why": "The text says Lena joined the school newspaper in America."
+        },
+        "g4": {
+          "label": "4. What grading system is used?",
+          "correct": "letters A–F",
+          "why": "The text says American schools use letters A–F for grading."
+        },
+        "g5": {
+          "label": "5. Which month is Thanksgiving?",
+          "correct": "November",
+          "why": "The text says Thanksgiving is celebrated in November."
+        },
+        "g6": {
+          "label": "6. What was Lena thankful for?",
+          "correct": "her American family and new experiences",
+          "why": "The text says Lena was thankful for her American family and new experiences."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Lena enjoyed ___ foods",
+          "correct": "trying",
+          "why": "‘Enjoy’ is always followed by the gerund (-ing) form, not the infinitive."
+        },
+        "g2": {
+          "label": "2. She decided ___ the newspaper",
+          "correct": "to join",
+          "why": "‘Decide’ is always followed by the to-infinitive."
+        },
+        "g3": {
+          "label": "3. Students avoid ___ to school",
+          "correct": "walking",
+          "why": "‘Avoid’ is always followed by the gerund (-ing) form."
+        },
+        "g4": {
+          "label": "4. Lena hoped ___ her English",
+          "correct": "to improve",
+          "why": "‘Hope’ is always followed by the to-infinitive."
+        },
+        "g5": {
+          "label": "5. She didn't mind ___ up early",
+          "correct": "getting",
+          "why": "‘Mind’ is always followed by the gerund (-ing) form."
+        },
+        "g6": {
+          "label": "6. Lena refused ___ pumpkin pie",
+          "correct": "to try",
+          "why": "‘Refuse’ is always followed by the to-infinitive."
+        },
+        "g7": {
+          "label": "7. Emma suggested ___ the drama club",
+          "correct": "joining",
+          "why": "‘Suggest’ is always followed by the gerund (-ing) form."
+        },
+        "g8": {
+          "label": "8. Lena managed ___ friends",
+          "correct": "to make",
+          "why": "‘Manage’ is always followed by the to-infinitive."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. The teacher asked the students ___",
+          "correct": "to finish",
+          "why": "‘Ask someone to do something’ uses the pattern verb + object + to-infinitive."
+        },
+        "g2": {
+          "label": "2. Parents expected her ___",
+          "correct": "to get",
+          "why": "‘Expect someone to do something’ uses the pattern verb + object + to-infinitive."
+        },
+        "g3": {
+          "label": "3. Her host mother told her ___",
+          "correct": "to bring",
+          "why": "‘Tell someone to do something’ uses the pattern verb + object + to-infinitive."
+        },
+        "g4": {
+          "label": "4. The coach wanted the team ___",
+          "correct": "to practise",
+          "why": "‘Want someone to do something’ uses the pattern verb + object + to-infinitive."
+        },
+        "g5": {
+          "label": "5. Her teacher encouraged her ___",
+          "correct": "to keep",
+          "why": "‘Encourage someone to do something’ uses the pattern verb + object + to-infinitive."
+        },
+        "g6": {
+          "label": "6. The school didn't allow students ___",
+          "correct": "to use",
+          "why": "‘Allow someone to do something’ uses the pattern verb + object + to-infinitive."
+        },
+        "g7": {
+          "label": "7. Emma persuaded Lena ___",
+          "correct": "to go",
+          "why": "‘Persuade someone to do something’ uses the pattern verb + object + to-infinitive."
+        },
+        "g8": {
+          "label": "8. Parents reminded her ___",
+          "correct": "to call",
+          "why": "‘Remind someone to do something’ uses the pattern verb + object + to-infinitive."
+        }
+      }
+    }
+  },
+  "8g-new-york": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. How many boroughs?",
+          "correct": "five",
+          "why": "The text says New York City has five boroughs."
+        },
+        "g2": {
+          "label": "2. What did the family do on day one?",
+          "correct": "took the subway to Brooklyn",
+          "why": "The text says Max and his family took the subway to Brooklyn on their first day."
+        },
+        "g3": {
+          "label": "3. What's special about New York pizza?",
+          "correct": "the crust is thin and you fold it",
+          "why": "The text says New York pizza has a thin crust that you fold to eat."
+        },
+        "g4": {
+          "label": "4. Why is Queens the most diverse borough?",
+          "correct": "people speak over 100 languages there",
+          "why": "The text says Queens is the most diverse borough because people speak over 100 languages there."
+        },
+        "g5": {
+          "label": "5. Where did Max see the skyline at sunset?",
+          "correct": "from the Brooklyn Bridge",
+          "why": "The text says Max saw the Manhattan skyline at sunset from the Brooklyn Bridge."
+        },
+        "g6": {
+          "label": "6. Which country gave the Statue of Liberty?",
+          "correct": "France",
+          "why": "The text says France gave the Statue of Liberty to America."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. A city ___ never sleeps",
+          "correct": "that",
+          "why": "A defining relative clause about a thing (a city) uses ‘that’ or ‘which’, not ‘who’."
+        },
+        "g2": {
+          "label": "2. The guide, ___ grew up in Queens",
+          "correct": "who",
+          "why": "A non-defining relative clause about a person uses ‘who’."
+        },
+        "g3": {
+          "label": "3. Central Park, ___ is in the middle of Manhattan",
+          "correct": "which",
+          "why": "A non-defining relative clause about a thing uses ‘which’, not ‘that’."
+        },
+        "g4": {
+          "label": "4. The neighbourhood ___ you can find dumplings",
+          "correct": "where",
+          "why": "‘Where’ introduces a defining relative clause about a place."
+        },
+        "g5": {
+          "label": "5. The student ___ host family lived in Brooklyn",
+          "correct": "whose",
+          "why": "‘Whose’ shows possession — the student’s host family."
+        },
+        "g6": {
+          "label": "6. The Brooklyn Bridge, ___ was opened in 1883",
+          "correct": "which",
+          "why": "A non-defining relative clause about a thing uses ‘which’."
+        },
+        "g7": {
+          "label": "7. The pizza ___ we ate in Little Italy",
+          "correct": "that",
+          "why": "A defining relative clause about a thing uses ‘that’."
+        },
+        "g8": {
+          "label": "8. Times Square, ___ tourists take photos",
+          "correct": "where",
+          "why": "‘Where’ introduces a non-defining clause describing what happens at a place."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. Max's family ___ the trip",
+          "correct": "had been planning",
+          "why": "The past perfect progressive shows an action continuing up to a point in the past, before they flew."
+        },
+        "g2": {
+          "label": "2. \"We ___ for three hours\"",
+          "correct": "had been walking",
+          "why": "The past perfect progressive shows an action continuing up to a point in the past, before they stopped."
+        },
+        "g3": {
+          "label": "3. \"It ___ all morning\"",
+          "correct": "has been raining",
+          "why": "The present perfect progressive shows an action continuing up to now, with a visible result (wet streets)."
+        },
+        "g4": {
+          "label": "4. Max's sister ___ about her legs",
+          "correct": "had been complaining",
+          "why": "The past perfect progressive shows an action continuing up to a point in the past — by the time they reached the top."
+        },
+        "g5": {
+          "label": "5. \"I ___ English for five years\"",
+          "correct": "have been learning",
+          "why": "The present perfect progressive shows an action continuing up to now."
+        },
+        "g6": {
+          "label": "6. They ___ for almost an hour",
+          "correct": "had been waiting",
+          "why": "The past perfect progressive shows an action continuing up to a point in the past, when the waiter arrived."
+        },
+        "g7": {
+          "label": "7. Max's parents ___ money",
+          "correct": "have been saving",
+          "why": "The present perfect progressive shows an action continuing up to now — they are still saving."
+        },
+        "g8": {
+          "label": "8. The family ___ with friends",
+          "correct": "had been staying",
+          "why": "The past perfect progressive shows an action continuing up to a point in the past, before they moved to a hotel."
+        }
+      }
+    }
+  },
+  "8g-pacific-northwest": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. A beautiful ___",
+          "correct": "region",
+          "why": "The text describes the Pacific Northwest as a region of the United States."
+        },
+        "g2": {
+          "label": "2. Thick green ___",
+          "correct": "forests",
+          "why": "The text says the region is famous for its thick green forests."
+        },
+        "g3": {
+          "label": "3. ___ Americans have lived here",
+          "correct": "Native",
+          "why": "The text refers to Native Americans, who have lived in the area for thousands of years."
+        },
+        "g4": {
+          "label": "4. Carved tall wooden ___ poles",
+          "correct": "totem",
+          "why": "The text says Native Americans carved tall wooden totem poles."
+        },
+        "g5": {
+          "label": "5. Home to huge ___ parks",
+          "correct": "national",
+          "why": "The text says the region is home to huge national parks like Mount Rainier."
+        },
+        "g6": {
+          "label": "6. Known for coffee and ___",
+          "correct": "technology",
+          "why": "The text says Seattle is known for its coffee culture and technology companies."
+        },
+        "g7": {
+          "label": "7. The ___ is rich and varied",
+          "correct": "wildlife",
+          "why": "The text says the wildlife is rich and varied because of the frequent rain."
+        },
+        "g8": {
+          "label": "8. The amazing ___",
+          "correct": "scenery",
+          "why": "The text says people move here for the fresh air and amazing scenery."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Seattle is in the Pacific Northwest, ___?",
+          "correct": "isn't it",
+          "why": "A positive statement with ‘is’ takes a negative tag: ‘isn’t it’."
+        },
+        "g2": {
+          "label": "2. It rains a lot in Oregon, ___?",
+          "correct": "doesn't it",
+          "why": "A positive simple present statement takes a negative tag with ‘does’: ‘doesn’t it’."
+        },
+        "g3": {
+          "label": "3. Native Americans carved totem poles, ___?",
+          "correct": "didn't they",
+          "why": "A positive simple past statement takes a negative tag with ‘did’: ‘didn’t they’."
+        },
+        "g4": {
+          "label": "4. You have visited a national park, ___?",
+          "correct": "haven't you",
+          "why": "A positive present perfect statement takes a negative tag with ‘have’: ‘haven’t you’."
+        },
+        "g5": {
+          "label": "5. Mount Rainier isn't in Texas, ___?",
+          "correct": "is it",
+          "why": "A negative statement takes a positive tag: ‘is it’."
+        },
+        "g6": {
+          "label": "6. The forests are very green, ___?",
+          "correct": "aren't they",
+          "why": "A positive statement with ‘are’ takes a negative tag: ‘aren’t they’."
+        },
+        "g7": {
+          "label": "7. We can hike near the waterfalls, ___?",
+          "correct": "can't we",
+          "why": "A positive statement with ‘can’ takes a negative tag: ‘can’t we’."
+        },
+        "g8": {
+          "label": "8. They don't get much sun in winter, ___?",
+          "correct": "do they",
+          "why": "A negative statement takes a positive tag: ‘do they’."
+        }
+      }
+    }
+  },
+  "8g-school-life-rules": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. A strict dress ___",
+          "correct": "code",
+          "why": "‘Dress code’ is the fixed phrase for school clothing rules."
+        },
+        "g2": {
+          "label": "2. Saying the ___ of allegiance",
+          "correct": "pledge",
+          "why": "The text says students begin the day with the pledge of allegiance."
+        },
+        "g3": {
+          "label": "3. A huge range of ___",
+          "correct": "subjects",
+          "why": "The text says American high schools offer a huge range of subjects."
+        },
+        "g4": {
+          "label": "4. Take part in ___",
+          "correct": "activities",
+          "why": "The text says students take part in activities like sports or the school band."
+        },
+        "g5": {
+          "label": "5. Clear rules about ___",
+          "correct": "behaviour",
+          "why": "The text says there are clear rules about behaviour."
+        },
+        "g6": {
+          "label": "6. Expected to be ___",
+          "correct": "polite",
+          "why": "The text says students are expected to be polite to their teachers."
+        },
+        "g7": {
+          "label": "7. Arrive on ___",
+          "correct": "time",
+          "why": "The text says students are expected to arrive on time."
+        },
+        "g8": {
+          "label": "8. Leads to ___",
+          "correct": "detention",
+          "why": "The text says breaking the rules can lead to detention."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. You ___ talk in the library",
+          "correct": "mustn't",
+          "why": "‘Mustn’t’ expresses a prohibition — talking in the library is forbidden."
+        },
+        "g2": {
+          "label": "2. American students ___ say the pledge",
+          "correct": "have to",
+          "why": "‘Have to’ expresses an external obligation — saying the pledge is required."
+        },
+        "g3": {
+          "label": "3. You ___ bring your own food",
+          "correct": "don't have to",
+          "why": "‘Don’t have to’ expresses a lack of obligation — food is free, so bringing your own isn’t necessary."
+        },
+        "g4": {
+          "label": "4. You ___ finish your homework",
+          "correct": "must",
+          "why": "‘Must’ expresses a strong personal obligation — homework has to be finished."
+        },
+        "g5": {
+          "label": "5. You ___ tell a teacher",
+          "correct": "should",
+          "why": "‘Should’ expresses advice — telling a teacher is recommended, not obligatory."
+        },
+        "g6": {
+          "label": "6. You ___ eat in the science lab",
+          "correct": "mustn't",
+          "why": "‘Mustn’t’ expresses a prohibition — eating in the lab is forbidden for safety."
+        },
+        "g7": {
+          "label": "7. Students ___ use their phones",
+          "correct": "are allowed to",
+          "why": "‘Are allowed to’ expresses permission — using phones at lunch is permitted."
+        },
+        "g8": {
+          "label": "8. You ___ be rude",
+          "correct": "shouldn't",
+          "why": "‘Shouldn’t’ expresses advice against an action — rudeness is unkind, not forbidden by rule."
+        }
+      }
+    }
+  },
+  "8g-travel-texts": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Why \"Big Sky Country\"?",
+          "correct": "enormous sky",
+          "why": "The blogger explains Montana is called ‘Big Sky Country’ because of its enormous sky."
+        },
+        "g2": {
+          "label": "2. How many glaciers today?",
+          "correct": "25",
+          "why": "The text says Glacier National Park has 25 glaciers left today."
+        },
+        "g3": {
+          "label": "3. What did Jim say about the valley?",
+          "correct": "looks different",
+          "why": "The retired cowboy Jim told the blogger the valley looks different now."
+        },
+        "g4": {
+          "label": "4. What will the blogger visit in Missoula?",
+          "correct": "a bookshop",
+          "why": "The text says the blogger plans to visit a bookshop in Missoula."
+        },
+        "g5": {
+          "label": "5. What is essential for getting around?",
+          "correct": "a car",
+          "why": "The travel guide says a car is essential for getting around Montana."
+        },
+        "g6": {
+          "label": "6. Why visit in early September?",
+          "correct": "quieter",
+          "why": "The guide recommends early September because it is quieter then."
+        },
+        "g7": {
+          "label": "7. Why strict campfire rules?",
+          "correct": "wildfires",
+          "why": "The text says Montana has strict campfire rules because of wildfires."
+        },
+        "g8": {
+          "label": "8. The blog's style is...?",
+          "correct": "personal",
+          "why": "The text says the travel blog is written in a personal style."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. We decided to ___ early",
+          "correct": "set off",
+          "why": "‘Set off’ is the phrasal verb for beginning a journey."
+        },
+        "g2": {
+          "label": "2. We finally ___ at the hotel",
+          "correct": "checked in",
+          "why": "‘Check in’ is the fixed phrase for registering at a hotel."
+        },
+        "g3": {
+          "label": "3. Don't miss the chance to ___ the views",
+          "correct": "take in",
+          "why": "‘Take in’ means to look at and enjoy a view."
+        },
+        "g4": {
+          "label": "4. The best way to ___ Montana",
+          "correct": "get around",
+          "why": "‘Get around’ means to travel or move about a place."
+        },
+        "g5": {
+          "label": "5. We were lucky to ___ a waterfall",
+          "correct": "come across",
+          "why": "‘Come across’ means to find something by chance."
+        },
+        "g6": {
+          "label": "6. I tried to ___ the atmosphere",
+          "correct": "capture",
+          "why": "‘Capture’ means to record something, like an atmosphere, in writing or on camera."
+        },
+        "g7": {
+          "label": "7. We want to ___ every day",
+          "correct": "make the most of",
+          "why": "‘Make the most of’ means to use time as fully as possible."
+        },
+        "g8": {
+          "label": "8. We decided to ___ the national park",
+          "correct": "head to",
+          "why": "‘Head to’ means to travel towards a destination."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. The last wild places in the ___ US",
+          "correct": "contiguous",
+          "why": "‘Contiguous’ describes the connected lower 48 states, as the text defines."
+        },
+        "g2": {
+          "label": "2. Home to ___ mountain ranges",
+          "correct": "majestic",
+          "why": "‘Majestic’ describes impressive, grand mountain ranges."
+        },
+        "g3": {
+          "label": "3. The landscapes are truly ___",
+          "correct": "stunning",
+          "why": "‘Stunning’ describes landscapes that are extremely beautiful."
+        },
+        "g4": {
+          "label": "4. Many areas are extremely ___",
+          "correct": "remote",
+          "why": "‘Remote’ describes areas far from other people."
+        },
+        "g5": {
+          "label": "5. A reliable car is ___",
+          "correct": "essential",
+          "why": "‘Essential’ describes something absolutely necessary."
+        },
+        "g6": {
+          "label": "6. The distances are ___",
+          "correct": "vast",
+          "why": "‘Vast’ describes very large distances between towns."
+        },
+        "g7": {
+          "label": "7. The summer crowds have ___ out",
+          "correct": "thinned",
+          "why": "‘Thinned out’ describes crowds becoming fewer by September."
+        },
+        "g8": {
+          "label": "8. Check local fire ___",
+          "correct": "regulations",
+          "why": "‘Regulations’ are official rules, here about lighting campfires."
+        }
+      }
+    }
+  },
+  "8g-usa-contrasts": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. In the west, ___",
+          "correct": "vast deserts",
+          "why": "‘Vast deserts’ is the fixed collocation describing places like the Mojave."
+        },
+        "g2": {
+          "label": "2. In Alaska, ___",
+          "correct": "frozen landscapes",
+          "why": "‘Frozen landscapes’ is the fixed collocation describing Alaska covered in snow."
+        },
+        "g3": {
+          "label": "3. The USA has ___",
+          "correct": "major cities",
+          "why": "‘Major cities’ is the fixed collocation for large cities like New York and LA."
+        },
+        "g4": {
+          "label": "4. But also ___",
+          "correct": "rural areas",
+          "why": "‘Rural areas’ is the fixed collocation for the countryside in states like Montana."
+        },
+        "g5": {
+          "label": "5. A very ___",
+          "correct": "traditional lifestyle",
+          "why": "‘Traditional lifestyle’ is the fixed collocation contrasting with modern city life."
+        },
+        "g6": {
+          "label": "6. Known for their ___",
+          "correct": "progressive ideas",
+          "why": "‘Progressive ideas’ is the fixed collocation describing San Francisco’s culture."
+        },
+        "g7": {
+          "label": "7. Wealth shows ___",
+          "correct": "sharp differences",
+          "why": "‘Sharp differences’ is the fixed collocation for strong contrasts in wealth."
+        },
+        "g8": {
+          "label": "8. Some neighbourhoods have ___",
+          "correct": "luxurious homes",
+          "why": "‘Luxurious homes’ is the fixed collocation contrasting with families who struggle to pay rent."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Areas of ___ traffic",
+          "correct": "heavy",
+          "why": "‘Heavy traffic’ is the fixed collocation for busy roads."
+        },
+        "g2": {
+          "label": "2. Use ___ transport",
+          "correct": "public",
+          "why": "‘Public transport’ is the fixed collocation for buses, trains and similar."
+        },
+        "g3": {
+          "label": "3. One of America's most famous ___ wonders",
+          "correct": "natural",
+          "why": "‘Natural wonders’ is the fixed collocation for places like the Grand Canyon."
+        },
+        "g4": {
+          "label": "4. Enjoy a ___ standard of living",
+          "correct": "high",
+          "why": "‘High standard of living’ is the fixed collocation for a good quality of life."
+        },
+        "g5": {
+          "label": "5. Known for its ___ diversity",
+          "correct": "cultural",
+          "why": "‘Cultural diversity’ is the fixed collocation for people from many backgrounds."
+        },
+        "g6": {
+          "label": "6. ___ weather conditions",
+          "correct": "extreme",
+          "why": "‘Extreme weather’ is the fixed collocation for very hot or cold conditions."
+        },
+        "g7": {
+          "label": "7. Very ___ populations",
+          "correct": "dense",
+          "why": "‘Dense population’ is the fixed collocation for many people in a small area."
+        },
+        "g8": {
+          "label": "8. The ___ language",
+          "correct": "standard",
+          "why": "‘Standard language’ is the fixed collocation for the official form of a language used in schools."
+        }
+      }
+    }
   }
 }
