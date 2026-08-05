@@ -420,5 +420,42 @@
         }
       }
     }
+  },
+  "7g-london-landmarks": {
+    "exC": {
+      "prefix": "ex3-",
+      "gaps": {
+        "g1": {
+          "label": "1. Big Ben is located ___ the northern end",
+          "correct": "at",
+          "why": "“at” marks a precise point → at the northern end."
+        },
+        "g2": {
+          "label": "2. Westminster Bridge crosses ___ the Thames",
+          "correct": "over",
+          "why": "A bridge goes across → over the river."
+        },
+        "g3": {
+          "label": "3. Buckingham Palace is ___ The Mall",
+          "correct": "at the end of",
+          "why": "It stands where The Mall ends → at the end of."
+        },
+        "g4": {
+          "label": "4. The Tower of London stands ___ the north bank",
+          "correct": "on",
+          "why": "Position on a surface/bank → on the bank."
+        },
+        "g5": {
+          "label": "5. The Changing of the Guard takes place ___ the palace",
+          "correct": "in front of",
+          "why": "It happens ahead of the palace → in front of."
+        },
+        "g6": {
+          "label": "6. a beautiful view ___ the Houses of Parliament",
+          "correct": "of",
+          "why": "Fixed phrase: a view of something → of."
+        }
+      }
+    }
   }
 }
