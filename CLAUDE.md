@@ -271,6 +271,10 @@ All step-based exercise pages load the **single shared framework** via `<script 
 
 ---
 
+## Filterable exercise index on `activities.html` (added 2026-08-05)
+
+`activities.html` now carries a **generated, filterable index of every framework exercise** above the curated "Kurssammlungen" (the per-year hub cards, kept as-is). **`node scripts/build-hub.js`** reads `data/exercises.json` + `data/topics.json` and injects static exercise cards between the `<!-- HUB:START -->` / `<!-- HUB:END -->` markers — each card carries `data-year/school/topics/skills/title` and links to the individual exercise. The filter UI (search box + Jahrgang/Schulart/Fertigkeit chips + Thema dropdown, all with counts) and the filtering JS are hand-maintained in `activities.html`; the JS only shows/hides the static cards, updates the live count and reflects state in the URL (`?year=&school=&skill=&topic=&q=`) so filtered views are shareable and restore on reload. No-JS users and crawlers still get all cards. **Regenerate the cards after `build-exercise-data.js`** (never hand-edit between the markers). Scope: the index covers the 128 pages in `exercises.json` (everything that loads `exercise.js`, incl. MSA/Uni/IT/BE); the 16 Abitur packs (separate architecture) are reachable via the Kurssammlungen block, not the filter.
+
 ## SEO topic landing pages — `themen/` (added 2026-08-05)
 
 German, search-optimised landing pages, one per grammar topic (people search *Passiv Englisch Übungen*, *if-Sätze Klasse 10* — not theme names). Generated, never hand-edited:
