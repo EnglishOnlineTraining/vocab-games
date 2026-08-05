@@ -3,9 +3,18 @@
     "slug": "passiv",
     "de": "Passiv",
     "en": "Passive Voice",
-    "aliases": ["Passiv Englisch Übungen", "passive voice Übungen", "Passiv Englisch Klasse 9", "Passiv bilden Englisch"],
+    "aliases": [
+      "Passiv Englisch Übungen",
+      "passive voice Übungen",
+      "Passiv Englisch Klasse 9",
+      "Passiv bilden Englisch"
+    ],
     "metaDescription": "Passiv im Englischen einfach erklärt: Bildung (be + past participle), alle Zeiten und kostenlose Übungen mit sofortiger Auswertung.",
-    "related": ["past-perfect", "if-saetze", "present-perfect"],
+    "related": [
+      "past-perfect",
+      "if-saetze",
+      "present-perfect"
+    ],
     "reviewed": false,
     "intro": "Das <strong>Passiv</strong> (<em>passive voice</em>) benutzt man, wenn die <strong>Handlung wichtiger ist als die handelnde Person</strong> — oder wenn man gar nicht weiß, wer etwas getan hat. Statt „Shakespeare wrote the play“ (Aktiv) sagt man dann „The play was written by Shakespeare“ (Passiv). Wer die Handlung ausführt, steht — wenn überhaupt — mit <em>by</em> am Satzende.",
     "rules": [
@@ -23,20 +32,74 @@
       "Aktiv: <em>Scientists have discovered a new planet.</em> → Passiv: <em>A new planet <strong>has been discovered</strong>.</em>"
     ],
     "practice": [
-      { "q": "The Stone of Destiny ___ by Edward I in 1296.", "options": ["seized", "was seized", "has seized"], "answer": "was seized", "why": "Vergangenheit, Passiv: was + 3. Verbform (seize → seized)." },
-      { "q": "English ___ in many countries around the world.", "options": ["speaks", "is spoken", "spoke"], "answer": "is spoken", "why": "Gegenwart, Passiv: is/are + 3. Verbform." },
-      { "q": "The report ___ yet, so we have to wait.", "options": ["hasn't written", "hasn't been written", "didn't write"], "answer": "hasn't been written", "why": "Present Perfect Passiv: has/have been + 3. Verbform." },
-      { "q": "A new library ___ next year.", "options": ["will build", "will be built", "is building"], "answer": "will be built", "why": "Zukunft, Passiv: will be + 3. Verbform." },
-      { "q": "Don't worry — this problem can ___ easily.", "options": ["solve", "be solved", "solved"], "answer": "be solved", "why": "Nach einem Modalverb: modal + be + 3. Verbform." }
+      {
+        "q": "The Stone of Destiny ___ by Edward I in 1296.",
+        "options": [
+          "seized",
+          "was seized",
+          "has seized"
+        ],
+        "answer": "was seized",
+        "why": "Vergangenheit, Passiv: was + 3. Verbform (seize → seized)."
+      },
+      {
+        "q": "English ___ in many countries around the world.",
+        "options": [
+          "speaks",
+          "is spoken",
+          "spoke"
+        ],
+        "answer": "is spoken",
+        "why": "Gegenwart, Passiv: is/are + 3. Verbform."
+      },
+      {
+        "q": "The report ___ yet, so we have to wait.",
+        "options": [
+          "hasn't written",
+          "hasn't been written",
+          "didn't write"
+        ],
+        "answer": "hasn't been written",
+        "why": "Present Perfect Passiv: has/have been + 3. Verbform."
+      },
+      {
+        "q": "A new library ___ next year.",
+        "options": [
+          "will build",
+          "will be built",
+          "is building"
+        ],
+        "answer": "will be built",
+        "why": "Zukunft, Passiv: will be + 3. Verbform."
+      },
+      {
+        "q": "Don't worry — this problem can ___ easily.",
+        "options": [
+          "solve",
+          "be solved",
+          "solved"
+        ],
+        "answer": "be solved",
+        "why": "Nach einem Modalverb: modal + be + 3. Verbform."
+      }
     ]
   },
   {
     "slug": "if-saetze",
     "de": "If-Sätze (Conditionals)",
     "en": "Conditional sentences",
-    "aliases": ["if-Sätze Übungen", "Conditional Übungen Englisch", "if-Sätze Typ 1 2 3", "Bedingungssätze Englisch"],
+    "aliases": [
+      "if-Sätze Übungen",
+      "Conditional Übungen Englisch",
+      "if-Sätze Typ 1 2 3",
+      "Bedingungssätze Englisch"
+    ],
     "metaDescription": "If-Sätze (Conditionals) im Englischen: Typ I, II und III einfach erklärt mit Beispielen und kostenlosen Übungen mit sofortiger Auswertung.",
-    "related": ["passiv", "past-perfect", "simple-past"],
+    "related": [
+      "passiv",
+      "past-perfect",
+      "simple-past"
+    ],
     "reviewed": false,
     "intro": "<strong>If-Sätze</strong> (<em>conditional sentences</em>) beschreiben eine Bedingung und ihre Folge: „Wenn … , dann …“. Es gibt drei Haupttypen — je nachdem, wie <strong>wahrscheinlich</strong> die Bedingung ist. Der Satzteil mit <em>if</em> ist die Bedingung; der andere Teil ist die Folge. Beide Reihenfolgen sind möglich (mit oder ohne Komma).",
     "rules": [
@@ -51,20 +114,74 @@
       "Typ III: <em>If they <strong>had left</strong> earlier, they <strong>would not have missed</strong> the flight.</em>"
     ],
     "practice": [
-      { "q": "If it rains tomorrow, we ___ at home.", "options": ["will stay", "would stay", "stayed"], "answer": "will stay", "why": "Typ I: if + Simple Present, Hauptsatz will + Infinitiv." },
-      { "q": "If I had more money, I ___ a new bike.", "options": ["will buy", "would buy", "bought"], "answer": "would buy", "why": "Typ II: if + Simple Past, Hauptsatz would + Infinitiv." },
-      { "q": "If she had studied harder, she ___ the exam.", "options": ["would pass", "would have passed", "passed"], "answer": "would have passed", "why": "Typ III: if + Past Perfect, Hauptsatz would have + 3. Verbform." },
-      { "q": "If you heat ice, it ___.", "options": ["will melt", "melts", "would melt"], "answer": "melts", "why": "Allgemeingültig (Typ 0): beide Teile im Simple Present." },
-      { "q": "We would have come if you ___ us.", "options": ["told", "had told", "would tell"], "answer": "had told", "why": "Typ III: der if-Satz steht im Past Perfect (had + 3. Verbform)." }
+      {
+        "q": "If it rains tomorrow, we ___ at home.",
+        "options": [
+          "will stay",
+          "would stay",
+          "stayed"
+        ],
+        "answer": "will stay",
+        "why": "Typ I: if + Simple Present, Hauptsatz will + Infinitiv."
+      },
+      {
+        "q": "If I had more money, I ___ a new bike.",
+        "options": [
+          "will buy",
+          "would buy",
+          "bought"
+        ],
+        "answer": "would buy",
+        "why": "Typ II: if + Simple Past, Hauptsatz would + Infinitiv."
+      },
+      {
+        "q": "If she had studied harder, she ___ the exam.",
+        "options": [
+          "would pass",
+          "would have passed",
+          "passed"
+        ],
+        "answer": "would have passed",
+        "why": "Typ III: if + Past Perfect, Hauptsatz would have + 3. Verbform."
+      },
+      {
+        "q": "If you heat ice, it ___.",
+        "options": [
+          "will melt",
+          "melts",
+          "would melt"
+        ],
+        "answer": "melts",
+        "why": "Allgemeingültig (Typ 0): beide Teile im Simple Present."
+      },
+      {
+        "q": "We would have come if you ___ us.",
+        "options": [
+          "told",
+          "had told",
+          "would tell"
+        ],
+        "answer": "had told",
+        "why": "Typ III: der if-Satz steht im Past Perfect (had + 3. Verbform)."
+      }
     ]
   },
   {
     "slug": "relativsaetze",
     "de": "Relativsätze",
     "en": "Relative clauses",
-    "aliases": ["Relativsätze Englisch Übungen", "relative pronouns Übungen", "who which whose that", "Relativpronomen Englisch"],
+    "aliases": [
+      "Relativsätze Englisch Übungen",
+      "relative pronouns Übungen",
+      "who which whose that",
+      "Relativpronomen Englisch"
+    ],
     "metaDescription": "Relativsätze im Englischen: who, which, that, whose und where einfach erklärt mit Beispielen und kostenlosen Übungen mit sofortiger Auswertung.",
-    "related": ["passiv", "linking-words", "present-perfect"],
+    "related": [
+      "passiv",
+      "linking-words",
+      "present-perfect"
+    ],
     "reviewed": false,
     "intro": "<strong>Relativsätze</strong> (<em>relative clauses</em>) geben zusätzliche Informationen über ein Nomen. Sie beginnen mit einem <strong>Relativpronomen</strong> wie <em>who</em>, <em>which</em>, <em>that</em> oder <em>whose</em>. Man benutzt sie, um zwei Sätze zu verbinden, ohne das Nomen zu wiederholen.",
     "rules": [
@@ -81,18 +198,626 @@
       "<em>That's the student <strong>whose</strong> project won the prize.</em> (Besitz)"
     ],
     "practice": [
-      { "q": "The man ___ lives next door is a doctor.", "options": ["who", "which", "whose"], "answer": "who", "why": "Person als Subjekt → who (oder that)." },
-      { "q": "I really like films ___ make me laugh.", "options": ["who", "which", "whose"], "answer": "which", "why": "Sache als Subjekt → which (oder that)." },
-      { "q": "That's the boy ___ dog bit me.", "options": ["who", "which", "whose"], "answer": "whose", "why": "Besitz („dessen Hund“) → whose." },
-      { "q": "Edinburgh is the city ___ the festival takes place.", "options": ["which", "where", "who"], "answer": "where", "why": "Ort → where." },
-      { "q": "The teacher ___ we met yesterday was very friendly.", "options": ["who", "which", "whose"], "answer": "who", "why": "Person als Objekt → who(m) oder that." }
+      {
+        "q": "The man ___ lives next door is a doctor.",
+        "options": [
+          "who",
+          "which",
+          "whose"
+        ],
+        "answer": "who",
+        "why": "Person als Subjekt → who (oder that)."
+      },
+      {
+        "q": "I really like films ___ make me laugh.",
+        "options": [
+          "who",
+          "which",
+          "whose"
+        ],
+        "answer": "which",
+        "why": "Sache als Subjekt → which (oder that)."
+      },
+      {
+        "q": "That's the boy ___ dog bit me.",
+        "options": [
+          "who",
+          "which",
+          "whose"
+        ],
+        "answer": "whose",
+        "why": "Besitz („dessen Hund“) → whose."
+      },
+      {
+        "q": "Edinburgh is the city ___ the festival takes place.",
+        "options": [
+          "which",
+          "where",
+          "who"
+        ],
+        "answer": "where",
+        "why": "Ort → where."
+      },
+      {
+        "q": "The teacher ___ we met yesterday was very friendly.",
+        "options": [
+          "who",
+          "which",
+          "whose"
+        ],
+        "answer": "who",
+        "why": "Person als Objekt → who(m) oder that."
+      }
     ]
   },
-  { "slug": "past-perfect", "de": "Past Perfect", "en": "Past Perfect", "aliases": ["Past Perfect Übungen", "Past Perfect Englisch", "Vorvergangenheit Englisch"], "metaDescription": "Past Perfect im Englischen erklärt mit kostenlosen Übungen — die Vorvergangenheit (had + 3. Verbform).", "related": ["simple-past", "present-perfect", "if-saetze"], "reviewed": false },
-  { "slug": "present-perfect", "de": "Present Perfect", "en": "Present Perfect", "aliases": ["Present Perfect Übungen", "since for Englisch", "Present Perfect Englisch Klasse 7"], "metaDescription": "Present Perfect im Englischen erklärt mit kostenlosen Übungen — have/has + 3. Verbform, since und for.", "related": ["simple-past", "past-perfect", "present-tenses"], "reviewed": false },
-  { "slug": "simple-past", "de": "Simple Past", "en": "Simple Past", "aliases": ["Simple Past Übungen", "Simple Past Englisch", "unregelmäßige Verben Englisch"], "metaDescription": "Simple Past im Englischen erklärt mit kostenlosen Übungen — die einfache Vergangenheit und ihre Signalwörter.", "related": ["present-perfect", "past-perfect", "present-tenses"], "reviewed": false },
-  { "slug": "linking-words", "de": "Verknüpfungswörter", "en": "Linking words", "aliases": ["linking words Englisch", "Verknüpfungswörter Englisch", "however therefore although"], "metaDescription": "Verknüpfungswörter (linking words) im Englischen erklärt mit kostenlosen Übungen — however, therefore, although und mehr.", "related": ["relativsaetze", "passiv", "present-tenses"], "reviewed": false },
-  { "slug": "present-tenses", "de": "Present Tenses", "en": "Present tenses", "aliases": ["Simple Present Übungen", "Present Progressive Übungen", "present tenses Englisch"], "metaDescription": "Present Tenses im Englischen erklärt mit kostenlosen Übungen — Simple Present und Present Progressive.", "related": ["present-perfect", "simple-past", "future-tenses"], "reviewed": false },
-  { "slug": "modalverben", "de": "Modalverben", "en": "Modal verbs", "aliases": ["Modalverben Englisch Übungen", "modal verbs Übungen", "can must should Englisch"], "metaDescription": "Modalverben (modal verbs) im Englischen erklärt mit kostenlosen Übungen — can, must, should und ihre Ersatzformen.", "related": ["if-saetze", "passiv", "present-tenses"], "reviewed": false },
-  { "slug": "gerund-infinitiv", "de": "Gerundium & Infinitiv", "en": "Gerunds and infinitives", "aliases": ["gerund infinitive Übungen", "Gerundium Englisch", "-ing form to infinitive"], "metaDescription": "Gerundium und Infinitiv im Englischen erklärt mit kostenlosen Übungen — wann -ing und wann to + Infinitiv steht.", "related": ["present-tenses", "modalverben", "simple-past"], "reviewed": false }
+  {
+    "slug": "past-perfect",
+    "de": "Past Perfect",
+    "en": "Past Perfect",
+    "aliases": [
+      "Past Perfect Übungen",
+      "Past Perfect Englisch",
+      "Vorvergangenheit Englisch"
+    ],
+    "metaDescription": "Past Perfect im Englischen erklärt mit kostenlosen Übungen — die Vorvergangenheit (had + 3. Verbform).",
+    "related": [
+      "simple-past",
+      "present-perfect",
+      "if-saetze"
+    ],
+    "reviewed": false,
+    "intro": "Das <strong>Past Perfect</strong> ist die <strong>Vorvergangenheit</strong>: es zeigt, dass etwas <strong>vor</strong> einem anderen Ereignis in der Vergangenheit passiert ist. Das spätere Ereignis steht meist im Simple Past.",
+    "rules": [
+      "Bildung: <strong>had</strong> + <strong>past participle</strong> (3. Verbform) — für alle Personen gleich.",
+      "Das frühere Ereignis steht im Past Perfect, das spätere im Simple Past.",
+      "Signalwörter: <em>before, after, already, when, by the time</em>.",
+      "Verneinung: <strong>hadn't</strong> + 3. Verbform."
+    ],
+    "examples": [
+      "<em>When we arrived, the film <strong>had</strong> already <strong>started</strong>.</em>",
+      "<em>She <strong>had</strong> never <strong>seen</strong> the sea before that trip.</em>",
+      "<em>After he <strong>had finished</strong>, he went home.</em>"
+    ],
+    "practice": [
+      {
+        "q": "When we arrived, the train ___.",
+        "options": [
+          "already left",
+          "had already left",
+          "has already left"
+        ],
+        "answer": "had already left",
+        "why": "Früheres Ereignis in der Vergangenheit → Past Perfect: had + 3. Verbform."
+      },
+      {
+        "q": "She ___ him before the party.",
+        "options": [
+          "hadn't met",
+          "didn't meet",
+          "hasn't met"
+        ],
+        "answer": "hadn't met",
+        "why": "Vorvergangenheit, verneint: hadn't + 3. Verbform."
+      },
+      {
+        "q": "After they ___ dinner, they watched a film.",
+        "options": [
+          "had had",
+          "have had",
+          "having"
+        ],
+        "answer": "had had",
+        "why": "Das erste Ereignis steht im Past Perfect (had + had)."
+      },
+      {
+        "q": "By the time I called, she ___.",
+        "options": [
+          "already left",
+          "had already left",
+          "leaves"
+        ],
+        "answer": "had already left",
+        "why": "by the time + Past Perfect für das frühere Ereignis."
+      },
+      {
+        "q": "I couldn't pay because I ___ my wallet.",
+        "options": [
+          "forgot",
+          "had forgotten",
+          "forget"
+        ],
+        "answer": "had forgotten",
+        "why": "Der Grund lag zeitlich davor → Past Perfect."
+      }
+    ]
+  },
+  {
+    "slug": "present-perfect",
+    "de": "Present Perfect",
+    "en": "Present Perfect",
+    "aliases": [
+      "Present Perfect Übungen",
+      "since for Englisch",
+      "Present Perfect Englisch Klasse 7"
+    ],
+    "metaDescription": "Present Perfect im Englischen erklärt mit kostenlosen Übungen — have/has + 3. Verbform, since und for.",
+    "related": [
+      "simple-past",
+      "past-perfect",
+      "present-tenses"
+    ],
+    "reviewed": false,
+    "intro": "Das <strong>Present Perfect</strong> verbindet Vergangenheit und Gegenwart: eine Handlung ist <strong>gerade abgeschlossen</strong> oder <strong>dauert bis jetzt an</strong>. Wann genau etwas passiert ist, spielt keine Rolle — sonst benutzt man das Simple Past.",
+    "rules": [
+      "Bildung: <strong>have / has</strong> + <strong>past participle</strong> (3. Verbform).",
+      "<strong>since</strong> = ab einem Zeitpunkt („since 2019“); <strong>for</strong> = über einen Zeitraum („for three years“).",
+      "Typische Signalwörter: <em>already, just, yet, ever, never, so far</em>.",
+      "Kein genauer Vergangenheitszeitpunkt — sonst steht das Simple Past."
+    ],
+    "examples": [
+      "<em>I <strong>have finished</strong> my homework.</em>",
+      "<em>She <strong>has lived</strong> here <strong>for</strong> ten years.</em>",
+      "<em>They <strong>haven't arrived yet</strong>.</em>"
+    ],
+    "practice": [
+      {
+        "q": "I ___ my keys — I can't find them.",
+        "options": [
+          "lost",
+          "have lost",
+          "lose"
+        ],
+        "answer": "have lost",
+        "why": "Folge bis jetzt spürbar, kein Zeitpunkt → Present Perfect: have + 3. Verbform."
+      },
+      {
+        "q": "She has lived here ___ 2015.",
+        "options": [
+          "since",
+          "for",
+          "from"
+        ],
+        "answer": "since",
+        "why": "since + Zeitpunkt (2015)."
+      },
+      {
+        "q": "We have known each other ___ five years.",
+        "options": [
+          "since",
+          "for",
+          "during"
+        ],
+        "answer": "for",
+        "why": "for + Zeitraum (five years)."
+      },
+      {
+        "q": "Have you ever ___ to Japan?",
+        "options": [
+          "been",
+          "was",
+          "went"
+        ],
+        "answer": "been",
+        "why": "Present Perfect mit ever: have + been."
+      },
+      {
+        "q": "He hasn't called ___.",
+        "options": [
+          "yet",
+          "already",
+          "ago"
+        ],
+        "answer": "yet",
+        "why": "yet steht in verneinten Present-Perfect-Sätzen am Satzende."
+      }
+    ]
+  },
+  {
+    "slug": "simple-past",
+    "de": "Simple Past",
+    "en": "Simple Past",
+    "aliases": [
+      "Simple Past Übungen",
+      "Simple Past Englisch",
+      "unregelmäßige Verben Englisch"
+    ],
+    "metaDescription": "Simple Past im Englischen erklärt mit kostenlosen Übungen — die einfache Vergangenheit und ihre Signalwörter.",
+    "related": [
+      "present-perfect",
+      "past-perfect",
+      "present-tenses"
+    ],
+    "reviewed": false,
+    "intro": "Das <strong>Simple Past</strong> beschreibt <strong>abgeschlossene Handlungen in der Vergangenheit</strong> — man sagt oder weiß, wann etwas passiert ist. Regelmäßige Verben bekommen die Endung <em>-ed</em>; unregelmäßige Verben haben eigene Formen (go → went, see → saw).",
+    "rules": [
+      "Regelmäßige Verben: Infinitiv + <strong>-ed</strong> — „work → work<strong>ed</strong>“.",
+      "Unregelmäßige Verben haben eigene Formen — „go → <strong>went</strong>“, „buy → <strong>bought</strong>“ (2. Spalte der Verbtabelle).",
+      "Verneinung mit <strong>didn't</strong> + Infinitiv — „She <strong>didn't come</strong>.“",
+      "Fragen mit <strong>did</strong> + Subjekt + Infinitiv — „<strong>Did</strong> you see it?“",
+      "Signalwörter: <em>yesterday, last week, in 2010, … ago, when</em>."
+    ],
+    "examples": [
+      "<em>We <strong>visited</strong> Rome last summer.</em>",
+      "<em>He <strong>didn't know</strong> the answer.</em>",
+      "<em><strong>Did</strong> they <strong>win</strong> the game?</em>"
+    ],
+    "practice": [
+      {
+        "q": "We ___ to London last year.",
+        "options": [
+          "go",
+          "went",
+          "have gone"
+        ],
+        "answer": "went",
+        "why": "Abgeschlossene Vergangenheit mit Signalwort (last year) → Simple Past (go → went)."
+      },
+      {
+        "q": "She ___ her homework yesterday.",
+        "options": [
+          "did",
+          "does",
+          "has done"
+        ],
+        "answer": "did",
+        "why": "Signalwort yesterday → Simple Past (do → did)."
+      },
+      {
+        "q": "They ___ the film at all.",
+        "options": [
+          "didn't like",
+          "don't like",
+          "haven't liked"
+        ],
+        "answer": "didn't like",
+        "why": "Verneinung im Simple Past: didn't + Infinitiv."
+      },
+      {
+        "q": "___ you see her at the party?",
+        "options": [
+          "Did",
+          "Do",
+          "Have"
+        ],
+        "answer": "Did",
+        "why": "Frage im Simple Past: did + Subjekt + Infinitiv."
+      },
+      {
+        "q": "He ___ a new car two weeks ago.",
+        "options": [
+          "buys",
+          "bought",
+          "has bought"
+        ],
+        "answer": "bought",
+        "why": "Signalwort ago → Simple Past (buy → bought, unregelmäßig)."
+      }
+    ]
+  },
+  {
+    "slug": "linking-words",
+    "de": "Verknüpfungswörter",
+    "en": "Linking words",
+    "aliases": [
+      "linking words Englisch",
+      "Verknüpfungswörter Englisch",
+      "however therefore although"
+    ],
+    "metaDescription": "Verknüpfungswörter (linking words) im Englischen erklärt mit kostenlosen Übungen — however, therefore, although und mehr.",
+    "related": [
+      "relativsaetze",
+      "passiv",
+      "present-tenses"
+    ],
+    "reviewed": false,
+    "intro": "<strong>Verknüpfungswörter</strong> (<em>linking words</em>) verbinden Sätze und Ideen logisch — sie zeigen Gegensatz, Grund, Folge oder eine Ergänzung. Sie machen Texte flüssiger und sind besonders im Aufsatz wichtig.",
+    "rules": [
+      "Gegensatz: <em>however, although, in contrast, nevertheless, on the other hand</em>.",
+      "Grund: <em>because, since, as</em>.",
+      "Folge: <em>therefore, so, as a result, consequently</em>.",
+      "Ergänzung: <em>furthermore, moreover, in addition, also</em>.",
+      "<em>although</em> leitet einen ganzen Nebensatz ein; <em>however</em> steht meist am Satzanfang mit Komma."
+    ],
+    "examples": [
+      "<em>It was raining. <strong>However</strong>, we went out.</em>",
+      "<em><strong>Although</strong> she was tired, she kept working.</em>",
+      "<em>He trained hard. <strong>As a result</strong>, he won.</em>"
+    ],
+    "practice": [
+      {
+        "q": "It was expensive. ___, we bought it.",
+        "options": [
+          "However",
+          "Because",
+          "Therefore"
+        ],
+        "answer": "However",
+        "why": "Gegensatz zwischen zwei Sätzen → however."
+      },
+      {
+        "q": "___ it was late, they continued.",
+        "options": [
+          "Although",
+          "However",
+          "Therefore"
+        ],
+        "answer": "Although",
+        "why": "although + Nebensatz drückt einen Gegensatz aus."
+      },
+      {
+        "q": "She studied hard. ___, she passed.",
+        "options": [
+          "Therefore",
+          "However",
+          "Although"
+        ],
+        "answer": "Therefore",
+        "why": "Folge/Ergebnis → therefore."
+      },
+      {
+        "q": "He is clever. ___, he is very kind.",
+        "options": [
+          "Furthermore",
+          "However",
+          "Because"
+        ],
+        "answer": "Furthermore",
+        "why": "Ergänzung eines weiteren Punktes → furthermore."
+      },
+      {
+        "q": "We stayed inside ___ it was raining.",
+        "options": [
+          "because",
+          "however",
+          "therefore"
+        ],
+        "answer": "because",
+        "why": "Grund → because + Satz."
+      }
+    ]
+  },
+  {
+    "slug": "present-tenses",
+    "de": "Present Tenses",
+    "en": "Present tenses",
+    "aliases": [
+      "Simple Present Übungen",
+      "Present Progressive Übungen",
+      "present tenses Englisch"
+    ],
+    "metaDescription": "Present Tenses im Englischen erklärt mit kostenlosen Übungen — Simple Present und Present Progressive.",
+    "related": [
+      "present-perfect",
+      "simple-past",
+      "future-tenses"
+    ],
+    "reviewed": false,
+    "intro": "Im Englischen gibt es zwei wichtige Gegenwartszeiten: das <strong>Simple Present</strong> für Gewohnheiten und feste Fakten, und das <strong>Present Progressive</strong> (<em>-ing</em>) für etwas, das <strong>gerade jetzt</strong> passiert.",
+    "rules": [
+      "Simple Present: Infinitiv, in der 3. Person Singular mit <strong>-s</strong> — „she work<strong>s</strong>“.",
+      "Present Progressive: <strong>am / is / are</strong> + <strong>-ing</strong> — „they <strong>are working</strong>“.",
+      "Simple-Present-Signalwörter: <em>always, usually, every day, never</em>.",
+      "Present-Progressive-Signalwörter: <em>now, at the moment, Look!, Listen!</em>.",
+      "Verneinung Simple Present: <strong>don't / doesn't</strong> + Infinitiv."
+    ],
+    "examples": [
+      "<em>She <strong>plays</strong> tennis every Sunday.</em>",
+      "<em>Look! It <strong>is raining</strong>.</em>",
+      "<em>They <strong>don't live</strong> here.</em>"
+    ],
+    "practice": [
+      {
+        "q": "He ___ football every weekend.",
+        "options": [
+          "play",
+          "plays",
+          "is playing"
+        ],
+        "answer": "plays",
+        "why": "Gewohnheit, 3. Person Singular → plays (-s)."
+      },
+      {
+        "q": "Listen! The baby ___.",
+        "options": [
+          "cries",
+          "is crying",
+          "cry"
+        ],
+        "answer": "is crying",
+        "why": "Gerade jetzt (Listen!) → Present Progressive: is + crying."
+      },
+      {
+        "q": "We ___ TV at the moment.",
+        "options": [
+          "watch",
+          "are watching",
+          "watches"
+        ],
+        "answer": "are watching",
+        "why": "at the moment → Present Progressive."
+      },
+      {
+        "q": "She ___ coffee.",
+        "options": [
+          "doesn't like",
+          "don't like",
+          "isn't liking"
+        ],
+        "answer": "doesn't like",
+        "why": "Verneinung Simple Present, 3. Person → doesn't + Infinitiv."
+      },
+      {
+        "q": "They usually ___ by bus.",
+        "options": [
+          "travel",
+          "travels",
+          "are travelling"
+        ],
+        "answer": "travel",
+        "why": "usually → Gewohnheit → Simple Present."
+      }
+    ]
+  },
+  {
+    "slug": "modalverben",
+    "de": "Modalverben",
+    "en": "Modal verbs",
+    "aliases": [
+      "Modalverben Englisch Übungen",
+      "modal verbs Übungen",
+      "can must should Englisch"
+    ],
+    "metaDescription": "Modalverben (modal verbs) im Englischen erklärt mit kostenlosen Übungen — can, must, should und ihre Ersatzformen.",
+    "related": [
+      "if-saetze",
+      "passiv",
+      "present-tenses"
+    ],
+    "reviewed": false,
+    "intro": "<strong>Modalverben</strong> (<em>modal verbs</em>) wie <em>can, must, should</em> verändern die Bedeutung eines Verbs — sie drücken Fähigkeit, Erlaubnis, Pflicht oder Rat aus. Nach ihnen steht immer der <strong>Infinitiv ohne to</strong>.",
+    "rules": [
+      "Nach einem Modalverb steht der <strong>Infinitiv ohne to</strong> — „She can <strong>swim</strong>.“",
+      "Modalverben bekommen <strong>kein -s</strong> in der 3. Person — „He can“, nicht „He cans“.",
+      "<em>can</em> = Fähigkeit/Erlaubnis; <em>must</em> = Pflicht; <em>should</em> = Rat; <em>may / might</em> = Möglichkeit.",
+      "Ersatzformen: <em>be able to</em> (für can), <em>have to</em> (für must) — für Zeiten ohne eigene Modalform."
+    ],
+    "examples": [
+      "<em>You <strong>must</strong> wear a helmet.</em>",
+      "<em>She <strong>can</strong> speak three languages.</em>",
+      "<em>You <strong>should</strong> see a doctor.</em>"
+    ],
+    "practice": [
+      {
+        "q": "You ___ smoke here — it's forbidden.",
+        "options": [
+          "mustn't",
+          "don't must",
+          "needn't"
+        ],
+        "answer": "mustn't",
+        "why": "Verbot → mustn't (+ Infinitiv ohne to)."
+      },
+      {
+        "q": "She ___ swim when she was five.",
+        "options": [
+          "can",
+          "could",
+          "cans"
+        ],
+        "answer": "could",
+        "why": "Fähigkeit in der Vergangenheit → could."
+      },
+      {
+        "q": "You look ill. You ___ rest.",
+        "options": [
+          "should",
+          "must not",
+          "can't"
+        ],
+        "answer": "should",
+        "why": "Rat → should + Infinitiv."
+      },
+      {
+        "q": "He ___ speak French very well.",
+        "options": [
+          "can",
+          "cans",
+          "is can"
+        ],
+        "answer": "can",
+        "why": "Modalverb ohne -s in der 3. Person → can."
+      },
+      {
+        "q": "I ___ finish this today — it's necessary.",
+        "options": [
+          "have to",
+          "should",
+          "might"
+        ],
+        "answer": "have to",
+        "why": "Notwendigkeit/Pflicht → have to (Ersatzform von must)."
+      }
+    ]
+  },
+  {
+    "slug": "gerund-infinitiv",
+    "de": "Gerundium & Infinitiv",
+    "en": "Gerunds and infinitives",
+    "aliases": [
+      "gerund infinitive Übungen",
+      "Gerundium Englisch",
+      "-ing form to infinitive"
+    ],
+    "metaDescription": "Gerundium und Infinitiv im Englischen erklärt mit kostenlosen Übungen — wann -ing und wann to + Infinitiv steht.",
+    "related": [
+      "present-tenses",
+      "modalverben",
+      "simple-past"
+    ],
+    "reviewed": false,
+    "intro": "Nach manchen Verben steht die <strong>-ing-Form</strong> (Gerundium), nach anderen der <strong>Infinitiv mit to</strong>. Welche Form richtig ist, hängt vom vorangehenden Verb ab — das muss man lernen.",
+    "rules": [
+      "Gerundium (-ing) nach: <em>enjoy, avoid, finish, keep, mind, suggest</em> — „I enjoy <strong>reading</strong>.“",
+      "Infinitiv mit to nach: <em>want, decide, hope, promise, would like, need</em> — „I want <strong>to go</strong>.“",
+      "Nach Präpositionen steht immer das Gerundium — „good at <strong>cooking</strong>“, „interested in <strong>learning</strong>“.",
+      "Manche Verben (<em>like, start, begin</em>) erlauben beide Formen ohne Bedeutungsunterschied."
+    ],
+    "examples": [
+      "<em>She avoids <strong>eating</strong> sugar.</em>",
+      "<em>They decided <strong>to leave</strong> early.</em>",
+      "<em>I'm looking forward to <strong>seeing</strong> you.</em>"
+    ],
+    "practice": [
+      {
+        "q": "I enjoy ___ to music.",
+        "options": [
+          "listen",
+          "listening",
+          "to listen"
+        ],
+        "answer": "listening",
+        "why": "Nach enjoy steht das Gerundium (-ing)."
+      },
+      {
+        "q": "They decided ___ home.",
+        "options": [
+          "go",
+          "going",
+          "to go"
+        ],
+        "answer": "to go",
+        "why": "Nach decide steht der Infinitiv mit to."
+      },
+      {
+        "q": "She is good at ___.",
+        "options": [
+          "draw",
+          "drawing",
+          "to draw"
+        ],
+        "answer": "drawing",
+        "why": "Nach einer Präposition (at) steht das Gerundium."
+      },
+      {
+        "q": "We want ___ a film tonight.",
+        "options": [
+          "watch",
+          "watching",
+          "to watch"
+        ],
+        "answer": "to watch",
+        "why": "Nach want steht der Infinitiv mit to."
+      },
+      {
+        "q": "He finished ___ the report.",
+        "options": [
+          "write",
+          "writing",
+          "to write"
+        ],
+        "answer": "writing",
+        "why": "Nach finish steht das Gerundium (-ing)."
+      }
+    ]
+  }
 ]
