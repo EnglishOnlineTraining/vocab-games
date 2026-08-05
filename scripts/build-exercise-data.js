@@ -61,6 +61,7 @@ function schoolFromPrefix(f) {
   if (/^uni-/.test(f)) return ['uni', 'university'];
   if (/^it-/.test(f)) return ['it', 'vocational'];
   if (/^be-/.test(f)) return ['business', 'business'];
+  if (/^quiz-/.test(f)) return ['quiz', 'quiz'];
   return ['other', 'other'];
 }
 function grabTitles(s, cls, tag) {

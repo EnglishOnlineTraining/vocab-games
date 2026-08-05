@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Grammar Quiz — Hard | englishonline.training</title>
+  <meta name="description" content="English Grammar Quiz — Hard — a free, self-scoring English grammar quiz. No sign-up, instant score.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">&larr; Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none"><strong id="header-name"></strong> <span id="header-step"></span></div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+<nav class="step-nav" id="step-nav"></nav>
+
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">🟠</div>
+      <h1 class="welcome-title">English Grammar Quiz — Hard</h1>
+      <p class="welcome-sub">Nine questions on modifiers, clauses, ellipsis and split infinitives. Test yourself — no sign-up needed.</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.92rem;color:var(--muted);margin-bottom:1.1rem">9 questions · pick the best answer · get your score instantly. Nothing is submitted.</p>
+      <button class="btn btn-gold btn-block" onclick="startQuiz()">Start the quiz &rarr;</button>
+    </div>
+  </div>
+</section>
+
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Quiz</span>
+    <h2 class="ex-title">English Grammar Quiz — Hard</h2>
+    <p class="ex-subtitle">Choose the best answer for each question, then see your score.</p>
+
+    <div class="card">
+      <div class="card-title">Question 1</div>
+      <p style="margin-bottom:.7rem">Which sentence contains a misplaced (dangling) modifier?</p>
+      <select class="gap-select" id="q-g1" style="max-width:100%"><option value="">— choose —</option><option value="The car that he bought was a red sports car.">The car that he bought was a red sports car.</option><option value="The dog in the park chased the ball.">The dog in the park chased the ball.</option><option value="Running through the park, the sun was shining brightly.">Running through the park, the sun was shining brightly.</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 2</div>
+      <p style="margin-bottom:.7rem">Which sentence contains an infinitive phrase?</p>
+      <select class="gap-select" id="q-g2" style="max-width:100%"><option value="">— choose —</option><option value="The cat sat on the windowsill.">The cat sat on the windowsill.</option><option value="He is playing soccer with his friends.">He is playing soccer with his friends.</option><option value="I decided to go for a walk in the park.">I decided to go for a walk in the park.</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 3</div>
+      <p style="margin-bottom:.7rem">Which sentence is in the passive voice with a present participle?</p>
+      <select class="gap-select" id="q-g3" style="max-width:100%"><option value="">— choose —</option><option value="The cat is sleeping on the couch.">The cat is sleeping on the couch.</option><option value="The couch was slept on by the cat.">The couch was slept on by the cat.</option><option value="The couch is being slept on by the cat.">The couch is being slept on by the cat.</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 4</div>
+      <p style="margin-bottom:.7rem">Which sentence contains a restrictive clause?</p>
+      <select class="gap-select" id="q-g4" style="max-width:100%"><option value="">— choose —</option><option value="The car, which is red, is mine.">The car, which is red, is mine.</option><option value="My sister, who is a doctor, is visiting next week.">My sister, who is a doctor, is visiting next week.</option><option value="The book that I read last week was very interesting.">The book that I read last week was very interesting.</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 5</div>
+      <p style="margin-bottom:.7rem">Which sentence contains an ellipsis?</p>
+      <select class="gap-select" id="q-g5" style="max-width:100%"><option value="">— choose —</option><option value="He ordered a pizza, and she a salad.">He ordered a pizza, and she a salad.</option><option value="I'm not sure if I want to go, but you do.">I'm not sure if I want to go, but you do.</option><option value="She likes to run, swim, and hike.">She likes to run, swim, and hike.</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 6</div>
+      <p style="margin-bottom:.7rem">Which sentence contains a dangling participle?</p>
+      <select class="gap-select" id="q-g6" style="max-width:100%"><option value="">— choose —</option><option value="Walking to school, the rain soaked me.">Walking to school, the rain soaked me.</option><option value="Walking to school, I got soaked.">Walking to school, I got soaked.</option><option value="I walked to school in the rain.">I walked to school in the rain.</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 7</div>
+      <p style="margin-bottom:.7rem">Which word is a relative pronoun?</p>
+      <select class="gap-select" id="q-g7" style="max-width:100%"><option value="">— choose —</option><option value="That">That</option><option value="Happy">Happy</option><option value="Run">Run</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 8</div>
+      <p style="margin-bottom:.7rem">Which sentence contains a split infinitive?</p>
+      <select class="gap-select" id="q-g8" style="max-width:100%"><option value="">— choose —</option><option value="I want to quickly finish my homework.">I want to quickly finish my homework.</option><option value="I want to finish my homework quickly.">I want to finish my homework quickly.</option><option value="I quickly want to finish my homework.">I quickly want to finish my homework.</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 9</div>
+      <p style="margin-bottom:.7rem">Which sentence contains a modal verb?</p>
+      <select class="gap-select" id="q-g9" style="max-width:100%"><option value="">— choose —</option><option value="He can swim very well.">He can swim very well.</option><option value="He swims every day.">He swims every day.</option><option value="He swam yesterday.">He swam yesterday.</option></select>
+    </div>
+
+    <div id="q-fb" class="feedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline btn-sm" onclick="checkQuiz()">&#10003; Check answers</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="finishQuiz()">See my score &rarr;</button>
+    </div>
+  </div>
+</section>
+
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">🏁</div>
+      <h2 class="ex-title" style="text-align:center">Quiz complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Here is how you did.</p>
+    </div>
+    <div id="score-display" style="display:none"></div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center;display:none" id="submit-card">
+      <button class="btn btn-gold" id="submit-btn" onclick="submitToSheet()">Submit</button>
+    </div>
+  </div>
+</section>
+
+<script src="exercise.js"></script>
+<script>
+var UNIT          = "quiz-grammar-hard";
+var TOTAL_STEPS   = 2;
+var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec';
+var TEACHER_EMAIL = 'englishonlinetraining@pm.me';
+
+var state = { name: '', cls: '', quiz: {}, scores: {} };
+var maxStepReached = 0;
+
+var QUIZ_IDS = ['g1', 'g2', 'g3', 'g4', 'g5', 'g6', 'g7', 'g8', 'g9'];
+var QUIZ_ANSWERS = {
+    g1: "Running through the park, the sun was shining brightly.",
+    g2: "I decided to go for a walk in the park.",
+    g3: "The couch is being slept on by the cat.",
+    g4: "The book that I read last week was very interesting.",
+    g5: "He ordered a pizza, and she a salad.",
+    g6: "Walking to school, the rain soaked me.",
+    g7: "That",
+    g8: "I want to quickly finish my homework.",
+    g9: "He can swim very well."
+};
+
+function startQuiz() { startPractise(); }
+
+function validateStep(n) { return true; }
+function saveStep(n) { if (n === 1) { QUIZ_IDS.forEach(function(k){ state.quiz[k] = g('q-' + k); }); } }
+function restoreStep(n) { if (n === 1) { QUIZ_IDS.forEach(function(k){ set('q-' + k, state.quiz[k]); }); } }
+
+function checkQuiz() { checkDropdowns(QUIZ_IDS, 'q-', QUIZ_ANSWERS, 'q-fb', 'quiz'); }
+function finishQuiz() { checkQuiz(); saveStep(1); buildSummary(); showStep(2); }
+
+function buildSummary() { renderScore(); }
+function buildPayload() { var sc = totalScore(); return { unit: UNIT, quiz: state.quiz, score: sc.earned + ' / ' + sc.possible }; }
+function buildEmailBody() { var sc = totalScore(); return UNIT + ': ' + sc.earned + ' / ' + sc.possible; }
+
+document.addEventListener('DOMContentLoaded', function() { showStep(0); });
+</script>
+</body>
+</html>

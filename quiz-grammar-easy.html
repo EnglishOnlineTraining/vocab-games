@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Grammar Quiz — Easy | englishonline.training</title>
+  <meta name="description" content="English Grammar Quiz — Easy — a free, self-scoring English grammar quiz. No sign-up, instant score.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">&larr; Activities</a>
+    <div class="header-meta" id="header-meta" style="display:none"><strong id="header-name"></strong> <span id="header-step"></span></div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+<nav class="step-nav" id="step-nav"></nav>
+
+<section id="step-0" class="step active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">🟢</div>
+      <h1 class="welcome-title">English Grammar Quiz — Easy</h1>
+      <p class="welcome-sub">Ten quick questions on tenses, word classes and sentence basics. Check yourself — no sign-up needed.</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.92rem;color:var(--muted);margin-bottom:1.1rem">10 questions · pick the best answer · get your score instantly. Nothing is submitted.</p>
+      <button class="btn btn-gold btn-block" onclick="startQuiz()">Start the quiz &rarr;</button>
+    </div>
+  </div>
+</section>
+
+<section id="step-1" class="step">
+  <div class="step-inner">
+    <span class="ex-badge">Quiz</span>
+    <h2 class="ex-title">English Grammar Quiz — Easy</h2>
+    <p class="ex-subtitle">Choose the best answer for each question, then see your score.</p>
+
+    <div class="card">
+      <div class="card-title">Question 1</div>
+      <p style="margin-bottom:.7rem">Which sentence is grammatically correct?</p>
+      <select class="gap-select" id="q-g1" style="max-width:100%"><option value="">— choose —</option><option value="I goed to the store yesterday.">I goed to the store yesterday.</option><option value="I will went to the store tomorrow.">I will went to the store tomorrow.</option><option value="I went to the store yesterday.">I went to the store yesterday.</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 2</div>
+      <p style="margin-bottom:.7rem">Which word is an adverb?</p>
+      <select class="gap-select" id="q-g2" style="max-width:100%"><option value="">— choose —</option><option value="Table">Table</option><option value="Dog">Dog</option><option value="Quickly">Quickly</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 3</div>
+      <p style="margin-bottom:.7rem">Which sentence is in the past tense?</p>
+      <select class="gap-select" id="q-g3" style="max-width:100%"><option value="">— choose —</option><option value="I am eating dinner right now.">I am eating dinner right now.</option><option value="I will eat dinner in an hour.">I will eat dinner in an hour.</option><option value="I ate dinner an hour ago.">I ate dinner an hour ago.</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 4</div>
+      <p style="margin-bottom:.7rem">Which sentence is written in the passive voice?</p>
+      <select class="gap-select" id="q-g4" style="max-width:100%"><option value="">— choose —</option><option value="The dog chased the cat.">The dog chased the cat.</option><option value="The cat was chased by the dog.">The cat was chased by the dog.</option><option value="The cat chased the dog.">The cat chased the dog.</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 5</div>
+      <p style="margin-bottom:.7rem">Which sentence contains a comparative adjective?</p>
+      <select class="gap-select" id="q-g5" style="max-width:100%"><option value="">— choose —</option><option value="The pizza was the best.">The pizza was the best.</option><option value="The pizza was better than the pasta.">The pizza was better than the pasta.</option><option value="The pizza was good.">The pizza was good.</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 6</div>
+      <p style="margin-bottom:.7rem">Which sentence is a conditional sentence?</p>
+      <select class="gap-select" id="q-g6" style="max-width:100%"><option value="">— choose —</option><option value="I will go to the party tomorrow.">I will go to the party tomorrow.</option><option value="If I have time, I will go to the party.">If I have time, I will go to the party.</option><option value="I am happy when I see my friends.">I am happy when I see my friends.</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 7</div>
+      <p style="margin-bottom:.7rem">Which sentence is in the present perfect tense?</p>
+      <select class="gap-select" id="q-g7" style="max-width:100%"><option value="">— choose —</option><option value="I will go to Italy next year.">I will go to Italy next year.</option><option value="I have been to Italy three times.">I have been to Italy three times.</option><option value="I go to Italy every year.">I go to Italy every year.</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 8</div>
+      <p style="margin-bottom:.7rem">Which sentence is a question?</p>
+      <select class="gap-select" id="q-g8" style="max-width:100%"><option value="">— choose —</option><option value="This word is a problem.">This word is a problem.</option><option value="Are you going to the party tonight?">Are you going to the party tonight?</option><option value="The sky is blue.">The sky is blue.</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 9</div>
+      <p style="margin-bottom:.7rem">Which sentence contains a direct object?</p>
+      <select class="gap-select" id="q-g9" style="max-width:100%"><option value="">— choose —</option><option value="She kicked the ball.">She kicked the ball.</option><option value="She ran quickly.">She ran quickly.</option><option value="She sat down.">She sat down.</option></select>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 10</div>
+      <p style="margin-bottom:.7rem">Which word is a preposition?</p>
+      <select class="gap-select" id="q-g10" style="max-width:100%"><option value="">— choose —</option><option value="cat">cat</option><option value="happy">happy</option><option value="on">on</option></select>
+    </div>
+
+    <div id="q-fb" class="feedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline btn-sm" onclick="checkQuiz()">&#10003; Check answers</button>
+      <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="finishQuiz()">See my score &rarr;</button>
+    </div>
+  </div>
+</section>
+
+<section id="step-2" class="step">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">🏁</div>
+      <h2 class="ex-title" style="text-align:center">Quiz complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Here is how you did.</p>
+    </div>
+    <div id="score-display" style="display:none"></div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center;display:none" id="submit-card">
+      <button class="btn btn-gold" id="submit-btn" onclick="submitToSheet()">Submit</button>
+    </div>
+  </div>
+</section>
+
+<script src="exercise.js"></script>
+<script>
+var UNIT          = "quiz-grammar-easy";
+var TOTAL_STEPS   = 2;
+var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec';
+var TEACHER_EMAIL = 'englishonlinetraining@pm.me';
+
+var state = { name: '', cls: '', quiz: {}, scores: {} };
+var maxStepReached = 0;
+
+var QUIZ_IDS = ['g1', 'g2', 'g3', 'g4', 'g5', 'g6', 'g7', 'g8', 'g9', 'g10'];
+var QUIZ_ANSWERS = {
+    g1: "I went to the store yesterday.",
+    g2: "Quickly",
+    g3: "I ate dinner an hour ago.",
+    g4: "The cat was chased by the dog.",
+    g5: "The pizza was better than the pasta.",
+    g6: "If I have time, I will go to the party.",
+    g7: "I have been to Italy three times.",
+    g8: "Are you going to the party tonight?",
+    g9: "She kicked the ball.",
+    g10: "on"
+};
+
+function startQuiz() { startPractise(); }
+
+function validateStep(n) { return true; }
+function saveStep(n) { if (n === 1) { QUIZ_IDS.forEach(function(k){ state.quiz[k] = g('q-' + k); }); } }
+function restoreStep(n) { if (n === 1) { QUIZ_IDS.forEach(function(k){ set('q-' + k, state.quiz[k]); }); } }
+
+function checkQuiz() { checkDropdowns(QUIZ_IDS, 'q-', QUIZ_ANSWERS, 'q-fb', 'quiz'); }
+function finishQuiz() { checkQuiz(); saveStep(1); buildSummary(); showStep(2); }
+
+function buildSummary() { renderScore(); }
+function buildPayload() { var sc = totalScore(); return { unit: UNIT, quiz: state.quiz, score: sc.earned + ' / ' + sc.possible }; }
+function buildEmailBody() { var sc = totalScore(); return UNIT + ': ' + sc.earned + ' / ' + sc.possible; }
+
+document.addEventListener('DOMContentLoaded', function() { showStep(0); });
+</script>
+</body>
+</html>
