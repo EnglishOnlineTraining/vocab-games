@@ -1,0 +1,49 @@
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#1a3a5c;--gold:#c9a227;--gold-lt:#f5e6b0;--teal:#2b7a78;--red:#c0392b;--green:#27ae60;--bg:#f7f9fc;--card:#fff;--text:#1d2b3a;--muted:#6b7a8d;--border:#dce3ec;--radius:12px;--shadow:0 2px 16px rgba(26,58,92,.1);--font:'Segoe UI',system-ui,sans-serif}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;padding-bottom:3rem}
+.th-header{background:var(--blue);color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.th-inner{max-width:820px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.75rem 1.25rem}
+.th-logo{color:var(--gold);font-weight:700;font-size:.85rem;text-decoration:none}
+.th-back{color:#fff;opacity:.85;font-size:.8rem;text-decoration:none}
+.wrap{max-width:820px;margin:0 auto;padding:1.5rem 1rem 0}
+.crumbs{font-size:.8rem;color:var(--muted);margin-bottom:.9rem}
+.crumbs a{color:var(--teal);text-decoration:none}
+h1{color:var(--blue);font-size:1.6rem;line-height:1.25;margin-bottom:.5rem}
+.lede{color:var(--muted);font-size:1rem;margin-bottom:1.5rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.2rem 1.4rem;margin-bottom:1.25rem}
+.card h2{color:var(--blue);font-size:1.15rem;margin-bottom:.7rem}
+.card p{margin-bottom:.4rem}
+.rules-box{background:#eef4fb;border-left:4px solid var(--teal)}
+.rules,.examples{list-style:none}
+.rules li,.examples li{padding:.4rem 0 .4rem 1.4rem;position:relative;border-top:1px dashed var(--border)}
+.rules li:first-child,.examples li:first-child{border-top:none}
+.rules li::before{content:"▸";position:absolute;left:.1rem;color:var(--gold);font-weight:700}
+.examples li::before{content:"›";position:absolute;left:.2rem;color:var(--teal);font-weight:700}
+.todo-note{color:var(--muted);font-style:italic}
+.pw-widget .pw-intro{font-size:.9rem;color:var(--muted);margin-bottom:.9rem}
+.pw-item{padding:.6rem 0;border-top:1px solid var(--border)}
+.pw-item:first-of-type{border-top:none}
+.pw-q{font-size:.98rem;line-height:2.1}
+.pw-sel{font-family:inherit;font-size:.95rem;padding:.2rem .4rem;border:1.5px solid var(--border);border-radius:6px;background:#fff;margin:0 .2rem}
+.pw-sel.pw-right{border-color:var(--green);background:#eafaf0}
+.pw-sel.pw-wrong{border-color:var(--red);background:#fdeeec}
+.pw-fb{display:none;font-size:.85rem;color:var(--muted);margin-top:.25rem}
+.pw-fb.show{display:block}
+.btn{display:inline-block;background:var(--gold);color:var(--blue);font-weight:700;border:none;border-radius:8px;padding:.6rem 1.4rem;font-size:.95rem;font-family:inherit;cursor:pointer;margin-top:.9rem}
+.pw-score{margin-top:.7rem;font-weight:700;color:var(--blue)}
+.wy-year{color:var(--blue);font-size:.95rem;margin:.9rem 0 .3rem}
+.wy-list{list-style:none}
+.wy-list li{padding:.4rem 0;border-top:1px dashed var(--border)}
+.wy-list li:first-child{border-top:none}
+.wy-list a{color:var(--teal);font-weight:600;text-decoration:none}
+.wy-blurb{display:block;font-size:.78rem;color:var(--muted)}
+.rel-list{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem}
+.rel-list a{display:inline-block;background:var(--gold-lt);color:var(--blue);padding:.35rem .8rem;border-radius:20px;text-decoration:none;font-size:.85rem;font-weight:600}
+.th-footer{text-align:center;font-size:.75rem;color:var(--muted);padding:1.5rem 0 0}
+.th-footer a{color:var(--teal)}
+.ti-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.9rem}
+.ti-card{display:flex;flex-direction:column;gap:.15rem;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:1rem 1.15rem;text-decoration:none;transition:transform .12s,box-shadow .12s}
+.ti-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(26,58,92,.16)}
+.ti-de{color:var(--blue);font-weight:700;font-size:1rem}
+.ti-en{color:var(--muted);font-size:.8rem}
+.ti-count{color:var(--teal);font-size:.78rem;font-weight:600;margin-top:.3rem}
