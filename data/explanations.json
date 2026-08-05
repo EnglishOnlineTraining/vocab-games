@@ -7023,5 +7023,1048 @@
         }
       }
     }
+  },
+  "9g-india-phrasal-verbs": {
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Tourists ___ about India's history",
+          "correct": "find out",
+          "why": "‘Find out’ means to discover or learn something new, matching visiting temples to learn history."
+        },
+        "g2": {
+          "label": "2. Children ___ Diwali every year",
+          "correct": "look forward to",
+          "why": "‘Look forward to’ means to feel excited about something coming up."
+        },
+        "g3": {
+          "label": "3. People ___ the Holi celebrations",
+          "correct": "take part in",
+          "why": "‘Take part in’ means to participate in an activity or event."
+        },
+        "g4": {
+          "label": "4. Gandhi ___ in Gujarat",
+          "correct": "grew up",
+          "why": "‘Grow up’ means to spend your childhood in a particular place."
+        },
+        "g5": {
+          "label": "5. Gandhi never ___ his fight for independence",
+          "correct": "gave up",
+          "why": "‘Give up’ means to stop doing something or trying."
+        },
+        "g6": {
+          "label": "6. Diwali celebrations ___ for five days",
+          "correct": "go on",
+          "why": "‘Go on’ means to continue happening."
+        },
+        "g7": {
+          "label": "7. Villages have ___ modern cities",
+          "correct": "turned into",
+          "why": "‘Turn into’ means to change or transform into something different."
+        },
+        "g8": {
+          "label": "8. Children ___ English at school",
+          "correct": "pick up",
+          "why": "‘Pick up’ means to learn something informally, often through exposure rather than formal study."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "d1": {
+          "label": "1. \"to discover or learn something new\"",
+          "correct": "find out",
+          "why": "This definition matches the phrasal verb ‘find out’."
+        },
+        "d2": {
+          "label": "2. \"to feel excited about something that will happen\"",
+          "correct": "look forward to",
+          "why": "This definition matches the phrasal verb ‘look forward to’."
+        },
+        "d3": {
+          "label": "3. \"to participate in an activity or event\"",
+          "correct": "take part in",
+          "why": "This definition matches the phrasal verb ‘take part in’."
+        },
+        "d4": {
+          "label": "4. \"to spend your childhood in a particular place\"",
+          "correct": "grow up",
+          "why": "This definition matches the phrasal verb ‘grow up’."
+        },
+        "d5": {
+          "label": "5. \"to stop doing something or trying\"",
+          "correct": "give up",
+          "why": "This definition matches the phrasal verb ‘give up’."
+        },
+        "d6": {
+          "label": "6. \"to continue happening\"",
+          "correct": "go on",
+          "why": "This definition matches the phrasal verb ‘go on’."
+        },
+        "d7": {
+          "label": "7. \"to change or transform into something different\"",
+          "correct": "turn into",
+          "why": "This definition matches the phrasal verb ‘turn into’."
+        },
+        "d8": {
+          "label": "8. \"to learn something without formal lessons, often by experience\"",
+          "correct": "pick up",
+          "why": "This definition matches the phrasal verb ‘pick up’."
+        }
+      }
+    }
+  },
+  "business-brand-positioning": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. What does USP stand for?",
+          "correct": "Unique Selling Proposition",
+          "why": "The text says USP stands for Unique Selling Proposition."
+        },
+        "g2": {
+          "label": "2. What is a value proposition?",
+          "correct": "The benefit customers receive",
+          "why": "The text defines the value proposition as the benefit customers receive."
+        },
+        "g3": {
+          "label": "3. Premium brands typically emphasize:",
+          "correct": "High quality",
+          "why": "The text says premium brands position themselves as high quality but expensive."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Includes logo, colors, and values",
+          "correct": "brand identity",
+          "why": "‘Brand identity’ is the standard term for a company's logo, colours, and values."
+        },
+        "g2": {
+          "label": "2. Companies ___ their message",
+          "correct": "target",
+          "why": "‘Target’ (verb) means to direct a message at specific customer groups."
+        },
+        "g3": {
+          "label": "3. Market ___ = dividing customers into groups",
+          "correct": "segmentation",
+          "why": "‘Segmentation’ is the process of dividing customers into groups."
+        },
+        "g4": {
+          "label": "4. What makes one brand different",
+          "correct": "Differentiation",
+          "why": "‘Differentiation’ is what makes one brand different from others."
+        }
+      }
+    }
+  },
+  "be-business-meetings": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Opening the meeting",
+          "correct": "Shall we get started?",
+          "why": "This is the standard phrase for opening a meeting."
+        },
+        "g2": {
+          "label": "2. Asking for opinions",
+          "correct": "What are your thoughts on this?",
+          "why": "This is the standard phrase for asking for opinions."
+        },
+        "g3": {
+          "label": "3. Politely disagreeing",
+          "correct": "I see your point, but I think we should consider other options.",
+          "why": "This softens disagreement by first acknowledging the other view."
+        },
+        "g4": {
+          "label": "4. Interrupting politely",
+          "correct": "Sorry to interrupt, but could I just add something here?",
+          "why": "This is the standard polite phrase for interrupting."
+        },
+        "g5": {
+          "label": "5. Moving to the next agenda item",
+          "correct": "Let's move on to the next item on the agenda.",
+          "why": "This is the standard phrase for moving to the next agenda item."
+        },
+        "g6": {
+          "label": "6. Agreeing with a suggestion",
+          "correct": "I completely agree. That sounds like the best approach.",
+          "why": "This is the standard phrase for agreeing with a suggestion."
+        },
+        "g7": {
+          "label": "7. Closing a meeting",
+          "correct": "let's call it a day. Thank you all for coming.",
+          "why": "This is the standard phrase for closing a meeting."
+        },
+        "g8": {
+          "label": "8. Asking for clarification",
+          "correct": "Could you explain what you mean by 'restructuring'?",
+          "why": "This is the standard phrase for asking for clarification."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Who chaired the meeting?",
+          "correct": "Sarah Chen",
+          "why": "The minutes list Sarah Chen as Chair."
+        },
+        "g2": {
+          "label": "2. Why was Julia Kim absent?",
+          "correct": "She was on a business trip.",
+          "why": "The minutes say Julia Kim's apologies were due to a business trip."
+        },
+        "g3": {
+          "label": "3. Lena's concern about the website?",
+          "correct": "The colour scheme needed changes.",
+          "why": "The minutes say Lena raised a concern about the colour scheme after the client requested changes."
+        },
+        "g4": {
+          "label": "4. Mark's suggestion for the budget?",
+          "correct": "Upgrading the project management software",
+          "why": "The minutes say Mark suggested using the remaining funds to upgrade the project management software."
+        },
+        "g5": {
+          "label": "5. How many will attend the workshop?",
+          "correct": "Two",
+          "why": "The minutes say the training budget could cover two participants."
+        },
+        "g6": {
+          "label": "6. What is Mark's action item?",
+          "correct": "Research software options and present them next week",
+          "why": "The minutes list Mark's action as researching options and presenting them at next week's meeting."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. Opening the meeting topic",
+          "correct": "The purpose of today's meeting is to discuss",
+          "why": "This is the standard phrase for stating the meeting's purpose."
+        },
+        "g2": {
+          "label": "2. Inviting other views",
+          "correct": "Does anyone else have any views on that?",
+          "why": "This is the standard phrase for inviting others to contribute."
+        },
+        "g3": {
+          "label": "3. Mediating a disagreement",
+          "correct": "Those are both valid points. Perhaps we can look at the data before deciding.",
+          "why": "This acknowledges both speakers fairly rather than taking a side."
+        },
+        "g4": {
+          "label": "4. Moving to the next point",
+          "correct": "shall we move on to the next point — the budget?",
+          "why": "This is the standard phrase for moving to the next agenda point."
+        },
+        "g5": {
+          "label": "5. Giving someone the floor",
+          "correct": "Go ahead, Katja.",
+          "why": "This is the standard phrase for inviting someone to speak."
+        },
+        "g6": {
+          "label": "6. Summarising decisions",
+          "correct": "let me summarise what we've agreed.",
+          "why": "This is the standard phrase for summarising a meeting's outcomes."
+        }
+      }
+    }
+  },
+  "business-company-culture": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. What is company culture?",
+          "correct": "Values, behaviors, and work environment",
+          "why": "The text says company culture includes values, behaviors, and work environment."
+        },
+        "g2": {
+          "label": "2. What does employer brand attract?",
+          "correct": "Better talent",
+          "why": "The text says companies with positive culture attract better talent."
+        },
+        "g3": {
+          "label": "3. Strong company culture improves:",
+          "correct": "Employee retention",
+          "why": "The text says strong culture improves retention."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Explains what it believes in",
+          "correct": "values",
+          "why": "A company's ‘values’ describe what it believes in, as opposed to its mission (purpose) or vision (future goals)."
+        },
+        "g2": {
+          "label": "2. Describes what the company wants to become",
+          "correct": "vision",
+          "why": "The text says vision describes future goals."
+        },
+        "g3": {
+          "label": "3. Measures employee care about work",
+          "correct": "Engagement",
+          "why": "The text says engagement measures if employees enjoy work."
+        },
+        "g4": {
+          "label": "4. Helps attract talented candidates",
+          "correct": "brand",
+          "why": "The text says employer brand is how companies attract talent."
+        }
+      }
+    }
+  },
+  "business-company-structure": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Who is at the top?",
+          "correct": "The CEO",
+          "why": "The text says the CEO is at the top of the organisation."
+        },
+        "g2": {
+          "label": "2. How many main departments?",
+          "correct": "Four",
+          "why": "The text says TechCorp has four main departments."
+        },
+        "g3": {
+          "label": "3. What does Operations do?",
+          "correct": "Handles production and logistics",
+          "why": "The text says the Operations department handles production and logistics."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Shows who reports to whom",
+          "correct": "hierarchy",
+          "why": "The ‘hierarchy’ shows the reporting structure within an organisation."
+        },
+        "g2": {
+          "label": "2. Finance ___ manages money",
+          "correct": "department",
+          "why": "The text says the Finance department manages money and budgets."
+        },
+        "g3": {
+          "label": "3. A manager's main ___",
+          "correct": "responsibility",
+          "why": "A manager's main responsibility is to supervise their team."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. A director is someone ___ oversees...",
+          "correct": "who",
+          "why": "‘Who’ introduces a relative clause about a person (a director)."
+        },
+        "g2": {
+          "label": "2. HR is the department ___ handles...",
+          "correct": "that",
+          "why": "‘That’ introduces a defining relative clause about a thing (a department)."
+        }
+      }
+    }
+  },
+  "business-cross-cultural-communication": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Indirect communication shows:",
+          "correct": "Respect",
+          "why": "The text says indirect communication shows respect in some cultures."
+        },
+        "g2": {
+          "label": "2. Meeting differences can involve:",
+          "correct": "Decision-making styles",
+          "why": "The text says meeting styles vary between cultures, which includes how decisions are made."
+        },
+        "g3": {
+          "label": "3. Essential for success in international teams?",
+          "correct": "Understanding cultural differences",
+          "why": "The text says understanding these differences prevents misunderstandings in international teams."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. \"___ we schedule a time after lunch?\"",
+          "correct": "Should",
+          "why": "‘Should we...?’ is the natural way to make a joint suggestion; ‘Would we...?’ is not idiomatic here."
+        },
+        "g2": {
+          "label": "2. \"___ you prefer a different meeting style?\"",
+          "correct": "Would",
+          "why": "‘Would you prefer...?’ is the standard polite way to ask about someone's preference."
+        },
+        "g3": {
+          "label": "3. \"___ you mind explaining this tradition?\"",
+          "correct": "Would",
+          "why": "‘Would you mind + -ing’ is the standard polite request form."
+        },
+        "g4": {
+          "label": "4. \"___ I assist with anything?\"",
+          "correct": "Shall",
+          "why": "‘Shall I...?’ is the standard polite way to offer help."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. Understanding and respecting cultures",
+          "correct": "Cultural awareness",
+          "why": "‘Cultural awareness’ means understanding and respecting different cultures."
+        },
+        "g2": {
+          "label": "2. An oversimplified belief about a group",
+          "correct": "stereotype",
+          "why": "A ‘stereotype’ is an oversimplified belief about a group."
+        },
+        "g3": {
+          "label": "3. Rules about dress and greetings",
+          "correct": "etiquette",
+          "why": "‘Etiquette’ covers the rules of polite behaviour, like dress and greetings."
+        },
+        "g4": {
+          "label": "4. Understanding a colleague's ___",
+          "correct": "perspective",
+          "why": "‘Perspective’ means someone's point of view, which helps communication."
+        }
+      }
+    }
+  },
+  "business-gdpr-compliance": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Companies must obtain:",
+          "correct": "Explicit consent",
+          "why": "The text says companies must obtain explicit consent before collecting data."
+        },
+        "g2": {
+          "label": "2. Time to report a data breach?",
+          "correct": "72 hours",
+          "why": "The text says organisations have to report breaches within 72 hours."
+        },
+        "g3": {
+          "label": "3. What is NOT allowed under GDPR?",
+          "correct": "Selling data without permission",
+          "why": "The text says companies must not sell data without permission."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Companies ___ collect data without consent",
+          "correct": "must not",
+          "why": "‘Must not’ expresses a prohibition — collecting data without consent is forbidden."
+        },
+        "g2": {
+          "label": "2. Organizations ___ implement security measures",
+          "correct": "must",
+          "why": "‘Must’ expresses a strong obligation to implement security measures."
+        },
+        "g3": {
+          "label": "3. Breach notifications ___ be sent within 72 hours",
+          "correct": "must",
+          "why": "‘Must’ expresses the legal obligation to report within 72 hours."
+        },
+        "g4": {
+          "label": "4. Employees ___ receive training regularly",
+          "correct": "should",
+          "why": "‘Should’ expresses a recommended good practice rather than a strict legal rule."
+        }
+      }
+    }
+  },
+  "be-job-interviews": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Why research the company?",
+          "correct": "b",
+          "why": "The text says researching the company shows you are genuinely interested in working there."
+        },
+        "g2": {
+          "label": "2. Talking about a weakness?",
+          "correct": "a",
+          "why": "The text says to always explain what you are doing to improve a weakness."
+        },
+        "g3": {
+          "label": "3. Body language to avoid?",
+          "correct": "c",
+          "why": "The text says to avoid crossing your arms, as it can look closed off."
+        },
+        "g4": {
+          "label": "4. How to dress?",
+          "correct": "b",
+          "why": "The text says it's better to be slightly overdressed than underdressed."
+        },
+        "g5": {
+          "label": "5. Why prepare questions?",
+          "correct": "b",
+          "why": "The text says asking thoughtful questions shows you are engaged and serious about the role."
+        },
+        "g6": {
+          "label": "6. Good closing question?",
+          "correct": "b",
+          "why": "The text gives this as an example of a good question to ask the interviewer."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. One of my main ___",
+          "correct": "a",
+          "why": "‘Strengths’ is the standard word for positive qualities in an interview context."
+        },
+        "g2": {
+          "label": "2. Your previous work ___?",
+          "correct": "c",
+          "why": "‘Work experience’ is the standard collocation for past jobs."
+        },
+        "g3": {
+          "label": "3. I would like to ___",
+          "correct": "a",
+          "why": "‘Apply for’ is the standard verb for a job position."
+        },
+        "g4": {
+          "label": "4. Opportunities for career ___",
+          "correct": "c",
+          "why": "‘Career development’ is the standard collocation, not ‘career change/movement’ here."
+        },
+        "g5": {
+          "label": "5. We are looking for a ___",
+          "correct": "a",
+          "why": "‘Candidate’ is the standard word for a job applicant."
+        },
+        "g6": {
+          "label": "6. Send a follow-up email to ___",
+          "correct": "c",
+          "why": "Thanking the interviewer is standard professional follow-up etiquette."
+        },
+        "g7": {
+          "label": "7. A good first ___",
+          "correct": "a",
+          "why": "‘First impression’ is the standard fixed phrase."
+        },
+        "g8": {
+          "label": "8. CV and a cover ___",
+          "correct": "b",
+          "why": "‘Cover letter’ is the standard term for the document sent with a CV."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. \"Tell me about yourself.\"",
+          "correct": "a",
+          "why": "A professional summary of qualifications and experience is the appropriate response."
+        },
+        "g2": {
+          "label": "2. \"What is your greatest weakness?\"",
+          "correct": "c",
+          "why": "An honest weakness paired with how you're improving it is the professional approach."
+        },
+        "g3": {
+          "label": "3. \"Why do you want to work for our company?\"",
+          "correct": "b",
+          "why": "A specific, researched reason tied to your skills is the appropriate response."
+        },
+        "g4": {
+          "label": "4. \"Where do you see yourself in five years?\"",
+          "correct": "b",
+          "why": "A realistic answer about growth within the company is the appropriate response."
+        },
+        "g5": {
+          "label": "5. \"Do you have any questions for us?\"",
+          "correct": "c",
+          "why": "A thoughtful question about the role or team is the appropriate response."
+        },
+        "g6": {
+          "label": "6. \"Why did you leave your last job?\"",
+          "correct": "a",
+          "why": "A positive, professional reason is the appropriate response."
+        }
+      }
+    }
+  },
+  "business-management-approaches": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Theory X assumption about employees?",
+          "correct": "Employees dislike work and need strict supervision",
+          "why": "The text says Theory X assumes employees dislike work and need strict supervision."
+        },
+        "g2": {
+          "label": "2. Main benefit of Theory Y?",
+          "correct": "It increases engagement and innovation",
+          "why": "The text says Theory Y often increases engagement and innovation."
+        },
+        "g3": {
+          "label": "3. What does MBWA stand for?",
+          "correct": "Management by Walking Around",
+          "why": "The text names MBWA as Management by Walking Around."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Might reduce creativity due to tight control?",
+          "correct": "Theory X",
+          "why": "The text says Theory X's close monitoring can reduce creativity and satisfaction."
+        },
+        "g2": {
+          "label": "2. Requires managers to observe in the workplace?",
+          "correct": "MBWA",
+          "why": "The text says MBWA means managers spend time observing employees in their work areas."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. Theory X effect on motivation?",
+          "correct": "would probably decrease",
+          "why": "Theory X reduces satisfaction and creativity, so motivation would probably decrease under this hypothetical."
+        },
+        "g2": {
+          "label": "2. MBWA effect on feeling valued?",
+          "correct": "might",
+          "why": "‘Might’ expresses a reasonable possibility, since MBWA builds relationships with employees."
+        },
+        "g3": {
+          "label": "3. If an organization ___ Theory Y practices...",
+          "correct": "adopted",
+          "why": "A Type II conditional uses the past simple after ‘if’, matching ‘would likely increase’."
+        }
+      }
+    }
+  },
+  "business-market-entry-pestel": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Economic factors include?",
+          "correct": "Interest rates and GDP growth",
+          "why": "The text says Economic factors are interest rates, exchange rates, and GDP growth."
+        },
+        "g2": {
+          "label": "2. Covers sustainability concerns?",
+          "correct": "Environmental",
+          "why": "The text says Environmental factors are sustainability concerns."
+        },
+        "g3": {
+          "label": "3. What does 'T' represent?",
+          "correct": "Technological",
+          "why": "The text says Technological factors include innovation and digital trends."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Rising eco-friendly product preference",
+          "correct": "Social",
+          "why": "A shift in consumer attitudes and preferences is classified as a Social factor in PESTEL, even when the preference is for eco-friendly products."
+        },
+        "g2": {
+          "label": "2. New trade tariffs",
+          "correct": "Political",
+          "why": "The text says Political factors include government regulations and trade policies."
+        },
+        "g3": {
+          "label": "3. Investment in AI and automation",
+          "correct": "Technological",
+          "why": "The text says Technological factors include innovation and digital trends."
+        },
+        "g4": {
+          "label": "4. Minimum wage legislation",
+          "correct": "Legal",
+          "why": "The text says Legal factors cover labor laws and compliance requirements."
+        }
+      }
+    }
+  },
+  "business-recruitment-hiring": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Main responsibility of the position?",
+          "correct": "Lead the marketing team and develop strategies",
+          "why": "The job ad says the role is to lead the marketing team and develop marketing strategies."
+        },
+        "g2": {
+          "label": "2. Experience required?",
+          "correct": "3+ years of marketing experience",
+          "why": "The job ad says the ideal candidate has 3+ years of marketing experience."
+        },
+        "g3": {
+          "label": "3. A requirement for this job?",
+          "correct": "Proficiency in digital marketing tools",
+          "why": "The job ad lists proficiency in digital marketing tools as a requirement."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. A person who applies for a job",
+          "correct": "candidate",
+          "why": "A ‘candidate’ is a person who applies for a job."
+        },
+        "g2": {
+          "label": "2. Lists all duties and responsibilities",
+          "correct": "job description",
+          "why": "The ‘job description’ lists all duties and responsibilities of a role."
+        },
+        "g3": {
+          "label": "3. Companies ___ new employees",
+          "correct": "hire",
+          "why": "Companies ‘hire’ new employees to fill open positions."
+        },
+        "g4": {
+          "label": "4. An important ___ for managers",
+          "correct": "competency",
+          "why": "‘Competency’ is the standard HR term for a required skill or quality."
+        }
+      }
+    }
+  },
+  "business-what-is-management": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Four main functions of management?",
+          "correct": "Planning, organizing, directing, and controlling",
+          "why": "The text names planning, organizing, directing, and controlling as the four functions."
+        },
+        "g2": {
+          "label": "2. Purpose of 'directing'?",
+          "correct": "To motivate and guide employees to perform effectively",
+          "why": "The text says directing is about motivating and guiding employees to perform effectively."
+        },
+        "g3": {
+          "label": "3. Why is controlling important?",
+          "correct": "Because it allows managers to monitor performance and make adjustments",
+          "why": "The text says controlling means monitoring performance and making adjustments."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Setting clear ___ is the first step",
+          "correct": "objectives",
+          "why": "The text says planning involves setting objectives."
+        },
+        "g2": {
+          "label": "2. Good ___ ensures people and budgets work together",
+          "correct": "coordination",
+          "why": "The text says management is the process of coordinating people and resources."
+        },
+        "g3": {
+          "label": "3. Managers must allocate ___ wisely",
+          "correct": "resources",
+          "why": "The text says managers should use resources wisely."
+        },
+        "g4": {
+          "label": "4. Employee ___ is crucial",
+          "correct": "motivation",
+          "why": "The text says directing is about motivating employees, which is crucial for productivity."
+        }
+      }
+    }
+  },
+  "be-negotiations": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. What does GreenTech manufacture?",
+          "correct": "Solar panels",
+          "why": "The text says GreenTech Solutions manufactures solar panels."
+        },
+        "g2": {
+          "label": "2. Claudia's target price per unit?",
+          "correct": "€85",
+          "why": "The text says Claudia set a target price of €85 per unit."
+        },
+        "g3": {
+          "label": "3. James Wright's counter-offer?",
+          "correct": "A price closer to €72 per unit",
+          "why": "The text says James asked for a price closer to €72 per unit."
+        },
+        "g4": {
+          "label": "4. What concession did Claudia make?",
+          "correct": "She lowered the price to €80 for a two-year contract",
+          "why": "The text says Claudia offered €80 per unit for a two-year contract."
+        },
+        "g5": {
+          "label": "5. Why was the negotiation successful?",
+          "correct": "Both parties were willing to compromise",
+          "why": "The text says the negotiation succeeded because both parties were willing to compromise."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. The lowest price we can accept",
+          "correct": "bottom line",
+          "why": "‘Bottom line’ is the negotiation term for the lowest acceptable price."
+        },
+        "g2": {
+          "label": "2. Strong position because of no alternatives",
+          "correct": "leverage",
+          "why": "‘Leverage’ means having an advantage in a negotiation."
+        },
+        "g3": {
+          "label": "3. Neither side moved from their position",
+          "correct": "stalemate",
+          "why": "A ‘stalemate’ is when discussions reach a point where neither side moves."
+        },
+        "g4": {
+          "label": "4. Lower margin for a longer contract",
+          "correct": "trade-off",
+          "why": "A ‘trade-off’ is exchanging one benefit for another."
+        },
+        "g5": {
+          "label": "5. The team reached agreement",
+          "correct": "consensus",
+          "why": "‘Consensus’ means general agreement among the team."
+        },
+        "g6": {
+          "label": "6. Need to close the deal before the ___",
+          "correct": "deadline",
+          "why": "A ‘deadline’ is the time limit by which something must be finished."
+        },
+        "g7": {
+          "label": "7. Their opening ___ was generous",
+          "correct": "proposal",
+          "why": "A ‘proposal’ is an initial offer made in a negotiation."
+        },
+        "g8": {
+          "label": "8. Couldn't agree to all of their ___",
+          "correct": "terms",
+          "why": "‘Terms’ are the conditions of a deal or contract."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. \"Shall we get started?\"",
+          "correct": "Opening",
+          "why": "This phrase begins the meeting, so it belongs to the Opening stage."
+        },
+        "g2": {
+          "label": "2. \"We'd like to suggest a price of €50...\"",
+          "correct": "Making a proposal",
+          "why": "Suggesting a specific price is an example of making a proposal."
+        },
+        "g3": {
+          "label": "3. \"We're prepared to reduce the price by 5%...\"",
+          "correct": "Making a concession",
+          "why": "Offering to reduce the price is an example of making a concession."
+        },
+        "g4": {
+          "label": "4. \"A solution that works for both sides.\"",
+          "correct": "Reaching agreement",
+          "why": "Finding a solution both sides accept is reaching agreement."
+        },
+        "g5": {
+          "label": "5. \"Let's put this in writing...\"",
+          "correct": "Closing",
+          "why": "Formalising the deal in writing is part of closing the negotiation."
+        },
+        "g6": {
+          "label": "6. \"We can offer extended warranty coverage if...\"",
+          "correct": "Making a proposal",
+          "why": "Offering a conditional benefit is an example of making a proposal."
+        },
+        "g7": {
+          "label": "7. \"Let me outline our key priorities.\"",
+          "correct": "Opening",
+          "why": "Outlining priorities at the start is part of the Opening stage."
+        },
+        "g8": {
+          "label": "8. \"So we're agreed — €48 per unit...\"",
+          "correct": "Reaching agreement",
+          "why": "Confirming the final agreed terms is reaching agreement."
+        }
+      }
+    }
+  },
+  "be-presentations": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. \"I'd like to start by giving you an overview...\"",
+          "correct": "Introduction",
+          "why": "Giving an overview at the start belongs to the Introduction stage."
+        },
+        "g2": {
+          "label": "2. \"That brings me to my next point...\"",
+          "correct": "Transition",
+          "why": "This phrase moves the talk to a new point, making it a Transition."
+        },
+        "g3": {
+          "label": "3. \"To sum up, we've seen a 15% increase...\"",
+          "correct": "Conclusion",
+          "why": "Summarising the results belongs to the Conclusion stage."
+        },
+        "g4": {
+          "label": "4. \"Does anyone have any questions at this point?\"",
+          "correct": "Q&A",
+          "why": "Directly inviting questions now is the Q&A stage."
+        },
+        "g5": {
+          "label": "5. \"Good morning, everyone. Thank you for taking the time...\"",
+          "correct": "Introduction",
+          "why": "Greeting the audience belongs to the Introduction stage."
+        },
+        "g6": {
+          "label": "6. \"Now let's turn to the budget forecast...\"",
+          "correct": "Transition",
+          "why": "This phrase moves the talk to a new topic, making it a Transition."
+        },
+        "g7": {
+          "label": "7. \"In conclusion, I'd like to leave you with...\"",
+          "correct": "Conclusion",
+          "why": "Explicitly signalling the conclusion belongs to the Conclusion stage."
+        },
+        "g8": {
+          "label": "8. \"I'll be happy to answer any questions at the end.\"",
+          "correct": "Introduction",
+          "why": "Explaining the format for later questions is a housekeeping note typically given during the Introduction, not while actually answering questions."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. \"Good afternoon... ___\"",
+          "correct": "My name is Katrin Huber",
+          "why": "Introducing yourself by name is the standard opening after greeting the audience."
+        },
+        "g2": {
+          "label": "2. \"___ update you on our new product line\"",
+          "correct": "The purpose of my presentation today is to",
+          "why": "This phrase states the purpose of the talk before the outline."
+        },
+        "g3": {
+          "label": "3. \"I've divided my talk into three parts. ___\"",
+          "correct": "First, I'll look at the market research. Then I'll present the product features. And finally, I'll outline the launch timeline.",
+          "why": "This lists the three parts just announced, in order."
+        },
+        "g4": {
+          "label": "4. \"___ the market research.\"",
+          "correct": "So, let's start with",
+          "why": "This phrase signals moving into the first part of the talk."
+        },
+        "g5": {
+          "label": "5. \"___, I'd like to show you the key product features.\"",
+          "correct": "Moving on to the second part",
+          "why": "This phrase signals moving into the second part of the talk."
+        },
+        "g6": {
+          "label": "6. \"___ — the launch timeline.\"",
+          "correct": "That brings me to my final point",
+          "why": "This phrase signals moving into the third and final part."
+        },
+        "g7": {
+          "label": "7. Closing summary",
+          "correct": "To summarise, we have a strong product backed by solid research, and we're on track for a September launch.",
+          "why": "This wraps up the presentation's key points before the closing thanks."
+        },
+        "g8": {
+          "label": "8. Final closing line",
+          "correct": "Thank you for your attention. I'd be happy to take any questions.",
+          "why": "This is the standard closing phrase, thanking the audience and opening the floor for questions."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. Don't know the answer",
+          "correct": "That's a great question. I don't have the exact figures to hand, but I'll find out and get back to you after the presentation.",
+          "why": "This is the professional way to handle a question you can't answer immediately."
+        },
+        "g2": {
+          "label": "2. Already covered in the talk",
+          "correct": "Good question. As I mentioned earlier, the launch is planned for September, pending final testing.",
+          "why": "This politely restates the answer rather than criticising the audience member."
+        },
+        "g3": {
+          "label": "3. Long, complicated question",
+          "correct": "If I understand correctly, you'd like to know whether our timeline accounts for regulatory approval. Is that right?",
+          "why": "Paraphrasing a complicated question confirms understanding before answering."
+        },
+        "g4": {
+          "label": "4. Outside the scope",
+          "correct": "That's an interesting point. It falls a bit outside today's scope, but I'd be happy to discuss it with you individually afterwards.",
+          "why": "This politely acknowledges the question while redirecting it appropriately."
+        },
+        "g5": {
+          "label": "5. Inviting questions at the end",
+          "correct": "That concludes my presentation. If you have any questions or comments, I'd be very happy to hear them.",
+          "why": "This is the standard polite way to open the floor for questions."
+        },
+        "g6": {
+          "label": "6. A statistic is challenged",
+          "correct": "I appreciate you raising that. The data comes from our Q1 customer survey — I can share the full report with you if you'd like to take a closer look.",
+          "why": "This responds professionally by citing the source rather than being defensive."
+        }
+      }
+    }
   }
 }
