@@ -4787,5 +4787,1753 @@
         }
       }
     }
+  },
+  "msa-c-american-dream": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Who first used the phrase?",
+          "correct": "James Truslow Adams",
+          "why": "The recording says the phrase was first used by writer James Truslow Adams."
+        },
+        "g2": {
+          "label": "2. When was it first used?",
+          "correct": "1931",
+          "why": "The recording says the phrase was first used in 1931."
+        },
+        "g3": {
+          "label": "3. What did Adams describe?",
+          "correct": "better fuller life",
+          "why": "The recording says Adams described a dream of a better, richer, and fuller life."
+        },
+        "g4": {
+          "label": "4. What does it mean for immigrants?",
+          "correct": "better future for children",
+          "why": "The recording says for many immigrants the Dream is about giving their children a better future."
+        },
+        "g5": {
+          "label": "5. Who does the podcast hear from next?",
+          "correct": "Elena",
+          "why": "The recording says the podcast will hear next from Elena, who moved from Mexico."
+        },
+        "g6": {
+          "label": "6. What did the Dream mean to Elena at first?",
+          "correct": "safety and opportunity",
+          "why": "The recording says the Dream meant safety and opportunity for Elena when she first arrived."
+        },
+        "g7": {
+          "label": "7. How has Elena's idea changed?",
+          "correct": "less rich more belonging",
+          "why": "The recording says Elena's idea is now less about getting rich and more about belonging."
+        },
+        "g8": {
+          "label": "8. Does Elena think it's still achievable?",
+          "correct": "yes harder",
+          "why": "The recording says Elena believes the Dream is harder to achieve now, but still possible."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Carlos",
+          "correct": "Financial Security",
+          "why": "The text says Carlos wants a stable job and enough money not to worry about bills."
+        },
+        "g2": {
+          "label": "2. Mei",
+          "correct": "Family",
+          "why": "The text says Mei wants her children to have more opportunities than she did."
+        },
+        "g3": {
+          "label": "3. Robert",
+          "correct": "Freedom",
+          "why": "The text says Robert wants to speak his mind and choose his own path."
+        },
+        "g4": {
+          "label": "4. Aisha",
+          "correct": "Belonging",
+          "why": "The text says Aisha finally feels like this is home after years of feeling like an outsider."
+        },
+        "g5": {
+          "label": "5. Phrase first used in 1931",
+          "correct": "True",
+          "why": "The text confirms the phrase was first used in 1931."
+        },
+        "g6": {
+          "label": "6. Adams was a politician",
+          "correct": "False",
+          "why": "The text says Adams was a writer and historian, not a politician."
+        },
+        "g7": {
+          "label": "7. The Dream means the same to everyone",
+          "correct": "False",
+          "why": "The text says the Dream does not mean exactly the same thing to every person."
+        },
+        "g8": {
+          "label": "8. Hard work can lead to success",
+          "correct": "True",
+          "why": "The text confirms the idea includes the belief that hard work can lead to success."
+        }
+      }
+    }
+  },
+  "msa-c-book-character-day": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. When is Book Character Day?",
+          "correct": "next Wednesday",
+          "why": "The recording says Book Character Day is next Wednesday."
+        },
+        "g2": {
+          "label": "2. Who judges the competition?",
+          "correct": "Miss Carter",
+          "why": "The recording says Miss Carter will be judging the costume competition."
+        },
+        "g3": {
+          "label": "3. What does the winner receive?",
+          "correct": "book token",
+          "why": "The recording says the winner receives a ten pound book token."
+        },
+        "g4": {
+          "label": "4. Alternative to dressing up?",
+          "correct": "write paragraph",
+          "why": "The recording says students who don't want to dress up can write a short paragraph instead."
+        },
+        "g5": {
+          "label": "5. When are written entries due?",
+          "correct": "Tuesday afternoon",
+          "why": "The recording says writing entries must be handed in by Tuesday afternoon."
+        },
+        "g6": {
+          "label": "6. Who is Marcus dressing as?",
+          "correct": "Percy Jackson",
+          "why": "The recording says Marcus is going as Percy Jackson."
+        },
+        "g7": {
+          "label": "7. Why Katniss for Ellie?",
+          "correct": "has a bow",
+          "why": "The recording says Marcus suggests Katniss because Ellie already has a bow from archery club."
+        },
+        "g8": {
+          "label": "8. What does Ellie decide?",
+          "correct": "both",
+          "why": "The recording says Ellie decides to do both — dress up and write her paragraph."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Leo — brave, takes charge",
+          "correct": "Leader",
+          "why": "The text says the Leader always puts the team first and makes brave decisions under pressure."
+        },
+        "g2": {
+          "label": "2. Ava — builds and invents",
+          "correct": "Inventor",
+          "why": "The text says the Inventor solves problems with clever gadgets."
+        },
+        "g3": {
+          "label": "3. Noah — found his place",
+          "correct": "Outsider",
+          "why": "The text says the Outsider doesn't fit in at first but has a hidden talent."
+        },
+        "g4": {
+          "label": "4. Sofia — values loyalty",
+          "correct": "Best Friend",
+          "why": "The text says the Best Friend is always there to support the hero."
+        },
+        "g5": {
+          "label": "5. Costumes only from books",
+          "correct": "False",
+          "why": "The text says costumes must be based on a character from a book, film, or comic — not only books."
+        },
+        "g6": {
+          "label": "6. Competition at lunchtime",
+          "correct": "True",
+          "why": "The text confirms the costume competition takes place during lunchtime."
+        },
+        "g7": {
+          "label": "7. Entries read aloud",
+          "correct": "False",
+          "why": "The text says writing entries are displayed on the library wall, not read aloud."
+        },
+        "g8": {
+          "label": "8. Cost to enter",
+          "correct": "False",
+          "why": "The text says entry to both competitions is completely free."
+        }
+      }
+    }
+  },
+  "msa-c-climate-action-day": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Time of the assembly?",
+          "correct": "nine",
+          "why": "The recording says the special assembly is at nine o'clock."
+        },
+        "g2": {
+          "label": "2. Where is the poster exhibition?",
+          "correct": "courtyard",
+          "why": "The recording says the poster exhibition is in the courtyard."
+        },
+        "g3": {
+          "label": "3. Who to meet for litter-picking?",
+          "correct": "Mr Owusu",
+          "why": "The recording says students should meet Mr Owusu for litter-picking."
+        },
+        "g4": {
+          "label": "4. What to bring if possible?",
+          "correct": "gloves",
+          "why": "The recording says students should bring gloves if they have them."
+        },
+        "g5": {
+          "label": "5. When are permission slips due?",
+          "correct": "Wednesday",
+          "why": "The recording says permission slips must be returned by Wednesday."
+        },
+        "g6": {
+          "label": "6. What does Ollie need?",
+          "correct": "signed slip",
+          "why": "The recording says Ollie needs his parents to sign the permission slip before Friday."
+        },
+        "g7": {
+          "label": "7. What might the assembly do?",
+          "correct": "inspire more",
+          "why": "The recording says Ollie thinks the assembly might inspire more people to get involved."
+        },
+        "g8": {
+          "label": "8. Ollie's opinion on missing lessons",
+          "correct": "prefers not to",
+          "why": "The recording says Ollie would rather still get an education than miss a full day of lessons."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Zoe's attitude",
+          "correct": "Activist",
+          "why": "The text says Zoe thinks missing school to protest sends a powerful message."
+        },
+        "g2": {
+          "label": "2. Theo's attitude",
+          "correct": "Doer",
+          "why": "The text says Theo would rather join clubs and projects that clean up the local area."
+        },
+        "g3": {
+          "label": "3. Marco's attitude",
+          "correct": "Skeptic",
+          "why": "The text says Marco doesn't think one person can change something this big."
+        },
+        "g4": {
+          "label": "4. Iris's attitude",
+          "correct": "Learner",
+          "why": "The text says Iris reads the news but isn't sure what she can actually do to help."
+        },
+        "g5": {
+          "label": "5. Assembly starts at nine",
+          "correct": "True",
+          "why": "The text confirms the assembly starts at nine o'clock."
+        },
+        "g6": {
+          "label": "6. Gloves required, no exceptions",
+          "correct": "False",
+          "why": "The text says litter-pickers should bring gloves if possible, not that gloves are strictly required."
+        },
+        "g7": {
+          "label": "7. Slips due by Friday",
+          "correct": "False",
+          "why": "The text says permission slips are due by Wednesday, not Friday."
+        },
+        "g8": {
+          "label": "8. Lessons cancelled all day",
+          "correct": "False",
+          "why": "The text says normal lessons continue as usual in the morning."
+        }
+      }
+    }
+  },
+  "msa-c-exchange-trip-packing": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Max suitcase weight?",
+          "correct": "twenty kilograms",
+          "why": "The recording says the suitcase must weigh no more than twenty kilograms."
+        },
+        "g2": {
+          "label": "2. What to pack for sightseeing?",
+          "correct": "comfortable shoes",
+          "why": "The recording says to pack comfortable shoes for walking and sightseeing."
+        },
+        "g3": {
+          "label": "3. Extra item needed for suitcase?",
+          "correct": "padlock",
+          "why": "The recording says students need a padlock for their suitcase."
+        },
+        "g4": {
+          "label": "4. Keep separate from original passport?",
+          "correct": "a copy",
+          "why": "The recording says to keep a copy of the passport separate from the original."
+        },
+        "g5": {
+          "label": "5. Gift suggestion for host family?",
+          "correct": "typical from germany",
+          "why": "The recording suggests something typical from Germany, like chocolate."
+        },
+        "g6": {
+          "label": "6. What is Amara unsure about?",
+          "correct": "what gift",
+          "why": "The recording says Amara doesn't know what gift to bring for her host family."
+        },
+        "g7": {
+          "label": "7. Does Amara need an adapter for France?",
+          "correct": "no same plug",
+          "why": "The recording says France uses the same plug type as Germany, so no adapter is needed."
+        },
+        "g8": {
+          "label": "8. What does Finn still need to do?",
+          "correct": "buy padlock",
+          "why": "The recording says Finn still needs to buy a padlock this weekend."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Jonas — different sockets",
+          "correct": "Adapter",
+          "why": "The text says a universal adapter is useful for different plug sockets."
+        },
+        "g2": {
+          "label": "2. Mira — avoid plastic bottles",
+          "correct": "Bottle",
+          "why": "The text says a reusable water bottle saves money on buying drinks."
+        },
+        "g3": {
+          "label": "3. Elif — learn French basics",
+          "correct": "Phrasebook",
+          "why": "The text says a phrasebook helps with learning key phrases."
+        },
+        "g4": {
+          "label": "4. Tobias — cuts and blisters",
+          "correct": "Kit",
+          "why": "The text says a first aid kit contains plasters for minor injuries."
+        },
+        "g5": {
+          "label": "5. Weight limit is 20kg",
+          "correct": "True",
+          "why": "The text confirms the suitcase weight limit is twenty kilograms."
+        },
+        "g6": {
+          "label": "6. No padlock needed",
+          "correct": "False",
+          "why": "The text says every student needs a padlock for their suitcase."
+        },
+        "g7": {
+          "label": "7. Copy packed with original",
+          "correct": "False",
+          "why": "The text says passport copies should be kept separately from the original."
+        },
+        "g8": {
+          "label": "8. Gifts typical from home country",
+          "correct": "True",
+          "why": "The text confirms host family gifts should be something typical from your home country."
+        }
+      }
+    }
+  },
+  "msa-c-first-aid-course": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. When is the course?",
+          "correct": "saturday morning",
+          "why": "The recording says the first-aid course is next Saturday morning."
+        },
+        "g2": {
+          "label": "2. Where is it held?",
+          "correct": "sports hall",
+          "why": "The recording says the course will take place in the sports hall."
+        },
+        "g3": {
+          "label": "3. Who teaches the course?",
+          "correct": "a red cross trainer",
+          "why": "The recording says the course will be taught by a trainer from the Red Cross."
+        },
+        "g4": {
+          "label": "4. What should students bring?",
+          "correct": "comfortable clothes",
+          "why": "The recording says to wear comfortable clothes for kneeling and moving around."
+        },
+        "g5": {
+          "label": "5. What do students receive?",
+          "correct": "a certificate",
+          "why": "The recording says students will receive an official first-aid certificate."
+        },
+        "g6": {
+          "label": "6. Why does Emma want the course?",
+          "correct": "babysitting",
+          "why": "The recording says Emma has started babysitting and wants to know what to do if a child gets hurt."
+        },
+        "g7": {
+          "label": "7. What worries Tom?",
+          "correct": "seeing blood",
+          "why": "The recording says Tom feels a bit faint whenever he sees blood."
+        },
+        "g8": {
+          "label": "8. What do they decide to do?",
+          "correct": "sign up online",
+          "why": "The recording says they decide to sign up together on the school website right away."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Lena's brother touched a hot cooker",
+          "correct": "treating burns",
+          "why": "The text says treating burns means cooling the skin under running water."
+        },
+        "g2": {
+          "label": "2. Man breathing but won't wake up",
+          "correct": "the recovery position",
+          "why": "The text says the recovery position is for someone unconscious but still breathing."
+        },
+        "g3": {
+          "label": "3. Mia's leg won't stop bleeding",
+          "correct": "stopping bleeding",
+          "why": "The text says stopping bleeding means pressing a clean cloth onto the wound."
+        },
+        "g4": {
+          "label": "4. Player's heart had stopped",
+          "correct": "CPR",
+          "why": "The text says CPR is chest compressions to keep blood moving when the heart has stopped."
+        },
+        "g5": {
+          "label": "5. Students pay to take the course",
+          "correct": "False",
+          "why": "The text says the course is completely free."
+        },
+        "g6": {
+          "label": "6. Late students might not join",
+          "correct": "True",
+          "why": "The text confirms anyone who is late may not be allowed to join."
+        },
+        "g7": {
+          "label": "7. No break during the course",
+          "correct": "False",
+          "why": "The text says there is a short break in the middle of the course."
+        },
+        "g8": {
+          "label": "8. Phones used freely during exercises",
+          "correct": "False",
+          "why": "The text says mobile phones must be switched off during the practical exercises."
+        }
+      }
+    }
+  },
+  "msa-c-healthy-eating-workshop": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Workshop takes place next...",
+          "correct": "Wednesday",
+          "why": "The recording says the workshop is next Wednesday afternoon."
+        },
+        "g2": {
+          "label": "2. It starts at...",
+          "correct": "two o'clock",
+          "why": "The recording says the workshop starts at two o'clock."
+        },
+        "g3": {
+          "label": "3. It lasts about...",
+          "correct": "ninety minutes",
+          "why": "The recording says the workshop lasts about ninety minutes."
+        },
+        "g4": {
+          "label": "4. Bring an apron and a...",
+          "correct": "container",
+          "why": "The recording says to bring an apron and a clean container to take food home in."
+        },
+        "g5": {
+          "label": "5. The workshop costs...",
+          "correct": "nothing",
+          "why": "The recording says there is no charge at all for the workshop."
+        },
+        "g6": {
+          "label": "6. Ben is worried he cannot...",
+          "correct": "cook",
+          "why": "The recording says Ben is not sure he can cook at all."
+        },
+        "g7": {
+          "label": "7. Mia says the workshop is...",
+          "correct": "free",
+          "why": "The recording says the workshop is completely free."
+        },
+        "g8": {
+          "label": "8. Ben will sign up...",
+          "correct": "tomorrow",
+          "why": "The recording says Ben will sign up tomorrow morning."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Aisha — warm meal for cold days",
+          "correct": "Soup Pot",
+          "why": "The text says the Soup Pot teaches a warming vegetable soup."
+        },
+        "g2": {
+          "label": "2. Tom — cold fruit drinks",
+          "correct": "Smoothie Station",
+          "why": "The text says the Smoothie Station blends fresh fruit into a cold drink."
+        },
+        "g3": {
+          "label": "3. Leah — crunchy and colourful",
+          "correct": "Salad Bar",
+          "why": "The text says the Salad Bar mixes crunchy vegetables for a colourful lunch."
+        },
+        "g4": {
+          "label": "4. Max — quick ideas between lessons",
+          "correct": "Snack Table",
+          "why": "The text says the Snack Table has quick, healthy snacks."
+        },
+        "g5": {
+          "label": "5. Wash hands before cooking",
+          "correct": "True",
+          "why": "The text confirms you should wash your hands before you start cooking."
+        },
+        "g6": {
+          "label": "6. Any student may use knives",
+          "correct": "False",
+          "why": "The text says knives may only be used by students over 16."
+        },
+        "g7": {
+          "label": "7. No need to mention allergies",
+          "correct": "False",
+          "why": "The text says you must tell a teacher about any nut allergies before you begin."
+        },
+        "g8": {
+          "label": "8. Kitchen cleaned by 3:30pm",
+          "correct": "True",
+          "why": "The text confirms the kitchen must be left clean and tidy by 3:30pm."
+        }
+      }
+    }
+  },
+  "msa-c-lost-phone-voicemail": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Where was the phone found?",
+          "correct": "changing rooms",
+          "why": "The recording says the phone was found near the changing rooms."
+        },
+        "g2": {
+          "label": "2. What is on the phone case?",
+          "correct": "flower sticker",
+          "why": "The recording says the phone case has an orange flower sticker on the back."
+        },
+        "g3": {
+          "label": "3. What time was it handed in?",
+          "correct": "eleven",
+          "why": "The recording says the phone was handed in just after eleven o'clock."
+        },
+        "g4": {
+          "label": "4. What must the owner do?",
+          "correct": "describe lock screen",
+          "why": "The recording says the owner must be ready to describe the lock screen and colour."
+        },
+        "g5": {
+          "label": "5. What happens to uncollected phones?",
+          "correct": "given to police",
+          "why": "The recording says phones not collected by Friday will be handed to the local police."
+        },
+        "g6": {
+          "label": "6. What is Sam's problem?",
+          "correct": "lost phone",
+          "why": "The recording says Sam lost his phone that morning."
+        },
+        "g7": {
+          "label": "7. What must Sam describe?",
+          "correct": "lock screen photo",
+          "why": "The recording says Sam must describe the lock screen, which is a photo of his dog."
+        },
+        "g8": {
+          "label": "8. What does Leah joke about?",
+          "correct": "forgetting bag",
+          "why": "The recording says Leah jokes about Sam not forgetting his bag again."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Noah — left drink bottle",
+          "correct": "Water Bottle",
+          "why": "The text says a dented blue water bottle was found near the canteen."
+        },
+        "g2": {
+          "label": "2. Priya — jumper from library",
+          "correct": "Hoodie",
+          "why": "The text says a grey hoodie was found in the library."
+        },
+        "g3": {
+          "label": "3. Felix — lost bike keys",
+          "correct": "Keys",
+          "why": "The text says a set of keys with a football keyring was found by the bike racks."
+        },
+        "g4": {
+          "label": "4. Jonas — calculator with initials",
+          "correct": "Calculator",
+          "why": "The text says a calculator with the initials \"J.K.\" was found in the science lab."
+        },
+        "g5": {
+          "label": "5. Kept one month before charity",
+          "correct": "False",
+          "why": "The text says lost property is kept for two weeks, not one month."
+        },
+        "g6": {
+          "label": "6. ID needed to collect an item",
+          "correct": "True",
+          "why": "The text confirms students must show their student ID card to collect an item."
+        },
+        "g7": {
+          "label": "7. Phones/money on open shelf",
+          "correct": "False",
+          "why": "The text says phones and money are kept in a locked cabinet, not on the open shelf."
+        },
+        "g8": {
+          "label": "8. Only collected at lunchtime",
+          "correct": "False",
+          "why": "The text says lost property can be collected any time before the end of the school day."
+        }
+      }
+    }
+  },
+  "msa-c-multicultural-berlin": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. What is being celebrated?",
+          "correct": "cultures",
+          "why": "The recording says the festival celebrates the many cultures of the neighbourhood."
+        },
+        "g2": {
+          "label": "2. When does it end Saturday?",
+          "correct": "nine evening",
+          "why": "The recording says the festival runs until nine in the evening on Saturday."
+        },
+        "g3": {
+          "label": "3. How many countries at food stalls?",
+          "correct": "over twenty",
+          "why": "The recording says food stalls represent over twenty different countries."
+        },
+        "g4": {
+          "label": "4. When does live music start?",
+          "correct": "two oclock",
+          "why": "The recording says live music starts at two o'clock."
+        },
+        "g5": {
+          "label": "5. What's asked regarding cost?",
+          "correct": "small donation",
+          "why": "The recording says entry is free but a small donation is requested."
+        },
+        "g6": {
+          "label": "6. Why does Hanna want to live there?",
+          "correct": "teaches you",
+          "why": "The recording says Hanna thinks living around different cultures teaches you a lot."
+        },
+        "g7": {
+          "label": "7. What do some people prefer?",
+          "correct": "quieter less mixed",
+          "why": "The recording says some people prefer somewhere quieter and less mixed."
+        },
+        "g8": {
+          "label": "8. When do they agree to meet?",
+          "correct": "two oclock",
+          "why": "The recording says they agree to meet at the food stalls at two."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Felix — wants baklava",
+          "correct": "Turkish",
+          "why": "The text says the Turkish stall serves baklava, among other things."
+        },
+        "g2": {
+          "label": "2. Greta — vegetarian, fresh food",
+          "correct": "Vietnamese",
+          "why": "The text says the Vietnamese stall is famous for fresh spring rolls."
+        },
+        "g3": {
+          "label": "3. Omar — handmade gift",
+          "correct": "Craft",
+          "why": "The text says the Craft stall sells handmade jewellery and textiles."
+        },
+        "g4": {
+          "label": "4. Lina — practise Turkish",
+          "correct": "Language",
+          "why": "The text says the Language Exchange Tent lets visitors practise speaking with volunteers."
+        },
+        "g5": {
+          "label": "5. The festival's tenth year",
+          "correct": "True",
+          "why": "The text confirms this is the tenth year the festival has run."
+        },
+        "g6": {
+          "label": "6. Food stalls only from Europe",
+          "correct": "False",
+          "why": "The text says food stalls represent cuisines from all over the world, not just Europe."
+        },
+        "g7": {
+          "label": "7. Fixed entry fee",
+          "correct": "False",
+          "why": "The text says entry is free, with donations welcome — not a fixed fee."
+        },
+        "g8": {
+          "label": "8. Children's area has a puppet show",
+          "correct": "True",
+          "why": "The text confirms the children's area includes a puppet show."
+        }
+      }
+    }
+  },
+  "msa-c-school-recycling-scheme": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. When does the scheme start?",
+          "correct": "next Monday",
+          "why": "The recording says the new recycling scheme starts next Monday."
+        },
+        "g2": {
+          "label": "2. What goes in blue bins?",
+          "correct": "paper and cardboard",
+          "why": "The recording says blue bins are for paper and cardboard only."
+        },
+        "g3": {
+          "label": "3. What should students do first?",
+          "correct": "rinse them",
+          "why": "The recording says to rinse containers before recycling them."
+        },
+        "g4": {
+          "label": "4. Why does rinsing matter?",
+          "correct": "contaminate bin",
+          "why": "The recording says dirty items can contaminate a whole bin of good recycling."
+        },
+        "g5": {
+          "label": "5. What does the cleanest class win?",
+          "correct": "a prize",
+          "why": "The recording says the class with the cleanest recycling each month wins a prize."
+        },
+        "g6": {
+          "label": "6. Where does a greasy pizza box go?",
+          "correct": "food waste bin",
+          "why": "The dialogue says a greasy pizza box should go in the food waste bin."
+        },
+        "g7": {
+          "label": "7. Where does a water bottle go?",
+          "correct": "green bin rinsed",
+          "why": "The dialogue says an empty water bottle goes in the green bin, rinsed first."
+        },
+        "g8": {
+          "label": "8. What does Nora want?",
+          "correct": "win prize",
+          "why": "The dialogue says Nora wants their class to win the monthly prize."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Mia — drawing, colourful designs",
+          "correct": "Poster Designer",
+          "why": "The text says the Poster Designer creates posters and signs for the bins."
+        },
+        "g2": {
+          "label": "2. Ben — checking details, records",
+          "correct": "Bin Monitor",
+          "why": "The text says the Bin Monitor checks bins and records which classes are doing well."
+        },
+        "g3": {
+          "label": "3. Zara — social media, photos",
+          "correct": "Social Media Officer",
+          "why": "The text says the Social Media Officer posts updates and eco-tips online."
+        },
+        "g4": {
+          "label": "4. Tomas — gardening, growing plants",
+          "correct": "Compost Manager",
+          "why": "The text says the Compost Manager looks after the compost bin."
+        },
+        "g5": {
+          "label": "5. Cardboard allowed in blue bins",
+          "correct": "False",
+          "why": "The text says blue bins are only for paper, not cardboard."
+        },
+        "g6": {
+          "label": "6. Bins checked every Friday",
+          "correct": "True",
+          "why": "The text confirms the Green Team checks bins every Friday."
+        },
+        "g7": {
+          "label": "7. Only cleanest class can win",
+          "correct": "False",
+          "why": "The text says any class can win the monthly prize, not just the cleanest one."
+        },
+        "g8": {
+          "label": "8. Food waste in brown bins",
+          "correct": "True",
+          "why": "The text confirms food waste should go in the brown bins in the canteen."
+        }
+      }
+    }
+  },
+  "msa-c-school-trip-announcement": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. What time does the bus leave?",
+          "correct": "8:15",
+          "why": "The recording says the bus will leave at eight fifteen sharp."
+        },
+        "g2": {
+          "label": "2. What must every student bring?",
+          "correct": "permission form",
+          "why": "The recording says every student must bring their signed permission form."
+        },
+        "g3": {
+          "label": "3. What time does the museum close?",
+          "correct": "4:00",
+          "why": "The recording says the museum closes at four o'clock."
+        },
+        "g4": {
+          "label": "4. What time back at school?",
+          "correct": "5:00",
+          "why": "The recording says students will be back at school by five."
+        },
+        "g5": {
+          "label": "5. Why bring a raincoat?",
+          "correct": "rain outdoor garden",
+          "why": "The recording says part of the visit includes an outdoor garden, so bring a raincoat if it rains."
+        },
+        "g6": {
+          "label": "6. What does Emma suggest instead of a thick coat?",
+          "correct": "light raincoat",
+          "why": "The recording says Emma suggests a light raincoat instead of a thick coat."
+        },
+        "g7": {
+          "label": "7. How much extra money for the gift shop?",
+          "correct": "five six pounds",
+          "why": "The recording says Emma suggests five or six pounds is enough."
+        },
+        "g8": {
+          "label": "8. What's not allowed near the dinosaurs?",
+          "correct": "flash photography",
+          "why": "The recording says no flash photography is allowed near the dinosaurs."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Liam — control machines",
+          "correct": "Robotics Zone",
+          "why": "The text says the Robotics Zone lets you programme a robot to move."
+        },
+        "g2": {
+          "label": "2. Priya — prehistoric creatures",
+          "correct": "Dinosaur Zone",
+          "why": "The text says the Dinosaur Zone has a life-size skeleton and fossils."
+        },
+        "g3": {
+          "label": "3. Tom — dreams of being an astronaut",
+          "correct": "Space Zone",
+          "why": "The text says the Space Zone has a model of the International Space Station."
+        },
+        "g4": {
+          "label": "4. Emma — storms and hurricanes",
+          "correct": "Weather Zone",
+          "why": "The text says the Weather Zone teaches how storms and hurricanes form."
+        },
+        "g5": {
+          "label": "5. Flash photography allowed",
+          "correct": "False",
+          "why": "The text says no flash photography is allowed in the Dinosaur Zone."
+        },
+        "g6": {
+          "label": "6. Stay behind yellow line",
+          "correct": "True",
+          "why": "The text confirms visitors must stay behind the yellow line in the Robotics Zone."
+        },
+        "g7": {
+          "label": "7. Café closes with museum",
+          "correct": "False",
+          "why": "The text says the café closes at 3:30pm, one hour before the museum."
+        },
+        "g8": {
+          "label": "8. Lockers are free",
+          "correct": "False",
+          "why": "The text says lockers cost £1, so they are not free."
+        }
+      }
+    }
+  },
+  "msa-c-school-uniform": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Who makes the announcement?",
+          "correct": "head teacher",
+          "why": "The recording says the head teacher is making the announcement."
+        },
+        "g2": {
+          "label": "2. When is the uniform compulsory?",
+          "correct": "after summer holidays",
+          "why": "The recording says the uniform becomes compulsory after the summer holidays."
+        },
+        "g3": {
+          "label": "3. What colour is the sweatshirt?",
+          "correct": "dark blue",
+          "why": "The recording says the sweatshirt is dark blue with the school logo."
+        },
+        "g4": {
+          "label": "4. Where can families buy it?",
+          "correct": "school website shop",
+          "why": "The recording says families can order from the online shop on the school website."
+        },
+        "g5": {
+          "label": "5. What help is offered to poorer families?",
+          "correct": "second-hand exchange",
+          "why": "The recording says there will be a free second-hand uniform exchange."
+        },
+        "g6": {
+          "label": "6. Hannah's reason for liking the uniform?",
+          "correct": "less pressure on clothes",
+          "why": "The recording says Hannah likes that there will be less pressure about wearing the right clothes."
+        },
+        "g7": {
+          "label": "7. Leo's main worry?",
+          "correct": "everyone looks the same",
+          "why": "The recording says Leo worries everyone will look the same and lose their identity."
+        },
+        "g8": {
+          "label": "8. What do they agree to do?",
+          "correct": "write to the school",
+          "why": "The recording says they agree to write down their views and hand them in."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Elif — hates spending on fashion",
+          "correct": "fairness",
+          "why": "The text says the fairness view means nobody is judged for cheap or expensive clothes."
+        },
+        "g2": {
+          "label": "2. Marco — unusual outfits, personality",
+          "correct": "self-expression",
+          "why": "The text says clothes are how self-expression shows who you are."
+        },
+        "g3": {
+          "label": "3. Sena — no time to think about clothes",
+          "correct": "saving time",
+          "why": "The text says a uniform saves time deciding what to wear."
+        },
+        "g4": {
+          "label": "4. Paul — move and sit easily",
+          "correct": "comfort",
+          "why": "The text says comfort means not wearing stiff, uncomfortable clothes."
+        },
+        "g5": {
+          "label": "5. Trainers in every lesson",
+          "correct": "False",
+          "why": "The text says trainers are only allowed in PE lessons."
+        },
+        "g6": {
+          "label": "6. Own coat outside on cold days",
+          "correct": "True",
+          "why": "The text confirms your own coat may be worn outside on cold days."
+        },
+        "g7": {
+          "label": "7. Lots of jewellery allowed",
+          "correct": "False",
+          "why": "The text says only small earrings are permitted; other jewellery stays at home."
+        },
+        "g8": {
+          "label": "8. Sweatshirt has the school logo",
+          "correct": "True",
+          "why": "The text confirms the school sweatshirt must show the school logo."
+        }
+      }
+    }
+  },
+  "msa-c-smart-home-demo": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Where is the demonstration table?",
+          "correct": "main entrance",
+          "why": "The recording says the demonstration table is near the main entrance."
+        },
+        "g2": {
+          "label": "2. What can the speaker do?",
+          "correct": "lights questions music",
+          "why": "The recording says the speaker can control lights, answer questions, and play music."
+        },
+        "g3": {
+          "label": "3. What do early sign-ups receive?",
+          "correct": "charging cable",
+          "why": "The recording says customers who sign up before three receive a free charging cable."
+        },
+        "g4": {
+          "label": "4. Rule for under-sixteens?",
+          "correct": "need adult",
+          "why": "The recording says under-sixteens must be accompanied by an adult."
+        },
+        "g5": {
+          "label": "5. Who is running the demos?",
+          "correct": "Priya",
+          "why": "The recording says staff member Priya will be running the demos."
+        },
+        "g6": {
+          "label": "6. Why can't Robyn's brother try alone?",
+          "correct": "too young",
+          "why": "The recording says he needs an adult because he is only fourteen."
+        },
+        "g7": {
+          "label": "7. Benefit of signing up before three?",
+          "correct": "free cable",
+          "why": "The recording says signing up before three gets you a free charging cable."
+        },
+        "g8": {
+          "label": "8. What do they decide to do?",
+          "correct": "go now",
+          "why": "The recording says they decide to go now before the offer ends."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Grandpa Joe — forgets to turn off lamp",
+          "correct": "Plug",
+          "why": "The text says a smart plug turns lamps or appliances on and off from an app."
+        },
+        "g2": {
+          "label": "2. Mia — check deliveries while out",
+          "correct": "Doorbell",
+          "why": "The text says a smart doorbell shows who's at the door, even away from home."
+        },
+        "g3": {
+          "label": "3. Save on heating without thinking",
+          "correct": "Thermostat",
+          "why": "The text says a smart thermostat automatically adjusts temperature to save energy."
+        },
+        "g4": {
+          "label": "4. Dan — hands-free music control",
+          "correct": "Speaker",
+          "why": "The text says a smart speaker controls music using your voice."
+        },
+        "g5": {
+          "label": "5. Devices never need updating",
+          "correct": "False",
+          "why": "The text says smart devices should be updated regularly to stay secure."
+        },
+        "g6": {
+          "label": "6. Strong password recommended",
+          "correct": "True",
+          "why": "The text confirms every device needs its own strong, unique password."
+        },
+        "g7": {
+          "label": "7. Doorbells only work at home",
+          "correct": "False",
+          "why": "The text says smart doorbells can be checked from anywhere, not just at home."
+        },
+        "g8": {
+          "label": "8. Turning off devices saves electricity",
+          "correct": "True",
+          "why": "The text confirms turning off unused devices helps save electricity."
+        }
+      }
+    }
+  },
+  "msa-c-sports-day": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. What time should students meet?",
+          "correct": "9:30",
+          "why": "The recording says all students should meet at nine thirty."
+        },
+        "g2": {
+          "label": "2. Where should students meet?",
+          "correct": "main field",
+          "why": "The recording says students should meet on the main field."
+        },
+        "g3": {
+          "label": "3. What to bring because of the weather?",
+          "correct": "hat and water",
+          "why": "The recording says to bring a hat and water bottle because it will be hot and sunny."
+        },
+        "g4": {
+          "label": "4. What happens if it rains?",
+          "correct": "sports hall",
+          "why": "The recording says Sports Day will move to the sports hall if it rains."
+        },
+        "g5": {
+          "label": "5. What is the Parents' Association selling?",
+          "correct": "drinks and snacks",
+          "why": "The recording says the Parents' Association will sell cold drinks and snacks."
+        },
+        "g6": {
+          "label": "6. Which event is Jack considering?",
+          "correct": "long jump",
+          "why": "The recording says Jack is thinking about the long jump instead of the sprint."
+        },
+        "g7": {
+          "label": "7. Which event will Mia do?",
+          "correct": "eight hundred metres",
+          "why": "The recording says Mia is going to do the eight hundred metres."
+        },
+        "g8": {
+          "label": "8. What time is the relay race?",
+          "correct": "three o'clock",
+          "why": "The recording says the relay race is at three o'clock."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Noah — strong, loves throwing",
+          "correct": "Shot Put",
+          "why": "The text says Shot Put is all about power and strength."
+        },
+        "g2": {
+          "label": "2. Aisha — quick, short distances",
+          "correct": "Sprint",
+          "why": "The text says the Sprint is a fast, short race over in seconds."
+        },
+        "g3": {
+          "label": "3. Leon — prefers teamwork",
+          "correct": "Relay Race",
+          "why": "The text says the Relay Race is a team event where you win or lose together."
+        },
+        "g4": {
+          "label": "4. Zoe — good jumper, sand pit",
+          "correct": "Long Jump",
+          "why": "The text says the Long Jump involves leaping into the sand pit."
+        },
+        "g5": {
+          "label": "5. Sun cream costs money",
+          "correct": "False",
+          "why": "The text says free sun cream is available at the first-aid tent."
+        },
+        "g6": {
+          "label": "6. First-aid tent next to changing rooms",
+          "correct": "True",
+          "why": "The text confirms the first-aid tent is next to the changing rooms."
+        },
+        "g7": {
+          "label": "7. You have to pay for water",
+          "correct": "False",
+          "why": "The text says water is free all day; only snacks must be paid for."
+        },
+        "g8": {
+          "label": "8. Only the winner gets a medal",
+          "correct": "False",
+          "why": "The text says medals go to the first three places in every event, not just the winner."
+        }
+      }
+    }
+  },
+  "msa-c-talent-show": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. When is the talent show?",
+          "correct": "last friday of term",
+          "why": "The recording says the show is on the last Friday of term."
+        },
+        "g2": {
+          "label": "2. Where will it be held?",
+          "correct": "school hall",
+          "why": "The recording says the show will take place in the school hall."
+        },
+        "g3": {
+          "label": "3. How do students sign up?",
+          "correct": "form outside music room",
+          "why": "The recording says to fill in a sign-up form on the noticeboard outside the music room."
+        },
+        "g4": {
+          "label": "4. How long can each act last?",
+          "correct": "three minutes",
+          "why": "The recording says each act can last a maximum of three minutes."
+        },
+        "g5": {
+          "label": "5. What is the ticket money used for?",
+          "correct": "new library books",
+          "why": "The recording says the money raised will be spent on new library books."
+        },
+        "g6": {
+          "label": "6. What does Sophie want to do?",
+          "correct": "sing a song",
+          "why": "The recording says Sophie has decided to sing a song."
+        },
+        "g7": {
+          "label": "7. Why is Daniel unsure?",
+          "correct": "stage fright",
+          "why": "The recording says Daniel gets nervous standing on stage alone."
+        },
+        "g8": {
+          "label": "8. What do they finally decide?",
+          "correct": "perform together",
+          "why": "The recording says they decide to perform a song together as a duo."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Karim — plays instruments, rehearses",
+          "correct": "the band slot",
+          "why": "The text says the band slot is for groups of musicians playing together."
+        },
+        "g2": {
+          "label": "2. Nadia — card tricks",
+          "correct": "the magic slot",
+          "why": "The text says the magic slot is for card tricks and illusions."
+        },
+        "g3": {
+          "label": "3. Ben — funny stories",
+          "correct": "the comedy slot",
+          "why": "The text says the comedy slot is for jokes and funny stories."
+        },
+        "g4": {
+          "label": "4. Priya — dance routine",
+          "correct": "the dance slot",
+          "why": "The text says the dance slot is for solo dancers or dance crews."
+        },
+        "g5": {
+          "label": "5. Can add an act after 14 March",
+          "correct": "False",
+          "why": "The text says no acts can be added after 14 March."
+        },
+        "g6": {
+          "label": "6. Only one act per student",
+          "correct": "True",
+          "why": "The text confirms each student may only appear in one act."
+        },
+        "g7": {
+          "label": "7. Backing music to Mr Berg beforehand",
+          "correct": "True",
+          "why": "The text confirms backing music should be given to Mr Berg before the show."
+        },
+        "g8": {
+          "label": "8. Teachers alone decide the winner",
+          "correct": "False",
+          "why": "The text says the audience chooses the winner by voting, not the teachers alone."
+        }
+      }
+    }
+  },
+  "msa-c-transport-delay": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. How long is the delay?",
+          "correct": "25 minutes",
+          "why": "The recording says the tram is delayed by approximately twenty-five minutes."
+        },
+        "g2": {
+          "label": "2. What caused the delay?",
+          "correct": "signal fault",
+          "why": "The recording says the delay is due to a signal fault near Riverside Bridge."
+        },
+        "g3": {
+          "label": "3. How often does the replacement bus run?",
+          "correct": "every 15 minutes",
+          "why": "The recording says the replacement bus departs every fifteen minutes."
+        },
+        "g4": {
+          "label": "4. Where does it stop for hospital passengers?",
+          "correct": "main entrance",
+          "why": "The recording says the replacement bus stops directly outside the hospital's main entrance."
+        },
+        "g5": {
+          "label": "5. When does normal service resume?",
+          "correct": "6 o'clock",
+          "why": "The recording says normal tram service is expected to resume by six o'clock."
+        },
+        "g6": {
+          "label": "6. Why doesn't Zoe want to walk?",
+          "correct": "too far",
+          "why": "The recording says Zoe thinks it's too far to walk."
+        },
+        "g7": {
+          "label": "7. What does Zoe suggest instead?",
+          "correct": "replacement bus",
+          "why": "The recording says Zoe suggests taking the replacement bus from Stand C."
+        },
+        "g8": {
+          "label": "8. Why do they need to hurry?",
+          "correct": "late for match",
+          "why": "The recording says they need to hurry or they'll be late for the match."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Anna — finishes shift at 1am",
+          "correct": "Night Bus",
+          "why": "The text says the Night Bus runs after midnight for people finishing late."
+        },
+        "g2": {
+          "label": "2. Karl — drives in, avoid parking fees",
+          "correct": "Park and Ride",
+          "why": "The text says Park & Ride is for people driving in from outside town."
+        },
+        "g3": {
+          "label": "3. Priya — bus to school every day",
+          "correct": "Student Travel Card",
+          "why": "The text says the Student Travel Card gives unlimited bus travel for daily commuters."
+        },
+        "g4": {
+          "label": "4. Oliver — explore centre for an hour",
+          "correct": "Cycle Hire",
+          "why": "The text says Cycle Hire is great for short trips across the centre."
+        },
+        "g5": {
+          "label": "5. Bikes returned to exact station hired",
+          "correct": "False",
+          "why": "The text says bikes can be returned to any station in the network, not necessarily the one hired from."
+        },
+        "g6": {
+          "label": "6. Shuttle runs every ten minutes at rush hour",
+          "correct": "True",
+          "why": "The text confirms the Park & Ride shuttle runs every ten minutes during rush hour."
+        },
+        "g7": {
+          "label": "7. Travel Cards work on trams too",
+          "correct": "False",
+          "why": "The text says Student Travel Cards are only valid on buses, not trams."
+        },
+        "g8": {
+          "label": "8. Under-fives pay full price",
+          "correct": "False",
+          "why": "The text says children under five travel free on all local buses and trams."
+        }
+      }
+    }
+  },
+  "msa-c-video-game-ratings": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. What system labels games?",
+          "correct": "PEGI",
+          "why": "The recording says all games are labelled with a PEGI age rating."
+        },
+        "g2": {
+          "label": "2. What's needed to buy an 18-rated game if underage-looking?",
+          "correct": "photo ID",
+          "why": "The recording says valid photo identification is required."
+        },
+        "g3": {
+          "label": "3. What can staff help with regarding gifts?",
+          "correct": "suitable alternative",
+          "why": "The recording says staff can help find a more suitable alternative."
+        },
+        "g4": {
+          "label": "4. What do ratings consider?",
+          "correct": "violence language scary",
+          "why": "The recording says ratings consider violence, language, and frightening content."
+        },
+        "g5": {
+          "label": "5. What do ratings NOT primarily reflect?",
+          "correct": "difficulty",
+          "why": "The recording says ratings are not just about how difficult a game is to play."
+        },
+        "g6": {
+          "label": "6. How old is Ben's cousin?",
+          "correct": "twelve",
+          "why": "The recording says Ben's cousin is only twelve."
+        },
+        "g7": {
+          "label": "7. What do Mum and Ben decide?",
+          "correct": "find pegi 12",
+          "why": "The recording says they decide to look at a PEGI 12 version instead."
+        },
+        "g8": {
+          "label": "8. What does the PEGI 12 game have less of?",
+          "correct": "violence scary",
+          "why": "The recording says the PEGI 12 game probably has less violence and fewer scary scenes."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Colourful puzzle game for young children",
+          "correct": "PEGI 3",
+          "why": "The text says PEGI 3 is suitable for all ages with no scary or violent content."
+        },
+        "g2": {
+          "label": "2. Cartoon adventure, mild scares",
+          "correct": "PEGI 7",
+          "why": "The text says PEGI 7 may contain mild scary scenes."
+        },
+        "g3": {
+          "label": "3. Fantasy battle, mild blood",
+          "correct": "PEGI 12",
+          "why": "The text says PEGI 12 may contain moderate violence."
+        },
+        "g4": {
+          "label": "4. Realistic war, graphic combat",
+          "correct": "PEGI 18",
+          "why": "The text says PEGI 18 may contain intense violence and realistic threatening content."
+        },
+        "g5": {
+          "label": "5. PEGI 18 sold to anyone regardless of age",
+          "correct": "False",
+          "why": "The text says PEGI 18 games cannot be sold to anyone who appears underage without ID."
+        },
+        "g6": {
+          "label": "6. Ratings based only on difficulty",
+          "correct": "False",
+          "why": "The text says ratings consider violence, language and frightening content, not just difficulty."
+        },
+        "g7": {
+          "label": "7. Staff can help find alternatives",
+          "correct": "True",
+          "why": "The text confirms staff can help customers find more suitable alternatives."
+        },
+        "g8": {
+          "label": "8. Ratings consider violence, language, frightening content",
+          "correct": "True",
+          "why": "The text confirms ratings consider violence, language, and frightening content."
+        }
+      }
+    }
+  },
+  "msa-c-volunteering-abroad": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. How long do placements last?",
+          "correct": "four to twelve weeks",
+          "why": "The recording says placements last between four and twelve weeks."
+        },
+        "g2": {
+          "label": "2. What are the two main project types?",
+          "correct": "wildlife and teaching",
+          "why": "The recording says most volunteers help with wildlife conservation or teaching English."
+        },
+        "g3": {
+          "label": "3. What does the fee cover?",
+          "correct": "accommodation and meals",
+          "why": "The recording says the fee covers accommodation and two meals a day."
+        },
+        "g4": {
+          "label": "4. Budget for flights?",
+          "correct": "six hundred",
+          "why": "The recording says to budget around six hundred pounds for flights."
+        },
+        "g5": {
+          "label": "5. When do applications close?",
+          "correct": "end of March",
+          "why": "The recording says applications close at the end of March."
+        },
+        "g6": {
+          "label": "6. What is Isla worried about?",
+          "correct": "flights cost",
+          "why": "The recording says Isla isn't sure she could afford the flights."
+        },
+        "g7": {
+          "label": "7. What could help with costs?",
+          "correct": "school grant",
+          "why": "The recording says a small grant from the school could help with costs."
+        },
+        "g8": {
+          "label": "8. Which project does Isla want?",
+          "correct": "teaching wants teacher",
+          "why": "The recording says Isla prefers teaching in Vietnam because she wants to be a teacher."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Grace — loves animals, outdoors",
+          "correct": "Wildlife",
+          "why": "The text says the Wildlife Conservation project protects endangered animals."
+        },
+        "g2": {
+          "label": "2. Liam — wants to teach, loves children",
+          "correct": "Teaching",
+          "why": "The text says the Teaching English project supports local teachers."
+        },
+        "g3": {
+          "label": "3. Priya — ocean and marine life",
+          "correct": "Turtle",
+          "why": "The text says the Turtle Conservation project protects sea turtle nests."
+        },
+        "g4": {
+          "label": "4. Ahmed — hands-on building work",
+          "correct": "Building",
+          "why": "The text says the Community Building project helps build a community centre."
+        },
+        "g5": {
+          "label": "5. Flights included in fee",
+          "correct": "False",
+          "why": "The text says flights are not included in the programme fee."
+        },
+        "g6": {
+          "label": "6. Two meals a day included",
+          "correct": "True",
+          "why": "The text confirms volunteers receive two meals a day as part of the fee."
+        },
+        "g7": {
+          "label": "7. Applications any time of year",
+          "correct": "False",
+          "why": "The text says applications open in January and close at the end of March."
+        },
+        "g8": {
+          "label": "8. Longest placement is twelve weeks",
+          "correct": "True",
+          "why": "The text confirms the longest placement available is twelve weeks."
+        }
+      }
+    }
+  },
+  "msa-c-weekend-job-cafe": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. When does shadowing start?",
+          "correct": "12:30",
+          "why": "The recording says training runs until half past twelve, then shadowing begins."
+        },
+        "g2": {
+          "label": "2. What's not allowed in the kitchen?",
+          "correct": "sandals",
+          "why": "The recording says sandals are not allowed in the kitchen."
+        },
+        "g3": {
+          "label": "3. How long is the break?",
+          "correct": "20 minutes",
+          "why": "The recording says the break is twenty minutes."
+        },
+        "g4": {
+          "label": "4. How to report being late?",
+          "correct": "call the cafe",
+          "why": "The recording says to call the café directly if you'll be late."
+        },
+        "g5": {
+          "label": "5. When is payday?",
+          "correct": "last friday",
+          "why": "The recording says payday is the last Friday of each month."
+        },
+        "g6": {
+          "label": "6. What should Jake learn first?",
+          "correct": "till system",
+          "why": "The recording says Jake should learn the till system before his first shift."
+        },
+        "g7": {
+          "label": "7. What discount do staff get?",
+          "correct": "20 percent not on shift",
+          "why": "The recording says staff get twenty percent off, but only when not on shift."
+        },
+        "g8": {
+          "label": "8. Who decides shifts?",
+          "correct": "the manager",
+          "why": "The recording says the manager makes the final decision on the rota."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Aisha — talks to people, makes drinks",
+          "correct": "Barista",
+          "why": "The text says the Barista role involves making coffee and chatting with customers."
+        },
+        "g2": {
+          "label": "2. Noah — shy, works alone",
+          "correct": "Kitchen Porter",
+          "why": "The text says the Kitchen Porter role has little contact with customers."
+        },
+        "g3": {
+          "label": "3. Leon — good memory, calm under pressure",
+          "correct": "Waiter",
+          "why": "The text says the Waiter role needs a good memory and a calm attitude."
+        },
+        "g4": {
+          "label": "4. Mia — outdoors, cycling",
+          "correct": "Delivery Cyclist",
+          "why": "The text says the Delivery Cyclist role involves being outdoors in all weather."
+        },
+        "g5": {
+          "label": "5. Never need to wash hands",
+          "correct": "False",
+          "why": "The text says staff must wash their hands at least every thirty minutes."
+        },
+        "g6": {
+          "label": "6. Phones in the staff room",
+          "correct": "True",
+          "why": "The text confirms phones may be used in the staff room."
+        },
+        "g7": {
+          "label": "7. Free meal on every shift, any length",
+          "correct": "False",
+          "why": "The text says free meals are only for shifts longer than six hours."
+        },
+        "g8": {
+          "label": "8. Open-toe shoes allowed",
+          "correct": "False",
+          "why": "The text says the dress code requires closed-toe shoes."
+        }
+      }
+    }
+  },
+  "msa-c-work-experience": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Placement begins on...",
+          "correct": "the third of March",
+          "why": "The recording says the placement begins on Monday the third of March."
+        },
+        "g2": {
+          "label": "2. The placement lasts...",
+          "correct": "two weeks",
+          "why": "The recording says it is a two-week work-experience placement."
+        },
+        "g3": {
+          "label": "3. Where to go if you have no company?",
+          "correct": "careers office",
+          "why": "The recording says to go to the careers office if you haven't found a company."
+        },
+        "g4": {
+          "label": "4. What must students keep?",
+          "correct": "diary",
+          "why": "The recording says students must keep a daily diary."
+        },
+        "g5": {
+          "label": "5. What does the employer fill in?",
+          "correct": "report",
+          "why": "The recording says the employer fills in a short report at the end."
+        },
+        "g6": {
+          "label": "6. Where is Leon going?",
+          "correct": "car garage",
+          "why": "The recording says Leon is going to work at a car garage."
+        },
+        "g7": {
+          "label": "7. What does Sara want to become?",
+          "correct": "teacher",
+          "why": "The recording says Sara wants to be a teacher one day."
+        },
+        "g8": {
+          "label": "8. Who else must be called if ill?",
+          "correct": "school",
+          "why": "The recording says if ill, students must phone both the company and the school."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Priya — loves animals, wants to be a vet",
+          "correct": "Vet's Surgery",
+          "why": "The text says the Vet's Surgery placement involves caring for sick animals."
+        },
+        "g2": {
+          "label": "2. Sam — writing and telling stories",
+          "correct": "Local Newspaper",
+          "why": "The text says the Local Newspaper placement involves writing short articles."
+        },
+        "g3": {
+          "label": "3. Emma — computers and technology",
+          "correct": "IT Company",
+          "why": "The text says the IT Company placement teaches about computers and networks."
+        },
+        "g4": {
+          "label": "4. Jack — outside, working with plants",
+          "correct": "Garden Centre",
+          "why": "The text says the Garden Centre placement involves working outdoors with plants."
+        },
+        "g5": {
+          "label": "5. Diary only at the end of two weeks",
+          "correct": "False",
+          "why": "The text says the diary must be kept up to date every single day."
+        },
+        "g6": {
+          "label": "6. Arrive ten minutes early",
+          "correct": "True",
+          "why": "The text confirms you should always arrive at least ten minutes early."
+        },
+        "g7": {
+          "label": "7. Trainers are allowed",
+          "correct": "False",
+          "why": "The text says to wear smart, tidy clothes — no trainers."
+        },
+        "g8": {
+          "label": "8. Phone company and school if ill",
+          "correct": "True",
+          "why": "The text confirms you must phone both the company and the school if ill."
+        }
+      }
+    }
   }
 }
