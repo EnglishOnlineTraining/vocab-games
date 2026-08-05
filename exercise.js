@@ -148,7 +148,7 @@ function showStep(n) {
   document.getElementById('header-step').textContent = n < TOTAL_STEPS
     ? 'Exercise ' + String.fromCharCode(64 + n) + ' of ' + (TOTAL_STEPS - 1)
     : (practiseMode ? 'Ergebnis' : 'Submit');
-  if (n === TOTAL_STEPS) renderExplanations('explanations', eolCollectExplanations());
+  if (n === TOTAL_STEPS) eolApplyExplanations();
   if (practiseMode && n === TOTAL_STEPS) eolPractiseResults();
 }
 
@@ -448,7 +448,7 @@ function renderScore() {
   // Render review-page explanations here too: some pages override showStep
   // (bypassing that hook) but still call the shared renderScore from buildSummary.
   // Idempotent, so double-rendering with the showStep hook is harmless.
-  renderExplanations('explanations', eolCollectExplanations());
+  eolApplyExplanations();
   var box = document.getElementById('score-display');
   if (!box) return;   // pages without a score card (older/free-text) simply skip it
   var sc = totalScore();
@@ -480,10 +480,28 @@ function eolExplRow(it) {
     + '<div class="expl-why">' + esc(it.why) + '</div></div>';
 }
 
+/* Create an #explanations container if a page doesn't already have one, so
+   explanations can be added purely via data/explanations.json (no HTML edit). */
+function eolMakeExplContainer(id) {
+  var anchor = document.getElementById('summary-container') || document.getElementById('score-display');
+  var div = document.createElement('div');
+  div.id = id;
+  div.style.display = 'none';
+  if (anchor && anchor.parentNode) { anchor.parentNode.insertBefore(div, anchor.nextSibling); return div; }
+  var last = document.getElementById('step-' + (typeof TOTAL_STEPS !== 'undefined' ? TOTAL_STEPS : ''));
+  var inner = last && (last.querySelector('.step-inner') || last);
+  if (inner) { inner.appendChild(div); return div; }
+  return null;
+}
+
 function renderExplanations(containerId, items) {
-  var box = document.getElementById(containerId);
-  if (!box) return;
   items = (items || []).filter(function(it) { return it && it.why; });
+  var box = document.getElementById(containerId);
+  if (!box) {
+    if (!items.length) return;
+    box = eolMakeExplContainer(containerId);
+    if (!box) return;
+  }
   if (!items.length) { box.style.display = 'none'; return; }
   var wrong = items.filter(function(it) { return !it.ok; });
   box.style.display = 'block';
@@ -514,14 +532,32 @@ function eolToggleAllExpl(btn) {
  * The framework calls this automatically on the summary step (see showStep),
  * so a page only needs an EXPLAIN global and a <div id="explanations">.
  */
+/* All units' explanations, fetched once from data/explanations.json (below). */
+var EOL_EXPLAIN_ALL = null;
+
+/* The explanation data for THIS page: an inline `EXPLAIN` global still wins
+   (back-compat / override), otherwise the entry for this page's UNIT from the
+   shared data file. */
+function eolExplainForPage() {
+  if (typeof EXPLAIN !== 'undefined' && EXPLAIN) return EXPLAIN;
+  if (EOL_EXPLAIN_ALL && typeof UNIT !== 'undefined' && EOL_EXPLAIN_ALL[UNIT]) return EOL_EXPLAIN_ALL[UNIT];
+  return null;
+}
+
+function eolApplyExplanations() {
+  renderExplanations('explanations', eolCollectExplanations());
+}
+
 function eolCollectExplanations() {
-  if (typeof EXPLAIN === 'undefined' || !EXPLAIN) return [];
+  var data = eolExplainForPage();
+  if (!data) return [];
   var items = [];
-  Object.keys(EXPLAIN).forEach(function(sk) {
-    var sec = EXPLAIN[sk];
+  Object.keys(data).forEach(function(sk) {
+    var sec = data[sk];
     var prefix = sec.prefix || (sk + '-');
     var gaps = sec.gaps || sec;
     Object.keys(gaps).forEach(function(g) {
+      if (g === 'prefix' || g === 'gaps') return;   // skip config keys on flat entries
       var d = gaps[g];
       var el = document.getElementById(prefix + g);
       var student = el ? (el.value || '') : ((state[sk] && state[sk][g]) || '');
@@ -783,3 +819,20 @@ function eolInjectChrome() {
   }
 }
 document.addEventListener('DOMContentLoaded', eolInjectChrome);
+
+/* Load all pages' explanations once from the shared data file. Fetch fails
+   under file:// — that's fine, explanations just stay hidden. If the data
+   arrives after the student is already on the results screen, re-render. */
+document.addEventListener('DOMContentLoaded', function() {
+  if (typeof fetch !== 'function') return;
+  fetch('data/explanations.json')
+    .then(function(r) { return r && r.ok ? r.json() : null; })
+    .then(function(data) {
+      if (!data) return;
+      EOL_EXPLAIN_ALL = data;
+      var lastId = 'step-' + (typeof TOTAL_STEPS !== 'undefined' ? TOTAL_STEPS : -1);
+      var last = document.getElementById(lastId);
+      if (last && last.classList.contains('active')) eolApplyExplanations();
+    })
+    .catch(function() {});
+});

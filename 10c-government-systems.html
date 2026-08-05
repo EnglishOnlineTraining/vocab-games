@@ -22,7 +22,6 @@
 </header>
 <nav class="step-nav" id="step-nav"></nav>
 
-
 <!-- ====================================================
      STEP 0 – WELCOME
 ===================================================== -->
@@ -56,7 +55,6 @@
     </div>
   </div>
 </section>
-
 
 <!-- ====================================================
      STEP 1 – EXERCISE A: Reading Comprehension
@@ -172,7 +170,6 @@
   </div>
 </section>
 
-
 <!-- ====================================================
      STEP 2 – EXERCISE B: Passive Voice
 ===================================================== -->
@@ -283,7 +280,6 @@
     </div>
   </div>
 </section>
-
 
 <!-- ====================================================
      STEP 3 – EXERCISE C: Active → Passive
@@ -396,7 +392,6 @@
   </div>
 </section>
 
-
 <!-- ====================================================
      STEP 4 – EXERCISE D: Writing
 ===================================================== -->
@@ -438,7 +433,6 @@
   </div>
 </section>
 
-
 <!-- ====================================================
      STEP 5 – REVIEW & SUBMIT
 ===================================================== -->
@@ -451,7 +445,6 @@
     </div>
     <div id="score-display" style="display:none"></div>
     <div id="summary-container"></div>
-    <div id="explanations" style="display:none"></div>
     <div class="card" style="text-align:center">
       <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
       <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
@@ -470,7 +463,6 @@
     </div>
   </div>
 </section>
-
 
 <script src="exercise.js"></script>
 <script>
@@ -529,47 +521,6 @@ function restoreStep(n) {
    SUMMARY
 ============================================================ */
 /* Review-page explanations — UK/US government facts (Ex A) + passive voice (Ex B, Ex C). */
-var EXPLAIN = {
-  exA: {
-    prefix: 'exA-',
-    gaps: {
-      g1: { label: '1. The UK is a constitutional ___', correct: 'monarchy', why: 'The UK keeps a monarch as head of state → constitutional monarchy.' },
-      g2: { label: '2. Real political power is held by ___', correct: 'Parliament', why: 'In the UK, real power lies with the elected Parliament, not the King.' },
-      g3: { label: '3. Members of the House of Commons are ___', correct: 'elected', why: 'MPs are chosen by voters → elected.' },
-      g4: { label: '4. The leader of the UK government is the ___', correct: 'Prime Minister', why: 'The head of the UK government is the Prime Minister.' },
-      g5: { label: '5. The US Constitution was signed in ___', correct: '1787', why: 'The US Constitution was signed in 1787.' },
-      g6: { label: '6. The US head of state is the ___', correct: 'President', why: 'In the USA the head of state is the President.' },
-      g7: { label: '7. Power is divided between the federal government and the fifty ___', correct: 'states', why: 'US power is split between the federal government and the fifty states.' },
-      g8: { label: '8. The system that stops anyone becoming too powerful', correct: 'checks and balances', why: 'The system that limits each branch’s power is called checks and balances.' }
-    }
-  },
-  exB: {
-    prefix: 'exB-',
-    gaps: {
-      g1: { label: '1. In the UK, laws ___ by Parliament', correct: 'are made', why: 'Passive, present: laws receive the action → are + made.' },
-      g2: { label: '2. The US Constitution ___ in 1787', correct: 'was signed', why: 'Passive, past (1787) → was + signed.' },
-      g3: { label: '3. The Prime Minister ___ by the King', correct: 'is asked', why: 'Passive, present → is + asked.' },
-      g4: { label: '4. Members of the House of Commons ___ by the people', correct: 'are elected', why: 'Passive, present, plural subject → are + elected.' },
-      g5: { label: '5. Last year, a new law ___', correct: 'was passed', why: 'Passive, past (last year) → was + passed.' },
-      g6: { label: '6. The American President ___ every four years', correct: 'is elected', why: 'Passive, present, singular subject → is + elected.' },
-      g7: { label: '7. Many important decisions ___ in Washington', correct: 'are made', why: 'Passive, present, plural subject → are + made.' },
-      g8: { label: '8. The White House ___ in the late 18th century', correct: 'was built', why: 'Passive, past → was + built.' }
-    }
-  },
-  exC: {
-    prefix: 'exC-',
-    gaps: {
-      g1: { label: '1. The people elect the President →', correct: 'is elected', why: 'Present passive: is + elected.' },
-      g2: { label: '2. Parliament makes the laws →', correct: 'are made', why: 'Present passive, plural → are + made.' },
-      g3: { label: '3. Congress passed the law in 2020 →', correct: 'was passed', why: 'Past passive → was + passed.' },
-      g4: { label: '4. They will hold an election next year →', correct: 'will be held', why: 'Future passive → will be + held.' },
-      g5: { label: '5. The government has increased taxes →', correct: 'have been increased', why: 'Present perfect passive → have been + increased.' },
-      g6: { label: '6. Workers built the Capitol in 1800 →', correct: 'was built', why: 'Past passive → was + built.' },
-      g7: { label: '7. The King opens Parliament every year →', correct: 'is opened', why: 'Present passive → is + opened.' },
-      g8: { label: '8. People speak English in both countries →', correct: 'is spoken', why: 'Present passive → is + spoken.' }
-    }
-  }
-};
 
 function buildSummary() {
   saveStep(1); saveStep(2); saveStep(3); saveStep(4);

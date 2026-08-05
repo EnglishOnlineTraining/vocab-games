@@ -21,7 +21,6 @@
 </header>
 <nav class="step-nav" id="step-nav"></nav>
 
-
 <!-- STEP 0 – WELCOME -->
 <section id="step-0" class="step active">
   <div class="step-inner">
@@ -51,7 +50,6 @@
     </div>
   </div>
 </section>
-
 
 <!-- STEP 1 – EXERCISE A: Reading -->
 <section id="step-1" class="step">
@@ -89,7 +87,6 @@
     </div>
   </div>
 </section>
-
 
 <!-- STEP 2 – EXERCISE B: Gap-fill (past perfect) -->
 <section id="step-2" class="step">
@@ -148,7 +145,6 @@
     </div>
   </div>
 </section>
-
 
 <!-- STEP 3 – EXERCISE C: Sentence transformation -->
 <section id="step-3" class="step">
@@ -216,7 +212,6 @@
   </div>
 </section>
 
-
 <!-- STEP 4 – EXERCISE D: Writing -->
 <section id="step-4" class="step">
   <div class="step-inner">
@@ -247,7 +242,6 @@
   </div>
 </section>
 
-
 <!-- STEP 5 – SUBMIT -->
 <section id="step-5" class="step">
   <div class="step-inner">
@@ -258,7 +252,6 @@
     </div>
     <div id="score-display" style="display:none"></div>
     <div id="summary-container"></div>
-    <div id="explanations" style="display:none"></div>
     <div class="card" style="text-align:center">
       <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
       <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
@@ -275,7 +268,6 @@
     </div>
   </div>
 </section>
-
 
 <script src="exercise.js"></script>
 <script>
@@ -329,31 +321,6 @@ function restoreStep(n) {
 }
 
 /* Review-page explanations — past perfect (had + past participle for the earlier of two past actions). */
-var EXPLAIN = {
-  exB: {
-    prefix: 'ex2-',
-    gaps: {
-      g1: { label: '1. By the time Drake set sail, he ___ to navigate', correct: 'had already learned', why: 'The learning came before he set sail → past perfect: had + past participle.' },
-      g2: { label: '2. When the Queen knighted him, Drake ___ wealthy', correct: 'had become', why: 'He became wealthy before the knighting → past perfect: had become.' },
-      g3: { label: '3. After Drake ___ his voyage, he returned', correct: 'had completed', why: '“After” marks the earlier action → past perfect: had completed.' },
-      g4: { label: '4. The soldiers were tired because they ___ all day', correct: 'had fought', why: 'The fighting happened before the tiredness → past perfect: had fought.' },
-      g5: { label: '5. By 1588, the Spanish ___ the largest fleet', correct: 'had built', why: 'Completed before 1588 → past perfect: had built.' }
-    }
-  },
-  exC: {
-    prefix: 'ex3-',
-    gaps: {
-      g1: { label: '1. When Henry VIII became king, …', correct: 'his father had already died', why: 'His father died before Henry became king → past perfect (had already died).' },
-      g2: { label: '2. By the time the Armada arrived, …', correct: 'Drake had warned the English fleet', why: 'The warning came before the Armada arrived → past perfect.' },
-      g3: { label: '3. After Drake …, the Queen rewarded him', correct: 'had returned to England', why: '“After” marks the earlier action → past perfect: had returned.' },
-      g4: { label: '4. The sailors were exhausted because they …', correct: 'had not slept for days', why: 'No sleep came before the exhaustion → past perfect: had not slept.' },
-      g5: { label: '5. Elizabeth was relieved because the Spanish …', correct: 'had not managed to land', why: 'The failure to land came before her relief → past perfect.' },
-      g6: { label: '6. Before Drake became famous, …', correct: 'he had worked on merchant ships', why: '“Before he became famous” → the earlier job takes past perfect: had worked.' },
-      g7: { label: '7. Drake told the Queen that he …', correct: 'had captured many Spanish ships', why: 'Reporting an earlier completed action → past perfect: had captured.' },
-      g8: { label: '8. By 1580, …', correct: 'Drake had sailed around the world', why: 'Completed by that date → past perfect: had sailed.' }
-    }
-  }
-};
 
 function checkEx2() {
   checkDropdowns(['g1','g2','g3','g4','g5'], 'ex2-',
@@ -391,7 +358,6 @@ function buildEmailBody() {
     + '\n\n--- Ex D ---\n' + (state.ex4.text||'');
 }
 
-
 function buildPayload() {
   var sc = totalScore();
   var gr = lookupGrade(sc.earned, sc.possible);
@@ -411,7 +377,6 @@ function buildPayload() {
 
 document.addEventListener('DOMContentLoaded', function() { showStep(0); });
 </script>
-
 
 </body>
 </html>
