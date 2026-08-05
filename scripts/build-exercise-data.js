@@ -97,6 +97,31 @@ files.forEach(f => {
   });
 });
 
+// ---- Abitur packs (separate architecture — no exercise.js). Include so they
+//      appear in the filterable index and sitemap. Skills-based, no grammar topic. ----
+const ABI_SKILLS = {
+  'text-analysis': ['reading', 'writing'],
+  'argumentative-writing': ['writing'],
+  'writing-summaries': ['reading', 'writing'],
+  'mediation': ['reading', 'writing']
+};
+const ABI_LABEL = {
+  'text-analysis': 'Text analysis',
+  'argumentative-writing': 'Argumentative writing',
+  'writing-summaries': 'Writing summaries',
+  'mediation': 'Mediation'
+};
+files.filter(f => /^abitur-/.test(f) && !/activities\.html$/.test(f)).forEach(f => {
+  const s = fs.readFileSync(path.join(ROOT, f), 'utf8');
+  const title = decode(m1(/<title>([\s\S]*?)<\/title>/i, s)).replace(/\s*[—–-]\s*Abitur English\s*$/i, '').trim()
+             || decode(m1(/<h1[^>]*>([\s\S]*?)<\/h1>/i, s));
+  const key = Object.keys(ABI_LABEL).find(k => f.indexOf('abitur-' + k) === 0);
+  exercises.push({
+    file: f, title: title, year: 'abitur', schoolType: 'gymnasium',
+    topics: [], skills: ABI_SKILLS[key] || ['writing'], blurb: ABI_LABEL[key] || 'Abitur'
+  });
+});
+
 fs.mkdirSync(path.join(ROOT, 'data'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'data', 'exercises.json'), JSON.stringify(exercises, null, 2));
 
