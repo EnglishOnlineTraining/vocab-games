@@ -552,7 +552,6 @@ function buildSummary() {
   html += '</div>';
   document.getElementById('summary-container').innerHTML = html;
   renderScore();
-  renderExplanations('explanations', collectExplanations());
 }
 
 /* ============================================================
@@ -592,21 +591,6 @@ var EXPLAIN = {
   }
 };
 
-function collectExplanations() {
-  var items = [];
-  ['exA', 'exB', 'exC'].forEach(function(sk) {
-    var defs = EXPLAIN[sk];
-    if (!defs) return;
-    Object.keys(defs).forEach(function(g) {
-      var d = defs[g];
-      var student = (state[sk] && state[sk][g]) || '';
-      var accept = d.accept || [d.correct];
-      items.push({ label: d.label, correct: d.correct, student: student, why: d.why,
-                   ok: accept.indexOf(student) !== -1 });
-    });
-  });
-  return items;
-}
 
 /* ============================================================
    EMAIL FALLBACK BODY

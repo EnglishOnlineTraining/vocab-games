@@ -148,6 +148,7 @@ function showStep(n) {
   document.getElementById('header-step').textContent = n < TOTAL_STEPS
     ? 'Exercise ' + String.fromCharCode(64 + n) + ' of ' + (TOTAL_STEPS - 1)
     : (practiseMode ? 'Ergebnis' : 'Submit');
+  if (n === TOTAL_STEPS) renderExplanations('explanations', eolCollectExplanations());
   if (practiseMode && n === TOTAL_STEPS) eolPractiseResults();
 }
 
@@ -500,6 +501,32 @@ function eolToggleAllExpl(btn) {
   var show = el.style.display === 'none';
   el.style.display = show ? 'block' : 'none';
   btn.textContent = show ? 'Hide all explanations' : 'Show all explanations';
+}
+
+/*
+ * Build the explanation items from a page's global EXPLAIN, read straight
+ * off the DOM selects so it works regardless of the page's state keys.
+ *   EXPLAIN = { exA: { prefix:'exA-', gaps: { g1:{label,correct,why,accept?}, … } }, … }
+ * The framework calls this automatically on the summary step (see showStep),
+ * so a page only needs an EXPLAIN global and a <div id="explanations">.
+ */
+function eolCollectExplanations() {
+  if (typeof EXPLAIN === 'undefined' || !EXPLAIN) return [];
+  var items = [];
+  Object.keys(EXPLAIN).forEach(function(sk) {
+    var sec = EXPLAIN[sk];
+    var prefix = sec.prefix || (sk + '-');
+    var gaps = sec.gaps || sec;
+    Object.keys(gaps).forEach(function(g) {
+      var d = gaps[g];
+      var el = document.getElementById(prefix + g);
+      var student = el ? (el.value || '') : ((state[sk] && state[sk][g]) || '');
+      var accept = d.accept || [d.correct];
+      items.push({ label: d.label, correct: d.correct, student: student, why: d.why,
+                   ok: accept.indexOf(student) !== -1 });
+    });
+  });
+  return items;
 }
 
 function submitToSheet() {
