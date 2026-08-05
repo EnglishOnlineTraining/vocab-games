@@ -124,17 +124,47 @@ function eolFlat(o) {
  *   fbId     — id of the feedback div,    e.g. 'step1-fb'
  *   scoreKey — unique key for this check, e.g. 'exA'
  *
- * Scoring counts each gap's FIRST checked answer only (tracked in
- * state.firstTry). Re-checking still recolours the gaps so students can
- * learn from mistakes, but changing an answer after a check cannot
- * improve the recorded score.
+ * Scoring uses graded attempts (see recordGap): a gap scores 1 point if
+ * correct on the 1st check, ½ on the 2nd, ¼ on the 3rd, 0 after that. A
+ * check only counts as an attempt when the gap has a non-blank value, and
+ * once a gap is answered correctly its points are locked. Re-checking still
+ * recolours the gaps so students can learn from mistakes.
  */
+
+/* Points awarded for a correct answer on attempt n: 1st=1, 2nd=½, 3rd=¼, later=0. */
+function attemptPoints(n) { return n <= 1 ? 1 : n === 2 ? 0.5 : n === 3 ? 0.25 : 0; }
+
+/*
+ * Record one check of a single gap for graded-attempt scoring.
+ * A gap is tracked in state.attempts[scoreKey][k] as { n, earned, done }.
+ * Only non-blank checks reach here (callers skip empty gaps), so each call
+ * is a real attempt. Once the gap is correct (done) it is frozen: further
+ * checks neither add attempts nor change its earned points.
+ */
+function recordGap(scoreKey, k, ok) {
+  if (!scoreKey) return;
+  if (!state.attempts) state.attempts = {};
+  var tries = state.attempts[scoreKey] = state.attempts[scoreKey] || {};
+  var gap = tries[k] || (tries[k] = { n: 0, earned: 0, done: false });
+  if (gap.done) return;
+  gap.n += 1;
+  if (ok) { gap.earned = attemptPoints(gap.n); gap.done = true; }
+}
+
+/* Sum the locked-in points recorded for a scoreKey (may be fractional). */
+function recordedPoints(scoreKey) {
+  var tries = state.attempts && state.attempts[scoreKey];
+  if (!tries) return 0;
+  var sum = 0;
+  Object.keys(tries).forEach(function(k) { sum += tries[k].earned; });
+  return sum;
+}
+
+/* Trim a possibly-fractional point total to a tidy string (e.g. 3.25, 5). */
+function fmtPts(x) { return (Math.round(x * 100) / 100).toString(); }
+
 function checkDropdowns(ids, prefix, answers, fbId, scoreKey) {
-  var correct = 0, wrong = 0, empty = 0, firstTry = null;
-  if (scoreKey) {
-    if (!state.firstTry) state.firstTry = {};
-    firstTry = state.firstTry[scoreKey] = state.firstTry[scoreKey] || {};
-  }
+  var correct = 0, wrong = 0, empty = 0;
   ids.forEach(function(k) {
     var sel = document.getElementById(prefix + k);
     if (!sel) return;
@@ -143,16 +173,16 @@ function checkDropdowns(ids, prefix, answers, fbId, scoreKey) {
     var ok = sel.value === answers[k];
     if (ok) { sel.className += ' gap-correct'; correct++; }
     else    { sel.className += ' gap-wrong';   wrong++;   }
-    if (firstTry && !(k in firstTry)) firstTry[k] = ok;
+    recordGap(scoreKey, k, ok);
   });
-  var total = ids.length, scored = correct;
-  if (firstTry) {
-    scored = 0;
-    Object.keys(firstTry).forEach(function(k) { if (firstTry[k]) scored++; });
-    state.scores[scoreKey] = { correct: scored, total: total };
+  var total = ids.length;
+  var recorded = correct;
+  if (scoreKey) {
+    recorded = recordedPoints(scoreKey);
+    state.scores[scoreKey] = { correct: recorded, total: total };
   }
-  var scoreNote = (scoreKey && scored !== correct)
-    ? ' Your recorded score counts your first answers: ' + scored + ' / ' + total + '.'
+  var scoreNote = (scoreKey && recorded !== correct)
+    ? ' Recorded so far: ' + fmtPts(recorded) + ' / ' + total + ' points (1st try = 1, 2nd = ½, 3rd = ¼).'
     : '';
   var fb = document.getElementById(fbId);
   fb.style.display = 'block';
@@ -180,11 +210,7 @@ function checkDropdowns(ids, prefix, answers, fbId, scoreKey) {
  *   identical to checkDropdowns, so renderScore() works unchanged.
  */
 function checkDropdownsMulti(ids, prefix, answers, fbId, scoreKey) {
-  var correct = 0, wrong = 0, empty = 0, firstTry = null;
-  if (scoreKey) {
-    if (!state.firstTry) state.firstTry = {};
-    firstTry = state.firstTry[scoreKey] = state.firstTry[scoreKey] || {};
-  }
+  var correct = 0, wrong = 0, empty = 0;
   ids.forEach(function(k) {
     var sel = document.getElementById(prefix + k);
     if (!sel) return;
@@ -195,16 +221,16 @@ function checkDropdownsMulti(ids, prefix, answers, fbId, scoreKey) {
     var ok = acc.indexOf(sel.value) !== -1;
     if (ok) { sel.className += ' gap-correct'; correct++; }
     else    { sel.className += ' gap-wrong';   wrong++;   }
-    if (firstTry && !(k in firstTry)) firstTry[k] = ok;
+    recordGap(scoreKey, k, ok);
   });
-  var total = ids.length, scored = correct;
-  if (firstTry) {
-    scored = 0;
-    Object.keys(firstTry).forEach(function(k) { if (firstTry[k]) scored++; });
-    state.scores[scoreKey] = { correct: scored, total: total };
+  var total = ids.length;
+  var recorded = correct;
+  if (scoreKey) {
+    recorded = recordedPoints(scoreKey);
+    state.scores[scoreKey] = { correct: recorded, total: total };
   }
-  var scoreNote = (scoreKey && scored !== correct)
-    ? ' Your recorded score counts your first answers: ' + scored + ' / ' + total + '.'
+  var scoreNote = (scoreKey && recorded !== correct)
+    ? ' Recorded so far: ' + fmtPts(recorded) + ' / ' + total + ' points (1st try = 1, 2nd = ½, 3rd = ¼).'
     : '';
   var fb = document.getElementById(fbId);
   fb.style.display = 'block';
@@ -316,9 +342,9 @@ function renderScore() {
   box.style.display = 'block';
   box.innerHTML = '<div class="card" style="text-align:center;background:var(--gold-lt);border:1.5px solid var(--gold)">'
     + '<div style="font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--blue);font-weight:700;margin-bottom:.3rem">Your score (auto-graded sections)</div>'
-    + '<div style="font-size:1.5rem;font-weight:800;color:var(--blue)">' + sc.earned + ' / ' + sc.possible + ' points</div>'
+    + '<div style="font-size:1.5rem;font-weight:800;color:var(--blue)">' + fmtPts(sc.earned) + ' / ' + sc.possible + ' points</div>'
     + (grade ? '<div style="font-size:1rem;color:var(--blue);margin-top:.2rem">Note ' + grade.note + ' (' + grade.label + ')</div>' : '')
-    + '<div style="font-size:.78rem;color:var(--muted);margin-top:.4rem">Scores count the first answer you checked for each gap — changing an answer later does not change the score. This score is also sent to your teacher. Open-ended writing answers are graded by your teacher separately.</div>'
+    + '<div style="font-size:.78rem;color:var(--muted);margin-top:.4rem">Each gap scores 1 point if you get it right first time, ½ on the second try and ¼ on the third — so it pays to check carefully. This score is also sent to your teacher. Open-ended writing answers are graded by your teacher separately.</div>'
     + '</div>';
 }
 
