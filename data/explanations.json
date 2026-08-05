@@ -8597,5 +8597,1244 @@
         }
       }
     }
+  },
+  "it-cybersecurity": {
+    "exA": {
+      "prefix": "",
+      "gaps": {
+        "a1": {
+          "label": "1. The phishing email pretended to be from...",
+          "correct": "the IT department",
+          "accept": [
+            "a"
+          ],
+          "why": "The text says the email appeared to come from the IT department."
+        },
+        "a2": {
+          "label": "2. The link led to...",
+          "correct": "a fake login page",
+          "accept": [
+            "b"
+          ],
+          "why": "The text says the link led to a fake login page copying the company design."
+        },
+        "a3": {
+          "label": "3. Attackers couldn't access accounts because of...",
+          "correct": "two-factor authentication",
+          "accept": [
+            "c"
+          ],
+          "why": "The text says two-factor authentication stopped the attackers."
+        },
+        "a4": {
+          "label": "4. How many colleagues entered credentials?",
+          "correct": "three",
+          "accept": [
+            "a"
+          ],
+          "why": "The text says three colleagues entered their credentials."
+        },
+        "a5": {
+          "label": "5. If you get a suspicious message, you should...",
+          "correct": "forward it to the security team",
+          "accept": [
+            "b"
+          ],
+          "why": "The text says to forward the message to the security team."
+        },
+        "a6": {
+          "label": "6. According to the text, the IT department...",
+          "correct": "never asks for credentials by email",
+          "accept": [
+            "c"
+          ],
+          "why": "The text says IT never asks for credentials by email."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "",
+      "gaps": {
+        "b1": {
+          "label": "1. Fake emails tricking users into revealing passwords",
+          "correct": "phishing",
+          "accept": [
+            "b"
+          ],
+          "why": "‘Phishing’ is fake emails that trick users into revealing passwords."
+        },
+        "b2": {
+          "label": "2. Protects data by making it unreadable",
+          "correct": "Encryption",
+          "accept": [
+            "a"
+          ],
+          "why": "‘Encryption’ protects data by making it unreadable without a key."
+        },
+        "b3": {
+          "label": "3. A software update that fixes a security hole",
+          "correct": "patch",
+          "accept": [
+            "c"
+          ],
+          "why": "A ‘patch’ is a software update that fixes a security hole."
+        },
+        "b4": {
+          "label": "4. Password plus a code from your phone",
+          "correct": "Two-factor authentication",
+          "accept": [
+            "a"
+          ],
+          "why": "‘Two-factor authentication’ requires a password plus a code from your phone."
+        },
+        "b5": {
+          "label": "5. Connect securely to the network from home",
+          "correct": "VPN",
+          "accept": [
+            "b"
+          ],
+          "why": "A ‘VPN’ lets employees connect securely to the company network remotely."
+        },
+        "b6": {
+          "label": "6. A weakness attackers can exploit",
+          "correct": "vulnerability",
+          "accept": [
+            "c"
+          ],
+          "why": "A ‘vulnerability’ is a weakness that attackers can exploit."
+        },
+        "b7": {
+          "label": "7. Viruses, worms and ransomware",
+          "correct": "malware",
+          "accept": [
+            "a"
+          ],
+          "why": "Viruses, worms and ransomware are all types of malware."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "",
+      "gaps": {
+        "c1": {
+          "label": "1. If you ___ a phishing link...",
+          "correct": "click",
+          "accept": [
+            "a"
+          ],
+          "why": "Type I conditionals use the present simple after ‘if’."
+        },
+        "c2": {
+          "label": "2. If the firewall is misconfigured, traffic ___ blocked",
+          "correct": "will be",
+          "accept": [
+            "b"
+          ],
+          "why": "The Type I result clause uses ‘will’ + passive."
+        },
+        "c3": {
+          "label": "3. You ___ share your password",
+          "correct": "must never",
+          "accept": [
+            "c"
+          ],
+          "why": "‘Must never’ expresses a strong prohibition."
+        },
+        "c4": {
+          "label": "4. If an update ___ available...",
+          "correct": "is",
+          "accept": [
+            "a"
+          ],
+          "why": "Type I conditionals use the present simple after ‘if’."
+        },
+        "c5": {
+          "label": "5. Employees ___ use a VPN on public Wi-Fi",
+          "correct": "should",
+          "accept": [
+            "b"
+          ],
+          "why": "‘Should’ expresses a strong recommendation."
+        },
+        "c6": {
+          "label": "6. If we ___ install the patch...",
+          "correct": "don't",
+          "accept": [
+            "c"
+          ],
+          "why": "The logic requires the negative: not installing the patch leaves the vulnerability exploitable."
+        },
+        "c7": {
+          "label": "7. Unless you verify the sender, you ___ open it",
+          "correct": "shouldn't",
+          "accept": [
+            "a"
+          ],
+          "why": "‘Unless’ (= if not) pairs with advice against an action: ‘shouldn't’."
+        }
+      }
+    }
+  },
+  "it-global-collaboration": {
+    "exA": {
+      "prefix": "",
+      "gaps": {
+        "a1": {
+          "label": "1. Why 13:00 CET?",
+          "correct": "it suits all three time zones",
+          "accept": [
+            "a"
+          ],
+          "why": "The text says the time is early enough for Brazil and late enough for India, suiting all three offices."
+        },
+        "a2": {
+          "label": "2. Why keep calendars updated?",
+          "correct": "colleagues can see their availability",
+          "accept": [
+            "b"
+          ],
+          "why": "The text says this lets colleagues see when you are available."
+        },
+        "a3": {
+          "label": "3. If your connection is weak, you should...",
+          "correct": "turn off your camera and say your name",
+          "accept": [
+            "c"
+          ],
+          "why": "The text says to turn the camera off and say your name before speaking."
+        },
+        "a4": {
+          "label": "4. According to Priya, direct feedback...",
+          "correct": "can sound harsh to colleagues from other cultures",
+          "accept": [
+            "a"
+          ],
+          "why": "The text says direct feedback can sound harsh to colleagues from other cultures."
+        },
+        "a5": {
+          "label": "5. Priya recommends...",
+          "correct": "asking questions instead of making statements",
+          "accept": [
+            "c"
+          ],
+          "why": "The text says to ask questions instead of making statements."
+        },
+        "a6": {
+          "label": "6. The kick-off takes place...",
+          "correct": "on Monday",
+          "accept": [
+            "b"
+          ],
+          "why": "The text says the kick-off is on Monday."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "",
+      "gaps": {
+        "b1": {
+          "label": "1. India and Germany are in different ___",
+          "correct": "time zones",
+          "accept": [
+            "b"
+          ],
+          "why": "India and Germany are in different time zones."
+        },
+        "b2": {
+          "label": "2. Anyone with an interest in project success",
+          "correct": "stakeholder",
+          "accept": [
+            "a"
+          ],
+          "why": "A ‘stakeholder’ is anyone with an interest in the project's success."
+        },
+        "b3": {
+          "label": "3. Must deliver by Friday — a hard ___",
+          "correct": "deadline",
+          "accept": [
+            "c"
+          ],
+          "why": "A firm delivery date is called a hard deadline."
+        },
+        "b4": {
+          "label": "4. Works without sharing a physical office",
+          "correct": "remote team",
+          "accept": [
+            "a"
+          ],
+          "why": "A ‘remote team’ works together without sharing a physical office."
+        },
+        "b5": {
+          "label": "5. Understanding how other cultures communicate",
+          "correct": "cultural sensitivity",
+          "accept": [
+            "b"
+          ],
+          "why": "‘Cultural sensitivity’ is understanding how other cultures communicate."
+        },
+        "b6": {
+          "label": "6. A one-hour ___ with Dublin",
+          "correct": "video call",
+          "accept": [
+            "c"
+          ],
+          "why": "A one-hour video call is a meeting over video."
+        },
+        "b7": {
+          "label": "7. Conferences build your ___",
+          "correct": "professional network",
+          "accept": [
+            "b"
+          ],
+          "why": "Conferences are a good place to build your professional network."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "",
+      "gaps": {
+        "c1": {
+          "label": "1. Could you tell me when the meeting ___?",
+          "correct": "starts",
+          "accept": [
+            "a"
+          ],
+          "why": "Indirect questions keep normal word order — no ‘does’."
+        },
+        "c2": {
+          "label": "2. I was wondering if you ___ the report yet",
+          "correct": "have finished",
+          "accept": [
+            "b"
+          ],
+          "why": "‘Yet’ signals the present perfect ‘have finished’."
+        },
+        "c3": {
+          "label": "3. Do you know ___ the server is located?",
+          "correct": "where",
+          "accept": [
+            "c"
+          ],
+          "why": "‘Where’ asks about location, with normal word order in the indirect question."
+        },
+        "c4": {
+          "label": "4. Could you explain how ___?",
+          "correct": "the backup works",
+          "accept": [
+            "a"
+          ],
+          "why": "Indirect questions keep normal word order — no ‘does’."
+        },
+        "c5": {
+          "label": "5. Would you mind ___ the document again?",
+          "correct": "sending",
+          "accept": [
+            "c"
+          ],
+          "why": "‘Would you mind’ is followed by the gerund (-ing) form."
+        },
+        "c6": {
+          "label": "6. May I ask why ___ delayed?",
+          "correct": "the release was",
+          "accept": [
+            "a"
+          ],
+          "why": "Indirect questions keep normal word order — no ‘was the release’."
+        },
+        "c7": {
+          "label": "7. I'd like to know whether the update ___ tested",
+          "correct": "has been",
+          "accept": [
+            "b"
+          ],
+          "why": "The passive present perfect ‘has been tested’ agrees with singular ‘the update’."
+        }
+      }
+    }
+  },
+  "it-hardware-networking": {
+    "exA": {
+      "prefix": "",
+      "gaps": {
+        "a1": {
+          "label": "1. In RAID 1, the data...",
+          "correct": "is mirrored on two drives",
+          "accept": [
+            "a"
+          ],
+          "why": "The text says the drives are mirrored in a RAID 1 configuration."
+        },
+        "a2": {
+          "label": "2. Option B is better for virtualisation because...",
+          "correct": "more RAM",
+          "accept": [
+            "b"
+          ],
+          "why": "The text says Option B has 128 GB of RAM, better for running virtual machines."
+        },
+        "a3": {
+          "label": "3. Workstations are connected to...",
+          "correct": "a central switch",
+          "accept": [
+            "c"
+          ],
+          "why": "The text says all workstations are connected to a central switch."
+        },
+        "a4": {
+          "label": "4. LAN/internet traffic is managed by...",
+          "correct": "the router",
+          "accept": [
+            "a"
+          ],
+          "why": "The text says the router manages traffic between the LAN and the internet."
+        },
+        "a5": {
+          "label": "5. The firewall's job is to...",
+          "correct": "filter incoming traffic",
+          "accept": [
+            "c"
+          ],
+          "why": "The text says the firewall filters incoming traffic."
+        },
+        "a6": {
+          "label": "6. T. Krüger recommends...",
+          "correct": "Option B",
+          "accept": [
+            "b"
+          ],
+          "why": "The text says the recommendation is Option B."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "",
+      "gaps": {
+        "b1": {
+          "label": "1. The 'brain' of the computer",
+          "correct": "CPU",
+          "accept": [
+            "a"
+          ],
+          "why": "The CPU is the 'brain' that executes instructions."
+        },
+        "b2": {
+          "label": "2. Lost when the computer is switched off",
+          "correct": "RAM",
+          "accept": [
+            "b"
+          ],
+          "why": "Data in RAM is lost when the computer is switched off."
+        },
+        "b3": {
+          "label": "3. No moving parts, faster than a hard drive",
+          "correct": "SSD",
+          "accept": [
+            "c"
+          ],
+          "why": "An SSD has no moving parts and is much faster than a traditional hard drive."
+        },
+        "b4": {
+          "label": "4. Forwards data packets between networks",
+          "correct": "router",
+          "accept": [
+            "a"
+          ],
+          "why": "The router forwards data packets between different networks."
+        },
+        "b5": {
+          "label": "5. Connects devices inside the office",
+          "correct": "switch",
+          "accept": [
+            "b"
+          ],
+          "why": "Inside the office, devices are connected through a switch."
+        },
+        "b6": {
+          "label": "6. Computers in the building share the same ___",
+          "correct": "LAN",
+          "accept": [
+            "c"
+          ],
+          "why": "All computers in the building belong to the same LAN."
+        },
+        "b7": {
+          "label": "7. Video conferences use a lot of ___",
+          "correct": "bandwidth",
+          "accept": [
+            "a"
+          ],
+          "why": "Video conferences use a lot of bandwidth."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "",
+      "gaps": {
+        "c1": {
+          "label": "1. Data ___ between the two drives",
+          "correct": "is mirrored",
+          "accept": [
+            "a"
+          ],
+          "why": "‘Data’ is treated as singular here, so the passive uses ‘is mirrored’."
+        },
+        "c2": {
+          "label": "2. The servers ___ in a locked room",
+          "correct": "are kept",
+          "accept": [
+            "b"
+          ],
+          "why": "‘Servers’ is plural, so the passive uses ‘are kept’."
+        },
+        "c3": {
+          "label": "3. Incoming traffic ___ by the firewall",
+          "correct": "is filtered",
+          "accept": [
+            "c"
+          ],
+          "why": "‘Traffic’ is singular/uncountable, so the passive uses ‘is filtered’."
+        },
+        "c4": {
+          "label": "4. Backups ___ every night",
+          "correct": "are created",
+          "accept": [
+            "a"
+          ],
+          "why": "‘Backups’ is plural, so the passive uses ‘are created’."
+        },
+        "c5": {
+          "label": "5. The network ___ by two administrators",
+          "correct": "is managed",
+          "accept": [
+            "b"
+          ],
+          "why": "‘The network’ is singular, so the passive uses ‘is managed’."
+        },
+        "c6": {
+          "label": "6. New hardware ___ before it is installed",
+          "correct": "is tested",
+          "accept": [
+            "c"
+          ],
+          "why": "‘Hardware’ is singular/uncountable, so the passive uses ‘is tested’."
+        },
+        "c7": {
+          "label": "7. IP addresses ___ automatically",
+          "correct": "are assigned",
+          "accept": [
+            "a"
+          ],
+          "why": "‘IP addresses’ is plural, so the passive uses ‘are assigned’."
+        }
+      }
+    }
+  },
+  "it-project-management": {
+    "exA": {
+      "prefix": "",
+      "gaps": {
+        "a1": {
+          "label": "1. The team completed...",
+          "correct": "eight of the ten backlog items",
+          "accept": [
+            "a"
+          ],
+          "why": "The text says the team completed eight of the ten sprint backlog items."
+        },
+        "a2": {
+          "label": "2. The data migration was finished...",
+          "correct": "ahead of schedule",
+          "accept": [
+            "b"
+          ],
+          "why": "The text says the data migration was finished ahead of schedule."
+        },
+        "a3": {
+          "label": "3. The customer was happy with...",
+          "correct": "the KPI visualisations",
+          "accept": [
+            "c"
+          ],
+          "why": "The text says the customer was very happy with the KPI visualisations."
+        },
+        "a4": {
+          "label": "4. The recurring problem is...",
+          "correct": "an unstable test environment",
+          "accept": [
+            "a"
+          ],
+          "why": "The text says tickets are blocked because the test environment is unstable."
+        },
+        "a5": {
+          "label": "5. Daniel is going to...",
+          "correct": "set up a second test environment",
+          "accept": [
+            "c"
+          ],
+          "why": "The text says Daniel will set up a second environment next week."
+        },
+        "a6": {
+          "label": "6. Before Monday's meeting, the team should...",
+          "correct": "update their tickets in the repository",
+          "accept": [
+            "b"
+          ],
+          "why": "The text asks everyone to update tickets in the repository before the meeting."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "",
+      "gaps": {
+        "b1": {
+          "label": "1. Short work cycles in Scrum",
+          "correct": "sprints",
+          "accept": [
+            "a"
+          ],
+          "why": "In Scrum, work is organised into short cycles called sprints."
+        },
+        "b2": {
+          "label": "2. All open tasks are collected in the product ___",
+          "correct": "backlog",
+          "accept": [
+            "b"
+          ],
+          "why": "All open tasks are collected in the product backlog."
+        },
+        "b3": {
+          "label": "3. Completing the beta version was a ___",
+          "correct": "milestone",
+          "accept": [
+            "c"
+          ],
+          "why": "An important achievement in a project timeline is a milestone."
+        },
+        "b4": {
+          "label": "4. Anyone affected by the project's outcome",
+          "correct": "stakeholder",
+          "accept": [
+            "a"
+          ],
+          "why": "A stakeholder is anyone affected by the project's outcome."
+        },
+        "b5": {
+          "label": "5. Measuring success with response time, uptime",
+          "correct": "KPIs",
+          "accept": [
+            "b"
+          ],
+          "why": "KPIs (Key Performance Indicators) measure success, like response time and uptime."
+        },
+        "b6": {
+          "label": "6. Git is the most popular tool for ___",
+          "correct": "version control",
+          "accept": [
+            "c"
+          ],
+          "why": "Git is the most popular tool for version control."
+        },
+        "b7": {
+          "label": "7. ___ methods like Scrum respond quickly to change",
+          "correct": "Agile",
+          "accept": [
+            "a"
+          ],
+          "why": "Agile methods like Scrum respond quickly to change."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "",
+      "gaps": {
+        "c1": {
+          "label": "1. We ___ eight of the ten items",
+          "correct": "have completed",
+          "accept": [
+            "a"
+          ],
+          "why": "‘We’ is plural, so the present perfect uses ‘have completed’."
+        },
+        "c2": {
+          "label": "2. The data ___ migrated",
+          "correct": "has been",
+          "accept": [
+            "b"
+          ],
+          "why": "‘The data’ is treated as singular here, so the passive present perfect uses ‘has been’."
+        },
+        "c3": {
+          "label": "3. Maria ___ present the backlog",
+          "correct": "is going to present",
+          "accept": [
+            "c"
+          ],
+          "why": "‘Is going to’ describes a planned future action at Monday's meeting."
+        },
+        "c4": {
+          "label": "4. The customer ___ the export function yet",
+          "correct": "hasn't seen",
+          "accept": [
+            "a"
+          ],
+          "why": "‘Yet’ with a singular subject takes the present perfect negative ‘hasn't seen’."
+        },
+        "c5": {
+          "label": "5. ___ you ever worked with Kanban?",
+          "correct": "Have",
+          "accept": [
+            "b"
+          ],
+          "why": "‘Have’ + subject + past participle + ‘ever’ forms a present perfect experience question."
+        },
+        "c6": {
+          "label": "6. The tickets ___ updated before the meeting",
+          "correct": "will be",
+          "accept": [
+            "c"
+          ],
+          "why": "‘Will be’ + past participle is the future passive."
+        },
+        "c7": {
+          "label": "7. The test environment ___ unstable since Sprint 12",
+          "correct": "has been",
+          "accept": [
+            "a"
+          ],
+          "why": "‘Since’ signals the present perfect for a state continuing to now."
+        }
+      }
+    }
+  },
+  "it-support": {
+    "exA": {
+      "prefix": "",
+      "gaps": {
+        "a1": {
+          "label": "1. The user's problem was that she...",
+          "correct": "could not open files on the shared drive",
+          "accept": [
+            "a"
+          ],
+          "why": "The text says the user could not open any files on the shared drive."
+        },
+        "a2": {
+          "label": "2. First-level support asked her to...",
+          "correct": "restart her computer",
+          "accept": [
+            "b"
+          ],
+          "why": "The text says first-level support asked her to restart her computer."
+        },
+        "a3": {
+          "label": "3. The cause of the problem was...",
+          "correct": "changed permissions after an update",
+          "accept": [
+            "c"
+          ],
+          "why": "The text says her permissions had been changed during the system update."
+        },
+        "a4": {
+          "label": "4. As a workaround, Tom...",
+          "correct": "gave her temporary access to copies of the files",
+          "accept": [
+            "a"
+          ],
+          "why": "The text says Tom gave her temporary access to a copy of the files."
+        },
+        "a5": {
+          "label": "5. The ticket was resolved...",
+          "correct": "within the four-hour SLA",
+          "accept": [
+            "c"
+          ],
+          "why": "The text says the ticket was closed within the SLA of four hours."
+        },
+        "a6": {
+          "label": "6. The follow-up task is to check...",
+          "correct": "whether other accounts were affected",
+          "accept": [
+            "b"
+          ],
+          "why": "The text says second-level support will check whether other accounts were affected."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "",
+      "gaps": {
+        "b1": {
+          "label": "1. Every support request is documented in a ___",
+          "correct": "ticket",
+          "accept": [
+            "a"
+          ],
+          "why": "Every support request is documented in a ticket."
+        },
+        "b2": {
+          "label": "2. If first-level support can't solve it, an ___ follows",
+          "correct": "escalation",
+          "accept": [
+            "b"
+          ],
+          "why": "An escalation to second level follows if first-level support can't solve a problem."
+        },
+        "b3": {
+          "label": "3. Defines how quickly a ticket must be resolved",
+          "correct": "SLA",
+          "accept": [
+            "c"
+          ],
+          "why": "The SLA (Service Level Agreement) defines how quickly a ticket must be resolved."
+        },
+        "b4": {
+          "label": "4. A temporary solution that lets the user keep working",
+          "correct": "workaround",
+          "accept": [
+            "a"
+          ],
+          "why": "A workaround is a temporary solution that lets the user keep working."
+        },
+        "b5": {
+          "label": "5. Answers calls and solves simple problems",
+          "correct": "First-level support",
+          "accept": [
+            "b"
+          ],
+          "why": "First-level support answers calls and solves simple, common problems."
+        },
+        "b6": {
+          "label": "6. An unplanned interruption to a service",
+          "correct": "incident",
+          "accept": [
+            "c"
+          ],
+          "why": "An unplanned interruption to a service is called an incident."
+        },
+        "b7": {
+          "label": "7. The ticket stays open until the ___ is confirmed",
+          "correct": "resolution",
+          "accept": [
+            "a"
+          ],
+          "why": "The ticket stays open until the resolution is confirmed by the user."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "",
+      "gaps": {
+        "c1": {
+          "label": "1. Could you ___ the issue?",
+          "correct": "describe",
+          "accept": [
+            "a"
+          ],
+          "why": "‘Could you’ is followed by the base verb."
+        },
+        "c2": {
+          "label": "2. Would you mind ___ your computer?",
+          "correct": "restarting",
+          "accept": [
+            "b"
+          ],
+          "why": "‘Would you mind’ is followed by the gerund (-ing) form."
+        },
+        "c3": {
+          "label": "3. She said that she ___ not open the files",
+          "correct": "could",
+          "accept": [
+            "c"
+          ],
+          "why": "Reported speech backshifts ‘can’ to ‘could’."
+        },
+        "c4": {
+          "label": "4. Do you know ___ the error first appeared?",
+          "correct": "when",
+          "accept": [
+            "a"
+          ],
+          "why": "Indirect questions keep normal word order after the question word."
+        },
+        "c5": {
+          "label": "5. She told us the error message ___ every time",
+          "correct": "appeared",
+          "accept": [
+            "b"
+          ],
+          "why": "Reported speech backshifts the present simple to the past simple."
+        },
+        "c6": {
+          "label": "6. Could you tell me ___ you have restarted the PC?",
+          "correct": "whether",
+          "accept": [
+            "c"
+          ],
+          "why": "‘Whether’ (or ‘if’) introduces an indirect yes/no question."
+        },
+        "c7": {
+          "label": "7. I was wondering ___ you could give me access",
+          "correct": "if",
+          "accept": [
+            "a"
+          ],
+          "why": "‘I was wondering if’ is the standard polite request pattern."
+        }
+      }
+    }
+  },
+  "it-working-in-it": {
+    "exA": {
+      "prefix": "",
+      "gaps": {
+        "a1": {
+          "label": "1. The infrastructure team looks after...",
+          "correct": "the servers, the network and the hardware",
+          "accept": [
+            "a"
+          ],
+          "why": "The text says the infrastructure team looks after servers, network and hardware."
+        },
+        "a2": {
+          "label": "2. Anna's job is...",
+          "correct": "system administrator",
+          "accept": [
+            "b"
+          ],
+          "why": "The text names Anna as the system administrator."
+        },
+        "a3": {
+          "label": "3. The helpdesk opens at 7:30 because...",
+          "correct": "many production colleagues start early",
+          "accept": [
+            "c"
+          ],
+          "why": "The text says the helpdesk opens early because many colleagues in production start early."
+        },
+        "a4": {
+          "label": "4. During their first year, apprentices...",
+          "correct": "rotate through all three teams",
+          "accept": [
+            "a"
+          ],
+          "why": "The text says apprentices rotate through all three teams in their first year."
+        },
+        "a5": {
+          "label": "5. New apprentices start in...",
+          "correct": "the support team",
+          "accept": [
+            "c"
+          ],
+          "why": "The text says apprentices start with the support team."
+        },
+        "a6": {
+          "label": "6. On Fridays, the apprentice should ask...",
+          "correct": "Anna",
+          "accept": [
+            "b"
+          ],
+          "why": "The text says to ask Anna for help on Fridays, when Denis doesn't work."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "",
+      "gaps": {
+        "b1": {
+          "label": "1. The IT ___ is responsible for all computers",
+          "correct": "department",
+          "accept": [
+            "a"
+          ],
+          "why": "The IT department is responsible for all computers in the company."
+        },
+        "b2": {
+          "label": "2. Manages servers and installs updates",
+          "correct": "system administrator",
+          "accept": [
+            "b"
+          ],
+          "why": "A system administrator manages servers and installs updates."
+        },
+        "b3": {
+          "label": "3. Call this if your laptop stops working",
+          "correct": "helpdesk",
+          "accept": [
+            "c"
+          ],
+          "why": "You call the helpdesk if your laptop stops working."
+        },
+        "b4": {
+          "label": "4. Monitors, keyboards and printers",
+          "correct": "hardware",
+          "accept": [
+            "a"
+          ],
+          "why": "Monitors, keyboards and printers are examples of hardware."
+        },
+        "b5": {
+          "label": "5. Programs and operating systems",
+          "correct": "software",
+          "accept": [
+            "b"
+          ],
+          "why": "Programs and operating systems are called software."
+        },
+        "b6": {
+          "label": "6. New employees get a ___ with username/password",
+          "correct": "user account",
+          "accept": [
+            "c"
+          ],
+          "why": "Every new employee gets a user account with a username and password."
+        },
+        "b7": {
+          "label": "7. The support team works in two ___",
+          "correct": "shifts",
+          "accept": [
+            "a"
+          ],
+          "why": "The support team works in two shifts: early and late."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "",
+      "gaps": {
+        "c1": {
+          "label": "1. Anna ___ user accounts",
+          "correct": "manages",
+          "accept": [
+            "a"
+          ],
+          "why": "He/she in the simple present adds ‘-s’: Anna manages."
+        },
+        "c2": {
+          "label": "2. The helpdesk ___ at 7:30",
+          "correct": "opens",
+          "accept": [
+            "b"
+          ],
+          "why": "A singular subject in the simple present adds ‘-s’: opens."
+        },
+        "c3": {
+          "label": "3. Denis ___ work on Fridays",
+          "correct": "doesn't",
+          "accept": [
+            "c"
+          ],
+          "why": "Simple present negatives for he/she use ‘doesn't’."
+        },
+        "c4": {
+          "label": "4. ___ the developers work flexible hours?",
+          "correct": "Do",
+          "accept": [
+            "a"
+          ],
+          "why": "‘Developers’ is plural, so the question uses ‘Do’, not ‘Does’."
+        },
+        "c5": {
+          "label": "5. The team meeting ___ place every Monday",
+          "correct": "takes",
+          "accept": [
+            "b"
+          ],
+          "why": "A singular subject in the simple present adds ‘-s’: takes."
+        },
+        "c6": {
+          "label": "6. Where ___ your mentor sit?",
+          "correct": "does",
+          "accept": [
+            "c"
+          ],
+          "why": "Simple present questions for he/she use ‘does’."
+        },
+        "c7": {
+          "label": "7. Apprentices ___ through all three teams",
+          "correct": "rotate",
+          "accept": [
+            "a"
+          ],
+          "why": "‘Apprentices’ is plural, so it takes the base form ‘rotate’."
+        }
+      }
+    }
+  },
+  "it-workplace-safety": {
+    "exA": {
+      "prefix": "",
+      "gaps": {
+        "a1": {
+          "label": "1. Before entering, visitors must...",
+          "correct": "sign in and complete a safety briefing",
+          "accept": [
+            "b"
+          ],
+          "why": "The text says visitors must sign in and complete a safety briefing before entering."
+        },
+        "a2": {
+          "label": "2. An ESD wrist strap protects...",
+          "correct": "components from electrostatic discharge",
+          "accept": [
+            "a"
+          ],
+          "why": "The text says even a small electrostatic discharge can destroy a memory module."
+        },
+        "a3": {
+          "label": "3. The yellow tape marks...",
+          "correct": "an area where floor panels were removed",
+          "accept": [
+            "c"
+          ],
+          "why": "The text says floor panels were removed and the area marked with yellow tape."
+        },
+        "a4": {
+          "label": "4. Ear protection is recommended...",
+          "correct": "for visits longer than one hour",
+          "accept": [
+            "a"
+          ],
+          "why": "The text says ear protection is recommended for stays of more than one hour."
+        },
+        "a5": {
+          "label": "5. Food and drink in the server room are...",
+          "correct": "strictly forbidden",
+          "accept": [
+            "c"
+          ],
+          "why": "The text says food and drink are strictly forbidden."
+        },
+        "a6": {
+          "label": "6. The full risk assessment is...",
+          "correct": "attached to the memo",
+          "accept": [
+            "b"
+          ],
+          "why": "The text says a full risk assessment is attached to the memo."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "",
+      "gaps": {
+        "b1": {
+          "label": "1. Good ___ prevents trip hazards",
+          "correct": "cable management",
+          "accept": [
+            "b"
+          ],
+          "why": "Good cable management prevents loose cables from becoming trip hazards."
+        },
+        "b2": {
+          "label": "2. Carried out before electrical work",
+          "correct": "risk assessment",
+          "accept": [
+            "a"
+          ],
+          "why": "A risk assessment is carried out before electrical work."
+        },
+        "b3": {
+          "label": "3. Adjusting your chair and monitor height",
+          "correct": "ergonomics",
+          "accept": [
+            "c"
+          ],
+          "why": "Good ergonomics prevents back and neck pain."
+        },
+        "b4": {
+          "label": "4. A wet floor without a warning sign",
+          "correct": "hazard",
+          "accept": [
+            "a"
+          ],
+          "why": "A wet floor without a warning sign is a serious hazard."
+        },
+        "b5": {
+          "label": "5. The room needs constant ___",
+          "correct": "ventilation",
+          "accept": [
+            "b"
+          ],
+          "why": "Servers produce heat, so the room needs constant ventilation."
+        },
+        "b6": {
+          "label": "6. Wrist straps protect components from ___",
+          "correct": "ESD",
+          "accept": [
+            "c"
+          ],
+          "why": "Anti-static wrist straps protect components from ESD (electrostatic discharge)."
+        },
+        "b7": {
+          "label": "7. Helmets, gloves and safety glasses",
+          "correct": "PPE",
+          "accept": [
+            "a"
+          ],
+          "why": "Helmets, gloves and safety glasses are examples of PPE (personal protective equipment)."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "",
+      "gaps": {
+        "c1": {
+          "label": "1. Wear an ESD strap (strict rule)",
+          "correct": "must",
+          "accept": [
+            "a"
+          ],
+          "why": "‘Must’ expresses a strict, non-negotiable obligation."
+        },
+        "c2": {
+          "label": "2. Eat or drink (forbidden)",
+          "correct": "mustn't",
+          "accept": [
+            "b"
+          ],
+          "why": "‘Mustn't’ expresses a prohibition."
+        },
+        "c3": {
+          "label": "3. Report accidents (required by law)",
+          "correct": "have to",
+          "accept": [
+            "c"
+          ],
+          "why": "‘Have to’ expresses an external obligation imposed by law."
+        },
+        "c4": {
+          "label": "4. Take screen breaks (good for eyes)",
+          "correct": "should",
+          "accept": [
+            "a"
+          ],
+          "why": "‘Should’ expresses a recommendation."
+        },
+        "c5": {
+          "label": "5. Wear a helmet (optional but recommended)",
+          "correct": "ought to",
+          "accept": [
+            "b"
+          ],
+          "why": "‘Ought to’ expresses a recommendation, matching ‘optional but recommended’."
+        },
+        "c6": {
+          "label": "6. Be certified for high-voltage work",
+          "correct": "must",
+          "accept": [
+            "c"
+          ],
+          "why": "‘Must’ expresses a strict requirement — untrained staff are not allowed."
+        },
+        "c7": {
+          "label": "7. Lift heavy servers alone (ask for help instead)",
+          "correct": "shouldn't",
+          "accept": [
+            "a"
+          ],
+          "why": "‘Shouldn't’ expresses advice against an action."
+        }
+      }
+    }
   }
 }
