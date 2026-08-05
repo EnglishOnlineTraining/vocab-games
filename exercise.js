@@ -705,3 +705,81 @@ document.addEventListener('copy', function(e) {
     setTimeout(function() { msg.remove(); }, 400);
   }, 2000);
 });
+
+/* ============================================================
+   SITE CHROME — breadcrumb + unified footer (Phase 1.3)
+   Injected on every framework page via exercise.js; zero per-page
+   edits. Self-contained styles (fall back if a page lacks style.css)
+   so it renders consistently across all ~128 exercise pages.
+============================================================ */
+function eolPageFile() { return (location.pathname.split('/').pop() || '').toLowerCase(); }
+
+function eolCrumbLabel() {
+  var f = eolPageFile();
+  var m = f.match(/^(\d{1,2})([gc])-/);
+  if (m) return 'Jahrgang ' + m[1] + ' · ' + (m[2] === 'g' ? 'Gymnasium' : 'Oberschule');
+  if (/^7a-/.test(f)) return 'Jahrgang 7 · Gymnasium';
+  if (/^msa-/.test(f)) return 'MSA · Prüfungstraining';
+  if (/^uni-/.test(f)) return 'Universität';
+  if (/^it-/.test(f))  return 'IT English';
+  if (/^be-/.test(f))  return 'Business English';
+  return 'Übungen';
+}
+
+function eolPageTitle() {
+  var el = document.querySelector('.welcome-title') || document.querySelector('h1');
+  var t = el ? el.textContent.trim() : '';
+  if (!t) t = (document.title || '').replace(/\s*[|·–—-]\s*englishonline\.training.*$/i, '').trim();
+  return t;
+}
+
+function eolInjectChrome() {
+  if (document.getElementById('eol-chrome-style')) return;
+  var st = document.createElement('style');
+  st.id = 'eol-chrome-style';
+  st.textContent =
+    '.eol-crumbs{max-width:760px;margin:0 auto;padding:.5rem 1rem;font-size:.76rem;color:var(--muted,#6b7a8d)}'
+    + '.eol-crumbs a{color:var(--teal,#2b7a78);text-decoration:none}'
+    + '.eol-crumbs a:hover{text-decoration:underline}'
+    + '.eol-crumbs .sep{opacity:.5;margin:0 .35rem}'
+    + '.eol-footer{margin-top:2.75rem;padding:1.6rem 1rem;border-top:1px solid var(--border,#dce3ec);text-align:center;font-size:.8rem;color:var(--muted,#6b7a8d)}'
+    + '.eol-footer nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1.1rem;margin-bottom:.7rem}'
+    + '.eol-footer a{color:var(--teal,#2b7a78);text-decoration:none;font-weight:600}'
+    + '.eol-footer a:hover{text-decoration:underline}'
+    + '.eol-footer .legal{opacity:.85;font-weight:400}';
+  document.head.appendChild(st);
+
+  var header = document.querySelector('header.app-header');
+  var title = eolPageTitle();
+  if (header && !document.getElementById('eol-crumbs')) {
+    var nav = document.createElement('nav');
+    nav.id = 'eol-crumbs';
+    nav.className = 'eol-crumbs';
+    nav.setAttribute('aria-label', 'Breadcrumb');
+    nav.innerHTML = '<a href="activities.html">Übungen</a><span class="sep">›</span>'
+      + '<span>' + esc(eolCrumbLabel()) + '</span>'
+      + (title ? '<span class="sep">›</span><span>' + esc(title) + '</span>' : '');
+    header.parentNode.insertBefore(nav, header.nextSibling);
+  }
+
+  if (!document.getElementById('eol-footer')) {
+    var f = document.createElement('footer');
+    f.id = 'eol-footer';
+    f.className = 'eol-footer';
+    f.innerHTML =
+      '<nav aria-label="Seiten">'
+      + '<a href="activities.html">Alle Übungen</a>'
+      + '<a href="themen/index.html">Grammatik-Themen</a>'
+      + '<a href="uni-activities.html">Universität</a>'
+      + '<a href="business-activities.html">Business</a>'
+      + '<a href="it-activities.html">IT</a>'
+      + '<a href="mailto:englishonlinetraining@pm.me">Kontakt</a>'
+      + '</nav>'
+      + '<div class="legal">© EnglishOnline.Training · '
+      + '<a href="https://englishonline.training">Zur Website</a> · '
+      + '<a href="https://englishonline.training/impressum/">Impressum</a> · '
+      + '<a href="https://englishonline.training/privacy-policy/">Datenschutz</a></div>';
+    document.body.appendChild(f);
+  }
+}
+document.addEventListener('DOMContentLoaded', eolInjectChrome);

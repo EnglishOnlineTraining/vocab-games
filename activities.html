@@ -173,6 +173,9 @@ body{
 /* ── Footer ── */
 .site-footer{text-align:center;font-size:.8rem;color:var(--muted);margin-top:clamp(2rem,5vw,3rem);padding:0 1rem}
 .site-footer a{color:var(--blue-mid)}
+.site-footer-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1.1rem;margin-bottom:.7rem}
+.site-footer-nav a{font-weight:600;text-decoration:none}
+.site-footer-nav a:hover{text-decoration:underline}
 
 /* ── Filterable exercise index (hub) ── */
 .hub{margin-bottom:clamp(2.25rem,6vw,3rem)}
@@ -542,7 +545,18 @@ body{
 </main>
 
 <footer class="site-footer">
-  <a href="https://englishonline.training">EnglishOnline.training</a>
+  <nav class="site-footer-nav" aria-label="Seiten">
+    <a href="themen/index.html">Grammatik-Themen</a>
+    <a href="uni-activities.html">Universität</a>
+    <a href="business-activities.html">Business</a>
+    <a href="it-activities.html">IT</a>
+    <a href="mailto:englishonlinetraining@pm.me">Kontakt</a>
+  </nav>
+  <div>© EnglishOnline.Training ·
+    <a href="https://englishonline.training">Zur Website</a> ·
+    <a href="https://englishonline.training/impressum/">Impressum</a> ·
+    <a href="https://englishonline.training/privacy-policy/">Datenschutz</a>
+  </div>
 </footer>
 
 <script>
