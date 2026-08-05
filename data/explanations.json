@@ -6535,5 +6535,493 @@
         }
       }
     }
+  },
+  "7c-british-school-day": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Emily goes to school in...",
+          "correct": "Manchester",
+          "why": "The text says Emily goes to a secondary school in Manchester, England."
+        },
+        "g2": {
+          "label": "2. She wears a...",
+          "correct": "uniform",
+          "why": "The text says Emily puts on her school uniform every morning."
+        },
+        "g3": {
+          "label": "3. Lessons start at...",
+          "correct": "half past eight",
+          "why": "The text says lessons start at half past eight."
+        },
+        "g4": {
+          "label": "4. Emily's favourite subject is...",
+          "correct": "Science",
+          "why": "The text says Emily's favourite subject is Science because they do experiments."
+        },
+        "g5": {
+          "label": "5. For lunch, Emily eats in the...",
+          "correct": "canteen",
+          "why": "The text says Emily usually eats in the school canteen."
+        },
+        "g6": {
+          "label": "6. School finishes at...",
+          "correct": "three o'clock",
+          "why": "The text says school finishes at three o'clock."
+        },
+        "g7": {
+          "label": "7. After school, Emily stays for...",
+          "correct": "football club",
+          "why": "The text says Emily stays for football club after school."
+        },
+        "g8": {
+          "label": "8. Emily goes to bed at...",
+          "correct": "nine o'clock",
+          "why": "The text says Emily goes to bed at nine o'clock."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. uniform",
+          "correct": "special clothes for school",
+          "why": "‘Uniform’ means the special clothes worn for school."
+        },
+        "g2": {
+          "label": "2. blazer",
+          "correct": "a type of jacket",
+          "why": "A ‘blazer’ is a type of jacket worn in the school colours."
+        },
+        "g3": {
+          "label": "3. subject",
+          "correct": "an area of study at school",
+          "why": "A ‘subject’ is an area of study, like Science or Maths."
+        },
+        "g4": {
+          "label": "4. experiment",
+          "correct": "a test in Science class",
+          "why": "An ‘experiment’ is a scientific test carried out in Science class."
+        },
+        "g5": {
+          "label": "5. break",
+          "correct": "a short rest between lessons",
+          "why": "A ‘break’ is a short rest between lessons."
+        },
+        "g6": {
+          "label": "6. canteen",
+          "correct": "a place to eat at school",
+          "why": "The ‘canteen’ is the place where students eat at school."
+        },
+        "g7": {
+          "label": "7. playground",
+          "correct": "the outside area at school",
+          "why": "The ‘playground’ is the outside area at school."
+        },
+        "g8": {
+          "label": "8. club",
+          "correct": "a group that meets after school",
+          "why": "A ‘club’ is a group that meets after school, like football club."
+        }
+      }
+    }
+  },
+  "7c-school-day-in-britain": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Most students wear a school ___",
+          "correct": "uniform",
+          "why": "The sentence describes a white shirt and a tie — features of a school uniform."
+        },
+        "g2": {
+          "label": "2. The ___ is a special jacket",
+          "correct": "blazer",
+          "why": "A ‘blazer’ is the special jacket worn in school colours."
+        },
+        "g3": {
+          "label": "3. Students go to ___ in the hall",
+          "correct": "assembly",
+          "why": "‘Assembly’ is when the head teacher talks to all students in the hall."
+        },
+        "g4": {
+          "label": "4. A ___ shows lessons and times",
+          "correct": "timetable",
+          "why": "A ‘timetable’ shows which lessons you have and when."
+        },
+        "g5": {
+          "label": "5. Maths is an important ___",
+          "correct": "subject",
+          "why": "‘Subject’ is the word for an area of study like Maths or English."
+        },
+        "g6": {
+          "label": "6. A short ___ at half past ten",
+          "correct": "break",
+          "why": "A ‘break’ is a short pause when students can go outside."
+        },
+        "g7": {
+          "label": "7. Students eat lunch in the ___",
+          "correct": "canteen",
+          "why": "The ‘canteen’ is where students eat their lunch."
+        },
+        "g8": {
+          "label": "8. Teachers give ___",
+          "correct": "homework",
+          "why": "‘Homework’ is work students finish at home in the evening."
+        },
+        "g9": {
+          "label": "9. The school year has three ___",
+          "correct": "terms",
+          "why": "‘Terms’ are the three parts of the British school year: autumn, spring, summer."
+        },
+        "g10": {
+          "label": "10. Many schools have a ___ system",
+          "correct": "house",
+          "why": "A ‘house’ system puts students into teams that compete in events."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. How old is Lily?",
+          "correct": "12 years old",
+          "why": "The text says Lily is 12 years old."
+        },
+        "g2": {
+          "label": "2. What must Lily wear on her feet?",
+          "correct": "Black shoes",
+          "why": "The text says Lily wears black shoes and trainers are not allowed."
+        },
+        "g3": {
+          "label": "3. What time does school start?",
+          "correct": "Quarter to nine",
+          "why": "The text says school starts at quarter to nine."
+        },
+        "g4": {
+          "label": "4. Lily's favourite subject?",
+          "correct": "Art",
+          "why": "The text says Lily's favourite subject is Art."
+        },
+        "g5": {
+          "label": "5. What did Lily eat for lunch?",
+          "correct": "Fish and chips",
+          "why": "The text says Lily had fish and chips for lunch."
+        },
+        "g6": {
+          "label": "6. What time does school finish?",
+          "correct": "Three o'clock",
+          "why": "The text says school finishes at three o'clock."
+        },
+        "g7": {
+          "label": "7. What sport did Lily play in PE?",
+          "correct": "Hockey",
+          "why": "The text says Lily played hockey in PE."
+        },
+        "g8": {
+          "label": "8. Why does Lily go straight home?",
+          "correct": "Because it is Wednesday and she has no club",
+          "why": "The text says Lily has Drama Club on Tuesdays and Football Club on Thursdays, so on Wednesday she goes straight home."
+        }
+      }
+    }
+  },
+  "7g-present-perfect-1": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Tom's not at his desk. He's ___ to lunch.",
+          "correct": "gone",
+          "why": "‘Gone’ is used because Tom is still away — he hasn't come back yet."
+        },
+        "g2": {
+          "label": "2. I've ___ to Berlin three times.",
+          "correct": "been",
+          "why": "‘Been’ is used for a completed visit — the person has returned."
+        },
+        "g3": {
+          "label": "3. We've ___ to that restaurant before.",
+          "correct": "been",
+          "why": "‘Been’ is used for a past experience — the person is back now."
+        },
+        "g4": {
+          "label": "4. She's ___ to the shops. She'll be back soon.",
+          "correct": "gone",
+          "why": "‘Gone’ is used because Maria is still at the shops — she hasn't returned yet."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. My brother ___ his keys again!",
+          "correct": "has lost",
+          "why": "‘My brother’ is singular, so the present perfect uses ‘has lost’."
+        },
+        "g2": {
+          "label": "2. These trees ___ a lot since we planted them.",
+          "correct": "have grown",
+          "why": "‘These trees’ is plural, so the present perfect uses ‘have grown’."
+        },
+        "g3": {
+          "label": "3. The company ___ its results yet.",
+          "correct": "hasn't announced",
+          "why": "‘The company’ is singular, so the present perfect negative uses ‘hasn't announced’."
+        },
+        "g4": {
+          "label": "4. Somebody ___ the window.",
+          "correct": "has broken",
+          "why": "‘Somebody’ is singular, so the present perfect uses ‘has broken’."
+        },
+        "g5": {
+          "label": "5. Petrol prices ___ again this month.",
+          "correct": "have gone up",
+          "why": "‘Petrol prices’ is plural, so the present perfect uses ‘have gone up’."
+        },
+        "g6": {
+          "label": "6. She ___ to drive.",
+          "correct": "has just learned",
+          "why": "‘She’ is singular, so the present perfect uses ‘has just learned’."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. I've ___ finished my homework — five minutes ago!",
+          "correct": "just",
+          "why": "‘Just’ shows an action finished a very short time ago."
+        },
+        "g2": {
+          "label": "2. I have ___ sent the email.",
+          "correct": "already",
+          "why": "‘Already’ shows something happened sooner than expected."
+        },
+        "g3": {
+          "label": "3. Has the bus arrived ___?",
+          "correct": "yet",
+          "why": "‘Yet’ is used in present perfect questions asking if something has happened."
+        },
+        "g4": {
+          "label": "4. We haven't decided where to go ___.",
+          "correct": "yet",
+          "why": "‘Yet’ is used at the end of negative present perfect sentences."
+        },
+        "g5": {
+          "label": "5. They have ___ left for the airport.",
+          "correct": "already",
+          "why": "‘Already’ shows the action happened before now, sooner than expected."
+        }
+      }
+    },
+    "exD": {
+      "prefix": "exD-",
+      "gaps": {
+        "g1": {
+          "label": "1. I have ___ ridden a horse before.",
+          "correct": "never",
+          "why": "‘Never’ (= not at any time) fits the meaning ‘this is my first time’."
+        },
+        "g2": {
+          "label": "2. My grandfather has ___ used a smartphone.",
+          "correct": "never",
+          "why": "‘Never’ expresses that he has not had this experience at any time."
+        },
+        "g3": {
+          "label": "3. Have you ___ visited London?",
+          "correct": "ever",
+          "why": "‘Ever’ is used in present perfect questions asking about experience."
+        },
+        "g4": {
+          "label": "4. This is the strangest thing that ___ to me!",
+          "correct": "has happened",
+          "why": "‘Thing’ is singular, so the present perfect uses ‘has happened’."
+        }
+      }
+    }
+  },
+  "tudor-conditionals-7g": {
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "m1": {
+          "label": "1. Men and boys wouldn't have had all the best roles...",
+          "correct": "c",
+          "why": "This pairs with ‘if girls and women had been allowed to act in plays’ — only men and boys could act in Shakespeare's time."
+        },
+        "m2": {
+          "label": "2. If the Globe hadn't been built with wood,...",
+          "correct": "d",
+          "why": "This pairs with ‘it wouldn't have burnt down’ — the wooden Globe burned down in a real fire."
+        },
+        "m3": {
+          "label": "3. They could have used electric lights...",
+          "correct": "e",
+          "why": "This pairs with ‘if they had had electricity’ — electricity didn't exist in Tudor times."
+        },
+        "m4": {
+          "label": "4. The Globe wouldn't have been so popular...",
+          "correct": "f",
+          "why": "This pairs with ‘if it hadn't been so cheap’ — cheap tickets made the theatre popular."
+        },
+        "m5": {
+          "label": "5. If the theatre had had a roof,...",
+          "correct": "b",
+          "why": "This pairs with ‘people could have stayed dry when it rained’ — the Globe was open-air."
+        },
+        "m6": {
+          "label": "6. If they hadn't had pictures of the old Globe,...",
+          "correct": "a",
+          "why": "This pairs with ‘they couldn't have rebuilt it so well in the 1990s’ — old pictures helped the accurate rebuild."
+        }
+      }
+    },
+    "exD": {
+      "prefix": "exD-",
+      "gaps": {
+        "g1": {
+          "label": "1. If the Romans ___ to England...",
+          "correct": "had not come",
+          "why": "Type III conditionals use the past perfect after ‘if’."
+        },
+        "g2": {
+          "label": "...they ___ a new name to this country.",
+          "correct": "would not have given",
+          "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+        },
+        "g3": {
+          "label": "2. If the Romans ___ for such a long time...",
+          "correct": "had not stayed",
+          "why": "Type III conditionals use the past perfect after ‘if’."
+        },
+        "g4": {
+          "label": "...their language ___ the English language so much.",
+          "correct": "would not have influenced",
+          "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+        },
+        "g5": {
+          "label": "3. The Normans ___ to England...",
+          "correct": "would not have come",
+          "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+        },
+        "g6": {
+          "label": "...if William the Conqueror ___ he had a right to be king.",
+          "correct": "had not believed",
+          "why": "Type III conditionals use the past perfect after ‘if’."
+        },
+        "g7": {
+          "label": "4. The people in England ___ so many words...",
+          "correct": "would not have given up",
+          "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+        },
+        "g8": {
+          "label": "...if French ___ so popular.",
+          "correct": "had not become",
+          "why": "Type III conditionals use the past perfect after ‘if’."
+        },
+        "g9": {
+          "label": "5. If the people in the 16th century ___ the theatre so much...",
+          "correct": "had not loved",
+          "why": "Type III conditionals use the past perfect after ‘if’."
+        },
+        "g10": {
+          "label": "...Shakespeare ___ so many plays.",
+          "correct": "would not have written",
+          "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+        },
+        "g11": {
+          "label": "6. Shakespeare ___ so many new words...",
+          "correct": "would not have invented",
+          "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+        },
+        "g12": {
+          "label": "...if he ___ so many plays and poems.",
+          "correct": "had not written",
+          "why": "Type III conditionals use the past perfect after ‘if’."
+        },
+        "g13": {
+          "label": "7. If English sailors ___ so many countries...",
+          "correct": "had not explored",
+          "why": "Type III conditionals use the past perfect after ‘if’."
+        },
+        "g14": {
+          "label": "...they ___ new things and words with them.",
+          "correct": "would not have brought",
+          "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+        }
+      }
+    },
+    "exE": {
+      "prefix": "exE-",
+      "gaps": {
+        "g1": {
+          "label": "1. If a Celtic king ___ beautiful jewellery...",
+          "correct": "had not always worn",
+          "why": "Type III conditionals use the past perfect after ‘if’."
+        },
+        "g2": {
+          "label": "...it ___ clear to others how important he was.",
+          "correct": "would not have been",
+          "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+        },
+        "g3": {
+          "label": "2. If the Romans ___ baths...",
+          "correct": "had not built",
+          "why": "Type III conditionals use the past perfect after ‘if’."
+        },
+        "g4": {
+          "label": "...they ___ Britain too cold for them.",
+          "correct": "would have found",
+          "why": "The Type III result clause uses ‘would have’ + past participle."
+        },
+        "g5": {
+          "label": "3. If the Normans ___ French...",
+          "correct": "had not spoken",
+          "why": "Type III conditionals use the past perfect after ‘if’."
+        },
+        "g6": {
+          "label": "...the English language ___.",
+          "correct": "would not have changed",
+          "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+        },
+        "g7": {
+          "label": "4. If Henry VIII ___ a son...",
+          "correct": "had not wanted",
+          "why": "Type III conditionals use the past perfect after ‘if’."
+        },
+        "g8": {
+          "label": "...he ___ six times.",
+          "correct": "would not have married",
+          "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+        },
+        "g9": {
+          "label": "5. If Elizabeth ___ to know more about the world...",
+          "correct": "had not wanted",
+          "why": "Type III conditionals use the past perfect after ‘if’."
+        },
+        "g10": {
+          "label": "...she ___ sailors to America.",
+          "correct": "would not have sent",
+          "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+        },
+        "g11": {
+          "label": "6. If Queen Victoria ___ for 64 years...",
+          "correct": "had not reigned",
+          "why": "Type III conditionals use the past perfect after ‘if’."
+        },
+        "g12": {
+          "label": "...she ___ so many changes.",
+          "correct": "would not have seen",
+          "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+        }
+      }
+    }
   }
 }
