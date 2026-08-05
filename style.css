@@ -150,3 +150,14 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); min-
 .listen-play:disabled { opacity:.55; cursor:not-allowed; }
 .listen-status { font-size:.85rem; color:var(--teal); font-weight:600; min-height:1.1em; margin-top:.6rem; }
 .listen-plays { font-size:.8rem; color:var(--muted); margin-top:.3rem; }
+
+/* ── Review-page explanations (renderExplanations in exercise.js) ── */
+.expl-row { padding:.55rem 0; border-top:1px solid var(--border); }
+.expl-row:first-child { border-top:none; }
+.expl-q { font-size:.9rem; font-weight:600; color:var(--text); }
+.expl-a { font-size:.9rem; margin:.15rem 0; }
+.expl-correct { color:var(--green); font-weight:700; }
+.expl-your { color:var(--red); font-weight:600; }
+.expl-why { font-size:.85rem; color:var(--muted); line-height:1.5; }
+.expl-row.expl-wrong { border-left:3px solid var(--red); padding-left:.7rem; }
+.expl-row.expl-ok { border-left:3px solid var(--green); padding-left:.7rem; }

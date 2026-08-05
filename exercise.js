@@ -84,9 +84,8 @@ function eolPractiseResults() {
   panel = document.createElement('div');
   panel.id = 'practise-results';
   panel.innerHTML = eolPractisePanelHtml();
-  var scoreEl = document.getElementById('score-display');
-  if (scoreEl) scoreEl.parentNode.insertBefore(panel, scoreEl.nextSibling);
-  else step.querySelector('.step-inner').appendChild(panel);
+  var inner = step.querySelector('.step-inner') || step;
+  inner.appendChild(panel);   // at the end, below summary + explanations
 }
 
 function eolPractisePanelHtml() {
@@ -457,6 +456,50 @@ function renderScore() {
     + (grade ? '<div style="font-size:1rem;color:var(--blue);margin-top:.2rem">Note ' + grade.note + ' (' + grade.label + ')</div>' : '')
     + '<div style="font-size:.78rem;color:var(--muted);margin-top:.4rem">Each gap scores 1 point if you get it right first time, ½ on the second try and ¼ on the third — so it pays to check carefully. This score is also sent to your teacher. Open-ended writing answers are graded by your teacher separately.</div>'
     + '</div>';
+}
+
+/* ============================================================
+   REVIEW-PAGE EXPLANATIONS
+   A page defines an EXPLAIN map and calls, from buildSummary():
+     renderExplanations('explanations', collectExplanations());
+   items: [{ label, correct, student, why, ok }] — only items with a
+   `why` are shown. Wrong items are listed by default; a toggle reveals
+   the full list. Fully optional: pages without an #explanations
+   container or without EXPLAIN are unaffected.
+============================================================ */
+function eolExplRow(it) {
+  return '<div class="expl-row ' + (it.ok ? 'expl-ok' : 'expl-wrong') + '">'
+    + '<div class="expl-q">' + esc(it.label) + '</div>'
+    + '<div class="expl-a"><span class="expl-correct">' + esc(it.correct) + '</span>'
+    + (it.ok ? '' : ' <span class="expl-your">— you chose: ' + esc(it.student || '—') + '</span>') + '</div>'
+    + '<div class="expl-why">' + esc(it.why) + '</div></div>';
+}
+
+function renderExplanations(containerId, items) {
+  var box = document.getElementById(containerId);
+  if (!box) return;
+  items = (items || []).filter(function(it) { return it && it.why; });
+  if (!items.length) { box.style.display = 'none'; return; }
+  var wrong = items.filter(function(it) { return !it.ok; });
+  box.style.display = 'block';
+  var head = wrong.length
+    ? '<div class="card"><div class="card-title">Explanations — the ones to review (' + wrong.length + ')</div>'
+        + wrong.map(eolExplRow).join('') + '</div>'
+    : '<div class="card"><div class="card-title">Explanations</div>'
+        + '<p style="font-size:.92rem;color:var(--green);margin:0">Everything correct — nothing to review. 🎉</p></div>';
+  var toggle = '<div style="text-align:center;margin:.1rem 0 .7rem">'
+    + '<button type="button" class="btn btn-outline btn-sm" onclick="eolToggleAllExpl(this)">Show all explanations</button></div>';
+  var all = '<div class="card" id="expl-all" style="display:none"><div class="card-title">All explanations</div>'
+    + items.map(eolExplRow).join('') + '</div>';
+  box.innerHTML = head + toggle + all;
+}
+
+function eolToggleAllExpl(btn) {
+  var el = document.getElementById('expl-all');
+  if (!el) return;
+  var show = el.style.display === 'none';
+  el.style.display = show ? 'block' : 'none';
+  btn.textContent = show ? 'Hide all explanations' : 'Show all explanations';
 }
 
 function submitToSheet() {
