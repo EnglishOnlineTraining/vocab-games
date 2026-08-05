@@ -2321,5 +2321,2471 @@
         }
       }
     }
+  },
+  "10c-canada-environment": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Vast, wild ___",
+          "correct": "landscapes",
+          "why": "The text describes Canada as famous for its vast, wild landscapes."
+        },
+        "g2": {
+          "label": "2. Warmed almost ___ times faster",
+          "correct": "three",
+          "why": "The text says the Canadian Arctic has warmed almost three times faster than the global average."
+        },
+        "g3": {
+          "label": "3. The sea ice has become ___",
+          "correct": "thinner",
+          "why": "The text says the sea ice has become thinner as the climate warms."
+        },
+        "g4": {
+          "label": "4. ___ peoples have protected the land",
+          "correct": "indigenous",
+          "why": "The text says Indigenous peoples have protected the land for thousands of years."
+        },
+        "g5": {
+          "label": "5. New national ___",
+          "correct": "parks",
+          "why": "The text says the government has created new national parks."
+        },
+        "g6": {
+          "label": "6. Joined climate ___",
+          "correct": "marches",
+          "why": "The text says many young people have joined climate marches."
+        },
+        "g7": {
+          "label": "7. Cleaner ___",
+          "correct": "energy",
+          "why": "The text says companies have started to use cleaner energy, such as wind power."
+        },
+        "g8": {
+          "label": "8. One of Canada's biggest ___",
+          "correct": "challenges",
+          "why": "The text says protecting the environment is one of Canada's biggest challenges."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Temperatures ___ sharply (rise)",
+          "correct": "have risen",
+          "why": "‘In recent years’ signals an action continuing to now, so the present perfect ‘have risen’ is used."
+        },
+        "g2": {
+          "label": "2. In 2019, Canada ___ (declare)",
+          "correct": "declared",
+          "why": "‘In 2019’ is a finished, specific past time, so the simple past ‘declared’ is used."
+        },
+        "g3": {
+          "label": "3. Indigenous peoples ___ the land (protect)",
+          "correct": "have protected",
+          "why": "‘For thousands of years’ signals an action continuing to now, so the present perfect ‘have protected’ is used."
+        },
+        "g4": {
+          "label": "4. The sea ice ___ thinner (become)",
+          "correct": "has become",
+          "why": "‘Since the 1980s’ signals an action continuing to now, so the present perfect ‘has become’ is used."
+        },
+        "g5": {
+          "label": "5. Last summer, wildfires ___ (destroy)",
+          "correct": "destroyed",
+          "why": "‘Last summer’ is a finished, specific past time, so the simple past ‘destroyed’ is used."
+        },
+        "g6": {
+          "label": "6. Scientists ___ the Arctic (study)",
+          "correct": "have studied",
+          "why": "‘For many decades’ signals an action continuing to now, so the present perfect ‘have studied’ is used."
+        },
+        "g7": {
+          "label": "7. So far, the government ___ parks (create)",
+          "correct": "has created",
+          "why": "‘So far’ signals an action continuing to now, so the present perfect ‘has created’ is used."
+        },
+        "g8": {
+          "label": "8. Two years ago, she ___ (join)",
+          "correct": "joined",
+          "why": "‘Two years ago’ is a finished, specific past time, so the simple past ‘joined’ is used."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. The ice has ___ started to melt",
+          "correct": "already",
+          "why": "‘Already’ is used in positive present perfect sentences to show something has happened sooner than expected."
+        },
+        "g2": {
+          "label": "2. Have you ___ visited a park?",
+          "correct": "ever",
+          "why": "‘Ever’ is used in present perfect questions asking about experience."
+        },
+        "g3": {
+          "label": "3. I have ___ seen the lights",
+          "correct": "never",
+          "why": "‘Never’ (= not at any time) is the standard present perfect word for talking about experience."
+        },
+        "g4": {
+          "label": "4. Protected these forests ___ 1885",
+          "correct": "since",
+          "why": "‘Since’ introduces a specific starting point in time, not a duration like ‘for’."
+        },
+        "g5": {
+          "label": "5. Studied the ice ___ a century",
+          "correct": "for",
+          "why": "‘For’ introduces a duration of time, not a starting point like ‘since’."
+        },
+        "g6": {
+          "label": "6. Has not reached its goals ___",
+          "correct": "yet",
+          "why": "‘Yet’ is used at the end of negative present perfect sentences to show something hasn't happened."
+        },
+        "g7": {
+          "label": "7. We have ___ finished planting",
+          "correct": "just",
+          "why": "‘Just’ shows an action finished a very short time ago."
+        },
+        "g8": {
+          "label": "8. The warmest winter they have ___ recorded",
+          "correct": "ever",
+          "why": "‘Ever’ is used after superlatives in the present perfect."
+        }
+      }
+    }
+  },
+  "10c-discover-canada": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Where do most polar bears live?",
+          "correct": "canada",
+          "why": "The text says more than two-thirds of the world's polar bears live in Canada."
+        },
+        "g2": {
+          "label": "2. Polar bear fur is actually ___",
+          "correct": "transparent",
+          "why": "The text says polar bear fur is actually transparent, not white."
+        },
+        "g3": {
+          "label": "3. The fat layer is called ___",
+          "correct": "blubber",
+          "why": "The text says the thick layer of fat that keeps polar bears warm is called blubber."
+        },
+        "g4": {
+          "label": "4. Detect prey from up to ___",
+          "correct": "32km",
+          "why": "The text says polar bears can detect prey from up to 32km away."
+        },
+        "g5": {
+          "label": "5. The Arctic fox changes colour for ___",
+          "correct": "camouflage",
+          "why": "The text says the Arctic fox changes its fur colour for camouflage."
+        },
+        "g6": {
+          "label": "6. \"Canary of the sea\" because of its ___",
+          "correct": "sounds",
+          "why": "The text says the beluga whale is called the 'canary of the sea' because of its sounds."
+        },
+        "g7": {
+          "label": "7. Climate change causes sea ice to ___",
+          "correct": "melt",
+          "why": "The text says climate change causes Arctic sea ice to melt."
+        },
+        "g8": {
+          "label": "8. Fewer chances to ___",
+          "correct": "hunt",
+          "why": "The text says polar bears have fewer chances to hunt because of less sea ice."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Every winter, caribou ___",
+          "correct": "migrate",
+          "why": "‘Every winter’ signals a habitual action, so the simple present ‘migrate’ is used."
+        },
+        "g2": {
+          "label": "2. \"Look! A polar bear ___\"",
+          "correct": "is swimming",
+          "why": "‘Look!’ signals something happening right now, so the present continuous ‘is swimming’ is used."
+        },
+        "g3": {
+          "label": "3. Students usually ___ school",
+          "correct": "start",
+          "why": "‘Usually’ signals a habitual action, so the simple present ‘start’ is used."
+        },
+        "g4": {
+          "label": "4. Right now, scientists ___",
+          "correct": "are studying",
+          "why": "‘Right now’ signals something happening at this moment, so the present continuous ‘are studying’ is used."
+        },
+        "g5": {
+          "label": "5. The Arctic fox ___ colour twice a year",
+          "correct": "changes",
+          "why": "‘Twice a year’ signals a habitual action, so the simple present ‘changes’ is used."
+        },
+        "g6": {
+          "label": "6. \"It ___ heavily outside\"",
+          "correct": "is snowing",
+          "why": "The context (‘we can't go for a walk today’) signals something happening right now, so the present continuous ‘is snowing’ is used."
+        },
+        "g7": {
+          "label": "7. Many Canadians ___ outdoor activities",
+          "correct": "enjoy",
+          "why": "A general truth about Canadians' habits uses the simple present ‘enjoy’."
+        },
+        "g8": {
+          "label": "8. Temperatures sometimes ___ below -50°",
+          "correct": "drop",
+          "why": "‘Sometimes… in winter’ signals a habitual/general truth, so the simple present ‘drop’ is used."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. Ice hockey ___ the most popular sport",
+          "correct": "has become",
+          "why": "‘Since 1875’ signals an action continuing to now, so the present perfect ‘has become’ is used."
+        },
+        "g2": {
+          "label": "2. Athletes ___ many medals",
+          "correct": "have won",
+          "why": "‘Over the years’ signals an action continuing to now, so the present perfect ‘have won’ is used."
+        },
+        "g3": {
+          "label": "3. My cousin ___ ice hockey since he was five",
+          "correct": "has played",
+          "why": "‘Since he was five’ signals an action continuing to now, so the present perfect ‘has played’ is used."
+        },
+        "g4": {
+          "label": "4. The team ___ in every Olympics since 1998",
+          "correct": "has competed",
+          "why": "‘Since 1998’ signals an action continuing to now, so the present perfect ‘has competed’ is used."
+        },
+        "g5": {
+          "label": "5. \"I ___ curling\"",
+          "correct": "have never tried",
+          "why": "‘Never’ with the present perfect describes an experience up to now."
+        },
+        "g6": {
+          "label": "6. Canada ___ the Winter Olympics twice",
+          "correct": "has hosted",
+          "why": "‘Twice so far’ signals an action continuing to now, so the present perfect ‘has hosted’ is used."
+        },
+        "g7": {
+          "label": "7. Millions of children ___ to skate",
+          "correct": "have learned",
+          "why": "‘Over the decades’ signals an action continuing to now, so the present perfect ‘have learned’ is used."
+        },
+        "g8": {
+          "label": "8. Our school ___ a new club",
+          "correct": "has just started",
+          "why": "‘Just’ with the present perfect shows something happened a very short time ago."
+        }
+      }
+    }
+  },
+  "10c-eu-and-uk": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. A partnership of ___ countries",
+          "correct": "27",
+          "why": "The text says the EU is a partnership of 27 countries."
+        },
+        "g2": {
+          "label": "2. The EU began after ___",
+          "correct": "ww2",
+          "why": "The text says the EU began after World War 2."
+        },
+        "g3": {
+          "label": "3. Goods move without extra ___",
+          "correct": "taxes",
+          "why": "The text says goods can move across EU borders without extra taxes."
+        },
+        "g4": {
+          "label": "4. Citizens can ___",
+          "correct": "liveandwork",
+          "why": "The text says citizens of EU countries can live and work freely in other member states."
+        },
+        "g5": {
+          "label": "5. The UK joined in ___",
+          "correct": "1973",
+          "why": "The text says the UK joined the European Community in 1973."
+        },
+        "g6": {
+          "label": "6. In 2016, a ___",
+          "correct": "referendum",
+          "why": "The text says a referendum was held in 2016."
+        },
+        "g7": {
+          "label": "7. Leaving the EU became known as ___",
+          "correct": "brexit",
+          "why": "The text says the process of the UK leaving the EU became known as Brexit."
+        },
+        "g8": {
+          "label": "8. Since leaving, the UK ___",
+          "correct": "trades",
+          "why": "The text says the UK still trades with the EU since leaving."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Since 1957, countries ___ the EU",
+          "correct": "have joined",
+          "why": "‘Since 1957’ signals an action continuing to now, so the present perfect ‘have joined’ is used."
+        },
+        "g2": {
+          "label": "2. The UK ___ in 1973",
+          "correct": "joined",
+          "why": "‘In 1973’ is a finished, specific past time, so the simple past ‘joined’ is used."
+        },
+        "g3": {
+          "label": "3. Many students ___ abroad",
+          "correct": "have studied",
+          "why": "The ongoing relevance of exchange programmes calls for the present perfect ‘have studied’."
+        },
+        "g4": {
+          "label": "4. In 2016, the British people ___",
+          "correct": "voted",
+          "why": "‘In 2016’ is a finished, specific past time, so the simple past ‘voted’ is used."
+        },
+        "g5": {
+          "label": "5. Over the years, the EU ___",
+          "correct": "has grown",
+          "why": "‘Over the years’ signals an action continuing to now, so the present perfect ‘has grown’ is used."
+        },
+        "g6": {
+          "label": "6. The UK ___ the EU in 2020",
+          "correct": "left",
+          "why": "‘In 2020’ is a finished, specific past time, so the simple past ‘left’ is used."
+        },
+        "g7": {
+          "label": "7. Since Brexit, the trade rules ___",
+          "correct": "have changed",
+          "why": "‘Since Brexit’ signals an action continuing to now, so the present perfect ‘have changed’ is used."
+        },
+        "g8": {
+          "label": "8. \"I ___ to Brussels\"",
+          "correct": "have never been",
+          "why": "‘Never’ with the present perfect describes an experience up to now."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. Created ___ countries wanted to avoid war",
+          "correct": "because",
+          "why": "‘Because’ introduces the reason countries created the EU."
+        },
+        "g2": {
+          "label": "2. Goods move freely; ___",
+          "correct": "in addition",
+          "why": "‘In addition’ adds a further point after the semicolon."
+        },
+        "g3": {
+          "label": "3. Students study abroad, ___",
+          "correct": "for example",
+          "why": "‘For example’ introduces a specific instance — the Erasmus programme."
+        },
+        "g4": {
+          "label": "4. ___ the UK joined in 1973...",
+          "correct": "Although",
+          "why": "‘Although’ introduces a contrast at the start of the sentence."
+        },
+        "g5": {
+          "label": "5. A majority voted to leave; ___",
+          "correct": "therefore",
+          "why": "‘Therefore’ shows the result of the vote — the UK leaving."
+        },
+        "g6": {
+          "label": "6. No longer a member; ___ it trades",
+          "correct": "however",
+          "why": "‘However’ shows a contrast — no longer a member, but still trading."
+        },
+        "g7": {
+          "label": "7. Changed a lot ___ it was founded",
+          "correct": "since",
+          "why": "‘Since’ introduces the starting point (the 1950s), matching the present perfect ‘has changed’."
+        },
+        "g8": {
+          "label": "8. Cooperate ___ they can solve problems",
+          "correct": "so that",
+          "why": "‘So that’ introduces the purpose of cooperating."
+        }
+      }
+    }
+  },
+  "10c-faces-commonwealth": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Priya studies in English and ___",
+          "correct": "Hindi",
+          "why": "The text says Priya studies at school in English and Hindi."
+        },
+        "g2": {
+          "label": "2. Priya wants to study ___",
+          "correct": "medicine",
+          "why": "The text says Priya wants to study medicine at university."
+        },
+        "g3": {
+          "label": "3. Jake lives in ___",
+          "correct": "Auckland",
+          "why": "The text says Jake lives in Auckland, the largest city in New Zealand."
+        },
+        "g4": {
+          "label": "4. \"Kia ora\" is a greeting in ___",
+          "correct": "Māori",
+          "why": "The text says \"Kia ora\" is a greeting in Māori."
+        },
+        "g5": {
+          "label": "5. Kenya gained independence in ___",
+          "correct": "1963",
+          "why": "The text says Kenya gained its independence from Britain in 1963."
+        },
+        "g6": {
+          "label": "6. Amara's school day begins at ___",
+          "correct": "seven",
+          "why": "The text says Amara's school day begins at seven."
+        },
+        "g7": {
+          "label": "7. Amara helps her mother at a ___",
+          "correct": "market stall",
+          "why": "The text says Amara helps her mother at a market stall after school."
+        },
+        "g8": {
+          "label": "8. Kenya is well-known for ___",
+          "correct": "long-distance running",
+          "why": "The text says Kenya is especially well-known for its athletes in long-distance running."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Priya ___ (ongoing now)",
+          "correct": "is training",
+          "why": "‘At the moment’ signals an action happening right now, so the present continuous ‘is training’ is used."
+        },
+        "g2": {
+          "label": "2. Bollywood ___ (permanent fact)",
+          "correct": "produces",
+          "why": "A permanent fact or general truth uses the simple present ‘produces’."
+        },
+        "g3": {
+          "label": "3. Jake ___ his weekends (regular habit)",
+          "correct": "spends",
+          "why": "A regular habit uses the simple present ‘spends’."
+        },
+        "g4": {
+          "label": "4. Jake's friends ___ the haka (ability/fact)",
+          "correct": "can perform",
+          "why": "‘Can’ expresses a general ability or fact."
+        },
+        "g5": {
+          "label": "5. Amara's school ___ at seven (schedule)",
+          "correct": "starts",
+          "why": "A regular schedule uses the simple present ‘starts’."
+        },
+        "g6": {
+          "label": "6. Kenyan athletes ___ medals",
+          "correct": "have won",
+          "why": "An achievement built up over time with present relevance uses the present perfect ‘have won’."
+        },
+        "g7": {
+          "label": "7. \"Look — Jake ___\" (this moment)",
+          "correct": "is surfing",
+          "why": "‘Look’ signals something happening right now, so the present continuous ‘is surfing’ is used."
+        },
+        "g8": {
+          "label": "8. Amara ___ her mother since she was twelve",
+          "correct": "has been helping",
+          "why": "‘Since’ with an action that started in the past and continues now uses the present perfect continuous."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. Countries once part of the British Empire",
+          "correct": "the Commonwealth",
+          "why": "The Commonwealth is the group of countries, most once part of the British Empire, that work together."
+        },
+        "g2": {
+          "label": "2. Original people before settlers arrived",
+          "correct": "indigenous people",
+          "why": "‘Indigenous people’ describes the original inhabitants of a place before settlers arrived."
+        },
+        "g3": {
+          "label": "3. Freedom to self-govern",
+          "correct": "independence",
+          "why": "‘Independence’ is the freedom of a country to govern itself without outside control."
+        },
+        "g4": {
+          "label": "4. Traditional dance expressing identity",
+          "correct": "haka",
+          "why": "The haka is the traditional Māori dance or ceremony expressing group identity mentioned in the text."
+        },
+        "g5": {
+          "label": "5. Way of life, traditions, arts, beliefs",
+          "correct": "culture",
+          "why": "‘Culture’ covers the way of life, traditions, arts and beliefs shared by a group."
+        },
+        "g6": {
+          "label": "6. Very different things in the same place",
+          "correct": "contrasts",
+          "why": "‘Contrasts’ describes things that are very different from each other within the same situation."
+        },
+        "g7": {
+          "label": "7. Protected land for wild animals",
+          "correct": "national park",
+          "why": "A ‘national park’ is a large area of protected land open to visitors where wild animals live."
+        },
+        "g8": {
+          "label": "8. Pride from belonging to a group/nation",
+          "correct": "national identity",
+          "why": "‘National identity’ describes the pride and belonging that comes from being part of a nation."
+        }
+      }
+    }
+  },
+  "10c-india-mumbai": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Mumbai is the ___ city",
+          "correct": "largest",
+          "why": "The text says Mumbai is the largest city in India."
+        },
+        "g2": {
+          "label": "2. Often called the ___ capital",
+          "correct": "financial",
+          "why": "The text says Mumbai is often called the financial capital of India."
+        },
+        "g3": {
+          "label": "3. Skyscrapers next to enormous ___",
+          "correct": "slums",
+          "why": "The text says expensive skyscrapers are built next to enormous slums."
+        },
+        "g4": {
+          "label": "4. Products made in small ___",
+          "correct": "workshops",
+          "why": "The text says many products are made in small workshops."
+        },
+        "g5": {
+          "label": "5. Workers are paid very ___",
+          "correct": "little",
+          "why": "The text says the workers are often paid very little for long hours."
+        },
+        "g6": {
+          "label": "6. ___ organisations help protect workers",
+          "correct": "fairtrade",
+          "why": "The text says fair-trade organisations help to protect workers."
+        },
+        "g7": {
+          "label": "7. A fair-trade label means a fair ___",
+          "correct": "wage",
+          "why": "The text says a fair-trade label means workers were paid a fair wage."
+        },
+        "g8": {
+          "label": "8. Some brands have been ___",
+          "correct": "criticised",
+          "why": "The text says some brands have been criticised for poor conditions."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Many products ___ in workshops",
+          "correct": "are made",
+          "why": "‘Products’ is plural, so the passive uses ‘are made’, not ‘is made’."
+        },
+        "g2": {
+          "label": "2. Mumbai ___ the financial capital",
+          "correct": "is called",
+          "why": "‘Mumbai’ is singular, so the passive uses ‘is called’."
+        },
+        "g3": {
+          "label": "3. Skyscrapers ___ next to slums",
+          "correct": "are built",
+          "why": "‘Skyscrapers’ is plural, so the passive uses ‘are built’."
+        },
+        "g4": {
+          "label": "4. The workers ___ very little",
+          "correct": "are paid",
+          "why": "‘The workers’ is plural, so the passive uses ‘are paid’."
+        },
+        "g5": {
+          "label": "5. Clothes and jewellery ___ around the world",
+          "correct": "are sold",
+          "why": "Two subjects joined by ‘and’ take a plural passive: ‘are sold’."
+        },
+        "g6": {
+          "label": "6. A fair wage ___ to workers",
+          "correct": "is given",
+          "why": "‘A fair wage’ is singular, so the passive uses ‘is given’."
+        },
+        "g7": {
+          "label": "7. Poor factories ___ in the news",
+          "correct": "are criticised",
+          "why": "‘Factories’ is plural, so the passive uses ‘are criticised’."
+        },
+        "g8": {
+          "label": "8. Workers ___ with respect",
+          "correct": "are treated",
+          "why": "‘Workers’ is plural, so the passive uses ‘are treated’."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. Last year, a new law ___",
+          "correct": "was passed",
+          "why": "‘Last year’ is a specific past time, so the simple past passive ‘was passed’ is used."
+        },
+        "g2": {
+          "label": "2. Today, many clothes ___ in India",
+          "correct": "are made",
+          "why": "‘Today’ signals a general present fact, so the present passive ‘are made’ is used."
+        },
+        "g3": {
+          "label": "3. In 2013, one factory ___",
+          "correct": "was closed",
+          "why": "‘In 2013’ is a specific past time, so the simple past passive ‘was closed’ is used."
+        },
+        "g4": {
+          "label": "4. These days, fair-trade labels ___",
+          "correct": "are seen",
+          "why": "‘These days’ signals the present, so the present passive ‘are seen’ is used."
+        },
+        "g5": {
+          "label": "5. Yesterday, the report ___",
+          "correct": "was presented",
+          "why": "‘Yesterday’ is a specific past time, so the simple past passive ‘was presented’ is used."
+        },
+        "g6": {
+          "label": "6. Every day, thousands of items ___",
+          "correct": "are produced",
+          "why": "‘Every day’ signals a habitual present fact, so the present passive ‘are produced’ is used."
+        },
+        "g7": {
+          "label": "7. Recently, one brand ___",
+          "correct": "was criticised",
+          "why": "A finished, recent event is described with the simple past passive ‘was criticised’."
+        },
+        "g8": {
+          "label": "8. These days, workers' rights ___ seriously",
+          "correct": "are taken",
+          "why": "‘These days’ signals the present, so the present passive ‘are taken’ is used."
+        }
+      }
+    }
+  },
+  "10c-inside-india": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Mumbai is India's ___ capital",
+          "correct": "financial",
+          "why": "The text says Mumbai is described as India's financial capital."
+        },
+        "g2": {
+          "label": "2. More films than ___",
+          "correct": "any",
+          "why": "The text says Bollywood produces more films per year than any other film industry."
+        },
+        "g3": {
+          "label": "3. Growth driven mainly by ___",
+          "correct": "technology",
+          "why": "The text says India's economic growth has been driven mainly by the technology sector."
+        },
+        "g4": {
+          "label": "4. Starting salaries have ___",
+          "correct": "stagnated",
+          "why": "The text says a key problem is that starting salaries at major IT companies have stagnated."
+        },
+        "g5": {
+          "label": "5. Volunteers work in ___",
+          "correct": "schools",
+          "why": "The text says Teach For India recruits volunteers to work in schools."
+        },
+        "g6": {
+          "label": "6. Schools now include ___",
+          "correct": "service",
+          "why": "The text says many Indian schools now include service as part of the curriculum."
+        },
+        "g7": {
+          "label": "7. Producers receive ___ prices",
+          "correct": "reasonable",
+          "why": "The text says fair trade organisations ensure small-scale producers receive reasonable prices."
+        },
+        "g8": {
+          "label": "8. Fair trade goods include tea, coffee, spices, and ___",
+          "correct": "textiles",
+          "why": "The text lists tea, coffee, spices, and textiles as common Indian fair trade exports."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. If you ___ Mumbai... (Type I)",
+          "correct": "visit",
+          "why": "Type I conditionals use the present simple after ‘if’, with ‘will’ in the result clause."
+        },
+        "g2": {
+          "label": "2. If I ___ for a fair trade organisation...",
+          "correct": "worked",
+          "why": "Type II conditionals use the past simple after ‘if’, matching the result ‘would help’."
+        },
+        "g3": {
+          "label": "3. ...if they ___ fair wages. (Type I)",
+          "correct": "pay",
+          "why": "Type I conditionals use the present simple after ‘if’, with ‘will’ in the result clause."
+        },
+        "g4": {
+          "label": "4. If every student ___...",
+          "correct": "volunteered",
+          "why": "Type II conditionals use the past simple after ‘if’, matching the result ‘would make’."
+        },
+        "g5": {
+          "label": "5. If the government ___ more... (Type I)",
+          "correct": "invests",
+          "why": "Type I conditionals use the present simple after ‘if’, with ‘will’ in the result clause."
+        },
+        "g6": {
+          "label": "6. If I ___ a Bollywood director... (Type II)",
+          "correct": "were",
+          "why": "Type II conditionals with ‘be’ traditionally use ‘were’ for all subjects, matching ‘would make’."
+        },
+        "g7": {
+          "label": "7. ...if you ___ a volunteer programme. (Type I)",
+          "correct": "join",
+          "why": "Type I conditionals use the present simple after ‘if’, with ‘will’ in the result clause."
+        },
+        "g8": {
+          "label": "8. If all consumers ___ only fair trade products...",
+          "correct": "bought",
+          "why": "Type II conditionals use the past simple after ‘if’, matching the result ‘would earn’."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. Bollywood films ___ every year",
+          "correct": "are produced",
+          "why": "‘Films’ is plural and the sentence is a habitual fact, so the present passive ‘are produced’ is used."
+        },
+        "g2": {
+          "label": "2. Fair trade tea ___",
+          "correct": "is exported",
+          "why": "‘Tea’ is uncountable/singular, so the present passive ‘is exported’ is used."
+        },
+        "g3": {
+          "label": "3. Thousands of children ___ every weekend",
+          "correct": "are helped",
+          "why": "‘Children’ is plural and the sentence is habitual, so the present passive ‘are helped’ is used."
+        },
+        "g4": {
+          "label": "4. The Taj Mahal ___ in the 17th century",
+          "correct": "was built",
+          "why": "A specific past time (‘the 17th century’) takes the simple past passive ‘was built’."
+        },
+        "g5": {
+          "label": "5. Many new schools ___ right now",
+          "correct": "are being built",
+          "why": "‘Right now’ signals an action in progress, so the present continuous passive is used."
+        },
+        "g6": {
+          "label": "6. The workers ___ fairly last year",
+          "correct": "were not paid",
+          "why": "‘Last year’ is a specific past time, so the simple past passive negative is used."
+        },
+        "g7": {
+          "label": "7. Indian spices ___ for hundreds of years",
+          "correct": "have been traded",
+          "why": "‘For hundreds of years’ signals a duration up to now, so the present perfect passive is used."
+        },
+        "g8": {
+          "label": "8. A new community centre ___ last month",
+          "correct": "was opened",
+          "why": "‘Last month’ is a specific past time, so the simple past passive ‘was opened’ is used."
+        }
+      }
+    }
+  },
+  "10c-mlk-biography": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. MLK was born in ___",
+          "correct": "Atlanta",
+          "why": "The text says Martin Luther King Jr. was born in Atlanta."
+        },
+        "g2": {
+          "label": "2. Entered college at age ___",
+          "correct": "fifteen",
+          "why": "The text says he entered college at the age of fifteen."
+        },
+        "g3": {
+          "label": "3. The boycott started after ___",
+          "correct": "Parks arrested",
+          "why": "The text says the Montgomery Bus Boycott was started after Parks was arrested."
+        },
+        "g4": {
+          "label": "4. The boycott lasted ___",
+          "correct": "381 days",
+          "why": "The text says the bus boycott lasted 381 days."
+        },
+        "g5": {
+          "label": "5. The speech was delivered at the ___",
+          "correct": "March on Washington",
+          "why": "The text says the \"I Have a Dream\" speech was delivered at the March on Washington."
+        },
+        "g6": {
+          "label": "6. The Civil Rights Act made discrimination ___",
+          "correct": "illegal",
+          "why": "The text says the Civil Rights Act made racial discrimination in public places illegal."
+        },
+        "g7": {
+          "label": "7. King was ___ when he won the Nobel Prize",
+          "correct": "thirty-five",
+          "why": "The text says King was thirty-five when he won the Nobel Peace Prize."
+        },
+        "g8": {
+          "label": "8. King was in Memphis to support ___",
+          "correct": "striking workers",
+          "why": "The text says King was in Memphis in 1968 to support striking workers."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Rosa Parks ___ (simple past passive)",
+          "correct": "was arrested",
+          "why": "A single completed past event takes the simple past passive: ‘was arrested’."
+        },
+        "g2": {
+          "label": "2. The speech ___ (simple past passive)",
+          "correct": "was delivered",
+          "why": "A single completed past event takes the simple past passive: ‘was delivered’."
+        },
+        "g3": {
+          "label": "3. Passengers ___ to sit at the back (past perfect passive)",
+          "correct": "had been forced",
+          "why": "An action true before another past point (the boycott) takes the past perfect passive."
+        },
+        "g4": {
+          "label": "4. The Civil Rights Act ___ (simple past passive)",
+          "correct": "was signed",
+          "why": "A single completed past event takes the simple past passive: ‘was signed’."
+        },
+        "g5": {
+          "label": "5. MLK Day ___ today (simple present passive)",
+          "correct": "is celebrated",
+          "why": "A regular present-day event takes the simple present passive: ‘is celebrated’."
+        },
+        "g6": {
+          "label": "6. King ___ the Nobel Prize (simple past passive)",
+          "correct": "was awarded",
+          "why": "A single completed past event takes the simple past passive: ‘was awarded’."
+        },
+        "g7": {
+          "label": "7. Leaders ___ by Gandhi (past perfect passive)",
+          "correct": "had been inspired",
+          "why": "An action true before another past point (King's movement) takes the past perfect passive."
+        },
+        "g8": {
+          "label": "8. His speeches ___ today (simple present passive)",
+          "correct": "are still studied",
+          "why": "A regular present-day fact takes the simple present passive: ‘are still studied’."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. Separation of people by race",
+          "correct": "segregation",
+          "why": "‘Segregation’ is the separation of people based on race, e.g. in schools or on buses."
+        },
+        "g2": {
+          "label": "2. Refusing to buy/use as protest",
+          "correct": "boycott",
+          "why": "A ‘boycott’ is refusing to buy or use something as a form of protest."
+        },
+        "g3": {
+          "label": "3. Treating someone unfairly by race etc.",
+          "correct": "discrimination",
+          "why": "‘Discrimination’ is treating someone unfairly because of race, gender, or religion."
+        },
+        "g4": {
+          "label": "4. Fighting for change without violence",
+          "correct": "nonviolent resistance",
+          "why": "‘Nonviolent resistance’ is fighting for change without using physical violence."
+        },
+        "g5": {
+          "label": "5. Against a country's constitution",
+          "correct": "unconstitutional",
+          "why": "‘Unconstitutional’ means against the rules of a country's constitution."
+        },
+        "g6": {
+          "label": "6. Deliberate killing of an important person",
+          "correct": "assassination",
+          "why": "‘Assassination’ is the deliberate killing of an important person, often for political reasons."
+        },
+        "g7": {
+          "label": "7. Basic rights every citizen should have",
+          "correct": "civil rights",
+          "why": "‘Civil rights’ are the basic rights every citizen should have, such as the right to vote."
+        },
+        "g8": {
+          "label": "8. A large public meeting for a cause",
+          "correct": "rally",
+          "why": "A ‘rally’ is a large public meeting or event to support a cause."
+        }
+      }
+    }
+  },
+  "10c-new-zealand-news": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. NZ is located in the ___",
+          "correct": "southwestern",
+          "why": "The text says New Zealand is located in the southwestern Pacific."
+        },
+        "g2": {
+          "label": "2. The Māori originally came from ___",
+          "correct": "Polynesia",
+          "why": "The text says the Māori people originally came from Polynesia."
+        },
+        "g3": {
+          "label": "3. The earthquake magnitude was ___",
+          "correct": "6.3",
+          "why": "The text says the 2011 Christchurch earthquake had a magnitude of 6.3."
+        },
+        "g4": {
+          "label": "4. Rebuilding cost over ___",
+          "correct": "40 billion",
+          "why": "The text says the estimated cost of rebuilding Christchurch was over 40 billion."
+        },
+        "g5": {
+          "label": "5. Population recovered by ___",
+          "correct": "2017",
+          "why": "The text says Christchurch's population returned to pre-earthquake levels in 2017."
+        },
+        "g6": {
+          "label": "6. Lord of the Rings was directed by ___",
+          "correct": "Peter Jackson",
+          "why": "The text says the trilogy was directed by Peter Jackson."
+        },
+        "g7": {
+          "label": "7. Visits to Wellington increased by ___%",
+          "correct": "87",
+          "why": "The text says international visits to Wellington increased by 87 per cent after the films."
+        },
+        "g8": {
+          "label": "8. Tolkien tourism was worth ___",
+          "correct": "630 million",
+          "why": "The text says by 2019 Tolkien tourism was worth an estimated 630 million."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. The earthquake ___ (completed action)",
+          "correct": "struck",
+          "why": "A single completed past action uses the simple past: ‘struck’."
+        },
+        "g2": {
+          "label": "2. People ___ when it began (interrupted)",
+          "correct": "were working",
+          "why": "An action in progress when another action happened uses the past continuous: ‘were working’."
+        },
+        "g3": {
+          "label": "3. Christchurch ___ beautiful (state before)",
+          "correct": "had been",
+          "why": "A state true before another past reference point uses the past perfect: ‘had been’."
+        },
+        "g4": {
+          "label": "4. The Māori ___ for centuries (before Europeans)",
+          "correct": "had lived",
+          "why": "An action completed before another past event (Europeans arriving) uses the past perfect."
+        },
+        "g5": {
+          "label": "5. Jackson ___ for a location (ongoing)",
+          "correct": "was searching",
+          "why": "An action in progress when something else happened uses the past continuous."
+        },
+        "g6": {
+          "label": "6. Buildings ___ by the time rescuers arrived",
+          "correct": "had collapsed",
+          "why": "‘By the time’ signals an action completed before another past point, so the past perfect is used."
+        },
+        "g7": {
+          "label": "7. After the films ___ tourists...",
+          "correct": "had brought",
+          "why": "‘After’ + past perfect shows one past action completed before another past action."
+        },
+        "g8": {
+          "label": "8. The city ___ slowly (completed action)",
+          "correct": "recovered",
+          "why": "A completed past process uses the simple past: ‘recovered’."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. If the earthquake ___ Christchurch...",
+          "correct": "hadn't struck",
+          "why": "Type III conditionals use the past perfect after ‘if’, paired with ‘would (not) have’."
+        },
+        "g2": {
+          "label": "2. If NZ ___ chosen as the location...",
+          "correct": "hadn't been",
+          "why": "Type III conditionals use the past perfect passive after ‘if’."
+        },
+        "g3": {
+          "label": "3. ...if the earthquake ___ at night",
+          "correct": "had happened",
+          "why": "Type III conditionals use the past perfect after ‘if’, even when the if-clause comes second."
+        },
+        "g4": {
+          "label": "4. If Jackson ___ Matamata...",
+          "correct": "hadn't discovered",
+          "why": "Type III conditionals use the past perfect after ‘if’."
+        },
+        "g5": {
+          "label": "5. Tourism ___ if the films had failed",
+          "correct": "wouldn't have grown",
+          "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+        },
+        "g6": {
+          "label": "6. If the government ___ in rebuilding...",
+          "correct": "hadn't invested",
+          "why": "A past condition (‘hadn't invested’) leading to a present result (‘would still be’) is a mixed conditional."
+        },
+        "g7": {
+          "label": "7. The language ___ if schools hadn't taught it",
+          "correct": "would have disappeared",
+          "why": "The Type III result clause uses ‘would have’ + past participle."
+        },
+        "g8": {
+          "label": "8. If rescue workers ___ quickly...",
+          "correct": "hadn't arrived",
+          "why": "Type III conditionals use the past perfect after ‘if’."
+        }
+      }
+    }
+  },
+  "10c-pair-of-jeans": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Aisha was ___ home",
+          "correct": "cycling",
+          "why": "The text says Aisha was cycling home when she remembered the lunch."
+        },
+        "g2": {
+          "label": "2. Promised to arrive by ___",
+          "correct": "one",
+          "why": "The text says she had promised to arrive by one."
+        },
+        "g3": {
+          "label": "3. Her cousins were ___ in the garden",
+          "correct": "playing",
+          "why": "The text says her cousins were playing in the garden when she arrived."
+        },
+        "g4": {
+          "label": "4. Her ___ were visiting too",
+          "correct": "aunts",
+          "why": "The text says Aisha had forgotten that her aunts were visiting too."
+        },
+        "g5": {
+          "label": "5. The conversation ___",
+          "correct": "stopped",
+          "why": "The text says the conversation stopped as she entered the room."
+        },
+        "g6": {
+          "label": "6. Aisha felt her cheeks ___",
+          "correct": "red",
+          "why": "The text says Aisha felt her cheeks go red with embarrassment."
+        },
+        "g7": {
+          "label": "7. What mattered was that Aisha ___",
+          "correct": "came",
+          "why": "The text says her grandmother said what mattered was that Aisha came."
+        },
+        "g8": {
+          "label": "8. She had worried about ___",
+          "correct": "wrong",
+          "why": "The text says Aisha realised she had worried about the wrong thing."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Aisha ___ home when she remembered",
+          "correct": "was cycling",
+          "why": "A longer action in progress when something happened uses the past continuous: ‘was cycling’."
+        },
+        "g2": {
+          "label": "2. She suddenly ___",
+          "correct": "remembered",
+          "why": "A short, completed action uses the simple past: ‘remembered’."
+        },
+        "g3": {
+          "label": "3. Her cousins ___ in the garden",
+          "correct": "were playing",
+          "why": "An action already in progress when she arrived uses the past continuous: ‘were playing’."
+        },
+        "g4": {
+          "label": "4. The smell ___ through the window",
+          "correct": "was drifting",
+          "why": "A background, ongoing action uses the past continuous: ‘was drifting’."
+        },
+        "g5": {
+          "label": "5. As she ___ into the room...",
+          "correct": "stepped",
+          "why": "A short, completed action uses the simple past: ‘stepped’."
+        },
+        "g6": {
+          "label": "6. Her grandmother ___ out of the kitchen",
+          "correct": "came",
+          "why": "A short, completed action uses the simple past: ‘came’."
+        },
+        "g7": {
+          "label": "7. While the family ___ together",
+          "correct": "were eating",
+          "why": "A background action happening at the same time uses the past continuous: ‘were eating’."
+        },
+        "g8": {
+          "label": "8. The sun ___ while she cycled home",
+          "correct": "was shining",
+          "why": "A background, ongoing action uses the past continuous: ‘was shining’."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. Before that day, Aisha ___ jeans there",
+          "correct": "had never worn",
+          "why": "An action true before an earlier point in the story uses the past perfect."
+        },
+        "g2": {
+          "label": "2. Earlier that week, she ___",
+          "correct": "had promised",
+          "why": "An action completed before the main story time uses the past perfect."
+        },
+        "g3": {
+          "label": "3. She realised she ___ about the lunch",
+          "correct": "had forgotten",
+          "why": "An earlier action revealed later in the story uses the past perfect."
+        },
+        "g4": {
+          "label": "4. She ___ that her aunts were visiting",
+          "correct": "had not known",
+          "why": "A fact true before the main story event uses the past perfect."
+        },
+        "g5": {
+          "label": "5. She was sure she ___ everything",
+          "correct": "had ruined",
+          "why": "An earlier belief about a past action uses the past perfect."
+        },
+        "g6": {
+          "label": "6. She ___ to make a good impression",
+          "correct": "had wanted",
+          "why": "A motive that existed before the main story event uses the past perfect."
+        },
+        "g7": {
+          "label": "7. By the time lunch ended, Aisha ___",
+          "correct": "had realised",
+          "why": "‘By the time’ signals an action completed by a later past point, so the past perfect is used."
+        },
+        "g8": {
+          "label": "8. Her grandmother ___ about the jeans",
+          "correct": "had never cared",
+          "why": "Consistent with the past-perfect backstory frame used throughout this narrative."
+        }
+      }
+    }
+  },
+  "10c-stereotypes": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Stereotypes are ___",
+          "correct": "simplified",
+          "why": "The text says stereotypes are simplified ideas about a group of people."
+        },
+        "g2": {
+          "label": "2. Stereotypes contain a ___ of truth",
+          "correct": "grain",
+          "why": "The text uses the phrase ‘a grain of truth’ to describe stereotypes."
+        },
+        "g3": {
+          "label": "3. Children pick up stereotypes from ___",
+          "correct": "families",
+          "why": "The text says children often pick up stereotypes from their families."
+        },
+        "g4": {
+          "label": "4. Indigenous peoples portrayed as ___",
+          "correct": "ancestors",
+          "why": "The text says indigenous peoples are sometimes portrayed only as figures from the past, like ancestors."
+        },
+        "g5": {
+          "label": "5. Stereotypes can lead to ___",
+          "correct": "bullying",
+          "why": "The text says stereotypes in schools can lead to bullying."
+        },
+        "g6": {
+          "label": "6. Applicants with foreign names got ___ interviews",
+          "correct": "fewer",
+          "why": "The text says research showed applicants with foreign-sounding names received fewer interviews."
+        },
+        "g7": {
+          "label": "7. One way to challenge stereotypes is ___",
+          "correct": "travel",
+          "why": "The text says one way to challenge stereotypes is to travel and meet people directly."
+        },
+        "g8": {
+          "label": "8. Exchange programmes let young people ___",
+          "correct": "experience",
+          "why": "The text says exchange programmes let young people experience other cultures directly."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Stereotypes ___ by films and TV",
+          "correct": "are often reinforced",
+          "why": "‘Stereotypes’ is plural, so the passive uses ‘are often reinforced’."
+        },
+        "g2": {
+          "label": "2. Cultural awareness ___ right now",
+          "correct": "is being taught",
+          "why": "‘Right now’ signals an action in progress, so the present continuous passive is used."
+        },
+        "g3": {
+          "label": "3. Students ___ last year",
+          "correct": "were bullied",
+          "why": "‘Last year’ is a specific past time, so the simple past passive ‘were bullied’ is used."
+        },
+        "g4": {
+          "label": "4. People ___ based on stereotypes alone",
+          "correct": "should not be judged",
+          "why": "‘Should’ + passive expresses a recommendation about how people ought to be treated."
+        },
+        "g5": {
+          "label": "5. The exchange programme ___ in 2023",
+          "correct": "was organised",
+          "why": "‘In 2023’ is a specific past time, so the simple past passive ‘was organised’ is used."
+        },
+        "g6": {
+          "label": "6. False assumptions ___ over decades",
+          "correct": "have been spread",
+          "why": "‘Over the past decades’ signals a duration up to now, so the present perfect passive is used."
+        },
+        "g7": {
+          "label": "7. New laws ___ right now",
+          "correct": "are being discussed",
+          "why": "‘Right now’ signals an action in progress, so the present continuous passive is used."
+        },
+        "g8": {
+          "label": "8. Applicants ___ because of bias",
+          "correct": "are sometimes rejected",
+          "why": "‘Applicants’ is plural, so the passive uses ‘are sometimes rejected’."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. If the school ___ a course...",
+          "correct": "had offered",
+          "why": "Type III conditionals use the past perfect after ‘if’, paired with ‘would have’."
+        },
+        "g2": {
+          "label": "2. ...she ___ that her stereotypes were wrong",
+          "correct": "would have discovered",
+          "why": "The Type III result clause uses ‘would have’ + past participle."
+        },
+        "g3": {
+          "label": "3. The company ___ the applicant",
+          "correct": "would not have rejected",
+          "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+        },
+        "g4": {
+          "label": "4. If the film ___ a balanced picture...",
+          "correct": "had shown",
+          "why": "Type III conditionals use the past perfect after ‘if’."
+        },
+        "g5": {
+          "label": "5. ...he ___ that his assumptions were wrong",
+          "correct": "would have realised",
+          "why": "The Type III result clause uses ‘would have’ + past participle."
+        },
+        "g6": {
+          "label": "6. The class ___ the problem better",
+          "correct": "would have understood",
+          "why": "The Type III result clause uses ‘would have’ + past participle."
+        },
+        "g7": {
+          "label": "7. If the journalist ___ the facts...",
+          "correct": "had checked",
+          "why": "Type III conditionals use the past perfect after ‘if’."
+        },
+        "g8": {
+          "label": "8. ...we ___ much more about their cultures",
+          "correct": "would have learned",
+          "why": "The Type III result clause uses ‘would have’ + past participle."
+        }
+      }
+    }
+  },
+  "10g-cultural-diversity": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. A defining feature of the ___",
+          "correct": "modern world",
+          "why": "The text says cultural diversity has become a defining feature of the modern world."
+        },
+        "g2": {
+          "label": "2. Diverse teams produce more ___ solutions",
+          "correct": "original",
+          "why": "The text says research shows diverse teams tend to produce more original solutions."
+        },
+        "g3": {
+          "label": "3. Immigration fills shortages of ___",
+          "correct": "skilled workers",
+          "why": "The text says immigration helps fill shortages of skilled workers."
+        },
+        "g4": {
+          "label": "4. Social cohesion means members ___",
+          "correct": "belong together",
+          "why": "The text defines ‘social cohesion’ as the feeling that members of a society belong together."
+        },
+        "g5": {
+          "label": "5. Integration requires effort from ___",
+          "correct": "both sides",
+          "why": "The text says integration requires effort from both sides, not just newcomers."
+        },
+        "g6": {
+          "label": "6. Sociologists say the key is to find ___",
+          "correct": "common ground",
+          "why": "The text says most sociologists believe the key is to find common ground between groups."
+        },
+        "g7": {
+          "label": "7. The mosaic metaphor: each culture should ___",
+          "correct": "keep its colour",
+          "why": "The text says the mosaic metaphor means each culture should keep its colour while contributing to society."
+        },
+        "g8": {
+          "label": "8. The opposite of the mosaic model is the ___",
+          "correct": "melting pot",
+          "why": "The text contrasts the mosaic model with the melting pot, where differences disappear."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Diversity is creative; ___, it can also...",
+          "correct": "however",
+          "why": "‘However’ shows a contrast between the two halves of the sentence."
+        },
+        "g2": {
+          "label": "2. ...more innovative. ___, they discovered...",
+          "correct": "Furthermore",
+          "why": "‘Furthermore’ adds an additional point to the previous sentence."
+        },
+        "g3": {
+          "label": "3. ___ its challenges, diversity makes societies stronger",
+          "correct": "Despite",
+          "why": "‘Despite’ + noun introduces a contrast at the start of the sentence."
+        },
+        "g4": {
+          "label": "4. Integration takes effort from newcomers. ___...",
+          "correct": "In addition",
+          "why": "‘In addition’ adds a further point to the previous sentence."
+        },
+        "g5": {
+          "label": "5. Not to force people to give up identity; ___...",
+          "correct": "rather",
+          "why": "‘Rather’ corrects or clarifies the preceding negative statement."
+        },
+        "g6": {
+          "label": "6. Cities ___ as examples (passive)",
+          "correct": "are often cited",
+          "why": "The cities named are plural, so the passive uses ‘are often cited’."
+        },
+        "g7": {
+          "label": "7. Produced vibrant art. ___, it has also...",
+          "correct": "Moreover",
+          "why": "‘Moreover’ adds an additional point to the previous sentence."
+        },
+        "g8": {
+          "label": "8. Opportunities and respect ___ (passive + modal)",
+          "correct": "must be guaranteed",
+          "why": "‘Must’ + passive expresses a strong obligation for how things ought to be guaranteed."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. Many cultures in one place",
+          "correct": "cultural diversity",
+          "why": "‘Cultural diversity’ is the presence of many different cultures and perspectives in one place."
+        },
+        "g2": {
+          "label": "2. Becoming part of wider society",
+          "correct": "integration",
+          "why": "‘Integration’ is the process by which people from different backgrounds join the wider society."
+        },
+        "g3": {
+          "label": "3. Accepting many cultures together",
+          "correct": "multiculturalism",
+          "why": "‘Multiculturalism’ is a society or policy that accepts many cultures existing together."
+        },
+        "g4": {
+          "label": "4. Feeling of shared bond and belonging",
+          "correct": "social cohesion",
+          "why": "‘Social cohesion’ is the feeling that all members of a community share a bond."
+        },
+        "g5": {
+          "label": "5. Accepting beliefs different from your own",
+          "correct": "tolerance",
+          "why": "‘Tolerance’ is accepting and respecting opinions and beliefs that differ from your own."
+        },
+        "g6": {
+          "label": "6. Hidden belief favouring one group",
+          "correct": "bias",
+          "why": "‘Bias’ is a hidden belief or assumption that unfairly favours one group over another."
+        },
+        "g7": {
+          "label": "7. Right to rule over others",
+          "correct": "supremacy",
+          "why": "‘Supremacy’ is the idea that one group has the right or natural ability to rule over others."
+        },
+        "g8": {
+          "label": "8. A point of view on a situation",
+          "correct": "perspective",
+          "why": "‘Perspective’ is a point of view or angle from which a situation is considered."
+        }
+      }
+    }
+  },
+  "10g-folk-music": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Passed down from ___ to generation",
+          "correct": "generation",
+          "why": "The text says folk songs were passed down from generation to generation."
+        },
+        "g2": {
+          "label": "2. Told stories of ___ life",
+          "correct": "ordinary",
+          "why": "The text says folk songs often told stories of ordinary life."
+        },
+        "g3": {
+          "label": "3. A Celtic folk instrument",
+          "correct": "bagpipes",
+          "why": "The text names the bagpipes as a distinctive Celtic folk instrument."
+        },
+        "g4": {
+          "label": "4. Often played in a crowded ___",
+          "correct": "pub",
+          "why": "The text says folk music is often played in a small, crowded pub."
+        },
+        "g5": {
+          "label": "5. Modern bands combine folk with a more ___ sound",
+          "correct": "modern",
+          "why": "The text says modern bands combine folk with a more modern sound."
+        },
+        "g6": {
+          "label": "6. Focus on honest ___",
+          "correct": "lyrics",
+          "why": "The text says folk-inspired music keeps its focus on honest lyrics."
+        },
+        "g7": {
+          "label": "7. Some argue folk-inspired pop is not ___ folk music",
+          "correct": "real",
+          "why": "The text says some argue folk-inspired pop is not real folk music."
+        },
+        "g8": {
+          "label": "8. Both sides agree the tradition is ___",
+          "correct": "alive",
+          "why": "The text says both sides agree the folk tradition is alive."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. One of the ___ forms of music (old)",
+          "correct": "oldest",
+          "why": "‘One of the ___’ always takes the superlative form: oldest."
+        },
+        "g2": {
+          "label": "2. Pop is often ___ than folk (polished)",
+          "correct": "more polished",
+          "why": "Longer adjectives like ‘polished’ form the comparative with ‘more’."
+        },
+        "g3": {
+          "label": "3. A pub is ___ than a hall (small)",
+          "correct": "smaller",
+          "why": "Short adjectives like ‘small’ form the comparative by adding ‘-er’."
+        },
+        "g4": {
+          "label": "4. The bagpipes are ___ than the fiddle (loud)",
+          "correct": "louder",
+          "why": "Short adjectives like ‘loud’ form the comparative by adding ‘-er’."
+        },
+        "g5": {
+          "label": "5. The ___ song on the album (good)",
+          "correct": "best",
+          "why": "‘Good’ is irregular: its superlative form is ‘best’."
+        },
+        "g6": {
+          "label": "6. Modern folk is ___ than traditional (commercial)",
+          "correct": "more commercial",
+          "why": "Longer adjectives like ‘commercial’ form the comparative with ‘more’."
+        },
+        "g7": {
+          "label": "7. One of the ___ singers (famous)",
+          "correct": "most famous",
+          "why": "‘One of the ___’ always takes the superlative form, and longer adjectives use ‘most’."
+        },
+        "g8": {
+          "label": "8. Live folk feels ___ than a recording (authentic)",
+          "correct": "more authentic",
+          "why": "Longer adjectives like ‘authentic’ form the comparative with ‘more’."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. A pub is not ___ a concert hall",
+          "correct": "as grand as",
+          "why": "The negative equative structure is ‘not as + adjective + as’."
+        },
+        "g2": {
+          "label": "2. ___ classical music is formal, folk is relaxed",
+          "correct": "Whereas",
+          "why": "‘Whereas’ introduces a direct contrast between two clauses."
+        },
+        "g3": {
+          "label": "3. ___ Mumford & Sons and Ed Sheeran use folk sounds",
+          "correct": "Both",
+          "why": "‘Both X and Y’ links two similar subjects."
+        },
+        "g4": {
+          "label": "4. ___ pop songs, folk songs have no known writer",
+          "correct": "Unlike",
+          "why": "‘Unlike’ + noun introduces a contrast at the start of a sentence."
+        },
+        "g5": {
+          "label": "5. Folk is just ___ popular today as before",
+          "correct": "as",
+          "why": "The equative structure is ‘just as + adjective + as’."
+        },
+        "g6": {
+          "label": "6. The fiddle, ___ the violin, has four strings",
+          "correct": "like",
+          "why": "‘Like’ + noun shows similarity between two things."
+        },
+        "g7": {
+          "label": "7. ___ side wants the tradition to die",
+          "correct": "Neither",
+          "why": "‘Neither’ + singular noun + singular verb expresses ‘not one nor the other’."
+        },
+        "g8": {
+          "label": "8. Folk is very different ___ commercial pop",
+          "correct": "from",
+          "why": "The fixed phrase is ‘different from’, not ‘different than’ in standard British English."
+        }
+      }
+    }
+  },
+  "10g-green-scotland": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Renewable target by 2030",
+          "correct": "50%",
+          "why": "The text says Scotland aims to generate 50% of total energy consumption from renewables by 2030."
+        },
+        "g2": {
+          "label": "2. Offshore wind target for 2040",
+          "correct": "40 gigawatts",
+          "why": "The text gives Scotland's offshore wind target for 2040 as 40 gigawatts."
+        },
+        "g3": {
+          "label": "3. Why is Scotland suitable for wind energy?",
+          "correct": "it has long coastlines, exposed hillsides and strong winds",
+          "why": "The text explains Scotland's long coastlines, exposed hillsides and strong winds make it suitable for wind energy."
+        },
+        "g4": {
+          "label": "4. What happened to the Caledonian pine forests?",
+          "correct": "they were destroyed by deforestation and farming",
+          "why": "The text says the ancient pine forests were destroyed by deforestation and farming."
+        },
+        "g5": {
+          "label": "5. Size of the Affric Highlands project",
+          "correct": "200,000 hectares",
+          "why": "The text gives the Affric Highlands rewilding project's size as 200,000 hectares."
+        },
+        "g6": {
+          "label": "6. What happens when peatlands are drained?",
+          "correct": "they release greenhouse gases",
+          "why": "The text says drained peatlands release greenhouse gases."
+        },
+        "g7": {
+          "label": "7. Peatlands vs tropical rainforests",
+          "correct": "they absorb roughly twice as much per hectare",
+          "why": "The text says healthy peatlands absorb roughly twice as much carbon per hectare as rainforests."
+        },
+        "g8": {
+          "label": "8. Why do some farmers oppose rewilding?",
+          "correct": "they believe it threatens their livelihoods",
+          "why": "The text says some farmers oppose rewilding because they believe it threatens their livelihoods."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. If Scotland ___ its target (Type I)",
+          "correct": "reaches",
+          "why": "Type I conditionals use the present simple after ‘if’, with ‘will’ in the result clause."
+        },
+        "g2": {
+          "label": "2. The Highlands ___ in woodland today",
+          "correct": "would still be covered",
+          "why": "A past condition (‘had not been cut down’) with a present result (‘today’) is a mixed conditional using ‘would still be’."
+        },
+        "g3": {
+          "label": "3. If peatlands are restored, they ___ carbon (Type I)",
+          "correct": "will absorb",
+          "why": "Type I conditionals use the present simple after ‘if’, with ‘will’ in the result clause."
+        },
+        "g4": {
+          "label": "4. ...if the government ___ more (Type II)",
+          "correct": "invested",
+          "why": "Type II conditionals use the past simple after ‘if’, matching the result ‘would benefit’."
+        },
+        "g5": {
+          "label": "5. If farmers ___ earlier (Type III)",
+          "correct": "had been consulted",
+          "why": "Type III conditionals use the past perfect after ‘if’, paired with ‘would not have’."
+        },
+        "g6": {
+          "label": "6. If wind power continues to grow, Scotland ___ (Type I)",
+          "correct": "will export",
+          "why": "Type I conditionals use the present simple after ‘if’, with ‘will’ in the result clause."
+        },
+        "g7": {
+          "label": "7. If there ___ no opposition (Type II)",
+          "correct": "were",
+          "why": "Type II conditionals with ‘be’ traditionally use ‘were’ for all subjects, matching ‘could expand’."
+        },
+        "g8": {
+          "label": "8. It ___ over 17 GW today",
+          "correct": "would not have",
+          "why": "A past condition (‘had not invested… twenty years ago’) with a present result (‘today’) is a mixed conditional using ‘would not have’."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. Wind and solar are ___ energy",
+          "correct": "renewable",
+          "why": "‘Renewable’ energy sources are naturally replenished and never run out."
+        },
+        "g2": {
+          "label": "2. Restoring ecosystems by reintroducing species",
+          "correct": "rewilding",
+          "why": "‘Rewilding’ is the process of restoring natural ecosystems and reintroducing native species."
+        },
+        "g3": {
+          "label": "3. Peatlands have been ___",
+          "correct": "degraded",
+          "why": "The text says centuries of drainage and farming have degraded Scotland's peatlands."
+        },
+        "g4": {
+          "label": "4. Villages have suffered from ___",
+          "correct": "depopulation",
+          "why": "The text says Highland villages have suffered from depopulation as young people move to cities."
+        },
+        "g5": {
+          "label": "5. Variety of species in an area",
+          "correct": "biodiversity",
+          "why": "‘Biodiversity’ is the variety of plant and animal species living in an area."
+        },
+        "g6": {
+          "label": "6. A forest provides an important ___",
+          "correct": "habitat",
+          "why": "A ‘habitat’ is the natural environment where animals like red squirrels live."
+        },
+        "g7": {
+          "label": "7. Burning fossil fuels produces ___",
+          "correct": "emissions",
+          "why": "Burning fossil fuels produces greenhouse gas emissions."
+        },
+        "g8": {
+          "label": "8. A ___ approach meets today's needs",
+          "correct": "sustainable",
+          "why": "A ‘sustainable’ approach meets today's needs without compromising the future."
+        }
+      }
+    }
+  },
+  "10g-scottish-highlands": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Size of the Highlands region",
+          "correct": "more than 25,000 square kilometres",
+          "why": "The text says the Highlands cover more than 25,000 square kilometres."
+        },
+        "g2": {
+          "label": "2. What happened during the Clearances?",
+          "correct": "families were displaced so land could be used for sheep and deer",
+          "why": "The text says families were displaced during the Highland Clearances so land could be used for sheep and deer."
+        },
+        "g3": {
+          "label": "3. First recorded Loch Ness Monster sighting",
+          "correct": "in 565 AD",
+          "why": "The text says the first recorded sighting was in 565 AD."
+        },
+        "g4": {
+          "label": "4. How is a kelpie identified?",
+          "correct": "it has reversed hooves",
+          "why": "The text says a kelpie can supposedly be identified by its reversed hooves."
+        },
+        "g5": {
+          "label": "5. The purpose of kelpie legends",
+          "correct": "to warn children away from dangerous water",
+          "why": "The text says kelpie legends served to warn children away from dangerous water."
+        },
+        "g6": {
+          "label": "6. What happens if a selkie's skin is hidden?",
+          "correct": "it must remain in human form",
+          "why": "The text says a selkie must remain in human form if its seal skin is hidden."
+        },
+        "g7": {
+          "label": "7. Where did selkie legends originate?",
+          "correct": "Orkney and Shetland",
+          "why": "The text says the selkie legends originated in Orkney and Shetland."
+        },
+        "g8": {
+          "label": "8. Modern challenge for Highland communities",
+          "correct": "housing shortages that make it hard for young families to stay",
+          "why": "The text says Highland communities face housing shortages that make it hard for young families to stay."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. \"I ___ in Inverness two days earlier\"",
+          "correct": "had arrived",
+          "why": "‘Two days earlier’ signals an action completed before the main story time, so the past perfect is used."
+        },
+        "g2": {
+          "label": "2. \"That evening, I ___ by the shore\"",
+          "correct": "was sitting",
+          "why": "A background scene-setting action uses the past continuous: ‘was sitting’."
+        },
+        "g3": {
+          "label": "3. \"I ___ such complete silence before\"",
+          "correct": "had never experienced",
+          "why": "A life experience up to that point in the story uses the past perfect."
+        },
+        "g4": {
+          "label": "4. \"Suddenly, something ___ the surface\"",
+          "correct": "broke",
+          "why": "‘Suddenly’ signals a short, completed action, so the simple past is used."
+        },
+        "g5": {
+          "label": "5. \"While I ___ at the ripples...\"",
+          "correct": "was staring",
+          "why": "A background action happening at the same time as another event uses the past continuous."
+        },
+        "g6": {
+          "label": "6. \"...stories my grandmother ___ me\"",
+          "correct": "had told",
+          "why": "An action completed before the main story time (as a child) uses the past perfect."
+        },
+        "g7": {
+          "label": "7. \"I ___ up my things and walked back\"",
+          "correct": "packed",
+          "why": "A sequence of short, completed actions uses the simple past."
+        },
+        "g8": {
+          "label": "8. \"'That ___ probably just an otter'\"",
+          "correct": "was",
+          "why": "A simple statement about a past event uses the simple past."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. One of the most ___ populated regions",
+          "correct": "sparsely",
+          "why": "‘Sparsely populated’ is the fixed collocation for an area with very few people."
+        },
+        "g2": {
+          "label": "2. The landscape is wild and ___",
+          "correct": "rugged",
+          "why": "‘Rugged’ describes a landscape with steep mountains and rocky terrain."
+        },
+        "g3": {
+          "label": "3. Families were ___ from their homes",
+          "correct": "displaced",
+          "why": "The text says families were displaced from their homes during the Clearances."
+        },
+        "g4": {
+          "label": "4. A deep connection to ___ lands",
+          "correct": "ancestral",
+          "why": "‘Ancestral lands’ describes land connected to a family's past generations."
+        },
+        "g5": {
+          "label": "5. Kelpies are described as ___ spirits",
+          "correct": "shape-shifting",
+          "why": "The text says kelpies can change their appearance, so they are called shape-shifting spirits."
+        },
+        "g6": {
+          "label": "6. Selkie stories are sad and ___",
+          "correct": "melancholic",
+          "why": "‘Melancholic’ describes stories dealing with loss, longing and impossible love."
+        },
+        "g7": {
+          "label": "7. Scotland has a rich tradition of ___",
+          "correct": "folklore",
+          "why": "The text says Scotland has a rich tradition of folklore, with stories of mythical creatures."
+        },
+        "g8": {
+          "label": "8. Highland communities are ___",
+          "correct": "fragile",
+          "why": "‘Fragile’ describes communities vulnerable to small changes in population or economy."
+        }
+      }
+    }
+  },
+  "10g-scottish-identity": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. More than living inside a ___",
+          "correct": "border",
+          "why": "The text says Scottish identity is about more than living inside a border on a map."
+        },
+        "g2": {
+          "label": "2. As well as English and Gaelic, Scots speak ___",
+          "correct": "scots",
+          "why": "The text says many Scots also speak the Scots language."
+        },
+        "g3": {
+          "label": "3. A \"bairn\" is a ___",
+          "correct": "child",
+          "why": "The text defines a \"bairn\" as a child."
+        },
+        "g4": {
+          "label": "4. To be \"wabbit\" means to be ___",
+          "correct": "tired",
+          "why": "The text defines \"wabbit\" as meaning tired."
+        },
+        "g5": {
+          "label": "5. Scots was wrongly seen as \"bad ___\"",
+          "correct": "english",
+          "why": "The text says Scots was once wrongly seen as \"bad English\"."
+        },
+        "g6": {
+          "label": "6. Part of the UK since ___",
+          "correct": "1707",
+          "why": "The text says Scotland has been part of the UK since 1707."
+        },
+        "g7": {
+          "label": "7. Scotland kept its own legal, church and ___ system",
+          "correct": "education",
+          "why": "The text says Scotland kept its own legal, church and education systems."
+        },
+        "g8": {
+          "label": "8. In 2014, Scots voted on ___",
+          "correct": "independence",
+          "why": "The text says Scots voted in a 2014 referendum on independence."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. ___ Scotland is part of the UK...",
+          "correct": "Although",
+          "why": "‘Although’ introduces a contrast at the start of the sentence."
+        },
+        "g2": {
+          "label": "2. English ___ Gaelic and Scots",
+          "correct": "as well as",
+          "why": "‘As well as’ adds further items to a list."
+        },
+        "g3": {
+          "label": "3. Its own words; ___, \"wee\" means small",
+          "correct": "for example",
+          "why": "‘For example’ introduces a specific instance."
+        },
+        "g4": {
+          "label": "4. Seen as \"bad English\". ___, it is now recognised",
+          "correct": "However",
+          "why": "‘However’ shows a contrast with the previous sentence."
+        },
+        "g5": {
+          "label": "5. Voted to stay, ___ many still feel strongly",
+          "correct": "but",
+          "why": "‘But’ shows a contrast between the two clauses."
+        },
+        "g6": {
+          "label": "6. Kept its own church, ___ identity stayed strong",
+          "correct": "so",
+          "why": "‘So’ shows the result of the previous clause."
+        },
+        "g7": {
+          "label": "7. Identity matters ___ it connects them to history",
+          "correct": "because",
+          "why": "‘Because’ introduces the reason identity matters."
+        },
+        "g8": {
+          "label": "8. ___, most Scots see their identity as proud",
+          "correct": "Therefore",
+          "why": "‘Therefore’ introduces a concluding statement."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. (contrast) Edinburgh is old; ___...",
+          "correct": "however",
+          "why": "‘However’ signals a contrast between the two clauses."
+        },
+        "g2": {
+          "label": "2. (reason) Proud ___ their history is rich",
+          "correct": "because",
+          "why": "‘Because’ introduces the reason for the pride."
+        },
+        "g3": {
+          "label": "3. (result) It rained all day, ___ we stayed inside",
+          "correct": "so",
+          "why": "‘So’ introduces the result of the rain."
+        },
+        "g4": {
+          "label": "4. (addition) Its own words ___ its own grammar",
+          "correct": "as well as",
+          "why": "‘As well as’ adds a further point."
+        },
+        "g5": {
+          "label": "5. (example) Unique, ___ \"bairn\" and \"wee\"",
+          "correct": "such as",
+          "why": "‘Such as’ introduces specific examples."
+        },
+        "g6": {
+          "label": "6. (contrast) ___ the cold weather...",
+          "correct": "Despite",
+          "why": "‘Despite’ + noun introduces a contrast at the start of the sentence."
+        },
+        "g7": {
+          "label": "7. (result) The debate was close; ___...",
+          "correct": "therefore",
+          "why": "‘Therefore’ introduces the result of the close debate."
+        },
+        "g8": {
+          "label": "8. (concession) ___ Scots is different...",
+          "correct": "Although",
+          "why": "‘Although’ introduces a concession — a point conceded despite the main claim."
+        }
+      }
+    }
+  },
+  "10g-scottish-lowlands": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Home to Scotland's two largest ___",
+          "correct": "cities",
+          "why": "The text says the Lowlands are home to Scotland's two largest cities."
+        },
+        "g2": {
+          "label": "2. Edinburgh is the ___",
+          "correct": "capital",
+          "why": "The text says Edinburgh is the capital of Scotland."
+        },
+        "g3": {
+          "label": "3. Edinburgh Castle sits on an extinct ___",
+          "correct": "volcano",
+          "why": "The text says Edinburgh Castle sits on top of an extinct volcano."
+        },
+        "g4": {
+          "label": "4. The Fringe is the largest ___ festival",
+          "correct": "arts",
+          "why": "The text says the Festival Fringe is the largest arts festival in the world."
+        },
+        "g5": {
+          "label": "5. Glasgow was once a great ___ city",
+          "correct": "industrial",
+          "why": "The text says Glasgow was once a great industrial city."
+        },
+        "g6": {
+          "label": "6. People from Glasgow are ___",
+          "correct": "glaswegians",
+          "why": "The text says people from Glasgow are known as Glaswegians."
+        },
+        "g7": {
+          "label": "7. Both cities are famous for their ___",
+          "correct": "universities",
+          "why": "The text says both cities are famous for their excellent universities."
+        },
+        "g8": {
+          "label": "8. The two cities are the ___ of the trip",
+          "correct": "highlight",
+          "why": "The text says for many visitors the two cities are the highlight of the trip."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Edinburgh, ___ is the capital,...",
+          "correct": "which",
+          "why": "A non-defining relative clause about a place/thing uses ‘which’."
+        },
+        "g2": {
+          "label": "2. The people ___ live in Glasgow...",
+          "correct": "who",
+          "why": "A defining relative clause about people uses ‘who’."
+        },
+        "g3": {
+          "label": "3. Glasgow is a city ___ ships were built",
+          "correct": "where",
+          "why": "‘Where’ introduces a defining relative clause about a place."
+        },
+        "g4": {
+          "label": "4. The castle, ___ sits on a volcano,...",
+          "correct": "which",
+          "why": "A non-defining relative clause about a thing uses ‘which’."
+        },
+        "g5": {
+          "label": "5. An author ___ books are read worldwide",
+          "correct": "whose",
+          "why": "‘Whose’ shows possession — the author's books."
+        },
+        "g6": {
+          "label": "6. The festival ___ takes place in August",
+          "correct": "which",
+          "why": "A defining relative clause about a thing uses ‘which’."
+        },
+        "g7": {
+          "label": "7. Visitors ___ come for the festival",
+          "correct": "who",
+          "why": "A defining relative clause about people uses ‘who’."
+        },
+        "g8": {
+          "label": "8. The university ___ she studied",
+          "correct": "where",
+          "why": "‘Where’ introduces a relative clause about a place."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. Edinburgh, ___ is the capital, is beautiful",
+          "correct": "which",
+          "why": "A non-defining relative clause about a place uses ‘which’."
+        },
+        "g2": {
+          "label": "2. The man ___ dog won the prize",
+          "correct": "whose",
+          "why": "‘Whose’ shows possession — his dog."
+        },
+        "g3": {
+          "label": "3. A music scene ___ is famous",
+          "correct": "that",
+          "why": "A defining relative clause about a thing can use ‘that’."
+        },
+        "g4": {
+          "label": "4. The students ___ study here",
+          "correct": "who",
+          "why": "A defining relative clause about people uses ‘who’."
+        },
+        "g5": {
+          "label": "5. The month ___ the festival happens",
+          "correct": "when",
+          "why": "‘When’ introduces a relative clause about a time."
+        },
+        "g6": {
+          "label": "6. The castle, ___ tourists love,...",
+          "correct": "which",
+          "why": "A non-defining relative clause about a thing uses ‘which’."
+        },
+        "g7": {
+          "label": "7. The city ___ ships were built",
+          "correct": "where",
+          "why": "‘Where’ introduces a relative clause about a place."
+        },
+        "g8": {
+          "label": "8. The writer ___ lived nearby",
+          "correct": "who",
+          "why": "A defining relative clause about a person uses ‘who’."
+        }
+      }
+    }
+  },
+  "10g-slavery-civil-war": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Enslaved people worked on ___",
+          "correct": "plantations",
+          "why": "The text says enslaved African people were forced to work on plantations."
+        },
+        "g2": {
+          "label": "2. The South's economy depended on ___ labour",
+          "correct": "unpaid",
+          "why": "The text says the South's economy depended on unpaid labour."
+        },
+        "g3": {
+          "label": "3. The North had already ___ slavery",
+          "correct": "abolished",
+          "why": "The text says the northern states had already abolished slavery."
+        },
+        "g4": {
+          "label": "4. Lincoln was against the ___ of slavery",
+          "correct": "spread",
+          "why": "The text says Lincoln was against the spread of slavery."
+        },
+        "g5": {
+          "label": "5. Eleven states decided to ___ the US",
+          "correct": "leave",
+          "why": "The text says eleven southern states decided to leave the United States."
+        },
+        "g6": {
+          "label": "6. The Civil War began in ___",
+          "correct": "1861",
+          "why": "The text says the Civil War began in 1861."
+        },
+        "g7": {
+          "label": "7. Lincoln issued the ___ Proclamation",
+          "correct": "emancipation",
+          "why": "The text says Lincoln issued the Emancipation Proclamation in 1863."
+        },
+        "g8": {
+          "label": "8. The war ended with victory for the ___ states",
+          "correct": "northern",
+          "why": "The text says the war ended in 1865 with victory for the northern states."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Millions of people ___ forced to work as slaves",
+          "correct": "had been",
+          "why": "A state true before the war (a later reference point) uses the past perfect passive."
+        },
+        "g2": {
+          "label": "2. When Lincoln ___ elected...",
+          "correct": "was",
+          "why": "‘When’ + a single completed event uses the simple past passive."
+        },
+        "g3": {
+          "label": "3. The North had already ___ slavery",
+          "correct": "abolished",
+          "why": "This completes the past perfect ‘had already abolished’ with the past participle."
+        },
+        "g4": {
+          "label": "4. By 1865, the northern states ___ the war",
+          "correct": "had won",
+          "why": "‘By 1865’ signals an action completed by that past point, so the past perfect is used."
+        },
+        "g5": {
+          "label": "5. The war ___ four long years",
+          "correct": "lasted",
+          "why": "A simple statement of duration uses the simple past: ‘lasted’."
+        },
+        "g6": {
+          "label": "6. By the time the Proclamation was issued, the war ___ begun",
+          "correct": "had",
+          "why": "‘By the time’ signals an action completed before another past point, so the past perfect is used."
+        },
+        "g7": {
+          "label": "7. Although they ___ their freedom...",
+          "correct": "had gained",
+          "why": "An action completed before the main clause's past time uses the past perfect."
+        },
+        "g8": {
+          "label": "8. Slavery ___ abolished in 1865",
+          "correct": "was",
+          "why": "‘In 1865’ is a specific past time, so the simple past passive ‘was’ is used."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. When the war ___ (start)",
+          "correct": "started",
+          "why": "‘When’ + a single event uses the simple past, contrasting with the ongoing past perfect continuous background."
+        },
+        "g2": {
+          "label": "2. By 1860, the North ___ (turn)",
+          "correct": "had turned",
+          "why": "‘By 1860’ signals an action completed by that point, so the past perfect is used."
+        },
+        "g3": {
+          "label": "3. Lincoln ___ the election in 1860 (win)",
+          "correct": "won",
+          "why": "A specific past year takes the simple past: ‘won’."
+        },
+        "g4": {
+          "label": "4. The states left after Lincoln ___ president (become)",
+          "correct": "had become",
+          "why": "‘After’ + past perfect shows one action completed before another past action."
+        },
+        "g5": {
+          "label": "5. The war ___ four years (last)",
+          "correct": "lasted",
+          "why": "A simple statement of duration uses the simple past: ‘lasted’."
+        },
+        "g6": {
+          "label": "6. They were free because Lincoln ___ the Proclamation (sign)",
+          "correct": "had signed",
+          "why": "The cause (signing) happened before the result (being free), so the past perfect is used."
+        },
+        "g7": {
+          "label": "7. Slavery ___ abolished in 1865 (be)",
+          "correct": "was",
+          "why": "‘In 1865’ is a specific past time, so the simple past ‘was’ is used."
+        },
+        "g8": {
+          "label": "8. Although they ___ freedom (gain)",
+          "correct": "had gained",
+          "why": "An action completed before the main clause's past time uses the past perfect."
+        }
+      }
+    }
+  },
+  "10g-youth-parliament": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. SYP founded in ___",
+          "correct": "1999",
+          "why": "The text says the Scottish Youth Parliament was founded in 1999."
+        },
+        "g2": {
+          "label": "2. The SYP is for ages 12 to ___",
+          "correct": "25",
+          "why": "The text says the SYP is for young people aged between 12 and 25."
+        },
+        "g3": {
+          "label": "3. Members are known as ___",
+          "correct": "msyps",
+          "why": "The text says members of the SYP are known as MSYPs."
+        },
+        "g4": {
+          "label": "4. Representatives are elected every ___ years",
+          "correct": "two",
+          "why": "The text says representatives are elected every two years."
+        },
+        "g5": {
+          "label": "5. The SYP discusses mental health and ___",
+          "correct": "climate",
+          "why": "The text says the SYP discusses issues such as mental health and climate."
+        },
+        "g6": {
+          "label": "6. The SYP helped lower the ___ age",
+          "correct": "voting",
+          "why": "The text says the SYP helped to lower the voting age to 16."
+        },
+        "g7": {
+          "label": "7. 16-year-olds ___ vote",
+          "correct": "can",
+          "why": "The text says 16-year-olds in Scotland can vote in elections."
+        },
+        "g8": {
+          "label": "8. Most MSYPs say the experience is ___",
+          "correct": "rewarding",
+          "why": "The text says most MSYPs say the experience is rewarding."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Not answering; she ___ be in a meeting",
+          "correct": "might",
+          "why": "‘Might’ expresses an uncertain possibility."
+        },
+        "g2": {
+          "label": "2. Knows every fact; he ___ be interested",
+          "correct": "must",
+          "why": "‘Must’ expresses a confident logical deduction based on evidence."
+        },
+        "g3": {
+          "label": "3. Not certain, but the vote ___ happen tomorrow",
+          "correct": "may",
+          "why": "‘May’ expresses an uncertain possibility."
+        },
+        "g4": {
+          "label": "4. They ___ win, but nobody is sure",
+          "correct": "might",
+          "why": "‘Might’ expresses an uncertain possibility."
+        },
+        "g5": {
+          "label": "5. That ___ be right — it makes no sense",
+          "correct": "can't",
+          "why": "‘Can't’ expresses a confident deduction that something is impossible."
+        },
+        "g6": {
+          "label": "6. Young people ___ vote at 16",
+          "correct": "can",
+          "why": "‘Can’ expresses permission/ability, matching the fact about voting rights."
+        },
+        "g7": {
+          "label": "7. Worked all night, so she ___ be exhausted",
+          "correct": "must",
+          "why": "‘Must’ expresses a confident deduction based on evidence."
+        },
+        "g8": {
+          "label": "8. We ___ finish early if everyone agrees",
+          "correct": "could",
+          "why": "‘Could’ expresses a possibility depending on a condition."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. (Certain she is at home.) She ___ be at home",
+          "correct": "must",
+          "why": "‘Must’ expresses certainty based on the given information."
+        },
+        "g2": {
+          "label": "2. (Impossible he is the leader.) He ___ be the leader",
+          "correct": "can't",
+          "why": "‘Can't’ expresses certainty that something is impossible."
+        },
+        "g3": {
+          "label": "3. (Perhaps they will agree.) They ___ agree",
+          "correct": "might",
+          "why": "‘Might’ expresses an uncertain possibility."
+        },
+        "g4": {
+          "label": "4. (Possible to vote at 16.) You ___ vote at 16",
+          "correct": "can",
+          "why": "‘Can’ expresses permission/possibility, matching ‘it's possible to’."
+        },
+        "g5": {
+          "label": "5. (Sure it's the wrong room.) This ___ be the right room",
+          "correct": "can't",
+          "why": "Being sure it's wrong means it can't be right — ‘can't’ expresses that certainty."
+        },
+        "g6": {
+          "label": "6. (Certain he is clever.) He ___ be clever",
+          "correct": "must",
+          "why": "‘Must’ expresses certainty based on the given information."
+        },
+        "g7": {
+          "label": "7. (Maybe it is true.) It ___ be true",
+          "correct": "may",
+          "why": "‘May’ expresses an uncertain possibility."
+        },
+        "g8": {
+          "label": "8. (Perhaps we will finish early.) We ___ finish early",
+          "correct": "could",
+          "why": "‘Could’ expresses an uncertain possibility."
+        }
+      }
+    }
   }
 }
