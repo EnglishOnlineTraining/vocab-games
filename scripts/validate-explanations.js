@@ -34,6 +34,19 @@ function selectOptions(html, id) {
   return opts;
 }
 
+// Some pages build their <select> elements entirely in JS (a for-loop over an
+// index, e.g. id="exA-v' + i + '"), so the id never appears literally in the
+// static HTML and selectOptions() can't find it. Detect that idiom - strip the
+// gap key's trailing digits and look for "id=\"<base>' +" - so a genuinely
+// missing/typo'd id still hard-errors, but a legitimately JS-templated one
+// only warns (its options can't be statically verified either way).
+function isTemplatedId(html, id) {
+  const base = id.replace(/\d+$/, '');
+  if (base === id) return false;
+  const escaped = base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp('id="' + escaped + "'\\s*\\+").test(html);
+}
+
 let errors = 0, warnings = 0, gaps = 0;
 Object.keys(data).forEach(unit => {
   const file = unitToFile[unit];
@@ -50,7 +63,16 @@ Object.keys(data).forEach(unit => {
       const id = prefix + g;
       gaps++;
       const opts = selectOptions(html, id);
-      if (opts === null) { console.error('✗ ERROR [' + unit + ']: no element id="' + id + '" in ' + file); errors++; return; }
+      if (opts === null) {
+        if (isTemplatedId(html, id)) {
+          console.warn('⚠ WARN [' + unit + ' ' + id + ']: element is JS-templated (built in a loop) - cannot statically verify, skipping option check');
+          warnings++;
+        } else {
+          console.error('✗ ERROR [' + unit + ']: no element id="' + id + '" in ' + file);
+          errors++;
+        }
+        return;
+      }
       const accept = d.accept || [d.correct];
       accept.forEach(a => {
         if (opts.indexOf(a) === -1) {
