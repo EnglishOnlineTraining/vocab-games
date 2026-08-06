@@ -29,9 +29,12 @@ Owners: **CC** = Claude Code (repo build + WordPress.com MCP); **Shaun** = decis
 - Needs `§B2` to confirm nothing beyond the page IDs. Must precede T4.
 
 ## Tier 2 — Rebuild external-dependency content on the activities host · CC
-- **T1** — 4 quizzes → native exercise pages (`eol-task-creator`) from the Tier-0 archive; add to
-  the Activity Directory; repoint `/all-my-quizzes/` (1268); draft posts 1227/1232/1255; fix
-  1268's empty `<h2>property management quiz</h2>`.
+- **T1 — DONE (2026-08-06).** 4 grammar quizzes rebuilt as native pages (`quiz-grammar-*.html`,
+  corrected answer keys, in the filterable hub); Property Management rebuilt as a fresh
+  Business-English task (`be-property-management.html`, via `eol-business-english-creator`);
+  WordPress repointed — page 1268 links to the 4 native quizzes (PM heading removed), posts
+  1227/1232/1255 fixed + drafted (redundant once 1268 covers all four), WP Activity Directory
+  (1763) got a Quizzes section. Full record: `docs/archive/crowdsignal-quizzes/`.
 - **T2** — IELTS glossary → searchable glossary/matching exercise from the cleaned terms; replace
   the Quizlet link with an owned page; add to the Directory; audit + rehost old-domain images.
 - _Validation:_ headless-browser check each rebuilt page (no console errors); confirm links.
