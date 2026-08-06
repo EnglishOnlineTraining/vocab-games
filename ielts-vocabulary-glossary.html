@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>IELTS Vocabulary Glossary — EnglishOnline.training</title>
+<meta name="description" content="A searchable glossary of IELTS vocabulary with definitions, plus a matching-game practice mode."/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1a6eb5;--blue-lt:#e8f2fb;--blue-dk:#14538a;
+  --accent:#f59e0b;--green:#16a34a;--red:#dc2626;
+  --dark:#1a202c;--mid:#4a5568;--light:#718096;
+  --border:#e2e8f0;--bg:#f7f9fc;--white:#fff;
+  --radius:10px;--shadow:0 4px 16px rgba(0,0,0,.10);
+}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--dark);min-height:100vh}
+a{color:var(--blue)}
+
+.site-header{background:linear-gradient(135deg,#0f3460,var(--blue));color:#fff;padding:1.5rem 1rem;text-align:center}
+.site-header h1{font-size:clamp(1.4rem,4vw,2rem);font-weight:800;margin-bottom:.4rem}
+.site-header p{color:rgba(255,255,255,.8);font-size:.95rem}
+.back-link{display:inline-block;margin-top:.75rem;color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none}
+.back-link:hover{color:#fff}
+
+.tabs{display:flex;gap:.4rem;padding:1.25rem 1rem .5rem;flex-wrap:wrap;justify-content:center;max-width:800px;margin:0 auto}
+.tab-btn{padding:.55rem 1.1rem;border-radius:var(--radius);border:2px solid var(--border);background:var(--white);color:var(--mid);font-weight:600;font-size:.85rem;cursor:pointer;transition:.2s;display:flex;align-items:center;gap:.4rem}
+.tab-btn.active{border-color:var(--blue);background:var(--blue-lt);color:var(--blue)}
+.tab-btn:hover:not(.active){border-color:var(--blue);color:var(--blue)}
+
+.game-wrap{max-width:800px;margin:0 auto;padding:.5rem 1rem 3rem}
+.game-panel{display:none}
+.game-panel.active{display:block}
+.game-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.75rem;margin-bottom:1rem}
+.game-title{font-size:1.1rem;font-weight:700;margin-bottom:.3rem;color:var(--dark)}
+.game-desc{font-size:.88rem;color:var(--light);margin-bottom:1.5rem}
+
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.25rem;border-radius:var(--radius);font-weight:600;font-size:.9rem;cursor:pointer;border:none;transition:.2s}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{background:var(--blue-dk)}
+.btn-sm{padding:.45rem .9rem;font-size:.82rem}
+
+/* ===== GLOSSARY (search + filter) ===== */
+.gloss-controls{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem}
+.gloss-search{flex:1;min-width:180px;border:2px solid var(--border);border-radius:var(--radius);padding:.65rem .9rem;font-size:.95rem;font-family:inherit;outline:none;transition:.2s}
+.gloss-search:focus{border-color:var(--blue)}
+.pos-chips{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem}
+.pos-chip{padding:.35rem .8rem;border-radius:999px;border:2px solid var(--border);background:var(--white);color:var(--mid);font-size:.78rem;font-weight:700;cursor:pointer;transition:.2s;letter-spacing:.03em}
+.pos-chip.active{border-color:var(--blue);background:var(--blue);color:#fff}
+.gloss-count{font-size:.82rem;color:var(--light);margin-bottom:.75rem}
+.gloss-list{display:flex;flex-direction:column;gap:.6rem}
+.gloss-item{border:1px solid var(--border);border-radius:var(--radius);padding:.9rem 1.1rem}
+.gloss-term-row{display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap;margin-bottom:.25rem}
+.gloss-term{font-weight:700;font-size:1rem;color:var(--dark)}
+.gloss-pos{font-size:.7rem;font-weight:700;color:var(--blue);background:var(--blue-lt);border-radius:5px;padding:.1rem .4rem;text-transform:uppercase;letter-spacing:.04em}
+.gloss-def{font-size:.9rem;color:var(--mid);line-height:1.5}
+.gloss-example{font-size:.82rem;color:var(--light);font-style:italic;margin-top:.35rem}
+.gloss-empty{text-align:center;color:var(--light);padding:2rem 1rem;font-size:.9rem}
+
+/* ===== MATCHING GAME ===== */
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.match-col{display:flex;flex-direction:column;gap:.6rem}
+.match-col-label{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--light);margin-bottom:.25rem}
+.match-card{padding:.75rem 1rem;border-radius:var(--radius);border:2px solid var(--border);background:var(--white);cursor:pointer;font-size:.88rem;font-weight:500;text-align:center;transition:.2s;user-select:none;min-height:50px;display:flex;align-items:center;justify-content:center}
+.match-card:hover{border-color:var(--blue);background:var(--blue-lt)}
+.match-card.selected{border-color:var(--blue);background:var(--blue);color:#fff}
+.match-card.matched{border-color:var(--green);background:#dcfce7;color:var(--green);cursor:default;pointer-events:none}
+.match-card.wrong{border-color:var(--red);background:#fee2e2;animation:shake .3s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.score-bar{display:flex;align-items:center;justify-content:space-between;background:var(--bg);border-radius:var(--radius);padding:.6rem 1rem;margin-bottom:1.25rem;font-size:.88rem;font-weight:600;color:var(--mid)}
+.score-val{color:var(--blue);font-size:1.1rem;font-weight:800}
+.result-banner{border-radius:var(--radius);padding:1.5rem;text-align:center;margin-top:1rem}
+.result-banner h3{font-size:1.4rem;margin-bottom:.5rem}
+.result-banner p{color:var(--mid);margin-bottom:1rem}
+.result-banner.great{background:#f0fdf4;border:2px solid var(--green)}
+.result-banner.good{background:#fffbeb;border:2px solid var(--accent)}
+.result-banner.keep-going{background:var(--blue-lt);border:2px solid var(--blue)}
+.result-emoji{font-size:2.5rem;display:block;margin-bottom:.5rem}
+
+.loading-note{text-align:center;color:var(--light);padding:2rem 1rem;font-size:.9rem}
+
+.site-footer{max-width:800px;margin:0 auto;padding:1rem 1rem 2.5rem;text-align:center}
+.site-footer a{color:var(--light);font-size:.82rem;text-decoration:none;margin:0 .4rem}
+.site-footer a:hover{color:var(--blue)}
+
+@media(max-width:540px){
+  .match-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <h1>📖 IELTS Vocabulary Glossary</h1>
+  <p>Search the glossary or practise with the matching game — 85 IELTS terms</p>
+  <a class="back-link" href="https://englishonline.training">← Back to EnglishOnline.training</a>
+  &nbsp;·&nbsp;
+  <a class="back-link" href="activities.html">📚 All Activities</a>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('glossary')" id="tab-glossary">📖 Glossary</button>
+  <button class="tab-btn" onclick="showTab('practice')" id="tab-practice">🃏 Practice</button>
+</div>
+
+<div class="game-wrap">
+
+  <!-- ===== GLOSSARY ===== -->
+  <div class="game-panel active" id="panel-glossary">
+    <div class="game-card">
+      <div class="game-title">📖 Glossary</div>
+      <div class="game-desc">Search by word or definition, or filter by part of speech.</div>
+      <div class="gloss-controls">
+        <input class="gloss-search" id="gloss-search" type="text" placeholder="Search terms or definitions…" autocomplete="off" onkeydown="if(event.key==='Escape'){this.value='';renderGlossary();}"/>
+      </div>
+      <div class="pos-chips" id="pos-chips"></div>
+      <div class="gloss-count" id="gloss-count"></div>
+      <div class="gloss-list" id="gloss-list">
+        <div class="loading-note">Loading glossary…</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PRACTICE (MATCHING) ===== -->
+  <div class="game-panel" id="panel-practice">
+    <div class="game-card">
+      <div class="game-title">🃏 Matching Practice</div>
+      <div class="game-desc">Click a word on the left, then click its matching definition on the right.</div>
+      <div class="score-bar">
+        <span>Score: <span class="score-val" id="match-score">0</span> / <span id="match-total">0</span></span>
+        <button class="btn btn-primary btn-sm" onclick="initMatching()">🔄 New Round</button>
+      </div>
+      <div class="match-grid">
+        <div class="match-col">
+          <div class="match-col-label">Words</div>
+          <div id="match-words"></div>
+        </div>
+        <div class="match-col">
+          <div class="match-col-label">Definitions</div>
+          <div id="match-defs"></div>
+        </div>
+      </div>
+      <div id="match-result" class="result-banner" style="display:none"></div>
+    </div>
+  </div>
+
+</div><!-- /game-wrap -->
+
+<footer class="site-footer">
+  <a href="activities.html">Alle Übungen</a>·
+  <a href="themen/index.html">Grammatik-Themen</a>·
+  <a href="mailto:englishonlinetraining@pm.me">Kontakt</a>
+</footer>
+
+<script>
+// =============================================
+//  DATA
+// =============================================
+let TERMS = [];
+let activePos = 'all';
+
+fetch('data/ielts-terms.json')
+  .then(r => r.json())
+  .then(d => {
+    TERMS = d.terms;
+    buildPosChips();
+    renderGlossary();
+    initMatching();
+  })
+  .catch(() => {
+    document.getElementById('gloss-list').innerHTML =
+      '<div class="gloss-empty">Could not load the glossary data. If you\'re viewing this file directly, serve it over HTTP (e.g. <code>python3 -m http.server</code>) instead of opening it from disk.</div>';
+  });
+
+// =============================================
+//  TAB SWITCHING
+// =============================================
+function showTab(name) {
+  document.querySelectorAll('.game-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+}
+
+// =============================================
+//  UTILITIES
+// =============================================
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+function pick(arr, n) { return shuffle(arr).slice(0, Math.min(n, arr.length)); }
+function resultBanner(score, total) {
+  const pct = score / total;
+  let cls, emoji, msg;
+  if (pct >= 0.85) { cls = 'great'; emoji = '🏆'; msg = 'Excellent work! You\'re really nailing this vocabulary!'; }
+  else if (pct >= 0.6) { cls = 'good'; emoji = '👍'; msg = 'Good effort! A little more practice and you\'ll have it perfect.'; }
+  else { cls = 'keep-going'; emoji = '📚'; msg = 'Keep practising — every attempt helps it stick!'; }
+  return `<div class="result-banner ${cls}"><span class="result-emoji">${emoji}</span><h3>${score} / ${total} correct</h3><p>${msg}</p></div>`;
+}
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// =============================================
+//  GLOSSARY (search + filter)
+// =============================================
+const POS_LABELS = { all: 'All', n: 'Noun', v: 'Verb', adj: 'Adjective', adv: 'Adverb', phr: 'Phrase', phrv: 'Phrasal verb' };
+
+function buildPosChips() {
+  const posesPresent = ['all', ...new Set(TERMS.map(t => t.pos))];
+  const order = ['all', 'n', 'v', 'adj', 'adv', 'phr', 'phrv'].filter(p => posesPresent.includes(p));
+  document.getElementById('pos-chips').innerHTML = order.map(p =>
+    `<button class="pos-chip${p === 'all' ? ' active' : ''}" data-pos="${p}" onclick="setPos('${p}')">${POS_LABELS[p] || p}</button>`
+  ).join('');
+}
+function setPos(p) {
+  activePos = p;
+  document.querySelectorAll('.pos-chip').forEach(c => c.classList.toggle('active', c.dataset.pos === p));
+  renderGlossary();
+}
+function renderGlossary() {
+  const q = document.getElementById('gloss-search').value.trim().toLowerCase();
+  const list = TERMS.filter(t => {
+    if (activePos !== 'all' && t.pos !== activePos) return false;
+    if (!q) return true;
+    return t.term.toLowerCase().includes(q) || t.definition.toLowerCase().includes(q);
+  });
+  document.getElementById('gloss-count').textContent = `${list.length} of ${TERMS.length} terms`;
+  const listEl = document.getElementById('gloss-list');
+  if (!list.length) {
+    listEl.innerHTML = '<div class="gloss-empty">No terms match your search.</div>';
+    return;
+  }
+  listEl.innerHTML = list.map(t => `
+    <div class="gloss-item">
+      <div class="gloss-term-row">
+        <span class="gloss-term">${escapeHtml(t.term)}</span>
+        <span class="gloss-pos">${escapeHtml(t.pos)}</span>
+      </div>
+      <div class="gloss-def">${escapeHtml(t.definition)}</div>
+      ${t.example ? `<div class="gloss-example">"${escapeHtml(t.example)}"</div>` : ''}
+    </div>
+  `).join('');
+}
+document.getElementById('gloss-search').addEventListener('input', renderGlossary);
+
+// =============================================
+//  MATCHING PRACTICE
+// =============================================
+let matchSelected = null;
+let matchScoreVal = 0;
+let matchPairs = [];
+
+function initMatching() {
+  if (!TERMS.length) return;
+  matchSelected = null;
+  matchScoreVal = 0;
+  matchPairs = pick(TERMS, 8);
+  document.getElementById('match-score').textContent = 0;
+  document.getElementById('match-total').textContent = matchPairs.length;
+  document.getElementById('match-result').style.display = 'none';
+
+  const wordsEl = document.getElementById('match-words');
+  const defsEl  = document.getElementById('match-defs');
+  const words = shuffle(matchPairs.map(p => p.term));
+  const defs  = shuffle(matchPairs.map(p => p.definition));
+
+  wordsEl.innerHTML = words.map(w =>
+    `<div class="match-card" data-type="word" data-val="${escapeHtml(w)}" onclick="matchClick(this)">${escapeHtml(w)}</div>`
+  ).join('');
+  defsEl.innerHTML = defs.map(d =>
+    `<div class="match-card" data-type="def" data-val="${escapeHtml(d)}" onclick="matchClick(this)">${escapeHtml(d)}</div>`
+  ).join('');
+}
+
+function matchClick(el) {
+  if (el.classList.contains('matched')) return;
+  const type = el.dataset.type;
+
+  if (!matchSelected) {
+    if (el.classList.contains('selected')) { el.classList.remove('selected'); return; }
+    document.querySelectorAll('.match-card.selected').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    matchSelected = el;
+    return;
+  }
+  if (el.dataset.type === matchSelected.dataset.type) {
+    document.querySelectorAll('.match-card.selected').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    matchSelected = el;
+    return;
+  }
+  const wordEl = type === 'word' ? el : matchSelected;
+  const defEl  = type === 'def'  ? el : matchSelected;
+  const pair = matchPairs.find(p => p.term === wordEl.dataset.val);
+  if (pair && pair.definition === defEl.dataset.val) {
+    wordEl.classList.remove('selected'); wordEl.classList.add('matched');
+    defEl.classList.remove('selected');  defEl.classList.add('matched');
+    matchScoreVal++;
+    document.getElementById('match-score').textContent = matchScoreVal;
+    if (matchScoreVal === matchPairs.length) {
+      const r = document.getElementById('match-result');
+      r.innerHTML = resultBanner(matchScoreVal, matchPairs.length);
+      r.style.display = 'block';
+    }
+  } else {
+    wordEl.classList.add('wrong'); defEl.classList.add('wrong');
+    setTimeout(() => {
+      wordEl.classList.remove('selected','wrong');
+      defEl.classList.remove('selected','wrong');
+    }, 600);
+  }
+  matchSelected = null;
+}
+</script>
+
+<script>
+/* ── Paste-block: prevent pasting into answer fields ── */
+document.addEventListener('paste', function(e) {
+  var t = e.target;
+  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
+    e.preventDefault();
+    var msg = document.createElement('div');
+    msg.textContent = '✏️ Pasting is not allowed';
+    msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+    document.body.appendChild(msg);
+    setTimeout(function() {
+      msg.style.opacity = '0';
+      setTimeout(function() { msg.remove(); }, 400);
+    }, 2000);
+  }
+});
+
+/* ── Copy-block: prevent copying text from the page ── */
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  var msg = document.createElement('div');
+  msg.textContent = '🚫 Copying is not allowed';
+  msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';
+  document.body.appendChild(msg);
+  setTimeout(function() {
+    msg.style.opacity = '0';
+    setTimeout(function() { msg.remove(); }, 400);
+  }, 2000);
+});
+</script>
+</body>
+</html>
