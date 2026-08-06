@@ -19,14 +19,28 @@ Owners: **CC** = Claude Code (repo build + WordPress.com MCP); **Shaun** = decis
 - Archive page 460's raw IELTS term list (only clean-up source for T2).
 - _Validation:_ saved files contain every question/term on the live pages.
 
-## Tier 1 — Reparent `/welcome/` children (T3) · CC · live-URL risk
-- `parent = 0` on **70, 168, 307, 651, 978, 1019**, then grandchildren **939, 915** (WP MCP).
-- **Test ONE first:** reload the site; check the inner-page menu shrank **and** whether the old
-  URL 404s, before doing the rest. Stop if the menu doesn't change (cause is elsewhere).
-- **No redirects (upgrade deferred):** parent changes aren't auto-redirected. **Upside: low
-  traffic now = cheapest time to break buried URLs.** Do T3 now; where an old URL matters, leave
-  a stub page at the old path (`<meta http-equiv="refresh">` + canonical) — works with no plugin.
-- Needs `§B2` to confirm nothing beyond the page IDs. Must precede T4.
+## Tier 1 — Reparent `/welcome/` children (T3) · CC · live-URL risk — DONE (2026-08-06)
+All 8 pages confirmed at `parent: 0` via WordPress.com MCP (canary on 651 first, confirmed by
+Shaun before the rest). No redirect stubs built (accepted per Shaun's call — low traffic now is
+the cheapest time to break these buried URLs). Old → new URLs:
+
+| ID | Title | Old URL | New URL |
+|---|---|---|---|
+| 70 | Blog Posts | `/welcome/blog-posts/` | `/blog-posts/` |
+| 168 | Book a lesson | `/welcome/book-a-lesson/` | `/book-a-lesson/` |
+| 307 | Special offer! | `/welcome/what-i-offer/` | `/what-i-offer/` |
+| 651 | Common questions about learning English | `/welcome/common-questions-about-learning-english/` | `/common-questions-about-learning-english/` |
+| 978 | Finding the Right English Speaking Class For You | `/welcome/finding-the-right-english-speaking-class-for-you/` | `/finding-the-right-english-speaking-class-for-you/` |
+| 1019 | Essential Business English Skills to Acquire Today | `/welcome/essential-business-english-skills-to-acquire-today/` | `/essential-business-english-skills-to-acquire-today/` |
+| 939 | A Guide to Group Online English Courses | `/welcome/book-a-lesson/a-guide-to-group-online-english-courses/` | `/a-guide-to-group-online-english-courses/` |
+| 915 | Why you should choose Individual Business English Coaching | `/welcome/book-a-lesson/why-you-should-choose-individual-business-english-coaching/` | `/why-you-should-choose-individual-business-english-coaching/` |
+
+**Automatic side effect** (no separate write — these stayed at `parent=70`, just shortened one
+segment since 70 itself moved to top-level): 869, 842, 832 (+ its own child 1715), 807, 612, all
+now `/blog-posts/<slug>/` instead of `/welcome/blog-posts/<slug>/`.
+
+`§B2` was never supplied in any session; this executed from the page IDs alone per the backlog's
+own fallback. T4 can now proceed (it depended on T3 moving 1019/915/939).
 
 ## Tier 2 — Rebuild external-dependency content on the activities host · CC
 - **T1 — DONE (2026-08-06).** 4 grammar quizzes rebuilt as native pages (`quiz-grammar-*.html`,
