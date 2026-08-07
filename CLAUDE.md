@@ -12,6 +12,56 @@ Static HTML exercise pages for English language learners, hosted on GitHub Pages
 
 ---
 
+## ⚠️ Known traps — read before editing live WordPress or testing submissions
+
+Three things that have already cost real time or broken live pages. None are obvious from the
+code.
+
+### 1. WP page 1763 (`/activities/`) has a stale block-editor state
+Its `_crdt_document` still holds a much older snapshot — Year 7 "6 exercises", Year 9 "5
+exercises", and **no Year 8/10/Abitur/MSA sections at all**. The live content is correct; the
+editor's collaborative-editing state is not. **Opening 1763 in the WP block editor risks
+restoring that old snapshot over the live page.** Edit it through the API (`pages.update`) until
+someone rebuilds it as proper block markup.
+
+**Related rule, learned the hard way twice:** never `pages.update` a page with content fetched
+*without* `context: "edit"`. Without that flag the API returns **rendered** HTML, and dynamic
+blocks come back as their front-end fallbacks — a Jetpack contact form becomes a dead
+`<a href="…">Submit a form.</a>` link. Writing that back destroys the block. This flattened the
+forms on 1997/1996/1965, was repaired, then hit **1965 again** on 2026-08-06 and left the
+Business English page with no working contact form until 2026-08-07. **After any page write,
+verify with `page-sections.list`** — if it errors with "classic/freeform", the page has lost its
+block markup.
+
+### 2. `isTestMode()` makes submissions silently no-op on localhost
+```js
+function isTestMode() {
+  return window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+}
+```
+`submitToSheet()` checks this first and, when true, logs the payload to the console and **never
+calls `fetch`**. So any test of submission behaviour — webhook routing, Apps Script, the email
+gate on `it-writing-task.html` — run against `localhost` proves nothing, and looks like a pass.
+On 2026-08-07 this produced "zero POSTs for valid email addresses", which read as the gate
+working when in fact nothing ever fetched. **Serve the test on a non-localhost host** (use the
+container IP from `hostname -I`, e.g. `http://192.0.2.2:8765/`).
+
+### 3. `nextStep()` clobbers any message `validateStep()` sets
+```js
+function nextStep(n) {
+  if (!validateStep(n)) {
+    var err = document.getElementById('step' + n + '-error');
+    if (err) { err.textContent = 'Please answer the required questions before continuing.'; … }
+```
+The generic string is written **after** `validateStep(n)` returns false, so a specific message
+placed in `#step<n>-error` is always overwritten. That generic wording reads wrongly on a writing
+task ("that is only 6 words" becomes "please answer the required questions"). **If a step needs
+its own wording, give the message its own element id** and omit `#step<n>-error` entirely — see
+`#exB-lengthwarn` in `it-writing-task.html`. `clearErr(n)` is null-safe, so the missing id is
+harmless.
+
+---
+
 ## File structure
 
 | File | Year | School | Notes |
