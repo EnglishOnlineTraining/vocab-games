@@ -51,6 +51,23 @@ own fallback. T4 can now proceed (it depended on T3 moving 1019/915/939).
   (1763) got a Quizzes section. Full record: `docs/archive/crowdsignal-quizzes/`.
 - **T2** — IELTS glossary → searchable glossary/matching exercise from the cleaned terms; replace
   the Quizlet link with an owned page; add to the Directory; audit + rehost old-domain images.
+- **T5 — IT English: extended production task.** None of the ten `it-*` pages has a free-text
+  field (`grep -c form-textarea it-*.html` → 0 across the board), so the series stops at
+  recognition: reading comprehension, gapped vocabulary, register multiple-choice. The artefact
+  the job actually produces — a written ticket, an incident report, a reply to a user — is never
+  written on the page. Surfaced 2026-08-07 while replacing the invented example in teacher-notes
+  draft 2064 with the real `it-support.html`; the draft now says on the record that extended
+  production is still a classroom step.
+  - **Scope:** add a final free-text step to each `it-*` page, scenario-matched to that unit
+    (e.g. `it-support` → write the technician's reply to Ticket #4821: acknowledge, ask two
+    narrowing questions, propose next steps, give a timeframe). Ungraded free text, submitted to
+    the teacher alongside the auto-marked sections — same pattern as `9g-california-hazards`
+    Exercise D, so no framework change is needed: bump `TOTAL_STEPS`, add the step section, and
+    extend `validateStep`/`saveStep`/`restoreStep`/`buildSummary`/`buildPayload`.
+  - **Backend:** the BE/University Apps Script handler auto-adds columns per `unit`, so the new
+    field needs no redeploy.
+  - **Sequencing:** worth doing before 2064 publishes, so the "next thing to build" line can be
+    dropped. Not blocking — the draft is honest as written either way.
 - _Validation:_ headless-browser check each rebuilt page (no console errors); confirm links.
 
 ## Tier 3 — Small, low-risk cleanups · CC
@@ -64,8 +81,20 @@ own fallback. T4 can now proceed (it depended on T3 moving 1019/915/939).
   (repurpose `Business blogs` or create `Business English`, file all ~12 assets); (4) resolve
   overlaps (1061/1167 emails; 1133/1019 why-learn-BE). Depends on T3. Check 1187 ownership; fix
   612's stray `/` title.
-- Teacher-notes drafts (2063–2066): blocked on real task exports + deleting `DRAFT NOTE`; **2064
-  claims IT English deployed while the site says "in development" — reconcile.**
+- Teacher-notes drafts (2063–2066) — **placeholders DONE (2026-08-07).** All four invented
+  examples replaced with real live pages (2063 → `9g-california-hazards` Ex D; 2064 →
+  `it-support`; 2065 → `abitur-text-analysis-aims-ambitions`; 2066 → `msa-c-weekend-job-cafe`),
+  all four `DRAFT NOTE` blocks deleted. The IT "in development" contradiction is gone —
+  `/it-english/` now lists 10 live exercises. Three claims were corrected against the real
+  material in passing: 2064's "Task 3 — production" (no `it-*` page has free text → see T5),
+  and 2065/2066's "two model responses at different quality levels" (Abitur ships one annotated
+  model + a 10-item self-check; MSA ships none).
+  - **Still open for Shaun:** 2064's "Assessed writing runs under invigilated conditions"
+    paragraph lists the full integrity toolkit (typing-speed detection, four-variant prompt
+    randomisation, progress snapshots). That machinery is real but lives in `uni-writing-task.html`
+    — **no `it-*` page uses it**, because no `it-*` page has assessed writing. In context it reads
+    as though IT trainees sit those pages. Decide before publishing: soften the claim, or build
+    the assessed variant (a scope step beyond T5's ungraded task).
 - Vocabulary Games (1757): fold into `/activities/` or keep standalone.
 
 ## Tier 5 — Manual WordPress UI / account · Shaun
