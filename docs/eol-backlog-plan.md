@@ -141,11 +141,40 @@ accessibility problem. Do not raise again unless Shaun asks.
   `exercise-card` markup instead). 7g/7c/8g/8c/9g/9c/10g/10c/abitur/uni were already right.
 
 ## Tier 4 — Strategic decisions (Shaun-led) · Shaun + CC
-- **T4 Business English consolidation** — decide before building more: (1) BE = commercial funnel
-  vs free SEO; (2) one home (WP articles vs activities-host tasks) + cross-linking; (3) category
-  (repurpose `Business blogs` or create `Business English`, file all ~12 assets); (4) resolve
-  overlaps (1061/1167 emails; 1133/1019 why-learn-BE). Depends on T3. Check 1187 ownership; fix
-  612's stray `/` title.
+- **T4 Business English consolidation — DECIDED 2026-08-07: BE is the commercial funnel.**
+  Rationale: BE is the only segment whose audience has a budget and a business reason to buy 1:1
+  coaching. School/MSA/Abitur content carries the SEO and DAU load; BE carries revenue. Trying to
+  make BE do both is what produced the duplication.
+  - **(2) Home:** WordPress articles lead (sales surface); activities-host tasks are the proof.
+    Every BE task routes back to the coaching page **1965** (`/business-english/`). The CTA added
+    to `business-activities.html` on 2026-08-06 becomes the pattern, not the exception.
+  - **(3) Categorisation:** reframed as navigation, not taxonomy — **WP categories only apply to
+    Posts and most BE assets are Pages**, so the original "repurpose Business blogs" plan is not
+    possible as written.
+  - **(4) Overlaps — the estate is bigger than this entry recorded.** `content.search` on
+    2026-08-07 found ~15 BE assets, and the email cluster is **four** pieces, not two.
+
+  **Email cluster — verified 2026-08-07, plan below (NOT yet executed, awaiting go-ahead):**
+
+  | ID | URL / type | Verdict |
+  |---|---|---|
+  | **1061** | `/writing-emails-in-english/` (page) | **KEEP — the winner.** Best URL and title ("How to Write Professional English Emails (With Examples)"), and already acts as hub linking to the other three. **But the body is a dated 2023 AI-tools listicle with no examples at all** — a title/content mismatch that is an active SEO liability. |
+  | **1167** | `/good-vs-bad-when-writing-emails-in-english/` (page) | **Content wins, URL loses.** Has the three bad/good email pairs 1061's title promises, plus a booking CTA. Move this content into 1061; stub 1167. |
+  | **1238** | `/2023/04/12/useful-phrases-for-business-emails/` (post) | **Superseded.** ~15 phrases in 5 groups + a PDF on the old CDN. `lead-business-email-phrasebank.html` (40 entries, merged 2026-08-07) is strictly better. Stub → 1061 + the lead magnet. |
+  | **523** | `/2022/12/16/10-tips-for-writing-business-emails-in-english/` (post) | **NOT YET READ.** Fold its tips into 1061 or stub it — needs a look before executing. |
+
+  Target shape: **1061 (SEO entry, real examples) → `be-professional-emails.html` (practise) →
+  1965 (coaching CTA)**. Stubs rather than deletions throughout — **this plan has no 301s**, so
+  trashing a page hard-breaks its URL (same reasoning as 1757).
+
+  **Why-learn-BE cluster — NOT yet examined:** 1133 (`/why-is-learning-business-english-important/`)
+  and 1019 (`/essential-business-english-skills-to-acquire-today/`), plus likely 915, 380 and
+  post 365 (`/why-learn-with-english-online-training/` — 380 and 365 look like a page/post
+  duplicate of each other). Needs the same pass.
+
+  Still open loose ends: **1187** ("Are you looking for a virtual assistant…") reads off-brand for
+  an English-teaching site — confirm ownership/intent. **612**'s stray `/` title was fixed
+  2026-08-06.
 - Teacher-notes drafts (2063–2066) — **placeholders DONE (2026-08-07).** All four invented
   examples replaced with real live pages (2063 → `9g-california-hazards` Ex D; 2064 →
   `it-support`; 2065 → `abitur-text-analysis-aims-ambitions`; 2066 → `msa-c-weekend-job-cafe`),
@@ -179,10 +208,10 @@ accessibility problem. Do not raise again unless Shaun asks.
   `pub/ixion` theme. (Menu delete/assign may be MCP-doable — check when we get there.)
 
 ## Open decisions gating the plan
-**Only one left.**
+**None.** BE strategy was settled 2026-08-07 (funnel). What remains is execution:
 
-1. **BE strategy (Tier 4)** — see the T4 entry above for the four sub-questions. Nothing
-   BE-structural should ship until this is settled, but nothing else is waiting on it either.
+1. **Approve the email-cluster merge** in T4 above (1167 + 1238 fold into 1061; 523 to be read
+   first). Live published pages, no 301s available — worth an explicit go-ahead before running.
 2. `§B2` was never supplied across any session; T3 shipped without it. Treat as dead unless Shaun
    raises it.
 
