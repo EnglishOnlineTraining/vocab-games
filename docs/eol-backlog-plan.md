@@ -12,6 +12,21 @@ Owners: **CC** = Claude Code (repo build + WordPress.com MCP); **Shaun** = decis
 - Old-domain images (`englishforgermanspeakers.wordpress.com`) on page 460 and maybe others.
 - **Plan upgrade is DEFERRED** (Shaun: not until DAU grows) → no 301 redirects available yet.
 
+## ⚠ Unmerged branches — finished work that is NOT live · CC
+_Checked 2026-08-07. `main` is what GitHub Pages serves; work sitting on a branch is invisible to
+students. Check this section before reporting anything as "done"._
+
+| Branch | Ahead | Contains | State |
+|---|---|---|---|
+| `claude/explanation-skill-swgpqb` | 9 | **The whole explanations rollout — 94 units, 1726 gaps** in `data/explanations.json`, validator bug-fixes, 3 answer-key corrections (`8c-off-to-midwest`, `be-cross-cultural-communication`, `msa-c-school-recycling-scheme`) | **Ready to merge.** Test-merged into `origin/main` 2026-08-07: clean, no conflicts; `node scripts/validate-explanations.js` → 94 units, 1726 gaps, **0 errors**, 29 warnings (all benign "JS-templated, skipping"). Awaiting Shaun's go-ahead to merge + deploy. |
+| `claude/student-score-changed-answers-xxcxt9` | 2 | Automatic dark mode — `style.css` (111 framework pages) + 37 bespoke pages | Unreviewed. Decide whether this ships. |
+| `claude/github-repo-review-lcaye4` | 0 | nothing (0 commits ahead, 79 behind) | Stale — safe to delete. |
+
+**Why this matters:** on 2026-08-07 the explanations rollout was reported as "5 done, 95 to go"
+from the state of `main`, when in fact 94 units were finished on the branch above. Same trap
+applies to the dark-mode branch. `node scripts/extract-graded.js --todo` only ever reflects the
+**checked-out** branch.
+
 ## Tier 0 — Protect only-copy content (do first; safe, no live changes) · CC
 - Archive the 4 Crowdsignal quizzes (`easy-english-quiz`, `easy-english-quiz-level-2`,
   `english-quiz-level-3`, `english-quiz-4`) — Q, options, correct answers, feedback — to
@@ -49,8 +64,13 @@ own fallback. T4 can now proceed (it depended on T3 moving 1019/915/939).
   WordPress repointed — page 1268 links to the 4 native quizzes (PM heading removed), posts
   1227/1232/1255 fixed + drafted (redundant once 1268 covers all four), WP Activity Directory
   (1763) got a Quizzes section. Full record: `docs/archive/crowdsignal-quizzes/`.
-- **T2** — IELTS glossary → searchable glossary/matching exercise from the cleaned terms; replace
-  the Quizlet link with an owned page; add to the Directory; audit + rehost old-domain images.
+- **T2 — DONE (2026-08-06).** `ielts-vocabulary-glossary.html` built from the 85 cleaned terms
+  (`data/ielts-terms.json`, archived raw source in `docs/archive/ielts-glossary/raw.md`):
+  searchable glossary + POS chips + matching game. WP page 460 retitled and repointed off
+  Quizlet; Vocabulary section added to the Directory (1763). **Old-domain images: closed as
+  "do not touch"** — all 175 media items serve from `englishforgermanspeakers.wordpress.com`,
+  including uploads from July 2026. That is permanent WordPress.com CDN behaviour, not migration
+  debris, so there is nothing to rehost.
 - **T5 — IT English: extended production task.** None of the ten `it-*` pages has a free-text
   field (`grep -c form-textarea it-*.html` → 0 across the board), so the series stops at
   recognition: reading comprehension, gapped vocabulary, register multiple-choice. The artefact
@@ -66,12 +86,25 @@ own fallback. T4 can now proceed (it depended on T3 moving 1019/915/939).
     extend `validateStep`/`saveStep`/`restoreStep`/`buildSummary`/`buildPayload`.
   - **Backend:** the BE/University Apps Script handler auto-adds columns per `unit`, so the new
     field needs no redeploy.
-  - **Sequencing:** worth doing before 2064 publishes, so the "next thing to build" line can be
-    dropped. Not blocking — the draft is honest as written either way.
+  - **RESOLVED 2026-08-07 — standalone page, not per-unit steps.** Shaun: "standalone page ok for
+    now." Shipped `it-writing-task.html`: Ex A = 8 auto-marked precision/register items feeding
+    Score + Note; Ex B = one production task drawn from a **pool of five** (ticket reply, incident
+    report, procedure for a non-expert, status email to a non-technical manager, async
+    troubleshooting message), each with its own situation, four requirements, 8-term word bank,
+    length target and opening line. Task assigned by a hash of the student's name (stable across
+    reloads, neighbours differ); practise mode randomises with a reshuffle; `?task=1..5` forces one
+    for previewing. Hub card added; `data/exercises.json` + filterable index regenerated.
+    **The other ten `it-*` pages keep no free-text field** — revisit only if Shaun asks.
+  - **Email policy (Shaun, 2026-08-07): "email only required to submit writing tasks."** So
+    `it-writing-task.html` blocks submission until a valid address is entered (nothing is POSTed
+    to the sheet without one, and the mailto/clipboard fallbacks are behind the same gate because
+    they are only revealed inside `submitToSheet`). The other ten `it-*` pages keep email
+    **optional**. Do not roll the requirement out across the series.
 - _Validation:_ headless-browser check each rebuilt page (no console errors); confirm links.
 
 ## Tier 3 — Small, low-risk cleanups · CC
-- `/wilkommen/` typo (771 + 860, 929, 983, 1137, 1561) — slug change **does** auto-redirect.
+- `/wilkommen/` typo — **DONE.** Page 771 verified live at `/willkommen/` (2026-08-07); internal
+  links on the referring pages updated. Slug changes auto-redirect, so old links still resolve.
 - California – Interactive Exercises — **DONE (2026-08-07), and deliberately NOT a directory
   entry of its own.** `california-exercises.html` is already a card inside `9g-activities.html`
   (Y9 Gymnasium), so listing it separately on WP 1763 double-counted it. The standalone button
@@ -113,7 +146,15 @@ own fallback. T4 can now proceed (it depended on T3 moving 1019/915/939).
   `pub/ixion` theme. (Menu delete/assign may be MCP-doable — check when we get there.)
 
 ## Open decisions gating the plan
-1. **T3 now, with meta-refresh stubs** where an old URL matters (approved 2026-08-05) — no upgrade near-term.
-2. Paste **`§B2`** (+ any T4 detail).
-3. **BE strategy** (Tier 4) before anything BE-structural ships.
-4. **Crowdsignal export** on standby if embeds are JS-rendered.
+1. **Merge `claude/explanation-skill-swgpqb` to `main`?** Test-merged clean, validator green.
+   This is the only thing standing between 94 units of finished explanations and live students.
+2. **Ship the dark-mode branch** (`claude/student-score-changed-answers-xxcxt9`) or drop it?
+3. **2064's invigilation paragraph** — soften the claim, or build the assessed IT writing variant.
+   Blocks publishing the five-post teacher-notes series.
+4. **BE strategy** (Tier 4) before anything BE-structural ships.
+5. **Vocabulary Games (1757)** — fold into `/activities/` or keep standalone.
+6. `§B2` was never supplied across any session; T3 shipped without it. Treat as dead unless Shaun
+   raises it.
+
+_Closed: T3 approach (2026-08-05, no plan upgrade near-term); Crowdsignal export (not needed —
+T1 rebuilt natively); T5 scope (standalone page); IT email policy (writing tasks only)._
