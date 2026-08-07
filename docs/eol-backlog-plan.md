@@ -72,8 +72,17 @@ own fallback. T4 can now proceed (it depended on T3 moving 1019/915/939).
 
 ## Tier 3 — Small, low-risk cleanups · CC
 - `/wilkommen/` typo (771 + 860, 929, 983, 1137, 1561) — slug change **does** auto-redirect.
-- California – Interactive Exercises (WP 1760) — orphaned from the WP Activity Directory (1763);
-  the exercise already exists in the repo + filterable hub, just needs the WP directory link.
+- California – Interactive Exercises — **DONE (2026-08-07), and deliberately NOT a directory
+  entry of its own.** `california-exercises.html` is already a card inside `9g-activities.html`
+  (Y9 Gymnasium), so listing it separately on WP 1763 double-counted it. The standalone button
+  was dropped earlier and the "Year 9 Gymnasium includes …" sentence that replaced it has now
+  gone too — Shaun flagged it as still showing. Do not re-add: reachable via the Y9 Gymnasium
+  hub and the filterable index. Same test for anything similar — if it has a card in a year hub,
+  it does not get its own directory row.
+- **WP 1763 counts must be re-checked when exercises are added.** Corrected 2026-08-07: MSA
+  17→20, Business 16→18, IT 10→11. Ground truth is the card count in each `*-activities.html`
+  (`grep -o '<a class="activity-card" href="[^"]*"' <hub>.html | sort -u | wc -l`; `8c` uses
+  `exercise-card` markup instead). 7g/7c/8g/8c/9g/9c/10g/10c/abitur/uni were already right.
 
 ## Tier 4 — Strategic decisions (Shaun-led) · Shaun + CC
 - **T4 Business English consolidation** — decide before building more: (1) BE = commercial funnel
