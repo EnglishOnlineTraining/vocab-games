@@ -99,7 +99,20 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); min-
   .welcome-title { font-size: 1.4rem; }
   .gap-select { max-width: 200px; font-size: .75rem; }
 }
-  </style>
+  
+/* ── Automatic dark mode (added; light values untouched) ── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1620;
+    --blue: #4a86c9;
+    --border: #28394d;
+    --card: #16212e;
+    --muted: #8a99aa;
+    --shadow: 0 2px 18px rgba(0,0,0,.45);
+    --text: #e7eef6;
+  }
+}
+</style>
 </head>
 <body>
 

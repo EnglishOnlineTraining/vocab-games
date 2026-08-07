@@ -20,7 +20,7 @@ students. Check this section before reporting anything as "done"._
 |---|---|---|
 | `claude/explanation-skill-swgpqb` | **The whole explanations rollout — 94 units, 1726 gaps** in `data/explanations.json`, validator bug-fixes, 3 answer-key corrections (`8c-off-to-midwest`, `be-cross-cultural-communication`, `msa-c-school-recycling-scheme`) | ✅ **MERGED to main 2026-08-07** (Shaun approved). Branch can be deleted. |
 | `claude/pat-handling-reliability-6055wv` | `it-writing-task.html` + hub wiring, four `lead-*.html` pages, backlog reconciliation | ✅ **MERGED to main 2026-08-07** (Shaun approved). Branch can be deleted. |
-| `claude/student-score-changed-answers-xxcxt9` | Automatic dark mode — `style.css` (111 framework pages) + 37 bespoke pages | **Still unmerged, unreviewed.** Decide whether this ships. |
+| `claude/student-score-changed-answers-xxcxt9` | Automatic dark mode — `style.css` (111 framework pages) + 37 bespoke pages | ✅ **MERGED to main 2026-08-07** (Shaun approved after review), with a contrast fix folded in — see note below. Branch can be deleted. |
 | `claude/github-repo-review-lcaye4` | nothing (0 commits ahead, 79 behind) | Stale — safe to delete. |
 
 **Merge note (2026-08-07):** merging the two approved branches conflicted on four files.
@@ -110,6 +110,20 @@ own fallback. T4 can now proceed (it depended on T3 moving 1019/915/939).
     **optional**. Do not roll the requirement out across the series.
 - _Validation:_ headless-browser check each rebuilt page (no console errors); confirm links.
 
+**Dark-mode merge note (2026-08-07).** The branch was written 2026-07-29; review-page
+explanations landed 2026-08-05. So `.expl-*` never got a dark palette and inherited raw
+`var(--red)` — **`.expl-your` (the student's own wrong answer) measured 2.99:1 against the card
+background, below WCAG AA.** Neither branch was wrong alone; the defect only existed once both
+were on `main`. Fixed in the merge commit by reusing the pink/green the branch already defines
+for `.gap-wrong`/`.gap-correct` (`#f3a3b0` / `#7fe0a0`) → 8.27:1 and 10.12:1. `style.css` also
+conflicted because both sides appended a block to the end — **keep both**; taking one side drops
+either the 11 `.expl-*` rules or the whole dark palette.
+
+**Follow-up — 9 pages stay light-only** (no `style.css`, no own dark block, so they render white
+in a dark set; legible at 13.6:1, so cosmetic not accessibility): `ielts-vocabulary-glossary`,
+the four `lead-*`, `uni-pm-vocabulary`, `uni-presentation-task`, `uni-writing-task`,
+`year-7-class-wall`. Each needs its own token pass. Deliberately left out of the dark-mode merge.
+
 ## Tier 3 — Small, low-risk cleanups · CC
 - `/wilkommen/` typo — **DONE.** Page 771 verified live at `/willkommen/` (2026-08-07); internal
   links on the referring pages updated. Slug changes auto-redirect, so old links still resolve.
@@ -154,14 +168,14 @@ own fallback. T4 can now proceed (it depended on T3 moving 1019/915/939).
   `pub/ixion` theme. (Menu delete/assign may be MCP-doable — check when we get there.)
 
 ## Open decisions gating the plan
-1. **Ship the dark-mode branch** (`claude/student-score-changed-answers-xxcxt9`) or drop it?
-2. **2064's invigilation paragraph** — soften the claim, or build the assessed IT writing variant.
+1. **2064's invigilation paragraph** — soften the claim, or build the assessed IT writing variant.
    Blocks publishing the five-post teacher-notes series.
-3. **BE strategy** (Tier 4) before anything BE-structural ships.
-4. **Vocabulary Games (1757)** — fold into `/activities/` or keep standalone.
+2. **BE strategy** (Tier 4) before anything BE-structural ships.
+3. **Vocabulary Games (1757)** — fold into `/activities/` or keep standalone.
+4. **Dark mode for the 9 light-only pages** — do them, or accept the inconsistency?
 5. `§B2` was never supplied across any session; T3 shipped without it. Treat as dead unless Shaun
    raises it.
 
 _Closed: T3 approach (2026-08-05, no plan upgrade near-term); Crowdsignal export (not needed —
 T1 rebuilt natively); T5 scope (standalone page); IT email policy (writing tasks only);
-explanations + IT-writing-task merges (approved and merged 2026-08-07)._
+explanations + IT-writing-task merges (2026-08-07); dark mode (reviewed and merged 2026-08-07)._

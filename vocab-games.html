@@ -121,6 +121,22 @@ a{color:var(--blue)}
   .mc-options{grid-template-columns:1fr}
   .ws-input-wrap{flex-direction:column}
 }
+
+/* ── Automatic dark mode (added; light values untouched) ── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1620;
+    --blue: #4a86c9;
+    --blue-dk: #6ea6de;
+    --blue-lt: #12324c;
+    --border: #28394d;
+    --dark: #e7eef6;
+    --light: #8a99aa;
+    --mid: #9aa8b8;
+    --shadow: 0 2px 18px rgba(0,0,0,.45);
+    --white: #16212e;
+  }
+}
 </style>
 </head>
 <body>
