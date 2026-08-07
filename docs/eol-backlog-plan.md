@@ -211,38 +211,28 @@ those notes turned out to be wrong (see the 2063–2066 correction above).
   `learnenglishinberlin.com` (a different, unrelated domain), selling exactly the individual 1:1
   coaching product Shaun ruled out on 2026-08-07. Set to `draft`, not deleted.
 
-**Still open — content-read 2026-08-07, recommendations below, not yet executed:**
+**RESOLVED 2026-08-07 (Shaun approved):**
 - **Duplicate "Why learn with English Online Training?"** — page **380**
-  (`/why-learn-with-english-online-training/`) and post **365**
-  (`/2022/11/13/why-learn-with-english-online-training/`) both read in full. **380 is the better
-  version and should be the keeper:** it has a header image, and its testimonials are proper
-  `wp:pullquote` blocks in the right places. **365 has real HTML bugs** — doubly-nested
-  `<blockquote><blockquote>` tags (testimonials broken twice), and a stray unclosed `<p>` that
-  wraps straight into an `<h2>` (`<p class="wp-block-paragraph">\n<h2 ...`), both signs it's an
-  earlier, less-finished draft of the same copy rather than a parallel version worth keeping.
-  **Recommend: stub 365 → 380.** Could not confirm which is linked from live nav — classic-theme
-  menus aren't MCP-reachable, and a full-text `content.search` for the shared title returned ~84
-  loosely-relevant results rather than a precise inbound-link list, so that channel doesn't
-  resolve it either. Content quality is the only signal available; going with it.
+  (`/why-learn-with-english-online-training/`) kept: header image, testimonials as proper
+  `wp:pullquote` blocks in the right places. Post **365** had real HTML bugs — doubly-nested
+  `<blockquote><blockquote>` tags, a stray unclosed `<p>` wrapping straight into an `<h2>` — signs
+  it was an earlier, less-finished draft of the same copy. **Stubbed 365 → 380.** Could not
+  confirm which was linked from live nav (classic-theme menus aren't MCP-reachable; a full-text
+  `content.search` for the shared title returned ~84 loosely-relevant results, not a precise
+  inbound-link list) — content quality was the only signal available, and 380 won on it.
   **380's non-breaking-space title still unconfirmed** either way (API layer may normalise it in
-  transit) — a wp-admin look would settle it, low priority.
-- **Deep nesting under the old 460 hierarchy — all four pages read in full 2026-08-07, and the
-  original "fold into `/activities/`" plan doesn't fit what's actually there.** 423 ("English
-  Exercises #1") and 438 ("English Exercises #2") are thin 2022 homophone/matching drills with
-  filler-quality content (423's example items are literally "marketing vs. sleeping",
-  "candidate vs. candy date"); 438's own content additionally **bleeds a raw WordPress comment-
-  form template into the visible page body** — broken markup, not just dated copy. 499 ("which is
-  the outlier") is a similar static vocab-grouping drill. 595 ("Front end developing vocab") is a
-  UX/dev-terminology glossary that links out to Quizlet — same shape as the old IELTS glossary on
-  460 that T2 already rebuilt natively, except this one is off-topic for an English-teaching site
-  (UX jargon, not English vocabulary) and has never been touched.
-  None of the four holds up next to what the site does now — 128 live interactive exercises, a
-  native IELTS glossary, real business-vocab units. **Recommend: retire (draft, not delete) all
-  four rather than migrate their content anywhere** — there's nothing here worth folding into
-  `/activities/`; migrating filler content into the hub would lower its average quality, not
-  raise it. This reverses the audit's original framing (which assumed the branch had content
-  worth relocating). (965, also originally under this branch, is **already at `parent: 0`** — no
-  action needed there.)
+  transit) — a wp-admin look would settle it, low priority, left open.
+- **Old 460 hierarchy — 423/438/499/595 retired (draft, not deleted).** All four read in full:
+  423 ("English Exercises #1") and 499 ("which is the outlier") are thin 2022 filler drills
+  (example items literally "marketing vs. sleeping", "candidate vs. candy date"); 438 ("English
+  Exercises #2") additionally **bled a raw WordPress comment-form template into its visible page
+  body** — broken markup, not just dated copy; 595 ("Front end developing vocab") was an
+  off-topic UX/dev-terminology glossary linking out to Quizlet, same shape as the old IELTS
+  glossary T2 already rebuilt natively, except off-brand for an English-teaching site. None of it
+  held up next to what the site does now — 128 live interactive exercises, a native IELTS
+  glossary, real business-vocab units — so nothing was migrated, reversing the audit's original
+  "fold into `/activities/`" framing. (965, also originally under this branch, was **already at
+  `parent: 0`** — no action needed there.)
 
 ## Tier 4 — Strategic decisions (Shaun-led) · Shaun + CC
 - **T4 Business English consolidation — DECIDED 2026-08-07: BE is the commercial funnel,
@@ -366,20 +356,15 @@ those notes turned out to be wrong (see the 2063–2066 correction above).
   `pub/ixion` theme. (Menu delete/assign may be MCP-doable — check when we get there.)
 
 ## Open decisions gating the plan
-BE strategy was settled 2026-08-07 (funnel). The four ready-to-execute items from earlier today
-(publish 2063–2066, fix "Blog Posts" 70/1205, unpublish 307, run the email-cluster merge) were
-all approved and are now **DONE** — see Tier 3.5 and Tier 4 above for the executed record. Both
-remaining items are now fully read and have a concrete recommendation, ready for a yes/no:
+**All six items from the 2026-08-07 audit reconciliation are now resolved and executed** (Shaun
+approved each): 2063–2066 published, "Blog Posts" 70 fixed and 1205 stubbed, 307 unpublished,
+the email cluster merged into 1061, 365 stubbed to 380, and 423/438/499/595 retired. See Tier 3.5
+and Tier 4 above for the full executed record. What's left:
 
-1. **Stub 365 → 380 ("Why learn with EOL").** 380 is the cleaner version (image, correctly-placed
-   pullquotes); 365 has real HTML bugs (double-nested blockquotes, a paragraph tag that wraps
-   straight into a heading). Recommend keeping 380, stubbing 365.
-2. **Retire 423/438/499/595 (old 460 branch), draft not delete.** All four are thin 2022 filler
-   content or off-topic (UX glossary on an English-teaching site); 438 additionally leaks a raw
-   comment-form template into its visible body. Recommend draft, no migration — there's nothing
-   here worth folding into `/activities/`.
-3. `§B2` was never supplied across any session; T3 shipped without it. Treat as dead unless Shaun
+1. `§B2` was never supplied across any session; T3 shipped without it. Treat as dead unless Shaun
    raises it.
+2. **380's non-breaking-space title** (Tier 3.5) — still unconfirmed either way; low priority,
+   needs a direct wp-admin look rather than another API round-trip.
 
 _Closed: T3 approach (2026-08-05, no plan upgrade near-term); Crowdsignal export (not needed —
 T1 rebuilt natively); T5 scope (standalone page); IT email policy (writing tasks only);
@@ -389,5 +374,6 @@ Vocabulary Games 1757 (folded into `/activities/`); dark mode for the 9 light-on
 (won't fix); content-audit Phase A2/A3/A4 (off-brand posts, thin 2016/2014 posts, "Test your
 English" triplicate, 2026 German cluster categories — all confirmed done via live check
 2026-08-07, see Tier 3.5); teacher-notes drafts 2063–2066 published, "Blog Posts" 70/1205 fixed,
-307 unpublished, and the email-cluster merge (1061/1167/1238/523) — all executed and Shaun-approved
-2026-08-07._
+307 unpublished, the email-cluster merge (1061/1167/1238/523), the 380/365 duplicate (365
+stubbed), and the old 460 branch (423/438/499/595 retired) — all executed and Shaun-approved
+2026-08-07. **The full audit reconciliation is complete.**_
