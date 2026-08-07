@@ -141,10 +141,33 @@ accessibility problem. Do not raise again unless Shaun asks.
   `exercise-card` markup instead). 7g/7c/8g/8c/9g/9c/10g/10c/abitur/uni were already right.
 
 ## Tier 4 — Strategic decisions (Shaun-led) · Shaun + CC
-- **T4 Business English consolidation — DECIDED 2026-08-07: BE is the commercial funnel.**
-  Rationale: BE is the only segment whose audience has a budget and a business reason to buy 1:1
-  coaching. School/MSA/Abitur content carries the SEO and DAU load; BE carries revenue. Trying to
-  make BE do both is what produced the duplication.
+- **T4 Business English consolidation — DECIDED 2026-08-07: BE is the commercial funnel,
+  targeting CORPORATE CONTRACTS.** Shaun, 2026-08-07: *"I am not looking for new 1-1 coaching
+  clients but would consider corporate contracts."* This is a hard constraint on the funnel's
+  destination — **do not drive traffic to 1:1 booking (Calendly) or individual coaching**.
+
+  ⚠️ **BLOCKER — the funnel destination is broken, and CC broke it.** Page **1965**
+  (`/business-english/`) is the intended landing page. `page-sections.list` reports it as
+  **classic/freeform**, i.e. it has no Gutenberg block markup: its Jetpack contact form has been
+  flattened to a dead `<a href="/business-english/">Submit a form.</a>` link that goes nowhere.
+  This is the same rendered-HTML round-trip damage recorded earlier in the session; it was
+  repaired once, then reintroduced on 2026-08-06 by the `pages.update` that added the
+  cross-link. **Fix before sending any traffic there.** Rule: never `pages.update` a page with
+  content fetched *without* `context: "edit"` — dynamic blocks come back as front-end fallbacks.
+
+  **The corporate proof already exists and is buried.** 1965 carries a *"Companies I have
+  trained"* logo wall — Akelius, BMW, Esanum, Guidehouse, Juwelo, Labor Berlin, Mercedes Bank,
+  ODSV, Siemens, Solaris, TK, UNICEF — sitting mid-page beneath an individual-focused offer.
+  For a corporate L&D buyer that logo wall *is* the pitch and should be above the fold.
+
+  **But 1965 is currently written for individuals** and is off-strategy as it stands: it sells
+  self-paced material packs that are "in development", its outcomes are individual exam goals
+  (TOEIC 600+, IELTS 8.0), its curriculum is an 8-week solo study plan, and its primary CTA is a
+  Mailchimp "get notified". Needs reframing for a corporate buyer.
+
+  **Now off-strategy, demote rather than promote:** 915 *"Why you should choose Individual
+  Business English Coaching"*. Conversely **939** *"A Guide to Group Online English Courses"*
+  moves closer to the target and may be worth promoting.
   - **(2) Home:** WordPress articles lead (sales surface); activities-host tasks are the proof.
     Every BE task routes back to the coaching page **1965** (`/business-english/`). The CTA added
     to `business-activities.html` on 2026-08-06 becomes the pattern, not the exception.
@@ -164,8 +187,10 @@ accessibility problem. Do not raise again unless Shaun asks.
   | **523** | `/2022/12/16/10-tips-for-writing-business-emails-in-english/` (post) | **NOT YET READ.** Fold its tips into 1061 or stub it — needs a look before executing. |
 
   Target shape: **1061 (SEO entry, real examples) → `be-professional-emails.html` (practise) →
-  1965 (coaching CTA)**. Stubs rather than deletions throughout — **this plan has no 301s**, so
-  trashing a page hard-breaks its URL (same reasoning as 1757).
+  1965 (corporate enquiry)**. Stubs rather than deletions throughout — **this plan has no 301s**,
+  so trashing a page hard-breaks its URL (same reasoning as 1757). Note the terminal CTA is a
+  **corporate enquiry, not a 1:1 booking** — 1167 currently ends with "Book a lesson with me
+  here" pointing at 168/Calendly, which must change when its content moves into 1061.
 
   **Why-learn-BE cluster — NOT yet examined:** 1133 (`/why-is-learning-business-english-important/`)
   and 1019 (`/essential-business-english-skills-to-acquire-today/`), plus likely 915, 380 and
