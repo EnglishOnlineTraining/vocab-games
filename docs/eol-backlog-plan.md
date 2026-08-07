@@ -174,6 +174,52 @@ To do, once the MailerLite MCP server is reachable again (it disconnected mid-se
   (`grep -o '<a class="activity-card" href="[^"]*"' <hub>.html | sort -u | wc -l`; `8c` uses
   `exercise-card` markup instead). 7g/7c/8g/8c/9g/9c/10g/10c/abitur/uni were already right.
 
+## Tier 3.5 — Content audit reconciliation (2026-08-07 live check) · CC
+The 5 Aug content audit (`eol-wordpress-content-audit.md`) predates a week of work covered
+elsewhere in this plan. Checked every remaining audit item against live WordPress today
+(`pages.get`/`posts.get`/`posts.list`) rather than trusting prior-session notes, since one of
+those notes turned out to be wrong (see the 2063–2066 correction above).
+
+**Confirmed already done, no action needed:**
+- **Audit §5, off-brand posts** (1706, 1693, 1678, 1665, 1626, 1362, 1104) — all `status: draft`.
+- **Audit §6, thin 2016/2014 posts** (122, 126, 128, 135, 137, 142, 149, 154, 160, 165, 188, 8,
+  26) — all `status: draft`, plus **182** ("Wie wichtig ist Englisch in Ihrem Beruf? | Cambridge
+  English…", same shape — thin, off-topic, German) swept into draft alongside them though it
+  wasn't on the audit's list.
+- **Audit §4, "Test your English" triplicate** (1227, 1232, 1255) — all `status: draft`, matches
+  Tier 2/T1's note above.
+- **Audit §7, categorise the 2026 German cluster** — done. Live categories: Abitur (`163133`) on
+  2032/2035/2038/2039/2042/2050; Für Eltern (`379964997`) on 2031/2067; IT-Englisch (`790886029`)
+  on 2048; Teacher Notes (`243245`) on 2062 and, per above, 2063/2064/2065/2066 once published.
+  Nothing left Uncategorized among the 2026 cluster.
+- **Audit §4, page 595 vs draft post 588** — no action needed, as the original plan already said;
+  588 is `status: draft`.
+
+**Still open — not in any prior tier, needs a decision:**
+- **Duplicate "Blog Posts" pages** (audit §4) — **70** (`/blog-posts/`) and **1205**
+  (`/blog-posts-page/`) are both live, both titled "Blog Posts", both `parent: 0`. Neither has
+  been touched by T3 or any other tier. Need to establish which one real navigation/menu links
+  point at before picking a keeper — stubbing the wrong one breaks live traffic.
+- **Duplicate "Why learn with English Online Training?"** (audit §4) — page **380**
+  (`/why-learn-with-english-online-training/`) and post **365**
+  (`/2022/11/13/why-learn-with-english-online-training/`) are both live with the same title,
+  competing for the same query. Not yet actioned.
+- **Deep nesting under the old 460 hierarchy** (audit §3) — page 460 itself was renamed to "IELTS
+  Vocabulary Glossary" and moved to top-level under T2, but its **old child pages were never
+  touched**: 423 (`parent: 460`) → 499 (`parent: 423`) → 595 (`parent: 499`) is still a live
+  4-level chain, and 438 (`parent: 423`) sits alongside it. These are now structurally orphaned
+  under a page about a different topic entirely (IELTS vocab, not "daily English exercises") —
+  worse than before T2, semantically, even though no URLs broke. Needs the same treatment the
+  audit originally proposed for the whole 460 branch: fold into `/activities/` or a year hub,
+  then stub. (965, also originally under this branch, is **already at `parent: 0`** — no action
+  needed there.)
+- **307 "Special offer!" stale date** (audit §8) — `modified: 2026-08-06`, but that date is from
+  the T3 canary reparent (`parent` only), not a content edit — the offer text itself hasn't been
+  read/verified since the audit flagged it in October 2023. Still needs a content check.
+- **380's non-breaking-space title** (audit §8) — unconfirmed either way: the MCP JSON layer may
+  already normalise whitespace in transit, so a `pages.get` title string isn't proof either way.
+  Needs a direct look in wp-admin (or a raw fetch with `context: edit`) to settle.
+
 ## Tier 4 — Strategic decisions (Shaun-led) · Shaun + CC
 - **T4 Business English consolidation — DECIDED 2026-08-07: BE is the commercial funnel,
   targeting CORPORATE CONTRACTS.** Shaun, 2026-08-07: *"I am not looking for new 1-1 coaching
@@ -252,14 +298,22 @@ To do, once the MailerLite MCP server is reachable again (it disconnected mid-se
   Still open loose ends: **1187** ("Are you looking for a virtual assistant…") reads off-brand for
   an English-teaching site — confirm ownership/intent. **612**'s stray `/` title was fixed
   2026-08-06.
-- Teacher-notes drafts (2063–2066) — **placeholders DONE (2026-08-07).** All four invented
-  examples replaced with real live pages (2063 → `9g-california-hazards` Ex D; 2064 →
-  `it-support`; 2065 → `abitur-text-analysis-aims-ambitions`; 2066 → `msa-c-weekend-job-cafe`),
-  all four `DRAFT NOTE` blocks deleted. The IT "in development" contradiction is gone —
-  `/it-english/` now lists 10 live exercises. Three claims were corrected against the real
-  material in passing: 2064's "Task 3 — production" (no `it-*` page has free text → see T5),
-  and 2065/2066's "two model responses at different quality levels" (Abitur ships one annotated
-  model + a 10-item self-check; MSA ships none).
+- Teacher-notes drafts (2063–2066) — **placeholders DONE (2026-08-07); publishing NOT done —
+  corrected 2026-08-07.** A live `posts.list`/`posts.get` check today found all four still
+  `status: draft` (a prior session summary had claimed they were published; that was wrong — the
+  content work happened, the publish step never did). Content is ready: all four `DRAFT NOTE`
+  blocks deleted, invented examples replaced with real live pages (2063 → `9g-california-hazards`
+  Ex D; 2064 → `it-support`; 2065 → `abitur-text-analysis-aims-ambitions`; 2066 →
+  `msa-c-weekend-job-cafe`), and all four already carry the **Teacher Notes** category (id
+  `243245`) rather than the audit's originally-proposed per-topic split (Abitur/MSA/IT-Englisch/
+  Für Eltern) — a reasonable divergence, not a gap, since all four are the same teacher-facing
+  credibility cluster. The IT "in development" contradiction is gone — `/it-english/` now lists
+  10 live exercises. Three claims were corrected against the real material in passing: 2064's
+  "Task 3 — production" (no `it-*` page has free text → see T5), and 2065/2066's "two model
+  responses at different quality levels" (Abitur ships one annotated model + a 10-item self-check;
+  MSA ships none). **Open action: flip all four to `publish`** — this is a live, visible write
+  (new blog content going public), so it's listed under Open decisions below rather than done
+  unprompted.
   - **Invigilation claim — RESOLVED 2026-08-07** (Shaun: "update to match actual situation").
     The paragraph now says the toolkit exists and runs on the **university** writing assessment,
     that **no `it-*` page uses it** because none has assessed writing, that the new writing task
@@ -285,11 +339,20 @@ To do, once the MailerLite MCP server is reachable again (it disconnected mid-se
   `pub/ixion` theme. (Menu delete/assign may be MCP-doable — check when we get there.)
 
 ## Open decisions gating the plan
-**None.** BE strategy was settled 2026-08-07 (funnel). What remains is execution:
+BE strategy was settled 2026-08-07 (funnel). What remains, after today's audit reconciliation:
 
-1. **Approve the email-cluster merge** in T4 above (1167 + 1238 fold into 1061; 523 to be read
+1. **Publish 2063–2066.** Content, placeholders and categories are all ready (see Tier 4 above) —
+   the only reason they're still draft is that nobody has said "go" on a live content push. Four
+   posts, reversible (re-draft), but worth an explicit yes before flipping status on public
+   content.
+2. **Approve the email-cluster merge** in T4 above (1167 + 1238 fold into 1061; 523 to be read
    first). Live published pages, no 301s available — worth an explicit go-ahead before running.
-2. `§B2` was never supplied across any session; T3 shipped without it. Treat as dead unless Shaun
+3. **Duplicate pages (Tier 3.5): "Blog Posts" (70 vs 1205) and "Why learn with EOL" (380 vs 365).**
+   Need a keeper/stub decision each, plus a check on which one is actually linked from live nav
+   before touching either.
+4. **Deep-nested orphans under the old 460 branch (423/499/595/438, Tier 3.5).** Fold into
+   `/activities/` (or a year hub) and stub, same pattern as the rest of T2 — not yet started.
+5. `§B2` was never supplied across any session; T3 shipped without it. Treat as dead unless Shaun
    raises it.
 
 _Closed: T3 approach (2026-08-05, no plan upgrade near-term); Crowdsignal export (not needed —
@@ -297,4 +360,6 @@ T1 rebuilt natively); T5 scope (standalone page); IT email policy (writing tasks
 explanations + IT-writing-task merges (2026-08-07); dark mode (reviewed and merged 2026-08-07);
 2064 invigilation claim (rewritten to match reality 2026-08-07 — series no longer blocked);
 Vocabulary Games 1757 (folded into `/activities/`); dark mode for the 9 light-only pages
-(won't fix)._
+(won't fix); content-audit Phase A2/A3/A4 (off-brand posts, thin 2016/2014 posts, "Test your
+English" triplicate, 2026 German cluster categories — all confirmed done via live check
+2026-08-07, see Tier 3.5)._
