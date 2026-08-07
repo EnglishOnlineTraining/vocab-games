@@ -196,14 +196,21 @@ those notes turned out to be wrong (see the 2063–2066 correction above).
   588 is `status: draft`.
 
 **Still open — not in any prior tier, needs a decision:**
-- **Duplicate "Blog Posts" pages** (audit §4) — **70** (`/blog-posts/`) and **1205**
-  (`/blog-posts-page/`) are both live, both titled "Blog Posts", both `parent: 0`. Neither has
-  been touched by T3 or any other tier. Need to establish which one real navigation/menu links
-  point at before picking a keeper — stubbing the wrong one breaks live traffic.
+- **Duplicate "Blog Posts" pages — content-read 2026-08-07, resolved by inspection, not yet
+  executed.** **70** (`/blog-posts/`) is not a working duplicate at all — its entire content is
+  one orphaned `<img>` (a sundial photo, no listing, no links to any post). **1205**
+  (`/blog-posts-page/`) is the real one: a live Gutenberg Query Loop block that dynamically
+  renders the most recent posts (confirmed pulling 2026 content — 2067/2062/2050/2048/2042/2039 —
+  even though the block itself was last saved 2023-05-03, because Query Loop renders live).
+  **Proposed fix (not yet done, needs a go-ahead):** copy 1205's query-loop block into 70 so
+  `/blog-posts/` — the shorter URL, and the one T3 already promoted to top-level as if it were the
+  real destination — actually works, then stub 1205 pointing at `/blog-posts/`. Reversed from the
+  audit's framing: this isn't "pick a survivor," it's "one of the two is silently broken and needs
+  fixing regardless of which URL wins."
 - **Duplicate "Why learn with English Online Training?"** (audit §4) — page **380**
   (`/why-learn-with-english-online-training/`) and post **365**
   (`/2022/11/13/why-learn-with-english-online-training/`) are both live with the same title,
-  competing for the same query. Not yet actioned.
+  competing for the same query. Not yet actioned; still needs a which-is-linked check.
 - **Deep nesting under the old 460 hierarchy** (audit §3) — page 460 itself was renamed to "IELTS
   Vocabulary Glossary" and moved to top-level under T2, but its **old child pages were never
   touched**: 423 (`parent: 460`) → 499 (`parent: 423`) → 595 (`parent: 499`) is still a live
@@ -213,9 +220,21 @@ those notes turned out to be wrong (see the 2063–2066 correction above).
   audit originally proposed for the whole 460 branch: fold into `/activities/` or a year hub,
   then stub. (965, also originally under this branch, is **already at `parent: 0`** — no action
   needed there.)
-- **307 "Special offer!" stale date** (audit §8) — `modified: 2026-08-06`, but that date is from
-  the T3 canary reparent (`parent` only), not a content edit — the offer text itself hasn't been
-  read/verified since the audit flagged it in October 2023. Still needs a content check.
+- **307 "Special offer!" — content read 2026-08-07, worse than "stale."** Three separate problems,
+  not just an old date:
+  1. The offer text says outright **"this offer ends 5th Jan 2024"** — over two and a half years
+     expired, still live and still asking for payment.
+  2. Its PayPal purchase link points at **`learnenglishinberlin.com/?page_id=307`** — a different,
+     unrelated domain, almost certainly dead. A visitor who clicks "Click here to purchase" is
+     sent off-site to a domain this project has no record of maintaining.
+  3. The offer itself — €145/month, 4 individual lessons — is **exactly the individual 1:1
+     coaching product Shaun ruled out on 2026-08-07** ("not looking for new 1-1 coaching clients").
+     This isn't just stale content, it's a live payment page actively selling something off-strategy,
+     with a broken checkout, at an expired price.
+  `modified: 2026-08-06` in the API is from the T3 canary `parent` change only — no one has
+  touched the content since it was written. **Recommend unpublish** (draft, not delete — same
+  reversible pattern as the rest of Phase A) rather than a content refresh, since the whole product
+  it sells is off-strategy now. Not yet actioned.
 - **380's non-breaking-space title** (audit §8) — unconfirmed either way: the MCP JSON layer may
   already normalise whitespace in transit, so a `pages.get` title string isn't proof either way.
   Needs a direct look in wp-admin (or a raw fetch with `context: edit`) to settle.
@@ -282,7 +301,7 @@ those notes turned out to be wrong (see the 2063–2066 correction above).
   | **1061** | `/writing-emails-in-english/` (page) | **KEEP — the winner.** Best URL and title ("How to Write Professional English Emails (With Examples)"), and already acts as hub linking to the other three. **But the body is a dated 2023 AI-tools listicle with no examples at all** — a title/content mismatch that is an active SEO liability. |
   | **1167** | `/good-vs-bad-when-writing-emails-in-english/` (page) | **Content wins, URL loses.** Has the three bad/good email pairs 1061's title promises, plus a booking CTA. Move this content into 1061; stub 1167. |
   | **1238** | `/2023/04/12/useful-phrases-for-business-emails/` (post) | **Superseded.** ~15 phrases in 5 groups + a PDF on the old CDN. `lead-business-email-phrasebank.html` (40 entries, merged 2026-08-07) is strictly better. Stub → 1061 + the lead magnet. |
-  | **523** | `/2022/12/16/10-tips-for-writing-business-emails-in-english/` (post) | **Read 2026-08-07 — fold, then stub.** A generic ten-item listicle from Dec 2022 (clear subject line, professional greeting, check grammar, use bullet points, proofread…) with no CTA and a dated permalink. Every tip is demonstrated better by 1167's worked before/after pairs. Keep it only as a scannable checklist inside 1061; the post itself adds nothing on its own. |
+  | **523** | `/2022/12/16/10-tips-for-writing-business-emails-in-english/` (post) | **Read 2026-08-07 — fold, then stub.** A generic ten-item listicle from Dec 2022 (clear subject line, professional greeting, check grammar, use bullet points, proofread…) with no CTA and a dated permalink. Every tip is demonstrated better by 1167's worked before/after pairs. Keep it only as a scannable checklist inside 1061; the post itself adds nothing on its own. **This was the last unread item in the cluster — the merge plan below is now fully specified and ready to execute pending go-ahead.** |
 
   Target shape: **1061 (SEO entry, real examples) → `be-professional-emails.html` (practise) →
   1965 (corporate enquiry)**. Stubs rather than deletions throughout — **this plan has no 301s**,
@@ -339,20 +358,29 @@ those notes turned out to be wrong (see the 2063–2066 correction above).
   `pub/ixion` theme. (Menu delete/assign may be MCP-doable — check when we get there.)
 
 ## Open decisions gating the plan
-BE strategy was settled 2026-08-07 (funnel). What remains, after today's audit reconciliation:
+BE strategy was settled 2026-08-07 (funnel). Four items below are now fully investigated and
+ready to execute on a yes; two still need more digging before there's anything to approve.
 
+**Ready to execute, pending go-ahead:**
 1. **Publish 2063–2066.** Content, placeholders and categories are all ready (see Tier 4 above) —
-   the only reason they're still draft is that nobody has said "go" on a live content push. Four
-   posts, reversible (re-draft), but worth an explicit yes before flipping status on public
-   content.
-2. **Approve the email-cluster merge** in T4 above (1167 + 1238 fold into 1061; 523 to be read
-   first). Live published pages, no 301s available — worth an explicit go-ahead before running.
-3. **Duplicate pages (Tier 3.5): "Blog Posts" (70 vs 1205) and "Why learn with EOL" (380 vs 365).**
-   Need a keeper/stub decision each, plus a check on which one is actually linked from live nav
-   before touching either.
-4. **Deep-nested orphans under the old 460 branch (423/499/595/438, Tier 3.5).** Fold into
-   `/activities/` (or a year hub) and stub, same pattern as the rest of T2 — not yet started.
-5. `§B2` was never supplied across any session; T3 shipped without it. Treat as dead unless Shaun
+   the only reason they're still draft is that nobody has said "go" on a live content push.
+2. **Fix 70 / stub 1205 ("Blog Posts").** 70 is silently broken (one orphaned image, no listing);
+   1205 is the working query-loop page. Copy 1205's content into 70, stub 1205 → `/blog-posts/`.
+3. **Unpublish 307 ("Special offer!").** Expired Jan-2024 offer, checkout link points at a
+   different, unrelated domain, and the product itself (individual 1:1 coaching) is off-strategy
+   post-2026-08-07. Draft, not delete.
+4. **Run the email-cluster merge** (T4 above): fold 1167 + 1238 + 523 into 1061, stub all three,
+   rewrite 1167's terminal CTA off Calendly/168 onto the corporate enquiry (1965). 523 is now read
+   — nothing left to check before running this.
+
+**Still need investigation before there's a decision to make:**
+5. **Duplicate "Why learn with EOL" (380 vs 365).** Which is linked from live nav is still unknown
+   (classic-theme menus aren't MCP-reachable); 380's title may or may not carry a stray
+   non-breaking space (API layer may be normalising it — needs a direct wp-admin look).
+6. **Deep-nested orphans under the old 460 branch (423/499/595/438, Tier 3.5).** Structurally
+   orphaned under a page now about an unrelated topic (IELTS glossary). Needs a decision on where
+   their content goes (fold into `/activities/` or a year hub) before there's anything to stub.
+7. `§B2` was never supplied across any session; T3 shipped without it. Treat as dead unless Shaun
    raises it.
 
 _Closed: T3 approach (2026-08-05, no plan upgrade near-term); Crowdsignal export (not needed —
