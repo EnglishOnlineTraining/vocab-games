@@ -146,14 +146,32 @@ accessibility problem. Do not raise again unless Shaun asks.
   clients but would consider corporate contracts."* This is a hard constraint on the funnel's
   destination — **do not drive traffic to 1:1 booking (Calendly) or individual coaching**.
 
-  ⚠️ **BLOCKER — the funnel destination is broken, and CC broke it.** Page **1965**
-  (`/business-english/`) is the intended landing page. `page-sections.list` reports it as
-  **classic/freeform**, i.e. it has no Gutenberg block markup: its Jetpack contact form has been
-  flattened to a dead `<a href="/business-english/">Submit a form.</a>` link that goes nowhere.
-  This is the same rendered-HTML round-trip damage recorded earlier in the session; it was
-  repaired once, then reintroduced on 2026-08-06 by the `pages.update` that added the
-  cross-link. **Fix before sending any traffic there.** Rule: never `pages.update` a page with
-  content fetched *without* `context: "edit"` — dynamic blocks come back as front-end fallbacks.
+  **1965 REBUILT as the corporate landing page — DONE 2026-08-07.** It had been flattened to
+  classic/freeform (no block markup), so its Jetpack contact form was a dead
+  `<a href="/business-english/">Submit a form.</a>` link — the rendered-HTML round-trip damage
+  from earlier in the session, repaired once and reintroduced on 2026-08-06 by the `pages.update`
+  that added the cross-link. **Rule, learned twice now: never `pages.update` with content fetched
+  without `context: "edit"` — dynamic blocks come back as front-end fallbacks.**
+
+  Rebuilt in proper block markup against Shaun's brief (Germany; on-site or online; group or 1:1
+  for staff; needs-analysis-then-design; signed off by HR/L&D):
+  - H1 + positioning for a team buyer, primary CTA to the enquiry form
+  - **Logo wall moved above the fold** — it is the credential an L&D buyer needs. Rebuilt as a
+    clean flex grid; the old CoBlocks markup had misaligned `data-*` attributes and **ZIM's logo
+    was never actually displayed**. All 13 now show.
+  - "How a programme comes together": needs analysis → design → delivery → review
+  - Formats (on-site/online × group/1:1), trainer credentials, free material as proof of quality
+  - **Working `jetpack/contact-form`** → `englishonlinetraining@pm.me`, subject "Corporate
+    Business English enquiry"; fields name, work email, company, headcount, requirement. Plus a
+    `mailto:` fallback line.
+  - Title and SEO meta rewritten for the corporate audience.
+  - **Removed:** the Mailchimp "get notified when materials launch" block and the individual
+    exam goals (TOEIC 600+, IELTS 8.0) / 8-week solo curriculum — all belonged to the
+    self-paced-materials offer that the corporate decision retires. Say if list-building should
+    come back.
+  - **Verified** with `page-sections.list`: 27 blocks, index 25 is a real `jetpack/contact-form`
+    with inner fields — not flat HTML. Front-end render unconfirmed (site egress blocked from
+    the sandbox); worth one human look at the form.
 
   **The corporate proof already exists and is buried.** 1965 carries a *"Companies I have
   trained"* logo wall — Akelius, BMW, Esanum, Guidehouse, Juwelo, Labor Berlin, Mercedes Bank,
