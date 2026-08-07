@@ -119,10 +119,11 @@ for `.gap-wrong`/`.gap-correct` (`#f3a3b0` / `#7fe0a0`) → 8.27:1 and 10.12:1. 
 conflicted because both sides appended a block to the end — **keep both**; taking one side drops
 either the 11 `.expl-*` rules or the whole dark palette.
 
-**Follow-up — 9 pages stay light-only** (no `style.css`, no own dark block, so they render white
-in a dark set; legible at 13.6:1, so cosmetic not accessibility): `ielts-vocabulary-glossary`,
-the four `lead-*`, `uni-pm-vocabulary`, `uni-presentation-task`, `uni-writing-task`,
-`year-7-class-wall`. Each needs its own token pass. Deliberately left out of the dark-mode merge.
+**9 pages stay light-only — WON'T FIX** (Shaun, 2026-08-07: "not needed"). They have neither
+`style.css` nor their own dark block, so they render white in a dark set: `ielts-vocabulary-
+glossary`, the four `lead-*`, `uni-pm-vocabulary`, `uni-presentation-task`, `uni-writing-task`,
+`year-7-class-wall`. All legible at 13.6:1, so this is cosmetic inconsistency, not an
+accessibility problem. Do not raise again unless Shaun asks.
 
 ## Tier 3 — Small, low-risk cleanups · CC
 - `/wilkommen/` typo — **DONE.** Page 771 verified live at `/willkommen/` (2026-08-07); internal
@@ -153,13 +154,23 @@ the four `lead-*`, `uni-pm-vocabulary`, `uni-presentation-task`, `uni-writing-ta
   material in passing: 2064's "Task 3 — production" (no `it-*` page has free text → see T5),
   and 2065/2066's "two model responses at different quality levels" (Abitur ships one annotated
   model + a 10-item self-check; MSA ships none).
-  - **Still open for Shaun:** 2064's "Assessed writing runs under invigilated conditions"
-    paragraph lists the full integrity toolkit (typing-speed detection, four-variant prompt
-    randomisation, progress snapshots). That machinery is real but lives in `uni-writing-task.html`
-    — **no `it-*` page uses it**, because no `it-*` page has assessed writing. In context it reads
-    as though IT trainees sit those pages. Decide before publishing: soften the claim, or build
-    the assessed variant (a scope step beyond T5's ungraded task).
-- Vocabulary Games (1757): fold into `/activities/` or keep standalone.
+  - **Invigilation claim — RESOLVED 2026-08-07** (Shaun: "update to match actual situation").
+    The paragraph now says the toolkit exists and runs on the **university** writing assessment,
+    that **no `it-*` page uses it** because none has assessed writing, that the new writing task
+    is submitted for feedback rather than a mark, and that an assessed IT variant would inherit
+    the same toolkit when built. Also updated the "extended production is the next thing to
+    build" line, which today's `it-writing-task.html` made false — it now links to it.
+    **2064 no longer blocks publishing.**
+- Vocabulary Games (1757) — **FOLDED IN, DONE 2026-08-07** (Shaun: "fold in"). The Activity
+  Directory's **Vocabulary** section now carries a *Vocabulary Games (4 games)* button beside the
+  IELTS glossary, so `/activities/` is the entry point. Page 1757 stays published (this plan has
+  **no 301 redirects**, so trashing it would hard-break `/vocabulary-games/`), rewritten to point
+  at the Directory while keeping its game descriptions and word lists for SEO. **Fixed on the
+  way:** 1757 pointed at the old `englishonlinetraining.github.io/vocab-games/` fallback rather
+  than `activities.englishonline.training/vocab-games.html`.
+  - Note: `vocab-games.html` is a **non-framework page** (no `exercise.js`), so it is not in
+    `data/exercises.json` and cannot appear in the filterable index — the Directory button is the
+    only way to surface it. Same is true of `index.html`.
 
 ## Tier 5 — Manual WordPress UI / account · Shaun
 - **Plan upgrade — DEFERRED** (wants more DAU). When done: removes ads + Subscribe bar, unlocks
@@ -168,14 +179,16 @@ the four `lead-*`, `uni-pm-vocabulary`, `uni-presentation-task`, `uni-writing-ta
   `pub/ixion` theme. (Menu delete/assign may be MCP-doable — check when we get there.)
 
 ## Open decisions gating the plan
-1. **2064's invigilation paragraph** — soften the claim, or build the assessed IT writing variant.
-   Blocks publishing the five-post teacher-notes series.
-2. **BE strategy** (Tier 4) before anything BE-structural ships.
-3. **Vocabulary Games (1757)** — fold into `/activities/` or keep standalone.
-4. **Dark mode for the 9 light-only pages** — do them, or accept the inconsistency?
-5. `§B2` was never supplied across any session; T3 shipped without it. Treat as dead unless Shaun
+**Only one left.**
+
+1. **BE strategy (Tier 4)** — see the T4 entry above for the four sub-questions. Nothing
+   BE-structural should ship until this is settled, but nothing else is waiting on it either.
+2. `§B2` was never supplied across any session; T3 shipped without it. Treat as dead unless Shaun
    raises it.
 
 _Closed: T3 approach (2026-08-05, no plan upgrade near-term); Crowdsignal export (not needed —
 T1 rebuilt natively); T5 scope (standalone page); IT email policy (writing tasks only);
-explanations + IT-writing-task merges (2026-08-07); dark mode (reviewed and merged 2026-08-07)._
+explanations + IT-writing-task merges (2026-08-07); dark mode (reviewed and merged 2026-08-07);
+2064 invigilation claim (rewritten to match reality 2026-08-07 — series no longer blocked);
+Vocabulary Games 1757 (folded into `/activities/`); dark mode for the 9 light-only pages
+(won't fix)._
