@@ -144,20 +144,31 @@ important in this market). Shape:
 <div class="ml-embedded" data-form="1gw3aR"></div>
 ```
 
-**Gap: it was built once and never rolled out.** Nothing else in the repo references MailerLite.
-Most glaring — **the four `lead-*.html` pages capture nothing at all**: no form, no email field,
-no MailerLite embed. They are named lead magnets but simply give the material away. Their only
-outbound link is to a practice exercise.
+**Rolled out site-wide (2026-08-07).** MailerLite MCP came back reachable: four groups
+(*EOL – MSA*, *EOL – Abitur*, *EOL – Business English*, *EOL – Teachers*) and four matching
+embedded forms already existed (form ids/slugs: MSA `1gw3aR`, Abitur `tmhk85`, Business English
+`Bp589z`, Teachers `bHIAs6`) — only the MSA form had content built; the other three were empty
+shells (`has_content:false`). The MailerLite MCP toolset has no way to design form content/fields
+via API (only create/rename/list/delete) — **Shaun still needs ~5 min per form in the MailerLite
+dashboard to build the Abitur/Business English/Teachers form content** (mirroring the MSA form)
+before those three embeds render anything to visitors; the embed code goes live automatically the
+moment each form is published, no further commit needed.
 
-To do, once the MailerLite MCP server is reachable again (it disconnected mid-session
-2026-08-07, so groups/forms could not be inspected or created):
-1. Confirm which groups exist and which form id each audience should use — MSA has one; Business,
-   Abitur and Teachers presumably need their own so the list segments properly.
-2. Add the embed to the four `lead-*` pages, each pointing at the group matching its magnet.
-3. Decide whether the exercise results screen should carry it more widely (the MSA page proves
-   the pattern works there) — that is the highest-volume surface on the site.
-4. Corporate enquiries from 1965 go via the Jetpack form to email, **not** into MailerLite —
-   confirm whether they should also be tagged into a corporate group.
+Shipped:
+1. **`exercise.js`** gained a shared, opt-in `eolInitMailerLiteCapture()` (mirrors the
+   breadcrumb/footer injection pattern) — a page sets `var MAILERLITE_CAPTURE = 'msa'` or
+   `'business'` and gets the capture card auto-injected after the submit card, with
+   `source_task`/`last_score` autofill and the paste-blocker bypass, zero other per-page code.
+2. All 20 live MSA units (`msa-c-*.html`, including `american-dream` migrated onto the shared
+   mechanism) and all 16 Business English units (`be-*.html`) opted in via that one line.
+3. The 16 standalone Abitur packs (separate architecture, no `exercise.js`) got the inline
+   universal embed block on their `#finalScore` screen, pointing at the Abitur form/group.
+4. All four `lead-*.html` pages now capture email — each pointing at the group matching its
+   magnet (MSA checklist → MSA, Abitur Redemittel → Abitur, BE phrase bank → Business English,
+   Teachers page → Teachers).
+5. Corporate enquiries from 1965 still go via the Jetpack form to email, **not** into
+   MailerLite — not changed by this rollout; still an open question whether they should also be
+   tagged into a corporate group.
 
 ## Tier 3 — Small, low-risk cleanups · CC
 - `/wilkommen/` typo — **DONE.** Page 771 verified live at `/willkommen/` (2026-08-07); internal
