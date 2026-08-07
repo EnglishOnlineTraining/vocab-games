@@ -125,6 +125,40 @@ glossary`, the four `lead-*`, `uni-pm-vocabulary`, `uni-presentation-task`, `uni
 `year-7-class-wall`. All legible at 13.6:1, so this is cosmetic inconsistency, not an
 accessibility problem. Do not raise again unless Shaun asks.
 
+## Email capture — MailerLite is the platform (Shaun, 2026-08-07) · CC
+**"MailerLite should be collecting all emails now."** Not Mailchimp — which retroactively
+justifies dropping the Mailchimp block from 1965; it was the wrong tool as well as broken.
+
+**The integration pattern already exists and works — on exactly one page.**
+`msa-c-american-dream.html` carries the official MailerLite universal embed:
+account `2491182`, form `1gw3aR`, group *EOL – MSA*. Presented as optional and skippable, with
+submission, consent and double opt-in all handled by MailerLite (so no GDPR handling of our own —
+important in this market). Shape:
+
+```html
+<script>
+  (function(w,d,e,u,f,l,n){ … })(window,document,'script',
+    'https://assets.mailerlite.com/js/universal.js','ml');
+  ml('account', '2491182');
+</script>
+<div class="ml-embedded" data-form="1gw3aR"></div>
+```
+
+**Gap: it was built once and never rolled out.** Nothing else in the repo references MailerLite.
+Most glaring — **the four `lead-*.html` pages capture nothing at all**: no form, no email field,
+no MailerLite embed. They are named lead magnets but simply give the material away. Their only
+outbound link is to a practice exercise.
+
+To do, once the MailerLite MCP server is reachable again (it disconnected mid-session
+2026-08-07, so groups/forms could not be inspected or created):
+1. Confirm which groups exist and which form id each audience should use — MSA has one; Business,
+   Abitur and Teachers presumably need their own so the list segments properly.
+2. Add the embed to the four `lead-*` pages, each pointing at the group matching its magnet.
+3. Decide whether the exercise results screen should carry it more widely (the MSA page proves
+   the pattern works there) — that is the highest-volume surface on the site.
+4. Corporate enquiries from 1965 go via the Jetpack form to email, **not** into MailerLite —
+   confirm whether they should also be tagged into a corporate group.
+
 ## Tier 3 — Small, low-risk cleanups · CC
 - `/wilkommen/` typo — **DONE.** Page 771 verified live at `/willkommen/` (2026-08-07); internal
   links on the referring pages updated. Slug changes auto-redirect, so old links still resolve.
@@ -202,7 +236,7 @@ accessibility problem. Do not raise again unless Shaun asks.
   | **1061** | `/writing-emails-in-english/` (page) | **KEEP — the winner.** Best URL and title ("How to Write Professional English Emails (With Examples)"), and already acts as hub linking to the other three. **But the body is a dated 2023 AI-tools listicle with no examples at all** — a title/content mismatch that is an active SEO liability. |
   | **1167** | `/good-vs-bad-when-writing-emails-in-english/` (page) | **Content wins, URL loses.** Has the three bad/good email pairs 1061's title promises, plus a booking CTA. Move this content into 1061; stub 1167. |
   | **1238** | `/2023/04/12/useful-phrases-for-business-emails/` (post) | **Superseded.** ~15 phrases in 5 groups + a PDF on the old CDN. `lead-business-email-phrasebank.html` (40 entries, merged 2026-08-07) is strictly better. Stub → 1061 + the lead magnet. |
-  | **523** | `/2022/12/16/10-tips-for-writing-business-emails-in-english/` (post) | **NOT YET READ.** Fold its tips into 1061 or stub it — needs a look before executing. |
+  | **523** | `/2022/12/16/10-tips-for-writing-business-emails-in-english/` (post) | **Read 2026-08-07 — fold, then stub.** A generic ten-item listicle from Dec 2022 (clear subject line, professional greeting, check grammar, use bullet points, proofread…) with no CTA and a dated permalink. Every tip is demonstrated better by 1167's worked before/after pairs. Keep it only as a scannable checklist inside 1061; the post itself adds nothing on its own. |
 
   Target shape: **1061 (SEO entry, real examples) → `be-professional-emails.html` (practise) →
   1965 (corporate enquiry)**. Stubs rather than deletions throughout — **this plan has no 301s**,
