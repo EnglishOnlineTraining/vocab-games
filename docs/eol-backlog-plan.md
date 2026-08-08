@@ -372,6 +372,72 @@ those notes turned out to be wrong (see the 2063–2066 correction above).
 - One site-wide menu (may be moot after T3); delete orphaned block nav menu 416; replace dated
   `pub/ixion` theme. (Menu delete/assign may be MCP-doable — check when we get there.)
 
+## Tier 6 — Internal-linking + link-graph audit (2026-08-08) · CC
+Shaun asked for an internal-linking pass across **both** surfaces (WordPress + activities repo).
+Read full content for every published WordPress page not already covered by earlier tiers (37
+pages) and cross-referenced every non-hub `.html` file in the repo against `data/exercises.json`
+and every hub's `href`s. Findings split into three buckets — bugs surfaced along the way, true
+orphans, and weak/missing internal links. **Nothing below has been executed — this is a report,
+awaiting triage.**
+
+### A. Live bugs found during the pass (not linking per se, but urgent)
+- **1966 (`/english-for-students/`)** has the classic-theme "flattened block" bug from
+  `CLAUDE.md` §1, and it was never repaired: the contact form is a dead self-referencing
+  `<a href="…/english-for-students/">Submit a form.</a>`, and the newsletter signup shows a
+  static, fake **"✓ Subscribed"** button (also self-linking) instead of a working Jetpack
+  Subscriptions block. No visitor can contact this page or subscribe from it.
+- **915 (`/why-you-should-choose-individual-business-english-coaching/`)** is still a **live
+  purchasable product** — three Jetpack recurring-payment buttons (€200/€450/€700) plus a
+  Calendly widget for individual 1:1 coaching — the exact product Shaun ruled out on 2026-08-07
+  ("not looking for new 1-1 coaching clients"). Tier 4 flagged this page for demotion back then;
+  it was never actually touched. The payment buttons' URLs also still point at the pre-T3 path
+  (`/welcome/book-a-lesson/why-you-should-choose-…/?recurring_payments=…`), so they may already
+  be silently broken on top of being off-strategy.
+- **168 (`/book-a-lesson/`)** has a live **Mailchimp** signup block — contradicts the
+  2026-08-07 "MailerLite is the platform" decision (Tier 2) — plus a Jetpack Simple Payments
+  button whose purchase link points at **`http://englishforgermanspeakers.org/?page_id=168`**, a
+  different, unrelated, likely-dead domain. Same shape of bug as 307's `learnenglishinberlin.com`
+  link, on the page the site's *only* live nav menu (416) links to directly.
+- **80 (`/about-me/`)** has a "Chat on WhatsApp" button with an **empty phone number**
+  (`https://api.whatsapp.com/send?phone=&text=…`) — opens WhatsApp with no recipient set.
+- **1760 (California – Interactive Exercises)** still links to the stale
+  `englishonlinetraining.github.io/vocab-games/` fallback instead of
+  `activities.englishonline.training` — same class of issue already fixed on 1757, missed here.
+
+### B. True orphans (zero reachable inbound path)
+- **WordPress:** **1582** ("Shaun Trezise Certificates and Training Programmes completed") — a
+  personal CV timeline with no internal links in or out found anywhere in this pass. **1715**
+  (IFRS Terms) is reachable only via one outbound button on 1965 — no other page points to it.
+- **Activities repo — 8 files, zero internal `.html` references anywhere in the repo:**
+  `uni-pm-vocabulary.html`, `uni-presentation-task.html`, `uni-writing-task.html` (**not even
+  linked from their own `uni-activities.html` hub** — confirmed by grepping its hrefs), all four
+  `lead-*.html` magnets, and `year-7-class-wall.html`. These are all pre-existing non-framework
+  pages (`CLAUDE.md`'s "Not migrated" list already names them), but "not migrated" and "not
+  linked from anywhere" turn out to be two different problems — only the second one is new.
+  (`lead-business-email-phrasebank.html` now has one inbound link, from WP page 1061 — added
+  today as part of the email-cluster merge — but nothing in the activities repo itself points to
+  any of the eight.)
+
+### C. Weak or missing internal links (pages that work, but leak link equity outward)
+- **1133, 1019, 651** — the "why learn (business) English" cluster (Tier 4's "Why-learn-BE
+  cluster — NOT yet examined", now examined). Generic AI-listicle content from the pre-strategy
+  era; 1133 has **zero** internal links of any kind, 1019 links only to 978, none link to 1965
+  (the corporate funnel) or to any interactive exercise.
+- **1393 (Business English Vocabulary sets)** links out to **20 third-party Quizlet flashcard
+  sets** via `bit.ly` and links to nothing on the site itself — not the IELTS glossary, not
+  `business-activities.html`'s own vocab exercises. Same shape of problem 460 had before T2
+  rebuilt it natively.
+- **939 (Group Online English Courses)** — Tier 4 flagged this as the page worth *promoting*
+  (group format fits the corporate strategy better than 915's individual one), but its only CTA
+  still routes straight to Calendly at an individual €5/session rate, bypassing the corporate
+  enquiry funnel (1965) entirely.
+- **1757 (Vocabulary Games)** ends with a "Book a lesson with me here" → `calendly.com/sptrezise`
+  link, bypassing the site's own `/book-a-lesson/` page (168) entirely.
+
+**No action taken yet** — this needs Shaun's triage on what to fix first. Bucket A is the most
+urgent (live, broken, or off-strategy functionality on pages people actually visit); B and C are
+genuine internal-linking work but lower stakes.
+
 ## Open decisions gating the plan
 **All six items from the 2026-08-07 audit reconciliation are now resolved and executed** (Shaun
 approved each): 2063–2066 published, "Blog Posts" 70 fixed and 1205 stubbed, 307 unpublished,
@@ -382,6 +448,10 @@ and Tier 4 above for the full executed record. What's left:
    raises it.
 2. **380's non-breaking-space title** (Tier 3.5) — still unconfirmed either way; low priority,
    needs a direct wp-admin look rather than another API round-trip.
+3. **Tier 6 internal-linking audit — new, needs triage.** Bucket A (1966's dead form/fake
+   subscribe button, 915's live off-strategy payment widgets, 168's Mailchimp + dead-domain
+   payment link, 80's broken WhatsApp button, 1760's stale fallback URL) is the priority; buckets
+   B and C are real but lower-stakes internal-linking gaps. Nothing here has a go-ahead yet.
 
 _Closed: T3 approach (2026-08-05, no plan upgrade near-term); Crowdsignal export (not needed —
 T1 rebuilt natively); T5 scope (standalone page); IT email policy (writing tasks only);
