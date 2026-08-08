@@ -477,10 +477,32 @@ awaiting triage.**
   .training`. **New known stale-`_crdt_document` instance, same shape as the 1763/70 trap:** 1760's
   editor snapshot still holds the *old* URL — don't open it in the WP block editor.
 
-**Still open, needs triage** — bucket A (1966's dead form/fake subscribe, 915's live off-strategy
-payment widgets, 168's Mailchimp + dead-domain payment link, 80's broken WhatsApp button) is the
-priority; the rest of bucket C (1133/1019/651/1393/939/1757's Calendly bypasses) is real but
-lower-stakes internal-linking work.
+**Bucket A — DONE 2026-08-08 (Shaun approved):**
+- **1966** — replaced the dead self-referencing `<a>Submit a form.</a>` with a real
+  `jetpack/contact-form` block (name/email/message → `englishonlinetraining@pm.me`), and the
+  fake static "✓ Subscribed" link with a real `jetpack/subscriptions` block. Both verified in the
+  returned content; `page-sections.list` still reports classic/freeform on this page because most
+  of its *other*, untouched blocks were already missing proper `wp:` comment wrappers before this
+  edit (pre-existing, not caused by it) — the two fixed blocks parse and render correctly
+  regardless.
+- **915 — unpublished** (draft, not deleted), same treatment as 307: a live page still selling
+  the exact individual-coaching product Shaun ruled out, so it comes down rather than getting a
+  content rewrite.
+- **168 (Book a lesson)** — removed the Mailchimp block (contradicted the MailerLite decision)
+  and the broken payment button pointing at the dead `englishforgermanspeakers.org` domain.
+  Kept the Calendly widget, which still works and is the only actually-functional booking path
+  this page ever had — did **not** touch individual booking as a concept, since Shaun's
+  2026-08-07 "no new 1:1 coaching clients" call was specific to Business English (T4), and 168 is
+  the general-purpose "book a lesson" page linked from the site's only live nav menu. Verified
+  clean via `page-sections.list`.
+- **80 (about-me)** — removed the WhatsApp button block (`jetpack/send-a-message`) via
+  `page-sections.remove` rather than a full rewrite, since it had an empty phone number and no
+  real one was available to fill in. A broken CTA is worse than no CTA; can be re-added with a
+  real number on request.
+
+**Still open** — bucket C (1133/1019/651's weak links to the corporate funnel, 1393's
+Quizlet-only links, 939 and 1757's direct-to-Calendly CTAs bypassing internal pages) is real but
+lower-stakes internal-linking work, not touched yet.
 
 ## Open decisions gating the plan
 **All six items from the 2026-08-07 audit reconciliation are now resolved and executed** (Shaun
