@@ -159,6 +159,23 @@ To do, once the MailerLite MCP server is reachable again (it disconnected mid-se
 4. Corporate enquiries from 1965 go via the Jetpack form to email, **not** into MailerLite —
    confirm whether they should also be tagged into a corporate group.
 
+**Homepage hero "Let's start a conversation" button — found + fixed by Shaun, 2026-08-08.**
+Was pointing at a Google Form. Turned out to live **outside any page's post content entirely** —
+it's part of the classic `pub/ixion` theme's header/hero (rendered alongside the site title
+`blogname`/tagline `blogdescription`, confirmed via `settings.get` matching a screenshot of the
+live homepage), almost certainly a widget or Customizer field. Not reachable through
+`pages.get`/`page-sections.list` (not page content), the one nav menu (416, checked), or
+`templates.list` (empty — no Site Editor, matches the known classic-theme limitation). No
+widget-management operation exists in any WordPress MCP tool available this session, and
+`WebFetch` to `englishonline.training` is blocked by this environment's egress proxy, so the
+live page couldn't be inspected directly either. Shaun fixed it manually in wp-admin, repointing
+it at a MailerLite **hosted form** — created directly in the MailerLite dashboard since the
+MailerLite MCP connector only attaches at session start, not mid-session, so it wasn't reachable
+here either. **Follow-up, not yet done:** the button/landing-page copy is still generic
+(placeholder text) — needs real copy once Shaun confirms which surface needs it (button label vs.
+the MailerLite hosted-page copy), and this button's audience/group should probably be added to
+the "which groups exist" review above rather than staying an ungoverned one-off.
+
 ## Tier 3 — Small, low-risk cleanups · CC
 - `/wilkommen/` typo — **DONE.** Page 771 verified live at `/willkommen/` (2026-08-07); internal
   links on the referring pages updated. Slug changes auto-redirect, so old links still resolve.
