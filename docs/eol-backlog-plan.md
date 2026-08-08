@@ -144,16 +144,41 @@ important in this market). Shape:
 <div class="ml-embedded" data-form="1gw3aR"></div>
 ```
 
-**Gap: it was built once and never rolled out.** Nothing else in the repo references MailerLite.
-Most glaring — **the four `lead-*.html` pages capture nothing at all**: no form, no email field,
-no MailerLite embed. They are named lead magnets but simply give the material away. Their only
-outbound link is to a practice exercise.
+**MailerLite MCP reachable again (2026-08-08) — audiences, groups and form IDs now confirmed.**
+A matched per-audience group + embedded form already exists for all four `lead-*` pages, created
+2026-07-31 but never wired up. Account is `2491182` for all four, same as MSA:
 
-To do, once the MailerLite MCP server is reachable again (it disconnected mid-session
-2026-08-07, so groups/forms could not be inspected or created):
-1. Confirm which groups exist and which form id each audience should use — MSA has one; Business,
-   Abitur and Teachers presumably need their own so the list segments properly.
-2. Add the embed to the four `lead-*` pages, each pointing at the group matching its magnet.
+| `lead-*` page | Group | Form slug | Form name | Built in MailerLite? |
+|---|---|---|---|---|
+| `lead-msa-checkliste.html` | *EOL – MSA* | `1gw3aR` | EOL Task Capture — MSA | ✅ yes — proven live on `msa-c-american-dream.html`, real conversions |
+| `lead-teachers-three-tasks.html` | *EOL – Teachers* | `bHIAs6` | EOL Task Capture — Teachers | ❌ empty shell, no content saved yet |
+| `lead-business-email-phrasebank.html` | *EOL – Business English* | `Bp589z` | EOL Task Capture — Business English | ❌ empty shell, no content saved yet |
+| `lead-abitur-textanalyse.html` | *EOL – Abitur* | `tmhk85` | EOL Task Capture — Abitur | ❌ empty shell, no content saved yet |
+
+The naming already maps 1:1 to each page's audience — no "which group for which page" decision
+left to make.
+
+**`active: false` on every one of these forms is a red herring — confirmed 2026-08-08.** The
+live MSA form shows `active: false` in the API and still converts real signups (also true of the
+separate `Website Signup — Eltern-Ratgeber` form, live-tested working 2026-08-08). Embedded-type
+forms have no active/inactive toggle in the MailerLite dashboard at all (unlike popups) — the
+flag governs MailerLite's own hosted contexts, not a raw `<div class="ml-embedded">` snippet,
+which posts straight to the API regardless. Don't gate rollout on flipping it; it can't be
+flipped via the API (`update_form` only renames) and doesn't need to be.
+
+**Gap: three of the four forms are unbuilt, and none of the four pages carry an embed.**
+`lead-teachers-three-tasks.html`, `lead-business-email-phrasebank.html` and
+`lead-abitur-textanalyse.html` still capture nothing — no form, no email field, no MailerLite
+embed — and their MailerLite-side forms (`bHIAs6`, `Bp589z`, `tmhk85`) have no saved content
+either, so dropping the universal embed snippet in as-is won't render anything useful yet.
+`lead-msa-checkliste.html` is the one page with a proven, working form to copy from — but even it
+doesn't carry the embed itself; only the exercise page (`msa-c-american-dream.html`) does.
+
+To do:
+1. Build out content for the three empty forms (`bHIAs6`, `Bp589z`, `tmhk85`) in the MailerLite
+   dashboard, matching the MSA form's design.
+2. Add the universal embed to all four `lead-*` pages, each pointing at its matched group/form
+   from the table above.
 3. Decide whether the exercise results screen should carry it more widely (the MSA page proves
    the pattern works there) — that is the highest-volume surface on the site.
 4. Corporate enquiries from 1965 go via the Jetpack form to email, **not** into MailerLite —
