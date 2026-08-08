@@ -83,7 +83,7 @@ TOPICS.forEach(t => coverage[t.slug] = []);
 
 files.forEach(f => {
   const s = fs.readFileSync(path.join(ROOT, f), 'utf8');
-  if (!/exercise\.js/.test(s) || /activities\.html$/.test(f)) return;   // exercise pages only
+  if (!/exercise\.js/.test(s) || /activities\.html$/.test(f) || f === '_template.html') return;   // exercise pages only
   const title = decode(m1(/<title>([\s\S]*?)<\/title>/i, s)).replace(/\s*[|·–-]\s*englishonline\.training\s*$/i, '').trim();
   const h1 = decode(m1(/<h1[^>]*class="welcome-title"[^>]*>([\s\S]*?)<\/h1>/i, s));
   const [year, schoolType] = schoolFromPrefix(f);
