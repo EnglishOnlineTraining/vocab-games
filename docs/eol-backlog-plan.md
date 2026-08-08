@@ -166,22 +166,23 @@ flag governs MailerLite's own hosted contexts, not a raw `<div class="ml-embedde
 which posts straight to the API regardless. Don't gate rollout on flipping it; it can't be
 flipped via the API (`update_form` only renames) and doesn't need to be.
 
-**Gap: three of the four forms are unbuilt, and none of the four pages carry an embed.**
-`lead-teachers-three-tasks.html`, `lead-business-email-phrasebank.html` and
-`lead-abitur-textanalyse.html` still capture nothing — no form, no email field, no MailerLite
-embed — and their MailerLite-side forms (`bHIAs6`, `Bp589z`, `tmhk85`) have no saved content
-either, so dropping the universal embed snippet in as-is won't render anything useful yet.
-`lead-msa-checkliste.html` is the one page with a proven, working form to copy from — but even it
-doesn't carry the embed itself; only the exercise page (`msa-c-american-dream.html`) does.
+**Shipped 2026-08-08 — all four `lead-*` pages now carry the embed, all pointed at the working
+MSA form.** Rather than wait on building three separate form designs, Shaun opted for the
+simplest path: all four pages (`lead-msa-checkliste.html`, `lead-teachers-three-tasks.html`,
+`lead-business-email-phrasebank.html`, `lead-abitur-textanalyse.html`) embed the same proven form,
+`1gw3aR` → group *EOL – MSA*. **Deliberate trade-off:** every signup from any of the four pages —
+regardless of audience — now lands in one group. The three purpose-built forms/groups from the
+table above (`bHIAs6`/Teachers, `Bp589z`/Business English, `tmhk85`/Abitur) still exist, unused
+and still empty shells, if per-audience segmentation is wanted later; switching back is a
+one-line `data-form` swap per page, no data migration needed since nothing has gone into them yet.
 
 To do:
-1. Build out content for the three empty forms (`bHIAs6`, `Bp589z`, `tmhk85`) in the MailerLite
-   dashboard, matching the MSA form's design.
-2. Add the universal embed to all four `lead-*` pages, each pointing at its matched group/form
-   from the table above.
-3. Decide whether the exercise results screen should carry it more widely (the MSA page proves
+1. If per-audience segmentation turns out to matter, build out content for the three empty forms
+   (`bHIAs6`, `Bp589z`, `tmhk85`) in the MailerLite dashboard and repoint each page's `data-form`
+   back to its own slug from the table above.
+2. Decide whether the exercise results screen should carry it more widely (the MSA page proves
    the pattern works there) — that is the highest-volume surface on the site.
-4. Corporate enquiries from 1965 go via the Jetpack form to email, **not** into MailerLite —
+3. Corporate enquiries from 1965 go via the Jetpack form to email, **not** into MailerLite —
    confirm whether they should also be tagged into a corporate group.
 
 ## Tier 3 — Small, low-risk cleanups · CC
