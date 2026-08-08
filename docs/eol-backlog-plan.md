@@ -404,19 +404,22 @@ awaiting triage.**
   `englishonlinetraining.github.io/vocab-games/` fallback instead of
   `activities.englishonline.training` — same class of issue already fixed on 1757, missed here.
 
-### B. True orphans (zero reachable inbound path)
+### B. True orphans (zero reachable inbound path) — corrected after reading each file
 - **WordPress:** **1582** ("Shaun Trezise Certificates and Training Programmes completed") — a
   personal CV timeline with no internal links in or out found anywhere in this pass. **1715**
   (IFRS Terms) is reachable only via one outbound button on 1965 — no other page points to it.
-- **Activities repo — 8 files, zero internal `.html` references anywhere in the repo:**
-  `uni-pm-vocabulary.html`, `uni-presentation-task.html`, `uni-writing-task.html` (**not even
-  linked from their own `uni-activities.html` hub** — confirmed by grepping its hrefs), all four
-  `lead-*.html` magnets, and `year-7-class-wall.html`. These are all pre-existing non-framework
-  pages (`CLAUDE.md`'s "Not migrated" list already names them), but "not migrated" and "not
-  linked from anywhere" turn out to be two different problems — only the second one is new.
-  (`lead-business-email-phrasebank.html` now has one inbound link, from WP page 1061 — added
-  today as part of the email-cluster merge — but nothing in the activities repo itself points to
-  any of the eight.)
+- **Activities repo — originally flagged 8 files with zero internal `.html` references; content-
+  read each one and only 5 are actually a gap.** `uni-pm-vocabulary.html` and
+  `uni-writing-task.html` are both **timed, invigilated assessments** ("Do not use AI tools",
+  fixed-minute timer, exam-mode text-selection lock) — correctly unlinked from the public hub,
+  since listing them would let students find and rehearse the actual assessment content before
+  sitting it. `uni-presentation-task.html` is a logistics/confirmation screen, not content (per
+  `CLAUDE.md`, already known). `year-7-class-wall.html` turned out to be a live teacher-run
+  classroom Q&A tool ("I'm running it" / "I'm a student"), meant to be shared with one specific
+  class, not the general public — also correctly unlinked. **None of these four are bugs; leave
+  them exactly as they are.** The real gap was the **four `lead-*.html` magnets** — genuine
+  public lead-gen pages with nothing in the repo pointing at them — **fixed 2026-08-08**, see
+  below.
 
 ### C. Weak or missing internal links (pages that work, but leak link equity outward)
 - **1133, 1019, 651** — the "why learn (business) English" cluster (Tier 4's "Why-learn-BE
@@ -434,9 +437,25 @@ awaiting triage.**
 - **1757 (Vocabulary Games)** ends with a "Book a lesson with me here" → `calendly.com/sptrezise`
   link, bypassing the site's own `/book-a-lesson/` page (168) entirely.
 
-**No action taken yet** — this needs Shaun's triage on what to fix first. Bucket A is the most
-urgent (live, broken, or off-strategy functionality on pages people actually visit); B and C are
-genuine internal-linking work but lower stakes.
+**Low-hanging fruit — DONE 2026-08-08 (Shaun approved):**
+- **Four `lead-*.html` magnets linked into their natural hubs** (the real orphans from bucket B):
+  `lead-abitur-textanalyse.html` → `abitur-activities.html`, `lead-msa-checkliste.html` →
+  `msa-activities.html`, `lead-business-email-phrasebank.html` → `business-activities.html`,
+  `lead-teachers-three-tasks.html` → a new "Für Lehrkräfte" promo banner on `activities.html`
+  (same visual pattern as the existing Grammatik-Themen banner).
+- **business-activities.html's stale CTA fixed.** "💼 Book 1:1 Business English Coaching" →
+  1965 was leftover copy from before the 2026-08-07 corporate pivot — 1965 itself was rebuilt for
+  corporate enquiries, but this button never got updated to match. Now reads "💼 Corporate
+  Business English Training".
+- **1760 (California – Interactive Exercises) — stale fallback URL fixed**, same fix already
+  applied to 1757: `englishonlinetraining.github.io/vocab-games/` → `activities.englishonline
+  .training`. **New known stale-`_crdt_document` instance, same shape as the 1763/70 trap:** 1760's
+  editor snapshot still holds the *old* URL — don't open it in the WP block editor.
+
+**Still open, needs triage** — bucket A (1966's dead form/fake subscribe, 915's live off-strategy
+payment widgets, 168's Mailchimp + dead-domain payment link, 80's broken WhatsApp button) is the
+priority; the rest of bucket C (1133/1019/651/1393/939/1757's Calendly bypasses) is real but
+lower-stakes internal-linking work.
 
 ## Open decisions gating the plan
 **All six items from the 2026-08-07 audit reconciliation are now resolved and executed** (Shaun
