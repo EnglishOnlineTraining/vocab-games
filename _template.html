@@ -23,11 +23,19 @@
        (see CLAUDE.md) — the universal handler auto-creates a tab/row
     7. Step navigation and copy/paste blocking are in exercise.js — nothing to wire up
     8. Add a card for the new page in activities.html
+    9. After saving the final filename, run:
+         node scripts/build-exercise-data.js && node scripts/build-hub.js && node scripts/build-topic-pages.js
+       This picks the new page up into data/exercises.json, the activities.html
+       filter index, and sitemap.xml/robots.txt — none of that happens on its own.
   ================================================================
   -->
 
   <!-- TODO: Update the page title -->
   <title>Exercise Title | englishonline.training</title>
+  <!-- TODO: One-sentence, keyword-ish summary (~150-160 chars) — see a built page's <meta description> for the house style -->
+  <meta name="description" content="TODO: describe this exercise for search results.">
+  <!-- TODO: Must exactly match the final filename this page is saved as -->
+  <link rel="canonical" href="https://activities.englishonline.training/TODO-filename.html">
 
   <link rel="stylesheet" href="style.css">
 </head>

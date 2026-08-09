@@ -321,7 +321,9 @@ All step-based exercise pages load the **single shared framework** via `<script 
 6. **Step nav, copy/paste blocking — nothing to do.** Both are pre-built in `_template.html` and work automatically.
 7. **Pass a `scoreKey`** to each `checkDropdowns()` call you want auto-graded (e.g. `'exA'`, `'exB'`) if the exercise has gradable sections — this feeds the score/Note shown to the student and sent to the teacher. Skip this for pure free-text/discussion exercises.
 8. **Add a card in `activities.html`** under the correct year/school section
-9. **Commit and push to `main`** — GitHub Pages deploys automatically
+9. **Fill in the `<meta name="description">` and `<link rel="canonical">` tags** in the `<head>` (both are TODO placeholders in `_template.html`) — the canonical URL must match the final filename exactly.
+10. **Regenerate the generated data/index files** — run `node scripts/build-exercise-data.js && node scripts/build-hub.js && node scripts/build-topic-pages.js`. This is what actually adds the new page to `data/exercises.json`, the filterable index on `activities.html`, and `sitemap.xml`/`robots.txt` — none of it happens automatically just by adding the file and a hub card. This checklist never mentioned the step before 2026-08-09, which is exactly why `_template.html` had no meta-description/canonical tags and the sitemap ran stale within a day of its last manual regeneration — do it every time now.
+11. **Commit and push to `main`** — GitHub Pages deploys automatically
 
 ---
 
