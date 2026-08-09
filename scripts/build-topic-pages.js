@@ -235,6 +235,26 @@ const urls = [];
 urls.push(BASE + '/activities.html');
 fs.readdirSync(ROOT).filter(f => /activities\.html$/.test(f)).forEach(f => urls.push(BASE + '/' + f));
 exercises.forEach(e => urls.push(BASE + '/' + e.file));
+
+// Standalone public pages that don't load exercise.js and aren't *-activities.html
+// hubs, so the exercises.json scan in build-exercise-data.js never sees them.
+// Deliberately NOT included: private/session-bound pages not meant for public
+// search discovery — year-7-class-wall.html (live in-class real-time tool),
+// 9g-class-test-9ab.html (graded test for one specific class), uni-writing-task.html
+// and uni-pm-vocabulary.html (timed, invigilated exams for enrolled students).
+const EXTRA_PUBLIC_PAGES = [
+  'index.html',
+  'vocab-games.html',
+  'business.html',
+  'ielts-vocabulary-glossary.html',
+  'uni-presentation-task.html',
+  'lead-abitur-textanalyse.html',
+  'lead-business-email-phrasebank.html',
+  'lead-msa-checkliste.html',
+  'lead-teachers-three-tasks.html',
+];
+EXTRA_PUBLIC_PAGES.forEach(f => { if (fs.existsSync(path.join(ROOT, f))) urls.push(BASE + '/' + f); });
+
 urls.push(BASE + '/themen/');
 topics.forEach(t => urls.push(BASE + '/themen/' + t.slug + '.html'));
 const uniq = Array.from(new Set(urls));
