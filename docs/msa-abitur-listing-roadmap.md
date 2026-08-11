@@ -68,9 +68,19 @@ prices written down.
       screen is the highest-volume surface on the site and is already flagged as an open to-do in
       `docs/eol-backlog-plan.md`.)_
 - [ ] Decide the free-vs-paid line: which one unit goes free as a lead magnet
-- [ ] **Write the "definition of done" for a listing, once, and apply it to all six:** page count,
-      whether the answer key is included, and what licence the buyer gets (single teacher vs. whole
-      Fachschaft — Eduki also sells school licences)
+- [x] **Definition of done for a listing** — decided 2026-08-11, applies to all six:
+      - **Minimum 5 tasks/exercises per sellable unit, each with an explanation** (why the answer is
+        correct — the same explanation model already built for `data/explanations.json` on the free
+        site). A unit with fewer than 5 gradable tasks isn't listed on its own; fold it into a bigger
+        pack or hold it for a bundle.
+      - **Answer key included** with every listing — either a separate PDF or a marked answer section
+        in the same file.
+      - **Licence:** single teacher, unlimited classes, no redistribution — Eduki's standard
+        individual licence. School-wide (Fachschaft) licences considered later once there's a
+        track record of sales, not on the first listings.
+      - **No embedded endpoints.** Sold artifacts must be fully offline — no Make webhook, no Apps
+        Script URL, nothing that could leak the school submission pipeline. Pre-upload grep required
+        (see Phase 5).
 
 **Exit criteria:** brand decided, landing page stub live, MailerLite on the results screen,
 listing spec written.
