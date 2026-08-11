@@ -336,10 +336,10 @@ Year 10", "written by a practising lecturer and corporate trainer".
 | 2026-08-10 | Deadline restated: 2 listings by 22 Aug, launch push by 10 Sep | v1's stated goal and its 31-day phase plan were incompatible |
 | 2026-08-10 | Abitur leads for interactive products | All 16 packs already self-contained and endpoint-free; MSA is not |
 | 2026-08-10 | Phase 5 cut to two items; repo restructure deferred to September | Public side already shipped as practise mode; restructure is a URL migration |
-| | Seller brand name | *pending* |
-| | Free lead-magnet unit | *pending* |
-| | First unit to publish | *pending — decide from the Phase 0 competitor scan* |
-| | MSA listening in print: read-aloud sheet or recorded audio | *pending — blocks the MSA listing copy* |
+| 2026-08-10 | Seller brand name: **English online training** | Cross-promotion with englishonline.training site |
+| 2026-08-10 | Free lead-magnet: **Year 7–10 HTML exercises** | Paid: MSA and Abitur packs. Free tier surfaces in Eduki search and builds ratings. |
+| 2026-08-10 | MSA listening format: **keep browser TTS** | Machine audio like existing MSA exercises (`initListening()` with `voice:'female'/'male'`). Sufficient for practice. |
+| | First unit to publish | *pending — decide from the Phase 0 competitor scan (Abitur or MSA PDF)* |
 | | Eduki Honorarstufe confirmed from the author dashboard | *pending — blocks all pricing* |
 
 ---
