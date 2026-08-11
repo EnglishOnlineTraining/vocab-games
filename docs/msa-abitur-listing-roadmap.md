@@ -79,14 +79,17 @@ listing spec written.
 
 ## Phase 2 — First two listings (Days 5–12)
 
-**Format priority (changed from v1).** For anything sold as an **interactive HTML file**, lead
-with **Abitur** — all 16 packs are already fully self-contained (verified: zero external `src`/
-`href`, zero endpoint URLs), so they are sellable as-is with no engineering. For **PDF** products,
-let the Phase 0 competitor scan decide the order.
+**Market reality (Phase 0 competitor scan): MSA is the opportunity.** Eduki has 759 Abitur results
+vs. 1 MSA result. Abitur is oversaturated; MSA is white space. Lead with MSA.
 
-**⚠️ The MSA units are not in that state.** They load `exercise.js` + `style.css` and carry the
-Year 9 Make webhook (`hook.eu1.make.com/c7l77qol…`) in page source. Bundling one as HTML would
-ship your school endpoint to every buyer, permanently. MSA ships as PDF only until that's fixed.
+**Format priority:** 
+- **MSA as PDF** (interactive format ships the school webhook; PDF is safe)
+- **Abitur as interactive HTML** later — all 16 packs are already fully self-contained (zero
+  external `src`/`href`, zero endpoint URLs), so they are sellable as-is with no engineering.
+
+**Note on MSA HTML:** The units load `exercise.js` + `style.css` and carry the Year 9 Make
+webhook (`hook.eu1.make.com/c7l77qol…`) in page source. Bundling as HTML would ship your school
+endpoint to every buyer permanently — not an option yet. PDF only for now.
 
 **Blocking sub-task before any PDF is generated:**
 
@@ -334,12 +337,12 @@ Year 10", "written by a practising lecturer and corporate trainer".
 | 2026-08-10 | 4teachers is **not** a sales channel — reach only | Verified: reciprocal free-sharing model, no author monetisation. Open question closed. |
 | 2026-08-10 | Nothing paid goes on ZUM | CC BY-SA permits commercial reuse by third parties. Open question closed. |
 | 2026-08-10 | Deadline restated: 2 listings by 22 Aug, launch push by 10 Sep | v1's stated goal and its 31-day phase plan were incompatible |
-| 2026-08-10 | Abitur leads for interactive products | All 16 packs already self-contained and endpoint-free; MSA is not |
+| 2026-08-10 | **MSA leads** (competitor scan 2026-08-10) | Eduki: MSA 1 result, Abitur 759 results. MSA is the white space. Abitur is oversaturated. |
 | 2026-08-10 | Phase 5 cut to two items; repo restructure deferred to September | Public side already shipped as practise mode; restructure is a URL migration |
 | 2026-08-10 | Seller brand name: **English online training** | Cross-promotion with englishonline.training site |
 | 2026-08-10 | Free lead-magnet: **Year 7–10 HTML exercises** | Paid: MSA and Abitur packs. Free tier surfaces in Eduki search and builds ratings. |
 | 2026-08-10 | MSA listening format: **keep browser TTS** | Machine audio like existing MSA exercises (`initListening()` with `voice:'female'/'male'`). Sufficient for practice. |
-| | First unit to publish | *pending — decide from the Phase 0 competitor scan (Abitur or MSA PDF)* |
+| 2026-08-10 | Competitor scan (Phase 0) — **MSA leads** | Eduki: MSA = 1 result, Abitur = 759 results (€2.99 or free). MSA is white space. |
 | | Eduki Honorarstufe confirmed from the author dashboard | *pending — blocks all pricing* |
 
 ---
