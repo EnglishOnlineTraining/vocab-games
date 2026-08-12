@@ -39,6 +39,10 @@ h1{color:var(--blue);font-size:1.6rem;line-height:1.25;margin-bottom:.5rem}
 .wy-blurb{display:block;font-size:.78rem;color:var(--muted)}
 .rel-list{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem}
 .rel-list a{display:inline-block;background:var(--gold-lt);color:var(--blue);padding:.35rem .8rem;border-radius:20px;text-decoration:none;font-size:.85rem;font-weight:600}
+.faq dt{color:var(--blue);font-weight:700;margin-top:.9rem}
+.faq dt:first-child{margin-top:0}
+.faq dd{margin:.2rem 0 .5rem;padding-bottom:.5rem;border-bottom:1px dashed var(--border)}
+.faq dd:last-child{border-bottom:none}
 .th-footer{text-align:center;font-size:.75rem;color:var(--muted);padding:1.5rem 0 0}
 .th-footer a{color:var(--teal)}
 .ti-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.9rem}

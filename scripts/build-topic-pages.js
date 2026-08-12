@@ -41,20 +41,35 @@ function weiterUebenHtml(slug) {
   return html;
 }
 
-function practiceHtml(t) {
-  if (!t.practice || !t.practice.length) return '';
+function practiceItemsHtml(items) {
   let rows = '';
-  t.practice.forEach((it, i) => {
+  items.forEach(it => {
     const opts = it.options.map(o => '<option value="' + esc(o) + '">' + esc(o) + '</option>').join('');
     rows += '<div class="pw-item" data-answer="' + esc(it.answer) + '" data-why="' + esc(it.why) + '">'
       + '<div class="pw-q">' + esc(it.q).replace('___', '<select class="pw-sel"><option value="">…</option>' + opts + '</select>') + '</div>'
       + '<div class="pw-fb"></div></div>';
   });
-  return '<section class="card pw-widget"><h2>Schnell üben</h2>'
-    + '<p class="pw-intro">Wähle für jede Lücke die richtige Form und klicke auf <em>Prüfen</em>.</p>'
-    + rows
-    + '<button type="button" class="btn" onclick="pwCheck()">Prüfen</button>'
-    + '<div class="pw-score"></div></section>';
+  return rows;
+}
+
+function practiceHtml(t) {
+  // Preferred: several graded sets. Falls back to a single flat list.
+  const groups = (t.practiceGroups && t.practiceGroups.length)
+    ? t.practiceGroups
+    : ((t.practice && t.practice.length)
+        ? [{ title: 'Schnell üben', intro: 'Wähle für jede Lücke die richtige Form und klicke auf <em>Prüfen</em>.', items: t.practice }]
+        : []);
+  if (!groups.length) return '';
+  let html = '';
+  groups.forEach(g => {
+    if (!g.items || !g.items.length) return;
+    html += '<section class="card pw-widget"><h2>' + esc(g.title || 'Übung') + '</h2>'
+      + '<p class="pw-intro">' + (g.intro || 'Wähle für jede Lücke die richtige Form und klicke auf <em>Prüfen</em>.') + '</p>'
+      + practiceItemsHtml(g.items)
+      + '<button type="button" class="btn" onclick="pwCheck(this)">Prüfen</button>'
+      + '<div class="pw-score"></div></section>';
+  });
+  return html;
 }
 
 function relatedHtml(t) {
@@ -74,7 +89,7 @@ function contentHtml(t) {
       + 'Unten findest du bereits alle passenden Übungen.</p></section>';
   }
   let html = '';
-  if (t.intro) html += '<section class="card"><h2>Was ist das ' + esc(t.de.replace(/ \(.*/, '')) + '?</h2><p>' + t.intro + '</p></section>';
+  if (t.intro) html += '<section class="card"><h2>' + esc(t.introH2 || ('Was ist das ' + t.de.replace(/ \(.*/, '') + '?')) + '</h2><p>' + t.intro + '</p></section>';
   if (t.rules && t.rules.length) {
     html += '<section class="card rules-box"><h2>Die wichtigsten Regeln</h2><ul class="rules">';
     t.rules.forEach(r => html += '<li>' + r + '</li>');
@@ -85,7 +100,46 @@ function contentHtml(t) {
     t.examples.forEach(e => html += '<li>' + e + '</li>');
     html += '</ul></section>';
   }
+  // Extra explanation sections: { h2, body?, list?, listClass? }
+  if (t.sections && t.sections.length) {
+    t.sections.forEach(sec => {
+      html += '<section class="card' + (sec.highlight ? ' rules-box' : '') + '"><h2>' + esc(sec.h2) + '</h2>';
+      if (sec.body) html += '<p>' + sec.body + '</p>';
+      if (sec.list && sec.list.length) {
+        html += '<ul class="' + (sec.listClass || 'rules') + '">';
+        sec.list.forEach(li => html += '<li>' + li + '</li>');
+        html += '</ul>';
+      }
+      html += '</section>';
+    });
+  }
   return html;
+}
+
+function faqHtml(t) {
+  if (!t.faq || !t.faq.length) return '';
+  let html = '<section class="card faq-box"><h2>Häufige Fragen</h2><dl class="faq">';
+  t.faq.forEach(f => {
+    html += '<dt>' + esc(f.q) + '</dt><dd>' + f.a + '</dd>';
+  });
+  html += '</dl></section>';
+  return html;
+}
+
+function stripTags(x) { return String(x == null ? '' : x).replace(/<[^>]+>/g, ''); }
+
+function faqJsonLd(t) {
+  if (!t.faq || !t.faq.length) return '';
+  const obj = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': t.faq.map(f => ({
+      '@type': 'Question',
+      'name': stripTags(f.q),
+      'acceptedAnswer': { '@type': 'Answer', 'text': stripTags(f.a) }
+    }))
+  };
+  return '<script type="application/ld+json">' + JSON.stringify(obj) + '</script>\n';
 }
 
 function jsonLd(t, url) {
@@ -120,6 +174,7 @@ function pageHtml(t) {
     + '<meta property="og:url" content="' + url + '">\n'
     + '<meta property="og:locale" content="de_DE">\n'
     + jsonLd(t, url) + '\n'
+    + faqJsonLd(t)
     + '<link rel="stylesheet" href="themen.css">\n</head>\n<body>\n'
     + '<header class="th-header"><div class="th-inner">'
     + '<a class="th-logo" href="https://englishonline.training">englishonline.training</a>'
@@ -131,6 +186,7 @@ function pageHtml(t) {
     + esc(t.de) + ' — ohne Anmeldung, direkt im Browser.</p>\n'
     + contentHtml(t)
     + practiceHtml(t)
+    + faqHtml(t)
     + weiterUebenHtml(t.slug)
     + relatedHtml(t)
     + '<footer class="th-footer">© EnglishOnline.Training · '
@@ -140,7 +196,7 @@ function pageHtml(t) {
     + '<script>\n' + PW_JS + '\n</script>\n</body>\n</html>\n';
 }
 
-const PW_JS = `function pwCheck(){var items=document.querySelectorAll('.pw-item');var ok=0,tot=0;items.forEach(function(it){var sel=it.querySelector('.pw-sel');var fb=it.querySelector('.pw-fb');if(!sel)return;tot++;var v=sel.value;var ans=it.getAttribute('data-answer');sel.classList.remove('pw-right','pw-wrong');if(v===ans){sel.classList.add('pw-right');ok++;fb.textContent='';fb.className='pw-fb';}else{sel.classList.add('pw-wrong');fb.textContent=(v?'':'')+it.getAttribute('data-why');fb.className='pw-fb show';}});var sc=document.querySelector('.pw-score');if(sc)sc.textContent=ok+' / '+tot+' richtig';}`;
+const PW_JS = `function pwCheck(btn){var root=(btn&&btn.closest)?btn.closest('.pw-widget'):document;var items=root.querySelectorAll('.pw-item');var ok=0,tot=0;items.forEach(function(it){var sel=it.querySelector('.pw-sel');var fb=it.querySelector('.pw-fb');if(!sel)return;tot++;var v=sel.value;var ans=it.getAttribute('data-answer');sel.classList.remove('pw-right','pw-wrong');if(v===ans){sel.classList.add('pw-right');ok++;fb.textContent='';fb.className='pw-fb';}else{sel.classList.add('pw-wrong');fb.textContent=(v?'':'')+it.getAttribute('data-why');fb.className='pw-fb show';}});var sc=root.querySelector('.pw-score');if(sc)sc.textContent=ok+' / '+tot+' richtig';}`;
 
 // ---- CSS (written once to themen/themen.css) ----
 const THEMEN_CSS = `*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -184,6 +240,10 @@ h1{color:var(--blue);font-size:1.6rem;line-height:1.25;margin-bottom:.5rem}
 .wy-blurb{display:block;font-size:.78rem;color:var(--muted)}
 .rel-list{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem}
 .rel-list a{display:inline-block;background:var(--gold-lt);color:var(--blue);padding:.35rem .8rem;border-radius:20px;text-decoration:none;font-size:.85rem;font-weight:600}
+.faq dt{color:var(--blue);font-weight:700;margin-top:.9rem}
+.faq dt:first-child{margin-top:0}
+.faq dd{margin:.2rem 0 .5rem;padding-bottom:.5rem;border-bottom:1px dashed var(--border)}
+.faq dd:last-child{border-bottom:none}
 .th-footer{text-align:center;font-size:.75rem;color:var(--muted);padding:1.5rem 0 0}
 .th-footer a{color:var(--teal)}
 .ti-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.9rem}
