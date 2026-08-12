@@ -224,11 +224,11 @@ function updateProgress(n){document.getElementById('progressBar').style.width=(n
 function showFeedbackBox(id,correct,max){const fb=document.getElementById(id);const pct=correct/max;fb.className='feedback show '+(pct===1?'perfect':pct>=0.6?'good':'poor');fb.textContent=(pct===1?'✅ Perfekt! ':pct>=0.6?'👍 Gut gemacht! ':'❌ Noch nicht ganz. ')+`Punktzahl: ${correct}/${max}`;}
 
 const ex1Items=[
-  {id:0,text:'Introduction: introduces the debate around technological progress and states the thesis.'},
-  {id:1,text:'Body paragraph 1: presents arguments FOR technology solving humanity\'s biggest problems — medicine, climate solutions, efficiency.'},
-  {id:2,text:'Body paragraph 2: presents arguments AGAINST — new risks, job displacement, ethical dilemmas, inequality.'},
-  {id:3,text:'Body paragraph 3: gives the writer\'s own opinion, weighing both sides and reaching a reasoned personal conclusion.'},
-  {id:4,text:'Conclusion: summarises the main points and restates the writer\'s position in a memorable way.'}
+  {id:0,text:'Introduces the debate around technological progress and states the thesis.'},
+  {id:1,text:'Presents arguments FOR technology solving humanity\'s biggest problems — medicine, climate solutions, efficiency.'},
+  {id:2,text:'Presents arguments AGAINST — new risks, job displacement, ethical dilemmas, inequality.'},
+  {id:3,text:'Gives the writer\'s own opinion, weighing both sides and reaching a reasoned personal conclusion.'},
+  {id:4,text:'Summarises the main points and restates the writer\'s position in a memorable way.'}
 ];
 let ex1Order=[];
 function buildEx1(){
