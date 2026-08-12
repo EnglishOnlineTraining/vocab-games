@@ -33,7 +33,7 @@
     <div class="welcome-hero">
       <div class="welcome-flag">🏕️</div>
       <h1 class="welcome-title">Volunteering Out West</h1>
-      <p class="welcome-sub">Join young volunteers in the national parks of the American West and practise the <em>gerund</em> (verb + <em>-ing</em>) at A2 level.</p>
+      <p class="welcome-sub">By the end of this exercise, you can describe a volunteering project you would like to join — what you enjoy doing and what you are good at — using gerunds after verbs and prepositions.</p>
     </div>
 
     <div class="exercise-overview">
@@ -68,6 +68,15 @@
     <span class="ex-badge">Exercise A</span>
     <h2 class="ex-title">A Summer in the National Parks</h2>
     <p class="ex-subtitle">Read the text about young volunteers in the West. Choose the correct word for each gap.</p>
+
+    <div class="card">
+      <div class="card-title">Before you read <span style="font-weight:400;color:var(--muted);font-size:.85rem">— optional, not marked</span></div>
+      <div class="form-group">
+        <label class="form-label" for="exA-recall">Write one or two things you already know about national parks or about volunteering.</label>
+        <textarea class="form-textarea" id="exA-recall" placeholder="I know that volunteers often..." rows="3"></textarea>
+        <div class="form-hint">This is just to get you thinking — you can leave it empty and it does not count towards your score.</div>
+      </div>
+    </div>
 
     <div class="card">
       <div class="card-title">Reading Text</div>
@@ -272,7 +281,10 @@ function countFilled(prefix) {
 ============================================================ */
 function saveStep(n) {
   switch (n) {
-    case 1: GAPS.forEach(function(k) { state.exA[k] = g('exA-'+k); }); break;
+    case 1:
+      GAPS.forEach(function(k) { state.exA[k] = g('exA-'+k); });
+      state.exA.recall = g('exA-recall');   /* optional warm-up — never validated, never scored */
+      break;
     case 2: GAPS.forEach(function(k) { state.exB[k] = g('exB-'+k); }); break;
     case 3: GAPS.forEach(function(k) { state.exC[k] = g('exC-'+k); }); break;
     case 4: state.exD.text = g('exD-text'); break;
@@ -281,7 +293,10 @@ function saveStep(n) {
 
 function restoreStep(n) {
   switch (n) {
-    case 1: GAPS.forEach(function(k) { set('exA-'+k, state.exA[k]); }); break;
+    case 1:
+      GAPS.forEach(function(k) { set('exA-'+k, state.exA[k]); });
+      set('exA-recall', state.exA.recall);
+      break;
     case 2: GAPS.forEach(function(k) { set('exB-'+k, state.exB[k]); }); break;
     case 3: GAPS.forEach(function(k) { set('exC-'+k, state.exC[k]); }); break;
     case 4: set('exD-text', state.exD.text); break;
@@ -309,6 +324,7 @@ var LABELS_C = {
 
 function buildSummary() {
   var rows = [];
+  rows.push({ ex:'Exercise A', q:'Before you read (optional, not marked)', a: state.exA.recall });
   GAPS.forEach(function(k) { rows.push({ ex:'Exercise A', q: LABELS_A[k], a: state.exA[k] }); });
   GAPS.forEach(function(k) { rows.push({ ex:'Exercise B', q: LABELS_B[k], a: state.exB[k] }); });
   GAPS.forEach(function(k) { rows.push({ ex:'Exercise C', q: LABELS_C[k], a: state.exC[k] }); });
@@ -338,6 +354,7 @@ function buildEmailBody() {
     + '\nClass:   ' + state.cls
     + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
     + '\nScore:   ' + (sc.possible ? (sc.earned + ' / ' + sc.possible + (grade ? ' — Note ' + grade.note + ' (' + grade.label + ')' : '')) : '(no auto-graded sections)')
+    + '\n\n--- Exercise A: Before you read (optional, not marked) ---\n' + (state.exA.recall || '(blank)')
     + '\n\n--- Exercise A: Reading Gaps ---';
   GAPS.forEach(function(k,i) { body += '\n  Gap ' + (i+1) + ': ' + (state.exA[k] || '(blank)'); });
   body += '\n\n--- Exercise B: Verb + -ing ---';
