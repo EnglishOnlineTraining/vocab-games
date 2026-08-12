@@ -11915,5 +11915,416 @@
         }
       }
     }
+  },
+  "8c-going-west-gerunds": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Teenagers travel west to work as ___",
+          "correct": "volunteers",
+          "why": "The text says teenagers travel west to work as volunteers in the national parks."
+        },
+        "g2": {
+          "label": "2. They do not get any ___ for their work",
+          "correct": "money",
+          "why": "They do not get any money for their work, but get free food and a place to sleep."
+        },
+        "g3": {
+          "label": "3. One group in Alaska helps clean the ___",
+          "correct": "beaches",
+          "why": "One group in Alaska helps to clean the beaches after big storms."
+        },
+        "g4": {
+          "label": "4. Another group builds new ___",
+          "correct": "paths",
+          "why": "Another group builds new paths for walkers in the mountains."
+        },
+        "g5": {
+          "label": "5. They learn a lot about ___",
+          "correct": "nature",
+          "why": "The young people learn a lot about nature and how to protect it."
+        },
+        "g6": {
+          "label": "6. In the evening they sit around a ___",
+          "correct": "campfire",
+          "why": "In the evening they sit around a campfire and talk about their day."
+        },
+        "g7": {
+          "label": "7. Many say it is hard ___",
+          "correct": "work",
+          "why": "Many say it is hard work, but they never forget the experience."
+        },
+        "g8": {
+          "label": "8. They never forget the ___",
+          "correct": "experience",
+          "why": "They never forget the experience of volunteering."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. I enjoy ___ in the mountains before breakfast",
+          "correct": "walking",
+          "why": "'Enjoy' is followed by the gerund (-ing form), not the infinitive."
+        },
+        "g2": {
+          "label": "2. She finished ___ the tent at six o'clock",
+          "correct": "building",
+          "why": "'Finish' is followed by the gerund (-ing form)."
+        },
+        "g3": {
+          "label": "3. Do you mind ___ the dishes tonight?",
+          "correct": "washing",
+          "why": "'Mind' is followed by the gerund (-ing form)."
+        },
+        "g4": {
+          "label": "4. Our guide suggested ___ the beach on Saturday",
+          "correct": "cleaning",
+          "why": "'Suggest' is followed by the gerund (-ing form)."
+        },
+        "g5": {
+          "label": "5. We avoid ___ plastic bottles in the park",
+          "correct": "using",
+          "why": "'Avoid' is followed by the gerund (-ing form)."
+        },
+        "g6": {
+          "label": "6. The volunteers practise ___ English with visitors",
+          "correct": "speaking",
+          "why": "'Practise' is followed by the gerund (-ing form)."
+        },
+        "g7": {
+          "label": "7. Keep ___ and we will finish the path today",
+          "correct": "working",
+          "why": "'Keep' (meaning continue) is followed by the gerund (-ing form)."
+        },
+        "g8": {
+          "label": "8. He gave up ___ television during the trip",
+          "correct": "watching",
+          "why": "'Give up' is followed by the gerund (-ing form)."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. She is good at ___ maps",
+          "correct": "reading",
+          "why": "'Good at' is followed by the gerund, since 'at' is a preposition."
+        },
+        "g2": {
+          "label": "2. The volunteers are interested in ___ the environment",
+          "correct": "protecting",
+          "why": "'Interested in' is followed by the gerund, since 'in' is a preposition."
+        },
+        "g3": {
+          "label": "3. Instead of ___ the bus, we walked back to camp",
+          "correct": "taking",
+          "why": "'Instead of' is followed by the gerund, since 'of' is a preposition."
+        },
+        "g4": {
+          "label": "4. Thank you for ___ us with the tents",
+          "correct": "helping",
+          "why": "'Thank you for' is followed by the gerund, since 'for' is a preposition."
+        },
+        "g5": {
+          "label": "5. Before ___ home, we cleaned the kitchen",
+          "correct": "going",
+          "why": "'Before' used as a preposition of time is followed by the gerund."
+        },
+        "g6": {
+          "label": "6. After ___ the path, everybody was tired but happy",
+          "correct": "finishing",
+          "why": "'After' used as a preposition of time is followed by the gerund."
+        },
+        "g7": {
+          "label": "7. We look forward to ___ Alaska again next year",
+          "correct": "visiting",
+          "why": "'Look forward to' is followed by the gerund — this 'to' is a preposition, not the infinitive marker."
+        },
+        "g8": {
+          "label": "8. He left the camp without ___ goodbye",
+          "correct": "saying",
+          "why": "'Without' is followed by the gerund, since it is a preposition."
+        }
+      }
+    }
+  },
+  "8c-midwest-festivals": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Every state has a big State ___",
+          "correct": "Fair",
+          "why": "Every state has a big State Fair with rides, animals and food."
+        },
+        "g2": {
+          "label": "2. Children eat popcorn and ice ___",
+          "correct": "cream",
+          "why": "Children eat popcorn and ice cream at the State Fair."
+        },
+        "g3": {
+          "label": "3. In autumn, families ___ Thanksgiving",
+          "correct": "celebrate",
+          "why": "In autumn, families celebrate Thanksgiving on the fourth Thursday of November."
+        },
+        "g4": {
+          "label": "4. They cook a big ___ and say thank you for the harvest",
+          "correct": "turkey",
+          "why": "They cook a big turkey and say thank you for the harvest."
+        },
+        "g5": {
+          "label": "5. On the Fourth of July there is a long ___",
+          "correct": "parade",
+          "why": "On the Fourth of July there is a long parade through the town."
+        },
+        "g6": {
+          "label": "6. In the evening you can watch ___ over the lake",
+          "correct": "fireworks",
+          "why": "In the evening you can watch fireworks over the lake."
+        },
+        "g7": {
+          "label": "7. In December many houses have colourful ___",
+          "correct": "decorations",
+          "why": "In December many houses have colourful decorations in the windows."
+        },
+        "g8": {
+          "label": "8. Every festival is a good chance to meet your ___",
+          "correct": "neighbours",
+          "why": "Every festival is a good chance to meet your neighbours and enjoy the day together."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. A special day when people do not work and celebrate",
+          "correct": "holiday",
+          "why": "A special day when people do not work and celebrate something is a holiday."
+        },
+        "g2": {
+          "label": "2. People walking through the streets with music and costumes",
+          "correct": "parade",
+          "why": "People walking through the streets with music and costumes form a parade."
+        },
+        "g3": {
+          "label": "3. Lights, paper and colours you put up for a party",
+          "correct": "decorations",
+          "why": "Lights, paper and colours that you put up for a party are decorations."
+        },
+        "g4": {
+          "label": "4. Something you give someone on a special day",
+          "correct": "present",
+          "why": "Something you give to someone on a special day is a present."
+        },
+        "g5": {
+          "label": "5. Bright lights and loud bangs in the night sky",
+          "correct": "fireworks",
+          "why": "Bright lights and loud bangs in the night sky are fireworks."
+        },
+        "g6": {
+          "label": "6. The time when farmers bring in the food from the fields",
+          "correct": "harvest",
+          "why": "The time when farmers bring in the food from the fields is the harvest."
+        },
+        "g7": {
+          "label": "7. A big event in a town with music, food and games",
+          "correct": "festival",
+          "why": "A big event in a town with music, food and games is a festival."
+        },
+        "g8": {
+          "label": "8. The people who live in the houses next to yours",
+          "correct": "neighbours",
+          "why": "The people who live in the houses next to yours are your neighbours."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. Every November we ___ Thanksgiving",
+          "correct": "celebrate",
+          "why": "'We' plus a general habit takes the present simple ('celebrate')."
+        },
+        "g2": {
+          "label": "2. We ___ the house with lights before the party",
+          "correct": "decorate",
+          "why": "'We' plus a general habit takes the present simple ('decorate')."
+        },
+        "g3": {
+          "label": "3. My parents ___ our neighbours to dinner",
+          "correct": "invite",
+          "why": "'My parents' plus a routine action takes the present simple ('invite')."
+        },
+        "g4": {
+          "label": "4. At the State Fair you can ___ a lot of different food",
+          "correct": "try",
+          "why": "'You can' plus a general possibility takes the base verb ('try')."
+        },
+        "g5": {
+          "label": "5. Thousands of people ___ the parade every year",
+          "correct": "watch",
+          "why": "'Thousands of people' plus a yearly routine takes the present simple ('watch')."
+        },
+        "g6": {
+          "label": "6. Children ___ their presents on Christmas morning",
+          "correct": "open",
+          "why": "'Children' plus a yearly routine takes the present simple ('open')."
+        },
+        "g7": {
+          "label": "7. The festival ___ place in the town centre every August",
+          "correct": "takes",
+          "why": "Third person singular subjects ('the festival') add '-s' in the present simple ('takes')."
+        },
+        "g8": {
+          "label": "8. After the fireworks everybody ___ home",
+          "correct": "goes",
+          "why": "Third person singular subjects ('everybody') add '-s' in the present simple ('goes')."
+        }
+      }
+    }
+  },
+  "8c-northeast-comparatives": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. New York City is the most famous ___ in the region",
+          "correct": "destination",
+          "why": "New York City is called the most famous destination in the region."
+        },
+        "g2": {
+          "label": "2. Visitors take the ferry to see the Statue of ___",
+          "correct": "Liberty",
+          "why": "Visitors take the ferry to see the Statue of Liberty."
+        },
+        "g3": {
+          "label": "3. It was a ___ from France in 1886",
+          "correct": "gift",
+          "why": "The Statue of Liberty was a gift from France in 1886."
+        },
+        "g4": {
+          "label": "4. Central Park is bigger than many ___ in Europe",
+          "correct": "parks",
+          "why": "Central Park is bigger than many parks in Europe."
+        },
+        "g5": {
+          "label": "5. On sunny days it is full of runners, families and street ___",
+          "correct": "musicians",
+          "why": "On sunny days the park is full of runners, families and street musicians."
+        },
+        "g6": {
+          "label": "6. The subway is faster than a ___",
+          "correct": "taxi",
+          "why": "The subway is faster than a taxi, because the streets are often full of traffic."
+        },
+        "g7": {
+          "label": "7. Boston has one of the oldest ___ in America",
+          "correct": "universities",
+          "why": "Boston has narrow streets and one of the oldest universities in America."
+        },
+        "g8": {
+          "label": "8. The Northeast is the most exciting ___ of the USA",
+          "correct": "part",
+          "why": "For many visitors, the Northeast is the most exciting part of the USA."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. New York is ___ than Boston (big)",
+          "correct": "bigger",
+          "why": "One-syllable adjectives like 'big' double the final consonant and add '-er'."
+        },
+        "g2": {
+          "label": "2. The subway is ___ than the bus (fast)",
+          "correct": "faster",
+          "why": "One-syllable adjectives like 'fast' form the comparative by adding '-er'."
+        },
+        "g3": {
+          "label": "3. Central Park is ___ than I expected (beautiful)",
+          "correct": "more beautiful",
+          "why": "Long adjectives like 'beautiful' form the comparative with 'more', not '-er'."
+        },
+        "g4": {
+          "label": "4. Winter in Boston is ___ than winter in Miami (cold)",
+          "correct": "colder",
+          "why": "One-syllable adjectives like 'cold' form the comparative by adding '-er'."
+        },
+        "g5": {
+          "label": "5. This museum is ___ interesting than the other one",
+          "correct": "more",
+          "why": "Adjectives ending in '-ing' like 'interesting' form the comparative with 'more'."
+        },
+        "g6": {
+          "label": "6. The weather today is ___ than yesterday (good)",
+          "correct": "better",
+          "why": "'Good' has the irregular comparative form 'better', not 'gooder'."
+        },
+        "g7": {
+          "label": "7. A ferry ticket is ___ than a taxi ride (cheap)",
+          "correct": "cheaper",
+          "why": "One-syllable adjectives like 'cheap' form the comparative by adding '-er'."
+        },
+        "g8": {
+          "label": "8. The streets here are ___ than the streets in my town (noisy)",
+          "correct": "noisier",
+          "why": "Two-syllable adjectives ending in '-y' change 'y' to 'i' and add '-er' (noisy → noisier)."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. The Empire State Building is one of the ___ buildings (tall)",
+          "correct": "tallest",
+          "why": "One-syllable adjectives like 'tall' form the superlative with 'the' + '-est'."
+        },
+        "g2": {
+          "label": "2. That was the ___ day of our whole trip (good)",
+          "correct": "best",
+          "why": "'Good' has the irregular superlative form 'best', not 'goodest'."
+        },
+        "g3": {
+          "label": "3. Times Square is the ___ place in the city (busy)",
+          "correct": "busiest",
+          "why": "Two-syllable adjectives ending in '-y' change 'y' to 'i' and add '-est' (busy → busiest)."
+        },
+        "g4": {
+          "label": "4. Which is the ___ museum in Boston? (famous)",
+          "correct": "most famous",
+          "why": "Long adjectives like 'famous' form the superlative with 'most', not '-est'."
+        },
+        "g5": {
+          "label": "5. This is the ___ pizza I have ever eaten (big)",
+          "correct": "biggest",
+          "why": "One-syllable adjectives like 'big' double the final consonant and add '-est'."
+        },
+        "g6": {
+          "label": "6. January is usually the ___ month of the year here (cold)",
+          "correct": "coldest",
+          "why": "One-syllable adjectives like 'cold' form the superlative by adding '-est'."
+        },
+        "g7": {
+          "label": "7. The subway is the ___ way to travel across New York (quick)",
+          "correct": "quickest",
+          "why": "One-syllable adjectives like 'quick' form the superlative by adding '-est'."
+        },
+        "g8": {
+          "label": "8. It was the ___ holiday of my life (exciting)",
+          "correct": "most exciting",
+          "why": "Adjectives ending in '-ing' like 'exciting' form the superlative with 'most'."
+        }
+      }
+    }
   }
 }
