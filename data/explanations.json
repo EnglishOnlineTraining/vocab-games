@@ -12326,5 +12326,366 @@
         }
       }
     }
+  },
+  "business-property-management": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Why does Maria always run a tenant screening before signing a lease?",
+          "correct": "To reduce the risk of lost rent and property damage",
+          "why": "The text says tenant screening is done to reduce the risk of lost rent and property damage."
+        },
+        "g2": {
+          "label": "2. How quickly does Maria try to respond to maintenance requests?",
+          "correct": "Within 24 hours",
+          "why": "Maria tries to respond to maintenance requests within 24 hours."
+        },
+        "g3": {
+          "label": "3. What does a high vacancy rate mean for Maria's building?",
+          "correct": "Lost rental income",
+          "why": "A high vacancy rate for Maria's building means lost rental income."
+        },
+        "g4": {
+          "label": "4. What did Maria do before starting eviction proceedings?",
+          "correct": "Sent several written warnings and a formal notice",
+          "why": "Before starting eviction proceedings, Maria sent several written warnings and a formal notice."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. The apartment's owner, or ___, hired a company to manage the building",
+          "correct": "landlord",
+          "why": "The apartment's owner is called the landlord."
+        },
+        "g2": {
+          "label": "2. Before signing a ___, both parties must agree on rent, deposit and length",
+          "correct": "lease",
+          "why": "Before signing a lease, both parties must agree on the rent, deposit and contract length."
+        },
+        "g3": {
+          "label": "3. The tenant submitted a ___ when the kitchen tap started leaking",
+          "correct": "maintenance request",
+          "why": "The tenant submitted a maintenance request when the tap started leaking."
+        },
+        "g4": {
+          "label": "4. A thorough tenant ___ includes checking income, employment and references",
+          "correct": "screening",
+          "why": "A thorough tenant screening usually includes checking income, employment and references."
+        },
+        "g5": {
+          "label": "5. If a building has many empty units, its ___ is considered high",
+          "correct": "vacancy rate",
+          "why": "If a building has many empty units, its vacancy rate is considered high."
+        },
+        "g6": {
+          "label": "6. The tenant paid a security ___ returned at the end of the lease",
+          "correct": "deposit",
+          "why": "The tenant paid a security deposit that will be returned if there is no damage."
+        },
+        "g7": {
+          "label": "7. After months of unpaid rent, the landlord began ___ proceedings",
+          "correct": "eviction",
+          "why": "After months of unpaid rent, the landlord began eviction proceedings to remove the tenant legally."
+        },
+        "g8": {
+          "label": "8. Property managers collect monthly ___ from tenants",
+          "correct": "rent",
+          "why": "Property managers collect monthly rent from tenants and pass it on to the owner."
+        }
+      }
+    }
+  },
+  "it-writing-task": {
+    "exA": {
+      "prefix": "",
+      "gaps": {
+        "a1": {
+          "label": "1. Reporting when something failed: \"The backup job failed ___\"",
+          "correct": "at 02:15 on 14 March.",
+          "accept": [
+            "b"
+          ],
+          "why": "A specific timestamp reports the failure precisely, unlike a vague phrase like 'quite recently'."
+        },
+        "a2": {
+          "label": "2. Asking a user for something you need",
+          "correct": "Could you send me a screenshot of the error message?",
+          "accept": [
+            "a"
+          ],
+          "why": "A polite request with 'Could you...?' works better than a bare command or a blaming question."
+        },
+        "a3": {
+          "label": "3. Summarising what the user told you: \"She said that the error ___\"",
+          "correct": "appeared",
+          "accept": [
+            "b"
+          ],
+          "why": "Reported speech about a past event uses the past simple ('appeared'), not present or -ing forms."
+        },
+        "a4": {
+          "label": "4. Naming a cause you have not yet confirmed: \"The outage ___ have been caused by...\"",
+          "correct": "may",
+          "accept": [
+            "b"
+          ],
+          "why": "'May' hedges an unconfirmed cause, unlike 'must' (near-certainty) or 'will' (future)."
+        },
+        "a5": {
+          "label": "5. Committing to a timeframe: \"I will update you ___\"",
+          "correct": "by 15:00 today.",
+          "accept": [
+            "b"
+          ],
+          "why": "A specific time commits to a real deadline, unlike a vague phrase like 'soon'."
+        },
+        "a6": {
+          "label": "6. Explaining a delay to a non-technical reader",
+          "correct": "the supplier sent the wrong network cards.",
+          "accept": [
+            "b"
+          ],
+          "why": "Plain, non-technical wording explains the delay clearly, unlike jargon like 'NICs' or 'SKU mismatch'."
+        },
+        "a7": {
+          "label": "7. Recording an action in a report: \"The affected accounts ___ before 09:00\"",
+          "correct": "were disabled",
+          "accept": [
+            "a"
+          ],
+          "why": "Passive voice ('were disabled') reports the action accurately without needing to name who did it."
+        },
+        "a8": {
+          "label": "8. Closing a message that needs the reader to do something",
+          "correct": "Please confirm by Thursday whether I can proceed.",
+          "accept": [
+            "b"
+          ],
+          "why": "A specific request with a deadline gets clearer action than a vague closing line."
+        }
+      }
+    }
+  },
+  "quiz-grammar-easy": {
+    "quiz": {
+      "prefix": "q-",
+      "gaps": {
+        "g1": {
+          "label": "1. Which sentence is grammatically correct?",
+          "correct": "I went to the store yesterday.",
+          "why": "'Went' is the correct irregular past tense of 'go', not 'goed'."
+        },
+        "g2": {
+          "label": "2. Which word is an adverb?",
+          "correct": "Quickly",
+          "why": "'Quickly' describes how an action is done, making it an adverb."
+        },
+        "g3": {
+          "label": "3. Which sentence is in the past tense?",
+          "correct": "I ate dinner an hour ago.",
+          "why": "'Ate' plus a past time marker ('an hour ago') shows the past tense."
+        },
+        "g4": {
+          "label": "4. Which sentence is written in the passive voice?",
+          "correct": "The cat was chased by the dog.",
+          "why": "The subject (the cat) receives the action, making this the passive voice."
+        },
+        "g5": {
+          "label": "5. Which sentence contains a comparative adjective?",
+          "correct": "The pizza was better than the pasta.",
+          "why": "'Better' compares two things, making it a comparative adjective."
+        },
+        "g6": {
+          "label": "6. Which sentence is a conditional sentence?",
+          "correct": "If I have time, I will go to the party.",
+          "why": "An 'if' clause paired with a possible result makes this a conditional sentence."
+        },
+        "g7": {
+          "label": "7. Which sentence is in the present perfect tense?",
+          "correct": "I have been to Italy three times.",
+          "why": "'Have been' is the present perfect, used for past experiences without a specific time."
+        },
+        "g8": {
+          "label": "8. Which sentence is a question?",
+          "correct": "Are you going to the party tonight?",
+          "why": "The inverted word order (verb before subject) with a question mark makes this a question."
+        },
+        "g9": {
+          "label": "9. Which sentence contains a direct object?",
+          "correct": "She kicked the ball.",
+          "why": "'The ball' receives the action of 'kicked', making it the direct object."
+        },
+        "g10": {
+          "label": "10. Which word is a preposition?",
+          "correct": "on",
+          "why": "'On' shows the relationship between words, making it a preposition."
+        }
+      }
+    }
+  },
+  "quiz-grammar-medium": {
+    "quiz": {
+      "prefix": "q-",
+      "gaps": {
+        "g1": {
+          "label": "1. Which sentence is written in the subjunctive mood?",
+          "correct": "If I were you, I would go to the party.",
+          "why": "Subjunctive 'were' (not 'was') is used for hypothetical situations with 'if I were you'."
+        },
+        "g2": {
+          "label": "2. Which sentence contains a gerund?",
+          "correct": "I like swimming in the ocean.",
+          "why": "'Swimming' is a verb form acting as a noun here, making it a gerund."
+        },
+        "g3": {
+          "label": "3. Which sentence is written in the passive voice?",
+          "correct": "The students were given a test by the teacher.",
+          "why": "The subject (the students) receives the action, making this the passive voice."
+        },
+        "g4": {
+          "label": "4. Which sentence contains a non-restrictive clause?",
+          "correct": "My sister, who is a doctor, is visiting next week.",
+          "why": "Commas set off extra, non-essential information, making it a non-restrictive clause."
+        },
+        "g5": {
+          "label": "5. Which sentence contains an appositive phrase?",
+          "correct": "My friend, a doctor, is coming to visit next week.",
+          "why": "'A doctor' renames 'my friend' without a relative pronoun, making it an appositive phrase."
+        },
+        "g6": {
+          "label": "6. Which sentence is an idiomatic expression?",
+          "correct": "She's feeling under the weather today.",
+          "why": "'Under the weather' means 'ill' — its meaning isn't literal, making it an idiom."
+        },
+        "g7": {
+          "label": "7. Which sentence is in the conditional perfect tense?",
+          "correct": "If I had studied harder, I would have passed the test.",
+          "why": "'If + past perfect, would have + past participle' expresses an unreal past condition."
+        },
+        "g8": {
+          "label": "8. Which word is a conjunction?",
+          "correct": "and",
+          "why": "'And' joins two words, phrases or clauses, making it a conjunction."
+        },
+        "g9": {
+          "label": "9. Which sentence is in the active voice?",
+          "correct": "The author wrote the book.",
+          "why": "The subject (the author) performs the action, making this the active voice."
+        }
+      }
+    }
+  },
+  "quiz-grammar-hard": {
+    "quiz": {
+      "prefix": "q-",
+      "gaps": {
+        "g1": {
+          "label": "1. Which sentence contains a misplaced (dangling) modifier?",
+          "correct": "Running through the park, the sun was shining brightly.",
+          "why": "The opening phrase should describe the subject, but the sun can't be running — a dangling modifier."
+        },
+        "g2": {
+          "label": "2. Which sentence contains an infinitive phrase?",
+          "correct": "I decided to go for a walk in the park.",
+          "why": "'To go' is the infinitive form (to + base verb), forming an infinitive phrase."
+        },
+        "g3": {
+          "label": "3. Which sentence is in the passive voice with a present participle?",
+          "correct": "The couch is being slept on by the cat.",
+          "why": "'Is being slept on' combines the passive voice with the present participle 'being'."
+        },
+        "g4": {
+          "label": "4. Which sentence contains a restrictive clause?",
+          "correct": "The book that I read last week was very interesting.",
+          "why": "'That I read last week' is essential to identify which book, making it a restrictive clause."
+        },
+        "g5": {
+          "label": "5. Which sentence contains an ellipsis?",
+          "correct": "He ordered a pizza, and she a salad.",
+          "why": "The repeated verb ('ordered') is omitted after 'and she', making it an ellipsis."
+        },
+        "g6": {
+          "label": "6. Which sentence contains a dangling participle?",
+          "correct": "Walking to school, the rain soaked me.",
+          "why": "The opening phrase should describe the subject, but the rain wasn't walking — a dangling participle."
+        },
+        "g7": {
+          "label": "7. Which word is a relative pronoun?",
+          "correct": "That",
+          "why": "'That' can introduce a relative clause referring back to a noun, making it a relative pronoun."
+        },
+        "g8": {
+          "label": "8. Which sentence contains a split infinitive?",
+          "correct": "I want to quickly finish my homework.",
+          "why": "'To quickly finish' places an adverb between 'to' and the verb, splitting the infinitive."
+        },
+        "g9": {
+          "label": "9. Which sentence contains a modal verb?",
+          "correct": "He can swim very well.",
+          "why": "'Can' expresses ability, making it a modal verb."
+        }
+      }
+    }
+  },
+  "quiz-grammar-hardest": {
+    "quiz": {
+      "prefix": "q-",
+      "gaps": {
+        "g1": {
+          "label": "1. Which sentence contains a double negative?",
+          "correct": "I didn't see nobody at the party.",
+          "why": "Two negatives ('didn't' and 'nobody') cancel each other out, making this a double negative."
+        },
+        "g2": {
+          "label": "2. Which sentence contains an absolute phrase?",
+          "correct": "The sun shining brightly, we decided to go for a walk.",
+          "why": "'The sun shining brightly' has its own subject and participle, forming an absolute phrase."
+        },
+        "g3": {
+          "label": "3. Which sentence is in the simple passive voice with a past participle?",
+          "correct": "The cake was baked by my mother.",
+          "why": "'Was baked' is the simple past passive, built from 'was' plus the past participle 'baked'."
+        },
+        "g4": {
+          "label": "4. Which sentence contains a non-finite (infinitive) clause?",
+          "correct": "She stopped to rest for a while.",
+          "why": "'To rest' is a non-finite infinitive clause, since it has no tense of its own."
+        },
+        "g5": {
+          "label": "5. Which sentence contains an appositive phrase?",
+          "correct": "My brother, a talented artist, lives in Berlin.",
+          "why": "'A talented artist' renames 'my brother' without a relative pronoun, making it an appositive phrase."
+        },
+        "g6": {
+          "label": "6. Which sentence is an example of a split construction?",
+          "correct": "I like to play, when I have free time, video games.",
+          "why": "The object ('video games') is split away from its verb by an inserted clause — a split construction."
+        },
+        "g7": {
+          "label": "7. Which sentence is in the past perfect continuous tense?",
+          "correct": "I had been studying for hours when I finally took a break.",
+          "why": "'Had been studying' combines the past perfect with the continuous aspect for an action ongoing before another past event."
+        },
+        "g8": {
+          "label": "8. Which word is a preposition?",
+          "correct": "Under",
+          "why": "'Under' shows the relationship between words, making it a preposition."
+        },
+        "g9": {
+          "label": "9. Which sentence contains a dangling infinitive?",
+          "correct": "To get to the park, my bicycle was the fastest option.",
+          "why": "The opening infinitive phrase should describe the subject, but a bicycle can't 'get to the park' itself — a dangling infinitive."
+        },
+        "g10": {
+          "label": "10. Which sentence contains a phrasal-prepositional verb?",
+          "correct": "I look forward to the weekend.",
+          "why": "'Look forward to' is a phrasal-prepositional verb: verb + adverb ('forward') + preposition ('to')."
+        }
+      }
+    }
   }
 }
