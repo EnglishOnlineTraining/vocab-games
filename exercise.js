@@ -56,7 +56,7 @@ function eolInitPractise() {
     b.id = 'practise-btn';
     b.className = 'btn btn-outline btn-block';
     b.style.marginTop = '.6rem';
-    b.innerHTML = 'Nur üben — ohne Abgabe &middot; <span style="opacity:.75">Just practise</span>';
+    b.innerHTML = '<span lang="de">Nur üben — ohne Abgabe</span> &middot; <span style="opacity:.75">Just practise</span>';
     b.setAttribute('type', 'button');
     b.setAttribute('onclick', 'startPractise()');
     startBtn.parentNode.insertBefore(b, startBtn.nextSibling);
@@ -99,16 +99,7 @@ function eolPractisePanelHtml() {
   var breakdown = rows
     ? '<div class="card"><div class="card-title">Deine Punkte pro Übung</div>' + rows + '</div>'
     : '';
-  var hasWriting = !!document.querySelector('.step textarea');
-  var selfcheck = hasWriting
-    ? '<div class="card"><div class="card-title">Schreibaufgabe — selbst prüfen</div>'
-      + '<ul style="margin:.3rem 0 0 1.1rem;font-size:.9rem;line-height:1.7;color:var(--text)">'
-      + '<li>Hast du alle Inhaltspunkte der Aufgabe behandelt?</li>'
-      + '<li>Ist dein Text klar gegliedert (Einleitung – Hauptteil – Schluss)?</li>'
-      + '<li>Hast du Verknüpfungswörter benutzt (however, therefore, although …)?</li>'
-      + '<li>Zeiten, 3rd-person -s und Rechtschreibung noch einmal geprüft?</li>'
-      + '</ul></div>'
-    : '';
+  var selfcheck = eolRubricHtml();   // practise mode only — never sent anywhere
   var buttons = '<div class="card" style="text-align:center">'
     + '<button class="btn btn-gold" type="button" style="width:100%;max-width:360px;justify-content:center" onclick="eolPractiseRetry()">↻ Nochmal üben · Try again</button>'
     + '<div style="margin-top:.7rem"><a class="btn btn-outline btn-sm" href="activities.html">← Alle Übungen</a></div>'
@@ -118,6 +109,103 @@ function eolPractisePanelHtml() {
 
 function eolPractiseRetry() {
   window.location.href = window.location.pathname + '?mode=practise';
+}
+
+/* ============================================================
+   WRITING RUBRIC — PRACTISE MODE ONLY
+   Class submissions are marked by the teacher, so the rubric is
+   deliberately confined to practise mode: it is rendered only from
+   eolPractiseResults(), never added to buildPayload(), and therefore
+   never reaches the Make webhook / Excel. A public visitor working
+   without a teacher gets criteria to judge their own writing against;
+   a class submitting for marking sees exactly what it saw before.
+
+   The band is derived from the filename prefix, so no page needs an
+   edit. A page may override with `var WRITING_RUBRIC = [...]`.
+============================================================ */
+var EOL_RUBRIC_BANDS = {
+  a2: { label: 'A2', rows: [
+    ['Aufgabe erfüllt',   'Ich habe alle Punkte der Aufgabe bearbeitet und genug Sätze geschrieben.'],
+    ['Satzbau',           'Meine Sätze haben ein Subjekt und ein Verb und sind nicht zu lang.'],
+    ['Wortschatz',        'Ich habe die Wörter aus dieser Übung benutzt.'],
+    ['Verbindungen',      'Ich habe and, but, because oder so benutzt.'],
+    ['Genauigkeit',       'Ich habe Zeitform, 3rd-person -s und Rechtschreibung geprüft.']
+  ]},
+  b1: { label: 'B1', rows: [
+    ['Aufgabe erfüllt',   'Ich habe alle Inhaltspunkte behandelt und die geforderte Länge erreicht.'],
+    ['Aufbau',            'Mein Text hat einen klaren Anfang, Hauptteil und Schluss.'],
+    ['Wortschatz',        'Ich habe abwechslungsreiche Wörter statt immer derselben benutzt.'],
+    ['Verknüpfung',       'Ich habe however, therefore, although … benutzt, um Sätze zu verbinden.'],
+    ['Genauigkeit',       'Zeiten, Wortstellung und Rechtschreibung habe ich noch einmal geprüft.']
+  ]},
+  b2: { label: 'B2/C1', rows: [
+    ['Aufgabe & Position','Meine Aussage bzw. Position ist klar und wird durchgehend verfolgt.'],
+    ['Argumentation',     'Ich stütze jeden Punkt mit einem Beispiel oder Beleg.'],
+    ['Aufbau & Kohäsion', 'Absätze sind sinnvoll gegliedert und logisch verbunden.'],
+    ['Register & Bandbreite','Wortwahl und Stil passen zur Textsorte und wiederholen sich nicht.'],
+    ['Genauigkeit',       'Komplexe Strukturen sind korrekt; ich habe auf typische Fehler geprüft.']
+  ]},
+  pro: { label: 'Professional', rows: [
+    ['Purpose',           'The reader knows what I want and what to do next.'],
+    ['Structure',         'The text is organised so a busy reader can skim it.'],
+    ['Terminology',       'I used the field-specific vocabulary from this unit correctly.'],
+    ['Register',          'The tone fits the audience (colleague, client, manager).'],
+    ['Accuracy',          'I checked grammar, spelling and any names or figures.']
+  ]}
+};
+
+/* Which band this page's writing task should be judged against. */
+function eolRubricBand() {
+  var f = eolPageFile();
+  if (/^(uni|be|it)-/.test(f)) return EOL_RUBRIC_BANDS.pro;
+  if (/^(10g|abitur)-/.test(f)) return EOL_RUBRIC_BANDS.b2;
+  if (/^(7c|8c)-/.test(f)) return EOL_RUBRIC_BANDS.a2;
+  return EOL_RUBRIC_BANDS.b1;
+}
+
+/* Word counts for what the student actually wrote, per writing box. */
+function eolWritingCounts() {
+  var out = [];
+  document.querySelectorAll('.step textarea').forEach(function(t) {
+    if (t.id === 'copy-block') return;
+    var v = (t.value || '').trim();
+    out.push({ id: t.id, words: v ? v.split(/\s+/).length : 0 });
+  });
+  return out;
+}
+
+function eolRubricHtml() {
+  if (!document.querySelector('.step textarea')) return '';
+  var rows = (typeof WRITING_RUBRIC !== 'undefined' && WRITING_RUBRIC.length)
+    ? WRITING_RUBRIC : eolRubricBand().rows;
+  var counts = eolWritingCounts().filter(function(c) { return c.words > 0; });
+  var total = counts.reduce(function(a, c) { return a + c.words; }, 0);
+
+  var html = '<div class="card eol-rubric" lang="de">'
+    + '<div class="card-title">Schreibaufgabe — selbst bewerten</div>'
+    + '<p class="eol-rubric-intro">Das ist <strong>keine Note</strong>. Im Übungsmodus korrigiert niemand deinen Text — '
+    + 'geh die Punkte durch und entscheide selbst, was schon gut ist und was du noch verbessern kannst.'
+    + (total ? ' Du hast <strong>' + total + ' Wörter</strong> geschrieben.' : '')
+    + '</p>'
+    + '<table class="eol-rubric-table"><caption class="eol-sr-only">Kriterien zur Selbstbewertung deines Textes</caption>'
+    + '<thead><tr><th scope="col">Kriterium</th><th scope="col">Das prüfe ich</th>'
+    + '<th scope="col" class="eol-rubric-rate">Noch nicht</th><th scope="col" class="eol-rubric-rate">Fast</th>'
+    + '<th scope="col" class="eol-rubric-rate">Ja</th></tr></thead><tbody>';
+  rows.forEach(function(r, i) {
+    var name = 'eol-rub-' + i;
+    html += '<tr><th scope="row">' + esc(r[0]) + '</th><td>' + esc(r[1]) + '</td>';
+    ['Noch nicht', 'Fast', 'Ja'].forEach(function(lvl, j) {
+      var id = name + '-' + j;
+      html += '<td class="eol-rubric-rate">'
+        + '<input type="radio" name="' + name + '" id="' + id + '">'
+        + '<label for="' + id + '"><span class="eol-sr-only">' + esc(r[0]) + ': ' + lvl + '</span></label></td>';
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table>'
+    + '<p class="eol-rubric-foot">Ein Kriterium bei „Noch nicht“? Überarbeite genau diesen Punkt und übe die Aufgabe noch einmal.</p>'
+    + '</div>';
+  return html;
 }
 
 function showToast(message, duration) {
@@ -162,11 +250,16 @@ function renderStepNav(current) {
     if (i === current) cls += ' current';
     else if (i <= maxStepReached) cls += ' visited';
     else cls += ' locked';
-    html += '<button class="' + cls + '" ' + (i <= maxStepReached && i !== current ? 'onclick="goToStep(' + i + ')"' : 'disabled') + '>Ex ' + String.fromCharCode(64 + i) + '</button>';
+    html += '<button class="' + cls + '" ' + (i === current ? 'aria-current="step" ' : '')
+      + (i <= maxStepReached && i !== current ? 'onclick="goToStep(' + i + ')"' : 'disabled')
+      + '>Ex ' + String.fromCharCode(64 + i) + '</button>';
   }
   var submitCls = 'step-nav-btn' + (current === TOTAL_STEPS ? ' current' : (maxStepReached >= TOTAL_STEPS ? ' visited' : ' locked'));
-  html += '<button class="' + submitCls + '" ' + (maxStepReached >= TOTAL_STEPS && current !== TOTAL_STEPS ? 'onclick="goToStep(' + TOTAL_STEPS + ')"' : 'disabled') + '>Submit</button>';
+  html += '<button class="' + submitCls + '" ' + (current === TOTAL_STEPS ? 'aria-current="step" ' : '')
+    + (maxStepReached >= TOTAL_STEPS && current !== TOTAL_STEPS ? 'onclick="goToStep(' + TOTAL_STEPS + ')"' : 'disabled')
+    + '>Submit</button>';
   nav.innerHTML = html;
+  if (!nav.getAttribute('aria-label')) nav.setAttribute('aria-label', 'Exercise steps');
   nav.classList.add('show');
 }
 
@@ -278,10 +371,12 @@ function checkDropdowns(ids, prefix, answers, fbId, scoreKey) {
     var sel = document.getElementById(prefix + k);
     if (!sel) return;
     sel.className = sel.className.replace(/\s*(gap-correct|gap-wrong)/g, '');
+    eolClearGapMark(sel);
     if (!sel.value) { empty++; return; }
     var ok = sel.value === answers[k];
     if (ok) { sel.className += ' gap-correct'; correct++; }
     else    { sel.className += ' gap-wrong';   wrong++;   }
+    eolMarkGap(sel, ok);
     recordGap(scoreKey, k, ok);
   });
   var total = ids.length;
@@ -324,12 +419,14 @@ function checkDropdownsMulti(ids, prefix, answers, fbId, scoreKey) {
     var sel = document.getElementById(prefix + k);
     if (!sel) return;
     sel.className = sel.className.replace(/\s*(gap-correct|gap-wrong)/g, '');
+    eolClearGapMark(sel);
     if (!sel.value) { empty++; return; }
     var acc = answers[k];
     if (!Array.isArray(acc)) acc = [acc];
     var ok = acc.indexOf(sel.value) !== -1;
     if (ok) { sel.className += ' gap-correct'; correct++; }
     else    { sel.className += ' gap-wrong';   wrong++;   }
+    eolMarkGap(sel, ok);
     recordGap(scoreKey, k, ok);
   });
   var total = ids.length;
@@ -743,6 +840,180 @@ document.addEventListener('copy', function(e) {
 });
 
 /* ============================================================
+   ACCESSIBILITY LAYER
+   Applied to every framework page from the shared file, so no page
+   needs an edit. Covers the four things this corpus actually got
+   wrong, all of them WCAG 2.2 A/AA items:
+
+     1. 2,200+ gap dropdowns had no accessible name — a screen reader
+        announced "combo box, — choose —" with no clue which gap it was.
+        eolLabelGaps() names each one from the sentence around it.  (4.1.2)
+     2. Right/wrong was signalled by colour alone (gap-correct /
+        gap-wrong). eolMarkGap() adds a ✓/✗ glyph and aria-invalid, so
+        the result survives colourblindness and greyscale.  (1.4.1)
+     3. Check feedback was written into a div nothing was listening to.
+        The feedback boxes become polite live regions.  (4.1.3)
+     4. No skip link, no main landmark, and focus stayed at the top of
+        the document when the step changed.  (2.4.1, 2.4.3)
+
+   The German chrome also gets lang="de" inside these lang="en" pages,
+   so a screen reader stops reading German with English phonemes. (3.1.2)
+============================================================ */
+
+/* Build an accessible name for one gap from the words around it. */
+function eolGapLabel(sel, idx, total) {
+  var parent = sel.parentNode;
+  var before = '', after = '', seen = false, num = '';
+  if (parent) {
+    for (var i = 0; i < parent.childNodes.length; i++) {
+      var n = parent.childNodes[i];
+      if (n === sel) { seen = true; continue; }
+      if (n.nodeType === 1 && n.classList && n.classList.contains('gap-num')) {
+        if (!seen) num = (n.textContent || '').trim();
+        continue;                                  // the printed gap number, not prose
+      }
+      var t = (n.nodeType === 1 && n.tagName === 'SELECT')
+        ? ' blank '                                // another gap in the same sentence
+        : (n.textContent || '');
+      t = t.replace(/\s+/g, ' ');
+      if (!seen) before += t; else after += t;
+    }
+  }
+  before = before.replace(/\s+/g, ' ').trim();
+  after  = after.replace(/\s+/g, ' ').trim();
+  if (before.length > 60) before = '…' + before.slice(-60);
+  if (after.length  > 30) after  = after.slice(0, 30) + '…';
+  var where = 'Gap ' + (num || (idx + 1)) + ' of ' + total;
+  var ctx = (before || after) ? (': ' + before + ' blank ' + after).replace(/\s+/g, ' ') : '';
+  return (where + ctx).trim();
+}
+
+/* Name every gap on the page. Safe to run repeatedly. */
+function eolLabelGaps(root) {
+  var scope = root || document;
+  var sels = scope.querySelectorAll ? scope.querySelectorAll('select') : [];
+  var groups = {};
+  sels.forEach(function(sel) {
+    var step = sel.closest ? sel.closest('.step') : null;
+    var key = step ? step.id : '_';
+    (groups[key] = groups[key] || []).push(sel);
+  });
+  Object.keys(groups).forEach(function(key) {
+    var list = groups[key];
+    list.forEach(function(sel, i) {
+      if (sel.getAttribute('data-eol-labelled') === '1') return;
+      if (!sel.getAttribute('aria-label') && !(sel.labels && sel.labels.length)) {
+        sel.setAttribute('aria-label', eolGapLabel(sel, i, list.length));
+      }
+      sel.setAttribute('data-eol-labelled', '1');
+    });
+  });
+}
+
+/* Non-colour correctness cue + screen-reader state for one gap.
+   Guarded: the scoring self-check drives checkDropdowns with plain
+   object stubs, and a page may hand us something equally minimal. */
+function eolMarkGap(sel, ok) {
+  if (!sel || typeof sel.setAttribute !== 'function') return;
+  sel.setAttribute('aria-invalid', ok ? 'false' : 'true');
+  var mark = sel.nextElementSibling;
+  if (!mark || !mark.classList || !mark.classList.contains('eol-gap-mark')) {
+    if (!sel.parentNode || typeof sel.parentNode.insertBefore !== 'function') return;
+    mark = document.createElement('span');
+    mark.className = 'eol-gap-mark';
+    sel.parentNode.insertBefore(mark, sel.nextSibling);
+  }
+  mark.className = 'eol-gap-mark ' + (ok ? 'is-ok' : 'is-wrong');
+  mark.textContent = ok ? '✓' : '✗';
+  var base = (sel.getAttribute('aria-label') || '').replace(/ — (correct|incorrect)$/, '');
+  sel.setAttribute('aria-label', base + ' — ' + (ok ? 'correct' : 'incorrect'));
+}
+
+/* Clear the marks on a gap before it is re-checked. */
+function eolClearGapMark(sel) {
+  if (!sel || typeof sel.removeAttribute !== 'function') return;
+  sel.removeAttribute('aria-invalid');
+  var mark = sel.nextElementSibling;
+  if (mark && mark.classList && mark.classList.contains('eol-gap-mark')) mark.remove();
+  var base = (sel.getAttribute('aria-label') || '').replace(/ — (correct|incorrect)$/, '');
+  if (base) sel.setAttribute('aria-label', base);
+}
+
+/* Make every feedback box announce itself when its text changes. */
+function eolLiveRegions() {
+  document.querySelectorAll('.feedback').forEach(function(el) {
+    if (!el.getAttribute('role')) el.setAttribute('role', 'status');
+    if (!el.getAttribute('aria-live')) el.setAttribute('aria-live', 'polite');
+  });
+  var score = document.getElementById('score-display');
+  if (score && !score.getAttribute('aria-live')) {
+    score.setAttribute('role', 'status');
+    score.setAttribute('aria-live', 'polite');
+  }
+}
+
+/* Mark the visible step as the main landmark and move focus to it. */
+var eolFocusArmed = false;   // stays false until the first real step change
+function eolSyncActiveStep() {
+  var active = document.querySelector('.step.active');
+  if (!active) return;
+  if (active.id === 'eol-current-main') return;
+  document.querySelectorAll('[data-eol-main="1"]').forEach(function(s) {
+    s.removeAttribute('role'); s.removeAttribute('tabindex'); s.removeAttribute('data-eol-main');
+  });
+  active.setAttribute('role', 'main');
+  active.setAttribute('tabindex', '-1');
+  active.setAttribute('data-eol-main', '1');
+  eolLabelGaps(active);
+  eolLiveRegions();
+  var track = document.querySelector('.progress-track');
+  var fill = document.getElementById('progress-fill');
+  if (track && fill) {
+    track.setAttribute('role', 'progressbar');
+    track.setAttribute('aria-label', 'Fortschritt / progress');
+    track.setAttribute('aria-valuemin', '0');
+    track.setAttribute('aria-valuemax', '100');
+    track.setAttribute('aria-valuenow', String(parseInt(fill.style.width, 10) || 0));
+  }
+  if (eolFocusArmed) {
+    var h = active.querySelector('.ex-title, .welcome-title, h1, h2');
+    var target = h || active;
+    if (h) h.setAttribute('tabindex', '-1');
+    try { target.focus({ preventScroll: true }); } catch (e) { try { target.focus(); } catch (e2) {} }
+  }
+  eolFocusArmed = true;
+}
+
+var eolRelabelQueued = false;
+function eolQueueRelabel() {
+  if (eolRelabelQueued) return;
+  eolRelabelQueued = true;
+  var run = function() { eolRelabelQueued = false; eolLabelGaps(document); eolLiveRegions(); };
+  if (window.requestAnimationFrame) window.requestAnimationFrame(run); else setTimeout(run, 0);
+}
+
+function eolInitA11y() {
+  eolLabelGaps(document);
+  eolLiveRegions();
+  eolSyncActiveStep();
+  if (!window.MutationObserver) return;
+  // Steps are swapped by toggling .active — and several pages override
+  // showStep(), so hook the DOM rather than the function.
+  var obs = new MutationObserver(function() { eolSyncActiveStep(); });
+  document.querySelectorAll('.step').forEach(function(s) {
+    obs.observe(s, { attributes: true, attributeFilter: ['class'] });
+  });
+  // Some pages build their gaps at runtime with innerHTML (e.g.
+  // california-exercises' renderGapText), so those selects do not exist
+  // during this init pass. Watch for inserted nodes and name them too.
+  // eolLabelGaps skips anything already carrying data-eol-labelled, so the
+  // ✓/✗ marks this layer inserts cannot start a feedback loop.
+  new MutationObserver(eolQueueRelabel)
+    .observe(document.body, { childList: true, subtree: true });
+}
+document.addEventListener('DOMContentLoaded', eolInitA11y);
+
+/* ============================================================
    SITE CHROME — breadcrumb + unified footer (Phase 1.3)
    Injected on every framework page via exercise.js; zero per-page
    edits. Self-contained styles (fall back if a page lacks style.css)
@@ -783,8 +1054,47 @@ function eolInjectChrome() {
     + '.eol-footer nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1.1rem;margin-bottom:.7rem}'
     + '.eol-footer a{color:var(--teal,#2b7a78);text-decoration:none;font-weight:600}'
     + '.eol-footer a:hover{text-decoration:underline}'
-    + '.eol-footer .legal{opacity:.85;font-weight:400}';
+    + '.eol-footer .legal{opacity:.85;font-weight:400}'
+    /* --- accessibility + rubric (self-contained: 15 framework pages never load style.css) --- */
+    + '.eol-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;'
+      + 'clip:rect(0 0 0 0);white-space:nowrap;border:0}'
+    + '.eol-skip{position:absolute;left:.5rem;top:-3rem;z-index:1000;background:var(--gold,#c9a227);'
+      + 'color:#1a1a1a;font-weight:700;padding:.5rem 1rem;border-radius:8px;text-decoration:none;transition:top .2s}'
+    + '.eol-skip:focus{top:.5rem}'
+    + '.eol-gap-mark{display:inline-block;margin-left:.25rem;font-weight:800;line-height:1}'
+    + '.eol-gap-mark.is-ok{color:var(--green,#27ae60)}'
+    + '.eol-gap-mark.is-wrong{color:var(--red,#c0392b)}'
+    + ':focus-visible{outline:3px solid var(--blue-mid,#1a6eb5);outline-offset:2px}'
+    + '.step:focus{outline:none}'
+    + '.eol-rubric-intro{font-size:.88rem;color:var(--muted,#6b7a8d);margin:.2rem 0 .8rem;line-height:1.6}'
+    + '.eol-rubric-table{width:100%;border-collapse:collapse;font-size:.86rem}'
+    + '.eol-rubric-table th,.eol-rubric-table td{border-top:1px solid var(--border,#dce3ec);padding:.5rem .4rem;text-align:left;vertical-align:top}'
+    + '.eol-rubric-table thead th{font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;'
+      + 'color:var(--muted,#6b7a8d);border-top:0}'
+    + '.eol-rubric-table tbody th{font-weight:700;color:var(--blue,#1a3a5c);white-space:nowrap}'
+    + '.eol-rubric-rate{text-align:center;width:4.2rem}'
+    + '.eol-rubric-rate input{width:1.1rem;height:1.1rem;cursor:pointer}'
+    + '.eol-rubric-rate label{display:block;cursor:pointer}'
+    + '.eol-rubric-foot{font-size:.82rem;color:var(--muted,#6b7a8d);margin-top:.8rem}'
+    + '@media(max-width:560px){.eol-rubric-table tbody td:not(.eol-rubric-rate){display:block}'
+      + '.eol-rubric-table{font-size:.8rem}.eol-rubric-rate{width:3.2rem}}'
+    + '@media(prefers-reduced-motion:reduce){.eol-skip{transition:none}}';
   document.head.appendChild(st);
+
+  if (!document.getElementById('eol-skip')) {
+    var skip = document.createElement('a');
+    skip.id = 'eol-skip';
+    skip.className = 'eol-skip';
+    skip.href = '#eol-skip-target';
+    skip.textContent = 'Zum Inhalt springen';
+    skip.setAttribute('lang', 'de');
+    skip.addEventListener('click', function(e) {
+      e.preventDefault();
+      var active = document.querySelector('.step.active');
+      if (active) { active.setAttribute('tabindex', '-1'); active.focus(); }
+    });
+    document.body.insertBefore(skip, document.body.firstChild);
+  }
 
   var header = document.querySelector('header.app-header');
   var title = eolPageTitle();
@@ -793,6 +1103,7 @@ function eolInjectChrome() {
     nav.id = 'eol-crumbs';
     nav.className = 'eol-crumbs';
     nav.setAttribute('aria-label', 'Breadcrumb');
+    nav.setAttribute('lang', 'de');   // German chrome inside a lang="en" page
     nav.innerHTML = '<a href="activities.html">Übungen</a><span class="sep">›</span>'
       + '<span>' + esc(eolCrumbLabel()) + '</span>'
       + (title ? '<span class="sep">›</span><span>' + esc(title) + '</span>' : '');
@@ -803,6 +1114,7 @@ function eolInjectChrome() {
     var f = document.createElement('footer');
     f.id = 'eol-footer';
     f.className = 'eol-footer';
+    f.setAttribute('lang', 'de');   // German chrome inside a lang="en" page
     f.innerHTML =
       '<nav aria-label="Seiten">'
       + '<a href="activities.html">Alle Übungen</a>'

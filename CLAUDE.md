@@ -283,9 +283,55 @@ Each `checkDropdowns(ids, prefix, answers, fbId, scoreKey)` call now takes a `sc
 
 **Explanations live in `data/explanations.json`, keyed by `UNIT` — not in the HTML.** `exercise.js` fetches the file once on load (`EOL_EXPLAIN_ALL`) and renders the entry for the page's `UNIT`; if the data arrives after the student is already on the results screen it re-renders. The per-unit shape is `{ scoreKey: { prefix?, gaps: { g1: {label, correct, why, accept?} } } }` (`prefix` defaults to `scoreKey + '-'`; `accept` is an array for multi-answer gaps). The `#explanations` container is **auto-injected** (`eolMakeExplContainer`) after `#summary-container`, so **adding explanations to a page needs no HTML edit at all** — just append the unit to `data/explanations.json`. An inline `var EXPLAIN` global still overrides the data file if a page ever needs it (`eolExplainForPage`). Fetch fails silently under `file://`, so **verify over HTTP** (`python3 -m http.server`).
 
-**To add explanations for a page, use the `add-explanations` skill** — it runs the whole pipeline. Manually: see the backlog with **`node scripts/extract-graded.js --todo`**; dump a page's gaps/answers/context with **`node scripts/extract-graded.js <file.html>`**; append `"<unit>": { … }` to `data/explanations.json` keyed by the page's real `var UNIT` (not always the filename, e.g. `tudor-conditionals-7g`); then run **`node scripts/validate-explanations.js`** (checks every `prefix+gap` id exists and each `correct`/`accept` is a real option) and commit the JSON. The extractor resolves answer keys whether inline or passed as a variable (`answers`, `ANSWERS.A`), and prints the real `UNIT`. Done: `10g-scottish-history`, `9g-famous-hollywood`, `7g-tudor-past-perfect`, `10c-government-systems`, `7g-london-landmarks`. Abitur packs are a separate architecture (see TEMPLATE-NOTES) and need their own path.
+**To add explanations for a page, use the `add-explanations` skill** — it runs the whole pipeline. Manually: see the backlog with **`node scripts/extract-graded.js --todo`**; dump a page's gaps/answers/context with **`node scripts/extract-graded.js <file.html>`**; append `"<unit>": { … }` to `data/explanations.json` keyed by the page's real `var UNIT` (not always the filename, e.g. `tudor-conditionals-7g`); then run **`node scripts/validate-explanations.js`** (checks every `prefix+gap` id exists and each `correct`/`accept` is a real option) and commit the JSON. The extractor resolves answer keys whether inline or passed as a variable (`answers`, `ANSWERS.A`), and prints the real `UNIT`. **Status (verified 2026-08-12): 94 units / 1,702 gaps done**, every one carrying a written `why`. Run `node scripts/extract-graded.js --todo` for the live remainder rather than trusting a list here — it was 11 standard pages plus 10 with bespoke checkers at last check. (This line previously named only 5 units; that was the pre-merge state of `main` and had been stale since 2026-08-07.) Abitur packs are a separate architecture (see TEMPLATE-NOTES) and need their own path.
 
-**Practise-only mode (added 2026-08-05).** A public visitor can do any exercise **without entering a name/class** — the parent landing page promises "no sign-up required". Implemented entirely in the shared `exercise.js` (no per-page edits), so it works on all ~128 framework pages at once. On the welcome gate a secondary **"Nur üben — ohne Abgabe · Just practise"** button (`#practise-btn`, injected by `eolInitPractise` on `DOMContentLoaded`) calls `startPractise()`, which sets `practiseMode = true` and jumps to Exercise A. In practise mode the submit step becomes a **results screen** (`eolPractiseResults`): the submit/fallback card is hidden, and a panel shows per-exercise points, the Score + Note card, a writing self-check list (only if the page has a `<textarea>`), and a **"Nochmal üben / Try again"** button (reloads with `?mode=practise`). URL overrides: **`?mode=practise`** skips the gate entirely (auto-starts); **`?mode=class`** forces the name/class gate and hides the practise button (so Shaun can share a class-only link). The normal class-submission flow is completely unchanged when `practiseMode` is false. Two latent bugs were hardened in the process: `totalScore()` now tolerates a missing `state.scores`, and `renderScore()` no-ops when a page has no `#score-display` card (both previously threw on older free-text pages like `uni-hedging-language`).
+**Practise-only mode (added 2026-08-05).** A public visitor can do any exercise **without entering a name/class** — the parent landing page promises "no sign-up required". Implemented entirely in the shared `exercise.js` (no per-page edits), so it works on all 145 framework pages at once. On the welcome gate a secondary **"Nur üben — ohne Abgabe · Just practise"** button (`#practise-btn`, injected by `eolInitPractise` on `DOMContentLoaded`) calls `startPractise()`, which sets `practiseMode = true` and jumps to Exercise A. In practise mode the submit step becomes a **results screen** (`eolPractiseResults`): the submit/fallback card is hidden, and a panel shows per-exercise points, the Score + Note card, a writing self-check list (only if the page has a `<textarea>`), and a **"Nochmal üben / Try again"** button (reloads with `?mode=practise`). URL overrides: **`?mode=practise`** skips the gate entirely (auto-starts); **`?mode=class`** forces the name/class gate and hides the practise button (so Shaun can share a class-only link). The normal class-submission flow is completely unchanged when `practiseMode` is false. Two latent bugs were hardened in the process: `totalScore()` now tolerates a missing `state.scores`, and `renderScore()` no-ops when a page has no `#score-display` card (both previously threw on older free-text pages like `uni-hedging-language`).
+
+### 5b. Accessibility layer (added 2026-08-12, site-wide, zero per-page edits)
+
+`exercise.js` applies a WCAG 2.2 A/AA baseline to all 145 framework pages on `DOMContentLoaded`
+(`eolInitA11y`). It fixes four things the corpus genuinely got wrong:
+
+1. **Gap dropdowns had no accessible name** — 2,322 `<select>`s announced as "combo box, — choose —"
+   with no clue which gap. `eolLabelGaps()` builds a name from the sentence around each gap
+   ("Gap 3 of 8: New York is blank than Boston"), skipping the printed `.gap-num` and rendering
+   sibling gaps as "blank". (4.1.2)
+2. **Right/wrong was colour-only** (`gap-correct`/`gap-wrong`). `eolMarkGap()` — called from both
+   `checkDropdowns` and `checkDropdownsMulti` — adds a ✓/✗ glyph, `aria-invalid`, and appends the
+   state to the accessible name. Survives colourblindness and greyscale printing. (1.4.1)
+3. **Check feedback was never announced.** All `.feedback` boxes and `#score-display` become
+   `role="status" aria-live="polite"`. (4.1.3)
+4. **No skip link, no main landmark, focus stranded on step change.** A skip link is injected,
+   the active `.step` carries `role="main"`, and focus moves to the new step's heading. (2.4.1/2.4.3)
+
+**Two implementation notes that matter if you touch this:**
+- It hooks the **DOM, not `showStep()`** — a `MutationObserver` on `.step[class]` — because ~9 pages
+  override `showStep`. A second observer on `document.body` (childList) catches gaps built at runtime
+  with `innerHTML` (e.g. `california-exercises`' `renderGapText`), which the init pass cannot see.
+  `data-eol-labelled` makes relabelling idempotent, so the ✓/✗ marks can't start a feedback loop.
+- Styles are **injected from JS**, not added to `style.css`, because **15 of the 145 framework pages
+  never load `style.css`**. Same reason the chrome styles are injected.
+- The German chrome (breadcrumb, footer, practise button, rubric) now carries `lang="de"` inside these
+  `lang="en"` pages, so screen readers stop reading German with English phonemes. (3.1.2)
+- `eolMarkGap`/`eolClearGapMark` are guarded with `typeof el.setAttribute === 'function'` because
+  `test-scoring.js` drives `checkDropdowns` with plain object stubs.
+
+### 5c. Writing rubric — **practise mode only** (added 2026-08-12)
+
+137 of the 145 framework pages have a writing task and none had success criteria. A self-assessment
+rubric now renders on the results screen **in practise mode only** (Shaun's decision, 2026-08-12):
+class submissions are marked by the teacher, so the rubric must never confuse that or pollute the
+data. Concretely:
+
+- It is rendered only from `eolPractiseResults()` → `eolRubricHtml()`. On the normal
+  name/class submission path it does not appear at all.
+- **It is never added to `buildPayload()` or `buildEmailBody()`** — nothing rubric-related reaches
+  the Make webhook or Excel. Payload keys are unchanged.
+- The band is picked from the filename prefix by `eolRubricBand()` — `7c-`/`8c-` → A2,
+  `10g-`/`abitur-` → B2/C1, `uni-`/`be-`/`it-` → professional, everything else → B1. No page edits.
+  A page may override with `var WRITING_RUBRIC = [[criterion, descriptor], …]`.
+- It is explicitly framed as "keine Note", shows the student's word count, and offers a
+  Noch nicht / Fast / Ja self-rating that is stored nowhere.
 
 ### 6. Shared framework — `exercise.js` (standardised 2026-07-17)
 All step-based exercise pages load the **single shared framework** via `<script src="exercise.js"></script>`; no page carries its own copy of the framework functions any more (~330 KB of copy-paste drift was removed). A page's inline script defines ONLY:
@@ -329,11 +375,11 @@ All step-based exercise pages load the **single shared framework** via `<script 
 
 ## Unified breadcrumb + footer (site chrome, added 2026-08-05)
 
-`exercise.js` injects a **breadcrumb** (Übungen › Jahrgang/Schulart or MSA/Uni/IT/Business › page title, derived from the filename prefix + `.welcome-title`) below the sticky `app-header`, and a **unified footer** (section nav: Alle Übungen · Grammatik-Themen · Universität · Business · IT · Kontakt; legal: Zur Website · Impressum · Datenschutz) at the end of `<body>` — on all ~128 framework pages, with **zero per-page edits** (`eolInjectChrome` on `DOMContentLoaded`). Styles are self-contained (injected `<style id="eol-chrome-style">` with `var(--token, fallback)`) so they render even on the framework pages that don't load `style.css`. Guarded against double-injection by element id. `activities.html` carries a matching footer (`.site-footer-nav` + legal line). The per-year hub pages and `themen/` pages keep their own existing footers/back-links.
+`exercise.js` injects a **breadcrumb** (Übungen › Jahrgang/Schulart or MSA/Uni/IT/Business › page title, derived from the filename prefix + `.welcome-title`) below the sticky `app-header`, and a **unified footer** (section nav: Alle Übungen · Grammatik-Themen · Universität · Business · IT · Kontakt; legal: Zur Website · Impressum · Datenschutz) at the end of `<body>` — on all 145 framework pages, with **zero per-page edits** (`eolInjectChrome` on `DOMContentLoaded`). Styles are self-contained (injected `<style id="eol-chrome-style">` with `var(--token, fallback)`) so they render even on the framework pages that don't load `style.css`. Guarded against double-injection by element id. `activities.html` carries a matching footer (`.site-footer-nav` + legal line). The per-year hub pages and `themen/` pages keep their own existing footers/back-links.
 
 ## Filterable exercise index on `activities.html` (added 2026-08-05)
 
-`activities.html` now carries a **generated, filterable index of every framework exercise** above the curated "Kurssammlungen" (the per-year hub cards, kept as-is). **`node scripts/build-hub.js`** reads `data/exercises.json` + `data/topics.json` and injects static exercise cards between the `<!-- HUB:START -->` / `<!-- HUB:END -->` markers — each card carries `data-year/school/topics/skills/title` and links to the individual exercise. The filter UI (search box + Jahrgang/Schulart/Fertigkeit chips + Thema dropdown, all with counts) and the filtering JS are hand-maintained in `activities.html`; the JS only shows/hides the static cards, updates the live count and reflects state in the URL (`?year=&school=&skill=&topic=&q=`) so filtered views are shareable and restore on reload. No-JS users and crawlers still get all cards. **Regenerate the cards after `build-exercise-data.js`** (never hand-edit between the markers). Scope: the index covers the 128 pages in `exercises.json` (everything that loads `exercise.js`, incl. MSA/Uni/IT/BE); the 16 Abitur packs (separate architecture) are reachable via the Kurssammlungen block, not the filter.
+`activities.html` now carries a **generated, filterable index of every framework exercise** above the curated "Kurssammlungen" (the per-year hub cards, kept as-is). **`node scripts/build-hub.js`** reads `data/exercises.json` + `data/topics.json` and injects static exercise cards between the `<!-- HUB:START -->` / `<!-- HUB:END -->` markers — each card carries `data-year/school/topics/skills/title` and links to the individual exercise. The filter UI (search box + Jahrgang/Schulart/Fertigkeit chips + Thema dropdown, all with counts) and the filtering JS are hand-maintained in `activities.html`; the JS only shows/hides the static cards, updates the live count and reflects state in the URL (`?year=&school=&skill=&topic=&q=`) so filtered views are shareable and restore on reload. No-JS users and crawlers still get all cards. **Regenerate the cards after `build-exercise-data.js`** (never hand-edit between the markers). Scope: the index covers the 162 exercises in `exercises.json` (everything that loads `exercise.js`, incl. MSA/Uni/IT/BE); the 16 Abitur packs (separate architecture) are reachable via the Kurssammlungen block, not the filter.
 
 ## SEO topic landing pages — `themen/` (added 2026-08-05)
 
