@@ -12687,5 +12687,659 @@
         }
       }
     }
+  },
+  "7g-british-food": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. A “Full English” breakfast is usually eaten ___",
+          "correct": "at weekends",
+          "why": "The text says a Full English breakfast is usually eaten at weekends, not every day."
+        },
+        "g2": {
+          "label": "2. Black pudding is made from ___",
+          "correct": "blood and oats",
+          "why": "The text says black pudding is made from blood and oats."
+        },
+        "g3": {
+          "label": "3. The most popular lunch during the week is ___",
+          "correct": "a sandwich",
+          "why": "The text says the most popular weekday lunch is a sandwich."
+        },
+        "g4": {
+          "label": "4. Yorkshire pudding is ___",
+          "correct": "a crispy batter served with roast beef",
+          "why": "Yorkshire pudding is a crispy batter served with roast beef, not a dessert."
+        },
+        "g5": {
+          "label": "5. One of the most popular dishes in Britain is ___",
+          "correct": "chicken tikka masala",
+          "why": "The text names chicken tikka masala as one of Britain's most popular dishes."
+        },
+        "g6": {
+          "label": "6. British people usually drink their tea with ___",
+          "correct": "milk",
+          "why": "The text says British people usually drink their tea with milk."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Yorkshire pudding is made from a light, crispy ___",
+          "correct": "batter",
+          "why": "'Batter' is the flour-and-egg mixture Yorkshire pudding is made from."
+        },
+        "g2": {
+          "label": "2. A Full English breakfast is very ___",
+          "correct": "filling",
+          "why": "'Filling' describes food that makes you feel full."
+        },
+        "g3": {
+          "label": "3. Bangers and mash is sausages with ___ potato",
+          "correct": "mashed",
+          "why": "'Mashed' potato is crushed until soft — the 'mash' in bangers and mash."
+        },
+        "g4": {
+          "label": "4. A brown sauce poured over meat and potatoes is called ___",
+          "correct": "gravy",
+          "why": "'Gravy' is the brown sauce poured over meat and potatoes."
+        },
+        "g5": {
+          "label": "5. The tomatoes in a Full English are usually ___",
+          "correct": "grilled",
+          "why": "'Grilled' means cooked under direct heat, as the tomatoes are."
+        },
+        "g6": {
+          "label": "6. Many British people order a ___ on Friday evenings",
+          "correct": "takeaway",
+          "why": "A 'takeaway' is food bought from a restaurant to eat at home."
+        },
+        "g7": {
+          "label": "7. At afternoon tea, people eat small sandwiches and ___",
+          "correct": "scones",
+          "why": "'Scones' are the small cakes eaten with cream and jam at afternoon tea."
+        },
+        "g8": {
+          "label": "8. Thin slices of fried potato in a bag are called ___",
+          "correct": "crisps",
+          "why": "In Britain, thin slices of fried potato sold in a bag are called crisps."
+        }
+      }
+    }
+  },
+  "7g-british-sports": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. When were the first official football rules written?",
+          "correct": "1863",
+          "why": "The text says the first official football rules were written in 1863."
+        },
+        "g2": {
+          "label": "2. What is the oldest football club in the world?",
+          "correct": "Sheffield F.C.",
+          "why": "The text names Sheffield F.C. as the oldest football club in the world."
+        },
+        "g3": {
+          "label": "3. Who is the Rugby World Cup trophy named after?",
+          "correct": "William Webb Ellis",
+          "why": "The Rugby World Cup trophy is named after William Webb Ellis."
+        },
+        "g4": {
+          "label": "4. How long can a cricket match last?",
+          "correct": "up to five days",
+          "why": "The text says a cricket match can last up to five days."
+        },
+        "g5": {
+          "label": "5. What food is traditionally eaten at Wimbledon?",
+          "correct": "strawberries and cream",
+          "why": "Strawberries and cream is the food traditionally eaten at Wimbledon."
+        },
+        "g6": {
+          "label": "6. When was the first Wimbledon Championship?",
+          "correct": "1877",
+          "why": "The text says the first Wimbledon Championship was held in 1877."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. A football game is played on a ___",
+          "correct": "pitch",
+          "why": "A 'pitch' is the grass playing area used for football."
+        },
+        "g2": {
+          "label": "2. Tennis is played on a ___",
+          "correct": "court",
+          "why": "A 'court' is the marked playing area used for tennis."
+        },
+        "g3": {
+          "label": "3. A group of players who play together is a ___",
+          "correct": "team",
+          "why": "A 'team' is a group of players who play together."
+        },
+        "g4": {
+          "label": "4. The person who makes sure players follow the rules is the ___",
+          "correct": "referee",
+          "why": "The 'referee' is the official who makes sure players follow the rules."
+        },
+        "g5": {
+          "label": "5. When a player gets a goal, we say they ___",
+          "correct": "score",
+          "why": "To 'score' means to get a goal or point."
+        },
+        "g6": {
+          "label": "6. A single game between two teams is called a ___",
+          "correct": "match",
+          "why": "A 'match' is a single game between two teams."
+        },
+        "g7": {
+          "label": "7. The winning team receives a ___",
+          "correct": "trophy",
+          "why": "A 'trophy' is the prize the winning team receives."
+        },
+        "g8": {
+          "label": "8. Wimbledon is a famous tennis ___",
+          "correct": "tournament",
+          "why": "A 'tournament' is a competition with many matches, like Wimbledon."
+        }
+      }
+    }
+  },
+  "7g-british-wildlife": {
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Red foxes have ___ red or orange fur",
+          "correct": "bright",
+          "why": "The text describes the fox's red or orange fur as bright."
+        },
+        "g2": {
+          "label": "2. Foxes are ___ — most active at night",
+          "correct": "nocturnal",
+          "why": "'Nocturnal' means active at night; 'diurnal' would mean active by day."
+        },
+        "g3": {
+          "label": "3. A group of foxes is called a ___",
+          "correct": "skulk",
+          "why": "The collective noun for a group of foxes is a skulk."
+        },
+        "g4": {
+          "label": "4. Baby foxes are called ___",
+          "correct": "cubs",
+          "why": "Baby foxes are called cubs, and they are born in spring."
+        },
+        "g5": {
+          "label": "5. A hedgehog is covered in about 5,000 ___",
+          "correct": "spines",
+          "why": "A hedgehog's sharp covering is made of spines, not scales or feathers."
+        },
+        "g6": {
+          "label": "6. When a hedgehog is afraid, it ___ into a ball",
+          "correct": "rolls up",
+          "why": "A frightened hedgehog rolls up into a ball to protect itself."
+        },
+        "g7": {
+          "label": "7. Hedgehogs ___ in winter and sleep until spring",
+          "correct": "hibernate",
+          "why": "'Hibernate' means to sleep through the winter."
+        },
+        "g8": {
+          "label": "8. Hedgehog habitats are getting ___",
+          "correct": "smaller",
+          "why": "Habitats get smaller as towns and cities grow."
+        }
+      }
+    }
+  },
+  "9g-canada-conditionals": {
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. If the temperature ___ below minus 20, the schools will close. (Type 1)",
+          "correct": "drops",
+          "why": "Type 1: the if-clause uses the present simple, and the main clause uses 'will'."
+        },
+        "g2": {
+          "label": "2. If I ___ in Quebec, I would speak French every day. (Type 2)",
+          "correct": "lived",
+          "why": "Type 2: the if-clause uses the past simple, and the main clause uses 'would'."
+        },
+        "g3": {
+          "label": "3. The ice road will melt if the weather ___ warmer. (Type 1)",
+          "correct": "gets",
+          "why": "Type 1: the if-clause uses the present simple, even when it comes second."
+        },
+        "g4": {
+          "label": "4. If we ___ Indigenous languages, many will disappear. (Type 1)",
+          "correct": "don't protect",
+          "why": "Type 1: the if-clause uses the present simple, here in its negative form."
+        },
+        "g5": {
+          "label": "5. If Canada ___ a smaller country, it would be easier to travel. (Type 2)",
+          "correct": "were",
+          "why": "Type 2 uses 'were' for every person, not 'was', in the if-clause."
+        },
+        "g6": {
+          "label": "6. More tourists will visit if the government ___ better roads. (Type 1)",
+          "correct": "builds",
+          "why": "Type 1: the if-clause uses the present simple with third-person '-s'."
+        },
+        "g7": {
+          "label": "7. If you ___ visit any Canadian city, which would you choose? (Type 2)",
+          "correct": "could",
+          "why": "Type 2 uses a past form in the if-clause — 'could' is the past of 'can'."
+        },
+        "g8": {
+          "label": "8. If more young people ___ Inuktitut, the language would be stronger. (Type 2)",
+          "correct": "learned",
+          "why": "Type 2: the if-clause uses the past simple to describe an imaginary situation."
+        }
+      }
+    }
+  },
+  "9g-great-barrier-reef": {
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. The scientist said that the reef ___ in serious danger",
+          "correct": "was",
+          "why": "In reported speech, present simple 'is' shifts back to past simple 'was'."
+        },
+        "g2": {
+          "label": "2. Dr Mitchell explained that they ___ healthy coral",
+          "correct": "were growing",
+          "why": "Present progressive 'are growing' shifts back to past progressive 'were growing'."
+        },
+        "g3": {
+          "label": "3. The guide told us the reef ___ be seen from space",
+          "correct": "could",
+          "why": "In reported speech, 'can' shifts back to 'could'."
+        },
+        "g4": {
+          "label": "4. A fisherman said he ___ so much bleaching before",
+          "correct": "had never seen",
+          "why": "Present perfect 'has never seen' shifts back to past perfect 'had never seen'."
+        },
+        "g5": {
+          "label": "5. The journalist reported that climate change ___ the biggest threat",
+          "correct": "was",
+          "why": "In reported speech, present simple 'is' shifts back to past simple 'was'."
+        },
+        "g6": {
+          "label": "6. The ranger explained that tourists ___ touch the coral",
+          "correct": "were not allowed to",
+          "why": "'Must not' has no past form, so reported speech uses 'were not allowed to'."
+        },
+        "g7": {
+          "label": "7. The diver told me she ___ back to the reef the following week",
+          "correct": "would go",
+          "why": "In reported speech, 'will go' shifts back to 'would go'."
+        },
+        "g8": {
+          "label": "8. The professor said the reef ___ more than half its coral since 1985",
+          "correct": "had lost",
+          "why": "Present perfect 'has lost' shifts back to past perfect 'had lost'."
+        }
+      }
+    }
+  },
+  "9g-ireland-gerunds": {
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Many young Irish people enjoy ___ traditional instruments",
+          "correct": "playing",
+          "why": "'Enjoy' is always followed by the gerund (-ing form)."
+        },
+        "g2": {
+          "label": "2. Tourists often decide ___ the Cliffs of Moher",
+          "correct": "to visit",
+          "why": "'Decide' is always followed by the infinitive with 'to'."
+        },
+        "g3": {
+          "label": "3. Irish children learn ___ the Irish language at school",
+          "correct": "to speak",
+          "why": "'Learn' is always followed by the infinitive with 'to'."
+        },
+        "g4": {
+          "label": "4. Would you mind ___ me more about Irish history?",
+          "correct": "telling",
+          "why": "'Mind' is always followed by the gerund (-ing form)."
+        },
+        "g5": {
+          "label": "5. The guide suggested ___ along the coast",
+          "correct": "walking",
+          "why": "'Suggest' is always followed by the gerund (-ing form)."
+        },
+        "g6": {
+          "label": "6. We hope ___ a traditional music session in a pub",
+          "correct": "to see",
+          "why": "'Hope' is always followed by the infinitive with 'to'."
+        },
+        "g7": {
+          "label": "7. My family is planning ___ to Ireland next summer",
+          "correct": "to travel",
+          "why": "'Plan' is always followed by the infinitive with 'to'."
+        },
+        "g8": {
+          "label": "8. You should avoid ___ on narrow country roads at night",
+          "correct": "driving",
+          "why": "'Avoid' is always followed by the gerund (-ing form)."
+        },
+        "g9": {
+          "label": "9. She refused ___ the traditional Irish stew",
+          "correct": "to eat",
+          "why": "'Refuse' is always followed by the infinitive with 'to'."
+        },
+        "g10": {
+          "label": "10. I can't imagine ___ in Ireland without an umbrella!",
+          "correct": "living",
+          "why": "'Imagine' is always followed by the gerund (-ing form)."
+        }
+      }
+    }
+  },
+  "9g-new-zealand-passive": {
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. New Zealand ___ as Aotearoa in the Māori language",
+          "correct": "is known",
+          "why": "Present simple passive: 'is' + past participle, for a fact that is true now."
+        },
+        "g2": {
+          "label": "2. The Treaty of Waitangi ___ in 1840",
+          "correct": "was signed",
+          "why": "Past simple passive: 'was' + past participle, for a finished past event."
+        },
+        "g3": {
+          "label": "3. Many native birds ___ by introduced predators today",
+          "correct": "are threatened",
+          "why": "Present simple passive with a plural subject takes 'are' + past participle."
+        },
+        "g4": {
+          "label": "4. The haka ___ by the All Blacks before every rugby match",
+          "correct": "is performed",
+          "why": "Present simple passive with a singular subject takes 'is' + past participle."
+        },
+        "g5": {
+          "label": "5. The kiwi bird ___ by special conservation programmes",
+          "correct": "is protected",
+          "why": "Present simple passive: 'is' + past participle, for something done regularly."
+        },
+        "g6": {
+          "label": "6. New Zealand's two main islands ___ by the Cook Strait",
+          "correct": "are separated",
+          "why": "The plural subject 'two main islands' needs 'are' + past participle."
+        },
+        "g7": {
+          "label": "7. The city of Rotorua ___ on top of a geothermal field",
+          "correct": "was built",
+          "why": "Past simple passive: 'was' + past participle, for a completed past action."
+        },
+        "g8": {
+          "label": "8. Today, the Māori language ___ in many New Zealand schools",
+          "correct": "is taught",
+          "why": "Present simple passive: 'is' + past participle, matching 'Today'."
+        }
+      }
+    }
+  },
+  "be-professional-emails": {
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. ___ inform you that the meeting has been rescheduled",
+          "correct": "I am writing to",
+          "why": "'I am writing to' is the standard formal opening for a business email."
+        },
+        "g2": {
+          "label": "2. ___ send me the updated figures by Friday",
+          "correct": "I would appreciate it if you could",
+          "why": "This is a polite formal request; 'You need to' and 'ASAP' are too direct."
+        },
+        "g3": {
+          "label": "3. Please find the quarterly report ___",
+          "correct": "attached",
+          "why": "'Please find attached' is the fixed formal phrase for a file sent with an email."
+        },
+        "g4": {
+          "label": "4. ___, please do not hesitate to contact me",
+          "correct": "Should you require any further information",
+          "why": "This inverted conditional is the standard formal way to offer further help."
+        },
+        "g5": {
+          "label": "5. Thank you for your prompt ___ to this matter",
+          "correct": "response",
+          "why": "'Prompt response' is the standard formal collocation."
+        },
+        "g6": {
+          "label": "6. I ___ at your earliest convenience",
+          "correct": "look forward to hearing from you",
+          "why": "'I look forward to hearing from you' is the standard formal closing."
+        },
+        "g7": {
+          "label": "7. I am writing ___ the invoice dated 5 June",
+          "correct": "with regard to",
+          "why": "'With regard to' is the formal equivalent of 'about'."
+        },
+        "g8": {
+          "label": "8. We sincerely ___ any inconvenience this may have caused",
+          "correct": "apologise for",
+          "why": "'Apologise for' is the formal equivalent of 'are sorry about'."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. “Thanks for getting back to me so fast.”",
+          "correct": "Thank you for your prompt response.",
+          "why": "'Prompt response' is the formal equivalent of 'getting back to me so fast'."
+        },
+        "g2": {
+          "label": "2. “Sorry for the late reply.”",
+          "correct": "Please accept my apologies for the delayed response.",
+          "why": "'Please accept my apologies' is the formal way to say sorry."
+        },
+        "g3": {
+          "label": "3. “Can you send me the file?”",
+          "correct": "I would be grateful if you could forward the file.",
+          "why": "'I would be grateful if you could' turns a direct request into a formal one."
+        },
+        "g4": {
+          "label": "4. “Let me know if you need anything else.”",
+          "correct": "Please do not hesitate to contact me should you require any further assistance.",
+          "why": "'Do not hesitate to contact me' is the formal offer of further help."
+        },
+        "g5": {
+          "label": "5. “I'm writing because of the problem with our order.”",
+          "correct": "I am writing with regard to the issue concerning our order.",
+          "why": "'With regard to the issue concerning' is the formal way to state your reason for writing."
+        },
+        "g6": {
+          "label": "6. “Hope to see you there!”",
+          "correct": "We look forward to your attendance.",
+          "why": "'We look forward to your attendance' is the formal equivalent of 'hope to see you there'."
+        }
+      }
+    }
+  },
+  "uni-ai-ethics": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. integrity",
+          "correct": "the quality of being honest and having strong moral standards",
+          "accept": [
+            "b"
+          ],
+          "why": "'Integrity' means being honest and holding to strong moral standards."
+        },
+        "g2": {
+          "label": "2. framework",
+          "correct": "a basic structure of ideas or rules that provides guidance",
+          "accept": [
+            "a"
+          ],
+          "why": "A 'framework' is a basic structure of ideas or rules that guides decisions."
+        },
+        "g3": {
+          "label": "3. bias",
+          "correct": "a strong feeling in favour of or against something, often unfair",
+          "accept": [
+            "b"
+          ],
+          "why": "'Bias' is a strong, often unfair leaning for or against something."
+        },
+        "g4": {
+          "label": "4. implications",
+          "correct": "the possible effects or results of an action or decision",
+          "accept": [
+            "c"
+          ],
+          "why": "'Implications' are the possible effects or consequences of an action."
+        },
+        "g5": {
+          "label": "5. transparency",
+          "correct": "operating in a way that is open and easy to understand",
+          "accept": [
+            "b"
+          ],
+          "why": "'Transparency' means operating openly so others can understand what is happening."
+        },
+        "g6": {
+          "label": "6. equity",
+          "correct": "fairness and justice in the way people are treated",
+          "accept": [
+            "a"
+          ],
+          "why": "'Equity' means fairness and justice in how people are treated."
+        },
+        "g7": {
+          "label": "7. implement",
+          "correct": "to put a plan or system into action",
+          "accept": [
+            "c"
+          ],
+          "why": "To 'implement' something is to put a plan or system into action."
+        },
+        "g8": {
+          "label": "8. disclose",
+          "correct": "to make something known or reveal information",
+          "accept": [
+            "b"
+          ],
+          "why": "To 'disclose' is to make something known or reveal information."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. difficult questions about the ___ use of AI in academic work",
+          "correct": "ethical",
+          "why": "'Ethical' fits questions of right and wrong in how AI is used."
+        },
+        "g2": {
+          "label": "2. whether traditional forms of ___ are still appropriate",
+          "correct": "assessment",
+          "why": "Essays and exams are forms of assessment — how student work is measured."
+        },
+        "g3": {
+          "label": "3. many institutions have developed ___ that regulate AI use",
+          "correct": "policies",
+          "why": "'Policies' are the official rules an institution develops to regulate behaviour."
+        },
+        "g4": {
+          "label": "4. provided they ___ its use in their submissions",
+          "correct": "acknowledge",
+          "why": "To 'acknowledge' AI use means to state openly that it was used."
+        },
+        "g5": {
+          "label": "5. AI ___ tools, such as those built into Turnitin",
+          "correct": "detection",
+          "why": "'Detection' tools are those that try to identify AI-generated text."
+        },
+        "g6": {
+          "label": "6. questions about fairness and ___ in the use of such technology",
+          "correct": "accountability",
+          "why": "'Accountability' is being answerable for the effects of a decision or tool."
+        },
+        "g7": {
+          "label": "7. these tools can enhance student ___",
+          "correct": "autonomy",
+          "why": "'Autonomy' is the ability to work and learn independently."
+        },
+        "g8": {
+          "label": "8. weaken students' ability to think at a deep, ___ level",
+          "correct": "critical",
+          "why": "'Critical' thinking is deep, analytical reasoning about ideas."
+        }
+      }
+    }
+  },
+  "uni-hedging-language": {
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. The results ___ that regular exercise has a positive effect",
+          "correct": "suggest",
+          "why": "'Suggest' hedges the claim; 'prove' and 'guarantee' overstate what results can show."
+        },
+        "g2": {
+          "label": "2. Climate change ___ one of the contributing factors",
+          "correct": "could be",
+          "why": "'Could be' hedges appropriately, since other explanations are also proposed."
+        },
+        "g3": {
+          "label": "3. ___ remote working will become the standard model",
+          "correct": "It is possible that",
+          "why": "'It is possible that' hedges a prediction; 'obviously' and 'without doubt' overstate it."
+        },
+        "g4": {
+          "label": "4. The survey found that ___ respondents preferred hybrid work",
+          "correct": "the majority of",
+          "why": "'The majority of' reports the finding accurately, unlike the absolute 'all' or 'every'."
+        },
+        "g5": {
+          "label": "5. Early studies ___ a link between sleep and academic performance",
+          "correct": "indicate",
+          "why": "'Indicate' suits early studies; 'confirm' and 'verify' claim more certainty than they support."
+        },
+        "g6": {
+          "label": "6. These differences ___ more pronounced in lower-income communities",
+          "correct": "tend to be",
+          "why": "'Tend to be' describes a general pattern without claiming it is always true."
+        },
+        "g7": {
+          "label": "7. The medication was effective in ___ cases",
+          "correct": "approximately 70% of",
+          "why": "'Approximately 70%' reports the figure precisely but without false exactness."
+        },
+        "g8": {
+          "label": "8. The data ___ the hypothesis that bilingual education helps",
+          "correct": "appear to support",
+          "why": "'Appear to support' hedges the claim; 'prove' and 'confirm' overstate the evidence."
+        }
+      }
+    }
   }
 }
