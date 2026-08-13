@@ -373,8 +373,17 @@ questions drawn from *earlier* units.
 - Explanations are emitted **inline as `var EXPLAIN`** rather than into `data/explanations.json`:
   that file is hand-authored per source unit, and these are generated copies. `exercise.js`
   prefers an inline `EXPLAIN` over the data file.
-- Year 7 and Year 9 are deliberately **not** generated (drafting is paused — see above), even
-  though `7g` has enough material. Add an entry to `CATEGORIES` in the script to turn one on.
+- **Year 7 and Year 9 are included** (Shaun, 2026-08-12). The drafting pause covers *new topic
+  exercises* for those years; a review page only revisits units that are already live, so it
+  creates no new Y7/Y9 topics. `7g` (7 units) and `9g` (6 units) build normally; `7c` builds from
+  only two source units, so it alternates rather than truly interleaves — and those two units
+  (`7c-british-school-day`, `7c-school-day-in-britain`) cover very similar ground, so its revision
+  value is thinner than the others.
+- **`9c` cannot be built at all**, and this is not an explanations gap: no page in that category
+  uses graded dropdowns (`9c-plastic-pollution`, `9c-south-africa-revision` and
+  `sport-south-africa` all return 0 graded calls), so there is nothing to revisit. It would need
+  dropdown exercises authored first. `MIN_UNITS` is 2 — the point is that an item returns
+  alongside a *different* unit.
 - `topic-pool.js` skips `*-review.html` in its orphan check — a review page revisits topics that
   are already registered, so it is not a topic of its own.
 

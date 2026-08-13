@@ -45,16 +45,26 @@ const ROOT = path.join(__dirname, '..');
 const PER_SECTION = 8;
 const SECTIONS = ['A', 'B', 'C'];
 const TOTAL_ITEMS = PER_SECTION * SECTIONS.length;
-const MIN_UNITS = 3;
+/* Two is the real floor: the point of these pages is that an item comes back
+   later, mixed with a *different* unit. Some categories (7c) only ever had two
+   units with graded gaps, so demanding three would exclude them for good. */
+const MIN_UNITS = 2;
 
 const WEBHOOK_Y7 = 'https://hook.eu1.make.com/1gx46wea33yguetah95oy4j8asbyafqm';
 const WEBHOOK_Y9 = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj';
 const APPS_SCRIPT = 'https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec';
 
-/* Year 7 and Year 9 drafting is paused (CLAUDE.md), so their categories are
-   deliberately absent here even though 7g has enough material. Add an entry to
-   turn one on. */
+/* Year 7 and Year 9 are included on Shaun's explicit instruction (2026-08-12).
+   The documented pause covers *drafting new topic exercises* for those years;
+   a review page only revisits units that are already live, so it does not
+   create new Y7/Y9 topics. Note 9c is listed but will not build: no page in
+   that category uses graded dropdowns, so there is nothing to revisit — that
+   is a content gap, not a missing-explanations gap. */
 const CATEGORIES = {
+  '7c':  { label: 'Year 7 Oberschule',  cefr: '~A1/A2', emoji: '🔁', hub: '7c-activities.html',  sheet: WEBHOOK_Y7, klass: '7c' },
+  '7g':  { label: 'Year 7 Gymnasium',   cefr: '~A2',    emoji: '🔁', hub: '7g-activities.html',  sheet: WEBHOOK_Y7, klass: '7g' },
+  '9c':  { label: 'Year 9 Oberschule',  cefr: '~A2/B1', emoji: '🔁', hub: '9c-activities.html',  sheet: WEBHOOK_Y9, klass: '9c' },
+  '9g':  { label: 'Year 9 Gymnasium',   cefr: '~B1',    emoji: '🔁', hub: '9g-activities.html',  sheet: WEBHOOK_Y9, klass: '9g' },
   '8c':  { label: 'Year 8 Oberschule',  cefr: '~A2',    emoji: '🧭', hub: '8c-activities.html',  sheet: WEBHOOK_Y7, klass: '8c' },
   '8g':  { label: 'Year 8 Gymnasium',   cefr: '~B1',    emoji: '🧭', hub: '8g-activities.html',  sheet: WEBHOOK_Y7, klass: '8g' },
   '10c': { label: 'Year 10 Oberschule', cefr: '~B1/B2', emoji: '🧭', hub: '10c-activities.html', sheet: WEBHOOK_Y9, klass: '10c' },
