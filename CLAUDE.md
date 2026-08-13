@@ -392,11 +392,12 @@ questions drawn from *earlier* units.
   only two source units, so it alternates rather than truly interleaves — and those two units
   (`7c-british-school-day`, `7c-school-day-in-britain`) cover very similar ground, so its revision
   value is thinner than the others.
-- **`9c` cannot be built at all**, and this is not an explanations gap: no page in that category
-  uses graded dropdowns (`9c-plastic-pollution`, `9c-south-africa-revision` and
-  `sport-south-africa` all return 0 graded calls), so there is nothing to revisit. It would need
-  dropdown exercises authored first. `MIN_UNITS` is 2 — the point is that an item returns
-  alongside a *different* unit.
+- **`9c` builds as of 2026-08-13.** It could not before: none of the three original 9c pages
+  (`9c-plastic-pollution`, `9c-south-africa-revision`, `sport-south-africa`) used graded dropdowns,
+  so there was nothing to revisit. The five exercises added that day (see "One-off Y9 batch" above)
+  all use standard `checkDropdowns()` calls, so `9c-review.html` now draws 24 items round-robin
+  across all five — the three older pages still contribute nothing and remain invisible to the
+  extractor. `MIN_UNITS` is 2 — the point is that an item returns alongside a *different* unit.
 - `topic-pool.js` skips `*-review.html` in its orphan check — a review page revisits topics that
   are already registered, so it is not a topic of its own.
 
