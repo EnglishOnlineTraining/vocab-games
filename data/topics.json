@@ -4,83 +4,489 @@
     "de": "Passiv",
     "en": "Passive Voice",
     "aliases": [
+      "passive bildung",
       "Passiv Englisch Übungen",
       "passive voice Übungen",
       "Passiv Englisch Klasse 9",
-      "Passiv bilden Englisch"
+      "Passiv bilden Englisch",
+      "englisch passiv alle zeiten",
+      "aktiv passiv englisch",
+      "passive voice Regeln"
     ],
-    "metaDescription": "Passiv im Englischen einfach erklärt: Bildung (be + past participle), alle Zeiten und kostenlose Übungen mit sofortiger Auswertung.",
+    "metaDescription": "Passiv im Englischen: Bildung mit be + past participle, alle Zeiten, Modalverben und der by-Agent — auf Deutsch erklärt, mit 30 kostenlosen Übungen.",
     "related": [
+      "present-perfect",
       "past-perfect",
-      "if-saetze",
-      "present-perfect"
+      "if-saetze"
     ],
     "reviewed": false,
-    "intro": "Das <strong>Passiv</strong> (<em>passive voice</em>) benutzt man, wenn die <strong>Handlung wichtiger ist als die handelnde Person</strong> — oder wenn man gar nicht weiß, wer etwas getan hat. Statt „Shakespeare wrote the play“ (Aktiv) sagt man dann „The play was written by Shakespeare“ (Passiv). Wer die Handlung ausführt, steht — wenn überhaupt — mit <em>by</em> am Satzende.",
+    "introH2": "Passiv im Englischen — worum geht es?",
+    "intro": "Im <strong>Aktiv</strong> steht die handelnde Person im Mittelpunkt: <em>Shakespeare wrote the play.</em> Im <strong>Passiv</strong> rückt die Handlung selbst nach vorn: <em>The play was written by Shakespeare.</em> Das Objekt des Aktivsatzes (<em>the play</em>) wird zum Subjekt des Passivsatzes.<br><br>Man benutzt das Passiv, wenn die <strong>Handlung wichtiger ist als der Täter</strong> — oder wenn man gar nicht weiß, wer etwas getan hat. In Nachrichten, wissenschaftlichen Texten und Beschreibungen von Abläufen ist es deshalb sehr häufig.<br><br>Die Bildung ist immer gleich: eine Form von <strong>be</strong> + das <strong>past participle</strong> (die 3. Verbform). Nur das <em>be</em> ändert sich je nach Zeitform — das Partizip bleibt. Wer <em>be</em> in allen Zeiten sicher beherrscht und die unregelmäßigen Verben kennt, kann jedes Passiv bilden.<br><br>Für deutsche Lernende gibt es eine besondere Stolperfalle: Das deutsche „werden“ heißt im Passiv <strong>nicht</strong> <em>become</em>. „Ich bekam ein Geschenk“ heißt <em>I was given a present</em> — niemals <em>I became a present</em>. Auch deutsche „man“-Sätze werden im Englischen meist zum Passiv: „Man spricht hier Englisch“ → <em>English is spoken here.</em>",
     "rules": [
-      "Bildung: eine Form von <strong>be</strong> + das <strong>past participle</strong> (3. Verbform).",
-      "Simple Present: <em>is / are + 3. Verbform</em> — „English <strong>is spoken</strong> here.“",
-      "Simple Past: <em>was / were + 3. Verbform</em> — „The castle <strong>was built</strong> in 1500.“",
-      "Present Perfect: <em>has / have been + 3. Verbform</em> — „The report <strong>has been published</strong>.“",
-      "Past Perfect: <em>had been + 3. Verbform</em> — „The letter <strong>had been sent</strong>.“",
-      "Zukunft: <em>will be + 3. Verbform</em> — „The bridge <strong>will be built</strong>.“",
-      "Nach Modalverben: <em>modal + be + 3. Verbform</em> — „It <strong>can be solved</strong>.“"
+      "Grundformel: eine Form von <strong>be</strong> + <strong>past participle</strong> (3. Verbform).",
+      "Das Objekt des Aktivsatzes wird zum <strong>Subjekt</strong> des Passivsatzes.",
+      "Das <em>be</em> richtet sich nach der <strong>Zeitform</strong> und nach Singular/Plural — das Partizip bleibt unverändert.",
+      "Der Täter steht — falls er überhaupt genannt wird — mit <strong>by</strong> am Satzende, nicht mit <em>from</em>.",
+      "Meistens lässt man den Täter ganz weg, weil er unbekannt oder unwichtig ist.",
+      "Nach <strong>Modalverben</strong>: <em>modal + be + 3. Verbform</em> — „It <strong>must be done</strong> today.“",
+      "Nur Verben mit Objekt (transitive Verben) können ins Passiv. <em>go, come, happen, sleep</em> können es nicht.",
+      "Bei Verben mit zwei Objekten wird meist die <strong>Person</strong> zum Subjekt — „She <strong>was given</strong> a prize.“",
+      "Deutsche „man“-Sätze werden im Englischen oft zum Passiv — „Man baut hier ein Haus“ → <em>A house is being built here.</em>",
+      "Umgangssprachlich ersetzt <em>get</em> manchmal <em>be</em> — „He <strong>got hurt</strong>.“"
     ],
     "examples": [
-      "Aktiv: <em>Somebody cleans the office every day.</em> → Passiv: <em>The office <strong>is cleaned</strong> every day.</em>",
-      "Aktiv: <em>They built the bridge in 1930.</em> → Passiv: <em>The bridge <strong>was built</strong> in 1930.</em>",
-      "Aktiv: <em>Scientists have discovered a new planet.</em> → Passiv: <em>A new planet <strong>has been discovered</strong>.</em>"
+      "<em>English <strong>is spoken</strong> in more than fifty countries.</em> — Simple Present",
+      "<em>The castle <strong>was built</strong> in 1503.</em> — Simple Past",
+      "<em>The road <strong>is being repaired</strong> at the moment.</em> — Present Progressive",
+      "<em>All the tickets <strong>have been sold</strong>.</em> — Present Perfect",
+      "<em>This form <strong>must be signed</strong> by a parent.</em> — Modalverb"
     ],
-    "practice": [
+    "sections": [
       {
-        "q": "The Stone of Destiny ___ by Edward I in 1296.",
-        "options": [
-          "seized",
-          "was seized",
-          "has seized"
-        ],
-        "answer": "was seized",
-        "why": "Vergangenheit, Passiv: was + 3. Verbform (seize → seized)."
+        "h2": "Aktiv oder Passiv — was ändert sich im Satz?",
+        "body": "Beim Umformen wandern die Satzteile. Das Objekt rückt nach vorn, das Verb wird zu <em>be</em> + 3. Verbform, und das alte Subjekt landet — wenn überhaupt — mit <em>by</em> am Ende.",
+        "list": [
+          "Aktiv: <em><strong>The police</strong> arrested <strong>two men</strong>.</em>",
+          "Passiv: <em><strong>Two men</strong> were arrested <strong>by the police</strong>.</em>",
+          "Schritt 1: Objekt (<em>two men</em>) wird Subjekt.",
+          "Schritt 2: Verb wird <em>be</em> in derselben Zeit + 3. Verbform (<em>were arrested</em>).",
+          "Schritt 3: Altes Subjekt mit <em>by</em> ans Ende — oder ganz weglassen."
+        ]
       },
       {
-        "q": "English ___ in many countries around the world.",
-        "options": [
-          "speaks",
-          "is spoken",
-          "spoke"
+        "h2": "Das Passiv in allen Zeiten",
+        "body": "Nur das <em>be</em> ändert sich. Als Beispielverb steht hier immer <em>build</em> (built – built).",
+        "list": [
+          "<strong>Simple Present:</strong> <em>am / is / are</em> + 3. Verbform — „The houses <strong>are built</strong> of wood.“",
+          "<strong>Simple Past:</strong> <em>was / were</em> + 3. Verbform — „The bridge <strong>was built</strong> in 1890.“",
+          "<strong>Present Progressive:</strong> <em>am / is / are being</em> + 3. Verbform — „A new school <strong>is being built</strong>.“",
+          "<strong>Past Progressive:</strong> <em>was / were being</em> + 3. Verbform — „The house <strong>was being painted</strong>.“",
+          "<strong>Present Perfect:</strong> <em>has / have been</em> + 3. Verbform — „The wall <strong>has been built</strong>.“",
+          "<strong>Past Perfect:</strong> <em>had been</em> + 3. Verbform — „The wall <strong>had been built</strong> before we came.“",
+          "<strong>will-Future:</strong> <em>will be</em> + 3. Verbform — „The tunnel <strong>will be built</strong> next year.“",
+          "<strong>Future Perfect:</strong> <em>will have been</em> + 3. Verbform — „By June it <strong>will have been built</strong>.“"
         ],
-        "answer": "is spoken",
-        "why": "Gegenwart, Passiv: is/are + 3. Verbform."
+        "highlight": true
       },
       {
-        "q": "The report ___ yet, so we have to wait.",
-        "options": [
-          "hasn't written",
-          "hasn't been written",
-          "didn't write"
-        ],
-        "answer": "hasn't been written",
-        "why": "Present Perfect Passiv: has/have been + 3. Verbform."
+        "h2": "Passiv mit Modalverben",
+        "body": "Nach einem Modalverb steht immer das reine <em>be</em> — nie <em>is</em> oder <em>was</em> — und danach die 3. Verbform.",
+        "list": [
+          "<em>can / could be</em> — „The problem <strong>can be solved</strong>.“",
+          "<em>must / have to be</em> — „This form <strong>must be signed</strong>.“",
+          "<em>should / ought to be</em> — „The books <strong>should be returned</strong> by Monday.“",
+          "<em>may / might be</em> — „The flight <strong>might be delayed</strong>.“",
+          "✗ „It must <em>is</em> done.“ → ✓ „It must <strong>be</strong> done.“"
+        ]
       },
       {
-        "q": "A new library ___ next year.",
-        "options": [
-          "will build",
-          "will be built",
-          "is building"
-        ],
-        "answer": "will be built",
-        "why": "Zukunft, Passiv: will be + 3. Verbform."
+        "h2": "Der by-Agent — wann nennt man den Täter?",
+        "body": "In den meisten Passivsätzen fehlt der Täter völlig. Man nennt ihn nur, wenn er wirklich wichtig ist.",
+        "list": [
+          "<strong>Nennen</strong>, wenn die Information zählt — „<em>Hamlet</em> was written <strong>by Shakespeare</strong>.“",
+          "<strong>Weglassen</strong>, wenn er unbekannt ist — „My bike was stolen.“ (Wer? Keine Ahnung.)",
+          "<strong>Weglassen</strong>, wenn er offensichtlich ist — „The thief was arrested.“ (Natürlich von der Polizei.)",
+          "Immer <em>by</em>, nie <em>from</em> — ✗ „written <em>from</em> Shakespeare“.",
+          "<em>with</em> steht für das Werkzeug, nicht für die Person — „The window was broken <strong>with</strong> a stone <strong>by</strong> a boy.“"
+        ]
       },
       {
-        "q": "Don't worry — this problem can ___ easily.",
-        "options": [
-          "solve",
-          "be solved",
-          "solved"
+        "h2": "Verben mit zwei Objekten",
+        "body": "Verben wie <em>give, send, offer, tell, show, teach</em> haben zwei Objekte — eine Person und eine Sache. Meist wird die <strong>Person</strong> zum Subjekt. Das ist die Struktur, die im Deutschen oft zu Fehlern führt.",
+        "list": [
+          "Aktiv: <em>They gave <strong>her</strong> a prize.</em>",
+          "Passiv (üblich): <em><strong>She was given</strong> a prize.</em>",
+          "Passiv (auch möglich): <em>A prize was given <strong>to her</strong>.</em>",
+          "Weitere Beispiele: „I <strong>was told</strong> to wait.“ · „We <strong>were shown</strong> the new lab.“ · „He <strong>was offered</strong> a job.“"
+        ]
+      },
+      {
+        "h2": "Das get-Passiv",
+        "body": "Im gesprochenen Englisch ersetzt <em>get</em> oft <em>be</em>. Es klingt informeller und betont, dass etwas plötzlich oder unerwartet passiert. In Klassenarbeiten und formellen Texten bleibst du besser bei <em>be</em>.",
+        "list": [
+          "„He <strong>got hurt</strong> playing football.“ (= was hurt)",
+          "„Our flight <strong>got cancelled</strong>.“ (= was cancelled)",
+          "„They <strong>got married</strong> last summer.“"
+        ]
+      },
+      {
+        "h2": "Wann benutzt man das Passiv?",
+        "body": "Das Passiv ist kein Stilfehler, sondern in bestimmten Textsorten die normale Wahl.",
+        "list": [
+          "<strong>Nachrichten:</strong> „Three people <strong>were injured</strong> in the accident.“",
+          "<strong>Wissenschaft und Technik:</strong> „The samples <strong>were heated</strong> to 200 °C.“",
+          "<strong>Abläufe und Anleitungen:</strong> „The beans <strong>are dried</strong>, then <strong>roasted</strong>.“",
+          "<strong>Regeln und Schilder:</strong> „Smoking <strong>is not permitted</strong>.“",
+          "<strong>Wenn der Täter unbekannt ist:</strong> „My phone <strong>was stolen</strong>.“"
+        ]
+      },
+      {
+        "h2": "Typische Fehler deutscher Lernender",
+        "body": "Diese fünf Fehler kosten in Klassenarbeiten die meisten Punkte.",
+        "list": [
+          "✗ „I <em>became</em> a present.“ → ✓ „I <strong>was given</strong> a present.“ (<em>become</em> heißt „werden zu“, nicht Passiv-„werden“.)",
+          "✗ „The house <em>built</em> in 1900.“ → ✓ „The house <strong>was built</strong> in 1900.“ (<em>be</em> fehlt.)",
+          "✗ „The letter was <em>write</em>.“ → ✓ „The letter was <strong>written</strong>.“ (3. Verbform, nicht Infinitiv.)",
+          "✗ „written <em>from</em> Shakespeare“ → ✓ „written <strong>by</strong> Shakespeare“.",
+          "✗ „Man says that…“ → ✓ „It <strong>is said</strong> that…“ (Deutsches „man“ gibt es im Englischen nicht.)"
         ],
-        "answer": "be solved",
-        "why": "Nach einem Modalverb: modal + be + 3. Verbform."
+        "highlight": true
+      }
+    ],
+    "practiceGroups": [
+      {
+        "title": "Übung 1 — Simple Present und Simple Past",
+        "intro": "Wähle die richtige Passivform. Achte auf Singular und Plural bei <em>be</em>.",
+        "items": [
+          {
+            "q": "English ___ in more than fifty countries.",
+            "options": [
+              "is spoken",
+              "speaks",
+              "is speaking"
+            ],
+            "answer": "is spoken",
+            "why": "Simple Present Passiv: is/are + 3. Verbform."
+          },
+          {
+            "q": "The castle ___ in 1503.",
+            "options": [
+              "built",
+              "was built",
+              "is built"
+            ],
+            "answer": "was built",
+            "why": "Simple Past Passiv: was/were + 3. Verbform."
+          },
+          {
+            "q": "These cars ___ in Japan.",
+            "options": [
+              "is made",
+              "make",
+              "are made"
+            ],
+            "answer": "are made",
+            "why": "Das Subjekt ist Plural, also are + 3. Verbform."
+          },
+          {
+            "q": "The window ___ by the storm last night.",
+            "options": [
+              "was broken",
+              "broke",
+              "is broken"
+            ],
+            "answer": "was broken",
+            "why": "Vergangenheit mit by-Agent: was + 3. Verbform (broken)."
+          },
+          {
+            "q": "Breakfast ___ every morning at seven.",
+            "options": [
+              "serves",
+              "is served",
+              "is serving"
+            ],
+            "answer": "is served",
+            "why": "Regelmäßige Handlung im Präsens: is + 3. Verbform."
+          },
+          {
+            "q": "The letters ___ yesterday.",
+            "options": [
+              "was sent",
+              "sent",
+              "were sent"
+            ],
+            "answer": "were sent",
+            "why": "Plural im Simple Past: were + 3. Verbform."
+          },
+          {
+            "q": "The film ___ in New Zealand.",
+            "options": [
+              "was filmed",
+              "filmed",
+              "were filmed"
+            ],
+            "answer": "was filmed",
+            "why": "Singular im Simple Past: was + 3. Verbform."
+          },
+          {
+            "q": "Our office ___ every evening.",
+            "options": [
+              "cleans",
+              "is cleaned",
+              "are cleaned"
+            ],
+            "answer": "is cleaned",
+            "why": "Singular im Präsens: is + 3. Verbform."
+          },
+          {
+            "q": "The results ___ last week.",
+            "options": [
+              "was published",
+              "published",
+              "were published"
+            ],
+            "answer": "were published",
+            "why": "Plural im Simple Past: were + 3. Verbform."
+          },
+          {
+            "q": "Paper ___ from wood.",
+            "options": [
+              "is made",
+              "makes",
+              "is making"
+            ],
+            "answer": "is made",
+            "why": "Simple Present Passiv: is + 3. Verbform."
+          }
+        ]
+      },
+      {
+        "title": "Übung 2 — Alle Zeiten",
+        "intro": "Progressive, Perfect und Zukunft. Nur das <em>be</em> ändert sich — das Partizip bleibt gleich.",
+        "items": [
+          {
+            "q": "The email ___ already, so you can relax.",
+            "options": [
+              "has sent",
+              "has been sent",
+              "is sending"
+            ],
+            "answer": "has been sent",
+            "why": "Present Perfect Passiv: has/have been + 3. Verbform."
+          },
+          {
+            "q": "When we arrived, the room ___ already.",
+            "options": [
+              "had already cleaned",
+              "was already cleaning",
+              "had already been cleaned"
+            ],
+            "answer": "had already been cleaned",
+            "why": "Past Perfect Passiv: had been + 3. Verbform."
+          },
+          {
+            "q": "The new bridge ___ next year.",
+            "options": [
+              "will be built",
+              "will build",
+              "is building"
+            ],
+            "answer": "will be built",
+            "why": "will-Future Passiv: will be + 3. Verbform."
+          },
+          {
+            "q": "The road ___ at the moment, so take the bus.",
+            "options": [
+              "is repairing",
+              "is being repaired",
+              "has been repaired"
+            ],
+            "answer": "is being repaired",
+            "why": "Present Progressive Passiv: is being + 3. Verbform."
+          },
+          {
+            "q": "The house ___ when we drove past.",
+            "options": [
+              "was painting",
+              "had been painted",
+              "was being painted"
+            ],
+            "answer": "was being painted",
+            "why": "Past Progressive Passiv: was being + 3. Verbform."
+          },
+          {
+            "q": "All the tickets ___ already.",
+            "options": [
+              "have been sold",
+              "have sold",
+              "are selling"
+            ],
+            "answer": "have been sold",
+            "why": "Present Perfect Passiv im Plural: have been + 3. Verbform."
+          },
+          {
+            "q": "By Friday the work ___ .",
+            "options": [
+              "will have finished",
+              "will have been finished",
+              "will be finishing"
+            ],
+            "answer": "will have been finished",
+            "why": "Future Perfect Passiv: will have been + 3. Verbform."
+          },
+          {
+            "q": "The parcel ___ yet.",
+            "options": [
+              "hasn't delivered",
+              "isn't delivering",
+              "hasn't been delivered"
+            ],
+            "answer": "hasn't been delivered",
+            "why": "Present Perfect Passiv verneint: hasn't been + 3. Verbform."
+          }
+        ]
+      },
+      {
+        "title": "Übung 3 — Modalverben und der by-Agent",
+        "intro": "Nach einem Modalverb steht immer <em>be</em>. Der Täter steht mit <em>by</em>.",
+        "items": [
+          {
+            "q": "This exercise ___ with a pencil.",
+            "options": [
+              "must be done",
+              "must do",
+              "must been done"
+            ],
+            "answer": "must be done",
+            "why": "Modalverb + be + 3. Verbform."
+          },
+          {
+            "q": "The books ___ by Monday.",
+            "options": [
+              "should return",
+              "should be returned",
+              "should returning"
+            ],
+            "answer": "should be returned",
+            "why": "Modalverb + be + 3. Verbform."
+          },
+          {
+            "q": "Mistakes ___ very easily here.",
+            "options": [
+              "can make",
+              "can made",
+              "can be made"
+            ],
+            "answer": "can be made",
+            "why": "Modalverb + be + 3. Verbform."
+          },
+          {
+            "q": "Hamlet ___ Shakespeare.",
+            "options": [
+              "was written by",
+              "was written from",
+              "was written of"
+            ],
+            "answer": "was written by",
+            "why": "Der Täter steht immer mit by, nie mit from."
+          },
+          {
+            "q": "The play ___ a young director.",
+            "options": [
+              "was directed of",
+              "was directed by",
+              "was directed from"
+            ],
+            "answer": "was directed by",
+            "why": "Der Täter steht mit by."
+          },
+          {
+            "q": "The room ___ before the guests arrive.",
+            "options": [
+              "has to clean",
+              "have to be cleaned",
+              "has to be cleaned"
+            ],
+            "answer": "has to be cleaned",
+            "why": "have to + be + 3. Verbform; das Subjekt ist Singular."
+          }
+        ]
+      },
+      {
+        "title": "Übung 4 — Aktiv ins Passiv umformen",
+        "intro": "Lies den Aktivsatz und wähle die passende Passivform. Die Zeitform bleibt gleich.",
+        "items": [
+          {
+            "q": "Someone stole my bike. → My bike ___ .",
+            "options": [
+              "was stolen",
+              "stole",
+              "was stealing"
+            ],
+            "answer": "was stolen",
+            "why": "Simple Past bleibt Simple Past: was + 3. Verbform (stolen)."
+          },
+          {
+            "q": "They will announce the winner tomorrow. → The winner ___ tomorrow.",
+            "options": [
+              "will announce",
+              "will be announced",
+              "will been announced"
+            ],
+            "answer": "will be announced",
+            "why": "will-Future Passiv: will be + 3. Verbform."
+          },
+          {
+            "q": "Somebody has taken my seat. → My seat ___ .",
+            "options": [
+              "has taken",
+              "is taking",
+              "has been taken"
+            ],
+            "answer": "has been taken",
+            "why": "Present Perfect Passiv: has been + 3. Verbform."
+          },
+          {
+            "q": "The teacher gave us a test. → We ___ a test.",
+            "options": [
+              "were given",
+              "were gave",
+              "was given"
+            ],
+            "answer": "were given",
+            "why": "Bei zwei Objekten wird die Person zum Subjekt: were + given."
+          },
+          {
+            "q": "People speak Spanish in Peru. → Spanish ___ in Peru.",
+            "options": [
+              "speaks",
+              "is spoken",
+              "is speaking"
+            ],
+            "answer": "is spoken",
+            "why": "Simple Present Passiv: is + 3. Verbform."
+          },
+          {
+            "q": "They are building a new school. → A new school ___ .",
+            "options": [
+              "is building",
+              "has been built",
+              "is being built"
+            ],
+            "answer": "is being built",
+            "why": "Present Progressive bleibt Progressive: is being + 3. Verbform."
+          }
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie bildet man das Passiv im Englischen?",
+        "a": "Mit einer Form von <strong>be</strong> + dem <strong>past participle</strong> (3. Verbform): <em>The play <strong>was written</strong> by Shakespeare.</em> Das <em>be</em> richtet sich nach der Zeitform und nach Singular oder Plural; das Partizip bleibt immer gleich."
+      },
+      {
+        "q": "Wie bildet man das Passiv in den verschiedenen Zeiten?",
+        "a": "Simple Present: <em>is/are built</em>. Simple Past: <em>was/were built</em>. Present Progressive: <em>is being built</em>. Past Progressive: <em>was being built</em>. Present Perfect: <em>has/have been built</em>. Past Perfect: <em>had been built</em>. will-Future: <em>will be built</em>. Future Perfect: <em>will have been built</em>."
+      },
+      {
+        "q": "Wann benutzt man das Passiv?",
+        "a": "Wenn die Handlung wichtiger ist als der Täter, wenn der Täter unbekannt ist, oder wenn er sich von selbst versteht. Typisch ist das Passiv in Nachrichten, in wissenschaftlichen Texten, bei Beschreibungen von Abläufen und auf Schildern (<em>Smoking is not permitted</em>)."
+      },
+      {
+        "q": "Wann steht „by“ im Passivsatz?",
+        "a": "Nur wenn der Täter wirklich wichtig ist: <em>Hamlet was written <strong>by</strong> Shakespeare.</em> In den meisten Passivsätzen lässt man ihn weg. Es heißt immer <em>by</em>, nie <em>from</em>. Für das Werkzeug benutzt man <em>with</em>."
+      },
+      {
+        "q": "Wie wandelt man einen Aktivsatz ins Passiv um?",
+        "a": "In drei Schritten: Erstens wird das Objekt zum Subjekt. Zweitens wird das Verb zu <em>be</em> in derselben Zeitform + 3. Verbform. Drittens kommt das alte Subjekt mit <em>by</em> ans Ende — oder fällt weg. Aus <em>The police arrested two men</em> wird so <em>Two men were arrested by the police.</em>"
+      },
+      {
+        "q": "Was ist der Unterschied zwischen „is being built“ und „has been built“?",
+        "a": "<em>Is being built</em> heißt, die Arbeit läuft gerade — das Gebäude ist noch nicht fertig. <em>Has been built</em> heißt, sie ist abgeschlossen und das Ergebnis zählt jetzt. Also: „A new school <strong>is being built</strong>“ (im Bau) gegenüber „A new school <strong>has been built</strong>“ (fertig)."
+      },
+      {
+        "q": "Wie sagt man deutsche „man“-Sätze auf Englisch?",
+        "a": "Meist mit dem Passiv, denn ein direktes Gegenstück zu „man“ gibt es nicht. „Man spricht hier Englisch“ → <em>English is spoken here.</em> „Man sagt, dass…“ → <em>It is said that…</em> Umgangssprachlich geht auch <em>you</em> oder <em>people</em>."
       }
     ]
   },
@@ -742,81 +1148,495 @@
   {
     "slug": "gerund-infinitiv",
     "de": "Gerundium & Infinitiv",
-    "en": "Gerunds and infinitives",
+    "en": "Gerunds and Infinitives",
     "aliases": [
+      "gerund or infinitive",
+      "infinitiv oder gerund",
+      "gerund oder to infinitive",
       "gerund infinitive Übungen",
       "Gerundium Englisch",
-      "-ing form to infinitive"
+      "verb + ing oder to + Verb",
+      "Gerundium und Infinitiv Klasse 8",
+      "gerund and infinitive Regeln"
     ],
-    "metaDescription": "Gerundium und Infinitiv im Englischen erklärt mit kostenlosen Übungen — wann -ing und wann to + Infinitiv steht.",
+    "metaDescription": "Gerundium oder Infinitiv? Wann -ing und wann to + Verb steht: alle Regeln, Verblisten, Bedeutungsunterschiede und 30 kostenlose Übungen mit Auswertung.",
     "related": [
       "present-tenses",
       "modalverben",
-      "simple-past"
+      "relativsaetze"
     ],
     "reviewed": false,
-    "intro": "Nach manchen Verben steht die <strong>-ing-Form</strong> (Gerundium), nach anderen der <strong>Infinitiv mit to</strong>. Welche Form richtig ist, hängt vom vorangehenden Verb ab — das muss man lernen.",
+    "introH2": "Gerundium oder Infinitiv — worum geht es?",
+    "intro": "Im Englischen kann ein Verb, das von einem anderen Verb abhängt, in zwei Formen stehen: als <strong>Gerundium</strong> (die <em>-ing</em>-Form, z.&nbsp;B. <em>reading</em>) oder als <strong>Infinitiv mit to</strong> (z.&nbsp;B. <em>to read</em>). Im Deutschen gibt es diesen Unterschied nicht — wir sagen einfach „Ich mag <em>lesen</em>“ und „Ich möchte <em>lesen</em>“. Genau deshalb ist dieses Thema für deutsche Lernende so fehleranfällig.<br><br>Welche Form richtig ist, hängt fast immer vom <strong>vorangehenden Wort</strong> ab — meistens vom Verb, manchmal von einer Präposition oder einem festen Ausdruck. Es gibt dafür keine Logik, die man herleiten kann: <em>enjoy</em> verlangt <em>-ing</em>, <em>want</em> verlangt <em>to</em>. Man lernt diese Verben in Gruppen.<br><br>Drei Dinge machen das Thema überschaubar. Erstens: Nach <strong>Präpositionen</strong> steht immer das Gerundium — ohne Ausnahme. Zweitens: Bei einer kleinen Gruppe von Verben sind <strong>beide Formen</strong> möglich, und bei einigen davon ändert sich die <strong>Bedeutung</strong>. Drittens: Nach Modalverben und nach <em>let</em>, <em>make</em> und <em>help</em> steht der Infinitiv <strong>ohne to</strong>. Wer diese drei Punkte sicher beherrscht, macht in der Klassenarbeit kaum noch Fehler.",
     "rules": [
-      "Gerundium (-ing) nach: <em>enjoy, avoid, finish, keep, mind, suggest</em> — „I enjoy <strong>reading</strong>.“",
-      "Infinitiv mit to nach: <em>want, decide, hope, promise, would like, need</em> — „I want <strong>to go</strong>.“",
-      "Nach Präpositionen steht immer das Gerundium — „good at <strong>cooking</strong>“, „interested in <strong>learning</strong>“.",
-      "Manche Verben (<em>like, start, begin</em>) erlauben beide Formen ohne Bedeutungsunterschied."
+      "<strong>Gerundium (-ing)</strong> nach Verben wie <em>enjoy, avoid, finish, keep, mind, suggest, imagine, practise</em> — „I enjoy <strong>reading</strong>.“",
+      "<strong>Infinitiv mit to</strong> nach Verben wie <em>want, decide, hope, promise, refuse, learn, offer, plan</em> — „I want <strong>to go</strong>.“",
+      "Nach <strong>Präpositionen</strong> steht immer das Gerundium — „good at <strong>cooking</strong>“, „without <strong>saying</strong> a word“.",
+      "<em>look forward to</em>, <em>be used to</em> und <em>object to</em> enden auf eine <strong>Präposition</strong> — deshalb <em>-ing</em>: „I look forward to <strong>seeing</strong> you.“",
+      "Verb + <strong>Objekt</strong> + Infinitiv mit to: <em>want, ask, tell, allow, expect</em> — „She asked me <strong>to wait</strong>.“",
+      "Nach <strong>Modalverben</strong> (<em>can, must, should, will</em>) steht der Infinitiv <strong>ohne to</strong> — „You must <strong>go</strong>.“",
+      "Auch nach <em>let</em>, <em>make</em> und (oft) <em>help</em> steht der Infinitiv ohne to — „They let him <strong>leave</strong>.“",
+      "Nach <em>like, love, hate, begin, start, continue, prefer</em> sind <strong>beide Formen</strong> möglich — die Bedeutung bleibt gleich.",
+      "Bei <em>remember, forget, stop, try, regret, go on, mean</em> ändert die Form die <strong>Bedeutung</strong> — hier musst du aufpassen.",
+      "Als <strong>Subjekt</strong> am Satzanfang steht meist das Gerundium — „<strong>Swimming</strong> is good for you.“"
     ],
     "examples": [
-      "<em>She avoids <strong>eating</strong> sugar.</em>",
-      "<em>They decided <strong>to leave</strong> early.</em>",
-      "<em>I'm looking forward to <strong>seeing</strong> you.</em>"
+      "<em>She avoids <strong>eating</strong> sugar.</em> — Nach <em>avoid</em> steht -ing.",
+      "<em>They decided <strong>to leave</strong> early.</em> — Nach <em>decide</em> steht to + Verb.",
+      "<em>I'm looking forward to <strong>seeing</strong> you.</em> — <em>to</em> ist hier Präposition.",
+      "<em>My parents let me <strong>stay</strong> out late.</em> — Nach <em>let</em> ohne to.",
+      "<em>He stopped <strong>to buy</strong> a coffee.</em> vs. <em>He stopped <strong>buying</strong> coffee.</em> — zwei völlig verschiedene Aussagen."
     ],
-    "practice": [
+    "sections": [
       {
-        "q": "I enjoy ___ to music.",
-        "options": [
-          "listen",
-          "listening",
-          "to listen"
-        ],
-        "answer": "listening",
-        "why": "Nach enjoy steht das Gerundium (-ing)."
+        "h2": "Verben mit Gerundium (-ing)",
+        "body": "Nach diesen Verben steht immer die <em>-ing</em>-Form. Lerne sie als Block — sie kommen in fast jeder Klassenarbeit vor.",
+        "list": [
+          "<em>enjoy</em> — „I enjoy <strong>cooking</strong>.“",
+          "<em>avoid</em> — „She avoids <strong>driving</strong> at night.“",
+          "<em>finish</em> — „We finished <strong>painting</strong> the room.“",
+          "<em>mind</em> — „Do you mind <strong>waiting</strong>?“",
+          "<em>suggest</em> — „He suggested <strong>meeting</strong> at six.“",
+          "<em>keep (on)</em> — „They kept <strong>asking</strong> questions.“",
+          "<em>imagine</em> — „I can't imagine <strong>living</strong> there.“",
+          "<em>practise</em>, <em>admit</em>, <em>deny</em>, <em>consider</em>, <em>risk</em>, <em>miss</em>, <em>can't help</em>"
+        ]
       },
       {
-        "q": "They decided ___ home.",
-        "options": [
-          "go",
-          "going",
-          "to go"
-        ],
-        "answer": "to go",
-        "why": "Nach decide steht der Infinitiv mit to."
+        "h2": "Verben mit Infinitiv (to + Verb)",
+        "body": "Nach diesen Verben steht der Infinitiv mit <em>to</em>.",
+        "list": [
+          "<em>want</em> — „I want <strong>to help</strong>.“",
+          "<em>decide</em> — „They decided <strong>to stay</strong>.“",
+          "<em>hope</em> — „We hope <strong>to win</strong>.“",
+          "<em>promise</em> — „He promised <strong>to call</strong>.“",
+          "<em>refuse</em> — „She refused <strong>to answer</strong>.“",
+          "<em>learn</em> — „I'm learning <strong>to swim</strong>.“",
+          "<em>offer</em>, <em>plan</em>, <em>agree</em>, <em>manage</em>, <em>afford</em>, <em>seem</em>, <em>would like</em>"
+        ]
       },
       {
-        "q": "She is good at ___.",
-        "options": [
-          "draw",
-          "drawing",
-          "to draw"
-        ],
-        "answer": "drawing",
-        "why": "Nach einer Präposition (at) steht das Gerundium."
+        "h2": "Verb + Objekt + Infinitiv",
+        "body": "Bei diesen Verben steht zuerst eine Person (das Objekt), dann der Infinitiv mit <em>to</em>. Im Deutschen benutzt man hier oft einen <em>dass</em>-Satz — das ist eine typische Fehlerquelle.",
+        "list": [
+          "„She asked me <strong>to wait</strong>.“ — <em>nicht:</em> „She asked that I wait.“",
+          "„The teacher told us <strong>to open</strong> our books.“",
+          "„I want you <strong>to read</strong> this.“ — <em>nicht:</em> „I want that you read this.“",
+          "Ebenso: <em>allow, expect, advise, remind, encourage, force, invite</em>"
+        ]
       },
       {
-        "q": "We want ___ a film tonight.",
-        "options": [
-          "watch",
-          "watching",
-          "to watch"
+        "h2": "Nach Präpositionen steht immer das Gerundium",
+        "body": "Das ist die zuverlässigste Regel des ganzen Themas — sie hat keine Ausnahmen. Steht vor dem Verb eine Präposition, folgt die <em>-ing</em>-Form.",
+        "list": [
+          "<em>good at <strong>drawing</strong></em>, <em>interested in <strong>learning</strong></em>, <em>afraid of <strong>flying</strong></em>",
+          "<em>without <strong>asking</strong></em>, <em>before <strong>leaving</strong></em>, <em>after <strong>finishing</strong></em>, <em>instead of <strong>waiting</strong></em>",
+          "<em>thanks for <strong>helping</strong></em>, <em>apologise for <strong>being</strong> late</em>, <em>think about <strong>moving</strong></em>",
+          "<strong>Achtung:</strong> Bei <em>look forward <strong>to</strong></em>, <em>be used <strong>to</strong></em> und <em>object <strong>to</strong></em> ist <em>to</em> eine Präposition, kein Infinitiv: „I look forward to <strong>hearing</strong> from you.“"
         ],
-        "answer": "to watch",
-        "why": "Nach want steht der Infinitiv mit to."
+        "highlight": true
       },
       {
-        "q": "He finished ___ the report.",
-        "options": [
-          "write",
-          "writing",
-          "to write"
+        "h2": "Beide Formen möglich — gleiche Bedeutung",
+        "body": "Nach diesen Verben kannst du frei wählen. Beide Varianten sind korrekt und bedeuten dasselbe.",
+        "list": [
+          "<em>like</em> — „I like <strong>swimming</strong>.“ = „I like <strong>to swim</strong>.“",
+          "<em>love, hate, prefer</em> — „She hates <strong>waiting</strong>.“ = „She hates <strong>to wait</strong>.“",
+          "<em>begin, start, continue</em> — „It began <strong>raining</strong>.“ = „It began <strong>to rain</strong>.“",
+          "Nach <em>would like / would love / would prefer</em> steht dagegen <strong>immer</strong> to: „I'd like <strong>to go</strong>.“"
+        ]
+      },
+      {
+        "h2": "Beide Formen möglich — aber andere Bedeutung",
+        "body": "Diese Gruppe entscheidet oft über die Note. Die Form ändert hier nicht den Stil, sondern die Aussage.",
+        "list": [
+          "<em>remember + -ing</em> = sich an etwas Vergangenes erinnern — „I remember <strong>locking</strong> the door.“ (Ich habe abgeschlossen und erinnere mich daran.)",
+          "<em>remember + to</em> = daran denken, etwas noch zu tun — „Remember <strong>to lock</strong> the door.“ (Vergiss es nicht!)",
+          "<em>stop + -ing</em> = mit etwas aufhören — „He stopped <strong>smoking</strong>.“",
+          "<em>stop + to</em> = anhalten, um etwas zu tun — „He stopped <strong>to smoke</strong>.“",
+          "<em>try + -ing</em> = etwas ausprobieren — „Try <strong>turning</strong> it off and on again.“",
+          "<em>try + to</em> = sich bemühen, etwas Schwieriges zu schaffen — „I tried <strong>to open</strong> the jar.“",
+          "<em>forget + -ing</em> = eine Erinnerung verlieren — „I'll never forget <strong>meeting</strong> her.“",
+          "<em>forget + to</em> = etwas nicht tun, obwohl man sollte — „I forgot <strong>to send</strong> the email.“"
         ],
-        "answer": "writing",
-        "why": "Nach finish steht das Gerundium (-ing)."
+        "highlight": true
+      },
+      {
+        "h2": "Infinitiv ohne to",
+        "body": "Nach einigen Wörtern steht der reine Infinitiv — ohne <em>to</em> und ohne <em>-ing</em>.",
+        "list": [
+          "Nach allen <strong>Modalverben</strong>: <em>can, could, must, should, will, would, may, might</em> — „You should <strong>ask</strong>.“",
+          "Nach <em>let</em> — „Let me <strong>explain</strong>.“",
+          "Nach <em>make</em> (im Aktiv) — „She made him <strong>apologise</strong>.“",
+          "Nach <em>help</em> sind beide Formen üblich — „He helped me <strong>carry</strong> / <strong>to carry</strong> the box.“"
+        ]
+      },
+      {
+        "h2": "Typische Fehler deutscher Lernender",
+        "body": "Diese vier Fehler tauchen in Klassenarbeiten immer wieder auf.",
+        "list": [
+          "✗ „I look forward to <em>see</em> you.“ → ✓ „I look forward to <strong>seeing</strong> you.“",
+          "✗ „I want that you come.“ → ✓ „I want <strong>you to come</strong>.“",
+          "✗ „I enjoy <em>to read</em>.“ → ✓ „I enjoy <strong>reading</strong>.“",
+          "✗ „<em>To swim</em> is healthy.“ (klingt steif) → ✓ „<strong>Swimming</strong> is healthy.“"
+        ],
+        "highlight": true
+      }
+    ],
+    "practiceGroups": [
+      {
+        "title": "Übung 1 — Die Grundregeln",
+        "intro": "Verb + Gerundium oder Verb + Infinitiv? Wähle die richtige Form und klicke auf <em>Prüfen</em>.",
+        "items": [
+          {
+            "q": "I enjoy ___ to podcasts on the train.",
+            "options": [
+              "to listen",
+              "listening",
+              "listen"
+            ],
+            "answer": "listening",
+            "why": "Nach enjoy steht immer das Gerundium (-ing)."
+          },
+          {
+            "q": "She decided ___ home early.",
+            "options": [
+              "going",
+              "to go",
+              "go"
+            ],
+            "answer": "to go",
+            "why": "Nach decide steht der Infinitiv mit to."
+          },
+          {
+            "q": "We finished ___ the report at midnight.",
+            "options": [
+              "writing",
+              "to write",
+              "write"
+            ],
+            "answer": "writing",
+            "why": "Nach finish steht das Gerundium (-ing)."
+          },
+          {
+            "q": "He promised ___ me later.",
+            "options": [
+              "call",
+              "calling",
+              "to call"
+            ],
+            "answer": "to call",
+            "why": "Nach promise steht der Infinitiv mit to."
+          },
+          {
+            "q": "Would you mind ___ the window?",
+            "options": [
+              "to open",
+              "open",
+              "opening"
+            ],
+            "answer": "opening",
+            "why": "Nach mind steht das Gerundium (-ing)."
+          },
+          {
+            "q": "They hope ___ the match on Saturday.",
+            "options": [
+              "winning",
+              "to win",
+              "win"
+            ],
+            "answer": "to win",
+            "why": "Nach hope steht der Infinitiv mit to."
+          },
+          {
+            "q": "I can't imagine ___ in such a cold country.",
+            "options": [
+              "to live",
+              "living",
+              "live"
+            ],
+            "answer": "living",
+            "why": "Nach imagine steht das Gerundium (-ing)."
+          },
+          {
+            "q": "The teacher suggested ___ a break.",
+            "options": [
+              "taking",
+              "to take",
+              "take"
+            ],
+            "answer": "taking",
+            "why": "Nach suggest steht das Gerundium (-ing)."
+          },
+          {
+            "q": "She refused ___ the question.",
+            "options": [
+              "answering",
+              "answer",
+              "to answer"
+            ],
+            "answer": "to answer",
+            "why": "Nach refuse steht der Infinitiv mit to."
+          },
+          {
+            "q": "You should avoid ___ too much sugar.",
+            "options": [
+              "to eat",
+              "eating",
+              "eat"
+            ],
+            "answer": "eating",
+            "why": "Nach avoid steht das Gerundium (-ing)."
+          }
+        ]
+      },
+      {
+        "title": "Übung 2 — Nach Präpositionen",
+        "intro": "Nach einer Präposition steht immer die -ing-Form. Achte besonders auf <em>look forward to</em>.",
+        "items": [
+          {
+            "q": "She is very good at ___ problems.",
+            "options": [
+              "to solve",
+              "solving",
+              "solve"
+            ],
+            "answer": "solving",
+            "why": "Nach der Präposition at steht das Gerundium."
+          },
+          {
+            "q": "I'm looking forward to ___ you next week.",
+            "options": [
+              "see",
+              "to see",
+              "seeing"
+            ],
+            "answer": "seeing",
+            "why": "Bei look forward to ist to eine Präposition, kein Infinitiv — deshalb -ing."
+          },
+          {
+            "q": "Thanks for ___ me with the homework.",
+            "options": [
+              "helping",
+              "to help",
+              "help"
+            ],
+            "answer": "helping",
+            "why": "Nach der Präposition for steht das Gerundium."
+          },
+          {
+            "q": "He left without ___ goodbye.",
+            "options": [
+              "to say",
+              "say",
+              "saying"
+            ],
+            "answer": "saying",
+            "why": "Nach der Präposition without steht das Gerundium."
+          },
+          {
+            "q": "They are interested in ___ German.",
+            "options": [
+              "learning",
+              "to learn",
+              "learn"
+            ],
+            "answer": "learning",
+            "why": "Nach der Präposition in steht das Gerundium."
+          },
+          {
+            "q": "Instead of ___ the bus, we walked.",
+            "options": [
+              "to take",
+              "taking",
+              "take"
+            ],
+            "answer": "taking",
+            "why": "Nach instead of steht das Gerundium."
+          }
+        ]
+      },
+      {
+        "title": "Übung 3 — Bedeutungsunterschied",
+        "intro": "Hier ändert die Form die Aussage. Lies den ganzen Satz, bevor du wählst.",
+        "items": [
+          {
+            "q": "I remember ___ her at the party last year.",
+            "options": [
+              "to meet",
+              "meeting",
+              "meet"
+            ],
+            "answer": "meeting",
+            "why": "remember + -ing = sich an etwas Vergangenes erinnern."
+          },
+          {
+            "q": "Please remember ___ the door when you leave.",
+            "options": [
+              "locking",
+              "to lock",
+              "lock"
+            ],
+            "answer": "to lock",
+            "why": "remember + to = daran denken, etwas noch zu tun."
+          },
+          {
+            "q": "On the way to work he stopped ___ a coffee.",
+            "options": [
+              "to buy",
+              "buying",
+              "buy"
+            ],
+            "answer": "to buy",
+            "why": "stop + to = anhalten, um etwas zu tun."
+          },
+          {
+            "q": "She stopped ___ chocolate in January.",
+            "options": [
+              "eating",
+              "to eat",
+              "eat"
+            ],
+            "answer": "eating",
+            "why": "stop + -ing = mit etwas aufhören."
+          },
+          {
+            "q": "I tried ___ the window, but the room was still too warm.",
+            "options": [
+              "to open",
+              "opening",
+              "open"
+            ],
+            "answer": "opening",
+            "why": "try + -ing = etwas ausprobieren, um ein Problem zu lösen."
+          },
+          {
+            "q": "We tried ___ him all evening, but nobody answered.",
+            "options": [
+              "calling",
+              "call",
+              "to call"
+            ],
+            "answer": "to call",
+            "why": "try + to = sich bemühen, etwas Schwieriges zu schaffen."
+          },
+          {
+            "q": "Don't forget ___ the milk on your way home!",
+            "options": [
+              "to buy",
+              "buying",
+              "buy"
+            ],
+            "answer": "to buy",
+            "why": "forget + to = vergessen, etwas zu tun."
+          }
+        ]
+      },
+      {
+        "title": "Übung 4 — Gemischt (Prüfungsniveau)",
+        "intro": "Alle Regeln gemischt — auch der Infinitiv ohne to und feste Ausdrücke.",
+        "items": [
+          {
+            "q": "My parents let me ___ out until ten.",
+            "options": [
+              "to stay",
+              "staying",
+              "stay"
+            ],
+            "answer": "stay",
+            "why": "Nach let steht der Infinitiv ohne to."
+          },
+          {
+            "q": "The manager made everyone ___ in the form again.",
+            "options": [
+              "fill",
+              "to fill",
+              "filling"
+            ],
+            "answer": "fill",
+            "why": "Nach make (Aktiv) steht der Infinitiv ohne to."
+          },
+          {
+            "q": "I'd like you ___ this before Friday.",
+            "options": [
+              "reading",
+              "to read",
+              "read"
+            ],
+            "answer": "to read",
+            "why": "Verb + Objekt + Infinitiv mit to."
+          },
+          {
+            "q": "It's no use ___ about the weather.",
+            "options": [
+              "to complain",
+              "complaining",
+              "complain"
+            ],
+            "answer": "complaining",
+            "why": "Nach dem festen Ausdruck it's no use steht das Gerundium."
+          },
+          {
+            "q": "She apologised for ___ late.",
+            "options": [
+              "being",
+              "to be",
+              "be"
+            ],
+            "answer": "being",
+            "why": "Nach der Präposition for steht das Gerundium."
+          },
+          {
+            "q": "We can't afford ___ a new car this year.",
+            "options": [
+              "buying",
+              "to buy",
+              "buy"
+            ],
+            "answer": "to buy",
+            "why": "Nach afford steht der Infinitiv mit to."
+          },
+          {
+            "q": "I'm used to ___ up early.",
+            "options": [
+              "to get",
+              "get",
+              "getting"
+            ],
+            "answer": "getting",
+            "why": "be used to + -ing = an etwas gewöhnt sein. Nicht verwechseln mit used to do (frühere Gewohnheit)."
+          }
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wann benutzt man Gerund und wann Infinitive?",
+        "a": "Das hängt vom Wort davor ab. Nach Verben wie <em>enjoy, avoid, finish, mind, suggest</em> steht die <em>-ing</em>-Form. Nach Verben wie <em>want, decide, hope, promise, refuse</em> steht <em>to</em> + Verb. Nach jeder Präposition steht immer <em>-ing</em>. Eine Regel zum Herleiten gibt es nicht — man lernt die Verben in Gruppen."
+      },
+      {
+        "q": "Was ist der Unterschied zwischen Gerund und Infinitive?",
+        "a": "Das Gerundium ist die <em>-ing</em>-Form und verhält sich wie ein Nomen (<em>Swimming is fun</em>). Der Infinitiv mit <em>to</em> beschreibt eher eine Absicht oder ein Ziel (<em>I went out to buy milk</em>). Bei den meisten Verben ist aber nicht die Bedeutung entscheidend, sondern schlicht die feste Verbindung mit dem Verb davor."
+      },
+      {
+        "q": "Nach welchen Verben steht -ing?",
+        "a": "Die wichtigsten sind: <em>enjoy, avoid, finish, keep, mind, suggest, imagine, practise, admit, deny, consider, risk, miss, can't help</em>. Dazu kommt jede Präposition — <em>good at, interested in, without, before, after, instead of, thanks for</em>."
+      },
+      {
+        "q": "Nach welchen Verben steht to + Infinitiv?",
+        "a": "Unter anderem: <em>want, decide, hope, promise, refuse, learn, offer, plan, agree, manage, afford, seem, would like</em>. Auch nach Verb + Objekt: <em>ask somebody to</em>, <em>tell somebody to</em>, <em>allow somebody to</em>."
+      },
+      {
+        "q": "Heißt es „I look forward to see you“ oder „to seeing you“?",
+        "a": "Richtig ist <strong>„I look forward to seeing you.“</strong> Das <em>to</em> in <em>look forward to</em> ist eine Präposition, kein Infinitiv — deshalb folgt die <em>-ing</em>-Form. Dasselbe gilt für <em>be used to</em> und <em>object to</em>."
+      },
+      {
+        "q": "Ändert sich die Bedeutung bei remember, stop und try?",
+        "a": "Ja. <em>Remember + -ing</em> heißt „sich erinnern, dass man etwas getan hat“; <em>remember + to</em> heißt „daran denken, etwas noch zu tun“. <em>Stop + -ing</em> heißt „aufhören“; <em>stop + to</em> heißt „anhalten, um etwas zu tun“. <em>Try + -ing</em> heißt „ausprobieren“; <em>try + to</em> heißt „sich bemühen“."
+      },
+      {
+        "q": "Wann steht der Infinitiv ohne to?",
+        "a": "Nach allen Modalverben (<em>can, must, should, will</em>) und nach <em>let</em> und <em>make</em>: „You must <strong>go</strong>“, „Let me <strong>explain</strong>“, „She made him <strong>apologise</strong>“. Nach <em>help</em> sind beide Formen möglich."
       }
     ]
   }
