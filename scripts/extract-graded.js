@@ -92,6 +92,33 @@ function gradedCalls(src) {
   return out;
 }
 
+/* One gap's stem, trailing context, options and answer — the raw material both
+   the CLI dump and build-review-pages.js need. Returns null if the <select>
+   named by the call is not in the file. */
+function gapDetail(src, c, g) {
+  var selIdx = src.indexOf('id="' + c.prefix + g + '"');
+  if (selIdx === -1) return null;
+  var pStart = src.lastIndexOf('<p', selIdx);
+  var q = decode(src.slice(pStart === -1 ? Math.max(0, selIdx - 160) : pStart, selIdx)).slice(-140);
+  var selEnd = src.indexOf('</select>', selIdx);
+  var after = selEnd === -1 ? '' : decode(src.slice(selEnd + 9, selEnd + 160)).slice(0, 70);
+  var opts = [], pairs = [], block = selEnd === -1 ? '' : src.slice(selIdx, selEnd), om;
+  var ore = /<option[^>]*value="([^"]*)"[^>]*>([\s\S]*?)<\/option>/g;
+  while ((om = ore.exec(block))) {
+    if (!om[1]) continue;                       // the "— choose —" placeholder
+    opts.push(om[1]);
+    pairs.push({ value: om[1], text: decode(om[2]) || om[1] });
+  }
+  if (!opts.length) {
+    var o2, r2 = /<option>([^<]+)<\/option>/g;
+    while ((o2 = r2.exec(block))) { var t = o2[1].trim(); opts.push(t); pairs.push({ value: t, text: t }); }
+  }
+  // Some series (the it-* pages) use letter-coded values — value="a" with the
+  // real wording in the option text — so callers that need readable content
+  // must use `pairs`, not `opts`.
+  return { id: g, q: q, after: after, opts: opts, pairs: pairs, answer: c.answers[g] };
+}
+
 function dumpPage(f) {
   var src = fs.readFileSync(path.join(ROOT, f), 'utf8');
   console.log('\n========== ' + f + '  (UNIT: ' + (unitOf(src) || '?') + ') ==========');
@@ -100,21 +127,13 @@ function dumpPage(f) {
   calls.forEach(function (c) {
     console.log('\n--- scoreKey=' + c.scoreKey + "  prefix='" + c.prefix + "'" + (c.multi ? '  (multi-answer)' : '') + ' ---');
     c.ids.forEach(function (g) {
-      var selIdx = src.indexOf('id="' + c.prefix + g + '"');
       var ans = JSON.stringify(c.answers[g]);
-      if (selIdx === -1) { console.log(g + ' [ans ' + ans + ']  (element not found)'); return; }
-      var pStart = src.lastIndexOf('<p', selIdx);
-      var q = decode(src.slice(pStart === -1 ? Math.max(0, selIdx - 160) : pStart, selIdx)).slice(-140);
-      var selEnd = src.indexOf('</select>', selIdx);
-      var after = selEnd === -1 ? '' : decode(src.slice(selEnd + 9, selEnd + 160)).slice(0, 70);
-      var opts = [], block = selEnd === -1 ? '' : src.slice(selIdx, selEnd), om;
-      var ore = /<option[^>]*value="([^"]*)"[^>]*>([\s\S]*?)<\/option>/g;
-      while ((om = ore.exec(block))) { if (om[1]) opts.push(om[1]); }
-      if (!opts.length) { var o2, r2 = /<option>([^<]+)<\/option>/g; while ((o2 = r2.exec(block))) opts.push(o2[1].trim()); }
+      var d = gapDetail(src, c, g);
+      if (!d) { console.log(g + ' [ans ' + ans + ']  (element not found)'); return; }
       console.log(g + ' [ans ' + ans + ']');
-      console.log('   Q: …' + q);
-      if (after) console.log('   …after: ' + after);
-      console.log('   opts: ' + opts.join(' | '));
+      console.log('   Q: …' + d.q);
+      if (d.after) console.log('   …after: ' + d.after);
+      console.log('   opts: ' + d.opts.join(' | '));
     });
   });
 }
@@ -131,7 +150,11 @@ function todo() {
     var unit = unitOf(src);
     var calls = gradedCalls(src);
     if (calls.length) {
-      if (unit && have[unit]) done.push(f);
+      // A page may carry its own explanations inline; exercise.js prefers an
+      // inline EXPLAIN over the data file, so it is done, not outstanding.
+      // The generated *-review.html pages are all of this kind.
+      var inlineExplain = /\bvar\s+EXPLAIN\s*=/.test(src);
+      if ((unit && have[unit]) || inlineExplain) done.push(f);
       else backlog.push({ f: f, unit: unit, gaps: calls.reduce(function (s, c) { return s + c.ids.length; }, 0) });
     } else if (/state\.scores\s*\[|\bscoreKey\b|checkDropdowns/.test(src)) {
       manual.push(f);
@@ -144,7 +167,12 @@ function todo() {
   manual.forEach(function (f) { console.log('  ' + f); });
 }
 
-var args = process.argv.slice(2);
-if (!args.length) { console.error('usage: node scripts/extract-graded.js <file.html> … | --todo'); process.exit(2); }
-if (args[0] === '--todo') todo();
-else args.forEach(dumpPage);
+/* Reused by scripts/build-review-pages.js — keep these signatures stable. */
+module.exports = { decode: decode, unitOf: unitOf, gradedCalls: gradedCalls, gapDetail: gapDetail };
+
+if (require.main === module) {
+  var args = process.argv.slice(2);
+  if (!args.length) { console.error('usage: node scripts/extract-graded.js <file.html> … | --todo'); process.exit(2); }
+  if (args[0] === '--todo') todo();
+  else args.forEach(dumpPage);
+}

@@ -14,8 +14,8 @@ const exercises = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'exercises.
 
 function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
 
-const YEAR_LABEL = { 7: 'Klasse 7', 8: 'Klasse 8', 9: 'Klasse 9', 10: 'Klasse 10', msa: 'MSA', abitur: 'Abitur', uni: 'Universität', it: 'IT English', business: 'Business English', other: 'Weitere' };
-const YEAR_ORDER = [7, 8, 9, 10, 'msa', 'abitur', 'uni', 'it', 'business', 'other'];
+const YEAR_LABEL = { 7: 'Klasse 7', 8: 'Klasse 8', 9: 'Klasse 9', 10: 'Klasse 10', msa: 'MSA', abitur: 'Abitur', uni: 'Universität', it: 'IT English', business: 'Business English', grammar: 'Grammatik-Übungen', quiz: 'Quiz', other: 'Weitere' };
+const YEAR_ORDER = [7, 8, 9, 10, 'msa', 'abitur', 'uni', 'it', 'business', 'grammar', 'quiz', 'other'];
 
 function exercisesForTopic(slug) {
   return exercises.filter(e => (e.topics || []).indexOf(slug) !== -1);

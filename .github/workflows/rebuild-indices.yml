@@ -1,0 +1,56 @@
+name: Rebuild generated indices
+
+# The site's index/sitemap/hub files (data/exercises.json, the hub cards in
+# activities.html, themen/*.html, sitemap.xml, robots.txt) are generated from
+# scripts/build-*.js. They used to only get regenerated when whoever committed
+# an exercise remembered the manual step — which went stale more than once.
+# This workflow makes it automatic: any push to main that could change the
+# generated output re-runs the generators and commits the result, so
+# activities.englishonline.training is never more than one push behind.
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'data/topics.json'
+      - 'scripts/build-exercise-data.js'
+      - 'scripts/build-hub.js'
+      - 'scripts/build-topic-pages.js'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rebuild-indices
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Run generators
+        run: |
+          node scripts/build-exercise-data.js
+          node scripts/build-hub.js
+          node scripts/build-topic-pages.js
+
+      - name: Commit regenerated files if changed
+        run: |
+          git config user.name "eol-index-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/exercises.json activities.html sitemap.xml robots.txt themen/
+          if git diff --cached --quiet; then
+            echo "Generated files already up to date — nothing to commit."
+          else
+            git commit -m "Auto-rebuild generated indices [skip ci]"
+            git push origin HEAD:main
+          fi

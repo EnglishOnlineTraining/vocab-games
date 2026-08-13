@@ -285,6 +285,21 @@ Each `checkDropdowns(ids, prefix, answers, fbId, scoreKey)` call now takes a `sc
 
 **Explanations live in `data/explanations.json`, keyed by `UNIT` — not in the HTML.** `exercise.js` fetches the file once on load (`EOL_EXPLAIN_ALL`) and renders the entry for the page's `UNIT`; if the data arrives after the student is already on the results screen it re-renders. The per-unit shape is `{ scoreKey: { prefix?, gaps: { g1: {label, correct, why, accept?} } } }` (`prefix` defaults to `scoreKey + '-'`; `accept` is an array for multi-answer gaps). The `#explanations` container is **auto-injected** (`eolMakeExplContainer`) after `#summary-container`, so **adding explanations to a page needs no HTML edit at all** — just append the unit to `data/explanations.json`. An inline `var EXPLAIN` global still overrides the data file if a page ever needs it (`eolExplainForPage`). Fetch fails silently under `file://`, so **verify over HTTP** (`python3 -m http.server`).
 
+**Ten pages were silently not grading (found and fixed 2026-08-12).** `7g-british-food`,
+`7g-british-sports`, `7g-british-wildlife`, `9g-canada-conditionals`, `9g-great-barrier-reef`,
+`9g-ireland-gerunds`, `9g-new-zealand-passive`, `be-professional-emails`, `uni-ai-ethics` and
+`uni-hedging-language` predate the scoring feature and called `checkDropdowns(...)` **without the
+5th argument**. No `scoreKey` means no score is recorded at all — those pages showed students no
+Score + Note card and sent the teacher no `score`/`grade`. They were also invisible to
+`extract-graded.js`, which is why the backlog listed them as "bespoke checker" — a mislabel; the
+calls were standard, just missing an argument. All ten now pass a `scoreKey`, carry a
+`#score-display` card, and include `score`/`grade` in `buildPayload`/`buildEmailBody`. Two related
+fixes fell out of it: their `state` objects lacked `scores: {}` (so the first write threw), and
+`checkDropdowns`/`checkDropdownsMulti` now create `state.scores` if a page omits it, the way
+`recordGap` already did for `state.attempts`. `uni-hedging-language`'s `buildPayload` also had a
+stray copy of `submitToSheet`'s test-mode block that returned `undefined` and referenced an
+undefined `btn` — removed.
+
 **To add explanations for a page, use the `add-explanations` skill** — it runs the whole pipeline. Manually: see the backlog with **`node scripts/extract-graded.js --todo`**; dump a page's gaps/answers/context with **`node scripts/extract-graded.js <file.html>`**; append `"<unit>": { … }` to `data/explanations.json` keyed by the page's real `var UNIT` (not always the filename, e.g. `tudor-conditionals-7g`); then run **`node scripts/validate-explanations.js`** (checks every `prefix+gap` id exists and each `correct`/`accept` is a real option) and commit the JSON. The extractor resolves answer keys whether inline or passed as a variable (`answers`, `ANSWERS.A`), and prints the real `UNIT`. **Status (verified 2026-08-12): 94 units / 1,702 gaps done**, every one carrying a written `why`. Run `node scripts/extract-graded.js --todo` for the live remainder rather than trusting a list here — it was 11 standard pages plus 10 with bespoke checkers at last check. (This line previously named only 5 units; that was the pre-merge state of `main` and had been stale since 2026-08-07.) Abitur packs are a separate architecture (see TEMPLATE-NOTES) and need their own path.
 
 **Practise-only mode (added 2026-08-05).** A public visitor can do any exercise **without entering a name/class** — the parent landing page promises "no sign-up required". Implemented entirely in the shared `exercise.js` (no per-page edits), so it works on all 145 framework pages at once. On the welcome gate a secondary **"Nur üben — ohne Abgabe · Just practise"** button (`#practise-btn`, injected by `eolInitPractise` on `DOMContentLoaded`) calls `startPractise()`, which sets `practiseMode = true` and jumps to Exercise A. In practise mode the submit step becomes a **results screen** (`eolPractiseResults`): the submit/fallback card is hidden, and a panel shows per-exercise points, the Score + Note card, a writing self-check list (only if the page has a `<textarea>`), and a **"Nochmal üben / Try again"** button (reloads with `?mode=practise`). URL overrides: **`?mode=practise`** skips the gate entirely (auto-starts); **`?mode=class`** forces the name/class gate and hides the practise button (so Shaun can share a class-only link). The normal class-submission flow is completely unchanged when `practiseMode` is false. Two latent bugs were hardened in the process: `totalScore()` now tolerates a missing `state.scores`, and `renderScore()` no-ops when a page has no `#score-display` card (both previously threw on older free-text pages like `uni-hedging-language`).
@@ -335,6 +350,49 @@ data. Concretely:
 - It is explicitly framed as "keine Note", shows the student's word count, and offers a
   Noch nicht / Fast / Ja self-rating that is stored nowhere.
 
+### 5d. Spaced-review pages — `*-review.html` (generated, added 2026-08-12)
+
+Every exercise in the repo is self-contained: a point is met once, in one unit, and never comes
+back. **`node scripts/build-review-pages.js`** adds the missing half — one *Gemischte
+Wiederholung* page per category (`8c` `8g` `10c` `10g` `msa` `uni` `it` `be`) that mixes 24
+questions drawn from *earlier* units.
+
+- **Nothing is authored.** The questions are joined from two things that already exist:
+  `data/explanations.json` (label + correct answer + the one-line `why`) and each source page's
+  option list. It reuses `scripts/extract-graded.js` **as a module** (`gradedCalls`, `gapDetail`,
+  `unitOf`, `decode`) so the answer-key/HTML parsing lives in exactly one place — that file now
+  exports and only runs its CLI under `require.main === module`.
+- **Interleaved, not blocked:** items are taken round-robin across source units, so consecutive
+  questions come from different units. Each question is tagged with the unit it came from, so a
+  wrong answer points the student back to the right page.
+- **Only fully-explained items qualify** (a `why` plus a recoverable option list plus an answer
+  key that matches the markup), so a review page can always explain every wrong answer.
+- **Letter-coded pages are normalised.** The `it-*` series uses `value="a"` with the real wording
+  in the option text; the generator resolves through the page's own answer key and rebuilds the
+  options in *text*, so a review page never shows "a / b / c".
+- **Deterministic** — selection and option order are seeded from stable strings, never
+  `Math.random`, so regenerating produces byte-identical files and these pages don't churn in git.
+- Explanations are emitted **inline as `var EXPLAIN`** rather than into `data/explanations.json`:
+  that file is hand-authored per source unit, and these are generated copies. `exercise.js`
+  prefers an inline `EXPLAIN` over the data file.
+- **Year 7 and Year 9 are included** (Shaun, 2026-08-12). The drafting pause covers *new topic
+  exercises* for those years; a review page only revisits units that are already live, so it
+  creates no new Y7/Y9 topics. `7g` (7 units) and `9g` (6 units) build normally; `7c` builds from
+  only two source units, so it alternates rather than truly interleaves — and those two units
+  (`7c-british-school-day`, `7c-school-day-in-britain`) cover very similar ground, so its revision
+  value is thinner than the others.
+- **`9c` cannot be built at all**, and this is not an explanations gap: no page in that category
+  uses graded dropdowns (`9c-plastic-pollution`, `9c-south-africa-revision` and
+  `sport-south-africa` all return 0 graded calls), so there is nothing to revisit. It would need
+  dropdown exercises authored first. `MIN_UNITS` is 2 — the point is that an item returns
+  alongside a *different* unit.
+- `topic-pool.js` skips `*-review.html` in its orphan check — a review page revisits topics that
+  are already registered, so it is not a topic of its own.
+
+**Never hand-edit `*-review.html`** — edit the script and rerun, then
+`build-exercise-data.js` → `build-hub.js` → `build-topic-pages.js`. Each per-category hub carries
+a "Gemischte Wiederholung" card.
+
 ### 6. Shared framework — `exercise.js` (standardised 2026-07-17)
 All step-based exercise pages load the **single shared framework** via `<script src="exercise.js"></script>`; no page carries its own copy of the framework functions any more (~330 KB of copy-paste drift was removed). A page's inline script defines ONLY:
 - **Config:** `UNIT`, `TOTAL_STEPS`, `SHEET_URL`, `TEACHER_EMAIL`
@@ -370,7 +428,7 @@ All step-based exercise pages load the **single shared framework** via `<script 
 7. **Pass a `scoreKey`** to each `checkDropdowns()` call you want auto-graded (e.g. `'exA'`, `'exB'`) if the exercise has gradable sections — this feeds the score/Note shown to the student and sent to the teacher. Skip this for pure free-text/discussion exercises.
 8. **Add a card in `activities.html`** under the correct year/school section
 9. **Fill in the `<meta name="description">` and `<link rel="canonical">` tags** in the `<head>` (both are TODO placeholders in `_template.html`) — the canonical URL must match the final filename exactly.
-10. **Regenerate the generated data/index files** — run `node scripts/build-exercise-data.js && node scripts/build-hub.js && node scripts/build-topic-pages.js`. This is what actually adds the new page to `data/exercises.json`, the filterable index on `activities.html`, and `sitemap.xml`/`robots.txt` — none of it happens automatically just by adding the file and a hub card. This checklist never mentioned the step before 2026-08-09, which is exactly why `_template.html` had no meta-description/canonical tags and the sitemap ran stale within a day of its last manual regeneration — do it every time now.
+10. **Regenerate the generated data/index files** — run `node scripts/build-exercise-data.js && node scripts/build-hub.js && node scripts/build-topic-pages.js` before committing. This is what actually adds the new page to `data/exercises.json`, the filterable index on `activities.html`, and `sitemap.xml`/`robots.txt`. Doing it locally keeps the diff you're committing honest, but as of 2026-08-13 it is also a **safety net, not the only line of defence** — see "Auto-rebuild workflow" below, which catches it if this step is skipped.
 11. **Commit and push to `main`** — GitHub Pages deploys automatically
 
 ---
@@ -391,6 +449,23 @@ German, search-optimised landing pages, one per grammar topic (people search *Pa
 - **`data/exercises.json`** — every exercise tagged with `topics[]`/`skills[]`, produced by **`node scripts/build-exercise-data.js`** (classifies each page's grammar/skill points against the topic vocabulary; prints per-topic coverage).
 - **`node scripts/build-topic-pages.js`** — regenerates `themen/<slug>.html` + `themen/index.html` + `themen/themen.css`, and rewrites `sitemap.xml` + `robots.txt` (covering hubs, exercises and topic pages). Each page has `lang="de"`, canonical, OG tags and JSON-LD `LearningResource`; a "Weiterüben" list links every tagged exercise grouped by year; plus related-topic links. Linked from `activities.html` via a "Nach Grammatik-Thema üben" banner → `themen/index.html`.
 - **To add/expand a topic:** edit `data/topics.json` (add the slug + German content), then rerun both scripts. Never hand-edit files in `themen/` — they are overwritten. Grammar prose is Shaun-reviewed before it counts as final; scaffolds keep the marker until then.
+
+## Auto-rebuild workflow (added 2026-08-13)
+
+`.github/workflows/rebuild-indices.yml` runs on every push to `main` that touches an `.html`
+file or `data/topics.json`. It re-runs the three generators (`build-exercise-data.js` →
+`build-hub.js` → `build-topic-pages.js`) and, if the output differs from what's committed,
+commits and pushes the regenerated `data/exercises.json`, `activities.html`, `sitemap.xml`,
+`robots.txt` and `themen/` straight back to `main` as the `eol-index-bot` user. This exists
+because the manual regeneration step (checklist item 10 above, and the equivalent step in every
+`eol-*`/`daily-exercise-draft`/`msa-exercise-draft` skill) has gone stale in practice more than
+once — a new exercise page landing on `main` without a rebuild left `activities.html` and
+`sitemap.xml` silently behind the live file list. The workflow makes staleness self-correcting:
+even if a script, skill, or manual commit forgets the regen step, the next push to `main` fixes
+it within a minute, so `activities.englishonline.training` should never be more than one commit
++ one workflow run behind the repo. Skip-loop note: the bot's own commit re-triggers the
+workflow, but since the generators are then already up to date it produces no diff and exits
+without committing, so it self-terminates after one extra no-op run.
 
 ## Deployment
 
