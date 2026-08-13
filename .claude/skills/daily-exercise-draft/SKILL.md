@@ -150,6 +150,53 @@ The reading text and exercises must match the target level:
 - **B1/B2** (~10c): More nuanced topics, varied sentence structures. 150-200 words. Grammar includes if-clauses, passive voice, past perfect.
 - **B2/C1** (~10g): Complex texts, abstract topics, sophisticated vocabulary. 180-250 words. Grammar includes all tenses, stylistic devices, argumentative structures.
 
+#### Learning design checks — apply these WHILE building
+
+These are requirements, not polish. They encode retrieval practice and spacing, multimedia
+principles, action mapping, UDL and feedback design. If one genuinely cannot be met, say
+which and why in your summary rather than skipping it silently.
+
+**1. Open with retrieval, not input.** Exercise A begins with a short recall prompt *before*
+any new text: a single optional textarea (`exA-recall`). Include it in `saveStep`/`restoreStep`
+and the payload, but **exclude it from `validateStep()` and give it no `scoreKey`**. Recall
+strengthens memory even when the answer is wrong, so never mark it. Pre-built in `_template.html`.
+
+**2. Include one spaced-recall item.** In a dropdown exercise, put 1–2 items targeting grammar
+or vocabulary from an *earlier* unit in the same category. Check `topic-pool.json` for what is
+already built and take the point from a unit two or three back — e.g. an 8c gerunds page can
+carry one present-perfect item from `8c-around-southwest`. Skip only if this is the first
+exercise in the category. Label such an item in `data/explanations.json` so the `why` names the
+unit it came from.
+
+**3. State the outcome as an action.** The `.welcome-sub` says what the student will be able to
+*do*: "By the end of this exercise, you can compare your town with a big city using
+comparatives." Not "Unit 1: Comparatives".
+
+**4. One target point per section.** Each exercise section drills a single focus. If a section
+tests two things, split it — comparatives in Ex B, superlatives in Ex C.
+
+**5. Signal the target language.** In a reading text, bold the target structure on its first
+two or three occurrences and **bold nothing else**. Signalling only works if it is scarce.
+
+**6. Cut redundancy.** Instructions appear once — either in the `.ex-subtitle` or in the item
+labels, never both. Don't restate the task in the `.card-title`; use it as a plain heading
+("Reading text"), not a second instruction ("Now read the text and choose").
+
+**7. Anchor free-writing in a concrete scenario.** The Ex D prompt names a situation, an
+audience and a purpose: "Write to your exchange partner in Leeds explaining why your town is
+quieter than New York." Never "Write about your town."
+
+**8. Make feedback specific.** Remember the `nextStep()` trap: a message you put in
+`#step<n>-error` is overwritten by the generic string, so a step needing its own wording needs
+its **own element id** (see `#exB-lengthwarn` in `it-writing-task.html`). The results screen
+must show *which* items were wrong, not just the score — that means adding the unit to
+`data/explanations.json` (use the `add-explanations` skill) as part of building it, not later.
+
+**9. Accessible by default.** Every free-text input has a bound `<label>`. Gap dropdowns are
+named automatically by `exercise.js` (`eolLabelGaps`), and right/wrong already carries a ✓/✗
+glyph as well as colour — don't add colour-only cues of your own. No time limits unless the
+task is explicitly an exam.
+
 #### Dropdown answer shuffling
 
 For every `<select>` element, the correct answer must NOT always be in the same position.
@@ -177,6 +224,26 @@ Before publishing, verify:
 - [ ] The reading text is appropriate for the CEFR level
 - [ ] Grammar content matches the textbook topic's "Key Grammar" column
 - [ ] All state properties have matching save/restore/validate/summary/email/payload entries
+- [ ] **Every `checkDropdowns()` call passes a `scoreKey` (5th argument)** — without it no score
+      is recorded at all, the student sees no Score + Note card and the teacher gets no
+      `score`/`grade`. Ten live pages shipped with this defect and had to be repaired; grep the
+      file for `-fb')` to catch a call that stops at the 4th argument.
+- [ ] The page declares `scores: {}` in `state`, and `score`/`grade` are in `buildPayload()`
+      and `buildEmailBody()`
+
+**Learning design (the checks above — verify, don't assume):**
+
+- [ ] Ex A opens with the optional `exA-recall` prompt; it is in `saveStep`/`restoreStep` and the
+      payload, and appears in **neither** `validateStep()` nor any answer key
+- [ ] 1–2 items come from an earlier unit in this category (skip only for the first exercise)
+- [ ] `.welcome-sub` starts "By the end of this exercise, you can …" and names a concrete action
+- [ ] Each section drills one point only
+- [ ] The target structure is bolded on its first 2–3 occurrences in the reading text, and
+      nothing else is bolded
+- [ ] Instructions appear once — not in both the subtitle and the card title
+- [ ] The Ex D prompt names a situation, an audience and a purpose
+- [ ] The unit has been added to `data/explanations.json` so wrong answers get a reason
+      (`node scripts/validate-explanations.js` passes)
 
 ### 6. Publish (automatic — do not wait for approval)
 

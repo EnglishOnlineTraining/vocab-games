@@ -66,7 +66,11 @@
       <!-- TODO: change emoji, title and subtitle -->
       <div class="welcome-flag">📝</div>
       <h1 class="welcome-title">Exercise Title</h1>
-      <p class="welcome-sub">Short description of what students will do in this activity.</p>
+      <!-- TODO: state an ACTION outcome (check 3) — what the student will be able
+           to DO, not what the unit covers. Start it "By the end of this exercise,
+           you can …", e.g. "…you can compare your town with a big city using
+           comparatives." Not "Unit 3: Past Simple". -->
+      <p class="welcome-sub">By the end of this exercise, you can TODO-do-something-concrete.</p>
     </div>
 
     <!-- TODO: one card per exercise step — add class="locked" to steps 2+ -->
@@ -103,9 +107,27 @@
     <h2 class="ex-title">Exercise A Title</h2>
     <p class="ex-subtitle">Instructions for exercise A.</p>
 
+    <!-- ── Retrieval prompt (learning-design check 1) — KEEP THIS ──
+         Recall BEFORE new input strengthens memory, even when the answer is
+         wrong. So this box is deliberately: optional, never validated, never
+         scored. It is saved/restored and sent to the teacher, but it must NOT
+         appear in validateStep() and must NOT get a scoreKey.
+         TODO: reword the question for this topic. -->
+    <div class="card">
+      <div class="card-title">Before you read <span style="font-weight:400;color:var(--muted);font-size:.85rem">— optional, not marked</span></div>
+      <div class="form-group">
+        <label class="form-label" for="exA-recall">Write one or two things you already know about TODO-topic.</label>
+        <textarea class="form-textarea" id="exA-recall" placeholder="I know that..." rows="3"></textarea>
+        <div class="form-hint">This is just to get you thinking — you can leave it empty and it does not count towards your score.</div>
+      </div>
+    </div>
+
     <div class="card">
       <div class="card-title">Task</div>
-      <!-- TODO: add your reading text, questions, gap-fill etc. here -->
+      <!-- TODO: add your reading text, questions, gap-fill etc. here.
+           In a reading text, bold the target structure on its first 2–3
+           occurrences and nothing else (check 5) — signalling only works
+           if it is scarce. -->
       <div class="form-group">
         <label class="form-label" for="exA-q1">Question 1</label>
         <textarea class="form-textarea" id="exA-q1" placeholder="Write your answer here..." rows="4"></textarea>
@@ -212,6 +234,7 @@ var maxStepReached = 0;
 ============================================================ */
 function validateStep(n) {
   switch (n) {
+    /* NOTE: never validate exA-recall — the retrieval prompt is optional by design. */
     case 1: return val('exA-q1');    /* TODO: check your actual field IDs */
     case 2: return true;             /* TODO: add validation for step 2 */
     default: return true;
@@ -224,14 +247,20 @@ function validateStep(n) {
 ============================================================ */
 function saveStep(n) {
   switch (n) {
-    case 1: state.exA.q1 = g('exA-q1'); break;  /* TODO */
+    case 1:
+      state.exA.q1 = g('exA-q1');            /* TODO */
+      state.exA.recall = g('exA-recall');    /* retrieval prompt — saved and sent, never scored */
+      break;
     case 2: /* TODO */ break;
   }
 }
 
 function restoreStep(n) {
   switch (n) {
-    case 1: set('exA-q1', state.exA.q1); break;  /* TODO */
+    case 1:
+      set('exA-q1', state.exA.q1);           /* TODO */
+      set('exA-recall', state.exA.recall);
+      break;
     case 2: /* TODO */ break;
   }
 }
@@ -242,6 +271,7 @@ function restoreStep(n) {
 ============================================================ */
 function buildSummary() {
   var rows = [
+    { ex: 'Exercise A', q: 'Before you read (optional, not marked)', a: state.exA.recall },
     { ex: 'Exercise A', q: 'Question 1', a: state.exA.q1 }
     /* TODO: add more rows */
   ];
