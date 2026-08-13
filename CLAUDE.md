@@ -33,6 +33,17 @@ Business English page with no working contact form until 2026-08-07. **After any
 verify with `page-sections.list`** — if it errors with "classic/freeform", the page has lost its
 block markup.
 
+**Exception — that check is useless on 1763 itself (confirmed 2026-08-13).** `page-sections.list`
+on 1763 errors with "classic/freeform" **before** any write: the live content is plain HTML with
+`wp-block-*` classes and no `<!-- wp:… -->` delimiters at all, so block-level ops can never target
+it and the error is not evidence of fresh damage. Verify a 1763 write instead by **re-fetching with
+`context: "edit"` and diffing against what you intended to send**; a `context: "view"` fetch also
+confirms the buttons still render as real links. The page carries no dynamic blocks — only
+headings, separators and `core/html` button groups — which is why writing the whole content back is
+survivable here at all. Note its `_crdt_document` still holds the ancient snapshot (Year 7 "6
+exercises", 9c "2 exercises", no Y8/Y10/Abitur/MSA) and an API write does **not** update it, so the
+block editor stays exactly as dangerous as described above.
+
 ### 2. `isTestMode()` makes submissions silently no-op on localhost
 ```js
 function isTestMode() {
