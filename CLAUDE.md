@@ -60,6 +60,20 @@ its own wording, give the message its own element id** and omit `#step<n>-error`
 `#exB-lengthwarn` in `it-writing-task.html`. `clearErr(n)` is null-safe, so the missing id is
 harmless.
 
+### 4. WordPress batch post updates cause 409 conflicts when tokens become stale
+The WordPress API enforces optimistic locking: updates require current `expected_modified`, `expected_content_hash`, and `expected_block_hash` tokens. When batch-updating multiple posts (e.g., adding cross-links to a 5-post series), **token staleness causes 409 Conflict errors and silent retry loops**. On 2026-08-13, updating blog posts 2062–2066 with navigation links succeeded but took **~4 attempts per post** (21 total updates across 5 posts) because tokens fetched at the start became invalid as posts updated in sequence. Each 409 required re-fetching fresh tokens and retrying, but without explicit retry handling, updates can silently repeat. **Fetch all posts fresh immediately before any updates; submit all updates in one pass; never retry with stale tokens.** Pseudocode:
+```javascript
+// CORRECT: Fetch all first, update all at once
+const posts = await Promise.all(postIds.map(id => wpcom.post(id).fetch()));
+const updates = posts.map(p => wpcom.post(p.id).sections(idx).replace(newBlock, {
+  expected_modified: p.expected_modified,
+  expected_content_hash: p.expected_content_hash,
+  expected_block_hash: p.expected_block_hash
+}));
+await Promise.all(updates); // All succeed or all report 409s upfront — no hidden retries
+```
+If a 409 does occur, stop, re-fetch that one post fresh, and do a single targeted retry. This ensures transparent error handling and prevents the retry cascades that caused the 4× repeat updates.
+
 ---
 
 ## File structure
