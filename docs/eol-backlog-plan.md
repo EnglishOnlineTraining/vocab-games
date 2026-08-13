@@ -429,6 +429,17 @@ awaiting triage.**
 - **1760 (California – Interactive Exercises)** still links to the stale
   `englishonlinetraining.github.io/vocab-games/` fallback instead of
   `activities.englishonline.training` — same class of issue already fixed on 1757, missed here.
+- **`uni-al-munir-relationships.html` ships an unfilled audio placeholder · needs Shaun** —
+  the page contains `<audio src="PASTE_AUDIO_URL_HERE.mp3">`, a template placeholder that was
+  never replaced. It is in `main`/HEAD, so it is live: every student on that page gets a broken
+  audio player and a 404. Found 2026-08-12 during the site-wide accessibility sweep (it was the
+  only 404 across all 145 framework pages). **Blocked on Shaun** — fixing it needs the real
+  recording URL, which is not in the repo, so it was flagged rather than guessed. Options: supply
+  the MP3 URL, or drop the audio element if the task no longer uses a recording. The file carries
+  an explicit `<!-- TODO (Shaun): replace the src below … -->` comment, so this was known and then
+  forgotten. **Checked: it is the only one** — a sweep for `PASTE_*` / `TODO` / `REPLACE_ME` /
+  `YOUR_*_HERE` and for missing local assets across all 145 framework pages returns this page and
+  nothing else, so the problem is isolated, not systemic.
 
 ### B. True orphans (zero reachable inbound path) — corrected after reading each file
 - **WordPress:** **1582** ("Shaun Trezise Certificates and Training Programmes completed") — a
