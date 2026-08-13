@@ -1120,6 +1120,7 @@ function eolInjectChrome() {
     f.innerHTML =
       '<nav aria-label="Seiten">'
       + '<a href="activities.html">Alle Übungen</a>'
+      + '<a href="grammar-activities.html">Grammatik-Übungen</a>'
       + '<a href="themen/index.html">Grammatik-Themen</a>'
       + '<a href="uni-activities.html">Universität</a>'
       + '<a href="business-activities.html">Business</a>'

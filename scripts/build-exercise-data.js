@@ -62,6 +62,7 @@ function schoolFromPrefix(f) {
   if (/^it-/.test(f)) return ['it', 'vocational'];
   if (/^be-/.test(f)) return ['business', 'business'];
   if (/^quiz-/.test(f)) return ['quiz', 'quiz'];
+  if (/^gr-/.test(f)) return ['grammar', 'grammar'];
   return ['other', 'other'];
 }
 function grabTitles(s, cls, tag) {
@@ -70,7 +71,7 @@ function grabTitles(s, cls, tag) {
   let mm; while ((mm = re.exec(s))) {
     const inner = mm[1].replace(/<span[^>]*class="section-badge"[^>]*>[\s\S]*?<\/span>/gi, '');
     const t = decode(inner);
-    if (/all exercises complete|complete!|enter your details|review & submit|optional:?\s*get feedback/i.test(t)) continue;
+    if (/all exercises complete|complete!|enter your details|review & submit|optional:?\s*get feedback|^geschafft!?$/i.test(t)) continue;
     if (t) out.push(t);
   }
   return out;
@@ -90,7 +91,9 @@ files.forEach(f => {
   let points = grabTitles(s, 'ex-title', 'h2');
   if (!points.length) points = grabTitles(s, 'card-title', 'div');
   const blob = points.join(' · ');
-  const topics = TOPICS.filter(t => t.match.some(re => re.test(blob))).map(t => t.slug);
+  let topics = TOPICS.filter(t => t.match.some(re => re.test(blob))).map(t => t.slug);
+  const grSlug = (f.match(/^gr-([a-z-]+)\.html$/) || [])[1];
+  if (grSlug && TOPICS.some(t => t.slug === grSlug)) topics = [grSlug];
   topics.forEach(sl => coverage[sl].push(f));
   exercises.push({
     file: f, title: title || h1, year: year, schoolType: schoolType,

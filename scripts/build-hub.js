@@ -15,8 +15,8 @@ const topicLabel = {}; topics.forEach(t => topicLabel[t.slug] = t.de);
 function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
 function norm(s) { return String(s || '').toLowerCase().replace(/[^a-z0-9äöüß ]+/gi, ' ').replace(/\s+/g, ' ').trim(); }
 
-const YEAR_LABEL = { 7: 'Klasse 7', 8: 'Klasse 8', 9: 'Klasse 9', 10: 'Klasse 10', msa: 'MSA', abitur: 'Abitur', uni: 'Universität', it: 'IT English', business: 'Business English', quiz: 'Quiz', other: 'Weitere' };
-const YEAR_ORDER = [7, 8, 9, 10, 'abitur', 'msa', 'uni', 'it', 'business', 'quiz', 'other'];
+const YEAR_LABEL = { 7: 'Klasse 7', 8: 'Klasse 8', 9: 'Klasse 9', 10: 'Klasse 10', msa: 'MSA', abitur: 'Abitur', uni: 'Universität', it: 'IT English', business: 'Business English', grammar: 'Grammatik-Übungen', quiz: 'Quiz', other: 'Weitere' };
+const YEAR_ORDER = [7, 8, 9, 10, 'abitur', 'msa', 'uni', 'it', 'business', 'grammar', 'quiz', 'other'];
 const SCHOOL_LABEL = { gymnasium: 'Gymnasium', oberschule: 'Oberschule' };
 const SKILL_LABEL = { reading: 'Lesen', grammar: 'Grammatik', writing: 'Schreiben', vocabulary: 'Vokabeln', listening: 'Hören' };
 const SKILL_ORDER = ['grammar', 'reading', 'writing', 'vocabulary', 'listening'];
