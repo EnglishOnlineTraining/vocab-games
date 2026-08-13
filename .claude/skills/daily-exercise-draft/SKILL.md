@@ -35,18 +35,11 @@ and ask which active category to use instead.
 
 ### 2. Pick a topic
 
-The **topic registry `topic-pool.json`** (repo root) is the single source of truth for which topics
-exist and which are built. Run `node topic-pool.js <category>` to see what is open.
-
-1. Read `topic-pool.json` and take the first entry for this category with `status: "idea"`
-   (prefer real textbook units over `"Supplementary"` ones; go roughly sequentially through the units).
-2. Note its `id`, `topic`, `grammar`, `angle` and `unit`. Build the exercise to that grammar focus
-   and angle.
-3. If the category has **no** open ideas, do **not** invent one silently — tell Shaun the pool is
-   empty for that category and offer to top it up with the **add-topics** skill, then stop.
-
-CLAUDE.md still holds the full textbook pools for background, but the registry is what you actually
-pick from (and update — see step 6d).
+1. Read the topic pool for this category from CLAUDE.md (under "Topic pools")
+2. List existing exercise files in the repo matching the prefix (e.g. `8c-*.html`)
+3. Exclude topics that already have a built exercise
+4. Pick the next unbuilt topic — prefer sequential order through the textbook units
+5. Note the **Unit number**, **Topic**, and **Key Grammar** from the pool
 
 ### 3. Read the template and framework
 
@@ -233,14 +226,6 @@ the HTML block. The button format is:
   </a>
 </div>
 ```
-
-#### 6d. Update the topic registry
-
-In `topic-pool.json`, find the entry you built (by `id`) and flip it: set `"status": "built"` and
-add `"file": "<filename>.html"`. If you built a topic that had no entry yet, add one with status
-built. Then run `node topic-pool.js --check` — it must report the registry is consistent before you
-commit. Commit `topic-pool.json` together with the hub updates. (The registry is repo-side only, not
-served to students.)
 
 ### 7. Confirm
 
