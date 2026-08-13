@@ -150,7 +150,11 @@ function todo() {
     var unit = unitOf(src);
     var calls = gradedCalls(src);
     if (calls.length) {
-      if (unit && have[unit]) done.push(f);
+      // A page may carry its own explanations inline; exercise.js prefers an
+      // inline EXPLAIN over the data file, so it is done, not outstanding.
+      // The generated *-review.html pages are all of this kind.
+      var inlineExplain = /\bvar\s+EXPLAIN\s*=/.test(src);
+      if ((unit && have[unit]) || inlineExplain) done.push(f);
       else backlog.push({ f: f, unit: unit, gaps: calls.reduce(function (s, c) { return s + c.ids.length; }, 0) });
     } else if (/state\.scores\s*\[|\bscoreKey\b|checkDropdowns/.test(src)) {
       manual.push(f);

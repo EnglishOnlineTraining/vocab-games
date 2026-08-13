@@ -440,6 +440,7 @@
       <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
       <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
     </div>
+    <div id="score-display" style="display:none"></div>
     <div id="summary-container"></div>
     <div class="card" style="text-align:center">
       <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
@@ -479,7 +480,7 @@ var state = {
   exA:  {},
   exB:  {},
   exC:  {},
-  exD:  {}
+  exD:  {}, scores: {}
 };
 
 /* ============================================================
@@ -599,10 +600,13 @@ function buildSummary() {
    EMAIL FALLBACK BODY
 ============================================================ */
 function buildEmailBody() {
+  var sc = totalScore();
+  var grade = lookupGrade(sc.earned, sc.possible);
   var body = 'Exercise: ' + UNIT
     + '\nStudent: ' + state.name
     + '\nClass:   ' + state.cls
     + '\nDate:    ' + new Date().toLocaleDateString('en-GB');
+    + '\nScore:   ' + (sc.possible ? (sc.earned + ' / ' + sc.possible + (grade ? ' — Note ' + grade.note + ' (' + grade.label + ')' : '')) : '(no auto-graded sections)')
 
   body += '\n\n--- Exercise A: Reading & Analysis ---';
   body += '\n1. Why "has suggested"?: ' + (state.exA.q1 || '(blank)');
@@ -632,7 +636,7 @@ function checkExB() {
     g7: 'approximately 70% of',
     g8: 'appear to support'
   };
-  checkDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8'], 'exB-', answers, 'step2-fb');
+  checkDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8'], 'exB-', answers, 'step2-fb', 'exB');
 }
 
 /* ============================================================
@@ -649,19 +653,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function buildPayload() {
-var payload = { name: state.name, cls: state.cls, unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD };
-
-  if (isTestMode()) {
-    console.log('TEST MODE - Submission payload:', payload);
-    console.log('Sheet/Webhook URL:', SHEET_URL);
-    setTimeout(function() {
-      btn.style.display = 'none';
-      showToast('Test submission logged to console');
-      document.getElementById('submit-success').style.display = 'block';
-      document.getElementById('submit-fallback').style.display = 'block';
-    }, 600);
-    return;
-  }
+  var sc = totalScore();
+  var grade = lookupGrade(sc.earned, sc.possible);
+  var payload = { name: state.name, cls: state.cls, unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD,
+    score: sc.possible ? (sc.earned + ' / ' + sc.possible) : '',
+    grade: grade ? ('Note ' + grade.note + ' (' + grade.label + ')') : '' };
+  /* (a stray copy of submitToSheet's test-mode block used to sit here: it
+     returned undefined and referenced an undefined `btn`. The shared
+     submitToSheet already handles test mode.) */
   return payload;
 }
 
