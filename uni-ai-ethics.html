@@ -471,6 +471,7 @@
       <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
       <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
     </div>
+    <div id="score-display" style="display:none"></div>
     <div id="summary-container"></div>
     <div class="card" style="text-align:center">
       <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
@@ -510,7 +511,7 @@ var state = {
   exA:  {},
   exB:  {},
   exC:  {},
-  exD:  {}
+  exD:  {}, scores: {}
 };
 
 /* ============================================================
@@ -617,10 +618,13 @@ function buildSummary() {
    EMAIL FALLBACK BODY
 ============================================================ */
 function buildEmailBody() {
+  var sc = totalScore();
+  var grade = lookupGrade(sc.earned, sc.possible);
   var body = 'Exercise: ' + UNIT
     + '\nStudent: ' + state.name
     + '\nClass:   ' + state.cls
     + '\nDate:    ' + new Date().toLocaleDateString('en-GB');
+    + '\nScore:   ' + (sc.possible ? (sc.earned + ' / ' + sc.possible + (grade ? ' — Note ' + grade.note + ' (' + grade.label + ')' : '')) : '(no auto-graded sections)')
 
   body += '\n\n--- Exercise A: Vocabulary ---';
   for (var i = 1; i <= 8; i++) body += '\n' + i + ': ' + (state.exA['g'+i] || '(blank)');
@@ -637,12 +641,12 @@ function buildEmailBody() {
 
 function checkExA() {
   var answers = { g1:'b', g2:'a', g3:'b', g4:'c', g5:'b', g6:'a', g7:'c', g8:'b' };
-  checkDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8'], 'exA-', answers, 'step1-fb');
+  checkDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8'], 'exA-', answers, 'step1-fb', 'exA');
 }
 
 function checkExB() {
   var answers = { g1:'ethical', g2:'assessment', g3:'policies', g4:'acknowledge', g5:'detection', g6:'accountability', g7:'autonomy', g8:'critical' };
-  checkDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8'], 'exB-', answers, 'step2-fb');
+  checkDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8'], 'exB-', answers, 'step2-fb', 'exB');
 }
 
 /* ============================================================
@@ -659,7 +663,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function buildPayload() {
-var payload = { name: state.name, cls: state.cls, unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD };
+  var sc = totalScore();
+  var grade = lookupGrade(sc.earned, sc.possible);
+  var payload = { name: state.name, cls: state.cls, unit: UNIT, exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD,
+    score: sc.possible ? (sc.earned + ' / ' + sc.possible) : '',
+    grade: grade ? ('Note ' + grade.note + ' (' + grade.label + ')') : '' };
   return payload;
 }
 

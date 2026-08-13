@@ -286,6 +286,7 @@
       <h2 class="ex-title" style="text-align:center">All exercises complete!</h2>
       <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Review your answers below, then send them to your teacher.</p>
     </div>
+    <div id="score-display" style="display:none"></div>
     <div id="summary-container"></div>
     <div class="card" style="text-align:center">
       <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
@@ -325,7 +326,7 @@ var state = {
   cls:   '',
   ex1:   {},
   exB:   {},
-  exC:   {}
+  exC:   {}, scores: {}
 };
 
 /* ============================================================
@@ -403,7 +404,7 @@ function checkExB() {
     g7: 'hibernate',
     g8: 'smaller'
   };
-  checkDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8'], 'exB-', answers, 'step2-fb');
+  checkDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8'], 'exB-', answers, 'step2-fb', 'exB');
 }
 
 /* ============================================================
@@ -438,6 +439,8 @@ function buildSummary() {
    EMAIL FALLBACK BODY
 ============================================================ */
 function buildEmailBody() {
+  var sc = totalScore();
+  var grade = lookupGrade(sc.earned, sc.possible);
   var exBAnswers = ['g1','g2','g3','g4','g5','g6','g7','g8'].map(function(k,i){
     return (i+1) + '. ' + (state.exB[k] || '(blank)');
   }).join('\n');
@@ -445,6 +448,7 @@ function buildEmailBody() {
     + '\nStudent: ' + state.name
     + '\nClass:   ' + state.cls
     + '\nDate:    ' + new Date().toLocaleDateString('en-GB')
+    + '\nScore:   ' + (sc.possible ? (sc.earned + ' / ' + sc.possible + (grade ? ' — Note ' + grade.note + ' (' + grade.label + ')' : '')) : '(no auto-graded sections)')
     + '\n\n--- Exercise A ---'
     + '\nQ1: ' + (state.ex1.q1 || '(none)')
     + '\nQ2: ' + (state.ex1.q2 || '(none)')
@@ -462,13 +466,17 @@ function buildEmailBody() {
 ============================================================ */
 
 function buildPayload() {
-var payload = {
+  var sc = totalScore();
+  var grade = lookupGrade(sc.earned, sc.possible);
+  var payload = {
     name: state.name,
     cls:  state.cls,
     unit: UNIT,
     ex1:  eolFlat(state.ex1),
     ex2:  eolFlat(state.exB),
-    ex3:  eolFlat(state.exC)
+    ex3:  eolFlat(state.exC),
+    score: sc.possible ? (sc.earned + ' / ' + sc.possible) : '',
+    grade: grade ? ('Note ' + grade.note + ' (' + grade.label + ')') : ''
   };
   return payload;
 }

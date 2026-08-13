@@ -383,6 +383,7 @@ function checkDropdowns(ids, prefix, answers, fbId, scoreKey) {
   var recorded = correct;
   if (scoreKey) {
     recorded = recordedPoints(scoreKey);
+    if (!state.scores) state.scores = {};   // older pages declare state without it
     state.scores[scoreKey] = { correct: recorded, total: total };
   }
   var scoreNote = (scoreKey && recorded !== correct)
@@ -433,6 +434,7 @@ function checkDropdownsMulti(ids, prefix, answers, fbId, scoreKey) {
   var recorded = correct;
   if (scoreKey) {
     recorded = recordedPoints(scoreKey);
+    if (!state.scores) state.scores = {};   // older pages declare state without it
     state.scores[scoreKey] = { correct: recorded, total: total };
   }
   var scoreNote = (scoreKey && recorded !== correct)
