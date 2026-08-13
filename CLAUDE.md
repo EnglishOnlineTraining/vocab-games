@@ -426,7 +426,7 @@ All step-based exercise pages load the **single shared framework** via `<script 
 7. **Pass a `scoreKey`** to each `checkDropdowns()` call you want auto-graded (e.g. `'exA'`, `'exB'`) if the exercise has gradable sections — this feeds the score/Note shown to the student and sent to the teacher. Skip this for pure free-text/discussion exercises.
 8. **Add a card in `activities.html`** under the correct year/school section
 9. **Fill in the `<meta name="description">` and `<link rel="canonical">` tags** in the `<head>` (both are TODO placeholders in `_template.html`) — the canonical URL must match the final filename exactly.
-10. **Regenerate the generated data/index files** — run `node scripts/build-exercise-data.js && node scripts/build-hub.js && node scripts/build-topic-pages.js`. This is what actually adds the new page to `data/exercises.json`, the filterable index on `activities.html`, and `sitemap.xml`/`robots.txt` — none of it happens automatically just by adding the file and a hub card. This checklist never mentioned the step before 2026-08-09, which is exactly why `_template.html` had no meta-description/canonical tags and the sitemap ran stale within a day of its last manual regeneration — do it every time now.
+10. **Regenerate the generated data/index files** — run `node scripts/build-exercise-data.js && node scripts/build-hub.js && node scripts/build-topic-pages.js` before committing. This is what actually adds the new page to `data/exercises.json`, the filterable index on `activities.html`, and `sitemap.xml`/`robots.txt`. Doing it locally keeps the diff you're committing honest, but as of 2026-08-13 it is also a **safety net, not the only line of defence** — see "Auto-rebuild workflow" below, which catches it if this step is skipped.
 11. **Commit and push to `main`** — GitHub Pages deploys automatically
 
 ---
@@ -447,6 +447,23 @@ German, search-optimised landing pages, one per grammar topic (people search *Pa
 - **`data/exercises.json`** — every exercise tagged with `topics[]`/`skills[]`, produced by **`node scripts/build-exercise-data.js`** (classifies each page's grammar/skill points against the topic vocabulary; prints per-topic coverage).
 - **`node scripts/build-topic-pages.js`** — regenerates `themen/<slug>.html` + `themen/index.html` + `themen/themen.css`, and rewrites `sitemap.xml` + `robots.txt` (covering hubs, exercises and topic pages). Each page has `lang="de"`, canonical, OG tags and JSON-LD `LearningResource`; a "Weiterüben" list links every tagged exercise grouped by year; plus related-topic links. Linked from `activities.html` via a "Nach Grammatik-Thema üben" banner → `themen/index.html`.
 - **To add/expand a topic:** edit `data/topics.json` (add the slug + German content), then rerun both scripts. Never hand-edit files in `themen/` — they are overwritten. Grammar prose is Shaun-reviewed before it counts as final; scaffolds keep the marker until then.
+
+## Auto-rebuild workflow (added 2026-08-13)
+
+`.github/workflows/rebuild-indices.yml` runs on every push to `main` that touches an `.html`
+file or `data/topics.json`. It re-runs the three generators (`build-exercise-data.js` →
+`build-hub.js` → `build-topic-pages.js`) and, if the output differs from what's committed,
+commits and pushes the regenerated `data/exercises.json`, `activities.html`, `sitemap.xml`,
+`robots.txt` and `themen/` straight back to `main` as the `eol-index-bot` user. This exists
+because the manual regeneration step (checklist item 10 above, and the equivalent step in every
+`eol-*`/`daily-exercise-draft`/`msa-exercise-draft` skill) has gone stale in practice more than
+once — a new exercise page landing on `main` without a rebuild left `activities.html` and
+`sitemap.xml` silently behind the live file list. The workflow makes staleness self-correcting:
+even if a script, skill, or manual commit forgets the regen step, the next push to `main` fixes
+it within a minute, so `activities.englishonline.training` should never be more than one commit
++ one workflow run behind the repo. Skip-loop note: the bot's own commit re-triggers the
+workflow, but since the generators are then already up to date it produces no diff and exits
+without committing, so it self-terminates after one extra no-op run.
 
 ## Deployment
 
