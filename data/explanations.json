@@ -11275,5 +11275,437 @@
         }
       }
     }
+  },
+  "8c-northeast-comparatives": {
+    "exA": {
+      "gaps": {
+        "g1": {
+          "label": "1. the most famous ___",
+          "correct": "destination",
+          "why": "A place people travel to is a destination — not a dentist or a decision."
+        },
+        "g2": {
+          "label": "2. the Statue of ___",
+          "correct": "Liberty",
+          "why": "The Statue of Liberty is the landmark visitors take the ferry to see."
+        },
+        "g3": {
+          "label": "3. a ___ from France",
+          "correct": "gift",
+          "why": "France gave the statue to the USA in 1886, so it was a gift."
+        },
+        "g4": {
+          "label": "4. bigger than many ___",
+          "correct": "parks",
+          "why": "Central Park is being compared with other parks, so the noun must be “parks”."
+        },
+        "g5": {
+          "label": "5. street ___",
+          "correct": "musicians",
+          "why": "Street musicians play music in the park; mountains and machines do not belong there."
+        },
+        "g6": {
+          "label": "6. faster than a ___",
+          "correct": "taxi",
+          "why": "A taxi gets stuck in traffic, which is why the subway is faster."
+        },
+        "g7": {
+          "label": "7. one of the oldest ___",
+          "correct": "universities",
+          "why": "Boston is famous for its old universities."
+        },
+        "g8": {
+          "label": "8. the most exciting ___",
+          "correct": "part",
+          "why": "The Northeast is one part of the USA."
+        }
+      }
+    },
+    "exB": {
+      "gaps": {
+        "g1": {
+          "label": "1. New York is ___ than Boston",
+          "correct": "bigger",
+          "why": "“Big” is a short adjective, so the comparative is “bigger” — never “more big”."
+        },
+        "g2": {
+          "label": "2. the subway is ___",
+          "correct": "faster",
+          "why": "“Than” needs a comparative: fast → faster."
+        },
+        "g3": {
+          "label": "3. Central Park is ___ than I expected",
+          "correct": "more beautiful",
+          "why": "“Beautiful” is a long adjective, so it takes “more”, not “-er”."
+        },
+        "g4": {
+          "label": "4. winter in Boston is ___",
+          "correct": "colder",
+          "why": "“Cold” is short, so “colder”. “Coldest” is the superlative and would need “the”."
+        },
+        "g5": {
+          "label": "5. ___ interesting",
+          "correct": "more",
+          "why": "“Interesting” is long, so the comparative is “more interesting”."
+        },
+        "g6": {
+          "label": "6. the weather is ___",
+          "correct": "better",
+          "why": "“Good” is irregular: good → better → best."
+        },
+        "g7": {
+          "label": "7. a ferry ticket is ___",
+          "correct": "cheaper",
+          "why": "“Than” needs the comparative form “cheaper”."
+        },
+        "g8": {
+          "label": "8. the streets are ___",
+          "correct": "noisier",
+          "why": "Adjectives ending in -y change to -ier: noisy → noisier."
+        }
+      }
+    },
+    "exC": {
+      "gaps": {
+        "g1": {
+          "label": "1. one of the ___ buildings",
+          "correct": "tallest",
+          "why": "“One of the …” needs a superlative: tall → tallest."
+        },
+        "g2": {
+          "label": "2. the ___ day of the trip",
+          "correct": "best",
+          "why": "“Good” is irregular — the superlative is “best”."
+        },
+        "g3": {
+          "label": "3. the ___ place in the city",
+          "correct": "busiest",
+          "why": "“Busy” ends in -y, so the superlative is “busiest”."
+        },
+        "g4": {
+          "label": "4. the ___ museum in Boston",
+          "correct": "most famous",
+          "why": "“Famous” is a long adjective, so the superlative uses “most”."
+        },
+        "g5": {
+          "label": "5. the ___ pizza I have ever eaten",
+          "correct": "biggest",
+          "why": "“The … I have ever …” needs a superlative: biggest."
+        },
+        "g6": {
+          "label": "6. the ___ month of the year",
+          "correct": "coldest",
+          "why": "One month is compared with all the others, so the superlative is needed."
+        },
+        "g7": {
+          "label": "7. the ___ way to travel",
+          "correct": "quickest",
+          "why": "“Quick” is short, so “quickest” — not “most quick”."
+        },
+        "g8": {
+          "label": "8. the ___ holiday of my life",
+          "correct": "most exciting",
+          "why": "“Exciting” is a long adjective, so it takes “most”."
+        },
+        "g9": {
+          "label": "9. (Wiederholung) I ___ in Boston since 2019",
+          "correct": "have lived",
+          "why": "“Since 2019” means it started in the past and is still true, so the present perfect. Revision from Around the Southwest."
+        },
+        "g10": {
+          "label": "10. (Wiederholung) Last summer we ___ the Statue of Liberty",
+          "correct": "visited",
+          "why": "“Last summer” is a finished time, so the simple past. Revision from Arriving in the Northeast."
+        }
+      }
+    }
+  },
+  "8c-midwest-festivals": {
+    "exA": {
+      "gaps": {
+        "g1": {
+          "label": "1. a big State ___",
+          "correct": "Fair",
+          "why": "A State Fair is the summer event with rides, animals and food."
+        },
+        "g2": {
+          "label": "2. ice ___",
+          "correct": "cream",
+          "why": "Children eat popcorn and ice cream at the fair."
+        },
+        "g3": {
+          "label": "3. families ___ Thanksgiving",
+          "correct": "celebrate",
+          "why": "You celebrate a festival — you do not cancel or collect it."
+        },
+        "g4": {
+          "label": "4. they cook a big ___",
+          "correct": "turkey",
+          "why": "Turkey is the traditional Thanksgiving meal."
+        },
+        "g5": {
+          "label": "5. a long ___ through the town",
+          "correct": "parade",
+          "why": "A parade marches through the town on the Fourth of July."
+        },
+        "g6": {
+          "label": "6. watch ___ over the lake",
+          "correct": "fireworks",
+          "why": "Fireworks are what you watch in the evening sky."
+        },
+        "g7": {
+          "label": "7. colourful ___ in the windows",
+          "correct": "decorations",
+          "why": "Decorations are what people put up in December."
+        },
+        "g8": {
+          "label": "8. meet your ___",
+          "correct": "neighbours",
+          "why": "Your neighbours are the people who live near you."
+        }
+      }
+    },
+    "exB": {
+      "gaps": {
+        "g1": {
+          "label": "1. a day off to celebrate",
+          "correct": "holiday",
+          "why": "A holiday is a special day when people do not work."
+        },
+        "g2": {
+          "label": "2. people with music in the streets",
+          "correct": "parade",
+          "why": "A parade is people walking through the streets with music and costumes."
+        },
+        "g3": {
+          "label": "3. colours you put up for a party",
+          "correct": "decorations",
+          "why": "Decorations are the lights and paper you put up."
+        },
+        "g4": {
+          "label": "4. something you give someone",
+          "correct": "present",
+          "why": "A present is a gift you give on a special day."
+        },
+        "g5": {
+          "label": "5. lights and bangs in the sky",
+          "correct": "fireworks",
+          "why": "Fireworks make the bright lights and loud bangs."
+        },
+        "g6": {
+          "label": "6. bringing in food from the fields",
+          "correct": "harvest",
+          "why": "The harvest is when farmers bring in the crops."
+        },
+        "g7": {
+          "label": "7. a big town event",
+          "correct": "festival",
+          "why": "A festival is a large event with music, food and games."
+        },
+        "g8": {
+          "label": "8. people who live next to you",
+          "correct": "neighbours",
+          "why": "Neighbours live in the houses next to yours."
+        }
+      }
+    },
+    "exC": {
+      "gaps": {
+        "g1": {
+          "label": "1. we ___ Thanksgiving",
+          "correct": "celebrate",
+          "why": "You celebrate a festival; “congratulate” is used for people."
+        },
+        "g2": {
+          "label": "2. we ___ the house",
+          "correct": "decorate",
+          "why": "You decorate a house with lights before a party."
+        },
+        "g3": {
+          "label": "3. my parents ___ our neighbours",
+          "correct": "invite",
+          "why": "You invite people to dinner."
+        },
+        "g4": {
+          "label": "4. you can ___ different food",
+          "correct": "try",
+          "why": "To try food means to taste it for the first time."
+        },
+        "g5": {
+          "label": "5. people ___ the parade",
+          "correct": "watch",
+          "why": "You watch a parade go past."
+        },
+        "g6": {
+          "label": "6. children ___ their presents",
+          "correct": "open",
+          "why": "You open a present."
+        },
+        "g7": {
+          "label": "7. the festival ___ place",
+          "correct": "takes",
+          "why": "“Take place” is the fixed phrase meaning “happen”."
+        },
+        "g8": {
+          "label": "8. everybody ___ home",
+          "correct": "goes",
+          "why": "You go home after the fireworks."
+        },
+        "g9": {
+          "label": "9. (Wiederholung) Thanksgiving ___ celebrated",
+          "correct": "is",
+          "why": "Present simple passive: the singular subject takes “is” + past participle. Revision from Going to the West."
+        },
+        "g10": {
+          "label": "10. (Wiederholung) the children ___ the fireworks right now",
+          "correct": "are watching",
+          "why": "“Right now” signals the present progressive. Revision from Off to the Midwest."
+        }
+      }
+    }
+  },
+  "8c-going-west-gerunds": {
+    "exA": {
+      "gaps": {
+        "g1": {
+          "label": "1. work as ___",
+          "correct": "volunteers",
+          "why": "Volunteers work without being paid — which the next sentence confirms."
+        },
+        "g2": {
+          "label": "2. they do not get any ___",
+          "correct": "money",
+          "why": "Volunteers are not paid, so they get no money."
+        },
+        "g3": {
+          "label": "3. clean the ___",
+          "correct": "beaches",
+          "why": "Storms leave rubbish on beaches, which the group cleans."
+        },
+        "g4": {
+          "label": "4. builds new ___",
+          "correct": "paths",
+          "why": "Walkers in the mountains need paths."
+        },
+        "g5": {
+          "label": "5. learn a lot about ___",
+          "correct": "nature",
+          "why": "A national park is where you learn about nature and how to protect it."
+        },
+        "g6": {
+          "label": "6. sit around a ___",
+          "correct": "campfire",
+          "why": "You sit around a campfire in the evening."
+        },
+        "g7": {
+          "label": "7. it is hard ___",
+          "correct": "work",
+          "why": "“Hard work” is the fixed phrase."
+        },
+        "g8": {
+          "label": "8. never forget the ___",
+          "correct": "experience",
+          "why": "An experience is something you live through and remember."
+        }
+      }
+    },
+    "exB": {
+      "gaps": {
+        "g1": {
+          "label": "1. I enjoy ___",
+          "correct": "walking",
+          "why": "“Enjoy” is always followed by the -ing form."
+        },
+        "g2": {
+          "label": "2. she finished ___",
+          "correct": "building",
+          "why": "“Finish” takes the -ing form."
+        },
+        "g3": {
+          "label": "3. do you mind ___?",
+          "correct": "washing",
+          "why": "“Mind” takes the -ing form."
+        },
+        "g4": {
+          "label": "4. our guide suggested ___",
+          "correct": "cleaning",
+          "why": "“Suggest” takes the -ing form, never a to-infinitive."
+        },
+        "g5": {
+          "label": "5. we avoid ___",
+          "correct": "using",
+          "why": "“Avoid” is always followed by the -ing form."
+        },
+        "g6": {
+          "label": "6. they practise ___",
+          "correct": "speaking",
+          "why": "“Practise” takes the -ing form."
+        },
+        "g7": {
+          "label": "7. keep ___",
+          "correct": "working",
+          "why": "“Keep” + -ing means to continue doing something."
+        },
+        "g8": {
+          "label": "8. he gave up ___",
+          "correct": "watching",
+          "why": "“Give up” takes the -ing form."
+        }
+      }
+    },
+    "exC": {
+      "gaps": {
+        "g1": {
+          "label": "1. good at ___",
+          "correct": "reading",
+          "why": "After the preposition “at” the verb takes -ing."
+        },
+        "g2": {
+          "label": "2. interested in ___",
+          "correct": "protecting",
+          "why": "After the preposition “in” the verb takes -ing."
+        },
+        "g3": {
+          "label": "3. instead of ___",
+          "correct": "taking",
+          "why": "“Instead of” ends in a preposition, so the verb takes -ing."
+        },
+        "g4": {
+          "label": "4. thank you for ___",
+          "correct": "helping",
+          "why": "After “for” the verb takes -ing."
+        },
+        "g5": {
+          "label": "5. before ___",
+          "correct": "going",
+          "why": "“Before” here works as a preposition, so the verb takes -ing."
+        },
+        "g6": {
+          "label": "6. after ___",
+          "correct": "finishing",
+          "why": "“After” here works as a preposition, so the verb takes -ing."
+        },
+        "g7": {
+          "label": "7. look forward to ___",
+          "correct": "visiting",
+          "why": "In “look forward to”, “to” is a preposition — so it is “to visiting”."
+        },
+        "g8": {
+          "label": "8. without ___",
+          "correct": "saying",
+          "why": "After “without” the verb always takes -ing."
+        },
+        "g9": {
+          "label": "9. (Wiederholung) The volunteer ___ built the path",
+          "correct": "who",
+          "why": "“Who” introduces a defining relative clause about a person. Revision from Settling in the South."
+        },
+        "g10": {
+          "label": "10. (Wiederholung) She ___ worked here since June",
+          "correct": "has",
+          "why": "“Since June” + a singular subject needs the present perfect “has worked”. Revision from Around the Southwest."
+        }
+      }
+    }
   }
 }

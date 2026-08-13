@@ -40,7 +40,7 @@
       <div class="ov-card"><div class="ov-icon">📖</div><strong>Ex A – Reading</strong>Read about a summer volunteering project and fill in the missing words</div>
       <div class="ov-card locked"><div class="ov-icon">🔤</div><strong>Ex B – Gerunds after verbs</strong><em>enjoy</em>, <em>finish</em>, <em>mind</em>, <em>avoid</em> + <em>-ing</em></div>
       <div class="ov-card locked"><div class="ov-icon">🔗</div><strong>Ex C – After prepositions</strong><em>good at</em>, <em>instead of</em>, <em>before</em> + <em>-ing</em></div>
-      <div class="ov-card locked"><div class="ov-icon">✍️</div><strong>Ex D – Writing</strong>Write about a project you would like to join</div>
+      <div class="ov-card locked"><div class="ov-icon">✍️</div><strong>Ex D – Writing</strong>Apply to Ms Reed for a volunteering place</div>
     </div>
 
     <div class="card">
@@ -81,17 +81,17 @@
     <div class="card">
       <div class="card-title">Reading Text</div>
       <div class="reading-text">
-        <p>Every summer, teenagers from all over the USA travel west to work as <span class="gap-num">1</span><select class="gap-select" id="exA-g1"><option value="">— choose —</option><option value="vehicles">vehicles</option><option value="volunteers">volunteers</option><option value="volcanoes">volcanoes</option></select> in the national parks. They do not get any <span class="gap-num">2</span><select class="gap-select" id="exA-g2"><option value="">— choose —</option><option value="monkey">monkey</option><option value="Monday">Monday</option><option value="money">money</option></select> for their work, but they get free food and a place to sleep.</p>
+        <p>Every summer, teenagers from all over the USA travel west to work as <span class="gap-num">1</span><select class="gap-select" id="exA-g1"><option value="">— choose —</option><option value="vehicles">vehicles</option><option value="volunteers">volunteers</option><option value="volcanoes">volcanoes</option></select> in the national parks. They do not get any <span class="gap-num">2</span><select class="gap-select" id="exA-g2"><option value="">— choose —</option><option value="monkey">monkey</option><option value="Monday">Monday</option><option value="money">money</option></select> for their work, but they get free food and a place to sleep. Most of them do not mind <strong>getting</strong> up early.</p>
 
         <p>In Alaska, one group helps to clean the <span class="gap-num">3</span><select class="gap-select" id="exA-g3"><option value="">— choose —</option><option value="beaches">beaches</option><option value="benches">benches</option><option value="branches">branches</option></select> after big storms. Another group builds new <span class="gap-num">4</span><select class="gap-select" id="exA-g4"><option value="">— choose —</option><option value="pants">pants</option><option value="paths">paths</option><option value="pans">pans</option></select> for walkers in the mountains.</p>
 
-        <p>The young people enjoy working outside, and they also learn a lot about <span class="gap-num">5</span><select class="gap-select" id="exA-g5"><option value="">— choose —</option><option value="napkin">napkin</option><option value="nurse">nurse</option><option value="nature">nature</option></select> and how to protect it.</p>
+        <p>The young people enjoy <strong>working</strong> outside, and they also learn a lot about <span class="gap-num">5</span><select class="gap-select" id="exA-g5"><option value="">— choose —</option><option value="napkin">napkin</option><option value="nurse">nurse</option><option value="nature">nature</option></select> and how to protect it.</p>
 
-        <p>In the evening they sit around a <span class="gap-num">6</span><select class="gap-select" id="exA-g6"><option value="">— choose —</option><option value="campfire">campfire</option><option value="carpet">carpet</option><option value="cupboard">cupboard</option></select> and talk about their day. Many say it is hard <span class="gap-num">7</span><select class="gap-select" id="exA-g7"><option value="">— choose —</option><option value="word">word</option><option value="work">work</option><option value="world">world</option></select>, but they never forget the <span class="gap-num">8</span><select class="gap-select" id="exA-g8"><option value="">— choose —</option><option value="expensive">expensive</option><option value="expression">expression</option><option value="experience">experience</option></select>.</p>
+        <p>In the evening they sit around a <span class="gap-num">6</span><select class="gap-select" id="exA-g6"><option value="">— choose —</option><option value="campfire">campfire</option><option value="carpet">carpet</option><option value="cupboard">cupboard</option></select> and enjoy <strong>talking</strong> about their day. Many say it is hard <span class="gap-num">7</span><select class="gap-select" id="exA-g7"><option value="">— choose —</option><option value="word">word</option><option value="work">work</option><option value="world">world</option></select>, but they never forget the <span class="gap-num">8</span><select class="gap-select" id="exA-g8"><option value="">— choose —</option><option value="expensive">expensive</option><option value="expression">expression</option><option value="experience">experience</option></select>.</p>
       </div>
     </div>
 
-    <div id="step1-error" class="feedback err"></div>
+    <div id="exA-warn" class="feedback err"></div>
     <div id="step1-fb" class="feedback"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(1)">&larr; Back</button>
@@ -125,7 +125,7 @@
       </div>
     </div>
 
-    <div id="step2-error" class="feedback err"></div>
+    <div id="exB-warn" class="feedback err"></div>
     <div id="step2-fb" class="feedback"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(2)">&larr; Back</button>
@@ -159,7 +159,16 @@
       </div>
     </div>
 
-    <div id="step3-error" class="feedback err"></div>
+    <!-- Spaced recall: two items from earlier units, not from this one. -->
+    <div class="card">
+      <div class="card-title">Wiederholung <span style="font-weight:400;color:var(--muted);font-size:.85rem">— aus früheren Units</span></div>
+      <div class="gap-text" style="line-height:2.8">
+        <p>9. The volunteer <select class="gap-select" id="exC-g9"><option value="">— choose —</option><option value="which">which</option><option value="who">who</option><option value="where">where</option></select> built the new path comes from Alaska. <span class="rev-src">Settling in the South</span></p>
+        <p>10. She <select class="gap-select" id="exC-g10"><option value="">— choose —</option><option value="is">is</option><option value="have">have</option><option value="has">has</option></select> worked in the park since June. <span class="rev-src">Around the Southwest</span></p>
+      </div>
+    </div>
+
+    <div id="exC-warn" class="feedback err"></div>
     <div id="step3-fb" class="feedback"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(3)">&larr; Back</button>
@@ -176,8 +185,8 @@
 <section id="step-4" class="step">
   <div class="step-inner">
     <span class="ex-badge">Exercise D</span>
-    <h2 class="ex-title">Writing: A Project for Me</h2>
-    <p class="ex-subtitle">Write about a volunteering project you would like to join (6–8 sentences). Say what you enjoy doing, what you are good at, and what you would avoid. Use at least <strong>four gerunds</strong>.</p>
+    <h2 class="ex-title">Writing: Your Application to Ms Reed</h2>
+    <p class="ex-subtitle">A national park is taking ten volunteers this summer. Write your application message (6–8 sentences) to the project leader, <strong>Ms Reed</strong>, so that she picks you: say what you enjoy doing, what you are good at, what you do not mind doing, and what you would rather avoid. Use at least <strong>four gerunds</strong>.</p>
 
     <div class="card">
       <div class="card-title">Useful language</div>
@@ -193,12 +202,12 @@
       <div class="card-title">Your text</div>
       <div class="form-group">
         <label class="form-label" for="exD-text">Write about your project here:</label>
-        <textarea class="form-textarea" id="exD-text" placeholder="I would like to work in a national park because I enjoy walking..." rows="8"></textarea>
-        <div class="form-hint">Aim for 6–8 sentences with at least four gerunds (verb + -ing).</div>
+        <textarea class="form-textarea" id="exD-text" placeholder="Dear Ms Reed, I would like to join the project because I enjoy working..." rows="8"></textarea>
+        <div class="form-hint">Write to Ms Reed. Aim for 6–8 sentences with at least four gerunds (verb + -ing).</div>
       </div>
     </div>
 
-    <div id="step4-error" class="feedback err"></div>
+    <div id="exD-warn" class="feedback err"></div>
     <div class="btn-row">
       <button class="btn btn-outline" onclick="prevStep(4)">&larr; Back</button>
       <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(4)">Review &amp; Submit &rarr;</button>
@@ -255,25 +264,52 @@ var TEACHER_EMAIL = 'englishonlinetraining@pm.me';
 var state = { name:'', cls:'', exA:{}, exB:{}, exC:{}, exD:{}, scores:{} };
 var maxStepReached = 0;
 
-var GAPS = ['g1','g2','g3','g4','g5','g6','g7','g8'];
+var GAPS   = ['g1','g2','g3','g4','g5','g6','g7','g8'];
+/* Exercise C carries two extra spaced-recall items (g9, g10) from earlier
+   8c units, so it has its own gap list. */
+var GAPS_C = GAPS.concat(['g9','g10']);
 
 /* ============================================================
-   VALIDATION
+   VALIDATION — messages name what is actually missing.
+   They are written into each step's OWN element id (exA-warn …), never
+   #step<n>-error: nextStep() overwrites that one with a generic string.
 ============================================================ */
-function validateStep(n) {
-  switch (n) {
-    case 1: return countFilled('exA-') >= 6;
-    case 2: return countFilled('exB-') >= 6;
-    case 3: return countFilled('exC-') >= 6;
-    case 4: return g('exD-text').split(/\s+/).length >= 25;
-    default: return true;
-  }
+function warnStep(n, msg) {
+  var el = document.getElementById('ex' + String.fromCharCode(64 + n) + '-warn');
+  if (el) { el.textContent = msg; el.classList.add('show'); }
+}
+function clearWarnStep(n) {
+  var el = document.getElementById('ex' + String.fromCharCode(64 + n) + '-warn');
+  if (el) el.classList.remove('show');
 }
 
-function countFilled(prefix) {
-  var filled = 0;
-  GAPS.forEach(function(k) { if (g(prefix + k)) filled++; });
-  return filled;
+function needGaps(n, prefix, list, min) {
+  var blank = [];
+  list.forEach(function(k, i) { if (!g(prefix + k)) blank.push(i + 1); });
+  var done = list.length - blank.length;
+  if (done >= min) { clearWarnStep(n); return true; }
+  warnStep(n, 'Please answer at least ' + min + ' of the ' + list.length + ' questions — you have '
+    + done + ' so far. Still empty: ' + blank.join(', ') + '.');
+  return false;
+}
+
+function needWords(n, id, min) {
+  var t = g(id);
+  var w = t ? t.split(/\s+/).length : 0;
+  if (w >= min) { clearWarnStep(n); return true; }
+  warnStep(n, 'That is only ' + w + ' word' + (w === 1 ? '' : 's') + ' — write at least '
+    + min + ' (about 6–8 sentences) so Ms Reed can judge your application.');
+  return false;
+}
+
+function validateStep(n) {
+  switch (n) {
+    case 1: return needGaps(1, 'exA-', GAPS, 6);
+    case 2: return needGaps(2, 'exB-', GAPS, 6);
+    case 3: return needGaps(3, 'exC-', GAPS_C, 8);
+    case 4: return needWords(4, 'exD-text', 25);
+    default: return true;
+  }
 }
 
 /* ============================================================
@@ -286,7 +322,7 @@ function saveStep(n) {
       state.exA.recall = g('exA-recall');   /* optional warm-up — never validated, never scored */
       break;
     case 2: GAPS.forEach(function(k) { state.exB[k] = g('exB-'+k); }); break;
-    case 3: GAPS.forEach(function(k) { state.exC[k] = g('exC-'+k); }); break;
+    case 3: GAPS_C.forEach(function(k) { state.exC[k] = g('exC-'+k); }); break;
     case 4: state.exD.text = g('exD-text'); break;
   }
 }
@@ -298,7 +334,7 @@ function restoreStep(n) {
       set('exA-recall', state.exA.recall);
       break;
     case 2: GAPS.forEach(function(k) { set('exB-'+k, state.exB[k]); }); break;
-    case 3: GAPS.forEach(function(k) { set('exC-'+k, state.exC[k]); }); break;
+    case 3: GAPS_C.forEach(function(k) { set('exC-'+k, state.exC[k]); }); break;
     case 4: set('exD-text', state.exD.text); break;
   }
 }
@@ -319,7 +355,8 @@ var LABELS_B = {
 var LABELS_C = {
   g1:'1 — good at ___', g2:'2 — interested in ___', g3:'3 — instead of ___',
   g4:'4 — thank you for ___', g5:'5 — before ___', g6:'6 — after ___',
-  g7:'7 — look forward to ___', g8:'8 — without ___'
+  g7:'7 — look forward to ___', g8:'8 — without ___',
+  g9:'9 — (Wiederholung) The volunteer ___ built the path', g10:'10 — (Wiederholung) She ___ worked here since June'
 };
 
 function buildSummary() {
@@ -327,7 +364,7 @@ function buildSummary() {
   rows.push({ ex:'Exercise A', q:'Before you read (optional, not marked)', a: state.exA.recall });
   GAPS.forEach(function(k) { rows.push({ ex:'Exercise A', q: LABELS_A[k], a: state.exA[k] }); });
   GAPS.forEach(function(k) { rows.push({ ex:'Exercise B', q: LABELS_B[k], a: state.exB[k] }); });
-  GAPS.forEach(function(k) { rows.push({ ex:'Exercise C', q: LABELS_C[k], a: state.exC[k] }); });
+  GAPS_C.forEach(function(k) { rows.push({ ex:'Exercise C', q: LABELS_C[k], a: state.exC[k] }); });
   rows.push({ ex:'Exercise D', q:'A project for me', a: state.exD.text });
 
   var html = '<div class="submit-summary">'
@@ -359,8 +396,8 @@ function buildEmailBody() {
   GAPS.forEach(function(k,i) { body += '\n  Gap ' + (i+1) + ': ' + (state.exA[k] || '(blank)'); });
   body += '\n\n--- Exercise B: Verb + -ing ---';
   GAPS.forEach(function(k,i) { body += '\n  ' + (i+1) + ': ' + (state.exB[k] || '(blank)'); });
-  body += '\n\n--- Exercise C: Preposition + -ing ---';
-  GAPS.forEach(function(k,i) { body += '\n  ' + (i+1) + ': ' + (state.exC[k] || '(blank)'); });
+  body += '\n\n--- Exercise C: Preposition + -ing + spaced recall ---';
+  GAPS_C.forEach(function(k,i) { body += '\n  ' + (i+1) + ': ' + (state.exC[k] || '(blank)'); });
   body += '\n\n--- Exercise D: Writing ---\n' + (state.exD.text || '(none)');
   return body;
 }
@@ -393,8 +430,9 @@ function checkExB() {
 }
 
 function checkExC() {
-  var answers = { g1:'reading', g2:'protecting', g3:'taking', g4:'helping', g5:'going', g6:'finishing', g7:'visiting', g8:'saying' };
-  checkDropdowns(GAPS, 'exC-', answers, 'step3-fb', 'exC');
+  var answers = { g1:'reading', g2:'protecting', g3:'taking', g4:'helping', g5:'going', g6:'finishing', g7:'visiting', g8:'saying',
+                  g9:'who', g10:'has' };   /* g9, g10 = spaced recall from earlier units */
+  checkDropdowns(GAPS_C, 'exC-', answers, 'step3-fb', 'exC');
 }
 
 /* ============================================================

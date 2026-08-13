@@ -203,3 +203,7 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); min-
   .expl-row.expl-wrong { border-left-color: #f3a3b0; }
   .expl-row.expl-ok    { border-left-color: #7fe0a0; }
 }
+
+/* Spaced-recall item tag — names the earlier unit an item came back from
+   (used by the *-review.html pages and by in-unit Wiederholung blocks). */
+.rev-src{display:inline-block;margin-left:.4rem;font-size:.7rem;color:var(--muted);opacity:.85}
