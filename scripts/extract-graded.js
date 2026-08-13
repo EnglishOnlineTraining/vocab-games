@@ -134,7 +134,8 @@ function todo() {
       if (unit && have[unit]) done.push(f);
       else backlog.push({ f: f, unit: unit, gaps: calls.reduce(function (s, c) { return s + c.ids.length; }, 0) });
     } else if (/state\.scores\s*\[|\bscoreKey\b|checkDropdowns/.test(src)) {
-      manual.push(f);
+      if (unit && have[unit]) done.push(f);
+      else manual.push(f);
     }
   });
   console.log('EXPLANATIONS BACKLOG — ' + backlog.length + ' pages need entries (extractable):\n');
