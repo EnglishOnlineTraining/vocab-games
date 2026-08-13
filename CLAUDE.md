@@ -333,6 +333,40 @@ data. Concretely:
 - It is explicitly framed as "keine Note", shows the student's word count, and offers a
   Noch nicht / Fast / Ja self-rating that is stored nowhere.
 
+### 5d. Spaced-review pages — `*-review.html` (generated, added 2026-08-12)
+
+Every exercise in the repo is self-contained: a point is met once, in one unit, and never comes
+back. **`node scripts/build-review-pages.js`** adds the missing half — one *Gemischte
+Wiederholung* page per category (`8c` `8g` `10c` `10g` `msa` `uni` `it` `be`) that mixes 24
+questions drawn from *earlier* units.
+
+- **Nothing is authored.** The questions are joined from two things that already exist:
+  `data/explanations.json` (label + correct answer + the one-line `why`) and each source page's
+  option list. It reuses `scripts/extract-graded.js` **as a module** (`gradedCalls`, `gapDetail`,
+  `unitOf`, `decode`) so the answer-key/HTML parsing lives in exactly one place — that file now
+  exports and only runs its CLI under `require.main === module`.
+- **Interleaved, not blocked:** items are taken round-robin across source units, so consecutive
+  questions come from different units. Each question is tagged with the unit it came from, so a
+  wrong answer points the student back to the right page.
+- **Only fully-explained items qualify** (a `why` plus a recoverable option list plus an answer
+  key that matches the markup), so a review page can always explain every wrong answer.
+- **Letter-coded pages are normalised.** The `it-*` series uses `value="a"` with the real wording
+  in the option text; the generator resolves through the page's own answer key and rebuilds the
+  options in *text*, so a review page never shows "a / b / c".
+- **Deterministic** — selection and option order are seeded from stable strings, never
+  `Math.random`, so regenerating produces byte-identical files and these pages don't churn in git.
+- Explanations are emitted **inline as `var EXPLAIN`** rather than into `data/explanations.json`:
+  that file is hand-authored per source unit, and these are generated copies. `exercise.js`
+  prefers an inline `EXPLAIN` over the data file.
+- Year 7 and Year 9 are deliberately **not** generated (drafting is paused — see above), even
+  though `7g` has enough material. Add an entry to `CATEGORIES` in the script to turn one on.
+- `topic-pool.js` skips `*-review.html` in its orphan check — a review page revisits topics that
+  are already registered, so it is not a topic of its own.
+
+**Never hand-edit `*-review.html`** — edit the script and rerun, then
+`build-exercise-data.js` → `build-hub.js` → `build-topic-pages.js`. Each per-category hub carries
+a "Gemischte Wiederholung" card.
+
 ### 6. Shared framework — `exercise.js` (standardised 2026-07-17)
 All step-based exercise pages load the **single shared framework** via `<script src="exercise.js"></script>`; no page carries its own copy of the framework functions any more (~330 KB of copy-paste drift was removed). A page's inline script defines ONLY:
 - **Config:** `UNIT`, `TOTAL_STEPS`, `SHEET_URL`, `TEACHER_EMAIL`

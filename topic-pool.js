@@ -50,6 +50,11 @@ fs.readdirSync(ROOT).forEach(function (f) {
   var m = f.match(/^(8g|8c|10g|10c)-.*\.html$/);
   if (!m) return;
   if (f.indexOf('-activities.html') !== -1) return; /* hub pages, not exercises */
+  if (/-review\.html$/.test(f)) return;             /* generated spaced-review pages
+                                                       (scripts/build-review-pages.js) —
+                                                       they revisit topics that are already
+                                                       registered, so they are not topics
+                                                       of their own */
   if (!registeredFiles[f]) problems.push('orphan file (no registry entry): ' + f);
 });
 
