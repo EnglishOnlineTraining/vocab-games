@@ -52,7 +52,18 @@ function decode(s) {
           .replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 }
 function m1(re, s) { const m = s.match(re); return m ? m[1].trim() : ''; }
+// Three legacy pages predate the filename-prefix convention, so the regexes below
+// dumped them in 'other' — invisible to the Klasse 9 / Business filters and undercounting
+// those categories on every generated surface. Their real home is the one CLAUDE.md's
+// file-structure table and the per-year hub pages already give them.
+const LEGACY_UNPREFIXED = {
+  'california-exercises.html': [9, 'gymnasium'],
+  'sport-south-africa.html':   [9, 'oberschule'],
+  'eurofiber-online.html':     ['business', 'business']
+};
+
 function schoolFromPrefix(f) {
+  if (LEGACY_UNPREFIXED[f]) return LEGACY_UNPREFIXED[f];
   if (/^7a-/.test(f)) return [7, 'gymnasium'];
   let m = f.match(/^(\d{1,2})([gc])-/);
   if (m) return [parseInt(m[1], 10), m[2] === 'g' ? 'gymnasium' : 'oberschule'];
