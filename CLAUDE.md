@@ -84,6 +84,8 @@ harmless.
 
 Year 7 and Year 9 exercise **drafting is paused** (decided 2025-06-25). Existing Y7/Y9 exercises remain live; the `daily-exercise-draft` scheduled task no longer generates new ones for these years. When Shaun wants to resume, re-add Y7/Y9 slots to the rotation.
 
+**One-off Y9 batch, 2026-08-13 — the pause still stands.** Shaun asked for five 9c exercises on request ("no need to reopen years"), so they were built by hand through `daily-exercise-draft` **without** un-pausing Year 9: the rotation is unchanged and `topic-pool.json` still has no 9c/9g category. The five are `9c-work-experience-jobs` (present perfect vs simple past), `9c-mandela-rainbow-nation` (relative clauses), `9c-media-reported-speech` (reported speech), `9c-healthy-living-conditionals` (if-clauses I & II) and `9c-future-plans-school` (future forms). Because there is no Y9 pool, the topics were chosen against the existing 9c corpus (South Africa strand + environment) and the standard Year 9 Oberschule grammar syllabus — one distinct grammar focus each, no overlap with `9c-plastic-pollution`, `9c-south-africa-revision` or `sport-south-africa`. **If more Y9 work is ever commissioned, add a 9c/9g category to `topic-pool.json` first** rather than repeating this ad-hoc selection.
+
 ### Class prefix note — `7a-`
 `7a-what-was-it-like.html` carries a `7a-` prefix because it was written for class 7a rather than 7g. Class 7a follows the Gymnasium curriculum, so the file lives in the `7g-activities.html` hub and uses the Year 7 Make webhook. Any future exercise for a similarly-named Gymnasium class (7a, 7b, etc.) should use the `7g-` hub and webhook, with the class letter in the filename prefix.
 
@@ -199,7 +201,7 @@ Used by: `7a-what-was-it-like.html`, `7c-dictionary-skills.html`, `7c-england-no
 ```
 https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj
 ```
-Used by: `9c-plastic-pollution.html`, `9c-south-africa-revision.html`, `9g-california-hazards.html`, `9g-canada-conditionals.html`, `9g-class-test-9ab.html`, `9g-famous-hollywood.html`, `9g-great-barrier-reef.html`, `9g-ireland-gerunds.html`, `9g-summer-revision.html`
+Used by: `9c-future-plans-school.html`, `9c-healthy-living-conditionals.html`, `9c-mandela-rainbow-nation.html`, `9c-media-reported-speech.html`, `9c-plastic-pollution.html`, `9c-south-africa-revision.html`, `9c-work-experience-jobs.html`, `9g-california-hazards.html`, `9g-canada-conditionals.html`, `9g-class-test-9ab.html`, `9g-famous-hollywood.html`, `9g-great-barrier-reef.html`, `9g-ireland-gerunds.html`, `9g-summer-revision.html`
 
 `california-exercises.html` and `sport-south-africa.html` predated the Make migration and were still on the old Apps Script Y9 URL — both repointed to the Year 9 Make webhook above on 2026-06-22, so all live Y7/Y9 exercises are now consistently on Make.
 
