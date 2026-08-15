@@ -59,15 +59,37 @@ prices written down.
 
 ## Phase 1 — Foundations (Days 1–4)
 
-- [ ] Decide a seller name/brand — likely tied to englishonline.training for cross-promotion
-- [ ] Write author bio (2–3 sentences: Berlin-based lecturer, Brandenburg curriculum, secondary + corporate)
-- [ ] Set up a `/shop` or `/materialien` landing page on englishonline.training pointing to Eduki listings
+**Copy reference: `docs/marketing-frameworks.md`** (added 2026-08-15) — buyer profile, offer
+definition, voice rules and the landing-page spec, all filled in. Read it before writing any
+buyer-facing text. Its central point: **the Eduki buyer is a teacher, not a student**, so this
+copy uses *Sie* and leads with preparation time saved — the opposite of the free site's register.
+
+- [x] **Seller brand — decided:** English online training (ties to englishonline.training for
+      cross-promotion)
+- [x] **Author bio — drafted 2026-08-15** (German, *Sie*-register, teacher-to-teacher per the
+      VOICE rules):
+      > Ich bin ein erfahrener Englischlehrer und Lernmittel-Autor mit über einem Jahrzehnt
+      > Unterrichtserfahrung in Berlin und Brandenburg. Meine Materialien sind prüfungsnah
+      > aufgebaut — für den Mittleren Schulabschluss und das Abitur, mit Lösungsschlüssel und
+      > sofort einsetzbar. Daneben arbeite ich mit Unternehmen im Bereich Business English.
+- [ ] Set up a `/materialien` landing page on englishonline.training. **Build it
+      email-capture-first, not as a list of links** — no listings exist yet, and a page of dead
+      links to unpublished products is the placeholder trap. Add listing links in Phase 2 when
+      there is something to link to. Spec: the PATH section of `marketing-frameworks.md`.
 - [ ] **Put the MailerLite embed on the practise-mode results screen.** _(Replaces v1's "add a
       MailerLite signup hook" — the hook already exists. Account `2491182`, form `1gw3aR`, live and
       converting on `msa-c-american-dream.html` and all four `lead-*.html` pages. The results
       screen is the highest-volume surface on the site and is already flagged as an open to-do in
       `docs/eol-backlog-plan.md`.)_
 - [ ] Decide the free-vs-paid line: which one unit goes free as a lead magnet
+- [ ] **Split the MailerLite welcome sequence on `source_task`.** Verified 2026-08-15: the account
+      has 47 subscribers, one 5-step welcome sequence, and the fields `source_task` / `school_type`
+      / `last_score` all exist but report `used_in_automations: false` — we collect segmentation
+      data and branch on none of it. That was harmless at 5 capture pages; the embed now sits on
+      ~128, so the incoming mix shifts from "sought out a lead magnet" to "finished any exercise"
+      (students, teachers and adult learners mixed together). `source_task` already separates them:
+      `msa-c-*` signals MSA/teacher interest, `it-*`/`be-*` adult learners, `7g-`/`8c-` students.
+      Do this before the list grows, not after.
 - [x] **Definition of done for a listing** — decided 2026-08-11, applies to all six:
       - **Minimum 5 tasks/exercises per sellable unit, each with an explanation** (why the answer is
         correct — the same explanation model already built for `data/explanations.json` on the free
