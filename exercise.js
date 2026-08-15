@@ -86,6 +86,20 @@ function eolPractiseResults() {
   panel.innerHTML = eolPractisePanelHtml();
   var inner = step.querySelector('.step-inner') || step;
   inner.appendChild(panel);   // at the end, below summary + explanations
+  eolMoveCaptureIntoPanel(panel);
+}
+
+/* The capture card is anchored after the submit card, which practise mode hides — that
+   leaves it stranded above the results. Move it into the results panel, just before the
+   retry/navigation card, so the order reads: points → self-check → opt-in → try again.
+   No-op on pages that never opted in, and on the normal submission flow. */
+function eolMoveCaptureIntoPanel(panel) {
+  var capture = document.getElementById('ml-capture');
+  if (!capture || !panel) return;
+  var cards = panel.querySelectorAll('.card');
+  var last = cards.length ? cards[cards.length - 1] : null;
+  if (last) panel.insertBefore(capture, last);
+  else panel.appendChild(capture);
 }
 
 function eolPractisePanelHtml() {
