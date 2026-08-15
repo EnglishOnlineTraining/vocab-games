@@ -82,14 +82,45 @@ copy uses *Sie* and leads with preparation time saved — the opposite of the fr
       screen is the highest-volume surface on the site and is already flagged as an open to-do in
       `docs/eol-backlog-plan.md`.)_
 - [ ] Decide the free-vs-paid line: which one unit goes free as a lead magnet
-- [ ] **Split the MailerLite welcome sequence on `source_task`.** Verified 2026-08-15: the account
-      has 47 subscribers, one 5-step welcome sequence, and the fields `source_task` / `school_type`
-      / `last_score` all exist but report `used_in_automations: false` — we collect segmentation
-      data and branch on none of it. That was harmless at 5 capture pages; the embed now sits on
-      ~128, so the incoming mix shifts from "sought out a lead magnet" to "finished any exercise"
-      (students, teachers and adult learners mixed together). `source_task` already separates them:
-      `msa-c-*` signals MSA/teacher interest, `it-*`/`be-*` adult learners, `7g-`/`8c-` students.
-      Do this before the list grows, not after.
+- [~] **Audience split — code done 2026-08-15, blocked on two dashboard tasks.**
+
+      The gap turned out to be bigger than "fields aren't used for branching". Verified against the
+      live account 2026-08-15:
+
+      - The one existing automation ("Welcome Sequence — Website Subscribers") triggers on group
+        **`Website Subscribers`** — *not* on any of the four EOL capture groups. Its emails are
+        parent-facing („Kostenlose Übungen für **Ihr Kind**"). So there was never one sequence to
+        split: a teacher signing up through the MSA or Teachers form landed in a group that
+        triggered **nothing at all**.
+      - All four `lead-*` pages pointed at the single MSA form (Shaun's deliberate 2026-08-08
+        trade-off — see `eol-backlog-plan.md`), so every audience shared one group.
+      - Nothing was lost in reversing that: the MSA form shows 18 opens, 1 conversion, and that
+        one signup is still `unconfirmed`. Group *EOL – MSA* has `active_count: 0`. The account's
+        47 subscribers all predate this, via `Website Signup — Eltern-Ratgeber`.
+
+      **Done in code:** merged the 2026-08-07 opt-in mechanism (`var MAILERLITE_CAPTURE = 'msa' |
+      'business'` in `exercise.js`); each `lead-*` page repointed to its own form
+      (`bHIAs6` Teachers · `Bp589z` Business English · `tmhk85` Abitur · `1gw3aR` MSA); capture
+      card moved inside the practise-results panel so it reads points → self-check → opt-in →
+      try again.
+
+      **Deliberately not on student pages.** Capture is opt-in and set only on `msa-c-*` (Klasse 10)
+      and `be-*` (adults), plus the Abitur packs and `lead-*` pages. It is **not** on Year 7–9
+      pages: Germany did not lower the GDPR Art. 8 digital-consent age from 16, so an email capture
+      aimed at 12–15-year-olds would need parental consent. Keep it off those pages.
+
+      **Blocked on Shaun — the API cannot do either of these:**
+      1. **Build the three empty form designs** (`bHIAs6`, `Bp589z`, `tmhk85` — all still
+         `has_content: false`), ~5 min each in the dashboard, mirroring the MSA form. Until then
+         those three lead pages render their heading and intro but no form.
+      2. **Design the two email bodies** in *Teacher Track — EOL Teachers* (automation
+         `195868777165882818`, created inactive 2026-08-15, correctly bound to the Teachers group).
+         Subjects and the 3-day delay are pre-set; MailerLite's API cannot author email HTML.
+         Activate when the copy is ready.
+
+      **Still open:** Business English, Abitur and MSA groups have no automation yet. Worth deciding
+      whether each needs its own track or whether one shared track keyed on `source_task` is enough
+      before committing to designing 6+ more email bodies by hand.
 - [x] **Definition of done for a listing** — decided 2026-08-11, applies to all six:
       - **Minimum 5 tasks/exercises per sellable unit, each with an explanation** (why the answer is
         correct — the same explanation model already built for `data/explanations.json` on the free
