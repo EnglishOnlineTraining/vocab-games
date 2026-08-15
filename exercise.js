@@ -86,8 +86,6 @@ function eolPractiseResults() {
   panel.innerHTML = eolPractisePanelHtml();
   var inner = step.querySelector('.step-inner') || step;
   inner.appendChild(panel);   // at the end, below summary + explanations
-  eolInitMailerLite();
-  eolEnhancePractiseML();
 }
 
 function eolPractisePanelHtml() {
@@ -115,52 +113,11 @@ function eolPractisePanelHtml() {
     + '<button class="btn btn-gold" type="button" style="width:100%;max-width:360px;justify-content:center" onclick="eolPractiseRetry()">↻ Nochmal üben · Try again</button>'
     + '<div style="margin-top:.7rem"><a class="btn btn-outline btn-sm" href="activities.html">← Alle Übungen</a></div>'
     + '</div>';
-  var mailerlite = '<div id="ml-capture-practise" class="card" style="margin-top:1.25rem">'
-    + '<h3 style="color:var(--blue);font-size:1.05rem;margin-bottom:.4rem;text-align:center">📧 Dein Ergebnis + gratis Lernpaket</h3>'
-    + '<p style="font-size:.88rem;color:var(--muted);text-align:center;margin-bottom:1rem">Trag dich ein, und wir schicken dir dein Ergebnis und kostenlose Zusatzmaterialien per E-Mail. Freiwillig — du kannst diesen Schritt überspringen.</p>'
-    + '<div class="ml-embedded" data-form="1gw3aR"></div>'
-    + '</div>';
-  return breakdown + selfcheck + buttons + mailerlite;
+  return breakdown + selfcheck + buttons;
 }
 
 function eolPractiseRetry() {
   window.location.href = window.location.pathname + '?mode=practise';
-}
-
-/* ============================================================
-   MAILERLITE INTEGRATION
-   Universal embed for practise-mode results screens.
-   Account 2491182, form 1gw3aR (group EOL – MSA).
-============================================================ */
-
-function eolInitMailerLite() {
-  if (window.ml) return;
-  (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-  .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-  n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-  (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-  ml('account', '2491182');
-}
-
-function eolEnhancePractiseML() {
-  var wrap = document.getElementById('ml-capture-practise');
-  if (!wrap) return;
-  function scorePercent() {
-    try {
-      var s = totalScore && typeof totalScore === 'function' ? totalScore() : null;
-      return (s && s.possible) ? String(Math.round(s.earned / s.possible * 100)) : '';
-    } catch (e) { return ''; }
-  }
-  function fillMeta() {
-    var st = wrap.querySelector('input[name="fields[source_task]"]');
-    var ls = wrap.querySelector('input[name="fields[last_score]"]');
-    if (st && typeof UNIT !== 'undefined') st.value = UNIT;
-    if (ls) ls.value = scorePercent();
-  }
-  new MutationObserver(fillMeta).observe(wrap, { childList: true, subtree: true });
-  fillMeta();
-  wrap.addEventListener('submit', fillMeta, true);
-  wrap.addEventListener('paste', function (ev) { ev.stopPropagation(); }, true);
 }
 
 function showToast(message, duration) {
