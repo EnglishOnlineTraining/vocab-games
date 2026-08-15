@@ -292,6 +292,10 @@ fs.writeFileSync(path.join(outDir, 'index.html'), indexHtml());
 
 // ---- sitemap.xml + robots.txt ----
 const urls = [];
+// The root landing page is served by index.html but is indexed — and canonicalised
+// in index.html itself — as the bare "/" URL, so the sitemap must declare "/" too.
+// Listing it as "/index.html" split the homepage across two URLs.
+urls.push(BASE + '/');
 urls.push(BASE + '/activities.html');
 fs.readdirSync(ROOT).filter(f => /activities\.html$/.test(f)).forEach(f => urls.push(BASE + '/' + f));
 exercises.forEach(e => urls.push(BASE + '/' + e.file));
@@ -303,7 +307,6 @@ exercises.forEach(e => urls.push(BASE + '/' + e.file));
 // 9g-class-test-9ab.html (graded test for one specific class), uni-writing-task.html
 // and uni-pm-vocabulary.html (timed, invigilated exams for enrolled students).
 const EXTRA_PUBLIC_PAGES = [
-  'index.html',
   'vocab-games.html',
   'business.html',
   'ielts-vocabulary-glossary.html',
