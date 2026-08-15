@@ -821,6 +821,75 @@ function eolInjectChrome() {
 }
 document.addEventListener('DOMContentLoaded', eolInjectChrome);
 
+/* ============================================================
+   MAILERLITE LEAD CAPTURE
+   Opt-in: a page sets var MAILERLITE_CAPTURE = 'msa' | 'business';
+   before including this file. Injects the official MailerLite
+   universal embed as a card right after the submit card, on the
+   results/submit step. Optional & skippable — MailerLite owns
+   submission, consent and double opt-in, so no GDPR handling here.
+============================================================ */
+var EOL_ML_CAPTURE_PRESETS = {
+  msa: {
+    formSlug: '1gw3aR',
+    title: '📧 Dein Ergebnis + gratis MSA-Lernpaket',
+    subtitle: 'Trag dich ein, und wir schicken dir dein Ergebnis und eine kostenlose MSA-Prüfungs-Checkliste per E-Mail. Freiwillig — du kannst diesen Schritt überspringen.'
+  },
+  business: {
+    formSlug: 'Bp589z',
+    title: '📧 Your results + a free phrase bank',
+    subtitle: 'Leave your email and we’ll send your results plus a free Business English phrase bank. Optional — feel free to skip this.'
+  }
+};
+
+function eolInitMailerLiteCapture() {
+  if (typeof MAILERLITE_CAPTURE === 'undefined' || !MAILERLITE_CAPTURE) return;
+  var preset = (typeof MAILERLITE_CAPTURE === 'string') ? EOL_ML_CAPTURE_PRESETS[MAILERLITE_CAPTURE] : MAILERLITE_CAPTURE;
+  if (!preset || !preset.formSlug || document.getElementById('ml-capture')) return;
+
+  var submitBtn = document.getElementById('submit-btn');
+  var anchorCard = submitBtn ? submitBtn.closest('.card') : null;
+  if (!anchorCard) return;
+
+  var wrap = document.createElement('div');
+  wrap.className = 'card';
+  wrap.id = 'ml-capture';
+  wrap.style.marginTop = '1.25rem';
+  wrap.innerHTML =
+    '<h3 style="color:var(--blue);font-size:1.05rem;margin-bottom:.4rem;text-align:center">' + preset.title + '</h3>'
+    + '<p style="font-size:.88rem;color:var(--muted);text-align:center;margin-bottom:1rem">' + preset.subtitle + '</p>'
+    + '<div class="ml-embedded" data-form="' + preset.formSlug + '"></div>';
+  anchorCard.parentNode.insertBefore(wrap, anchorCard.nextSibling);
+
+  if (!window.ml) {
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2491182');
+  }
+
+  function score() {
+    try { var s = totalScore(); return (s && s.possible) ? String(Math.round(s.earned / s.possible * 100)) : ''; }
+    catch (e) { return ''; }
+  }
+  function fill() {
+    var st = wrap.querySelector('input[name="fields[source_task]"]');
+    var ls = wrap.querySelector('input[name="fields[last_score]"]');
+    if (st) st.value = (typeof UNIT !== 'undefined') ? UNIT : '';
+    if (ls) ls.value = score();
+  }
+  // MailerLite injects the form asynchronously — set values once it appears,
+  // and again just before submit in case the widget rewrites them.
+  new MutationObserver(fill).observe(wrap, { childList: true, subtree: true });
+  fill();
+  wrap.addEventListener('submit', fill, true);
+  // Allow paste inside the capture form (email address) — stop the event in the
+  // capture phase before the shared document-level paste-blocker can cancel it.
+  wrap.addEventListener('paste', function (ev) { ev.stopPropagation(); }, true);
+}
+document.addEventListener('DOMContentLoaded', eolInitMailerLiteCapture);
+
 /* Load all pages' explanations once from the shared data file. Fetch fails
    under file:// — that's fine, explanations just stay hidden. If the data
    arrives after the student is already on the results screen, re-render. */

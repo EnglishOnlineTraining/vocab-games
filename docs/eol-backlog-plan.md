@@ -144,6 +144,32 @@ important in this market). Shape:
 <div class="ml-embedded" data-form="1gw3aR"></div>
 ```
 
+**Rolled out site-wide (2026-08-07).** MailerLite MCP came back reachable: four groups
+(*EOL – MSA*, *EOL – Abitur*, *EOL – Business English*, *EOL – Teachers*) and four matching
+embedded forms already existed (form ids/slugs: MSA `1gw3aR`, Abitur `tmhk85`, Business English
+`Bp589z`, Teachers `bHIAs6`) — only the MSA form had content built; the other three were empty
+shells (`has_content:false`). The MailerLite MCP toolset has no way to design form content/fields
+via API (only create/rename/list/delete) — **Shaun still needs ~5 min per form in the MailerLite
+dashboard to build the Abitur/Business English/Teachers form content** (mirroring the MSA form)
+before those three embeds render anything to visitors; the embed code goes live automatically the
+moment each form is published, no further commit needed.
+
+Shipped:
+1. **`exercise.js`** gained a shared, opt-in `eolInitMailerLiteCapture()` (mirrors the
+   breadcrumb/footer injection pattern) — a page sets `var MAILERLITE_CAPTURE = 'msa'` or
+   `'business'` and gets the capture card auto-injected after the submit card, with
+   `source_task`/`last_score` autofill and the paste-blocker bypass, zero other per-page code.
+2. All 20 live MSA units (`msa-c-*.html`, including `american-dream` migrated onto the shared
+   mechanism) and all 16 Business English units (`be-*.html`) opted in via that one line.
+3. The 16 standalone Abitur packs (separate architecture, no `exercise.js`) got the inline
+   universal embed block on their `#finalScore` screen, pointing at the Abitur form/group.
+4. All four `lead-*.html` pages now capture email — each pointing at the group matching its
+   magnet (MSA checklist → MSA, Abitur Redemittel → Abitur, BE phrase bank → Business English,
+   Teachers page → Teachers).
+5. Corporate enquiries from 1965 still go via the Jetpack form to email, **not** into
+   MailerLite — not changed by this rollout; still an open question whether they should also be
+   tagged into a corporate group.
+
 **MailerLite MCP reachable again (2026-08-08) — audiences, groups and form IDs now confirmed.**
 A matched per-audience group + embedded form already exists for all four `lead-*` pages, created
 2026-07-31 but never wired up. Account is `2491182` for all four, same as MSA:
@@ -184,6 +210,22 @@ To do:
    the pattern works there) — that is the highest-volume surface on the site.
 3. Corporate enquiries from 1965 go via the Jetpack form to email, **not** into MailerLite —
    confirm whether they should also be tagged into a corporate group.
+
+**Split reinstated on request — 2026-08-15.** Shaun asked for per-audience segmentation, which is
+exactly the trigger condition in "To do" item 1 above, so the four `lead-*` pages were repointed
+from the shared MSA form back to their own slugs (`bHIAs6` Teachers, `Bp589z` Business English,
+`tmhk85` Abitur, `1gw3aR` MSA) and the `exercise.js` opt-in mechanism from 2026-08-07 was merged
+in. What made the reversal cheap: **the shared-form period captured nothing to migrate** — the
+MSA form shows 18 opens, 1 conversion, and that single signup is still `unconfirmed`, so group
+*EOL – MSA* has `active_count: 0`. The account's 47 subscribers all predate this and came in via
+`Website Signup — Eltern-Ratgeber`.
+
+**Still blocked on the dashboard (unchanged since 2026-08-07, re-verified 2026-08-15):** the
+Teachers, Business English and Abitur forms are still `has_content: false` — empty shells. The
+MailerLite API cannot design form fields (`create_form`/`update_form` only name and delete), so
+**those three lead pages will render their heading and intro text but no form until Shaun spends
+~5 min per form in the dashboard.** That is the one manual step gating the split.
+
 
 **Homepage hero "Let's start a conversation" button — found + fixed by Shaun, 2026-08-08.**
 Was pointing at a Google Form. Turned out to live **outside any page's post content entirely** —
