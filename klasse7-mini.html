@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini-Übung Klasse 7 – Gymnasium und Oberschule | englishonline.training</title>
+<meta name="description" content="Kostenlose Mini-Übung Englisch Klasse 7: vier Fragen für die Oberschule, vier für das Gymnasium. Sofortige Auswertung, ohne Anmeldung.">
+<link rel="canonical" href="https://activities.englishonline.training/klasse7-mini.html">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1a3a5c; --blue-mid:#1a6eb5; --blue-lt:#e8f2fb;
+  --gold:#c9a227; --gold-lt:#f5e6b0;
+  --green:#27ae60; --red:#c0392b;
+  --dark:#1d2b3a; --mid:#4a5568; --muted:#6b7a8d;
+  --border:#dce3ec; --bg:#f7f9fc; --white:#fff;
+  --radius:12px; --shadow:0 2px 16px rgba(26,58,92,.1);
+}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--dark);line-height:1.55}
+.wrap{max-width:640px;margin:0 auto;padding:1.25rem 1rem 2rem}
+.head{text-align:center;margin-bottom:1.1rem}
+.eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.35rem}
+h1{font-size:1.35rem;font-weight:800;color:var(--blue);margin-bottom:.35rem}
+.head p{font-size:.9rem;color:var(--mid)}
+.switch{display:flex;gap:.5rem;background:var(--white);border:1.5px solid var(--border);border-radius:999px;padding:.3rem;margin:1.1rem 0 1.25rem;box-shadow:var(--shadow)}
+.switch button{flex:1;border:0;background:none;font:inherit;font-weight:700;font-size:.9rem;color:var(--muted);padding:.6rem .5rem;border-radius:999px;cursor:pointer;transition:background .15s,color .15s}
+.switch button[aria-selected="true"]{background:var(--blue);color:#fff}
+.switch button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.track{font-size:.8rem;color:var(--muted);text-align:center;margin-bottom:1rem}
+.q{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.1rem 1.15rem;margin-bottom:.85rem}
+.q-num{font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--blue-mid);display:block;margin-bottom:.4rem}
+.q-text{font-size:1rem;font-weight:600;margin-bottom:.8rem}
+.opts{display:flex;flex-direction:column;gap:.45rem}
+.opt{text-align:left;font:inherit;font-size:.95rem;background:var(--blue-lt);border:1.5px solid transparent;border-radius:8px;padding:.6rem .8rem;cursor:pointer;transition:border-color .15s,background .15s}
+.opt:hover:not(:disabled){border-color:var(--blue-mid)}
+.opt:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.opt:disabled{cursor:default;color:var(--dark);opacity:1}
+.opt.right{background:#e8f8ee;border-color:var(--green);color:#1a6b3c;font-weight:700}
+.opt.wrong{background:#fdeceb;border-color:var(--red);color:#8e2b21}
+.fb{margin-top:.7rem;font-size:.88rem;border-left:4px solid var(--blue-mid);background:var(--blue-lt);padding:.6rem .75rem;border-radius:0 8px 8px 0}
+.fb strong{color:var(--blue)}
+.score{background:var(--blue);color:#fff;border-radius:var(--radius);padding:1.1rem 1.15rem;text-align:center;margin-top:1rem}
+.score b{font-size:1.5rem;display:block;color:var(--gold-lt)}
+.score p{font-size:.9rem;margin-top:.4rem;color:rgba(255,255,255,.85)}
+.cta{display:block;text-align:center;margin-top:.85rem;background:var(--gold);color:var(--blue);font-weight:700;text-decoration:none;padding:.8rem 1rem;border-radius:8px;font-size:.95rem}
+.cta:hover{background:#b8930f}
+.foot{text-align:center;font-size:.78rem;color:var(--muted);margin-top:1rem}
+.foot a{color:var(--blue-mid)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <span class="eyebrow">Mini-Übung · Klasse 7</span>
+    <h1>Englisch Klasse 7: Gymnasium oder Oberschule?</h1>
+    <p>Vier Fragen pro Schulform. Antwort anklicken, Erklärung sofort lesen.</p>
+  </div>
+
+  <div class="switch" role="tablist" aria-label="Schulform wählen">
+    <button role="tab" id="tab-c" aria-selected="true" aria-controls="panel" onclick="setTrack('c')">Oberschule</button>
+    <button role="tab" id="tab-g" aria-selected="false" aria-controls="panel" onclick="setTrack('g')">Gymnasium</button>
+  </div>
+
+  <p class="track" id="track-note"></p>
+  <div id="panel" role="tabpanel" aria-labelledby="tab-c"></div>
+  <div id="result"></div>
+
+  <p class="foot">Alle Übungen sind kostenlos und ohne Anmeldung. <a href="https://activities.englishonline.training/activities.html">Zur Übungsübersicht</a></p>
+</div>
+
+<script>
+// Question text and options are English unless the entry sets qde / ode, so the
+// page can stay lang="de" while screen readers still read the English aloud
+// with English phonemes.
+const DATA = {
+  c: {
+    note: "Oberschule · Schwerpunkt Wortschatz, Lesen und Wörterbuch",
+    link: "https://activities.englishonline.training/7c-activities.html",
+    cta: "Alle Übungen für Klasse 7 Oberschule ansehen",
+    qs: [
+      { q: "We stayed in a small ___ near the beach.",
+        o: ["cottage", "timetable", "passport"], a: 0,
+        e: "<strong lang=\"en\">cottage</strong> = kleines Ferienhaus. Wortfeld Urlaub und Unterkunft." },
+      { q: "Excuse me, how do I ___ to the train station?",
+        o: ["bring", "get", "take"], a: 1,
+        e: "<strong lang=\"en\">get to</strong> = hinkommen. Feste Wendung beim Fragen nach dem Weg." },
+      { q: "Emily wears a school ___ every day: a blazer and a tie.",
+        o: ["costume", "clothes", "uniform"], a: 2,
+        e: "<strong lang=\"en\">uniform</strong> = Schuluniform. <em lang=\"en\">costume</em> ist ein Kostüm, <em lang=\"en\">clothes</em> allgemein Kleidung." },
+      { q: "Im Wörterbuch stehen für <em lang=\"en\">trip</em> mehrere Bedeutungen. Welche passt in <span lang=\"en\">„We went on a school trip“</span>?",
+        qde: true, ode: true,
+        o: ["Ausflug", "stolpern", "Reisender"], a: 0,
+        e: "Ein Wort hat oft mehrere Einträge. Der Satz entscheidet, welcher passt: hier <strong>Ausflug</strong>." }
+    ]
+  },
+  g: {
+    note: "Gymnasium · Schwerpunkt Zeiten und Satzbau",
+    link: "https://activities.englishonline.training/7g-activities.html",
+    cta: "Alle Übungen für Klasse 7 Gymnasium ansehen",
+    qs: [
+      { q: "I ___ my homework, so I can watch TV now.",
+        o: ["already finished", "have already finished", "had already finished"], a: 1,
+        e: "Present Perfect: Die Handlung ist vorbei, das Ergebnis zählt jetzt. Signalwort <strong lang=\"en\">already</strong>." },
+      { q: "She has ___ to London twice. She is back home now.",
+        o: ["gone", "been", "went"], a: 1,
+        e: "<strong lang=\"en\">been</strong> = war dort und ist zurück. <strong lang=\"en\">gone</strong> = hingefahren und noch dort." },
+      { q: "When we arrived, the film ___ already started.",
+        o: ["has", "was", "had"], a: 2,
+        e: "Past Perfect: Der Film begann <strong>vor</strong> dem Ankommen. Zwei Handlungen in der Vergangenheit, eine davor." },
+      { q: "If the Spanish fleet had reached England, history ___ different.",
+        o: ["would have been", "would be", "had been"], a: 0,
+        e: "If-Satz Typ 3: <em lang=\"en\">had + Partizip</em> im if-Teil, <strong lang=\"en\">would have + Partizip</strong> im Hauptsatz. Es ist nicht passiert." }
+    ]
+  }
+};
+
+let track = "c";
+let answered = {};
+
+function setTrack(t){
+  track = t; answered = {};
+  document.getElementById("tab-c").setAttribute("aria-selected", t === "c");
+  document.getElementById("tab-g").setAttribute("aria-selected", t === "g");
+  document.getElementById("panel").setAttribute("aria-labelledby", "tab-" + t);
+  document.getElementById("track-note").textContent = DATA[t].note;
+  document.getElementById("result").innerHTML = "";
+  render();
+  postHeight();
+}
+
+function render(){
+  const d = DATA[track];
+  document.getElementById("panel").innerHTML = d.qs.map((item, i) => `
+    <div class="q">
+      <span class="q-num">Frage ${i + 1} von ${d.qs.length}</span>
+      <p class="q-text"${item.qde ? "" : ' lang="en"'}>${item.q}</p>
+      <div class="opts" id="opts-${i}">
+        ${item.o.map((opt, j) => `<button class="opt"${item.ode ? "" : ' lang="en"'} onclick="answer(${i},${j})">${opt}</button>`).join("")}
+      </div>
+      <div id="fb-${i}"></div>
+    </div>`).join("");
+}
+
+function answer(i, j){
+  if (answered[i] !== undefined) return;
+  const item = DATA[track].qs[i];
+  answered[i] = (j === item.a);
+  const btns = document.querySelectorAll(`#opts-${i} .opt`);
+  btns.forEach((b, k) => {
+    b.disabled = true;
+    if (k === item.a) b.classList.add("right");
+    else if (k === j) b.classList.add("wrong");
+  });
+  document.getElementById(`fb-${i}`).innerHTML =
+    `<div class="fb">${j === item.a ? "Richtig. " : "Nicht ganz. "}${item.e}</div>`;
+  if (Object.keys(answered).length === DATA[track].qs.length) showScore();
+  postHeight();
+}
+
+function showScore(){
+  const d = DATA[track];
+  const right = Object.values(answered).filter(Boolean).length;
+  const msg = right === d.qs.length
+    ? "Sicher im Stoff. Die nächste Übung darf schwerer sein."
+    : right >= d.qs.length - 1
+      ? "Fast alles sitzt. Ein Punkt lohnt sich zum Wiederholen."
+      : "Hier lohnt sich gezieltes Üben. Die Übungen unten decken genau diese Punkte ab.";
+  document.getElementById("result").innerHTML = `
+    <div class="score"><b>${right} von ${d.qs.length} richtig</b><p>${msg}</p></div>
+    <a class="cta" href="${d.link}" target="_blank" rel="noopener">${d.cta} →</a>`;
+}
+
+function postHeight(){
+  if (window.parent !== window) {
+    window.parent.postMessage({ eolHeight: document.body.scrollHeight }, "*");
+  }
+}
+
+setTrack("c");
+window.addEventListener("load", postHeight);
+</script>
+</body>
+</html>
