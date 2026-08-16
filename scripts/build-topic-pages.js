@@ -310,7 +310,9 @@ const EXTRA_PUBLIC_PAGES = [
   'vocab-games.html',
   'business.html',
   'ielts-vocabulary-glossary.html',
-  'uni-presentation-task.html',
+  // uni-presentation-task.html used to be listed here. It is now carried in
+  // data/exercises.json via the STANDALONE map in build-exercise-data.js, so the
+  // exercises loop above emits it and a second entry here would be redundant.
   'lead-abitur-textanalyse.html',
   'lead-business-email-phrasebank.html',
   'lead-msa-checkliste.html',

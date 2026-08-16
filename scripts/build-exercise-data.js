@@ -137,6 +137,33 @@ files.filter(f => /^abitur-/.test(f) && !/activities\.html$/.test(f)).forEach(f 
   });
 });
 
+// ---- Standalone lesson pages that don't load exercise.js but are real public
+//      content and belong in the index, the hub counts and the sitemap. Keep this
+//      list short and explicit — anything built on the shared framework is picked
+//      up automatically above, so a page only lands here if it has a bespoke
+//      architecture. Blurb and skills are declared rather than scraped, because
+//      these pages don't carry the .ex-title / .card-title markup grabTitles()
+//      relies on. ----
+const STANDALONE = {
+  'uni-presentation-task.html': {
+    year: 'uni',
+    schoolType: 'university',
+    skills: ['writing'],
+    blurb: 'Delivery & body language · Slide design principles · Presentation framework · Find your theme · Build & submit your presentation'
+  }
+};
+Object.keys(STANDALONE).forEach(f => {
+  if (!fs.existsSync(path.join(ROOT, f))) return;
+  const cfg = STANDALONE[f];
+  const s = fs.readFileSync(path.join(ROOT, f), 'utf8');
+  const title = decode(m1(/<title>([\s\S]*?)<\/title>/i, s))
+    .replace(/\s*[|·–-]\s*englishonline\.training\s*$/i, '').trim();
+  exercises.push({
+    file: f, title: title, year: cfg.year, schoolType: cfg.schoolType,
+    topics: [], skills: cfg.skills, blurb: cfg.blurb
+  });
+});
+
 fs.mkdirSync(path.join(ROOT, 'data'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'data', 'exercises.json'), JSON.stringify(exercises, null, 2));
 
