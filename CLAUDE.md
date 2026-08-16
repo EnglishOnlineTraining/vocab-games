@@ -476,17 +476,29 @@ the Klasse 9 / Business filters and undercounted everywhere. `build-exercise-dat
 `LEGACY_UNPREFIXED` override map. Add to it if another unprefixed page ever appears.
 
 **Counts include the generated `*-review.html` page** for each category, which is what the per-year
-hub pages show too. The WordPress button counts on page 1763 were written before review pages
-existed and are therefore one lower for most categories — sync them from the root page's numbers,
-not from memory.
+hub pages show too. **The WordPress button counts on page 1763 are correct as of 2026-08-16** — all
+thirteen (8 year-group buttons plus Abitur/MSA/Uni/IT/Business) were checked against
+`data/exercises.json` and match exactly. An earlier note here said they were "one lower for most
+categories"; that was true before someone updated them on 2026-08-14 and is no longer. Re-check
+against the root page's numbers rather than trusting either statement.
+
+### Root/`activities.html` duplicate-listing fix (2026-08-15)
+Both pages carried the identical `<title>` (`Activities | EnglishOnline.training`) **and** the
+identical `<h1>` (`📚 Activity Directory`), and the root page's canonical + the sitemap declared
+`/index.html` while Google had actually indexed `/`. Three URLs for one page. Now: `index.html` is
+`Free English Exercises Online` (title and `<h1>`) with canonical `https://activities.englishonline.training/`;
+`activities.html` is `All Exercises — Browse & Filter` and keeps the `Activity Directory` `<h1>`
+(it genuinely is the index); and `build-topic-pages.js` emits `/` rather than `/index.html` in the
+sitemap. **Keep all three in agreement** — if the root canonical ever changes, the sitemap entry
+must change with it.
 
 ## SEO topic landing pages — `themen/` (added 2026-08-05)
 
 German, search-optimised landing pages, one per grammar topic (people search *Passiv Englisch Übungen*, *if-Sätze Klasse 10* — not theme names). Generated, never hand-edited:
 
-- **`data/topics.json`** — the controlled topic vocabulary (slug, German + English label, search aliases, meta description, related slugs) plus optional authored German content per topic: `intro`, `rules[]`, `examples[]`, and a `practice[]` array (`{q, options, answer, why}`) that becomes an inline check-yourself widget. Flagship topics fully authored (`passiv`, `if-saetze`, `relativsaetze`); the rest are scaffolds that render a `<!-- CONTENT: needs Shaun -->` marker in place of the explanation but still list their exercises. **All landing-page prose is German** (Shaun's decision — topic pages target German search traffic; this is separate from the exercises' English on-page explanations).
+- **`data/topics.json`** — the controlled topic vocabulary (slug, German + English label, search aliases, meta description, related slugs) plus optional authored German content per topic: `intro`, `rules[]`, `examples[]`, and a `practice[]` array (`{q, options, answer, why}`) that becomes an inline check-yourself widget. **All 11 topic pages are now fully authored (verified 2026-08-16)** — no `<!-- CONTENT: needs Shaun -->` scaffolds remain. (This line previously named only `passiv`, `if-saetze` and `relativsaetze` as flagship and called the rest scaffolds; that is out of date.) A newly added slug still starts as a scaffold and renders the marker in place of the explanation while still listing its exercises. **All landing-page prose is German** (Shaun's decision — topic pages target German search traffic; this is separate from the exercises' English on-page explanations).
 - **`data/exercises.json`** — every exercise tagged with `topics[]`/`skills[]`, produced by **`node scripts/build-exercise-data.js`** (classifies each page's grammar/skill points against the topic vocabulary; prints per-topic coverage).
-- **`node scripts/build-topic-pages.js`** — regenerates `themen/<slug>.html` + `themen/index.html` + `themen/themen.css`, and rewrites `sitemap.xml` + `robots.txt` (covering hubs, exercises and topic pages). Each page has `lang="de"`, canonical, OG tags and JSON-LD `LearningResource`; a "Weiterüben" list links every tagged exercise grouped by year; plus related-topic links. Linked from `activities.html` via a "Nach Grammatik-Thema üben" banner → `themen/index.html`.
+- **`node scripts/build-topic-pages.js`** — regenerates `themen/<slug>.html` + `themen/index.html` + `themen/themen.css`, and rewrites `sitemap.xml` + `robots.txt` (covering hubs, exercises and topic pages). Each page has `lang="de"`, canonical, OG tags and JSON-LD `LearningResource`; a "Weiterüben" list links every tagged exercise grouped by year; plus related-topic links. Linked from `activities.html` via a "Nach Grammatik-Thema üben" banner → `themen/index.html`, and — since 2026-08-16 — from **WordPress page 1763**, which carries a matching "Nach Grammatik-Thema üben" button group linking `themen/` plus all 11 topic pages plus `grammar-activities.html`. That WP block is the only source of *external* links into `themen/`; before it, every button on 1763 pointed at a hub page and nothing outside the repo linked to a topic page at all. If a topic slug is added or renamed, update 1763 too (via `pages.update` — never the block editor; see the trap at the top of this file).
 - **To add/expand a topic:** edit `data/topics.json` (add the slug + German content), then rerun both scripts. Never hand-edit files in `themen/` — they are overwritten. Grammar prose is Shaun-reviewed before it counts as final; scaffolds keep the marker until then.
 
 ## Auto-rebuild workflow (added 2026-08-13)
