@@ -142,11 +142,35 @@ function faqJsonLd(t) {
   return '<script type="application/ld+json">' + JSON.stringify(obj) + '</script>\n';
 }
 
+// Titles and headings render as "Deutsch (English)". That English gloss only earns
+// its place when it actually differs from the German label. Several topics use the
+// English grammar term as their German label too — "Present Perfect", "Past Perfect",
+// "Simple Past", "Present Tenses" — which produced "Present Perfect (Present Perfect)"
+// in the <title>, <h1>, og:title and JSON-LD name. And if-saetze carries its own
+// parenthetical ("If-Sätze (Conditionals)"), which produced two in a row.
+function topicLabel(t) {
+  const de = String(t.de || '').trim();
+  const en = String(t.en || '').trim();
+  if (!en) return de;
+  if (de.toLowerCase() === en.toLowerCase()) return de;  // same term, maybe different case
+  if (de.indexOf('(') !== -1) return de;                 // de already glosses itself
+  return de + ' (' + en + ')';
+}
+
+// The English sub-label on a themen/index.html card, or '' when it would just
+// repeat the German one.
+function topicSubLabel(t) {
+  const de = String(t.de || '').trim();
+  const en = String(t.en || '').trim();
+  if (!en || de.toLowerCase() === en.toLowerCase()) return '';
+  return en;
+}
+
 function jsonLd(t, url) {
   const obj = {
     '@context': 'https://schema.org',
     '@type': 'LearningResource',
-    'name': t.de + ' (' + t.en + ') — Erklärung und kostenlose Übungen',
+    'name': topicLabel(t) + ' — Erklärung und kostenlose Übungen',
     'description': t.metaDescription || '',
     'inLanguage': 'de',
     'isAccessibleForFree': true,
@@ -161,15 +185,15 @@ function jsonLd(t, url) {
 
 function pageHtml(t) {
   const url = BASE + '/themen/' + t.slug + '.html';
-  const h1 = t.de + ' (' + t.en + ') — Erklärung und kostenlose Übungen';
+  const h1 = topicLabel(t) + ' — Erklärung und kostenlose Übungen';
   const count = exercisesForTopic(t.slug).length;
   return '<!DOCTYPE html>\n<html lang="de">\n<head>\n'
     + '<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
-    + '<title>' + esc(t.de) + ' (' + esc(t.en) + ') — Übungen & Erklärung | EnglishOnline.Training</title>\n'
+    + '<title>' + esc(topicLabel(t)) + ' — Übungen & Erklärung | EnglishOnline.Training</title>\n'
     + '<meta name="description" content="' + esc(t.metaDescription || '') + '">\n'
     + '<link rel="canonical" href="' + url + '">\n'
     + '<meta property="og:type" content="article">\n'
-    + '<meta property="og:title" content="' + esc(t.de) + ' (' + esc(t.en) + ') — Übungen & Erklärung">\n'
+    + '<meta property="og:title" content="' + esc(topicLabel(t)) + ' — Übungen & Erklärung">\n'
     + '<meta property="og:description" content="' + esc(t.metaDescription || '') + '">\n'
     + '<meta property="og:url" content="' + url + '">\n'
     + '<meta property="og:locale" content="de_DE">\n'
@@ -266,7 +290,7 @@ function indexHtml() {
   const cards = topics.map(t => {
     const n = exercisesForTopic(t.slug).length;
     return '<a class="ti-card" href="' + esc(t.slug) + '.html"><span class="ti-de">' + esc(t.de) + '</span>'
-      + '<span class="ti-en">' + esc(t.en) + '</span>'
+      + (topicSubLabel(t) ? '<span class="ti-en">' + esc(topicSubLabel(t)) + '</span>' : '')
       + '<span class="ti-count">' + n + ' Übung' + (n === 1 ? '' : 'en') + '</span></a>';
   }).join('');
   return '<!DOCTYPE html>\n<html lang="de">\n<head>\n<meta charset="UTF-8">\n'
