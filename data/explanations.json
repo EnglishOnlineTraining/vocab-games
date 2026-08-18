@@ -12687,5 +12687,664 @@
         }
       }
     }
+  },
+  "10g-social-media": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. How many students took part?",
+          "correct": "over 2,000",
+          "why": "The survey reports responses from over 2,000 students."
+        },
+        "g2": {
+          "label": "2. Deleted an app because of anxiety or wasted time",
+          "correct": "68%",
+          "why": "The text gives 68% as the proportion who had deleted such an app."
+        },
+        "g3": {
+          "label": "3. One of the three top criteria",
+          "correct": "whether the content feels interesting rather than addictive",
+          "why": "Students judged platforms by whether content felt interesting rather than addictive."
+        },
+        "g4": {
+          "label": "4. What digital wellbeing features do",
+          "correct": "track screen time and limit notifications",
+          "why": "These features exist to track screen time and cut down notifications."
+        },
+        "g5": {
+          "label": "5. Students already using wellbeing tools",
+          "correct": "nearly half",
+          "why": "The text says nearly half already used the tools regularly."
+        },
+        "g6": {
+          "label": "6. What researchers predict by next year",
+          "correct": "schools will probably offer workshops on healthy social media habits",
+          "why": "The prediction is that schools will run workshops on healthy habits."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. losing popularity — I think it ___",
+          "correct": "will disappear",
+          "why": "'I think' plus a prediction takes will + infinitive."
+        },
+        "g2": {
+          "label": "2. already announced the plan — next term they ___",
+          "correct": "are going to launch",
+          "why": "'Going to' is used for a plan already decided before speaking."
+        },
+        "g3": {
+          "label": "3. According to my calendar, I ___",
+          "correct": "am attending",
+          "why": "The present progressive states a fixed personal arrangement."
+        },
+        "g4": {
+          "label": "4. By the end of this year, researchers ___",
+          "correct": "will have surveyed",
+          "why": "Future perfect: 'will have' + past participle for something finished by a future point."
+        },
+        "g5": {
+          "label": "5. This time next week, teenagers ___",
+          "correct": "will be tracking",
+          "why": "Future progressive: 'will be' + -ing for an action in progress at a future time."
+        },
+        "g6": {
+          "label": "6. Experts believe that in ten years, platforms ___",
+          "correct": "will be",
+          "why": "A prediction about the distant future takes will + infinitive."
+        },
+        "g7": {
+          "label": "7. look at those figures, she ___",
+          "correct": "is going to",
+          "why": "'Going to' expresses a prediction based on present evidence you can see."
+        },
+        "g8": {
+          "label": "8. By next summer, many students ___",
+          "correct": "will have been using",
+          "why": "Future perfect progressive stresses how long an action will have gone on by a future point."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. time spent on a device",
+          "correct": "screen time",
+          "why": "Screen time is the total time spent using a phone, tablet or computer."
+        },
+        "g2": {
+          "label": "2. a deliberate period without devices",
+          "correct": "digital detox",
+          "why": "A digital detox is a planned break from digital devices."
+        },
+        "g3": {
+          "label": "3. rules deciding what content to show",
+          "correct": "algorithm",
+          "why": "An algorithm is the set of rules a platform uses to select content."
+        },
+        "g4": {
+          "label": "4. scrolling through upsetting content",
+          "correct": "doomscrolling",
+          "why": "Doomscrolling is compulsively reading negative content online."
+        },
+        "g5": {
+          "label": "5. feeling you are missing out",
+          "correct": "FOMO",
+          "why": "FOMO stands for 'fear of missing out'."
+        },
+        "g6": {
+          "label": "6. mainly meeting similar opinions",
+          "correct": "echo chamber",
+          "why": "In an echo chamber you mostly hear views like your own."
+        },
+        "g7": {
+          "label": "7. large following, paid to promote",
+          "correct": "influencer",
+          "why": "An influencer is paid to promote products to a large following."
+        },
+        "g8": {
+          "label": "8. trail of data left online",
+          "correct": "digital footprint",
+          "why": "Your digital footprint is the data trail your online activity leaves."
+        }
+      }
+    }
+  },
+  "10g-teenage-lifestyles": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Point of view of the story",
+          "correct": "first person",
+          "why": "The narrator uses 'I', so the story is told in the first person."
+        },
+        "g2": {
+          "label": "2. Why the narrator felt unwelcome",
+          "correct": "because her style was different from everyone else's",
+          "why": "She stood out because her style did not match the other students'."
+        },
+        "g3": {
+          "label": "3. 'as welcome as a wolf at a birthday party'",
+          "correct": "simile",
+          "why": "A comparison using 'as…as' or 'like' is a simile."
+        },
+        "g4": {
+          "label": "4. The paragraph about the day of the move",
+          "correct": "flashback",
+          "why": "It jumps back to an earlier event, which is a flashback."
+        },
+        "g5": {
+          "label": "5. 'this ordinary Tuesday was going to change everything'",
+          "correct": "foreshadowing",
+          "why": "Hinting at what will happen later in the story is foreshadowing."
+        },
+        "g6": {
+          "label": "6. Why the boy with green hair stood out",
+          "correct": "he didn't fit the school's usual style either",
+          "why": "Like the narrator, he did not match the school's usual style."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. 'I could feel my hands shaking…'",
+          "correct": "first-person narration",
+          "why": "The narrator speaks as 'I', so this is first-person narration."
+        },
+        "g2": {
+          "label": "2. 'She didn't say anything, but her eyes…'",
+          "correct": "third-person narration",
+          "why": "'She' and 'him' show an outside narrator: third person."
+        },
+        "g3": {
+          "label": "3. 'My legs felt like jelly…'",
+          "correct": "simile",
+          "why": "'Like jelly' compares two things using 'like', so it is a simile."
+        },
+        "g4": {
+          "label": "4. 'Three years before that night…'",
+          "correct": "flashback",
+          "why": "The narrative moves back to an earlier time: a flashback."
+        },
+        "g5": {
+          "label": "5. 'If only she had known what waited…'",
+          "correct": "foreshadowing",
+          "why": "It hints at something bad to come, which is foreshadowing."
+        },
+        "g6": {
+          "label": "6. 'smelled of stale coffee… lights buzzed'",
+          "correct": "imagery",
+          "why": "Descriptive detail appealing to the senses is imagery."
+        },
+        "g7": {
+          "label": "7. 'We walked home together…'",
+          "correct": "first-person narration",
+          "why": "'I' and 'we' mark first-person narration."
+        },
+        "g8": {
+          "label": "8. 'He turned the corner…'",
+          "correct": "third-person narration",
+          "why": "The narrator describes 'he' from outside: third person."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. It ___ all week",
+          "correct": "had rained",
+          "why": "Past perfect shows the rain happened before the main past events."
+        },
+        "g2": {
+          "label": "2. so the skate park ___",
+          "correct": "was",
+          "why": "The main narrative uses the past simple for the resulting state."
+        },
+        "g3": {
+          "label": "3. I ___ skating before",
+          "correct": "had never tried",
+          "why": "Past perfect with 'never… before' describes experience up to that past moment."
+        },
+        "g4": {
+          "label": "4. and I definitely ___",
+          "correct": "didn't expect",
+          "why": "The past simple carries the main action of the story."
+        },
+        "g5": {
+          "label": "5. While I ___ a group of older kids",
+          "correct": "was watching",
+          "why": "Past progressive sets the longer background action after 'while'."
+        },
+        "g6": {
+          "label": "6. someone ___",
+          "correct": "tapped",
+          "why": "The past simple marks the short action that interrupts the background one."
+        },
+        "g7": {
+          "label": "7. He ___ me from school",
+          "correct": "remembered",
+          "why": "The past simple states a fact at that point in the story."
+        },
+        "g8": {
+          "label": "8. even though we ___",
+          "correct": "had never spoken",
+          "why": "Past perfect refers back to the time before they met."
+        }
+      }
+    }
+  },
+  "10g-digital-age": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. If young people gamed less, critics say",
+          "correct": "They would develop stronger relationships and achieve more academically",
+          "why": "Critics claim less gaming would mean stronger relationships and better results."
+        },
+        "g2": {
+          "label": "2. What some games are designed to do",
+          "correct": "exploit reward systems to keep players hooked",
+          "why": "The criticism is that reward systems are built to keep players playing."
+        },
+        "g3": {
+          "label": "3. Skills multiplayer games can teach",
+          "correct": "teamwork, quick decision-making and problem-solving under pressure",
+          "why": "The article lists teamwork, fast decisions and problem-solving under pressure."
+        },
+        "g4": {
+          "label": "4. What esports has become",
+          "correct": "a legitimate career path with scholarships and salaries",
+          "why": "Esports now offers scholarships and salaries, making it a real career."
+        },
+        "g5": {
+          "label": "5. What gaming communities provide",
+          "correct": "genuine friendship and support",
+          "why": "For teenagers who struggle offline, these communities offer real friendship."
+        },
+        "g6": {
+          "label": "6. The real issue, say psychologists",
+          "correct": "moderation, not gaming itself",
+          "why": "Psychologists point to how much is played, not to gaming as such."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. If you play for too many hours, your eyes ___",
+          "correct": "get",
+          "why": "Zero conditional: if + present simple, present simple, for something always true."
+        },
+        "g2": {
+          "label": "2. If she practises every day, she ___",
+          "correct": "will become",
+          "why": "First conditional: if + present simple, will + infinitive, for a likely future result."
+        },
+        "g3": {
+          "label": "3. If I ___",
+          "correct": "had",
+          "why": "Second conditional: if + past simple for an imaginary present situation."
+        },
+        "g4": {
+          "label": "4. If he had not spent so long gaming, his grades ___",
+          "correct": "would have been",
+          "why": "Third conditional: if + past perfect, would have + past participle, for an unreal past."
+        },
+        "g5": {
+          "label": "5. If a player breaks the guidelines, the platform ___",
+          "correct": "suspends",
+          "why": "Zero conditional: both halves in the present simple for a standing rule."
+        },
+        "g6": {
+          "label": "6. If developers add more diverse characters, players ___",
+          "correct": "will feel",
+          "why": "First conditional: a real future possibility takes will + infinitive."
+        },
+        "g7": {
+          "label": "7. If esports ___",
+          "correct": "were",
+          "why": "Second conditional uses 'were' for all persons in an unreal situation."
+        },
+        "g8": {
+          "label": "8. If parents had set limits, teenagers today ___",
+          "correct": "would have",
+          "why": "Mixed conditional: a past condition with a present result takes would + infinitive."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. competitive gaming at professional level",
+          "correct": "esports",
+          "why": "Esports is professional competitive gaming played before large audiences."
+        },
+        "g2": {
+          "label": "2. hours spent looking at a screen",
+          "correct": "screen time",
+          "why": "Screen time is the daily total spent looking at screens."
+        },
+        "g3": {
+          "label": "3. designed to keep players hooked",
+          "correct": "addictive",
+          "why": "Something that keeps you coming back compulsively is addictive."
+        },
+        "g4": {
+          "label": "4. makes players feel inside the world",
+          "correct": "immersive",
+          "why": "An immersive game surrounds the player and feels real."
+        },
+        "g5": {
+          "label": "5. several players online at the same time",
+          "correct": "multiplayer",
+          "why": "Multiplayer games let several people play together at once."
+        },
+        "g6": {
+          "label": "6. the key to healthy gaming habits",
+          "correct": "moderation",
+          "why": "Moderation means keeping the amount reasonable rather than stopping."
+        },
+        "g7": {
+          "label": "7. rules deciding what to recommend",
+          "correct": "algorithm",
+          "why": "An algorithm decides which content a platform shows you."
+        },
+        "g8": {
+          "label": "8. broadcasting gameplay live",
+          "correct": "livestream",
+          "why": "A livestream broadcasts in real time over the internet."
+        }
+      }
+    }
+  },
+  "10g-civil-rights": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Rosa Parks refused to give up her seat on a ___",
+          "correct": "bus",
+          "why": "She refused to give up her seat on a Montgomery bus in 1955."
+        },
+        "g2": {
+          "label": "2. King believed change should come through ___",
+          "correct": "nonviolent",
+          "why": "King argued for nonviolent protest as the way to change."
+        },
+        "g3": {
+          "label": "3. 'I Have a Dream' was delivered in ___",
+          "correct": "1963",
+          "why": "The speech was given at the March on Washington in 1963."
+        },
+        "g4": {
+          "label": "4. Malcolm X: defend themselves ___",
+          "correct": "means",
+          "why": "He argued for self-defence 'by any means necessary'."
+        },
+        "g5": {
+          "label": "5. Malcolm X focused on Black pride and ___",
+          "correct": "independence",
+          "why": "His emphasis was on Black pride and independence."
+        },
+        "g6": {
+          "label": "6. Both leaders were ___",
+          "correct": "assassinated",
+          "why": "The text says both King and Malcolm X were assassinated."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. King preferred peaceful protest. ___",
+          "correct": "However",
+          "why": "'However' opens a new sentence to signal a contrast with what came before."
+        },
+        "g2": {
+          "label": "2. King focused on white America, ___",
+          "correct": "whereas",
+          "why": "'Whereas' joins two clauses that contrast directly with each other."
+        },
+        "g3": {
+          "label": "3. Some see King's methods as more effective. ___",
+          "correct": "On the other hand",
+          "why": "'On the other hand' introduces the opposing view in a balanced argument."
+        },
+        "g4": {
+          "label": "4. Both men wanted equality; ___",
+          "correct": "nevertheless",
+          "why": "After a semicolon, 'nevertheless' concedes the point and then contrasts it."
+        },
+        "g5": {
+          "label": "5. King organised marches and boycotts. ___",
+          "correct": "Furthermore",
+          "why": "'Furthermore' adds another supporting point rather than contrasting."
+        },
+        "g6": {
+          "label": "6. ___ (sentence opener)",
+          "correct": "While",
+          "why": "'While' opens a subordinate clause that contrasts with the main clause."
+        },
+        "g7": {
+          "label": "7. Malcolm X's approach was more radical. ___",
+          "correct": "In contrast",
+          "why": "'In contrast' begins a sentence setting one idea against the previous one."
+        },
+        "g8": {
+          "label": "8. Both leaders are honoured today ___",
+          "correct": "despite",
+          "why": "'Despite' is followed by a noun or -ing form, not a full clause."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. laws keeping people apart",
+          "correct": "segregation",
+          "why": "Segregation is the legal separation of racial groups."
+        },
+        "g2": {
+          "label": "2. refusing to buy as protest",
+          "correct": "boycott",
+          "why": "A boycott withdraws custom from a business as a protest."
+        },
+        "g3": {
+          "label": "3. unfair treatment because of race",
+          "correct": "discrimination",
+          "why": "Discrimination is treating people unfairly for who they are."
+        },
+        "g4": {
+          "label": "4. sitting and refusing to leave",
+          "correct": "sit-in",
+          "why": "A sit-in occupies a place peacefully until demands are met."
+        },
+        "g5": {
+          "label": "5. same rights and opportunities",
+          "correct": "equality",
+          "why": "Equality means everyone has the same rights and chances."
+        },
+        "g6": {
+          "label": "6. someone campaigning for change",
+          "correct": "activist",
+          "why": "An activist campaigns actively for social or political change."
+        },
+        "g7": {
+          "label": "7. protesting without violence",
+          "correct": "nonviolent",
+          "why": "Nonviolent protest rejects the use of force."
+        },
+        "g8": {
+          "label": "8. a fundamental entitlement",
+          "correct": "right",
+          "why": "A right is an entitlement such as freedom of speech."
+        }
+      }
+    }
+  },
+  "10g-black-roots-pop": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Tharpe's guitar playing was a blueprint for",
+          "correct": "rock'n'roll",
+          "why": "Her electric guitar style is now seen as an early model for rock'n'roll.",
+          "accept": [
+            "rocknroll"
+          ]
+        },
+        "g2": {
+          "label": "2. In the 1950s, songs by Black artists were",
+          "correct": "re-recorded",
+          "why": "White artists frequently re-recorded their songs and had the bigger hits.",
+          "accept": [
+            "rerecorded"
+          ]
+        },
+        "g3": {
+          "label": "3. Radio stations at the time had been",
+          "correct": "segregated",
+          "why": "Stations were segregated, so Black and white music was played separately."
+        },
+        "g4": {
+          "label": "4. Motown was founded by",
+          "correct": "Black entrepreneurs",
+          "why": "Motown was founded by Black entrepreneurs in Detroit.",
+          "accept": [
+            "black"
+          ]
+        },
+        "g5": {
+          "label": "5. Rhythm and blues was transformed into",
+          "correct": "funk",
+          "why": "R&B developed gradually into funk."
+        },
+        "g6": {
+          "label": "6. Almost every major pop genre was shaped by",
+          "correct": "Black musicians",
+          "why": "The article's point is that Black musicians shaped nearly every pop genre.",
+          "accept": [
+            "black"
+          ]
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Blues and gospel ___",
+          "correct": "were",
+          "why": "A plural subject takes 'were' in the past passive."
+        },
+        "g2": {
+          "label": "2. Motown ___",
+          "correct": "was",
+          "why": "A singular subject takes 'was' in the past passive."
+        },
+        "g3": {
+          "label": "3. Today, this musical history ___",
+          "correct": "is",
+          "why": "Present passive with a singular subject takes 'is' + past participle."
+        },
+        "g4": {
+          "label": "4. By the time rock'n'roll became mainstream, many songs ___",
+          "correct": "had been",
+          "why": "Past perfect passive: 'had been' + past participle for an earlier action.",
+          "accept": [
+            "hadbeen"
+          ]
+        },
+        "g5": {
+          "label": "5. Aretha Franklin's records ___",
+          "correct": "are",
+          "why": "Present passive with a plural subject takes 'are'."
+        },
+        "g6": {
+          "label": "6. In the future, more attention ___",
+          "correct": "will be",
+          "why": "Future passive is 'will be' + past participle.",
+          "accept": [
+            "willbe"
+          ]
+        },
+        "g7": {
+          "label": "7. The contribution should ___",
+          "correct": "be",
+          "why": "After a modal the passive is 'be' + past participle."
+        },
+        "g8": {
+          "label": "8. Soul music ___",
+          "correct": "was",
+          "why": "Singular subject in the past passive takes 'was'."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. gospel emotion with rhythm and blues",
+          "correct": "soul",
+          "why": "Soul combines gospel feeling with rhythm and blues."
+        },
+        "g2": {
+          "label": "2. the Detroit record label",
+          "correct": "Motown",
+          "why": "Motown was the Detroit label founded by Black entrepreneurs.",
+          "accept": [
+            "motown"
+          ]
+        },
+        "g3": {
+          "label": "3. danceable 1970s style from R&B",
+          "correct": "disco",
+          "why": "Disco grew out of rhythm and blues in the 1970s."
+        },
+        "g4": {
+          "label": "4. rhythmic speech over a beat",
+          "correct": "hip hop",
+          "why": "Hip hop sets rhythmic speech over a beat, borrowing from funk.",
+          "accept": [
+            "hiphop"
+          ]
+        },
+        "g5": {
+          "label": "5. a song recorded again by another artist",
+          "correct": "cover",
+          "why": "A new recording of an existing song is a cover."
+        },
+        "g6": {
+          "label": "6. official acknowledgment for creating something",
+          "correct": "credit",
+          "why": "To receive credit is to be officially named as the creator."
+        },
+        "g7": {
+          "label": "7. R&B stands for rhythm and",
+          "correct": "blues",
+          "why": "R&B is short for rhythm and blues."
+        },
+        "g8": {
+          "label": "8. creates a style others follow",
+          "correct": "pioneer",
+          "why": "A pioneer is the first to develop something others build on."
+        }
+      }
+    }
   }
 }
