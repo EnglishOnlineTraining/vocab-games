@@ -34,7 +34,7 @@
  * these files don't churn in git.
  *
  * Generated — do not hand-edit `*-review.html`; edit this script and rerun.
- * Afterwards run build-exercise-data.js → build-hub.js → build-topic-pages.js
+ * Afterwards run build-exercise-data.js → build-hub.js → build-topic-pages.js → build-head.js
  * so the new pages reach data/exercises.json, the hub index and the sitemap.
  */
 const fs = require('fs');
@@ -476,4 +476,4 @@ if (skipped.length) {
   console.log('\nskipped: ' + skipped.join('; '));
 }
 console.log('\n' + (listOnly ? 'dry run' : 'wrote ' + built + ' review page(s)')
-  + ' — now run: node scripts/build-exercise-data.js && node scripts/build-hub.js && node scripts/build-topic-pages.js');
+  + ' — now run: node scripts/build-exercise-data.js && node scripts/build-hub.js && node scripts/build-topic-pages.js && node scripts/build-head.js');
