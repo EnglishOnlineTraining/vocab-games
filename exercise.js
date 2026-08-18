@@ -966,6 +966,11 @@ function eolSyncActiveStep() {
   active.setAttribute('role', 'main');
   active.setAttribute('tabindex', '-1');
   active.setAttribute('data-eol-main', '1');
+  // The skip link used to point at #eol-skip-target, an id that exists on no
+  // page — it only ever worked through its click handler. Aim it at the step
+  // that is actually on screen so the href resolves on its own.
+  var skipLink = document.getElementById('eol-skip');
+  if (skipLink && active.id) skipLink.href = '#' + active.id;
   eolLabelGaps(active);
   eolLiveRegions();
   var track = document.querySelector('.progress-track');
@@ -1087,13 +1092,15 @@ function eolInjectChrome() {
     var skip = document.createElement('a');
     skip.id = 'eol-skip';
     skip.className = 'eol-skip';
-    skip.href = '#eol-skip-target';
+    skip.href = '#step-0';   // kept in sync with the active step by eolSyncActiveStep
     skip.textContent = 'Zum Inhalt springen';
     skip.setAttribute('lang', 'de');
     skip.addEventListener('click', function(e) {
-      e.preventDefault();
       var active = document.querySelector('.step.active');
-      if (active) { active.setAttribute('tabindex', '-1'); active.focus(); }
+      if (!active) return;                 // no active step: let the href do its job
+      e.preventDefault();
+      active.setAttribute('tabindex', '-1');
+      active.focus();
     });
     document.body.insertBefore(skip, document.body.firstChild);
   }

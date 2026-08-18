@@ -405,6 +405,65 @@ questions drawn from *earlier* units.
 `build-exercise-data.js` → `build-hub.js` → `build-topic-pages.js`. Each per-category hub carries
 a "Gemischte Wiederholung" card.
 
+### 5e. Shared `<head>` + no-JS fallback — `scripts/build-head.js` (added 2026-08-18)
+
+Prompted by Manuel Matuzović's *My HTML boilerplate in 2026*, the `<head>` of all 222 pages
+is now generated rather than hand-copied. Before this, the corpus had **no favicon at all** (every
+page 404'd on `/favicon.ico`), `theme-color` on 14 of 222 pages, Open Graph tags on 10, and nothing
+telling a phone which colour scheme the design supports. **`node scripts/build-head.js`** owns a
+`HEAD:START`/`HEAD:END` block just before `</head>` on every page:
+
+- `<meta name="color-scheme" content="light">` — the palette is light-only, so declaring it stops
+  mobile dark modes from auto-inverting the exercises into unreadable mud.
+- `<meta name="theme-color" content="#1a3a5c">` on every page, not just the hubs.
+- `<meta name="text-scale" content="scale">` — the 2026 opt-in that makes mobile browsers honour the
+  OS text-size setting (`rem`/`em` scale; `px` does not). Students on phones with large-text
+  accessibility settings finally get them respected. Chrome-only for now, inert elsewhere.
+- the icon set + web manifest (see below);
+- Open Graph + `twitter:card` tags derived from **the page's own** `<title>`, `<meta description>`
+  and `<link rel="canonical">` — so a link pasted into WhatsApp, a parents' group or the WordPress
+  site shows a real title/description card instead of a bare URL. `og:type` is `article` for
+  `themen/` pages, `website` elsewhere.
+
+It also injects, where needed:
+- **a `<noscript>` banner** (German + English) on the **189 pages that render blank without
+  JavaScript** — `.step`, `.screen`, `.exercise` and `.game-panel` are all `display:none` until JS
+  runs, so a student with JS off previously saw a header and nothing else, with no explanation;
+- **a skip link + `id="main"` landmark** on the 33 non-framework pages (Abitur packs, lead magnets,
+  `themen/`, `klasse7-mini`) — `exercise.js` already did this for the framework pages.
+  Eight pages have no single content wrapper to promote (`9g-class-test-9ab`, `business`,
+  `ielts-vocabulary-glossary`, `uni-pm-vocabulary`, `uni-presentation-task`, `uni-writing-task`,
+  `vocab-games`, `year-7-class-wall`); the script names them on every run rather than guessing.
+
+**Icons — `scripts/build-icons.js`.** The mark (rounded square in `--blue`, gold tick) is defined
+as geometry and rasterised in pure Node, so `icon.svg`, `favicon.ico`, `apple-touch-icon.png`,
+`icon-192.png`, `icon-512.png` and `site.webmanifest` are all regenerable and byte-identical on
+re-run — no binary blobs nobody can reproduce. Icon paths in the head block are **relative**, so
+they also work on the `englishonlinetraining.github.io/vocab-games/` fallback URL; `og:image` is
+absolute because scrapers require it.
+
+**Rules:** never hand-edit inside `HEAD:START`/`HEAD:END`, `NOSCRIPT:*` or `SKIP:*`. Run
+`build-head.js` **last** in the generator chain — `build-hub.js`, `build-topic-pages.js` and
+`build-review-pages.js` rewrite whole files and drop the block; running it afterwards restores it.
+`node scripts/build-head.js --check` exits 1 if any page is stale (useful in CI). The auto-rebuild
+workflow runs it on every push to `main`, so a new page picks all of this up even if the manual
+step is forgotten.
+
+**Two pages were still carrying an inlined copy of the old framework** — found while auditing which
+pages `exercise.js` covers. `10g-scottish-highlands.html` and `8g-american-british-english.html`
+had ~12 KB of the 2026-07 framework pasted into a `<script>` block and never loaded `exercise.js`,
+so they silently missed everything added since: graded-attempt scoring, review explanations,
+practise mode, the a11y layer, the breadcrumb/footer chrome and the writing rubric. Every function
+in their inline copy was an older version of a shared one (no page-specific behaviour), so both were
+switched to `<script src="exercise.js"></script>`; their config/logic scripts were untouched and
+both were re-tested end to end. The claim elsewhere in this file that no page carries its own copy
+of the framework is now true again — but it was wrong for months, so re-check with
+`grep -L 'exercise\.js' *.html` before trusting it.
+
+**Related fix in `exercise.js`:** the injected skip link pointed at `#eol-skip-target`, an id that
+exists on no page — it only ever worked through its JS click handler. It now points at the active
+step's real id and `eolSyncActiveStep` keeps it in sync.
+
 ### 6. Shared framework — `exercise.js` (standardised 2026-07-17)
 All step-based exercise pages load the **single shared framework** via `<script src="exercise.js"></script>`; no page carries its own copy of the framework functions any more (~330 KB of copy-paste drift was removed). A page's inline script defines ONLY:
 - **Config:** `UNIT`, `TOTAL_STEPS`, `SHEET_URL`, `TEACHER_EMAIL`
@@ -440,7 +499,7 @@ All step-based exercise pages load the **single shared framework** via `<script 
 7. **Pass a `scoreKey`** to each `checkDropdowns()` call you want auto-graded (e.g. `'exA'`, `'exB'`) if the exercise has gradable sections — this feeds the score/Note shown to the student and sent to the teacher. Skip this for pure free-text/discussion exercises.
 8. **Add a card in `activities.html`** under the correct year/school section
 9. **Fill in the `<meta name="description">` and `<link rel="canonical">` tags** in the `<head>` (both are TODO placeholders in `_template.html`) — the canonical URL must match the final filename exactly.
-10. **Regenerate the generated data/index files** — run `node scripts/build-exercise-data.js && node scripts/build-hub.js && node scripts/build-topic-pages.js` before committing. This is what actually adds the new page to `data/exercises.json`, the filterable index on `activities.html`, and `sitemap.xml`/`robots.txt`. Doing it locally keeps the diff you're committing honest, but as of 2026-08-13 it is also a **safety net, not the only line of defence** — see "Auto-rebuild workflow" below, which catches it if this step is skipped.
+10. **Regenerate the generated data/index files** — run `node scripts/build-exercise-data.js && node scripts/build-hub.js && node scripts/build-topic-pages.js && node scripts/build-head.js` before committing (`build-head.js` **must be last** — see §5e). This is what actually adds the new page to `data/exercises.json`, the filterable index on `activities.html`, and `sitemap.xml`/`robots.txt`. Doing it locally keeps the diff you're committing honest, but as of 2026-08-13 it is also a **safety net, not the only line of defence** — see "Auto-rebuild workflow" below, which catches it if this step is skipped.
 11. **Commit and push to `main`** — GitHub Pages deploys automatically
 
 ---
@@ -504,8 +563,8 @@ German, search-optimised landing pages, one per grammar topic (people search *Pa
 ## Auto-rebuild workflow (added 2026-08-13)
 
 `.github/workflows/rebuild-indices.yml` runs on every push to `main` that touches an `.html`
-file or `data/topics.json`. It re-runs the three generators (`build-exercise-data.js` →
-`build-hub.js` → `build-topic-pages.js`) and, if the output differs from what's committed,
+file or `data/topics.json`. It re-runs the generators (`build-exercise-data.js` →
+`build-hub.js` → `build-topic-pages.js` → `build-head.js`, in that order) and, if the output differs from what's committed,
 commits and pushes the regenerated `data/exercises.json`, `activities.html`, `sitemap.xml`,
 `robots.txt` and `themen/` straight back to `main` as the `eol-index-bot` user. This exists
 because the manual regeneration step (checklist item 10 above, and the equivalent step in every

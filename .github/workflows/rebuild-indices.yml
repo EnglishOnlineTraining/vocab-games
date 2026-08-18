@@ -16,6 +16,7 @@ on:
       - 'scripts/build-exercise-data.js'
       - 'scripts/build-hub.js'
       - 'scripts/build-topic-pages.js'
+      - 'scripts/build-head.js'
   workflow_dispatch: {}
 
 permissions:
@@ -42,12 +43,15 @@ jobs:
           node scripts/build-exercise-data.js
           node scripts/build-hub.js
           node scripts/build-topic-pages.js
+          # Must run last: the generators above rewrite whole files and would
+          # otherwise drop the shared <head> block they just had injected.
+          node scripts/build-head.js
 
       - name: Commit regenerated files if changed
         run: |
           git config user.name "eol-index-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/exercises.json activities.html sitemap.xml robots.txt themen/
+          git add data/exercises.json sitemap.xml robots.txt themen/ '*.html'
           if git diff --cached --quiet; then
             echo "Generated files already up to date — nothing to commit."
           else
