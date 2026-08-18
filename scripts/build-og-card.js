@@ -12,7 +12,7 @@
  * missing, open scripts/og-card.html in a browser at 1200x630 and screenshot it
  * to og-card.png by hand — the file is the source of truth either way.
  *
- * Run: node scripts/build-og-card.js
+ * Run: node scripts/build-og-card.js [og-card|og-card-site]
  *      (optionally PLAYWRIGHT_DIR=/path/to/node_modules)
  */
 
@@ -20,8 +20,12 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
-const OUT = path.join(ROOT, 'og-card.png');
-const SRC = path.join(__dirname, 'og-card.html');
+// Which card to render: "og-card" (activities subdomain, referenced by every
+// page's og:image) or "og-card-site" (englishonline.training branding, for the
+// WordPress media library).
+const NAME = (process.argv[2] || 'og-card').replace(/\.(html|png)$/, '');
+const OUT = path.join(ROOT, NAME + '.png');
+const SRC = path.join(__dirname, NAME + '.html');
 
 let chromium;
 try {
@@ -48,6 +52,6 @@ try {
   await browser.close();
 
   const { size } = fs.statSync(OUT);
-  console.log(`og-card.png written — 1200x630, ${size.toLocaleString('en-GB')} bytes`);
+  console.log(`${NAME}.png written — 1200x630, ${size.toLocaleString('en-GB')} bytes`);
   console.log('Fonts come from the rendering machine, so re-rendering elsewhere may shift the text slightly.');
 })();

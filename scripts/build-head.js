@@ -139,7 +139,8 @@ function headBlock(file, html, withSkipStyle) {
     '<meta property="og:image:width" content="1200">',
     '<meta property="og:image:height" content="630">',
     '<meta property="og:image:alt" content="englishonline.training — kostenlose interaktive Englisch-Übungen für Klasse 7–10, MSA, Abitur, Universität, Business und IT English">',
-    '<meta name="twitter:card" content="summary_large_image">'
+    '<meta name="twitter:card" content="summary_large_image">',
+    '<meta name="twitter:site" content="@engontraining">'
   );
   if (withSkipStyle) lines.push(SKIP_STYLE);
   lines.push(
