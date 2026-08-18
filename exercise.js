@@ -560,7 +560,13 @@ function eolCollectExplanations() {
       if (g === 'prefix' || g === 'gaps') return;   // skip config keys on flat entries
       var d = gaps[g];
       var el = document.getElementById(prefix + g);
-      var student = el ? (el.value || '') : ((state[sk] && state[sk][g]) || '');
+      var student;
+      if (el) {
+        var checkedRadio = el.querySelector && el.querySelector('input[type="radio"]:checked');
+        student = checkedRadio ? checkedRadio.value : (el.value || '');
+      } else {
+        student = (state[sk] && state[sk][g]) || '';
+      }
       var accept = d.accept || [d.correct];
       items.push({ label: d.label, correct: d.correct, student: student, why: d.why,
                    ok: accept.indexOf(student) !== -1 });

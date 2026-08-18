@@ -19,19 +19,41 @@ fs.readdirSync(ROOT).filter(f => f.endsWith('.html')).forEach(f => {
   if (m) unitToFile[m[1]] = f;
 });
 
+function escapeReg(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+
+// A gap id is either a <select id="..."> (the usual case) or the id of a
+// radio-group wrapper div, whose options are <input type="radio" name="id"
+// value="...">  (used by the two bespoke MC exercises on 9g-ireland-gerunds
+// and 9g-new-zealand-passive). Try the select first, then radios, so both
+// idioms get real option verification instead of a blind pass/warn.
 function selectOptions(html, id) {
-  const i = html.indexOf('id="' + id + '"');
-  if (i === -1) return null;
-  const end = html.indexOf('</select>', i);
-  const block = html.slice(i, end === -1 ? i + 2000 : end);
-  const opts = [];
-  const re = /<option(?:\s+value="([^"]*)")?[^>]*>([\s\S]*?)<\/option>/gi;
-  let m;
-  while ((m = re.exec(block))) {
-    const v = (m[1] != null ? m[1] : m[2]).replace(/<[^>]+>/g, '').trim();
-    if (v) opts.push(v);
+  const esc = escapeReg(id);
+  const selTag = new RegExp('<select[^>]*\\bid="' + esc + '"[^>]*>').exec(html);
+  if (selTag) {
+    const i = selTag.index;
+    const end = html.indexOf('</select>', i);
+    const block = html.slice(i, end === -1 ? i + 2000 : end);
+    const opts = [];
+    const re = /<option(?:\s+value="([^"]*)")?[^>]*>([\s\S]*?)<\/option>/gi;
+    let m;
+    while ((m = re.exec(block))) {
+      const v = (m[1] != null ? m[1] : m[2]).replace(/<[^>]+>/g, '').trim();
+      if (v) opts.push(v);
+    }
+    return opts;
   }
-  return opts;
+  const radioRe = /<input\b[^>]*type="radio"[^>]*>/gi;
+  const opts = [];
+  let rm;
+  while ((rm = radioRe.exec(html))) {
+    const tag = rm[0];
+    const nameMatch = /name="([^"]*)"/.exec(tag);
+    const valueMatch = /value="([^"]*)"/.exec(tag);
+    if (nameMatch && nameMatch[1] === id && valueMatch) opts.push(valueMatch[1]);
+  }
+  if (opts.length) return opts;
+  if (html.indexOf('id="' + id + '"') === -1) return null;
+  return null; // id exists (e.g. a wrapping div) but has no <select> or radios
 }
 
 // Some pages build their <select> elements entirely in JS (a for-loop over an

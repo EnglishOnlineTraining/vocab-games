@@ -13048,6 +13048,51 @@
           "why": "'Imagine' is always followed by the gerund (-ing form)."
         }
       }
+    },
+    "exA": {
+      "prefix": "",
+      "gaps": {
+        "mcA1": {
+          "label": "1. Why is Ireland called \"the Emerald Isle\"?",
+          "correct": "Because of its bright green countryside",
+          "accept": [
+            "b"
+          ],
+          "why": "The text explains Ireland's nickname comes from its bright green countryside."
+        },
+        "mcA2": {
+          "label": "2. What is the Gaeltacht?",
+          "correct": "Areas where Irish is still the main language",
+          "accept": [
+            "b"
+          ],
+          "why": "The text defines the Gaeltacht as areas where Irish is still the main language."
+        },
+        "mcA3": {
+          "label": "3. Which of the following is NOT mentioned as a famous Irish writer?",
+          "correct": "W.B. Yeats",
+          "accept": [
+            "b"
+          ],
+          "why": "The text names Oscar Wilde, James Joyce and Samuel Beckett — not W.B. Yeats."
+        },
+        "mcA4": {
+          "label": "4. What is a bodhrán?",
+          "correct": "A type of frame drum",
+          "accept": [
+            "b"
+          ],
+          "why": "The text describes the bodhrán as a type of frame drum."
+        },
+        "mcA5": {
+          "label": "5. What is special about Newgrange?",
+          "correct": "It is a 5,000-year-old passage tomb, older than the pyramids.",
+          "accept": [
+            "b"
+          ],
+          "why": "The text says Newgrange is a 5,000-year-old passage tomb, older than the Egyptian pyramids."
+        }
+      }
     }
   },
   "9g-new-zealand-passive": {
@@ -13093,6 +13138,51 @@
           "label": "8. Today, the Māori language ___ in many New Zealand schools",
           "correct": "is taught",
           "why": "Present simple passive: 'is' + past participle, matching 'Today'."
+        }
+      }
+    },
+    "exA": {
+      "prefix": "",
+      "gaps": {
+        "mcA1": {
+          "label": "1. What does \"Aotearoa\" mean?",
+          "correct": "Land of the Long White Cloud",
+          "accept": [
+            "b"
+          ],
+          "why": "'Aotearoa' translates as Land of the Long White Cloud."
+        },
+        "mcA2": {
+          "label": "2. How does the North Island differ from the South Island?",
+          "correct": "The North Island is shaped by volcanic activity.",
+          "accept": [
+            "b"
+          ],
+          "why": "The text says the North Island's landscape is shaped by volcanic activity."
+        },
+        "mcA3": {
+          "label": "3. Where did the Māori originally come from?",
+          "correct": "Polynesia",
+          "accept": [
+            "b"
+          ],
+          "why": "The text says the Māori originally came from Polynesia."
+        },
+        "mcA4": {
+          "label": "4. Why can't many native New Zealand birds fly?",
+          "correct": "Because the islands were separated from other land for millions of years.",
+          "accept": [
+            "b"
+          ],
+          "why": "The text explains flightless birds evolved after New Zealand was isolated from other land for millions of years."
+        },
+        "mcA5": {
+          "label": "5. What is the Treaty of Waitangi?",
+          "correct": "An agreement between the British Crown and Māori chiefs",
+          "accept": [
+            "c"
+          ],
+          "why": "The text describes the Treaty of Waitangi as an agreement between the British Crown and Māori chiefs."
         }
       }
     }
