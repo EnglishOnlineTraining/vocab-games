@@ -11915,5 +11915,777 @@
         "why": "This is the main clause, so it takes will; the as-soon-as clause stays present."
       }
     }
+  },
+  "quiz-grammar-easy": {
+    "quiz": {
+      "prefix": "q-",
+      "gaps": {
+        "g1": {
+          "label": "1. Which sentence is grammatically correct?",
+          "correct": "I went to the store yesterday.",
+          "why": "'Go' is irregular: its past form is 'went', never 'goed', and never after 'will'."
+        },
+        "g2": {
+          "label": "2. Which word is an adverb?",
+          "correct": "Quickly",
+          "why": "Adverbs describe how something happens; most, like 'quickly', end in -ly."
+        },
+        "g3": {
+          "label": "3. Which sentence is in the past tense?",
+          "correct": "I ate dinner an hour ago.",
+          "why": "'Ate' is the past form of 'eat', and 'an hour ago' points to finished time."
+        },
+        "g4": {
+          "label": "4. Which sentence is passive?",
+          "correct": "The cat was chased by the dog.",
+          "why": "The passive is 'be' + past participle, with the doer after 'by'."
+        },
+        "g5": {
+          "label": "5. Which sentence has a comparative?",
+          "correct": "The pizza was better than the pasta.",
+          "why": "Comparatives compare two things and take 'than'; 'better' is the comparative of 'good'."
+        },
+        "g6": {
+          "label": "6. Which sentence is conditional?",
+          "correct": "If I have time, I will go to the party.",
+          "why": "A conditional has an 'if' clause plus a result clause: if + present, will + infinitive."
+        },
+        "g7": {
+          "label": "7. Which sentence is present perfect?",
+          "correct": "I have been to Italy three times.",
+          "why": "Present perfect is have/has + past participle, used for experience up to now."
+        },
+        "g8": {
+          "label": "8. Which sentence is a question?",
+          "correct": "Are you going to the party tonight?",
+          "why": "Questions invert subject and verb ('are you') and end with a question mark."
+        },
+        "g9": {
+          "label": "9. Which sentence has a direct object?",
+          "correct": "She kicked the ball.",
+          "why": "A direct object receives the action: she kicked what? The ball."
+        },
+        "g10": {
+          "label": "10. Which word is a preposition?",
+          "correct": "on",
+          "why": "Prepositions show place, time or direction before a noun: on the table."
+        }
+      }
+    }
+  },
+  "quiz-grammar-medium": {
+    "quiz": {
+      "prefix": "q-",
+      "gaps": {
+        "g1": {
+          "label": "1. Which sentence is subjunctive?",
+          "correct": "If I were you, I would go to the party.",
+          "why": "The subjunctive uses 'were' for all persons in unreal conditions, not 'was'."
+        },
+        "g2": {
+          "label": "2. Which sentence contains a gerund?",
+          "correct": "I like swimming in the ocean.",
+          "why": "A gerund is an -ing form used as a noun; here 'swimming' is the object of 'like'."
+        },
+        "g3": {
+          "label": "3. Which sentence is passive?",
+          "correct": "The students were given a test by the teacher.",
+          "why": "Passive is 'be' + past participle: 'were given', with the doer after 'by'."
+        },
+        "g4": {
+          "label": "4. Which has a non-restrictive clause?",
+          "correct": "My sister, who is a doctor, is visiting next week.",
+          "why": "Non-restrictive clauses add extra information and are marked off by commas."
+        },
+        "g5": {
+          "label": "5. Which contains an appositive?",
+          "correct": "My friend, a doctor, is coming to visit next week.",
+          "why": "An appositive is a noun phrase renaming the noun beside it, set off by commas."
+        },
+        "g6": {
+          "label": "6. Which is an idiomatic expression?",
+          "correct": "She's feeling under the weather today.",
+          "why": "'Under the weather' means unwell — its meaning is not the sum of its words."
+        },
+        "g7": {
+          "label": "7. Which is conditional perfect?",
+          "correct": "If I had studied harder, I would have passed the test.",
+          "why": "Third conditional: if + past perfect, would have + past participle, for an unreal past."
+        },
+        "g8": {
+          "label": "8. Which word is a conjunction?",
+          "correct": "and",
+          "why": "Conjunctions join words or clauses; 'and' links two equal parts."
+        },
+        "g9": {
+          "label": "9. Which sentence is active?",
+          "correct": "The author wrote the book.",
+          "why": "In the active voice the subject does the action: the author wrote it."
+        }
+      }
+    }
+  },
+  "quiz-grammar-hard": {
+    "quiz": {
+      "prefix": "q-",
+      "gaps": {
+        "g1": {
+          "label": "1. Which has a misplaced modifier?",
+          "correct": "Running through the park, the sun was shining brightly.",
+          "why": "The -ing phrase must describe the subject, and the sun cannot run through a park."
+        },
+        "g2": {
+          "label": "2. Which contains an infinitive phrase?",
+          "correct": "I decided to go for a walk in the park.",
+          "why": "An infinitive phrase is 'to' + verb plus what follows: to go for a walk."
+        },
+        "g3": {
+          "label": "3. Passive with a present participle?",
+          "correct": "The couch is being slept on by the cat.",
+          "why": "The progressive passive is 'is/are being' + past participle, for an action in progress."
+        },
+        "g4": {
+          "label": "4. Which has a restrictive clause?",
+          "correct": "The book that I read last week was very interesting.",
+          "why": "Restrictive clauses identify which one is meant and take no commas."
+        },
+        "g5": {
+          "label": "5. Which sentence contains an ellipsis?",
+          "correct": "He ordered a pizza, and she a salad.",
+          "why": "Ellipsis leaves out repeated words: 'and she [ordered] a salad'."
+        },
+        "g6": {
+          "label": "6. Which has a dangling participle?",
+          "correct": "Walking to school, the rain soaked me.",
+          "why": "The participle should describe the subject, but the rain was not walking to school."
+        },
+        "g7": {
+          "label": "7. Which word is a relative pronoun?",
+          "correct": "That",
+          "why": "Relative pronouns (who, which, that) introduce a clause describing a noun."
+        },
+        "g8": {
+          "label": "8. Which contains a split infinitive?",
+          "correct": "I want to quickly finish my homework.",
+          "why": "A split infinitive puts an adverb between 'to' and the verb: to quickly finish."
+        },
+        "g9": {
+          "label": "9. Which contains a modal verb?",
+          "correct": "He can swim very well.",
+          "why": "Modals like can, must and should sit before a bare infinitive and never take -s."
+        }
+      }
+    }
+  },
+  "quiz-grammar-hardest": {
+    "quiz": {
+      "prefix": "q-",
+      "gaps": {
+        "g1": {
+          "label": "1. Which has a double negative?",
+          "correct": "I didn't see nobody at the party.",
+          "why": "Two negatives in one clause: standard English uses 'didn't see anybody'."
+        },
+        "g2": {
+          "label": "2. Which contains an absolute phrase?",
+          "correct": "The sun shining brightly, we decided to go for a walk.",
+          "why": "An absolute phrase has its own subject plus a participle and modifies the whole sentence."
+        },
+        "g3": {
+          "label": "3. Simple passive with a past participle?",
+          "correct": "The cake was baked by my mother.",
+          "why": "Simple past passive is was/were + past participle, for one completed action."
+        },
+        "g4": {
+          "label": "4. Which has a non-finite clause?",
+          "correct": "She stopped to rest for a while.",
+          "why": "A non-finite clause has no tensed verb; 'to rest' is an infinitive of purpose."
+        },
+        "g5": {
+          "label": "5. Which contains an appositive?",
+          "correct": "My brother, a talented artist, lives in Berlin.",
+          "why": "The comma-marked noun phrase renames 'my brother' without adding a verb."
+        },
+        "g6": {
+          "label": "6. Which is a split construction?",
+          "correct": "I like to play, when I have free time, video games.",
+          "why": "A clause is wedged between the verb and its object, splitting 'play' from 'video games'."
+        },
+        "g7": {
+          "label": "7. Which is past perfect continuous?",
+          "correct": "I had been studying for hours when I finally took a break.",
+          "why": "Past perfect continuous is 'had been' + -ing, for a longer action before a past point."
+        },
+        "g8": {
+          "label": "8. Which word is a preposition?",
+          "correct": "Under",
+          "why": "Prepositions show position or direction before a noun: under the table."
+        },
+        "g9": {
+          "label": "9. Which has a dangling infinitive?",
+          "correct": "To get to the park, my bicycle was the fastest option.",
+          "why": "The infinitive needs a person to perform it, and a bicycle cannot get to the park."
+        },
+        "g10": {
+          "label": "10. Phrasal-prepositional verb?",
+          "correct": "I look forward to the weekend.",
+          "why": "A phrasal-prepositional verb is verb + adverb + preposition: look + forward + to."
+        }
+      }
+    }
+  },
+  "8c-northeast-comparatives": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. New York is the most famous ___",
+          "correct": "destination",
+          "why": "A place people travel to is a destination."
+        },
+        "g2": {
+          "label": "2. the Statue of ___",
+          "correct": "Liberty",
+          "why": "The famous statue in New York harbour is the Statue of Liberty."
+        },
+        "g3": {
+          "label": "3. It was a ___ from France",
+          "correct": "gift",
+          "why": "Something given for free is a gift; France gave the statue in 1886."
+        },
+        "g4": {
+          "label": "4. bigger than many ___ in Europe",
+          "correct": "parks",
+          "why": "Central Park is a park, so it is compared with other parks."
+        },
+        "g5": {
+          "label": "5. runners, families and street ___",
+          "correct": "musicians",
+          "why": "People who play music in the street are musicians."
+        },
+        "g6": {
+          "label": "6. faster than a ___",
+          "correct": "taxi",
+          "why": "The subway is compared with a taxi, the other way to cross the city."
+        },
+        "g7": {
+          "label": "7. one of the oldest ___ in America",
+          "correct": "universities",
+          "why": "Boston is famous for its old universities, such as Harvard."
+        },
+        "g8": {
+          "label": "8. the most exciting ___ of the USA",
+          "correct": "part",
+          "why": "A region of a country is a part of it."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. New York is ___ than Boston",
+          "correct": "bigger",
+          "why": "Short adjectives add -er before 'than': big → bigger."
+        },
+        "g2": {
+          "label": "2. The subway is ___ than the bus",
+          "correct": "faster",
+          "why": "One-syllable adjectives take -er, not 'most' or the plain form."
+        },
+        "g3": {
+          "label": "3. Central Park is ___ than I expected",
+          "correct": "more beautiful",
+          "why": "Adjectives of three syllables take 'more', never -er."
+        },
+        "g4": {
+          "label": "4. Winter in Boston is ___ than Miami",
+          "correct": "colder",
+          "why": "Short adjectives form the comparative with -er: cold → colder."
+        },
+        "g5": {
+          "label": "5. This museum is ___ interesting",
+          "correct": "more",
+          "why": "Long adjectives take 'more' + adjective + than."
+        },
+        "g6": {
+          "label": "6. The weather today is ___ than yesterday",
+          "correct": "better",
+          "why": "'Good' is irregular: good → better → best."
+        },
+        "g7": {
+          "label": "7. A ferry ticket is ___ than a taxi",
+          "correct": "cheaper",
+          "why": "'Than' needs a comparative, so cheap becomes cheaper."
+        },
+        "g8": {
+          "label": "8. The streets here are ___",
+          "correct": "noisier",
+          "why": "Adjectives ending in consonant + y change y to i and add -er."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. one of the ___ buildings",
+          "correct": "tallest",
+          "why": "Superlatives use 'the' + -est to pick one out of a group."
+        },
+        "g2": {
+          "label": "2. the ___ day of our trip",
+          "correct": "best",
+          "why": "'Good' is irregular: its superlative is 'best'."
+        },
+        "g3": {
+          "label": "3. the ___ place in the city",
+          "correct": "busiest",
+          "why": "Consonant + y changes to i before -est: busy → busiest."
+        },
+        "g4": {
+          "label": "4. the ___ museum in Boston",
+          "correct": "most famous",
+          "why": "Adjectives of two or more syllables take 'the most', not -est."
+        },
+        "g5": {
+          "label": "5. the ___ pizza I have ever eaten",
+          "correct": "biggest",
+          "why": "One-syllable adjectives double the final consonant: big → biggest."
+        },
+        "g6": {
+          "label": "6. the ___ month of the year",
+          "correct": "coldest",
+          "why": "Short adjectives form the superlative with -est after 'the'."
+        },
+        "g7": {
+          "label": "7. the ___ way to travel",
+          "correct": "quickest",
+          "why": "'Quick' is short, so the superlative is quickest, not 'most quick'."
+        },
+        "g8": {
+          "label": "8. the ___ holiday of my life",
+          "correct": "most exciting",
+          "why": "Three-syllable adjectives take 'the most' + adjective."
+        }
+      }
+    }
+  },
+  "8c-going-west-gerunds": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. work as ___ in the national parks",
+          "correct": "volunteers",
+          "why": "People who work without pay are volunteers."
+        },
+        "g2": {
+          "label": "2. They do not get any ___",
+          "correct": "money",
+          "why": "They are unpaid, so they get no money — only food and a bed."
+        },
+        "g3": {
+          "label": "3. clean the ___ after big storms",
+          "correct": "beaches",
+          "why": "Storms wash rubbish onto beaches in Alaska."
+        },
+        "g4": {
+          "label": "4. builds new ___ for walkers",
+          "correct": "paths",
+          "why": "Walkers in the mountains need paths."
+        },
+        "g5": {
+          "label": "5. learn a lot about ___",
+          "correct": "nature",
+          "why": "Plants, animals and the environment together are nature."
+        },
+        "g6": {
+          "label": "6. sit around a ___",
+          "correct": "campfire",
+          "why": "An outdoor fire at a camp is a campfire."
+        },
+        "g7": {
+          "label": "7. it is hard ___",
+          "correct": "work",
+          "why": "Hard work collocates here; the jobs are physically demanding."
+        },
+        "g8": {
+          "label": "8. never forget the ___",
+          "correct": "experience",
+          "why": "Something you live through and remember is an experience."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. I enjoy ___ in the mountains",
+          "correct": "walking",
+          "why": "'Enjoy' is always followed by the -ing form, never the infinitive."
+        },
+        "g2": {
+          "label": "2. She finished ___ the tent",
+          "correct": "building",
+          "why": "'Finish' takes a gerund: finish + -ing."
+        },
+        "g3": {
+          "label": "3. Do you mind ___ the dishes?",
+          "correct": "washing",
+          "why": "'Mind' is followed by the -ing form."
+        },
+        "g4": {
+          "label": "4. Our guide suggested ___",
+          "correct": "cleaning",
+          "why": "'Suggest' takes a gerund, not 'to' + infinitive."
+        },
+        "g5": {
+          "label": "5. We avoid ___ plastic bottles",
+          "correct": "using",
+          "why": "'Avoid' is always followed by the -ing form."
+        },
+        "g6": {
+          "label": "6. The volunteers practise ___",
+          "correct": "speaking",
+          "why": "'Practise' takes a gerund: practise speaking."
+        },
+        "g7": {
+          "label": "7. Keep ___ and we will finish",
+          "correct": "working",
+          "why": "'Keep' + -ing means to continue doing something."
+        },
+        "g8": {
+          "label": "8. He gave up ___ television",
+          "correct": "watching",
+          "why": "'Give up' is a phrasal verb, and verbs after it take -ing."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. She is good at ___ maps",
+          "correct": "reading",
+          "why": "After a preposition such as 'at', the verb takes the -ing form."
+        },
+        "g2": {
+          "label": "2. interested in ___ the environment",
+          "correct": "protecting",
+          "why": "'In' is a preposition, so the verb becomes protecting."
+        },
+        "g3": {
+          "label": "3. Instead of ___ the bus",
+          "correct": "taking",
+          "why": "'Of' is a preposition and is followed by the -ing form."
+        },
+        "g4": {
+          "label": "4. Thank you for ___ us",
+          "correct": "helping",
+          "why": "'For' is a preposition, so the verb takes -ing."
+        },
+        "g5": {
+          "label": "5. Before ___ home",
+          "correct": "going",
+          "why": "Before and after take the -ing form when the subject stays the same."
+        },
+        "g6": {
+          "label": "6. After ___ the path",
+          "correct": "finishing",
+          "why": "'After' + -ing describes what happened first."
+        },
+        "g7": {
+          "label": "7. We look forward to ___",
+          "correct": "visiting",
+          "why": "In 'look forward to', 'to' is a preposition, so the -ing form follows."
+        },
+        "g8": {
+          "label": "8. left the camp without ___ goodbye",
+          "correct": "saying",
+          "why": "'Without' is a preposition and takes the -ing form."
+        }
+      }
+    }
+  },
+  "8c-midwest-festivals": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. every state has a big State ___",
+          "correct": "Fair",
+          "why": "A State Fair is the summer event with rides, animals and food."
+        },
+        "g2": {
+          "label": "2. popcorn and ice ___",
+          "correct": "cream",
+          "why": "Ice cream is the fixed compound for the frozen dessert."
+        },
+        "g3": {
+          "label": "3. families ___ Thanksgiving",
+          "correct": "celebrate",
+          "why": "You celebrate a holiday; 'cancel' and 'collect' do not fit a festival."
+        },
+        "g4": {
+          "label": "4. They cook a big ___",
+          "correct": "turkey",
+          "why": "Turkey is the traditional Thanksgiving meal."
+        },
+        "g5": {
+          "label": "5. a long ___ through the town",
+          "correct": "parade",
+          "why": "A parade is a procession through the streets."
+        },
+        "g6": {
+          "label": "6. you can watch ___ over the lake",
+          "correct": "fireworks",
+          "why": "Fireworks are the lights set off in the sky on the Fourth of July."
+        },
+        "g7": {
+          "label": "7. houses have colourful ___",
+          "correct": "decorations",
+          "why": "Decorations are what you put up to make a place look festive."
+        },
+        "g8": {
+          "label": "8. a good chance to meet your ___",
+          "correct": "neighbours",
+          "why": "Neighbours are the people living close by, who meet at festivals."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. a special day when people do not work",
+          "correct": "holiday",
+          "why": "A holiday is a day off work, often to celebrate something."
+        },
+        "g2": {
+          "label": "2. people walking with music and costumes",
+          "correct": "parade",
+          "why": "That public procession through the streets is a parade."
+        },
+        "g3": {
+          "label": "3. lights and colours you put up",
+          "correct": "decorations",
+          "why": "Things put up to make a place festive are decorations."
+        },
+        "g4": {
+          "label": "4. something you give on a special day",
+          "correct": "present",
+          "why": "A present is a gift given to someone."
+        },
+        "g5": {
+          "label": "5. bright lights and loud bangs",
+          "correct": "fireworks",
+          "why": "Fireworks explode in the night sky with light and noise."
+        },
+        "g6": {
+          "label": "6. when farmers bring in the food",
+          "correct": "harvest",
+          "why": "The harvest is the time crops are gathered from the fields."
+        },
+        "g7": {
+          "label": "7. a big event with music, food and games",
+          "correct": "festival",
+          "why": "A festival is a public celebration held in a town."
+        },
+        "g8": {
+          "label": "8. people in the houses next to yours",
+          "correct": "neighbours",
+          "why": "Neighbours live in the houses beside your own."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. Every November we ___ Thanksgiving",
+          "correct": "celebrate",
+          "why": "You celebrate a festival; the object here is Thanksgiving."
+        },
+        "g2": {
+          "label": "2. We ___ the house with lights",
+          "correct": "decorate",
+          "why": "To decorate means to put up lights and ornaments."
+        },
+        "g3": {
+          "label": "3. My parents ___ our neighbours to dinner",
+          "correct": "invite",
+          "why": "You invite people to come to a meal or party."
+        },
+        "g4": {
+          "label": "4. At the State Fair you can ___ food",
+          "correct": "try",
+          "why": "To try food means to taste it for the first time."
+        },
+        "g5": {
+          "label": "5. Thousands of people ___ the parade",
+          "correct": "watch",
+          "why": "You watch something that moves past, like a parade."
+        },
+        "g6": {
+          "label": "6. Children ___ their presents",
+          "correct": "open",
+          "why": "Presents are wrapped, so you open them."
+        },
+        "g7": {
+          "label": "7. The festival ___ place in the town centre",
+          "correct": "takes",
+          "why": "'Take place' is the fixed phrase meaning to happen."
+        },
+        "g8": {
+          "label": "8. After the fireworks everybody ___ home",
+          "correct": "goes",
+          "why": "'Everybody' is singular, so the present simple takes -es: goes."
+        }
+      }
+    }
+  },
+  "it-writing-task": {
+    "exA": {
+      "prefix": "",
+      "gaps": {
+        "a1": {
+          "label": "1. Reporting when something failed",
+          "correct": "at 02:15 on 14 March.",
+          "why": "An incident report needs an exact time and date, not a vague phrase.",
+          "accept": [
+            "b"
+          ]
+        },
+        "a2": {
+          "label": "2. Asking a user for something",
+          "correct": "Could you send me a screenshot of the error message?",
+          "why": "'Could you…?' is polite; a bare imperative or 'why didn't you' sounds blunt or accusing.",
+          "accept": [
+            "a"
+          ]
+        },
+        "a3": {
+          "label": "3. Summarising what the user told you",
+          "correct": "appeared",
+          "why": "Reported speech shifts the tense back: 'appears' becomes 'appeared' after 'she said'.",
+          "accept": [
+            "b"
+          ]
+        },
+        "a4": {
+          "label": "4. Naming an unconfirmed cause",
+          "correct": "may",
+          "why": "'May' marks a possible cause; 'must' and 'will' claim more certainty than you have.",
+          "accept": [
+            "b"
+          ]
+        },
+        "a5": {
+          "label": "5. Committing to a timeframe",
+          "correct": "by 15:00 today.",
+          "why": "A named deadline is a commitment; 'soon' and 'as soon as possible' promise nothing.",
+          "accept": [
+            "b"
+          ]
+        },
+        "a6": {
+          "label": "6. Explaining a delay to a non-technical reader",
+          "correct": "the supplier sent the wrong network cards.",
+          "why": "Plain wording beats jargon: 'SKU mismatch' and 'NIC revision' mean nothing to that reader.",
+          "accept": [
+            "b"
+          ]
+        },
+        "a7": {
+          "label": "7. Recording an action in a report",
+          "correct": "were disabled",
+          "why": "Reports use the passive for actions taken: 'were disabled' focuses on what happened.",
+          "accept": [
+            "a"
+          ]
+        },
+        "a8": {
+          "label": "8. Closing a message that needs action",
+          "correct": "Please confirm by Thursday whether I can proceed.",
+          "why": "A clear close names the action and the deadline, so the reader knows what to do.",
+          "accept": [
+            "b"
+          ]
+        }
+      }
+    }
+  },
+  "business-property-management": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Why run a tenant screening?",
+          "correct": "To reduce the risk of lost rent and property damage",
+          "why": "Screening tenants lowers the risk of unpaid rent and damage to the property."
+        },
+        "g2": {
+          "label": "2. How quickly are maintenance requests answered?",
+          "correct": "Within 24 hours",
+          "why": "Maria aims to respond to maintenance requests within 24 hours."
+        },
+        "g3": {
+          "label": "3. What does a high vacancy rate mean?",
+          "correct": "Lost rental income",
+          "why": "Empty units earn nothing, so a high vacancy rate means lost rental income."
+        },
+        "g4": {
+          "label": "4. Before starting eviction proceedings",
+          "correct": "Sent several written warnings and a formal notice",
+          "why": "She sent written warnings and a formal notice before taking any eviction step."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. The apartment's owner",
+          "correct": "landlord",
+          "why": "The owner who rents property out is the landlord; the tenant rents it."
+        },
+        "g2": {
+          "label": "2. Before signing a ___",
+          "correct": "lease",
+          "why": "A lease is the rental contract setting rent, deposit and length."
+        },
+        "g3": {
+          "label": "3. The tenant submitted a ___",
+          "correct": "maintenance request",
+          "why": "A maintenance request reports something that needs repairing."
+        },
+        "g4": {
+          "label": "4. A thorough tenant ___",
+          "correct": "screening",
+          "why": "Screening is the background check on income, employment and references."
+        },
+        "g5": {
+          "label": "5. Many empty units means a high ___",
+          "correct": "vacancy rate",
+          "why": "The vacancy rate is the share of units standing empty."
+        },
+        "g6": {
+          "label": "6. The tenant paid a security ___",
+          "correct": "deposit",
+          "why": "A deposit is money held as security and returned if there is no damage."
+        },
+        "g7": {
+          "label": "7. The landlord began ___ proceedings",
+          "correct": "eviction",
+          "why": "Eviction is the legal process of removing a tenant."
+        },
+        "g8": {
+          "label": "8. Property managers collect monthly ___",
+          "correct": "rent",
+          "why": "Rent is the monthly payment a tenant makes for the property."
+        }
+      }
+    }
   }
 }
