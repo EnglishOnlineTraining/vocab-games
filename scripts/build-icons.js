@@ -135,10 +135,21 @@ function ico(size, pngBuf) {
   return Buffer.concat([header, entry, pngBuf]);
 }
 
+// The SVG favicon flips in dark mode: a dark navy square disappears into a dark
+// tab strip, so there the square goes light and the tick goes navy. The raster
+// icons below cannot do this, which is why the SVG is listed first in the head.
 const SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="englishonline.training">
-  <rect width="100" height="100" rx="${RADIUS * 100}" fill="#1a3a5c"/>
-  <path d="M${TICK.map(p => `${p[0] * 100} ${p[1] * 100}`).join(' L')}"
-        fill="none" stroke="#c9a227" stroke-width="${TICK_WIDTH * 100}"
+  <style>
+    .bg { fill: #1a3a5c }
+    .tick { stroke: #c9a227 }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #f7f9fc }
+      .tick { stroke: #1a3a5c }
+    }
+  </style>
+  <rect class="bg" width="100" height="100" rx="${RADIUS * 100}"/>
+  <path class="tick" d="M${TICK.map(p => `${+(p[0] * 100).toFixed(2)} ${+(p[1] * 100).toFixed(2)}`).join(' L')}"
+        fill="none" stroke-width="${TICK_WIDTH * 100}"
         stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 `;

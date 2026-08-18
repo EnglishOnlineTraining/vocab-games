@@ -413,8 +413,13 @@ page 404'd on `/favicon.ico`), `theme-color` on 14 of 222 pages, Open Graph tags
 telling a phone which colour scheme the design supports. **`node scripts/build-head.js`** owns a
 `HEAD:START`/`HEAD:END` block just before `</head>` on every page:
 
-- `<meta name="color-scheme" content="light">` — the palette is light-only, so declaring it stops
-  mobile dark modes from auto-inverting the exercises into unreadable mud.
+- `<meta name="color-scheme">` — **per page, from what the CSS actually implements**. `style.css`
+  (and most standalone pages) carry a `prefers-color-scheme: dark` block that redefines the whole
+  token set, so those 201 pages declare `light dark`; the 21 that are genuinely light-only
+  (`themen/`, the lead magnets, the uni task pages, `klasse7-mini`) declare `light`. Getting this
+  backwards is not cosmetic: `light` on a dark-capable page leaves the browser styling form
+  controls and scrollbars light while the page goes dark, and `light dark` on a light-only page
+  does the reverse. `supportsDark()` in the script decides.
 - `<meta name="theme-color" content="#1a3a5c">` on every page, not just the hubs.
 - `<meta name="text-scale" content="scale">` — the 2026 opt-in that makes mobile browsers honour the
   OS text-size setting (`rem`/`em` scale; `px` does not). Students on phones with large-text
@@ -424,6 +429,11 @@ telling a phone which colour scheme the design supports. **`node scripts/build-h
   and `<link rel="canonical">` — so a link pasted into WhatsApp, a parents' group or the WordPress
   site shows a real title/description card instead of a bare URL. `og:type` is `article` for
   `themen/` pages, `website` elsewhere.
+- `og:image` is the **1200×630 branded card** `og-card.png` with `twitter:card=summary_large_image`.
+  It is rendered from `scripts/og-card.html` by **`node scripts/build-og-card.js`** (Chromium via
+  Playwright, which is *not* a repo dependency — the output is committed, and the HTML can be
+  screenshotted by hand instead). A square icon is the wrong ratio for a share card and gets
+  cropped and blurred, which is what the site had before.
 
 It also injects, where needed:
 - **a `<noscript>` banner** (German + English) on the **189 pages that render blank without
@@ -435,10 +445,21 @@ It also injects, where needed:
   `ielts-vocabulary-glossary`, `uni-pm-vocabulary`, `uni-presentation-task`, `uni-writing-task`,
   `vocab-games`, `year-7-class-wall`); the script names them on every run rather than guessing.
 
+**Deliberately not done: `defer` / `type="module"` on `exercise.js`.** It looks like free
+performance, but the framework relies on **load order**: a page may redefine a framework function
+*after* the include and win (documented under "Shared framework" — a dozen pages do this for
+`showStep`/`renderScore`/`startExercises`). `defer` makes `exercise.js` execute *after* the page's
+inline script, so the shared definitions would silently clobber those overrides; `type="module"`
+additionally takes the framework out of global scope, where every page's inline code expects it.
+Either change needs the framework restructured first, so the `<script src="exercise.js">` include
+stays synchronous.
+
 **Icons — `scripts/build-icons.js`.** The mark (rounded square in `--blue`, gold tick) is defined
 as geometry and rasterised in pure Node, so `icon.svg`, `favicon.ico`, `apple-touch-icon.png`,
 `icon-192.png`, `icon-512.png` and `site.webmanifest` are all regenerable and byte-identical on
-re-run — no binary blobs nobody can reproduce. Icon paths in the head block are **relative**, so
+re-run — no binary blobs nobody can reproduce. `icon.svg` carries its own
+`prefers-color-scheme: dark` rule and inverts (light square, navy tick) so the mark keeps contrast
+against a dark tab strip; the rasters cannot do that, which is why the SVG is listed first. Icon paths in the head block are **relative**, so
 they also work on the `englishonlinetraining.github.io/vocab-games/` fallback URL; `og:image` is
 absolute because scrapers require it.
 

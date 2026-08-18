@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+  Source for the 1200x630 social preview card (og-card.png).
+  Rendered by scripts/build-og-card.js; you can also just open it in a browser
+  at 1200x630 and screenshot it by hand if Chromium/Playwright is unavailable.
+  Keep the tokens in step with style.css.
+-->
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --blue:#1a3a5c; --blue-deep:#122A44; --gold:#c9a227; --gold-lt:#f5e6b0;
+    --font:'Segoe UI',system-ui,'Liberation Sans','DejaVu Sans',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{width:1200px;height:630px;overflow:hidden;font-family:var(--font);
+       background:linear-gradient(135deg,var(--blue) 0%,var(--blue-deep) 100%);color:#fff}
+  .card{width:100%;height:100%;padding:56px 70px;display:flex;flex-direction:column;
+        justify-content:space-between;position:relative}
+  /* faint oversized tick echoing the favicon */
+  .watermark{position:absolute;right:-70px;bottom:-120px;width:560px;height:560px;opacity:.09}
+  .top{display:flex;align-items:center;gap:22px}
+  .mark{width:78px;height:78px;flex:0 0 78px}
+  .wordmark{font-size:34px;font-weight:600;letter-spacing:.4px;color:var(--gold-lt)}
+  h1{font-size:58px;line-height:1.12;font-weight:700;max-width:20ch;letter-spacing:-1px}
+  h1 em{font-style:normal;color:var(--gold)}
+  .tags{display:flex;flex-wrap:wrap;gap:12px;max-width:960px}
+  .tag{border:2px solid rgba(245,230,176,.45);color:var(--gold-lt);border-radius:999px;
+       padding:7px 17px;font-size:21px;font-weight:600}
+  .foot{font-size:23px;color:rgba(255,255,255,.82);font-weight:500}
+  .rule{height:6px;width:118px;background:var(--gold);border-radius:4px;margin:22px 0 24px}
+</style>
+</head>
+<body>
+<div class="card">
+  <svg class="watermark" viewBox="0 0 100 100" aria-hidden="true">
+    <path d="M28 53 L44 69 L74 33" fill="none" stroke="#c9a227" stroke-width="11.5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+
+  <div class="top">
+    <svg class="mark" viewBox="0 0 100 100" aria-hidden="true">
+      <rect width="100" height="100" rx="22" fill="#f7f9fc"/>
+      <path d="M28 53 L44 69 L74 33" fill="none" stroke="#1a3a5c" stroke-width="11.5"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="wordmark">englishonline.training</div>
+  </div>
+
+  <div>
+    <h1>Englisch üben — <em>kostenlos</em> und ohne Anmeldung</h1>
+    <div class="rule"></div>
+    <div class="tags">
+      <span class="tag">Klasse 7–10</span>
+      <span class="tag">MSA</span>
+      <span class="tag">Abitur</span>
+      <span class="tag">Universität</span>
+      <span class="tag">Business</span>
+      <span class="tag">IT English</span>
+    </div>
+  </div>
+
+  <div class="foot">Sofortiges Feedback · Erklärungen zu jeder Antwort · activities.englishonline.training</div>
+</div>
+</body>
+</html>
