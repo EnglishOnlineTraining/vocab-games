@@ -13346,5 +13346,665 @@
         }
       }
     }
+  },
+  "10g-growing-up-black": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Starr tones down her personality at",
+          "correct": "Williamson",
+          "why": "Williamson is the mostly white school where she changes how she behaves.",
+          "accept": [
+            "williamson"
+          ]
+        },
+        "g2": {
+          "label": "2. Switching between two ways of speaking",
+          "correct": "code-switching",
+          "why": "Code-switching is moving between two languages or speech styles by situation."
+        },
+        "g3": {
+          "label": "3. Starr must decide whether to speak out after",
+          "correct": "she witnesses a police officer shoot her unarmed friend",
+          "why": "The turning point is witnessing the shooting of her unarmed friend."
+        },
+        "g4": {
+          "label": "4. Where the novel is set",
+          "correct": "a fictional city inspired by places like Harlem",
+          "why": "The setting is invented, drawing on real neighbourhoods such as Harlem.",
+          "accept": [
+            "in a fictional city inspired by places like harlem"
+          ]
+        },
+        "g5": {
+          "label": "5. Thomas says Black English",
+          "correct": "is a rich, rule-governed way of speaking",
+          "why": "Thomas presents Black English as systematic and rule-governed, not incorrect."
+        },
+        "g6": {
+          "label": "6. What young Black Americans balance",
+          "correct": "fear, loyalty and the desire for justice",
+          "why": "Starr is pulled between fear, loyalty to her community and wanting justice."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. 'I feel nervous' → she ___",
+          "correct": "felt",
+          "why": "Reported speech shifts the present simple back to the past simple."
+        },
+        "g2": {
+          "label": "2. 'I haven't done anything wrong' → he ___",
+          "correct": "hadn't done",
+          "why": "The present perfect shifts back to the past perfect in reported speech."
+        },
+        "g3": {
+          "label": "3. 'I will support you' → she ___",
+          "correct": "would",
+          "why": "'Will' becomes 'would' when the reporting verb is in the past."
+        },
+        "g4": {
+          "label": "4. 'You can trust…' → she ___",
+          "correct": "could",
+          "why": "'Can' becomes 'could' in reported speech."
+        },
+        "g5": {
+          "label": "5. 'I saw everything' → he ___",
+          "correct": "had seen",
+          "why": "The past simple shifts back to the past perfect."
+        },
+        "g6": {
+          "label": "6. 'I'm going to speak…' → she ___",
+          "correct": "was going to",
+          "why": "'Am going to' becomes 'was going to' after a past reporting verb."
+        },
+        "g7": {
+          "label": "7. 'You must stay calm' → Starr ___",
+          "correct": "had to",
+          "why": "'Must' becomes 'had to' when the obligation is reported."
+        },
+        "g8": {
+          "label": "8. 'We are proud of you' → they ___",
+          "correct": "were",
+          "why": "The present simple of 'be' shifts back to the past: are → were."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. 'Can you help me…?' → she asked ___",
+          "correct": "if",
+          "why": "Yes/no questions are reported with 'if' or 'whether'."
+        },
+        "g2": {
+          "label": "2. 'Please read chapter five' → the teacher ___",
+          "correct": "told",
+          "why": "'Told' takes a personal object; a request becomes told + object + to + infinitive."
+        },
+        "g3": {
+          "label": "3. 'I didn't sell drugs because…' → Khalil ___",
+          "correct": "explained",
+          "why": "'Explained' is the reporting verb that fits giving a reason."
+        },
+        "g4": {
+          "label": "4. 'Don't talk to reporters' → warned her ___",
+          "correct": "not to",
+          "why": "A negative instruction is reported as 'not to' + infinitive."
+        },
+        "g5": {
+          "label": "5. 'Where were you last night?' → asked where ___",
+          "correct": "she had",
+          "why": "Reported questions use statement word order and backshift the tense."
+        },
+        "g6": {
+          "label": "6. 'What happened at the party?' → asked what ___",
+          "correct": "had happened",
+          "why": "The past simple shifts back to the past perfect in a reported question."
+        },
+        "g7": {
+          "label": "7. 'I will tell the truth' → promised that he ___",
+          "correct": "would tell",
+          "why": "'Will' becomes 'would' after a past reporting verb."
+        },
+        "g8": {
+          "label": "8. 'The sun always rises…' → reminded her that the sun always ___",
+          "correct": "rises",
+          "why": "A general truth keeps the present simple, with no backshift."
+        }
+      }
+    }
+  },
+  "10g-my-generation": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Millennials were accused of being too",
+          "correct": "sensitive",
+          "why": "The stereotype was that millennials were too sensitive."
+        },
+        "g2": {
+          "label": "2. Punks used ripped clothes and loud music to",
+          "correct": "reject",
+          "why": "Punk style was a way of rejecting mainstream values."
+        },
+        "g3": {
+          "label": "3. Today's subcultures are built around online",
+          "correct": "communities",
+          "why": "Modern subcultures form in online communities rather than on the street."
+        },
+        "g4": {
+          "label": "4. Older generations learned patience without",
+          "correct": "smartphones",
+          "why": "They grew up without smartphones, so waiting was normal."
+        },
+        "g5": {
+          "label": "5. Each generation solves problems with the tools",
+          "correct": "available",
+          "why": "Every generation uses whatever tools are available to it."
+        },
+        "g6": {
+          "label": "6. Less screen time means a more ___ life",
+          "correct": "meaningful",
+          "why": "Older relatives assume less screen time equals a more meaningful life."
+        },
+        "g7": {
+          "label": "7. Almost all generations have been",
+          "correct": "underestimated",
+          "why": "The text's point is that each generation gets underestimated in turn."
+        },
+        "g8": {
+          "label": "8. The most useful skill is not to",
+          "correct": "judge",
+          "why": "The article argues against judging other generations."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Generation Z is ___",
+          "correct": "more connected",
+          "why": "Long adjectives form the comparative with 'more' before 'than'."
+        },
+        "g2": {
+          "label": "2. Smartphones have made communication ___",
+          "correct": "faster",
+          "why": "'Make' + object + comparative adjective: made communication faster."
+        },
+        "g3": {
+          "label": "3. Punk was one of the ___",
+          "correct": "most rebellious",
+          "why": "'One of the' is followed by a superlative and a plural noun."
+        },
+        "g4": {
+          "label": "4. Online communities are not ___",
+          "correct": "as close as",
+          "why": "'Not as … as' compares two things that are not equal."
+        },
+        "g5": {
+          "label": "5. Millennials grew up online, ___",
+          "correct": "whereas",
+          "why": "'Whereas' joins two clauses that contrast with each other."
+        },
+        "g6": {
+          "label": "6. ___ (sentence opener)",
+          "correct": "Unlike",
+          "why": "'Unlike' is a preposition and is followed by a noun, not a clause."
+        },
+        "g7": {
+          "label": "7. This is ___",
+          "correct": "best",
+          "why": "The superlative of 'good' is 'best' and takes 'the'."
+        },
+        "g8": {
+          "label": "8. ___ (sentence opener)",
+          "correct": "Both",
+          "why": "'Both' refers to two groups together and takes a plural verb."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. people born around the same time",
+          "correct": "generation",
+          "why": "A generation is an age group born in the same period."
+        },
+        "g2": {
+          "label": "2. smaller group with its own values",
+          "correct": "subculture",
+          "why": "A subculture has its own style and values within a wider society."
+        },
+        "g3": {
+          "label": "3. shared by most of society",
+          "correct": "mainstream",
+          "why": "Mainstream describes what the majority accepts as normal."
+        },
+        "g4": {
+          "label": "4. gap between older and younger people",
+          "correct": "generation gap",
+          "why": "The generation gap is the difference in attitudes between age groups."
+        },
+        "g5": {
+          "label": "5. a style that becomes suddenly popular",
+          "correct": "trend",
+          "why": "A trend is a style or interest that catches on quickly."
+        },
+        "g6": {
+          "label": "6. judging by beliefs about an age group",
+          "correct": "stereotype",
+          "why": "A stereotype judges an individual by assumptions about their group."
+        },
+        "g7": {
+          "label": "7. customs passed down over years",
+          "correct": "tradition",
+          "why": "Traditions are customs handed from one generation to the next."
+        },
+        "g8": {
+          "label": "8. sense of who you are",
+          "correct": "identity",
+          "why": "Identity is a person's sense of who they are."
+        }
+      }
+    }
+  },
+  "10g-post-racial-obama": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Obama won the election in",
+          "correct": "2008",
+          "why": "Obama won the presidential election in 2008."
+        },
+        "g2": {
+          "label": "2. Journalists described the USA as",
+          "correct": "post-racial",
+          "why": "Some journalists claimed his win made America 'post-racial'."
+        },
+        "g3": {
+          "label": "3. Obama himself was",
+          "correct": "cautious",
+          "why": "Obama was cautious about the post-racial claim."
+        },
+        "g4": {
+          "label": "4. His presidency expanded",
+          "correct": "healthcare",
+          "why": "His presidency saw healthcare coverage expanded."
+        },
+        "g5": {
+          "label": "5. Police killings led to the rise of",
+          "correct": "Black Lives Matter",
+          "why": "Killings of unarmed Black people gave rise to Black Lives Matter.",
+          "accept": [
+            "blm"
+          ]
+        },
+        "g6": {
+          "label": "6. Kaepernick protested by",
+          "correct": "kneeling",
+          "why": "He knelt during the national anthem as a protest."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Obama ___",
+          "correct": "won",
+          "why": "A finished action at a stated past time takes the past simple."
+        },
+        "g2": {
+          "label": "2. Since leaving office, he ___",
+          "correct": "has continued",
+          "why": "'Since' with a period reaching the present takes the present perfect."
+        },
+        "g3": {
+          "label": "3. Kaepernick ___",
+          "correct": "began",
+          "why": "A completed action at a definite past point takes the past simple."
+        },
+        "g4": {
+          "label": "4. Many athletes ___",
+          "correct": "have used",
+          "why": "Present perfect for actions in a period that is still open."
+        },
+        "g5": {
+          "label": "5. The Black Lives Matter movement ___",
+          "correct": "has grown",
+          "why": "The growth continues up to now, so the present perfect is used."
+        },
+        "g6": {
+          "label": "6. The 2008 financial crisis ___",
+          "correct": "happened",
+          "why": "A dated past event takes the past simple."
+        },
+        "g7": {
+          "label": "7. Historians ___",
+          "correct": "have debated",
+          "why": "The debate is still going on, so the present perfect fits."
+        },
+        "g8": {
+          "label": "8. Obama ___",
+          "correct": "left",
+          "why": "Leaving office happened at a definite past time: past simple."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. Obama became president ___",
+          "correct": "in 2009",
+          "why": "The past simple pairs with a finished time expression like 'in 2009'."
+        },
+        "g2": {
+          "label": "2. The debate has continued ___",
+          "correct": "for decades",
+          "why": "'For' + a length of time goes with the present perfect."
+        },
+        "g3": {
+          "label": "3. Kaepernick has protested ___",
+          "correct": "since 2016",
+          "why": "'Since' marks the starting point of a period continuing now."
+        },
+        "g4": {
+          "label": "4. The financial crisis hit the economy ___",
+          "correct": "in 2008",
+          "why": "A finished year takes the past simple, not the present perfect."
+        },
+        "g5": {
+          "label": "5. ___ (sentence opener)",
+          "correct": "So far",
+          "why": "'So far' means up to now and goes with the present perfect."
+        },
+        "g6": {
+          "label": "6. BLM has organised protests ___",
+          "correct": "many times this decade",
+          "why": "'This decade' is an unfinished period, so the present perfect is used."
+        },
+        "g7": {
+          "label": "7. Obama gave his farewell speech ___",
+          "correct": "in January 2017",
+          "why": "A specific finished date takes the past simple."
+        },
+        "g8": {
+          "label": "8. He ___",
+          "correct": "has just published",
+          "why": "'Just' with a very recent action takes the present perfect."
+        }
+      }
+    }
+  },
+  "10g-proud-to-be-black": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Being proud to be Black also means",
+          "correct": "confronting",
+          "why": "Pride also means confronting the injustices the text describes."
+        },
+        "g2": {
+          "label": "2. borrowing without understanding or ___",
+          "correct": "crediting",
+          "why": "Appropriation borrows cultural elements without crediting their source."
+        },
+        "g3": {
+          "label": "3. Black hairstyles were often called",
+          "correct": "unprofessional",
+          "why": "Braids and afros were long dismissed at work and school as unprofessional."
+        },
+        "g4": {
+          "label": "4. The same styles on non-Black celebrities are praised as",
+          "correct": "new",
+          "why": "The same hairstyles get called 'new' or edgy on non-Black celebrities."
+        },
+        "g5": {
+          "label": "5. denies Black people the acceptance they were once",
+          "correct": "refused",
+          "why": "The double standard grants others what Black people were refused."
+        },
+        "g6": {
+          "label": "6. True appreciation involves history, credit and",
+          "correct": "supporting",
+          "why": "Real appreciation means learning the history, crediting it and supporting the community."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. ___ (opinion opener)",
+          "correct": "In my view",
+          "why": "'In my view' introduces a personal opinion at the start of a sentence."
+        },
+        "g2": {
+          "label": "2. It could be argued ___",
+          "correct": "that",
+          "why": "'It could be argued' is followed by a that-clause."
+        },
+        "g3": {
+          "label": "3. Cultural appropriation is, ___",
+          "correct": "arguably",
+          "why": "'Arguably' hedges a claim and sits between commas here."
+        },
+        "g4": {
+          "label": "4. ___ (generalising opener)",
+          "correct": "On the whole",
+          "why": "'On the whole' introduces a general conclusion."
+        },
+        "g5": {
+          "label": "5. As far as I am ___",
+          "correct": "concerned",
+          "why": "'As far as I am concerned' is a fixed phrase for giving your own view."
+        },
+        "g6": {
+          "label": "6. There is no denying ___",
+          "correct": "that",
+          "why": "'There is no denying' is followed by a that-clause."
+        },
+        "g7": {
+          "label": "7. ___ (concession opener)",
+          "correct": "Some might",
+          "why": "'Some might argue' introduces a view you plan to answer."
+        },
+        "g8": {
+          "label": "8. It seems ___",
+          "correct": "to",
+          "why": "'It seems' is followed by 'to' + infinitive in this structure."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. shared and celebrated between equals",
+          "correct": "exchange",
+          "why": "Cultural exchange is a two-way sharing between equals."
+        },
+        "g2": {
+          "label": "2. same style judged differently",
+          "correct": "double",
+          "why": "A double standard applies different rules to different groups."
+        },
+        "g3": {
+          "label": "3. musicians call for fair ___",
+          "correct": "compensation",
+          "why": "Compensation is fair payment for work that others profit from."
+        },
+        "g4": {
+          "label": "4. simplified belief about a group",
+          "correct": "stereotype",
+          "why": "A stereotype is a fixed, oversimplified idea about a whole group."
+        },
+        "g5": {
+          "label": "5. borrowing out of genuine respect",
+          "correct": "appreciation",
+          "why": "Appreciation engages with a culture respectfully and gives credit."
+        },
+        "g6": {
+          "label": "6. supporting a group you are not part of",
+          "correct": "solidarity",
+          "why": "Solidarity means backing a group's cause from outside it."
+        },
+        "g7": {
+          "label": "7. customs and history inherited",
+          "correct": "heritage",
+          "why": "Cultural heritage is what a community inherits from earlier generations."
+        },
+        "g8": {
+          "label": "8. Systemic ___",
+          "correct": "racism",
+          "why": "Systemic racism is discrimination built into institutions, not just individuals."
+        }
+      }
+    }
+  },
+  "10g-rap-hip-hop": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Hip hop began in the",
+          "correct": "South Bronx",
+          "why": "Hip hop started at block parties in the South Bronx, New York.",
+          "accept": [
+            "southbronx"
+          ]
+        },
+        "g2": {
+          "label": "2. DJs extended the instrumental",
+          "correct": "breaks",
+          "why": "DJs looped the instrumental breaks so dancers could keep going."
+        },
+        "g3": {
+          "label": "3. Public Enemy used rap to comment on",
+          "correct": "racism",
+          "why": "Groups like Public Enemy made rap a vehicle for commentary on racism."
+        },
+        "g4": {
+          "label": "4. 2Pac became one of the best-selling",
+          "correct": "artists",
+          "why": "2Pac became one of the best-selling artists of his time."
+        },
+        "g5": {
+          "label": "5. Labels invested because they recognised its",
+          "correct": "audience",
+          "why": "Record labels saw the size of hip hop's audience and invested."
+        },
+        "g6": {
+          "label": "6. By the 2000s hip hop was the most",
+          "correct": "successful",
+          "why": "By the 2000s it had become the most successful genre commercially."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. 'I want to change…' → he ___",
+          "correct": "wanted",
+          "why": "Reported speech shifts the present simple back to the past simple."
+        },
+        "g2": {
+          "label": "2. 'Do you write your own lyrics?' → if he ___",
+          "correct": "wrote",
+          "why": "A yes/no question is reported with 'if' and the tense shifts back."
+        },
+        "g3": {
+          "label": "3. 'I have never forgotten…' → he ___",
+          "correct": "had",
+          "why": "The present perfect shifts back to the past perfect: had never forgotten."
+        },
+        "g4": {
+          "label": "4. 'Will hip hop still be popular?' → whether hip hop ___",
+          "correct": "would",
+          "why": "'Will' becomes 'would' in reported speech."
+        },
+        "g5": {
+          "label": "5. 'I recorded this album last year' → he ___",
+          "correct": "had",
+          "why": "The past simple shifts back to the past perfect: had recorded."
+        },
+        "g6": {
+          "label": "6. 'Where did you grow up?' → asked where he ___",
+          "correct": "had",
+          "why": "Reported questions use statement order and backshift: had grown up."
+        },
+        "g7": {
+          "label": "7. 'Don't forget your roots' → told him ___",
+          "correct": "not to",
+          "why": "A negative instruction becomes 'not to' + infinitive.",
+          "accept": [
+            "notto"
+          ]
+        },
+        "g8": {
+          "label": "8. 'We are working…' → they ___",
+          "correct": "were",
+          "why": "The present progressive shifts back: are working → were working."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. 'Hip hop gave me a voice' → he ___",
+          "correct": "claimed",
+          "why": "'Claimed' reports a statement the speaker presents as true."
+        },
+        "g2": {
+          "label": "2. defending himself → he ___",
+          "correct": "insisted",
+          "why": "'Insisted' reports a firm denial made in self-defence."
+        },
+        "g3": {
+          "label": "3. 'Maybe we should look…' → the teacher ___",
+          "correct": "suggested",
+          "why": "'Suggested' reports a proposal introduced with 'maybe we should'."
+        },
+        "g4": {
+          "label": "4. 'I will always support…' → the producer ___",
+          "correct": "promised",
+          "why": "'Promised' reports a commitment about the future."
+        },
+        "g5": {
+          "label": "5. 'I'm not responsible…' → the rapper ___",
+          "correct": "denied",
+          "why": "'Denied' reports a rejection of responsibility."
+        },
+        "g6": {
+          "label": "6. 'Careful — explicit language' → the label ___",
+          "correct": "warned",
+          "why": "'Warned' reports a caution about possible harm."
+        },
+        "g7": {
+          "label": "7. 'I made mistakes…' → he ___",
+          "correct": "admitted",
+          "why": "'Admitted' reports accepting something negative about yourself."
+        },
+        "g8": {
+          "label": "8. 'Why do critics ignore…?' → she ___",
+          "correct": "wondered",
+          "why": "'Wondered' reports a question asked to oneself."
+        }
+      }
+    }
   }
 }
