@@ -3,6 +3,7 @@
   "categories": {
     "8g": { "label": "Year 8 Gymnasium",  "cefr": "~B1",    "textbook": "Klett Green Line 4",  "webhook": "year7" },
     "8c": { "label": "Year 8 Oberschule", "cefr": "~A2",    "textbook": "Klett Orange Line 4", "webhook": "year7" },
+    "9g": { "label": "Year 9 Gymnasium",  "cefr": "~B1",    "textbook": "Klett Green Line 5",  "webhook": "year9" },
     "10g":{ "label": "Year 10 Gymnasium", "cefr": "~B2/C1", "textbook": "Klett Green Line 6",  "webhook": "year9" },
     "10c":{ "label": "Year 10 Oberschule","cefr": "~B1/B2", "textbook": "Klett Orange Line 6", "webhook": "year9" }
   },
@@ -60,6 +61,14 @@
     { "id": "8c-us-sports-freetime",     "category": "8c", "unit": "Supplementary",     "topic": "US sports & free-time activities",   "grammar": "like / love / hate + -ing",            "angle": "vocab",   "status": "idea" },
     { "id": "8c-us-weather-seasons",     "category": "8c", "unit": "Supplementary",     "topic": "Weather & seasons across the USA",   "grammar": "there is / are & this / these",        "angle": "grammar", "status": "idea" },
     { "id": "8c-us-family-friends",      "category": "8c", "unit": "Supplementary",     "topic": "Family & friends — descriptions",    "grammar": "Possessive 's & family vocabulary",    "angle": "vocab",   "status": "idea" },
+
+    { "id": "9g-the-good-life",          "category": "9g", "unit": "Unit 2",            "topic": "The good life — priorities & happiness", "grammar": "Relative clauses & linking words",    "angle": "reading", "status": "idea" },
+    { "id": "9g-california-dreaming",    "category": "9g", "unit": "Unit 3",            "topic": "California dreaming — future plans", "grammar": "Modal verbs of possibility",           "angle": "grammar", "status": "idea" },
+    { "id": "9g-informative-texts",      "category": "9g", "unit": "Text smart 2",      "topic": "Informative texts — news & articles", "grammar": "Passive voice & reported speech",     "angle": "reading", "status": "idea" },
+    { "id": "9g-argumentative-texts",    "category": "9g", "unit": "Text smart 3",      "topic": "Argumentative texts — counter-arguments", "grammar": "Linking words & persuasion",        "angle": "writing", "status": "idea" },
+    { "id": "9g-having-a-voice",         "category": "9g", "unit": "Across cultures 3", "topic": "Having a voice — dialogue & discussion", "grammar": "Question tags & indirect questions",  "angle": "skills", "status": "idea" },
+    { "id": "9g-young-voices",           "category": "9g", "unit": "Supplementary",     "topic": "Young voices — identity & expression", "grammar": "Present perfect & present continuous", "angle": "grammar", "status": "idea" },
+    { "id": "9g-global-perspectives",    "category": "9g", "unit": "Supplementary",     "topic": "Global perspectives — cultural comparison", "grammar": "Comparative & superlative structures", "angle": "vocab", "status": "idea" },
 
     { "id": "10g-cultural-diversity",    "category": "10g","unit": "Across cultures 1", "topic": "Same same but different? — cultural diversity","grammar": "Describing & commenting",     "angle": "reading", "status": "built", "file": "10g-cultural-diversity.html" },
     { "id": "10g-scottish-history",      "category": "10g","unit": "Focus 1",           "topic": "Scottish history",                   "grammar": "Past tenses",                          "angle": "reading", "status": "built", "file": "10g-scottish-history.html" },
