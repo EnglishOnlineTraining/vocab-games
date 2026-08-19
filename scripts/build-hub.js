@@ -117,6 +117,112 @@ const stats =
   + '  </ul>\n'
   + '  <!-- STATS:END -->';
 
+/* ============================================================
+   Kurssammlungen — the curated collection blocks below the filter
+   index on activities.html.
+   ------------------------------------------------------------
+   Hand-maintained until 2026-08-19, and drifted the same way the
+   root page had: Year 7 Gymnasium read 8 against a real 11, MSA 20
+   against 21, University 10 against 15. Generated from the same
+   data/exercises.json as everything else, between
+   <!-- COLLECTIONS:START --> and <!-- COLLECTIONS:END -->.
+   The prose (eyebrow, card meta) is editorial and lives in the
+   tables below — edit it here, never in activities.html.
+============================================================ */
+
+function countFor(year, school) {
+  return exercises.filter(e => String(e.year) === String(year) && (!school || e.schoolType === school)).length;
+}
+
+function count(n, word, plural) {
+  if (!n) return 'Coming Soon';
+  return n + ' ' + (n === 1 ? word : (plural || word + 's'));
+}
+
+const COLLECTION_YEARS = [
+  ['7',  'Year 7',  'Grammar, reading &amp; vocabulary',
+                    'Reading, writing &amp; comprehension'],
+  ['8',  'Year 8',  'Green Line 4 · ~B1',
+                    'Orange Line 4 · ~A2'],
+  ['9',  'Year 9',  'California, Australia, Canada, Ireland, India, New Zealand &amp; literature',
+                    'South Africa, work, media &amp; grammar'],
+  ['10', 'Year 10', 'Scotland, Black America &amp; youth culture',
+                    'Commonwealth countries, grammar &amp; civil rights']
+];
+
+const COLLECTION_PROF = [
+  ['uni-activities.html',      '🎓', 'University English', 'uni',      'Business relationships, case studies &amp; vocabulary'],
+  ['it-activities.html',       '💻', 'IT English',         'it',       'Vocational IT trainees · B1–B2'],
+  ['business-activities.html', '💼', 'Business English',   'business', 'Company tasks &amp; professional skills']
+];
+
+function colCard(href, icon, title, meta, countLabel) {
+  return '      <li><a class="group-card" href="' + href + '">\n'
+    + '        <span class="group-icon">' + icon + '</span>\n'
+    + '        <span class="group-title">' + title + '</span>\n'
+    + '        <span class="group-meta">' + meta + '</span>\n'
+    + '        <span class="exercise-count">' + countLabel + '</span>\n'
+    + '      </a></li>';
+}
+
+function colBlock(id, badge, eyebrow, title, cards) {
+  return '  <section class="year-block" aria-labelledby="' + id + '">\n'
+    + '    <h2 class="year-heading" id="' + id + '">\n'
+    + '      <span class="year-badge">' + badge + '</span>\n'
+    + '      <span class="htext"><span class="eyebrow">' + eyebrow + '</span>'
+      + '<span class="htitle">' + title + '</span></span>\n'
+    + '    </h2>\n'
+    + '    <ul class="cards-grid">\n' + cards.join('\n') + '\n    </ul>\n'
+    + '  </section>';
+}
+
+const colBlocks = [];
+
+COLLECTION_YEARS.forEach(([year, label, gMeta, cMeta]) => {
+  const g = countFor(year, 'gymnasium'), c = countFor(year, 'oberschule');
+  colBlocks.push(colBlock('y' + year, year, 'Sekundarstufe I', label, [
+    colCard(year + 'g-activities.html', '🏫', 'Gymnasium',  g ? gMeta : 'Coming soon', count(g, 'Exercise')),
+    colCard(year + 'c-activities.html', '🏫', 'Oberschule', c ? cMeta : 'Coming soon', count(c, 'Exercise'))
+  ]));
+});
+
+// Abitur and MSA are exam courses in their own right — one block each, never
+// folded into the professional-English block (Shaun, 2026-08-19).
+colBlocks.push(colBlock('abi', '🎓', 'Sekundarstufe II', 'Abitur', [
+  colCard('abitur-activities.html', '🎓', 'Abitur English',
+    'Text analysis, argumentative writing, summaries &amp; mediation',
+    count(countFor('abitur', null), 'Pack'))
+]));
+
+colBlocks.push(colBlock('msa', '🎧', 'Oberschule · Exam prep', 'MSA (Mittlerer Schulabschluss)', [
+  colCard('msa-activities.html', '🎧', 'MSA English',
+    'Full-skills listening, reading &amp; writing exam practice',
+    count(countFor('msa', null), 'Exercise'))
+]));
+
+colBlocks.push(colBlock('grammar-section', '📘', 'Alle Niveaustufen · Keine Anmeldung', 'Grammatik-Übungen', [
+  colCard('grammar-activities.html', '📘', 'Grammatik-Übungen',
+    'Interaktive Übungen zu einzelnen Grammatikthemen — frei zugänglich',
+    count(countFor('grammar', null), 'Thema', 'Themen'))
+]));
+
+colBlocks.push(colBlock('tools', '🔤', 'Exam prep', 'Vocabulary Tools', [
+  colCard('ielts-vocabulary-glossary.html', '📖', 'IELTS Vocabulary Glossary',
+    'Searchable glossary &amp; matching practice — 85 terms', '1 Resource')
+]));
+
+colBlocks.push(colBlock('prof', '🎓', 'Adults · Vocational', 'Professional English',
+  COLLECTION_PROF.map(([href, icon, title, key, meta]) => {
+    const n = countFor(key, null);
+    return colCard(href, icon, title, n ? meta : 'Coming soon', count(n, 'Exercise'));
+  })));
+
+const collectionsSection =
+  '<!-- COLLECTIONS:START (generated by scripts/build-hub.js — do not edit by hand) -->\n'
+  + '  <h2 class="collections-h">Kurssammlungen — nach Jahrgang &amp; Schulart</h2>\n\n'
+  + colBlocks.join('\n\n') + '\n'
+  + '  <!-- COLLECTIONS:END -->';
+
 // ---- inject between markers ----
 const file = path.join(ROOT, 'activities.html');
 let html = fs.readFileSync(file, 'utf8');
@@ -128,9 +234,14 @@ const statsRe = /<!-- STATS:START[\s\S]*?<!-- STATS:END -->/;
 if (!statsRe.test(html)) throw new Error('STATS markers not found in activities.html — add <!-- STATS:START --> … <!-- STATS:END --> around the .stats list first.');
 html = html.replace(statsRe, stats);
 
+const colRe = /<!-- COLLECTIONS:START[\s\S]*?<!-- COLLECTIONS:END -->/;
+if (!colRe.test(html)) throw new Error('COLLECTIONS markers not found in activities.html — add <!-- COLLECTIONS:START --> … <!-- COLLECTIONS:END --> around the Kurssammlungen blocks first.');
+html = html.replace(colRe, collectionsSection);
+
 fs.writeFileSync(file, html);
 console.log('Injected hub index:', exercises.length, 'exercise cards into activities.html');
 console.log('At-a-glance stats:', exercises.length, 'exercises,', collections, 'collections,', areas.size, 'areas');
+console.log('Kurssammlungen:', colBlocks.length, 'collection blocks');
 
 
 /* ============================================================
@@ -191,10 +302,6 @@ function rootBlock(heading, badge, cards) {
     + '    </h2>\n\n'
     + '    <div class="cards-grid">\n' + cards.join('\n\n') + '\n    </div>\n'
     + '  </section>';
-}
-
-function countFor(year, school) {
-  return exercises.filter(e => String(e.year) === String(year) && (!school || e.schoolType === school)).length;
 }
 
 const rootBlocks = [];
