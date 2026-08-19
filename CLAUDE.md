@@ -17,7 +17,7 @@ Static HTML exercise pages for English language learners, hosted on GitHub Pages
 Three things that have already cost real time or broken live pages. None are obvious from the
 code.
 
-### 1. WP page 1763 (`/activities/`) has a stale block-editor state
+### 1. WP pages 1763 (`/activities/`) and 1997 (`/it-english/`) have stale block-editor state
 Its `_crdt_document` still holds a much older snapshot — Year 7 "6 exercises", Year 9 "5
 exercises", and **no Year 8/10/Abitur/MSA sections at all**. The live content is correct; the
 editor's collaborative-editing state is not. **Opening 1763 in the WP block editor risks
@@ -43,6 +43,19 @@ headings, separators and `core/html` button groups — which is why writing the 
 survivable here at all. Note its `_crdt_document` still holds the ancient snapshot (Year 7 "6
 exercises", 9c "2 exercises", no Y8/Y10/Abitur/MSA) and an API write does **not** update it, so the
 block editor stays exactly as dangerous as described above.
+
+**1997 (`/it-english/`) has the same problem — found 2026-08-18.** Its `_crdt_document` says the
+page offers *"9 interactive exercises"* while the live content says **10**; the CRDT is a stale
+snapshot exactly as on 1763. It was spotted incidentally, in the response to a `pages.update` that
+set only `featured_media`, so nothing was looking for it — which means **other pages may be in the
+same state and simply have not been opened**. Treat any WP page whose `_crdt_document` is non-empty
+as editor-unsafe until checked: fetch it, compare its snapshot against the live `content`, and
+prefer `pages.update` over the block editor.
+
+**Setting `featured_media` alone is safe on both pages.** `pages.update` only writes the fields you
+send, so passing `featured_media` without `content` never round-trips the block markup — verified on
+1763 on 2026-08-18, where every button group, the Grammatik-Themen block and the quizzes came back
+untouched. The danger is only in sending `content` back.
 
 ### 2. `isTestMode()` makes submissions silently no-op on localhost
 ```js
@@ -311,13 +324,23 @@ fixes fell out of it: their `state` objects lacked `scores: {}` (so the first wr
 stray copy of `submitToSheet`'s test-mode block that returned `undefined` and referenced an
 undefined `btn` — removed.
 
-**To add explanations for a page, use the `add-explanations` skill** — it runs the whole pipeline. Manually: see the backlog with **`node scripts/extract-graded.js --todo`**; dump a page's gaps/answers/context with **`node scripts/extract-graded.js <file.html>`**; append `"<unit>": { … }` to `data/explanations.json` keyed by the page's real `var UNIT` (not always the filename, e.g. `tudor-conditionals-7g`); then run **`node scripts/validate-explanations.js`** (checks every `prefix+gap` id exists and each `correct`/`accept` is a real option) and commit the JSON. The extractor resolves answer keys whether inline or passed as a variable (`answers`, `ANSWERS.A`), and prints the real `UNIT`. **Status (verified 2026-08-12): 94 units / 1,702 gaps done**, every one carrying a written `why`. Run `node scripts/extract-graded.js --todo` for the live remainder rather than trusting a list here — it was 11 standard pages plus 10 with bespoke checkers at last check. (This line previously named only 5 units; that was the pre-merge state of `main` and had been stale since 2026-08-07.) Abitur packs are a separate architecture (see TEMPLATE-NOTES) and need their own path.
+**To add explanations for a page, use the `add-explanations` skill** — it runs the whole pipeline. Manually: see the backlog with **`node scripts/extract-graded.js --todo`**; dump a page's gaps/answers/context with **`node scripts/extract-graded.js <file.html>`**; append `"<unit>": { … }` to `data/explanations.json` keyed by the page's real `var UNIT` (not always the filename, e.g. `tudor-conditionals-7g`); then run **`node scripts/validate-explanations.js`** (checks every `prefix+gap` id exists and each `correct`/`accept` is a real option) and commit the JSON. The extractor resolves answer keys whether inline or passed as a variable (`answers`, `ANSWERS.A`), and prints the real `UNIT`. **Status (verified 2026-08-18): 128 units / 2,306 gaps done and the backlog is empty** — `--todo` reports 0 outstanding pages and 0 with bespoke checkers. Every gap carries a written `why`. Run `node scripts/extract-graded.js --todo` for the live position rather than trusting a number here: this line has been stale twice (it read 5 units on 2026-08-07, then 94 units / "11 standard plus 10 bespoke" until 2026-08-18, by which point the real backlog was 19 pages including eight `10g-` ones the note never mentioned). Abitur packs are a separate architecture (see TEMPLATE-NOTES) and need their own path.
 
-**Practise-only mode (added 2026-08-05).** A public visitor can do any exercise **without entering a name/class** — the parent landing page promises "no sign-up required". Implemented entirely in the shared `exercise.js` (no per-page edits), so it works on all 145 framework pages at once. On the welcome gate a secondary **"Nur üben — ohne Abgabe · Just practise"** button (`#practise-btn`, injected by `eolInitPractise` on `DOMContentLoaded`) calls `startPractise()`, which sets `practiseMode = true` and jumps to Exercise A. In practise mode the submit step becomes a **results screen** (`eolPractiseResults`): the submit/fallback card is hidden, and a panel shows per-exercise points, the Score + Note card, a writing self-check list (only if the page has a `<textarea>`), and a **"Nochmal üben / Try again"** button (reloads with `?mode=practise`). URL overrides: **`?mode=practise`** skips the gate entirely (auto-starts); **`?mode=class`** forces the name/class gate and hides the practise button (so Shaun can share a class-only link). The normal class-submission flow is completely unchanged when `practiseMode` is false. Two latent bugs were hardened in the process: `totalScore()` now tolerates a missing `state.scores`, and `renderScore()` no-ops when a page has no `#score-display` card (both previously threw on older free-text pages like `uni-hedging-language`).
+**Two quiz items have more than one defensible answer** (found while writing their explanations,
+2026-08-18): `quiz-grammar-hardest` q1 keys *"I didn't see nobody"* but the distractor *"I can't
+hardly hear you"* is also a double negative, and q9 keys a dangling infinitive while the distractor
+*"To avoid the traffic, the car was driven…"* dangles too. The `why` lines state the rule for the
+keyed answer rather than calling the distractors wrong, so nothing on screen is false — but a
+student picking the other option is marked wrong for a defensible choice. These are public,
+no-sign-up quizzes; the distractors want rewording.
+
+**Practise-only mode (added 2026-08-05).** A public visitor can do any exercise **without entering a name/class** — the parent landing page promises "no sign-up required". Implemented entirely in the shared `exercise.js` (no per-page edits), so it works on all 167 framework pages at once. On the welcome gate a secondary **"Nur üben — ohne Abgabe · Just practise"** button (`#practise-btn`, injected by `eolInitPractise` on `DOMContentLoaded`) calls `startPractise()`, which sets `practiseMode = true` and jumps to Exercise A. In practise mode the submit step becomes a **results screen** (`eolPractiseResults`): the submit/fallback card is hidden, and a panel shows per-exercise points, the Score + Note card, a writing self-check list (only if the page has a `<textarea>`), and a **"Nochmal üben / Try again"** button (reloads with `?mode=practise`). URL overrides: **`?mode=practise`** skips the gate entirely (auto-starts); **`?mode=class`** forces the name/class gate and hides the practise button (so Shaun can share a class-only link). The normal class-submission flow is completely unchanged when `practiseMode` is false. Two latent bugs were hardened in the process: `totalScore()` now tolerates a missing `state.scores`, and `renderScore()` no-ops when a page has no `#score-display` card (both previously threw on older free-text pages like `uni-hedging-language`).
 
 ### 5b. Accessibility layer (added 2026-08-12, site-wide, zero per-page edits)
 
-`exercise.js` applies a WCAG 2.2 A/AA baseline to all 145 framework pages on `DOMContentLoaded`
+`exercise.js` applies a WCAG 2.2 A/AA baseline to all 167 framework pages on `DOMContentLoaded`
+(the count grows with the corpus — `grep -l 'src="exercise.js"' *.html | wc -l` is the live figure;
+it read 145 here until 2026-08-18)
 (`eolInitA11y`). It fixes four things the corpus genuinely got wrong:
 
 1. **Gap dropdowns had no accessible name** — 2,322 `<select>`s announced as "combo box, — choose —"
@@ -337,7 +360,7 @@ undefined `btn` — removed.
   override `showStep`. A second observer on `document.body` (childList) catches gaps built at runtime
   with `innerHTML` (e.g. `california-exercises`' `renderGapText`), which the init pass cannot see.
   `data-eol-labelled` makes relabelling idempotent, so the ✓/✗ marks can't start a feedback loop.
-- Styles are **injected from JS**, not added to `style.css`, because **15 of the 145 framework pages
+- Styles are **injected from JS**, not added to `style.css`, because **15 of the 167 framework pages
   never load `style.css`**. Same reason the chrome styles are injected.
 - The German chrome (breadcrumb, footer, practise button, rubric) now carries `lang="de"` inside these
   `lang="en"` pages, so screen readers stop reading German with English phonemes. (3.1.2)
@@ -346,7 +369,7 @@ undefined `btn` — removed.
 
 ### 5c. Writing rubric — **practise mode only** (added 2026-08-12)
 
-137 of the 145 framework pages have a writing task and none had success criteria. A self-assessment
+137 of the 167 framework pages have a writing task and none had success criteria. A self-assessment
 rubric now renders on the results screen **in practise mode only** (Shaun's decision, 2026-08-12):
 class submissions are marked by the teacher, so the rubric must never confuse that or pollute the
 data. Concretely:
@@ -527,11 +550,11 @@ All step-based exercise pages load the **single shared framework** via `<script 
 
 ## Unified breadcrumb + footer (site chrome, added 2026-08-05)
 
-`exercise.js` injects a **breadcrumb** (Übungen › Jahrgang/Schulart or MSA/Uni/IT/Business › page title, derived from the filename prefix + `.welcome-title`) below the sticky `app-header`, and a **unified footer** (section nav: Alle Übungen · Grammatik-Themen · Universität · Business · IT · Kontakt; legal: Zur Website · Impressum · Datenschutz) at the end of `<body>` — on all 145 framework pages, with **zero per-page edits** (`eolInjectChrome` on `DOMContentLoaded`). Styles are self-contained (injected `<style id="eol-chrome-style">` with `var(--token, fallback)`) so they render even on the framework pages that don't load `style.css`. Guarded against double-injection by element id. `activities.html` carries a matching footer (`.site-footer-nav` + legal line). The per-year hub pages and `themen/` pages keep their own existing footers/back-links.
+`exercise.js` injects a **breadcrumb** (Übungen › Jahrgang/Schulart or MSA/Uni/IT/Business › page title, derived from the filename prefix + `.welcome-title`) below the sticky `app-header`, and a **unified footer** (section nav: Alle Übungen · Grammatik-Themen · Universität · Business · IT · Kontakt; legal: Zur Website · Impressum · Datenschutz) at the end of `<body>` — on all 167 framework pages, with **zero per-page edits** (`eolInjectChrome` on `DOMContentLoaded`). Styles are self-contained (injected `<style id="eol-chrome-style">` with `var(--token, fallback)`) so they render even on the framework pages that don't load `style.css`. Guarded against double-injection by element id. `activities.html` carries a matching footer (`.site-footer-nav` + legal line). The per-year hub pages and `themen/` pages keep their own existing footers/back-links.
 
 ## Filterable exercise index on `activities.html` (added 2026-08-05)
 
-`activities.html` now carries a **generated, filterable index of every framework exercise** above the "Kurssammlungen" collection block (the per-year and per-course hub cards). **`node scripts/build-hub.js`** reads `data/exercises.json` + `data/topics.json` and injects static exercise cards between the `<!-- HUB:START -->` / `<!-- HUB:END -->` markers — each card carries `data-year/school/topics/skills/title` and links to the individual exercise. The filter UI (search box + Jahrgang/Schulart/Fertigkeit chips + Thema dropdown, all with counts) and the filtering JS are hand-maintained in `activities.html`; the JS only shows/hides the static cards, updates the live count and reflects state in the URL (`?year=&school=&skill=&topic=&q=`) so filtered views are shareable and restore on reload. No-JS users and crawlers still get all cards. **Regenerate the cards after `build-exercise-data.js`** (never hand-edit between the markers). The "at a glance" figures above the index (`STATS:START`/`STATS:END`) are generated by the same script — exercise count from `exercises.json`, collections from the `*-activities.html` hubs on disk, study areas from the distinct `year` values counting Klassen 7–10 as one and excluding quizzes. They used to be hand-maintained with a comment asking people to remember, and drifted: the exercise figure read **149 against a real 182** for ten days (2026-08-08 → 08-18) and collections read 13 against 14 hubs. Scope: the index covers the 162 exercises in `exercises.json` (everything that loads `exercise.js`, incl. MSA/Uni/IT/BE); the 16 Abitur packs (separate architecture) are reachable via the Kurssammlungen block, not the filter.
+`activities.html` now carries a **generated, filterable index of every framework exercise** above the "Kurssammlungen" collection block (the per-year and per-course hub cards). **`node scripts/build-hub.js`** reads `data/exercises.json` + `data/topics.json` and injects static exercise cards between the `<!-- HUB:START -->` / `<!-- HUB:END -->` markers — each card carries `data-year/school/topics/skills/title` and links to the individual exercise. The filter UI (search box + Jahrgang/Schulart/Fertigkeit chips + Thema dropdown, all with counts) and the filtering JS are hand-maintained in `activities.html`; the JS only shows/hides the static cards, updates the live count and reflects state in the URL (`?year=&school=&skill=&topic=&q=`) so filtered views are shareable and restore on reload. No-JS users and crawlers still get all cards. **Regenerate the cards after `build-exercise-data.js`** (never hand-edit between the markers). The "at a glance" figures above the index (`STATS:START`/`STATS:END`) are generated by the same script — exercise count from `exercises.json`, collections from the `*-activities.html` hubs on disk, study areas from the distinct `year` values counting Klassen 7–10 as one and excluding quizzes. They used to be hand-maintained with a comment asking people to remember, and drifted: the exercise figure read **149 against a real 182** for ten days (2026-08-08 → 08-18) and collections read 13 against 14 hubs. Scope: the index covers the 182 exercises in `exercises.json` (the figure moves with the corpus — read it from the file rather than from this line) (everything that loads `exercise.js`, incl. MSA/Uni/IT/BE); the 16 Abitur packs (separate architecture) are reachable via the Kurssammlungen block, not the filter.
 
 **The Kurssammlungen block is generated too (2026-08-19).** It was hand-maintained and drifted the same way the root page had — 11 of its 13 counts were wrong (Year 7 Gymnasium read 8 against a real 11, University 10 against 15, MSA 20 against 21). `build-hub.js` now emits it between `<!-- COLLECTIONS:START -->` / `<!-- COLLECTIONS:END -->` from `data/exercises.json`, with **Abitur and MSA as their own blocks** (never folded into Professional English). The editorial prose — each block's eyebrow and each card's meta line — lives in `COLLECTION_YEARS` / `COLLECTION_PROF` and the block calls in the script; **edit it there, never in `activities.html`**. Section ids (`y7`…`y10`, `abi`, `msa`, `grammar-section`, `tools`, `prof`) are preserved, so any existing deep links still work.
 
