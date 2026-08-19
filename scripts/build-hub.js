@@ -153,12 +153,20 @@ const ROOT_YEARS = [
   ['10', 'Year 10', 'Scotland, Black America &amp; youth culture',  'Canada, India, New Zealand &amp; the Commonwealth']
 ];
 
+/* MSA and Abitur are exam courses in their own right, not "more courses":
+   each gets its own block below Year 10, the way a year group does. Only
+   the adult / professional courses share the "More courses" block. */
 const ROOT_COURSES = [
-  ['msa-activities.html',      '🎧', 'MSA',                'msa',      'Exam practice: listening, reading &amp; writing'],
-  ['abitur-activities.html',   '🎓', 'Abitur',             'abitur',   'Interactive practice packs for the writing tasks'],
   ['uni-activities.html',      '🎓', 'University English', 'uni',      'Academic writing, case studies &amp; vocabulary'],
   ['business-activities.html', '💼', 'Business English',   'business', 'Meetings, emails &amp; professional skills'],
   ['it-activities.html',       '💻', 'IT English',         'it',       'Networking, security &amp; technical vocabulary']
+];
+
+const ABITUR_TASKS = [
+  ['text-analysis',         '📖', 'Text Analysis',            'Style, structure and argument in exam texts'],
+  ['argumentative-writing', '✍️', 'Argumentative Writing',    'Building a structured argument under exam conditions'],
+  ['writing-summaries',     '📝', 'Writing Summaries',        'Condensing a source text in your own words'],
+  ['mediation',             '🔄', 'Mediation',                'Sprachmittlung between German and English']
 ];
 
 function rootCount(n, word, plural) {
@@ -198,6 +206,33 @@ ROOT_YEARS.forEach(([year, label, gMeta, cMeta]) => {
     rootCard(year + 'c-activities.html', '🏫', 'Oberschule', c ? cMeta : 'Coming soon', rootCount(c, 'Exercise'), c > 0)
   ]));
 });
+
+// MSA — its own block: the exam units, plus the mixed-revision page.
+const msaUnits = exercises.filter(e => String(e.year) === 'msa' && e.file !== 'msa-review.html').length;
+const msaCards = [
+  rootCard('msa-activities.html', '🎧', 'MSA English',
+    msaUnits ? 'Full-skills exam practice: listening, reading &amp; writing' : 'Coming soon',
+    rootCount(msaUnits, 'Exercise'), msaUnits > 0)
+];
+if (fs.existsSync(path.join(ROOT, 'msa-review.html'))) {
+  msaCards.push(rootCard('msa-review.html', '🔁', 'Gemischte Wiederholung',
+    'Mixed questions revisiting earlier MSA units', 'Revision', true));
+}
+rootBlocks.push(rootBlock('MSA — Mittlerer Schulabschluss', '🎧', msaCards));
+
+// Abitur — its own block, split by the four written task types.
+const abiturTotal = countFor('abitur', null);
+const abiturCards = [
+  rootCard('abitur-activities.html', '🎓', 'Abitur English',
+    abiturTotal ? 'All interactive practice packs for the writing tasks' : 'Coming soon',
+    rootCount(abiturTotal, 'Pack'), abiturTotal > 0)
+];
+ABITUR_TASKS.forEach(([slug, icon, title, meta]) => {
+  const n = exercises.filter(e => e.file.startsWith('abitur-' + slug + '-')).length;
+  if (!n) return;
+  abiturCards.push(rootCard('abitur-activities.html#' + slug, icon, title, meta, rootCount(n, 'Pack'), true));
+});
+rootBlocks.push(rootBlock('Abitur', '🎓', abiturCards));
 
 rootBlocks.push(rootBlock('More courses', '', ROOT_COURSES.map(([href, icon, title, key, meta]) => {
   const n = countFor(key, null);
