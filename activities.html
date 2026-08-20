@@ -205,6 +205,7 @@ body{
 .hc-badge.hc-ober{background:#fdf1e3;color:#b9770e}
 .hc-topics{font-size:.76rem;color:var(--muted)}
 .hub-card[hidden]{display:none}
+.hc-done{display:inline-flex;align-items:center;justify-content:center;width:1.4rem;height:1.4rem;border-radius:50%;background:var(--green);color:#fff;font-size:.7rem;font-weight:800;flex-shrink:0;margin-left:auto}
 .hub-empty{text-align:center;color:var(--muted);padding:1.5rem;font-size:.9rem}
 .hub-empty button{font-family:inherit;color:var(--blue-mid);background:none;border:none;font-weight:700;cursor:pointer;text-decoration:underline}
 .collections-h{font-size:clamp(1.15rem,3vw,1.4rem);font-weight:800;color:var(--brand-title);margin-bottom:1.1rem;padding-bottom:.5rem;border-bottom:2px solid var(--border)}
@@ -250,6 +251,10 @@ body{
     <li><span class="stat-num" data-target="7">7</span><span class="stat-label">Study areas</span></li>
   </ul>
   <!-- STATS:END -->
+  <nav style="display:flex;justify-content:center;gap:1.2rem;margin-top:1rem;font-size:.82rem">
+    <a href="dashboard.html" style="color:var(--gold-lt);font-weight:600;text-decoration:none;opacity:.88">My Progress</a>
+    <a href="themen/index.html" style="color:var(--gold-lt);font-weight:600;text-decoration:none;opacity:.88">Grammar Topics</a>
+  </nav>
 </header>
 
 <main class="container" id="main">
@@ -746,5 +751,25 @@ body{
 })();
 </script>
 
+<script>
+(function() {
+  try {
+    var progress = JSON.parse(localStorage.getItem('eol_progress') || '{}');
+    var completed = {};
+    Object.keys(progress).forEach(function(u) { if (progress[u].completed) completed[u] = true; });
+    if (!Object.keys(completed).length) return;
+    document.querySelectorAll('.hub-card > a[href]').forEach(function(a) {
+      var unit = a.getAttribute('href').replace(/\.html$/, '');
+      if (completed[unit]) {
+        var badge = document.createElement('span');
+        badge.className = 'hc-done';
+        badge.textContent = '✓';
+        badge.setAttribute('aria-label', 'completed');
+        a.appendChild(badge);
+      }
+    });
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>
