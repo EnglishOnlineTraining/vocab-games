@@ -245,11 +245,11 @@ Before publishing, verify:
 - [ ] The unit has been added to `data/explanations.json` so wrong answers get a reason
       (`node scripts/validate-explanations.js` passes)
 
-Regenerating indices locally before committing (step 4's `build-*.js` runs) is still expected —
-it keeps the diff you're pushing honest. But it's not the only safety net: `.github/workflows/
-rebuild-indices.yml` reruns the same generators on every push to `main` and auto-commits any
-drift, so a missed regen step here gets caught within a minute rather than leaving the live site
-stale.
+Regenerating indices locally before committing — **`node scripts/build.js`**, which runs the whole
+generator graph in the right order — is still expected: it keeps the diff you're pushing honest.
+But it's not the only safety net: `.github/workflows/rebuild-indices.yml` runs the same graph on
+every push to `main` and auto-commits any drift, so a missed regen step here gets caught within a
+minute rather than leaving the live site stale.
 
 ### 6. Publish (automatic — do not wait for approval)
 
