@@ -158,7 +158,7 @@ Regenerate with `node scripts/inventory.js`.
 | activities.html | Activities |
 | business-activities.html | Business English |
 | it-activities.html | IT English |
-| msa-activities.html | MSA Preparation — docemus |
+| msa-activities.html | MSA Preparation |
 | uni-activities.html | University English |
 
 ## Lead-magnet / marketing pages (4)
