@@ -37,6 +37,7 @@ function startPractise() {
   var err = document.getElementById('welcome-error');
   if (err) err.classList.remove('show');
   eolRelabelForPractise();
+  eolMarkStarted();
   showStep(1);
 }
 
@@ -69,6 +70,7 @@ document.addEventListener('DOMContentLoaded', eolInitPractise);
 function eolPractiseResults() {
   var step = document.getElementById('step-' + TOTAL_STEPS);
   if (!step) return;
+  eolSaveProgress();
   var submitBtn = document.getElementById('submit-btn');
   if (submitBtn && submitBtn.closest) {
     var card = submitBtn.closest('.card');
@@ -109,6 +111,66 @@ function eolPractisePanelHtml() {
 
 function eolPractiseRetry() {
   window.location.href = window.location.pathname + '?mode=practise';
+}
+
+/* ============================================================
+   PROGRESS TRACKING (localStorage, zero per-page edits)
+   Records exercise starts/completions in eol_progress and
+   maintains a day-streak in eol_streak. Hooked from
+   startExercises(), startPractise(), submitToSheet() and
+   eolPractiseResults(). Dashboard reads the same keys.
+============================================================ */
+var eolExerciseStartTime = 0;
+
+function eolToday() {
+  var d = new Date();
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+}
+
+function eolMarkStarted() {
+  if (typeof UNIT === 'undefined') return;
+  eolExerciseStartTime = Date.now();
+  try {
+    var data = JSON.parse(localStorage.getItem('eol_progress') || '{}');
+    if (!data[UNIT]) {
+      data[UNIT] = { started: true, date: new Date().toISOString() };
+      localStorage.setItem('eol_progress', JSON.stringify(data));
+    }
+  } catch (e) { /* localStorage unavailable */ }
+}
+
+function eolSaveProgress() {
+  if (typeof UNIT === 'undefined') return;
+  try {
+    var data = JSON.parse(localStorage.getItem('eol_progress') || '{}');
+    var sc = (typeof totalScore === 'function') ? totalScore() : { earned: 0, possible: 0 };
+    var elapsed = eolExerciseStartTime ? Math.floor((Date.now() - eolExerciseStartTime) / 1000) : 0;
+    var prev = data[UNIT] || {};
+    data[UNIT] = {
+      completed: true,
+      score: sc.earned,
+      total: sc.possible,
+      date: new Date().toISOString(),
+      timeSpent: elapsed + (prev.timeSpent || 0),
+      practise: practiseMode
+    };
+    localStorage.setItem('eol_progress', JSON.stringify(data));
+    eolUpdateStreak();
+  } catch (e) { /* localStorage unavailable */ }
+}
+
+function eolUpdateStreak() {
+  try {
+    var today = eolToday();
+    var streak = JSON.parse(localStorage.getItem('eol_streak') || '{"count":0,"lastDate":""}');
+    if (streak.lastDate === today) return;
+    var yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    var yStr = yesterday.getFullYear() + '-' + String(yesterday.getMonth() + 1).padStart(2, '0') + '-' + String(yesterday.getDate()).padStart(2, '0');
+    streak.count = (streak.lastDate === yStr) ? streak.count + 1 : 1;
+    streak.lastDate = today;
+    localStorage.setItem('eol_streak', JSON.stringify(streak));
+  } catch (e) { /* localStorage unavailable */ }
 }
 
 /* ============================================================
@@ -301,6 +363,7 @@ function startExercises() {
   err.classList.remove('show');
   state.name = name;
   state.cls  = cls;
+  eolMarkStarted();
   showStep(1);
 }
 
@@ -697,6 +760,7 @@ function submitToSheet() {
     showToast('✅ Submitted to teacher!');
     document.getElementById('submit-success').style.display = 'block';
     document.getElementById('submit-fallback').style.display = 'block';
+    eolSaveProgress();
   }).catch(function() {
     btn.disabled = false;
     btn.textContent = 'Submit to Teacher';
