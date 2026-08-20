@@ -173,8 +173,22 @@ function run(script) {
   execFileSync(process.execPath, [path.join(ROOT, script)], { cwd: ROOT, stdio: 'inherit' });
 }
 
-function gitDirty() {
-  return execFileSync('git', ['status', '--porcelain'], { cwd: ROOT, encoding: 'utf8' }).trim();
+// Only files the graph claims to produce count as "stale". Scoping this to the
+// declared outputs (rather than `git status` over the whole tree) keeps --check
+// answering the question it is asked: are the GENERATED files up to date? An
+// unrelated work-in-progress edit is not a stale index, and failing on it would
+// make the gate untrustworthy in exactly the situations people run it.
+function generatedDirty() {
+  const out = execFileSync('git', ['status', '--porcelain'], { cwd: ROOT, encoding: 'utf8' });
+  const globs = NODES.flatMap((n) => n.outputs || []).map(toRe);
+  return out
+    .split('\n')
+    .filter(Boolean)
+    .filter((line) => {
+      const file = line.slice(3).replace(/^"|"$/g, '');
+      return file === 'docs/build-graph.mmd' || globs.some((re) => re.test(file));
+    })
+    .join('\n');
 }
 
 // ---- main ---------------------------------------------------------------
@@ -243,7 +257,7 @@ if (flags.has('--check')) {
     console.error('\n✗ docs/build-graph.mmd is stale. Run: node scripts/build.js --write-graph');
     process.exit(1);
   }
-  const dirty = gitDirty();
+  const dirty = generatedDirty();
   if (dirty) {
     console.error('\n✗ Generated files are out of date. Run `node scripts/build.js` and commit:\n');
     console.error(dirty);
