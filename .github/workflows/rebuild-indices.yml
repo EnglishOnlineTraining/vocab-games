@@ -1,22 +1,26 @@
 name: Rebuild generated indices
 
-# The site's index/sitemap/hub files (data/exercises.json, the hub cards in
-# activities.html, themen/*.html, sitemap.xml, robots.txt) are generated from
+# The site's index/sitemap/hub/review/quiz files are generated from
 # scripts/build-*.js. They used to only get regenerated when whoever committed
 # an exercise remembered the manual step — which went stale more than once.
 # This workflow makes it automatic: any push to main that could change the
-# generated output re-runs the generators and commits the result, so
+# generated output re-runs the graph and commits the result, so
 # activities.englishonline.training is never more than one push behind.
+#
+# The order lives in scripts/pipeline.js, not here. This file used to hard-code
+# four of the six generators, which is how build-quizzes and build-review-pages
+# came to be missing from CI while five review pages drifted.
 on:
   push:
     branches: [main]
     paths:
       - '**.html'
       - 'data/topics.json'
-      - 'scripts/build-exercise-data.js'
-      - 'scripts/build-hub.js'
-      - 'scripts/build-topic-pages.js'
-      - 'scripts/build-head.js'
+      - 'data/explanations.json'   # feeds build-review-pages
+      - 'data/quizzes.json'        # feeds build-quizzes
+      - 'scripts/**.js'
+      - 'topic-pool.json'
+      - 'exercise.js'
   workflow_dispatch: {}
 
 permissions:
@@ -38,20 +42,17 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Run generators
-        run: |
-          node scripts/build-exercise-data.js
-          node scripts/build-hub.js
-          node scripts/build-topic-pages.js
-          # Must run last: the generators above rewrite whole files and would
-          # otherwise drop the shared <head> block they just had injected.
-          node scripts/build-head.js
+      # No --check here, ever. This job's purpose is to regenerate and push, so
+      # it must not fail on a dirty tree — a dirty tree is the case it exists to
+      # fix. --check belongs on the PR gate (check-generated.yml).
+      - name: Run the build graph
+        run: node scripts/build.js
 
       - name: Commit regenerated files if changed
         run: |
           git config user.name "eol-index-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/exercises.json sitemap.xml robots.txt themen/ '*.html'
+          git add data/exercises.json sitemap.xml robots.txt themen/ docs/build-graph.mmd '*.html'
           if git diff --cached --quiet; then
             echo "Generated files already up to date — nothing to commit."
           else

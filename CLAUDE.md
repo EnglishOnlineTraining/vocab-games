@@ -486,9 +486,11 @@ against a dark tab strip; the rasters cannot do that, which is why the SVG is li
 they also work on the `englishonlinetraining.github.io/vocab-games/` fallback URL; `og:image` is
 absolute because scrapers require it.
 
-**Rules:** never hand-edit inside `HEAD:START`/`HEAD:END`, `NOSCRIPT:*` or `SKIP:*`. Run
-`build-head.js` **last** in the generator chain — `build-hub.js`, `build-topic-pages.js` and
-`build-review-pages.js` rewrite whole files and drop the block; running it afterwards restores it.
+**Rules:** never hand-edit inside `HEAD:START`/`HEAD:END`, `NOSCRIPT:*` or `SKIP:*`. `build-head.js`
+must run **last** — `build-hub.js`, `build-topic-pages.js` and `build-review-pages.js` rewrite whole
+files and drop the block; running it afterwards restores it. **You no longer have to remember that:**
+run `node scripts/build.js` and the barrier is enforced by the graph (§5f). Removing it now fails the
+build instead of silently stripping every page's `<head>`.
 `node scripts/build-head.js --check` exits 1 if any page is stale (useful in CI). The auto-rebuild
 workflow runs it on every push to `main`, so a new page picks all of this up even if the manual
 step is forgotten.
@@ -507,6 +509,55 @@ of the framework is now true again — but it was wrong for months, so re-check 
 **Related fix in `exercise.js`:** the injected skip link pointed at `#eol-skip-target`, an id that
 exists on no page — it only ever worked through its JS click handler. It now points at the active
 step's real id and `eolSyncActiveStep` keeps it in sync.
+
+### 5f. The build graph — `scripts/pipeline.js` + `scripts/build.js` (added 2026-08-20)
+
+**Run `node scripts/build.js`.** That is the whole regeneration step now; the order lives in
+`scripts/pipeline.js`, not in anyone's memory.
+
+Before this, the pipeline was a loop written down as a comment: this file named an order, the
+workflow hard-coded four of the six generators, and "`build-head.js` must run last" was enforced by
+prose. Two things had already gone wrong by the time it was fixed. `build-quizzes.js` and
+`build-review-pages.js` were **not in CI at all** even though their output is 16 of the 182 entries
+in `data/exercises.json`, so five review pages drifted behind the corpus (`8c-review.html` offered
+"24 Fragen aus 6 Übungen" when nine units qualified). And the auto-rebuild workflow had **never once
+committed anything** in 14 runs — it ran only the four generators people already remember by hand.
+
+`pipeline.js` declares each generator with its real `inputs`/`outputs`, read off its
+`readFileSync`/`writeFileSync` calls, and its edges. Two edge types:
+
+- **`needs`** — a data or write-after-write edge, valid only if the parent's `outputs` overlap this
+  node's `inputs`.
+- **`after`** — a pure ordering barrier, exempt from that rule. **Nothing uses it today** — every
+  current edge carries real data — but it exists so a future ordering-only edge can't be deleted by
+  the overlap rule.
+
+`build.js` topologically sorts the graph, runs it **sequentially**, and applies two static checks:
+a **fake-edge check** (a `needs` whose parent writes nothing this node reads) and a
+**missing-barrier check** (two nodes whose `outputs` overlap with no ordering between them). The
+second is the one with teeth — delete `head`'s edges and the build fails with four violations.
+
+Flags: `--explain` (print the graph + run the checks, execute nothing), `--check` (build, then fail
+if the **generated** files differ from what's committed — scoped to the declared outputs, so
+unrelated work in progress doesn't trip it), `--write-graph` (refresh `docs/build-graph.mmd`),
+and `[node…]` to run one node plus everything downstream.
+
+**Sequential on purpose.** Concurrency saved seconds and a runtime guard comparing `outputs` alone
+would still miss read/write races (`build-review-pages` reads `*.html` while `build-head` writes it).
+The win was never speed — it was that the order became checkable.
+
+**Two workflows, different jobs.** `.github/workflows/rebuild-indices.yml` runs `node scripts/build.js`
+with **no flag** (it exists to regenerate and push, so it must not fail on a dirty tree);
+`.github/workflows/check-generated.yml` is the PR gate and runs `--explain` then `--check`.
+
+`docs/build-graph.mmd` is the mermaid rendering, generated and checked — never hand-write it. The
+background and the full findings are in `docs/build-graph-plan.md`.
+
+**`build-icons.js` and `build-og-card.js` are deliberately outside the graph** (listed as `MANUAL`
+in `pipeline.js`): their inputs change roughly never, `build-og-card` needs Playwright, and both
+commit their output.
+
+---
 
 ### 6. Shared framework — `exercise.js` (standardised 2026-07-17)
 All step-based exercise pages load the **single shared framework** via `<script src="exercise.js"></script>`; no page carries its own copy of the framework functions any more (~330 KB of copy-paste drift was removed). A page's inline script defines ONLY:
@@ -543,7 +594,7 @@ All step-based exercise pages load the **single shared framework** via `<script 
 7. **Pass a `scoreKey`** to each `checkDropdowns()` call you want auto-graded (e.g. `'exA'`, `'exB'`) if the exercise has gradable sections — this feeds the score/Note shown to the student and sent to the teacher. Skip this for pure free-text/discussion exercises.
 8. **Add a card in `activities.html`** under the correct year/school section
 9. **Fill in the `<meta name="description">` and `<link rel="canonical">` tags** in the `<head>` (both are TODO placeholders in `_template.html`) — the canonical URL must match the final filename exactly.
-10. **Regenerate the generated data/index files** — run `node scripts/build-exercise-data.js && node scripts/build-hub.js && node scripts/build-topic-pages.js && node scripts/build-head.js` before committing (`build-head.js` **must be last** — see §5e). This is what actually adds the new page to `data/exercises.json`, the filterable index on `activities.html`, and `sitemap.xml`/`robots.txt`. Doing it locally keeps the diff you're committing honest, but as of 2026-08-13 it is also a **safety net, not the only line of defence** — see "Auto-rebuild workflow" below, which catches it if this step is skipped.
+10. **Regenerate the generated data/index files** — run **`node scripts/build.js`** before committing. The order is no longer something to remember: it is declared in `scripts/pipeline.js` and checked (see §5f). This is what actually adds the new page to `data/exercises.json`, the filterable index on `activities.html`, and `sitemap.xml`/`robots.txt`. Doing it locally keeps the diff you're committing honest, but as of 2026-08-13 it is also a **safety net, not the only line of defence** — see "Auto-rebuild workflow" below, which catches it if this step is skipped.
 11. **Commit and push to `main`** — GitHub Pages deploys automatically
 
 ---
@@ -619,7 +670,8 @@ German, search-optimised landing pages, one per grammar topic (people search *Pa
 
 `.github/workflows/rebuild-indices.yml` runs on every push to `main` that touches an `.html`
 file or `data/topics.json`. It re-runs the generators (`build-exercise-data.js` →
-`build-hub.js` → `build-topic-pages.js` → `build-head.js`, in that order) and, if the output differs from what's committed,
+`build-hub.js` → `build-topic-pages.js` → `build-head.js`, plus the two it used to omit) via
+`node scripts/build.js` and, if the output differs from what's committed,
 commits and pushes the regenerated `data/exercises.json`, `activities.html`, `sitemap.xml`,
 `robots.txt` and `themen/` straight back to `main` as the `eol-index-bot` user. This exists
 because the manual regeneration step (checklist item 10 above, and the equivalent step in every
@@ -628,9 +680,10 @@ once — a new exercise page landing on `main` without a rebuild left `activitie
 `sitemap.xml` silently behind the live file list. The workflow makes staleness self-correcting:
 even if a script, skill, or manual commit forgets the regen step, the next push to `main` fixes
 it within a minute, so `activities.englishonline.training` should never be more than one commit
-+ one workflow run behind the repo. Skip-loop note: the bot's own commit re-triggers the
-workflow, but since the generators are then already up to date it produces no diff and exits
-without committing, so it self-terminates after one extra no-op run.
++ one workflow run behind the repo. Skip-loop note: the bot's own commit does **not**
+re-trigger the workflow — GitHub does not start workflows from pushes made with `GITHUB_TOKEN`, and
+the commit also carries `[skip ci]`. (An earlier version of this note claimed it re-triggers and
+"self-terminates after one extra no-op run"; that describes something which has never happened.)
 
 ## Deployment
 

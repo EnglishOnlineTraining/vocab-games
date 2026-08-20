@@ -1,0 +1,35 @@
+name: Check generated files
+
+# The PR gate. rebuild-indices.yml fixes main after the fact; this stops a pull
+# request landing with stale generated output or an invalid build graph in the
+# first place.
+#
+# Note this cannot run on the rebuild bot's own push: GitHub does not trigger
+# workflows from pushes made with GITHUB_TOKEN (and that commit also carries
+# [skip ci]). That is fine — the bot's output is by definition freshly built.
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # Fails on a fake edge or a missing write-after-write barrier.
+      - name: Validate the build graph
+        run: node scripts/build.js --explain
+
+      # Rebuilds, then fails if anything committed differs from what the
+      # generators produce — including a stale docs/build-graph.mmd.
+      - name: Check generated files are up to date
+        run: node scripts/build.js --check
