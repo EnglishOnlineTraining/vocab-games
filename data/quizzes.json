@@ -6,17 +6,99 @@
     "emoji": "🟢",
     "title": "English Grammar Quiz — Easy",
     "sub": "Ten quick questions on tenses, word classes and sentence basics. Check yourself — no sign-up needed.",
+    "description": "Free self-scoring English grammar quiz: ten quick questions on tenses, word classes and sentence basics, instant score, no sign-up.",
+    "canonical": "https://activities.englishonline.training/quiz-grammar-easy.html",
     "questions": [
-      { "q": "Which sentence is grammatically correct?", "options": ["I goed to the store yesterday.", "I will went to the store tomorrow.", "I went to the store yesterday."], "answer": "I went to the store yesterday." },
-      { "q": "Which word is an adverb?", "options": ["Table", "Dog", "Quickly"], "answer": "Quickly" },
-      { "q": "Which sentence is in the past tense?", "options": ["I am eating dinner right now.", "I will eat dinner in an hour.", "I ate dinner an hour ago."], "answer": "I ate dinner an hour ago." },
-      { "q": "Which sentence is written in the passive voice?", "options": ["The dog chased the cat.", "The cat was chased by the dog.", "The cat chased the dog."], "answer": "The cat was chased by the dog." },
-      { "q": "Which sentence contains a comparative adjective?", "options": ["The pizza was the best.", "The pizza was better than the pasta.", "The pizza was good."], "answer": "The pizza was better than the pasta." },
-      { "q": "Which sentence is a conditional sentence?", "options": ["I will go to the party tomorrow.", "If I have time, I will go to the party.", "I am happy when I see my friends."], "answer": "If I have time, I will go to the party." },
-      { "q": "Which sentence is in the present perfect tense?", "options": ["I will go to Italy next year.", "I have been to Italy three times.", "I go to Italy every year."], "answer": "I have been to Italy three times." },
-      { "q": "Which sentence is a question?", "options": ["This word is a problem.", "Are you going to the party tonight?", "The sky is blue."], "answer": "Are you going to the party tonight?" },
-      { "q": "Which sentence contains a direct object?", "options": ["She kicked the ball.", "She ran quickly.", "She sat down."], "answer": "She kicked the ball." },
-      { "q": "Which word is a preposition?", "options": ["cat", "happy", "on"], "answer": "on" }
+      {
+        "q": "Which sentence is grammatically correct?",
+        "options": [
+          "I goed to the store yesterday.",
+          "I will went to the store tomorrow.",
+          "I went to the store yesterday."
+        ],
+        "answer": "I went to the store yesterday."
+      },
+      {
+        "q": "Which word is an adverb?",
+        "options": [
+          "Table",
+          "Dog",
+          "Quickly"
+        ],
+        "answer": "Quickly"
+      },
+      {
+        "q": "Which sentence is in the past tense?",
+        "options": [
+          "I am eating dinner right now.",
+          "I will eat dinner in an hour.",
+          "I ate dinner an hour ago."
+        ],
+        "answer": "I ate dinner an hour ago."
+      },
+      {
+        "q": "Which sentence is written in the passive voice?",
+        "options": [
+          "The dog chased the cat.",
+          "The cat was chased by the dog.",
+          "The cat chased the dog."
+        ],
+        "answer": "The cat was chased by the dog."
+      },
+      {
+        "q": "Which sentence contains a comparative adjective?",
+        "options": [
+          "The pizza was the best.",
+          "The pizza was better than the pasta.",
+          "The pizza was good."
+        ],
+        "answer": "The pizza was better than the pasta."
+      },
+      {
+        "q": "Which sentence is a conditional sentence?",
+        "options": [
+          "I will go to the party tomorrow.",
+          "If I have time, I will go to the party.",
+          "I am happy when I see my friends."
+        ],
+        "answer": "If I have time, I will go to the party."
+      },
+      {
+        "q": "Which sentence is in the present perfect tense?",
+        "options": [
+          "I will go to Italy next year.",
+          "I have been to Italy three times.",
+          "I go to Italy every year."
+        ],
+        "answer": "I have been to Italy three times."
+      },
+      {
+        "q": "Which sentence is a question?",
+        "options": [
+          "This word is a problem.",
+          "Are you going to the party tonight?",
+          "The sky is blue."
+        ],
+        "answer": "Are you going to the party tonight?"
+      },
+      {
+        "q": "Which sentence contains a direct object?",
+        "options": [
+          "She kicked the ball.",
+          "She ran quickly.",
+          "She sat down."
+        ],
+        "answer": "She kicked the ball."
+      },
+      {
+        "q": "Which word is a preposition?",
+        "options": [
+          "cat",
+          "happy",
+          "on"
+        ],
+        "answer": "on"
+      }
     ]
   },
   {
@@ -26,16 +108,90 @@
     "emoji": "🟡",
     "title": "English Grammar Quiz — Medium",
     "sub": "Nine questions on gerunds, the passive, relative clauses and conditionals. Test yourself — no sign-up needed.",
+    "description": "Free self-scoring English grammar quiz: nine questions on gerunds, the passive, relative clauses and conditionals, instant score.",
+    "canonical": "https://activities.englishonline.training/quiz-grammar-medium.html",
     "questions": [
-      { "q": "Which sentence is written in the subjunctive mood?", "options": ["I wish I was at the beach.", "If I were you, I would go to the party.", "She demanded that he leaves immediately."], "answer": "If I were you, I would go to the party." },
-      { "q": "Which sentence contains a gerund?", "options": ["The dog barks loudly at night.", "He went to the store for some bread.", "I like swimming in the ocean."], "answer": "I like swimming in the ocean." },
-      { "q": "Which sentence is written in the passive voice?", "options": ["The students took the test.", "The students were given a test by the teacher.", "The teacher gave the students a test."], "answer": "The students were given a test by the teacher." },
-      { "q": "Which sentence contains a non-restrictive clause?", "options": ["The car that I bought last month is very reliable.", "My sister, who is a doctor, is visiting next week.", "I need to buy some groceries that are on sale."], "answer": "My sister, who is a doctor, is visiting next week." },
-      { "q": "Which sentence contains an appositive phrase?", "options": ["The book on the shelf is mine.", "My friend, a doctor, is coming to visit next week.", "The dog barked at the mailman."], "answer": "My friend, a doctor, is coming to visit next week." },
-      { "q": "Which sentence is an idiomatic expression?", "options": ["She's feeling under the weather today.", "I like to eat pizza on Fridays.", "He drove to work this morning."], "answer": "She's feeling under the weather today." },
-      { "q": "Which sentence is in the conditional perfect tense?", "options": ["I will study hard so that I can pass the test.", "If I had studied harder, I would have passed the test.", "I have studied for the test, but I'm not sure if I passed."], "answer": "If I had studied harder, I would have passed the test." },
-      { "q": "Which word is a conjunction?", "options": ["quickly", "and", "on"], "answer": "and" },
-      { "q": "Which sentence is in the active voice?", "options": ["The author wrote the book.", "The book was written by the author.", "The book is being written by the author."], "answer": "The author wrote the book." }
+      {
+        "q": "Which sentence is written in the subjunctive mood?",
+        "options": [
+          "I wish I was at the beach.",
+          "If I were you, I would go to the party.",
+          "She demanded that he leaves immediately."
+        ],
+        "answer": "If I were you, I would go to the party."
+      },
+      {
+        "q": "Which sentence contains a gerund?",
+        "options": [
+          "The dog barks loudly at night.",
+          "He went to the store for some bread.",
+          "I like swimming in the ocean."
+        ],
+        "answer": "I like swimming in the ocean."
+      },
+      {
+        "q": "Which sentence is written in the passive voice?",
+        "options": [
+          "The students took the test.",
+          "The students were given a test by the teacher.",
+          "The teacher gave the students a test."
+        ],
+        "answer": "The students were given a test by the teacher."
+      },
+      {
+        "q": "Which sentence contains a non-restrictive clause?",
+        "options": [
+          "The car that I bought last month is very reliable.",
+          "My sister, who is a doctor, is visiting next week.",
+          "I need to buy some groceries that are on sale."
+        ],
+        "answer": "My sister, who is a doctor, is visiting next week."
+      },
+      {
+        "q": "Which sentence contains an appositive phrase?",
+        "options": [
+          "The book on the shelf is mine.",
+          "My friend, a doctor, is coming to visit next week.",
+          "The dog barked at the mailman."
+        ],
+        "answer": "My friend, a doctor, is coming to visit next week."
+      },
+      {
+        "q": "Which sentence is an idiomatic expression?",
+        "options": [
+          "She's feeling under the weather today.",
+          "I like to eat pizza on Fridays.",
+          "He drove to work this morning."
+        ],
+        "answer": "She's feeling under the weather today."
+      },
+      {
+        "q": "Which sentence is in the conditional perfect tense?",
+        "options": [
+          "I will study hard so that I can pass the test.",
+          "If I had studied harder, I would have passed the test.",
+          "I have studied for the test, but I'm not sure if I passed."
+        ],
+        "answer": "If I had studied harder, I would have passed the test."
+      },
+      {
+        "q": "Which word is a conjunction?",
+        "options": [
+          "quickly",
+          "and",
+          "on"
+        ],
+        "answer": "and"
+      },
+      {
+        "q": "Which sentence is in the active voice?",
+        "options": [
+          "The author wrote the book.",
+          "The book was written by the author.",
+          "The book is being written by the author."
+        ],
+        "answer": "The author wrote the book."
+      }
     ]
   },
   {
@@ -45,16 +201,90 @@
     "emoji": "🟠",
     "title": "English Grammar Quiz — Hard",
     "sub": "Nine questions on modifiers, clauses, ellipsis and split infinitives. Test yourself — no sign-up needed.",
+    "description": "Free self-scoring English grammar quiz: nine questions on modifiers, clauses, ellipsis and split infinitives, instant score.",
+    "canonical": "https://activities.englishonline.training/quiz-grammar-hard.html",
     "questions": [
-      { "q": "Which sentence contains a misplaced (dangling) modifier?", "options": ["The car that he bought was a red sports car.", "The dog in the park chased the ball.", "Running through the park, the sun was shining brightly."], "answer": "Running through the park, the sun was shining brightly." },
-      { "q": "Which sentence contains an infinitive phrase?", "options": ["The cat sat on the windowsill.", "He is playing soccer with his friends.", "I decided to go for a walk in the park."], "answer": "I decided to go for a walk in the park." },
-      { "q": "Which sentence is in the passive voice with a present participle?", "options": ["The cat is sleeping on the couch.", "The couch was slept on by the cat.", "The couch is being slept on by the cat."], "answer": "The couch is being slept on by the cat." },
-      { "q": "Which sentence contains a restrictive clause?", "options": ["The car, which is red, is mine.", "My sister, who is a doctor, is visiting next week.", "The book that I read last week was very interesting."], "answer": "The book that I read last week was very interesting." },
-      { "q": "Which sentence contains an ellipsis?", "options": ["He ordered a pizza, and she a salad.", "I'm not sure if I want to go, but you do.", "She likes to run, swim, and hike."], "answer": "He ordered a pizza, and she a salad." },
-      { "q": "Which sentence contains a dangling participle?", "options": ["Walking to school, the rain soaked me.", "Walking to school, I got soaked.", "I walked to school in the rain."], "answer": "Walking to school, the rain soaked me." },
-      { "q": "Which word is a relative pronoun?", "options": ["That", "Happy", "Run"], "answer": "That" },
-      { "q": "Which sentence contains a split infinitive?", "options": ["I want to quickly finish my homework.", "I want to finish my homework quickly.", "I quickly want to finish my homework."], "answer": "I want to quickly finish my homework." },
-      { "q": "Which sentence contains a modal verb?", "options": ["He can swim very well.", "He swims every day.", "He swam yesterday."], "answer": "He can swim very well." }
+      {
+        "q": "Which sentence contains a misplaced (dangling) modifier?",
+        "options": [
+          "The car that he bought was a red sports car.",
+          "The dog in the park chased the ball.",
+          "Running through the park, the sun was shining brightly."
+        ],
+        "answer": "Running through the park, the sun was shining brightly."
+      },
+      {
+        "q": "Which sentence contains an infinitive phrase?",
+        "options": [
+          "The cat sat on the windowsill.",
+          "He is playing soccer with his friends.",
+          "I decided to go for a walk in the park."
+        ],
+        "answer": "I decided to go for a walk in the park."
+      },
+      {
+        "q": "Which sentence is in the passive voice with a present participle?",
+        "options": [
+          "The cat is sleeping on the couch.",
+          "The couch was slept on by the cat.",
+          "The couch is being slept on by the cat."
+        ],
+        "answer": "The couch is being slept on by the cat."
+      },
+      {
+        "q": "Which sentence contains a restrictive clause?",
+        "options": [
+          "The car, which is red, is mine.",
+          "My sister, who is a doctor, is visiting next week.",
+          "The book that I read last week was very interesting."
+        ],
+        "answer": "The book that I read last week was very interesting."
+      },
+      {
+        "q": "Which sentence contains an ellipsis?",
+        "options": [
+          "He ordered a pizza, and she a salad.",
+          "I'm not sure if I want to go, but you do.",
+          "She likes to run, swim, and hike."
+        ],
+        "answer": "He ordered a pizza, and she a salad."
+      },
+      {
+        "q": "Which sentence contains a dangling participle?",
+        "options": [
+          "Walking to school, the rain soaked me.",
+          "Walking to school, I got soaked.",
+          "I walked to school in the rain."
+        ],
+        "answer": "Walking to school, the rain soaked me."
+      },
+      {
+        "q": "Which word is a relative pronoun?",
+        "options": [
+          "That",
+          "Happy",
+          "Run"
+        ],
+        "answer": "That"
+      },
+      {
+        "q": "Which sentence contains a split infinitive?",
+        "options": [
+          "I want to quickly finish my homework.",
+          "I want to finish my homework quickly.",
+          "I quickly want to finish my homework."
+        ],
+        "answer": "I want to quickly finish my homework."
+      },
+      {
+        "q": "Which sentence contains a modal verb?",
+        "options": [
+          "He can swim very well.",
+          "He swims every day.",
+          "He swam yesterday."
+        ],
+        "answer": "He can swim very well."
+      }
     ]
   },
   {
@@ -64,17 +294,99 @@
     "emoji": "🔴",
     "title": "English Grammar Quiz — Hardest",
     "sub": "Ten tough questions on absolute phrases, non-finite clauses and advanced constructions. Test yourself — no sign-up needed.",
+    "description": "Free self-scoring English grammar quiz: ten tough questions on absolute phrases, non-finite clauses and advanced grammar.",
+    "canonical": "https://activities.englishonline.training/quiz-grammar-hardest.html",
     "questions": [
-      { "q": "Which sentence contains a double negative?", "options": ["I didn't see nobody at the party.", "I can't hardly hear you.", "I do have nothing to do today."], "answer": "I didn't see nobody at the party." },
-      { "q": "Which sentence contains an absolute phrase?", "options": ["The cat sat on the windowsill.", "The sun shining brightly, we decided to go for a walk.", "He is playing soccer with his friends."], "answer": "The sun shining brightly, we decided to go for a walk." },
-      { "q": "Which sentence is in the simple passive voice with a past participle?", "options": ["The cake is being baked by my mother.", "The cake was baked by my mother.", "My mother baked the cake."], "answer": "The cake was baked by my mother." },
-      { "q": "Which sentence contains a non-finite (infinitive) clause?", "options": ["She stopped to rest for a while.", "She stopped.", "She was very tired."], "answer": "She stopped to rest for a while." },
-      { "q": "Which sentence contains an appositive phrase?", "options": ["My brother, a talented artist, lives in Berlin.", "My brother lives in Berlin.", "My brother is a talented artist."], "answer": "My brother, a talented artist, lives in Berlin." },
-      { "q": "Which sentence is an example of a split construction?", "options": ["I like to play, when I have free time, video games.", "The girl, who was walking down the street, she waved at me.", "The movie, that we watched last night, it was really good."], "answer": "I like to play, when I have free time, video games." },
-      { "q": "Which sentence is in the past perfect continuous tense?", "options": ["I had been studying for hours when I finally took a break.", "I studied for hours before I took a break.", "I will study for hours before I take a break."], "answer": "I had been studying for hours when I finally took a break." },
-      { "q": "Which word is a preposition?", "options": ["Quickly", "Joyful", "Under"], "answer": "Under" },
-      { "q": "Which sentence contains a dangling infinitive?", "options": ["To get to the park, my bicycle was the fastest option.", "To avoid the traffic, the car was driven on the side streets.", "After the storm, the tree was knocked down."], "answer": "To get to the park, my bicycle was the fastest option." },
-      { "q": "Which sentence contains a phrasal-prepositional verb (verb + adverb + preposition)?", "options": ["I look forward to the weekend.", "I look at the picture.", "I put on my coat."], "answer": "I look forward to the weekend." }
+      {
+        "q": "Which sentence contains a double negative?",
+        "options": [
+          "I didn't see nobody at the party.",
+          "I can't hardly hear you.",
+          "I do have nothing to do today."
+        ],
+        "answer": "I didn't see nobody at the party."
+      },
+      {
+        "q": "Which sentence contains an absolute phrase?",
+        "options": [
+          "The cat sat on the windowsill.",
+          "The sun shining brightly, we decided to go for a walk.",
+          "He is playing soccer with his friends."
+        ],
+        "answer": "The sun shining brightly, we decided to go for a walk."
+      },
+      {
+        "q": "Which sentence is in the simple passive voice with a past participle?",
+        "options": [
+          "The cake is being baked by my mother.",
+          "The cake was baked by my mother.",
+          "My mother baked the cake."
+        ],
+        "answer": "The cake was baked by my mother."
+      },
+      {
+        "q": "Which sentence contains a non-finite (infinitive) clause?",
+        "options": [
+          "She stopped to rest for a while.",
+          "She stopped.",
+          "She was very tired."
+        ],
+        "answer": "She stopped to rest for a while."
+      },
+      {
+        "q": "Which sentence contains an appositive phrase?",
+        "options": [
+          "My brother, a talented artist, lives in Berlin.",
+          "My brother lives in Berlin.",
+          "My brother is a talented artist."
+        ],
+        "answer": "My brother, a talented artist, lives in Berlin."
+      },
+      {
+        "q": "Which sentence is an example of a split construction?",
+        "options": [
+          "I like to play, when I have free time, video games.",
+          "The girl, who was walking down the street, she waved at me.",
+          "The movie, that we watched last night, it was really good."
+        ],
+        "answer": "I like to play, when I have free time, video games."
+      },
+      {
+        "q": "Which sentence is in the past perfect continuous tense?",
+        "options": [
+          "I had been studying for hours when I finally took a break.",
+          "I studied for hours before I took a break.",
+          "I will study for hours before I take a break."
+        ],
+        "answer": "I had been studying for hours when I finally took a break."
+      },
+      {
+        "q": "Which word is a preposition?",
+        "options": [
+          "Quickly",
+          "Joyful",
+          "Under"
+        ],
+        "answer": "Under"
+      },
+      {
+        "q": "Which sentence contains a dangling infinitive?",
+        "options": [
+          "To get to the park, my bicycle was the fastest option.",
+          "To avoid the traffic, the car was driven on the side streets.",
+          "After the storm, the tree was knocked down."
+        ],
+        "answer": "To get to the park, my bicycle was the fastest option."
+      },
+      {
+        "q": "Which sentence contains a phrasal-prepositional verb (verb + adverb + preposition)?",
+        "options": [
+          "I look forward to the weekend.",
+          "I look at the picture.",
+          "I put on my coat."
+        ],
+        "answer": "I look forward to the weekend."
+      }
     ]
   }
 ]

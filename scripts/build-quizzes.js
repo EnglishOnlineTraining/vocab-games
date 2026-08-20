@@ -11,6 +11,17 @@ const quizzes = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'quizzes.json
 
 function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
 
+// The canonical URL and meta description are authored per quiz in data/quizzes.json.
+// They were hand-edited into the generated pages once, which meant a regenerate would
+// silently revert them; keeping them in the input of record is what makes this script
+// idempotent. Both fall back to a derived value so a new quiz needs neither field.
+function canonicalFor(qz) {
+  return qz.canonical || ('https://activities.englishonline.training/quiz-' + qz.slug + '.html');
+}
+function descriptionFor(qz) {
+  return qz.description || (qz.title + ' — a free, self-scoring English grammar quiz. No sign-up, instant score.');
+}
+
 function questionCard(qObj, i) {
   var opts = '<option value="">— choose —</option>'
     + qObj.options.map(function (o) { return '<option value="' + esc(o) + '">' + esc(o) + '</option>'; }).join('');
@@ -32,7 +43,8 @@ function page(qz) {
   return '<!DOCTYPE html>\n<html lang="en">\n<head>\n'
     + '  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
     + '  <title>' + esc(qz.title) + ' | englishonline.training</title>\n'
-    + '  <meta name="description" content="' + esc(qz.title) + ' — a free, self-scoring English grammar quiz. No sign-up, instant score.">\n'
+    + '  <link rel="canonical" href="' + esc(canonicalFor(qz)) + '">\n'
+    + '  <meta name="description" content="' + esc(descriptionFor(qz)) + '">\n'
     + '  <link rel="stylesheet" href="style.css">\n</head>\n<body>\n\n'
     + '<header class="app-header">\n  <div class="header-inner">\n'
     + '    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>\n'
