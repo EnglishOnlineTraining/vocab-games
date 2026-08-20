@@ -29,4 +29,9 @@ Edit the source (the exercise HTML's content blocks or the `data/*.json` files),
 
 ## License
 
-[MIT](LICENSE)
+This repository is dual-licensed:
+
+- **Code** — `exercise.js`, `style.css`, `test-scoring.js`, `topic-pool.js`, `apps-script.gs`, everything in `scripts/`, and the CI workflows in `.github/` — is licensed under the [MIT License](LICENSE).
+- **Teaching content** — the exercise and lesson material in the HTML pages, `themen/`, `data/*.json`, `blog/`, and `docs/` — is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE-CONTENT). If you reuse it, credit **Shaun / EnglishOnline.training** and link back to this repository.
+
+Where a file mixes both (an HTML page contains both markup/script and lesson text), the page's code is MIT and its exercise/lesson text is CC BY 4.0.
