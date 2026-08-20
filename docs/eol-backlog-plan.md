@@ -217,6 +217,34 @@ the "which groups exist" review above rather than staying an ungoverned one-off.
   (`grep -o '<a class="activity-card" href="[^"]*"' <hub>.html | sort -u | wc -l`; `8c` uses
   `exercise-card` markup instead). 7g/7c/8g/8c/9g/9c/10g/10c/abitur/uni were already right.
 
+## Tier 3.6 — `themen/` topic coverage (found 2026-08-20) · CC
+Found while adding the build graph; **nothing is broken and no link 404s**, which is why this is
+Tier 3 rather than urgent. Three related facts, verified against the repo on 2026-08-20:
+
+- **`CLAUDE.md` says "all 11 topic pages" in two places; there are 10.** `data/topics.json` holds
+  10 slugs (`passiv`, `if-saetze`, `relativsaetze`, `past-perfect`, `present-perfect`,
+  `simple-past`, `linking-words`, `present-tenses`, `modalverben`, `gerund-infinitiv`) and
+  `themen/` holds 11 files — the 11th is `themen/index.html`, the hub, which was miscounted as a
+  topic. Fix the two lines (§"SEO topic landing pages"). Ground truth:
+  `python3 -c "import json;print(len(json.load(open('data/topics.json'))))"`.
+
+- **Check WP page 1763 before trusting the same number there.** `CLAUDE.md` claims that block
+  links "all 11 topic pages". If it was built from the same miscount, one button points at a slug
+  that does not exist and 404s for real visitors — the topic buttons are the only external links
+  into `themen/`, so nobody would report it. Verify with `pages.get` (`context: "edit"`) and fix
+  via `pages.update`; **never the block editor** — see the trap at the top of `CLAUDE.md`.
+
+- **Five classified topics have no landing page.** `scripts/build-exercise-data.js` classifies
+  against a wider vocabulary than `data/topics.json` covers, so these are tagged on exercises but
+  have nowhere to send a searcher: `reported-speech` (4 exercises), `adjektive-adverbien` (3),
+  `future-tenses` (2), `question-tags` (1), `phrasal-verbs` (1). They appear in each card's
+  `data-topics` but **not** in the Thema dropdown on `activities.html`, so the tag is currently
+  invisible rather than dead — no broken links, just no page and no filter entry. `reported-speech`
+  and `adjektive-adverbien` are worth authoring first on volume; the single-exercise ones may not
+  be worth a page at all, in which case drop them from the vocabulary instead so the two lists
+  agree. Adding a slug needs German prose in `data/topics.json`, then
+  `node scripts/build.js`, then the 1763 button block.
+
 ## Tier 3.5 — Content audit reconciliation (2026-08-07 live check) · CC
 The 5 Aug content audit (`eol-wordpress-content-audit.md`) predates a week of work covered
 elsewhere in this plan. Checked every remaining audit item against live WordPress today
