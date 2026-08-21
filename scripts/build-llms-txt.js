@@ -144,6 +144,7 @@ Germany since 2015).
 
 - Book a lesson: https://englishonline.training/book-a-lesson
 - Test your English: https://englishonline.training/test-your-english
+- About Shaun: https://englishonline.training/about
 - Email: englishonlinetraining@pm.me
 - LinkedIn: https://www.linkedin.com/in/shaun-trezise
 - Facebook: https://www.facebook.com/englishonlinetraining
