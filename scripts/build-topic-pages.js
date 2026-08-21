@@ -183,6 +183,22 @@ function jsonLd(t, url) {
   return '<script type="application/ld+json">' + JSON.stringify(obj) + '</script>';
 }
 
+// Mirrors the visible <nav class="crumbs"> rendered a few lines below in
+// pageHtml() — "Übungen › Grammatik › <topic>" — so this never claims a nav
+// structure different from the one on screen.
+function breadcrumbJsonLd(t, url) {
+  const obj = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      { '@type': 'ListItem', 'position': 1, 'name': 'Übungen', 'item': BASE + '/activities.html' },
+      { '@type': 'ListItem', 'position': 2, 'name': 'Grammatik' },
+      { '@type': 'ListItem', 'position': 3, 'name': t.de, 'item': url }
+    ]
+  };
+  return '<script type="application/ld+json">' + JSON.stringify(obj) + '</script>\n';
+}
+
 function pageHtml(t) {
   const url = BASE + '/themen/' + t.slug + '.html';
   const h1 = topicLabel(t) + ' — Erklärung und kostenlose Übungen';
@@ -199,6 +215,7 @@ function pageHtml(t) {
     + '<meta property="og:locale" content="de_DE">\n'
     + jsonLd(t, url) + '\n'
     + faqJsonLd(t)
+    + breadcrumbJsonLd(t, url)
     + '<link rel="stylesheet" href="themen.css">\n</head>\n<body>\n'
     + '<header class="th-header"><div class="th-inner">'
     + '<a class="th-logo" href="https://englishonline.training">englishonline.training</a>'

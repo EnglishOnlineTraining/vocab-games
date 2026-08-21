@@ -74,14 +74,30 @@ const NODES = [
     outputs: ['themen/*.html', 'themen/themen.css', 'sitemap.xml', 'robots.txt'],
   },
   {
+    id: 'schema',
+    run: 'scripts/build-schema.js',
+    // Reads the same data as `hub` and writes into the <head> of the root
+    // *.html files `hub`/`quizzes`/`review` produce, so it needs the same
+    // barrier `head` does, for the same reason: those nodes rewrite whole files
+    // and would drop a SCHEMA:*/END block written before they ran. No edge to
+    // `topic-pages`: it only touches themen/*.html, which this node never
+    // reads or writes — a `needs` there would be a fake edge (build.js's own
+    // check catches this).
+    needs: ['exercise-data', 'hub', 'quizzes', 'review'],
+    inputs: ['data/exercises.json', 'data/topics.json', '*.html'],
+    outputs: ['*.html'],
+  },
+  {
     id: 'head',
     run: 'scripts/build-head.js',
     // The barrier. Every generator above rewrites whole files and drops the
     // HEAD:*/NOSCRIPT:* blocks, so this has to restore them afterwards. These
     // are genuine write-after-write edges, not ordering hints: build-head.js
     // walks root *.html AND themen/*.html (see scripts/build-head.js:250-252),
-    // so its globs overlap every one of these nodes' outputs.
-    needs: ['hub', 'topic-pages', 'quizzes', 'review'],
+    // so its globs overlap every one of these nodes' outputs. `schema` also
+    // writes into <head> on the same files (though build-head.js itself never
+    // touches ld+json), so the missing-barrier check needs this edge too.
+    needs: ['hub', 'topic-pages', 'quizzes', 'review', 'schema'],
     inputs: ['*.html', 'themen/*.html'],
     outputs: ['*.html', 'themen/*.html'],
   },

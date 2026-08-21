@@ -6,12 +6,18 @@ graph TD
   exercise_data["exercise-data<br/><small>scripts/build-exercise-data.js</small>"]
   hub["hub<br/><small>scripts/build-hub.js</small>"]
   topic_pages["topic-pages<br/><small>scripts/build-topic-pages.js</small>"]
+  schema["schema<br/><small>scripts/build-schema.js</small>"]
   head["head<br/><small>scripts/build-head.js</small>"]
   quizzes --> exercise_data
   review --> exercise_data
   exercise_data --> hub
   exercise_data --> topic_pages
+  exercise_data --> schema
+  hub --> schema
+  quizzes --> schema
+  review --> schema
   hub --> head
   topic_pages --> head
   quizzes --> head
   review --> head
+  schema --> head
