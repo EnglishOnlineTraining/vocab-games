@@ -46,7 +46,7 @@ module.exports = {
     {
       q: 'Sind die Übungen kostenlos? Muss ich mich anmelden?',
       a: 'Die Übungen sind kostenlos und ohne Anmeldung nutzbar. Mit der Schaltfläche „Nur üben — ohne '
-        + 'Abgabe" bearbeitest du jede Einheit, ohne einen Namen einzugeben; die Auswertung siehst du '
+        + 'Abgabe“ bearbeitest du jede Einheit, ohne einen Namen einzugeben; die Auswertung siehst du '
         + 'trotzdem sofort.',
     },
     {
@@ -86,16 +86,16 @@ module.exports = {
     {
       q: 'Was sind Germanismen und wie vermeide ich sie?',
       a: 'Germanismen sind Formulierungen, die direkt aus dem Deutschen übernommen sind und im '
-        + 'Englischen falsch oder unidiomatisch klingen — etwa „handy" statt mobile phone, „become" '
-        + 'für bekommen, „informations" im Plural oder „since three years" statt for three years. '
+        + 'Englischen falsch oder unidiomatisch klingen — etwa „handy“ statt mobile phone, „become“ '
+        + 'für bekommen, „informations“ im Plural oder „since three years“ statt for three years. '
         + 'Wer den Inhalt erst versteht und dann frei auf Englisch formuliert, macht sie seltener als '
         + 'wer Satz für Satz überträgt.',
     },
     {
       q: 'Muss ich deutsche Begriffe wie Abitur oder Bundesland erklären?',
       a: 'Ja, wenn die Leserschaft im Auftrag sie nicht kennt. Eine kurze Erklärung im Satz reicht, '
-        + 'zum Beispiel „the Abitur, the German school-leaving exam" oder „a Bundesland, one of '
-        + 'Germany’s sixteen federal states".',
+        + 'zum Beispiel „the Abitur, the German school-leaving exam“ oder „a Bundesland, one of '
+        + 'Germany’s sixteen federal states“.',
     },
     {
       q: 'Welche Themen kommen in der Mediation vor?',
