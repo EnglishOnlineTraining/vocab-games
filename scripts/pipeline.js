@@ -81,8 +81,13 @@ const NODES = [
     // are genuine write-after-write edges, not ordering hints: build-head.js
     // walks root *.html AND themen/*.html (see scripts/build-head.js:250-252),
     // so its globs overlap every one of these nodes' outputs.
-    needs: ['hub', 'topic-pages', 'quizzes', 'review'],
-    inputs: ['*.html', 'themen/*.html'],
+    //
+    // It also reads data/exercises.json now — the JSON-LD it emits and the
+    // "Auf einen Blick" box both describe the exercise the page is, and that
+    // description lives in the registry, not in the markup. Hence the extra
+    // edge to `exercise-data`: a data edge, not an ordering hint.
+    needs: ['hub', 'topic-pages', 'quizzes', 'review', 'exercise-data'],
+    inputs: ['*.html', 'themen/*.html', 'data/exercises.json', 'data/topics.json'],
     outputs: ['*.html', 'themen/*.html'],
   },
 ];
@@ -100,6 +105,14 @@ const VALIDATORS = [
   { id: 'topic-pool', run: 'topic-pool.js' },
 ];
 
+// Checks that run AFTER the build, because they read what the generators wrote
+// rather than what a human authored. Keeping them out of VALIDATORS is the whole
+// point: run before the build, validate-schema.js would be inspecting the
+// previous run's output and would pass on a tree it had never seen.
+const CHECKERS = [
+  { id: 'validate-schema', run: 'scripts/validate-schema.js' },
+];
+
 // Generators deliberately left outside the graph. Their inputs change roughly
 // never, build-og-card needs Playwright (not a repo dependency), and both
 // commit their output — so they are documented as manual rather than pretended
@@ -109,4 +122,4 @@ const MANUAL = [
   { id: 'og-card', run: 'scripts/build-og-card.js' },
 ];
 
-module.exports = { NODES, VALIDATORS, MANUAL };
+module.exports = { NODES, VALIDATORS, CHECKERS, MANUAL };

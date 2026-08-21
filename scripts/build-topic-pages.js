@@ -6,6 +6,7 @@
  */
 const fs = require('fs');
 const path = require('path');
+const S = require('./schema');
 const ROOT = path.join(__dirname, '..');
 const BASE = 'https://activities.englishonline.training';
 
@@ -166,19 +167,36 @@ function topicSubLabel(t) {
   return en;
 }
 
+/**
+ * The topic page's LearningResource.
+ *
+ * build-head.js deliberately emits no schema for themen/ pages — this is the one
+ * that describes them. The author/publisher/provider @ids come from
+ * scripts/schema.js so these pages hang off the same Person and Organization as
+ * the rest of the site rather than naming a second, unconnected organisation.
+ */
 function jsonLd(t, url) {
   const obj = {
     '@context': 'https://schema.org',
-    '@type': 'LearningResource',
-    'name': topicLabel(t) + ' — Erklärung und kostenlose Übungen',
-    'description': t.metaDescription || '',
-    'inLanguage': 'de',
-    'isAccessibleForFree': true,
-    'learningResourceType': ['Erklärung', 'Übung'],
-    'educationalUse': 'practice',
-    'teaches': t.en,
-    'url': url,
-    'provider': { '@type': 'Organization', 'name': 'EnglishOnline.Training', 'url': 'https://englishonline.training' }
+    '@graph': [
+      S.orgStub(),
+      S.personStub(),
+      {
+        '@type': 'LearningResource',
+        '@id': url + '#resource',
+        'name': topicLabel(t) + ' — Erklärung und kostenlose Übungen',
+        'description': t.metaDescription || '',
+        'inLanguage': 'de',
+        'isAccessibleForFree': true,
+        'learningResourceType': ['Erklärung', 'Übung'],
+        'educationalUse': 'practice',
+        'teaches': t.en,
+        'url': url,
+        'author': { '@id': S.PERSON_ID },
+        'publisher': { '@id': S.ORG_ID },
+        'provider': { '@id': S.ORG_ID },
+      },
+    ],
   };
   return '<script type="application/ld+json">' + JSON.stringify(obj) + '</script>';
 }

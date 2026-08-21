@@ -14,7 +14,15 @@
  *     the web manifest, and Open Graph / Twitter tags derived from the page's
  *     own <title>, <meta description> and <link rel=canonical>;
  *   - a NOSCRIPT:START/NOSCRIPT:END banner right after <body> on pages whose
- *     content is hidden until JavaScript runs (they render blank otherwise).
+ *     content is hidden until JavaScript runs (they render blank otherwise);
+ *   - a JSON-LD graph inside the HEAD block (scripts/schema.js builds the nodes);
+ *   - an OVERVIEW:START/OVERVIEW:END "Auf einen Blick / At a glance" box on the
+ *     welcome screen of every exercise page.
+ *
+ * The last two are here rather than in a generator of their own because this
+ * script already runs last, is idempotent, and already parses the title,
+ * description, canonical and lang each of them needs. A separate node would only
+ * add another `outputs: ['*.html']` barrier to declare.
  *
  * It only ever rewrites its own blocks plus the duplicate tags it supersedes, so
  * it is idempotent and safe to re-run. It must run LAST in the generator chain
@@ -27,11 +35,17 @@
 
 const fs = require('fs');
 const path = require('path');
+const S = require('./schema');
 
 const ROOT = path.join(__dirname, '..');
 const SITE = 'https://activities.englishonline.training';
 const THEME = '#1a3a5c';
 const CHECK = process.argv.includes('--check');
+
+const exercises = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/exercises.json'), 'utf8'));
+const topics = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/topics.json'), 'utf8'));
+const EX_BY_FILE = Object.fromEntries(exercises.map((e) => [e.file.toLowerCase(), e]));
+const TOPIC_BY_SLUG = Object.fromEntries(topics.map((t) => [t.slug, t]));
 
 // Pages that render blank without JavaScript: everything on the shared framework
 // (.step is display:none until showStep runs) plus the standalone interactive
@@ -57,6 +71,15 @@ function rendersBlankWithoutJs(html) {
 
 function esc(s) {
   return String(s).replace(/&(?![a-zA-Z#0-9]+;)/g, '&amp;').replace(/"/g, '&quot;');
+}
+
+/**
+ * Escape for text content rather than an attribute value: `<` must go, but a
+ * double quote is ordinary punctuation here and turning it into &quot; would
+ * only make the source harder to read.
+ */
+function escText(s) {
+  return String(s).replace(/&(?![a-zA-Z#0-9]+;)/g, '&amp;').replace(/</g, '&lt;');
 }
 
 function firstMatch(html, re, group = 1) {
@@ -135,8 +158,121 @@ function supportsDark(file, html) {
   return /<link[^>]+href=["'](?:\.\.\/)?style\.css["']/.test(html);
 }
 
-function headBlock(file, html, withSkipStyle) {
-  const rel = file.includes('/') ? '../' : '';
+// --- structured data ------------------------------------------------------
+// Which hubs are genuinely a course of study rather than a list of links. The
+// key is the hub filename; `list` says which exercises belong to it.
+const COURSE_HUBS = {
+  'msa-activities.html': {
+    name: 'MSA Englisch — Prüfungsvorbereitung (Mittlerer Schulabschluss)',
+    description: 'Kostenloses Prüfungstraining für die MSA-Englischprüfung: Hörverstehen, Leseverstehen '
+      + 'und Schreiben in vollständigen Übungseinheiten mit sofortiger Auswertung nach der offiziellen '
+      + 'Bewertungstabelle.',
+    teaches: ['English listening comprehension', 'English reading comprehension', 'English writing'],
+    level: 'B1',
+    audience: { framework: 'Mittlerer Schulabschluss (Berlin/Brandenburg)', target: 'MSA Englisch' },
+  },
+  'abitur-activities.html': {
+    name: 'Abitur Englisch — schriftliche Prüfung üben',
+    description: 'Kostenlose interaktive Übungspakete für die schriftliche Englisch-Abiturprüfung: '
+      + 'Text Analysis, Argumentative Writing, Writing Summaries und Mediation (Sprachmittlung).',
+    teaches: ['Text analysis', 'Argumentative writing', 'Summary writing', 'Mediation (Sprachmittlung)'],
+    level: 'B2–C1',
+    audience: { framework: 'Abitur (Berlin/Brandenburg)', target: 'Abitur Englisch' },
+  },
+  'grammar-activities.html': {
+    name: 'Englische Grammatik — Themen üben',
+    description: 'Kostenlose Grammatikübungen zu einzelnen englischen Grammatikthemen, mit Erklärung '
+      + 'und sofortiger Auswertung.',
+    teaches: ['English grammar'],
+  },
+};
+
+/**
+ * What a hub page's ItemList should contain — which is what the page itself
+ * links to, no more.
+ *
+ * `activities.html` really does list all 182 exercises, so it gets all 182.
+ * `index.html` does not: it is a landing page of per-category blocks, so it gets
+ * the collections it links to. Listing every exercise there added 33 KB of
+ * JSON-LD to a 47 KB page describing links the reader cannot see, which is the
+ * kind of markup that reads as padding.
+ */
+function hubItems(file) {
+  if (file === 'activities.html') {
+    return exercises.map((e) => ({ file: e.file, name: e.title }));
+  }
+  if (file === 'index.html') {
+    return HUB_FILES.map((f) => ({ file: f, name: hubTitle(f) }));
+  }
+  return exercises
+    .filter((e) => S.hubFor(e.file) === file)
+    .map((e) => ({ file: e.file, name: e.title }));
+}
+
+/** The hubs that actually have exercises filed under them, in listing order. */
+const HUB_FILES = Array.from(new Set(exercises.map((e) => S.hubFor(e.file)).filter(Boolean)))
+  .filter((f) => fs.existsSync(path.join(ROOT, f)))
+  .sort();
+
+const HUB_TITLES = {};
+function hubTitle(f) {
+  if (!(f in HUB_TITLES)) {
+    const html = fs.readFileSync(path.join(ROOT, f), 'utf8');
+    HUB_TITLES[f] = pageMeta(html).title || f;
+  }
+  return HUB_TITLES[f];
+}
+
+/**
+ * The JSON-LD graph for one page.
+ *
+ * themen/ pages are skipped: build-topic-pages.js already emits their
+ * LearningResource and FAQPage, and a second block would describe the same page
+ * twice under different ids.
+ */
+function schemaBlock(file, meta) {
+  if (file.startsWith('themen/')) return '';
+  if (!meta.canonical || /TODO/i.test(meta.canonical)) return '';
+
+  const nodes = [];
+  const isIndex = file === 'index.html' || file === 'activities.html';
+
+  // The full Person/Organization definitions live on the two index pages; every
+  // other page carries a stub so its own @id references still resolve.
+  if (isIndex) {
+    nodes.push(S.organizationNode(), S.personNode(), S.websiteNode());
+  } else {
+    nodes.push(S.orgStub(), S.personStub(), S.websiteNode());
+  }
+
+  const ex = EX_BY_FILE[file.toLowerCase()];
+  const isHub = /(?:^|-)activities\.html$/.test(file) || file === 'index.html';
+
+  if (isHub) {
+    nodes.push(...S.hubPage(file, meta, hubItems(file), { course: COURSE_HUBS[file] }));
+  } else if (ex) {
+    const hub = S.hubFor(file);
+    nodes.push(S.learningResource(file, meta, ex, TOPIC_BY_SLUG, hub ? hubTitle(hub) : ''));
+  } else {
+    nodes.push(S.webPage(file, meta));
+  }
+
+  if (file !== 'index.html') nodes.push(S.breadcrumb(file, meta.title, meta.canonical));
+
+  const faq = PAGE_FAQ[file];
+  if (faq) nodes.push(S.faqPage(meta.canonical, faq));
+
+  return S.serialise(nodes);
+}
+
+// Hand-written FAQs for the two pages whose whole job is to answer these
+// questions. Keep the wording identical to what the page shows a reader —
+// schema that says something the page does not is a policy violation, not a
+// clever shortcut.
+const PAGE_FAQ = require('./page-faq');
+
+/** Title, description, canonical and lang, as the page itself declares them. */
+function pageMeta(html) {
   const lang = firstMatch(html, /<html[^>]*\blang=["']([^"']+)["']/i) || 'en';
   const rawTitle = firstMatch(html, /<title>([\s\S]*?)<\/title>/i);
   const title = rawTitle.replace(/\s*[|·—-]\s*(?:EnglishOnline\.training|englishonline\.training)\s*$/i, '').trim();
@@ -144,6 +280,12 @@ function headBlock(file, html, withSkipStyle) {
   // ("New York's boroughs"), which a [^"']* class would cut the value short at.
   const desc = firstMatch(html, /<meta\s+name=["']description["']\s+content=(["'])([\s\S]*?)\1/i, 2);
   const canonical = firstMatch(html, /<link\s+rel=["']canonical["']\s+href=(["'])([\s\S]*?)\1/i, 2);
+  return { lang, title, desc, canonical };
+}
+
+function headBlock(file, html, withSkipStyle, withOverviewStyle) {
+  const rel = file.includes('/') ? '../' : '';
+  const { lang, title, desc, canonical } = pageMeta(html);
 
   const lines = [
     '<!-- HEAD:START — generated by scripts/build-head.js, do not edit by hand -->',
@@ -179,10 +321,150 @@ function headBlock(file, html, withSkipStyle) {
     '<meta name="twitter:site" content="@engontraining">'
   );
   if (withSkipStyle) lines.push(SKIP_STYLE);
+  if (withOverviewStyle) lines.push(QO_STYLE);
+  if (PAGE_FAQ[file]) lines.push(FAQ_STYLE);
+  const schema = schemaBlock(file, { lang, title, desc, canonical });
+  if (schema) lines.push(schema);
   lines.push(
     '<!-- HEAD:END -->'
   );
   return lines.join('\n') + '\n';
+}
+
+// --- Quick Overview ("Auf einen Blick / At a glance") ----------------------
+//
+// A short, factual summary at the top of every exercise page, in German and
+// English. It exists because the page previously said what the *exercises* are
+// ("Ex A – Reading") but never the things a reader — or an answer engine — asks
+// first: what level is this, which grammar point does it drill, does it cost
+// anything.
+//
+// Three constraints, each of which has a way to go wrong quietly:
+//
+//   1. **It is static HTML, not injected by exercise.js.** The crawlers this is
+//      for (GPTBot, ClaudeBot, PerplexityBot) do not run JavaScript, so a
+//      runtime-injected box would be invisible to exactly its audience. This
+//      works because #step-0 carries `class="step active"` in the source and
+//      `.step.active { display:block }`, so the welcome screen renders without
+//      JS. It disappears on its own once the student starts, because step-0
+//      loses `.active`.
+//
+//   2. **No `ex-title` or `card-title` class may appear in here.**
+//      build-exercise-data.js builds each entry's `blurb` by scraping
+//      `h2.ex-title` with a `div.card-title` fallback — reusing either class
+//      would feed this generator's output back into its own input on the next
+//      run. Everything is namespaced `.qo-`.
+//
+//   3. **The CSS ships inside the block.** 17 framework pages load exercise.js
+//      but not style.css, so a rule added to style.css would silently not apply
+//      to them. Same reason SKIP_STYLE is inline. Tokens are read with
+//      var(--x, fallback) and there is an explicit dark-mode rule.
+const QO_STYLE = `<style id="eol-qo-style">
+.qo-box{background:var(--card,#fff);border:1.5px solid var(--border,#dce3ec);border-left:4px solid var(--gold,#c9a227);border-radius:10px;padding:1rem 1.2rem;margin:0 0 1.5rem;font-size:.9rem;color:var(--text,#1d2b3a)}
+.qo-box h2{font-size:.95rem;font-weight:700;margin:0 0 .6rem;color:var(--blue,#1a3a5c)}
+.qo-box h2 .qo-en{font-weight:600;color:var(--muted,#6b7a8d)}
+.qo-lede{margin:0 0 .75rem;line-height:1.5}
+.qo-facts{display:grid;grid-template-columns:auto 1fr;gap:.3rem .9rem;margin:0}
+.qo-facts dt{font-weight:600;color:var(--blue,#1a3a5c)}
+.qo-facts dt .qo-en{font-weight:400;color:var(--muted,#6b7a8d)}
+.qo-facts dd{margin:0}
+@media (max-width:420px){.qo-facts{grid-template-columns:1fr;gap:.1rem}.qo-facts dd{margin:0 0 .4rem}}
+@media (prefers-color-scheme:dark){
+.qo-box{background:var(--card,#1c2733);border-color:var(--border,#2f3d4d);color:var(--text,#e6edf5)}
+.qo-box h2{color:var(--gold-lt,#f5e6b0)}
+.qo-facts dt{color:var(--gold-lt,#f5e6b0)}
+.qo-box h2 .qo-en,.qo-facts dt .qo-en{color:var(--muted,#9fb0c3)}
+}
+</style>`;
+
+/** "Grammatik / Grammar" style bilingual label. */
+function bi(de, en) {
+  return `${escText(de)} <span class="qo-en" lang="en">/ ${escText(en)}</span>`;
+}
+
+/**
+ * The overview block for one exercise page, or '' when the page is not one of
+ * the 166 with a welcome hero (hubs, Abitur packs, lead magnets, standalone
+ * tools).
+ */
+function overviewBlock(file, meta, html) {
+  const ex = EX_BY_FILE[file.toLowerCase()];
+  if (!ex) return '';
+
+  const rows = [];
+  const level = S.levelFor(file);
+  if (level) rows.push([bi('Niveau', 'Level'), escText(level + ' (GER/CEFR)')]);
+
+  rows.push([bi('Für', 'For'), escText(S.crumbLabel(file))]);
+
+  const topicNames = (ex.topics || []).map((s) => S.topicLabel(s, TOPIC_BY_SLUG));
+  if (topicNames.length) rows.push([bi('Grammatik', 'Grammar'), escText(topicNames.join(', '))]);
+
+  const skills = (ex.skills || []).map((s) => S.SKILL_LABELS[s]).filter(Boolean);
+  if (skills.length) {
+    rows.push([
+      bi('Fertigkeiten', 'Skills'),
+      skills.map(([de, en]) => `${escText(de)} <span class="qo-en" lang="en">/ ${escText(en)}</span>`).join(', '),
+    ]);
+  }
+
+  // `blurb` is the page's exercise headings joined with " · ". For the Abitur
+  // packs it is a single task-type label instead ("Mediation"), because those
+  // pages have no .ex-title headings to scrape — so the count comes from their
+  // markup and the label is a focus, not a list of one.
+  const parts = (ex.blurb || '').split(' · ').map((s) => s.trim()).filter(Boolean);
+  if (parts.length > 1) {
+    rows.push([bi('Aufgaben', 'Tasks'), String(parts.length) + ' — ' + escText(parts.join(' · '))]);
+  } else {
+    if (parts.length === 1) rows.push([bi('Schwerpunkt', 'Focus'), escText(parts[0])]);
+    // `class="exercise active"` on the first one, so match the class loosely.
+    const n = (html.match(/<div class="exercise\b[^"]*"\s+id="ex\d+"/gi) || []).length;
+    if (n) rows.push([bi('Aufgaben', 'Tasks'), String(n)]);
+  }
+
+  rows.push([bi('Kosten', 'Cost'), bi('kostenlos, ohne Anmeldung', 'free, no sign-up')]);
+
+  return `<!-- OVERVIEW:START — generated by scripts/build-head.js, do not edit by hand -->
+<div class="qo-box" role="note" aria-labelledby="qo-heading">
+  <h2 id="qo-heading" lang="de">Auf einen Blick <span class="qo-en" lang="en">/ At a glance</span></h2>
+  ${meta.desc ? `<p class="qo-lede">${escText(meta.desc)}</p>` : ''}
+  <dl class="qo-facts" lang="de">
+${rows.map(([dt, dd]) => `    <dt>${dt}</dt><dd>${dd}</dd>`).join('\n')}
+  </dl>
+</div>
+<!-- OVERVIEW:END -->
+`;
+}
+
+// --- visible FAQ ----------------------------------------------------------
+// Rendered from the same scripts/page-faq.js data that feeds the FAQPage JSON-LD
+// above, so the two can never disagree. Injected before </main> on the pages
+// listed there; every other page is untouched.
+const FAQ_STYLE = `<style id="eol-faq-style">
+.eol-faq{margin:2.5rem 0 0}
+.eol-faq h2{font-size:1.15rem;color:var(--blue,#1a3a5c);margin:0 0 1rem}
+.eol-faq dt{font-weight:700;color:var(--blue,#1a3a5c);margin-top:1rem}
+.eol-faq dt:first-of-type{margin-top:0}
+.eol-faq dd{margin:.3rem 0 0;padding-bottom:.9rem;border-bottom:1px dashed var(--border,#dce3ec);line-height:1.6}
+.eol-faq dd:last-child{border-bottom:none}
+@media (prefers-color-scheme:dark){
+.eol-faq h2,.eol-faq dt{color:var(--gold-lt,#f5e6b0)}
+.eol-faq dd{border-bottom-color:var(--border,#2f3d4d)}
+}
+</style>`;
+
+function faqSection(file) {
+  const faq = PAGE_FAQ[file];
+  if (!faq) return '';
+  return `<!-- FAQ:START — generated by scripts/build-head.js from scripts/page-faq.js, do not edit by hand -->
+<section class="eol-faq" lang="de" aria-labelledby="faq-heading">
+  <h2 id="faq-heading">Häufige Fragen</h2>
+  <dl>
+${faq.map((f) => `    <dt>${escText(f.q)}</dt>\n    <dd>${escText(f.a)}</dd>`).join('\n')}
+  </dl>
+</section>
+<!-- FAQ:END -->
+`;
 }
 
 const NOSCRIPT = `<!-- NOSCRIPT:START — generated by scripts/build-head.js, do not edit by hand -->
@@ -202,10 +484,48 @@ function stripBlock(html, name) {
   return html.replace(new RegExp(`[ \\t]*<!-- ${name}:START[\\s\\S]*?${name}:END -->\\n?`, 'g'), '');
 }
 
+/**
+ * Insert the overview block directly after the `.welcome-hero` div.
+ *
+ * The closing tag is found by counting nested <div>s rather than by matching
+ * `</div>` — the hero contains a `.welcome-flag` and, on 22 pages, a level-badge
+ * wrapper, so the first `</div>` is not the one we want. Returns null when the
+ * page has no hero, which is the signal to skip it.
+ */
+function insertAfterWelcomeHero(html, block) {
+  const open = html.match(/<div class="welcome-hero"[^>]*>/i);
+  if (!open) {
+    // The 16 Abitur packs have their own architecture and no welcome screen —
+    // their h1 is in the header and the content starts straight in .wrap. Land
+    // the box at the top of the main landmark instead, which is the same place
+    // on screen.
+    const wrap = html.match(/<div id="main"[^>]*class="wrap"[^>]*>\n?/i);
+    if (!wrap) return null;
+    const at = wrap.index + wrap[0].length;
+    return html.slice(0, at) + block + '\n' + html.slice(at);
+  }
+
+  let i = open.index + open[0].length;
+  let depth = 1;
+  const TAG = /<div\b[^>]*>|<\/div>/gi;
+  TAG.lastIndex = i;
+  let m;
+  while ((m = TAG.exec(html)) !== null) {
+    depth += m[0][1] === '/' ? -1 : 1;
+    if (depth === 0) {
+      const end = m.index + m[0].length;
+      // Keep the surrounding indentation tidy: the hero is followed by a blank
+      // line in every page, so land the block on its own line after it.
+      return html.slice(0, end) + '\n\n' + block.replace(/\n$/, '') + html.slice(end);
+    }
+  }
+  return null;                                   // unbalanced markup: leave it alone
+}
+
 function processFile(file) {
   const abs = path.join(ROOT, file);
   const original = fs.readFileSync(abs, 'utf8');
-  let html = ['HEAD', 'NOSCRIPT', 'SKIP'].reduce(stripBlock, original);
+  let html = ['HEAD', 'NOSCRIPT', 'SKIP', 'OVERVIEW', 'FAQ'].reduce(stripBlock, original);
 
   const headEnd = html.search(/<\/head>/i);
   if (headEnd === -1) return { file, skipped: 'no <head>' };
@@ -234,7 +554,23 @@ function processFile(file) {
     else { wantsSkip = false; noLandmark = true; }
   }
 
-  html = html.replace(/<\/head>/i, headBlock(file, html, wantsSkip) + '</head>');
+  // The overview goes in before the head block is built, so headBlock knows
+  // whether this page needs the .qo-* styles. Its own markup carries no styles,
+  // so it cannot affect supportsDark() or rendersBlankWithoutJs() below.
+  const meta = pageMeta(html);
+  const overview = overviewBlock(file, meta, html);
+  let hasOverview = false;
+  if (overview) {
+    const withBox = insertAfterWelcomeHero(html, overview);
+    if (withBox) { html = withBox; hasOverview = true; }
+  }
+
+  const faq = faqSection(file);
+  if (faq && /<\/main>/i.test(html)) {
+    html = html.replace(/<\/main>/i, faq + '</main>');
+  }
+
+  html = html.replace(/<\/head>/i, headBlock(file, html, wantsSkip, hasOverview) + '</head>');
   if (wantsSkip) html = html.replace(/(<body[^>]*>\n?)/i, (m) => m + SKIP_LINK);
 
   const needsNoscript = framework || rendersBlankWithoutJs(html);
