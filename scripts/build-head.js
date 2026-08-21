@@ -491,7 +491,18 @@ function stripBlock(html, name) {
  * `</div>` — the hero contains a `.welcome-flag` and, on 22 pages, a level-badge
  * wrapper, so the first `</div>` is not the one we want. Returns null when the
  * page has no hero, which is the signal to skip it.
+ *
+ * **Insertion must be the exact inverse of stripBlock(), or the file grows.**
+ * stripBlock eats the block plus one trailing newline and nothing else, so the
+ * block is planted immediately after an existing newline and carries its own
+ * trailing one — add a leading '\n' here and every rebuild leaves one more blank
+ * line behind, which is precisely what happened while this was being written.
  */
+function insertAt(html, at, block) {
+  if (html[at] === '\n') at += 1;                // land on the next line, not mid-line
+  return html.slice(0, at) + block + html.slice(at);
+}
+
 function insertAfterWelcomeHero(html, block) {
   const open = html.match(/<div class="welcome-hero"[^>]*>/i);
   if (!open) {
@@ -499,25 +510,18 @@ function insertAfterWelcomeHero(html, block) {
     // their h1 is in the header and the content starts straight in .wrap. Land
     // the box at the top of the main landmark instead, which is the same place
     // on screen.
-    const wrap = html.match(/<div id="main"[^>]*class="wrap"[^>]*>\n?/i);
+    const wrap = html.match(/<div id="main"[^>]*class="wrap"[^>]*>/i);
     if (!wrap) return null;
-    const at = wrap.index + wrap[0].length;
-    return html.slice(0, at) + block + '\n' + html.slice(at);
+    return insertAt(html, wrap.index + wrap[0].length, block);
   }
 
-  let i = open.index + open[0].length;
   let depth = 1;
   const TAG = /<div\b[^>]*>|<\/div>/gi;
-  TAG.lastIndex = i;
+  TAG.lastIndex = open.index + open[0].length;
   let m;
   while ((m = TAG.exec(html)) !== null) {
     depth += m[0][1] === '/' ? -1 : 1;
-    if (depth === 0) {
-      const end = m.index + m[0].length;
-      // Keep the surrounding indentation tidy: the hero is followed by a blank
-      // line in every page, so land the block on its own line after it.
-      return html.slice(0, end) + '\n\n' + block.replace(/\n$/, '') + html.slice(end);
-    }
+    if (depth === 0) return insertAt(html, m.index + m[0].length, block);
   }
   return null;                                   // unbalanced markup: leave it alone
 }

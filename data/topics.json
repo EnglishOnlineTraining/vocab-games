@@ -589,70 +589,349 @@
       "present-perfect"
     ],
     "reviewed": false,
-    "intro": "<strong>Relativsätze</strong> (<em>relative clauses</em>) geben zusätzliche Informationen über ein Nomen. Sie beginnen mit einem <strong>Relativpronomen</strong> wie <em>who</em>, <em>which</em>, <em>that</em> oder <em>whose</em>. Man benutzt sie, um zwei Sätze zu verbinden, ohne das Nomen zu wiederholen.",
+    "introH2": "Relativsätze im Englischen — worum geht es?",
+    "intro": "<strong>Relativsätze</strong> (<em>relative clauses</em>) geben zusätzliche Informationen über ein Nomen. Sie beginnen mit einem <strong>Relativpronomen</strong> wie <em>who</em>, <em>which</em>, <em>that</em> oder <em>whose</em> und stehen direkt hinter dem Wort, auf das sie sich beziehen. So verbindet man zwei Sätze, ohne das Nomen zu wiederholen: <em>I know a girl. She speaks five languages.</em> → <em>I know a girl <strong>who</strong> speaks five languages.</em>",
     "rules": [
       "<strong>who</strong> — für Personen: „the man <strong>who</strong> lives next door“.",
       "<strong>which</strong> — für Sachen und Tiere: „the book <strong>which</strong> I read“.",
-      "<strong>that</strong> — für Personen oder Sachen (nur im notwendigen/definierenden Relativsatz).",
-      "<strong>whose</strong> — für Besitz: „the girl <strong>whose</strong> dog is barking“.",
-      "<strong>where / when</strong> — für Ort und Zeit: „the town <strong>where</strong> I grew up“.",
-      "Ist das Relativpronomen das <strong>Objekt</strong>, kann es weggelassen werden: „the film (that) I saw“."
+      "<strong>that</strong> — für Personen oder Sachen, aber nur im <em>notwendigen</em> Relativsatz.",
+      "<strong>whose</strong> — für Besitz („dessen/deren“): „the girl <strong>whose</strong> dog is barking“.",
+      "<strong>where / when / why</strong> — für Ort, Zeit und Grund: „the town <strong>where</strong> I grew up“.",
+      "Ist das Relativpronomen das <strong>Objekt</strong>, darf es wegfallen: „the film (that) I saw“."
     ],
     "examples": [
       "<em>The woman <strong>who</strong> called you is my teacher.</em> (Person, Subjekt)",
       "<em>This is the phone <strong>which</strong> I bought yesterday.</em> (Sache, Objekt)",
-      "<em>That's the student <strong>whose</strong> project won the prize.</em> (Besitz)"
+      "<em>That’s the student <strong>whose</strong> project won the prize.</em> (Besitz)"
     ],
-    "practice": [
+    "sections": [
       {
-        "q": "The man ___ lives next door is a doctor.",
-        "options": [
-          "who",
-          "which",
-          "whose"
-        ],
-        "answer": "who",
-        "why": "Person als Subjekt → who (oder that)."
+        "h2": "Notwendig oder nicht? Der wichtigste Unterschied",
+        "body": "Englische Relativsätze gibt es in zwei Sorten, und fast alles Weitere hängt daran. Der <strong>notwendige</strong> Relativsatz (<em>defining</em>) sagt, <em>welche</em> Person oder Sache gemeint ist — ohne ihn versteht man den Satz nicht mehr. Der <strong>nicht notwendige</strong> (<em>non-defining</em>) liefert nur eine Zusatzinformation; man könnte ihn streichen, und der Satz bliebe vollständig.",
+        "list": [
+          "Notwendig: <em>The students <strong>who studied hard</strong> passed the exam.</em> — nur diese Schüler haben bestanden, die anderen nicht.",
+          "Nicht notwendig: <em>The students, <strong>who studied hard</strong>, passed the exam.</em> — alle haben fleißig gelernt, und alle haben bestanden.",
+          "Faustregel: Kann man den Relativsatz weglassen, ohne dass unklar wird, wer gemeint ist? Dann ist er nicht notwendig — und bekommt Kommas."
+        ]
       },
       {
-        "q": "I really like films ___ make me laugh.",
-        "options": [
-          "who",
-          "which",
-          "whose"
-        ],
-        "answer": "which",
-        "why": "Sache als Subjekt → which (oder that)."
+        "h2": "Kommas — anders als im Deutschen",
+        "body": "Das ist der Fehler Nummer eins. Im Deutschen steht vor <em>jedem</em> Relativsatz ein Komma. Im Englischen entscheidet die Bedeutung: Der notwendige Relativsatz bekommt <strong>kein</strong> Komma, der nicht notwendige wird in Kommas eingeschlossen.",
+        "list": [
+          "✗ <em>The book, which I bought yesterday, was expensive.</em> — nur richtig, wenn klar ist, welches Buch gemeint ist.",
+          "✓ <em>The book which I bought yesterday was expensive.</em> — grenzt ein: genau dieses Buch.",
+          "✓ <em>My brother, who lives in Hamburg, is a teacher.</em> — man hat nur einen Bruder, die Information ist Zusatz.",
+          "Merke: Kommas verändern hier die Aussage. Sie sind keine Frage des Geschmacks."
+        ]
       },
       {
-        "q": "That's the boy ___ dog bit me.",
-        "options": [
-          "who",
-          "which",
-          "whose"
-        ],
-        "answer": "whose",
-        "why": "Besitz („dessen Hund“) → whose."
+        "h2": "that oder which?",
+        "body": "Im notwendigen Relativsatz sind <em>that</em> und <em>which</em> (bzw. <em>who</em>) meist austauschbar; <em>that</em> klingt etwas gesprochener. Im nicht notwendigen Relativsatz — also nach einem Komma — ist <em>that</em> dagegen <strong>immer falsch</strong>.",
+        "list": [
+          "✓ <em>The car <strong>that</strong> I drive is very old.</em> (notwendig)",
+          "✓ <em>The car <strong>which</strong> I drive is very old.</em> (notwendig, etwas formeller)",
+          "✗ <em>My car, <strong>that</strong> is ten years old, still runs well.</em>",
+          "✓ <em>My car, <strong>which</strong> is ten years old, still runs well.</em>",
+          "Nach <em>all</em>, <em>everything</em>, <em>something</em> und nach Superlativen steht fast immer <em>that</em>: „<em>everything <strong>that</strong> happened</em>“."
+        ]
       },
       {
-        "q": "Edinburgh is the city ___ the festival takes place.",
-        "options": [
-          "which",
-          "where",
-          "who"
-        ],
-        "answer": "where",
-        "why": "Ort → where."
+        "h2": "Wann das Relativpronomen wegfallen darf",
+        "body": "Ist das Relativpronomen das <strong>Objekt</strong> des Relativsatzes, kann man es im notwendigen Relativsatz einfach weglassen. Ist es das <strong>Subjekt</strong>, muss es stehen bleiben. Test: Folgt direkt danach ein neues Subjekt, ist das Pronomen das Objekt und kann weg.",
+        "list": [
+          "✓ <em>The film (that) I saw last night was brilliant.</em> — danach kommt <em>I</em>, also Objekt: darf wegfallen.",
+          "✗ <em>The man lives next door is a doctor.</em> — hier ist <em>who</em> das Subjekt und muss stehen.",
+          "✓ <em>The man <strong>who</strong> lives next door is a doctor.</em>",
+          "Im nicht notwendigen Relativsatz (mit Kommas) darf das Pronomen <strong>nie</strong> wegfallen."
+        ]
       },
       {
-        "q": "The teacher ___ we met yesterday was very friendly.",
-        "options": [
-          "who",
-          "which",
-          "whose"
-        ],
-        "answer": "who",
-        "why": "Person als Objekt → who(m) oder that."
+        "h2": "whose, where, when — und die Präposition",
+        "body": "Für Besitz steht <em>whose</em>, und zwar für Personen wie für Sachen. Für Ort, Zeit und Grund gibt es <em>where</em>, <em>when</em> und <em>why</em>. Eine Präposition steht im gesprochenen Englisch hinten, im formellen Englisch vor dem Pronomen.",
+        "list": [
+          "<em>That’s the boy <strong>whose</strong> father teaches French.</em> (Person)",
+          "<em>A house <strong>whose</strong> windows are broken.</em> (auch für Sachen möglich)",
+          "<em>The year <strong>when</strong> we moved to Berlin.</em> / <em>The reason <strong>why</strong> I left.</em>",
+          "Gesprochen: <em>the girl <strong>who</strong> I spoke <strong>to</strong></em> — formell: <em>the girl <strong>to whom</strong> I spoke</em>.",
+          "Nach einer Präposition steht nie <em>that</em>: ✗ <em>the house in that I live</em> → ✓ <em>the house <strong>in which</strong> I live</em>."
+        ]
+      },
+      {
+        "h2": "Typische Fehler deutscher Lernender",
+        "body": "Fast alle Fehler kommen daher, dass man vom Deutschen aus denkt. Diese fünf lohnt es sich einzeln zu merken.",
+        "list": [
+          "<strong>Komma aus dem Deutschen übernommen.</strong> ✗ <em>The girl, who sits next to me, is called Mia.</em> → ✓ ohne Kommas, wenn der Satz sagt, <em>welches</em> Mädchen gemeint ist.",
+          "<strong>who für Sachen.</strong> ✗ <em>the book who I read</em> → ✓ <em>the book <strong>which/that</strong> I read</em>.",
+          "<strong>what statt that.</strong> „was“ heißt hier nicht <em>what</em>: ✗ <em>Everything what he said</em> → ✓ <em>Everything <strong>that</strong> he said</em>.",
+          "<strong>Doppeltes Objekt.</strong> ✗ <em>The book which I read <strong>it</strong> was good.</em> — das Relativpronomen ersetzt das Objekt schon.",
+          "<strong>that nach Komma.</strong> ✗ <em>Berlin, that is the capital, …</em> → ✓ <em>Berlin, <strong>which</strong> is the capital, …</em>"
+        ]
+      }
+    ],
+    "practiceGroups": [
+      {
+        "title": "Übung 1 — who, which oder whose?",
+        "intro": "Wähle das passende Relativpronomen. Frage dich zuerst: Person, Sache oder Besitz?",
+        "items": [
+          {
+            "q": "The man ___ lives next door is a doctor.",
+            "options": [
+              "who",
+              "which",
+              "whose"
+            ],
+            "answer": "who",
+            "why": "Person als Subjekt → who (oder that)."
+          },
+          {
+            "q": "I really like films ___ make me laugh.",
+            "options": [
+              "who",
+              "which",
+              "whose"
+            ],
+            "answer": "which",
+            "why": "Sache als Subjekt → which (oder that)."
+          },
+          {
+            "q": "That’s the boy ___ dog bit me.",
+            "options": [
+              "who",
+              "which",
+              "whose"
+            ],
+            "answer": "whose",
+            "why": "Besitz („dessen Hund“) → whose."
+          },
+          {
+            "q": "She has a friend ___ parents live in Canada.",
+            "options": [
+              "who",
+              "whose",
+              "which"
+            ],
+            "answer": "whose",
+            "why": "Auch hier Besitz: die Eltern der Freundin."
+          },
+          {
+            "q": "The teacher ___ we met yesterday was very friendly.",
+            "options": [
+              "who",
+              "which",
+              "whose"
+            ],
+            "answer": "who",
+            "why": "Person als Objekt → who(m) oder that."
+          },
+          {
+            "q": "This is the app ___ I use every day.",
+            "options": [
+              "who",
+              "which",
+              "whose"
+            ],
+            "answer": "which",
+            "why": "Sache als Objekt → which oder that."
+          }
+        ]
+      },
+      {
+        "title": "Übung 2 — notwendig oder nicht? (Kommas)",
+        "intro": "Entscheide, ob der Relativsatz eingrenzt (kein Komma) oder nur Zusatzinformation gibt (Kommas).",
+        "items": [
+          {
+            "q": "My sister ___ works in London. (Ich habe nur eine Schwester.)",
+            "options": [
+              ", who",
+              "who",
+              "that"
+            ],
+            "answer": ", who",
+            "why": "Nur eine Schwester — der Satz grenzt nichts ein, also Kommas und who."
+          },
+          {
+            "q": "The students ___ finished early could go home. (nur diese Schüler)",
+            "options": [
+              "who",
+              ", who",
+              ", that"
+            ],
+            "answer": "who",
+            "why": "Der Satz sagt, welche Schüler gemeint sind → notwendig, kein Komma."
+          },
+          {
+            "q": "Berlin, ___ is the capital of Germany, has 3.8 million people.",
+            "options": [
+              "which",
+              "that",
+              "what"
+            ],
+            "answer": "which",
+            "why": "Nach einem Komma steht nie that — nicht notwendiger Relativsatz."
+          },
+          {
+            "q": "Is that the shop ___ sells second-hand books?",
+            "options": [
+              "that",
+              ", which",
+              ", that"
+            ],
+            "answer": "that",
+            "why": "Grenzt ein, welcher Laden gemeint ist → notwendig, kein Komma."
+          },
+          {
+            "q": "Our teacher, ___ has taught here for 20 years, is retiring.",
+            "options": [
+              "who",
+              "that",
+              "which"
+            ],
+            "answer": "who",
+            "why": "Zusatzinformation über eine Person → Kommas und who, nie that."
+          }
+        ]
+      },
+      {
+        "title": "Übung 3 — Darf das Pronomen wegfallen?",
+        "intro": "Ist das Relativpronomen Objekt, kann es weg. Ist es Subjekt, muss es bleiben.",
+        "items": [
+          {
+            "q": "The film ___ we watched was too long.",
+            "options": [
+              "— (nichts)",
+              "who",
+              "whose"
+            ],
+            "answer": "— (nichts)",
+            "why": "Objekt (danach kommt „we“) → das Pronomen darf wegfallen."
+          },
+          {
+            "q": "The bus ___ goes to the airport leaves at six.",
+            "options": [
+              "that",
+              "— (nichts)",
+              "whose"
+            ],
+            "answer": "that",
+            "why": "Subjekt des Relativsatzes → es muss stehen bleiben."
+          },
+          {
+            "q": "The people ___ I met were very kind.",
+            "options": [
+              "— (nichts)",
+              "which",
+              "whose"
+            ],
+            "answer": "— (nichts)",
+            "why": "Objekt (danach kommt „I“) → kann wegfallen."
+          },
+          {
+            "q": "My uncle, ___ lives in Wales, is coming to visit.",
+            "options": [
+              "who",
+              "— (nichts)",
+              "that"
+            ],
+            "answer": "who",
+            "why": "Im nicht notwendigen Relativsatz darf das Pronomen nie wegfallen."
+          },
+          {
+            "q": "Everything ___ he said was true.",
+            "options": [
+              "that",
+              "what",
+              "which"
+            ],
+            "answer": "that",
+            "why": "Nach everything/all/something steht that — nie what."
+          }
+        ]
+      },
+      {
+        "title": "Übung 4 — where, when und Präpositionen",
+        "intro": "Für Ort, Zeit und Grund gibt es eigene Wörter. Nach einer Präposition steht nie <em>that</em>.",
+        "items": [
+          {
+            "q": "Edinburgh is the city ___ the festival takes place.",
+            "options": [
+              "where",
+              "which",
+              "who"
+            ],
+            "answer": "where",
+            "why": "Ort → where."
+          },
+          {
+            "q": "I still remember the day ___ we first met.",
+            "options": [
+              "when",
+              "which",
+              "where"
+            ],
+            "answer": "when",
+            "why": "Zeit → when."
+          },
+          {
+            "q": "That’s the reason ___ I called you.",
+            "options": [
+              "why",
+              "where",
+              "whose"
+            ],
+            "answer": "why",
+            "why": "Grund → why."
+          },
+          {
+            "q": "This is the house ___ which I grew up.",
+            "options": [
+              "in",
+              "on",
+              "at"
+            ],
+            "answer": "in",
+            "why": "Man wächst „in einem Haus“ auf: in which. Nach einer Präposition nie that."
+          },
+          {
+            "q": "She is the colleague ___ whom I share an office.",
+            "options": [
+              "with",
+              "by",
+              "of"
+            ],
+            "answer": "with",
+            "why": "Ein Büro teilt man „with“ jemandem: with whom (formell)."
+          }
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wann benutzt man who, which und that?",
+        "a": "<strong>who</strong> steht für Personen, <strong>which</strong> für Sachen und Tiere, <strong>that</strong> für beides — aber nur im notwendigen Relativsatz, also ohne Komma. Nach einem Komma ist <em>that</em> immer falsch."
+      },
+      {
+        "q": "Wann steht im englischen Relativsatz ein Komma?",
+        "a": "Nur beim <strong>nicht notwendigen</strong> Relativsatz, der eine Zusatzinformation liefert: <em>My brother, who lives in Hamburg, is a teacher.</em> Grenzt der Relativsatz dagegen ein, <em>welche</em> Person oder Sache gemeint ist, steht <strong>kein</strong> Komma: <em>The man who lives next door is a doctor.</em> Anders als im Deutschen ändert das Komma hier die Bedeutung."
+      },
+      {
+        "q": "Was ist der Unterschied zwischen defining und non-defining relative clauses?",
+        "a": "Der <strong>defining</strong> (notwendige) Relativsatz sagt, welche Person oder Sache gemeint ist — streicht man ihn, wird der Satz unklar. Der <strong>non-defining</strong> (nicht notwendige) liefert nur eine Zusatzinformation und lässt sich weglassen. Nur der zweite steht in Kommas, und nur im ersten sind <em>that</em> und das Weglassen des Pronomens erlaubt."
+      },
+      {
+        "q": "Wann kann man das Relativpronomen weglassen?",
+        "a": "Wenn es das <strong>Objekt</strong> eines notwendigen Relativsatzes ist: <em>the film (that) I saw</em>. Ist es das <strong>Subjekt</strong>, muss es stehen bleiben: <em>the man who lives next door</em>. Test: Folgt direkt danach ein neues Subjekt, darf das Pronomen weg. Im nicht notwendigen Relativsatz darf es nie wegfallen."
+      },
+      {
+        "q": "Heißt es „everything what“ oder „everything that“?",
+        "a": "<strong>everything that</strong>. Das deutsche „alles, <em>was</em> …“ verführt zu <em>what</em>, aber im Englischen steht nach <em>everything</em>, <em>all</em>, <em>something</em>, <em>nothing</em> und nach Superlativen <em>that</em>: <em>Everything <strong>that</strong> he said was true.</em>"
+      },
+      {
+        "q": "Wofür benutzt man whose?",
+        "a": "Für Besitz — es entspricht dem deutschen „dessen“ und „deren“: <em>the girl <strong>whose</strong> dog is barking</em>. Es steht für Personen und, seltener, auch für Sachen: <em>a house <strong>whose</strong> windows are broken</em>. Nicht mit <em>who’s</em> (= who is) verwechseln."
+      },
+      {
+        "q": "Wo steht die Präposition im Relativsatz?",
+        "a": "Im normalen gesprochenen Englisch hinten: <em>the girl <strong>who</strong> I spoke <strong>to</strong></em>. Formell rückt sie vor das Pronomen, und dann steht <em>whom</em> bzw. <em>which</em>: <em>the girl <strong>to whom</strong> I spoke</em>. Nach einer Präposition ist <em>that</em> nie möglich."
       }
     ]
   },

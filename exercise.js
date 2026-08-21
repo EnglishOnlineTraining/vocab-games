@@ -1101,6 +1101,10 @@ function eolCrumbLabel() {
   if (/^uni-/.test(f)) return 'Universität';
   if (/^it-/.test(f))  return 'IT English';
   if (/^be-/.test(f))  return 'Business English';
+  // Without this the three gr-* pages fell through to the default and rendered
+  // "Übungen › Übungen › …". Kept in step with crumbLabel() in scripts/schema.js,
+  // which builds the BreadcrumbList markup from the same prefixes.
+  if (/^gr-/.test(f))  return 'Grammatik';
   if (/^quiz-/.test(f)) return 'Quiz';
   return 'Übungen';
 }
