@@ -13,7 +13,12 @@
  *      falling apart when someone edits one emitter and not the other;
  *   4. an FAQPage's questions and answers really appear in the page's own body,
  *      so the markup can never claim an answer the reader is not shown;
- *   5. every url/@id points at this site.
+ *   5. every url/@id points at this site;
+ *   6. every @type is one this repo means to emit (see KNOWN_TYPES).
+ *
+ * What it does NOT check is property names against the real schema.org
+ * vocabulary — schema.org and validator.schema.org are both blocked from the
+ * build environment, so that step stays a manual one before a release.
  *
  * Run: node scripts/validate-schema.js
  * Exits 1 on the first page with errors (all errors are printed first).
@@ -24,6 +29,24 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 const HOSTS = ['https://activities.englishonline.training', 'https://englishonline.training'];
+
+/**
+ * Every schema.org type this repo means to emit.
+ *
+ * A closed list rather than a check against the real vocabulary, because
+ * schema.org and validator.schema.org are both unreachable from the build
+ * environment. It cannot tell you a property name is wrong — it can tell you a
+ * type appeared that nobody decided to emit, which is the failure a generator
+ * change actually produces. Add to it deliberately.
+ */
+const KNOWN_TYPES = new Set([
+  'Person', 'EducationalOrganization', 'LocalBusiness', 'Organization',
+  'PostalAddress', 'Country', 'AdministrativeArea', 'EducationalOccupationalCredential',
+  'WebSite', 'WebPage', 'CollectionPage', 'Course', 'LearningResource',
+  'ItemList', 'ListItem', 'BreadcrumbList',
+  'FAQPage', 'Question', 'Answer',
+  'DefinedTerm', 'DefinedTermSet', 'AlignmentObject',
+]);
 
 const files = [
   ...fs.readdirSync(ROOT).filter((f) => f.endsWith('.html')),
@@ -121,6 +144,9 @@ for (const file of files) {
     }
 
     for (const node of seen) {
+      for (const t of [].concat(node['@type'])) {
+        if (!KNOWN_TYPES.has(t)) err(`unexpected @type: ${t}`);
+      }
       const url = node.url || node['@id'];
       if (typeof url === 'string' && /^https?:/.test(url) && !HOSTS.some((h) => url.startsWith(h))) {
         // Deliberate outbound references — the CEFR definition set — are fine.
