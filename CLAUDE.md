@@ -557,6 +557,37 @@ background and the full findings are in `docs/build-graph-plan.md`.
 in `pipeline.js`): their inputs change roughly never, `build-og-card` needs Playwright, and both
 commit their output.
 
+### 5g. `llms.txt` + `llms-full.txt` — `scripts/build-llms-txt.js` (added 2026-08-21)
+
+Two generated files at the repo root, served at `activities.englishonline.training/llms.txt` and
+`/llms-full.txt`, following the [llms.txt convention](https://llmstxt.org): an H1, a blockquote
+summary, then Markdown sections, meant to give AI assistants/crawlers a structured, accurate
+description of the site instead of leaving them to scrape the rendered pages.
+
+- **`llms.txt`** — curated. The bio/services/audiences/pedagogy/booking prose (Shaun, 2026-08-21)
+  is the only hand-maintained part of the file, kept as constants inside the script — never edit
+  the committed `llms.txt` directly, edit the script and rerun the build. Everything that
+  describes the corpus — the "Explore the corpus" section's hub links and per-category exercise
+  counts, and the `Last updated` date — is generated from `data/exercises.json` +
+  `data/topics.json` at build time, the same discipline CLAUDE.md already asks for elsewhere on
+  this site (§ "Filterable exercise index", § "Root landing page") after the root page's stats and
+  the Kurssammlungen block both drifted for weeks by being hand-typed.
+- **`llms-full.txt`** — fully generated, no authored prose: every public URL from `sitemap.xml`
+  (not a second hardcoded copy of `topic-pages`' `EXTRA_PUBLIC_PAGES` list — one source of truth
+  for "every public URL"), grouped by category, annotated with title + one-line blurb where the
+  URL matches an entry in `data/exercises.json` or `data/topics.json`.
+- Node `llms` in `scripts/pipeline.js` needs `exercise-data` and `topic-pages` (for `sitemap.xml`)
+  and outputs `llms.txt`/`llms-full.txt`. No edge to `head` — `build-head.js` only globs `*.html`
+  and `themen/*.html`, never `.txt` files, so there's no write-after-write overlap to guard.
+- **`englishonline.training/llms.txt` (the main WordPress domain) does not exist yet and is
+  deliberately out of scope.** Checked live via the WordPress MCP tools (2026-08-21): the site
+  runs on WP.com's `simple` platform even on the Premium plan — SFTP/SSH/WP-CLI/Git deployments
+  (what raw-file hosting at a domain root needs) only unlock on the Business tier. A WordPress
+  page can't occupy the exact `/llms.txt` path either way (WordPress always wraps content in the
+  theme at a page slug). Until the site moves to Business/Atomic hosting, this repo's copy is the
+  only one — `llms.txt`'s own "Important notes for AI assistants" section says so, so an assistant
+  that only finds this file still gets an accurate picture of the whole platform.
+
 ---
 
 ### 6. Shared framework — `exercise.js` (standardised 2026-07-17)

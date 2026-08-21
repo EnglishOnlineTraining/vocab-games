@@ -74,6 +74,16 @@ const NODES = [
     outputs: ['themen/*.html', 'themen/themen.css', 'sitemap.xml', 'robots.txt'],
   },
   {
+    id: 'llms',
+    run: 'scripts/build-llms-txt.js',
+    // Reads sitemap.xml as the authoritative URL list (rather than a second
+    // hardcoded copy of topic-pages' EXTRA_PUBLIC_PAGES), so it depends on
+    // topic-pages, not just exercise-data.
+    needs: ['exercise-data', 'topic-pages'],
+    inputs: ['data/exercises.json', 'data/topics.json', 'sitemap.xml'],
+    outputs: ['llms.txt', 'llms-full.txt'],
+  },
+  {
     id: 'head',
     run: 'scripts/build-head.js',
     // The barrier. Every generator above rewrites whole files and drops the
