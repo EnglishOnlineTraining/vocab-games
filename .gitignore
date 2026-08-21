@@ -1,1 +1,21 @@
+# Dependencies (generator scripts run under Node)
 node_modules/
+package-lock.json
+
+# Environment / secrets — never commit
+.env
+.env.*
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Editor / tooling
+.idea/
+.vscode/
+*.swp
+*~
+
+# Logs and scratch output
+*.log
+/tmp/
