@@ -47,6 +47,10 @@ const topics = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/topics.json'), '
 const EX_BY_FILE = Object.fromEntries(exercises.map((e) => [e.file.toLowerCase(), e]));
 const TOPIC_BY_SLUG = Object.fromEntries(topics.map((t) => [t.slug, t]));
 
+// Reverse index for the Related Exercises block: topic slug -> exercises tagged with it.
+const TOPIC_EX = {};
+exercises.forEach((e) => (e.topics || []).forEach((t) => (TOPIC_EX[t] = TOPIC_EX[t] || []).push(e)));
+
 // Pages that render blank without JavaScript: everything on the shared framework
 // (.step is display:none until showStep runs) plus the standalone interactive
 // pages, which hide .screen / .exercise / .game-panel the same way.
@@ -283,7 +287,7 @@ function pageMeta(html) {
   return { lang, title, desc, canonical };
 }
 
-function headBlock(file, html, withSkipStyle, withOverviewStyle, withTipStyle) {
+function headBlock(file, html, withSkipStyle, withOverviewStyle, withTipStyle, withRelatedStyle) {
   const rel = file.includes('/') ? '../' : '';
   const { lang, title, desc, canonical } = pageMeta(html);
 
@@ -322,6 +326,7 @@ function headBlock(file, html, withSkipStyle, withOverviewStyle, withTipStyle) {
   );
   if (withSkipStyle) lines.push(SKIP_STYLE);
   if (withOverviewStyle) lines.push(QO_STYLE);
+  if (withRelatedStyle) lines.push(RELATED_STYLE);
   if (withTipStyle) lines.push(TIP_STYLE);
   if (PAGE_FAQ[file]) lines.push(FAQ_STYLE);
   const schema = schemaBlock(file, { lang, title, desc, canonical });
@@ -523,6 +528,120 @@ ${rows.map(([dt, dd]) => `    <dt>${dt}</dt><dd>${dd}</dd>`).join('\n')}
 `;
 }
 
+// --- Related Exercises cross-links -----------------------------------------
+//
+// "What to try next": up to 3 easier + 3 harder exercises sharing a tagged
+// grammar topic, plus a link to that topic's page on themen/ if it has one.
+// Entirely generated from data/exercises.json + data/topics.json's existing
+// related[] — no per-page authoring, so it stays accurate as exercises are
+// added. Lives right after the overview box for the same reason the overview
+// box does: #step-0 is the only part of these pages a non-JS crawler ever
+// sees, so this is also the only place the links are guaranteed crawlable.
+//
+// "Easier"/"harder" is necessarily a rough proxy — CEFR bands the corpus
+// actually uses are too coarse to rank within a topic, so this ranks by the
+// year-group ladder the school years already imply, with the post-school
+// tracks (business/IT/university/Abitur) placed above it and MSA (a Year 10
+// oberschule-level exam) placed alongside Years 9-10. `grammar`/`quiz` pages
+// (the gr-*/quiz-* standalone pages) have no real level, so they default to
+// the middle of the ladder rather than skewing the split either way.
+const TOPIC_DIFFICULTY_RANK = {
+  7: 1, 8: 2, 9: 3, 10: 4, msa: 4, business: 5, it: 5, uni: 5, abitur: 6,
+};
+function difficultyRank(entry) {
+  const base = TOPIC_DIFFICULTY_RANK[entry.year] !== undefined ? TOPIC_DIFFICULTY_RANK[entry.year] : 3;
+  // Gymnasium runs roughly one CEFR half-step ahead of Oberschule in the same
+  // year (CLAUDE.md: 8g ~B1 vs 8c ~A2, 10g ~B2/C1 vs 10c ~B1/B2), so it breaks
+  // ties within a year instead of leaving same-year pages unordered.
+  return base + (entry.schoolType === 'gymnasium' ? 0.5 : 0);
+}
+
+const RELATED_STYLE = `<style id="eol-related-style">
+.related-ex{margin:1.5rem 0 0;padding:1rem 1.2rem;background:var(--card,#fff);border:1.5px solid var(--border,#dce3ec);border-radius:10px;font-size:.88rem;color:var(--text,#1d2b3a)}
+.related-ex h2{font-size:.95rem;font-weight:700;margin:0 0 .75rem;color:var(--blue,#1a3a5c)}
+.related-ex h2 .related-ex-en{font-weight:600;color:var(--muted,#6b7a8d)}
+.related-ex-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.related-ex-col h3{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--muted,#6b7a8d);margin:0 0 .4rem}
+.related-ex-col h3 .related-ex-en{font-weight:600}
+.related-ex-col ul{margin:0;padding-left:1.1rem}
+.related-ex-col li{margin:0 0 .3rem}
+.related-ex-topic{margin:.9rem 0 0;padding-top:.75rem;border-top:1px dashed var(--border,#dce3ec)}
+@media(max-width:480px){.related-ex-grid{grid-template-columns:1fr}}
+@media (prefers-color-scheme:dark){
+.related-ex{background:var(--card,#1c2733);border-color:var(--border,#2f3d4d);color:var(--text,#e6edf5)}
+.related-ex h2{color:var(--gold-lt,#f5e6b0)}
+.related-ex-topic{border-top-color:var(--border,#2f3d4d)}
+}
+</style>`;
+
+function relatedBlock(file) {
+  const ex = EX_BY_FILE[file.toLowerCase()];
+  if (!ex || !ex.topics || !ex.topics.length) return '';
+
+  const seen = new Set([file.toLowerCase()]);
+  const candidates = [];
+  ex.topics.forEach((t) => {
+    (TOPIC_EX[t] || []).forEach((c) => {
+      const k = c.file.toLowerCase();
+      if (!seen.has(k)) { seen.add(k); candidates.push(c); }
+    });
+  });
+
+  const myRank = difficultyRank(ex);
+  const easier = [];
+  const harder = [];
+  candidates.forEach((c) => {
+    const r = difficultyRank(c);
+    if (r < myRank) easier.push(c);
+    else if (r > myRank) harder.push(c);
+    // Same rank as this page: file it wherever the split needs it most, so a
+    // topic whose exercises cluster at one level still fills both columns.
+    else (easier.length <= harder.length ? easier : harder).push(c);
+  });
+  easier.sort((a, b) => difficultyRank(b) - difficultyRank(a));
+  harder.sort((a, b) => difficultyRank(a) - difficultyRank(b));
+  const easierPick = easier.slice(0, 3);
+  const harderPick = harder.slice(0, 3);
+
+  const primaryTopic = TOPIC_BY_SLUG[ex.topics[0]];
+  const relSlug = primaryTopic ? (primaryTopic.related || []).find((s) => TOPIC_BY_SLUG[s]) : null;
+  const topicTarget = relSlug ? TOPIC_BY_SLUG[relSlug] : null;
+
+  if (!easierPick.length && !harderPick.length && !topicTarget) return '';
+
+  const rel = file.includes('/') ? '../' : '';
+  const item = (c) => `      <li><a href="${rel}${esc(c.file)}">${escText(c.title)}</a></li>`;
+  const cols = [];
+  if (easierPick.length) {
+    cols.push(`    <div class="related-ex-col">
+      <h3>Zum Aufwärmen <span class="related-ex-en">/ Warm-up</span></h3>
+      <ul>
+${easierPick.map(item).join('\n')}
+      </ul>
+    </div>`);
+  }
+  if (harderPick.length) {
+    cols.push(`    <div class="related-ex-col">
+      <h3>Nächste Herausforderung <span class="related-ex-en">/ Next challenge</span></h3>
+      <ul>
+${harderPick.map(item).join('\n')}
+      </ul>
+    </div>`);
+  }
+
+  const topicHtml = topicTarget
+    ? `  <p class="related-ex-topic">Grammatik nachlesen <span class="related-ex-en">/ Review the grammar</span>: `
+      + `<a href="${rel}themen/${esc(relSlug)}.html">${escText(topicTarget.de)} <span class="related-ex-en">/ ${escText(topicTarget.en)}</span></a></p>\n`
+    : '';
+
+  return `<!-- RELATED:START — generated by scripts/build-head.js, do not edit by hand -->
+<div class="related-ex" role="note" aria-labelledby="related-ex-heading">
+  <h2 id="related-ex-heading">Weiterüben <span class="related-ex-en">/ Keep practising</span></h2>
+${cols.length ? `  <div class="related-ex-grid">\n${cols.join('\n')}\n  </div>\n` : ''}${topicHtml}</div>
+<!-- RELATED:END -->
+`;
+}
+
 // --- visible FAQ ----------------------------------------------------------
 // Rendered from the same scripts/page-faq.js data that feeds the FAQPage JSON-LD
 // above, so the two can never disagree. Injected before </main> on the pages
@@ -625,7 +744,7 @@ function insertAfterWelcomeHero(html, block) {
 function processFile(file) {
   const abs = path.join(ROOT, file);
   const original = fs.readFileSync(abs, 'utf8');
-  let html = ['HEAD', 'NOSCRIPT', 'SKIP', 'OVERVIEW', 'TIP', 'FAQ'].reduce(stripBlock, original);
+  let html = ['HEAD', 'NOSCRIPT', 'SKIP', 'OVERVIEW', 'RELATED', 'TIP', 'FAQ'].reduce(stripBlock, original);
 
   const headEnd = html.search(/<\/head>/i);
   if (headEnd === -1) return { file, skipped: 'no <head>' };
@@ -659,10 +778,13 @@ function processFile(file) {
   // so it cannot affect supportsDark() or rendersBlankWithoutJs() below.
   const meta = pageMeta(html);
   const overview = overviewBlock(file, meta, html);
+  const related = relatedBlock(file);
   let hasOverview = false;
-  if (overview) {
-    const withBox = insertAfterWelcomeHero(html, overview);
-    if (withBox) { html = withBox; hasOverview = true; }
+  let hasRelated = false;
+  const heroBlock = (overview || '') + (related || '');
+  if (heroBlock) {
+    const withBox = insertAfterWelcomeHero(html, heroBlock);
+    if (withBox) { html = withBox; hasOverview = !!overview; hasRelated = !!related; }
   }
 
   const tip = tipBlock(file, html, meta.lang);
@@ -674,7 +796,7 @@ function processFile(file) {
     html = html.replace(/<\/main>/i, faq + '</main>');
   }
 
-  html = html.replace(/<\/head>/i, headBlock(file, html, wantsSkip, hasOverview, hasTip) + '</head>');
+  html = html.replace(/<\/head>/i, headBlock(file, html, wantsSkip, hasOverview, hasTip, hasRelated) + '</head>');
   if (wantsSkip) html = html.replace(/(<body[^>]*>\n?)/i, (m) => m + SKIP_LINK);
 
   const needsNoscript = framework || rendersBlankWithoutJs(html);
