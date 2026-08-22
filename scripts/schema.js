@@ -334,6 +334,10 @@ function learningResource(file, meta, ex, topicsBySlug, hubName) {
     publisher: { '@id': ORG_ID },
     provider: { '@id': ORG_ID },
     isPartOf: hubNode ? [{ '@id': WEBSITE_ID }, hubNode] : { '@id': WEBSITE_ID },
+    // The Quick Overview box and the page's own headings are the only static
+    // content a voice assistant can actually read — everything else is behind
+    // .step{display:none} until JavaScript runs.
+    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.qo-box', 'h2', 'h3'] },
   };
 
   if (level) node.educationalLevel = cefrNode(level);
@@ -414,6 +418,7 @@ function hubPage(file, meta, items, opts = {}) {
     publisher: { '@id': ORG_ID },
     author: { '@id': PERSON_ID },
     isAccessibleForFree: true,
+    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.qo-box', 'h2', 'h3'] },
   };
   if (items.length) {
     collection.mainEntity = {
