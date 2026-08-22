@@ -283,7 +283,7 @@ function pageMeta(html) {
   return { lang, title, desc, canonical };
 }
 
-function headBlock(file, html, withSkipStyle, withOverviewStyle) {
+function headBlock(file, html, withSkipStyle, withOverviewStyle, withTipStyle) {
   const rel = file.includes('/') ? '../' : '';
   const { lang, title, desc, canonical } = pageMeta(html);
 
@@ -322,6 +322,7 @@ function headBlock(file, html, withSkipStyle, withOverviewStyle) {
   );
   if (withSkipStyle) lines.push(SKIP_STYLE);
   if (withOverviewStyle) lines.push(QO_STYLE);
+  if (withTipStyle) lines.push(TIP_STYLE);
   if (PAGE_FAQ[file]) lines.push(FAQ_STYLE);
   const schema = schemaBlock(file, { lang, title, desc, canonical });
   if (schema) lines.push(schema);
@@ -376,6 +377,92 @@ const QO_STYLE = `<style id="eol-qo-style">
 .qo-box h2 .qo-en,.qo-facts dt .qo-en{color:var(--muted,#9fb0c3)}
 }
 </style>`;
+
+// --- Exam Tip boxes --------------------------------------------------------
+//
+// One tactical, exam-technique tip per exercise family, inserted once inside
+// the first exercise/step — not the welcome screen, because a tip is only
+// useful once the student is actually doing the task. Deliberately distinct
+// from the `<details class="guide">` reference blocks already on the Abitur
+// packs: those are rules and vocabulary to look up mid-task; this is a single
+// piece of exam-day strategy a student reads once, on the way in.
+//
+// Keyed by filename prefix rather than per-page, because the families that
+// share a prefix (the 20 msa-c-* units, the 4 packs per Abitur task type)
+// share one exam format and one genuine piece of advice — writing 24 near-
+// duplicate tips would be padding, not content.
+const TIP_STYLE = `<style id="eol-tip-style">
+.exam-tip{background:var(--card,#fff);border:1px solid var(--border,#dce3ec);border-left:4px solid var(--accent,var(--gold,#c9a227));border-radius:8px;padding:.7rem 1rem;margin:0 0 1.2rem;font-size:.88rem;line-height:1.5;color:var(--text,#1d2b3a)}
+.exam-tip-label{font-weight:700;color:var(--accent-dark,var(--blue,#1a3a5c));margin-right:.3rem}
+.exam-tip-label .exam-tip-en{font-weight:600;color:var(--muted,#6b7a8d)}
+@media (prefers-color-scheme:dark){
+.exam-tip{background:var(--card,#1c2733);border-color:var(--border,#2f3d4d);color:var(--text,#e6edf5)}
+.exam-tip-label{color:var(--accent-dark,var(--gold-lt,#f5e6b0))}
+.exam-tip-label .exam-tip-en{color:var(--muted,#9fb0c3)}
+}
+</style>`;
+
+const TIP_FAMILIES = [
+  {
+    match: /^msa-c-/,
+    // First `.ex-subtitle` in the doc is always Exercise A's, in `#step-1`.
+    anchor: /<p class="ex-subtitle">[\s\S]*?<\/p>/,
+    text: 'In the real exam you hear each recording exactly twice — use the first '
+      + 'play to get the general gist, then the second to fill in exact details, '
+      + 'rather than trying to catch everything at once.',
+  },
+  {
+    match: /^abitur-mediation-/,
+    // First `.instructions` in the doc is always ex1's — the packs have no
+    // step-gating, so `.exercise.active` (ex1) is simply the first one written.
+    anchor: /<p class="instructions">[\s\S]*?<\/p>/,
+    text: 'Skim the whole German text and note what the task actually needs before '
+      + 'you write a single English sentence — mediation loses points for '
+      + 'including content irrelevant to the target reader, not for leaving it out.',
+  },
+  {
+    match: /^abitur-text-analysis-/,
+    anchor: /<p class="instructions">[\s\S]*?<\/p>/,
+    text: 'Never name a device without saying what it does to the reader in that '
+      + 'sentence — "the text uses a metaphor" earns nothing on its own; naming '
+      + 'the effect on the audience is what the mark scheme actually rewards.',
+  },
+  {
+    match: /^abitur-argumentative-writing-/,
+    anchor: /<p class="instructions">[\s\S]*?<\/p>/,
+    text: 'List your "for" and "against" points before you decide your own '
+      + 'opinion — starting from a conclusion tends to produce a one-sided essay, '
+      + 'which examiners mark down as unbalanced.',
+  },
+  {
+    match: /^abitur-writing-summaries-/,
+    anchor: /<p class="instructions">[\s\S]*?<\/p>/,
+    text: 'Check every sentence you write for a reporting verb like "explains", '
+      + '"argues" or "shows" — a summary sentence with none is usually the '
+      + 'original text lightly reworded, which loses marks.',
+  },
+];
+
+function tipFamilyFor(file) {
+  const base = file.includes('/') ? file.split('/').pop() : file;
+  return TIP_FAMILIES.find((f) => f.match.test(base)) || null;
+}
+
+/** The Exam Tip block for one page, or null when it has no family / no anchor. */
+function tipBlock(file, html, lang) {
+  const family = tipFamilyFor(file);
+  if (!family) return null;
+  const anchorMatch = html.match(family.anchor);
+  if (!anchorMatch) return null;
+
+  const de = (lang || 'en').toLowerCase().startsWith('de');
+  const label = de ? `Prüfungstipp <span class="exam-tip-en">/ Exam tip</span>` : 'Exam tip';
+  const markup = `<!-- TIP:START — generated by scripts/build-head.js, do not edit by hand -->
+<div class="exam-tip"><span class="exam-tip-label">💡 ${label}:</span> <span class="exam-tip-text">${escText(family.text)}</span></div>
+<!-- TIP:END -->
+`;
+  return { at: anchorMatch.index + anchorMatch[0].length, markup };
+}
 
 /** "Grammatik / Grammar" style bilingual label. */
 function bi(de, en) {
@@ -538,7 +625,7 @@ function insertAfterWelcomeHero(html, block) {
 function processFile(file) {
   const abs = path.join(ROOT, file);
   const original = fs.readFileSync(abs, 'utf8');
-  let html = ['HEAD', 'NOSCRIPT', 'SKIP', 'OVERVIEW', 'FAQ'].reduce(stripBlock, original);
+  let html = ['HEAD', 'NOSCRIPT', 'SKIP', 'OVERVIEW', 'TIP', 'FAQ'].reduce(stripBlock, original);
 
   const headEnd = html.search(/<\/head>/i);
   if (headEnd === -1) return { file, skipped: 'no <head>' };
@@ -578,12 +665,16 @@ function processFile(file) {
     if (withBox) { html = withBox; hasOverview = true; }
   }
 
+  const tip = tipBlock(file, html, meta.lang);
+  let hasTip = false;
+  if (tip) { html = insertAt(html, tip.at, tip.markup); hasTip = true; }
+
   const faq = faqSection(file, meta.lang);
   if (faq && /<\/main>/i.test(html)) {
     html = html.replace(/<\/main>/i, faq + '</main>');
   }
 
-  html = html.replace(/<\/head>/i, headBlock(file, html, wantsSkip, hasOverview) + '</head>');
+  html = html.replace(/<\/head>/i, headBlock(file, html, wantsSkip, hasOverview, hasTip) + '</head>');
   if (wantsSkip) html = html.replace(/(<body[^>]*>\n?)/i, (m) => m + SKIP_LINK);
 
   const needsNoscript = framework || rendersBlankWithoutJs(html);
