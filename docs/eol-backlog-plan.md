@@ -7,6 +7,11 @@ Owners: **CC** = Claude Code (repo build + WordPress.com MCP); **Shaun** = decis
 - The referenced specs (`eol-wordpress-claude-code-plan.md §B2`, `…-content-audit.md`,
   `…-ux-improvements-brief.md`) are **not in the repo** — Shaun must paste `§B2`/T4 detail.
 - **WordPress.com MCP** is available (site 65893384) for page reads/edits/parent changes.
+  **Re-verified 2026-08-22:** `wpcom-user-sites` lists the site (`englishonline.training`,
+  platform `atomic`, `mcp_access.status: "available"`) and `site.settings.get` returns live data
+  (admin email, timezone, site name) — the connection is healthy, no re-auth needed. The other two
+  sites on the account (`trezisetime.wordpress.com`, `britinbochum.wordpress.com`) remain
+  MCP-unavailable (`wpcom_paid_plan_required`) — expected, unrelated to this project.
 - Crowdsignal `survey.fm` embeds (T1) and Quizlet (T2) are external — reachable via WebFetch /
   headless Chromium, or a Shaun export if JS-rendered.
 - Old-domain images (`englishforgermanspeakers.wordpress.com`) on page 460 and maybe others.
