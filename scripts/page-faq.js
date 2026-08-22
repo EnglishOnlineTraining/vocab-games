@@ -1,6 +1,6 @@
 /**
- * page-faq.js — the "Häufige Fragen" content for the two hubs whose job is to
- * answer exactly these questions.
+ * page-faq.js — the FAQ content for the hub pages whose job is to answer
+ * exactly these questions.
  *
  * One source, two consumers: scripts/build-head.js renders it as a visible
  * <section> inside an FAQ:START/FAQ:END block on the page **and** as the
@@ -9,7 +9,11 @@
  * answer is markup spam, and would drift the moment either half was edited alone.
  *
  * Answers are plain text (they are re-used verbatim inside JSON), so no markup
- * here. German, because both pages target German search queries.
+ * here. Most entries are German, because those pages target German search
+ * queries; business-activities.html and it-activities.html are English,
+ * matching those two pages' own language (see faqSection() in build-head.js,
+ * which picks the heading text and lang attribute from the page's own
+ * <html lang> rather than assuming German).
  */
 
 module.exports = {
@@ -211,6 +215,65 @@ module.exports = {
       q: 'Wie lang muss die vollständige Zusammenfassung sein?',
       a: 'In den Übungspaketen dieser Seite sind 100–120 Wörter für den letzten Schritt vorgegeben — '
         + 'ähnlich wie im echten Abitur, wo die Wortangabe im Aufgabentext steht.',
+    },
+  ],
+
+  'business-activities.html': [
+    {
+      q: 'Are these Business English exercises free?',
+      a: 'Yes, all 18 exercises are free and need no sign-up. Use "Just practise" on any exercise to '
+        + 'work through it without entering a name — you still get instant feedback and a score.',
+    },
+    {
+      q: 'Who are these exercises for?',
+      a: 'Adult learners and professionals who want to practise workplace English — writing emails, '
+        + 'running meetings, negotiating, presenting, or reading a business case study and responding to '
+        + 'it in writing. No prior business-English course is required.',
+    },
+    {
+      q: 'Are the exercises based on real business situations?',
+      a: 'Several are: the Mercedes exercise works through a real change-management case, and Eurofiber '
+        + 'Online is built around an actual internal-communications scenario at a fibre-network provider, '
+        + 'rather than a generic textbook dialogue.',
+    },
+    {
+      q: 'How are the exercises scored?',
+      a: 'Each exercise grades itself automatically as you go and shows a score and grade at the end, so '
+        + 'you get feedback immediately rather than waiting for a teacher to mark it.',
+    },
+    {
+      q: 'Is this the same as the corporate training Shaun offers?',
+      a: 'No — these are free self-study exercises. The corporate Business English training (linked above) '
+        + 'is a separate, paid programme for companies; the two are independent of each other.',
+    },
+  ],
+
+  'it-activities.html': [
+    {
+      q: 'Are these IT English exercises free?',
+      a: 'Yes, all 12 exercises are free and need no sign-up. Use "Just practise" on any exercise to work '
+        + 'through it without entering a name — you still get instant feedback and a score.',
+    },
+    {
+      q: 'Who are these exercises for?',
+      a: 'Vocational IT trainees (Auszubildende) at roughly B1–B2 level. The reading texts and vocabulary '
+        + 'are drawn from real IT workplace situations — tickets, security incidents, hardware faults, '
+        + 'stand-up meetings — rather than general office English.',
+    },
+    {
+      q: 'What level are the exercises?',
+      a: 'Around B1–B2 on the CEFR scale — appropriate for IT apprentices partway through their training, '
+        + 'building on general English toward the vocabulary and reading skills an IT role needs.',
+    },
+    {
+      q: 'Can a trainer see a student\'s results?',
+      a: 'Each unit ends with an optional "send to teacher" step, so a trainer can review a class\'s '
+        + 'answers — but it is optional, and "Just practise" mode skips it entirely for self-study.',
+    },
+    {
+      q: 'Do the exercises cover AI and modern IT topics?',
+      a: 'Yes — alongside networking, cybersecurity and project management basics, there are units on '
+        + 'Smart Tech, AI & Industry 4.0 and Conventional & AI-Assisted Programming.',
     },
   ],
 };
