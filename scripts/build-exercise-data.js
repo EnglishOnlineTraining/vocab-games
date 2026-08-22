@@ -126,14 +126,20 @@ const ABI_LABEL = {
   'writing-summaries': 'Writing summaries',
   'mediation': 'Mediation'
 };
+// A pack is always `abitur-<task>-<topic>.html`. The trailing hyphen in the
+// match matters: without it `abitur-mediation.html` — the Sprachmittlung
+// landing page — is read as a fifth mediation pack and inflates every Abitur
+// count. Anything shaped `abitur-<task>.html` is a landing page, not an
+// exercise, and belongs in EXTRA_PUBLIC_PAGES instead.
 files.filter(f => /^abitur-/.test(f) && !/activities\.html$/.test(f)).forEach(f => {
+  const key = Object.keys(ABI_LABEL).find(k => f.indexOf('abitur-' + k + '-') === 0);
+  if (!key) return;
   const s = fs.readFileSync(path.join(ROOT, f), 'utf8');
   const title = decode(m1(/<title>([\s\S]*?)<\/title>/i, s)).replace(/\s*[—–-]\s*Abitur English\s*$/i, '').trim()
              || decode(m1(/<h1[^>]*>([\s\S]*?)<\/h1>/i, s));
-  const key = Object.keys(ABI_LABEL).find(k => f.indexOf('abitur-' + k) === 0);
   exercises.push({
     file: f, title: title, year: 'abitur', schoolType: 'gymnasium',
-    topics: [], skills: ABI_SKILLS[key] || ['writing'], blurb: ABI_LABEL[key] || 'Abitur'
+    topics: [], skills: ABI_SKILLS[key], blurb: ABI_LABEL[key]
   });
 });
 

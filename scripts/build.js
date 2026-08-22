@@ -22,7 +22,7 @@
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
-const { NODES, VALIDATORS } = require('./pipeline.js');
+const { NODES, VALIDATORS, CHECKERS } = require('./pipeline.js');
 
 const ROOT = path.join(__dirname, '..');
 const GRAPH_FILE = path.join(ROOT, 'docs', 'build-graph.mmd');
@@ -222,6 +222,8 @@ if (flags.has('--explain')) {
   });
   console.log('\nValidators (run first, all read authored state):');
   VALIDATORS.forEach((v) => console.log(`  - ${v.id.padEnd(22)} ${v.run}`));
+  console.log('\nPost-build checks (read the generated tree):');
+  CHECKERS.forEach((c) => console.log(`  - ${c.id.padEnd(22)} ${c.run}`));
   console.log('\n✓ both static checks pass (fake edges, missing barriers)');
   process.exit(0);
 }
@@ -252,6 +254,14 @@ if (!wanted.length) {
 
 console.log(`\nBuilding ${toRun.length} node(s): ${toRun.map((n) => n.id).join(' → ')}`);
 toRun.forEach((n) => run(n.run));
+
+// Post-build checks read the generated tree, so they only make sense once the
+// whole graph has run — a partial `build.js <node>` run would fail them for
+// reasons that are not errors.
+if (!wanted.length) {
+  console.log('\nChecking output…');
+  CHECKERS.forEach((c) => run(c.run));
+}
 
 if (flags.has('--check')) {
   const expected = mermaid();

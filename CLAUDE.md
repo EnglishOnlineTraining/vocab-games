@@ -578,6 +578,56 @@ All step-based exercise pages load the **single shared framework** via `<script 
 
 **Not migrated (different architecture, unchanged):** the non-step pages (`vocab-games.html`/`index.html`, `9g-class-test-9ab.html`, `uni-pm-vocabulary.html`, `uni-writing-task.html`, `uni-presentation-task.html`, `year-7-class-wall.html`, hub pages).
 
+
+### 5g. Structured data + the "Auf einen Blick" box (added 2026-08-21)
+
+Before this the site had JSON-LD on **10 of 223 pages** — the generated `themen/` topic pages —
+and none at all on the 183 exercises, the 15 hubs or the landing page. `build-head.js` now emits
+three more things, all inside blocks it owns; **never hand-edit inside `HEAD:*`, `OVERVIEW:*` or
+`FAQ:*`.**
+
+- **`scripts/schema.js`** builds the nodes. A `Person` (Shaun) and a dual-typed
+  `EducationalOrganization`/`LocalBusiness`, defined in full on `index.html` and `activities.html`
+  and **stubbed on every other page** so each page's graph resolves on its own. Every value comes
+  from the live Impressum and certificates pages — **do not add a claim the site does not make.**
+  The organization's `@id` is deliberately `https://englishonline.training/#organization`, the
+  exact id Jetpack already emits on the WordPress site, so the two graphs describe one entity;
+  do not "tidy" it to a subdomain-local id. Exercise pages get a `LearningResource` +
+  `BreadcrumbList`, hubs a `CollectionPage` + `ItemList`, and the MSA/Abitur/grammar hubs a
+  `Course`. `themen/` pages are skipped here — `build-topic-pages.js` already emits theirs.
+- **The Quick Overview box** ("Auf einen Blick / At a glance"), bilingual, on all 183 exercise
+  pages, derived entirely from `data/exercises.json` plus each page's own `<meta description>`.
+  It is **static HTML, not injected by `exercise.js`** — the crawlers it exists for do not run
+  JavaScript. It works because `#step-0` carries `class="step active"` in the source, so the
+  welcome screen renders without JS; it disappears by itself once the student starts.
+- **A visible FAQ** on `msa-activities.html` and `abitur-mediation.html`, rendered from
+  `scripts/page-faq.js` — the same file that feeds those pages' `FAQPage` markup, so the two
+  cannot disagree.
+
+**Three traps, each of which has already bitten once:**
+1. **Never use the `ex-title` or `card-title` class inside the overview block.**
+   `build-exercise-data.js` scrapes `h2.ex-title` (fallback `div.card-title`) to build each
+   entry's `blurb`, so either class would feed this generator's output back into its own input.
+   Everything is namespaced `.qo-`. Check with `git diff --stat data/exercises.json` after a build:
+   it should not move.
+2. **An injector must be the exact inverse of `stripBlock()`.** Add a leading `\n` and every
+   rebuild leaves one more blank line in the file. `insertAt()` lands after an existing newline
+   and the block carries its own trailing one; two consecutive full builds must leave the tree
+   clean.
+3. **Styles ship inside the block**, not in `style.css` — 17 framework pages never load it — and
+   each needs a `prefers-color-scheme: dark` rule. The hub family's `--red`/`--green` are *not*
+   redefined for dark mode and each fails AA in one scheme (2.99:1 and 2.87:1), so new coloured
+   text needs page-local values.
+
+**`scripts/validate-schema.js`** (post-build, see `CHECKERS` in `pipeline.js`) checks every block
+parses, every `@id` referenced is also defined, every `@type` is on a deliberate allowlist, and
+that an `FAQPage`'s questions and answers really appear in the page body. It does **not** check
+property names against the real vocabulary: schema.org and validator.schema.org are both blocked
+from the build environment, so that stays a manual step. Two errors it could not have caught were
+found by hand and are worth not reintroducing — `email` takes a bare address, not a `mailto:` URL,
+and `availableLanguage` is not an `Organization` property (`knowsLanguage` is).
+
+`head` now declares a real data edge to `exercise-data`; both static graph checks still pass.
 ---
 
 ## Adding a new exercise — checklist
@@ -605,7 +655,7 @@ All step-based exercise pages load the **single shared framework** via `<script 
 
 ## Filterable exercise index on `activities.html` (added 2026-08-05)
 
-`activities.html` now carries a **generated, filterable index of every framework exercise** above the "Kurssammlungen" collection block (the per-year and per-course hub cards). **`node scripts/build-hub.js`** reads `data/exercises.json` + `data/topics.json` and injects static exercise cards between the `<!-- HUB:START -->` / `<!-- HUB:END -->` markers — each card carries `data-year/school/topics/skills/title` and links to the individual exercise. The filter UI (search box + Jahrgang/Schulart/Fertigkeit chips + Thema dropdown, all with counts) and the filtering JS are hand-maintained in `activities.html`; the JS only shows/hides the static cards, updates the live count and reflects state in the URL (`?year=&school=&skill=&topic=&q=`) so filtered views are shareable and restore on reload. No-JS users and crawlers still get all cards. **Regenerate the cards after `build-exercise-data.js`** (never hand-edit between the markers). The "at a glance" figures above the index (`STATS:START`/`STATS:END`) are generated by the same script — exercise count from `exercises.json`, collections from the `*-activities.html` hubs on disk, study areas from the distinct `year` values counting Klassen 7–10 as one and excluding quizzes. They used to be hand-maintained with a comment asking people to remember, and drifted: the exercise figure read **149 against a real 182** for ten days (2026-08-08 → 08-18) and collections read 13 against 14 hubs. Scope: the index covers the 182 exercises in `exercises.json` (the figure moves with the corpus — read it from the file rather than from this line) (everything that loads `exercise.js`, incl. MSA/Uni/IT/BE); the 16 Abitur packs (separate architecture) are reachable via the Kurssammlungen block, not the filter.
+`activities.html` now carries a **generated, filterable index of every framework exercise** above the "Kurssammlungen" collection block (the per-year and per-course hub cards). **`node scripts/build-hub.js`** reads `data/exercises.json` + `data/topics.json` and injects static exercise cards between the `<!-- HUB:START -->` / `<!-- HUB:END -->` markers — each card carries `data-year/school/topics/skills/title` and links to the individual exercise. The filter UI (search box + Jahrgang/Schulart/Fertigkeit chips + Thema dropdown, all with counts) and the filtering JS are hand-maintained in `activities.html`; the JS only shows/hides the static cards, updates the live count and reflects state in the URL (`?year=&school=&skill=&topic=&q=`) so filtered views are shareable and restore on reload. No-JS users and crawlers still get all cards. **Regenerate the cards after `build-exercise-data.js`** (never hand-edit between the markers). The "at a glance" figures above the index (`STATS:START`/`STATS:END`) are generated by the same script — exercise count from `exercises.json`, collections from the `*-activities.html` hubs on disk, study areas from the distinct `year` values counting Klassen 7–10 as one and excluding quizzes. They used to be hand-maintained with a comment asking people to remember, and drifted: the exercise figure read **149 against a real 182** for ten days (2026-08-08 → 08-18) and collections read 13 against 14 hubs. Scope: the index covers every entry in `exercises.json` (read the count from the file, not from this line) — everything that loads `exercise.js`, incl. MSA/Uni/IT/BE — plus the 16 Abitur packs, which `build-exercise-data.js` appends separately. An Abitur *pack* is `abitur-<task>-<topic>.html`; a bare `abitur-<task>.html` is a landing page and is deliberately excluded from the registry (it goes in `EXTRA_PUBLIC_PAGES` in `build-topic-pages.js` so the sitemap still carries it).
 
 **The Kurssammlungen block is generated too (2026-08-19).** It was hand-maintained and drifted the same way the root page had — 11 of its 13 counts were wrong (Year 7 Gymnasium read 8 against a real 11, University 10 against 15, MSA 20 against 21). `build-hub.js` now emits it between `<!-- COLLECTIONS:START -->` / `<!-- COLLECTIONS:END -->` from `data/exercises.json`, with **Abitur and MSA as their own blocks** (never folded into Professional English). The editorial prose — each block's eyebrow and each card's meta line — lives in `COLLECTION_YEARS` / `COLLECTION_PROF` and the block calls in the script; **edit it there, never in `activities.html`**. Section ids (`y7`…`y10`, `abi`, `msa`, `grammar-section`, `tools`, `prof`) are preserved, so any existing deep links still work.
 
@@ -661,7 +711,7 @@ must change with it.
 
 German, search-optimised landing pages, one per grammar topic (people search *Passiv Englisch Übungen*, *if-Sätze Klasse 10* — not theme names). Generated, never hand-edited:
 
-- **`data/topics.json`** — the controlled topic vocabulary (slug, German + English label, search aliases, meta description, related slugs) plus optional authored German content per topic: `intro`, `rules[]`, `examples[]`, and a `practice[]` array (`{q, options, answer, why}`) that becomes an inline check-yourself widget. **All 11 topic pages are now fully authored (verified 2026-08-16)** — no `<!-- CONTENT: needs Shaun -->` scaffolds remain. (This line previously named only `passiv`, `if-saetze` and `relativsaetze` as flagship and called the rest scaffolds; that is out of date.) A newly added slug still starts as a scaffold and renders the marker in place of the explanation while still listing its exercises. **All landing-page prose is German** (Shaun's decision — topic pages target German search traffic; this is separate from the exercises' English on-page explanations).
+- **`data/topics.json`** — the controlled topic vocabulary (slug, German + English label, search aliases, meta description, related slugs) plus optional authored German content per topic: `intro`, `rules[]`, `examples[]`, and a `practice[]` array (`{q, options, answer, why}`) that becomes an inline check-yourself widget. **All 10 topic pages are authored (verified 2026-08-21)** — no `<!-- CONTENT: needs Shaun -->` scaffolds remain. (An earlier version of this line said 11; `themen/` holds ten topic pages plus `index.html`.) Three of them go further, into the *full* form: `passiv`, `gerund-infinitiv` and `relativsaetze` also carry `introH2`, `sections[]`, `practiceGroups[]` and `faq[]`, which is what turns a ~10 KB page into a ~30 KB one and emits the `FAQPage` markup. **`build-topic-pages.js` supports that entirely through data — upgrading a topic needs no code change.** Note the generator's fallback `introH2` is `"Was ist das " + de`, which is ungrammatical for a plural topic name; author `introH2` for those. A newly added slug still starts as a scaffold and renders the marker in place of the explanation while still listing its exercises. **All landing-page prose is German** (Shaun's decision — topic pages target German search traffic; this is separate from the exercises' English on-page explanations).
 - **`data/exercises.json`** — every exercise tagged with `topics[]`/`skills[]`, produced by **`node scripts/build-exercise-data.js`** (classifies each page's grammar/skill points against the topic vocabulary; prints per-topic coverage).
 - **`node scripts/build-topic-pages.js`** — regenerates `themen/<slug>.html` + `themen/index.html` + `themen/themen.css`, and rewrites `sitemap.xml` + `robots.txt` (covering hubs, exercises and topic pages). Each page has `lang="de"`, canonical, OG tags and JSON-LD `LearningResource`; a "Weiterüben" list links every tagged exercise grouped by year; plus related-topic links. Linked from `activities.html` via a "Nach Grammatik-Thema üben" banner → `themen/index.html`, and — since 2026-08-16 — from **WordPress page 1763**, which carries a matching "Nach Grammatik-Thema üben" button group linking `themen/` plus all 11 topic pages plus `grammar-activities.html`. That WP block is the only source of *external* links into `themen/`; before it, every button on 1763 pointed at a hub page and nothing outside the repo linked to a topic page at all. If a topic slug is added or renamed, update 1763 too (via `pages.update` — never the block editor; see the trap at the top of this file).
 - **To add/expand a topic:** edit `data/topics.json` (add the slug + German content), then rerun both scripts. Never hand-edit files in `themen/` — they are overwritten. Grammar prose is Shaun-reviewed before it counts as final; scaffolds keep the marker until then.

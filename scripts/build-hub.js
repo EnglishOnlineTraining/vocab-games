@@ -273,11 +273,14 @@ const ROOT_COURSES = [
   ['it-activities.html',       '💻', 'IT English',         'it',       'Networking, security &amp; technical vocabulary']
 ];
 
+// The fifth column is an optional landing page of its own; without it the card
+// deep-links into abitur-activities.html at the matching group-heading id.
+// Those ids are load-bearing — see the note in CLAUDE.md before renaming one.
 const ABITUR_TASKS = [
   ['text-analysis',         '📖', 'Text Analysis',            'Style, structure and argument in exam texts'],
   ['argumentative-writing', '✍️', 'Argumentative Writing',    'Building a structured argument under exam conditions'],
   ['writing-summaries',     '📝', 'Writing Summaries',        'Condensing a source text in your own words'],
-  ['mediation',             '🔄', 'Mediation',                'Sprachmittlung between German and English']
+  ['mediation',             '🔄', 'Mediation',                'Sprachmittlung between German and English', 'abitur-mediation.html']
 ];
 
 function rootCount(n, word, plural) {
@@ -334,10 +337,11 @@ const abiturCards = [
     abiturTotal ? 'All interactive practice packs for the writing tasks' : 'Coming soon',
     rootCount(abiturTotal, 'Pack'), abiturTotal > 0)
 ];
-ABITUR_TASKS.forEach(([slug, icon, title, meta]) => {
+ABITUR_TASKS.forEach(([slug, icon, title, meta, page]) => {
   const n = exercises.filter(e => e.file.startsWith('abitur-' + slug + '-')).length;
   if (!n) return;
-  abiturCards.push(rootCard('abitur-activities.html#' + slug, icon, title, meta, rootCount(n, 'Pack'), true));
+  const href = page && fs.existsSync(path.join(ROOT, page)) ? page : 'abitur-activities.html#' + slug;
+  abiturCards.push(rootCard(href, icon, title, meta, rootCount(n, 'Pack'), true));
 });
 rootBlocks.push(rootBlock('Abitur', '🎓', abiturCards));
 
