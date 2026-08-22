@@ -507,6 +507,7 @@
       "simple-past"
     ],
     "reviewed": false,
+    "introH2": "If-Sätze im Englischen — worum geht es?",
     "intro": "<strong>If-Sätze</strong> (<em>conditional sentences</em>) beschreiben eine Bedingung und ihre Folge: „Wenn … , dann …“. Es gibt drei Haupttypen — je nachdem, wie <strong>wahrscheinlich</strong> die Bedingung ist. Der Satzteil mit <em>if</em> ist die Bedingung; der andere Teil ist die Folge. Beide Reihenfolgen sind möglich (mit oder ohne Komma).",
     "rules": [
       "<strong>Typ I</strong> (real / möglich): <em>if + Simple Present</em>, Hauptsatz <em>will + Infinitiv</em> — „If it <strong>rains</strong>, we <strong>will stay</strong> at home.“",
@@ -519,56 +520,316 @@
       "Typ II: <em>If I <strong>were</strong> you, I <strong>would apologise</strong>.</em>",
       "Typ III: <em>If they <strong>had left</strong> earlier, they <strong>would not have missed</strong> the flight.</em>"
     ],
-    "practice": [
+    "sections": [
       {
-        "q": "If it rains tomorrow, we ___ at home.",
-        "options": [
-          "will stay",
-          "would stay",
-          "stayed"
-        ],
-        "answer": "will stay",
-        "why": "Typ I: if + Simple Present, Hauptsatz will + Infinitiv."
+        "h2": "Die vier Typen im Überblick",
+        "body": "Welcher Typ passt, hängt allein davon ab, wie <strong>wahrscheinlich</strong> die Bedingung ist — nicht davon, ob es um Gegenwart oder Vergangenheit geht.",
+        "list": [
+          "<strong>Typ 0</strong> — allgemeingültig: <em>if + Simple Present</em>, Hauptsatz <em>Simple Present</em>.",
+          "<strong>Typ I</strong> — real möglich: <em>if + Simple Present</em>, Hauptsatz <em>will + Infinitiv</em>.",
+          "<strong>Typ II</strong> — unwahrscheinlich/hypothetisch: <em>if + Simple Past</em>, Hauptsatz <em>would + Infinitiv</em>.",
+          "<strong>Typ III</strong> — unmöglich, weil vorbei: <em>if + Past Perfect</em>, Hauptsatz <em>would have + 3. Verbform</em>."
+        ]
       },
       {
-        "q": "If I had more money, I ___ a new bike.",
-        "options": [
-          "will buy",
-          "would buy",
-          "bought"
-        ],
-        "answer": "would buy",
-        "why": "Typ II: if + Simple Past, Hauptsatz would + Infinitiv."
+        "h2": "Typ I oder Typ II? Der Unterschied, der am meisten verwirrt",
+        "body": "Beide können sich auf die Zukunft beziehen — der Unterschied ist nicht die Zeit, sondern die <strong>Einschätzung</strong> des Sprechers.",
+        "list": [
+          "<em>If I <strong>win</strong> the lottery, I <strong>will buy</strong> a house.</em> — der Sprecher hält es für möglich.",
+          "<em>If I <strong>won</strong> the lottery, I <strong>would buy</strong> a house.</em> — reines Gedankenspiel, unwahrscheinlich.",
+          "Dieselbe Zukunft, zwei verschiedene Sätze — je nachdem, wie realistisch sie klingen soll."
+        ]
       },
       {
-        "q": "If she had studied harder, she ___ the exam.",
-        "options": [
-          "would pass",
-          "would have passed",
-          "passed"
-        ],
-        "answer": "would have passed",
-        "why": "Typ III: if + Past Perfect, Hauptsatz would have + 3. Verbform."
+        "h2": "Warum „were“ bei Typ II?",
+        "body": "Bei <em>be</em> steht im Typ II traditionell <strong>were</strong> für alle Personen — auch nach I/he/she/it. Das ist der Konjunktiv, kein Grammatikfehler.",
+        "list": [
+          "✓ <em>If I <strong>were</strong> you, I would apologise.</em>",
+          "✓ <em>If he <strong>were</strong> here, he would help.</em>",
+          "Im gesprochenen Englisch hört man auch „if I was“ — im Schriftlichen und im Abitur gilt „were“ als korrekt."
+        ]
       },
       {
-        "q": "If you heat ice, it ___.",
-        "options": [
-          "will melt",
-          "melts",
-          "would melt"
-        ],
-        "answer": "melts",
-        "why": "Allgemeingültig (Typ 0): beide Teile im Simple Present."
+        "h2": "Mixed Conditionals — wenn Zeiten gemischt werden",
+        "body": "Manchmal betrifft die Bedingung die Vergangenheit, die Folge aber die Gegenwart — dann werden Typ II und III kombiniert.",
+        "list": [
+          "<em>If she <strong>had studied</strong> medicine (Vergangenheit), she <strong>would be</strong> a doctor now (Gegenwart).</em>",
+          "<em>If I <strong>weren't</strong> so tired (Gegenwart), I <strong>would have gone</strong> to the party (Vergangenheit).</em>",
+          "Die Zeitform in jeder Satzhälfte richtet sich einfach danach, wann <em>diese</em> Hälfte spielt."
+        ]
       },
       {
-        "q": "We would have come if you ___ us.",
-        "options": [
-          "told",
-          "had told",
-          "would tell"
-        ],
-        "answer": "had told",
-        "why": "Typ III: der if-Satz steht im Past Perfect (had + 3. Verbform)."
+        "h2": "Kommaregel",
+        "body": "Steht der <em>if</em>-Satz zuerst, folgt ein Komma. Steht er am Ende, entfällt es.",
+        "list": [
+          "✓ <em>If it rains, we will stay at home.</em>",
+          "✓ <em>We will stay at home if it rains.</em> — kein Komma."
+        ]
+      },
+      {
+        "h2": "Typische Fehler deutscher Lernender",
+        "body": "Fast alle drehen sich um <em>would</em> im falschen Satzteil.",
+        "list": [
+          "✗ <em>If I would have time, I would help you.</em> → ✓ <em>If I <strong>had</strong> time, I would help you.</em> — nie „would“ im if-Satz selbst.",
+          "✗ <em>If it will rain, we will stay home.</em> → ✓ <em>If it <strong>rains</strong>, …</em> — nach if steht kein will.",
+          "✗ <em>Unless</em> heißt „wenn nicht“ — es enthält bereits eine Verneinung: ✗ <em>Unless it doesn't rain</em> → ✓ <em>Unless it rains</em>.",
+          "✗ <em>When</em> statt <em>if</em>: „when“ setzt voraus, dass etwas sicher passiert — für eine echte Bedingung steht „if“."
+        ]
+      }
+    ],
+    "practiceGroups": [
+      {
+        "title": "Übung 1 — Typ I (real möglich)",
+        "intro": "if + Simple Present, Hauptsatz will + Infinitiv.",
+        "items": [
+          {
+            "q": "If it rains tomorrow, we ___ at home.",
+            "options": [
+              "will stay",
+              "would stay",
+              "stayed"
+            ],
+            "answer": "will stay",
+            "why": "Typ I: if + Simple Present, Hauptsatz will + Infinitiv."
+          },
+          {
+            "q": "If you ___ the bus, you will arrive on time.",
+            "options": [
+              "catch",
+              "caught",
+              "will catch"
+            ],
+            "answer": "catch",
+            "why": "Nach if steht im Typ I das Simple Present, nie will."
+          },
+          {
+            "q": "She will call you if she ___ time.",
+            "options": [
+              "has",
+              "will have",
+              "had"
+            ],
+            "answer": "has",
+            "why": "if + Simple Present, unabhängig davon, wo der if-Satz im Satz steht."
+          },
+          {
+            "q": "If we hurry, we ___ the train.",
+            "options": [
+              "catch",
+              "will catch",
+              "would catch"
+            ],
+            "answer": "will catch",
+            "why": "Hauptsatz im Typ I: will + Infinitiv."
+          },
+          {
+            "q": "If you heat ice, it ___.",
+            "options": [
+              "will melt",
+              "melts",
+              "would melt"
+            ],
+            "answer": "melts",
+            "why": "Allgemeingültig (Typ 0): beide Satzteile im Simple Present."
+          }
+        ]
+      },
+      {
+        "title": "Übung 2 — Typ II (unwahrscheinlich)",
+        "intro": "if + Simple Past, Hauptsatz would + Infinitiv. Nach if steht nie would.",
+        "items": [
+          {
+            "q": "If I had more money, I ___ a new bike.",
+            "options": [
+              "will buy",
+              "would buy",
+              "bought"
+            ],
+            "answer": "would buy",
+            "why": "Typ II: if + Simple Past, Hauptsatz would + Infinitiv."
+          },
+          {
+            "q": "If I ___ you, I would apologise.",
+            "options": [
+              "was",
+              "were",
+              "am"
+            ],
+            "answer": "were",
+            "why": "Nach if + I/he/she/it steht im Typ II „were“, nicht „was“."
+          },
+          {
+            "q": "If they lived closer, we ___ them more often.",
+            "options": [
+              "see",
+              "would see",
+              "will see"
+            ],
+            "answer": "would see",
+            "why": "Hauptsatz im Typ II: would + Infinitiv."
+          },
+          {
+            "q": "If it ___ less, we could go for a walk.",
+            "options": [
+              "would rain",
+              "rains",
+              "rained"
+            ],
+            "answer": "rained",
+            "why": "Nach if steht im Typ II das Simple Past, nie would."
+          },
+          {
+            "q": "She would travel more if she ___ more free time.",
+            "options": [
+              "has",
+              "had",
+              "would have"
+            ],
+            "answer": "had",
+            "why": "if + Simple Past — der klassische Fehler ist „would have“ hier statt „had“."
+          }
+        ]
+      },
+      {
+        "title": "Übung 3 — Typ III (unmöglich, Vergangenheit)",
+        "intro": "if + Past Perfect, Hauptsatz would have + 3. Verbform.",
+        "items": [
+          {
+            "q": "If she had studied harder, she ___ the exam.",
+            "options": [
+              "would pass",
+              "would have passed",
+              "passed"
+            ],
+            "answer": "would have passed",
+            "why": "Typ III: if + Past Perfect, Hauptsatz would have + 3. Verbform."
+          },
+          {
+            "q": "We would have come if you ___ us.",
+            "options": [
+              "told",
+              "had told",
+              "would tell"
+            ],
+            "answer": "had told",
+            "why": "Der if-Satz steht im Past Perfect (had + 3. Verbform)."
+          },
+          {
+            "q": "If they had left earlier, they ___ the flight.",
+            "options": [
+              "wouldn't miss",
+              "wouldn't have missed",
+              "didn't miss"
+            ],
+            "answer": "wouldn't have missed",
+            "why": "Verneinter Hauptsatz Typ III: wouldn't have + 3. Verbform."
+          },
+          {
+            "q": "If I had known, I ___ differently.",
+            "options": [
+              "acted",
+              "would act",
+              "would have acted"
+            ],
+            "answer": "would have acted",
+            "why": "Hauptsatz im Typ III: would have + 3. Verbform."
+          },
+          {
+            "q": "If he ___ the map, he wouldn't have got lost.",
+            "options": [
+              "took",
+              "had taken",
+              "would take"
+            ],
+            "answer": "had taken",
+            "why": "if + Past Perfect — nicht Simple Past."
+          }
+        ]
+      },
+      {
+        "title": "Übung 4 — Mixed Conditionals & Fehler erkennen",
+        "intro": "Wähle die Form, die zur genannten Zeit passt.",
+        "items": [
+          {
+            "q": "If she had studied medicine, she ___ a doctor now.",
+            "options": [
+              "would be",
+              "would have been",
+              "was"
+            ],
+            "answer": "would be",
+            "why": "Die Folge betrifft die Gegenwart → would + Infinitiv, obwohl die Bedingung in der Vergangenheit liegt."
+          },
+          {
+            "q": "✗ oder ✓? „If I would have time, I would help you.“",
+            "options": [
+              "✓ richtig",
+              "✗ falsch — should be „If I had time“"
+            ],
+            "answer": "✗ falsch — should be „If I had time“",
+            "why": "Nach if steht nie would — das ist der häufigste Fehler bei Typ II."
+          },
+          {
+            "q": "Unless you ___ now, you'll miss the bus.",
+            "options": [
+              "leave",
+              "don't leave",
+              "won't leave"
+            ],
+            "answer": "leave",
+            "why": "Unless = „wenn nicht“, enthält also schon eine Verneinung — kein zweites „don't“."
+          },
+          {
+            "q": "I'll call you ___ I arrive.",
+            "options": [
+              "if",
+              "when",
+              "unless"
+            ],
+            "answer": "when",
+            "why": "„when“ setzt voraus, dass es sicher passiert — passt hier besser als „if“, das eine echte Bedingung wäre."
+          },
+          {
+            "q": "If I weren't so tired now, I ___ to the party last night.",
+            "options": [
+              "would go",
+              "would have gone",
+              "went"
+            ],
+            "answer": "would have gone",
+            "why": "Mixed conditional: Bedingung in der Gegenwart (weren't), Folge in der Vergangenheit → would have + 3. Verbform."
+          }
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "Welche Typen von if-Sätzen gibt es im Englischen?",
+        "a": "Vier: Typ 0 für Allgemeingültiges (if + Simple Present, Hauptsatz Simple Present), Typ I für real Mögliches (if + Simple Present, Hauptsatz will + Infinitiv), Typ II für Unwahrscheinliches (if + Simple Past, Hauptsatz would + Infinitiv) und Typ III für in der Vergangenheit Unmögliches (if + Past Perfect, Hauptsatz would have + 3. Verbform)."
+      },
+      {
+        "q": "Was ist der Unterschied zwischen Typ I und Typ II?",
+        "a": "Beide können sich auf die Zukunft beziehen — der Unterschied ist, wie wahrscheinlich der Sprecher die Bedingung einschätzt. Typ I klingt real möglich: „If I win the lottery, I will buy a house.“ Typ II klingt wie ein reines Gedankenspiel: „If I won the lottery, I would buy a house.“"
+      },
+      {
+        "q": "Warum steht „were“ und nicht „was“ nach if I/he/she/it?",
+        "a": "Im Typ II steht bei „be“ traditionell „were“ für alle Personen — das ist der Konjunktiv, kein Fehler: „If I were you, …“, „If he were here, …“. Im gesprochenen Englisch hört man auch „was“, in der Schule und im Abitur gilt aber „were“ als korrekt."
+      },
+      {
+        "q": "Darf man „would“ im if-Satz benutzen?",
+        "a": "Nein — nach if steht nie would, weder im Typ I noch im Typ II oder III. „If I would have time“ ist falsch; richtig ist „If I had time“. Would gehört immer in den Hauptsatz."
+      },
+      {
+        "q": "Was bedeutet „unless“?",
+        "a": "„Unless“ heißt „wenn nicht“ und enthält die Verneinung bereits im Wort selbst: „Unless you hurry, you'll be late“ = „Wenn du dich nicht beeilst, …“. Ein zusätzliches „don't“ danach ist falsch."
+      },
+      {
+        "q": "Wann steht ein Komma bei if-Sätzen?",
+        "a": "Nur wenn der if-Satz zuerst kommt: „If it rains, we will stay at home.“ Steht er am Ende, entfällt das Komma: „We will stay at home if it rains.“"
+      },
+      {
+        "q": "Was sind Mixed Conditionals?",
+        "a": "If-Sätze, bei denen Bedingung und Folge in unterschiedlichen Zeiten liegen — meist eine Bedingung in der Vergangenheit mit einer Folge in der Gegenwart: „If she had studied medicine, she would be a doctor now.“ Jede Satzhälfte richtet sich einfach nach ihrer eigenen Zeit."
       }
     ]
   },
@@ -951,6 +1212,7 @@
       "if-saetze"
     ],
     "reviewed": false,
+    "introH2": "Past Perfect im Englischen — worum geht es?",
     "intro": "Das <strong>Past Perfect</strong> ist die <strong>Vorvergangenheit</strong>: es zeigt, dass etwas <strong>vor</strong> einem anderen Ereignis in der Vergangenheit passiert ist. Das spätere Ereignis steht meist im Simple Past.",
     "rules": [
       "Bildung: <strong>had</strong> + <strong>past participle</strong> (3. Verbform) — für alle Personen gleich.",
@@ -963,56 +1225,310 @@
       "<em>She <strong>had</strong> never <strong>seen</strong> the sea before that trip.</em>",
       "<em>After he <strong>had finished</strong>, he went home.</em>"
     ],
-    "practice": [
+    "sections": [
       {
-        "q": "When we arrived, the train ___.",
-        "options": [
-          "already left",
-          "had already left",
-          "has already left"
-        ],
-        "answer": "had already left",
-        "why": "Früheres Ereignis in der Vergangenheit → Past Perfect: had + 3. Verbform."
+        "h2": "Bildung: had + past participle",
+        "body": "Das Past Perfect wird für alle Personen gleich gebildet — kein Unterschied zwischen I, you, he, she, it, we, they.",
+        "list": [
+          "<em>I/you/he/she/it/we/they <strong>had</strong> + 3. Verbform</em>.",
+          "Regelmäßige Verben: <em>had worked, had arrived</em>.",
+          "Unregelmäßige Verben: <em>had gone, had seen, had written</em> (3. Spalte der Verbtabelle).",
+          "Verneinung: <strong>hadn't</strong> + 3. Verbform. Frage: <strong>Had</strong> + Subjekt + 3. Verbform?"
+        ]
       },
       {
-        "q": "She ___ him before the party.",
-        "options": [
-          "hadn't met",
-          "didn't meet",
-          "hasn't met"
-        ],
-        "answer": "hadn't met",
-        "why": "Vorvergangenheit, verneint: hadn't + 3. Verbform."
+        "h2": "Wann Past Perfect statt Simple Past?",
+        "body": "Immer dann, wenn zwei Ereignisse in der Vergangenheit passieren und man zeigen will, <strong>welches zuerst</strong> war. Das frühere Ereignis bekommt das Past Perfect, das spätere bleibt im Simple Past.",
+        "list": [
+          "<em>When we <strong>arrived</strong> (später), the film <strong>had</strong> already <strong>started</strong> (früher).</em>",
+          "Ohne Past Perfect wäre unklar, welches Ereignis zuerst war — im Deutschen übernimmt das oft „schon“ oder „bereits“ diese Aufgabe.",
+          "Passiert alles gleichzeitig oder in der genannten Reihenfolge, reicht Simple Past für beide Ereignisse."
+        ]
       },
       {
-        "q": "After they ___ dinner, they watched a film.",
-        "options": [
-          "had had",
-          "have had",
-          "having"
-        ],
-        "answer": "had had",
-        "why": "Das erste Ereignis steht im Past Perfect (had + had)."
+        "h2": "Signalwörter",
+        "body": "Diese Wörter tauchen oft in Past-Perfect-Sätzen auf, sind aber kein Automatismus — entscheidend bleibt, welches Ereignis zuerst war.",
+        "list": [
+          "<em>before, after, already, just, by the time, when, until, never … before</em>.",
+          "<em>After he <strong>had finished</strong> his homework, he went out.</em>",
+          "<em>She <strong>had never seen</strong> the sea before that trip.</em>"
+        ]
       },
       {
-        "q": "By the time I called, she ___.",
-        "options": [
-          "already left",
-          "had already left",
-          "leaves"
-        ],
-        "answer": "had already left",
-        "why": "by the time + Past Perfect für das frühere Ereignis."
+        "h2": "Past Perfect Progressive",
+        "body": "Für eine Handlung, die vor einem anderen Zeitpunkt in der Vergangenheit schon eine Weile <strong>andauerte</strong>: <em>had been</em> + <em>-ing</em>.",
+        "list": [
+          "<em>She <strong>had been waiting</strong> for an hour when the bus finally arrived.</em>",
+          "Betont die Dauer bis zu diesem Zeitpunkt — anders als das einfache Past Perfect, das nur zeigt, dass etwas abgeschlossen war."
+        ]
       },
       {
-        "q": "I couldn't pay because I ___ my wallet.",
-        "options": [
-          "forgot",
-          "had forgotten",
-          "forget"
-        ],
-        "answer": "had forgotten",
-        "why": "Der Grund lag zeitlich davor → Past Perfect."
+        "h2": "Past Perfect in Reported Speech und im 3. Conditional",
+        "body": "Zwei Stellen, an denen das Past Perfect automatisch gebraucht wird.",
+        "list": [
+          "Reported Speech: Simple Past wird zu Past Perfect — „I saw him“ → „She said she <strong>had seen</strong> him.“",
+          "3. Conditional: der if-Satz steht immer im Past Perfect — „If she <strong>had studied</strong>, she would have passed.“"
+        ]
+      },
+      {
+        "h2": "Typische Fehler",
+        "body": "Der häufigste Fehler ist nicht ein falsches „had“, sondern das Past Perfect an Stellen zu benutzen, wo es gar nicht gebraucht wird.",
+        "list": [
+          "✗ Überstrapazieren: nicht jede Vergangenheit braucht Past Perfect — nur die <em>frühere</em> von zwei Handlungen.",
+          "✗ <em>I have had breakfast before I went to school.</em> → ✓ <em>I <strong>had had</strong> breakfast before I went to school.</em> — Present Perfect statt Past Perfect verwechselt.",
+          "✗ Das zweite „had“ bei „had had“ vergessen — „have“ als Vollverb braucht sein eigenes Past Participle."
+        ]
+      }
+    ],
+    "practiceGroups": [
+      {
+        "title": "Übung 1 — Grundform",
+        "intro": "had + past participle, für alle Personen gleich.",
+        "items": [
+          {
+            "q": "When we arrived, the train ___.",
+            "options": [
+              "already left",
+              "had already left",
+              "has already left"
+            ],
+            "answer": "had already left",
+            "why": "Früheres Ereignis in der Vergangenheit → Past Perfect: had + 3. Verbform."
+          },
+          {
+            "q": "She ___ him before the party.",
+            "options": [
+              "hadn't met",
+              "didn't meet",
+              "hasn't met"
+            ],
+            "answer": "hadn't met",
+            "why": "Vorvergangenheit, verneint: hadn't + 3. Verbform."
+          },
+          {
+            "q": "After they ___ dinner, they watched a film.",
+            "options": [
+              "had had",
+              "have had",
+              "having"
+            ],
+            "answer": "had had",
+            "why": "Das erste Ereignis steht im Past Perfect — „have“ als Vollverb braucht sein eigenes Partizip: had had."
+          },
+          {
+            "q": "By the time I called, she ___.",
+            "options": [
+              "already left",
+              "had already left",
+              "leaves"
+            ],
+            "answer": "had already left",
+            "why": "by the time + Past Perfect für das frühere Ereignis."
+          },
+          {
+            "q": "I couldn't pay because I ___ my wallet.",
+            "options": [
+              "forgot",
+              "had forgotten",
+              "forget"
+            ],
+            "answer": "had forgotten",
+            "why": "Der Grund lag zeitlich davor → Past Perfect."
+          }
+        ]
+      },
+      {
+        "title": "Übung 2 — Past Perfect oder Simple Past?",
+        "intro": "Entscheide, welches Ereignis zuerst war.",
+        "items": [
+          {
+            "q": "We ___ the museum before it closed.",
+            "options": [
+              "visited",
+              "had visited",
+              "have visited"
+            ],
+            "answer": "had visited",
+            "why": "Der Museumsbesuch war vor dem Schließen → Past Perfect."
+          },
+          {
+            "q": "She cooked dinner after she ___ home.",
+            "options": [
+              "came",
+              "had come",
+              "comes"
+            ],
+            "answer": "came",
+            "why": "Beide Handlungen in einfacher Reihenfolge, kein Bedarf für Past Perfect — Simple Past reicht."
+          },
+          {
+            "q": "They realised they ___ the tickets at home.",
+            "options": [
+              "left",
+              "had left",
+              "have left"
+            ],
+            "answer": "had left",
+            "why": "Das Liegenlassen war vor dem Bemerken → Past Perfect."
+          },
+          {
+            "q": "He finished the race, then he ___ down.",
+            "options": [
+              "sat",
+              "had sat",
+              "sits"
+            ],
+            "answer": "sat",
+            "why": "Reihenfolge klar durch „then“, kein Grund für Past Perfect."
+          },
+          {
+            "q": "The party ___ already ___ when we got there.",
+            "options": [
+              "was / starting",
+              "had / started",
+              "has / started"
+            ],
+            "answer": "had / started",
+            "why": "Ankunft (später) vs. Beginn der Party (früher) → Past Perfect für das frühere Ereignis."
+          }
+        ]
+      },
+      {
+        "title": "Übung 3 — Past Perfect Progressive",
+        "intro": "had been + -ing für eine andauernde Handlung vor einem Zeitpunkt in der Vergangenheit.",
+        "items": [
+          {
+            "q": "She was tired because she ___ all night.",
+            "options": [
+              "had studied",
+              "had been studying",
+              "studied"
+            ],
+            "answer": "had been studying",
+            "why": "Die Dauer bis zu einem Zeitpunkt zählt → Past Perfect Progressive."
+          },
+          {
+            "q": "They ___ for two hours when it finally started to rain.",
+            "options": [
+              "had walked",
+              "had been walking",
+              "walked"
+            ],
+            "answer": "had been walking",
+            "why": "Andauernde Handlung mit Zeitangabe (two hours) → had been + -ing."
+          },
+          {
+            "q": "His hands were dirty because he ___ in the garden.",
+            "options": [
+              "had worked",
+              "had been working",
+              "worked"
+            ],
+            "answer": "had been working",
+            "why": "Ursache ist die andauernde Tätigkeit → Past Perfect Progressive."
+          },
+          {
+            "q": "When the doctor arrived, she ___ for an hour.",
+            "options": [
+              "had waited",
+              "had been waiting",
+              "waited"
+            ],
+            "answer": "had been waiting",
+            "why": "Dauer betont → had been + -ing."
+          },
+          {
+            "q": "I was out of breath — I ___.",
+            "options": [
+              "had run",
+              "had been running",
+              "ran"
+            ],
+            "answer": "had been running",
+            "why": "Die Ursache liegt in der andauernden Handlung davor."
+          }
+        ]
+      },
+      {
+        "title": "Übung 4 — Reported Speech, Conditionals & Fehler",
+        "intro": "Diese Sätze nutzen das Past Perfect automatisch — erkenne, wo.",
+        "items": [
+          {
+            "q": "„I saw him.“ → She said she ___ him.",
+            "options": [
+              "saw",
+              "had seen",
+              "has seen"
+            ],
+            "answer": "had seen",
+            "why": "Reported Speech: Simple Past wird zu Past Perfect."
+          },
+          {
+            "q": "If she ___ harder, she would have passed.",
+            "options": [
+              "studied",
+              "had studied",
+              "has studied"
+            ],
+            "answer": "had studied",
+            "why": "3. Conditional: der if-Satz steht immer im Past Perfect."
+          },
+          {
+            "q": "✗ oder ✓? „I have had breakfast before I went to school.“",
+            "options": [
+              "✓ richtig",
+              "✗ falsch — should be „I had had breakfast“"
+            ],
+            "answer": "✗ falsch — should be „I had had breakfast“",
+            "why": "Present Perfect statt Past Perfect ist ein häufiger Fehler bei zwei Vergangenheitsereignissen."
+          },
+          {
+            "q": "„They left already.“ → He said they ___ already.",
+            "options": [
+              "left",
+              "had left",
+              "have left"
+            ],
+            "answer": "had left",
+            "why": "Reported Speech verschiebt Simple Past ins Past Perfect."
+          },
+          {
+            "q": "We ___ the film before, so we knew the ending.",
+            "options": [
+              "saw",
+              "had seen",
+              "have seen"
+            ],
+            "answer": "had seen",
+            "why": "Das Sehen liegt vor dem Wissen → Past Perfect."
+          }
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie bildet man das Past Perfect?",
+        "a": "Mit had + past participle (3. Verbform), für alle Personen gleich: I/you/he/she/it/we/they had worked, had gone, had seen. Verneinung: hadn't + 3. Verbform."
+      },
+      {
+        "q": "Wann benutzt man Past Perfect statt Simple Past?",
+        "a": "Wenn zwei Ereignisse in der Vergangenheit passieren und gezeigt werden soll, welches zuerst war: das frühere Ereignis bekommt das Past Perfect, das spätere bleibt im Simple Past. „When we arrived, the film had already started.“"
+      },
+      {
+        "q": "Braucht jede Vergangenheit ein Past Perfect?",
+        "a": "Nein. Ist die Reihenfolge durch Wörter wie „then“ oder „after that“ schon klar, oder passieren die Handlungen gleichzeitig, reicht Simple Past für beide. Past Perfect lohnt sich nur, wenn wirklich betont werden soll, was zuerst war."
+      },
+      {
+        "q": "Was ist das Past Perfect Progressive?",
+        "a": "had been + -ing, für eine Handlung, die vor einem Zeitpunkt in der Vergangenheit schon eine Weile andauerte: „She had been waiting for an hour when the bus arrived.“ Es betont die Dauer, das einfache Past Perfect nur, dass etwas abgeschlossen war."
+      },
+      {
+        "q": "Welche Signalwörter passen zum Past Perfect?",
+        "a": "before, after, already, just, by the time, when, until, never … before — sie zeigen oft eine Reihenfolge an, sind aber kein Automatismus. Entscheidend bleibt, welches Ereignis wirklich zuerst passierte."
+      },
+      {
+        "q": "Wo wird das Past Perfect automatisch gebraucht?",
+        "a": "In der Reported Speech, wo ein ursprüngliches Simple Past zu Past Perfect wird („I saw him“ → „She said she had seen him“), und im 3. Conditional, wo der if-Satz immer im Past Perfect steht („If she had studied, …“)."
       }
     ]
   },
@@ -1032,6 +1548,7 @@
       "present-tenses"
     ],
     "reviewed": false,
+    "introH2": "Present Perfect im Englischen — worum geht es?",
     "intro": "Das <strong>Present Perfect</strong> verbindet Vergangenheit und Gegenwart: eine Handlung ist <strong>gerade abgeschlossen</strong> oder <strong>dauert bis jetzt an</strong>. Wann genau etwas passiert ist, spielt keine Rolle — sonst benutzt man das Simple Past.",
     "rules": [
       "Bildung: <strong>have / has</strong> + <strong>past participle</strong> (3. Verbform).",
@@ -1044,56 +1561,316 @@
       "<em>She <strong>has lived</strong> here <strong>for</strong> ten years.</em>",
       "<em>They <strong>haven't arrived yet</strong>.</em>"
     ],
-    "practice": [
+    "sections": [
       {
-        "q": "I ___ my keys — I can't find them.",
-        "options": [
-          "lost",
-          "have lost",
-          "lose"
-        ],
-        "answer": "have lost",
-        "why": "Folge bis jetzt spürbar, kein Zeitpunkt → Present Perfect: have + 3. Verbform."
+        "h2": "Bildung: have/has + past participle",
+        "body": "Die 3. Person Singular (he/she/it) nimmt <strong>has</strong>, alle anderen <strong>have</strong>.",
+        "list": [
+          "<em>I/you/we/they <strong>have</strong> + 3. Verbform</em> — <em>he/she/it <strong>has</strong> + 3. Verbform</em>.",
+          "Regelmäßige Verben: <em>have finished, has worked</em>.",
+          "Unregelmäßige Verben: <em>have been, has seen, have written</em>.",
+          "Verneinung: <strong>haven't/hasn't</strong> + 3. Verbform. Frage: <strong>Have/Has</strong> + Subjekt + 3. Verbform?"
+        ]
       },
       {
-        "q": "She has lived here ___ 2015.",
-        "options": [
-          "since",
-          "for",
-          "from"
-        ],
-        "answer": "since",
-        "why": "since + Zeitpunkt (2015)."
+        "h2": "Present Perfect vs Simple Past — der Haupt-Unterschied",
+        "body": "Das ist der wichtigste Unterschied für deutsche Lernende, weil das Deutsche diese Trennung nicht so macht: Steht ein <strong>genauer Zeitpunkt</strong> im Satz, muss Simple Past stehen — sonst Present Perfect.",
+        "list": [
+          "✓ <em>I <strong>have seen</strong> that film.</em> — irgendwann, kein Zeitpunkt genannt.",
+          "✓ <em>I <strong>saw</strong> that film last week.</em> — genauer Zeitpunkt genannt → Simple Past.",
+          "✗ <em>I have seen him yesterday.</em> — „yesterday“ ist ein Zeitpunkt, das verlangt Simple Past."
+        ]
       },
       {
-        "q": "We have known each other ___ five years.",
-        "options": [
-          "since",
-          "for",
-          "during"
-        ],
-        "answer": "for",
-        "why": "for + Zeitraum (five years)."
+        "h2": "since und for",
+        "body": "Beide beschreiben, wie lange etwas schon andauert, aber auf unterschiedliche Weise.",
+        "list": [
+          "<strong>since</strong> + Zeitpunkt, ab dem etwas begann — „<em>since 2019</em>“, „<em>since Monday</em>“.",
+          "<strong>for</strong> + Zeitraum/Dauer — „<em>for three years</em>“, „<em>for a long time</em>“.",
+          "<em>She has lived here <strong>since</strong> 2015.</em> / <em>She has lived here <strong>for</strong> ten years.</em>"
+        ]
       },
       {
-        "q": "Have you ever ___ to Japan?",
-        "options": [
-          "been",
-          "was",
-          "went"
-        ],
-        "answer": "been",
-        "why": "Present Perfect mit ever: have + been."
+        "h2": "Present Perfect Progressive",
+        "body": "Für Handlungen, die <strong>seit einiger Zeit andauern</strong> und die Dauer/den Prozess betonen, nicht nur das Ergebnis: <em>have/has been</em> + <em>-ing</em>.",
+        "list": [
+          "<em>I have been learning English for five years.</em> — der Prozess wird betont.",
+          "<em>I have learnt a lot of English.</em> — das Ergebnis wird betont.",
+          "Bei Verben ohne Progressive-Form (know, like, believe) bleibt es beim einfachen Present Perfect."
+        ]
       },
       {
-        "q": "He hasn't called ___.",
-        "options": [
-          "yet",
-          "already",
-          "ago"
-        ],
-        "answer": "yet",
-        "why": "yet steht in verneinten Present-Perfect-Sätzen am Satzende."
+        "h2": "Signalwörter",
+        "body": "Diese Wörter deuten oft auf Present Perfect hin, weil sie keinen konkreten Zeitpunkt nennen.",
+        "list": [
+          "<em>already, just, yet, ever, never, so far, recently, up to now</em>.",
+          "<em>yet</em> steht typischerweise am Satzende in Fragen und Verneinungen: „<em>Have you finished yet?</em>“",
+          "<em>just</em> und <em>already</em> stehen meist zwischen have/has und dem Partizip."
+        ]
+      },
+      {
+        "h2": "Typische Fehler deutscher Lernender",
+        "body": "Fast alle entstehen, weil das Deutsche „seit“/„schon“ nicht so konsequent zwischen Zeitpunkt und Zeitraum trennt.",
+        "list": [
+          "✗ <em>I have seen him yesterday.</em> → ✓ <em>I <strong>saw</strong> him yesterday.</em> — genauer Zeitpunkt verlangt Simple Past.",
+          "✗ <em>I know her since three years.</em> → ✓ <em>I <strong>have known</strong> her <strong>for</strong> three years.</em> — „seit drei Jahren“ ist ein Zeitraum, also for, nicht since — und Present Perfect statt Simple Present.",
+          "✗ <em>since</em> und <em>for</em> vertauschen — since = Zeitpunkt, for = Zeitraum."
+        ]
+      }
+    ],
+    "practiceGroups": [
+      {
+        "title": "Übung 1 — Grundform",
+        "intro": "have/has + past participle.",
+        "items": [
+          {
+            "q": "I ___ my keys — I can't find them.",
+            "options": [
+              "lost",
+              "have lost",
+              "lose"
+            ],
+            "answer": "have lost",
+            "why": "Folge bis jetzt spürbar, kein Zeitpunkt → Present Perfect: have + 3. Verbform."
+          },
+          {
+            "q": "She ___ never ___ to Japan.",
+            "options": [
+              "has / been",
+              "have / been",
+              "is / been"
+            ],
+            "answer": "has / been",
+            "why": "3. Person Singular → has, nicht have."
+          },
+          {
+            "q": "We ___ finished the project yet.",
+            "options": [
+              "haven't",
+              "don't",
+              "didn't"
+            ],
+            "answer": "haven't",
+            "why": "Verneintes Present Perfect: haven't + 3. Verbform."
+          },
+          {
+            "q": "___ you ever eaten sushi?",
+            "options": [
+              "Did",
+              "Have",
+              "Do"
+            ],
+            "answer": "Have",
+            "why": "Frage im Present Perfect: Have/Has + Subjekt + 3. Verbform."
+          },
+          {
+            "q": "He ___ his phone somewhere.",
+            "options": [
+              "has lost",
+              "lost",
+              "lose"
+            ],
+            "answer": "has lost",
+            "why": "3. Person Singular Present Perfect: has + 3. Verbform."
+          }
+        ]
+      },
+      {
+        "title": "Übung 2 — since oder for?",
+        "intro": "since + Zeitpunkt, for + Zeitraum.",
+        "items": [
+          {
+            "q": "She has lived here ___ 2015.",
+            "options": [
+              "since",
+              "for",
+              "from"
+            ],
+            "answer": "since",
+            "why": "since + Zeitpunkt (2015)."
+          },
+          {
+            "q": "We have known each other ___ five years.",
+            "options": [
+              "since",
+              "for",
+              "during"
+            ],
+            "answer": "for",
+            "why": "for + Zeitraum (five years)."
+          },
+          {
+            "q": "He has worked here ___ he left university.",
+            "options": [
+              "for",
+              "since",
+              "ago"
+            ],
+            "answer": "since",
+            "why": "since + Zeitpunkt, hier durch einen ganzen Nebensatz ausgedrückt."
+          },
+          {
+            "q": "They have been married ___ ten years now.",
+            "options": [
+              "since",
+              "for",
+              "in"
+            ],
+            "answer": "for",
+            "why": "for + Zeitraum (ten years)."
+          },
+          {
+            "q": "I haven't seen her ___ Christmas.",
+            "options": [
+              "for",
+              "since",
+              "during"
+            ],
+            "answer": "since",
+            "why": "since + Zeitpunkt (Christmas)."
+          }
+        ]
+      },
+      {
+        "title": "Übung 3 — Present Perfect oder Simple Past?",
+        "intro": "Ein genauer Zeitpunkt im Satz verlangt Simple Past.",
+        "items": [
+          {
+            "q": "I ___ that film last week.",
+            "options": [
+              "saw",
+              "have seen",
+              "see"
+            ],
+            "answer": "saw",
+            "why": "Genauer Zeitpunkt (last week) → Simple Past."
+          },
+          {
+            "q": "I ___ that film — it was great.",
+            "options": [
+              "saw",
+              "have seen",
+              "see"
+            ],
+            "answer": "have seen",
+            "why": "Kein Zeitpunkt genannt, Fokus auf die Erfahrung → Present Perfect."
+          },
+          {
+            "q": "She ___ to Paris three times.",
+            "options": [
+              "went",
+              "has been",
+              "goes"
+            ],
+            "answer": "has been",
+            "why": "Kein konkreter Zeitpunkt — es zählt die Erfahrung bis jetzt → Present Perfect."
+          },
+          {
+            "q": "We ___ Paris in 2019.",
+            "options": [
+              "visited",
+              "have visited",
+              "visit"
+            ],
+            "answer": "visited",
+            "why": "Genauer Zeitpunkt (2019) → Simple Past."
+          },
+          {
+            "q": "✗ oder ✓? „I have seen him yesterday.“",
+            "options": [
+              "✓ richtig",
+              "✗ falsch — should be „I saw him yesterday“"
+            ],
+            "answer": "✗ falsch — should be „I saw him yesterday“",
+            "why": "„yesterday“ ist ein genauer Zeitpunkt — das verlangt Simple Past, nicht Present Perfect."
+          }
+        ]
+      },
+      {
+        "title": "Übung 4 — Signalwörter & Present Perfect Progressive",
+        "intro": "already, just, yet, ever, never — und have/has been + -ing für andauernde Handlungen.",
+        "items": [
+          {
+            "q": "Have you ever ___ to Japan?",
+            "options": [
+              "been",
+              "was",
+              "went"
+            ],
+            "answer": "been",
+            "why": "Present Perfect mit ever: have + been."
+          },
+          {
+            "q": "He hasn't called ___.",
+            "options": [
+              "yet",
+              "already",
+              "ago"
+            ],
+            "answer": "yet",
+            "why": "yet steht in verneinten Present-Perfect-Sätzen typischerweise am Satzende."
+          },
+          {
+            "q": "I have ___ finished my homework.",
+            "options": [
+              "already",
+              "yet",
+              "ago"
+            ],
+            "answer": "already",
+            "why": "already steht meist zwischen have und dem Partizip."
+          },
+          {
+            "q": "She has been ___ for two hours.",
+            "options": [
+              "study",
+              "studying",
+              "studied"
+            ],
+            "answer": "studying",
+            "why": "Present Perfect Progressive betont die Dauer: have/has been + -ing."
+          },
+          {
+            "q": "They have ___ eaten — don't worry about lunch.",
+            "options": [
+              "already",
+              "yet",
+              "since"
+            ],
+            "answer": "already",
+            "why": "already zeigt, dass etwas früher als erwartet passiert ist."
+          }
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie bildet man das Present Perfect?",
+        "a": "Mit have/has + past participle (3. Verbform): I/you/we/they have finished, he/she/it has finished. Verneinung: haven't/hasn't + 3. Verbform."
+      },
+      {
+        "q": "Wann benutzt man Present Perfect statt Simple Past?",
+        "a": "Steht kein genauer Zeitpunkt im Satz und geht es um eine Erfahrung oder eine bis jetzt spürbare Folge, steht Present Perfect: „I have seen that film.“ Nennt der Satz einen konkreten Zeitpunkt (yesterday, in 2019, last week), muss Simple Past stehen: „I saw that film last week.“"
+      },
+      {
+        "q": "Was ist der Unterschied zwischen since und for?",
+        "a": "since + Zeitpunkt, ab dem etwas begann („since 2019“, „since Monday“); for + Zeitraum, wie lange etwas dauert („for three years“, „for a long time“). Beide passen zum Present Perfect."
+      },
+      {
+        "q": "Darf man Present Perfect mit „yesterday“ benutzen?",
+        "a": "Nein. „Yesterday“ ist ein genauer Zeitpunkt, und genaue Zeitpunkte verlangen Simple Past: „I saw him yesterday“, nicht „I have seen him yesterday“."
+      },
+      {
+        "q": "Was ist das Present Perfect Progressive?",
+        "a": "have/has been + -ing, für Handlungen, die seit einiger Zeit andauern und deren Prozess oder Dauer betont werden soll: „I have been learning English for five years.“ Verben wie know, like oder believe stehen dagegen nur im einfachen Present Perfect."
+      },
+      {
+        "q": "Welche Signalwörter passen zum Present Perfect?",
+        "a": "already, just, yet, ever, never, so far, recently — sie nennen keinen konkreten Zeitpunkt. „Yet“ steht meist am Ende von Fragen und verneinten Sätzen, „already“ und „just“ meist direkt vor dem Partizip."
+      },
+      {
+        "q": "Wie sagt man „seit drei Jahren“ richtig auf Englisch?",
+        "a": "„For three years“, nicht „since three years“ — „seit“ wird hier fälschlich zu „since“ übersetzt, obwohl „drei Jahre“ ein Zeitraum ist. Außerdem braucht der Satz Present Perfect, nicht Simple Present: „I have known her for three years“, nicht „I know her since three years“."
       }
     ]
   },
@@ -1113,6 +1890,7 @@
       "present-tenses"
     ],
     "reviewed": false,
+    "introH2": "Simple Past im Englischen — worum geht es?",
     "intro": "Das <strong>Simple Past</strong> beschreibt <strong>abgeschlossene Handlungen in der Vergangenheit</strong> — man sagt oder weiß, wann etwas passiert ist. Regelmäßige Verben bekommen die Endung <em>-ed</em>; unregelmäßige Verben haben eigene Formen (go → went, see → saw).",
     "rules": [
       "Regelmäßige Verben: Infinitiv + <strong>-ed</strong> — „work → work<strong>ed</strong>“.",
@@ -1126,56 +1904,311 @@
       "<em>He <strong>didn't know</strong> the answer.</em>",
       "<em><strong>Did</strong> they <strong>win</strong> the game?</em>"
     ],
-    "practice": [
+    "sections": [
       {
-        "q": "We ___ to London last year.",
-        "options": [
-          "go",
-          "went",
-          "have gone"
-        ],
-        "answer": "went",
-        "why": "Abgeschlossene Vergangenheit mit Signalwort (last year) → Simple Past (go → went)."
+        "h2": "Regelmäßige vs unregelmäßige Verben",
+        "body": "Regelmäßige Verben bekommen einfach die Endung <strong>-ed</strong>. Unregelmäßige Verben haben eigene Formen, die man auswendig lernen muss.",
+        "list": [
+          "Regelmäßig: <em>work → work<strong>ed</strong>, play → play<strong>ed</strong>, stop → stop<strong>ped</strong></em> (Konsonant verdoppelt sich nach kurzem betontem Vokal).",
+          "Unregelmäßig: <em>go → went, see → saw, buy → bought</em> — das sind die Formen in der 2. Spalte der Verbtabelle.",
+          "Endet das Verb auf -y nach Konsonant, wird -y zu -ied: <em>study → stud<strong>ied</strong></em>."
+        ]
       },
       {
-        "q": "She ___ her homework yesterday.",
-        "options": [
-          "did",
-          "does",
-          "has done"
-        ],
-        "answer": "did",
-        "why": "Signalwort yesterday → Simple Past (do → did)."
+        "h2": "Aussprache der -ed-Endung",
+        "body": "Die Endung -ed wird je nach vorangehendem Laut unterschiedlich ausgesprochen — das hört man im Englischen deutlich, auch wenn es im Deutschen keine Entsprechung gibt.",
+        "list": [
+          "/t/ nach stimmlosen Lauten: <em>work<strong>ed</strong></em>, <em>watch<strong>ed</strong></em>.",
+          "/d/ nach stimmhaften Lauten: <em>play<strong>ed</strong></em>, <em>arriv<strong>ed</strong></em>.",
+          "/ɪd/ nach t oder d: <em>want<strong>ed</strong></em>, <em>need<strong>ed</strong></em> — hier bekommt -ed eine eigene Silbe."
+        ]
       },
       {
-        "q": "They ___ the film at all.",
-        "options": [
-          "didn't like",
-          "don't like",
-          "haven't liked"
-        ],
-        "answer": "didn't like",
-        "why": "Verneinung im Simple Past: didn't + Infinitiv."
+        "h2": "Verneinung und Fragen mit did",
+        "body": "Anders als im Deutschen bekommt das Verb selbst in Verneinung und Frage keine Vergangenheitsform mehr — die Zeit steckt allein in <em>did</em>.",
+        "list": [
+          "Verneinung: <strong>didn't</strong> + Infinitiv (ohne -ed!) — „She <strong>didn't come</strong>.“",
+          "Frage: <strong>Did</strong> + Subjekt + Infinitiv — „<strong>Did</strong> you see it?“",
+          "✗ <em>Did you went?</em> — das Verb bleibt im Infinitiv, „did“ trägt die Vergangenheit schon."
+        ]
       },
       {
-        "q": "___ you see her at the party?",
-        "options": [
-          "Did",
-          "Do",
-          "Have"
-        ],
-        "answer": "Did",
-        "why": "Frage im Simple Past: did + Subjekt + Infinitiv."
+        "h2": "Signalwörter",
+        "body": "Diese Ausdrücke nennen einen abgeschlossenen Zeitpunkt in der Vergangenheit.",
+        "list": [
+          "<em>yesterday, last week/month/year, in 2010, … ago, when</em>.",
+          "<em>We visited Rome last summer.</em>",
+          "<em>He arrived three hours ago.</em>"
+        ]
       },
       {
-        "q": "He ___ a new car two weeks ago.",
-        "options": [
-          "buys",
-          "bought",
-          "has bought"
-        ],
-        "answer": "bought",
-        "why": "Signalwort ago → Simple Past (buy → bought, unregelmäßig)."
+        "h2": "Simple Past vs Present Perfect",
+        "body": "Der Test ist immer derselbe: Steht ein genauer Zeitpunkt im Satz, muss Simple Past stehen.",
+        "list": [
+          "✓ <em>I <strong>saw</strong> him yesterday.</em> — Zeitpunkt genannt.",
+          "✓ <em>I <strong>have seen</strong> him before.</em> — kein Zeitpunkt genannt.",
+          "Mehr dazu auf der Present-Perfect-Seite dieser Sammlung."
+        ]
+      },
+      {
+        "h2": "Typische Fehler",
+        "body": "Die meisten Fehler entstehen, weil die Vergangenheit doppelt markiert wird.",
+        "list": [
+          "✗ <em>Did you went to the party?</em> → ✓ <em>Did you <strong>go</strong> to the party?</em> — nach did steht der Infinitiv, nicht die Past-Form.",
+          "✗ Die -ed-Endung bei regelmäßigen Verben vergessen: ✗ <em>We visit Rome last year.</em> → ✓ <em>We visit<strong>ed</strong> Rome last year.</em>",
+          "✗ <em>was/were</em> verwechseln — was für I/he/she/it, were für you/we/they."
+        ]
+      }
+    ],
+    "practiceGroups": [
+      {
+        "title": "Übung 1 — Regelmäßige Verben",
+        "intro": "Infinitiv + -ed.",
+        "items": [
+          {
+            "q": "We ___ to London last year.",
+            "options": [
+              "visit",
+              "visited",
+              "have visited"
+            ],
+            "answer": "visited",
+            "why": "Signalwort last year → Simple Past, regelmäßiges Verb: visit + ed."
+          },
+          {
+            "q": "She ___ her homework yesterday.",
+            "options": [
+              "finish",
+              "finished",
+              "finishes"
+            ],
+            "answer": "finished",
+            "why": "Signalwort yesterday → Simple Past."
+          },
+          {
+            "q": "They ___ hard for the exam.",
+            "options": [
+              "study",
+              "studied",
+              "studies"
+            ],
+            "answer": "studied",
+            "why": "-y nach Konsonant wird zu -ied: study → studied."
+          },
+          {
+            "q": "He ___ the door and left.",
+            "options": [
+              "stop",
+              "stoped",
+              "stopped"
+            ],
+            "answer": "stopped",
+            "why": "Kurzer betonter Vokal vor einem Konsonanten → Konsonant verdoppeln: stop → stopped."
+          },
+          {
+            "q": "I ___ my keys on the table.",
+            "options": [
+              "place",
+              "placed",
+              "placing"
+            ],
+            "answer": "placed",
+            "why": "Regelmäßiges Verb, endet bereits auf -e: nur -d anhängen."
+          }
+        ]
+      },
+      {
+        "title": "Übung 2 — Unregelmäßige Verben",
+        "intro": "Eigene Formen — Simple Past aus der 2. Spalte der Verbtabelle.",
+        "items": [
+          {
+            "q": "We ___ to London last year.",
+            "options": [
+              "go",
+              "went",
+              "have gone"
+            ],
+            "answer": "went",
+            "why": "Unregelmäßiges Verb: go → went."
+          },
+          {
+            "q": "He ___ a new car two weeks ago.",
+            "options": [
+              "buys",
+              "bought",
+              "has bought"
+            ],
+            "answer": "bought",
+            "why": "Signalwort ago → Simple Past (buy → bought, unregelmäßig)."
+          },
+          {
+            "q": "She ___ the letter this morning.",
+            "options": [
+              "write",
+              "wrote",
+              "written"
+            ],
+            "answer": "wrote",
+            "why": "Unregelmäßiges Verb: write → wrote."
+          },
+          {
+            "q": "They ___ a beautiful sunset.",
+            "options": [
+              "see",
+              "saw",
+              "seen"
+            ],
+            "answer": "saw",
+            "why": "Unregelmäßiges Verb: see → saw."
+          },
+          {
+            "q": "I ___ him at the station.",
+            "options": [
+              "meet",
+              "met",
+              "meets"
+            ],
+            "answer": "met",
+            "why": "Unregelmäßiges Verb: meet → met."
+          }
+        ]
+      },
+      {
+        "title": "Übung 3 — Verneinung und Fragen mit did",
+        "intro": "Nach did steht immer der Infinitiv, nie die Past-Form.",
+        "items": [
+          {
+            "q": "They ___ the film at all.",
+            "options": [
+              "didn't like",
+              "don't like",
+              "haven't liked"
+            ],
+            "answer": "didn't like",
+            "why": "Verneinung im Simple Past: didn't + Infinitiv."
+          },
+          {
+            "q": "___ you see her at the party?",
+            "options": [
+              "Did",
+              "Do",
+              "Have"
+            ],
+            "answer": "Did",
+            "why": "Frage im Simple Past: did + Subjekt + Infinitiv."
+          },
+          {
+            "q": "She ___ come to the meeting.",
+            "options": [
+              "didn't",
+              "wasn't",
+              "doesn't"
+            ],
+            "answer": "didn't",
+            "why": "Verneinung mit didn't vor dem Infinitiv „come“."
+          },
+          {
+            "q": "✗ oder ✓? „Did you went to the shop?“",
+            "options": [
+              "✓ richtig",
+              "✗ falsch — should be „Did you go“"
+            ],
+            "answer": "✗ falsch — should be „Did you go“",
+            "why": "Nach did steht der Infinitiv, nicht die Past-Form — did trägt die Vergangenheit schon."
+          },
+          {
+            "q": "___ they arrive on time?",
+            "options": [
+              "Did",
+              "Were",
+              "Have"
+            ],
+            "answer": "Did",
+            "why": "Frage im Simple Past mit einem normalen Verb (arrive) braucht did."
+          }
+        ]
+      },
+      {
+        "title": "Übung 4 — was/were und Signalwörter",
+        "intro": "was für I/he/she/it, were für you/we/they.",
+        "items": [
+          {
+            "q": "I ___ at home when it happened.",
+            "options": [
+              "was",
+              "were",
+              "am"
+            ],
+            "answer": "was",
+            "why": "was steht nach I/he/she/it."
+          },
+          {
+            "q": "They ___ very tired after the trip.",
+            "options": [
+              "was",
+              "were",
+              "are"
+            ],
+            "answer": "were",
+            "why": "were steht nach you/we/they."
+          },
+          {
+            "q": "We ___ in Paris in 2018.",
+            "options": [
+              "was",
+              "were",
+              "are"
+            ],
+            "answer": "were",
+            "why": "were nach we."
+          },
+          {
+            "q": "It ___ raining all day yesterday.",
+            "options": [
+              "was",
+              "were",
+              "is"
+            ],
+            "answer": "was",
+            "why": "was steht nach it."
+          },
+          {
+            "q": "___ you at school on Monday?",
+            "options": [
+              "Was",
+              "Were",
+              "Did"
+            ],
+            "answer": "Were",
+            "why": "were nach you, auch in der Frage."
+          }
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie bildet man das Simple Past bei regelmäßigen Verben?",
+        "a": "Mit der Endung -ed: work → worked, play → played. Endet das Verb auf -e, wird nur -d angehängt (place → placed); nach kurzem betontem Vokal + Konsonant wird der Konsonant verdoppelt (stop → stopped); -y nach Konsonant wird zu -ied (study → studied)."
+      },
+      {
+        "q": "Wie erkennt man unregelmäßige Verben?",
+        "a": "Sie haben eigene Formen statt -ed, die man auswendig lernen muss: go → went, see → saw, buy → bought. Sie stehen in der 2. Spalte der Verbtabelle."
+      },
+      {
+        "q": "Wie bildet man Verneinung und Frage im Simple Past?",
+        "a": "Mit did/didn't + Infinitiv, auch bei unregelmäßigen Verben: „She didn't come“, „Did you see it?“ Das Verb selbst bleibt im Infinitiv, denn did trägt die Vergangenheit schon."
+      },
+      {
+        "q": "Warum heißt es „Did you go“ und nicht „Did you went“?",
+        "a": "Weil did die Vergangenheit bereits ausdrückt — das Verb danach bleibt im Infinitiv. „Did you went“ markiert die Vergangenheit doppelt und ist falsch."
+      },
+      {
+        "q": "Wann benutzt man was und wann were?",
+        "a": "Was steht nach I/he/she/it, were nach you/we/they — auch in Fragen und Verneinungen: „I was at home“, „They were tired“, „Were you there?“"
+      },
+      {
+        "q": "Welche Signalwörter passen zum Simple Past?",
+        "a": "yesterday, last week/month/year, in 2010, … ago, when — sie nennen einen abgeschlossenen, meist konkreten Zeitpunkt in der Vergangenheit."
       }
     ]
   },
@@ -1195,6 +2228,7 @@
       "present-tenses"
     ],
     "reviewed": false,
+    "introH2": "Verknüpfungswörter im Englischen — worum geht es?",
     "intro": "<strong>Verknüpfungswörter</strong> (<em>linking words</em>) verbinden Sätze und Ideen logisch — sie zeigen Gegensatz, Grund, Folge oder eine Ergänzung. Sie machen Texte flüssiger und sind besonders im Aufsatz wichtig.",
     "rules": [
       "Gegensatz: <em>however, although, in contrast, nevertheless, on the other hand</em>.",
@@ -1208,56 +2242,308 @@
       "<em><strong>Although</strong> she was tired, she kept working.</em>",
       "<em>He trained hard. <strong>As a result</strong>, he won.</em>"
     ],
-    "practice": [
+    "sections": [
       {
-        "q": "It was expensive. ___, we bought it.",
-        "options": [
-          "However",
-          "Because",
-          "Therefore"
-        ],
-        "answer": "However",
-        "why": "Gegensatz zwischen zwei Sätzen → however."
+        "h2": "Gegensatz ausdrücken",
+        "body": "Die häufigste Gruppe — aber Vorsicht, sie folgen nicht alle derselben Satzstruktur.",
+        "list": [
+          "<strong>however, nevertheless, on the other hand</strong> — leiten einen neuen, eigenständigen Satz ein: „It was raining. <strong>However</strong>, we went out.“",
+          "<strong>although, even though</strong> — leiten einen Nebensatz ein: „<strong>Although</strong> she was tired, she kept working.“",
+          "<strong>despite, in spite of</strong> — stehen vor einem Nomen oder einer -ing-Form, nicht vor einem ganzen Satz: „<strong>Despite</strong> the rain, we went out.“ / „<strong>Despite</strong> being tired, she kept working.“"
+        ]
       },
       {
-        "q": "___ it was late, they continued.",
-        "options": [
-          "Although",
-          "However",
-          "Therefore"
-        ],
-        "answer": "Although",
-        "why": "although + Nebensatz drückt einen Gegensatz aus."
+        "h2": "Grund und Folge",
+        "body": "Grund und Folge sind zwei verschiedene Richtungen — nicht verwechseln.",
+        "list": [
+          "Grund: <em>because, since, as</em> — „<strong>Because</strong> it was raining, we stayed inside.“",
+          "Folge: <em>therefore, so, as a result, consequently</em> — „It was raining. <strong>Therefore</strong>, we stayed inside.“",
+          "„because“ leitet einen Nebensatz ein und beantwortet „warum?“; „therefore“ steht am Satzanfang eines neuen Satzes und beantwortet „was folgt daraus?“."
+        ]
       },
       {
-        "q": "She studied hard. ___, she passed.",
-        "options": [
-          "Therefore",
-          "However",
-          "Although"
-        ],
-        "answer": "Therefore",
-        "why": "Folge/Ergebnis → therefore."
+        "h2": "Ergänzung",
+        "body": "Diese Wörter fügen einen weiteren Punkt hinzu, ohne Gegensatz oder Folge auszudrücken.",
+        "list": [
+          "<em>furthermore, moreover, in addition, also, besides</em>.",
+          "„He is clever. <strong>Furthermore</strong>, he is very kind.“"
+        ]
       },
       {
-        "q": "He is clever. ___, he is very kind.",
-        "options": [
-          "Furthermore",
-          "However",
-          "Because"
-        ],
-        "answer": "Furthermore",
-        "why": "Ergänzung eines weiteren Punktes → furthermore."
+        "h2": "despite vs although — die Konstruktion, die am meisten verwechselt wird",
+        "body": "Beide bedeuten „trotz/obwohl“, verlangen aber unterschiedliche Satzstrukturen.",
+        "list": [
+          "✓ <em><strong>Although</strong> it was raining</em>, we went out.</em> — although + vollständiger Nebensatz (Subjekt + Verb).",
+          "✓ <em><strong>Despite</strong> the rain</em>, we went out.</em> — despite + Nomen, kein eigenes Verb.",
+          "✗ <em>Despite it was raining, …</em> — falsch: despite steht nie vor einem vollständigen Satz.",
+          "✗ <em>Although the rain, …</em> — falsch: although braucht ein eigenes Verb im Nebensatz."
+        ]
       },
       {
-        "q": "We stayed inside ___ it was raining.",
-        "options": [
-          "because",
-          "however",
-          "therefore"
-        ],
-        "answer": "because",
-        "why": "Grund → because + Satz."
+        "h2": "Satzzeichen bei Verknüpfungswörtern",
+        "body": "Steht das Verknüpfungswort am Satzanfang, folgt fast immer ein Komma.",
+        "list": [
+          "✓ <em><strong>However</strong>, we went out.</em>",
+          "✓ <em><strong>Although</strong> she was tired, she kept working.</em> — Komma nach dem Nebensatz, wenn er zuerst steht.",
+          "✓ <em>She kept working <strong>although</strong> she was tired.</em> — kein Komma, wenn der Nebensatz zuletzt steht."
+        ]
+      },
+      {
+        "h2": "Typische Fehler",
+        "body": "Fast immer geht es um die Verwechslung von despite/in spite of mit although.",
+        "list": [
+          "✗ <em>despite of</em> — es heißt entweder „<strong>despite</strong>“ oder „<strong>in spite of</strong>“, nie beides zusammen.",
+          "✗ <em>Although</em> + Nomen ohne Verb — although braucht immer einen vollständigen Nebensatz.",
+          "✗ <em>Despite</em> + ganzer Satz — despite braucht ein Nomen oder eine -ing-Form, kein eigenes Subjekt+Verb."
+        ]
+      }
+    ],
+    "practiceGroups": [
+      {
+        "title": "Übung 1 — Gegensatz",
+        "intro": "however/nevertheless für einen neuen Satz, although für einen Nebensatz.",
+        "items": [
+          {
+            "q": "It was expensive. ___, we bought it.",
+            "options": [
+              "However",
+              "Because",
+              "Therefore"
+            ],
+            "answer": "However",
+            "why": "Gegensatz zwischen zwei Sätzen → however."
+          },
+          {
+            "q": "___ it was late, they continued.",
+            "options": [
+              "Although",
+              "However",
+              "Therefore"
+            ],
+            "answer": "Although",
+            "why": "although + Nebensatz drückt einen Gegensatz aus."
+          },
+          {
+            "q": "___ the traffic, we arrived on time.",
+            "options": [
+              "Although",
+              "Despite",
+              "Because"
+            ],
+            "answer": "Despite",
+            "why": "despite + Nomen (the traffic), kein eigener Satz."
+          },
+          {
+            "q": "He is very busy. He ___ finds time to help.",
+            "options": [
+              "nevertheless",
+              "because",
+              "so"
+            ],
+            "answer": "nevertheless",
+            "why": "Gegensatz zwischen zwei Sätzen → nevertheless."
+          },
+          {
+            "q": "___ being exhausted, she finished the marathon.",
+            "options": [
+              "Although",
+              "Despite",
+              "Because"
+            ],
+            "answer": "Despite",
+            "why": "despite + -ing-Form (being exhausted)."
+          }
+        ]
+      },
+      {
+        "title": "Übung 2 — Grund und Folge",
+        "intro": "because/since/as für den Grund, therefore/so/as a result für die Folge.",
+        "items": [
+          {
+            "q": "She studied hard. ___, she passed.",
+            "options": [
+              "Therefore",
+              "However",
+              "Although"
+            ],
+            "answer": "Therefore",
+            "why": "Folge/Ergebnis → therefore."
+          },
+          {
+            "q": "We stayed inside ___ it was raining.",
+            "options": [
+              "because",
+              "however",
+              "therefore"
+            ],
+            "answer": "because",
+            "why": "Grund → because + Satz."
+          },
+          {
+            "q": "He trained hard. ___, he won.",
+            "options": [
+              "As a result",
+              "Although",
+              "Because"
+            ],
+            "answer": "As a result",
+            "why": "Folge/Ergebnis → as a result."
+          },
+          {
+            "q": "___ she was ill, she stayed at home.",
+            "options": [
+              "Since",
+              "Therefore",
+              "Furthermore"
+            ],
+            "answer": "Since",
+            "why": "Grund → since + Satz, hier gleichbedeutend mit because."
+          },
+          {
+            "q": "The roads were icy. ___, many drivers were careful.",
+            "options": [
+              "Consequently",
+              "Since",
+              "Although"
+            ],
+            "answer": "Consequently",
+            "why": "Folge → consequently, gleichbedeutend mit therefore."
+          }
+        ]
+      },
+      {
+        "title": "Übung 3 — Ergänzung",
+        "intro": "furthermore/moreover/in addition fügen einen weiteren Punkt hinzu.",
+        "items": [
+          {
+            "q": "He is clever. ___, he is very kind.",
+            "options": [
+              "Furthermore",
+              "However",
+              "Because"
+            ],
+            "answer": "Furthermore",
+            "why": "Ergänzung eines weiteren Punktes → furthermore."
+          },
+          {
+            "q": "The hotel was cheap. ___, it was close to the beach.",
+            "options": [
+              "Moreover",
+              "Although",
+              "Therefore"
+            ],
+            "answer": "Moreover",
+            "why": "Ergänzung → moreover."
+          },
+          {
+            "q": "She speaks French. ___, she speaks Spanish.",
+            "options": [
+              "In addition",
+              "However",
+              "Because"
+            ],
+            "answer": "In addition",
+            "why": "Ergänzung → in addition."
+          },
+          {
+            "q": "The job is well paid. ___, it offers flexible hours.",
+            "options": [
+              "Also",
+              "Despite",
+              "So"
+            ],
+            "answer": "Also",
+            "why": "Ergänzung eines weiteren Punktes → also."
+          },
+          {
+            "q": "The plan is expensive. ___, it will take a long time.",
+            "options": [
+              "Besides",
+              "Therefore",
+              "Since"
+            ],
+            "answer": "Besides",
+            "why": "Ergänzung eines weiteren Nachteils → besides."
+          }
+        ]
+      },
+      {
+        "title": "Übung 4 — despite vs although & Fehler erkennen",
+        "intro": "despite/in spite of + Nomen oder -ing; although + vollständiger Satz.",
+        "items": [
+          {
+            "q": "✗ oder ✓? „Despite it was raining, we went out.“",
+            "options": [
+              "✓ richtig",
+              "✗ falsch — should be „Although it was raining“ or „Despite the rain“"
+            ],
+            "answer": "✗ falsch — should be „Although it was raining“ or „Despite the rain“",
+            "why": "despite steht nie vor einem vollständigen Satz mit eigenem Verb."
+          },
+          {
+            "q": "✗ oder ✓? „Despite of the rain, we went out.“",
+            "options": [
+              "✓ richtig",
+              "✗ falsch — should be „Despite the rain“ or „In spite of the rain“"
+            ],
+            "answer": "✗ falsch — should be „Despite the rain“ or „In spite of the rain“",
+            "why": "„despite of“ gibt es nicht — entweder despite oder in spite of, nie kombiniert."
+          },
+          {
+            "q": "Choose the correct sentence.",
+            "options": [
+              "Although the cold weather, we went for a walk.",
+              "Despite the cold weather, we went for a walk."
+            ],
+            "answer": "Despite the cold weather, we went for a walk.",
+            "why": "Vor einem Nomen ohne eigenes Verb steht despite, nicht although."
+          },
+          {
+            "q": "Choose the correct sentence.",
+            "options": [
+              "Although it was cold, we went for a walk.",
+              "Despite it was cold, we went for a walk."
+            ],
+            "answer": "Although it was cold, we went for a walk.",
+            "why": "Vor einem vollständigen Satz mit eigenem Verb steht although, nicht despite."
+          },
+          {
+            "q": "___ having little experience, she got the job.",
+            "options": [
+              "Despite",
+              "Although",
+              "Because"
+            ],
+            "answer": "Despite",
+            "why": "despite + -ing-Form (having), kein eigener Nebensatz."
+          }
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "Was ist der Unterschied zwischen however und although?",
+        "a": "„However“ leitet einen neuen, eigenständigen Satz ein: „It was raining. However, we went out.“ „Although“ leitet einen Nebensatz mit eigenem Subjekt und Verb ein: „Although it was raining, we went out.“ Beide bedeuten inhaltlich einen Gegensatz, aber die Satzstruktur ist unterschiedlich."
+      },
+      {
+        "q": "Was ist der Unterschied zwischen despite und although?",
+        "a": "Despite (und in spite of) stehen vor einem Nomen oder einer -ing-Form, nie vor einem vollständigen Satz: „Despite the rain“, „Despite being tired“. Although braucht immer einen eigenen Nebensatz mit Subjekt und Verb: „Although it was raining“."
+      },
+      {
+        "q": "Heißt es „despite“ oder „despite of“?",
+        "a": "Nur „despite“ — „despite of“ gibt es nicht. Wer die Präposition „of“ mit dabei haben möchte, nutzt stattdessen „in spite of“: „despite the rain“ oder „in spite of the rain“, nie „despite of the rain“."
+      },
+      {
+        "q": "Was ist der Unterschied zwischen because und therefore?",
+        "a": "„Because“ nennt den Grund und leitet einen Nebensatz ein: „We stayed inside because it was raining.“ „Therefore“ nennt die Folge und steht am Anfang eines neuen Satzes: „It was raining. Therefore, we stayed inside.“"
+      },
+      {
+        "q": "Wann steht ein Komma bei Verknüpfungswörtern?",
+        "a": "Steht das Wort am Satzanfang (however, therefore, furthermore), folgt fast immer ein Komma. Steht ein although-Nebensatz zuerst, folgt nach dem Komma der Hauptsatz; steht er am Ende, entfällt das Komma."
+      },
+      {
+        "q": "Welche Wörter drücken eine Ergänzung aus?",
+        "a": "furthermore, moreover, in addition, also, besides — sie fügen einen weiteren Punkt hinzu, ohne einen Gegensatz oder eine Folge auszudrücken: „He is clever. Furthermore, he is very kind.“"
       }
     ]
   },
@@ -1277,6 +2563,7 @@
       "future-tenses"
     ],
     "reviewed": false,
+    "introH2": "Present Tenses im Englischen — worum geht es?",
     "intro": "Im Englischen gibt es zwei wichtige Gegenwartszeiten: das <strong>Simple Present</strong> für Gewohnheiten und feste Fakten, und das <strong>Present Progressive</strong> (<em>-ing</em>) für etwas, das <strong>gerade jetzt</strong> passiert.",
     "rules": [
       "Simple Present: Infinitiv, in der 3. Person Singular mit <strong>-s</strong> — „she work<strong>s</strong>“.",
@@ -1290,56 +2577,310 @@
       "<em>Look! It <strong>is raining</strong>.</em>",
       "<em>They <strong>don't live</strong> here.</em>"
     ],
-    "practice": [
+    "sections": [
       {
-        "q": "He ___ football every weekend.",
-        "options": [
-          "play",
-          "plays",
-          "is playing"
-        ],
-        "answer": "plays",
-        "why": "Gewohnheit, 3. Person Singular → plays (-s)."
+        "h2": "Simple Present: Bildung und Gebrauch",
+        "body": "Für Gewohnheiten, feste Fakten und Dinge, die immer oder regelmäßig gelten.",
+        "list": [
+          "Infinitiv für alle Personen — nur die 3. Person Singular bekommt <strong>-s</strong>: „she work<strong>s</strong>“, „he play<strong>s</strong>“.",
+          "Verneinung: <strong>don't/doesn't</strong> + Infinitiv. Frage: <strong>Do/Does</strong> + Subjekt + Infinitiv?",
+          "<em>The sun <strong>rises</strong> in the east.</em> — feste Tatsache. <em>She <strong>works</strong> every day.</em> — Gewohnheit."
+        ]
       },
       {
-        "q": "Listen! The baby ___.",
-        "options": [
-          "cries",
-          "is crying",
-          "cry"
-        ],
-        "answer": "is crying",
-        "why": "Gerade jetzt (Listen!) → Present Progressive: is + crying."
+        "h2": "Present Progressive: Bildung und Gebrauch",
+        "body": "Für etwas, das <strong>gerade jetzt</strong> passiert oder eine vorübergehende Situation.",
+        "list": [
+          "<strong>am/is/are</strong> + <strong>-ing</strong> — „they <strong>are working</strong>“, „she <strong>is reading</strong>“.",
+          "Für den Moment des Sprechens: <em>Look! It <strong>is raining</strong>.</em>",
+          "Für vorübergehende Phasen: <em>I'm reading a great book this month.</em> (nicht für immer, nur gerade jetzt)."
+        ]
       },
       {
-        "q": "We ___ TV at the moment.",
-        "options": [
-          "watch",
-          "are watching",
-          "watches"
-        ],
-        "answer": "are watching",
-        "why": "at the moment → Present Progressive."
+        "h2": "State verbs — Verben, die normalerweise nicht im Progressive stehen",
+        "body": "Manche Verben beschreiben einen Zustand statt eine Handlung und stehen deshalb fast nie mit -ing, egal wie „gerade jetzt“ es klingt.",
+        "list": [
+          "Meinung/Gedanken: <em>know, believe, understand, think (=meinen), remember</em>.",
+          "Gefühle: <em>like, love, hate, want, prefer</em>.",
+          "Besitz und Sinne: <em>have (=besitzen), belong, see, hear, own</em>.",
+          "✓ <em>I <strong>know</strong> the answer.</em> — nicht „I am knowing“.",
+          "✓ <em>I <strong>like</strong> this song.</em> — nicht „I am liking“."
+        ]
       },
       {
-        "q": "She ___ coffee.",
-        "options": [
-          "doesn't like",
-          "don't like",
-          "isn't liking"
-        ],
-        "answer": "doesn't like",
-        "why": "Verneinung Simple Present, 3. Person → doesn't + Infinitiv."
+        "h2": "Signalwörter im Vergleich",
+        "body": "Diese Wörter helfen bei der Entscheidung, welche Zeit gemeint ist.",
+        "list": [
+          "Simple Present: <em>always, usually, often, sometimes, every day, never, on Mondays</em>.",
+          "Present Progressive: <em>now, at the moment, right now, Look!, Listen!, currently, these days</em>."
+        ]
       },
       {
-        "q": "They usually ___ by bus.",
-        "options": [
-          "travel",
-          "travels",
-          "are travelling"
-        ],
-        "answer": "travel",
-        "why": "usually → Gewohnheit → Simple Present."
+        "h2": "Present Progressive für die Zukunft",
+        "body": "Für schon feste, geplante Vereinbarungen steht das Present Progressive, obwohl es um die Zukunft geht.",
+        "list": [
+          "<em>I'm meeting him tomorrow at five.</em> — die Verabredung steht bereits fest.",
+          "<em>We're flying to Spain next week.</em> — der Flug ist schon gebucht.",
+          "Ohne feste Vereinbarung steht meist „will“ oder „going to“ (siehe die Future-Tenses-Übungen)."
+        ]
+      },
+      {
+        "h2": "Typische Fehler",
+        "body": "Der klassische Fehler ist, state verbs ins Progressive zu setzen, weil es sich „gerade jetzt“ anfühlt.",
+        "list": [
+          "✗ <em>I am liking this.</em> → ✓ <em>I <strong>like</strong> this.</em> — like ist ein state verb.",
+          "✗ <em>She know the answer.</em> → ✓ <em>She <strong>knows</strong> the answer.</em> — -s in der 3. Person Singular vergessen.",
+          "✗ <em>They working now.</em> → ✓ <em>They <strong>are working</strong> now.</em> — das Hilfsverb be im Progressive vergessen."
+        ]
+      }
+    ],
+    "practiceGroups": [
+      {
+        "title": "Übung 1 — Simple Present",
+        "intro": "Infinitiv, 3. Person Singular mit -s.",
+        "items": [
+          {
+            "q": "He ___ football every weekend.",
+            "options": [
+              "play",
+              "plays",
+              "is playing"
+            ],
+            "answer": "plays",
+            "why": "Gewohnheit, 3. Person Singular → plays (-s)."
+          },
+          {
+            "q": "She ___ coffee.",
+            "options": [
+              "doesn't like",
+              "don't like",
+              "isn't liking"
+            ],
+            "answer": "doesn't like",
+            "why": "Verneinung Simple Present, 3. Person → doesn't + Infinitiv."
+          },
+          {
+            "q": "They usually ___ by bus.",
+            "options": [
+              "travel",
+              "travels",
+              "are travelling"
+            ],
+            "answer": "travel",
+            "why": "usually → Gewohnheit → Simple Present."
+          },
+          {
+            "q": "___ she work on Saturdays?",
+            "options": [
+              "Does",
+              "Is",
+              "Do"
+            ],
+            "answer": "Does",
+            "why": "Frage im Simple Present, 3. Person → does."
+          },
+          {
+            "q": "Water ___ at 100 degrees Celsius.",
+            "options": [
+              "boil",
+              "boils",
+              "is boiling"
+            ],
+            "answer": "boils",
+            "why": "Feste Tatsache, 3. Person Singular → boils."
+          }
+        ]
+      },
+      {
+        "title": "Übung 2 — Present Progressive",
+        "intro": "am/is/are + -ing, für gerade jetzt.",
+        "items": [
+          {
+            "q": "Listen! The baby ___.",
+            "options": [
+              "cries",
+              "is crying",
+              "cry"
+            ],
+            "answer": "is crying",
+            "why": "Gerade jetzt (Listen!) → Present Progressive: is + crying."
+          },
+          {
+            "q": "We ___ TV at the moment.",
+            "options": [
+              "watch",
+              "are watching",
+              "watches"
+            ],
+            "answer": "are watching",
+            "why": "at the moment → Present Progressive."
+          },
+          {
+            "q": "Look! It ___.",
+            "options": [
+              "rains",
+              "is raining",
+              "rain"
+            ],
+            "answer": "is raining",
+            "why": "Look! zeigt den Moment des Sprechens → Present Progressive."
+          },
+          {
+            "q": "I ___ a really interesting book this month.",
+            "options": [
+              "read",
+              "am reading",
+              "reads"
+            ],
+            "answer": "am reading",
+            "why": "Vorübergehende Phase (this month) → Present Progressive."
+          },
+          {
+            "q": "She ___ her homework right now.",
+            "options": [
+              "does",
+              "is doing",
+              "do"
+            ],
+            "answer": "is doing",
+            "why": "right now → Present Progressive."
+          }
+        ]
+      },
+      {
+        "title": "Übung 3 — State verbs",
+        "intro": "Diese Verben stehen fast nie im Progressive, auch wenn es \"gerade jetzt\" klingt.",
+        "items": [
+          {
+            "q": "I ___ the answer.",
+            "options": [
+              "know",
+              "am knowing",
+              "knows"
+            ],
+            "answer": "know",
+            "why": "know ist ein state verb — steht nicht im Progressive."
+          },
+          {
+            "q": "She ___ this song a lot.",
+            "options": [
+              "likes",
+              "is liking",
+              "like"
+            ],
+            "answer": "likes",
+            "why": "like ist ein state verb — Simple Present, nicht Progressive."
+          },
+          {
+            "q": "This bag ___ to my sister.",
+            "options": [
+              "belongs",
+              "is belonging",
+              "belong"
+            ],
+            "answer": "belongs",
+            "why": "belong ist ein state verb (Besitz) — kein Progressive."
+          },
+          {
+            "q": "I ___ what you mean.",
+            "options": [
+              "understand",
+              "am understanding",
+              "understands"
+            ],
+            "answer": "understand",
+            "why": "understand ist ein state verb — kein Progressive."
+          },
+          {
+            "q": "We ___ a new car — it's red.",
+            "options": [
+              "have",
+              "are having",
+              "has"
+            ],
+            "answer": "have",
+            "why": "„have“ im Sinne von besitzen ist ein state verb — kein Progressive."
+          }
+        ]
+      },
+      {
+        "title": "Übung 4 — Gemischte Übung & Fehler erkennen",
+        "intro": "Entscheide zwischen Simple Present und Present Progressive.",
+        "items": [
+          {
+            "q": "I'm meeting him ___ at five.",
+            "options": [
+              "always",
+              "tomorrow",
+              "usually"
+            ],
+            "answer": "tomorrow",
+            "why": "Present Progressive für eine feste Verabredung in der Zukunft."
+          },
+          {
+            "q": "✗ oder ✓? „I am liking this song.“",
+            "options": [
+              "✓ richtig",
+              "✗ falsch — should be „I like this song“"
+            ],
+            "answer": "✗ falsch — should be „I like this song“",
+            "why": "like ist ein state verb und steht nicht im Progressive."
+          },
+          {
+            "q": "✗ oder ✓? „She know the answer.“",
+            "options": [
+              "✓ richtig",
+              "✗ falsch — should be „She knows the answer“"
+            ],
+            "answer": "✗ falsch — should be „She knows the answer“",
+            "why": "-s in der 3. Person Singular fehlt."
+          },
+          {
+            "q": "He usually ___ tea, but right now he ___ coffee.",
+            "options": [
+              "drinks / is drinking",
+              "is drinking / drinks",
+              "drink / drinking"
+            ],
+            "answer": "drinks / is drinking",
+            "why": "Gewohnheit (usually) → Simple Present; gerade jetzt (right now) → Present Progressive."
+          },
+          {
+            "q": "✗ oder ✓? „They working now.“",
+            "options": [
+              "✓ richtig",
+              "✗ falsch — should be „They are working now“"
+            ],
+            "answer": "✗ falsch — should be „They are working now“",
+            "why": "Das Hilfsverb „be“ fehlt — Present Progressive braucht am/is/are + -ing."
+          }
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie bildet man das Simple Present?",
+        "a": "Mit dem Infinitiv für alle Personen — nur die 3. Person Singular (he/she/it) bekommt ein -s: „she works“, „he plays“. Verneinung: don't/doesn't + Infinitiv."
+      },
+      {
+        "q": "Wie bildet man das Present Progressive?",
+        "a": "Mit am/is/are + -ing: „I am working“, „she is reading“, „they are playing“. Für den Moment des Sprechens oder eine vorübergehende Situation."
+      },
+      {
+        "q": "Was sind state verbs?",
+        "a": "Verben, die einen Zustand statt eine Handlung beschreiben — know, believe, understand, like, love, want, have (im Sinne von besitzen), belong. Sie stehen fast nie im Progressive, auch wenn es gerade jetzt gilt: „I like this“, nicht „I am liking this“."
+      },
+      {
+        "q": "Welche Signalwörter passen zum Simple Present?",
+        "a": "always, usually, often, sometimes, every day, never, on Mondays — sie zeigen eine Gewohnheit oder Regelmäßigkeit."
+      },
+      {
+        "q": "Welche Signalwörter passen zum Present Progressive?",
+        "a": "now, at the moment, right now, currently, Look!, Listen! — sie zeigen, dass etwas genau jetzt passiert."
+      },
+      {
+        "q": "Kann das Present Progressive auch die Zukunft ausdrücken?",
+        "a": "Ja — für schon feste, geplante Vereinbarungen: „I'm meeting him tomorrow at five“, „We're flying to Spain next week“. Die Verabredung steht bereits fest, deshalb Present Progressive statt will oder going to."
       }
     ]
   },
@@ -1359,6 +2900,7 @@
       "present-tenses"
     ],
     "reviewed": false,
+    "introH2": "Modalverben im Englischen — worum geht es?",
     "intro": "<strong>Modalverben</strong> (<em>modal verbs</em>) wie <em>can, must, should</em> verändern die Bedeutung eines Verbs — sie drücken Fähigkeit, Erlaubnis, Pflicht oder Rat aus. Nach ihnen steht immer der <strong>Infinitiv ohne to</strong>.",
     "rules": [
       "Nach einem Modalverb steht der <strong>Infinitiv ohne to</strong> — „She can <strong>swim</strong>.“",
@@ -1371,56 +2913,312 @@
       "<em>She <strong>can</strong> speak three languages.</em>",
       "<em>You <strong>should</strong> see a doctor.</em>"
     ],
-    "practice": [
+    "sections": [
       {
-        "q": "You ___ smoke here — it's forbidden.",
-        "options": [
-          "mustn't",
-          "don't must",
-          "needn't"
-        ],
-        "answer": "mustn't",
-        "why": "Verbot → mustn't (+ Infinitiv ohne to)."
+        "h2": "Die wichtigsten Modalverben im Überblick",
+        "body": "Jedes Modalverb hat seine eigene Bedeutung und steht immer mit dem Infinitiv ohne to.",
+        "list": [
+          "<strong>can/could</strong> — Fähigkeit, Erlaubnis: „She <strong>can</strong> swim.“",
+          "<strong>must/have to</strong> — Pflicht, Notwendigkeit: „You <strong>must</strong> wear a helmet.“",
+          "<strong>should/ought to</strong> — Rat, Empfehlung: „You <strong>should</strong> see a doctor.“",
+          "<strong>may/might</strong> — Möglichkeit, förmliche Erlaubnis: „It <strong>may</strong> rain later.“",
+          "<strong>will/would</strong> — Zukunft, Höflichkeit: „<strong>Would</strong> you help me, please?“"
+        ]
       },
       {
-        "q": "She ___ swim when she was five.",
-        "options": [
-          "can",
-          "could",
-          "cans"
-        ],
-        "answer": "could",
-        "why": "Fähigkeit in der Vergangenheit → could."
+        "h2": "must vs have to — der Unterschied",
+        "body": "Beide bedeuten „müssen“, aber sie zeigen, <strong>woher</strong> die Pflicht kommt.",
+        "list": [
+          "<strong>must</strong> — die Pflicht kommt vom Sprecher selbst, eine persönliche Einschätzung: „I <strong>must</strong> call my mother.“",
+          "<strong>have to</strong> — die Pflicht kommt von außen, durch eine Regel oder andere Person: „I <strong>have to</strong> wear a uniform at work.“",
+          "Im Alltag werden beide oft austauschbar benutzt — der Unterschied lohnt sich vor allem für formelles/schriftliches Englisch."
+        ]
       },
       {
-        "q": "You look ill. You ___ rest.",
-        "options": [
-          "should",
-          "must not",
-          "can't"
-        ],
-        "answer": "should",
-        "why": "Rat → should + Infinitiv."
+        "h2": "mustn't vs don't have to — Verbot vs. keine Pflicht",
+        "body": "Diese beiden sehen ähnlich aus, bedeuten aber fast das Gegenteil — der klassischste Fehler bei Modalverben.",
+        "list": [
+          "<strong>mustn't</strong> = <strong>verboten</strong>: „You <strong>mustn't</strong> smoke here.“ — es ist untersagt.",
+          "<strong>don't have to</strong> = <strong>nicht nötig, aber erlaubt</strong>: „You <strong>don't have to</strong> come — it's optional.“ — es ist keine Pflicht, aber man darf.",
+          "Wer „mustn't“ mit „müssen nicht“ übersetzt, landet beim falschen Wort — richtig ist „don't have to“."
+        ]
       },
       {
-        "q": "He ___ speak French very well.",
-        "options": [
-          "can",
-          "cans",
-          "is can"
-        ],
-        "answer": "can",
-        "why": "Modalverb ohne -s in der 3. Person → can."
+        "h2": "Ersatzformen für fehlende Zeiten",
+        "body": "Modalverben haben keine eigene Zukunfts- oder Infinitivform — dafür gibt es Ersatzformen.",
+        "list": [
+          "<strong>be able to</strong> ersetzt can, wenn eine andere Zeitform gebraucht wird: „I will <strong>be able to</strong> help tomorrow.“",
+          "<strong>have to</strong> ersetzt must in Zeiten ohne eigene Modalform: „I had <strong>to</strong> leave early yesterday.“",
+          "<strong>be allowed to</strong> ersetzt may/can für Erlaubnis: „We were <strong>allowed to</strong> leave early.“"
+        ]
       },
       {
-        "q": "I ___ finish this today — it's necessary.",
-        "options": [
-          "have to",
-          "should",
-          "might"
-        ],
-        "answer": "have to",
-        "why": "Notwendigkeit/Pflicht → have to (Ersatzform von must)."
+        "h2": "Vermutungen ausdrücken: may, might, could, must, can't",
+        "body": "Modalverben drücken auch aus, wie sicher man sich über etwas ist — von ziemlich sicher bis unmöglich.",
+        "list": [
+          "<strong>must</strong> — fast sicher: „That <strong>must</strong> be his house.“ (logische Schlussfolgerung)",
+          "<strong>may/might/could</strong> — möglich, aber unsicher: „It <strong>might</strong> rain later.“",
+          "<strong>can't</strong> — fast unmöglich: „That <strong>can't</strong> be true.“"
+        ]
+      },
+      {
+        "h2": "Typische Fehler",
+        "body": "Fast alle Fehler entstehen, weil Modalverben wie normale Verben behandelt werden.",
+        "list": [
+          "✗ <em>She can to swim.</em> → ✓ <em>She <strong>can swim</strong>.</em> — nie „to“ nach einem Modalverb.",
+          "✗ <em>He cans speak French.</em> → ✓ <em>He <strong>can</strong> speak French.</em> — kein -s in der 3. Person Singular.",
+          "✗ <em>You mustn't come if you don't want to.</em> (gemeint: keine Pflicht) → ✓ <em>You <strong>don't have to</strong> come …</em> — mustn't heißt verboten, nicht „musst nicht“.",
+          "✗ <em>I will can help tomorrow.</em> → ✓ <em>I will <strong>be able to</strong> help tomorrow.</em> — zwei Modalverben hintereinander gibt es nicht."
+        ]
+      }
+    ],
+    "practiceGroups": [
+      {
+        "title": "Übung 1 — Grundbedeutungen",
+        "intro": "can/must/should/may — die richtige Bedeutung wählen.",
+        "items": [
+          {
+            "q": "She ___ speak three languages.",
+            "options": [
+              "can",
+              "must",
+              "should"
+            ],
+            "answer": "can",
+            "why": "Fähigkeit → can."
+          },
+          {
+            "q": "You ___ wear a helmet — it's the law.",
+            "options": [
+              "should",
+              "must",
+              "may"
+            ],
+            "answer": "must",
+            "why": "Pflicht/Vorschrift → must."
+          },
+          {
+            "q": "You look ill. You ___ see a doctor.",
+            "options": [
+              "should",
+              "can",
+              "must"
+            ],
+            "answer": "should",
+            "why": "Rat → should."
+          },
+          {
+            "q": "It ___ rain later — the sky is grey.",
+            "options": [
+              "may",
+              "must",
+              "should"
+            ],
+            "answer": "may",
+            "why": "Möglichkeit → may."
+          },
+          {
+            "q": "___ I open the window, please?",
+            "options": [
+              "May",
+              "Should",
+              "Must"
+            ],
+            "answer": "May",
+            "why": "Höfliche Erlaubnis erfragen → may."
+          }
+        ]
+      },
+      {
+        "title": "Übung 2 — mustn't vs don't have to",
+        "intro": "mustn't = verboten. don't have to = nicht nötig, aber erlaubt.",
+        "items": [
+          {
+            "q": "You ___ smoke here — it's forbidden.",
+            "options": [
+              "mustn't",
+              "don't have to",
+              "needn't"
+            ],
+            "answer": "mustn't",
+            "why": "Verbot → mustn't (+ Infinitiv ohne to)."
+          },
+          {
+            "q": "You ___ come to the party — it's optional.",
+            "options": [
+              "don't have to",
+              "mustn't",
+              "can't"
+            ],
+            "answer": "don't have to",
+            "why": "Keine Pflicht, aber erlaubt → don't have to."
+          },
+          {
+            "q": "Visitors ___ touch the paintings.",
+            "options": [
+              "mustn't",
+              "don't have to",
+              "may not to"
+            ],
+            "answer": "mustn't",
+            "why": "Verbot in einem Museum → mustn't."
+          },
+          {
+            "q": "You ___ bring your own lunch — the school provides one.",
+            "options": [
+              "don't have to",
+              "mustn't",
+              "shouldn't"
+            ],
+            "answer": "don't have to",
+            "why": "Nicht nötig, weil bereits geregelt → don't have to."
+          },
+          {
+            "q": "Students ___ use phones during the exam.",
+            "options": [
+              "mustn't",
+              "don't have to",
+              "needn't"
+            ],
+            "answer": "mustn't",
+            "why": "Verbot während der Prüfung → mustn't."
+          }
+        ]
+      },
+      {
+        "title": "Übung 3 — Ersatzformen",
+        "intro": "be able to, have to, be allowed to — für Zeiten ohne eigene Modalform.",
+        "items": [
+          {
+            "q": "I will ___ help you tomorrow.",
+            "options": [
+              "can",
+              "be able to",
+              "must"
+            ],
+            "answer": "be able to",
+            "why": "can hat keine will-Form — Ersatzform: will be able to."
+          },
+          {
+            "q": "I ___ leave early yesterday because of an appointment.",
+            "options": [
+              "must",
+              "had to",
+              "should"
+            ],
+            "answer": "had to",
+            "why": "must hat keine Past-Form — Ersatzform: had to."
+          },
+          {
+            "q": "We were ___ leave early yesterday.",
+            "options": [
+              "allowed to",
+              "can",
+              "must"
+            ],
+            "answer": "allowed to",
+            "why": "may/can (Erlaubnis) hat keine reguläre Past-Form — Ersatzform: were allowed to."
+          },
+          {
+            "q": "She hasn't ___ finish the report yet.",
+            "options": [
+              "been able to",
+              "can",
+              "could"
+            ],
+            "answer": "been able to",
+            "why": "can hat keine Present-Perfect-Form — Ersatzform: have/has been able to."
+          },
+          {
+            "q": "After the exam, we will ___ relax.",
+            "options": [
+              "can",
+              "be able to",
+              "must"
+            ],
+            "answer": "be able to",
+            "why": "Zukunftsform von can: will be able to."
+          }
+        ]
+      },
+      {
+        "title": "Übung 4 — Vermutungen & Fehler erkennen",
+        "intro": "must/might/can't für Vermutungen — und typische Fehler bei Modalverben.",
+        "items": [
+          {
+            "q": "The lights are on — someone ___ be home.",
+            "options": [
+              "must",
+              "can't",
+              "should"
+            ],
+            "answer": "must",
+            "why": "Logische, ziemlich sichere Schlussfolgerung → must."
+          },
+          {
+            "q": "That ___ be true — I saw it happen myself.",
+            "options": [
+              "can't",
+              "must",
+              "might"
+            ],
+            "answer": "can't",
+            "why": "Fast unmöglich (Widerspruch zur eigenen Erfahrung) → can't."
+          },
+          {
+            "q": "✗ oder ✓? „She can to swim very well.“",
+            "options": [
+              "✓ richtig",
+              "✗ falsch — should be „She can swim“"
+            ],
+            "answer": "✗ falsch — should be „She can swim“",
+            "why": "Nach einem Modalverb steht nie „to“."
+          },
+          {
+            "q": "✗ oder ✓? „He cans speak French.“",
+            "options": [
+              "✓ richtig",
+              "✗ falsch — should be „He can speak French“"
+            ],
+            "answer": "✗ falsch — should be „He can speak French“",
+            "why": "Modalverben bekommen kein -s in der 3. Person Singular."
+          },
+          {
+            "q": "✗ oder ✓? „I will can help you tomorrow.“",
+            "options": [
+              "✓ richtig",
+              "✗ falsch — should be „I will be able to help“"
+            ],
+            "answer": "✗ falsch — should be „I will be able to help“",
+            "why": "Zwei Modalverben hintereinander gibt es nicht — will + can wird zu will be able to."
+          }
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "Was steht nach einem Modalverb?",
+        "a": "Immer der Infinitiv ohne to: „She can swim“, „You must go“, „He should try“ — nie „to swim“, „to go“ nach dem Modalverb selbst."
+      },
+      {
+        "q": "Bekommen Modalverben ein -s in der 3. Person Singular?",
+        "a": "Nein — anders als normale Verben bleiben Modalverben in allen Personen gleich: „He can“, „She must“, nie „He cans“ oder „She musts“."
+      },
+      {
+        "q": "Was ist der Unterschied zwischen must und have to?",
+        "a": "Beide bedeuten „müssen“, aber must drückt eine Pflicht aus, die vom Sprecher selbst kommt („I must call my mother“), während have to eine von außen kommende Regel beschreibt („I have to wear a uniform at work“). Im Alltag werden beide oft austauschbar benutzt."
+      },
+      {
+        "q": "Was ist der Unterschied zwischen mustn't und don't have to?",
+        "a": "mustn't bedeutet verboten: „You mustn't smoke here.“ don't have to bedeutet, dass etwas nicht nötig, aber trotzdem erlaubt ist: „You don't have to come — it's optional.“ Die beiden sehen ähnlich aus, bedeuten aber fast das Gegenteil."
+      },
+      {
+        "q": "Wie bildet man die Zukunft oder Vergangenheit von can und must?",
+        "a": "Mit Ersatzformen, weil Modalverben keine eigene Zukunfts- oder durchgehende Vergangenheitsform haben: can → be able to („will be able to“, „was able to“), must → have to („had to“). Zwei Modalverben direkt hintereinander („will can“) gibt es nicht."
+      },
+      {
+        "q": "Wie drückt man mit Modalverben eine Vermutung aus?",
+        "a": "must für eine fast sichere Schlussfolgerung („That must be his house“), may/might/could für etwas Mögliches, aber Unsicheres („It might rain“), und can't für etwas fast Unmögliches („That can't be true“)."
       }
     ]
   },
