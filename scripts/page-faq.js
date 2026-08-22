@@ -104,4 +104,113 @@ module.exports = {
         + 'Technology sowie The Impact of the Media on Society.',
     },
   ],
+
+  'abitur-text-analysis.html': [
+    {
+      q: 'Was ist eine Text Analysis im Abitur?',
+      a: 'Eine Analyse, wie ein Text auf sein Publikum wirkt und mit welchen sprachlichen Mitteln er das '
+        + 'erreicht — nicht nur eine Liste gefundener Stilmittel, sondern die Verbindung aus Mittel, '
+        + 'Textstelle und Wirkung.',
+    },
+    {
+      q: 'Was bedeuten Purpose, Audience und Tone?',
+      a: 'Purpose ist das Ziel des Textes — informieren, überzeugen, unterhalten, aufrütteln. Audience ist '
+        + 'die Zielgruppe, erkennbar an Wortwahl und Anrede. Tone ist die Grundhaltung — sachlich, '
+        + 'ironisch, dringlich, persönlich. Alle drei bestimmen zusammen, wie ein Text zu lesen ist.',
+    },
+    {
+      q: 'Reicht es, rhetorische Mittel aufzuzählen?',
+      a: 'Nein. Ein Stilmittel allein ist noch keine Analyse — erst die Verbindung aus Mittel, Textstelle '
+        + 'und Wirkung auf das Publikum zählt. Eine Liste gefundener Begriffe ohne diese Verbindung bringt '
+        + 'kaum Punkte.',
+    },
+    {
+      q: 'Wie ist ein Analyseaufsatz aufgebaut?',
+      a: 'Eine Einleitung mit Titel, Autor, Textsorte und Thema; ein Hauptteil, der Stilmittel mit ihrer '
+        + 'Wirkung verbindet statt sie nur aufzuzählen, mit jeweils einem Punkt pro Absatz; und ein Schluss, '
+        + 'der die Gesamtwirkung des Textes einordnet.',
+    },
+    {
+      q: 'Welche rhetorischen Mittel kommen im Abitur am häufigsten vor?',
+      a: 'Rhetorical question, anecdote, statistic, metaphor, direct address, tricolon und antithesis — '
+        + 'diese sieben Mittel decken die meisten Abiturtexte ab. Jedes hat eine typische Wirkung: eine '
+        + 'rhetorische Frage regt zum Nachdenken an, eine Anekdote macht einen Punkt persönlich, ein '
+        + 'Tricolon (drei parallele Begriffe) sorgt für Rhythmus und Nachdruck.',
+    },
+    {
+      q: 'Wie lang muss die vollständige Analyse sein?',
+      a: 'In den Übungspaketen dieser Seite sind 150–200 Wörter für den letzten Schritt vorgegeben — '
+        + 'ähnlich wie im echten Abitur, wo die Wortangabe im Aufgabentext steht.',
+    },
+  ],
+
+  'abitur-argumentative-writing.html': [
+    {
+      q: 'Was verlangt ein Argumentationsaufsatz im Abitur?',
+      a: 'Beide Seiten eines Themas darstellen, sie mit konkreten Argumenten stützen — nicht nur '
+        + 'behaupten — und am Ende eine eigene, klar begründete Position beziehen. Ein Aufsatz, der nur '
+        + 'eine Seite zeigt, gilt als unausgewogen.',
+    },
+    {
+      q: 'Wie ist ein Argumentationsaufsatz aufgebaut?',
+      a: 'Einleitung mit Themeneinordnung, ein bis zwei Argumente für die eine Position, ein bis zwei '
+        + 'Argumente für die andere Position, eine begründete eigene Stellungnahme, und ein Schluss, der '
+        + 'die Kernaussage zusammenfasst, ohne neue Argumente einzuführen.',
+    },
+    {
+      q: 'Was unterscheidet ein starkes von einem schwachen Argument?',
+      a: 'Ein starkes Argument ist konkret und durch ein Beispiel, eine Zahl oder eine plausible Konsequenz '
+        + 'gestützt. „Homework helps students learn“ ist eine bloße Behauptung; „Homework gives students a '
+        + 'structured chance to practise skills without the pressure of being watched“ ist ein Argument, '
+        + 'weil es erklärt, warum.',
+    },
+    {
+      q: 'Welche Konnektoren passen zu welcher Funktion?',
+      a: 'however/on the other hand für Gegensätze, as a result/consequently für Ursache und Wirkung, '
+        + 'although/admittedly für ein Zugeständnis, in addition/furthermore für einen weiteren Punkt, und '
+        + 'in conclusion/to sum up für den Schluss.',
+    },
+    {
+      q: 'Wie lang muss der vollständige Aufsatz sein?',
+      a: 'In den Übungspaketen dieser Seite sind 200–250 Wörter für den letzten Schritt vorgegeben — '
+        + 'ähnlich wie im echten Abitur, wo die Wortangabe im Aufgabentext steht.',
+    },
+  ],
+
+  'abitur-writing-summaries.html': [
+    {
+      q: 'Was ist eine Summary im Abitur-Englisch?',
+      a: 'Eine kurze Wiedergabe der Kernaussagen eines Textes in eigenen Worten — ohne Details, Beispiele '
+        + 'oder rhetorische Ausschmückungen des Originals zu übernehmen. Wer Sätze aus dem Original nur '
+        + 'leicht verändert übernimmt, verliert Punkte, auch wenn der Inhalt stimmt.',
+    },
+    {
+      q: 'In welcher Zeitform schreibt man eine Summary?',
+      a: 'Im Simple Present, selbst wenn der Originaltext in der Vergangenheit geschrieben ist: „The '
+        + 'article explains that …“, nicht „explained“.',
+    },
+    {
+      q: 'Darf man in einer Summary die eigene Meinung einbringen?',
+      a: 'Nein. Eine Summary gibt die Ideen der Autorin oder des Autors wieder, nicht die eigene Meinung — '
+        + '„I think …“ oder „In my opinion …“ gehören nicht hinein.',
+    },
+    {
+      q: 'Was sind Umbrella Sentences?',
+      a: 'Sätze, die mehrere Einzelheiten unter einer allgemeinen Aussage bündeln, statt sie einzeln '
+        + 'aufzuzählen: statt drei Beispiele aufzulisten, schreibt man „The article gives several examples '
+        + 'of this trend.“',
+    },
+    {
+      q: 'Wie unterscheidet man Kernaussage, Detail und Irrelevantes?',
+      a: 'Eine Kernaussage gehört unbedingt in die Zusammenfassung. Ein Detail stützt eine Kernaussage, '
+        + 'gehört aber meist nicht selbst hinein. Irrelevant für eine Zusammenfassung sind Beispiele, '
+        + 'Anekdoten und rhetorische Fragen — sie machen den Originaltext lebendig, tragen aber keine '
+        + 'eigene Kernaussage.',
+    },
+    {
+      q: 'Wie lang muss die vollständige Zusammenfassung sein?',
+      a: 'In den Übungspaketen dieser Seite sind 100–120 Wörter für den letzten Schritt vorgegeben — '
+        + 'ähnlich wie im echten Abitur, wo die Wortangabe im Aufgabentext steht.',
+    },
+  ],
 };
