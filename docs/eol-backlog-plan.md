@@ -544,6 +544,55 @@ awaiting triage.**
 Quizlet-only links, 939 and 1757's direct-to-Calendly CTAs bypassing internal pages) is real but
 lower-stakes internal-linking work, not touched yet.
 
+## Tier 7 — Main-site GEO / AI-discoverability, P3 (2026-08-22) · Shaun + CC
+Carried over from the GEO backlog Shaun uploaded 2026-08-22 (`GEO_Backlog_EnglishOnlineTraining.md`,
+§P3), after the P0–P2 items were built on the activities repo across two PRs (#25, #26 — entity
+graph + `LearningResource`/`Course`/`Speakable` schema, Quick Overview boxes, the Abitur/MSA/
+Business/IT/vocabulary hub pages, Exam Tip boxes, Related-Exercises cross-links). **Not started —
+the WordPress.com MCP connector was disconnected both times this was scoped**, and P3 as written
+doesn't match the live site closely enough to execute as-is even once the connector is back.
+
+**P3.1 (5 new service landing pages) and P3.2 (Course schema on an "8-week learning plan") are
+based on a stale picture of the site — verify before building anything, don't just execute them:**
+- Checked live 2026-08-22: `/business-english/` (1965, rebuilt for the corporate funnel in Tier 4
+  above) already carries 12+ real client logos (BMW, Siemens, Mercedes-Benz Bank, Guidehouse,
+  Techniker Krankenkasse and more), a trainer bio and a working enquiry form — most of what P3.1
+  asks to build from scratch for `/business-english-berlin` already exists, just not at that URL
+  and not marked up. Building a second, thinner page at a new slug would compete with 1965 for the
+  same search intent — the exact duplicate-content trap this file's own T2/T5 entries were written
+  to avoid.
+- `/faq/` has real bilingual Q&A content live already (page ID not yet confirmed — check via
+  `pages.list`/`pages.get` before writing anything) with no `FAQPage` schema on it.
+- Two About pages exist — `/about/` and `/about-me/` (page **80**, already touched once in Tier 6
+  bucket A for its broken WhatsApp button) — neither carries `Person`/credentials schema.
+- Ten `/testimonial/*/` pages exist, live, with zero inbound links found in the Tier 6 pass —
+  another orphan cluster, same shape as the `lead-*` pages fixed in Tier 6.
+- **P3.2's premise doesn't exist**: no "8-week learning plan" page — checked, 404. The closest
+  thing (1965's old 8-week solo-study curriculum) was **deliberately removed** in the Tier 4
+  corporate pivot (2026-08-07): rebuilding it to hang Course schema on would reintroduce content
+  Shaun explicitly cut. If Course schema on a learning plan is still wanted, it needs a real
+  learning-plan page first — that's a content decision for Shaun, not a schema task.
+
+**Recommended scope, once the connector is available and Shaun wants to proceed** (narrower and
+lower-risk than the backlog's P3.1–P3.3, using what's already live rather than building new pages):
+1. `FAQPage` schema on `/faq/`'s existing content — no new copy needed.
+2. `Person` + `EducationalOccupationalCredential` schema on `/about/` or `/about-me/` (P3.3),
+   sourced only from what the Impressum/certificates pages already state — same "don't assert a
+   claim the site doesn't make" discipline as the activities-repo schema work (see `CLAUDE.md`
+   §5g). Add `Speakable` (`cssSelector` on the credentials/bio sections) while there, per P3.3.
+3. Link the orphaned `/testimonial/*/` pages and `/faq/` into navigation or a relevant hub page,
+   rather than leaving them reachable only by direct URL.
+4. Revisit P3.1/P3.2 as content decisions with Shaun, not schema tasks — either fold the proposed
+   service pages into what already exists at `/business-english/` etc., or scope a real new page
+   deliberately, with its own URL not competing with a live one.
+5. Two of the traps at the top of `CLAUDE.md` apply directly here: **1763 and 1997** have stale
+   `_crdt_document` block-editor state — edit via `pages.update` with `context: "edit"`, never the
+   block editor, and re-verify per the procedure already written down there.
+
+**P4.3 (`/llm-content.txt`) and P4.4 (manual AI-citation monitoring)** remain out of scope too —
+the backlog itself calls P4.3 "speculative... low-effort future-proofing", and P4.4 is an ongoing
+manual process, not a coding task. Neither blocks P3.
+
 ## Open decisions gating the plan
 **All six items from the 2026-08-07 audit reconciliation are now resolved and executed** (Shaun
 approved each): 2063–2066 published, "Blog Posts" 70 fixed and 1205 stubbed, 307 unpublished,
@@ -558,6 +607,11 @@ and Tier 4 above for the full executed record. What's left:
    subscribe button, 915's live off-strategy payment widgets, 168's Mailchimp + dead-domain
    payment link, 80's broken WhatsApp button, 1760's stale fallback URL) is the priority; buckets
    B and C are real but lower-stakes internal-linking gaps. Nothing here has a go-ahead yet.
+4. **Tier 7 main-site GEO (P3) — new, blocked on the WordPress.com MCP connector and on Shaun's
+   go-ahead for the narrower recommended scope** (schema on `/faq/` and `/about/`, link the
+   orphaned `/testimonial/*/` pages, revisit the 5 proposed service landing pages and the "8-week
+   plan" Course schema as content decisions rather than executing the backlog's P3.1/P3.2 as
+   written). Nothing here has a go-ahead yet either.
 
 _Closed: T3 approach (2026-08-05, no plan upgrade near-term); Crowdsignal export (not needed —
 T1 rebuilt natively); T5 scope (standalone page); IT email policy (writing tasks only);
