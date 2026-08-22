@@ -276,4 +276,33 @@ module.exports = {
         + 'Smart Tech, AI & Industry 4.0 and Conventional & AI-Assisted Programming.',
     },
   ],
+
+  'ielts-vocabulary-glossary.html': [
+    {
+      q: 'How many words does the glossary cover?',
+      a: '85 terms often used in IELTS reading, listening and writing tasks, each with a part of '
+        + 'speech, a plain-English definition and an example sentence.',
+    },
+    {
+      q: 'Is this glossary free? Do I need an account?',
+      a: 'Yes, it is completely free and needs no sign-up. Nothing you search or click is recorded '
+        + 'or sent anywhere — it only runs in your browser.',
+    },
+    {
+      q: 'How does the matching game work?',
+      a: 'Each round picks 8 random terms from the glossary. Click a word, then click the definition '
+        + 'you think matches it; a correct pair turns green and stays matched, a wrong pair shakes '
+        + 'and resets so you can try again. Click "New Round" for a fresh set of 8.',
+    },
+    {
+      q: 'Can I filter the glossary by word type?',
+      a: 'Yes — the Glossary tab has chips for noun, verb, adjective, adverb, phrase and phrasal '
+        + 'verb, plus a search box that matches against both the word and its definition.',
+    },
+    {
+      q: 'Is my score in the matching game saved anywhere?',
+      a: 'No. The score shown during a round is just for you to see how you did — it resets on the '
+        + 'next round and is never stored or sent to anyone.',
+    },
+  ],
 };
