@@ -418,7 +418,7 @@ function hubPage(file, meta, items, opts = {}) {
     publisher: { '@id': ORG_ID },
     author: { '@id': PERSON_ID },
     isAccessibleForFree: true,
-    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.qo-box', 'h2', 'h3'] },
+    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h2', 'h3'] },
   };
   if (items.length) {
     collection.mainEntity = {
