@@ -540,9 +540,104 @@ awaiting triage.**
   real one was available to fill in. A broken CTA is worse than no CTA; can be re-added with a
   real number on request.
 
-**Still open** — bucket C (1133/1019/651's weak links to the corporate funnel, 1393's
-Quizlet-only links, 939 and 1757's direct-to-Calendly CTAs bypassing internal pages) is real but
-lower-stakes internal-linking work, not touched yet.
+**Bucket C — RESOLVED 2026-08-22, mostly already fixed before this check.** Re-verified every
+page live via `page-sections.list`/`pages.get`: **1019, 1393 and 1757 already had the correct
+links** (business-activities.html / IELTS glossary / `/book-a-lesson/`) — someone fixed them in
+an earlier, undocumented session, and this note had simply gone stale. **1133 and 651 also
+already had a closing CTA block linking to 1965 or the Activities Directory** — but
+`page-sections.list`'s `inner_html_preview` truncates a `core/group` block with no top-level text
+of its own down to `<div class="wp-block-group">\n\n\n\n</div>`, which reads as empty even when
+the group has real inner blocks (a heading, a paragraph, a button). Trusting that preview led to
+inserting a redundant duplicate CTA paragraph on both pages first; caught immediately by
+re-fetching the full content via `pages.get`, and reverted with `page-sections.remove` — both
+pages' `content_hash` is back to the exact pre-edit value, so nothing shipped wrong. **New trap
+for this file, same family as the `_crdt_document` ones:** never conclude a page "has no links"
+from `page-sections.list` alone when a block with `has_inner_blocks: true` is involved — fetch
+the full page (`pages.get`) to see what a group/columns block actually contains before treating a
+page as a gap. **939 was the one genuine gap** — Shaun confirmed 2026-08-22 to fully replace, not
+supplement: removed the "Book your first group session for only €5" heading and the
+`jetpack/calendly` widget (individual booking, `calendly.com/sptrezise/group-business-english`),
+replaced with a "Corporate Business English training →" button to 1965. The article body still
+pitches the general group-course concept, which is fine — corporate training can be delivered as
+a group — only the individual €5 booking path was removed, and the page's existing "Looking for
+this for a whole team…" closing paragraph (which already linked to 1965) was removed too since it
+duplicated the new CTA and its old framing ("rather than an individual booking") no longer made
+sense once that individual option was gone.
+
+## Tier 7 — Main-site GEO / AI-discoverability, P3 (2026-08-22) · Shaun + CC
+Carried over from the GEO backlog Shaun uploaded 2026-08-22 (`GEO_Backlog_EnglishOnlineTraining.md`,
+§P3), after the P0–P2 items were built on the activities repo across two PRs (#25, #26 — entity
+graph + `LearningResource`/`Course`/`Speakable` schema, Quick Overview boxes, the Abitur/MSA/
+Business/IT/vocabulary hub pages, Exam Tip boxes, Related-Exercises cross-links).
+
+**P3.1 (5 new service landing pages) and P3.2 (Course schema on an "8-week learning plan") are
+based on a stale picture of the site — verify before building anything, don't just execute them:**
+- Checked live 2026-08-22: `/business-english/` (1965, rebuilt for the corporate funnel in Tier 4
+  above) already carries 12+ real client logos (BMW, Siemens, Mercedes-Benz Bank, Guidehouse,
+  Techniker Krankenkasse and more), a trainer bio and a working enquiry form — most of what P3.1
+  asks to build from scratch for `/business-english-berlin` already exists, just not at that URL
+  and not marked up. Building a second, thinner page at a new slug would compete with 1965 for the
+  same search intent — the exact duplicate-content trap this file's own T2/T5 entries were written
+  to avoid.
+- **P3.2's premise doesn't exist**: no "8-week learning plan" page — checked, 404. The closest
+  thing (1965's old 8-week solo-study curriculum) was **deliberately removed** in the Tier 4
+  corporate pivot (2026-08-07): rebuilding it to hang Course schema on would reintroduce content
+  Shaun explicitly cut. If Course schema on a learning plan is still wanted, it needs a real
+  learning-plan page first — that's a content decision for Shaun, not a schema task.
+
+**Recommended scope — items 1–2 DONE 2026-08-22, item 3 partially done, items 4–5 still open:**
+1. **DONE.** `FAQPage` schema added to `/faq/` (page **351**, `status: publish`). This page is
+   classic/freeform (`page-sections.list` refuses it, same shape as 1763), so the full content was
+   fetched with `context: "edit"` — confirmed byte-identical to a `context: "view"` fetch, meaning
+   no dynamic blocks to flatten — and a `<script type="application/ld+json">` block appended to the
+   very end via `pages.update`; nothing else in the content was touched. 7 English `Question`/
+   `Answer` pairs, each `text` reworded from the page's own HTML into a plain sentence (no new
+   claims, no raw markup left in the schema text). The page's German half (`Häufig gestellte
+   Fragen`) was deliberately left out of the schema — the site's declared language
+   (`settings.get` → `"language":"en"`) is English, so only the English content was marked up.
+   Verified via the response's `_content_warnings` field, which was absent (nothing stripped).
+2. **DONE.** `Person` + `EducationalOccupationalCredential` (+ `Speakable`) schema added to
+   `/about/` (page **2224** — a newer, richer About page than **80**/`/about-me/`, which is just
+   a name; found via `pages.list` and read in full before deciding which page to use). Clean
+   Gutenberg content, so added as one new `core/html` block via `page-sections.insert`
+   (additive-only — the other 34 existing blocks were never touched, confirmed by
+   `_content_warnings: []`). **The `Person` node's `@id` is deliberately the exact same one
+   `scripts/schema.js` already uses on the activities host** —
+   `https://activities.englishonline.training/#shaun` — not a fresh WP-local id, for the same
+   reason that file's own `ORG_ID` comment gives: one real person, one id, so the two domains'
+   graphs describe the same entity instead of two competing ones. Every credential/cert/role in
+   the node is copied verbatim from `personNode()` in `scripts/schema.js` (already vetted there as
+   sourced only from the Impressum/certificates pages) — deliberately **not** rewritten to include
+   the richer claims that are only on the live `/about/` page itself (SRH lecturer role since
+   2017, Docemus role since 2025, "10+ years"), to keep this node identical to the one already
+   live on the activities host rather than forking it into a second, slightly-different Person. A
+   small `WebPage` node alongside it carries `speakable: {cssSelector: ["h2"]}` and `mainEntity`
+   pointing at the Person node's `@id`.
+3. **Partially done.** **Could not find the `/testimonial/*/` pages at all.** `pages.list` (all
+   43 published pages, unfiltered) and `content.search` (subtype `any`) both return nothing with
+   "testimonial" in the slug or title. Either they're a custom post type this MCP surface doesn't
+   expose (Jetpack's built-in Testimonials CPT is the obvious candidate — it wouldn't show up in
+   a plain `pages.list`), or the "ten orphaned testimonial pages" claim was never actually
+   verified against the live site and is itself stale, the way several other counts in this file
+   have been. **Needs a direct wp-admin sidebar look** (check for a "Testimonials" post-type menu
+   item) to settle which before anyone spends time linking them. `/faq/` itself was not linked
+   into navigation this round either — schema only, out of scope for a schema-only pass.
+4. **Still open, unstarted.** A content decision for Shaun (fold the 5 proposed service pages
+   into what already exists at `/business-english/`, or scope real new pages deliberately), not a
+   schema task — see the stale-picture note above.
+5. **Still open, but not hit this round** — no page touched today was 1763 or 1997, so neither
+   trap was triggered. Still worth restating for whoever does #3/#4: **1763 and 1997** have stale
+   `_crdt_document` block-editor state — edit via `pages.update` with `context: "edit"`, never the
+   block editor.
+
+**Tier 6 bucket C folded into this same session (2026-08-22)** — see the updated note under Tier 6
+above for the full record (1019/1393/1757 already fixed by an earlier undocumented session,
+1133/651 already had links hidden behind a `page-sections.list` preview-truncation trap, 939's
+Calendly widget replaced with a link to the corporate funnel per Shaun's explicit confirmation).
+
+**P4.3 (`/llm-content.txt`) and P4.4 (manual AI-citation monitoring)** remain out of scope too —
+the backlog itself calls P4.3 "speculative... low-effort future-proofing", and P4.4 is an ongoing
+manual process, not a coding task. Neither blocks P3.
 
 ## Open decisions gating the plan
 **All six items from the 2026-08-07 audit reconciliation are now resolved and executed** (Shaun
@@ -554,10 +649,17 @@ and Tier 4 above for the full executed record. What's left:
    raises it.
 2. **380's non-breaking-space title** (Tier 3.5) — still unconfirmed either way; low priority,
    needs a direct wp-admin look rather than another API round-trip.
-3. **Tier 6 internal-linking audit — new, needs triage.** Bucket A (1966's dead form/fake
-   subscribe button, 915's live off-strategy payment widgets, 168's Mailchimp + dead-domain
-   payment link, 80's broken WhatsApp button, 1760's stale fallback URL) is the priority; buckets
-   B and C are real but lower-stakes internal-linking gaps. Nothing here has a go-ahead yet.
+3. **Tier 6 internal-linking audit.** Bucket A resolved 2026-08-08 (Shaun approved) and bucket C
+   resolved 2026-08-22 (mostly already fixed by an earlier undocumented session — see Tier 6 for
+   the full record; 939's Calendly widget replaced with a link to the corporate funnel, confirmed
+   by Shaun). **Bucket B still open**: 1582 and 1715 remain true orphans with no plan to link
+   them yet — not raised with Shaun.
+4. **Tier 7 main-site GEO (P3).** Items 1–2 of the recommended scope done 2026-08-22 (`FAQPage`
+   schema on `/faq/`, `Person` schema on `/about/`). Item 3 partially done — the `/testimonial/*/`
+   pages could not be located via the WordPress.com MCP surface at all, so it's unconfirmed
+   whether they exist; needs a wp-admin look. Items 4 (the 5 proposed service landing pages +
+   "8-week plan" Course schema) and 5 (the 1763/1997 CRDT trap, not hit this round) remain open,
+   item 4 specifically as a content decision for Shaun rather than a schema task.
 
 _Closed: T3 approach (2026-08-05, no plan upgrade near-term); Crowdsignal export (not needed —
 T1 rebuilt natively); T5 scope (standalone page); IT email policy (writing tasks only);

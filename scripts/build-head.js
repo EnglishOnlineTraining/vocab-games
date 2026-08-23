@@ -47,6 +47,10 @@ const topics = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/topics.json'), '
 const EX_BY_FILE = Object.fromEntries(exercises.map((e) => [e.file.toLowerCase(), e]));
 const TOPIC_BY_SLUG = Object.fromEntries(topics.map((t) => [t.slug, t]));
 
+// Reverse index for the Related Exercises block: topic slug -> exercises tagged with it.
+const TOPIC_EX = {};
+exercises.forEach((e) => (e.topics || []).forEach((t) => (TOPIC_EX[t] = TOPIC_EX[t] || []).push(e)));
+
 // Pages that render blank without JavaScript: everything on the shared framework
 // (.step is display:none until showStep runs) plus the standalone interactive
 // pages, which hide .screen / .exercise / .game-panel the same way.
@@ -283,7 +287,7 @@ function pageMeta(html) {
   return { lang, title, desc, canonical };
 }
 
-function headBlock(file, html, withSkipStyle, withOverviewStyle) {
+function headBlock(file, html, withSkipStyle, withOverviewStyle, withTipStyle, withRelatedStyle) {
   const rel = file.includes('/') ? '../' : '';
   const { lang, title, desc, canonical } = pageMeta(html);
 
@@ -322,6 +326,8 @@ function headBlock(file, html, withSkipStyle, withOverviewStyle) {
   );
   if (withSkipStyle) lines.push(SKIP_STYLE);
   if (withOverviewStyle) lines.push(QO_STYLE);
+  if (withRelatedStyle) lines.push(RELATED_STYLE);
+  if (withTipStyle) lines.push(TIP_STYLE);
   if (PAGE_FAQ[file]) lines.push(FAQ_STYLE);
   const schema = schemaBlock(file, { lang, title, desc, canonical });
   if (schema) lines.push(schema);
@@ -376,6 +382,92 @@ const QO_STYLE = `<style id="eol-qo-style">
 .qo-box h2 .qo-en,.qo-facts dt .qo-en{color:var(--muted,#9fb0c3)}
 }
 </style>`;
+
+// --- Exam Tip boxes --------------------------------------------------------
+//
+// One tactical, exam-technique tip per exercise family, inserted once inside
+// the first exercise/step — not the welcome screen, because a tip is only
+// useful once the student is actually doing the task. Deliberately distinct
+// from the `<details class="guide">` reference blocks already on the Abitur
+// packs: those are rules and vocabulary to look up mid-task; this is a single
+// piece of exam-day strategy a student reads once, on the way in.
+//
+// Keyed by filename prefix rather than per-page, because the families that
+// share a prefix (the 20 msa-c-* units, the 4 packs per Abitur task type)
+// share one exam format and one genuine piece of advice — writing 24 near-
+// duplicate tips would be padding, not content.
+const TIP_STYLE = `<style id="eol-tip-style">
+.exam-tip{background:var(--card,#fff);border:1px solid var(--border,#dce3ec);border-left:4px solid var(--accent,var(--gold,#c9a227));border-radius:8px;padding:.7rem 1rem;margin:0 0 1.2rem;font-size:.88rem;line-height:1.5;color:var(--text,#1d2b3a)}
+.exam-tip-label{font-weight:700;color:var(--accent-dark,var(--blue,#1a3a5c));margin-right:.3rem}
+.exam-tip-label .exam-tip-en{font-weight:600;color:var(--muted,#6b7a8d)}
+@media (prefers-color-scheme:dark){
+.exam-tip{background:var(--card,#1c2733);border-color:var(--border,#2f3d4d);color:var(--text,#e6edf5)}
+.exam-tip-label{color:var(--accent-dark,var(--gold-lt,#f5e6b0))}
+.exam-tip-label .exam-tip-en{color:var(--muted,#9fb0c3)}
+}
+</style>`;
+
+const TIP_FAMILIES = [
+  {
+    match: /^msa-c-/,
+    // First `.ex-subtitle` in the doc is always Exercise A's, in `#step-1`.
+    anchor: /<p class="ex-subtitle">[\s\S]*?<\/p>/,
+    text: 'In the real exam you hear each recording exactly twice — use the first '
+      + 'play to get the general gist, then the second to fill in exact details, '
+      + 'rather than trying to catch everything at once.',
+  },
+  {
+    match: /^abitur-mediation-/,
+    // First `.instructions` in the doc is always ex1's — the packs have no
+    // step-gating, so `.exercise.active` (ex1) is simply the first one written.
+    anchor: /<p class="instructions">[\s\S]*?<\/p>/,
+    text: 'Skim the whole German text and note what the task actually needs before '
+      + 'you write a single English sentence — mediation loses points for '
+      + 'including content irrelevant to the target reader, not for leaving it out.',
+  },
+  {
+    match: /^abitur-text-analysis-/,
+    anchor: /<p class="instructions">[\s\S]*?<\/p>/,
+    text: 'Never name a device without saying what it does to the reader in that '
+      + 'sentence — "the text uses a metaphor" earns nothing on its own; naming '
+      + 'the effect on the audience is what the mark scheme actually rewards.',
+  },
+  {
+    match: /^abitur-argumentative-writing-/,
+    anchor: /<p class="instructions">[\s\S]*?<\/p>/,
+    text: 'List your "for" and "against" points before you decide your own '
+      + 'opinion — starting from a conclusion tends to produce a one-sided essay, '
+      + 'which examiners mark down as unbalanced.',
+  },
+  {
+    match: /^abitur-writing-summaries-/,
+    anchor: /<p class="instructions">[\s\S]*?<\/p>/,
+    text: 'Check every sentence you write for a reporting verb like "explains", '
+      + '"argues" or "shows" — a summary sentence with none is usually the '
+      + 'original text lightly reworded, which loses marks.',
+  },
+];
+
+function tipFamilyFor(file) {
+  const base = file.includes('/') ? file.split('/').pop() : file;
+  return TIP_FAMILIES.find((f) => f.match.test(base)) || null;
+}
+
+/** The Exam Tip block for one page, or null when it has no family / no anchor. */
+function tipBlock(file, html, lang) {
+  const family = tipFamilyFor(file);
+  if (!family) return null;
+  const anchorMatch = html.match(family.anchor);
+  if (!anchorMatch) return null;
+
+  const de = (lang || 'en').toLowerCase().startsWith('de');
+  const label = de ? `Prüfungstipp <span class="exam-tip-en">/ Exam tip</span>` : 'Exam tip';
+  const markup = `<!-- TIP:START — generated by scripts/build-head.js, do not edit by hand -->
+<div class="exam-tip"><span class="exam-tip-label">💡 ${label}:</span> <span class="exam-tip-text">${escText(family.text)}</span></div>
+<!-- TIP:END -->
+`;
+  return { at: anchorMatch.index + anchorMatch[0].length, markup };
+}
 
 /** "Grammatik / Grammar" style bilingual label. */
 function bi(de, en) {
@@ -436,6 +528,120 @@ ${rows.map(([dt, dd]) => `    <dt>${dt}</dt><dd>${dd}</dd>`).join('\n')}
 `;
 }
 
+// --- Related Exercises cross-links -----------------------------------------
+//
+// "What to try next": up to 3 easier + 3 harder exercises sharing a tagged
+// grammar topic, plus a link to that topic's page on themen/ if it has one.
+// Entirely generated from data/exercises.json + data/topics.json's existing
+// related[] — no per-page authoring, so it stays accurate as exercises are
+// added. Lives right after the overview box for the same reason the overview
+// box does: #step-0 is the only part of these pages a non-JS crawler ever
+// sees, so this is also the only place the links are guaranteed crawlable.
+//
+// "Easier"/"harder" is necessarily a rough proxy — CEFR bands the corpus
+// actually uses are too coarse to rank within a topic, so this ranks by the
+// year-group ladder the school years already imply, with the post-school
+// tracks (business/IT/university/Abitur) placed above it and MSA (a Year 10
+// oberschule-level exam) placed alongside Years 9-10. `grammar`/`quiz` pages
+// (the gr-*/quiz-* standalone pages) have no real level, so they default to
+// the middle of the ladder rather than skewing the split either way.
+const TOPIC_DIFFICULTY_RANK = {
+  7: 1, 8: 2, 9: 3, 10: 4, msa: 4, business: 5, it: 5, uni: 5, abitur: 6,
+};
+function difficultyRank(entry) {
+  const base = TOPIC_DIFFICULTY_RANK[entry.year] !== undefined ? TOPIC_DIFFICULTY_RANK[entry.year] : 3;
+  // Gymnasium runs roughly one CEFR half-step ahead of Oberschule in the same
+  // year (CLAUDE.md: 8g ~B1 vs 8c ~A2, 10g ~B2/C1 vs 10c ~B1/B2), so it breaks
+  // ties within a year instead of leaving same-year pages unordered.
+  return base + (entry.schoolType === 'gymnasium' ? 0.5 : 0);
+}
+
+const RELATED_STYLE = `<style id="eol-related-style">
+.related-ex{margin:1.5rem 0 0;padding:1rem 1.2rem;background:var(--card,#fff);border:1.5px solid var(--border,#dce3ec);border-radius:10px;font-size:.88rem;color:var(--text,#1d2b3a)}
+.related-ex h2{font-size:.95rem;font-weight:700;margin:0 0 .75rem;color:var(--blue,#1a3a5c)}
+.related-ex h2 .related-ex-en{font-weight:600;color:var(--muted,#6b7a8d)}
+.related-ex-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.related-ex-col h3{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--muted,#6b7a8d);margin:0 0 .4rem}
+.related-ex-col h3 .related-ex-en{font-weight:600}
+.related-ex-col ul{margin:0;padding-left:1.1rem}
+.related-ex-col li{margin:0 0 .3rem}
+.related-ex-topic{margin:.9rem 0 0;padding-top:.75rem;border-top:1px dashed var(--border,#dce3ec)}
+@media(max-width:480px){.related-ex-grid{grid-template-columns:1fr}}
+@media (prefers-color-scheme:dark){
+.related-ex{background:var(--card,#1c2733);border-color:var(--border,#2f3d4d);color:var(--text,#e6edf5)}
+.related-ex h2{color:var(--gold-lt,#f5e6b0)}
+.related-ex-topic{border-top-color:var(--border,#2f3d4d)}
+}
+</style>`;
+
+function relatedBlock(file) {
+  const ex = EX_BY_FILE[file.toLowerCase()];
+  if (!ex || !ex.topics || !ex.topics.length) return '';
+
+  const seen = new Set([file.toLowerCase()]);
+  const candidates = [];
+  ex.topics.forEach((t) => {
+    (TOPIC_EX[t] || []).forEach((c) => {
+      const k = c.file.toLowerCase();
+      if (!seen.has(k)) { seen.add(k); candidates.push(c); }
+    });
+  });
+
+  const myRank = difficultyRank(ex);
+  const easier = [];
+  const harder = [];
+  candidates.forEach((c) => {
+    const r = difficultyRank(c);
+    if (r < myRank) easier.push(c);
+    else if (r > myRank) harder.push(c);
+    // Same rank as this page: file it wherever the split needs it most, so a
+    // topic whose exercises cluster at one level still fills both columns.
+    else (easier.length <= harder.length ? easier : harder).push(c);
+  });
+  easier.sort((a, b) => difficultyRank(b) - difficultyRank(a));
+  harder.sort((a, b) => difficultyRank(a) - difficultyRank(b));
+  const easierPick = easier.slice(0, 3);
+  const harderPick = harder.slice(0, 3);
+
+  const primarySlug = ex.topics[0];
+  const primaryTopic = TOPIC_BY_SLUG[primarySlug];
+  const topicTarget = primaryTopic || null;
+
+  if (!easierPick.length && !harderPick.length && !topicTarget) return '';
+
+  const rel = file.includes('/') ? '../' : '';
+  const item = (c) => `      <li><a href="${rel}${esc(c.file)}">${escText(c.title)}</a></li>`;
+  const cols = [];
+  if (easierPick.length) {
+    cols.push(`    <div class="related-ex-col">
+      <h3>Zum Aufwärmen <span class="related-ex-en">/ Warm-up</span></h3>
+      <ul>
+${easierPick.map(item).join('\n')}
+      </ul>
+    </div>`);
+  }
+  if (harderPick.length) {
+    cols.push(`    <div class="related-ex-col">
+      <h3>Nächste Herausforderung <span class="related-ex-en">/ Next challenge</span></h3>
+      <ul>
+${harderPick.map(item).join('\n')}
+      </ul>
+    </div>`);
+  }
+
+  const topicHtml = topicTarget
+    ? `  <p class="related-ex-topic">Grammatik nachlesen <span class="related-ex-en">/ Review the grammar</span>: `
+      + `<a href="${rel}themen/${esc(primarySlug)}.html">${escText(topicTarget.de)} <span class="related-ex-en">/ ${escText(topicTarget.en)}</span></a></p>\n`
+    : '';
+
+  return `<!-- RELATED:START — generated by scripts/build-head.js, do not edit by hand -->
+<div class="related-ex" role="note" aria-labelledby="related-ex-heading">
+  <h2 id="related-ex-heading">Weiterüben <span class="related-ex-en">/ Keep practising</span></h2>
+${cols.length ? `  <div class="related-ex-grid">\n${cols.join('\n')}\n  </div>\n` : ''}${topicHtml}</div>
+<!-- RELATED:END -->
+`;
+}
+
 // --- visible FAQ ----------------------------------------------------------
 // Rendered from the same scripts/page-faq.js data that feeds the FAQPage JSON-LD
 // above, so the two can never disagree. Injected before </main> on the pages
@@ -453,12 +659,21 @@ const FAQ_STYLE = `<style id="eol-faq-style">
 }
 </style>`;
 
-function faqSection(file) {
+/**
+ * business-activities.html and it-activities.html are English-language pages
+ * (their exercises, titles and existing prose are all English) — a German
+ * lang="de" wrapper and "Häufige Fragen" heading around English Q&A would be
+ * wrong on both counts. The section's language follows the page's own
+ * <html lang>, not a hardcoded assumption.
+ */
+function faqSection(file, lang) {
   const faq = PAGE_FAQ[file];
   if (!faq) return '';
+  const de = (lang || 'en').toLowerCase().startsWith('de');
+  const heading = de ? 'Häufige Fragen' : 'Frequently Asked Questions';
   return `<!-- FAQ:START — generated by scripts/build-head.js from scripts/page-faq.js, do not edit by hand -->
-<section class="eol-faq" lang="de" aria-labelledby="faq-heading">
-  <h2 id="faq-heading">Häufige Fragen</h2>
+<section class="eol-faq" lang="${de ? 'de' : 'en'}" aria-labelledby="faq-heading">
+  <h2 id="faq-heading">${heading}</h2>
   <dl>
 ${faq.map((f) => `    <dt>${escText(f.q)}</dt>\n    <dd>${escText(f.a)}</dd>`).join('\n')}
   </dl>
@@ -529,7 +744,7 @@ function insertAfterWelcomeHero(html, block) {
 function processFile(file) {
   const abs = path.join(ROOT, file);
   const original = fs.readFileSync(abs, 'utf8');
-  let html = ['HEAD', 'NOSCRIPT', 'SKIP', 'OVERVIEW', 'FAQ'].reduce(stripBlock, original);
+  let html = ['HEAD', 'NOSCRIPT', 'SKIP', 'OVERVIEW', 'RELATED', 'TIP', 'FAQ'].reduce(stripBlock, original);
 
   const headEnd = html.search(/<\/head>/i);
   if (headEnd === -1) return { file, skipped: 'no <head>' };
@@ -563,18 +778,25 @@ function processFile(file) {
   // so it cannot affect supportsDark() or rendersBlankWithoutJs() below.
   const meta = pageMeta(html);
   const overview = overviewBlock(file, meta, html);
+  const related = relatedBlock(file);
   let hasOverview = false;
-  if (overview) {
-    const withBox = insertAfterWelcomeHero(html, overview);
-    if (withBox) { html = withBox; hasOverview = true; }
+  let hasRelated = false;
+  const heroBlock = (overview || '') + (related || '');
+  if (heroBlock) {
+    const withBox = insertAfterWelcomeHero(html, heroBlock);
+    if (withBox) { html = withBox; hasOverview = !!overview; hasRelated = !!related; }
   }
 
-  const faq = faqSection(file);
+  const tip = tipBlock(file, html, meta.lang);
+  let hasTip = false;
+  if (tip) { html = insertAt(html, tip.at, tip.markup); hasTip = true; }
+
+  const faq = faqSection(file, meta.lang);
   if (faq && /<\/main>/i.test(html)) {
     html = html.replace(/<\/main>/i, faq + '</main>');
   }
 
-  html = html.replace(/<\/head>/i, headBlock(file, html, wantsSkip, hasOverview) + '</head>');
+  html = html.replace(/<\/head>/i, headBlock(file, html, wantsSkip, hasOverview, hasTip, hasRelated) + '</head>');
   if (wantsSkip) html = html.replace(/(<body[^>]*>\n?)/i, (m) => m + SKIP_LINK);
 
   const needsNoscript = framework || rendersBlankWithoutJs(html);
