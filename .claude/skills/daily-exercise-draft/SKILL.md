@@ -30,8 +30,14 @@ The caller (scheduled task or Shaun) provides the category. Valid categories:
 | `10g-` | Year 10 Gymnasium | ~B2/C1 | Klett Green Line 6 |
 | `10c-` | Year 10 Oberschule | ~B1/B2 | Klett Orange Line 6 |
 
-Year 7 and Year 9 drafting is **paused** (see CLAUDE.md). If asked for Y7/Y9, remind Shaun
-and ask which active category to use instead.
+Year 7 drafting is **paused** (see CLAUDE.md). If asked for Y7, remind Shaun and ask which
+active category to use instead.
+
+**Year 9 resumed 2026-08-23** (9c and 9g), but `topic-pool.json` has no 9c/9g category yet —
+step 2 below can't pick a Year 9 topic the registry-driven way until one is added (via the
+`add-topics` skill or by hand). Until then, build Year 9 exercises the way the 2026-08-13 batch
+was: check the existing 9c/9g corpus for what's already covered and pick a topic against the
+standard Year 9 syllabus that doesn't overlap, rather than reading from the registry.
 
 ### 2. Pick a topic
 
