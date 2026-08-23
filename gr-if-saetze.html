@@ -572,29 +572,15 @@ function checkExC() {
 function buildEmailBody() {
   var sc = totalScore();
   var i, body = 'Exercise: ' + UNIT
-    + '
-Date:  ' + new Date().toLocaleDateString('en-GB')
-    + '
-Score: ' + (sc.possible ? (fmtPts(sc.earned) + ' / ' + sc.possible) : '(no auto-graded sections)');
-  body += '
-
---- Exercise A ---';
-  for (i = 1; i <= 6; i++) body += '
-Gap ' + i + ': ' + (state.exA['g' + i] || '(none)');
-  body += '
-
---- Exercise B ---';
-  for (i = 1; i <= 8; i++) body += '
-Gap ' + i + ': ' + (state.exB['g' + i] || '(none)');
-  body += '
-
---- Exercise C ---';
-  for (i = 1; i <= 6; i++) body += '
-Gap ' + i + ': ' + (state.exC['g' + i] || '(none)');
-  body += '
-
---- Exercise D ---
-' + (state.exD.text || '(none)');
+    + '\nDate:  ' + new Date().toLocaleDateString('en-GB')
+    + '\nScore: ' + (sc.possible ? (fmtPts(sc.earned) + ' / ' + sc.possible) : '(no auto-graded sections)');
+  body += '\n\n--- Exercise A ---';
+  for (i = 1; i <= 6; i++) body += '\nGap ' + i + ': ' + (state.exA['g' + i] || '(none)');
+  body += '\n\n--- Exercise B ---';
+  for (i = 1; i <= 8; i++) body += '\nGap ' + i + ': ' + (state.exB['g' + i] || '(none)');
+  body += '\n\n--- Exercise C ---';
+  for (i = 1; i <= 6; i++) body += '\nGap ' + i + ': ' + (state.exC['g' + i] || '(none)');
+  body += '\n\n--- Exercise D ---\n' + (state.exD.text || '(none)');
   return body;
 }
 
