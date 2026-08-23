@@ -244,6 +244,8 @@ Before publishing, verify:
 - [ ] The Ex D prompt names a situation, an audience and a purpose
 - [ ] The unit has been added to `data/explanations.json` so wrong answers get a reason
       (`node scripts/validate-explanations.js` passes)
+- [ ] Every free-text input has a bound `<label>`, no colour-only cue was added by hand, and the
+      page sets no time limit (check 9 — the gap glyphs and dropdown names come from `exercise.js`)
 
 Regenerating indices locally before committing — **`node scripts/build.js`**, which runs the whole
 generator graph in the right order — is still expected: it keeps the diff you're pushing honest.
