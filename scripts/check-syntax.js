@@ -31,10 +31,20 @@ function typeOf(attrs) {
   return (m ? m[1] : '').toLowerCase();
 }
 
-/* Inline scripts only: a src= attribute means the body is empty or ignored. */
+/* Inline scripts only: a src= attribute means the body is empty or ignored.
+ *
+ * The end tag is matched the way the HTML parser's script-data state actually
+ * works: `</script` counts as the end only when the next character is
+ * whitespace, `/` or `>`, and anything up to the following `>` is then part of
+ * that tag. So `</script\t\n bar>` closes the element and `</scriptx>` does
+ * not. Requiring `</script\s*>` — as this did — silently ran two scripts
+ * together into one body, swallowing the markup between them, which makes the
+ * checker both miss real errors and invent ones. Caught by CodeQL's
+ * "bad HTML filtering regexp" query on PR #35.
+ */
 function inlineScripts(html) {
   const out = [];
-  const RE = /<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi;
+  const RE = /<script\b([^>]*)>([\s\S]*?)<\/script(?=[\s/>])[^>]*>/gi;
   let m;
   while ((m = RE.exec(html)) !== null) {
     const [, attrs, body] = m;
@@ -85,6 +95,35 @@ function htmlFiles() {
   }
   return files.sort();
 }
+
+/* The end-tag rule above is the checker's whole foundation: get it wrong and
+   two scripts merge into one body, which both hides real errors and invents
+   fake ones. Five cases, run on every invocation — microseconds, and CI covers
+   them because this script is a CHECKER in the build graph. */
+function selfTest() {
+  const one = (html) => { const r = inlineScripts(html); return r.length === 1 ? r[0].body : r.length; };
+  const cases = [
+    ['plain',              '<script>var a=1;</script>',                     'var a=1;'],
+    ['whitespace',         '<script>var a=1;</script >',                    'var a=1;'],
+    ['junk in end tag',    '<script>var a=1;</script\t\n bar>',             'var a=1;'],
+    ['slash in end tag',   '<script>var a=1;</script/>',                    'var a=1;'],
+    ['</scriptx> is not',  '<script>var a=1;//</scriptx>\nvar b=2;</script>', 'var a=1;//</scriptx>\nvar b=2;'],
+  ];
+  for (const [name, html, want] of cases) {
+    const got = one(html);
+    if (got !== want) {
+      console.error(`check-syntax self-test failed: ${name}\n  want ${JSON.stringify(want)}\n  got  ${JSON.stringify(got)}`);
+      process.exit(1);
+    }
+  }
+  // Two scripts separated by markup must stay two.
+  const two = inlineScripts('<script>var a=1;</script\t\n bar>\n<p>x</p>\n<script>var b=2;</script>');
+  if (two.length !== 2) {
+    console.error(`check-syntax self-test failed: expected 2 scripts, got ${two.length}`);
+    process.exit(1);
+  }
+}
+selfTest();
 
 const failures = [];
 let scripts = 0;
