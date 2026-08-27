@@ -38,19 +38,19 @@ Post only purpose-built lite/derivative versions that point back to englishonlin
 
 Each of these can kill or reshape the plan, and all are cheap. None were sequenced in v1.
 
-- [ ] **Docemus contract — IP check.** If material developed for school classes belongs to the
-      employer, the whole curriculum-aligned product line is invalid. v1 listed this at the bottom
-      under "Risks worth watching"; it's a gate, not a risk, because you'd discover it *after*
-      publishing.
-- [ ] **Tax / secondary-employment status.** Kleinunternehmer vs. regular VAT registration, and
-      whether a Nebentätigkeitsgenehmigung applies given your employment status. Eduki asks for a
-      tax status during author onboarding, so this gets decided in Phase 1 whether planned or not.
-- [ ] **Start Eduki author registration now** so identity + bank/IBAN verification runs in the
-      background. It gates **payout**, not publication — a lagging approval doesn't block listing.
-- [ ] **30-minute Eduki competitor scan.** Search *MSA Englisch*, *Abitur Englisch Textanalyse*,
-      *Klasse 10 Englisch Brandenburg*. Record: how many listings, price range, rating counts.
-      This decides which family to lead with and what the market price actually is — far better
-      than a guessed band.
+**All four gates cleared (Shaun, 2026-08-10).** None blocked the plan.
+
+- [x] **Docemus contract — IP check: CLEARED.** The work is Shaun's; no employer claim on material
+      developed for school classes. This was a gate rather than a risk because it would otherwise
+      have surfaced *after* publishing.
+- [x] **Tax / secondary-employment status: SETTLED.** Registered Kleinunternehmer, which is the
+      status Eduki asks for during author onboarding.
+- [x] **Eduki author registration: DONE.** Identity and bank/IBAN verification run in the
+      background; they gate **payout**, not publication, so a lagging approval never blocked
+      listing.
+- [x] **Eduki competitor scan: DONE.** *MSA Englisch* returns **1** result; *Abitur Englisch*
+      returns **759**, priced at €2.99 or free. MSA is white space, Abitur is oversaturated —
+      this is what flipped the Phase 2 priority order.
 
 **Exit criteria:** IP position known, tax status decided, Eduki registration submitted, competitor
 prices written down.
@@ -76,12 +76,12 @@ copy uses *Sie* and leads with preparation time saved — the opposite of the fr
       email-capture-first, not as a list of links** — no listings exist yet, and a page of dead
       links to unpublished products is the placeholder trap. Add listing links in Phase 2 when
       there is something to link to. Spec: the PATH section of `marketing-frameworks.md`.
-- [ ] **Put the MailerLite embed on the practise-mode results screen.** _(Replaces v1's "add a
+- [x] **MailerLite embed on the practise-mode results screen — DONE 2026-08-15.** _(Replaces v1's "add a
       MailerLite signup hook" — the hook already exists. Account `2491182`, form `1gw3aR`, live and
       converting on `msa-c-american-dream.html` and all four `lead-*.html` pages. The results
       screen is the highest-volume surface on the site and is already flagged as an open to-do in
       `docs/eol-backlog-plan.md`.)_
-- [ ] Decide the free-vs-paid line: which one unit goes free as a lead magnet
+- [x] Free-vs-paid line — decided 2026-08-10: Year 7–10 HTML exercises free; MSA and Abitur paid
 - [~] **Audience split — code done 2026-08-15, blocked on two dashboard tasks.**
 
       The gap turned out to be bigger than "fields aren't used for branching". Verified against the

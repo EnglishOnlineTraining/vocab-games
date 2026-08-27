@@ -21,7 +21,10 @@ students. Check this section before reporting anything as "done"._
 | `claude/explanation-skill-swgpqb` | **The whole explanations rollout — 94 units, 1726 gaps** in `data/explanations.json`, validator bug-fixes, 3 answer-key corrections (`8c-off-to-midwest`, `be-cross-cultural-communication`, `msa-c-school-recycling-scheme`) | ✅ **MERGED to main 2026-08-07** (Shaun approved). Branch can be deleted. |
 | `claude/pat-handling-reliability-6055wv` | `it-writing-task.html` + hub wiring, four `lead-*.html` pages, backlog reconciliation | ✅ **MERGED to main 2026-08-07** (Shaun approved). Branch can be deleted. |
 | `claude/student-score-changed-answers-xxcxt9` | Automatic dark mode — `style.css` (111 framework pages) + 37 bespoke pages | ✅ **MERGED to main 2026-08-07** (Shaun approved after review), with a contrast fix folded in — see note below. Branch can be deleted. |
-| `claude/github-repo-review-lcaye4` | nothing (0 commits ahead, 79 behind) | Stale — safe to delete. |
+| `claude/github-repo-review-lcaye4` | **Correction (2026-08-15): not 0 ahead — it is 173 ahead / 146 behind.** But its diff against `main` is a net **−72,301 lines**: it predates the 2026-07-17 `exercise.js` standardisation and would *undo* it. | Do **not** merge. Safe to delete — the verdict was right, the commit count was wrong. |
+| `claude/mailerlite-embedding-expansion-5cu4c2` | Per-audience MailerLite capture: opt-in `MAILERLITE_CAPTURE` in `exercise.js`, 20 MSA + 16 BE units, 16 Abitur packs, all four `lead-*` pages routed to their own form | ✅ **Merged into `claude/roadmap-feasibility-review-lwunnk` 2026-08-15** (verified fully contained). Reaches `main` only when that branch does. |
+| `claude/roadmap-feasibility-review-lwunnk` | **12 commits ahead, 0 behind.** Eduki roadmap + feasibility review + `marketing-frameworks.md`, the MailerLite audience split (above), practise-panel capture placement, backlog updates | ⏳ **Unmerged — needs Shaun's review.** Cleanly mergeable to `main`. |
+| `docemus`, `year-7`, `year-9` | 21 / 8 / 8 commits ahead, all 146 behind | Legacy feature branches from the old `main → docemus → year-*` flow. Nothing has merged from them in months; confirm dead, then delete. |
 
 **Merge note (2026-08-07):** merging the two approved branches conflicted on four files.
 `data/explanations.json` and `scripts/validate-explanations.js` → took the explanations branch's
@@ -243,6 +246,73 @@ here either. **Follow-up, not yet done:** the button/landing-page copy is still 
 (placeholder text) — needs real copy once Shaun confirms which surface needs it (button label vs.
 the MailerLite hosted-page copy), and this button's audience/group should probably be added to
 the "which groups exist" review above rather than staying an ungoverned one-off.
+
+## Eduki / MSA commercialisation — open tasks (2026-08-15) · Shaun + CC
+
+_Consolidated from `docs/msa-abitur-listing-roadmap.md`, its feasibility review, and
+`docs/marketing-frameworks.md`. **Deadline: two paid listings live by 22 August**, launch push by
+10 September. Phase 0 gates are all cleared (IP is Shaun's, Kleinunternehmer registered, Eduki
+account registered, competitor scan done: MSA 1 result vs Abitur 759 — MSA is the white space)._
+
+### Blocked on Shaun — no API or tool can do these
+
+1. **Confirm the Eduki Honorarstufe from the author dashboard. Blocks every price.** The author
+   keeps 50 % of net up to 24 active materials, 60 % from 25, 70 % from 100 — the commission, not
+   the transaction fee, is the main deduction, and it is at its worst right now. Every revenue
+   figure depends on which tier the dashboard actually shows.
+2. **Build the three empty MailerLite form designs** — `bHIAs6` Teachers, `Bp589z` Business
+   English, `tmhk85` Abitur. All still `has_content: false`; ~5 min each in the dashboard,
+   mirroring the working MSA form. Until then those three `lead-*` pages render their heading and
+   intro text but no form.
+3. **Design the two email bodies in *Teacher Track — EOL Teachers*** (automation
+   `195868777165882818`, created inactive 2026-08-15, bound to the Teachers group). Subjects and
+   the 3-day delay are pre-set; MailerLite's API cannot author email HTML. Activate when ready.
+
+### Decisions needed before more work is worth doing
+
+4. **Per-audience automations, or one shared track keyed on `source_task`?** Business English,
+   Abitur and MSA groups currently have **no automation at all** — a signup there receives
+   nothing. Either route means 6+ hand-designed email bodies, so decide the shape first.
+5. **Emoji and register standard for email subjects.** The existing welcome sequence uses 📥 and
+   📚; the VOICE rules in `marketing-frameworks.md` cut emoji and exclamation marks from
+   teacher-facing copy. The two new teacher-track subjects follow the new rules. Pick one standard
+   before designing bodies, or the list reads as two different senders.
+6. **What the MSA packs do about Listening.** Every `msa-c-*` unit generates audio via browser
+   speech synthesis — there are **no audio files** — so a printed "MSA Complete Pack" silently
+   drops Part 1 of a three-part exam. Either ship the scripts as a teacher read-aloud sheet
+   (cheapest, and normal for German exam material) or record and host audio. This changes what the
+   listing title can promise, so it gates the listing copy.
+
+### CC can do — ready to start
+
+7. **`/materialien` landing page** on englishonline.training. **Email-capture-first, not a list of
+   links** — no listings exist yet, so a page of links to unpublished products would ship dead
+   links. Spec: the PATH section of `marketing-frameworks.md`. Register is *Sie*, teacher-facing.
+8. **Shared print stylesheet.** `@media print` exists in exactly 4 files, all `lead-*.html`. The 16
+   Abitur packs and 20 MSA units have none, so "export → clean printable PDF" is currently a raw
+   browser print with no chrome suppression and no page-break control. One stylesheet serves both
+   families, and **every PDF deliverable is blocked behind it**.
+9. **Fix the `no-cors` success message.** `submitToSheet()` posts with `mode:'no-cors'`, so the
+   `.then()` fires on any completed request regardless of what the receiving end did — a rejected
+   student still sees "✅ Submitted to teacher!". This must be fixed *before* any roster gate is
+   built in Make, or the gate fails silently and invisibly.
+10. **Per-unit listing production** (repeats for each of the six units): export PDF, answer key,
+    cover page, preview image, listing title and description in German search terms, price,
+    practise-mode QR link, **endpoint grep**, upload. Sequence: MSA first.
+
+### Standing rule — do not regress
+
+- **Email capture stays off Year 7–9 pages.** Germany never lowered the GDPR Art. 8 digital-consent
+  age from 16, so capture aimed at 12–15-year-olds would need parental consent. `MAILERLITE_CAPTURE`
+  is opt-in and set only on `msa-c-*` (Klasse 10), `be-*` (adults), the Abitur packs and `lead-*`
+  pages. A previous attempt on 2026-08-15 to inject the form site-wide across all ~128 pages was
+  reverted for exactly this reason — do not reintroduce it.
+- **Run the endpoint grep before any upload:**
+  `grep -rE "hook\.eu1\.make\.com|script\.google\.com" <package>/` must return nothing. It
+  fires on MSA files, which is why it exists. The 16 Abitur packs are already clean and
+  self-contained.
+
+---
 
 ## Tier 3 — Small, low-risk cleanups · CC
 - `/wilkommen/` typo — **DONE.** Page 771 verified live at `/willkommen/` (2026-08-07); internal
@@ -557,7 +627,13 @@ and Tier 4 above for the full executed record. What's left:
    raises it.
 2. **380's non-breaking-space title** (Tier 3.5) — still unconfirmed either way; low priority,
    needs a direct wp-admin look rather than another API round-trip.
-3. **Tier 6 internal-linking audit — new, needs triage.** Bucket A (1966's dead form/fake
+3. **Eduki commercialisation — three decisions, all gating work** (full detail in the
+   *Eduki / MSA commercialisation* section above): whether Business English / Abitur / MSA each get
+   their own MailerLite automation or share one keyed on `source_task`; whether email subjects keep
+   emoji or follow the new teacher-facing VOICE rules; and what the printed MSA packs do about
+   Listening, given there are no audio files. Separately, **the Eduki Honorarstufe is unconfirmed
+   and blocks every price** — that one is a lookup, not a decision.
+4. **Tier 6 internal-linking audit — new, needs triage.** Bucket A (1966's dead form/fake
    subscribe button, 915's live off-strategy payment widgets, 168's Mailchimp + dead-domain
    payment link, 80's broken WhatsApp button, 1760's stale fallback URL) is the priority; buckets
    B and C are real but lower-stakes internal-linking gaps. Nothing here has a go-ahead yet.
