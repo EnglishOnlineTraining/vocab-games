@@ -10,37 +10,53 @@ const ROOT = path.join(__dirname, '..');
 
 const exercises = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'exercises.json'), 'utf8'));
 const topics = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'topics.json'), 'utf8'));
-const topicLabel = {}; topics.forEach(t => topicLabel[t.slug] = t.de);
+// The hub shows the English label; themen/ keeps the German one. Five slugs
+// (reported-speech, adjektive-adverbien, question-tags, future-tenses,
+// phrasal-verbs) are classified by build-exercise-data.js but have no entry in
+// topics.json yet, so they fall back to the slug read as words rather than
+// printing "future-tenses" on the card.
+const topicLabel = {}; topics.forEach(t => topicLabel[t.slug] = t.en);
+const topicLabelDe = {}; topics.forEach(t => topicLabelDe[t.slug] = t.de);
+const TOPIC_FALLBACK = {
+  'reported-speech': 'Reported speech', 'adjektive-adverbien': 'Adjectives and adverbs',
+  'question-tags': 'Question tags', 'future-tenses': 'Future tenses', 'phrasal-verbs': 'Phrasal verbs'
+};
+function topicName(slug) { return topicLabel[slug] || TOPIC_FALLBACK[slug] || slug; }
 
 function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
 function norm(s) { return String(s || '').toLowerCase().replace(/[^a-z0-9äöüß ]+/gi, ' ').replace(/\s+/g, ' ').trim(); }
 
-/* --- marking the German (WCAG 2.2 SC 3.1.2, Language of Parts) -------------
-   activities.html and index.html are <html lang="en">, but the hub chrome this
-   file generates is German: "Finde deine Übung", "Gemischte Wiederholung",
-   "Übungen durchsuchen". Without a lang, a screen reader pronounces all of it
-   with English phonemes, which is close to unintelligible.
+/* --- language of the hub chrome (WCAG 2.2 SC 3.1.2, Language of Parts) -----
+   activities.html and index.html are <html lang="en">, and as of 2026-08-27 so
+   is every label this file generates — the chrome used to be German inside an
+   English page, which a screen reader read with English phonemes.
 
-   Marked per element rather than by putting lang="de" on the whole section:
-   the exercise titles inside it are English (179 of 201), so a section-level
-   lang would trade one small problem for a much larger one.
+   Two kinds of German survive, and both are marked rather than translated:
 
-   de(s) wraps German inside a slot that takes raw HTML. Where the German is an
-   attribute instead (placeholder, aria-label) the lang has to go on the element
-   itself — an attribute cannot be wrapped — so those carry lang="de" inline.
+   - Names with no English form: Gymnasium, Oberschule, Abitur, MSA and
+     "Mittlerer Schulabschluss" are what the qualifications are actually called.
+     The first four are proper names, exempt under 3.1.2, and stay bare; the
+     spelt-out one is long enough to be worth marking.
+   - The ten gr-* pages are written in German (<html lang="de">) and so are
+     their titles. Translating the title without the page would be the same
+     bug pointing the other way, so the card carries the German title with a
+     lang instead — see deTitle().
 
-   Proper names are exempt under 3.1.2 and stay unmarked: Gymnasium, Oberschule,
-   Abitur, MSA, Quiz. */
+   de(s) wraps German in a slot that takes raw HTML. Where German would sit in
+   an attribute (placeholder, aria-label) the lang has to go on the element
+   itself, because an attribute cannot be wrapped. */
 function de(s) { return '<span lang="de">' + s + '</span>'; }
 function langAttr(lang) { return lang ? ' lang="' + lang + '"' : ''; }
 
-const YEAR_LABEL = { 7: 'Klasse 7', 8: 'Klasse 8', 9: 'Klasse 9', 10: 'Klasse 10', msa: 'MSA', abitur: 'Abitur', uni: 'Universität', it: 'IT English', business: 'Business English', grammar: 'Grammatik-Übungen', quiz: 'Quiz', other: 'Weitere' };
+// A German-language page whose title is visibly German (every gr-* title ends
+// "… – Interaktive Übung"). Both halves matter: the Abitur packs are lang="de"
+// pages that carry English titles, and must not be marked.
+function deTitle(e) { return e.lang === 'de' && /[äöüÄÖÜß]/.test(e.title || ''); }
+
+const YEAR_LABEL = { 7: 'Year 7', 8: 'Year 8', 9: 'Year 9', 10: 'Year 10', msa: 'MSA', abitur: 'Abitur', uni: 'University', it: 'IT English', business: 'Business English', grammar: 'Grammar Practice', quiz: 'Quiz', other: 'Other' };
 const YEAR_ORDER = [7, 8, 9, 10, 'abitur', 'msa', 'uni', 'it', 'business', 'grammar', 'quiz', 'other'];
 const SCHOOL_LABEL = { gymnasium: 'Gymnasium', oberschule: 'Oberschule' };
-// Which YEAR_LABEL values are German. The rest are either English ('IT English',
-// 'Business English') or proper names exempt under SC 3.1.2 (Abitur, MSA, Quiz).
-const YEAR_LANG = { 7: 'de', 8: 'de', 9: 'de', 10: 'de', uni: 'de', grammar: 'de', other: 'de' };
-const SKILL_LABEL = { reading: 'Lesen', grammar: 'Grammatik', writing: 'Schreiben', vocabulary: 'Vokabeln', listening: 'Hören' };
+const SKILL_LABEL = { reading: 'Reading', grammar: 'Grammar', writing: 'Writing', vocabulary: 'Vocabulary', listening: 'Listening' };
 const SKILL_ORDER = ['grammar', 'reading', 'writing', 'vocabulary', 'listening'];
 
 // ---- counts ----
@@ -51,48 +67,51 @@ const topicCounts = countBy(e => e.topics || []);
 const schoolCounts = countBy(e => e.schoolType);
 
 // ---- controls ----
-function chip(filter, val, label, count, lang) {
-  return '<button type="button" class="hub-chip"' + langAttr(lang) + ' data-val="' + esc(val) + '">' + esc(label)
+function chip(filter, val, label, count) {
+  return '<button type="button" class="hub-chip" data-val="' + esc(val) + '">' + esc(label)
     + (count != null ? ' <i>(' + count + ')</i>' : '') + '</button>';
 }
-// Every group label ("Jahrgang", "Schulart", …) and the "Alle" chip are German.
 function group(filter, label, chips) {
-  return '<div class="hub-group" data-filter="' + filter + '"><span class="hub-label" lang="de">' + label + '</span>'
-    + chip(filter, '', 'Alle', null, 'de') + chips + '</div>';
+  return '<div class="hub-group" data-filter="' + filter + '"><span class="hub-label">' + label + '</span>'
+    + chip(filter, '', 'All') + chips + '</div>';
 }
 
-let yearChips = YEAR_ORDER.filter(y => yearCounts[String(y)]).map(y => chip('year', String(y), YEAR_LABEL[y] || y, yearCounts[String(y)], YEAR_LANG[y])).join('');
+let yearChips = YEAR_ORDER.filter(y => yearCounts[String(y)]).map(y => chip('year', String(y), YEAR_LABEL[y] || y, yearCounts[String(y)])).join('');
 let schoolChips = Object.keys(SCHOOL_LABEL).filter(s => schoolCounts[s]).map(s => chip('school', s, SCHOOL_LABEL[s], schoolCounts[s])).join('');
-// SKILL_LABEL is German throughout (Lesen, Grammatik, Schreiben, …).
-let skillChips = SKILL_ORDER.filter(s => skillCounts[s]).map(s => chip('skill', s, SKILL_LABEL[s], skillCounts[s], 'de')).join('');
-let topicOptions = '<option value="">Alle Themen</option>' + topics.filter(t => topicCounts[t.slug]).map(t => '<option value="' + esc(t.slug) + '">' + esc(t.de) + ' (' + topicCounts[t.slug] + ')</option>').join('');
+let skillChips = SKILL_ORDER.filter(s => skillCounts[s]).map(s => chip('skill', s, SKILL_LABEL[s], skillCounts[s])).join('');
+// t.en, not t.de: the German labels stay on the themen/ pages, which are German
+// by design. Only the English hub reads from the other column.
+let topicOptions = '<option value="">All topics</option>' + topics.filter(t => topicCounts[t.slug]).map(t => '<option value="' + esc(t.slug) + '">' + esc(t.en) + ' (' + topicCounts[t.slug] + ')</option>').join('');
 
 const controls = '<div class="hub-controls">'
-  + '<input type="search" id="hub-q" class="hub-search" lang="de" placeholder="Suche nach Titel oder Thema…" aria-label="Übungen durchsuchen">'
+  + '<input type="search" id="hub-q" class="hub-search" placeholder="Search by title or topic…" aria-label="Search exercises">'
   + '<div class="hub-filters">'
-  + group('year', 'Jahrgang', yearChips)
-  + group('school', 'Schulart', schoolChips)
-  + group('skill', 'Fertigkeit', skillChips)
-  + '<div class="hub-group hub-topic"><span class="hub-label" lang="de">Thema</span>'
-  + '<select id="hub-topic" lang="de" aria-label="Grammatik-Thema">' + topicOptions + '</select></div>'
+  + group('year', 'Year', yearChips)
+  + group('school', 'School type', schoolChips)
+  + group('skill', 'Skill', skillChips)
+  + '<div class="hub-group hub-topic"><span class="hub-label">Topic</span>'
+  + '<select id="hub-topic" aria-label="Grammar topic">' + topicOptions + '</select></div>'
   + '</div></div>';
 
 // ---- cards ----
 function card(e) {
   const y = String(e.year);
   const badges = [];
-  badges.push('<span class="hc-badge"' + langAttr(YEAR_LANG[e.year]) + '>' + esc(YEAR_LABEL[e.year] || y) + '</span>');
+  badges.push('<span class="hc-badge">' + esc(YEAR_LABEL[e.year] || y) + '</span>');
   if (e.schoolType === 'gymnasium') badges.push('<span class="hc-badge hc-gym">Gymnasium</span>');
   else if (e.schoolType === 'oberschule') badges.push('<span class="hc-badge hc-ober">Oberschule</span>');
-  const topicNames = (e.topics || []).map(s => topicLabel[s] || s);
-  const searchText = norm([e.title, e.blurb, topicNames.join(' ')].join(' '));
+  const topicNames = (e.topics || []).map(topicName);
+  // Both labels go into the search text even though only the English one is
+  // shown: a German student still types "Relativsätze", not "relative clauses".
+  const topicSearch = (e.topics || []).map(s => topicLabelDe[s] || '').join(' ');
+  const searchText = norm([e.title, e.blurb, topicNames.join(' '), topicSearch].join(' '));
   return '<li class="hub-card" data-year="' + esc(y) + '" data-school="' + esc(e.schoolType || '') + '"'
     + ' data-topics="' + esc((e.topics || []).join(' ')) + '" data-skills="' + esc((e.skills || []).join(' ')) + '"'
     + ' data-title="' + esc(searchText) + '">'
     + '<a href="' + esc(e.file) + '">'
-    + '<span class="hc-title">' + esc(e.title) + '</span>'
+    + '<span class="hc-title"' + langAttr(deTitle(e) ? 'de' : null) + '>' + esc(e.title) + '</span>'
     + '<span class="hc-badges">' + badges.join('') + '</span>'
-    + (topicNames.length ? '<span class="hc-topics" lang="de">' + esc(topicNames.join(' · ')) + '</span>' : '')
+    + (topicNames.length ? '<span class="hc-topics">' + esc(topicNames.join(' · ')) + '</span>' : '')
     + '</a></li>';
 }
 
@@ -107,12 +126,12 @@ const cards = sorted.map(card).join('\n      ');
 const section =
   '<!-- HUB:START (generated by scripts/build-hub.js — do not edit by hand) -->\n'
   + '  <section class="hub" id="uebungen" aria-labelledby="hub-h">\n'
-  + '    <h2 class="hub-h" id="hub-h" lang="de">Finde deine Übung</h2>\n'
+  + '    <h2 class="hub-h" id="hub-h">Find your exercise</h2>\n'
   + '    ' + controls + '\n'
-  + '    <p class="hub-count" id="hub-count" lang="de" aria-live="polite" role="status">' + exercises.length + ' Übungen</p>\n'
+  + '    <p class="hub-count" id="hub-count" aria-live="polite" role="status">' + exercises.length + ' exercises</p>\n'
   + '    <ul class="hub-grid" id="hub-grid">\n      ' + cards + '\n    </ul>\n'
-  + '    <p class="hub-empty" id="hub-empty" lang="de" hidden>Keine Übung passt zu diesen Filtern. '
-  + '<button type="button" onclick="hubReset()">Filter zurücksetzen</button></p>\n'
+  + '    <p class="hub-empty" id="hub-empty" hidden>No exercise matches these filters. '
+  + '<button type="button" onclick="hubReset()">Reset filters</button></p>\n'
   + '  </section>\n'
   + '  <!-- HUB:END -->';
 
@@ -204,7 +223,7 @@ const colBlocks = [];
 
 COLLECTION_YEARS.forEach(([year, label, gMeta, cMeta]) => {
   const g = countFor(year, 'gymnasium'), c = countFor(year, 'oberschule');
-  colBlocks.push(colBlock('y' + year, year, de('Sekundarstufe I'), label, [
+  colBlocks.push(colBlock('y' + year, year, 'Lower secondary', label, [
     colCard(year + 'g-activities.html', '🏫', 'Gymnasium',  g ? gMeta : 'Coming soon', count(g, 'Exercise')),
     colCard(year + 'c-activities.html', '🏫', 'Oberschule', c ? cMeta : 'Coming soon', count(c, 'Exercise'))
   ]));
@@ -212,7 +231,7 @@ COLLECTION_YEARS.forEach(([year, label, gMeta, cMeta]) => {
 
 // Abitur and MSA are exam courses in their own right — one block each, never
 // folded into the professional-English block (Shaun, 2026-08-19).
-colBlocks.push(colBlock('abi', '🎓', de('Sekundarstufe II'), 'Abitur', [
+colBlocks.push(colBlock('abi', '🎓', 'Upper secondary', 'Abitur', [
   colCard('abitur-activities.html', '🎓', 'Abitur English',
     'Text analysis, argumentative writing, summaries &amp; mediation',
     count(countFor('abitur', null), 'Pack'))
@@ -224,10 +243,10 @@ colBlocks.push(colBlock('msa', '🎧', 'Oberschule · Exam prep', 'MSA ' + de('(
     count(countFor('msa', null), 'Exercise'))
 ]));
 
-colBlocks.push(colBlock('grammar-section', '📘', de('Alle Niveaustufen · Keine Anmeldung'), de('Grammatik-Übungen'), [
-  colCard('grammar-activities.html', '📘', de('Grammatik-Übungen'),
-    de('Interaktive Übungen zu einzelnen Grammatikthemen — frei zugänglich'),
-    de(count(countFor('grammar', null), 'Thema', 'Themen')))
+colBlocks.push(colBlock('grammar-section', '📘', 'All levels · No sign-up', 'Grammar Practice', [
+  colCard('grammar-activities.html', '📘', 'Grammar Practice',
+    'Interactive practice on one grammar point at a time, explained in German',
+    count(countFor('grammar', null), 'Topic'))
 ]));
 
 colBlocks.push(colBlock('tools', '🔤', 'Exam prep', 'Vocabulary Tools', [
@@ -243,7 +262,7 @@ colBlocks.push(colBlock('prof', '🎓', 'Adults · Vocational', 'Professional En
 
 const collectionsSection =
   '<!-- COLLECTIONS:START (generated by scripts/build-hub.js — do not edit by hand) -->\n'
-  + '  <h2 class="collections-h" lang="de">Kurssammlungen — nach Jahrgang &amp; Schulart</h2>\n\n'
+  + '  <h2 class="collections-h">Course collections — by year &amp; school type</h2>\n\n'
   + colBlocks.join('\n\n') + '\n'
   + '  <!-- COLLECTIONS:END -->';
 
@@ -304,7 +323,7 @@ const ABITUR_TASKS = [
   ['text-analysis',         '📖', 'Text Analysis',            'Style, structure and argument in exam texts', 'abitur-text-analysis.html'],
   ['argumentative-writing', '✍️', 'Argumentative Writing',    'Building a structured argument under exam conditions', 'abitur-argumentative-writing.html'],
   ['writing-summaries',     '📝', 'Writing Summaries',        'Condensing a source text in your own words', 'abitur-writing-summaries.html'],
-  ['mediation',             '🔄', 'Mediation',                de('Sprachmittlung') + ' between German and English', 'abitur-mediation.html']
+  ['mediation',             '🔄', 'Mediation',                'Carrying meaning across between German and English', 'abitur-mediation.html']
 ];
 
 function rootCount(n, word, plural) {
@@ -351,7 +370,7 @@ const msaCards = [
     rootCount(msaUnits, 'Exercise'), msaUnits > 0)
 ];
 if (fs.existsSync(path.join(ROOT, 'msa-review.html'))) {
-  msaCards.push(rootCard('msa-review.html', '🔁', de('Gemischte Wiederholung'),
+  msaCards.push(rootCard('msa-review.html', '🔁', 'Mixed Revision',
     'Mixed questions revisiting earlier MSA units', 'Revision', true));
 }
 rootBlocks.push(rootBlock('MSA — ' + de('Mittlerer Schulabschluss'), '🎧', msaCards));
@@ -384,7 +403,7 @@ rootBlocks.push(rootBlock('Browse everything', '', [
     'Search and filter by year, school type, skill or grammar topic',
     rootCount(exercises.length, 'Exercise'), true),
   rootCard('themen/index.html', '📐', 'Grammar topics',
-    de('Passiv, if-Sätze, Relativsätze und mehr — auf Deutsch erklärt'),
+    'Passive, conditionals, relative clauses and more — explained in German',
     rootCount(topicPageCount, 'Topic'), topicPageCount > 0),
   rootCard('activities.html?year=quiz', '🧠', 'Grammar quizzes',
     'Four self-scoring quizzes, easy to hardest — no sign-up',

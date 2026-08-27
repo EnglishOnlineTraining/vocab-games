@@ -89,6 +89,12 @@ function grabTitles(s, cls, tag) {
 }
 
 const files = fs.readdirSync(ROOT).filter(f => f.endsWith('.html')).sort();
+// The page's own declared language. Most are English, but the ten gr-* grammar
+// pages are written in German (<html lang="de">) and so are their titles — the
+// hub needs to know, or it renders a German title inside an English page with no
+// lang of its own (WCAG 2.2 SC 3.1.2).
+function pageLang(s) { return (m1(/<html[^>]*\blang="([a-z-]+)"/i, s) || 'en').toLowerCase(); }
+
 const exercises = [];
 const coverage = {};
 TOPICS.forEach(t => coverage[t.slug] = []);
@@ -99,6 +105,11 @@ files.forEach(f => {
   const title = decode(m1(/<title>([\s\S]*?)<\/title>/i, s)).replace(/\s*[|·–-]\s*englishonline\.training\s*$/i, '').trim();
   const h1 = decode(m1(/<h1[^>]*class="welcome-title"[^>]*>([\s\S]*?)<\/h1>/i, s));
   const [year, schoolType] = schoolFromPrefix(f);
+  // The page's own declared language. Most are English, but the ten gr-* grammar
+  // pages are written in German (<html lang="de">) and so are their titles — the
+  // hub needs to know, or it renders a German title inside an English page with
+  // no lang of its own (WCAG 2.2 SC 3.1.2).
+  const lang = pageLang(s);
   let points = grabTitles(s, 'ex-title', 'h2');
   if (!points.length) points = grabTitles(s, 'card-title', 'div');
   const blob = points.join(' · ');
@@ -107,7 +118,7 @@ files.forEach(f => {
   if (grSlug && TOPICS.some(t => t.slug === grSlug)) topics = [grSlug];
   topics.forEach(sl => coverage[sl].push(f));
   exercises.push({
-    file: f, title: title || h1, year: year, schoolType: schoolType,
+    file: f, title: title || h1, year: year, schoolType: schoolType, lang: lang,
     topics: topics, skills: skillsFor(points), blurb: points.join(' · ')
   });
 });
@@ -138,7 +149,7 @@ files.filter(f => /^abitur-/.test(f) && !/activities\.html$/.test(f)).forEach(f 
   const title = decode(m1(/<title>([\s\S]*?)<\/title>/i, s)).replace(/\s*[—–-]\s*Abitur English\s*$/i, '').trim()
              || decode(m1(/<h1[^>]*>([\s\S]*?)<\/h1>/i, s));
   exercises.push({
-    file: f, title: title, year: 'abitur', schoolType: 'gymnasium',
+    file: f, title: title, year: 'abitur', schoolType: 'gymnasium', lang: pageLang(s),
     topics: [], skills: ABI_SKILLS[key], blurb: ABI_LABEL[key]
   });
 });
@@ -165,7 +176,7 @@ Object.keys(STANDALONE).forEach(f => {
   const title = decode(m1(/<title>([\s\S]*?)<\/title>/i, s))
     .replace(/\s*[|·–-]\s*englishonline\.training\s*$/i, '').trim();
   exercises.push({
-    file: f, title: title, year: cfg.year, schoolType: cfg.schoolType,
+    file: f, title: title, year: cfg.year, schoolType: cfg.schoolType, lang: pageLang(s),
     topics: [], skills: cfg.skills, blurb: cfg.blurb
   });
 });
