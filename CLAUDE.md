@@ -57,6 +57,20 @@ send, so passing `featured_media` without `content` never round-trips the block 
 1763 on 2026-08-18, where every button group, the Grammatik-Themen block and the quizzes came back
 untouched. The danger is only in sending `content` back.
 
+**The button *labels* on 1763 drift independently of the `_crdt_document` problem — found
+2026-08-27.** The "Nach Grammatik-Thema üben" block's last button read "✏️ Grammatik-Übungen (2
+exercises)" (linking `grammar-activities.html`) while the page actually had **15** exercises by
+then — it was never updated as `gr-*.html` pages were added, because nothing regenerates this
+block automatically (unlike the year/Abitur/MSA/Uni/IT/Business buttons above it, which are
+generated in sync with `activities.html`'s own hub count via `build-hub.js`). Fixed via
+`pages.update` with `content` fetched at `context: "edit"`, single-string diff, re-verified after
+write — same safe procedure as the featured_media-only case above, just with `content` in the
+payload this time since the label text itself had to change. **When touching 1763, spot-check
+every hardcoded "(N exercises)" count against the real numbers** (`node topic-pool.js`, or count
+links directly in the relevant `*-activities.html`/`grammar-activities.html`) rather than
+assuming only the CRDT snapshot can be stale — the live button text can drift too, silently, with
+nothing to catch it.
+
 ### 2. `isTestMode()` makes submissions silently no-op on localhost
 ```js
 function isTestMode() {
