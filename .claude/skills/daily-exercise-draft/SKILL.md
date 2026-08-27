@@ -30,8 +30,14 @@ The caller (scheduled task or Shaun) provides the category. Valid categories:
 | `10g-` | Year 10 Gymnasium | ~B2/C1 | Klett Green Line 6 |
 | `10c-` | Year 10 Oberschule | ~B1/B2 | Klett Orange Line 6 |
 
-Year 7 and Year 9 drafting is **paused** (see CLAUDE.md). If asked for Y7/Y9, remind Shaun
-and ask which active category to use instead.
+Year 7 drafting is **paused** (see CLAUDE.md). If asked for Y7, remind Shaun and ask which
+active category to use instead.
+
+**Year 9 resumed 2026-08-23** (9c and 9g), but `topic-pool.json` has no 9c/9g category yet —
+step 2 below can't pick a Year 9 topic the registry-driven way until one is added (via the
+`add-topics` skill or by hand). Until then, build Year 9 exercises the way the 2026-08-13 batch
+was: check the existing 9c/9g corpus for what's already covered and pick a topic against the
+standard Year 9 syllabus that doesn't overlap, rather than reading from the registry.
 
 ### 2. Pick a topic
 
@@ -244,6 +250,8 @@ Before publishing, verify:
 - [ ] The Ex D prompt names a situation, an audience and a purpose
 - [ ] The unit has been added to `data/explanations.json` so wrong answers get a reason
       (`node scripts/validate-explanations.js` passes)
+- [ ] Every free-text input has a bound `<label>`, no colour-only cue was added by hand, and the
+      page sets no time limit (check 9 — the gap glyphs and dropdown names come from `exercise.js`)
 
 Regenerating indices locally before committing — **`node scripts/build.js`**, which runs the whole
 generator graph in the right order — is still expected: it keeps the diff you're pushing honest.

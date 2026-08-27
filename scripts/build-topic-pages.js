@@ -351,9 +351,12 @@ exercises.forEach(e => urls.push(BASE + '/' + e.file));
 const EXTRA_PUBLIC_PAGES = [
   'vocab-games.html',
   'business.html',
-  // A German landing page for Sprachmittlung. Not a *-activities.html hub and it
-  // does not load exercise.js, so neither loop above would find it.
+  // German landing pages for the four Abitur task types. Not *-activities.html
+  // hubs and none load exercise.js, so neither loop above would find them.
   'abitur-mediation.html',
+  'abitur-text-analysis.html',
+  'abitur-argumentative-writing.html',
+  'abitur-writing-summaries.html',
   'ielts-vocabulary-glossary.html',
   // uni-presentation-task.html used to be listed here. It is now carried in
   // data/exercises.json via the STANDALONE map in build-exercise-data.js, so the

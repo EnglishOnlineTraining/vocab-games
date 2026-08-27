@@ -15,6 +15,20 @@
     "blurb": "A Changing Wilderness · Present Perfect or Past Simple? · Time Words with the Present Perfect · Writing – An Environmental Problem"
   },
   {
+    "file": "10c-canada-schools.html",
+    "title": "School in Canada: Rules and Education",
+    "year": 10,
+    "schoolType": "oberschule",
+    "topics": [
+      "modalverben"
+    ],
+    "skills": [
+      "grammar",
+      "writing"
+    ],
+    "blurb": "Schools in Canada · Modal Verbs: must and have to · Giving Advice — should and shouldn't · Writing: Dear Toronto …"
+  },
+  {
     "file": "10c-discover-canada.html",
     "title": "Discover Canada",
     "year": 10,
@@ -844,6 +858,21 @@
     "blurb": "The Sound of the South · Defining Relative Clauses · Writing: Your Opinion on Music"
   },
   {
+    "file": "8c-teen-daily-routine.html",
+    "title": "A US Teenager's Daily Routine",
+    "year": 8,
+    "schoolType": "oberschule",
+    "topics": [
+      "present-tenses",
+      "adjektive-adverbien"
+    ],
+    "skills": [
+      "grammar",
+      "writing"
+    ],
+    "blurb": "Jake's Day in Ohio · Present Simple — He, She, It · Where Does the Adverb Go? · Writing: A Message to Jake"
+  },
+  {
     "file": "8g-advertisements.html",
     "title": "Advertisements",
     "year": 8,
@@ -876,6 +905,20 @@
       "writing"
     ],
     "blurb": "Lena's Year in Ohio · Household Chores · Writing: Helping at Home"
+  },
+  {
+    "file": "8g-american-inventions-conditionals.html",
+    "title": "A Nation Invents Itself: American Inventions in Numbers",
+    "year": 8,
+    "schoolType": "gymnasium",
+    "topics": [
+      "if-saetze"
+    ],
+    "skills": [
+      "grammar",
+      "writing"
+    ],
+    "blurb": "American Inventions in Numbers · If-Clauses Type 1: Real Possibilities · If-Clauses Type 2: Imaginary Situations · Writing: The World Without …"
   },
   {
     "file": "8g-american-inventions.html",
@@ -1110,6 +1153,17 @@
     "blurb": "Two Weeks at the Animal Clinic · Present Perfect or Simple Past? · Jobs and Applications: Key Words · Writing: My Work Experience"
   },
   {
+    "file": "9g-australia-outback-past-perfect.html",
+    "title": "Into the Red Centre",
+    "year": 9,
+    "schoolType": "gymnasium",
+    "topics": [],
+    "skills": [
+      "writing"
+    ],
+    "blurb": "Uluru and the Outback · Which Happened First? · Putting the Story in Order · Writing: One Day in the Outback"
+  },
+  {
     "file": "9g-california-hazards.html",
     "title": "California – Environment & Natural Hazards",
     "year": 9,
@@ -1203,6 +1257,17 @@
     "blurb": "Reading – The Emerald Isle · Gerunds & Infinitives – Gap-fill · Sentence Completion – Gerund or Infinitive? · Writing – A Trip to Ireland"
   },
   {
+    "file": "9g-media-participle-clauses.html",
+    "title": "Behind the Headlines",
+    "year": 9,
+    "schoolType": "gymnasium",
+    "topics": [],
+    "skills": [
+      "writing"
+    ],
+    "blurb": "How a Story Gets Made · -ing or -ed? · Say It in Fewer Words · Writing: Report It Yourself"
+  },
+  {
     "file": "9g-new-zealand-passive.html",
     "title": "New Zealand – The Passive Voice",
     "year": 9,
@@ -1243,6 +1308,17 @@
       "reading"
     ],
     "blurb": "Articles · Relative Clauses · California Vocabulary · Future Tenses · Reading — The Perfect Location"
+  },
+  {
+    "file": "9g-work-experience-indirect-questions.html",
+    "title": "Two Weeks in the Real World",
+    "year": 9,
+    "schoolType": "gymnasium",
+    "topics": [],
+    "skills": [
+      "writing"
+    ],
+    "blurb": "Your Fortnight at Work · Asking Politely · …isn’t it? · Writing: Dear Ms Hughes"
   },
   {
     "file": "be-brand-positioning.html",
@@ -1472,6 +1548,34 @@
     "blurb": "Company Changes · Types of Meeting · Meeting Vocabulary · Talking about Schedules"
   },
   {
+    "file": "gr-adjektive-adverbien.html",
+    "title": "Adjectives &amp; Adverbs – Interactive Exercise",
+    "year": "grammar",
+    "schoolType": "grammar",
+    "topics": [
+      "adjektive-adverbien"
+    ],
+    "skills": [
+      "grammar",
+      "writing"
+    ],
+    "blurb": "Read & Spot · Adjective or Adverb? · Comparing Things · Writing · Well done!"
+  },
+  {
+    "file": "gr-future-tenses.html",
+    "title": "Future Forms – Interactive Exercise",
+    "year": "grammar",
+    "schoolType": "grammar",
+    "topics": [
+      "future-tenses"
+    ],
+    "skills": [
+      "grammar",
+      "writing"
+    ],
+    "blurb": "Read & Spot · will or going to? · Arrangements & Timetables · Writing · Well done!"
+  },
+  {
     "file": "gr-gerund-infinitiv.html",
     "title": "Gerundium & Infinitiv – Interaktive Übung",
     "year": "grammar",
@@ -1483,6 +1587,45 @@
       "grammar"
     ],
     "blurb": "Lesen & Erkennen · Verb + Form · Bedeutung ändert sich · Schreiben"
+  },
+  {
+    "file": "gr-if-saetze.html",
+    "title": "If-Sätze – Interaktive Übung",
+    "year": "grammar",
+    "schoolType": "grammar",
+    "topics": [
+      "if-saetze"
+    ],
+    "skills": [
+      "grammar"
+    ],
+    "blurb": "Lesen & Erkennen · Alle drei Typen · Typ 3 & Feinheiten · Schreiben"
+  },
+  {
+    "file": "gr-linking-words.html",
+    "title": "Verknüpfungswörter – Interaktive Übung",
+    "year": "grammar",
+    "schoolType": "grammar",
+    "topics": [
+      "linking-words"
+    ],
+    "skills": [
+      "grammar"
+    ],
+    "blurb": "Lesen & Erkennen · Kontrast & Zusatz · Grund, Folge & Zweck · Schreiben"
+  },
+  {
+    "file": "gr-modalverben.html",
+    "title": "Modalverben – Interaktive Übung",
+    "year": "grammar",
+    "schoolType": "grammar",
+    "topics": [
+      "modalverben"
+    ],
+    "skills": [
+      "grammar"
+    ],
+    "blurb": "Lesen & Erkennen · Was heißt das? · Vergangenheit & Ersatzformen · Schreiben"
   },
   {
     "file": "gr-passiv.html",
@@ -1498,6 +1641,71 @@
     "blurb": "Lesen & Erkennen · Alle Zeiten · Modalverben & by · Schreiben"
   },
   {
+    "file": "gr-past-perfect.html",
+    "title": "Past Perfect – Interaktive Übung",
+    "year": "grammar",
+    "schoolType": "grammar",
+    "topics": [
+      "past-perfect"
+    ],
+    "skills": [
+      "grammar"
+    ],
+    "blurb": "Lesen & Erkennen · Vorher oder nachher? · Signalwörter · Schreiben"
+  },
+  {
+    "file": "gr-phrasal-verbs.html",
+    "title": "Phrasal Verbs – Interactive Exercise",
+    "year": "grammar",
+    "schoolType": "grammar",
+    "topics": [
+      "phrasal-verbs"
+    ],
+    "skills": [
+      "writing"
+    ],
+    "blurb": "Read & Spot · What Does It Mean? · Find the Particle · Writing · Well done!"
+  },
+  {
+    "file": "gr-present-perfect.html",
+    "title": "Present Perfect – Interaktive Übung",
+    "year": "grammar",
+    "schoolType": "grammar",
+    "topics": [
+      "present-perfect"
+    ],
+    "skills": [
+      "grammar"
+    ],
+    "blurb": "Lesen & Erkennen · Present Perfect oder Simple Past? · Signalwörter · Schreiben"
+  },
+  {
+    "file": "gr-present-tenses.html",
+    "title": "Present Tenses – Interaktive Übung",
+    "year": "grammar",
+    "schoolType": "grammar",
+    "topics": [
+      "present-tenses"
+    ],
+    "skills": [
+      "grammar"
+    ],
+    "blurb": "Lesen & Erkennen · Simple oder Progressive? · Statische Verben · Schreiben"
+  },
+  {
+    "file": "gr-question-tags.html",
+    "title": "Question Tags – Interactive Exercise",
+    "year": "grammar",
+    "schoolType": "grammar",
+    "topics": [
+      "question-tags"
+    ],
+    "skills": [
+      "writing"
+    ],
+    "blurb": "Read & Spot · Form the Tag · Tricky Cases · Writing · Well done!"
+  },
+  {
     "file": "gr-relativsaetze.html",
     "title": "Relativsätze – Interaktive Übung",
     "year": "grammar",
@@ -1509,6 +1717,32 @@
       "grammar"
     ],
     "blurb": "Lesen & Erkennen · Kommas · Weglassen & Präpositionen · Schreiben"
+  },
+  {
+    "file": "gr-reported-speech.html",
+    "title": "Reported Speech – Interactive Exercise",
+    "year": "grammar",
+    "schoolType": "grammar",
+    "topics": [
+      "reported-speech"
+    ],
+    "skills": [
+      "writing"
+    ],
+    "blurb": "Read & Spot · Report the Statements · Questions & Commands · Writing · Well done!"
+  },
+  {
+    "file": "gr-simple-past.html",
+    "title": "Simple Past – Interaktive Übung",
+    "year": "grammar",
+    "schoolType": "grammar",
+    "topics": [
+      "simple-past"
+    ],
+    "skills": [
+      "grammar"
+    ],
+    "blurb": "Lesen & Erkennen · Regelmäßig & unregelmäßig · Fragen & Verneinung · Schreiben"
   },
   {
     "file": "it-ai-industry4.html",

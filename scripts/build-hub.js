@@ -277,9 +277,9 @@ const ROOT_COURSES = [
 // deep-links into abitur-activities.html at the matching group-heading id.
 // Those ids are load-bearing — see the note in CLAUDE.md before renaming one.
 const ABITUR_TASKS = [
-  ['text-analysis',         '📖', 'Text Analysis',            'Style, structure and argument in exam texts'],
-  ['argumentative-writing', '✍️', 'Argumentative Writing',    'Building a structured argument under exam conditions'],
-  ['writing-summaries',     '📝', 'Writing Summaries',        'Condensing a source text in your own words'],
+  ['text-analysis',         '📖', 'Text Analysis',            'Style, structure and argument in exam texts', 'abitur-text-analysis.html'],
+  ['argumentative-writing', '✍️', 'Argumentative Writing',    'Building a structured argument under exam conditions', 'abitur-argumentative-writing.html'],
+  ['writing-summaries',     '📝', 'Writing Summaries',        'Condensing a source text in your own words', 'abitur-writing-summaries.html'],
   ['mediation',             '🔄', 'Mediation',                'Sprachmittlung between German and English', 'abitur-mediation.html']
 ];
 

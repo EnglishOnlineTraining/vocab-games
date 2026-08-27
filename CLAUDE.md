@@ -104,11 +104,30 @@ harmless.
 
 ---
 
-## Year 7 & Year 9 — paused
+## Year 7 — paused · Year 9 — active again (resumed 2026-08-23)
 
-Year 7 and Year 9 exercise **drafting is paused** (decided 2025-06-25). Existing Y7/Y9 exercises remain live; the `daily-exercise-draft` scheduled task no longer generates new ones for these years. When Shaun wants to resume, re-add Y7/Y9 slots to the rotation.
+Year 7 and Year 9 exercise drafting were both paused on 2025-06-25. **Year 9 resumed on
+2026-08-23** (Shaun) — 9c and 9g are both back in the `daily-exercise-draft` rotation. **Year 7
+stays paused**; existing Y7 exercises remain live but no new ones are generated for it. When Shaun
+wants Year 7 back too, re-add its slot to the rotation the same way.
 
-**One-off Y9 batch, 2026-08-13 — the pause still stands.** Shaun asked for five 9c exercises on request ("no need to reopen years"), so they were built by hand through `daily-exercise-draft` **without** un-pausing Year 9: the rotation is unchanged and `topic-pool.json` still has no 9c/9g category. The five are `9c-work-experience-jobs` (present perfect vs simple past), `9c-mandela-rainbow-nation` (relative clauses), `9c-media-reported-speech` (reported speech), `9c-healthy-living-conditionals` (if-clauses I & II) and `9c-future-plans-school` (future forms). Because there is no Y9 pool, the topics were chosen against the existing 9c corpus (South Africa strand + environment) and the standard Year 9 Oberschule grammar syllabus — one distinct grammar focus each, no overlap with `9c-plastic-pollution`, `9c-south-africa-revision` or `sport-south-africa`. **If more Y9 work is ever commissioned, add a 9c/9g category to `topic-pool.json` first** rather than repeating this ad-hoc selection.
+**`topic-pool.json` still has no 9c/9g category** — it only covers the four textbook-driven
+categories (8g/8c/10g/10c). Before `daily-exercise-draft` can pick Year 9 topics the same
+registry-driven way it does for those four, a 9c/9g category needs adding (via the `add-topics`
+skill or by hand) — this wasn't done as part of resuming the rotation and is the next step for
+Year 9 to work the same way as the other active years, rather than the ad-hoc topic selection
+described below.
+
+**One-off Y9 batch, 2026-08-13 — built while the pause still stood.** Shaun asked for five 9c
+exercises on request ("no need to reopen years"), so they were built by hand through
+`daily-exercise-draft` **without** un-pausing Year 9 at the time: the rotation was left unchanged
+and `topic-pool.json` gained no 9c/9g category. The five are `9c-work-experience-jobs` (present
+perfect vs simple past), `9c-mandela-rainbow-nation` (relative clauses), `9c-media-reported-speech`
+(reported speech), `9c-healthy-living-conditionals` (if-clauses I & II) and
+`9c-future-plans-school` (future forms). Because there was no Y9 pool, the topics were chosen
+against the existing 9c corpus (South Africa strand + environment) and the standard Year 9
+Oberschule grammar syllabus — one distinct grammar focus each, no overlap with
+`9c-plastic-pollution`, `9c-south-africa-revision` or `sport-south-africa`.
 
 ### Class prefix note — `7a-`
 `7a-what-was-it-like.html` carries a `7a-` prefix because it was written for class 7a rather than 7g. Class 7a follows the Gymnasium curriculum, so the file lives in the `7g-activities.html` hub and uses the Year 7 Make webhook. Any future exercise for a similarly-named Gymnasium class (7a, 7b, etc.) should use the `7g-` hub and webhook, with the class letter in the filename prefix.

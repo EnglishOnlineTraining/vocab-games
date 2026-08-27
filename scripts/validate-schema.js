@@ -45,7 +45,7 @@ const KNOWN_TYPES = new Set([
   'WebSite', 'WebPage', 'CollectionPage', 'Course', 'LearningResource',
   'ItemList', 'ListItem', 'BreadcrumbList',
   'FAQPage', 'Question', 'Answer',
-  'DefinedTerm', 'DefinedTermSet', 'AlignmentObject',
+  'DefinedTerm', 'DefinedTermSet', 'AlignmentObject', 'SpeakableSpecification',
 ]);
 
 const files = [
