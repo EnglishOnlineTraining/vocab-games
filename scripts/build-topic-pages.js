@@ -303,8 +303,28 @@ let written = 0;
 topics.forEach(t => { fs.writeFileSync(path.join(outDir, t.slug + '.html'), pageHtml(t)); written++; });
 
 // ---- topic index page (themen/index.html) ----
+
+/**
+ * The topic index page's schema: CollectionPage + ItemList of every topic page.
+ * build-head.js skips themen/ entirely (see jsonLd() above), so this is the only
+ * place this page's structured data is emitted. Reuses S.hubPage() — the same
+ * helper activities.html and the exam hubs use — rather than a bespoke node, and
+ * no `Course`: this is a topic browser, not a curriculum, matching the existing
+ * rule that Course is reserved for the exam hubs and the grammar hub.
+ */
+function indexJsonLd(url, title, desc) {
+  const items = topics.map(t => ({ name: topicLabel(t), file: 'themen/' + t.slug + '.html' }));
+  // hubPage()'s CollectionPage references WEBSITE_ID via isPartOf — build-head.js
+  // normally defines that on every page it processes, but it skips themen/*
+  // entirely, so this page's own graph has to carry the full node itself.
+  const nodes = [S.orgStub(), S.personStub(), S.websiteNode(), ...S.hubPage('themen/index.html', { title, desc, canonical: url, lang: 'de' }, items)];
+  return S.serialise(nodes);
+}
+
 function indexHtml() {
   const url = BASE + '/themen/';
+  const title = 'Englische Grammatik — Themen & kostenlose Übungen';
+  const desc = 'Englische Grammatik nach Thema üben: Passiv, if-Sätze, Relativsätze, Zeiten und mehr — mit Erklärung und kostenlosen Übungen.';
   const cards = topics.map(t => {
     const n = exercisesForTopic(t.slug).length;
     return '<a class="ti-card" href="' + esc(t.slug) + '.html"><span class="ti-de">' + esc(t.de) + '</span>'
@@ -313,10 +333,11 @@ function indexHtml() {
   }).join('');
   return '<!DOCTYPE html>\n<html lang="de">\n<head>\n<meta charset="UTF-8">\n'
     + '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
-    + '<title>Englische Grammatik — Themen & kostenlose Übungen | EnglishOnline.Training</title>\n'
-    + '<meta name="description" content="Englische Grammatik nach Thema üben: Passiv, if-Sätze, Relativsätze, Zeiten und mehr — mit Erklärung und kostenlosen Übungen.">\n'
+    + '<title>' + esc(title) + ' | EnglishOnline.Training</title>\n'
+    + '<meta name="description" content="' + esc(desc) + '">\n'
     + '<link rel="canonical" href="' + url + '">\n'
     + '<meta property="og:locale" content="de_DE">\n'
+    + indexJsonLd(url, title, desc) + '\n'
     + '<link rel="stylesheet" href="themen.css">\n</head>\n<body>\n'
     + '<header class="th-header"><div class="th-inner">'
     + '<a class="th-logo" href="https://englishonline.training">englishonline.training</a>'
