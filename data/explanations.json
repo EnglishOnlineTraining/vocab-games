@@ -14408,5 +14408,416 @@
         }
       }
     }
+  },
+  "8g-american-inventions-conditionals": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. The numbers seem to ___ it",
+          "correct": "prove",
+          "why": "The text says the numbers 'prove' that the USA is a nation of inventors."
+        },
+        "g2": {
+          "label": "2. More than 300,000 ___ every year",
+          "correct": "patents",
+          "why": "The text says Americans register more than 300,000 patents every year."
+        },
+        "g3": {
+          "label": "3. The ___, the telephone and the aeroplane",
+          "correct": "light bulb",
+          "why": "The text names the light bulb, the telephone and the aeroplane as US inventions."
+        },
+        "g4": {
+          "label": "4. Born in simple ___",
+          "correct": "workshops",
+          "why": "The text says many inventions were born in simple workshops."
+        },
+        "g5": {
+          "label": "5. Edison's laboratory ___ over 200 people",
+          "correct": "employed",
+          "why": "The text says the Menlo Park laboratory employed over 200 people."
+        },
+        "g6": {
+          "label": "6. Turned it into a ___",
+          "correct": "product",
+          "why": "The text says a working idea was turned into a product for factories."
+        },
+        "g7": {
+          "label": "7. ___ will often give them millions",
+          "correct": "investors",
+          "why": "The text says investors often give young programmers millions of dollars."
+        },
+        "g8": {
+          "label": "8. Encourage ___",
+          "correct": "creativity",
+          "why": "The text says schools should encourage creativity in the next generation."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. If you ___ the museum",
+          "correct": "visit",
+          "why": "Type 1: the if-clause takes the present simple, the main clause takes will + verb."
+        },
+        "g2": {
+          "label": "2. There ___ more female inventors",
+          "correct": "will be",
+          "why": "Real possibility: the main clause of a type-1 conditional takes will + verb."
+        },
+        "g3": {
+          "label": "3. If you ___ this experiment",
+          "correct": "try",
+          "why": "After 'if' in type 1, use the present simple ('try'), not 'will'."
+        },
+        "g4": {
+          "label": "4. People ___ it",
+          "correct": "will buy",
+          "why": "The likely result goes in the main clause with 'will' + infinitive."
+        },
+        "g5": {
+          "label": "5. Electric cars ___ more popular",
+          "correct": "will become",
+          "why": "Type 1 main clause: 'will become' for a likely future result."
+        },
+        "g6": {
+          "label": "6. If you ___ your project on time",
+          "correct": "finish",
+          "why": "After 'if' in a type-1 sentence, use the present simple ('finish')."
+        },
+        "g7": {
+          "label": "7. You ___ touch the machines",
+          "correct": "mustn't",
+          "why": "Review from 8g-school-life-rules: 'mustn't' expresses a prohibition; the if-clause stays present simple."
+        },
+        "g8": {
+          "label": "8. You ___ that it is new",
+          "correct": "prove",
+          "why": "Type 1: present simple in the if-clause ('prove'), 'will' in the main clause."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. If I ___ an inventor",
+          "correct": "were",
+          "why": "Type 2 (imaginary): use 'were' for all persons in the if-clause."
+        },
+        "g2": {
+          "label": "2. He ___ amazed by smartphones",
+          "correct": "would be",
+          "why": "Type 2 main clause takes 'would' + infinitive."
+        },
+        "g3": {
+          "label": "3. If you ___ enough money",
+          "correct": "had",
+          "why": "Imaginary situation: past simple ('had') in the if-clause."
+        },
+        "g4": {
+          "label": "4. Travelling ___ much longer",
+          "correct": "would take",
+          "why": "Unreal present: the main clause takes 'would' + infinitive."
+        },
+        "g5": {
+          "label": "5. If we ___ telephones",
+          "correct": "didn't have",
+          "why": "Type 2 if-clause: past simple ('didn't have') for an imaginary present."
+        },
+        "g6": {
+          "label": "6. If I ___ to California",
+          "correct": "travelled",
+          "why": "Type 2: past simple ('travelled') after 'if' for an imagined action."
+        },
+        "g7": {
+          "label": "7. The world ___ working",
+          "correct": "would stop",
+          "why": "Imaginary future: the main clause takes 'would' + infinitive."
+        },
+        "g8": {
+          "label": "8. If it ___ real",
+          "correct": "were",
+          "why": "Type 2 uses 'were' (not 'is') for unreal situations in formal English."
+        }
+      }
+    }
+  },
+  "8c-teen-daily-routine": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. A small town in ___",
+          "correct": "Ohio",
+          "why": "The text says Jake lives in a small town in Ohio."
+        },
+        "g2": {
+          "label": "2. Gets up at half past ___",
+          "correct": "six",
+          "why": "The text says Jake gets up at half past six on school days."
+        },
+        "g3": {
+          "label": "3. Usually ___ with milk",
+          "correct": "cereal",
+          "why": "The text says breakfast is usually cereal with milk and orange juice."
+        },
+        "g4": {
+          "label": "4. Goes there by ___",
+          "correct": "bus",
+          "why": "The text says Jake goes to school by bus with his friends."
+        },
+        "g5": {
+          "label": "5. Football ___",
+          "correct": "practice",
+          "why": "The text says Jake has football practice twice a week."
+        },
+        "g6": {
+          "label": "6. The family eats ___ together",
+          "correct": "dinner",
+          "why": "The text says the family eats dinner together at six."
+        },
+        "g7": {
+          "label": "7. Does his ___",
+          "correct": "homework",
+          "why": "The text says Jake does his homework after dinner."
+        },
+        "g8": {
+          "label": "8. Goes to ___ at half past nine",
+          "correct": "bed",
+          "why": "The text says Jake goes to bed at half past nine."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Jake ___ up every morning",
+          "correct": "gets",
+          "why": "Present simple: he/she/it takes -s — 'Jake gets up'."
+        },
+        "g2": {
+          "label": "2. His sister ___ to a different school",
+          "correct": "goes",
+          "why": "Third person singular: 'go' becomes 'goes'."
+        },
+        "g3": {
+          "label": "3. ___ your brother play basketball?",
+          "correct": "Does",
+          "why": "Questions with he/she/it start with 'Does' + infinitive."
+        },
+        "g4": {
+          "label": "4. We ___ like homework",
+          "correct": "don't",
+          "why": "Negatives with I/you/we/they use 'don't' + infinitive."
+        },
+        "g5": {
+          "label": "5. Jake ___ TV in the evening",
+          "correct": "watches",
+          "why": "After he/she/it, 'watch' becomes 'watches' (-es after -ch)."
+        },
+        "g6": {
+          "label": "6. ___ your friends live near the school?",
+          "correct": "Do",
+          "why": "Questions with plural 'they/your friends' start with 'Do'."
+        },
+        "g7": {
+          "label": "7. His mum ___ in a hospital",
+          "correct": "works",
+          "why": "Third person singular: 'she works' — add -s."
+        },
+        "g8": {
+          "label": "8. Last Saturday, Jake ___ to a baseball game",
+          "correct": "went",
+          "why": "Review from 8c-arriving-northeast: the simple past of 'go' is 'went'."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. Jake ___ late for school",
+          "correct": "is never",
+          "why": "With 'to be', the adverb comes after it: 'is never late'."
+        },
+        "g2": {
+          "label": "2. He ___ his homework",
+          "correct": "always does",
+          "why": "With a normal verb, the adverb comes before it: 'always does'."
+        },
+        "g3": {
+          "label": "3. They ___ to the gym",
+          "correct": "sometimes go",
+          "why": "Word order: adverb + main verb — 'sometimes go'."
+        },
+        "g4": {
+          "label": "4. She ___ tired on Mondays",
+          "correct": "is often",
+          "why": "After 'to be': 'She is often tired'."
+        },
+        "g5": {
+          "label": "5. We ___ pizza on Fridays",
+          "correct": "usually eat",
+          "why": "Before the main verb: 'usually eat'."
+        },
+        "g6": {
+          "label": "6. My dad ___ coffee",
+          "correct": "never drinks",
+          "why": "Before the main verb: 'never drinks' — no extra 'does' needed."
+        },
+        "g7": {
+          "label": "7. I ___ my teeth twice a day",
+          "correct": "always brush",
+          "why": "Before the main verb: 'always brush'."
+        },
+        "g8": {
+          "label": "8. School ___ open on Saturdays",
+          "correct": "is never",
+          "why": "With 'to be', the adverb follows: 'is never open'."
+        }
+      }
+    }
+  },
+  "10c-canada-schools": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. Ten provinces and three ___",
+          "correct": "territories",
+          "why": "The text says Canada has ten provinces and three territories."
+        },
+        "g2": {
+          "label": "2. From the age of ___",
+          "correct": "six",
+          "why": "The text says children must attend school from the age of six."
+        },
+        "g3": {
+          "label": "3. Free ___ schools",
+          "correct": "public",
+          "why": "The text says most Canadian students go to free public schools."
+        },
+        "g4": {
+          "label": "4. Officially ___",
+          "correct": "bilingual",
+          "why": "The text says Canada is officially bilingual (English and French)."
+        },
+        "g5": {
+          "label": "5. Wear a ___",
+          "correct": "uniform",
+          "why": "The text says public school students usually do not have to wear a uniform."
+        },
+        "g6": {
+          "label": "6. Starts at half past ___",
+          "correct": "eight",
+          "why": "The text says a typical school day starts at half past eight."
+        },
+        "g7": {
+          "label": "7. Music, cooking or ___",
+          "correct": "computer science",
+          "why": "The text names music, cooking and computer science as options."
+        },
+        "g8": {
+          "label": "8. September to ___",
+          "correct": "June",
+          "why": "The text says the school year runs from September to June."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Children ___ go to school",
+          "correct": "have to",
+          "why": "A law = external obligation: 'have to' (here interchangeable with 'must')."
+        },
+        "g2": {
+          "label": "2. ___ wear a uniform",
+          "correct": "don't have to",
+          "why": "Uniforms are not required, so it is not necessary: 'don't have to'."
+        },
+        "g3": {
+          "label": "3. ___ be late for class",
+          "correct": "mustn't",
+          "why": "Being late is not allowed — a prohibition takes 'mustn't'."
+        },
+        "g4": {
+          "label": "4. ___ learn in French",
+          "correct": "don't have to",
+          "why": "Parents can choose, so French is not necessary: 'don't have to'."
+        },
+        "g5": {
+          "label": "5. ___ respect the code of conduct",
+          "correct": "must",
+          "why": "'No exceptions' signals a strict rule: 'must'."
+        },
+        "g6": {
+          "label": "6. Ill: ___ come to school",
+          "correct": "don't have to",
+          "why": "Staying home is allowed, so coming is not necessary: 'don't have to'."
+        },
+        "g7": {
+          "label": "7. ___ use phones in the exam room",
+          "correct": "mustn't",
+          "why": "'Strictly forbidden' is a prohibition: 'mustn't'."
+        },
+        "g8": {
+          "label": "8. ___ stay until sixteen",
+          "correct": "have to",
+          "why": "A legal obligation up to age sixteen: 'have to'."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. ___ take part in activities",
+          "correct": "should",
+          "why": "Advice in favour of something: 'should'."
+        },
+        "g2": {
+          "label": "2. ___ copy homework",
+          "correct": "shouldn't",
+          "why": "Advice against something: 'shouldn't' — it is unwise, not forbidden."
+        },
+        "g3": {
+          "label": "3. ___ ask the teacher",
+          "correct": "should",
+          "why": "Asking for help is good advice: 'should'."
+        },
+        "g4": {
+          "label": "4. ___ be on their phones all break",
+          "correct": "shouldn't",
+          "why": "The second half recommends the opposite, so: 'shouldn't'."
+        },
+        "g5": {
+          "label": "5. ___ try poutine",
+          "correct": "should",
+          "why": "Recommending a famous dish: 'should'."
+        },
+        "g6": {
+          "label": "6. ___ start studying the night before",
+          "correct": "shouldn't",
+          "why": "Starting late is bad advice, so: 'shouldn't'."
+        },
+        "g7": {
+          "label": "7. Canada ___ welcomed students",
+          "correct": "has",
+          "why": "Review from 10c-discover-canada: present perfect with a singular subject — 'has'."
+        },
+        "g8": {
+          "label": "8. New students ___ worry",
+          "correct": "shouldn't",
+          "why": "'Canadian schools are friendly' makes worry unnecessary: 'shouldn't'."
+        }
+      }
+    }
   }
 }
