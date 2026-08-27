@@ -34,6 +34,9 @@
   --shadow-hover:0 6px 24px rgba(26,110,181,.20);
   --gap:clamp(.7rem,2vw,1rem);
   --pad-block:clamp(1.6rem,5vw,2.75rem);
+  --green-text: #1d7a42;
+  --red-text:   #c0392b;
+  --teal-text:  #1f5d5b;
 }
 
 /* ── Automatic dark mode ── */
@@ -53,7 +56,10 @@
     --hero-to:#122a41;
     --shadow:0 2px 18px rgba(0,0,0,.45);
     --shadow-hover:0 6px 26px rgba(0,0,0,.6);
-  }
+      --green-text: #7fe0a0;
+    --red-text:   #f3a3b0;
+    --teal-text:  #6fd3d0;
+}
 }
 
 html{scroll-behavior:smooth}
@@ -201,7 +207,7 @@ body{
 .hc-title{font-size:.95rem;font-weight:700;color:var(--brand-title);line-height:1.3}
 .hc-badges{display:flex;flex-wrap:wrap;gap:.3rem}
 .hc-badge{font-size:.68rem;font-weight:700;letter-spacing:.03em;padding:.16rem .55rem;border-radius:12px;background:var(--blue-lt);color:var(--blue-mid)}
-.hc-badge.hc-gym{background:#eaf6ee;color:var(--green)}
+.hc-badge.hc-gym{background:#eaf6ee;color:var(--green-text,#1d7a42)}
 .hc-badge.hc-ober{background:#fdf1e3;color:#b9770e}
 .hc-topics{font-size:.76rem;color:var(--muted)}
 .hub-card[hidden]{display:none}

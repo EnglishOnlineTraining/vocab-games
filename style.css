@@ -7,6 +7,15 @@
   --teal:    #2b7a78;
   --red:     #c0392b;
   --green:   #27ae60;
+  /* Text-weight variants. --green/--red/--teal are tuned for borders, badges and
+     fills, where the WCAG threshold is 3:1; as *text* on our light surfaces
+     --green measures 2.57:1, well under the 4.5:1 AA needs. These are the same
+     hues pushed to pass, and they are redefined in the dark block below — which
+     is the half that matters for --red (2.78:1 dark) and --teal (3.00:1 dark).
+     Use these for `color:`, the originals for everything else. */
+  --green-text: #1d7a42;   /* 4.80:1 on --card */
+  --red-text:   #c0392b;   /* 4.87:1 — the base colour already passes in light */
+  --teal-text:  #1f5d5b;   /* 6.78:1 */
   --bg:      #f7f9fc;
   --card:    #ffffff;
   --nav-bg:  #f0f3f8;   /* step-nav strip */
@@ -33,6 +42,12 @@
     --muted:  #8a99aa;
     --border: #28394d;
     --shadow: 0 2px 18px rgba(0,0,0,.45);
+    /* Light-on-dark counterparts. The base --green/--red/--teal are unchanged
+       here because they still serve borders and fills correctly; only the text
+       variants flip. */
+    --green-text: #7fe0a0;   /* 9.42:1 on --card */
+    --red-text:   #f3a3b0;   /* 7.69:1 — matches .gap-wrong's dark text */
+    --teal-text:  #6fd3d0;   /* 8.58:1 */
   }
 }
 
@@ -169,16 +184,23 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); min-
 .listen-title { font-weight:700; color:var(--ink); font-size:1rem; margin-bottom:.75rem; }
 .listen-play { justify-content:center; min-width:200px; }
 .listen-play:disabled { opacity:.55; cursor:not-allowed; }
-.listen-status { font-size:.85rem; color:var(--teal); font-weight:600; min-height:1.1em; margin-top:.6rem; }
+.listen-status { font-size:.85rem; color:var(--teal-text); font-weight:600; min-height:1.1em; margin-top:.6rem; }
 .listen-plays { font-size:.8rem; color:var(--muted); margin-top:.3rem; }
+
+/* ── Comic-strip images (7c-robert-the-bruce) ── */
+/* These had no rule at all, so a 2098px panel rendered at its intrinsic width
+   and dragged the whole document to 2114px on a 390px phone — the page scrolled
+   sideways, header and buttons included. */
+.comic-img { display:block; width:100%; max-width:100%; height:auto; margin:0 auto 1rem;
+             border-radius:var(--radius,12px); border:1px solid var(--border,#dce3ec); }
 
 /* ── Review-page explanations (renderExplanations in exercise.js) ── */
 .expl-row { padding:.55rem 0; border-top:1px solid var(--border); }
 .expl-row:first-child { border-top:none; }
 .expl-q { font-size:.9rem; font-weight:600; color:var(--text); }
 .expl-a { font-size:.9rem; margin:.15rem 0; }
-.expl-correct { color:var(--green); font-weight:700; }
-.expl-your { color:var(--red); font-weight:600; }
+.expl-correct { color:var(--green-text); font-weight:700; }
+.expl-your { color:var(--red-text); font-weight:600; }
 .expl-why { font-size:.85rem; color:var(--muted); line-height:1.5; }
 .expl-row.expl-wrong { border-left:3px solid var(--red); padding-left:.7rem; }
 .expl-row.expl-ok { border-left:3px solid var(--green); padding-left:.7rem; }

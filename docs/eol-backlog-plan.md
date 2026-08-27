@@ -672,3 +672,59 @@ English" triplicate, 2026 German cluster categories — all confirmed done via l
 307 unpublished, the email-cluster merge (1061/1167/1238/523), the 380/365 duplicate (365
 stubbed), and the old 460 branch (423/438/499/595 retired) — all executed and Shaun-approved
 2026-08-07. **The full audit reconciliation is complete.**_
+
+---
+
+## Repo-health backlog (added 2026-08-27) · CC
+
+Raised by an external review of the repository, triaged against what the repo actually does.
+The high-value half shipped on `claude/vocab-games-improvements-f6y6mm`; this is the remainder.
+Owners as above: **CC** = Claude Code, **Shaun** = decision.
+
+### Shipped in that pass (context, not backlog)
+Inline per-page explanations (removed a 551 KB download from every framework page);
+`scripts/check-syntax.js` in CI; the text-colour contrast tokens; WebP + `<picture>` +
+the missing `.comic-img` rule on `7c-robert-the-bruce`.
+
+### Hardening · CC
+1. **Grade-boundary tests.** `test-scoring.js` covers the attempt ladder only. Nothing tests
+   `lookupGrade` or `lookupMsaGrade`, and a student's Note comes straight off those thresholds.
+   Extend to `node:test` (built into Node 22 — still no npm dependency), covering both tables'
+   boundaries, `totalScore()` with a missing `state.scores`, and the practise-mode results path.
+2. **`scripts/validate-data.js`** — shape checks for `data/exercises.json`, `data/topics.json`
+   and `data/quizzes.json`. `explanations.json` and the JSON-LD have validators; these three have
+   none, so a typo silently breaks a hub card or a topic page.
+3. **Spreadsheet formula injection.** `apps-script.gs` writes student free text into Sheets via
+   `appendRow` (lines 70–122). A student typing `=HYPERLINK(...)` or `=IMPORTRANGE(...)` into a
+   textarea lands as a **live formula** in the teacher's sheet. Prefix values starting with
+   `= + - @` with `'`. The Make → Excel path for Y7–10 has the same exposure and cannot be fixed
+   in Apps Script, so the durable fix is client-side in `exercise.js` before the POST.
+4. **Accessibility for the non-framework pages.** `eolInitA11y` only reaches pages that load
+   `exercise.js`. The Abitur packs, quizzes, lead magnets and `klasse7-mini` get a skip link from
+   `build-head.js` but no gap labels, no ✓/✗ marks and no live regions.
+
+### Lower priority · CC
+5. `CONTRIBUTING.md` — short, pointing at `scripts/pipeline.js` and the traps in `CLAUDE.md`.
+6. Internal link checker as a `VALIDATOR`. Measured 2026-08-27: **0 broken of 1,301** internal
+   `.html` links, so this is a regression guard, not a fix.
+7. `9c-south-africa-revision.html:236` hotlinks a 1280px Wikimedia image — an external request
+   from a school page, and it can break. It has a text fallback, so this is cosmetic; self-host
+   or accept.
+8. **Audit the rest of the corpus for the `.comic-img` class of bug.** That page's images had no
+   CSS rule at all, so a 2098px panel dragged the document to 2114px on a 390px phone. Nothing
+   would have caught it; a viewport-overflow check across all pages would.
+
+### Decision needed · Shaun
+9. **Analytics.** Deferred 2026-08-27. Site is used by German schoolchildren, so anything
+   tracking is a DSGVO matter. If revisited: cookieless only, and the WordPress Datenschutz page
+   needs a matching paragraph **before** anything ships.
+
+### Rejected, with reasons (do not re-propose)
+- **ES modules / TypeScript for `exercise.js`.** A dozen pages redefine framework functions
+  *after* the `<script>` include and rely on winning; `defer`/`type="module"` inverts that order
+  and would silently clobber them. Already documented in `CLAUDE.md` §5e.
+- **Minification.** GitHub Pages already gzips (`exercise.js` 56 KB → ~14 KB). Costs the
+  hand-editable, no-bundler property for a few KB.
+- **Feature flags / A-B testing.** No traffic split, no infrastructure, no question it answers.
+- **ESLint / Prettier / Jest.** Shaun's call 2026-08-27: the repo stays dependency-free. The
+  checks that earn their place are written in plain Node instead — see `scripts/check-syntax.js`.
