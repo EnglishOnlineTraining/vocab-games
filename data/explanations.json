@@ -15305,5 +15305,129 @@
         }
       }
     }
+  },
+  "10g-migration-uk-us": {
+    "exA": {
+      "gaps": {
+        "g1": {
+          "label": "1. How does UK net migration change over the period described in paragraph 1?",
+          "correct": "It rose sharply overall, reaching a peak in 2022 before falling back the next year.",
+          "why": "The text says net migration rose sharply from 160,000 to a peak of over 600,000 in 2022, then fell back to roughly 340,000 the following year."
+        },
+        "g2": {
+          "label": "2. According to the surveys mentioned, roughly what share of new arrivals to the UK say employment is their main reason for coming?",
+          "correct": "just under half",
+          "why": "The text says surveys suggest just under half name employment as their main reason for coming."
+        },
+        "g3": {
+          "label": "3. Besides work and study, what does the text say makes up the remaining group of UK arrivals?",
+          "correct": "refugees and family members joining relatives already settled",
+          "why": "The text names this group directly as the remaining share, after employment and study are accounted for."
+        },
+        "g4": {
+          "label": "4. How has immigration to the United States changed over the past decade, according to paragraph 3?",
+          "correct": "It has remained relatively stable, apart from a brief dip during the pandemic.",
+          "why": "The text says the number of new lawful permanent residents has remained relatively stable at around one million a year, dipping only briefly during the pandemic."
+        },
+        "g5": {
+          "label": "5. According to the Population Survey mentioned in the text, what is the most common reason for new arrivals to the US?",
+          "correct": "family ties",
+          "why": "The text says family ties bring in the majority of new arrivals to the US, according to the Population Survey."
+        },
+        "g6": {
+          "label": "6. What do both countries have in common, according to the final paragraph?",
+          "correct": "a growing public debate about how to manage migration numbers fairly",
+          "why": "The final paragraph says both countries share a growing public debate about managing these numbers fairly."
+        }
+      }
+    },
+    "exB": {
+      "gaps": {
+        "g1": {
+          "label": "1. International student numbers in Country A rose from 40,000 in 2015 to 95,000 in 2023.",
+          "correct": "International student numbers have risen sharply since 2015.",
+          "why": "More than doubling over eight years is a big change, so “has risen sharply” is correct — not “fallen” (the numbers went up) or “fluctuated” (there is one clear direction, not ups and downs)."
+        },
+        "g2": {
+          "label": "2. The number of temporary work visas issued grew slowly but steadily, from 22,000 to 27,000, over five years.",
+          "correct": "The number of temporary work visas has risen gradually over five years.",
+          "why": "A slow, steady rise over five years is a gradual increase — “gradually” fits a slow change, unlike “fallen” (the number rose) or “remained exactly the same” (it did change, just slowly)."
+        },
+        "g3": {
+          "label": "3. Asylum applications fell from 60,000 to 12,000 in just two years.",
+          "correct": "Asylum applications have fallen sharply in the last two years.",
+          "why": "Dropping from 60,000 to 12,000 in two years is a big, fast fall, so “has fallen sharply” is correct — not “risen” (the numbers went down) or “remained stable” (they changed a great deal)."
+        },
+        "g4": {
+          "label": "4. Family visas dropped slightly, from 34,000 to 31,000, over three years.",
+          "correct": "Family visas have fallen slightly over three years.",
+          "why": "A small drop of 3,000 over three years is a slight fall, not a sharp one — and it is a fall, not a rise or an unpredictable fluctuation."
+        },
+        "g5": {
+          "label": "5. Net migration stayed at almost exactly 200,000 a year for the whole decade.",
+          "correct": "Net migration has remained stable for the whole decade.",
+          "why": "Staying at almost exactly the same figure for ten years is the definition of “remained stable” — not a sharp rise or a slight fall, since the figure barely moved at all."
+        },
+        "g6": {
+          "label": "6. The number of returning citizens went up and down unpredictably every year, with no clear pattern.",
+          "correct": "The number of returning citizens has fluctuated from year to year.",
+          "why": "Going up and down with no clear pattern is exactly what “fluctuated” describes — unlike “risen steadily” or “remained completely stable”, both of which describe a single, consistent direction."
+        },
+        "g7": {
+          "label": "7. New arrivals climbed every year until 2020, then dropped suddenly the following year.",
+          "correct": "New arrivals peaked in 2020 before falling sharply the following year.",
+          "why": "A rise followed by a high point and then a sudden drop is a classic “peaked … before falling” pattern — the numbers did not stay stable, and they did not fall gradually before 2020 and then rise."
+        },
+        "g8": {
+          "label": "8. Student visas issued increased only very slightly, from 18,000 to 19,200.",
+          "correct": "Student visas have increased marginally.",
+          "why": "A rise of only 1,200 out of 18,000 is a very small increase, so “marginally” fits — not “dramatically” (the change is tiny) or “decreased” (the number went up, not down)."
+        }
+      }
+    },
+    "exC": {
+      "gaps": {
+        "g1": {
+          "label": "1. Of 1,000 people surveyed, 480 gave family reasons for migrating (48%).",
+          "correct": "Just under half of respondents gave family reasons.",
+          "why": "48% is a little less than 50%, so “just under half” is the accurate description — not “the vast majority” (well over half) or “a small minority” (well under half)."
+        },
+        "g2": {
+          "label": "2. Of 1,000 arrivals, 670 came for work (67%).",
+          "correct": "Roughly two-thirds of arrivals came for work.",
+          "why": "67% is close to two-thirds (about 66.7%), so “roughly two-thirds” is the best fit — it is well above “just under half” and far too high to be “a small minority”."
+        },
+        "g3": {
+          "label": "3. Of 600 refugees resettled, 200 were children (33%).",
+          "correct": "Roughly a third of the refugees resettled were children.",
+          "why": "200 out of 600 is exactly one third, so “roughly a third” is correct — not “the majority” (well over half) or “almost none” (a much smaller share)."
+        },
+        "g4": {
+          "label": "4. City A received 40,000 migrants last year; City B received only 16,000.",
+          "correct": "City A received more than twice as many migrants as City B.",
+          "why": "40,000 is more than double 16,000 (double would be 32,000), so “more than twice as many … as” is the accurate comparison — the two figures are not close, and City A received more, not fewer."
+        },
+        "g5": {
+          "label": "5. 9 out of 10 new residents surveyed said they planned to stay permanently (90%).",
+          "correct": "The vast majority of new residents said they planned to stay permanently.",
+          "why": "90% is a very high proportion, so “the vast majority” fits best — far higher than “roughly half” and the opposite of “a minority”."
+        },
+        "g6": {
+          "label": "6. Only 60 of the 1,000 arrivals surveyed were over the age of 65 (6%).",
+          "correct": "Only a small minority of arrivals surveyed were over 65.",
+          "why": "6% is a very small share, so “a small minority” is correct — nowhere near “the majority” or “exactly half”."
+        },
+        "g7": {
+          "label": "7. Work-related visas made up 55% of all visas issued — more than any other single category.",
+          "correct": "Work-related visas accounted for the largest share of all visas issued.",
+          "why": "Being the biggest single category at 55% means work-related visas “accounted for the largest share” — the text is about work-related visas being biggest, not family visas, and 55% is the largest share, not the smallest."
+        },
+        "g8": {
+          "label": "8 (review) — “It was surprising ___ researchers to find that migration figures had barely changed.”",
+          "correct": "for",
+          "why": "Review from 10g-digital-footprint: “surprising” comments on the situation itself (like “easy” or “important”), so it takes “for” — “of” is used after adjectives that judge someone's behaviour (careless, kind), which is not the case here."
+        }
+      }
+    }
   }
 }
