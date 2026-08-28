@@ -14943,5 +14943,119 @@
         }
       }
     }
+  },
+  "10g-participle-writing": {
+    "exA": {
+      "gaps": {
+        "g1": {
+          "label": "1. What politicians constantly debate",
+          "correct": "climate change, education reform and the cost of living",
+          "why": "The first paragraph lists exactly these three topics as what politicians constantly debate."
+        },
+        "g2": {
+          "label": "2. What many teenagers already do that shows real responsibility",
+          "correct": "take part in an FSJ, working in hospitals, schools or care homes",
+          "why": "The text says some teenagers complete a Freiwilliges Soziales Jahr (FSJ), working alongside adults in hospitals, schools or care homes."
+        },
+        "g3": {
+          "label": "3. What researchers found in recent surveys",
+          "correct": "16-year-olds show political knowledge similar to first-time 18-year-old voters",
+          "why": "The text says researchers found sixteen-year-olds show political knowledge similar to first-time voters aged eighteen."
+        },
+        "g4": {
+          "label": "4. The writer's final argument for lowering the voting age",
+          "correct": "young people are already trusted with plenty of responsibility, so they should be trusted to vote too",
+          "why": "The final paragraph lists school councils, jobs and FSJ placements as responsibilities already trusted to young people, then asks why not a ballot paper too."
+        },
+        "g5": {
+          "label": "5. \"Frustrated by...\" is formed with a",
+          "correct": "past participle (-ed form)",
+          "why": "'Frustrated' is a past participle here — the teenagers are the ones affected by (receiving) the frustration, so the -ed form is used."
+        },
+        "g6": {
+          "label": "6. \"Having followed...\" is formed with a",
+          "correct": "present participle (-ing form)",
+          "why": "'Having followed' uses 'having' + past participle, a perfect present-participle construction — 'having' is the -ing form, showing the action happened before the main clause."
+        }
+      }
+    },
+    "exB": {
+      "gaps": {
+        "g1": {
+          "label": "1. The students finished the debate. They felt more confident.",
+          "correct": "Having finished the debate",
+          "why": "'Having finished' (having + past participle) shows the debate was completed before they felt confident — a bare past participle ('Finished the debate') would wrongly suggest it was finished by someone else, and the present participle ('Finishing') loses that completed-before meaning."
+        },
+        "g2": {
+          "label": "2. Marie works at a care home for her FSJ. She listens to residents' stories.",
+          "correct": "Working at a care home for her FSJ",
+          "why": "Marie is actively doing the working, so the active -ing form 'Working' is needed — 'Worked' would wrongly suggest a passive meaning, and 'To work' is an infinitive, not a participle clause."
+        },
+        "g3": {
+          "label": "3. Teenagers are frustrated by strict curfews. They feel unheard.",
+          "correct": "Frustrated by strict curfews",
+          "why": "The teenagers receive the frustration (they are frustrated BY the curfews), so the past participle 'Frustrated' is correct — 'Frustrating' would wrongly describe the curfews themselves, not the teenagers."
+        },
+        "g4": {
+          "label": "4. Sixteen-year-olds follow political news closely. They know more than expected.",
+          "correct": "Following political news closely",
+          "why": "Sixteen-year-olds are actively doing the following, an ongoing habitual action, so the active -ing form 'Following' is correct — 'Followed' would wrongly imply a passive meaning."
+        },
+        "g5": {
+          "label": "5. The government ignored young voters for years. It faces criticism.",
+          "correct": "Having ignored young voters for years",
+          "why": "'Having ignored' (having + past participle) shows the ignoring happened first and caused the present result — 'Ignoring' loses that completed-before meaning, and 'Ignored by young voters' wrongly reverses who is doing the ignoring."
+        },
+        "g6": {
+          "label": "6. The teenager felt trusted during her FSJ. She grew more confident.",
+          "correct": "Feeling trusted with real responsibility during her FSJ",
+          "why": "'Feeling' is the correct present-participle form of the verb 'feel' — 'Felt' is a finite past-tense verb, not a participle, so it cannot head the clause this way."
+        }
+      }
+    },
+    "exC": {
+      "gaps": {
+        "g1": {
+          "label": "1. ___ about the FSJ programme, Tom decided to apply",
+          "correct": "Excited",
+          "why": "Tom is the one who feels excited (he receives the feeling), so the past participle 'Excited' is used as an adjective, like 'frustrated' or 'trusted'."
+        },
+        "g2": {
+          "label": "2. The speech, ___ by a former volunteer, convinced students",
+          "correct": "given",
+          "why": "The speech was given BY the volunteer — a passive relationship — so the past participle 'given' is needed, not the active '-ing' form 'giving'."
+        },
+        "g3": {
+          "label": "3. ___ that her vote might make a difference, Anna researched",
+          "correct": "Believing",
+          "why": "Anna is actively doing the believing, so the active present participle 'Believing' is correct, not the past participle 'Believed'."
+        },
+        "g4": {
+          "label": "4. Many teenagers feel ___ when adults dismiss their opinions",
+          "correct": "frustrated",
+          "why": "The teenagers are the ones who feel the frustration (they receive it), so the past participle 'frustrated' is correct — 'frustrating' would describe the cause, not the people feeling it."
+        },
+        "g5": {
+          "label": "5. ___ every argument daily, the debate team felt ready",
+          "correct": "Practising",
+          "why": "The debate team is actively doing the practising, so the active -ing form 'Practising' is correct — 'Practised' would wrongly suggest a passive meaning."
+        },
+        "g6": {
+          "label": "6. The results, ___ by independent researchers, showed...",
+          "correct": "collected",
+          "why": "The results were collected BY the researchers — a passive relationship — so the past participle 'collected' is needed."
+        },
+        "g7": {
+          "label": "7 (review) — FSJ volunteers, ___ often work in care homes",
+          "correct": "who",
+          "why": "Review from 10g-scottish-lowlands: 'who' is the subject relative pronoun used for people, not 'which' (used for things)."
+        },
+        "g8": {
+          "label": "8 (review) — The care home ___ Marie works",
+          "correct": "where",
+          "why": "Review from 10g-scottish-lowlands: 'where' is the relative adverb used for a place with no preposition needed ('the care home where Marie works') — 'which' would need a preposition ('at which')."
+        }
+      }
+    }
   }
 }
