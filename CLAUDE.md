@@ -215,7 +215,34 @@ Exercises must be drawn from these textbook topic pools. Pick a topic that hasn'
 | 5 | Unit 4 | Around the Southwest — role models, character traits, life in a small town | Present perfect, present perfect with since/for |
 | 6 | Unit 5 | Settling in the South — discrimination, respect, expressing opinions, music | Modal verbs & substitutes, defining relative clauses |
 
-#### Year 10 Gymnasium (Green Line 6 — Scotland & Black America & Youth culture, ~B2/C1)
+#### Year 10 Gymnasium — textbook changed 2026-08-28: Klett Green Line 6 → **Klett Green Line Transitions**
+
+The class moved to a new coursebook (**Klett Green Line Transitions**, ~B2/C1) on 2026-08-28. The
+table immediately below is the **new, current syllabus** — `daily-exercise-draft` and `add-topics`
+draw from it for all *new* 10g topics going forward. The 19 exercises already built and live under
+the old *Green Line 6* table (Scotland/Black America/Youth culture, further below) are **untouched
+and stay live** — students can still do them — but that table is retired and gets no new topics.
+`topic-pool.json`'s single stray leftover idea from the old table (`10g-protest-songs`) was removed
+as superseded; nothing built was touched.
+
+##### Current syllabus — Klett Green Line Transitions (~B2/C1)
+
+| # | Unit | Topic | Key Content/Grammar |
+|---|------|-------|----------------------|
+| 1 | Unit 1 — Making the right choices | Short stories (*Laura*, *Chalk*, *On the Bridge*, *Bro*); reading & analysing fiction — genre, narrative perspective, symbols; writing style (participle constructions); short story contest | Narrative perspective & symbolism, participle constructions |
+| 2 | Unit 2 — The digital age | Digital footprint, tracking consumers, "weaponisation of mathematics"; expressing yourself in a blog post; writing style (infinitive constructions, *for/of* + adjective, *let/make/have* + infinitive/participle) | Infinitive constructions, blog register |
+| 3 | Unit 3 — Bridging the gap | Migration to the UK/US; Black Lives Matter, activist voices; listening skills; gerunds ("showing racism the red card"); making a podcast | Gerunds, statistics/data description, interview skills |
+| 4 | Unit 4 — Think globally, act locally | Global village, ecological footprint, fair trade, garment workers, youth climate activists; arguing convincingly (persuasive speech); present/future tenses for speeches; three-minute speech | Persuasive language & signposting, present/future tenses |
+| 5 | Unit 5 — Crossing borders | Studying/living abroad, culture shock, student exchanges; mediating written texts; if-clauses & polite requests; "Welcome to Germany" brochure | If-clauses, polite requests, brochure writing |
+| 6 | Unit 6 — South Africa | Apartheid to democracy, Nelson Mandela, Kwaito music; working with visuals/film; passive voice & if-clauses (plausibility), adjectives/adverbs of comment; writing a film review | Passive voice, if-clauses, review writing |
+| — | Have a good read | Extended reading list (*Dalilah*, *Little Brother*, *Every Day*, *The Last Wild*, *La Linea*, *Playing the Enemy*) + keeping a reading journal | — (reading list, not itself an exercise source) |
+
+**Grammar covered:** participle constructions, infinitive constructions, gerunds, if-clauses, passive voice, present/future tenses for speeches, persuasive/mediation language.
+
+##### Retired syllabus — Klett Green Line 6 (Scotland & Black America & Youth culture, ~B2/C1)
+
+Kept for reference only — every topic below is already `built` and live; do not draw new topics
+from this table.
 
 | # | Section | Topic | Key Content |
 |---|---------|-------|-------------|
@@ -238,9 +265,9 @@ Exercises must be drawn from these textbook topic pools. Pick a topic that hasn'
 | 17 | Unit 3 | Rap and hip hop — 2Pac, hip-hop's commercial success | Articles, mediation |
 | 18 | Unit 3 | The digital age — video games, editing apps, youth culture | Argumentative essays, reader's letters |
 | 19 | Unit 3 | Social media — surveys, criteria for social media use | Speaking/skills |
-| 20 | Across cultures 4 | The soundtrack to history — protest songs, anti-war movement | Essays on art & society |
+| 20 | Across cultures 4 | The soundtrack to history — protest songs, anti-war movement | Essays on art & society (superseded — never built) |
 
-**Grammar covered:** Past tenses, future tenses, conditionals, passive voice, linking ideas, describing and commenting.
+**Grammar covered (retired table):** Past tenses, future tenses, conditionals, passive voice, linking ideas, describing and commenting.
 
 #### Year 10 Oberschule (Orange Line 6 — Commonwealth theme, ~B1/B2)
 

@@ -804,7 +804,6 @@ function processFile(file) {
   const abs = path.join(ROOT, file);
   const original = fs.readFileSync(abs, 'utf8');
   let html = ['HEAD', 'GTM', 'NOSCRIPT', 'SKIP', 'OVERVIEW', 'RELATED', 'TIP', 'FAQ', 'EXPLAIN'].reduce(stripBlock, original);
-  let html = ['HEAD', 'NOSCRIPT', 'SKIP', 'OVERVIEW', 'RELATED', 'TIP', 'FAQ', 'EXPLAIN'].reduce(stripBlock, original);
 
   const headEnd = html.search(/<\/head>/i);
   if (headEnd === -1) return { file, skipped: 'no <head>' };

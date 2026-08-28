@@ -3,7 +3,7 @@
   "categories": {
     "8g": { "label": "Year 8 Gymnasium",  "cefr": "~B1",    "textbook": "Klett Green Line 4",  "webhook": "year7" },
     "8c": { "label": "Year 8 Oberschule", "cefr": "~A2",    "textbook": "Klett Orange Line 4", "webhook": "year7" },
-    "10g":{ "label": "Year 10 Gymnasium", "cefr": "~B2/C1", "textbook": "Klett Green Line 6",  "webhook": "year9" },
+    "10g":{ "label": "Year 10 Gymnasium", "cefr": "~B2/C1", "textbook": "Klett Green Line Transitions",  "webhook": "year9" },
     "10c":{ "label": "Year 10 Oberschule","cefr": "~B1/B2", "textbook": "Klett Orange Line 6", "webhook": "year9" }
   },
   "angles": {
@@ -81,7 +81,18 @@
     { "id": "10g-rap-hip-hop",           "category": "10g","unit": "Unit 3",            "topic": "Rap and hip hop",                    "grammar": "Reported speech / mediation",          "angle": "skills",  "status": "built", "file": "10g-rap-hip-hop.html" },
     { "id": "10g-digital-age",           "category": "10g","unit": "Unit 3",            "topic": "The digital age — video games",      "grammar": "Conditionals (all types)",             "angle": "writing", "status": "built", "file": "10g-digital-age.html" },
     { "id": "10g-social-media",          "category": "10g","unit": "Unit 3",            "topic": "Social media — criteria for use",    "grammar": "Future tenses",                        "angle": "skills",  "status": "built", "file": "10g-social-media.html" },
-    { "id": "10g-protest-songs",         "category": "10g","unit": "Across cultures 4",  "topic": "The soundtrack to history — protest songs","grammar": "Describing & commenting",        "angle": "writing", "status": "idea" },
+    { "id": "10g-short-story-analysis",  "category": "10g","unit": "Unit 1",            "topic": "Analysing short stories — Laura & On the Bridge","grammar": "Narrative perspective & symbolism", "angle": "reading", "status": "built", "file": "10g-short-story-analysis.html" },
+    { "id": "10g-participle-writing",    "category": "10g","unit": "Unit 1",            "topic": "Improve your writing style I — voting age & FSJ debate","grammar": "Participle constructions",        "angle": "writing", "status": "built", "file": "10g-participle-writing.html" },
+    { "id": "10g-digital-footprint",     "category": "10g","unit": "Unit 2",            "topic": "The digital age — digital footprint & tracking consumers","grammar": "Infinitive constructions (for/of + adjective)", "angle": "grammar", "status": "built", "file": "10g-digital-footprint.html" },
+    { "id": "10g-blog-post-teen-voices", "category": "10g","unit": "Unit 2",            "topic": "Teen voices online — writing a blog post","grammar": "Blog register & structure",       "angle": "writing", "status": "built", "file": "10g-blog-post-teen-voices.html" },
+    { "id": "10g-migration-uk-us",       "category": "10g","unit": "Unit 3",            "topic": "Bridging the gap — migration to the UK & US","grammar": "Describing statistics & trends",  "angle": "reading", "status": "built", "file": "10g-migration-uk-us.html" },
+    { "id": "10g-gerunds-racism",        "category": "10g","unit": "Unit 3",            "topic": "Showing racism the red card",        "grammar": "Gerunds",                              "angle": "grammar", "status": "built", "file": "10g-gerunds-racism.html" },
+    { "id": "10g-podcast-integration",   "category": "10g","unit": "Unit 3",            "topic": "Making a podcast about integration", "grammar": "Interview & speaking skills",          "angle": "skills",  "status": "built", "file": "10g-podcast-integration.html" },
+    { "id": "10g-arguing-convincingly",  "category": "10g","unit": "Unit 4",            "topic": "Arguing convincingly — garment workers & activism","grammar": "Persuasive language & signposting", "angle": "writing", "status": "idea" },
+    { "id": "10g-future-forms-activism", "category": "10g","unit": "Unit 4",            "topic": "Speaking about the present and future — youth climate activism","grammar": "Present/future tenses for a speech", "angle": "grammar", "status": "idea" },
+    { "id": "10g-culture-shock-ifclauses","category": "10g","unit": "Unit 5",           "topic": "Crossing borders — dealing with culture shock","grammar": "If-clauses & polite requests",    "angle": "grammar", "status": "idea" },
+    { "id": "10g-apartheid-history",     "category": "10g","unit": "Unit 6",            "topic": "South Africa — from apartheid to democracy","grammar": "Past tenses & timelines",          "angle": "reading", "status": "idea" },
+    { "id": "10g-film-review",           "category": "10g","unit": "Unit 6",            "topic": "Become a film critic — writing a film review","grammar": "Review writing: adjectives & adverbs of comment", "angle": "writing", "status": "idea" },
 
     { "id": "10c-faces-commonwealth",    "category": "10c","unit": "Zoom in",           "topic": "Faces of the Commonwealth",          "grammar": "Present tenses (revision)",            "angle": "reading", "status": "built", "file": "10c-faces-commonwealth.html" },
     { "id": "10c-discover-canada",       "category": "10c","unit": "Unit 1",            "topic": "Discover Canada",                    "grammar": "Present tenses & present perfect",     "angle": "grammar", "status": "built", "file": "10c-discover-canada.html" },
