@@ -739,3 +739,48 @@ the missing `.comic-img` rule on `7c-robert-the-bruce`.
 - **Feature flags / A-B testing.** No traffic split, no infrastructure, no question it answers.
 - **ESLint / Prettier / Jest.** Shaun's call 2026-08-27: the repo stays dependency-free. The
   checks that earn their place are written in plain Node instead — see `scripts/check-syntax.js`.
+
+### Added 2026-08-28 · outstanding items swept up after PR #35 merged
+Each verified against the code today, not carried over on trust. Severity is stated honestly —
+two of these are latent rather than live.
+
+10. **Two quiz questions mark a correct answer wrong.** `data/quizzes.json` → `grammar-hardest`,
+    verified 2026-08-28. **Student-facing on a public, no-sign-up page — the highest-priority item
+    in this section.**
+    - **q1** "Which sentence contains a double negative?" keys *"I didn't see nobody at the
+      party."*, but the distractor *"I can't hardly hear you."* is also a double negative
+      (`can't` + `hardly`). Two of the three options are correct answers.
+    - **q9** "Which sentence contains a dangling infinitive?" keys *"To get to the park, my bicycle
+      was the fastest option."*, but *"To avoid the traffic, the car was driven on the side
+      streets."* dangles in exactly the same way — the implied agent is not the subject.
+    - The `why` lines state the rule for the keyed answer rather than calling the distractors
+      wrong, so nothing on screen is false; a visitor who picks the other option is simply told
+      they are wrong. **Fix is to reword the distractors, not the answer key** — rewriting the key
+      would make the third option the only wrong one and lose the question's point.
+      Needs Shaun's eye on the replacement wording.
+
+11. **`topic-pool.json` still has no 9c/9g category.** Year 9 went back into the
+    `daily-exercise-draft` rotation on 2026-08-23, but the registry only carries `8g`, `8c`, `10g`
+    and `10c` (confirmed 2026-08-28), so the skill cannot pick a Year 9 topic the registry-driven
+    way it uses for the other four — Y9 topics still have to be chosen ad hoc against the existing
+    corpus. Add a `9c`/`9g` category via the `add-topics` skill. This is the blocker on Year 9
+    working like the other active years.
+
+12. **Audit the generators' HTML-parsing regexes.** CodeQL's "bad HTML filtering regexp" query
+    caught a real end-tag bug in `scripts/check-syntax.js` on PR #35 — but it only scans code a PR
+    *changes*, so the pre-existing generators have never been checked. Counted 2026-08-28:
+    **33 HTML-matching regexes across five scripts** (`build-head.js` 17, `build-exercise-data.js`
+    8, `build-hub.js` 4, `extract-graded.js` 3, `build-review-pages.js` 1), of which **12 are
+    end-tag matchers of the same shape** — `<\/title>`, `<\/h1>`, `<\/p>`, `<\/span>` — none of
+    which allow the attributes an end tag may legally carry.
+    **Lower severity than the one CodeQL caught**, and worth saying why rather than filing it as
+    an alarm: these parse the repo's own self-authored HTML, where nobody writes `</title foo>`,
+    and a miss here fails *visibly* (a mangled hub card title) rather than silently. One audit
+    pass, not urgent.
+
+13. **`themen/` fallback `introH2` is ungrammatical for plural topic names** —
+    `build-topic-pages.js:93` falls back to `'Was ist das ' + de`, which reads wrong for a plural
+    slug ("Was ist das Relativsätze?"). **Latent, not live:** every one of the ten current topics
+    has an authored `introH2` (verified 2026-08-28), so nothing on the site shows it today. It
+    bites the next slug added without one. Either author `introH2` with each new slug — the
+    existing convention — or make the fallback plural-aware.
