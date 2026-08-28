@@ -12,6 +12,19 @@ Static HTML exercise pages for English language learners, hosted on GitHub Pages
 
 ---
 
+## Verify before calling a task done
+
+State a brief success criterion per step before doing it, and check it before moving on —
+"add scoring" becomes "pass a `scoreKey`, confirm `#score-display` renders, confirm the payload
+carries `score`/`grade`"; "fix the bug" becomes "reproduce it, then confirm the fix removes it."
+Weak criteria ("make it work") lead to false-done reports; a stated check makes verification
+happen instead of being assumed. Run `node scripts/build.js` and `node test-scoring.js` /
+`node scripts/validate-explanations.js` where relevant, and for UI changes, load the page over
+HTTP and click through it — see "For UI or frontend changes" at the top of this session's
+instructions.
+
+---
+
 ## ⚠️ Known traps — read before editing live WordPress or testing submissions
 
 Three things that have already cost real time or broken live pages. None are obvious from the
