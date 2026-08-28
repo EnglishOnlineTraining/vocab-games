@@ -15547,5 +15547,132 @@
         "why": "\"Plan\" is followed by a to-infinitive — \"plans to launch\", not the gerund \"launching\"."
       }
     }
+  },
+  "10g-podcast-integration": {
+    "exA": {
+      "prefix": "exA-",
+      "gaps": {
+        "g1": {
+          "label": "1. What is the Newcomers’ XI, according to Aisha?",
+          "correct": "A weekly football session for young refugees and migrants aged twelve to eighteen.",
+          "why": "Aisha describes it as a weekly football session open to anyone aged twelve to eighteen who has recently arrived in the area."
+        },
+        "g2": {
+          "label": "2. According to Aisha, how were the pitches and the equipment provided?",
+          "correct": "The pitches were donated by the council, and the equipment was funded by a local charity.",
+          "why": "Aisha says the pitches were donated by the council two years ago and the equipment was funded by a local charity."
+        },
+        "g3": {
+          "label": "3. How do most new players find out about the sessions, according to Aisha?",
+          "correct": "Mostly through word of mouth, from friends, family and school flyers.",
+          "why": "Aisha says it is mostly through word of mouth — a classmate tells a classmate, and schools hand out flyers when a new student registers."
+        },
+        "g4": {
+          "label": "4. What does Aisha say the project really gives its players, beyond football?",
+          "correct": "Friendship, routine, and a sense of belonging.",
+          "why": "Aisha says football is just \"the excuse to get people in the door\" — what actually happens is friendship, routine and a sense of belonging."
+        },
+        "g5": {
+          "label": "5. Which of Jordan’s questions is a closed question — one that could be answered with just ‘yes’ or ‘no’?",
+          "correct": "Do you find it hard for players who don't speak much English yet?",
+          "why": "This question can be answered with a simple yes or no, unlike the other two, which both start with an open question word (What / How) and invite a fuller answer."
+        },
+        "g6": {
+          "label": "6. Review — which sentence from the interview is written in the passive voice?",
+          "correct": "The pitches were donated by the council two years ago.",
+          "why": "Review from 10g-green-scotland: the subject (the pitches) receives the action rather than doing it, shown by was/were + past participle (\"were donated\") — the other two sentences have an active subject doing the action (\"we have\", \"a new arrival tells\")."
+        }
+      }
+    },
+    "exB": {
+      "prefix": "exB-",
+      "gaps": {
+        "g1": {
+          "label": "1. Goal: get a detailed personal story about why Aisha started volunteering.",
+          "correct": "What made you decide to start volunteering with this project?",
+          "why": "This open \"What...\" question invites a full, personal story, unlike the closed yes/no question or the leading question that already assumes volunteering is the best option."
+        },
+        "g2": {
+          "label": "2. Goal: find out how a new player felt on their very first day.",
+          "correct": "How did you feel on your very first day at the club?",
+          "why": "\"How did you feel...\" is open and invites a real description of feelings, unlike the closed yes/no question or the leading question that puts the answer (\"really nervous\") in the guest's mouth."
+        },
+        "g3": {
+          "label": "3. Goal: understand the biggest challenge the project has faced.",
+          "correct": "What has been the biggest challenge for the project so far?",
+          "why": "This is a neutral, open question about challenges in general, unlike the leading question that assumes funding is the problem or the closed question that only needs a yes/no."
+        },
+        "g4": {
+          "label": "4. Goal: learn about a memorable moment from this season.",
+          "correct": "Can you describe a moment from this season that really stood out to you?",
+          "why": "This invites a full description in the guest's own words, unlike the closed yes/no question or the leading question that already names the tournament win as the answer."
+        },
+        "g5": {
+          "label": "5. Goal: get a parent’s honest opinion on how the club has helped their child.",
+          "correct": "In what ways has the club made a difference for your child?",
+          "why": "This open question invites specific examples, unlike the closed yes/no question or the leading question that already states the club \"completely changed\" the child's life."
+        },
+        "g6": {
+          "label": "6. Goal: find out what changes a player would like to see in future.",
+          "correct": "What would you like to see change about the sessions in future?",
+          "why": "This open question leaves the answer completely up to the guest, unlike the closed yes/no question or the leading question that already suggests girls-only sessions as the answer."
+        },
+        "g7": {
+          "label": "7. Goal: understand how the project chooses which teenagers to invite.",
+          "correct": "How do you decide which young people to invite to the sessions?",
+          "why": "This open \"How...\" question invites a real explanation of the process, unlike the closed yes/no question or the leading question that assumes anyone can just join."
+        },
+        "g8": {
+          "label": "8. Goal: learn what advice the coordinator would give to someone starting a similar project.",
+          "correct": "What advice would you give to someone starting a similar project elsewhere?",
+          "why": "This open question invites the guest's own advice in full, unlike the closed yes/no question or the leading question that already names council funding as essential."
+        }
+      }
+    },
+    "exC": {
+      "prefix": "exC-",
+      "gaps": {
+        "g1": {
+          "label": "1. Your guest gives a short answer, and you want to signal interest and invite more detail.",
+          "correct": "That's really interesting - could you tell me more about that?",
+          "why": "This phrase both shows interest and directly asks for elaboration, unlike a topic change (\"Let's move on to\") or an opening greeting (\"Thanks so much for joining me\")."
+        },
+        "g2": {
+          "label": "2. You want to check that you've correctly understood a complicated point your guest just made.",
+          "correct": "So if I understand correctly, you're saying that...?",
+          "why": "This phrase paraphrases what the guest said to check understanding, unlike a backchannel that just encourages continuing (\"Mm-hmm, go on\") or a redirect (\"could we come back to\")."
+        },
+        "g3": {
+          "label": "3. You've covered one topic fully and want to signal a clear move to a new one.",
+          "correct": "Let's move on to...",
+          "why": "This is the standard signal for a topic change, unlike asking for more detail (\"tell me more\") or asking for clarification of a term (\"explain what you mean by\")."
+        },
+        "g4": {
+          "label": "4. Your guest is telling a longer story, and you want to show you're listening without interrupting.",
+          "correct": "Mm-hmm, go on.",
+          "why": "A short backchannel like this encourages the guest to keep talking without breaking their flow, unlike changing topic or closing the interview."
+        },
+        "g5": {
+          "label": "5. Your guest has gone off-topic, and you want to politely bring the conversation back.",
+          "correct": "Sorry to interrupt, but could we come back to...?",
+          "why": "This politely interrupts and redirects to the original topic, unlike simply inviting more detail or thanking the guest for joining."
+        },
+        "g6": {
+          "label": "6. The interview is ending, and you want to close warmly.",
+          "correct": "Before we finish, I just want to say thank you for...",
+          "why": "\"Before we finish\" signals the interview is ending, unlike checking understanding or inviting more detail, which both belong in the middle of a conversation."
+        },
+        "g7": {
+          "label": "7. The interview is just starting, and you want to make your guest feel welcome.",
+          "correct": "Thanks so much for joining me today.",
+          "why": "This is a warm opening line for the start of an interview, unlike a topic change or an apology for interrupting, both of which assume the conversation is already underway."
+        },
+        "g8": {
+          "label": "8. Your guest used a term you didn’t fully understand, and you want it explained.",
+          "correct": "Sorry, could you explain what you mean by that?",
+          "why": "This directly asks for clarification of the term, unlike a backchannel that just encourages continuing or a closing thank-you."
+        }
+      }
+    }
   }
 }
