@@ -15429,5 +15429,123 @@
         }
       }
     }
+  },
+  "10g-gerunds-racism": {
+    "exA": {
+      "g1": {
+        "label": "1. What was the narrator's first reaction to the racist chanting during the match?",
+        "correct": "Her hands were shaking",
+        "why": "The text says her hands were shaking by half-time as the chanting continued."
+      },
+      "g2": {
+        "label": "2. Who did the narrator tell first about what had happened?",
+        "correct": "Her coach",
+        "why": "The coach noticed something was wrong and asked, and the narrator told her everything before the referee was informed."
+      },
+      "g3": {
+        "label": "3. What did the club do after the game?",
+        "correct": "It contacted a local anti-discrimination charity",
+        "why": "The text says the club got in touch with a local anti-discrimination charity that visits schools and clubs."
+      },
+      "g4": {
+        "label": "4. What had changed six months after the incident, according to the text?",
+        "correct": "Two fans were banned and a new reporting system was introduced",
+        "why": "The final part of paragraph 3 says two fans had been banned and the league had introduced a new reporting system."
+      },
+      "g5": {
+        "label": "5. In \"Reporting racist incidents matters more than people often realise\", what job does \"Reporting\" do?",
+        "correct": "It is a gerund acting as the subject of the sentence",
+        "why": "\"Reporting\" is the -ing form of a verb used as a noun — it is what \"matters\", so it is the subject of the sentence, not the main verb (which is \"matters\")."
+      },
+      "g6": {
+        "label": "6. (Review) This account of the incident is written from which point of view?",
+        "correct": "First person",
+        "why": "Review from 10g-short-story-analysis: the narrator speaks as \"I\" throughout (\"I still remember...\", \"my hands were shaking\"), which marks first-person narration."
+      }
+    },
+    "exB": {
+      "g1": {
+        "label": "1. ___ discrimination in sport should be everyone's responsibility, not just the referee's.",
+        "correct": "Reporting",
+        "why": "A gerund can act as the subject of a sentence — \"Reporting\" (not the base form \"Report\" or the infinitive \"To report\") is the standard subject form here."
+      },
+      "g2": {
+        "label": "2. The whole team is committed to ___ against racism at every match.",
+        "correct": "fighting",
+        "why": "\"Committed to\" is followed by a gerund, because \"to\" here is a preposition, not part of an infinitive — compare \"good at fighting\", \"keen on fighting\"."
+      },
+      "g3": {
+        "label": "3. Instead of ___ silent, Amara told her coach exactly what had happened.",
+        "correct": "staying",
+        "why": "\"Instead of\" is a preposition, and a gerund always follows a preposition — \"staying\", not the base form \"stay\" or the past form \"stayed\"."
+      },
+      "g4": {
+        "label": "4. The charity is responsible for ___ workshops in local schools and clubs.",
+        "correct": "organising",
+        "why": "\"Responsible for\" is followed by a gerund because \"for\" is a preposition — \"organising\", not the infinitive \"to organise\"."
+      },
+      "g5": {
+        "label": "5. ___ up against injustice takes real courage, especially in front of a crowd.",
+        "correct": "Standing",
+        "why": "As the subject of the sentence, the -ing form is needed — \"Standing up\", not the base form \"Stand\" or the infinitive \"To stand\"."
+      },
+      "g6": {
+        "label": "6. After ___ the incident, the referee spoke to both team captains.",
+        "correct": "reporting",
+        "why": "\"After\" is a preposition here, so it takes a gerund — \"reporting\", not the base form \"report\" or the infinitive \"to report\"."
+      },
+      "g7": {
+        "label": "7. The club is proud of ___ a zero-tolerance policy this season.",
+        "correct": "introducing",
+        "why": "\"Proud of\" is followed by a gerund because \"of\" is a preposition — \"introducing\", not the infinitive \"to introduce\"."
+      },
+      "g8": {
+        "label": "8. Without ___ their voices, fans and players cannot help change the culture of the game.",
+        "correct": "raising",
+        "why": "\"Without\" is a preposition and takes a gerund — \"raising\" (a transitive verb meaning to lift something up), not \"rise\" (intransitive, cannot take an object like \"their voices\") or the base form \"raise\"."
+      }
+    },
+    "exC": {
+      "g1": {
+        "label": "1. The coach suggested ___ (organise) a diversity workshop for the whole team.",
+        "correct": "organising",
+        "why": "\"Suggest\" is always followed by a gerund, never a to-infinitive — \"suggested organising\", not \"suggested to organise\"."
+      },
+      "g2": {
+        "label": "2. Amara promised ___ (speak) to the team about what had happened.",
+        "correct": "to speak",
+        "why": "\"Promise\" is followed by a to-infinitive — \"promised to speak\", not the gerund \"speaking\"."
+      },
+      "g3": {
+        "label": "3. Many fans can't stand ___ (see) racist abuse go unpunished.",
+        "correct": "seeing",
+        "why": "\"Can't stand\" behaves like other feeling verbs (enjoy, hate) and is followed by a gerund — \"seeing\", not the infinitive \"to see\"."
+      },
+      "g4": {
+        "label": "4. The club decided ___ (introduce) a stronger reporting system after the incident.",
+        "correct": "to introduce",
+        "why": "\"Decide\" is followed by a to-infinitive — \"decided to introduce\", not the gerund \"introducing\"."
+      },
+      "g5": {
+        "label": "5. We should avoid ___ (ignore) small incidents, because they can grow into bigger problems.",
+        "correct": "ignoring",
+        "why": "\"Avoid\" is always followed by a gerund, never a to-infinitive — \"avoid ignoring\", not \"avoid to ignore\"."
+      },
+      "g6": {
+        "label": "6. The rival team agreed ___ (support) Amara publicly after the match.",
+        "correct": "to support",
+        "why": "\"Agree\" is followed by a to-infinitive — \"agreed to support\", not the gerund \"supporting\"."
+      },
+      "g7": {
+        "label": "7. I really enjoy ___ (help) younger players feel safe and included at training.",
+        "correct": "helping",
+        "why": "\"Enjoy\" is always followed by a gerund, never a to-infinitive — \"enjoy helping\", not \"enjoy to help\"."
+      },
+      "g8": {
+        "label": "8. The league plans ___ (launch) a new anti-discrimination campaign next season.",
+        "correct": "to launch",
+        "why": "\"Plan\" is followed by a to-infinitive — \"plans to launch\", not the gerund \"launching\"."
+      }
+    }
   }
 }
