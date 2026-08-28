@@ -14819,5 +14819,129 @@
         }
       }
     }
+  },
+  "10g-short-story-analysis": {
+    "exA": {
+      "gaps": {
+        "g1": {
+          "label": "1. Point of view of the story",
+          "correct": "first person",
+          "why": "The narrator uses 'I' throughout, so the story is told in the first person."
+        },
+        "g2": {
+          "label": "2. What the narrator was seriously considering",
+          "correct": "taking the unlocked bike for himself",
+          "why": "He notices the bike is unlocked and thinks nobody would know if he took it."
+        },
+        "g3": {
+          "label": "3. What the clouds/storm mainly represent",
+          "correct": "the narrator's inner conflict about what to do",
+          "why": "The clouds press lower as his temptation grows, and the storm breaks only once he decides."
+        },
+        "g4": {
+          "label": "4. What the narrator did when Felix asked about the bike",
+          "correct": "told him where it was",
+          "why": "He points at the fence and tells Felix the bike is there, safe."
+        },
+        "g5": {
+          "label": "5. What happens right after the narrator tells the truth",
+          "correct": "the rain finally starts falling",
+          "why": "The text says the first drops of rain broke through right after he pointed Felix to the bike."
+        },
+        "g6": {
+          "label": "6. How the ending rain links to the narrator's feelings",
+          "correct": "the rain matches his sense of relief after doing the right thing",
+          "why": "The narrator compares the rain breaking through to something inside him 'breaking open' — lighter and cleaner."
+        }
+      }
+    },
+    "exB": {
+      "gaps": {
+        "g1": {
+          "label": "1. \"I never told anyone what really happened that night.\"",
+          "correct": "first-person narration",
+          "why": "The narrator speaks as 'I', so this is first-person narration."
+        },
+        "g2": {
+          "label": "2. \"Marcus stared at the letter, wondering if his father would ever forgive him.\"",
+          "correct": "third-person limited",
+          "why": "We only see Marcus's own thoughts from outside — that is third-person limited."
+        },
+        "g3": {
+          "label": "3. \"Marcus felt sure he had been forgiven, but across town his father was already packing his bags.\"",
+          "correct": "third-person omniscient",
+          "why": "The narrator reveals what Marcus's father is doing elsewhere — something Marcus himself does not know — which only an omniscient narrator can show."
+        },
+        "g4": {
+          "label": "4. \"I definitely wasn't scared — my hands were just cold, that's all.\"",
+          "correct": "unreliable narrator",
+          "why": "The narrator's defensive denial suggests they are not telling the whole truth — a sign of an unreliable narrator."
+        },
+        "g5": {
+          "label": "5. \"We ran until our lungs burned, and even then I didn't dare look back.\"",
+          "correct": "first-person narration",
+          "why": "'I' and 'we' mark the narrator speaking about their own experience: first person."
+        },
+        "g6": {
+          "label": "6. \"Priya bit her lip, unsure whether to knock on the door.\"",
+          "correct": "third-person limited",
+          "why": "The narrator only shows us Priya's own uncertainty, from outside: third-person limited."
+        },
+        "g7": {
+          "label": "7. \"Neither of them noticed the shadow slipping past the window behind them.\"",
+          "correct": "third-person omniscient",
+          "why": "The narrator describes something neither character notices — knowledge beyond any one character's view is a sign of an omniscient narrator."
+        },
+        "g8": {
+          "label": "8. \"I only borrowed it — I was always going to give it back, I swear.\"",
+          "correct": "unreliable narrator",
+          "why": "The over-eager justification ('I swear') suggests the narrator is trying to convince us of something that may not be true."
+        }
+      }
+    },
+    "exC": {
+      "gaps": {
+        "g1": {
+          "label": "1. The old oak tree",
+          "correct": "the family's strength and resilience",
+          "why": "A tree that survives every storm stands for the family enduring hard times."
+        },
+        "g2": {
+          "label": "2. The cracked watch",
+          "correct": "holding on to the past",
+          "why": "Keeping a broken watch that no longer works represents refusing to let go of an earlier time."
+        },
+        "g3": {
+          "label": "3. The gate at the end of the lane",
+          "correct": "her fear of making a big change",
+          "why": "The gate only seems to grow taller when she thinks about leaving — it stands for how hard the decision feels, not its real height."
+        },
+        "g4": {
+          "label": "4. The candle in the window",
+          "correct": "someone is waiting and holding on to hope",
+          "why": "A candle left burning after everyone else has gone to sleep is a classic image of someone waiting, still hopeful."
+        },
+        "g5": {
+          "label": "5. The closed bridge",
+          "correct": "the broken connection between them",
+          "why": "A bridge that connects two places being closed since an argument mirrors the broken connection between the people."
+        },
+        "g6": {
+          "label": "6. The falling snow",
+          "correct": "a sense of relief and a fresh start",
+          "why": "Snow falling at the exact moment she speaks her fear aloud suggests a clean, fresh start, not just weather."
+        },
+        "g7": {
+          "label": "7. The faded photograph",
+          "correct": "memories fading with time",
+          "why": "A photograph fading until the faces can no longer be made out mirrors memories fading as time passes."
+        },
+        "g8": {
+          "label": "8 (review) — campaigners ___ for equal rights",
+          "correct": "had fought",
+          "why": "Review from 10g-slavery-civil-war: past perfect for an action completed before another past event ('by the time the law passed') — 'had fought'."
+        }
+      }
+    }
   }
 }
