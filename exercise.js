@@ -671,7 +671,7 @@ function renderExplanations(containerId, items) {
     ? '<div class="card"><div class="card-title">Explanations — the ones to review (' + wrong.length + ')</div>'
         + wrong.map(eolExplRow).join('') + '</div>'
     : '<div class="card"><div class="card-title">Explanations</div>'
-        + '<p style="font-size:.92rem;color:var(--green);margin:0">Everything correct — nothing to review. 🎉</p></div>';
+        + '<p style="font-size:.92rem;color:var(--green-text,#1d7a42);margin:0">Everything correct — nothing to review. 🎉</p></div>';
   var toggle = '<div style="text-align:center;margin:.1rem 0 .7rem">'
     + '<button type="button" class="btn btn-outline btn-sm" onclick="eolToggleAllExpl(this)">Show all explanations</button></div>';
   var all = '<div class="card" id="expl-all" style="display:none"><div class="card-title">All explanations</div>'
@@ -807,7 +807,7 @@ function initListening(elementId, script, opts) {
   var supported = ('speechSynthesis' in window) && (typeof SpeechSynthesisUtterance !== 'undefined');
   if (!supported) {
     el.innerHTML = '<div class="listen-player"><div class="listen-title">🎧 Listening</div>'
-      + '<p class="listen-status" style="color:var(--red)">Sorry, your browser can\'t play this listening audio. '
+      + '<p class="listen-status" style="color:var(--red-text,#c0392b)">Sorry, your browser can\'t play this listening audio. '
       + 'Please try a different browser (e.g. Chrome, Edge or Safari) or ask your teacher.</p></div>';
     return;
   }
@@ -1211,11 +1211,18 @@ function eolInjectChrome() {
 }
 document.addEventListener('DOMContentLoaded', eolInjectChrome);
 
-/* Load all pages' explanations once from the shared data file. Fetch fails
-   under file:// — that's fine, explanations just stay hidden. If the data
-   arrives after the student is already on the results screen, re-render. */
+/* Fallback loader for the shared data file.
+   Normally this never runs: build-head.js inlines each page's own explanations
+   as an EXPLAIN global (a few KB), so there is nothing to fetch. It stays for a
+   page that has not been through the generator yet — without it such a page
+   would silently lose its explanations. Fetching the whole file is a last
+   resort: it is ~540 KB to serve a median 3 KB entry, which is why the block
+   exists. Fetch also fails under file://, another reason the inline block is
+   the real path. If the data arrives after the student is already on the
+   results screen, re-render. */
 document.addEventListener('DOMContentLoaded', function() {
   if (typeof fetch !== 'function') return;
+  if (typeof EXPLAIN !== 'undefined') return;   // page carries its own — nothing to fetch
   fetch('data/explanations.json')
     .then(function(r) { return r && r.ok ? r.json() : null; })
     .then(function(data) {

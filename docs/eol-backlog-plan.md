@@ -683,3 +683,104 @@ English" triplicate, 2026 German cluster categories — all confirmed done via l
 307 unpublished, the email-cluster merge (1061/1167/1238/523), the 380/365 duplicate (365
 stubbed), and the old 460 branch (423/438/499/595 retired) — all executed and Shaun-approved
 2026-08-07. **The full audit reconciliation is complete.**_
+
+---
+
+## Repo-health backlog (added 2026-08-27) · CC
+
+Raised by an external review of the repository, triaged against what the repo actually does.
+The high-value half shipped on `claude/vocab-games-improvements-f6y6mm`; this is the remainder.
+Owners as above: **CC** = Claude Code, **Shaun** = decision.
+
+### Shipped in that pass (context, not backlog)
+Inline per-page explanations (removed a 551 KB download from every framework page);
+`scripts/check-syntax.js` in CI; the text-colour contrast tokens; WebP + `<picture>` +
+the missing `.comic-img` rule on `7c-robert-the-bruce`.
+
+### Hardening · CC
+1. **Grade-boundary tests.** `test-scoring.js` covers the attempt ladder only. Nothing tests
+   `lookupGrade` or `lookupMsaGrade`, and a student's Note comes straight off those thresholds.
+   Extend to `node:test` (built into Node 22 — still no npm dependency), covering both tables'
+   boundaries, `totalScore()` with a missing `state.scores`, and the practise-mode results path.
+2. **`scripts/validate-data.js`** — shape checks for `data/exercises.json`, `data/topics.json`
+   and `data/quizzes.json`. `explanations.json` and the JSON-LD have validators; these three have
+   none, so a typo silently breaks a hub card or a topic page.
+3. **Spreadsheet formula injection.** `apps-script.gs` writes student free text into Sheets via
+   `appendRow` (lines 70–122). A student typing `=HYPERLINK(...)` or `=IMPORTRANGE(...)` into a
+   textarea lands as a **live formula** in the teacher's sheet. Prefix values starting with
+   `= + - @` with `'`. The Make → Excel path for Y7–10 has the same exposure and cannot be fixed
+   in Apps Script, so the durable fix is client-side in `exercise.js` before the POST.
+4. **Accessibility for the non-framework pages.** `eolInitA11y` only reaches pages that load
+   `exercise.js`. The Abitur packs, quizzes, lead magnets and `klasse7-mini` get a skip link from
+   `build-head.js` but no gap labels, no ✓/✗ marks and no live regions.
+
+### Lower priority · CC
+5. `CONTRIBUTING.md` — short, pointing at `scripts/pipeline.js` and the traps in `CLAUDE.md`.
+6. Internal link checker as a `VALIDATOR`. Measured 2026-08-27: **0 broken of 1,301** internal
+   `.html` links, so this is a regression guard, not a fix.
+7. `9c-south-africa-revision.html:236` hotlinks a 1280px Wikimedia image — an external request
+   from a school page, and it can break. It has a text fallback, so this is cosmetic; self-host
+   or accept.
+8. **Audit the rest of the corpus for the `.comic-img` class of bug.** That page's images had no
+   CSS rule at all, so a 2098px panel dragged the document to 2114px on a 390px phone. Nothing
+   would have caught it; a viewport-overflow check across all pages would.
+
+### Decision needed · Shaun
+9. **Analytics.** Deferred 2026-08-27. Site is used by German schoolchildren, so anything
+   tracking is a DSGVO matter. If revisited: cookieless only, and the WordPress Datenschutz page
+   needs a matching paragraph **before** anything ships.
+
+### Rejected, with reasons (do not re-propose)
+- **ES modules / TypeScript for `exercise.js`.** A dozen pages redefine framework functions
+  *after* the `<script>` include and rely on winning; `defer`/`type="module"` inverts that order
+  and would silently clobber them. Already documented in `CLAUDE.md` §5e.
+- **Minification.** GitHub Pages already gzips (`exercise.js` 56 KB → ~14 KB). Costs the
+  hand-editable, no-bundler property for a few KB.
+- **Feature flags / A-B testing.** No traffic split, no infrastructure, no question it answers.
+- **ESLint / Prettier / Jest.** Shaun's call 2026-08-27: the repo stays dependency-free. The
+  checks that earn their place are written in plain Node instead — see `scripts/check-syntax.js`.
+
+### Added 2026-08-28 · outstanding items swept up after PR #35 merged
+Each verified against the code today, not carried over on trust. Severity is stated honestly —
+two of these are latent rather than live.
+
+10. **Two quiz questions mark a correct answer wrong.** `data/quizzes.json` → `grammar-hardest`,
+    verified 2026-08-28. **Student-facing on a public, no-sign-up page — the highest-priority item
+    in this section.**
+    - **q1** "Which sentence contains a double negative?" keys *"I didn't see nobody at the
+      party."*, but the distractor *"I can't hardly hear you."* is also a double negative
+      (`can't` + `hardly`). Two of the three options are correct answers.
+    - **q9** "Which sentence contains a dangling infinitive?" keys *"To get to the park, my bicycle
+      was the fastest option."*, but *"To avoid the traffic, the car was driven on the side
+      streets."* dangles in exactly the same way — the implied agent is not the subject.
+    - The `why` lines state the rule for the keyed answer rather than calling the distractors
+      wrong, so nothing on screen is false; a visitor who picks the other option is simply told
+      they are wrong. **Fix is to reword the distractors, not the answer key** — rewriting the key
+      would make the third option the only wrong one and lose the question's point.
+      Needs Shaun's eye on the replacement wording.
+
+11. **`topic-pool.json` still has no 9c/9g category.** Year 9 went back into the
+    `daily-exercise-draft` rotation on 2026-08-23, but the registry only carries `8g`, `8c`, `10g`
+    and `10c` (confirmed 2026-08-28), so the skill cannot pick a Year 9 topic the registry-driven
+    way it uses for the other four — Y9 topics still have to be chosen ad hoc against the existing
+    corpus. Add a `9c`/`9g` category via the `add-topics` skill. This is the blocker on Year 9
+    working like the other active years.
+
+12. **Audit the generators' HTML-parsing regexes.** CodeQL's "bad HTML filtering regexp" query
+    caught a real end-tag bug in `scripts/check-syntax.js` on PR #35 — but it only scans code a PR
+    *changes*, so the pre-existing generators have never been checked. Counted 2026-08-28:
+    **33 HTML-matching regexes across five scripts** (`build-head.js` 17, `build-exercise-data.js`
+    8, `build-hub.js` 4, `extract-graded.js` 3, `build-review-pages.js` 1), of which **12 are
+    end-tag matchers of the same shape** — `<\/title>`, `<\/h1>`, `<\/p>`, `<\/span>` — none of
+    which allow the attributes an end tag may legally carry.
+    **Lower severity than the one CodeQL caught**, and worth saying why rather than filing it as
+    an alarm: these parse the repo's own self-authored HTML, where nobody writes `</title foo>`,
+    and a miss here fails *visibly* (a mangled hub card title) rather than silently. One audit
+    pass, not urgent.
+
+13. **`themen/` fallback `introH2` is ungrammatical for plural topic names** —
+    `build-topic-pages.js:93` falls back to `'Was ist das ' + de`, which reads wrong for a plural
+    slug ("Was ist das Relativsätze?"). **Latent, not live:** every one of the ten current topics
+    has an authored `introH2` (verified 2026-08-28), so nothing on the site shows it today. It
+    bites the next slug added without one. Either author `introH2` with each new slug — the
+    existing convention — or make the fallback plural-aware.
