@@ -15181,5 +15181,129 @@
         }
       }
     }
+  },
+  "10g-blog-post-teen-voices": {
+    "exA": {
+      "gaps": {
+        "g1": {
+          "label": "1. According to the writer, what usually happens to teenagers’ opinions about the present?",
+          "correct": "they rarely seem to count, even though adults call teenagers ‘the future’",
+          "why": "The second paragraph says adults call teenagers “the future” but our opinions about the present rarely seem to count."
+        },
+        "g2": {
+          "label": "2. Who does the writer say usually gets interviewed instead of teenagers, on topics like climate change or mental health?",
+          "correct": "a teacher, a psychologist, or a worried parent",
+          "why": "The text names exactly these three as the people usually interviewed instead of the teenagers actually living through the issue."
+        },
+        "g3": {
+          "label": "3. Why does the writer say blogs matter to them?",
+          "correct": "no editor can cut or change their opinion before it reaches the reader",
+          "why": "The third paragraph says nobody edits the writer’s opinion or cuts their sentence short, so the reader gets it unfiltered."
+        },
+        "g4": {
+          "label": "4. What challenge does the writer set for the reader at the end of the post?",
+          "correct": "to read a post by someone under eighteen properly instead of assuming it matters less",
+          "why": "The final paragraph asks the reader not to assume a young writer’s post matters less, and to read it properly instead."
+        },
+        "g5": {
+          "label": "5. Why does the writer open with a rhetorical question instead of a plain statement?",
+          "correct": "to draw the reader in personally with a rhetorical question — a typical way to open a blog post",
+          "why": "Opening with a question that speaks directly to the reader’s own experience is a common blog technique for creating a personal hook."
+        },
+        "g6": {
+          "label": "6. What effect does addressing the reader directly with “you” create?",
+          "correct": "a personal, conversational tone that is typical of blog register, rather than a distant, formal one",
+          "why": "Direct address (“you”, “you’d”, “you’re”) is a blog-register feature that makes writing feel personal and conversational, unlike the distant tone of a formal essay."
+        }
+      }
+    },
+    "exB": {
+      "gaps": {
+        "g1": {
+          "label": "1. Introducing an opinion about a new school policy — which version sounds like a blog post?",
+          "correct": "I think it's time the school took a closer look at this policy.",
+          "why": "It's clear, personal (“I think”) and direct — blog register is informal but still well-organised, unlike the stiff, impersonal formal option or the slangy casual one."
+        },
+        "g2": {
+          "label": "2. Introducing an opinion about phones in class — which version sounds like a blog post?",
+          "correct": "In my opinion, phones could actually help us learn — if we use them the right way.",
+          "why": "It states a personal opinion plainly and clearly, without the passive, over-formal phrasing of the essay-style option or the dismissive slang of the casual one."
+        },
+        "g3": {
+          "label": "3. Inviting the reader to think about an idea — which version sounds like a blog post?",
+          "correct": "Here's something worth thinking about.",
+          "why": "It's short, direct and speaks to the reader informally, rather than using the stiff “the reader is hereby invited” phrasing or slang like “fr fr”."
+        },
+        "g4": {
+          "label": "4. Giving a personal example about peer pressure — which version sounds like a blog post?",
+          "correct": "I've noticed how much peer pressure affects the choices we make.",
+          "why": "It uses “I've noticed” — personal and clear — rather than the academic “it has been observed by this author” or the vague slang version."
+        },
+        "g5": {
+          "label": "5. Ending with a call to action — which version sounds like a blog post?",
+          "correct": "What do you think? Let me know in the comments.",
+          "why": "It directly invites the reader to respond, which is exactly what a call-to-action closing does — the formal option is stiff and the casual one sounds dismissive."
+        },
+        "g6": {
+          "label": "6. Making a claim with evidence — which version sounds like a blog post?",
+          "correct": "Most teenagers use social media every day — and I'm one of them.",
+          "why": "It makes the claim clearly and adds a personal note, unlike the over-formal “according to statistical data” or the vague, slangy option."
+        },
+        "g7": {
+          "label": "7. Expressing disagreement — which version sounds like a blog post?",
+          "correct": "I have to disagree with that idea, and here's why.",
+          "why": "It disagrees clearly and promises a reason, matching blog register — the formal option is overly stiff and the casual one gives no reason at all."
+        },
+        "g8": {
+          "label": "8. Review — which sentence correctly begins with a participle construction?",
+          "correct": "Ignored by adults, many teenagers turn to blogging instead.",
+          "why": "This reviews participle constructions from 10g-participle-writing: the opening participle must be the past participle “Ignored” (teenagers ARE ignored), not the base form “Ignore” or the wrong -ing form “Ignoring”, which would mean teenagers do the ignoring."
+        }
+      }
+    },
+    "exC": {
+      "gaps": {
+        "g1": {
+          "label": "1. “Ever wondered why nobody at school ever asks what students actually want?”",
+          "correct": "Opening hook",
+          "why": "A question that grabs the reader’s attention right at the start is a classic opening hook, not yet stating an opinion or giving evidence."
+        },
+        "g2": {
+          "label": "2. “I believe students should have a real vote in decisions that affect their own school day.”",
+          "correct": "Thesis (main opinion)",
+          "why": "This states the writer's central opinion directly (“I believe…should”), which is exactly what a thesis statement does."
+        },
+        "g3": {
+          "label": "3. “Have you ever felt like your opinion didn’t matter, just because of your age?”",
+          "correct": "Opening hook",
+          "why": "Like item 1, this is a question designed to pull the reader in personally before any opinion or evidence is given — an opening hook."
+        },
+        "g4": {
+          "label": "4. “For example, my school changed the lunch menu last term without asking a single student what they thought.”",
+          "correct": "Supporting point",
+          "why": "“For example” signals a concrete piece of evidence backing up the writer's opinion — that is a supporting point, not the opinion itself."
+        },
+        "g5": {
+          "label": "5. “So next time there’s a school survey, don’t skip it — your answer could actually change something.”",
+          "correct": "Call-to-action closing",
+          "why": "This tells the reader what to do next, which is the job of a call-to-action closing at the end of a blog post."
+        },
+        "g6": {
+          "label": "6. “In my view, teenagers understand school life better than most adults realise.”",
+          "correct": "Thesis (main opinion)",
+          "why": "“In my view” signals the writer's central opinion, making this a thesis statement rather than a hook or a piece of evidence."
+        },
+        "g7": {
+          "label": "7. “A recent survey at my school found that 80% of students wanted more say in homework deadlines — but nobody followed up on it.”",
+          "correct": "Supporting point",
+          "why": "This gives concrete evidence (a survey statistic) to back up the writer's opinion, which is exactly what a supporting point does."
+        },
+        "g8": {
+          "label": "8. “Comment below and tell me: should students get a vote on this too?”",
+          "correct": "Call-to-action closing",
+          "why": "This directly asks the reader to respond, which marks it as a call-to-action closing rather than a hook, thesis or supporting point."
+        }
+      }
+    }
   }
 }
