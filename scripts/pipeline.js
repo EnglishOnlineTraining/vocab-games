@@ -97,12 +97,16 @@ const NODES = [
 // fail fast. Checked rather than assumed:
 //   test-scoring.js          reads exercise.js only
 //   topic-pool.js            reads topic-pool.json + the repo file listing
+//   esl-grammar-pool.js      reads esl-grammar-pool.json + the repo file listing
+//                            (separate registry from topic-pool.json — see
+//                            esl-grammar-exercise-draft skill)
 //   validate-explanations.js reads data/explanations.json + root *.html,
 //                            matching pages by `var UNIT`
 const VALIDATORS = [
   { id: 'validate-explanations', run: 'scripts/validate-explanations.js' },
   { id: 'test-scoring', run: 'test-scoring.js' },
   { id: 'topic-pool', run: 'topic-pool.js' },
+  { id: 'esl-grammar-pool', run: 'esl-grammar-pool.js' },
 ];
 
 // Checks that run AFTER the build, because they read what the generators wrote
