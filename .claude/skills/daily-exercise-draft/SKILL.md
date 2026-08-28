@@ -27,7 +27,7 @@ The caller (scheduled task or Shaun) provides the category. Valid categories:
 |--------|----------|------|----------|
 | `8g-`  | Year 8 Gymnasium | ~B1 | Klett Green Line 4 |
 | `8c-`  | Year 8 Oberschule | ~A2 | Klett Orange Line 4 |
-| `10g-` | Year 10 Gymnasium | ~B2/C1 | Klett Green Line 6 |
+| `10g-` | Year 10 Gymnasium | ~B2/C1 | Klett Green Line Transitions (changed 2026-08-28; was Green Line 6 — see CLAUDE.md) |
 | `10c-` | Year 10 Oberschule | ~B1/B2 | Klett Orange Line 6 |
 
 Year 7 drafting is **paused** (see CLAUDE.md). If asked for Y7, remind Shaun and ask which
