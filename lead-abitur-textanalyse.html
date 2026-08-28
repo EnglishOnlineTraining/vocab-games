@@ -14,7 +14,10 @@
     --text:#1d2b3a; --muted:#6b7a8d; --border:#dce3ec; --radius:12px;
     --shadow:0 2px 16px rgba(26,58,92,.1);
     --font:'Segoe UI', system-ui, sans-serif;
-  }
+    --green-text: #1d7a42;
+  --red-text:   #c0392b;
+  --teal-text:  #1f5d5b;
+}
   body { font-family:var(--font); background:var(--bg); color:var(--text); line-height:1.55; padding-bottom:3rem; }
 
   header.app-header { background:var(--blue); color:#fff; position:sticky; top:0; z-index:100; box-shadow:0 2px 8px rgba(0,0,0,.2); }
@@ -56,7 +59,7 @@
   .cta a { display:inline-block; background:var(--gold); color:var(--blue); font-weight:700; text-decoration:none; padding:.7rem 1.6rem; border-radius:8px; font-size:.95rem; }
 
   footer.pg { text-align:center; font-size:.75rem; color:var(--muted); padding:1.5rem 1rem 0; }
-  footer.pg a { color:var(--teal); }
+  footer.pg a { color:var(--teal-text,#1f5d5b); }
 
   @media print {
     body { background:#fff; }
