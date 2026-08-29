@@ -33,6 +33,33 @@ Status key: **Open** (worth doing, not started) · **Already done** (skip) · **
   already exists and currently reports 0 outstanding; wiring it into CI so a newly added exercise
   without explanations fails the build (rather than relying on someone remembering to run it) is
   a small, real gap.
+- **Text tokeniser for `scripts/` + three consumers.** A shared `scripts/text.js` exporting
+  `words()`, `sentences()`, `paragraphs()`, `wordCount()`, `stripHtml()` and `decode()`, feeding
+  (a) a readability audit of the 293 `.reading-text` blocks against the CEFR band each page's
+  filename prefix declares, (b) a vocabulary-candidate extractor for `daily-exercise-draft`, and
+  (c) a stated-vs-enforced word-count checker. Explored 2026-08-29 and deferred — filed with its
+  findings so they don't have to be re-derived. All three hold independently of whether the
+  library is ever built:
+  - **69 pages hand-roll word counting** with `text.split(/\s+/)`, in four spelling variants
+    (with/without `.trim()`, with/without `.filter(w => w.length > 0)`); 29 call sites are the
+    unguarded form. `exercise.js:234` holds a fourth copy for the practise-mode rubric.
+  - **`10c-london-slang.html` is a live defect** — it instructs students to write 100–150 words
+    while its validator blocks anything under 50. Of the ~106 pages that state a range, most
+    enforce nothing at all. That page is the known-true positive to test any checker against.
+  - **`decode()` exists three times** — `scripts/extract-graded.js:21`, `scripts/inventory.js:10`
+    and `scripts/build-exercise-data.js:48` — each handling a different subset of HTML entities.
+    Worth consolidating on its own merits.
+
+  Two design constraints, recorded so they aren't re-litigated. `.reading-text` is **not always
+  prose**: `8c-arriving-northeast.html:305` uses it for a grammar reference box, so an audit needs
+  a prose filter or it will score "short adjectives add *-er* (tall → taller)" as a passage. And
+  **Flesch does not map onto CEFR** — report outliers relative to a band cohort, reusing the
+  prefix→band map already in `eolRubricBand()` (`exercise.js:220-226`) so the audit and the
+  student-facing rubric can't disagree, rather than claiming absolute levels.
+- **`scripts/inventory.js` hardcodes an absolute path.** Line 4 is
+  `const ROOT = '/home/user/vocab-games'` where every other script uses
+  `path.join(__dirname, '..')`, so it only runs in one checkout. One-line fix, spotted 2026-08-29
+  while exploring the tokeniser idea above; unrelated to it.
 
 ## Already done — don't re-add
 
