@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google" content="notranslate">
+<title>Class Test: 9A/9B — Grammar &amp; Literary Devices Review | englishonline.training</title>
+<meta name="description" content="Online review test for classes 9A/9B: Year 8 grammar revision (gerund vs. infinitive, conditionals type 2 &amp; 3) plus literary devices, with full anti-cheat monitoring.">
+<link rel="canonical" href="https://activities.englishonline.training/9ab-grammar-literary-review-test.html">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blue:    #1a3a5c;
+  --gold:    #c9a227;
+  --gold-lt: #f5e6b0;
+  --teal:    #2b7a78;
+  --red:     #c0392b;
+  --green:   #27ae60;
+  --bg:      #f7f9fc;
+  --card:    #ffffff;
+  --text:    #1d2b3a;
+  --muted:   #6b7a8d;
+  --border:  #dce3ec;
+  --radius:  12px;
+  --shadow:  0 2px 16px rgba(26,58,92,.1);
+  --font:    'Segoe UI', system-ui, sans-serif;
+  --green-text: #1d7a42;
+  --red-text:   #c0392b;
+  --teal-text:  #1f5d5b;
+}
+body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
+
+.app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; flex-wrap: wrap; }
+.header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
+.header-meta { font-size: .78rem; text-align: right; opacity: .9; }
+.header-meta strong { display: block; color: var(--gold); }
+.progress-track { height: 6px; background: rgba(255,255,255,.2); }
+.progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
+#timer-wrap { display:none; align-items:center; gap:8px; }
+#timer-label { font-size:.7rem; opacity:.75; text-transform:uppercase; letter-spacing:.05em; }
+#timer-display { font-size:1.05rem; font-weight:700; background:rgba(255,255,255,.18); padding:3px 12px; border-radius:20px; font-variant-numeric:tabular-nums; min-width:64px; text-align:center; }
+#timer-display.warning { background:#f6ad55; color:#7b341e; }
+#timer-display.danger { background:#fc8181; color:#742a2a; animation:pulse 1s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.7} }
+
+.screen, .step { display: none; }
+.screen.active, .step.active { display: block; }
+.step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+
+.ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
+.ex-title { font-size: 1.4rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+.ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+.card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
+.card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
+
+.form-group { margin-bottom: 1.1rem; }
+.form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+.form-input, .form-textarea, .form-select {
+  width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+  padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
+  color: var(--text); background: #fff; transition: border-color .2s;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus { outline: none; border-color: var(--blue); }
+.form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+
+.gap-select { display:inline-block; border:1.5px solid var(--gold); border-radius:6px; padding:.18rem .4rem; font-family:var(--font); font-size:.82rem; background:var(--gold-lt); color:var(--blue); cursor:pointer; vertical-align:middle; margin:2px 3px; }
+.gap-select:focus { outline:none; border-color:var(--blue); }
+.gap-input { display:inline-block; width:170px; border:1.5px solid var(--gold); border-radius:6px; padding:.18rem .4rem; font-family:var(--font); font-size:.85rem; background:var(--gold-lt); color:var(--blue); vertical-align:middle; margin:2px 3px; }
+.gap-input:focus { outline:none; border-color:var(--blue); background:#fff; }
+
+.item-pool { display:flex; flex-direction:column; }
+.numbered-item { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: .85rem; background: #fafbfc; }
+.item-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 800; flex-shrink: 0; margin-bottom: .5rem; }
+.item-sentence { font-size: .92rem; line-height: 2.4; }
+.item-quote { font-size: .95rem; font-style: italic; color: var(--blue); margin-bottom: .6rem; user-select: none; }
+
+.rule-list { list-style: none; padding: 0; margin: 12px 0; }
+.rule-list li { padding: 9px 14px; border-left: 3px solid var(--blue); margin-bottom: 7px; background: #f7fafc; border-radius: 0 7px 7px 0; font-size: .88rem; line-height: 1.5; }
+.rule-list li.red { border-color: var(--red); background: #fff5f5; }
+.notice { background: #fffff0; border: 1px solid #ecc94b; border-radius: 8px; padding: 13px 16px; font-size: .86rem; line-height: 1.5; margin-top: 12px; }
+
+.feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
+.feedback.show { display: block; }
+.feedback.err  { background: #fde8e8; color: #721c24; }
+.alert { border-radius:8px; padding:.7rem 1rem; margin-bottom:1rem; font-size:.85rem; display:none; }
+.alert.show { display:block; }
+.alert-warn { background:#fffbeb; border:1px solid #f6e05e; color:#744210; }
+.alert-danger { background:#fff5f5; border:1px solid #feb2b2; color:#742a2a; }
+
+.btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+.btn:active { transform: scale(.97); }
+.btn:disabled { opacity:.55; cursor:not-allowed; }
+.btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
+.btn-primary:hover { background: #15304f; }
+.btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
+.btn-gold:hover { background: #b8911f; }
+.btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+.btn-outline:hover { background: var(--blue); color: #fff; }
+.btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+.btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+.btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+.welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
+.welcome-flag { font-size: 2.6rem; margin-bottom: 1rem; }
+.welcome-title { font-size: 1.7rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+.welcome-sub { font-size: .95rem; color: var(--muted); margin-bottom: 2rem; max-width: 460px; margin-left: auto; margin-right: auto; }
+.exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+.ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .8rem; }
+.ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .86rem; }
+.ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+
+.checkbox-row { display:flex; align-items:flex-start; gap:.6rem; margin-top:.9rem; font-size:.86rem; }
+.checkbox-row input { margin-top:.2rem; width:18px; height:18px; flex-shrink:0; }
+.checkbox-row label { line-height:1.4; }
+#extra-time-note { font-size:.78rem; color: var(--teal-text); margin-top:.3rem; display:none; }
+
+.submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
+.summary-row { border-bottom: 1px solid var(--border); padding: .65rem 0; font-size: .85rem; }
+.summary-row:last-child { border-bottom: none; }
+.summary-ex { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
+.summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .25rem; }
+.summary-a  { color: var(--text); white-space: pre-wrap; }
+
+.done-card { text-align:center; padding:36px 28px; }
+.done-card .big-icon { font-size:3.2rem; margin-bottom:14px; }
+.done-meta { font-size:.85rem; color:var(--muted); margin-top:10px; }
+
+body.exam-mode { -webkit-user-select: none; user-select: none; }
+body.exam-mode input, body.exam-mode textarea, body.exam-mode select { -webkit-user-select: text; user-select: text; }
+
+.lock-icon { font-size: 2.4rem; text-align:center; margin-bottom: .5rem; }
+
+@media (max-width: 480px) {
+  .ex-title { font-size: 1.2rem; }
+  .btn { padding: .65rem 1.1rem; }
+  .welcome-title { font-size: 1.35rem; }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1620;
+    --blue: #4a86c9;
+    --border: #28394d;
+    --card: #16212e;
+    --muted: #8a99aa;
+    --shadow: 0 2px 18px rgba(0,0,0,.45);
+    --text: #e7eef6;
+    --green-text: #7fe0a0;
+    --red-text:   #f3a3b0;
+    --teal-text:  #6fd3d0;
+  }
+}
+</style>
+<!-- HEAD:START — generated by scripts/build-head.js, do not edit by hand -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5HXNNPCS');</script>
+<!-- End Google Tag Manager -->
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#1a3a5c">
+<meta name="text-scale" content="scale">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EnglishOnline.training">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Class Test: 9A/9B — Grammar &amp; Literary Devices Review">
+<meta property="og:description" content="Online review test for classes 9A/9B: Year 8 grammar revision (gerund vs. infinitive, conditionals type 2 &amp; 3) plus literary devices, with full anti-cheat monitoring.">
+<meta property="og:url" content="https://activities.englishonline.training/9ab-grammar-literary-review-test.html">
+<meta property="og:image" content="https://activities.englishonline.training/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="englishonline.training — kostenlose interaktive Englisch-Übungen für Klasse 7–10, MSA, Abitur, Universität, Business und IT English">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@engontraining">
+<style id="eol-skip-style">.eol-skip{position:absolute;left:.5rem;top:-3rem;z-index:1000;background:var(--gold,#c9a227);color:#1a1a1a;font-weight:700;padding:.5rem 1rem;border-radius:8px;text-decoration:none;transition:top .2s;font-family:'Segoe UI',system-ui,sans-serif}.eol-skip:focus{top:.5rem}@media(prefers-reduced-motion:reduce){.eol-skip{transition:none}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["EducationalOrganization","LocalBusiness"],"@id":"https://englishonline.training/#organization","name":"EnglishOnline.training","url":"https://englishonline.training/"},{"@type":"Person","@id":"https://activities.englishonline.training/#shaun","name":"Shaun Trezise","url":"https://englishonline.training/"},{"@type":"WebSite","@id":"https://activities.englishonline.training/#website","url":"https://activities.englishonline.training/","name":"EnglishOnline.training — kostenlose Englisch-Übungen","description":"Free interactive English exercises with instant feedback, no sign-up required.","inLanguage":["en","de"],"publisher":{"@id":"https://englishonline.training/#organization"},"isAccessibleForFree":true},{"@type":"WebPage","@id":"https://activities.englishonline.training/9ab-grammar-literary-review-test.html#webpage","name":"Class Test: 9A/9B — Grammar &amp; Literary Devices Review","description":"Online review test for classes 9A/9B: Year 8 grammar revision (gerund vs. infinitive, conditionals type 2 &amp; 3) plus literary devices, with full anti-cheat monitoring.","url":"https://activities.englishonline.training/9ab-grammar-literary-review-test.html","inLanguage":"en","isPartOf":{"@id":"https://activities.englishonline.training/#website"},"publisher":{"@id":"https://englishonline.training/#organization"},"author":{"@id":"https://activities.englishonline.training/#shaun"},"isAccessibleForFree":true},{"@type":"BreadcrumbList","@id":"https://activities.englishonline.training/9ab-grammar-literary-review-test.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Übungen","item":"https://activities.englishonline.training/activities.html"},{"@type":"ListItem","position":2,"name":"Class Test: 9A/9B — Grammar &amp; Literary Devices Review","item":"https://activities.englishonline.training/9ab-grammar-literary-review-test.html"}]}]}</script>
+<!-- HEAD:END -->
+</head>
+<body>
+<!-- NOSCRIPT:START — generated by scripts/build-head.js, do not edit by hand -->
+<noscript>
+  <div style="background:#fdf3d8;border-bottom:2px solid #c9a227;color:#1d2b3a;padding:.9rem 1rem;font:1rem/1.5 'Segoe UI',system-ui,sans-serif;text-align:center">
+    <strong lang="de">Diese Übung braucht JavaScript.</strong>
+    <span lang="de">Bitte aktiviere JavaScript in deinem Browser — sonst bleiben die Aufgaben leer.</span>
+    <br>
+    <strong>This exercise needs JavaScript.</strong>
+    <span>Please switch JavaScript on in your browser, otherwise the tasks stay empty.</span>
+  </div>
+</noscript>
+<!-- NOSCRIPT:END -->
+<!-- SKIP:START — generated by scripts/build-head.js, do not edit by hand -->
+<a class="eol-skip" href="#main">Skip to content</a>
+<!-- SKIP:END -->
+<!-- GTM:START — generated by scripts/build-head.js, do not edit by hand -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HXNNPCS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- GTM:END -->
+<header class="app-header">
+  <div class="header-inner">
+    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
+    <div id="timer-wrap">
+      <span id="timer-label">Time left</span>
+      <span id="timer-display">60:00</span>
+    </div>
+    <div class="header-meta" id="header-meta" style="display:none">
+      <strong id="header-name"></strong>
+      <span id="header-step">Section 1 of 3</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+</header>
+
+<main id="main" role="main">
+<!-- ============ SCREEN 0: WELCOME / REGISTER ============ -->
+<div id="s-welcome" class="screen active">
+  <div class="step-inner">
+    <div class="welcome-hero">
+      <div class="welcome-flag">📝</div>
+      <h1 class="welcome-title">Class Test: 9A/9B — Grammar &amp; Literary Devices Review</h1>
+      <p class="welcome-sub">This test reviews two grammar points from Year 8 (gerund vs. infinitive; conditionals type 2 &amp; 3), plus a new topic: literary devices. It is monitored and timed — please read the rules carefully before you begin.</p>
+    </div>
+
+    <div class="exercise-overview">
+      <div class="ov-card"><div class="ov-icon">📚</div><strong>S1 — Gerund vs Infinitive</strong>10 points</div>
+      <div class="ov-card"><div class="ov-icon">🔀</div><strong>S2 — Conditionals II &amp; III</strong>10 points</div>
+      <div class="ov-card"><div class="ov-icon">🎭</div><strong>S3 — Literary Devices</strong>16 points</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Enter your details to begin</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-name">Your full name</label>
+        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inp-class">Your class</label>
+        <input class="form-input" type="text" id="inp-class" placeholder="e.g. 9A or 9B" autocomplete="off">
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="inp-extra-time">
+        <label for="inp-extra-time">I have approved extra time (+10%).</label>
+      </div>
+      <div id="extra-time-note"></div>
+      <div id="welcome-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="goLock()">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SCREEN 0b: RELEASE-CODE LOCK ============ -->
+<div id="s-lock" class="screen">
+  <div class="step-inner">
+    <div class="card">
+      <div class="lock-icon">🔒</div>
+      <div class="card-title" style="text-align:center">This test is locked</div>
+      <p style="font-size:.9rem;text-align:center;color:var(--muted);margin-bottom:1rem">Your teacher will give you a code in class when it's time to start. Enter it below to continue.</p>
+      <div class="form-group">
+        <label class="form-label" for="inp-code">Release code</label>
+        <input class="form-input" type="text" id="inp-code" placeholder="Enter the code your teacher gave you" autocomplete="off" spellcheck="false">
+      </div>
+      <div id="lock-error" class="feedback err"></div>
+      <button class="btn btn-gold btn-block" onclick="checkCode()">Unlock →</button>
+      <button class="btn btn-outline btn-block" onclick="show('s-welcome')" style="margin-top:.6rem">← Back</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SCREEN 1: RULES ============ -->
+<div id="s-rules" class="screen">
+  <div class="step-inner">
+    <div class="card">
+      <div class="card-title">📋 Test Rules — Please Read Carefully</div>
+      <p style="font-size:.9rem;margin-bottom:.5rem">The timer starts the moment you press <strong>Start Test</strong> below. It cannot be paused.</p>
+      <ul class="rule-list">
+        <li>⏱ You have <strong id="rules-time">60 minutes</strong> for all 3 sections. The test submits automatically when time runs out.</li>
+        <li class="red">🚫 <strong>Copy and paste is disabled.</strong> Right-click and browser developer tools are also blocked.</li>
+        <li class="red">🚫 <strong>Do not switch tabs or windows.</strong> Every switch is recorded and sent to your teacher.</li>
+        <li class="red">🚫 <strong>Do not use a translation tool or extension.</strong> This is an English test — unusual page activity is recorded and sent to your teacher.</li>
+        <li>✅ You can move freely between sections and submit early once you're happy with your answers.</li>
+        <li>🔒 Your session is monitored — tab switches, paste attempts and unusual typing patterns are logged and submitted with your test.</li>
+        <li>👤 Work alone and in silence, exactly as you would for the paper version of this test.</li>
+      </ul>
+      <div class="notice">⚠️ By clicking <strong>Start Test</strong> you confirm this is your own independent work, completed without help or AI/translation tools.</div>
+      <button class="btn btn-primary btn-block" onclick="startExam()">▶ Start Test — begin timer</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SCREEN 2: EXAM ============ -->
+<div id="s-exam" class="screen">
+  <div class="step-inner" style="padding-top:1rem">
+    <div id="alert-tab" class="alert alert-danger">⚠️ <strong>Tab switch detected.</strong> Please stay on this page — this has been logged.</div>
+    <div id="alert-paste" class="alert alert-warn">⛔ <strong>Paste blocked.</strong> Please type your answer.</div>
+    <div id="alert-devtools" class="alert alert-danger">⚠️ <strong>Developer tools may be open.</strong> This has been logged.</div>
+    <div id="alert-translate" class="alert alert-danger">⚠️ <strong>Unusual page activity detected</strong> (possible translation tool). This has been logged.</div>
+
+    <!-- STEP 1: GERUND VS INFINITIVE -->
+    <section id="step-1" class="step active">
+      <span class="ex-badge">Section 1 · 10 points</span>
+      <h2 class="ex-title">Grammar — Gerund vs. Infinitive</h2>
+      <p class="ex-subtitle">Complete each sentence with the correct form of the verb in brackets (gerund <em>-ing</em> or infinitive <em>to + verb</em>).</p>
+      <div class="card">
+        <div class="item-pool" id="pool-1">
+          <div class="numbered-item"><span class="item-num">1</span><div class="item-sentence">She avoids <input class="gap-input" type="text" id="s1-1" placeholder="(drive)"> in heavy traffic.</div></div>
+          <div class="numbered-item"><span class="item-num">2</span><div class="item-sentence">We hope <input class="gap-input" type="text" id="s1-2" placeholder="(visit)"> Italy next summer.</div></div>
+          <div class="numbered-item"><span class="item-num">3</span><div class="item-sentence">He admitted <input class="gap-input" type="text" id="s1-3" placeholder="(break)"> the window.</div></div>
+          <div class="numbered-item"><span class="item-num">4</span><div class="item-sentence">They promised <input class="gap-input" type="text" id="s1-4" placeholder="(help)"> us move house.</div></div>
+          <div class="numbered-item"><span class="item-num">5</span><div class="item-sentence">I can't stand <input class="gap-input" type="text" id="s1-5" placeholder="(wait)"> in long queues.</div></div>
+          <div class="numbered-item"><span class="item-num">6</span><div class="item-sentence">She managed <input class="gap-input" type="text" id="s1-6" placeholder="(finish)"> the marathon despite the rain.</div></div>
+          <div class="numbered-item"><span class="item-num">7</span><div class="item-sentence">He denied <input class="gap-input" type="text" id="s1-7" placeholder="(steal)"> the money.</div></div>
+          <div class="numbered-item"><span class="item-num">8</span><div class="item-sentence">We look forward to <input class="gap-input" type="text" id="s1-8" placeholder="(see)"> you again soon.</div></div>
+          <div class="numbered-item"><span class="item-num">9</span><div class="item-sentence">My brother refuses <input class="gap-input" type="text" id="s1-9" placeholder="(apologise)"> for what he said.</div></div>
+          <div class="numbered-item"><span class="item-num">10</span><div class="item-sentence">I enjoy <input class="gap-input" type="text" id="s1-10" placeholder="(listen)"> to podcasts on my way to school.</div></div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <span></span>
+        <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="goStep(2)">Continue to Section 2 →</button>
+      </div>
+    </section>
+
+    <!-- STEP 2: CONDITIONALS II & III -->
+    <section id="step-2" class="step">
+      <span class="ex-badge">Section 2 · 10 points</span>
+      <h2 class="ex-title">Grammar — Conditionals Type 2 &amp; 3</h2>
+      <p class="ex-subtitle">Complete each sentence with the correct form of the verb in brackets. Items 1–5 are type 2 (unreal present); items 6–10 are type 3 (unreal past).</p>
+      <div class="card">
+        <div class="item-pool" id="pool-2">
+          <div class="numbered-item"><span class="item-num">1</span><div class="item-sentence">If I <input class="gap-input" type="text" id="s2-1" placeholder="(win)"> the lottery, I would travel the world.</div></div>
+          <div class="numbered-item"><span class="item-num">2</span><div class="item-sentence">If she <input class="gap-input" type="text" id="s2-2" placeholder="(have)"> more time, she would learn another language.</div></div>
+          <div class="numbered-item"><span class="item-num">3</span><div class="item-sentence">If he were more confident, he <input class="gap-input" type="text" id="s2-3" placeholder="(ask)"> her out.</div></div>
+          <div class="numbered-item"><span class="item-num">4</span><div class="item-sentence">If we lived closer to the city, we <input class="gap-input" type="text" id="s2-4" placeholder="(go)"> out more often.</div></div>
+          <div class="numbered-item"><span class="item-num">5</span><div class="item-sentence">If they <input class="gap-input" type="text" id="s2-5" placeholder="(not / be)"> so busy, they would join us.</div></div>
+          <div class="numbered-item"><span class="item-num">6</span><div class="item-sentence">If I <input class="gap-input" type="text" id="s2-6" placeholder="(know)"> about the traffic, I would have left earlier.</div></div>
+          <div class="numbered-item"><span class="item-num">7</span><div class="item-sentence">If she had studied harder, she <input class="gap-input" type="text" id="s2-7" placeholder="(pass)"> the exam.</div></div>
+          <div class="numbered-item"><span class="item-num">8</span><div class="item-sentence">If we hadn't missed the bus, we <input class="gap-input" type="text" id="s2-8" placeholder="(arrive)"> on time.</div></div>
+          <div class="numbered-item"><span class="item-num">9</span><div class="item-sentence">If he had listened to the warning, the accident <input class="gap-input" type="text" id="s2-9" placeholder="(not / happen)">.</div></div>
+          <div class="numbered-item"><span class="item-num">10</span><div class="item-sentence">If they had booked earlier, the tickets <input class="gap-input" type="text" id="s2-10" placeholder="(be)"> cheaper.</div></div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-outline" onclick="goStep(1)">← Back</button>
+        <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="goStep(3)">Continue to Section 3 →</button>
+      </div>
+    </section>
+
+    <!-- STEP 3: LITERARY DEVICES -->
+    <section id="step-3" class="step">
+      <span class="ex-badge">Section 3 · 16 points</span>
+      <h2 class="ex-title">Literary Devices</h2>
+      <p class="ex-subtitle">Read each sentence and choose the literary device it uses.</p>
+      <div class="card">
+        <div class="item-pool" id="pool-3">
+          <div class="numbered-item"><span class="item-num">1</span><div class="item-quote">"The wind whispered through the trees."</div><select class="gap-select" id="s3-1"><option value="">choose</option><option>Simile</option><option>Metaphor</option><option>Personification</option><option>Alliteration</option><option>Hyperbole</option><option>Imagery</option><option>Symbolism</option><option>Irony</option></select></div>
+          <div class="numbered-item"><span class="item-num">2</span><div class="item-quote">"Her smile was a ray of sunshine."</div><select class="gap-select" id="s3-2"><option value="">choose</option><option>Simile</option><option>Metaphor</option><option>Personification</option><option>Alliteration</option><option>Hyperbole</option><option>Imagery</option><option>Symbolism</option><option>Irony</option></select></div>
+          <div class="numbered-item"><span class="item-num">3</span><div class="item-quote">"The classroom was as quiet as a graveyard."</div><select class="gap-select" id="s3-3"><option value="">choose</option><option>Simile</option><option>Metaphor</option><option>Personification</option><option>Alliteration</option><option>Hyperbole</option><option>Imagery</option><option>Symbolism</option><option>Irony</option></select></div>
+          <div class="numbered-item"><span class="item-num">4</span><div class="item-quote">"Peter Piper picked a peck of pickled peppers."</div><select class="gap-select" id="s3-4"><option value="">choose</option><option>Simile</option><option>Metaphor</option><option>Personification</option><option>Alliteration</option><option>Hyperbole</option><option>Imagery</option><option>Symbolism</option><option>Irony</option></select></div>
+          <div class="numbered-item"><span class="item-num">5</span><div class="item-quote">"I've told you a million times to clean your room."</div><select class="gap-select" id="s3-5"><option value="">choose</option><option>Simile</option><option>Metaphor</option><option>Personification</option><option>Alliteration</option><option>Hyperbole</option><option>Imagery</option><option>Symbolism</option><option>Irony</option></select></div>
+          <div class="numbered-item"><span class="item-num">6</span><div class="item-quote">"The dark clouds and howling wind warned of the storm to come."</div><select class="gap-select" id="s3-6"><option value="">choose</option><option>Simile</option><option>Metaphor</option><option>Personification</option><option>Alliteration</option><option>Hyperbole</option><option>Imagery</option><option>Symbolism</option><option>Irony</option></select></div>
+          <div class="numbered-item"><span class="item-num">7</span><div class="item-quote">"The white dove flew over the ceremony, a symbol of peace."</div><select class="gap-select" id="s3-7"><option value="">choose</option><option>Simile</option><option>Metaphor</option><option>Personification</option><option>Alliteration</option><option>Hyperbole</option><option>Imagery</option><option>Symbolism</option><option>Irony</option></select></div>
+          <div class="numbered-item"><span class="item-num">8</span><div class="item-quote">"The fire station burned down."</div><select class="gap-select" id="s3-8"><option value="">choose</option><option>Simile</option><option>Metaphor</option><option>Personification</option><option>Alliteration</option><option>Hyperbole</option><option>Imagery</option><option>Symbolism</option><option>Irony</option></select></div>
+          <div class="numbered-item"><span class="item-num">9</span><div class="item-quote">"The old house creaked and groaned as if it were alive."</div><select class="gap-select" id="s3-9"><option value="">choose</option><option>Simile</option><option>Metaphor</option><option>Personification</option><option>Alliteration</option><option>Hyperbole</option><option>Imagery</option><option>Symbolism</option><option>Irony</option></select></div>
+          <div class="numbered-item"><span class="item-num">10</span><div class="item-quote">"His heart was a block of ice."</div><select class="gap-select" id="s3-10"><option value="">choose</option><option>Simile</option><option>Metaphor</option><option>Personification</option><option>Alliteration</option><option>Hyperbole</option><option>Imagery</option><option>Symbolism</option><option>Irony</option></select></div>
+          <div class="numbered-item"><span class="item-num">11</span><div class="item-quote">"She ran like the wind."</div><select class="gap-select" id="s3-11"><option value="">choose</option><option>Simile</option><option>Metaphor</option><option>Personification</option><option>Alliteration</option><option>Hyperbole</option><option>Imagery</option><option>Symbolism</option><option>Irony</option></select></div>
+          <div class="numbered-item"><span class="item-num">12</span><div class="item-quote">"Five fat frogs flew past fast."</div><select class="gap-select" id="s3-12"><option value="">choose</option><option>Simile</option><option>Metaphor</option><option>Personification</option><option>Alliteration</option><option>Hyperbole</option><option>Imagery</option><option>Symbolism</option><option>Irony</option></select></div>
+          <div class="numbered-item"><span class="item-num">13</span><div class="item-quote">"I'm so hungry I could eat a horse."</div><select class="gap-select" id="s3-13"><option value="">choose</option><option>Simile</option><option>Metaphor</option><option>Personification</option><option>Alliteration</option><option>Hyperbole</option><option>Imagery</option><option>Symbolism</option><option>Irony</option></select></div>
+          <div class="numbered-item"><span class="item-num">14</span><div class="item-quote">"The smell of fresh bread filled the warm, cosy kitchen."</div><select class="gap-select" id="s3-14"><option value="">choose</option><option>Simile</option><option>Metaphor</option><option>Personification</option><option>Alliteration</option><option>Hyperbole</option><option>Imagery</option><option>Symbolism</option><option>Irony</option></select></div>
+          <div class="numbered-item"><span class="item-num">15</span><div class="item-quote">"The colour black in the story represents death and mourning."</div><select class="gap-select" id="s3-15"><option value="">choose</option><option>Simile</option><option>Metaphor</option><option>Personification</option><option>Alliteration</option><option>Hyperbole</option><option>Imagery</option><option>Symbolism</option><option>Irony</option></select></div>
+          <div class="numbered-item"><span class="item-num">16</span><div class="item-quote">"The marriage counsellor got divorced."</div><select class="gap-select" id="s3-16"><option value="">choose</option><option>Simile</option><option>Metaphor</option><option>Personification</option><option>Alliteration</option><option>Hyperbole</option><option>Imagery</option><option>Symbolism</option><option>Irony</option></select></div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-outline" onclick="goStep(2)">← Back</button>
+        <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="goReview()">Review &amp; Submit →</button>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ============ SCREEN 3: REVIEW ============ -->
+<div id="s-review" class="screen">
+  <div class="step-inner">
+    <div style="text-align:center;padding:1rem 0 1rem">
+      <div style="font-size:2.2rem;margin-bottom:.5rem">✅</div>
+      <h2 class="ex-title" style="text-align:center">All sections complete!</h2>
+      <p class="ex-subtitle" style="text-align:center;margin-bottom:0">Check your answers below, then submit your test. You can still go back and change anything before submitting.</p>
+    </div>
+    <div id="summary-container"></div>
+    <div class="card" style="text-align:center">
+      <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.1rem">Once you submit, your test is sent straight to your teacher and cannot be changed.</p>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:380px;font-size:1rem;padding:.85rem 2rem" onclick="doSubmit()">🚀 Submit Test</button>
+      <div id="submit-success" style="display:none;margin-top:1.1rem">
+        <div style="font-size:1.8rem;margin-bottom:.4rem">✅</div>
+        <p style="font-weight:700;color:var(--green-text,#1d7a42);font-size:1rem">Submitted successfully!</p>
+      </div>
+      <div id="submit-fallback" style="display:none;margin-top:1.1rem;border-top:1px solid var(--border);padding-top:1rem">
+        <p style="font-size:.8rem;color:var(--muted);margin-bottom:.6rem">If the submission didn't go through, use a backup:</p>
+        <button class="btn btn-outline btn-sm" onclick="submitByEmail()">✉️ Send by email</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:.5rem" onclick="copyAnswers()">📋 Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SCREEN 4: DONE ============ -->
+<div id="s-done" class="screen">
+  <div class="step-inner">
+    <div class="card done-card">
+      <div class="big-icon">✅</div>
+      <h2 class="ex-title" style="text-align:center">Test submitted</h2>
+      <p>Your answers have been sent to your teacher. You may close this page.</p>
+      <p class="done-meta" id="done-meta"></p>
+    </div>
+  </div>
+</div>
+</main>
+
+<script>
+/* ===================== CONFIG ===================== */
+var UNIT          = '9ab-grammar-literary-review-test';
+var SHEET_URL     = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj';
+var TEACHER_EMAIL = 'englishonlinetraining@pm.me';
+var TOTAL_STEPS   = 3;
+
+/* Soft timing gate only — this is NOT real security (visible in page source).
+   Its purpose is to stop a class starting before the teacher gives the word,
+   not to stop a determined student reading the source. Change this string
+   before each sitting if you want a fresh code. */
+var RELEASE_CODE  = 'REVIEW9AB2026';
+
+var BASE_EXAM_MINS = 60;
+var EXAM_MINS = BASE_EXAM_MINS;
+
+/* ===================== ANSWER KEYS (auto-graded sections) ===================== */
+var S1_KEY = {
+  1:'driving', 2:'to visit', 3:'breaking', 4:'to help', 5:'waiting',
+  6:'to finish', 7:'stealing', 8:'seeing', 9:'to apologise', 10:'listening'
+};
+var S2_KEY = {
+  1:'won', 2:'had', 3:'would ask', 4:'would go', 5:'weren\'t',
+  6:'had known', 7:'would have passed', 8:'would have arrived', 9:'wouldn\'t have happened', 10:'would have been'
+};
+var S3_KEY = {
+  1:'Personification', 2:'Metaphor', 3:'Simile', 4:'Alliteration', 5:'Hyperbole', 6:'Imagery', 7:'Symbolism', 8:'Irony',
+  9:'Personification', 10:'Metaphor', 11:'Simile', 12:'Alliteration', 13:'Hyperbole', 14:'Imagery', 15:'Symbolism', 16:'Irony'
+};
+
+/* ===================== STATE ===================== */
+var name='', cls='', extraTime=false, currentStep=1;
+var sid='', t0=null, tabN=0, pasteN=0, anomalyN=0, devToolsFlagged=false, translationFlagged=false, timerID=null;
+var snapshots=[];
+
+/* ===================== HELPERS ===================== */
+function g(id){ var el=document.getElementById(id); return el ? el.value.trim() : ''; }
+function esc(s){ var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
+function norm(s){ return (s||'').toLowerCase().replace(/['’]/g,'').replace(/\s+/g,' ').trim(); }
+
+/* ===================== NAVIGATION: WELCOME -> LOCK -> RULES -> EXAM ===================== */
+function show(id){ document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); }); document.getElementById(id).classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
+
+function goLock(){
+  name = g('inp-name'); cls = g('inp-class');
+  extraTime = document.getElementById('inp-extra-time').checked;
+  var err = document.getElementById('welcome-error');
+  if(!name || !cls){ err.textContent='Please enter both your name and your class.'; err.classList.add('show'); return; }
+  err.classList.remove('show');
+  EXAM_MINS = extraTime ? Math.round(BASE_EXAM_MINS * 1.1) : BASE_EXAM_MINS;
+  document.getElementById('rules-time').textContent = EXAM_MINS + ' minutes';
+  show('s-lock');
+}
+
+function checkCode(){
+  var code = g('inp-code');
+  var err = document.getElementById('lock-error');
+  if(code.toUpperCase() !== RELEASE_CODE.toUpperCase()){
+    err.textContent = 'That code is not correct. Ask your teacher for today\'s code.';
+    err.classList.add('show');
+    return;
+  }
+  err.classList.remove('show');
+  show('s-rules');
+}
+
+/* ===================== SEEDED SHUFFLE (per-student item order) ===================== */
+function seededRandom(seedStr){
+  var h = 0;
+  for (var i=0;i<seedStr.length;i++){ h = (h*31 + seedStr.charCodeAt(i)) >>> 0; }
+  return function(){ h = (h*1103515245 + 12345) >>> 0; return (h % 100000)/100000; };
+}
+function shuffleItemPools(rand){
+  document.querySelectorAll('.item-pool').forEach(function(container){
+    var items = Array.prototype.slice.call(container.children);
+    var idx = items.map(function(_,i){ return i; });
+    for (var i=idx.length-1;i>0;i--){ var j=Math.floor(rand()*(i+1)); var t=idx[i]; idx[i]=idx[j]; idx[j]=t; }
+    container.style.display = 'flex';
+    container.style.flexDirection = 'column';
+    items.forEach(function(el,i){ el.style.order = idx.indexOf(i); });
+  });
+}
+
+function startExam(){
+  sid = 'SID-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).substr(2,5).toUpperCase();
+  t0 = Date.now();
+  document.body.classList.add('exam-mode');
+  document.getElementById('header-meta').style.display='block';
+  document.getElementById('header-name').textContent = name + (cls ? ' — '+cls : '');
+  document.getElementById('timer-wrap').style.display='flex';
+  shuffleItemPools(seededRandom(name+'|'+cls));
+  show('s-exam');
+  goStep(1, true);
+  startTimer();
+  startTranslationWatch();
+  setInterval(snap, 3*60*1000);
+  setInterval(checkDevTools, 4000);
+  if(navigator.webdriver) anomalyN++;
+}
+
+/* ===================== EXAM STEP NAVIGATION ===================== */
+function goStep(n, isFirst){
+  if(!isFirst) {}
+  currentStep = n;
+  document.querySelectorAll('#s-exam .step').forEach(function(s){ s.classList.remove('active'); });
+  document.getElementById('step-'+n).classList.add('active');
+  document.getElementById('progress-fill').style.width = Math.round(n/TOTAL_STEPS*100)+'%';
+  document.getElementById('header-step').textContent = 'Section '+n+' of '+TOTAL_STEPS;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function goReview(){
+  buildSummary();
+  document.getElementById('header-meta').style.display='none';
+  show('s-review');
+}
+
+/* ===================== TIMER ===================== */
+function startTimer(){
+  timerID = setInterval(function(){
+    var rem = EXAM_MINS*60*1000 - (Date.now()-t0);
+    if(rem<=0){ clearInterval(timerID); document.getElementById('timer-display').textContent='00:00'; forceSubmit(); return; }
+    var m = Math.floor(rem/60000), s = Math.floor((rem%60000)/1000);
+    var td = document.getElementById('timer-display');
+    td.textContent = String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+    td.className = m<5 ? 'danger' : (m<10 ? 'warning' : '');
+  }, 500);
+}
+
+function forceSubmit(){
+  if(document.getElementById('s-done').classList.contains('active')) return;
+  buildSummary();
+  show('s-review');
+  doSubmit();
+}
+
+/* ===================== ANTI-CHEAT ===================== */
+document.addEventListener('visibilitychange', function(){ if(!t0) return; if(document.hidden){ tabN++; } else if(tabN>0) flash('alert-tab'); });
+window.addEventListener('blur', function(){ if(!t0) return; tabN++; });
+
+document.addEventListener('paste', function(e){
+  if(!t0) return;
+  var t = e.target;
+  if(t.tagName==='INPUT' || t.tagName==='TEXTAREA' || t.tagName==='SELECT'){ e.preventDefault(); pasteN++; flash('alert-paste'); }
+});
+document.addEventListener('copy', function(e){ if(!t0) return; e.preventDefault(); });
+document.addEventListener('keydown', function(e){
+  if(!t0) return;
+  if((e.ctrlKey||e.metaKey) && (e.key==='v'||e.key==='V')){ e.preventDefault(); pasteN++; flash('alert-paste'); }
+  if((e.ctrlKey||e.metaKey) && e.shiftKey && ['i','I','j','J'].indexOf(e.key)>-1) e.preventDefault();
+  if(e.key==='F12') e.preventDefault();
+  if((e.ctrlKey||e.metaKey) && (e.key==='u'||e.key==='U')) e.preventDefault();
+  if((e.ctrlKey||e.metaKey) && (e.key==='c'||e.key==='C') && ['INPUT','TEXTAREA'].indexOf(document.activeElement.tagName)===-1) e.preventDefault();
+});
+document.addEventListener('contextmenu', function(e){ if(t0) e.preventDefault(); });
+
+function checkDevTools(){
+  if(!t0 || devToolsFlagged) return;
+  if(window.outerWidth-window.innerWidth>160 || window.outerHeight-window.innerHeight>160){ devToolsFlagged=true; anomalyN++; flash('alert-devtools'); }
+}
+
+/* Translation-extension signal: a page can't detect or block a specific
+   extension, but most translation tools rewrite many text nodes in a burst.
+   This is a heuristic signal for the teacher to review, not a block. */
+function startTranslationWatch(){
+  var burst = 0, burstTimer = null;
+  var observer = new MutationObserver(function(mutations){
+    if(translationFlagged) return;
+    var count = 0;
+    mutations.forEach(function(m){
+      if(m.type==='characterData') count++;
+      else if(m.type==='childList') count += m.addedNodes.length + m.removedNodes.length;
+    });
+    burst += count;
+    if(burstTimer) clearTimeout(burstTimer);
+    burstTimer = setTimeout(function(){ burst = 0; }, 2000);
+    if(burst > 25){
+      translationFlagged = true;
+      anomalyN++;
+      flash('alert-translate');
+    }
+  });
+  var exam = document.getElementById('s-exam');
+  if(exam) observer.observe(exam, { subtree:true, childList:true, characterData:true });
+}
+
+document.addEventListener('input', function(e){
+  if(!t0) return;
+  var t = e.target;
+  if(t.tagName!=='INPUT' && t.tagName!=='TEXTAREA') return;
+  var now = Date.now();
+  var len = t.value.length;
+  var prevLen = parseInt(t.dataset.prevLen||'0',10);
+  var prevT = parseInt(t.dataset.prevT||now,10);
+  var diff = len-prevLen, dt = now-prevT;
+  if(diff>60 && dt<500) anomalyN++;
+  t.dataset.prevLen = len;
+  t.dataset.prevT = now;
+});
+
+function flash(id){ var el=document.getElementById(id); el.classList.add('show'); setTimeout(function(){ el.classList.remove('show'); }, 6000); }
+function snap(){ if(t0) snapshots.push({ t: Math.round((Date.now()-t0)/1000), step: currentStep }); }
+
+/* ===================== COLLECT ANSWERS ===================== */
+function collect(){
+  var s1={}, s2={}, s3={}, i;
+  for(i=1;i<=10;i++) s1[i]=g('s1-'+i);
+  for(i=1;i<=10;i++) s2[i]=g('s2-'+i);
+  for(i=1;i<=16;i++) s3[i]=g('s3-'+i);
+  return {s1:s1,s2:s2,s3:s3};
+}
+
+/* ===================== AUTO-GRADING ===================== */
+function gradeAll(ans){
+  var score=0, max=36, details={}, i;
+
+  var s1pts=0; for(i=1;i<=10;i++){ if(norm(ans.s1[i])===norm(S1_KEY[i])) s1pts++; } details.s1=s1pts; score+=s1pts;
+  var s2pts=0; for(i=1;i<=10;i++){
+    var given = norm(ans.s2[i]);
+    var key = norm(S2_KEY[i]);
+    var ok = given===key || (i===5 && given==='were not') || (i===9 && given==='would not have happened');
+    if(ok) s2pts++;
+  } details.s2=s2pts; score+=s2pts;
+  var s3pts=0; for(i=1;i<=16;i++){ if((ans.s3[i]||'')===S3_KEY[i]) s3pts++; } details.s3=s3pts; score+=s3pts;
+
+  return { score:score, max:max, details:details, manualMax:0 };
+}
+
+/* ===================== SUMMARY (shown to student, no correctness revealed) ===================== */
+function buildSummary(){
+  var ans = collect();
+  var rows = [];
+  var i;
+  for(i=1;i<=10;i++) rows.push({ ex:'Section 1', q:'Gerund/Infinitive '+i, a: ans.s1[i] });
+  for(i=1;i<=10;i++) rows.push({ ex:'Section 2', q:'Conditional '+i, a: ans.s2[i] });
+  for(i=1;i<=16;i++) rows.push({ ex:'Section 3', q:'Literary device '+i, a: ans.s3[i] });
+
+  var html = '<div class="submit-summary">'
+    + '<div class="summary-row"><div class="summary-ex">Student</div><div class="summary-q">'+esc(name)+' — '+esc(cls)+'</div></div>';
+  rows.forEach(function(r){
+    html += '<div class="summary-row"><div class="summary-ex">'+esc(r.ex)+'</div><div class="summary-q">'+esc(r.q)+'</div><div class="summary-a">'+esc(r.a || '(no answer)')+'</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('summary-container').innerHTML = html;
+}
+
+/* ===================== SUBMIT ===================== */
+var lastPayload = null;
+
+function eolFlat(o){
+  if(o==null) return '';
+  var keys = Object.keys(o);
+  return keys.map(function(k){
+    var v = o[k];
+    if(Array.isArray(v)) v = v.join(',');
+    return k+': '+(v===''||v==null?'—':v);
+  }).join(' | ');
+}
+
+function doSubmit(){
+  var btn = document.getElementById('submit-btn');
+  if(btn){ btn.disabled = true; btn.textContent = 'Sending...'; }
+  snap();
+  var ans = collect();
+  var grade = gradeAll(ans);
+  var elapsed = Math.round((Date.now()-t0)/1000);
+  var m = Math.floor(elapsed/60), s = elapsed%60;
+
+  var payload = {
+    name: name, cls: cls, unit: UNIT,
+    extra_time: extraTime,
+    ex1: eolFlat(ans.s1),
+    ex2: eolFlat(ans.s2),
+    ex3: eolFlat(ans.s3),
+    ex4: 'AUTO-GRADE '+grade.score+'/'+grade.max+' — breakdown: Gerund/Infinitive '+grade.details.s1+'/10, Conditionals II & III '+grade.details.s2+'/10, Literary Devices '+grade.details.s3+'/16',
+    ex5: 'INTEGRITY session='+sid+' time='+m+'m'+s+'s tab_switches='+tabN+' paste_attempts='+pasteN+' typing_anomalies='+anomalyN+' devtools_flagged='+devToolsFlagged+' translation_flagged='+translationFlagged
+  };
+  lastPayload = payload;
+
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+  }).then(function(){
+    finishSubmit(elapsed);
+  }).catch(function(){
+    if(btn){ btn.disabled=false; btn.textContent='🚀 Submit Test'; }
+    document.getElementById('submit-fallback').style.display='block';
+  });
+}
+
+function finishSubmit(elapsed){
+  clearInterval(timerID);
+  document.getElementById('timer-wrap').style.display='none';
+  document.body.classList.remove('exam-mode');
+  var m = Math.floor(elapsed/60), s = elapsed%60;
+  document.getElementById('done-meta').textContent = 'Time used: '+m+'m '+s+'s · Session: '+sid;
+  show('s-done');
+}
+
+function buildEmailBody(){
+  if(!lastPayload) doSubmit();
+  var p = lastPayload;
+  return 'Class Test: 9A/9B — Grammar & Literary Devices Review\nStudent: '+name+'\nClass: '+cls+'\nDate: '+new Date().toLocaleDateString('en-GB')
+    + '\n\nFull answers were collected on screen — please ask the student to use the Copy to Clipboard backup if this email is incomplete.';
+}
+
+function submitByEmail(){
+  var a = document.createElement('a');
+  a.href = 'mailto:'+TEACHER_EMAIL+'?subject='+encodeURIComponent('9A/9B Review Test — '+name+' — '+cls)+'&body='+encodeURIComponent(JSON.stringify(lastPayload||collect(), null, 2));
+  a.style.display='none'; document.body.appendChild(a); a.click();
+  setTimeout(function(){ document.body.removeChild(a); }, 100);
+}
+
+function copyAnswers(){
+  var txt = JSON.stringify(lastPayload || collect(), null, 2);
+  navigator.clipboard.writeText(txt).then(function(){ alert('Answers copied! Paste them into an email to your teacher.'); }).catch(function(){ prompt('Copy this text:', txt); });
+}
+
+/* ===================== INIT ===================== */
+document.addEventListener('DOMContentLoaded', function(){
+  show('s-welcome');
+  document.getElementById('inp-extra-time').addEventListener('change', function(){
+    var note = document.getElementById('extra-time-note');
+    if(this.checked){ note.textContent = 'Your test time will be extended by 10%.'; note.style.display='block'; }
+    else { note.style.display='none'; }
+  });
+});
+</script>
+
+</body>
+</html>
