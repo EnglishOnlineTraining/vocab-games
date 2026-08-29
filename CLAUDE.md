@@ -728,14 +728,15 @@ Two proctored, teacher-released online tests, built on the `9g-class-test-9ab.ht
 (self-contained, not the shared `exercise.js` framework) rather than as ordinary graded exercises:
 
 - **`9ab-grammar-literary-review-test.html`** — combined test for classes 9A and 9B (both
-  Gymnasium). Reviews Year 8 Gymnasium grammar (gerunds/infinitives, modals of obligation,
-  relative clauses, present/past perfect progressive, question tags, conditionals I & II) plus a
-  new literary-devices section (the core 8 terms). 52 points total (46 auto-graded, 6 — the
-  relative-clause section — need manual marking, same as the precedent's Section 2).
-- **`10a-grammar-literary-review-test.html`** — test for class 10A (Gymnasium). Reviews just two
-  Year 9 grammar points, at Shaun's request (gerund vs. infinitive; conditionals type 2 & 3) plus
-  a wider literary-devices section (the core 8 terms + allusion, oxymoron, juxtaposition — 11
-  terms). 42 points, fully auto-graded.
+  Gymnasium). Reviews what these classes actually covered in **Year 8** — gerund vs. infinitive
+  and conditionals type 2 & 3 (corrected twice by Shaun; the generic 8g topic-pool list originally
+  assumed for this test was wrong) — plus a new literary-devices section (the core 8 terms). 36
+  points, fully auto-graded.
+- **`10a-grammar-literary-review-test.html`** — test for class 10A (Gymnasium). Reviews what this
+  class actually covered in **Year 9** — passive voice and simple past vs. present perfect
+  (likewise corrected; not the gerund/infinitive + conditionals content, which belongs to 9A/9B)
+  — plus a wider literary-devices section (the core 8 terms + allusion, oxymoron, juxtaposition —
+  11 terms). 42 points, fully auto-graded.
 - **`9ab-grammar-literary-review-vocab.html`** / **`10a-grammar-literary-review-vocab.html`** —
   ungated, untimed flip-card practice pages listing exactly the literary-device terms each test
   covers (8 and 11 respectively), for students to self-study before the test. No anti-cheat, no
