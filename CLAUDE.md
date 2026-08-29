@@ -722,6 +722,59 @@ and `availableLanguage` is not an `Organization` property (`knowsLanguage` is).
 
 ---
 
+## Class review tests — 9A/9B and 10A (added 2026-08-29)
+
+Two proctored, teacher-released online tests, built on the `9g-class-test-9ab.html` pattern
+(self-contained, not the shared `exercise.js` framework) rather than as ordinary graded exercises:
+
+- **`9ab-grammar-literary-review-test.html`** — combined test for classes 9A and 9B (both
+  Gymnasium). Reviews Year 8 Gymnasium grammar (gerunds/infinitives, modals of obligation,
+  relative clauses, present/past perfect progressive, question tags, conditionals I & II) plus a
+  new literary-devices section (the core 8 terms). 52 points total (46 auto-graded, 6 — the
+  relative-clause section — need manual marking, same as the precedent's Section 2).
+- **`10a-grammar-literary-review-test.html`** — test for class 10A (Gymnasium). Reviews just two
+  Year 9 grammar points, at Shaun's request (gerund vs. infinitive; conditionals type 2 & 3) plus
+  a wider literary-devices section (the core 8 terms + allusion, oxymoron, juxtaposition — 11
+  terms). 42 points, fully auto-graded.
+- **`9ab-grammar-literary-review-vocab.html`** / **`10a-grammar-literary-review-vocab.html`** —
+  ungated, untimed flip-card practice pages listing exactly the literary-device terms each test
+  covers (8 and 11 respectively), for students to self-study before the test. No anti-cheat, no
+  submission, freely repeatable.
+
+**All four pages are deliberately unlisted** — not linked from `activities.html`, any
+`*-activities.html` hub, or the sitemap. They don't load `exercise.js`, so `build-exercise-data.js`
+doesn't pick them up either (confirmed: a full `node scripts/build.js` run left them out of
+`data/exercises.json`/`activities.html`/`sitemap.xml` entirely, touching only the four files' own
+generated `<head>` blocks). Share the direct URLs with each class rather than adding hub cards,
+unless Shaun asks to make them public later.
+
+**New pattern: the release-code gate.** A screen between Welcome and Rules
+(`var RELEASE_CODE = '...'` near the top of each `<script>`) requires a code before the test can
+start. This is a **soft timing gate, not real security** — the code is visible in page source —
+its job is only to stop a class starting before the teacher says so. Change the string and it's a
+fresh code for the next sitting; no redeploy needed otherwise. Worth reusing verbatim for any
+future timed class test.
+
+**New pattern: extra-time accommodation.** A "+10%" checkbox on the Welcome screen scales
+`EXAM_MINS` by 1.1 (rounded) before the timer starts, and adds `extra_time: true/false` to the
+submission payload — landing as its own Excel column via the universal Make-handler behaviour
+described above, so Shaun has a plain record of who used it. Self-declared, same trust model as
+the rest of the anti-cheat suite.
+
+**New anti-cheat signal: translation-tool heuristic.** A page's JS can't detect or block a
+specific browser extension — there's no API for that. Both new test pages add
+`<meta name="google" content="notranslate">` + `translate="no"` (suppresses Chrome/Edge's
+*built-in* translate prompt) and a `MutationObserver` on the exam container that flags
+`translation_flagged` in the integrity payload if it sees a burst of bulk text-node rewrites
+(what translation extensions typically do) — a signal for the teacher to review, not a block,
+consistent with how tab-switching is already handled.
+
+Both test pages verified end-to-end with Playwright (release-code gate, timer, extra-time scaling,
+paste/tab-switch/devtools/translation anti-cheat signals, per-student seeded item shuffling, full
+answer-key grading) with the Make webhook intercepted so no real submission was ever sent.
+
+---
+
 ## Unified breadcrumb + footer (site chrome, added 2026-08-05)
 
 `exercise.js` injects a **breadcrumb** (Übungen › Jahrgang/Schulart or MSA/Uni/IT/Business › page title, derived from the filename prefix + `.welcome-title`) below the sticky `app-header`, and a **unified footer** (section nav: Alle Übungen · Grammatik-Themen · Universität · Business · IT · Kontakt; legal: Zur Website · Impressum · Datenschutz) at the end of `<body>` — on all 167 framework pages, with **zero per-page edits** (`eolInjectChrome` on `DOMContentLoaded`). Styles are self-contained (injected `<style id="eol-chrome-style">` with `var(--token, fallback)`) so they render even on the framework pages that don't load `style.css`. Guarded against double-injection by element id. `activities.html` carries a matching footer (`.site-footer-nav` + legal line). The per-year hub pages and `themen/` pages keep their own existing footers/back-links.
