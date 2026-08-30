@@ -1,0 +1,30 @@
+[
+  {
+    "id": "endpoint-invalid:uni-al-munir-relationships.html",
+    "owner": "shaun",
+    "reason": "SHEET_URL is still the template placeholder because no Apps Script deployment exists for this page yet. Real, not cosmetic: a student who completes all six steps sees 'Submission failed' and loses their work. Unblocking it needs the /exec URL of a university Apps Script deployment, which only Shaun can create. Either paste it in, or unlink the page from uni-activities.html so nobody starts it.",
+    "firstSeen": "2026-08-30",
+    "review": "2026-09-30"
+  },
+  {
+    "id": "placeholder-left:uni-al-munir-relationships.html:PASTE_AUDIO_URL_HERE",
+    "owner": "shaun",
+    "reason": "The Listening Task in step-2 points at PASTE_AUDIO_URL_HERE.mp3, so the audio element is dead. Needs the real hosted audio file URL. Same page, same decision as the endpoint above.",
+    "firstSeen": "2026-08-30",
+    "review": "2026-09-30"
+  },
+  {
+    "id": "apps-script-formula-injection:apps-script.gs:universal",
+    "owner": "shaun",
+    "reason": "routeSubmission() writes student answers to the sheet with appendRow() and no neutralisation, so an answer beginning = + - or @ is evaluated as a formula when the teacher opens the sheet (=IMPORTXML(...) can read neighbouring cells and call out). Baselined rather than fixed because the fix is only half a code change: apps-script.gs is the canonical copy, but it has to be pasted into BOTH sheet scripts and redeployed as a new version before anything changes in practice, and only Shaun can do that. Proposed fix: a safe(v) helper that returns typeof v === 'string' && /^[=+\\-@]/.test(v) ? \"'\" + v : v, applied to every user-controlled value in both the custom layouts and the universal handler. Low severity in practice — only the teacher opens these sheets — but it is a real injection path and the fix is a few lines.",
+    "firstSeen": "2026-08-30",
+    "review": "2026-09-30"
+  },
+  {
+    "id": "apps-script-formula-injection:apps-script.gs:custom-layout",
+    "owner": "shaun",
+    "reason": "Same defect on the bespoke column layouts (california-exercises, california-hazards and the other TAB_NAMES entries). Same fix, same redeploy, same review date — kept as its own entry so that fixing one path does not silently baseline the other.",
+    "firstSeen": "2026-08-30",
+    "review": "2026-09-30"
+  }
+]

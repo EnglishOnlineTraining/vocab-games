@@ -96,6 +96,21 @@ const NODES = [
              'data/explanations.json'],
     outputs: ['*.html', 'themen/*.html'],
   },
+  {
+    id: 'inventory',
+    run: 'scripts/inventory.js',
+    // Describes the finished pages, so it has to see them finished: build-head
+    // is the last writer of *.html, and the "Auf einen Blick" block it emits is
+    // part of what this reads. A real data edge, not an ordering hint.
+    //
+    // It was outside the graph until 2026-08-30, which meant docs/INVENTORY.md
+    // was regenerated only when someone remembered — the same staleness that let
+    // five review pages drift. docs/inventory.json is now what the activities
+    // test suite drives from, so it cannot be allowed to lag the corpus.
+    needs: ['head'],
+    inputs: ['*.html'],
+    outputs: ['docs/INVENTORY.md', 'docs/inventory.json'],
+  },
 ];
 
 // Validators: leaf nodes with no outputs. All three read authored, committed
@@ -125,9 +140,15 @@ const VALIDATORS = [
 //                            inline <script> (the EXPLAIN block) — run before
 //                            the build it would be parsing the previous run's
 //                            output, exactly the trap described above.
+//   check-activities.js      the static layer of the activities test suite. Here
+//                            rather than in VALIDATORS for two reasons: it reads
+//                            docs/inventory.json, which the `inventory` node only
+//                            writes at the end of the build, and it inspects the
+//                            finished markup of every page.
 const CHECKERS = [
   { id: 'validate-schema', run: 'scripts/validate-schema.js' },
   { id: 'check-syntax', run: 'scripts/check-syntax.js' },
+  { id: 'check-activities', run: 'scripts/check-activities.js' },
 ];
 
 // Generators deliberately left outside the graph. Their inputs change roughly

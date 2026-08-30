@@ -1,7 +1,33 @@
-/* Build docs/INVENTORY.md by extracting metadata from every .html file. */
+/*
+ * inventory.js — describe every .html file in the repo, for humans and for tests.
+ *
+ * Writes two things from one parse:
+ *   docs/INVENTORY.md    the readable table (unchanged in shape)
+ *   docs/inventory.json  the machine-readable inventory the test suite drives from
+ *
+ * WHY THE JSON EXISTS
+ * The activities test suite needs to know, per page, which contract applies to it —
+ * a hub is not an exercise, a free-text page is not gradable, an Abitur pack is a
+ * different architecture entirely. Deriving that here rather than stamping
+ * data-* attributes onto ~187 pages keeps one parser as the single source of truth,
+ * and means the classification cannot drift away from what the page actually
+ * declares. See docs/activities-test-suite-spec.md §2.
+ *
+ * CLASSIFY ON WHAT THE PAGE DECLARES, NOT ITS FILENAME.
+ * Prefix-based classification has already failed in this repo once — hence
+ * LEGACY_UNPREFIXED in build-exercise-data.js. A page is an exercise because it
+ * declares UNIT and TOTAL_STEPS, not because it is called 9g-something.
+ *
+ * Concretely: grammar-activities.html and esl-grammar-activities.html load
+ * exercise.js purely for the shared chrome and are not exercises. The `isHub`
+ * filename test below already excluded them by luck — both happen to end in
+ * "activities.html" — but a classifier keyed on "loads exercise.js" would not,
+ * so the declaration test is what this relies on now.
+ */
 const fs = require('fs');
 const path = require('path');
-const ROOT = '/home/user/vocab-games';
+// Not a hardcoded absolute path: this runs in CI from a different checkout.
+const ROOT = path.join(__dirname, '..');
 
 const files = fs.readdirSync(ROOT).filter(f => f.endsWith('.html')).sort();
 
@@ -25,6 +51,44 @@ function schoolFromPrefix(f) {
   return ['—', '—'];
 }
 
+/* ---- derived classification (see the header note) ---------------------- */
+
+/* Which backend a page submits to, from the host of its SHEET_URL.
+   'invalid' is the interesting one: it means the page declares an endpoint that
+   is not a usable https URL on the allowlist — an unreplaced template
+   placeholder, say — so its students' work goes nowhere. */
+const ENDPOINT_HOSTS = {
+  'hook.eu1.make.com': 'make',
+  'script.google.com': 'apps-script',
+};
+function submissionTypeOf(src) {
+  const m = src.match(/(?:var|const|let)\s+SHEET_URL\s*=\s*['"]([^'"]*)['"]/);
+  if (!m) return 'none';
+  let url;
+  try { url = new URL(m[1]); } catch (e) { return 'invalid'; }
+  if (url.protocol !== 'https:') return 'invalid';
+  return ENDPOINT_HOSTS[url.hostname] || 'invalid';
+}
+
+/* How the page's answer key is stored. Never in the DOM: it is inline JS, either
+   a literal object in the checkDropdowns call or a named variable the call
+   refers to. scripts/extract-graded.js resolves both — this only records which
+   road the test harness has to take. */
+function answerKeyTypeOf(src) {
+  if (/checkDropdowns(Multi)?\s*\(/.test(src)) return 'dropdowns';
+  if (/function\s+checkEx\w*\s*\(/.test(src)) return 'bespoke';
+  return 'none';
+}
+
+function architectureOf(f, src, isFrameworkExercise) {
+  if (/^_/.test(f)) return 'template';
+  if (/activities\.html$/.test(f)) return 'hub';
+  if (/^lead-/.test(f)) return 'lead';
+  if (/^abitur-/.test(f)) return 'abitur';
+  if (isFrameworkExercise) return 'framework';
+  return 'standalone';
+}
+
 // Gather hub links to detect orphans.
 const hubFiles = files.filter(f => /activities\.html$/.test(f) || f === 'activities.html');
 const linked = new Set();
@@ -46,8 +110,10 @@ files.forEach(f => {
   const isTemplate = /^_/.test(f);
   const usesFramework = /exercise\.js/.test(s);
   const [year, school] = schoolFromPrefix(f);
-  const unit = m1(/var\s+UNIT\s*=\s*['"]([^'"]+)['"]/, s);
-  const totalSteps = m1(/var\s+TOTAL_STEPS\s*=\s*(\d+)/, s);
+  // var|const|let, not var alone: 2 pages declare `const UNIT` and several
+  // `const TOTAL_STEPS`. Matching only `var` silently dropped them.
+  const unit = m1(/(?:var|const|let)\s+UNIT\s*=\s*['"]([^'"]+)['"]/, s);
+  const totalSteps = m1(/(?:var|const|let)\s+TOTAL_STEPS\s*=\s*(\d+)/, s);
   const msa = /GRADE_SYSTEM\s*=\s*['"]msa['"]/.test(s);
   const h1 = decode(m1(/<h1[^>]*class="welcome-title"[^>]*>([\s\S]*?)<\/h1>/i, s))
           || decode(m1(/<h1[^>]*>([\s\S]*?)<\/h1>/i, s));
@@ -68,9 +134,24 @@ files.forEach(f => {
   }
   let exTitles = grabTitles('ex-title', 'h2');
   if (exTitles.length === 0) exTitles = grabTitles('card-title', 'div');   // IT/BE variant
+
+  // A framework exercise declares its own identity. Loading exercise.js is not
+  // enough — the two grammar hubs do that for the chrome alone.
+  const isFrameworkExercise = usesFramework && !isHub && !isTemplate && !!unit && !!totalSteps;
+  const answerKeyType = answerKeyTypeOf(s);
+
   const row = { f, title, year, school, unit, totalSteps, msa, h1, exTitles,
-                orphan: usesFramework && !isHub && !isTemplate && !linked.has(f) };
-  if (usesFramework && !isHub) exercisePages.push(row);
+                orphan: usesFramework && !isHub && !isTemplate && !linked.has(f),
+                // ---- derived fields, mirrored into docs/inventory.json ----
+                architecture: architectureOf(f, s, isFrameworkExercise),
+                generated: /-review\.html$/.test(f) || /^quiz-/.test(f),
+                gradeSystem: isFrameworkExercise ? (msa ? 'msa' : 'default') : null,
+                submissionType: submissionTypeOf(s),
+                answerKeyType,
+                gradable: answerKeyType !== 'none',
+                lang: m1(/<html[^>]*\blang="([^"]+)"/i, s) || '',
+                linked: linked.has(f) };
+  if (isFrameworkExercise) exercisePages.push(row);
   else otherPages.push(Object.assign(row, { isHub, isLead, isTemplate }));
 });
 
@@ -111,6 +192,36 @@ rest.forEach(h => md += `- \`${h.f}\` — ${h.title || '(no title)'}${h.isTempla
 
 fs.mkdirSync(path.join(ROOT, 'docs'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'docs', 'INVENTORY.md'), md);
-console.log('Wrote docs/INVENTORY.md');
+
+/* ---- machine-readable inventory ---------------------------------------
+   Consumed by scripts/check-activities.js and, later, the Playwright layer.
+   Key order is fixed and `files` is already sorted, so two builds of an
+   unchanged tree produce a byte-identical file — which is what lets
+   `node scripts/build.js --check` police it. */
+const inventory = files.map(f => {
+  const r = exercisePages.concat(otherPages).find(x => x.f === f);
+  return {
+    file: r.f,
+    architecture: r.architecture,
+    generated: r.generated,
+    unit: r.unit || null,
+    totalSteps: r.totalSteps ? parseInt(r.totalSteps, 10) : null,
+    gradeSystem: r.gradeSystem,
+    submissionType: r.submissionType,
+    answerKeyType: r.answerKeyType,
+    gradable: r.gradable,
+    lang: r.lang,
+    linked: r.linked,
+    title: r.title || r.h1 || '',
+  };
+});
+fs.writeFileSync(path.join(ROOT, 'docs', 'inventory.json'),
+                 JSON.stringify(inventory, null, 2) + '\n');
+
+console.log('Wrote docs/INVENTORY.md and docs/inventory.json');
 console.log('exercise pages:', exercisePages.length, '| hubs:', hubs.length,
             '| leads:', leads.length, '| other:', rest.length, '| orphans:', orphans.length);
+const byArch = {};
+inventory.forEach(e => { byArch[e.architecture] = (byArch[e.architecture] || 0) + 1; });
+console.log('by architecture:', Object.keys(byArch).sort()
+  .map(k => k + '=' + byArch[k]).join(' '));
