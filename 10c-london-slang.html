@@ -184,8 +184,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
+      <div id="step1-error" class="feedback err"></div>
       <div id="step1-fb" class="feedback" style="margin-top:1.5rem"></div>
-      <button class="btn btn-gold btn-block" onclick="checkExA()" style="margin-top:1.5rem">Check Answers</button>
+      <div class="btn-row">
+        <button class="btn btn-outline" onclick="prevStep(1)">&larr; Back</button>
+        <button class="btn btn-gold btn-sm" onclick="checkExA()">&#10003; Check</button>
+        <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(1)">Continue to Exercise B &rarr;</button>
+      </div>
     </div>
   </div>
 </section>
@@ -249,8 +254,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </select>
       </div>
 
+      <div id="step2-error" class="feedback err"></div>
       <div id="step2-fb" class="feedback" style="margin-top:1.5rem"></div>
-      <button class="btn btn-gold btn-block" onclick="checkExB()" style="margin-top:1.5rem">Check Answers</button>
+      <div class="btn-row">
+        <button class="btn btn-outline" onclick="prevStep(2)">&larr; Back</button>
+        <button class="btn btn-gold btn-sm" onclick="checkExB()">&#10003; Check</button>
+        <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="nextStep(2)">Continue to Exercise C &rarr;</button>
+      </div>
     </div>
   </div>
 </section>
@@ -285,7 +295,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span id="word-count">0</span> / 150 words
       </p>
 
+      <!-- Deliberately NOT #step3-error: nextStep() overwrites that id with a generic
+           "answer the required questions" line, which reads wrongly for a writing task.
+           Own id, own message, set by validateStep. -->
+      <div id="exC-lengthwarn" class="feedback err"></div>
       <div id="step3-fb" class="feedback" style="margin-top:1rem"></div>
+      <div class="btn-row">
+        <button class="btn btn-outline" onclick="prevStep(3)">&larr; Back</button>
+        <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="nextStep(3)">Review &amp; Submit &rarr;</button>
+      </div>
     </div>
   </div>
 </section>
@@ -300,12 +318,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="ex-subtitle">Check your answers before submitting.</p>
 
     <div class="card">
-      <div id="score-container" style="margin-bottom:1.5rem"></div>
+      <div id="score-display" style="display:none;margin-bottom:1.5rem"></div>
       <div id="summary-container"></div>
     </div>
 
     <div class="card" style="margin-top:1rem">
-      <button class="btn btn-gold btn-block" onclick="submitAnswers()" style="margin-bottom:.75rem">Submit Answers</button>
+      <button class="btn btn-gold btn-block" id="submit-btn" onclick="submitToSheet()" style="margin-bottom:.75rem">Submit Answers</button>
       <button class="btn btn-outline btn-block" onclick="showStep(3)">← Back to Exercise C</button>
 
       <div id="submit-status" class="feedback" style="margin-top:1.5rem;display:none"></div>
@@ -328,7 +346,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="exercise.js"></script>
 <script>
 var UNIT          = '10c-london-slang';
-var TOTAL_STEPS   = 5;
+var TOTAL_STEPS   = 4;
 var SHEET_URL     = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj';
 var TEACHER_EMAIL = 'englishonlinetraining@pm.me';
 
@@ -348,23 +366,21 @@ function validateStep(n) {
       var q1 = document.querySelector('input[name="exA-q1"]:checked');
       var q2 = document.querySelector('input[name="exA-q2"]:checked');
       var q3 = document.querySelector('input[name="exA-q3"]:checked');
-      if (!q1 || !q2 || !q3) {
-        showMsg('Please answer all three questions.', 'err');
-        return false;
-      }
-      return true;
+      return !!(q1 && q2 && q3);
     case 2:
-      if (!val('exB-g1') || !val('exB-g2') || !val('exB-g3') || !val('exB-g4')) {
-        showMsg('Please complete all four vocabulary matches.', 'err');
-        return false;
-      }
-      return true;
+      return val('exB-g1') && val('exB-g2') && val('exB-g3') && val('exB-g4');
     case 3:
-      var txt = val('exC-response').trim();
-      if (!txt || txt.split(/\s+/).length < 50) {
-        showMsg('Please write at least 50 words in your response.', 'err');
+      var warn = document.getElementById('exC-lengthwarn');
+      var words = countWords(g('exC-response'));
+      if (words < 100) {
+        warn.textContent = words === 0
+          ? 'Please write your response before continuing — the task asks for 100–150 words.'
+          : 'That is only ' + words + ' words. Write at least 100 before continuing.';
+        warn.classList.add('show');
         return false;
       }
+      warn.classList.remove('show');
+      warn.textContent = '';
       return true;
     default:
       return true;
@@ -382,13 +398,13 @@ function saveStep(n) {
       state.exA.q3 = q3 ? q3.value : '';
       break;
     case 2:
-      state.exB.g1 = val('exB-g1');
-      state.exB.g2 = val('exB-g2');
-      state.exB.g3 = val('exB-g3');
-      state.exB.g4 = val('exB-g4');
+      state.exB.g1 = g('exB-g1');
+      state.exB.g2 = g('exB-g2');
+      state.exB.g3 = g('exB-g3');
+      state.exB.g4 = g('exB-g4');
       break;
     case 3:
-      state.exC.response = val('exC-response');
+      state.exC.response = g('exC-response');
       break;
   }
 }
@@ -520,10 +536,12 @@ function checkExB() {
   document.getElementById('step2-fb').className = 'feedback ' + (correct === 4 ? 'ok' : 'warn');
 }
 
+function countWords(txt) {
+  return txt ? txt.split(/\s+/).filter(Boolean).length : 0;
+}
+
 function updateWordCount() {
-  var txt = val('exC-response').trim();
-  var count = txt ? txt.split(/\s+/).length : 0;
-  document.getElementById('word-count').textContent = count;
+  document.getElementById('word-count').textContent = countWords(g('exC-response'));
 }
 
 document.addEventListener('DOMContentLoaded', function() {

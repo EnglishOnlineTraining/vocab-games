@@ -458,7 +458,7 @@ function validateStep(n) {
       if (missing) { showMsg('step3-msg', gapsMsg(missing, 6)); return false; }
       clearMsg('step3-msg'); return true;
     case 4:
-      if (val('exD-text').split(/\s+/).filter(Boolean).length < 15) { showMsg('step4-msg', 'Please write at least a few sentences (15+ words) before you continue.'); return false; }
+      if (g('exD-text').split(/\s+/).filter(Boolean).length < 15) { showMsg('step4-msg', 'Please write at least a few sentences (15+ words) before you continue.'); return false; }
       clearMsg('step4-msg'); return true;
     default: return true;
   }
