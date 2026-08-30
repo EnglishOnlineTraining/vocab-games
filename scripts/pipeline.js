@@ -53,7 +53,7 @@ const NODES = [
     // writes one — the quiz and review pages are 16 of the 182 entries it
     // produces.
     needs: ['quizzes', 'review'],
-    inputs: ['*.html'],
+    inputs: ['*.html', 'data/withheld.json'],
     outputs: ['data/exercises.json'],
   },
   {
@@ -108,7 +108,7 @@ const NODES = [
     // five review pages drift. docs/inventory.json is now what the activities
     // test suite drives from, so it cannot be allowed to lag the corpus.
     needs: ['head'],
-    inputs: ['*.html'],
+    inputs: ['*.html', 'data/withheld.json'],
     outputs: ['docs/INVENTORY.md', 'docs/inventory.json'],
   },
 ];

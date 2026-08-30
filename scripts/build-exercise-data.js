@@ -88,7 +88,15 @@ function grabTitles(s, cls, tag) {
   return out;
 }
 
-const files = fs.readdirSync(ROOT).filter(f => f.endsWith('.html')).sort();
+/* Pages deliberately kept off every generated surface — see data/withheld.json
+   for the list and the reason each is held back. They stay in the repo (the work
+   is not lost) but get no registry entry, so nothing downstream advertises them:
+   no card in the filterable index, no sitemap URL, no JSON-LD ItemList entry. */
+const WITHHELD = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'withheld.json'), 'utf8'));
+
+const files = fs.readdirSync(ROOT)
+  .filter(f => f.endsWith('.html') && !Object.prototype.hasOwnProperty.call(WITHHELD, f))
+  .sort();
 // The page's own declared language. Most are English, but the ten gr-* grammar
 // pages are written in German (<html lang="de">) and so are their titles — the
 // hub needs to know, or it renders a German title inside an English page with no

@@ -31,6 +31,12 @@ const ROOT = path.join(__dirname, '..');
 
 const files = fs.readdirSync(ROOT).filter(f => f.endsWith('.html')).sort();
 
+/* Withheld pages still exist and are still inventoried — unlike the exercise
+   registry, which drops them. The inventory's job is to describe what is in the
+   repo, and a page held back is exactly the thing a test suite needs to know
+   about rather than be silently blind to. */
+const WITHHELD = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'withheld.json'), 'utf8'));
+
 function read(f) { return fs.readFileSync(path.join(ROOT, f), 'utf8'); }
 function m1(re, s) { const m = s.match(re); return m ? m[1].trim() : ''; }
 function decode(s) {
@@ -212,6 +218,7 @@ const inventory = files.map(f => {
     gradable: r.gradable,
     lang: r.lang,
     linked: r.linked,
+    withheld: Object.prototype.hasOwnProperty.call(WITHHELD, r.f),
     title: r.title || r.h1 || '',
   };
 });

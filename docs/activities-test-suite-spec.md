@@ -109,7 +109,10 @@ It must be a `CHECKER` and not a `VALIDATOR`: it reads `docs/inventory.json`, wh
 `inventory` node writes at the end of the build, and it inspects generated markup.
 
 1. **Manifest integrity** — every file in `data/exercises.json` exists; no duplicates;
-   every hub link resolves; no exercise is unreachable from every hub.
+   every hub link resolves; no exercise is unreachable from every hub. Pages listed in
+   `data/withheld.json` are exempt from the orphan rule and get the inverse one instead:
+   a withheld page that is still linked from a hub fails the build, so withholding
+   cannot be quietly undone.
 2. **Endpoint well-formedness** — `SHEET_URL` must parse as `https:` on the allowlist
    (`hook.eu1.make.com`, `script.google.com`). Also flags unreplaced `PASTE_*`/`TODO_*`
    scaffolding outside `_template.html`. A page's own endpoint is public by construction
@@ -282,10 +285,13 @@ against a stubbed DOM; that is the only way in, and `require` will not work.
 
 ## 11. Known issues raised by building this
 
-1. **`uni-al-munir-relationships.html` is live and loses student work.** Its `SHEET_URL`
-   is still the template placeholder and its listening audio is `PASTE_AUDIO_URL_HERE.mp3`.
-   Needs a university Apps Script `/exec` URL, or the page unlinking from
-   `uni-activities.html`. Baselined.
+1. **`uni-al-munir-relationships.html` — withheld 2026-08-30.** Its `SHEET_URL` was
+   never replaced, so every submission failed and the student's work was lost. It is
+   now listed in `data/withheld.json`: the file stays, but it gets no hub card, no
+   `data/exercises.json` entry, no sitemap URL and no JSON-LD `ItemList` entry, so
+   nobody can reach it. The endpoint is a one-line fix (the other `uni-*` pages use a
+   working Apps Script URL); the real blocker is the Listening Task, whose audio is a
+   placeholder with no transcript in the page to generate speech from.
 2. **Apps Script formula injection**, §4.1. Baselined, with the fix in the entry.
 3. **`lookupGrade` scales inconsistently.** `Math.round` is applied only when `possible`
    is outside 10–100; inside the band the raw score is compared. The same 95%

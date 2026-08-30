@@ -179,7 +179,7 @@ Regenerate with `node scripts/inventory.js`.
 | quiz-grammar-medium.html | English Grammar Quiz — Medium | — | — | Klass. | 1 | English Grammar Quiz — Medium |
 | sport-south-africa.html | Sport in South Africa | — | — | Klass. | 4 | Before You Read · True, False or Not Given? · Multiple Choice · Vocabulary Matching |
 | uni-ai-ethics.html | AI Ethics in Higher Education | University | University | BE/Uni | 4 | Academic Vocabulary · Reading & Gap-fill · Academic Paraphrasing · Critical Writing |
-| uni-al-munir-relationships.html | Al-Munir Hotel Group – Building Customer Relationships | University | University | BE/Uni | 5 | Background & Customer Satisfaction Survey · Listen & Compare · Meeting Agenda – Group Discussion · Live Meeting & Action Plan · Writing Task: Sales Letter |
+| ⚠️ uni-al-munir-relationships.html | Al-Munir Hotel Group – Building Customer Relationships | University | University | BE/Uni | 5 | Background & Customer Satisfaction Survey · Listen & Compare · Meeting Agenda – Group Discussion · Live Meeting & Action Plan · Writing Task: Sales Letter |
 | uni-building-relationships.html | Building Business Relationships | University | University | BE/Uni | 6 | Put the conversation in order · True or false? Justify your answer · Multiword verbs · Relationship verbs · Linking ideas · Writing: a business relationship |
 | uni-cause-effect.html | Cause & Effect in Academic Writing | University | University | BE/Uni | 4 | Climate Change and Food Security · Choosing the Right Connector · Register & Formality · Writing with Cause & Effect Language |
 | uni-critical-thinking.html | Critical Thinking & Evaluating Sources | University | University | BE/Uni | 4 | Reading: Why Sources Matter · Academic Vocabulary for Critical Analysis · Source Evaluation in Practice · Critical Evaluation Writing |
@@ -193,9 +193,9 @@ Regenerate with `node scripts/inventory.js`.
 | uni-review.html | University English — Revision | University | University | BE/Uni | 3 | Mixed Revision A · Mixed Revision B · Mixed Revision C |
 | uni-roleplay-building-relationships.html | Building Relationships Through Communication | University | University | BE/Uni | 11 | Learning Objectives · The Task · Choose a Scenario · Character Roles · Part 1 – The Wrong Way · Part 2 – The Right Way · Effective Communication Skills · Useful Expressions · Planning Time · Reflection Questions · Key Takeaway |
 
-## Orphans — exercise pages not linked from any hub (0)
+## Orphans — exercise pages not linked from any hub (1)
 
-_None — every exercise page is linked from at least one hub._
+- `uni-al-munir-relationships.html` — Al-Munir Hotel Group – Building Customer Relationships
 
 ## Hub pages (16)
 

@@ -94,10 +94,17 @@ for (const e of inventory.filter(x => x.architecture === 'hub')) {
 }
 
 /* An exercise no hub links to is unreachable for a student. Hubs, landing pages
-   and lead magnets are reached other ways and are deliberately exempt. */
+   and lead magnets are reached other ways and are deliberately exempt — as are
+   pages in data/withheld.json, which are unreachable on purpose. */
 for (const e of inventory) {
-  if (isExercise(e) && !e.linked) {
+  if (isExercise(e) && !e.linked && !e.withheld) {
     fail('infra', 'orphan-exercise', e.file, 'not linked from any hub — unreachable');
+  }
+  /* The inverse, so withholding cannot be quietly undone: a page held back
+     because it is broken must not reappear behind a hub card. */
+  if (e.withheld && e.linked) {
+    fail('contract', 'withheld-but-linked', e.file,
+         'listed in data/withheld.json but still linked from a hub');
   }
 }
 
