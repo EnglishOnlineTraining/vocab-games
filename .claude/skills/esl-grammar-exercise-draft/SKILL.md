@@ -90,6 +90,9 @@ matters is CEFR-appropriateness and covering the topic's grammar):
 Fill in every `TODO` in the template:
 
 - [ ] **`<title>`** — Display title + ` | englishonline.training`
+- [ ] **`<meta name="description">` and `<link rel="canonical">`** — real copy, not the
+      template's TODO placeholder; canonical URL must exactly match the final filename.
+      `build-head.js` derives the auto-generated overview box and OG/JSON-LD tags from these.
 - [ ] **`UNIT`** — the pool entry's `id`, matching the filename
 - [ ] **`TOTAL_STEPS`** — number of exercise steps + 1
 - [ ] **`SHEET_URL`** — the Business/University Apps Script URL (see §3 above)
@@ -101,41 +104,14 @@ Fill in every `TODO` in the template:
 - [ ] **checkExX() functions** — one per dropdown exercise, each calling `checkDropdowns()` with a
       unique `scoreKey`
 
-#### Learning design checks — apply these WHILE building (same 9 checks the Klett series uses)
+#### Learning design checks — apply these WHILE building
 
-These are requirements, not polish — encoding retrieval practice and spacing, multimedia
-principles, action mapping, UDL, and feedback design. If one genuinely cannot be met, say which and
-why in your summary rather than skipping it silently.
-
-**1. Open with retrieval, not input.** Exercise A begins with a short, unscored recall prompt
-(`exA-recall`) before any new text. In `saveStep`/`restoreStep` and the payload, but excluded from
-`validateStep()` and given no `scoreKey`. Pre-built in `_template.html`.
-
-**2. Include one spaced-recall item.** Put 1-2 dropdown items targeting grammar from a
-*different, already-built* `esl-*` page (check `esl-grammar-pool.json` for what's built). Skip only
-if this is the series' first exercise. Label it in `data/explanations.json` so the `why` names
-where it came from.
-
-**3. State the outcome as an action.** `.welcome-sub`: "By the end of this exercise, you can …",
-naming a concrete, checkable action — not a topic label.
-
-**4. One target point per section.** If a section tests two things, split it.
-
-**5. Signal the target language.** Bold the target structure on its first 2-3 occurrences in the
-reading text, and bold nothing else.
-
-**6. Cut redundancy.** Instructions appear once — either the `.ex-subtitle` or the item labels,
-never both. The `.card-title` is a plain heading, not a second instruction.
-
-**7. Anchor free-writing in a concrete scenario.** Name a situation, an audience, and a purpose.
-Never "Write about X."
-
-**8. Make feedback specific.** Remember the `nextStep()` trap — a message in `#step<n>-error` gets
-overwritten by the generic string, so a step needing its own wording needs its own element id.
-Add the unit to `data/explanations.json` (use the `add-explanations` skill) as part of building it.
-
-**9. Accessible by default.** Every free-text input has a bound `<label>`. Gap dropdowns are
-auto-labelled by `exercise.js`; don't add colour-only right/wrong cues. No time limits.
+Apply the nine shared learning-design checks in **`docs/learning-design-checks.md`** (the same
+checks `daily-exercise-draft` uses) while building Ex A–D. These are requirements, not polish; if
+one genuinely cannot be met, say which and why in your summary rather than skipping it silently.
+**This skill is the `esl-grammar-exercise-draft` variant of check 2** (spaced recall pulls from a
+*different, already-built* `esl-*` page, since this pool isn't sequential like a textbook) — see
+that file for the exact rule.
 
 #### Dropdown answer shuffling
 
@@ -150,12 +126,14 @@ get scoreKeys.
 
 ### 5. Self-review
 
-Before publishing, verify:
+Before publishing, run **`node scripts/verify-exercise.js <file.html>`** — same mechanical check
+`daily-exercise-draft` uses (no leftover `TODO`, `TOTAL_STEPS` against the highest `id="step-N"`,
+every `checkDropdowns()`/`checkDropdownsMulti()` call has 5 arguments, `UNIT` matches the filename
+slug, `state` declares `scores: {}`). It must report all checks passed before you continue.
 
-- [ ] No `TODO` comments remain
-- [ ] `UNIT` matches the filename slug exactly
+It cannot check content quality or this series' own conventions, so also verify by hand:
+
 - [ ] `SHEET_URL` is the Business/University Apps Script URL
-- [ ] `TOTAL_STEPS` matches: grep `id="step-"`, highest number must equal `TOTAL_STEPS`
 - [ ] `<html lang="en">` is set
 - [ ] Every dropdown has 3 options with the correct answer shuffled
 - [ ] Answer keys in `checkExX()` are actually correct
@@ -163,22 +141,10 @@ Before publishing, verify:
 - [ ] The reading text matches the pool entry's `cefr` level
 - [ ] Grammar content matches the pool entry's `grammar` field
 - [ ] All state properties have matching save/restore/validate/summary/email/payload entries
-- [ ] **Every `checkDropdowns()` call passes a `scoreKey`** (5th argument) — grep for `-fb')` to
-      catch a call that stops at the 4th argument (ten live Klett-series pages shipped with this
-      exact defect)
-- [ ] `state` declares `scores: {}`, and `score`/`grade` are in `buildPayload()` and
-      `buildEmailBody()`
+- [ ] `score`/`grade` are included in `buildPayload()` and `buildEmailBody()`
 
-**Learning design (verify, don't assume):**
-
-- [ ] Ex A opens with the optional `exA-recall` prompt, correctly wired but never scored
-- [ ] 1-2 items come from a different, already-built `esl-*` page (skip only for the series' first)
-- [ ] `.welcome-sub` starts "By the end of this exercise, you can …"
-- [ ] Each section drills one point only
-- [ ] The target structure is bolded on its first 2-3 occurrences, nothing else bolded
-- [ ] Instructions appear once
-- [ ] The Ex D prompt names a situation, an audience, and a purpose
-- [ ] The unit is in `data/explanations.json` (`node scripts/validate-explanations.js` passes)
+**Learning design:** run the self-review checklist in `docs/learning-design-checks.md` — all nine
+items must pass (or be called out with a reason in the build summary).
 
 Run **`node scripts/build.js`** before committing — it regenerates `data/exercises.json`,
 `activities.html`'s filterable index, `sitemap.xml`, etc. New `esl-*.html` pages are picked up
@@ -192,8 +158,11 @@ and ask Shaun if something is genuinely blocking (pool exhausted, repo unreachab
 
 #### 6a. Commit to GitHub
 
-`git push origin main` from the workspace. If auth fails, fall back to GitHub's web editor (see
-`daily-exercise-draft` for the exact CodeMirror-injection steps — identical process).
+`git push origin main` from the workspace first. If auth fails, fall back to the GitHub MCP tools
+(`mcp__github__create_or_update_file` / `mcp__github__push_files`) — see
+`docs/github-publish-fallback.md` for the exact tool calls (identical process to
+`daily-exercise-draft`). Do not attempt to inject content into GitHub's CodeMirror editor via
+JavaScript.
 
 #### 6b. Update the hub
 

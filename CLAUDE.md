@@ -111,6 +111,19 @@ its own wording, give the message its own element id** and omit `#step<n>-error`
 `#exB-lengthwarn` in `it-writing-task.html`. `clearErr(n)` is null-safe, so the missing id is
 harmless.
 
+### 4. Six live `uni-*` pages submit to `sptrezise@proton.me`, not the canonical teacher email — confirmed 2026-08-29
+This file states the canonical `Teacher email: englishonlinetraining@pm.me` at the top, and both
+`daily-exercise-draft` and `esl-grammar-exercise-draft` correctly hardcode that value for every
+new page — **this is not a skill bug**. But six live pages set a different address: `var
+TEACHER_EMAIL = 'sptrezise@proton.me'` on `uni-relationships-language.html`,
+`uni-relationships-reading.html` and `uni-relationships-vocab.html`, and `const EMAIL =
+'sptrezise@proton.me'` on `uni-writing-task.html`, `uni-presentation-task.html` and
+`uni-pm-vocabulary.html`. All six currently email submissions to Shaun's personal Proton address
+instead of the canonical teacher inbox. **This is an open discrepancy, not yet resolved** —
+changing production email routing on six live pages is a real behaviour change and needs Shaun's
+decision (keep it, e.g. if these are deliberately his own personal-tutoring pages, or repoint to
+the canonical address). Do not "fix" this without asking first.
+
 ---
 
 ## File structure
