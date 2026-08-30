@@ -43,9 +43,12 @@ Status key: **Open** (worth doing, not started) · **Already done** (skip) · **
   - **69 pages hand-roll word counting** with `text.split(/\s+/)`, in four spelling variants
     (with/without `.trim()`, with/without `.filter(w => w.length > 0)`); 29 call sites are the
     unguarded form. `exercise.js:234` holds a fourth copy for the practise-mode rubric.
-  - **`10c-london-slang.html` is a live defect** — it instructs students to write 100–150 words
-    while its validator blocks anything under 50. Of the ~106 pages that state a range, most
-    enforce nothing at all. That page is the known-true positive to test any checker against.
+  - **Stated ranges mostly go unenforced.** Of the ~106 pages that state a word range, most
+    enforce nothing at all. (`10c-london-slang.html` was the example filed here first, described
+    as blocking under 50 against a stated 100–150. That was wrong about the mechanism: the check
+    threw a `TypeError` before it could compare anything. Fixed 2026-08-30 — see the commit
+    "unblock six exercise pages stuck on a boolean/string mix-up" — so pick a different page as
+    the checker's test case.)
   - **`decode()` exists three times** — `scripts/extract-graded.js:21`, `scripts/inventory.js:10`
     and `scripts/build-exercise-data.js:48` — each handling a different subset of HTML entities.
     Worth consolidating on its own merits.
