@@ -91,6 +91,9 @@ function extractPaths(content) {
       if (p.startsWith('.') && !p.startsWith('./')) continue; // .html class
       // Skip things that look like CSS/code fragments, not files
       if (p.includes('(') || p.includes(')')) continue;
+      // Skip illustrative examples preceded by "e.g." or "e.g.,"
+      const before = content.slice(Math.max(0, m.index - 10), m.index);
+      if (/e\.g\.[\s,`]*$/.test(before)) continue;
       paths.add(p);
     }
   }
