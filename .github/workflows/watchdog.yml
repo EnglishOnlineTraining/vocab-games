@@ -1,0 +1,35 @@
+name: Site Watchdog
+
+# Agent #8: runs after every deploy-triggering push and on the rebuild bot's
+# auto-commit. Catches dead links, missing index entries, stale sitemap refs,
+# and duplicate ids before students hit them.
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'data/**'
+      - 'scripts/**'
+      - 'exercise.js'
+      - 'style.css'
+      - 'sitemap.xml'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  watchdog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Run watchdog checks
+        run: node scripts/watchdog.js
+
+      - name: Run skill asset audit
+        run: node scripts/audit-skills.js
