@@ -42,7 +42,7 @@ function page(qz) {
 
   return '<!DOCTYPE html>\n<html lang="en">\n<head>\n'
     + '  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
-    + '  <title>' + esc(qz.title) + ' | englishonline.training</title>\n'
+    + '  <title>' + esc(qz.title) + '</title>\n'
     + '  <link rel="canonical" href="' + esc(canonicalFor(qz)) + '">\n'
     + '  <meta name="description" content="' + esc(descriptionFor(qz)) + '">\n'
     + '  <link rel="stylesheet" href="style.css">\n</head>\n<body>\n\n'
