@@ -61,6 +61,7 @@ const IGNORE_PATHS = new Set([
   'prefix-activities.html', // pattern, not real file
   'prefix-topic-slug.html', // pattern, not real file
   'esl-topic-slug.html', // pattern
+  'esl-articles.html',   // example filename in esl-grammar-exercise-draft
 ]);
 
 // WordPress MCP / API references that look like file paths but aren't
