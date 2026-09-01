@@ -15674,5 +15674,138 @@
         }
       }
     }
+  },
+  "esl-articles": {
+    "exA": {
+      "g1": {
+        "label": "1. ___ small hotel near the river",
+        "correct": "a",
+        "why": "First mention of the hotel — we don't know which one yet, so use the indefinite article \"a\"."
+      },
+      "g2": {
+        "label": "2. ___ Egyptian collection",
+        "correct": "the",
+        "why": "The British Museum has one specific Egyptian collection — both speaker and listener know which one, so use \"the\"."
+      },
+      "g3": {
+        "label": "3. ___ ice cream in the park",
+        "correct": "an",
+        "why": "First mention of an unspecified ice cream. Use \"an\" because \"ice\" starts with a vowel sound."
+      },
+      "g4": {
+        "label": "4. ___ Oxford Street",
+        "correct": "—",
+        "accept": [
+          "—"
+        ],
+        "why": "Street names normally take no article. \"Oxford Street\", not \"the Oxford Street\"."
+      },
+      "g5": {
+        "label": "5. ___ book about London's history",
+        "correct": "a",
+        "why": "First mention of an unspecified book — the reader hasn't heard about this book before, so use \"a\"."
+      },
+      "g6": {
+        "label": "6. ___ musical in the West End",
+        "correct": "a",
+        "why": "First mention of an unspecified musical — one of many in the West End, not a particular one."
+      }
+    },
+    "exB": {
+      "g1": {
+        "label": "1. There is ___ new café",
+        "correct": "a",
+        "why": "Introducing the café for the first time — use \"a\" for first mention."
+      },
+      "g2": {
+        "label": "1. ___ café serves great coffee",
+        "correct": "The",
+        "why": "Second mention — now the listener knows which café, so switch to \"The\"."
+      },
+      "g3": {
+        "label": "2. She wants to be ___ engineer",
+        "correct": "an",
+        "why": "Jobs use the indefinite article: \"an engineer\", \"a doctor\". Use \"an\" before the vowel sound in \"engineer\"."
+      },
+      "g4": {
+        "label": "3. Can you close ___ window?",
+        "correct": "the",
+        "why": "Both speaker and listener can see the specific window — use \"the\" for shared knowledge."
+      },
+      "g5": {
+        "label": "4. I saw ___ dog in the park",
+        "correct": "a",
+        "why": "First mention of an unspecified dog — the listener doesn't know which dog yet."
+      },
+      "g6": {
+        "label": "4. It was chasing ___ ball",
+        "correct": "a",
+        "why": "First mention of an unspecified ball — introduced for the first time, so use \"a\"."
+      },
+      "g7": {
+        "label": "5. My brother is ___ tallest person",
+        "correct": "the",
+        "why": "Superlatives always take \"the\" — there can only be one tallest."
+      },
+      "g8": {
+        "label": "6. I need to buy ___ umbrella",
+        "correct": "an",
+        "why": "Any umbrella, not a specific one — use \"an\" before the vowel sound in \"umbrella\"."
+      }
+    },
+    "exC": {
+      "g1": {
+        "label": "1. ___ Water is essential for life",
+        "correct": "—",
+        "accept": [
+          "—"
+        ],
+        "why": "Water in general, not specific water — uncountable nouns used generally take no article."
+      },
+      "g2": {
+        "label": "2. ___ water in this bottle",
+        "correct": "The",
+        "why": "\"in this bottle\" specifies exactly which water — use \"the\" for identified things."
+      },
+      "g3": {
+        "label": "3. She loves ___ music",
+        "correct": "—",
+        "accept": [
+          "—"
+        ],
+        "why": "Music in general — no article with uncountable nouns when talking about the whole category."
+      },
+      "g4": {
+        "label": "4. ___ music at the party",
+        "correct": "The",
+        "why": "\"at the party\" identifies the specific music — use \"the\"."
+      },
+      "g5": {
+        "label": "5. I usually have ___ breakfast",
+        "correct": "—",
+        "accept": [
+          "—"
+        ],
+        "why": "Meals take no article when used in general: \"have breakfast\", \"eat lunch\", \"go to dinner\"."
+      },
+      "g6": {
+        "label": "6. ___ breakfast she cooked",
+        "correct": "The",
+        "why": "\"she cooked this morning\" makes it a specific breakfast — use \"the\"."
+      },
+      "g7": {
+        "label": "7. He goes to ___ school",
+        "correct": "—",
+        "accept": [
+          "—"
+        ],
+        "why": "\"Go to school\" (as a student) is a set phrase with no article — it means the activity, not the building."
+      },
+      "g8": {
+        "label": "8. ___ school on Park Road",
+        "correct": "The",
+        "why": "\"on Park Road\" identifies a specific school building — use \"the\"."
+      }
+    }
   }
 }

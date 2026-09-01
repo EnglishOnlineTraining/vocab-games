@@ -158,6 +158,13 @@ function topicLabel(t) {
   return de + ' (' + en + ')';
 }
 
+function topicTitle(t) {
+  const label = topicLabel(t);
+  const full = label + ' — Übungen & Erklärung';
+  if (full.length <= 60) return full;
+  return label + ' — Übungen';
+}
+
 // The English sub-label on a themen/index.html card, or '' when it would just
 // repeat the German one.
 function topicSubLabel(t) {
@@ -207,7 +214,7 @@ function pageHtml(t) {
   const count = exercisesForTopic(t.slug).length;
   return '<!DOCTYPE html>\n<html lang="de">\n<head>\n'
     + '<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
-    + '<title>' + esc(topicLabel(t)) + ' — Übungen & Erklärung | EnglishOnline.Training</title>\n'
+    + '<title>' + esc(topicTitle(t)) + '</title>\n'
     + '<meta name="description" content="' + esc(t.metaDescription || '') + '">\n'
     + '<link rel="canonical" href="' + url + '">\n'
     + '<meta property="og:type" content="article">\n'
@@ -333,7 +340,7 @@ function indexHtml() {
   }).join('');
   return '<!DOCTYPE html>\n<html lang="de">\n<head>\n<meta charset="UTF-8">\n'
     + '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
-    + '<title>' + esc(title) + ' | EnglishOnline.Training</title>\n'
+    + '<title>' + esc(title) + '</title>\n'
     + '<meta name="description" content="' + esc(desc) + '">\n'
     + '<link rel="canonical" href="' + url + '">\n'
     + '<meta property="og:locale" content="de_DE">\n'

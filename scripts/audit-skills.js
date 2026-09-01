@@ -106,7 +106,7 @@ const IGNORE_PATHS = new Set([
   'prefix-activities.html', // pattern, not real file
   'prefix-topic-slug.html', // pattern, not real file
   'esl-topic-slug.html', // pattern
-  'esl-articles.html',   // example filename in esl-grammar-exercise-draft
+  'esl-articles.html',   // example in esl-grammar-exercise-draft
 ]);
 
 // WordPress MCP / API references that look like file paths but aren't
@@ -137,6 +137,9 @@ function extractPaths(content) {
       if (p.startsWith('.') && !p.startsWith('./')) continue; // .html class
       // Skip things that look like CSS/code fragments, not files
       if (p.includes('(') || p.includes(')')) continue;
+      // Skip illustrative examples preceded by "e.g." or "e.g.,"
+      const before = content.slice(Math.max(0, m.index - 10), m.index);
+      if (/e\.g\.[\s,`]*$/.test(before)) continue;
       paths.add(p);
     }
   }
