@@ -167,8 +167,12 @@ function todo() {
   manual.forEach(function (f) { console.log('  ' + f); });
 }
 
-/* Reused by scripts/build-review-pages.js — keep these signatures stable. */
-module.exports = { decode: decode, unitOf: unitOf, gradedCalls: gradedCalls, gapDetail: gapDetail };
+/* Reused by scripts/build-review-pages.js and scripts/verify-exercise.js — keep these
+   signatures stable. */
+module.exports = {
+  decode: decode, unitOf: unitOf, gradedCalls: gradedCalls, gapDetail: gapDetail,
+  matchBracket: matchBracket, splitArgs: splitArgs
+};
 
 if (require.main === module) {
   var args = process.argv.slice(2);

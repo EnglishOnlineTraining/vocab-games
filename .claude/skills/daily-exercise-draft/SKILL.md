@@ -134,6 +134,10 @@ CEFR level and covers the topic's key grammar.
 Fill in every `TODO` in the template. Specifically:
 
 - [ ] **`<title>`** — Display title + ` | englishonline.training`
+- [ ] **`<meta name="description">` and `<link rel="canonical">`** — real copy, not the
+      template's TODO placeholder text; the canonical URL must exactly match the final filename.
+      `build-head.js` derives the auto-generated "Auf einen Blick" overview box and the Open
+      Graph/JSON-LD tags straight from these — a leftover placeholder ships bad SEO copy silently.
 - [ ] **`UNIT`** — kebab-case slug matching the filename (e.g. `'8c-arriving-northeast'`)
 - [ ] **`TOTAL_STEPS`** — number of exercise steps + 1
 - [ ] **`SHEET_URL`** — correct webhook for the year group (see table above)
@@ -158,50 +162,14 @@ The reading text and exercises must match the target level:
 
 #### Learning design checks — apply these WHILE building
 
-These are requirements, not polish. They encode retrieval practice and spacing, multimedia
-principles, action mapping, UDL and feedback design. If one genuinely cannot be met, say
-which and why in your summary rather than skipping it silently.
-
-**1. Open with retrieval, not input.** Exercise A begins with a short recall prompt *before*
-any new text: a single optional textarea (`exA-recall`). Include it in `saveStep`/`restoreStep`
-and the payload, but **exclude it from `validateStep()` and give it no `scoreKey`**. Recall
-strengthens memory even when the answer is wrong, so never mark it. Pre-built in `_template.html`.
-
-**2. Include one spaced-recall item.** In a dropdown exercise, put 1–2 items targeting grammar
-or vocabulary from an *earlier* unit in the same category. Check `topic-pool.json` for what is
-already built and take the point from a unit two or three back — e.g. an 8c gerunds page can
-carry one present-perfect item from `8c-around-southwest`. Skip only if this is the first
-exercise in the category. Label such an item in `data/explanations.json` so the `why` names the
-unit it came from.
-
-**3. State the outcome as an action.** The `.welcome-sub` says what the student will be able to
-*do*: "By the end of this exercise, you can compare your town with a big city using
-comparatives." Not "Unit 1: Comparatives".
-
-**4. One target point per section.** Each exercise section drills a single focus. If a section
-tests two things, split it — comparatives in Ex B, superlatives in Ex C.
-
-**5. Signal the target language.** In a reading text, bold the target structure on its first
-two or three occurrences and **bold nothing else**. Signalling only works if it is scarce.
-
-**6. Cut redundancy.** Instructions appear once — either in the `.ex-subtitle` or in the item
-labels, never both. Don't restate the task in the `.card-title`; use it as a plain heading
-("Reading text"), not a second instruction ("Now read the text and choose").
-
-**7. Anchor free-writing in a concrete scenario.** The Ex D prompt names a situation, an
-audience and a purpose: "Write to your exchange partner in Leeds explaining why your town is
-quieter than New York." Never "Write about your town."
-
-**8. Make feedback specific.** Remember the `nextStep()` trap: a message you put in
-`#step<n>-error` is overwritten by the generic string, so a step needing its own wording needs
-its **own element id** (see `#exB-lengthwarn` in `it-writing-task.html`). The results screen
-must show *which* items were wrong, not just the score — that means adding the unit to
-`data/explanations.json` (use the `add-explanations` skill) as part of building it, not later.
-
-**9. Accessible by default.** Every free-text input has a bound `<label>`. Gap dropdowns are
-named automatically by `exercise.js` (`eolLabelGaps`), and right/wrong already carries a ✓/✗
-glyph as well as colour — don't add colour-only cues of your own. No time limits unless the
-task is explicitly an exam.
+Apply the nine shared learning-design checks in **`docs/learning-design-checks.md`** while
+building Ex A–D — retrieval-first opening, spaced recall, outcome-as-action, one point per
+section, bolding the target language, cutting redundancy, anchoring free-writing in a scenario,
+specific feedback (the `nextStep()` trap), and accessible-by-default. These are requirements, not
+polish; if one genuinely cannot be met, say which and why in your summary rather than skipping it
+silently. **This skill is the `daily-exercise-draft` variant of check 2** (spaced recall pulls
+from an earlier unit in the *same category*, via `topic-pool.json`) — see that file for the exact
+rule.
 
 #### Dropdown answer shuffling
 
@@ -218,40 +186,26 @@ exercises (like writing) don't get scoreKeys.
 
 ### 5. Self-review
 
-Before publishing, verify:
+Before publishing, run **`node scripts/verify-exercise.js <file.html>`**. It mechanically checks
+five things this checklist used to ask you to verify by eye — no leftover `TODO`, `TOTAL_STEPS`
+against the highest `id="step-N"`, every `checkDropdowns()`/`checkDropdownsMulti()` call has 5
+arguments (the exact missing-`scoreKey` defect that shipped live on ten pages — see CLAUDE.md),
+`UNIT` matches the filename slug, and `state` declares `scores: {}`. It must report all checks
+passed before you continue; fix anything it flags first.
 
-- [ ] No `TODO` comments remain in the file
-- [ ] `UNIT` matches the filename slug exactly
+It cannot check content quality or the site's business rules, so also verify by hand:
+
 - [ ] `SHEET_URL` is the correct webhook (Y7/Y8 vs Y9/Y10)
-- [ ] `TOTAL_STEPS` matches: grep for all `id="step-"` — the highest number must equal TOTAL_STEPS
 - [ ] Every dropdown has 3 options with the correct answer shuffled
 - [ ] Answer keys in checkExX() functions are actually correct
 - [ ] Overview cards match the actual exercises; steps 2+ have `class="locked"`
 - [ ] The reading text is appropriate for the CEFR level
 - [ ] Grammar content matches the textbook topic's "Key Grammar" column
 - [ ] All state properties have matching save/restore/validate/summary/email/payload entries
-- [ ] **Every `checkDropdowns()` call passes a `scoreKey` (5th argument)** — without it no score
-      is recorded at all, the student sees no Score + Note card and the teacher gets no
-      `score`/`grade`. Ten live pages shipped with this defect and had to be repaired; grep the
-      file for `-fb')` to catch a call that stops at the 4th argument.
-- [ ] The page declares `scores: {}` in `state`, and `score`/`grade` are in `buildPayload()`
-      and `buildEmailBody()`
+- [ ] `score`/`grade` are included in `buildPayload()` and `buildEmailBody()`
 
-**Learning design (the checks above — verify, don't assume):**
-
-- [ ] Ex A opens with the optional `exA-recall` prompt; it is in `saveStep`/`restoreStep` and the
-      payload, and appears in **neither** `validateStep()` nor any answer key
-- [ ] 1–2 items come from an earlier unit in this category (skip only for the first exercise)
-- [ ] `.welcome-sub` starts "By the end of this exercise, you can …" and names a concrete action
-- [ ] Each section drills one point only
-- [ ] The target structure is bolded on its first 2–3 occurrences in the reading text, and
-      nothing else is bolded
-- [ ] Instructions appear once — not in both the subtitle and the card title
-- [ ] The Ex D prompt names a situation, an audience and a purpose
-- [ ] The unit has been added to `data/explanations.json` so wrong answers get a reason
-      (`node scripts/validate-explanations.js` passes)
-- [ ] Every free-text input has a bound `<label>`, no colour-only cue was added by hand, and the
-      page sets no time limit (check 9 — the gap glyphs and dropdown names come from `exercise.js`)
+**Learning design:** run the self-review checklist in `docs/learning-design-checks.md` — all nine
+items must pass (or be called out with a reason in the build summary).
 
 Regenerating indices locally before committing — **`node scripts/build.js`**, which runs the whole
 generator graph in the right order — is still expected: it keeps the diff you're pushing honest.
@@ -270,15 +224,12 @@ Publishing has three parts. Do all three:
 
 #### 6a. Commit to GitHub
 
-Try `git push origin main` from the workspace. If authentication fails (common in sandbox
-environments), fall back to GitHub's web editor:
-
-1. Navigate to `https://github.com/EnglishOnlineTraining/vocab-games/new/main`
-2. Type the filename
-3. Inject the file content via JavaScript into the CodeMirror editor
-4. The CodeMirror API alone won't enable the Commit button — type a character in the editor
-   first (to trigger GitHub's React change detection), then set the full content via JS
-5. Click "Commit changes...", enter a commit message, and commit to main
+Try `git push origin main` from the workspace first. If authentication fails (common in sandbox
+environments), fall back to the GitHub MCP tools (`mcp__github__create_or_update_file` /
+`mcp__github__push_files`) rather than driving GitHub's web editor — see
+`docs/github-publish-fallback.md` for the exact tool calls. Do not attempt to inject content into
+GitHub's CodeMirror editor via JavaScript; that approach depends on undocumented DOM/React
+internals that change without notice and fail silently.
 
 #### 6b. Update hub pages
 
@@ -294,7 +245,7 @@ Two files need updating:
 - Update the exercise count
 - Update the description text
 
-Commit these via git push or GitHub web editor (same approach as 6a).
+Commit these via git push or the GitHub MCP fallback (same approach as 6a).
 
 #### 6c. Update WordPress
 
@@ -302,8 +253,28 @@ The WordPress Activities page (ID `1763`) mirrors the GitHub activities hub. Use
 MCP to check the current content. If the page already has a button for this category with the
 correct count, nothing to do. Otherwise, update the count in the button text.
 
-Use `page-sections.list` to find the Year section, then `page-sections.replace` to update
-the HTML block. The button format is:
+**Do not use `page-sections.list`/`page-sections.replace` on this page — it always errors.**
+1763's live content is plain HTML with `wp-block-*` classes and no `<!-- wp:… -->` block
+delimiters at all (confirmed 2026-08-13, see CLAUDE.md's "Known traps"), so block-level ops can
+never target it; the error is not evidence of anything wrong, it's just the wrong tool for this
+page. Use the documented safe procedure instead:
+
+1. Fetch the page with `pages.get` (or equivalent) using **`context: "edit"`** — never without
+   it, or dynamic blocks come back as flattened front-end fallbacks and writing that back
+   destroys them (this has broken live contact forms twice; see CLAUDE.md).
+2. Locate the button for this category in the fetched content and change only its `(N
+   exercises)` count — while you're there, spot-check every other hardcoded `(N exercises)`
+   count on the page against `data/exercises.json`/`node topic-pool.js`, since those drift
+   silently and nothing else catches it.
+3. Call `pages.update` with the **full edited content string** (the API only writes fields you
+   send, but `content` must be the complete page, not a fragment).
+4. Verify by re-fetching with `context: "edit"` again and diffing against what you intended to
+   send, and a `context: "view"` fetch to confirm the buttons still render as real links.
+
+Never open 1763 in the WordPress block editor — its `_crdt_document` holds a much older
+snapshot and opening the editor risks restoring that over the live page.
+
+The button format is:
 
 ```html
 <div class="wp-block-button">
@@ -327,7 +298,8 @@ served to students.)
 
 Save the HTML file to `~/Claude Files/Cowork` (create the folder if it doesn't exist; if it
 isn't accessible from the session, fall back to the workspace outputs folder and tell Shaun).
-Present it to Shaun using `present_files`,
+Present it to Shaun using whichever file-delivery tool is available in this session (`present_files`
+in Cowork, `SendUserFile` in Claude Code) — don't assume the name, check what's actually offered —
 then tell him the exercise is live with a one-line summary (topic, grammar focus, number of
 exercises, CEFR level) and the direct URL:
 `https://activities.englishonline.training/<filename>.html`
