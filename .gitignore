@@ -19,3 +19,6 @@ Thumbs.db
 # Logs and scratch output
 *.log
 /tmp/
+
+# Audit script run-state (ephemeral, per-machine)
+data/*-state.json

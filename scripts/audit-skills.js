@@ -21,6 +21,51 @@ const { execSync } = require('child_process');
 
 const ROOT = path.resolve(__dirname, '..');
 const SKILLS_DIR = path.join(ROOT, '.claude', 'skills');
+const STATE_PATH = path.join(ROOT, 'data', 'audit-skills-state.json');
+
+function readState() {
+  try { return JSON.parse(fs.readFileSync(STATE_PATH, 'utf8')); }
+  catch { return null; }
+}
+
+function writeState(state) {
+  state.ts = new Date().toISOString();
+  fs.writeFileSync(STATE_PATH, JSON.stringify(state, null, 2) + '\n');
+}
+
+function printDelta(prev, curr) {
+  const added = curr.missing.filter(m => !prev.missing.includes(m));
+  const resolved = prev.missing.filter(m => !curr.missing.includes(m));
+  const newWarns = curr.warnings.filter(w =>
+    !prev.warnings.some(pw => pw.skill === w.skill && pw.msg === w.msg));
+  const goneWarns = prev.warnings.filter(w =>
+    !curr.warnings.some(cw => cw.skill === w.skill && cw.msg === w.msg));
+  const newScriptIssues = curr.scriptIssues.filter(s =>
+    !prev.scriptIssues.some(ps => ps.skill === s.skill && ps.script === s.script));
+  const goneScriptIssues = prev.scriptIssues.filter(s =>
+    !curr.scriptIssues.some(cs => cs.skill === s.skill && cs.script === s.script));
+
+  const anyChange = added.length || resolved.length || newWarns.length ||
+    goneWarns.length || newScriptIssues.length || goneScriptIssues.length ||
+    prev.skillsScanned !== curr.skillsScanned || prev.totalRefs !== curr.totalRefs;
+
+  if (!anyChange) {
+    console.log('No changes since last run (' + prev.ts + ').');
+    return;
+  }
+
+  console.log('Changes since ' + prev.ts + ':');
+  if (curr.skillsScanned !== prev.skillsScanned)
+    console.log(`  Skills scanned: ${prev.skillsScanned} → ${curr.skillsScanned}`);
+  if (curr.totalRefs !== prev.totalRefs)
+    console.log(`  File references: ${prev.totalRefs} → ${curr.totalRefs}`);
+  for (const m of added) console.log(`  NEW MISS   ${m}`);
+  for (const m of resolved) console.log(`  RESOLVED   ${m}`);
+  for (const w of newWarns) console.log(`  NEW WARN   [${w.skill}] ${w.msg}`);
+  for (const w of goneWarns) console.log(`  GONE WARN  [${w.skill}] ${w.msg}`);
+  for (const s of newScriptIssues) console.log(`  NEW SCRIPT ${s.skill}: ${s.script} — ${s.reason}`);
+  for (const s of goneScriptIssues) console.log(`  FIXED SCRIPT ${s.skill}: ${s.script}`);
+}
 
 // ── Collect skill files ─────────────────────────────────────────────────────
 
@@ -235,6 +280,18 @@ function main() {
     report.skills.push(skillReport);
   }
 
+  // ── State ───────────────────────────────────────────────────────────────
+
+  const prev = readState();
+  const currentState = {
+    skillsScanned: skillFiles.length,
+    totalRefs,
+    missing: report.missing.map(m => m.path),
+    warnings: report.warnings.map(w => ({ skill: w.skill, msg: w.msg })),
+    scriptIssues: report.scripts.map(s => ({ skill: s.skill, script: s.script, reason: s.reason })),
+  };
+  writeState(currentState);
+
   // ── Output ──────────────────────────────────────────────────────────────
 
   if (jsonMode) {
@@ -278,6 +335,13 @@ function main() {
     console.log('All clear — every referenced asset exists and every script parses.');
   } else {
     console.log(`${totalMissing} missing file(s), ${report.scripts.length} script issue(s).`);
+  }
+
+  if (prev && !args.includes('--no-diff')) {
+    console.log();
+    console.log('Δ Delta');
+    console.log('-'.repeat(40));
+    printDelta(prev, currentState);
   }
 
   process.exit(totalMissing > 0 || report.scripts.length > 0 ? 1 : 0);

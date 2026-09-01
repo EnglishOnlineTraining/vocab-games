@@ -21,6 +21,49 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
+const STATE_PATH = path.join(ROOT, 'data', 'watchdog-state.json');
+
+function readState() {
+  try { return JSON.parse(fs.readFileSync(STATE_PATH, 'utf8')); }
+  catch { return null; }
+}
+
+function writeState(state) {
+  state.ts = new Date().toISOString();
+  fs.writeFileSync(STATE_PATH, JSON.stringify(state, null, 2) + '\n');
+}
+
+function errorKey(err) {
+  if (err.type === 'dead-link') return err.file + '→' + err.href;
+  if (err.type === 'dup-id') return err.file + '#' + err.id;
+  return err.msg || JSON.stringify(err);
+}
+
+function printDelta(prev, curr) {
+  const checks = Object.keys(curr.checks);
+  let anyChange = false;
+
+  for (const ck of checks) {
+    const prevErrs = (prev.checks[ck] && prev.checks[ck].errors) || [];
+    const currErrs = curr.checks[ck].errors;
+    const prevKeys = new Set(prevErrs.map(errorKey));
+    const currKeys = new Set(currErrs.map(errorKey));
+
+    const added = currErrs.filter(e => !prevKeys.has(errorKey(e)));
+    const resolved = prevErrs.filter(e => !currKeys.has(errorKey(e)));
+
+    if (added.length || resolved.length) {
+      anyChange = true;
+      console.log(`  ${ck}:`);
+      for (const e of added) console.log(`    NEW    ${errorKey(e)}`);
+      for (const e of resolved) console.log(`    FIXED  ${errorKey(e)}`);
+    }
+  }
+
+  if (!anyChange) {
+    console.log('No changes since last run (' + prev.ts + ').');
+  }
+}
 
 // ── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -263,6 +306,20 @@ function main() {
     allErrors.push(...errs);
   }
 
+  // ── State ───────────────────────────────────────────────────────────────
+
+  const prev = readState();
+  const currentState = { checks: {} };
+  for (const [key, result] of Object.entries(results)) {
+    currentState.checks[key] = {
+      ok: result.errors.length === 0,
+      errors: result.errors,
+    };
+  }
+  writeState(currentState);
+
+  // ── Output ─────────────────────────────────────────────────────────────
+
   if (jsonMode) {
     console.log(JSON.stringify(results, null, 2));
     process.exit(allErrors.length > 0 ? 1 : 0);
@@ -293,6 +350,13 @@ function main() {
     console.log('All checks passed.');
   } else {
     console.log(`${allErrors.length} total issue(s) found.`);
+  }
+
+  if (prev && !args.includes('--no-diff')) {
+    console.log();
+    console.log('Δ Delta');
+    console.log('-'.repeat(40));
+    printDelta(prev, currentState);
   }
 
   process.exit(allErrors.length > 0 ? 1 : 0);
