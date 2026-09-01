@@ -23,6 +23,57 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
+const STATE_PATH = path.join(ROOT, 'data', 'grade-submission-state.json');
+
+function readState() {
+  try { return JSON.parse(fs.readFileSync(STATE_PATH, 'utf8')); }
+  catch { return null; }
+}
+
+function writeState(state) {
+  state.ts = new Date().toISOString();
+  fs.writeFileSync(STATE_PATH, JSON.stringify(state, null, 2) + '\n');
+}
+
+function computeStats() {
+  const units = Object.keys(EXPLANATIONS);
+  let totalGaps = 0;
+  const categories = {};
+
+  for (const u of units) {
+    const prefix = u.split('-')[0] || 'other';
+    categories[prefix] = (categories[prefix] || 0) + 1;
+    for (const sk of Object.keys(EXPLANATIONS[u])) {
+      totalGaps += Object.keys(EXPLANATIONS[u][sk].gaps || {}).length;
+    }
+  }
+
+  return { unitCount: units.length, totalGaps, categories };
+}
+
+function printStatsDelta(prev, curr) {
+  const unitDiff = curr.unitCount - prev.unitCount;
+  const gapDiff = curr.totalGaps - prev.totalGaps;
+
+  if (unitDiff === 0 && gapDiff === 0) {
+    console.log('No changes since last run (' + prev.ts + ').');
+    return;
+  }
+
+  console.log('Changes since ' + prev.ts + ':');
+  if (unitDiff !== 0)
+    console.log(`  Units: ${prev.unitCount} → ${curr.unitCount} (${unitDiff > 0 ? '+' : ''}${unitDiff})`);
+  if (gapDiff !== 0)
+    console.log(`  Gaps: ${prev.totalGaps} → ${curr.totalGaps} (${gapDiff > 0 ? '+' : ''}${gapDiff})`);
+
+  const allCats = new Set([...Object.keys(prev.categories || {}), ...Object.keys(curr.categories)]);
+  for (const cat of [...allCats].sort()) {
+    const p = (prev.categories || {})[cat] || 0;
+    const c = curr.categories[cat] || 0;
+    if (p !== c) console.log(`  ${cat}: ${p} → ${c}`);
+  }
+}
+
 const EXPLANATIONS = JSON.parse(
   fs.readFileSync(path.join(ROOT, 'data', 'explanations.json'), 'utf8')
 );
@@ -192,26 +243,26 @@ RULES:
 // ── Stats ───────────────────────────────────────────────────────────────────
 
 function showStats() {
-  const units = Object.keys(EXPLANATIONS);
-  let totalGaps = 0;
-  const byPrefix = {};
-
-  for (const u of units) {
-    const prefix = u.split('-')[0] || 'other';
-    byPrefix[prefix] = (byPrefix[prefix] || 0) + 1;
-    for (const sk of Object.keys(EXPLANATIONS[u])) {
-      totalGaps += Object.keys(EXPLANATIONS[u][sk].gaps || {}).length;
-    }
-  }
+  const args = process.argv.slice(2);
+  const stats = computeStats();
+  const prev = readState();
+  writeState(stats);
 
   console.log('Submission Grader — Coverage');
   console.log('='.repeat(40));
-  console.log(`Units with answer keys: ${units.length}`);
-  console.log(`Total gradable gaps: ${totalGaps}`);
+  console.log(`Units with answer keys: ${stats.unitCount}`);
+  console.log(`Total gradable gaps: ${stats.totalGaps}`);
   console.log();
   console.log('By category:');
-  for (const [prefix, count] of Object.entries(byPrefix).sort((a, b) => b[1] - a[1])) {
+  for (const [prefix, count] of Object.entries(stats.categories).sort((a, b) => b[1] - a[1])) {
     console.log(`  ${prefix}: ${count} units`);
+  }
+
+  if (prev && !args.includes('--no-diff')) {
+    console.log();
+    console.log('Δ Delta');
+    console.log('-'.repeat(40));
+    printStatsDelta(prev, stats);
   }
 }
 
@@ -250,6 +301,9 @@ function main() {
   }
 
   const result = gradeSubmission(payload);
+
+  // Write stats state on every grading run too (cheap to compute)
+  writeState(computeStats());
 
   if (args.includes('--json')) {
     console.log(JSON.stringify(result, null, 2));

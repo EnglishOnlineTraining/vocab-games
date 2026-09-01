@@ -26,6 +26,53 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
+const STATE_PATH = path.join(ROOT, 'data', 'search-opportunities-state.json');
+
+function readState() {
+  try { return JSON.parse(fs.readFileSync(STATE_PATH, 'utf8')); }
+  catch { return null; }
+}
+
+function writeState(state) {
+  state.ts = new Date().toISOString();
+  fs.writeFileSync(STATE_PATH, JSON.stringify(state, null, 2) + '\n');
+}
+
+function printDelta(prev, curr) {
+  let anyChange = false;
+
+  // Audit diffs — compare file lists per issue type
+  if (prev.audit && curr.audit) {
+    for (const type of new Set([...Object.keys(prev.audit), ...Object.keys(curr.audit)])) {
+      const prevFiles = prev.audit[type] || [];
+      const currFiles = curr.audit[type] || [];
+      const added = currFiles.filter(f => !prevFiles.includes(f));
+      const fixed = prevFiles.filter(f => !currFiles.includes(f));
+      if (added.length || fixed.length) {
+        anyChange = true;
+        for (const f of added) console.log(`  NEW    [${type}] ${f}`);
+        for (const f of fixed) console.log(`  FIXED  [${type}] ${f}`);
+      }
+    }
+  }
+
+  // Gap diffs — compare by query string
+  if (prev.gaps && curr.gaps) {
+    const prevQueries = new Set(prev.gaps.map(g => g.query));
+    const currQueries = new Set(curr.gaps.map(g => g.query));
+    const newGaps = curr.gaps.filter(g => !prevQueries.has(g.query));
+    const goneGaps = prev.gaps.filter(g => !currQueries.has(g.query));
+    if (newGaps.length || goneGaps.length) {
+      anyChange = true;
+      for (const g of newGaps) console.log(`  NEW GAP     "${g.query}" [${g.status}]`);
+      for (const g of goneGaps) console.log(`  NOW COVERED "${g.query}"`);
+    }
+  }
+
+  if (!anyChange) {
+    console.log('No changes since last run (' + prev.ts + ').');
+  }
+}
 
 // ── High-demand ESL grammar queries (based on search volume research) ───────
 // These are the queries German students and ESL learners actually type.
@@ -189,12 +236,24 @@ function main() {
   const args = process.argv.slice(2);
   const runAll = args.includes('--all') || args.length === 0;
 
+  const prev = readState();
+  const currentState = {};
+
   console.log('Search Opportunities Report');
   console.log('='.repeat(60));
 
   if (runAll || args.includes('--audit')) {
     console.log('\n## Page SEO Audit\n');
     const issues = auditPages();
+
+    // Build audit state: file lists per issue type
+    const auditState = {};
+    for (const i of issues) {
+      auditState[i.type] = auditState[i.type] || [];
+      auditState[i.type].push(i.file);
+    }
+    currentState.audit = auditState;
+
     if (issues.length === 0) {
       console.log('All pages have complete meta tags.');
     } else {
@@ -217,6 +276,9 @@ function main() {
   if (runAll || args.includes('--gaps')) {
     console.log('\n## Topic Gap Analysis\n');
     const { gaps, covered } = analyseGaps();
+
+    currentState.gaps = gaps.map(g => ({ query: g.query, status: g.status }));
+    currentState.covered = covered.map(c => ({ query: c.query, topic: c.topic }));
 
     console.log(`Covered (${covered.length}):`);
     for (const c of covered) {
@@ -254,6 +316,16 @@ function main() {
         console.log(`  "${o.query}" — ${o.impressions} imp, ${o.clicks} clicks, pos ${o.position.toFixed(1)}`);
       }
     }
+  }
+
+  // Write state after all checks
+  writeState(currentState);
+
+  if (prev && !args.includes('--no-diff')) {
+    console.log();
+    console.log('Δ Delta');
+    console.log('-'.repeat(40));
+    printDelta(prev, currentState);
   }
 }
 
