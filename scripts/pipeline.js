@@ -125,9 +125,17 @@ const VALIDATORS = [
 //                            inline <script> (the EXPLAIN block) — run before
 //                            the build it would be parsing the previous run's
 //                            output, exactly the trap described above.
+//   check-grade-table.js     exercise.js owns the single shared Punktetabelle,
+//                            but a self-contained timed test (the
+//                            uni-pm-vocabulary.html pattern) cannot load it and
+//                            must inline a copy to grade at all. Edit the shared
+//                            table and those copies would silently keep grading
+//                            on the old thresholds, with nothing on screen
+//                            looking wrong. This fails the build on that drift.
 const CHECKERS = [
   { id: 'validate-schema', run: 'scripts/validate-schema.js' },
   { id: 'check-syntax', run: 'scripts/check-syntax.js' },
+  { id: 'check-grade-table', run: 'scripts/check-grade-table.js' },
 ];
 
 // Generators deliberately left outside the graph. Their inputs change roughly
