@@ -65,7 +65,7 @@ Filename: `<prefix><topic>-vocab-practice.html` — e.g. `9c-australia-vocab-pra
 
 ## Step 2 — Write the data file
 
-Everything the page says is authored here, then generated. Write it to the scratchpad, not the repo — it is an input, not an artefact.
+Everything the page says is authored here, then generated. **Keep it in the repo at `data/vocab-practice/<prefix><topic>.json`** and commit it with the page. Without the source, the only way to fix one definition later is to hand-edit the generated page — which the next rebuild throws away. The data file is the page.
 
 ```json
 {
@@ -146,7 +146,7 @@ There are two "Check" buttons on the page, one per graded step; scope the click 
 
 1. `node scripts/build.js` — this adds the generated `<head>`, the no-JS banner, the "Auf einen Blick" box and the JSON-LD, and registers the page in `data/exercises.json`, `activities.html` and `sitemap.xml`. It is also the barrier that keeps `build-head.js` last; don't run the generators by hand.
 2. Add a card on the matching `*-activities.html` hub (hand-maintained, one `<li><a class="activity-card">` — copy a neighbour). The filterable index on `activities.html` is generated and needs no edit.
-3. Commit the page **and the data file's content in the commit message or the data file itself if Shaun wants it kept** — otherwise the authored definitions exist only in one HTML file.
+3. Commit the page **together with its `data/vocab-practice/*.json`** — they are one change, and the page cannot be regenerated without the data file.
 4. Push. GitHub Pages deploys from `main`; the auto-rebuild workflow re-runs the generators if step 1 was skipped.
 
 ---

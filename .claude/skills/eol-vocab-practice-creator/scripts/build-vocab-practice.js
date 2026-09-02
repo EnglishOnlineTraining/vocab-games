@@ -173,7 +173,7 @@ const html = `<!DOCTYPE html>
     </div>
 
     <div class="exercise-overview">
-      <div class="ov-card"><div class="ov-icon">📖</div><strong>Ex A – The word list</strong>Read the ${words.length} words and what they mean</div>
+      <div class="ov-card"><div class="ov-icon">📖</div><strong>Ex A – The vocabulary list</strong>Read the ${words.length} words and what they mean</div>
       <div class="ov-card locked"><div class="ov-icon">🔤</div><strong>Ex B – What does it mean?</strong>Choose the right meaning for each word</div>
       <div class="ov-card locked"><div class="ov-icon">📝</div><strong>Ex C – Use the word</strong>Put each word into a sentence</div>
     </div>
@@ -201,7 +201,11 @@ const html = `<!DOCTYPE html>
 <section id="step-1" class="step">
   <div class="step-inner">
     <span class="ex-badge">Exercise A</span>
-    <h2 class="ex-title">The word list</h2>
+    <!-- "vocabulary", not "word", is deliberate: build-exercise-data.js reads the
+         ex-titles to file a page under a skill and defaults anything it cannot
+         place to "grammar", which would hide this page from the Vocabulary
+         filter students actually use. Renaming this heading re-files the page. -->
+    <h2 class="ex-title">The vocabulary list</h2>
     <p class="ex-subtitle">These are all ${words.length} words. Nothing else is tested, here or in the test — read them once, then start Exercise B.</p>
 
     <style id="wl-style">
