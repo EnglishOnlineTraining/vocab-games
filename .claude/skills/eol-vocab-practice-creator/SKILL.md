@@ -151,6 +151,28 @@ There are two "Check" buttons on the page, one per graded step; scope the click 
 
 ---
 
+## Rebuilding a page that already exists
+
+Check `data/explanations.json` for the page's `UNIT` **before** you rebuild. The
+gap ids change — an older hand-built page numbers its gaps `exA-g1…exB-g10`,
+while a generated one uses `exB-*` and `exC-*` and has as many gaps as there are
+words — so any existing entry now points at gaps that no longer exist, and
+`validate-explanations.js` fails the whole build. This happened on the first
+rebuild of `9g-australia-vocab-practice`.
+
+Rewrite the entry against the new gaps rather than deleting it. Deleting looks
+tidy and quietly costs content: `build-review-pages.js` draws the *Mixed
+Revision* page for the whole year group out of `data/explanations.json`, so a
+removed unit disappears from a page nobody was looking at.
+
+The cloze exercise is the half worth explaining. In the meaning exercise the
+correct option *is* the definition, so a `why` there would only repeat what the
+student can already read. Read the gap ids out of the built page when you write
+the entry — the generator shuffles the cloze order, so hand-numbering attaches
+explanations to the wrong sentences.
+
+---
+
 ## Things that have already gone wrong once
 
 - **The words-to-focus-on panel needs `state.attempts`, which only fills when the student presses Check.** A student who selects answers and clicks straight through gets an honest "you did not check any answers" rather than a false "nothing to focus on". Keep that message; it is not a bug.
