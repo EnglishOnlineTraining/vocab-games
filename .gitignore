@@ -6,6 +6,10 @@ package-lock.json
 .env
 .env.*
 
+# Python
+__pycache__/
+*.pyc
+
 # OS noise
 .DS_Store
 Thumbs.db
@@ -15,6 +19,9 @@ Thumbs.db
 .vscode/
 *.swp
 *~
+
+# Claude Code local settings (may contain secrets)
+.claude/settings.local.json
 
 # Logs and scratch output
 *.log
