@@ -20,6 +20,9 @@ Thumbs.db
 *.swp
 *~
 
+# Claude Code local settings (may contain secrets)
+.claude/settings.local.json
+
 # Logs and scratch output
 *.log
 /tmp/
