@@ -20,6 +20,26 @@ Do not ask about question counts, timings, or anti-cheat settings — those are 
 
 ---
 
+## Step 1b — The definitions are English, whatever the source list says
+
+**Gymnasium work never contains German; Oberschule only when Shaun asks for it**
+(the standing rule in CLAUDE.md). Klett word lists arrive as English–German, so the
+`d` field of every `VOCAB_BANK` entry is the easiest thing in the world to fill with
+a German translation. Don't: write a short English definition using simpler words
+than the word being defined.
+
+This matters doubly here because the test is the assessment. If the practice page
+teaches English definitions and the test asks for German translations, the two
+rehearse different skills and the practice stops preparing anyone for the test —
+which is exactly what happened to the Australia pair before it was fixed.
+
+Where a practice page already exists for the same list, its
+`data/vocab-practice/*.json` already holds an authored English definition per word.
+Take the definitions from there rather than writing them twice: one wording for the
+unit means practice and test agree by construction.
+
+---
+
 ## Step 2 — Parse the vocabulary list
 
 Shaun will paste the list. Handle these common formats:

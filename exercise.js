@@ -626,6 +626,111 @@ function renderScore() {
 }
 
 /* ============================================================
+   WORDS TO FOCUS ON — vocabulary practice pages
+
+   The payoff of a vocabulary practice page is not the score, it is
+   telling the student which words to go away and learn. The
+   graded-attempt scorer already records every check in
+   state.attempts[scoreKey][gapKey] as { n, earned, done }, so the weak
+   words can be read straight back out of it — a page needs no extra
+   bookkeeping, only a map saying which word each gap tested:
+
+     var FOCUS_LABELS = { 'exB.g1': 'to struggle', 'exC.g1': 'to attend', … };
+     renderFocusWords('focus-words', FOCUS_LABELS);   // from buildSummary()
+
+   A word normally appears in more than one exercise (its meaning, then
+   its use in a sentence). It is reported once, at its worst result, so a
+   word recognised in isolation but missed in context still surfaces.
+   A gap that was never checked counts as unpractised rather than known —
+   silence is not evidence of knowledge, and saying "nothing to focus on"
+   to a student who never pressed Check would be a lie.
+============================================================ */
+function eolFocusWords(labels) {
+  var byWord = {};
+  Object.keys(labels || {}).forEach(function(ref) {
+    var dot = ref.indexOf('.');
+    var tries = state.attempts && state.attempts[ref.slice(0, dot)];
+    var rec = tries && tries[ref.slice(dot + 1)];
+    var word = labels[ref];
+    var w = byWord[word] || (byWord[word] = { word: word, tries: 0, missed: false, checked: false });
+    if (!rec) return;
+    w.checked = true;
+    if (rec.n > w.tries) w.tries = rec.n;
+    if (!rec.done) w.missed = true;
+  });
+  var out = { missed: [], shaky: [], solid: [], unpractised: [] };
+  Object.keys(byWord).forEach(function(k) {
+    var w = byWord[k];
+    if (!w.checked)      out.unpractised.push(w);
+    else if (w.missed)   out.missed.push(w);
+    else if (w.tries > 1) out.shaky.push(w);
+    else                 out.solid.push(w);
+  });
+  return out;
+}
+
+/* Styles ship with the function rather than in style.css, because a number
+   of framework pages never load style.css — same reason the chrome and a11y
+   styles are injected. Status is carried by words, not colour alone. */
+function eolFocusStyle() {
+  if (document.getElementById('eol-focus-style')) return;
+  var st = document.createElement('style');
+  st.id = 'eol-focus-style';
+  st.textContent = '.fw-list{list-style:none;padding:0;margin:.5rem 0 0}'
+    + '.fw-list li{padding:.4rem 0;border-bottom:1px solid var(--border,#dce3ec);font-size:.92rem;'
+    + 'display:flex;flex-wrap:wrap;gap:.5rem;align-items:baseline}'
+    + '.fw-list li:last-child{border-bottom:none}'
+    + '.fw-word{font-weight:700;color:var(--text,#1d2b3a)}'
+    + '.fw-why{font-size:.82rem;color:var(--muted,#6b7a8d)}'
+    + '.fw-note{font-size:.88rem;color:var(--muted,#6b7a8d);margin:.5rem 0 0;line-height:1.5}'
+    + '@media (prefers-color-scheme:dark){.fw-word{color:var(--text,#e6edf5)}'
+    + '.fw-list li{border-color:var(--border,#2f3d4d)}}';
+  document.head.appendChild(st);
+}
+
+function eolFocusRow(w) {
+  var why = w.missed ? 'not right yet' : 'took ' + w.tries + ' tries';
+  return '<li><span class="fw-word">' + esc(w.word) + '</span>'
+    + '<span class="fw-why">' + why + '</span></li>';
+}
+
+function renderFocusWords(containerId, labels) {
+  var box = document.getElementById(containerId);
+  if (!box) return;                       // page didn't ask for the panel
+  var f = eolFocusWords(labels);
+  var checked = f.missed.length + f.shaky.length + f.solid.length;
+  if (!checked && !f.unpractised.length) { box.style.display = 'none'; return; }
+  eolFocusStyle();
+  box.style.display = 'block';
+
+  var html = '<div class="card"><div class="card-title">Words to focus on</div>';
+  if (!checked) {
+    html += '<p class="fw-note">You did not check any answers, so there is nothing to report yet. '
+         +  'Go back through the exercises and press <strong>Check</strong> — then this list tells you '
+         +  'exactly which words to revise.</p>';
+  } else {
+    var focus = f.missed.concat(f.shaky);
+    if (focus.length) {
+      html += '<p class="fw-note">These ' + focus.length + ' word' + (focus.length === 1 ? '' : 's')
+           +  ' gave you trouble. Learn these first — the rest you already know.</p>'
+           +  '<ul class="fw-list">' + focus.map(eolFocusRow).join('') + '</ul>';
+    } else {
+      html += '<p class="fw-note">Every word you checked was right first time. '
+           +  'Nothing to focus on — well done. 🎉</p>';
+    }
+    if (f.solid.length) {
+      html += '<p class="fw-note">Right first time: ' + f.solid.length + ' word'
+           +  (f.solid.length === 1 ? '' : 's') + '.</p>';
+    }
+    if (f.unpractised.length) {
+      html += '<p class="fw-note">You did not check ' + f.unpractised.length + ' word'
+           +  (f.unpractised.length === 1 ? '' : 's') + ', so they are not counted here either way.</p>';
+    }
+  }
+  box.innerHTML = html + '</div>';
+}
+
+/* ============================================================
    REVIEW-PAGE EXPLANATIONS
    A page defines an EXPLAIN map and calls, from buildSummary():
      renderExplanations('explanations', collectExplanations());

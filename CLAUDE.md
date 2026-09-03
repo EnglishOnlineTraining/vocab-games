@@ -12,6 +12,36 @@ Static HTML exercise pages for English language learners, hosted on GitHub Pages
 
 ---
 
+## Language rule — English-only task content (Shaun, 2026-09-03)
+
+**Gymnasium work never contains German. Oberschule work contains German only when
+Shaun specifically asks for it.** This covers everything a student is asked to work
+with: word lists, definitions, glossaries, task instructions, answer options,
+explanations. A German gloss lets a student match two strings and move on without
+processing the English, which is the one thing these pages exist to make them do —
+so define an English word with simpler English words instead of translating it.
+
+Applies whatever language the source material is in. Klett word lists are
+English–German; read the German to be sure which sense is meant, then write the
+English definition for that sense and drop the German.
+
+**Not covered by this rule** (deliberate, and documented elsewhere in this file):
+the site chrome `exercise.js` and `build-head.js` inject site-wide (breadcrumb,
+footer, practise button, rubric, the German half of the no-JS banner,
+`og:image:alt`, the German names in the JSON-LD), the `themen/` topic pages, and
+the ten `gr-*` pages — those target German search traffic and are marked `lang="de"`.
+The **grade scale is also exempt**: `Note 1 (Sehr gut)` … is the official German
+scale, it lives in `exercise.js`, and `scripts/check-grade-table.js` fails the build
+if a page's copy diverges.
+
+Audited 2026-09-03: the only page in the corpus that broke this was
+`9g-summer-revision.html` (a German glossary under a reading text), now English.
+`7c-dictionary-skills.html`, `msa-c-american-dream.html` and
+`msa-c-speaking-discussion.html` still carry German — all Oberschule, and in the
+dictionary-skills page the German *is* the exercise. Ask before changing those.
+
+---
+
 ## Verify before calling a task done
 
 State a brief success criterion per step before doing it, and check it before moving on —
@@ -786,6 +816,42 @@ consistent with how tab-switching is already handled.
 Both test pages verified end-to-end with Playwright (release-code gate, timer, extra-time scaling,
 paste/tab-switch/devtools/translation anti-cheat signals, per-student seeded item shuffling, full
 answer-key grading) with the Make webhook intercepted so no real submission was ever sent.
+
+---
+
+## Tests are unlisted, and `teacher-tests.html` is the index (Shaun, 2026-09-03)
+
+**No test is linked from any hub, from `activities.html`, or from the sitemap.** A test a
+student can find is a test they can sit before the class does. Vocabulary *practice*
+pages are the opposite — they belong on their year hub, because the point is that
+students use them.
+
+`teacher-tests.html` is the unlisted index of every test, for Shaun. It lists each
+test with its class, format and release code. Three things keep it hidden and each
+has to stay true:
+
+1. **The filename is deliberately not `*-activities.html`.** `build-topic-pages.js`
+   puts every file matching `/activities\.html$/` into `sitemap.xml`, and
+   `build-hub.js` counts them for the "Course collections" figure on
+   `activities.html`. Renaming it `teacher-tests-activities.html` would publish it
+   twice over.
+2. `<meta name="robots" content="noindex,nofollow">`, so a leaked URL stays out of
+   search results.
+3. Nothing links to it. **Adding a card for it anywhere defeats the whole thing.**
+
+It is deliberately **not** in `robots.txt`: that file is public, so a `Disallow` line
+would advertise the URL it is meant to protect.
+
+**Release codes.** Four of the seven tests have the soft `RELEASE_CODE` gate (a screen
+between registration and the rules): `9ab-` `REVIEW9AB2026`, `10a-` `REVIEW10A2026`,
+`9c-australia-vocab-test` `AUS9C2026`, `9g-australia-vocab-test` `AUS9G2026`. Change the
+string for a new sitting; no redeploy needed beyond the push. It is a timing gate, not
+security — the code is readable in page source.
+
+**`uni-pm-vocabulary.html`, `9g-class-test-9ab.html` and `uni-writing-task.html` have no
+gate, and that is deliberate** (Shaun, 2026-09-03): they are unlikely to be sat again, so
+the gate would be work spent on tests with no next sitting to protect. Don't add it to
+them — leave the decision to Shaun if one of them is ever reused.
 
 ---
 

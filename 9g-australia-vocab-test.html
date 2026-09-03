@@ -147,11 +147,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <input type="text" id="inp-name" placeholder="e.g. Maria Schmidt" autocomplete="off" spellcheck="false">
       </div>
       <div class="form-group">
-        <label for="inp-group">Klasse</label>
+        <label for="inp-group">Class</label>
         <input type="text" id="inp-group" placeholder="e.g. 9a" autocomplete="off">
       </div>
       <div id="reg-err" class="alert alert-danger">Please enter both your name and your course before continuing.</div>
       <button class="btn btn-primary" onclick="goRules()">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 1b: RELEASE-CODE LOCK -->
+<div id="s-lock" class="screen">
+  <div class="container">
+    <div class="card">
+      <div style="font-size:2.6rem;text-align:center;margin-bottom:.4rem">🔒</div>
+      <h2 style="text-align:center">This test is locked</h2>
+      <p style="text-align:center;color:#718096">Your teacher will give you a code in class when it is time to start. Enter it below to continue.</p>
+      <div class="form-group" style="margin-top:18px">
+        <label for="inp-code">Release code</label>
+        <input type="text" id="inp-code" placeholder="Enter the code your teacher gave you" autocomplete="off" spellcheck="false">
+      </div>
+      <div id="lock-err" class="alert alert-danger">That code is not correct. Ask your teacher for today's code.</div>
+      <button class="btn btn-primary" onclick="checkCode()">Unlock →</button>
+      <button class="btn btn-outline" onclick="show('s-register')" style="margin-left:10px">← Back</button>
     </div>
   </div>
 </div>
@@ -250,6 +268,10 @@ const SHEET_URL = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj'; 
 const EMAIL     = 'englishonlinetraining@pm.me';
 const EXAM_MINS = 15;
 const GATE_MINS = 2;
+/* Soft timing gate: stops a class starting before the teacher says so.
+   It is visible in the page source, so it is not security — change the
+   string for each sitting. */
+const RELEASE_CODE = 'AUS9G2026';
 const UNIT      = '9g-australia-vocab-test'; // Make routes on `unit`, not a sheet tab
 const Q_TOTAL   = 20;
 const MATCH_N   = 10;
@@ -308,7 +330,7 @@ function lookupGrade(earned, possible) {
   return { note: 5, label: GRADE_LABELS[4] };
 }
 const vnorm=s=>String(s).trim().toLowerCase().replace(/[\u2018\u2019\u02BC`\u00B4]/g,"'").replace(/^to\s+/,'').replace(/\s+/g,' ');
-const VOCAB_BANK = [{"t":"G'day","d":"Guten Tag; Hallo (Begrüßung in Australien)"},{"t":"youth hostel","d":"Jugendherberge"},{"t":"to gleam","d":"glänzen; schimmern"},{"t":"cluster","d":"Bündel; Anhäufung"},{"t":"giant","d":"Riesen-; riesig"},{"t":"seashell","d":"Muschel"},{"t":"to overhear","d":"belauschen; zufällig mit anhören (falscher Freund – nicht „überhören“)"},{"t":"owner","d":"Besitzer/-in"},{"t":"terrace","d":"Terrasse"},{"t":"snake","d":"Schlange"},{"t":"air ambulance","d":"Rettungshubschrauber"},{"t":"satellite","d":"Satellit"},{"t":"to go off","d":"weggehen"},{"t":"on one's own","d":"allein; für sich"},{"t":"bushwalking","d":"Buschwandern"},{"t":"box jellyfish","d":"Würfelqualle"},{"t":"marine stinger","d":"Seewespe (Würfelquallen-Art)"},{"t":"to net off","d":"durch ein Netz abtrennen"},{"t":"to be likely","d":"wahrscheinlich sein"},{"t":"rip current","d":"Brandungsrückströmung"},{"t":"to be swept out to sea","d":"aufs offene Meer getrieben werden"},{"t":"comforting","d":"tröstlich; ermutigend"},{"t":"safety","d":"Sicherheit"},{"t":"to call off","d":"abbrechen; absagen"},{"t":"risk","d":"Gefahr; Risiko"},{"t":"spokesperson","d":"Sprecher/-in; PR-Sprecher/-in"},{"t":"association","d":"Verband; Organisation"},{"t":"survival","d":"Überleben"},{"t":"climatic","d":"klimatisch"},{"t":"mostly","d":"meistens; größtenteils; hauptsächlich"},{"t":"interior","d":"Inneres; Landesinneres"},{"t":"to show sb around","d":"jmdn. (an einem Ort) herumführen"},{"t":"barbie","d":"Grillparty (umgangssprachlich für barbecue)"},{"t":"to serve","d":"servieren; dienen; bedienen"},{"t":"to pick","d":"pflücken"},{"t":"litter","d":"Müll; Abfall"},{"t":"track","d":"Weg; Pfad"},{"t":"to disturb","d":"stören"},{"t":"site","d":"Ort; Gelände; Schauplatz"},{"t":"to damage","d":"schaden; beschädigen"},{"t":"lizard","d":"Echse; Eidechse"},{"t":"deadly","d":"tödlich"}];
+const VOCAB_BANK = [{"t":"G'day","d":"the Australian way of saying hello"},{"t":"youth hostel","d":"a cheap place where young travellers can sleep"},{"t":"to gleam","d":"to shine softly"},{"t":"cluster","d":"a small group of things close together"},{"t":"giant","d":"extremely large"},{"t":"seashell","d":"the hard cover of a small sea animal"},{"t":"to overhear","d":"to hear something by accident, not on purpose"},{"t":"owner","d":"the person something belongs to"},{"t":"terrace","d":"a flat area outside a house where you can sit"},{"t":"snake","d":"a long reptile with no legs"},{"t":"air ambulance","d":"an aircraft that takes ill or injured people to hospital"},{"t":"satellite","d":"a machine sent into space to send signals back"},{"t":"to go off","d":"to leave a place"},{"t":"on one's own","d":"with nobody else"},{"t":"bushwalking","d":"walking in the Australian countryside for pleasure"},{"t":"box jellyfish","d":"a square-shaped jellyfish whose sting can kill"},{"t":"marine stinger","d":"the Australian name for any stinging sea creature"},{"t":"to net off","d":"to close an area with a net"},{"t":"to be likely","d":"to probably happen"},{"t":"rip current","d":"water that pulls swimmers away from the beach"},{"t":"to be swept out to sea","d":"to be carried away from the shore by the water"},{"t":"comforting","d":"making a worried person feel better"},{"t":"safety","d":"being free from danger"},{"t":"to call off","d":"to stop or cancel something you planned"},{"t":"risk","d":"the chance that something bad happens"},{"t":"spokesperson","d":"a person who speaks officially for a group"},{"t":"association","d":"an organised group of people with a shared aim"},{"t":"survival","d":"staying alive in a dangerous situation"},{"t":"climatic","d":"to do with the weather in a region"},{"t":"mostly","d":"in most cases; usually"},{"t":"interior","d":"the inland part of a country, away from the coast"},{"t":"to show sb around","d":"to take someone through a place and explain it"},{"t":"barbie","d":"the Australian word for a barbecue"},{"t":"to serve","d":"to give food or drink to someone"},{"t":"to pick","d":"to take fruit or flowers from a plant by hand"},{"t":"litter","d":"rubbish left lying in a public place"},{"t":"track","d":"a rough path through the countryside"},{"t":"to disturb","d":"to interrupt someone or something"},{"t":"site","d":"a place where something important happens or stands"},{"t":"to damage","d":"to harm something so it no longer works well"},{"t":"lizard","d":"a small reptile with four legs and a long tail"},{"t":"deadly","d":"able to kill you"}];
 
 /* ── STATE ── */
 let sName='',sGroup='',sid='';
@@ -332,9 +354,19 @@ function goRules(){
   sGroup=document.getElementById('inp-group').value.trim();
   if(!sName||!sGroup){document.getElementById('reg-err').classList.add('show');return}
   document.getElementById('reg-err').classList.remove('show');
-  show('s-rules');
+  show('s-lock');
 }
 document.getElementById('inp-group').addEventListener('keydown',e=>{if(e.key==='Enter')goRules()});
+
+/* ── RELEASE CODE ── */
+function checkCode(){
+  const code=document.getElementById('inp-code').value.trim();
+  const err=document.getElementById('lock-err');
+  if(code.toUpperCase()!==RELEASE_CODE.toUpperCase()){err.classList.add('show');return}
+  err.classList.remove('show');
+  show('s-rules');
+}
+document.getElementById('inp-code').addEventListener('keydown',e=>{if(e.key==='Enter')checkCode()});
 
 /* ── FULLSCREEN ── */
 function goFullscreen(){

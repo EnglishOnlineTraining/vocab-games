@@ -15809,111 +15809,217 @@
     }
   },
   "9g-australia-vocab-practice": {
-    "exA": {
+    "exC": {
       "gaps": {
         "g1": {
-          "label": "Jugendherberge",
-          "correct": "youth hostel",
-          "why": "A youth hostel is cheap accommodation where young travellers can stay."
-        },
-        "g2": {
-          "label": "glänzen; schimmern",
-          "correct": "to gleam",
-          "why": "To gleam means to shine softly — the lake gleams in the sun."
-        },
-        "g3": {
-          "label": "Muschel",
-          "correct": "seashell",
-          "why": "A seashell is the hard outer covering of a sea creature."
-        },
-        "g4": {
-          "label": "Rettungshubschrauber",
-          "correct": "air ambulance",
-          "why": "An air ambulance flies injured people to hospital. Watch the word stress."
-        },
-        "g5": {
-          "label": "Buschwandern",
-          "correct": "bushwalking",
-          "why": "Bushwalking is the Australian word for hiking through the bush."
-        },
-        "g6": {
-          "label": "Würfelqualle",
-          "correct": "box jellyfish",
-          "why": "A box jellyfish is a highly venomous jellyfish found off Australian coasts."
-        },
-        "g7": {
-          "label": "Brandungsrückströmung",
-          "correct": "rip current",
-          "why": "A rip current is a strong current that pulls swimmers away from the beach."
-        },
-        "g8": {
-          "label": "Sprecher/-in",
-          "correct": "spokesperson",
-          "why": "A spokesperson speaks officially on behalf of a group or organisation."
-        },
-        "g9": {
-          "label": "Echse; Eidechse",
+          "label": "A small ___ ran across the hot rock.",
           "correct": "lizard",
-          "why": "A lizard is a small reptile with four legs and a long tail."
-        },
-        "g10": {
-          "label": "tödlich",
-          "correct": "deadly",
-          "why": "Deadly describes something that can kill you."
-        }
-      }
-    },
-    "exB": {
-      "gaps": {
-        "g1": {
-          "label": "The surface of the lake ___ in the sun.",
-          "correct": "gleams",
-          "why": "To gleam is to shine. The subject the surface is singular, so it takes -s."
+          "why": "A lizard is a small four-legged reptile — unlike a snake, it can run."
         },
         "g2": {
-          "label": "Never go off into the outback ___.",
-          "correct": "on your own",
-          "why": "On your own means alone. The unit warns never to go into the outback alone."
+          "label": "Out in the outback, families use a ___ to get internet.",
+          "correct": "satellite",
+          "why": "A satellite sends signals back to earth, which is how remote homes get internet."
         },
         "g3": {
-          "label": "Some beaches in Australia are ___ so that people can swim there.",
+          "label": "Some beaches are ___ so that people can swim safely.",
           "correct": "netted off",
-          "why": "To net off means to close an area with a net — here to keep marine stingers out."
+          "why": "To net off is to close an area with a net, so swimmers are protected from stingers."
         },
         "g4": {
-          "label": "The search for the missing boy was ___ when it got dark.",
-          "correct": "called off",
-          "why": "To call off means to cancel or stop something that was planned."
+          "label": "The local surf lifesaving ___ trains volunteers every summer.",
+          "correct": "association",
+          "why": "An association is an organised group with a shared aim, such as a lifesaving club."
         },
         "g5": {
-          "label": "A big part of Australia s ___ is uninhabitable.",
-          "correct": "interior",
-          "why": "The interior is the inland part of a country, away from the coast."
+          "label": "Walking off the path can ___ the plants.",
+          "correct": "damage",
+          "why": "To damage something is to harm it so it no longer works or grows well."
         },
         "g6": {
-          "label": "A guide s job is to show tourists ___.",
-          "correct": "around",
-          "why": "To show someone around means to guide them through a place."
+          "label": "The box jellyfish is one of the most ___ animals in the sea.",
+          "correct": "deadly",
+          "why": "Deadly means able to kill you."
         },
         "g7": {
-          "label": "Fruit tastes best when it s freshly ___.",
-          "correct": "picked",
-          "why": "To pick fruit means to take it from the plant by hand."
+          "label": "The wet sand ___ in the early morning sun.",
+          "correct": "gleamed",
+          "why": "To gleam is to shine softly — wet sand catches the light this way."
         },
         "g8": {
-          "label": "You mustn t walk on Aboriginal ___.",
-          "correct": "sites",
-          "why": "A site is a place with special meaning. Aboriginal sites are protected."
+          "label": "There is always a ___ of sunburn in the Australian summer.",
+          "correct": "risk",
+          "why": "A risk is the chance that something bad happens — the opposite of safety."
         },
         "g9": {
-          "label": "This place is dangerous. You may be ___ by a rip current.",
-          "correct": "swept out to sea",
-          "why": "To be swept out to sea means to be carried away from the shore by the water."
+          "label": "A ___ of tiny islands lay just off the coast.",
+          "correct": "cluster",
+          "why": "A cluster is a small group close together, so it fits islands lying side by side."
         },
         "g10": {
-          "label": "She s sad and needs some ___ words.",
+          "label": "This rock is a sacred Aboriginal ___.",
+          "correct": "site",
+          "why": "A site is a place of importance, and Aboriginal sites are protected."
+        },
+        "g11": {
+          "label": "She picked up a beautiful ___ from the wet sand.",
+          "correct": "seashell",
+          "why": "A seashell is the hard cover left by a small sea animal, found on the sand."
+        },
+        "g12": {
+          "label": "Please take your ___ home with you and keep the beach clean.",
+          "correct": "litter",
+          "why": "Litter is rubbish left lying in a public place."
+        },
+        "g13": {
+          "label": "We ate breakfast outside on the ___.",
+          "correct": "terrace",
+          "why": "A terrace is the flat outdoor area by a house where you can sit and eat."
+        },
+        "g14": {
+          "label": "Australians often say '___' instead of 'hello'.",
+          "correct": "G'day",
+          "why": "G'day is the everyday Australian greeting, used where British English says hello."
+        },
+        "g15": {
+          "label": "I did not mean to listen, but I ___ their whole conversation.",
+          "correct": "overheard",
+          "why": "To overhear is to hear something by accident, not on purpose — you were not trying to listen."
+        },
+        "g16": {
+          "label": "Our host ___ around the farm and explained everything.",
+          "correct": "showed us",
+          "why": "To show someone around is to take them through a place and explain it."
+        },
+        "g17": {
+          "label": "Signs on the beach warn tourists about ___ in the water.",
+          "correct": "marine stingers",
+          "why": "Marine stinger is the general Australian term for any sea creature that stings."
+        },
+        "g18": {
+          "label": "We followed a narrow ___ through the forest.",
+          "correct": "track",
+          "why": "A track is a rough, narrow path through the countryside."
+        },
+        "g19": {
+          "label": "In summer, backpackers earn money by ___ fruit on farms.",
+          "correct": "picking",
+          "why": "To pick fruit is to take it from the plant by hand."
+        },
+        "g20": {
+          "label": "Few people live in the ___ of the country.",
+          "correct": "interior",
+          "why": "The interior is the inland part of a country, far from the coast."
+        },
+        "g21": {
+          "label": "Two swimmers ___ and had to be rescued by helicopter.",
+          "correct": "were swept out to sea",
+          "why": "To be swept out to sea is to be carried away from the shore. It is passive, because the water does it to you."
+        },
+        "g22": {
+          "label": "On Sunday the neighbours invited us to a ___ in their garden.",
+          "correct": "barbie",
+          "why": "Barbie is the Australian short form of barbecue."
+        },
+        "g23": {
+          "label": "Her ___ words helped him stop worrying.",
           "correct": "comforting",
-          "why": "Comforting words make a sad person feel better."
+          "why": "Comforting words make a worried person feel better."
+        },
+        "g24": {
+          "label": "We saw a ___ rock rising out of the desert.",
+          "correct": "giant",
+          "why": "Giant describes size, not danger: the rock is extremely large."
+        },
+        "g25": {
+          "label": "The café ___ breakfast until eleven o'clock.",
+          "correct": "serves",
+          "why": "To serve is to give food or drink to someone — what a café does."
+        },
+        "g26": {
+          "label": "The lifeguards are there for your ___.",
+          "correct": "safety",
+          "why": "Safety is being free from danger — the opposite of risk."
+        },
+        "g27": {
+          "label": "Rain is not ___ in the desert at this time of year.",
+          "correct": "likely",
+          "why": "Likely means probable. After is, use the adjective likely."
+        },
+        "g28": {
+          "label": "Never walk in the outback ___ — always take a friend.",
+          "correct": "on your own",
+          "why": "On your own means with nobody else. In a real sentence the phrase takes your, not one's."
+        },
+        "g29": {
+          "label": "They ___ into the bush without telling anyone where they were going.",
+          "correct": "went off",
+          "why": "To go off means to leave a place, often suddenly."
+        },
+        "g30": {
+          "label": "In the desert, water is the key to ___.",
+          "correct": "survival",
+          "why": "Survival is staying alive in danger, which in a desert depends on water."
+        },
+        "g31": {
+          "label": "In summer the ___ makes swimming dangerous in northern Australia.",
+          "correct": "box jellyfish",
+          "why": "The box jellyfish is one specific jellyfish whose sting can kill, not stinging sea life in general."
+        },
+        "g32": {
+          "label": "The ___ of the hostel showed us to our room.",
+          "correct": "owner",
+          "why": "The owner is the person a business or object belongs to."
+        },
+        "g33": {
+          "label": "A strong ___ can pull a swimmer far away from the beach.",
+          "correct": "rip current",
+          "why": "A rip current pulls swimmers away from the beach, which is what makes it dangerous."
+        },
+        "g34": {
+          "label": "Do not ___ the birds while they are nesting.",
+          "correct": "disturb",
+          "why": "To disturb is to interrupt — nesting birds must be left alone."
+        },
+        "g35": {
+          "label": "___ is popular with tourists who want to see the real Australia.",
+          "correct": "Bushwalking",
+          "why": "Bushwalking is the Australian word for hiking through the countryside."
+        },
+        "g36": {
+          "label": "The centre of Australia is ___ dry, empty land.",
+          "correct": "mostly",
+          "why": "Mostly means in most cases — it says how much of the land is dry."
+        },
+        "g37": {
+          "label": "The search was ___ when it got dark.",
+          "correct": "called off",
+          "why": "To call off means to cancel something that was planned, such as a search."
+        },
+        "g38": {
+          "label": "When the farmer broke his leg, the ___ flew him to hospital.",
+          "correct": "air ambulance",
+          "why": "An air ambulance flies injured people to hospital — vital where farms are hours from a road."
+        },
+        "g39": {
+          "label": "The ___ conditions in the outback are hard for farmers.",
+          "correct": "climatic",
+          "why": "Climatic describes conditions to do with the weather of a region."
+        },
+        "g40": {
+          "label": "Be careful where you walk — a ___ can hide in the long grass.",
+          "correct": "snake",
+          "why": "A snake is a legless reptile, and long grass is exactly where one can hide."
+        },
+        "g41": {
+          "label": "The club's ___ spoke to the newspaper about beach safety.",
+          "correct": "spokesperson",
+          "why": "A spokesperson speaks officially on behalf of a group."
+        },
+        "g42": {
+          "label": "We slept in a cheap ___ near the beach in Cairns.",
+          "correct": "youth hostel",
+          "why": "A youth hostel is cheap shared accommodation, which is why backpackers stay in one."
         }
       }
     }
