@@ -12,6 +12,36 @@ Static HTML exercise pages for English language learners, hosted on GitHub Pages
 
 ---
 
+## Language rule — English-only task content (Shaun, 2026-09-03)
+
+**Gymnasium work never contains German. Oberschule work contains German only when
+Shaun specifically asks for it.** This covers everything a student is asked to work
+with: word lists, definitions, glossaries, task instructions, answer options,
+explanations. A German gloss lets a student match two strings and move on without
+processing the English, which is the one thing these pages exist to make them do —
+so define an English word with simpler English words instead of translating it.
+
+Applies whatever language the source material is in. Klett word lists are
+English–German; read the German to be sure which sense is meant, then write the
+English definition for that sense and drop the German.
+
+**Not covered by this rule** (deliberate, and documented elsewhere in this file):
+the site chrome `exercise.js` and `build-head.js` inject site-wide (breadcrumb,
+footer, practise button, rubric, the German half of the no-JS banner,
+`og:image:alt`, the German names in the JSON-LD), the `themen/` topic pages, and
+the ten `gr-*` pages — those target German search traffic and are marked `lang="de"`.
+The **grade scale is also exempt**: `Note 1 (Sehr gut)` … is the official German
+scale, it lives in `exercise.js`, and `scripts/check-grade-table.js` fails the build
+if a page's copy diverges.
+
+Audited 2026-09-03: the only page in the corpus that broke this was
+`9g-summer-revision.html` (a German glossary under a reading text), now English.
+`7c-dictionary-skills.html`, `msa-c-american-dream.html` and
+`msa-c-speaking-discussion.html` still carry German — all Oberschule, and in the
+dictionary-skills page the German *is* the exercise. Ask before changing those.
+
+---
+
 ## Verify before calling a task done
 
 State a brief success criterion per step before doing it, and check it before moving on —
