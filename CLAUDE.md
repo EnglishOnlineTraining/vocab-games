@@ -846,8 +846,12 @@ would advertise the URL it is meant to protect.
 between registration and the rules): `9ab-` `REVIEW9AB2026`, `10a-` `REVIEW10A2026`,
 `9c-australia-vocab-test` `AUS9C2026`, `9g-australia-vocab-test` `AUS9G2026`. Change the
 string for a new sitting; no redeploy needed beyond the push. It is a timing gate, not
-security — the code is readable in page source. **`uni-pm-vocabulary.html`,
-`9g-class-test-9ab.html` and `uni-writing-task.html` still have no gate.**
+security — the code is readable in page source.
+
+**`uni-pm-vocabulary.html`, `9g-class-test-9ab.html` and `uni-writing-task.html` have no
+gate, and that is deliberate** (Shaun, 2026-09-03): they are unlikely to be sat again, so
+the gate would be work spent on tests with no next sitting to protect. Don't add it to
+them — leave the decision to Shaun if one of them is ever reused.
 
 ---
 
