@@ -819,6 +819,38 @@ answer-key grading) with the Make webhook intercepted so no real submission was 
 
 ---
 
+## Tests are unlisted, and `teacher-tests.html` is the index (Shaun, 2026-09-03)
+
+**No test is linked from any hub, from `activities.html`, or from the sitemap.** A test a
+student can find is a test they can sit before the class does. Vocabulary *practice*
+pages are the opposite — they belong on their year hub, because the point is that
+students use them.
+
+`teacher-tests.html` is the unlisted index of every test, for Shaun. It lists each
+test with its class, format and release code. Three things keep it hidden and each
+has to stay true:
+
+1. **The filename is deliberately not `*-activities.html`.** `build-topic-pages.js`
+   puts every file matching `/activities\.html$/` into `sitemap.xml`, and
+   `build-hub.js` counts them for the "Course collections" figure on
+   `activities.html`. Renaming it `teacher-tests-activities.html` would publish it
+   twice over.
+2. `<meta name="robots" content="noindex,nofollow">`, so a leaked URL stays out of
+   search results.
+3. Nothing links to it. **Adding a card for it anywhere defeats the whole thing.**
+
+It is deliberately **not** in `robots.txt`: that file is public, so a `Disallow` line
+would advertise the URL it is meant to protect.
+
+**Release codes.** Four of the seven tests have the soft `RELEASE_CODE` gate (a screen
+between registration and the rules): `9ab-` `REVIEW9AB2026`, `10a-` `REVIEW10A2026`,
+`9c-australia-vocab-test` `AUS9C2026`, `9g-australia-vocab-test` `AUS9G2026`. Change the
+string for a new sitting; no redeploy needed beyond the push. It is a timing gate, not
+security — the code is readable in page source. **`uni-pm-vocabulary.html`,
+`9g-class-test-9ab.html` and `uni-writing-task.html` still have no gate.**
+
+---
+
 ## Unified breadcrumb + footer (site chrome, added 2026-08-05)
 
 `exercise.js` injects a **breadcrumb** (Übungen › Jahrgang/Schulart or MSA/Uni/IT/Business › page title, derived from the filename prefix + `.welcome-title`) below the sticky `app-header`, and a **unified footer** (section nav: Alle Übungen · Grammatik-Themen · Universität · Business · IT · Kontakt; legal: Zur Website · Impressum · Datenschutz) at the end of `<body>` — on all 167 framework pages, with **zero per-page edits** (`eolInjectChrome` on `DOMContentLoaded`). Styles are self-contained (injected `<style id="eol-chrome-style">` with `var(--token, fallback)`) so they render even on the framework pages that don't load `style.css`. Guarded against double-injection by element id. `activities.html` carries a matching footer (`.site-footer-nav` + legal line). The per-year hub pages and `themen/` pages keep their own existing footers/back-links.

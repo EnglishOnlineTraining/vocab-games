@@ -156,6 +156,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
+<!-- SCREEN 1b: RELEASE-CODE LOCK -->
+<div id="s-lock" class="screen">
+  <div class="container">
+    <div class="card">
+      <div style="font-size:2.6rem;text-align:center;margin-bottom:.4rem">🔒</div>
+      <h2 style="text-align:center">This test is locked</h2>
+      <p style="text-align:center;color:#718096">Your teacher will give you a code in class when it is time to start. Enter it below to continue.</p>
+      <div class="form-group" style="margin-top:18px">
+        <label for="inp-code">Release code</label>
+        <input type="text" id="inp-code" placeholder="Enter the code your teacher gave you" autocomplete="off" spellcheck="false">
+      </div>
+      <div id="lock-err" class="alert alert-danger">That code is not correct. Ask your teacher for today's code.</div>
+      <button class="btn btn-primary" onclick="checkCode()">Unlock →</button>
+      <button class="btn btn-outline" onclick="show('s-register')" style="margin-left:10px">← Back</button>
+    </div>
+  </div>
+</div>
+
 <!-- SCREEN 2: RULES -->
 <div id="s-rules" class="screen">
   <div class="container">
@@ -250,6 +268,10 @@ const SHEET_URL = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj'; 
 const EMAIL     = 'englishonlinetraining@pm.me';
 const EXAM_MINS = 15;
 const GATE_MINS = 2;
+/* Soft timing gate: stops a class starting before the teacher says so.
+   It is visible in the page source, so it is not security — change the
+   string for each sitting. */
+const RELEASE_CODE = 'AUS9C2026';
 const UNIT      = '9c-australia-vocab-test'; // Make routes on `unit`, not a sheet tab
 const Q_TOTAL   = 20;
 const MATCH_N   = 10;
@@ -332,9 +354,19 @@ function goRules(){
   sGroup=document.getElementById('inp-group').value.trim();
   if(!sName||!sGroup){document.getElementById('reg-err').classList.add('show');return}
   document.getElementById('reg-err').classList.remove('show');
-  show('s-rules');
+  show('s-lock');
 }
 document.getElementById('inp-group').addEventListener('keydown',e=>{if(e.key==='Enter')goRules()});
+
+/* ── RELEASE CODE ── */
+function checkCode(){
+  const code=document.getElementById('inp-code').value.trim();
+  const err=document.getElementById('lock-err');
+  if(code.toUpperCase()!==RELEASE_CODE.toUpperCase()){err.classList.add('show');return}
+  err.classList.remove('show');
+  show('s-rules');
+}
+document.getElementById('inp-code').addEventListener('keydown',e=>{if(e.key==='Enter')checkCode()});
 
 /* ── FULLSCREEN ── */
 function goFullscreen(){
