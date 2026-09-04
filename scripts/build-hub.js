@@ -395,8 +395,14 @@ rootBlocks.push(rootBlock('More courses', '', ROOT_COURSES.map(([href, icon, tit
   return rootCard(href, icon, title, n ? meta : 'Coming soon', rootCount(n, 'Exercise'), n > 0);
 })));
 
-const topicPageCount = fs.readdirSync(path.join(ROOT, 'themen'))
-  .filter(f => f.endsWith('.html') && f !== 'index.html').length;
+// Counted from data/topics.json, not from themen/ on disk. build-topic-pages.js
+// writes exactly one page per topic (plus index.html), so the two agree — but
+// reading the directory made this an undeclared dependency on that generator's
+// output, and pipeline.js runs `hub` before `topic-pages`. The result was a
+// count one build stale: add a topic and the root page still said "10 Topics"
+// until the next run. The static graph checks could not see it because the
+// dependency was a readdirSync, not a declared input.
+const topicPageCount = topics.length;
 
 rootBlocks.push(rootBlock('Browse everything', '', [
   rootCard('activities.html', '🔎', 'All exercises',
