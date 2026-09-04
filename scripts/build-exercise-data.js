@@ -18,6 +18,7 @@ const TOPICS = [
   { slug: 'past-perfect',      de: 'Past Perfect',                  en: 'Past Perfect',                match: [/past perfect/i] },
   { slug: 'present-perfect',   de: 'Present Perfect',               en: 'Present Perfect',             match: [/present perfect/i] },
   { slug: 'simple-past',       de: 'Simple Past',                   en: 'Simple Past',                 match: [/simple past/i, /past simple/i, /past tense/i] },
+  { slug: 'past-progressive',  de: 'Past Progressive',              en: 'Past Progressive',            match: [/past (progressive|continuous)/i] },
   { slug: 'present-tenses',    de: 'Present Tenses',                en: 'Present tenses',              match: [/present (tense|simple|progressive|continuous)/i] },
   { slug: 'future-tenses',     de: 'Future Tenses (will / going to)', en: 'Future tenses',             match: [/future (tense|perfect|form)/i, /will.*going to/i, /going to/i] },
   { slug: 'gerund-infinitiv',  de: 'Gerundium & Infinitiv',         en: 'Gerunds and infinitives',    match: [/gerund/i, /infinitive/i] },
