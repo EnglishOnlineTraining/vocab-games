@@ -439,14 +439,32 @@ second attempt silently dropped (they still see "Submitted successfully"). That 
 intent; it simply never functioned. Say so if this turns out not to be wanted — narrowing it needs a
 different key, not a code change on the pages.
 
-**How the answer columns render — confirmed 2026-09-04 from a real row.** Pages send `exA`/`exB`/…
-as JSON *objects*, and the column formula concatenates them with `+`, which stringifies a collection
-to **JSON**: `{"g1":"canada","g2":"grey",…}`. Readable and lossless, but not the prettier
-`g1: canada | g2: grey` format the table carried before 2026-06-23. That older format is what Make
-produces when a collection is mapped **bare** (`{{5.exA}}`) instead of through `+` concatenation.
-Switching to bare mapping would restore it but would drop the `ex1`/`ex1a`/`ex1b` numeric-key
-variants that pages like `california-exercises` use, so it needs an `if()` per column rather than a
-straight swap. Left as is deliberately — say so if the prettier format is wanted.
+**How the answer columns render — the `g1: x | g2: y` format was restored 2026-09-04.**
+The readable format the table carried before 2026-06-23 comes from **the pages**, not from Make:
+`eolFlat()` in `exercise.js` produces exactly `k: v | k: v` and pages used to send their answers
+already flattened. They now build `state.exA` as an object, and **Make renders any collection into
+a text cell as JSON** — that is what produced `{"g1":"canada","g2":"grey"}`.
+
+This was settled by experiment, not inference. A temporary `datastore:AddRecord` probe keyed on
+`ZZPROBE|{{5.exA}}` was added to the Y9 scenario, two submissions were POSTed, and the two keys it
+wrote were:
+
+| what the page sent | what Make wrote |
+|---|---|
+| object `{g1:"alpha",g2:"beta"}` | `ZZPROBE\|{"g1":"alpha","g2":"beta"}` |
+| string `g1: alpha \| g2: beta`  | `ZZPROBE\|g1: alpha \| g2: beta` |
+
+So **a bare `{{5.exA}}` does not help** — an earlier guess that separate interpolations would render
+a collection differently from `+` concatenation was wrong, and the probe disproved it. The fix is
+page-side: `submitToSheet()` now flattens object fields through `eolFlat()` **for Make targets only**
+(`eolIsMakeTarget`/`eolFlattenForMake`). The Apps Script backend flattens server-side and keeps
+receiving objects, so Business/University/IT sheets are byte-identical to before.
+
+The Make answer columns are now separate adjacent interpolations
+(`{{5.exA}} {{5.ex1}} {{5.ex1a}} {{5.ex1b}}`) rather than a `+` expression, which is also why the
+pre-2026-06-23 rows end in trailing spaces — the empty numeric variants each contribute one.
+`node test-payload-flatten.js` is the self-check; the probe module has been removed and both
+scenarios are back to four modules.
 
 **Excel silently turns an integer score into a date.** `Score` is sent as `12 / 24`, and Excel
 parses that as 24 December — the cell reads `24. Dez`. A fractional score (`5.5 / 24`) has no date

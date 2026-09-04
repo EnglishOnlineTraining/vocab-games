@@ -836,12 +836,37 @@ function eolCollectExplanations() {
   return items;
 }
 
+/*
+ * The Make → Excel scenarios write each answer section into one cell, and Make
+ * renders a collection into a text field as JSON — so an object answer lands as
+ * {"g1":"canada","g2":"grey"}. Flattening to "g1: canada | g2: grey" here
+ * restores the readable format the Excel tables carried until 2026-06-23.
+ *
+ * Deliberately scoped to Make targets only. The Apps Script backend (Business /
+ * University / IT) does its own flatten() server-side and keeps receiving
+ * objects, so those sheets are byte-identical to before.
+ */
+function eolIsMakeTarget(url) {
+  return String(url || '').indexOf('hook.eu1.make.com') !== -1;
+}
+
+function eolFlattenForMake(payload) {
+  var out = {}, k, v;
+  for (k in payload) {
+    if (!Object.prototype.hasOwnProperty.call(payload, k)) continue;
+    v = payload[k];
+    out[k] = (v && typeof v === 'object' && !(v instanceof Array)) ? eolFlat(v) : v;
+  }
+  return out;
+}
+
 function submitToSheet() {
   buildSummary();
   var btn = document.getElementById('submit-btn');
   btn.disabled = true;
   btn.textContent = 'Sending...';
   var payload = buildPayload();
+  if (eolIsMakeTarget(SHEET_URL)) payload = eolFlattenForMake(payload);
 
   if (isTestMode()) {
     console.log('📝 TEST MODE - Submission payload:', payload);
