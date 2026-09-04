@@ -57,8 +57,15 @@ instructions.
 
 ## ⚠️ Known traps — read before editing live WordPress or testing submissions
 
-Three things that have already cost real time or broken live pages. None are obvious from the
+Things that have already cost real time or broken live pages. None are obvious from the
 code.
+
+**Also read "The webhook payload arrives as ONE field called `payload`" under Submission routing
+below** before touching either Make scenario. It is the worst one found so far: from June to
+2026-09-04 the Y7/Y9 scenarios read fields the webhook never sends, so all Y7/Y8/Y9/Y10/MSA
+submissions wrote blank rows — and a broken dedup key meant only **one submission per day, across
+both webhooks combined**, reached Excel at all. Fixed and verified; the section says how to spot a
+regression.
 
 ### 1. WP pages 1763 (`/activities/`) and 1997 (`/it-english/`) have stale block-editor state
 Its `_crdt_document` still holds a much older snapshot — Year 7 "6 exercises", Year 9 "5
@@ -366,7 +373,70 @@ Used by: all Business English, University, and IT English exercises (e.g. `be-pr
 ### What the Make scenario does
 Unlike the Apps Script `routeSubmission()` below, the Make scenarios do **not** do per-unit routing — confirmed by inspecting both blueprints directly (2026-06-22). Each scenario is just webhook → one fixed `addATableRow` action writing into one Excel table, with a fixed column mapping (Timestamp, Name, Class, Unit, plus generic `ex1`–`ex48`-style slots, and now Score/Grade — see below). The page just POSTs `{name, cls, unit, ...answers, score, grade}` to the webhook above; every submission (regardless of `unit`) lands in that one table.
 
-**Score/Grade gap — fixed 2026-06-23.** `score` and `grade` used to be silently dropped for every Make-routed exercise because neither the Excel tables nor the scenario mappers had columns for them. Both halves are now fixed: a `Score` and `Grade` column were added to both Excel tables (`yr7subs` in `/online task submission year 7.xlsx`, `yr9subs` in `/online tasks submission year 9.xlsx`), and both Make scenarios (Year 7 id `6103998`, Year 9 id `6143765`) now map `{{1.score}}`/`{{1.grade}}` into those columns. Student score/grade data flows through end-to-end for both years.
+**Score/Grade gap — columns added 2026-06-23.** `score` and `grade` used to be silently dropped for every Make-routed exercise because neither the Excel tables nor the scenario mappers had columns for them. A `Score` and `Grade` column were added to both Excel tables (`yr7subs` in `/online task submission year 7.xlsx`, `yr9subs` in `/online tasks submission year 9.xlsx`), and both Make scenarios (Year 7 id `6103998`, Year 9 id `6143765`) map into those columns. **This note used to end "Student score/grade data flows through end-to-end for both years" — that was never true.** Adding the columns and the mappers was only half the job; the mappers read fields that did not exist (see the trap below). Verifying that a *column* exists is not verifying that *data* reaches it.
+
+### ⚠️ The webhook payload arrives as ONE field called `payload` — read this before editing either Make scenario
+
+**Fixed 2026-09-04, after ~3 months of silent data loss.** Every exercise page submits through
+`submitToSheet()` in `exercise.js`, which POSTs
+
+```js
+body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+```
+
+with `Content-Type: application/x-www-form-urlencoded`. So the Make webhook bundle contains
+**exactly one field, `payload`, holding a JSON string** — it does *not* contain `name`, `cls`,
+`unit`, `exA`, `score` … as top-level fields. (The Apps Script backend copes because it does
+`JSON.parse(e.parameter.payload)` itself.)
+
+Both scenarios were mapping `{{1.name}}`, `{{1.cls}}`, `{{1.unit}}`, `{{1.exA}}`, `{{1.score}}`
+straight off the webhook module. Every one of those resolved to **empty**, from the day each
+scenario was created (Y7 2026-06-09, Y9 2026-06-11) until 2026-09-04.
+
+**Two consequences, the second much worse than the first:**
+
+1. Rows that did get written had blank Name, Class, Unit, answers, Score and Grade.
+2. The dedup step (`datastore:AddRecord`, key `{{cls}}_{{name}}_{{unit}}_{{date}}`, `overwrite: false`,
+   with a `builtin:Ignore` error handler) computed the **same key for every student every day** —
+   literally `___2026-09-04`. The first submission of the day claimed that key; every later
+   submission that day collided, errored, routed to `Ignore`, and **never reached the Excel-write
+   step at all**. So across *both* year webhooks combined, only **one submission per calendar day**
+   ever landed. The page still showed "Submitted successfully!" — `fetch` uses `mode: 'no-cors'`,
+   so it resolves regardless.
+
+**The proof, and the cheapest way to re-check this:** the shared dedup data store (id `138128`,
+"Submission Dedup Keys") had exactly **31 records for ~3 months of submissions**, every key of the
+form `___<date>`. If those keys ever go back to looking like that, the field mapping has broken
+again.
+
+**The fix:** a `json:ParseJSON` module fed from `{{1.payload}}` now sits between the webhook and
+everything else, and all downstream references point at it — module id **5** in the Year 9 scenario
+(`{{5.name}}` …), id **24** in Year 7 (`{{24.name}}` …). Verified on both by POSTing a test
+submission and confirming a real dedup key (`ZZ-TEST_…_zz-test-claude-fix_2026-09-04`) plus a
+**4-operation** execution (webhook → parse → dedup → Excel; it was 2–3 before).
+
+**Three things to keep in mind if you touch these scenarios:**
+- **Never reference `{{1.<field>}}` for anything but `payload`.** Module 1 is the webhook and only
+  has `payload`. This is the exact mistake that caused the outage.
+- **The last answer column is now a raw backstop.** Column 51 (the `Ex48`/`ex48` slot — no page has
+  48 exercises) is mapped to `{{1.payload}}`, the complete raw JSON. It is deliberately not parsed,
+  so a submission can never again be reduced to nothing by a mapping bug. The Excel header still
+  reads "Ex48"; rename it there if you want.
+- **`ParseJSON` carries a `builtin:Ignore` error handler** so a stray bot request with invalid JSON
+  can't accumulate errors and trip Make's `maxErrors: 3` auto-disable.
+
+**Behaviour change worth knowing:** the dedup now actually works as designed — one submission per
+`class + name + unit + day`. A student who redoes the *same* exercise on the *same* day has the
+second attempt silently dropped (they still see "Submitted successfully"). That was always the
+intent; it simply never functioned. Say so if this turns out not to be wanted — narrowing it needs a
+different key, not a code change on the pages.
+
+**How the answer columns render is not fully verified.** Pages send `exA`/`exB`/… as JSON *objects*
+(`{g1: "...", g2: "..."}`), and Make's rendering of a collection into a text cell wasn't testable
+from here (the org is at its active-scenario limit, so no probe scenario could be run). Name, Class,
+Unit, Score and Grade are plain strings and are confirmed working. If `Ex1`–`Ex4` look like
+`[object Object]` in Excel, the data is still intact in the raw column — say so and the per-section
+mapping can be improved with a real row as evidence.
 
 ---
 
