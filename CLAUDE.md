@@ -390,8 +390,16 @@ with `Content-Type: application/x-www-form-urlencoded`. So the Make webhook bund
 `JSON.parse(e.parameter.payload)` itself.)
 
 Both scenarios were mapping `{{1.name}}`, `{{1.cls}}`, `{{1.unit}}`, `{{1.exA}}`, `{{1.score}}`
-straight off the webhook module. Every one of those resolved to **empty**, from the day each
-scenario was created (Y7 2026-06-09, Y9 2026-06-11) until 2026-09-04.
+straight off the webhook module. Every one of those resolved to **empty**.
+
+**When it broke: 2026-06-23, not "since creation".** The Excel table itself settles this — rows up to
+`2026-06-22T14:11:03` carry full, correctly formatted data (`g1: playing | g2: to visit | …`), and
+every row from `2026-06-24T08:43:31` onward is blank except its timestamp. That lines up exactly
+with the 2026-06-23 edit that added the Score/Grade columns and the 2026-06-26 edit that added the
+dedup step: **the edit that added score/grade is what broke the field mapping**, and the dedup added
+days later then hid the damage by dropping all but one submission a day. The dedup data store's
+oldest key is `___2026-06-26`, consistent with that order. So the scenarios worked for their first
+two weeks; do not repeat the earlier claim in this file that they never worked.
 
 **Two consequences, the second much worse than the first:**
 
@@ -431,12 +439,21 @@ second attempt silently dropped (they still see "Submitted successfully"). That 
 intent; it simply never functioned. Say so if this turns out not to be wanted — narrowing it needs a
 different key, not a code change on the pages.
 
-**How the answer columns render is not fully verified.** Pages send `exA`/`exB`/… as JSON *objects*
-(`{g1: "...", g2: "..."}`), and Make's rendering of a collection into a text cell wasn't testable
-from here (the org is at its active-scenario limit, so no probe scenario could be run). Name, Class,
-Unit, Score and Grade are plain strings and are confirmed working. If `Ex1`–`Ex4` look like
-`[object Object]` in Excel, the data is still intact in the raw column — say so and the per-section
-mapping can be improved with a real row as evidence.
+**How the answer columns render — confirmed 2026-09-04 from a real row.** Pages send `exA`/`exB`/…
+as JSON *objects*, and the column formula concatenates them with `+`, which stringifies a collection
+to **JSON**: `{"g1":"canada","g2":"grey",…}`. Readable and lossless, but not the prettier
+`g1: canada | g2: grey` format the table carried before 2026-06-23. That older format is what Make
+produces when a collection is mapped **bare** (`{{5.exA}}`) instead of through `+` concatenation.
+Switching to bare mapping would restore it but would drop the `ex1`/`ex1a`/`ex1b` numeric-key
+variants that pages like `california-exercises` use, so it needs an `if()` per column rather than a
+straight swap. Left as is deliberately — say so if the prettier format is wanted.
+
+**Excel silently turns an integer score into a date.** `Score` is sent as `12 / 24`, and Excel
+parses that as 24 December — the cell reads `24. Dez`. A fractional score (`5.5 / 24`) has no date
+reading and survives as text, which is why this is easy to miss. Either format the `Score` column
+as **Text** in both workbooks (preserves `12 / 24` exactly; table columns propagate the format to
+new rows), or change the mapper so the value cannot parse as a date. Do not leave it: roughly half
+of all scores are integers.
 
 ---
 
