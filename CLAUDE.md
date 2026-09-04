@@ -980,6 +980,36 @@ re-trigger the workflow — GitHub does not start workflows from pushes made wit
 the commit also carries `[skip ci]`. (An earlier version of this note claimed it re-triggers and
 "self-terminates after one extra no-op run"; that describes something which has never happened.)
 
+## IndexNow — Bing and friends, **not Google** (added 2026-09-04)
+
+The last step of `rebuild-indices.yml` pings IndexNow with the URLs that changed in the push,
+via **`node scripts/indexnow-submit.js`**. Read this before assuming it does anything for a
+Google indexing problem: **it does not.** IndexNow is supported by Bing, Yandex, Seznam, Naver
+and Yep. Google said in 2021 it would evaluate the protocol and has never adopted it. Every
+number in a Google Search Console coverage report is untouched by this.
+
+- **Key:** `1d6c87cae1f19b13380c4a66042fe8d9`, served from `1d6c87cae1f19b13380c4a66042fe8d9.txt`
+  in the repo root. IndexNow keys are **public by design** — the protocol requires the key be
+  fetchable at that URL — so committing it is correct, not a leaked secret. Rotating it means
+  generating a new key, committing the new `.txt`, and updating `KEY` in the script.
+- **Only sitemap URLs are ever submitted.** The script builds its allowlist from `sitemap.xml`
+  and drops anything absent from it. This is what keeps the unlisted test pages unlisted (see
+  "Tests are unlisted" above) — `teacher-tests.html`, the `*-vocab-test.html` pages and
+  `9g-class-test-9ab.html` are deliberately kept out of the sitemap, so the script cannot
+  advertise them to a search engine even if someone edits one. **Do not "simplify" this by
+  submitting every changed `.html`.**
+- **Best-effort, never fatal.** The script catches its own errors and the workflow step is
+  `continue-on-error: true`. A deploy must not fail because Bing was unreachable.
+- It runs **after** the auto-rebuild commit, so `HEAD` includes anything the generators just
+  wrote and those URLs get submitted too. On a first push or a `workflow_dispatch` there is no
+  usable `github.event.before`, and the step falls back to `HEAD~1`.
+- Run it by hand with `--dry-run` to see what would be sent, or `--all` to submit every sitemap
+  URL once (a bootstrap; don't make a habit of it — the protocol wants *changed* URLs).
+
+There is also an **IndexNow plugin active on the WordPress site** (Microsoft Bing, v1.0.4). It
+covers `englishonline.training` only. It cannot see `activities.englishonline.training`, which is
+GitHub Pages — that is what this script is for.
+
 ## Deployment
 
 - GitHub Pages serves from the **`main`** branch
