@@ -956,7 +956,7 @@ must change with it.
 
 German, search-optimised landing pages, one per grammar topic (people search *Passiv Englisch Übungen*, *if-Sätze Klasse 10* — not theme names). Generated, never hand-edited:
 
-- **`data/topics.json`** — the controlled topic vocabulary (slug, German + English label, search aliases, meta description, related slugs) plus optional authored German content per topic: `intro`, `rules[]`, `examples[]`, and a `practice[]` array (`{q, options, answer, why}`) that becomes an inline check-yourself widget. **All 10 topic pages are authored (verified 2026-08-21)** — no `<!-- CONTENT: needs Shaun -->` scaffolds remain. (An earlier version of this line said 11; `themen/` holds ten topic pages plus `index.html`.) Three of them go further, into the *full* form: `passiv`, `gerund-infinitiv` and `relativsaetze` also carry `introH2`, `sections[]`, `practiceGroups[]` and `faq[]`, which is what turns a ~10 KB page into a ~30 KB one and emits the `FAQPage` markup. **`build-topic-pages.js` supports that entirely through data — upgrading a topic needs no code change.** Note the generator's fallback `introH2` is `"Was ist das " + de`, which is ungrammatical for a plural topic name; author `introH2` for those. A newly added slug still starts as a scaffold and renders the marker in place of the explanation while still listing its exercises. **All landing-page prose is German** (Shaun's decision — topic pages target German search traffic; this is separate from the exercises' English on-page explanations).
+- **`data/topics.json`** — the controlled topic vocabulary (slug, German + English label, search aliases, meta description, related slugs) plus optional authored German content per topic: `intro`, `rules[]`, `examples[]`, and a `practice[]` array (`{q, options, answer, why}`) that becomes an inline check-yourself widget. **All 10 topic pages are authored (verified 2026-08-21)** — no `<!-- CONTENT: needs Shaun -->` scaffolds remain. (An earlier version of this line said 11; `themen/` holds ten topic pages plus `index.html`.) **All ten are now in the *full* form (verified 2026-09-04)** — every one carries `introH2`, `sections[]`, `practiceGroups[]` and `faq[]`, which is what turns a ~10 KB scaffold into a 23–37 KB page and emits the `FAQPage` markup. Current shape: 6–8 sections, 6–7 FAQ entries, 4 practice groups (20–30 items) and 3 related links each; 1,267–2,476 words per page. (This line previously said only `passiv`, `gerund-infinitiv` and `relativsaetze` had gone full — that was stale and misled a planning session on 2026-09-04. Check with `node -e` against `data/topics.json` rather than trusting this sentence.) **`build-topic-pages.js` supports that entirely through data — upgrading a topic needs no code change.** Note the generator's fallback `introH2` is `"Was ist das " + de`, which is ungrammatical for a plural topic name; author `introH2` for those. A newly added slug still starts as a scaffold and renders the marker in place of the explanation while still listing its exercises. **All landing-page prose is German** (Shaun's decision — topic pages target German search traffic; this is separate from the exercises' English on-page explanations).
 - **`data/exercises.json`** — every exercise tagged with `topics[]`/`skills[]`, produced by **`node scripts/build-exercise-data.js`** (classifies each page's grammar/skill points against the topic vocabulary; prints per-topic coverage).
 - **`node scripts/build-topic-pages.js`** — regenerates `themen/<slug>.html` + `themen/index.html` + `themen/themen.css`, and rewrites `sitemap.xml` + `robots.txt` (covering hubs, exercises and topic pages). Each page has `lang="de"`, canonical, OG tags and JSON-LD `LearningResource`; a "Weiterüben" list links every tagged exercise grouped by year; plus related-topic links. Linked from `activities.html` via a "Nach Grammatik-Thema üben" banner → `themen/index.html`, and — since 2026-08-16 — from **WordPress page 1763**, which carries a matching "Nach Grammatik-Thema üben" button group linking `themen/` plus all 11 topic pages plus `grammar-activities.html`. That WP block is the only source of *external* links into `themen/`; before it, every button on 1763 pointed at a hub page and nothing outside the repo linked to a topic page at all. If a topic slug is added or renamed, update 1763 too (via `pages.update` — never the block editor; see the trap at the top of this file).
 - **To add/expand a topic:** edit `data/topics.json` (add the slug + German content), then rerun both scripts. Never hand-edit files in `themen/` — they are overwritten. Grammar prose is Shaun-reviewed before it counts as final; scaffolds keep the marker until then.
@@ -979,6 +979,36 @@ it within a minute, so `activities.englishonline.training` should never be more 
 re-trigger the workflow — GitHub does not start workflows from pushes made with `GITHUB_TOKEN`, and
 the commit also carries `[skip ci]`. (An earlier version of this note claimed it re-triggers and
 "self-terminates after one extra no-op run"; that describes something which has never happened.)
+
+## IndexNow — Bing and friends, **not Google** (added 2026-09-04)
+
+The last step of `rebuild-indices.yml` pings IndexNow with the URLs that changed in the push,
+via **`node scripts/indexnow-submit.js`**. Read this before assuming it does anything for a
+Google indexing problem: **it does not.** IndexNow is supported by Bing, Yandex, Seznam, Naver
+and Yep. Google said in 2021 it would evaluate the protocol and has never adopted it. Every
+number in a Google Search Console coverage report is untouched by this.
+
+- **Key:** `1d6c87cae1f19b13380c4a66042fe8d9`, served from `1d6c87cae1f19b13380c4a66042fe8d9.txt`
+  in the repo root. IndexNow keys are **public by design** — the protocol requires the key be
+  fetchable at that URL — so committing it is correct, not a leaked secret. Rotating it means
+  generating a new key, committing the new `.txt`, and updating `KEY` in the script.
+- **Only sitemap URLs are ever submitted.** The script builds its allowlist from `sitemap.xml`
+  and drops anything absent from it. This is what keeps the unlisted test pages unlisted (see
+  "Tests are unlisted" above) — `teacher-tests.html`, the `*-vocab-test.html` pages and
+  `9g-class-test-9ab.html` are deliberately kept out of the sitemap, so the script cannot
+  advertise them to a search engine even if someone edits one. **Do not "simplify" this by
+  submitting every changed `.html`.**
+- **Best-effort, never fatal.** The script catches its own errors and the workflow step is
+  `continue-on-error: true`. A deploy must not fail because Bing was unreachable.
+- It runs **after** the auto-rebuild commit, so `HEAD` includes anything the generators just
+  wrote and those URLs get submitted too. On a first push or a `workflow_dispatch` there is no
+  usable `github.event.before`, and the step falls back to `HEAD~1`.
+- Run it by hand with `--dry-run` to see what would be sent, or `--all` to submit every sitemap
+  URL once (a bootstrap; don't make a habit of it — the protocol wants *changed* URLs).
+
+There is also an **IndexNow plugin active on the WordPress site** (Microsoft Bing, v1.0.4). It
+covers `englishonline.training` only. It cannot see `activities.englishonline.training`, which is
+GitHub Pages — that is what this script is for.
 
 ## Deployment
 

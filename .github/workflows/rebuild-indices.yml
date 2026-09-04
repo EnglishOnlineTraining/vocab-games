@@ -59,3 +59,28 @@ jobs:
             git commit -m "Auto-rebuild generated indices [skip ci]"
             git push origin HEAD:main
           fi
+
+      # Ping IndexNow with whatever changed in this push, including anything
+      # the rebuild step just committed (HEAD is that commit when it ran).
+      #
+      # IndexNow reaches Bing, Yandex, Seznam, Naver and Yep. Google does NOT
+      # support it, so this is not a fix for a Google indexing problem — see
+      # "IndexNow" in CLAUDE.md before assuming otherwise.
+      #
+      # Best-effort by design: the script swallows its own errors and this step
+      # is continue-on-error, because a third party being down must never fail
+      # a deploy. The script also refuses to submit any URL that is not in
+      # sitemap.xml, which is what keeps the unlisted test pages unlisted.
+      - name: Submit changed URLs to IndexNow
+        continue-on-error: true
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          if [ -n "$BEFORE_SHA" ] \
+             && [ "$BEFORE_SHA" != "0000000000000000000000000000000000000000" ] \
+             && git cat-file -e "$BEFORE_SHA^{commit}" 2>/dev/null; then
+            node scripts/indexnow-submit.js --since "$BEFORE_SHA" --until HEAD
+          else
+            echo "No usable event.before (first push or manual run) — falling back to HEAD~1."
+            node scripts/indexnow-submit.js --since HEAD~1 --until HEAD
+          fi
