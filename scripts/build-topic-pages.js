@@ -84,11 +84,36 @@ function practiceHtml(t) {
   return html;
 }
 
+/**
+ * The slugs a topic links to under "Verwandte Themen".
+ *
+ * `related` is authored one way round, so a newly added topic points at its
+ * neighbours and nothing points back. Five of the six topics added on
+ * 2026-09-05 had zero inbound links from sibling pages as a result, leaving
+ * themen/index.html as their only one — which is what Search Console reported
+ * as "Referring page: None detected" on themen/past-progressive.html.
+ *
+ * Union the authored list with the inbound ones, so every relationship is a
+ * link in both directions. Authored entries stay first, so the page's own
+ * editorial ordering still leads. Deliberately uncapped: a cap would stop the
+ * most-referenced topics (present-tenses is named by nine others) from linking
+ * out to the newest ones, which is exactly the link the new pages need.
+ */
+function relatedSlugs(t) {
+  const out = (t.related || []).slice();
+  topics.forEach(o => {
+    if (o.slug !== t.slug && (o.related || []).includes(t.slug) && out.indexOf(o.slug) === -1) {
+      out.push(o.slug);
+    }
+  });
+  return out;
+}
+
 function relatedHtml(t) {
-  const rel = (t.related || []).map(s => topics.find(x => x.slug === s)).filter(Boolean);
+  const rel = relatedSlugs(t).map(s => topics.find(x => x.slug === s)).filter(Boolean);
   if (!rel.length) return '';
   let html = '<section class="card"><h2>Verwandte Themen</h2><ul class="rel-list">';
-  rel.slice(0, 3).forEach(r => { html += '<li><a href="' + esc(r.slug) + '.html">' + esc(r.de) + '</a></li>'; });
+  rel.forEach(r => { html += '<li><a href="' + esc(r.slug) + '.html">' + esc(r.de) + '</a></li>'; });
   html += '</ul></section>';
   return html;
 }
@@ -411,6 +436,8 @@ EXTRA_PUBLIC_PAGES.forEach(f => { if (fs.existsSync(path.join(ROOT, f))) urls.pu
 urls.push(BASE + '/themen/');
 topics.forEach(t => urls.push(BASE + '/themen/' + t.slug + '.html'));
 const uniq = Array.from(new Set(urls));
+// No <lastmod> here — see "sitemap has no lastmod" in CLAUDE.md for the two
+// approaches that were tried and why adding it needs a pipeline change first.
 const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
   + uniq.map(u => '  <url><loc>' + u + '</loc></url>').join('\n') + '\n</urlset>\n';
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemap);
