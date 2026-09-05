@@ -1070,7 +1070,7 @@ all seven German rows are still the misspelt `/wilkommen/`.
 | `…/vocab-exercise/front-end-developing-vocab/` | `/it-english/` |
 | `/welcome/book-a-lesson/why-you-should-choose-individual-business-english-coaching/` | `/business-english/` |
 | `/welcome/what-i-offer/` | `/book-a-lesson/` |
-| `/what-is-dogme-teaching-in-esl/` | `/blog-posts/` |
+| `/what-is-dogme-teaching-in-esl/` | `/blog-posts/` — **delete this rule**, page 1079 is republished |
 | `/contact` | `/book-a-lesson/` |
 | `/2023/04/07/test-your-english/` (+ `-2`, `-3`) | `/all-my-quizzes/` |
 
@@ -1089,11 +1089,21 @@ needs.
   ~8,000 impressions but position 48), 2016 link-posts, 12 `/tag/` archives and 4 `/b/xxxxx` short
   links. Redirecting an unrelated page to the homepage is a soft 404 that helps nothing and muddies
   the topical signal. **Do not "finish the job" by redirecting these.**
-- `/what-is-dogme-teaching-in-esl/` was the site's 8th-best page by clicks (3,498 impressions,
-  position 14.31, 22 clicks) and was deleted; the content is gone, the trash is empty, and no copy
-  exists elsewhere. Its redirect to `/blog-posts/` is a **stopgap** — a blog index is a poor
-  topical match and Google will likely drop it as a soft 404. Rewriting the article at that exact
-  URL is the only real recovery.
+- **`/what-is-dogme-teaching-in-esl/` was never deleted — it was unpublished.** It is the site's
+  8th-best page by clicks (3,498 impressions, position 14.31, 22 clicks) and it 404'd because
+  page **1079** had been set to `draft` (last modified 2026-08-10), not because anything was
+  removed. It was republished on 2026-09-05 and its redirect rule must be deleted for the URL to
+  resolve.
+  **The lesson is the search method, not this page.** An unpublished draft is invisible to the
+  site's own front-end search, to `posts.list`/`pages.list` with default arguments, and to the
+  trash listing — so "the trash is empty and search finds nothing" is *not* evidence that content
+  is gone, and it was wrongly reported as such here. Before concluding a 404'd page is
+  unrecoverable, list it explicitly with
+  `status: "publish,draft,pending,private,future,trash"` on **both** `pages.list` and
+  `posts.list`. Other 404s in the list above may be in the same state and have not been checked
+  this way.
+- A slug held by a draft is still taken: creating a replacement page reuses the title but WordPress
+  appends `-2` to the slug, silently publishing at the wrong URL. Check the `link` in the response.
 - Redirection now logs 404s, so the next batch surfaces there rather than needing a GSC export.
 
 ## Deployment
