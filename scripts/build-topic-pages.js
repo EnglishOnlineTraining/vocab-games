@@ -46,8 +46,19 @@ function practiceItemsHtml(items) {
   let rows = '';
   items.forEach(it => {
     const opts = it.options.map(o => '<option value="' + esc(o) + '">' + esc(o) + '</option>').join('');
+    const sel = '<select class="pw-sel"><option value="">…</option>' + opts + '</select>';
+    const q = esc(it.q);
+    // A question without a ___ used to render with no <select> at all: its
+    // options were dropped silently, pwCheck skipped it (`if(!sel)return`) so it
+    // never counted toward the score, and its data-why was never shown — a
+    // question the student could look at but not answer. 14 items across seven
+    // topic pages were live in that state, all of them judgement prompts
+    // ("✗ oder ✓? …", "Choose the correct sentence.") that read perfectly well
+    // with the control at the end. Append it rather than drop it, so authoring
+    // an item without a gap can never silently lose content again.
+    const body = q.indexOf('___') !== -1 ? q.replace('___', sel) : q + ' ' + sel;
     rows += '<div class="pw-item" data-answer="' + esc(it.answer) + '" data-why="' + esc(it.why) + '">'
-      + '<div class="pw-q">' + esc(it.q).replace('___', '<select class="pw-sel"><option value="">…</option>' + opts + '</select>') + '</div>'
+      + '<div class="pw-q">' + body + '</div>'
       + '<div class="pw-fb"></div></div>';
   });
   return rows;
