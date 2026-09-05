@@ -96,6 +96,25 @@ const NODES = [
              'data/explanations.json'],
     outputs: ['*.html', 'themen/*.html'],
   },
+  {
+    id: 'lastmod',
+    run: 'scripts/build-lastmod.js',
+    // Must be last, and that is the whole reason it is a node rather than a few
+    // lines inside build-topic-pages.js. It stamps <lastmod> by hashing each
+    // page's final content, so it has to run after every generator that
+    // rewrites one — build-head.js rewrites all of them, and runs after
+    // topic-pages. A hash taken any earlier goes stale the moment head touches
+    // the file, and the dates churn on the next build.
+    //
+    // Both edges are real data edges, not ordering hints: `head` writes the
+    // *.html this hashes, and `topic-pages` writes the sitemap.xml it reads and
+    // rewrites. The `topic-pages` edge is declared for that data dependency, not
+    // to satisfy the missing-barrier check — both nodes write sitemap.xml, but
+    // the ordering that check wants already holds transitively through `head`.
+    needs: ['head', 'topic-pages'],
+    inputs: ['*.html', 'themen/*.html', 'sitemap.xml', 'data/lastmod.json'],
+    outputs: ['sitemap.xml', 'data/lastmod.json'],
+  },
 ];
 
 // Validators: leaf nodes with no outputs. All three read authored, committed
