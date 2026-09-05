@@ -274,11 +274,24 @@ const RESOURCE_TYPES = {
  * Perfect, Simple Past), so the gloss is dropped when it would only repeat the
  * name — "Past Perfect (Past Perfect)" reads like a bug because it is one.
  */
+// English label with the German one in brackets, for the exercise pages'
+// "Auf einen Blick" row and the JSON-LD `teaches`.
+//
+// build-topic-pages.js has a mirror of this (German first, English in brackets)
+// and already guards two cases this one did not, so both produced bad labels here:
+//   - `de` carrying its own parenthetical nested a second pair of brackets:
+//     "Future tenses (Future Tenses (will / going to))".
+//   - an exact === comparison treated a case-only difference as a translation:
+//     "Present tenses (Present Tenses)", live since present-tenses was added.
 function topicLabel(slug, topicsBySlug) {
   const t = topicsBySlug[slug];
   if (!t) return slug;
-  if (!t.de || t.de === t.en) return t.en;
-  return t.en + ' (' + t.de + ')';
+  const en = String(t.en || '').trim();
+  // Keep the German gloss, drop any parenthetical it carries for itself.
+  const de = String(t.de || '').replace(/\s*\(.*$/, '').trim();
+  if (!de) return en;
+  if (de.toLowerCase() === en.toLowerCase()) return en;  // same term, different case
+  return en + ' (' + de + ')';
 }
 
 function cefrNode(level) {
