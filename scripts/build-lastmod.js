@@ -49,13 +49,33 @@ const BASE = 'https://activities.englishonline.training';
 const SITEMAP = path.join(ROOT, 'sitemap.xml');
 const STORE = path.join(ROOT, 'data', 'lastmod.json');
 
-/** Sitemap URL -> the repo file that serves it. */
+/**
+ * Sitemap URL -> the repo file that serves it, or null.
+ *
+ * The path comes out of sitemap.xml, which this script only reads — it never
+ * writes it — so a malformed or hand-edited entry is untrusted input to a
+ * readFileSync below. Anything that does not resolve to a plain file inside the
+ * repo is rejected here rather than at the sink, so `..%2f` or an absolute path
+ * can never escape ROOT.
+ */
 function fileForUrl(u) {
   if (u.indexOf(BASE) !== 0) return null;
-  const p = u.slice(BASE.length);
-  if (p === '/') return 'index.html';
-  if (p.charAt(p.length - 1) === '/') return p.slice(1) + 'index.html';
-  return p.slice(1);
+  let p = u.slice(BASE.length);
+  if (p === '/') p = '/index.html';
+  else if (p.charAt(p.length - 1) === '/') p += 'index.html';
+  if (p.charAt(0) !== '/') return null;
+
+  let decoded;
+  try {
+    decoded = decodeURIComponent(p.slice(1));
+  } catch (err) {
+    return null; // malformed percent-encoding
+  }
+  if (decoded.indexOf('\0') !== -1) return null;
+
+  const rel = path.normalize(decoded);
+  if (path.isAbsolute(rel) || rel === '..' || rel.startsWith('..' + path.sep)) return null;
+  return rel;
 }
 
 function hashOf(abs) {
