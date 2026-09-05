@@ -6,7 +6,7 @@ Static HTML exercise pages for English language learners, hosted on GitHub Pages
 **Live URL:** `https://activities.englishonline.training/`  
 **GitHub Pages fallback:** `https://englishonlinetraining.github.io/vocab-games/`  
 **Custom domain:** `activities.englishonline.training` (DNS CNAME → `englishonlinetraining.github.io`)  
-**WordPress site:** `englishonline.training` (blog ID `65893384`, Simple plan — no SFTP)  
+**WordPress site:** `englishonline.training` (blog ID `65893384`)  
 **GitHub repo:** `https://github.com/EnglishOnlineTraining/vocab-games`  
 **Teacher email:** `englishonlinetraining@pm.me`
 
@@ -1023,6 +1023,78 @@ number in a Google Search Console coverage report is untouched by this.
 There is also an **IndexNow plugin active on the WordPress site** (Microsoft Bing, v1.0.4). It
 covers `englishonline.training` only. It cannot see `activities.englishonline.training`, which is
 GitHub Pages — that is what this script is for.
+
+## WordPress redirects — the Redirection plugin (added 2026-09-05)
+
+**The site is not on the Simple plan.** This file said "Simple plan — no SFTP" at the top for
+months; it has 14 plugins installed (Jetpack, Gutenberg, IndexNow, Redirection, CoBlocks…), so
+plugin-level fixes are available. The line is corrected above. Check `plugin.list` before
+concluding something cannot be done on WordPress.
+
+### What was wrong
+A GSC domain-property export (16 months) was checked URL by URL against the live site on
+2026-09-05. Of the 172 `englishonline.training` URLs that had ever ranked:
+
+| Status | Pages | Clicks | Impressions |
+|---|---|---|---|
+| 200 | 104 | 1,168 | 93,818 |
+| 301 | 21 | 653 (35%) | 71,266 (38%) |
+| 404 | 47 | 51 | 16,098 |
+
+**47% of the site's search impressions landed on a URL that was not a live page.** The 301s are
+all one thing: the URL structure was flattened at some point — the `/welcome/`, `/wilkommen/`
+(note: one *l*) and `/test-your-vocab-knowledge/` path segments were dropped — and Google still
+ranks the old URLs. The redirects themselves are correct (single hop, self-referencing canonical
+on the target, no noindex; all verified). They were simply never re-crawled, because **the only
+sitemap Google had on file was the `http://` one it last read in March 2025**. The migration
+happened with no sitemap signal at all.
+
+The split is stark, and is the evidence that it stalled rather than completed:
+
+| Content | Old URL | New URL |
+|---|---|---|
+| what-is-the-simple-past | 10,115 impr | **32** |
+| essential-business-english-skills | 8,348 | **51** |
+| blog-posts index | 1,088 | **40** |
+
+The corrected German path `/willkommen/` (two *l*s) has **zero** impressions across 16 months;
+all seven German rows are still the misspelt `/wilkommen/`.
+
+### What was done
+**Redirection 5.10.0** installed and activated. Eleven 301s imported by CSV, verified firing
+(single hop → 200) with no regression on the 104 live pages:
+
+| From | To |
+|---|---|
+| `/test-your-vocab-knowledge/daily-english-exercises/` (+ `vocab-exercise/`, `english-exercises-2/`) | `/activities/` |
+| `…/vocab-exercise/front-end-developing-vocab/` | `/it-english/` |
+| `/welcome/book-a-lesson/why-you-should-choose-individual-business-english-coaching/` | `/business-english/` |
+| `/welcome/what-i-offer/` | `/book-a-lesson/` |
+| `/what-is-dogme-teaching-in-esl/` | `/blog-posts/` |
+| `/contact` | `/book-a-lesson/` |
+| `/2023/04/07/test-your-english/` (+ `-2`, `-3`) | `/all-my-quizzes/` |
+
+Settings: **Monitor permalink changes ON** — this is what would have prevented the whole problem,
+so leave it on. **Logging ON** (set a 30-day retention cap in Options; the default keeps logs
+forever). **IP storage OFF** — the site is German-facing with an Impressum and
+Datenschutzerklärung, IPs are personal data under GDPR, and the URLs alone are what a 404 audit
+needs.
+
+### Rules
+- **Redirection intercepts before WordPress resolves a URL.** Recreating a page at a path that has
+  a redirect rule will *not* make it reachable — delete the rule first. This applies right now to
+  `/what-is-dogme-teaching-in-esl/`.
+- **36 of the 47 404s were deliberately left dead** (14 clicks between them over 16 months):
+  off-topic guest content (immigrant banking/entrepreneurship, ESG investing, SME climate hub —
+  ~8,000 impressions but position 48), 2016 link-posts, 12 `/tag/` archives and 4 `/b/xxxxx` short
+  links. Redirecting an unrelated page to the homepage is a soft 404 that helps nothing and muddies
+  the topical signal. **Do not "finish the job" by redirecting these.**
+- `/what-is-dogme-teaching-in-esl/` was the site's 8th-best page by clicks (3,498 impressions,
+  position 14.31, 22 clicks) and was deleted; the content is gone, the trash is empty, and no copy
+  exists elsewhere. Its redirect to `/blog-posts/` is a **stopgap** — a blog index is a poor
+  topical match and Google will likely drop it as a soft 404. Rewriting the article at that exact
+  URL is the only real recovery.
+- Redirection now logs 404s, so the next batch surfaces there rather than needing a GSC export.
 
 ## Deployment
 
