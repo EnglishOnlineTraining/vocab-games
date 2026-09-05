@@ -49,33 +49,48 @@ const BASE = 'https://activities.englishonline.training';
 const SITEMAP = path.join(ROOT, 'sitemap.xml');
 const STORE = path.join(ROOT, 'data', 'lastmod.json');
 
-/**
- * Sitemap URL -> the repo file that serves it, or null.
+/*
+ * URL -> file map, built by listing the repo rather than by turning a URL into
+ * a path.
  *
- * The path comes out of sitemap.xml, which this script only reads — it never
- * writes it — so a malformed or hand-edited entry is untrusted input to a
- * readFileSync below. Anything that does not resolve to a plain file inside the
- * repo is rejected here rather than at the sink, so `..%2f` or an absolute path
- * can never escape ROOT.
+ * The obvious implementation — slice the origin off the URL and path.join the
+ * rest onto ROOT — feeds a string read out of sitemap.xml straight into
+ * readFileSync. This script only ever reads that file, so a hand-edited or
+ * malformed entry would be untrusted input to a file read, and no amount of
+ * "../" filtering makes that flow obviously safe (CodeQL flags it, correctly).
+ *
+ * Listing the directories instead inverts the problem: every path that reaches
+ * readFileSync comes from readdirSync, and the sitemap URL is only ever a
+ * lookup key. A URL with no matching file is simply absent from the map, which
+ * is also a better answer than existsSync on a constructed path.
+ *
+ * The two directories below are the ones sitemap.xml covers: root *.html and
+ * themen/*.html. build-topic-pages.js is what would need changing first if that
+ * ever grew.
  */
-function fileForUrl(u) {
-  if (u.indexOf(BASE) !== 0) return null;
-  let p = u.slice(BASE.length);
-  if (p === '/') p = '/index.html';
-  else if (p.charAt(p.length - 1) === '/') p += 'index.html';
-  if (p.charAt(0) !== '/') return null;
-
-  let decoded;
-  try {
-    decoded = decodeURIComponent(p.slice(1));
-  } catch (err) {
-    return null; // malformed percent-encoding
+function buildUrlMap() {
+  const map = Object.create(null);
+  const dirs = ['', 'themen'];
+  for (const dir of dirs) {
+    let names;
+    try {
+      names = fs.readdirSync(path.join(ROOT, dir));
+    } catch (err) {
+      continue; // themen/ is generated; a bare checkout may not have it yet
+    }
+    for (const name of names) {
+      if (!name.endsWith('.html')) continue;
+      const rel = dir ? dir + '/' + name : name;
+      if (!fs.statSync(path.join(ROOT, rel)).isFile()) continue;
+      // index.html is served as the directory itself, matching the URLs
+      // build-topic-pages.js emits ("/" and "/themen/").
+      const url = name === 'index.html'
+        ? BASE + '/' + (dir ? dir + '/' : '')
+        : BASE + '/' + rel;
+      map[url] = rel;
+    }
   }
-  if (decoded.indexOf('\0') !== -1) return null;
-
-  const rel = path.normalize(decoded);
-  if (path.isAbsolute(rel) || rel === '..' || rel.startsWith('..' + path.sep)) return null;
-  return rel;
+  return map;
 }
 
 function hashOf(abs) {
@@ -84,6 +99,7 @@ function hashOf(abs) {
 
 const xml = fs.readFileSync(SITEMAP, 'utf8');
 const urls = Array.from(xml.matchAll(/<loc>([^<]+)<\/loc>/g)).map((m) => m[1]);
+const urlMap = buildUrlMap();
 
 let store = {};
 try {
@@ -102,16 +118,14 @@ let added = 0;
 let missing = 0;
 
 for (const u of urls) {
-  const rel = fileForUrl(u);
-  if (!rel) continue;
-  const abs = path.join(ROOT, rel);
-  if (!fs.existsSync(abs)) {
+  const rel = urlMap[u];
+  if (!rel) {
     // A sitemap URL with no file behind it: leave it undated rather than
     // invent a date. build-topic-pages.js is what would need fixing.
     missing++;
     continue;
   }
-  const h = hashOf(abs);
+  const h = hashOf(path.join(ROOT, rel));
   const prev = store[rel];
   if (prev && prev.h === h) {
     next[rel] = prev;
@@ -130,7 +144,7 @@ for (const u of urls) {
 const out = xml.replace(
   /<url><loc>([^<]+)<\/loc>(?:<lastmod>[^<]*<\/lastmod>)?<\/url>/g,
   (whole, u) => {
-    const rel = fileForUrl(u);
+    const rel = urlMap[u];
     const e = rel && next[rel];
     return '<url><loc>' + u + '</loc>' + (e ? '<lastmod>' + e.d + '</lastmod>' : '') + '</url>';
   }
