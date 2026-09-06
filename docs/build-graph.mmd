@@ -7,6 +7,7 @@ graph TD
   hub["hub<br/><small>scripts/build-hub.js</small>"]
   topic_pages["topic-pages<br/><small>scripts/build-topic-pages.js</small>"]
   head["head<br/><small>scripts/build-head.js</small>"]
+  lastmod["lastmod<br/><small>scripts/build-lastmod.js</small>"]
   quizzes --> exercise_data
   review --> exercise_data
   exercise_data --> hub
@@ -16,3 +17,5 @@ graph TD
   quizzes --> head
   review --> head
   exercise_data --> head
+  head --> lastmod
+  topic_pages --> lastmod
