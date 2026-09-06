@@ -473,6 +473,41 @@ as **Text** in both workbooks (preserves `12 / 24` exactly; table columns propag
 new rows), or change the mapper so the value cannot parse as a date. Do not leave it: roughly half
 of all scores are integers.
 
+### Weekly webhook smoke test (added 2026-09-06)
+
+`.github/workflows/webhook-smoke-test.yml` runs `node scripts/check-webhooks-live.js` every Monday
+(plus manual `workflow_dispatch`). It exists because the whole 2026-06-23→2026-09-04 outage above
+went undetected for three months on exactly one check: "the page shows Submitted successfully" —
+worthless, since `submitToSheet()`'s `fetch()` uses `mode:'no-cors'` and resolves regardless of what
+the Make scenario does with the request. This script sends one real test submission through each
+webhook (class `ZZTEST`, unit `zz-smoke-test-year7`/`-year9` — unmistakably fake, never collides
+with a real exercise, deliberately left in the Excel tables rather than cleaned up) and then reads
+back the **actual** downstream state via the Make API: the scenario's own execution log (must show
+4 operations — webhook → parse → dedup → Excel, not the 2-op short-circuit a duplicate or a broken
+mapping produces) and the shared "Submission Dedup Keys" data store (id `138128`) for a record
+shaped `ZZTEST_smoke-test_<unit>_<date>` — the exact key shape that collapsed to `___<date>` during
+the real outage. A 200 from the webhook is never treated as a pass by itself.
+
+**Needs a `MAKE_API_KEY` repository secret** (Make → Profile → API tokens, read access to
+scenarios/executions and data stores is enough). **Run it once by hand (`workflow_dispatch`) after
+adding the secret and read the output before trusting the schedule** — the network this was built in
+had egress to Make's own API docs blocked, so the exact REST endpoint paths and response envelope in
+`scripts/check-webhooks-live.js` were inferred (from the equivalent MCP Make tool's own parameter
+names, cross-checked by hand against real executions/dedup-store data during development — see that
+commit) rather than confirmed against live documentation. The script fails loudly with the raw
+response body on an unrecognised shape rather than guessing, but a first supervised run is still the
+only real confirmation.
+
+**Known limitation, not a bug:** the dedup key is scoped to class+name+unit+day, so running this
+script twice for the same webhook on the same UTC day makes the second run's execution legitimately
+collapse to 2 operations — that's the real dedup feature working correctly, not a regression. Don't
+re-run it same-day and read the resulting "failure" as real.
+
+`scripts/webhook-smoke-payload.js` is the standalone half of this (send-only, no verification) — the
+tool used to hand-verify the design against the live Make MCP connector before this workflow existed.
+Neither script is part of the `scripts/build.js` graph: both make live network calls to production
+webhooks, which must never happen as a side effect of a routine local or CI build.
+
 ---
 
 ## Standard features — every exercise must have these

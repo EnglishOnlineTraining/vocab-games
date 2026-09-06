@@ -1,0 +1,39 @@
+name: Webhook smoke test
+
+# Weekly end-to-end check of the Year 7 and Year 9 Make webhooks (CLAUDE.md,
+# Submission routing). Sends one real test submission through each webhook,
+# then reads back the actual Make execution log and the shared dedup data
+# store to confirm the fields really flowed through — not just that the
+# webhook accepted the POST. See scripts/check-webhooks-live.js for why a
+# 200 response alone is worthless here: that is exactly the signal that let
+# the 2026-06-23 to 2026-09-04 outage in CLAUDE.md go unnoticed for months.
+#
+# Needs a MAKE_API_KEY repo secret (Make → Profile → API tokens; the token
+# only needs read access to scenarios/executions and data stores).
+#
+# Requires one supervised `workflow_dispatch` run after MAKE_API_KEY is
+# added, before trusting the schedule — see the header comment in
+# scripts/check-webhooks-live.js for why the exact Make API response shape
+# used here was inferred rather than verified against live documentation.
+on:
+  schedule:
+    - cron: '0 6 * * 1' # Monday 06:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Verify both webhooks end-to-end
+        env:
+          MAKE_API_KEY: ${{ secrets.MAKE_API_KEY }}
+        run: node scripts/check-webhooks-live.js
