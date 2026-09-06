@@ -99,6 +99,13 @@ function pageLang(s) { return (m1(/<html[^>]*\blang="([a-z-]+)"/i, s) || 'en').t
 const exercises = [];
 const coverage = {};
 TOPICS.forEach(t => coverage[t.slug] = []);
+// One malformed page used to take the whole node down mid-loop: nothing after
+// it in file order got processed, data/exercises.json was never written, and
+// the stack trace pointed at this loop rather than the file that broke it.
+// Every other page still parses fine, so isolate each page's failure instead
+// of losing the run to it — see scripts/check-scored-pages.js's sibling note
+// on the same "one bad unit shouldn't cost the whole batch" principle.
+const failures = [];
 
 files.forEach(f => {
   const s = fs.readFileSync(path.join(ROOT, f), 'utf8');
@@ -110,25 +117,29 @@ files.forEach(f => {
   // alone. Verified: the stricter pattern changes exactly one page's
   // classification and leaves the other 192 framework pages untouched.
   if (!/<script[^>]+src="exercise\.js"/.test(s) || /activities\.html$/.test(f) || f === '_template.html') return;   // exercise pages only
-  const title = decode(m1(/<title>([\s\S]*?)<\/title>/i, s)).replace(/\s*[|·–-]\s*englishonline\.training\s*$/i, '').trim();
-  const h1 = decode(m1(/<h1[^>]*class="welcome-title"[^>]*>([\s\S]*?)<\/h1>/i, s));
-  const [year, schoolType] = schoolFromPrefix(f);
-  // The page's own declared language. Most are English, but the ten gr-* grammar
-  // pages are written in German (<html lang="de">) and so are their titles — the
-  // hub needs to know, or it renders a German title inside an English page with
-  // no lang of its own (WCAG 2.2 SC 3.1.2).
-  const lang = pageLang(s);
-  let points = grabTitles(s, 'ex-title', 'h2');
-  if (!points.length) points = grabTitles(s, 'card-title', 'div');
-  const blob = points.join(' · ');
-  let topics = TOPICS.filter(t => t.match.some(re => re.test(blob))).map(t => t.slug);
-  const grSlug = (f.match(/^gr-([a-z-]+)\.html$/) || [])[1];
-  if (grSlug && TOPICS.some(t => t.slug === grSlug)) topics = [grSlug];
-  topics.forEach(sl => coverage[sl].push(f));
-  exercises.push({
-    file: f, title: title || h1, year: year, schoolType: schoolType, lang: lang,
-    topics: topics, skills: skillsFor(points), blurb: points.join(' · ')
-  });
+  try {
+    const title = decode(m1(/<title>([\s\S]*?)<\/title>/i, s)).replace(/\s*[|·–-]\s*englishonline\.training\s*$/i, '').trim();
+    const h1 = decode(m1(/<h1[^>]*class="welcome-title"[^>]*>([\s\S]*?)<\/h1>/i, s));
+    const [year, schoolType] = schoolFromPrefix(f);
+    // The page's own declared language. Most are English, but the ten gr-* grammar
+    // pages are written in German (<html lang="de">) and so are their titles — the
+    // hub needs to know, or it renders a German title inside an English page with
+    // no lang of its own (WCAG 2.2 SC 3.1.2).
+    const lang = pageLang(s);
+    let points = grabTitles(s, 'ex-title', 'h2');
+    if (!points.length) points = grabTitles(s, 'card-title', 'div');
+    const blob = points.join(' · ');
+    let topics = TOPICS.filter(t => t.match.some(re => re.test(blob))).map(t => t.slug);
+    const grSlug = (f.match(/^gr-([a-z-]+)\.html$/) || [])[1];
+    if (grSlug && TOPICS.some(t => t.slug === grSlug)) topics = [grSlug];
+    topics.forEach(sl => coverage[sl].push(f));
+    exercises.push({
+      file: f, title: title || h1, year: year, schoolType: schoolType, lang: lang,
+      topics: topics, skills: skillsFor(points), blurb: points.join(' · ')
+    });
+  } catch (err) {
+    failures.push({ file: f, error: err.message });
+  }
 });
 
 // ---- Abitur packs (separate architecture — no exercise.js). Include so they
@@ -199,3 +210,14 @@ TOPICS.slice().sort((a, b) => coverage[b.slug].length - coverage[a.slug].length)
 });
 const untagged = exercises.filter(e => !e.topics.length).length;
 console.log('\nExercises with no grammar topic (skills-only):', untagged);
+
+// data/exercises.json above already reflects every page that DID parse — a
+// broken page costs only itself, not the other ~170. Still fail the build so
+// CI catches it, but name exactly which file(s) broke and why, rather than
+// the old behaviour: the whole node dying on the first bad page with a stack
+// trace that gives no file context and no output written at all.
+if (failures.length) {
+  console.error(`\n✗ ${failures.length} page(s) failed to parse and were skipped:\n`);
+  failures.forEach(({ file, error }) => console.error(`  ${file}: ${error}`));
+  process.exit(1);
+}

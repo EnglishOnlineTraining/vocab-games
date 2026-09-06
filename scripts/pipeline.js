@@ -151,10 +151,18 @@ const VALIDATORS = [
 //                            table and those copies would silently keep grading
 //                            on the old thresholds, with nothing on screen
 //                            looking wrong. This fails the build on that drift.
+//   check-scored-pages.js    regression guard for the "ten pages silently not
+//                            grading" bug (fixed 2026-08-12): a checkDropdowns
+//                            call with no scoreKey records no score and raises
+//                            no error, so nothing catches a future page making
+//                            the same mistake unless something checks the call
+//                            shape itself. Reads generated pages, same reason
+//                            as check-syntax.js above.
 const CHECKERS = [
   { id: 'validate-schema', run: 'scripts/validate-schema.js' },
   { id: 'check-syntax', run: 'scripts/check-syntax.js' },
   { id: 'check-grade-table', run: 'scripts/check-grade-table.js' },
+  { id: 'check-scored-pages', run: 'scripts/check-scored-pages.js' },
 ];
 
 // Generators deliberately left outside the graph. Their inputs change roughly
