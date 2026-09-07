@@ -1,0 +1,145 @@
+{
+ "unit": "msa-c-climate-action-day",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "nine",
+     "accept": [
+      "nine"
+     ],
+     "label": "1. Time of the assembly?",
+     "why": "The recording says the special assembly is at nine o'clock."
+    },
+    "g2": {
+     "correct": "courtyard",
+     "accept": [
+      "courtyard"
+     ],
+     "label": "2. Where is the poster exhibition?",
+     "why": "The recording says the poster exhibition is in the courtyard."
+    },
+    "g3": {
+     "correct": "Mr Owusu",
+     "accept": [
+      "Mr Owusu"
+     ],
+     "label": "3. Who to meet for litter-picking?",
+     "why": "The recording says students should meet Mr Owusu for litter-picking."
+    },
+    "g4": {
+     "correct": "gloves",
+     "accept": [
+      "gloves"
+     ],
+     "label": "4. What to bring if possible?",
+     "why": "The recording says students should bring gloves if they have them."
+    },
+    "g5": {
+     "correct": "Wednesday",
+     "accept": [
+      "Wednesday"
+     ],
+     "label": "5. When are permission slips due?",
+     "why": "The recording says permission slips must be returned by Wednesday."
+    },
+    "g6": {
+     "correct": "signed slip",
+     "accept": [
+      "signed slip"
+     ],
+     "label": "6. What does Ollie need?",
+     "why": "The recording says Ollie needs his parents to sign the permission slip before Friday."
+    },
+    "g7": {
+     "correct": "inspire more",
+     "accept": [
+      "inspire more"
+     ],
+     "label": "7. What might the assembly do?",
+     "why": "The recording says Ollie thinks the assembly might inspire more people to get involved."
+    },
+    "g8": {
+     "correct": "prefers not to",
+     "accept": [
+      "prefers not to"
+     ],
+     "label": "8. Ollie's opinion on missing lessons",
+     "why": "The recording says Ollie would rather still get an education than miss a full day of lessons."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Activist",
+     "accept": [
+      "Activist"
+     ],
+     "label": "1. Zoe's attitude",
+     "why": "The text says Zoe thinks missing school to protest sends a powerful message."
+    },
+    "g2": {
+     "correct": "Doer",
+     "accept": [
+      "Doer"
+     ],
+     "label": "2. Theo's attitude",
+     "why": "The text says Theo would rather join clubs and projects that clean up the local area."
+    },
+    "g3": {
+     "correct": "Skeptic",
+     "accept": [
+      "Skeptic"
+     ],
+     "label": "3. Marco's attitude",
+     "why": "The text says Marco doesn't think one person can change something this big."
+    },
+    "g4": {
+     "correct": "Learner",
+     "accept": [
+      "Learner"
+     ],
+     "label": "4. Iris's attitude",
+     "why": "The text says Iris reads the news but isn't sure what she can actually do to help."
+    },
+    "g5": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "5. Assembly starts at nine",
+     "why": "The text confirms the assembly starts at nine o'clock."
+    },
+    "g6": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "6. Gloves required, no exceptions",
+     "why": "The text says litter-pickers should bring gloves if possible, not that gloves are strictly required."
+    },
+    "g7": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "7. Slips due by Friday",
+     "why": "The text says permission slips are due by Wednesday, not Friday."
+    },
+    "g8": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "8. Lessons cancelled all day",
+     "why": "The text says normal lessons continue as usual in the morning."
+    }
+   }
+  }
+ }
+}

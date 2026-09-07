@@ -1,0 +1,145 @@
+{
+ "unit": "msa-c-weekend-job-cafe",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "12:30",
+     "accept": [
+      "12:30"
+     ],
+     "label": "1. When does shadowing start?",
+     "why": "The recording says training runs until half past twelve, then shadowing begins."
+    },
+    "g2": {
+     "correct": "sandals",
+     "accept": [
+      "sandals"
+     ],
+     "label": "2. What's not allowed in the kitchen?",
+     "why": "The recording says sandals are not allowed in the kitchen."
+    },
+    "g3": {
+     "correct": "20 minutes",
+     "accept": [
+      "20 minutes"
+     ],
+     "label": "3. How long is the break?",
+     "why": "The recording says the break is twenty minutes."
+    },
+    "g4": {
+     "correct": "call the cafe",
+     "accept": [
+      "call the cafe"
+     ],
+     "label": "4. How to report being late?",
+     "why": "The recording says to call the café directly if you'll be late."
+    },
+    "g5": {
+     "correct": "last friday",
+     "accept": [
+      "last friday"
+     ],
+     "label": "5. When is payday?",
+     "why": "The recording says payday is the last Friday of each month."
+    },
+    "g6": {
+     "correct": "till system",
+     "accept": [
+      "till system"
+     ],
+     "label": "6. What should Jake learn first?",
+     "why": "The recording says Jake should learn the till system before his first shift."
+    },
+    "g7": {
+     "correct": "20 percent not on shift",
+     "accept": [
+      "20 percent not on shift"
+     ],
+     "label": "7. What discount do staff get?",
+     "why": "The recording says staff get twenty percent off, but only when not on shift."
+    },
+    "g8": {
+     "correct": "the manager",
+     "accept": [
+      "the manager"
+     ],
+     "label": "8. Who decides shifts?",
+     "why": "The recording says the manager makes the final decision on the rota."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Barista",
+     "accept": [
+      "Barista"
+     ],
+     "label": "1. Aisha — talks to people, makes drinks",
+     "why": "The text says the Barista role involves making coffee and chatting with customers."
+    },
+    "g2": {
+     "correct": "Kitchen Porter",
+     "accept": [
+      "Kitchen Porter"
+     ],
+     "label": "2. Noah — shy, works alone",
+     "why": "The text says the Kitchen Porter role has little contact with customers."
+    },
+    "g3": {
+     "correct": "Waiter",
+     "accept": [
+      "Waiter"
+     ],
+     "label": "3. Leon — good memory, calm under pressure",
+     "why": "The text says the Waiter role needs a good memory and a calm attitude."
+    },
+    "g4": {
+     "correct": "Delivery Cyclist",
+     "accept": [
+      "Delivery Cyclist"
+     ],
+     "label": "4. Mia — outdoors, cycling",
+     "why": "The text says the Delivery Cyclist role involves being outdoors in all weather."
+    },
+    "g5": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "5. Never need to wash hands",
+     "why": "The text says staff must wash their hands at least every thirty minutes."
+    },
+    "g6": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "6. Phones in the staff room",
+     "why": "The text confirms phones may be used in the staff room."
+    },
+    "g7": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "7. Free meal on every shift, any length",
+     "why": "The text says free meals are only for shifts longer than six hours."
+    },
+    "g8": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "8. Open-toe shoes allowed",
+     "why": "The text says the dress code requires closed-toe shoes."
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,145 @@
+{
+ "unit": "msa-c-multicultural-berlin",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "cultures",
+     "accept": [
+      "cultures"
+     ],
+     "label": "1. What is being celebrated?",
+     "why": "The recording says the festival celebrates the many cultures of the neighbourhood."
+    },
+    "g2": {
+     "correct": "nine evening",
+     "accept": [
+      "nine evening"
+     ],
+     "label": "2. When does it end Saturday?",
+     "why": "The recording says the festival runs until nine in the evening on Saturday."
+    },
+    "g3": {
+     "correct": "over twenty",
+     "accept": [
+      "over twenty"
+     ],
+     "label": "3. How many countries at food stalls?",
+     "why": "The recording says food stalls represent over twenty different countries."
+    },
+    "g4": {
+     "correct": "two oclock",
+     "accept": [
+      "two oclock"
+     ],
+     "label": "4. When does live music start?",
+     "why": "The recording says live music starts at two o'clock."
+    },
+    "g5": {
+     "correct": "small donation",
+     "accept": [
+      "small donation"
+     ],
+     "label": "5. What's asked regarding cost?",
+     "why": "The recording says entry is free but a small donation is requested."
+    },
+    "g6": {
+     "correct": "teaches you",
+     "accept": [
+      "teaches you"
+     ],
+     "label": "6. Why does Hanna want to live there?",
+     "why": "The recording says Hanna thinks living around different cultures teaches you a lot."
+    },
+    "g7": {
+     "correct": "quieter less mixed",
+     "accept": [
+      "quieter less mixed"
+     ],
+     "label": "7. What do some people prefer?",
+     "why": "The recording says some people prefer somewhere quieter and less mixed."
+    },
+    "g8": {
+     "correct": "two oclock",
+     "accept": [
+      "two oclock"
+     ],
+     "label": "8. When do they agree to meet?",
+     "why": "The recording says they agree to meet at the food stalls at two."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Turkish",
+     "accept": [
+      "Turkish"
+     ],
+     "label": "1. Felix — wants baklava",
+     "why": "The text says the Turkish stall serves baklava, among other things."
+    },
+    "g2": {
+     "correct": "Vietnamese",
+     "accept": [
+      "Vietnamese"
+     ],
+     "label": "2. Greta — vegetarian, fresh food",
+     "why": "The text says the Vietnamese stall is famous for fresh spring rolls."
+    },
+    "g3": {
+     "correct": "Craft",
+     "accept": [
+      "Craft"
+     ],
+     "label": "3. Omar — handmade gift",
+     "why": "The text says the Craft stall sells handmade jewellery and textiles."
+    },
+    "g4": {
+     "correct": "Language",
+     "accept": [
+      "Language"
+     ],
+     "label": "4. Lina — practise Turkish",
+     "why": "The text says the Language Exchange Tent lets visitors practise speaking with volunteers."
+    },
+    "g5": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "5. The festival's tenth year",
+     "why": "The text confirms this is the tenth year the festival has run."
+    },
+    "g6": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "6. Food stalls only from Europe",
+     "why": "The text says food stalls represent cuisines from all over the world, not just Europe."
+    },
+    "g7": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "7. Fixed entry fee",
+     "why": "The text says entry is free, with donations welcome — not a fixed fee."
+    },
+    "g8": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "8. Children's area has a puppet show",
+     "why": "The text confirms the children's area includes a puppet show."
+    }
+   }
+  }
+ }
+}

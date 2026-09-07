@@ -1,0 +1,215 @@
+{
+ "unit": "10g-scottish-lowlands",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "cities",
+     "accept": [
+      "cities"
+     ],
+     "label": "1. Home to Scotland's two largest ___",
+     "why": "The text says the Lowlands are home to Scotland's two largest cities."
+    },
+    "g2": {
+     "correct": "capital",
+     "accept": [
+      "capital"
+     ],
+     "label": "2. Edinburgh is the ___",
+     "why": "The text says Edinburgh is the capital of Scotland."
+    },
+    "g3": {
+     "correct": "volcano",
+     "accept": [
+      "volcano"
+     ],
+     "label": "3. Edinburgh Castle sits on an extinct ___",
+     "why": "The text says Edinburgh Castle sits on top of an extinct volcano."
+    },
+    "g4": {
+     "correct": "arts",
+     "accept": [
+      "arts"
+     ],
+     "label": "4. The Fringe is the largest ___ festival",
+     "why": "The text says the Festival Fringe is the largest arts festival in the world."
+    },
+    "g5": {
+     "correct": "industrial",
+     "accept": [
+      "industrial"
+     ],
+     "label": "5. Glasgow was once a great ___ city",
+     "why": "The text says Glasgow was once a great industrial city."
+    },
+    "g6": {
+     "correct": "glaswegians",
+     "accept": [
+      "glaswegians"
+     ],
+     "label": "6. People from Glasgow are ___",
+     "why": "The text says people from Glasgow are known as Glaswegians."
+    },
+    "g7": {
+     "correct": "universities",
+     "accept": [
+      "universities"
+     ],
+     "label": "7. Both cities are famous for their ___",
+     "why": "The text says both cities are famous for their excellent universities."
+    },
+    "g8": {
+     "correct": "highlight",
+     "accept": [
+      "highlight"
+     ],
+     "label": "8. The two cities are the ___ of the trip",
+     "why": "The text says for many visitors the two cities are the highlight of the trip."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "which",
+     "accept": [
+      "which"
+     ],
+     "label": "1. Edinburgh, ___ is the capital,...",
+     "why": "A non-defining relative clause about a place/thing uses ‘which’."
+    },
+    "g2": {
+     "correct": "who",
+     "accept": [
+      "who"
+     ],
+     "label": "2. The people ___ live in Glasgow...",
+     "why": "A defining relative clause about people uses ‘who’."
+    },
+    "g3": {
+     "correct": "where",
+     "accept": [
+      "where"
+     ],
+     "label": "3. Glasgow is a city ___ ships were built",
+     "why": "‘Where’ introduces a defining relative clause about a place."
+    },
+    "g4": {
+     "correct": "which",
+     "accept": [
+      "which"
+     ],
+     "label": "4. The castle, ___ sits on a volcano,...",
+     "why": "A non-defining relative clause about a thing uses ‘which’."
+    },
+    "g5": {
+     "correct": "whose",
+     "accept": [
+      "whose"
+     ],
+     "label": "5. An author ___ books are read worldwide",
+     "why": "‘Whose’ shows possession — the author's books."
+    },
+    "g6": {
+     "correct": "which",
+     "accept": [
+      "which"
+     ],
+     "label": "6. The festival ___ takes place in August",
+     "why": "A defining relative clause about a thing uses ‘which’."
+    },
+    "g7": {
+     "correct": "who",
+     "accept": [
+      "who"
+     ],
+     "label": "7. Visitors ___ come for the festival",
+     "why": "A defining relative clause about people uses ‘who’."
+    },
+    "g8": {
+     "correct": "where",
+     "accept": [
+      "where"
+     ],
+     "label": "8. The university ___ she studied",
+     "why": "‘Where’ introduces a relative clause about a place."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "which",
+     "accept": [
+      "which"
+     ],
+     "label": "1. Edinburgh, ___ is the capital, is beautiful",
+     "why": "A non-defining relative clause about a place uses ‘which’."
+    },
+    "g2": {
+     "correct": "whose",
+     "accept": [
+      "whose"
+     ],
+     "label": "2. The man ___ dog won the prize",
+     "why": "‘Whose’ shows possession — his dog."
+    },
+    "g3": {
+     "correct": "that",
+     "accept": [
+      "that"
+     ],
+     "label": "3. A music scene ___ is famous",
+     "why": "A defining relative clause about a thing can use ‘that’."
+    },
+    "g4": {
+     "correct": "who",
+     "accept": [
+      "who"
+     ],
+     "label": "4. The students ___ study here",
+     "why": "A defining relative clause about people uses ‘who’."
+    },
+    "g5": {
+     "correct": "when",
+     "accept": [
+      "when"
+     ],
+     "label": "5. The month ___ the festival happens",
+     "why": "‘When’ introduces a relative clause about a time."
+    },
+    "g6": {
+     "correct": "which",
+     "accept": [
+      "which"
+     ],
+     "label": "6. The castle, ___ tourists love,...",
+     "why": "A non-defining relative clause about a thing uses ‘which’."
+    },
+    "g7": {
+     "correct": "where",
+     "accept": [
+      "where"
+     ],
+     "label": "7. The city ___ ships were built",
+     "why": "‘Where’ introduces a relative clause about a place."
+    },
+    "g8": {
+     "correct": "who",
+     "accept": [
+      "who"
+     ],
+     "label": "8. The writer ___ lived nearby",
+     "why": "A defining relative clause about a person uses ‘who’."
+    }
+   }
+  }
+ }
+}

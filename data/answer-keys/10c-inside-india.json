@@ -1,0 +1,215 @@
+{
+ "unit": "10c-inside-india",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "financial",
+     "accept": [
+      "financial"
+     ],
+     "label": "1. Mumbai is India's ___ capital",
+     "why": "The text says Mumbai is described as India's financial capital."
+    },
+    "g2": {
+     "correct": "any",
+     "accept": [
+      "any"
+     ],
+     "label": "2. More films than ___",
+     "why": "The text says Bollywood produces more films per year than any other film industry."
+    },
+    "g3": {
+     "correct": "technology",
+     "accept": [
+      "technology"
+     ],
+     "label": "3. Growth driven mainly by ___",
+     "why": "The text says India's economic growth has been driven mainly by the technology sector."
+    },
+    "g4": {
+     "correct": "stagnated",
+     "accept": [
+      "stagnated"
+     ],
+     "label": "4. Starting salaries have ___",
+     "why": "The text says a key problem is that starting salaries at major IT companies have stagnated."
+    },
+    "g5": {
+     "correct": "schools",
+     "accept": [
+      "schools"
+     ],
+     "label": "5. Volunteers work in ___",
+     "why": "The text says Teach For India recruits volunteers to work in schools."
+    },
+    "g6": {
+     "correct": "service",
+     "accept": [
+      "service"
+     ],
+     "label": "6. Schools now include ___",
+     "why": "The text says many Indian schools now include service as part of the curriculum."
+    },
+    "g7": {
+     "correct": "reasonable",
+     "accept": [
+      "reasonable"
+     ],
+     "label": "7. Producers receive ___ prices",
+     "why": "The text says fair trade organisations ensure small-scale producers receive reasonable prices."
+    },
+    "g8": {
+     "correct": "textiles",
+     "accept": [
+      "textiles"
+     ],
+     "label": "8. Fair trade goods include tea, coffee, spices, and ___",
+     "why": "The text lists tea, coffee, spices, and textiles as common Indian fair trade exports."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "visit",
+     "accept": [
+      "visit"
+     ],
+     "label": "1. If you ___ Mumbai... (Type I)",
+     "why": "Type I conditionals use the present simple after ‘if’, with ‘will’ in the result clause."
+    },
+    "g2": {
+     "correct": "worked",
+     "accept": [
+      "worked"
+     ],
+     "label": "2. If I ___ for a fair trade organisation...",
+     "why": "Type II conditionals use the past simple after ‘if’, matching the result ‘would help’."
+    },
+    "g3": {
+     "correct": "pay",
+     "accept": [
+      "pay"
+     ],
+     "label": "3. ...if they ___ fair wages. (Type I)",
+     "why": "Type I conditionals use the present simple after ‘if’, with ‘will’ in the result clause."
+    },
+    "g4": {
+     "correct": "volunteered",
+     "accept": [
+      "volunteered"
+     ],
+     "label": "4. If every student ___...",
+     "why": "Type II conditionals use the past simple after ‘if’, matching the result ‘would make’."
+    },
+    "g5": {
+     "correct": "invests",
+     "accept": [
+      "invests"
+     ],
+     "label": "5. If the government ___ more... (Type I)",
+     "why": "Type I conditionals use the present simple after ‘if’, with ‘will’ in the result clause."
+    },
+    "g6": {
+     "correct": "were",
+     "accept": [
+      "were"
+     ],
+     "label": "6. If I ___ a Bollywood director... (Type II)",
+     "why": "Type II conditionals with ‘be’ traditionally use ‘were’ for all subjects, matching ‘would make’."
+    },
+    "g7": {
+     "correct": "join",
+     "accept": [
+      "join"
+     ],
+     "label": "7. ...if you ___ a volunteer programme. (Type I)",
+     "why": "Type I conditionals use the present simple after ‘if’, with ‘will’ in the result clause."
+    },
+    "g8": {
+     "correct": "bought",
+     "accept": [
+      "bought"
+     ],
+     "label": "8. If all consumers ___ only fair trade products...",
+     "why": "Type II conditionals use the past simple after ‘if’, matching the result ‘would earn’."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "are produced",
+     "accept": [
+      "are produced"
+     ],
+     "label": "1. Bollywood films ___ every year",
+     "why": "‘Films’ is plural and the sentence is a habitual fact, so the present passive ‘are produced’ is used."
+    },
+    "g2": {
+     "correct": "is exported",
+     "accept": [
+      "is exported"
+     ],
+     "label": "2. Fair trade tea ___",
+     "why": "‘Tea’ is uncountable/singular, so the present passive ‘is exported’ is used."
+    },
+    "g3": {
+     "correct": "are helped",
+     "accept": [
+      "are helped"
+     ],
+     "label": "3. Thousands of children ___ every weekend",
+     "why": "‘Children’ is plural and the sentence is habitual, so the present passive ‘are helped’ is used."
+    },
+    "g4": {
+     "correct": "was built",
+     "accept": [
+      "was built"
+     ],
+     "label": "4. The Taj Mahal ___ in the 17th century",
+     "why": "A specific past time (‘the 17th century’) takes the simple past passive ‘was built’."
+    },
+    "g5": {
+     "correct": "are being built",
+     "accept": [
+      "are being built"
+     ],
+     "label": "5. Many new schools ___ right now",
+     "why": "‘Right now’ signals an action in progress, so the present continuous passive is used."
+    },
+    "g6": {
+     "correct": "were not paid",
+     "accept": [
+      "were not paid"
+     ],
+     "label": "6. The workers ___ fairly last year",
+     "why": "‘Last year’ is a specific past time, so the simple past passive negative is used."
+    },
+    "g7": {
+     "correct": "have been traded",
+     "accept": [
+      "have been traded"
+     ],
+     "label": "7. Indian spices ___ for hundreds of years",
+     "why": "‘For hundreds of years’ signals a duration up to now, so the present perfect passive is used."
+    },
+    "g8": {
+     "correct": "was opened",
+     "accept": [
+      "was opened"
+     ],
+     "label": "8. A new community centre ___ last month",
+     "why": "‘Last month’ is a specific past time, so the simple past passive ‘was opened’ is used."
+    }
+   }
+  }
+ }
+}

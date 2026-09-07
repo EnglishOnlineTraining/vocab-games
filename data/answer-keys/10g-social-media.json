@@ -1,0 +1,199 @@
+{
+ "unit": "10g-social-media",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "over 2,000",
+     "accept": [
+      "over 2,000"
+     ],
+     "label": "1. How many students took part?",
+     "why": "The survey reports responses from over 2,000 students."
+    },
+    "g2": {
+     "correct": "68%",
+     "accept": [
+      "68%"
+     ],
+     "label": "2. Deleted an app because of anxiety or wasted time",
+     "why": "The text gives 68% as the proportion who had deleted such an app."
+    },
+    "g3": {
+     "correct": "whether the content feels interesting rather than addictive",
+     "accept": [
+      "whether the content feels interesting rather than addictive"
+     ],
+     "label": "3. One of the three top criteria",
+     "why": "Students judged platforms by whether content felt interesting rather than addictive."
+    },
+    "g4": {
+     "correct": "track screen time and limit notifications",
+     "accept": [
+      "track screen time and limit notifications"
+     ],
+     "label": "4. What digital wellbeing features do",
+     "why": "These features exist to track screen time and cut down notifications."
+    },
+    "g5": {
+     "correct": "nearly half",
+     "accept": [
+      "nearly half"
+     ],
+     "label": "5. Students already using wellbeing tools",
+     "why": "The text says nearly half already used the tools regularly."
+    },
+    "g6": {
+     "correct": "schools will probably offer workshops on healthy social media habits",
+     "accept": [
+      "schools will probably offer workshops on healthy social media habits"
+     ],
+     "label": "6. What researchers predict by next year",
+     "why": "The prediction is that schools will run workshops on healthy habits."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "will disappear",
+     "accept": [
+      "will disappear"
+     ],
+     "label": "1. losing popularity — I think it ___",
+     "why": "'I think' plus a prediction takes will + infinitive."
+    },
+    "g2": {
+     "correct": "are going to launch",
+     "accept": [
+      "are going to launch"
+     ],
+     "label": "2. already announced the plan — next term they ___",
+     "why": "'Going to' is used for a plan already decided before speaking."
+    },
+    "g3": {
+     "correct": "am attending",
+     "accept": [
+      "am attending"
+     ],
+     "label": "3. According to my calendar, I ___",
+     "why": "The present progressive states a fixed personal arrangement."
+    },
+    "g4": {
+     "correct": "will have surveyed",
+     "accept": [
+      "will have surveyed"
+     ],
+     "label": "4. By the end of this year, researchers ___",
+     "why": "Future perfect: 'will have' + past participle for something finished by a future point."
+    },
+    "g5": {
+     "correct": "will be tracking",
+     "accept": [
+      "will be tracking"
+     ],
+     "label": "5. This time next week, teenagers ___",
+     "why": "Future progressive: 'will be' + -ing for an action in progress at a future time."
+    },
+    "g6": {
+     "correct": "will be",
+     "accept": [
+      "will be"
+     ],
+     "label": "6. Experts believe that in ten years, platforms ___",
+     "why": "A prediction about the distant future takes will + infinitive."
+    },
+    "g7": {
+     "correct": "is going to",
+     "accept": [
+      "is going to"
+     ],
+     "label": "7. look at those figures, she ___",
+     "why": "'Going to' expresses a prediction based on present evidence you can see."
+    },
+    "g8": {
+     "correct": "will have been using",
+     "accept": [
+      "will have been using"
+     ],
+     "label": "8. By next summer, many students ___",
+     "why": "Future perfect progressive stresses how long an action will have gone on by a future point."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "screen time",
+     "accept": [
+      "screen time"
+     ],
+     "label": "1. time spent on a device",
+     "why": "Screen time is the total time spent using a phone, tablet or computer."
+    },
+    "g2": {
+     "correct": "digital detox",
+     "accept": [
+      "digital detox"
+     ],
+     "label": "2. a deliberate period without devices",
+     "why": "A digital detox is a planned break from digital devices."
+    },
+    "g3": {
+     "correct": "algorithm",
+     "accept": [
+      "algorithm"
+     ],
+     "label": "3. rules deciding what content to show",
+     "why": "An algorithm is the set of rules a platform uses to select content."
+    },
+    "g4": {
+     "correct": "doomscrolling",
+     "accept": [
+      "doomscrolling"
+     ],
+     "label": "4. scrolling through upsetting content",
+     "why": "Doomscrolling is compulsively reading negative content online."
+    },
+    "g5": {
+     "correct": "FOMO",
+     "accept": [
+      "FOMO"
+     ],
+     "label": "5. feeling you are missing out",
+     "why": "FOMO stands for 'fear of missing out'."
+    },
+    "g6": {
+     "correct": "echo chamber",
+     "accept": [
+      "echo chamber"
+     ],
+     "label": "6. mainly meeting similar opinions",
+     "why": "In an echo chamber you mostly hear views like your own."
+    },
+    "g7": {
+     "correct": "influencer",
+     "accept": [
+      "influencer"
+     ],
+     "label": "7. large following, paid to promote",
+     "why": "An influencer is paid to promote products to a large following."
+    },
+    "g8": {
+     "correct": "digital footprint",
+     "accept": [
+      "digital footprint"
+     ],
+     "label": "8. trail of data left online",
+     "why": "Your digital footprint is the data trail your online activity leaves."
+    }
+   }
+  }
+ }
+}

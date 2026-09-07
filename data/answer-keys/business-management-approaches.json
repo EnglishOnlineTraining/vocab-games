@@ -1,0 +1,87 @@
+{
+ "unit": "business-management-approaches",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Employees dislike work and need strict supervision",
+     "accept": [
+      "Employees dislike work and need strict supervision"
+     ],
+     "label": "1. Theory X assumption about employees?",
+     "why": "The text says Theory X assumes employees dislike work and need strict supervision."
+    },
+    "g2": {
+     "correct": "It increases engagement and innovation",
+     "accept": [
+      "It increases engagement and innovation"
+     ],
+     "label": "2. Main benefit of Theory Y?",
+     "why": "The text says Theory Y often increases engagement and innovation."
+    },
+    "g3": {
+     "correct": "Management by Walking Around",
+     "accept": [
+      "Management by Walking Around"
+     ],
+     "label": "3. What does MBWA stand for?",
+     "why": "The text names MBWA as Management by Walking Around."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Theory X",
+     "accept": [
+      "Theory X"
+     ],
+     "label": "1. Might reduce creativity due to tight control?",
+     "why": "The text says Theory X's close monitoring can reduce creativity and satisfaction."
+    },
+    "g2": {
+     "correct": "MBWA",
+     "accept": [
+      "MBWA"
+     ],
+     "label": "2. Requires managers to observe in the workplace?",
+     "why": "The text says MBWA means managers spend time observing employees in their work areas."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "would probably decrease",
+     "accept": [
+      "would probably decrease"
+     ],
+     "label": "1. Theory X effect on motivation?",
+     "why": "Theory X reduces satisfaction and creativity, so motivation would probably decrease under this hypothetical."
+    },
+    "g2": {
+     "correct": "might",
+     "accept": [
+      "might"
+     ],
+     "label": "2. MBWA effect on feeling valued?",
+     "why": "‘Might’ expresses a reasonable possibility, since MBWA builds relationships with employees."
+    },
+    "g3": {
+     "correct": "adopted",
+     "accept": [
+      "adopted"
+     ],
+     "label": "3. If an organization ___ Theory Y practices...",
+     "why": "A Type II conditional uses the past simple after ‘if’, matching ‘would likely increase’."
+    }
+   }
+  }
+ }
+}

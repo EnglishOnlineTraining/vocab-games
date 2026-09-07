@@ -1,0 +1,215 @@
+{
+ "unit": "uni-describing-data-trends",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "rose",
+     "accept": [
+      "rose"
+     ],
+     "label": "1. EV numbers ___ from 1.2m to 40m",
+     "why": "‘Rose’ describes an increase from 1.2 million to over 40 million."
+    },
+    "g2": {
+     "correct": "declined",
+     "accept": [
+      "declined"
+     ],
+     "label": "2. Spending ___ 12% after tax increase",
+     "why": "‘Declined’ describes a decrease following the tax increase."
+    },
+    "g3": {
+     "correct": "fluctuated",
+     "accept": [
+      "fluctuated"
+     ],
+     "label": "3. Exchange rate ___ between $1.10 and $1.25",
+     "why": "‘Fluctuated’ describes values moving up and down within a range."
+    },
+    "g4": {
+     "correct": "remained stable",
+     "accept": [
+      "remained stable"
+     ],
+     "label": "4. Temperatures ___ at around 21°C",
+     "why": "‘Remained stable’ describes a figure staying constant."
+    },
+    "g5": {
+     "correct": "surged",
+     "accept": [
+      "surged"
+     ],
+     "label": "5. Downloads ___ to over 5 million in 48 hours",
+     "why": "‘Surged’ describes a sudden, large increase."
+    },
+    "g6": {
+     "correct": "peaked",
+     "accept": [
+      "peaked"
+     ],
+     "label": "6. Oil production ___ at 100m barrels in 2019",
+     "why": "‘Peaked’ describes reaching a highest point after growth."
+    },
+    "g7": {
+     "correct": "dipped",
+     "accept": [
+      "dipped"
+     ],
+     "label": "7. Retail sales ___ slightly before recovering",
+     "why": "‘Dipped’ describes a small, temporary decrease."
+    },
+    "g8": {
+     "correct": "grow",
+     "accept": [
+      "grow"
+     ],
+     "label": "8. IT worker demand projected to ___ steadily",
+     "why": "‘Grow’ describes a projected steady increase."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "dramatically",
+     "accept": [
+      "dramatically"
+     ],
+     "label": "1. Prices rose ___ (nearly tripling)",
+     "why": "‘Dramatically’ matches a very large change like nearly tripling."
+    },
+    "g2": {
+     "correct": "gradual",
+     "accept": [
+      "gradual"
+     ],
+     "label": "2. A ___ decline (falling slowly but consistently)",
+     "why": "‘Gradual’ matches a slow, consistent change."
+    },
+    "g3": {
+     "correct": "marginally",
+     "accept": [
+      "marginally"
+     ],
+     "label": "3. Population grew ___ (less than 2% change)",
+     "why": "‘Marginally’ matches a very small change."
+    },
+    "g4": {
+     "correct": "substantial",
+     "accept": [
+      "substantial"
+     ],
+     "label": "4. A ___ increase (revenues doubling)",
+     "why": "‘Substantial’ matches a very large change like doubling."
+    },
+    "g5": {
+     "correct": "steadily",
+     "accept": [
+      "steadily"
+     ],
+     "label": "5. Costs fell ___ (slow but continuous)",
+     "why": "‘Steadily’ matches a slow, continuous change."
+    },
+    "g6": {
+     "correct": "considerable",
+     "accept": [
+      "considerable"
+     ],
+     "label": "6. A ___ fluctuation (during the financial crisis)",
+     "why": "‘Considerable’ matches a large, noticeable fluctuation."
+    },
+    "g7": {
+     "correct": "gradually",
+     "accept": [
+      "gradually"
+     ],
+     "label": "7. Tourism increased ___ (no sudden spikes)",
+     "why": "‘Gradually’ matches change with no sudden spikes or dips."
+    },
+    "g8": {
+     "correct": "marginal",
+     "accept": [
+      "marginal"
+     ],
+     "label": "8. A ___ drop (only 0.3%)",
+     "why": "‘Marginal’ matches a very small, barely noticeable change."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "clear",
+     "accept": [
+      "clear"
+     ],
+     "label": "1. Data shows a ___ upward trend",
+     "why": "The text describes a clear, unambiguous upward trend over 20 years."
+    },
+    "g2": {
+     "correct": "stood at",
+     "accept": [
+      "stood at"
+     ],
+     "label": "2. Penetration ___ approximately 16%",
+     "why": "‘Stood at’ states a figure at a specific point in time."
+    },
+    "g3": {
+     "correct": "rose steadily",
+     "accept": [
+      "rose steadily"
+     ],
+     "label": "3. Usage ___ to reach around 30% (2005-2010)",
+     "why": "The text describes a steady rise from 2005 to 2010."
+    },
+    "g4": {
+     "correct": "rapid",
+     "accept": [
+      "rapid"
+     ],
+     "label": "4. The most ___ growth (2015-2020)",
+     "why": "The text describes 2015-2020 as the period of fastest growth."
+    },
+    "g5": {
+     "correct": "almost doubled",
+     "accept": [
+      "almost doubled"
+     ],
+     "label": "5. Users ___ from 40% to 65%",
+     "why": "The text describes this large increase as the users nearly doubling."
+    },
+    "g6": {
+     "correct": "surged",
+     "accept": [
+      "surged"
+     ],
+     "label": "6. Mobile access ___ during this period",
+     "why": "The text describes mobile access rising sharply in this period."
+    },
+    "g7": {
+     "correct": "reached",
+     "accept": [
+      "reached"
+     ],
+     "label": "7. Penetration had ___ nearly 70%",
+     "why": "‘Reached’ describes arriving at a stated figure by 2025."
+    },
+    "g8": {
+     "correct": "grown substantially",
+     "accept": [
+      "grown substantially"
+     ],
+     "label": "8. Usage has ___ over two decades",
+     "why": "The text's overall conclusion is that usage has grown substantially."
+    }
+   }
+  }
+ }
+}

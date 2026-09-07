@@ -1,0 +1,199 @@
+{
+ "unit": "8c-going-west",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Anchorage, Alaska",
+     "accept": [
+      "Anchorage, Alaska"
+     ],
+     "label": "1. Where does Maria live?",
+     "why": "The text says Maria lives in Anchorage, Alaska."
+    },
+    "g2": {
+     "correct": "mountains, forests and wild animals",
+     "accept": [
+      "mountains, forests and wild animals"
+     ],
+     "label": "2. What is Alaska famous for?",
+     "why": "The text describes Alaska as famous for its mountains, forests and wild animals."
+    },
+    "g3": {
+     "correct": "plastic bottles, bags and old cans",
+     "accept": [
+      "plastic bottles, bags and old cans"
+     ],
+     "label": "3. What do students collect during Clean Alaska?",
+     "why": "The text says students collect plastic bottles, bags and old cans."
+    },
+    "g4": {
+     "correct": "Raw materials are collected",
+     "accept": [
+      "Raw materials are collected"
+     ],
+     "label": "4. First step of a product life cycle",
+     "why": "The text says the first step in a product life cycle is collecting raw materials."
+    },
+    "g5": {
+     "correct": "at a wildlife centre",
+     "accept": [
+      "at a wildlife centre"
+     ],
+     "label": "5. Where did Maria volunteer?",
+     "why": "The text says Maria volunteered at a wildlife centre last month."
+    },
+    "g6": {
+     "correct": "because she likes helping animals",
+     "accept": [
+      "because she likes helping animals"
+     ],
+     "label": "6. Why does Maria enjoy volunteering?",
+     "why": "The text says Maria enjoys volunteering because she likes helping animals."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "are made",
+     "accept": [
+      "are made"
+     ],
+     "label": "1. Plastic bottles ___ in factories (make)",
+     "why": "‘Plastic bottles’ is plural, so the passive uses ‘are made’, not ‘is made’."
+    },
+    "g2": {
+     "correct": "is collected",
+     "accept": [
+      "is collected"
+     ],
+     "label": "2. Rubbish ___ by students (collect)",
+     "why": "‘Rubbish’ is uncountable/singular, so the passive uses ‘is collected’."
+    },
+    "g3": {
+     "correct": "is taken",
+     "accept": [
+      "is taken"
+     ],
+     "label": "3. Old paper ___ to the recycling centre (take)",
+     "why": "‘Old paper’ is uncountable/singular, so the passive uses ‘is taken’."
+    },
+    "g4": {
+     "correct": "are fed",
+     "accept": [
+      "are fed"
+     ],
+     "label": "4. Baby birds ___ three times a day (feed)",
+     "why": "‘Baby birds’ is plural, so the passive uses ‘are fed’."
+    },
+    "g5": {
+     "correct": "are cleaned",
+     "accept": [
+      "are cleaned"
+     ],
+     "label": "5. The beaches ___ by volunteers (clean)",
+     "why": "‘The beaches’ is plural, so the passive uses ‘are cleaned’."
+    },
+    "g6": {
+     "correct": "are sold",
+     "accept": [
+      "are sold"
+     ],
+     "label": "6. New products ___ in shops (sell)",
+     "why": "‘New products’ is plural, so the passive uses ‘are sold’."
+    },
+    "g7": {
+     "correct": "is visited",
+     "accept": [
+      "is visited"
+     ],
+     "label": "7. Alaska ___ by millions of tourists (visit)",
+     "why": "‘Alaska’ is singular, so the passive uses ‘is visited’."
+    },
+    "g8": {
+     "correct": "are washed",
+     "accept": [
+      "are washed"
+     ],
+     "label": "8. The animal cages ___ every morning (wash)",
+     "why": "‘The animal cages’ is plural, so the passive uses ‘are washed’."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Collecting",
+     "accept": [
+      "Collecting"
+     ],
+     "label": "1. ___ rubbish is important (collect)",
+     "why": "A gerund (-ing form) is used when a verb acts as the subject of a sentence."
+    },
+    "g2": {
+     "correct": "working",
+     "accept": [
+      "working"
+     ],
+     "label": "2. Maria enjoys ___ (work)",
+     "why": "‘Enjoy’ is always followed by the gerund (-ing) form, not the infinitive."
+    },
+    "g3": {
+     "correct": "Swimming",
+     "accept": [
+      "Swimming"
+     ],
+     "label": "3. ___ in cold water is dangerous (swim)",
+     "why": "A gerund (-ing form) is used when a verb acts as the subject of a sentence."
+    },
+    "g4": {
+     "correct": "cleaning",
+     "accept": [
+      "cleaning"
+     ],
+     "label": "4. The students finished ___ (clean)",
+     "why": "‘Finish’ is always followed by the gerund (-ing) form."
+    },
+    "g5": {
+     "correct": "talking",
+     "accept": [
+      "talking"
+     ],
+     "label": "5. Maria keeps ___ (talk)",
+     "why": "‘Keep’ is always followed by the gerund (-ing) form."
+    },
+    "g6": {
+     "correct": "using",
+     "accept": [
+      "using"
+     ],
+     "label": "6. We should avoid ___ plastic bags (use)",
+     "why": "‘Avoid’ is always followed by the gerund (-ing) form."
+    },
+    "g7": {
+     "correct": "Learning",
+     "accept": [
+      "Learning"
+     ],
+     "label": "7. ___ about product life cycles helps (learn)",
+     "why": "A gerund (-ing form) is used when a verb acts as the subject of a sentence."
+    },
+    "g8": {
+     "correct": "visiting",
+     "accept": [
+      "visiting"
+     ],
+     "label": "8. The volunteers suggested ___ (visit)",
+     "why": "‘Suggest’ is always followed by the gerund (-ing) form."
+    }
+   }
+  }
+ }
+}

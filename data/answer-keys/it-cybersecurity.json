@@ -1,0 +1,183 @@
+{
+ "unit": "it-cybersecurity",
+ "sections": {
+  "exA": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "a1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. The phishing email pretended to be from...",
+     "why": "The text says the email appeared to come from the IT department."
+    },
+    "a2": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "2. The link led to...",
+     "why": "The text says the link led to a fake login page copying the company design."
+    },
+    "a3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. Attackers couldn't access accounts because of...",
+     "why": "The text says two-factor authentication stopped the attackers."
+    },
+    "a4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. How many colleagues entered credentials?",
+     "why": "The text says three colleagues entered their credentials."
+    },
+    "a5": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "5. If you get a suspicious message, you should...",
+     "why": "The text says to forward the message to the security team."
+    },
+    "a6": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "6. According to the text, the IT department...",
+     "why": "The text says IT never asks for credentials by email."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "b1": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "1. Fake emails tricking users into revealing passwords",
+     "why": "‘Phishing’ is fake emails that trick users into revealing passwords."
+    },
+    "b2": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "2. Protects data by making it unreadable",
+     "why": "‘Encryption’ protects data by making it unreadable without a key."
+    },
+    "b3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. A software update that fixes a security hole",
+     "why": "A ‘patch’ is a software update that fixes a security hole."
+    },
+    "b4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. Password plus a code from your phone",
+     "why": "‘Two-factor authentication’ requires a password plus a code from your phone."
+    },
+    "b5": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "5. Connect securely to the network from home",
+     "why": "A ‘VPN’ lets employees connect securely to the company network remotely."
+    },
+    "b6": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "6. A weakness attackers can exploit",
+     "why": "A ‘vulnerability’ is a weakness that attackers can exploit."
+    },
+    "b7": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "7. Viruses, worms and ransomware",
+     "why": "Viruses, worms and ransomware are all types of malware."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "c1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. If you ___ a phishing link...",
+     "why": "Type I conditionals use the present simple after ‘if’."
+    },
+    "c2": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "2. If the firewall is misconfigured, traffic ___ blocked",
+     "why": "The Type I result clause uses ‘will’ + passive."
+    },
+    "c3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. You ___ share your password",
+     "why": "‘Must never’ expresses a strong prohibition."
+    },
+    "c4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. If an update ___ available...",
+     "why": "Type I conditionals use the present simple after ‘if’."
+    },
+    "c5": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "5. Employees ___ use a VPN on public Wi-Fi",
+     "why": "‘Should’ expresses a strong recommendation."
+    },
+    "c6": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "6. If we ___ install the patch...",
+     "why": "The logic requires the negative: not installing the patch leaves the vulnerability exploitable."
+    },
+    "c7": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "7. Unless you verify the sender, you ___ open it",
+     "why": "‘Unless’ (= if not) pairs with advice against an action: ‘shouldn't’."
+    }
+   }
+  }
+ }
+}

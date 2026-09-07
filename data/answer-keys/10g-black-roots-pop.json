@@ -1,0 +1,199 @@
+{
+ "unit": "10g-black-roots-pop",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "rocknroll",
+     "accept": [
+      "rocknroll"
+     ],
+     "label": "1. Tharpe's guitar playing was a blueprint for",
+     "why": "Her electric guitar style is now seen as an early model for rock'n'roll."
+    },
+    "g2": {
+     "correct": "rerecorded",
+     "accept": [
+      "rerecorded"
+     ],
+     "label": "2. In the 1950s, songs by Black artists were",
+     "why": "White artists frequently re-recorded their songs and had the bigger hits."
+    },
+    "g3": {
+     "correct": "segregated",
+     "accept": [
+      "segregated"
+     ],
+     "label": "3. Radio stations at the time had been",
+     "why": "Stations were segregated, so Black and white music was played separately."
+    },
+    "g4": {
+     "correct": "black",
+     "accept": [
+      "black"
+     ],
+     "label": "4. Motown was founded by",
+     "why": "Motown was founded by Black entrepreneurs in Detroit."
+    },
+    "g5": {
+     "correct": "funk",
+     "accept": [
+      "funk"
+     ],
+     "label": "5. Rhythm and blues was transformed into",
+     "why": "R&B developed gradually into funk."
+    },
+    "g6": {
+     "correct": "black",
+     "accept": [
+      "black"
+     ],
+     "label": "6. Almost every major pop genre was shaped by",
+     "why": "The article's point is that Black musicians shaped nearly every pop genre."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "were",
+     "accept": [
+      "were"
+     ],
+     "label": "1. Blues and gospel ___",
+     "why": "A plural subject takes 'were' in the past passive."
+    },
+    "g2": {
+     "correct": "was",
+     "accept": [
+      "was"
+     ],
+     "label": "2. Motown ___",
+     "why": "A singular subject takes 'was' in the past passive."
+    },
+    "g3": {
+     "correct": "is",
+     "accept": [
+      "is"
+     ],
+     "label": "3. Today, this musical history ___",
+     "why": "Present passive with a singular subject takes 'is' + past participle."
+    },
+    "g4": {
+     "correct": "hadbeen",
+     "accept": [
+      "hadbeen"
+     ],
+     "label": "4. By the time rock'n'roll became mainstream, many songs ___",
+     "why": "Past perfect passive: 'had been' + past participle for an earlier action."
+    },
+    "g5": {
+     "correct": "are",
+     "accept": [
+      "are"
+     ],
+     "label": "5. Aretha Franklin's records ___",
+     "why": "Present passive with a plural subject takes 'are'."
+    },
+    "g6": {
+     "correct": "willbe",
+     "accept": [
+      "willbe"
+     ],
+     "label": "6. In the future, more attention ___",
+     "why": "Future passive is 'will be' + past participle."
+    },
+    "g7": {
+     "correct": "be",
+     "accept": [
+      "be"
+     ],
+     "label": "7. The contribution should ___",
+     "why": "After a modal the passive is 'be' + past participle."
+    },
+    "g8": {
+     "correct": "was",
+     "accept": [
+      "was"
+     ],
+     "label": "8. Soul music ___",
+     "why": "Singular subject in the past passive takes 'was'."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "soul",
+     "accept": [
+      "soul"
+     ],
+     "label": "1. gospel emotion with rhythm and blues",
+     "why": "Soul combines gospel feeling with rhythm and blues."
+    },
+    "g2": {
+     "correct": "motown",
+     "accept": [
+      "motown"
+     ],
+     "label": "2. the Detroit record label",
+     "why": "Motown was the Detroit label founded by Black entrepreneurs."
+    },
+    "g3": {
+     "correct": "disco",
+     "accept": [
+      "disco"
+     ],
+     "label": "3. danceable 1970s style from R&B",
+     "why": "Disco grew out of rhythm and blues in the 1970s."
+    },
+    "g4": {
+     "correct": "hiphop",
+     "accept": [
+      "hiphop"
+     ],
+     "label": "4. rhythmic speech over a beat",
+     "why": "Hip hop sets rhythmic speech over a beat, borrowing from funk."
+    },
+    "g5": {
+     "correct": "cover",
+     "accept": [
+      "cover"
+     ],
+     "label": "5. a song recorded again by another artist",
+     "why": "A new recording of an existing song is a cover."
+    },
+    "g6": {
+     "correct": "credit",
+     "accept": [
+      "credit"
+     ],
+     "label": "6. official acknowledgment for creating something",
+     "why": "To receive credit is to be officially named as the creator."
+    },
+    "g7": {
+     "correct": "blues",
+     "accept": [
+      "blues"
+     ],
+     "label": "7. R&B stands for rhythm and",
+     "why": "R&B is short for rhythm and blues."
+    },
+    "g8": {
+     "correct": "pioneer",
+     "accept": [
+      "pioneer"
+     ],
+     "label": "8. creates a style others follow",
+     "why": "A pioneer is the first to develop something others build on."
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,73 @@
+{
+ "unit": "business-brand-positioning",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Unique Selling Proposition",
+     "accept": [
+      "Unique Selling Proposition"
+     ],
+     "label": "1. What does USP stand for?",
+     "why": "The text says USP stands for Unique Selling Proposition."
+    },
+    "g2": {
+     "correct": "The benefit customers receive",
+     "accept": [
+      "The benefit customers receive"
+     ],
+     "label": "2. What is a value proposition?",
+     "why": "The text defines the value proposition as the benefit customers receive."
+    },
+    "g3": {
+     "correct": "High quality",
+     "accept": [
+      "High quality"
+     ],
+     "label": "3. Premium brands typically emphasize:",
+     "why": "The text says premium brands position themselves as high quality but expensive."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "brand identity",
+     "accept": [
+      "brand identity"
+     ],
+     "label": "1. Includes logo, colors, and values",
+     "why": "‘Brand identity’ is the standard term for a company's logo, colours, and values."
+    },
+    "g2": {
+     "correct": "target",
+     "accept": [
+      "target"
+     ],
+     "label": "2. Companies ___ their message",
+     "why": "‘Target’ (verb) means to direct a message at specific customer groups."
+    },
+    "g3": {
+     "correct": "segmentation",
+     "accept": [
+      "segmentation"
+     ],
+     "label": "3. Market ___ = dividing customers into groups",
+     "why": "‘Segmentation’ is the process of dividing customers into groups."
+    },
+    "g4": {
+     "correct": "Differentiation",
+     "accept": [
+      "Differentiation"
+     ],
+     "label": "4. What makes one brand different",
+     "why": "‘Differentiation’ is what makes one brand different from others."
+    }
+   }
+  }
+ }
+}

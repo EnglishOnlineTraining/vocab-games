@@ -1,0 +1,145 @@
+{
+ "unit": "msa-c-talent-show",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "last friday of term",
+     "accept": [
+      "last friday of term"
+     ],
+     "label": "1. When is the talent show?",
+     "why": "The recording says the show is on the last Friday of term."
+    },
+    "g2": {
+     "correct": "school hall",
+     "accept": [
+      "school hall"
+     ],
+     "label": "2. Where will it be held?",
+     "why": "The recording says the show will take place in the school hall."
+    },
+    "g3": {
+     "correct": "form outside music room",
+     "accept": [
+      "form outside music room"
+     ],
+     "label": "3. How do students sign up?",
+     "why": "The recording says to fill in a sign-up form on the noticeboard outside the music room."
+    },
+    "g4": {
+     "correct": "three minutes",
+     "accept": [
+      "three minutes"
+     ],
+     "label": "4. How long can each act last?",
+     "why": "The recording says each act can last a maximum of three minutes."
+    },
+    "g5": {
+     "correct": "new library books",
+     "accept": [
+      "new library books"
+     ],
+     "label": "5. What is the ticket money used for?",
+     "why": "The recording says the money raised will be spent on new library books."
+    },
+    "g6": {
+     "correct": "sing a song",
+     "accept": [
+      "sing a song"
+     ],
+     "label": "6. What does Sophie want to do?",
+     "why": "The recording says Sophie has decided to sing a song."
+    },
+    "g7": {
+     "correct": "stage fright",
+     "accept": [
+      "stage fright"
+     ],
+     "label": "7. Why is Daniel unsure?",
+     "why": "The recording says Daniel gets nervous standing on stage alone."
+    },
+    "g8": {
+     "correct": "perform together",
+     "accept": [
+      "perform together"
+     ],
+     "label": "8. What do they finally decide?",
+     "why": "The recording says they decide to perform a song together as a duo."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "the band slot",
+     "accept": [
+      "the band slot"
+     ],
+     "label": "1. Karim — plays instruments, rehearses",
+     "why": "The text says the band slot is for groups of musicians playing together."
+    },
+    "g2": {
+     "correct": "the magic slot",
+     "accept": [
+      "the magic slot"
+     ],
+     "label": "2. Nadia — card tricks",
+     "why": "The text says the magic slot is for card tricks and illusions."
+    },
+    "g3": {
+     "correct": "the comedy slot",
+     "accept": [
+      "the comedy slot"
+     ],
+     "label": "3. Ben — funny stories",
+     "why": "The text says the comedy slot is for jokes and funny stories."
+    },
+    "g4": {
+     "correct": "the dance slot",
+     "accept": [
+      "the dance slot"
+     ],
+     "label": "4. Priya — dance routine",
+     "why": "The text says the dance slot is for solo dancers or dance crews."
+    },
+    "g5": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "5. Can add an act after 14 March",
+     "why": "The text says no acts can be added after 14 March."
+    },
+    "g6": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "6. Only one act per student",
+     "why": "The text confirms each student may only appear in one act."
+    },
+    "g7": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "7. Backing music to Mr Berg beforehand",
+     "why": "The text confirms backing music should be given to Mr Berg before the show."
+    },
+    "g8": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "8. Teachers alone decide the winner",
+     "why": "The text says the audience chooses the winner by voting, not the teachers alone."
+    }
+   }
+  }
+ }
+}

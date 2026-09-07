@@ -1,0 +1,113 @@
+{
+ "unit": "business-property-management",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "To reduce the risk of lost rent and property damage",
+     "accept": [
+      "To reduce the risk of lost rent and property damage"
+     ],
+     "label": "1. Why run a tenant screening?",
+     "why": "Screening tenants lowers the risk of unpaid rent and damage to the property."
+    },
+    "g2": {
+     "correct": "Within 24 hours",
+     "accept": [
+      "Within 24 hours"
+     ],
+     "label": "2. How quickly are maintenance requests answered?",
+     "why": "Maria aims to respond to maintenance requests within 24 hours."
+    },
+    "g3": {
+     "correct": "Lost rental income",
+     "accept": [
+      "Lost rental income"
+     ],
+     "label": "3. What does a high vacancy rate mean?",
+     "why": "Empty units earn nothing, so a high vacancy rate means lost rental income."
+    },
+    "g4": {
+     "correct": "Sent several written warnings and a formal notice",
+     "accept": [
+      "Sent several written warnings and a formal notice"
+     ],
+     "label": "4. Before starting eviction proceedings",
+     "why": "She sent written warnings and a formal notice before taking any eviction step."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "landlord",
+     "accept": [
+      "landlord"
+     ],
+     "label": "1. The apartment's owner",
+     "why": "The owner who rents property out is the landlord; the tenant rents it."
+    },
+    "g2": {
+     "correct": "lease",
+     "accept": [
+      "lease"
+     ],
+     "label": "2. Before signing a ___",
+     "why": "A lease is the rental contract setting rent, deposit and length."
+    },
+    "g3": {
+     "correct": "maintenance request",
+     "accept": [
+      "maintenance request"
+     ],
+     "label": "3. The tenant submitted a ___",
+     "why": "A maintenance request reports something that needs repairing."
+    },
+    "g4": {
+     "correct": "screening",
+     "accept": [
+      "screening"
+     ],
+     "label": "4. A thorough tenant ___",
+     "why": "Screening is the background check on income, employment and references."
+    },
+    "g5": {
+     "correct": "vacancy rate",
+     "accept": [
+      "vacancy rate"
+     ],
+     "label": "5. Many empty units means a high ___",
+     "why": "The vacancy rate is the share of units standing empty."
+    },
+    "g6": {
+     "correct": "deposit",
+     "accept": [
+      "deposit"
+     ],
+     "label": "6. The tenant paid a security ___",
+     "why": "A deposit is money held as security and returned if there is no damage."
+    },
+    "g7": {
+     "correct": "eviction",
+     "accept": [
+      "eviction"
+     ],
+     "label": "7. The landlord began ___ proceedings",
+     "why": "Eviction is the legal process of removing a tenant."
+    },
+    "g8": {
+     "correct": "rent",
+     "accept": [
+      "rent"
+     ],
+     "label": "8. Property managers collect monthly ___",
+     "why": "Rent is the monthly payment a tenant makes for the property."
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,163 @@
+{
+ "unit": "gr-linking-words",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "However",
+     "accept": [
+      "However"
+     ],
+     "label": "1 Many students use their phones too much."
+    },
+    "g2": {
+     "correct": "although",
+     "accept": [
+      "although"
+     ],
+     "label": "2 Phones can be useful for research,"
+    },
+    "g3": {
+     "correct": "because",
+     "accept": [
+      "because"
+     ],
+     "label": "3 Some teachers want a ban"
+    },
+    "g4": {
+     "correct": "instead of",
+     "accept": [
+      "instead of"
+     ],
+     "label": "4 The school should educate students about media use"
+    },
+    "g5": {
+     "correct": "On the other hand",
+     "accept": [
+      "On the other hand"
+     ],
+     "label": "5 On the one hand, phones distract students."
+    },
+    "g6": {
+     "correct": "In conclusion",
+     "accept": [
+      "In conclusion"
+     ],
+     "label": "6"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "but",
+     "accept": [
+      "but"
+     ],
+     "label": "1 It was raining,"
+    },
+    "g2": {
+     "correct": "whereas",
+     "accept": [
+      "whereas"
+     ],
+     "label": "2 She is really good at maths,"
+    },
+    "g3": {
+     "correct": "Despite",
+     "accept": [
+      "Despite"
+     ],
+     "label": "3"
+    },
+    "g4": {
+     "correct": "Therefore",
+     "accept": [
+      "Therefore"
+     ],
+     "label": "4 He studied hard for weeks."
+    },
+    "g5": {
+     "correct": "Moreover",
+     "accept": [
+      "Moreover"
+     ],
+     "label": "5 The hotel was really cheap."
+    },
+    "g6": {
+     "correct": "either",
+     "accept": [
+      "either"
+     ],
+     "label": "6 You can"
+    },
+    "g7": {
+     "correct": "While",
+     "accept": [
+      "While"
+     ],
+     "label": "7"
+    },
+    "g8": {
+     "correct": "Nevertheless",
+     "accept": [
+      "Nevertheless"
+     ],
+     "label": "8 He is only sixteen."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Because of",
+     "accept": [
+      "Because of"
+     ],
+     "label": "1"
+    },
+    "g2": {
+     "correct": "because",
+     "accept": [
+      "because"
+     ],
+     "label": "2 He was late"
+    },
+    "g3": {
+     "correct": "so",
+     "accept": [
+      "so"
+     ],
+     "label": "3 It was freezing cold,"
+    },
+    "g4": {
+     "correct": "in order to",
+     "accept": [
+      "in order to"
+     ],
+     "label": "4 She practises the piano every day"
+    },
+    "g5": {
+     "correct": "so that",
+     "accept": [
+      "so that"
+     ],
+     "label": "5 Take a jacket with you"
+    },
+    "g6": {
+     "correct": "As a result of",
+     "accept": [
+      "As a result of"
+     ],
+     "label": "6"
+    }
+   }
+  }
+ }
+}

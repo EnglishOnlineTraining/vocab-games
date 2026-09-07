@@ -1,0 +1,191 @@
+{
+ "unit": "9c-review",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "was",
+     "accept": [
+      "was"
+     ],
+     "label": "1. she said she"
+    },
+    "g2": {
+     "correct": "company",
+     "accept": [
+      "company"
+     ],
+     "label": "2. work in a real"
+    },
+    "g3": {
+     "correct": "drink",
+     "accept": [
+      "drink"
+     ],
+     "label": "3. if you"
+    },
+    "g4": {
+     "correct": "lawyer",
+     "accept": [
+      "lawyer"
+     ],
+     "label": "4. he became a"
+    },
+    "g5": {
+     "correct": "gap",
+     "accept": [
+      "gap"
+     ],
+     "label": "5. take a"
+    },
+    "g6": {
+     "correct": "was posting",
+     "accept": [
+      "was posting"
+     ],
+     "label": "6. he"
+    },
+    "g7": {
+     "correct": "punctual",
+     "accept": [
+      "punctual"
+     ],
+     "label": "7. always be"
+    },
+    "g8": {
+     "correct": "were",
+     "accept": [
+      "were"
+     ],
+     "label": "8. if I"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "whose",
+     "accept": [
+      "whose"
+     ],
+     "label": "1. families"
+    },
+    "g2": {
+     "correct": "tests",
+     "accept": [
+      "tests"
+     ],
+     "label": "2. free"
+    },
+    "g3": {
+     "correct": "had deleted",
+     "accept": [
+      "had deleted"
+     ],
+     "label": "3. he"
+    },
+    "g4": {
+     "correct": "interview",
+     "accept": [
+      "interview"
+     ],
+     "label": "4. they invite you to an"
+    },
+    "g5": {
+     "correct": "snack",
+     "accept": [
+      "snack"
+     ],
+     "label": "5. a quick"
+    },
+    "g6": {
+     "correct": "languages",
+     "accept": [
+      "languages"
+     ],
+     "label": "6. eleven official"
+    },
+    "g7": {
+     "correct": "will",
+     "accept": [
+      "will"
+     ],
+     "label": "7. after I finish school, I"
+    },
+    "g8": {
+     "correct": "to turn",
+     "accept": [
+      "to turn"
+     ],
+     "label": "8. she asked me"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "day",
+     "accept": [
+      "day"
+     ],
+     "label": "1. a normal working"
+    },
+    "g2": {
+     "correct": "sleep",
+     "accept": [
+      "sleep"
+     ],
+     "label": "2. eight to ten hours of"
+    },
+    "g3": {
+     "correct": "township",
+     "accept": [
+      "township"
+     ],
+     "label": "3. a"
+    },
+    "g4": {
+     "correct": "receives",
+     "accept": [
+      "receives"
+     ],
+     "label": "4. as soon as she"
+    },
+    "g5": {
+     "correct": "had broken",
+     "accept": [
+      "had broken"
+     ],
+     "label": "5. her phone"
+    },
+    "g6": {
+     "correct": "watch",
+     "accept": [
+      "watch"
+     ],
+     "label": "6. the vet let her"
+    },
+    "g7": {
+     "correct": "won't",
+     "accept": [
+      "won't"
+     ],
+     "label": "7. he"
+    },
+    "g8": {
+     "correct": "vote",
+     "accept": [
+      "vote"
+     ],
+     "label": "8. not allowed to"
+    }
+   }
+  }
+ }
+}

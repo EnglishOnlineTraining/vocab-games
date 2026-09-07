@@ -1,0 +1,183 @@
+{
+ "unit": "it-project-management",
+ "sections": {
+  "exA": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "a1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. The team completed...",
+     "why": "The text says the team completed eight of the ten sprint backlog items."
+    },
+    "a2": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "2. The data migration was finished...",
+     "why": "The text says the data migration was finished ahead of schedule."
+    },
+    "a3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. The customer was happy with...",
+     "why": "The text says the customer was very happy with the KPI visualisations."
+    },
+    "a4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. The recurring problem is...",
+     "why": "The text says tickets are blocked because the test environment is unstable."
+    },
+    "a5": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "5. Daniel is going to...",
+     "why": "The text says Daniel will set up a second environment next week."
+    },
+    "a6": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "6. Before Monday's meeting, the team should...",
+     "why": "The text asks everyone to update tickets in the repository before the meeting."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "b1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. Short work cycles in Scrum",
+     "why": "In Scrum, work is organised into short cycles called sprints."
+    },
+    "b2": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "2. All open tasks are collected in the product ___",
+     "why": "All open tasks are collected in the product backlog."
+    },
+    "b3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. Completing the beta version was a ___",
+     "why": "An important achievement in a project timeline is a milestone."
+    },
+    "b4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. Anyone affected by the project's outcome",
+     "why": "A stakeholder is anyone affected by the project's outcome."
+    },
+    "b5": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "5. Measuring success with response time, uptime",
+     "why": "KPIs (Key Performance Indicators) measure success, like response time and uptime."
+    },
+    "b6": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "6. Git is the most popular tool for ___",
+     "why": "Git is the most popular tool for version control."
+    },
+    "b7": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "7. ___ methods like Scrum respond quickly to change",
+     "why": "Agile methods like Scrum respond quickly to change."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "c1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. We ___ eight of the ten items",
+     "why": "‘We’ is plural, so the present perfect uses ‘have completed’."
+    },
+    "c2": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "2. The data ___ migrated",
+     "why": "‘The data’ is treated as singular here, so the passive present perfect uses ‘has been’."
+    },
+    "c3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. Maria ___ present the backlog",
+     "why": "‘Is going to’ describes a planned future action at Monday's meeting."
+    },
+    "c4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. The customer ___ the export function yet",
+     "why": "‘Yet’ with a singular subject takes the present perfect negative ‘hasn't seen’."
+    },
+    "c5": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "5. ___ you ever worked with Kanban?",
+     "why": "‘Have’ + subject + past participle + ‘ever’ forms a present perfect experience question."
+    },
+    "c6": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "6. The tickets ___ updated before the meeting",
+     "why": "‘Will be’ + past participle is the future passive."
+    },
+    "c7": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "7. The test environment ___ unstable since Sprint 12",
+     "why": "‘Since’ signals the present perfect for a state continuing to now."
+    }
+   }
+  }
+ }
+}

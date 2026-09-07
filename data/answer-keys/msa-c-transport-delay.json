@@ -1,0 +1,145 @@
+{
+ "unit": "msa-c-transport-delay",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "25 minutes",
+     "accept": [
+      "25 minutes"
+     ],
+     "label": "1. How long is the delay?",
+     "why": "The recording says the tram is delayed by approximately twenty-five minutes."
+    },
+    "g2": {
+     "correct": "signal fault",
+     "accept": [
+      "signal fault"
+     ],
+     "label": "2. What caused the delay?",
+     "why": "The recording says the delay is due to a signal fault near Riverside Bridge."
+    },
+    "g3": {
+     "correct": "every 15 minutes",
+     "accept": [
+      "every 15 minutes"
+     ],
+     "label": "3. How often does the replacement bus run?",
+     "why": "The recording says the replacement bus departs every fifteen minutes."
+    },
+    "g4": {
+     "correct": "main entrance",
+     "accept": [
+      "main entrance"
+     ],
+     "label": "4. Where does it stop for hospital passengers?",
+     "why": "The recording says the replacement bus stops directly outside the hospital's main entrance."
+    },
+    "g5": {
+     "correct": "6 o'clock",
+     "accept": [
+      "6 o'clock"
+     ],
+     "label": "5. When does normal service resume?",
+     "why": "The recording says normal tram service is expected to resume by six o'clock."
+    },
+    "g6": {
+     "correct": "too far",
+     "accept": [
+      "too far"
+     ],
+     "label": "6. Why doesn't Zoe want to walk?",
+     "why": "The recording says Zoe thinks it's too far to walk."
+    },
+    "g7": {
+     "correct": "replacement bus",
+     "accept": [
+      "replacement bus"
+     ],
+     "label": "7. What does Zoe suggest instead?",
+     "why": "The recording says Zoe suggests taking the replacement bus from Stand C."
+    },
+    "g8": {
+     "correct": "late for match",
+     "accept": [
+      "late for match"
+     ],
+     "label": "8. Why do they need to hurry?",
+     "why": "The recording says they need to hurry or they'll be late for the match."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Night Bus",
+     "accept": [
+      "Night Bus"
+     ],
+     "label": "1. Anna — finishes shift at 1am",
+     "why": "The text says the Night Bus runs after midnight for people finishing late."
+    },
+    "g2": {
+     "correct": "Park and Ride",
+     "accept": [
+      "Park and Ride"
+     ],
+     "label": "2. Karl — drives in, avoid parking fees",
+     "why": "The text says Park & Ride is for people driving in from outside town."
+    },
+    "g3": {
+     "correct": "Student Travel Card",
+     "accept": [
+      "Student Travel Card"
+     ],
+     "label": "3. Priya — bus to school every day",
+     "why": "The text says the Student Travel Card gives unlimited bus travel for daily commuters."
+    },
+    "g4": {
+     "correct": "Cycle Hire",
+     "accept": [
+      "Cycle Hire"
+     ],
+     "label": "4. Oliver — explore centre for an hour",
+     "why": "The text says Cycle Hire is great for short trips across the centre."
+    },
+    "g5": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "5. Bikes returned to exact station hired",
+     "why": "The text says bikes can be returned to any station in the network, not necessarily the one hired from."
+    },
+    "g6": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "6. Shuttle runs every ten minutes at rush hour",
+     "why": "The text confirms the Park & Ride shuttle runs every ten minutes during rush hour."
+    },
+    "g7": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "7. Travel Cards work on trams too",
+     "why": "The text says Student Travel Cards are only valid on buses, not trams."
+    },
+    "g8": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "8. Under-fives pay full price",
+     "why": "The text says children under five travel free on all local buses and trams."
+    }
+   }
+  }
+ }
+}

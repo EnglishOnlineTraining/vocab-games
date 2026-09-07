@@ -1,0 +1,145 @@
+{
+ "unit": "msa-c-smart-home-demo",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "main entrance",
+     "accept": [
+      "main entrance"
+     ],
+     "label": "1. Where is the demonstration table?",
+     "why": "The recording says the demonstration table is near the main entrance."
+    },
+    "g2": {
+     "correct": "lights questions music",
+     "accept": [
+      "lights questions music"
+     ],
+     "label": "2. What can the speaker do?",
+     "why": "The recording says the speaker can control lights, answer questions, and play music."
+    },
+    "g3": {
+     "correct": "charging cable",
+     "accept": [
+      "charging cable"
+     ],
+     "label": "3. What do early sign-ups receive?",
+     "why": "The recording says customers who sign up before three receive a free charging cable."
+    },
+    "g4": {
+     "correct": "need adult",
+     "accept": [
+      "need adult"
+     ],
+     "label": "4. Rule for under-sixteens?",
+     "why": "The recording says under-sixteens must be accompanied by an adult."
+    },
+    "g5": {
+     "correct": "Priya",
+     "accept": [
+      "Priya"
+     ],
+     "label": "5. Who is running the demos?",
+     "why": "The recording says staff member Priya will be running the demos."
+    },
+    "g6": {
+     "correct": "too young",
+     "accept": [
+      "too young"
+     ],
+     "label": "6. Why can't Robyn's brother try alone?",
+     "why": "The recording says he needs an adult because he is only fourteen."
+    },
+    "g7": {
+     "correct": "free cable",
+     "accept": [
+      "free cable"
+     ],
+     "label": "7. Benefit of signing up before three?",
+     "why": "The recording says signing up before three gets you a free charging cable."
+    },
+    "g8": {
+     "correct": "go now",
+     "accept": [
+      "go now"
+     ],
+     "label": "8. What do they decide to do?",
+     "why": "The recording says they decide to go now before the offer ends."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Plug",
+     "accept": [
+      "Plug"
+     ],
+     "label": "1. Grandpa Joe — forgets to turn off lamp",
+     "why": "The text says a smart plug turns lamps or appliances on and off from an app."
+    },
+    "g2": {
+     "correct": "Doorbell",
+     "accept": [
+      "Doorbell"
+     ],
+     "label": "2. Mia — check deliveries while out",
+     "why": "The text says a smart doorbell shows who's at the door, even away from home."
+    },
+    "g3": {
+     "correct": "Thermostat",
+     "accept": [
+      "Thermostat"
+     ],
+     "label": "3. Save on heating without thinking",
+     "why": "The text says a smart thermostat automatically adjusts temperature to save energy."
+    },
+    "g4": {
+     "correct": "Speaker",
+     "accept": [
+      "Speaker"
+     ],
+     "label": "4. Dan — hands-free music control",
+     "why": "The text says a smart speaker controls music using your voice."
+    },
+    "g5": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "5. Devices never need updating",
+     "why": "The text says smart devices should be updated regularly to stay secure."
+    },
+    "g6": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "6. Strong password recommended",
+     "why": "The text confirms every device needs its own strong, unique password."
+    },
+    "g7": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "7. Doorbells only work at home",
+     "why": "The text says smart doorbells can be checked from anywhere, not just at home."
+    },
+    "g8": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "8. Turning off devices saves electricity",
+     "why": "The text confirms turning off unused devices helps save electricity."
+    }
+   }
+  }
+ }
+}

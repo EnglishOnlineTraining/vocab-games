@@ -1,0 +1,163 @@
+{
+ "unit": "gr-if-saetze",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "passes",
+     "accept": [
+      "passes"
+     ],
+     "label": "1 If Mia"
+    },
+    "g2": {
+     "correct": "will stay",
+     "accept": [
+      "will stay"
+     ],
+     "label": "2 If she goes to Ireland, she"
+    },
+    "g3": {
+     "correct": "had",
+     "accept": [
+      "had"
+     ],
+     "label": "3 If her parents"
+    },
+    "g4": {
+     "correct": "would take",
+     "accept": [
+      "would take"
+     ],
+     "label": "4 If she were braver, she"
+    },
+    "g5": {
+     "correct": "had booked",
+     "accept": [
+      "had booked"
+     ],
+     "label": "5 If they"
+    },
+    "g6": {
+     "correct": "were",
+     "accept": [
+      "were"
+     ],
+     "label": "6 If I"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "will stay",
+     "accept": [
+      "will stay"
+     ],
+     "label": "1 If it rains tomorrow, we"
+    },
+    "g2": {
+     "correct": "melts",
+     "accept": [
+      "melts"
+     ],
+     "label": "2 If you heat ice, it"
+    },
+    "g3": {
+     "correct": "won",
+     "accept": [
+      "won"
+     ],
+     "label": "3 If I"
+    },
+    "g4": {
+     "correct": "would have passed",
+     "accept": [
+      "would have passed"
+     ],
+     "label": "4 If she had studied harder, she"
+    },
+    "g5": {
+     "correct": "will call",
+     "accept": [
+      "will call"
+     ],
+     "label": "5 We"
+    },
+    "g6": {
+     "correct": "hadn’t driven",
+     "accept": [
+      "hadn’t driven"
+     ],
+     "label": "6 If they"
+    },
+    "g7": {
+     "correct": "would go",
+     "accept": [
+      "would go"
+     ],
+     "label": "7 If I were you, I"
+    },
+    "g8": {
+     "correct": "will miss",
+     "accept": [
+      "will miss"
+     ],
+     "label": "8 If you don’t hurry, you"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "stops",
+     "accept": [
+      "stops"
+     ],
+     "label": "1 Unless it"
+    },
+    "g2": {
+     "correct": "would have come",
+     "accept": [
+      "would have come"
+     ],
+     "label": "2 If I had known about the party, I"
+    },
+    "g3": {
+     "correct": "bring",
+     "accept": [
+      "bring"
+     ],
+     "label": "3 You can borrow my bike if you"
+    },
+    "g4": {
+     "correct": "hadn’t invaded",
+     "accept": [
+      "hadn’t invaded"
+     ],
+     "label": "4 If the Romans"
+    },
+    "g5": {
+     "correct": "were",
+     "accept": [
+      "were"
+     ],
+     "label": "5 If she"
+    },
+    "g6": {
+     "correct": "had been",
+     "accept": [
+      "had been"
+     ],
+     "label": "6 We would have gone swimming if the water"
+    }
+   }
+  }
+ }
+}

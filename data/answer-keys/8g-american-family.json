@@ -1,0 +1,145 @@
+{
+ "unit": "8g-american-family",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "family",
+     "accept": [
+      "family"
+     ],
+     "label": "1. Spending a year with a host ___",
+     "why": "The text says Lena is spending a year with a host family in Ohio."
+    },
+    "g2": {
+     "correct": "chores",
+     "accept": [
+      "chores"
+     ],
+     "label": "2. Everyone helped with the ___",
+     "why": "The text says everyone helped with the chores around the house."
+    },
+    "g3": {
+     "correct": "bed",
+     "accept": [
+      "bed"
+     ],
+     "label": "3. Make her ___",
+     "why": "The text says Lena had to make her bed each morning."
+    },
+    "g4": {
+     "correct": "dishwasher",
+     "accept": [
+      "dishwasher"
+     ],
+     "label": "4. Load the ___",
+     "why": "The text says it was Lena's job to load the dishwasher."
+    },
+    "g5": {
+     "correct": "rubbish",
+     "accept": [
+      "rubbish"
+     ],
+     "label": "5. Took out the ___",
+     "why": "The text says her host brother took out the rubbish every evening."
+    },
+    "g6": {
+     "correct": "garden",
+     "accept": [
+      "garden"
+     ],
+     "label": "6. Worked in the ___",
+     "why": "The text says the family worked in the garden at the weekend."
+    },
+    "g7": {
+     "correct": "laundry",
+     "accept": [
+      "laundry"
+     ],
+     "label": "7. Do her own ___",
+     "why": "The text says Lena learned to do her own laundry."
+    },
+    "g8": {
+     "correct": "welcoming",
+     "accept": [
+      "welcoming"
+     ],
+     "label": "8. Her host parents were very ___",
+     "why": "The text says her host parents were very welcoming."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "make",
+     "accept": [
+      "make"
+     ],
+     "label": "1. It is my job to ___ the beds",
+     "why": "‘Make the bed’ is the fixed collocation for this chore."
+    },
+    "g2": {
+     "correct": "take out",
+     "accept": [
+      "take out"
+     ],
+     "label": "2. Can you ___ the rubbish?",
+     "why": "‘Take out the rubbish’ is the fixed collocation for this chore."
+    },
+    "g3": {
+     "correct": "load",
+     "accept": [
+      "load"
+     ],
+     "label": "3. We ___ the dishwasher",
+     "why": "‘Load the dishwasher’ is the fixed collocation for this chore."
+    },
+    "g4": {
+     "correct": "do",
+     "accept": [
+      "do"
+     ],
+     "label": "4. I have to ___ my homework",
+     "why": "‘Do homework’ is the fixed collocation for this chore."
+    },
+    "g5": {
+     "correct": "cut",
+     "accept": [
+      "cut"
+     ],
+     "label": "5. We ___ the grass",
+     "why": "‘Cut the grass’ is the fixed collocation for this chore."
+    },
+    "g6": {
+     "correct": "tidy",
+     "accept": [
+      "tidy"
+     ],
+     "label": "6. Please ___ your room",
+     "why": "‘Tidy your room’ is the fixed collocation for this chore."
+    },
+    "g7": {
+     "correct": "set",
+     "accept": [
+      "set"
+     ],
+     "label": "7. We ___ the table",
+     "why": "‘Set the table’ is the fixed collocation for this chore."
+    },
+    "g8": {
+     "correct": "walk",
+     "accept": [
+      "walk"
+     ],
+     "label": "8. I ___ the dog",
+     "why": "‘Walk the dog’ is the fixed collocation for this chore."
+    }
+   }
+  }
+ }
+}

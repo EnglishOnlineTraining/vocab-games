@@ -1,0 +1,191 @@
+{
+ "unit": "8c-review",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Anchorage, Alaska",
+     "accept": [
+      "Anchorage, Alaska"
+     ],
+     "label": "1. Where does Maria live?"
+    },
+    "g2": {
+     "correct": "gift",
+     "accept": [
+      "gift"
+     ],
+     "label": "2. It was a"
+    },
+    "g3": {
+     "correct": "is preparing",
+     "accept": [
+      "is preparing"
+     ],
+     "label": "3. Jake’s mum"
+    },
+    "g4": {
+     "correct": "role",
+     "accept": [
+      "role"
+     ],
+     "label": "4. A famous"
+    },
+    "g5": {
+     "correct": "which",
+     "accept": [
+      "which"
+     ],
+     "label": "5. Blues is a type of music"
+    },
+    "g6": {
+     "correct": "likes",
+     "accept": [
+      "likes"
+     ],
+     "label": "6. Tyler"
+    },
+    "g7": {
+     "correct": "work",
+     "accept": [
+      "work"
+     ],
+     "label": "7. it is hard"
+    },
+    "g8": {
+     "correct": "decorations",
+     "accept": [
+      "decorations"
+     ],
+     "label": "8. lights and colours you put up"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "It was exciting",
+     "accept": [
+      "It was exciting"
+     ],
+     "label": "1. What did Lisa think about Times Square?"
+    },
+    "g2": {
+     "correct": "went",
+     "accept": [
+      "went"
+     ],
+     "label": "2. Last Saturday, Jake"
+    },
+    "g3": {
+     "correct": "Raw materials are collected",
+     "accept": [
+      "Raw materials are collected"
+     ],
+     "label": "3. First step of a product life cycle"
+    },
+    "g4": {
+     "correct": "parks",
+     "accept": [
+      "parks"
+     ],
+     "label": "4. bigger than many"
+    },
+    "g5": {
+     "correct": "play",
+     "accept": [
+      "play"
+     ],
+     "label": "5. Jake and his friends"
+    },
+    "g6": {
+     "correct": "history",
+     "accept": [
+      "history"
+     ],
+     "label": "6. A rich"
+    },
+    "g7": {
+     "correct": "who",
+     "accept": [
+      "who"
+     ],
+     "label": "7. Louis Armstrong was a musician"
+    },
+    "g8": {
+     "correct": "vet",
+     "accept": [
+      "vet"
+     ],
+     "label": "8. Maria wants to be a"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "cleaning",
+     "accept": [
+      "cleaning"
+     ],
+     "label": "1. Our guide suggested"
+    },
+    "g2": {
+     "correct": "parade",
+     "accept": [
+      "parade"
+     ],
+     "label": "2. a long"
+    },
+    "g3": {
+     "correct": "ate",
+     "accept": [
+      "ate"
+     ],
+     "label": "3. Her brother"
+    },
+    "g4": {
+     "correct": "Does",
+     "accept": [
+      "Does"
+     ],
+     "label": "4."
+    },
+    "g5": {
+     "correct": "using",
+     "accept": [
+      "using"
+     ],
+     "label": "5. We should avoid"
+    },
+    "g6": {
+     "correct": "quickest",
+     "accept": [
+      "quickest"
+     ],
+     "label": "6. the"
+    },
+    "g7": {
+     "correct": "is talking",
+     "accept": [
+      "is talking"
+     ],
+     "label": "7. Dad"
+    },
+    "g8": {
+     "correct": "destination",
+     "accept": [
+      "destination"
+     ],
+     "label": "8. A popular"
+    }
+   }
+  }
+ }
+}

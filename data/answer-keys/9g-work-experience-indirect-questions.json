@@ -1,0 +1,215 @@
+{
+ "unit": "9g-work-experience-indirect-questions",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "day",
+     "accept": [
+      "day"
+     ],
+     "label": "1 — what a normal working ___ looks like",
+     "why": "\"A working day\" is the fixed phrase for the hours people spend at work."
+    },
+    "g2": {
+     "correct": "lessons",
+     "accept": [
+      "lessons"
+     ],
+     "label": "2 — a whole term of ___",
+     "why": "A school term is made up of lessons."
+    },
+    "g3": {
+     "correct": "interview",
+     "accept": [
+      "interview"
+     ],
+     "label": "3 — invited to an ___",
+     "why": "A company invites you to an interview — a meeting where they ask you questions."
+    },
+    "g4": {
+     "correct": "unpaid",
+     "accept": [
+      "unpaid"
+     ],
+     "label": "4 — the work is usually ___",
+     "why": "Unpaid means you get no money for it, which is normal for school placements."
+    },
+    "g5": {
+     "correct": "phone",
+     "accept": [
+      "phone"
+     ],
+     "label": "5 — answer the ___",
+     "why": "\"Answer the phone\" is the set phrase for taking a call."
+    },
+    "g6": {
+     "correct": "enjoy",
+     "accept": [
+      "enjoy"
+     ],
+     "label": "6 — whether you ___ the noise",
+     "why": "Enjoy fits a feeling about the noise and the people; \"employ\" means to give somebody a job."
+    },
+    "g7": {
+     "correct": "report",
+     "accept": [
+      "report"
+     ],
+     "label": "7 — you write a ___",
+     "why": "A report describes what you did and learned during the placement."
+    },
+    "g8": {
+     "correct": "repeat",
+     "accept": [
+      "repeat"
+     ],
+     "label": "8 — never want to ___ the experience",
+     "why": "To repeat something is to do it again."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "is",
+     "accept": [
+      "is"
+     ],
+     "label": "1 — where the office ___",
+     "why": "In an indirect question the word order is normal: subject (\"the office\") before the verb."
+    },
+    "g2": {
+     "correct": "opens",
+     "accept": [
+      "opens"
+     ],
+     "label": "2 — what time the shop ___",
+     "why": "The auxiliary \"does\" disappears in an indirect question and the -s stays on the verb."
+    },
+    "g3": {
+     "correct": "whether",
+     "accept": [
+      "whether"
+     ],
+     "label": "3 — I’d like to know ___ you offer placements",
+     "why": "A yes/no question becomes \"whether\" or \"if\" — never \"that\"."
+    },
+    "g4": {
+     "correct": "costs",
+     "accept": [
+      "costs"
+     ],
+     "label": "4 — how much a ticket ___",
+     "why": "No \"does\" after \"how much\" here: the subject is followed directly by \"costs\"."
+    },
+    "g5": {
+     "correct": "if",
+     "accept": [
+      "if"
+     ],
+     "label": "5 — she asked me ___ I had experience",
+     "why": "Reported yes/no questions use \"if\" or \"whether\"."
+    },
+    "g6": {
+     "correct": "can",
+     "accept": [
+      "can"
+     ],
+     "label": "6 — where I ___ find the manager",
+     "why": "Normal word order: \"where I can find\", not \"where can I find\"."
+    },
+    "g7": {
+     "correct": "how long",
+     "accept": [
+      "how long"
+     ],
+     "label": "7 — I wonder ___ the interview will take",
+     "why": "Time is measured with \"how long\"; \"how far\" is distance and \"how much\" is quantity."
+    },
+    "g8": {
+     "correct": "was",
+     "accept": [
+      "was"
+     ],
+     "label": "8 — why the train ___ late",
+     "why": "After \"why the train\" the verb comes straight after the subject, with no inversion."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "haven’t you",
+     "accept": [
+      "haven’t you"
+     ],
+     "label": "1 — you’ve sent your application, ___?",
+     "why": "A positive sentence takes a negative tag with the same auxiliary — here \"have\"."
+    },
+    "g2": {
+     "correct": "is she",
+     "accept": [
+      "is she"
+     ],
+     "label": "2 — she isn’t coming, ___?",
+     "why": "A negative sentence takes a positive tag."
+    },
+    "g3": {
+     "correct": "shall we",
+     "accept": [
+      "shall we"
+     ],
+     "label": "3 — let’s ask the manager, ___?",
+     "why": "Sentences starting with \"Let’s\" always take \"shall we\"."
+    },
+    "g4": {
+     "correct": "won’t you",
+     "accept": [
+      "won’t you"
+     ],
+     "label": "4 — you’ll call me tomorrow, ___?",
+     "why": "The auxiliary in the tag matches \"will\", so the negative form is \"won’t you\"."
+    },
+    "g5": {
+     "correct": "did they",
+     "accept": [
+      "did they"
+     ],
+     "label": "5 — nobody told you, ___?",
+     "why": "\"Nobody\" is already negative, so the tag is positive — and it takes \"they\"."
+    },
+    "g6": {
+     "correct": "fill in",
+     "accept": [
+      "fill in"
+     ],
+     "label": "6 — I have to ___ the form (phrasal verb)",
+     "why": "You fill in a form — from the India phrasal verbs unit."
+    },
+    "g7": {
+     "correct": "who",
+     "accept": [
+      "who"
+     ],
+     "label": "7 — the woman ___ interviewed me (relative pronoun)",
+     "why": "\"Who\" is the relative pronoun for people — from the Famous & Hollywood unit."
+    },
+    "g8": {
+     "correct": "isn’t there",
+     "accept": [
+      "isn’t there"
+     ],
+     "label": "8 — there’s a bus at eight, ___?",
+     "why": "After \"there is\" the tag keeps \"there\" as the subject."
+    }
+   }
+  }
+ }
+}

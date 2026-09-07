@@ -1,0 +1,163 @@
+{
+ "unit": "gr-past-perfect",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "had already left",
+     "accept": [
+      "had already left"
+     ],
+     "label": "1 When the class arrived at the station, the train"
+    },
+    "g2": {
+     "correct": "had told",
+     "accept": [
+      "had told"
+     ],
+     "label": "2 Ms Carter was angry because nobody"
+    },
+    "g3": {
+     "correct": "had travelled",
+     "accept": [
+      "had travelled"
+     ],
+     "label": "3 By the time we reached the castle, we"
+    },
+    "g4": {
+     "correct": "had got",
+     "accept": [
+      "had got"
+     ],
+     "label": "4 The rain stopped only after we"
+    },
+    "g5": {
+     "correct": "had brought",
+     "accept": [
+      "had brought"
+     ],
+     "label": "5 Luckily, Ben"
+    },
+    "g6": {
+     "correct": "had left",
+     "accept": [
+      "had left"
+     ],
+     "label": "6 Back home, I realised that I"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "had lived",
+     "accept": [
+      "had lived"
+     ],
+     "label": "1 Before she moved to London, she"
+    },
+    "g2": {
+     "correct": "had finished",
+     "accept": [
+      "had finished"
+     ],
+     "label": "2 After he"
+    },
+    "g3": {
+     "correct": "had never seen",
+     "accept": [
+      "had never seen"
+     ],
+     "label": "3 I"
+    },
+    "g4": {
+     "correct": "had built",
+     "accept": [
+      "had built"
+     ],
+     "label": "4 By 2010, the workers"
+    },
+    "g5": {
+     "correct": "had eaten",
+     "accept": [
+      "had eaten"
+     ],
+     "label": "5 When I got home, my brother"
+    },
+    "g6": {
+     "correct": "had already started",
+     "accept": [
+      "had already started"
+     ],
+     "label": "6 When we arrived at the stadium, the match"
+    },
+    "g7": {
+     "correct": "had just sat",
+     "accept": [
+      "had just sat"
+     ],
+     "label": "7 He"
+    },
+    "g8": {
+     "correct": "had never flown",
+     "accept": [
+      "had never flown"
+     ],
+     "label": "8 Until last year, I"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "had done",
+     "accept": [
+      "had done"
+     ],
+     "label": "1 After I"
+    },
+    "g2": {
+     "correct": "seen",
+     "accept": [
+      "seen"
+     ],
+     "label": "2 Had you ever"
+    },
+    "g3": {
+     "correct": "had escaped",
+     "accept": [
+      "had escaped"
+     ],
+     "label": "3 By the time the police arrived, the thieves"
+    },
+    "g4": {
+     "correct": "had already seen",
+     "accept": [
+      "had already seen"
+     ],
+     "label": "4 I didn’t want to watch the film because I"
+    },
+    "g5": {
+     "correct": "had known",
+     "accept": [
+      "had known"
+     ],
+     "label": "5 We"
+    },
+    "g6": {
+     "correct": "had he closed",
+     "accept": [
+      "had he closed"
+     ],
+     "label": "6 No sooner"
+    }
+   }
+  }
+ }
+}

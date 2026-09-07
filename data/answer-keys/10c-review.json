@@ -1,0 +1,191 @@
+{
+ "unit": "10c-review",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "had promised",
+     "accept": [
+      "had promised"
+     ],
+     "label": "1. Earlier that week, she"
+    },
+    "g2": {
+     "correct": "was opened",
+     "accept": [
+      "was opened"
+     ],
+     "label": "2. A new community centre"
+    },
+    "g3": {
+     "correct": "wouldn't have grown",
+     "accept": [
+      "wouldn't have grown"
+     ],
+     "label": "3. Tourism"
+    },
+    "g4": {
+     "correct": "because",
+     "accept": [
+      "because"
+     ],
+     "label": "4. Created"
+    },
+    "g5": {
+     "correct": "never",
+     "accept": [
+      "never"
+     ],
+     "label": "5. I have"
+    },
+    "g6": {
+     "correct": "have won",
+     "accept": [
+      "have won"
+     ],
+     "label": "6. Kenyan athletes"
+    },
+    "g7": {
+     "correct": "experience other cultures first-hand",
+     "accept": [
+      "experience other cultures first-hand"
+     ],
+     "label": "7. Exchange programmes let young people"
+    },
+    "g8": {
+     "correct": "nonviolent resistance",
+     "accept": [
+      "nonviolent resistance"
+     ],
+     "label": "8. Fighting for change without violence"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "little",
+     "accept": [
+      "little"
+     ],
+     "label": "1. Workers are paid very"
+    },
+    "g2": {
+     "correct": "have to",
+     "accept": [
+      "have to"
+     ],
+     "label": "2."
+    },
+    "g3": {
+     "correct": "was built",
+     "accept": [
+      "was built"
+     ],
+     "label": "3. The White House"
+    },
+    "g4": {
+     "correct": "camouflage",
+     "accept": [
+      "camouflage"
+     ],
+     "label": "4. The Arctic fox changes colour for"
+    },
+    "g5": {
+     "correct": "cycling",
+     "accept": [
+      "cycling"
+     ],
+     "label": "5. Aisha was"
+    },
+    "g6": {
+     "correct": "invests",
+     "accept": [
+      "invests"
+     ],
+     "label": "6. If the government"
+    },
+    "g7": {
+     "correct": "was searching",
+     "accept": [
+      "was searching"
+     ],
+     "label": "7. Jackson"
+    },
+    "g8": {
+     "correct": "have studied",
+     "accept": [
+      "have studied"
+     ],
+     "label": "8. Many students"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "yet",
+     "accept": [
+      "yet"
+     ],
+     "label": "1. Has not reached its goals"
+    },
+    "g2": {
+     "correct": "produces",
+     "accept": [
+      "produces"
+     ],
+     "label": "2. Bollywood"
+    },
+    "g3": {
+     "correct": "as if they still live like their ancestors",
+     "accept": [
+      "as if they still live like their ancestors"
+     ],
+     "label": "3. Indigenous peoples portrayed as"
+    },
+    "g4": {
+     "correct": "is celebrated",
+     "accept": [
+      "is celebrated"
+     ],
+     "label": "4. MLK Day"
+    },
+    "g5": {
+     "correct": "largest",
+     "accept": [
+      "largest"
+     ],
+     "label": "5. Mumbai is the"
+    },
+    "g6": {
+     "correct": "public",
+     "accept": [
+      "public"
+     ],
+     "label": "6. Free"
+    },
+    "g7": {
+     "correct": "are made",
+     "accept": [
+      "are made"
+     ],
+     "label": "7. Many important decisions"
+    },
+    "g8": {
+     "correct": "is swimming",
+     "accept": [
+      "is swimming"
+     ],
+     "label": "8. \"Look! A polar bear"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,199 @@
+{
+ "unit": "10g-digital-footprint",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "traces left by things like posts, likes and searches",
+     "accept": [
+      "traces left by things like posts, likes and searches"
+     ],
+     "label": "1. What does the text say a “digital footprint” is built from?",
+     "why": "The first paragraph says every post, like and search leaves a trace, and those traces together build up your digital footprint."
+    },
+    "g2": {
+     "correct": "what price you see, which news appears first, or which job advert reaches you",
+     "accept": [
+      "what price you see, which news appears first, or which job advert reaches you"
+     ],
+     "label": "2. Besides showing adverts, what does the text say some companies use your data to decide?",
+     "why": "The second paragraph names exactly these three examples of decisions companies make from your data, besides which adverts you see."
+    },
+    "g3": {
+     "correct": "algorithms trained on biased data quietly reinforcing biased decisions",
+     "accept": [
+      "algorithms trained on biased data quietly reinforcing biased decisions"
+     ],
+     "label": "3. What does “the weaponisation of mathematics” refer to, according to the text?",
+     "why": "The text defines the phrase directly as algorithms trained on biased data quietly reinforcing biased decisions, often without anyone noticing."
+    },
+    "g4": {
+     "correct": "search their own name occasionally and see what strangers can find",
+     "accept": [
+      "search their own name occasionally and see what strangers can find"
+     ],
+     "label": "4. What does the text suggest anyone can do to see what their own digital footprint reveals?",
+     "why": "The final paragraph recommends searching your own name occasionally to see what strangers can find."
+    },
+    "g5": {
+     "correct": "because “easy” describes the action itself, not a judgement of advertisers’ character",
+     "accept": [
+      "because “easy” describes the action itself, not a judgement of advertisers’ character"
+     ],
+     "label": "5. “It’s easy for advertisers to build a detailed picture…” — why is for used here rather than of?",
+     "why": "“For” follows adjectives like easy, important or possible that comment on the action, not on the person’s character."
+    },
+    "g6": {
+     "correct": "because “careless” judges the companies’ behaviour, not just the action",
+     "accept": [
+      "because “careless” judges the companies’ behaviour, not just the action"
+     ],
+     "label": "6. “It was careless of many early tech companies not to test their algorithms…” — why is of used here rather than for?",
+     "why": "“Of” follows adjectives like careless, foolish or kind that judge the person’s (or company’s) behaviour, not just describe the action."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "for",
+     "accept": [
+      "for"
+     ],
+     "label": "1. It’s easy ___ hackers to find weak passwords that people reuse.",
+     "why": "“Easy” comments on how simple the action is, not on the hackers’ character, so it takes “for”."
+    },
+    "g2": {
+     "correct": "of",
+     "accept": [
+      "of"
+     ],
+     "label": "2. It was careless ___ her to post her exact location while on holiday.",
+     "why": "“Careless” judges her behaviour, so it takes “of”, not “for”."
+    },
+    "g3": {
+     "correct": "for",
+     "accept": [
+      "for"
+     ],
+     "label": "3. It’s important ___ companies to explain how they use customer data.",
+     "why": "“Important” describes the action itself, not anyone’s character, so it takes “for”."
+    },
+    "g4": {
+     "correct": "of",
+     "accept": [
+      "of"
+     ],
+     "label": "4. It was foolish ___ him to click a link from an unknown sender.",
+     "why": "“Foolish” judges his behaviour, so it takes “of”, not “for”."
+    },
+    "g5": {
+     "correct": "for",
+     "accept": [
+      "for"
+     ],
+     "label": "5. It’s essential ___ young people to think about their online reputation.",
+     "why": "“Essential” describes the action itself, not anyone’s character, so it takes “for”."
+    },
+    "g6": {
+     "correct": "of",
+     "accept": [
+      "of"
+     ],
+     "label": "6. It was sensible ___ the school to teach students about phishing.",
+     "why": "“Sensible” judges the school’s behaviour, so it takes “of”, not “for”."
+    },
+    "g7": {
+     "correct": "for",
+     "accept": [
+      "for"
+     ],
+     "label": "7. It’s possible ___ a stranger to find your address from careless posts.",
+     "why": "“Possible” describes the action itself, not anyone’s character, so it takes “for”."
+    },
+    "g8": {
+     "correct": "of",
+     "accept": [
+      "of"
+     ],
+     "label": "8. It was greedy ___ the app to ask for so many permissions.",
+     "why": "“Greedy” judges the app’s (its maker’s) behaviour, so it takes “of”, not “for”."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "accept",
+     "accept": [
+      "accept"
+     ],
+     "label": "1. The app made him ___ the cookie settings before he could continue.",
+     "why": "“Make” is followed by the bare infinitive (no “to”) when it means force someone to do something."
+    },
+    "g2": {
+     "correct": "deleted",
+     "accept": [
+      "deleted"
+     ],
+     "label": "2. She had her old accounts ___ after the data breach.",
+     "why": "“Have” takes the past participle when the action is done to something of yours by someone else — here, her accounts were deleted by someone else."
+    },
+    "g3": {
+     "correct": "watch",
+     "accept": [
+      "watch"
+     ],
+     "label": "3. Our IT teacher made us ___ a video about phishing scams.",
+     "why": "“Make” is followed by the bare infinitive (no “to”) when it means force someone to do something."
+    },
+    "g4": {
+     "correct": "changed",
+     "accept": [
+      "changed"
+     ],
+     "label": "4. He had his password ___ as soon as he noticed something suspicious.",
+     "why": "“Have” takes the past participle when the action is done to something of yours by someone else — here, his password was changed by someone else (or a service)."
+    },
+    "g5": {
+     "correct": "post",
+     "accept": [
+      "post"
+     ],
+     "label": "5. My parents won’t let me ___ photos that show our exact location.",
+     "why": "“Let” is followed by the bare infinitive (no “to”) when it means allow someone to do something."
+    },
+    "g6": {
+     "correct": "complete",
+     "accept": [
+      "complete"
+     ],
+     "label": "6. The company makes its staff ___ a cybersecurity course every year.",
+     "why": "“Make” is followed by the bare infinitive (no “to”) when it means force someone to do something."
+    },
+    "g7": {
+     "correct": "checked",
+     "accept": [
+      "checked"
+     ],
+     "label": "7. She finally had her phone’s privacy settings ___ by someone who understood them.",
+     "why": "“Have” takes the past participle when the action is done to something of yours by someone else — here, the settings were checked by someone else."
+    },
+    "g8": {
+     "correct": "never used",
+     "accept": [
+      "never used"
+     ],
+     "label": "8. Review — My friend told me that she ___ public Wi-Fi for online banking.",
+     "why": "This reviews reported speech from 10g-growing-up-black: a present-tense statement (“I never use…”) shifts back to the simple past (“she never used…”) when reported."
+    }
+   }
+  }
+ }
+}

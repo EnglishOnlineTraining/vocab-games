@@ -1,0 +1,215 @@
+{
+ "unit": "10c-canada-schools",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "territories",
+     "accept": [
+      "territories"
+     ],
+     "label": "1. Ten provinces and three ___",
+     "why": "The text says Canada has ten provinces and three territories."
+    },
+    "g2": {
+     "correct": "six",
+     "accept": [
+      "six"
+     ],
+     "label": "2. From the age of ___",
+     "why": "The text says children must attend school from the age of six."
+    },
+    "g3": {
+     "correct": "public",
+     "accept": [
+      "public"
+     ],
+     "label": "3. Free ___ schools",
+     "why": "The text says most Canadian students go to free public schools."
+    },
+    "g4": {
+     "correct": "bilingual",
+     "accept": [
+      "bilingual"
+     ],
+     "label": "4. Officially ___",
+     "why": "The text says Canada is officially bilingual (English and French)."
+    },
+    "g5": {
+     "correct": "uniform",
+     "accept": [
+      "uniform"
+     ],
+     "label": "5. Wear a ___",
+     "why": "The text says public school students usually do not have to wear a uniform."
+    },
+    "g6": {
+     "correct": "eight",
+     "accept": [
+      "eight"
+     ],
+     "label": "6. Starts at half past ___",
+     "why": "The text says a typical school day starts at half past eight."
+    },
+    "g7": {
+     "correct": "computer science",
+     "accept": [
+      "computer science"
+     ],
+     "label": "7. Music, cooking or ___",
+     "why": "The text names music, cooking and computer science as options."
+    },
+    "g8": {
+     "correct": "June",
+     "accept": [
+      "June"
+     ],
+     "label": "8. September to ___",
+     "why": "The text says the school year runs from September to June."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "have to",
+     "accept": [
+      "have to"
+     ],
+     "label": "1. Children ___ go to school",
+     "why": "A law = external obligation: 'have to' (here interchangeable with 'must')."
+    },
+    "g2": {
+     "correct": "don't have to",
+     "accept": [
+      "don't have to"
+     ],
+     "label": "2. ___ wear a uniform",
+     "why": "Uniforms are not required, so it is not necessary: 'don't have to'."
+    },
+    "g3": {
+     "correct": "mustn't",
+     "accept": [
+      "mustn't"
+     ],
+     "label": "3. ___ be late for class",
+     "why": "Being late is not allowed — a prohibition takes 'mustn't'."
+    },
+    "g4": {
+     "correct": "don't have to",
+     "accept": [
+      "don't have to"
+     ],
+     "label": "4. ___ learn in French",
+     "why": "Parents can choose, so French is not necessary: 'don't have to'."
+    },
+    "g5": {
+     "correct": "must",
+     "accept": [
+      "must"
+     ],
+     "label": "5. ___ respect the code of conduct",
+     "why": "'No exceptions' signals a strict rule: 'must'."
+    },
+    "g6": {
+     "correct": "don't have to",
+     "accept": [
+      "don't have to"
+     ],
+     "label": "6. Ill: ___ come to school",
+     "why": "Staying home is allowed, so coming is not necessary: 'don't have to'."
+    },
+    "g7": {
+     "correct": "mustn't",
+     "accept": [
+      "mustn't"
+     ],
+     "label": "7. ___ use phones in the exam room",
+     "why": "'Strictly forbidden' is a prohibition: 'mustn't'."
+    },
+    "g8": {
+     "correct": "have to",
+     "accept": [
+      "have to"
+     ],
+     "label": "8. ___ stay until sixteen",
+     "why": "A legal obligation up to age sixteen: 'have to'."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "should",
+     "accept": [
+      "should"
+     ],
+     "label": "1. ___ take part in activities",
+     "why": "Advice in favour of something: 'should'."
+    },
+    "g2": {
+     "correct": "shouldn't",
+     "accept": [
+      "shouldn't"
+     ],
+     "label": "2. ___ copy homework",
+     "why": "Advice against something: 'shouldn't' — it is unwise, not forbidden."
+    },
+    "g3": {
+     "correct": "should",
+     "accept": [
+      "should"
+     ],
+     "label": "3. ___ ask the teacher",
+     "why": "Asking for help is good advice: 'should'."
+    },
+    "g4": {
+     "correct": "shouldn't",
+     "accept": [
+      "shouldn't"
+     ],
+     "label": "4. ___ be on their phones all break",
+     "why": "The second half recommends the opposite, so: 'shouldn't'."
+    },
+    "g5": {
+     "correct": "should",
+     "accept": [
+      "should"
+     ],
+     "label": "5. ___ try poutine",
+     "why": "Recommending a famous dish: 'should'."
+    },
+    "g6": {
+     "correct": "shouldn't",
+     "accept": [
+      "shouldn't"
+     ],
+     "label": "6. ___ start studying the night before",
+     "why": "Starting late is bad advice, so: 'shouldn't'."
+    },
+    "g7": {
+     "correct": "has",
+     "accept": [
+      "has"
+     ],
+     "label": "7. Canada ___ welcomed students",
+     "why": "Review from 10c-discover-canada: present perfect with a singular subject — 'has'."
+    },
+    "g8": {
+     "correct": "shouldn't",
+     "accept": [
+      "shouldn't"
+     ],
+     "label": "8. New students ___ worry",
+     "why": "'Canadian schools are friendly' makes worry unnecessary: 'shouldn't'."
+    }
+   }
+  }
+ }
+}

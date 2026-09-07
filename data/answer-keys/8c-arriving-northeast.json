@@ -1,0 +1,199 @@
+{
+ "unit": "8c-arriving-northeast",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "New York",
+     "accept": [
+      "New York"
+     ],
+     "label": "1. Where did Lisa go?",
+     "why": "The text says Lisa travelled to New York."
+    },
+    "g2": {
+     "correct": "by plane",
+     "accept": [
+      "by plane"
+     ],
+     "label": "2. How did she travel from Frankfurt?",
+     "why": "The text says she flew from Frankfurt, so she travelled by plane."
+    },
+    "g3": {
+     "correct": "the Statue of Liberty",
+     "accept": [
+      "the Statue of Liberty"
+     ],
+     "label": "3. What did she visit on the first day?",
+     "why": "The text says she visited the Statue of Liberty on the first day."
+    },
+    "g4": {
+     "correct": "It was exciting",
+     "accept": [
+      "It was exciting"
+     ],
+     "label": "4. What did Lisa think about Times Square?",
+     "why": "The text describes Lisa’s reaction to Times Square as exciting."
+    },
+    "g5": {
+     "correct": "a souvenir T-shirt",
+     "accept": [
+      "a souvenir T-shirt"
+     ],
+     "label": "5. What did Lisa buy in Times Square?",
+     "why": "The text says she bought a souvenir T-shirt in Times Square."
+    },
+    "g6": {
+     "correct": "five days",
+     "accept": [
+      "five days"
+     ],
+     "label": "6. How many days did they stay?",
+     "why": "The text says the family stayed in New York for five days."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "went",
+     "accept": [
+      "went"
+     ],
+     "label": "1. Lisa ___ to New York (go)",
+     "why": "‘Go’ is irregular: its simple past form is ‘went’, not ‘goed’."
+    },
+    "g2": {
+     "correct": "saw",
+     "accept": [
+      "saw"
+     ],
+     "label": "2. She ___ the Statue of Liberty (see)",
+     "why": "‘See’ is irregular: its simple past form is ‘saw’."
+    },
+    "g3": {
+     "correct": "took",
+     "accept": [
+      "took"
+     ],
+     "label": "3. They ___ a yellow taxi (take)",
+     "why": "‘Take’ is irregular: its simple past form is ‘took’."
+    },
+    "g4": {
+     "correct": "bought",
+     "accept": [
+      "bought"
+     ],
+     "label": "4. She ___ a souvenir (buy)",
+     "why": "‘Buy’ is irregular: its simple past form is ‘bought’."
+    },
+    "g5": {
+     "correct": "ate",
+     "accept": [
+      "ate"
+     ],
+     "label": "5. Her brother ___ hot dogs (eat)",
+     "why": "‘Eat’ is irregular: its simple past form is ‘ate’."
+    },
+    "g6": {
+     "correct": "had",
+     "accept": [
+      "had"
+     ],
+     "label": "6. They ___ a wonderful time (have)",
+     "why": "‘Have’ is irregular: its simple past form is ‘had’."
+    },
+    "g7": {
+     "correct": "wrote",
+     "accept": [
+      "wrote"
+     ],
+     "label": "7. Lisa ___ postcards (write)",
+     "why": "‘Write’ is irregular: its simple past form is ‘wrote’."
+    },
+    "g8": {
+     "correct": "thought",
+     "accept": [
+      "thought"
+     ],
+     "label": "8. She ___ New York was the best city (think)",
+     "why": "‘Think’ is irregular: its simple past form is ‘thought’."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "taller",
+     "accept": [
+      "taller"
+     ],
+     "label": "1. The Empire State Building is ___ (tall)",
+     "why": "Short adjectives like ‘tall’ form the comparative by adding ‘-er’."
+    },
+    "g2": {
+     "correct": "bigger",
+     "accept": [
+      "bigger"
+     ],
+     "label": "2. New York is ___ (big)",
+     "why": "‘Big’ doubles its final consonant before adding ‘-er’: bigger."
+    },
+    "g3": {
+     "correct": "busiest",
+     "accept": [
+      "busiest"
+     ],
+     "label": "3. Times Square is the ___ place (busy)",
+     "why": "‘Busy’ changes y to i before adding ‘-est’ for the superlative."
+    },
+    "g4": {
+     "correct": "more beautiful",
+     "accept": [
+      "more beautiful"
+     ],
+     "label": "4. Central Park is ___ (beautiful)",
+     "why": "Longer adjectives like ‘beautiful’ form the comparative with ‘more’, not an ending."
+    },
+    "g5": {
+     "correct": "faster",
+     "accept": [
+      "faster"
+     ],
+     "label": "5. The subway is ___ (fast)",
+     "why": "Short adjectives like ‘fast’ form the comparative by adding ‘-er’."
+    },
+    "g6": {
+     "correct": "cheaper",
+     "accept": [
+      "cheaper"
+     ],
+     "label": "6. Hot dogs are ___ (cheap)",
+     "why": "Short adjectives like ‘cheap’ form the comparative by adding ‘-er’."
+    },
+    "g7": {
+     "correct": "most famous",
+     "accept": [
+      "most famous"
+     ],
+     "label": "7. New York is one of the ___ cities (famous)",
+     "why": "Longer adjectives like ‘famous’ form the superlative with ‘most’."
+    },
+    "g8": {
+     "correct": "best",
+     "accept": [
+      "best"
+     ],
+     "label": "8. Lisa’s trip was the ___ holiday (good)",
+     "why": "‘Good’ is irregular: its superlative form is ‘best’, not ‘goodest’."
+    }
+   }
+  }
+ }
+}

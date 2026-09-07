@@ -1,0 +1,145 @@
+{
+ "unit": "msa-c-volunteering-abroad",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "four to twelve weeks",
+     "accept": [
+      "four to twelve weeks"
+     ],
+     "label": "1. How long do placements last?",
+     "why": "The recording says placements last between four and twelve weeks."
+    },
+    "g2": {
+     "correct": "wildlife and teaching",
+     "accept": [
+      "wildlife and teaching"
+     ],
+     "label": "2. What are the two main project types?",
+     "why": "The recording says most volunteers help with wildlife conservation or teaching English."
+    },
+    "g3": {
+     "correct": "accommodation and meals",
+     "accept": [
+      "accommodation and meals"
+     ],
+     "label": "3. What does the fee cover?",
+     "why": "The recording says the fee covers accommodation and two meals a day."
+    },
+    "g4": {
+     "correct": "six hundred",
+     "accept": [
+      "six hundred"
+     ],
+     "label": "4. Budget for flights?",
+     "why": "The recording says to budget around six hundred pounds for flights."
+    },
+    "g5": {
+     "correct": "end of March",
+     "accept": [
+      "end of March"
+     ],
+     "label": "5. When do applications close?",
+     "why": "The recording says applications close at the end of March."
+    },
+    "g6": {
+     "correct": "flights cost",
+     "accept": [
+      "flights cost"
+     ],
+     "label": "6. What is Isla worried about?",
+     "why": "The recording says Isla isn't sure she could afford the flights."
+    },
+    "g7": {
+     "correct": "school grant",
+     "accept": [
+      "school grant"
+     ],
+     "label": "7. What could help with costs?",
+     "why": "The recording says a small grant from the school could help with costs."
+    },
+    "g8": {
+     "correct": "teaching wants teacher",
+     "accept": [
+      "teaching wants teacher"
+     ],
+     "label": "8. Which project does Isla want?",
+     "why": "The recording says Isla prefers teaching in Vietnam because she wants to be a teacher."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Wildlife",
+     "accept": [
+      "Wildlife"
+     ],
+     "label": "1. Grace — loves animals, outdoors",
+     "why": "The text says the Wildlife Conservation project protects endangered animals."
+    },
+    "g2": {
+     "correct": "Teaching",
+     "accept": [
+      "Teaching"
+     ],
+     "label": "2. Liam — wants to teach, loves children",
+     "why": "The text says the Teaching English project supports local teachers."
+    },
+    "g3": {
+     "correct": "Turtle",
+     "accept": [
+      "Turtle"
+     ],
+     "label": "3. Priya — ocean and marine life",
+     "why": "The text says the Turtle Conservation project protects sea turtle nests."
+    },
+    "g4": {
+     "correct": "Building",
+     "accept": [
+      "Building"
+     ],
+     "label": "4. Ahmed — hands-on building work",
+     "why": "The text says the Community Building project helps build a community centre."
+    },
+    "g5": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "5. Flights included in fee",
+     "why": "The text says flights are not included in the programme fee."
+    },
+    "g6": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "6. Two meals a day included",
+     "why": "The text confirms volunteers receive two meals a day as part of the fee."
+    },
+    "g7": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "7. Applications any time of year",
+     "why": "The text says applications open in January and close at the end of March."
+    },
+    "g8": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "8. Longest placement is twelve weeks",
+     "why": "The text confirms the longest placement available is twelve weeks."
+    }
+   }
+  }
+ }
+}

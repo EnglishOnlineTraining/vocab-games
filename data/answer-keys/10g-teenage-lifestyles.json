@@ -1,0 +1,199 @@
+{
+ "unit": "10g-teenage-lifestyles",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "first person",
+     "accept": [
+      "first person"
+     ],
+     "label": "1. Point of view of the story",
+     "why": "The narrator uses 'I', so the story is told in the first person."
+    },
+    "g2": {
+     "correct": "because her style was different from everyone else's",
+     "accept": [
+      "because her style was different from everyone else's"
+     ],
+     "label": "2. Why the narrator felt unwelcome",
+     "why": "She stood out because her style did not match the other students'."
+    },
+    "g3": {
+     "correct": "simile",
+     "accept": [
+      "simile"
+     ],
+     "label": "3. 'as welcome as a wolf at a birthday party'",
+     "why": "A comparison using 'as…as' or 'like' is a simile."
+    },
+    "g4": {
+     "correct": "flashback",
+     "accept": [
+      "flashback"
+     ],
+     "label": "4. The paragraph about the day of the move",
+     "why": "It jumps back to an earlier event, which is a flashback."
+    },
+    "g5": {
+     "correct": "foreshadowing",
+     "accept": [
+      "foreshadowing"
+     ],
+     "label": "5. 'this ordinary Tuesday was going to change everything'",
+     "why": "Hinting at what will happen later in the story is foreshadowing."
+    },
+    "g6": {
+     "correct": "he didn't fit the school's usual style either",
+     "accept": [
+      "he didn't fit the school's usual style either"
+     ],
+     "label": "6. Why the boy with green hair stood out",
+     "why": "Like the narrator, he did not match the school's usual style."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "first-person narration",
+     "accept": [
+      "first-person narration"
+     ],
+     "label": "1. 'I could feel my hands shaking…'",
+     "why": "The narrator speaks as 'I', so this is first-person narration."
+    },
+    "g2": {
+     "correct": "third-person narration",
+     "accept": [
+      "third-person narration"
+     ],
+     "label": "2. 'She didn't say anything, but her eyes…'",
+     "why": "'She' and 'him' show an outside narrator: third person."
+    },
+    "g3": {
+     "correct": "simile",
+     "accept": [
+      "simile"
+     ],
+     "label": "3. 'My legs felt like jelly…'",
+     "why": "'Like jelly' compares two things using 'like', so it is a simile."
+    },
+    "g4": {
+     "correct": "flashback",
+     "accept": [
+      "flashback"
+     ],
+     "label": "4. 'Three years before that night…'",
+     "why": "The narrative moves back to an earlier time: a flashback."
+    },
+    "g5": {
+     "correct": "foreshadowing",
+     "accept": [
+      "foreshadowing"
+     ],
+     "label": "5. 'If only she had known what waited…'",
+     "why": "It hints at something bad to come, which is foreshadowing."
+    },
+    "g6": {
+     "correct": "imagery",
+     "accept": [
+      "imagery"
+     ],
+     "label": "6. 'smelled of stale coffee… lights buzzed'",
+     "why": "Descriptive detail appealing to the senses is imagery."
+    },
+    "g7": {
+     "correct": "first-person narration",
+     "accept": [
+      "first-person narration"
+     ],
+     "label": "7. 'We walked home together…'",
+     "why": "'I' and 'we' mark first-person narration."
+    },
+    "g8": {
+     "correct": "third-person narration",
+     "accept": [
+      "third-person narration"
+     ],
+     "label": "8. 'He turned the corner…'",
+     "why": "The narrator describes 'he' from outside: third person."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "had rained",
+     "accept": [
+      "had rained"
+     ],
+     "label": "1. It ___ all week",
+     "why": "Past perfect shows the rain happened before the main past events."
+    },
+    "g2": {
+     "correct": "was",
+     "accept": [
+      "was"
+     ],
+     "label": "2. so the skate park ___",
+     "why": "The main narrative uses the past simple for the resulting state."
+    },
+    "g3": {
+     "correct": "had never tried",
+     "accept": [
+      "had never tried"
+     ],
+     "label": "3. I ___ skating before",
+     "why": "Past perfect with 'never… before' describes experience up to that past moment."
+    },
+    "g4": {
+     "correct": "didn't expect",
+     "accept": [
+      "didn't expect"
+     ],
+     "label": "4. and I definitely ___",
+     "why": "The past simple carries the main action of the story."
+    },
+    "g5": {
+     "correct": "was watching",
+     "accept": [
+      "was watching"
+     ],
+     "label": "5. While I ___ a group of older kids",
+     "why": "Past progressive sets the longer background action after 'while'."
+    },
+    "g6": {
+     "correct": "tapped",
+     "accept": [
+      "tapped"
+     ],
+     "label": "6. someone ___",
+     "why": "The past simple marks the short action that interrupts the background one."
+    },
+    "g7": {
+     "correct": "remembered",
+     "accept": [
+      "remembered"
+     ],
+     "label": "7. He ___ me from school",
+     "why": "The past simple states a fact at that point in the story."
+    },
+    "g8": {
+     "correct": "had never spoken",
+     "accept": [
+      "had never spoken"
+     ],
+     "label": "8. even though we ___",
+     "why": "Past perfect refers back to the time before they met."
+    }
+   }
+  }
+ }
+}

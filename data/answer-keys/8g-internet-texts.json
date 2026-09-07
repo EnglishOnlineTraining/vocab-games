@@ -1,0 +1,145 @@
+{
+ "unit": "8g-internet-texts",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "reliable",
+     "accept": [
+      "reliable"
+     ],
+     "label": "1. Not all of it is ___",
+     "why": "The text warns that not all internet information is reliable."
+    },
+    "g2": {
+     "correct": "blog",
+     "accept": [
+      "blog"
+     ],
+     "label": "2. Anyone can write a ___",
+     "why": "The text says anyone can create a website or write a blog."
+    },
+    "g3": {
+     "correct": "volunteers",
+     "accept": [
+      "volunteers"
+     ],
+     "label": "3. Edited by thousands of ___",
+     "why": "The text says a wiki like Wikipedia is written and edited by thousands of volunteers."
+    },
+    "g4": {
+     "correct": "mistakes",
+     "accept": [
+      "mistakes"
+     ],
+     "label": "4. It can contain ___",
+     "why": "The text says wikis are up to date but can also contain mistakes."
+    },
+    "g5": {
+     "correct": "sources",
+     "accept": [
+      "sources"
+     ],
+     "label": "5. Check the ___",
+     "why": "The text says you should check the sources listed at the bottom of an article."
+    },
+    "g6": {
+     "correct": "hoaxes",
+     "accept": [
+      "hoaxes"
+     ],
+     "label": "6. Websites spread ___",
+     "why": "The text says some websites spread hoaxes — false stories designed to trick people."
+    },
+    "g7": {
+     "correct": "source",
+     "accept": [
+      "source"
+     ],
+     "label": "7. A trusted ___",
+     "why": "The text says to check whether something comes from a trusted source."
+    },
+    "g8": {
+     "correct": "reviews",
+     "accept": [
+      "reviews"
+     ],
+     "label": "8. Online ___",
+     "why": "The text says online reviews from other users can help you judge a product."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "reliable",
+     "accept": [
+      "reliable"
+     ],
+     "label": "1. A website you can trust",
+     "why": "‘Reliable’ means a website you can trust and believe."
+    },
+    "g2": {
+     "correct": "search engine",
+     "accept": [
+      "search engine"
+     ],
+     "label": "2. Google and Bing",
+     "why": "Google and Bing are examples of a search engine."
+    },
+    "g3": {
+     "correct": "blog",
+     "accept": [
+      "blog"
+     ],
+     "label": "3. A personal online diary",
+     "why": "A personal online diary where someone shares opinions is called a blog."
+    },
+    "g4": {
+     "correct": "hoax",
+     "accept": [
+      "hoax"
+     ],
+     "label": "4. A false story to trick people",
+     "why": "A false story created to trick people is called a hoax."
+    },
+    "g5": {
+     "correct": "source",
+     "accept": [
+      "source"
+     ],
+     "label": "5. Where information comes from",
+     "why": "The place information originally comes from is called the source."
+    },
+    "g6": {
+     "correct": "update",
+     "accept": [
+      "update"
+     ],
+     "label": "6. A changed wiki gets an ___",
+     "why": "When a wiki is changed to add new information, it gets an update."
+    },
+    "g7": {
+     "correct": "review",
+     "accept": [
+      "review"
+     ],
+     "label": "7. A customer comment",
+     "why": "A comment from a customer about a product is called a review."
+    },
+    "g8": {
+     "correct": "fake",
+     "accept": [
+      "fake"
+     ],
+     "label": "8. Information that is not true",
+     "why": "Information that is not true or not real is called fake."
+    }
+   }
+  }
+ }
+}

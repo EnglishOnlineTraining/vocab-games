@@ -1,0 +1,129 @@
+{
+ "unit": "7g-british-food",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "at weekends",
+     "accept": [
+      "at weekends"
+     ],
+     "label": "1. A Full English is usually eaten…",
+     "why": "The text says a Full English is normally a weekend meal, not an everyday breakfast."
+    },
+    "g2": {
+     "correct": "blood and oats",
+     "accept": [
+      "blood and oats"
+     ],
+     "label": "2. Black pudding is made from…",
+     "why": "Despite the name, black pudding is a savoury sausage of blood and oats — there is no chocolate in it."
+    },
+    "g3": {
+     "correct": "a sandwich",
+     "accept": [
+      "a sandwich"
+     ],
+     "label": "3. The most popular weekday lunch",
+     "why": "During the working week most people eat a quick sandwich; the roast is a Sunday meal."
+    },
+    "g4": {
+     "correct": "a crispy batter served with roast beef",
+     "accept": [
+      "a crispy batter served with roast beef"
+     ],
+     "label": "4. Yorkshire pudding is…",
+     "why": "Yorkshire pudding is savoury: a crispy baked batter eaten with roast beef, not a dessert."
+    },
+    "g5": {
+     "correct": "chicken tikka masala",
+     "accept": [
+      "chicken tikka masala"
+     ],
+     "label": "5. One of Britain’s most popular dishes",
+     "why": "Chicken tikka masala is so widely eaten in Britain that it is often called a national dish."
+    },
+    "g6": {
+     "correct": "milk",
+     "accept": [
+      "milk"
+     ],
+     "label": "6. British people drink tea with…",
+     "why": "Tea in Britain is normally taken with milk; lemon is more usual elsewhere."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "batter",
+     "accept": [
+      "batter"
+     ],
+     "label": "1. Yorkshire pudding is made from a crispy ___",
+     "why": "Batter is the liquid flour-and-egg mixture that bakes crisp."
+    },
+    "g2": {
+     "correct": "filling",
+     "accept": [
+      "filling"
+     ],
+     "label": "2. A Full English is very ___",
+     "why": "“Filling” means it makes you feel full — which is why no lunch is needed afterwards."
+    },
+    "g3": {
+     "correct": "mashed",
+     "accept": [
+      "mashed"
+     ],
+     "label": "3. Bangers and ___ potato",
+     "why": "Mashed potato is crushed smooth; “bangers and mash” is sausages with mashed potato."
+    },
+    "g4": {
+     "correct": "gravy",
+     "accept": [
+      "gravy"
+     ],
+     "label": "4. Brown sauce over meat and potatoes",
+     "why": "Gravy is the brown sauce made from meat juices and poured over a roast."
+    },
+    "g5": {
+     "correct": "grilled",
+     "accept": [
+      "grilled"
+     ],
+     "label": "5. The tomatoes are usually ___",
+     "why": "Grilled means cooked under direct heat, which is how the tomatoes are done."
+    },
+    "g6": {
+     "correct": "takeaway",
+     "accept": [
+      "takeaway"
+     ],
+     "label": "6. Many people order a ___ on Friday",
+     "why": "A takeaway is food ordered to eat at home instead of cooking."
+    },
+    "g7": {
+     "correct": "scones",
+     "accept": [
+      "scones"
+     ],
+     "label": "7. At afternoon tea people eat ___",
+     "why": "Scones with cream and jam are the classic afternoon-tea cake."
+    },
+    "g8": {
+     "correct": "crisps",
+     "accept": [
+      "crisps"
+     ],
+     "label": "8. Thin fried potato slices in a bag",
+     "why": "In British English these are crisps; “chips” means something different here."
+    }
+   }
+  }
+ }
+}

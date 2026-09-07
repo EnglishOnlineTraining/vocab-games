@@ -57,6 +57,20 @@ const NODES = [
     outputs: ['data/exercises.json'],
   },
   {
+    id: 'answer-keys',
+    run: 'scripts/build-answer-keys.js',
+    // Scans every page for its checkDropdowns calls, so like `exercise-data` it must
+    // follow anything that writes one — the generated quiz and review pages are
+    // graded pages too, and 12 of the 171 units it emits are review pages.
+    //
+    // No edge to `head`: build-head.js only rewrites the HEAD:*/NOSCRIPT:*/SKIP:*
+    // blocks, which contain no graded call, and this node's output overlaps nothing,
+    // so the missing-barrier check has nothing to enforce either way.
+    needs: ['quizzes', 'review'],
+    inputs: ['*.html', 'data/explanations.json'],
+    outputs: ['data/answer-keys/*.json'],
+  },
+  {
     id: 'hub',
     run: 'scripts/build-hub.js',
     needs: ['exercise-data'],
@@ -127,9 +141,13 @@ const NODES = [
 //                            esl-grammar-exercise-draft skill)
 //   validate-explanations.js reads data/explanations.json + root *.html,
 //                            matching pages by `var UNIT`
+//   test-payload-flatten.js  reads exercise.js only. It pins the shape the Make
+//                            webhook receives, including the (blank) marker for an
+//                            unanswered gap — the thing make-grader.js parses back.
 const VALIDATORS = [
   { id: 'validate-explanations', run: 'scripts/validate-explanations.js' },
   { id: 'test-scoring', run: 'test-scoring.js' },
+  { id: 'test-payload-flatten', run: 'test-payload-flatten.js' },
   { id: 'topic-pool', run: 'topic-pool.js' },
   { id: 'esl-grammar-pool', run: 'esl-grammar-pool.js' },
 ];
@@ -151,10 +169,18 @@ const VALIDATORS = [
 //                            table and those copies would silently keep grading
 //                            on the old thresholds, with nothing on screen
 //                            looking wrong. This fails the build on that drift.
+//   test-make-grader.js      reads data/answer-keys/, which build-answer-keys.js
+//                            has just written — so it is a post-build check for the
+//                            same reason validate-schema.js is. It grades a
+//                            100%-correct submission for every unit and requires
+//                            full marks: the exact regression that shipped on
+//                            2026-09-07, when the live grader scored every paper
+//                            0/N and the AI told the teacher so.
 const CHECKERS = [
   { id: 'validate-schema', run: 'scripts/validate-schema.js' },
   { id: 'check-syntax', run: 'scripts/check-syntax.js' },
   { id: 'check-grade-table', run: 'scripts/check-grade-table.js' },
+  { id: 'test-make-grader', run: 'test-make-grader.js' },
 ];
 
 // Generators deliberately left outside the graph. Their inputs change roughly

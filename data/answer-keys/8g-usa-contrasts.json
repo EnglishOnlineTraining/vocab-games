@@ -1,0 +1,145 @@
+{
+ "unit": "8g-usa-contrasts",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "vast deserts",
+     "accept": [
+      "vast deserts"
+     ],
+     "label": "1. In the west, ___",
+     "why": "‘Vast deserts’ is the fixed collocation describing places like the Mojave."
+    },
+    "g2": {
+     "correct": "frozen landscapes",
+     "accept": [
+      "frozen landscapes"
+     ],
+     "label": "2. In Alaska, ___",
+     "why": "‘Frozen landscapes’ is the fixed collocation describing Alaska covered in snow."
+    },
+    "g3": {
+     "correct": "major cities",
+     "accept": [
+      "major cities"
+     ],
+     "label": "3. The USA has ___",
+     "why": "‘Major cities’ is the fixed collocation for large cities like New York and LA."
+    },
+    "g4": {
+     "correct": "rural areas",
+     "accept": [
+      "rural areas"
+     ],
+     "label": "4. But also ___",
+     "why": "‘Rural areas’ is the fixed collocation for the countryside in states like Montana."
+    },
+    "g5": {
+     "correct": "traditional lifestyle",
+     "accept": [
+      "traditional lifestyle"
+     ],
+     "label": "5. A very ___",
+     "why": "‘Traditional lifestyle’ is the fixed collocation contrasting with modern city life."
+    },
+    "g6": {
+     "correct": "progressive ideas",
+     "accept": [
+      "progressive ideas"
+     ],
+     "label": "6. Known for their ___",
+     "why": "‘Progressive ideas’ is the fixed collocation describing San Francisco’s culture."
+    },
+    "g7": {
+     "correct": "sharp differences",
+     "accept": [
+      "sharp differences"
+     ],
+     "label": "7. Wealth shows ___",
+     "why": "‘Sharp differences’ is the fixed collocation for strong contrasts in wealth."
+    },
+    "g8": {
+     "correct": "luxurious homes",
+     "accept": [
+      "luxurious homes"
+     ],
+     "label": "8. Some neighbourhoods have ___",
+     "why": "‘Luxurious homes’ is the fixed collocation contrasting with families who struggle to pay rent."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "heavy",
+     "accept": [
+      "heavy"
+     ],
+     "label": "1. Areas of ___ traffic",
+     "why": "‘Heavy traffic’ is the fixed collocation for busy roads."
+    },
+    "g2": {
+     "correct": "public",
+     "accept": [
+      "public"
+     ],
+     "label": "2. Use ___ transport",
+     "why": "‘Public transport’ is the fixed collocation for buses, trains and similar."
+    },
+    "g3": {
+     "correct": "natural",
+     "accept": [
+      "natural"
+     ],
+     "label": "3. One of America's most famous ___ wonders",
+     "why": "‘Natural wonders’ is the fixed collocation for places like the Grand Canyon."
+    },
+    "g4": {
+     "correct": "high",
+     "accept": [
+      "high"
+     ],
+     "label": "4. Enjoy a ___ standard of living",
+     "why": "‘High standard of living’ is the fixed collocation for a good quality of life."
+    },
+    "g5": {
+     "correct": "cultural",
+     "accept": [
+      "cultural"
+     ],
+     "label": "5. Known for its ___ diversity",
+     "why": "‘Cultural diversity’ is the fixed collocation for people from many backgrounds."
+    },
+    "g6": {
+     "correct": "extreme",
+     "accept": [
+      "extreme"
+     ],
+     "label": "6. ___ weather conditions",
+     "why": "‘Extreme weather’ is the fixed collocation for very hot or cold conditions."
+    },
+    "g7": {
+     "correct": "dense",
+     "accept": [
+      "dense"
+     ],
+     "label": "7. Very ___ populations",
+     "why": "‘Dense population’ is the fixed collocation for many people in a small area."
+    },
+    "g8": {
+     "correct": "standard",
+     "accept": [
+      "standard"
+     ],
+     "label": "8. The ___ language",
+     "why": "‘Standard language’ is the fixed collocation for the official form of a language used in schools."
+    }
+   }
+  }
+ }
+}

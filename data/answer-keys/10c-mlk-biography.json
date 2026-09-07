@@ -1,0 +1,215 @@
+{
+ "unit": "10c-mlk-biography",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Atlanta",
+     "accept": [
+      "Atlanta"
+     ],
+     "label": "1. MLK was born in ___",
+     "why": "The text says Martin Luther King Jr. was born in Atlanta."
+    },
+    "g2": {
+     "correct": "fifteen",
+     "accept": [
+      "fifteen"
+     ],
+     "label": "2. Entered college at age ___",
+     "why": "The text says he entered college at the age of fifteen."
+    },
+    "g3": {
+     "correct": "Parks arrested",
+     "accept": [
+      "Parks arrested"
+     ],
+     "label": "3. The boycott started after ___",
+     "why": "The text says the Montgomery Bus Boycott was started after Parks was arrested."
+    },
+    "g4": {
+     "correct": "381 days",
+     "accept": [
+      "381 days"
+     ],
+     "label": "4. The boycott lasted ___",
+     "why": "The text says the bus boycott lasted 381 days."
+    },
+    "g5": {
+     "correct": "March on Washington",
+     "accept": [
+      "March on Washington"
+     ],
+     "label": "5. The speech was delivered at the ___",
+     "why": "The text says the \"I Have a Dream\" speech was delivered at the March on Washington."
+    },
+    "g6": {
+     "correct": "illegal",
+     "accept": [
+      "illegal"
+     ],
+     "label": "6. The Civil Rights Act made discrimination ___",
+     "why": "The text says the Civil Rights Act made racial discrimination in public places illegal."
+    },
+    "g7": {
+     "correct": "thirty-five",
+     "accept": [
+      "thirty-five"
+     ],
+     "label": "7. King was ___ when he won the Nobel Prize",
+     "why": "The text says King was thirty-five when he won the Nobel Peace Prize."
+    },
+    "g8": {
+     "correct": "striking workers",
+     "accept": [
+      "striking workers"
+     ],
+     "label": "8. King was in Memphis to support ___",
+     "why": "The text says King was in Memphis in 1968 to support striking workers."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "was arrested",
+     "accept": [
+      "was arrested"
+     ],
+     "label": "1. Rosa Parks ___ (simple past passive)",
+     "why": "A single completed past event takes the simple past passive: ‘was arrested’."
+    },
+    "g2": {
+     "correct": "was delivered",
+     "accept": [
+      "was delivered"
+     ],
+     "label": "2. The speech ___ (simple past passive)",
+     "why": "A single completed past event takes the simple past passive: ‘was delivered’."
+    },
+    "g3": {
+     "correct": "had been forced",
+     "accept": [
+      "had been forced"
+     ],
+     "label": "3. Passengers ___ to sit at the back (past perfect passive)",
+     "why": "An action true before another past point (the boycott) takes the past perfect passive."
+    },
+    "g4": {
+     "correct": "was signed",
+     "accept": [
+      "was signed"
+     ],
+     "label": "4. The Civil Rights Act ___ (simple past passive)",
+     "why": "A single completed past event takes the simple past passive: ‘was signed’."
+    },
+    "g5": {
+     "correct": "is celebrated",
+     "accept": [
+      "is celebrated"
+     ],
+     "label": "5. MLK Day ___ today (simple present passive)",
+     "why": "A regular present-day event takes the simple present passive: ‘is celebrated’."
+    },
+    "g6": {
+     "correct": "was awarded",
+     "accept": [
+      "was awarded"
+     ],
+     "label": "6. King ___ the Nobel Prize (simple past passive)",
+     "why": "A single completed past event takes the simple past passive: ‘was awarded’."
+    },
+    "g7": {
+     "correct": "had been inspired",
+     "accept": [
+      "had been inspired"
+     ],
+     "label": "7. Leaders ___ by Gandhi (past perfect passive)",
+     "why": "An action true before another past point (King's movement) takes the past perfect passive."
+    },
+    "g8": {
+     "correct": "are still studied",
+     "accept": [
+      "are still studied"
+     ],
+     "label": "8. His speeches ___ today (simple present passive)",
+     "why": "A regular present-day fact takes the simple present passive: ‘are still studied’."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "segregation",
+     "accept": [
+      "segregation"
+     ],
+     "label": "1. Separation of people by race",
+     "why": "‘Segregation’ is the separation of people based on race, e.g. in schools or on buses."
+    },
+    "g2": {
+     "correct": "boycott",
+     "accept": [
+      "boycott"
+     ],
+     "label": "2. Refusing to buy/use as protest",
+     "why": "A ‘boycott’ is refusing to buy or use something as a form of protest."
+    },
+    "g3": {
+     "correct": "discrimination",
+     "accept": [
+      "discrimination"
+     ],
+     "label": "3. Treating someone unfairly by race etc.",
+     "why": "‘Discrimination’ is treating someone unfairly because of race, gender, or religion."
+    },
+    "g4": {
+     "correct": "nonviolent resistance",
+     "accept": [
+      "nonviolent resistance"
+     ],
+     "label": "4. Fighting for change without violence",
+     "why": "‘Nonviolent resistance’ is fighting for change without using physical violence."
+    },
+    "g5": {
+     "correct": "unconstitutional",
+     "accept": [
+      "unconstitutional"
+     ],
+     "label": "5. Against a country's constitution",
+     "why": "‘Unconstitutional’ means against the rules of a country's constitution."
+    },
+    "g6": {
+     "correct": "assassination",
+     "accept": [
+      "assassination"
+     ],
+     "label": "6. Deliberate killing of an important person",
+     "why": "‘Assassination’ is the deliberate killing of an important person, often for political reasons."
+    },
+    "g7": {
+     "correct": "civil rights",
+     "accept": [
+      "civil rights"
+     ],
+     "label": "7. Basic rights every citizen should have",
+     "why": "‘Civil rights’ are the basic rights every citizen should have, such as the right to vote."
+    },
+    "g8": {
+     "correct": "rally",
+     "accept": [
+      "rally"
+     ],
+     "label": "8. A large public meeting for a cause",
+     "why": "A ‘rally’ is a large public meeting or event to support a cause."
+    }
+   }
+  }
+ }
+}

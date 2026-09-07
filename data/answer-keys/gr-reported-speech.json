@@ -1,0 +1,163 @@
+{
+ "unit": "gr-reported-speech",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "said",
+     "accept": [
+      "said"
+     ],
+     "label": "1 Ben"
+    },
+    "g2": {
+     "correct": "had finished",
+     "accept": [
+      "had finished"
+     ],
+     "label": "2 Aylin said she"
+    },
+    "g3": {
+     "correct": "were watching",
+     "accept": [
+      "were watching"
+     ],
+     "label": "3 The twins said they"
+    },
+    "g4": {
+     "correct": "would bring",
+     "accept": [
+      "would bring"
+     ],
+     "label": "4 Jonas said he"
+    },
+    "g5": {
+     "correct": "had never seen",
+     "accept": [
+      "had never seen"
+     ],
+     "label": "5 Maria said she"
+    },
+    "g6": {
+     "correct": "didn't",
+     "accept": [
+      "didn't"
+     ],
+     "label": "6 And Leon said he"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "was",
+     "accept": [
+      "was"
+     ],
+     "label": "1 \"I am tired,\" she said. → She said she"
+    },
+    "g2": {
+     "correct": "would",
+     "accept": [
+      "would"
+     ],
+     "label": "2 \"We will win,\" they said. → They said they"
+    },
+    "g3": {
+     "correct": "had lost",
+     "accept": [
+      "had lost"
+     ],
+     "label": "3 \"I have lost my keys,\" he said. → He said he"
+    },
+    "g4": {
+     "correct": "were playing",
+     "accept": [
+      "were playing"
+     ],
+     "label": "4 \"We are playing tonight,\" they said. → They said they"
+    },
+    "g5": {
+     "correct": "could",
+     "accept": [
+      "could"
+     ],
+     "label": "5 \"I can drive,\" she said. → She said she"
+    },
+    "g6": {
+     "correct": "had gone",
+     "accept": [
+      "had gone"
+     ],
+     "label": "6 \"We went home early,\" they said. → They said they"
+    },
+    "g7": {
+     "correct": "had to",
+     "accept": [
+      "had to"
+     ],
+     "label": "7 \"I must leave now,\" he said. → He said he"
+    },
+    "g8": {
+     "correct": "might",
+     "accept": [
+      "might"
+     ],
+     "label": "8 \"We may stay,\" they said. → They said they"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "lived",
+     "accept": [
+      "lived"
+     ],
+     "label": "1 \"Where do you live?\" → She asked me where I"
+    },
+    "g2": {
+     "correct": "if",
+     "accept": [
+      "if"
+     ],
+     "label": "2 \"Do you like coffee?\" → He asked me"
+    },
+    "g3": {
+     "correct": "not to",
+     "accept": [
+      "not to"
+     ],
+     "label": "3 \"Don't talk during the test!\" → The teacher told us"
+    },
+    "g4": {
+     "correct": "to",
+     "accept": [
+      "to"
+     ],
+     "label": "4 \"Please help me.\" → She asked me"
+    },
+    "g5": {
+     "correct": "not to",
+     "accept": [
+      "not to"
+     ],
+     "label": "5 \"Don't touch the wet paint!\" → He told me"
+    },
+    "g6": {
+     "correct": "left",
+     "accept": [
+      "left"
+     ],
+     "label": "6 \"When does the train leave?\" → She asked when the train"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,191 @@
+{
+ "unit": "9c-mandela-rainbow-nation",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "apartheid",
+     "accept": [
+      "apartheid"
+     ],
+     "label": "… in the south-east of South Africa. At that time the country lived under a system called 1"
+    },
+    "g2": {
+     "correct": "skin",
+     "accept": [
+      "skin"
+     ],
+     "label": "… — choose — apartment apartheid appointment . It separated people by the colour of their 2"
+    },
+    "g3": {
+     "correct": "lawyer",
+     "accept": [
+      "lawyer"
+     ],
+     "label": "Mandela studied law and became a 3"
+    },
+    "g4": {
+     "correct": "prison",
+     "accept": [
+      "prison"
+     ],
+     "label": "… the ANC, a political party which fought against the system. In 1964 a court sent him to 4"
+    },
+    "g5": {
+     "correct": "sun",
+     "accept": [
+      "sun"
+     ],
+     "label": "…hind bars, most of them on Robben Island, where prisoners had to break stones in the hot 5"
+    },
+    "g6": {
+     "correct": "freedom",
+     "accept": [
+      "freedom"
+     ],
+     "label": "All over the world, musicians, students and governments demanded his 6"
+    },
+    "g7": {
+     "correct": "election",
+     "accept": [
+      "election"
+     ],
+     "label": "Four years later South Africa held its first free 7"
+    },
+    "g8": {
+     "correct": "rights",
+     "accept": [
+      "rights"
+     ],
+     "label": "…resident. He did not want revenge. He wanted a country in which every group had the same 8"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "who",
+     "accept": [
+      "who"
+     ],
+     "label": "1. Nelson Mandela was a man"
+    },
+    "g2": {
+     "correct": "which",
+     "accept": [
+      "which"
+     ],
+     "label": "2. Apartheid was a system"
+    },
+    "g3": {
+     "correct": "where",
+     "accept": [
+      "where"
+     ],
+     "label": "3. Robben Island is the place"
+    },
+    "g4": {
+     "correct": "when",
+     "accept": [
+      "when"
+     ],
+     "label": "4. 1994 was the year"
+    },
+    "g5": {
+     "correct": "whose",
+     "accept": [
+      "whose"
+     ],
+     "label": "5. He met families"
+    },
+    "g6": {
+     "correct": "which",
+     "accept": [
+      "which"
+     ],
+     "label": "6. The party"
+    },
+    "g7": {
+     "correct": "which",
+     "accept": [
+      "which"
+     ],
+     "label": "7. Cape Town,"
+    },
+    "g8": {
+     "correct": "who",
+     "accept": [
+      "who"
+     ],
+     "label": "8. Do you know the journalist"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "vote",
+     "accept": [
+      "vote"
+     ],
+     "label": "1. Under apartheid, black South Africans were not allowed to"
+    },
+    "g2": {
+     "correct": "equality",
+     "accept": [
+      "equality"
+     ],
+     "label": "2. Mandela fought for"
+    },
+    "g3": {
+     "correct": "township",
+     "accept": [
+      "township"
+     ],
+     "label": "3. A"
+    },
+    "g4": {
+     "correct": "released",
+     "accept": [
+      "released"
+     ],
+     "label": "4. After 27 years he was finally"
+    },
+    "g5": {
+     "correct": "languages",
+     "accept": [
+      "languages"
+     ],
+     "label": "5. South Africa has eleven official"
+    },
+    "g6": {
+     "correct": "protest",
+     "accept": [
+      "protest"
+     ],
+     "label": "6. Thousands of people took part in a peaceful"
+    },
+    "g7": {
+     "correct": "Peace",
+     "accept": [
+      "Peace"
+     ],
+     "label": "7. Mandela and de Klerk won the Nobel"
+    },
+    "g8": {
+     "correct": "Rainbow",
+     "accept": [
+      "Rainbow"
+     ],
+     "label": "8. Today South Africa is often called the"
+    }
+   }
+  }
+ }
+}

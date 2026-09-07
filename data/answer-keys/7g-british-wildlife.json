@@ -1,0 +1,75 @@
+{
+ "unit": "7g-british-wildlife",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "bright",
+     "accept": [
+      "bright"
+     ],
+     "label": "1. Red foxes have ___ red or orange fur",
+     "why": "Foxes are known for their bright red-orange coat."
+    },
+    "g2": {
+     "correct": "nocturnal",
+     "accept": [
+      "nocturnal"
+     ],
+     "label": "2. Foxes are ___",
+     "why": "“Nocturnal” means active at night, which is what the rest of the sentence says."
+    },
+    "g3": {
+     "correct": "skulk",
+     "accept": [
+      "skulk"
+     ],
+     "label": "3. A group of foxes is a ___",
+     "why": "A group of foxes is a skulk; a pack is wolves and a herd is cattle or deer."
+    },
+    "g4": {
+     "correct": "cubs",
+     "accept": [
+      "cubs"
+     ],
+     "label": "4. Baby foxes are called ___",
+     "why": "Baby foxes are cubs; kittens are cats and pups are dogs or seals."
+    },
+    "g5": {
+     "correct": "spines",
+     "accept": [
+      "spines"
+     ],
+     "label": "5. A hedgehog is covered in ___",
+     "why": "A hedgehog’s coat is made of spines — scales belong to fish, feathers to birds."
+    },
+    "g6": {
+     "correct": "rolls up",
+     "accept": [
+      "rolls up"
+     ],
+     "label": "6. When afraid, a hedgehog ___",
+     "why": "It rolls up into a ball so the spines point outwards and protect it."
+    },
+    "g7": {
+     "correct": "hibernate",
+     "accept": [
+      "hibernate"
+     ],
+     "label": "7. Hedgehogs ___ in winter",
+     "why": "Hedgehogs hibernate — they sleep through the winter rather than migrating."
+    },
+    "g8": {
+     "correct": "smaller",
+     "accept": [
+      "smaller"
+     ],
+     "label": "8. Hedgehog habitats are getting ___",
+     "why": "Habitats shrink as towns and cities grow and take over the space."
+    }
+   }
+  }
+ }
+}

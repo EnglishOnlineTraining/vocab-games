@@ -1,0 +1,215 @@
+{
+ "unit": "10c-new-zealand-news",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "southwestern",
+     "accept": [
+      "southwestern"
+     ],
+     "label": "1. NZ is located in the ___",
+     "why": "The text says New Zealand is located in the southwestern Pacific."
+    },
+    "g2": {
+     "correct": "Polynesia",
+     "accept": [
+      "Polynesia"
+     ],
+     "label": "2. The Māori originally came from ___",
+     "why": "The text says the Māori people originally came from Polynesia."
+    },
+    "g3": {
+     "correct": "6.3",
+     "accept": [
+      "6.3"
+     ],
+     "label": "3. The earthquake magnitude was ___",
+     "why": "The text says the 2011 Christchurch earthquake had a magnitude of 6.3."
+    },
+    "g4": {
+     "correct": "40 billion",
+     "accept": [
+      "40 billion"
+     ],
+     "label": "4. Rebuilding cost over ___",
+     "why": "The text says the estimated cost of rebuilding Christchurch was over 40 billion."
+    },
+    "g5": {
+     "correct": "2017",
+     "accept": [
+      "2017"
+     ],
+     "label": "5. Population recovered by ___",
+     "why": "The text says Christchurch's population returned to pre-earthquake levels in 2017."
+    },
+    "g6": {
+     "correct": "Peter Jackson",
+     "accept": [
+      "Peter Jackson"
+     ],
+     "label": "6. Lord of the Rings was directed by ___",
+     "why": "The text says the trilogy was directed by Peter Jackson."
+    },
+    "g7": {
+     "correct": "87",
+     "accept": [
+      "87"
+     ],
+     "label": "7. Visits to Wellington increased by ___%",
+     "why": "The text says international visits to Wellington increased by 87 per cent after the films."
+    },
+    "g8": {
+     "correct": "630 million",
+     "accept": [
+      "630 million"
+     ],
+     "label": "8. Tolkien tourism was worth ___",
+     "why": "The text says by 2019 Tolkien tourism was worth an estimated 630 million."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "struck",
+     "accept": [
+      "struck"
+     ],
+     "label": "1. The earthquake ___ (completed action)",
+     "why": "A single completed past action uses the simple past: ‘struck’."
+    },
+    "g2": {
+     "correct": "were working",
+     "accept": [
+      "were working"
+     ],
+     "label": "2. People ___ when it began (interrupted)",
+     "why": "An action in progress when another action happened uses the past continuous: ‘were working’."
+    },
+    "g3": {
+     "correct": "had been",
+     "accept": [
+      "had been"
+     ],
+     "label": "3. Christchurch ___ beautiful (state before)",
+     "why": "A state true before another past reference point uses the past perfect: ‘had been’."
+    },
+    "g4": {
+     "correct": "had lived",
+     "accept": [
+      "had lived"
+     ],
+     "label": "4. The Māori ___ for centuries (before Europeans)",
+     "why": "An action completed before another past event (Europeans arriving) uses the past perfect."
+    },
+    "g5": {
+     "correct": "was searching",
+     "accept": [
+      "was searching"
+     ],
+     "label": "5. Jackson ___ for a location (ongoing)",
+     "why": "An action in progress when something else happened uses the past continuous."
+    },
+    "g6": {
+     "correct": "had collapsed",
+     "accept": [
+      "had collapsed"
+     ],
+     "label": "6. Buildings ___ by the time rescuers arrived",
+     "why": "‘By the time’ signals an action completed before another past point, so the past perfect is used."
+    },
+    "g7": {
+     "correct": "had brought",
+     "accept": [
+      "had brought"
+     ],
+     "label": "7. After the films ___ tourists...",
+     "why": "‘After’ + past perfect shows one past action completed before another past action."
+    },
+    "g8": {
+     "correct": "recovered",
+     "accept": [
+      "recovered"
+     ],
+     "label": "8. The city ___ slowly (completed action)",
+     "why": "A completed past process uses the simple past: ‘recovered’."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "hadn't struck",
+     "accept": [
+      "hadn't struck"
+     ],
+     "label": "1. If the earthquake ___ Christchurch...",
+     "why": "Type III conditionals use the past perfect after ‘if’, paired with ‘would (not) have’."
+    },
+    "g2": {
+     "correct": "hadn't been",
+     "accept": [
+      "hadn't been"
+     ],
+     "label": "2. If NZ ___ chosen as the location...",
+     "why": "Type III conditionals use the past perfect passive after ‘if’."
+    },
+    "g3": {
+     "correct": "had happened",
+     "accept": [
+      "had happened"
+     ],
+     "label": "3. ...if the earthquake ___ at night",
+     "why": "Type III conditionals use the past perfect after ‘if’, even when the if-clause comes second."
+    },
+    "g4": {
+     "correct": "hadn't discovered",
+     "accept": [
+      "hadn't discovered"
+     ],
+     "label": "4. If Jackson ___ Matamata...",
+     "why": "Type III conditionals use the past perfect after ‘if’."
+    },
+    "g5": {
+     "correct": "wouldn't have grown",
+     "accept": [
+      "wouldn't have grown"
+     ],
+     "label": "5. Tourism ___ if the films had failed",
+     "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+    },
+    "g6": {
+     "correct": "hadn't invested",
+     "accept": [
+      "hadn't invested"
+     ],
+     "label": "6. If the government ___ in rebuilding...",
+     "why": "A past condition (‘hadn't invested’) leading to a present result (‘would still be’) is a mixed conditional."
+    },
+    "g7": {
+     "correct": "would have disappeared",
+     "accept": [
+      "would have disappeared"
+     ],
+     "label": "7. The language ___ if schools hadn't taught it",
+     "why": "The Type III result clause uses ‘would have’ + past participle."
+    },
+    "g8": {
+     "correct": "hadn't arrived",
+     "accept": [
+      "hadn't arrived"
+     ],
+     "label": "8. If rescue workers ___ quickly...",
+     "why": "Type III conditionals use the past perfect after ‘if’."
+    }
+   }
+  }
+ }
+}

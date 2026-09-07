@@ -1,0 +1,183 @@
+{
+ "unit": "be-job-interviews",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "1. Why research the company?",
+     "why": "The text says researching the company shows you are genuinely interested in working there."
+    },
+    "g2": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "2. Talking about a weakness?",
+     "why": "The text says to always explain what you are doing to improve a weakness."
+    },
+    "g3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. Body language to avoid?",
+     "why": "The text says to avoid crossing your arms, as it can look closed off."
+    },
+    "g4": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "4. How to dress?",
+     "why": "The text says it's better to be slightly overdressed than underdressed."
+    },
+    "g5": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "5. Why prepare questions?",
+     "why": "The text says asking thoughtful questions shows you are engaged and serious about the role."
+    },
+    "g6": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "6. Good closing question?",
+     "why": "The text gives this as an example of a good question to ask the interviewer."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. One of my main ___",
+     "why": "‘Strengths’ is the standard word for positive qualities in an interview context."
+    },
+    "g2": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "2. Your previous work ___?",
+     "why": "‘Work experience’ is the standard collocation for past jobs."
+    },
+    "g3": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "3. I would like to ___",
+     "why": "‘Apply for’ is the standard verb for a job position."
+    },
+    "g4": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "4. Opportunities for career ___",
+     "why": "‘Career development’ is the standard collocation, not ‘career change/movement’ here."
+    },
+    "g5": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "5. We are looking for a ___",
+     "why": "‘Candidate’ is the standard word for a job applicant."
+    },
+    "g6": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "6. Send a follow-up email to ___",
+     "why": "Thanking the interviewer is standard professional follow-up etiquette."
+    },
+    "g7": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "7. A good first ___",
+     "why": "‘First impression’ is the standard fixed phrase."
+    },
+    "g8": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "8. CV and a cover ___",
+     "why": "‘Cover letter’ is the standard term for the document sent with a CV."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. \"Tell me about yourself.\"",
+     "why": "A professional summary of qualifications and experience is the appropriate response."
+    },
+    "g2": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "2. \"What is your greatest weakness?\"",
+     "why": "An honest weakness paired with how you're improving it is the professional approach."
+    },
+    "g3": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "3. \"Why do you want to work for our company?\"",
+     "why": "A specific, researched reason tied to your skills is the appropriate response."
+    },
+    "g4": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "4. \"Where do you see yourself in five years?\"",
+     "why": "A realistic answer about growth within the company is the appropriate response."
+    },
+    "g5": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "5. \"Do you have any questions for us?\"",
+     "why": "A thoughtful question about the role or team is the appropriate response."
+    },
+    "g6": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "6. \"Why did you leave your last job?\"",
+     "why": "A positive, professional reason is the appropriate response."
+    }
+   }
+  }
+ }
+}

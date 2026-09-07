@@ -1,0 +1,183 @@
+{
+ "unit": "uni-cause-effect",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "As a result",
+     "accept": [
+      "As a result"
+     ],
+     "label": "1. Temperatures disrupt crops. ___, farmers see lower yields",
+     "why": "‘As a result’ introduces the consequence of the previous sentence."
+    },
+    "g2": {
+     "correct": "Due to",
+     "accept": [
+      "Due to"
+     ],
+     "label": "2. Water scarcity: ___ droughts, irrigation can fail",
+     "why": "‘Due to’ + noun phrase introduces the reason."
+    },
+    "g3": {
+     "correct": "because",
+     "accept": [
+      "because"
+     ],
+     "label": "3. Insects move north ___ warmer winters allow survival",
+     "why": "‘Because’ + clause introduces the reason."
+    },
+    "g4": {
+     "correct": "Consequently",
+     "accept": [
+      "Consequently"
+     ],
+     "label": "4. Insects survive year-round. ___, crop losses have increased",
+     "why": "‘Consequently’ introduces the result of the previous clause."
+    },
+    "g5": {
+     "correct": "however",
+     "accept": [
+      "however"
+     ],
+     "label": "5. CO2 boosts growth; ___, it reduces nutrient content",
+     "why": "‘X; however, Y’ is the standard pattern for a contrast after a semicolon."
+    },
+    "g6": {
+     "correct": "Unless",
+     "accept": [
+      "Unless"
+     ],
+     "label": "6. ___ governments invest in resilient farming...",
+     "why": "‘Unless’ (= if not) introduces the condition for avoiding worsening problems."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "owing to",
+     "accept": [
+      "owing to"
+     ],
+     "label": "1. Lectures cancelled ___ the heat warning",
+     "why": "‘Owing to’ + noun phrase introduces the reason."
+    },
+    "g2": {
+     "correct": "as a result",
+     "accept": [
+      "as a result"
+     ],
+     "label": "2. Fail to cite sources; ___, they lose marks",
+     "why": "‘As a result’ introduces the consequence after the semicolon."
+    },
+    "g3": {
+     "correct": "This is largely due to",
+     "accept": [
+      "This is largely due to"
+     ],
+     "label": "3. Air pollution has increased. ___ vehicle growth",
+     "why": "‘This is largely due to’ + noun phrase introduces the main reason."
+    },
+    "g4": {
+     "correct": "Since",
+     "accept": [
+      "Since"
+     ],
+     "label": "4. ___ costs have dropped, countries are transitioning",
+     "why": "‘Since’ (= because) introduces the reason clause."
+    },
+    "g5": {
+     "correct": "leading to",
+     "accept": [
+      "leading to"
+     ],
+     "label": "5. Deforestation has accelerated, ___ biodiversity loss",
+     "why": "‘Leading to’ + noun phrase introduces the result."
+    },
+    "g6": {
+     "correct": "in order to",
+     "accept": [
+      "in order to"
+     ],
+     "label": "6. Repeated three times ___ ensure reliability",
+     "why": "‘In order to’ + infinitive introduces the purpose."
+    },
+    "g7": {
+     "correct": "consequently",
+     "accept": [
+      "consequently"
+     ],
+     "label": "7. Screen time risen; ___, sleep disorders increased",
+     "why": "‘Consequently’ introduces the result after the semicolon."
+    },
+    "g8": {
+     "correct": "On account of",
+     "accept": [
+      "On account of"
+     ],
+     "label": "8. ___ limited funding, the team was unable to complete...",
+     "why": "‘On account of’ + noun phrase introduces the reason."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "therefore",
+     "accept": [
+      "therefore"
+     ],
+     "label": "1. Sample too small; ___, findings can't be generalised",
+     "why": "‘Therefore’ is the formal academic connector; ‘so’ needs a comma, not a semicolon, and ‘cos’ is informal."
+    },
+    "g2": {
+     "correct": "owing to",
+     "accept": [
+      "owing to"
+     ],
+     "label": "2. Unemployment rose ___ the recession",
+     "why": "‘Owing to’ is the neutral formal choice; ‘thanks to’ implies a positive outcome, which doesn't fit rising unemployment."
+    },
+    "g3": {
+     "correct": "As",
+     "accept": [
+      "As"
+     ],
+     "label": "3. ___ the data showed a correlation, researchers concluded...",
+     "why": "‘As’ (= because) introduces the reason; ‘Cause’ is an informal spelling and ‘Like’ doesn't fit causally."
+    },
+    "g4": {
+     "correct": "leads to",
+     "accept": [
+      "leads to"
+     ],
+     "label": "4. Investment in transport ___ reduced congestion",
+     "why": "‘Leads to’ is the standard cause-effect verb phrase, agreeing with the singular subject."
+    },
+    "g5": {
+     "correct": "thus",
+     "accept": [
+      "thus"
+     ],
+     "label": "5. Condition deteriorated; ___, the team changed the plan",
+     "why": "‘Thus’ is the formal academic connector for a result after a semicolon."
+    },
+    "g6": {
+     "correct": "Given that",
+     "accept": [
+      "Given that"
+     ],
+     "label": "6. ___ participation has declined, the programme may need redesign",
+     "why": "‘Given that’ is the more formal academic phrase; ‘Seeing as’ is informal and ‘Cause’ is an informal spelling."
+    }
+   }
+  }
+ }
+}

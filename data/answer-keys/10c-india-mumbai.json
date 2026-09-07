@@ -1,0 +1,215 @@
+{
+ "unit": "10c-india-mumbai",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "largest",
+     "accept": [
+      "largest"
+     ],
+     "label": "1. Mumbai is the ___ city",
+     "why": "The text says Mumbai is the largest city in India."
+    },
+    "g2": {
+     "correct": "financial",
+     "accept": [
+      "financial"
+     ],
+     "label": "2. Often called the ___ capital",
+     "why": "The text says Mumbai is often called the financial capital of India."
+    },
+    "g3": {
+     "correct": "slums",
+     "accept": [
+      "slums"
+     ],
+     "label": "3. Skyscrapers next to enormous ___",
+     "why": "The text says expensive skyscrapers are built next to enormous slums."
+    },
+    "g4": {
+     "correct": "workshops",
+     "accept": [
+      "workshops"
+     ],
+     "label": "4. Products made in small ___",
+     "why": "The text says many products are made in small workshops."
+    },
+    "g5": {
+     "correct": "little",
+     "accept": [
+      "little"
+     ],
+     "label": "5. Workers are paid very ___",
+     "why": "The text says the workers are often paid very little for long hours."
+    },
+    "g6": {
+     "correct": "fairtrade",
+     "accept": [
+      "fairtrade"
+     ],
+     "label": "6. ___ organisations help protect workers",
+     "why": "The text says fair-trade organisations help to protect workers."
+    },
+    "g7": {
+     "correct": "wage",
+     "accept": [
+      "wage"
+     ],
+     "label": "7. A fair-trade label means a fair ___",
+     "why": "The text says a fair-trade label means workers were paid a fair wage."
+    },
+    "g8": {
+     "correct": "criticised",
+     "accept": [
+      "criticised"
+     ],
+     "label": "8. Some brands have been ___",
+     "why": "The text says some brands have been criticised for poor conditions."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "are made",
+     "accept": [
+      "are made"
+     ],
+     "label": "1. Many products ___ in workshops",
+     "why": "‘Products’ is plural, so the passive uses ‘are made’, not ‘is made’."
+    },
+    "g2": {
+     "correct": "is called",
+     "accept": [
+      "is called"
+     ],
+     "label": "2. Mumbai ___ the financial capital",
+     "why": "‘Mumbai’ is singular, so the passive uses ‘is called’."
+    },
+    "g3": {
+     "correct": "are built",
+     "accept": [
+      "are built"
+     ],
+     "label": "3. Skyscrapers ___ next to slums",
+     "why": "‘Skyscrapers’ is plural, so the passive uses ‘are built’."
+    },
+    "g4": {
+     "correct": "are paid",
+     "accept": [
+      "are paid"
+     ],
+     "label": "4. The workers ___ very little",
+     "why": "‘The workers’ is plural, so the passive uses ‘are paid’."
+    },
+    "g5": {
+     "correct": "are sold",
+     "accept": [
+      "are sold"
+     ],
+     "label": "5. Clothes and jewellery ___ around the world",
+     "why": "Two subjects joined by ‘and’ take a plural passive: ‘are sold’."
+    },
+    "g6": {
+     "correct": "is given",
+     "accept": [
+      "is given"
+     ],
+     "label": "6. A fair wage ___ to workers",
+     "why": "‘A fair wage’ is singular, so the passive uses ‘is given’."
+    },
+    "g7": {
+     "correct": "are criticised",
+     "accept": [
+      "are criticised"
+     ],
+     "label": "7. Poor factories ___ in the news",
+     "why": "‘Factories’ is plural, so the passive uses ‘are criticised’."
+    },
+    "g8": {
+     "correct": "are treated",
+     "accept": [
+      "are treated"
+     ],
+     "label": "8. Workers ___ with respect",
+     "why": "‘Workers’ is plural, so the passive uses ‘are treated’."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "was passed",
+     "accept": [
+      "was passed"
+     ],
+     "label": "1. Last year, a new law ___",
+     "why": "‘Last year’ is a specific past time, so the simple past passive ‘was passed’ is used."
+    },
+    "g2": {
+     "correct": "are made",
+     "accept": [
+      "are made"
+     ],
+     "label": "2. Today, many clothes ___ in India",
+     "why": "‘Today’ signals a general present fact, so the present passive ‘are made’ is used."
+    },
+    "g3": {
+     "correct": "was closed",
+     "accept": [
+      "was closed"
+     ],
+     "label": "3. In 2013, one factory ___",
+     "why": "‘In 2013’ is a specific past time, so the simple past passive ‘was closed’ is used."
+    },
+    "g4": {
+     "correct": "are seen",
+     "accept": [
+      "are seen"
+     ],
+     "label": "4. These days, fair-trade labels ___",
+     "why": "‘These days’ signals the present, so the present passive ‘are seen’ is used."
+    },
+    "g5": {
+     "correct": "was presented",
+     "accept": [
+      "was presented"
+     ],
+     "label": "5. Yesterday, the report ___",
+     "why": "‘Yesterday’ is a specific past time, so the simple past passive ‘was presented’ is used."
+    },
+    "g6": {
+     "correct": "are produced",
+     "accept": [
+      "are produced"
+     ],
+     "label": "6. Every day, thousands of items ___",
+     "why": "‘Every day’ signals a habitual present fact, so the present passive ‘are produced’ is used."
+    },
+    "g7": {
+     "correct": "was criticised",
+     "accept": [
+      "was criticised"
+     ],
+     "label": "7. Recently, one brand ___",
+     "why": "A finished, recent event is described with the simple past passive ‘was criticised’."
+    },
+    "g8": {
+     "correct": "are taken",
+     "accept": [
+      "are taken"
+     ],
+     "label": "8. These days, workers' rights ___ seriously",
+     "why": "‘These days’ signals the present, so the present passive ‘are taken’ is used."
+    }
+   }
+  }
+ }
+}

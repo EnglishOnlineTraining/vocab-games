@@ -1,0 +1,91 @@
+{
+ "unit": "quiz-grammar-hardest",
+ "sections": {
+  "quiz": {
+   "prefix": "q-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "I didn't see nobody at the party.",
+     "accept": [
+      "I didn't see nobody at the party."
+     ],
+     "label": "1. Which has a double negative?",
+     "why": "Two negatives in one clause: standard English uses 'didn't see anybody'."
+    },
+    "g2": {
+     "correct": "The sun shining brightly, we decided to go for a walk.",
+     "accept": [
+      "The sun shining brightly, we decided to go for a walk."
+     ],
+     "label": "2. Which contains an absolute phrase?",
+     "why": "An absolute phrase has its own subject plus a participle and modifies the whole sentence."
+    },
+    "g3": {
+     "correct": "The cake was baked by my mother.",
+     "accept": [
+      "The cake was baked by my mother."
+     ],
+     "label": "3. Simple passive with a past participle?",
+     "why": "Simple past passive is was/were + past participle, for one completed action."
+    },
+    "g4": {
+     "correct": "She stopped to rest for a while.",
+     "accept": [
+      "She stopped to rest for a while."
+     ],
+     "label": "4. Which has a non-finite clause?",
+     "why": "A non-finite clause has no tensed verb; 'to rest' is an infinitive of purpose."
+    },
+    "g5": {
+     "correct": "My brother, a talented artist, lives in Berlin.",
+     "accept": [
+      "My brother, a talented artist, lives in Berlin."
+     ],
+     "label": "5. Which contains an appositive?",
+     "why": "The comma-marked noun phrase renames 'my brother' without adding a verb."
+    },
+    "g6": {
+     "correct": "I like to play, when I have free time, video games.",
+     "accept": [
+      "I like to play, when I have free time, video games."
+     ],
+     "label": "6. Which is a split construction?",
+     "why": "A clause is wedged between the verb and its object, splitting 'play' from 'video games'."
+    },
+    "g7": {
+     "correct": "I had been studying for hours when I finally took a break.",
+     "accept": [
+      "I had been studying for hours when I finally took a break."
+     ],
+     "label": "7. Which is past perfect continuous?",
+     "why": "Past perfect continuous is 'had been' + -ing, for a longer action before a past point."
+    },
+    "g8": {
+     "correct": "Under",
+     "accept": [
+      "Under"
+     ],
+     "label": "8. Which word is a preposition?",
+     "why": "Prepositions show position or direction before a noun: under the table."
+    },
+    "g9": {
+     "correct": "To get to the park, my bicycle was the fastest option.",
+     "accept": [
+      "To get to the park, my bicycle was the fastest option."
+     ],
+     "label": "9. Which has a dangling infinitive?",
+     "why": "The infinitive needs a person to perform it, and a bicycle cannot get to the park."
+    },
+    "g10": {
+     "correct": "I look forward to the weekend.",
+     "accept": [
+      "I look forward to the weekend."
+     ],
+     "label": "10. Phrasal-prepositional verb?",
+     "why": "A phrasal-prepositional verb is verb + adverb + preposition: look + forward + to."
+    }
+   }
+  }
+ }
+}

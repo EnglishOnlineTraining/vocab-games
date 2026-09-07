@@ -1,0 +1,145 @@
+{
+ "unit": "8c-five-teenagers",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "plays",
+     "accept": [
+      "plays"
+     ],
+     "label": "1. Jake ___ basketball",
+     "why": "The text says Jake plays basketball every day after school."
+    },
+    "g2": {
+     "correct": "vet",
+     "accept": [
+      "vet"
+     ],
+     "label": "2. Maria wants to be a ___",
+     "why": "The text says Maria loves horses and wants to be a vet."
+    },
+    "g3": {
+     "correct": "beach",
+     "accept": [
+      "beach"
+     ],
+     "label": "3. Emily lives close to the ___",
+     "why": "The text says Emily lives close to the beach and goes surfing."
+    },
+    "g4": {
+     "correct": "subject",
+     "accept": [
+      "subject"
+     ],
+     "label": "4. Tyler’s favourite ___",
+     "why": "The text says Tyler’s favourite subject is science."
+    },
+    "g5": {
+     "correct": "family",
+     "accept": [
+      "family"
+     ],
+     "label": "5. Aisha lives with her big ___",
+     "why": "The text says Aisha lives in Florida with her big family."
+    },
+    "g6": {
+     "correct": "different",
+     "accept": [
+      "different"
+     ],
+     "label": "6. All five teenagers are very ___",
+     "why": "The text contrasts the teenagers, describing them as very different."
+    },
+    "g7": {
+     "correct": "friends",
+     "accept": [
+      "friends"
+     ],
+     "label": "7. They enjoy spending time with their ___",
+     "why": "The text says they enjoy spending time with their friends."
+    },
+    "g8": {
+     "correct": "photos",
+     "accept": [
+      "photos"
+     ],
+     "label": "8. They share ___ online",
+     "why": "The text says they send messages and share photos online every day."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "plays",
+     "accept": [
+      "plays"
+     ],
+     "label": "1. Jake ___ basketball",
+     "why": "He/she in the simple present adds ‘-s’: Jake plays."
+    },
+    "g2": {
+     "correct": "loves",
+     "accept": [
+      "loves"
+     ],
+     "label": "2. Maria ___ horses",
+     "why": "He/she in the simple present adds ‘-s’: Maria loves."
+    },
+    "g3": {
+     "correct": "go",
+     "accept": [
+      "go"
+     ],
+     "label": "3. Emily and her friends ___ surfing",
+     "why": "‘Emily and her friends’ is a plural subject, so it takes the base form ‘go’."
+    },
+    "g4": {
+     "correct": "likes",
+     "accept": [
+      "likes"
+     ],
+     "label": "4. Tyler ___ science best",
+     "why": "He/she in the simple present adds ‘-s’: Tyler likes."
+    },
+    "g5": {
+     "correct": "lives",
+     "accept": [
+      "lives"
+     ],
+     "label": "5. Aisha ___ in Florida",
+     "why": "He/she in the simple present adds ‘-s’: Aisha lives."
+    },
+    "g6": {
+     "correct": "send",
+     "accept": [
+      "send"
+     ],
+     "label": "6. The five teenagers ___ messages",
+     "why": "‘The five teenagers’ is a plural subject, so it takes the base form ‘send’."
+    },
+    "g7": {
+     "correct": "does",
+     "accept": [
+      "does"
+     ],
+     "label": "7. Jake ___ not live in Texas",
+     "why": "Simple present negatives for he/she/it use ‘does not’, not ‘do not’."
+    },
+    "g8": {
+     "correct": "Does",
+     "accept": [
+      "Does"
+     ],
+     "label": "8. ___ Maria want to be a vet?",
+     "why": "Simple present yes/no questions for he/she/it start with ‘Does’."
+    }
+   }
+  }
+ }
+}

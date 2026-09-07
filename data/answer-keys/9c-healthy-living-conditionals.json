@@ -1,0 +1,191 @@
+{
+ "unit": "9c-healthy-living-conditionals",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "sleep",
+     "accept": [
+      "sleep"
+     ],
+     "label": "Doctors say that teenagers need between eight and ten hours of 1"
+    },
+    "g2": {
+     "correct": "brain",
+     "accept": [
+      "brain"
+     ],
+     "label": "The reason is often the same: screens. The blue light of a phone tells the 2"
+    },
+    "g3": {
+     "correct": "snack",
+     "accept": [
+      "snack"
+     ],
+     "label": "Food is the second problem. A quick 3"
+    },
+    "g4": {
+     "correct": "caffeine",
+     "accept": [
+      "caffeine"
+     ],
+     "label": "…ke stack snack between two lessons is fine, but energy drinks contain a lot of sugar and 4"
+    },
+    "g5": {
+     "correct": "concentrate",
+     "accept": [
+      "concentrate"
+     ],
+     "label": "…he good news is that small changes help. Students who cycle to school are fitter and can 5"
+    },
+    "g6": {
+     "correct": "exercise",
+     "accept": [
+      "exercise"
+     ],
+     "label": "…r and can 5 — choose — contain continue concentrate better in lessons. Thirty minutes of 6"
+    },
+    "g7": {
+     "correct": "mood",
+     "accept": [
+      "mood"
+     ],
+     "label": "…inst stress. When you run, swim or dance, your body produces hormones which improve your 7"
+    },
+    "g8": {
+     "correct": "health",
+     "accept": [
+      "health"
+     ],
+     "label": "…nd if you play in a team, you meet other people regularly, which is good for your mental 8"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "drink",
+     "accept": [
+      "drink"
+     ],
+     "label": "1. If you"
+    },
+    "g2": {
+     "correct": "won't be",
+     "accept": [
+      "won't be"
+     ],
+     "label": "2. If she goes to bed early, she"
+    },
+    "g3": {
+     "correct": "switch",
+     "accept": [
+      "switch"
+     ],
+     "label": "3. You will sleep better if you"
+    },
+    "g4": {
+     "correct": "cycle",
+     "accept": [
+      "cycle"
+     ],
+     "label": "4. If we"
+    },
+    "g5": {
+     "correct": "won't",
+     "accept": [
+      "won't"
+     ],
+     "label": "5. If Tom drinks two energy drinks now, he"
+    },
+    "g6": {
+     "correct": "rains",
+     "accept": [
+      "rains"
+     ],
+     "label": "6. If it"
+    },
+    "g7": {
+     "correct": "help",
+     "accept": [
+      "help"
+     ],
+     "label": "7. Your parents will be pleased if you"
+    },
+    "g8": {
+     "correct": "have",
+     "accept": [
+      "have"
+     ],
+     "label": "8. If I"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "had",
+     "accept": [
+      "had"
+     ],
+     "label": "1. If I"
+    },
+    "g2": {
+     "correct": "wouldn't be",
+     "accept": [
+      "wouldn't be"
+     ],
+     "label": "2. If she went to bed earlier, she"
+    },
+    "g3": {
+     "correct": "had",
+     "accept": [
+      "had"
+     ],
+     "label": "3. What would you do if you"
+    },
+    "g4": {
+     "correct": "had",
+     "accept": [
+      "had"
+     ],
+     "label": "4. If we"
+    },
+    "g5": {
+     "correct": "watched",
+     "accept": [
+      "watched"
+     ],
+     "label": "5. He would be much fitter if he"
+    },
+    "g6": {
+     "correct": "were",
+     "accept": [
+      "were"
+     ],
+     "label": "6. If I"
+    },
+    "g7": {
+     "correct": "followed",
+     "accept": [
+      "followed"
+     ],
+     "label": "7. If everybody"
+    },
+    "g8": {
+     "correct": "would have",
+     "accept": [
+      "would have"
+     ],
+     "label": "8. She"
+    }
+   }
+  }
+ }
+}

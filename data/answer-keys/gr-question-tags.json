@@ -1,0 +1,163 @@
+{
+ "unit": "gr-question-tags",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "aren't you",
+     "accept": [
+      "aren't you"
+     ],
+     "label": "1 Mia: Hi! You are in my English class,"
+    },
+    "g2": {
+     "correct": "didn't you",
+     "accept": [
+      "didn't you"
+     ],
+     "label": "2 Tom: That's right. You moved here last year,"
+    },
+    "g3": {
+     "correct": "isn't it",
+     "accept": [
+      "isn't it"
+     ],
+     "label": "3 Mia: Yes. The bus is late again,"
+    },
+    "g4": {
+     "correct": "won't it",
+     "accept": [
+      "won't it"
+     ],
+     "label": "4 Tom: It will probably be here soon,"
+    },
+    "g5": {
+     "correct": "haven't you",
+     "accept": [
+      "haven't you"
+     ],
+     "label": "5 Mia: You have missed this bus before,"
+    },
+    "g6": {
+     "correct": "couldn't we",
+     "accept": [
+      "couldn't we"
+     ],
+     "label": "6 Tom: Too often! We could walk to school together tomorrow,"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "aren't you",
+     "accept": [
+      "aren't you"
+     ],
+     "label": "1 You are coming to the party,"
+    },
+    "g2": {
+     "correct": "didn't she",
+     "accept": [
+      "didn't she"
+     ],
+     "label": "2 She finished the report,"
+    },
+    "g3": {
+     "correct": "have they",
+     "accept": [
+      "have they"
+     ],
+     "label": "3 They have never been to Rome,"
+    },
+    "g4": {
+     "correct": "can't he",
+     "accept": [
+      "can't he"
+     ],
+     "label": "4 He can swim really well,"
+    },
+    "g5": {
+     "correct": "won't we",
+     "accept": [
+      "won't we"
+     ],
+     "label": "5 We will meet at six,"
+    },
+    "g6": {
+     "correct": "didn't it",
+     "accept": [
+      "didn't it"
+     ],
+     "label": "6 It rained all weekend,"
+    },
+    "g7": {
+     "correct": "isn't there",
+     "accept": [
+      "isn't there"
+     ],
+     "label": "7 There is a problem,"
+    },
+    "g8": {
+     "correct": "wouldn't you",
+     "accept": [
+      "wouldn't you"
+     ],
+     "label": "8 You would help me,"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "aren't I",
+     "accept": [
+      "aren't I"
+     ],
+     "label": "1 I am late,"
+    },
+    "g2": {
+     "correct": "shall we",
+     "accept": [
+      "shall we"
+     ],
+     "label": "2 Let's go home,"
+    },
+    "g3": {
+     "correct": "did they",
+     "accept": [
+      "did they"
+     ],
+     "label": "3 Nobody came to the meeting,"
+    },
+    "g4": {
+     "correct": "don't you",
+     "accept": [
+      "don't you"
+     ],
+     "label": "4 You have to leave now,"
+    },
+    "g5": {
+     "correct": "does it",
+     "accept": [
+      "does it"
+     ],
+     "label": "5 Nothing really matters,"
+    },
+    "g6": {
+     "correct": "will you",
+     "accept": [
+      "will you"
+     ],
+     "label": "6 Don't be late,"
+    }
+   }
+  }
+ }
+}

@@ -373,11 +373,21 @@ function val(id)    { return g(id).length > 0; }
 function esc(str)   { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
 
 /* Flatten an answers object into "k: v | k: v" for email bodies. */
+/* Flatten an answer object to "k: v | k: v" — the readable form the Excel answer
+   columns carry, and what Make writes into a text cell.
+
+   The blank marker is '(blank)', matching flatten() in apps-script.gs. It used to be
+   the em dash, which collided with a real answer value: esl-articles keys five gaps
+   to '—' meaning "no article", so "chose no article" and "left it blank" were the
+   same string — indistinguishable in Excel, and ungradable by make-grader.js. No
+   answer value anywhere in the corpus is '(blank)', so this marker cannot collide.
+   (The three self-contained class-test pages carry their own eolFlat copies and
+   still emit the em dash; they are not auto-graded against data/answer-keys/.) */
 function eolFlat(o) {
   if (o == null) return '';
   if (typeof o !== 'object') return String(o);
   return Object.keys(o).map(function(k) {
-    return k + ': ' + (o[k] === '' || o[k] == null ? '—' : o[k]);
+    return k + ': ' + (o[k] === '' || o[k] == null ? '(blank)' : o[k]);
   }).join(' | ');
 }
 

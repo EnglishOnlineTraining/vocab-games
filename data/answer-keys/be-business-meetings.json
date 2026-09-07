@@ -1,0 +1,183 @@
+{
+ "unit": "be-business-meetings",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Shall we get started?",
+     "accept": [
+      "Shall we get started?"
+     ],
+     "label": "1. Opening the meeting",
+     "why": "This is the standard phrase for opening a meeting."
+    },
+    "g2": {
+     "correct": "What are your thoughts on this?",
+     "accept": [
+      "What are your thoughts on this?"
+     ],
+     "label": "2. Asking for opinions",
+     "why": "This is the standard phrase for asking for opinions."
+    },
+    "g3": {
+     "correct": "I see your point, but I think we should consider other options.",
+     "accept": [
+      "I see your point, but I think we should consider other options."
+     ],
+     "label": "3. Politely disagreeing",
+     "why": "This softens disagreement by first acknowledging the other view."
+    },
+    "g4": {
+     "correct": "Sorry to interrupt, but could I just add something here?",
+     "accept": [
+      "Sorry to interrupt, but could I just add something here?"
+     ],
+     "label": "4. Interrupting politely",
+     "why": "This is the standard polite phrase for interrupting."
+    },
+    "g5": {
+     "correct": "Let's move on to the next item on the agenda.",
+     "accept": [
+      "Let's move on to the next item on the agenda."
+     ],
+     "label": "5. Moving to the next agenda item",
+     "why": "This is the standard phrase for moving to the next agenda item."
+    },
+    "g6": {
+     "correct": "I completely agree. That sounds like the best approach.",
+     "accept": [
+      "I completely agree. That sounds like the best approach."
+     ],
+     "label": "6. Agreeing with a suggestion",
+     "why": "This is the standard phrase for agreeing with a suggestion."
+    },
+    "g7": {
+     "correct": "let's call it a day. Thank you all for coming.",
+     "accept": [
+      "let's call it a day. Thank you all for coming."
+     ],
+     "label": "7. Closing a meeting",
+     "why": "This is the standard phrase for closing a meeting."
+    },
+    "g8": {
+     "correct": "Could you explain what you mean by 'restructuring'?",
+     "accept": [
+      "Could you explain what you mean by 'restructuring'?"
+     ],
+     "label": "8. Asking for clarification",
+     "why": "This is the standard phrase for asking for clarification."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Sarah Chen",
+     "accept": [
+      "Sarah Chen"
+     ],
+     "label": "1. Who chaired the meeting?",
+     "why": "The minutes list Sarah Chen as Chair."
+    },
+    "g2": {
+     "correct": "She was on a business trip.",
+     "accept": [
+      "She was on a business trip."
+     ],
+     "label": "2. Why was Julia Kim absent?",
+     "why": "The minutes say Julia Kim's apologies were due to a business trip."
+    },
+    "g3": {
+     "correct": "The colour scheme needed changes.",
+     "accept": [
+      "The colour scheme needed changes."
+     ],
+     "label": "3. Lena's concern about the website?",
+     "why": "The minutes say Lena raised a concern about the colour scheme after the client requested changes."
+    },
+    "g4": {
+     "correct": "Upgrading the project management software",
+     "accept": [
+      "Upgrading the project management software"
+     ],
+     "label": "4. Mark's suggestion for the budget?",
+     "why": "The minutes say Mark suggested using the remaining funds to upgrade the project management software."
+    },
+    "g5": {
+     "correct": "Two",
+     "accept": [
+      "Two"
+     ],
+     "label": "5. How many will attend the workshop?",
+     "why": "The minutes say the training budget could cover two participants."
+    },
+    "g6": {
+     "correct": "Research software options and present them next week",
+     "accept": [
+      "Research software options and present them next week"
+     ],
+     "label": "6. What is Mark's action item?",
+     "why": "The minutes list Mark's action as researching options and presenting them at next week's meeting."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "The purpose of today's meeting is to discuss",
+     "accept": [
+      "The purpose of today's meeting is to discuss"
+     ],
+     "label": "1. Opening the meeting topic",
+     "why": "This is the standard phrase for stating the meeting's purpose."
+    },
+    "g2": {
+     "correct": "Does anyone else have any views on that?",
+     "accept": [
+      "Does anyone else have any views on that?"
+     ],
+     "label": "2. Inviting other views",
+     "why": "This is the standard phrase for inviting others to contribute."
+    },
+    "g3": {
+     "correct": "Those are both valid points. Perhaps we can look at the data before deciding.",
+     "accept": [
+      "Those are both valid points. Perhaps we can look at the data before deciding."
+     ],
+     "label": "3. Mediating a disagreement",
+     "why": "This acknowledges both speakers fairly rather than taking a side."
+    },
+    "g4": {
+     "correct": "shall we move on to the next point — the budget?",
+     "accept": [
+      "shall we move on to the next point — the budget?"
+     ],
+     "label": "4. Moving to the next point",
+     "why": "This is the standard phrase for moving to the next agenda point."
+    },
+    "g5": {
+     "correct": "Go ahead, Katja.",
+     "accept": [
+      "Go ahead, Katja."
+     ],
+     "label": "5. Giving someone the floor",
+     "why": "This is the standard phrase for inviting someone to speak."
+    },
+    "g6": {
+     "correct": "let me summarise what we've agreed.",
+     "accept": [
+      "let me summarise what we've agreed."
+     ],
+     "label": "6. Summarising decisions",
+     "why": "This is the standard phrase for summarising a meeting's outcomes."
+    }
+   }
+  }
+ }
+}

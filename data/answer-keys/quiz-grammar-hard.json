@@ -1,0 +1,83 @@
+{
+ "unit": "quiz-grammar-hard",
+ "sections": {
+  "quiz": {
+   "prefix": "q-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Running through the park, the sun was shining brightly.",
+     "accept": [
+      "Running through the park, the sun was shining brightly."
+     ],
+     "label": "1. Which has a misplaced modifier?",
+     "why": "The -ing phrase must describe the subject, and the sun cannot run through a park."
+    },
+    "g2": {
+     "correct": "I decided to go for a walk in the park.",
+     "accept": [
+      "I decided to go for a walk in the park."
+     ],
+     "label": "2. Which contains an infinitive phrase?",
+     "why": "An infinitive phrase is 'to' + verb plus what follows: to go for a walk."
+    },
+    "g3": {
+     "correct": "The couch is being slept on by the cat.",
+     "accept": [
+      "The couch is being slept on by the cat."
+     ],
+     "label": "3. Passive with a present participle?",
+     "why": "The progressive passive is 'is/are being' + past participle, for an action in progress."
+    },
+    "g4": {
+     "correct": "The book that I read last week was very interesting.",
+     "accept": [
+      "The book that I read last week was very interesting."
+     ],
+     "label": "4. Which has a restrictive clause?",
+     "why": "Restrictive clauses identify which one is meant and take no commas."
+    },
+    "g5": {
+     "correct": "He ordered a pizza, and she a salad.",
+     "accept": [
+      "He ordered a pizza, and she a salad."
+     ],
+     "label": "5. Which sentence contains an ellipsis?",
+     "why": "Ellipsis leaves out repeated words: 'and she [ordered] a salad'."
+    },
+    "g6": {
+     "correct": "Walking to school, the rain soaked me.",
+     "accept": [
+      "Walking to school, the rain soaked me."
+     ],
+     "label": "6. Which has a dangling participle?",
+     "why": "The participle should describe the subject, but the rain was not walking to school."
+    },
+    "g7": {
+     "correct": "That",
+     "accept": [
+      "That"
+     ],
+     "label": "7. Which word is a relative pronoun?",
+     "why": "Relative pronouns (who, which, that) introduce a clause describing a noun."
+    },
+    "g8": {
+     "correct": "I want to quickly finish my homework.",
+     "accept": [
+      "I want to quickly finish my homework."
+     ],
+     "label": "8. Which contains a split infinitive?",
+     "why": "A split infinitive puts an adverb between 'to' and the verb: to quickly finish."
+    },
+    "g9": {
+     "correct": "He can swim very well.",
+     "accept": [
+      "He can swim very well."
+     ],
+     "label": "9. Which contains a modal verb?",
+     "why": "Modals like can, must and should sit before a bare infinitive and never take -s."
+    }
+   }
+  }
+ }
+}

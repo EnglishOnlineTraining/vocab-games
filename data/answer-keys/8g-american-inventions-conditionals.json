@@ -1,0 +1,215 @@
+{
+ "unit": "8g-american-inventions-conditionals",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "prove",
+     "accept": [
+      "prove"
+     ],
+     "label": "1. The numbers seem to ___ it",
+     "why": "The text says the numbers 'prove' that the USA is a nation of inventors."
+    },
+    "g2": {
+     "correct": "patents",
+     "accept": [
+      "patents"
+     ],
+     "label": "2. More than 300,000 ___ every year",
+     "why": "The text says Americans register more than 300,000 patents every year."
+    },
+    "g3": {
+     "correct": "light bulb",
+     "accept": [
+      "light bulb"
+     ],
+     "label": "3. The ___, the telephone and the aeroplane",
+     "why": "The text names the light bulb, the telephone and the aeroplane as US inventions."
+    },
+    "g4": {
+     "correct": "workshops",
+     "accept": [
+      "workshops"
+     ],
+     "label": "4. Born in simple ___",
+     "why": "The text says many inventions were born in simple workshops."
+    },
+    "g5": {
+     "correct": "employed",
+     "accept": [
+      "employed"
+     ],
+     "label": "5. Edison's laboratory ___ over 200 people",
+     "why": "The text says the Menlo Park laboratory employed over 200 people."
+    },
+    "g6": {
+     "correct": "product",
+     "accept": [
+      "product"
+     ],
+     "label": "6. Turned it into a ___",
+     "why": "The text says a working idea was turned into a product for factories."
+    },
+    "g7": {
+     "correct": "investors",
+     "accept": [
+      "investors"
+     ],
+     "label": "7. ___ will often give them millions",
+     "why": "The text says investors often give young programmers millions of dollars."
+    },
+    "g8": {
+     "correct": "creativity",
+     "accept": [
+      "creativity"
+     ],
+     "label": "8. Encourage ___",
+     "why": "The text says schools should encourage creativity in the next generation."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "visit",
+     "accept": [
+      "visit"
+     ],
+     "label": "1. If you ___ the museum",
+     "why": "Type 1: the if-clause takes the present simple, the main clause takes will + verb."
+    },
+    "g2": {
+     "correct": "will be",
+     "accept": [
+      "will be"
+     ],
+     "label": "2. There ___ more female inventors",
+     "why": "Real possibility: the main clause of a type-1 conditional takes will + verb."
+    },
+    "g3": {
+     "correct": "try",
+     "accept": [
+      "try"
+     ],
+     "label": "3. If you ___ this experiment",
+     "why": "After 'if' in type 1, use the present simple ('try'), not 'will'."
+    },
+    "g4": {
+     "correct": "will buy",
+     "accept": [
+      "will buy"
+     ],
+     "label": "4. People ___ it",
+     "why": "The likely result goes in the main clause with 'will' + infinitive."
+    },
+    "g5": {
+     "correct": "will become",
+     "accept": [
+      "will become"
+     ],
+     "label": "5. Electric cars ___ more popular",
+     "why": "Type 1 main clause: 'will become' for a likely future result."
+    },
+    "g6": {
+     "correct": "finish",
+     "accept": [
+      "finish"
+     ],
+     "label": "6. If you ___ your project on time",
+     "why": "After 'if' in a type-1 sentence, use the present simple ('finish')."
+    },
+    "g7": {
+     "correct": "mustn't",
+     "accept": [
+      "mustn't"
+     ],
+     "label": "7. You ___ touch the machines",
+     "why": "Review from 8g-school-life-rules: 'mustn't' expresses a prohibition; the if-clause stays present simple."
+    },
+    "g8": {
+     "correct": "prove",
+     "accept": [
+      "prove"
+     ],
+     "label": "8. You ___ that it is new",
+     "why": "Type 1: present simple in the if-clause ('prove'), 'will' in the main clause."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "were",
+     "accept": [
+      "were"
+     ],
+     "label": "1. If I ___ an inventor",
+     "why": "Type 2 (imaginary): use 'were' for all persons in the if-clause."
+    },
+    "g2": {
+     "correct": "would be",
+     "accept": [
+      "would be"
+     ],
+     "label": "2. He ___ amazed by smartphones",
+     "why": "Type 2 main clause takes 'would' + infinitive."
+    },
+    "g3": {
+     "correct": "had",
+     "accept": [
+      "had"
+     ],
+     "label": "3. If you ___ enough money",
+     "why": "Imaginary situation: past simple ('had') in the if-clause."
+    },
+    "g4": {
+     "correct": "would take",
+     "accept": [
+      "would take"
+     ],
+     "label": "4. Travelling ___ much longer",
+     "why": "Unreal present: the main clause takes 'would' + infinitive."
+    },
+    "g5": {
+     "correct": "didn't have",
+     "accept": [
+      "didn't have"
+     ],
+     "label": "5. If we ___ telephones",
+     "why": "Type 2 if-clause: past simple ('didn't have') for an imaginary present."
+    },
+    "g6": {
+     "correct": "travelled",
+     "accept": [
+      "travelled"
+     ],
+     "label": "6. If I ___ to California",
+     "why": "Type 2: past simple ('travelled') after 'if' for an imagined action."
+    },
+    "g7": {
+     "correct": "would stop",
+     "accept": [
+      "would stop"
+     ],
+     "label": "7. The world ___ working",
+     "why": "Imaginary future: the main clause takes 'would' + infinitive."
+    },
+    "g8": {
+     "correct": "were",
+     "accept": [
+      "were"
+     ],
+     "label": "8. If it ___ real",
+     "why": "Type 2 uses 'were' (not 'is') for unreal situations in formal English."
+    }
+   }
+  }
+ }
+}

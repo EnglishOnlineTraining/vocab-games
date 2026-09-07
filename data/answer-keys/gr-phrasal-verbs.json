@@ -1,0 +1,163 @@
+{
+ "unit": "gr-phrasal-verbs",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "turns off",
+     "accept": [
+      "turns off"
+     ],
+     "label": "1 Mia's alarm rings at 6.30, and she"
+    },
+    "g2": {
+     "correct": "looks after",
+     "accept": [
+      "looks after"
+     ],
+     "label": "2 Then she"
+    },
+    "g3": {
+     "correct": "run out",
+     "accept": [
+      "run out"
+     ],
+     "label": "3 At breakfast she sees the milk has"
+    },
+    "g4": {
+     "correct": "takes off",
+     "accept": [
+      "takes off"
+     ],
+     "label": "4 At school she"
+    },
+    "g5": {
+     "correct": "hangs out",
+     "accept": [
+      "hangs out"
+     ],
+     "label": "5 In the afternoon she"
+    },
+    "g6": {
+     "correct": "get over",
+     "accept": [
+      "get over"
+     ],
+     "label": "6 She falls off her bike but promises she will"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "takes off",
+     "accept": [
+      "takes off"
+     ],
+     "label": "1 The plane"
+    },
+    "g2": {
+     "correct": "take off",
+     "accept": [
+      "take off"
+     ],
+     "label": "2 Please"
+    },
+    "g3": {
+     "correct": "look after",
+     "accept": [
+      "look after"
+     ],
+     "label": "3 I"
+    },
+    "g4": {
+     "correct": "have run out of",
+     "accept": [
+      "have run out of"
+     ],
+     "label": "4 \"We"
+    },
+    "g5": {
+     "correct": "turned down",
+     "accept": [
+      "turned down"
+     ],
+     "label": "5 She"
+    },
+    "g6": {
+     "correct": "turn down",
+     "accept": [
+      "turn down"
+     ],
+     "label": "6 Can you"
+    },
+    "g7": {
+     "correct": "gave up",
+     "accept": [
+      "gave up"
+     ],
+     "label": "7 He"
+    },
+    "g8": {
+     "correct": "broke down",
+     "accept": [
+      "broke down"
+     ],
+     "label": "8 Our car"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "up",
+     "accept": [
+      "up"
+     ],
+     "label": "1 She picked her brother"
+    },
+    "g2": {
+     "correct": "up",
+     "accept": [
+      "up"
+     ],
+     "label": "2 I need to look this word"
+    },
+    "g3": {
+     "correct": "off",
+     "accept": [
+      "off"
+     ],
+     "label": "3 The meeting was put"
+    },
+    "g4": {
+     "correct": "after",
+     "accept": [
+      "after"
+     ],
+     "label": "4 He takes"
+    },
+    "g5": {
+     "correct": "up",
+     "accept": [
+      "up"
+     ],
+     "label": "5 We can't put"
+    },
+    "g6": {
+     "correct": "across",
+     "accept": [
+      "across"
+     ],
+     "label": "6 She came"
+    }
+   }
+  }
+ }
+}

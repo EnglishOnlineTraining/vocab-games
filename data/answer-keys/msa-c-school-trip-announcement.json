@@ -1,0 +1,145 @@
+{
+ "unit": "msa-c-school-trip-announcement",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "8:15",
+     "accept": [
+      "8:15"
+     ],
+     "label": "1. What time does the bus leave?",
+     "why": "The recording says the bus will leave at eight fifteen sharp."
+    },
+    "g2": {
+     "correct": "permission form",
+     "accept": [
+      "permission form"
+     ],
+     "label": "2. What must every student bring?",
+     "why": "The recording says every student must bring their signed permission form."
+    },
+    "g3": {
+     "correct": "4:00",
+     "accept": [
+      "4:00"
+     ],
+     "label": "3. What time does the museum close?",
+     "why": "The recording says the museum closes at four o'clock."
+    },
+    "g4": {
+     "correct": "5:00",
+     "accept": [
+      "5:00"
+     ],
+     "label": "4. What time back at school?",
+     "why": "The recording says students will be back at school by five."
+    },
+    "g5": {
+     "correct": "rain outdoor garden",
+     "accept": [
+      "rain outdoor garden"
+     ],
+     "label": "5. Why bring a raincoat?",
+     "why": "The recording says part of the visit includes an outdoor garden, so bring a raincoat if it rains."
+    },
+    "g6": {
+     "correct": "light raincoat",
+     "accept": [
+      "light raincoat"
+     ],
+     "label": "6. What does Emma suggest instead of a thick coat?",
+     "why": "The recording says Emma suggests a light raincoat instead of a thick coat."
+    },
+    "g7": {
+     "correct": "five six pounds",
+     "accept": [
+      "five six pounds"
+     ],
+     "label": "7. How much extra money for the gift shop?",
+     "why": "The recording says Emma suggests five or six pounds is enough."
+    },
+    "g8": {
+     "correct": "flash photography",
+     "accept": [
+      "flash photography"
+     ],
+     "label": "8. What's not allowed near the dinosaurs?",
+     "why": "The recording says no flash photography is allowed near the dinosaurs."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Robotics Zone",
+     "accept": [
+      "Robotics Zone"
+     ],
+     "label": "1. Liam — control machines",
+     "why": "The text says the Robotics Zone lets you programme a robot to move."
+    },
+    "g2": {
+     "correct": "Dinosaur Zone",
+     "accept": [
+      "Dinosaur Zone"
+     ],
+     "label": "2. Priya — prehistoric creatures",
+     "why": "The text says the Dinosaur Zone has a life-size skeleton and fossils."
+    },
+    "g3": {
+     "correct": "Space Zone",
+     "accept": [
+      "Space Zone"
+     ],
+     "label": "3. Tom — dreams of being an astronaut",
+     "why": "The text says the Space Zone has a model of the International Space Station."
+    },
+    "g4": {
+     "correct": "Weather Zone",
+     "accept": [
+      "Weather Zone"
+     ],
+     "label": "4. Emma — storms and hurricanes",
+     "why": "The text says the Weather Zone teaches how storms and hurricanes form."
+    },
+    "g5": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "5. Flash photography allowed",
+     "why": "The text says no flash photography is allowed in the Dinosaur Zone."
+    },
+    "g6": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "6. Stay behind yellow line",
+     "why": "The text confirms visitors must stay behind the yellow line in the Robotics Zone."
+    },
+    "g7": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "7. Café closes with museum",
+     "why": "The text says the café closes at 3:30pm, one hour before the museum."
+    },
+    "g8": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "8. Lockers are free",
+     "why": "The text says lockers cost £1, so they are not free."
+    }
+   }
+  }
+ }
+}

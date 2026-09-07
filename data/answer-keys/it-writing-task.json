@@ -1,0 +1,75 @@
+{
+ "unit": "it-writing-task",
+ "sections": {
+  "exA": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "a1": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "1. Reporting when something failed",
+     "why": "An incident report needs an exact time and date, not a vague phrase."
+    },
+    "a2": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "2. Asking a user for something",
+     "why": "'Could you…?' is polite; a bare imperative or 'why didn't you' sounds blunt or accusing."
+    },
+    "a3": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "3. Summarising what the user told you",
+     "why": "Reported speech shifts the tense back: 'appears' becomes 'appeared' after 'she said'."
+    },
+    "a4": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "4. Naming an unconfirmed cause",
+     "why": "'May' marks a possible cause; 'must' and 'will' claim more certainty than you have."
+    },
+    "a5": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "5. Committing to a timeframe",
+     "why": "A named deadline is a commitment; 'soon' and 'as soon as possible' promise nothing."
+    },
+    "a6": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "6. Explaining a delay to a non-technical reader",
+     "why": "Plain wording beats jargon: 'SKU mismatch' and 'NIC revision' mean nothing to that reader."
+    },
+    "a7": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "7. Recording an action in a report",
+     "why": "Reports use the passive for actions taken: 'were disabled' focuses on what happened."
+    },
+    "a8": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "8. Closing a message that needs action",
+     "why": "A clear close names the action and the deadline, so the reader knows what to do."
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,145 @@
+{
+ "unit": "msa-c-school-recycling-scheme",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "next Monday",
+     "accept": [
+      "next Monday"
+     ],
+     "label": "1. When does the scheme start?",
+     "why": "The recording says the new recycling scheme starts next Monday."
+    },
+    "g2": {
+     "correct": "paper and cardboard",
+     "accept": [
+      "paper and cardboard"
+     ],
+     "label": "2. What goes in blue bins?",
+     "why": "The recording says blue bins are for paper and cardboard only."
+    },
+    "g3": {
+     "correct": "rinse them",
+     "accept": [
+      "rinse them"
+     ],
+     "label": "3. What should students do first?",
+     "why": "The recording says to rinse containers before recycling them."
+    },
+    "g4": {
+     "correct": "contaminate bin",
+     "accept": [
+      "contaminate bin"
+     ],
+     "label": "4. Why does rinsing matter?",
+     "why": "The recording says dirty items can contaminate a whole bin of good recycling."
+    },
+    "g5": {
+     "correct": "a prize",
+     "accept": [
+      "a prize"
+     ],
+     "label": "5. What does the cleanest class win?",
+     "why": "The recording says the class with the cleanest recycling each month wins a prize."
+    },
+    "g6": {
+     "correct": "food waste bin",
+     "accept": [
+      "food waste bin"
+     ],
+     "label": "6. Where does a greasy pizza box go?",
+     "why": "The dialogue says a greasy pizza box should go in the food waste bin."
+    },
+    "g7": {
+     "correct": "green bin rinsed",
+     "accept": [
+      "green bin rinsed"
+     ],
+     "label": "7. Where does a water bottle go?",
+     "why": "The dialogue says an empty water bottle goes in the green bin, rinsed first."
+    },
+    "g8": {
+     "correct": "win prize",
+     "accept": [
+      "win prize"
+     ],
+     "label": "8. What does Nora want?",
+     "why": "The dialogue says Nora wants their class to win the monthly prize."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Poster Designer",
+     "accept": [
+      "Poster Designer"
+     ],
+     "label": "1. Mia — drawing, colourful designs",
+     "why": "The text says the Poster Designer creates posters and signs for the bins."
+    },
+    "g2": {
+     "correct": "Bin Monitor",
+     "accept": [
+      "Bin Monitor"
+     ],
+     "label": "2. Ben — checking details, records",
+     "why": "The text says the Bin Monitor checks bins and records which classes are doing well."
+    },
+    "g3": {
+     "correct": "Social Media Officer",
+     "accept": [
+      "Social Media Officer"
+     ],
+     "label": "3. Zara — social media, photos",
+     "why": "The text says the Social Media Officer posts updates and eco-tips online."
+    },
+    "g4": {
+     "correct": "Compost Manager",
+     "accept": [
+      "Compost Manager"
+     ],
+     "label": "4. Tomas — gardening, growing plants",
+     "why": "The text says the Compost Manager looks after the compost bin."
+    },
+    "g5": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "5. Cardboard allowed in blue bins",
+     "why": "The text says blue bins are only for paper, not cardboard."
+    },
+    "g6": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "6. Bins checked every Friday",
+     "why": "The text confirms the Green Team checks bins every Friday."
+    },
+    "g7": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "7. Only cleanest class can win",
+     "why": "The text says any class can win the monthly prize, not just the cleanest one."
+    },
+    "g8": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "8. Food waste in brown bins",
+     "why": "The text confirms food waste should go in the brown bins in the canteen."
+    }
+   }
+  }
+ }
+}

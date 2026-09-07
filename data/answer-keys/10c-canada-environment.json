@@ -1,0 +1,215 @@
+{
+ "unit": "10c-canada-environment",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "landscapes",
+     "accept": [
+      "landscapes"
+     ],
+     "label": "1. Vast, wild ___",
+     "why": "The text describes Canada as famous for its vast, wild landscapes."
+    },
+    "g2": {
+     "correct": "three",
+     "accept": [
+      "three"
+     ],
+     "label": "2. Warmed almost ___ times faster",
+     "why": "The text says the Canadian Arctic has warmed almost three times faster than the global average."
+    },
+    "g3": {
+     "correct": "thinner",
+     "accept": [
+      "thinner"
+     ],
+     "label": "3. The sea ice has become ___",
+     "why": "The text says the sea ice has become thinner as the climate warms."
+    },
+    "g4": {
+     "correct": "indigenous",
+     "accept": [
+      "indigenous"
+     ],
+     "label": "4. ___ peoples have protected the land",
+     "why": "The text says Indigenous peoples have protected the land for thousands of years."
+    },
+    "g5": {
+     "correct": "parks",
+     "accept": [
+      "parks"
+     ],
+     "label": "5. New national ___",
+     "why": "The text says the government has created new national parks."
+    },
+    "g6": {
+     "correct": "marches",
+     "accept": [
+      "marches"
+     ],
+     "label": "6. Joined climate ___",
+     "why": "The text says many young people have joined climate marches."
+    },
+    "g7": {
+     "correct": "energy",
+     "accept": [
+      "energy"
+     ],
+     "label": "7. Cleaner ___",
+     "why": "The text says companies have started to use cleaner energy, such as wind power."
+    },
+    "g8": {
+     "correct": "challenges",
+     "accept": [
+      "challenges"
+     ],
+     "label": "8. One of Canada's biggest ___",
+     "why": "The text says protecting the environment is one of Canada's biggest challenges."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "have risen",
+     "accept": [
+      "have risen"
+     ],
+     "label": "1. Temperatures ___ sharply (rise)",
+     "why": "‘In recent years’ signals an action continuing to now, so the present perfect ‘have risen’ is used."
+    },
+    "g2": {
+     "correct": "declared",
+     "accept": [
+      "declared"
+     ],
+     "label": "2. In 2019, Canada ___ (declare)",
+     "why": "‘In 2019’ is a finished, specific past time, so the simple past ‘declared’ is used."
+    },
+    "g3": {
+     "correct": "have protected",
+     "accept": [
+      "have protected"
+     ],
+     "label": "3. Indigenous peoples ___ the land (protect)",
+     "why": "‘For thousands of years’ signals an action continuing to now, so the present perfect ‘have protected’ is used."
+    },
+    "g4": {
+     "correct": "has become",
+     "accept": [
+      "has become"
+     ],
+     "label": "4. The sea ice ___ thinner (become)",
+     "why": "‘Since the 1980s’ signals an action continuing to now, so the present perfect ‘has become’ is used."
+    },
+    "g5": {
+     "correct": "destroyed",
+     "accept": [
+      "destroyed"
+     ],
+     "label": "5. Last summer, wildfires ___ (destroy)",
+     "why": "‘Last summer’ is a finished, specific past time, so the simple past ‘destroyed’ is used."
+    },
+    "g6": {
+     "correct": "have studied",
+     "accept": [
+      "have studied"
+     ],
+     "label": "6. Scientists ___ the Arctic (study)",
+     "why": "‘For many decades’ signals an action continuing to now, so the present perfect ‘have studied’ is used."
+    },
+    "g7": {
+     "correct": "has created",
+     "accept": [
+      "has created"
+     ],
+     "label": "7. So far, the government ___ parks (create)",
+     "why": "‘So far’ signals an action continuing to now, so the present perfect ‘has created’ is used."
+    },
+    "g8": {
+     "correct": "joined",
+     "accept": [
+      "joined"
+     ],
+     "label": "8. Two years ago, she ___ (join)",
+     "why": "‘Two years ago’ is a finished, specific past time, so the simple past ‘joined’ is used."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "already",
+     "accept": [
+      "already"
+     ],
+     "label": "1. The ice has ___ started to melt",
+     "why": "‘Already’ is used in positive present perfect sentences to show something has happened sooner than expected."
+    },
+    "g2": {
+     "correct": "ever",
+     "accept": [
+      "ever"
+     ],
+     "label": "2. Have you ___ visited a park?",
+     "why": "‘Ever’ is used in present perfect questions asking about experience."
+    },
+    "g3": {
+     "correct": "never",
+     "accept": [
+      "never"
+     ],
+     "label": "3. I have ___ seen the lights",
+     "why": "‘Never’ (= not at any time) is the standard present perfect word for talking about experience."
+    },
+    "g4": {
+     "correct": "since",
+     "accept": [
+      "since"
+     ],
+     "label": "4. Protected these forests ___ 1885",
+     "why": "‘Since’ introduces a specific starting point in time, not a duration like ‘for’."
+    },
+    "g5": {
+     "correct": "for",
+     "accept": [
+      "for"
+     ],
+     "label": "5. Studied the ice ___ a century",
+     "why": "‘For’ introduces a duration of time, not a starting point like ‘since’."
+    },
+    "g6": {
+     "correct": "yet",
+     "accept": [
+      "yet"
+     ],
+     "label": "6. Has not reached its goals ___",
+     "why": "‘Yet’ is used at the end of negative present perfect sentences to show something hasn't happened."
+    },
+    "g7": {
+     "correct": "just",
+     "accept": [
+      "just"
+     ],
+     "label": "7. We have ___ finished planting",
+     "why": "‘Just’ shows an action finished a very short time ago."
+    },
+    "g8": {
+     "correct": "ever",
+     "accept": [
+      "ever"
+     ],
+     "label": "8. The warmest winter they have ___ recorded",
+     "why": "‘Ever’ is used after superlatives in the present perfect."
+    }
+   }
+  }
+ }
+}

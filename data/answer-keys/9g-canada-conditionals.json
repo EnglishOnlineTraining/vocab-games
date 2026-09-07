@@ -1,0 +1,75 @@
+{
+ "unit": "9g-canada-conditionals",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "drops",
+     "accept": [
+      "drops"
+     ],
+     "label": "1. If the temperature ___ below minus 20 (Type 1)",
+     "why": "Type 1 keeps the present simple after “if”, even though the main clause uses “will”."
+    },
+    "g2": {
+     "correct": "lived",
+     "accept": [
+      "lived"
+     ],
+     "label": "2. If I ___ in Quebec (Type 2)",
+     "why": "Type 2 uses the past simple after “if” for an imagined, unreal situation."
+    },
+    "g3": {
+     "correct": "gets",
+     "accept": [
+      "gets"
+     ],
+     "label": "3. …if the weather ___ warmer (Type 1)",
+     "why": "Type 1: present simple after “if” — “gets”, never “will get”."
+    },
+    "g4": {
+     "correct": "don't protect",
+     "accept": [
+      "don't protect"
+     ],
+     "label": "4. If we ___ Indigenous languages (Type 1)",
+     "why": "Type 1 needs a present-simple negative after “if”: \"don't protect\"."
+    },
+    "g5": {
+     "correct": "were",
+     "accept": [
+      "were"
+     ],
+     "label": "5. If Canada ___ a smaller country (Type 2)",
+     "why": "Type 2 uses “were” for every person in this unreal condition."
+    },
+    "g6": {
+     "correct": "builds",
+     "accept": [
+      "builds"
+     ],
+     "label": "6. …if the government ___ better roads (Type 1)",
+     "why": "Type 1: present simple after “if”, with third-person -s on “builds”."
+    },
+    "g7": {
+     "correct": "could",
+     "accept": [
+      "could"
+     ],
+     "label": "7. If you ___ visit any Canadian city (Type 2)",
+     "why": "Type 2 uses “could” here to mean “if it were possible”."
+    },
+    "g8": {
+     "correct": "learned",
+     "accept": [
+      "learned"
+     ],
+     "label": "8. If more young people ___ Inuktitut (Type 2)",
+     "why": "Type 2 uses the past simple after “if” — the situation is imagined, not real."
+    }
+   }
+  }
+ }
+}

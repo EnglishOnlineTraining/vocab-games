@@ -1,0 +1,194 @@
+{
+ "unit": "9g-review",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": true,
+   "gaps": {
+    "g1": {
+     "correct": "learned",
+     "accept": [
+      "learned"
+     ],
+     "label": "1. If more young people"
+    },
+    "g2": {
+     "correct": "were swept out to sea",
+     "accept": [
+      "were swept out to sea"
+     ],
+     "label": "2. Two swimmers"
+    },
+    "g3": {
+     "correct": "reach",
+     "accept": [
+      "reach"
+     ],
+     "label": "3. temperatures can"
+    },
+    "g4": {
+     "correct": "go on",
+     "accept": [
+      "go on"
+     ],
+     "label": "4. Diwali celebrations"
+    },
+    "g5": {
+     "correct": "day",
+     "accept": [
+      "day"
+     ],
+     "label": "5. what a normal working"
+    },
+    "g6": {
+     "correct": "who",
+     "accept": [
+      "who",
+      "that"
+     ],
+     "label": "6. thousands of people"
+    },
+    "g7": {
+     "correct": "would go",
+     "accept": [
+      "would go"
+     ],
+     "label": "7. …she"
+    },
+    "g8": {
+     "correct": "playing",
+     "accept": [
+      "playing"
+     ],
+     "label": "8. Many young Irish people enjoy"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": true,
+   "gaps": {
+    "g1": {
+     "correct": "published",
+     "accept": [
+      "published"
+     ],
+     "label": "1. the article"
+    },
+    "g2": {
+     "correct": "is protected",
+     "accept": [
+      "is protected"
+     ],
+     "label": "2. The kiwi bird"
+    },
+    "g3": {
+     "correct": "don't protect",
+     "accept": [
+      "don't protect"
+     ],
+     "label": "3. If we"
+    },
+    "g4": {
+     "correct": "giant",
+     "accept": [
+      "giant"
+     ],
+     "label": "4. We saw a"
+    },
+    "g5": {
+     "correct": "had already put up",
+     "accept": [
+      "had already put up"
+     ],
+     "label": "5. the guides"
+    },
+    "g6": {
+     "correct": "go on",
+     "accept": [
+      "go on"
+     ],
+     "label": "6. \"to continue happening\""
+    },
+    "g7": {
+     "correct": "unpaid",
+     "accept": [
+      "unpaid"
+     ],
+     "label": "7. the work is usually"
+    },
+    "g8": {
+     "correct": "— (not needed)",
+     "accept": [
+      "— (not needed)",
+      "which",
+      "that"
+     ],
+     "label": "8. the competition"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "was",
+     "accept": [
+      "was"
+     ],
+     "label": "1. The scientist said the reef"
+    },
+    "g2": {
+     "correct": "walking",
+     "accept": [
+      "walking"
+     ],
+     "label": "2. The guide suggested"
+    },
+    "g3": {
+     "correct": "sources",
+     "accept": [
+      "sources"
+     ],
+     "label": "3. two independent"
+    },
+    "g4": {
+     "correct": "was signed",
+     "accept": [
+      "was signed"
+     ],
+     "label": "4. The Treaty of Waitangi"
+    },
+    "g5": {
+     "correct": "gets",
+     "accept": [
+      "gets"
+     ],
+     "label": "5. …if the weather"
+    },
+    "g6": {
+     "correct": "youth hostel",
+     "accept": [
+      "youth hostel"
+     ],
+     "label": "6. We slept in a cheap"
+    },
+    "g7": {
+     "correct": "desert",
+     "accept": [
+      "desert"
+     ],
+     "label": "7. the flat red"
+    },
+    "g8": {
+     "correct": "pick up",
+     "accept": [
+      "pick up"
+     ],
+     "label": "8. Children"
+    }
+   }
+  }
+ }
+}

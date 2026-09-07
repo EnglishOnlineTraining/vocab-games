@@ -1,0 +1,215 @@
+{
+ "unit": "10g-cultural-diversity",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "modern world",
+     "accept": [
+      "modern world"
+     ],
+     "label": "1. A defining feature of the ___",
+     "why": "The text says cultural diversity has become a defining feature of the modern world."
+    },
+    "g2": {
+     "correct": "original",
+     "accept": [
+      "original"
+     ],
+     "label": "2. Diverse teams produce more ___ solutions",
+     "why": "The text says research shows diverse teams tend to produce more original solutions."
+    },
+    "g3": {
+     "correct": "skilled workers",
+     "accept": [
+      "skilled workers"
+     ],
+     "label": "3. Immigration fills shortages of ___",
+     "why": "The text says immigration helps fill shortages of skilled workers."
+    },
+    "g4": {
+     "correct": "belong together",
+     "accept": [
+      "belong together"
+     ],
+     "label": "4. Social cohesion means members ___",
+     "why": "The text defines ‘social cohesion’ as the feeling that members of a society belong together."
+    },
+    "g5": {
+     "correct": "both sides",
+     "accept": [
+      "both sides"
+     ],
+     "label": "5. Integration requires effort from ___",
+     "why": "The text says integration requires effort from both sides, not just newcomers."
+    },
+    "g6": {
+     "correct": "common ground",
+     "accept": [
+      "common ground"
+     ],
+     "label": "6. Sociologists say the key is to find ___",
+     "why": "The text says most sociologists believe the key is to find common ground between groups."
+    },
+    "g7": {
+     "correct": "keep its colour",
+     "accept": [
+      "keep its colour"
+     ],
+     "label": "7. The mosaic metaphor: each culture should ___",
+     "why": "The text says the mosaic metaphor means each culture should keep its colour while contributing to society."
+    },
+    "g8": {
+     "correct": "melting pot",
+     "accept": [
+      "melting pot"
+     ],
+     "label": "8. The opposite of the mosaic model is the ___",
+     "why": "The text contrasts the mosaic model with the melting pot, where differences disappear."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "however",
+     "accept": [
+      "however"
+     ],
+     "label": "1. Diversity is creative; ___, it can also...",
+     "why": "‘However’ shows a contrast between the two halves of the sentence."
+    },
+    "g2": {
+     "correct": "Furthermore",
+     "accept": [
+      "Furthermore"
+     ],
+     "label": "2. ...more innovative. ___, they discovered...",
+     "why": "‘Furthermore’ adds an additional point to the previous sentence."
+    },
+    "g3": {
+     "correct": "Despite",
+     "accept": [
+      "Despite"
+     ],
+     "label": "3. ___ its challenges, diversity makes societies stronger",
+     "why": "‘Despite’ + noun introduces a contrast at the start of the sentence."
+    },
+    "g4": {
+     "correct": "In addition",
+     "accept": [
+      "In addition"
+     ],
+     "label": "4. Integration takes effort from newcomers. ___...",
+     "why": "‘In addition’ adds a further point to the previous sentence."
+    },
+    "g5": {
+     "correct": "rather",
+     "accept": [
+      "rather"
+     ],
+     "label": "5. Not to force people to give up identity; ___...",
+     "why": "‘Rather’ corrects or clarifies the preceding negative statement."
+    },
+    "g6": {
+     "correct": "are often cited",
+     "accept": [
+      "are often cited"
+     ],
+     "label": "6. Cities ___ as examples (passive)",
+     "why": "The cities named are plural, so the passive uses ‘are often cited’."
+    },
+    "g7": {
+     "correct": "Moreover",
+     "accept": [
+      "Moreover"
+     ],
+     "label": "7. Produced vibrant art. ___, it has also...",
+     "why": "‘Moreover’ adds an additional point to the previous sentence."
+    },
+    "g8": {
+     "correct": "must be guaranteed",
+     "accept": [
+      "must be guaranteed"
+     ],
+     "label": "8. Opportunities and respect ___ (passive + modal)",
+     "why": "‘Must’ + passive expresses a strong obligation for how things ought to be guaranteed."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "cultural diversity",
+     "accept": [
+      "cultural diversity"
+     ],
+     "label": "1. Many cultures in one place",
+     "why": "‘Cultural diversity’ is the presence of many different cultures and perspectives in one place."
+    },
+    "g2": {
+     "correct": "integration",
+     "accept": [
+      "integration"
+     ],
+     "label": "2. Becoming part of wider society",
+     "why": "‘Integration’ is the process by which people from different backgrounds join the wider society."
+    },
+    "g3": {
+     "correct": "multiculturalism",
+     "accept": [
+      "multiculturalism"
+     ],
+     "label": "3. Accepting many cultures together",
+     "why": "‘Multiculturalism’ is a society or policy that accepts many cultures existing together."
+    },
+    "g4": {
+     "correct": "social cohesion",
+     "accept": [
+      "social cohesion"
+     ],
+     "label": "4. Feeling of shared bond and belonging",
+     "why": "‘Social cohesion’ is the feeling that all members of a community share a bond."
+    },
+    "g5": {
+     "correct": "tolerance",
+     "accept": [
+      "tolerance"
+     ],
+     "label": "5. Accepting beliefs different from your own",
+     "why": "‘Tolerance’ is accepting and respecting opinions and beliefs that differ from your own."
+    },
+    "g6": {
+     "correct": "bias",
+     "accept": [
+      "bias"
+     ],
+     "label": "6. Hidden belief favouring one group",
+     "why": "‘Bias’ is a hidden belief or assumption that unfairly favours one group over another."
+    },
+    "g7": {
+     "correct": "supremacy",
+     "accept": [
+      "supremacy"
+     ],
+     "label": "7. Right to rule over others",
+     "why": "‘Supremacy’ is the idea that one group has the right or natural ability to rule over others."
+    },
+    "g8": {
+     "correct": "perspective",
+     "accept": [
+      "perspective"
+     ],
+     "label": "8. A point of view on a situation",
+     "why": "‘Perspective’ is a point of view or angle from which a situation is considered."
+    }
+   }
+  }
+ }
+}

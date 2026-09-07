@@ -1,0 +1,145 @@
+{
+ "unit": "8c-around-southwest",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "deserts",
+     "accept": [
+      "deserts"
+     ],
+     "label": "1. Land of hot ___",
+     "why": "The Southwest is known for its hot deserts, not oceans or forests."
+    },
+    "g2": {
+     "correct": "towns",
+     "accept": [
+      "towns"
+     ],
+     "label": "2. Many people live in small ___",
+     "why": "The text describes people living in small towns, not big cities."
+    },
+    "g3": {
+     "correct": "history",
+     "accept": [
+      "history"
+     ],
+     "label": "3. A rich ___",
+     "why": "The text says the Southwest has a rich history shaped by Native American and Mexican cultures."
+    },
+    "g4": {
+     "correct": "role",
+     "accept": [
+      "role"
+     ],
+     "label": "4. A famous ___ model",
+     "why": "“Role model” is the fixed phrase describing Ellen Ochoa, not “rope” or “rose”."
+    },
+    "g5": {
+     "correct": "inspires",
+     "accept": [
+      "inspires"
+     ],
+     "label": "5. She ___ young people",
+     "why": "The text says Ochoa inspires young people to work hard, not ignores or invents them."
+    },
+    "g6": {
+     "correct": "Canyon",
+     "accept": [
+      "Canyon"
+     ],
+     "label": "6. The Grand ___",
+     "why": "The text names the famous Grand Canyon, not a camera or candle."
+    },
+    "g7": {
+     "correct": "weather",
+     "accept": [
+      "weather"
+     ],
+     "label": "7. The warm ___",
+     "why": "Tourists come to enjoy the warm weather, not a window or wallet."
+    },
+    "g8": {
+     "correct": "destination",
+     "accept": [
+      "destination"
+     ],
+     "label": "8. A popular ___",
+     "why": "The Grand Canyon has become a popular destination for holidays."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "have",
+     "accept": [
+      "have"
+     ],
+     "label": "1. I ___ lived in Arizona",
+     "why": "The subject ‘I’ takes ‘have’ in the present perfect, not ‘has’."
+    },
+    "g2": {
+     "correct": "has",
+     "accept": [
+      "has"
+     ],
+     "label": "2. She ___ visited the Grand Canyon",
+     "why": "He/she/it takes ‘has’ in the present perfect, not ‘have’."
+    },
+    "g3": {
+     "correct": "since",
+     "accept": [
+      "since"
+     ],
+     "label": "3. We have known each other ___ 2019",
+     "why": "‘Since’ introduces a specific starting point in time; ‘for’ introduces a duration."
+    },
+    "g4": {
+     "correct": "for",
+     "accept": [
+      "for"
+     ],
+     "label": "4. They have lived here ___ ten years",
+     "why": "‘For’ introduces a duration of time; ‘since’ introduces a starting point."
+    },
+    "g5": {
+     "correct": "has",
+     "accept": [
+      "has"
+     ],
+     "label": "5. Ellen Ochoa ___ inspired",
+     "why": "He/she/it takes ‘has’ in the present perfect."
+    },
+    "g6": {
+     "correct": "never",
+     "accept": [
+      "never"
+     ],
+     "label": "6. I have ___ been to New Mexico",
+     "why": "‘Never’ (= not at any time) is the standard present perfect word for talking about experience."
+    },
+    "g7": {
+     "correct": "since",
+     "accept": [
+      "since"
+     ],
+     "label": "7. He has worked in the same town ___ he was young",
+     "why": "‘Since’ introduces the starting point of the action, not a duration like ‘for’."
+    },
+    "g8": {
+     "correct": "ever",
+     "accept": [
+      "ever"
+     ],
+     "label": "8. Have you ___ eaten Mexican food?",
+     "why": "‘Ever’ is used in present perfect questions asking about experience."
+    }
+   }
+  }
+ }
+}

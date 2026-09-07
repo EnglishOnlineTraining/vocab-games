@@ -1,0 +1,145 @@
+{
+ "unit": "8g-pacific-northwest",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "region",
+     "accept": [
+      "region"
+     ],
+     "label": "1. A beautiful ___",
+     "why": "The text describes the Pacific Northwest as a region of the United States."
+    },
+    "g2": {
+     "correct": "forests",
+     "accept": [
+      "forests"
+     ],
+     "label": "2. Thick green ___",
+     "why": "The text says the region is famous for its thick green forests."
+    },
+    "g3": {
+     "correct": "Native",
+     "accept": [
+      "Native"
+     ],
+     "label": "3. ___ Americans have lived here",
+     "why": "The text refers to Native Americans, who have lived in the area for thousands of years."
+    },
+    "g4": {
+     "correct": "totem",
+     "accept": [
+      "totem"
+     ],
+     "label": "4. Carved tall wooden ___ poles",
+     "why": "The text says Native Americans carved tall wooden totem poles."
+    },
+    "g5": {
+     "correct": "national",
+     "accept": [
+      "national"
+     ],
+     "label": "5. Home to huge ___ parks",
+     "why": "The text says the region is home to huge national parks like Mount Rainier."
+    },
+    "g6": {
+     "correct": "technology",
+     "accept": [
+      "technology"
+     ],
+     "label": "6. Known for coffee and ___",
+     "why": "The text says Seattle is known for its coffee culture and technology companies."
+    },
+    "g7": {
+     "correct": "wildlife",
+     "accept": [
+      "wildlife"
+     ],
+     "label": "7. The ___ is rich and varied",
+     "why": "The text says the wildlife is rich and varied because of the frequent rain."
+    },
+    "g8": {
+     "correct": "scenery",
+     "accept": [
+      "scenery"
+     ],
+     "label": "8. The amazing ___",
+     "why": "The text says people move here for the fresh air and amazing scenery."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "isn't it",
+     "accept": [
+      "isn't it"
+     ],
+     "label": "1. Seattle is in the Pacific Northwest, ___?",
+     "why": "A positive statement with ‘is’ takes a negative tag: ‘isn’t it’."
+    },
+    "g2": {
+     "correct": "doesn't it",
+     "accept": [
+      "doesn't it"
+     ],
+     "label": "2. It rains a lot in Oregon, ___?",
+     "why": "A positive simple present statement takes a negative tag with ‘does’: ‘doesn’t it’."
+    },
+    "g3": {
+     "correct": "didn't they",
+     "accept": [
+      "didn't they"
+     ],
+     "label": "3. Native Americans carved totem poles, ___?",
+     "why": "A positive simple past statement takes a negative tag with ‘did’: ‘didn’t they’."
+    },
+    "g4": {
+     "correct": "haven't you",
+     "accept": [
+      "haven't you"
+     ],
+     "label": "4. You have visited a national park, ___?",
+     "why": "A positive present perfect statement takes a negative tag with ‘have’: ‘haven’t you’."
+    },
+    "g5": {
+     "correct": "is it",
+     "accept": [
+      "is it"
+     ],
+     "label": "5. Mount Rainier isn't in Texas, ___?",
+     "why": "A negative statement takes a positive tag: ‘is it’."
+    },
+    "g6": {
+     "correct": "aren't they",
+     "accept": [
+      "aren't they"
+     ],
+     "label": "6. The forests are very green, ___?",
+     "why": "A positive statement with ‘are’ takes a negative tag: ‘aren’t they’."
+    },
+    "g7": {
+     "correct": "can't we",
+     "accept": [
+      "can't we"
+     ],
+     "label": "7. We can hike near the waterfalls, ___?",
+     "why": "A positive statement with ‘can’ takes a negative tag: ‘can’t we’."
+    },
+    "g8": {
+     "correct": "do they",
+     "accept": [
+      "do they"
+     ],
+     "label": "8. They don't get much sun in winter, ___?",
+     "why": "A negative statement takes a positive tag: ‘do they’."
+    }
+   }
+  }
+ }
+}

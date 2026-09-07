@@ -1,0 +1,191 @@
+{
+ "unit": "uni-review",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Since",
+     "accept": [
+      "Since"
+     ],
+     "label": "1."
+    },
+    "g2": {
+     "correct": "8",
+     "accept": [
+      "8"
+     ],
+     "label": "2. Chinese businesspeople wanting something in return"
+    },
+    "g3": {
+     "correct": "same length",
+     "accept": [
+      "same length"
+     ],
+     "label": "3. A good paraphrase is roughly the"
+    },
+    "g4": {
+     "correct": "anecdotal",
+     "accept": [
+      "anecdotal"
+     ],
+     "label": "4. Personal stories rather than systematic research"
+    },
+    "g5": {
+     "correct": "a basic structure of ideas or rules that provides guidance",
+     "accept": [
+      "a basic structure of ideas or rules that provides guidance"
+     ],
+     "label": "5. framework"
+    },
+    "g6": {
+     "correct": "appear to support",
+     "accept": [
+      "appear to support"
+     ],
+     "label": "6. The data"
+    },
+    "g7": {
+     "correct": "d",
+     "accept": [
+      "d"
+     ],
+     "label": "7. The Accounts Department's slow payment..."
+    },
+    "g8": {
+     "correct": "9",
+     "accept": [
+      "9"
+     ],
+     "label": "8. h) Glad it worked out. Anyway, are you free..."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "rose steadily",
+     "accept": [
+      "rose steadily"
+     ],
+     "label": "1. Usage"
+    },
+    "g2": {
+     "correct": "leading to",
+     "accept": [
+      "leading to"
+     ],
+     "label": "2. Deforestation has accelerated,"
+    },
+    "g3": {
+     "correct": "2",
+     "accept": [
+      "2"
+     ],
+     "label": "3. talks about how guanxi is changing"
+    },
+    "g4": {
+     "correct": "synonyms",
+     "accept": [
+      "synonyms"
+     ],
+     "label": "4. Techniques include using"
+    },
+    "g5": {
+     "correct": "methodology",
+     "accept": [
+      "methodology"
+     ],
+     "label": "5. The detailed plan of how a study was conducted"
+    },
+    "g6": {
+     "correct": "detection",
+     "accept": [
+      "detection"
+     ],
+     "label": "6. AI"
+    },
+    "g7": {
+     "correct": "could be",
+     "accept": [
+      "could be"
+     ],
+     "label": "7. Climate change"
+    },
+    "g8": {
+     "correct": "establish",
+     "accept": [
+      "establish"
+     ],
+     "label": "8. Planning to"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "8",
+     "accept": [
+      "8"
+     ],
+     "label": "1. i) Well, I had to build up my relationship again..."
+    },
+    "g2": {
+     "correct": "rapid",
+     "accept": [
+      "rapid"
+     ],
+     "label": "2. The most"
+    },
+    "g3": {
+     "correct": "as a result",
+     "accept": [
+      "as a result"
+     ],
+     "label": "3. Fail to cite sources;"
+    },
+    "g4": {
+     "correct": "6",
+     "accept": [
+      "6"
+     ],
+     "label": "4. networking through multinational companies"
+    },
+    "g5": {
+     "correct": "The way individuals interact and obtain news has been revolutionised by the swift expansion of online networking services.",
+     "accept": [
+      "The way individuals interact and obtain news has been revolutionised by the swift expansion of online networking services."
+     ],
+     "label": "5. Best paraphrase of the social media sentence"
+    },
+    "g6": {
+     "correct": "objective",
+     "accept": [
+      "objective"
+     ],
+     "label": "6. Presents facts without personal feelings"
+    },
+    "g7": {
+     "correct": "acknowledge",
+     "accept": [
+      "acknowledge"
+     ],
+     "label": "7. provided they"
+    },
+    "g8": {
+     "correct": "suggest",
+     "accept": [
+      "suggest"
+     ],
+     "label": "8. The results"
+    }
+   }
+  }
+ }
+}

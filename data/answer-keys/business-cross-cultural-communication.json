@@ -1,0 +1,111 @@
+{
+ "unit": "business-cross-cultural-communication",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Respect",
+     "accept": [
+      "Respect"
+     ],
+     "label": "1. Indirect communication shows:",
+     "why": "The text says indirect communication shows respect in some cultures."
+    },
+    "g2": {
+     "correct": "Decision-making styles",
+     "accept": [
+      "Decision-making styles"
+     ],
+     "label": "2. Meeting differences can involve:",
+     "why": "The text says meeting styles vary between cultures, which includes how decisions are made."
+    },
+    "g3": {
+     "correct": "Understanding cultural differences",
+     "accept": [
+      "Understanding cultural differences"
+     ],
+     "label": "3. Essential for success in international teams?",
+     "why": "The text says understanding these differences prevents misunderstandings in international teams."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Should",
+     "accept": [
+      "Should"
+     ],
+     "label": "1. \"___ we schedule a time after lunch?\"",
+     "why": "‘Should we...?’ is the natural way to make a joint suggestion; ‘Would we...?’ is not idiomatic here."
+    },
+    "g2": {
+     "correct": "Would",
+     "accept": [
+      "Would"
+     ],
+     "label": "2. \"___ you prefer a different meeting style?\"",
+     "why": "‘Would you prefer...?’ is the standard polite way to ask about someone's preference."
+    },
+    "g3": {
+     "correct": "Would",
+     "accept": [
+      "Would"
+     ],
+     "label": "3. \"___ you mind explaining this tradition?\"",
+     "why": "‘Would you mind + -ing’ is the standard polite request form."
+    },
+    "g4": {
+     "correct": "Shall",
+     "accept": [
+      "Shall"
+     ],
+     "label": "4. \"___ I assist with anything?\"",
+     "why": "‘Shall I...?’ is the standard polite way to offer help."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Cultural awareness",
+     "accept": [
+      "Cultural awareness"
+     ],
+     "label": "1. Understanding and respecting cultures",
+     "why": "‘Cultural awareness’ means understanding and respecting different cultures."
+    },
+    "g2": {
+     "correct": "stereotype",
+     "accept": [
+      "stereotype"
+     ],
+     "label": "2. An oversimplified belief about a group",
+     "why": "A ‘stereotype’ is an oversimplified belief about a group."
+    },
+    "g3": {
+     "correct": "etiquette",
+     "accept": [
+      "etiquette"
+     ],
+     "label": "3. Rules about dress and greetings",
+     "why": "‘Etiquette’ covers the rules of polite behaviour, like dress and greetings."
+    },
+    "g4": {
+     "correct": "perspective",
+     "accept": [
+      "perspective"
+     ],
+     "label": "4. Understanding a colleague's ___",
+     "why": "‘Perspective’ means someone's point of view, which helps communication."
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,161 @@
+{
+ "unit": "7c-school-day-in-britain",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "uniform",
+     "accept": [
+      "uniform"
+     ],
+     "label": "1. Most students wear a school ___",
+     "why": "The sentence describes a white shirt and a tie — features of a school uniform."
+    },
+    "g2": {
+     "correct": "blazer",
+     "accept": [
+      "blazer"
+     ],
+     "label": "2. The ___ is a special jacket",
+     "why": "A ‘blazer’ is the special jacket worn in school colours."
+    },
+    "g3": {
+     "correct": "assembly",
+     "accept": [
+      "assembly"
+     ],
+     "label": "3. Students go to ___ in the hall",
+     "why": "‘Assembly’ is when the head teacher talks to all students in the hall."
+    },
+    "g4": {
+     "correct": "timetable",
+     "accept": [
+      "timetable"
+     ],
+     "label": "4. A ___ shows lessons and times",
+     "why": "A ‘timetable’ shows which lessons you have and when."
+    },
+    "g5": {
+     "correct": "subject",
+     "accept": [
+      "subject"
+     ],
+     "label": "5. Maths is an important ___",
+     "why": "‘Subject’ is the word for an area of study like Maths or English."
+    },
+    "g6": {
+     "correct": "break",
+     "accept": [
+      "break"
+     ],
+     "label": "6. A short ___ at half past ten",
+     "why": "A ‘break’ is a short pause when students can go outside."
+    },
+    "g7": {
+     "correct": "canteen",
+     "accept": [
+      "canteen"
+     ],
+     "label": "7. Students eat lunch in the ___",
+     "why": "The ‘canteen’ is where students eat their lunch."
+    },
+    "g8": {
+     "correct": "homework",
+     "accept": [
+      "homework"
+     ],
+     "label": "8. Teachers give ___",
+     "why": "‘Homework’ is work students finish at home in the evening."
+    },
+    "g9": {
+     "correct": "terms",
+     "accept": [
+      "terms"
+     ],
+     "label": "9. The school year has three ___",
+     "why": "‘Terms’ are the three parts of the British school year: autumn, spring, summer."
+    },
+    "g10": {
+     "correct": "house",
+     "accept": [
+      "house"
+     ],
+     "label": "10. Many schools have a ___ system",
+     "why": "A ‘house’ system puts students into teams that compete in events."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "12 years old",
+     "accept": [
+      "12 years old"
+     ],
+     "label": "1. How old is Lily?",
+     "why": "The text says Lily is 12 years old."
+    },
+    "g2": {
+     "correct": "Black shoes",
+     "accept": [
+      "Black shoes"
+     ],
+     "label": "2. What must Lily wear on her feet?",
+     "why": "The text says Lily wears black shoes and trainers are not allowed."
+    },
+    "g3": {
+     "correct": "Quarter to nine",
+     "accept": [
+      "Quarter to nine"
+     ],
+     "label": "3. What time does school start?",
+     "why": "The text says school starts at quarter to nine."
+    },
+    "g4": {
+     "correct": "Art",
+     "accept": [
+      "Art"
+     ],
+     "label": "4. Lily's favourite subject?",
+     "why": "The text says Lily's favourite subject is Art."
+    },
+    "g5": {
+     "correct": "Fish and chips",
+     "accept": [
+      "Fish and chips"
+     ],
+     "label": "5. What did Lily eat for lunch?",
+     "why": "The text says Lily had fish and chips for lunch."
+    },
+    "g6": {
+     "correct": "Three o'clock",
+     "accept": [
+      "Three o'clock"
+     ],
+     "label": "6. What time does school finish?",
+     "why": "The text says school finishes at three o'clock."
+    },
+    "g7": {
+     "correct": "Hockey",
+     "accept": [
+      "Hockey"
+     ],
+     "label": "7. What sport did Lily play in PE?",
+     "why": "The text says Lily played hockey in PE."
+    },
+    "g8": {
+     "correct": "Because it is Wednesday and she has no club",
+     "accept": [
+      "Because it is Wednesday and she has no club"
+     ],
+     "label": "8. Why does Lily go straight home?",
+     "why": "The text says Lily has Drama Club on Tuesdays and Football Club on Thursdays, so on Wednesday she goes straight home."
+    }
+   }
+  }
+ }
+}

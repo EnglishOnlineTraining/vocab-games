@@ -1,0 +1,183 @@
+{
+ "unit": "it-working-in-it",
+ "sections": {
+  "exA": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "a1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. The infrastructure team looks after...",
+     "why": "The text says the infrastructure team looks after servers, network and hardware."
+    },
+    "a2": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "2. Anna's job is...",
+     "why": "The text names Anna as the system administrator."
+    },
+    "a3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. The helpdesk opens at 7:30 because...",
+     "why": "The text says the helpdesk opens early because many colleagues in production start early."
+    },
+    "a4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. During their first year, apprentices...",
+     "why": "The text says apprentices rotate through all three teams in their first year."
+    },
+    "a5": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "5. New apprentices start in...",
+     "why": "The text says apprentices start with the support team."
+    },
+    "a6": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "6. On Fridays, the apprentice should ask...",
+     "why": "The text says to ask Anna for help on Fridays, when Denis doesn't work."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "b1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. The IT ___ is responsible for all computers",
+     "why": "The IT department is responsible for all computers in the company."
+    },
+    "b2": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "2. Manages servers and installs updates",
+     "why": "A system administrator manages servers and installs updates."
+    },
+    "b3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. Call this if your laptop stops working",
+     "why": "You call the helpdesk if your laptop stops working."
+    },
+    "b4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. Monitors, keyboards and printers",
+     "why": "Monitors, keyboards and printers are examples of hardware."
+    },
+    "b5": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "5. Programs and operating systems",
+     "why": "Programs and operating systems are called software."
+    },
+    "b6": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "6. New employees get a ___ with username/password",
+     "why": "Every new employee gets a user account with a username and password."
+    },
+    "b7": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "7. The support team works in two ___",
+     "why": "The support team works in two shifts: early and late."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "c1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. Anna ___ user accounts",
+     "why": "He/she in the simple present adds ‘-s’: Anna manages."
+    },
+    "c2": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "2. The helpdesk ___ at 7:30",
+     "why": "A singular subject in the simple present adds ‘-s’: opens."
+    },
+    "c3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. Denis ___ work on Fridays",
+     "why": "Simple present negatives for he/she use ‘doesn't’."
+    },
+    "c4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. ___ the developers work flexible hours?",
+     "why": "‘Developers’ is plural, so the question uses ‘Do’, not ‘Does’."
+    },
+    "c5": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "5. The team meeting ___ place every Monday",
+     "why": "A singular subject in the simple present adds ‘-s’: takes."
+    },
+    "c6": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "6. Where ___ your mentor sit?",
+     "why": "Simple present questions for he/she use ‘does’."
+    },
+    "c7": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "7. Apprentices ___ through all three teams",
+     "why": "‘Apprentices’ is plural, so it takes the base form ‘rotate’."
+    }
+   }
+  }
+ }
+}

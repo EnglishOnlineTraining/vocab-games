@@ -1,0 +1,183 @@
+{
+ "unit": "it-workplace-safety",
+ "sections": {
+  "exA": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "a1": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "1. Before entering, visitors must...",
+     "why": "The text says visitors must sign in and complete a safety briefing before entering."
+    },
+    "a2": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "2. An ESD wrist strap protects...",
+     "why": "The text says even a small electrostatic discharge can destroy a memory module."
+    },
+    "a3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. The yellow tape marks...",
+     "why": "The text says floor panels were removed and the area marked with yellow tape."
+    },
+    "a4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. Ear protection is recommended...",
+     "why": "The text says ear protection is recommended for stays of more than one hour."
+    },
+    "a5": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "5. Food and drink in the server room are...",
+     "why": "The text says food and drink are strictly forbidden."
+    },
+    "a6": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "6. The full risk assessment is...",
+     "why": "The text says a full risk assessment is attached to the memo."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "b1": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "1. Good ___ prevents trip hazards",
+     "why": "Good cable management prevents loose cables from becoming trip hazards."
+    },
+    "b2": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "2. Carried out before electrical work",
+     "why": "A risk assessment is carried out before electrical work."
+    },
+    "b3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. Adjusting your chair and monitor height",
+     "why": "Good ergonomics prevents back and neck pain."
+    },
+    "b4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. A wet floor without a warning sign",
+     "why": "A wet floor without a warning sign is a serious hazard."
+    },
+    "b5": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "5. The room needs constant ___",
+     "why": "Servers produce heat, so the room needs constant ventilation."
+    },
+    "b6": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "6. Wrist straps protect components from ___",
+     "why": "Anti-static wrist straps protect components from ESD (electrostatic discharge)."
+    },
+    "b7": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "7. Helmets, gloves and safety glasses",
+     "why": "Helmets, gloves and safety glasses are examples of PPE (personal protective equipment)."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "c1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. Wear an ESD strap (strict rule)",
+     "why": "‘Must’ expresses a strict, non-negotiable obligation."
+    },
+    "c2": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "2. Eat or drink (forbidden)",
+     "why": "‘Mustn't’ expresses a prohibition."
+    },
+    "c3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. Report accidents (required by law)",
+     "why": "‘Have to’ expresses an external obligation imposed by law."
+    },
+    "c4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. Take screen breaks (good for eyes)",
+     "why": "‘Should’ expresses a recommendation."
+    },
+    "c5": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "5. Wear a helmet (optional but recommended)",
+     "why": "‘Ought to’ expresses a recommendation, matching ‘optional but recommended’."
+    },
+    "c6": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "6. Be certified for high-voltage work",
+     "why": "‘Must’ expresses a strict requirement — untrained staff are not allowed."
+    },
+    "c7": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "7. Lift heavy servers alone (ask for help instead)",
+     "why": "‘Shouldn't’ expresses advice against an action."
+    }
+   }
+  }
+ }
+}

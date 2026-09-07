@@ -1,0 +1,145 @@
+{
+ "unit": "msa-c-sports-day",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "9:30",
+     "accept": [
+      "9:30"
+     ],
+     "label": "1. What time should students meet?",
+     "why": "The recording says all students should meet at nine thirty."
+    },
+    "g2": {
+     "correct": "main field",
+     "accept": [
+      "main field"
+     ],
+     "label": "2. Where should students meet?",
+     "why": "The recording says students should meet on the main field."
+    },
+    "g3": {
+     "correct": "hat and water",
+     "accept": [
+      "hat and water"
+     ],
+     "label": "3. What to bring because of the weather?",
+     "why": "The recording says to bring a hat and water bottle because it will be hot and sunny."
+    },
+    "g4": {
+     "correct": "sports hall",
+     "accept": [
+      "sports hall"
+     ],
+     "label": "4. What happens if it rains?",
+     "why": "The recording says Sports Day will move to the sports hall if it rains."
+    },
+    "g5": {
+     "correct": "drinks and snacks",
+     "accept": [
+      "drinks and snacks"
+     ],
+     "label": "5. What is the Parents' Association selling?",
+     "why": "The recording says the Parents' Association will sell cold drinks and snacks."
+    },
+    "g6": {
+     "correct": "long jump",
+     "accept": [
+      "long jump"
+     ],
+     "label": "6. Which event is Jack considering?",
+     "why": "The recording says Jack is thinking about the long jump instead of the sprint."
+    },
+    "g7": {
+     "correct": "eight hundred metres",
+     "accept": [
+      "eight hundred metres"
+     ],
+     "label": "7. Which event will Mia do?",
+     "why": "The recording says Mia is going to do the eight hundred metres."
+    },
+    "g8": {
+     "correct": "three o'clock",
+     "accept": [
+      "three o'clock"
+     ],
+     "label": "8. What time is the relay race?",
+     "why": "The recording says the relay race is at three o'clock."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Shot Put",
+     "accept": [
+      "Shot Put"
+     ],
+     "label": "1. Noah — strong, loves throwing",
+     "why": "The text says Shot Put is all about power and strength."
+    },
+    "g2": {
+     "correct": "Sprint",
+     "accept": [
+      "Sprint"
+     ],
+     "label": "2. Aisha — quick, short distances",
+     "why": "The text says the Sprint is a fast, short race over in seconds."
+    },
+    "g3": {
+     "correct": "Relay Race",
+     "accept": [
+      "Relay Race"
+     ],
+     "label": "3. Leon — prefers teamwork",
+     "why": "The text says the Relay Race is a team event where you win or lose together."
+    },
+    "g4": {
+     "correct": "Long Jump",
+     "accept": [
+      "Long Jump"
+     ],
+     "label": "4. Zoe — good jumper, sand pit",
+     "why": "The text says the Long Jump involves leaping into the sand pit."
+    },
+    "g5": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "5. Sun cream costs money",
+     "why": "The text says free sun cream is available at the first-aid tent."
+    },
+    "g6": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "6. First-aid tent next to changing rooms",
+     "why": "The text confirms the first-aid tent is next to the changing rooms."
+    },
+    "g7": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "7. You have to pay for water",
+     "why": "The text says water is free all day; only snacks must be paid for."
+    },
+    "g8": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "8. Only the winner gets a medal",
+     "why": "The text says medals go to the first three places in every event, not just the winner."
+    }
+   }
+  }
+ }
+}
