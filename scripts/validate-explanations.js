@@ -40,6 +40,17 @@ function selectOptions(html, id) {
 // gap key's trailing digits and look for "id=\"<base>' +" - so a genuinely
 // missing/typo'd id still hard-errors, but a legitimately JS-templated one
 // only warns (its options can't be statically verified either way).
+// A gap the student types the answer into is an <input>, not a <select>, so it
+// has no option list and the option check below is meaningless for it (it would
+// warn on every single answer). The id-existence check still applies, so a
+// missing or typo'd id hard-errors exactly as before.
+function isTypedInput(html, id) {
+  const i = html.indexOf('id="' + id + '"');
+  if (i === -1) return false;
+  const open = html.lastIndexOf('<', i);
+  return open !== -1 && /^<input\b/i.test(html.slice(open, i));
+}
+
 function isTemplatedId(html, id) {
   const base = id.replace(/\d+$/, '');
   if (base === id) return false;
@@ -73,6 +84,7 @@ Object.keys(data).forEach(unit => {
         }
         return;
       }
+      if (isTypedInput(html, id)) return;   // typed gap — nothing to check against
       const accept = d.accept || [d.correct];
       accept.forEach(a => {
         if (opts.indexOf(a) === -1) {
