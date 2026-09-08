@@ -6,18 +6,18 @@
    "multi": true,
    "gaps": {
     "g1": {
+     "correct": "learned",
+     "accept": [
+      "learned"
+     ],
+     "label": "1. If more young people"
+    },
+    "g2": {
      "correct": "were swept out to sea",
      "accept": [
       "were swept out to sea"
      ],
-     "label": "1. Two swimmers"
-    },
-    "g2": {
-     "correct": "day",
-     "accept": [
-      "day"
-     ],
-     "label": "2. what a normal working"
+     "label": "2. Two swimmers"
     },
     "g3": {
      "correct": "reach",
@@ -27,26 +27,26 @@
      "label": "3. temperatures can"
     },
     "g4": {
+     "correct": "go on",
+     "accept": [
+      "go on"
+     ],
+     "label": "4. Diwali celebrations"
+    },
+    "g5": {
+     "correct": "day",
+     "accept": [
+      "day"
+     ],
+     "label": "5. what a normal working"
+    },
+    "g6": {
      "correct": "who",
      "accept": [
       "who",
       "that"
      ],
-     "label": "4. thousands of people"
-    },
-    "g5": {
-     "correct": "is protected",
-     "accept": [
-      "is protected"
-     ],
-     "label": "5. The kiwi bird"
-    },
-    "g6": {
-     "correct": "isn’t going to be called off",
-     "accept": [
-      "isn’t going to be called off"
-     ],
-     "label": "6. the search"
+     "label": "6. thousands of people"
     },
     "g7": {
      "correct": "would go",
@@ -56,11 +56,11 @@
      "label": "7. …she"
     },
     "g8": {
-     "correct": "go on",
+     "correct": "playing",
      "accept": [
-      "go on"
+      "playing"
      ],
-     "label": "8. Diwali celebrations"
+     "label": "8. Many young Irish people enjoy"
     }
    }
   },
@@ -69,25 +69,25 @@
    "multi": true,
    "gaps": {
     "g1": {
-     "correct": "playing",
-     "accept": [
-      "playing"
-     ],
-     "label": "1. Many young Irish people enjoy"
-    },
-    "g2": {
      "correct": "published",
      "accept": [
       "published"
      ],
-     "label": "2. the article"
+     "label": "1. the article"
+    },
+    "g2": {
+     "correct": "is protected",
+     "accept": [
+      "is protected"
+     ],
+     "label": "2. The kiwi bird"
     },
     "g3": {
-     "correct": "learned",
+     "correct": "don't protect",
      "accept": [
-      "learned"
+      "don't protect"
      ],
-     "label": "3. If more young people"
+     "label": "3. If we"
     },
     "g4": {
      "correct": "giant",
@@ -97,34 +97,34 @@
      "label": "4. We saw a"
     },
     "g5": {
-     "correct": "unpaid",
-     "accept": [
-      "unpaid"
-     ],
-     "label": "5. the work is usually"
-    },
-    "g6": {
      "correct": "had already put up",
      "accept": [
       "had already put up"
      ],
-     "label": "6. the guides"
+     "label": "5. the guides"
+    },
+    "g6": {
+     "correct": "go on",
+     "accept": [
+      "go on"
+     ],
+     "label": "6. \"to continue happening\""
     },
     "g7": {
+     "correct": "unpaid",
+     "accept": [
+      "unpaid"
+     ],
+     "label": "7. the work is usually"
+    },
+    "g8": {
      "correct": "— (not needed)",
      "accept": [
       "— (not needed)",
       "which",
       "that"
      ],
-     "label": "7. the competition"
-    },
-    "g8": {
-     "correct": "was signed",
-     "accept": [
-      "was signed"
-     ],
-     "label": "8. The Treaty of Waitangi"
+     "label": "8. the competition"
     }
    }
   },
@@ -133,60 +133,60 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "to be served",
-     "accept": [
-      "to be served"
-     ],
-     "label": "1. want"
-    },
-    "g2": {
      "correct": "was",
      "accept": [
       "was"
      ],
-     "label": "2. The scientist said the reef"
+     "label": "1. The scientist said the reef"
     },
-    "g3": {
-     "correct": "go on",
-     "accept": [
-      "go on"
-     ],
-     "label": "3. \"to continue happening\""
-    },
-    "g4": {
+    "g2": {
      "correct": "walking",
      "accept": [
       "walking"
      ],
-     "label": "4. The guide suggested"
+     "label": "2. The guide suggested"
     },
-    "g5": {
+    "g3": {
      "correct": "sources",
      "accept": [
       "sources"
      ],
-     "label": "5. two independent"
+     "label": "3. two independent"
+    },
+    "g4": {
+     "correct": "was signed",
+     "accept": [
+      "was signed"
+     ],
+     "label": "4. The Treaty of Waitangi"
+    },
+    "g5": {
+     "correct": "gets",
+     "accept": [
+      "gets"
+     ],
+     "label": "5. …if the weather"
     },
     "g6": {
-     "correct": "don't protect",
-     "accept": [
-      "don't protect"
-     ],
-     "label": "6. If we"
-    },
-    "g7": {
      "correct": "youth hostel",
      "accept": [
       "youth hostel"
      ],
-     "label": "7. We slept in a cheap"
+     "label": "6. We slept in a cheap"
+    },
+    "g7": {
+     "correct": "desert",
+     "accept": [
+      "desert"
+     ],
+     "label": "7. the flat red"
     },
     "g8": {
-     "correct": "is",
+     "correct": "pick up",
      "accept": [
-      "is"
+      "pick up"
      ],
-     "label": "8. where the office"
+     "label": "8. Children"
     }
    }
   }
