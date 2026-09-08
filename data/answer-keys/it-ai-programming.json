@@ -1,0 +1,183 @@
+{
+ "unit": "it-ai-programming",
+ "sections": {
+  "exA": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "a1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. Advantage of conventional programming?",
+     "why": "The text says every line is written and understood by a human in conventional programming."
+    },
+    "a2": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "2. AI assistants make routine tasks...",
+     "why": "The text says developers complete routine tasks up to 40 per cent faster with AI tools."
+    },
+    "a3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. AI assistants draw suggestions from...",
+     "why": "The text says AI assistants draw on millions of open-source examples."
+    },
+    "a4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. One risk of AI-suggested code?",
+     "why": "The text says suggested code may contain bugs the developer does not notice."
+    },
+    "a5": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "5. Why does the IP question exist?",
+     "why": "The text says suggestions can resemble existing licensed code."
+    },
+    "a6": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "6. The recommendation is to...",
+     "why": "The text recommends adopting Copilot internally but keeping strict review for customer-facing code."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "b1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. Finding and fixing errors in code",
+     "why": "‘Debugging’ means finding and fixing errors in code."
+    },
+    "b2": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "2. Colleagues check your code before merging",
+     "why": "A ‘code review’ is when colleagues check your code before it is merged."
+    },
+    "b3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. A step-by-step procedure",
+     "why": "An ‘algorithm’ is a step-by-step procedure for solving a problem."
+    },
+    "b4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. Can be read, modified, shared by anyone",
+     "why": "‘Open-source’ software can be read, modified and shared by anyone."
+    },
+    "b5": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "5. Copyright and patents protect...",
+     "why": "Copyright and patents protect intellectual property."
+    },
+    "b6": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "6. Unbalanced training data causes...",
+     "why": "Unbalanced training data can cause a model to show bias."
+    },
+    "b7": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "7. Describes all phases of development",
+     "why": "The ‘SDLC’ (Software Development Life Cycle) describes all phases from planning to maintenance."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "c1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. Copilot is a tool ___ suggests code",
+     "why": "‘That’ introduces a defining relative clause about a thing (a tool)."
+    },
+    "c2": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "2. Slower; ___, it gives full control",
+     "why": "‘X; however, Y’ is the standard pattern for a contrast after a semicolon."
+    },
+    "c3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. ___ AI tools are fast, suggestions must be checked",
+     "why": "‘Although X, Y’ is the standard pattern for a concession at the start of a sentence."
+    },
+    "c4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. A developer ___ uses AI tools...",
+     "why": "‘Who’ introduces a defining relative clause about a person."
+    },
+    "c5": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "5. Copilot uses open-source code, ___ conventional programming...",
+     "why": "‘X, whereas Y’ is the standard pattern for a direct contrast between two clauses."
+    },
+    "c6": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "6. Bias is a problem ___ can cause unfair results",
+     "why": "‘That’ introduces a defining relative clause about a thing (a problem)."
+    },
+    "c7": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "7. The code ___ the AI suggested...",
+     "why": "‘Which’ introduces a defining relative clause about a thing (the code)."
+    }
+   }
+  }
+ }
+}

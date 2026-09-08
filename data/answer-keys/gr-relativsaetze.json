@@ -1,0 +1,149 @@
+{
+ "unit": "gr-relativsaetze",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "who",
+     "accept": [
+      "who"
+     ],
+     "label": "1 Last year I stayed with a family"
+    },
+    "g2": {
+     "correct": "which",
+     "accept": [
+      "which"
+     ],
+     "label": "2 Bristol is a city"
+    },
+    "g3": {
+     "correct": "whose",
+     "accept": [
+      "whose"
+     ],
+     "label": "3 My exchange partner,"
+    },
+    "g4": {
+     "correct": "where",
+     "accept": [
+      "where"
+     ],
+     "label": "4 One afternoon we visited the harbour"
+    },
+    "g5": {
+     "correct": "that",
+     "accept": [
+      "that"
+     ],
+     "label": "5 It was the best holiday"
+    },
+    "g6": {
+     "correct": "who",
+     "accept": [
+      "who"
+     ],
+     "label": "6 Ellie also has a brother"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": ", who,",
+     "accept": [
+      ", who,"
+     ],
+     "label": "1 My father"
+    },
+    "g2": {
+     "correct": "who",
+     "accept": [
+      "who"
+     ],
+     "label": "2 The students"
+    },
+    "g3": {
+     "correct": ", which,",
+     "accept": [
+      ", which,"
+     ],
+     "label": "3 Bristol"
+    },
+    "g4": {
+     "correct": "that",
+     "accept": [
+      "that"
+     ],
+     "label": "4 Is that the café"
+    },
+    "g5": {
+     "correct": ", who,",
+     "accept": [
+      ", who,"
+     ],
+     "label": "5 Our English teacher"
+    },
+    "g6": {
+     "correct": "that",
+     "accept": [
+      "that"
+     ],
+     "label": "6 I need a laptop"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "(nichts nötig)",
+     "accept": [
+      "(nichts nötig)"
+     ],
+     "label": "1 The film"
+    },
+    "g2": {
+     "correct": "that",
+     "accept": [
+      "that"
+     ],
+     "label": "2 The bus"
+    },
+    "g3": {
+     "correct": "in",
+     "accept": [
+      "in"
+     ],
+     "label": "3 This is the house"
+    },
+    "g4": {
+     "correct": "with",
+     "accept": [
+      "with"
+     ],
+     "label": "4 She is the colleague"
+    },
+    "g5": {
+     "correct": "that",
+     "accept": [
+      "that"
+     ],
+     "label": "5 Everything"
+    },
+    "g6": {
+     "correct": "when",
+     "accept": [
+      "when"
+     ],
+     "label": "6 I still remember the day"
+    }
+   }
+  }
+ }
+}

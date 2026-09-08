@@ -1,0 +1,191 @@
+{
+ "unit": "be-review",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Social",
+     "accept": [
+      "Social"
+     ],
+     "label": "1. Rising eco-friendly product preference"
+    },
+    "g2": {
+     "correct": "3+ years of marketing experience",
+     "accept": [
+      "3+ years of marketing experience"
+     ],
+     "label": "2. Experience required?"
+    },
+    "g3": {
+     "correct": "Values, behaviors, and work environment",
+     "accept": [
+      "Values, behaviors, and work environment"
+     ],
+     "label": "3. What is company culture?"
+    },
+    "g4": {
+     "correct": "The CEO",
+     "accept": [
+      "The CEO"
+     ],
+     "label": "4. Who is at the top?"
+    },
+    "g5": {
+     "correct": "Unique Selling Proposition",
+     "accept": [
+      "Unique Selling Proposition"
+     ],
+     "label": "5. What does USP stand for?"
+    },
+    "g6": {
+     "correct": "To show you are genuinely interested",
+     "accept": [
+      "To show you are genuinely interested"
+     ],
+     "label": "6. Why research the company?"
+    },
+    "g7": {
+     "correct": "Reaching agreement",
+     "accept": [
+      "Reaching agreement"
+     ],
+     "label": "7. \"A solution that works for both sides.\""
+    },
+    "g8": {
+     "correct": "deposit",
+     "accept": [
+      "deposit"
+     ],
+     "label": "8. The tenant paid a security"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "must",
+     "accept": [
+      "must"
+     ],
+     "label": "1. Breach notifications"
+    },
+    "g2": {
+     "correct": "look forward to hearing from you",
+     "accept": [
+      "look forward to hearing from you"
+     ],
+     "label": "2. Formal closing"
+    },
+    "g3": {
+     "correct": "coordination",
+     "accept": [
+      "coordination"
+     ],
+     "label": "3. Good"
+    },
+    "g4": {
+     "correct": "Transition",
+     "accept": [
+      "Transition"
+     ],
+     "label": "4. \"Now let's turn to the budget forecast...\""
+    },
+    "g5": {
+     "correct": "Two",
+     "accept": [
+      "Two"
+     ],
+     "label": "5. How many will attend the workshop?"
+    },
+    "g6": {
+     "correct": "Would",
+     "accept": [
+      "Would"
+     ],
+     "label": "6. \""
+    },
+    "g7": {
+     "correct": "It increases engagement and innovation",
+     "accept": [
+      "It increases engagement and innovation"
+     ],
+     "label": "7. Main benefit of Theory Y?"
+    },
+    "g8": {
+     "correct": "Technological",
+     "accept": [
+      "Technological"
+     ],
+     "label": "8. Investment in AI and automation"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "competency",
+     "accept": [
+      "competency"
+     ],
+     "label": "1. An important"
+    },
+    "g2": {
+     "correct": "vision",
+     "accept": [
+      "vision"
+     ],
+     "label": "2. Describes what the company wants to become"
+    },
+    "g3": {
+     "correct": "department",
+     "accept": [
+      "department"
+     ],
+     "label": "3. Finance"
+    },
+    "g4": {
+     "correct": "target",
+     "accept": [
+      "target"
+     ],
+     "label": "4. Companies"
+    },
+    "g5": {
+     "correct": "To show you are engaged and serious about the role",
+     "accept": [
+      "To show you are engaged and serious about the role"
+     ],
+     "label": "5. Why prepare questions?"
+    },
+    "g6": {
+     "correct": "Making a proposal",
+     "accept": [
+      "Making a proposal"
+     ],
+     "label": "6. \"We'd like to suggest a price of €50...\""
+    },
+    "g7": {
+     "correct": "eviction",
+     "accept": [
+      "eviction"
+     ],
+     "label": "7. The landlord began"
+    },
+    "g8": {
+     "correct": "should",
+     "accept": [
+      "should"
+     ],
+     "label": "8. Employees"
+    }
+   }
+  }
+ }
+}

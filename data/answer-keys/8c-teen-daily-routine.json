@@ -1,0 +1,215 @@
+{
+ "unit": "8c-teen-daily-routine",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Ohio",
+     "accept": [
+      "Ohio"
+     ],
+     "label": "1. A small town in ___",
+     "why": "The text says Jake lives in a small town in Ohio."
+    },
+    "g2": {
+     "correct": "six",
+     "accept": [
+      "six"
+     ],
+     "label": "2. Gets up at half past ___",
+     "why": "The text says Jake gets up at half past six on school days."
+    },
+    "g3": {
+     "correct": "cereal",
+     "accept": [
+      "cereal"
+     ],
+     "label": "3. Usually ___ with milk",
+     "why": "The text says breakfast is usually cereal with milk and orange juice."
+    },
+    "g4": {
+     "correct": "bus",
+     "accept": [
+      "bus"
+     ],
+     "label": "4. Goes there by ___",
+     "why": "The text says Jake goes to school by bus with his friends."
+    },
+    "g5": {
+     "correct": "practice",
+     "accept": [
+      "practice"
+     ],
+     "label": "5. Football ___",
+     "why": "The text says Jake has football practice twice a week."
+    },
+    "g6": {
+     "correct": "dinner",
+     "accept": [
+      "dinner"
+     ],
+     "label": "6. The family eats ___ together",
+     "why": "The text says the family eats dinner together at six."
+    },
+    "g7": {
+     "correct": "homework",
+     "accept": [
+      "homework"
+     ],
+     "label": "7. Does his ___",
+     "why": "The text says Jake does his homework after dinner."
+    },
+    "g8": {
+     "correct": "bed",
+     "accept": [
+      "bed"
+     ],
+     "label": "8. Goes to ___ at half past nine",
+     "why": "The text says Jake goes to bed at half past nine."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "gets",
+     "accept": [
+      "gets"
+     ],
+     "label": "1. Jake ___ up every morning",
+     "why": "Present simple: he/she/it takes -s — 'Jake gets up'."
+    },
+    "g2": {
+     "correct": "goes",
+     "accept": [
+      "goes"
+     ],
+     "label": "2. His sister ___ to a different school",
+     "why": "Third person singular: 'go' becomes 'goes'."
+    },
+    "g3": {
+     "correct": "Does",
+     "accept": [
+      "Does"
+     ],
+     "label": "3. ___ your brother play basketball?",
+     "why": "Questions with he/she/it start with 'Does' + infinitive."
+    },
+    "g4": {
+     "correct": "don't",
+     "accept": [
+      "don't"
+     ],
+     "label": "4. We ___ like homework",
+     "why": "Negatives with I/you/we/they use 'don't' + infinitive."
+    },
+    "g5": {
+     "correct": "watches",
+     "accept": [
+      "watches"
+     ],
+     "label": "5. Jake ___ TV in the evening",
+     "why": "After he/she/it, 'watch' becomes 'watches' (-es after -ch)."
+    },
+    "g6": {
+     "correct": "Do",
+     "accept": [
+      "Do"
+     ],
+     "label": "6. ___ your friends live near the school?",
+     "why": "Questions with plural 'they/your friends' start with 'Do'."
+    },
+    "g7": {
+     "correct": "works",
+     "accept": [
+      "works"
+     ],
+     "label": "7. His mum ___ in a hospital",
+     "why": "Third person singular: 'she works' — add -s."
+    },
+    "g8": {
+     "correct": "went",
+     "accept": [
+      "went"
+     ],
+     "label": "8. Last Saturday, Jake ___ to a baseball game",
+     "why": "Review from 8c-arriving-northeast: the simple past of 'go' is 'went'."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "is never",
+     "accept": [
+      "is never"
+     ],
+     "label": "1. Jake ___ late for school",
+     "why": "With 'to be', the adverb comes after it: 'is never late'."
+    },
+    "g2": {
+     "correct": "always does",
+     "accept": [
+      "always does"
+     ],
+     "label": "2. He ___ his homework",
+     "why": "With a normal verb, the adverb comes before it: 'always does'."
+    },
+    "g3": {
+     "correct": "sometimes go",
+     "accept": [
+      "sometimes go"
+     ],
+     "label": "3. They ___ to the gym",
+     "why": "Word order: adverb + main verb — 'sometimes go'."
+    },
+    "g4": {
+     "correct": "is often",
+     "accept": [
+      "is often"
+     ],
+     "label": "4. She ___ tired on Mondays",
+     "why": "After 'to be': 'She is often tired'."
+    },
+    "g5": {
+     "correct": "usually eat",
+     "accept": [
+      "usually eat"
+     ],
+     "label": "5. We ___ pizza on Fridays",
+     "why": "Before the main verb: 'usually eat'."
+    },
+    "g6": {
+     "correct": "never drinks",
+     "accept": [
+      "never drinks"
+     ],
+     "label": "6. My dad ___ coffee",
+     "why": "Before the main verb: 'never drinks' — no extra 'does' needed."
+    },
+    "g7": {
+     "correct": "always brush",
+     "accept": [
+      "always brush"
+     ],
+     "label": "7. I ___ my teeth twice a day",
+     "why": "Before the main verb: 'always brush'."
+    },
+    "g8": {
+     "correct": "is never",
+     "accept": [
+      "is never"
+     ],
+     "label": "8. School ___ open on Saturdays",
+     "why": "With 'to be', the adverb follows: 'is never open'."
+    }
+   }
+  }
+ }
+}

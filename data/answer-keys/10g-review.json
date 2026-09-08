@@ -1,0 +1,191 @@
+{
+ "unit": "10g-review",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "I think it’s time the school took a closer look at this policy.",
+     "accept": [
+      "I think it’s time the school took a closer look at this policy."
+     ],
+     "label": "… Introducing an opinion about a new school policy — which version sounds like a blog post?"
+    },
+    "g2": {
+     "correct": "staying",
+     "accept": [
+      "staying"
+     ],
+     "label": "2. Instead of"
+    },
+    "g3": {
+     "correct": "55% voted to remain in the UK",
+     "accept": [
+      "55% voted to remain in the UK"
+     ],
+     "label": "3. Result of the 2014 referendum"
+    },
+    "g4": {
+     "correct": "the narrator's inner conflict about what to do",
+     "accept": [
+      "the narrator's inner conflict about what to do"
+     ],
+     "label": "4. What the clouds/storm mainly represent"
+    },
+    "g5": {
+     "correct": "sustainable",
+     "accept": [
+      "sustainable"
+     ],
+     "label": "5. A"
+    },
+    "g6": {
+     "correct": "louder",
+     "accept": [
+      "louder"
+     ],
+     "label": "6. The bagpipes are"
+    },
+    "g7": {
+     "correct": "kneeling during the anthem",
+     "accept": [
+      "kneeling during the anthem"
+     ],
+     "label": "7. Kaepernick protested by"
+    },
+    "g8": {
+     "correct": "universities",
+     "accept": [
+      "universities"
+     ],
+     "label": "8. Both cities are famous for their"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "felt",
+     "accept": [
+      "felt"
+     ],
+     "label": "1. 'I feel nervous' → she"
+    },
+    "g2": {
+     "correct": "leave",
+     "accept": [
+      "leave"
+     ],
+     "label": "2. Eleven states decided to"
+    },
+    "g3": {
+     "correct": "such as",
+     "accept": [
+      "such as"
+     ],
+     "label": "3. (example) Unique,"
+    },
+    "g4": {
+     "correct": "perspective",
+     "accept": [
+      "perspective"
+     ],
+     "label": "4. A point of view on a situation"
+    },
+    "g5": {
+     "correct": "simile",
+     "accept": [
+      "simile"
+     ],
+     "label": "5. 'as welcome as a wolf at a birthday party'"
+    },
+    "g6": {
+     "correct": "solidarity",
+     "accept": [
+      "solidarity"
+     ],
+     "label": "6. supporting a group you are not part of"
+    },
+    "g7": {
+     "correct": "for",
+     "accept": [
+      "for"
+     ],
+     "label": "7. It’s important"
+    },
+    "g8": {
+     "correct": "In what ways has the club made a difference for your child?",
+     "accept": [
+      "In what ways has the club made a difference for your child?"
+     ],
+     "label": "8. Goal: get a parent’s honest opinion on how the club has helped their child."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "might",
+     "accept": [
+      "might"
+     ],
+     "label": "1. They"
+    },
+    "g2": {
+     "correct": "for",
+     "accept": [
+      "for"
+     ],
+     "label": "2. 8 (review) — “It was surprising"
+    },
+    "g3": {
+     "correct": "echo chamber",
+     "accept": [
+      "echo chamber"
+     ],
+     "label": "3. mainly meeting similar opinions"
+    },
+    "g4": {
+     "correct": "right",
+     "accept": [
+      "right"
+     ],
+     "label": "4. a fundamental entitlement"
+    },
+    "g5": {
+     "correct": "faster",
+     "accept": [
+      "faster"
+     ],
+     "label": "5. Smartphones have made communication"
+    },
+    "g6": {
+     "correct": "Practising",
+     "accept": [
+      "Practising"
+     ],
+     "label": "6."
+    },
+    "g7": {
+     "correct": "pioneer",
+     "accept": [
+      "pioneer"
+     ],
+     "label": "7. creates a style others follow"
+    },
+    "g8": {
+     "correct": "insisted",
+     "accept": [
+      "insisted"
+     ],
+     "label": "8. defending himself → he"
+    }
+   }
+  }
+ }
+}

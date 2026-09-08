@@ -1,0 +1,163 @@
+{
+ "unit": "gr-simple-past",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "travelled",
+     "accept": [
+      "travelled"
+     ],
+     "label": "1 Last Saturday, Tom"
+    },
+    "g2": {
+     "correct": "arrived",
+     "accept": [
+      "arrived"
+     ],
+     "label": "2 They"
+    },
+    "g3": {
+     "correct": "visited",
+     "accept": [
+      "visited"
+     ],
+     "label": "3 First, they"
+    },
+    "g4": {
+     "correct": "climbed",
+     "accept": [
+      "climbed"
+     ],
+     "label": "4 Then Tom"
+    },
+    "g5": {
+     "correct": "ate",
+     "accept": [
+      "ate"
+     ],
+     "label": "5 In the evening, he"
+    },
+    "g6": {
+     "correct": "didn’t get",
+     "accept": [
+      "didn’t get"
+     ],
+     "label": "6 He"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "stopped",
+     "accept": [
+      "stopped"
+     ],
+     "label": "1 The bus (stop)"
+    },
+    "g2": {
+     "correct": "bought",
+     "accept": [
+      "bought"
+     ],
+     "label": "2 He (buy)"
+    },
+    "g3": {
+     "correct": "went",
+     "accept": [
+      "went"
+     ],
+     "label": "3 They (go)"
+    },
+    "g4": {
+     "correct": "saw",
+     "accept": [
+      "saw"
+     ],
+     "label": "4 We (see)"
+    },
+    "g5": {
+     "correct": "cried",
+     "accept": [
+      "cried"
+     ],
+     "label": "5 The baby (cry)"
+    },
+    "g6": {
+     "correct": "wrote",
+     "accept": [
+      "wrote"
+     ],
+     "label": "6 I (write)"
+    },
+    "g7": {
+     "correct": "died",
+     "accept": [
+      "died"
+     ],
+     "label": "7 Shakespeare (die)"
+    },
+    "g8": {
+     "correct": "swam",
+     "accept": [
+      "swam"
+     ],
+     "label": "8 They (swim)"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Did",
+     "accept": [
+      "Did"
+     ],
+     "label": "1"
+    },
+    "g2": {
+     "correct": "come",
+     "accept": [
+      "come"
+     ],
+     "label": "2 She didn’t"
+    },
+    "g3": {
+     "correct": "didn’t",
+     "accept": [
+      "didn’t"
+     ],
+     "label": "3 We"
+    },
+    "g4": {
+     "correct": "did",
+     "accept": [
+      "did"
+     ],
+     "label": "4 What"
+    },
+    "g5": {
+     "correct": "did",
+     "accept": [
+      "did"
+     ],
+     "label": "5 I"
+    },
+    "g6": {
+     "correct": "Did",
+     "accept": [
+      "Did"
+     ],
+     "label": "6"
+    }
+   }
+  }
+ }
+}

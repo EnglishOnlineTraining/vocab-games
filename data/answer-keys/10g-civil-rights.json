@@ -1,0 +1,199 @@
+{
+ "unit": "10g-civil-rights",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "bus",
+     "accept": [
+      "bus"
+     ],
+     "label": "1. Rosa Parks refused to give up her seat on a ___",
+     "why": "She refused to give up her seat on a Montgomery bus in 1955."
+    },
+    "g2": {
+     "correct": "nonviolent",
+     "accept": [
+      "nonviolent"
+     ],
+     "label": "2. King believed change should come through ___",
+     "why": "King argued for nonviolent protest as the way to change."
+    },
+    "g3": {
+     "correct": "1963",
+     "accept": [
+      "1963"
+     ],
+     "label": "3. 'I Have a Dream' was delivered in ___",
+     "why": "The speech was given at the March on Washington in 1963."
+    },
+    "g4": {
+     "correct": "means",
+     "accept": [
+      "means"
+     ],
+     "label": "4. Malcolm X: defend themselves ___",
+     "why": "He argued for self-defence 'by any means necessary'."
+    },
+    "g5": {
+     "correct": "independence",
+     "accept": [
+      "independence"
+     ],
+     "label": "5. Malcolm X focused on Black pride and ___",
+     "why": "His emphasis was on Black pride and independence."
+    },
+    "g6": {
+     "correct": "assassinated",
+     "accept": [
+      "assassinated"
+     ],
+     "label": "6. Both leaders were ___",
+     "why": "The text says both King and Malcolm X were assassinated."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "However",
+     "accept": [
+      "However"
+     ],
+     "label": "1. King preferred peaceful protest. ___",
+     "why": "'However' opens a new sentence to signal a contrast with what came before."
+    },
+    "g2": {
+     "correct": "whereas",
+     "accept": [
+      "whereas"
+     ],
+     "label": "2. King focused on white America, ___",
+     "why": "'Whereas' joins two clauses that contrast directly with each other."
+    },
+    "g3": {
+     "correct": "On the other hand",
+     "accept": [
+      "On the other hand"
+     ],
+     "label": "3. Some see King's methods as more effective. ___",
+     "why": "'On the other hand' introduces the opposing view in a balanced argument."
+    },
+    "g4": {
+     "correct": "nevertheless",
+     "accept": [
+      "nevertheless"
+     ],
+     "label": "4. Both men wanted equality; ___",
+     "why": "After a semicolon, 'nevertheless' concedes the point and then contrasts it."
+    },
+    "g5": {
+     "correct": "Furthermore",
+     "accept": [
+      "Furthermore"
+     ],
+     "label": "5. King organised marches and boycotts. ___",
+     "why": "'Furthermore' adds another supporting point rather than contrasting."
+    },
+    "g6": {
+     "correct": "While",
+     "accept": [
+      "While"
+     ],
+     "label": "6. ___ (sentence opener)",
+     "why": "'While' opens a subordinate clause that contrasts with the main clause."
+    },
+    "g7": {
+     "correct": "In contrast",
+     "accept": [
+      "In contrast"
+     ],
+     "label": "7. Malcolm X's approach was more radical. ___",
+     "why": "'In contrast' begins a sentence setting one idea against the previous one."
+    },
+    "g8": {
+     "correct": "despite",
+     "accept": [
+      "despite"
+     ],
+     "label": "8. Both leaders are honoured today ___",
+     "why": "'Despite' is followed by a noun or -ing form, not a full clause."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "segregation",
+     "accept": [
+      "segregation"
+     ],
+     "label": "1. laws keeping people apart",
+     "why": "Segregation is the legal separation of racial groups."
+    },
+    "g2": {
+     "correct": "boycott",
+     "accept": [
+      "boycott"
+     ],
+     "label": "2. refusing to buy as protest",
+     "why": "A boycott withdraws custom from a business as a protest."
+    },
+    "g3": {
+     "correct": "discrimination",
+     "accept": [
+      "discrimination"
+     ],
+     "label": "3. unfair treatment because of race",
+     "why": "Discrimination is treating people unfairly for who they are."
+    },
+    "g4": {
+     "correct": "sit-in",
+     "accept": [
+      "sit-in"
+     ],
+     "label": "4. sitting and refusing to leave",
+     "why": "A sit-in occupies a place peacefully until demands are met."
+    },
+    "g5": {
+     "correct": "equality",
+     "accept": [
+      "equality"
+     ],
+     "label": "5. same rights and opportunities",
+     "why": "Equality means everyone has the same rights and chances."
+    },
+    "g6": {
+     "correct": "activist",
+     "accept": [
+      "activist"
+     ],
+     "label": "6. someone campaigning for change",
+     "why": "An activist campaigns actively for social or political change."
+    },
+    "g7": {
+     "correct": "nonviolent",
+     "accept": [
+      "nonviolent"
+     ],
+     "label": "7. protesting without violence",
+     "why": "Nonviolent protest rejects the use of force."
+    },
+    "g8": {
+     "correct": "right",
+     "accept": [
+      "right"
+     ],
+     "label": "8. a fundamental entitlement",
+     "why": "A right is an entitlement such as freedom of speech."
+    }
+   }
+  }
+ }
+}

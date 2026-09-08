@@ -1,0 +1,163 @@
+{
+ "unit": "gr-adjektive-adverbien",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "delicious",
+     "accept": [
+      "delicious"
+     ],
+     "label": "1 Last night I had a really"
+    },
+    "g2": {
+     "correct": "quickly",
+     "accept": [
+      "quickly"
+     ],
+     "label": "2 The waiters worked"
+    },
+    "g3": {
+     "correct": "beautiful",
+     "accept": [
+      "beautiful"
+     ],
+     "label": "3 The dining room looked"
+    },
+    "g4": {
+     "correct": "terrible",
+     "accept": [
+      "terrible"
+     ],
+     "label": "4 My brother once cooked pasta at home, and it tasted"
+    },
+    "g5": {
+     "correct": "friendly",
+     "accept": [
+      "friendly"
+     ],
+     "label": "5 The staff were so"
+    },
+    "g6": {
+     "correct": "happily",
+     "accept": [
+      "happily"
+     ],
+     "label": "6 We left the restaurant"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "beautifully",
+     "accept": [
+      "beautifully"
+     ],
+     "label": "1 She sings"
+    },
+    "g2": {
+     "correct": "good",
+     "accept": [
+      "good"
+     ],
+     "label": "2 The soup smells"
+    },
+    "g3": {
+     "correct": "fast",
+     "accept": [
+      "fast"
+     ],
+     "label": "3 He drove"
+    },
+    "g4": {
+     "correct": "hard",
+     "accept": [
+      "hard"
+     ],
+     "label": "4 They worked"
+    },
+    "g5": {
+     "correct": "easy",
+     "accept": [
+      "easy"
+     ],
+     "label": "5 The exam was easier than I thought — really"
+    },
+    "g6": {
+     "correct": "happily",
+     "accept": [
+      "happily"
+     ],
+     "label": "6 She smiled"
+    },
+    "g7": {
+     "correct": "brilliant",
+     "accept": [
+      "brilliant"
+     ],
+     "label": "7 That is a"
+    },
+    "g8": {
+     "correct": "correctly",
+     "accept": [
+      "correctly"
+     ],
+     "label": "8 He answered every question"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "faster",
+     "accept": [
+      "faster"
+     ],
+     "label": "1 My bike is"
+    },
+    "g2": {
+     "correct": "best",
+     "accept": [
+      "best"
+     ],
+     "label": "2 This is the"
+    },
+    "g3": {
+     "correct": "better",
+     "accept": [
+      "better"
+     ],
+     "label": "3 She sings"
+    },
+    "g4": {
+     "correct": "more difficult",
+     "accept": [
+      "more difficult"
+     ],
+     "label": "4 This exercise is"
+    },
+    "g5": {
+     "correct": "the most carefully",
+     "accept": [
+      "the most carefully"
+     ],
+     "label": "5 He drives"
+    },
+    "g6": {
+     "correct": "worst",
+     "accept": [
+      "worst"
+     ],
+     "label": "6 Today is the"
+    }
+   }
+  }
+ }
+}

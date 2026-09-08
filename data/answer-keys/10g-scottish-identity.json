@@ -1,0 +1,215 @@
+{
+ "unit": "10g-scottish-identity",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "border",
+     "accept": [
+      "border"
+     ],
+     "label": "1. More than living inside a ___",
+     "why": "The text says Scottish identity is about more than living inside a border on a map."
+    },
+    "g2": {
+     "correct": "scots",
+     "accept": [
+      "scots"
+     ],
+     "label": "2. As well as English and Gaelic, Scots speak ___",
+     "why": "The text says many Scots also speak the Scots language."
+    },
+    "g3": {
+     "correct": "child",
+     "accept": [
+      "child"
+     ],
+     "label": "3. A \"bairn\" is a ___",
+     "why": "The text defines a \"bairn\" as a child."
+    },
+    "g4": {
+     "correct": "tired",
+     "accept": [
+      "tired"
+     ],
+     "label": "4. To be \"wabbit\" means to be ___",
+     "why": "The text defines \"wabbit\" as meaning tired."
+    },
+    "g5": {
+     "correct": "english",
+     "accept": [
+      "english"
+     ],
+     "label": "5. Scots was wrongly seen as \"bad ___\"",
+     "why": "The text says Scots was once wrongly seen as \"bad English\"."
+    },
+    "g6": {
+     "correct": "1707",
+     "accept": [
+      "1707"
+     ],
+     "label": "6. Part of the UK since ___",
+     "why": "The text says Scotland has been part of the UK since 1707."
+    },
+    "g7": {
+     "correct": "education",
+     "accept": [
+      "education"
+     ],
+     "label": "7. Scotland kept its own legal, church and ___ system",
+     "why": "The text says Scotland kept its own legal, church and education systems."
+    },
+    "g8": {
+     "correct": "independence",
+     "accept": [
+      "independence"
+     ],
+     "label": "8. In 2014, Scots voted on ___",
+     "why": "The text says Scots voted in a 2014 referendum on independence."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Although",
+     "accept": [
+      "Although"
+     ],
+     "label": "1. ___ Scotland is part of the UK...",
+     "why": "‘Although’ introduces a contrast at the start of the sentence."
+    },
+    "g2": {
+     "correct": "as well as",
+     "accept": [
+      "as well as"
+     ],
+     "label": "2. English ___ Gaelic and Scots",
+     "why": "‘As well as’ adds further items to a list."
+    },
+    "g3": {
+     "correct": "for example",
+     "accept": [
+      "for example"
+     ],
+     "label": "3. Its own words; ___, \"wee\" means small",
+     "why": "‘For example’ introduces a specific instance."
+    },
+    "g4": {
+     "correct": "However",
+     "accept": [
+      "However"
+     ],
+     "label": "4. Seen as \"bad English\". ___, it is now recognised",
+     "why": "‘However’ shows a contrast with the previous sentence."
+    },
+    "g5": {
+     "correct": "but",
+     "accept": [
+      "but"
+     ],
+     "label": "5. Voted to stay, ___ many still feel strongly",
+     "why": "‘But’ shows a contrast between the two clauses."
+    },
+    "g6": {
+     "correct": "so",
+     "accept": [
+      "so"
+     ],
+     "label": "6. Kept its own church, ___ identity stayed strong",
+     "why": "‘So’ shows the result of the previous clause."
+    },
+    "g7": {
+     "correct": "because",
+     "accept": [
+      "because"
+     ],
+     "label": "7. Identity matters ___ it connects them to history",
+     "why": "‘Because’ introduces the reason identity matters."
+    },
+    "g8": {
+     "correct": "Therefore",
+     "accept": [
+      "Therefore"
+     ],
+     "label": "8. ___, most Scots see their identity as proud",
+     "why": "‘Therefore’ introduces a concluding statement."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "however",
+     "accept": [
+      "however"
+     ],
+     "label": "1. (contrast) Edinburgh is old; ___...",
+     "why": "‘However’ signals a contrast between the two clauses."
+    },
+    "g2": {
+     "correct": "because",
+     "accept": [
+      "because"
+     ],
+     "label": "2. (reason) Proud ___ their history is rich",
+     "why": "‘Because’ introduces the reason for the pride."
+    },
+    "g3": {
+     "correct": "so",
+     "accept": [
+      "so"
+     ],
+     "label": "3. (result) It rained all day, ___ we stayed inside",
+     "why": "‘So’ introduces the result of the rain."
+    },
+    "g4": {
+     "correct": "as well as",
+     "accept": [
+      "as well as"
+     ],
+     "label": "4. (addition) Its own words ___ its own grammar",
+     "why": "‘As well as’ adds a further point."
+    },
+    "g5": {
+     "correct": "such as",
+     "accept": [
+      "such as"
+     ],
+     "label": "5. (example) Unique, ___ \"bairn\" and \"wee\"",
+     "why": "‘Such as’ introduces specific examples."
+    },
+    "g6": {
+     "correct": "Despite",
+     "accept": [
+      "Despite"
+     ],
+     "label": "6. (contrast) ___ the cold weather...",
+     "why": "‘Despite’ + noun introduces a contrast at the start of the sentence."
+    },
+    "g7": {
+     "correct": "therefore",
+     "accept": [
+      "therefore"
+     ],
+     "label": "7. (result) The debate was close; ___...",
+     "why": "‘Therefore’ introduces the result of the close debate."
+    },
+    "g8": {
+     "correct": "Although",
+     "accept": [
+      "Although"
+     ],
+     "label": "8. (concession) ___ Scots is different...",
+     "why": "‘Although’ introduces a concession — a point conceded despite the main claim."
+    }
+   }
+  }
+ }
+}

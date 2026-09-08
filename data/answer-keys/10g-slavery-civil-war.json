@@ -1,0 +1,215 @@
+{
+ "unit": "10g-slavery-civil-war",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "plantations",
+     "accept": [
+      "plantations"
+     ],
+     "label": "1. Enslaved people worked on ___",
+     "why": "The text says enslaved African people were forced to work on plantations."
+    },
+    "g2": {
+     "correct": "unpaid",
+     "accept": [
+      "unpaid"
+     ],
+     "label": "2. The South's economy depended on ___ labour",
+     "why": "The text says the South's economy depended on unpaid labour."
+    },
+    "g3": {
+     "correct": "abolished",
+     "accept": [
+      "abolished"
+     ],
+     "label": "3. The North had already ___ slavery",
+     "why": "The text says the northern states had already abolished slavery."
+    },
+    "g4": {
+     "correct": "spread",
+     "accept": [
+      "spread"
+     ],
+     "label": "4. Lincoln was against the ___ of slavery",
+     "why": "The text says Lincoln was against the spread of slavery."
+    },
+    "g5": {
+     "correct": "leave",
+     "accept": [
+      "leave"
+     ],
+     "label": "5. Eleven states decided to ___ the US",
+     "why": "The text says eleven southern states decided to leave the United States."
+    },
+    "g6": {
+     "correct": "1861",
+     "accept": [
+      "1861"
+     ],
+     "label": "6. The Civil War began in ___",
+     "why": "The text says the Civil War began in 1861."
+    },
+    "g7": {
+     "correct": "emancipation",
+     "accept": [
+      "emancipation"
+     ],
+     "label": "7. Lincoln issued the ___ Proclamation",
+     "why": "The text says Lincoln issued the Emancipation Proclamation in 1863."
+    },
+    "g8": {
+     "correct": "northern",
+     "accept": [
+      "northern"
+     ],
+     "label": "8. The war ended with victory for the ___ states",
+     "why": "The text says the war ended in 1865 with victory for the northern states."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "had been",
+     "accept": [
+      "had been"
+     ],
+     "label": "1. Millions of people ___ forced to work as slaves",
+     "why": "A state true before the war (a later reference point) uses the past perfect passive."
+    },
+    "g2": {
+     "correct": "was",
+     "accept": [
+      "was"
+     ],
+     "label": "2. When Lincoln ___ elected...",
+     "why": "‘When’ + a single completed event uses the simple past passive."
+    },
+    "g3": {
+     "correct": "abolished",
+     "accept": [
+      "abolished"
+     ],
+     "label": "3. The North had already ___ slavery",
+     "why": "This completes the past perfect ‘had already abolished’ with the past participle."
+    },
+    "g4": {
+     "correct": "had won",
+     "accept": [
+      "had won"
+     ],
+     "label": "4. By 1865, the northern states ___ the war",
+     "why": "‘By 1865’ signals an action completed by that past point, so the past perfect is used."
+    },
+    "g5": {
+     "correct": "lasted",
+     "accept": [
+      "lasted"
+     ],
+     "label": "5. The war ___ four long years",
+     "why": "A simple statement of duration uses the simple past: ‘lasted’."
+    },
+    "g6": {
+     "correct": "had",
+     "accept": [
+      "had"
+     ],
+     "label": "6. By the time the Proclamation was issued, the war ___ begun",
+     "why": "‘By the time’ signals an action completed before another past point, so the past perfect is used."
+    },
+    "g7": {
+     "correct": "had gained",
+     "accept": [
+      "had gained"
+     ],
+     "label": "7. Although they ___ their freedom...",
+     "why": "An action completed before the main clause's past time uses the past perfect."
+    },
+    "g8": {
+     "correct": "was",
+     "accept": [
+      "was"
+     ],
+     "label": "8. Slavery ___ abolished in 1865",
+     "why": "‘In 1865’ is a specific past time, so the simple past passive ‘was’ is used."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "started",
+     "accept": [
+      "started"
+     ],
+     "label": "1. When the war ___ (start)",
+     "why": "‘When’ + a single event uses the simple past, contrasting with the ongoing past perfect continuous background."
+    },
+    "g2": {
+     "correct": "had turned",
+     "accept": [
+      "had turned"
+     ],
+     "label": "2. By 1860, the North ___ (turn)",
+     "why": "‘By 1860’ signals an action completed by that point, so the past perfect is used."
+    },
+    "g3": {
+     "correct": "won",
+     "accept": [
+      "won"
+     ],
+     "label": "3. Lincoln ___ the election in 1860 (win)",
+     "why": "A specific past year takes the simple past: ‘won’."
+    },
+    "g4": {
+     "correct": "had become",
+     "accept": [
+      "had become"
+     ],
+     "label": "4. The states left after Lincoln ___ president (become)",
+     "why": "‘After’ + past perfect shows one action completed before another past action."
+    },
+    "g5": {
+     "correct": "lasted",
+     "accept": [
+      "lasted"
+     ],
+     "label": "5. The war ___ four years (last)",
+     "why": "A simple statement of duration uses the simple past: ‘lasted’."
+    },
+    "g6": {
+     "correct": "had signed",
+     "accept": [
+      "had signed"
+     ],
+     "label": "6. They were free because Lincoln ___ the Proclamation (sign)",
+     "why": "The cause (signing) happened before the result (being free), so the past perfect is used."
+    },
+    "g7": {
+     "correct": "was",
+     "accept": [
+      "was"
+     ],
+     "label": "7. Slavery ___ abolished in 1865 (be)",
+     "why": "‘In 1865’ is a specific past time, so the simple past ‘was’ is used."
+    },
+    "g8": {
+     "correct": "had gained",
+     "accept": [
+      "had gained"
+     ],
+     "label": "8. Although they ___ freedom (gain)",
+     "why": "An action completed before the main clause's past time uses the past perfect."
+    }
+   }
+  }
+ }
+}

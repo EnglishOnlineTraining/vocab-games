@@ -1,0 +1,84 @@
+{
+ "unit": "9g-famous-hollywood",
+ "sections": {
+  "ex4rel": {
+   "prefix": "ex4-",
+   "multi": true,
+   "gaps": {
+    "g1": {
+     "correct": "who",
+     "accept": [
+      "who",
+      "that"
+     ],
+     "label": "1. thousands of people ___ have big hopes",
+     "why": "People as the subject of the clause take “who” (or “that”)."
+    },
+    "g2": {
+     "correct": "who",
+     "accept": [
+      "who",
+      "that"
+     ],
+     "label": "2. actors ___ want to chase their dreams",
+     "why": "“who” (or “that”) — people acting as the subject."
+    },
+    "g3": {
+     "correct": "— (not needed)",
+     "accept": [
+      "— (not needed)",
+      "which",
+      "that"
+     ],
+     "label": "3. The professions ___ they choose",
+     "why": "A thing as the object: use “which”/“that”, or leave the pronoun out."
+    },
+    "g4": {
+     "correct": "— (not needed)",
+     "accept": [
+      "— (not needed)",
+      "that",
+      "which"
+     ],
+     "label": "4. The age ___ they are",
+     "why": "A thing as the object — “which”/“that”, or omit it."
+    },
+    "g5": {
+     "correct": "who",
+     "accept": [
+      "who",
+      "that"
+     ],
+     "label": "5. People ___ are under 30",
+     "why": "People as the subject — “who”/“that”; it cannot be dropped."
+    },
+    "g6": {
+     "correct": "whose",
+     "accept": [
+      "whose"
+     ],
+     "label": "6. young people ___ parents are in the business",
+     "why": "“whose” shows possession (the people’s parents)."
+    },
+    "g7": {
+     "correct": "— (not needed)",
+     "accept": [
+      "— (not needed)",
+      "which",
+      "that"
+     ],
+     "label": "7. the competition ___ they face",
+     "why": "A thing as the object — “which”/“that”, or omit it."
+    },
+    "g8": {
+     "correct": "whose",
+     "accept": [
+      "whose"
+     ],
+     "label": "8. people ___ main income is from acting",
+     "why": "“whose” shows possession (the people’s income)."
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,163 @@
+{
+ "unit": "gr-present-tenses",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "usually gets",
+     "accept": [
+      "usually gets"
+     ],
+     "label": "1 Leon"
+    },
+    "g2": {
+     "correct": "is sitting",
+     "accept": [
+      "is sitting"
+     ],
+     "label": "2 Right now, he"
+    },
+    "g3": {
+     "correct": "goes",
+     "accept": [
+      "goes"
+     ],
+     "label": "3 He"
+    },
+    "g4": {
+     "correct": "is learning",
+     "accept": [
+      "is learning"
+     ],
+     "label": "4 At the moment, he"
+    },
+    "g5": {
+     "correct": "lives",
+     "accept": [
+      "lives"
+     ],
+     "label": "5 His best friend"
+    },
+    "g6": {
+     "correct": "is coming",
+     "accept": [
+      "is coming"
+     ],
+     "label": "6 Look! The teacher"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "boils",
+     "accept": [
+      "boils"
+     ],
+     "label": "1 Water"
+    },
+    "g2": {
+     "correct": "is singing",
+     "accept": [
+      "is singing"
+     ],
+     "label": "2 Listen! Somebody"
+    },
+    "g3": {
+     "correct": "doesn’t eat",
+     "accept": [
+      "doesn’t eat"
+     ],
+     "label": "3 My sister"
+    },
+    "g4": {
+     "correct": "are having",
+     "accept": [
+      "are having"
+     ],
+     "label": "4 We"
+    },
+    "g5": {
+     "correct": "leaves",
+     "accept": [
+      "leaves"
+     ],
+     "label": "5 The train to Hamburg"
+    },
+    "g6": {
+     "correct": "am reading",
+     "accept": [
+      "am reading"
+     ],
+     "label": "6 I"
+    },
+    "g7": {
+     "correct": "plays",
+     "accept": [
+      "plays"
+     ],
+     "label": "7 He"
+    },
+    "g8": {
+     "correct": "are you doing",
+     "accept": [
+      "are you doing"
+     ],
+     "label": "8 What"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "understand",
+     "accept": [
+      "understand"
+     ],
+     "label": "1 I"
+    },
+    "g2": {
+     "correct": "tastes",
+     "accept": [
+      "tastes"
+     ],
+     "label": "2 This soup"
+    },
+    "g3": {
+     "correct": "is thinking",
+     "accept": [
+      "is thinking"
+     ],
+     "label": "3 Be quiet, please! She"
+    },
+    "g4": {
+     "correct": "Do you know",
+     "accept": [
+      "Do you know"
+     ],
+     "label": "4"
+    },
+    "g5": {
+     "correct": "are taking",
+     "accept": [
+      "are taking"
+     ],
+     "label": "5 We usually walk to school, but today we"
+    },
+    "g6": {
+     "correct": "do you recognise",
+     "accept": [
+      "do you recognise"
+     ],
+     "label": "6 Look at this photo —"
+    }
+   }
+  }
+ }
+}

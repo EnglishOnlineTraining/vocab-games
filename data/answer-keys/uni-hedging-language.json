@@ -1,0 +1,75 @@
+{
+ "unit": "uni-hedging-language",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "suggest",
+     "accept": [
+      "suggest"
+     ],
+     "label": "1. The results ___",
+     "why": "Cautious academic writing says results “suggest”; “prove” and “guarantee” overclaim."
+    },
+    "g2": {
+     "correct": "could be",
+     "accept": [
+      "could be"
+     ],
+     "label": "2. Climate change ___ a factor",
+     "why": "“Could be” hedges the claim; “is” and “must be” state it as certain."
+    },
+    "g3": {
+     "correct": "It is possible that",
+     "accept": [
+      "It is possible that"
+     ],
+     "label": "3. ___ the trend will continue",
+     "why": "This opens the sentence tentatively, where the others assert certainty."
+    },
+    "g4": {
+     "correct": "the majority of",
+     "accept": [
+      "the majority of"
+     ],
+     "label": "4. The survey found that ___ participants",
+     "why": "“The majority of” is accurate and cautious; “all” and “every” overstate the finding."
+    },
+    "g5": {
+     "correct": "indicate",
+     "accept": [
+      "indicate"
+     ],
+     "label": "5. Early studies ___",
+     "why": "Early studies can indicate a direction, but cannot yet confirm or verify it."
+    },
+    "g6": {
+     "correct": "tend to be",
+     "accept": [
+      "tend to be"
+     ],
+     "label": "6. These differences ___",
+     "why": "“Tend to be” allows exceptions; the alternatives claim certainty."
+    },
+    "g7": {
+     "correct": "approximately 70% of",
+     "accept": [
+      "approximately 70% of"
+     ],
+     "label": "7. effective in ___ cases",
+     "why": "An approximate figure is more honest than claiming 100%."
+    },
+    "g8": {
+     "correct": "appear to support",
+     "accept": [
+      "appear to support"
+     ],
+     "label": "8. The data ___ the hypothesis",
+     "why": "“Appear to support” hedges appropriately; the others are absolute claims."
+    }
+   }
+  }
+ }
+}

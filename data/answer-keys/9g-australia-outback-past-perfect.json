@@ -1,0 +1,215 @@
+{
+ "unit": "9g-australia-outback-past-perfect",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "desert",
+     "accept": [
+      "desert"
+     ],
+     "label": "1 — the flat red ___",
+     "why": "A desert is the dry, sandy land around Uluru; a dessert is something you eat."
+    },
+    "g2": {
+     "correct": "attraction",
+     "accept": [
+      "attraction"
+     ],
+     "label": "2 — never a tourist ___",
+     "why": "A place people travel to see is a tourist attraction."
+    },
+    "g3": {
+     "correct": "owners",
+     "accept": [
+      "owners"
+     ],
+     "label": "3 — its traditional ___",
+     "why": "The land was returned to the people who own it — the Anangu, its traditional owners."
+    },
+    "g4": {
+     "correct": "official",
+     "accept": [
+      "official"
+     ],
+     "label": "4 — both names became ___",
+     "why": "Official is the adjective; an officer is a person and an office is a room."
+    },
+    "g5": {
+     "correct": "reach",
+     "accept": [
+      "reach"
+     ],
+     "label": "5 — temperatures can ___ 45°C",
+     "why": "Temperatures reach a number; you arrive at a place, not at a temperature."
+    },
+    "g6": {
+     "correct": "drought",
+     "accept": [
+      "drought"
+     ],
+     "label": "6 — lose everything in a single ___",
+     "why": "A drought is a long period with no rain — the opposite of a flood."
+    },
+    "g7": {
+     "correct": "allowed",
+     "accept": [
+      "allowed"
+     ],
+     "label": "7 — nobody is ___ to climb it",
+     "why": "\"Be allowed to do something\" means to have permission; \"aloud\" means out loud."
+    },
+    "g8": {
+     "correct": "beliefs",
+     "accept": [
+      "beliefs"
+     ],
+     "label": "8 — respect their ___",
+     "why": "Beliefs is the noun (what people believe); \"believes\" is the verb form."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "had already put up",
+     "accept": [
+      "had already put up"
+     ],
+     "label": "1 — the guides ___ the tents",
+     "why": "Putting the tents up happened before we arrived, so it takes the past perfect."
+    },
+    "g2": {
+     "correct": "drove",
+     "accept": [
+      "drove"
+     ],
+     "label": "2 — we ___ four hours",
+     "why": "One finished action at a stated past time (\"last summer\") takes the simple past."
+    },
+    "g3": {
+     "correct": "had left",
+     "accept": [
+      "had left"
+     ],
+     "label": "3 — she ___ her camera at the hotel",
+     "why": "Leaving the camera came first and explains the later problem, so past perfect."
+    },
+    "g4": {
+     "correct": "had set",
+     "accept": [
+      "had set"
+     ],
+     "label": "4 — after the sun ___",
+     "why": "After the earlier of two past events, use the past perfect."
+    },
+    "g5": {
+     "correct": "gave",
+     "accept": [
+      "gave"
+     ],
+     "label": "5 — the government ___ the land back",
+     "why": "A single event with a date and nothing earlier to contrast it with: simple past."
+    },
+    "g6": {
+     "correct": "had lost",
+     "accept": [
+      "had lost"
+     ],
+     "label": "6 — the farmer ___ most of his sheep",
+     "why": "\"By the time\" signals that the losses happened before the rain came."
+    },
+    "g7": {
+     "correct": "had",
+     "accept": [
+      "had"
+     ],
+     "label": "7 — he ___ never seen so many stars",
+     "why": "\"Never ... before that night\" points back beyond the past moment, so had + seen."
+    },
+    "g8": {
+     "correct": "saw",
+     "accept": [
+      "saw"
+     ],
+     "label": "8 — when I ___ the film",
+     "why": "Seeing the film came first here but the sentence tells the two events in order, so the simple past is the natural choice."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "After",
+     "accept": [
+      "After"
+     ],
+     "label": "1 — ___ we had booked the flights",
+     "why": "\"After\" introduces the earlier event; \"until\" and \"while\" would change the meaning."
+    },
+    "g2": {
+     "correct": "until",
+     "accept": [
+      "until"
+     ],
+     "label": "2 — didn’t start ___ everybody had arrived",
+     "why": "\"Not ... until\" means the tour waited for the later moment."
+    },
+    "g3": {
+     "correct": "By",
+     "accept": [
+      "By"
+     ],
+     "label": "3 — ___ the time we reached the campsite",
+     "why": "\"By the time\" is the fixed phrase that goes with the past perfect."
+    },
+    "g4": {
+     "correct": "before",
+     "accept": [
+      "before"
+     ],
+     "label": "4 — never eaten kangaroo ___ she came",
+     "why": "\"Never ... before\" marks the whole time up to her arrival in Australia."
+    },
+    "g5": {
+     "correct": "was given",
+     "accept": [
+      "was given"
+     ],
+     "label": "5 — Uluru ___ back to its owners (passive)",
+     "why": "Uluru receives the action, so the passive is needed — as in the New Zealand unit."
+    },
+    "g6": {
+     "correct": "to stop",
+     "accept": [
+      "to stop"
+     ],
+     "label": "6 — asked tourists ___ climbing (gerund/infinitive)",
+     "why": "\"Ask somebody to do something\" takes the infinitive — from the Ireland gerunds unit."
+    },
+    "g7": {
+     "correct": "had passed",
+     "accept": [
+      "had passed"
+     ],
+     "label": "7 — as soon as the sandstorm ___",
+     "why": "The storm passed first; packing came afterwards."
+    },
+    "g8": {
+     "correct": "had driven",
+     "accept": [
+      "had driven"
+     ],
+     "label": "8 — because he ___ 600 kilometres",
+     "why": "The driving explains why he was tired later, so it belongs in the past perfect."
+    }
+   }
+  }
+ }
+}

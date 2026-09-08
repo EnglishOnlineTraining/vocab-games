@@ -1,0 +1,121 @@
+{
+ "unit": "7g-tudor-past-perfect",
+ "sections": {
+  "exB": {
+   "prefix": "ex2-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "had already learned",
+     "accept": [
+      "had already learned"
+     ],
+     "label": "1. By the time Drake set sail, he ___ to navigate",
+     "why": "The learning came before he set sail → past perfect: had + past participle."
+    },
+    "g2": {
+     "correct": "had become",
+     "accept": [
+      "had become"
+     ],
+     "label": "2. When the Queen knighted him, Drake ___ wealthy",
+     "why": "He became wealthy before the knighting → past perfect: had become."
+    },
+    "g3": {
+     "correct": "had completed",
+     "accept": [
+      "had completed"
+     ],
+     "label": "3. After Drake ___ his voyage, he returned",
+     "why": "“After” marks the earlier action → past perfect: had completed."
+    },
+    "g4": {
+     "correct": "had fought",
+     "accept": [
+      "had fought"
+     ],
+     "label": "4. The soldiers were tired because they ___ all day",
+     "why": "The fighting happened before the tiredness → past perfect: had fought."
+    },
+    "g5": {
+     "correct": "had built",
+     "accept": [
+      "had built"
+     ],
+     "label": "5. By 1588, the Spanish ___ the largest fleet",
+     "why": "Completed before 1588 → past perfect: had built."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "ex3-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "his father had already died",
+     "accept": [
+      "his father had already died"
+     ],
+     "label": "1. When Henry VIII became king, …",
+     "why": "His father died before Henry became king → past perfect (had already died)."
+    },
+    "g2": {
+     "correct": "Drake had warned the English fleet",
+     "accept": [
+      "Drake had warned the English fleet"
+     ],
+     "label": "2. By the time the Armada arrived, …",
+     "why": "The warning came before the Armada arrived → past perfect."
+    },
+    "g3": {
+     "correct": "had returned to England",
+     "accept": [
+      "had returned to England"
+     ],
+     "label": "3. After Drake …, the Queen rewarded him",
+     "why": "“After” marks the earlier action → past perfect: had returned."
+    },
+    "g4": {
+     "correct": "had not slept for days",
+     "accept": [
+      "had not slept for days"
+     ],
+     "label": "4. The sailors were exhausted because they …",
+     "why": "No sleep came before the exhaustion → past perfect: had not slept."
+    },
+    "g5": {
+     "correct": "had not managed to land",
+     "accept": [
+      "had not managed to land"
+     ],
+     "label": "5. Elizabeth was relieved because the Spanish …",
+     "why": "The failure to land came before her relief → past perfect."
+    },
+    "g6": {
+     "correct": "he had worked on merchant ships",
+     "accept": [
+      "he had worked on merchant ships"
+     ],
+     "label": "6. Before Drake became famous, …",
+     "why": "“Before he became famous” → the earlier job takes past perfect: had worked."
+    },
+    "g7": {
+     "correct": "had captured many Spanish ships",
+     "accept": [
+      "had captured many Spanish ships"
+     ],
+     "label": "7. Drake told the Queen that he …",
+     "why": "Reporting an earlier completed action → past perfect: had captured."
+    },
+    "g8": {
+     "correct": "Drake had sailed around the world",
+     "accept": [
+      "Drake had sailed around the world"
+     ],
+     "label": "8. By 1580, …",
+     "why": "Completed by that date → past perfect: had sailed."
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,199 @@
+{
+ "unit": "be-presentations",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Introduction",
+     "accept": [
+      "Introduction"
+     ],
+     "label": "1. \"I'd like to start by giving you an overview...\"",
+     "why": "Giving an overview at the start belongs to the Introduction stage."
+    },
+    "g2": {
+     "correct": "Transition",
+     "accept": [
+      "Transition"
+     ],
+     "label": "2. \"That brings me to my next point...\"",
+     "why": "This phrase moves the talk to a new point, making it a Transition."
+    },
+    "g3": {
+     "correct": "Conclusion",
+     "accept": [
+      "Conclusion"
+     ],
+     "label": "3. \"To sum up, we've seen a 15% increase...\"",
+     "why": "Summarising the results belongs to the Conclusion stage."
+    },
+    "g4": {
+     "correct": "Q&A",
+     "accept": [
+      "Q&A"
+     ],
+     "label": "4. \"Does anyone have any questions at this point?\"",
+     "why": "Directly inviting questions now is the Q&A stage."
+    },
+    "g5": {
+     "correct": "Introduction",
+     "accept": [
+      "Introduction"
+     ],
+     "label": "5. \"Good morning, everyone. Thank you for taking the time...\"",
+     "why": "Greeting the audience belongs to the Introduction stage."
+    },
+    "g6": {
+     "correct": "Transition",
+     "accept": [
+      "Transition"
+     ],
+     "label": "6. \"Now let's turn to the budget forecast...\"",
+     "why": "This phrase moves the talk to a new topic, making it a Transition."
+    },
+    "g7": {
+     "correct": "Conclusion",
+     "accept": [
+      "Conclusion"
+     ],
+     "label": "7. \"In conclusion, I'd like to leave you with...\"",
+     "why": "Explicitly signalling the conclusion belongs to the Conclusion stage."
+    },
+    "g8": {
+     "correct": "Introduction",
+     "accept": [
+      "Introduction"
+     ],
+     "label": "8. \"I'll be happy to answer any questions at the end.\"",
+     "why": "Explaining the format for later questions is a housekeeping note typically given during the Introduction, not while actually answering questions."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "My name is Katrin Huber",
+     "accept": [
+      "My name is Katrin Huber"
+     ],
+     "label": "1. \"Good afternoon... ___\"",
+     "why": "Introducing yourself by name is the standard opening after greeting the audience."
+    },
+    "g2": {
+     "correct": "The purpose of my presentation today is to",
+     "accept": [
+      "The purpose of my presentation today is to"
+     ],
+     "label": "2. \"___ update you on our new product line\"",
+     "why": "This phrase states the purpose of the talk before the outline."
+    },
+    "g3": {
+     "correct": "First, I'll look at the market research. Then I'll present the product features. And finally, I'll outline the launch timeline.",
+     "accept": [
+      "First, I'll look at the market research. Then I'll present the product features. And finally, I'll outline the launch timeline."
+     ],
+     "label": "3. \"I've divided my talk into three parts. ___\"",
+     "why": "This lists the three parts just announced, in order."
+    },
+    "g4": {
+     "correct": "So, let's start with",
+     "accept": [
+      "So, let's start with"
+     ],
+     "label": "4. \"___ the market research.\"",
+     "why": "This phrase signals moving into the first part of the talk."
+    },
+    "g5": {
+     "correct": "Moving on to the second part",
+     "accept": [
+      "Moving on to the second part"
+     ],
+     "label": "5. \"___, I'd like to show you the key product features.\"",
+     "why": "This phrase signals moving into the second part of the talk."
+    },
+    "g6": {
+     "correct": "That brings me to my final point",
+     "accept": [
+      "That brings me to my final point"
+     ],
+     "label": "6. \"___ — the launch timeline.\"",
+     "why": "This phrase signals moving into the third and final part."
+    },
+    "g7": {
+     "correct": "To summarise, we have a strong product backed by solid research, and we're on track for a September launch.",
+     "accept": [
+      "To summarise, we have a strong product backed by solid research, and we're on track for a September launch."
+     ],
+     "label": "7. Closing summary",
+     "why": "This wraps up the presentation's key points before the closing thanks."
+    },
+    "g8": {
+     "correct": "Thank you for your attention. I'd be happy to take any questions.",
+     "accept": [
+      "Thank you for your attention. I'd be happy to take any questions."
+     ],
+     "label": "8. Final closing line",
+     "why": "This is the standard closing phrase, thanking the audience and opening the floor for questions."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "That's a great question. I don't have the exact figures to hand, but I'll find out and get back to you after the presentation.",
+     "accept": [
+      "That's a great question. I don't have the exact figures to hand, but I'll find out and get back to you after the presentation."
+     ],
+     "label": "1. Don't know the answer",
+     "why": "This is the professional way to handle a question you can't answer immediately."
+    },
+    "g2": {
+     "correct": "Good question. As I mentioned earlier, the launch is planned for September, pending final testing.",
+     "accept": [
+      "Good question. As I mentioned earlier, the launch is planned for September, pending final testing."
+     ],
+     "label": "2. Already covered in the talk",
+     "why": "This politely restates the answer rather than criticising the audience member."
+    },
+    "g3": {
+     "correct": "If I understand correctly, you'd like to know whether our timeline accounts for regulatory approval. Is that right?",
+     "accept": [
+      "If I understand correctly, you'd like to know whether our timeline accounts for regulatory approval. Is that right?"
+     ],
+     "label": "3. Long, complicated question",
+     "why": "Paraphrasing a complicated question confirms understanding before answering."
+    },
+    "g4": {
+     "correct": "That's an interesting point. It falls a bit outside today's scope, but I'd be happy to discuss it with you individually afterwards.",
+     "accept": [
+      "That's an interesting point. It falls a bit outside today's scope, but I'd be happy to discuss it with you individually afterwards."
+     ],
+     "label": "4. Outside the scope",
+     "why": "This politely acknowledges the question while redirecting it appropriately."
+    },
+    "g5": {
+     "correct": "That concludes my presentation. If you have any questions or comments, I'd be very happy to hear them.",
+     "accept": [
+      "That concludes my presentation. If you have any questions or comments, I'd be very happy to hear them."
+     ],
+     "label": "5. Inviting questions at the end",
+     "why": "This is the standard polite way to open the floor for questions."
+    },
+    "g6": {
+     "correct": "I appreciate you raising that. The data comes from our Q1 customer survey — I can share the full report with you if you'd like to take a closer look.",
+     "accept": [
+      "I appreciate you raising that. The data comes from our Q1 customer survey — I can share the full report with you if you'd like to take a closer look."
+     ],
+     "label": "6. A statistic is challenged",
+     "why": "This responds professionally by citing the source rather than being defensive."
+    }
+   }
+  }
+ }
+}

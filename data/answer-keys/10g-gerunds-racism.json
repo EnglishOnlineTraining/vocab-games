@@ -1,0 +1,177 @@
+{
+ "unit": "10g-gerunds-racism",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Her hands were shaking",
+     "accept": [
+      "Her hands were shaking"
+     ],
+     "label": "1 What was the narrator's first reaction to the racist chanting during the match?"
+    },
+    "g2": {
+     "correct": "Her coach",
+     "accept": [
+      "Her coach"
+     ],
+     "label": "2 Who did the narrator tell first about what had happened?"
+    },
+    "g3": {
+     "correct": "It contacted a local anti-discrimination charity",
+     "accept": [
+      "It contacted a local anti-discrimination charity"
+     ],
+     "label": "3 What did the club do after the game?"
+    },
+    "g4": {
+     "correct": "Two fans were banned and a new reporting system was introduced",
+     "accept": [
+      "Two fans were banned and a new reporting system was introduced"
+     ],
+     "label": "4 What had changed six months after the incident, according to the text?"
+    },
+    "g5": {
+     "correct": "It is a gerund acting as the subject of the sentence",
+     "accept": [
+      "It is a gerund acting as the subject of the sentence"
+     ],
+     "label": "…st incidents matters more than people often realise”, what job does the word Reporting do?"
+    },
+    "g6": {
+     "correct": "First person",
+     "accept": [
+      "First person"
+     ],
+     "label": "…ew from an earlier unit) This account of the incident is written from which point of view?"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Reporting",
+     "accept": [
+      "Reporting"
+     ],
+     "label": "1 ___ discrimination in sport should be everyone's responsibility, not just the referee's."
+    },
+    "g2": {
+     "correct": "fighting",
+     "accept": [
+      "fighting"
+     ],
+     "label": "2 The whole team is committed to ___ against racism at every match."
+    },
+    "g3": {
+     "correct": "staying",
+     "accept": [
+      "staying"
+     ],
+     "label": "3 Instead of ___ silent, Amara told her coach exactly what had happened."
+    },
+    "g4": {
+     "correct": "organising",
+     "accept": [
+      "organising"
+     ],
+     "label": "4 The charity is responsible for ___ workshops in local schools and clubs."
+    },
+    "g5": {
+     "correct": "Standing",
+     "accept": [
+      "Standing"
+     ],
+     "label": "5 ___ up against injustice takes real courage, especially in front of a crowd."
+    },
+    "g6": {
+     "correct": "reporting",
+     "accept": [
+      "reporting"
+     ],
+     "label": "6 After ___ the incident, the referee spoke to both team captains."
+    },
+    "g7": {
+     "correct": "introducing",
+     "accept": [
+      "introducing"
+     ],
+     "label": "7 The club is proud of ___ a zero-tolerance policy this season."
+    },
+    "g8": {
+     "correct": "raising",
+     "accept": [
+      "raising"
+     ],
+     "label": "8 Without ___ their voices, fans and players cannot help change the culture of the game."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "organising",
+     "accept": [
+      "organising"
+     ],
+     "label": "1 The coach suggested ___ (organise) a diversity workshop for the whole team."
+    },
+    "g2": {
+     "correct": "to speak",
+     "accept": [
+      "to speak"
+     ],
+     "label": "2 Amara promised ___ (speak) to the team about what had happened."
+    },
+    "g3": {
+     "correct": "seeing",
+     "accept": [
+      "seeing"
+     ],
+     "label": "3 Many fans can’t stand ___ (see) racist abuse go unpunished."
+    },
+    "g4": {
+     "correct": "to introduce",
+     "accept": [
+      "to introduce"
+     ],
+     "label": "4 The club decided ___ (introduce) a stronger reporting system after the incident."
+    },
+    "g5": {
+     "correct": "ignoring",
+     "accept": [
+      "ignoring"
+     ],
+     "label": "… We should avoid ___ (ignore) small incidents, because they can grow into bigger problems."
+    },
+    "g6": {
+     "correct": "to support",
+     "accept": [
+      "to support"
+     ],
+     "label": "6 The rival team agreed ___ (support) Amara publicly after the match."
+    },
+    "g7": {
+     "correct": "helping",
+     "accept": [
+      "helping"
+     ],
+     "label": "7 I really enjoy ___ (help) younger players feel safe and included at training."
+    },
+    "g8": {
+     "correct": "to launch",
+     "accept": [
+      "to launch"
+     ],
+     "label": "8 The league plans ___ (launch) a new anti-discrimination campaign next season."
+    }
+   }
+  }
+ }
+}

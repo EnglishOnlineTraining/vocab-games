@@ -1,0 +1,145 @@
+{
+ "unit": "uni-ai-ethics",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "1. integrity",
+     "why": "Integrity is about honesty and strong moral standards."
+    },
+    "g2": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "2. framework",
+     "why": "A framework is the underlying structure of rules that guides decisions."
+    },
+    "g3": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "3. bias",
+     "why": "Bias is an unfair leaning for or against something."
+    },
+    "g4": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "4. implications",
+     "why": "Implications are the knock-on effects of a decision."
+    },
+    "g5": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "5. transparency",
+     "why": "Transparency means working openly, so others can see how decisions are made."
+    },
+    "g6": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "6. equity",
+     "why": "Equity is fair and just treatment, not speed of learning."
+    },
+    "g7": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "7. implement",
+     "why": "To implement is to put a plan into action."
+    },
+    "g8": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "8. disclose",
+     "why": "To disclose is to reveal information — the opposite of keeping it private."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "ethical",
+     "accept": [
+      "ethical"
+     ],
+     "label": "1. difficult questions about the ___ use of AI",
+     "why": "The sentence is about right and wrong in using AI, so “ethical”."
+    },
+    "g2": {
+     "correct": "assessment",
+     "accept": [
+      "assessment"
+     ],
+     "label": "2. traditional forms of ___",
+     "why": "The concern is whether traditional assessment still works when AI can write essays."
+    },
+    "g3": {
+     "correct": "policies",
+     "accept": [
+      "policies"
+     ],
+     "label": "3. institutions have developed ___",
+     "why": "Policies are the official rules institutions write in response."
+    },
+    "g4": {
+     "correct": "acknowledge",
+     "accept": [
+      "acknowledge"
+     ],
+     "label": "4. provided they ___ the use",
+     "why": "Students may use AI as long as they acknowledge — openly declare — that they did."
+    },
+    "g5": {
+     "correct": "detection",
+     "accept": [
+      "detection"
+     ],
+     "label": "5. AI ___ tools",
+     "why": "Detection tools are the software that tries to spot AI-written work."
+    },
+    "g6": {
+     "correct": "accountability",
+     "accept": [
+      "accountability"
+     ],
+     "label": "6. questions about fairness and ___",
+     "why": "Wrongly flagging students raises the question of who is accountable."
+    },
+    "g7": {
+     "correct": "autonomy",
+     "accept": [
+      "autonomy"
+     ],
+     "label": "7. can enhance student ___",
+     "why": "Autonomy is independent learning — what supporters say AI increases."
+    },
+    "g8": {
+     "correct": "critical",
+     "accept": [
+      "critical"
+     ],
+     "label": "8. think at a deep, ___ level",
+     "why": "The worry is that over-reliance weakens deep, critical thinking."
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,183 @@
+{
+ "unit": "it-global-collaboration",
+ "sections": {
+  "exA": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "a1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. Why 13:00 CET?",
+     "why": "The text says the time is early enough for Brazil and late enough for India, suiting all three offices."
+    },
+    "a2": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "2. Why keep calendars updated?",
+     "why": "The text says this lets colleagues see when you are available."
+    },
+    "a3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. If your connection is weak, you should...",
+     "why": "The text says to turn the camera off and say your name before speaking."
+    },
+    "a4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. According to Priya, direct feedback...",
+     "why": "The text says direct feedback can sound harsh to colleagues from other cultures."
+    },
+    "a5": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "5. Priya recommends...",
+     "why": "The text says to ask questions instead of making statements."
+    },
+    "a6": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "6. The kick-off takes place...",
+     "why": "The text says the kick-off is on Monday."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "b1": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "1. India and Germany are in different ___",
+     "why": "India and Germany are in different time zones."
+    },
+    "b2": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "2. Anyone with an interest in project success",
+     "why": "A ‘stakeholder’ is anyone with an interest in the project's success."
+    },
+    "b3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. Must deliver by Friday — a hard ___",
+     "why": "A firm delivery date is called a hard deadline."
+    },
+    "b4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. Works without sharing a physical office",
+     "why": "A ‘remote team’ works together without sharing a physical office."
+    },
+    "b5": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "5. Understanding how other cultures communicate",
+     "why": "‘Cultural sensitivity’ is understanding how other cultures communicate."
+    },
+    "b6": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "6. A one-hour ___ with Dublin",
+     "why": "A one-hour video call is a meeting over video."
+    },
+    "b7": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "7. Conferences build your ___",
+     "why": "Conferences are a good place to build your professional network."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "c1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. Could you tell me when the meeting ___?",
+     "why": "Indirect questions keep normal word order — no ‘does’."
+    },
+    "c2": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "2. I was wondering if you ___ the report yet",
+     "why": "‘Yet’ signals the present perfect ‘have finished’."
+    },
+    "c3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. Do you know ___ the server is located?",
+     "why": "‘Where’ asks about location, with normal word order in the indirect question."
+    },
+    "c4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. Could you explain how ___?",
+     "why": "Indirect questions keep normal word order — no ‘does’."
+    },
+    "c5": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "5. Would you mind ___ the document again?",
+     "why": "‘Would you mind’ is followed by the gerund (-ing) form."
+    },
+    "c6": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "6. May I ask why ___ delayed?",
+     "why": "Indirect questions keep normal word order — no ‘was the release’."
+    },
+    "c7": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "7. I'd like to know whether the update ___ tested",
+     "why": "The passive present perfect ‘has been tested’ agrees with singular ‘the update’."
+    }
+   }
+  }
+ }
+}

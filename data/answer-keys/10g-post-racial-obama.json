@@ -1,0 +1,199 @@
+{
+ "unit": "10g-post-racial-obama",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "2008",
+     "accept": [
+      "2008"
+     ],
+     "label": "1. Obama won the election in",
+     "why": "Obama won the presidential election in 2008."
+    },
+    "g2": {
+     "correct": "post-racial",
+     "accept": [
+      "post-racial"
+     ],
+     "label": "2. Journalists described the USA as",
+     "why": "Some journalists claimed his win made America 'post-racial'."
+    },
+    "g3": {
+     "correct": "cautious",
+     "accept": [
+      "cautious"
+     ],
+     "label": "3. Obama himself was",
+     "why": "Obama was cautious about the post-racial claim."
+    },
+    "g4": {
+     "correct": "healthcare",
+     "accept": [
+      "healthcare"
+     ],
+     "label": "4. His presidency expanded",
+     "why": "His presidency saw healthcare coverage expanded."
+    },
+    "g5": {
+     "correct": "blm",
+     "accept": [
+      "blm"
+     ],
+     "label": "5. Police killings led to the rise of",
+     "why": "Killings of unarmed Black people gave rise to Black Lives Matter."
+    },
+    "g6": {
+     "correct": "kneeling",
+     "accept": [
+      "kneeling"
+     ],
+     "label": "6. Kaepernick protested by",
+     "why": "He knelt during the national anthem as a protest."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "won",
+     "accept": [
+      "won"
+     ],
+     "label": "1. Obama ___",
+     "why": "A finished action at a stated past time takes the past simple."
+    },
+    "g2": {
+     "correct": "has continued",
+     "accept": [
+      "has continued"
+     ],
+     "label": "2. Since leaving office, he ___",
+     "why": "'Since' with a period reaching the present takes the present perfect."
+    },
+    "g3": {
+     "correct": "began",
+     "accept": [
+      "began"
+     ],
+     "label": "3. Kaepernick ___",
+     "why": "A completed action at a definite past point takes the past simple."
+    },
+    "g4": {
+     "correct": "have used",
+     "accept": [
+      "have used"
+     ],
+     "label": "4. Many athletes ___",
+     "why": "Present perfect for actions in a period that is still open."
+    },
+    "g5": {
+     "correct": "has grown",
+     "accept": [
+      "has grown"
+     ],
+     "label": "5. The Black Lives Matter movement ___",
+     "why": "The growth continues up to now, so the present perfect is used."
+    },
+    "g6": {
+     "correct": "happened",
+     "accept": [
+      "happened"
+     ],
+     "label": "6. The 2008 financial crisis ___",
+     "why": "A dated past event takes the past simple."
+    },
+    "g7": {
+     "correct": "have debated",
+     "accept": [
+      "have debated"
+     ],
+     "label": "7. Historians ___",
+     "why": "The debate is still going on, so the present perfect fits."
+    },
+    "g8": {
+     "correct": "left",
+     "accept": [
+      "left"
+     ],
+     "label": "8. Obama ___",
+     "why": "Leaving office happened at a definite past time: past simple."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "in 2009",
+     "accept": [
+      "in 2009"
+     ],
+     "label": "1. Obama became president ___",
+     "why": "The past simple pairs with a finished time expression like 'in 2009'."
+    },
+    "g2": {
+     "correct": "for decades",
+     "accept": [
+      "for decades"
+     ],
+     "label": "2. The debate has continued ___",
+     "why": "'For' + a length of time goes with the present perfect."
+    },
+    "g3": {
+     "correct": "since 2016",
+     "accept": [
+      "since 2016"
+     ],
+     "label": "3. Kaepernick has protested ___",
+     "why": "'Since' marks the starting point of a period continuing now."
+    },
+    "g4": {
+     "correct": "in 2008",
+     "accept": [
+      "in 2008"
+     ],
+     "label": "4. The financial crisis hit the economy ___",
+     "why": "A finished year takes the past simple, not the present perfect."
+    },
+    "g5": {
+     "correct": "So far",
+     "accept": [
+      "So far"
+     ],
+     "label": "5. ___ (sentence opener)",
+     "why": "'So far' means up to now and goes with the present perfect."
+    },
+    "g6": {
+     "correct": "many times this decade",
+     "accept": [
+      "many times this decade"
+     ],
+     "label": "6. BLM has organised protests ___",
+     "why": "'This decade' is an unfinished period, so the present perfect is used."
+    },
+    "g7": {
+     "correct": "in January 2017",
+     "accept": [
+      "in January 2017"
+     ],
+     "label": "7. Obama gave his farewell speech ___",
+     "why": "A specific finished date takes the past simple."
+    },
+    "g8": {
+     "correct": "has just published",
+     "accept": [
+      "has just published"
+     ],
+     "label": "8. He ___",
+     "why": "'Just' with a very recent action takes the present perfect."
+    }
+   }
+  }
+ }
+}

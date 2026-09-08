@@ -1,0 +1,215 @@
+{
+ "unit": "10c-pair-of-jeans",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "cycling",
+     "accept": [
+      "cycling"
+     ],
+     "label": "1. Aisha was ___ home",
+     "why": "The text says Aisha was cycling home when she remembered the lunch."
+    },
+    "g2": {
+     "correct": "one",
+     "accept": [
+      "one"
+     ],
+     "label": "2. Promised to arrive by ___",
+     "why": "The text says she had promised to arrive by one."
+    },
+    "g3": {
+     "correct": "playing",
+     "accept": [
+      "playing"
+     ],
+     "label": "3. Her cousins were ___ in the garden",
+     "why": "The text says her cousins were playing in the garden when she arrived."
+    },
+    "g4": {
+     "correct": "aunts",
+     "accept": [
+      "aunts"
+     ],
+     "label": "4. Her ___ were visiting too",
+     "why": "The text says Aisha had forgotten that her aunts were visiting too."
+    },
+    "g5": {
+     "correct": "stopped",
+     "accept": [
+      "stopped"
+     ],
+     "label": "5. The conversation ___",
+     "why": "The text says the conversation stopped as she entered the room."
+    },
+    "g6": {
+     "correct": "red",
+     "accept": [
+      "red"
+     ],
+     "label": "6. Aisha felt her cheeks ___",
+     "why": "The text says Aisha felt her cheeks go red with embarrassment."
+    },
+    "g7": {
+     "correct": "came",
+     "accept": [
+      "came"
+     ],
+     "label": "7. What mattered was that Aisha ___",
+     "why": "The text says her grandmother said what mattered was that Aisha came."
+    },
+    "g8": {
+     "correct": "wrong",
+     "accept": [
+      "wrong"
+     ],
+     "label": "8. She had worried about ___",
+     "why": "The text says Aisha realised she had worried about the wrong thing."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "was cycling",
+     "accept": [
+      "was cycling"
+     ],
+     "label": "1. Aisha ___ home when she remembered",
+     "why": "A longer action in progress when something happened uses the past continuous: ‘was cycling’."
+    },
+    "g2": {
+     "correct": "remembered",
+     "accept": [
+      "remembered"
+     ],
+     "label": "2. She suddenly ___",
+     "why": "A short, completed action uses the simple past: ‘remembered’."
+    },
+    "g3": {
+     "correct": "were playing",
+     "accept": [
+      "were playing"
+     ],
+     "label": "3. Her cousins ___ in the garden",
+     "why": "An action already in progress when she arrived uses the past continuous: ‘were playing’."
+    },
+    "g4": {
+     "correct": "was drifting",
+     "accept": [
+      "was drifting"
+     ],
+     "label": "4. The smell ___ through the window",
+     "why": "A background, ongoing action uses the past continuous: ‘was drifting’."
+    },
+    "g5": {
+     "correct": "stepped",
+     "accept": [
+      "stepped"
+     ],
+     "label": "5. As she ___ into the room...",
+     "why": "A short, completed action uses the simple past: ‘stepped’."
+    },
+    "g6": {
+     "correct": "came",
+     "accept": [
+      "came"
+     ],
+     "label": "6. Her grandmother ___ out of the kitchen",
+     "why": "A short, completed action uses the simple past: ‘came’."
+    },
+    "g7": {
+     "correct": "were eating",
+     "accept": [
+      "were eating"
+     ],
+     "label": "7. While the family ___ together",
+     "why": "A background action happening at the same time uses the past continuous: ‘were eating’."
+    },
+    "g8": {
+     "correct": "was shining",
+     "accept": [
+      "was shining"
+     ],
+     "label": "8. The sun ___ while she cycled home",
+     "why": "A background, ongoing action uses the past continuous: ‘was shining’."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "had never worn",
+     "accept": [
+      "had never worn"
+     ],
+     "label": "1. Before that day, Aisha ___ jeans there",
+     "why": "An action true before an earlier point in the story uses the past perfect."
+    },
+    "g2": {
+     "correct": "had promised",
+     "accept": [
+      "had promised"
+     ],
+     "label": "2. Earlier that week, she ___",
+     "why": "An action completed before the main story time uses the past perfect."
+    },
+    "g3": {
+     "correct": "had forgotten",
+     "accept": [
+      "had forgotten"
+     ],
+     "label": "3. She realised she ___ about the lunch",
+     "why": "An earlier action revealed later in the story uses the past perfect."
+    },
+    "g4": {
+     "correct": "had not known",
+     "accept": [
+      "had not known"
+     ],
+     "label": "4. She ___ that her aunts were visiting",
+     "why": "A fact true before the main story event uses the past perfect."
+    },
+    "g5": {
+     "correct": "had ruined",
+     "accept": [
+      "had ruined"
+     ],
+     "label": "5. She was sure she ___ everything",
+     "why": "An earlier belief about a past action uses the past perfect."
+    },
+    "g6": {
+     "correct": "had wanted",
+     "accept": [
+      "had wanted"
+     ],
+     "label": "6. She ___ to make a good impression",
+     "why": "A motive that existed before the main story event uses the past perfect."
+    },
+    "g7": {
+     "correct": "had realised",
+     "accept": [
+      "had realised"
+     ],
+     "label": "7. By the time lunch ended, Aisha ___",
+     "why": "‘By the time’ signals an action completed by a later past point, so the past perfect is used."
+    },
+    "g8": {
+     "correct": "had never cared",
+     "accept": [
+      "had never cared"
+     ],
+     "label": "8. Her grandmother ___ about the jeans",
+     "why": "Consistent with the past-perfect backstory frame used throughout this narrative."
+    }
+   }
+  }
+ }
+}

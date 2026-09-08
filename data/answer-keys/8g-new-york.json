@@ -1,0 +1,199 @@
+{
+ "unit": "8g-new-york",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "five",
+     "accept": [
+      "five"
+     ],
+     "label": "1. How many boroughs?",
+     "why": "The text says New York City has five boroughs."
+    },
+    "g2": {
+     "correct": "took the subway to Brooklyn",
+     "accept": [
+      "took the subway to Brooklyn"
+     ],
+     "label": "2. What did the family do on day one?",
+     "why": "The text says Max and his family took the subway to Brooklyn on their first day."
+    },
+    "g3": {
+     "correct": "the crust is thin and you fold it",
+     "accept": [
+      "the crust is thin and you fold it"
+     ],
+     "label": "3. What's special about New York pizza?",
+     "why": "The text says New York pizza has a thin crust that you fold to eat."
+    },
+    "g4": {
+     "correct": "people speak over 100 languages there",
+     "accept": [
+      "people speak over 100 languages there"
+     ],
+     "label": "4. Why is Queens the most diverse borough?",
+     "why": "The text says Queens is the most diverse borough because people speak over 100 languages there."
+    },
+    "g5": {
+     "correct": "from the Brooklyn Bridge",
+     "accept": [
+      "from the Brooklyn Bridge"
+     ],
+     "label": "5. Where did Max see the skyline at sunset?",
+     "why": "The text says Max saw the Manhattan skyline at sunset from the Brooklyn Bridge."
+    },
+    "g6": {
+     "correct": "France",
+     "accept": [
+      "France"
+     ],
+     "label": "6. Which country gave the Statue of Liberty?",
+     "why": "The text says France gave the Statue of Liberty to America."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "that",
+     "accept": [
+      "that"
+     ],
+     "label": "1. A city ___ never sleeps",
+     "why": "A defining relative clause about a thing (a city) uses ‘that’ or ‘which’, not ‘who’."
+    },
+    "g2": {
+     "correct": "who",
+     "accept": [
+      "who"
+     ],
+     "label": "2. The guide, ___ grew up in Queens",
+     "why": "A non-defining relative clause about a person uses ‘who’."
+    },
+    "g3": {
+     "correct": "which",
+     "accept": [
+      "which"
+     ],
+     "label": "3. Central Park, ___ is in the middle of Manhattan",
+     "why": "A non-defining relative clause about a thing uses ‘which’, not ‘that’."
+    },
+    "g4": {
+     "correct": "where",
+     "accept": [
+      "where"
+     ],
+     "label": "4. The neighbourhood ___ you can find dumplings",
+     "why": "‘Where’ introduces a defining relative clause about a place."
+    },
+    "g5": {
+     "correct": "whose",
+     "accept": [
+      "whose"
+     ],
+     "label": "5. The student ___ host family lived in Brooklyn",
+     "why": "‘Whose’ shows possession — the student’s host family."
+    },
+    "g6": {
+     "correct": "which",
+     "accept": [
+      "which"
+     ],
+     "label": "6. The Brooklyn Bridge, ___ was opened in 1883",
+     "why": "A non-defining relative clause about a thing uses ‘which’."
+    },
+    "g7": {
+     "correct": "that",
+     "accept": [
+      "that"
+     ],
+     "label": "7. The pizza ___ we ate in Little Italy",
+     "why": "A defining relative clause about a thing uses ‘that’."
+    },
+    "g8": {
+     "correct": "where",
+     "accept": [
+      "where"
+     ],
+     "label": "8. Times Square, ___ tourists take photos",
+     "why": "‘Where’ introduces a non-defining clause describing what happens at a place."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "had been planning",
+     "accept": [
+      "had been planning"
+     ],
+     "label": "1. Max's family ___ the trip",
+     "why": "The past perfect progressive shows an action continuing up to a point in the past, before they flew."
+    },
+    "g2": {
+     "correct": "had been walking",
+     "accept": [
+      "had been walking"
+     ],
+     "label": "2. \"We ___ for three hours\"",
+     "why": "The past perfect progressive shows an action continuing up to a point in the past, before they stopped."
+    },
+    "g3": {
+     "correct": "has been raining",
+     "accept": [
+      "has been raining"
+     ],
+     "label": "3. \"It ___ all morning\"",
+     "why": "The present perfect progressive shows an action continuing up to now, with a visible result (wet streets)."
+    },
+    "g4": {
+     "correct": "had been complaining",
+     "accept": [
+      "had been complaining"
+     ],
+     "label": "4. Max's sister ___ about her legs",
+     "why": "The past perfect progressive shows an action continuing up to a point in the past — by the time they reached the top."
+    },
+    "g5": {
+     "correct": "have been learning",
+     "accept": [
+      "have been learning"
+     ],
+     "label": "5. \"I ___ English for five years\"",
+     "why": "The present perfect progressive shows an action continuing up to now."
+    },
+    "g6": {
+     "correct": "had been waiting",
+     "accept": [
+      "had been waiting"
+     ],
+     "label": "6. They ___ for almost an hour",
+     "why": "The past perfect progressive shows an action continuing up to a point in the past, when the waiter arrived."
+    },
+    "g7": {
+     "correct": "have been saving",
+     "accept": [
+      "have been saving"
+     ],
+     "label": "7. Max's parents ___ money",
+     "why": "The present perfect progressive shows an action continuing up to now — they are still saving."
+    },
+    "g8": {
+     "correct": "had been staying",
+     "accept": [
+      "had been staying"
+     ],
+     "label": "8. The family ___ with friends",
+     "why": "The past perfect progressive shows an action continuing up to a point in the past, before they moved to a hotel."
+    }
+   }
+  }
+ }
+}

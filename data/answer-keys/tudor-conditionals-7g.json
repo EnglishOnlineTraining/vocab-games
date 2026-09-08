@@ -1,0 +1,279 @@
+{
+ "unit": "tudor-conditionals-7g",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "m1": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "1. Men and boys wouldn't have had all the best roles...",
+     "why": "This pairs with ‘if girls and women had been allowed to act in plays’ — only men and boys could act in Shakespeare's time."
+    },
+    "m2": {
+     "correct": "d",
+     "accept": [
+      "d"
+     ],
+     "label": "2. If the Globe hadn't been built with wood,...",
+     "why": "This pairs with ‘it wouldn't have burnt down’ — the wooden Globe burned down in a real fire."
+    },
+    "m3": {
+     "correct": "e",
+     "accept": [
+      "e"
+     ],
+     "label": "3. They could have used electric lights...",
+     "why": "This pairs with ‘if they had had electricity’ — electricity didn't exist in Tudor times."
+    },
+    "m4": {
+     "correct": "f",
+     "accept": [
+      "f"
+     ],
+     "label": "4. The Globe wouldn't have been so popular...",
+     "why": "This pairs with ‘if it hadn't been so cheap’ — cheap tickets made the theatre popular."
+    },
+    "m5": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "5. If the theatre had had a roof,...",
+     "why": "This pairs with ‘people could have stayed dry when it rained’ — the Globe was open-air."
+    },
+    "m6": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "6. If they hadn't had pictures of the old Globe,...",
+     "why": "This pairs with ‘they couldn't have rebuilt it so well in the 1990s’ — old pictures helped the accurate rebuild."
+    }
+   }
+  },
+  "exD": {
+   "prefix": "exD-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "had not come",
+     "accept": [
+      "had not come"
+     ],
+     "label": "1. If the Romans ___ to England...",
+     "why": "Type III conditionals use the past perfect after ‘if’."
+    },
+    "g2": {
+     "correct": "would not have given",
+     "accept": [
+      "would not have given"
+     ],
+     "label": "...they ___ a new name to this country.",
+     "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+    },
+    "g3": {
+     "correct": "had not stayed",
+     "accept": [
+      "had not stayed"
+     ],
+     "label": "2. If the Romans ___ for such a long time...",
+     "why": "Type III conditionals use the past perfect after ‘if’."
+    },
+    "g4": {
+     "correct": "would not have influenced",
+     "accept": [
+      "would not have influenced"
+     ],
+     "label": "...their language ___ the English language so much.",
+     "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+    },
+    "g5": {
+     "correct": "would not have come",
+     "accept": [
+      "would not have come"
+     ],
+     "label": "3. The Normans ___ to England...",
+     "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+    },
+    "g6": {
+     "correct": "had not believed",
+     "accept": [
+      "had not believed"
+     ],
+     "label": "...if William the Conqueror ___ he had a right to be king.",
+     "why": "Type III conditionals use the past perfect after ‘if’."
+    },
+    "g7": {
+     "correct": "would not have given up",
+     "accept": [
+      "would not have given up"
+     ],
+     "label": "4. The people in England ___ so many words...",
+     "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+    },
+    "g8": {
+     "correct": "had not become",
+     "accept": [
+      "had not become"
+     ],
+     "label": "...if French ___ so popular.",
+     "why": "Type III conditionals use the past perfect after ‘if’."
+    },
+    "g9": {
+     "correct": "had not loved",
+     "accept": [
+      "had not loved"
+     ],
+     "label": "5. If the people in the 16th century ___ the theatre so much...",
+     "why": "Type III conditionals use the past perfect after ‘if’."
+    },
+    "g10": {
+     "correct": "would not have written",
+     "accept": [
+      "would not have written"
+     ],
+     "label": "...Shakespeare ___ so many plays.",
+     "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+    },
+    "g11": {
+     "correct": "would not have invented",
+     "accept": [
+      "would not have invented"
+     ],
+     "label": "6. Shakespeare ___ so many new words...",
+     "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+    },
+    "g12": {
+     "correct": "had not written",
+     "accept": [
+      "had not written"
+     ],
+     "label": "...if he ___ so many plays and poems.",
+     "why": "Type III conditionals use the past perfect after ‘if’."
+    },
+    "g13": {
+     "correct": "had not explored",
+     "accept": [
+      "had not explored"
+     ],
+     "label": "7. If English sailors ___ so many countries...",
+     "why": "Type III conditionals use the past perfect after ‘if’."
+    },
+    "g14": {
+     "correct": "would not have brought",
+     "accept": [
+      "would not have brought"
+     ],
+     "label": "...they ___ new things and words with them.",
+     "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+    }
+   }
+  },
+  "exE": {
+   "prefix": "exE-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "had not always worn",
+     "accept": [
+      "had not always worn"
+     ],
+     "label": "1. If a Celtic king ___ beautiful jewellery...",
+     "why": "Type III conditionals use the past perfect after ‘if’."
+    },
+    "g2": {
+     "correct": "would not have been",
+     "accept": [
+      "would not have been"
+     ],
+     "label": "...it ___ clear to others how important he was.",
+     "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+    },
+    "g3": {
+     "correct": "had not built",
+     "accept": [
+      "had not built"
+     ],
+     "label": "2. If the Romans ___ baths...",
+     "why": "Type III conditionals use the past perfect after ‘if’."
+    },
+    "g4": {
+     "correct": "would have found",
+     "accept": [
+      "would have found"
+     ],
+     "label": "...they ___ Britain too cold for them.",
+     "why": "The Type III result clause uses ‘would have’ + past participle."
+    },
+    "g5": {
+     "correct": "had not spoken",
+     "accept": [
+      "had not spoken"
+     ],
+     "label": "3. If the Normans ___ French...",
+     "why": "Type III conditionals use the past perfect after ‘if’."
+    },
+    "g6": {
+     "correct": "would not have changed",
+     "accept": [
+      "would not have changed"
+     ],
+     "label": "...the English language ___.",
+     "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+    },
+    "g7": {
+     "correct": "had not wanted",
+     "accept": [
+      "had not wanted"
+     ],
+     "label": "4. If Henry VIII ___ a son...",
+     "why": "Type III conditionals use the past perfect after ‘if’."
+    },
+    "g8": {
+     "correct": "would not have married",
+     "accept": [
+      "would not have married"
+     ],
+     "label": "...he ___ six times.",
+     "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+    },
+    "g9": {
+     "correct": "had not wanted",
+     "accept": [
+      "had not wanted"
+     ],
+     "label": "5. If Elizabeth ___ to know more about the world...",
+     "why": "Type III conditionals use the past perfect after ‘if’."
+    },
+    "g10": {
+     "correct": "would not have sent",
+     "accept": [
+      "would not have sent"
+     ],
+     "label": "...she ___ sailors to America.",
+     "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+    },
+    "g11": {
+     "correct": "had not reigned",
+     "accept": [
+      "had not reigned"
+     ],
+     "label": "6. If Queen Victoria ___ for 64 years...",
+     "why": "Type III conditionals use the past perfect after ‘if’."
+    },
+    "g12": {
+     "correct": "would not have seen",
+     "accept": [
+      "would not have seen"
+     ],
+     "label": "...she ___ so many changes.",
+     "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+    }
+   }
+  }
+ }
+}

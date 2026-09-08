@@ -1,0 +1,215 @@
+{
+ "unit": "10g-my-generation",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "sensitive",
+     "accept": [
+      "sensitive"
+     ],
+     "label": "1. Millennials were accused of being too",
+     "why": "The stereotype was that millennials were too sensitive."
+    },
+    "g2": {
+     "correct": "reject",
+     "accept": [
+      "reject"
+     ],
+     "label": "2. Punks used ripped clothes and loud music to",
+     "why": "Punk style was a way of rejecting mainstream values."
+    },
+    "g3": {
+     "correct": "communities",
+     "accept": [
+      "communities"
+     ],
+     "label": "3. Today's subcultures are built around online",
+     "why": "Modern subcultures form in online communities rather than on the street."
+    },
+    "g4": {
+     "correct": "smartphones",
+     "accept": [
+      "smartphones"
+     ],
+     "label": "4. Older generations learned patience without",
+     "why": "They grew up without smartphones, so waiting was normal."
+    },
+    "g5": {
+     "correct": "available",
+     "accept": [
+      "available"
+     ],
+     "label": "5. Each generation solves problems with the tools",
+     "why": "Every generation uses whatever tools are available to it."
+    },
+    "g6": {
+     "correct": "meaningful",
+     "accept": [
+      "meaningful"
+     ],
+     "label": "6. Less screen time means a more ___ life",
+     "why": "Older relatives assume less screen time equals a more meaningful life."
+    },
+    "g7": {
+     "correct": "underestimated",
+     "accept": [
+      "underestimated"
+     ],
+     "label": "7. Almost all generations have been",
+     "why": "The text's point is that each generation gets underestimated in turn."
+    },
+    "g8": {
+     "correct": "judge",
+     "accept": [
+      "judge"
+     ],
+     "label": "8. The most useful skill is not to",
+     "why": "The article argues against judging other generations."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "more connected",
+     "accept": [
+      "more connected"
+     ],
+     "label": "1. Generation Z is ___",
+     "why": "Long adjectives form the comparative with 'more' before 'than'."
+    },
+    "g2": {
+     "correct": "faster",
+     "accept": [
+      "faster"
+     ],
+     "label": "2. Smartphones have made communication ___",
+     "why": "'Make' + object + comparative adjective: made communication faster."
+    },
+    "g3": {
+     "correct": "most rebellious",
+     "accept": [
+      "most rebellious"
+     ],
+     "label": "3. Punk was one of the ___",
+     "why": "'One of the' is followed by a superlative and a plural noun."
+    },
+    "g4": {
+     "correct": "as close as",
+     "accept": [
+      "as close as"
+     ],
+     "label": "4. Online communities are not ___",
+     "why": "'Not as … as' compares two things that are not equal."
+    },
+    "g5": {
+     "correct": "whereas",
+     "accept": [
+      "whereas"
+     ],
+     "label": "5. Millennials grew up online, ___",
+     "why": "'Whereas' joins two clauses that contrast with each other."
+    },
+    "g6": {
+     "correct": "Unlike",
+     "accept": [
+      "Unlike"
+     ],
+     "label": "6. ___ (sentence opener)",
+     "why": "'Unlike' is a preposition and is followed by a noun, not a clause."
+    },
+    "g7": {
+     "correct": "best",
+     "accept": [
+      "best"
+     ],
+     "label": "7. This is ___",
+     "why": "The superlative of 'good' is 'best' and takes 'the'."
+    },
+    "g8": {
+     "correct": "Both",
+     "accept": [
+      "Both"
+     ],
+     "label": "8. ___ (sentence opener)",
+     "why": "'Both' refers to two groups together and takes a plural verb."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "generation",
+     "accept": [
+      "generation"
+     ],
+     "label": "1. people born around the same time",
+     "why": "A generation is an age group born in the same period."
+    },
+    "g2": {
+     "correct": "subculture",
+     "accept": [
+      "subculture"
+     ],
+     "label": "2. smaller group with its own values",
+     "why": "A subculture has its own style and values within a wider society."
+    },
+    "g3": {
+     "correct": "mainstream",
+     "accept": [
+      "mainstream"
+     ],
+     "label": "3. shared by most of society",
+     "why": "Mainstream describes what the majority accepts as normal."
+    },
+    "g4": {
+     "correct": "generation gap",
+     "accept": [
+      "generation gap"
+     ],
+     "label": "4. gap between older and younger people",
+     "why": "The generation gap is the difference in attitudes between age groups."
+    },
+    "g5": {
+     "correct": "trend",
+     "accept": [
+      "trend"
+     ],
+     "label": "5. a style that becomes suddenly popular",
+     "why": "A trend is a style or interest that catches on quickly."
+    },
+    "g6": {
+     "correct": "stereotype",
+     "accept": [
+      "stereotype"
+     ],
+     "label": "6. judging by beliefs about an age group",
+     "why": "A stereotype judges an individual by assumptions about their group."
+    },
+    "g7": {
+     "correct": "tradition",
+     "accept": [
+      "tradition"
+     ],
+     "label": "7. customs passed down over years",
+     "why": "Traditions are customs handed from one generation to the next."
+    },
+    "g8": {
+     "correct": "identity",
+     "accept": [
+      "identity"
+     ],
+     "label": "8. sense of who you are",
+     "why": "Identity is a person's sense of who they are."
+    }
+   }
+  }
+ }
+}

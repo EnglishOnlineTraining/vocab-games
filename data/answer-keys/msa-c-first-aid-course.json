@@ -1,0 +1,145 @@
+{
+ "unit": "msa-c-first-aid-course",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "saturday morning",
+     "accept": [
+      "saturday morning"
+     ],
+     "label": "1. When is the course?",
+     "why": "The recording says the first-aid course is next Saturday morning."
+    },
+    "g2": {
+     "correct": "sports hall",
+     "accept": [
+      "sports hall"
+     ],
+     "label": "2. Where is it held?",
+     "why": "The recording says the course will take place in the sports hall."
+    },
+    "g3": {
+     "correct": "a red cross trainer",
+     "accept": [
+      "a red cross trainer"
+     ],
+     "label": "3. Who teaches the course?",
+     "why": "The recording says the course will be taught by a trainer from the Red Cross."
+    },
+    "g4": {
+     "correct": "comfortable clothes",
+     "accept": [
+      "comfortable clothes"
+     ],
+     "label": "4. What should students bring?",
+     "why": "The recording says to wear comfortable clothes for kneeling and moving around."
+    },
+    "g5": {
+     "correct": "a certificate",
+     "accept": [
+      "a certificate"
+     ],
+     "label": "5. What do students receive?",
+     "why": "The recording says students will receive an official first-aid certificate."
+    },
+    "g6": {
+     "correct": "babysitting",
+     "accept": [
+      "babysitting"
+     ],
+     "label": "6. Why does Emma want the course?",
+     "why": "The recording says Emma has started babysitting and wants to know what to do if a child gets hurt."
+    },
+    "g7": {
+     "correct": "seeing blood",
+     "accept": [
+      "seeing blood"
+     ],
+     "label": "7. What worries Tom?",
+     "why": "The recording says Tom feels a bit faint whenever he sees blood."
+    },
+    "g8": {
+     "correct": "sign up online",
+     "accept": [
+      "sign up online"
+     ],
+     "label": "8. What do they decide to do?",
+     "why": "The recording says they decide to sign up together on the school website right away."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "treating burns",
+     "accept": [
+      "treating burns"
+     ],
+     "label": "1. Lena's brother touched a hot cooker",
+     "why": "The text says treating burns means cooling the skin under running water."
+    },
+    "g2": {
+     "correct": "the recovery position",
+     "accept": [
+      "the recovery position"
+     ],
+     "label": "2. Man breathing but won't wake up",
+     "why": "The text says the recovery position is for someone unconscious but still breathing."
+    },
+    "g3": {
+     "correct": "stopping bleeding",
+     "accept": [
+      "stopping bleeding"
+     ],
+     "label": "3. Mia's leg won't stop bleeding",
+     "why": "The text says stopping bleeding means pressing a clean cloth onto the wound."
+    },
+    "g4": {
+     "correct": "CPR",
+     "accept": [
+      "CPR"
+     ],
+     "label": "4. Player's heart had stopped",
+     "why": "The text says CPR is chest compressions to keep blood moving when the heart has stopped."
+    },
+    "g5": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "5. Students pay to take the course",
+     "why": "The text says the course is completely free."
+    },
+    "g6": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "6. Late students might not join",
+     "why": "The text confirms anyone who is late may not be allowed to join."
+    },
+    "g7": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "7. No break during the course",
+     "why": "The text says there is a short break in the middle of the course."
+    },
+    "g8": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "8. Phones used freely during exercises",
+     "why": "The text says mobile phones must be switched off during the practical exercises."
+    }
+   }
+  }
+ }
+}

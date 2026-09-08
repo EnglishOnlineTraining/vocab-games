@@ -1,0 +1,121 @@
+{
+ "unit": "uni-paraphrasing-summarizing",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "same length",
+     "accept": [
+      "same length"
+     ],
+     "label": "1. A good paraphrase is roughly the ___",
+     "why": "The text says a good paraphrase is roughly the same length as the original."
+    },
+    "g2": {
+     "correct": "synonyms",
+     "accept": [
+      "synonyms"
+     ],
+     "label": "2. Techniques include using ___",
+     "why": "The text says to use synonyms to replace key words."
+    },
+    "g3": {
+     "correct": "grammatical structure",
+     "accept": [
+      "grammatical structure"
+     ],
+     "label": "3. Changing the ___ of the sentence",
+     "why": "The text says to change the grammatical structure of the sentence."
+    },
+    "g4": {
+     "correct": "meaning",
+     "accept": [
+      "meaning"
+     ],
+     "label": "4. The ___ must remain exactly the same",
+     "why": "The text says the meaning must remain exactly the same as the original."
+    },
+    "g5": {
+     "correct": "shorter",
+     "accept": [
+      "shorter"
+     ],
+     "label": "5. Summarizing condenses text into a much ___ version",
+     "why": "The text says summarizing condenses a text into a much shorter version."
+    },
+    "g6": {
+     "correct": "main ideas",
+     "accept": [
+      "main ideas"
+     ],
+     "label": "6. A summary focuses only on the ___",
+     "why": "The text says a summary focuses only on the main ideas."
+    },
+    "g7": {
+     "correct": "plagiarism",
+     "accept": [
+      "plagiarism"
+     ],
+     "label": "7. Both skills help you avoid ___",
+     "why": "The text says both paraphrasing and summarizing help you avoid plagiarism."
+    },
+    "g8": {
+     "correct": "in-text citation",
+     "accept": [
+      "in-text citation"
+     ],
+     "label": "8. You must still include a proper ___",
+     "why": "The text says you must still include a proper in-text citation to credit the author."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. Best paraphrase of the climate change sentence",
+     "why": "This option changes both the vocabulary and sentence structure while keeping the same meaning; the others are too close to the original wording."
+    },
+    "g2": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "2. Best paraphrase of the exercise sentence",
+     "why": "This option changes both the vocabulary and structure while keeping an appropriately academic register; the others are too close to the original or too informal."
+    },
+    "g3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. Best paraphrase of the social media sentence",
+     "why": "This option most thoroughly changes both vocabulary and structure while keeping the same meaning."
+    },
+    "g4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. Best paraphrase of the graduates sentence",
+     "why": "This option changes both the vocabulary and structure most thoroughly while keeping the same meaning."
+    },
+    "g5": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "5. Best paraphrase of the AI sentence",
+     "why": "This option changes both the vocabulary and structure most thoroughly while keeping the same meaning."
+    }
+   }
+  }
+ }
+}

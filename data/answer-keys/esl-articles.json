@@ -1,0 +1,177 @@
+{
+ "unit": "esl-articles",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "… London for the weekend. We arrived at the station at noon and walked to our hotel. It was"
+    },
+    "g2": {
+     "correct": "the",
+     "accept": [
+      "the"
+     ],
+     "label": "In the afternoon, we visited the British Museum. We spent two hours looking at"
+    },
+    "g3": {
+     "correct": "an",
+     "accept": [
+      "an"
+     ],
+     "label": "…o hours looking at — choose — the a — (no article) Egyptian collection. After that, we had"
+    },
+    "g4": {
+     "correct": "—",
+     "accept": [
+      "—"
+     ],
+     "label": "The next day, we went to"
+    },
+    "g5": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "…, we went to — choose — — (no article) the a Oxford Street and did some shopping. I bought"
+    },
+    "g6": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "…bought — choose — the a — (no article) book about London's history. In the evening, we saw"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "Choose a , an or the for each gap. Complete the sentences 1. There is"
+    },
+    "g2": {
+     "correct": "The",
+     "accept": [
+      "The"
+     ],
+     "label": "…or each gap. Complete the sentences 1. There is — choose — a the an new café on my street."
+    },
+    "g3": {
+     "correct": "an",
+     "accept": [
+      "an"
+     ],
+     "label": "…an new café on my street. — choose — The A An café serves great coffee. 2. She wants to be"
+    },
+    "g4": {
+     "correct": "the",
+     "accept": [
+      "the"
+     ],
+     "label": "…offee. 2. She wants to be — choose — an the a engineer when she grows up. 3. Can you close"
+    },
+    "g5": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "…hen she grows up. 3. Can you close — choose — the a an window? It's cold in here. 4. I saw"
+    },
+    "g6": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "…an window? It's cold in here. 4. I saw — choose — a an the dog in the park. It was chasing"
+    },
+    "g7": {
+     "correct": "the",
+     "accept": [
+      "the"
+     ],
+     "label": "…oose — a an the dog in the park. It was chasing — choose — a the an ball. 5. My brother is"
+    },
+    "g8": {
+     "correct": "an",
+     "accept": [
+      "an"
+     ],
+     "label": "… ball. 5. My brother is — choose — the an a tallest person in our family. 6. I need to buy"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "—",
+     "accept": [
+      "—"
+     ],
+     "label": "Choose the or — (no article) for each gap. Complete the sentences 1."
+    },
+    "g2": {
+     "correct": "The",
+     "accept": [
+      "The"
+     ],
+     "label": "…p. Complete the sentences 1. — choose — — (no article) The Water is essential for life. 2."
+    },
+    "g3": {
+     "correct": "—",
+     "accept": [
+      "—"
+     ],
+     "label": "…r life. 2. — choose — The — (no article) water in this bottle tastes strange. 3. She loves"
+    },
+    "g4": {
+     "correct": "The",
+     "accept": [
+      "The"
+     ],
+     "label": "…ttle tastes strange. 3. She loves — choose — — (no article) the music, especially jazz. 4."
+    },
+    "g5": {
+     "correct": "—",
+     "accept": [
+      "—"
+     ],
+     "label": "… jazz. 4. — choose — The — (no article) music at the party was too loud. 5. I usually have"
+    },
+    "g6": {
+     "correct": "The",
+     "accept": [
+      "The"
+     ],
+     "label": "…y was too loud. 5. I usually have — choose — — (no article) the breakfast at 7 o'clock. 6."
+    },
+    "g7": {
+     "correct": "—",
+     "accept": [
+      "—"
+     ],
+     "label": "…choose — The — (no article) breakfast she cooked this morning was delicious. 7. He goes to"
+    },
+    "g8": {
+     "correct": "The",
+     "accept": [
+      "The"
+     ],
+     "label": "…ing was delicious. 7. He goes to — choose — — (no article) the school by bus every day. 8."
+    }
+   }
+  }
+ }
+}

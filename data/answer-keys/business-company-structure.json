@@ -1,0 +1,87 @@
+{
+ "unit": "business-company-structure",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "The CEO",
+     "accept": [
+      "The CEO"
+     ],
+     "label": "1. Who is at the top?",
+     "why": "The text says the CEO is at the top of the organisation."
+    },
+    "g2": {
+     "correct": "Four",
+     "accept": [
+      "Four"
+     ],
+     "label": "2. How many main departments?",
+     "why": "The text says TechCorp has four main departments."
+    },
+    "g3": {
+     "correct": "Handles production and logistics",
+     "accept": [
+      "Handles production and logistics"
+     ],
+     "label": "3. What does Operations do?",
+     "why": "The text says the Operations department handles production and logistics."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "hierarchy",
+     "accept": [
+      "hierarchy"
+     ],
+     "label": "1. Shows who reports to whom",
+     "why": "The ‘hierarchy’ shows the reporting structure within an organisation."
+    },
+    "g2": {
+     "correct": "department",
+     "accept": [
+      "department"
+     ],
+     "label": "2. Finance ___ manages money",
+     "why": "The text says the Finance department manages money and budgets."
+    },
+    "g3": {
+     "correct": "responsibility",
+     "accept": [
+      "responsibility"
+     ],
+     "label": "3. A manager's main ___",
+     "why": "A manager's main responsibility is to supervise their team."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "who",
+     "accept": [
+      "who"
+     ],
+     "label": "1. A director is someone ___ oversees...",
+     "why": "‘Who’ introduces a relative clause about a person (a director)."
+    },
+    "g2": {
+     "correct": "that",
+     "accept": [
+      "that"
+     ],
+     "label": "2. HR is the department ___ handles...",
+     "why": "‘That’ introduces a defining relative clause about a thing (a department)."
+    }
+   }
+  }
+ }
+}

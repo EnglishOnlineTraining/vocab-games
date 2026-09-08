@@ -1,0 +1,83 @@
+{
+ "unit": "quiz-grammar-medium",
+ "sections": {
+  "quiz": {
+   "prefix": "q-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "If I were you, I would go to the party.",
+     "accept": [
+      "If I were you, I would go to the party."
+     ],
+     "label": "1. Which sentence is subjunctive?",
+     "why": "The subjunctive uses 'were' for all persons in unreal conditions, not 'was'."
+    },
+    "g2": {
+     "correct": "I like swimming in the ocean.",
+     "accept": [
+      "I like swimming in the ocean."
+     ],
+     "label": "2. Which sentence contains a gerund?",
+     "why": "A gerund is an -ing form used as a noun; here 'swimming' is the object of 'like'."
+    },
+    "g3": {
+     "correct": "The students were given a test by the teacher.",
+     "accept": [
+      "The students were given a test by the teacher."
+     ],
+     "label": "3. Which sentence is passive?",
+     "why": "Passive is 'be' + past participle: 'were given', with the doer after 'by'."
+    },
+    "g4": {
+     "correct": "My sister, who is a doctor, is visiting next week.",
+     "accept": [
+      "My sister, who is a doctor, is visiting next week."
+     ],
+     "label": "4. Which has a non-restrictive clause?",
+     "why": "Non-restrictive clauses add extra information and are marked off by commas."
+    },
+    "g5": {
+     "correct": "My friend, a doctor, is coming to visit next week.",
+     "accept": [
+      "My friend, a doctor, is coming to visit next week."
+     ],
+     "label": "5. Which contains an appositive?",
+     "why": "An appositive is a noun phrase renaming the noun beside it, set off by commas."
+    },
+    "g6": {
+     "correct": "She's feeling under the weather today.",
+     "accept": [
+      "She's feeling under the weather today."
+     ],
+     "label": "6. Which is an idiomatic expression?",
+     "why": "'Under the weather' means unwell — its meaning is not the sum of its words."
+    },
+    "g7": {
+     "correct": "If I had studied harder, I would have passed the test.",
+     "accept": [
+      "If I had studied harder, I would have passed the test."
+     ],
+     "label": "7. Which is conditional perfect?",
+     "why": "Third conditional: if + past perfect, would have + past participle, for an unreal past."
+    },
+    "g8": {
+     "correct": "and",
+     "accept": [
+      "and"
+     ],
+     "label": "8. Which word is a conjunction?",
+     "why": "Conjunctions join words or clauses; 'and' links two equal parts."
+    },
+    "g9": {
+     "correct": "The author wrote the book.",
+     "accept": [
+      "The author wrote the book."
+     ],
+     "label": "9. Which sentence is active?",
+     "why": "In the active voice the subject does the action: the author wrote it."
+    }
+   }
+  }
+ }
+}

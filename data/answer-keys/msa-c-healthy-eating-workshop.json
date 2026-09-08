@@ -1,0 +1,145 @@
+{
+ "unit": "msa-c-healthy-eating-workshop",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Wednesday",
+     "accept": [
+      "Wednesday"
+     ],
+     "label": "1. Workshop takes place next...",
+     "why": "The recording says the workshop is next Wednesday afternoon."
+    },
+    "g2": {
+     "correct": "two o'clock",
+     "accept": [
+      "two o'clock"
+     ],
+     "label": "2. It starts at...",
+     "why": "The recording says the workshop starts at two o'clock."
+    },
+    "g3": {
+     "correct": "ninety minutes",
+     "accept": [
+      "ninety minutes"
+     ],
+     "label": "3. It lasts about...",
+     "why": "The recording says the workshop lasts about ninety minutes."
+    },
+    "g4": {
+     "correct": "container",
+     "accept": [
+      "container"
+     ],
+     "label": "4. Bring an apron and a...",
+     "why": "The recording says to bring an apron and a clean container to take food home in."
+    },
+    "g5": {
+     "correct": "nothing",
+     "accept": [
+      "nothing"
+     ],
+     "label": "5. The workshop costs...",
+     "why": "The recording says there is no charge at all for the workshop."
+    },
+    "g6": {
+     "correct": "cook",
+     "accept": [
+      "cook"
+     ],
+     "label": "6. Ben is worried he cannot...",
+     "why": "The recording says Ben is not sure he can cook at all."
+    },
+    "g7": {
+     "correct": "free",
+     "accept": [
+      "free"
+     ],
+     "label": "7. Mia says the workshop is...",
+     "why": "The recording says the workshop is completely free."
+    },
+    "g8": {
+     "correct": "tomorrow",
+     "accept": [
+      "tomorrow"
+     ],
+     "label": "8. Ben will sign up...",
+     "why": "The recording says Ben will sign up tomorrow morning."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Soup Pot",
+     "accept": [
+      "Soup Pot"
+     ],
+     "label": "1. Aisha — warm meal for cold days",
+     "why": "The text says the Soup Pot teaches a warming vegetable soup."
+    },
+    "g2": {
+     "correct": "Smoothie Station",
+     "accept": [
+      "Smoothie Station"
+     ],
+     "label": "2. Tom — cold fruit drinks",
+     "why": "The text says the Smoothie Station blends fresh fruit into a cold drink."
+    },
+    "g3": {
+     "correct": "Salad Bar",
+     "accept": [
+      "Salad Bar"
+     ],
+     "label": "3. Leah — crunchy and colourful",
+     "why": "The text says the Salad Bar mixes crunchy vegetables for a colourful lunch."
+    },
+    "g4": {
+     "correct": "Snack Table",
+     "accept": [
+      "Snack Table"
+     ],
+     "label": "4. Max — quick ideas between lessons",
+     "why": "The text says the Snack Table has quick, healthy snacks."
+    },
+    "g5": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "5. Wash hands before cooking",
+     "why": "The text confirms you should wash your hands before you start cooking."
+    },
+    "g6": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "6. Any student may use knives",
+     "why": "The text says knives may only be used by students over 16."
+    },
+    "g7": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "7. No need to mention allergies",
+     "why": "The text says you must tell a teacher about any nut allergies before you begin."
+    },
+    "g8": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "8. Kitchen cleaned by 3:30pm",
+     "why": "The text confirms the kitchen must be left clean and tidy by 3:30pm."
+    }
+   }
+  }
+ }
+}

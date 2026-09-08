@@ -1,0 +1,73 @@
+{
+ "unit": "business-market-entry-pestel",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Interest rates and GDP growth",
+     "accept": [
+      "Interest rates and GDP growth"
+     ],
+     "label": "1. Economic factors include?",
+     "why": "The text says Economic factors are interest rates, exchange rates, and GDP growth."
+    },
+    "g2": {
+     "correct": "Environmental",
+     "accept": [
+      "Environmental"
+     ],
+     "label": "2. Covers sustainability concerns?",
+     "why": "The text says Environmental factors are sustainability concerns."
+    },
+    "g3": {
+     "correct": "Technological",
+     "accept": [
+      "Technological"
+     ],
+     "label": "3. What does 'T' represent?",
+     "why": "The text says Technological factors include innovation and digital trends."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Social",
+     "accept": [
+      "Social"
+     ],
+     "label": "1. Rising eco-friendly product preference",
+     "why": "A shift in consumer attitudes and preferences is classified as a Social factor in PESTEL, even when the preference is for eco-friendly products."
+    },
+    "g2": {
+     "correct": "Political",
+     "accept": [
+      "Political"
+     ],
+     "label": "2. New trade tariffs",
+     "why": "The text says Political factors include government regulations and trade policies."
+    },
+    "g3": {
+     "correct": "Technological",
+     "accept": [
+      "Technological"
+     ],
+     "label": "3. Investment in AI and automation",
+     "why": "The text says Technological factors include innovation and digital trends."
+    },
+    "g4": {
+     "correct": "Legal",
+     "accept": [
+      "Legal"
+     ],
+     "label": "4. Minimum wage legislation",
+     "why": "The text says Legal factors cover labor laws and compliance requirements."
+    }
+   }
+  }
+ }
+}

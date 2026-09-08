@@ -1,0 +1,169 @@
+{
+ "unit": "uni-relationships-language",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "a": {
+     "correct": "6",
+     "accept": [
+      "6"
+     ],
+     "label": "a) They were both annoyed...",
+     "why": "This explains the mutual annoyance introduced by line j) 'Was he annoyed?', so it follows at position 6."
+    },
+    "b": {
+     "correct": "3",
+     "accept": [
+      "3"
+     ],
+     "label": "b) Oh, what went wrong?",
+     "why": "This reacts to line e) saying it was 'disastrous', asking what happened, so it follows at position 3."
+    },
+    "c": {
+     "correct": "10",
+     "accept": [
+      "10"
+     ],
+     "label": "c) Well, I'm going to carry on working...",
+     "why": "This responds to the invitation for a drink in line h), closing the conversation at position 10."
+    },
+    "d": {
+     "correct": "7",
+     "accept": [
+      "7"
+     ],
+     "label": "d) How did you turn it round?",
+     "why": "This asks how the situation was resolved, following the account of what went wrong at position 7."
+    },
+    "e": {
+     "correct": "2",
+     "accept": [
+      "2"
+     ],
+     "label": "e) It's fine now, but at the start of the year...",
+     "why": "This answers the opening question f) about how the relationship is going, at position 2."
+    },
+    "g": {
+     "correct": "4",
+     "accept": [
+      "4"
+     ],
+     "label": "g) Well, I went over my contact's head...",
+     "why": "This explains what went wrong, answering line b), at position 4."
+    },
+    "h": {
+     "correct": "9",
+     "accept": [
+      "9"
+     ],
+     "label": "h) Glad it worked out. Anyway, are you free...",
+     "why": "This reacts positively to the resolution in line i) and changes topic to invite a drink, at position 9."
+    },
+    "i": {
+     "correct": "8",
+     "accept": [
+      "8"
+     ],
+     "label": "i) Well, I had to build up my relationship again...",
+     "why": "This answers d) by explaining how the relationship was rebuilt, at position 8."
+    },
+    "j": {
+     "correct": "5",
+     "accept": [
+      "5"
+     ],
+     "label": "j) Was he annoyed?",
+     "why": "This follows on from g)'s account of going over the contact's head, at position 5."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "get on",
+     "accept": [
+      "get on"
+     ],
+     "label": "1. have a friendly relationship",
+     "why": "‘Get on’ (well) with someone means to have a friendly relationship."
+    },
+    "g2": {
+     "correct": "check in",
+     "accept": [
+      "check in"
+     ],
+     "label": "2. registered (at a hotel)",
+     "why": "‘Check in’ means to register on arrival at a hotel."
+    },
+    "g3": {
+     "correct": "build up",
+     "accept": [
+      "build up"
+     ],
+     "label": "3. make stronger",
+     "why": "‘Build up’ (a relationship) means to make it stronger over time."
+    },
+    "g4": {
+     "correct": "turn round",
+     "accept": [
+      "turn round"
+     ],
+     "label": "4. change into something successful",
+     "why": "‘Turn round’ means to change a bad situation into a successful one."
+    },
+    "g5": {
+     "correct": "put off",
+     "accept": [
+      "put off"
+     ],
+     "label": "5. postponing / delaying",
+     "why": "‘Put off’ means to postpone or delay something."
+    },
+    "g6": {
+     "correct": "turn up",
+     "accept": [
+      "turn up"
+     ],
+     "label": "6. appear / arrive somewhere",
+     "why": "‘Turn up’ means to arrive or appear somewhere."
+    },
+    "g7": {
+     "correct": "let down",
+     "accept": [
+      "let down"
+     ],
+     "label": "7. disappoint",
+     "why": "‘Let down’ means to disappoint someone."
+    },
+    "g8": {
+     "correct": "set up",
+     "accept": [
+      "set up"
+     ],
+     "label": "8. arrange",
+     "why": "‘Set up’ means to arrange or organise something, like a meeting."
+    },
+    "g9": {
+     "correct": "carry on",
+     "accept": [
+      "carry on"
+     ],
+     "label": "9. continue",
+     "why": "‘Carry on’ means to continue doing something."
+    },
+    "g10": {
+     "correct": "call off",
+     "accept": [
+      "call off"
+     ],
+     "label": "10. cancelled",
+     "why": "‘Call off’ means to cancel something."
+    }
+   }
+  }
+ }
+}

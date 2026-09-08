@@ -1,0 +1,73 @@
+{
+ "unit": "business-recruitment-hiring",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Lead the marketing team and develop strategies",
+     "accept": [
+      "Lead the marketing team and develop strategies"
+     ],
+     "label": "1. Main responsibility of the position?",
+     "why": "The job ad says the role is to lead the marketing team and develop marketing strategies."
+    },
+    "g2": {
+     "correct": "3+ years of marketing experience",
+     "accept": [
+      "3+ years of marketing experience"
+     ],
+     "label": "2. Experience required?",
+     "why": "The job ad says the ideal candidate has 3+ years of marketing experience."
+    },
+    "g3": {
+     "correct": "Proficiency in digital marketing tools",
+     "accept": [
+      "Proficiency in digital marketing tools"
+     ],
+     "label": "3. A requirement for this job?",
+     "why": "The job ad lists proficiency in digital marketing tools as a requirement."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "candidate",
+     "accept": [
+      "candidate"
+     ],
+     "label": "1. A person who applies for a job",
+     "why": "A ‘candidate’ is a person who applies for a job."
+    },
+    "g2": {
+     "correct": "job description",
+     "accept": [
+      "job description"
+     ],
+     "label": "2. Lists all duties and responsibilities",
+     "why": "The ‘job description’ lists all duties and responsibilities of a role."
+    },
+    "g3": {
+     "correct": "hire",
+     "accept": [
+      "hire"
+     ],
+     "label": "3. Companies ___ new employees",
+     "why": "Companies ‘hire’ new employees to fill open positions."
+    },
+    "g4": {
+     "correct": "competency",
+     "accept": [
+      "competency"
+     ],
+     "label": "4. An important ___ for managers",
+     "why": "‘Competency’ is the standard HR term for a required skill or quality."
+    }
+   }
+  }
+ }
+}

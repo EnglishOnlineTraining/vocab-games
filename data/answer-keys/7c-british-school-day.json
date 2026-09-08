@@ -1,0 +1,145 @@
+{
+ "unit": "7c-british-school-day",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Manchester",
+     "accept": [
+      "Manchester"
+     ],
+     "label": "1. Emily goes to school in...",
+     "why": "The text says Emily goes to a secondary school in Manchester, England."
+    },
+    "g2": {
+     "correct": "uniform",
+     "accept": [
+      "uniform"
+     ],
+     "label": "2. She wears a...",
+     "why": "The text says Emily puts on her school uniform every morning."
+    },
+    "g3": {
+     "correct": "half past eight",
+     "accept": [
+      "half past eight"
+     ],
+     "label": "3. Lessons start at...",
+     "why": "The text says lessons start at half past eight."
+    },
+    "g4": {
+     "correct": "Science",
+     "accept": [
+      "Science"
+     ],
+     "label": "4. Emily's favourite subject is...",
+     "why": "The text says Emily's favourite subject is Science because they do experiments."
+    },
+    "g5": {
+     "correct": "canteen",
+     "accept": [
+      "canteen"
+     ],
+     "label": "5. For lunch, Emily eats in the...",
+     "why": "The text says Emily usually eats in the school canteen."
+    },
+    "g6": {
+     "correct": "three o'clock",
+     "accept": [
+      "three o'clock"
+     ],
+     "label": "6. School finishes at...",
+     "why": "The text says school finishes at three o'clock."
+    },
+    "g7": {
+     "correct": "football club",
+     "accept": [
+      "football club"
+     ],
+     "label": "7. After school, Emily stays for...",
+     "why": "The text says Emily stays for football club after school."
+    },
+    "g8": {
+     "correct": "nine o'clock",
+     "accept": [
+      "nine o'clock"
+     ],
+     "label": "8. Emily goes to bed at...",
+     "why": "The text says Emily goes to bed at nine o'clock."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "special clothes for school",
+     "accept": [
+      "special clothes for school"
+     ],
+     "label": "1. uniform",
+     "why": "‘Uniform’ means the special clothes worn for school."
+    },
+    "g2": {
+     "correct": "a type of jacket",
+     "accept": [
+      "a type of jacket"
+     ],
+     "label": "2. blazer",
+     "why": "A ‘blazer’ is a type of jacket worn in the school colours."
+    },
+    "g3": {
+     "correct": "an area of study at school",
+     "accept": [
+      "an area of study at school"
+     ],
+     "label": "3. subject",
+     "why": "A ‘subject’ is an area of study, like Science or Maths."
+    },
+    "g4": {
+     "correct": "a test in Science class",
+     "accept": [
+      "a test in Science class"
+     ],
+     "label": "4. experiment",
+     "why": "An ‘experiment’ is a scientific test carried out in Science class."
+    },
+    "g5": {
+     "correct": "a short rest between lessons",
+     "accept": [
+      "a short rest between lessons"
+     ],
+     "label": "5. break",
+     "why": "A ‘break’ is a short rest between lessons."
+    },
+    "g6": {
+     "correct": "a place to eat at school",
+     "accept": [
+      "a place to eat at school"
+     ],
+     "label": "6. canteen",
+     "why": "The ‘canteen’ is the place where students eat at school."
+    },
+    "g7": {
+     "correct": "the outside area at school",
+     "accept": [
+      "the outside area at school"
+     ],
+     "label": "7. playground",
+     "why": "The ‘playground’ is the outside area at school."
+    },
+    "g8": {
+     "correct": "a group that meets after school",
+     "accept": [
+      "a group that meets after school"
+     ],
+     "label": "8. club",
+     "why": "A ‘club’ is a group that meets after school, like football club."
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,215 @@
+{
+ "unit": "8c-midwest-festivals",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Fair",
+     "accept": [
+      "Fair"
+     ],
+     "label": "1. every state has a big State ___",
+     "why": "A State Fair is the summer event with rides, animals and food."
+    },
+    "g2": {
+     "correct": "cream",
+     "accept": [
+      "cream"
+     ],
+     "label": "2. popcorn and ice ___",
+     "why": "Ice cream is the fixed compound for the frozen dessert."
+    },
+    "g3": {
+     "correct": "celebrate",
+     "accept": [
+      "celebrate"
+     ],
+     "label": "3. families ___ Thanksgiving",
+     "why": "You celebrate a holiday; 'cancel' and 'collect' do not fit a festival."
+    },
+    "g4": {
+     "correct": "turkey",
+     "accept": [
+      "turkey"
+     ],
+     "label": "4. They cook a big ___",
+     "why": "Turkey is the traditional Thanksgiving meal."
+    },
+    "g5": {
+     "correct": "parade",
+     "accept": [
+      "parade"
+     ],
+     "label": "5. a long ___ through the town",
+     "why": "A parade is a procession through the streets."
+    },
+    "g6": {
+     "correct": "fireworks",
+     "accept": [
+      "fireworks"
+     ],
+     "label": "6. you can watch ___ over the lake",
+     "why": "Fireworks are the lights set off in the sky on the Fourth of July."
+    },
+    "g7": {
+     "correct": "decorations",
+     "accept": [
+      "decorations"
+     ],
+     "label": "7. houses have colourful ___",
+     "why": "Decorations are what you put up to make a place look festive."
+    },
+    "g8": {
+     "correct": "neighbours",
+     "accept": [
+      "neighbours"
+     ],
+     "label": "8. a good chance to meet your ___",
+     "why": "Neighbours are the people living close by, who meet at festivals."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "holiday",
+     "accept": [
+      "holiday"
+     ],
+     "label": "1. a special day when people do not work",
+     "why": "A holiday is a day off work, often to celebrate something."
+    },
+    "g2": {
+     "correct": "parade",
+     "accept": [
+      "parade"
+     ],
+     "label": "2. people walking with music and costumes",
+     "why": "That public procession through the streets is a parade."
+    },
+    "g3": {
+     "correct": "decorations",
+     "accept": [
+      "decorations"
+     ],
+     "label": "3. lights and colours you put up",
+     "why": "Things put up to make a place festive are decorations."
+    },
+    "g4": {
+     "correct": "present",
+     "accept": [
+      "present"
+     ],
+     "label": "4. something you give on a special day",
+     "why": "A present is a gift given to someone."
+    },
+    "g5": {
+     "correct": "fireworks",
+     "accept": [
+      "fireworks"
+     ],
+     "label": "5. bright lights and loud bangs",
+     "why": "Fireworks explode in the night sky with light and noise."
+    },
+    "g6": {
+     "correct": "harvest",
+     "accept": [
+      "harvest"
+     ],
+     "label": "6. when farmers bring in the food",
+     "why": "The harvest is the time crops are gathered from the fields."
+    },
+    "g7": {
+     "correct": "festival",
+     "accept": [
+      "festival"
+     ],
+     "label": "7. a big event with music, food and games",
+     "why": "A festival is a public celebration held in a town."
+    },
+    "g8": {
+     "correct": "neighbours",
+     "accept": [
+      "neighbours"
+     ],
+     "label": "8. people in the houses next to yours",
+     "why": "Neighbours live in the houses beside your own."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "celebrate",
+     "accept": [
+      "celebrate"
+     ],
+     "label": "1. Every November we ___ Thanksgiving",
+     "why": "You celebrate a festival; the object here is Thanksgiving."
+    },
+    "g2": {
+     "correct": "decorate",
+     "accept": [
+      "decorate"
+     ],
+     "label": "2. We ___ the house with lights",
+     "why": "To decorate means to put up lights and ornaments."
+    },
+    "g3": {
+     "correct": "invite",
+     "accept": [
+      "invite"
+     ],
+     "label": "3. My parents ___ our neighbours to dinner",
+     "why": "You invite people to come to a meal or party."
+    },
+    "g4": {
+     "correct": "try",
+     "accept": [
+      "try"
+     ],
+     "label": "4. At the State Fair you can ___ food",
+     "why": "To try food means to taste it for the first time."
+    },
+    "g5": {
+     "correct": "watch",
+     "accept": [
+      "watch"
+     ],
+     "label": "5. Thousands of people ___ the parade",
+     "why": "You watch something that moves past, like a parade."
+    },
+    "g6": {
+     "correct": "open",
+     "accept": [
+      "open"
+     ],
+     "label": "6. Children ___ their presents",
+     "why": "Presents are wrapped, so you open them."
+    },
+    "g7": {
+     "correct": "takes",
+     "accept": [
+      "takes"
+     ],
+     "label": "7. The festival ___ place in the town centre",
+     "why": "'Take place' is the fixed phrase meaning to happen."
+    },
+    "g8": {
+     "correct": "goes",
+     "accept": [
+      "goes"
+     ],
+     "label": "8. After the fireworks everybody ___ home",
+     "why": "'Everybody' is singular, so the present simple takes -es: goes."
+    }
+   }
+  }
+ }
+}

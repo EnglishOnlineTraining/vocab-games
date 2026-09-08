@@ -1,0 +1,145 @@
+{
+ "unit": "msa-c-school-uniform",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "head teacher",
+     "accept": [
+      "head teacher"
+     ],
+     "label": "1. Who makes the announcement?",
+     "why": "The recording says the head teacher is making the announcement."
+    },
+    "g2": {
+     "correct": "after summer holidays",
+     "accept": [
+      "after summer holidays"
+     ],
+     "label": "2. When is the uniform compulsory?",
+     "why": "The recording says the uniform becomes compulsory after the summer holidays."
+    },
+    "g3": {
+     "correct": "dark blue",
+     "accept": [
+      "dark blue"
+     ],
+     "label": "3. What colour is the sweatshirt?",
+     "why": "The recording says the sweatshirt is dark blue with the school logo."
+    },
+    "g4": {
+     "correct": "school website shop",
+     "accept": [
+      "school website shop"
+     ],
+     "label": "4. Where can families buy it?",
+     "why": "The recording says families can order from the online shop on the school website."
+    },
+    "g5": {
+     "correct": "second-hand exchange",
+     "accept": [
+      "second-hand exchange"
+     ],
+     "label": "5. What help is offered to poorer families?",
+     "why": "The recording says there will be a free second-hand uniform exchange."
+    },
+    "g6": {
+     "correct": "less pressure on clothes",
+     "accept": [
+      "less pressure on clothes"
+     ],
+     "label": "6. Hannah's reason for liking the uniform?",
+     "why": "The recording says Hannah likes that there will be less pressure about wearing the right clothes."
+    },
+    "g7": {
+     "correct": "everyone looks the same",
+     "accept": [
+      "everyone looks the same"
+     ],
+     "label": "7. Leo's main worry?",
+     "why": "The recording says Leo worries everyone will look the same and lose their identity."
+    },
+    "g8": {
+     "correct": "write to the school",
+     "accept": [
+      "write to the school"
+     ],
+     "label": "8. What do they agree to do?",
+     "why": "The recording says they agree to write down their views and hand them in."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "fairness",
+     "accept": [
+      "fairness"
+     ],
+     "label": "1. Elif — hates spending on fashion",
+     "why": "The text says the fairness view means nobody is judged for cheap or expensive clothes."
+    },
+    "g2": {
+     "correct": "self-expression",
+     "accept": [
+      "self-expression"
+     ],
+     "label": "2. Marco — unusual outfits, personality",
+     "why": "The text says clothes are how self-expression shows who you are."
+    },
+    "g3": {
+     "correct": "saving time",
+     "accept": [
+      "saving time"
+     ],
+     "label": "3. Sena — no time to think about clothes",
+     "why": "The text says a uniform saves time deciding what to wear."
+    },
+    "g4": {
+     "correct": "comfort",
+     "accept": [
+      "comfort"
+     ],
+     "label": "4. Paul — move and sit easily",
+     "why": "The text says comfort means not wearing stiff, uncomfortable clothes."
+    },
+    "g5": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "5. Trainers in every lesson",
+     "why": "The text says trainers are only allowed in PE lessons."
+    },
+    "g6": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "6. Own coat outside on cold days",
+     "why": "The text confirms your own coat may be worn outside on cold days."
+    },
+    "g7": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "7. Lots of jewellery allowed",
+     "why": "The text says only small earrings are permitted; other jewellery stays at home."
+    },
+    "g8": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "8. Sweatshirt has the school logo",
+     "why": "The text confirms the school sweatshirt must show the school logo."
+    }
+   }
+  }
+ }
+}

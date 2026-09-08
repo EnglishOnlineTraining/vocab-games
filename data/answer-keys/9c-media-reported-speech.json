@@ -1,0 +1,191 @@
+{
+ "unit": "9c-media-reported-speech",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "phones",
+     "accept": [
+      "phones"
+     ],
+     "label": "A new study asked 1,200 teenagers how they use their 1"
+    },
+    "g2": {
+     "correct": "media",
+     "accept": [
+      "media"
+     ],
+     "label": "…e — phrases phones photos . On average, they spend more than three hours a day on social 2"
+    },
+    "g3": {
+     "correct": "friends",
+     "accept": [
+      "friends"
+     ],
+     "label": "Most of them say that they enjoy it. They chat with 3"
+    },
+    "g4": {
+     "correct": "stressed",
+     "accept": [
+      "stressed"
+     ],
+     "label": "… follow their favourite bands. But almost half of them also say that they sometimes feel 4"
+    },
+    "g5": {
+     "correct": "news",
+     "accept": [
+      "news"
+     ],
+     "label": "One big problem is fake 5"
+    },
+    "g6": {
+     "correct": "source",
+     "accept": [
+      "source"
+     ],
+     "label": "…ok completely real when it is not. Experts say that young people should always check the 6"
+    },
+    "g7": {
+     "correct": "report",
+     "accept": [
+      "report"
+     ],
+     "label": "…online, hundreds of people can read it within minutes. Schools now teach students how to 7"
+    },
+    "g8": {
+     "correct": "advice",
+     "accept": [
+      "advice"
+     ],
+     "label": "The study ends with simple 8"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "was",
+     "accept": [
+      "was"
+     ],
+     "label": "1. “I am tired.” → She said that she"
+    },
+    "g2": {
+     "correct": "watched",
+     "accept": [
+      "watched"
+     ],
+     "label": "2. “We watch videos every evening.” → They said that they"
+    },
+    "g3": {
+     "correct": "had deleted",
+     "accept": [
+      "had deleted"
+     ],
+     "label": "3. “I have deleted the photo.” → He said that he"
+    },
+    "g4": {
+     "correct": "would",
+     "accept": [
+      "would"
+     ],
+     "label": "4. “I will call you later.” → She said that she"
+    },
+    "g5": {
+     "correct": "couldn't",
+     "accept": [
+      "couldn't"
+     ],
+     "label": "5. “I can't find the link.” → He said that he"
+    },
+    "g6": {
+     "correct": "had to",
+     "accept": [
+      "had to"
+     ],
+     "label": "6. “You must check the source.” → The teacher said that we"
+    },
+    "g7": {
+     "correct": "was posting",
+     "accept": [
+      "was posting"
+     ],
+     "label": "7. “I'm posting a picture.” → He said that he"
+    },
+    "g8": {
+     "correct": "had broken",
+     "accept": [
+      "had broken"
+     ],
+     "label": "8. “My phone broke yesterday.” → She said that her phone"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "got",
+     "accept": [
+      "got"
+     ],
+     "label": "1. “Where do you get your news?” → She asked me where I"
+    },
+    "g2": {
+     "correct": "if",
+     "accept": [
+      "if"
+     ],
+     "label": "2. “Are you online?” → He asked"
+    },
+    "g3": {
+     "correct": "not to share",
+     "accept": [
+      "not to share"
+     ],
+     "label": "3. “Don't share that video!” → The teacher told us"
+    },
+    "g4": {
+     "correct": "to turn",
+     "accept": [
+      "to turn"
+     ],
+     "label": "4. “Please turn off your phone.” → She asked me"
+    },
+    "g5": {
+     "correct": "told",
+     "accept": [
+      "told"
+     ],
+     "label": "5. Mia"
+    },
+    "g6": {
+     "correct": "said",
+     "accept": [
+      "said"
+     ],
+     "label": "6. Ben"
+    },
+    "g7": {
+     "correct": "had",
+     "accept": [
+      "had"
+     ],
+     "label": "7. “How many followers have you got?” → He asked me how many followers I"
+    },
+    "g8": {
+     "correct": "whether",
+     "accept": [
+      "whether"
+     ],
+     "label": "8. “Did you read the article?” → She asked me"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,199 @@
+{
+ "unit": "10g-short-story-analysis",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "first person",
+     "accept": [
+      "first person"
+     ],
+     "label": "1. Point of view of the story",
+     "why": "The narrator uses 'I' throughout, so the story is told in the first person."
+    },
+    "g2": {
+     "correct": "taking the unlocked bike for himself",
+     "accept": [
+      "taking the unlocked bike for himself"
+     ],
+     "label": "2. What the narrator was seriously considering",
+     "why": "He notices the bike is unlocked and thinks nobody would know if he took it."
+    },
+    "g3": {
+     "correct": "the narrator's inner conflict about what to do",
+     "accept": [
+      "the narrator's inner conflict about what to do"
+     ],
+     "label": "3. What the clouds/storm mainly represent",
+     "why": "The clouds press lower as his temptation grows, and the storm breaks only once he decides."
+    },
+    "g4": {
+     "correct": "told him where it was",
+     "accept": [
+      "told him where it was"
+     ],
+     "label": "4. What the narrator did when Felix asked about the bike",
+     "why": "He points at the fence and tells Felix the bike is there, safe."
+    },
+    "g5": {
+     "correct": "the rain finally starts falling",
+     "accept": [
+      "the rain finally starts falling"
+     ],
+     "label": "5. What happens right after the narrator tells the truth",
+     "why": "The text says the first drops of rain broke through right after he pointed Felix to the bike."
+    },
+    "g6": {
+     "correct": "the rain matches his sense of relief after doing the right thing",
+     "accept": [
+      "the rain matches his sense of relief after doing the right thing"
+     ],
+     "label": "6. How the ending rain links to the narrator's feelings",
+     "why": "The narrator compares the rain breaking through to something inside him 'breaking open' — lighter and cleaner."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "first-person narration",
+     "accept": [
+      "first-person narration"
+     ],
+     "label": "1. \"I never told anyone what really happened that night.\"",
+     "why": "The narrator speaks as 'I', so this is first-person narration."
+    },
+    "g2": {
+     "correct": "third-person limited",
+     "accept": [
+      "third-person limited"
+     ],
+     "label": "2. \"Marcus stared at the letter, wondering if his father would ever forgive him.\"",
+     "why": "We only see Marcus's own thoughts from outside — that is third-person limited."
+    },
+    "g3": {
+     "correct": "third-person omniscient",
+     "accept": [
+      "third-person omniscient"
+     ],
+     "label": "3. \"Marcus felt sure he had been forgiven, but across town his father was already packing his bags.\"",
+     "why": "The narrator reveals what Marcus's father is doing elsewhere — something Marcus himself does not know — which only an omniscient narrator can show."
+    },
+    "g4": {
+     "correct": "unreliable narrator",
+     "accept": [
+      "unreliable narrator"
+     ],
+     "label": "4. \"I definitely wasn't scared — my hands were just cold, that's all.\"",
+     "why": "The narrator's defensive denial suggests they are not telling the whole truth — a sign of an unreliable narrator."
+    },
+    "g5": {
+     "correct": "first-person narration",
+     "accept": [
+      "first-person narration"
+     ],
+     "label": "5. \"We ran until our lungs burned, and even then I didn't dare look back.\"",
+     "why": "'I' and 'we' mark the narrator speaking about their own experience: first person."
+    },
+    "g6": {
+     "correct": "third-person limited",
+     "accept": [
+      "third-person limited"
+     ],
+     "label": "6. \"Priya bit her lip, unsure whether to knock on the door.\"",
+     "why": "The narrator only shows us Priya's own uncertainty, from outside: third-person limited."
+    },
+    "g7": {
+     "correct": "third-person omniscient",
+     "accept": [
+      "third-person omniscient"
+     ],
+     "label": "7. \"Neither of them noticed the shadow slipping past the window behind them.\"",
+     "why": "The narrator describes something neither character notices — knowledge beyond any one character's view is a sign of an omniscient narrator."
+    },
+    "g8": {
+     "correct": "unreliable narrator",
+     "accept": [
+      "unreliable narrator"
+     ],
+     "label": "8. \"I only borrowed it — I was always going to give it back, I swear.\"",
+     "why": "The over-eager justification ('I swear') suggests the narrator is trying to convince us of something that may not be true."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "the family's strength and resilience",
+     "accept": [
+      "the family's strength and resilience"
+     ],
+     "label": "1. The old oak tree",
+     "why": "A tree that survives every storm stands for the family enduring hard times."
+    },
+    "g2": {
+     "correct": "holding on to the past",
+     "accept": [
+      "holding on to the past"
+     ],
+     "label": "2. The cracked watch",
+     "why": "Keeping a broken watch that no longer works represents refusing to let go of an earlier time."
+    },
+    "g3": {
+     "correct": "her fear of making a big change",
+     "accept": [
+      "her fear of making a big change"
+     ],
+     "label": "3. The gate at the end of the lane",
+     "why": "The gate only seems to grow taller when she thinks about leaving — it stands for how hard the decision feels, not its real height."
+    },
+    "g4": {
+     "correct": "someone is waiting and holding on to hope",
+     "accept": [
+      "someone is waiting and holding on to hope"
+     ],
+     "label": "4. The candle in the window",
+     "why": "A candle left burning after everyone else has gone to sleep is a classic image of someone waiting, still hopeful."
+    },
+    "g5": {
+     "correct": "the broken connection between them",
+     "accept": [
+      "the broken connection between them"
+     ],
+     "label": "5. The closed bridge",
+     "why": "A bridge that connects two places being closed since an argument mirrors the broken connection between the people."
+    },
+    "g6": {
+     "correct": "a sense of relief and a fresh start",
+     "accept": [
+      "a sense of relief and a fresh start"
+     ],
+     "label": "6. The falling snow",
+     "why": "Snow falling at the exact moment she speaks her fear aloud suggests a clean, fresh start, not just weather."
+    },
+    "g7": {
+     "correct": "memories fading with time",
+     "accept": [
+      "memories fading with time"
+     ],
+     "label": "7. The faded photograph",
+     "why": "A photograph fading until the faces can no longer be made out mirrors memories fading as time passes."
+    },
+    "g8": {
+     "correct": "had fought",
+     "accept": [
+      "had fought"
+     ],
+     "label": "8 (review) — campaigners ___ for equal rights",
+     "why": "Review from 10g-slavery-civil-war: past perfect for an action completed before another past event ('by the time the law passed') — 'had fought'."
+    }
+   }
+  }
+ }
+}

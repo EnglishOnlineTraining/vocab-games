@@ -1,0 +1,199 @@
+{
+ "unit": "8c-off-to-midwest",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Milwaukee, Wisconsin",
+     "accept": [
+      "Milwaukee, Wisconsin"
+     ],
+     "label": "1. Where does Jake live?",
+     "why": "The text says Jake lives in Milwaukee, Wisconsin."
+    },
+    "g2": {
+     "correct": "He takes the school bus",
+     "accept": [
+      "He takes the school bus"
+     ],
+     "label": "2. How does Jake get to school?",
+     "why": "The text says Jake takes the school bus to school."
+    },
+    "g3": {
+     "correct": "science",
+     "accept": [
+      "science"
+     ],
+     "label": "3. What is Jake’s favourite subject?",
+     "why": "The text says Jake’s favourite subject is science."
+    },
+    "g4": {
+     "correct": "turkey with mashed potatoes",
+     "accept": [
+      "turkey with mashed potatoes"
+     ],
+     "label": "4. What does the family eat at Thanksgiving?",
+     "why": "The text says the family eats turkey with mashed potatoes at Thanksgiving."
+    },
+    "g5": {
+     "correct": "his dog, Buddy",
+     "accept": [
+      "his dog, Buddy"
+     ],
+     "label": "5. What is Jake thankful for?",
+     "why": "The text says Jake is thankful for his dog, Buddy."
+    },
+    "g6": {
+     "correct": "go swimming and have barbecues",
+     "accept": [
+      "go swimming and have barbecues"
+     ],
+     "label": "6. What does the family do at the lake in summer?",
+     "why": "The text says the family goes swimming and has barbecues at the lake in summer."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "goes",
+     "accept": [
+      "goes"
+     ],
+     "label": "1. Jake ___ to school at 7:30 (go)",
+     "why": "He/she in the simple present adds ‘-s’: Jake goes."
+    },
+    "g2": {
+     "correct": "finishes",
+     "accept": [
+      "finishes"
+     ],
+     "label": "2. His school day ___ at 2:30 (finish)",
+     "why": "Verbs ending in -sh add ‘-es’ in the simple present: finishes."
+    },
+    "g3": {
+     "correct": "play",
+     "accept": [
+      "play"
+     ],
+     "label": "3. Jake and his friends ___ basketball (play)",
+     "why": "‘Jake and his friends’ is a plural subject, so it takes the base form ‘play’."
+    },
+    "g4": {
+     "correct": "cooks",
+     "accept": [
+      "cooks"
+     ],
+     "label": "4. His mum ___ a big turkey (cook)",
+     "why": "He/she in the simple present adds ‘-s’: mum cooks."
+    },
+    "g5": {
+     "correct": "drive",
+     "accept": [
+      "drive"
+     ],
+     "label": "5. The family ___ to the lake (drive)",
+     "why": "‘The family’ is treated here as a group of people, so it takes the base form ‘drive’."
+    },
+    "g6": {
+     "correct": "likes",
+     "accept": [
+      "likes"
+     ],
+     "label": "6. Jake ___ science (like)",
+     "why": "He/she in the simple present adds ‘-s’: Jake likes."
+    },
+    "g7": {
+     "correct": "study",
+     "accept": [
+      "study"
+     ],
+     "label": "7. The students ___ English, maths and art (study)",
+     "why": "‘The students’ is a plural subject, so it takes the base form ‘study’."
+    },
+    "g8": {
+     "correct": "runs",
+     "accept": [
+      "runs"
+     ],
+     "label": "8. Jake’s dog Buddy ___ in the garden (run)",
+     "why": "He/she/it in the simple present adds ‘-s’: Buddy runs."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "is preparing",
+     "accept": [
+      "is preparing"
+     ],
+     "label": "1. Jake’s mum ___ the turkey (prepare)",
+     "why": "A singular subject (mum) takes ‘is’ + verb-ing in the present progressive."
+    },
+    "g2": {
+     "correct": "are setting",
+     "accept": [
+      "are setting"
+     ],
+     "label": "2. Jake and his brother ___ the table (set)",
+     "why": "A plural subject takes ‘are’ + verb-ing in the present progressive."
+    },
+    "g3": {
+     "correct": "is baking",
+     "accept": [
+      "is baking"
+     ],
+     "label": "3. Grandma ___ pumpkin pie (bake)",
+     "why": "A singular subject (Grandma) takes ‘is’ + verb-ing in the present progressive."
+    },
+    "g4": {
+     "correct": "are watching",
+     "accept": [
+      "are watching"
+     ],
+     "label": "4. The cousins ___ a football game (watch)",
+     "why": "A plural subject (the cousins) takes ‘are’ + verb-ing in the present progressive."
+    },
+    "g5": {
+     "correct": "is talking",
+     "accept": [
+      "is talking"
+     ],
+     "label": "5. Dad ___ with Uncle Tom (talk)",
+     "why": "A singular subject (Dad) takes ‘is’ + verb-ing in the present progressive."
+    },
+    "g6": {
+     "correct": "is sleeping",
+     "accept": [
+      "is sleeping"
+     ],
+     "label": "6. Buddy the dog ___ under the table (sleep)",
+     "why": "A singular subject (Buddy) takes ‘is’ + verb-ing in the present progressive."
+    },
+    "g7": {
+     "correct": "is putting",
+     "accept": [
+      "is putting"
+     ],
+     "label": "7. Jake ___ cranberry sauce (put)",
+     "why": "A singular subject (Jake) takes ‘is’ + verb-ing in the present progressive."
+    },
+    "g8": {
+     "correct": "is smiling",
+     "accept": [
+      "is smiling"
+     ],
+     "label": "8. Everyone ___ (smile)",
+     "why": "‘Everyone’ is grammatically singular, so it takes ‘is’ + verb-ing, not ‘are’."
+    }
+   }
+  }
+ }
+}

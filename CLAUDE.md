@@ -375,6 +375,91 @@ Unlike the Apps Script `routeSubmission()` below, the Make scenarios do **not** 
 
 **Score/Grade gap — columns added 2026-06-23.** `score` and `grade` used to be silently dropped for every Make-routed exercise because neither the Excel tables nor the scenario mappers had columns for them. A `Score` and `Grade` column were added to both Excel tables (`yr7subs` in `/online task submission year 7.xlsx`, `yr9subs` in `/online tasks submission year 9.xlsx`), and both Make scenarios (Year 7 id `6103998`, Year 9 id `6143765`) map into those columns. **This note used to end "Student score/grade data flows through end-to-end for both years" — that was never true.** Adding the columns and the mappers was only half the job; the mappers read fields that did not exist (see the trap below). Verifying that a *column* exists is not verifying that *data* reaches it.
 
+### The live scenario shape (rebuilt 2026-09-08) — four modules, grading done page-side
+
+Both scenarios are now **webhook → `json:ParseJSON` → dedup `datastore:AddRecord` →
+`microsoft-excel:addATableRow`**. Four modules, 4 operations and 400 centicredits per
+submission. Mind the differing ParseJSON module ids: **24** on Year 7, **5** on Year 9.
+Dedup runs *before* the write, so a duplicate costs 3 operations and never reaches
+Excel.
+
+**Column 54 is `{{24.wrong}}` / `{{5.wrong}}` — a field the page sends, not something
+Make computes.** `eolWrongSummary()` in `exercise.js` builds it from `state.attempts`,
+which `checkDropdowns`/`checkDropdownsMulti` fill as they mark the student. Format:
+`exA g2: gave cow, expected dog | 1 not answered`, or `All correct.`, or empty on a
+page with no auto-graded sections. `node test-wrong-summary.js` is the self-check and
+runs as a build validator.
+
+**Do not move grading back into Make.** It was there for one day and it did not work.
+On 2026-09-07 both scenarios gained a `code:ExecuteCode` grader plus an
+`anthropic-claude:simpleTextPrompt` module. The grader read `payload[scoreKey]` as an
+object, but `submitToSheet()` flattens object fields for Make targets
+(`eolFlattenForMake`), so it arrives as `"g1: playing | g2: to visit"`. Every lookup
+missed, **every submission scored 0/N**, and the AI wrote teacher feedback asserting a
+perfect paper was entirely wrong. Rewriting the grader to parse the flattened string
+did not fix it either: the module kept failing inside Make for reasons that resisted
+diagnosis, and its `builtin:Resume` handler silently masked each failure. Three
+hypotheses were tested against the live scenario and all three disproved — a 404
+answer-key URL (a datastore probe returned `ok=false status=404` cleanly, and it still
+failed against a live 200 URL), a literal em dash causing a parse error, and a
+function declaration. Sending the answer from the page removes the whole class of
+problem and one operation with it, and it cannot disagree with the score the student
+saw because the same function produces both.
+
+**What the 2026-09-08 incident did and did not touch.** A class of 22 sat
+`7g-tudor-past-perfect` and four other units through the broken Year 7 scenario that
+morning. Nothing was lost and no mark was wrong: `renderScore()` computes the score in
+the browser from `state.scores` and never consults Make, `submitToSheet` posts with
+`mode: 'no-cors'` so the page cannot read anything back, and the `Score`/`Grade`
+columns (52/53) carry those same page-computed values. Only column 54 was false. Those
+rows can be rebuilt offline — column 51 still holds the complete raw payload.
+
+**`data/answer-keys/` and `make-grader.js` are still live, for offline use.**
+`scripts/build-answer-keys.js` emits one key file per unit (171 units, 3,346 gaps) from
+each page's own `checkDropdowns` call, resolved through `scripts/extract-graded.js`.
+`make-grader.js` grades a payload against them, and `node test-make-grader.js` requires
+a 100%-correct paper to score full marks for every unit. Nothing in the live path
+fetches them any more; they exist to re-grade historical rows and to catch answer-key
+drift. **The answer key is NOT `data/explanations.json`** — 190 pages keep theirs inline
+as `var EXPLAIN`, which `exercise.js` prefers, and 51 of those have no entry in the data
+file at all.
+
+**The blank marker is `(blank)`, not an em dash (changed 2026-09-08).** `eolFlat` used
+the em dash, but `esl-articles` keys five gaps to `—` meaning "no article", so a correct
+answer and an unanswered gap were the same string — ambiguous in Excel and ungradable.
+`(blank)` matches `flatten()` in `apps-script.gs` and no option value in the corpus uses
+it. `make-grader.js` still reads the em dash as blank on older rows, except where it is a
+legal answer.
+
+**`dlq: true` is now set on both.** A failed submission is stored and replayable rather
+than gone. Note this also records *handled* errors, so `dlqCount` climbs on runs the
+`Ignore` handlers cover — it did so on every run even after the code module was removed
+entirely, so it is not by itself evidence of a new fault. It was invisible before only
+because `dlq` was off.
+
+**⚠️ `scenarios_update` replaces the whole blueprint — never hand-assemble a module.**
+On 2026-09-08 both scenarios were rewritten by sending a blueprint built from each
+module's `mapper` alone. That dropped the Excel module's `metadata.expect` block — the
+55-entry spec declaring the row collection's shape — and its `metadata.interface`.
+Without the spec Make cannot size the row array, and Microsoft Graph rejects the write
+with *"Der Anzahl der Zeilen oder Spalten in der Eingabematrix entspricht nicht der
+Größe des Bereichs"* (earlier surfaced as `BundleValidationError: Validation failed for
+1 parameter(s)`).
+
+It is a nasty failure because **it saves cleanly and looks right in the editor**, and
+the run still reports the expected operation count — only the Excel step fails at
+Microsoft's end. Tell-tales: execution `status: 2` instead of `1`, `dlqCount` climbing,
+and transfer collapsing to ~430–520 bytes against ~1,700–6,000 on a healthy write.
+
+Always fetch with `scenarios_get`, edit that JSON, and send it back complete. And note
+the two tables label their answer columns differently — Year 7 uses lowercase
+`ex1`…`ex48`, Year 9 uppercase `Ex1`…`Ex48` — so the spec cannot be copied between
+them.
+
+**The Make account is on Core, not Pro** (`organizations_list` → `serviceName: "Core"`,
+10,000 operations/month, `priority: "low"`, `fulltext: false`). Core does lift the old
+two-active-scenario cap, which is what allows more scenarios at all.
+
 ### ⚠️ The webhook payload arrives as ONE field called `payload` — read this before editing either Make scenario
 
 **Fixed 2026-09-04, after ~3 months of silent data loss.** Every exercise page submits through

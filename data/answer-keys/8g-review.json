@@ -1,0 +1,191 @@
+{
+ "unit": "8g-review",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "natural",
+     "accept": [
+      "natural"
+     ],
+     "label": "1. One of America's most famous"
+    },
+    "g2": {
+     "correct": "wildlife",
+     "accept": [
+      "wildlife"
+     ],
+     "label": "2. The"
+    },
+    "g3": {
+     "correct": "would take",
+     "accept": [
+      "would take"
+     ],
+     "label": "3. Travelling"
+    },
+    "g4": {
+     "correct": "blog",
+     "accept": [
+      "blog"
+     ],
+     "label": "4. A personal online diary"
+    },
+    "g5": {
+     "correct": "colour",
+     "accept": [
+      "colour"
+     ],
+     "label": "5. The"
+    },
+    "g6": {
+     "correct": "the crust is thin and you fold it",
+     "accept": [
+      "the crust is thin and you fold it"
+     ],
+     "label": "6. What's special about New York pizza?"
+    },
+    "g7": {
+     "correct": "letters A–F",
+     "accept": [
+      "letters A–F"
+     ],
+     "label": "7. What grading system is used?"
+    },
+    "g8": {
+     "correct": "to prevent wildfires",
+     "accept": [
+      "to prevent wildfires"
+     ],
+     "label": "8. Why strict campfire rules?"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "fascinating",
+     "accept": [
+      "fascinating"
+     ],
+     "label": "1. The story is really"
+    },
+    "g2": {
+     "correct": "free",
+     "accept": [
+      "free"
+     ],
+     "label": "2. \"Buy one, get one"
+    },
+    "g3": {
+     "correct": "rubbish",
+     "accept": [
+      "rubbish"
+     ],
+     "label": "3. Took out the"
+    },
+    "g4": {
+     "correct": "polite",
+     "accept": [
+      "polite"
+     ],
+     "label": "4. Expected to be"
+    },
+    "g5": {
+     "correct": "vast deserts",
+     "accept": [
+      "vast deserts"
+     ],
+     "label": "5. In the west,"
+    },
+    "g6": {
+     "correct": "is it",
+     "accept": [
+      "is it"
+     ],
+     "label": "6. Mount Rainier isn't in Texas,"
+    },
+    "g7": {
+     "correct": "prove",
+     "accept": [
+      "prove"
+     ],
+     "label": "7. You"
+    },
+    "g8": {
+     "correct": "source",
+     "accept": [
+      "source"
+     ],
+     "label": "8. Where information comes from"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "boot",
+     "accept": [
+      "boot"
+     ],
+     "label": "1. trunk (of a car)"
+    },
+    "g2": {
+     "correct": "people speak over 100 languages there",
+     "accept": [
+      "people speak over 100 languages there"
+     ],
+     "label": "2. Why is Queens the most diverse borough?"
+    },
+    "g3": {
+     "correct": "to practise",
+     "accept": [
+      "to practise"
+     ],
+     "label": "3. The coach wanted the team"
+    },
+    "g4": {
+     "correct": "essential",
+     "accept": [
+      "essential"
+     ],
+     "label": "4. A reliable car is"
+    },
+    "g5": {
+     "correct": "by sending telegrams",
+     "accept": [
+      "by sending telegrams"
+     ],
+     "label": "5. How did people communicate before the telephone?"
+    },
+    "g6": {
+     "correct": "limited",
+     "accept": [
+      "limited"
+     ],
+     "label": "6. \"This is a"
+    },
+    "g7": {
+     "correct": "make",
+     "accept": [
+      "make"
+     ],
+     "label": "7. It is my job to"
+    },
+    "g8": {
+     "correct": "should",
+     "accept": [
+      "should"
+     ],
+     "label": "8. You"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,145 @@
+{
+ "unit": "8c-settling-south",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "climate",
+     "accept": [
+      "climate"
+     ],
+     "label": "1. Famous for its warm ___",
+     "why": "The text describes the South as famous for its warm climate."
+    },
+    "g2": {
+     "correct": "home",
+     "accept": [
+      "home"
+     ],
+     "label": "2. The South is the ___ of many kinds of music",
+     "why": "The text says the South is the home of jazz, blues and country music."
+    },
+    "g3": {
+     "correct": "began",
+     "accept": [
+      "began"
+     ],
+     "label": "3. Jazz, blues and country music all ___ here",
+     "why": "The text says these types of music all began in the South."
+    },
+    "g4": {
+     "correct": "manners",
+     "accept": [
+      "manners"
+     ],
+     "label": "4. Southern people are known for good ___",
+     "why": "The text says Southern people are known for their good manners."
+    },
+    "g5": {
+     "correct": "respect",
+     "accept": [
+      "respect"
+     ],
+     "label": "5. Showing ___ to others is important",
+     "why": "The text says showing respect to others is important in Southern culture."
+    },
+    "g6": {
+     "correct": "past",
+     "accept": [
+      "past"
+     ],
+     "label": "6. A difficult ___",
+     "why": "The text says the South also has a difficult past."
+    },
+    "g7": {
+     "correct": "remember",
+     "accept": [
+      "remember"
+     ],
+     "label": "7. Today, people ___ this history",
+     "why": "The text says people today remember this history and work for a fairer future."
+    },
+    "g8": {
+     "correct": "welcome",
+     "accept": [
+      "welcome"
+     ],
+     "label": "8. Visitors love the South for its warm ___",
+     "why": "The text says visitors love the South for its music, food, and warm welcome."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "which",
+     "accept": [
+      "which"
+     ],
+     "label": "1. New Orleans is a city ___ is famous for jazz",
+     "why": "‘Which’ introduces a defining relative clause about a thing (a city), not a person."
+    },
+    "g2": {
+     "correct": "who",
+     "accept": [
+      "who"
+     ],
+     "label": "2. Louis Armstrong was a musician ___ came from New Orleans",
+     "why": "‘Who’ introduces a defining relative clause about a person."
+    },
+    "g3": {
+     "correct": "which",
+     "accept": [
+      "which"
+     ],
+     "label": "3. Blues is a type of music ___ started in the South",
+     "why": "‘Which’ introduces a defining relative clause about a thing (a type of music)."
+    },
+    "g4": {
+     "correct": "who",
+     "accept": [
+      "who"
+     ],
+     "label": "4. The friendly people ___ live in the South",
+     "why": "‘Who’ introduces a defining relative clause about people."
+    },
+    "g5": {
+     "correct": "who",
+     "accept": [
+      "who"
+     ],
+     "label": "5. A person ___ says ‘please’ is polite",
+     "why": "‘Who’ introduces a defining relative clause about a person."
+    },
+    "g6": {
+     "correct": "where",
+     "accept": [
+      "where"
+     ],
+     "label": "6. New Orleans is the place ___ jazz was born",
+     "why": "‘Where’ introduces a defining relative clause about a place."
+    },
+    "g7": {
+     "correct": "who",
+     "accept": [
+      "who"
+     ],
+     "label": "7. My favourite singer is someone ___ grew up in Georgia",
+     "why": "‘Who’ introduces a defining relative clause about a person."
+    },
+    "g8": {
+     "correct": "which",
+     "accept": [
+      "which"
+     ],
+     "label": "8. Gumbo is a dish ___ people eat in the South",
+     "why": "‘Which’ introduces a defining relative clause about a thing (a dish)."
+    }
+   }
+  }
+ }
+}

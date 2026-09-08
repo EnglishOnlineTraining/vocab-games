@@ -1,0 +1,215 @@
+{
+ "unit": "10g-green-scotland",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "50%",
+     "accept": [
+      "50%"
+     ],
+     "label": "1. Renewable target by 2030",
+     "why": "The text says Scotland aims to generate 50% of total energy consumption from renewables by 2030."
+    },
+    "g2": {
+     "correct": "40 gigawatts",
+     "accept": [
+      "40 gigawatts"
+     ],
+     "label": "2. Offshore wind target for 2040",
+     "why": "The text gives Scotland's offshore wind target for 2040 as 40 gigawatts."
+    },
+    "g3": {
+     "correct": "it has long coastlines, exposed hillsides and strong winds",
+     "accept": [
+      "it has long coastlines, exposed hillsides and strong winds"
+     ],
+     "label": "3. Why is Scotland suitable for wind energy?",
+     "why": "The text explains Scotland's long coastlines, exposed hillsides and strong winds make it suitable for wind energy."
+    },
+    "g4": {
+     "correct": "they were destroyed by deforestation and farming",
+     "accept": [
+      "they were destroyed by deforestation and farming"
+     ],
+     "label": "4. What happened to the Caledonian pine forests?",
+     "why": "The text says the ancient pine forests were destroyed by deforestation and farming."
+    },
+    "g5": {
+     "correct": "200,000 hectares",
+     "accept": [
+      "200,000 hectares"
+     ],
+     "label": "5. Size of the Affric Highlands project",
+     "why": "The text gives the Affric Highlands rewilding project's size as 200,000 hectares."
+    },
+    "g6": {
+     "correct": "they release greenhouse gases",
+     "accept": [
+      "they release greenhouse gases"
+     ],
+     "label": "6. What happens when peatlands are drained?",
+     "why": "The text says drained peatlands release greenhouse gases."
+    },
+    "g7": {
+     "correct": "they absorb roughly twice as much per hectare",
+     "accept": [
+      "they absorb roughly twice as much per hectare"
+     ],
+     "label": "7. Peatlands vs tropical rainforests",
+     "why": "The text says healthy peatlands absorb roughly twice as much carbon per hectare as rainforests."
+    },
+    "g8": {
+     "correct": "they believe it threatens their livelihoods",
+     "accept": [
+      "they believe it threatens their livelihoods"
+     ],
+     "label": "8. Why do some farmers oppose rewilding?",
+     "why": "The text says some farmers oppose rewilding because they believe it threatens their livelihoods."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "reaches",
+     "accept": [
+      "reaches"
+     ],
+     "label": "1. If Scotland ___ its target (Type I)",
+     "why": "Type I conditionals use the present simple after ‘if’, with ‘will’ in the result clause."
+    },
+    "g2": {
+     "correct": "would still be covered",
+     "accept": [
+      "would still be covered"
+     ],
+     "label": "2. The Highlands ___ in woodland today",
+     "why": "A past condition (‘had not been cut down’) with a present result (‘today’) is a mixed conditional using ‘would still be’."
+    },
+    "g3": {
+     "correct": "will absorb",
+     "accept": [
+      "will absorb"
+     ],
+     "label": "3. If peatlands are restored, they ___ carbon (Type I)",
+     "why": "Type I conditionals use the present simple after ‘if’, with ‘will’ in the result clause."
+    },
+    "g4": {
+     "correct": "invested",
+     "accept": [
+      "invested"
+     ],
+     "label": "4. ...if the government ___ more (Type II)",
+     "why": "Type II conditionals use the past simple after ‘if’, matching the result ‘would benefit’."
+    },
+    "g5": {
+     "correct": "had been consulted",
+     "accept": [
+      "had been consulted"
+     ],
+     "label": "5. If farmers ___ earlier (Type III)",
+     "why": "Type III conditionals use the past perfect after ‘if’, paired with ‘would not have’."
+    },
+    "g6": {
+     "correct": "will export",
+     "accept": [
+      "will export"
+     ],
+     "label": "6. If wind power continues to grow, Scotland ___ (Type I)",
+     "why": "Type I conditionals use the present simple after ‘if’, with ‘will’ in the result clause."
+    },
+    "g7": {
+     "correct": "were",
+     "accept": [
+      "were"
+     ],
+     "label": "7. If there ___ no opposition (Type II)",
+     "why": "Type II conditionals with ‘be’ traditionally use ‘were’ for all subjects, matching ‘could expand’."
+    },
+    "g8": {
+     "correct": "would not have",
+     "accept": [
+      "would not have"
+     ],
+     "label": "8. It ___ over 17 GW today",
+     "why": "A past condition (‘had not invested… twenty years ago’) with a present result (‘today’) is a mixed conditional using ‘would not have’."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "renewable",
+     "accept": [
+      "renewable"
+     ],
+     "label": "1. Wind and solar are ___ energy",
+     "why": "‘Renewable’ energy sources are naturally replenished and never run out."
+    },
+    "g2": {
+     "correct": "rewilding",
+     "accept": [
+      "rewilding"
+     ],
+     "label": "2. Restoring ecosystems by reintroducing species",
+     "why": "‘Rewilding’ is the process of restoring natural ecosystems and reintroducing native species."
+    },
+    "g3": {
+     "correct": "degraded",
+     "accept": [
+      "degraded"
+     ],
+     "label": "3. Peatlands have been ___",
+     "why": "The text says centuries of drainage and farming have degraded Scotland's peatlands."
+    },
+    "g4": {
+     "correct": "depopulation",
+     "accept": [
+      "depopulation"
+     ],
+     "label": "4. Villages have suffered from ___",
+     "why": "The text says Highland villages have suffered from depopulation as young people move to cities."
+    },
+    "g5": {
+     "correct": "biodiversity",
+     "accept": [
+      "biodiversity"
+     ],
+     "label": "5. Variety of species in an area",
+     "why": "‘Biodiversity’ is the variety of plant and animal species living in an area."
+    },
+    "g6": {
+     "correct": "habitat",
+     "accept": [
+      "habitat"
+     ],
+     "label": "6. A forest provides an important ___",
+     "why": "A ‘habitat’ is the natural environment where animals like red squirrels live."
+    },
+    "g7": {
+     "correct": "emissions",
+     "accept": [
+      "emissions"
+     ],
+     "label": "7. Burning fossil fuels produces ___",
+     "why": "Burning fossil fuels produces greenhouse gas emissions."
+    },
+    "g8": {
+     "correct": "sustainable",
+     "accept": [
+      "sustainable"
+     ],
+     "label": "8. A ___ approach meets today's needs",
+     "why": "A ‘sustainable’ approach meets today's needs without compromising the future."
+    }
+   }
+  }
+ }
+}

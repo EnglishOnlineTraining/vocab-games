@@ -1,0 +1,163 @@
+{
+ "unit": "gr-present-perfect",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "has lived",
+     "accept": [
+      "has lived"
+     ],
+     "label": "1 Lisa"
+    },
+    "g2": {
+     "correct": "has already made",
+     "accept": [
+      "has already made"
+     ],
+     "label": "2 She"
+    },
+    "g3": {
+     "correct": "has not missed",
+     "accept": [
+      "has not missed"
+     ],
+     "label": "3 So far, she"
+    },
+    "g4": {
+     "correct": "has just started",
+     "accept": [
+      "has just started"
+     ],
+     "label": "4 She"
+    },
+    "g5": {
+     "correct": "Have you ever been",
+     "accept": [
+      "Have you ever been"
+     ],
+     "label": "5"
+    },
+    "g6": {
+     "correct": "has never tried",
+     "accept": [
+      "has never tried"
+     ],
+     "label": "6 But she"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "have lost",
+     "accept": [
+      "have lost"
+     ],
+     "label": "1 I"
+    },
+    "g2": {
+     "correct": "moved",
+     "accept": [
+      "moved"
+     ],
+     "label": "2 They"
+    },
+    "g3": {
+     "correct": "have known",
+     "accept": [
+      "have known"
+     ],
+     "label": "3 We"
+    },
+    "g4": {
+     "correct": "Have you seen",
+     "accept": [
+      "Have you seen"
+     ],
+     "label": "4"
+    },
+    "g5": {
+     "correct": "died",
+     "accept": [
+      "died"
+     ],
+     "label": "5 My grandfather"
+    },
+    "g6": {
+     "correct": "has read",
+     "accept": [
+      "has read"
+     ],
+     "label": "6 She"
+    },
+    "g7": {
+     "correct": "have already had",
+     "accept": [
+      "have already had"
+     ],
+     "label": "7 I"
+    },
+    "g8": {
+     "correct": "did you move",
+     "accept": [
+      "did you move"
+     ],
+     "label": "8 When"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "for",
+     "accept": [
+      "for"
+     ],
+     "label": "1 We have lived here"
+    },
+    "g2": {
+     "correct": "since",
+     "accept": [
+      "since"
+     ],
+     "label": "2 I haven’t seen him"
+    },
+    "g3": {
+     "correct": "just",
+     "accept": [
+      "just"
+     ],
+     "label": "3 She has"
+    },
+    "g4": {
+     "correct": "yet",
+     "accept": [
+      "yet"
+     ],
+     "label": "4 Have you finished your project"
+    },
+    "g5": {
+     "correct": "already",
+     "accept": [
+      "already"
+     ],
+     "label": "5 They have"
+    },
+    "g6": {
+     "correct": "ever",
+     "accept": [
+      "ever"
+     ],
+     "label": "6 Have you"
+    }
+   }
+  }
+ }
+}

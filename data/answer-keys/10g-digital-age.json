@@ -1,0 +1,199 @@
+{
+ "unit": "10g-digital-age",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "They would develop stronger relationships and achieve more academically",
+     "accept": [
+      "They would develop stronger relationships and achieve more academically"
+     ],
+     "label": "1. If young people gamed less, critics say",
+     "why": "Critics claim less gaming would mean stronger relationships and better results."
+    },
+    "g2": {
+     "correct": "exploit reward systems to keep players hooked",
+     "accept": [
+      "exploit reward systems to keep players hooked"
+     ],
+     "label": "2. What some games are designed to do",
+     "why": "The criticism is that reward systems are built to keep players playing."
+    },
+    "g3": {
+     "correct": "teamwork, quick decision-making and problem-solving under pressure",
+     "accept": [
+      "teamwork, quick decision-making and problem-solving under pressure"
+     ],
+     "label": "3. Skills multiplayer games can teach",
+     "why": "The article lists teamwork, fast decisions and problem-solving under pressure."
+    },
+    "g4": {
+     "correct": "a legitimate career path with scholarships and salaries",
+     "accept": [
+      "a legitimate career path with scholarships and salaries"
+     ],
+     "label": "4. What esports has become",
+     "why": "Esports now offers scholarships and salaries, making it a real career."
+    },
+    "g5": {
+     "correct": "genuine friendship and support",
+     "accept": [
+      "genuine friendship and support"
+     ],
+     "label": "5. What gaming communities provide",
+     "why": "For teenagers who struggle offline, these communities offer real friendship."
+    },
+    "g6": {
+     "correct": "moderation, not gaming itself",
+     "accept": [
+      "moderation, not gaming itself"
+     ],
+     "label": "6. The real issue, say psychologists",
+     "why": "Psychologists point to how much is played, not to gaming as such."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "get",
+     "accept": [
+      "get"
+     ],
+     "label": "1. If you play for too many hours, your eyes ___",
+     "why": "Zero conditional: if + present simple, present simple, for something always true."
+    },
+    "g2": {
+     "correct": "will become",
+     "accept": [
+      "will become"
+     ],
+     "label": "2. If she practises every day, she ___",
+     "why": "First conditional: if + present simple, will + infinitive, for a likely future result."
+    },
+    "g3": {
+     "correct": "had",
+     "accept": [
+      "had"
+     ],
+     "label": "3. If I ___",
+     "why": "Second conditional: if + past simple for an imaginary present situation."
+    },
+    "g4": {
+     "correct": "would have been",
+     "accept": [
+      "would have been"
+     ],
+     "label": "4. If he had not spent so long gaming, his grades ___",
+     "why": "Third conditional: if + past perfect, would have + past participle, for an unreal past."
+    },
+    "g5": {
+     "correct": "suspends",
+     "accept": [
+      "suspends"
+     ],
+     "label": "5. If a player breaks the guidelines, the platform ___",
+     "why": "Zero conditional: both halves in the present simple for a standing rule."
+    },
+    "g6": {
+     "correct": "will feel",
+     "accept": [
+      "will feel"
+     ],
+     "label": "6. If developers add more diverse characters, players ___",
+     "why": "First conditional: a real future possibility takes will + infinitive."
+    },
+    "g7": {
+     "correct": "were",
+     "accept": [
+      "were"
+     ],
+     "label": "7. If esports ___",
+     "why": "Second conditional uses 'were' for all persons in an unreal situation."
+    },
+    "g8": {
+     "correct": "would have",
+     "accept": [
+      "would have"
+     ],
+     "label": "8. If parents had set limits, teenagers today ___",
+     "why": "Mixed conditional: a past condition with a present result takes would + infinitive."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "esports",
+     "accept": [
+      "esports"
+     ],
+     "label": "1. competitive gaming at professional level",
+     "why": "Esports is professional competitive gaming played before large audiences."
+    },
+    "g2": {
+     "correct": "screen time",
+     "accept": [
+      "screen time"
+     ],
+     "label": "2. hours spent looking at a screen",
+     "why": "Screen time is the daily total spent looking at screens."
+    },
+    "g3": {
+     "correct": "addictive",
+     "accept": [
+      "addictive"
+     ],
+     "label": "3. designed to keep players hooked",
+     "why": "Something that keeps you coming back compulsively is addictive."
+    },
+    "g4": {
+     "correct": "immersive",
+     "accept": [
+      "immersive"
+     ],
+     "label": "4. makes players feel inside the world",
+     "why": "An immersive game surrounds the player and feels real."
+    },
+    "g5": {
+     "correct": "multiplayer",
+     "accept": [
+      "multiplayer"
+     ],
+     "label": "5. several players online at the same time",
+     "why": "Multiplayer games let several people play together at once."
+    },
+    "g6": {
+     "correct": "moderation",
+     "accept": [
+      "moderation"
+     ],
+     "label": "6. the key to healthy gaming habits",
+     "why": "Moderation means keeping the amount reasonable rather than stopping."
+    },
+    "g7": {
+     "correct": "algorithm",
+     "accept": [
+      "algorithm"
+     ],
+     "label": "7. rules deciding what to recommend",
+     "why": "An algorithm decides which content a platform shows you."
+    },
+    "g8": {
+     "correct": "livestream",
+     "accept": [
+      "livestream"
+     ],
+     "label": "8. broadcasting gameplay live",
+     "why": "A livestream broadcasts in real time over the internet."
+    }
+   }
+  }
+ }
+}

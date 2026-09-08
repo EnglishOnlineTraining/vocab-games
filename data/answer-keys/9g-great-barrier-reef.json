@@ -1,0 +1,75 @@
+{
+ "unit": "9g-great-barrier-reef",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "was",
+     "accept": [
+      "was"
+     ],
+     "label": "1. The scientist said the reef ___ in danger",
+     "why": "After a past reporting verb, present “is” shifts back to “was”."
+    },
+    "g2": {
+     "correct": "were growing",
+     "accept": [
+      "were growing"
+     ],
+     "label": "2. …they ___ healthy coral",
+     "why": "Present progressive “are growing” backshifts to past progressive “were growing”."
+    },
+    "g3": {
+     "correct": "could",
+     "accept": [
+      "could"
+     ],
+     "label": "3. …the reef ___ be seen from space",
+     "why": "“Can” becomes “could” in reported speech."
+    },
+    "g4": {
+     "correct": "had never seen",
+     "accept": [
+      "had never seen"
+     ],
+     "label": "4. …he ___ so much bleaching before",
+     "why": "Present perfect “has never seen” backshifts to past perfect “had never seen”."
+    },
+    "g5": {
+     "correct": "was",
+     "accept": [
+      "was"
+     ],
+     "label": "5. …climate change ___ the biggest threat",
+     "why": "“Is” backshifts to “was” after the past reporting verb “reported”."
+    },
+    "g6": {
+     "correct": "were not allowed to",
+     "accept": [
+      "were not allowed to"
+     ],
+     "label": "6. …tourists ___ touch the coral",
+     "why": "“Must not” has no past form, so reported speech uses “were not allowed to”."
+    },
+    "g7": {
+     "correct": "would go",
+     "accept": [
+      "would go"
+     ],
+     "label": "7. …she ___ back the following week",
+     "why": "“Will” becomes “would” in reported speech."
+    },
+    "g8": {
+     "correct": "had lost",
+     "accept": [
+      "had lost"
+     ],
+     "label": "8. …the reef ___ half its coral since 1985",
+     "why": "Present perfect “has lost” backshifts to past perfect “had lost”."
+    }
+   }
+  }
+ }
+}

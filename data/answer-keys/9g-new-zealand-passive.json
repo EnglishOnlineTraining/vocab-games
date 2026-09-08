@@ -1,0 +1,75 @@
+{
+ "unit": "9g-new-zealand-passive",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "is known",
+     "accept": [
+      "is known"
+     ],
+     "label": "1. New Zealand ___ as Aotearoa",
+     "why": "Present simple passive: “is” + the past participle “known”."
+    },
+    "g2": {
+     "correct": "was signed",
+     "accept": [
+      "was signed"
+     ],
+     "label": "2. The Treaty of Waitangi ___ in 1840",
+     "why": "A completed past event with a singular subject takes “was” + past participle."
+    },
+    "g3": {
+     "correct": "are threatened",
+     "accept": [
+      "are threatened"
+     ],
+     "label": "3. Many native birds ___ by predators",
+     "why": "“Birds” is plural, so the present passive is “are threatened”."
+    },
+    "g4": {
+     "correct": "is performed",
+     "accept": [
+      "is performed"
+     ],
+     "label": "4. The haka ___ by the All Blacks",
+     "why": "“The haka” is singular, so the present passive is “is performed”."
+    },
+    "g5": {
+     "correct": "is protected",
+     "accept": [
+      "is protected"
+     ],
+     "label": "5. The kiwi bird ___ by programmes",
+     "why": "The bird receives the action, so it is “is protected”, not “is protecting”."
+    },
+    "g6": {
+     "correct": "are separated",
+     "accept": [
+      "are separated"
+     ],
+     "label": "6. The two main islands ___ by the Cook Strait",
+     "why": "A plural subject takes “are” + past participle."
+    },
+    "g7": {
+     "correct": "was built",
+     "accept": [
+      "was built"
+     ],
+     "label": "7. Rotorua ___ on a geothermal field",
+     "why": "A completed past action with a singular subject: “was built”."
+    },
+    "g8": {
+     "correct": "is taught",
+     "accept": [
+      "is taught"
+     ],
+     "label": "8. The Māori language ___ in many schools",
+     "why": "Present passive with a singular subject: “is taught”."
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,163 @@
+{
+ "unit": "gr-future-tenses",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "is going to visit",
+     "accept": [
+      "is going to visit"
+     ],
+     "label": "1 In the morning she"
+    },
+    "g2": {
+     "correct": "is meeting",
+     "accept": [
+      "is meeting"
+     ],
+     "label": "2 At ten o'clock she"
+    },
+    "g3": {
+     "correct": "'ll",
+     "accept": [
+      "'ll"
+     ],
+     "label": "3 \"I"
+    },
+    "g4": {
+     "correct": "are having",
+     "accept": [
+      "are having"
+     ],
+     "label": "4 In the afternoon Lea and Ben"
+    },
+    "g5": {
+     "correct": "'ll",
+     "accept": [
+      "'ll"
+     ],
+     "label": "5 Ben has forgotten the drinks, so Lea says: \"No problem, I"
+    },
+    "g6": {
+     "correct": "is going to",
+     "accept": [
+      "is going to"
+     ],
+     "label": "6 Look at those black clouds — it"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "is going to",
+     "accept": [
+      "is going to"
+     ],
+     "label": "1 Look at that little boy on the wall! He"
+    },
+    "g2": {
+     "correct": "am going to",
+     "accept": [
+      "am going to"
+     ],
+     "label": "2 A: I have decided. B: Really? A: Yes, I"
+    },
+    "g3": {
+     "correct": "'ll",
+     "accept": [
+      "'ll"
+     ],
+     "label": "3 A: The phone is ringing. B: I"
+    },
+    "g4": {
+     "correct": "are going to",
+     "accept": [
+      "are going to"
+     ],
+     "label": "4 We have bought the tickets — we"
+    },
+    "g5": {
+     "correct": "will",
+     "accept": [
+      "will"
+     ],
+     "label": "5 I promise I"
+    },
+    "g6": {
+     "correct": "is going to",
+     "accept": [
+      "is going to"
+     ],
+     "label": "6 She has saved enough money — she"
+    },
+    "g7": {
+     "correct": "'ll",
+     "accept": [
+      "'ll"
+     ],
+     "label": "7 Don't worry about the mess — I"
+    },
+    "g8": {
+     "correct": "are going to",
+     "accept": [
+      "are going to"
+     ],
+     "label": "8 Watch out! You"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "leaves",
+     "accept": [
+      "leaves"
+     ],
+     "label": "1 The train"
+    },
+    "g2": {
+     "correct": "are having",
+     "accept": [
+      "are having"
+     ],
+     "label": "2 We"
+    },
+    "g3": {
+     "correct": "starts",
+     "accept": [
+      "starts"
+     ],
+     "label": "3 The concert"
+    },
+    "g4": {
+     "correct": "am taking",
+     "accept": [
+      "am taking"
+     ],
+     "label": "4 I"
+    },
+    "g5": {
+     "correct": "begin",
+     "accept": [
+      "begin"
+     ],
+     "label": "5 The school holidays"
+    },
+    "g6": {
+     "correct": "Shall",
+     "accept": [
+      "Shall"
+     ],
+     "label": "6 A: I can't open the window. B:"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,129 @@
+{
+ "unit": "be-professional-emails",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "I am writing to",
+     "accept": [
+      "I am writing to"
+     ],
+     "label": "1. Formal opening",
+     "why": "“I am writing to …” is the standard formal opening; the alternatives are casual."
+    },
+    "g2": {
+     "correct": "I would appreciate it if you could",
+     "accept": [
+      "I would appreciate it if you could"
+     ],
+     "label": "2. Polite request",
+     "why": "This is the polite formal request; “ASAP” and “You need to” sound demanding."
+    },
+    "g3": {
+     "correct": "attached",
+     "accept": [
+      "attached"
+     ],
+     "label": "3. Please find the report ___",
+     "why": "Documents sent with an email are “attached” — “please find attached” is the fixed phrase."
+    },
+    "g4": {
+     "correct": "Should you require any further information",
+     "accept": [
+      "Should you require any further information"
+     ],
+     "label": "4. Offering further information",
+     "why": "This inverted conditional is the formal register; the others are informal."
+    },
+    "g5": {
+     "correct": "response",
+     "accept": [
+      "response"
+     ],
+     "label": "5. Thank you for your prompt ___",
+     "why": "“Prompt response” is the standard formal collocation."
+    },
+    "g6": {
+     "correct": "look forward to hearing from you",
+     "accept": [
+      "look forward to hearing from you"
+     ],
+     "label": "6. Formal closing",
+     "why": "The fixed closing formula — note “to hearing”, not “to hear”."
+    },
+    "g7": {
+     "correct": "with regard to",
+     "accept": [
+      "with regard to"
+     ],
+     "label": "7. I am writing ___ your order",
+     "why": "“With regard to” is the formal equivalent of “about”."
+    },
+    "g8": {
+     "correct": "apologise for",
+     "accept": [
+      "apologise for"
+     ],
+     "label": "8. We sincerely ___",
+     "why": "“We sincerely apologise for …” is the formal apology; “feel bad about” is conversational."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Thank you for your prompt response.",
+     "accept": [
+      "Thank you for your prompt response."
+     ],
+     "label": "1. “Thanks for getting back to me so fast.”",
+     "why": "Same meaning, formal register — thanking someone for replying quickly."
+    },
+    "g2": {
+     "correct": "Please accept my apologies for the delayed response.",
+     "accept": [
+      "Please accept my apologies for the delayed response."
+     ],
+     "label": "2. “Sorry for the late reply.”",
+     "why": "The formal way to apologise for lateness."
+    },
+    "g3": {
+     "correct": "I would be grateful if you could forward the file.",
+     "accept": [
+      "I would be grateful if you could forward the file."
+     ],
+     "label": "3. “Can you send me the file?”",
+     "why": "This is a request; the other options describe sending, not asking."
+    },
+    "g4": {
+     "correct": "Please do not hesitate to contact me should you require any further assistance.",
+     "accept": [
+      "Please do not hesitate to contact me should you require any further assistance."
+     ],
+     "label": "4. “Let me know if you need anything else.”",
+     "why": "The standard formal offer of further help."
+    },
+    "g5": {
+     "correct": "I am writing with regard to the issue concerning our order.",
+     "accept": [
+      "I am writing with regard to the issue concerning our order."
+     ],
+     "label": "5. “I’m writing because of the problem with our order.”",
+     "why": "States the reason for writing in formal register."
+    },
+    "g6": {
+     "correct": "We look forward to your attendance.",
+     "accept": [
+      "We look forward to your attendance."
+     ],
+     "label": "6. “Hope to see you there!”",
+     "why": "The formal equivalent of an informal hope to see someone."
+    }
+   }
+  }
+ }
+}

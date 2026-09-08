@@ -1,0 +1,145 @@
+{
+ "unit": "msa-c-video-game-ratings",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "PEGI",
+     "accept": [
+      "PEGI"
+     ],
+     "label": "1. What system labels games?",
+     "why": "The recording says all games are labelled with a PEGI age rating."
+    },
+    "g2": {
+     "correct": "photo ID",
+     "accept": [
+      "photo ID"
+     ],
+     "label": "2. What's needed to buy an 18-rated game if underage-looking?",
+     "why": "The recording says valid photo identification is required."
+    },
+    "g3": {
+     "correct": "suitable alternative",
+     "accept": [
+      "suitable alternative"
+     ],
+     "label": "3. What can staff help with regarding gifts?",
+     "why": "The recording says staff can help find a more suitable alternative."
+    },
+    "g4": {
+     "correct": "violence language scary",
+     "accept": [
+      "violence language scary"
+     ],
+     "label": "4. What do ratings consider?",
+     "why": "The recording says ratings consider violence, language, and frightening content."
+    },
+    "g5": {
+     "correct": "difficulty",
+     "accept": [
+      "difficulty"
+     ],
+     "label": "5. What do ratings NOT primarily reflect?",
+     "why": "The recording says ratings are not just about how difficult a game is to play."
+    },
+    "g6": {
+     "correct": "twelve",
+     "accept": [
+      "twelve"
+     ],
+     "label": "6. How old is Ben's cousin?",
+     "why": "The recording says Ben's cousin is only twelve."
+    },
+    "g7": {
+     "correct": "find pegi 12",
+     "accept": [
+      "find pegi 12"
+     ],
+     "label": "7. What do Mum and Ben decide?",
+     "why": "The recording says they decide to look at a PEGI 12 version instead."
+    },
+    "g8": {
+     "correct": "violence scary",
+     "accept": [
+      "violence scary"
+     ],
+     "label": "8. What does the PEGI 12 game have less of?",
+     "why": "The recording says the PEGI 12 game probably has less violence and fewer scary scenes."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "PEGI 3",
+     "accept": [
+      "PEGI 3"
+     ],
+     "label": "1. Colourful puzzle game for young children",
+     "why": "The text says PEGI 3 is suitable for all ages with no scary or violent content."
+    },
+    "g2": {
+     "correct": "PEGI 7",
+     "accept": [
+      "PEGI 7"
+     ],
+     "label": "2. Cartoon adventure, mild scares",
+     "why": "The text says PEGI 7 may contain mild scary scenes."
+    },
+    "g3": {
+     "correct": "PEGI 12",
+     "accept": [
+      "PEGI 12"
+     ],
+     "label": "3. Fantasy battle, mild blood",
+     "why": "The text says PEGI 12 may contain moderate violence."
+    },
+    "g4": {
+     "correct": "PEGI 18",
+     "accept": [
+      "PEGI 18"
+     ],
+     "label": "4. Realistic war, graphic combat",
+     "why": "The text says PEGI 18 may contain intense violence and realistic threatening content."
+    },
+    "g5": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "5. PEGI 18 sold to anyone regardless of age",
+     "why": "The text says PEGI 18 games cannot be sold to anyone who appears underage without ID."
+    },
+    "g6": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "6. Ratings based only on difficulty",
+     "why": "The text says ratings consider violence, language and frightening content, not just difficulty."
+    },
+    "g7": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "7. Staff can help find alternatives",
+     "why": "The text confirms staff can help customers find more suitable alternatives."
+    },
+    "g8": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "8. Ratings consider violence, language, frightening content",
+     "why": "The text confirms ratings consider violence, language, and frightening content."
+    }
+   }
+  }
+ }
+}

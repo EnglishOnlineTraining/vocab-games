@@ -1,0 +1,191 @@
+{
+ "unit": "9c-work-experience-jobs",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "company",
+     "accept": [
+      "company"
+     ],
+     "label": "…ear 9 spend two weeks doing work experience. They leave the classroom and work in a real 1"
+    },
+    "g2": {
+     "correct": "day",
+     "accept": [
+      "day"
+     ],
+     "label": "…ping company capital . Their teachers hope that they will find out what a normal working 2"
+    },
+    "g3": {
+     "correct": "clinic",
+     "accept": [
+      "clinic"
+     ],
+     "label": "Lena has just finished her two weeks at a small animal 3"
+    },
+    "g4": {
+     "correct": "nervous",
+     "accept": [
+      "nervous"
+     ],
+     "label": "…l 3 — choose — climate classroom clinic near her home. On the first morning she was very 4"
+    },
+    "g5": {
+     "correct": "tasks",
+     "accept": [
+      "tasks"
+     ],
+     "label": "Her first 5"
+    },
+    "g6": {
+     "correct": "watch",
+     "accept": [
+      "watch"
+     ],
+     "label": "…rought water to the animals and answered the telephone. After a few days the vet let her 6"
+    },
+    "g7": {
+     "correct": "proud",
+     "accept": [
+      "proud"
+     ],
+     "label": "…yself,” Lena says. “I have never been so tired in my life, but I have also never been so 7"
+    },
+    "g8": {
+     "correct": "career",
+     "accept": [
+      "career"
+     ],
+     "label": "Her teacher says that work experience helps young people to choose a 8"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "finished",
+     "accept": [
+      "finished"
+     ],
+     "label": "1. Lena"
+    },
+    "g2": {
+     "correct": "has written",
+     "accept": [
+      "has written"
+     ],
+     "label": "2. She"
+    },
+    "g3": {
+     "correct": "has worked",
+     "accept": [
+      "has worked"
+     ],
+     "label": "3. My brother"
+    },
+    "g4": {
+     "correct": "did",
+     "accept": [
+      "did"
+     ],
+     "label": "4. We"
+    },
+    "g5": {
+     "correct": "worked",
+     "accept": [
+      "worked"
+     ],
+     "label": "5. I have never"
+    },
+    "g6": {
+     "correct": "Have",
+     "accept": [
+      "Have"
+     ],
+     "label": "6."
+    },
+    "g7": {
+     "correct": "did",
+     "accept": [
+      "did"
+     ],
+     "label": "7. When"
+    },
+    "g8": {
+     "correct": "has",
+     "accept": [
+      "has"
+     ],
+     "label": "8. Anna"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "application",
+     "accept": [
+      "application"
+     ],
+     "label": "1. Before you get a job, you have to write an"
+    },
+    "g2": {
+     "correct": "CV",
+     "accept": [
+      "CV"
+     ],
+     "label": "2. Your"
+    },
+    "g3": {
+     "correct": "interview",
+     "accept": [
+      "interview"
+     ],
+     "label": "3. If the company likes your letter, they invite you to an"
+    },
+    "g4": {
+     "correct": "salary",
+     "accept": [
+      "salary"
+     ],
+     "label": "4. At the end of the month, employees get their"
+    },
+    "g5": {
+     "correct": "supervisor",
+     "accept": [
+      "supervisor"
+     ],
+     "label": "5. Lena's"
+    },
+    "g6": {
+     "correct": "punctual",
+     "accept": [
+      "punctual"
+     ],
+     "label": "6. You should always be"
+    },
+    "g7": {
+     "correct": "treats",
+     "accept": [
+      "treats"
+     ],
+     "label": "7. A vet"
+    },
+    "g8": {
+     "correct": "apprenticeship",
+     "accept": [
+      "apprenticeship"
+     ],
+     "label": "8. After school, many German students start an"
+    }
+   }
+  }
+ }
+}

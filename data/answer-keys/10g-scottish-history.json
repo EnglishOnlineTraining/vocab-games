@@ -1,0 +1,191 @@
+{
+ "unit": "10g-scottish-history",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "children or descendants",
+     "accept": [
+      "children or descendants"
+     ],
+     "label": "1 What does the Gaelic word clann mean?"
+    },
+    "g2": {
+     "correct": "it was destroyed",
+     "accept": [
+      "it was destroyed"
+     ],
+     "label": "2 What happened to the clan system after Culloden?"
+    },
+    "g3": {
+     "correct": "he was invited to help choose a new king",
+     "accept": [
+      "he was invited to help choose a new king"
+     ],
+     "label": "3 Why did Edward I of England get involved in Scottish affairs?"
+    },
+    "g4": {
+     "correct": "he used the narrow bridge to neutralise the English advantage",
+     "accept": [
+      "he used the narrow bridge to neutralise the English advantage"
+     ],
+     "label": "4 How did Wallace win at Stirling Bridge?"
+    },
+    "g5": {
+     "correct": "he was captured and executed",
+     "accept": [
+      "he was captured and executed"
+     ],
+     "label": "5 What happened to Wallace in 1305?"
+    },
+    "g6": {
+     "correct": "the Battle of Bannockburn",
+     "accept": [
+      "the Battle of Bannockburn"
+     ],
+     "label": "6 What was Robert the Bruce’s greatest military victory?"
+    },
+    "g7": {
+     "correct": "that Scotland had always been independent and could choose its own king",
+     "accept": [
+      "that Scotland had always been independent and could choose its own king"
+     ],
+     "label": "7 What did the Declaration of Arbroath argue?"
+    },
+    "g8": {
+     "correct": "55% voted to remain in the UK",
+     "accept": [
+      "55% voted to remain in the UK"
+     ],
+     "label": "8 What was the result of the 2014 independence referendum?"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "was seized",
+     "accept": [
+      "was seized"
+     ],
+     "label": "1 The Stone of Destiny"
+    },
+    "g2": {
+     "correct": "was appointed",
+     "accept": [
+      "was appointed"
+     ],
+     "label": "2 William Wallace"
+    },
+    "g3": {
+     "correct": "was crushed",
+     "accept": [
+      "was crushed"
+     ],
+     "label": "3 The Scottish army"
+    },
+    "g4": {
+     "correct": "had already been captured",
+     "accept": [
+      "had already been captured"
+     ],
+     "label": "4 Before Bruce became king, Wallace"
+    },
+    "g5": {
+     "correct": "is considered",
+     "accept": [
+      "is considered"
+     ],
+     "label": "5 The Declaration of Arbroath"
+    },
+    "g6": {
+     "correct": "was crowned",
+     "accept": [
+      "was crowned"
+     ],
+     "label": "6 Robert the Bruce"
+    },
+    "g7": {
+     "correct": "was finally recognised",
+     "accept": [
+      "was finally recognised"
+     ],
+     "label": "7 Scotland’s independence"
+    },
+    "g8": {
+     "correct": "had been weakened",
+     "accept": [
+      "had been weakened"
+     ],
+     "label": "8 The clan system"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Although",
+     "accept": [
+      "Although"
+     ],
+     "label": "1"
+    },
+    "g2": {
+     "correct": "Furthermore",
+     "accept": [
+      "Furthermore"
+     ],
+     "label": "2 Edward I invaded Scotland and seized the coronation stone."
+    },
+    "g3": {
+     "correct": "Nevertheless",
+     "accept": [
+      "Nevertheless"
+     ],
+     "label": "3 Bruce’s forces were heavily outnumbered at Bannockburn."
+    },
+    "g4": {
+     "correct": "As a result",
+     "accept": [
+      "As a result"
+     ],
+     "label": "4 The Declaration of Arbroath was sent to the Pope."
+    },
+    "g5": {
+     "correct": "Moreover",
+     "accept": [
+      "Moreover"
+     ],
+     "label": "5 The clan system gave Highlanders a strong sense of identity."
+    },
+    "g6": {
+     "correct": "In contrast",
+     "accept": [
+      "In contrast"
+     ],
+     "label": "6 Wallace used guerrilla tactics effectively in the Highlands."
+    },
+    "g7": {
+     "correct": "However",
+     "accept": [
+      "However"
+     ],
+     "label": "7 The Act of Union was opposed by many ordinary Scots."
+    },
+    "g8": {
+     "correct": "Nevertheless",
+     "accept": [
+      "Nevertheless"
+     ],
+     "label": "8 Scotland voted to remain in the UK in 2014."
+    }
+   }
+  }
+ }
+}

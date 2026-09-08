@@ -1,0 +1,163 @@
+{
+ "unit": "gr-gerund-infinitiv",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "meeting",
+     "accept": [
+      "meeting"
+     ],
+     "label": "1 When Anita arrived in Toronto, she was nervous about"
+    },
+    "g2": {
+     "correct": "to join",
+     "accept": [
+      "to join"
+     ],
+     "label": "2 After a few shy days, she decided"
+    },
+    "g3": {
+     "correct": "speaking",
+     "accept": [
+      "speaking"
+     ],
+     "label": "3 At first she avoided"
+    },
+    "g4": {
+     "correct": "practising",
+     "accept": [
+      "practising"
+     ],
+     "label": "4 But her teacher suggested"
+    },
+    "g5": {
+     "correct": "to understand",
+     "accept": [
+      "to understand"
+     ],
+     "label": "5 By December, Anita had learned"
+    },
+    "g6": {
+     "correct": "seeing",
+     "accept": [
+      "seeing"
+     ],
+     "label": "6 Now the exchange year is nearly over, and she's looking forward to"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "building",
+     "accept": [
+      "building"
+     ],
+     "label": "1 My little brother enjoys"
+    },
+    "g2": {
+     "correct": "to visit",
+     "accept": [
+      "to visit"
+     ],
+     "label": "2 We want"
+    },
+    "g3": {
+     "correct": "writing",
+     "accept": [
+      "writing"
+     ],
+     "label": "3 Have you finished"
+    },
+    "g4": {
+     "correct": "to help",
+     "accept": [
+      "to help"
+     ],
+     "label": "4 She promised"
+    },
+    "g5": {
+     "correct": "barking",
+     "accept": [
+      "barking"
+     ],
+     "label": "5 The dog kept"
+    },
+    "g6": {
+     "correct": "to answer",
+     "accept": [
+      "to answer"
+     ],
+     "label": "6 He refused"
+    },
+    "g7": {
+     "correct": "turning",
+     "accept": [
+      "turning"
+     ],
+     "label": "7 Would you mind"
+    },
+    "g8": {
+     "correct": "to pass",
+     "accept": [
+      "to pass"
+     ],
+     "label": "8 They hope"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "meeting",
+     "accept": [
+      "meeting"
+     ],
+     "label": "1 I clearly remember"
+    },
+    "g2": {
+     "correct": "to bring",
+     "accept": [
+      "to bring"
+     ],
+     "label": "2 Please remember"
+    },
+    "g3": {
+     "correct": "to buy",
+     "accept": [
+      "to buy"
+     ],
+     "label": "3 On the way home, we stopped"
+    },
+    "g4": {
+     "correct": "smoking",
+     "accept": [
+      "smoking"
+     ],
+     "label": "4 After years of trying, she finally stopped"
+    },
+    "g5": {
+     "correct": "restarting",
+     "accept": [
+      "restarting"
+     ],
+     "label": "5 I tried"
+    },
+    "g6": {
+     "correct": "to persuade",
+     "accept": [
+      "to persuade"
+     ],
+     "label": "6 We tried"
+    }
+   }
+  }
+ }
+}

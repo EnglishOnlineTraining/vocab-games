@@ -1,0 +1,199 @@
+{
+ "unit": "10g-proud-to-be-black",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "confronting",
+     "accept": [
+      "confronting"
+     ],
+     "label": "1. Being proud to be Black also means",
+     "why": "Pride also means confronting the injustices the text describes."
+    },
+    "g2": {
+     "correct": "crediting",
+     "accept": [
+      "crediting"
+     ],
+     "label": "2. borrowing without understanding or ___",
+     "why": "Appropriation borrows cultural elements without crediting their source."
+    },
+    "g3": {
+     "correct": "unprofessional",
+     "accept": [
+      "unprofessional"
+     ],
+     "label": "3. Black hairstyles were often called",
+     "why": "Braids and afros were long dismissed at work and school as unprofessional."
+    },
+    "g4": {
+     "correct": "new",
+     "accept": [
+      "new"
+     ],
+     "label": "4. The same styles on non-Black celebrities are praised as",
+     "why": "The same hairstyles get called 'new' or edgy on non-Black celebrities."
+    },
+    "g5": {
+     "correct": "refused",
+     "accept": [
+      "refused"
+     ],
+     "label": "5. denies Black people the acceptance they were once",
+     "why": "The double standard grants others what Black people were refused."
+    },
+    "g6": {
+     "correct": "supporting",
+     "accept": [
+      "supporting"
+     ],
+     "label": "6. True appreciation involves history, credit and",
+     "why": "Real appreciation means learning the history, crediting it and supporting the community."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "In my view",
+     "accept": [
+      "In my view"
+     ],
+     "label": "1. ___ (opinion opener)",
+     "why": "'In my view' introduces a personal opinion at the start of a sentence."
+    },
+    "g2": {
+     "correct": "that",
+     "accept": [
+      "that"
+     ],
+     "label": "2. It could be argued ___",
+     "why": "'It could be argued' is followed by a that-clause."
+    },
+    "g3": {
+     "correct": "arguably",
+     "accept": [
+      "arguably"
+     ],
+     "label": "3. Cultural appropriation is, ___",
+     "why": "'Arguably' hedges a claim and sits between commas here."
+    },
+    "g4": {
+     "correct": "On the whole",
+     "accept": [
+      "On the whole"
+     ],
+     "label": "4. ___ (generalising opener)",
+     "why": "'On the whole' introduces a general conclusion."
+    },
+    "g5": {
+     "correct": "concerned",
+     "accept": [
+      "concerned"
+     ],
+     "label": "5. As far as I am ___",
+     "why": "'As far as I am concerned' is a fixed phrase for giving your own view."
+    },
+    "g6": {
+     "correct": "that",
+     "accept": [
+      "that"
+     ],
+     "label": "6. There is no denying ___",
+     "why": "'There is no denying' is followed by a that-clause."
+    },
+    "g7": {
+     "correct": "Some might",
+     "accept": [
+      "Some might"
+     ],
+     "label": "7. ___ (concession opener)",
+     "why": "'Some might argue' introduces a view you plan to answer."
+    },
+    "g8": {
+     "correct": "to",
+     "accept": [
+      "to"
+     ],
+     "label": "8. It seems ___",
+     "why": "'It seems' is followed by 'to' + infinitive in this structure."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "exchange",
+     "accept": [
+      "exchange"
+     ],
+     "label": "1. shared and celebrated between equals",
+     "why": "Cultural exchange is a two-way sharing between equals."
+    },
+    "g2": {
+     "correct": "double",
+     "accept": [
+      "double"
+     ],
+     "label": "2. same style judged differently",
+     "why": "A double standard applies different rules to different groups."
+    },
+    "g3": {
+     "correct": "compensation",
+     "accept": [
+      "compensation"
+     ],
+     "label": "3. musicians call for fair ___",
+     "why": "Compensation is fair payment for work that others profit from."
+    },
+    "g4": {
+     "correct": "stereotype",
+     "accept": [
+      "stereotype"
+     ],
+     "label": "4. simplified belief about a group",
+     "why": "A stereotype is a fixed, oversimplified idea about a whole group."
+    },
+    "g5": {
+     "correct": "appreciation",
+     "accept": [
+      "appreciation"
+     ],
+     "label": "5. borrowing out of genuine respect",
+     "why": "Appreciation engages with a culture respectfully and gives credit."
+    },
+    "g6": {
+     "correct": "solidarity",
+     "accept": [
+      "solidarity"
+     ],
+     "label": "6. supporting a group you are not part of",
+     "why": "Solidarity means backing a group's cause from outside it."
+    },
+    "g7": {
+     "correct": "heritage",
+     "accept": [
+      "heritage"
+     ],
+     "label": "7. customs and history inherited",
+     "why": "Cultural heritage is what a community inherits from earlier generations."
+    },
+    "g8": {
+     "correct": "racism",
+     "accept": [
+      "racism"
+     ],
+     "label": "8. Systemic ___",
+     "why": "Systemic racism is discrimination built into institutions, not just individuals."
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,145 @@
+{
+ "unit": "8g-school-life-rules",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "code",
+     "accept": [
+      "code"
+     ],
+     "label": "1. A strict dress ___",
+     "why": "‘Dress code’ is the fixed phrase for school clothing rules."
+    },
+    "g2": {
+     "correct": "pledge",
+     "accept": [
+      "pledge"
+     ],
+     "label": "2. Saying the ___ of allegiance",
+     "why": "The text says students begin the day with the pledge of allegiance."
+    },
+    "g3": {
+     "correct": "subjects",
+     "accept": [
+      "subjects"
+     ],
+     "label": "3. A huge range of ___",
+     "why": "The text says American high schools offer a huge range of subjects."
+    },
+    "g4": {
+     "correct": "activities",
+     "accept": [
+      "activities"
+     ],
+     "label": "4. Take part in ___",
+     "why": "The text says students take part in activities like sports or the school band."
+    },
+    "g5": {
+     "correct": "behaviour",
+     "accept": [
+      "behaviour"
+     ],
+     "label": "5. Clear rules about ___",
+     "why": "The text says there are clear rules about behaviour."
+    },
+    "g6": {
+     "correct": "polite",
+     "accept": [
+      "polite"
+     ],
+     "label": "6. Expected to be ___",
+     "why": "The text says students are expected to be polite to their teachers."
+    },
+    "g7": {
+     "correct": "time",
+     "accept": [
+      "time"
+     ],
+     "label": "7. Arrive on ___",
+     "why": "The text says students are expected to arrive on time."
+    },
+    "g8": {
+     "correct": "detention",
+     "accept": [
+      "detention"
+     ],
+     "label": "8. Leads to ___",
+     "why": "The text says breaking the rules can lead to detention."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "mustn't",
+     "accept": [
+      "mustn't"
+     ],
+     "label": "1. You ___ talk in the library",
+     "why": "‘Mustn’t’ expresses a prohibition — talking in the library is forbidden."
+    },
+    "g2": {
+     "correct": "have to",
+     "accept": [
+      "have to"
+     ],
+     "label": "2. American students ___ say the pledge",
+     "why": "‘Have to’ expresses an external obligation — saying the pledge is required."
+    },
+    "g3": {
+     "correct": "don't have to",
+     "accept": [
+      "don't have to"
+     ],
+     "label": "3. You ___ bring your own food",
+     "why": "‘Don’t have to’ expresses a lack of obligation — food is free, so bringing your own isn’t necessary."
+    },
+    "g4": {
+     "correct": "must",
+     "accept": [
+      "must"
+     ],
+     "label": "4. You ___ finish your homework",
+     "why": "‘Must’ expresses a strong personal obligation — homework has to be finished."
+    },
+    "g5": {
+     "correct": "should",
+     "accept": [
+      "should"
+     ],
+     "label": "5. You ___ tell a teacher",
+     "why": "‘Should’ expresses advice — telling a teacher is recommended, not obligatory."
+    },
+    "g6": {
+     "correct": "mustn't",
+     "accept": [
+      "mustn't"
+     ],
+     "label": "6. You ___ eat in the science lab",
+     "why": "‘Mustn’t’ expresses a prohibition — eating in the lab is forbidden for safety."
+    },
+    "g7": {
+     "correct": "are allowed to",
+     "accept": [
+      "are allowed to"
+     ],
+     "label": "7. Students ___ use their phones",
+     "why": "‘Are allowed to’ expresses permission — using phones at lunch is permitted."
+    },
+    "g8": {
+     "correct": "shouldn't",
+     "accept": [
+      "shouldn't"
+     ],
+     "label": "8. You ___ be rude",
+     "why": "‘Shouldn’t’ expresses advice against an action — rudeness is unkind, not forbidden by rule."
+    }
+   }
+  }
+ }
+}

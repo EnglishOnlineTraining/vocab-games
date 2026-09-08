@@ -1,0 +1,163 @@
+{
+ "unit": "gr-passiv",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "was opened",
+     "accept": [
+      "was opened"
+     ],
+     "label": "1 Café Blau"
+    },
+    "g2": {
+     "correct": "are served",
+     "accept": [
+      "are served"
+     ],
+     "label": "2 Today, more than three hundred cups of coffee"
+    },
+    "g3": {
+     "correct": "is being renovated",
+     "accept": [
+      "is being renovated"
+     ],
+     "label": "3 Right now, the old kitchen"
+    },
+    "g4": {
+     "correct": "has been delivered",
+     "accept": [
+      "has been delivered"
+     ],
+     "label": "4 All the new furniture"
+    },
+    "g5": {
+     "correct": "will be opened",
+     "accept": [
+      "will be opened"
+     ],
+     "label": "5 Next month, a new outdoor terrace"
+    },
+    "g6": {
+     "correct": "has never been shared",
+     "accept": [
+      "has never been shared"
+     ],
+     "label": "6 The café's famous cheesecake recipe"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "is grown",
+     "accept": [
+      "is grown"
+     ],
+     "label": "1 Rice"
+    },
+    "g2": {
+     "correct": "was completed",
+     "accept": [
+      "was completed"
+     ],
+     "label": "2 The bridge"
+    },
+    "g3": {
+     "correct": "is being repaired",
+     "accept": [
+      "is being repaired"
+     ],
+     "label": "3 Right now, the road"
+    },
+    "g4": {
+     "correct": "had already been cleaned",
+     "accept": [
+      "had already been cleaned"
+     ],
+     "label": "4 When we arrived, the room"
+    },
+    "g5": {
+     "correct": "have been sold",
+     "accept": [
+      "have been sold"
+     ],
+     "label": "5 All the tickets"
+    },
+    "g6": {
+     "correct": "will be finished",
+     "accept": [
+      "will be finished"
+     ],
+     "label": "6 The new stadium"
+    },
+    "g7": {
+     "correct": "was stolen",
+     "accept": [
+      "was stolen"
+     ],
+     "label": "7 My phone"
+    },
+    "g8": {
+     "correct": "will have been finished",
+     "accept": [
+      "will have been finished"
+     ],
+     "label": "8 By Friday, the whole project"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "must be done",
+     "accept": [
+      "must be done"
+     ],
+     "label": "1 This form"
+    },
+    "g2": {
+     "correct": "can be made",
+     "accept": [
+      "can be made"
+     ],
+     "label": "2 Mistakes"
+    },
+    "g3": {
+     "correct": "should be returned",
+     "accept": [
+      "should be returned"
+     ],
+     "label": "3 The library books"
+    },
+    "g4": {
+     "correct": "by Shakespeare",
+     "accept": [
+      "by Shakespeare"
+     ],
+     "label": "4 Hamlet was written"
+    },
+    "g5": {
+     "correct": "by the police",
+     "accept": [
+      "by the police"
+     ],
+     "label": "5 The suspect was arrested"
+    },
+    "g6": {
+     "correct": "has to be cleaned",
+     "accept": [
+      "has to be cleaned"
+     ],
+     "label": "6 The kitchen"
+    }
+   }
+  }
+ }
+}

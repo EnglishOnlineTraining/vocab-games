@@ -60,7 +60,12 @@ assert.strictEqual(Object.keys(flat).length, Object.keys(payload).length,
 
 // A blank gap must stay visible rather than vanishing.
 assert.strictEqual(eolFlattenForMake({ exA: { g1: '', g2: 'beta' } }).exA,
-  'g1: — | g2: beta', 'an unanswered gap renders as an em dash, not as nothing');
+  'g1: (blank) | g2: beta',
+  'an unanswered gap renders as the (blank) marker, not as nothing. It was the em '
+  + 'dash until 2026-09-07, which collided with a real answer: esl-articles keys five '
+  + 'gaps to "—" meaning "no article", so a correct answer and an unanswered gap were '
+  + 'the same string. (blank) matches flatten() in apps-script.gs and no option value '
+  + 'in the corpus uses it. See make-grader.js.');
 
 // Arrays are left alone — eolFlat would turn them into "0: a | 1: b".
 var withArray = eolFlattenForMake({ tags: ['a', 'b'] });

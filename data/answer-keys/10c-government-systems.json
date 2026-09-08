@@ -1,0 +1,215 @@
+{
+ "unit": "10c-government-systems",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "monarchy",
+     "accept": [
+      "monarchy"
+     ],
+     "label": "1. The UK is a constitutional ___",
+     "why": "The UK keeps a monarch as head of state → constitutional monarchy."
+    },
+    "g2": {
+     "correct": "Parliament",
+     "accept": [
+      "Parliament"
+     ],
+     "label": "2. Real political power is held by ___",
+     "why": "In the UK, real power lies with the elected Parliament, not the King."
+    },
+    "g3": {
+     "correct": "elected",
+     "accept": [
+      "elected"
+     ],
+     "label": "3. Members of the House of Commons are ___",
+     "why": "MPs are chosen by voters → elected."
+    },
+    "g4": {
+     "correct": "Prime Minister",
+     "accept": [
+      "Prime Minister"
+     ],
+     "label": "4. The leader of the UK government is the ___",
+     "why": "The head of the UK government is the Prime Minister."
+    },
+    "g5": {
+     "correct": "1787",
+     "accept": [
+      "1787"
+     ],
+     "label": "5. The US Constitution was signed in ___",
+     "why": "The US Constitution was signed in 1787."
+    },
+    "g6": {
+     "correct": "President",
+     "accept": [
+      "President"
+     ],
+     "label": "6. The US head of state is the ___",
+     "why": "In the USA the head of state is the President."
+    },
+    "g7": {
+     "correct": "states",
+     "accept": [
+      "states"
+     ],
+     "label": "7. Power is divided between the federal government and the fifty ___",
+     "why": "US power is split between the federal government and the fifty states."
+    },
+    "g8": {
+     "correct": "checks and balances",
+     "accept": [
+      "checks and balances"
+     ],
+     "label": "8. The system that stops anyone becoming too powerful",
+     "why": "The system that limits each branch’s power is called checks and balances."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "are made",
+     "accept": [
+      "are made"
+     ],
+     "label": "1. In the UK, laws ___ by Parliament",
+     "why": "Passive, present: laws receive the action → are + made."
+    },
+    "g2": {
+     "correct": "was signed",
+     "accept": [
+      "was signed"
+     ],
+     "label": "2. The US Constitution ___ in 1787",
+     "why": "Passive, past (1787) → was + signed."
+    },
+    "g3": {
+     "correct": "is asked",
+     "accept": [
+      "is asked"
+     ],
+     "label": "3. The Prime Minister ___ by the King",
+     "why": "Passive, present → is + asked."
+    },
+    "g4": {
+     "correct": "are elected",
+     "accept": [
+      "are elected"
+     ],
+     "label": "4. Members of the House of Commons ___ by the people",
+     "why": "Passive, present, plural subject → are + elected."
+    },
+    "g5": {
+     "correct": "was passed",
+     "accept": [
+      "was passed"
+     ],
+     "label": "5. Last year, a new law ___",
+     "why": "Passive, past (last year) → was + passed."
+    },
+    "g6": {
+     "correct": "is elected",
+     "accept": [
+      "is elected"
+     ],
+     "label": "6. The American President ___ every four years",
+     "why": "Passive, present, singular subject → is + elected."
+    },
+    "g7": {
+     "correct": "are made",
+     "accept": [
+      "are made"
+     ],
+     "label": "7. Many important decisions ___ in Washington",
+     "why": "Passive, present, plural subject → are + made."
+    },
+    "g8": {
+     "correct": "was built",
+     "accept": [
+      "was built"
+     ],
+     "label": "8. The White House ___ in the late 18th century",
+     "why": "Passive, past → was + built."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "is elected",
+     "accept": [
+      "is elected"
+     ],
+     "label": "1. The people elect the President →",
+     "why": "Present passive: is + elected."
+    },
+    "g2": {
+     "correct": "are made",
+     "accept": [
+      "are made"
+     ],
+     "label": "2. Parliament makes the laws →",
+     "why": "Present passive, plural → are + made."
+    },
+    "g3": {
+     "correct": "was passed",
+     "accept": [
+      "was passed"
+     ],
+     "label": "3. Congress passed the law in 2020 →",
+     "why": "Past passive → was + passed."
+    },
+    "g4": {
+     "correct": "will be held",
+     "accept": [
+      "will be held"
+     ],
+     "label": "4. They will hold an election next year →",
+     "why": "Future passive → will be + held."
+    },
+    "g5": {
+     "correct": "have been increased",
+     "accept": [
+      "have been increased"
+     ],
+     "label": "5. The government has increased taxes →",
+     "why": "Present perfect passive → have been + increased."
+    },
+    "g6": {
+     "correct": "was built",
+     "accept": [
+      "was built"
+     ],
+     "label": "6. Workers built the Capitol in 1800 →",
+     "why": "Past passive → was + built."
+    },
+    "g7": {
+     "correct": "is opened",
+     "accept": [
+      "is opened"
+     ],
+     "label": "7. The King opens Parliament every year →",
+     "why": "Present passive → is + opened."
+    },
+    "g8": {
+     "correct": "is spoken",
+     "accept": [
+      "is spoken"
+     ],
+     "label": "8. People speak English in both countries →",
+     "why": "Present passive → is + spoken."
+    }
+   }
+  }
+ }
+}

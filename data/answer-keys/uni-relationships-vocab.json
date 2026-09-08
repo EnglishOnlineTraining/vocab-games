@@ -1,0 +1,295 @@
+{
+ "unit": "uni-relationships-vocab",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "v0": {
+     "correct": "Positive",
+     "accept": [
+      "Positive"
+     ],
+     "label": "cement",
+     "why": "‘Cement relations’ means to strengthen them — a positive action."
+    },
+    "v1": {
+     "correct": "Positive",
+     "accept": [
+      "Positive"
+     ],
+     "label": "cultivate",
+     "why": "‘Cultivate relationships’ means to actively develop them — a positive action."
+    },
+    "v2": {
+     "correct": "Negative",
+     "accept": [
+      "Negative"
+     ],
+     "label": "cut off",
+     "why": "‘Cut off relations’ means to end them abruptly — a negative action."
+    },
+    "v3": {
+     "correct": "Negative",
+     "accept": [
+      "Negative"
+     ],
+     "label": "damage",
+     "why": "‘Damage relations’ means to harm them — a negative action."
+    },
+    "v4": {
+     "correct": "Positive",
+     "accept": [
+      "Positive"
+     ],
+     "label": "develop",
+     "why": "‘Develop relations’ means to grow them — a positive action."
+    },
+    "v5": {
+     "correct": "Negative",
+     "accept": [
+      "Negative"
+     ],
+     "label": "disrupt",
+     "why": "‘Disrupt relations’ means to interrupt them harmfully — a negative action."
+    },
+    "v6": {
+     "correct": "Positive",
+     "accept": [
+      "Positive"
+     ],
+     "label": "encourage",
+     "why": "‘Encourage relations’ means to promote them — a positive action."
+    },
+    "v7": {
+     "correct": "Positive",
+     "accept": [
+      "Positive"
+     ],
+     "label": "establish",
+     "why": "‘Establish relations’ means to set them up — a positive action."
+    },
+    "v8": {
+     "correct": "Positive",
+     "accept": [
+      "Positive"
+     ],
+     "label": "foster",
+     "why": "‘Foster relations’ means to encourage and support them — a positive action."
+    },
+    "v9": {
+     "correct": "Positive",
+     "accept": [
+      "Positive"
+     ],
+     "label": "improve",
+     "why": "‘Improve relations’ means to make them better — a positive action."
+    },
+    "v10": {
+     "correct": "Negative",
+     "accept": [
+      "Negative"
+     ],
+     "label": "jeopardise",
+     "why": "‘Jeopardise relations’ means to put them at risk — a negative action."
+    },
+    "v11": {
+     "correct": "Positive",
+     "accept": [
+      "Positive"
+     ],
+     "label": "maintain",
+     "why": "‘Maintain relations’ means to keep them going well — a positive action."
+    },
+    "v12": {
+     "correct": "Positive",
+     "accept": [
+      "Positive"
+     ],
+     "label": "promote",
+     "why": "‘Promote relations’ means to actively support them — a positive action."
+    },
+    "v13": {
+     "correct": "Positive",
+     "accept": [
+      "Positive"
+     ],
+     "label": "restore",
+     "why": "‘Restore relations’ means to repair them after damage — a positive action."
+    },
+    "v14": {
+     "correct": "Positive",
+     "accept": [
+      "Positive"
+     ],
+     "label": "resume",
+     "why": "‘Resume relations’ means to start them again after a pause — a positive action."
+    },
+    "v15": {
+     "correct": "Negative",
+     "accept": [
+      "Negative"
+     ],
+     "label": "sever",
+     "why": "‘Sever relations’ means to end them completely — a negative action."
+    },
+    "v16": {
+     "correct": "Negative",
+     "accept": [
+      "Negative"
+     ],
+     "label": "sour",
+     "why": "‘Relations sour’ means they turn bad — a negative development."
+    },
+    "v17": {
+     "correct": "Positive",
+     "accept": [
+      "Positive"
+     ],
+     "label": "strengthen",
+     "why": "‘Strengthen relations’ means to make them stronger — a positive action."
+    },
+    "v18": {
+     "correct": "Negative",
+     "accept": [
+      "Negative"
+     ],
+     "label": "undermine",
+     "why": "‘Undermine relations’ means to weaken them — a negative action."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "damage",
+     "accept": [
+      "damage"
+     ],
+     "label": "1. Impolite staff ___ the reputation",
+     "why": "‘Damage the reputation’ is the standard collocation; ‘disrupt’ doesn't fit reputation."
+    },
+    "g2": {
+     "correct": "establish",
+     "accept": [
+      "establish"
+     ],
+     "label": "2. Planning to ___ branch offices",
+     "why": "‘Establish branch offices’ is the standard collocation for setting up offices."
+    },
+    "g3": {
+     "correct": "strengthened",
+     "accept": [
+      "strengthened"
+     ],
+     "label": "3. Greatly ___ our sales force",
+     "why": "‘Greatly’ signals a big change, which fits ‘strengthened’, not ‘maintained’ (no change)."
+    },
+    "g4": {
+     "correct": "undermined",
+     "accept": [
+      "undermined"
+     ],
+     "label": "4. Relations ___ by poor service",
+     "why": "Poor after-sales service would harm relations, not foster them."
+    },
+    "g5": {
+     "correct": "improving",
+     "accept": [
+      "improving"
+     ],
+     "label": "5. We are ___ relations with suppliers",
+     "why": "A new communications system would improve, not sour, relations."
+    },
+    "g6": {
+     "correct": "disrupted",
+     "accept": [
+      "disrupted"
+     ],
+     "label": "6. A strike ___ production",
+     "why": "A strike disrupts production; it doesn't resume it."
+    },
+    "g7": {
+     "correct": "broke off",
+     "accept": [
+      "broke off"
+     ],
+     "label": "7. We ___ talks regarding a joint venture",
+     "why": "‘Broke off talks’ is the standard idiom for ending negotiations."
+    },
+    "g8": {
+     "correct": "jeopardised",
+     "accept": [
+      "jeopardised"
+     ],
+     "label": "8. Success was ___ by a poor campaign",
+     "why": "An unimaginative campaign would put success at risk, not cement it."
+    },
+    "g9": {
+     "correct": "building up",
+     "accept": [
+      "building up"
+     ],
+     "label": "9. We are ___ relationships with local agents",
+     "why": "Gaining market share requires building relationships, not cutting them off."
+    },
+    "g10": {
+     "correct": "fostered",
+     "accept": [
+      "fostered"
+     ],
+     "label": "10. Relations ___ by official visits",
+     "why": "Official visits and trade delegations encourage relations, they don't sever them."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "m1": {
+     "correct": "e",
+     "accept": [
+      "e"
+     ],
+     "label": "1. Rumours of a hostile takeover bid are certain...",
+     "why": "This pairs with ‘to strain relations between the two leading French software companies’."
+    },
+    "m2": {
+     "correct": "d",
+     "accept": [
+      "d"
+     ],
+     "label": "2. The Accounts Department's slow payment...",
+     "why": "This pairs with ‘is causing stormy relations with some of the company's suppliers’."
+    },
+    "m3": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "3. The long-term contracts...",
+     "why": "This pairs with ‘have cemented relations between the two companies’."
+    },
+    "m4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. The excellent relations with the local community...",
+     "why": "This pairs with ‘are a credit to its highly effective PR Department’."
+    },
+    "m5": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "5. As a result of currency controls...",
+     "why": "This pairs with ‘its close relations with several major foreign investors have been jeopardised’."
+    }
+   }
+  }
+ }
+}

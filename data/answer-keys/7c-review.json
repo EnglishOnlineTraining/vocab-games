@@ -1,0 +1,191 @@
+{
+ "unit": "7c-review",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "three o'clock",
+     "accept": [
+      "three o'clock"
+     ],
+     "label": "1. School finishes at..."
+    },
+    "g2": {
+     "correct": "uniform",
+     "accept": [
+      "uniform"
+     ],
+     "label": "2. Most students wear a school"
+    },
+    "g3": {
+     "correct": "a group that meets after school",
+     "accept": [
+      "a group that meets after school"
+     ],
+     "label": "3. club"
+    },
+    "g4": {
+     "correct": "homework",
+     "accept": [
+      "homework"
+     ],
+     "label": "4. Teachers give"
+    },
+    "g5": {
+     "correct": "special clothes for school",
+     "accept": [
+      "special clothes for school"
+     ],
+     "label": "5. uniform"
+    },
+    "g6": {
+     "correct": "Fish and chips",
+     "accept": [
+      "Fish and chips"
+     ],
+     "label": "6. What did Lily eat for lunch?"
+    },
+    "g7": {
+     "correct": "the outside area at school",
+     "accept": [
+      "the outside area at school"
+     ],
+     "label": "7. playground"
+    },
+    "g8": {
+     "correct": "Because it is Wednesday and she has no club",
+     "accept": [
+      "Because it is Wednesday and she has no club"
+     ],
+     "label": "8. Why does Lily go straight home?"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "an area of study at school",
+     "accept": [
+      "an area of study at school"
+     ],
+     "label": "1. subject"
+    },
+    "g2": {
+     "correct": "12 years old",
+     "accept": [
+      "12 years old"
+     ],
+     "label": "2. How old is Lily?"
+    },
+    "g3": {
+     "correct": "a test in Science class",
+     "accept": [
+      "a test in Science class"
+     ],
+     "label": "3. experiment"
+    },
+    "g4": {
+     "correct": "break",
+     "accept": [
+      "break"
+     ],
+     "label": "4. A short"
+    },
+    "g5": {
+     "correct": "football club",
+     "accept": [
+      "football club"
+     ],
+     "label": "5. After school, Emily stays for..."
+    },
+    "g6": {
+     "correct": "subject",
+     "accept": [
+      "subject"
+     ],
+     "label": "6. Maths is an important"
+    },
+    "g7": {
+     "correct": "nine o'clock",
+     "accept": [
+      "nine o'clock"
+     ],
+     "label": "7. Emily goes to bed at..."
+    },
+    "g8": {
+     "correct": "blazer",
+     "accept": [
+      "blazer"
+     ],
+     "label": "8. The"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Manchester",
+     "accept": [
+      "Manchester"
+     ],
+     "label": "1. Emily goes to school in..."
+    },
+    "g2": {
+     "correct": "terms",
+     "accept": [
+      "terms"
+     ],
+     "label": "2. The school year has three"
+    },
+    "g3": {
+     "correct": "canteen",
+     "accept": [
+      "canteen"
+     ],
+     "label": "3. For lunch, Emily eats in the..."
+    },
+    "g4": {
+     "correct": "Three o'clock",
+     "accept": [
+      "Three o'clock"
+     ],
+     "label": "4. What time does school finish?"
+    },
+    "g5": {
+     "correct": "Science",
+     "accept": [
+      "Science"
+     ],
+     "label": "5. Emily's favourite subject is..."
+    },
+    "g6": {
+     "correct": "timetable",
+     "accept": [
+      "timetable"
+     ],
+     "label": "6. A"
+    },
+    "g7": {
+     "correct": "a type of jacket",
+     "accept": [
+      "a type of jacket"
+     ],
+     "label": "7. blazer"
+    },
+    "g8": {
+     "correct": "house",
+     "accept": [
+      "house"
+     ],
+     "label": "8. Many schools have a"
+    }
+   }
+  }
+ }
+}

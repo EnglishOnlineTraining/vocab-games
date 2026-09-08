@@ -1,0 +1,145 @@
+{
+ "unit": "msa-c-lost-phone-voicemail",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "changing rooms",
+     "accept": [
+      "changing rooms"
+     ],
+     "label": "1. Where was the phone found?",
+     "why": "The recording says the phone was found near the changing rooms."
+    },
+    "g2": {
+     "correct": "flower sticker",
+     "accept": [
+      "flower sticker"
+     ],
+     "label": "2. What is on the phone case?",
+     "why": "The recording says the phone case has an orange flower sticker on the back."
+    },
+    "g3": {
+     "correct": "eleven",
+     "accept": [
+      "eleven"
+     ],
+     "label": "3. What time was it handed in?",
+     "why": "The recording says the phone was handed in just after eleven o'clock."
+    },
+    "g4": {
+     "correct": "describe lock screen",
+     "accept": [
+      "describe lock screen"
+     ],
+     "label": "4. What must the owner do?",
+     "why": "The recording says the owner must be ready to describe the lock screen and colour."
+    },
+    "g5": {
+     "correct": "given to police",
+     "accept": [
+      "given to police"
+     ],
+     "label": "5. What happens to uncollected phones?",
+     "why": "The recording says phones not collected by Friday will be handed to the local police."
+    },
+    "g6": {
+     "correct": "lost phone",
+     "accept": [
+      "lost phone"
+     ],
+     "label": "6. What is Sam's problem?",
+     "why": "The recording says Sam lost his phone that morning."
+    },
+    "g7": {
+     "correct": "lock screen photo",
+     "accept": [
+      "lock screen photo"
+     ],
+     "label": "7. What must Sam describe?",
+     "why": "The recording says Sam must describe the lock screen, which is a photo of his dog."
+    },
+    "g8": {
+     "correct": "forgetting bag",
+     "accept": [
+      "forgetting bag"
+     ],
+     "label": "8. What does Leah joke about?",
+     "why": "The recording says Leah jokes about Sam not forgetting his bag again."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Water Bottle",
+     "accept": [
+      "Water Bottle"
+     ],
+     "label": "1. Noah — left drink bottle",
+     "why": "The text says a dented blue water bottle was found near the canteen."
+    },
+    "g2": {
+     "correct": "Hoodie",
+     "accept": [
+      "Hoodie"
+     ],
+     "label": "2. Priya — jumper from library",
+     "why": "The text says a grey hoodie was found in the library."
+    },
+    "g3": {
+     "correct": "Keys",
+     "accept": [
+      "Keys"
+     ],
+     "label": "3. Felix — lost bike keys",
+     "why": "The text says a set of keys with a football keyring was found by the bike racks."
+    },
+    "g4": {
+     "correct": "Calculator",
+     "accept": [
+      "Calculator"
+     ],
+     "label": "4. Jonas — calculator with initials",
+     "why": "The text says a calculator with the initials \"J.K.\" was found in the science lab."
+    },
+    "g5": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "5. Kept one month before charity",
+     "why": "The text says lost property is kept for two weeks, not one month."
+    },
+    "g6": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "6. ID needed to collect an item",
+     "why": "The text confirms students must show their student ID card to collect an item."
+    },
+    "g7": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "7. Phones/money on open shelf",
+     "why": "The text says phones and money are kept in a locked cabinet, not on the open shelf."
+    },
+    "g8": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "8. Only collected at lunchtime",
+     "why": "The text says lost property can be collected any time before the end of the school day."
+    }
+   }
+  }
+ }
+}

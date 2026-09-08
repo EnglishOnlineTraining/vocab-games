@@ -1,0 +1,145 @@
+{
+ "unit": "msa-c-book-character-day",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "next Wednesday",
+     "accept": [
+      "next Wednesday"
+     ],
+     "label": "1. When is Book Character Day?",
+     "why": "The recording says Book Character Day is next Wednesday."
+    },
+    "g2": {
+     "correct": "Miss Carter",
+     "accept": [
+      "Miss Carter"
+     ],
+     "label": "2. Who judges the competition?",
+     "why": "The recording says Miss Carter will be judging the costume competition."
+    },
+    "g3": {
+     "correct": "book token",
+     "accept": [
+      "book token"
+     ],
+     "label": "3. What does the winner receive?",
+     "why": "The recording says the winner receives a ten pound book token."
+    },
+    "g4": {
+     "correct": "write paragraph",
+     "accept": [
+      "write paragraph"
+     ],
+     "label": "4. Alternative to dressing up?",
+     "why": "The recording says students who don't want to dress up can write a short paragraph instead."
+    },
+    "g5": {
+     "correct": "Tuesday afternoon",
+     "accept": [
+      "Tuesday afternoon"
+     ],
+     "label": "5. When are written entries due?",
+     "why": "The recording says writing entries must be handed in by Tuesday afternoon."
+    },
+    "g6": {
+     "correct": "Percy Jackson",
+     "accept": [
+      "Percy Jackson"
+     ],
+     "label": "6. Who is Marcus dressing as?",
+     "why": "The recording says Marcus is going as Percy Jackson."
+    },
+    "g7": {
+     "correct": "has a bow",
+     "accept": [
+      "has a bow"
+     ],
+     "label": "7. Why Katniss for Ellie?",
+     "why": "The recording says Marcus suggests Katniss because Ellie already has a bow from archery club."
+    },
+    "g8": {
+     "correct": "both",
+     "accept": [
+      "both"
+     ],
+     "label": "8. What does Ellie decide?",
+     "why": "The recording says Ellie decides to do both — dress up and write her paragraph."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Leader",
+     "accept": [
+      "Leader"
+     ],
+     "label": "1. Leo — brave, takes charge",
+     "why": "The text says the Leader always puts the team first and makes brave decisions under pressure."
+    },
+    "g2": {
+     "correct": "Inventor",
+     "accept": [
+      "Inventor"
+     ],
+     "label": "2. Ava — builds and invents",
+     "why": "The text says the Inventor solves problems with clever gadgets."
+    },
+    "g3": {
+     "correct": "Outsider",
+     "accept": [
+      "Outsider"
+     ],
+     "label": "3. Noah — found his place",
+     "why": "The text says the Outsider doesn't fit in at first but has a hidden talent."
+    },
+    "g4": {
+     "correct": "Best Friend",
+     "accept": [
+      "Best Friend"
+     ],
+     "label": "4. Sofia — values loyalty",
+     "why": "The text says the Best Friend is always there to support the hero."
+    },
+    "g5": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "5. Costumes only from books",
+     "why": "The text says costumes must be based on a character from a book, film, or comic — not only books."
+    },
+    "g6": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "6. Competition at lunchtime",
+     "why": "The text confirms the costume competition takes place during lunchtime."
+    },
+    "g7": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "7. Entries read aloud",
+     "why": "The text says writing entries are displayed on the library wall, not read aloud."
+    },
+    "g8": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "8. Cost to enter",
+     "why": "The text says entry to both competitions is completely free."
+    }
+   }
+  }
+ }
+}

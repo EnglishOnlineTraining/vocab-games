@@ -1,0 +1,73 @@
+{
+ "unit": "business-gdpr-compliance",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Explicit consent",
+     "accept": [
+      "Explicit consent"
+     ],
+     "label": "1. Companies must obtain:",
+     "why": "The text says companies must obtain explicit consent before collecting data."
+    },
+    "g2": {
+     "correct": "72 hours",
+     "accept": [
+      "72 hours"
+     ],
+     "label": "2. Time to report a data breach?",
+     "why": "The text says organisations have to report breaches within 72 hours."
+    },
+    "g3": {
+     "correct": "Selling data without permission",
+     "accept": [
+      "Selling data without permission"
+     ],
+     "label": "3. What is NOT allowed under GDPR?",
+     "why": "The text says companies must not sell data without permission."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "must not",
+     "accept": [
+      "must not"
+     ],
+     "label": "1. Companies ___ collect data without consent",
+     "why": "‘Must not’ expresses a prohibition — collecting data without consent is forbidden."
+    },
+    "g2": {
+     "correct": "must",
+     "accept": [
+      "must"
+     ],
+     "label": "2. Organizations ___ implement security measures",
+     "why": "‘Must’ expresses a strong obligation to implement security measures."
+    },
+    "g3": {
+     "correct": "must",
+     "accept": [
+      "must"
+     ],
+     "label": "3. Breach notifications ___ be sent within 72 hours",
+     "why": "‘Must’ expresses the legal obligation to report within 72 hours."
+    },
+    "g4": {
+     "correct": "should",
+     "accept": [
+      "should"
+     ],
+     "label": "4. Employees ___ receive training regularly",
+     "why": "‘Should’ expresses a recommended good practice rather than a strict legal rule."
+    }
+   }
+  }
+ }
+}

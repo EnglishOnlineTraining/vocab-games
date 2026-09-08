@@ -1,0 +1,191 @@
+{
+ "unit": "it-review",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "which",
+     "accept": [
+      "which"
+     ],
+     "label": "1. The report"
+    },
+    "g2": {
+     "correct": "will have been",
+     "accept": [
+      "will have been"
+     ],
+     "label": "2. The sensors"
+    },
+    "g3": {
+     "correct": "millions of open-source examples",
+     "accept": [
+      "millions of open-source examples"
+     ],
+     "label": "3. AI assistants draw suggestions from..."
+    },
+    "g4": {
+     "correct": "should",
+     "accept": [
+      "should"
+     ],
+     "label": "4. Employees"
+    },
+    "g5": {
+     "correct": "hardware",
+     "accept": [
+      "hardware"
+     ],
+     "label": "5. Monitors, keyboards and printers"
+    },
+    "g6": {
+     "correct": "has been",
+     "accept": [
+      "has been"
+     ],
+     "label": "6. The data"
+    },
+    "g7": {
+     "correct": "when",
+     "accept": [
+      "when"
+     ],
+     "label": "7. Do you know"
+    },
+    "g8": {
+     "correct": "is mirrored",
+     "accept": [
+      "is mirrored"
+     ],
+     "label": "8. Data"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "an area where floor panels were removed",
+     "accept": [
+      "an area where floor panels were removed"
+     ],
+     "label": "1. The yellow tape marks..."
+    },
+    "g2": {
+     "correct": "the supplier sent the wrong network cards.",
+     "accept": [
+      "the supplier sent the wrong network cards."
+     ],
+     "label": "2. Explaining a delay to a non-technical reader"
+    },
+    "g3": {
+     "correct": "the backup works",
+     "accept": [
+      "the backup works"
+     ],
+     "label": "3. Could you explain how"
+    },
+    "g4": {
+     "correct": "every Friday",
+     "accept": [
+      "every Friday"
+     ],
+     "label": "4. Tobias gives Lena feedback..."
+    },
+    "g5": {
+     "correct": "will be",
+     "accept": [
+      "will be"
+     ],
+     "label": "5. Invoices"
+    },
+    "g6": {
+     "correct": "Open-source",
+     "accept": [
+      "Open-source"
+     ],
+     "label": "6. Can be read, modified, shared by anyone"
+    },
+    "g7": {
+     "correct": "vulnerability",
+     "accept": [
+      "vulnerability"
+     ],
+     "label": "7. A weakness attackers can exploit"
+    },
+    "g8": {
+     "correct": "user account",
+     "accept": [
+      "user account"
+     ],
+     "label": "8. New employees get a"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "the KPI visualisations",
+     "accept": [
+      "the KPI visualisations"
+     ],
+     "label": "1. The customer was happy with..."
+    },
+    "g2": {
+     "correct": "whether",
+     "accept": [
+      "whether"
+     ],
+     "label": "2. Could you tell me"
+    },
+    "g3": {
+     "correct": "SSD",
+     "accept": [
+      "SSD"
+     ],
+     "label": "3. No moving parts, faster than a hard drive"
+    },
+    "g4": {
+     "correct": "shouldn't",
+     "accept": [
+      "shouldn't"
+     ],
+     "label": "4. Lift heavy servers alone (ask for help instead)"
+    },
+    "g5": {
+     "correct": "appeared",
+     "accept": [
+      "appeared"
+     ],
+     "label": "5. Summarising what the user told you"
+    },
+    "g6": {
+     "correct": "cultural sensitivity",
+     "accept": [
+      "cultural sensitivity"
+     ],
+     "label": "6. Understanding how other cultures communicate"
+    },
+    "g7": {
+     "correct": "both sides checked whether the match was right",
+     "accept": [
+      "both sides checked whether the match was right"
+     ],
+     "label": "7. During the probation period..."
+    },
+    "g8": {
+     "correct": "data quality",
+     "accept": [
+      "data quality"
+     ],
+     "label": "8. The working group will review..."
+    }
+   }
+  }
+ }
+}

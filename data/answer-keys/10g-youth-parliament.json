@@ -1,0 +1,215 @@
+{
+ "unit": "10g-youth-parliament",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "1999",
+     "accept": [
+      "1999"
+     ],
+     "label": "1. SYP founded in ___",
+     "why": "The text says the Scottish Youth Parliament was founded in 1999."
+    },
+    "g2": {
+     "correct": "25",
+     "accept": [
+      "25"
+     ],
+     "label": "2. The SYP is for ages 12 to ___",
+     "why": "The text says the SYP is for young people aged between 12 and 25."
+    },
+    "g3": {
+     "correct": "msyps",
+     "accept": [
+      "msyps"
+     ],
+     "label": "3. Members are known as ___",
+     "why": "The text says members of the SYP are known as MSYPs."
+    },
+    "g4": {
+     "correct": "two",
+     "accept": [
+      "two"
+     ],
+     "label": "4. Representatives are elected every ___ years",
+     "why": "The text says representatives are elected every two years."
+    },
+    "g5": {
+     "correct": "climate",
+     "accept": [
+      "climate"
+     ],
+     "label": "5. The SYP discusses mental health and ___",
+     "why": "The text says the SYP discusses issues such as mental health and climate."
+    },
+    "g6": {
+     "correct": "voting",
+     "accept": [
+      "voting"
+     ],
+     "label": "6. The SYP helped lower the ___ age",
+     "why": "The text says the SYP helped to lower the voting age to 16."
+    },
+    "g7": {
+     "correct": "can",
+     "accept": [
+      "can"
+     ],
+     "label": "7. 16-year-olds ___ vote",
+     "why": "The text says 16-year-olds in Scotland can vote in elections."
+    },
+    "g8": {
+     "correct": "rewarding",
+     "accept": [
+      "rewarding"
+     ],
+     "label": "8. Most MSYPs say the experience is ___",
+     "why": "The text says most MSYPs say the experience is rewarding."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "might",
+     "accept": [
+      "might"
+     ],
+     "label": "1. Not answering; she ___ be in a meeting",
+     "why": "‘Might’ expresses an uncertain possibility."
+    },
+    "g2": {
+     "correct": "must",
+     "accept": [
+      "must"
+     ],
+     "label": "2. Knows every fact; he ___ be interested",
+     "why": "‘Must’ expresses a confident logical deduction based on evidence."
+    },
+    "g3": {
+     "correct": "may",
+     "accept": [
+      "may"
+     ],
+     "label": "3. Not certain, but the vote ___ happen tomorrow",
+     "why": "‘May’ expresses an uncertain possibility."
+    },
+    "g4": {
+     "correct": "might",
+     "accept": [
+      "might"
+     ],
+     "label": "4. They ___ win, but nobody is sure",
+     "why": "‘Might’ expresses an uncertain possibility."
+    },
+    "g5": {
+     "correct": "can't",
+     "accept": [
+      "can't"
+     ],
+     "label": "5. That ___ be right — it makes no sense",
+     "why": "‘Can't’ expresses a confident deduction that something is impossible."
+    },
+    "g6": {
+     "correct": "can",
+     "accept": [
+      "can"
+     ],
+     "label": "6. Young people ___ vote at 16",
+     "why": "‘Can’ expresses permission/ability, matching the fact about voting rights."
+    },
+    "g7": {
+     "correct": "must",
+     "accept": [
+      "must"
+     ],
+     "label": "7. Worked all night, so she ___ be exhausted",
+     "why": "‘Must’ expresses a confident deduction based on evidence."
+    },
+    "g8": {
+     "correct": "could",
+     "accept": [
+      "could"
+     ],
+     "label": "8. We ___ finish early if everyone agrees",
+     "why": "‘Could’ expresses a possibility depending on a condition."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "must",
+     "accept": [
+      "must"
+     ],
+     "label": "1. (Certain she is at home.) She ___ be at home",
+     "why": "‘Must’ expresses certainty based on the given information."
+    },
+    "g2": {
+     "correct": "can't",
+     "accept": [
+      "can't"
+     ],
+     "label": "2. (Impossible he is the leader.) He ___ be the leader",
+     "why": "‘Can't’ expresses certainty that something is impossible."
+    },
+    "g3": {
+     "correct": "might",
+     "accept": [
+      "might"
+     ],
+     "label": "3. (Perhaps they will agree.) They ___ agree",
+     "why": "‘Might’ expresses an uncertain possibility."
+    },
+    "g4": {
+     "correct": "can",
+     "accept": [
+      "can"
+     ],
+     "label": "4. (Possible to vote at 16.) You ___ vote at 16",
+     "why": "‘Can’ expresses permission/possibility, matching ‘it's possible to’."
+    },
+    "g5": {
+     "correct": "can't",
+     "accept": [
+      "can't"
+     ],
+     "label": "5. (Sure it's the wrong room.) This ___ be the right room",
+     "why": "Being sure it's wrong means it can't be right — ‘can't’ expresses that certainty."
+    },
+    "g6": {
+     "correct": "must",
+     "accept": [
+      "must"
+     ],
+     "label": "6. (Certain he is clever.) He ___ be clever",
+     "why": "‘Must’ expresses certainty based on the given information."
+    },
+    "g7": {
+     "correct": "may",
+     "accept": [
+      "may"
+     ],
+     "label": "7. (Maybe it is true.) It ___ be true",
+     "why": "‘May’ expresses an uncertain possibility."
+    },
+    "g8": {
+     "correct": "could",
+     "accept": [
+      "could"
+     ],
+     "label": "8. (Perhaps we will finish early.) We ___ finish early",
+     "why": "‘Could’ expresses an uncertain possibility."
+    }
+   }
+  }
+ }
+}

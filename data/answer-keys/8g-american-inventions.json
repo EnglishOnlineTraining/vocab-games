@@ -1,0 +1,199 @@
+{
+ "unit": "8g-american-inventions",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "the electric light bulb",
+     "accept": [
+      "the electric light bulb"
+     ],
+     "label": "1. What did Edison invent in 1879?",
+     "why": "The text says Edison invented the electric light bulb in 1879."
+    },
+    "g2": {
+     "correct": "more than 1,000",
+     "accept": [
+      "more than 1,000"
+     ],
+     "label": "2. How many materials did Edison test?",
+     "why": "The text says Edison tested more than 1,000 materials for the filament."
+    },
+    "g3": {
+     "correct": "1876",
+     "accept": [
+      "1876"
+     ],
+     "label": "3. When did Bell make the first call?",
+     "why": "The text says Bell made the first telephone call in 1876."
+    },
+    "g4": {
+     "correct": "twelve seconds",
+     "accept": [
+      "twelve seconds"
+     ],
+     "label": "4. How long did the first flight last?",
+     "why": "The text says the Wright Brothers’ first flight lasted twelve seconds."
+    },
+    "g5": {
+     "correct": "so that everyone could afford it",
+     "accept": [
+      "so that everyone could afford it"
+     ],
+     "label": "5. Why did Salk refuse to patent the vaccine?",
+     "why": "The text says Salk refused to patent the vaccine so that everyone could afford it."
+    },
+    "g6": {
+     "correct": "by sending telegrams",
+     "accept": [
+      "by sending telegrams"
+     ],
+     "label": "6. How did people communicate before the telephone?",
+     "why": "The text says people communicated quickly by sending telegrams before the telephone."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "hard",
+     "accept": [
+      "hard"
+     ],
+     "label": "1. Edison worked ___",
+     "why": "‘Hard’ is both the adjective and adverb form here (‘hardly’ means ‘barely’, a different meaning)."
+    },
+    "g2": {
+     "correct": "incredibly",
+     "accept": [
+      "incredibly"
+     ],
+     "label": "2. An ___ important invention",
+     "why": "An adverb is needed to modify the adjective ‘important’, so ‘incredibly’ is used, not ‘incredible’."
+    },
+    "g3": {
+     "correct": "remarkable",
+     "accept": [
+      "remarkable"
+     ],
+     "label": "3. A ___ moment",
+     "why": "An adjective is needed after ‘was’ to describe the moment, so ‘remarkable’ is used, not the adverb ‘remarkably’."
+    },
+    "g4": {
+     "correct": "successfully",
+     "accept": [
+      "successfully"
+     ],
+     "label": "4. Flew their plane ___",
+     "why": "An adverb is needed to modify the verb ‘flew’, so ‘successfully’ is used, not the adjective ‘successful’."
+    },
+    "g5": {
+     "correct": "generously",
+     "accept": [
+      "generously"
+     ],
+     "label": "5. Salk ___ refused",
+     "why": "An adverb is needed to modify the verb ‘refused’, so ‘generously’ is used, not the adjective ‘generous’."
+    },
+    "g6": {
+     "correct": "dramatically",
+     "accept": [
+      "dramatically"
+     ],
+     "label": "6. Changed our lives ___",
+     "why": "An adverb is needed to modify the verb ‘changed’, so ‘dramatically’ is used, not the adjective ‘dramatic’."
+    },
+    "g7": {
+     "correct": "terrible",
+     "accept": [
+      "terrible"
+     ],
+     "label": "7. Polio was a ___ disease",
+     "why": "An adjective is needed after ‘was’ to describe the disease, so ‘terrible’ is used, not the adverb ‘terribly’."
+    },
+    "g8": {
+     "correct": "extremely",
+     "accept": [
+      "extremely"
+     ],
+     "label": "8. The first flight was ___ short",
+     "why": "An adverb is needed to modify the adjective ‘short’, so ‘extremely’ is used, not the adjective ‘extreme’."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "fascinating",
+     "accept": [
+      "fascinating"
+     ],
+     "label": "1. The story is really ___",
+     "why": "The -ing participle describes the thing causing the feeling: the story is fascinating."
+    },
+    "g2": {
+     "correct": "amazed",
+     "accept": [
+      "amazed"
+     ],
+     "label": "2. People were ___",
+     "why": "The -ed participle describes how people felt: people were amazed."
+    },
+    "g3": {
+     "correct": "astonishing",
+     "accept": [
+      "astonishing"
+     ],
+     "label": "3. The achievement was truly ___",
+     "why": "The -ing participle describes the thing causing the feeling: the achievement was astonishing."
+    },
+    "g4": {
+     "correct": "interested",
+     "accept": [
+      "interested"
+     ],
+     "label": "4. Students are often ___",
+     "why": "The -ed participle describes how people feel: students are interested."
+    },
+    "g5": {
+     "correct": "surprising",
+     "accept": [
+      "surprising"
+     ],
+     "label": "5. Salk's decision was ___",
+     "why": "The -ing participle describes the thing causing the feeling: the decision was surprising."
+    },
+    "g6": {
+     "correct": "frightened",
+     "accept": [
+      "frightened"
+     ],
+     "label": "6. Children with polio were often ___",
+     "why": "The -ed participle describes how people felt: children were frightened."
+    },
+    "g7": {
+     "correct": "shocking",
+     "accept": [
+      "shocking"
+     ],
+     "label": "7. The growth of the internet has been ___",
+     "why": "The -ing participle describes the thing causing the feeling: the growth has been shocking."
+    },
+    "g8": {
+     "correct": "excited",
+     "accept": [
+      "excited"
+     ],
+     "label": "8. Many young people feel ___",
+     "why": "The -ed participle describes how people feel: young people feel excited."
+    }
+   }
+  }
+ }
+}

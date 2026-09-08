@@ -1,0 +1,145 @@
+{
+ "unit": "msa-c-work-experience",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "the third of March",
+     "accept": [
+      "the third of March"
+     ],
+     "label": "1. Placement begins on...",
+     "why": "The recording says the placement begins on Monday the third of March."
+    },
+    "g2": {
+     "correct": "two weeks",
+     "accept": [
+      "two weeks"
+     ],
+     "label": "2. The placement lasts...",
+     "why": "The recording says it is a two-week work-experience placement."
+    },
+    "g3": {
+     "correct": "careers office",
+     "accept": [
+      "careers office"
+     ],
+     "label": "3. Where to go if you have no company?",
+     "why": "The recording says to go to the careers office if you haven't found a company."
+    },
+    "g4": {
+     "correct": "diary",
+     "accept": [
+      "diary"
+     ],
+     "label": "4. What must students keep?",
+     "why": "The recording says students must keep a daily diary."
+    },
+    "g5": {
+     "correct": "report",
+     "accept": [
+      "report"
+     ],
+     "label": "5. What does the employer fill in?",
+     "why": "The recording says the employer fills in a short report at the end."
+    },
+    "g6": {
+     "correct": "car garage",
+     "accept": [
+      "car garage"
+     ],
+     "label": "6. Where is Leon going?",
+     "why": "The recording says Leon is going to work at a car garage."
+    },
+    "g7": {
+     "correct": "teacher",
+     "accept": [
+      "teacher"
+     ],
+     "label": "7. What does Sara want to become?",
+     "why": "The recording says Sara wants to be a teacher one day."
+    },
+    "g8": {
+     "correct": "school",
+     "accept": [
+      "school"
+     ],
+     "label": "8. Who else must be called if ill?",
+     "why": "The recording says if ill, students must phone both the company and the school."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Vet's Surgery",
+     "accept": [
+      "Vet's Surgery"
+     ],
+     "label": "1. Priya — loves animals, wants to be a vet",
+     "why": "The text says the Vet's Surgery placement involves caring for sick animals."
+    },
+    "g2": {
+     "correct": "Local Newspaper",
+     "accept": [
+      "Local Newspaper"
+     ],
+     "label": "2. Sam — writing and telling stories",
+     "why": "The text says the Local Newspaper placement involves writing short articles."
+    },
+    "g3": {
+     "correct": "IT Company",
+     "accept": [
+      "IT Company"
+     ],
+     "label": "3. Emma — computers and technology",
+     "why": "The text says the IT Company placement teaches about computers and networks."
+    },
+    "g4": {
+     "correct": "Garden Centre",
+     "accept": [
+      "Garden Centre"
+     ],
+     "label": "4. Jack — outside, working with plants",
+     "why": "The text says the Garden Centre placement involves working outdoors with plants."
+    },
+    "g5": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "5. Diary only at the end of two weeks",
+     "why": "The text says the diary must be kept up to date every single day."
+    },
+    "g6": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "6. Arrive ten minutes early",
+     "why": "The text confirms you should always arrive at least ten minutes early."
+    },
+    "g7": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "7. Trainers are allowed",
+     "why": "The text says to wear smart, tidy clothes — no trainers."
+    },
+    "g8": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "8. Phone company and school if ill",
+     "why": "The text confirms you must phone both the company and the school if ill."
+    }
+   }
+  }
+ }
+}

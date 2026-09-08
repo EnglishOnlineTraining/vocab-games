@@ -1,0 +1,183 @@
+{
+ "unit": "it-apprenticeships",
+ "sections": {
+  "exA": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "a1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. Lena spends two days per week...",
+     "why": "The text says Lena spends two days in class at vocational school."
+    },
+    "a2": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "2. Her main responsibility at work is...",
+     "why": "The text says Lena's main responsibility is first-level support."
+    },
+    "a3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. Tobias gives Lena feedback...",
+     "why": "The text says her mentor Tobias gives feedback every Friday."
+    },
+    "a4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. During the probation period...",
+     "why": "The text says both the company and Lena checked whether it was a good fit."
+    },
+    "a5": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "5. Lena is now preparing for...",
+     "why": "The text says Lena is now preparing for her intermediate exam."
+    },
+    "a6": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "6. Her advice to new apprentices?",
+     "why": "The text says Lena's advice is to ask questions."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "b1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. A dual ___ combines work and school",
+     "why": "A ‘dual apprenticeship’ combines practical work with vocational school."
+    },
+    "b2": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "2. An experienced colleague who guides you",
+     "why": "A ‘mentor’ is an experienced colleague who guides and supports you."
+    },
+    "b3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. The first months of employment",
+     "why": "The first months of employment are usually a probation period."
+    },
+    "b4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. Constructive ___ helps you improve",
+     "why": "Constructive feedback helps you understand what you can improve."
+    },
+    "b5": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "5. Keeping the ticket system updated is part of my ___",
+     "why": "This task is part of the trainee's job responsibility."
+    },
+    "b6": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "6. Both sides sign an employment ___",
+     "why": "Both sides sign an employment contract before starting."
+    },
+    "b7": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "7. Attending workshops is part of your ___",
+     "why": "Attending workshops and getting certificates is part of professional development."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "c1": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "1. An apprentice is someone ___ learns...",
+     "why": "‘Who’ introduces a relative clause about a person."
+    },
+    "c2": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "2. A mentor is a person ___ experience helps...",
+     "why": "‘Whose’ shows possession — the mentor's experience."
+    },
+    "c3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. A service desk is the place ___ requests arrive",
+     "why": "‘Where’ introduces a relative clause about a place."
+    },
+    "c4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. A ticket is a record ___ describes...",
+     "why": "‘That’ introduces a defining relative clause about a thing (a record)."
+    },
+    "c5": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "5. Probation is the period ___ performance is reviewed",
+     "why": "‘When’ introduces a relative clause about a time period."
+    },
+    "c6": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "6. A trainee ___ asks good questions...",
+     "why": "‘Who’ introduces a relative clause about a person."
+    },
+    "c7": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "7. The report ___ Lena wrote...",
+     "why": "‘Which’ introduces a defining relative clause about a thing (the report)."
+    }
+   }
+  }
+ }
+}

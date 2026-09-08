@@ -1,0 +1,163 @@
+{
+ "unit": "gr-modalverben",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "must",
+     "accept": [
+      "must"
+     ],
+     "label": "1 You"
+    },
+    "g2": {
+     "correct": "don’t have to",
+     "accept": [
+      "don’t have to"
+     ],
+     "label": "2 You"
+    },
+    "g3": {
+     "correct": "mustn’t",
+     "accept": [
+      "mustn’t"
+     ],
+     "label": "3 You"
+    },
+    "g4": {
+     "correct": "can",
+     "accept": [
+      "can"
+     ],
+     "label": "4 Visitors"
+    },
+    "g5": {
+     "correct": "should",
+     "accept": [
+      "should"
+     ],
+     "label": "5 Everyone"
+    },
+    "g6": {
+     "correct": "may",
+     "accept": [
+      "may"
+     ],
+     "label": "6 You"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "mustn’t",
+     "accept": [
+      "mustn’t"
+     ],
+     "label": "1 It’s forbidden — you"
+    },
+    "g2": {
+     "correct": "don’t have to",
+     "accept": [
+      "don’t have to"
+     ],
+     "label": "2 You"
+    },
+    "g3": {
+     "correct": "Can",
+     "accept": [
+      "Can"
+     ],
+     "label": "3"
+    },
+    "g4": {
+     "correct": "Could",
+     "accept": [
+      "Could"
+     ],
+     "label": "4"
+    },
+    "g5": {
+     "correct": "should",
+     "accept": [
+      "should"
+     ],
+     "label": "5 We"
+    },
+    "g6": {
+     "correct": "can’t",
+     "accept": [
+      "can’t"
+     ],
+     "label": "6 He"
+    },
+    "g7": {
+     "correct": "must",
+     "accept": [
+      "must"
+     ],
+     "label": "7 That cough sounds terrible — you"
+    },
+    "g8": {
+     "correct": "Shall",
+     "accept": [
+      "Shall"
+     ],
+     "label": "8"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "couldn’t",
+     "accept": [
+      "couldn’t"
+     ],
+     "label": "1 I"
+    },
+    "g2": {
+     "correct": "had to",
+     "accept": [
+      "had to"
+     ],
+     "label": "2 We"
+    },
+    "g3": {
+     "correct": "should have",
+     "accept": [
+      "should have"
+     ],
+     "label": "3 You"
+    },
+    "g4": {
+     "correct": "must have",
+     "accept": [
+      "must have"
+     ],
+     "label": "4 He’s not answering his phone — he"
+    },
+    "g5": {
+     "correct": "will have to",
+     "accept": [
+      "will have to"
+     ],
+     "label": "5 Next year, we"
+    },
+    "g6": {
+     "correct": "was able to",
+     "accept": [
+      "was able to"
+     ],
+     "label": "6 She"
+    }
+   }
+  }
+ }
+}

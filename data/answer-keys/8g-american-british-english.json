@@ -1,0 +1,215 @@
+{
+ "unit": "8g-american-british-english",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "flat",
+     "accept": [
+      "flat"
+     ],
+     "label": "1. apartment",
+     "why": "In British English, an apartment is called a ‘flat’."
+    },
+    "g2": {
+     "correct": "lift",
+     "accept": [
+      "lift"
+     ],
+     "label": "2. elevator",
+     "why": "In British English, an elevator is called a ‘lift’."
+    },
+    "g3": {
+     "correct": "pavement",
+     "accept": [
+      "pavement"
+     ],
+     "label": "3. sidewalk",
+     "why": "In British English, a sidewalk is called the ‘pavement’."
+    },
+    "g4": {
+     "correct": "biscuit",
+     "accept": [
+      "biscuit"
+     ],
+     "label": "4. cookie",
+     "why": "In British English, a cookie is called a ‘biscuit’."
+    },
+    "g5": {
+     "correct": "boot",
+     "accept": [
+      "boot"
+     ],
+     "label": "5. trunk (of a car)",
+     "why": "In British English, the trunk of a car is called the ‘boot’."
+    },
+    "g6": {
+     "correct": "chips",
+     "accept": [
+      "chips"
+     ],
+     "label": "6. french fries",
+     "why": "In British English, french fries are called ‘chips’."
+    },
+    "g7": {
+     "correct": "petrol",
+     "accept": [
+      "petrol"
+     ],
+     "label": "7. gas (fuel)",
+     "why": "In British English, gas (fuel) is called ‘petrol’."
+    },
+    "g8": {
+     "correct": "holiday",
+     "accept": [
+      "holiday"
+     ],
+     "label": "8. vacation",
+     "why": "In British English, a vacation is called a ‘holiday’."
+    },
+    "g9": {
+     "correct": "sweets",
+     "accept": [
+      "sweets"
+     ],
+     "label": "9. candy",
+     "why": "In British English, candy is called ‘sweets’."
+    },
+    "g10": {
+     "correct": "mobile phone",
+     "accept": [
+      "mobile phone"
+     ],
+     "label": "10. cell phone",
+     "why": "In British English, a cell phone is called a ‘mobile phone’."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "colour",
+     "accept": [
+      "colour"
+     ],
+     "label": "1. The ___ of the house was lovely",
+     "why": "British English keeps the ‘-our’ ending: colour (American: color)."
+    },
+    "g2": {
+     "correct": "centre",
+     "accept": [
+      "centre"
+     ],
+     "label": "2. The city ___",
+     "why": "British English uses ‘-re’ at the end: centre (American: center)."
+    },
+    "g3": {
+     "correct": "organise",
+     "accept": [
+      "organise"
+     ],
+     "label": "3. ___ my room",
+     "why": "British English commonly uses ‘-ise’ endings: organise (American: organize)."
+    },
+    "g4": {
+     "correct": "neighbour",
+     "accept": [
+      "neighbour"
+     ],
+     "label": "4. My favourite ___",
+     "why": "British English keeps the ‘-our’ ending: neighbour (American: neighbor)."
+    },
+    "g5": {
+     "correct": "programme",
+     "accept": [
+      "programme"
+     ],
+     "label": "5. The ___ was exciting",
+     "why": "British English uses ‘programme’ for a TV or radio show (American: program)."
+    },
+    "g6": {
+     "correct": "realise",
+     "accept": [
+      "realise"
+     ],
+     "label": "6. I didn't ___ how late it was",
+     "why": "British English commonly uses ‘-ise’ endings: realise (American: realize)."
+    },
+    "g7": {
+     "correct": "apologise",
+     "accept": [
+      "apologise"
+     ],
+     "label": "7. She had to ___ for being late",
+     "why": "British English commonly uses ‘-ise’ endings: apologise (American: apologize)."
+    },
+    "g8": {
+     "correct": "flavour",
+     "accept": [
+      "flavour"
+     ],
+     "label": "8. The ___ of chocolate",
+     "why": "British English keeps the ‘-our’ ending: flavour (American: flavor)."
+    }
+   }
+  },
+  "exD": {
+   "prefix": "exD-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "sidewalk",
+     "accept": [
+      "sidewalk"
+     ],
+     "label": "1. Americans call a ___",
+     "why": "The text compares the American word ‘sidewalk’ with the British ‘pavement’."
+    },
+    "g2": {
+     "correct": "vacation",
+     "accept": [
+      "vacation"
+     ],
+     "label": "2. An American goes on ___",
+     "why": "The text compares an American ‘vacation’ with the British ‘holiday’."
+    },
+    "g3": {
+     "correct": "colour",
+     "accept": [
+      "colour"
+     ],
+     "label": "3. The British write ___",
+     "why": "British spelling keeps the ‘-our’ ending: colour, while Americans write ‘color’."
+    },
+    "g4": {
+     "correct": "center",
+     "accept": [
+      "center"
+     ],
+     "label": "4. Americans spell it ___",
+     "why": "American spelling drops the ‘-re’ ending and uses ‘-er’: center."
+    },
+    "g5": {
+     "correct": "contractions",
+     "accept": [
+      "contractions"
+     ],
+     "label": "5. Formal writing avoids ___",
+     "why": "‘Don’t’ and ‘can’t’ are contractions, which should be avoided in formal writing."
+    },
+    "g6": {
+     "correct": "phrasal verbs",
+     "accept": [
+      "phrasal verbs"
+     ],
+     "label": "6. Informal language often uses ___",
+     "why": "‘Find out’ is a phrasal verb, common in informal English instead of formal words like ‘discover’."
+    }
+   }
+  }
+ }
+}

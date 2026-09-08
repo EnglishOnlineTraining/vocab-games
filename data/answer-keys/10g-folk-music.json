@@ -1,0 +1,215 @@
+{
+ "unit": "10g-folk-music",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "generation",
+     "accept": [
+      "generation"
+     ],
+     "label": "1. Passed down from ___ to generation",
+     "why": "The text says folk songs were passed down from generation to generation."
+    },
+    "g2": {
+     "correct": "ordinary",
+     "accept": [
+      "ordinary"
+     ],
+     "label": "2. Told stories of ___ life",
+     "why": "The text says folk songs often told stories of ordinary life."
+    },
+    "g3": {
+     "correct": "bagpipes",
+     "accept": [
+      "bagpipes"
+     ],
+     "label": "3. A Celtic folk instrument",
+     "why": "The text names the bagpipes as a distinctive Celtic folk instrument."
+    },
+    "g4": {
+     "correct": "pub",
+     "accept": [
+      "pub"
+     ],
+     "label": "4. Often played in a crowded ___",
+     "why": "The text says folk music is often played in a small, crowded pub."
+    },
+    "g5": {
+     "correct": "modern",
+     "accept": [
+      "modern"
+     ],
+     "label": "5. Modern bands combine folk with a more ___ sound",
+     "why": "The text says modern bands combine folk with a more modern sound."
+    },
+    "g6": {
+     "correct": "lyrics",
+     "accept": [
+      "lyrics"
+     ],
+     "label": "6. Focus on honest ___",
+     "why": "The text says folk-inspired music keeps its focus on honest lyrics."
+    },
+    "g7": {
+     "correct": "real",
+     "accept": [
+      "real"
+     ],
+     "label": "7. Some argue folk-inspired pop is not ___ folk music",
+     "why": "The text says some argue folk-inspired pop is not real folk music."
+    },
+    "g8": {
+     "correct": "alive",
+     "accept": [
+      "alive"
+     ],
+     "label": "8. Both sides agree the tradition is ___",
+     "why": "The text says both sides agree the folk tradition is alive."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "oldest",
+     "accept": [
+      "oldest"
+     ],
+     "label": "1. One of the ___ forms of music (old)",
+     "why": "‘One of the ___’ always takes the superlative form: oldest."
+    },
+    "g2": {
+     "correct": "more polished",
+     "accept": [
+      "more polished"
+     ],
+     "label": "2. Pop is often ___ than folk (polished)",
+     "why": "Longer adjectives like ‘polished’ form the comparative with ‘more’."
+    },
+    "g3": {
+     "correct": "smaller",
+     "accept": [
+      "smaller"
+     ],
+     "label": "3. A pub is ___ than a hall (small)",
+     "why": "Short adjectives like ‘small’ form the comparative by adding ‘-er’."
+    },
+    "g4": {
+     "correct": "louder",
+     "accept": [
+      "louder"
+     ],
+     "label": "4. The bagpipes are ___ than the fiddle (loud)",
+     "why": "Short adjectives like ‘loud’ form the comparative by adding ‘-er’."
+    },
+    "g5": {
+     "correct": "best",
+     "accept": [
+      "best"
+     ],
+     "label": "5. The ___ song on the album (good)",
+     "why": "‘Good’ is irregular: its superlative form is ‘best’."
+    },
+    "g6": {
+     "correct": "more commercial",
+     "accept": [
+      "more commercial"
+     ],
+     "label": "6. Modern folk is ___ than traditional (commercial)",
+     "why": "Longer adjectives like ‘commercial’ form the comparative with ‘more’."
+    },
+    "g7": {
+     "correct": "most famous",
+     "accept": [
+      "most famous"
+     ],
+     "label": "7. One of the ___ singers (famous)",
+     "why": "‘One of the ___’ always takes the superlative form, and longer adjectives use ‘most’."
+    },
+    "g8": {
+     "correct": "more authentic",
+     "accept": [
+      "more authentic"
+     ],
+     "label": "8. Live folk feels ___ than a recording (authentic)",
+     "why": "Longer adjectives like ‘authentic’ form the comparative with ‘more’."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "as grand as",
+     "accept": [
+      "as grand as"
+     ],
+     "label": "1. A pub is not ___ a concert hall",
+     "why": "The negative equative structure is ‘not as + adjective + as’."
+    },
+    "g2": {
+     "correct": "Whereas",
+     "accept": [
+      "Whereas"
+     ],
+     "label": "2. ___ classical music is formal, folk is relaxed",
+     "why": "‘Whereas’ introduces a direct contrast between two clauses."
+    },
+    "g3": {
+     "correct": "Both",
+     "accept": [
+      "Both"
+     ],
+     "label": "3. ___ Mumford & Sons and Ed Sheeran use folk sounds",
+     "why": "‘Both X and Y’ links two similar subjects."
+    },
+    "g4": {
+     "correct": "Unlike",
+     "accept": [
+      "Unlike"
+     ],
+     "label": "4. ___ pop songs, folk songs have no known writer",
+     "why": "‘Unlike’ + noun introduces a contrast at the start of a sentence."
+    },
+    "g5": {
+     "correct": "as",
+     "accept": [
+      "as"
+     ],
+     "label": "5. Folk is just ___ popular today as before",
+     "why": "The equative structure is ‘just as + adjective + as’."
+    },
+    "g6": {
+     "correct": "like",
+     "accept": [
+      "like"
+     ],
+     "label": "6. The fiddle, ___ the violin, has four strings",
+     "why": "‘Like’ + noun shows similarity between two things."
+    },
+    "g7": {
+     "correct": "Neither",
+     "accept": [
+      "Neither"
+     ],
+     "label": "7. ___ side wants the tradition to die",
+     "why": "‘Neither’ + singular noun + singular verb expresses ‘not one nor the other’."
+    },
+    "g8": {
+     "correct": "from",
+     "accept": [
+      "from"
+     ],
+     "label": "8. Folk is very different ___ commercial pop",
+     "why": "The fixed phrase is ‘different from’, not ‘different than’ in standard British English."
+    }
+   }
+  }
+ }
+}

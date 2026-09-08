@@ -1,0 +1,215 @@
+{
+ "unit": "9g-media-participle-clauses",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "website",
+     "accept": [
+      "website"
+     ],
+     "label": "1 — appear on a national ___",
+     "why": "A story appears on a website — a page on the internet."
+    },
+    "g2": {
+     "correct": "dangerous",
+     "accept": [
+      "dangerous"
+     ],
+     "label": "2 — facts from social media are ___",
+     "why": "Facts cannot be \"careful\"; the point is that they can cause harm."
+    },
+    "g3": {
+     "correct": "caption",
+     "accept": [
+      "caption"
+     ],
+     "label": "3 — a different ___",
+     "why": "A caption is the text printed under a photo."
+    },
+    "g4": {
+     "correct": "sources",
+     "accept": [
+      "sources"
+     ],
+     "label": "4 — two independent ___",
+     "why": "A source is where information comes from; sauces are for food."
+    },
+    "g5": {
+     "correct": "misunderstand",
+     "accept": [
+      "misunderstand"
+     ],
+     "label": "5 — readers often ___ the story",
+     "why": "The prefix mis- means wrongly: they understand the story wrongly."
+    },
+    "g6": {
+     "correct": "opened",
+     "accept": [
+      "opened"
+     ],
+     "label": "6 — articles they have never ___",
+     "why": "You open an article before you read it — that is what they skip."
+    },
+    "g7": {
+     "correct": "exaggerated",
+     "accept": [
+      "exaggerated"
+     ],
+     "label": "7 — nineteenth-century papers ___ too",
+     "why": "To exaggerate is to make something sound bigger than it was."
+    },
+    "g8": {
+     "correct": "correct",
+     "accept": [
+      "correct"
+     ],
+     "label": "8 — before anybody can ___ it",
+     "why": "To correct a story is to put the mistake right."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "writing",
+     "accept": [
+      "writing"
+     ],
+     "label": "1 — the reporter ___ the story",
+     "why": "The reporter does the writing, so the active -ing participle is used."
+    },
+    "g2": {
+     "correct": "confirmed",
+     "accept": [
+      "confirmed"
+     ],
+     "label": "2 — a story ___ by two sources",
+     "why": "The story receives the action (\"by two sources\"), so the -ed participle is used."
+    },
+    "g3": {
+     "correct": "sitting",
+     "accept": [
+      "sitting"
+     ],
+     "label": "3 — the students ___ in the library",
+     "why": "The students are doing the sitting themselves: -ing."
+    },
+    "g4": {
+     "correct": "posted",
+     "accept": [
+      "posted"
+     ],
+     "label": "4 — photos ___ on social media",
+     "why": "Somebody posts the photos, so the photos take the passive -ed participle."
+    },
+    "g5": {
+     "correct": "reporting",
+     "accept": [
+      "reporting"
+     ],
+     "label": "5 — the journalist ___ from Delhi",
+     "why": "The journalist does the reporting: active -ing."
+    },
+    "g6": {
+     "correct": "written",
+     "accept": [
+      "written"
+     ],
+     "label": "6 — a headline ___ in a hurry",
+     "why": "The headline is written by somebody, so use the past participle."
+    },
+    "g7": {
+     "correct": "looking",
+     "accept": [
+      "looking"
+     ],
+     "label": "7 — anybody ___ for a second source",
+     "why": "\"Anybody looking for...\" = anybody who looks for: active -ing."
+    },
+    "g8": {
+     "correct": "made",
+     "accept": [
+      "made"
+     ],
+     "label": "8 — the documentary ___ last year",
+     "why": "The documentary was made by somebody: past participle."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "standing",
+     "accept": [
+      "standing"
+     ],
+     "label": "1 — the man ___ at the door",
+     "why": "\"who is standing\" shortens to \"standing\" — drop the relative pronoun and the form of be."
+    },
+    "g2": {
+     "correct": "published",
+     "accept": [
+      "published"
+     ],
+     "label": "2 — the article ___ yesterday",
+     "why": "\"which was published\" shortens to the past participle \"published\"."
+    },
+    "g3": {
+     "correct": "using",
+     "accept": [
+      "using"
+     ],
+     "label": "3 — people ___ only one source",
+     "why": "\"who use\" becomes the -ing participle \"using\" because the people do the action."
+    },
+    "g4": {
+     "correct": "taken",
+     "accept": [
+      "taken"
+     ],
+     "label": "4 — the photo ___ in 2019",
+     "why": "\"that was taken\" shortens to \"taken\" — the photo receives the action."
+    },
+    "g5": {
+     "correct": "had checked",
+     "accept": [
+      "had checked"
+     ],
+     "label": "5 — the editor said they ___ every fact (reported speech)",
+     "why": "After a past reporting verb the present perfect or past goes one step back — from the Great Barrier Reef unit."
+    },
+    "g6": {
+     "correct": "read",
+     "accept": [
+      "read"
+     ],
+     "label": "6 — if people ___ the whole article (2nd conditional)",
+     "why": "The second conditional is if + simple past with \"would\" in the other half — from the Canada conditionals unit."
+    },
+    "g7": {
+     "correct": "Not knowing",
+     "accept": [
+      "Not knowing"
+     ],
+     "label": "7 — ___ where the picture came from",
+     "why": "The editor does the not-knowing, so the active participle starts the clause."
+    },
+    "g8": {
+     "correct": "Watched",
+     "accept": [
+      "Watched"
+     ],
+     "label": "8 — ___ by millions of people",
+     "why": "The video receives the watching, so the past participle opens the clause."
+    }
+   }
+  }
+ }
+}

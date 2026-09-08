@@ -1,0 +1,183 @@
+{
+ "unit": "it-ai-industry4",
+ "sections": {
+  "exA": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "a1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. From January, invoices...",
+     "why": "The text says invoices will be processed automatically by a document-recognition system from January."
+    },
+    "a2": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "2. Accounting employees will...",
+     "why": "The text says employees will spend less time on data entry and more time checking unusual cases."
+    },
+    "a3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. Complex HR requests will be handled by...",
+     "why": "The text says complex requests will still be handled by real people."
+    },
+    "a4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. IoT sensor data will be used to...",
+     "why": "The text says the data will be used to predict failures before they happen."
+    },
+    "a5": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "5. Downtime is expected to fall by...",
+     "why": "The text says the CTO expects downtime to fall by 30 per cent."
+    },
+    "a6": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "6. The working group will review...",
+     "why": "The text says a working group will review data quality every quarter."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "b1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. Replacing manual tasks with machines/software",
+     "why": "‘Automation’ means replacing manual tasks with machines or software."
+    },
+    "b2": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "2. Connects devices and sensors to the internet",
+     "why": "‘IoT’ (Internet of Things) connects everyday devices and sensors to the internet."
+    },
+    "b3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. Systems learn patterns from data",
+     "why": "‘Machine learning’ is when systems learn patterns from data instead of following fixed rules."
+    },
+    "b4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. Answers customer questions in a chat window",
+     "why": "A ‘chatbot’ answers simple customer questions in a chat window."
+    },
+    "b5": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "5. Describes the fourth industrial revolution",
+     "why": "‘Industry 4.0’ describes the fourth industrial revolution."
+    },
+    "b6": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "6. Repairing machines before they break down",
+     "why": "‘Predictive maintenance’ means repairing machines before they break down."
+    },
+    "b7": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "7. Overlays digital information onto the real world",
+     "why": "‘Augmented reality’ overlays digital information onto the real world."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "c1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. Invoices ___ processed automatically",
+     "why": "The passive future ‘will be’ + past participle describes a planned future process."
+    },
+    "c2": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "2. The chatbot ___ to answer HR questions",
+     "why": "‘Is going to’ describes a planned future arrangement, matching the reading text."
+    },
+    "c3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. Experts believe downtime ___ fall",
+     "why": "‘Is likely to’ agrees with the singular subject ‘downtime’ and expresses a probable prediction."
+    },
+    "c4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. The server ___ crash soon!",
+     "why": "‘Is going to’ is used for a prediction based on present evidence (the error rates)."
+    },
+    "c5": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "5. I think AI ___ change our jobs",
+     "why": "‘Will’ is used for a personal opinion or prediction."
+    },
+    "c6": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "6. The sensors ___ installed by December",
+     "why": "‘Will have been’ + past participle is the future perfect passive, matching ‘by December’."
+    },
+    "c7": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "7. We ___ probably need new rules",
+     "why": "‘Will’ + adverb ‘probably’ expresses a prediction."
+    }
+   }
+  }
+ }
+}

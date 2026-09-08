@@ -1,0 +1,191 @@
+{
+ "unit": "9c-future-plans-school",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "certificate",
+     "accept": [
+      "certificate"
+     ],
+     "label": "Most students at a German Oberschule leave Year 10 with a school-leaving 1"
+    },
+    "g2": {
+     "correct": "school",
+     "accept": [
+      "school"
+     ],
+     "label": "…work in a company for three or four days a week and spend the other days at a vocational 2"
+    },
+    "g3": {
+     "correct": "college",
+     "accept": [
+      "college"
+     ],
+     "label": "Others stay in education and go on to a 3"
+    },
+    "g4": {
+     "correct": "fair",
+     "accept": [
+      "fair"
+     ],
+     "label": "Before they decide, most students go to a careers 4"
+    },
+    "g5": {
+     "correct": "tests",
+     "accept": [
+      "tests"
+     ],
+     "label": "…ocal companies present their training programmes. The employment agency also offers free 5"
+    },
+    "g6": {
+     "correct": "gap",
+     "accept": [
+      "gap"
+     ],
+     "label": "…knows what they want at sixteen, and that is completely normal. Some young people take a 6"
+    },
+    "g7": {
+     "correct": "life",
+     "accept": [
+      "life"
+     ],
+     "label": "One thing is certain: nobody has to stay in the same job for their whole 7"
+    },
+    "g8": {
+     "correct": "questions",
+     "accept": [
+      "questions"
+     ],
+     "label": "…me job for their whole 7 — choose — lift light life . The most important thing is to ask 8"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "is going to",
+     "accept": [
+      "is going to"
+     ],
+     "label": "1. Look at those dark clouds — it"
+    },
+    "g2": {
+     "correct": "will",
+     "accept": [
+      "will"
+     ],
+     "label": "2. “The phone is ringing!” — “Don't get up, I"
+    },
+    "g3": {
+     "correct": "is flying",
+     "accept": [
+      "is flying"
+     ],
+     "label": "3. She has already booked the ticket: she"
+    },
+    "g4": {
+     "correct": "will",
+     "accept": [
+      "will"
+     ],
+     "label": "4. I think robots"
+    },
+    "g5": {
+     "correct": "are going to",
+     "accept": [
+      "are going to"
+     ],
+     "label": "5. We've already registered, so we"
+    },
+    "g6": {
+     "correct": "leaves",
+     "accept": [
+      "leaves"
+     ],
+     "label": "6. My train"
+    },
+    "g7": {
+     "correct": "Will",
+     "accept": [
+      "Will"
+     ],
+     "label": "7."
+    },
+    "g8": {
+     "correct": "won't",
+     "accept": [
+      "won't"
+     ],
+     "label": "8. He hasn't studied at all, so he"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "get",
+     "accept": [
+      "get"
+     ],
+     "label": "1. I'll call you when I"
+    },
+    "g2": {
+     "correct": "receives",
+     "accept": [
+      "receives"
+     ],
+     "label": "2. As soon as she"
+    },
+    "g3": {
+     "correct": "is",
+     "accept": [
+      "is"
+     ],
+     "label": "3. We won't start until everybody"
+    },
+    "g4": {
+     "correct": "begins",
+     "accept": [
+      "begins"
+     ],
+     "label": "4. Before he"
+    },
+    "g5": {
+     "correct": "will",
+     "accept": [
+      "will"
+     ],
+     "label": "5. After I finish school, I"
+    },
+    "g6": {
+     "correct": "is",
+     "accept": [
+      "is"
+     ],
+     "label": "6. If the course"
+    },
+    "g7": {
+     "correct": "enters",
+     "accept": [
+      "enters"
+     ],
+     "label": "7. She'll be nervous when she"
+    },
+    "g8": {
+     "correct": "will",
+     "accept": [
+      "will"
+     ],
+     "label": "8. I"
+    }
+   }
+  }
+ }
+}

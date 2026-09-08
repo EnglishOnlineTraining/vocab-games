@@ -1,0 +1,145 @@
+{
+ "unit": "8g-advertisements",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "persuade",
+     "accept": [
+      "persuade"
+     ],
+     "label": "1. Spend billions to ___ us",
+     "why": "The text says companies want to persuade us to buy their products, not forget or ignore us."
+    },
+    "g2": {
+     "correct": "attention",
+     "accept": [
+      "attention"
+     ],
+     "label": "2. Grabs your ___",
+     "why": "The text says a good advert grabs your attention immediately."
+    },
+    "g3": {
+     "correct": "slogan",
+     "accept": [
+      "slogan"
+     ],
+     "label": "3. A catchy ___",
+     "why": "‘Catchy slogan’ is the fixed phrase describing a memorable advertising line."
+    },
+    "g4": {
+     "correct": "celebrities",
+     "accept": [
+      "celebrities"
+     ],
+     "label": "4. Famous people, or ___",
+     "why": "The text says adverts use famous people, i.e. celebrities, whose products we trust."
+    },
+    "g5": {
+     "correct": "offers",
+     "accept": [
+      "offers"
+     ],
+     "label": "5. Special ___",
+     "why": "‘Special offers’ (like buy one get one free) is the fixed advertising phrase."
+    },
+    "g6": {
+     "correct": "new",
+     "accept": [
+      "new"
+     ],
+     "label": "6. \"Brand ___\"",
+     "why": "‘Brand new’ is the fixed advertising phrase, not ‘brand old’ or ‘brand broken’."
+    },
+    "g7": {
+     "correct": "edition",
+     "accept": [
+      "edition"
+     ],
+     "label": "7. \"Limited ___\"",
+     "why": "‘Limited edition’ is the fixed advertising phrase making a product sound rare."
+    },
+    "g8": {
+     "correct": "need",
+     "accept": [
+      "need"
+     ],
+     "label": "8. We ___ something we never wanted",
+     "why": "The text says adverts make us feel we need things, not hate or lose them."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Discover",
+     "accept": [
+      "Discover"
+     ],
+     "label": "1. \"___ our brand new range!\"",
+     "why": "Adverts use the imperative (command) form, so the base verb ‘Discover’ is used."
+    },
+    "g2": {
+     "correct": "best",
+     "accept": [
+      "best"
+     ],
+     "label": "2. \"The ___ pizza in town!\"",
+     "why": "‘The’ + superlative ‘best’ makes the strongest claim, not the comparative ‘better’."
+    },
+    "g3": {
+     "correct": "miss",
+     "accept": [
+      "miss"
+     ],
+     "label": "3. \"Don't ___ this deal!\"",
+     "why": "Negative imperatives use ‘Don’t’ + the base verb: ‘Don’t miss’."
+    },
+    "g4": {
+     "correct": "Try",
+     "accept": [
+      "Try"
+     ],
+     "label": "4. \"___ it now!\"",
+     "why": "Adverts use the imperative (command) form, so the base verb ‘Try’ is used."
+    },
+    "g5": {
+     "correct": "amazing",
+     "accept": [
+      "amazing"
+     ],
+     "label": "5. \"An ___ new taste!\"",
+     "why": "An adjective is needed before the noun, so the -ing adjective ‘amazing’ is used, not the verb ‘amaze’."
+    },
+    "g6": {
+     "correct": "limited",
+     "accept": [
+      "limited"
+     ],
+     "label": "6. \"This is a ___ offer!\"",
+     "why": "‘Limited offer’ is the fixed phrase for a short-time deal."
+    },
+    "g7": {
+     "correct": "free",
+     "accept": [
+      "free"
+     ],
+     "label": "7. \"Buy one, get one ___!\"",
+     "why": "‘Buy one, get one free’ is the fixed phrase for this kind of offer."
+    },
+    "g8": {
+     "correct": "new",
+     "accept": [
+      "new"
+     ],
+     "label": "8. \"Introducing our ___ design!\"",
+     "why": "Adverts promote new products, so ‘new’ fits the promotional tone, not ‘old’ or ‘broken’."
+    }
+   }
+  }
+ }
+}

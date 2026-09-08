@@ -1,0 +1,73 @@
+{
+ "unit": "business-what-is-management",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Planning, organizing, directing, and controlling",
+     "accept": [
+      "Planning, organizing, directing, and controlling"
+     ],
+     "label": "1. Four main functions of management?",
+     "why": "The text names planning, organizing, directing, and controlling as the four functions."
+    },
+    "g2": {
+     "correct": "To motivate and guide employees to perform effectively",
+     "accept": [
+      "To motivate and guide employees to perform effectively"
+     ],
+     "label": "2. Purpose of 'directing'?",
+     "why": "The text says directing is about motivating and guiding employees to perform effectively."
+    },
+    "g3": {
+     "correct": "Because it allows managers to monitor performance and make adjustments",
+     "accept": [
+      "Because it allows managers to monitor performance and make adjustments"
+     ],
+     "label": "3. Why is controlling important?",
+     "why": "The text says controlling means monitoring performance and making adjustments."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "objectives",
+     "accept": [
+      "objectives"
+     ],
+     "label": "1. Setting clear ___ is the first step",
+     "why": "The text says planning involves setting objectives."
+    },
+    "g2": {
+     "correct": "coordination",
+     "accept": [
+      "coordination"
+     ],
+     "label": "2. Good ___ ensures people and budgets work together",
+     "why": "The text says management is the process of coordinating people and resources."
+    },
+    "g3": {
+     "correct": "resources",
+     "accept": [
+      "resources"
+     ],
+     "label": "3. Managers must allocate ___ wisely",
+     "why": "The text says managers should use resources wisely."
+    },
+    "g4": {
+     "correct": "motivation",
+     "accept": [
+      "motivation"
+     ],
+     "label": "4. Employee ___ is crucial",
+     "why": "The text says directing is about motivating employees, which is crucial for productivity."
+    }
+   }
+  }
+ }
+}

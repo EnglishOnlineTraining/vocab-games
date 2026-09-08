@@ -1,0 +1,215 @@
+{
+ "unit": "10c-stereotypes",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "simplified",
+     "accept": [
+      "simplified"
+     ],
+     "label": "1. Stereotypes are ___",
+     "why": "The text says stereotypes are simplified ideas about a group of people."
+    },
+    "g2": {
+     "correct": "grain",
+     "accept": [
+      "grain"
+     ],
+     "label": "2. Stereotypes contain a ___ of truth",
+     "why": "The text uses the phrase ‘a grain of truth’ to describe stereotypes."
+    },
+    "g3": {
+     "correct": "families",
+     "accept": [
+      "families"
+     ],
+     "label": "3. Children pick up stereotypes from ___",
+     "why": "The text says children often pick up stereotypes from their families."
+    },
+    "g4": {
+     "correct": "ancestors",
+     "accept": [
+      "ancestors"
+     ],
+     "label": "4. Indigenous peoples portrayed as ___",
+     "why": "The text says indigenous peoples are sometimes portrayed only as figures from the past, like ancestors."
+    },
+    "g5": {
+     "correct": "bullying",
+     "accept": [
+      "bullying"
+     ],
+     "label": "5. Stereotypes can lead to ___",
+     "why": "The text says stereotypes in schools can lead to bullying."
+    },
+    "g6": {
+     "correct": "fewer",
+     "accept": [
+      "fewer"
+     ],
+     "label": "6. Applicants with foreign names got ___ interviews",
+     "why": "The text says research showed applicants with foreign-sounding names received fewer interviews."
+    },
+    "g7": {
+     "correct": "travel",
+     "accept": [
+      "travel"
+     ],
+     "label": "7. One way to challenge stereotypes is ___",
+     "why": "The text says one way to challenge stereotypes is to travel and meet people directly."
+    },
+    "g8": {
+     "correct": "experience",
+     "accept": [
+      "experience"
+     ],
+     "label": "8. Exchange programmes let young people ___",
+     "why": "The text says exchange programmes let young people experience other cultures directly."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "are often reinforced",
+     "accept": [
+      "are often reinforced"
+     ],
+     "label": "1. Stereotypes ___ by films and TV",
+     "why": "‘Stereotypes’ is plural, so the passive uses ‘are often reinforced’."
+    },
+    "g2": {
+     "correct": "is being taught",
+     "accept": [
+      "is being taught"
+     ],
+     "label": "2. Cultural awareness ___ right now",
+     "why": "‘Right now’ signals an action in progress, so the present continuous passive is used."
+    },
+    "g3": {
+     "correct": "were bullied",
+     "accept": [
+      "were bullied"
+     ],
+     "label": "3. Students ___ last year",
+     "why": "‘Last year’ is a specific past time, so the simple past passive ‘were bullied’ is used."
+    },
+    "g4": {
+     "correct": "should not be judged",
+     "accept": [
+      "should not be judged"
+     ],
+     "label": "4. People ___ based on stereotypes alone",
+     "why": "‘Should’ + passive expresses a recommendation about how people ought to be treated."
+    },
+    "g5": {
+     "correct": "was organised",
+     "accept": [
+      "was organised"
+     ],
+     "label": "5. The exchange programme ___ in 2023",
+     "why": "‘In 2023’ is a specific past time, so the simple past passive ‘was organised’ is used."
+    },
+    "g6": {
+     "correct": "have been spread",
+     "accept": [
+      "have been spread"
+     ],
+     "label": "6. False assumptions ___ over decades",
+     "why": "‘Over the past decades’ signals a duration up to now, so the present perfect passive is used."
+    },
+    "g7": {
+     "correct": "are being discussed",
+     "accept": [
+      "are being discussed"
+     ],
+     "label": "7. New laws ___ right now",
+     "why": "‘Right now’ signals an action in progress, so the present continuous passive is used."
+    },
+    "g8": {
+     "correct": "are sometimes rejected",
+     "accept": [
+      "are sometimes rejected"
+     ],
+     "label": "8. Applicants ___ because of bias",
+     "why": "‘Applicants’ is plural, so the passive uses ‘are sometimes rejected’."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "had offered",
+     "accept": [
+      "had offered"
+     ],
+     "label": "1. If the school ___ a course...",
+     "why": "Type III conditionals use the past perfect after ‘if’, paired with ‘would have’."
+    },
+    "g2": {
+     "correct": "would have discovered",
+     "accept": [
+      "would have discovered"
+     ],
+     "label": "2. ...she ___ that her stereotypes were wrong",
+     "why": "The Type III result clause uses ‘would have’ + past participle."
+    },
+    "g3": {
+     "correct": "would not have rejected",
+     "accept": [
+      "would not have rejected"
+     ],
+     "label": "3. The company ___ the applicant",
+     "why": "The Type III result clause uses ‘would (not) have’ + past participle."
+    },
+    "g4": {
+     "correct": "had shown",
+     "accept": [
+      "had shown"
+     ],
+     "label": "4. If the film ___ a balanced picture...",
+     "why": "Type III conditionals use the past perfect after ‘if’."
+    },
+    "g5": {
+     "correct": "would have realised",
+     "accept": [
+      "would have realised"
+     ],
+     "label": "5. ...he ___ that his assumptions were wrong",
+     "why": "The Type III result clause uses ‘would have’ + past participle."
+    },
+    "g6": {
+     "correct": "would have understood",
+     "accept": [
+      "would have understood"
+     ],
+     "label": "6. The class ___ the problem better",
+     "why": "The Type III result clause uses ‘would have’ + past participle."
+    },
+    "g7": {
+     "correct": "had checked",
+     "accept": [
+      "had checked"
+     ],
+     "label": "7. If the journalist ___ the facts...",
+     "why": "Type III conditionals use the past perfect after ‘if’."
+    },
+    "g8": {
+     "correct": "would have learned",
+     "accept": [
+      "would have learned"
+     ],
+     "label": "8. ...we ___ much more about their cultures",
+     "why": "The Type III result clause uses ‘would have’ + past participle."
+    }
+   }
+  }
+ }
+}

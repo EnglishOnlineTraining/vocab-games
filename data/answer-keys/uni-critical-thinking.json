@@ -1,0 +1,177 @@
+{
+ "unit": "uni-critical-thinking",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "peer-reviewed",
+     "accept": [
+      "peer-reviewed"
+     ],
+     "label": "1. Checked and approved by independent experts",
+     "why": "‘Peer-reviewed’ describes a publication checked by independent experts in the field."
+    },
+    "g2": {
+     "correct": "bias",
+     "accept": [
+      "bias"
+     ],
+     "label": "2. Personal opinions/interests influence findings",
+     "why": "‘Bias’ is when personal opinions or interests influence a study's findings."
+    },
+    "g3": {
+     "correct": "anecdotal",
+     "accept": [
+      "anecdotal"
+     ],
+     "label": "3. Personal stories rather than systematic research",
+     "why": "‘Anecdotal’ evidence is based on personal stories rather than systematic research."
+    },
+    "g4": {
+     "correct": "methodology",
+     "accept": [
+      "methodology"
+     ],
+     "label": "4. The detailed plan of how a study was conducted",
+     "why": "The ‘methodology’ is the detailed plan of how a study was conducted."
+    },
+    "g5": {
+     "correct": "Empirical",
+     "accept": [
+      "Empirical"
+     ],
+     "label": "5. Gathered through observation, experiments, measurement",
+     "why": "‘Empirical’ evidence is gathered through direct observation or experiment."
+    },
+    "g6": {
+     "correct": "corroborate",
+     "accept": [
+      "corroborate"
+     ],
+     "label": "6. A second study supports the first's conclusion",
+     "why": "‘Corroborate’ means to support or confirm another study's findings."
+    },
+    "g7": {
+     "correct": "credible",
+     "accept": [
+      "credible"
+     ],
+     "label": "7. Trustworthy, evidence-supported source",
+     "why": "A source is ‘credible’ when it is trustworthy and supported by evidence."
+    },
+    "g8": {
+     "correct": "plagiarism",
+     "accept": [
+      "plagiarism"
+     ],
+     "label": "8. Presenting others' words/ideas as your own",
+     "why": "‘Plagiarism’ is presenting someone else's words or ideas as your own without acknowledgement."
+    },
+    "g9": {
+     "correct": "citation",
+     "accept": [
+      "citation"
+     ],
+     "label": "9. A formal reference to a source",
+     "why": "A ‘citation’ is a formal reference to a source used in your work."
+    },
+    "g10": {
+     "correct": "objective",
+     "accept": [
+      "objective"
+     ],
+     "label": "10. Presents facts without personal feelings",
+     "why": "An ‘objective’ analysis presents facts without being influenced by personal feelings."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "highly reliable",
+     "accept": [
+      "highly reliable"
+     ],
+     "label": "1. Large peer-reviewed journal study — reliability?",
+     "why": "A large peer-reviewed study from multiple universities is highly reliable."
+    },
+    "g2": {
+     "correct": "peer-reviewed, large sample, expert authors",
+     "accept": [
+      "peer-reviewed, large sample, expert authors"
+     ],
+     "label": "2. Why is it reliable?",
+     "why": "These features (peer review, large sample, expert authors) make a source highly reliable."
+    },
+    "g3": {
+     "correct": "unreliable",
+     "accept": [
+      "unreliable"
+     ],
+     "label": "3. Blog by 'a health enthusiast' — reliability?",
+     "why": "A source with no named expert and no scientific references is unreliable."
+    },
+    "g4": {
+     "correct": "no expert author, commercial purpose, no evidence cited",
+     "accept": [
+      "no expert author, commercial purpose, no evidence cited"
+     ],
+     "label": "4. Why is it unreliable?",
+     "why": "Lacking expert authorship and evidence, with a commercial angle, makes a source unreliable."
+    },
+    "g5": {
+     "correct": "somewhat reliable",
+     "accept": [
+      "somewhat reliable"
+     ],
+     "label": "5. Wikipedia-style source, referenced and current — reliability?",
+     "why": "A well-referenced but editable source is somewhat, not fully, reliable."
+    },
+    "g6": {
+     "correct": "well-referenced and current but anyone can edit it",
+     "accept": [
+      "well-referenced and current but anyone can edit it"
+     ],
+     "label": "6. Why only somewhat reliable?",
+     "why": "Good references and currency are offset by the fact anyone can edit the content."
+    },
+    "g7": {
+     "correct": "highly reliable",
+     "accept": [
+      "highly reliable"
+     ],
+     "label": "7. Government statistics office data — reliability?",
+     "why": "An official government statistics source is highly reliable."
+    },
+    "g8": {
+     "correct": "authoritative source with transparent data but may be outdated for current trends",
+     "accept": [
+      "authoritative source with transparent data but may be outdated for current trends"
+     ],
+     "label": "8. Why is it highly reliable?",
+     "why": "Government data is authoritative and transparent, though it may not reflect the very latest trends."
+    },
+    "g9": {
+     "correct": "unreliable",
+     "accept": [
+      "unreliable"
+     ],
+     "label": "9. YouTube video, 2.3M views, no named study — reliability?",
+     "why": "A popular video with no verifiable source behind its claims is unreliable."
+    },
+    "g10": {
+     "correct": "no verifiable evidence, unqualified source, exaggerated claim",
+     "accept": [
+      "no verifiable evidence, unqualified source, exaggerated claim"
+     ],
+     "label": "10. Why is it unreliable?",
+     "why": "Without verifiable evidence or a qualified source, a popular claim is still unreliable."
+    }
+   }
+  }
+ }
+}

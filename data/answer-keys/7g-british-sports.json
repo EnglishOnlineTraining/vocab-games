@@ -1,0 +1,129 @@
+{
+ "unit": "7g-british-sports",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "1863",
+     "accept": [
+      "1863"
+     ],
+     "label": "1. First official football rules",
+     "why": "The Football Association wrote the first official rules in 1863."
+    },
+    "g2": {
+     "correct": "Sheffield F.C.",
+     "accept": [
+      "Sheffield F.C."
+     ],
+     "label": "2. Oldest football club in the world",
+     "why": "Sheffield F.C., founded in 1857, is recognised as the world’s oldest football club."
+    },
+    "g3": {
+     "correct": "William Webb Ellis",
+     "accept": [
+      "William Webb Ellis"
+     ],
+     "label": "3. The Rugby World Cup trophy is named after",
+     "why": "It is named after William Webb Ellis, the Rugby School pupil said to have first picked up the ball."
+    },
+    "g4": {
+     "correct": "up to five days",
+     "accept": [
+      "up to five days"
+     ],
+     "label": "4. How long a cricket match can last",
+     "why": "A Test match is the longest form of cricket and can run to five days."
+    },
+    "g5": {
+     "correct": "strawberries and cream",
+     "accept": [
+      "strawberries and cream"
+     ],
+     "label": "5. Traditional Wimbledon food",
+     "why": "Strawberries and cream is the traditional food eaten at Wimbledon."
+    },
+    "g6": {
+     "correct": "1877",
+     "accept": [
+      "1877"
+     ],
+     "label": "6. First Wimbledon Championship",
+     "why": "The first Wimbledon Championship was played in 1877."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "pitch",
+     "accept": [
+      "pitch"
+     ],
+     "label": "1. Football is played on a ___",
+     "why": "Football is played on a pitch; a court is for tennis or basketball."
+    },
+    "g2": {
+     "correct": "court",
+     "accept": [
+      "court"
+     ],
+     "label": "2. Tennis is played on a ___",
+     "why": "Tennis is played on a court, not a pitch."
+    },
+    "g3": {
+     "correct": "team",
+     "accept": [
+      "team"
+     ],
+     "label": "3. A group of players together",
+     "why": "A team is the group of players who play together."
+    },
+    "g4": {
+     "correct": "referee",
+     "accept": [
+      "referee"
+     ],
+     "label": "4. The person who enforces the rules",
+     "why": "The referee makes sure the players follow the rules."
+    },
+    "g5": {
+     "correct": "score",
+     "accept": [
+      "score"
+     ],
+     "label": "5. When a player gets a goal they ___",
+     "why": "To score means to get a goal or a point."
+    },
+    "g6": {
+     "correct": "match",
+     "accept": [
+      "match"
+     ],
+     "label": "6. A single game between two teams",
+     "why": "A match is one single game between two teams."
+    },
+    "g7": {
+     "correct": "trophy",
+     "accept": [
+      "trophy"
+     ],
+     "label": "7. The winners receive a ___",
+     "why": "The trophy is the cup or prize the winning team receives."
+    },
+    "g8": {
+     "correct": "tournament",
+     "accept": [
+      "tournament"
+     ],
+     "label": "8. Wimbledon is a famous tennis ___",
+     "why": "A tournament is a whole series of matches, not just one."
+    }
+   }
+  }
+ }
+}

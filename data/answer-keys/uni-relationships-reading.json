@@ -1,0 +1,75 @@
+{
+ "unit": "uni-relationships-reading",
+ "sections": {
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "m1": {
+     "correct": "3",
+     "accept": [
+      "3"
+     ],
+     "label": "1. begins by talking about the origins of guanxi",
+     "why": "Paragraph 3 opens by explaining that guanxi 'goes back thousands of years' and describes its traditional roots."
+    },
+    "m2": {
+     "correct": "1",
+     "accept": [
+      "1"
+     ],
+     "label": "2. gives examples of what connections achieve",
+     "why": "Paragraph 1 lists examples like securing a business licence, a distribution deal, or a villa."
+    },
+    "m3": {
+     "correct": "2",
+     "accept": [
+      "2"
+     ],
+     "label": "3. talks about how guanxi is changing",
+     "why": "Paragraph 2 says 'the old notion of guanxi is starting to make room for the new'."
+    },
+    "m4": {
+     "correct": "5",
+     "accept": [
+      "5"
+     ],
+     "label": "4. talks about MBA connections within China",
+     "why": "Paragraph 5 discusses Executive MBA programmes at Chinese schools like Cheung Kong Graduate School of Business."
+    },
+    "m5": {
+     "correct": "4",
+     "accept": [
+      "4"
+     ],
+     "label": "5. a business started via a European business school",
+     "why": "Paragraph 4 describes Gary Wang building his company Tudou through connections made at INSEAD, a French business school."
+    },
+    "m6": {
+     "correct": "6",
+     "accept": [
+      "6"
+     ],
+     "label": "6. networking through multinational companies",
+     "why": "Paragraph 6 discusses networking through multinational companies like Ogilvy and McKinsey."
+    },
+    "m7": {
+     "correct": "8",
+     "accept": [
+      "8"
+     ],
+     "label": "7. Chinese businesspeople wanting something in return",
+     "why": "Paragraph 8 says businesspeople want 'something more professional and strategic' from their relationships."
+    },
+    "m8": {
+     "correct": "7",
+     "accept": [
+      "7"
+     ],
+     "label": "8. making connections takes time and effort",
+     "why": "Paragraph 7 says cracking the guanxi code 'still takes hard work and perseverance'."
+    }
+   }
+  }
+ }
+}

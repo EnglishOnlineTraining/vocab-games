@@ -1,0 +1,191 @@
+{
+ "unit": "msa-review",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Long Jump",
+     "accept": [
+      "Long Jump"
+     ],
+     "label": "1. Zoe — good jumper, sand pit"
+    },
+    "g2": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "2. Kept one month before charity"
+    },
+    "g3": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "3. Bins checked every Friday"
+    },
+    "g4": {
+     "correct": "Twenty kilograms",
+     "accept": [
+      "Twenty kilograms"
+     ],
+     "label": "4. Max suitcase weight?"
+    },
+    "g5": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "5. Any student may use knives"
+    },
+    "g6": {
+     "correct": "They will write down their views for the school",
+     "accept": [
+      "They will write down their views for the school"
+     ],
+     "label": "6. What do they agree to do?"
+    },
+    "g7": {
+     "correct": "In the sports hall",
+     "accept": [
+      "In the sports hall"
+     ],
+     "label": "7. Where is it held?"
+    },
+    "g8": {
+     "correct": "Inspire more people to get involved",
+     "accept": [
+      "Inspire more people to get involved"
+     ],
+     "label": "8. What might the assembly do?"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Twelve",
+     "accept": [
+      "Twelve"
+     ],
+     "label": "1. How old is Ben's cousin?"
+    },
+    "g2": {
+     "correct": "Over twenty",
+     "accept": [
+      "Over twenty"
+     ],
+     "label": "2. How many countries at food stalls?"
+    },
+    "g3": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "3. Shuttle runs every ten minutes at rush hour"
+    },
+    "g4": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "4. Teachers alone decide the winner"
+    },
+    "g5": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "5. Competition at lunchtime"
+    },
+    "g6": {
+     "correct": "Garden Centre",
+     "accept": [
+      "Garden Centre"
+     ],
+     "label": "6. Jack — outside, working with plants"
+    },
+    "g7": {
+     "correct": "Around £600",
+     "accept": [
+      "Around £600"
+     ],
+     "label": "7. Budget for flights?"
+    },
+    "g8": {
+     "correct": "The till system",
+     "accept": [
+      "The till system"
+     ],
+     "label": "8. What should Jake learn first?"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "1. Lockers are free"
+    },
+    "g2": {
+     "correct": "Freedom",
+     "accept": [
+      "Freedom"
+     ],
+     "label": "2. Robert"
+    },
+    "g3": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "3. Strong password recommended"
+    },
+    "g4": {
+     "correct": "9:30",
+     "accept": [
+      "9:30"
+     ],
+     "label": "4. What time should students meet?"
+    },
+    "g5": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "5. ID needed to collect an item"
+    },
+    "g6": {
+     "correct": "Dirty items can contaminate a whole bin",
+     "accept": [
+      "Dirty items can contaminate a whole bin"
+     ],
+     "label": "6. Why does rinsing matter?"
+    },
+    "g7": {
+     "correct": "Something typical from Germany, like chocolate",
+     "accept": [
+      "Something typical from Germany, like chocolate"
+     ],
+     "label": "7. Gift suggestion for host family?"
+    },
+    "g8": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "8. Wash hands before cooking"
+    }
+   }
+  }
+ }
+}

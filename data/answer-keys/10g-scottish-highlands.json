@@ -1,0 +1,215 @@
+{
+ "unit": "10g-scottish-highlands",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "more than 25,000 square kilometres",
+     "accept": [
+      "more than 25,000 square kilometres"
+     ],
+     "label": "1. Size of the Highlands region",
+     "why": "The text says the Highlands cover more than 25,000 square kilometres."
+    },
+    "g2": {
+     "correct": "families were displaced so land could be used for sheep and deer",
+     "accept": [
+      "families were displaced so land could be used for sheep and deer"
+     ],
+     "label": "2. What happened during the Clearances?",
+     "why": "The text says families were displaced during the Highland Clearances so land could be used for sheep and deer."
+    },
+    "g3": {
+     "correct": "in 565 AD",
+     "accept": [
+      "in 565 AD"
+     ],
+     "label": "3. First recorded Loch Ness Monster sighting",
+     "why": "The text says the first recorded sighting was in 565 AD."
+    },
+    "g4": {
+     "correct": "it has reversed hooves",
+     "accept": [
+      "it has reversed hooves"
+     ],
+     "label": "4. How is a kelpie identified?",
+     "why": "The text says a kelpie can supposedly be identified by its reversed hooves."
+    },
+    "g5": {
+     "correct": "to warn children away from dangerous water",
+     "accept": [
+      "to warn children away from dangerous water"
+     ],
+     "label": "5. The purpose of kelpie legends",
+     "why": "The text says kelpie legends served to warn children away from dangerous water."
+    },
+    "g6": {
+     "correct": "it must remain in human form",
+     "accept": [
+      "it must remain in human form"
+     ],
+     "label": "6. What happens if a selkie's skin is hidden?",
+     "why": "The text says a selkie must remain in human form if its seal skin is hidden."
+    },
+    "g7": {
+     "correct": "Orkney and Shetland",
+     "accept": [
+      "Orkney and Shetland"
+     ],
+     "label": "7. Where did selkie legends originate?",
+     "why": "The text says the selkie legends originated in Orkney and Shetland."
+    },
+    "g8": {
+     "correct": "housing shortages that make it hard for young families to stay",
+     "accept": [
+      "housing shortages that make it hard for young families to stay"
+     ],
+     "label": "8. Modern challenge for Highland communities",
+     "why": "The text says Highland communities face housing shortages that make it hard for young families to stay."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "had arrived",
+     "accept": [
+      "had arrived"
+     ],
+     "label": "1. \"I ___ in Inverness two days earlier\"",
+     "why": "‘Two days earlier’ signals an action completed before the main story time, so the past perfect is used."
+    },
+    "g2": {
+     "correct": "was sitting",
+     "accept": [
+      "was sitting"
+     ],
+     "label": "2. \"That evening, I ___ by the shore\"",
+     "why": "A background scene-setting action uses the past continuous: ‘was sitting’."
+    },
+    "g3": {
+     "correct": "had never experienced",
+     "accept": [
+      "had never experienced"
+     ],
+     "label": "3. \"I ___ such complete silence before\"",
+     "why": "A life experience up to that point in the story uses the past perfect."
+    },
+    "g4": {
+     "correct": "broke",
+     "accept": [
+      "broke"
+     ],
+     "label": "4. \"Suddenly, something ___ the surface\"",
+     "why": "‘Suddenly’ signals a short, completed action, so the simple past is used."
+    },
+    "g5": {
+     "correct": "was staring",
+     "accept": [
+      "was staring"
+     ],
+     "label": "5. \"While I ___ at the ripples...\"",
+     "why": "A background action happening at the same time as another event uses the past continuous."
+    },
+    "g6": {
+     "correct": "had told",
+     "accept": [
+      "had told"
+     ],
+     "label": "6. \"...stories my grandmother ___ me\"",
+     "why": "An action completed before the main story time (as a child) uses the past perfect."
+    },
+    "g7": {
+     "correct": "packed",
+     "accept": [
+      "packed"
+     ],
+     "label": "7. \"I ___ up my things and walked back\"",
+     "why": "A sequence of short, completed actions uses the simple past."
+    },
+    "g8": {
+     "correct": "was",
+     "accept": [
+      "was"
+     ],
+     "label": "8. \"'That ___ probably just an otter'\"",
+     "why": "A simple statement about a past event uses the simple past."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "sparsely",
+     "accept": [
+      "sparsely"
+     ],
+     "label": "1. One of the most ___ populated regions",
+     "why": "‘Sparsely populated’ is the fixed collocation for an area with very few people."
+    },
+    "g2": {
+     "correct": "rugged",
+     "accept": [
+      "rugged"
+     ],
+     "label": "2. The landscape is wild and ___",
+     "why": "‘Rugged’ describes a landscape with steep mountains and rocky terrain."
+    },
+    "g3": {
+     "correct": "displaced",
+     "accept": [
+      "displaced"
+     ],
+     "label": "3. Families were ___ from their homes",
+     "why": "The text says families were displaced from their homes during the Clearances."
+    },
+    "g4": {
+     "correct": "ancestral",
+     "accept": [
+      "ancestral"
+     ],
+     "label": "4. A deep connection to ___ lands",
+     "why": "‘Ancestral lands’ describes land connected to a family's past generations."
+    },
+    "g5": {
+     "correct": "shape-shifting",
+     "accept": [
+      "shape-shifting"
+     ],
+     "label": "5. Kelpies are described as ___ spirits",
+     "why": "The text says kelpies can change their appearance, so they are called shape-shifting spirits."
+    },
+    "g6": {
+     "correct": "melancholic",
+     "accept": [
+      "melancholic"
+     ],
+     "label": "6. Selkie stories are sad and ___",
+     "why": "‘Melancholic’ describes stories dealing with loss, longing and impossible love."
+    },
+    "g7": {
+     "correct": "folklore",
+     "accept": [
+      "folklore"
+     ],
+     "label": "7. Scotland has a rich tradition of ___",
+     "why": "The text says Scotland has a rich tradition of folklore, with stories of mythical creatures."
+    },
+    "g8": {
+     "correct": "fragile",
+     "accept": [
+      "fragile"
+     ],
+     "label": "8. Highland communities are ___",
+     "why": "‘Fragile’ describes communities vulnerable to small changes in population or economy."
+    }
+   }
+  }
+ }
+}

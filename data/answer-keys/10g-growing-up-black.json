@@ -1,0 +1,199 @@
+{
+ "unit": "10g-growing-up-black",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "williamson",
+     "accept": [
+      "williamson"
+     ],
+     "label": "1. Starr tones down her personality at",
+     "why": "Williamson is the mostly white school where she changes how she behaves."
+    },
+    "g2": {
+     "correct": "code-switching",
+     "accept": [
+      "code-switching"
+     ],
+     "label": "2. Switching between two ways of speaking",
+     "why": "Code-switching is moving between two languages or speech styles by situation."
+    },
+    "g3": {
+     "correct": "she witnesses a police officer shoot her unarmed friend",
+     "accept": [
+      "she witnesses a police officer shoot her unarmed friend"
+     ],
+     "label": "3. Starr must decide whether to speak out after",
+     "why": "The turning point is witnessing the shooting of her unarmed friend."
+    },
+    "g4": {
+     "correct": "in a fictional city inspired by places like harlem",
+     "accept": [
+      "in a fictional city inspired by places like harlem"
+     ],
+     "label": "4. Where the novel is set",
+     "why": "The setting is invented, drawing on real neighbourhoods such as Harlem."
+    },
+    "g5": {
+     "correct": "is a rich, rule-governed way of speaking",
+     "accept": [
+      "is a rich, rule-governed way of speaking"
+     ],
+     "label": "5. Thomas says Black English",
+     "why": "Thomas presents Black English as systematic and rule-governed, not incorrect."
+    },
+    "g6": {
+     "correct": "fear, loyalty and the desire for justice",
+     "accept": [
+      "fear, loyalty and the desire for justice"
+     ],
+     "label": "6. What young Black Americans balance",
+     "why": "Starr is pulled between fear, loyalty to her community and wanting justice."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "felt",
+     "accept": [
+      "felt"
+     ],
+     "label": "1. 'I feel nervous' → she ___",
+     "why": "Reported speech shifts the present simple back to the past simple."
+    },
+    "g2": {
+     "correct": "hadn't done",
+     "accept": [
+      "hadn't done"
+     ],
+     "label": "2. 'I haven't done anything wrong' → he ___",
+     "why": "The present perfect shifts back to the past perfect in reported speech."
+    },
+    "g3": {
+     "correct": "would",
+     "accept": [
+      "would"
+     ],
+     "label": "3. 'I will support you' → she ___",
+     "why": "'Will' becomes 'would' when the reporting verb is in the past."
+    },
+    "g4": {
+     "correct": "could",
+     "accept": [
+      "could"
+     ],
+     "label": "4. 'You can trust…' → she ___",
+     "why": "'Can' becomes 'could' in reported speech."
+    },
+    "g5": {
+     "correct": "had seen",
+     "accept": [
+      "had seen"
+     ],
+     "label": "5. 'I saw everything' → he ___",
+     "why": "The past simple shifts back to the past perfect."
+    },
+    "g6": {
+     "correct": "was going to",
+     "accept": [
+      "was going to"
+     ],
+     "label": "6. 'I'm going to speak…' → she ___",
+     "why": "'Am going to' becomes 'was going to' after a past reporting verb."
+    },
+    "g7": {
+     "correct": "had to",
+     "accept": [
+      "had to"
+     ],
+     "label": "7. 'You must stay calm' → Starr ___",
+     "why": "'Must' becomes 'had to' when the obligation is reported."
+    },
+    "g8": {
+     "correct": "were",
+     "accept": [
+      "were"
+     ],
+     "label": "8. 'We are proud of you' → they ___",
+     "why": "The present simple of 'be' shifts back to the past: are → were."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "if",
+     "accept": [
+      "if"
+     ],
+     "label": "1. 'Can you help me…?' → she asked ___",
+     "why": "Yes/no questions are reported with 'if' or 'whether'."
+    },
+    "g2": {
+     "correct": "told",
+     "accept": [
+      "told"
+     ],
+     "label": "2. 'Please read chapter five' → the teacher ___",
+     "why": "'Told' takes a personal object; a request becomes told + object + to + infinitive."
+    },
+    "g3": {
+     "correct": "explained",
+     "accept": [
+      "explained"
+     ],
+     "label": "3. 'I didn't sell drugs because…' → Khalil ___",
+     "why": "'Explained' is the reporting verb that fits giving a reason."
+    },
+    "g4": {
+     "correct": "not to",
+     "accept": [
+      "not to"
+     ],
+     "label": "4. 'Don't talk to reporters' → warned her ___",
+     "why": "A negative instruction is reported as 'not to' + infinitive."
+    },
+    "g5": {
+     "correct": "she had",
+     "accept": [
+      "she had"
+     ],
+     "label": "5. 'Where were you last night?' → asked where ___",
+     "why": "Reported questions use statement word order and backshift the tense."
+    },
+    "g6": {
+     "correct": "had happened",
+     "accept": [
+      "had happened"
+     ],
+     "label": "6. 'What happened at the party?' → asked what ___",
+     "why": "The past simple shifts back to the past perfect in a reported question."
+    },
+    "g7": {
+     "correct": "would tell",
+     "accept": [
+      "would tell"
+     ],
+     "label": "7. 'I will tell the truth' → promised that he ___",
+     "why": "'Will' becomes 'would' after a past reporting verb."
+    },
+    "g8": {
+     "correct": "rises",
+     "accept": [
+      "rises"
+     ],
+     "label": "8. 'The sun always rises…' → reminded her that the sun always ___",
+     "why": "A general truth keeps the present simple, with no backshift."
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,183 @@
+{
+ "unit": "it-support",
+ "sections": {
+  "exA": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "a1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. The user's problem was that she...",
+     "why": "The text says the user could not open any files on the shared drive."
+    },
+    "a2": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "2. First-level support asked her to...",
+     "why": "The text says first-level support asked her to restart her computer."
+    },
+    "a3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. The cause of the problem was...",
+     "why": "The text says her permissions had been changed during the system update."
+    },
+    "a4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. As a workaround, Tom...",
+     "why": "The text says Tom gave her temporary access to a copy of the files."
+    },
+    "a5": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "5. The ticket was resolved...",
+     "why": "The text says the ticket was closed within the SLA of four hours."
+    },
+    "a6": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "6. The follow-up task is to check...",
+     "why": "The text says second-level support will check whether other accounts were affected."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "b1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. Every support request is documented in a ___",
+     "why": "Every support request is documented in a ticket."
+    },
+    "b2": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "2. If first-level support can't solve it, an ___ follows",
+     "why": "An escalation to second level follows if first-level support can't solve a problem."
+    },
+    "b3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. Defines how quickly a ticket must be resolved",
+     "why": "The SLA (Service Level Agreement) defines how quickly a ticket must be resolved."
+    },
+    "b4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. A temporary solution that lets the user keep working",
+     "why": "A workaround is a temporary solution that lets the user keep working."
+    },
+    "b5": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "5. Answers calls and solves simple problems",
+     "why": "First-level support answers calls and solves simple, common problems."
+    },
+    "b6": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "6. An unplanned interruption to a service",
+     "why": "An unplanned interruption to a service is called an incident."
+    },
+    "b7": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "7. The ticket stays open until the ___ is confirmed",
+     "why": "The ticket stays open until the resolution is confirmed by the user."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "",
+   "multi": false,
+   "gaps": {
+    "c1": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "1. Could you ___ the issue?",
+     "why": "‘Could you’ is followed by the base verb."
+    },
+    "c2": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "2. Would you mind ___ your computer?",
+     "why": "‘Would you mind’ is followed by the gerund (-ing) form."
+    },
+    "c3": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "3. She said that she ___ not open the files",
+     "why": "Reported speech backshifts ‘can’ to ‘could’."
+    },
+    "c4": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "4. Do you know ___ the error first appeared?",
+     "why": "Indirect questions keep normal word order after the question word."
+    },
+    "c5": {
+     "correct": "b",
+     "accept": [
+      "b"
+     ],
+     "label": "5. She told us the error message ___ every time",
+     "why": "Reported speech backshifts the present simple to the past simple."
+    },
+    "c6": {
+     "correct": "c",
+     "accept": [
+      "c"
+     ],
+     "label": "6. Could you tell me ___ you have restarted the PC?",
+     "why": "‘Whether’ (or ‘if’) introduces an indirect yes/no question."
+    },
+    "c7": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "7. I was wondering ___ you could give me access",
+     "why": "‘I was wondering if’ is the standard polite request pattern."
+    }
+   }
+  }
+ }
+}

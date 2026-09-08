@@ -1,0 +1,191 @@
+{
+ "unit": "7g-review",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Drake had warned the English fleet",
+     "accept": [
+      "Drake had warned the English fleet"
+     ],
+     "label": "1. By the time the Armada arrived, …"
+    },
+    "g2": {
+     "correct": "gravy",
+     "accept": [
+      "gravy"
+     ],
+     "label": "2. Brown sauce over meat and potatoes"
+    },
+    "g3": {
+     "correct": "at",
+     "accept": [
+      "at"
+     ],
+     "label": "3. Big Ben is located"
+    },
+    "g4": {
+     "correct": "referee",
+     "accept": [
+      "referee"
+     ],
+     "label": "4. The person who enforces the rules"
+    },
+    "g5": {
+     "correct": "a",
+     "accept": [
+      "a"
+     ],
+     "label": "5. If they hadn't had pictures of the old Globe,..."
+    },
+    "g6": {
+     "correct": "skulk",
+     "accept": [
+      "skulk"
+     ],
+     "label": "6. A group of foxes is a"
+    },
+    "g7": {
+     "correct": "yet",
+     "accept": [
+      "yet"
+     ],
+     "label": "7. Has the bus arrived"
+    },
+    "g8": {
+     "correct": "had not managed to land",
+     "accept": [
+      "had not managed to land"
+     ],
+     "label": "8. Elizabeth was relieved because the Spanish …"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "batter",
+     "accept": [
+      "batter"
+     ],
+     "label": "1. Yorkshire pudding is made from a crispy"
+    },
+    "g2": {
+     "correct": "over",
+     "accept": [
+      "over"
+     ],
+     "label": "2. Westminster Bridge crosses"
+    },
+    "g3": {
+     "correct": "1863",
+     "accept": [
+      "1863"
+     ],
+     "label": "3. First official football rules"
+    },
+    "g4": {
+     "correct": "would not have sent",
+     "accept": [
+      "would not have sent"
+     ],
+     "label": "4. ...she"
+    },
+    "g5": {
+     "correct": "smaller",
+     "accept": [
+      "smaller"
+     ],
+     "label": "5. Hedgehog habitats are getting"
+    },
+    "g6": {
+     "correct": "have grown",
+     "accept": [
+      "have grown"
+     ],
+     "label": "6. These trees"
+    },
+    "g7": {
+     "correct": "he had worked on merchant ships",
+     "accept": [
+      "he had worked on merchant ships"
+     ],
+     "label": "7. Before Drake became famous, …"
+    },
+    "g8": {
+     "correct": "a sandwich",
+     "accept": [
+      "a sandwich"
+     ],
+     "label": "8. The most popular weekday lunch"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "on",
+     "accept": [
+      "on"
+     ],
+     "label": "1. The Tower of London stands"
+    },
+    "g2": {
+     "correct": "1877",
+     "accept": [
+      "1877"
+     ],
+     "label": "2. First Wimbledon Championship"
+    },
+    "g3": {
+     "correct": "had not spoken",
+     "accept": [
+      "had not spoken"
+     ],
+     "label": "3. If the Normans"
+    },
+    "g4": {
+     "correct": "cubs",
+     "accept": [
+      "cubs"
+     ],
+     "label": "4. Baby foxes are called"
+    },
+    "g5": {
+     "correct": "has just learned",
+     "accept": [
+      "has just learned"
+     ],
+     "label": "5. She"
+    },
+    "g6": {
+     "correct": "had completed",
+     "accept": [
+      "had completed"
+     ],
+     "label": "6. After Drake"
+    },
+    "g7": {
+     "correct": "a crispy batter served with roast beef",
+     "accept": [
+      "a crispy batter served with roast beef"
+     ],
+     "label": "7. Yorkshire pudding is…"
+    },
+    "g8": {
+     "correct": "at the end of",
+     "accept": [
+      "at the end of"
+     ],
+     "label": "8. Buckingham Palace is"
+    }
+   }
+  }
+ }
+}

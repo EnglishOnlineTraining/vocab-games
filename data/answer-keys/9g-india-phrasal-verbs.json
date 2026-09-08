@@ -1,0 +1,145 @@
+{
+ "unit": "9g-india-phrasal-verbs",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "find out",
+     "accept": [
+      "find out"
+     ],
+     "label": "1. Tourists ___ about India's history",
+     "why": "‘Find out’ means to discover or learn something new, matching visiting temples to learn history."
+    },
+    "g2": {
+     "correct": "look forward to",
+     "accept": [
+      "look forward to"
+     ],
+     "label": "2. Children ___ Diwali every year",
+     "why": "‘Look forward to’ means to feel excited about something coming up."
+    },
+    "g3": {
+     "correct": "take part in",
+     "accept": [
+      "take part in"
+     ],
+     "label": "3. People ___ the Holi celebrations",
+     "why": "‘Take part in’ means to participate in an activity or event."
+    },
+    "g4": {
+     "correct": "grew up",
+     "accept": [
+      "grew up"
+     ],
+     "label": "4. Gandhi ___ in Gujarat",
+     "why": "‘Grow up’ means to spend your childhood in a particular place."
+    },
+    "g5": {
+     "correct": "gave up",
+     "accept": [
+      "gave up"
+     ],
+     "label": "5. Gandhi never ___ his fight for independence",
+     "why": "‘Give up’ means to stop doing something or trying."
+    },
+    "g6": {
+     "correct": "go on",
+     "accept": [
+      "go on"
+     ],
+     "label": "6. Diwali celebrations ___ for five days",
+     "why": "‘Go on’ means to continue happening."
+    },
+    "g7": {
+     "correct": "turned into",
+     "accept": [
+      "turned into"
+     ],
+     "label": "7. Villages have ___ modern cities",
+     "why": "‘Turn into’ means to change or transform into something different."
+    },
+    "g8": {
+     "correct": "pick up",
+     "accept": [
+      "pick up"
+     ],
+     "label": "8. Children ___ English at school",
+     "why": "‘Pick up’ means to learn something informally, often through exposure rather than formal study."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "d1": {
+     "correct": "find out",
+     "accept": [
+      "find out"
+     ],
+     "label": "1. \"to discover or learn something new\"",
+     "why": "This definition matches the phrasal verb ‘find out’."
+    },
+    "d2": {
+     "correct": "look forward to",
+     "accept": [
+      "look forward to"
+     ],
+     "label": "2. \"to feel excited about something that will happen\"",
+     "why": "This definition matches the phrasal verb ‘look forward to’."
+    },
+    "d3": {
+     "correct": "take part in",
+     "accept": [
+      "take part in"
+     ],
+     "label": "3. \"to participate in an activity or event\"",
+     "why": "This definition matches the phrasal verb ‘take part in’."
+    },
+    "d4": {
+     "correct": "grow up",
+     "accept": [
+      "grow up"
+     ],
+     "label": "4. \"to spend your childhood in a particular place\"",
+     "why": "This definition matches the phrasal verb ‘grow up’."
+    },
+    "d5": {
+     "correct": "give up",
+     "accept": [
+      "give up"
+     ],
+     "label": "5. \"to stop doing something or trying\"",
+     "why": "This definition matches the phrasal verb ‘give up’."
+    },
+    "d6": {
+     "correct": "go on",
+     "accept": [
+      "go on"
+     ],
+     "label": "6. \"to continue happening\"",
+     "why": "This definition matches the phrasal verb ‘go on’."
+    },
+    "d7": {
+     "correct": "turn into",
+     "accept": [
+      "turn into"
+     ],
+     "label": "7. \"to change or transform into something different\"",
+     "why": "This definition matches the phrasal verb ‘turn into’."
+    },
+    "d8": {
+     "correct": "pick up",
+     "accept": [
+      "pick up"
+     ],
+     "label": "8. \"to learn something without formal lessons, often by experience\"",
+     "why": "This definition matches the phrasal verb ‘pick up’."
+    }
+   }
+  }
+ }
+}

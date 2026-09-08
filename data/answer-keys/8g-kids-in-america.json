@@ -1,0 +1,199 @@
+{
+ "unit": "8g-kids-in-america",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "7:45",
+     "accept": [
+      "7:45"
+     ],
+     "label": "1. Classes start at what time?",
+     "why": "The text says classes start at 7:45 at Lena's American school."
+    },
+    "g2": {
+     "correct": "on foot or by bike",
+     "accept": [
+      "on foot or by bike"
+     ],
+     "label": "2. How does Lena get to school in Germany?",
+     "why": "The text says Lena usually gets to school in Germany on foot or by bike."
+    },
+    "g3": {
+     "correct": "the school newspaper",
+     "accept": [
+      "the school newspaper"
+     ],
+     "label": "3. Which activity did Lena join?",
+     "why": "The text says Lena joined the school newspaper in America."
+    },
+    "g4": {
+     "correct": "letters A–F",
+     "accept": [
+      "letters A–F"
+     ],
+     "label": "4. What grading system is used?",
+     "why": "The text says American schools use letters A–F for grading."
+    },
+    "g5": {
+     "correct": "November",
+     "accept": [
+      "November"
+     ],
+     "label": "5. Which month is Thanksgiving?",
+     "why": "The text says Thanksgiving is celebrated in November."
+    },
+    "g6": {
+     "correct": "her American family and new experiences",
+     "accept": [
+      "her American family and new experiences"
+     ],
+     "label": "6. What was Lena thankful for?",
+     "why": "The text says Lena was thankful for her American family and new experiences."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "trying",
+     "accept": [
+      "trying"
+     ],
+     "label": "1. Lena enjoyed ___ foods",
+     "why": "‘Enjoy’ is always followed by the gerund (-ing) form, not the infinitive."
+    },
+    "g2": {
+     "correct": "to join",
+     "accept": [
+      "to join"
+     ],
+     "label": "2. She decided ___ the newspaper",
+     "why": "‘Decide’ is always followed by the to-infinitive."
+    },
+    "g3": {
+     "correct": "walking",
+     "accept": [
+      "walking"
+     ],
+     "label": "3. Students avoid ___ to school",
+     "why": "‘Avoid’ is always followed by the gerund (-ing) form."
+    },
+    "g4": {
+     "correct": "to improve",
+     "accept": [
+      "to improve"
+     ],
+     "label": "4. Lena hoped ___ her English",
+     "why": "‘Hope’ is always followed by the to-infinitive."
+    },
+    "g5": {
+     "correct": "getting",
+     "accept": [
+      "getting"
+     ],
+     "label": "5. She didn't mind ___ up early",
+     "why": "‘Mind’ is always followed by the gerund (-ing) form."
+    },
+    "g6": {
+     "correct": "to try",
+     "accept": [
+      "to try"
+     ],
+     "label": "6. Lena refused ___ pumpkin pie",
+     "why": "‘Refuse’ is always followed by the to-infinitive."
+    },
+    "g7": {
+     "correct": "joining",
+     "accept": [
+      "joining"
+     ],
+     "label": "7. Emma suggested ___ the drama club",
+     "why": "‘Suggest’ is always followed by the gerund (-ing) form."
+    },
+    "g8": {
+     "correct": "to make",
+     "accept": [
+      "to make"
+     ],
+     "label": "8. Lena managed ___ friends",
+     "why": "‘Manage’ is always followed by the to-infinitive."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "to finish",
+     "accept": [
+      "to finish"
+     ],
+     "label": "1. The teacher asked the students ___",
+     "why": "‘Ask someone to do something’ uses the pattern verb + object + to-infinitive."
+    },
+    "g2": {
+     "correct": "to get",
+     "accept": [
+      "to get"
+     ],
+     "label": "2. Parents expected her ___",
+     "why": "‘Expect someone to do something’ uses the pattern verb + object + to-infinitive."
+    },
+    "g3": {
+     "correct": "to bring",
+     "accept": [
+      "to bring"
+     ],
+     "label": "3. Her host mother told her ___",
+     "why": "‘Tell someone to do something’ uses the pattern verb + object + to-infinitive."
+    },
+    "g4": {
+     "correct": "to practise",
+     "accept": [
+      "to practise"
+     ],
+     "label": "4. The coach wanted the team ___",
+     "why": "‘Want someone to do something’ uses the pattern verb + object + to-infinitive."
+    },
+    "g5": {
+     "correct": "to keep",
+     "accept": [
+      "to keep"
+     ],
+     "label": "5. Her teacher encouraged her ___",
+     "why": "‘Encourage someone to do something’ uses the pattern verb + object + to-infinitive."
+    },
+    "g6": {
+     "correct": "to use",
+     "accept": [
+      "to use"
+     ],
+     "label": "6. The school didn't allow students ___",
+     "why": "‘Allow someone to do something’ uses the pattern verb + object + to-infinitive."
+    },
+    "g7": {
+     "correct": "to go",
+     "accept": [
+      "to go"
+     ],
+     "label": "7. Emma persuaded Lena ___",
+     "why": "‘Persuade someone to do something’ uses the pattern verb + object + to-infinitive."
+    },
+    "g8": {
+     "correct": "to call",
+     "accept": [
+      "to call"
+     ],
+     "label": "8. Parents reminded her ___",
+     "why": "‘Remind someone to do something’ uses the pattern verb + object + to-infinitive."
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,145 @@
+{
+ "unit": "msa-c-exchange-trip-packing",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "twenty kilograms",
+     "accept": [
+      "twenty kilograms"
+     ],
+     "label": "1. Max suitcase weight?",
+     "why": "The recording says the suitcase must weigh no more than twenty kilograms."
+    },
+    "g2": {
+     "correct": "comfortable shoes",
+     "accept": [
+      "comfortable shoes"
+     ],
+     "label": "2. What to pack for sightseeing?",
+     "why": "The recording says to pack comfortable shoes for walking and sightseeing."
+    },
+    "g3": {
+     "correct": "padlock",
+     "accept": [
+      "padlock"
+     ],
+     "label": "3. Extra item needed for suitcase?",
+     "why": "The recording says students need a padlock for their suitcase."
+    },
+    "g4": {
+     "correct": "a copy",
+     "accept": [
+      "a copy"
+     ],
+     "label": "4. Keep separate from original passport?",
+     "why": "The recording says to keep a copy of the passport separate from the original."
+    },
+    "g5": {
+     "correct": "typical from germany",
+     "accept": [
+      "typical from germany"
+     ],
+     "label": "5. Gift suggestion for host family?",
+     "why": "The recording suggests something typical from Germany, like chocolate."
+    },
+    "g6": {
+     "correct": "what gift",
+     "accept": [
+      "what gift"
+     ],
+     "label": "6. What is Amara unsure about?",
+     "why": "The recording says Amara doesn't know what gift to bring for her host family."
+    },
+    "g7": {
+     "correct": "no same plug",
+     "accept": [
+      "no same plug"
+     ],
+     "label": "7. Does Amara need an adapter for France?",
+     "why": "The recording says France uses the same plug type as Germany, so no adapter is needed."
+    },
+    "g8": {
+     "correct": "buy padlock",
+     "accept": [
+      "buy padlock"
+     ],
+     "label": "8. What does Finn still need to do?",
+     "why": "The recording says Finn still needs to buy a padlock this weekend."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Adapter",
+     "accept": [
+      "Adapter"
+     ],
+     "label": "1. Jonas — different sockets",
+     "why": "The text says a universal adapter is useful for different plug sockets."
+    },
+    "g2": {
+     "correct": "Bottle",
+     "accept": [
+      "Bottle"
+     ],
+     "label": "2. Mira — avoid plastic bottles",
+     "why": "The text says a reusable water bottle saves money on buying drinks."
+    },
+    "g3": {
+     "correct": "Phrasebook",
+     "accept": [
+      "Phrasebook"
+     ],
+     "label": "3. Elif — learn French basics",
+     "why": "The text says a phrasebook helps with learning key phrases."
+    },
+    "g4": {
+     "correct": "Kit",
+     "accept": [
+      "Kit"
+     ],
+     "label": "4. Tobias — cuts and blisters",
+     "why": "The text says a first aid kit contains plasters for minor injuries."
+    },
+    "g5": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "5. Weight limit is 20kg",
+     "why": "The text confirms the suitcase weight limit is twenty kilograms."
+    },
+    "g6": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "6. No padlock needed",
+     "why": "The text says every student needs a padlock for their suitcase."
+    },
+    "g7": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "7. Copy packed with original",
+     "why": "The text says passport copies should be kept separately from the original."
+    },
+    "g8": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "8. Gifts typical from home country",
+     "why": "The text confirms host family gifts should be something typical from your home country."
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,145 @@
+{
+ "unit": "msa-c-american-dream",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "James Truslow Adams",
+     "accept": [
+      "James Truslow Adams"
+     ],
+     "label": "1. Who first used the phrase?",
+     "why": "The recording says the phrase was first used by writer James Truslow Adams."
+    },
+    "g2": {
+     "correct": "1931",
+     "accept": [
+      "1931"
+     ],
+     "label": "2. When was it first used?",
+     "why": "The recording says the phrase was first used in 1931."
+    },
+    "g3": {
+     "correct": "better fuller life",
+     "accept": [
+      "better fuller life"
+     ],
+     "label": "3. What did Adams describe?",
+     "why": "The recording says Adams described a dream of a better, richer, and fuller life."
+    },
+    "g4": {
+     "correct": "better future for children",
+     "accept": [
+      "better future for children"
+     ],
+     "label": "4. What does it mean for immigrants?",
+     "why": "The recording says for many immigrants the Dream is about giving their children a better future."
+    },
+    "g5": {
+     "correct": "Elena",
+     "accept": [
+      "Elena"
+     ],
+     "label": "5. Who does the podcast hear from next?",
+     "why": "The recording says the podcast will hear next from Elena, who moved from Mexico."
+    },
+    "g6": {
+     "correct": "safety and opportunity",
+     "accept": [
+      "safety and opportunity"
+     ],
+     "label": "6. What did the Dream mean to Elena at first?",
+     "why": "The recording says the Dream meant safety and opportunity for Elena when she first arrived."
+    },
+    "g7": {
+     "correct": "less rich more belonging",
+     "accept": [
+      "less rich more belonging"
+     ],
+     "label": "7. How has Elena's idea changed?",
+     "why": "The recording says Elena's idea is now less about getting rich and more about belonging."
+    },
+    "g8": {
+     "correct": "yes harder",
+     "accept": [
+      "yes harder"
+     ],
+     "label": "8. Does Elena think it's still achievable?",
+     "why": "The recording says Elena believes the Dream is harder to achieve now, but still possible."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Financial Security",
+     "accept": [
+      "Financial Security"
+     ],
+     "label": "1. Carlos",
+     "why": "The text says Carlos wants a stable job and enough money not to worry about bills."
+    },
+    "g2": {
+     "correct": "Family",
+     "accept": [
+      "Family"
+     ],
+     "label": "2. Mei",
+     "why": "The text says Mei wants her children to have more opportunities than she did."
+    },
+    "g3": {
+     "correct": "Freedom",
+     "accept": [
+      "Freedom"
+     ],
+     "label": "3. Robert",
+     "why": "The text says Robert wants to speak his mind and choose his own path."
+    },
+    "g4": {
+     "correct": "Belonging",
+     "accept": [
+      "Belonging"
+     ],
+     "label": "4. Aisha",
+     "why": "The text says Aisha finally feels like this is home after years of feeling like an outsider."
+    },
+    "g5": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "5. Phrase first used in 1931",
+     "why": "The text confirms the phrase was first used in 1931."
+    },
+    "g6": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "6. Adams was a politician",
+     "why": "The text says Adams was a writer and historian, not a politician."
+    },
+    "g7": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "7. The Dream means the same to everyone",
+     "why": "The text says the Dream does not mean exactly the same thing to every person."
+    },
+    "g8": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "8. Hard work can lead to success",
+     "why": "The text confirms the idea includes the belief that hard work can lead to success."
+    }
+   }
+  }
+ }
+}

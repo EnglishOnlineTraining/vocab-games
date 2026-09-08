@@ -1,0 +1,215 @@
+{
+ "unit": "8g-travel-texts",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "enormous sky",
+     "accept": [
+      "enormous sky"
+     ],
+     "label": "1. Why \"Big Sky Country\"?",
+     "why": "The blogger explains Montana is called ‘Big Sky Country’ because of its enormous sky."
+    },
+    "g2": {
+     "correct": "25",
+     "accept": [
+      "25"
+     ],
+     "label": "2. How many glaciers today?",
+     "why": "The text says Glacier National Park has 25 glaciers left today."
+    },
+    "g3": {
+     "correct": "looks different",
+     "accept": [
+      "looks different"
+     ],
+     "label": "3. What did Jim say about the valley?",
+     "why": "The retired cowboy Jim told the blogger the valley looks different now."
+    },
+    "g4": {
+     "correct": "a bookshop",
+     "accept": [
+      "a bookshop"
+     ],
+     "label": "4. What will the blogger visit in Missoula?",
+     "why": "The text says the blogger plans to visit a bookshop in Missoula."
+    },
+    "g5": {
+     "correct": "a car",
+     "accept": [
+      "a car"
+     ],
+     "label": "5. What is essential for getting around?",
+     "why": "The travel guide says a car is essential for getting around Montana."
+    },
+    "g6": {
+     "correct": "quieter",
+     "accept": [
+      "quieter"
+     ],
+     "label": "6. Why visit in early September?",
+     "why": "The guide recommends early September because it is quieter then."
+    },
+    "g7": {
+     "correct": "wildfires",
+     "accept": [
+      "wildfires"
+     ],
+     "label": "7. Why strict campfire rules?",
+     "why": "The text says Montana has strict campfire rules because of wildfires."
+    },
+    "g8": {
+     "correct": "personal",
+     "accept": [
+      "personal"
+     ],
+     "label": "8. The blog's style is...?",
+     "why": "The text says the travel blog is written in a personal style."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "set off",
+     "accept": [
+      "set off"
+     ],
+     "label": "1. We decided to ___ early",
+     "why": "‘Set off’ is the phrasal verb for beginning a journey."
+    },
+    "g2": {
+     "correct": "checked in",
+     "accept": [
+      "checked in"
+     ],
+     "label": "2. We finally ___ at the hotel",
+     "why": "‘Check in’ is the fixed phrase for registering at a hotel."
+    },
+    "g3": {
+     "correct": "take in",
+     "accept": [
+      "take in"
+     ],
+     "label": "3. Don't miss the chance to ___ the views",
+     "why": "‘Take in’ means to look at and enjoy a view."
+    },
+    "g4": {
+     "correct": "get around",
+     "accept": [
+      "get around"
+     ],
+     "label": "4. The best way to ___ Montana",
+     "why": "‘Get around’ means to travel or move about a place."
+    },
+    "g5": {
+     "correct": "come across",
+     "accept": [
+      "come across"
+     ],
+     "label": "5. We were lucky to ___ a waterfall",
+     "why": "‘Come across’ means to find something by chance."
+    },
+    "g6": {
+     "correct": "capture",
+     "accept": [
+      "capture"
+     ],
+     "label": "6. I tried to ___ the atmosphere",
+     "why": "‘Capture’ means to record something, like an atmosphere, in writing or on camera."
+    },
+    "g7": {
+     "correct": "make the most of",
+     "accept": [
+      "make the most of"
+     ],
+     "label": "7. We want to ___ every day",
+     "why": "‘Make the most of’ means to use time as fully as possible."
+    },
+    "g8": {
+     "correct": "head to",
+     "accept": [
+      "head to"
+     ],
+     "label": "8. We decided to ___ the national park",
+     "why": "‘Head to’ means to travel towards a destination."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "contiguous",
+     "accept": [
+      "contiguous"
+     ],
+     "label": "1. The last wild places in the ___ US",
+     "why": "‘Contiguous’ describes the connected lower 48 states, as the text defines."
+    },
+    "g2": {
+     "correct": "majestic",
+     "accept": [
+      "majestic"
+     ],
+     "label": "2. Home to ___ mountain ranges",
+     "why": "‘Majestic’ describes impressive, grand mountain ranges."
+    },
+    "g3": {
+     "correct": "stunning",
+     "accept": [
+      "stunning"
+     ],
+     "label": "3. The landscapes are truly ___",
+     "why": "‘Stunning’ describes landscapes that are extremely beautiful."
+    },
+    "g4": {
+     "correct": "remote",
+     "accept": [
+      "remote"
+     ],
+     "label": "4. Many areas are extremely ___",
+     "why": "‘Remote’ describes areas far from other people."
+    },
+    "g5": {
+     "correct": "essential",
+     "accept": [
+      "essential"
+     ],
+     "label": "5. A reliable car is ___",
+     "why": "‘Essential’ describes something absolutely necessary."
+    },
+    "g6": {
+     "correct": "vast",
+     "accept": [
+      "vast"
+     ],
+     "label": "6. The distances are ___",
+     "why": "‘Vast’ describes very large distances between towns."
+    },
+    "g7": {
+     "correct": "thinned",
+     "accept": [
+      "thinned"
+     ],
+     "label": "7. The summer crowds have ___ out",
+     "why": "‘Thinned out’ describes crowds becoming fewer by September."
+    },
+    "g8": {
+     "correct": "regulations",
+     "accept": [
+      "regulations"
+     ],
+     "label": "8. Check local fire ___",
+     "why": "‘Regulations’ are official rules, here about lighting campfires."
+    }
+   }
+  }
+ }
+}

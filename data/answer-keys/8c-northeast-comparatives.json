@@ -1,0 +1,215 @@
+{
+ "unit": "8c-northeast-comparatives",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "destination",
+     "accept": [
+      "destination"
+     ],
+     "label": "1. New York is the most famous ___",
+     "why": "A place people travel to is a destination."
+    },
+    "g2": {
+     "correct": "Liberty",
+     "accept": [
+      "Liberty"
+     ],
+     "label": "2. the Statue of ___",
+     "why": "The famous statue in New York harbour is the Statue of Liberty."
+    },
+    "g3": {
+     "correct": "gift",
+     "accept": [
+      "gift"
+     ],
+     "label": "3. It was a ___ from France",
+     "why": "Something given for free is a gift; France gave the statue in 1886."
+    },
+    "g4": {
+     "correct": "parks",
+     "accept": [
+      "parks"
+     ],
+     "label": "4. bigger than many ___ in Europe",
+     "why": "Central Park is a park, so it is compared with other parks."
+    },
+    "g5": {
+     "correct": "musicians",
+     "accept": [
+      "musicians"
+     ],
+     "label": "5. runners, families and street ___",
+     "why": "People who play music in the street are musicians."
+    },
+    "g6": {
+     "correct": "taxi",
+     "accept": [
+      "taxi"
+     ],
+     "label": "6. faster than a ___",
+     "why": "The subway is compared with a taxi, the other way to cross the city."
+    },
+    "g7": {
+     "correct": "universities",
+     "accept": [
+      "universities"
+     ],
+     "label": "7. one of the oldest ___ in America",
+     "why": "Boston is famous for its old universities, such as Harvard."
+    },
+    "g8": {
+     "correct": "part",
+     "accept": [
+      "part"
+     ],
+     "label": "8. the most exciting ___ of the USA",
+     "why": "A region of a country is a part of it."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "bigger",
+     "accept": [
+      "bigger"
+     ],
+     "label": "1. New York is ___ than Boston",
+     "why": "Short adjectives add -er before 'than': big → bigger."
+    },
+    "g2": {
+     "correct": "faster",
+     "accept": [
+      "faster"
+     ],
+     "label": "2. The subway is ___ than the bus",
+     "why": "One-syllable adjectives take -er, not 'most' or the plain form."
+    },
+    "g3": {
+     "correct": "more beautiful",
+     "accept": [
+      "more beautiful"
+     ],
+     "label": "3. Central Park is ___ than I expected",
+     "why": "Adjectives of three syllables take 'more', never -er."
+    },
+    "g4": {
+     "correct": "colder",
+     "accept": [
+      "colder"
+     ],
+     "label": "4. Winter in Boston is ___ than Miami",
+     "why": "Short adjectives form the comparative with -er: cold → colder."
+    },
+    "g5": {
+     "correct": "more",
+     "accept": [
+      "more"
+     ],
+     "label": "5. This museum is ___ interesting",
+     "why": "Long adjectives take 'more' + adjective + than."
+    },
+    "g6": {
+     "correct": "better",
+     "accept": [
+      "better"
+     ],
+     "label": "6. The weather today is ___ than yesterday",
+     "why": "'Good' is irregular: good → better → best."
+    },
+    "g7": {
+     "correct": "cheaper",
+     "accept": [
+      "cheaper"
+     ],
+     "label": "7. A ferry ticket is ___ than a taxi",
+     "why": "'Than' needs a comparative, so cheap becomes cheaper."
+    },
+    "g8": {
+     "correct": "noisier",
+     "accept": [
+      "noisier"
+     ],
+     "label": "8. The streets here are ___",
+     "why": "Adjectives ending in consonant + y change y to i and add -er."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "tallest",
+     "accept": [
+      "tallest"
+     ],
+     "label": "1. one of the ___ buildings",
+     "why": "Superlatives use 'the' + -est to pick one out of a group."
+    },
+    "g2": {
+     "correct": "best",
+     "accept": [
+      "best"
+     ],
+     "label": "2. the ___ day of our trip",
+     "why": "'Good' is irregular: its superlative is 'best'."
+    },
+    "g3": {
+     "correct": "busiest",
+     "accept": [
+      "busiest"
+     ],
+     "label": "3. the ___ place in the city",
+     "why": "Consonant + y changes to i before -est: busy → busiest."
+    },
+    "g4": {
+     "correct": "most famous",
+     "accept": [
+      "most famous"
+     ],
+     "label": "4. the ___ museum in Boston",
+     "why": "Adjectives of two or more syllables take 'the most', not -est."
+    },
+    "g5": {
+     "correct": "biggest",
+     "accept": [
+      "biggest"
+     ],
+     "label": "5. the ___ pizza I have ever eaten",
+     "why": "One-syllable adjectives double the final consonant: big → biggest."
+    },
+    "g6": {
+     "correct": "coldest",
+     "accept": [
+      "coldest"
+     ],
+     "label": "6. the ___ month of the year",
+     "why": "Short adjectives form the superlative with -est after 'the'."
+    },
+    "g7": {
+     "correct": "quickest",
+     "accept": [
+      "quickest"
+     ],
+     "label": "7. the ___ way to travel",
+     "why": "'Quick' is short, so the superlative is quickest, not 'most quick'."
+    },
+    "g8": {
+     "correct": "most exciting",
+     "accept": [
+      "most exciting"
+     ],
+     "label": "8. the ___ holiday of my life",
+     "why": "Three-syllable adjectives take 'the most' + adjective."
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,215 @@
+{
+ "unit": "10c-discover-canada",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "canada",
+     "accept": [
+      "canada"
+     ],
+     "label": "1. Where do most polar bears live?",
+     "why": "The text says more than two-thirds of the world's polar bears live in Canada."
+    },
+    "g2": {
+     "correct": "transparent",
+     "accept": [
+      "transparent"
+     ],
+     "label": "2. Polar bear fur is actually ___",
+     "why": "The text says polar bear fur is actually transparent, not white."
+    },
+    "g3": {
+     "correct": "blubber",
+     "accept": [
+      "blubber"
+     ],
+     "label": "3. The fat layer is called ___",
+     "why": "The text says the thick layer of fat that keeps polar bears warm is called blubber."
+    },
+    "g4": {
+     "correct": "32km",
+     "accept": [
+      "32km"
+     ],
+     "label": "4. Detect prey from up to ___",
+     "why": "The text says polar bears can detect prey from up to 32km away."
+    },
+    "g5": {
+     "correct": "camouflage",
+     "accept": [
+      "camouflage"
+     ],
+     "label": "5. The Arctic fox changes colour for ___",
+     "why": "The text says the Arctic fox changes its fur colour for camouflage."
+    },
+    "g6": {
+     "correct": "sounds",
+     "accept": [
+      "sounds"
+     ],
+     "label": "6. \"Canary of the sea\" because of its ___",
+     "why": "The text says the beluga whale is called the 'canary of the sea' because of its sounds."
+    },
+    "g7": {
+     "correct": "melt",
+     "accept": [
+      "melt"
+     ],
+     "label": "7. Climate change causes sea ice to ___",
+     "why": "The text says climate change causes Arctic sea ice to melt."
+    },
+    "g8": {
+     "correct": "hunt",
+     "accept": [
+      "hunt"
+     ],
+     "label": "8. Fewer chances to ___",
+     "why": "The text says polar bears have fewer chances to hunt because of less sea ice."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "migrate",
+     "accept": [
+      "migrate"
+     ],
+     "label": "1. Every winter, caribou ___",
+     "why": "‘Every winter’ signals a habitual action, so the simple present ‘migrate’ is used."
+    },
+    "g2": {
+     "correct": "is swimming",
+     "accept": [
+      "is swimming"
+     ],
+     "label": "2. \"Look! A polar bear ___\"",
+     "why": "‘Look!’ signals something happening right now, so the present continuous ‘is swimming’ is used."
+    },
+    "g3": {
+     "correct": "start",
+     "accept": [
+      "start"
+     ],
+     "label": "3. Students usually ___ school",
+     "why": "‘Usually’ signals a habitual action, so the simple present ‘start’ is used."
+    },
+    "g4": {
+     "correct": "are studying",
+     "accept": [
+      "are studying"
+     ],
+     "label": "4. Right now, scientists ___",
+     "why": "‘Right now’ signals something happening at this moment, so the present continuous ‘are studying’ is used."
+    },
+    "g5": {
+     "correct": "changes",
+     "accept": [
+      "changes"
+     ],
+     "label": "5. The Arctic fox ___ colour twice a year",
+     "why": "‘Twice a year’ signals a habitual action, so the simple present ‘changes’ is used."
+    },
+    "g6": {
+     "correct": "is snowing",
+     "accept": [
+      "is snowing"
+     ],
+     "label": "6. \"It ___ heavily outside\"",
+     "why": "The context (‘we can't go for a walk today’) signals something happening right now, so the present continuous ‘is snowing’ is used."
+    },
+    "g7": {
+     "correct": "enjoy",
+     "accept": [
+      "enjoy"
+     ],
+     "label": "7. Many Canadians ___ outdoor activities",
+     "why": "A general truth about Canadians' habits uses the simple present ‘enjoy’."
+    },
+    "g8": {
+     "correct": "drop",
+     "accept": [
+      "drop"
+     ],
+     "label": "8. Temperatures sometimes ___ below -50°",
+     "why": "‘Sometimes… in winter’ signals a habitual/general truth, so the simple present ‘drop’ is used."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "has become",
+     "accept": [
+      "has become"
+     ],
+     "label": "1. Ice hockey ___ the most popular sport",
+     "why": "‘Since 1875’ signals an action continuing to now, so the present perfect ‘has become’ is used."
+    },
+    "g2": {
+     "correct": "have won",
+     "accept": [
+      "have won"
+     ],
+     "label": "2. Athletes ___ many medals",
+     "why": "‘Over the years’ signals an action continuing to now, so the present perfect ‘have won’ is used."
+    },
+    "g3": {
+     "correct": "has played",
+     "accept": [
+      "has played"
+     ],
+     "label": "3. My cousin ___ ice hockey since he was five",
+     "why": "‘Since he was five’ signals an action continuing to now, so the present perfect ‘has played’ is used."
+    },
+    "g4": {
+     "correct": "has competed",
+     "accept": [
+      "has competed"
+     ],
+     "label": "4. The team ___ in every Olympics since 1998",
+     "why": "‘Since 1998’ signals an action continuing to now, so the present perfect ‘has competed’ is used."
+    },
+    "g5": {
+     "correct": "have never tried",
+     "accept": [
+      "have never tried"
+     ],
+     "label": "5. \"I ___ curling\"",
+     "why": "‘Never’ with the present perfect describes an experience up to now."
+    },
+    "g6": {
+     "correct": "has hosted",
+     "accept": [
+      "has hosted"
+     ],
+     "label": "6. Canada ___ the Winter Olympics twice",
+     "why": "‘Twice so far’ signals an action continuing to now, so the present perfect ‘has hosted’ is used."
+    },
+    "g7": {
+     "correct": "have learned",
+     "accept": [
+      "have learned"
+     ],
+     "label": "7. Millions of children ___ to skate",
+     "why": "‘Over the decades’ signals an action continuing to now, so the present perfect ‘have learned’ is used."
+    },
+    "g8": {
+     "correct": "has just started",
+     "accept": [
+      "has just started"
+     ],
+     "label": "8. Our school ___ a new club",
+     "why": "‘Just’ with the present perfect shows something happened a very short time ago."
+    }
+   }
+  }
+ }
+}

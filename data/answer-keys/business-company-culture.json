@@ -1,0 +1,73 @@
+{
+ "unit": "business-company-culture",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Values, behaviors, and work environment",
+     "accept": [
+      "Values, behaviors, and work environment"
+     ],
+     "label": "1. What is company culture?",
+     "why": "The text says company culture includes values, behaviors, and work environment."
+    },
+    "g2": {
+     "correct": "Better talent",
+     "accept": [
+      "Better talent"
+     ],
+     "label": "2. What does employer brand attract?",
+     "why": "The text says companies with positive culture attract better talent."
+    },
+    "g3": {
+     "correct": "Employee retention",
+     "accept": [
+      "Employee retention"
+     ],
+     "label": "3. Strong company culture improves:",
+     "why": "The text says strong culture improves retention."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "values",
+     "accept": [
+      "values"
+     ],
+     "label": "1. Explains what it believes in",
+     "why": "A company's ‘values’ describe what it believes in, as opposed to its mission (purpose) or vision (future goals)."
+    },
+    "g2": {
+     "correct": "vision",
+     "accept": [
+      "vision"
+     ],
+     "label": "2. Describes what the company wants to become",
+     "why": "The text says vision describes future goals."
+    },
+    "g3": {
+     "correct": "Engagement",
+     "accept": [
+      "Engagement"
+     ],
+     "label": "3. Measures employee care about work",
+     "why": "The text says engagement measures if employees enjoy work."
+    },
+    "g4": {
+     "correct": "brand",
+     "accept": [
+      "brand"
+     ],
+     "label": "4. Helps attract talented candidates",
+     "why": "The text says employer brand is how companies attract talent."
+    }
+   }
+  }
+ }
+}
