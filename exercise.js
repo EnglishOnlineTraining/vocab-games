@@ -416,14 +416,53 @@ function attemptPoints(n) { return n <= 1 ? 1 : n === 2 ? 0.5 : n === 3 ? 0.25 :
  * is a real attempt. Once the gap is correct (done) it is frozen: further
  * checks neither add attempts nor change its earned points.
  */
-function recordGap(scoreKey, k, ok) {
+function recordGap(scoreKey, k, ok, given, expected) {
   if (!scoreKey) return;
   if (!state.attempts) state.attempts = {};
   var tries = state.attempts[scoreKey] = state.attempts[scoreKey] || {};
   var gap = tries[k] || (tries[k] = { n: 0, earned: 0, done: false });
   if (gap.done) return;
   gap.n += 1;
-  if (ok) { gap.earned = attemptPoints(gap.n); gap.done = true; }
+  if (ok) { gap.earned = attemptPoints(gap.n); gap.done = true; gap.given = null; }
+  // Keep the latest wrong answer and what was expected, so the submission can carry
+  // a ready-made wrong-answer list for the teacher (eolWrongSummary). The page is
+  // the only place that reliably knows both, which is why this is not recomputed
+  // server-side — see the note on eolWrongSummary.
+  else { gap.given = given; gap.expected = expected; }
+}
+
+/*
+ * The gaps the student still has wrong, as one readable line for the teacher.
+ *
+ * This is computed here, by the same code that marked the student, so the list can
+ * never disagree with the score they were shown. An earlier design re-graded the
+ * submission inside the Make scenario by fetching an answer key; that module failed
+ * for reasons that resisted diagnosis (a 404 key, a literal em dash and a function
+ * declaration were each ruled out by experiment on 2026-09-08), and every failure
+ * was silently masked by its Resume handler. Sending the answer removes the whole
+ * class of problem, and one operation per submission with it.
+ */
+function eolWrongSummary() {
+  var attempts = state.attempts || {};
+  var scores = state.scores || {};
+  var lines = [], graded = 0, unanswered = 0;
+  Object.keys(scores).forEach(function(sk) { graded += scores[sk].total || 0; });
+  Object.keys(attempts).forEach(function(sk) {
+    var tries = attempts[sk];
+    Object.keys(tries).forEach(function(k) {
+      var gap = tries[k];
+      if (gap.done) return;
+      lines.push(sk + ' ' + k + ': gave ' + (gap.given || '(blank)')
+                 + ', expected ' + (gap.expected == null ? '?' : gap.expected));
+    });
+  });
+  if (!graded) return '';                       // page has no auto-graded sections
+  Object.keys(scores).forEach(function(sk) {
+    var tries = attempts[sk] || {};
+    unanswered += (scores[sk].total || 0) - Object.keys(tries).length;
+  });
+  if (!lines.length && !unanswered) return 'All correct.';
+  return lines.join(' | ') + (unanswered ? (lines.length ? ' | ' : '') + unanswered + ' not answered' : '');
 }
 
 /* Sum the locked-in points recorded for a scoreKey (may be fractional). */
@@ -450,7 +489,7 @@ function checkDropdowns(ids, prefix, answers, fbId, scoreKey) {
     if (ok) { sel.className += ' gap-correct'; correct++; }
     else    { sel.className += ' gap-wrong';   wrong++;   }
     eolMarkGap(sel, ok);
-    recordGap(scoreKey, k, ok);
+    recordGap(scoreKey, k, ok, sel.value, answers[k]);
   });
   var total = ids.length;
   var recorded = correct;
@@ -501,7 +540,7 @@ function checkDropdownsMulti(ids, prefix, answers, fbId, scoreKey) {
     if (ok) { sel.className += ' gap-correct'; correct++; }
     else    { sel.className += ' gap-wrong';   wrong++;   }
     eolMarkGap(sel, ok);
-    recordGap(scoreKey, k, ok);
+    recordGap(scoreKey, k, ok, sel.value, acc.join(' / '));
   });
   var total = ids.length;
   var recorded = correct;
@@ -876,6 +915,10 @@ function submitToSheet() {
   btn.disabled = true;
   btn.textContent = 'Sending...';
   var payload = buildPayload();
+  // Added centrally so all framework pages carry it without a per-page edit. It is a
+  // string, so eolFlattenForMake passes it through untouched.
+  var wrongList = eolWrongSummary();
+  if (wrongList && payload.wrong == null) payload.wrong = wrongList;
   if (eolIsMakeTarget(SHEET_URL)) payload = eolFlattenForMake(payload);
 
   if (isTestMode()) {

@@ -144,10 +144,14 @@ const NODES = [
 //   test-payload-flatten.js  reads exercise.js only. It pins the shape the Make
 //                            webhook receives, including the (blank) marker for an
 //                            unanswered gap — the thing make-grader.js parses back.
+//   test-wrong-summary.js    reads exercise.js only. Pins eolWrongSummary(), the
+//                            wrong-answer list every submission now carries so the
+//                            Make scenarios need no grading module of their own.
 const VALIDATORS = [
   { id: 'validate-explanations', run: 'scripts/validate-explanations.js' },
   { id: 'test-scoring', run: 'test-scoring.js' },
   { id: 'test-payload-flatten', run: 'test-payload-flatten.js' },
+  { id: 'test-wrong-summary', run: 'test-wrong-summary.js' },
   { id: 'topic-pool', run: 'topic-pool.js' },
   { id: 'esl-grammar-pool', run: 'esl-grammar-pool.js' },
 ];
