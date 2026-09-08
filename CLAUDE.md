@@ -437,6 +437,25 @@ than gone. Note this also records *handled* errors, so `dlqCount` climbs on runs
 entirely, so it is not by itself evidence of a new fault. It was invisible before only
 because `dlq` was off.
 
+**⚠️ `scenarios_update` replaces the whole blueprint — never hand-assemble a module.**
+On 2026-09-08 both scenarios were rewritten by sending a blueprint built from each
+module's `mapper` alone. That dropped the Excel module's `metadata.expect` block — the
+55-entry spec declaring the row collection's shape — and its `metadata.interface`.
+Without the spec Make cannot size the row array, and Microsoft Graph rejects the write
+with *"Der Anzahl der Zeilen oder Spalten in der Eingabematrix entspricht nicht der
+Größe des Bereichs"* (earlier surfaced as `BundleValidationError: Validation failed for
+1 parameter(s)`).
+
+It is a nasty failure because **it saves cleanly and looks right in the editor**, and
+the run still reports the expected operation count — only the Excel step fails at
+Microsoft's end. Tell-tales: execution `status: 2` instead of `1`, `dlqCount` climbing,
+and transfer collapsing to ~430–520 bytes against ~1,700–6,000 on a healthy write.
+
+Always fetch with `scenarios_get`, edit that JSON, and send it back complete. And note
+the two tables label their answer columns differently — Year 7 uses lowercase
+`ex1`…`ex48`, Year 9 uppercase `Ex1`…`Ex48` — so the spec cannot be copied between
+them.
+
 **The Make account is on Core, not Pro** (`organizations_list` → `serviceName: "Core"`,
 10,000 operations/month, `priority: "low"`, `fulltext: false`). Core does lift the old
 two-active-scenario cap, which is what allows more scenarios at all.
