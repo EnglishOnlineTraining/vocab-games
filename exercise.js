@@ -461,7 +461,19 @@ function eolWrongSummary() {
     var tries = attempts[sk] || {};
     unanswered += (scores[sk].total || 0) - Object.keys(tries).length;
   });
-  if (!lines.length && !unanswered) return 'All correct.';
+  if (!lines.length && !unanswered) {
+    // "All correct." next to a score of 12/22 reads as a contradiction. Both are
+    // true — the score is attempt-weighted, this list is the final state — but the
+    // teacher sees them side by side in one Excel row, so say which it is.
+    var retried = 0;
+    Object.keys(attempts).forEach(function(sk) {
+      var t = attempts[sk];
+      Object.keys(t).forEach(function(k) { if (t[k].done && t[k].n > 1) retried++; });
+    });
+    if (!retried) return 'All correct.';
+    return 'All correct — ' + retried + ' of ' + graded + ' gap'
+      + (graded === 1 ? '' : 's') + ' took more than one try.';
+  }
   return lines.join(' | ') + (unanswered ? (lines.length ? ' | ' : '') + unanswered + ' not answered' : '');
 }
 
