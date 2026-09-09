@@ -249,9 +249,15 @@ Commit these via git push or the GitHub MCP fallback (same approach as 6a).
 
 #### 6c. Update WordPress
 
-The WordPress Activities page (ID `1763`) mirrors the GitHub activities hub. Use the WordPress
-MCP to check the current content. If the page already has a button for this category with the
-correct count, nothing to do. Otherwise, update the count in the button text.
+The WordPress Activities page (ID `1763`) carries one button per category with an
+`(N exercises)` count. Nothing in the repo can push it — GitHub Actions holds no WordPress
+credentials — so this step is manual, but **the numbers are not**.
+
+**`node scripts/build.js` has already computed them.** It writes `data/wordpress-1763.json`
+with the desired label for all fourteen counted buttons, straight from `data/exercises.json`.
+Read that file and make the live page match it. Never count exercises by hand: that is how six
+of the fourteen counts came to be wrong by 2026-09-09, Year 10 Gymnasium reading 20 against a
+real 27.
 
 **Do not use `page-sections.list`/`page-sections.replace` on this page — it always errors.**
 1763's live content is plain HTML with `wp-block-*` classes and no `<!-- wp:… -->` block
@@ -262,10 +268,9 @@ page. Use the documented safe procedure instead:
 1. Fetch the page with `pages.get` (or equivalent) using **`context: "edit"`** — never without
    it, or dynamic blocks come back as flattened front-end fallbacks and writing that back
    destroys them (this has broken live contact forms twice; see CLAUDE.md).
-2. Locate the button for this category in the fetched content and change only its `(N
-   exercises)` count — while you're there, spot-check every other hardcoded `(N exercises)`
-   count on the page against `data/exercises.json`/`node topic-pool.js`, since those drift
-   silently and nothing else catches it.
+2. Change only the label strings that differ from `data/wordpress-1763.json` — check all
+   fourteen, not just this category's, since the others drift silently too. Leave the
+   Grammatik-Themen, quiz and vocabulary buttons alone; that file does not describe them.
 3. Call `pages.update` with the **full edited content string** (the API only writes fields you
    send, but `content` must be the complete page, not a fragment).
 4. Verify by re-fetching with `context: "edit"` again and diffing against what you intended to

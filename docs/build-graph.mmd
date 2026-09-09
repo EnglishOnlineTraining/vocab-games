@@ -6,6 +6,8 @@ graph TD
   exercise_data["exercise-data<br/><small>scripts/build-exercise-data.js</small>"]
   answer_keys["answer-keys<br/><small>scripts/build-answer-keys.js</small>"]
   hub["hub<br/><small>scripts/build-hub.js</small>"]
+  category_hubs["category-hubs<br/><small>scripts/build-category-hubs.js</small>"]
+  wordpress_hub["wordpress-hub<br/><small>scripts/build-wordpress-hub.js</small>"]
   topic_pages["topic-pages<br/><small>scripts/build-topic-pages.js</small>"]
   head["head<br/><small>scripts/build-head.js</small>"]
   lastmod["lastmod<br/><small>scripts/build-lastmod.js</small>"]
@@ -14,8 +16,11 @@ graph TD
   quizzes --> answer_keys
   review --> answer_keys
   exercise_data --> hub
+  exercise_data --> category_hubs
+  exercise_data --> wordpress_hub
   exercise_data --> topic_pages
   hub --> head
+  category_hubs --> head
   topic_pages --> head
   quizzes --> head
   review --> head

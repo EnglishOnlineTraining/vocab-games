@@ -78,6 +78,33 @@ const NODES = [
     outputs: ['activities.html', 'index.html'],
   },
   {
+    id: 'category-hubs',
+    run: 'scripts/build-category-hubs.js',
+    needs: ['exercise-data'],
+    // The per-category hubs (`*-activities.html`) were the last hand-maintained
+    // link in the chain: a new exercise reached the registry, the filter index,
+    // the sitemap and the hub's own JSON-LD automatically, but its visible card
+    // did not. That is how 9g-australia-passive-forms.html ended up listed in
+    // 9g-activities.html's ItemList with no card a student could click.
+    //
+    // It reads *.html because a card for an exercise nobody has written one for
+    // is derived from that exercise's own page (its emoji and description).
+    inputs: ['data/exercises.json', 'data/hub-cards.json', '*.html'],
+    outputs: ['*-activities.html', 'data/hub-cards.json'],
+  },
+  {
+    id: 'wordpress-hub',
+    run: 'scripts/build-wordpress-hub.js',
+    needs: ['exercise-data'],
+    // The desired button labels for WordPress page 1763. This node writes a data
+    // file and nothing else: CI has no WordPress credentials and the WP MCP is a
+    // session tool, so the graph owns the answer and a session applies it. That
+    // is the whole point — the counts drift when nobody computes them (six of
+    // fourteen were wrong on 2026-09-09, Year 10 Gymnasium by seven).
+    inputs: ['data/exercises.json'],
+    outputs: ['data/wordpress-1763.json'],
+  },
+  {
     id: 'topic-pages',
     run: 'scripts/build-topic-pages.js',
     // Reads the same file as `hub` and writes a disjoint set. There is no edge
@@ -105,7 +132,7 @@ const NODES = [
     // inlines each page's own entry so exercise.js stops downloading all of
     // them. Nothing in the graph writes that file (it is hand-authored, via the
     // add-explanations skill), so it needs no edge — only the input.
-    needs: ['hub', 'topic-pages', 'quizzes', 'review', 'exercise-data'],
+    needs: ['hub', 'category-hubs', 'topic-pages', 'quizzes', 'review', 'exercise-data'],
     inputs: ['*.html', 'themen/*.html', 'data/exercises.json', 'data/topics.json',
              'data/explanations.json'],
     outputs: ['*.html', 'themen/*.html'],

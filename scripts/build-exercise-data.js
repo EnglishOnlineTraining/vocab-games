@@ -75,6 +75,10 @@ function schoolFromPrefix(f) {
   if (/^be-/.test(f)) return ['business', 'business'];
   if (/^quiz-/.test(f)) return ['quiz', 'quiz'];
   if (/^gr-/.test(f)) return ['grammar', 'grammar'];
+  // The ESL grammar series is its own audience (global ESL/EFL, not a German
+  // school year) and has its own hub, so it needs its own category — without one
+  // esl-articles.html fell into 'other' and no hub could claim it.
+  if (/^esl-/.test(f)) return ['esl', 'esl'];
   return ['other', 'other'];
 }
 function grabTitles(s, cls, tag) {

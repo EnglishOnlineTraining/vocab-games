@@ -1,0 +1,177 @@
+{
+ "unit": "8c-taxi-ride-nyc",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "right",
+     "accept": [
+      "right"
+     ],
+     "label": "…at the top. Decide and cite 1. The traffic on the Brooklyn Bridge is bad during rush hour."
+    },
+    "g2": {
+     "correct": "wrong",
+     "accept": [
+      "wrong"
+     ],
+     "label": "…h hour. — right wrong Cite the sentence (question 1) 2. David lives in downtown Manhattan."
+    },
+    "g3": {
+     "correct": "wrong",
+     "accept": [
+      "wrong"
+     ],
+     "label": "…estion 2) 3. In the 1920s the Empire State Building was the tallest building in the world."
+    },
+    "g4": {
+     "correct": "right",
+     "accept": [
+      "right"
+     ],
+     "label": "… the world. — right wrong Cite the sentence (question 3) 4. There's a zoo in Central Park."
+    },
+    "g5": {
+     "correct": "wrong",
+     "accept": [
+      "wrong"
+     ],
+     "label": "…tence (question 4) 5. The Metropolitan Museum of Art had 102 pieces of art when it opened."
+    },
+    "g6": {
+     "correct": "right",
+     "accept": [
+      "right"
+     ],
+     "label": "…ion 5) 6. David thinks that you can buy the best hot dogs in New York from a hot dog cart."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "shopping mall",
+     "accept": [
+      "shopping mall"
+     ],
+     "label": "…one out 1. public transport &middot; shopping mall &middot; rush hour &middot; traffic jam"
+    },
+    "g2": {
+     "correct": "subway",
+     "accept": [
+      "subway"
+     ],
+     "label": "…g mall rush hour traffic jam 2. skyline &middot; skyscraper &middot; subway &middot; tower"
+    },
+    "g3": {
+     "correct": "campsite",
+     "accept": [
+      "campsite"
+     ],
+     "label": "…craper subway tower 3. intersection &middot; campsite &middot; roadwork &middot; road sign"
+    },
+    "g4": {
+     "correct": "sidewalk",
+     "accept": [
+      "sidewalk"
+     ],
+     "label": "…site roadwork road sign 4. sightseeing &middot; sidewalk &middot; tourist &middot; visitor"
+    },
+    "m1": {
+     "correct": "construction site",
+     "accept": [
+      "construction site"
+     ],
+     "label": "…arking lot commuter construction site suburbs 1. a place where they are building something"
+    },
+    "m2": {
+     "correct": "suburbs",
+     "accept": [
+      "suburbs"
+     ],
+     "label": "…king lot commuter construction site suburbs 2. people live here, away from the city center"
+    },
+    "m3": {
+     "correct": "parking lot",
+     "accept": [
+      "parking lot"
+     ],
+     "label": "…ity center — parking lot commuter construction site suburbs 3. you can leave your car here"
+    },
+    "m4": {
+     "correct": "commuter",
+     "accept": [
+      "commuter"
+     ],
+     "label": "…— parking lot commuter construction site suburbs 4. a person who travels to work every day"
+    },
+    "r1": {
+     "correct": "Statue of Liberty",
+     "accept": [
+      "Statue of Liberty"
+     ],
+     "label": "…sion — words from earlier units 1. A famous statue on an island in New York harbour is the"
+    },
+    "r2": {
+     "correct": "Thanksgiving",
+     "accept": [
+      "Thanksgiving"
+     ],
+     "label": "…ite House . 2. The big American holiday in November, when families eat turkey together, is"
+    }
+   }
+  },
+  "exD": {
+   "prefix": "exD-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "subway",
+     "accept": [
+      "subway"
+     ],
+     "label": "…the American English form 1. In London you take the underground . In New York you take the"
+    },
+    "g2": {
+     "correct": "parking lot",
+     "accept": [
+      "parking lot"
+     ],
+     "label": "…metro line . 2. In Britain you leave your car in a car park . In the USA you leave it in a"
+    },
+    "g3": {
+     "correct": "downtown",
+     "accept": [
+      "downtown"
+     ],
+     "label": "… parking lot car station . 3. The British say town centre . David says he likes to work in"
+    },
+    "g4": {
+     "correct": "intersection",
+     "accept": [
+      "intersection"
+     ],
+     "label": "…k in — downtown midtown city centre Manhattan. 4. The British word crossroads is called an"
+    },
+    "g5": {
+     "correct": "elevator",
+     "accept": [
+      "elevator"
+     ],
+     "label": "…sh. 5. To get to the top of Rockefeller Center you take the British lift — or the American"
+    },
+    "g6": {
+     "correct": "color, theater, favorite",
+     "accept": [
+      "color, theater, favorite"
+     ],
+     "label": "…ift — or the American — elevator escalator uplift . 6. Which spelling is American English?"
+    }
+   }
+  }
+ }
+}

@@ -53,8 +53,8 @@ function langAttr(lang) { return lang ? ' lang="' + lang + '"' : ''; }
 // pages that carry English titles, and must not be marked.
 function deTitle(e) { return e.lang === 'de' && /[äöüÄÖÜß]/.test(e.title || ''); }
 
-const YEAR_LABEL = { 7: 'Year 7', 8: 'Year 8', 9: 'Year 9', 10: 'Year 10', msa: 'MSA', abitur: 'Abitur', uni: 'University', it: 'IT English', business: 'Business English', grammar: 'Grammar Practice', quiz: 'Quiz', other: 'Other' };
-const YEAR_ORDER = [7, 8, 9, 10, 'abitur', 'msa', 'uni', 'it', 'business', 'grammar', 'quiz', 'other'];
+const YEAR_LABEL = { 7: 'Year 7', 8: 'Year 8', 9: 'Year 9', 10: 'Year 10', msa: 'MSA', abitur: 'Abitur', uni: 'University', it: 'IT English', business: 'Business English', grammar: 'Grammar Practice', esl: 'ESL Grammar', quiz: 'Quiz', other: 'Other' };
+const YEAR_ORDER = [7, 8, 9, 10, 'abitur', 'msa', 'uni', 'it', 'business', 'grammar', 'esl', 'quiz', 'other'];
 const SCHOOL_LABEL = { gymnasium: 'Gymnasium', oberschule: 'Oberschule' };
 const SKILL_LABEL = { reading: 'Reading', grammar: 'Grammar', writing: 'Writing', vocabulary: 'Vocabulary', listening: 'Listening' };
 const SKILL_ORDER = ['grammar', 'reading', 'writing', 'vocabulary', 'listening'];
