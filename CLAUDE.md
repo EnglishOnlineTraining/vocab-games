@@ -816,6 +816,51 @@ of the framework is now true again — but it was wrong for months, so re-check 
 exists on no page — it only ever worked through its JS click handler. It now points at the active
 step's real id and `eolSyncActiveStep` keeps it in sync.
 
+### 5e-bis. Per-category hub cards — `scripts/build-category-hubs.js` (added 2026-09-09)
+
+**Never hand-edit between `HUBCARDS:START` and `HUBCARDS:END`** on a `*-activities.html`
+page — edit `data/hub-cards.json` and rerun `node scripts/build.js`.
+
+The per-category hubs were the last hand-maintained link in the chain. A new exercise
+reached `data/exercises.json`, the filter index on `activities.html`, `sitemap.xml` and
+even the hub's *own* JSON-LD `ItemList` automatically — but its **visible card** had to be
+typed in by hand. On 2026-09-09 `9g-australia-passive-forms.html` was found listed in
+`9g-activities.html`'s ItemList with no card a student could click: the page advertised the
+exercise to crawlers while hiding it from the class. Nothing generated the card list and
+nothing checked it. The same page's count read "14 exercises" against 16 cards.
+
+`build-category-hubs.js` now owns the card region on all **15** hubs (the 8 year hubs plus
+abitur, msa, uni, it, business, grammar, esl-grammar). An exercise in `exercises.json` with
+no card gets one **derived from its own page** — emoji from `.welcome-flag`, title from the
+registry, one-liner from the page's `<meta description>`, tag from its skills — and that
+entry is written back to `data/hub-cards.json`, so a new page appears on its hub with no
+extra step and the wording stays editable afterwards.
+
+- **`data/hub-cards.json` is the editorial source.** It was seeded from the hand-written
+  HTML, so all 211 existing cards kept their exact icon, title, one-line description and
+  tag. Verified card-by-card: no card content changed anywhere.
+- **A card whose href is not in `exercises.json` is a deliberate pin** and is kept in place
+  — that is what keeps the unlisted `9g-class-test-9ab.html` card on the Year 9 hub.
+- **Three card markups, all preserved.** `activity-card` (13 hubs), `exercise-card`
+  (`8c-`, inline styles) and `gr-topic-card` (the two grammar hubs, which carry a second
+  link to a `themen/` page). Each hub is generated in its own style; nothing was converted.
+- **`abitur-activities.html`'s four groups survive**, with the `#text-analysis`,
+  `#argumentative-writing`, `#writing-summaries` and `#mediation` ids the root page
+  deep-links to. A new pack joins the group its filename prefix names.
+- **`<div class="card-*">` was normalised to `<span>`.** The corpus had both, mixed inside
+  the same hubs (149 span, 35 div). `.activity-card` is `display:flex`, so both blockify
+  identically — a full-page screenshot of `10g-activities.html` before and after is
+  byte-identical.
+- **New category `esl`.** `esl-articles.html` was filed as `year: "other"`, so no hub could
+  claim it; `schoolFromPrefix()` in `build-exercise-data.js` now maps `esl-`.
+
+**What this does *not* cover: WordPress page 1763.** GitHub Actions has no WordPress
+credentials and the WP MCP is a session tool, so the button counts on 1763 can never be
+maintained by the build graph. That stays a manual step — see the traps at the top of this
+file before touching it.
+
+---
+
 ### 5f. The build graph — `scripts/pipeline.js` + `scripts/build.js` (added 2026-08-20)
 
 **Run `node scripts/build.js`.** That is the whole regeneration step now; the order lives in
