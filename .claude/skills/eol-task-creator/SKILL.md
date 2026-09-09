@@ -223,21 +223,36 @@ These steps are Shaun's responsibility:
 
 ---
 
-### Step 8 — Update WordPress
+### Step 8 — Update WordPress page 1763
 
-Use the WordPress MCP. Update page ID `1763` (Activities hub).
+WordPress page `1763` (`englishonline.training/activities/`) carries one **button per
+category** with an `(N exercises)` count — it does **not** carry a card per exercise. A new
+exercise therefore changes exactly one number, and nothing in the repo can push it: GitHub
+Actions holds no WordPress credentials, so this step is yours to run.
 
-Add a card for the new exercise under the correct year/school section. Link format:
+**`node scripts/build.js` computes the answer.** It writes `data/wordpress-1763.json`, the
+desired label for all fourteen counted buttons, straight from `data/exercises.json`. Your
+job is to make the live page match that file. Do not count anything by hand.
 
-```
-https://activities.englishonline.training/[unit-slug].html
-```
+1. Read the desired state: `cat data/wordpress-1763.json`.
+2. Fetch the live page **with `context: "edit"`** — `pages.get` with `id: 1763`. Without
+   that flag the API returns rendered HTML and writing it back destroys dynamic blocks.
+3. For each button whose label differs, replace **just that label string** in the content.
+   Change nothing else; the page also holds the Grammatik-Themen block and the quiz and
+   vocabulary buttons, none of which this file describes.
+4. Write it back with `pages.update`, sending `content` plus `id` only.
+5. **Verify**: re-fetch with `context: "edit"` and diff against what you intended to send.
+   `page-sections.list` is useless on 1763 — it errors with "classic/freeform" *before* any
+   write, because the live content is plain HTML with `wp-block-*` classes and no
+   `<!-- wp:… -->` delimiters.
 
-Use the custom domain. `englishonlinetraining.github.io/vocab-games/` still resolves,
-but it is the fallback and every canonical tag on the site points at
-`activities.englishonline.training`.
+**Never open 1763 in the WordPress block editor.** Its `_crdt_document` still holds an
+ancient snapshot (Year 7 "6 exercises", no Y8/Y10/Abitur/MSA sections) and opening it risks
+restoring that over the live page. An API write does not update the CRDT, so the editor
+stays exactly as dangerous. Full background: the "Known traps" section at the top of
+CLAUDE.md.
 
-After updating WordPress, tell Shaun the live URL. He just needs to push to GitHub and update the Apps Script.
+Then tell Shaun the live URL.
 
 ---
 

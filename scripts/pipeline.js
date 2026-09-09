@@ -93,6 +93,18 @@ const NODES = [
     outputs: ['*-activities.html', 'data/hub-cards.json'],
   },
   {
+    id: 'wordpress-hub',
+    run: 'scripts/build-wordpress-hub.js',
+    needs: ['exercise-data'],
+    // The desired button labels for WordPress page 1763. This node writes a data
+    // file and nothing else: CI has no WordPress credentials and the WP MCP is a
+    // session tool, so the graph owns the answer and a session applies it. That
+    // is the whole point — the counts drift when nobody computes them (six of
+    // fourteen were wrong on 2026-09-09, Year 10 Gymnasium by seven).
+    inputs: ['data/exercises.json'],
+    outputs: ['data/wordpress-1763.json'],
+  },
+  {
     id: 'topic-pages',
     run: 'scripts/build-topic-pages.js',
     // Reads the same file as `hub` and writes a disjoint set. There is no edge

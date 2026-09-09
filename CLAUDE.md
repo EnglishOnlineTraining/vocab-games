@@ -861,6 +861,32 @@ file before touching it.
 
 ---
 
+### 5e-ter. WordPress page 1763 — `scripts/build-wordpress-hub.js` (added 2026-09-09)
+
+**The graph computes the button labels; a session applies them.** CI holds no WordPress
+credentials and the WP MCP is a session tool, so the repo owns the *answer* and the push
+stays manual — but nobody counts by hand any more.
+
+`build-wordpress-hub.js` writes **`data/wordpress-1763.json`**: the desired label for all
+fourteen counted buttons on page 1763, derived from `data/exercises.json` (the same figure
+the per-category hub and root page show). The apply procedure lives in the
+"Update WordPress page 1763" step of `eol-task-creator`, `daily-exercise-draft` and
+`eol-vocab-practice-creator`, with the `context: "edit"` and never-the-block-editor rules
+inlined from the traps section above.
+
+**These counts drift badly when nobody computes them.** On 2026-09-09 six of the fourteen
+were wrong: Year 8 Gymnasium 12 against 13, Year 8 Oberschule 10/11, Year 9 Gymnasium
+**11 against 16**, Year 9 Oberschule 9/10, Year 10 Gymnasium **20 against 27**, Year 10
+Oberschule 13/14. The note elsewhere in this file that all thirteen were "correct as of
+2026-08-16" was true then and is not a reason to skip the check now — read
+`data/wordpress-1763.json` instead of trusting any sentence here.
+
+A vocabulary **test** is deliberately absent from `data/exercises.json`, so it moves no
+count and needs no WordPress change. The `esl-` series has no button on 1763 at all;
+adding one is a separate explicit ask.
+
+---
+
 ### 5f. The build graph — `scripts/pipeline.js` + `scripts/build.js` (added 2026-08-20)
 
 **Run `node scripts/build.js`.** That is the whole regeneration step now; the order lives in

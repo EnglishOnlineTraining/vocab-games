@@ -173,6 +173,23 @@ explanations to the wrong sentences.
 
 ---
 
+
+## Update WordPress page 1763
+
+A practice page is a normal entry in `data/exercises.json`, so it moves its year's count on
+WordPress page `1763` (`englishonline.training/activities/`). CI cannot push that — it holds no
+WordPress credentials — so it is a manual step, but the numbers are computed for you:
+`node scripts/build.js` writes `data/wordpress-1763.json` with the desired label for every
+counted button. Make the live page match it; never count by hand.
+
+Fetch with **`context: "edit"`**, change only the label strings that differ, write back with
+`pages.update`, then re-fetch and diff to verify. **Never open 1763 in the block editor** — see
+the "Known traps" section at the top of CLAUDE.md for why, and note `page-sections.list` errors
+on this page before any write, so it proves nothing.
+
+A vocabulary **test** is different: it is deliberately unlisted and absent from
+`data/exercises.json`, so it moves no count and needs no WordPress change.
+
 ## Things that have already gone wrong once
 
 - **The words-to-focus-on panel needs `state.attempts`, which only fills when the student presses Check.** A student who selects answers and clicks straight through gets an honest "you did not check any answers" rather than a false "nothing to focus on". Keep that message; it is not a bug.
