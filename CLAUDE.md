@@ -882,8 +882,8 @@ Oberschule 13/14. The note elsewhere in this file that all thirteen were "correc
 `data/wordpress-1763.json` instead of trusting any sentence here.
 
 A vocabulary **test** is deliberately absent from `data/exercises.json`, so it moves no
-count and needs no WordPress change. The `esl-` series has no button on 1763 at all;
-adding one is a separate explicit ask.
+count and needs no WordPress change. The `esl-` series gained its own button and section on
+1763 on 2026-09-09 (Shaun), so it is counted like the rest — fifteen buttons now, not fourteen.
 
 ---
 

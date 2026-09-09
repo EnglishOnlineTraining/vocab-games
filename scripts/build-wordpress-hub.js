@@ -47,6 +47,7 @@ const BUTTONS = [
   ['University',      'uni-activities.html',      '🎓 University',       n('uni')],
   ['IT English',      'it-activities.html',       '💻 IT English',       n('it')],
   ['Business English','business-activities.html', '💼 Business English', n('business')],
+  ['ESL Grammar',     'esl-grammar-activities.html', '🌍 ESL Grammar',     n('esl')],
   // Not generated in sync with anything on the page above it, which is exactly
   // why it went stale once already: it read "(2 exercises)" while 15 gr-* pages
   // were live.
