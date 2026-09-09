@@ -51,7 +51,7 @@ Before writing code, confirm with Shaun:
 
 ### Step 3 — Build the HTML
 
-Read `assets/_template.html` and replace every `TODO`.
+Read `_template.html` (repo root) and replace every `TODO`.
 
 **Key values to fill:**
 
@@ -267,7 +267,7 @@ to prevent — check it against the table above before delivering.
 ## Constants
 
 ```
-TEACHER_EMAIL = 'shaun.trezise@docemus.de'
+TEACHER_EMAIL = 'englishonlinetraining@pm.me'
 GitHub repo:   EnglishOnlineTraining/vocab-games
 GitHub Pages:  englishonlinetraining.github.io/vocab-games
 WordPress ID:  1763 (Activities page)

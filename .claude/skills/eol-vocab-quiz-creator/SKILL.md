@@ -118,9 +118,9 @@ the prefix is what every generator and hub uses to file the page:
 
 | Audience | Prefix | Example |
 |---|---|---|
-| University | `uni-` | `uni-business-english-vocabulary.html` |
-| Business English | `be-` | `be-negotiation-vocabulary.html` |
-| IT English | `it-` | `it-networking-vocabulary.html` |
+| University | `uni-` | `uni-<topic>-vocabulary.html` |
+| Business English | `be-` | `be-<topic>-vocabulary.html` |
+| IT English | `it-` | `it-<topic>-vocabulary.html` |
 | A school year group | `<year><track>-` | `9g-australia-vocab-test.html` |
 
 Save into the **repo root** (same directory as the template).

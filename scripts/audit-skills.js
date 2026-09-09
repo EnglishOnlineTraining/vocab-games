@@ -89,13 +89,39 @@ function findSkillFiles(dir) {
 // 1. Backtick-quoted paths: `_template.html`, `scripts/build.js`
 // 2. Code blocks: node scripts/foo.js, node topic-pool.js
 // 3. Explicit file references in prose
+// The extensions a reference may actually end in. Matching "any 1-5 letters"
+// instead swept up things that are not files at all - `document.title` and
+// `ex1..exN` both parsed as paths and were reported missing on every run.
+// Every extension the repo actually contains (git ls-files), longest first:
+// with "js" ahead of "json", ".json" matches as ".js" and every data/*.json
+// reference resolves to a file that does not exist.
+//
+// Matching a fixed list rather than "any 1-5 letters" is what stops
+// `document.title` and `ex1..exN` being reported as missing files forever. The
+// cost is that a reference ending in an extension not listed here is invisible
+// to the audit rather than reported - so when a new kind of asset lands in the
+// repo, add its extension here.
+const FILE_EXT = [
+  'webmanifest',
+  'html', 'json', 'yaml', 'webp',
+  'yml', 'css', 'txt', 'xml', 'png', 'svg', 'ico', 'mmd',
+  'js', 'md', 'py', 'gs',
+].join('|');
+
+// A path may not begin at a "-" or in the middle of a longer token. Without
+// this, "<topic>-vocab-practice.html" yields "-vocab-practice.html" and
+// "/path/to/data.json" yields "path/to/data.json" - fragments, not references.
+const START = '(?<![A-Za-z0-9_./-])(\\.?[a-zA-Z0-9_][a-zA-Z0-9_-]*';
+
 const PATH_PATTERNS = [
-  // Backticked file paths (with extensions)
-  /`([a-zA-Z0-9_./-]+\.[a-zA-Z]{1,5})`/g,
+  // Backticked file paths, e.g. `_template.html`, `scripts/build.js`
+  new RegExp('`(\\.?[a-zA-Z0-9_./-]+\\.(?:' + FILE_EXT + '))`', 'g'),
   // node <script> commands
-  /\bnode\s+([a-zA-Z0-9_./-]+\.js)\b/g,
-  // Bare file references with common extensions
-  /\b([a-zA-Z0-9_-]+(?:\/[a-zA-Z0-9_.-]+)*\.(?:html|js|json|css|yml|yaml))\b/g,
+  /\bnode\s+(\.?[a-zA-Z0-9_./-]+\.js)\b/g,
+  // Bare file references. The optional leading dot keeps dot-directories whole:
+  // without it ".claude/skills/x/y.js" was captured as "claude/skills/x/y.js",
+  // which resolves to nothing.
+  new RegExp(START + '(?:\\/[a-zA-Z0-9_.-]+)*\\.(?:' + FILE_EXT + '))\\b', 'g'),
 ];
 
 // Paths that are examples, not real files
@@ -134,12 +160,17 @@ function extractPaths(content) {
       if (IGNORE_API_REFS.has(p)) continue;
       if (IGNORE_PREFIXES.some(pfx => p.startsWith(pfx))) continue;
       if (p.includes('{{') || p.includes('$')) continue; // template vars
-      if (p.startsWith('.') && !p.startsWith('./')) continue; // .html class
+      // A bare ".ext" with no slash is a CSS class or a file type, not a path
+      // (".html", ".gap-select"). A dot-directory (".claude/...") is a path.
+      if (p.startsWith('.') && !p.startsWith('./') && !p.includes('/')) continue;
       // Skip things that look like CSS/code fragments, not files
       if (p.includes('(') || p.includes(')')) continue;
       // Skip illustrative examples preceded by "e.g." or "e.g.,"
       const before = content.slice(Math.max(0, m.index - 10), m.index);
       if (/e\.g\.[\s,`]*$/.test(before)) continue;
+      // "<data.json>", "<file.html>" - angle brackets mark a placeholder
+      // argument in these docs, never a real file.
+      if (before.endsWith('<')) continue;
       paths.add(p);
     }
   }
@@ -148,24 +179,32 @@ function extractPaths(content) {
 
 // ── Check files exist ───────────────────────────────────────────────────────
 
-function checkPath(relPath) {
-  // Try exact path from repo root
-  if (fs.existsSync(path.join(ROOT, relPath))) return { exists: true, resolved: relPath };
+// skillDir is the skill's own directory, relative to ROOT. A skill may ship its
+// own scripts and reference them relative to itself, so those have to be tried
+// as well as the repo root - eol-vocab-practice-creator does exactly that, and
+// its two scripts were reported missing on every run while sitting right there
+// in .claude/skills/eol-vocab-practice-creator/scripts/.
+function checkPath(relPath, skillDir) {
+  const candidates = [];
 
-  // Try without leading ./
-  const stripped = relPath.replace(/^\.\//, '');
-  if (fs.existsSync(path.join(ROOT, stripped))) return { exists: true, resolved: stripped };
+  // Exact path from repo root, and without a leading ./
+  candidates.push(relPath);
+  candidates.push(relPath.replace(/^\.\//, ''));
 
-  // Try with scripts/ prefix (skills often reference scripts by bare name)
-  if (!relPath.includes('/') && relPath.endsWith('.js')) {
-    const withScripts = 'scripts/' + relPath;
-    if (fs.existsSync(path.join(ROOT, withScripts))) return { exists: true, resolved: withScripts };
+  // Relative to the skill's own directory, with and without a scripts/ prefix
+  if (skillDir) {
+    candidates.push(path.posix.join(skillDir, relPath));
+    if (!relPath.includes('/')) candidates.push(path.posix.join(skillDir, 'scripts', relPath));
   }
 
-  // Try with .github/ prefix (workflow references)
-  if (relPath.startsWith('github/')) {
-    const withDot = '.' + relPath;
-    if (fs.existsSync(path.join(ROOT, withDot))) return { exists: true, resolved: withDot };
+  // Skills often reference a repo script by bare name
+  if (!relPath.includes('/') && relPath.endsWith('.js')) candidates.push('scripts/' + relPath);
+
+  // A leading dot lost to a word-boundary match (github/... , claude/...)
+  if (/^[a-z]+\//.test(relPath)) candidates.push('.' + relPath);
+
+  for (const c of candidates) {
+    if (c && fs.existsSync(path.join(ROOT, c))) return { exists: true, resolved: c };
   }
 
   // For glob patterns like *.html, themen/*.html — skip (not a single file)
@@ -215,8 +254,8 @@ function checkConstants(content, skillName) {
 
 // ── Runnable script validation ──────────────────────────────────────────────
 
-function checkScriptRunnable(scriptPath) {
-  const result = checkPath(scriptPath);
+function checkScriptRunnable(scriptPath, skillDir) {
+  const result = checkPath(scriptPath, skillDir);
   if (!result.exists) return { runnable: false, reason: 'file missing' };
   const full = path.join(ROOT, result.resolved);
   try {
@@ -246,12 +285,13 @@ function main() {
   for (const skillFile of skillFiles) {
     const relSkill = path.relative(ROOT, skillFile);
     const skillName = path.basename(path.dirname(skillFile));
+    const skillDir = path.relative(ROOT, path.dirname(skillFile));
     const content = fs.readFileSync(skillFile, 'utf8');
     const refs = extractPaths(content);
     const skillReport = { name: skillName, file: relSkill, refs: [], missing: [], warnings: [] };
 
     for (const ref of refs) {
-      const result = checkPath(ref);
+      const result = checkPath(ref, skillDir);
       totalRefs++;
       skillReport.refs.push({ path: ref, ...result });
       if (!result.exists) {
@@ -271,7 +311,7 @@ function main() {
     // Check referenced scripts are runnable
     const scripts = refs.filter(r => r.endsWith('.js') && !r.includes('*'));
     for (const s of scripts) {
-      const result = checkScriptRunnable(s);
+      const result = checkScriptRunnable(s, skillDir);
       if (!result.runnable) {
         report.scripts.push({ skill: skillName, script: s, ...result });
       }
