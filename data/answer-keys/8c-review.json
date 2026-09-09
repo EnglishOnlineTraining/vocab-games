@@ -6,60 +6,60 @@
    "multi": false,
    "gaps": {
     "g1": {
+     "correct": "campsite",
+     "accept": [
+      "campsite"
+     ],
+     "label": "1. Odd one out 3: intersection · campsite · roadwork · road sign"
+    },
+    "g2": {
      "correct": "Anchorage, Alaska",
      "accept": [
       "Anchorage, Alaska"
      ],
-     "label": "1. Where does Maria live?"
+     "label": "2. Where does Maria live?"
     },
-    "g2": {
+    "g3": {
      "correct": "gift",
      "accept": [
       "gift"
      ],
-     "label": "2. It was a"
+     "label": "3. It was a"
     },
-    "g3": {
+    "g4": {
      "correct": "is preparing",
      "accept": [
       "is preparing"
      ],
-     "label": "3. Jake’s mum"
+     "label": "4. Jake’s mum"
     },
-    "g4": {
+    "g5": {
      "correct": "role",
      "accept": [
       "role"
      ],
-     "label": "4. A famous"
+     "label": "5. A famous"
     },
-    "g5": {
+    "g6": {
      "correct": "which",
      "accept": [
       "which"
      ],
-     "label": "5. Blues is a type of music"
+     "label": "6. Blues is a type of music"
     },
-    "g6": {
+    "g7": {
+     "correct": "went",
+     "accept": [
+      "went"
+     ],
+     "label": "7. Last Saturday, Jake"
+    },
+    "g8": {
      "correct": "likes",
      "accept": [
       "likes"
      ],
-     "label": "6. Tyler"
-    },
-    "g7": {
-     "correct": "work",
-     "accept": [
-      "work"
-     ],
-     "label": "7. it is hard"
-    },
-    "g8": {
-     "correct": "decorations",
-     "accept": [
-      "decorations"
-     ],
-     "label": "8. lights and colours you put up"
+     "label": "8. Tyler"
     }
    }
   },
@@ -68,60 +68,60 @@
    "multi": false,
    "gaps": {
     "g1": {
+     "correct": "work",
+     "accept": [
+      "work"
+     ],
+     "label": "1. it is hard"
+    },
+    "g2": {
+     "correct": "decorations",
+     "accept": [
+      "decorations"
+     ],
+     "label": "2. lights and colours you put up"
+    },
+    "g3": {
      "correct": "It was exciting",
      "accept": [
       "It was exciting"
      ],
-     "label": "1. What did Lisa think about Times Square?"
+     "label": "3. What did Lisa think about Times Square?"
     },
-    "g2": {
-     "correct": "went",
+    "g4": {
+     "correct": "right",
      "accept": [
-      "went"
+      "right"
      ],
-     "label": "2. Last Saturday, Jake"
+     "label": "4. David thinks you can buy the best hot dogs from a hot dog cart."
     },
-    "g3": {
+    "g5": {
      "correct": "Raw materials are collected",
      "accept": [
       "Raw materials are collected"
      ],
-     "label": "3. First step of a product life cycle"
+     "label": "5. First step of a product life cycle"
     },
-    "g4": {
+    "g6": {
      "correct": "parks",
      "accept": [
       "parks"
      ],
-     "label": "4. bigger than many"
+     "label": "6. bigger than many"
     },
-    "g5": {
+    "g7": {
      "correct": "play",
      "accept": [
       "play"
      ],
-     "label": "5. Jake and his friends"
+     "label": "7. Jake and his friends"
     },
-    "g6": {
+    "g8": {
      "correct": "history",
      "accept": [
       "history"
      ],
-     "label": "6. A rich"
-    },
-    "g7": {
-     "correct": "who",
-     "accept": [
-      "who"
-     ],
-     "label": "7. Louis Armstrong was a musician"
-    },
-    "g8": {
-     "correct": "vet",
-     "accept": [
-      "vet"
-     ],
-     "label": "8. Maria wants to be a"
+     "label": "8. A rich"
     }
    }
   },
@@ -130,60 +130,60 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "cleaning",
+     "correct": "who",
      "accept": [
-      "cleaning"
+      "who"
      ],
-     "label": "1. Our guide suggested"
+     "label": "1. Louis Armstrong was a musician"
     },
     "g2": {
-     "correct": "parade",
-     "accept": [
-      "parade"
-     ],
-     "label": "2. a long"
-    },
-    "g3": {
-     "correct": "ate",
-     "accept": [
-      "ate"
-     ],
-     "label": "3. Her brother"
-    },
-    "g4": {
      "correct": "Does",
      "accept": [
       "Does"
      ],
-     "label": "4."
+     "label": "2."
+    },
+    "g3": {
+     "correct": "vet",
+     "accept": [
+      "vet"
+     ],
+     "label": "3. Maria wants to be a"
+    },
+    "g4": {
+     "correct": "cleaning",
+     "accept": [
+      "cleaning"
+     ],
+     "label": "4. Our guide suggested"
     },
     "g5": {
+     "correct": "parade",
+     "accept": [
+      "parade"
+     ],
+     "label": "5. a long"
+    },
+    "g6": {
+     "correct": "ate",
+     "accept": [
+      "ate"
+     ],
+     "label": "6. Her brother"
+    },
+    "g7": {
+     "correct": "Thanksgiving",
+     "accept": [
+      "Thanksgiving"
+     ],
+     "label": "7. Revision 2: American holiday in November"
+    },
+    "g8": {
      "correct": "using",
      "accept": [
       "using"
      ],
-     "label": "5. We should avoid"
-    },
-    "g6": {
-     "correct": "quickest",
-     "accept": [
-      "quickest"
-     ],
-     "label": "6. the"
-    },
-    "g7": {
-     "correct": "is talking",
-     "accept": [
-      "is talking"
-     ],
-     "label": "7. Dad"
-    },
-    "g8": {
-     "correct": "destination",
-     "accept": [
-      "destination"
-     ],
-     "label": "8. A popular"
+     "label": "8. We should avoid"
     }
    }
   }

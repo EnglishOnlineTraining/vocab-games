@@ -21,6 +21,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const vm = require('vm');
 
 const ROOT = path.resolve(__dirname, '..');
 const STATE_PATH = path.join(ROOT, 'data', 'grade-submission-state.json');
@@ -80,6 +81,48 @@ const EXPLANATIONS = JSON.parse(
 
 // ── Grade a single submission ───────────────────────────────────────────────
 
+/*
+ * The submissions that actually arrive from Make carry each section as the
+ * FLATTENED string eolFlat() builds — "g1: right | g2: wrong | c1: its right" —
+ * not as the nested object the page holds in memory. Reading only the object
+ * form scored every real row 0/22 with "Gave: (blank)" on every gap, because
+ * payload.exB was a string and payload.exB.g1 was undefined.
+ * "(blank)" is eolFlat's own marker for an empty answer, so it maps back to ''.
+ */
+function parseFlatSection(str) {
+  const out = {};
+  String(str).split(' | ').forEach((pair) => {
+    const at = pair.indexOf(': ');
+    if (at === -1) return;
+    const k = pair.slice(0, at).trim();
+    const v = pair.slice(at + 2).trim();
+    if (k) out[k] = v === '(blank)' ? '' : v;
+  });
+  return out;
+}
+
+/*
+ * The Note comes from exercise.js's own GRADE_TABLE/lookupGrade, lifted with vm
+ * the same way scripts/check-grade-table.js does it.
+ *
+ * This script used to band the percentage by hand (>=91 Note 1, >=75 Note 2 …)
+ * under a comment claiming it matched exercise.js. It did not: it could return a
+ * Note 6, which the official Punktetabelle on the pages does not have, and it
+ * labelled Note 4 "Ausreichend" where the pages say "Genügend". The same
+ * submission therefore graded differently depending on which side you asked.
+ */
+const GRADER = (() => {
+  const src = fs.readFileSync(path.join(__dirname, '..', 'exercise.js'), 'utf8');
+  const table = src.match(/GRADE_TABLE\s*=\s*(\[[\s\S]*?\]);/);
+  const labels = src.match(/GRADE_LABELS\s*=\s*(\[[\s\S]*?\]);/);
+  const fn = src.match(/(function lookupGrade\(earned, possible\) \{[\s\S]*?\n\})/);
+  if (!table || !labels || !fn) throw new Error('cannot read GRADE_TABLE/lookupGrade from exercise.js');
+  const ctx = {};
+  vm.createContext(ctx);
+  vm.runInContext(`var GRADE_TABLE=${table[1]};var GRADE_LABELS=${labels[1]};${fn[1]}`, ctx);
+  return ctx;
+})();
+
 function gradeSubmission(payload) {
   const unit = payload.unit;
   if (!unit) return { error: 'No unit in payload' };
@@ -111,8 +154,11 @@ function gradeSubmission(payload) {
       // Find the student's answer in the payload
       // Submissions nest answers under the scoreKey or use flat keys
       let studentAnswer = null;
-      if (payload[scoreKey] && typeof payload[scoreKey] === 'object') {
-        studentAnswer = payload[scoreKey][gapId] || payload[scoreKey][fullId];
+      const sectionPayload = typeof payload[scoreKey] === 'string'
+        ? parseFlatSection(payload[scoreKey])
+        : payload[scoreKey];
+      if (sectionPayload && typeof sectionPayload === 'object') {
+        studentAnswer = sectionPayload[gapId] || sectionPayload[fullId];
       }
       if (studentAnswer == null) {
         studentAnswer = payload[fullId] || payload[gapId];
@@ -146,13 +192,9 @@ function gradeSubmission(payload) {
 
   // Grade using the BAO Punktetabelle logic (same as exercise.js)
   const pct = totalGaps > 0 ? (totalCorrect / totalGaps) * 100 : 0;
-  let note, label;
-  if (pct >= 91) { note = 1; label = 'Sehr gut'; }
-  else if (pct >= 75) { note = 2; label = 'Gut'; }
-  else if (pct >= 60) { note = 3; label = 'Befriedigend'; }
-  else if (pct >= 45) { note = 4; label = 'Ausreichend'; }
-  else if (pct >= 20) { note = 5; label = 'Mangelhaft'; }
-  else { note = 6; label = 'Ungenügend'; }
+  const g = GRADER.lookupGrade(totalCorrect, totalGaps) || {};
+  const note = g.note;
+  const label = g.label;
 
   return {
     unit,
