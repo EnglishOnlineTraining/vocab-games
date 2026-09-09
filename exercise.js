@@ -329,7 +329,7 @@ function goToStep(n) {
   if (n > maxStepReached) return;
   var current = document.querySelector('.step.active');
   if (current) { var curN = parseInt(current.id.replace('step-', ''), 10); saveStep(curN); }
-  if (n === TOTAL_STEPS) { buildSummary(); }
+  if (n === TOTAL_STEPS) { eolAutoScoreUnchecked(); buildSummary(); }
   showStep(n);
 }
 
@@ -343,7 +343,7 @@ function nextStep(n) {
   }
   clearErr(n);
   saveStep(n);
-  if (n === TOTAL_STEPS - 1) { buildSummary(); }
+  if (n === TOTAL_STEPS - 1) { eolAutoScoreUnchecked(); buildSummary(); }
   showStep(n + 1);
 }
 
@@ -476,6 +476,55 @@ function recordedPoints(scoreKey) {
 
 /* Trim a possibly-fractional point total to a tidy string (e.g. 3.25, 5). */
 function fmtPts(x) { return (Math.round(x * 100) / 100).toString(); }
+
+/*
+ * Score any auto-gradable section the student never pressed Check on.
+ *
+ * Scores only existed as a side effect of checkDropdowns(), so a student who
+ * worked through the whole exercise and submitted without ever pressing Check
+ * arrived as "(no auto-graded sections)" — 22 answered gaps, no score, nothing
+ * for the teacher to mark against. That is what happened to a real 8c
+ * submission; re-graded from the raw answers it was 12/22.
+ *
+ * The answers are read from this page's own EXPLAIN block (the same key that
+ * feeds the inline explanations), NOT by calling the page's checkEx* functions:
+ * those are named inconsistently across the corpus, some take arguments, and
+ * some pages define unrelated check* globals — checkDevTools() among them —
+ * that must never be fired off a scan.
+ *
+ * This can only raise a score, never lower one: sections the student did check
+ * are skipped outright, and an unchecked section contributes 0 today. Gaps are
+ * fed through recordGap() like any other attempt, so an unchecked-but-correct
+ * gap scores as a first attempt — full marks — which is what it is.
+ *
+ * Silent by design: no gap colouring, no feedback text. The student is on their
+ * way out of the exercise, not being taught here.
+ */
+function eolAutoScoreUnchecked() {
+  var key = eolExplainForPage();
+  if (!key) return;                              // unit has no answer key on the page
+  if (!state.scores) state.scores = {};
+  Object.keys(key).forEach(function(sk) {
+    if (state.scores[sk]) return;                // already checked — leave it alone
+    var section = key[sk] || {};
+    var gaps = section.gaps || {};
+    var ids = Object.keys(gaps);
+    if (!ids.length) return;
+    var prefix = section.prefix != null ? section.prefix : (sk + '-');
+    var seen = 0;
+    ids.forEach(function(k) {
+      var el = document.getElementById(prefix + k);
+      if (!el) return;                           // not a gap on this page
+      seen++;
+      var given = String(el.value == null ? '' : el.value).trim();
+      if (!given) return;                        // blank counts as unanswered, as when checking
+      var accept = gaps[k].accept || [gaps[k].correct];
+      var ok = accept.some(function(a) { return given === String(a).trim(); });
+      recordGap(sk, k, ok, given, gaps[k].correct);
+    });
+    if (seen) state.scores[sk] = { correct: recordedPoints(sk), total: ids.length };
+  });
+}
 
 function checkDropdowns(ids, prefix, answers, fbId, scoreKey) {
   var correct = 0, wrong = 0, empty = 0;
