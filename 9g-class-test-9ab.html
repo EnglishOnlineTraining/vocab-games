@@ -109,6 +109,10 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); min-
 .btn-outline:hover { background: var(--blue); color: #fff; }
 .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
 .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+.checkbox-row { display:flex; align-items:flex-start; gap:.6rem; margin-top:.9rem; font-size:.86rem; }
+.checkbox-row input { margin-top:.2rem; width:18px; height:18px; flex-shrink:0; }
+.checkbox-row label { line-height:1.4; }
+#extra-time-note { font-size:.78rem; color:#1f5d5b; margin-top:.3rem; display:none; }
 .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
 
 .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
@@ -262,6 +266,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <label class="form-label" for="inp-class">Your class</label>
         <input class="form-input" type="text" id="inp-class" placeholder="e.g. 9A or 9B" autocomplete="off">
       </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="inp-extra-time">
+        <label for="inp-extra-time">I have approved extra time (+10%).</label>
+      </div>
+      <div id="extra-time-note"></div>
       <div id="welcome-error" class="feedback err"></div>
       <button class="btn btn-gold btn-block" onclick="goRules()">Continue to Test Rules →</button>
     </div>
@@ -275,7 +284,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="card-title">📋 Test Rules — Please Read Carefully</div>
       <p style="font-size:.9rem;margin-bottom:.5rem">The timer starts the moment you press <strong>Start Test</strong> below. It cannot be paused.</p>
       <ul class="rule-list">
-        <li>⏱ You have <strong>60 minutes</strong> for all 5 sections. The test submits automatically when time runs out.</li>
+        <li>⏱ You have <strong id="rules-time">60 minutes</strong> for all 5 sections. The test submits automatically when time runs out.</li>
         <li class="red">🚫 <strong>Copy and paste is disabled.</strong> Right-click and browser developer tools are also blocked.</li>
         <li class="red">🚫 <strong>Do not switch tabs or windows.</strong> Every switch is recorded and sent to your teacher.</li>
         <li>✅ You can move freely between sections and submit early once you're happy with your answers.</li>
@@ -283,7 +292,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li>👤 Work alone and in silence, exactly as you would for the paper version of this test.</li>
       </ul>
       <div class="notice">⚠️ By clicking <strong>Start Test</strong> you confirm this is your own independent work, completed without help or AI tools.</div>
-      <button class="btn btn-primary btn-block" onclick="startExam()">▶ Start Test — begin 60-minute timer</button>
+      <button class="btn btn-primary btn-block" onclick="startExam()">▶ Start Test — begin <span id="start-btn-mins">60</span>-minute timer</button>
     </div>
   </div>
 </div>
@@ -578,7 +587,8 @@ var UNIT          = '9g-class-test-9ab';
 var SHEET_URL     = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj';
 var TEACHER_EMAIL = 'englishonlinetraining@pm.me';
 var maxStepReached = 0;
-var EXAM_MINS     = 60;
+var BASE_EXAM_MINS = 60;
+var EXAM_MINS     = BASE_EXAM_MINS;   // +10% when extra time is approved
 var TOTAL_STEPS   = 5;
 
 /* ===================== ANSWER KEYS (auto-graded sections) ===================== */
@@ -596,7 +606,7 @@ var S4_KEY = {
 var S5A_KEY = { 1:'right', 2:'wrong', 3:'right', 4:'notintext', 5:'right', 6:'right' };
 
 /* ===================== STATE ===================== */
-var name='', cls='', currentStep=1;
+var name='', cls='', extraTime=false, currentStep=1;
 var sid='', t0=null, tabN=0, pasteN=0, anomalyN=0, devToolsFlagged=false, timerID=null;
 var snapshots=[];
 
@@ -614,6 +624,10 @@ function goRules(){
   var err = document.getElementById('welcome-error');
   if(!name || !cls){ err.textContent='Please enter both your name and your class.'; err.classList.add('show'); return; }
   err.classList.remove('show');
+  extraTime = document.getElementById('inp-extra-time').checked;
+  EXAM_MINS = extraTime ? Math.round(BASE_EXAM_MINS * 1.1) : BASE_EXAM_MINS;
+  document.getElementById('rules-time').textContent = EXAM_MINS + ' minutes';
+  document.getElementById('start-btn-mins').textContent = EXAM_MINS;
   show('s-rules');
 }
 
@@ -811,6 +825,7 @@ function doSubmit(){
 
   var payload = {
     name: name, cls: cls, unit: UNIT,
+    extra_time: extraTime,
     ex1: eolFlat(ans.s1),
     ex2: eolFlat(ans.s2),
     ex3: eolFlat(ans.s3a),
@@ -866,7 +881,14 @@ function copyAnswers(){
 }
 
 /* ===================== INIT ===================== */
-document.addEventListener('DOMContentLoaded', function(){ show('s-welcome'); });
+document.addEventListener('DOMContentLoaded', function(){
+  show('s-welcome');
+  document.getElementById('inp-extra-time').addEventListener('change', function(){
+    var note = document.getElementById('extra-time-note');
+    if(this.checked){ note.textContent = 'Your test time will be extended by 10% — '+Math.round(BASE_EXAM_MINS*1.1)+' minutes.'; note.style.display='block'; }
+    else { note.style.display='none'; }
+  });
+});
 </script>
 
 </body>

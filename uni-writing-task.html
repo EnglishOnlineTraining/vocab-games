@@ -201,6 +201,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <input type="text" id="inp-group" placeholder="e.g. English Communication Skills Online" autocomplete="off">
       </div>
 
+      <div class="form-group" style="display:flex;align-items:flex-start;gap:9px;margin-top:14px">
+        <input type="checkbox" id="inp-extra-time" style="width:18px;height:18px;margin-top:2px;flex-shrink:0">
+        <label for="inp-extra-time" style="display:inline;font-weight:400;margin:0;line-height:1.4">I have approved extra time (+10%).</label>
+      </div>
+      <div id="extra-time-note" style="font-size:.8rem;color:#2b7a78;margin-top:-8px;margin-bottom:12px;display:none"></div>
       <div id="reg-err" class="alert alert-danger">Please enter both your name and your course before continuing.</div>
 
       <button class="btn btn-primary" onclick="goRules()">Continue →</button>
@@ -216,7 +221,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p>Read these rules carefully before starting. The timer begins the moment you press <em>Start</em>.</p>
 
       <ul class="rule-list">
-        <li>⏱ You have <strong>60 minutes</strong>. The timer cannot be paused or extended.</li>
+        <li>⏱ You have <strong id="rules-time">60 minutes</strong>. Once it starts, the timer cannot be paused.</li>
         <li class="red">🚫 <strong>Copy and paste is disabled.</strong> All text must be typed by hand.</li>
         <li class="red">🚫 <strong>Do not switch tabs, open other windows, or use other applications.</strong> Every tab switch is logged and sent to your teacher.</li>
         <li class="red">🚫 <strong>Do not use AI tools</strong> (ChatGPT, translation engines, grammar checkers, etc.) during the assessment.</li>
@@ -232,7 +237,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;align-items:center">
-        <button class="btn btn-primary" onclick="startExam()">▶ Start — begin 60-minute timer</button>
+        <button class="btn btn-primary" onclick="startExam()">▶ Start — begin <span id="start-btn-mins">60</span>-minute timer</button>
         <button class="btn btn-outline" id="fs-btn" onclick="goFullscreen()">🖥 Enter full screen</button>
       </div>
     </div>
@@ -329,7 +334,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 const UNIT        = 'uni-writing-task';
 const SHEET_URL   = 'https://script.google.com/macros/s/AKfycbxaeNN6hO0dIXhpROUBoMWWHWBPLcKCRw6bNsygWHQPRFtlhf0ccIuv60MTB0xNeE6l/exec';
 const EMAIL       = 'sptrezise@proton.me';
-const EXAM_MINS   = 60;
+const BASE_EXAM_MINS = 60;
+let EXAM_MINS = BASE_EXAM_MINS;   // +10% when extra time is approved
 const GATE_MINS   = 10;
 const MIN_W       = 200;
 const MAX_W       = 320;
@@ -366,7 +372,7 @@ const SCENARIOS = [
 /* ================================================================
    STATE
 ================================================================ */
-let sName='', sGroup='', sid='', scenario=null;
+let sName='', sGroup='', sid='', scenario=null, extraTime=false;
 let t0=null, tabN=0, pasteN=0, anomalyN=0;
 let gateOpen=false, timerID=null;
 let lastLen=0, lastT=Date.now();
@@ -386,9 +392,19 @@ function goRules(){
   sGroup=document.getElementById('inp-group').value.trim();
   if(!sName||!sGroup){document.getElementById('reg-err').classList.add('show');return}
   document.getElementById('reg-err').classList.remove('show');
+  extraTime=document.getElementById('inp-extra-time').checked;
+  EXAM_MINS=extraTime?Math.round(BASE_EXAM_MINS*1.1):BASE_EXAM_MINS;
+  document.getElementById('rules-time').textContent=EXAM_MINS+' minutes';
+  document.getElementById('start-btn-mins').textContent=EXAM_MINS;
+  document.getElementById('timer-display').textContent=String(EXAM_MINS).padStart(2,'0')+':00';
   show('s-rules');
 }
 document.getElementById('inp-group').addEventListener('keydown',e=>{if(e.key==='Enter')goRules()});
+document.getElementById('inp-extra-time').addEventListener('change',function(){
+  const note=document.getElementById('extra-time-note');
+  if(this.checked){note.textContent='Your test time will be extended by 10% — '+Math.round(BASE_EXAM_MINS*1.1)+' minutes.';note.style.display='block'}
+  else{note.style.display='none'}
+});
 
 /* ================================================================
    FULL SCREEN

@@ -455,6 +455,58 @@ var S3_KEY = {
   9:'Personification', 10:'Metaphor', 11:'Simile', 12:'Alliteration', 13:'Hyperbole', 14:'Imagery', 15:'Symbolism', 16:'Irony'
 };
 
+/* ===================== GRADE TABLE (Punktetabelle) =====================
+   Verbatim copy of the shared table in exercise.js — this page is
+   self-contained and does not load the framework. scripts/check-grade-table.js
+   fails the build if this drifts from the shared copy, so edit it there. */
+var GRADE_TABLE = [
+  [100,96,80,60,45,16],[99,96,80,60,45,16],[98,95,79,59,45,16],[97,94,78,59,44,16],
+  [96,93,77,58,44,16],[95,92,76,57,43,16],[94,91,76,57,43,16],[93,90,75,56,42,15],
+  [92,89,74,56,42,15],[91,88,73,55,41,15],[90,87,72,54,41,15],[89,86,72,54,41,15],
+  [88,85,71,53,40,15],[87,84,70,53,40,14],[86,83,69,52,39,14],[85,82,68,51,39,14],
+  [84,81,68,51,38,14],[83,80,67,50,38,14],[82,79,66,50,37,14],[81,78,65,49,37,13],
+  [80,77,64,48,36,13],[79,76,64,48,36,13],[78,75,63,47,36,13],[77,74,62,47,35,13],
+  [76,73,61,46,35,13],[75,72,60,45,34,12],[74,72,60,45,34,12],[73,71,59,44,33,12],
+  [72,70,58,44,33,12],[71,69,57,43,32,12],[70,68,56,42,32,12],[69,67,56,42,32,12],
+  [68,66,55,41,31,11],[67,65,54,41,31,11],[66,64,53,40,30,11],[65,63,52,39,30,11],
+  [64,62,52,39,29,11],[63,61,51,38,29,11],[62,60,50,38,28,10],[61,59,49,37,28,10],
+  [60,58,48,36,27,10],[59,57,48,36,27,10],[58,56,47,35,27,10],[57,55,46,35,26,10],
+  [56,54,45,34,26,9],[55,53,44,33,25,9],[54,52,44,33,25,9],[53,51,43,32,24,9],
+  [52,50,42,32,24,9],[51,49,41,31,23,9],[50,48,40,30,23,8],[49,48,40,30,23,8],
+  [48,47,39,29,22,8],[47,46,38,29,22,8],[46,45,37,28,21,8],[45,44,36,27,21,8],
+  [44,43,36,27,20,8],[43,42,35,26,20,7],[42,41,34,26,19,7],[41,40,33,25,19,7],
+  [40,39,32,24,18,7],[39,38,32,24,18,7],[38,37,31,23,18,7],[37,36,30,23,17,6],
+  [36,35,29,22,17,6],[35,34,28,21,16,6],[34,33,28,21,16,6],[33,32,27,20,15,6],
+  [32,31,26,20,15,6],[31,30,25,19,14,5],[30,29,24,18,14,5],[29,28,24,18,14,5],
+  [28,27,23,17,13,5],[27,26,22,17,13,5],[26,25,21,16,12,5],[25,24,20,15,12,4],
+  [24,24,20,15,11,4],[23,23,19,14,11,4],[22,22,18,14,10,4],[21,21,17,13,10,4],
+  [20,20,16,12,9,4],[19,19,16,12,9,4],[18,18,15,11,9,3],[17,17,14,11,8,3],
+  [16,16,13,10,8,3],[15,15,12,9,7,3],[14,14,12,9,7,3],[13,13,11,8,6,3],
+  [12,12,10,8,6,2],[11,11,9,7,5,2],[10,10,8,6,5,2]
+];
+var GRADE_LABELS = ['Sehr gut', 'Gut', 'Befriedigend', 'Genügend', 'Nicht genügend'];
+function lookupGrade(earned, possible) {
+  if (!possible) return null;
+  var score, maxPts;
+  if (possible < 10) {
+    maxPts = 10;
+    score = Math.round((earned / possible) * 10);
+  } else if (possible > 100) {
+    maxPts = 100;
+    score = Math.round((earned / possible) * 100);
+  } else {
+    maxPts = possible;
+    score = earned;
+  }
+  score = Math.max(0, Math.min(maxPts, score));
+  var row = GRADE_TABLE.filter(function(r) { return r[0] === maxPts; })[0];
+  if (!row) return null;
+  for (var i = 1; i <= 5; i++) {
+    if (score >= row[i]) return { note: i, label: GRADE_LABELS[i - 1] };
+  }
+  return { note: 5, label: GRADE_LABELS[4] };
+}
+
 /* ===================== STATE ===================== */
 var name='', cls='', extraTime=false, currentStep=1;
 var sid='', t0=null, tabN=0, pasteN=0, anomalyN=0, devToolsFlagged=false, translationFlagged=false, timerID=null;
@@ -690,12 +742,15 @@ function doSubmit(){
   snap();
   var ans = collect();
   var grade = gradeAll(ans);
+  var note = lookupGrade(grade.score, grade.max);
   var elapsed = Math.round((Date.now()-t0)/1000);
   var m = Math.floor(elapsed/60), s = elapsed%60;
 
   var payload = {
     name: name, cls: cls, unit: UNIT,
     extra_time: extraTime,
+    score: grade.score + ' / ' + grade.max,
+    grade: note ? ('Note ' + note.note + ' (' + note.label + ')') : '',
     ex1: eolFlat(ans.s1),
     ex2: eolFlat(ans.s2),
     ex3: eolFlat(ans.s3),
