@@ -172,8 +172,63 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <label for="inp-extra-time" style="display:inline;font-weight:400;margin:0;line-height:1.4">I have approved extra time (+10%).</label>
       </div>
       <div id="extra-time-note" style="font-size:.8rem;color:#2b7a78;margin-top:-8px;margin-bottom:12px;display:none"></div>
-      <div id="reg-err" class="alert alert-danger">Please enter both your name and your course before continuing.</div>
+      <div id="reg-err" class="alert alert-danger">Please enter both your name and your class before continuing.</div>
       <button class="btn btn-primary" onclick="goRules()">Continue →</button>
+    </div>
+
+<style id="wl-style">
+    .wl-card{background:#fff;border-radius:12px;padding:24px 28px;box-shadow:0 2px 8px rgba(0,0,0,.07);margin-bottom:20px;border-left:4px solid #2d6a4f}
+    .wl-head{font-size:1.15rem;margin-bottom:6px;color:#1a202c}
+    .wl-sub{font-size:.88rem;color:#718096;margin-bottom:16px;line-height:1.6}
+    .wl-group{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#276749;margin:18px 0 6px}
+    .wl-group:first-of-type{margin-top:0}
+    .wl-scroll{overflow-x:auto}
+    .wl-table{width:100%;border-collapse:collapse;font-size:.9rem}
+    .wl-table th{text-align:left;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:#718096;border-bottom:1.5px solid #e2e8f0;padding:4px 10px 4px 0;font-weight:600}
+    .wl-table td{padding:5px 10px 5px 0;border-bottom:1px solid #edf2f7;vertical-align:top;line-height:1.45}
+    .wl-table tr:last-child td{border-bottom:none}
+    .wl-en{font-weight:600;color:#1a202c;white-space:nowrap}
+    .wl-de{color:#4a5568}
+    .wl-note{display:block;font-weight:400;font-size:.78rem;color:#c53030;white-space:normal;margin-top:2px}
+    @media(max-width:600px){.wl-card{padding:18px 14px}.wl-en{white-space:normal}.wl-table{font-size:.85rem}}
+    </style>
+
+    <div class="wl-card">
+      <h2 class="wl-head">📖 The word list — all 26 words</h2>
+      <p class="wl-sub">Revise here before you start. Every word the test can ask is below; <strong>20 of these 26</strong> come up in Sections A and B, plus 3 more in Section C, picked at random.</p>
+      <div class="wl-scroll">
+      <table class="wl-table">
+        <thead><tr><th scope="col">English</th><th scope="col">Meaning</th></tr></thead>
+        <tbody>
+          <tr><td class="wl-en">Aboriginal people</td><td class="wl-de">the first people who lived in Australia</td></tr>
+          <tr><td class="wl-en">to struggle</td><td class="wl-de">to try very hard to do something difficult</td></tr>
+          <tr><td class="wl-en">to be known as</td><td class="wl-de">to be called this name by everyone</td></tr>
+          <tr><td class="wl-en">the outback</td><td class="wl-de">the dry, empty land in the middle of Australia</td></tr>
+          <tr><td class="wl-en">great</td><td class="wl-de">very big, or very good</td></tr>
+          <tr><td class="wl-en">to attend</td><td class="wl-de">to go to a school, class or event</td></tr>
+          <tr><td class="wl-en">satellite dish</td><td class="wl-de">a round dish that receives TV or internet signals</td></tr>
+          <tr><td class="wl-en">necessary</td><td class="wl-de">something you must have or must do</td></tr>
+          <tr><td class="wl-en">up to</td><td class="wl-de">as far as, but no further</td></tr>
+          <tr><td class="wl-en">boarding school</td><td class="wl-de">a school where the students also live</td></tr>
+          <tr><td class="wl-en">term</td><td class="wl-de">one of the parts a school year is divided into</td></tr>
+          <tr><td class="wl-en">in addition</td><td class="wl-de">as well as something else</td></tr>
+          <tr><td class="wl-en">Australian</td><td class="wl-de">from Australia, or a person from Australia</td></tr>
+          <tr><td class="wl-en">easy-going</td><td class="wl-de">relaxed and not easily worried</td></tr>
+          <tr><td class="wl-en">continent</td><td class="wl-de">one of the seven big land areas of the world</td></tr>
+          <tr><td class="wl-en">Antarctica</td><td class="wl-de">the frozen land at the South Pole</td></tr>
+          <tr><td class="wl-en">isolation</td><td class="wl-de">being far away from other people</td></tr>
+          <tr><td class="wl-en">unusual</td><td class="wl-de">not normal; not what you often see</td></tr>
+          <tr><td class="wl-en">species</td><td class="wl-de">one kind of animal or plant</td></tr>
+          <tr><td class="wl-en">to exist</td><td class="wl-de">to be real and be there</td></tr>
+          <tr><td class="wl-en">koala</td><td class="wl-de">a grey Australian animal that lives in trees</td></tr>
+          <tr><td class="wl-en">kangaroo</td><td class="wl-de">an Australian animal that jumps on strong back legs</td></tr>
+          <tr><td class="wl-en">available</td><td class="wl-de">that you can get or use</td></tr>
+          <tr><td class="wl-en">skilled</td><td class="wl-de">trained and good at a job</td></tr>
+          <tr><td class="wl-en">carpenter</td><td class="wl-de">a person who makes things from wood</td></tr>
+          <tr><td class="wl-en">nurse</td><td class="wl-de">a person who looks after sick people in a hospital</td></tr>
+        </tbody>
+      </table>
+      </div>
     </div>
   </div>
 </div>
@@ -260,7 +315,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="card exam-pane" id="pane-c" hidden>
       <div class="section-label">Section C — Use the word (21–23)</div>
       <p>Write <strong>one sentence of your own</strong> for each word, showing you know what it means. Do not copy the meaning back — use the word in a real situation.</p>
-      <p style="font-size:.85rem;color:#718096">Your teacher marks this section. The page only checks that your sentence uses the word and is long enough.</p>
+      <p><strong>All 3 sentences are part of the test.</strong> Your teacher marks this section — the page only checks that your sentence really uses the word and is a full sentence.</p>
       <div id="use-list"></div>
     </div>
 
@@ -272,7 +327,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div id="submit-area">
       <button class="btn btn-primary" id="sub-btn" onclick="doSubmit()" disabled>Submit test</button>
-      <div id="time-gate-msg">⏳ Submit unlocks on Section C, after 2 minutes, once all 20 answers in Sections A and B are filled in</div>
+      <div id="time-gate-msg">⏳ Submit unlocks on Section C, after 2 minutes, once all 20 answers in Sections A and B are filled in. Section C is part of the test — write all 3 sentences before you submit.</div>
+      <div class="pane-confirm" id="confirm-submit" style="max-width:520px;margin:12px auto 0"></div>
     </div>
   </div>
 </div>
@@ -625,7 +681,22 @@ function snap(){if(t0)snapshots.push({t:Math.round((Date.now()-t0)/1000),answere
 function checkReady(){document.getElementById('sub-btn').disabled=!(gateOpen&&curPane==='c'&&answeredCount()>=Q_TOTAL)}
 
 /* ── SUBMIT ── */
+/* Section C is required, not optional — but a student who runs out of time must
+   still be able to hand in. So an incomplete Section C does not disable Submit:
+   it warns once, naming how many are missing, and a second press sends it. */
+let submitWarned=false;
 function doSubmit(){
+  const missing=USE_N-useWritten();
+  const warn=document.getElementById('confirm-submit');
+  if(missing>0&&!submitWarned){
+    submitWarned=true;
+    warn.innerHTML='<strong>Section C is not finished.</strong>'
+      +'You have not written '+missing+' of the '+USE_N+' sentences. Section C is part of the test — '
+      +'they will be sent empty and marked as missing. Press Submit again to hand in anyway.';
+    warn.classList.add('show');
+    document.getElementById('sub-btn').textContent='Submit anyway';
+    return;
+  }
   snap();
   const results=[];
   let correct=0;

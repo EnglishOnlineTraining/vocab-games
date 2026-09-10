@@ -342,7 +342,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="card exam-pane" id="pane-c" hidden>
       <div class="section-label">Section C — Use the word (21–25)</div>
       <p>Write <strong>one sentence of your own</strong> for each word, showing you know what it means. Do not copy the meaning back — use the word in a real situation.</p>
-      <p style="font-size:.85rem;color:#718096">Your teacher marks this section. The page only checks that your sentence uses the word and is long enough.</p>
+      <p><strong>All 5 sentences are part of the test.</strong> Your teacher marks this section — the page only checks that your sentence really uses the word and is a full sentence.</p>
       <div id="use-list"></div>
     </div>
 
@@ -354,7 +354,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div id="submit-area">
       <button class="btn btn-primary" id="sub-btn" onclick="doSubmit()" disabled>Submit test</button>
-      <div id="time-gate-msg">⏳ Submit unlocks on Section C, after 2 minutes, once all 20 answers in Sections A and B are filled in</div>
+      <div id="time-gate-msg">⏳ Submit unlocks on Section C, after 2 minutes, once all 20 answers in Sections A and B are filled in. Section C is part of the test — write all 5 sentences before you submit.</div>
+      <div class="pane-confirm" id="confirm-submit" style="max-width:520px;margin:12px auto 0"></div>
     </div>
   </div>
 </div>
@@ -707,7 +708,22 @@ function snap(){if(t0)snapshots.push({t:Math.round((Date.now()-t0)/1000),answere
 function checkReady(){document.getElementById('sub-btn').disabled=!(gateOpen&&curPane==='c'&&answeredCount()>=Q_TOTAL)}
 
 /* ── SUBMIT ── */
+/* Section C is required, not optional — but a student who runs out of time must
+   still be able to hand in. So an incomplete Section C does not disable Submit:
+   it warns once, naming how many are missing, and a second press sends it. */
+let submitWarned=false;
 function doSubmit(){
+  const missing=USE_N-useWritten();
+  const warn=document.getElementById('confirm-submit');
+  if(missing>0&&!submitWarned){
+    submitWarned=true;
+    warn.innerHTML='<strong>Section C is not finished.</strong>'
+      +'You have not written '+missing+' of the '+USE_N+' sentences. Section C is part of the test — '
+      +'they will be sent empty and marked as missing. Press Submit again to hand in anyway.';
+    warn.classList.add('show');
+    document.getElementById('sub-btn').textContent='Submit anyway';
+    return;
+  }
   snap();
   const results=[];
   let correct=0;
