@@ -211,6 +211,12 @@ const CHECKERS = [
   { id: 'validate-schema', run: 'scripts/validate-schema.js' },
   { id: 'check-syntax', run: 'scripts/check-syntax.js' },
   { id: 'check-grade-table', run: 'scripts/check-grade-table.js' },
+  // A vocab test must not print a word it also asks the student to produce.
+  // Both live pages did: 9c's instructions said "type the term" while "term"
+  // was in its bank, and 9g's heading reads "G'day Australia!" while "G'day"
+  // was in its bank. Each page declares the offenders in UI_WORDS and keeps
+  // them out of Sections B and C; this fails the build on an undeclared one.
+  { id: 'check-test-leaks', run: 'scripts/check-test-leaks.js' },
   { id: 'test-make-grader', run: 'test-make-grader.js' },
 ];
 
