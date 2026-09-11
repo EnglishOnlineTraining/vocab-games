@@ -354,7 +354,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div id="submit-area">
       <button class="btn btn-primary" id="sub-btn" onclick="doSubmit()" disabled>Submit test</button>
-      <div id="time-gate-msg">⏳ Submit unlocks on Section C, after 2 minutes, once all 20 answers in Sections A and B are filled in. Section C is part of the test — write all 5 sentences before you submit.</div>
+      <div id="time-gate-msg">⏳ Submit unlocks on Section C, after 2 minutes. Section C is part of the test — write all 5 sentences before you submit.</div>
       <div class="pane-confirm" id="confirm-submit" style="max-width:520px;margin:12px auto 0"></div>
     </div>
   </div>
@@ -576,7 +576,7 @@ function startExam(){
   buildQuestions();
   t0=Date.now();
   startTimer();
-  setTimeout(()=>{gateOpen=true;document.getElementById('time-gate-msg').textContent='✅ You may submit once all 20 questions are answered.';checkReady()},GATE_MINS*60*1000);
+  setTimeout(()=>{gateOpen=true;document.getElementById('time-gate-msg').textContent='✅ You may submit from Section C.';checkReady()},GATE_MINS*60*1000);
   setInterval(snap,3*60*1000);
   setInterval(checkDevTools,4000);
   document.body.classList.add('exam-mode');
@@ -689,8 +689,13 @@ function nextPane(from){
   const conf=document.getElementById('confirm-'+from);
   const btn=document.getElementById('next-'+from);
   if(!conf.classList.contains('show')){
+    const blanks=[...document.querySelectorAll('#pane-'+from+' .qa-select, #pane-'+from+' .qa-input')].filter(e=>!e.value.trim()).length;
+    conf.innerHTML='<strong>Leave Section '+from.toUpperCase()+' for good?</strong>'
+      +(blanks?'<span style="color:#c0392b"><strong>You have left '+blanks+' answer'+(blanks>1?'s':'')+' blank.</strong> '
+        +(blanks>1?'They':'It')+' will be marked wrong and you cannot come back to fill '+(blanks>1?'them':'it')+' in.</span> '
+        :'Your answers are kept, but you will not be able to see or change them again.');
     conf.classList.add('show');
-    btn.textContent='Yes — continue, I understand';
+    btn.textContent=blanks?'Yes — continue with '+blanks+' blank':'Yes — continue, I understand';
     return;
   }
   const to=from==='a'?'b':'c';
@@ -705,7 +710,10 @@ function nextPane(from){
 function snap(){if(t0)snapshots.push({t:Math.round((Date.now()-t0)/1000),answered:answeredCount()})}
 
 /* ── READY CHECK ── */
-function checkReady(){document.getElementById('sub-btn').disabled=!(gateOpen&&curPane==='c'&&answeredCount()>=Q_TOTAL)}
+/* Sections A and B are one-way, so a blank left behind can never be filled in.
+   Submit therefore must NOT wait for all 20 answers — that locked students out
+   with no way forward. Blanks are simply scored as wrong. */
+function checkReady(){document.getElementById('sub-btn').disabled=!(gateOpen&&curPane==='c')}
 
 /* ── SUBMIT ── */
 /* Section C is required, not optional — but a student who runs out of time must
@@ -760,7 +768,9 @@ function doSubmit(){
 }
 function autoSubmit(){
   if(!document.getElementById('s-exam').classList.contains('active'))return;
-  // fill unanswered with blanks so scoring still works, then submit
+  // Time is up: skip the "Section C unfinished" warning and the submit gate —
+  // whatever is on the page is sent, blanks scored as wrong.
+  submitWarned=true; gateOpen=true;
   doSubmit();
 }
 
