@@ -515,7 +515,10 @@ var snapshots=[];
 /* ===================== HELPERS ===================== */
 function g(id){ var el=document.getElementById(id); return el ? el.value.trim() : ''; }
 function esc(s){ var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
-function norm(s){ return (s||'').toLowerCase().replace(/['’]/g,'').replace(/\s+/g,' ').trim(); }
+/* German keyboards produce ´ (dead key) and ` for the apostrophe, and some students
+   type a space before it — all of those must count as the apostrophe, or a correct
+   "hadn´t made" is marked wrong. Same set the vocab tests already accept. */
+function norm(s){ return (s||'').toLowerCase().replace(/\s*[\u2018\u2019\u02BC'`\u00B4]\s*/g,'').replace(/\s+/g,' ').trim(); }
 
 /* ===================== NAVIGATION: WELCOME -> LOCK -> RULES -> EXAM ===================== */
 function show(id){ document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); }); document.getElementById(id).classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
