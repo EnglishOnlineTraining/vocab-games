@@ -462,7 +462,7 @@ const VOCAB_BANK = [{"t":"G'day","d":"the Australian way of saying hello"},{"t":
 
 /* ── STATE ── */
 let sName='',sGroup='',sid='',extraTime=false;
-let t0=null,tabN=0,pasteN=0,anomalyN=0;
+let t0=null,tabN=0,pasteN=0,anomalyN=0,reloads=0;
 let gateOpen=false,timerID=null;
 let lastLen=0,lastT=Date.now();
 let snapshots=[];
@@ -522,7 +522,16 @@ function goFullscreen(){
 function shuffle(arr){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 
 /* ── BUILD QUESTIONS ── */
-function buildQuestions(){
+function buildQuestions(preset){
+  if(preset){
+    // Resuming after a reload: the paper is random per attempt, so rebuild the
+    // exact items (and dropdown order) the student already had, or nothing lines up.
+    const byT={};VOCAB_BANK.forEach(x=>byT[x.t]=x);
+    matchItems=preset.match.map(t=>byT[t]).filter(Boolean);
+    fillItems=preset.fill.map(t=>byT[t]).filter(Boolean);
+    useItems=preset.use.map(t=>byT[t]).filter(Boolean);
+    matchOptions=preset.options.slice();
+  }else{
   // Sections B and C ask the student to PRODUCE the word, so they must never be
   // given one that is printed somewhere in the page's own furniture — the heading,
   // the instructions. Section A is exempt: it offers the answer in a dropdown
@@ -533,8 +542,8 @@ function buildQuestions(){
   fillItems=safe.splice(0,FILL_N);
   useItems=safe.splice(0,USE_N);
   matchItems=shuffle(safe.concat(VOCAB_BANK.filter(x=>uiSet.has(x.t)))).slice(0,MATCH_N);
-  const pick=matchItems.concat(fillItems).concat(useItems);
   matchOptions=shuffle(matchItems.map(x=>x.t));
+  }
 
   const mWrap=document.getElementById('match-list');
   mWrap.innerHTML='';
@@ -571,19 +580,79 @@ function buildQuestions(){
 
 /* ── START ── */
 function startExam(){
+  try{const o=loadState();if(o)localStorage.setItem(SAVE_KEY+'_abandoned',JSON.stringify(o))}catch(e){}
   sid='SID-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).substr(2,5).toUpperCase();
   document.getElementById('sid-disp').textContent=sid;
   buildQuestions();
   t0=Date.now();
   startTimer();
-  setTimeout(()=>{gateOpen=true;document.getElementById('time-gate-msg').textContent='✅ You may submit from Section C.';checkReady()},GATE_MINS*60*1000);
+  setTimeout(()=>{gateOpen=true;document.getElementById('time-gate-msg').textContent='✅ You may submit from Section C.';checkReady();saveState()},GATE_MINS*60*1000);
   setInterval(snap,3*60*1000);
   setInterval(checkDevTools,4000);
   document.body.classList.add('exam-mode');
   show('s-exam');
   document.getElementById('timer-wrap').style.display='flex';
   if(navigator.webdriver)anomalyN++;
+  saveState();
 }
+
+/* ── AUTOSAVE ──
+   Everything the student has done lives only in this page until Submit. A reload,
+   a crash or a closed tab used to lose all of it. Every answer change is now
+   written to localStorage, and the register screen offers to continue an
+   unfinished test on this device: same paper, same answers, same clock. */
+const SAVE_KEY='eol_test_'+UNIT;
+function saveState(){
+  if(!t0)return;
+  try{localStorage.setItem(SAVE_KEY,JSON.stringify({v:1,sid,name:sName,group:sGroup,extraTime,examMins:EXAM_MINS,t0,curPane,gateOpen,submitWarned,
+    match:matchItems.map(x=>x.t),fill:fillItems.map(x=>x.t),use:useItems.map(x=>x.t),options:matchOptions,
+    sel:[...document.querySelectorAll('.qa-select')].map(e=>e.value),
+    inp:[...document.querySelectorAll('.qa-input')].map(e=>e.value),
+    txt:[...document.querySelectorAll('#use-list textarea')].map(e=>e.value),
+    tabN,pasteN,anomalyN,reloads,snapshots}))}catch(e){}
+}
+function loadState(){try{const s=JSON.parse(localStorage.getItem(SAVE_KEY)||'null');return s&&s.v===1&&!s.submitted?s:null}catch(e){return null}}
+function markSubmitted(){try{const s=JSON.parse(localStorage.getItem(SAVE_KEY)||'null');if(s){s.submitted=true;s.submittedAt=Date.now();localStorage.setItem(SAVE_KEY,JSON.stringify(s))}}catch(e){}}
+function resumeExam(s){
+  if(!s)return;
+  sName=s.name;sGroup=s.group;sid=s.sid;extraTime=!!s.extraTime;EXAM_MINS=s.examMins||BASE_EXAM_MINS;
+  tabN=s.tabN||0;pasteN=s.pasteN||0;anomalyN=s.anomalyN||0;reloads=(s.reloads||0)+1;snapshots=s.snapshots||[];submitWarned=!!s.submitWarned;
+  document.getElementById('sid-disp').textContent=sid;
+  document.getElementById('ts-disp').textContent=tabN;
+  buildQuestions({match:s.match,fill:s.fill,use:s.use,options:s.options});
+  document.querySelectorAll('.qa-select').forEach((e,i)=>{e.value=(s.sel||[])[i]||''});
+  document.querySelectorAll('.qa-input').forEach((e,i)=>{e.value=(s.inp||[])[i]||''});
+  document.querySelectorAll('#use-list textarea').forEach((e,i)=>{e.value=(s.txt||[])[i]||''});
+  curPane=s.curPane||'a';
+  ['a','b','c'].forEach(p=>{document.getElementById('pane-'+p).hidden=(p!==curPane)});
+  t0=s.t0;
+  const elapsed=Date.now()-t0;
+  gateOpen=!!s.gateOpen||elapsed>=GATE_MINS*60*1000;
+  if(gateOpen)document.getElementById('time-gate-msg').textContent='✅ You may submit from Section C.';
+  else setTimeout(()=>{gateOpen=true;document.getElementById('time-gate-msg').textContent='✅ You may submit from Section C.';checkReady();saveState()},GATE_MINS*60*1000-elapsed);
+  setInterval(snap,3*60*1000);
+  setInterval(checkDevTools,4000);
+  document.body.classList.add('exam-mode');
+  show('s-exam');
+  document.getElementById('timer-wrap').style.display='flex';
+  updateProgress();onUseInput();checkReady();
+  startTimer();   // if the time has already run out, the first tick hands the test in
+  saveState();
+}
+(function offerResume(){
+  const s=loadState();if(!s)return;
+  const rem=(s.examMins||BASE_EXAM_MINS)*60*1000-(Date.now()-s.t0);
+  if(rem<-6*60*60*1000)return;   // more than six hours past its deadline: stale, ignore
+  const card=document.createElement('div');card.className='card';card.id='resume-card';
+  card.style.cssText='border:2px solid #2d6a4f;background:#f0fff4';
+  card.innerHTML='<h2 style="margin-top:0">⏸ A test is still open on this device</h2>'
+    +'<p><strong>'+esc(s.name)+'</strong> ('+esc(s.group)+')'
+    +(rem>0?' has about <strong>'+Math.max(1,Math.round(rem/60000))+' minutes</strong> left. Your answers were saved — continue where you left off.'
+           :' — the time has run out. Continuing will hand the test in as it is.')+'</p>'
+    +'<button class="btn btn-primary" onclick="resumeExam(loadState())">Continue this test</button> '
+    +'<button class="btn btn-secondary" onclick="document.getElementById(\'resume-card\').remove()">Not me — start a new test</button>';
+  const reg=document.querySelector('#s-register .container');reg.insertBefore(card,reg.firstChild);
+})();
 
 /* ── TIMER ── */
 function startTimer(){
@@ -626,9 +695,9 @@ function onAnswerInput(){
   const diff=totalLen-lastLen,dt=now-lastT;
   if(diff>40&&dt<500)anomalyN++;
   lastLen=totalLen;lastT=now;
-  updateProgress();checkReady();
+  updateProgress();checkReady();saveState();
 }
-function onAnswerChange(){updateProgress();checkReady()}
+function onAnswerChange(){updateProgress();checkReady();saveState()}
 
 /* ── PROGRESS ── */
 function answeredCount(){
@@ -681,7 +750,7 @@ function onUseInput(){
     flag.textContent=r.why;
     flag.className='use-flag '+(r.ok?'ok':'no');
   });
-  updateProgress();
+  updateProgress();saveState();
 }
 
 /* One-way section navigation: first press warns, second press commits. */
@@ -703,11 +772,11 @@ function nextPane(from){
   document.getElementById('pane-'+to).hidden=false;
   curPane=to;
   window.scrollTo({top:0,behavior:'smooth'});
-  updateProgress(); checkReady();
+  updateProgress(); checkReady(); saveState();
 }
 
 /* ── SNAPSHOT ── */
-function snap(){if(t0)snapshots.push({t:Math.round((Date.now()-t0)/1000),answered:answeredCount()})}
+function snap(){if(t0){snapshots.push({t:Math.round((Date.now()-t0)/1000),answered:answeredCount()});saveState()}}
 
 /* ── READY CHECK ── */
 /* Sections A and B are one-way, so a blank left behind can never be filled in.
@@ -753,7 +822,7 @@ function doSubmit(){
   });
   const pct=Math.round(correct/Q_TOTAL*100);
   const el=Math.round((Date.now()-t0)/1000);
-  payload={timestamp:new Date().toISOString(),name:sName,group:sGroup,session_id:sid,score:correct,total:Q_TOTAL,percent:pct,grade:(function(){const g=lookupGrade(correct,Q_TOTAL);return g?'Note '+g.note+' ('+g.label+')':''})(),extra_time:extraTime,time_spent_s:el,tab_switches:tabN,paste_attempts:pasteN,typing_anomalies:anomalyN,devtools_flagged:devToolsFlagged,use_checks_passed:useOk,use_total:USE_N,answers:JSON.stringify(results),snapshots:JSON.stringify(snapshots),user_agent:navigator.userAgent};
+  payload={timestamp:new Date().toISOString(),name:sName,group:sGroup,session_id:sid,score:correct,total:Q_TOTAL,percent:pct,grade:(function(){const g=lookupGrade(correct,Q_TOTAL);return g?'Note '+g.note+' ('+g.label+')':''})(),extra_time:extraTime,time_spent_s:el,tab_switches:tabN,paste_attempts:pasteN,typing_anomalies:anomalyN,devtools_flagged:devToolsFlagged,reloads:reloads,use_checks_passed:useOk,use_total:USE_N,answers:JSON.stringify(results),snapshots:JSON.stringify(snapshots),user_agent:navigator.userAgent};
   clearInterval(timerID);document.getElementById('timer-wrap').style.display='none';
   buildReview(results);
   show('s-done');
@@ -765,6 +834,7 @@ function doSubmit(){
     +' sentences passed the automatic checks — your teacher marks this section.';
   document.getElementById('done-meta').textContent=(_g?'Note '+_g.note+' ('+_g.label+') · ':'')+`${m}m ${s}s · Session: ${sid}`;
   send(payload);
+  markSubmitted();
 }
 function autoSubmit(){
   if(!document.getElementById('s-exam').classList.contains('active'))return;
@@ -814,7 +884,7 @@ function send(data){
         +'Automatic form checks passed: '+data.use_checks_passed+' / '+data.use_total;
   p['ex'+(Q_TOTAL+USE_N+2)]='integrity | time '+data.time_spent_s+'s | tab-switches '+data.tab_switches
         +' | paste '+data.paste_attempts+' | typing '+data.typing_anomalies
-        +' | devtools '+data.devtools_flagged+' | session '+data.session_id;
+        +' | devtools '+data.devtools_flagged+' | reloads '+data.reloads+' | session '+data.session_id;
   fetch(SHEET_URL,{method:'POST',mode:'no-cors',
     headers:{'Content-Type':'application/x-www-form-urlencoded'},
     body:'payload='+encodeURIComponent(JSON.stringify(p))});
