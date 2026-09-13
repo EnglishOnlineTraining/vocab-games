@@ -16,7 +16,10 @@ Ask Shaun two things if not already provided:
 1. **Quiz title** — the page heading shown to students (e.g. "Project Management Vocabulary", "Business English Vocabulary")
 2. **Sheet tab name** — where submissions land in Google Sheets (e.g. "PM Vocabulary Quiz", "Business English Quiz"). Should be unique and descriptive. This becomes `SHEET_TAB` in the config.
 
-Do not ask about question counts, timings, or anti-cheat settings — those are fixed by the config below.
+Do not ask about question counts or anti-cheat settings — those are fixed by the config below.
+**A vocab test runs 30 minutes** unless Shaun says otherwise, and every test carries the
+extra-time checkbox (see Step 3e). Only ask about duration if his instructions imply
+something other than 30.
 
 ---
 
@@ -98,14 +101,18 @@ Find this block near the top of the `<script>` section and update only `SHEET_TA
 
 ```js
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwwbV6ufw7QX8meNGyOwiVdkqNpQ8yckdXmsbFqysJwWqAfCWaR_eC9RH41LaqmYyZOeA/exec';
-const EMAIL     = 'sptrezise@proton.me';
-const EXAM_MINS = 15;
+const EMAIL     = 'englishonlinetraining@pm.me';
+const BASE_EXAM_MINS = 30;                 // ← 30 is the standard vocab-test length
+let   EXAM_MINS = BASE_EXAM_MINS;          // ← must be `let`: extra time reassigns it
 const GATE_MINS = 2;
 const SHEET_TAB = 'PM Vocabulary Quiz';  // ← update to new tab name
 const Q_TOTAL   = 20;
 const MATCH_N   = 10;
 const FILL_N    = 10;
 ```
+
+`EXAM_MINS` **must** be declared with `let`, not `const` — the extra-time checkbox in
+Step 3e reassigns it. A `const` here throws at runtime the moment a student ticks the box.
 
 ### 3c. Update the title
 
@@ -125,6 +132,60 @@ the prefix is what every generator and hub uses to file the page:
 
 Save into the **repo root** (same directory as the template).
 
+### 3e. Extra time (+10%) — required on every test
+
+Every timed test on the site carries an approved-extra-time checkbox
+(Nachteilsausgleich). The canonical template has it; keep it, and keep all four
+labels in step with it. On the register screen, just above `#reg-err`:
+
+```html
+<div class="form-group" style="display:flex;align-items:flex-start;gap:9px;margin-top:14px">
+  <input type="checkbox" id="inp-extra-time" style="width:18px;height:18px;margin-top:2px;flex-shrink:0">
+  <label for="inp-extra-time" style="display:inline;font-weight:400;margin:0;line-height:1.4">I have approved extra time (+10%).</label>
+</div>
+<div id="extra-time-note" style="font-size:.8rem;color:#2b7a78;margin-top:-8px;margin-bottom:12px;display:none"></div>
+```
+
+Apply it where the student leaves the register screen, in `goRules()`:
+
+```js
+extraTime=document.getElementById('inp-extra-time').checked;
+EXAM_MINS=extraTime?Math.round(BASE_EXAM_MINS*1.1):BASE_EXAM_MINS;
+document.getElementById('rules-time').textContent=EXAM_MINS+' minutes';
+document.getElementById('start-btn-mins').textContent=EXAM_MINS;
+document.getElementById('timer-display').textContent=String(EXAM_MINS).padStart(2,'0')+':00';
+```
+
+Three bits of copy state the duration and **all three need an id**, or the page
+promises 30 minutes while the clock runs 33:
+
+| Element | id | Note |
+|---|---|---|
+| Rules list item | `rules-time` | Say "Once it starts, the timer cannot be paused" — **not** "cannot be paused or extended", which contradicts the checkbox |
+| Start button | `start-btn-mins` | Wrap just the number in the span |
+| Header clock | `timer-display` | |
+
+Send `extra_time: extraTime` in the payload so the teacher can see who had it.
+
+### 3f. Strip every trace of the template's own topic
+
+The template is a **project-management** test. Its topic wording lives in more places
+than the vocab bank, and the leftovers are invisible until a student reads them —
+`9g-australia-vocab-test.html` shipped telling Year 9 they were sitting a test on
+"236 project management terms". Rewrite all of these:
+
+- the `<title>` and the `<h1>`/`<h2>` heading
+- **the `<span class="title">` in the `<header>`** — easy to miss, it is not the `<h1>`
+- **the opening blurb paragraph**, including the term count, which must equal
+  `VOCAB_BANK.length`, and the duration
+- `<meta name="description">` and the canonical URL
+
+Then prove it, before Step 4:
+
+```bash
+grep -in "project manage\|PM Vocabulary\|236" <file>   # expect: no matches
+```
+
 **Strategy for large vocab banks:** If the vocab bank JSON is very large (>200 terms), write it to a temp file first, verify it, then use an Edit tool call to splice it into the HTML rather than passing the whole file in a single Write call. This avoids truncation.
 
 ---
@@ -136,6 +197,21 @@ Save into the **repo root** (same directory as the template).
 grep -c "PLACEHOLDER" <file>
 # Expected: 0
 ```
+
+**Check 1b — No wording left over from the template:**
+```bash
+grep -in "project manage\|PM Vocabulary\|236 " <file>
+# Expected: 0 matches
+```
+Also read the header span and the opening blurb with your own eyes and confirm the
+term count in the blurb equals `VOCAB_BANK.length`.
+
+**Check 1c — The stated duration matches the clock:**
+```bash
+grep -n "BASE_EXAM_MINS\|rules-time\|start-btn-mins\|timer-display\"" <file>
+```
+The number in the blurb, the rules item, the start button and the header clock must
+all equal `BASE_EXAM_MINS`, and `EXAM_MINS` must be declared `let`.
 
 **Check 2 — JS syntax:**
 ```bash
@@ -186,11 +262,13 @@ await p.goto('http://<container-ip>:8765/<filename>.html');
 // assert: questions rendered, full marks scored, payload has no undefined
 ```
 
-Assert all four:
+Assert all five:
 - the exercise container is **not empty** after starting
 - answering everything correctly scores **Q_TOTAL**, not 0
 - deliberately wrong answers score **less** than full marks
 - the intercepted payload contains no `undefined`
+- ticking extra time before Continue makes `rules-time`, `start-btn-mins` and
+  `timer-display` all read `Math.round(BASE_EXAM_MINS * 1.1)`
 
 Serve on the container IP (`hostname -I`), **not localhost** — pages guard
 submission behind a localhost test-mode check, so a localhost run proves nothing.
@@ -268,4 +346,18 @@ fetch(SHEET_URL, {
 ```
 
 Payload fields sent per submission:
-`timestamp, name, group, session_id, score, total, percent, time_spent_s, tab_switches, paste_attempts, typing_anomalies, devtools_flagged, answers (JSON string), snapshots (JSON string), user_agent`
+`timestamp, name, group, session_id, score, total, percent, grade, extra_time, time_spent_s, tab_switches, paste_attempts, typing_anomalies, devtools_flagged, answers (JSON string), snapshots (JSON string), user_agent`
+
+`grade` and `extra_time` are easy to leave out and the loss is silent — the Excel
+table has a **Grade** column, and a payload key that isn't sent just arrives blank.
+Build `grade` from the Punktetabelle already inlined in the template:
+
+```js
+grade:(function(){const g=lookupGrade(correct,Q_TOTAL);return g?'Note '+g.note+' ('+g.label+')':''})(),
+extra_time:extraTime,
+```
+
+A self-contained quiz does not load `exercise.js`, so it inlines `GRADE_TABLE` /
+`GRADE_LABELS` / `lookupGrade` **verbatim** from `exercise.js`.
+`scripts/check-grade-table.js` fails the build on any drift, so never retype the
+table — copy it, and make corrections in `exercise.js`.

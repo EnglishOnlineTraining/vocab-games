@@ -63,6 +63,23 @@ const LEGACY_UNPREFIXED = {
   'eurofiber-online.html':     ['business', 'business']
 };
 
+// Pages that are deliberately NOT in the public index. Everything downstream
+// reads data/exercises.json, so leaving a page out here removes it from
+// activities.html, its year hub and sitemap.xml in one place.
+//
+// The timed tests exclude themselves by not loading exercise.js. Their paired
+// practice pages DO load it, so without this they were listed publicly while
+// the test they revise for was not. Both halves are class material handed out
+// together from teacher-tests.html, which is itself noindex and unlisted.
+//
+// This hides them; it does not make them private. The pages stay reachable at
+// their URL and carry no `noindex`, exactly like the tests — add one if they
+// should also drop out of search.
+const UNLISTED = new Set([
+  '9g-australia-vocab-practice.html',
+  '9c-australia-vocab-practice.html'
+]);
+
 function schoolFromPrefix(f) {
   if (LEGACY_UNPREFIXED[f]) return LEGACY_UNPREFIXED[f];
   if (/^7a-/.test(f)) return [7, 'gymnasium'];
@@ -113,6 +130,7 @@ files.forEach(f => {
   // published to the hub, the filter index and the sitemap by that comment
   // alone. Verified: the stricter pattern changes exactly one page's
   // classification and leaves the other 192 framework pages untouched.
+  if (UNLISTED.has(f)) return;                                                                                      // deliberately not in the public index
   if (!/<script[^>]+src="exercise\.js"/.test(s) || /activities\.html$/.test(f) || f === '_template.html') return;   // exercise pages only
   const title = decode(m1(/<title>([\s\S]*?)<\/title>/i, s)).replace(/\s*[|·–-]\s*englishonline\.training\s*$/i, '').trim();
   const h1 = decode(m1(/<h1[^>]*class="welcome-title"[^>]*>([\s\S]*?)<\/h1>/i, s));

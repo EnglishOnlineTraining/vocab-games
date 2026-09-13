@@ -53,7 +53,16 @@ assert.strictEqual(eolWrongSummary(), 'exA g2: gave cow, expected dog',
 // ── correcting it removes it from the list ──
 elements['exA-g2'].value = 'dog';
 checkDropdowns(['g1', 'g2'], 'exA-', answers, 'fb', 'exA');
-assert.strictEqual(eolWrongSummary(), 'All correct.', 'a corrected gap drops off the list');
+assert.strictEqual(eolWrongSummary(), 'All correct — 1 of 2 gaps took more than one try.',
+  'a corrected gap drops off the list, but the retry is still reported — a bare '
+  + '"All correct." next to an attempt-weighted score reads as a contradiction');
+
+// ── right first time says so plainly, with no retry clause ──
+reset();
+el('exA-g1', 'cat'); el('exA-g2', 'dog'); el('fb');
+checkDropdowns(['g1', 'g2'], 'exA-', answers, 'fb', 'exA');
+assert.strictEqual(eolWrongSummary(), 'All correct.',
+  'no retries → no retry clause');
 
 // ── unanswered gaps are counted, not silently dropped ──
 reset();

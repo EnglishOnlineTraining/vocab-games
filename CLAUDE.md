@@ -386,7 +386,9 @@ Excel.
 **Column 54 is `{{24.wrong}}` / `{{5.wrong}}` — a field the page sends, not something
 Make computes.** `eolWrongSummary()` in `exercise.js` builds it from `state.attempts`,
 which `checkDropdowns`/`checkDropdownsMulti` fill as they mark the student. Format:
-`exA g2: gave cow, expected dog | 1 not answered`, or `All correct.`, or empty on a
+`exA g2: gave cow, expected dog | 1 not answered`, or `All correct.`, or
+`All correct — 1 of 2 gaps took more than one try.` when every gap ended up right
+but not first time (which is why the score can still be short of full marks), or empty on a
 page with no auto-graded sections. `node test-wrong-summary.js` is the self-check and
 runs as a build validator.
 
