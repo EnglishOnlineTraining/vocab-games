@@ -839,8 +839,11 @@ extra step and the wording stays editable afterwards.
 - **`data/hub-cards.json` is the editorial source.** It was seeded from the hand-written
   HTML, so all 211 existing cards kept their exact icon, title, one-line description and
   tag. Verified card-by-card: no card content changed anywhere.
-- **A card whose href is not in `exercises.json` is a deliberate pin** and is kept in place
-  — that is what keeps the unlisted `9g-class-test-9ab.html` card on the Year 9 hub.
+- **A card whose href is not in `exercises.json` is a deliberate pin** and is kept in place.
+  Nothing uses that today: `9g-class-test-9ab.html` was the one pin, and its card was removed
+  from the Year 9 hub on 2026-09-13 (Shaun) so the corpus finally matches the rule that no test
+  is linked from any hub. The test is unchanged and still reachable from `teacher-tests.html`.
+  The mechanism stays because a future pin should not need code.
 - **Three card markups, all preserved.** `activity-card` (13 hubs), `exercise-card`
   (`8c-`, inline styles) and `gr-topic-card` (the two grammar hubs, which carry a second
   link to a `themen/` page). Each hub is generated in its own style; nothing was converted.
@@ -1083,7 +1086,10 @@ answer-key grading) with the Make webhook intercepted so no real submission was 
 ## Tests are unlisted, and `teacher-tests.html` is the index (Shaun, 2026-09-03)
 
 **No test is linked from any hub, from `activities.html`, or from the sitemap.** A test a
-student can find is a test they can sit before the class does. Vocabulary *practice*
+student can find is a test they can sit before the class does. This was true of every test
+except `9g-class-test-9ab.html`, which still had a card on `9g-activities.html` until
+2026-09-13; removing it is also what made that hub's card count (16) and its generated
+"N exercises" line agree. Vocabulary *practice*
 pages are the opposite — they belong on their year hub, because the point is that
 students use them.
 
