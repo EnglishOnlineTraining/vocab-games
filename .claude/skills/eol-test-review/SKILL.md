@@ -13,6 +13,17 @@ sitting of the same test marks the same way.
 sheet stay outside the working tree — the script refuses to write inside it. Never commit
 a rows file, a marking sheet or a results table, and never publish one to a URL.
 
+## The browser version
+
+Shaun also has the same review as a page he can use himself, without a session:
+**https://claude.ai/code/artifact/8f3405eb-a6fa-41ea-a284-e91fb606ce6b** — he pastes the rows in,
+it marks them and gives him the marking sheet. Nothing is sent anywhere; the rows stay in his
+browser. Point him at it when he only wants the numbers.
+
+It is rebuilt with `node scripts/build-review-tool.js --out <dir outside the repo>` and
+republished to that same URL. **Its output carries the answer keys**, so it is never committed and
+the link is never given to a class. Rebuild it whenever a test page's answer key changes.
+
 ## 1. Get the rows into a file
 
 Shaun pastes the Excel rows into the chat. Write them verbatim to a file in the scratchpad

@@ -1130,6 +1130,26 @@ policy file. Those real error pairs are the fixtures in `test-review-test.js`, w
 as a build checker — so a page changing how it stores its key fails the build rather than
 marking a class against nothing while printing a plausible table.
 
+**The same review runs in the browser.** `scripts/review-core.js` holds every function that
+decides a mark — no `fs`, no `vm`, no DOM — and both the CLI and the browser tool load it, so the
+two cannot mark the same paper differently. `node scripts/build-review-tool.js --out <dir outside
+the repo>` bakes the answer keys, the marking policies and the grade table into a single page
+(published as a private artifact) where Shaun pastes the rows himself. Test pages are found by
+**content, not filename** — every timed test declares `EXAM_MINS`, and the first attempt matched
+`*-test.html` and silently missed `9g-class-test-9ab.html` with its five answer keys.
+
+**That output must never be committed.** It carries `S1_KEY`, `S1_POOL` and the rest, so committing
+it would publish every answer on GitHub Pages — the thing `scripts/check-test-leaks.js` exists to
+prevent. The generator refuses to write inside the working tree, and the link is not for students.
+The template `scripts/review-tool.html` holds no keys and is safe in the repo.
+
+**A page's `norm()` cannot travel, so it is named instead.** The browser cannot read a function out
+of a page, so each unit carries a style name — `apos-and-space` (9ab, 10a: apostrophes deleted
+along with the spaces around them) or `apos` (9g-class-test: just the apostrophe) — and
+`build-review-tool.js` fails the build unless the named style and the page's own function agree on
+a set of probes. The probe that separates them is `"it 's fine"`; without it both pages matched the
+same style and one of them would have marked apostrophes differently from the test the class sat.
+
 **Two things the 9b review found that are still open.** The `devtools` integrity flag is
 identical to the `typing` flag in all 26 rows, so it measures nothing — the policy files
 ignore it, but the pages should be fixed or the flag dropped. And the marking sheet built by

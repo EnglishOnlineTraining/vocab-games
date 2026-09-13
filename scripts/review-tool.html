@@ -1,0 +1,619 @@
+<title>Class Test Marker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+:root{
+  --ink:#16212e; --muted:#5d6f85; --line:#dbe3ed; --bg:#f5f7fb; --surface:#ffffff;
+  --raise:#eef2f8; --blue:#1a3a5c; --gold:#c9a227; --teal:#2b7a78;
+  --alert:#b5361f; --ok:#22794a; --shadow:0 1px 2px rgba(22,33,46,.06),0 8px 24px -16px rgba(22,33,46,.28);
+  --display:'Archivo','Segoe UI',system-ui,sans-serif;
+  --body:'Source Sans 3','Segoe UI',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,'Cascadia Mono',monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ink:#e6edf6; --muted:#93a5ba; --line:#2a3746; --bg:#111820; --surface:#1a2430;
+    --raise:#212d3b; --blue:#7fa9d4; --gold:#d9b544; --teal:#5fb3ac;
+    --alert:#e8735c; --ok:#5cc98a; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -16px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#e6edf6; --muted:#93a5ba; --line:#2a3746; --bg:#111820; --surface:#1a2430;
+  --raise:#212d3b; --blue:#7fa9d4; --gold:#d9b544; --teal:#5fb3ac;
+  --alert:#e8735c; --ok:#5cc98a; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -16px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
+.page{max-width:1060px;margin:0 auto;padding-inline:20px;padding-block:10px 72px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+h1{font-size:1.5rem;font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.05rem;font-weight:600;letter-spacing:.01em}
+h3{font-size:.9rem;font-weight:600}
+p{margin:0}
+a{color:var(--blue)}
+.eyebrow{font-family:var(--display);font-size:.68rem;font-weight:600;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--muted)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* masthead */
+header.top{border-bottom:1px solid var(--line);background:var(--surface);position:sticky;top:0;z-index:20}
+.top-in{max-width:1060px;margin:0 auto;padding:14px 20px;display:flex;gap:16px;align-items:baseline;flex-wrap:wrap}
+.top-in .rule{width:22px;height:3px;background:var(--gold);display:block;margin-bottom:8px}
+.loaded{font-size:.85rem;color:var(--muted);margin-left:auto}
+.loaded b{color:var(--ink);font-weight:600}
+
+/* controls */
+button{font:inherit;font-family:var(--display);font-weight:600;font-size:.86rem;cursor:pointer;
+  border-radius:7px;border:1px solid var(--blue);background:var(--blue);color:var(--surface);
+  padding:.46rem .9rem;transition:filter .12s}
+button:hover{filter:brightness(1.12)}
+button.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+button.ghost:hover{background:var(--raise);filter:none}
+:focus-visible{outline:2.5px solid var(--gold);outline-offset:2px}
+textarea{width:100%;font-family:var(--mono);font-size:.78rem;line-height:1.45;padding:.7rem .8rem;
+  border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);resize:vertical}
+label.fld{display:block;margin-bottom:16px}
+label.fld > span{display:block;font-family:var(--display);font-size:.8rem;font-weight:600;margin-bottom:.3rem}
+label.fld em{font-style:normal;color:var(--muted);font-weight:400;font-family:var(--body)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+
+/* banner */
+.banner{display:flex;gap:12px;align-items:flex-start;border-radius:8px;padding:.7rem .9rem;
+  font-size:.87rem;margin:18px 0;border:1px solid var(--line);background:var(--surface)}
+.banner.example{border-left:3px solid var(--gold)}
+.banner.private{border-left:3px solid var(--teal)}
+.banner b{font-family:var(--display)}
+
+/* tiles */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:22px 0}
+.tile{background:var(--surface);padding:14px 16px}
+.tile .k{font-family:var(--mono);font-size:1.5rem;font-weight:500;font-variant-numeric:tabular-nums;line-height:1.1}
+.tile .l{font-size:.76rem;color:var(--muted);margin-top:.25rem}
+.tile.warn .k{color:var(--alert)}
+
+/* sections */
+section{margin-top:34px}
+.sec-head{display:flex;align-items:baseline;gap:12px;padding-bottom:8px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.sec-head .count{font-family:var(--mono);font-size:.78rem;color:var(--muted);margin-left:auto}
+.note{font-size:.87rem;color:var(--muted);max-width:64ch}
+
+table{border-collapse:collapse;width:100%;font-size:.87rem}
+th,td{text-align:left;padding:.42rem .6rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--display);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);font-weight:600}
+td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.scroll{overflow-x:auto}
+
+ul.plain{list-style:none;margin:0;padding:0;display:grid;gap:.3rem;font-size:.89rem}
+ul.plain li{display:flex;gap:.55rem;align-items:baseline}
+ul.plain .who{font-weight:600;min-width:11rem}
+.wrote{font-family:var(--mono);font-size:.83rem}
+.wrote .bad{color:var(--alert)}
+.wrote .good{color:var(--ok)}
+
+/* pills */
+.pill{display:inline-block;font-family:var(--display);font-size:.68rem;font-weight:600;letter-spacing:.04em;
+  padding:.1rem .45rem;border-radius:99px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.pill.n1,.pill.n2{border-color:var(--ok);color:var(--ok)}
+.pill.n4{border-color:var(--gold);color:var(--gold)}
+.pill.n5,.pill.n6{border-color:var(--alert);color:var(--alert)}
+.pill.flag{border-color:var(--gold);color:var(--gold)}
+.pill.half{border-color:var(--teal);color:var(--teal)}
+
+/* error-type bars */
+.cats{display:grid;gap:2px}
+.cat{display:grid;grid-template-columns:9.5rem 1fr 5.5rem;gap:10px;align-items:center;font-size:.86rem;padding:.2rem 0}
+.cat .bar{height:9px;border-radius:2px;background:var(--raise);overflow:hidden}
+.cat .bar i{display:block;height:100%;background:var(--blue)}
+.cat.zero .bar i{background:var(--alert)}
+.cat .amt{font-family:var(--mono);font-size:.78rem;color:var(--muted);text-align:right}
+
+/* marking sheet */
+.stu{border:1px solid var(--line);border-radius:10px;background:var(--surface);margin-bottom:12px;
+  overflow:hidden;box-shadow:var(--shadow)}
+.stu > h3{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;padding:.55rem .85rem;
+  background:var(--raise);border-bottom:1px solid var(--line)}
+.stu .res{margin-left:auto;font-family:var(--mono);font-size:.78rem;color:var(--muted);white-space:nowrap}
+.q{display:flex;gap:.8rem;align-items:flex-start;flex-wrap:wrap;padding:.5rem .85rem;border-top:1px solid var(--line)}
+.q:first-of-type{border-top:0}
+.q.done{background:color-mix(in srgb,var(--ok) 8%,transparent)}
+.q .w{font-family:var(--display);font-weight:600;color:var(--teal);flex:0 0 11rem}
+.q .s{flex:1 1 20rem;min-width:13rem}
+.q .s.empty{color:var(--muted);font-style:italic}
+.btns{display:flex;gap:.25rem;margin-left:auto}
+.btns button{min-width:2.5rem;padding:.24rem .5rem;background:transparent;color:var(--ink);
+  border-color:var(--line);font-family:var(--mono)}
+.btns button[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+.keys{font-size:.82rem;color:var(--muted)}
+.keys kbd{font-family:var(--mono);font-size:.78rem;border:1px solid var(--line);border-bottom-width:2px;
+  border-radius:4px;padding:0 .32rem;background:var(--raise);color:var(--ink)}
+.bar-track{height:4px;background:var(--line);border-radius:2px;overflow:hidden;flex:1 1 120px;min-width:100px}
+.bar-track i{display:block;height:100%;background:var(--gold);transition:width .2s}
+.sticky{position:sticky;bottom:0;background:var(--surface);border-top:1px solid var(--line);
+  box-shadow:0 -8px 20px -14px rgba(22,33,46,.5);
+  padding:.6rem 20px;margin:0 -20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;z-index:10}
+.msg{font-size:.82rem;color:var(--teal)}
+[hidden]{display:none!important}
+@media (max-width:560px){
+  .q .w{flex:1 1 100%}
+  .btns{margin-left:0}
+  .cat{grid-template-columns:1fr;gap:2px}
+  .cat .amt{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<header class="top">
+  <div class="top-in">
+    <div>
+      <span class="rule"></span>
+      <h1>Class Test Marker</h1>
+    </div>
+    <div class="loaded" id="loaded"></div>
+  </div>
+</header>
+
+<div class="page">
+
+  <div class="banner example" id="example-banner">
+    <div><b>Showing an example.</b> Four invented students, so you can see what the page does.
+      Paste your own rows below and press Review to replace it — nothing here is real class data.</div>
+  </div>
+
+  <section id="input-sec">
+    <div class="sec-head"><h2>Paste the rows</h2>
+      <button class="ghost" id="toggle-input" type="button">Hide</button></div>
+    <div id="input-body">
+      <p class="note" style="margin-bottom:14px">Copy the rows for one test out of Excel — header row
+        included — and paste them here. The class list is optional; with it you get the attendance
+        check and names in register order.</p>
+      <label class="fld" for="rows"><span>Submission rows <em>— tab, semicolon or comma separated</em></span>
+        <textarea id="rows" rows="6" spellcheck="false"></textarea></label>
+      <label class="fld" for="roll"><span>Class list <em>— optional; a SWOP export (Nr;Nachname;Vorname)</em></span>
+        <textarea id="roll" rows="3" spellcheck="false"></textarea></label>
+      <div class="row">
+        <button id="go" type="button">Review</button>
+        <button class="ghost" id="load-example" type="button">Load the example again</button>
+        <label class="keys" style="margin-left:6px"><input type="checkbox" id="strict"> Score exactly as the page did</label>
+        <label class="keys"><input type="checkbox" id="keeplast"> On a repeat, count the last attempt</label>
+      </div>
+      <p class="note" id="err" style="color:var(--alert);margin-top:10px" hidden></p>
+    </div>
+  </section>
+
+  <div id="out" hidden>
+    <div class="tiles" id="tiles"></div>
+    <div id="findings"></div>
+
+    <section id="sheet-sec" hidden>
+      <div class="sec-head"><h2>Mark the written section</h2>
+        <span class="count" id="sheet-count"></span></div>
+      <p class="note" style="margin-bottom:6px">Only this part needs a person. Press
+        <kbd>1</kbd> for full marks, <kbd>2</kbd> for half, <kbd>3</kbd> for none — it moves on by
+        itself. Marks are kept in this browser only.</p>
+      <div class="row" style="margin:12px 0 16px">
+        <span class="keys num" id="prog-text">0 / 0</span>
+        <span class="bar-track"><i id="prog-bar"></i></span>
+      </div>
+      <div id="sheet"></div>
+    </section>
+
+    <section id="final-sec">
+      <div class="sec-head"><h2>Scores</h2><span class="count" id="scores-count"></span></div>
+      <div class="scroll"><table id="scores"></table></div>
+    </section>
+
+    <div class="sticky">
+      <button id="copy-tsv" type="button">Copy the score table</button>
+      <button class="ghost" id="copy-md" type="button">Copy the write-up</button>
+      <button class="ghost" id="reset" type="button">Clear the marks</button>
+      <span class="msg" id="msg" role="status"></span>
+    </div>
+  </div>
+
+  <div class="banner private">
+    <div><b>Nothing leaves this page.</b> The rows you paste are read in your browser and are never
+      sent anywhere, saved to any server, or seen by Claude. Marks are kept in this browser's local
+      storage so a reload doesn't lose them. This page carries the answer keys for the tests, so
+      don't share the link with a class.</div>
+  </div>
+</div>
+
+<script>/*CORE*/</script>
+<script>
+var DATA = /*DATA*/;
+var core = window.EOLReview;
+var lookupGrade = core.makeGradeLookup(DATA.grades.table, DATA.grades.labels);
+var R = null, S = [], N = 0, PER = 2, marks = {}, cur = [0, 0], storeKey = '';
+
+/* Invented students, in the exact shape 9g-australia-vocab-test sends. */
+var EXAMPLE_ROWS = [
+'Timestamp\tName\tClass\tUnit\tEx1\tEx2\tEx3\tEx4\tEx5\tEx6\tEx7\tEx8\tScore\tGrade',
+'2026-09-13T09:00Z\tAlex Muster\tZZ\t9g-australia-vocab-test\tA able to kill you -> deadly [correct]\tA the hard cover of a small sea animal -> seashell [correct]\tB to stop or cancel something you planned -> to call of [wrong: to call off]\tB a machine sent into space to send signals back -> sateliet [wrong: satellite]\tB a rough path through the countryside -> trail [wrong: track]\tC barbie -> We had a barbie in the garden on Saturday. [form ok, mark me]\tC terrace -> I sat on the terrace after school. [form ok, mark me]\tintegrity | time 900s | tab-switches 1 | paste 0 | typing 1 | devtools false | reloads 0 | session zz1\t2 / 5 (40%)\tNote 5 (Nicht genügend)',
+'2026-09-13T09:02Z\tBéa Zimmer\tZZ\t9g-australia-vocab-test\tA able to kill you -> deadly [correct]\tA the hard cover of a small sea animal -> seashell [correct]\tB being free from danger -> safe [wrong: safety]\tB to probably happen -> likely [wrong: to be likely]\tB able to kill you -> (blank) [wrong: deadly]\tC barbie -> (blank) [form check failed, mark me]\tC terrace -> The terrace is behind the house. [form ok, mark me]\tintegrity | time 1200s | tab-switches 14 | paste 1 | typing 2 | devtools false | reloads 0 | session zz2\t2 / 5 (40%)\tNote 5 (Nicht genügend)',
+'2026-09-13T09:40Z\tBéa Zimmer\tZ Z\t9g-australia-vocab-test\tA able to kill you -> deadly [correct]\tA the hard cover of a small sea animal -> seashell [correct]\tB being free from danger -> safety [correct]\tB to probably happen -> to be likely [correct]\tB able to kill you -> deadly [correct]\tC barbie -> A barbie is what Australians call a barbecue. [form ok, mark me]\tC terrace -> We eat on the terrace in summer. [form ok, mark me]\tintegrity | time 400s | tab-switches 0 | paste 0 | typing 0 | devtools false | reloads 0 | session zz3\t5 / 5 (100%)\tNote 1 (Sehr gut)',
+'2026-09-13T09:05Z\tChris Ahlers\tZZ\t9g-australia-vocab-test\tA able to kill you -> deadly [correct]\tA the hard cover of a small sea animal -> seashell [correct]\tB a square-shaped jellyfish whose sting can kill -> shaped jellyfish [wrong: box jellyfish]\tB with nobody else -> own [wrong: on one’s own]\tB to shine softly -> to glow [wrong: to gleam]\tC barbie -> My dad cooked at the barbie yesterday. [form ok, mark me]\tC terrace -> There are flowers on our terrace. [form ok, mark me]\tintegrity | time 1700s | tab-switches 2 | paste 0 | typing 1 | devtools false | reloads 0 | session zz4\t2 / 5 (40%)\tNote 5 (Nicht genügend)'
+].join('\n');
+var EXAMPLE_ROLL = '"Nr";"Nachname";"Vorname"\n1;"Ahlers";"Chris"\n2;"Muster";"Alex Jan"\n3;"Neumann";"Dana"\n4;"Zimmer";"Béa"';
+
+function $(id) { return document.getElementById(id); }
+function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+function fmt(n) { return core.fmt(n); }
+function notePill(g) { return g ? '<span class="pill n' + g.note + '">Note ' + g.note + ' · ' + esc(g.label) + '</span>' : ''; }
+
+/* ── run ── */
+function run(isExample) {
+  $('err').hidden = true;
+  var text = $('rows').value.trim();
+  if (!text) { fail('Paste the rows first — the whole table, header row included.'); return; }
+  var table, roll = [];
+  try {
+    table = core.splitDelimited(text, core.sniffDelim(text));
+    var rollText = $('roll').value.trim();
+    if (rollText) roll = core.rollFromTable(core.splitDelimited(rollText, core.sniffDelim(rollText)));
+  } catch (e) { fail('That paste could not be read as a table. ' + e.message); return; }
+
+  var unit = null;
+  try { unit = core.rowsToPayloads(table).map(function (r) { return r.payload.unit; }).filter(Boolean)[0]; }
+  catch (e) { /* reported below */ }
+  var u = unit && DATA.units[unit];
+  if (!unit) { fail('No Unit column and no raw payload, so there is no way to tell which test this is. Include the Unit column.'); return; }
+
+  try {
+    R = core.analyse({
+      table: table, roll: roll,
+      page: u ? { keys: u.keys, pools: u.pools, slots: u.slots, bank: u.bank, normStyle: u.normStyle } : null,
+      policy: u ? u.policy : Object.assign({ unit: unit }, core.DEFAULT_POLICY),
+      lookupGrade: lookupGrade,
+      strict: $('strict').checked,
+      keepLast: $('keeplast').checked
+    });
+  } catch (e) { fail(e.message); return; }
+
+  $('example-banner').hidden = !isExample;
+  $('loaded').innerHTML = (u ? '<b>' + esc(u.title) + '</b> · ' : '') + esc(unit)
+    + (u ? '' : ' · <span style="color:var(--alert)">no answer key on file</span>');
+  $('out').hidden = false;
+  storeKey = 'eol-marks-' + unit;
+  try { marks = JSON.parse(localStorage.getItem(storeKey)) || {}; } catch (e) { marks = {}; }
+  render();
+}
+function fail(m) { var e = $('err'); e.textContent = m; e.hidden = false; $('out').hidden = true; }
+
+/* ── the findings ── */
+function render() {
+  var counted = R.subs.filter(function (s) { return !s.duplicateOf; });
+  var autoMax = counted.length ? counted[0].autoMax : 0;
+  var teacherMax = counted.length ? counted[0].teacherMax : 0;
+  S = counted; N = S.length ? S[0].teacher.length : 0;
+  PER = R.policy.teacherPointsEach;
+
+  var missing = R.roll.length
+    ? R.roll.filter(function (r) { return !R.subs.some(function (s) { return s.roll && s.roll.nr === r.nr; }); })
+    : [];
+  var avg = counted.length ? counted.reduce(function (a, s) { return a + s.points; }, 0) / counted.length : 0;
+
+  var tiles = [
+    [counted.length, 'submissions counted', false],
+    [R.roll.length ? missing.length : '—', R.roll.length ? 'on the list, no submission' : 'no class list pasted', missing.length > 0],
+    [autoMax ? fmt(Math.round(avg * 10) / 10) + ' / ' + autoMax : '—', 'average, marked automatically', false],
+    [teacherMax ? counted.length * N : '—', teacherMax ? 'answers for you to mark' : 'nothing to mark by hand', false]
+  ];
+  $('tiles').innerHTML = tiles.map(function (t) {
+    return '<div class="tile' + (t[2] ? ' warn' : '') + '"><div class="k">' + esc(t[0]) + '</div><div class="l">' + esc(t[1]) + '</div></div>';
+  }).join('');
+
+  var h = [];
+  h.push(policyBlock());
+  if (R.roll.length) h.push(attendanceBlock(missing));
+  h.push(duplicateBlock());
+  h.push(sectionBlock(counted));
+  h.push(errorBlock(counted));
+  h.push(secondLookBlock(counted));
+  h.push(reteachBlock(counted));
+  h.push(integrityBlock(counted));
+  $('findings').innerHTML = h.filter(Boolean).join('');
+
+  $('sheet-sec').hidden = !teacherMax;
+  if (teacherMax) {
+    $('sheet-count').textContent = PER + ' points per answer';
+    renderSheet();
+  }
+  renderScores(autoMax, teacherMax);
+}
+
+function block(title, count, inner, note) {
+  return '<section><div class="sec-head"><h2>' + esc(title) + '</h2>'
+    + (count != null ? '<span class="count">' + esc(count) + '</span>' : '') + '</div>'
+    + (note ? '<p class="note" style="margin-bottom:12px">' + note + '</p>' : '') + inner + '</section>';
+}
+
+function policyBlock() {
+  var p = R.policy;
+  var acc = Object.keys(p.accept || {});
+  var body = R.strict
+    ? '<p class="note">Scored exactly as the page scored it. No half marks, no accepted variants.</p>'
+    : '<p class="note">Half marks for '
+      + p.half.map(function (c) { return '<span class="pill half">' + esc(c) + '</span>'; }).join(' ')
+      + ' — nothing for a blank or a different word.'
+      + (acc.length ? ' ' + acc.length + ' answer' + (acc.length > 1 ? 's are' : ' is')
+        + ' accepted in full: ' + acc.map(function (k) {
+          return '<span class="wrote">' + esc((p.accept[k] || []).join(', ')) + '</span> for <b>' + esc(k) + '</b>';
+        }).join('; ') + '.' : '')
+      + '</p>';
+  return block('How this was marked', null, body);
+}
+
+function attendanceBlock(missing) {
+  var unknown = R.subs.filter(function (s) { return !s.roll; });
+  if (!missing.length && !unknown.length) {
+    return block('Attendance', R.roll.length + ' on the list',
+      '<p class="note">Everyone on the class list submitted, and every submission matched a name.</p>');
+  }
+  var inner = '';
+  if (missing.length) inner += '<h3 style="margin-bottom:.4rem">No submission</h3><ul class="plain">'
+    + missing.map(function (m) {
+      return '<li><span class="num" style="color:var(--muted);min-width:2rem">' + esc(m.nr) + '.</span><span class="who">'
+        + esc(m.first + ' ' + m.last) + '</span></li>';
+    }).join('') + '</ul>';
+  if (unknown.length) inner += '<h3 style="margin:1rem 0 .4rem">Submitted, but not matched to the list</h3><ul class="plain">'
+    + unknown.map(function (s) {
+      return '<li><span class="wrote">' + esc(s.typed || '(no name)') + '</span><span class="note">row ' + s.line + '</span></li>';
+    }).join('') + '</ul>';
+  return block('Attendance', R.roll.length + ' on the list', inner);
+}
+
+function duplicateBlock() {
+  var seen = [], groups = [];
+  R.subs.forEach(function (s) { if (s.duplicates && seen.indexOf(s.duplicates) === -1) { seen.push(s.duplicates); groups.push(s.duplicates); } });
+  if (!groups.length) return '';
+  var inner = '<ul class="plain">' + groups.map(function (g) {
+    return '<li><span class="who">' + esc(g[0].name) + '</span><span>' + g.map(function (s) {
+      return '<span class="num">' + fmt(s.points) + '/' + s.autoMax + '</span> as class “' + esc(s.cls) + '” '
+        + (s.duplicateOf ? '<span class="pill">not counted</span>' : '<span class="pill n2">counted</span>');
+    }).join(' &nbsp;·&nbsp; ') + '</span></li>';
+  }).join('') + '</ul>';
+  return block('Submitted more than once', groups.length + ' student' + (groups.length > 1 ? 's' : ''), inner,
+    'The dedup key is class + name + unit + day, so a stray space in the class field lets a second attempt through. '
+    + 'Counting the ' + (R.keepLast ? 'last' : 'first') + ' attempt; the ' + (R.keepLast ? 'earlier' : 'later')
+    + ' ones are left out of everything below.');
+}
+
+function sectionBlock(counted) {
+  var names = [];
+  counted.forEach(function (s) { s.items.forEach(function (i) { if (names.indexOf(i.section) === -1) names.push(i.section); }); });
+  if (!names.length) return '';
+  var rows = names.map(function (sec) {
+    var all = [];
+    counted.forEach(function (s) { s.items.forEach(function (i) { if (i.section === sec) all.push(i); }); });
+    if (!all.length) return '';
+    if (all[0].teacherMarked) {
+      return '<tr><td><b>' + esc(sec) + '</b></td><td class="n">' + all.length + '</td><td colspan="2">'
+        + '<span class="pill flag">you mark this</span></td></tr>';
+    }
+    var ok = all.filter(function (i) { return i.why === 'correct' || i.why === 'accepted'; }).length;
+    var pts = all.reduce(function (a, i) { return a + (i.points || 0); }, 0);
+    var max = all.length * R.policy.pointsEach;
+    var pc = Math.round(100 * pts / max);
+    return '<tr><td><b>' + esc(sec) + '</b></td><td class="n">' + all.length + '</td>'
+      + '<td class="n">' + ok + ' <span style="color:var(--muted)">(' + Math.round(100 * ok / all.length) + '%)</span></td>'
+      + '<td class="n">' + fmt(pts) + ' / ' + max + ' <span style="color:var(--muted)">(' + pc + '%)</span></td></tr>';
+  }).join('');
+  return block('Section by section', null,
+    '<div class="scroll"><table><tr><th>Section</th><th class="n">Answers</th><th class="n">Right first time</th>'
+    + '<th class="n">Points after marking</th></tr>' + rows + '</table></div>');
+}
+
+function errorBlock(counted) {
+  var by = {}, total = 0;
+  counted.forEach(function (s) {
+    s.items.forEach(function (i) {
+      if (i.teacherMarked || i.why === 'correct' || i.why === 'accepted') return;
+      (by[i.why] = by[i.why] || []).push({ who: s.name, given: i.given, expected: i.expected });
+      total++;
+    });
+  });
+  var cats = Object.keys(by).sort(function (a, b) { return by[b].length - by[a].length; });
+  if (!cats.length) return block('Where the marks went', 'nothing wrong',
+    '<p class="note">Every automatically marked answer was right.</p>');
+  var max = by[cats[0]].length;
+  var bars = '<div class="cats">' + cats.map(function (c) {
+    var half = !R.strict && R.policy.half.indexOf(c) !== -1;
+    return '<div class="cat' + (half ? '' : ' zero') + '"><div>' + esc(c) + '</div>'
+      + '<div class="bar"><i style="width:' + (100 * by[c].length / max) + '%"></i></div>'
+      + '<div class="amt">' + by[c].length + ' × ' + (half ? fmt(R.policy.pointsEach / 2) : '0') + '</div></div>';
+  }).join('') + '</div>';
+  var lists = cats.map(function (c) {
+    return '<h3 style="margin:1.1rem 0 .35rem">' + esc(c) + '</h3><ul class="plain">'
+      + by[c].slice(0, 25).map(function (w) {
+        return '<li><span class="who">' + esc(w.who) + '</span><span class="wrote">'
+          + (w.given ? '<span class="bad">' + esc(w.given) + '</span>' : '<em>nothing written</em>')
+          + ' → <span class="good">' + esc(w.expected) + '</span></span></li>';
+      }).join('')
+      + (by[c].length > 25 ? '<li class="note">… and ' + (by[c].length - 25) + ' more</li>' : '') + '</ul>';
+  }).join('');
+  return block('Where the marks went', total + ' wrong answers', bars + lists,
+    'Each wrong answer is sorted by what kind of mistake it is, because that is what decides the mark.');
+}
+
+function secondLookBlock(counted) {
+  var look = [];
+  counted.forEach(function (s) {
+    s.items.forEach(function (i) { if (i.secondLook) look.push({ who: s.name, given: i.given, expected: i.expected }); });
+  });
+  if (!look.length) return '';
+  return block('Worth a second look', look.length + ' to decide',
+    '<ul class="plain">' + look.map(function (w) {
+      return '<li><span class="who">' + esc(w.who) + '</span><span class="wrote"><span class="bad">'
+        + esc(w.given) + '</span> → <span class="good">' + esc(w.expected) + '</span></span></li>';
+    }).join('') + '</ul>',
+    'Marked 0 as the wrong word, but part of the expected answer is there. These are yours to decide — '
+    + 'the page will not quietly give or withhold the half mark.');
+}
+
+function reteachBlock(counted) {
+  var per = {};
+  counted.forEach(function (s) {
+    s.items.forEach(function (i) {
+      if (i.teacherMarked || !i.expected) return;
+      var t = per[i.expected] = per[i.expected] || { asked: 0, got: 0 };
+      t.asked++; if (i.why === 'correct' || i.why === 'accepted') t.got++;
+    });
+  });
+  var hard = Object.keys(per).filter(function (k) { return per[k].asked >= 2 && per[k].got / per[k].asked < 0.6; })
+    .sort(function (a, b) { return per[a].got / per[a].asked - per[b].got / per[b].asked; });
+  if (!hard.length) return '';
+  return block('Worth reteaching', hard.length + ' items', '<ul class="plain">' + hard.slice(0, 25).map(function (t) {
+    return '<li><span class="who">' + esc(t) + '</span><span class="num note">' + per[t].got + ' of ' + per[t].asked + ' right</span></li>';
+  }).join('') + '</ul>', 'Asked at least twice, right for fewer than 60% of the class.');
+}
+
+function integrityBlock(counted) {
+  var withSig = counted.filter(function (s) { return s.integrity.raw; });
+  if (!withSig.length) return '';
+  var tabs = withSig.map(function (s) { return s.integrity.tabs || 0; }).sort(function (a, b) { return a - b; });
+  var med = tabs[Math.floor(tabs.length / 2)];
+  var out = withSig.filter(function (s) { return (s.integrity.tabs || 0) > Math.max(4, med * 3) || (s.integrity.paste || 0) > 0; });
+  var inner = out.length
+    ? '<ul class="plain">' + out.map(function (s) {
+      return '<li><span class="who">' + esc(s.name) + '</span><span class="num note">'
+        + s.integrity.tabs + ' tab switches · ' + s.integrity.paste + ' paste attempts · '
+        + Math.round((s.integrity.time || 0) / 60) + ' min</span></li>';
+    }).join('') + '</ul>'
+    : '<p class="note">Nothing stands out.</p>';
+  var ig = (R.policy.ignoreFlags || []);
+  return block('Integrity', 'median ' + med + ' tab switches', inner,
+    'A signal to look at, not a verdict.' + (ig.length ? ' Ignored by this test’s policy: ' + ig.join(', ') + '.' : ''));
+}
+
+/* ── the marking sheet ── */
+function cTotal(n) { var t = 0; for (var i = 0; i < N; i++) { var v = marks[n + '|' + i]; if (v != null) t += v; } return t; }
+function doneN(n) { var d = 0; for (var i = 0; i < N; i++) if (marks[n + '|' + i] != null) d++; return d; }
+function save() { try { localStorage.setItem(storeKey, JSON.stringify(marks)); } catch (e) {} }
+
+function renderSheet() {
+  var btns = PER === 2 ? [2, 1, 0] : [PER, PER / 2, 0];
+  $('sheet').innerHTML = S.map(function (s, si) {
+    var flags = core.flagsFor(s);
+    return '<div class="stu"><h3><span>' + esc(s.name) + '</span>'
+      + flags.map(function (f) { return '<span class="pill flag">' + esc(f) + '</span>'; }).join('')
+      + '<span class="res" id="r-' + si + '"></span></h3>'
+      + s.teacher.map(function (it, qi) {
+        return '<div class="q" id="q-' + si + '-' + qi + '"><span class="w">' + esc(it.prompt) + '</span>'
+          + '<span class="s' + (it.given ? '' : ' empty') + '">' + esc(it.given || 'nothing written') + '</span>'
+          + '<span class="btns">' + btns.map(function (v) {
+            return '<button type="button" data-v="' + v + '" aria-pressed="false" onclick="mark(' + si + ',' + qi + ',' + v + ')">' + v + '</button>';
+          }).join('') + '</span></div>';
+      }).join('') + '</div>';
+  }).join('');
+  S.forEach(function (s, si) { for (var qi = 0; qi < N; qi++) paint(si, qi); upd(si); });
+  prog();
+}
+function paint(si, qi) {
+  var v = marks[S[si].typed + '|' + qi], el = $('q-' + si + '-' + qi);
+  el.className = 'q' + (v != null ? ' done' : '');
+  [].forEach.call(el.querySelectorAll('.btns button'), function (b) {
+    b.setAttribute('aria-pressed', String(v != null && parseFloat(b.getAttribute('data-v')) === v));
+  });
+}
+function upd(si) {
+  var s = S[si], c = cTotal(s.typed), t = s.points + c, max = s.autoMax + s.teacherMax, g = lookupGrade(t, max);
+  $('r-' + si).innerHTML = 'auto ' + fmt(s.points) + ' + marked ' + fmt(c) + '/' + s.teacherMax
+    + ' = <b>' + fmt(t) + '/' + max + '</b> ' + notePill(g)
+    + (doneN(s.typed) < N ? ' <span class="pill">' + doneN(s.typed) + '/' + N + '</span>' : '');
+}
+function prog() {
+  var d = 0; S.forEach(function (s) { d += doneN(s.typed); });
+  var all = S.length * N;
+  $('prog-bar').style.width = (all ? 100 * d / all : 0) + '%';
+  $('prog-text').textContent = d + ' / ' + all + ' marked';
+}
+function mark(si, qi, v) {
+  marks[S[si].typed + '|' + qi] = v; save(); paint(si, qi); upd(si); prog(); renderScores();
+  var nx = qi < N - 1 ? [si, qi + 1] : (si < S.length - 1 ? [si + 1, 0] : null);
+  if (nx) {
+    cur = nx;
+    var e = $('q-' + nx[0] + '-' + nx[1]);
+    e.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    e.style.outline = '2px solid var(--gold)';
+    setTimeout(function () { e.style.outline = ''; }, 700);
+  }
+}
+document.addEventListener('keydown', function (e) {
+  if (/^(INPUT|TEXTAREA)$/.test((e.target.tagName || ''))) return;
+  if ($('sheet-sec').hidden) return;
+  var i = { '1': 0, '2': 1, '3': 2 }[e.key];
+  if (i === undefined) return;
+  var btns = PER === 2 ? [2, 1, 0] : [PER, PER / 2, 0];
+  e.preventDefault(); mark(cur[0], cur[1], btns[i]);
+});
+
+/* ── scores ── */
+function scoreRows() {
+  return S.map(function (s) {
+    var c = cTotal(s.typed), t = s.points + c, max = s.autoMax + s.teacherMax;
+    return { s: s, auto: s.points, marked: c, total: t, max: max, g: lookupGrade(t, max) };
+  });
+}
+function renderScores(autoMax, teacherMax) {
+  var rows = scoreRows();
+  var tm = rows.length ? rows[0].s.teacherMax : 0;
+  $('scores-count').textContent = rows.length + ' students, by surname';
+  $('scores').innerHTML = '<tr><th>#</th><th>Student</th><th>Class</th><th class="n">Auto</th>'
+    + (tm ? '<th class="n">Marked</th>' : '') + '<th class="n">Total</th><th>Note</th><th>Page said</th></tr>'
+    + rows.map(function (r, i) {
+      var mism = String(r.s.reported).match(/^\s*([\d.]+)\s*\/\s*(\d+)/)
+        && Number(String(r.s.reported).match(/^\s*([\d.]+)/)[1]) !== r.s.auto.filter(function (x) { return x.why === 'correct'; }).length;
+      return '<tr><td class="n">' + (i + 1) + '</td><td>' + esc(r.s.name) + '</td><td>' + esc(r.s.cls) + '</td>'
+        + '<td class="n">' + fmt(r.auto) + ' / ' + r.s.autoMax + '</td>'
+        + (tm ? '<td class="n">' + fmt(r.marked) + ' / ' + tm + '</td>' : '')
+        + '<td class="n"><b>' + fmt(r.total) + ' / ' + r.max + '</b></td>'
+        + '<td>' + notePill(r.g) + '</td>'
+        + '<td class="note">' + esc(String(r.s.reported).split('[')[0].trim() || '—')
+        + (mism ? ' <span class="pill n5">key mismatch</span>' : '') + '</td></tr>';
+    }).join('');
+}
+
+/* ── buttons ── */
+function copy(text, said) {
+  var ta = document.createElement('textarea');
+  ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); $('msg').textContent = said; }
+  catch (e) { $('msg').textContent = 'Copy failed — select the table and copy it by hand.'; }
+  ta.remove();
+  setTimeout(function () { $('msg').textContent = ''; }, 4000);
+}
+$('copy-tsv').onclick = function () {
+  var rows = scoreRows(), tm = rows.length ? rows[0].s.teacherMax : 0;
+  var t = ['Student', 'Class', 'Auto', tm ? 'Marked' : null, 'Total', 'Note'].filter(Boolean).join('\t') + '\n'
+    + rows.map(function (r) {
+      return [r.s.name, r.s.cls, fmt(r.auto), tm ? fmt(r.marked) : null, fmt(r.total),
+        r.g ? 'Note ' + r.g.note + ' (' + r.g.label + ')' : ''].filter(function (x) { return x !== null; }).join('\t');
+    }).join('\n');
+  copy(t, 'Copied ' + rows.length + ' rows — paste straight into Excel.');
+};
+$('copy-md').onclick = function () { copy(core.report(R), 'Copied the whole write-up as text.'); };
+$('reset').onclick = function () {
+  if (!confirm('Clear every mark for this test?')) return;
+  marks = {}; try { localStorage.removeItem(storeKey); } catch (e) {}
+  renderSheet(); renderScores(); $('msg').textContent = 'Marks cleared.';
+};
+$('go').onclick = function () { run(false); };
+$('load-example').onclick = function () {
+  $('rows').value = EXAMPLE_ROWS; $('roll').value = EXAMPLE_ROLL; run(true);
+};
+$('toggle-input').onclick = function () {
+  var b = $('input-body'); b.hidden = !b.hidden;
+  $('toggle-input').textContent = b.hidden ? 'Show' : 'Hide';
+};
+
+/* Open in a working state: the example, already reviewed. */
+$('rows').value = EXAMPLE_ROWS;
+$('roll').value = EXAMPLE_ROLL;
+run(true);
+$('input-body').hidden = true;
+$('toggle-input').textContent = 'Show';
+</script>
