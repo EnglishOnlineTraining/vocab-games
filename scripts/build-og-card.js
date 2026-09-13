@@ -54,4 +54,10 @@ try {
   const { size } = fs.statSync(OUT);
   console.log(`${NAME}.png written — 1200x630, ${size.toLocaleString('en-GB')} bytes`);
   console.log('Fonts come from the rendering machine, so re-rendering elsewhere may shift the text slightly.');
+  // Playwright writes an unoptimised PNG — ~216 KB for this card, ~133 KB after a
+  // lossless re-encode. Run this before committing:
+  //   python3 -c "from PIL import Image; n='OUTNAME'; Image.open(n).convert('RGB').save(n,'PNG',optimize=True)"
+  // Lossless only. Do NOT quantise to a palette: the card is a flat navy gradient
+  // and 128 colours bands it visibly.
+  console.log(`Then re-encode losslessly before committing (see the note above ${NAME}.png's size line).`);
 })();

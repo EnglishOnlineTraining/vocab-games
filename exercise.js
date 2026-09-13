@@ -994,21 +994,55 @@ function submitToSheet() {
     return;
   }
 
+  // Offline is worth catching before the fetch, not after. A student on a school
+  // wifi that has dropped otherwise waits on a request that cannot succeed, and
+  // the generic failure toast does not tell them why.
+  if (navigator.onLine === false) {
+    btn.disabled = false;
+    btn.textContent = 'Submit to Teacher';
+    showToast('⚠️ No internet connection - try again, or use the email link');
+    document.getElementById('submit-fallback').style.display = 'block';
+    return;
+  }
+
+  // mode:'no-cors' means the response is opaque: fetch resolves for any HTTP
+  // status, so a 500 from the webhook is indistinguishable from a 200 here.
+  // It does still reject on a real network failure, which is what .catch covers.
+  // What it cannot do is finish, so a stalled request would leave the button on
+  // 'Sending...' for ever. settled guards that: the notice only appears if
+  // nothing has come back, and never overwrites a result that arrives later.
+  var settled = false;
+  setTimeout(function() {
+    if (settled) return;
+    btn.textContent = 'Still sending...';
+    showToast('⏳ This is taking a while - the email link below always works');
+    document.getElementById('submit-fallback').style.display = 'block';
+  }, 15000);
+
   fetch(SHEET_URL, {
     method: 'POST',
     mode: 'no-cors',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
   }).then(function() {
+    settled = true;
     btn.style.display = 'none';
     showToast('✅ Submitted to teacher!');
     document.getElementById('submit-success').style.display = 'block';
     document.getElementById('submit-fallback').style.display = 'block';
     eolSaveProgress();
+    // Conversion signal for GTM. The unit only — never the student's name or
+    // class, and the push is a no-op when consent was refused, because GTM is
+    // then never loaded and nothing reads the array.
+    (window.dataLayer = window.dataLayer || []).push({
+      event: 'exercise_submitted',
+      exercise_unit: (typeof UNIT !== 'undefined' ? UNIT : '')
+    });
   }).catch(function() {
+    settled = true;
     btn.disabled = false;
     btn.textContent = 'Submit to Teacher';
-    showToast('⚠️ Submission failed - check connection');
+    showToast('⚠️ Submission failed - check your connection, or use the email link');
     document.getElementById('submit-fallback').style.display = 'block';
   });
 }
