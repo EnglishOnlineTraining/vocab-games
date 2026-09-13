@@ -1293,6 +1293,58 @@ There is also an **IndexNow plugin active on the WordPress site** (Microsoft Bin
 covers `englishonline.training` only. It cannot see `activities.englishonline.training`, which is
 GitHub Pages — that is what this script is for.
 
+## ⚠️ Cookie consent — GTM is gated, and must stay gated (added 2026-09-13)
+
+**Do not make `exercise.js`, `build-head.js` or any page load Google Tag Manager
+unconditionally.** From June to 2026-09-13 GTM loaded on page view on all 272 pages with
+no consent step, on a German site whose users are largely schoolchildren. GDPR Art. 6 and
+TDDDG § 25 do not allow that. It is fixed; the fix is easy to undo by accident.
+
+**Two files hold it up, and they hand off to each other:**
+
+- **`build-head.js` → `GTM_HEAD`** emits, inline in every `<head>`: Consent Mode v2 defaults
+  with `ad_storage`, `ad_user_data`, `ad_personalization` and `analytics_storage` all
+  **denied**, then a loader that reads `localStorage['eol-consent']` and injects GTM **only**
+  if it reads `granted`. A first-time visitor triggers **no request to Google at all** — this
+  is stronger than Consent Mode alone, which loads the container and lets tags decide.
+- **`consent.js`** (repo root, included by the head block as `<script src="…consent.js" defer>`)
+  draws the banner, records the answer, and on Accept injects GTM there and then. The
+  handshake is `window.eolGtmLoaded`: the head block sets it when it injects, and `consent.js`
+  checks it so the container can never load twice.
+
+**Things that are deliberate and will look like bugs if you don't know:**
+
+- **The GTM `<noscript>` iframe is gone.** `GTM_BODY` is now just its two markers. It fired GTM
+  for JS-off visitors, who cannot answer a banner. **Keep the markers** — `stripBlock()` uses
+  them to remove the old iframe from any page that still carries it; delete them and the iframe
+  lives on every page for ever.
+- **`localStorage` progress (`eolSaveProgress`) is NOT consent-gated**, and must not be. It is
+  what the student asked the page to do, it stays on their device, and nothing reads it back.
+  Gating it would break practise mode for someone who declined analytics, for no legal gain.
+- **The "Cookie-Einstellungen" footer button is added on `window.load`, not `DOMContentLoaded`.**
+  `exercise.js` injects the footer from its own `DOMContentLoaded` handler, which runs after
+  `consent.js`'s would. Move it earlier and the button silently stops appearing on all 167
+  framework pages.
+- **`submitToSheet()` pushes an `exercise_submitted` dataLayer event** carrying the unit only —
+  never name or class. When consent was refused GTM is never loaded, so the push is inert.
+
+**No third-party asset may be loaded from a third-party host without consent.** This is the same
+rule seen from the other side, and the corpus broke it twice:
+`year-7-class-wall.html` pulled Fredoka and Inter from `fonts.googleapis.com` (fixed 2026-09-13 —
+self-hosted in `fonts/`, latin + latin-ext variable woff2; LG München I 3 O 17493/20 held that
+arrangement unlawful), and **`9c-south-africa-revision.html` still hotlinks a photograph from
+`upload.wikimedia.org`** — that one is open, because Wikimedia is blocked from the build
+container and the file could not be fetched. Download it, serve it from the repo, keep the
+attribution. Before adding any new external URL to a page, self-host it instead.
+
+**The WordPress side is NOT covered.** `englishonline.training` still runs GA4
+(`G-F3E7NK2FVQ`), Jetpack stats and WordPress.com advertising with no consent step. The gate
+above is GitHub Pages only. Two drafts wait in WordPress for Shaun: page **2290** (privacy
+policy rewrite) and **2291** (AGB) — both unpublished, both `noindex`, both carrying
+`[TO CONFIRM]` markers.
+
+---
+
 ## Deployment
 
 - GitHub Pages serves from the **`main`** branch
