@@ -1085,6 +1085,60 @@ answer-key grading) with the Make webhook intercepted so no real submission was 
 
 ---
 
+## Reviewing a sat test — `scripts/review-test.js` (added 2026-09-13)
+
+A test being sat is only half the job. The 9b sitting of `9g-australia-vocab-test` was
+reviewed entirely by hand on 2026-09-13 — 26 rows read one at a time to find who was
+missing, who submitted twice, which errors deserved half marks, and to build a sheet for
+the five teacher-marked sentences. `scripts/review-test.js` is that work, done by a script.
+
+```
+node scripts/review-test.js --rows <rows.tsv> --class-list <list.csv> --out <dir outside the repo>
+node scripts/review-test.js --rows <rows.tsv> --marks <marked.tsv>      # fold the marks back in
+node scripts/review-test.js --self-test                                  # or: node test-review-test.js
+```
+
+The `eol-test-review` skill is the procedure around it. `data/test-marking/<unit>.json`
+holds the marking policy per test (`data/test-marking/README.md` has the fields) — which
+error types earn half marks, which answers are accepted, which integrity flags to ignore,
+and who decided. **That file is the point:** without it every sitting is marked from
+scratch and the rules drift.
+
+**Student data never enters the repo.** The script refuses to write its output inside the
+working tree, and `review.md` / `marking.html` are written to a scratch directory. Don't
+commit a rows file, a marking sheet or a results table, and don't publish one to a URL.
+
+**The test page is the answer key.** Three payload shapes exist and all three are handled:
+the `*-vocab-test` pages state their own expected answer in the row (`[wrong: <answer>]`);
+`9ab-` and `9g-class-test-9ab` send `1: given | 2: given` with the key in the page as
+`S1_KEY`/`S3A_KEY`; `10a-` sends `1. [q7 (be)] given` because each student gets a different
+selection, and the id points into `S1_POOL`. Keeping a second copy of any of those keys
+would let the review drift away from what the page actually marked, so nothing is copied —
+`readPage()` evaluates the declarations out of the page source, **including the page's own
+`norm()`**, because `9ab` and `10a` strip apostrophes outright while the vocab tests do not.
+Recomputing with the wrong normaliser silently disagrees with the score the student saw.
+The grade table is read out of `exercise.js` for the same reason, floor at Note 5 included.
+
+**The classifier earns the half marks.** Each wrong answer is sorted into `particle`,
+`word-class`, `spelling`, `infinitive`, `wrong-word` or `blank`; the first four earn half
+by default, the last two nothing (Shaun, 2026-09-13). It was validated against the full
+hand-marked 9b sitting — 105 of 107 pairs agreed, and the two that did not are judgement
+calls the script now refuses to make alone: an answer marked zero that still contains part
+of the expected phrase (`shaped jellyfish` for *box jellyfish*, `own` for *on one's own*)
+is reported under **"Worth a second look"** for a decision, which then belongs in the
+policy file. Those real error pairs are the fixtures in `test-review-test.js`, which runs
+as a build checker — so a page changing how it stores its key fails the build rather than
+marking a class against nothing while printing a plausible table.
+
+**Two things the 9b review found that are still open.** The `devtools` integrity flag is
+identical to the `typing` flag in all 26 rows, so it measures nothing — the policy files
+ignore it, but the pages should be fixed or the flag dropped. And the marking sheet built by
+hand that day used a Note 6 floor while every page floors at Note 5; the generated sheet
+matches the pages. No mark was affected (the lowest total was 15/30), but the two
+disagreed.
+
+---
+
 ## Tests are unlisted, and `teacher-tests.html` is the index (Shaun, 2026-09-03)
 
 **No test is linked from any hub, from `activities.html`, or from the sitemap.** A test a

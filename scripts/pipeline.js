@@ -218,6 +218,11 @@ const CHECKERS = [
   // them out of Sections B and C; this fails the build on an undeclared one.
   { id: 'check-test-leaks', run: 'scripts/check-test-leaks.js' },
   { id: 'test-make-grader', run: 'test-make-grader.js' },
+  // review-test.js reads each test page's answer key straight out of the page.
+  // If a page changes how it stores that key, the review would mark a whole
+  // class against nothing and still print a plausible table — so the key
+  // extraction and the error classifier are checked here.
+  { id: 'test-review-test', run: 'test-review-test.js' },
 ];
 
 // Generators deliberately left outside the graph. Their inputs change roughly

@@ -135,6 +135,15 @@ const IGNORE_PATHS = new Set([
   'esl-articles.html',   // example in esl-grammar-exercise-draft
 ]);
 
+// Files a skill's procedure PRODUCES rather than reads. They are named so the
+// skill can tell you what to open, and they are deliberately written outside the
+// repo (review-test.js refuses to write student data into the working tree), so
+// they can never exist here.
+const IGNORE_OUTPUTS = new Set([
+  'review.md',      // scripts/review-test.js writes this to its --out directory
+  'marking.html',   // ditto — the teacher-marking sheet
+]);
+
 // WordPress MCP / API references that look like file paths but aren't
 const IGNORE_API_REFS = new Set([
   'page-sections.list',
@@ -157,6 +166,7 @@ function extractPaths(content) {
     while ((m = re.exec(content)) !== null) {
       const p = m[1];
       if (IGNORE_PATHS.has(p)) continue;
+      if (IGNORE_OUTPUTS.has(p)) continue;
       if (IGNORE_API_REFS.has(p)) continue;
       if (IGNORE_PREFIXES.some(pfx => p.startsWith(pfx))) continue;
       if (p.includes('{{') || p.includes('$')) continue; // template vars

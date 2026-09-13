@@ -1,0 +1,12 @@
+{
+  "unit": "9g-australia-vocab-test",
+  "pointsEach": 1,
+  "teacherPointsEach": 2,
+  "half": ["particle", "word-class", "spelling", "infinitive"],
+  "accept": {
+    "to be likely": ["likely"],
+    "on one's own": ["on my own", "on your own"]
+  },
+  "ignoreFlags": ["devtools"],
+  "notes": "Shaun, 2026-09-13, after the 9b sitting. Half marks where the student clearly knew the word but got the form wrong: a dropped or wrong particle, the wrong word class, a misspelling, a missing infinitive marker. Nothing for a different word or a blank. 'likely' is accepted for 'to be likely'; 'on my own' and 'on your own' for 'on one's own' — but NOT 'by my self' or 'by your own', which are the wrong preposition, not a slip. Section C (five sentences) is teacher-marked at 2 points each, so the test is out of 30, not 20. The devtools flag is ignored because it is broken: it reports exactly the same value as the typing-anomaly flag on every row, so it is not measuring devtools at all."
+}

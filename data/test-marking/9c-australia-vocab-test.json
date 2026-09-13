@@ -1,0 +1,9 @@
+{
+  "unit": "9c-australia-vocab-test",
+  "pointsEach": 1,
+  "teacherPointsEach": 2,
+  "half": ["particle", "word-class", "spelling", "infinitive"],
+  "accept": {},
+  "ignoreFlags": ["devtools"],
+  "notes": "Half-marks rule inherited from the 9g version (Shaun, 2026-09-13): half for a dropped or wrong particle, the wrong word class, a misspelling or a missing infinitive marker; nothing for a different word or a blank. The accept list is deliberately empty — this test has its own 26-term word list and shares none of the terms 9g needed accepts for, so copying them across would only look like policy. Fill it in after this test is first sat. The devtools flag is ignored: it duplicates the typing-anomaly flag exactly and measures nothing."
+}
