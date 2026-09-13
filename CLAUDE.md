@@ -6,7 +6,11 @@ Static HTML exercise pages for English language learners, hosted on GitHub Pages
 **Live URL:** `https://activities.englishonline.training/`  
 **GitHub Pages fallback:** `https://englishonlinetraining.github.io/vocab-games/`  
 **Custom domain:** `activities.englishonline.training` (DNS CNAME → `englishonlinetraining.github.io`)  
-**WordPress site:** `englishonline.training` (blog ID `65893384`, Simple plan — no SFTP)  
+**WordPress site:** `englishonline.training` (blog ID `65893384`) — **not the Simple plan**, contrary to what
+this line said until 2026-09-13. `plugin.list` returns 14 plugins including third-party ones (Redirection,
+IndexNow, TH SEO News Lite, SSH SFTP Updater Support), which Simple cannot install. Plugin installs are
+therefore possible on the plan; they are blocked only because the `wpcom/plugin-install` MCP ability is
+switched off for this account at https://wordpress.com/me/mcp.  
 **GitHub repo:** `https://github.com/EnglishOnlineTraining/vocab-games`  
 **Teacher email:** `englishonlinetraining@pm.me`
 
@@ -1337,11 +1341,34 @@ arrangement unlawful), and **`9c-south-africa-revision.html` still hotlinks a ph
 container and the file could not be fetched. Download it, serve it from the repo, keep the
 attribution. Before adding any new external URL to a page, self-host it instead.
 
-**The WordPress side is NOT covered.** `englishonline.training` still runs GA4
-(`G-F3E7NK2FVQ`), Jetpack stats and WordPress.com advertising with no consent step. The gate
-above is GitHub Pages only. Two drafts wait in WordPress for Shaun: page **2290** (privacy
-policy rewrite) and **2291** (AGB) — both unpublished, both `noindex`, both carrying
-`[TO CONFIRM]` markers.
+**The WordPress side is NOT covered, and cannot be fixed the same way.** `englishonline.training`
+still runs GA4 (`G-F3E7NK2FVQ`), Jetpack stats and WordPress.com advertising with no consent step.
+The gate above is GitHub Pages only.
+
+**Do not try to solve it by injecting a banner script into a WordPress template.** Jetpack renders
+those tags **server-side**, before any script of ours runs, so client-side JS cannot stop them
+firing. A banner that does not block the tag is worse than no banner: it tells the visitor their
+refusal was honoured when it was not. The only two real options are a consent plugin that hooks
+WordPress before output (Complianz GDPR is the obvious pick — free, German setup wizard, Google
+Consent Mode, and it blocks rather than merely notifies), or switching the integrations off.
+
+Attempted 2026-09-13 and blocked: `plugin.install` is disabled for this account's MCP
+(`wpcom/plugin-install` at https://wordpress.com/me/mcp), and `settings.get` exposes only general
+settings — no analytics or cookie options. Enabling that one ability unblocks the install from a
+session. `page-sections.replace`/`insert`/`remove` are disabled too, which is why a one-line edit
+to a live WP page still has to go through a whole-`content` `pages.update` and the
+`context: "edit"` trap above applies.
+
+**Page 949 (Impressum) was updated 2026-09-13** — the address now reads `Koloniestrasse 6b, 13357
+Berlin` (it had no house number, which § 5 DDG requires). Done through `pages.update` with content
+fetched at `context: "edit"`; the `jetpack/send-a-message` block's hash was identical before and
+after, which is the check worth repeating on that page.
+
+Two drafts wait in WordPress for Shaun: page **2290** (privacy policy rewrite) and **2291** (AGB) —
+both unpublished, both `noindex`. Both now carry the real address. The AGB's § 8 records Shaun's
+refund policy ("online materials will be refunded if faulty") as a Gewährleistung clause; note it
+sits **alongside** the 14-day Widerrufsrecht in § 7 and does not replace it, since a
+"refunds only for faults" clause would be void against consumers.
 
 ---
 
