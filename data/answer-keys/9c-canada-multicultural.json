@@ -1,0 +1,129 @@
+{
+ "unit": "9c-canada-multicultural",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "are spoken",
+     "accept": [
+      "are spoken"
+     ],
+     "label": "1. English and French"
+    },
+    "g2": {
+     "correct": "is produced",
+     "accept": [
+      "is produced"
+     ],
+     "label": "2. Maple syrup"
+    },
+    "g3": {
+     "correct": "are celebrated",
+     "accept": [
+      "are celebrated"
+     ],
+     "label": "3. Many festivals"
+    },
+    "g4": {
+     "correct": "is played",
+     "accept": [
+      "is played"
+     ],
+     "label": "4. Ice hockey"
+    },
+    "g5": {
+     "correct": "are welcomed",
+     "accept": [
+      "are welcomed"
+     ],
+     "label": "5. New immigrants"
+    },
+    "g6": {
+     "correct": "is protected",
+     "accept": [
+      "is protected"
+     ],
+     "label": "6. Multiculturalism"
+    },
+    "g7": {
+     "correct": "is seen",
+     "accept": [
+      "is seen"
+     ],
+     "label": "7. Diversity"
+    },
+    "g8": {
+     "correct": "are spoken",
+     "accept": [
+      "are spoken"
+     ],
+     "label": "8. Different languages"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "was made",
+     "accept": [
+      "was made"
+     ],
+     "label": "1. Multiculturalism"
+    },
+    "g2": {
+     "correct": "was formed",
+     "accept": [
+      "was formed"
+     ],
+     "label": "2. Canada"
+    },
+    "g3": {
+     "correct": "were welcomed",
+     "accept": [
+      "were welcomed"
+     ],
+     "label": "3. Thousands of new immigrants"
+    },
+    "g4": {
+     "correct": "was organised",
+     "accept": [
+      "was organised"
+     ],
+     "label": "4. The festival"
+    },
+    "g5": {
+     "correct": "was passed",
+     "accept": [
+      "was passed"
+     ],
+     "label": "5. The law"
+    },
+    "g6": {
+     "correct": "were shared",
+     "accept": [
+      "were shared"
+     ],
+     "label": "6. Traditional foods"
+    },
+    "g7": {
+     "correct": "was filmed",
+     "accept": [
+      "was filmed"
+     ],
+     "label": "7. The documentary"
+    },
+    "g8": {
+     "correct": "were invited",
+     "accept": [
+      "were invited"
+     ],
+     "label": "8. The new citizens"
+    }
+   }
+  }
+ }
+}

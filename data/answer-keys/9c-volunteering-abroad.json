@@ -1,0 +1,129 @@
+{
+ "unit": "9c-volunteering-abroad",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "must",
+     "accept": [
+      "must"
+     ],
+     "label": "1. You"
+    },
+    "g2": {
+     "correct": "have to",
+     "accept": [
+      "have to"
+     ],
+     "label": "2. Volunteers"
+    },
+    "g3": {
+     "correct": "mustn't",
+     "accept": [
+      "mustn't"
+     ],
+     "label": "3. You"
+    },
+    "g4": {
+     "correct": "don't have to",
+     "accept": [
+      "don't have to"
+     ],
+     "label": "4. Some projects say you"
+    },
+    "g5": {
+     "correct": "have to",
+     "accept": [
+      "have to"
+     ],
+     "label": "5. Younger volunteers"
+    },
+    "g6": {
+     "correct": "mustn't",
+     "accept": [
+      "mustn't"
+     ],
+     "label": "6. You"
+    },
+    "g7": {
+     "correct": "don't have to",
+     "accept": [
+      "don't have to"
+     ],
+     "label": "7. Most organisations say volunteers"
+    },
+    "g8": {
+     "correct": "has to",
+     "accept": [
+      "has to"
+     ],
+     "label": "8. Everyone"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "should",
+     "accept": [
+      "should"
+     ],
+     "label": "1. You"
+    },
+    "g2": {
+     "correct": "shouldn't",
+     "accept": [
+      "shouldn't"
+     ],
+     "label": "2. You"
+    },
+    "g3": {
+     "correct": "should",
+     "accept": [
+      "should"
+     ],
+     "label": "3. New volunteers"
+    },
+    "g4": {
+     "correct": "should",
+     "accept": [
+      "should"
+     ],
+     "label": "4. You"
+    },
+    "g5": {
+     "correct": "shouldn't",
+     "accept": [
+      "shouldn't"
+     ],
+     "label": "5. You"
+    },
+    "g6": {
+     "correct": "should",
+     "accept": [
+      "should"
+     ],
+     "label": "6. It"
+    },
+    "g7": {
+     "correct": "should",
+     "accept": [
+      "should"
+     ],
+     "label": "7. You"
+    },
+    "g8": {
+     "correct": "shouldn't",
+     "accept": [
+      "shouldn't"
+     ],
+     "label": "8. You"
+    }
+   }
+  }
+ }
+}

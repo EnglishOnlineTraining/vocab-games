@@ -1,0 +1,177 @@
+{
+ "unit": "9c-question-tags-small-talk",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "exchange",
+     "accept": [
+      "exchange"
+     ],
+     "label": "Anna: Hi! You're new here, aren't you ? I'm Anna. Jonas: Yes, I am. I'm an 1"
+    },
+    "g2": {
+     "correct": "nervous",
+     "accept": [
+      "nervous"
+     ],
+     "label": "Anna: That's exciting! It's a friendly school, isn't it ? You must feel a bit 2"
+    },
+    "g3": {
+     "correct": "timetable",
+     "accept": [
+      "timetable"
+     ],
+     "label": "Jonas: A little, yes. Everything is so different — even the school 3"
+    },
+    "g4": {
+     "correct": "canteen",
+     "accept": [
+      "canteen"
+     ],
+     "label": "Anna: Don't worry, you'll learn it fast. You don't know where the 4"
+    },
+    "g5": {
+     "correct": "homesick",
+     "accept": [
+      "homesick"
+     ],
+     "label": "Jonas: Not yet! Actually, I already feel a bit 5"
+    },
+    "g6": {
+     "correct": "weekend",
+     "accept": [
+      "weekend"
+     ],
+     "label": "…t's normal, it's always like that at first. It gets better, I promise. Are you free this 6"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "aren't you",
+     "accept": [
+      "aren't you"
+     ],
+     "label": "1. You're new here,"
+    },
+    "g2": {
+     "correct": "doesn't she",
+     "accept": [
+      "doesn't she"
+     ],
+     "label": "2. She speaks German,"
+    },
+    "g3": {
+     "correct": "don't they",
+     "accept": [
+      "don't they"
+     ],
+     "label": "3. They live in Berlin,"
+    },
+    "g4": {
+     "correct": "can't he",
+     "accept": [
+      "can't he"
+     ],
+     "label": "4. He can swim,"
+    },
+    "g5": {
+     "correct": "aren't we",
+     "accept": [
+      "aren't we"
+     ],
+     "label": "5. We're going to the party,"
+    },
+    "g6": {
+     "correct": "haven't you",
+     "accept": [
+      "haven't you"
+     ],
+     "label": "6. You've got a new phone,"
+    },
+    "g7": {
+     "correct": "didn't it",
+     "accept": [
+      "didn't it"
+     ],
+     "label": "7. It rained yesterday,"
+    },
+    "g8": {
+     "correct": "aren't they",
+     "accept": [
+      "aren't they"
+     ],
+     "label": "8. Tom and Lisa are coming too,"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "are you",
+     "accept": [
+      "are you"
+     ],
+     "label": "1. You aren't from here,"
+    },
+    "g2": {
+     "correct": "does she",
+     "accept": [
+      "does she"
+     ],
+     "label": "2. She doesn't like coffee,"
+    },
+    "g3": {
+     "correct": "can they",
+     "accept": [
+      "can they"
+     ],
+     "label": "3. They can't come tonight,"
+    },
+    "g4": {
+     "correct": "aren't I",
+     "accept": [
+      "aren't I"
+     ],
+     "label": "4. I'm right,"
+    },
+    "g5": {
+     "correct": "shall we",
+     "accept": [
+      "shall we"
+     ],
+     "label": "5. Let's go to the cinema,"
+    },
+    "g6": {
+     "correct": "will you",
+     "accept": [
+      "will you"
+     ],
+     "label": "6. Close the door,"
+    },
+    "g7": {
+     "correct": "did they",
+     "accept": [
+      "did they"
+     ],
+     "label": "7. Nobody called,"
+    },
+    "g8": {
+     "correct": "is there",
+     "accept": [
+      "is there"
+     ],
+     "label": "8. There isn't any milk left,"
+    }
+   }
+  }
+ }
+}

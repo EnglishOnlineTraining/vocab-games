@@ -1,0 +1,129 @@
+{
+ "unit": "9c-life-before-technology",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "used to",
+     "accept": [
+      "used to"
+     ],
+     "label": "1. People"
+    },
+    "g2": {
+     "correct": "didn't use to",
+     "accept": [
+      "didn't use to"
+     ],
+     "label": "2. Children"
+    },
+    "g3": {
+     "correct": "used to",
+     "accept": [
+      "used to"
+     ],
+     "label": "3. My grandad"
+    },
+    "g4": {
+     "correct": "didn't use to",
+     "accept": [
+      "didn't use to"
+     ],
+     "label": "4. Families"
+    },
+    "g5": {
+     "correct": "used to",
+     "accept": [
+      "used to"
+     ],
+     "label": "5. People"
+    },
+    "g6": {
+     "correct": "didn't use to",
+     "accept": [
+      "didn't use to"
+     ],
+     "label": "6. Students"
+    },
+    "g7": {
+     "correct": "used to",
+     "accept": [
+      "used to"
+     ],
+     "label": "7. My mum"
+    },
+    "g8": {
+     "correct": "didn't use to",
+     "accept": [
+      "didn't use to"
+     ],
+     "label": "8. Shops"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "used to walk",
+     "accept": [
+      "used to walk"
+     ],
+     "label": "1. My grandmother"
+    },
+    "g2": {
+     "correct": "walked",
+     "accept": [
+      "walked"
+     ],
+     "label": "2. Yesterday, she"
+    },
+    "g3": {
+     "correct": "visited",
+     "accept": [
+      "visited"
+     ],
+     "label": "3. Last week, our class"
+    },
+    "g4": {
+     "correct": "used to record",
+     "accept": [
+      "used to record"
+     ],
+     "label": "4. In the 1980s, people"
+    },
+    "g5": {
+     "correct": "used to write",
+     "accept": [
+      "used to write"
+     ],
+     "label": "5. Grandad"
+    },
+    "g6": {
+     "correct": "wrote",
+     "accept": [
+      "wrote"
+     ],
+     "label": "6. He"
+    },
+    "g7": {
+     "correct": "used to use",
+     "accept": [
+      "used to use"
+     ],
+     "label": "7. Before computers, workers"
+    },
+    "g8": {
+     "correct": "used a typewriter",
+     "accept": [
+      "used a typewriter"
+     ],
+     "label": "8. On that day, the reporter"
+    }
+   }
+  }
+ }
+}
