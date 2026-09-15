@@ -901,7 +901,7 @@ function processFile(file) {
     // number, it should be this one — warn rather than rewrite, because only a
     // human can tell "14 tasks" from "14 countries".
     const n = hubItems(file).length;
-    const stated = (meta.desc || '').match(/(\d+)\s+(?:tasks|exercises)\b/);
+    const stated = (meta.desc || '').match(/(\d+)\s+(?:tasks|exercises|Prüfungseinheiten|Übungen|Aufgaben)\b/);
     if (stated && Number(stated[1]) !== n) staleDesc = `meta description says ${stated[1]}, hub lists ${n}`;
   }
 
