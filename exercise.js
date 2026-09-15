@@ -174,6 +174,100 @@ function eolUpdateStreak() {
 }
 
 /* ============================================================
+   AUTOSAVE (localStorage, zero per-page edits)
+   Persists the page's `state` object, `maxStepReached` and the
+   current step to localStorage after every step change and on a
+   periodic timer. On reload, a resume banner lets the student
+   pick up where they left off. Cleared on successful submit.
+============================================================ */
+var EOL_DRAFT_KEY = '';
+var _eolDraftTimer = 0;
+
+function eolDraftInit() {
+  if (typeof UNIT === 'undefined') return;
+  EOL_DRAFT_KEY = 'eol_draft_' + UNIT;
+  eolDraftOfferResume();
+  _eolDraftTimer = setInterval(eolDraftSave, 30000);
+  document.addEventListener('change', eolDraftSave);
+}
+
+function eolDraftSave() {
+  if (!EOL_DRAFT_KEY || !state || !state.name) return;
+  try {
+    var cur = document.querySelector('.step.active');
+    var curStep = cur ? parseInt(cur.id.replace('step-', ''), 10) : 0;
+    var draft = {
+      v: 2,
+      state: state,
+      maxStep: maxStepReached,
+      curStep: curStep,
+      ts: Date.now()
+    };
+    localStorage.setItem(EOL_DRAFT_KEY, JSON.stringify(draft));
+  } catch (e) {}
+}
+
+function eolDraftLoad() {
+  try {
+    var raw = localStorage.getItem(EOL_DRAFT_KEY);
+    if (!raw) return null;
+    var d = JSON.parse(raw);
+    if (!d || d.v !== 2 || !d.state || !d.state.name) return null;
+    if (Date.now() - d.ts > 48 * 60 * 60 * 1000) return null;
+    return d;
+  } catch (e) { return null; }
+}
+
+function eolDraftClear() {
+  try { localStorage.removeItem(EOL_DRAFT_KEY); } catch (e) {}
+}
+
+function eolDraftOfferResume() {
+  var d = eolDraftLoad();
+  if (!d) return;
+  var banner = document.createElement('div');
+  banner.id = 'eol-resume-banner';
+  banner.style.cssText = 'background:#f5e6b0;border:2px solid #c9a227;border-radius:10px;padding:1rem 1.2rem;margin:1rem auto;max-width:560px;text-align:center;font-family:var(--font,"Segoe UI",system-ui,sans-serif)';
+  banner.innerHTML = '<p style="font-weight:700;margin:0 0 .4rem;font-size:.95rem">'
+    + '💾 Unfinished work found</p>'
+    + '<p style="font-size:.85rem;color:#6b7a8d;margin:0 0 .8rem">'
+    + d.state.name + ' — ' + (d.state.cls || '') + ' — saved '
+    + new Date(d.ts).toLocaleString('en-GB', { day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' })
+    + '</p>'
+    + '<button class="btn btn-gold btn-sm" id="eol-resume-yes" style="margin-right:.5rem">Resume</button>'
+    + '<button class="btn btn-outline btn-sm" id="eol-resume-no">Start fresh</button>';
+  var welcome = document.getElementById('step-0');
+  if (welcome) {
+    var inner = welcome.querySelector('.step-inner');
+    if (inner) inner.insertBefore(banner, inner.children[1] || null);
+  }
+  document.getElementById('eol-resume-yes').onclick = function() {
+    banner.remove();
+    state = d.state;
+    if (typeof maxStepReached !== 'undefined') maxStepReached = d.maxStep || 0;
+    state.name && (function() {
+      var nameEl = document.getElementById('inp-name');
+      var clsEl = document.getElementById('inp-class');
+      if (nameEl) nameEl.value = state.name;
+      if (clsEl) clsEl.value = state.cls || '';
+    })();
+    eolMarkStarted();
+    var target = d.curStep || 1;
+    if (target > 0 && target <= TOTAL_STEPS) {
+      showStep(target);
+    } else {
+      showStep(1);
+    }
+  };
+  document.getElementById('eol-resume-no').onclick = function() {
+    banner.remove();
+    eolDraftClear();
+  };
+}
+
+document.addEventListener('DOMContentLoaded', eolDraftInit);
+
+/* ============================================================
    WRITING RUBRIC — PRACTISE MODE ONLY
    Class submissions are marked by the teacher, so the rubric is
    deliberately confined to practise mode: it is rendered only from
@@ -290,6 +384,7 @@ function showStep(n) {
   restoreStep(n);
   if (n > maxStepReached) maxStepReached = n;
   renderStepNav(n);
+  eolDraftSave();
   var meta = document.getElementById('header-meta');
   if (n === 0) { meta.style.display = 'none'; return; }
   meta.style.display = 'block';
@@ -990,6 +1085,7 @@ function submitToSheet() {
       showToast('✅ Test submission logged to console');
       document.getElementById('submit-success').style.display = 'block';
       document.getElementById('submit-fallback').style.display = 'block';
+      eolDraftClear();
     }, 600);
     return;
   }
@@ -1005,6 +1101,7 @@ function submitToSheet() {
     document.getElementById('submit-success').style.display = 'block';
     document.getElementById('submit-fallback').style.display = 'block';
     eolSaveProgress();
+    eolDraftClear();
   }).catch(function() {
     btn.disabled = false;
     btn.textContent = 'Submit to Teacher';
