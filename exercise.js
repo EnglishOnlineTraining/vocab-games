@@ -376,6 +376,29 @@ function showToast(message, duration) {
   }, duration);
 }
 
+function eolSkipModal(onConfirm) {
+  if (document.getElementById('eol-skip-overlay')) return;
+  var overlay = document.createElement('div');
+  overlay.id = 'eol-skip-overlay';
+  overlay.className = 'eol-skip-overlay';
+  var box = document.createElement('div');
+  box.className = 'eol-skip-box';
+  box.innerHTML = '<div style="font-size:1.6rem;margin-bottom:.4rem">⚠️</div>'
+    + '<p class="eol-skip-title">Skip this exercise?</p>'
+    + '<p class="eol-skip-body">Your incomplete answers won’t be scored.<br>You can come back to it later.</p>'
+    + '<div class="eol-skip-actions">'
+    + '<button type="button" class="btn btn-outline btn-sm" id="eol-skip-back">Go back</button>'
+    + '<button type="button" class="btn btn-gold btn-sm" id="eol-skip-go">Skip anyway</button>'
+    + '</div>';
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
+  function close() { overlay.remove(); }
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) close(); });
+  document.getElementById('eol-skip-back').addEventListener('click', close);
+  document.getElementById('eol-skip-go').addEventListener('click', function() { close(); onConfirm(); });
+  document.getElementById('eol-skip-back').focus();
+}
+
 function showStep(n) {
   document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
   document.getElementById('step-' + n).classList.add('active');
@@ -407,9 +430,11 @@ function renderStepNav(current) {
     if (i === current) cls += ' current';
     else if (i <= maxStepReached) cls += ' visited';
     else cls += ' locked';
-    html += '<button class="' + cls + '" ' + (i === current ? 'aria-current="step" ' : '')
-      + (i <= maxStepReached && i !== current ? 'onclick="goToStep(' + i + ')"' : 'disabled')
-      + '>Ex ' + String.fromCharCode(64 + i) + '</button>';
+    var action = '';
+    if (i === current) action = 'aria-current="step" disabled';
+    else if (i <= maxStepReached) action = 'onclick="goToStep(' + i + ')"';
+    else action = 'onclick="skipToStep(' + i + ')"';
+    html += '<button class="' + cls + '" ' + action + '>Ex ' + String.fromCharCode(64 + i) + '</button>';
   }
   var submitCls = 'step-nav-btn' + (current === TOTAL_STEPS ? ' current' : (maxStepReached >= TOTAL_STEPS ? ' visited' : ' locked'));
   html += '<button class="' + submitCls + '" ' + (current === TOTAL_STEPS ? 'aria-current="step" ' : '')
@@ -440,6 +465,15 @@ function nextStep(n) {
   saveStep(n);
   if (n === TOTAL_STEPS - 1) { eolAutoScoreUnchecked(); buildSummary(); }
   showStep(n + 1);
+}
+
+function skipToStep(n) {
+  eolSkipModal(function() {
+    var current = document.querySelector('.step.active');
+    if (current) { var curN = parseInt(current.id.replace('step-', ''), 10); saveStep(curN); }
+    if (n === TOTAL_STEPS) { eolAutoScoreUnchecked(); buildSummary(); }
+    showStep(n);
+  });
 }
 
 function clearErr(n) {
@@ -1494,7 +1528,15 @@ function eolInjectChrome() {
     + '.eol-rubric-foot{font-size:.82rem;color:var(--muted,#6b7a8d);margin-top:.8rem}'
     + '@media(max-width:560px){.eol-rubric-table tbody td:not(.eol-rubric-rate){display:block}'
       + '.eol-rubric-table{font-size:.8rem}.eol-rubric-rate{width:3.2rem}}'
-    + '@media(prefers-reduced-motion:reduce){.eol-skip{transition:none}}';
+    + '@media(prefers-reduced-motion:reduce){.eol-skip{transition:none}}'
+    + '.eol-skip-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:10000;'
+      + 'display:flex;align-items:center;justify-content:center;padding:1rem}'
+    + '.eol-skip-box{background:#fff;border-radius:12px;padding:1.5rem 1.75rem;max-width:340px;'
+      + 'width:100%;box-shadow:0 8px 32px rgba(0,0,0,.25);text-align:center;'
+      + 'font-family:var(--font,"Segoe UI",system-ui,sans-serif)}'
+    + '.eol-skip-title{font-size:.95rem;color:var(--text,#1d2b3a);margin:0 0 .3rem;font-weight:600}'
+    + '.eol-skip-body{font-size:.84rem;color:var(--muted,#6b7a8d);margin:0 0 1.2rem;line-height:1.5}'
+    + '.eol-skip-actions{display:flex;gap:.6rem;justify-content:center}';
   document.head.appendChild(st);
 
   if (!document.getElementById('eol-skip')) {
