@@ -73,11 +73,12 @@ function resolveExpr(src, expr, fromIdx) {
   return key ? (val ? val[key] : null) : val;
 }
 
-/* all graded checkDropdowns/Multi calls with resolved ids + answers */
+/* all graded checkDropdowns/Multi/Typed calls with resolved ids + answers */
 function gradedCalls(src) {
-  var out = [], re = /checkDropdowns(Multi)?\s*\(/g, m;
+  var out = [], re = /checkDropdowns(Multi)?|checkTyped/g, m;
   while ((m = re.exec(src))) {
     var paren = src.indexOf('(', m.index);
+    if (paren < 0 || paren > m.index + m[0].length + 5) continue;
     var endP = matchBracket(src, paren);
     if (endP < 0) continue;
     var args = splitArgs(src.slice(paren + 1, endP));
@@ -87,7 +88,8 @@ function gradedCalls(src) {
     if (!scoreKey) continue;
     var ids = resolveExpr(src, args[0], m.index) || [];
     var answers = resolveExpr(src, args[2], m.index) || {};
-    out.push({ multi: !!m[1], ids: ids, prefix: prefix, answers: answers, scoreKey: scoreKey });
+    var typed = m[0] === 'checkTyped';
+    out.push({ multi: !!m[1], typed: typed, ids: ids, prefix: prefix, answers: answers, scoreKey: scoreKey });
   }
   return out;
 }

@@ -10,15 +10,18 @@
  * file), so their units are absent from it entirely, and for the rest it is a second
  * hand-authored copy that can drift from what the page actually marks.
  *
- * The authoritative key is the page's own checkDropdowns/checkDropdownsMulti call —
- * literally the code that decides whether the student was right. gradedCalls()
- * resolves those, so that is what we emit. Labels and `why` lines are cosmetic and
- * come from data/explanations.json when it has them.
+ * The authoritative key is the page's own checkDropdowns/checkDropdownsMulti/
+ * checkTyped call — literally the code that decides whether the student was right.
+ * gradedCalls() resolves those, so that is what we emit. Labels and `why` lines
+ * are cosmetic and come from data/explanations.json when it has them.
  *
  * Matching must mirror exercise.js exactly or Make and the page will disagree:
  *   checkDropdowns       ok = sel.value === answers[k]        (strict, case-sensitive)
  *   checkDropdownsMulti  ok = answers[k].indexOf(sel.value)   (exact, any of a list)
- * So `accept` is always an exact-match list. Do not lowercase or trim it.
+ *   checkTyped           ok = normAns(val) in accept.map(normAns) (case-insensitive,
+ *                        apostrophe-normalised) — section carries `typed: true`
+ * Dropdown `accept` is exact-match. Typed `accept` stores the canonical spellings;
+ * make-grader.js normalises both sides at match time.
  *
  * One file per unit, not one big file: the grader only ever needs the unit being
  * submitted, and it fetches on every submission. A single combined file is 764 KB;
@@ -89,7 +92,9 @@ function build() {
         gaps++;
       }
       if (Object.keys(out).length) {
-        sections[c.scoreKey] = { prefix: c.prefix, multi: !!c.multi, gaps: out };
+        var sec = { prefix: c.prefix, multi: !!c.multi, gaps: out };
+        if (c.typed) sec.typed = true;
+        sections[c.scoreKey] = sec;
       }
     }
     if (Object.keys(sections).length) { keys[unit] = sections; units++; }
