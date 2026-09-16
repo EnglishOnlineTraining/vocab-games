@@ -1,0 +1,205 @@
+{
+ "unit": "9c-melbourne-job-application",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Melbourne",
+     "accept": [
+      "Melbourne"
+     ],
+     "label": "1. The Waterfront Hotel is in"
+    },
+    "g2": {
+     "correct": "receptionist",
+     "accept": [
+      "receptionist"
+     ],
+     "label": "2. The hotel is looking for a"
+    },
+    "g3": {
+     "correct": "team",
+     "accept": [
+      "team"
+     ],
+     "label": "3. The hotel wants someone who can work in a"
+    },
+    "g4": {
+     "correct": "Ireland",
+     "accept": [
+      "Ireland"
+     ],
+     "label": "4. Amy is from"
+    },
+    "g5": {
+     "correct": "B & B",
+     "accept": [
+      "B & B"
+     ],
+     "label": "5. In Cork, Amy worked in a"
+    },
+    "g6": {
+     "correct": "temporary",
+     "accept": [
+      "temporary"
+     ],
+     "label": "6. Her current job in Australia is"
+    },
+    "g7": {
+     "correct": "receptionist",
+     "accept": [
+      "receptionist"
+     ],
+     "label": "7. At the Flying Emu Lodge, Amy works as a"
+    },
+    "g8": {
+     "correct": "permanent",
+     "accept": [
+      "permanent"
+     ],
+     "label": "8. Amy says she is looking for a more"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "hairdresser",
+     "accept": [
+      "hairdresser"
+     ],
+     "label": "1. This person cuts and styles hair. →"
+    },
+    "g2": {
+     "correct": "carpenter",
+     "accept": [
+      "carpenter"
+     ],
+     "label": "2. This person builds things out of wood, such as furniture or doors. →"
+    },
+    "g3": {
+     "correct": "mechanic",
+     "accept": [
+      "mechanic"
+     ],
+     "label": "3. This person repairs or builds machines. →"
+    },
+    "g4": {
+     "correct": "chef",
+     "accept": [
+      "chef"
+     ],
+     "label": "4. This person cooks food in a restaurant or hotel. →"
+    },
+    "g5": {
+     "correct": "nurse",
+     "accept": [
+      "nurse"
+     ],
+     "label": "5. This person helps sick people in a hospital. →"
+    },
+    "g6": {
+     "correct": "plumber",
+     "accept": [
+      "plumber"
+     ],
+     "label": "6. This person repairs pipes in buildings. →"
+    },
+    "g7": {
+     "correct": "travel agent",
+     "accept": [
+      "travel agent"
+     ],
+     "label": "7. This person books holidays and flights for customers. →"
+    },
+    "g8": {
+     "correct": "physiotherapist",
+     "accept": [
+      "physiotherapist"
+     ],
+     "label": "8. This person works with patients who have injuries. →"
+    },
+    "g9": {
+     "correct": "preschool teacher",
+     "accept": [
+      "preschool teacher"
+     ],
+     "label": "9. This person uses games, music and art in classes with young children. →"
+    },
+    "g10": {
+     "correct": "electrician",
+     "accept": [
+      "electrician"
+     ],
+     "label": "10. This person installs and repairs electrical systems. →"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "CV",
+     "accept": [
+      "CV"
+     ],
+     "label": "1. A document that lists your education, skills and work experience is called a"
+    },
+    "g2": {
+     "correct": "application",
+     "accept": [
+      "application"
+     ],
+     "label": "2. When you want a job, you write a letter of"
+    },
+    "g3": {
+     "correct": "receptionist",
+     "accept": [
+      "receptionist"
+     ],
+     "label": "3. The person who welcomes guests at a hotel desk is the"
+    },
+    "g4": {
+     "correct": "punctual",
+     "accept": [
+      "punctual"
+     ],
+     "label": "4. If you are always on time, you are"
+    },
+    "g5": {
+     "correct": "references",
+     "accept": [
+      "references"
+     ],
+     "label": "5. People you have worked for before who say good things about you are your"
+    },
+    "g6": {
+     "correct": "temporary",
+     "accept": [
+      "temporary"
+     ],
+     "label": "6. A job you do for a short time only, not forever, is a"
+    },
+    "g7": {
+     "correct": "cultures",
+     "accept": [
+      "cultures"
+     ],
+     "label": "7. Amy says she can deal with guests from different"
+    },
+    "g8": {
+     "correct": "salary",
+     "accept": [
+      "salary"
+     ],
+     "label": "8. The money you earn from your job each month is your"
+    }
+   }
+  }
+ }
+}
