@@ -504,6 +504,14 @@ function g(id)      { var el = document.getElementById(id); return el ? el.value
 function set(id, v) { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
 function val(id)    { return g(id).length > 0; }
 function esc(str)   { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
+function normAns(s) {
+  return String(s == null ? '' : s)
+    .replace(/[‘’ʼ´`]/g, "'")
+    .toLowerCase()
+    .replace(/[.,!?;:]+$/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
 
 /* Flatten an answers object into "k: v | k: v" for email bodies. */
 /* Flatten an answer object to "k: v | k: v" — the readable form the Excel answer
@@ -664,7 +672,9 @@ function eolAutoScoreUnchecked() {
       var given = String(el.value == null ? '' : el.value).trim();
       if (!given) return;                        // blank counts as unanswered, as when checking
       var accept = gaps[k].accept || [gaps[k].correct];
-      var ok = accept.some(function(a) { return given === String(a).trim(); });
+      var ok = section.typed
+        ? accept.some(function(a) { return normAns(given) === normAns(a); })
+        : accept.some(function(a) { return given === String(a).trim(); });
       recordGap(sk, k, ok, given, gaps[k].correct);
     });
     if (seen) state.scores[sk] = { correct: recordedPoints(sk), total: ids.length };
@@ -987,7 +997,7 @@ function eolExplRow(it) {
     + '<div class="expl-q">' + esc(it.label) + '</div>'
     + '<div class="expl-a"><span class="expl-correct">' + esc(it.correct) + '</span>'
     + (it.ok ? '' : ' <span class="expl-your">— you chose: ' + esc(it.student || '—') + '</span>') + '</div>'
-    + '<div class="expl-why">' + esc(it.why) + '</div></div>';
+    + (it.why ? '<div class="expl-why">' + esc(it.why) + '</div>' : '') + '</div>';
 }
 
 /* Create an #explanations container if a page doesn't already have one, so
@@ -1005,7 +1015,7 @@ function eolMakeExplContainer(id) {
 }
 
 function renderExplanations(containerId, items) {
-  items = (items || []).filter(function(it) { return it && it.why; });
+  items = (items || []).filter(function(it) { return it; });
   var box = document.getElementById(containerId);
   if (!box) {
     if (!items.length) return;
@@ -1014,15 +1024,17 @@ function renderExplanations(containerId, items) {
   }
   if (!items.length) { box.style.display = 'none'; return; }
   var wrong = items.filter(function(it) { return !it.ok; });
+  var hasWhy = items.some(function(it) { return it.why; });
+  var title = hasWhy ? 'Explanations' : 'Answers';
   box.style.display = 'block';
   var head = wrong.length
-    ? '<div class="card"><div class="card-title">Explanations — the ones to review (' + wrong.length + ')</div>'
+    ? '<div class="card"><div class="card-title">' + title + ' — the ones to review (' + wrong.length + ')</div>'
         + wrong.map(eolExplRow).join('') + '</div>'
-    : '<div class="card"><div class="card-title">Explanations</div>'
+    : '<div class="card"><div class="card-title">' + title + '</div>'
         + '<p style="font-size:.92rem;color:var(--green-text,#1d7a42);margin:0">Everything correct — nothing to review. 🎉</p></div>';
   var toggle = '<div style="text-align:center;margin:.1rem 0 .7rem">'
-    + '<button type="button" class="btn btn-outline btn-sm" onclick="eolToggleAllExpl(this)">Show all explanations</button></div>';
-  var all = '<div class="card" id="expl-all" style="display:none"><div class="card-title">All explanations</div>'
+    + '<button type="button" class="btn btn-outline btn-sm" onclick="eolToggleAllExpl(this)">Show all ' + title.toLowerCase() + '</button></div>';
+  var all = '<div class="card" id="expl-all" style="display:none"><div class="card-title">All ' + title.toLowerCase() + '</div>'
     + items.map(eolExplRow).join('') + '</div>';
   box.innerHTML = head + toggle + all;
 }
@@ -1044,13 +1056,19 @@ function eolToggleAllExpl(btn) {
  */
 /* All units' explanations, fetched once from data/explanations.json (below). */
 var EOL_EXPLAIN_ALL = null;
+/* Per-unit answer key fetched from data/answer-keys/<UNIT>.json as a last
+   resort — gives right/wrong feedback even without authored `why` text. */
+var EOL_ANSWER_KEY = null;
 
-/* The explanation data for THIS page: an inline `EXPLAIN` global still wins
-   (back-compat / override), otherwise the entry for this page's UNIT from the
-   shared data file. */
+function eolHasKeys(obj) { return obj && typeof obj === 'object' && Object.keys(obj).length > 0; }
+
+/* The explanation data for THIS page: a populated inline `EXPLAIN` global wins
+   (back-compat / override), then the shared explanations data file, then the
+   answer key (no `why` text, but correct/accept/label still drive feedback). */
 function eolExplainForPage() {
-  if (typeof EXPLAIN !== 'undefined' && EXPLAIN) return EXPLAIN;
-  if (EOL_EXPLAIN_ALL && typeof UNIT !== 'undefined' && EOL_EXPLAIN_ALL[UNIT]) return EOL_EXPLAIN_ALL[UNIT];
+  if (typeof EXPLAIN !== 'undefined' && eolHasKeys(EXPLAIN)) return EXPLAIN;
+  if (EOL_EXPLAIN_ALL && typeof UNIT !== 'undefined' && eolHasKeys(EOL_EXPLAIN_ALL[UNIT])) return EOL_EXPLAIN_ALL[UNIT];
+  if (eolHasKeys(EOL_ANSWER_KEY)) return EOL_ANSWER_KEY;
   return null;
 }
 
@@ -1067,13 +1085,15 @@ function eolCollectExplanations() {
     var prefix = (sec.prefix != null) ? sec.prefix : (sk + '-');   // respect an explicit '' prefix
     var gaps = sec.gaps || sec;
     Object.keys(gaps).forEach(function(g) {
-      if (g === 'prefix' || g === 'gaps') return;   // skip config keys on flat entries
+      if (g === 'prefix' || g === 'gaps' || g === 'typed' || g === 'multi') return;
       var d = gaps[g];
       var el = document.getElementById(prefix + g);
       var student = el ? (el.value || '') : ((state[sk] && state[sk][g]) || '');
       var accept = d.accept || [d.correct];
-      items.push({ label: d.label, correct: d.correct, student: student, why: d.why,
-                   ok: accept.indexOf(student) !== -1 });
+      var ok = sec.typed
+        ? accept.some(function(a) { return normAns(student) === normAns(a); })
+        : accept.indexOf(student) !== -1;
+      items.push({ label: d.label, correct: d.correct, student: student, why: d.why, ok: ok });
     });
   });
   return items;
@@ -1609,15 +1629,29 @@ document.addEventListener('DOMContentLoaded', eolInjectChrome);
    results screen, re-render. */
 document.addEventListener('DOMContentLoaded', function() {
   if (typeof fetch !== 'function') return;
-  if (typeof EXPLAIN !== 'undefined') return;   // page carries its own — nothing to fetch
-  fetch('data/explanations.json')
-    .then(function(r) { return r && r.ok ? r.json() : null; })
-    .then(function(data) {
-      if (!data) return;
-      EOL_EXPLAIN_ALL = data;
-      var lastId = 'step-' + (typeof TOTAL_STEPS !== 'undefined' ? TOTAL_STEPS : -1);
-      var last = document.getElementById(lastId);
-      if (last && last.classList.contains('active')) eolApplyExplanations();
-    })
-    .catch(function() {});
+  function reRenderIfOnSummary() {
+    var lastId = 'step-' + (typeof TOTAL_STEPS !== 'undefined' ? TOTAL_STEPS : -1);
+    var last = document.getElementById(lastId);
+    if (last && last.classList.contains('active')) eolApplyExplanations();
+  }
+  if (typeof EXPLAIN === 'undefined' || !eolHasKeys(typeof EXPLAIN !== 'undefined' ? EXPLAIN : null)) {
+    fetch('data/explanations.json')
+      .then(function(r) { return r && r.ok ? r.json() : null; })
+      .then(function(data) {
+        if (!data) return;
+        EOL_EXPLAIN_ALL = data;
+        if (eolExplainForPage()) reRenderIfOnSummary();
+      })
+      .catch(function() {});
+  }
+  if (typeof UNIT !== 'undefined' && UNIT) {
+    fetch('data/answer-keys/' + encodeURIComponent(UNIT) + '.json')
+      .then(function(r) { return r && r.ok ? r.json() : null; })
+      .then(function(data) {
+        if (!data || !data.sections) return;
+        EOL_ANSWER_KEY = data.sections;
+        if (eolExplainForPage() === EOL_ANSWER_KEY) reRenderIfOnSummary();
+      })
+      .catch(function() {});
+  }
 });
