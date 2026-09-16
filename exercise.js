@@ -383,12 +383,12 @@ function eolSkipModal(onConfirm) {
   overlay.className = 'eol-skip-overlay';
   var box = document.createElement('div');
   box.className = 'eol-skip-box';
-  box.innerHTML = '<div style="font-size:1.6rem;margin-bottom:.4rem">⚠️</div>'
-    + '<p class="eol-skip-title">Skip this exercise?</p>'
-    + '<p class="eol-skip-body">Your incomplete answers won’t be scored.<br>You can come back to it later.</p>'
+  box.innerHTML = '<div style="font-size:2rem;margin-bottom:.5rem">⚠️</div>'
+    + '<p class="eol-skip-title">You haven&rsquo;t finished yet</p>'
+    + '<p class="eol-skip-body">Some answers are still blank or very short.<br>You can come back and finish later.</p>'
     + '<div class="eol-skip-actions">'
-    + '<button type="button" class="btn btn-outline btn-sm" id="eol-skip-back">Go back</button>'
-    + '<button type="button" class="btn btn-gold btn-sm" id="eol-skip-go">Skip anyway</button>'
+    + '<button type="button" class="btn btn-primary" id="eol-skip-go" style="width:100%;justify-content:center">Continue anyway →</button>'
+    + '<button type="button" class="btn btn-outline" id="eol-skip-back" style="width:100%;justify-content:center">Go back and finish</button>'
     + '</div>';
   overlay.appendChild(box);
   document.body.appendChild(overlay);
@@ -1535,12 +1535,12 @@ function eolInjectChrome() {
     + '@media(prefers-reduced-motion:reduce){.eol-skip{transition:none}}'
     + '.eol-skip-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:10000;'
       + 'display:flex;align-items:center;justify-content:center;padding:1rem}'
-    + '.eol-skip-box{background:#fff;border-radius:12px;padding:1.5rem 1.75rem;max-width:340px;'
+    + '.eol-skip-box{background:#fff;border-radius:12px;padding:1.5rem 1.75rem;max-width:380px;'
       + 'width:100%;box-shadow:0 8px 32px rgba(0,0,0,.25);text-align:center;'
       + 'font-family:var(--font,"Segoe UI",system-ui,sans-serif)}'
-    + '.eol-skip-title{font-size:.95rem;color:var(--text,#1d2b3a);margin:0 0 .3rem;font-weight:600}'
-    + '.eol-skip-body{font-size:.84rem;color:var(--muted,#6b7a8d);margin:0 0 1.2rem;line-height:1.5}'
-    + '.eol-skip-actions{display:flex;gap:.6rem;justify-content:center}';
+    + '.eol-skip-title{font-size:1rem;color:var(--text,#1d2b3a);margin:0 0 .5rem;font-weight:700}'
+    + '.eol-skip-body{font-size:.88rem;color:var(--muted,#6b7a8d);margin:0 0 1.25rem;line-height:1.5}'
+    + '.eol-skip-actions{display:flex;flex-direction:column;gap:.5rem}';
   document.head.appendChild(st);
 
   if (!document.getElementById('eol-skip')) {
