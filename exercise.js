@@ -457,8 +457,12 @@ function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
 
 function nextStep(n) {
   if (!validateStep(n)) {
-    var err = document.getElementById('step' + n + '-error');
-    if (err) { err.textContent = 'Please answer the required questions before continuing.'; err.classList.add('show'); }
+    eolSkipModal(function() {
+      clearErr(n);
+      saveStep(n);
+      if (n === TOTAL_STEPS - 1) { eolAutoScoreUnchecked(); buildSummary(); }
+      showStep(n + 1);
+    });
     return;
   }
   clearErr(n);
