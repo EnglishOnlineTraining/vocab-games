@@ -10,56 +10,64 @@
      "accept": [
       "let"
      ],
-     "label": "…+ past participle — He had his photo taken . Choose the correct verb Moshe’s parents Gap 1"
+     "label": "1. Moshe’s parents ___ him go to Australia.",
+     "why": "\"let\" takes a bare infinitive (no \"to\"): let + object + go. The sentence has \"him go\", not \"him to go\"."
     },
     "g2": {
      "correct": "allowed",
      "accept": [
       "allowed"
      ],
-     "label": "…t verb Moshe’s parents Gap 1 choose … let allowed made had him go to Australia. They Gap 2"
+     "label": "2. They ___ him to go on the trip.",
+     "why": "\"allow\" takes a to-infinitive: allow + object + to go. The \"to\" in the sentence signals \"allowed\"."
     },
     "g3": {
      "correct": "made",
      "accept": [
       "made"
      ],
-     "label": "…alia. They Gap 2 choose … let allowed made had him to go on the trip. Moshe’s father Gap 3"
+     "label": "3. Moshe’s father ___ him read about the dangers.",
+     "why": "\"make\" means to force someone; it takes a bare infinitive like \"let\": made + him + read. The father insisted."
     },
     "g4": {
      "correct": "had",
      "accept": [
       "had"
      ],
-     "label": "… … let allowed made had him read about the dangers of travelling in Australia. Moshe Gap 4"
+     "label": "4. Moshe ___ his photo taken by a photographer.",
+     "why": "\"have something done\" uses have + object + past participle. Someone else took the photo for Moshe."
     },
     "g5": {
      "correct": "let",
      "accept": [
       "let"
      ],
-     "label": "…ad his photo taken by a photographer for his first passport. The hostel owner didn’t Gap 5"
+     "label": "5. The hostel owner didn’t ___ them stay out after midnight.",
+     "why": "After \"didn’t\", \"let\" keeps its bare-infinitive pattern: didn’t let + them + stay."
     },
     "g6": {
      "correct": "made",
      "accept": [
       "made"
      ],
-     "label": "…n’t Gap 5 choose … let allow make have them stay out after midnight. The park ranger Gap 6"
+     "label": "6. The park ranger ___ the group walk only on marked trails.",
+     "why": "The ranger forced the group — \"make\" + object + bare infinitive. No \"to\" follows."
     },
     "g7": {
      "correct": "allowed",
      "accept": [
       "allowed"
      ],
-     "label": "… 6 choose … let allowed made had the group walk only on marked trails. Cam’s parents Gap 7"
+     "label": "7. Cam’s parents ___ her to visit relatives in Melbourne.",
+     "why": "The \"to visit\" signals \"allowed\": allow + object + to-infinitive."
     },
     "g8": {
      "correct": "had",
      "accept": [
       "had"
      ],
-     "label": "…arents Gap 7 choose … let allowed made had her to visit relatives in Melbourne. Mike Gap 8"
+     "label": "8. Mike ___ his surfboard waxed at the surf shop.",
+     "why": "\"have something done\": have + object + past participle. The surf shop did the waxing, not Mike."
     }
    }
   },
@@ -72,42 +80,48 @@
      "accept": [
       "was being prepared"
      ],
-     "label": "…rogress at a specific moment . Choose the correct form When we arrived, the barbecue Gap 1"
+     "label": "1. When we arrived, the barbecue ___ by Mike’s dad.",
+     "why": "\"When we arrived\" sets a past moment; the action was in progress then → past progressive passive: was + being + prepared."
     },
     "g2": {
      "correct": "is being built",
      "accept": [
       "is being built"
      ],
-     "label": "…ed is being prepared has been prepared by Mike’s dad. Look! A new immigration museum Gap 2"
+     "label": "2. A new immigration museum ___ in Sydney right now.",
+     "why": "\"Right now\" means the action is in progress at this moment → present progressive passive: is + being + built."
     },
     "g3": {
      "correct": "were being interviewed",
      "accept": [
       "were being interviewed"
      ],
-     "label": "…being built has been built in Sydney right now. While we were visiting, the refugees Gap 3"
+     "label": "3. While we were visiting, the refugees ___ by journalists.",
+     "why": "\"While we were visiting\" sets a past time frame; the interviewing was ongoing → past progressive passive: were + being + interviewed."
     },
     "g4": {
      "correct": "are being performed",
      "accept": [
       "are being performed"
      ],
-     "label": "… interviewed have been interviewed by journalists. At this moment, traditional songs Gap 4"
+     "label": "4. At this moment, traditional songs ___ at the festival.",
+     "why": "\"At this moment\" points to now; multiple songs (plural) are in progress → present progressive passive: are + being + performed."
     },
     "g5": {
      "correct": "was being chased",
      "accept": [
       "was being chased"
      ],
-     "label": "…formed have been performed at the festival. When Bill bumped into the thief, the man Gap 5"
+     "label": "5. When Bill bumped into the thief, the man ___ by a police officer.",
+     "why": "The chasing was already in progress when Bill bumped into him → past progressive passive: was + being + chased."
     },
     "g6": {
      "correct": "is being renovated",
      "accept": [
       "is being renovated"
      ],
-     "label": "…hased had been chased by a police officer. Don’t go to the Museum of Sydney yet — it Gap 6"
+     "label": "6. Don’t go to the Museum of Sydney yet — it ___ at the moment.",
+     "why": "\"At the moment\" means the renovation is happening now → present progressive passive: is + being + renovated."
     }
    }
   },
@@ -120,14 +134,16 @@
      "accept": [
       "was warned"
      ],
-     "label": "…n Tanya and Mike. Complete the dialogue Mike Don’t worry too much, Tanya. Jim Gap 1 (warn)"
+     "label": "Jim ___ (warn) of the dangers before he left.",
+     "why": "Simple past passive: the warning happened before he left. was + past participle."
     },
     "g2": {
      "correct": "was told",
      "accept": [
       "was told"
      ],
-     "label": "…s he? Tanya I’m not so sure about that. When he was in northern Australia, he Gap 2 (tell)"
+     "label": "He ___ (tell) that swimming in rock pools can be dangerous.",
+     "why": "Simple past passive: he received the information in the past. was + told."
     },
     "g3": {
      "correct": "wasn't attacked",
@@ -135,14 +151,16 @@
       "wasn't attacked",
       "was not attacked"
      ],
-     "label": "…till jumped in. You’d think he’d never heard of crocodiles! Mike But he Gap 3 (not attack)"
+     "label": "But he ___ (not attack).",
+     "why": "Simple past passive negative: was + not + past participle. Contracted: wasn’t attacked."
     },
     "g4": {
      "correct": "were told",
      "accept": [
       "were told"
      ],
-     "label": "…odiles! Mike But he Gap 3 (not attack) (not attack) , right? Tanya No, but we Gap 4 (tell)"
+     "label": "We ___ (tell) so many stories about crocodile attacks.",
+     "why": "Simple past passive with plural subject \"we\": were + told."
     },
     "g5": {
      "correct": "wasn't hurt",
@@ -150,28 +168,32 @@
       "wasn't hurt",
       "was not hurt"
      ],
-     "label": "…ll) so many stories about crocodile attacks that it now seems a wonder he Gap 5 (not hurt)"
+     "label": "It now seems a wonder he ___ (not hurt).",
+     "why": "Simple past passive negative: wasn’t + past participle."
     },
     "g6": {
      "correct": "will be put up",
      "accept": [
       "will be put up"
      ],
-     "label": "…he Gap 5 (not hurt) (not hurt) . Mike Yeah, I heard that more warning signs Gap 6 (put up)"
+     "label": "More warning signs ___ (put up) soon.",
+     "why": "Future passive: will + be + past participle. The signs will be put up in the future."
     },
     "g7": {
      "correct": "was killed",
      "accept": [
       "was killed"
      ],
-     "label": "…re warning signs Gap 6 (put up) (put up) soon. Did you hear about the kid who Gap 7 (kill)"
+     "label": "The kid who ___ (kill) by a croc just last week.",
+     "why": "Simple past passive: \"last week\" is a finished past time. was + killed."
     },
     "g8": {
      "correct": "will be found",
      "accept": [
       "will be found"
      ],
-     "label": "…e still searching for a guy that’s been missing since Thursday. Let’s hope he Gap 8 (find)"
+     "label": "Let’s hope he ___ (find) very soon!",
+     "why": "Future passive after \"hope\": will + be + past participle."
     }
    },
    "typed": true
