@@ -1,0 +1,180 @@
+{
+ "unit": "9g-australia-causatives-progressive",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "let",
+     "accept": [
+      "let"
+     ],
+     "label": "…+ past participle — He had his photo taken . Choose the correct verb Moshe’s parents Gap 1"
+    },
+    "g2": {
+     "correct": "allowed",
+     "accept": [
+      "allowed"
+     ],
+     "label": "…t verb Moshe’s parents Gap 1 choose … let allowed made had him go to Australia. They Gap 2"
+    },
+    "g3": {
+     "correct": "made",
+     "accept": [
+      "made"
+     ],
+     "label": "…alia. They Gap 2 choose … let allowed made had him to go on the trip. Moshe’s father Gap 3"
+    },
+    "g4": {
+     "correct": "had",
+     "accept": [
+      "had"
+     ],
+     "label": "… … let allowed made had him read about the dangers of travelling in Australia. Moshe Gap 4"
+    },
+    "g5": {
+     "correct": "let",
+     "accept": [
+      "let"
+     ],
+     "label": "…ad his photo taken by a photographer for his first passport. The hostel owner didn’t Gap 5"
+    },
+    "g6": {
+     "correct": "made",
+     "accept": [
+      "made"
+     ],
+     "label": "…n’t Gap 5 choose … let allow make have them stay out after midnight. The park ranger Gap 6"
+    },
+    "g7": {
+     "correct": "allowed",
+     "accept": [
+      "allowed"
+     ],
+     "label": "… 6 choose … let allowed made had the group walk only on marked trails. Cam’s parents Gap 7"
+    },
+    "g8": {
+     "correct": "had",
+     "accept": [
+      "had"
+     ],
+     "label": "…arents Gap 7 choose … let allowed made had her to visit relatives in Melbourne. Mike Gap 8"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "was being prepared",
+     "accept": [
+      "was being prepared"
+     ],
+     "label": "…rogress at a specific moment . Choose the correct form When we arrived, the barbecue Gap 1"
+    },
+    "g2": {
+     "correct": "is being built",
+     "accept": [
+      "is being built"
+     ],
+     "label": "…ed is being prepared has been prepared by Mike’s dad. Look! A new immigration museum Gap 2"
+    },
+    "g3": {
+     "correct": "were being interviewed",
+     "accept": [
+      "were being interviewed"
+     ],
+     "label": "…being built has been built in Sydney right now. While we were visiting, the refugees Gap 3"
+    },
+    "g4": {
+     "correct": "are being performed",
+     "accept": [
+      "are being performed"
+     ],
+     "label": "… interviewed have been interviewed by journalists. At this moment, traditional songs Gap 4"
+    },
+    "g5": {
+     "correct": "was being chased",
+     "accept": [
+      "was being chased"
+     ],
+     "label": "…formed have been performed at the festival. When Bill bumped into the thief, the man Gap 5"
+    },
+    "g6": {
+     "correct": "is being renovated",
+     "accept": [
+      "is being renovated"
+     ],
+     "label": "…hased had been chased by a police officer. Don’t go to the Museum of Sydney yet — it Gap 6"
+    }
+   }
+  },
+  "exD": {
+   "prefix": "exD-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "was warned",
+     "accept": [
+      "was warned"
+     ],
+     "label": "…n Tanya and Mike. Complete the dialogue Mike Don’t worry too much, Tanya. Jim Gap 1 (warn)"
+    },
+    "g2": {
+     "correct": "was told",
+     "accept": [
+      "was told"
+     ],
+     "label": "…s he? Tanya I’m not so sure about that. When he was in northern Australia, he Gap 2 (tell)"
+    },
+    "g3": {
+     "correct": "wasn't attacked",
+     "accept": [
+      "wasn't attacked",
+      "was not attacked"
+     ],
+     "label": "…till jumped in. You’d think he’d never heard of crocodiles! Mike But he Gap 3 (not attack)"
+    },
+    "g4": {
+     "correct": "were told",
+     "accept": [
+      "were told"
+     ],
+     "label": "…odiles! Mike But he Gap 3 (not attack) (not attack) , right? Tanya No, but we Gap 4 (tell)"
+    },
+    "g5": {
+     "correct": "wasn't hurt",
+     "accept": [
+      "wasn't hurt",
+      "was not hurt"
+     ],
+     "label": "…ll) so many stories about crocodile attacks that it now seems a wonder he Gap 5 (not hurt)"
+    },
+    "g6": {
+     "correct": "will be put up",
+     "accept": [
+      "will be put up"
+     ],
+     "label": "…he Gap 5 (not hurt) (not hurt) . Mike Yeah, I heard that more warning signs Gap 6 (put up)"
+    },
+    "g7": {
+     "correct": "was killed",
+     "accept": [
+      "was killed"
+     ],
+     "label": "…re warning signs Gap 6 (put up) (put up) soon. Did you hear about the kid who Gap 7 (kill)"
+    },
+    "g8": {
+     "correct": "will be found",
+     "accept": [
+      "will be found"
+     ],
+     "label": "…e still searching for a guy that’s been missing since Thursday. Let’s hope he Gap 8 (find)"
+    }
+   },
+   "typed": true
+  }
+ }
+}

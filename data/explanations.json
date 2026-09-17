@@ -16292,5 +16292,81 @@
         }
       }
     }
+  },
+  "9g-australia-causatives-progressive": {
+    "exB": {
+      "g1": {
+        "label": "1. Moshe’s parents ___ him go to Australia.",
+        "correct": "let",
+        "why": "\"let\" takes a bare infinitive (no \"to\"): let + object + go. The sentence has \"him go\", not \"him to go\"."
+      },
+      "g2": {
+        "label": "2. They ___ him to go on the trip.",
+        "correct": "allowed",
+        "why": "\"allow\" takes a to-infinitive: allow + object + to go. The \"to\" in the sentence signals \"allowed\"."
+      },
+      "g3": {
+        "label": "3. Moshe’s father ___ him read about the dangers.",
+        "correct": "made",
+        "why": "\"make\" means to force someone; it takes a bare infinitive like \"let\": made + him + read. The father insisted."
+      },
+      "g4": {
+        "label": "4. Moshe ___ his photo taken by a photographer.",
+        "correct": "had",
+        "why": "\"have something done\" uses have + object + past participle. Someone else took the photo for Moshe."
+      },
+      "g5": {
+        "label": "5. The hostel owner didn’t ___ them stay out after midnight.",
+        "correct": "let",
+        "why": "After \"didn’t\", \"let\" keeps its bare-infinitive pattern: didn’t let + them + stay."
+      },
+      "g6": {
+        "label": "6. The park ranger ___ the group walk only on marked trails.",
+        "correct": "made",
+        "why": "The ranger forced the group — \"make\" + object + bare infinitive. No \"to\" follows."
+      },
+      "g7": {
+        "label": "7. Cam’s parents ___ her to visit relatives in Melbourne.",
+        "correct": "allowed",
+        "why": "The \"to visit\" signals \"allowed\": allow + object + to-infinitive."
+      },
+      "g8": {
+        "label": "8. Mike ___ his surfboard waxed at the surf shop.",
+        "correct": "had",
+        "why": "\"have something done\": have + object + past participle. The surf shop did the waxing, not Mike."
+      }
+    },
+    "exC": {
+      "g1": {
+        "label": "1. When we arrived, the barbecue ___ by Mike’s dad.",
+        "correct": "was being prepared",
+        "why": "\"When we arrived\" sets a past moment; the action was in progress then → past progressive passive: was + being + prepared."
+      },
+      "g2": {
+        "label": "2. A new immigration museum ___ in Sydney right now.",
+        "correct": "is being built",
+        "why": "\"Right now\" means the action is in progress at this moment → present progressive passive: is + being + built."
+      },
+      "g3": {
+        "label": "3. While we were visiting, the refugees ___ by journalists.",
+        "correct": "were being interviewed",
+        "why": "\"While we were visiting\" sets a past time frame; the interviewing was ongoing → past progressive passive: were + being + interviewed."
+      },
+      "g4": {
+        "label": "4. At this moment, traditional songs ___ at the festival.",
+        "correct": "are being performed",
+        "why": "\"At this moment\" points to now; multiple songs (plural) are in progress → present progressive passive: are + being + performed."
+      },
+      "g5": {
+        "label": "5. When Bill bumped into the thief, the man ___ by a police officer.",
+        "correct": "was being chased",
+        "why": "The chasing was already in progress when Bill bumped into him → past progressive passive: was + being + chased."
+      },
+      "g6": {
+        "label": "6. Don’t go to the Museum of Sydney yet — it ___ at the moment.",
+        "correct": "is being renovated",
+        "why": "\"At the moment\" means the renovation is happening now → present progressive passive: is + being + renovated."
+      }
+    }
   }
 }
