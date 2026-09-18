@@ -10,56 +10,64 @@
      "accept": [
       "sleep"
      ],
-     "label": "Doctors say that teenagers need between eight and ten hours of 1"
+     "label": "1 — eight to ten hours of ___",
+     "why": "Doctors recommend eight to ten hours of sleep a night for teenagers."
     },
     "g2": {
      "correct": "brain",
      "accept": [
       "brain"
      ],
-     "label": "The reason is often the same: screens. The blue light of a phone tells the 2"
+     "label": "2 — blue light tells the ___",
+     "why": "Blue light sends the wrong signal to the brain, which decides when you feel tired."
     },
     "g3": {
      "correct": "snack",
      "accept": [
       "snack"
      ],
-     "label": "Food is the second problem. A quick 3"
+     "label": "3 — a quick ___ between lessons",
+     "why": "A snack is a small, quick thing to eat between meals."
     },
     "g4": {
      "correct": "caffeine",
      "accept": [
       "caffeine"
      ],
-     "label": "…ke stack snack between two lessons is fine, but energy drinks contain a lot of sugar and 4"
+     "label": "4 — sugar and ___",
+     "why": "Energy drinks contain sugar and caffeine, the same stimulant as in coffee."
     },
     "g5": {
      "correct": "concentrate",
      "accept": [
       "concentrate"
      ],
-     "label": "…he good news is that small changes help. Students who cycle to school are fitter and can 5"
+     "label": "5 — they can ___ better",
+     "why": "To concentrate means to keep your attention on something."
     },
     "g6": {
      "correct": "exercise",
      "accept": [
       "exercise"
      ],
-     "label": "…r and can 5 — choose — contain continue concentrate better in lessons. Thirty minutes of 6"
+     "label": "6 — thirty minutes of ___",
+     "why": "Exercise is physical activity; thirty minutes a day is the recommendation."
     },
     "g7": {
      "correct": "mood",
      "accept": [
       "mood"
      ],
-     "label": "…inst stress. When you run, swim or dance, your body produces hormones which improve your 7"
+     "label": "7 — hormones improve your ___",
+     "why": "Sport produces hormones that make you feel better — they improve your mood."
     },
     "g8": {
      "correct": "health",
      "accept": [
       "health"
      ],
-     "label": "…nd if you play in a team, you meet other people regularly, which is good for your mental 8"
+     "label": "8 — good for your mental ___",
+     "why": "\"Mental health\" is the fixed phrase for how you feel psychologically."
     }
    }
   },
@@ -72,56 +80,64 @@
      "accept": [
       "drink"
      ],
-     "label": "1. If you"
+     "label": "1 — if you ___ more water",
+     "why": "In the if-part of a type I sentence you use the present simple, never will."
     },
     "g2": {
      "correct": "won't be",
      "accept": [
       "won't be"
      ],
-     "label": "2. If she goes to bed early, she"
+     "label": "2 — she ___ so tired tomorrow",
+     "why": "The main clause of a type I sentence takes will / won't + infinitive."
     },
     "g3": {
      "correct": "switch",
      "accept": [
       "switch"
      ],
-     "label": "3. You will sleep better if you"
+     "label": "3 — if you ___ your phone off",
+     "why": "After if you use the present simple, even when you mean the future."
     },
     "g4": {
      "correct": "cycle",
      "accept": [
       "cycle"
      ],
-     "label": "4. If we"
+     "label": "4 — if we ___ to school",
+     "why": "The if-clause takes the present simple: if we cycle."
     },
     "g5": {
      "correct": "won't",
      "accept": [
       "won't"
      ],
-     "label": "5. If Tom drinks two energy drinks now, he"
+     "label": "5 — he ___ sleep tonight",
+     "why": "The result of a real possibility is expressed with will / won't."
     },
     "g6": {
      "correct": "rains",
      "accept": [
       "rains"
      ],
-     "label": "6. If it"
+     "label": "6 — if it ___ tomorrow",
+     "why": "After if you need the present simple, third person singular: rains."
     },
     "g7": {
      "correct": "help",
      "accept": [
       "help"
      ],
-     "label": "7. Your parents will be pleased if you"
+     "label": "7 — if you ___ them in the kitchen",
+     "why": "The if-clause takes the present simple: if you help them."
     },
     "g8": {
      "correct": "have",
      "accept": [
       "have"
      ],
-     "label": "8. If I"
+     "label": "8 — if I ___ time after school",
+     "why": "After if you use the present simple; the will is already in \"I'll come\"."
     }
    }
   },
@@ -134,56 +150,64 @@
      "accept": [
       "had"
      ],
-     "label": "1. If I"
+     "label": "1 — if I ___ more free time",
+     "why": "Type II uses the simple past in the if-clause: if I had more time."
     },
     "g2": {
      "correct": "wouldn't be",
      "accept": [
       "wouldn't be"
      ],
-     "label": "2. If she went to bed earlier, she"
+     "label": "2 — she ___ so tired",
+     "why": "The main clause of a type II sentence takes would / wouldn't + infinitive."
     },
     "g3": {
      "correct": "had",
      "accept": [
       "had"
      ],
-     "label": "3. What would you do if you"
+     "label": "3 — if you ___ a personal trainer",
+     "why": "\"What would you do if...?\" needs the simple past in the if-clause."
     },
     "g4": {
      "correct": "had",
      "accept": [
       "had"
      ],
-     "label": "4. If we"
+     "label": "4 — if we ___ a swimming pool",
+     "why": "The if-clause of a type II sentence takes the simple past, not would."
     },
     "g5": {
      "correct": "watched",
      "accept": [
       "watched"
      ],
-     "label": "5. He would be much fitter if he"
+     "label": "5 — if he ___ less television",
+     "why": "After if you use the simple past: if he watched less television."
     },
     "g6": {
      "correct": "were",
      "accept": [
       "were"
      ],
-     "label": "6. If I"
+     "label": "6 — if I ___ you",
+     "why": "In \"If I were you\" English uses were, not was, for imagined situations."
     },
     "g7": {
      "correct": "followed",
      "accept": [
       "followed"
      ],
-     "label": "7. If everybody"
+     "label": "7 — if everybody ___ the rules",
+     "why": "The if-clause takes the simple past — never \"would\" in the if-part."
     },
     "g8": {
      "correct": "would have",
      "accept": [
       "would have"
      ],
-     "label": "8. She"
+     "label": "8 — she ___ much more energy",
+     "why": "The main clause of a type II sentence takes would + infinitive."
     }
    }
   }

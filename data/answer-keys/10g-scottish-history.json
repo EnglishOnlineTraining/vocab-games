@@ -10,56 +10,64 @@
      "accept": [
       "children or descendants"
      ],
-     "label": "1 What does the Gaelic word clann mean?"
+     "label": "1. What does “clann” mean?",
+     "why": "The text says clann is Gaelic for “children” or “descendants”."
     },
     "g2": {
      "correct": "it was destroyed",
      "accept": [
       "it was destroyed"
      ],
-     "label": "2 What happened to the clan system after Culloden?"
+     "label": "2. The clan system after Culloden",
+     "why": "The clan system was destroyed after the Battle of Culloden in 1746."
     },
     "g3": {
      "correct": "he was invited to help choose a new king",
      "accept": [
       "he was invited to help choose a new king"
      ],
-     "label": "3 Why did Edward I of England get involved in Scottish affairs?"
+     "label": "3. Why Edward I got involved",
+     "why": "He was invited to help choose a king, then used the chance to claim power himself."
     },
     "g4": {
      "correct": "he used the narrow bridge to neutralise the English advantage",
      "accept": [
       "he used the narrow bridge to neutralise the English advantage"
      ],
-     "label": "4 How did Wallace win at Stirling Bridge?"
+     "label": "4. How Wallace won at Stirling Bridge",
+     "why": "The narrow bridge cancelled England’s advantage in numbers and cavalry."
     },
     "g5": {
      "correct": "he was captured and executed",
      "accept": [
       "he was captured and executed"
      ],
-     "label": "5 What happened to Wallace in 1305?"
+     "label": "5. What happened to Wallace in 1305",
+     "why": "Wallace was captured in 1305 and executed in London."
     },
     "g6": {
      "correct": "the Battle of Bannockburn",
      "accept": [
       "the Battle of Bannockburn"
      ],
-     "label": "6 What was Robert the Bruce’s greatest military victory?"
+     "label": "6. Bruce’s greatest victory",
+     "why": "At Bannockburn (1314) his outnumbered forces defeated Edward II’s army."
     },
     "g7": {
      "correct": "that Scotland had always been independent and could choose its own king",
      "accept": [
       "that Scotland had always been independent and could choose its own king"
      ],
-     "label": "7 What did the Declaration of Arbroath argue?"
+     "label": "7. What the Declaration of Arbroath argued",
+     "why": "It argued Scotland had always been free and could choose its own king."
     },
     "g8": {
      "correct": "55% voted to remain in the UK",
      "accept": [
       "55% voted to remain in the UK"
      ],
-     "label": "8 What was the result of the 2014 independence referendum?"
+     "label": "8. Result of the 2014 referendum",
+     "why": "In 2014, 55% voted to stay part of the United Kingdom."
     }
    }
   },
@@ -72,56 +80,64 @@
      "accept": [
       "was seized"
      ],
-     "label": "1 The Stone of Destiny"
+     "label": "1. The Stone of Destiny … by Edward I",
+     "why": "Passive, simple past: the stone received the action → was + past participle (seize → seized)."
     },
     "g2": {
      "correct": "was appointed",
      "accept": [
       "was appointed"
      ],
-     "label": "2 William Wallace"
+     "label": "2. William Wallace … Guardian of Scotland",
+     "why": "Passive, simple past: he was given the title → was + appointed."
     },
     "g3": {
      "correct": "was crushed",
      "accept": [
       "was crushed"
      ],
-     "label": "3 The Scottish army"
+     "label": "3. The Scottish army … at Falkirk",
+     "why": "Singular subject “army” takes was, not were → was + crushed."
     },
     "g4": {
      "correct": "had already been captured",
      "accept": [
       "had already been captured"
      ],
-     "label": "4 Before Bruce became king, Wallace"
+     "label": "4. Before Bruce became king, Wallace …",
+     "why": "It happened before another past event → past perfect passive: had (already) been + captured."
     },
     "g5": {
      "correct": "is considered",
      "accept": [
       "is considered"
      ],
-     "label": "5 The Declaration of Arbroath"
+     "label": "5. The Declaration of Arbroath … a statement",
+     "why": "Still true today → present passive: is + considered."
     },
     "g6": {
      "correct": "was crowned",
      "accept": [
       "was crowned"
      ],
-     "label": "6 Robert the Bruce"
+     "label": "6. Robert the Bruce … King of Scots",
+     "why": "Passive, simple past: he received the crown → was + crowned."
     },
     "g7": {
      "correct": "was finally recognised",
      "accept": [
       "was finally recognised"
      ],
-     "label": "7 Scotland’s independence"
+     "label": "7. Scotland’s independence … by England",
+     "why": "Passive, simple past: independence was recognised by England → was + recognised."
     },
     "g8": {
      "correct": "had been weakened",
      "accept": [
       "had been weakened"
      ],
-     "label": "8 The clan system"
+     "label": "8. The clan system … before Culloden",
+     "why": "An earlier past state → past perfect passive: had been + weakened."
     }
    }
   },
@@ -134,56 +150,64 @@
      "accept": [
       "Although"
      ],
-     "label": "1"
+     "label": "1. … Wallace won, he couldn’t hold on",
+     "why": "“Although” opens a concession — a win, but he still couldn’t hold off the English."
     },
     "g2": {
      "correct": "Furthermore",
      "accept": [
       "Furthermore"
      ],
-     "label": "2 Edward I invaded Scotland and seized the coronation stone."
+     "label": "2. Edward invaded … forced loyalty",
+     "why": "“Furthermore” adds a second thing Edward did."
     },
     "g3": {
      "correct": "Nevertheless",
      "accept": [
       "Nevertheless"
      ],
-     "label": "3 Bruce’s forces were heavily outnumbered at Bannockburn."
+     "label": "3. Outnumbered … decisive victory",
+     "why": "“Nevertheless” signals contrast: outnumbered, yet they won."
     },
     "g4": {
      "correct": "As a result",
      "accept": [
       "As a result"
      ],
-     "label": "4 The Declaration of Arbroath was sent to the Pope."
+     "label": "4. Letter to the Pope … recognition",
+     "why": "“As a result” shows cause and effect: the letter led to recognition."
     },
     "g5": {
      "correct": "Moreover",
      "accept": [
       "Moreover"
      ],
-     "label": "5 The clan system gave Highlanders a strong sense of identity."
+     "label": "5. Identity … also protection",
+     "why": "“Moreover” adds a further benefit of the clan system."
     },
     "g6": {
      "correct": "In contrast",
      "accept": [
       "In contrast"
      ],
-     "label": "6 Wallace used guerrilla tactics effectively in the Highlands."
+     "label": "6. Wallace’s tactics vs Edward’s armies",
+     "why": "“In contrast” compares two opposite ways of fighting."
     },
     "g7": {
      "correct": "However",
      "accept": [
       "However"
      ],
-     "label": "7 The Act of Union was opposed by many ordinary Scots."
+     "label": "7. Opposed by Scots … went ahead",
+     "why": "“However” marks contrast: opposed by many, but it still happened."
     },
     "g8": {
      "correct": "Nevertheless",
      "accept": [
       "Nevertheless"
      ],
-     "label": "8 Scotland voted to remain in the UK in 2014."
+     "label": "8. Voted to remain … movement grew",
+     "why": "“Nevertheless” shows contrast: they voted to remain, yet the movement grew."
     }
    }
   }
