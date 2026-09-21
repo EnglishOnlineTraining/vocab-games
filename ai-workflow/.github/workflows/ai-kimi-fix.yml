@@ -1,0 +1,164 @@
+# .github/workflows/ai-kimi-fix.yml
+# Trigger: comment on an ISSUE:  /kimi fix <short description>
+# Behavior: Kimi (author-model) implements the task on a branch and opens a PR.
+name: AI -- Kimi implement
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  implement:
+    if: ${{ !github.event.issue.pull_request && startsWith(github.event.comment.body, '/kimi fix') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Parse command
+        id: cmd
+        env:
+          BODY: ${{ github.event.comment.body }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          TASK="${BODY#/kimi fix}"
+          TASK="$(echo "$TASK" | xargs)"
+          echo "task=$TASK" >> "$GITHUB_OUTPUT"
+          echo "branch=ai/kimi-issue-${ISSUE}" >> "$GITHUB_OUTPUT"
+          echo "pr_title=AI(Kimi): ${TASK:0:60} (issue #${ISSUE})" >> "$GITHUB_OUTPUT"
+
+      - name: Pre-flight checks
+        run: |
+          if [ ! -f STYLE.md ]; then
+            echo "::error::STYLE.md is missing. Add it before running AI workflows."
+            exit 1
+          fi
+          if grep -q 'TEXT_DOMAIN_TODO' STYLE.md; then
+            echo "::warning::STYLE.md still has TODO placeholders. Fill them in for best results."
+          fi
+
+      - name: Build context pack
+        run: |
+          chmod +x .github/scripts/build-context.sh
+          .github/scripts/build-context.sh
+          if ! head -1 context.md | grep -q '^# CONTEXT PACK'; then
+            echo "::error::Context pack is corrupted (first line is not the header)."
+            exit 1
+          fi
+
+      - name: Call Kimi API
+        id: ai
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          KIMI_API_KEY: ${{ secrets.KIMI_API_KEY }}
+          KIMI_BASE_URL: ${{ vars.KIMI_BASE_URL || 'https://api.moonshot.ai/v1' }}
+          KIMI_MODEL: ${{ vars.KIMI_MODEL || 'kimi-k2-0905-preview' }}
+          ISSUE: ${{ github.event.issue.number }}
+          TASK: ${{ steps.cmd.outputs.task }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          jq -n \
+            --arg model "$KIMI_MODEL" \
+            --rawfile ctx context.md \
+            --arg task "$TASK" \
+            --arg issue "$ISSUE" \
+            --arg issue_body "$ISSUE_BODY" \
+            '{model: $model,
+              messages: [
+                {role: "system", content: "You are the author-model of a WordPress theme. Follow STYLE.md exactly. Reply with ONLY a unified diff in a ```diff fenced block. No prose, no explanations. Minimal diff: do not reformat or touch code the task does not require. Patch must apply with git apply against the current repo."},
+                {role: "user", content: ("ISSUE #\($issue):\n\($issue_body)\n\nTASK: \($task)\n\n" + $ctx)}
+              ],
+              temperature: 0.2}' > payload.json
+
+          HTTP_CODE=0
+          for attempt in 1 2 3; do
+            HTTP_CODE=$(curl -sS -w '%{http_code}' -o resp.json -X POST "$KIMI_BASE_URL/chat/completions" \
+              -H "Authorization: Bearer $KIMI_API_KEY" \
+              -H "Content-Type: application/json" \
+              -d @payload.json)
+            [ "$HTTP_CODE" -lt 400 ] && break
+            echo "Attempt $attempt failed (HTTP $HTTP_CODE), retrying..."
+            [ "$attempt" -lt 3 ] && sleep "$((attempt * 5))"
+          done
+          if [ "$HTTP_CODE" -ge 400 ]; then
+            gh issue comment "$ISSUE" --body "Kimi API returned HTTP $HTTP_CODE after 3 attempts. Raw response saved as artifact."
+            exit 1
+          fi
+
+          jq -r '.choices[0].message.content' resp.json > reply.md
+          awk '/^```diff/{flag=1;next}/^```/{if(flag)exit}flag' reply.md > ai.patch || true
+
+          if [ ! -s ai.patch ]; then
+            gh issue comment "$ISSUE" --body "Kimi did not return a diff. Raw reply saved as artifact."
+            exit 1
+          fi
+          echo "diff_lines=$(wc -l < ai.patch)" >> "$GITHUB_OUTPUT"
+
+      - name: Apply patch, validate, and open PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: ${{ steps.cmd.outputs.branch }}
+          PR_TITLE: ${{ steps.cmd.outputs.pr_title }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          git config user.name "ai-kimi[bot]"
+          git config user.email "ai-kimi[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+
+          if ! git apply --3way ai.patch; then
+            gh issue comment "$ISSUE" --body "Kimi's patch did not apply cleanly. Saved as artifact for manual apply."
+            exit 1
+          fi
+
+          # Post-apply validation: run PHPCS on changed files if available
+          CHANGED=$(git diff --name-only --diff-filter=d)
+          if command -v phpcs >/dev/null 2>&1 && [ -f phpcs.xml ] && [ -n "$CHANGED" ]; then
+            echo "Running PHPCS on patched files..."
+            # shellcheck disable=SC2086
+            if ! phpcs --standard=phpcs.xml --no-colors -q $CHANGED 2>/dev/null; then
+              gh issue comment "$ISSUE" --body "Kimi's patch introduces PHPCS errors. Saved as artifact for manual fix."
+              exit 1
+            fi
+            echo "PHPCS passed."
+          fi
+
+          # Clean up AI scaffolding before committing
+          rm -f context.md payload.json resp.json reply.md ai.patch
+
+          git add -A
+          git commit -m "ai(kimi): $PR_TITLE"
+          git push -u origin "$BRANCH"
+
+          # Ensure the label exists
+          gh label create "ai-authored" --color "7057ff" --force 2>/dev/null || true
+
+          gh pr create --title "$PR_TITLE" --body "Automated by Kimi for issue #$ISSUE.
+
+          ## Summary
+          See issue #$ISSUE.
+
+          ## Test plan
+          - [ ] PHPCS passes
+          - [ ] No PHP notices on staging (WP_DEBUG on)
+          - [ ] Acceptance criteria verified
+
+          ## Deviations
+          None (or listed below)
+
+          ---
+          Review with: \`/claude review\`" --label "ai-authored"
+
+      - name: Upload artifacts (reply + patch)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kimi-issue-${{ github.event.issue.number }}
+          path: |
+            reply.md
+            ai.patch

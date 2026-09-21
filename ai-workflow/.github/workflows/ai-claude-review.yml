@@ -1,0 +1,140 @@
+# .github/workflows/ai-claude-review.yml
+# Trigger: comment on a PR:  /claude review   |   /claude security-audit
+# Behavior: Claude (reviewer-model) reviews the diff and posts findings as a comment.
+name: AI -- Claude review
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  review:
+    if: ${{ github.event.issue.pull_request && (startsWith(github.event.comment.body, '/claude review') || startsWith(github.event.comment.body, '/claude security-audit')) }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get PR diff and metadata
+        id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.issue.number }}
+        run: |
+          # Parallel fetches -- all three are independent
+          gh pr view "$PR" --repo "$REPO" --json title,body,author,labels > pr-meta.json &
+          gh pr diff "$PR" --repo "$REPO" > pr.diff &
+          gh pr view "$PR" --repo "$REPO" --json files --jq '.files[].path' > changed-files.txt &
+          wait
+
+      - name: Pre-flight checks
+        run: |
+          DIFF_SIZE=$(wc -c < pr.diff)
+          if [ "$DIFF_SIZE" -gt 150000 ]; then
+            echo "::error::PR diff is $(( DIFF_SIZE / 1000 )) KB -- too large for automated review. Review manually."
+            exit 1
+          fi
+          if [ "$DIFF_SIZE" -eq 0 ]; then
+            echo "::error::PR diff is empty -- nothing to review."
+            exit 1
+          fi
+
+      - name: Build context pack
+        run: |
+          chmod +x .github/scripts/build-context.sh
+          .github/scripts/build-context.sh --files changed-files.txt
+          if ! head -1 context.md | grep -q '^# CONTEXT PACK'; then
+            echo "::error::Context pack is corrupted."
+            exit 1
+          fi
+
+      - name: Select review mode
+        id: mode
+        env:
+          BODY: ${{ github.event.comment.body }}
+        run: |
+          if [[ "$BODY" == /claude\ security-audit* ]]; then
+            echo "mode=security" >> "$GITHUB_OUTPUT"
+          else
+            echo "mode=full" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Call Claude API
+        id: ai
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+          CLAUDE_BASE_URL: ${{ vars.CLAUDE_BASE_URL || 'https://api.anthropic.com' }}
+          CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL || 'claude-sonnet-4-6' }}
+          MODE: ${{ steps.mode.outputs.mode }}
+          PR: ${{ github.event.issue.number }}
+        run: |
+          SECURITY_PROMPT="You are doing a focused SECURITY audit of this WordPress theme diff. Check: nonces, capability checks, input sanitization, output escaping, raw superglobals, direct DB queries, secrets in code. Report ONLY real issues with file:line and a one-line fix."
+          FULL_PROMPT="You are the independent reviewer of a WordPress theme whose original author-model was Kimi. Review the diff against STYLE.md. Assume the author-model may defend its own prior design decisions -- question whether existing patterns are actually right. Report: (1) BLOCKERS -- correctness/security/STYLE.md violations, (2) SUGGESTIONS -- improvements, (3) QUESTIONS -- things needing human decision. File:line references. Be concise. Do not reformat code."
+          if [ "$MODE" = "security" ]; then PROMPT="$SECURITY_PROMPT"; else PROMPT="$FULL_PROMPT"; fi
+
+          # Build the payload with prompt caching on the system prompt
+          jq -n \
+            --arg model "$CLAUDE_MODEL" \
+            --arg prompt "$PROMPT" \
+            --rawfile diff pr.diff \
+            --rawfile ctx context.md \
+            --rawfile meta pr-meta.json \
+            '{model: $model, max_tokens: 4000,
+              system: [{type: "text", text: $prompt, cache_control: {type: "ephemeral"}}],
+              messages: [{role: "user", content: ("PR METADATA:\n" + $meta + "\n\nTHEME CONTEXT:\n" + $ctx + "\n\nDIFF TO REVIEW:\n```diff\n" + $diff + "\n```")}]}' > payload.json
+
+          HTTP_CODE=0
+          for attempt in 1 2 3; do
+            HTTP_CODE=$(curl -sS -w '%{http_code}' -o resp.json -X POST "$CLAUDE_BASE_URL/v1/messages" \
+              -H "x-api-key: $CLAUDE_API_KEY" \
+              -H "anthropic-version: 2023-06-01" \
+              -H "anthropic-beta: prompt-caching-2024-07-31" \
+              -H "Content-Type: application/json" \
+              -d @payload.json)
+            [ "$HTTP_CODE" -lt 400 ] && break
+            echo "Attempt $attempt failed (HTTP $HTTP_CODE), retrying..."
+            if [ "$HTTP_CODE" = "429" ]; then
+              sleep "$((attempt * 10))"
+            else
+              [ "$attempt" -lt 3 ] && sleep "$((attempt * 5))"
+            fi
+          done
+          if [ "$HTTP_CODE" -ge 400 ]; then
+            echo "::error::Claude API returned HTTP $HTTP_CODE after 3 attempts."
+            exit 1
+          fi
+
+          jq -r '.content[] | select(.type=="text") | .text' resp.json > review.md
+          echo "review_lines=$(wc -l < review.md)" >> "$GITHUB_OUTPUT"
+
+      - name: Post review comment
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.issue.number }}
+        run: |
+          {
+            echo "### Claude review"
+            echo
+            cat review.md
+            echo
+            echo "---"
+            echo "_Resolve manually or with a follow-up Kimi run._"
+          } > comment.md
+          gh pr comment "$PR" --repo "$REPO" --body-file comment.md
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: claude-review-pr-${{ github.event.issue.number }}
+          path: |
+            review.md
+            pr.diff
