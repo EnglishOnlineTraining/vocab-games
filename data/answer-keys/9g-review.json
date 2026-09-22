@@ -6,54 +6,54 @@
    "multi": true,
    "gaps": {
     "g1": {
-     "correct": "learned",
-     "accept": [
-      "learned"
-     ],
-     "label": "1. If more young people"
-    },
-    "g2": {
      "correct": "were swept out to sea",
      "accept": [
       "were swept out to sea"
      ],
-     "label": "2. Two swimmers"
+     "label": "1. Two swimmers"
     },
-    "g3": {
-     "correct": "reach",
-     "accept": [
-      "reach"
-     ],
-     "label": "3. temperatures can"
-    },
-    "g4": {
-     "correct": "go on",
-     "accept": [
-      "go on"
-     ],
-     "label": "4. Diwali celebrations"
-    },
-    "g5": {
+    "g2": {
      "correct": "day",
      "accept": [
       "day"
      ],
-     "label": "5. what a normal working"
+     "label": "2. what a normal working"
     },
-    "g6": {
+    "g3": {
      "correct": "who",
      "accept": [
       "who",
       "that"
      ],
-     "label": "6. thousands of people"
+     "label": "3. thousands of people"
     },
-    "g7": {
+    "g4": {
+     "correct": "is protected",
+     "accept": [
+      "is protected"
+     ],
+     "label": "4. The kiwi bird"
+    },
+    "g5": {
+     "correct": "reach",
+     "accept": [
+      "reach"
+     ],
+     "label": "5. temperatures can"
+    },
+    "g6": {
      "correct": "would go",
      "accept": [
       "would go"
      ],
-     "label": "7. …she"
+     "label": "6. …she"
+    },
+    "g7": {
+     "correct": "go on",
+     "accept": [
+      "go on"
+     ],
+     "label": "7. Diwali celebrations"
     },
     "g8": {
      "correct": "playing",
@@ -76,18 +76,18 @@
      "label": "1. the article"
     },
     "g2": {
-     "correct": "is protected",
+     "correct": "learned",
      "accept": [
-      "is protected"
+      "learned"
      ],
-     "label": "2. The kiwi bird"
+     "label": "2. If more young people"
     },
     "g3": {
-     "correct": "don't protect",
+     "correct": "allowed",
      "accept": [
-      "don't protect"
+      "allowed"
      ],
-     "label": "3. If we"
+     "label": "3. Cam’s parents"
     },
     "g4": {
      "correct": "giant",
@@ -97,34 +97,34 @@
      "label": "4. We saw a"
     },
     "g5": {
-     "correct": "had already put up",
-     "accept": [
-      "had already put up"
-     ],
-     "label": "5. the guides"
-    },
-    "g6": {
-     "correct": "go on",
-     "accept": [
-      "go on"
-     ],
-     "label": "6. \"to continue happening\""
-    },
-    "g7": {
      "correct": "unpaid",
      "accept": [
       "unpaid"
      ],
-     "label": "7. the work is usually"
+     "label": "5. the work is usually"
     },
-    "g8": {
+    "g6": {
      "correct": "— (not needed)",
      "accept": [
       "— (not needed)",
       "which",
       "that"
      ],
-     "label": "8. the competition"
+     "label": "6. the competition"
+    },
+    "g7": {
+     "correct": "was signed",
+     "accept": [
+      "was signed"
+     ],
+     "label": "7. The Treaty of Waitangi"
+    },
+    "g8": {
+     "correct": "had already put up",
+     "accept": [
+      "had already put up"
+     ],
+     "label": "8. the guides"
     }
    }
   },
@@ -140,53 +140,53 @@
      "label": "1. The scientist said the reef"
     },
     "g2": {
+     "correct": "go on",
+     "accept": [
+      "go on"
+     ],
+     "label": "2. \"to continue happening\""
+    },
+    "g3": {
      "correct": "walking",
      "accept": [
       "walking"
      ],
-     "label": "2. The guide suggested"
+     "label": "3. The guide suggested"
     },
-    "g3": {
+    "g4": {
      "correct": "sources",
      "accept": [
       "sources"
      ],
-     "label": "3. two independent"
-    },
-    "g4": {
-     "correct": "was signed",
-     "accept": [
-      "was signed"
-     ],
-     "label": "4. The Treaty of Waitangi"
+     "label": "4. two independent"
     },
     "g5": {
-     "correct": "gets",
+     "correct": "don't protect",
      "accept": [
-      "gets"
+      "don't protect"
      ],
-     "label": "5. …if the weather"
+     "label": "5. If we"
     },
     "g6": {
+     "correct": "allowed",
+     "accept": [
+      "allowed"
+     ],
+     "label": "6. They"
+    },
+    "g7": {
      "correct": "youth hostel",
      "accept": [
       "youth hostel"
      ],
-     "label": "6. We slept in a cheap"
-    },
-    "g7": {
-     "correct": "desert",
-     "accept": [
-      "desert"
-     ],
-     "label": "7. the flat red"
+     "label": "7. We slept in a cheap"
     },
     "g8": {
-     "correct": "pick up",
+     "correct": "is",
      "accept": [
-      "pick up"
+      "is"
      ],
-     "label": "8. Children"
+     "label": "8. where the office"
     }
    }
   }

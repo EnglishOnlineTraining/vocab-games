@@ -15,10 +15,10 @@
  * the teacher a perfect paper was entirely wrong.
  *
  * TWO RULES THAT MUST NOT BE RELAXED
- * 1. Match exactly. exercise.js grades with `sel.value === answers[k]`
- *    (checkDropdowns) and `accept.indexOf(sel.value) !== -1` (checkDropdownsMulti).
- *    Lowercasing or trimming here would make Make disagree with the score the
- *    student was shown — the old version did both.
+ * 1. Match the way the page matches. checkDropdowns uses strict equality
+ *    (`sel.value === answers[k]`), checkDropdownsMulti uses exact indexOf, and
+ *    checkTyped uses normAns() (lowercase, apostrophe-normalised, trailing
+ *    punctuation stripped). The answer key's `section.typed` flag tells us which.
  * 2. eolFlat writes an unanswered gap as a placeholder, not "". Treat it as blank,
  *    or every skipped gap is reported as a wrong answer.
  *    Current marker is '(blank)'; rows submitted before that change carry the em
@@ -28,6 +28,16 @@
 
 var BLANK = '(blank)';     // eolFlat's placeholder for an empty answer
 var BLANK_LEGACY = '—';    // what it was before 2026-09-07; still in historical rows
+
+/* Mirror of exercise.js's normAns — used for checkTyped sections. */
+function normAns(s) {
+  return String(s == null ? '' : s)
+    .replace(/[‘’ʼ´`]/g, "'")
+    .toLowerCase()
+    .replace(/[.,!?;:]+$/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
 
 /* Reverse of eolFlat(): "g1: x | g2: y" -> { g1: 'x', g2: 'y' }.
    Safe because graded gap values are <option> values, which never contain either
@@ -59,7 +69,10 @@ function gradeSubmission(payload, key) {
       if (answer === BLANK || answer === '' || answer == null) answer = null;
       // Legacy marker: blank unless this gap genuinely accepts an em dash.
       else if (answer === BLANK_LEGACY && gap.accept.indexOf(BLANK_LEGACY) === -1) answer = null;
-      var ok = answer !== null && gap.accept.indexOf(answer) !== -1;
+      var ok;
+      if (answer === null) { ok = false; }
+      else if (section.typed) { var n = normAns(answer); ok = gap.accept.some(function (a) { return normAns(a) === n; }); }
+      else { ok = gap.accept.indexOf(answer) !== -1; }
       if (ok) totalCorrect++;
       else wrong.push((gap.label || gapId) + ': gave ' + (answer === null ? '(blank)' : answer)
                       + ', expected ' + gap.correct);
@@ -77,4 +90,4 @@ function gradeSubmission(payload, key) {
   };
 }
 
-module.exports = { unflat: unflat, gradeSubmission: gradeSubmission, BLANK: BLANK, BLANK_LEGACY: BLANK_LEGACY };
+module.exports = { unflat: unflat, gradeSubmission: gradeSubmission, normAns: normAns, BLANK: BLANK, BLANK_LEGACY: BLANK_LEGACY };

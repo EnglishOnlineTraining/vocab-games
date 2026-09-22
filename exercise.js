@@ -174,6 +174,100 @@ function eolUpdateStreak() {
 }
 
 /* ============================================================
+   AUTOSAVE (localStorage, zero per-page edits)
+   Persists the page's `state` object, `maxStepReached` and the
+   current step to localStorage after every step change and on a
+   periodic timer. On reload, a resume banner lets the student
+   pick up where they left off. Cleared on successful submit.
+============================================================ */
+var EOL_DRAFT_KEY = '';
+var _eolDraftTimer = 0;
+
+function eolDraftInit() {
+  if (typeof UNIT === 'undefined') return;
+  EOL_DRAFT_KEY = 'eol_draft_' + UNIT;
+  eolDraftOfferResume();
+  _eolDraftTimer = setInterval(eolDraftSave, 30000);
+  document.addEventListener('change', eolDraftSave);
+}
+
+function eolDraftSave() {
+  if (!EOL_DRAFT_KEY || !state || !state.name) return;
+  try {
+    var cur = document.querySelector('.step.active');
+    var curStep = cur ? parseInt(cur.id.replace('step-', ''), 10) : 0;
+    var draft = {
+      v: 2,
+      state: state,
+      maxStep: maxStepReached,
+      curStep: curStep,
+      ts: Date.now()
+    };
+    localStorage.setItem(EOL_DRAFT_KEY, JSON.stringify(draft));
+  } catch (e) {}
+}
+
+function eolDraftLoad() {
+  try {
+    var raw = localStorage.getItem(EOL_DRAFT_KEY);
+    if (!raw) return null;
+    var d = JSON.parse(raw);
+    if (!d || d.v !== 2 || !d.state || !d.state.name) return null;
+    if (Date.now() - d.ts > 48 * 60 * 60 * 1000) return null;
+    return d;
+  } catch (e) { return null; }
+}
+
+function eolDraftClear() {
+  try { localStorage.removeItem(EOL_DRAFT_KEY); } catch (e) {}
+}
+
+function eolDraftOfferResume() {
+  var d = eolDraftLoad();
+  if (!d) return;
+  var banner = document.createElement('div');
+  banner.id = 'eol-resume-banner';
+  banner.style.cssText = 'background:#f5e6b0;border:2px solid #c9a227;border-radius:10px;padding:1rem 1.2rem;margin:1rem auto;max-width:560px;text-align:center;font-family:var(--font,"Segoe UI",system-ui,sans-serif)';
+  banner.innerHTML = '<p style="font-weight:700;margin:0 0 .4rem;font-size:.95rem">'
+    + '💾 Unfinished work found</p>'
+    + '<p style="font-size:.85rem;color:#6b7a8d;margin:0 0 .8rem">'
+    + d.state.name + ' — ' + (d.state.cls || '') + ' — saved '
+    + new Date(d.ts).toLocaleString('en-GB', { day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' })
+    + '</p>'
+    + '<button class="btn btn-gold btn-sm" id="eol-resume-yes" style="margin-right:.5rem">Resume</button>'
+    + '<button class="btn btn-outline btn-sm" id="eol-resume-no">Start fresh</button>';
+  var welcome = document.getElementById('step-0');
+  if (welcome) {
+    var inner = welcome.querySelector('.step-inner');
+    if (inner) inner.insertBefore(banner, inner.children[1] || null);
+  }
+  document.getElementById('eol-resume-yes').onclick = function() {
+    banner.remove();
+    state = d.state;
+    if (typeof maxStepReached !== 'undefined') maxStepReached = d.maxStep || 0;
+    state.name && (function() {
+      var nameEl = document.getElementById('inp-name');
+      var clsEl = document.getElementById('inp-class');
+      if (nameEl) nameEl.value = state.name;
+      if (clsEl) clsEl.value = state.cls || '';
+    })();
+    eolMarkStarted();
+    var target = d.curStep || 1;
+    if (target > 0 && target <= TOTAL_STEPS) {
+      showStep(target);
+    } else {
+      showStep(1);
+    }
+  };
+  document.getElementById('eol-resume-no').onclick = function() {
+    banner.remove();
+    eolDraftClear();
+  };
+}
+
+document.addEventListener('DOMContentLoaded', eolDraftInit);
+
+/* ============================================================
    WRITING RUBRIC — PRACTISE MODE ONLY
    Class submissions are marked by the teacher, so the rubric is
    deliberately confined to practise mode: it is rendered only from
@@ -282,6 +376,29 @@ function showToast(message, duration) {
   }, duration);
 }
 
+function eolSkipModal(onConfirm) {
+  if (document.getElementById('eol-skip-overlay')) return;
+  var overlay = document.createElement('div');
+  overlay.id = 'eol-skip-overlay';
+  overlay.className = 'eol-skip-overlay';
+  var box = document.createElement('div');
+  box.className = 'eol-skip-box';
+  box.innerHTML = '<div style="font-size:2rem;margin-bottom:.5rem">⚠️</div>'
+    + '<p class="eol-skip-title">You haven&rsquo;t finished yet</p>'
+    + '<p class="eol-skip-body">Some answers are still blank or very short.<br>You can come back and finish later.</p>'
+    + '<div class="eol-skip-actions">'
+    + '<button type="button" class="btn btn-primary" id="eol-skip-go" style="width:100%;justify-content:center">Continue anyway →</button>'
+    + '<button type="button" class="btn btn-outline" id="eol-skip-back" style="width:100%;justify-content:center">Go back and finish</button>'
+    + '</div>';
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
+  function close() { overlay.remove(); }
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) close(); });
+  document.getElementById('eol-skip-back').addEventListener('click', close);
+  document.getElementById('eol-skip-go').addEventListener('click', function() { close(); onConfirm(); });
+  document.getElementById('eol-skip-back').focus();
+}
+
 function showStep(n) {
   document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
   document.getElementById('step-' + n).classList.add('active');
@@ -290,6 +407,7 @@ function showStep(n) {
   restoreStep(n);
   if (n > maxStepReached) maxStepReached = n;
   renderStepNav(n);
+  eolDraftSave();
   var meta = document.getElementById('header-meta');
   if (n === 0) { meta.style.display = 'none'; return; }
   meta.style.display = 'block';
@@ -312,9 +430,11 @@ function renderStepNav(current) {
     if (i === current) cls += ' current';
     else if (i <= maxStepReached) cls += ' visited';
     else cls += ' locked';
-    html += '<button class="' + cls + '" ' + (i === current ? 'aria-current="step" ' : '')
-      + (i <= maxStepReached && i !== current ? 'onclick="goToStep(' + i + ')"' : 'disabled')
-      + '>Ex ' + String.fromCharCode(64 + i) + '</button>';
+    var action = '';
+    if (i === current) action = 'aria-current="step" disabled';
+    else if (i <= maxStepReached) action = 'onclick="goToStep(' + i + ')"';
+    else action = 'onclick="skipToStep(' + i + ')"';
+    html += '<button class="' + cls + '" ' + action + '>Ex ' + String.fromCharCode(64 + i) + '</button>';
   }
   var submitCls = 'step-nav-btn' + (current === TOTAL_STEPS ? ' current' : (maxStepReached >= TOTAL_STEPS ? ' visited' : ' locked'));
   html += '<button class="' + submitCls + '" ' + (current === TOTAL_STEPS ? 'aria-current="step" ' : '')
@@ -337,14 +457,27 @@ function prevStep(n) { saveStep(n); clearErr(n); showStep(n - 1); }
 
 function nextStep(n) {
   if (!validateStep(n)) {
-    var err = document.getElementById('step' + n + '-error');
-    if (err) { err.textContent = 'Please answer the required questions before continuing.'; err.classList.add('show'); }
+    eolSkipModal(function() {
+      clearErr(n);
+      saveStep(n);
+      if (n === TOTAL_STEPS - 1) { eolAutoScoreUnchecked(); buildSummary(); }
+      showStep(n + 1);
+    });
     return;
   }
   clearErr(n);
   saveStep(n);
   if (n === TOTAL_STEPS - 1) { eolAutoScoreUnchecked(); buildSummary(); }
   showStep(n + 1);
+}
+
+function skipToStep(n) {
+  eolSkipModal(function() {
+    var current = document.querySelector('.step.active');
+    if (current) { var curN = parseInt(current.id.replace('step-', ''), 10); saveStep(curN); }
+    if (n === TOTAL_STEPS) { eolAutoScoreUnchecked(); buildSummary(); }
+    showStep(n);
+  });
 }
 
 function clearErr(n) {
@@ -371,6 +504,14 @@ function g(id)      { var el = document.getElementById(id); return el ? el.value
 function set(id, v) { var el = document.getElementById(id); if (el && v !== undefined) el.value = v; }
 function val(id)    { return g(id).length > 0; }
 function esc(str)   { var d = document.createElement('div'); d.textContent = String(str == null ? '' : str); return d.innerHTML; }
+function normAns(s) {
+  return String(s == null ? '' : s)
+    .replace(/[‘’ʼ´`]/g, "'")
+    .toLowerCase()
+    .replace(/[.,!?;:]+$/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
 
 /* Flatten an answers object into "k: v | k: v" for email bodies. */
 /* Flatten an answer object to "k: v | k: v" — the readable form the Excel answer
@@ -531,7 +672,9 @@ function eolAutoScoreUnchecked() {
       var given = String(el.value == null ? '' : el.value).trim();
       if (!given) return;                        // blank counts as unanswered, as when checking
       var accept = gaps[k].accept || [gaps[k].correct];
-      var ok = accept.some(function(a) { return given === String(a).trim(); });
+      var ok = section.typed
+        ? accept.some(function(a) { return normAns(given) === normAns(a); })
+        : accept.some(function(a) { return given === String(a).trim(); });
       recordGap(sk, k, ok, given, gaps[k].correct);
     });
     if (seen) state.scores[sk] = { correct: recordedPoints(sk), total: ids.length };
@@ -854,7 +997,7 @@ function eolExplRow(it) {
     + '<div class="expl-q">' + esc(it.label) + '</div>'
     + '<div class="expl-a"><span class="expl-correct">' + esc(it.correct) + '</span>'
     + (it.ok ? '' : ' <span class="expl-your">— you chose: ' + esc(it.student || '—') + '</span>') + '</div>'
-    + '<div class="expl-why">' + esc(it.why) + '</div></div>';
+    + (it.why ? '<div class="expl-why">' + esc(it.why) + '</div>' : '') + '</div>';
 }
 
 /* Create an #explanations container if a page doesn't already have one, so
@@ -872,7 +1015,7 @@ function eolMakeExplContainer(id) {
 }
 
 function renderExplanations(containerId, items) {
-  items = (items || []).filter(function(it) { return it && it.why; });
+  items = (items || []).filter(function(it) { return it; });
   var box = document.getElementById(containerId);
   if (!box) {
     if (!items.length) return;
@@ -881,15 +1024,17 @@ function renderExplanations(containerId, items) {
   }
   if (!items.length) { box.style.display = 'none'; return; }
   var wrong = items.filter(function(it) { return !it.ok; });
+  var hasWhy = items.some(function(it) { return it.why; });
+  var title = hasWhy ? 'Explanations' : 'Answers';
   box.style.display = 'block';
   var head = wrong.length
-    ? '<div class="card"><div class="card-title">Explanations — the ones to review (' + wrong.length + ')</div>'
+    ? '<div class="card"><div class="card-title">' + title + ' — the ones to review (' + wrong.length + ')</div>'
         + wrong.map(eolExplRow).join('') + '</div>'
-    : '<div class="card"><div class="card-title">Explanations</div>'
+    : '<div class="card"><div class="card-title">' + title + '</div>'
         + '<p style="font-size:.92rem;color:var(--green-text,#1d7a42);margin:0">Everything correct — nothing to review. 🎉</p></div>';
   var toggle = '<div style="text-align:center;margin:.1rem 0 .7rem">'
-    + '<button type="button" class="btn btn-outline btn-sm" onclick="eolToggleAllExpl(this)">Show all explanations</button></div>';
-  var all = '<div class="card" id="expl-all" style="display:none"><div class="card-title">All explanations</div>'
+    + '<button type="button" class="btn btn-outline btn-sm" onclick="eolToggleAllExpl(this)">Show all ' + title.toLowerCase() + '</button></div>';
+  var all = '<div class="card" id="expl-all" style="display:none"><div class="card-title">All ' + title.toLowerCase() + '</div>'
     + items.map(eolExplRow).join('') + '</div>';
   box.innerHTML = head + toggle + all;
 }
@@ -911,13 +1056,19 @@ function eolToggleAllExpl(btn) {
  */
 /* All units' explanations, fetched once from data/explanations.json (below). */
 var EOL_EXPLAIN_ALL = null;
+/* Per-unit answer key fetched from data/answer-keys/<UNIT>.json as a last
+   resort — gives right/wrong feedback even without authored `why` text. */
+var EOL_ANSWER_KEY = null;
 
-/* The explanation data for THIS page: an inline `EXPLAIN` global still wins
-   (back-compat / override), otherwise the entry for this page's UNIT from the
-   shared data file. */
+function eolHasKeys(obj) { return obj && typeof obj === 'object' && Object.keys(obj).length > 0; }
+
+/* The explanation data for THIS page: a populated inline `EXPLAIN` global wins
+   (back-compat / override), then the shared explanations data file, then the
+   answer key (no `why` text, but correct/accept/label still drive feedback). */
 function eolExplainForPage() {
-  if (typeof EXPLAIN !== 'undefined' && EXPLAIN) return EXPLAIN;
-  if (EOL_EXPLAIN_ALL && typeof UNIT !== 'undefined' && EOL_EXPLAIN_ALL[UNIT]) return EOL_EXPLAIN_ALL[UNIT];
+  if (typeof EXPLAIN !== 'undefined' && eolHasKeys(EXPLAIN)) return EXPLAIN;
+  if (EOL_EXPLAIN_ALL && typeof UNIT !== 'undefined' && eolHasKeys(EOL_EXPLAIN_ALL[UNIT])) return EOL_EXPLAIN_ALL[UNIT];
+  if (eolHasKeys(EOL_ANSWER_KEY)) return EOL_ANSWER_KEY;
   return null;
 }
 
@@ -934,13 +1085,15 @@ function eolCollectExplanations() {
     var prefix = (sec.prefix != null) ? sec.prefix : (sk + '-');   // respect an explicit '' prefix
     var gaps = sec.gaps || sec;
     Object.keys(gaps).forEach(function(g) {
-      if (g === 'prefix' || g === 'gaps') return;   // skip config keys on flat entries
+      if (g === 'prefix' || g === 'gaps' || g === 'typed' || g === 'multi') return;
       var d = gaps[g];
       var el = document.getElementById(prefix + g);
       var student = el ? (el.value || '') : ((state[sk] && state[sk][g]) || '');
       var accept = d.accept || [d.correct];
-      items.push({ label: d.label, correct: d.correct, student: student, why: d.why,
-                   ok: accept.indexOf(student) !== -1 });
+      var ok = sec.typed
+        ? accept.some(function(a) { return normAns(student) === normAns(a); })
+        : accept.indexOf(student) !== -1;
+      items.push({ label: d.label, correct: d.correct, student: student, why: d.why, ok: ok });
     });
   });
   return items;
@@ -990,6 +1143,7 @@ function submitToSheet() {
       showToast('✅ Test submission logged to console');
       document.getElementById('submit-success').style.display = 'block';
       document.getElementById('submit-fallback').style.display = 'block';
+      eolDraftClear();
     }, 600);
     return;
   }
@@ -1005,6 +1159,7 @@ function submitToSheet() {
     document.getElementById('submit-success').style.display = 'block';
     document.getElementById('submit-fallback').style.display = 'block';
     eolSaveProgress();
+    eolDraftClear();
   }).catch(function() {
     btn.disabled = false;
     btn.textContent = 'Submit to Teacher';
@@ -1397,7 +1552,15 @@ function eolInjectChrome() {
     + '.eol-rubric-foot{font-size:.82rem;color:var(--muted,#6b7a8d);margin-top:.8rem}'
     + '@media(max-width:560px){.eol-rubric-table tbody td:not(.eol-rubric-rate){display:block}'
       + '.eol-rubric-table{font-size:.8rem}.eol-rubric-rate{width:3.2rem}}'
-    + '@media(prefers-reduced-motion:reduce){.eol-skip{transition:none}}';
+    + '@media(prefers-reduced-motion:reduce){.eol-skip{transition:none}}'
+    + '.eol-skip-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:10000;'
+      + 'display:flex;align-items:center;justify-content:center;padding:1rem}'
+    + '.eol-skip-box{background:#fff;border-radius:12px;padding:1.5rem 1.75rem;max-width:380px;'
+      + 'width:100%;box-shadow:0 8px 32px rgba(0,0,0,.25);text-align:center;'
+      + 'font-family:var(--font,"Segoe UI",system-ui,sans-serif)}'
+    + '.eol-skip-title{font-size:1rem;color:var(--text,#1d2b3a);margin:0 0 .5rem;font-weight:700}'
+    + '.eol-skip-body{font-size:.88rem;color:var(--muted,#6b7a8d);margin:0 0 1.25rem;line-height:1.5}'
+    + '.eol-skip-actions{display:flex;flex-direction:column;gap:.5rem}';
   document.head.appendChild(st);
 
   if (!document.getElementById('eol-skip')) {
@@ -1466,15 +1629,29 @@ document.addEventListener('DOMContentLoaded', eolInjectChrome);
    results screen, re-render. */
 document.addEventListener('DOMContentLoaded', function() {
   if (typeof fetch !== 'function') return;
-  if (typeof EXPLAIN !== 'undefined') return;   // page carries its own — nothing to fetch
-  fetch('data/explanations.json')
-    .then(function(r) { return r && r.ok ? r.json() : null; })
-    .then(function(data) {
-      if (!data) return;
-      EOL_EXPLAIN_ALL = data;
-      var lastId = 'step-' + (typeof TOTAL_STEPS !== 'undefined' ? TOTAL_STEPS : -1);
-      var last = document.getElementById(lastId);
-      if (last && last.classList.contains('active')) eolApplyExplanations();
-    })
-    .catch(function() {});
+  function reRenderIfOnSummary() {
+    var lastId = 'step-' + (typeof TOTAL_STEPS !== 'undefined' ? TOTAL_STEPS : -1);
+    var last = document.getElementById(lastId);
+    if (last && last.classList.contains('active')) eolApplyExplanations();
+  }
+  if (typeof EXPLAIN === 'undefined' || !eolHasKeys(typeof EXPLAIN !== 'undefined' ? EXPLAIN : null)) {
+    fetch('data/explanations.json')
+      .then(function(r) { return r && r.ok ? r.json() : null; })
+      .then(function(data) {
+        if (!data) return;
+        EOL_EXPLAIN_ALL = data;
+        if (eolExplainForPage()) reRenderIfOnSummary();
+      })
+      .catch(function() {});
+  }
+  if (typeof UNIT !== 'undefined' && UNIT) {
+    fetch('data/answer-keys/' + encodeURIComponent(UNIT) + '.json')
+      .then(function(r) { return r && r.ok ? r.json() : null; })
+      .then(function(data) {
+        if (!data || !data.sections) return;
+        EOL_ANSWER_KEY = data.sections;
+        if (eolExplainForPage() === EOL_ANSWER_KEY) reRenderIfOnSummary();
+      })
+      .catch(function() {});
+  }
 });

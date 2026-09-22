@@ -1,0 +1,194 @@
+{
+ "unit": "9g-australia-passive-forms",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "has not been seen",
+     "accept": [
+      "has not been seen",
+      "hasn't been seen"
+     ],
+     "label": "1 — a student ___ (not see) since Thursday",
+     "why": "“Since Thursday morning” reaches up to now, so use the present perfect passive: has/have + been + past participle."
+    },
+    "g2": {
+     "correct": "was found",
+     "accept": [
+      "was found"
+     ],
+     "label": "2 — his mobile phone ___ (find)",
+     "why": "“On Friday morning” is a finished past time, so the simple past passive is right: was + found."
+    },
+    "g3": {
+     "correct": "have been informed",
+     "accept": [
+      "have been informed"
+     ],
+     "label": "3 — his parents ___ (inform)",
+     "why": "No past time is given and the news still matters now, so the present perfect passive fits."
+    },
+    "g4": {
+     "correct": "was called off",
+     "accept": [
+      "was called off",
+      "has been called off"
+     ],
+     "label": "4 — a search ___ (call off) at sunset",
+     "why": "The report is written after sunset, so calling the search off is already over: simple past passive."
+    },
+    "g5": {
+     "correct": "are attracted",
+     "accept": [
+      "are attracted"
+     ],
+     "label": "5 — many tourists ___ (attract) by bushwalking",
+     "why": "This is generally true, not a single event, so use the simple present passive."
+    },
+    "g6": {
+     "correct": "was found",
+     "accept": [
+      "was found"
+     ],
+     "label": "6 — Jessica Harris ___ (find)",
+     "why": "“Last month” is a finished past time, so the simple past passive is needed."
+    },
+    "g7": {
+     "correct": "have been given",
+     "accept": [
+      "have been given"
+     ],
+     "label": "7 — unless you ___ (give) survival training",
+     "why": "The training happens before the trip and leads up to it, so the present perfect passive fits."
+    }
+   },
+   "typed": true
+  },
+  "exD": {
+   "prefix": "exD-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "hasn't been seen",
+     "accept": [
+      "hasn't been seen",
+      "has not been seen"
+     ],
+     "label": "1 — He ___ since.",
+     "why": "The active is present perfect (has seen), so the passive is has been seen — here in the negative."
+    },
+    "g2": {
+     "correct": "was warned",
+     "accept": [
+      "was warned"
+     ],
+     "label": "2 — Jim ___ by that guy at the hostel",
+     "why": "The active is simple past (warned), so the passive is was + warned, and the doer follows with “by”."
+    },
+    "g3": {
+     "correct": "was told",
+     "accept": [
+      "was told"
+     ],
+     "label": "3 — He ___ by somebody else",
+     "why": "The active is simple past (told). Jim receives the information, so he becomes the subject of was told."
+    },
+    "g4": {
+     "correct": "will be rescued",
+     "accept": [
+      "will be rescued",
+      "'ll be rescued",
+      "will be saved"
+     ],
+     "label": "4 — This guy ___.",
+     "why": "After will the passive is be + past participle: will be rescued."
+    },
+    "g5": {
+     "correct": "isn't going to be called off",
+     "accept": [
+      "isn't going to be called off",
+      "is not going to be called off"
+     ],
+     "label": "5 — The search ___ before they find him",
+     "why": "With going to, the passive is going to be + past participle; the negative stays on the form of be."
+    },
+    "g6": {
+     "correct": "wasn't bitten",
+     "accept": [
+      "wasn't bitten",
+      "was not bitten"
+     ],
+     "label": "6 — He ___ by a snake",
+     "why": "The active is a simple past negative (didn’t bite), so the passive is wasn’t + bitten."
+    },
+    "g7": {
+     "correct": "will be found",
+     "accept": [
+      "will be found",
+      "'ll be found"
+     ],
+     "label": "7 — He ___.",
+     "why": "After will the passive is be + past participle: will be found."
+    }
+   },
+   "typed": true
+  },
+  "exF": {
+   "prefix": "exF-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "to be given",
+     "accept": [
+      "to be given"
+     ],
+     "label": "1 — would like ___ a room with a harbour view",
+     "why": "After would like the passive infinitive is to be + past participle. The guests receive the room, so: to be given."
+    },
+    "g2": {
+     "correct": "to be taken",
+     "accept": [
+      "to be taken"
+     ],
+     "label": "2 — expect ___ to a barbie",
+     "why": "Expect takes the full infinitive, so the passive is to be taken, not just be taken."
+    },
+    "g3": {
+     "correct": "to be served",
+     "accept": [
+      "to be served"
+     ],
+     "label": "3 — want ___ breakfast on the terrace",
+     "why": "The guests receive the breakfast, so want takes the passive infinitive to be served."
+    },
+    "g4": {
+     "correct": "to be given",
+     "accept": [
+      "to be given"
+     ],
+     "label": "4 — would like ___ more information",
+     "why": "They receive the information, so the passive infinitive after would like is to be given."
+    },
+    "g5": {
+     "correct": "to be woken",
+     "accept": [
+      "to be woken"
+     ],
+     "label": "5 — want ___ up for their flight",
+     "why": "The past participle of wake is woken, so the passive infinitive is to be woken; “up” is already in the sentence."
+    },
+    "g6": {
+     "correct": "to be told",
+     "accept": [
+      "to be told"
+     ],
+     "label": "6 — hopes ___ about any parties",
+     "why": "He receives the information, so hope takes the passive infinitive to be told."
+    }
+   },
+   "typed": true
+  }
+ }
+}

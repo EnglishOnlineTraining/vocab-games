@@ -67,6 +67,15 @@ Object.keys(data).forEach(unit => {
   Object.keys(sections).forEach(sk => {
     const sec = sections[sk];
     const prefix = (sec.prefix != null) ? sec.prefix : (sk + '-');
+    // eolAutoScoreUnchecked() uses `section.gaps || {}` — a flat structure
+    // (gap keys directly on the section) silently scores zero gaps.
+    if (!sec.gaps) {
+      const flatKeys = Object.keys(sec).filter(k => k !== 'prefix' && k !== 'typed');
+      if (flatKeys.length) {
+        console.error('✗ ERROR [' + unit + ' ' + sk + ']: flat structure — gap keys (' + flatKeys.join(', ') + ') must be inside a "gaps" sub-object');
+        errors++;
+      }
+    }
     const gapsObj = sec.gaps || sec;
     Object.keys(gapsObj).forEach(g => {
       if (g === 'prefix' || g === 'gaps') return;

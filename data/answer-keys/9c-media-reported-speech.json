@@ -10,56 +10,64 @@
      "accept": [
       "phones"
      ],
-     "label": "A new study asked 1,200 teenagers how they use their 1"
+     "label": "1 — how they use their ___",
+     "why": "The study asked teenagers how they use their phones."
     },
     "g2": {
      "correct": "media",
      "accept": [
       "media"
      ],
-     "label": "…e — phrases phones photos . On average, they spend more than three hours a day on social 2"
+     "label": "2 — social ___",
+     "why": "\"Social media\" is the fixed phrase for platforms like Instagram or TikTok."
     },
     "g3": {
      "correct": "friends",
      "accept": [
       "friends"
      ],
-     "label": "Most of them say that they enjoy it. They chat with 3"
+     "label": "3 — they chat with ___",
+     "why": "You chat with people — friends, not fridges or frames."
     },
     "g4": {
      "correct": "stressed",
      "accept": [
       "stressed"
      ],
-     "label": "… follow their favourite bands. But almost half of them also say that they sometimes feel 4"
+     "label": "4 — they sometimes feel ___",
+     "why": "\"Feel stressed\" describes the pressure of comparing yourself with perfect pictures."
     },
     "g5": {
      "correct": "news",
      "accept": [
       "news"
      ],
-     "label": "One big problem is fake 5"
+     "label": "5 — fake ___",
+     "why": "\"Fake news\" is the set phrase for false stories that look real."
     },
     "g6": {
      "correct": "source",
      "accept": [
       "source"
      ],
-     "label": "…ok completely real when it is not. Experts say that young people should always check the 6"
+     "label": "6 — check the ___ of a story",
+     "why": "The source of a story is where it originally comes from."
     },
     "g7": {
      "correct": "report",
      "accept": [
       "report"
      ],
-     "label": "…online, hundreds of people can read it within minutes. Schools now teach students how to 7"
+     "label": "7 — how to ___ such messages",
+     "why": "You report a cruel message so that the platform or the school can act on it."
     },
     "g8": {
      "correct": "advice",
      "accept": [
       "advice"
      ],
-     "label": "The study ends with simple 8"
+     "label": "8 — simple ___",
+     "why": "Advice is the uncountable noun for the tips the study gives at the end."
     }
    }
   },
@@ -72,56 +80,64 @@
      "accept": [
       "was"
      ],
-     "label": "1. “I am tired.” → She said that she"
+     "label": "1 — she said she ___ tired",
+     "why": "\"I am\" goes one step back to \"she was\"."
     },
     "g2": {
      "correct": "watched",
      "accept": [
       "watched"
      ],
-     "label": "2. “We watch videos every evening.” → They said that they"
+     "label": "2 — they ___ videos every evening",
+     "why": "The simple present \"watch\" goes back to the simple past \"watched\"."
     },
     "g3": {
      "correct": "had deleted",
      "accept": [
       "had deleted"
      ],
-     "label": "3. “I have deleted the photo.” → He said that he"
+     "label": "3 — he ___ the photo",
+     "why": "The present perfect \"have deleted\" goes back to the past perfect \"had deleted\"."
     },
     "g4": {
      "correct": "would",
      "accept": [
       "would"
      ],
-     "label": "4. “I will call you later.” → She said that she"
+     "label": "4 — she ___ call me later",
+     "why": "\"Will\" becomes \"would\" in reported speech."
     },
     "g5": {
      "correct": "couldn't",
      "accept": [
       "couldn't"
      ],
-     "label": "5. “I can't find the link.” → He said that he"
+     "label": "5 — he ___ find the link",
+     "why": "\"Can't\" becomes \"couldn't\" in reported speech."
     },
     "g6": {
      "correct": "had to",
      "accept": [
       "had to"
      ],
-     "label": "6. “You must check the source.” → The teacher said that we"
+     "label": "6 — we ___ check the source",
+     "why": "\"Must\" becomes \"had to\" in reported speech."
     },
     "g7": {
      "correct": "was posting",
      "accept": [
       "was posting"
      ],
-     "label": "7. “I'm posting a picture.” → He said that he"
+     "label": "7 — he ___ a picture",
+     "why": "The present progressive \"am posting\" becomes the past progressive \"was posting\"."
     },
     "g8": {
      "correct": "had broken",
      "accept": [
       "had broken"
      ],
-     "label": "8. “My phone broke yesterday.” → She said that her phone"
+     "label": "8 — her phone ___ the day before",
+     "why": "The simple past \"broke\" goes one step back to the past perfect \"had broken\"."
     }
    }
   },
@@ -134,56 +150,64 @@
      "accept": [
       "got"
      ],
-     "label": "1. “Where do you get your news?” → She asked me where I"
+     "label": "1 — where I ___ my news",
+     "why": "A reported question keeps normal word order and drops \"do/does/did\"."
     },
     "g2": {
      "correct": "if",
      "accept": [
       "if"
      ],
-     "label": "2. “Are you online?” → He asked"
+     "label": "2 — he asked ___ I was online",
+     "why": "A yes/no question is reported with if (or whether)."
     },
     "g3": {
      "correct": "not to share",
      "accept": [
       "not to share"
      ],
-     "label": "3. “Don't share that video!” → The teacher told us"
+     "label": "3 — told us ___ that video",
+     "why": "A negative order is reported with not to + infinitive."
     },
     "g4": {
      "correct": "to turn",
      "accept": [
       "to turn"
      ],
-     "label": "4. “Please turn off your phone.” → She asked me"
+     "label": "4 — she asked me ___ off my phone",
+     "why": "A request is reported with to + infinitive after \"asked me\"."
     },
     "g5": {
      "correct": "told",
      "accept": [
       "told"
      ],
-     "label": "5. Mia"
+     "label": "5 — Mia ___ me that...",
+     "why": "\"Tell\" needs a person after it: told me that..."
     },
     "g6": {
      "correct": "said",
      "accept": [
       "said"
      ],
-     "label": "6. Ben"
+     "label": "6 — Ben ___ that...",
+     "why": "\"Say\" is used without a person: he said that..."
     },
     "g7": {
      "correct": "had",
      "accept": [
       "had"
      ],
-     "label": "7. “How many followers have you got?” → He asked me how many followers I"
+     "label": "7 — how many followers I ___ got",
+     "why": "After \"asked\", \"have got\" shifts back to \"had got\"."
     },
     "g8": {
      "correct": "whether",
      "accept": [
       "whether"
      ],
-     "label": "8. “Did you read the article?” → She asked me"
+     "label": "8 — she asked me ___ I had read it",
+     "why": "A yes/no question (\"Did you...?\") is reported with whether or if."
     }
    }
   }

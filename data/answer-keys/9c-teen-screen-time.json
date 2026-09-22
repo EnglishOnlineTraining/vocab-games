@@ -1,0 +1,177 @@
+{
+ "unit": "9c-teen-screen-time",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "screen",
+     "accept": [
+      "screen"
+     ],
+     "label": "…es a day. A recent survey found that students spend almost four hours a day looking at a 1"
+    },
+    "g2": {
+     "correct": "designed",
+     "accept": [
+      "designed"
+     ],
+     "label": "…y they can't stop scrolling even when they want to. Experts say this is because apps are 2"
+    },
+    "g3": {
+     "correct": "concentration",
+     "accept": [
+      "concentration"
+     ],
+     "label": "Too much screen time can affect your 3"
+    },
+    "g4": {
+     "correct": "limit",
+     "accept": [
+      "limit"
+     ],
+     "label": "… teenagers manage to use their phones in a healthy way — for example, by setting a daily 4"
+    },
+    "g5": {
+     "correct": "suggest",
+     "accept": [
+      "suggest"
+     ],
+     "label": "Doctors also 5"
+    },
+    "g6": {
+     "correct": "tool",
+     "accept": [
+      "tool"
+     ],
+     "label": "In the end, a phone is just a 6"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "watching",
+     "accept": [
+      "watching"
+     ],
+     "label": "1. I really enjoy"
+    },
+    "g2": {
+     "correct": "checking",
+     "accept": [
+      "checking"
+     ],
+     "label": "2. She's trying to avoid"
+    },
+    "g3": {
+     "correct": "losing",
+     "accept": [
+      "losing"
+     ],
+     "label": "3. He keeps"
+    },
+    "g4": {
+     "correct": "uploading",
+     "accept": [
+      "uploading"
+     ],
+     "label": "4. Have you finished"
+    },
+    "g5": {
+     "correct": "turning",
+     "accept": [
+      "turning"
+     ],
+     "label": "5. Our teacher suggested"
+    },
+    "g6": {
+     "correct": "lowering",
+     "accept": [
+      "lowering"
+     ],
+     "label": "6. Would you mind"
+    },
+    "g7": {
+     "correct": "speaking",
+     "accept": [
+      "speaking"
+     ],
+     "label": "7. I practise"
+    },
+    "g8": {
+     "correct": "playing",
+     "accept": [
+      "playing"
+     ],
+     "label": "8. My brother finally gave up"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "to reduce",
+     "accept": [
+      "to reduce"
+     ],
+     "label": "1. I want"
+    },
+    "g2": {
+     "correct": "to delete",
+     "accept": [
+      "to delete"
+     ],
+     "label": "2. She decided"
+    },
+    "g3": {
+     "correct": "to have",
+     "accept": [
+      "to have"
+     ],
+     "label": "3. We're planning"
+    },
+    "g4": {
+     "correct": "to get",
+     "accept": [
+      "to get"
+     ],
+     "label": "4. He hopes"
+    },
+    "g5": {
+     "correct": "to switch",
+     "accept": [
+      "to switch"
+     ],
+     "label": "5. I promise"
+    },
+    "g6": {
+     "correct": "to finish",
+     "accept": [
+      "to finish"
+     ],
+     "label": "6. She finally managed"
+    },
+    "g7": {
+     "correct": "to let",
+     "accept": [
+      "to let"
+     ],
+     "label": "7. My parents refuse"
+    },
+    "g8": {
+     "correct": "to ignore",
+     "accept": [
+      "to ignore"
+     ],
+     "label": "8. We can't afford"
+    }
+   }
+  }
+ }
+}

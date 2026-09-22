@@ -1,0 +1,199 @@
+{
+ "unit": "esl-participle-clauses",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "tables, lanterns and crates of fruit",
+     "accept": [
+      "tables, lanterns and crates of fruit"
+     ],
+     "label": "1. What do the vendors bring with them?",
+     "why": "The first paragraph says the vendors arrive carrying tables, lanterns and crates of fruit."
+    },
+    "g2": {
+     "correct": "to photograph it",
+     "accept": [
+      "to photograph it"
+     ],
+     "label": "2. Why did the writer go to the market?",
+     "why": "The writer went there with a camera, hoping to capture the atmosphere."
+    },
+    "g3": {
+     "correct": "he was hit by a wall of smells",
+     "accept": [
+      "he was hit by a wall of smells"
+     ],
+     "label": "3. What happened at the entrance?",
+     "why": "The text says: Walking through the entrance, I was hit by a wall of smells."
+    },
+    "g4": {
+     "correct": "the free samples attracted him",
+     "accept": [
+      "the free samples attracted him"
+     ],
+     "label": "4. Why did the writer buy the sweet food?",
+     "why": "The text says he bought it attracted by the free samples."
+    },
+    "g5": {
+     "correct": "they laughed over plates of noodles",
+     "accept": [
+      "they laughed over plates of noodles"
+     ],
+     "label": "5. What did the couples do?",
+     "why": "Couples sat at long wooden tables, laughing over plates of noodles."
+    },
+    "g6": {
+     "correct": "it tells you more about the people than any monument",
+     "accept": [
+      "it tells you more about the people than any monument"
+     ],
+     "label": "6. What does the writer say about the square?",
+     "why": "The last paragraph says the square tells you more about the people than any monument could."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Attracted",
+     "accept": [
+      "Attracted"
+     ],
+     "label": "1. ___ by the free samples",
+     "why": "The subject 'I' receives the action — past participle 'Attracted' for passive meaning."
+    },
+    "g2": {
+     "correct": "Walking",
+     "accept": [
+      "Walking"
+     ],
+     "label": "2. ___ through the entrance",
+     "why": "'I' does the walking — active meaning takes the present participle 'Walking'."
+    },
+    "g3": {
+     "correct": "cutting",
+     "accept": [
+      "cutting"
+     ],
+     "label": "3. The woman ___ the mangoes",
+     "why": "The woman does the cutting herself — active meaning, so use 'cutting'."
+    },
+    "g4": {
+     "correct": "played",
+     "accept": [
+      "played"
+     ],
+     "label": "4. The songs ___ by the guitarist",
+     "why": "The songs receive the action — past participle 'played' for passive meaning."
+    },
+    "g5": {
+     "correct": "Seen",
+     "accept": [
+      "Seen"
+     ],
+     "label": "5. ___ from the hill",
+     "why": "The city is seen by the viewer — passive meaning takes the past participle 'Seen'."
+    },
+    "g6": {
+     "correct": "built",
+     "accept": [
+      "built"
+     ],
+     "label": "6. The bridge ___ in 1890",
+     "why": "The bridge receives the action — 'built in 1890' is a reduced passive relative clause."
+    },
+    "g7": {
+     "correct": "an",
+     "accept": [
+      "an"
+     ],
+     "label": "7. don't forget ___ umbrella",
+     "why": "Spaced recall from esl-articles: first mention of any umbrella — use 'an' before a vowel sound."
+    },
+    "g8": {
+     "correct": "The",
+     "accept": [
+      "The"
+     ],
+     "label": "8. ___ breakfast she cooked",
+     "why": "Spaced recall from esl-articles: 'she cooked this morning' identifies a specific breakfast — use 'The'."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Having finished",
+     "accept": [
+      "Having finished"
+     ],
+     "label": "1. ___ his homework, Tom went out",
+     "why": "The homework came before going out — 'having + participle' puts the earlier action first."
+    },
+    "g2": {
+     "correct": "Having taken",
+     "accept": [
+      "Having taken"
+     ],
+     "label": "2. ___ the wrong bus",
+     "why": "Taking the wrong bus happened before arriving late — use 'Having taken'."
+    },
+    "g3": {
+     "correct": "Having sold",
+     "accept": [
+      "Having sold"
+     ],
+     "label": "3. ___ all its tickets",
+     "why": "Selling out happened before the website crashed — the earlier action takes 'Having sold'."
+    },
+    "g4": {
+     "correct": "Having lived",
+     "accept": [
+      "Having lived"
+     ],
+     "label": "4. ___ in Italy for five years",
+     "why": "Living in Italy came before speaking excellent Italian — use 'Having lived'."
+    },
+    "g5": {
+     "correct": "having ended",
+     "accept": [
+      "having ended"
+     ],
+     "label": "5. The meeting ___",
+     "why": "The meeting ended before everyone left — 'having ended' marks the earlier action."
+    },
+    "g6": {
+     "correct": "Having forgotten",
+     "accept": [
+      "Having forgotten"
+     ],
+     "label": "6. ___ his passport at home",
+     "why": "Forgetting the passport came before the flight — use 'Having forgotten'."
+    },
+    "g7": {
+     "correct": "having apologised",
+     "accept": [
+      "having apologised"
+     ],
+     "label": "7. ___ to her teacher about the delay",
+     "why": "The apology came before the promise — 'having + participle' orders the earlier action first."
+    },
+    "g8": {
+     "correct": "Having taken",
+     "accept": [
+      "Having taken"
+     ],
+     "label": "8. ___ the photos",
+     "why": "Taking the photos came before noticing the battery was dead — use 'Having taken'."
+    }
+   }
+  }
+ }
+}

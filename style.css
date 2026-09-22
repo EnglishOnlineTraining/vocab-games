@@ -68,7 +68,7 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); min-
 .step-nav-btn { border: 1.5px solid var(--border); background: var(--card); color: var(--muted); font-family: var(--font); font-size: .78rem; font-weight: 600; padding: .3rem .7rem; border-radius: 20px; cursor: pointer; transition: background .15s, color .15s, border-color .15s; }
 .step-nav-btn.visited { border-color: var(--ink); color: var(--ink); cursor: pointer; }
 .step-nav-btn.current { background: var(--blue); border-color: var(--blue); color: #fff; cursor: default; }
-.step-nav-btn.locked { opacity: .45; cursor: not-allowed; }
+.step-nav-btn.locked { opacity: .5; cursor: pointer; border-style: dashed; }
 
 /* ── Steps ── */
 .step { display: none; }

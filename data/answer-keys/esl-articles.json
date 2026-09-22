@@ -10,42 +10,48 @@
      "accept": [
       "a"
      ],
-     "label": "… London for the weekend. We arrived at the station at noon and walked to our hotel. It was"
+     "label": "1. ___ small hotel near the river",
+     "why": "First mention of the hotel — we don't know which one yet, so use the indefinite article \"a\"."
     },
     "g2": {
      "correct": "the",
      "accept": [
       "the"
      ],
-     "label": "In the afternoon, we visited the British Museum. We spent two hours looking at"
+     "label": "2. ___ Egyptian collection",
+     "why": "The British Museum has one specific Egyptian collection — both speaker and listener know which one, so use \"the\"."
     },
     "g3": {
      "correct": "an",
      "accept": [
       "an"
      ],
-     "label": "…o hours looking at — choose — the a — (no article) Egyptian collection. After that, we had"
+     "label": "3. ___ ice cream in the park",
+     "why": "First mention of an unspecified ice cream. Use \"an\" because \"ice\" starts with a vowel sound."
     },
     "g4": {
      "correct": "—",
      "accept": [
       "—"
      ],
-     "label": "The next day, we went to"
+     "label": "4. ___ Oxford Street",
+     "why": "Street names normally take no article. \"Oxford Street\", not \"the Oxford Street\"."
     },
     "g5": {
      "correct": "a",
      "accept": [
       "a"
      ],
-     "label": "…, we went to — choose — — (no article) the a Oxford Street and did some shopping. I bought"
+     "label": "5. ___ book about London's history",
+     "why": "First mention of an unspecified book — the reader hasn't heard about this book before, so use \"a\"."
     },
     "g6": {
      "correct": "a",
      "accept": [
       "a"
      ],
-     "label": "…bought — choose — the a — (no article) book about London's history. In the evening, we saw"
+     "label": "6. ___ musical in the West End",
+     "why": "First mention of an unspecified musical — one of many in the West End, not a particular one."
     }
    }
   },
@@ -58,56 +64,64 @@
      "accept": [
       "a"
      ],
-     "label": "Choose a , an or the for each gap. Complete the sentences 1. There is"
+     "label": "1. There is ___ new café",
+     "why": "Introducing the café for the first time — use \"a\" for first mention."
     },
     "g2": {
      "correct": "The",
      "accept": [
       "The"
      ],
-     "label": "…or each gap. Complete the sentences 1. There is — choose — a the an new café on my street."
+     "label": "1. ___ café serves great coffee",
+     "why": "Second mention — now the listener knows which café, so switch to \"The\"."
     },
     "g3": {
      "correct": "an",
      "accept": [
       "an"
      ],
-     "label": "…an new café on my street. — choose — The A An café serves great coffee. 2. She wants to be"
+     "label": "2. She wants to be ___ engineer",
+     "why": "Jobs use the indefinite article: \"an engineer\", \"a doctor\". Use \"an\" before the vowel sound in \"engineer\"."
     },
     "g4": {
      "correct": "the",
      "accept": [
       "the"
      ],
-     "label": "…offee. 2. She wants to be — choose — an the a engineer when she grows up. 3. Can you close"
+     "label": "3. Can you close ___ window?",
+     "why": "Both speaker and listener can see the specific window — use \"the\" for shared knowledge."
     },
     "g5": {
      "correct": "a",
      "accept": [
       "a"
      ],
-     "label": "…hen she grows up. 3. Can you close — choose — the a an window? It's cold in here. 4. I saw"
+     "label": "4. I saw ___ dog in the park",
+     "why": "First mention of an unspecified dog — the listener doesn't know which dog yet."
     },
     "g6": {
      "correct": "a",
      "accept": [
       "a"
      ],
-     "label": "…an window? It's cold in here. 4. I saw — choose — a an the dog in the park. It was chasing"
+     "label": "4. It was chasing ___ ball",
+     "why": "First mention of an unspecified ball — introduced for the first time, so use \"a\"."
     },
     "g7": {
      "correct": "the",
      "accept": [
       "the"
      ],
-     "label": "…oose — a an the dog in the park. It was chasing — choose — a the an ball. 5. My brother is"
+     "label": "5. My brother is ___ tallest person",
+     "why": "Superlatives always take \"the\" — there can only be one tallest."
     },
     "g8": {
      "correct": "an",
      "accept": [
       "an"
      ],
-     "label": "… ball. 5. My brother is — choose — the an a tallest person in our family. 6. I need to buy"
+     "label": "6. I need to buy ___ umbrella",
+     "why": "Any umbrella, not a specific one — use \"an\" before the vowel sound in \"umbrella\"."
     }
    }
   },
@@ -120,56 +134,64 @@
      "accept": [
       "—"
      ],
-     "label": "Choose the or — (no article) for each gap. Complete the sentences 1."
+     "label": "1. ___ Water is essential for life",
+     "why": "Water in general, not specific water — uncountable nouns used generally take no article."
     },
     "g2": {
      "correct": "The",
      "accept": [
       "The"
      ],
-     "label": "…p. Complete the sentences 1. — choose — — (no article) The Water is essential for life. 2."
+     "label": "2. ___ water in this bottle",
+     "why": "\"in this bottle\" specifies exactly which water — use \"the\" for identified things."
     },
     "g3": {
      "correct": "—",
      "accept": [
       "—"
      ],
-     "label": "…r life. 2. — choose — The — (no article) water in this bottle tastes strange. 3. She loves"
+     "label": "3. She loves ___ music",
+     "why": "Music in general — no article with uncountable nouns when talking about the whole category."
     },
     "g4": {
      "correct": "The",
      "accept": [
       "The"
      ],
-     "label": "…ttle tastes strange. 3. She loves — choose — — (no article) the music, especially jazz. 4."
+     "label": "4. ___ music at the party",
+     "why": "\"at the party\" identifies the specific music — use \"the\"."
     },
     "g5": {
      "correct": "—",
      "accept": [
       "—"
      ],
-     "label": "… jazz. 4. — choose — The — (no article) music at the party was too loud. 5. I usually have"
+     "label": "5. I usually have ___ breakfast",
+     "why": "Meals take no article when used in general: \"have breakfast\", \"eat lunch\", \"go to dinner\"."
     },
     "g6": {
      "correct": "The",
      "accept": [
       "The"
      ],
-     "label": "…y was too loud. 5. I usually have — choose — — (no article) the breakfast at 7 o'clock. 6."
+     "label": "6. ___ breakfast she cooked",
+     "why": "\"she cooked this morning\" makes it a specific breakfast — use \"the\"."
     },
     "g7": {
      "correct": "—",
      "accept": [
       "—"
      ],
-     "label": "…choose — The — (no article) breakfast she cooked this morning was delicious. 7. He goes to"
+     "label": "7. He goes to ___ school",
+     "why": "\"Go to school\" (as a student) is a set phrase with no article — it means the activity, not the building."
     },
     "g8": {
      "correct": "The",
      "accept": [
       "The"
      ],
-     "label": "…ing was delicious. 7. He goes to — choose — — (no article) the school by bus every day. 8."
+     "label": "8. ___ school on Park Road",
+     "why": "\"on Park Road\" identifies a specific school building — use \"the\"."
     }
    }
   }

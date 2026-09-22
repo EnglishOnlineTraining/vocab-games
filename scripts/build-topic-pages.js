@@ -404,7 +404,7 @@ const urls = [];
 urls.push(BASE + '/');
 urls.push(BASE + '/activities.html');
 fs.readdirSync(ROOT).filter(f => /activities\.html$/.test(f)).forEach(f => urls.push(BASE + '/' + f));
-exercises.forEach(e => urls.push(BASE + '/' + e.file));
+exercises.filter(e => !e.file.startsWith('gr-')).forEach(e => urls.push(BASE + '/' + e.file));
 
 // Standalone public pages that don't load exercise.js and aren't *-activities.html
 // hubs, so the exercises.json scan in build-exercise-data.js never sees them.

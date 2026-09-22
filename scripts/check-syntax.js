@@ -147,13 +147,28 @@ for (const file of htmlFiles()) {
   }
 }
 
-if (failures.length) {
-  console.error(`check-syntax: ${failures.length} file(s) failed to parse\n`);
-  for (const f of failures) {
-    console.error(`  ✗ ${f.file}${f.at ? ' — ' + f.at : ''}`);
-    console.error(`    ${f.message}`);
-    if (f.where && !f.where.startsWith('SyntaxError')) console.error(`    ${f.where}`);
+// CSS class integrity: a page using class="sr-only" must define .sr-only in a
+// <style> block, because exercise.js uses the eol- prefix (.eol-sr-only) and
+// the page's own labels use .sr-only without it.
+let cssFailures = 0;
+for (const file of htmlFiles()) {
+  const html = fs.readFileSync(path.join(ROOT, file), 'utf8');
+  if (/class="sr-only"/.test(html) && !/\.sr-only\s*\{/.test(html)) {
+    console.error(`  ✗ ${file}: uses class="sr-only" but no .sr-only CSS rule is defined`);
+    cssFailures++;
   }
+}
+
+if (failures.length || cssFailures) {
+  if (failures.length) {
+    console.error(`check-syntax: ${failures.length} file(s) failed to parse\n`);
+    for (const f of failures) {
+      console.error(`  ✗ ${f.file}${f.at ? ' — ' + f.at : ''}`);
+      console.error(`    ${f.message}`);
+      if (f.where && !f.where.startsWith('SyntaxError')) console.error(`    ${f.where}`);
+    }
+  }
+  if (cssFailures) console.error(`check-syntax: ${cssFailures} page(s) missing .sr-only CSS rule`);
   process.exit(1);
 }
 

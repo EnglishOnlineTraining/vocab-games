@@ -1,0 +1,199 @@
+{
+ "unit": "9g-australia-passive-infinitive",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "be picked",
+     "accept": [
+      "be picked"
+     ],
+     "label": "1. Flowers must not Gap 1 (pick)"
+    },
+    "g2": {
+     "correct": "be thrown",
+     "accept": [
+      "be thrown"
+     ],
+     "label": "2. Litter must not Gap 2 (throw)"
+    },
+    "g3": {
+     "correct": "be disturbed",
+     "accept": [
+      "be disturbed"
+     ],
+     "label": "3. Animals should not Gap 3 (disturb)"
+    },
+    "g4": {
+     "correct": "be left",
+     "accept": [
+      "be left"
+     ],
+     "label": "4. Tracks must not Gap 4 (leave)"
+    },
+    "g5": {
+     "correct": "be touched",
+     "accept": [
+      "be touched"
+     ],
+     "label": "5. Aboriginal sites must not Gap 5 (touch)"
+    },
+    "g6": {
+     "correct": "be used",
+     "accept": [
+      "be used"
+     ],
+     "label": "6. The bush should not Gap 6 (use)"
+    },
+    "g7": {
+     "correct": "be damaged",
+     "accept": [
+      "be damaged"
+     ],
+     "label": "7. Trees and plants must not Gap 7 (damage)"
+    }
+   },
+   "typed": true
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "be found",
+     "accept": [
+      "be found"
+     ],
+     "label": "1. Snakes can Gap 1 (find)"
+    },
+    "g2": {
+     "correct": "to be bitten",
+     "accept": [
+      "to be bitten"
+     ],
+     "label": "…in all parts of Australia. Not all of them are poisonous — but you don’t want Gap 2 (bite)"
+    },
+    "g3": {
+     "correct": "to be left alone",
+     "accept": [
+      "to be left alone",
+      "to be left"
+     ],
+     "label": "2. Snakes are shy creatures that like Gap 3 (leave alone)"
+    },
+    "g4": {
+     "correct": "be given",
+     "accept": [
+      "be given"
+     ],
+     "label": "… Remember that the snake is probably just as frightened as you are and should Gap 4 (give)"
+    },
+    "g5": {
+     "correct": "be shown",
+     "accept": [
+      "be shown"
+     ],
+     "label": "4. Snakes must Gap 5 (show)"
+    },
+    "g6": {
+     "correct": "be picked up",
+     "accept": [
+      "be picked up"
+     ],
+     "label": "4. Snakes must Gap 5 (show) (show) respect. They should never Gap 6 (pick up)"
+    },
+    "g7": {
+     "correct": "be chased",
+     "accept": [
+      "be chased"
+     ],
+     "label": "… Gap 5 (show) (show) respect. They should never Gap 6 (pick up) (pick up) or Gap 7 (chase)"
+    },
+    "g8": {
+     "correct": "to be taken",
+     "accept": [
+      "to be taken"
+     ],
+     "label": "5. If you’re bitten, you’ll need Gap 8 (take)"
+    },
+    "g9": {
+     "correct": "be treated",
+     "accept": [
+      "be treated"
+     ],
+     "label": "…en, you’ll need Gap 8 (take) (take) to hospital immediately. Snakebites must Gap 9 (treat)"
+    }
+   },
+   "typed": true
+  },
+  "exD": {
+   "prefix": "exD-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "was just told",
+     "accept": [
+      "was just told"
+     ],
+     "label": "Hey guys! Still hanging out in Sydney?! You won’t believe what I Gap 1 (just / tell)"
+    },
+    "g2": {
+     "correct": "was last seen",
+     "accept": [
+      "was last seen"
+     ],
+     "label": "He Gap 2 (last / see)"
+    },
+    "g3": {
+     "correct": "will be rescued",
+     "accept": [
+      "will be rescued",
+      "'ll be rescued",
+      "is rescued"
+     ],
+     "label": "…his tour. And guess what: He’s my age! Isn’t that weird?! Anyway, I hope he Gap 3 (rescue)"
+    },
+    "g4": {
+     "correct": "could be smelled",
+     "accept": [
+      "could be smelled",
+      "could be smelt"
+     ],
+     "label": "… I still love it! We saw some bushfires in the distance, and the smoke Gap 4 (can – smell)"
+    },
+    "g5": {
+     "correct": "didn't want to be shown around",
+     "accept": [
+      "didn't want to be shown around",
+      "did not want to be shown around"
+     ],
+     "label": "Yesterday I went on my outback tour. You know I Gap 5 (not want – show around)"
+    },
+    "g6": {
+     "correct": "were told",
+     "accept": [
+      "were told"
+     ],
+     "label": "… (not want – show around) in a group, but then I decided to listen to what we Gap 6 (tell)"
+    },
+    "g7": {
+     "correct": "was told",
+     "accept": [
+      "was told"
+     ],
+     "label": "… so impressed when I saved her from this weird-looking thorny devil lizard. I Gap 7 (tell)"
+    },
+    "g8": {
+     "correct": "were brought",
+     "accept": [
+      "were brought"
+     ],
+     "label": "We saw lots of kangaroos and there are even camels around! They Gap 8 (bring)"
+    }
+   },
+   "typed": true
+  }
+ }
+}
