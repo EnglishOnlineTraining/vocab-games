@@ -32,27 +32,40 @@ genuinely cannot follow it must be explained under "Deviations" in the PR.
 ```
 issue ("AI Task" template, acceptance criteria filled)
    └─ /kimi fix …        → PR (branch ai/kimi-issue-<N>, label ai-authored)
-        └─ /claude review / security-audit → review comment on the PR
-             └─ human merges after CI (check-generated gate) + review
+        └─ /claude review → review comment on the PR
+             └─ VERDICT: APPROVE + all CI green → squash auto-merge to main
 ```
+
+**Auto-merge (no human approval needed)** — after a full `/claude review`, the workflow
+parses the review's final `VERDICT:` line:
+
+- `VERDICT: APPROVE` (emitted only when the review found **no BLOCKERS**) **and** every
+  CI check on the PR passes → the workflow enables squash auto-merge. Kimi authored,
+  Claude approved, CI green — it ships.
+- `VERDICT: CHANGES_REQUESTED`, a missing verdict line, failing CI, or a merge conflict
+  → auto-merge is skipped and a comment says why. Nothing merges in that state.
+- `/claude security-audit` never triggers a merge — it is advisory only.
 
 ## Guardrails baked in
 
-- AI never pushes to `main`; patches must apply cleanly or the run fails loudly.
+- AI never pushes to `main` directly; patches must apply cleanly or the run fails loudly.
 - Minimal-diff prompt design; the reviewer re-checks for unrelated reformatting.
 - Pre-flight: `STYLE.md` must exist; context-pack integrity verified; diff capped at 150 KB.
 - Post-apply: `verify-exercise.js` on touched pages, then the **full build graph** —
   a patch that breaks any validator never becomes a PR.
+- Auto-merge requires **both** signals: the review verdict line *and* green CI; a
+  missing verdict fails safe (no merge).
 - Raw model replies and patches are uploaded as artifacts on every run.
 - API calls retry 3× with backoff (429-aware for Claude); Claude uses prompt caching
   on its system prompt.
 
 ## What stays manual (deliberately)
 
-- **Merging** — human decision, after CI + review.
-- **WordPress page 1763** — the repo holds no WP credentials. After merging an exercise
-  PR, apply the button labels from `data/wordpress-1763.json` using the documented safe
-  procedure (see `CLAUDE.md` "Known traps"). Never open 1763 in the block editor.
+- **Repo setting:** allow auto-merge must be on (Settings → General → Pull Requests).
+  If it is off, the workflow says so in a comment instead of merging.
+- **WordPress page 1763** — the repo holds no WP credentials. After an exercise PR
+  merges, apply the button labels from `data/wordpress-1763.json` using the documented
+  safe procedure (see `CLAUDE.md` "Known traps"). Never open 1763 in the block editor.
 
 ## Known limitations / next steps
 

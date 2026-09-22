@@ -1,6 +1,7 @@
 # .github/workflows/ai-claude-review.yml
 # Trigger: comment on a PR:  /claude review   |   /claude security-audit
 # Behavior: Claude (reviewer-model) reviews the diff against STYLE.md and posts findings.
+# If the full review ends with VERDICT: APPROVE and CI is green, the PR auto-merges (squash).
 # Repo: EnglishOnlineTraining/vocab-games — see docs/ai-workflow.md.
 name: AI -- Claude review
 
@@ -9,7 +10,7 @@ on:
     types: [created]
 
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
 
 jobs:
@@ -77,7 +78,7 @@ jobs:
           PR: ${{ github.event.issue.number }}
         run: |
           SECURITY_PROMPT="You are doing a focused SECURITY audit of a diff in a static-HTML exercise repo. Check: committed secrets or credentials, changed/new outbound URLs (webhooks, fetch targets, forms), injected script blocks, XSS surfaces in user-facing HTML, anything touching exercise.js grading or submission behaviour (SHEET_URL, TEACHER_EMAIL, isTestMode), and workflow files (.github/) gaining unexpected permissions or steps. Report ONLY real issues with file:line and a one-line fix."
-          FULL_PROMPT="You are the independent reviewer of an English-exercise repo whose original author-model was Kimi. Review the diff against STYLE.md (in the context pack) and docs/learning-design-checks.md. Assume the author-model may defend its own prior design decisions -- question whether the conventions are actually right. Verify mechanically: every answer key value matches an existing <option value> exactly; every checkDropdowns call has a unique scoreKey (5 args); TOTAL_STEPS equals the highest step section id; UNIT matches the filename slug; save/restore/validate/summary/email/payload cover the same fields; explanations entries exist for every graded gap. Check the nine learning-design checks, CEFR-appropriate text length, English-only content, and minimal diff (no unrelated reformatting). Report: (1) BLOCKERS -- correctness/security/STYLE.md violations, (2) SUGGESTIONS -- improvements, (3) QUESTIONS -- things needing human decision. File:line references. Be concise. Do not reformat code."
+          FULL_PROMPT="You are the independent reviewer of an English-exercise repo whose original author-model was Kimi. Review the diff against STYLE.md (in the context pack) and docs/learning-design-checks.md. Assume the author-model may defend its own prior design decisions -- question whether the conventions are actually right. Verify mechanically: every answer key value matches an existing <option value> exactly; every checkDropdowns call has a unique scoreKey (5 args); TOTAL_STEPS equals the highest step section id; UNIT matches the filename slug; save/restore/validate/summary/email/payload cover the same fields; explanations entries exist for every graded gap. Check the nine learning-design checks, CEFR-appropriate text length, English-only content, and minimal diff (no unrelated reformatting). Report: (1) BLOCKERS -- correctness/security/STYLE.md violations, (2) SUGGESTIONS -- improvements, (3) QUESTIONS -- things needing human decision. File:line references. Be concise. Do not reformat code. Then end the review with EXACTLY one final line: 'VERDICT: APPROVE' if (and only if) there are no BLOCKERS, otherwise 'VERDICT: CHANGES_REQUESTED'. The verdict line must be the last line of your reply, on its own line, with nothing after it."
           if [ "$MODE" = "security" ]; then PROMPT="$SECURITY_PROMPT"; else PROMPT="$FULL_PROMPT"; fi
 
           # Build the payload with prompt caching on the system prompt
@@ -130,6 +131,41 @@ jobs:
             echo "_Resolve manually or with a follow-up Kimi run._"
           } > comment.md
           gh pr comment "$PR" --repo "$REPO" --body-file comment.md
+
+      - name: Auto-merge if Claude approved and CI is green
+        if: ${{ steps.mode.outputs.mode == 'full' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.issue.number }}
+        run: |
+          # Fail-safe: no verdict line, or CHANGES_REQUESTED -> never merge.
+          if ! grep -q '^VERDICT: APPROVE' review.md; then
+            echo "Claude did not approve (or emitted no verdict) — skipping auto-merge."
+            exit 0
+          fi
+
+          # Wait for all checks to settle (up to ~15 min): exit 0 = all pass,
+          # exit 1 = at least one failure, exit 2 = still pending.
+          for attempt in $(seq 1 60); do
+            gh pr checks "$PR" --repo "$REPO" > /dev/null 2>&1
+            RC=$?
+            [ "$RC" -ne 2 ] && break
+            echo "checks still pending (attempt $attempt), waiting 15s..."
+            sleep 15
+          done
+
+          if [ "$RC" -ne 0 ]; then
+            gh pr comment "$PR" --repo "$REPO" --body "Claude approved, but not all CI checks pass — auto-merge skipped. Fix and re-run \`/claude review\`."
+            echo "CI not green — auto-merge skipped."
+            exit 0
+          fi
+
+          if ! gh pr merge "$PR" --repo "$REPO" --squash --auto; then
+            gh pr comment "$PR" --repo "$REPO" --body "Claude approved and CI is green, but enabling auto-merge failed (repo setting 'Allow auto-merge' may be off). Merge manually."
+            exit 0
+          fi
+          echo "Auto-merge enabled (squash)."
 
       - name: Upload artifacts
         if: always()

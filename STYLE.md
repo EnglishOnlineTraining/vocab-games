@@ -11,7 +11,8 @@
 - **Never** commit secrets, credentials, or `.env` files. Webhook URLs, the Apps Script
   URL and `TEACHER_EMAIL` are documented constants in `CLAUDE.md` — use them exactly,
   never invent or modify endpoints.
-- **Never** push directly to `main`. AI work = branch → PR → CI → human merge.
+- **Never** push directly to `main`. AI work = branch → PR → CI → Claude approval →
+  auto-merge. Nothing reaches `main` without a green build graph AND a `VERDICT: APPROVE`.
 - **English-only task content.** Gymnasium pages (`7g/8g/9g/10g`) never contain German;
   Oberschule pages contain German only when the issue explicitly asks. (Exempt by design:
   the German site chrome injected by `exercise.js`, the `themen/` pages, the ten `gr-*`
