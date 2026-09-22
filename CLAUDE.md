@@ -12,6 +12,20 @@ Static HTML exercise pages for English language learners, hosted on GitHub Pages
 
 ---
 
+## AI authoring workflow — Kimi authors, Claude reviews (added 2026-09-22)
+
+`/kimi fix <task>` on an **issue** → Kimi (author-model) drafts a patch, validates it
+against this repo's own build graph, and opens a PR labelled `ai-authored`.
+`/claude review` (or `/claude security-audit`) on a **PR** → Claude (reviewer-model)
+posts BLOCKERS / SUGGESTIONS / QUESTIONS against `STYLE.md`. Humans merge.
+
+- **`STYLE.md` (repo root) is the canonical contract for ALL AI-generated work in this
+  repo.** When STYLE.md and habit disagree, STYLE.md wins; deviations belong in the PR's
+  "Deviations" section.
+- Setup, guardrails and manual steps (secrets, WordPress label updates): **`docs/ai-workflow.md`**.
+
+---
+
 ## Language rule — English-only task content (Shaun, 2026-09-03)
 
 **Gymnasium work never contains German. Oberschule work contains German only when
