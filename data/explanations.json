@@ -15856,6 +15856,130 @@
    }
   }
  },
+ "esl-participle-clauses": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. What do the vendors bring with them?",
+     "correct": "tables, lanterns and crates of fruit",
+     "why": "The first paragraph says the vendors arrive carrying tables, lanterns and crates of fruit."
+    },
+    "g2": {
+     "label": "2. Why did the writer go to the market?",
+     "correct": "to photograph it",
+     "why": "The writer went there with a camera, hoping to capture the atmosphere."
+    },
+    "g3": {
+     "label": "3. What happened at the entrance?",
+     "correct": "he was hit by a wall of smells",
+     "why": "The text says: Walking through the entrance, I was hit by a wall of smells."
+    },
+    "g4": {
+     "label": "4. Why did the writer buy the sweet food?",
+     "correct": "the free samples attracted him",
+     "why": "The text says he bought it attracted by the free samples."
+    },
+    "g5": {
+     "label": "5. What did the couples do?",
+     "correct": "they laughed over plates of noodles",
+     "why": "Couples sat at long wooden tables, laughing over plates of noodles."
+    },
+    "g6": {
+     "label": "6. What does the writer say about the square?",
+     "correct": "it tells you more about the people than any monument",
+     "why": "The last paragraph says the square tells you more about the people than any monument could."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. ___ by the free samples",
+     "correct": "Attracted",
+     "why": "The subject 'I' receives the action — past participle 'Attracted' for passive meaning."
+    },
+    "g2": {
+     "label": "2. ___ through the entrance",
+     "correct": "Walking",
+     "why": "'I' does the walking — active meaning takes the present participle 'Walking'."
+    },
+    "g3": {
+     "label": "3. The woman ___ the mangoes",
+     "correct": "cutting",
+     "why": "The woman does the cutting herself — active meaning, so use 'cutting'."
+    },
+    "g4": {
+     "label": "4. The songs ___ by the guitarist",
+     "correct": "played",
+     "why": "The songs receive the action — past participle 'played' for passive meaning."
+    },
+    "g5": {
+     "label": "5. ___ from the hill",
+     "correct": "Seen",
+     "why": "The city is seen by the viewer — passive meaning takes the past participle 'Seen'."
+    },
+    "g6": {
+     "label": "6. The bridge ___ in 1890",
+     "correct": "built",
+     "why": "The bridge receives the action — 'built in 1890' is a reduced passive relative clause."
+    },
+    "g7": {
+     "label": "7. don't forget ___ umbrella",
+     "correct": "an",
+     "why": "Spaced recall from esl-articles: first mention of any umbrella — use 'an' before a vowel sound."
+    },
+    "g8": {
+     "label": "8. ___ breakfast she cooked",
+     "correct": "The",
+     "why": "Spaced recall from esl-articles: 'she cooked this morning' identifies a specific breakfast — use 'The'."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. ___ his homework, Tom went out",
+     "correct": "Having finished",
+     "why": "The homework came before going out — 'having + participle' puts the earlier action first."
+    },
+    "g2": {
+     "label": "2. ___ the wrong bus",
+     "correct": "Having taken",
+     "why": "Taking the wrong bus happened before arriving late — use 'Having taken'."
+    },
+    "g3": {
+     "label": "3. ___ all its tickets",
+     "correct": "Having sold",
+     "why": "Selling out happened before the website crashed — the earlier action takes 'Having sold'."
+    },
+    "g4": {
+     "label": "4. ___ in Italy for five years",
+     "correct": "Having lived",
+     "why": "Living in Italy came before speaking excellent Italian — use 'Having lived'."
+    },
+    "g5": {
+     "label": "5. The meeting ___",
+     "correct": "having ended",
+     "why": "The meeting ended before everyone left — 'having ended' marks the earlier action."
+    },
+    "g6": {
+     "label": "6. ___ his passport at home",
+     "correct": "Having forgotten",
+     "why": "Forgetting the passport came before the flight — use 'Having forgotten'."
+    },
+    "g7": {
+     "label": "7. ___ to her teacher about the delay",
+     "correct": "having apologised",
+     "why": "The apology came before the promise — 'having + participle' orders the earlier action first."
+    },
+    "g8": {
+     "label": "8. ___ the photos",
+     "correct": "Having taken",
+     "why": "Taking the photos came before noticing the battery was dead — use 'Having taken'."
+    }
+   }
+  }
+ },
  "9g-australia-vocab-practice": {
   "exC": {
    "gaps": {
