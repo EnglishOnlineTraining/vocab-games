@@ -216,17 +216,19 @@ the "which groups exist" review above rather than staying an ungoverned one-off.
   17→20, Business 16→18, IT 10→11. Ground truth is the card count in each `*-activities.html`
   (`grep -o '<a class="activity-card" href="[^"]*"' <hub>.html | sort -u | wc -l`; `8c` uses
   `exercise-card` markup instead). 7g/7c/8g/8c/9g/9c/10g/10c/abitur/uni were already right.
-- **Stricter node-shape validation in `scripts/pipeline.js`** (found 2026-08-27, while
-  cross-checking a critique of the `docs/build-graph-explainer.md` writeup against the actual
-  code). `assertKnownIds()` in `scripts/build.js` catches a `needs`/`after` edge that points at an
-  unknown node id, but nothing validates a node's own shape — a typo'd key (`output` instead of
-  `outputs`, `input` instead of `inputs`, a string where an array is expected) is silently treated
-  as `[]` rather than rejected, so a malformed node quietly behaves as if it declares no
-  inputs/outputs instead of failing the build. Add a small shape check (asserting `id`/`run` are
-  non-empty strings and `inputs`/`outputs`/`needs`/`after` are arrays, if present) that runs before
-  `topoSort()`/`staticChecks()` in `scripts/build.js`, so a malformed node in `NODES` fails
-  immediately with a clear message naming the bad key, the same way a bad edge already does.
-  Low-risk, small — no behavior change for any currently-valid node.
+- **Stricter node-shape validation in `scripts/pipeline.js` — DONE (2026-09-14).** Found
+  2026-08-27 while cross-checking a critique of the `docs/build-graph-explainer.md` writeup
+  against the actual code: `assertKnownIds()` in `scripts/build.js` caught a `needs`/`after` edge
+  pointing at an unknown node id, but nothing validated a node's own shape — a typo'd key
+  (`output` instead of `outputs`) or a string where an array was expected was silently treated as
+  declaring nothing, rather than failing the build. `scripts/build.js` now has `assertNodeShapes()`
+  (runs right before `assertKnownIds()`/`topoSort()`), which rejects a non-string `id`/`run`, a
+  duplicate `id` (the `byId` Map would otherwise silently keep only one and drop that node from the
+  build — a second real bug found while implementing this), and a non-string-array
+  `inputs`/`outputs`/`needs`/`after` on any `NODES`/`VALIDATORS`/`CHECKERS`/`MANUAL` entry, naming
+  the offending node and key. Verified against the live graph (`--explain`, then a full
+  `--check` — 0 diff) plus two deliberate breakages (a bare-string `needs`, a duplicated `id`),
+  both caught with a clear message before either could reach `topoSort()`.
 
 ## Tier 3.6 — `themen/` topic coverage (found 2026-08-20) · CC
 Found while adding the build graph; **nothing is broken and no link 404s**, which is why this is

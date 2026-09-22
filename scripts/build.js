@@ -22,7 +22,7 @@
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
-const { NODES, VALIDATORS, CHECKERS } = require('./pipeline.js');
+const { NODES, VALIDATORS, CHECKERS, MANUAL } = require('./pipeline.js');
 
 const ROOT = path.join(__dirname, '..');
 const GRAPH_FILE = path.join(ROOT, 'docs', 'build-graph.mmd');
@@ -79,6 +79,54 @@ function assertKnownIds() {
       if (!byId.has(p)) throw new Error(`node "${n.id}" references unknown node "${p}"`);
     }
   }
+}
+
+// assertKnownIds() catches a needs/after edge pointing at an id that doesn't
+// exist, but nothing checked a node's OWN shape — a typo'd key (`output`
+// instead of `outputs`) or the wrong type (a string where an array is
+// expected) was silently read back as `undefined` by parentsOf()/overlaps()
+// and treated as "declares nothing", rather than failing the build. This runs
+// before topoSort()/staticChecks() so a malformed entry fails immediately,
+// naming the bad key, the same way a bad edge already does.
+function isNonEmptyString(v) {
+  return typeof v === 'string' && v.length > 0;
+}
+function isStringArray(v) {
+  return Array.isArray(v) && v.every((s) => typeof s === 'string');
+}
+// `arrayFields` are the keys that must be string arrays when present — only
+// NODES declares inputs/outputs/needs/after; VALIDATORS/CHECKERS/MANUAL are
+// plain { id, run } leaves.
+function assertShape(list, listName, arrayFields) {
+  const seen = new Set();
+  for (const entry of list) {
+    if (!entry || typeof entry !== 'object') {
+      throw new Error(`${listName}: entry ${JSON.stringify(entry)} is not an object`);
+    }
+    if (!isNonEmptyString(entry.id)) {
+      throw new Error(`${listName}: entry ${JSON.stringify(entry)} has no non-empty string "id"`);
+    }
+    if (seen.has(entry.id)) {
+      throw new Error(`${listName}: duplicate id "${entry.id}" — byId lookups would silently keep only one`);
+    }
+    seen.add(entry.id);
+    if (!isNonEmptyString(entry.run)) {
+      throw new Error(`${listName}: node "${entry.id}" has no non-empty string "run"`);
+    }
+    for (const field of arrayFields) {
+      if (field in entry && !isStringArray(entry[field])) {
+        throw new Error(
+          `${listName}: node "${entry.id}" has a non-string-array "${field}": ${JSON.stringify(entry[field])}`
+        );
+      }
+    }
+  }
+}
+function assertNodeShapes() {
+  assertShape(NODES, 'NODES', ['inputs', 'outputs', 'needs', 'after']);
+  assertShape(VALIDATORS, 'VALIDATORS', []);
+  assertShape(CHECKERS, 'CHECKERS', []);
+  assertShape(MANUAL, 'MANUAL', []);
 }
 
 function topoSort() {
@@ -199,6 +247,7 @@ const argv = process.argv.slice(2);
 const flags = new Set(argv.filter((a) => a.startsWith('--')));
 const wanted = argv.filter((a) => !a.startsWith('--'));
 
+assertNodeShapes();
 assertKnownIds();
 const order = topoSort();
 
