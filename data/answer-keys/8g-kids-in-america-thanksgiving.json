@@ -1,0 +1,177 @@
+{
+ "unit": "8g-kids-in-america-thanksgiving",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Ohio",
+     "accept": [
+      "Ohio"
+     ],
+     "label": "1 Where does Ben's host family live?"
+    },
+    "g2": {
+     "correct": "since the 17th century",
+     "accept": [
+      "since the 17th century"
+     ],
+     "label": "2 Since when have people celebrated Thanksgiving, according to the text?"
+    },
+    "g3": {
+     "correct": "a big parade",
+     "accept": [
+      "a big parade"
+     ],
+     "label": "3 What is always on TV on Thanksgiving morning?"
+    },
+    "g4": {
+     "correct": "a feast",
+     "accept": [
+      "a feast"
+     ],
+     "label": "4 What is the traditional Thanksgiving meal called?"
+    },
+    "g5": {
+     "correct": "They said what they were grateful for.",
+     "accept": [
+      "They said what they were grateful for."
+     ],
+     "label": "5 What did the family do before dinner?"
+    },
+    "g6": {
+     "correct": "playing football in the garden",
+     "accept": [
+      "playing football in the garden"
+     ],
+     "label": "6 What was Ben's favourite moment?"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "parade",
+     "accept": [
+      "parade"
+     ],
+     "label": "1 On Thanksgiving morning, many families watch a big"
+    },
+    "g2": {
+     "correct": "feast",
+     "accept": [
+      "feast"
+     ],
+     "label": "2 The traditional Thanksgiving dinner is a real"
+    },
+    "g3": {
+     "correct": "turkey",
+     "accept": [
+      "turkey"
+     ],
+     "label": "3 Roast"
+    },
+    "g4": {
+     "correct": "Stuffing",
+     "accept": [
+      "Stuffing"
+     ],
+     "label": "4"
+    },
+    "g5": {
+     "correct": "gravy",
+     "accept": [
+      "gravy"
+     ],
+     "label": "5 You pour hot"
+    },
+    "g6": {
+     "correct": "grateful",
+     "accept": [
+      "grateful"
+     ],
+     "label": "6 At Thanksgiving, everyone says what they are"
+    },
+    "g7": {
+     "correct": "harvest",
+     "accept": [
+      "harvest"
+     ],
+     "label": "7 Thanksgiving started as a celebration of the autumn"
+    },
+    "g8": {
+     "correct": "reunion",
+     "accept": [
+      "reunion"
+     ],
+     "label": "8 The holiday is a big family"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "vast",
+     "accept": [
+      "vast"
+     ],
+     "label": "1 The USA is a"
+    },
+    "g2": {
+     "correct": "tall",
+     "accept": [
+      "tall"
+     ],
+     "label": "2 New York is famous for its"
+    },
+    "g3": {
+     "correct": "endless",
+     "accept": [
+      "endless"
+     ],
+     "label": "3 We waited for hours, so the wait felt"
+    },
+    "g4": {
+     "correct": "unforgettable",
+     "accept": [
+      "unforgettable"
+     ],
+     "label": "4 Our school trip to London was a"
+    },
+    "g5": {
+     "correct": "warm",
+     "accept": [
+      "warm"
+     ],
+     "label": "5 When I arrived, my host mother gave me a"
+    },
+    "g6": {
+     "correct": "huge",
+     "accept": [
+      "huge"
+     ],
+     "label": "6 The school play was a"
+    },
+    "g7": {
+     "correct": "true",
+     "accept": [
+      "true"
+     ],
+     "label": "7 You can always ask Tom for help — he is a"
+    },
+    "g8": {
+     "correct": "terrible",
+     "accept": [
+      "terrible"
+     ],
+     "label": "8 Forgetting my homework on the first day was a"
+    }
+   }
+  }
+ }
+}
