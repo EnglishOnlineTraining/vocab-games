@@ -1277,6 +1277,27 @@ re-trigger the workflow — GitHub does not start workflows from pushes made wit
 the commit also carries `[skip ci]`. (An earlier version of this note claimed it re-triggers and
 "self-terminates after one extra no-op run"; that describes something which has never happened.)
 
+## Search-excluded pages — `data/noindex.json` (added 2026-09-23)
+
+Some pages must stay live for students but must not compete in Google. They are
+listed in **`data/noindex.json`**. That one list drives three things:
+
+- `build-head.js` puts `<meta name="robots" content="noindex,follow">` in the page's HEAD block;
+- `build-topic-pages.js` leaves the page out of `sitemap.xml` (so IndexNow never sends it either);
+- `watchdog.js` (check `noindex`) fails if a listed page is missing, lacks the tag, is in the sitemap, or has a canonical that is not its own URL.
+
+**Do not redirect these pages.** Each one is a working exercise with its own `UNIT`,
+submissions and inbound links (the `gr-*` pages are the practice half of each `themen/`
+pillar). Redirecting would remove them for students.
+
+**Keep a self canonical.** `noindex` plus a canonical to another URL is a conflicting
+signal. The `indexedInstead` field names the page that should rank; it is documentation only.
+
+Current list (37): the 15 `gr-*` grammar exercises (→ `themen/*`), the 16 Abitur topic
+packs `abitur-<task>-<topic>.html` (→ `abitur-<task>.html`), and 6 near-duplicate course
+pages. None had Search Console impressions when excluded. To add or remove a page, edit
+the JSON and run `node scripts/build.js`.
+
 ## IndexNow — Bing and friends, **not Google** (added 2026-09-04)
 
 The last step of `rebuild-indices.yml` pings IndexNow with the URLs that changed in the push,
