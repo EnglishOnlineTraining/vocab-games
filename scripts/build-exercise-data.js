@@ -80,6 +80,15 @@ const UNLISTED = new Set([
   '9c-australia-vocab-practice.html'
 ]);
 
+// Topic tags for pages whose section headings name the story, not the grammar,
+// so the regex match below finds nothing. Without a tag the page gets no link
+// up to its themen/ pillar and is missing from that pillar's practice list.
+// Each entry is backed by the page's own meta description.
+const TOPIC_OVERRIDES = {
+  '9g-australia-outback-past-perfect.html':     ['past-perfect', 'simple-past'],
+  '9g-work-experience-indirect-questions.html': ['reported-speech', 'question-tags'],
+};
+
 function schoolFromPrefix(f) {
   if (LEGACY_UNPREFIXED[f]) return LEGACY_UNPREFIXED[f];
   if (/^7a-/.test(f)) return [7, 'gymnasium'];
@@ -146,6 +155,7 @@ files.forEach(f => {
   let topics = TOPICS.filter(t => t.match.some(re => re.test(blob))).map(t => t.slug);
   const grSlug = (f.match(/^gr-([a-z-]+)\.html$/) || [])[1];
   if (grSlug && TOPICS.some(t => t.slug === grSlug)) topics = [grSlug];
+  if (TOPIC_OVERRIDES[f]) topics = Array.from(new Set(topics.concat(TOPIC_OVERRIDES[f])));
   topics.forEach(sl => coverage[sl].push(f));
   exercises.push({
     file: f, title: title || h1, year: year, schoolType: schoolType, lang: lang,

@@ -111,7 +111,7 @@ const NODES = [
     // between the two: running them in sequence was a comment's idea, not a
     // dependency.
     needs: ['exercise-data'],
-    inputs: ['data/exercises.json', 'data/topics.json'],
+    inputs: ['data/exercises.json', 'data/topics.json', 'data/noindex.json'],
     outputs: ['themen/*.html', 'themen/themen.css', 'sitemap.xml', 'robots.txt'],
   },
   {
@@ -134,7 +134,7 @@ const NODES = [
     // add-explanations skill), so it needs no edge — only the input.
     needs: ['hub', 'category-hubs', 'topic-pages', 'quizzes', 'review', 'exercise-data'],
     inputs: ['*.html', 'themen/*.html', 'data/exercises.json', 'data/topics.json',
-             'data/explanations.json'],
+             'data/explanations.json', 'data/noindex.json'],
     outputs: ['*.html', 'themen/*.html'],
   },
   {

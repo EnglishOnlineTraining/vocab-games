@@ -54,6 +54,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 const CHECK = process.argv.includes('--check');
 
 const { unitOf } = require('./extract-graded');
+const NOINDEX = require('./noindex').loadNoindex();
 
 const explanations = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/explanations.json'), 'utf8'));
 const exercises = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/exercises.json'), 'utf8'));
@@ -326,6 +327,9 @@ function headBlock(file, html, withSkipStyle, withOverviewStyle, withTipStyle, w
     '<meta property="og:site_name" content="EnglishOnline.training">',
     `<meta property="og:locale" content="${lang.toLowerCase().startsWith('de') ? 'de_DE' : 'en_GB'}">`,
   ];
+  // Live for students, kept out of search (data/noindex.json). `follow` so links
+  // from these pages still pass to the pages that should rank instead.
+  if (NOINDEX.has(file)) lines.push('<meta name="robots" content="noindex,follow">');
   if (title) lines.push(`<meta property="og:title" content="${esc(title)}">`);
   if (desc) lines.push(`<meta property="og:description" content="${esc(desc)}">`);
   if (canonical && !/TODO/i.test(canonical)) lines.push(`<meta property="og:url" content="${esc(canonical)}">`);

@@ -404,7 +404,12 @@ const urls = [];
 urls.push(BASE + '/');
 urls.push(BASE + '/activities.html');
 fs.readdirSync(ROOT).filter(f => /activities\.html$/.test(f)).forEach(f => urls.push(BASE + '/' + f));
-exercises.filter(e => !e.file.startsWith('gr-')).forEach(e => urls.push(BASE + '/' + e.file));
+// Pages in data/noindex.json stay live for students but carry noindex (set by
+// build-head.js), so they must not be in the sitemap: a sitemap URL says "index
+// this", the meta tag says "don't". The gr-* pages used to be dropped here by
+// filename prefix; the list now covers them and the other excluded pages.
+const NOINDEX = require('./noindex').loadNoindex();
+exercises.filter(e => !NOINDEX.has(e.file)).forEach(e => urls.push(BASE + '/' + e.file));
 
 // Standalone public pages that don't load exercise.js and aren't *-activities.html
 // hubs, so the exercises.json scan in build-exercise-data.js never sees them.
@@ -431,7 +436,7 @@ const EXTRA_PUBLIC_PAGES = [
   'lead-msa-checkliste.html',
   'lead-teachers-three-tasks.html',
 ];
-EXTRA_PUBLIC_PAGES.forEach(f => { if (fs.existsSync(path.join(ROOT, f))) urls.push(BASE + '/' + f); });
+EXTRA_PUBLIC_PAGES.forEach(f => { if (!NOINDEX.has(f) && fs.existsSync(path.join(ROOT, f))) urls.push(BASE + '/' + f); });
 
 urls.push(BASE + '/themen/');
 topics.forEach(t => urls.push(BASE + '/themen/' + t.slug + '.html'));

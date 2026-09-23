@@ -263,6 +263,51 @@ function checkSitemap() {
   return errors;
 }
 
+// ── Check 5b: search-excluded pages (data/noindex.json) ─────────────────────
+//
+// Each listed page must exist, carry exactly one robots noindex tag, keep a
+// self canonical (noindex + a canonical to another URL is a conflicting
+// signal), and stay out of sitemap.xml. Any other page that declares noindex
+// must not be in the sitemap either.
+
+function checkNoindex() {
+  const errors = [];
+  const { loadNoindex } = require('./noindex');
+  let listed;
+  try { listed = loadNoindex(); } catch (e) {
+    errors.push({ type: 'noindex', msg: e.message });
+    return errors;
+  }
+  const sitemapPath = path.join(ROOT, 'sitemap.xml');
+  const sitemap = fs.existsSync(sitemapPath) ? fs.readFileSync(sitemapPath, 'utf8') : '';
+  const inSitemap = (f) => sitemap.includes(`<loc>https://activities.englishonline.training/${f}</loc>`);
+  const robotsRe = /<meta\s+name=["']robots["']\s+content=["']([^"']*)["']/gi;
+
+  for (const f of listed) {
+    const p = path.join(ROOT, f);
+    if (!fs.existsSync(p)) { errors.push({ type: 'noindex', msg: `${f} is in data/noindex.json but the file is missing` }); continue; }
+    const html = fs.readFileSync(p, 'utf8');
+    const tags = [...html.matchAll(robotsRe)].map(m => m[1]);
+    if (tags.length !== 1 || !/noindex/i.test(tags[0])) {
+      errors.push({ type: 'noindex', msg: `${f}: expected one robots noindex tag, found ${tags.length} (run node scripts/build.js)` });
+    }
+    const canon = (html.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i) || [])[1];
+    if (canon !== `https://activities.englishonline.training/${f}`) {
+      errors.push({ type: 'noindex', msg: `${f}: canonical must be self when noindexed, is ${canon || 'missing'}` });
+    }
+    if (inSitemap(f)) errors.push({ type: 'noindex', msg: `${f} is noindexed but listed in sitemap.xml` });
+  }
+
+  // Pages outside the list that declare noindex themselves (e.g. teacher-tests.html).
+  for (const f of fs.readdirSync(ROOT).filter(n => n.endsWith('.html') && !listed.has(n))) {
+    const html = fs.readFileSync(path.join(ROOT, f), 'utf8');
+    if ([...html.matchAll(robotsRe)].some(m => /noindex/i.test(m[1])) && inSitemap(f)) {
+      errors.push({ type: 'noindex', msg: `${f} declares noindex but is listed in sitemap.xml` });
+    }
+  }
+  return errors;
+}
+
 // ── Check 6: exercise.js + style.css exist ──────────────────────────────────
 
 function checkCoreAssets() {
@@ -290,6 +335,7 @@ function main() {
     orphans: { name: 'Orphan exercises',            fn: checkOrphans },
     ids:     { name: 'Duplicate HTML ids',          fn: checkDuplicateIds },
     sitemap: { name: 'Sitemap consistency',         fn: checkSitemap },
+    noindex: { name: 'Search-excluded pages',       fn: checkNoindex },
     assets:  { name: 'Core assets present',         fn: checkCoreAssets },
   };
 

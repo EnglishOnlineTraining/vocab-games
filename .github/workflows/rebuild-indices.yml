@@ -16,6 +16,7 @@ on:
     paths:
       - '**.html'
       - 'data/topics.json'
+      - 'data/noindex.json'        # feeds build-head (robots meta) + sitemap
       - 'data/explanations.json'   # feeds build-review-pages
       - 'data/quizzes.json'        # feeds build-quizzes
       - 'scripts/**.js'

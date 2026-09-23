@@ -1,0 +1,197 @@
+{
+  "_comment": [
+    "Pages that stay live and linked for students but are kept out of search.",
+    "Single source of truth: build-head.js emits <meta name=robots content=noindex,follow> for each file,",
+    "build-topic-pages.js leaves each file out of sitemap.xml, watchdog.js checks both.",
+    "indexedInstead names the page that should rank for the same search intent. It is documentation only:",
+    "each listed page keeps a SELF canonical, because noindex plus a canonical to another URL is a conflicting signal.",
+    "Added 2026-09-23 (SEO remediation). See CLAUDE.md > 'Search-excluded pages'."
+  ],
+  "pages": [
+    {
+      "file": "gr-adjektive-adverbien.html",
+      "indexedInstead": "themen/adjektive-adverbien.html",
+      "group": "grammar-exercise"
+    },
+    {
+      "file": "gr-future-tenses.html",
+      "indexedInstead": "themen/future-tenses.html",
+      "group": "grammar-exercise"
+    },
+    {
+      "file": "gr-gerund-infinitiv.html",
+      "indexedInstead": "themen/gerund-infinitiv.html",
+      "group": "grammar-exercise"
+    },
+    {
+      "file": "gr-if-saetze.html",
+      "indexedInstead": "themen/if-saetze.html",
+      "group": "grammar-exercise"
+    },
+    {
+      "file": "gr-linking-words.html",
+      "indexedInstead": "themen/linking-words.html",
+      "group": "grammar-exercise"
+    },
+    {
+      "file": "gr-modalverben.html",
+      "indexedInstead": "themen/modalverben.html",
+      "group": "grammar-exercise"
+    },
+    {
+      "file": "gr-passiv.html",
+      "indexedInstead": "themen/passiv.html",
+      "group": "grammar-exercise"
+    },
+    {
+      "file": "gr-past-perfect.html",
+      "indexedInstead": "themen/past-perfect.html",
+      "group": "grammar-exercise"
+    },
+    {
+      "file": "gr-phrasal-verbs.html",
+      "indexedInstead": "themen/phrasal-verbs.html",
+      "group": "grammar-exercise"
+    },
+    {
+      "file": "gr-present-perfect.html",
+      "indexedInstead": "themen/present-perfect.html",
+      "group": "grammar-exercise"
+    },
+    {
+      "file": "gr-present-tenses.html",
+      "indexedInstead": "themen/present-tenses.html",
+      "group": "grammar-exercise"
+    },
+    {
+      "file": "gr-question-tags.html",
+      "indexedInstead": "themen/question-tags.html",
+      "group": "grammar-exercise"
+    },
+    {
+      "file": "gr-relativsaetze.html",
+      "indexedInstead": "themen/relativsaetze.html",
+      "group": "grammar-exercise"
+    },
+    {
+      "file": "gr-reported-speech.html",
+      "indexedInstead": "themen/reported-speech.html",
+      "group": "grammar-exercise"
+    },
+    {
+      "file": "gr-simple-past.html",
+      "indexedInstead": "themen/simple-past.html",
+      "group": "grammar-exercise"
+    },
+    {
+      "file": "abitur-argumentative-writing-aims-ambitions.html",
+      "indexedInstead": "abitur-argumentative-writing.html",
+      "group": "abitur-pack"
+    },
+    {
+      "file": "abitur-argumentative-writing-media-impact.html",
+      "indexedInstead": "abitur-argumentative-writing.html",
+      "group": "abitur-pack"
+    },
+    {
+      "file": "abitur-argumentative-writing-nations-tradition-change.html",
+      "indexedInstead": "abitur-argumentative-writing.html",
+      "group": "abitur-pack"
+    },
+    {
+      "file": "abitur-argumentative-writing-science-technology.html",
+      "indexedInstead": "abitur-argumentative-writing.html",
+      "group": "abitur-pack"
+    },
+    {
+      "file": "abitur-mediation-aims-ambitions.html",
+      "indexedInstead": "abitur-mediation.html",
+      "group": "abitur-pack"
+    },
+    {
+      "file": "abitur-mediation-media-impact.html",
+      "indexedInstead": "abitur-mediation.html",
+      "group": "abitur-pack"
+    },
+    {
+      "file": "abitur-mediation-nations-tradition-change.html",
+      "indexedInstead": "abitur-mediation.html",
+      "group": "abitur-pack"
+    },
+    {
+      "file": "abitur-mediation-science-technology.html",
+      "indexedInstead": "abitur-mediation.html",
+      "group": "abitur-pack"
+    },
+    {
+      "file": "abitur-text-analysis-aims-ambitions.html",
+      "indexedInstead": "abitur-text-analysis.html",
+      "group": "abitur-pack"
+    },
+    {
+      "file": "abitur-text-analysis-media-impact.html",
+      "indexedInstead": "abitur-text-analysis.html",
+      "group": "abitur-pack"
+    },
+    {
+      "file": "abitur-text-analysis-nations-tradition-change.html",
+      "indexedInstead": "abitur-text-analysis.html",
+      "group": "abitur-pack"
+    },
+    {
+      "file": "abitur-text-analysis-science-technology.html",
+      "indexedInstead": "abitur-text-analysis.html",
+      "group": "abitur-pack"
+    },
+    {
+      "file": "abitur-writing-summaries-aims-ambitions.html",
+      "indexedInstead": "abitur-writing-summaries.html",
+      "group": "abitur-pack"
+    },
+    {
+      "file": "abitur-writing-summaries-media-impact.html",
+      "indexedInstead": "abitur-writing-summaries.html",
+      "group": "abitur-pack"
+    },
+    {
+      "file": "abitur-writing-summaries-nations-tradition-change.html",
+      "indexedInstead": "abitur-writing-summaries.html",
+      "group": "abitur-pack"
+    },
+    {
+      "file": "abitur-writing-summaries-science-technology.html",
+      "indexedInstead": "abitur-writing-summaries.html",
+      "group": "abitur-pack"
+    },
+    {
+      "file": "7c-school-day-in-britain.html",
+      "indexedInstead": "7c-british-school-day.html",
+      "group": "near-duplicate"
+    },
+    {
+      "file": "8c-going-west-gerunds.html",
+      "indexedInstead": "8c-going-west.html",
+      "group": "near-duplicate"
+    },
+    {
+      "file": "8g-american-inventions-conditionals.html",
+      "indexedInstead": "8g-american-inventions.html",
+      "group": "near-duplicate"
+    },
+    {
+      "file": "8g-kids-in-america-thanksgiving.html",
+      "indexedInstead": "8g-kids-in-america.html",
+      "group": "near-duplicate"
+    },
+    {
+      "file": "9g-australia-passive-infinitive.html",
+      "indexedInstead": "9g-australia-passive-forms.html",
+      "group": "near-duplicate"
+    },
+    {
+      "file": "7g-tudor-conditionals-2.html",
+      "indexedInstead": "7g-tudor-conditionals.html",
+      "group": "near-duplicate"
+    }
+  ]
+}
