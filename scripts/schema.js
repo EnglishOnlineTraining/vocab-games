@@ -223,6 +223,7 @@ function crumbLabel(file) {
   if (/^be-/.test(f)) return 'Business English';
   if (/^gr-/.test(f)) return 'Grammatik';
   if (/^quiz-/.test(f)) return 'Quiz';
+  if (/^level-/.test(f)) return 'Einstufungstest';
   return 'Übungen';
 }
 
