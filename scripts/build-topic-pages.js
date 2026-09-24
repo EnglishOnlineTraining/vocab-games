@@ -6,6 +6,7 @@
  */
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 const S = require('./schema');
 const ROOT = path.join(__dirname, '..');
 const BASE = 'https://activities.englishonline.training';
@@ -441,10 +442,28 @@ EXTRA_PUBLIC_PAGES.forEach(f => { if (!NOINDEX.has(f) && fs.existsSync(path.join
 urls.push(BASE + '/themen/');
 topics.forEach(t => urls.push(BASE + '/themen/' + t.slug + '.html'));
 const uniq = Array.from(new Set(urls));
-// No <lastmod> here — see "sitemap has no lastmod" in CLAUDE.md for the two
-// approaches that were tried and why adding it needs a pipeline change first.
+
+function urlToFile(u) {
+  const rel = u.replace(BASE, '').replace(/^\//, '');
+  if (rel === '' || rel === '/') return 'index.html';
+  if (rel === 'themen/') return 'themen/index.html';
+  return rel;
+}
+
+function gitLastmod(file) {
+  try {
+    const out = execSync('git log --format=%aI -1 -- ' + JSON.stringify(file), { cwd: ROOT, encoding: 'utf8', stdio: ['pipe','pipe','pipe'] }).trim();
+    return out ? out.slice(0, 10) : '';
+  } catch { return ''; }
+}
+
 const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-  + uniq.map(u => '  <url><loc>' + u + '</loc></url>').join('\n') + '\n</urlset>\n';
+  + uniq.map(u => {
+    const mod = gitLastmod(urlToFile(u));
+    return mod
+      ? '  <url><loc>' + u + '</loc><lastmod>' + mod + '</lastmod></url>'
+      : '  <url><loc>' + u + '</loc></url>';
+  }).join('\n') + '\n</urlset>\n';
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemap);
 fs.writeFileSync(path.join(ROOT, 'robots.txt'), 'User-agent: *\nAllow: /\n\nSitemap: ' + BASE + '/sitemap.xml\n');
 
