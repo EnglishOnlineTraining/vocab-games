@@ -10,21 +10,15 @@ Based on audit of test-english.com, englishpage.com, and perfect-english-grammar
 
 ## 1. Grammar Section Gaps
 
-### Prepositions — **HIGH PRIORITY**
-- Highest-traffic gap vs competitors — englishpage.com's most-visited content area
-- German learners struggle with prepositions specifically (keine direkte Übersetzung)
-- **Not covered** in the existing 16 themen pages
-- Suggested topics: prepositions of place (in/on/at), time (in/on/at), movement (to/into/onto), verb + preposition collocations
-- Format: themen page at `themen/praepositionen.html` following existing pattern (explanation → rules → exercises → FAQ → cross-links)
-- **Status: READY TO BUILD** — slot directly into existing themen system
+### ~~Prepositions~~ — ALREADY DONE
+- ~~Highest-traffic gap vs competitors — englishpage.com's most-visited content area~~
+- **Update:** `themen/praepositionen.html` is live with all suggested subtopics (place in/on/at, time in/on/at, movement, verb + preposition collocations), 4 inline exercise widgets, FAQ schema, and cross-links. Listed in the themen index and sitemap.
+- **No action needed.**
 
-### Articles (a / an / the) — **HIGH PRIORITY**
-- Both englishpage and perfect-english-grammar have dedicated sections
-- High search volume from German speakers (German has cases, not articles in the same way)
-- **Not covered** in the existing 16 themen pages
-- Suggested topics: a vs an, definite vs indefinite, zero article, articles with countable/uncountable nouns
-- Format: themen page at `themen/artikel.html`
-- **Status: READY TO BUILD**
+### ~~Articles (a / an / the)~~ — ALREADY DONE
+- ~~Both englishpage and perfect-english-grammar have dedicated sections~~
+- **Update:** `themen/artikel.html` is live with all suggested subtopics (a vs an, definite vs indefinite, zero article, countable/uncountable, geography), 4 inline exercise widgets, FAQ schema, and cross-links. Listed in the themen index and sitemap.
+- **No action needed.**
 
 ### ~~Phrasal Verbs~~ — ALREADY DONE
 - ~~Currently massively underdeveloped vs competitors~~
@@ -42,13 +36,9 @@ Based on audit of test-english.com, englishpage.com, and perfect-english-grammar
 - Format: new `themen/wortschatz-[thema].html` pages — same system, different content angle
 - **Note:** This is a different content type from the grammar themen pages. Consider whether to mix vocab and grammar in the same themen hub or create a separate section. Recommendation: keep them in `themen/` with a "Wortschatz" subsection on the index page.
 
-### Level Test
-- Used by both test-english.com and perfect-english-grammar.com as a top engagement/lead tool
-- Simple 20–30 question placement test (A1–C1)
-- CTA at end: "Your level is B1 — here are exercises for you"
-- Could be built as an interactive HTML page on the activities subdomain
-- **Effort:** Medium-high (needs question bank, scoring logic, level-to-exercise mapping)
-- **Value:** High as a funnel — every test-taker gets a personalised link to exercises
+### ~~Level Test~~ — ALREADY DONE
+- ~~Used by both test-english.com and perfect-english-grammar.com as a top engagement/lead tool~~
+- **Update (2026-09-24):** `level-test.html` is built — 25 self-scoring questions ordered A1 → C1 (5 per level), instant CEFR estimate with per-level CTA links to existing exercises (quizzes, themen pages, Abitur/University hubs). Practise mode, no sign-up, nothing submitted. Listed in the activities index and sitemap.
 
 ---
 
@@ -98,13 +88,13 @@ Based on audit of test-english.com, englishpage.com, and perfect-english-grammar
 
 | Priority | Feature | Effort | Impact | Platform |
 |----------|---------|--------|--------|----------|
-| **High** | **Prepositions themen page** | Medium | High SEO | GitHub Pages |
-| **High** | **Articles themen page** | Medium | High SEO | GitHub Pages |
 | Medium | Surface testimonials on homepage | Low | Trust | WordPress |
 | Medium | Personal branding / photo | Low | Trust | WordPress |
 | Medium | Newsletter hook rewrite | Low | Conversions | WordPress |
-| Medium | Level test | High | Engagement / funnel | GitHub Pages |
 | Medium | Vocabulary by topic (first 3) | High | SEO | GitHub Pages |
 | Low | Topic PDFs | Medium | Lead gen | Either |
 | Low | Membership model | Very High | Revenue | External |
+| ~~High~~ | ~~Prepositions themen page~~ | — | — | Already done |
+| ~~High~~ | ~~Articles themen page~~ | — | — | Already done |
+| ~~Medium~~ | ~~Level test~~ | — | — | Done 2026-09-24 (`level-test.html`) |
 | ~~High~~ | ~~Phrasal Verbs expansion~~ | — | — | Already done |
