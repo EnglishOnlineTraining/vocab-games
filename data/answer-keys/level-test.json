@@ -1,0 +1,211 @@
+{
+ "unit": "level-test",
+ "sections": {
+  "quiz": {
+   "prefix": "q-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "goes",
+     "accept": [
+      "goes"
+     ],
+     "label": "1. She ___ to school by bus every day.",
+     "why": "Third person singular in the present simple takes -s: she goes."
+    },
+    "g2": {
+     "correct": "are",
+     "accept": [
+      "are"
+     ],
+     "label": "2. There ___ three books on the table.",
+     "why": "'There are' for plurals; 'there is' is only for singular or uncountable nouns."
+    },
+    "g3": {
+     "correct": "in",
+     "accept": [
+      "in"
+     ],
+     "label": "3. My birthday is ___ July.",
+     "why": "Months take 'in': in July. 'On' is for days, 'at' for clock times."
+    },
+    "g4": {
+     "correct": "Do",
+     "accept": [
+      "Do"
+     ],
+     "label": "4. ___ you like coffee?",
+     "why": "Questions in the present simple use do/does; 'you' takes 'do'."
+    },
+    "g5": {
+     "correct": "children",
+     "accept": [
+      "children"
+     ],
+     "label": "5. I have two ___.",
+     "why": "'Child' has the irregular plural 'children' — never 'childs'."
+    },
+    "g6": {
+     "correct": "lost",
+     "accept": [
+      "lost"
+     ],
+     "label": "6. I ___ my keys yesterday.",
+     "why": "'Lose' is irregular: the past form is 'lost', never 'losed'."
+    },
+    "g7": {
+     "correct": "taller",
+     "accept": [
+      "taller"
+     ],
+     "label": "7. My brother is ___ than me.",
+     "why": "Short adjectives form the comparative with -er: tall → taller."
+    },
+    "g8": {
+     "correct": "are going to",
+     "accept": [
+      "are going to"
+     ],
+     "label": "8. We ___ visit our grandparents next weekend.",
+     "why": "'Going to' needs the verb 'be': we are going to visit."
+    },
+    "g9": {
+     "correct": "any",
+     "accept": [
+      "any"
+     ],
+     "label": "9. There isn't ___ milk in the fridge.",
+     "why": "Negatives take 'any', not 'some': there isn't any milk."
+    },
+    "g10": {
+     "correct": "is raining",
+     "accept": [
+      "is raining"
+     ],
+     "label": "10. Look! It ___.",
+     "why": "'Look!' signals right now, so use the present continuous: is raining."
+    },
+    "g11": {
+     "correct": "been",
+     "accept": [
+      "been"
+     ],
+     "label": "11. I have never ___ to Japan.",
+     "why": "The present perfect is have + past participle; the participle of 'be' is 'been'."
+    },
+    "g12": {
+     "correct": "were",
+     "accept": [
+      "were"
+     ],
+     "label": "12. If I ___ rich, I would travel the world.",
+     "why": "Second conditional: if + past simple, and 'were' for all persons after 'if I'."
+    },
+    "g13": {
+     "correct": "was built",
+     "accept": [
+      "was built"
+     ],
+     "label": "13. This house ___ in 1920.",
+     "why": "Past simple passive: was/were + past participle — was built."
+    },
+    "g14": {
+     "correct": "reading",
+     "accept": [
+      "reading"
+     ],
+     "label": "14. I enjoy ___ books.",
+     "why": "'Enjoy' is always followed by the gerund (-ing), never the infinitive."
+    },
+    "g15": {
+     "correct": "has lived",
+     "accept": [
+      "has lived"
+     ],
+     "label": "15. She ___ here since 2019.",
+     "why": "'Since' with a start point takes the present perfect: has lived."
+    },
+    "g16": {
+     "correct": "had … started",
+     "accept": [
+      "had … started"
+     ],
+     "label": "16. When I arrived, the film ___ already ___.",
+     "why": "The earlier of two past actions takes the past perfect: had started."
+    },
+    "g17": {
+     "correct": "would have passed",
+     "accept": [
+      "would have passed"
+     ],
+     "label": "17. If you had studied, you ___ the exam.",
+     "why": "Third conditional: if + past perfect, would have + past participle."
+    },
+    "g18": {
+     "correct": "would come",
+     "accept": [
+      "would come"
+     ],
+     "label": "18. He said he ___ the next day.",
+     "why": "Reported speech shifts 'will' back to 'would'."
+    },
+    "g19": {
+     "correct": "whose",
+     "accept": [
+      "whose"
+     ],
+     "label": "19. That's the man ___ dog bit me.",
+     "why": "Possession in a relative clause needs 'whose' — the man's dog."
+    },
+    "g20": {
+     "correct": "had studied",
+     "accept": [
+      "had studied"
+     ],
+     "label": "20. I wish I ___ harder when I was at school.",
+     "why": "Wishes about the past take the past perfect: I wish I had studied."
+    },
+    "g21": {
+     "correct": "have I heard",
+     "accept": [
+      "have I heard"
+     ],
+     "label": "21. Rarely ___ such a talented singer.",
+     "why": "After negative adverbs like 'rarely', subject and auxiliary invert: rarely have I heard."
+    },
+    "g22": {
+     "correct": "Having finished",
+     "accept": [
+      "Having finished"
+     ],
+     "label": "22. ___ the report, she sent it to her manager.",
+     "why": "A perfect participle clause shows the first action was complete: having finished."
+    },
+    "g23": {
+     "correct": "write",
+     "accept": [
+      "write"
+     ],
+     "label": "23. The teacher suggested that he ___ the essay again.",
+     "why": "After 'suggest that', use the base subjunctive — 'write', no -s."
+    },
+    "g24": {
+     "correct": "Were",
+     "accept": [
+      "Were"
+     ],
+     "label": "24. ___ it not for your help, I would have failed.",
+     "why": "Formal inversion replaces 'if it were not for': were it not for."
+    },
+    "g25": {
+     "correct": "when",
+     "accept": [
+      "when"
+     ],
+     "label": "25. Scarcely had I arrived ___ the phone rang.",
+     "why": "The pair is 'scarcely … when'; 'than' belongs with 'no sooner'."
+    }
+   }
+  }
+ }
+}
