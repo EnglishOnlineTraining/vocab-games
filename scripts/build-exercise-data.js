@@ -100,6 +100,10 @@ function schoolFromPrefix(f) {
   if (/^it-/.test(f)) return ['it', 'vocational'];
   if (/^be-/.test(f)) return ['business', 'business'];
   if (/^quiz-/.test(f)) return ['quiz', 'quiz'];
+  // The placement test is a funnel page, not a school year and not one of the
+  // graded grammar quizzes — its own category keeps it out of 'other', where
+  // no hub filter chip could find it.
+  if (/^level-/.test(f)) return ['level', 'level'];
   if (/^gr-/.test(f)) return ['grammar', 'grammar'];
   // The ESL grammar series is its own audience (global ESL/EFL, not a German
   // school year) and has its own hub, so it needs its own category — without one
