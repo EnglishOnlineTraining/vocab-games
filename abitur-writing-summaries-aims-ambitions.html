@@ -358,16 +358,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p id="finalSummary"></p>
   <div class="score-grid" id="scoreGrid"></div>
   <div id="submitSection" style="margin-top:28px;padding-top:20px;border-top:1px solid var(--border,#dce3ec);">
-    <p style="font-size:.95rem;color:var(--muted,#6b7a8d);margin-bottom:14px;">Ergebnisse an den Lehrer senden:</p>
+    <p style="font-size:.95rem;color:var(--muted,#6b7a8d);margin-bottom:14px;">Send your results to the teacher:</p>
     <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;">
       <input type="text" id="studentName" placeholder="Name" style="padding:10px 14px;border:1px solid #cbd5e0;border-radius:8px;font-size:.95rem;font-family:inherit;width:180px;">
-      <input type="text" id="studentClass" placeholder="Klasse" style="padding:10px 14px;border:1px solid #cbd5e0;border-radius:8px;font-size:.95rem;font-family:inherit;width:120px;">
+      <input type="text" id="studentClass" placeholder="Class" style="padding:10px 14px;border:1px solid #cbd5e0;border-radius:8px;font-size:.95rem;font-family:inherit;width:120px;">
     </div>
-    <button class="btn" id="submitBtn" onclick="submitToTeacher()" style="font-size:1rem;padding:.75rem 2rem;">&#x1F680; An Lehrer senden</button>
-    <div id="submitSuccess" style="display:none;margin-top:14px;color:#27ae60;font-weight:600;">&#x2705; Erfolgreich gesendet!</div>
+    <button class="btn" id="submitBtn" onclick="submitToTeacher()" style="font-size:1rem;padding:.75rem 2rem;">&#x1F680; Send to Teacher</button>
+    <div id="submitSuccess" style="display:none;margin-top:14px;color:#27ae60;font-weight:600;">&#x2705; Successfully sent!</div>
     <div id="submitFallback" style="display:none;margin-top:10px;font-size:.85rem;">
-      <span style="color:var(--muted,#6b7a8d);">Alternativ: </span>
-      <a href="#" id="emailFallback" onclick="submitByEmail();return false;" style="color:var(--accent-dark,#1a3a5c);">&#x1F4E7; Per E-Mail senden</a>
+      <span style="color:var(--muted,#6b7a8d);">Or: </span>
+      <a href="#" id="emailFallback" onclick="submitByEmail();return false;" style="color:var(--accent-dark,#1a3a5c);">&#x1F4E7; Send by email</a>
     </div>
   </div>
 </div>
@@ -522,9 +522,9 @@ var TEACHER_EMAIL='shaun.trezise@docemus.de';
 function submitToTeacher(){
   var nm=document.getElementById('studentName').value.trim();
   var cls=document.getElementById('studentClass').value.trim();
-  if(!nm||!cls){alert('Bitte Name und Klasse eingeben.');return;}
+  if(!nm||!cls){alert('Please enter your name and class.');return;}
   var btn=document.getElementById('submitBtn');
-  btn.disabled=true;btn.textContent='Senden...';
+  btn.disabled=true;btn.textContent='Sending...';
   var total=0,max=0;
   Object.keys(scores).forEach(function(k){total+=scores[k];max+=maxScores[k];});
   var essayEl=document.getElementById('essayText');
@@ -541,14 +541,14 @@ function submitToTeacher(){
     document.getElementById('submitSuccess').style.display='block';
     document.getElementById('submitFallback').style.display='block';
   }).catch(function(){
-    btn.disabled=false;btn.textContent='\u{1F680} An Lehrer senden';
-    alert('Senden fehlgeschlagen \u2014 bitte Internetverbindung pr\u00FCfen.');
+    btn.disabled=false;btn.textContent='Send to Teacher';
+    alert('Submission failed \u2014 please check your connection.');
     document.getElementById('submitFallback').style.display='block';
   });
 }
 function submitByEmail(){
-  var nm=document.getElementById('studentName').value.trim()||'(kein Name)';
-  var cls=document.getElementById('studentClass').value.trim()||'(keine Klasse)';
+  var nm=document.getElementById('studentName').value.trim()||'(no name)';
+  var cls=document.getElementById('studentClass').value.trim()||'(no class)';
   var total=0,max=0;
   Object.keys(scores).forEach(function(k){total+=scores[k];max+=maxScores[k];});
   var essayEl=document.getElementById('essayText');
