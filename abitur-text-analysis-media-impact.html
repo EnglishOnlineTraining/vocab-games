@@ -384,6 +384,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <h2>🎉 Alle Übungen abgeschlossen!</h2>
   <p id="finalSummary"></p>
   <div class="score-grid" id="scoreGrid"></div>
+  <div id="submitSection" style="margin-top:28px;padding-top:20px;border-top:1px solid var(--border,#dce3ec);">
+    <p style="font-size:.95rem;color:var(--muted,#6b7a8d);margin-bottom:14px;">Ergebnisse an den Lehrer senden:</p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;">
+      <input type="text" id="studentName" placeholder="Name" style="padding:10px 14px;border:1px solid #cbd5e0;border-radius:8px;font-size:.95rem;font-family:inherit;width:180px;">
+      <input type="text" id="studentClass" placeholder="Klasse" style="padding:10px 14px;border:1px solid #cbd5e0;border-radius:8px;font-size:.95rem;font-family:inherit;width:120px;">
+    </div>
+    <button class="btn" id="submitBtn" onclick="submitToTeacher()" style="font-size:1rem;padding:.75rem 2rem;">&#x1F680; An Lehrer senden</button>
+    <div id="submitSuccess" style="display:none;margin-top:14px;color:#27ae60;font-weight:600;">&#x2705; Erfolgreich gesendet!</div>
+    <div id="submitFallback" style="display:none;margin-top:10px;font-size:.85rem;">
+      <span style="color:var(--muted,#6b7a8d);">Alternativ: </span>
+      <a href="#" id="emailFallback" onclick="submitByEmail();return false;" style="color:var(--accent-dark,#1a3a5c);">&#x1F4E7; Per E-Mail senden</a>
+    </div>
+  </div>
 </div>
 
 </div>
@@ -543,6 +556,58 @@ function showFinal(){
   document.getElementById('finalScore').style.display='block';window.scrollTo({top:0,behavior:'smooth'});
 }
 buildEx1();buildMC('mcList2',ex2Data);buildMC('mcList3',ex3Data);buildEx4();
+</script>
+
+<style>
+@media(prefers-color-scheme:dark){
+  #studentName,#studentClass{background:#16212e;border-color:#3a4a5e;color:#e2e8f0;}
+}
+</style>
+<script>
+var WEBHOOK_URL='https://hook.eu1.make.com/wdia5iljcraay8rfqijkacgb5i9jjfod';
+var UNIT='abitur-text-analysis-media-impact';
+var TEACHER_EMAIL='shaun.trezise@docemus.de';
+function submitToTeacher(){
+  var nm=document.getElementById('studentName').value.trim();
+  var cls=document.getElementById('studentClass').value.trim();
+  if(!nm||!cls){alert('Bitte Name und Klasse eingeben.');return;}
+  var btn=document.getElementById('submitBtn');
+  btn.disabled=true;btn.textContent='Senden...';
+  var total=0,max=0;
+  Object.keys(scores).forEach(function(k){total+=scores[k];max+=maxScores[k];});
+  var essayEl=document.getElementById('essayText');
+  var payload={name:nm,cls:cls,unit:UNIT,
+    ex1:scores.ex1+'/'+maxScores.ex1,ex2:scores.ex2+'/'+maxScores.ex2,
+    ex3:scores.ex3+'/'+maxScores.ex3,ex4:scores.ex4+'/'+maxScores.ex4,
+    ex5:scores.ex5+'/'+maxScores.ex5,score:total+'/'+max,
+    essay:essayEl?essayEl.value.trim():''};
+  fetch(WEBHOOK_URL,{method:'POST',mode:'no-cors',
+    headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:'payload='+encodeURIComponent(JSON.stringify(payload))
+  }).then(function(){
+    btn.style.display='none';
+    document.getElementById('submitSuccess').style.display='block';
+    document.getElementById('submitFallback').style.display='block';
+  }).catch(function(){
+    btn.disabled=false;btn.textContent='\u{1F680} An Lehrer senden';
+    alert('Senden fehlgeschlagen \u2014 bitte Internetverbindung pr\u00FCfen.');
+    document.getElementById('submitFallback').style.display='block';
+  });
+}
+function submitByEmail(){
+  var nm=document.getElementById('studentName').value.trim()||'(kein Name)';
+  var cls=document.getElementById('studentClass').value.trim()||'(keine Klasse)';
+  var total=0,max=0;
+  Object.keys(scores).forEach(function(k){total+=scores[k];max+=maxScores[k];});
+  var essayEl=document.getElementById('essayText');
+  var body=UNIT+' \u2014 '+nm+' ('+cls+')\n\nPunktzahl: '+total+'/'+max+'\n';
+  Object.keys(scores).forEach(function(k){body+=k+': '+scores[k]+'/'+maxScores[k]+'\n';});
+  if(essayEl&&essayEl.value.trim())body+='\nFreitext:\n'+essayEl.value.trim();
+  var a=document.createElement('a');
+  a.href='mailto:'+TEACHER_EMAIL+'?subject='+encodeURIComponent(UNIT+' \u2014 '+nm+' \u2014 '+cls)+'&body='+encodeURIComponent(body);
+  a.style.display='none';document.body.appendChild(a);a.click();
+  setTimeout(function(){document.body.removeChild(a);},100);
+}
 </script>
 <!-- ABITUR-FOOTER:START -->
 <footer class="abitur-footer">
