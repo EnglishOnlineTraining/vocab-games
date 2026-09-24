@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text Analysis: South Africa — Abitur English</title>
+<meta name="description" content="Free Abitur English practice pack: analyse a keynote speech on South Africa's Rainbow Nation thirty years after apartheid, with guided annotation tools.">
+<link rel="canonical" href="https://activities.englishonline.training/abitur-text-analysis-south-africa.html">
+<style>
+  :root{--accent:#0070C0;--accent-dark:#004e87;--gold:#FFD700;--green:#1e8e3e;--red:#d93025;--yellow:#e6a700;--bg:#f4f6f9;--card:#ffffff;--text:#1c2b36;--muted:#5b6b76;  --green-text: #1d7a42;
+  --red-text:   #c0392b;
+  --teal-text:  #1f5d5b;
+}
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;}
+  .wrap{max-width:840px;margin:0 auto;padding:0 18px 60px;}
+  header{background:linear-gradient(135deg,var(--accent-dark),var(--accent));color:#fff;padding:34px 18px 26px;}
+  header .inner{max-width:840px;margin:0 auto;}
+  header h1{margin:0 0 6px;font-size:1.7rem;}
+  header .tag{font-size:.92rem;opacity:.9;margin-bottom:18px;}
+  .progress-outer{background:rgba(255,255,255,.25);border-radius:20px;height:10px;overflow:hidden;}
+  .progress-inner{background:var(--gold);height:100%;width:0%;transition:width .4s ease;}
+  #progressLabel{font-size:.82rem;margin-top:6px;opacity:.9;}
+  details.guide{background:var(--card);border-radius:10px;margin:22px 0;box-shadow:0 1px 4px rgba(0,0,0,.08);}
+  details.guide summary{cursor:pointer;padding:14px 18px;font-weight:600;color:var(--accent-dark);}
+  .guide-body{padding:0 18px 18px;}
+  .device{border-left:3px solid var(--accent);padding:8px 12px;margin:10px 0;background:#f0f6fc;border-radius:0 6px 6px 0;}
+  .device b{color:var(--accent-dark);}
+  .exercise{display:none;background:var(--card);border-radius:12px;padding:24px 22px;margin:22px 0;box-shadow:0 1px 6px rgba(0,0,0,.08);}
+  .exercise.active{display:block;}
+  .exercise h2{color:var(--accent-dark);margin-top:0;font-size:1.25rem;border-bottom:2px solid #eef2f5;padding-bottom:10px;}
+  .instructions{color:var(--muted);font-size:.94rem;margin-bottom:16px;}
+  .article-box{background:#f8fafc;border:1px solid #e1e8ee;border-radius:8px;padding:18px 20px;margin-bottom:18px;font-size:.97rem;}
+  .article-box h3{margin-top:0;color:var(--accent-dark);}
+  .article-box .byline{font-style:italic;color:var(--muted);font-size:.85rem;margin-bottom:12px;}
+  .hl{background:#fff3b0;padding:1px 3px;border-radius:3px;}
+  details.reread{margin-bottom:16px;background:#f8fafc;border:1px solid #e1e8ee;border-radius:8px;}
+  details.reread summary{cursor:pointer;padding:10px 14px;font-weight:600;color:var(--accent-dark);font-size:.9rem;}
+  details.reread .article-box{border:none;background:none;padding:4px 14px 14px;}
+  .match-row{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px dashed #e1e8ee;}
+  .match-row:last-child{border-bottom:none;}
+  .match-quote{flex:1;font-style:italic;color:var(--text);}
+  .match-row select{flex:0 0 230px;padding:8px;border-radius:6px;border:1px solid #cbd5e0;font-size:.9rem;}
+  .match-row select.correct{border-color:var(--green);background:#e6f4ea;}
+  .match-row select.wrong{border-color:var(--red);background:#fdeceb;}
+  .mc-q{margin-bottom:18px;}
+  .mc-q p.qtext{font-weight:600;margin-bottom:8px;}
+  .mc-opt{display:block;padding:10px 14px;margin-bottom:8px;border:1px solid #cbd5e0;border-radius:7px;cursor:pointer;transition:.15s;}
+  .mc-opt:hover{border-color:var(--accent);}
+  .mc-opt.selected{border-color:var(--accent);background:#eaf3fb;}
+  .mc-opt.correct{border-color:var(--green);background:#e6f4ea;}
+  .mc-opt.wrong{border-color:var(--red);background:#fdeceb;}
+  .mc-q.locked .mc-opt{cursor:default;pointer-events:none;}
+  .order-pool{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+  .order-item{background:#eaf3fb;border:1px solid var(--accent);color:var(--accent-dark);padding:10px 14px;border-radius:7px;cursor:pointer;font-size:.9rem;}
+  .order-item.used{opacity:.35;pointer-events:none;}
+  .order-slots{display:flex;flex-direction:column;gap:8px;}
+  .order-slot{min-height:44px;border:2px dashed #cbd5e0;border-radius:7px;padding:8px 12px;display:flex;align-items:center;gap:10px;background:#fbfcfd;}
+  .order-slot .badge{background:var(--accent);color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;}
+  .order-slot.correct{border-color:var(--green);background:#e6f4ea;}
+  .order-slot.wrong{border-color:var(--red);background:#fdeceb;}
+  textarea{width:100%;min-height:220px;padding:14px;border:1px solid #cbd5e0;border-radius:8px;font-family:inherit;font-size:.95rem;resize:vertical;}
+  .wordcount{text-align:right;font-size:.82rem;color:var(--muted);margin-top:4px;}
+  .prompt-card{border:1px solid #cbd5e0;border-radius:8px;padding:12px 14px;margin-bottom:10px;}
+  .prompt-card.selected{border-color:var(--accent);background:#eaf3fb;}
+  .rubric-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #eef2f5;}
+  .rubric-item input{margin-top:4px;}
+  .model-para{background:#f8fafc;border-left:4px solid var(--accent);padding:14px 16px;margin-top:16px;border-radius:0 8px 8px 0;font-size:.93rem;}
+  .annot{color:var(--accent-dark);font-weight:600;}
+  .btn{display:inline-block;background:var(--accent);color:#fff;border:none;padding:11px 22px;border-radius:7px;font-size:.95rem;cursor:pointer;font-weight:600;}
+  .btn:hover{background:var(--accent-dark);}
+  .btn.secondary{background:transparent;color:var(--accent-dark);border:1px solid #cbd5e0;font-weight:500;}
+  .btn.secondary:hover{background:#eef2f5;}
+  .btn-row{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap;}
+  .feedback{margin-top:16px;padding:12px 16px;border-radius:8px;font-size:.92rem;display:none;}
+  .feedback.show{display:block;}
+  .feedback.perfect{background:#e6f4ea;color:#1e8e3e;border:1px solid #bfe4c9;}
+  .feedback.good{background:#fff8e1;color:#8a6500;border:1px solid #ffe6a0;}
+  .feedback.poor{background:#fdeceb;color:#b3261e;border:1px solid #f7c6c2;}
+  #finalScore{display:none;background:var(--card);border-radius:12px;padding:28px 24px;margin:22px 0;box-shadow:0 1px 6px rgba(0,0,0,.08);text-align:center;}
+  #finalScore h2{color:var(--accent-dark);}
+  .score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px;text-align:left;}
+  .score-card{background:#f8fafc;border-radius:8px;padding:12px 14px;border:1px solid #e1e8ee;}
+  .score-card .name{font-size:.8rem;color:var(--muted);}
+  .score-card .val{font-size:1.3rem;font-weight:700;color:var(--accent-dark);}
+
+/* ── Automatic dark mode (added; light values untouched) ── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent-dark: #4a86c9;
+    --bg: #0e1620;
+    --card: #16212e;
+    --muted: #8a99aa;
+    --text: #e7eef6;
+      --green-text: #7fe0a0;
+    --red-text:   #f3a3b0;
+    --teal-text:  #6fd3d0;
+}
+}
+
+/* ── Dark-mode surface overrides (abitur family; dark only) ── */
+@media (prefers-color-scheme: dark) {
+  .device{background:#12283c;}
+  .article-box,details.reread,.model-para,.score-card{background:#111b27;border-color:#28394d;}
+  details.reread .article-box{background:none;border:none;}
+  .hl{background:#5a4a12;color:#f4ead0;}
+  .match-row{border-bottom-color:#28394d;}
+  .match-row select,.mc-opt,.prompt-card,textarea{border-color:#3a4a5e;background:#16212e;color:var(--text);}
+  .order-slot{background:#141f2b;border-color:#3a4a5e;}
+  .order-item,.mc-opt.selected,.prompt-card.selected{background:#1c2c40;}
+  .match-row select.correct,.mc-opt.correct,.order-slot.correct{background:#123a22;border-color:var(--green);}
+  .match-row select.wrong,.mc-opt.wrong,.order-slot.wrong{background:#3a1620;border-color:var(--red);}
+  .feedback.perfect{background:#123a22;color:#7fe0a0;border-color:#1e8e3e;}
+  .feedback.good{background:#3a3212;color:#e8cf7a;border-color:#8a6500;}
+  .feedback.poor{background:#3a1620;color:#f3a3b0;border-color:#b3261e;}
+  .exercise h2,.article-box h3{border-bottom-color:#28394d;}
+  .btn.secondary{border-color:#3a4a5e;}
+  .btn.secondary:hover{background:#1c2c40;}
+}
+</style>
+<!-- HEAD:START — generated by scripts/build-head.js, do not edit by hand -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5HXNNPCS');</script>
+<!-- End Google Tag Manager -->
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#1a3a5c">
+<meta name="text-scale" content="scale">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EnglishOnline.training">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Text Analysis: South Africa — Abitur English">
+<meta property="og:description" content="Free Abitur English practice pack: analyse a keynote speech on South Africa's Rainbow Nation thirty years after apartheid, with guided annotation tools.">
+<meta property="og:url" content="https://activities.englishonline.training/abitur-text-analysis-south-africa.html">
+<meta property="og:image" content="https://activities.englishonline.training/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="englishonline.training — kostenlose interaktive Englisch-Übungen für Klasse 7–10, MSA, Abitur, Universität, Business und IT English">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@engontraining">
+<style id="eol-skip-style">.eol-skip{position:absolute;left:.5rem;top:-3rem;z-index:1000;background:var(--gold,#c9a227);color:#1a1a1a;font-weight:700;padding:.5rem 1rem;border-radius:8px;text-decoration:none;transition:top .2s;font-family:'Segoe UI',system-ui,sans-serif}.eol-skip:focus{top:.5rem}@media(prefers-reduced-motion:reduce){.eol-skip{transition:none}}</style>
+<style id="eol-qo-style">
+.qo-box{background:var(--card,#fff);border:1.5px solid var(--border,#dce3ec);border-left:4px solid var(--gold,#c9a227);border-radius:10px;padding:1rem 1.2rem;margin:0 0 1.5rem;font-size:.9rem;color:var(--text,#1d2b3a)}
+.qo-box h2{font-size:.95rem;font-weight:700;margin:0 0 .6rem;color:var(--blue,#1a3a5c)}
+.qo-box h2 .qo-en{font-weight:600;color:var(--muted,#6b7a8d)}
+.qo-lede{margin:0 0 .75rem;line-height:1.5}
+.qo-facts{display:grid;grid-template-columns:auto 1fr;gap:.3rem .9rem;margin:0}
+.qo-facts dt{font-weight:600;color:var(--blue,#1a3a5c)}
+.qo-facts dt .qo-en{font-weight:400;color:var(--muted,#6b7a8d)}
+.qo-facts dd{margin:0}
+@media (max-width:420px){.qo-facts{grid-template-columns:1fr;gap:.1rem}.qo-facts dd{margin:0 0 .4rem}}
+@media (prefers-color-scheme:dark){
+.qo-box{background:var(--card,#1c2733);border-color:var(--border,#2f3d4d);color:var(--text,#e6edf5)}
+.qo-box h2{color:var(--gold-lt,#f5e6b0)}
+.qo-facts dt{color:var(--gold-lt,#f5e6b0)}
+.qo-box h2 .qo-en,.qo-facts dt .qo-en{color:var(--muted,#9fb0c3)}
+}
+</style>
+<style id="eol-tip-style">
+.exam-tip{background:var(--card,#fff);border:1px solid var(--border,#dce3ec);border-left:4px solid var(--accent,var(--gold,#c9a227));border-radius:8px;padding:.7rem 1rem;margin:0 0 1.2rem;font-size:.88rem;line-height:1.5;color:var(--text,#1d2b3a)}
+.exam-tip-label{font-weight:700;color:var(--accent-dark,var(--blue,#1a3a5c));margin-right:.3rem}
+.exam-tip-label .exam-tip-en{font-weight:600;color:var(--muted,#6b7a8d)}
+@media (prefers-color-scheme:dark){
+.exam-tip{background:var(--card,#1c2733);border-color:var(--border,#2f3d4d);color:var(--text,#e6edf5)}
+.exam-tip-label{color:var(--accent-dark,var(--gold-lt,#f5e6b0))}
+.exam-tip-label .exam-tip-en{color:var(--muted,#9fb0c3)}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["EducationalOrganization","LocalBusiness"],"@id":"https://englishonline.training/#organization","name":"EnglishOnline.training","url":"https://englishonline.training/"},{"@type":"Person","@id":"https://activities.englishonline.training/#shaun","name":"Shaun Trezise","url":"https://englishonline.training/"},{"@type":"WebSite","@id":"https://activities.englishonline.training/#website","url":"https://activities.englishonline.training/","name":"EnglishOnline.training — kostenlose Englisch-Übungen","description":"Free interactive English exercises with instant feedback, no sign-up required.","inLanguage":["en","de"],"publisher":{"@id":"https://englishonline.training/#organization"},"isAccessibleForFree":true},{"@type":"LearningResource","@id":"https://activities.englishonline.training/abitur-text-analysis-south-africa.html#resource","name":"Text Analysis: South Africa — Abitur English","description":"Free Abitur English practice pack: analyse a keynote speech on South Africa's Rainbow Nation thirty years after apartheid, with guided annotation tools.","url":"https://activities.englishonline.training/abitur-text-analysis-south-africa.html","inLanguage":"de","isAccessibleForFree":true,"educationalUse":"practice","interactivityType":"active","learningResourceType":["Interactive exercise","Reading comprehension","Writing task"],"author":{"@id":"https://activities.englishonline.training/#shaun"},"publisher":{"@id":"https://englishonline.training/#organization"},"provider":{"@id":"https://englishonline.training/#organization"},"isPartOf":[{"@id":"https://activities.englishonline.training/#website"},{"@type":"CollectionPage","@id":"https://activities.englishonline.training/abitur-activities.html#collection","name":"Abitur English","url":"https://activities.englishonline.training/abitur-activities.html"}],"educationalLevel":{"@type":"DefinedTerm","name":"B2–C1","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Common European Framework of Reference for Languages","url":"https://www.coe.int/en/web/common-european-framework-reference-languages"}},"teaches":["English reading","English writing"],"about":["Text analysis"],"educationalAlignment":{"@type":"AlignmentObject","alignmentType":"educationalSubject","educationalFramework":"Abitur (Berlin/Brandenburg)","targetName":"Abitur Englisch — schriftliche Prüfung"}},{"@type":"BreadcrumbList","@id":"https://activities.englishonline.training/abitur-text-analysis-south-africa.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Übungen","item":"https://activities.englishonline.training/activities.html"},{"@type":"ListItem","position":2,"name":"Abitur","item":"https://activities.englishonline.training/abitur-activities.html"},{"@type":"ListItem","position":3,"name":"Text Analysis: South Africa — Abitur English","item":"https://activities.englishonline.training/abitur-text-analysis-south-africa.html"}]}]}</script>
+<!-- HEAD:END -->
+</head>
+<body>
+<!-- NOSCRIPT:START — generated by scripts/build-head.js, do not edit by hand -->
+<noscript>
+  <div style="background:#fdf3d8;border-bottom:2px solid #c9a227;color:#1d2b3a;padding:.9rem 1rem;font:1rem/1.5 'Segoe UI',system-ui,sans-serif;text-align:center">
+    <strong lang="de">Diese Übung braucht JavaScript.</strong>
+    <span lang="de">Bitte aktiviere JavaScript in deinem Browser — sonst bleiben die Aufgaben leer.</span>
+    <br>
+    <strong>This exercise needs JavaScript.</strong>
+    <span>Please switch JavaScript on in your browser, otherwise the tasks stay empty.</span>
+  </div>
+</noscript>
+<!-- NOSCRIPT:END -->
+<!-- SKIP:START — generated by scripts/build-head.js, do not edit by hand -->
+<a class="eol-skip" href="#main">Skip to content</a>
+<!-- SKIP:END -->
+<!-- GTM:START — generated by scripts/build-head.js, do not edit by hand -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HXNNPCS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- GTM:END -->
+<!-- ABITUR-NAV:START -->
+<style id="abitur-nav-style">
+.abitur-crumbs{max-width:840px;margin:0 auto;padding:.5rem 18px;font-size:.76rem;color:var(--muted,#6b7a8d);font-family:'Segoe UI',system-ui,sans-serif}
+.abitur-crumbs a{color:var(--accent,#00756a);text-decoration:none}
+.abitur-crumbs a:hover{text-decoration:underline}
+.abitur-crumbs .sep{opacity:.5;margin:0 .35rem}
+.abitur-footer{margin-top:2.75rem;padding:1.6rem 1rem;border-top:1px solid var(--border,#e1e8ee);text-align:center;font-size:.8rem;color:var(--muted,#5b6b76);font-family:'Segoe UI',system-ui,sans-serif}
+.abitur-footer nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1.1rem;margin-bottom:.7rem}
+.abitur-footer a{color:var(--accent,#00756a);text-decoration:none;font-weight:600}
+.abitur-footer a:hover{text-decoration:underline}
+.abitur-footer .legal{opacity:.85;font-weight:400}
+@media (prefers-color-scheme:dark){
+.abitur-crumbs a{color:#6fd3d0}
+.abitur-footer{border-top-color:#28394d}
+.abitur-footer a{color:#6fd3d0}
+}
+</style>
+<nav class="abitur-crumbs" aria-label="Breadcrumb">
+  <a href="https://englishonline.training">englishonline.training</a><span class="sep">›</span><a href="activities.html">Activities</a><span class="sep">›</span><a href="abitur-activities.html">Abitur</a><span class="sep">›</span><a href="abitur-text-analysis.html">Text Analysis</a>
+</nav>
+<!-- ABITUR-NAV:END -->
+<header>
+  <div class="inner">
+    <h1>Text Analysis: South Africa — The Rainbow Nation</h1>
+    <div class="tag">Abitur English · 5 Übungen · Sofortiges Feedback</div>
+    <div class="progress-outer"><div class="progress-inner" id="progressBar"></div></div>
+    <div id="progressLabel">Übung 0 von 5 abgeschlossen</div>
+  </div>
+</header>
+
+<div id="main" role="main" class="wrap">
+<!-- OVERVIEW:START — generated by scripts/build-head.js, do not edit by hand -->
+<div class="qo-box" role="note" aria-labelledby="qo-heading">
+  <h2 id="qo-heading" lang="de">Auf einen Blick <span class="qo-en" lang="en">/ At a glance</span></h2>
+  <p class="qo-lede">Free Abitur English practice pack: analyse a keynote speech on South Africa's Rainbow Nation thirty years after apartheid, with guided annotation tools.</p>
+  <dl class="qo-facts" lang="de">
+    <dt>Niveau <span class="qo-en" lang="en">/ Level</span></dt><dd>B2–C1 (GER/CEFR)</dd>
+    <dt>Für <span class="qo-en" lang="en">/ For</span></dt><dd>Abitur</dd>
+    <dt>Fertigkeiten <span class="qo-en" lang="en">/ Skills</span></dt><dd>Leseverstehen <span class="qo-en" lang="en">/ Reading</span>, Schreiben <span class="qo-en" lang="en">/ Writing</span></dd>
+    <dt>Schwerpunkt <span class="qo-en" lang="en">/ Focus</span></dt><dd>Text analysis</dd>
+    <dt>Aufgaben <span class="qo-en" lang="en">/ Tasks</span></dt><dd>5</dd>
+    <dt>Kosten <span class="qo-en" lang="en">/ Cost</span></dt><dd>kostenlos, ohne Anmeldung <span class="qo-en" lang="en">/ free, no sign-up</span></dd>
+  </dl>
+</div>
+<!-- OVERVIEW:END -->
+
+<details class="guide">
+  <summary>📘 Referenzleitfaden: Rhetorische Mittel (zum Nachschlagen)</summary>
+  <div class="guide-body">
+    <div class="device"><b>Anaphora</b> — repetition of the same word or phrase at the start of successive clauses or sentences. <br><i>Example: "We shall fight on the beaches, we shall fight on the landing grounds, we shall fight in the fields."</i></div>
+    <div class="device"><b>Metaphor</b> — describing something as if it were something else, without using "like" or "as". <br><i>Example: "The city was a jungle of concrete and noise."</i></div>
+    <div class="device"><b>Allusion</b> — an indirect reference to a well-known person, event or text that the audience is expected to recognise. <br><i>Example: "She called her start-up her 'moonshot', echoing Kennedy's promise to put a man on the moon."</i></div>
+    <div class="device"><b>Tricolon (list of three)</b> — three parallel words or phrases for rhythm and emphasis. <br><i>Example: "…government of the people, by the people, for the people."</i></div>
+    <div class="device"><b>Antithesis / contrast</b> — placing two opposing ideas close together for effect. <br><i>Example: "It was the best of times, it was the worst of times."</i></div>
+    <div class="device"><b>Rhetorical question</b> — a question asked to make a point rather than to get an answer. <br><i>Example: "Who among us has never made a mistake?"</i></div>
+    <div class="device"><b>Statistic</b> — a number or piece of data used as evidence. <br><i>Example: "Almost two thirds of the world's population now owns a mobile phone."</i></div>
+  </div>
+</details>
+
+<!-- EXERCISE 1 -->
+<div class="exercise active" id="ex1">
+  <h2>Übung 1 · Rhetorische Mittel zuordnen</h2>
+  <p class="instructions">Read the speech below. Match each highlighted quotation to the rhetorical/stylistic device it demonstrates.</p>
+<!-- TIP:START — generated by scripts/build-head.js, do not edit by hand -->
+<div class="exam-tip"><span class="exam-tip-label">💡 Prüfungstipp <span class="exam-tip-en">/ Exam tip</span>:</span> <span class="exam-tip-text">Never name a device without saying what it does to the reader in that sentence — "the text uses a metaphor" earns nothing on its own; naming the effect on the audience is what the mark scheme actually rewards.</span></div>
+<!-- TIP:END -->
+
+  <div class="article-box">
+    <h3>The Rainbow Is Not a Finish Line: Thirty Years of South African Democracy</h3>
+    <div class="byline">Adapted from a keynote address at the Born-Free Youth Summit, Johannesburg</div>
+    <p>Thirty years ago, on an autumn morning much like this one, millions of South Africans stood in queues that curved around schoolyards, church halls and dusty township fields, waiting to cast the first free vote of their lives. <span class="hl" id="q1">Those queues became the first threads of a new national fabric</span>, woven from patience, from courage, and from a hope that had survived decades of brutality. Some of your grandparents stood in those lines for six hours; when they finally emerged, inked fingers held high, they wept — not because the struggle was over, but because it had finally begun to count.</p>
+    <p>You are the generation they queued for. <span class="hl" id="q2">You are the children of "Madiba magic" — the born-frees, raised in the long shadow of Nelson Mandela's walk to freedom.</span> You did not choose this inheritance, but it is yours: a constitution admired across the world, and a country still learning to live up to it.</p>
+    <p>Let no one tell you that nothing has changed. <span class="hl" id="q3">We have built schools where once there were only trees for shade. We have brought clean water to villages that carried it on their heads for generations. We have opened university gates to young people whose parents were turned away from them.</span> That is not nothing. That is the ground on which you stand.</p>
+    <p>And yet honesty is the rent we pay for living in a free country. Almost half of young South Africans who want to work cannot find a job. The child in rural Limpopo and the child in a Sandton suburb still do not share the same classroom, the same hospital queue, or the same chance. <span class="hl" id="q4">What is freedom, if it does not put food on the table? What is a vote, if it cannot buy a textbook?</span></p>
+    <p>The promise of 1994 was never a promise of miracles. It was the promise of a country that works — <span class="hl" id="q5">a country that works for the nurse in Soweto, for the farmer in the Karoo, and for the student sitting in this hall.</span> That promise is not yet kept. But promises of this size are not kept in a single generation; they are handed on, like a baton in a relay race that no one runner can finish alone.</p>
+    <p>So do not let this anniversary become a museum. Memory is a compass, not an anchor. The generation of 1976 faced the dogs and the tear gas so that you could face something harder: the slow, unglamorous work of building — passing exams, starting businesses, holding officials to account, voting in every election, not just the loud ones.</p>
+    <p>My generation's task was to break the chains. Yours is to build the house. The next chapter of this country will not be written in the Union Buildings; it will be written by you — in your lecture halls, in your workshops, in your community meetings, and on your ballots. Take the compass. Run your leg of the race. The rainbow was never the finish line; it is where the real work begins. Thank you.</p>
+  </div>
+
+  <div id="matchList"></div>
+
+  <div class="btn-row">
+    <button class="btn" onclick="checkEx1()">Check Answers</button>
+    <button class="btn" id="next1" style="display:none" onclick="goTo(2)">Next Exercise →</button>
+  </div>
+  <div class="feedback" id="fb1"></div>
+</div>
+
+<!-- EXERCISE 2 -->
+<div class="exercise" id="ex2">
+  <h2>Übung 2 · Purpose, Audience &amp; Tone</h2>
+  <p class="instructions">Answer the following questions about the speech's purpose, intended audience, and tone.</p>
+  <details class="reread">
+    <summary>📄 Read the speech again</summary>
+    <div class="article-box">
+      <p>Thirty years ago, on an autumn morning much like this one, millions of South Africans stood in queues that curved around schoolyards, church halls and dusty township fields, waiting to cast the first free vote of their lives. Those queues became the first threads of a new national fabric, woven from patience, from courage, and from a hope that had survived decades of brutality. Some of your grandparents stood in those lines for six hours; when they finally emerged, inked fingers held high, they wept — not because the struggle was over, but because it had finally begun to count.</p>
+      <p>You are the generation they queued for. You are the children of "Madiba magic" — the born-frees, raised in the long shadow of Nelson Mandela's walk to freedom. You did not choose this inheritance, but it is yours: a constitution admired across the world, and a country still learning to live up to it.</p>
+      <p>Let no one tell you that nothing has changed. We have built schools where once there were only trees for shade. We have brought clean water to villages that carried it on their heads for generations. We have opened university gates to young people whose parents were turned away from them. That is not nothing. That is the ground on which you stand.</p>
+      <p>And yet honesty is the rent we pay for living in a free country. Almost half of young South Africans who want to work cannot find a job. The child in rural Limpopo and the child in a Sandton suburb still do not share the same classroom, the same hospital queue, or the same chance. What is freedom, if it does not put food on the table? What is a vote, if it cannot buy a textbook?</p>
+      <p>The promise of 1994 was never a promise of miracles. It was the promise of a country that works — a country that works for the nurse in Soweto, for the farmer in the Karoo, and for the student sitting in this hall. That promise is not yet kept. But promises of this size are not kept in a single generation; they are handed on, like a baton in a relay race that no one runner can finish alone.</p>
+      <p>So do not let this anniversary become a museum. Memory is a compass, not an anchor. The generation of 1976 faced the dogs and the tear gas so that you could face something harder: the slow, unglamorous work of building — passing exams, starting businesses, holding officials to account, voting in every election, not just the loud ones.</p>
+      <p>My generation's task was to break the chains. Yours is to build the house. The next chapter of this country will not be written in the Union Buildings; it will be written by you — in your lecture halls, in your workshops, in your community meetings, and on your ballots. Take the compass. Run your leg of the race. The rainbow was never the finish line; it is where the real work begins. Thank you.</p>
+    </div>
+  </details>
+  <div id="mcList2"></div>
+  <div class="btn-row">
+    <button class="btn secondary" onclick="goTo(1)">← Back</button>
+    <button class="btn" onclick="checkEx2()">Check Answers</button>
+    <button class="btn" id="next2" style="display:none" onclick="goTo(3)">Next Exercise →</button>
+  </div>
+  <div class="feedback" id="fb2"></div>
+</div>
+
+<!-- EXERCISE 3 -->
+<div class="exercise" id="ex3">
+  <h2>Übung 3 · Wirkung analysieren (Effect Analysis)</h2>
+  <p class="instructions">For each technique below, choose the answer that best explains its effect on the audience.</p>
+  <details class="reread">
+    <summary>📄 Read the speech again</summary>
+    <div class="article-box">
+      <p>Thirty years ago, on an autumn morning much like this one, millions of South Africans stood in queues that curved around schoolyards, church halls and dusty township fields, waiting to cast the first free vote of their lives. Those queues became the first threads of a new national fabric, woven from patience, from courage, and from a hope that had survived decades of brutality. Some of your grandparents stood in those lines for six hours; when they finally emerged, inked fingers held high, they wept — not because the struggle was over, but because it had finally begun to count.</p>
+      <p>You are the generation they queued for. You are the children of "Madiba magic" — the born-frees, raised in the long shadow of Nelson Mandela's walk to freedom. You did not choose this inheritance, but it is yours: a constitution admired across the world, and a country still learning to live up to it.</p>
+      <p>Let no one tell you that nothing has changed. We have built schools where once there were only trees for shade. We have brought clean water to villages that carried it on their heads for generations. We have opened university gates to young people whose parents were turned away from them. That is not nothing. That is the ground on which you stand.</p>
+      <p>And yet honesty is the rent we pay for living in a free country. Almost half of young South Africans who want to work cannot find a job. The child in rural Limpopo and the child in a Sandton suburb still do not share the same classroom, the same hospital queue, or the same chance. What is freedom, if it does not put food on the table? What is a vote, if it cannot buy a textbook?</p>
+      <p>The promise of 1994 was never a promise of miracles. It was the promise of a country that works — a country that works for the nurse in Soweto, for the farmer in the Karoo, and for the student sitting in this hall. That promise is not yet kept. But promises of this size are not kept in a single generation; they are handed on, like a baton in a relay race that no one runner can finish alone.</p>
+      <p>So do not let this anniversary become a museum. Memory is a compass, not an anchor. The generation of 1976 faced the dogs and the tear gas so that you could face something harder: the slow, unglamorous work of building — passing exams, starting businesses, holding officials to account, voting in every election, not just the loud ones.</p>
+      <p>My generation's task was to break the chains. Yours is to build the house. The next chapter of this country will not be written in the Union Buildings; it will be written by you — in your lecture halls, in your workshops, in your community meetings, and on your ballots. Take the compass. Run your leg of the race. The rainbow was never the finish line; it is where the real work begins. Thank you.</p>
+    </div>
+  </details>
+  <div id="mcList3"></div>
+  <div class="btn-row">
+    <button class="btn secondary" onclick="goTo(2)">← Back</button>
+    <button class="btn" onclick="checkEx3()">Check Answers</button>
+    <button class="btn" id="next3" style="display:none" onclick="goTo(4)">Next Exercise →</button>
+  </div>
+  <div class="feedback" id="fb3"></div>
+</div>
+
+<!-- EXERCISE 4 -->
+<div class="exercise" id="ex4">
+  <h2>Übung 4 · Aufbau eines Analyseaufsatzes ordnen</h2>
+  <p class="instructions">Click the paragraph descriptions below in the correct order to build a well-structured analysis essay.</p>
+  <div class="order-pool" id="orderPool4"></div>
+  <div class="order-slots" id="orderSlots4"></div>
+  <div class="btn-row">
+    <button class="btn secondary" onclick="goTo(3)">← Back</button>
+    <button class="btn" onclick="checkEx4()">Check Answers</button>
+    <button class="btn" id="next4" style="display:none" onclick="goTo(5)">Next Exercise →</button>
+  </div>
+  <div class="feedback" id="fb4"></div>
+</div>
+
+<!-- EXERCISE 5 -->
+<div class="exercise" id="ex5">
+  <h2>Übung 5 · Vollständige Analyse schreiben</h2>
+  <p class="instructions">Write a full analysis paragraph (150–200 words) examining how the speaker uses language to persuade her audience.</p>
+  <details class="reread">
+    <summary>📄 Read the speech again</summary>
+    <div class="article-box">
+      <p>Thirty years ago, on an autumn morning much like this one, millions of South Africans stood in queues that curved around schoolyards, church halls and dusty township fields, waiting to cast the first free vote of their lives. Those queues became the first threads of a new national fabric, woven from patience, from courage, and from a hope that had survived decades of brutality. Some of your grandparents stood in those lines for six hours; when they finally emerged, inked fingers held high, they wept — not because the struggle was over, but because it had finally begun to count.</p>
+      <p>You are the generation they queued for. You are the children of "Madiba magic" — the born-frees, raised in the long shadow of Nelson Mandela's walk to freedom. You did not choose this inheritance, but it is yours: a constitution admired across the world, and a country still learning to live up to it.</p>
+      <p>Let no one tell you that nothing has changed. We have built schools where once there were only trees for shade. We have brought clean water to villages that carried it on their heads for generations. We have opened university gates to young people whose parents were turned away from them. That is not nothing. That is the ground on which you stand.</p>
+      <p>And yet honesty is the rent we pay for living in a free country. Almost half of young South Africans who want to work cannot find a job. The child in rural Limpopo and the child in a Sandton suburb still do not share the same classroom, the same hospital queue, or the same chance. What is freedom, if it does not put food on the table? What is a vote, if it cannot buy a textbook?</p>
+      <p>The promise of 1994 was never a promise of miracles. It was the promise of a country that works — a country that works for the nurse in Soweto, for the farmer in the Karoo, and for the student sitting in this hall. That promise is not yet kept. But promises of this size are not kept in a single generation; they are handed on, like a baton in a relay race that no one runner can finish alone.</p>
+      <p>So do not let this anniversary become a museum. Memory is a compass, not an anchor. The generation of 1976 faced the dogs and the tear gas so that you could face something harder: the slow, unglamorous work of building — passing exams, starting businesses, holding officials to account, voting in every election, not just the loud ones.</p>
+      <p>My generation's task was to break the chains. Yours is to build the house. The next chapter of this country will not be written in the Union Buildings; it will be written by you — in your lecture halls, in your workshops, in your community meetings, and on your ballots. Take the compass. Run your leg of the race. The rainbow was never the finish line; it is where the real work begins. Thank you.</p>
+    </div>
+  </details>
+  <div class="prompt-card selected">
+    <b>Focus:</b> Analyse how the speaker uses the anaphora of progress, the allusion to Mandela, and the closing direct address to persuade her young audience to continue the work of the anti-apartheid generation.
+  </div>
+  <textarea id="essayText" oninput="updateWordCount()" placeholder="Write your analysis paragraph here..."></textarea>
+  <div class="wordcount"><span id="wc">0</span> Wörter</div>
+  <div class="btn-row">
+    <button class="btn secondary" onclick="goTo(4)">← Back</button>
+    <button class="btn" onclick="submitEx5()">Submit &amp; Show Rubric</button>
+  </div>
+  <div id="ex5feedback" style="display:none">
+    <h3 style="color:var(--accent-dark);margin-top:24px;">Selbsteinschätzung</h3>
+    <div id="rubricList"></div>
+    <div class="model-para">
+      <b>Model paragraph:</b><br><br>
+      The speaker anchors her appeal in a mounting <span class="annot">anaphora</span> — "We have built schools… We have brought clean water… We have opened university gates" — whose accumulated rhythm transforms national progress into a shared, collective achievement in which every listener can take pride. She then invokes an <span class="annot">allusion</span> to "Madiba magic" and Mandela's "walk to freedom", borrowing the moral authority of the country's most revered figure to present the born-free generation as the rightful heirs of his struggle. Finally, the speech closes with a <span class="annot">direct address</span> — "it will be written by you" — which deliberately shifts responsibility from the speaker's generation to the audience, converting reflection into a personal call to action. Together, these devices allow the speaker to balance pride with urgency: her listeners are made to feel both grateful heirs and necessary agents of an unfinished project.
+    </div>
+    <div class="btn-row">
+      <button class="btn" id="finalBtn" style="display:none" onclick="showFinal()">See Final Score →</button>
+    </div>
+  </div>
+</div>
+
+<div id="finalScore">
+  <h2>🎉 Alle Übungen abgeschlossen!</h2>
+  <p id="finalSummary"></p>
+  <div class="score-grid" id="scoreGrid"></div>
+</div>
+
+</div>
+
+<script>
+const scores = {ex1:0,ex2:0,ex3:0,ex4:0,ex5:0};
+const maxScores = {ex1:5,ex2:4,ex3:4,ex4:5,ex5:10};
+function goTo(n){document.querySelectorAll('.exercise').forEach(e=>e.classList.remove('active'));document.getElementById('ex'+n).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+function updateProgress(n){document.getElementById('progressBar').style.width=(n/5*100)+'%';document.getElementById('progressLabel').textContent=`Übung ${n} von 5 abgeschlossen`;}
+function showFeedbackBox(id,correct,max){const fb=document.getElementById(id);const pct=correct/max;fb.className='feedback show '+(pct===1?'perfect':pct>=0.6?'good':'poor');fb.textContent=(pct===1?'✅ Perfekt! ':pct>=0.6?'👍 Gut gemacht! ':'❌ Noch nicht ganz. ')+`Punktzahl: ${correct}/${max}`;}
+
+const ex1Data=[
+  {id:'q1', text:'"Those queues became the first threads of a new national fabric"', answer:'Metaphor'},
+  {id:'q2', text:'"You are the children of \'Madiba magic\' — the born-frees, raised in the long shadow of Nelson Mandela\'s walk to freedom."', answer:'Allusion'},
+  {id:'q3', text:'"We have built schools where once there were only trees for shade. We have brought clean water to villages that carried it on their heads for generations. We have opened university gates to young people whose parents were turned away from them."', answer:'Anaphora'},
+  {id:'q4', text:'"What is freedom, if it does not put food on the table? What is a vote, if it cannot buy a textbook?"', answer:'Rhetorical question'},
+  {id:'q5', text:'"…a country that works for the nurse in Soweto, for the farmer in the Karoo, and for the student sitting in this hall."', answer:'Tricolon (list of three)'}
+];
+const deviceOptions=['Anaphora','Metaphor','Allusion','Tricolon (list of three)','Antithesis / contrast','Rhetorical question','Statistic'];
+function buildEx1(){
+  const container=document.getElementById('matchList');
+  ex1Data.forEach(d=>{
+    const row=document.createElement('div');row.className='match-row';
+    const shuffled=[...deviceOptions].sort(()=>Math.random()-0.5);
+    let opts=`<option value="">-- choose --</option>`+shuffled.map(o=>`<option value="${o}">${o}</option>`).join('');
+    row.innerHTML=`<div class="match-quote">${d.text}</div><select id="sel_${d.id}">${opts}</select>`;
+    container.appendChild(row);
+  });
+}
+function checkEx1(){
+  let correct=0;
+  ex1Data.forEach(d=>{
+    const sel=document.getElementById('sel_'+d.id);sel.disabled=true;
+    if(sel.value===d.answer){sel.classList.add('correct');correct++;}else{sel.classList.add('wrong');}
+  });
+  scores.ex1=correct;showFeedbackBox('fb1',correct,5);document.getElementById('next1').style.display='inline-block';updateProgress(1);
+}
+
+const ex2Data=[
+  {q:'What is the speaker\'s primary purpose?', opts:['To celebrate South Africa\'s achievements without mentioning its problems','To announce a new political party for young voters','To honour the sacrifices of 1994 while urging young South Africans to tackle the inequality that remains','To prove that the anti-apartheid struggle achieved nothing'], correct:2},
+  {q:'Who is the most likely intended audience?', opts:['Young South Africans born after 1994 — the "born-free" generation','Foreign diplomats attending a United Nations summit','Veterans of the anti-apartheid struggle only','Primary school children learning about history'], correct:0},
+  {q:'How would you best describe the overall tone?', opts:['Bitter and resigned','Purely celebratory and uncritical','Sarcastic and dismissive','Hopeful and proud, yet urgent and honest about unresolved problems'], correct:3},
+  {q:'What kind of text is this?', opts:['A news report on an election result','A keynote speech at a youth summit','A university lecture on constitutional law','A letter to the editor of a newspaper'], correct:1}
+];
+function buildMC(containerId,data){
+  const container=document.getElementById(containerId);
+  data.forEach((item,qi)=>{
+    const block=document.createElement('div');block.className='mc-q';block.id=containerId+'_q'+qi;
+    let optsHtml=item.opts.map((o,oi)=>`<div class="mc-opt" data-oi="${oi}" onclick="selectOpt('${containerId}_q${qi}',${oi})">${o}</div>`).join('');
+    block.innerHTML=`<p class="qtext">${qi+1}. ${item.q}</p>${optsHtml}`;
+    container.appendChild(block);
+  });
+}
+function selectOpt(blockId,oi){
+  const block=document.getElementById(blockId);if(block.classList.contains('locked'))return;
+  block.querySelectorAll('.mc-opt').forEach(o=>o.classList.remove('selected'));
+  block.querySelector(`.mc-opt[data-oi="${oi}"]`).classList.add('selected');block.dataset.selected=oi;
+}
+function checkMC(containerId,data,scoreKey,fbId,nextId){
+  let correct=0;
+  data.forEach((item,qi)=>{
+    const block=document.getElementById(containerId+'_q'+qi);block.classList.add('locked');
+    const sel=block.dataset.selected;
+    block.querySelectorAll('.mc-opt').forEach(o=>{
+      const oi=parseInt(o.dataset.oi);
+      if(oi===item.correct)o.classList.add('correct');
+      else if(sel!==undefined && parseInt(sel)===oi)o.classList.add('wrong');
+    });
+    if(sel!==undefined && parseInt(sel)===item.correct)correct++;
+  });
+  scores[scoreKey]=correct;showFeedbackBox(fbId,correct,data.length);document.getElementById(nextId).style.display='inline-block';
+}
+function checkEx2(){checkMC('mcList2',ex2Data,'ex2','fb2','next2');updateProgress(2);}
+
+const ex3Data=[
+  {q:'What effect does the opening image of the 1994 voting queues create?', opts:['It creates an emotional, shared memory that reminds the audience what freedom cost and lends the speaker moral authority','It delays the speech unnecessarily with irrelevant history','It suggests that nothing has changed since 1994','It criticises the older generation for waiting passively in lines'], correct:0},
+  {q:'What is the effect of the anaphora "We have built… We have brought… We have opened…"?', opts:['It lists unrelated facts to fill time','It minimises the country\'s achievements by repeating them','The repetition builds rhythm and momentum, presenting progress as a collective achievement the audience shares in','It shows the speaker has lost track of her argument'], correct:2},
+  {q:'What is the effect of the antithesis "Memory is a compass, not an anchor"?', opts:['It tells the audience to forget history entirely','The balanced contrast captures the speech\'s central message — honour the past without being held back by it — in a compact, memorable form','It contradicts the speaker\'s earlier praise of the 1994 voters','It is a navigation image with no link to the topic'], correct:1},
+  {q:'What is the effect of the closing direct address ("it will be written by you")?', opts:['It politely ends the speech without asking anything of the audience','It blames young people for the country\'s problems','It shifts attention away from the audience towards the government','It transfers responsibility directly to the audience, turning the speech into a personal call to action'], correct:3}
+];
+function checkEx3(){checkMC('mcList3',ex3Data,'ex3','fb3','next3');updateProgress(3);}
+
+const ex4Items=[
+  {id:0,text:'Names the text, author/source, and states the overall purpose and main argument of the essay.'},
+  {id:1,text:'Looks at what claims the speech makes and how it is organised.'},
+  {id:2,text:'Looks at key rhetorical devices and their effect on the audience.'},
+  {id:3,text:'Weighs up how convincingly the speaker achieves her purpose for the intended audience.'},
+  {id:4,text:'Rounds off the essay with a final judgement on the text\'s overall impact.'}
+];
+let ex4Order=[];
+function buildEx4(){
+  const pool=document.getElementById('orderPool4');const slots=document.getElementById('orderSlots4');
+  const shuffled=[...ex4Items].sort(()=>Math.random()-0.5);
+  shuffled.forEach(item=>{
+    const el=document.createElement('div');el.className='order-item';el.textContent=item.text;el.dataset.id=item.id;
+    el.onclick=()=>addToOrder(item.id,el);pool.appendChild(el);
+  });
+  for(let i=0;i<5;i++){
+    const slot=document.createElement('div');slot.className='order-slot';slot.id='slot4_'+i;
+    slot.innerHTML=`<span class="badge">${i+1}</span><span class="slot-text" style="color:var(--muted)">—</span>`;
+    slots.appendChild(slot);
+  }
+}
+function addToOrder(id,el){
+  if(ex4Order.length>=5)return;el.classList.add('used');ex4Order.push(id);
+  const idx=ex4Order.length-1;const slot=document.getElementById('slot4_'+idx);
+  slot.querySelector('.slot-text').textContent=ex4Items.find(i=>i.id===id).text;
+  slot.querySelector('.slot-text').style.color='var(--text)';slot.dataset.itemId=id;
+}
+function checkEx4(){
+  let correct=0;
+  for(let i=0;i<5;i++){
+    const slot=document.getElementById('slot4_'+i);const itemId=parseInt(slot.dataset.itemId);
+    if(itemId===i){slot.classList.add('correct');correct++;}else{slot.classList.add('wrong');}
+  }
+  scores.ex4=correct;showFeedbackBox('fb4',correct,5);document.getElementById('next4').style.display='inline-block';updateProgress(4);
+}
+
+function updateWordCount(){const t=document.getElementById('essayText').value.trim();document.getElementById('wc').textContent=t?t.split(/\s+/).length:0;}
+const rubricCriteria=[
+  'I named the text type, source, and speaker.',
+  'I stated the main purpose and argument of the speech.',
+  'I identified at least two specific rhetorical/stylistic devices with quotations.',
+  'I explained the effect of each device on the audience, not just named it.',
+  'I discussed the intended audience.',
+  'I discussed the overall tone.',
+  'I used appropriate analytical vocabulary (e.g. "conveys", "reinforces", "juxtaposes").',
+  'I linked my points back to the speaker\'s overall purpose.',
+  'My paragraph has a clear structure (topic sentence, evidence, analysis).',
+  'My English is grammatically accurate and my register is formal/academic.'
+];
+function submitEx5(){
+  const list=document.getElementById('rubricList');list.innerHTML='';
+  rubricCriteria.forEach((c,i)=>{
+    const row=document.createElement('label');row.className='rubric-item';
+    row.innerHTML=`<input type="checkbox" onchange="updateRubricScore()" id="rub5_${i}"><span>${c}</span>`;
+    list.appendChild(row);
+  });
+  document.getElementById('ex5feedback').style.display='block';
+}
+function updateRubricScore(){
+  let ticked=0;rubricCriteria.forEach((c,i)=>{if(document.getElementById('rub5_'+i).checked)ticked++;});
+  scores.ex5=ticked;document.getElementById('finalBtn').style.display = ticked>=7 ? 'inline-block':'none';updateProgress(5);
+}
+function showFinal(){
+  document.querySelectorAll('.exercise').forEach(e=>e.classList.remove('active'));
+  const grid=document.getElementById('scoreGrid');grid.innerHTML='';
+  const names={ex1:'Übung 1 · Rhetorical Devices',ex2:'Übung 2 · Purpose/Audience/Tone',ex3:'Übung 3 · Effect Analysis',ex4:'Übung 4 · Essay Structure',ex5:'Übung 5 · Full Analysis'};
+  let total=0,max=0;
+  Object.keys(scores).forEach(k=>{
+    total+=scores[k];max+=maxScores[k];
+    const card=document.createElement('div');card.className='score-card';
+    card.innerHTML=`<div class="name">${names[k]}</div><div class="val">${scores[k]}/${maxScores[k]}</div>`;
+    grid.appendChild(card);
+  });
+  document.getElementById('finalSummary').textContent=`Gesamtpunktzahl: ${total} von ${max}`;
+  document.getElementById('finalScore').style.display='block';window.scrollTo({top:0,behavior:'smooth'});
+}
+buildEx1();buildMC('mcList2',ex2Data);buildMC('mcList3',ex3Data);buildEx4();
+</script>
+<!-- ABITUR-FOOTER:START -->
+<footer class="abitur-footer">
+  <nav aria-label="Pages">
+    <a href="activities.html">All Exercises</a>
+    <a href="abitur-activities.html">Abitur</a>
+    <a href="grammar-activities.html">Grammar Exercises</a>
+    <a href="themen/index.html">Grammar Topics</a>
+    <a href="uni-activities.html">University</a>
+    <a href="business-activities.html">Business</a>
+    <a href="it-activities.html">IT</a>
+    <a href="mailto:englishonlinetraining@pm.me">Contact</a>
+  </nav>
+  <div class="legal">© EnglishOnline.Training ·
+    <a href="https://englishonline.training">Website</a> ·
+    <a href="https://englishonline.training/impressum/">Impressum</a> ·
+    <a href="https://englishonline.training/privacy-policy/">Privacy</a>
+  </div>
+</footer>
+<!-- ABITUR-FOOTER:END -->
+</body>
+</html>
