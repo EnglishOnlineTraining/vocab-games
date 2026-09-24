@@ -1,0 +1,29 @@
+{
+  "name": "vocab-games",
+  "version": "1.0.0",
+  "description": "Interactive English exercises for Gymnasium (Klassen 7–10), MSA, Abitur, Business, IT and University English. A plain static site — no framework, no bundler — served via GitHub Pages at [activities.englishonline.training](https://activities.englishonline.training).",
+  "main": "esl-grammar-pool.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "npx playwright test",
+    "test:placement": "npx playwright test tests/placement-quiz.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EnglishOnlineTraining/vocab-games.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/EnglishOnlineTraining/vocab-games/issues"
+  },
+  "homepage": "https://github.com/EnglishOnlineTraining/vocab-games#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.63.0"
+  }
+}
