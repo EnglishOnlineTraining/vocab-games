@@ -379,7 +379,7 @@ const scores = {ex1:0,ex2:0,ex3:0,ex4:0,ex5:0};
 const maxScores = {ex1:6,ex2:4,ex3:4,ex4:4,ex5:10};
 function goTo(n){document.querySelectorAll('.exercise').forEach(e=>e.classList.remove('active'));document.getElementById('ex'+n).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
 function updateProgress(n){document.getElementById('progressBar').style.width=(n/5*100)+'%';document.getElementById('progressLabel').textContent=`Übung ${n} von 5 abgeschlossen`;}
-function showFeedbackBox(id,correct,max){const fb=document.getElementById(id);const pct=correct/max;fb.className='feedback show '+(pct===1?'perfect':pct>=0.6?'good':'poor');fb.textContent=(pct===1?'✅ Perfekt! ':pct>=0.6?'👍 Gut gemacht! ':'❌ Noch nicht ganz. ')+`Punktzahl: ${correct}/${max}`;}
+function showFeedbackBox(id,correct,max){const fb=document.getElementById(id);const pct=correct/max;fb.className='feedback show '+(pct===1?'perfect':pct>=0.6?'good':'poor');fb.textContent=(pct===1?'✅ Perfect! ':pct>=0.6?'👍 Well done! ':'❌ Not quite. ')+`Score: ${correct}/${max}`;}
 
 const ex1Data=[
   {id:'s1', text:'"Younger generations increasingly see British identity as a blend of cultures."', answer:'Main idea'},
@@ -547,9 +547,9 @@ function submitByEmail(){
   var total=0,max=0;
   Object.keys(scores).forEach(function(k){total+=scores[k];max+=maxScores[k];});
   var essayEl=document.getElementById('essayText');
-  var body=UNIT+' \u2014 '+nm+' ('+cls+')\n\nPunktzahl: '+total+'/'+max+'\n';
+  var body=UNIT+' \u2014 '+nm+' ('+cls+')\n\nScore: '+total+'/'+max+'\n';
   Object.keys(scores).forEach(function(k){body+=k+': '+scores[k]+'/'+maxScores[k]+'\n';});
-  if(essayEl&&essayEl.value.trim())body+='\nFreitext:\n'+essayEl.value.trim();
+  if(essayEl&&essayEl.value.trim())body+='\nEssay:\n'+essayEl.value.trim();
   var a=document.createElement('a');
   a.href='mailto:'+TEACHER_EMAIL+'?subject='+encodeURIComponent(UNIT+' \u2014 '+nm+' \u2014 '+cls)+'&body='+encodeURIComponent(body);
   a.style.display='none';document.body.appendChild(a);a.click();
