@@ -347,7 +347,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       The article examines how constant access to news through smartphones has changed media consumption habits in the USA. It uses the example of a college student who checks multiple news apps within minutes of waking up to illustrate how normalised near-constant news consumption has become. The writer cites survey data showing that the majority of American adults now get news from smartphones, and that many feel overwhelmed by its volume. The article also highlights a debate over responsibility: media companies claim they are meeting audience demand, while critics argue that algorithms are designed to maximise attention rather than inform. It concludes that this constant news cycle has become a defining, and demanding, feature of modern life.
     </div>
     <div class="btn-row">
-      <button class="btn" id="finalBtn" style="display:none" onclick="showFinal()">See Final Score →</button>
+      <button class="btn" id="finalBtn" onclick="showFinal()">See Final Score →</button>
     </div>
   </div>
 </div>
@@ -485,7 +485,7 @@ function submitEx5(){
 }
 function updateRubricScore(){
   let ticked=0;rubricCriteria.forEach((c,i)=>{if(document.getElementById('rub5_'+i).checked)ticked++;});
-  scores.ex5=ticked;document.getElementById('finalBtn').style.display = ticked>=7 ? 'inline-block':'none';updateProgress(5);
+  scores.ex5=ticked;updateProgress(5);
 }
 function showFinal(){
   document.querySelectorAll('.exercise').forEach(e=>e.classList.remove('active'));

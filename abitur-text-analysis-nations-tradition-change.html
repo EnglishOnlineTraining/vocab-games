@@ -378,7 +378,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       The writer closes her argument with a striking <span class="annot">balanced metaphor</span> — the image of a nation that "can hold the crown in one hand and the future in the other" — which neatly resolves the tension the article has built between tradition and change. This is reinforced throughout by a pattern of <span class="annot">juxtaposition</span>: "a parish church beside a halal butcher", "a red telephone box beside a bubble-tea shop". By placing symbols of old and new Britain directly next to one another, the writer visually enacts her central claim that these elements coexist rather than compete. The personification of tradition as something that is not "a museum piece gathering dust" but instead "a living, breathing negotiation" further reframes cultural change as natural and ongoing rather than threatening. Together, these devices guide the reader towards a hopeful, inclusive reading of British identity as something flexible and continually renewed.
     </div>
     <div class="btn-row">
-      <button class="btn" id="finalBtn" style="display:none" onclick="showFinal()">See Final Score →</button>
+      <button class="btn" id="finalBtn" onclick="showFinal()">See Final Score →</button>
     </div>
   </div>
 </div>
@@ -592,7 +592,7 @@ function updateRubricScore(){
   let ticked=0;
   rubricCriteria.forEach((c,i)=>{if(document.getElementById('rub5_'+i).checked)ticked++;});
   scores.ex5=ticked;
-  document.getElementById('finalBtn').style.display = ticked>=7 ? 'inline-block':'none';
+  
   updateProgress(5);
 }
 

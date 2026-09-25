@@ -325,7 +325,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="annot">On the other hand</span>, critics argue that social media has amplified misinformation and contributed to declining mental health among American teenagers. A 2023 Pew Research study found that nearly half of US teens describe their social media use as "almost constant", a pattern researchers have linked to rising rates of anxiety. <span class="annot">As a result</span>, several US states have begun introducing legislation to restrict social media access for minors. <span class="annot">Although</span> social media undeniably helps people stay connected and informed, this evidence suggests that its unregulated use carries real psychological and societal costs.
     </div>
     <div class="btn-row">
-      <button class="btn" id="finalBtn" style="display:none" onclick="showFinal()">See Final Score →</button>
+      <button class="btn" id="finalBtn" onclick="showFinal()">See Final Score →</button>
     </div>
   </div>
 </div>
@@ -489,7 +489,7 @@ function submitEx5(){
 }
 function updateRubricScore(){
   let ticked=0;rubricCriteria.forEach((c,i)=>{if(document.getElementById('rub5_'+i).checked)ticked++;});
-  scores.ex5=ticked;document.getElementById('finalBtn').style.display = ticked>=7 ? 'inline-block':'none';updateProgress(5);
+  scores.ex5=ticked;updateProgress(5);
 }
 function showFinal(){
   document.querySelectorAll('.exercise').forEach(e=>e.classList.remove('active'));

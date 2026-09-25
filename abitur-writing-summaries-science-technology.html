@@ -347,7 +347,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       The article examines the growing role of artificial intelligence in professional fields such as medicine. It describes how a radiologist's diagnosis was improved by an AI system that detected a tumour she had initially missed, illustrating how AI has moved from experimental technology to reliable infrastructure. The writer cites data showing that AI now assists in a significant proportion of medical diagnoses worldwide. However, the article also acknowledges a divide in opinion: some see this development as a path to better healthcare, while others worry about a loss of human expertise and accountability. It concludes that AI's presence is now unavoidable, making thoughtful human oversight essential.
     </div>
     <div class="btn-row">
-      <button class="btn" id="finalBtn" style="display:none" onclick="showFinal()">See Final Score →</button>
+      <button class="btn" id="finalBtn" onclick="showFinal()">See Final Score →</button>
     </div>
   </div>
 </div>
@@ -485,7 +485,7 @@ function submitEx5(){
 }
 function updateRubricScore(){
   let ticked=0;rubricCriteria.forEach((c,i)=>{if(document.getElementById('rub5_'+i).checked)ticked++;});
-  scores.ex5=ticked;document.getElementById('finalBtn').style.display = ticked>=7 ? 'inline-block':'none';updateProgress(5);
+  scores.ex5=ticked;updateProgress(5);
 }
 function showFinal(){
   document.querySelectorAll('.exercise').forEach(e=>e.classList.remove('active'));

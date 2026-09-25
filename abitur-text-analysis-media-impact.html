@@ -375,7 +375,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       The writer opens with a <span class="annot">direct address</span> to the reader — "Where do you get your news now...?" — which immediately implicates the audience in the habits the article goes on to criticise, making the issue feel personal rather than abstract. This is reinforced by the detailed <span class="annot">case study</span> of Jordan Mills, whose specific, almost obsessive routine ("six different news apps before breakfast") transforms a general trend into a vivid, individual portrait of media overload. The article's closing sentence relies on a <span class="annot">personification</span> of "the feed", which "never sleeps" — a phrase that subtly equates the platform with a living, tireless entity that has begun to control human rhythms rather than serve them. Together, these techniques build a persuasive but balanced case that modern media consumption, while informative, carries a genuine psychological cost.
     </div>
     <div class="btn-row">
-      <button class="btn" id="finalBtn" style="display:none" onclick="showFinal()">See Final Score →</button>
+      <button class="btn" id="finalBtn" onclick="showFinal()">See Final Score →</button>
     </div>
   </div>
 </div>
@@ -539,7 +539,7 @@ function submitEx5(){
 }
 function updateRubricScore(){
   let ticked=0;rubricCriteria.forEach((c,i)=>{if(document.getElementById('rub5_'+i).checked)ticked++;});
-  scores.ex5=ticked;document.getElementById('finalBtn').style.display = ticked>=7 ? 'inline-block':'none';updateProgress(5);
+  scores.ex5=ticked;updateProgress(5);
 }
 function showFinal(){
   document.querySelectorAll('.exercise').forEach(e=>e.classList.remove('active'));

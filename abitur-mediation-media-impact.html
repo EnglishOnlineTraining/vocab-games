@@ -344,7 +344,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       Constant access to news through smartphones has fundamentally changed how Americans stay informed. Jordan Mills, a 19-year-old student from Atlanta, illustrates this well: he checks his phone within ninety seconds of waking up and sees over 200 headlines before his first class even starts. This isn't unusual — a 2023 Pew Research study found that 86% of American adults now get at least some of their news from smartphones, and nearly half feel "worn out" by the sheer volume. Media companies claim they are simply meeting demand, but critics argue that algorithms are designed to maximise attention rather than to inform, meaning the constant news cycle may be as manufactured as it is consumed.
     </div>
     <div class="btn-row">
-      <button class="btn" id="finalBtn" style="display:none" onclick="showFinal()">See Final Score →</button>
+      <button class="btn" id="finalBtn" onclick="showFinal()">See Final Score →</button>
     </div>
   </div>
 </div>
@@ -501,7 +501,7 @@ function submitEx5(){
 }
 function updateRubricScore(){
   let ticked=0;rubricCriteria.forEach((c,i)=>{if(document.getElementById('rub5_'+i).checked)ticked++;});
-  scores.ex5=ticked;document.getElementById('finalBtn').style.display = ticked>=7 ? 'inline-block':'none';updateProgress(5);
+  scores.ex5=ticked;updateProgress(5);
 }
 function showFinal(){
   document.querySelectorAll('.exercise').forEach(e=>e.classList.remove('active'));

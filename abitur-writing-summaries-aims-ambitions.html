@@ -348,7 +348,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       The article discusses how young Americans are redefining ambition and success. It explains that, unlike previous generations who prioritised career advancement and financial stability, many workers under thirty now value free time and personal boundaries above salary and status. The writer illustrates this shift through the example of Daniel Ruiz, who deliberately works fewer hours than his father did and reports being happier as a result. The article also cites survey data showing that a majority of young American workers rank work-life balance above pay. It concludes that this change should not be seen as laziness, but rather as a rational adaptation to a career system that younger generations no longer trust.
     </div>
     <div class="btn-row">
-      <button class="btn" id="finalBtn" style="display:none" onclick="showFinal()">See Final Score →</button>
+      <button class="btn" id="finalBtn" onclick="showFinal()">See Final Score →</button>
     </div>
   </div>
 </div>
@@ -491,7 +491,7 @@ function submitEx5(){
 }
 function updateRubricScore(){
   let ticked=0;rubricCriteria.forEach((c,i)=>{if(document.getElementById('rub5_'+i).checked)ticked++;});
-  scores.ex5=ticked;document.getElementById('finalBtn').style.display = ticked>=7 ? 'inline-block':'none';updateProgress(5);
+  scores.ex5=ticked;updateProgress(5);
 }
 function showFinal(){
   document.querySelectorAll('.exercise').forEach(e=>e.classList.remove('active'));

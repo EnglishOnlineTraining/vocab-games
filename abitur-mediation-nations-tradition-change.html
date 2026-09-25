@@ -344,7 +344,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       A German cultural magazine recently explored how British identity is changing among younger generations. It describes Priya Chowdhury, a sixteen-year-old from Wrexham, who sings in a Welsh-language choir and celebrates Diwali with her grandmother — for her, being British isn't one fixed tradition but a mix of different cultural influences. This isn't unusual: a 2024 survey found that 57% of under-35s describe their identity as "British and something else", compared to only 24% of over-65s. However, traditional symbols like the monarchy and the Sunday roast haven't disappeared — they simply now exist alongside newer influences, showing that Britain is learning to combine tradition with change rather than choosing between them.
     </div>
     <div class="btn-row">
-      <button class="btn" id="finalBtn" style="display:none" onclick="showFinal()">See Final Score →</button>
+      <button class="btn" id="finalBtn" onclick="showFinal()">See Final Score →</button>
     </div>
   </div>
 </div>
@@ -501,7 +501,7 @@ function submitEx5(){
 }
 function updateRubricScore(){
   let ticked=0;rubricCriteria.forEach((c,i)=>{if(document.getElementById('rub5_'+i).checked)ticked++;});
-  scores.ex5=ticked;document.getElementById('finalBtn').style.display = ticked>=7 ? 'inline-block':'none';updateProgress(5);
+  scores.ex5=ticked;updateProgress(5);
 }
 function showFinal(){
   document.querySelectorAll('.exercise').forEach(e=>e.classList.remove('active'));

@@ -375,7 +375,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       The writer grounds her argument in a specific <span class="annot">case study</span> — Dr. Okafor, whose missed tumour was caught by an AI system — which transforms an abstract technological debate into a vivid, human-scale example the reader can immediately grasp. This anecdote is reinforced by a <span class="annot">statistic</span> ("AI tools now assist in over 30% of medical diagnoses"), which lends the personal story wider credibility and signals that Dr. Okafor's experience is part of a much larger pattern. The article's closing line rests on a carefully balanced <span class="annot">antithesis</span> — "not whether artificial intelligence will shape our future, but how wisely we choose to shape it back" — which reframes the debate away from resistance and towards responsibility. Together, these techniques allow the writer to present AI neither as a threat nor a miracle, but as an inevitable force that human judgement must actively guide.
     </div>
     <div class="btn-row">
-      <button class="btn" id="finalBtn" style="display:none" onclick="showFinal()">See Final Score →</button>
+      <button class="btn" id="finalBtn" onclick="showFinal()">See Final Score →</button>
     </div>
   </div>
 </div>
@@ -539,7 +539,7 @@ function submitEx5(){
 }
 function updateRubricScore(){
   let ticked=0;rubricCriteria.forEach((c,i)=>{if(document.getElementById('rub5_'+i).checked)ticked++;});
-  scores.ex5=ticked;document.getElementById('finalBtn').style.display = ticked>=7 ? 'inline-block':'none';updateProgress(5);
+  scores.ex5=ticked;updateProgress(5);
 }
 function showFinal(){
   document.querySelectorAll('.exercise').forEach(e=>e.classList.remove('active'));

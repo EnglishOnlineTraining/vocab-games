@@ -344,7 +344,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       Fifty years ago, a computer capable of holding a conversation was purely science fiction — today, similar technology fits quietly in millions of pockets. Dr. Amara Okafor, a radiologist in Toronto, experienced this shift firsthand last year when an AI system detected a tumour on a scan that she herself had initially missed. For her, artificial intelligence is no longer a novelty but a reliable colleague. According to a recent industry report, AI tools now assist in over 30% of medical diagnoses in leading hospitals worldwide. While optimists expect AI to bring longer, healthier lives, sceptics worry about a loss of human expertise and accountability. Either way, the technology is already here — the real question is how wisely we choose to guide it.
     </div>
     <div class="btn-row">
-      <button class="btn" id="finalBtn" style="display:none" onclick="showFinal()">See Final Score →</button>
+      <button class="btn" id="finalBtn" onclick="showFinal()">See Final Score →</button>
     </div>
   </div>
 </div>
@@ -501,7 +501,7 @@ function submitEx5(){
 }
 function updateRubricScore(){
   let ticked=0;rubricCriteria.forEach((c,i)=>{if(document.getElementById('rub5_'+i).checked)ticked++;});
-  scores.ex5=ticked;document.getElementById('finalBtn').style.display = ticked>=7 ? 'inline-block':'none';updateProgress(5);
+  scores.ex5=ticked;updateProgress(5);
 }
 function showFinal(){
   document.querySelectorAll('.exercise').forEach(e=>e.classList.remove('active'));

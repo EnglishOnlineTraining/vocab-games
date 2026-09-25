@@ -325,7 +325,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="annot">On the other hand</span>, critics argue that America's culture of relentless ambition comes at a real psychological cost. A 2023 Gallup survey found that nearly half of US employees under thirty report feeling chronically stressed at work, a figure closely linked to long hours and constant pressure to advance. <span class="annot">Consequently</span>, many young Americans are now actively rejecting the "hustle culture" of previous generations in favour of what has been termed "quiet ambition" — pursuing meaningful goals without sacrificing wellbeing. <span class="annot">Although</span> ambition undeniably drives economic growth and personal achievement, this evidence suggests that unchecked ambition can become self-defeating, damaging the very quality of life it was meant to improve.
     </div>
     <div class="btn-row">
-      <button class="btn" id="finalBtn" style="display:none" onclick="showFinal()">See Final Score →</button>
+      <button class="btn" id="finalBtn" onclick="showFinal()">See Final Score →</button>
     </div>
   </div>
 </div>
@@ -494,7 +494,7 @@ function submitEx5(){
 }
 function updateRubricScore(){
   let ticked=0;rubricCriteria.forEach((c,i)=>{if(document.getElementById('rub5_'+i).checked)ticked++;});
-  scores.ex5=ticked;document.getElementById('finalBtn').style.display = ticked>=7 ? 'inline-block':'none';updateProgress(5);
+  scores.ex5=ticked;updateProgress(5);
 }
 function showFinal(){
   document.querySelectorAll('.exercise').forEach(e=>e.classList.remove('active'));

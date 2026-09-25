@@ -348,7 +348,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       The article explores how British national identity is changing among younger generations. It uses the example of a teenager who blends Welsh choir singing with celebrating Diwali to illustrate how identity is now assembled from multiple cultural sources rather than inherited as one fixed tradition. The writer cites survey data showing that most under-35s describe their identity as "British and something else", unlike older generations. However, the article stresses that traditional symbols such as the monarchy have not disappeared; they continue to coexist alongside newer cultural influences. It concludes that modern British identity combines tradition and change rather than choosing between them.
     </div>
     <div class="btn-row">
-      <button class="btn" id="finalBtn" style="display:none" onclick="showFinal()">See Final Score →</button>
+      <button class="btn" id="finalBtn" onclick="showFinal()">See Final Score →</button>
     </div>
   </div>
 </div>
@@ -486,7 +486,7 @@ function submitEx5(){
 }
 function updateRubricScore(){
   let ticked=0;rubricCriteria.forEach((c,i)=>{if(document.getElementById('rub5_'+i).checked)ticked++;});
-  scores.ex5=ticked;document.getElementById('finalBtn').style.display = ticked>=7 ? 'inline-block':'none';updateProgress(5);
+  scores.ex5=ticked;updateProgress(5);
 }
 function showFinal(){
   document.querySelectorAll('.exercise').forEach(e=>e.classList.remove('active'));

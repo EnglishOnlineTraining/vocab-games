@@ -382,7 +382,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       The speaker anchors her appeal in a mounting <span class="annot">anaphora</span> — "We have built schools… We have brought clean water… We have opened university gates" — whose accumulated rhythm transforms national progress into a shared, collective achievement in which every listener can take pride. She then invokes an <span class="annot">allusion</span> to "Madiba magic" and Mandela's "walk to freedom", borrowing the moral authority of the country's most revered figure to present the born-free generation as the rightful heirs of his struggle. Finally, the speech closes with a <span class="annot">direct address</span> — "it will be written by you" — which deliberately shifts responsibility from the speaker's generation to the audience, converting reflection into a personal call to action. Together, these devices allow the speaker to balance pride with urgency: her listeners are made to feel both grateful heirs and necessary agents of an unfinished project.
     </div>
     <div class="btn-row">
-      <button class="btn" id="finalBtn" style="display:none" onclick="showFinal()">See Final Score →</button>
+      <button class="btn" id="finalBtn" onclick="showFinal()">See Final Score →</button>
     </div>
   </div>
 </div>
@@ -546,7 +546,7 @@ function submitEx5(){
 }
 function updateRubricScore(){
   let ticked=0;rubricCriteria.forEach((c,i)=>{if(document.getElementById('rub5_'+i).checked)ticked++;});
-  scores.ex5=ticked;document.getElementById('finalBtn').style.display = ticked>=7 ? 'inline-block':'none';updateProgress(5);
+  scores.ex5=ticked;updateProgress(5);
 }
 function showFinal(){
   document.querySelectorAll('.exercise').forEach(e=>e.classList.remove('active'));
