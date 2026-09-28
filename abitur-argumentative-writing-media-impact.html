@@ -315,12 +315,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="wordcount"><span id="wc">0</span> words</div>
   <div class="btn-row">
     <button class="btn secondary" onclick="goTo(4)">← Back</button>
-    <button class="btn" onclick="submitEx5()">Submit &amp; Show Rubric</button>
+    <button class="btn" onclick="submitEx5()">Check my writing against the rubric</button>
   </div>
   <div id="ex5feedback" style="display:none">
     <h3 style="color:var(--accent-dark);margin-top:24px;">Self-Assessment</h3>
     <div id="rubricList"></div>
-    <div class="model-para">
+    <div class="btn-row"><button class="btn secondary" id="modelBtn" onclick="showModel()">Show model answer</button></div>
+    <div class="model-para" id="modelPara" style="display:none">
       <b>Model paragraph (one body paragraph):</b><br><br>
       <span class="annot">On the other hand</span>, critics argue that social media has amplified misinformation and contributed to declining mental health among American teenagers. A 2023 Pew Research study found that nearly half of US teens describe their social media use as "almost constant", a pattern researchers have linked to rising rates of anxiety. <span class="annot">As a result</span>, several US states have begun introducing legislation to restrict social media access for minors. <span class="annot">Although</span> social media undeniably helps people stay connected and informed, this evidence suggests that its unregulated use carries real psychological and societal costs.
     </div>
@@ -478,7 +479,37 @@ const rubricCriteria=[
   'My English is grammatically accurate.',
   'My register is formal and appropriate for an academic essay.'
 ];
+var ex5Warned=false;
+function showModel(){
+  var b=document.getElementById('modelBtn'); if(b)b.style.display='none';
+  var p=document.getElementById('modelPara'); if(p)p.style.display='block';
+}
+function ex5Words(){
+  var el=document.getElementById('essayText'); var v=el?el.value.trim():'';
+  return v?v.split(/\s+/).length:0;
+}
 function submitEx5(){
+  // Warn once on a short answer. The task asks for 150-200 words, and pressing
+  // this button used to reveal the model paragraph, so a student who pressed it
+  // early lost the chance to write the piece themselves.
+  var fb=document.getElementById('ex5feedback');
+  var warn=document.getElementById('ex5warn');
+  if(!warn){
+    warn=document.createElement('div'); warn.id='ex5warn';
+    warn.style.cssText='margin:16px 0;padding:12px 14px;border-radius:8px;'
+      +'border:1px solid rgba(201,162,39,.55);background:rgba(201,162,39,.14);font-size:.92rem;';
+    fb.parentNode.insertBefore(warn,fb);
+  }
+  var n=ex5Words();
+  if(n<100&&!ex5Warned){
+    ex5Warned=true;
+    warn.textContent='That is only '+n+' word'+(n===1?'':'s')+'. The task asks for 150\u2013200. '
+      +'Keep writing, then press the button again \u2014 nothing has been sent to your teacher yet.';
+    warn.style.display='block';
+    warn.scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  warn.style.display='none';
   const list=document.getElementById('rubricList');list.innerHTML='';
   rubricCriteria.forEach((c,i)=>{
     const row=document.createElement('label');row.className='rubric-item';
@@ -497,12 +528,14 @@ function showFinal(){
   const names={ex1:'Ex 1 · Essay Structure',ex2:'Ex 2 · Structure Quiz',ex3:'Ex 3 · Connectives',ex4:'Ex 4 · Strong vs Weak Arguments',ex5:'Ex 5 · Full Essay'};
   let total=0,max=0;
   Object.keys(scores).forEach(k=>{
-    total+=scores[k];max+=maxScores[k];
+    if(k!=='ex5'){total+=scores[k];max+=maxScores[k];}
     const card=document.createElement('div');card.className='score-card';
-    card.innerHTML=`<div class="name">${names[k]}</div><div class="val">${scores[k]}/${maxScores[k]}</div>`;
+    card.innerHTML=k==='ex5'
+      ? `<div class="name">${names[k]}</div><div class="val" style="font-size:1rem">${scores[k]}/${maxScores[k]} self-check<br><span style="font-size:.68rem;opacity:.75;font-weight:400">not counted in the score</span></div>`
+      : `<div class="name">${names[k]}</div><div class="val">${scores[k]}/${maxScores[k]}</div>`;
     grid.appendChild(card);
   });
-  document.getElementById('finalSummary').textContent=`Total score: ${total} / ${max}`;
+  document.getElementById('finalSummary').textContent=`Total score: ${total} / ${max} \u2014 the Ex 5 self-check is not included`;
   document.getElementById('finalScore').style.display='block';window.scrollTo({top:0,behavior:'smooth'});
 }
 buildEx1();buildMC('mcList2',ex2Data);buildEx3();buildMC('mcList4',ex4Data);
@@ -524,7 +557,7 @@ function submitToTeacher(){
   var btn=document.getElementById('submitBtn');
   btn.disabled=true;btn.textContent='Sending...';
   var total=0,max=0;
-  Object.keys(scores).forEach(function(k){total+=scores[k];max+=maxScores[k];});
+  Object.keys(scores).forEach(function(k){if(k!=='ex5'){total+=scores[k];max+=maxScores[k];}});
   var essayEl=document.getElementById('essayText');
   var payload={name:nm,cls:cls,unit:UNIT,
     ex1:scores.ex1+'/'+maxScores.ex1,ex2:scores.ex2+'/'+maxScores.ex2,
@@ -548,7 +581,7 @@ function submitByEmail(){
   var nm=document.getElementById('studentName').value.trim()||'(no name)';
   var cls=document.getElementById('studentClass').value.trim()||'(no class)';
   var total=0,max=0;
-  Object.keys(scores).forEach(function(k){total+=scores[k];max+=maxScores[k];});
+  Object.keys(scores).forEach(function(k){if(k!=='ex5'){total+=scores[k];max+=maxScores[k];}});
   var essayEl=document.getElementById('essayText');
   var body=UNIT+' \u2014 '+nm+' ('+cls+')\n\nScore: '+total+'/'+max+'\n';
   Object.keys(scores).forEach(function(k){body+=k+': '+scores[k]+'/'+maxScores[k]+'\n';});
