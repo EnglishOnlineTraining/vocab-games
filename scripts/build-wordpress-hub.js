@@ -59,12 +59,16 @@ const out = {
     + 'scripts/build-wordpress-hub.js — do not hand-edit. CI cannot apply this '
     + '(no WordPress credentials); a Claude session applies it with the '
     + 'WordPress MCP. See the "Update WordPress page 1763" step in the '
-    + 'exercise-creating skills for the safe procedure.',
+    + 'exercise-creating skills for the safe procedure. Since 2026-09-28 the '
+    + 'page is one Custom HTML block (class "eot-dir"): find each link by its '
+    + 'href and change only the number in its "N exercises" text to `count` — '
+    + 'do not replace the link text with `label`, or the layout breaks.',
   pageId: 1763,
   pageUrl: 'https://englishonline.training/activities/',
   buttons: BUTTONS.map(([section, hub, label, count]) => ({
     section: section,
     href: BASE + hub,
+    count: count,
     label: label + ' (' + count + (count === 1 ? ' exercise)' : ' exercises)')
   }))
 };

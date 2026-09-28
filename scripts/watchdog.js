@@ -159,6 +159,8 @@ function checkCounts() {
 
   // Check the reverse: HTML files that load exercise.js but aren't in exercises.json
   const indexedFiles = new Set(exercises.map(e => e.file));
+  // Pages deliberately kept out of exercises.json (see data/unlisted.json).
+  const unlisted = new Set(JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'unlisted.json'), 'utf8')).files);
   const allHtml = htmlFiles('', false);
   for (const file of allHtml) {
     // Skip hubs, template, review pages
@@ -166,6 +168,7 @@ function checkCounts() {
     if (file === 'activities.html' || file === 'index.html') continue;
     if (file === '_template.html') continue;
     if (file.startsWith('themen/')) continue;
+    if (unlisted.has(file)) continue;
 
     const content = fs.readFileSync(path.join(ROOT, file), 'utf8');
     if (content.includes('src="exercise.js"') && !indexedFiles.has(file)) {
