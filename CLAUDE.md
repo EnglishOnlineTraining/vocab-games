@@ -378,6 +378,47 @@ MSA exam-practice exercises (`msa-c-*`, Oberschule school-leaving level, ~Year 1
 
 **MSA grading (`GRADE_SYSTEM = 'msa'`).** MSA pages set `var GRADE_SYSTEM = 'msa';` and grade on the **2018 Berlin/Brandenburg MSA Bewertungstabelle** instead of the classroom Punktetabelle: `exercise.js` defines `lookupMsaGrade(earned, possible)` (scales the page's auto-graded points onto the 75-point exam scale, then applies thresholds `[70,63,55,45,23]` for Notes 1–5, below 23 → Note 6, labels Sehr gut … Ungenügend). `renderScore` picks the right table via `currentGradeLookup()`, so the on-screen card and the payload/email agree. Non-MSA pages (no `GRADE_SYSTEM`) keep `lookupGrade` unchanged. MSA pages call `lookupMsaGrade` directly in `buildPayload`/`buildEmailBody`.
 
+### Abitur — its own webhook and its own workbook (added 2026-09-28)
+
+The 17 `abitur-*.html` packs POST to a **third Make webhook**:
+
+```
+https://hook.eu1.make.com/wdia5iljcraay8rfqijkacgb5i9jjfod
+```
+
+Scenario **id `7584438`** ("Webhook → Excel Table Row (Abitur)", hook `3780761`) writes into
+table **`abitursubs`** on worksheet **`Sheet1`** of **`/Abitur online work.xlsx`**. Same four-module
+shape as Year 7/9 — webhook → `json:ParseJSON` (**module id 5**) → dedup `datastore:AddRecord`
+(the shared store `138128`) → `microsoft-excel:addATableRow`.
+
+**They were pointed at the Year 9 webhook until 2026-09-28**, so every Abitur submission landed in
+`yr9subs` mixed in with Year 9/10/MSA work. That was a stopgap Shaun put in under time pressure
+when the Abitur sheet would not connect, not a design decision — the pages now carry the URL above.
+
+**The table is 12 columns, not 54.** The packs are a different architecture from the framework
+pages: they send `{name, cls, unit, ex1…ex5, score, essay}` and nothing else. The mapping is
+`0` timestamp · `1` Name · `2` Class · `3` Unit · `4–8` Ex1–Ex5 · `9` Score · `10` Essay ·
+`11` Feedback (deliberately mapped to `""` — it is Shaun's marking column and the scenario must
+never write over it).
+
+**There is no raw-payload backstop column here**, unlike Y7/Y9 where column 51 carries
+`{{1.payload}}`. There is no spare column to put it in. If the Abitur table ever gains a 13th
+column, map it to `{{1.payload}}` and this class of bug becomes unloseable here too.
+
+**Two defects had to be fixed before a row would land, and both fail the same silent way**
+(`fetch` is `mode:'no-cors'`, so the student still sees "Submitted successfully!"):
+- the scenario named worksheet **`sheet1`** while the workbook's sheet is **`Sheet1`** → Graph
+  returned `404 ItemNotFound` and the run ended at status **2** (success *with warnings*), never
+  writing;
+- the rebuilt `Table1` spanned the full sheet width (16,384 columns), which fails the row insert
+  with a matrix-size error. The table must be defined across **exactly** the 12 header columns.
+
+**How to verify it end to end** — POST three times, watching `operations` in the execution list:
+a fresh `name` gives **4 ops / status 1** (row written), the *same* `name` again gives **3 ops**
+(dedup blocks it before Excel), and a *different* `name` gives **4 ops** again. That third step is
+the one that matters: if ParseJSON were broken the dedup key would be the same for everyone and
+the different-name POST would stop at 3 ops too. Verified this way on 2026-09-28.
+
 ### Business English & University Sheet URL (Google Apps Script — not part of the Make migration)
 ```
 https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec
