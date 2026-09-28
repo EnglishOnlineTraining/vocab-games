@@ -1,0 +1,129 @@
+{
+ "unit": "9g-canada-indigenous-voices",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Indigenous",
+     "accept": [
+      "Indigenous"
+     ],
+     "label": "1 The word"
+    },
+    "g2": {
+     "correct": "treaty",
+     "accept": [
+      "treaty"
+     ],
+     "label": "2 A"
+    },
+    "g3": {
+     "correct": "elder",
+     "accept": [
+      "elder"
+     ],
+     "label": "3 An"
+    },
+    "g4": {
+     "correct": "Reconciliation",
+     "accept": [
+      "Reconciliation"
+     ],
+     "label": "4"
+    },
+    "g5": {
+     "correct": "territory",
+     "accept": [
+      "territory"
+     ],
+     "label": "5 A land acknowledgement names the peoples connected to a"
+    },
+    "g6": {
+     "correct": "generation",
+     "accept": [
+      "generation"
+     ],
+     "label": "6 Each"
+    },
+    "g7": {
+     "correct": "community",
+     "accept": [
+      "community"
+     ],
+     "label": "7 A strong"
+    },
+    "g8": {
+     "correct": "language",
+     "accept": [
+      "language"
+     ],
+     "label": "8 A"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "are being taught",
+     "accept": [
+      "are being taught"
+     ],
+     "label": "1 Many Indigenous languages"
+    },
+    "g2": {
+     "correct": "is worn",
+     "accept": [
+      "is worn"
+     ],
+     "label": "2 The orange shirt"
+    },
+    "g3": {
+     "correct": "are used",
+     "accept": [
+      "are used"
+     ],
+     "label": "3 Land acknowledgements"
+    },
+    "g4": {
+     "correct": "have been passed down",
+     "accept": [
+      "have been passed down"
+     ],
+     "label": "4 Stories"
+    },
+    "g5": {
+     "correct": "should be provided",
+     "accept": [
+      "should be provided"
+     ],
+     "label": "5 More resources"
+    },
+    "g6": {
+     "correct": "were encouraged",
+     "accept": [
+      "were encouraged"
+     ],
+     "label": "6 Students"
+    },
+    "g7": {
+     "correct": "was opened",
+     "accept": [
+      "was opened"
+     ],
+     "label": "7 A new cultural centre"
+    },
+    "g8": {
+     "correct": "must be discussed",
+     "accept": [
+      "must be discussed"
+     ],
+     "label": "8 Difficult history"
+    }
+   }
+  }
+ }
+}

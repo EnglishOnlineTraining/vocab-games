@@ -1,0 +1,129 @@
+{
+ "unit": "9g-ireland-emigration",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "emigrated",
+     "accept": [
+      "emigrated"
+     ],
+     "label": "1 Many Irish people"
+    },
+    "g2": {
+     "correct": "famine",
+     "accept": [
+      "famine"
+     ],
+     "label": "2 A"
+    },
+    "g3": {
+     "correct": "diaspora",
+     "accept": [
+      "diaspora"
+     ],
+     "label": "3 The Irish"
+    },
+    "g4": {
+     "correct": "coastline",
+     "accept": [
+      "coastline"
+     ],
+     "label": "4 Ireland’s western"
+    },
+    "g5": {
+     "correct": "storytelling",
+     "accept": [
+      "storytelling"
+     ],
+     "label": "5 Oral"
+    },
+    "g6": {
+     "correct": "accent",
+     "accept": [
+      "accent"
+     ],
+     "label": "6 An Irish"
+    },
+    "g7": {
+     "correct": "identity",
+     "accept": [
+      "identity"
+     ],
+     "label": "7 Language, music and memory can all shape a person’s"
+    },
+    "g8": {
+     "correct": "opportunity",
+     "accept": [
+      "opportunity"
+     ],
+     "label": "8 Many emigrants left because they hoped for a better"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "had left",
+     "accept": [
+      "had left"
+     ],
+     "label": "1 By the end of the famine, many families"
+    },
+    "g2": {
+     "correct": "had emigrated",
+     "accept": [
+      "had emigrated"
+     ],
+     "label": "2 By 1900, millions of Irish people"
+    },
+    "g3": {
+     "correct": "arrived",
+     "accept": [
+      "arrived"
+     ],
+     "label": "3 When the ship"
+    },
+    "g4": {
+     "correct": "were hoping",
+     "accept": [
+      "were hoping"
+     ],
+     "label": "4 Many young people left because they"
+    },
+    "g5": {
+     "correct": "had formed",
+     "accept": [
+      "had formed"
+     ],
+     "label": "5 Irish music became popular abroad after emigrants"
+    },
+    "g6": {
+     "correct": "has changed",
+     "accept": [
+      "has changed"
+     ],
+     "label": "6 Modern Ireland"
+    },
+    "g7": {
+     "correct": "would keep",
+     "accept": [
+      "would keep"
+     ],
+     "label": "7 If young people moved abroad today, they"
+    },
+    "g8": {
+     "correct": "had heard",
+     "accept": [
+      "had heard"
+     ],
+     "label": "8 The writer"
+    }
+   }
+  }
+ }
+}

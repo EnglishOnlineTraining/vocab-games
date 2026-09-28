@@ -1,0 +1,129 @@
+{
+ "unit": "9g-australia-outback",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "remote",
+     "accept": [
+      "remote"
+     ],
+     "label": "1 Many Outback farms are very"
+    },
+    "g2": {
+     "correct": "sacred",
+     "accept": [
+      "sacred"
+     ],
+     "label": "2 Uluru is a"
+    },
+    "g3": {
+     "correct": "reliable",
+     "accept": [
+      "reliable"
+     ],
+     "label": "3 People in isolated areas need"
+    },
+    "g4": {
+     "correct": "emergency",
+     "accept": [
+      "emergency"
+     ],
+     "label": "4 The Flying Doctor Service can respond quickly in a medical"
+    },
+    "g5": {
+     "correct": "drought",
+     "accept": [
+      "drought"
+     ],
+     "label": "5 A long"
+    },
+    "g6": {
+     "correct": "heritage",
+     "accept": [
+      "heritage"
+     ],
+     "label": "6 Stories, language and traditions are part of a community’s cultural"
+    },
+    "g7": {
+     "correct": "route",
+     "accept": [
+      "route"
+     ],
+     "label": "7 Drivers should choose a safe"
+    },
+    "g8": {
+     "correct": "community",
+     "accept": [
+      "community"
+     ],
+     "label": "8 Tourism can support a local"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "should",
+     "accept": [
+      "should"
+     ],
+     "label": "1 If you travel through remote areas, you"
+    },
+    "g2": {
+     "correct": "must not",
+     "accept": [
+      "must not"
+     ],
+     "label": "2 Visitors"
+    },
+    "g3": {
+     "correct": "may have to",
+     "accept": [
+      "may have to"
+     ],
+     "label": "3 If roads are flooded, drivers"
+    },
+    "g4": {
+     "correct": "If",
+     "accept": [
+      "If"
+     ],
+     "label": "4"
+    },
+    "g5": {
+     "correct": "can",
+     "accept": [
+      "can"
+     ],
+     "label": "5 The Flying Doctor Service"
+    },
+    "g6": {
+     "correct": "must",
+     "accept": [
+      "must"
+     ],
+     "label": "6 Campers"
+    },
+    "g7": {
+     "correct": "would",
+     "accept": [
+      "would"
+     ],
+     "label": "7 If there were more buses, fewer visitors"
+    },
+    "g8": {
+     "correct": "mustn’t",
+     "accept": [
+      "mustn’t"
+     ],
+     "label": "8 Visitors"
+    }
+   }
+  }
+ }
+}

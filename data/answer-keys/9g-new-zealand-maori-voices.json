@@ -1,0 +1,129 @@
+{
+ "unit": "9g-new-zealand-maori-voices",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "bilingual",
+     "accept": [
+      "bilingual"
+     ],
+     "label": "1 A"
+    },
+    "g2": {
+     "correct": "ceremony",
+     "accept": [
+      "ceremony"
+     ],
+     "label": "2 A wedding, welcome or memorial can be called a"
+    },
+    "g3": {
+     "correct": "ancestor",
+     "accept": [
+      "ancestor"
+     ],
+     "label": "3 An"
+    },
+    "g4": {
+     "correct": "guardian",
+     "accept": [
+      "guardian"
+     ],
+     "label": "4 A"
+    },
+    "g5": {
+     "correct": "revival",
+     "accept": [
+      "revival"
+     ],
+     "label": "5 The growth of te reo Māori is sometimes described as a language"
+    },
+    "g6": {
+     "correct": "respect",
+     "accept": [
+      "respect"
+     ],
+     "label": "6 Visitors show"
+    },
+    "g7": {
+     "correct": "treaty",
+     "accept": [
+      "treaty"
+     ],
+     "label": "7 The Treaty of Waitangi is an important"
+    },
+    "g8": {
+     "correct": "landscape",
+     "accept": [
+      "landscape"
+     ],
+     "label": "8 New Zealand’s mountains, forests and coasts form a dramatic"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "where",
+     "accept": [
+      "where"
+     ],
+     "label": "1 A marae is a meeting place"
+    },
+    "g2": {
+     "correct": "that",
+     "accept": [
+      "that"
+     ],
+     "label": "2 Te reo Māori is a language"
+    },
+    "g3": {
+     "correct": "which",
+     "accept": [
+      "which"
+     ],
+     "label": "3 Kaitiakitanga is an idea"
+    },
+    "g4": {
+     "correct": "which",
+     "accept": [
+      "which"
+     ],
+     "label": "4 The Treaty of Waitangi,"
+    },
+    "g5": {
+     "correct": "that",
+     "accept": [
+      "that"
+     ],
+     "label": "5 The haka is a performance"
+    },
+    "g6": {
+     "correct": "where",
+     "accept": [
+      "where"
+     ],
+     "label": "6 Rotorua is a city"
+    },
+    "g7": {
+     "correct": "who",
+     "accept": [
+      "who"
+     ],
+     "label": "7 An ancestor is a person"
+    },
+    "g8": {
+     "correct": "whose",
+     "accept": [
+      "whose"
+     ],
+     "label": "8 A speaker"
+    }
+   }
+  }
+ }
+}

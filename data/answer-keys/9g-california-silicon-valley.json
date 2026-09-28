@@ -1,0 +1,129 @@
+{
+ "unit": "9g-california-silicon-valley",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "founded",
+     "accept": [
+      "founded"
+     ],
+     "label": "1 Several famous technology companies were"
+    },
+    "g2": {
+     "correct": "entrepreneur",
+     "accept": [
+      "entrepreneur"
+     ],
+     "label": "2 An"
+    },
+    "g3": {
+     "correct": "venture capital",
+     "accept": [
+      "venture capital"
+     ],
+     "label": "3 Many startups need"
+    },
+    "g4": {
+     "correct": "prototype",
+     "accept": [
+      "prototype"
+     ],
+     "label": "4 The team tested a small"
+    },
+    "g5": {
+     "correct": "launch",
+     "accept": [
+      "launch"
+     ],
+     "label": "5 The company plans to"
+    },
+    "g6": {
+     "correct": "headquarters",
+     "accept": [
+      "headquarters"
+     ],
+     "label": "6 A company’s main office is often called its"
+    },
+    "g7": {
+     "correct": "commute",
+     "accept": [
+      "commute"
+     ],
+     "label": "7 A long"
+    },
+    "g8": {
+     "correct": "regulation",
+     "accept": [
+      "regulation"
+     ],
+     "label": "8 Privacy laws are one kind of government"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "would launch",
+     "accept": [
+      "would launch"
+     ],
+     "label": "1 The founder said the app"
+    },
+    "g2": {
+     "correct": "were testing",
+     "accept": [
+      "were testing"
+     ],
+     "label": "2 The engineers explained that they"
+    },
+    "g3": {
+     "correct": "will invest",
+     "accept": [
+      "will invest"
+     ],
+     "label": "3 Analysts predict that many companies"
+    },
+    "g4": {
+     "correct": "was applying",
+     "accept": [
+      "was applying"
+     ],
+     "label": "4 A student said she"
+    },
+    "g5": {
+     "correct": "had risen",
+     "accept": [
+      "had risen"
+     ],
+     "label": "5 The article reported that rents"
+    },
+    "g6": {
+     "correct": "succeeds",
+     "accept": [
+      "succeeds"
+     ],
+     "label": "6 If the trial"
+    },
+    "g7": {
+     "correct": "is going to present",
+     "accept": [
+      "is going to present"
+     ],
+     "label": "7 The team"
+    },
+    "g8": {
+     "correct": "had changed",
+     "accept": [
+      "had changed"
+     ],
+     "label": "8 The CEO said remote work"
+    }
+   }
+  }
+ }
+}
