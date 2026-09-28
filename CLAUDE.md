@@ -569,10 +569,11 @@ scenarios are back to four modules.
 
 **Excel silently turns an integer score into a date.** `Score` is sent as `12 / 24`, and Excel
 parses that as 24 December — the cell reads `24. Dez`. A fractional score (`5.5 / 24`) has no date
-reading and survives as text, which is why this is easy to miss. Either format the `Score` column
-as **Text** in both workbooks (preserves `12 / 24` exactly; table columns propagate the format to
-new rows), or change the mapper so the value cannot parse as a date. Do not leave it: roughly half
-of all scores are integers.
+reading and survives as text, which is why this is easy to miss. **Fixed 2026-09-04 (Shaun): the
+`Score` column is formatted as Text in both workbooks**, which preserves `12 / 24` exactly and
+propagates to new table rows. The mapper deliberately still sends `12 / 24` — do not "fix" this
+page-side. If a rebuilt workbook ever loses the Text format, integer scores start landing as dates
+again (roughly half of all scores), so re-apply the format rather than changing the payload.
 
 ---
 
