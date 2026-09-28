@@ -75,10 +75,9 @@ const LEGACY_UNPREFIXED = {
 // This hides them; it does not make them private. The pages stay reachable at
 // their URL and carry no `noindex`, exactly like the tests — add one if they
 // should also drop out of search.
-const UNLISTED = new Set([
-  '9g-australia-vocab-practice.html',
-  '9c-australia-vocab-practice.html'
-]);
+//
+// The list lives in data/unlisted.json so the watchdog reads the same one.
+const UNLISTED = new Set(JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'unlisted.json'), 'utf8')).files);
 
 // Topic tags for pages whose section headings name the story, not the grammar,
 // so the regex match below finds nothing. Without a tag the page gets no link
