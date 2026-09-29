@@ -435,15 +435,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="ex-subtitle">3a: Match each word to its definition. 3b: Fill the gaps using the word bank.</p>
       <div class="card">
         <div class="card-title">3a — Match the word to its definition (5 points)</div>
-        <table class="match-table">
-          <tr><th>Word / Phrase</th><th>Definition</th><th>Your answer</th></tr>
-          <tr><td>1. mudslide</td><td>A sudden flow of wet earth down a hillside, often after heavy rain</td><td><select class="gap-select" id="s3a-1"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></td></tr>
-          <tr><td>2. vineyard</td><td>A land used for growing grapes to make wine</td><td><select class="gap-select" id="s3a-2"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></td></tr>
-          <tr><td>3. indigenous</td><td>A person originally from a place, belonging to its earliest inhabitants</td><td><select class="gap-select" id="s3a-3"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></td></tr>
-          <tr><td>4. smog</td><td>A mixture of smoke and fog that creates air pollution in cities</td><td><select class="gap-select" id="s3a-4"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></td></tr>
-          <tr><td>5. legislation</td><td>A law passed by a government or local authority</td><td><select class="gap-select" id="s3a-5"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></td></tr>
-        </table>
-        <p class="form-hint">Choose the letter (A–E) that corresponds to each word's true definition above (the definitions shown are scrambled, as in the original test).</p>
+        <div style="background:var(--gold-lt);border:1.5px solid var(--gold);border-radius:8px;padding:1rem;margin-bottom:1.25rem;font-size:.9rem;line-height:1.7">
+          <div style="font-weight:700;color:var(--blue);margin-bottom:.75rem;font-size:.85rem;text-transform:uppercase;letter-spacing:.05em">Definitions (scrambled)</div>
+          <div style="margin-bottom:.5rem"><strong>A.</strong> A mixture of smoke and fog that creates air pollution in cities</div>
+          <div style="margin-bottom:.5rem"><strong>B.</strong> A law passed by a government or local authority</div>
+          <div style="margin-bottom:.5rem"><strong>C.</strong> A sudden flow of wet earth down a hillside, often after heavy rain</div>
+          <div style="margin-bottom:.5rem"><strong>D.</strong> A person originally from a place, belonging to its earliest inhabitants</div>
+          <div><strong>E.</strong> A land used for growing grapes to make wine</div>
+        </div>
+        <div class="numbered-item"><span class="item-num">1</span><div class="item-sentence">mudslide <select class="gap-select" id="s3a-1"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div></div>
+        <div class="numbered-item"><span class="item-num">2</span><div class="item-sentence">vineyard <select class="gap-select" id="s3a-2"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div></div>
+        <div class="numbered-item"><span class="item-num">3</span><div class="item-sentence">indigenous <select class="gap-select" id="s3a-3"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div></div>
+        <div class="numbered-item"><span class="item-num">4</span><div class="item-sentence">smog <select class="gap-select" id="s3a-4"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div></div>
+        <div class="numbered-item"><span class="item-num">5</span><div class="item-sentence">legislation <select class="gap-select" id="s3a-5"><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div></div>
+        <p class="form-hint">Match each word to the letter of its definition. The definitions are scrambled — you cannot score by guessing in order.</p>
       </div>
       <div class="card">
         <div class="card-title">3b — Fill in the gaps (7 points)</div>
@@ -596,7 +601,7 @@ var S1_KEY = {
   1:['the'], 2:['an','–'], 3:['–'], 4:['a','the'], 5:['an','–','the'],
   6:['the','a','the'], 7:['an','–','–'], 8:['a','the','–'], 9:['the','–','the'], 10:['a','the','a']
 };
-var S3A_KEY = { 1:'B', 2:'C', 3:'A', 4:'E', 5:'D' };
+var S3A_KEY = { 1:'C', 2:'E', 3:'D', 4:'A', 5:'B' };
 var S3B_KEY = { 1:'gold rush', 2:'silicon valley', 3:'diverse', 4:'wildfires', 5:'drought', 6:'cattle call', 7:'erosion' };
 var S4_KEY = {
   1:'will be meeting', 2:'will have switched', 3:'will have replaced', 4:'will have risen',
