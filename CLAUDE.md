@@ -1370,6 +1370,34 @@ There is also an **IndexNow plugin active on the WordPress site** (Microsoft Bin
 covers `englishonline.training` only. It cannot see `activities.englishonline.training`, which is
 GitHub Pages — that is what this script is for.
 
+## Marking handouts — `scripts/marking-handout.js` (added 2026-09-29)
+
+Turns one sitting of one unit into printable A4 feedback sheets:
+`node scripts/marking-handout.js <data.json> [out-basename] [--no-summary]`.
+It writes `<out>.html` always and `<out>.pdf` when Playwright is present
+(not a repo dependency — otherwise print the HTML from a browser).
+
+**Page 1 is the teacher summary and stays by default** (Shaun, 2026-09-29, after a
+first run left it out): every student's scores in one table, plus who did not
+submit. It carries a red "remove before handing out" line, because the rest of the
+stack is one page per student and a student's page shows nobody else's marks.
+`--no-summary` exists for when the whole file goes to students.
+
+**The input file is student data and must never be committed** — names, marks and
+essay text. Keep it outside the repo. Only the script belongs in git.
+
+**Voice:** the sheets speak as Shaun to the student ("My feedback", "I have fixed
+it"), so feedback lines are written in the first person and the second person, never
+about the student in the third. Avoid ranking one student against the class on a
+sheet they may compare with a neighbour's.
+
+**Where the data comes from for a Make-routed unit:** the Abitur packs send
+`{name, cls, unit, ex1…ex5, score, essay}`, and for the Y7/Y9 tables the complete
+raw payload also sits in column 51, so a sitting can be reconstructed from Excel
+even when a column mapping was wrong at the time.
+
+---
+
 ## Deployment
 
 - GitHub Pages serves from the **`main`** branch
