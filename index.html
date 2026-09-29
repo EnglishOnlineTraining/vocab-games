@@ -27,17 +27,31 @@
   --shadow:0 2px 16px rgba(26,58,92,.1);
 }
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;padding-bottom:4rem}
-.site-header{background:var(--blue);color:#fff;padding:2rem 1rem 1.75rem;text-align:center}
-.site-header .logo{font-size:.8rem;font-weight:700;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.6rem;display:block}
-.site-header h1{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:800;margin-bottom:.4rem}
-.site-header p{color:rgba(255,255,255,.75);font-size:.95rem}
-.header-nav{display:flex;justify-content:center;gap:1.2rem;margin-top:.8rem;font-size:.82rem}
-.header-nav a{color:var(--gold);font-weight:600;text-decoration:none;opacity:.88}
+.site-header{background:var(--blue);color:#fff;padding:1rem 1rem 2.4rem;text-align:center}
+.top-bar{max-width:860px;margin:0 auto 1.6rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-size:.82rem}
+.top-bar a{color:rgba(255,255,255,.85);text-decoration:none;font-weight:600}
+.top-bar a:hover{color:#fff}
+.site-header h1{font-size:clamp(1.6rem,4.5vw,2.4rem);font-weight:800;line-height:1.15;margin-bottom:.6rem}
+.site-header p{color:rgba(255,255,255,.8);font-size:1rem;max-width:34rem;margin:0 auto}
+.header-cta{display:inline-block;margin-top:1.4rem;background:var(--gold);color:#1a3a5c;font-weight:800;font-size:.95rem;padding:.75rem 1.4rem;border-radius:10px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.18);transition:transform .15s}
+.header-cta:hover{transform:translateY(-1px)}
+.header-nav{display:flex;justify-content:center;gap:1.2rem;margin-top:1rem;font-size:.85rem}
+.header-nav a{color:var(--gold-lt);font-weight:600;text-decoration:none}
+.header-nav a:hover{text-decoration:underline}
 .header-divider{height:4px;background:linear-gradient(90deg,var(--gold),var(--teal))}
 .container{max-width:860px;margin:0 auto;padding:2rem 1rem}
 .year-block{margin-bottom:2.5rem}
 .year-heading{display:flex;align-items:center;gap:.75rem;font-size:1.25rem;font-weight:800;color:var(--blue);margin-bottom:1.25rem;padding-bottom:.6rem;border-bottom:2px solid var(--border)}
 .year-badge{display:inline-flex;align-items:center;justify-content:center;width:2.2rem;height:2.2rem;border-radius:50%;background:var(--blue);color:#fff;font-size:.85rem;font-weight:800;flex-shrink:0}
+.years-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem}
+.year-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);border:1.5px solid var(--border);padding:1.1rem;display:flex;flex-direction:column;gap:.5rem}
+.year-card-title{display:flex;align-items:center;gap:.6rem;font-size:1.1rem;font-weight:800;color:var(--blue);margin-bottom:.2rem}
+.school-link{display:grid;grid-template-columns:1fr auto;gap:.1rem .75rem;padding:.7rem .85rem;border-radius:10px;background:var(--blue-lt);text-decoration:none;color:inherit;border:1.5px solid transparent;transition:border-color .15s}
+.school-link:hover{border-color:var(--blue-mid)}
+.school-link.is-soon{opacity:.6;pointer-events:none}
+.school-name{font-weight:700;color:var(--blue)}
+.school-count{grid-row:1;grid-column:2;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--blue-mid);align-self:center}
+.school-meta{grid-column:1/-1;font-size:.8rem;color:var(--muted)}
 .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.85rem}
 .group-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);border:1.5px solid var(--border);padding:1.5rem;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:.5rem;transition:border-color .2s,box-shadow .2s,transform .15s;align-items:center;text-align:center}
 .group-card:hover{border-color:var(--blue-mid);box-shadow:0 4px 20px rgba(26,110,181,.18);transform:translateY(-2px)}
@@ -49,6 +63,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 .exercise-count{display:inline-block;margin-top:.5rem;font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.25rem .75rem;border-radius:20px;background:var(--blue-lt);color:var(--blue-mid)}
 .site-footer{text-align:center;font-size:.8rem;color:var(--muted);margin-top:3rem}
 .site-footer a{color:var(--blue-mid)}
+@media(max-width:640px){.years-grid{grid-template-columns:1fr}}
 @media(max-width:480px){.cards-grid{grid-template-columns:1fr}}
 
 /* ── Automatic dark mode (added; light values untouched) ── */
@@ -110,12 +125,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- GTM:END -->
 
 <header class="site-header">
-  <span class="logo">EnglishOnline.training</span>
-  <h1>📚 Free English Exercises Online</h1>
-  <p>Select your year and school type</p>
+  <div class="top-bar">
+    <a href="https://englishonline.training">← englishonline.training</a>
+    <a href="dashboard.html">My progress</a>
+  </div>
+  <h1>Free English exercises for Years 7–10, MSA &amp; Abitur</h1>
+  <p>Pick your class and start. Instant feedback and a grade (Note 1–5), no sign-up.</p>
+  <a class="header-cta" href="activities.html">🔎 Search all exercises</a>
   <nav class="header-nav" aria-label="Quick links">
-    <a href="dashboard.html">My Progress</a>
-    <a href="activities.html">All Exercises</a>
+    <a href="level-test.html">Level test</a>
+    <a href="themen/index.html">Grammar topics</a>
   </nav>
 </header>
 <div class="header-divider"></div>
@@ -123,95 +142,61 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main id="main" class="container">
 
 <!-- ROOT:START (generated by scripts/build-hub.js — do not edit by hand) -->
-  <section class="year-block">
-    <h2 class="year-heading">
-      <span class="year-badge">7</span>
-      Year 7
-    </h2>
-
-    <div class="cards-grid">
-      <a class="group-card" href="7g-activities.html">
-        <span class="group-icon">🏫</span>
-        <span class="group-title">Gymnasium</span>
-        <span class="group-meta">Grammar, reading &amp; vocabulary</span>
-        <span class="exercise-count">11 Exercises</span>
-      </a>
-
-      <a class="group-card" href="7c-activities.html">
-        <span class="group-icon">🏫</span>
-        <span class="group-title">Oberschule</span>
-        <span class="group-meta">Reading, writing &amp; comprehension</span>
-        <span class="exercise-count">8 Exercises</span>
-      </a>
-    </div>
-  </section>
-
-  <section class="year-block">
-    <h2 class="year-heading">
-      <span class="year-badge">8</span>
-      Year 8
-    </h2>
-
-    <div class="cards-grid">
-      <a class="group-card" href="8g-activities.html">
-        <span class="group-icon">🏫</span>
-        <span class="group-title">Gymnasium</span>
-        <span class="group-meta">The USA: New York, school life &amp; history</span>
-        <span class="exercise-count">14 Exercises</span>
-      </a>
-
-      <a class="group-card" href="8c-activities.html">
-        <span class="group-icon">🏫</span>
-        <span class="group-title">Oberschule</span>
-        <span class="group-meta">US regions, festivals &amp; everyday English</span>
-        <span class="exercise-count">12 Exercises</span>
-      </a>
-    </div>
-  </section>
-
-  <section class="year-block">
-    <h2 class="year-heading">
-      <span class="year-badge">9</span>
-      Year 9
-    </h2>
-
-    <div class="cards-grid">
-      <a class="group-card" href="9g-activities.html">
-        <span class="group-icon">🏫</span>
-        <span class="group-title">Gymnasium</span>
-        <span class="group-meta">California, Australia, India &amp; literature</span>
-        <span class="exercise-count">22 Exercises</span>
-      </a>
-
-      <a class="group-card" href="9c-activities.html">
-        <span class="group-icon">🏫</span>
-        <span class="group-title">Oberschule</span>
-        <span class="group-meta">South Africa, work, media &amp; grammar</span>
-        <span class="exercise-count">15 Exercises</span>
-      </a>
-    </div>
-  </section>
-
-  <section class="year-block">
-    <h2 class="year-heading">
-      <span class="year-badge">10</span>
-      Year 10
-    </h2>
-
-    <div class="cards-grid">
-      <a class="group-card" href="10g-activities.html">
-        <span class="group-icon">🏫</span>
-        <span class="group-title">Gymnasium</span>
-        <span class="group-meta">Scotland, Black America &amp; youth culture</span>
-        <span class="exercise-count">27 Exercises</span>
-      </a>
-
-      <a class="group-card" href="10c-activities.html">
-        <span class="group-icon">🏫</span>
-        <span class="group-title">Oberschule</span>
-        <span class="group-meta">Canada, India, New Zealand &amp; the Commonwealth</span>
-        <span class="exercise-count">14 Exercises</span>
-      </a>
+  <section class="year-block" id="years">
+    <h2 class="year-heading">Find your class</h2>
+    <div class="years-grid">
+      <div class="year-card">
+        <h3 class="year-card-title"><span class="year-badge">7</span>Year 7</h3>
+        <a class="school-link" href="7g-activities.html">
+          <span class="school-name">Gymnasium</span>
+          <span class="school-meta">Grammar, reading &amp; vocabulary</span>
+          <span class="school-count">11 exercises</span>
+        </a>
+        <a class="school-link" href="7c-activities.html">
+          <span class="school-name">Oberschule</span>
+          <span class="school-meta">Reading, writing &amp; comprehension</span>
+          <span class="school-count">8 exercises</span>
+        </a>
+      </div>
+      <div class="year-card">
+        <h3 class="year-card-title"><span class="year-badge">8</span>Year 8</h3>
+        <a class="school-link" href="8g-activities.html">
+          <span class="school-name">Gymnasium</span>
+          <span class="school-meta">The USA: New York, school life &amp; history</span>
+          <span class="school-count">14 exercises</span>
+        </a>
+        <a class="school-link" href="8c-activities.html">
+          <span class="school-name">Oberschule</span>
+          <span class="school-meta">US regions, festivals &amp; everyday English</span>
+          <span class="school-count">12 exercises</span>
+        </a>
+      </div>
+      <div class="year-card">
+        <h3 class="year-card-title"><span class="year-badge">9</span>Year 9</h3>
+        <a class="school-link" href="9g-activities.html">
+          <span class="school-name">Gymnasium</span>
+          <span class="school-meta">California, Australia, India &amp; literature</span>
+          <span class="school-count">22 exercises</span>
+        </a>
+        <a class="school-link" href="9c-activities.html">
+          <span class="school-name">Oberschule</span>
+          <span class="school-meta">South Africa, work, media &amp; grammar</span>
+          <span class="school-count">15 exercises</span>
+        </a>
+      </div>
+      <div class="year-card">
+        <h3 class="year-card-title"><span class="year-badge">10</span>Year 10</h3>
+        <a class="school-link" href="10g-activities.html">
+          <span class="school-name">Gymnasium</span>
+          <span class="school-meta">Scotland, Black America &amp; youth culture</span>
+          <span class="school-count">27 exercises</span>
+        </a>
+        <a class="school-link" href="10c-activities.html">
+          <span class="school-name">Oberschule</span>
+          <span class="school-meta">Canada, India, New Zealand &amp; the Commonwealth</span>
+          <span class="school-count">14 exercises</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -284,36 +269,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <section class="year-block">
     <h2 class="year-heading">
-      More courses
-    </h2>
-
-    <div class="cards-grid">
-      <a class="group-card" href="uni-activities.html">
-        <span class="group-icon">🎓</span>
-        <span class="group-title">University English</span>
-        <span class="group-meta">Academic writing, case studies &amp; vocabulary</span>
-        <span class="exercise-count">15 Exercises</span>
-      </a>
-
-      <a class="group-card" href="business-activities.html">
-        <span class="group-icon">💼</span>
-        <span class="group-title">Business English</span>
-        <span class="group-meta">Meetings, emails &amp; professional skills</span>
-        <span class="exercise-count">18 Exercises</span>
-      </a>
-
-      <a class="group-card" href="it-activities.html">
-        <span class="group-icon">💻</span>
-        <span class="group-title">IT English</span>
-        <span class="group-meta">Networking, security &amp; technical vocabulary</span>
-        <span class="exercise-count">12 Exercises</span>
-      </a>
-    </div>
-  </section>
-
-  <section class="year-block">
-    <h2 class="year-heading">
-      Browse everything
+      Quick practice &amp; tools
     </h2>
 
     <div class="cards-grid">
@@ -353,12 +309,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </a>
     </div>
   </section>
+
+  <section class="year-block">
+    <h2 class="year-heading">
+      University, work &amp; beyond
+    </h2>
+
+    <div class="cards-grid">
+      <a class="group-card" href="uni-activities.html">
+        <span class="group-icon">🎓</span>
+        <span class="group-title">University English</span>
+        <span class="group-meta">Academic writing, case studies &amp; vocabulary</span>
+        <span class="exercise-count">15 Exercises</span>
+      </a>
+
+      <a class="group-card" href="business-activities.html">
+        <span class="group-icon">💼</span>
+        <span class="group-title">Business English</span>
+        <span class="group-meta">Meetings, emails &amp; professional skills</span>
+        <span class="exercise-count">18 Exercises</span>
+      </a>
+
+      <a class="group-card" href="it-activities.html">
+        <span class="group-icon">💻</span>
+        <span class="group-title">IT English</span>
+        <span class="group-meta">Networking, security &amp; technical vocabulary</span>
+        <span class="exercise-count">12 Exercises</span>
+      </a>
+    </div>
+  </section>
   <!-- ROOT:END -->
 
 </main>
 
 <footer class="site-footer">
-  <a href="https://englishonline.training">EnglishOnline.training</a>
+  <a href="https://englishonline.training">englishonline.training</a> ·
+  <a href="https://englishonline.training/about/">About</a> ·
+  <a href="https://englishonline.training/impressum/">Impressum</a>
 </footer>
 
 </body>
