@@ -9,13 +9,15 @@ const { test, expect } = require('@playwright/test');
  *   step-1: one question at a time — click an option to select it, confirm
  *           with "Keep answer →"; no right/wrong shown during the test;
  *           counting-up timer; "N of at most 20" counter
- *   step-1 interstitial: "Almost done!" — optional email, Show Results / Skip
- *   step-2: results — CEFR card, per-level breakdown, mistake review, CTAs
+ *   step-2: results (shown instantly) — CEFR card, per-level breakdown,
+ *           mistake review, CTAs, optional "extra feedback by email" card
  *
  * Adaptive engine:
  *   - Starts at B1 (theta = 2.0); item selection = unused question whose
  *     level is closest to theta ("most informative at your estimated level")
- *   - Surprise-weighted theta update (right-on-hard / wrong-on-easy move more)
+ *   - Surprise-weighted theta update (right-on-hard / wrong-on-easy move more),
+ *     with the step shrinking as the test goes on
+ *   - Level = band theta sits in (B1 = 2.0–2.99); boundaries at 1/2/3/4
  *   - Stops at 15 questions unless theta is within 0.35 of a level boundary
  *     (then runs to 20)
  */
@@ -31,7 +33,7 @@ async function clickStart(page) {
 }
 
 // Click an option button, then confirm with "Keep answer →". Everything is
-// synchronous — after the keep click the next question (or the interstitial)
+// synchronous — after the keep click the next question (or the results step)
 // is already rendered.
 async function selectAndKeep(page, value) {
   await page.evaluate((v) => {
@@ -56,24 +58,22 @@ async function answerWrongly(page) {
   }
 }
 
-// Answer until the "Almost done!" interstitial appears. All-correct runs stop
-// at 15 questions, all-wrong at 15 — anything past 25 means the stop rule broke.
-async function answerUntilInterstitial(page, how) {
+// Answer until the results step appears. All-correct runs stop at 15
+// questions, all-wrong at 15 — anything past 25 means the stop rule broke.
+async function answerUntilResults(page, how) {
   for (let i = 0; i < 25; i++) {
-    if (await page.locator('#result-email').isVisible().catch(() => false)) return;
+    if (await page.locator('#step-2').isVisible().catch(() => false)) return;
     await expect(page.locator('#active-q')).toBeVisible();
     await how(page);
   }
-  throw new Error('quiz did not reach the interstitial within 25 questions');
+  throw new Error('quiz did not reach the results within 25 questions');
 }
 
-async function answerAllCorrect(page) { await answerUntilInterstitial(page, answerCorrectly); }
-async function answerAllWrong(page)   { await answerUntilInterstitial(page, answerWrongly); }
+async function answerAllCorrect(page) { await answerUntilResults(page, answerCorrectly); }
+async function answerAllWrong(page)   { await answerUntilResults(page, answerWrongly); }
 
-// The interstitial is expected; skip it and wait for the results step.
+// Results appear straight after the last answer — no interstitial.
 async function waitForResults(page) {
-  await expect(page.locator('#result-email')).toBeVisible({ timeout: 5000 });
-  await page.locator('button', { hasText: 'Skip' }).click();
   await expect(page.locator('#step-2')).toBeVisible({ timeout: 5000 });
   await expect(page.locator('#score-display')).toBeVisible({ timeout: 3000 });
 }
@@ -342,55 +342,96 @@ test.describe('Level Test — no data submission', () => {
 });
 
 
-test.describe('Level Test — optional email step', () => {
+test.describe('Level Test — optional extra feedback by email', () => {
   test.setTimeout(90_000);
 
-  test('"Almost done!" interstitial appears after the last question', async ({ page }) => {
+  test('results appear straight after the last question, with the email card below', async ({ page }) => {
     await clickStart(page);
     await answerAllCorrect(page);
+    await waitForResults(page);
     await expect(page.locator('#result-email')).toBeVisible();
-    await expect(page.locator('button', { hasText: 'Show Results' })).toBeVisible();
-    await expect(page.locator('button', { hasText: 'Skip' })).toBeVisible();
+    await expect(page.locator('#email-send')).toBeVisible();
+    await expect(page.locator('#score-display')).toContainText('Get extra feedback by email');
   });
 
-  test('invalid email shows a validation error and stays on the step', async ({ page }) => {
-    await clickStart(page);
-    await answerAllCorrect(page);
-    await page.locator('#result-email').fill('not-an-email');
-    await page.locator('button', { hasText: 'Show Results' }).click();
-    const fb = page.locator('#email-feedback');
-    await expect(fb).toBeVisible();
-    await expect(fb).toContainText('valid email');
-    await expect(page.locator('#step-2')).not.toBeVisible();
-  });
-
-  test('valid email is accepted and mentioned on the results screen (test mode)', async ({ page }) => {
+  test('invalid email shows a validation error and sends nothing', async ({ page }) => {
     const logs = [];
     page.on('console', msg => logs.push(msg.text()));
     await clickStart(page);
     await answerAllCorrect(page);
-    await page.locator('#result-email').fill('student@example.com');
-    await page.locator('button', { hasText: 'Show Results' }).click();
-    await expect(page.locator('#step-2')).toBeVisible();
-    await expect(page.locator('#score-display')).toContainText('student@example.com');
-    // On localhost, isTestMode() logs the payload instead of POSTing
-    const payloadLog = logs.find(l => l.includes('level-test email payload'));
-    expect(payloadLog).toBeTruthy();
-    expect(payloadLog).toContain('student@example.com');
-    expect(payloadLog).toContain('C1');
+    await page.locator('#result-email').fill('not-an-email');
+    await page.locator('#email-send').click();
+    const fb = page.locator('#email-feedback');
+    await expect(fb).toBeVisible();
+    await expect(fb).toContainText('valid email');
+    await expect(page.locator('#email-send')).toBeEnabled();
+    expect(logs.find(l => l.includes('level-test email payload'))).toBeFalsy();
   });
 
-  test('Skip goes straight to results without sending anything', async ({ page }) => {
+  test('valid email sends the feedback payload once (test mode)', async ({ page }) => {
     const logs = [];
     page.on('console', msg => logs.push(msg.text()));
     await clickStart(page);
     await answerAllWrong(page);
-    await expect(page.locator('#result-email')).toBeVisible();
-    await page.locator('button', { hasText: 'Skip' }).click();
-    await expect(page.locator('#step-2')).toBeVisible();
-    await expect(page.locator('#score-display')).toContainText('A1');
+    await page.locator('#result-email').fill('student@example.com');
+    await page.locator('#email-send').click();
+    await expect(page.locator('#email-feedback')).toContainText('student@example.com');
+    await expect(page.locator('#email-send')).toBeDisabled();
+    // On localhost, isTestMode() logs the payload instead of POSTing
+    const payloadLogs = logs.filter(l => l.includes('level-test email payload'));
+    expect(payloadLogs).toHaveLength(1);
+    expect(payloadLogs[0]).toContain('student@example.com');
+    expect(payloadLogs[0]).toContain('A1');
+    expect(payloadLogs[0]).toContain('You chose:');
+  });
+
+  test('not requesting feedback sends nothing', async ({ page }) => {
+    const logs = [];
+    page.on('console', msg => logs.push(msg.text()));
+    await clickStart(page);
+    await answerAllWrong(page);
+    await waitForResults(page);
     expect(logs.find(l => l.includes('level-test email payload'))).toBeFalsy();
   });
+});
+
+
+test.describe('Level Test — step nav after finishing', () => {
+  test.setTimeout(90_000);
+
+  test('going back to the quiz step shows no live question or form', async ({ page }) => {
+    await clickStart(page);
+    await answerAllCorrect(page);
+    await waitForResults(page);
+    await page.locator('#step-nav button', { hasText: 'Ex A' }).click();
+    await expect(page.locator('#step-1')).toBeVisible();
+    await expect(page.locator('#active-q')).toHaveCount(0);
+    await expect(page.locator('#quiz-card')).toContainText('Test finished');
+  });
+});
+
+
+test.describe('Level Test — level placement', () => {
+  test.setTimeout(90_000);
+
+  // A learner who gets every A1 item right and every harder item wrong is A1,
+  // and one who masters A2 but nothing above is A2 — the old engine placed
+  // both one level too high.
+  for (const [mastered, expected] of [['A1', 'A1'], ['A2', 'A2'], ['B1', 'B1'], ['B2', 'B2']]) {
+    test(`a learner who masters up to ${mastered} is placed at ${expected}`, async ({ page }) => {
+      const order = ['A1', 'A2', 'B1', 'B2', 'C1'];
+      await clickStart(page);
+      await answerUntilResults(page, async (p) => {
+        const lvl = await p.locator('#active-q').getAttribute('data-level');
+        if (order.indexOf(lvl) <= order.indexOf(mastered)) await answerCorrectly(p);
+        else await answerWrongly(p);
+      });
+      await waitForResults(page);
+      const text = await page.locator('#score-display').textContent();
+      expect(text).toContain('Your estimated level');
+      expect(text).toMatch(new RegExp(expected + ' — '));
+    });
+  }
 });
 
 

@@ -105,7 +105,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- OVERVIEW:END -->
     <div class="card">
       <p style="font-size:.92rem;margin-bottom:.7rem;line-height:1.6">This version is adaptive: after each answer, the next question is chosen to be most informative at your estimated level. You get at least 15 questions, and up to 20 if your estimate is still sitting on a level boundary.</p>
-      <p style="font-size:.92rem;color:var(--muted);margin-bottom:1.1rem;line-height:1.6">You see no right-or-wrong while you test — a full review with explanations comes at the end. Untimed (the clock only counts up); most people finish in 5–8 minutes. Nothing is submitted unless you ask for an email copy of your result.</p>
+      <p style="font-size:.92rem;color:var(--muted);margin-bottom:1.1rem;line-height:1.6">You see no right-or-wrong while you test — a full review with explanations comes at the end. Untimed (the clock only counts up); most people finish in 5–8 minutes. Nothing is submitted unless you ask for extra feedback by email at the end.</p>
       <button class="btn btn-gold btn-block" onclick="startQuiz()">Begin the test &rarr;</button>
     </div>
   </div>
@@ -287,20 +287,24 @@ var LEVELS = [
 // Format modelled on taketest.xyz: after each answer the next item is the
 // unused one whose difficulty is closest to the current ability estimate
 // ("most informative at your estimated level"). The estimate moves further
-// when an answer is a surprise (right on a hard item, wrong on an easy one).
-// The test stops at MIN_QUESTIONS unless the estimate sits within
-// BOUNDARY_EPS of a level boundary, in which case it runs to MAX_QUESTIONS.
+// when an answer is a surprise (right on a hard item, wrong on an easy one),
+// and every step shrinks as the test goes on so the estimate settles instead
+// of swinging across a level boundary on the last answer.
+// The level is the band the estimate sits in: theta 2.0–2.99 is B1, i.e. the
+// learner handles B1 items but not yet B2 ones. The test stops at
+// MIN_QUESTIONS unless the estimate sits within BOUNDARY_EPS of a level
+// boundary, in which case it runs to MAX_QUESTIONS.
 var MIN_QUESTIONS = 15;
 var MAX_QUESTIONS = 20;
 var BOUNDARY_EPS  = 0.35;
-var BOUNDARIES    = [0.5, 1.5, 2.5, 3.5];
+var BOUNDARIES    = [1, 2, 3, 4];
 var theta         = 2.0;   // ability estimate: 0=A1, 1=A2, 2=B1, 3=B2, 4=C1
 var answered      = [];    // { question, level, levelIdx, correct, selected }
 var usedIds       = {};
 var currentPick   = null;
 var pendingSelect = null;
 var quizDone      = false;
-var emailedTo     = '';
+var emailSent     = false;
 var startedAt     = null;
 var timerId       = null;
 
@@ -330,10 +334,11 @@ function pickQuestion() {
 }
 
 // Surprise-weighted update: correct on a harder item (or wrong on an easier
-// one) moves the estimate further than the unremarkable case.
-function updateTheta(levelIdx, correct) {
+// one) moves the estimate further than the unremarkable case. n is the number
+// of answers so far; the step shrinks from 100% to a floor of 40%.
+function updateTheta(levelIdx, correct, n) {
   var surprise = correct ? (levelIdx - theta) : (theta - levelIdx);
-  var step = Math.max(0.3, 0.55 + 0.15 * surprise);
+  var step = Math.max(0.3, 0.55 + 0.15 * surprise) * Math.max(0.4, 1 - 0.04 * (n - 1));
   theta = correct
     ? Math.min(4.75, theta + step)
     : Math.max(0, theta - step);
@@ -353,10 +358,10 @@ function shouldStop() {
 }
 
 function finalLevel() {
-  if (theta >= 3.5) return LEVELS[0]; // C1
-  if (theta >= 2.5) return LEVELS[1]; // B2
-  if (theta >= 1.5) return LEVELS[2]; // B1
-  if (theta >= 0.5) return LEVELS[3]; // A2
+  if (theta >= 4) return LEVELS[0]; // C1
+  if (theta >= 3) return LEVELS[1]; // B2
+  if (theta >= 2) return LEVELS[2]; // B1
+  if (theta >= 1) return LEVELS[3]; // A2
   return LEVELS[4]; // A1
 }
 
@@ -416,13 +421,13 @@ function keepAnswer() {
   var isCorrect = pendingSelect === q.correct;
   usedIds[q.id] = true;
   answered.push({ question: q, level: currentPick.level, levelIdx: currentPick.levelIdx, correct: isCorrect, selected: pendingSelect });
-  updateTheta(currentPick.levelIdx, isCorrect);
+  updateTheta(currentPick.levelIdx, isCorrect, answered.length);
   currentPick = null;
   pendingSelect = null;
 
-  if (shouldStop()) { renderInterstitial(); return; }
+  if (shouldStop()) { finishQuiz(); return; }
   var next = pickQuestion();
-  if (!next) { renderInterstitial(); return; }
+  if (!next) { finishQuiz(); return; }
   renderQuestion(next);
 }
 
@@ -442,39 +447,28 @@ function stopTimer() {
   if (timerId) { clearInterval(timerId); timerId = null; }
 }
 
-// ─── Optional email step ("Almost done!") ─────────────────────────
-function renderInterstitial() {
-  stopTimer();
-  document.getElementById('quiz-bar').style.width = (answered.length / MAX_QUESTIONS * 100) + '%';
-  document.getElementById('quiz-count').textContent = answered.length + ' of at most ' + MAX_QUESTIONS;
-
-  var html = '<div class="card" style="text-align:center">'
-    + '<h2 class="ex-title" style="text-align:center;margin-bottom:.3rem">Almost done!</h2>'
-    + '<p style="font-size:.9rem;color:var(--muted);margin:0 auto 1rem;max-width:420px;line-height:1.5">One optional question: enter your email to get a copy of your result — or skip straight to your level.</p>'
-    + '<input type="email" id="result-email" placeholder="your@email.com" autocomplete="email" style="width:100%;max-width:340px;padding:.55rem .75rem;border:1.5px solid var(--border);border-radius:8px;font-size:.92rem;font-family:inherit;margin-bottom:.8rem;box-sizing:border-box">'
-    + '<div id="email-feedback" style="display:none;margin:0 auto .8rem;padding:.5rem .75rem;border-radius:8px;font-size:.85rem;max-width:340px"></div>'
-    + '<div style="display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap">'
-    + '<button type="button" class="btn btn-gold" onclick="showResults()">Show Results &rarr;</button>'
-    + '<button type="button" class="btn btn-outline" onclick="skipEmail()">Skip</button>'
-    + '</div></div>';
-  document.getElementById('quiz-card').innerHTML = html;
-}
-
-function showResults() {
+// ─── Optional extra feedback by email ─────────────────────────────
+// Results show instantly; the email card sits below them. The Apps Script
+// (unit 'level-test' in apps-script.gs) sends the email and logs the row.
+function requestFeedback() {
+  if (emailSent) return;
   var email = (document.getElementById('result-email').value || '').trim();
-  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    var fb = document.getElementById('email-feedback');
-    fb.style.display = 'block';
+  var fb = document.getElementById('email-feedback');
+  fb.style.display = 'block';
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     fb.style.background = 'rgba(192,57,43,.1)';
     fb.style.color = 'var(--red)';
-    fb.textContent = 'Please enter a valid email address — or leave it blank.';
+    fb.textContent = 'Please enter a valid email address.';
     return;
   }
-  if (email) { emailedTo = email; sendResults(email); }
-  finishQuiz();
+  emailSent = true;
+  sendResults(email);
+  document.getElementById('result-email').disabled = true;
+  document.getElementById('email-send').disabled = true;
+  fb.style.background = 'rgba(39,174,96,.1)';
+  fb.style.color = 'var(--green)';
+  fb.textContent = 'Request sent to ' + email + ' — your feedback should arrive within a few minutes. Check your spam folder if it doesn\'t.';
 }
-
-function skipEmail() { finishQuiz(); }
 
 function sendResults(email) {
   var lv = finalLevel();
@@ -489,12 +483,20 @@ function sendResults(email) {
     return d.total > 0 ? l + ': ' + d.correct + '/' + d.total : '';
   }).filter(Boolean).join(', ');
 
+  var mistakes = answered.filter(function(a) { return !a.correct; }).map(function(a) {
+    return '[' + a.level + '] ' + a.question.stem.replace('___', a.question.correct)
+      + '\n   You chose: ' + a.selected + '\n   ' + a.question.why;
+  }).join('\n\n');
+
   var payload = {
     unit: UNIT,
     email: email,
     level: lv.code + ' — ' + lv.name,
     score: totalCorrect + ' / ' + answered.length,
-    breakdown: breakdown
+    breakdown: breakdown,
+    advice: lv.text,
+    mistakes: mistakes,
+    links: lv.links.map(function(l) { return l[1] + ': https://activities.englishonline.training/' + l[0]; }).join('\n')
   };
 
   if (typeof isTestMode === 'function' && isTestMode()) {
@@ -522,6 +524,8 @@ function finishQuiz() {
   quizDone = true;
   stopTimer();
   document.getElementById('quiz-bar').style.width = '100%';
+  document.getElementById('quiz-count').textContent = answered.length + ' answered';
+  document.getElementById('quiz-card').innerHTML = '<div class="card" style="text-align:center"><p style="margin:0">Test finished — your result is on the Results step.</p></div>';
   buildSummary();
   showStep(2);
 }
@@ -568,12 +572,16 @@ function buildSummary() {
     + '<div style="font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--blue);font-weight:700;margin-bottom:.3rem">Your estimated level</div>'
     + '<div style="font-size:2rem;font-weight:800;color:var(--blue)">' + lv.code + ' — ' + lv.name + '</div>'
     + '<div style="font-size:1rem;color:var(--blue);margin-top:.2rem">' + totalCorrect + ' / ' + answered.length + ' correct</div>'
-    + (emailedTo ? '<div style="font-size:.85rem;color:var(--muted);margin-top:.4rem">A copy of your result is on its way to ' + esc(emailedTo) + '.</div>' : '')
     + '</div>'
     + '<div class="card"><p style="margin-bottom:.6rem">' + lv.text + '</p>'
     + '<p style="font-size:.85rem;color:var(--muted);margin-bottom:.2rem">This is a grammar-based estimate, not a full exam — speaking, listening and writing also count towards your real CEFR level.</p></div>'
     + (breakdownRows ? '<div class="card"><div class="card-title">Your performance by level</div>' + breakdownRows + '</div>' : '')
     + '<div class="card" style="text-align:center"><div class="card-title">Exercises for your level</div>' + links + '</div>'
+    + '<div class="card" style="text-align:center"><div class="card-title">Get extra feedback by email</div>'
+    + '<p style="font-size:.88rem;color:var(--muted);margin:0 auto .8rem;max-width:420px;line-height:1.5">Optional: we\'ll email you your level, every question you missed with its explanation, and the exercises to work on next.</p>'
+    + '<input type="email" id="result-email" placeholder="your@email.com" autocomplete="email" style="width:100%;max-width:340px;padding:.55rem .75rem;border:1.5px solid var(--border);border-radius:8px;font-size:.92rem;font-family:inherit;margin-bottom:.8rem;box-sizing:border-box">'
+    + '<div id="email-feedback" style="display:none;margin:0 auto .8rem;padding:.5rem .75rem;border-radius:8px;font-size:.85rem;max-width:340px"></div>'
+    + '<button type="button" class="btn btn-gold" id="email-send" onclick="requestFeedback()">Send me my feedback &rarr;</button></div>'
     + '<div class="card" style="text-align:center">'
     + '<button class="btn btn-outline" onclick="location.reload()" style="width:100%;max-width:320px;justify-content:center">&#8635; Take the test again</button>'
     + '<p style="font-size:.8rem;color:var(--muted);margin-top:.5rem">You\'ll get different questions each time.</p></div>';
