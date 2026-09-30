@@ -13,32 +13,32 @@
      "label": "… Introducing an opinion about a new school policy — which version sounds like a blog post?"
     },
     "g2": {
-     "correct": "staying",
+     "correct": "kneeling during the anthem",
      "accept": [
-      "staying"
+      "kneeling during the anthem"
      ],
-     "label": "2. Instead of"
+     "label": "2. Kaepernick protested by"
     },
     "g3": {
-     "correct": "55% voted to remain in the UK",
-     "accept": [
-      "55% voted to remain in the UK"
-     ],
-     "label": "3. Result of the 2014 referendum"
-    },
-    "g4": {
      "correct": "the narrator's inner conflict about what to do",
      "accept": [
       "the narrator's inner conflict about what to do"
      ],
-     "label": "4. What the clouds/storm mainly represent"
+     "label": "3. What the clouds/storm mainly represent"
+    },
+    "g4": {
+     "correct": "insisted",
+     "accept": [
+      "insisted"
+     ],
+     "label": "4. defending himself → he"
     },
     "g5": {
-     "correct": "sustainable",
+     "correct": "echo chamber",
      "accept": [
-      "sustainable"
+      "echo chamber"
      ],
-     "label": "5. A"
+     "label": "5. mainly meeting similar opinions"
     },
     "g6": {
      "correct": "louder",
@@ -48,73 +48,11 @@
      "label": "6. The bagpipes are"
     },
     "g7": {
-     "correct": "kneeling during the anthem",
+     "correct": "it must remain in human form",
      "accept": [
-      "kneeling during the anthem"
+      "it must remain in human form"
      ],
-     "label": "7. Kaepernick protested by"
-    },
-    "g8": {
-     "correct": "universities",
-     "accept": [
-      "universities"
-     ],
-     "label": "8. Both cities are famous for their"
-    }
-   }
-  },
-  "exB": {
-   "prefix": "exB-",
-   "multi": false,
-   "gaps": {
-    "g1": {
-     "correct": "felt",
-     "accept": [
-      "felt"
-     ],
-     "label": "1. 'I feel nervous' → she"
-    },
-    "g2": {
-     "correct": "leave",
-     "accept": [
-      "leave"
-     ],
-     "label": "2. Eleven states decided to"
-    },
-    "g3": {
-     "correct": "such as",
-     "accept": [
-      "such as"
-     ],
-     "label": "3. (example) Unique,"
-    },
-    "g4": {
-     "correct": "perspective",
-     "accept": [
-      "perspective"
-     ],
-     "label": "4. A point of view on a situation"
-    },
-    "g5": {
-     "correct": "simile",
-     "accept": [
-      "simile"
-     ],
-     "label": "5. 'as welcome as a wolf at a birthday party'"
-    },
-    "g6": {
-     "correct": "solidarity",
-     "accept": [
-      "solidarity"
-     ],
-     "label": "6. supporting a group you are not part of"
-    },
-    "g7": {
-     "correct": "for",
-     "accept": [
-      "for"
-     ],
-     "label": "7. It’s important"
+     "label": "7. What happens if a selkie's skin is hidden?"
     },
     "g8": {
      "correct": "In what ways has the club made a difference for your child?",
@@ -125,65 +63,127 @@
     }
    }
   },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "perspective",
+     "accept": [
+      "perspective"
+     ],
+     "label": "1. A point of view on a situation"
+    },
+    "g2": {
+     "correct": "leave",
+     "accept": [
+      "leave"
+     ],
+     "label": "2. Eleven states decided to"
+    },
+    "g3": {
+     "correct": "faster",
+     "accept": [
+      "faster"
+     ],
+     "label": "3. Smartphones have made communication"
+    },
+    "g4": {
+     "correct": "such as",
+     "accept": [
+      "such as"
+     ],
+     "label": "4. (example) Unique,"
+    },
+    "g5": {
+     "correct": "for",
+     "accept": [
+      "for"
+     ],
+     "label": "5. It’s important"
+    },
+    "g6": {
+     "correct": "simile",
+     "accept": [
+      "simile"
+     ],
+     "label": "6. 'as welcome as a wolf at a birthday party'"
+    },
+    "g7": {
+     "correct": "right",
+     "accept": [
+      "right"
+     ],
+     "label": "7. a fundamental entitlement"
+    },
+    "g8": {
+     "correct": "solidarity",
+     "accept": [
+      "solidarity"
+     ],
+     "label": "8. supporting a group you are not part of"
+    }
+   }
+  },
   "exC": {
    "prefix": "exC-",
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "might",
+     "correct": "Passive voice",
      "accept": [
-      "might"
+      "Passive voice"
      ],
-     "label": "1. They"
+     "label": "1. (Review) In \"nobody will be punished\", what voice is the sentence in?"
     },
     "g2": {
-     "correct": "for",
+     "correct": "universities",
      "accept": [
-      "for"
+      "universities"
      ],
-     "label": "2. 8 (review) — “It was surprising"
+     "label": "2. Both cities are famous for their"
     },
     "g3": {
-     "correct": "echo chamber",
-     "accept": [
-      "echo chamber"
-     ],
-     "label": "3. mainly meeting similar opinions"
-    },
-    "g4": {
-     "correct": "right",
-     "accept": [
-      "right"
-     ],
-     "label": "4. a fundamental entitlement"
-    },
-    "g5": {
-     "correct": "faster",
-     "accept": [
-      "faster"
-     ],
-     "label": "5. Smartphones have made communication"
-    },
-    "g6": {
      "correct": "Practising",
      "accept": [
       "Practising"
      ],
-     "label": "6."
+     "label": "3."
     },
-    "g7": {
+    "g4": {
      "correct": "pioneer",
      "accept": [
       "pioneer"
      ],
-     "label": "7. creates a style others follow"
+     "label": "4. creates a style others follow"
+    },
+    "g5": {
+     "correct": "for",
+     "accept": [
+      "for"
+     ],
+     "label": "5. 8 (review) — “It was surprising"
+    },
+    "g6": {
+     "correct": "staying",
+     "accept": [
+      "staying"
+     ],
+     "label": "6. Instead of"
+    },
+    "g7": {
+     "correct": "teamwork, quick decision-making and problem-solving under pressure",
+     "accept": [
+      "teamwork, quick decision-making and problem-solving under pressure"
+     ],
+     "label": "7. Skills multiplayer games can teach"
     },
     "g8": {
-     "correct": "insisted",
+     "correct": "55% voted to remain in the UK",
      "accept": [
-      "insisted"
+      "55% voted to remain in the UK"
      ],
-     "label": "8. defending himself → he"
+     "label": "8. Result of the 2014 referendum"
     }
    }
   }

@@ -77,6 +77,9 @@ const LEGACY_UNPREFIXED = {
 // should also drop out of search.
 //
 // The list lives in data/unlisted.json so the watchdog reads the same one.
+// Empty since 2026-09-30: Shaun moved the 9c/9g Australia vocab practice pages
+// onto their year hubs — practice pages are for students to find (CLAUDE.md,
+// "Tests are unlisted"); only the tests stay hidden.
 const UNLISTED = new Set(JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'unlisted.json'), 'utf8')).files);
 
 // Topic tags for pages whose section headings name the story, not the grammar,

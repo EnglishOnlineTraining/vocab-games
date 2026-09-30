@@ -5,7 +5,8 @@
     "build-topic-pages.js leaves each file out of sitemap.xml, watchdog.js checks both.",
     "indexedInstead names the page that should rank for the same search intent. It is documentation only:",
     "each listed page keeps a SELF canonical, because noindex plus a canonical to another URL is a conflicting signal.",
-    "Added 2026-09-23 (SEO remediation). See CLAUDE.md > 'Search-excluded pages'."
+    "Added 2026-09-23 (SEO remediation). See CLAUDE.md > 'Search-excluded pages'.",
+    "Tests (group \"test\") added 2026-09-30: unlisted and reachable only from teacher-tests.html, but a leaked URL could still be indexed. noindex keeps them out of search whatever links to them."
   ],
   "pages": [
     {
@@ -252,6 +253,56 @@
       "file": "uni-review.html",
       "indexedInstead": "uni-activities.html",
       "group": "review-page"
+    },
+    {
+      "file": "9g-class-test-9ab.html",
+      "indexedInstead": null,
+      "group": "test"
+    },
+    {
+      "file": "9ab-grammar-literary-review-test.html",
+      "indexedInstead": null,
+      "group": "test"
+    },
+    {
+      "file": "9ab-grammar-literary-review-vocab.html",
+      "indexedInstead": null,
+      "group": "test"
+    },
+    {
+      "file": "10a-grammar-literary-review-test.html",
+      "indexedInstead": null,
+      "group": "test"
+    },
+    {
+      "file": "10a-grammar-literary-review-vocab.html",
+      "indexedInstead": null,
+      "group": "test"
+    },
+    {
+      "file": "9c-australia-vocab-test.html",
+      "indexedInstead": null,
+      "group": "test"
+    },
+    {
+      "file": "9g-australia-vocab-test.html",
+      "indexedInstead": null,
+      "group": "test"
+    },
+    {
+      "file": "uni-writing-task.html",
+      "indexedInstead": null,
+      "group": "test"
+    },
+    {
+      "file": "uni-pm-vocabulary.html",
+      "indexedInstead": null,
+      "group": "test"
+    },
+    {
+      "file": "year-7-class-wall.html",
+      "indexedInstead": null,
+      "group": "class-page"
     }
   ]
 }

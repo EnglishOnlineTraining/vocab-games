@@ -247,12 +247,17 @@ colBlocks.push(colBlock('msa', '🎧', 'Oberschule · Exam prep', 'MSA ' + de('(
 colBlocks.push(colBlock('grammar-section', '📘', 'All levels · No sign-up', 'Grammar Practice', [
   colCard('grammar-activities.html', '📘', 'Grammar Practice',
     'Interactive practice on one grammar point at a time, explained in German',
-    count(countFor('grammar', null), 'Topic'))
+    count(countFor('grammar', null), 'Topic')),
+  colCard('esl-grammar-activities.html', '🌍', 'ESL Grammar',
+    'The grammar points learners get wrong most often — for learners anywhere',
+    count(countFor('esl', null), 'Exercise'))
 ]));
 
 colBlocks.push(colBlock('tools', '🔤', 'Exam prep', 'Vocabulary Tools', [
   colCard('ielts-vocabulary-glossary.html', '📖', 'IELTS Vocabulary Glossary',
-    'Searchable glossary &amp; matching practice — 85 terms', '1 Resource')
+    'Searchable glossary &amp; matching practice — 85 terms', '1 Resource'),
+  colCard('klasse7-mini.html', '⚡', 'Mini-Übung Klasse 7',
+    'Four quick questions each for Gymnasium &amp; Oberschule — instant feedback', '1 Quick check')
 ]));
 
 colBlocks.push(colBlock('prof', '🎓', 'Adults · Vocational', 'Professional English',
@@ -353,15 +358,29 @@ function rootBlock(heading, badge, cards) {
     + '  </section>';
 }
 
+// One card per year group holding both school types, so Years 7–10 sit in a
+// single 2×2 grid instead of four half-empty rows of two cards each.
+function rootSchoolLink(href, school, meta, n) {
+  return '        <a class="school-link' + (n ? '' : ' is-soon') + '" href="' + href + '">\n'
+    + '          <span class="school-name">' + school + '</span>\n'
+    + '          <span class="school-meta">' + (n ? meta : 'Coming soon') + '</span>\n'
+    + '          <span class="school-count">' + rootCount(n, 'exercise') + '</span>\n'
+    + '        </a>\n';
+}
+
 const rootBlocks = [];
 
-ROOT_YEARS.forEach(([year, label, gMeta, cMeta]) => {
-  const g = countFor(year, 'gymnasium'), c = countFor(year, 'oberschule');
-  rootBlocks.push(rootBlock(label, year, [
-    rootCard(year + 'g-activities.html', '🏫', 'Gymnasium', g ? gMeta : 'Coming soon', rootCount(g, 'Exercise'), g > 0),
-    rootCard(year + 'c-activities.html', '🏫', 'Oberschule', c ? cMeta : 'Coming soon', rootCount(c, 'Exercise'), c > 0)
-  ]));
-});
+rootBlocks.push('  <section class="year-block" id="years">\n'
+  + '    <h2 class="year-heading">Find your class</h2>\n'
+  + '    <div class="years-grid">\n'
+  + ROOT_YEARS.map(([year, label, gMeta, cMeta]) =>
+      '      <div class="year-card">\n'
+      + '        <h3 class="year-card-title"><span class="year-badge">' + year + '</span>' + label + '</h3>\n'
+      + rootSchoolLink(year + 'g-activities.html', 'Gymnasium', gMeta, countFor(year, 'gymnasium'))
+      + rootSchoolLink(year + 'c-activities.html', 'Oberschule', cMeta, countFor(year, 'oberschule'))
+      + '      </div>').join('\n')
+  + '\n    </div>\n'
+  + '  </section>');
 
 // MSA — its own block: the exam units, plus the mixed-revision page.
 const msaUnits = exercises.filter(e => String(e.year) === 'msa' && e.file !== 'msa-review.html').length;
@@ -391,11 +410,6 @@ ABITUR_TASKS.forEach(([slug, icon, title, meta, page]) => {
 });
 rootBlocks.push(rootBlock('Abitur', '🎓', abiturCards));
 
-rootBlocks.push(rootBlock('More courses', '', ROOT_COURSES.map(([href, icon, title, key, meta]) => {
-  const n = countFor(key, null);
-  return rootCard(href, icon, title, n ? meta : 'Coming soon', rootCount(n, 'Exercise'), n > 0);
-})));
-
 // Counted from data/topics.json, not from themen/ on disk. build-topic-pages.js
 // writes exactly one page per topic (plus index.html), so the two agree — but
 // reading the directory made this an undeclared dependency on that generator's
@@ -405,7 +419,7 @@ rootBlocks.push(rootBlock('More courses', '', ROOT_COURSES.map(([href, icon, tit
 // dependency was a readdirSync, not a declared input.
 const topicPageCount = topics.length;
 
-rootBlocks.push(rootBlock('Browse everything', '', [
+rootBlocks.push(rootBlock('Quick practice &amp; tools', '', [
   rootCard('activities.html', '🔎', 'All exercises',
     'Search and filter by year, school type, skill or grammar topic',
     rootCount(exercises.length, 'Exercise'), true),
@@ -420,8 +434,19 @@ rootBlocks.push(rootBlock('Browse everything', '', [
     rootCount(countFor('level', null), 'Test'), countFor('level', null) > 0),
   rootCard('ielts-vocabulary-glossary.html', '📖', 'Vocabulary',
     'Searchable IELTS glossary and interactive vocabulary games',
-    'Glossary &amp; games', true)
+    'Glossary &amp; games', true),
+  rootCard('klasse7-mini.html', '⚡', 'Mini-Übung Klasse 7',
+    'Four quick questions each for Gymnasium and Oberschule — instant feedback',
+    '1 Quick check', true)
 ]));
+
+rootBlocks.push(rootBlock('University, work &amp; beyond', '', ROOT_COURSES.map(([href, icon, title, key, meta]) => {
+  const n = countFor(key, null);
+  return rootCard(href, icon, title, n ? meta : 'Coming soon', rootCount(n, 'Exercise'), n > 0);
+}).concat(countFor('esl', null) ? [rootCard('esl-grammar-activities.html', '🌍', 'ESL Grammar',
+  'The grammar points learners get wrong most often — for learners anywhere',
+  rootCount(countFor('esl', null), 'Exercise'), true)] : [])));
+
 
 const rootSection = '<!-- ROOT:START (generated by scripts/build-hub.js — do not edit by hand) -->\n'
   + rootBlocks.join('\n\n') + '\n'

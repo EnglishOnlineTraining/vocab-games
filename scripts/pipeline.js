@@ -230,6 +230,10 @@ const MANUAL = [
   // Same reasoning: source images change roughly never, it needs Chromium's
   // canvas encoder, and the .webp it writes is committed alongside the .png.
   { id: 'optimise-images', run: 'scripts/optimise-images.js' },
+  // Not a generator at all: it turns one sitting's marks into printable
+  // feedback sheets. It writes nothing into the site, takes a student-data
+  // file that must never be committed, and needs Playwright for the PDF.
+  { id: 'marking-handout', run: 'scripts/marking-handout.js' },
 ];
 
 module.exports = { NODES, VALIDATORS, CHECKERS, MANUAL };

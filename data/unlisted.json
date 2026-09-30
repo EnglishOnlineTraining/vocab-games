@@ -1,7 +1,4 @@
 {
   "_readme": "Exercise pages deliberately left out of the public index (data/exercises.json and everything built from it). Read by scripts/build-exercise-data.js, which skips them, and by scripts/watchdog.js, which must not report them as missing from exercises.json. Hand-maintained.",
-  "files": [
-    "9g-australia-vocab-practice.html",
-    "9c-australia-vocab-practice.html"
-  ]
+  "files": []
 }
