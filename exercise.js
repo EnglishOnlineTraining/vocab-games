@@ -1582,7 +1582,9 @@ function eolInjectChrome() {
 
   var header = document.querySelector('header.app-header');
   var title = eolPageTitle();
-  if (header && !document.getElementById('eol-crumbs')) {
+  // build-head.js now prints a static, fully linked trail (nav.eol-crumb) on
+  // every page it can; this runtime one is only the fallback for a page without.
+  if (header && !document.getElementById('eol-crumbs') && !document.querySelector('nav.eol-crumb')) {
     var nav = document.createElement('nav');
     nav.id = 'eol-crumbs';
     nav.className = 'eol-crumbs';

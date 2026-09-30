@@ -1340,6 +1340,29 @@ packs `abitur-<task>-<topic>.html` (→ `abitur-<task>.html`), and 6 near-duplic
 pages. None had Search Console impressions when excluded. To add or remove a page, edit
 the JSON and run `node scripts/build.js`.
 
+Added 2026-09-30 (list now 47): the 9 tests on `teacher-tests.html` (group `test`,
+`indexedInstead: null`) and `year-7-class-wall.html`. Being unlinked and out of the
+sitemap kept them out of Google only until someone shared a URL; `noindex` holds regardless.
+
+## Internal links — breadcrumb and Keep-practising (added 2026-09-30)
+
+- **Visible breadcrumb.** `build-head.js` prints `nav.eol-crumb` (CRUMB block) under the
+  header of every content page: Start › Übungen › hub › page, from `S.breadcrumbTrail()` —
+  the same function that builds the BreadcrumbList JSON-LD, so the two cannot disagree.
+  Skipped on `index.html`, the hubs, `themen/`, pages that already print a crumb nav (the
+  Abitur packs), and everything linked from `teacher-tests.html`. `exercise.js`'s runtime
+  `.eol-crumbs` stands down when the static one is present. Before this, most exercises did
+  not link to their year hub at all (8c: 2 of 12) and the site root had one internal link.
+- **Keep-practising for pages with no grammar topic.** `relatedBlock()` used to return
+  nothing when `topics` was empty, leaving 144 pages (all Abitur, MSA, Business, IT, Uni,
+  and the reading/vocab pages) as dead ends. `siblingBlock()` now lists up to 4 exercises
+  from the same `year` + school type, ranked by filename words in common.
+- A page with no `<link rel="canonical">` gets neither breadcrumb nor JSON-LD — five 9g
+  pages were missing one until 2026-09-30.
+- `esl-` pages now file under `esl-grammar-activities.html` in `hubFor()`/`crumbLabel()`,
+  and the ESL hub and `klasse7-mini.html` have cards on `index.html` and `activities.html`
+  (both previously had zero internal links).
+
 ## IndexNow — Bing and friends, **not Google** (added 2026-09-04)
 
 The last step of `rebuild-indices.yml` pings IndexNow with the URLs that changed in the push,

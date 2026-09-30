@@ -222,6 +222,7 @@ function crumbLabel(file) {
   if (/^it-/.test(f)) return 'IT English';
   if (/^be-/.test(f)) return 'Business English';
   if (/^gr-/.test(f)) return 'Grammatik';
+  if (/^esl-/.test(f)) return 'ESL Grammar';
   if (/^quiz-/.test(f)) return 'Quiz';
   if (/^level-/.test(f)) return 'Einstufungstest';
   return 'Übungen';
@@ -248,6 +249,7 @@ function hubFor(file) {
   if (/^it-/.test(f)) return 'it-activities.html';
   if (/^be-/.test(f)) return 'business-activities.html';
   if (/^gr-/.test(f)) return 'grammar-activities.html';
+  if (/^esl-/.test(f)) return 'esl-grammar-activities.html';
   return '';
 }
 
@@ -303,13 +305,25 @@ function cefrNode(level) {
 // Page nodes
 // ---------------------------------------------------------------------------
 
-function breadcrumb(file, title, url) {
-  const items = [{ '@type': 'ListItem', position: 1, name: 'Übungen', item: SITE + '/activities.html' }];
+/**
+ * The page's place in the site, root first, as [{ name, url }].
+ *
+ * One source for both the BreadcrumbList below and the visible breadcrumb
+ * build-head.js prints under the header, so the markup can never describe a
+ * trail the reader does not see.
+ */
+function breadcrumbTrail(file, title, url) {
+  const trail = [{ name: 'Start', url: SITE + '/' }];
+  if (file !== 'activities.html') trail.push({ name: 'Übungen', url: SITE + '/activities.html' });
   const hub = hubFor(file);
-  if (hub && hub !== file) {
-    items.push({ '@type': 'ListItem', position: items.length + 1, name: crumbLabel(file), item: SITE + '/' + hub });
-  }
-  items.push({ '@type': 'ListItem', position: items.length + 1, name: title, item: url });
+  if (hub && hub !== file) trail.push({ name: crumbLabel(file), url: SITE + '/' + hub });
+  trail.push({ name: title, url });
+  return trail;
+}
+
+function breadcrumb(file, title, url) {
+  const items = breadcrumbTrail(file, title, url)
+    .map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: c.url }));
   return { '@type': 'BreadcrumbList', '@id': url + '#breadcrumb', itemListElement: items };
 }
 
@@ -539,6 +553,7 @@ module.exports = {
   topicLabel,
   SKILL_LABELS,
   breadcrumb,
+  breadcrumbTrail,
   learningResource,
   hubPage,
   webPage,
