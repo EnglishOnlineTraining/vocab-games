@@ -389,7 +389,9 @@ const TEACHER_ONLY = new Set(
 function crumbBlock(file, meta) {
   const f = file.toLowerCase();
   if (f === 'index.html' || f === 'teacher-tests.html' || f.startsWith('themen/')) return '';
-  if (/(?:^|-)activities\.html$/.test(f) || TEACHER_ONLY.has(f)) return '';
+  if (/(?:^|-)activities\.html$/.test(f)) return '';
+  // A public exercise also listed on teacher-tests.html (a practice page) keeps its crumb.
+  if (TEACHER_ONLY.has(f) && !EX_BY_FILE[f]) return '';
   if (!meta.canonical || /TODO/i.test(meta.canonical) || !meta.title) return '';
 
   const trail = S.breadcrumbTrail(file, meta.title, meta.canonical);

@@ -1149,7 +1149,9 @@ except `9g-class-test-9ab.html`, which still had a card on `9g-activities.html` 
 2026-09-13; removing it is also what made that hub's card count (16) and its generated
 "N exercises" line agree. Vocabulary *practice*
 pages are the opposite — they belong on their year hub, because the point is that
-students use them.
+students use them. The 9c/9g Australia practice pages were unlisted until 2026-09-30,
+when they went onto their hubs; `data/unlisted.json` is now empty. They stay linked
+from `teacher-tests.html` too.
 
 `teacher-tests.html` is the unlisted index of every test, for Shaun. It lists each
 test with its class, format and release code. Three things keep it hidden and each
