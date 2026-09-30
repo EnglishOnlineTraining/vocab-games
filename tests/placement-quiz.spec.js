@@ -4,16 +4,20 @@ const { test, expect } = require('@playwright/test');
 /*
  * E2E tests for level-test.html — the adaptive A1–C1 placement quiz.
  *
- * Architecture: a standard exercise.js framework page with:
- *   step-0: welcome (practice mode, no name/class gate)
- *   step-1: adaptive quiz — one question at a time, option buttons, auto-advance
- *   step-2: results — custom buildSummary() renders CEFR level card + exercise CTAs
+ * Format modelled on taketest.xyz:
+ *   step-0: intro (eyebrow, explainer paragraphs, single Begin button)
+ *   step-1: one question at a time — click an option to select it, confirm
+ *           with "Keep answer →"; no right/wrong shown during the test;
+ *           counting-up timer; "N of at most 20" counter
+ *   step-1 interstitial: "Almost done!" — optional email, Show Results / Skip
+ *   step-2: results — CEFR card, per-level breakdown, mistake review, CTAs
  *
  * Adaptive engine:
- *   - Starts at B1 (theta=2.0, currentLevelIdx=2)
- *   - Correct → theta up, level up; wrong → theta down, level down
- *   - 20 questions total; pool of 75 (15 per level)
- *   - finalLevel() maps theta to a CEFR band
+ *   - Starts at B1 (theta = 2.0); item selection = unused question whose
+ *     level is closest to theta ("most informative at your estimated level")
+ *   - Surprise-weighted theta update (right-on-hard / wrong-on-easy move more)
+ *   - Stops at 15 questions unless theta is within 0.35 of a level boundary
+ *     (then runs to 20)
  */
 
 const PAGE = '/level-test.html';
@@ -26,56 +30,50 @@ async function clickStart(page) {
   await expect(page.locator('#step-1')).toBeVisible();
 }
 
+// Click an option button, then confirm with "Keep answer →". Everything is
+// synchronous — after the keep click the next question (or the interstitial)
+// is already rendered.
+async function selectAndKeep(page, value) {
+  await page.evaluate((v) => {
+    const btns = document.querySelectorAll('#q-options button.quiz-opt');
+    for (const b of btns) { if (b.dataset.value === v) { b.click(); return; } }
+  }, value);
+  await page.locator('#quiz-keep').click();
+}
+
 async function answerCorrectly(page) {
   const correct = await page.locator('#active-q').getAttribute('data-correct');
-  await page.evaluate((c) => {
-    const btns = document.querySelectorAll('#q-options button.quiz-opt');
-    for (const b of btns) { if (b.dataset.value === c) { b.click(); return; } }
-  }, correct);
+  await selectAndKeep(page, correct);
 }
 
 async function answerWrongly(page) {
-  const card = page.locator('#active-q');
-  const correct = await card.getAttribute('data-correct');
+  const correct = await page.locator('#active-q').getAttribute('data-correct');
   const buttons = page.locator('#q-options button.quiz-opt');
   const count = await buttons.count();
   for (let i = 0; i < count; i++) {
     const val = await buttons.nth(i).getAttribute('data-value');
-    if (val !== correct) {
-      await buttons.nth(i).click();
-      return;
-    }
+    if (val !== correct) { await selectAndKeep(page, val); return; }
   }
 }
 
-async function waitForNextQuestion(page, currentNum) {
-  await page.waitForFunction(
-    (n) => {
-      const el = document.getElementById('quiz-count');
-      return el && el.textContent.trim().startsWith((n + 1) + ' /');
-    },
-    currentNum,
-    { timeout: 5000 }
-  );
-}
-
-async function answerAllCorrect(page) {
-  for (let i = 1; i <= 20; i++) {
+// Answer until the "Almost done!" interstitial appears. All-correct runs stop
+// at 15 questions, all-wrong at 15 — anything past 25 means the stop rule broke.
+async function answerUntilInterstitial(page, how) {
+  for (let i = 0; i < 25; i++) {
+    if (await page.locator('#result-email').isVisible().catch(() => false)) return;
     await expect(page.locator('#active-q')).toBeVisible();
-    await answerCorrectly(page);
-    if (i < 20) await waitForNextQuestion(page, i);
+    await how(page);
   }
+  throw new Error('quiz did not reach the interstitial within 25 questions');
 }
 
-async function answerAllWrong(page) {
-  for (let i = 1; i <= 20; i++) {
-    await expect(page.locator('#active-q')).toBeVisible();
-    await answerWrongly(page);
-    if (i < 20) await waitForNextQuestion(page, i);
-  }
-}
+async function answerAllCorrect(page) { await answerUntilInterstitial(page, answerCorrectly); }
+async function answerAllWrong(page)   { await answerUntilInterstitial(page, answerWrongly); }
 
+// The interstitial is expected; skip it and wait for the results step.
 async function waitForResults(page) {
+  await expect(page.locator('#result-email')).toBeVisible({ timeout: 5000 });
+  await page.locator('button', { hasText: 'Skip' }).click();
   await expect(page.locator('#step-2')).toBeVisible({ timeout: 5000 });
   await expect(page.locator('#score-display')).toBeVisible({ timeout: 3000 });
 }
@@ -98,79 +96,77 @@ test.describe('Level Test — welcome screen', () => {
     await page.goto(PAGE);
     const title = await page.title();
     expect(title).toContain('Level Test');
-    expect(title).toMatch(/A1.*C1/);
+    expect(title).toContain('CEFR');
   });
 
   test('has sticky header with site branding and back-link', async ({ page }) => {
     await page.goto(PAGE);
     await expect(page.locator('.app-header')).toBeVisible();
-    await expect(page.locator('.app-header a[href="activities.html"]')).toBeVisible();
+    await expect(page.locator('.header-logo').first()).toContainText('englishonline.training');
   });
 
   test('page is lang="en"', async ({ page }) => {
     await page.goto(PAGE);
-    await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+    expect(await page.locator('html').getAttribute('lang')).toBe('en');
   });
 });
 
 
-test.describe('Level Test — adaptive quiz flow', () => {
+test.describe('Level Test — question flow', () => {
 
   test('clicking start shows step-1 with a question', async ({ page }) => {
     await clickStart(page);
     await expect(page.locator('#active-q')).toBeVisible();
-    await expect(page.locator('#quiz-count')).toContainText('1 / 20');
+    await expect(page.locator('#q-options .quiz-opt').first()).toBeVisible();
   });
 
   test('question has clickable option buttons', async ({ page }) => {
     await clickStart(page);
-    const options = page.locator('#q-options button.quiz-opt');
-    const count = await options.count();
-    expect(count).toBeGreaterThanOrEqual(2);
-    for (let i = 0; i < count; i++) {
-      await expect(options.nth(i)).toBeEnabled();
-    }
+    const buttons = page.locator('#q-options .quiz-opt');
+    await expect(buttons).toHaveCount(3);
+    for (let i = 0; i < 3; i++) await expect(buttons.nth(i)).toBeEnabled();
   });
 
-  test('correct answer shows green feedback and disables buttons', async ({ page }) => {
+  test('selecting an option highlights it and reveals Keep answer', async ({ page }) => {
+    await clickStart(page);
+    await expect(page.locator('#quiz-keep')).toBeHidden();
+    const first = page.locator('#q-options .quiz-opt').first();
+    await first.click();
+    await expect(page.locator('#quiz-keep')).toBeVisible();
+    const bg = await first.evaluate(el => el.style.background);
+    expect(bg).toContain('gold');
+  });
+
+  test('no right/wrong feedback is shown during the test', async ({ page }) => {
     await clickStart(page);
     await answerCorrectly(page);
-    const fb = page.locator('#q-feedback');
-    await expect(fb).toBeVisible();
-    await expect(fb).toContainText('Correct');
-    const buttons = page.locator('#q-options button.quiz-opt');
-    const count = await buttons.count();
-    for (let i = 0; i < count; i++) {
-      await expect(buttons.nth(i)).toBeDisabled();
-    }
+    // Still on question 2 area: no feedback element, no green/red painting
+    await expect(page.locator('#q-feedback')).toHaveCount(0);
+    const painted = await page.evaluate(() => {
+      return [...document.querySelectorAll('#q-options .quiz-opt')]
+        .some(b => b.style.background.includes('green') || b.style.background.includes('red'));
+    });
+    expect(painted).toBe(false);
   });
 
-  test('wrong answer shows red feedback with explanation', async ({ page }) => {
+  test('Keep answer advances to the next question', async ({ page }) => {
     await clickStart(page);
-    await answerWrongly(page);
-    const fb = page.locator('#q-feedback');
-    await expect(fb).toBeVisible();
-    await expect(fb).toContainText('Not quite');
-    const text = await fb.textContent();
-    expect(text.length).toBeGreaterThan(20);
-  });
-
-  test('auto-advances to next question after answer', async ({ page }) => {
-    await clickStart(page);
-    await expect(page.locator('#quiz-count')).toContainText('1 / 20');
+    await expect(page.locator('#quiz-count')).toContainText('1 of at most');
     await answerCorrectly(page);
-    await waitForNextQuestion(page, 1);
-    await expect(page.locator('#quiz-count')).toContainText('2 / 20');
+    await expect(page.locator('#active-q .card-title')).toContainText('Question 2');
+    await expect(page.locator('#quiz-count')).toContainText('2 of at most');
   });
 
   test('progress bar advances with each question', async ({ page }) => {
     await clickStart(page);
-    const barWidth = () =>
-      page.locator('#quiz-bar').evaluate(el => parseFloat(el.style.width));
-    expect(await barWidth()).toBe(0);
-    await answerCorrectly(page);
-    await waitForNextQuestion(page, 1);
-    expect(await barWidth()).toBeGreaterThan(0);
+    for (let i = 0; i < 3; i++) await answerCorrectly(page);
+    const width = await page.locator('#quiz-bar').evaluate(el => parseFloat(el.style.width));
+    expect(width).toBeGreaterThan(0);
+  });
+
+  test('timer is shown next to the question counter', async ({ page }) => {
+    await clickStart(page);
+    await expect(page.locator('#quiz-timer')).toHaveText('0:00');
   });
 });
 
@@ -182,7 +178,6 @@ test.describe('Level Test — adaptive difficulty', () => {
     const firstLevel = await page.locator('#active-q').getAttribute('data-level');
     expect(firstLevel).toBe('B1');
     await answerCorrectly(page);
-    await waitForNextQuestion(page, 1);
     const secondLevel = await page.locator('#active-q').getAttribute('data-level');
     expect(secondLevel).toBe('B2');
   });
@@ -192,7 +187,6 @@ test.describe('Level Test — adaptive difficulty', () => {
     const firstLevel = await page.locator('#active-q').getAttribute('data-level');
     expect(firstLevel).toBe('B1');
     await answerWrongly(page);
-    await waitForNextQuestion(page, 1);
     const secondLevel = await page.locator('#active-q').getAttribute('data-level');
     expect(secondLevel).toBe('A2');
   });
@@ -202,14 +196,15 @@ test.describe('Level Test — adaptive difficulty', () => {
 test.describe('Level Test — scoring: all correct → C1', () => {
   test.setTimeout(90_000);
 
-  test('20/20 correct gives C1 Advanced', async ({ page }) => {
+  test('an all-correct run gives C1 Advanced', async ({ page }) => {
     await clickStart(page);
     await answerAllCorrect(page);
     await waitForResults(page);
     const text = await page.locator('#score-display').textContent();
     expect(text).toContain('C1');
     expect(text).toContain('Advanced');
-    expect(text).toContain('20 / 20');
+    // A clean run is far from every boundary, so the test stops at 15
+    expect(text).toContain('15 / 15');
   });
 
   test('C1 result shows exercise CTA links', async ({ page }) => {
@@ -229,14 +224,14 @@ test.describe('Level Test — scoring: all correct → C1', () => {
 test.describe('Level Test — scoring: all wrong → A1', () => {
   test.setTimeout(90_000);
 
-  test('0/20 correct gives A1 Beginner', async ({ page }) => {
+  test('an all-wrong run gives A1 Beginner', async ({ page }) => {
     await clickStart(page);
     await answerAllWrong(page);
     await waitForResults(page);
     const text = await page.locator('#score-display').textContent();
     expect(text).toContain('A1');
     expect(text).toContain('Beginner');
-    expect(text).toContain('0 / 20');
+    expect(text).toContain('0 / 15');
   });
 
   test('A1 result shows beginner-appropriate CTAs', async ({ page }) => {
@@ -322,11 +317,8 @@ test.describe('Level Test — framework interaction', () => {
     await clickStart(page);
     await answerAllCorrect(page);
     await waitForResults(page);
-    await page.waitForTimeout(300);
-    const heading = page.locator('#result-heading');
-    const text = await heading.textContent();
-    expect(text).toContain('Test complete');
-    expect(text).not.toContain('Übung abgeschlossen');
+    await page.waitForTimeout(500);
+    await expect(page.locator('#result-heading')).toContainText('Test complete!');
   });
 });
 
@@ -350,52 +342,54 @@ test.describe('Level Test — no data submission', () => {
 });
 
 
-test.describe('Level Test — email results', () => {
+test.describe('Level Test — optional email step', () => {
   test.setTimeout(90_000);
 
-  test('email card appears on the results screen', async ({ page }) => {
+  test('"Almost done!" interstitial appears after the last question', async ({ page }) => {
     await clickStart(page);
     await answerAllCorrect(page);
-    await waitForResults(page);
-    await expect(page.locator('#email-card')).toBeVisible();
     await expect(page.locator('#result-email')).toBeVisible();
-    await expect(page.locator('#send-results-btn')).toBeVisible();
+    await expect(page.locator('button', { hasText: 'Show Results' })).toBeVisible();
+    await expect(page.locator('button', { hasText: 'Skip' })).toBeVisible();
   });
 
-  test('shows validation error for empty email', async ({ page }) => {
+  test('invalid email shows a validation error and stays on the step', async ({ page }) => {
     await clickStart(page);
     await answerAllCorrect(page);
-    await waitForResults(page);
-    await page.locator('#send-results-btn').click();
+    await page.locator('#result-email').fill('not-an-email');
+    await page.locator('button', { hasText: 'Show Results' }).click();
     const fb = page.locator('#email-feedback');
     await expect(fb).toBeVisible();
     await expect(fb).toContainText('valid email');
+    await expect(page.locator('#step-2')).not.toBeVisible();
   });
 
-  test('shows validation error for invalid email', async ({ page }) => {
-    await clickStart(page);
-    await answerAllCorrect(page);
-    await waitForResults(page);
-    await page.locator('#result-email').fill('not-an-email');
-    await page.locator('#send-results-btn').click();
-    await expect(page.locator('#email-feedback')).toContainText('valid email');
-  });
-
-  test('accepts valid email and shows success (test mode)', async ({ page }) => {
+  test('valid email is accepted and mentioned on the results screen (test mode)', async ({ page }) => {
     const logs = [];
     page.on('console', msg => logs.push(msg.text()));
     await clickStart(page);
     await answerAllCorrect(page);
-    await waitForResults(page);
     await page.locator('#result-email').fill('student@example.com');
-    await page.locator('#send-results-btn').click();
-    await expect(page.locator('#email-feedback')).toContainText('Results sent');
-    await expect(page.locator('#send-results-btn')).toContainText('Sent');
-    // On localhost, isTestMode() logs the payload
+    await page.locator('button', { hasText: 'Show Results' }).click();
+    await expect(page.locator('#step-2')).toBeVisible();
+    await expect(page.locator('#score-display')).toContainText('student@example.com');
+    // On localhost, isTestMode() logs the payload instead of POSTing
     const payloadLog = logs.find(l => l.includes('level-test email payload'));
     expect(payloadLog).toBeTruthy();
     expect(payloadLog).toContain('student@example.com');
     expect(payloadLog).toContain('C1');
+  });
+
+  test('Skip goes straight to results without sending anything', async ({ page }) => {
+    const logs = [];
+    page.on('console', msg => logs.push(msg.text()));
+    await clickStart(page);
+    await answerAllWrong(page);
+    await expect(page.locator('#result-email')).toBeVisible();
+    await page.locator('button', { hasText: 'Skip' }).click();
+    await expect(page.locator('#step-2')).toBeVisible();
+    await expect(page.locator('#score-display')).toContainText('A1');
+    expect(logs.find(l => l.includes('level-test email payload'))).toBeFalsy();
   });
 });
 
