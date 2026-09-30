@@ -95,30 +95,6 @@ function routeSubmission(ss, data) {
     return;
   }
 
-  // Level test: the student asked for extra feedback by email. Log the request,
-  // then send the feedback. The body is plain text with length caps, so the
-  // endpoint can't be used to send arbitrary long or HTML mail.
-  if (unit === 'level-test') {
-    var email = String(data.email || '').trim();
-    var sheet = getSheet(ss, 'Level Test', ['Timestamp','Email','Level','Score','Breakdown','Sent']);
-    var ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && email.length <= 254;
-    if (ok) {
-      var cap = function(v, n) { return String(v || '').substring(0, n); };
-      var body = 'Your English level test result\n\n'
-        + 'Estimated level: ' + cap(data.level, 60) + '\n'
-        + 'Score: ' + cap(data.score, 20) + '\n'
-        + 'By level: ' + cap(data.breakdown, 100) + '\n\n'
-        + cap(data.advice, 400) + '\n\n'
-        + (data.mistakes ? 'Questions you missed:\n\n' + cap(data.mistakes, 6000) + '\n\n' : 'You made no mistakes — well done!\n\n')
-        + 'Exercises to work on next:\n' + cap(data.links, 600) + '\n\n'
-        + 'This is a grammar-based estimate, not a full exam — speaking, listening and writing also count towards your real CEFR level.\n\n'
-        + 'EnglishOnline.training — https://activities.englishonline.training/level-test.html';
-      MailApp.sendEmail({ to: email, subject: 'Your English level test feedback', body: body, name: 'EnglishOnline.training' });
-    }
-    sheet.appendRow([new Date(), email, data.level || '', data.score || '', data.breakdown || '', ok ? 'yes' : 'no (invalid email)']);
-    return;
-  }
-
   // ----- Universal handler: works for every other unit, no redeploy needed -----
   // Builds columns dynamically from whatever answer keys the exercise sends.
   var keys = Object.keys(data).filter(function(k){ return k!=='name' && k!=='cls' && k!=='unit'; });

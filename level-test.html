@@ -152,7 +152,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 var UNIT          = 'level-test';
 var TOTAL_STEPS   = 2;
-var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec';
+var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbwGzOwhYKp4inrIB1KT6fXdRSwcTxT3nn_pFtzwpnbiodtHCyiC9uwqO6EQIP0qAoPh/exec';   // Level Test Results sheet — level-test-apps-script.gs
 var TEACHER_EMAIL = '';
 
 var state = { name: '', cls: '', quiz: {}, scores: {} };
@@ -458,8 +458,9 @@ function stopTimer() {
 }
 
 // ─── Optional extra feedback by email ─────────────────────────────
-// Results show instantly; the email card sits below them. The Apps Script
-// (unit 'level-test' in apps-script.gs) sends the email and logs the row.
+// Results show instantly; the email card sits below them. The dedicated
+// Level Test Results script (level-test-apps-script.gs) sends the email and
+// logs the row.
 function requestFeedback() {
   if (emailSent) return;
   var email = (document.getElementById('result-email').value || '').trim();
