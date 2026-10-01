@@ -430,7 +430,7 @@ rootBlocks.push(rootBlock('Quick practice &amp; tools', '', [
     'Four self-scoring quizzes, easy to hardest — no sign-up',
     rootCount(countFor('quiz', null), 'Quiz', 'Quizzes'), countFor('quiz', null) > 0),
   rootCard('level-test.html', '🎯', 'Level test',
-    'Find your CEFR level (A1–C1) in 25 questions — no sign-up',
+    'Adaptive test: your CEFR level (A1–C1) in 15–20 questions — no sign-up',
     rootCount(countFor('level', null), 'Test'), countFor('level', null) > 0),
   rootCard('ielts-vocabulary-glossary.html', '📖', 'Vocabulary',
     'Searchable IELTS glossary and interactive vocabulary games',
