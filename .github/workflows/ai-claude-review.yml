@@ -1,6 +1,6 @@
 # .github/workflows/ai-claude-review.yml
 # Trigger: comment on a PR:  /claude review   |   /claude security-audit
-# Behavior: Claude (reviewer-model) reviews the diff against STYLE.md and posts findings.
+# Behavior: Claude (reviewer-model) reviews the diff (minus build-generated files) against STYLE.md and posts findings.
 # If the full review ends with VERDICT: APPROVE and CI is green, the PR auto-merges (squash).
 # Repo: EnglishOnlineTraining/vocab-games — see docs/ai-workflow.md.
 name: AI -- Claude review
@@ -31,19 +31,26 @@ jobs:
         run: |
           # Parallel fetches -- all three are independent
           gh pr view "$PR" --repo "$REPO" --json title,body,author,labels > pr-meta.json &
-          gh pr diff "$PR" --repo "$REPO" > pr.diff &
-          gh pr view "$PR" --repo "$REPO" --json files --jq '.files[].path' > changed-files.txt &
+          gh pr diff "$PR" --repo "$REPO" > pr-full.diff &
+          gh pr view "$PR" --repo "$REPO" --json files --jq '.files[].path' > changed-files-all.txt &
           wait
+
+      # Build-generated files (every scripts/pipeline.js node output except the
+      # in-place head rewrite) are left out of the reviewed diff and the context
+      # pack. They would otherwise push every add-an-exercise PR past the size cap,
+      # and check-generated.yml verifies them exactly; auto-merge below requires it.
+      - name: Leave out build-generated files
+        run: node .github/scripts/filter-generated.js pr-full.diff changed-files-all.txt
 
       - name: Pre-flight checks
         run: |
           DIFF_SIZE=$(wc -c < pr.diff)
           if [ "$DIFF_SIZE" -gt 150000 ]; then
-            echo "::error::PR diff is $(( DIFF_SIZE / 1000 )) KB -- too large for automated review. Review manually."
+            echo "::error::PR diff is $(( DIFF_SIZE / 1000 )) KB without generated files -- too large for automated review. Review manually."
             exit 1
           fi
           if [ "$DIFF_SIZE" -eq 0 ]; then
-            echo "::error::PR diff is empty -- nothing to review."
+            echo "::error::PR diff is empty (after leaving out generated files) -- nothing to review."
             exit 1
           fi
 
@@ -88,9 +95,10 @@ jobs:
             --rawfile diff pr.diff \
             --rawfile ctx context.md \
             --rawfile meta pr-meta.json \
+            --rawfile generated generated-files.txt \
             '{model: $model, max_tokens: 4000,
               system: [{type: "text", text: $prompt, cache_control: {type: "ephemeral"}}],
-              messages: [{role: "user", content: ("PR METADATA:\n" + $meta + "\n\nREPO CONTEXT:\n" + $ctx + "\n\nDIFF TO REVIEW:\n```diff\n" + $diff + "\n```")}]}' > payload.json
+              messages: [{role: "user", content: ("PR METADATA:\n" + $meta + "\n\nREPO CONTEXT:\n" + $ctx + "\n\nGENERATED FILES LEFT OUT OF THIS DIFF (rebuilt by scripts/build.js and verified by the check-generated CI job; do not flag them as missing):\n" + (if $generated == "" then "(none)\n" else $generated end) + "\nDIFF TO REVIEW:\n```diff\n" + $diff + "\n```")}]}' > payload.json
 
           HTTP_CODE=0
           for attempt in 1 2 3; do
@@ -161,6 +169,19 @@ jobs:
             exit 0
           fi
 
+          # Claude did not see the generated files, so their only verification is
+          # check-generated.yml. "All checks pass" is not enough on its own — it is
+          # also true when that job never ran — so require it by name.
+          if [ -s generated-files.txt ]; then
+            GEN_OK=$(gh pr checks "$PR" --repo "$REPO" --json workflow,bucket \
+              --jq '[.[] | select(.workflow == "Check generated files" and .bucket == "pass")] | length')
+            if [ "${GEN_OK:-0}" -lt 1 ]; then
+              gh pr comment "$PR" --repo "$REPO" --body "Claude approved, but the \"Check generated files\" CI job did not pass on this PR. Generated files are left out of the review and rely on that job — auto-merge skipped."
+              echo "check-generated did not pass — auto-merge skipped."
+              exit 0
+            fi
+          fi
+
           if ! gh pr merge "$PR" --repo "$REPO" --squash --auto; then
             gh pr comment "$PR" --repo "$REPO" --body "Claude approved and CI is green, but enabling auto-merge failed (repo setting 'Allow auto-merge' may be off). Merge manually."
             exit 0
@@ -175,3 +196,4 @@ jobs:
           path: |
             review.md
             pr.diff
+            generated-files.txt
