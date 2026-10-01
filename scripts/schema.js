@@ -63,7 +63,8 @@ function personNode() {
     '@type': 'Person',
     '@id': PERSON_ID,
     name: 'Shaun Trezise',
-    url: WP + '/',
+    url: WP + '/about/',
+    sameAs: [WP + '/about/'],
     jobTitle: 'English language teacher and Business English coach',
     description: 'English teacher and Business English coach based in Berlin. Writes and teaches the '
       + 'practice material on activities.englishonline.training for German school students (Klasse 7–10, '
@@ -160,7 +161,7 @@ function orgStub() {
   return { '@type': ['EducationalOrganization', 'LocalBusiness'], '@id': ORG_ID, name: 'EnglishOnline.training', url: WP + '/' };
 }
 function personStub() {
-  return { '@type': 'Person', '@id': PERSON_ID, name: 'Shaun Trezise', url: WP + '/' };
+  return { '@type': 'Person', '@id': PERSON_ID, name: 'Shaun Trezise', url: WP + '/about/' };
 }
 
 // ---------------------------------------------------------------------------

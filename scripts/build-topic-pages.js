@@ -8,6 +8,7 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 const S = require('./schema');
+const BYLINE = 'Geschrieben und unterrichtet von <a href="https://englishonline.training/about/">Shaun Trezise</a> — TEFL-zertifizierter Englischlehrer in Berlin, 10+ Jahre Erfahrung.';
 const ROOT = path.join(__dirname, '..');
 const BASE = 'https://activities.englishonline.training';
 
@@ -277,7 +278,8 @@ function pageHtml(t) {
     + relatedHtml(t)
     + '<footer class="th-footer">© EnglishOnline.Training · '
     + '<a href="https://englishonline.training/impressum/">Impressum</a> · '
-    + '<a href="https://englishonline.training/privacy-policy/">Datenschutz</a></footer>\n'
+    + '<a href="https://englishonline.training/privacy-policy/">Datenschutz</a>'
+    + '<br>' + BYLINE + '</footer>\n'
     + '</main>\n'
     + '<script>\n' + PW_JS + '\n</script>\n</body>\n</html>\n';
 }
@@ -392,7 +394,8 @@ function indexHtml() {
     + '<div class="ti-grid">' + cards + '</div>\n'
     + '<footer class="th-footer">© EnglishOnline.Training · '
     + '<a href="https://englishonline.training/impressum/">Impressum</a> · '
-    + '<a href="https://englishonline.training/privacy-policy/">Datenschutz</a></footer>\n'
+    + '<a href="https://englishonline.training/privacy-policy/">Datenschutz</a>'
+    + '<br>' + BYLINE + '</footer>\n'
     + '</main>\n</body>\n</html>\n';
 }
 fs.writeFileSync(path.join(outDir, 'index.html'), indexHtml());
