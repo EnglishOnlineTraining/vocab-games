@@ -93,6 +93,15 @@ const TOPIC_OVERRIDES = {
   '9g-work-experience-indirect-questions.html': ['reported-speech', 'question-tags'],
 };
 
+// Skill tags the heading rules cannot see, merged into what skillsFor() finds.
+// Same idea as TOPIC_OVERRIDES: the page's headings name the story, not the
+// skill ("Listening to Indigenous Voices in Canada" is the reading text,
+// "Respectful Learning" is a 90–120-word writing task).
+const SKILL_OVERRIDES = {
+  '9g-canada-indigenous-voices.html': ['reading', 'writing'],
+};
+const SKILL_ORDER = ['reading', 'writing', 'listening', 'vocabulary', 'grammar'];
+
 function schoolFromPrefix(f) {
   if (LEGACY_UNPREFIXED[f]) return LEGACY_UNPREFIXED[f];
   if (/^7a-/.test(f)) return [7, 'gymnasium'];
@@ -165,9 +174,14 @@ files.forEach(f => {
   if (grSlug && TOPICS.some(t => t.slug === grSlug)) topics = [grSlug];
   if (TOPIC_OVERRIDES[f]) topics = Array.from(new Set(topics.concat(TOPIC_OVERRIDES[f])));
   topics.forEach(sl => coverage[sl].push(f));
+  let skills = skillsFor(points);
+  if (SKILL_OVERRIDES[f]) {
+    const all = new Set(skills.concat(SKILL_OVERRIDES[f]));
+    skills = SKILL_ORDER.filter(k => all.has(k));
+  }
   exercises.push({
     file: f, title: title || h1, year: year, schoolType: schoolType, lang: lang,
-    topics: topics, skills: skillsFor(points), blurb: points.join(' · ')
+    topics: topics, skills: skills, blurb: points.join(' · ')
   });
 });
 
