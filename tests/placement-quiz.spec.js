@@ -296,6 +296,21 @@ test.describe('Level Test — result screen content', () => {
     const text = await container.textContent();
     expect(text).not.toContain('<strong>');
   });
+
+  test('two-gap items put each part of the answer in its own gap', async ({ page }) => {
+    await clickStart(page);
+    await page.evaluate(() => {
+      answered = [
+        { question: POOL.B2[0], level: 'B2', levelIdx: 3, correct: false, selected: 'has … started' },
+        { question: POOL.B1[8], level: 'B1', levelIdx: 2, correct: false, selected: 'such … that' }
+      ];
+      finishQuiz();
+    });
+    const text = await page.locator('#summary-container').textContent();
+    expect(text).toContain('When I arrived, the film had already started.');
+    expect(text).toContain('The film was so boring that I fell asleep.');
+    expect(text).not.toContain('___');
+  });
 });
 
 
@@ -380,9 +395,36 @@ test.describe('Level Test — optional extra feedback by email', () => {
     // On localhost, isTestMode() logs the payload instead of POSTing
     const payloadLogs = logs.filter(l => l.includes('level-test email payload'));
     expect(payloadLogs).toHaveLength(1);
-    expect(payloadLogs[0]).toContain('student@example.com');
-    expect(payloadLogs[0]).toContain('A1');
-    expect(payloadLogs[0]).toContain('You chose:');
+    const payload = JSON.parse(payloadLogs[0].slice(payloadLogs[0].indexOf('{')));
+    expect(payload.email).toBe('student@example.com');
+    expect(payload.level).toBe('A1');
+    expect(payload.answers.length).toBeGreaterThanOrEqual(15);
+    // Only ids and chosen options — the Apps Script writes the email text.
+    expect(Object.keys(payload).sort()).toEqual(['answers', 'email', 'level', 'unit']);
+  });
+
+  test('after sending, revisiting the results keeps the card in its sent state', async ({ page }) => {
+    await clickStart(page);
+    await answerAllWrong(page);
+    await page.locator('#result-email').fill('student@example.com');
+    await page.locator('#email-send').click();
+    await page.locator('#step-nav button', { hasText: 'Ex A' }).click();
+    await page.locator('#step-nav button', { hasText: 'Submit' }).click();
+    await expect(page.locator('#step-2')).toBeVisible();
+    await expect(page.locator('#result-email')).toBeDisabled();
+    await expect(page.locator('#result-email')).toHaveValue('student@example.com');
+    await expect(page.locator('#email-send')).toBeDisabled();
+    await expect(page.locator('#email-feedback')).toContainText('Request sent to student@example.com');
+  });
+
+  test('the Apps Script carries the same question pool and level advice as the page', async ({ page }) => {
+    const fs = require('fs'), vm = require('vm'), path = require('path');
+    const ctx = {};
+    vm.createContext(ctx);
+    vm.runInContext(fs.readFileSync(path.join(__dirname, '..', 'level-test-apps-script.gs'), 'utf8'), ctx);
+    await page.goto(PAGE);
+    const fromPage = await page.evaluate(() => JSON.stringify({ POOL, LEVELS }));
+    expect(JSON.stringify({ POOL: ctx.POOL, LEVELS: ctx.LEVELS })).toBe(fromPage);
   });
 
   test('not requesting feedback sends nothing', async ({ page }) => {
