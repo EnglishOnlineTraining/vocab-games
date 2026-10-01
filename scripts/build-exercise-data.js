@@ -96,9 +96,15 @@ const TOPIC_OVERRIDES = {
 // Skill tags the heading rules cannot see, merged into what skillsFor() finds.
 // Same idea as TOPIC_OVERRIDES: the page's headings name the story, not the
 // skill ("Listening to Indigenous Voices in Canada" is the reading text,
-// "Respectful Learning" is a 90–120-word writing task).
+// "Respectful Learning" is a 90–120-word writing task). The five 9g country
+// pages share one layout — reading text, vocabulary gaps, grammar gaps,
+// 90–120-word writing task — so each gets whatever its headings missed.
 const SKILL_OVERRIDES = {
-  '9g-canada-indigenous-voices.html': ['reading', 'writing'],
+  '9g-australia-outback.html':         ['reading', 'writing'],
+  '9g-california-silicon-valley.html': ['reading'],
+  '9g-canada-indigenous-voices.html':  ['reading', 'writing'],
+  '9g-ireland-emigration.html':        ['reading', 'writing', 'grammar'],
+  '9g-new-zealand-maori-voices.html':  ['reading', 'writing'],
 };
 const SKILL_ORDER = ['reading', 'writing', 'listening', 'vocabulary', 'grammar'];
 
