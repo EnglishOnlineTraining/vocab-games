@@ -54,10 +54,17 @@ jobs:
             exit 1
           fi
 
+      # The checkout is the base branch, so a page the PR adds is not on disk.
+      # Fetch the PR head and let build-context.sh read the changed files from it
+      # with `git show`. The PR is never checked out: the scripts that run here
+      # stay the base branch's, since this job holds secrets and a write token.
       - name: Build context pack
+        env:
+          PR: ${{ github.event.issue.number }}
         run: |
+          git fetch --no-tags --quiet origin "pull/$PR/head:refs/remotes/pr/head"
           chmod +x .github/scripts/build-context.sh
-          .github/scripts/build-context.sh --files changed-files.txt
+          .github/scripts/build-context.sh --files changed-files.txt --ref refs/remotes/pr/head
           if ! head -1 context.md | grep -q '^# CONTEXT PACK'; then
             echo "::error::Context pack is corrupted."
             exit 1

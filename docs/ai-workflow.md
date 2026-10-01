@@ -51,6 +51,10 @@ parses the review's final `VERDICT:` line:
 
 - AI never pushes to `main` directly; patches must apply cleanly or the run fails loudly.
 - Minimal-diff prompt design; the reviewer re-checks for unrelated reformatting.
+- The context pack's task-relevant files are read from the **PR head** (fetched, then
+  `git show` by `build-context.sh --ref`), so a page the PR adds reaches the reviewer in
+  full, not just as diff hunks. The PR is never checked out: every script the job runs
+  is the base branch's, because the job holds `CLAUDE_API_KEY` and a write token.
 - Pre-flight: `STYLE.md` must exist; context-pack integrity verified; diff capped at 150 KB
   **after build-generated files are left out** (see below).
 - Generated files are not model-reviewed. A PR that adds one exercise also carries
