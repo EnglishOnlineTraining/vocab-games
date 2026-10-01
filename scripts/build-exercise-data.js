@@ -36,7 +36,9 @@ function skillsFor(points) {
   points.forEach(function (t) {
     if (/reading|comprehension|text/i.test(t)) s.add('reading');
     if (/writing|essay|paragraph|letter|email|report/i.test(t)) s.add('writing');
-    if (/listening|hörverstehen/i.test(t)) s.add('listening');
+    // "Listening to Indigenous Voices" is a reading text's title, not a listening
+    // task — the phrase "listening to" is prose, "Listening:" is a section label.
+    if (/listening(?!\s+to\b)|hörverstehen/i.test(t)) s.add('listening');
     if (/vocab|vocabulary|collocation|word bank|phrase/i.test(t)) s.add('vocabulary');
     // any grammar topic hit → grammar skill
     TOPICS.forEach(function (tp) { if (tp.match.some(function (re) { return re.test(t); })) s.add('grammar'); });
