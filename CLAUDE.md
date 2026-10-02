@@ -136,8 +136,9 @@ build new ones unless Shaun asks.
 | `abitur-` | Abitur writing packs | not a current class; pages stay live | Abitur (own) |
 | `be-` `uni-` `it-` | Business, University, IT English | not a current class; pages stay live | Apps Script |
 
-`topic-pool.json` covers only `8c/10g/10c` (and the paused `8g`). **It has no `9g`/`9c` category** — add
-one (via the `add-topics` skill or by hand) before drafting Year 9 topics registry-first.
+`topic-pool.json` now has `9g` and `9c` (the 38 existing Year 9 pages are registered as built), but
+**no open ideas for them yet, and their CEFR level and 9C textbook are marked TBC** — fill those in and
+run the `add-topics` skill before drafting Year 9 topics registry-first.
 Textbook pools and CEFR detail: `docs/claude-reference/years-and-topics.md`. The scheduled
 `daily-exercise-draft` rotation may still list old classes — check it matches the five above.
 
@@ -159,7 +160,7 @@ Business / University / IT use a Google Apps Script URL (in `submission-routing.
    webhook above.
 3. **Pass a `scoreKey`** to each `checkDropdowns()` call you want graded (`'exA'`, `'exB'`…). Skip for
    pure free-text pages. Step navigation, copy/paste blocking and the score card are in `exercise.js`.
-4. **For `8g/8c/10g/10c`, add or update the entry in `topic-pool.json`** (`status: "built"`, with its
+4. **For `8g/8c/9g/9c/10g/10c`, add or update the entry in `topic-pool.json`** (`status: "built"`, with its
    `file`). The build fails without it. Check `node topic-pool.js <category>`.
 5. **Fill in `<meta name="description">` and `<link rel="canonical">`** (placeholders in the template; the
    canonical must match the filename exactly).
