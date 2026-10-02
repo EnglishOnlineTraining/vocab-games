@@ -136,9 +136,9 @@ build new ones unless Shaun asks.
 | `abitur-` | Abitur writing packs | not a current class; pages stay live | Abitur (own) |
 | `be-` `uni-` `it-` | Business, University, IT English | not a current class; pages stay live | Apps Script |
 
-`topic-pool.json` now has `9g` and `9c` (the 38 existing Year 9 pages are registered as built), but
-**no open ideas for them yet, and their CEFR level and 9C textbook are marked TBC** — fill those in and
-run the `add-topics` skill before drafting Year 9 topics registry-first.
+`topic-pool.json` has `9g` (built pages registered, plus open ideas drawn from the Green Line 5
+contents pages; CEFR ~B1/B2 is an estimate) and `9c` (built pages registered, **no open ideas, and
+CEFR level and textbook still TBC** — send the 9C contents pages and run `add-topics`).
 Textbook pools and CEFR detail: `docs/claude-reference/years-and-topics.md`. The scheduled
 `daily-exercise-draft` rotation may still list old classes — check it matches the five above.
 

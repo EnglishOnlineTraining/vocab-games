@@ -153,3 +153,15 @@ from this table.
 | 3 | Unit 2 | Inside India — volunteering, fair wages, Indian companies, Mumbai | If-clauses I & II, passive voice |
 | 4 | Unit 3 | New Zealand news — relationships, Christchurch earthquake, Lord of the Rings | Past tenses, past perfect, if-clauses III |
 | 5 | Extra | MLK biography, government systems, stereotypes, EU & UK, London slang ban, *A Pair of Jeans* | — |
+
+
+#### Year 9 Gymnasium (Green Line 5 — Australia, The good life?, California dreaming; added 2026-10-02 from the textbook contents pages)
+
+Units seen: Across cultures 1 *The world speaks English*, Unit 1 *G'day Australia!*, Text smart 1 *A short film*,
+Unit 2 *The good life?*, Text smart 2 *Informative texts*, Across cultures 2 *The language of tolerance and
+respect*, Unit 3 *California dreaming*, Text smart 3 *Argumentative texts*, Across cultures 3 *Having a voice*.
+The machine-readable list of what is built and open is `topic-pool.json` (category `9g`); this heading only records
+where the topics came from. Key grammar by unit: Unit 1 passive forms, causatives, conditionals, *used to* + infinitive;
+Unit 2 sentence adverbs, participles after perception and motion verbs, relative clauses, inversion and *do/does/did*
+for emphasis; Unit 3 future meaning of present tenses, future progressive/perfect, articles, abstract and collective
+nouns, modal substitutes; Text smart 3 sequence adverbs. Year 9 Oberschule (`9c`) has no textbook pool recorded yet.
