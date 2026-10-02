@@ -25,7 +25,7 @@
  * {
  *   "title": "Abitur — Text Analysis", "klass": "10a", "date": "25 September 2026",
  *   "exLabels": ["Ex 1","Ex 2","Ex 3","Ex 4"], "essayMax": 10,
- *   "absent": ["Theodor Bader", ...],                     // optional
+ *   "absent": ["Student Name", ...],                     // optional
  *   "students": [{
  *     "name": "Stella Richter", "ex": ["5/5","4/4","4/4","5/5"],
  *     "objective": "18/18", "selfTicks": "9/10", "words": 153,
