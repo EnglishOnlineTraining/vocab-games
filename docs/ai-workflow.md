@@ -40,8 +40,9 @@ issue ("AI Task" template, acceptance criteria filled)
 parses the review's final `VERDICT:` line:
 
 - `VERDICT: APPROVE` (emitted only when the review found **no BLOCKERS**) **and** every
-  CI check on the PR passes → the workflow enables squash auto-merge. Kimi authored,
-  Claude approved, CI green — it ships.
+  CI check on the PR passes **and**, when generated files were left out of the review,
+  the **Check generated files** job specifically passed → the workflow enables squash
+  auto-merge. Kimi authored, Claude approved, CI green — it ships.
 - `VERDICT: CHANGES_REQUESTED`, a missing verdict line, failing CI, or a merge conflict
   → auto-merge is skipped and a comment says why. Nothing merges in that state.
 - `/claude security-audit` never triggers a merge — it is advisory only.
@@ -50,7 +51,25 @@ parses the review's final `VERDICT:` line:
 
 - AI never pushes to `main` directly; patches must apply cleanly or the run fails loudly.
 - Minimal-diff prompt design; the reviewer re-checks for unrelated reformatting.
-- Pre-flight: `STYLE.md` must exist; context-pack integrity verified; diff capped at 150 KB.
+- The context pack's task-relevant files are read from the **PR head** (fetched, then
+  `git show` by `build-context.sh --ref`), so a page the PR adds reaches the reviewer in
+  full, not just as diff hunks. The PR is never checked out: every script the job runs
+  is the base branch's, because the job holds `CLAUDE_API_KEY` and a write token.
+- Pre-flight: `STYLE.md` must exist; context-pack integrity verified; diff capped at 150 KB
+  **after build-generated files are left out** (see below).
+- Generated files are not model-reviewed. A PR that adds one exercise also carries
+  everything `scripts/build.js` regenerates (hubs, `sitemap.xml`, `data/exercises.json`,
+  `data/answer-keys/*`, `data/lastmod.json`, `themen/*`, …) — 150–300 KB around ~50 KB
+  of authored work, which used to fail the cap on every such PR.
+  `.github/scripts/filter-generated.js` removes them from the reviewed diff and from
+  `changed-files.txt` (so the context pack skips them too) and lists them for the
+  reviewer as "left out". The set is derived from `scripts/pipeline.js`: a path is
+  generated if it matches the `outputs` of any node not marked `editsInPlace`. Only
+  `head` is marked — it rewrites blocks inside authored pages, so exercise pages (and
+  its small edits to sibling pages) stay in the review. A new generator node is left
+  out automatically; a new in-place rewriter must set `editsInPlace: true`.
+  `check-generated.yml` rebuilds the graph and fails on any difference, and auto-merge
+  requires that job by name, so generated output is still verified exactly.
 - Post-apply: `verify-exercise.js` on touched pages, then the **full build graph** —
   a patch that breaks any validator never becomes a PR.
 - Auto-merge requires **both** signals: the review verdict line *and* green CI; a

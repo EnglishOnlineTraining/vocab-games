@@ -64,6 +64,7 @@ function personNode() {
     '@id': PERSON_ID,
     name: 'Shaun Trezise',
     url: WP + '/',
+    mainEntityOfPage: WP + '/about/',
     jobTitle: 'English language teacher and Business English coach',
     description: 'English teacher and Business English coach based in Berlin. Writes and teaches the '
       + 'practice material on activities.englishonline.training for German school students (Klasse 7–10, '

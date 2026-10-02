@@ -64,17 +64,18 @@ test('no duplicate stems within a level', async ({ page }) => {
 test('fillGaps handles one-gap and two-gap answers', async ({ page }) => {
   await page.goto(PAGE);
   const filled = await page.evaluate(() => ({
-    one: fillGaps('I have never ___ to Japan.', 'been'),
-    two: fillGaps('When I arrived, the film ___ already ___.', 'had … started'),
-    newTwo: fillGaps('The exam was ___ difficult ___ I expected.', 'as … as')
+    one: fillGaps('I have never ___ to Japan.', 'been', p => p),
+    two: fillGaps('When I arrived, the film ___ already ___.', 'had … started', p => p),
+    newTwo: fillGaps('The exam was ___ difficult ___ I expected.', 'as … as', p => p)
   }));
   expect(filled.one).toBe('I have never been to Japan.');
   expect(filled.two).toBe('When I arrived, the film had already started.');
   expect(filled.newTwo).toBe('The exam was as difficult as I expected.');
 });
 
-test('fillGapsHtml wraps each filled part in <strong>', async ({ page }) => {
+test('fillGaps wraps each filled part via the wrap callback', async ({ page }) => {
   await page.goto(PAGE);
-  const html = await page.evaluate(() => fillGapsHtml('The film was ___ boring ___ I fell asleep.', 'so … that'));
+  const html = await page.evaluate(() =>
+    fillGaps('The film was ___ boring ___ I fell asleep.', 'so … that', p => '<strong>' + p + '</strong>'));
   expect(html).toBe('The film was <strong>so</strong> boring <strong>that</strong> I fell asleep.');
 });

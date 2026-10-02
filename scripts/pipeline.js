@@ -136,6 +136,11 @@ const NODES = [
     inputs: ['*.html', 'themen/*.html', 'data/exercises.json', 'data/topics.json',
              'data/explanations.json', 'data/noindex.json'],
     outputs: ['*.html', 'themen/*.html'],
+    // Its outputs are pages people author; it only rewrites the marked blocks.
+    // So matching these globs does not make a file generated — the AI review
+    // (.github/scripts/filter-generated.js) relies on this to keep exercise
+    // pages in the diff it reviews while leaving out every other node's output.
+    editsInPlace: true,
   },
   {
     id: 'lastmod',

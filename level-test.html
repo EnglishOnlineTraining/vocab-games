@@ -152,7 +152,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 var UNIT          = 'level-test';
 var TOTAL_STEPS   = 2;
-var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbwGzOwhYKp4inrIB1KT6fXdRSwcTxT3nn_pFtzwpnbiodtHCyiC9uwqO6EQIP0qAoPh/exec';   // Level Test Results sheet — level-test-apps-script.gs
+var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbzkTHUoVLQieyrY1ZBviUB-WNUTGsRuy4g2on-jg-E4l9AvWXQvEjsizpe-N0iJzcSq/exec';   // Level Test Results sheet — level-test-apps-script.gs
 var TEACHER_EMAIL = '';
 
 var state = { name: '', cls: '', quiz: {}, scores: {} };
@@ -364,7 +364,7 @@ var usedIds       = {};
 var currentPick   = null;
 var pendingSelect = null;
 var quizDone      = false;
-var emailSent     = false;
+var emailSentTo   = '';    // set once the feedback email has been requested
 var startedAt     = null;
 var timerId       = null;
 
@@ -430,26 +430,6 @@ function esc(s) {
   var d = document.createElement('div');
   d.textContent = s;
   return d.innerHTML;
-}
-
-// Fill every gap in a stem. Two-part answers ("had … started") split on the
-// ellipsis and fill the gaps in order — a single replace() would dump the
-// whole answer into the first gap.
-function fillGaps(stem, correct) {
-  var parts = correct.split('…').map(function(s) { return s.trim(); });
-  var i = 0;
-  return stem.replace(/___/g, function() {
-    return i < parts.length ? parts[i++] : '___';
-  });
-}
-
-// HTML version of fillGaps: each filled part wrapped in <strong>, stem escaped.
-function fillGapsHtml(stem, correct) {
-  var parts = correct.split('…').map(function(s) { return s.trim(); });
-  var i = 0;
-  return esc(stem).replace(/___/g, function() {
-    return i < parts.length ? '<strong>' + esc(parts[i++]) + '</strong>' : '___';
-  });
 }
 
 function renderQuestion(pick) {
@@ -532,7 +512,7 @@ function stopTimer() {
 // Level Test Results script (level-test-apps-script.gs) sends the email and
 // logs the row.
 function requestFeedback() {
-  if (emailSent) return;
+  if (emailSentTo) return;
   var email = (document.getElementById('result-email').value || '').trim();
   var fb = document.getElementById('email-feedback');
   fb.style.display = 'block';
@@ -542,42 +522,43 @@ function requestFeedback() {
     fb.textContent = 'Please enter a valid email address.';
     return;
   }
-  emailSent = true;
+  emailSentTo = email;
   sendResults(email);
-  document.getElementById('result-email').disabled = true;
-  document.getElementById('email-send').disabled = true;
-  fb.style.background = 'rgba(39,174,96,.1)';
-  fb.style.color = 'var(--green)';
-  fb.textContent = 'Request sent to ' + email + ' — your feedback should arrive within a few minutes. Check your spam folder if it doesn\'t.';
+  showEmailSent();
 }
 
+// Also called by buildSummary(), which re-renders the email card whenever the
+// results step is revisited via the step nav.
+function showEmailSent() {
+  var input = document.getElementById('result-email');
+  var fb = document.getElementById('email-feedback');
+  input.value = emailSentTo;
+  input.disabled = true;
+  document.getElementById('email-send').disabled = true;
+  fb.style.display = 'block';
+  fb.style.background = 'rgba(39,174,96,.1)';
+  fb.style.color = 'var(--green)';
+  fb.textContent = 'Request sent to ' + emailSentTo + ' — your feedback should arrive within a few minutes. Check your spam folder if it doesn\'t.';
+}
+
+// Puts the answer into the gap(s). Two-gap items store it as "had … started";
+// each part goes into its own gap. Mirrored in level-test-apps-script.gs.
+function fillGaps(stem, answer, wrap) {
+  var parts = answer.split(' … ');
+  var i = 0;
+  return stem.replace(/___/g, function() { return wrap(parts[i++] || ''); });
+}
+
+// Only the level code and the chosen options go to the server. The Apps Script
+// rebuilds every line of the email from its own copy of the question pool, so
+// the public endpoint can't be made to mail text a caller wrote.
 function sendResults(email) {
-  var lv = finalLevel();
-  var totalCorrect = 0;
-  answered.forEach(function(a) { if (a.correct) totalCorrect++; });
-
-  var perLevel = {};
-  LEVEL_ORDER.forEach(function(l) { perLevel[l] = { correct: 0, total: 0 }; });
-  answered.forEach(function(a) { perLevel[a.level].total++; if (a.correct) perLevel[a.level].correct++; });
-  var breakdown = LEVEL_ORDER.map(function(l) {
-    var d = perLevel[l];
-    return d.total > 0 ? l + ': ' + d.correct + '/' + d.total : '';
-  }).filter(Boolean).join(', ');
-
-  var mistakes = answered.filter(function(a) { return !a.correct; }).map(function(a) {
-    return '[' + a.level + '] ' + fillGaps(a.question.stem, a.question.correct)
-      + '\n   You chose: ' + a.selected + '\n   ' + a.question.why;
-  }).join('\n\n');
 
   var payload = {
     unit: UNIT,
     email: email,
-    level: lv.code + ' — ' + lv.name,
-    score: totalCorrect + ' / ' + answered.length,
-    breakdown: breakdown,
-    advice: lv.text,
-    mistakes: mistakes,
-    links: lv.links.map(function(l) { return l[1] + ': https://activities.englishonline.training/' + l[0]; }).join('\n')
+    level: finalLevel().code,
+    answers: answered.map(function(a) { return [a.question.id, a.selected]; })
   };
 
   if (typeof isTestMode === 'function' && isTestMode()) {
@@ -666,6 +647,7 @@ function buildSummary() {
     + '<div class="card" style="text-align:center">'
     + '<button class="btn btn-outline" onclick="location.reload()" style="width:100%;max-width:320px;justify-content:center">&#8635; Take the test again</button>'
     + '<p style="font-size:.8rem;color:var(--muted);margin-top:.5rem">You\'ll get different questions each time.</p></div>';
+  if (emailSentTo) showEmailSent();
   eolApplyExplanations();
 
   // Post-test review: the only moment right/wrong is revealed, with the
@@ -678,7 +660,7 @@ function buildSummary() {
       var q = a.question;
       reviewHtml += '<div style="padding:.5rem 0;' + (i > 0 ? 'border-top:1px solid var(--border)' : '') + '">'
         + '<div style="font-size:.82rem;color:var(--muted);margin-bottom:.2rem">' + a.level + '</div>'
-        + '<div style="margin-bottom:.3rem">' + fillGapsHtml(q.stem, q.correct) + '</div>'
+        + '<div style="margin-bottom:.3rem">' + fillGaps(esc(q.stem), q.correct, function(p) { return '<strong>' + esc(p) + '</strong>'; }) + '</div>'
         + '<div style="font-size:.85rem;color:var(--muted)">You chose: <span style="color:var(--red)">' + esc(a.selected) + '</span></div>'
         + '<div style="font-size:.85rem;color:var(--text)">' + esc(q.why) + '</div>'
         + '</div>';

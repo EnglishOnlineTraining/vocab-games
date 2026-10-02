@@ -7,6 +7,9 @@
 # Usage:
 #   ./build-context.sh                          repo-wide context only
 #   ./build-context.sh --files changed.txt      reads file paths from changed.txt
+#   ./build-context.sh --files c.txt --ref R    read those files as they are at git
+#                                               revision R (e.g. a PR head) instead
+#                                               of the working tree
 #   ./build-context.sh foo.html bar.php         (legacy) file paths as arguments
 #
 # Output goes to $CONTEXT_OUT (default: context.md). The script writes the file
@@ -17,10 +20,16 @@ set -euo pipefail
 OUT="${CONTEXT_OUT:-context.md}"
 MAX_FILE_LINES=800
 FILES=()
+REF=""
 
 # Parse arguments: --files <path> reads from a file; bare args are file paths.
 while [ $# -gt 0 ]; do
   case "$1" in
+    --ref)
+      shift
+      REF="$1"
+      shift
+      ;;
     --files)
       shift
       if [ -f "$1" ]; then
@@ -82,18 +91,27 @@ done
 
   if [ ${#FILES[@]} -gt 0 ]; then
     echo "## Task-relevant files (full contents, capped at $MAX_FILE_LINES lines each)"
+    # With --ref, files come from that revision via `git show`: a page a PR adds
+    # does not exist in the working tree (the base branch), and the PR's files
+    # are only ever read as data here, never checked out or executed.
     for f in "${FILES[@]}"; do
-      if [ -f "$f" ]; then
-        echo
-        echo "### FILE: $f"
-        LINES=$(wc -l < "$f")
-        if [ "$LINES" -gt "$MAX_FILE_LINES" ]; then
-          echo "(truncated: showing first $MAX_FILE_LINES of $LINES lines)"
-        fi
-        echo '```'
-        head -n "$MAX_FILE_LINES" "$f"
-        echo '```'
+      if [ -n "$REF" ]; then
+        git cat-file -e "$REF:$f" 2>/dev/null || continue   # deleted in the PR
+        CONTENT=$(git show "$REF:$f")
+      elif [ -f "$f" ]; then
+        CONTENT=$(cat "$f")
+      else
+        continue
       fi
+      echo
+      echo "### FILE: $f"
+      LINES=$(wc -l <<< "$CONTENT")
+      if [ "$LINES" -gt "$MAX_FILE_LINES" ]; then
+        echo "(truncated: showing first $MAX_FILE_LINES of $LINES lines)"
+      fi
+      echo '```'
+      head -n "$MAX_FILE_LINES" <<< "$CONTENT"
+      echo '```'
     done
   fi
 } > "$OUT"

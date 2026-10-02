@@ -36,7 +36,9 @@ function skillsFor(points) {
   points.forEach(function (t) {
     if (/reading|comprehension|text/i.test(t)) s.add('reading');
     if (/writing|essay|paragraph|letter|email|report/i.test(t)) s.add('writing');
-    if (/listening|hörverstehen/i.test(t)) s.add('listening');
+    // "Listening to Indigenous Voices" is a reading text's title, not a listening
+    // task — the phrase "listening to" is prose, "Listening:" is a section label.
+    if (/listening(?!\s+to\b)|hörverstehen/i.test(t)) s.add('listening');
     if (/vocab|vocabulary|collocation|word bank|phrase/i.test(t)) s.add('vocabulary');
     // any grammar topic hit → grammar skill
     TOPICS.forEach(function (tp) { if (tp.match.some(function (re) { return re.test(t); })) s.add('grammar'); });
@@ -90,6 +92,21 @@ const TOPIC_OVERRIDES = {
   '9g-australia-outback-past-perfect.html':     ['past-perfect', 'simple-past'],
   '9g-work-experience-indirect-questions.html': ['reported-speech', 'question-tags'],
 };
+
+// Skill tags the heading rules cannot see, merged into what skillsFor() finds.
+// Same idea as TOPIC_OVERRIDES: the page's headings name the story, not the
+// skill ("Listening to Indigenous Voices in Canada" is the reading text,
+// "Respectful Learning" is a 90–120-word writing task). The five 9g country
+// pages share one layout — reading text, vocabulary gaps, grammar gaps,
+// 90–120-word writing task — so each gets whatever its headings missed.
+const SKILL_OVERRIDES = {
+  '9g-australia-outback.html':         ['reading', 'writing'],
+  '9g-california-silicon-valley.html': ['reading'],
+  '9g-canada-indigenous-voices.html':  ['reading', 'writing'],
+  '9g-ireland-emigration.html':        ['reading', 'writing', 'grammar'],
+  '9g-new-zealand-maori-voices.html':  ['reading', 'writing'],
+};
+const SKILL_ORDER = ['reading', 'writing', 'listening', 'vocabulary', 'grammar'];
 
 function schoolFromPrefix(f) {
   if (LEGACY_UNPREFIXED[f]) return LEGACY_UNPREFIXED[f];
@@ -163,9 +180,14 @@ files.forEach(f => {
   if (grSlug && TOPICS.some(t => t.slug === grSlug)) topics = [grSlug];
   if (TOPIC_OVERRIDES[f]) topics = Array.from(new Set(topics.concat(TOPIC_OVERRIDES[f])));
   topics.forEach(sl => coverage[sl].push(f));
+  let skills = skillsFor(points);
+  if (SKILL_OVERRIDES[f]) {
+    const all = new Set(skills.concat(SKILL_OVERRIDES[f]));
+    skills = SKILL_ORDER.filter(k => all.has(k));
+  }
   exercises.push({
     file: f, title: title || h1, year: year, schoolType: schoolType, lang: lang,
-    topics: topics, skills: skillsFor(points), blurb: points.join(' · ')
+    topics: topics, skills: skills, blurb: points.join(' · ')
   });
 });
 
