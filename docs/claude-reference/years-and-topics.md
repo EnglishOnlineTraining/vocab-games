@@ -164,4 +164,12 @@ The machine-readable list of what is built and open is `topic-pool.json` (catego
 where the topics came from. Key grammar by unit: Unit 1 passive forms, causatives, conditionals, *used to* + infinitive;
 Unit 2 sentence adverbs, participles after perception and motion verbs, relative clauses, inversion and *do/does/did*
 for emphasis; Unit 3 future meaning of present tenses, future progressive/perfect, articles, abstract and collective
-nouns, modal substitutes; Text smart 3 sequence adverbs. Year 9 Oberschule (`9c`) has no textbook pool recorded yet.
+nouns, modal substitutes; Text smart 3 sequence adverbs. 
+#### Year 9 Oberschule (Orange Line 5 — Australia, Caribbean, South Africa, Hong Kong, ~A2/B1; added 2026-10-02 from the textbook contents pages)
+
+Zoom in *Do you speak English?*; Unit 1 *Exploring Australia* (modals and substitutes, clauses of comparison, adjectives and
+adverbs, job application); Unit 2 *Colourful Caribbean* (relative and contact clauses, past progressive, fictional story);
+Unit 3 *Around South Africa* (past perfect, passive voice simple past, apartheid story); Unit 4 *Living in Hong Kong*
+(reported speech with backshift, future tenses, online comment); Extra: *Tornado* (poem), *Stealing Stacey* (novel extract),
+*Nelson Mandela – the troublemaker* (biography); Skills S1–S24. Each unit also has Reading corner, Mediation, Film corner and
+a "More about" page. `topic-pool.json` (category `9c`) holds what is built and open.

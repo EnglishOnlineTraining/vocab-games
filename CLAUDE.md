@@ -137,8 +137,8 @@ build new ones unless Shaun asks.
 | `be-` `uni-` `it-` | Business, University, IT English | not a current class; pages stay live | Apps Script |
 
 `topic-pool.json` has `9g` (built pages registered, plus open ideas drawn from the Green Line 5
-contents pages; CEFR ~B1/B2 is an estimate) and `9c` (built pages registered, **no open ideas, and
-CEFR level and textbook still TBC** — send the 9C contents pages and run `add-topics`).
+contents pages; CEFR ~B1/B2 is an estimate) and `9c` (built pages registered, plus open ideas from the Orange Line 5 contents
+pages; CEFR ~A2/B1 is an estimate). Confirm both CEFR estimates with Shaun.
 Textbook pools and CEFR detail: `docs/claude-reference/years-and-topics.md`. The scheduled
 `daily-exercise-draft` rotation may still list old classes — check it matches the five above.
 
