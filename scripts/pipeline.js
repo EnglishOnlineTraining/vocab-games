@@ -182,6 +182,7 @@ const NODES = [
 const VALIDATORS = [
   { id: 'validate-explanations', run: 'scripts/validate-explanations.js' },
   { id: 'test-scoring', run: 'test-scoring.js' },
+  { id: 'test-grades', run: 'test-grades.js' },
   { id: 'test-payload-flatten', run: 'test-payload-flatten.js' },
   { id: 'test-wrong-summary', run: 'test-wrong-summary.js' },
   { id: 'topic-pool', run: 'topic-pool.js' },
