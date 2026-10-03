@@ -349,6 +349,9 @@ function headBlock(file, html, withSkipStyle, withOverviewStyle, withTipStyle, w
   if (withCrumbStyle) lines.push(CRUMB_STYLE);
   if (withTipStyle) lines.push(TIP_STYLE);
   if (PAGE_FAQ[file]) lines.push(FAQ_STYLE);
+  // Pages outside the exercise.js framework that mark answers only with a
+  // colour class get the ✓/✗ marks and live regions from a11y-lite.js.
+  if (needsA11yLite(html)) lines.push(`<script src="${rel}a11y-lite.js" defer></script>`);
   const schema = schemaBlock(file, { lang, title, desc, canonical });
   if (schema) lines.push(schema);
   lines.push(
@@ -954,6 +957,11 @@ function insertAfterWelcomeHero(html, block) {
     if (depth === 0) return insertAt(html, m.index + m[0].length, block);
   }
   return null;                                   // unbalanced markup: leave it alone
+}
+
+function needsA11yLite(html) {
+  if (/<script[^>]+src=["']\.{0,2}\/?exercise\.js/.test(html)) return false;
+  return /classList\.add\(\s*['"](?:correct|wrong|right|pw-right|pw-wrong)['"]/.test(html);
 }
 
 function processFile(file) {
