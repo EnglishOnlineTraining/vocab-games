@@ -10,56 +10,64 @@
      "accept": [
       "Melbourne"
      ],
-     "label": "1. The Waterfront Hotel is in"
+     "label": "1. Where the Waterfront Hotel is",
+     "why": "The ad says the job is in one of the largest hotels in Melbourne."
     },
     "g2": {
      "correct": "receptionist",
      "accept": [
       "receptionist"
      ],
-     "label": "2. The hotel is looking for a"
+     "label": "2. The job the hotel offers",
+     "why": "The ad's heading is 'Receptionist, Waterfront Hotel'."
     },
     "g3": {
      "correct": "team",
      "accept": [
       "team"
      ],
-     "label": "3. The hotel wants someone who can work in a"
+     "label": "3. Someone who can work in a ___",
+     "why": "The ad asks: 'Are you able to work in a team?'"
     },
     "g4": {
      "correct": "Ireland",
      "accept": [
       "Ireland"
      ],
-     "label": "4. Amy is from"
+     "label": "4. Where Amy is from",
+     "why": "Amy was a student in Cork, in the Republic of Ireland."
     },
     "g5": {
      "correct": "B & B",
      "accept": [
       "B & B"
      ],
-     "label": "5. In Cork, Amy worked in a"
+     "label": "5. Amy's job in Cork",
+     "why": "Amy says she worked part time in a B & B for guests from all over the world."
     },
     "g6": {
      "correct": "temporary",
      "accept": [
       "temporary"
      ],
-     "label": "6. Her current job in Australia is"
+     "label": "6. Her current job is ___",
+     "why": "Amy writes about her 'current temporary job in Australia'."
     },
     "g7": {
      "correct": "receptionist",
      "accept": [
       "receptionist"
      ],
-     "label": "7. At the Flying Emu Lodge, Amy works as a"
+     "label": "7. Amy's job at the Flying Emu Lodge",
+     "why": "She has six months of experience as a receptionist at the Flying Emu Lodge."
     },
     "g8": {
      "correct": "permanent",
      "accept": [
       "permanent"
      ],
-     "label": "8. Amy says she is looking for a more"
+     "label": "8. Amy wants a more ___ job",
+     "why": "Amy says she is now looking for more permanent work as part of a larger team."
     }
    }
   },
@@ -72,70 +80,80 @@
      "accept": [
       "hairdresser"
      ],
-     "label": "1. This person cuts and styles hair. →"
+     "label": "1. Cuts and styles hair",
+     "why": "A hairdresser's job is cutting and styling people's hair."
     },
     "g2": {
      "correct": "carpenter",
      "accept": [
       "carpenter"
      ],
-     "label": "2. This person builds things out of wood, such as furniture or doors. →"
+     "label": "2. Builds things out of wood",
+     "why": "A carpenter makes furniture, doors and other things from wood."
     },
     "g3": {
      "correct": "mechanic",
      "accept": [
       "mechanic"
      ],
-     "label": "3. This person repairs or builds machines. →"
+     "label": "3. Repairs or builds machines",
+     "why": "A mechanic works with machines and engines, for example in cars."
     },
     "g4": {
      "correct": "chef",
      "accept": [
       "chef"
      ],
-     "label": "4. This person cooks food in a restaurant or hotel. →"
+     "label": "4. Cooks food in a restaurant",
+     "why": "A chef is a professional cook in a restaurant or hotel."
     },
     "g5": {
      "correct": "nurse",
      "accept": [
       "nurse"
      ],
-     "label": "5. This person helps sick people in a hospital. →"
+     "label": "5. Helps sick people in hospital",
+     "why": "A nurse looks after sick or injured people, usually in a hospital."
     },
     "g6": {
      "correct": "plumber",
      "accept": [
       "plumber"
      ],
-     "label": "6. This person repairs pipes in buildings. →"
+     "label": "6. Repairs pipes in buildings",
+     "why": "A plumber fits and repairs water pipes, taps and toilets."
     },
     "g7": {
      "correct": "travel agent",
      "accept": [
       "travel agent"
      ],
-     "label": "7. This person books holidays and flights for customers. →"
+     "label": "7. Books holidays and flights",
+     "why": "A travel agent arranges holidays, flights and hotels for customers."
     },
     "g8": {
      "correct": "physiotherapist",
      "accept": [
       "physiotherapist"
      ],
-     "label": "8. This person works with patients who have injuries. →"
+     "label": "8. Works with patients who have injuries",
+     "why": "A physiotherapist treats injuries with exercise and movement."
     },
     "g9": {
      "correct": "preschool teacher",
      "accept": [
       "preschool teacher"
      ],
-     "label": "9. This person uses games, music and art in classes with young children. →"
+     "label": "9. Uses games, music and art with young children",
+     "why": "A preschool teacher teaches very young children, often through games, music and art."
     },
     "g10": {
      "correct": "electrician",
      "accept": [
       "electrician"
      ],
-     "label": "10. This person installs and repairs electrical systems. →"
+     "label": "10. Installs and repairs electrical systems",
+     "why": "An electrician works with wiring and electrical systems."
     }
    }
   },
@@ -148,56 +166,64 @@
      "accept": [
       "CV"
      ],
-     "label": "1. A document that lists your education, skills and work experience is called a"
+     "label": "1. Lists your education and experience",
+     "why": "A CV is a document listing your education, skills and work experience."
     },
     "g2": {
      "correct": "application",
      "accept": [
       "application"
      ],
-     "label": "2. When you want a job, you write a letter of"
+     "label": "2. A letter of ___",
+     "why": "When you apply for a job you write a 'letter of application'."
     },
     "g3": {
      "correct": "receptionist",
      "accept": [
       "receptionist"
      ],
-     "label": "3. The person who welcomes guests at a hotel desk is the"
+     "label": "3. Welcomes guests at the hotel desk",
+     "why": "The receptionist works at the front desk and welcomes guests."
     },
     "g4": {
      "correct": "punctual",
      "accept": [
       "punctual"
      ],
-     "label": "4. If you are always on time, you are"
+     "label": "4. Always on time",
+     "why": "Punctual means always arriving on time."
     },
     "g5": {
      "correct": "references",
      "accept": [
       "references"
      ],
-     "label": "5. People you have worked for before who say good things about you are your"
+     "label": "5. People who say good things about you",
+     "why": "References are former employers or teachers who recommend you."
     },
     "g6": {
      "correct": "temporary",
      "accept": [
       "temporary"
      ],
-     "label": "6. A job you do for a short time only, not forever, is a"
+     "label": "6. A job for a short time only",
+     "why": "Temporary means for a limited time; permanent means with no end date."
     },
     "g7": {
      "correct": "cultures",
      "accept": [
       "cultures"
      ],
-     "label": "7. Amy says she can deal with guests from different"
+     "label": "7. Guests from different ___",
+     "why": "The ad and Amy's email talk about dealing with guests from different cultures."
     },
     "g8": {
      "correct": "salary",
      "accept": [
       "salary"
      ],
-     "label": "8. The money you earn from your job each month is your"
+     "label": "8. The money you earn each month",
+     "why": "Your salary is the regular pay you get for your job."
     }
    }
   }

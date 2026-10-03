@@ -140,7 +140,10 @@ function dumpPage(f) {
   });
 }
 
-function todo() {
+/* The rollout backlog as data: framework pages with graded gaps and no
+   explanations, and pages graded by a bespoke checker. Also used by
+   validate-explanations.js, which fails the build when `backlog` is not empty. */
+function outstanding() {
   var explPath = path.join(ROOT, 'data', 'explanations.json');
   var have = fs.existsSync(explPath) ? JSON.parse(fs.readFileSync(explPath, 'utf8')) : {};
   var files = fs.readdirSync(ROOT).filter(function (f) { return f.endsWith('.html'); }).sort();
@@ -155,13 +158,21 @@ function todo() {
       // A page may carry its own explanations inline; exercise.js prefers an
       // inline EXPLAIN over the data file, so it is done, not outstanding.
       // The generated *-review.html pages are all of this kind.
-      var inlineExplain = /\bvar\s+EXPLAIN\s*=/.test(src);
+      // build-head.js's EXPLAIN block doesn't count: it is a copy of this
+      // page's data entry, so it would hide that entry going missing.
+      var authored = src.replace(/[ \t]*<!-- EXPLAIN:START[\s\S]*?EXPLAIN:END -->\n?/g, '');
+      var inlineExplain = /\bvar\s+EXPLAIN\s*=/.test(authored);
       if ((unit && have[unit]) || inlineExplain) done.push(f);
       else backlog.push({ f: f, unit: unit, gaps: calls.reduce(function (s, c) { return s + c.ids.length; }, 0) });
     } else if (/state\.scores\s*\[|\bscoreKey\b|checkDropdowns/.test(src)) {
       manual.push(f);
     }
   });
+  return { backlog: backlog, done: done, manual: manual };
+}
+
+function todo() {
+  var o = outstanding(), backlog = o.backlog, done = o.done, manual = o.manual;
   console.log('EXPLANATIONS BACKLOG — ' + backlog.length + ' pages need entries (extractable):\n');
   backlog.forEach(function (b) { console.log('  ' + b.f.padEnd(34) + 'UNIT=' + (b.unit || '?').padEnd(28) + b.gaps + ' gaps'); });
   console.log('\nDONE — ' + done.length + ' pages already have explanations.');
@@ -173,7 +184,7 @@ function todo() {
    signatures stable. */
 module.exports = {
   decode: decode, unitOf: unitOf, gradedCalls: gradedCalls, gapDetail: gapDetail,
-  matchBracket: matchBracket, splitArgs: splitArgs
+  matchBracket: matchBracket, splitArgs: splitArgs, outstanding: outstanding
 };
 
 if (require.main === module) {

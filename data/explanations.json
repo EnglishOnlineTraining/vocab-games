@@ -16721,5 +16721,1591 @@
     }
    }
   }
+ },
+ "8g-kids-in-america-thanksgiving": {
+  "exA": {
+   "prefix": "exA-",
+   "gaps": {
+    "g1": {
+     "label": "1. Where Ben's host family lives",
+     "correct": "Ohio",
+     "why": "The text says Ben is spending a school year with a host family in Ohio."
+    },
+    "g2": {
+     "label": "2. Since when Thanksgiving is celebrated",
+     "correct": "since the 17th century",
+     "why": "His host family told him people have celebrated it since the 17th century."
+    },
+    "g3": {
+     "label": "3. On TV on Thanksgiving morning",
+     "correct": "a big parade",
+     "why": "The text says there is always a big parade on TV on Thanksgiving morning."
+    },
+    "g4": {
+     "label": "4. The traditional meal",
+     "correct": "a feast",
+     "why": "The text says the traditional meal is called a feast."
+    },
+    "g5": {
+     "label": "5. Before dinner",
+     "correct": "They said what they were grateful for.",
+     "why": "Ben was surprised that the family said what they were grateful for before dinner."
+    },
+    "g6": {
+     "label": "6. Ben's favourite moment",
+     "correct": "playing football in the garden",
+     "why": "Ben says his favourite moment was playing American football in the garden with his host cousins."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1. A big ___ through the streets",
+     "correct": "parade",
+     "why": "A parade is a procession that moves through the streets, like the one on TV in New York."
+    },
+    "g2": {
+     "label": "2. A real ___",
+     "correct": "feast",
+     "why": "A feast is a large, special meal with lots of food."
+    },
+    "g3": {
+     "label": "3. Roast ___",
+     "correct": "turkey",
+     "why": "Roast turkey is the most typical Thanksgiving dish, as the text says."
+    },
+    "g4": {
+     "label": "4. ___ goes inside the turkey",
+     "correct": "Stuffing",
+     "why": "Stuffing is a mixture of bread, onions and herbs put inside a bird before cooking."
+    },
+    "g5": {
+     "label": "5. Pour hot ___",
+     "correct": "gravy",
+     "why": "Gravy is a hot meat sauce poured over turkey and potatoes; syrup and jam are sweet."
+    },
+    "g6": {
+     "label": "6. What they are ___ for",
+     "correct": "grateful",
+     "why": "To be grateful for something means to be thankful for it, which is what Thanksgiving is about."
+    },
+    "g7": {
+     "label": "7. The autumn ___",
+     "correct": "harvest",
+     "why": "The harvest is when crops are gathered in autumn; Thanksgiving began as a harvest celebration."
+    },
+    "g8": {
+     "label": "8. A big family ___",
+     "correct": "reunion",
+     "why": "A reunion is when people who live apart come together again."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. A ___ country",
+     "correct": "vast",
+     "why": "Vast means extremely large, which fits a country with 50 states that takes days to cross."
+    },
+    "g2": {
+     "label": "2. Its ___ skyscrapers",
+     "correct": "tall",
+     "why": "Skyscrapers are very tall buildings, so 'tall skyscrapers' is the natural collocation."
+    },
+    "g3": {
+     "label": "3. The wait felt ___",
+     "correct": "endless",
+     "why": "After 'felt' we need an adjective; 'endless' means it seemed to go on for ever."
+    },
+    "g4": {
+     "label": "4. An ___ experience",
+     "correct": "unforgettable",
+     "why": "Unforgettable means you will never forget it, as the sentence explains."
+    },
+    "g5": {
+     "label": "5. A ___ welcome",
+     "correct": "warm",
+     "why": "A 'warm welcome' is a fixed collocation meaning a friendly, kind welcome."
+    },
+    "g6": {
+     "label": "6. A ___ success",
+     "correct": "huge",
+     "why": "A 'huge success' means a very big success, and almost the whole school came."
+    },
+    "g7": {
+     "label": "7. A ___ friend",
+     "correct": "true",
+     "why": "Before a noun we need the adjective 'true'; a true friend is loyal and reliable."
+    },
+    "g8": {
+     "label": "8. A ___ mistake",
+     "correct": "terrible",
+     "why": "Before the noun 'mistake' we need the adjective 'terrible', not the adverb 'terribly'."
+    }
+   }
+  }
+ },
+ "9c-canada-multicultural": {
+  "exA": {
+   "prefix": "exA-",
+   "gaps": {
+    "g1": {
+     "label": "1. Two ___ languages",
+     "correct": "official",
+     "why": "Official languages are the ones a government uses; 'offical' is a misspelling."
+    },
+    "g2": {
+     "label": "2. New ___ arrive in Canada",
+     "correct": "immigrants",
+     "why": "Immigrants are people who come to live in a new country."
+    },
+    "g3": {
+     "label": "3. One of the most ___ cities",
+     "correct": "diverse",
+     "why": "Diverse means very varied; more than half of Toronto's people were born abroad."
+    },
+    "g4": {
+     "label": "4. Different cultural ___",
+     "correct": "festivals",
+     "why": "Schools celebrate cultural festivals, which are special events and holidays."
+    },
+    "g5": {
+     "label": "5. The ___ peoples",
+     "correct": "indigenous",
+     "why": "Indigenous peoples lived in Canada long before any settlers arrived."
+    },
+    "g6": {
+     "label": "6. A source of national ___",
+     "correct": "pride",
+     "why": "Pride is the good feeling you have about something you value; 'price' and 'prize' don't fit."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1. English and French ___ in Canada",
+     "correct": "are spoken",
+     "why": "Present passive: plural subject (English and French) + are + past participle."
+    },
+    "g2": {
+     "label": "2. Maple syrup ___ mostly in Quebec",
+     "correct": "is produced",
+     "why": "Present passive with a singular subject: is + past participle."
+    },
+    "g3": {
+     "label": "3. Many festivals ___",
+     "correct": "are celebrated",
+     "why": "'Festivals' is plural, so the present passive is 'are celebrated'."
+    },
+    "g4": {
+     "label": "4. Ice hockey ___",
+     "correct": "is played",
+     "why": "Ice hockey doesn't play itself, so use the passive: singular subject + is + played."
+    },
+    "g5": {
+     "label": "5. New immigrants ___",
+     "correct": "are welcomed",
+     "why": "'Immigrants' is plural and receives the action, so use 'are welcomed'."
+    },
+    "g6": {
+     "label": "6. Multiculturalism ___ by Canadian law",
+     "correct": "is protected",
+     "why": "'By Canadian law' shows the passive; singular subject + is + protected."
+    },
+    "g7": {
+     "label": "7. Diversity ___ as a strength",
+     "correct": "is seen",
+     "why": "Diversity is singular and receives the action, so the present passive is 'is seen'."
+    },
+    "g8": {
+     "label": "8. Different languages ___ at home",
+     "correct": "are spoken",
+     "why": "'Languages' is plural, so the present passive is 'are spoken'."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. ___ official policy in 1971",
+     "correct": "was made",
+     "why": "'In 1971' needs the past passive; singular subject + was + made."
+    },
+    "g2": {
+     "label": "2. Canada ___ in 1867",
+     "correct": "was formed",
+     "why": "Past passive with a singular subject: was + past participle."
+    },
+    "g3": {
+     "label": "3. Thousands of new immigrants ___",
+     "correct": "were welcomed",
+     "why": "'Immigrants' is plural and 'last year' is past, so use 'were welcomed'."
+    },
+    "g4": {
+     "label": "4. The festival ___ by volunteers",
+     "correct": "was organised",
+     "why": "'By local volunteers' shows the passive; singular past is 'was organised'."
+    },
+    "g5": {
+     "label": "5. The law ___ by parliament",
+     "correct": "was passed",
+     "why": "Singular subject + past passive: was + passed."
+    },
+    "g6": {
+     "label": "6. Traditional foods ___",
+     "correct": "were shared",
+     "why": "'Foods' is plural, so the past passive is 'were shared'."
+    },
+    "g7": {
+     "label": "7. The documentary ___",
+     "correct": "was filmed",
+     "why": "The documentary is singular and receives the action: was + filmed."
+    },
+    "g8": {
+     "label": "8. The new citizens ___",
+     "correct": "were invited",
+     "why": "'Citizens' is plural, so the past passive is 'were invited'."
+    }
+   }
+  }
+ },
+ "9c-life-before-technology": {
+  "exA": {
+   "prefix": "exA-",
+   "gaps": {
+    "g1": {
+     "label": "1. My family ___ one television",
+     "correct": "owned",
+     "why": "Grandma is talking about the past, so use the simple past 'owned'."
+    },
+    "g2": {
+     "label": "2. Send a ___",
+     "correct": "message",
+     "why": "You send a message; a messenger is a person who carries one."
+    },
+    "g3": {
+     "label": "3. A paper ___",
+     "correct": "map",
+     "why": "A map shows you the way, which is what they used instead of GPS."
+    },
+    "g4": {
+     "label": "4. Music came from the ___",
+     "correct": "radio",
+     "why": "After 'the' we need the singular noun 'radio'; 'radiate' is a verb."
+    },
+    "g5": {
+     "label": "5. To do ___",
+     "correct": "homework",
+     "why": "Homework is school work done at home, which is why they went to the library."
+    },
+    "g6": {
+     "label": "6. More time ___",
+     "correct": "outdoors",
+     "why": "Outdoors means outside, matching 'we used to play outside until it got dark'."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1. People ___ write letters",
+     "correct": "used to",
+     "why": "'Used to' describes a past habit; people wrote letters regularly before email."
+    },
+    "g2": {
+     "label": "2. Children ___ have smartphones",
+     "correct": "didn't use to",
+     "why": "Smartphones didn't exist, so it's negative; after 'didn't' we write 'use to', not 'used to'."
+    },
+    "g3": {
+     "label": "3. Grandad ___ repair his radio",
+     "correct": "used to",
+     "why": "A repeated past action is described with 'used to' + infinitive."
+    },
+    "g4": {
+     "label": "4. Families ___ have the internet",
+     "correct": "didn't use to",
+     "why": "Before the 1990s they had no internet at home, so use the negative 'didn't use to'."
+    },
+    "g5": {
+     "label": "5. People ___ meet friends in person",
+     "correct": "used to",
+     "why": "This was a past habit that is less common now, so use 'used to'."
+    },
+    "g6": {
+     "label": "6. Students ___ type their homework",
+     "correct": "didn't use to",
+     "why": "They wrote by hand, so it's negative: 'didn't use to' (no -d after didn't)."
+    },
+    "g7": {
+     "label": "7. My mum ___ listen to the radio",
+     "correct": "used to",
+     "why": "'Every morning' shows a past routine, so use 'used to'."
+    },
+    "g8": {
+     "label": "8. Shops ___ accept online payments",
+     "correct": "didn't use to",
+     "why": "Everyone paid with cash, so the sentence is negative: 'didn't use to'."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. My grandmother ___ to school",
+     "correct": "used to walk",
+     "why": "'Every day when she was young' is a past habit, so use 'used to walk'."
+    },
+    "g2": {
+     "label": "2. Yesterday, she ___ to the shop",
+     "correct": "walked",
+     "why": "'Yesterday' is one finished action, so use the simple past, not 'used to'."
+    },
+    "g3": {
+     "label": "3. Last week, our class ___ a museum",
+     "correct": "visited",
+     "why": "'Last week' is a single past event, so use the simple past."
+    },
+    "g4": {
+     "label": "4. In the 1980s, people ___ songs",
+     "correct": "used to record",
+     "why": "This was a common habit over a period of time, so use 'used to'."
+    },
+    "g5": {
+     "label": "5. Grandad ___ every month for years",
+     "correct": "used to write",
+     "why": "'Every single month for years' is a repeated past habit: 'used to write'."
+    },
+    "g6": {
+     "label": "6. He ___ his last letter in 1995",
+     "correct": "wrote",
+     "why": "One action at a specific time (1995) takes the simple past."
+    },
+    "g7": {
+     "label": "7. Before computers, workers ___ typewriters",
+     "correct": "used to use",
+     "why": "A general past situation that is no longer true takes 'used to' + infinitive."
+    },
+    "g8": {
+     "label": "8. On that day, the reporter ___",
+     "correct": "used a typewriter",
+     "why": "'On that day' is one specific occasion, so use the simple past, not 'used to'."
+    }
+   }
+  }
+ },
+ "9c-melbourne-job-application": {
+  "exA": {
+   "prefix": "exA-",
+   "gaps": {
+    "g1": {
+     "label": "1. Where the Waterfront Hotel is",
+     "correct": "Melbourne",
+     "why": "The ad says the job is in one of the largest hotels in Melbourne."
+    },
+    "g2": {
+     "label": "2. The job the hotel offers",
+     "correct": "receptionist",
+     "why": "The ad's heading is 'Receptionist, Waterfront Hotel'."
+    },
+    "g3": {
+     "label": "3. Someone who can work in a ___",
+     "correct": "team",
+     "why": "The ad asks: 'Are you able to work in a team?'"
+    },
+    "g4": {
+     "label": "4. Where Amy is from",
+     "correct": "Ireland",
+     "why": "Amy was a student in Cork, in the Republic of Ireland."
+    },
+    "g5": {
+     "label": "5. Amy's job in Cork",
+     "correct": "B & B",
+     "why": "Amy says she worked part time in a B & B for guests from all over the world."
+    },
+    "g6": {
+     "label": "6. Her current job is ___",
+     "correct": "temporary",
+     "why": "Amy writes about her 'current temporary job in Australia'."
+    },
+    "g7": {
+     "label": "7. Amy's job at the Flying Emu Lodge",
+     "correct": "receptionist",
+     "why": "She has six months of experience as a receptionist at the Flying Emu Lodge."
+    },
+    "g8": {
+     "label": "8. Amy wants a more ___ job",
+     "correct": "permanent",
+     "why": "Amy says she is now looking for more permanent work as part of a larger team."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1. Cuts and styles hair",
+     "correct": "hairdresser",
+     "why": "A hairdresser's job is cutting and styling people's hair."
+    },
+    "g2": {
+     "label": "2. Builds things out of wood",
+     "correct": "carpenter",
+     "why": "A carpenter makes furniture, doors and other things from wood."
+    },
+    "g3": {
+     "label": "3. Repairs or builds machines",
+     "correct": "mechanic",
+     "why": "A mechanic works with machines and engines, for example in cars."
+    },
+    "g4": {
+     "label": "4. Cooks food in a restaurant",
+     "correct": "chef",
+     "why": "A chef is a professional cook in a restaurant or hotel."
+    },
+    "g5": {
+     "label": "5. Helps sick people in hospital",
+     "correct": "nurse",
+     "why": "A nurse looks after sick or injured people, usually in a hospital."
+    },
+    "g6": {
+     "label": "6. Repairs pipes in buildings",
+     "correct": "plumber",
+     "why": "A plumber fits and repairs water pipes, taps and toilets."
+    },
+    "g7": {
+     "label": "7. Books holidays and flights",
+     "correct": "travel agent",
+     "why": "A travel agent arranges holidays, flights and hotels for customers."
+    },
+    "g8": {
+     "label": "8. Works with patients who have injuries",
+     "correct": "physiotherapist",
+     "why": "A physiotherapist treats injuries with exercise and movement."
+    },
+    "g9": {
+     "label": "9. Uses games, music and art with young children",
+     "correct": "preschool teacher",
+     "why": "A preschool teacher teaches very young children, often through games, music and art."
+    },
+    "g10": {
+     "label": "10. Installs and repairs electrical systems",
+     "correct": "electrician",
+     "why": "An electrician works with wiring and electrical systems."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. Lists your education and experience",
+     "correct": "CV",
+     "why": "A CV is a document listing your education, skills and work experience."
+    },
+    "g2": {
+     "label": "2. A letter of ___",
+     "correct": "application",
+     "why": "When you apply for a job you write a 'letter of application'."
+    },
+    "g3": {
+     "label": "3. Welcomes guests at the hotel desk",
+     "correct": "receptionist",
+     "why": "The receptionist works at the front desk and welcomes guests."
+    },
+    "g4": {
+     "label": "4. Always on time",
+     "correct": "punctual",
+     "why": "Punctual means always arriving on time."
+    },
+    "g5": {
+     "label": "5. People who say good things about you",
+     "correct": "references",
+     "why": "References are former employers or teachers who recommend you."
+    },
+    "g6": {
+     "label": "6. A job for a short time only",
+     "correct": "temporary",
+     "why": "Temporary means for a limited time; permanent means with no end date."
+    },
+    "g7": {
+     "label": "7. Guests from different ___",
+     "correct": "cultures",
+     "why": "The ad and Amy's email talk about dealing with guests from different cultures."
+    },
+    "g8": {
+     "label": "8. The money you earn each month",
+     "correct": "salary",
+     "why": "Your salary is the regular pay you get for your job."
+    }
+   }
+  }
+ },
+ "9c-question-tags-small-talk": {
+  "exA": {
+   "prefix": "exA-",
+   "gaps": {
+    "g1": {
+     "label": "1. An ___ student",
+     "correct": "exchange",
+     "why": "An 'exchange student' studies at a school in another country for a while."
+    },
+    "g2": {
+     "label": "2. You must feel a bit ___",
+     "correct": "nervous",
+     "why": "After 'feel' we need an adjective; 'nervous' means a bit worried."
+    },
+    "g3": {
+     "label": "3. The school ___",
+     "correct": "timetable",
+     "why": "A school timetable shows which lessons you have and when."
+    },
+    "g4": {
+     "label": "4. Where the ___ is (pizza on Fridays)",
+     "correct": "canteen",
+     "why": "The canteen is the place in a school where you buy and eat lunch."
+    },
+    "g5": {
+     "label": "5. I already feel a bit ___",
+     "correct": "homesick",
+     "why": "Homesick is the adjective for missing your home, family and friends."
+    },
+    "g6": {
+     "label": "6. Are you free this ___?",
+     "correct": "weekend",
+     "why": "Anna's friends are meeting in town, and 'free this weekend' is the natural phrase."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1. You're new here, ___?",
+     "correct": "aren't you",
+     "why": "Positive 'you are' takes a negative tag with the same verb: aren't you?"
+    },
+    "g2": {
+     "label": "2. She speaks German, ___?",
+     "correct": "doesn't she",
+     "why": "Present simple with he/she/it takes 'doesn't' in the tag."
+    },
+    "g3": {
+     "label": "3. They live in Berlin, ___?",
+     "correct": "don't they",
+     "why": "Present simple with 'they' takes 'don't' in the tag."
+    },
+    "g4": {
+     "label": "4. He can swim, ___?",
+     "correct": "can't he",
+     "why": "A modal verb is repeated in the tag: can → can't he?"
+    },
+    "g5": {
+     "label": "5. We're going to the party, ___?",
+     "correct": "aren't we",
+     "why": "'We're' means 'we are', so the tag repeats 'are' in the negative: aren't we?"
+    },
+    "g6": {
+     "label": "6. You've got a new phone, ___?",
+     "correct": "haven't you",
+     "why": "'You've got' uses the auxiliary 'have', so the tag is 'haven't you?'"
+    },
+    "g7": {
+     "label": "7. It rained yesterday, ___?",
+     "correct": "didn't it",
+     "why": "Simple past without an auxiliary takes 'didn't' in the tag."
+    },
+    "g8": {
+     "label": "8. Tom and Lisa are coming too, ___?",
+     "correct": "aren't they",
+     "why": "Tom and Lisa = they, and the verb is 'are', so the tag is 'aren't they?'"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. You aren't from here, ___?",
+     "correct": "are you",
+     "why": "A negative sentence takes a positive tag: aren't → are you?"
+    },
+    "g2": {
+     "label": "2. She doesn't like coffee, ___?",
+     "correct": "does she",
+     "why": "Negative 'doesn't' becomes positive 'does' in the tag."
+    },
+    "g3": {
+     "label": "3. They can't come tonight, ___?",
+     "correct": "can they",
+     "why": "Negative 'can't' becomes positive 'can' in the tag."
+    },
+    "g4": {
+     "label": "4. I'm right, ___?",
+     "correct": "aren't I",
+     "why": "The tag for 'I am' is the special form 'aren't I?'; 'amn't I' isn't standard English."
+    },
+    "g5": {
+     "label": "5. Let's go to the cinema, ___?",
+     "correct": "shall we",
+     "why": "Sentences with 'Let's' always take the tag 'shall we?'"
+    },
+    "g6": {
+     "label": "6. Close the door, ___?",
+     "correct": "will you",
+     "why": "An imperative (an order or request) usually takes the tag 'will you?'"
+    },
+    "g7": {
+     "label": "7. Nobody called, ___?",
+     "correct": "did they",
+     "why": "'Nobody' makes the sentence negative, so the tag is positive; we use 'they' for nobody."
+    },
+    "g8": {
+     "label": "8. There isn't any milk left, ___?",
+     "correct": "is there",
+     "why": "'There isn't' is negative, so the tag is positive and keeps 'there': is there?"
+    }
+   }
+  }
+ },
+ "9c-teen-screen-time": {
+  "exA": {
+   "prefix": "exA-",
+   "gaps": {
+    "g1": {
+     "label": "1. Looking at a ___",
+     "correct": "screen",
+     "why": "A screen is the display on a phone or computer; 'scream' and 'scene' don't fit."
+    },
+    "g2": {
+     "label": "2. Apps are ___ to keep users interested",
+     "correct": "designed",
+     "why": "'Designed to' means made on purpose for something."
+    },
+    "g3": {
+     "label": "3. Affect your ___ at school",
+     "correct": "concentration",
+     "why": "Concentration is your ability to focus, which too much screen time can affect."
+    },
+    "g4": {
+     "label": "4. Setting a daily ___",
+     "correct": "limit",
+     "why": "A daily limit is the maximum time you allow yourself on an app."
+    },
+    "g5": {
+     "label": "5. Doctors also ___ putting your phone away",
+     "correct": "suggest",
+     "why": "'Suggest' + -ing means to give advice; 'suspect' and 'support' don't fit."
+    },
+    "g6": {
+     "label": "6. A phone is just a ___",
+     "correct": "tool",
+     "why": "A tool is something you use to do a job, so it depends on how you use it."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1. I really enjoy ___ videos",
+     "correct": "watching",
+     "why": "'Enjoy' is always followed by the -ing form."
+    },
+    "g2": {
+     "label": "2. She's trying to avoid ___ her phone",
+     "correct": "checking",
+     "why": "'Avoid' is followed by the -ing form."
+    },
+    "g3": {
+     "label": "3. He keeps ___ track of time",
+     "correct": "losing",
+     "why": "'Keep' meaning 'continue' is followed by the -ing form."
+    },
+    "g4": {
+     "label": "4. Have you finished ___ the photos?",
+     "correct": "uploading",
+     "why": "'Finish' is followed by the -ing form."
+    },
+    "g5": {
+     "label": "5. Our teacher suggested ___ off notifications",
+     "correct": "turning",
+     "why": "'Suggest' is followed by the -ing form, not the to-infinitive."
+    },
+    "g6": {
+     "label": "6. Would you mind ___ the volume?",
+     "correct": "lowering",
+     "why": "'Would you mind' is followed by the -ing form."
+    },
+    "g7": {
+     "label": "7. I practise ___ English",
+     "correct": "speaking",
+     "why": "'Practise' is followed by the -ing form."
+    },
+    "g8": {
+     "label": "8. My brother gave up ___ that game",
+     "correct": "playing",
+     "why": "'Give up' is followed by the -ing form."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. I want ___ my screen time",
+     "correct": "to reduce",
+     "why": "'Want' is followed by the to-infinitive."
+    },
+    "g2": {
+     "label": "2. She decided ___ the app",
+     "correct": "to delete",
+     "why": "'Decide' is followed by the to-infinitive."
+    },
+    "g3": {
+     "label": "3. We're planning ___ a screen-free evening",
+     "correct": "to have",
+     "why": "'Plan' is followed by the to-infinitive."
+    },
+    "g4": {
+     "label": "4. He hopes ___ better",
+     "correct": "to get",
+     "why": "'Hope' is followed by the to-infinitive."
+    },
+    "g5": {
+     "label": "5. I promise ___ my phone off",
+     "correct": "to switch",
+     "why": "'Promise' is followed by the to-infinitive."
+    },
+    "g6": {
+     "label": "6. She finally managed ___ her homework",
+     "correct": "to finish",
+     "why": "'Manage' is followed by the to-infinitive."
+    },
+    "g7": {
+     "label": "7. My parents refuse ___ me use my phone",
+     "correct": "to let",
+     "why": "'Refuse' is followed by the to-infinitive."
+    },
+    "g8": {
+     "label": "8. We can't afford ___ how much time",
+     "correct": "to ignore",
+     "why": "'Can't afford' is followed by the to-infinitive."
+    }
+   }
+  }
+ },
+ "9c-volunteering-abroad": {
+  "exA": {
+   "prefix": "exA-",
+   "gaps": {
+    "g1": {
+     "label": "1. Working as a ___",
+     "correct": "volunteer",
+     "why": "After 'a' we need a noun: a volunteer is a person who works without pay."
+    },
+    "g2": {
+     "label": "2. Gave tours to ___",
+     "correct": "visitors",
+     "why": "Visitors are people who come to see a place, so they get tours."
+    },
+    "g3": {
+     "label": "3. The organisation ___ a safety briefing",
+     "correct": "provided",
+     "why": "To provide means to give; the organisation gave a briefing to reassure his parents."
+    },
+    "g4": {
+     "label": "4. The language ___",
+     "correct": "barrier",
+     "why": "A language barrier is the difficulty of not sharing a language."
+    },
+    "g5": {
+     "label": "5. More ___ than any school trip",
+     "correct": "confidence",
+     "why": "Confidence is the feeling that you can do things well."
+    },
+    "g6": {
+     "label": "6. Already ___ his next project",
+     "correct": "planning",
+     "why": "Planning means preparing for the future; 'planing' (one n) means smoothing wood."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1. You ___ have a valid passport",
+     "correct": "must",
+     "why": "A passport is required to travel abroad, so use 'must' for an obligation."
+    },
+    "g2": {
+     "label": "2. Volunteers ___ follow the safety rules",
+     "correct": "have to",
+     "why": "'At all times' shows a rule everyone must follow, so use 'have to'."
+    },
+    "g3": {
+     "label": "3. You ___ touch wild animals",
+     "correct": "mustn't",
+     "why": "'Mustn't' means it is not allowed, because it can be dangerous."
+    },
+    "g4": {
+     "label": "4. You ___ speak the local language",
+     "correct": "don't have to",
+     "why": "'Don't have to' means it isn't necessary, because English is often enough."
+    },
+    "g5": {
+     "label": "5. Younger volunteers ___ get permission",
+     "correct": "have to",
+     "why": "Written permission is required, so use 'have to' for the obligation."
+    },
+    "g6": {
+     "label": "6. You ___ leave the group without telling",
+     "correct": "mustn't",
+     "why": "'Mustn't' shows something forbidden: leaving without telling a supervisor."
+    },
+    "g7": {
+     "label": "7. Volunteers ___ bring their own tools",
+     "correct": "don't have to",
+     "why": "The project provides tools, so it isn't necessary: 'don't have to'."
+    },
+    "g8": {
+     "label": "8. Everyone ___ attend the safety briefing",
+     "correct": "has to",
+     "why": "'Everyone' takes a singular verb, so the obligation is 'has to'."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. You ___ research the organisation",
+     "correct": "should",
+     "why": "'Should' gives advice; researching first is a good idea."
+    },
+    "g2": {
+     "label": "2. You ___ travel without telling your family",
+     "correct": "shouldn't",
+     "why": "This is advice, not a rule, so use 'shouldn't' for something that's a bad idea."
+    },
+    "g3": {
+     "label": "3. New volunteers ___ ask questions",
+     "correct": "should",
+     "why": "'Should' gives advice: asking questions is a good idea when you're unsure."
+    },
+    "g4": {
+     "label": "4. You ___ learn a few basic phrases",
+     "correct": "should",
+     "why": "Learning a few phrases is good advice, so use 'should'."
+    },
+    "g5": {
+     "label": "5. You ___ ignore the advice of local staff",
+     "correct": "shouldn't",
+     "why": "Ignoring local staff is a bad idea, so the advice is 'shouldn't'."
+    },
+    "g6": {
+     "label": "6. It ___ be a good idea to pack light",
+     "correct": "should",
+     "why": "'Should' recommends something: packing light is sensible advice."
+    },
+    "g7": {
+     "label": "7. You ___ keep an open mind",
+     "correct": "should",
+     "why": "Keeping an open mind about other cultures is good advice: 'should'."
+    },
+    "g8": {
+     "label": "8. You ___ compare everything to home",
+     "correct": "shouldn't",
+     "why": "Comparing everything to home is a bad idea, so the advice is 'shouldn't'."
+    }
+   }
+  }
+ },
+ "9g-australia-outback": {
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1. Outback farms are very ___",
+     "correct": "remote",
+     "why": "Remote means far away from towns, which fits 'hours away from the next town'."
+    },
+    "g2": {
+     "label": "2. Uluru is a ___ place",
+     "correct": "sacred",
+     "why": "Sacred means holy or spiritually important, as Uluru is for the Anangu people."
+    },
+    "g3": {
+     "label": "3. People need ___ communication",
+     "correct": "reliable",
+     "why": "Reliable means you can trust it to work, which matters when something goes wrong."
+    },
+    "g4": {
+     "label": "4. A medical ___",
+     "correct": "emergency",
+     "why": "A medical emergency is a sudden, serious situation that needs help quickly."
+    },
+    "g5": {
+     "label": "5. A long ___",
+     "correct": "drought",
+     "why": "A drought is a long period without rain, which makes farming harder."
+    },
+    "g6": {
+     "label": "6. A community's cultural ___",
+     "correct": "heritage",
+     "why": "Cultural heritage means the stories, language and traditions passed down over time."
+    },
+    "g7": {
+     "label": "7. Choose a safe ___",
+     "correct": "route",
+     "why": "A route is the way you travel from one place to another."
+    },
+    "g8": {
+     "label": "8. Support a local ___",
+     "correct": "community",
+     "why": "A local community is the people who live in an area, whom tourism can support."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. You ___ carry extra water",
+     "correct": "should",
+     "why": "'Should' gives advice: carrying extra water in remote areas is sensible."
+    },
+    "g2": {
+     "label": "2. Visitors ___ climb Uluru",
+     "correct": "must not",
+     "why": "'Must not' says something is not allowed; local people ask visitors not to climb."
+    },
+    "g3": {
+     "label": "3. Drivers ___ wait",
+     "correct": "may have to",
+     "why": "'May have to' expresses a possible obligation that depends on the floods."
+    },
+    "g4": {
+     "label": "4. ___ roads are closed",
+     "correct": "If",
+     "why": "'If' introduces a condition: tourists need another plan in that situation."
+    },
+    "g5": {
+     "label": "5. The Flying Doctor Service ___ bring help",
+     "correct": "can",
+     "why": "'Can' expresses ability: the service is able to bring help to remote stations."
+    },
+    "g6": {
+     "label": "6. Campers ___ check fire warnings",
+     "correct": "must",
+     "why": "'Must' expresses a strong obligation for safety reasons."
+    },
+    "g7": {
+     "label": "7. If there were more buses, fewer visitors ___ need",
+     "correct": "would",
+     "why": "Conditional type 2: if + past simple, then would + infinitive."
+    },
+    "g8": {
+     "label": "8. Visitors ___ leave rubbish",
+     "correct": "mustn’t",
+     "why": "'Mustn't' means it is forbidden to leave rubbish in national parks."
+    }
+   }
+  }
+ },
+ "9g-australia-passive-infinitive": {
+  "exB": {
+   "prefix": "exB-",
+   "typed": true,
+   "gaps": {
+    "g1": {
+     "label": "1. Flowers must not ___ (pick)",
+     "correct": "be picked",
+     "accept": [
+      "be picked"
+     ],
+     "why": "Passive after a modal: modal + be + past participle."
+    },
+    "g2": {
+     "label": "2. Litter must not ___ (throw)",
+     "correct": "be thrown",
+     "accept": [
+      "be thrown"
+     ],
+     "why": "Modal + be + past participle; 'throw' has the irregular participle 'thrown'."
+    },
+    "g3": {
+     "label": "3. Animals should not ___ (disturb)",
+     "correct": "be disturbed",
+     "accept": [
+      "be disturbed"
+     ],
+     "why": "Passive after 'should not': be + past participle."
+    },
+    "g4": {
+     "label": "4. Tracks must not ___ (leave)",
+     "correct": "be left",
+     "accept": [
+      "be left"
+     ],
+     "why": "Modal + be + past participle; 'leave' becomes 'left'."
+    },
+    "g5": {
+     "label": "5. Aboriginal sites must not ___ (touch)",
+     "correct": "be touched",
+     "accept": [
+      "be touched"
+     ],
+     "why": "The sites receive the action, so use modal + be + past participle."
+    },
+    "g6": {
+     "label": "6. The bush should not ___ (use)",
+     "correct": "be used",
+     "accept": [
+      "be used"
+     ],
+     "why": "Passive after 'should not': be + past participle."
+    },
+    "g7": {
+     "label": "7. Trees and plants must not ___ (damage)",
+     "correct": "be damaged",
+     "accept": [
+      "be damaged"
+     ],
+     "why": "Modal + be + past participle: must not be damaged."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "typed": true,
+   "gaps": {
+    "g1": {
+     "label": "1. Snakes can ___ (find)",
+     "correct": "be found",
+     "accept": [
+      "be found"
+     ],
+     "why": "Passive after a modal: can + be + past participle."
+    },
+    "g2": {
+     "label": "2. You don't want ___ (bite)",
+     "correct": "to be bitten",
+     "accept": [
+      "to be bitten"
+     ],
+     "why": "'Want' takes the to-infinitive, so the passive is 'to be' + past participle."
+    },
+    "g3": {
+     "label": "3. Snakes like ___ (leave alone)",
+     "correct": "to be left alone",
+     "accept": [
+      "to be left alone",
+      "to be left"
+     ],
+     "why": "'Like' + passive to-infinitive: to be + past participle."
+    },
+    "g4": {
+     "label": "4. The snake should ___ (give) space",
+     "correct": "be given",
+     "accept": [
+      "be given"
+     ],
+     "why": "Passive after 'should': be + past participle."
+    },
+    "g5": {
+     "label": "5. Snakes must ___ (show) respect",
+     "correct": "be shown",
+     "accept": [
+      "be shown"
+     ],
+     "why": "Passive after 'must': be + past participle."
+    },
+    "g6": {
+     "label": "6. They should never ___ (pick up)",
+     "correct": "be picked up",
+     "accept": [
+      "be picked up"
+     ],
+     "why": "Modal + be + past participle; the particle 'up' stays after the verb."
+    },
+    "g7": {
+     "label": "7. … or ___ (chase)",
+     "correct": "be chased",
+     "accept": [
+      "be chased"
+     ],
+     "why": "Still after 'should never': be + past participle."
+    },
+    "g8": {
+     "label": "8. You'll need ___ (take) to hospital",
+     "correct": "to be taken",
+     "accept": [
+      "to be taken"
+     ],
+     "why": "'Need' takes the to-infinitive, so the passive is 'to be taken'."
+    },
+    "g9": {
+     "label": "9. Snakebites must ___ (treat)",
+     "correct": "be treated",
+     "accept": [
+      "be treated"
+     ],
+     "why": "Passive after 'must': be + past participle."
+    }
+   }
+  },
+  "exD": {
+   "prefix": "exD-",
+   "typed": true,
+   "gaps": {
+    "g1": {
+     "label": "1. You won't believe what I ___ (just / tell)",
+     "correct": "was just told",
+     "accept": [
+      "was just told"
+     ],
+     "why": "Past passive: was + told, with 'just' after the auxiliary."
+    },
+    "g2": {
+     "label": "2. He ___ (last / see)",
+     "correct": "was last seen",
+     "accept": [
+      "was last seen"
+     ],
+     "why": "Past passive with 'last' after 'was': was last seen."
+    },
+    "g3": {
+     "label": "3. I hope he ___ (rescue)",
+     "correct": "will be rescued",
+     "accept": [
+      "will be rescued",
+      "'ll be rescued",
+      "is rescued"
+     ],
+     "why": "Hoping about the future: will be + past participle (or present passive 'is rescued')."
+    },
+    "g4": {
+     "label": "4. The smoke ___ (can – smell)",
+     "correct": "could be smelled",
+     "accept": [
+      "could be smelled",
+      "could be smelt"
+     ],
+     "why": "Past of 'can' in the passive: could be + past participle."
+    },
+    "g5": {
+     "label": "5. I ___ (not want – show around)",
+     "correct": "didn't want to be shown around",
+     "accept": [
+      "didn't want to be shown around",
+      "did not want to be shown around"
+     ],
+     "why": "Past negative 'didn't want' + passive to-infinitive 'to be shown around'."
+    },
+    "g6": {
+     "label": "6. What we ___ (tell) at the hostel",
+     "correct": "were told",
+     "accept": [
+      "were told"
+     ],
+     "why": "Past passive with 'we': were + past participle."
+    },
+    "g7": {
+     "label": "7. I ___ (tell) by the guide",
+     "correct": "was told",
+     "accept": [
+      "was told"
+     ],
+     "why": "'By the guide' shows the passive; past with 'I' is 'was told'."
+    },
+    "g8": {
+     "label": "8. They ___ (bring) to Australia",
+     "correct": "were brought",
+     "accept": [
+      "were brought"
+     ],
+     "why": "Past passive: the camels were brought by people a long time ago."
+    }
+   }
+  }
+ },
+ "9g-california-silicon-valley": {
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1. Companies were ___ in California",
+     "correct": "founded",
+     "why": "To found a company means to start it."
+    },
+    "g2": {
+     "label": "2. An ___ starts a business",
+     "correct": "entrepreneur",
+     "why": "An entrepreneur is a person who starts a business and takes the risk."
+    },
+    "g3": {
+     "label": "3. Startups need ___",
+     "correct": "venture capital",
+     "why": "Venture capital is money that investors put into new, risky companies."
+    },
+    "g4": {
+     "label": "4. A small ___",
+     "correct": "prototype",
+     "why": "A prototype is an early test version of a product."
+    },
+    "g5": {
+     "label": "5. Plans to ___ its new product",
+     "correct": "launch",
+     "why": "To launch a product means to make it available to the public."
+    },
+    "g6": {
+     "label": "6. A company's main office",
+     "correct": "headquarters",
+     "why": "A company's headquarters is its main office."
+    },
+    "g7": {
+     "label": "7. A long ___",
+     "correct": "commute",
+     "why": "A commute is the daily journey between home and work."
+    },
+    "g8": {
+     "label": "8. Government ___",
+     "correct": "regulation",
+     "why": "A regulation is an official rule; privacy laws are one kind."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. The founder said the app ___",
+     "correct": "would launch",
+     "why": "Reported speech: 'will launch' moves back to 'would launch' after 'said'."
+    },
+    "g2": {
+     "label": "2. The engineers explained that they ___",
+     "correct": "were testing",
+     "why": "Reported speech: present progressive 'are testing' becomes 'were testing'."
+    },
+    "g3": {
+     "label": "3. Analysts predict that companies ___",
+     "correct": "will invest",
+     "why": "'Predict' is in the present, so the future 'will invest' stays unchanged."
+    },
+    "g4": {
+     "label": "4. A student said she ___",
+     "correct": "was applying",
+     "why": "Reported speech: 'I am applying' becomes 'she was applying'."
+    },
+    "g5": {
+     "label": "5. The article reported that rents ___",
+     "correct": "had risen",
+     "why": "Reported speech: present perfect 'have risen' moves back to 'had risen'."
+    },
+    "g6": {
+     "label": "6. If the trial ___, investors will fund",
+     "correct": "succeeds",
+     "why": "Conditional type 1: if + present simple, then will + infinitive."
+    },
+    "g7": {
+     "label": "7. The team ___ the product next week",
+     "correct": "is going to present",
+     "why": "'Going to' describes a plan for the future, here 'next week'."
+    },
+    "g8": {
+     "label": "8. The CEO said remote work ___",
+     "correct": "had changed",
+     "why": "Reported speech: 'has changed' moves back to 'had changed' after 'said'."
+    }
+   }
+  }
+ },
+ "9g-canada-indigenous-voices": {
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1. Peoples who lived in a place first",
+     "correct": "Indigenous",
+     "why": "Indigenous describes the peoples who lived in a place before later settlers arrived."
+    },
+    "g2": {
+     "label": "2. A formal agreement",
+     "correct": "treaty",
+     "why": "A treaty is a formal agreement between groups or governments."
+    },
+    "g3": {
+     "label": "3. Passes on stories and knowledge",
+     "correct": "elder",
+     "why": "An elder is an older, respected member of a community who passes on knowledge."
+    },
+    "g4": {
+     "label": "4. Repairing relationships after harm",
+     "correct": "Reconciliation",
+     "why": "Reconciliation means restoring good relations after conflict or harm."
+    },
+    "g5": {
+     "label": "5. Peoples connected to a ___",
+     "correct": "territory",
+     "why": "A territory is an area of land; a land acknowledgement names whose land it is."
+    },
+    "g6": {
+     "label": "6. Each ___ has a responsibility",
+     "correct": "generation",
+     "why": "A generation is all the people born around the same time."
+    },
+    "g7": {
+     "label": "7. A strong ___",
+     "correct": "community",
+     "why": "A community is a group of people who live together and support each other."
+    },
+    "g8": {
+     "label": "8. Carries history and humour",
+     "correct": "language",
+     "why": "A language carries a people's history, humour and way of seeing the world."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. Languages ___ again",
+     "correct": "are being taught",
+     "why": "Present progressive passive (are being + past participle) for something happening now."
+    },
+    "g2": {
+     "label": "2. The orange shirt ___",
+     "correct": "is worn",
+     "why": "Present passive with a singular subject: is + past participle."
+    },
+    "g3": {
+     "label": "3. Land acknowledgements ___",
+     "correct": "are used",
+     "why": "Plural subject, general fact: present passive 'are used'."
+    },
+    "g4": {
+     "label": "4. Stories ___ from elders",
+     "correct": "have been passed down",
+     "why": "Present perfect passive: have been + past participle, from the past up to now."
+    },
+    "g5": {
+     "label": "5. More resources ___",
+     "correct": "should be provided",
+     "why": "Passive after a modal: should + be + past participle."
+    },
+    "g6": {
+     "label": "6. Students ___ to listen",
+     "correct": "were encouraged",
+     "why": "Past passive with a plural subject: were + past participle."
+    },
+    "g7": {
+     "label": "7. A cultural centre ___ last year",
+     "correct": "was opened",
+     "why": "'Last year' needs the past passive; singular subject + was opened."
+    },
+    "g8": {
+     "label": "8. Difficult history ___",
+     "correct": "must be discussed",
+     "why": "Passive after a modal: must + be + past participle."
+    }
+   }
+  }
+ },
+ "9g-ireland-emigration": {
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1. Irish people ___ to North America",
+     "correct": "emigrated",
+     "why": "To emigrate means to leave your country to live in another one."
+    },
+    "g2": {
+     "label": "2. Not enough food",
+     "correct": "famine",
+     "why": "A famine is a period when many people do not have enough food."
+    },
+    "g3": {
+     "label": "3. The Irish ___",
+     "correct": "diaspora",
+     "why": "A diaspora is a people living around the world, away from their original homeland."
+    },
+    "g4": {
+     "label": "4. Ireland's western ___",
+     "correct": "coastline",
+     "why": "The coastline is the land along the sea, with its cliffs and islands."
+    },
+    "g5": {
+     "label": "5. Oral ___",
+     "correct": "storytelling",
+     "why": "Oral storytelling means telling stories aloud, which kept memories alive."
+    },
+    "g6": {
+     "label": "6. An Irish ___",
+     "correct": "accent",
+     "why": "An accent is the way people from a region pronounce words."
+    },
+    "g7": {
+     "label": "7. A person's ___",
+     "correct": "identity",
+     "why": "Your identity is who you are and how you see yourself."
+    },
+    "g8": {
+     "label": "8. A better ___",
+     "correct": "opportunity",
+     "why": "An opportunity is a chance for something better, like work."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. By the end of the famine, families ___",
+     "correct": "had left",
+     "why": "'By the end of' + past needs the past perfect: had + past participle."
+    },
+    "g2": {
+     "label": "2. By 1900, millions ___",
+     "correct": "had emigrated",
+     "why": "'By 1900' shows an action completed before a past time: past perfect."
+    },
+    "g3": {
+     "label": "3. When the ship ___ in New York",
+     "correct": "arrived",
+     "why": "A single past event in a 'when' clause takes the simple past."
+    },
+    "g4": {
+     "label": "4. Because they ___ for better work",
+     "correct": "were hoping",
+     "why": "Past progressive describes their ongoing wish at the time they left."
+    },
+    "g5": {
+     "label": "5. After emigrants ___ new communities",
+     "correct": "had formed",
+     "why": "The communities came first, so use the past perfect for the earlier action."
+    },
+    "g6": {
+     "label": "6. Modern Ireland ___ a lot since",
+     "correct": "has changed",
+     "why": "'Since' + a change continuing to now takes the present perfect."
+    },
+    "g7": {
+     "label": "7. If young people moved abroad today, they ___",
+     "correct": "would keep",
+     "why": "Conditional type 2: if + past simple, then would + infinitive."
+    },
+    "g8": {
+     "label": "8. The writer ___ family stories before she visited",
+     "correct": "had heard",
+     "why": "She heard the stories before her visit, so the earlier action is past perfect."
+    }
+   }
+  }
+ },
+ "9g-new-zealand-maori-voices": {
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1. A ___ school",
+     "correct": "bilingual",
+     "why": "Bilingual means using two languages."
+    },
+    "g2": {
+     "label": "2. A wedding, welcome or memorial",
+     "correct": "ceremony",
+     "why": "A ceremony is a formal event such as a wedding, welcome or memorial."
+    },
+    "g3": {
+     "label": "3. A family member who lived before you",
+     "correct": "ancestor",
+     "why": "An ancestor is a family member from an earlier generation."
+    },
+    "g4": {
+     "label": "4. Protects something important",
+     "correct": "guardian",
+     "why": "A guardian protects or looks after someone or something."
+    },
+    "g5": {
+     "label": "5. A language ___",
+     "correct": "revival",
+     "why": "A revival is when something becomes strong or popular again."
+    },
+    "g6": {
+     "label": "6. Visitors show ___",
+     "correct": "respect",
+     "why": "You show respect by following local rules and listening carefully."
+    },
+    "g7": {
+     "label": "7. The Treaty of Waitangi is an important ___",
+     "correct": "treaty",
+     "why": "A treaty is a formal agreement; the Treaty of Waitangi was signed in 1840."
+    },
+    "g8": {
+     "label": "8. A dramatic ___",
+     "correct": "landscape",
+     "why": "A landscape is everything you see in an area of land: mountains, forests, coasts."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. A meeting place ___ people gather",
+     "correct": "where",
+     "why": "Use 'where' for a place when the clause already has a subject (people gather)."
+    },
+    "g2": {
+     "label": "2. A language ___ has become more visible",
+     "correct": "that",
+     "why": "'That' refers to a thing and is the subject of 'has become'."
+    },
+    "g3": {
+     "label": "3. An idea ___ means guardianship",
+     "correct": "which",
+     "why": "'Which' refers to a thing (the idea) and is the subject of 'means'."
+    },
+    "g4": {
+     "label": "4. The Treaty of Waitangi, ___ was signed in 1840",
+     "correct": "which",
+     "why": "In a non-defining clause between commas, use 'which', never 'that'."
+    },
+    "g5": {
+     "label": "5. A performance ___ can express welcome",
+     "correct": "that",
+     "why": "'That' refers to a thing (the performance); 'who' is only for people."
+    },
+    "g6": {
+     "label": "6. A city ___ visitors can learn",
+     "correct": "where",
+     "why": "Use 'where' for a place when the clause has its own subject (visitors)."
+    },
+    "g7": {
+     "label": "7. A person ___ lived before",
+     "correct": "who",
+     "why": "Use 'who' for people."
+    },
+    "g8": {
+     "label": "8. A speaker ___ language carries family history",
+     "correct": "whose",
+     "why": "'Whose' shows possession: the speaker's language."
+    }
+   }
+  }
  }
 }
