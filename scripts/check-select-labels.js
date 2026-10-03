@@ -26,13 +26,24 @@ const pages = Array.from(sitemap.matchAll(/<loc>([^<]+)<\/loc>/g), (m) => {
   return rel === '' || rel.endsWith('/') ? rel + 'index.html' : rel;
 }).filter((p) => fs.existsSync(path.join(ROOT, p)));
 
+// Repeated until nothing changes, so removing one block can never splice a new
+// "<script" together out of the text around it.
+function stripScripts(src) {
+  let prev;
+  do {
+    prev = src;
+    src = src.replace(/<script\b[\s\S]*?<\/script\s*>/gi, '');
+  } while (src !== prev);
+  return src;
+}
+
 const errors = [];
 let checked = 0;
 
 for (const p of pages) {
   const raw = fs.readFileSync(path.join(ROOT, p), 'utf8');
   if (/<script[^>]+src=["'][./]*exercise\.js/.test(raw)) continue;   // labelled at runtime
-  const html = raw.replace(/<script\b[\s\S]*?<\/script>/gi, '');
+  const html = stripScripts(raw);
   const labelFor = new Set(Array.from(html.matchAll(/<label\b[^>]*\bfor=["']([^"']+)["']/gi), (m) => m[1]));
   let bad = 0;
   for (const m of html.matchAll(/<select\b([^>]*)>/gi)) {
