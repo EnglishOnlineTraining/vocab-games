@@ -55,6 +55,12 @@ curl -X POST "$APPS_SCRIPT_URL" \
 
 Sanitize every user-controlled string before writing it to Sheets. A common mitigation is to prefix formula-like values with an apostrophe, while preserving the original value for any non-spreadsheet processing. Apply the protection in the shared write path and in the custom-layout paths.
 
+### Status (2026-10-03)
+
+Fixed in the repo copies, **live only after redeploying** each script (Deploy → Manage deployments → edit → New version):
+`apps-script.gs` routes every submitted row and the universal handler's key-derived headers through `safeCell()`, and `level-test-apps-script.gs` does the same for the one submitted value it stores (the email).
+**Still open: the Make → Excel path (Years 7–10, MSA, Abitur).** It cannot be fixed in Apps Script. It needs either the same apostrophe rule in the Make scenario's mapping, or a client-side rule in `exercise.js` limited to free-text fields. A blanket client-side rule would also prefix gap answers such as `-ing`, which the Make grader compares to its key.
+
 ## 3. Completion tracking uses incompatible keys
 
 **Severity:** Medium  
