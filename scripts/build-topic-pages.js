@@ -128,7 +128,7 @@ function contentHtml(t) {
       + 'Unten findest du bereits alle passenden Übungen.</p></section>';
   }
   let html = '';
-  if (t.intro) html += '<section class="card"><h2>' + esc(t.introH2 || ('Was ist das ' + t.de.replace(/ \(.*/, '') + '?')) + '</h2><p>' + t.intro + '</p></section>';
+  if (t.intro) html += '<section class="card"><h2>' + esc(t.introH2 || (t.de.replace(/ \(.*/, '') + ' – kurz erklärt')) + '</h2><p>' + t.intro + '</p></section>';
   if (t.rules && t.rules.length) {
     html += '<section class="card rules-box"><h2>Die wichtigsten Regeln</h2><ul class="rules">';
     t.rules.forEach(r => html += '<li>' + r + '</li>');
