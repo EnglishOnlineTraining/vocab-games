@@ -6,11 +6,11 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "was",
+     "correct": "has to",
      "accept": [
-      "was"
+      "has to"
      ],
-     "label": "1. she said she"
+     "label": "1. Everyone"
     },
     "g2": {
      "correct": "company",
@@ -20,46 +20,46 @@
      "label": "2. work in a real"
     },
     "g3": {
-     "correct": "drink",
-     "accept": [
-      "drink"
-     ],
-     "label": "3. if you"
-    },
-    "g4": {
      "correct": "lawyer",
      "accept": [
       "lawyer"
      ],
-     "label": "4. he became a"
+     "label": "3. he became a"
+    },
+    "g4": {
+     "correct": "drink",
+     "accept": [
+      "drink"
+     ],
+     "label": "4. if you"
     },
     "g5": {
+     "correct": "carpenter",
+     "accept": [
+      "carpenter"
+     ],
+     "label": "5. Builds things out of wood"
+    },
+    "g6": {
+     "correct": "wrote",
+     "accept": [
+      "wrote"
+     ],
+     "label": "6. He"
+    },
+    "g7": {
+     "correct": "did they",
+     "accept": [
+      "did they"
+     ],
+     "label": "7. Nobody called,"
+    },
+    "g8": {
      "correct": "gap",
      "accept": [
       "gap"
      ],
-     "label": "5. take a"
-    },
-    "g6": {
-     "correct": "was posting",
-     "accept": [
-      "was posting"
-     ],
-     "label": "6. he"
-    },
-    "g7": {
-     "correct": "punctual",
-     "accept": [
-      "punctual"
-     ],
-     "label": "7. always be"
-    },
-    "g8": {
-     "correct": "were",
-     "accept": [
-      "were"
-     ],
-     "label": "8. if I"
+     "label": "8. take a"
     }
    }
   },
@@ -68,60 +68,60 @@
    "multi": false,
    "gaps": {
     "g1": {
+     "correct": "is protected",
+     "accept": [
+      "is protected"
+     ],
+     "label": "1. Multiculturalism"
+    },
+    "g2": {
+     "correct": "was",
+     "accept": [
+      "was"
+     ],
+     "label": "2. she said she"
+    },
+    "g3": {
+     "correct": "to let",
+     "accept": [
+      "to let"
+     ],
+     "label": "3. My parents refuse"
+    },
+    "g4": {
+     "correct": "shouldn't",
+     "accept": [
+      "shouldn't"
+     ],
+     "label": "4. You"
+    },
+    "g5": {
+     "correct": "punctual",
+     "accept": [
+      "punctual"
+     ],
+     "label": "5. always be"
+    },
+    "g6": {
      "correct": "whose",
      "accept": [
       "whose"
      ],
-     "label": "1. families"
-    },
-    "g2": {
-     "correct": "tests",
-     "accept": [
-      "tests"
-     ],
-     "label": "2. free"
-    },
-    "g3": {
-     "correct": "had deleted",
-     "accept": [
-      "had deleted"
-     ],
-     "label": "3. he"
-    },
-    "g4": {
-     "correct": "interview",
-     "accept": [
-      "interview"
-     ],
-     "label": "4. they invite you to an"
-    },
-    "g5": {
-     "correct": "snack",
-     "accept": [
-      "snack"
-     ],
-     "label": "5. a quick"
-    },
-    "g6": {
-     "correct": "languages",
-     "accept": [
-      "languages"
-     ],
-     "label": "6. eleven official"
+     "label": "6. families"
     },
     "g7": {
-     "correct": "will",
+     "correct": "were",
      "accept": [
-      "will"
+      "were"
      ],
-     "label": "7. after I finish school, I"
+     "label": "7. if I"
     },
     "g8": {
-     "correct": "to turn",
+     "correct": "travel agent",
      "accept": [
-      "to turn"
+      "travel agent"
      ],
-     "label": "8. she asked me"
+     "label": "8. Books holidays and flights"
     }
    }
   },
@@ -130,60 +130,60 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "day",
+     "correct": "didn't use to",
      "accept": [
-      "day"
+      "didn't use to"
      ],
-     "label": "1. a normal working"
+     "label": "1. Students"
     },
     "g2": {
-     "correct": "sleep",
+     "correct": "can they",
      "accept": [
-      "sleep"
+      "can they"
      ],
-     "label": "2. eight to ten hours of"
+     "label": "2. They can't come tonight,"
     },
     "g3": {
-     "correct": "township",
+     "correct": "tests",
      "accept": [
-      "township"
+      "tests"
      ],
-     "label": "3. a"
+     "label": "3. free"
     },
     "g4": {
-     "correct": "receives",
+     "correct": "were invited",
      "accept": [
-      "receives"
+      "were invited"
      ],
-     "label": "4. as soon as she"
+     "label": "4. The new citizens"
     },
     "g5": {
-     "correct": "had broken",
+     "correct": "was posting",
      "accept": [
-      "had broken"
+      "was posting"
      ],
-     "label": "5. her phone"
+     "label": "5. he"
     },
     "g6": {
-     "correct": "watch",
+     "correct": "watching",
      "accept": [
-      "watch"
+      "watching"
      ],
-     "label": "6. the vet let her"
+     "label": "6. I really enjoy"
     },
     "g7": {
-     "correct": "won't",
+     "correct": "have to",
      "accept": [
-      "won't"
+      "have to"
      ],
-     "label": "7. he"
+     "label": "7. Volunteers"
     },
     "g8": {
-     "correct": "vote",
+     "correct": "interview",
      "accept": [
-      "vote"
+      "interview"
      ],
-     "label": "8. not allowed to"
+     "label": "8. they invite you to an"
     }
    }
   }
