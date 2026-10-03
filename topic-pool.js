@@ -4,7 +4,7 @@
 
    Usage:
      node topic-pool.js              summary + open topics, all categories
-     node topic-pool.js 8g           just one category (8g/8c/10g/10c)
+     node topic-pool.js 8g           just one category (8g/8c/9g/9c/10g/10c)
      node topic-pool.js --all        include built topics in the listing
      node topic-pool.js --check      only run the integrity checks
 
@@ -47,7 +47,7 @@ topics.forEach(function (t) {
 var registeredFiles = {};
 topics.forEach(function (t) { if (t.file) registeredFiles[t.file] = true; });
 fs.readdirSync(ROOT).forEach(function (f) {
-  var m = f.match(/^(8g|8c|10g|10c)-.*\.html$/);
+  var m = f.match(/^(8g|8c|9g|9c|10g|10c)-.*\.html$/);
   if (!m) return;
   if (f.indexOf('-activities.html') !== -1) return; /* hub pages, not exercises */
   if (/-review\.html$/.test(f)) return;             /* generated spaced-review pages
