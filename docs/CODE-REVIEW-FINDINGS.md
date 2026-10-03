@@ -104,6 +104,28 @@ Students on unreliable or restricted school networks may receive no useful feedb
 
 Abort the request after a short timeout, restore the button state, show a failure message, and display the email fallback. The timeout should cover network stalls without interrupting normal submissions.
 
+## 5. The submission endpoints are open to anyone (known, accepted)
+
+**Severity:** Low, accepted. Written up 2026-10-03 at the engineering backlog's request.
+**Files:** [`apps-script.gs`](../apps-script.gs), [`level-test-apps-script.gs`](../level-test-apps-script.gs), and the two Make webhooks in `CLAUDE.md`.
+
+### What is exposed
+Every `SHEET_URL` is in public page source. Each endpoint accepts an unauthenticated, form-encoded POST, with no CSRF token, no origin check and no rate limit. A script can therefore:
+- write any number of rows, under any name and `unit`, into the teacher's sheets (`apps-script.gs` creates a new tab per unknown `unit`);
+- use up the Make scenario's operations quota.
+
+### Why it is accepted
+- The pages have no accounts, and students submit anonymously. Any secret in the page would be readable too, so a CSRF token or API key would add friction and no protection.
+- What arrives is coursework, not a system of record. The teacher reads it and can ignore or delete junk.
+- The one endpoint that can cause outside harm is the level test, because it **sends email**. It already has per-address and per-day caps (`MAX_PER_ADDRESS`, `MAX_PER_DAY`).
+- Formula injection is the part that could act on the teacher's machine, and it has its own fix (#2).
+
+### If it is ever abused
+In order of effort:
+1. Rotate the URL: redeploy as a *new* deployment and update `SHEET_URL`. Old copies of the page stop working.
+2. Add a `CacheService` counter per `unit` per minute in `doPost`, as the level test does per address.
+3. Drop rows whose `unit` is not a published page (check against `data/exercises.json`, copied into script properties).
+
 ## Validation performed
 
 The following checks passed on 2026-08-27:
