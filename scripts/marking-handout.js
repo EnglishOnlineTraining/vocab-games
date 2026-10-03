@@ -27,7 +27,7 @@
  *   "exLabels": ["Ex 1","Ex 2","Ex 3","Ex 4"], "essayMax": 10,
  *   "absent": ["Student Name", ...],                     // optional
  *   "students": [{
- *     "name": "Stella Richter", "ex": ["5/5","4/4","4/4","5/5"],
+ *     "name": "Student Name", "ex": ["5/5","4/4","4/4","5/5"],
  *     "objective": "18/18", "selfTicks": "9/10", "words": 153,
  *     "essay": "…", "feedback": ["…","…"]
  *   }]
