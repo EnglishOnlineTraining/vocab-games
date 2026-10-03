@@ -32,7 +32,7 @@ Not for building a page (that's `daily-exercise-draft`) or turning a photo into 
 
 - `node topic-pool.js <category>` to see what is already built and open for that category.
 - Read `topic-pool.json` to see the exact entries (ids, units, angles) so proposals do not collide.
-- Read the category's textbook pool in `CLAUDE.md` (under "Topic pools") for the source units.
+- Read the category's textbook pool in `docs/claude-reference/years-and-topics.md` (under "Topic pools") for the source units.
 
 ### 2. Generate proposals using the three mechanisms
 
