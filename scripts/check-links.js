@@ -25,10 +25,21 @@ const pages = [
     : []),
 ];
 
+// Repeated until nothing changes, so removing one block can never splice a new
+// "<script" together out of the text around it.
+function stripScripts(src) {
+  let prev;
+  do {
+    prev = src;
+    src = src.replace(/<script\b[\s\S]*?<\/script\s*>/gi, '');
+  } while (src !== prev);
+  return src;
+}
+
 const html = {};
 const ids = {};
 for (const p of pages) {
-  html[p] = fs.readFileSync(path.join(ROOT, p), 'utf8').replace(/<script\b[\s\S]*?<\/script>/gi, '');
+  html[p] = stripScripts(fs.readFileSync(path.join(ROOT, p), 'utf8'));
   ids[p] = new Set(Array.from(html[p].matchAll(/\sid=["']([^"']+)["']/g), (m) => m[1]));
 }
 
