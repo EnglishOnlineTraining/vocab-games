@@ -205,6 +205,9 @@ the "which groups exist" review above rather than staying an ungoverned one-off.
 ## Tier 3 — Small, low-risk cleanups · CC
 - `/wilkommen/` typo — **DONE.** Page 771 verified live at `/willkommen/` (2026-08-07); internal
   links on the referring pages updated. Slug changes auto-redirect, so old links still resolve.
+  **REOPENED 2026-10-03:** `/wilkommen/` does not redirect any more. It returns 200 as a page of
+  its own (title "Willkommen", ~120 words), and both `/wilkommen/` and `/willkommen/` are in the
+  Jetpack sitemap. Something was published at the old slug after the rename. See Tier 8 §B.
 - California – Interactive Exercises — **DONE (2026-08-07), and deliberately NOT a directory
   entry of its own.** `california-exercises.html` is already a card inside `9g-activities.html`
   (Y9 Gymnasium), so listing it separately on WP 1763 double-counted it. The standalone button
@@ -438,6 +441,8 @@ those notes turned out to be wrong (see the 2063–2066 correction above).
   plugins, 301 redirects, SEO control. Until then no real redirects; ads/Subscribe bar stay.
 - One site-wide menu (may be moot after T3); delete orphaned block nav menu 416; replace dated
   `pub/ixion` theme. (Menu delete/assign may be MCP-doable — check when we get there.)
+  **Theme part DONE:** `pub/ixion` was replaced by the custom EOT Modern theme (Claude-maintained
+  since 2026-09-25). The menu items are unchecked.
 
 ## Tier 6 — Internal-linking + link-graph audit (2026-08-08) · CC
 Shaun asked for an internal-linking pass across **both** surfaces (WordPress + activities repo).
@@ -635,6 +640,10 @@ based on a stale picture of the site — verify before building anything, don't 
    have been. **Needs a direct wp-admin sidebar look** (check for a "Testimonials" post-type menu
    item) to settle which before anyone spends time linking them. `/faq/` itself was not linked
    into navigation this round either — schema only, out of scope for a schema-only pass.
+   **SETTLED 2026-10-03: they exist.** The Jetpack sitemap (`/sitemap-1.xml`) lists **8**
+   `/testimonial/<name>/` URLs (not ten), each live and 130–250 words. That fits the Jetpack
+   Testimonials post type, which `pages.list` doesn't return. What to do with them (link, merge
+   into one page, or keep out of search) is now Tier 8 §B.
 4. **Still open, unstarted.** A content decision for Shaun (fold the 5 proposed service pages
    into what already exists at `/business-english/`, or scope real new pages deliberately), not a
    schema task — see the stale-picture note above.
@@ -652,6 +661,120 @@ Calendly widget replaced with a link to the corporate funnel per Shaun's explici
 the backlog itself calls P4.3 "speculative... low-effort future-proofing", and P4.4 is an ongoing
 manual process, not a coding task. Neither blocks P3.
 
+## Tier 8 — SEO/GEO review of both sites (2026-10-03) · Shaun + CC
+On 2026-10-03, every URL in both sitemaps was crawled with curl (82 on `englishonline.training`,
+230 on `activities.englishonline.training`), along with robots.txt and the JSON-LD on each page.
+The findings were then checked against this file, `docs/engineering-backlog.md`,
+`docs/wordpress-todo.md` and `docs/claude-reference/hubs-seo-and-tests.md`. Only items that are
+new or contradict those docs are listed here.
+**Not measured:** Core Web Vitals (the PageSpeed API quota was used up) and Search Console data
+(the Ahrefs connector returned "Insufficient plan"). Nothing below has been executed.
+
+**Overall:** the activities host is technically clean. All 230 sitemap URLs return 200 and each
+has a self-canonical, a description, an og:image and JSON-LD. Only one page lacks an `<h1>`:
+`uni-presentation-task.html`, a known logistics screen. Most of the work is on WordPress.
+
+### A. High priority
+1. **AI crawlers are blocked on the main site · Shaun decides.** `englishonline.training/robots.txt`
+   has `Disallow: /` for GPTBot, ClaudeBot, Google-Extended, Applebot-Extended,
+   meta-externalagent, Bytespider, CCBot and Amazonbot. Its comment says "AI crawlers blocked via
+   Jetpack SEO". This works against Tier 7 and PRs #25/#26.
+   - These are mostly *training* crawlers. Search and retrieval agents (OAI-SearchBot,
+     ChatGPT-User, Claude-SearchBot, PerplexityBot) are not listed.
+   - Google AI Overviews use ordinary Googlebot, so they are unaffected.
+   - The cost: models learn about the brand only from other sites, never from its own pages.
+   - The activities host allows everything.
+   - **Not raised before. Ask whether the block was deliberate before changing the setting.**
+2. **The Organization entity on the WP homepage contradicts `scripts/schema.js` · CC (EOT Modern
+   or Jetpack).** Both use `@id` `https://englishonline.training/#organization`, but they say
+   different things:
+
+   | Field | WordPress homepage | Activities (`scripts/schema.js`) |
+   |---|---|---|
+   | Type | `Organization`+`LocalBusiness` | `EducationalOrganization`+`LocalBusiness` |
+   | Name | "English Online Training" | "EnglishOnline.training" |
+   | Description | "Prepare for tests. Improve your grades. Pass exams" | — |
+   | Phone | `017631304449` | `+49 176 3130 4449` |
+   | Logo | the 1106×566 OG card | — |
+   | `sameAs` | — | Impressum only |
+
+   The `WebSite` node and `og:site_name` still say "Improve your English skills", the old tagline.
+   **Fix:** make the WP node identical to `scripts/schema.js`, and give `sameAs` real profiles.
+   Also, WordPress post bylines emit a *second* Person, `/author/shauntrezise/#person`, named only
+   "Shaun". `/about/` and the activities host already share `#shaun` (Tier 7 item 2), so this
+   byline node is the one remaining split.
+3. **German WP posts are marked as English · CC (EOT Modern).** Every main-site page has
+   `<html lang="en-US">` and `og:locale en_US`, including the 2026 German cluster (Abitur, Für
+   Eltern, IT-Englisch). The activities host already sets these per page (`build-head.js` →
+   `de_DE`/`en_GB`). **Fix:** filter `language_attributes` and `og:locale` by category in the
+   theme. The site-level language stays `en`, which Tier 7 item 1 relies on.
+4. **The two homepages compete for one query · Shaun decides.** The WP homepage `<title>` is
+   "Free English Exercises for Years 7–10, MSA & Abitur". That is word for word the activities
+   root `<h1>`. Give each a distinct job: WP is the brand, Shaun, parents and the corporate
+   funnel; activities is the exercises. The WP homepage also has only one link to the activities
+   host.
+5. **Activities hub and exercise titles lack the search terms people use · CC (repo).** No title
+   convention is documented anywhere. Examples:
+   - The year hubs are titled "Year 10 Oberschule" and "Year 7 Gymnasium".
+   - Exercises carry the unit name only, e.g. `10g-civil-rights.html` → "Fight for Your Rights!
+     MLK vs Malcolm X".
+
+   German searchers type *Englisch Übungen Klasse 10*. A generated `<title>` pattern in
+   `build-head.js` could fix all of them, e.g. "Englisch Übungen Klasse 10 Oberschule – kostenlos"
+   for hubs and "<unit> – Englisch Klasse 10 (Gymnasium)" for exercises.
+   - Keep the visible `<h1>` as it is.
+   - This interacts with the 2026-08-27 English-chrome decision: the hubs are `lang="en"`. Shaun
+     should decide on German title text before anything is built.
+   - **This will not fix the 145 "Discovered – currently not indexed" pages.** That is a
+     discovery and authority problem. Titles matter once pages are indexed.
+
+### B. WordPress clean-up · CC via MCP, with Shaun's approval per item
+6. **`/wilkommen/` is live again**, as a page separate from `/willkommen/` (see the Tier 3
+   reopen). Find its ID and either draft it or stub it to `/willkommen/`.
+7. **Duplicate post:** `/2026/07/31/alle-kostenlosen-englisch-ubungen-auf-einen-blick/` (557
+   words) and `/2026/08/24/alle-kostenlosen-englisch-ubungen-auf-einen-blick-2/` (429 words) have
+   near-identical titles. Keep one and stub the other (no 301s; plan upgrade deferred).
+8. **Stub pages are still in the sitemap and indexable.** 365, 1205, 1167, 1238 and 523 were
+   stubbed by design (Tier 3.5/4). Each is now a thin page Google can index. If the plan allows a
+   per-page noindex, use it. Otherwise accept until the plan upgrade (Tier 5).
+9. **The 8 `/testimonial/*/` pages are thin (130–250 words).** Options: one testimonials page,
+   or link them from `/business-english/` (1965). Note that self-serving `Review` markup does not
+   earn star snippets.
+10. **Title-template bug.** 29 of 82 WP titles are over 65 characters. Many end
+    "…English Online Training" with no separator. Page 380 is titled "English Online Training
+    English Online Training", which is probably what the open "380 non-breaking-space title" item
+    is really about. Fix the Jetpack SEO title format (separator + short brand).
+11. **Small fixes:**
+    - More than one `<h1>` on 8 pages: `/privacy-policy/` (8), `/vocabulary-games/`,
+      `/english-for-students/`, `/university-english/`, `/it-english/`,
+      `/2016/04/13/present-simple-or-progressive/`, `/2023/08/28/improving-writing-skills-with-artificial-intelligence/`,
+      `/2026/07/20/kostenlose-abitur-englisch-ubungen-…/`.
+    - The homepage and `/blog-posts/` share a meta description.
+    - `/2016/04/13/present-simple-or-progressive/` is still published; the rest of the 2016 batch
+      was drafted in Tier 3.5.
+    - The WP `og:image` is the portrait with an empty `og:image:alt`.
+
+### C. Activities repo · CC
+12. **Exercise JSON-LD has no `datePublished`/`dateModified`.** The dates are already in
+    `data/lastmod.json`, so emit them on the `LearningResource` node.
+13. **Refine `build-lastmod.js`:** 229 of 230 sitemap entries read `2026-10-01`. That is honest
+    under the current design: the 2026-10-01 byline, Person-schema and school-name commits changed
+    every page's generated `<head>`, so every hash moved. But a template-only change then tells
+    Google the whole site changed. Hashing only the page body would stop this: exclude the
+    generated HEAD/CRUMB blocks. **Don't reseed `data/lastmod.json`** (see the warning in
+    `hubs-seo-and-tests.md`).
+14. **Three pairs of duplicate meta descriptions:** two Year 10 Canada pages, two Year 10
+    Scotland pages and two Year 9 Australia pages, all starting "Free Year N English practice: …".
+
+### D. Decision needed · Shaun
+15. **Analytics on WordPress vs. the repo's deferral.** Repo-health item 9 deferred analytics on
+    DSGVO grounds, but the WP site already loads `analytics.ahrefs.com/analytics.js` and
+    WordPress.com stats. Confirm the Datenschutz page names both, whether or not Ahrefs Web
+    Analytics is cookieless.
+
+**Not filed (already decided):** `llms.txt` (P4.3, parked as speculative); 301s for duplicates
+(the plan upgrade is deferred, so stubs are the house pattern).
+
 ## Open decisions gating the plan
 **All six items from the 2026-08-07 audit reconciliation are now resolved and executed** (Shaun
 approved each): 2063–2066 published, "Blog Posts" 70 fixed and 1205 stubbed, 307 unpublished,
@@ -668,11 +791,13 @@ and Tier 4 above for the full executed record. What's left:
    by Shaun). **Bucket B still open**: 1582 and 1715 remain true orphans with no plan to link
    them yet — not raised with Shaun.
 4. **Tier 7 main-site GEO (P3).** Items 1–2 of the recommended scope done 2026-08-22 (`FAQPage`
-   schema on `/faq/`, `Person` schema on `/about/`). Item 3 partially done — the `/testimonial/*/`
-   pages could not be located via the WordPress.com MCP surface at all, so it's unconfirmed
-   whether they exist; needs a wp-admin look. Items 4 (the 5 proposed service landing pages +
+   schema on `/faq/`, `Person` schema on `/about/`). Item 3: the `/testimonial/*/` pages are
+   confirmed to exist (8, via the sitemap, 2026-10-03); what to do with them is Tier 8 §B. Items 4 (the 5 proposed service landing pages +
    "8-week plan" Course schema) and 5 (the 1763/1997 CRDT trap, not hit this round) remain open,
    item 4 specifically as a content decision for Shaun rather than a schema task.
+5. **Tier 8 SEO/GEO review (2026-10-03).** Decisions needed before building: keep the AI-crawler
+   block or lift it (A1); how the two homepages split (A4); German text in activities titles
+   (A5); analytics disclosure (D15). Everything else is executable once each WP write is approved.
 
 _Closed: T3 approach (2026-08-05, no plan upgrade near-term); Crowdsignal export (not needed —
 T1 rebuilt natively); T5 scope (standalone page); IT email policy (writing tasks only);
