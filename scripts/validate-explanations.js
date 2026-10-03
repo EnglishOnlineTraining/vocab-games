@@ -20,6 +20,14 @@ fs.readdirSync(ROOT).filter(f => f.endsWith('.html')).forEach(f => {
   if (m) unitToFile[m[1]] = f;
 });
 
+// Tags out, repeated until stable (a single pass can leave a tag spliced
+// together from the text around one it removed).
+function plainText(s) {
+  let prev;
+  do { prev = s; s = s.replace(/<[^<>]*>/g, ''); } while (s !== prev);
+  return s;
+}
+
 function selectOptions(html, id) {
   const i = html.indexOf('id="' + id + '"');
   if (i === -1) return null;
@@ -31,7 +39,7 @@ function selectOptions(html, id) {
   while ((m = re.exec(block))) {
     // A browser decodes entities in option values ("B &amp; B" -> "B & B"),
     // and that decoded string is what a student's answer is compared with.
-    const v = (m[1] != null ? m[1] : m[2]).replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').trim();
+    const v = plainText(m[1] != null ? m[1] : m[2]).replace(/&amp;/g, '&').trim();
     if (v) opts.push(v);
   }
   return opts;
