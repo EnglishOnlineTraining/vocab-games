@@ -71,6 +71,16 @@ column, map it to `{{1.payload}}` and this class of bug becomes unloseable here 
 - the rebuilt `Table1` spanned the full sheet width (16,384 columns), which fails the row insert
   with a matrix-size error. The table must be defined across **exactly** the 12 header columns.
 
+**Ex1–Ex5 and Score are mapped with a leading apostrophe — `'{{5.ex1}}` … `'{{5.score}}` —
+and it must stay** (fixed 2026-10-02). The packs send each exercise as `"4/5"`, and Excel reads
+that as a month/day date: `4/5` landed as `05. Apr`, `10/10` as `10. Okt`, and a `12/12` score as
+`12. Dez`. **Formatting the columns as Text in the workbook did not help** here (tested — rows
+added through Graph still arrived as dates), unlike the Y7/Y9 `Score` fix (see "Excel silently
+turns an integer score into a date" below). The apostrophe is Excel's text prefix: the cell shows
+`4/5` with no visible apostrophe (verified). Rows written before the fix that show as dates
+decode as month = points earned, day = maximum. Scores with no date reading (`13/15`, `0/5`)
+were kept as text and need no decoding.
+
 **How to verify it end to end** — POST three times, watching `operations` in the execution list:
 a fresh `name` gives **4 ops / status 1** (row written), the *same* `name` again gives **3 ops**
 (dedup blocks it before Excel), and a *different* `name` gives **4 ops** again. That third step is
@@ -273,3 +283,5 @@ reading and survives as text, which is why this is easy to miss. **Fixed 2026-09
 propagates to new table rows. The mapper deliberately still sends `12 / 24` — do not "fix" this
 page-side. If a rebuilt workbook ever loses the Text format, integer scores start landing as dates
 again (roughly half of all scores), so re-apply the format rather than changing the payload.
+This applies to Y7/Y9 only: the Abitur workbook needed a leading apostrophe in the Make mapping
+instead, because the Text format did not hold there (see the Abitur section above).
