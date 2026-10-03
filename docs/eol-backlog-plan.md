@@ -700,6 +700,29 @@ No live WordPress write was made:
   429 words) also describes the Abitur packs as three task types, when there are four
   (mediation is missing). Stub it or noindex it.
 - **D15 is bigger than filed.** See the replacement text under D below.
+- **More PRs from the same session, all open and unmerged:**
+  - **#81:** internal link checker (repo-health 6).
+  - **#82:** 61 pages scrolled sideways at 390px; all 291 now fit (repo-health 8).
+  - **#83:** the 18 `themen/` pages had about 400 unnamed selects; adds a check that every
+    select has a name.
+  - **#84:** test-scoring edge cases.
+  - **#85:** Klett textbook names taken out of public descriptions and hub cards (CLAUDE.md
+    rule 4).
+  - **#86 (draft, decision A5):** keyword hub titles.
+  - **#87:** pre-publish gate: CI runs `verify-exercise.js` on added pages, plus a webhook
+    check (agent backlog 2).
+  - **#88:** CONTRIBUTING.md (repo-health 5).
+  - **#89:** ✓/✗ marks and live regions on 38 non-framework pages (repo-health 4).
+  - **#80, second commit:** the open submission endpoints written up as a known, accepted gap.
+- **New finding, needs Shaun: all 15 `gr-*` grammar pages post to `_template.html`'s old
+  default Apps Script URL** (`…vLl8gJbHL1UfbKmCP7W/exec`), which CLAUDE.md says must always be
+  replaced. It is still live (a GET answers "doGet not found"), so these submissions land in
+  that old script's sheet. Routing was not changed (rule 7).
+- **Repo-health 12 (regex audit): reviewed, no change recommended.** The generators parse only
+  this repo's own HTML, and an end tag cannot legally carry attributes. Tightening 33 regexes
+  would risk the generators for no real gain.
+- **Repo-health 7 (hotlinked Wikimedia image): not done.** Self-hosting means downloading a file,
+  which needs Shaun's OK first.
 
 **Overall:** the activities host is technically clean. All 230 sitemap URLs return 200 and each
 has a self-canonical, a description, an og:image and JSON-LD. Only one page lacks an `<h1>`:
