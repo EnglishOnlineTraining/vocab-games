@@ -133,8 +133,11 @@ const NODES = [
     // them. Nothing in the graph writes that file (it is hand-authored, via the
     // add-explanations skill), so it needs no edge — only the input.
     needs: ['hub', 'category-hubs', 'topic-pages', 'quizzes', 'review', 'exercise-data'],
+    // data/lastmod.json and sitemap.xml are read for the JSON-LD dates. lastmod
+    // writes both after this runs; head reads the committed store and computes
+    // the same answer with page-hash.js, so the order is safe — see that file.
     inputs: ['*.html', 'themen/*.html', 'data/exercises.json', 'data/topics.json',
-             'data/explanations.json', 'data/noindex.json'],
+             'data/explanations.json', 'data/noindex.json', 'data/lastmod.json', 'sitemap.xml'],
     outputs: ['*.html', 'themen/*.html'],
     // Its outputs are pages people author; it only rewrites the marked blocks.
     // So matching these globs does not make a file generated — the AI review
