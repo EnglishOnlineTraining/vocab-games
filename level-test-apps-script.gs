@@ -51,7 +51,9 @@ function handleLevelTest(data) {
     status = allowSend(email);
     if (status === 'yes') sendFeedback(email, result);
   }
-  sheet.appendRow([new Date(), cap(email, 254),
+  // The email is the only submitted value written as-is (it can start with =,
+  // and the regex above allows it); the rest is computed here.
+  sheet.appendRow([new Date(), safeCell(cap(email, 254)),
     result ? result.level.code : '', result ? result.score : '', result ? result.breakdown : '', status]);
 }
 
@@ -76,6 +78,12 @@ function allowSend(email) {
 }
 
 function cap(v, n) { return String(v || '').substring(0, n); }
+
+// Formula injection: a leading apostrophe makes Sheets store the value as text.
+// Same rule as safeCell() in apps-script.gs.
+function safeCell(v) {
+  return (typeof v === 'string' && /^[=+\-@\t\r]/.test(v)) ? "'" + v : v;
+}
 
 // ─── Question pool and level advice ───────────────────────────────
 // Copied verbatim from level-test.html. The page sends only question ids and

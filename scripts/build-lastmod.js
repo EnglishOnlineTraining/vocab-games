@@ -27,8 +27,15 @@
  * Hence: run last, and derive dates from content rather than from the
  * filesystem or git.
  *
+ * The hash itself lives in page-hash.js and leaves out every block
+ * build-head.js generates, so a site-wide template change no longer re-dates
+ * every page. build-head.js uses the same function to print the same dates into
+ * each exercise's JSON-LD, which is why this node can still run last: both
+ * compute the answer from the page, and only this one stores it.
+ *
  * data/lastmod.json is the source of truth — a committed map of
- * page path -> { d: "YYYY-MM-DD", h: "<content hash>" }. On each build a page's
+ * page path -> { d: "YYYY-MM-DD", p: "YYYY-MM-DD", h: "<content hash>" },
+ * where d is the last change and p the first publication. On each build a page's
  * hash is recomputed; if it matches the stored one the date is kept untouched,
  * otherwise the page really did change and the date becomes today. A page with
  * no stored entry is new, and today is the honest answer for it.
@@ -42,7 +49,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const crypto = require('crypto');
+const { pageHash, datesFor, today } = require('./page-hash');
 
 const ROOT = path.join(__dirname, '..');
 const BASE = 'https://activities.englishonline.training';
@@ -93,10 +100,6 @@ function buildUrlMap() {
   return map;
 }
 
-function hashOf(abs) {
-  return crypto.createHash('sha1').update(fs.readFileSync(abs)).digest('hex').slice(0, 12);
-}
-
 const xml = fs.readFileSync(SITEMAP, 'utf8');
 const urls = Array.from(xml.matchAll(/<loc>([^<]+)<\/loc>/g)).map((m) => m[1]);
 const urlMap = buildUrlMap();
@@ -110,7 +113,7 @@ try {
   // deliberately, because it claims the whole site changed at once.
 }
 
-const TODAY = new Date().toISOString().slice(0, 10);
+const TODAY = today();
 const next = {};
 let kept = 0;
 let updated = 0;
@@ -125,16 +128,12 @@ for (const u of urls) {
     missing++;
     continue;
   }
-  const h = hashOf(path.join(ROOT, rel));
+  const h = pageHash(fs.readFileSync(path.join(ROOT, rel), 'utf8'));
   const prev = store[rel];
-  if (prev && prev.h === h) {
-    next[rel] = prev;
-    kept++;
-  } else {
-    next[rel] = { d: TODAY, h };
-    if (prev) updated++;
-    else added++;
-  }
+  next[rel] = datesFor(prev, h, TODAY);
+  if (!prev) added++;
+  else if (next[rel].d === prev.d) kept++;
+  else updated++;
 }
 
 // Rewrite each <url> entry, replacing any existing <lastmod> so the pass is
