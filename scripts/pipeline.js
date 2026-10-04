@@ -221,6 +221,7 @@ const CHECKERS = [
   { id: 'validate-schema', run: 'scripts/validate-schema.js' },
   { id: 'check-exercises-data', run: 'scripts/check-exercises-data.js' },
   { id: 'check-syntax', run: 'scripts/check-syntax.js' },
+  { id: 'check-select-labels', run: 'scripts/check-select-labels.js' },
   { id: 'check-links', run: 'scripts/check-links.js' },
   { id: 'check-grade-table', run: 'scripts/check-grade-table.js' },
   // A vocab test must not print a word it also asks the student to produce.

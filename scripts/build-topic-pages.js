@@ -44,11 +44,21 @@ function weiterUebenHtml(slug) {
   return html;
 }
 
+// Tags out, repeated until stable; esc() then escapes whatever is left for the attribute.
+function plainText(s) {
+  let prev, out = String(s == null ? '' : s);
+  do { prev = out; out = out.replace(/<[^<>]*>/g, ''); } while (out !== prev);
+  return out;
+}
+
 function practiceItemsHtml(items) {
   let rows = '';
   items.forEach(it => {
     const opts = it.options.map(o => '<option value="' + esc(o) + '">' + esc(o) + '</option>').join('');
-    const sel = '<select class="pw-sel"><option value="">…</option>' + opts + '</select>';
+    // Without a name a screen reader announces only "combo box". The question,
+    // with the gap shown as "…", tells the student which sentence this is.
+    const label = 'Antwort wählen: ' + plainText(it.q).replace('___', '…');
+    const sel = '<select class="pw-sel" aria-label="' + esc(label) + '"><option value="">…</option>' + opts + '</select>';
     const q = esc(it.q);
     // A question without a ___ used to render with no <select> at all: its
     // options were dropped silently, pwCheck skipped it (`if(!sel)return`) so it
