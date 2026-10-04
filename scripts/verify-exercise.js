@@ -16,6 +16,8 @@
  *     CLAUDE.md's "Ten pages were silently not grading" note
  *   - UNIT not matching the filename slug
  *   - state missing its scores: {} property
+ *   - SHEET_URL still the template's stale default, a placeholder, or not
+ *     the webhook its prefix routes to (CLAUDE.md "Classes … and routing")
  *
  * Reuses matchBracket/splitArgs/unitOf from extract-graded.js rather than
  * reinventing bracket-aware parsing — checkDropdowns() calls and the state
@@ -89,6 +91,30 @@ function checkStateScores(src) {
   return { ok: /\bscores\s*:/.test(block), note: null };
 }
 
+// Where each prefix's submissions must go (CLAUDE.md, "Webhooks"). Business,
+// University, IT and ESL use an Apps Script; more than one is in use, so any
+// /exec URL passes for those except the template's own default.
+const HOOK_Y7 = 'https://hook.eu1.make.com/1gx46wea33yguetah95oy4j8asbyafqm';
+const HOOK_Y9 = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj';
+const TEMPLATE_DEFAULT = 'AKfycbw2eqOCB6XKREIOXuqn2fCL067CdMm20MmiTFMt9GmRUEn12vLl8gJbHL1UfbKmCP7W';
+
+function checkSheetUrl(src, file) {
+  const url = (src.match(/var\s+SHEET_URL\s*=\s*['"]([^'"]*)['"]/) || [])[1];
+  if (!url) return { ok: false, detail: 'no SHEET_URL found' };
+  if (url.indexOf(TEMPLATE_DEFAULT) !== -1) return { ok: false, detail: "still _template.html's old Apps Script URL — replace it" };
+  if (/PASTE|TODO|HERE/.test(url)) return { ok: false, detail: 'placeholder: ' + url };
+  const f = path.basename(file).toLowerCase();
+  let want = null;
+  if (/^(7[gca]|8[gc])-/.test(f)) want = HOOK_Y7;
+  else if (/^(9[gc]|10[gc]|msa)-/.test(f)) want = HOOK_Y9;
+  if (want) return { ok: url === want, detail: url === want ? null : 'expected ' + want + ' for this prefix, found ' + url };
+  if (/^(be|uni|it|esl)-/.test(f)) {
+    const ok = /^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(url);
+    return { ok: ok, detail: ok ? null : 'expected a Google Apps Script /exec URL, found ' + url };
+  }
+  return { ok: true, detail: 'no routing rule for this prefix — check by hand' };
+}
+
 function main() {
   const args = process.argv.slice(2);
   if (args.length !== 1) {
@@ -134,6 +160,9 @@ function main() {
   const scores = checkStateScores(src);
   results.push({ name: 'state declares scores: {}', ok: scores.ok,
     detail: scores.ok ? null : (scores.note || 'no `scores:` key found in the state object literal') });
+
+  const hook = checkSheetUrl(src, file);
+  results.push({ name: 'SHEET_URL routes to the right webhook', ok: hook.ok, detail: hook.detail });
 
   console.log('verify-exercise: ' + rel + '\n');
   results.forEach(function (r) { console.log('  ' + (r.ok ? '✓' : '✗') + ' ' + r.name + (r.detail ? '  —  ' + r.detail : '')); });

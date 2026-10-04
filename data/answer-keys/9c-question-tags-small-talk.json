@@ -10,42 +10,48 @@
      "accept": [
       "exchange"
      ],
-     "label": "Anna: Hi! You're new here, aren't you ? I'm Anna. Jonas: Yes, I am. I'm an 1"
+     "label": "1. An ___ student",
+     "why": "An 'exchange student' studies at a school in another country for a while."
     },
     "g2": {
      "correct": "nervous",
      "accept": [
       "nervous"
      ],
-     "label": "Anna: That's exciting! It's a friendly school, isn't it ? You must feel a bit 2"
+     "label": "2. You must feel a bit ___",
+     "why": "After 'feel' we need an adjective; 'nervous' means a bit worried."
     },
     "g3": {
      "correct": "timetable",
      "accept": [
       "timetable"
      ],
-     "label": "Jonas: A little, yes. Everything is so different — even the school 3"
+     "label": "3. The school ___",
+     "why": "A school timetable shows which lessons you have and when."
     },
     "g4": {
      "correct": "canteen",
      "accept": [
       "canteen"
      ],
-     "label": "Anna: Don't worry, you'll learn it fast. You don't know where the 4"
+     "label": "4. Where the ___ is (pizza on Fridays)",
+     "why": "The canteen is the place in a school where you buy and eat lunch."
     },
     "g5": {
      "correct": "homesick",
      "accept": [
       "homesick"
      ],
-     "label": "Jonas: Not yet! Actually, I already feel a bit 5"
+     "label": "5. I already feel a bit ___",
+     "why": "Homesick is the adjective for missing your home, family and friends."
     },
     "g6": {
      "correct": "weekend",
      "accept": [
       "weekend"
      ],
-     "label": "…t's normal, it's always like that at first. It gets better, I promise. Are you free this 6"
+     "label": "6. Are you free this ___?",
+     "why": "Anna's friends are meeting in town, and 'free this weekend' is the natural phrase."
     }
    }
   },
@@ -58,56 +64,64 @@
      "accept": [
       "aren't you"
      ],
-     "label": "1. You're new here,"
+     "label": "1. You're new here, ___?",
+     "why": "Positive 'you are' takes a negative tag with the same verb: aren't you?"
     },
     "g2": {
      "correct": "doesn't she",
      "accept": [
       "doesn't she"
      ],
-     "label": "2. She speaks German,"
+     "label": "2. She speaks German, ___?",
+     "why": "Present simple with he/she/it takes 'doesn't' in the tag."
     },
     "g3": {
      "correct": "don't they",
      "accept": [
       "don't they"
      ],
-     "label": "3. They live in Berlin,"
+     "label": "3. They live in Berlin, ___?",
+     "why": "Present simple with 'they' takes 'don't' in the tag."
     },
     "g4": {
      "correct": "can't he",
      "accept": [
       "can't he"
      ],
-     "label": "4. He can swim,"
+     "label": "4. He can swim, ___?",
+     "why": "A modal verb is repeated in the tag: can → can't he?"
     },
     "g5": {
      "correct": "aren't we",
      "accept": [
       "aren't we"
      ],
-     "label": "5. We're going to the party,"
+     "label": "5. We're going to the party, ___?",
+     "why": "'We're' means 'we are', so the tag repeats 'are' in the negative: aren't we?"
     },
     "g6": {
      "correct": "haven't you",
      "accept": [
       "haven't you"
      ],
-     "label": "6. You've got a new phone,"
+     "label": "6. You've got a new phone, ___?",
+     "why": "'You've got' uses the auxiliary 'have', so the tag is 'haven't you?'"
     },
     "g7": {
      "correct": "didn't it",
      "accept": [
       "didn't it"
      ],
-     "label": "7. It rained yesterday,"
+     "label": "7. It rained yesterday, ___?",
+     "why": "Simple past without an auxiliary takes 'didn't' in the tag."
     },
     "g8": {
      "correct": "aren't they",
      "accept": [
       "aren't they"
      ],
-     "label": "8. Tom and Lisa are coming too,"
+     "label": "8. Tom and Lisa are coming too, ___?",
+     "why": "Tom and Lisa = they, and the verb is 'are', so the tag is 'aren't they?'"
     }
    }
   },
@@ -120,56 +134,64 @@
      "accept": [
       "are you"
      ],
-     "label": "1. You aren't from here,"
+     "label": "1. You aren't from here, ___?",
+     "why": "A negative sentence takes a positive tag: aren't → are you?"
     },
     "g2": {
      "correct": "does she",
      "accept": [
       "does she"
      ],
-     "label": "2. She doesn't like coffee,"
+     "label": "2. She doesn't like coffee, ___?",
+     "why": "Negative 'doesn't' becomes positive 'does' in the tag."
     },
     "g3": {
      "correct": "can they",
      "accept": [
       "can they"
      ],
-     "label": "3. They can't come tonight,"
+     "label": "3. They can't come tonight, ___?",
+     "why": "Negative 'can't' becomes positive 'can' in the tag."
     },
     "g4": {
      "correct": "aren't I",
      "accept": [
       "aren't I"
      ],
-     "label": "4. I'm right,"
+     "label": "4. I'm right, ___?",
+     "why": "The tag for 'I am' is the special form 'aren't I?'; 'amn't I' isn't standard English."
     },
     "g5": {
      "correct": "shall we",
      "accept": [
       "shall we"
      ],
-     "label": "5. Let's go to the cinema,"
+     "label": "5. Let's go to the cinema, ___?",
+     "why": "Sentences with 'Let's' always take the tag 'shall we?'"
     },
     "g6": {
      "correct": "will you",
      "accept": [
       "will you"
      ],
-     "label": "6. Close the door,"
+     "label": "6. Close the door, ___?",
+     "why": "An imperative (an order or request) usually takes the tag 'will you?'"
     },
     "g7": {
      "correct": "did they",
      "accept": [
       "did they"
      ],
-     "label": "7. Nobody called,"
+     "label": "7. Nobody called, ___?",
+     "why": "'Nobody' makes the sentence negative, so the tag is positive; we use 'they' for nobody."
     },
     "g8": {
      "correct": "is there",
      "accept": [
       "is there"
      ],
-     "label": "8. There isn't any milk left,"
+     "label": "8. There isn't any milk left, ___?",
+     "why": "'There isn't' is negative, so the tag is positive and keeps 'there': is there?"
     }
    }
   }

@@ -42,6 +42,7 @@
   .match-row:last-child{border-bottom:none;}
   .match-quote{flex:1;font-style:italic;color:var(--text);}
   .match-row select{flex:0 0 230px;padding:8px;border-radius:6px;border:1px solid #cbd5e0;font-size:.9rem;}
+  @media(max-width:480px){.match-row{flex-wrap:wrap}.match-row select{flex:1 1 100%;max-width:100%}}
   .match-row select.correct{border-color:var(--green);background:#e6f4ea;}
   .match-row select.wrong{border-color:var(--red);background:#fdeceb;}
   .mc-q{margin-bottom:18px;}

@@ -6,18 +6,18 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "natural",
+     "correct": "letters A–F",
      "accept": [
-      "natural"
+      "letters A–F"
      ],
-     "label": "1. One of America's most famous"
+     "label": "1. What grading system is used?"
     },
     "g2": {
-     "correct": "wildlife",
+     "correct": "to prevent wildfires",
      "accept": [
-      "wildlife"
+      "to prevent wildfires"
      ],
-     "label": "2. The"
+     "label": "2. Why strict campfire rules?"
     },
     "g3": {
      "correct": "would take",
@@ -41,25 +41,25 @@
      "label": "5. The"
     },
     "g6": {
-     "correct": "the crust is thin and you fold it",
+     "correct": "wildlife",
      "accept": [
-      "the crust is thin and you fold it"
+      "wildlife"
      ],
-     "label": "6. What's special about New York pizza?"
+     "label": "6. The"
     },
     "g7": {
-     "correct": "letters A–F",
+     "correct": "polite",
      "accept": [
-      "letters A–F"
+      "polite"
      ],
-     "label": "7. What grading system is used?"
+     "label": "7. Expected to be"
     },
     "g8": {
-     "correct": "to prevent wildfires",
+     "correct": "natural",
      "accept": [
-      "to prevent wildfires"
+      "natural"
      ],
-     "label": "8. Why strict campfire rules?"
+     "label": "8. One of America's most famous"
     }
    }
   },
@@ -82,18 +82,80 @@
      "label": "2. \"Buy one, get one"
     },
     "g3": {
+     "correct": "the crust is thin and you fold it",
+     "accept": [
+      "the crust is thin and you fold it"
+     ],
+     "label": "3. What's special about New York pizza?"
+    },
+    "g4": {
      "correct": "rubbish",
      "accept": [
       "rubbish"
      ],
-     "label": "3. Took out the"
+     "label": "4. Took out the"
+    },
+    "g5": {
+     "correct": "gravy",
+     "accept": [
+      "gravy"
+     ],
+     "label": "5. Pour hot"
+    },
+    "g6": {
+     "correct": "to practise",
+     "accept": [
+      "to practise"
+     ],
+     "label": "6. The coach wanted the team"
+    },
+    "g7": {
+     "correct": "essential",
+     "accept": [
+      "essential"
+     ],
+     "label": "7. A reliable car is"
+    },
+    "g8": {
+     "correct": "prove",
+     "accept": [
+      "prove"
+     ],
+     "label": "8. You"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "source",
+     "accept": [
+      "source"
+     ],
+     "label": "1. Where information comes from"
+    },
+    "g2": {
+     "correct": "boot",
+     "accept": [
+      "boot"
+     ],
+     "label": "2. trunk (of a car)"
+    },
+    "g3": {
+     "correct": "is it",
+     "accept": [
+      "is it"
+     ],
+     "label": "3. Mount Rainier isn't in Texas,"
     },
     "g4": {
-     "correct": "polite",
+     "correct": "should",
      "accept": [
-      "polite"
+      "should"
      ],
-     "label": "4. Expected to be"
+     "label": "4. You"
     },
     "g5": {
      "correct": "vast deserts",
@@ -103,87 +165,25 @@
      "label": "5. In the west,"
     },
     "g6": {
-     "correct": "is it",
-     "accept": [
-      "is it"
-     ],
-     "label": "6. Mount Rainier isn't in Texas,"
-    },
-    "g7": {
-     "correct": "prove",
-     "accept": [
-      "prove"
-     ],
-     "label": "7. You"
-    },
-    "g8": {
-     "correct": "source",
-     "accept": [
-      "source"
-     ],
-     "label": "8. Where information comes from"
-    }
-   }
-  },
-  "exC": {
-   "prefix": "exC-",
-   "multi": false,
-   "gaps": {
-    "g1": {
-     "correct": "boot",
-     "accept": [
-      "boot"
-     ],
-     "label": "1. trunk (of a car)"
-    },
-    "g2": {
-     "correct": "people speak over 100 languages there",
-     "accept": [
-      "people speak over 100 languages there"
-     ],
-     "label": "2. Why is Queens the most diverse borough?"
-    },
-    "g3": {
-     "correct": "to practise",
-     "accept": [
-      "to practise"
-     ],
-     "label": "3. The coach wanted the team"
-    },
-    "g4": {
-     "correct": "essential",
-     "accept": [
-      "essential"
-     ],
-     "label": "4. A reliable car is"
-    },
-    "g5": {
      "correct": "by sending telegrams",
      "accept": [
       "by sending telegrams"
      ],
-     "label": "5. How did people communicate before the telephone?"
+     "label": "6. How did people communicate before the telephone?"
     },
-    "g6": {
+    "g7": {
      "correct": "limited",
      "accept": [
       "limited"
      ],
-     "label": "6. \"This is a"
-    },
-    "g7": {
-     "correct": "make",
-     "accept": [
-      "make"
-     ],
-     "label": "7. It is my job to"
+     "label": "7. \"This is a"
     },
     "g8": {
-     "correct": "should",
+     "correct": "people speak over 100 languages there",
      "accept": [
-      "should"
+      "people speak over 100 languages there"
      ],
-     "label": "8. You"
+     "label": "8. Why is Queens the most diverse borough?"
     }
    }
   }

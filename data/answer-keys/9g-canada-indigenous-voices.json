@@ -10,56 +10,64 @@
      "accept": [
       "Indigenous"
      ],
-     "label": "1 The word"
+     "label": "1. Peoples who lived in a place first",
+     "why": "Indigenous describes the peoples who lived in a place before later settlers arrived."
     },
     "g2": {
      "correct": "treaty",
      "accept": [
       "treaty"
      ],
-     "label": "2 A"
+     "label": "2. A formal agreement",
+     "why": "A treaty is a formal agreement between groups or governments."
     },
     "g3": {
      "correct": "elder",
      "accept": [
       "elder"
      ],
-     "label": "3 An"
+     "label": "3. Passes on stories and knowledge",
+     "why": "An elder is an older, respected member of a community who passes on knowledge."
     },
     "g4": {
      "correct": "Reconciliation",
      "accept": [
       "Reconciliation"
      ],
-     "label": "4"
+     "label": "4. Repairing relationships after harm",
+     "why": "Reconciliation means restoring good relations after conflict or harm."
     },
     "g5": {
      "correct": "territory",
      "accept": [
       "territory"
      ],
-     "label": "5 A land acknowledgement names the peoples connected to a"
+     "label": "5. Peoples connected to a ___",
+     "why": "A territory is an area of land; a land acknowledgement names whose land it is."
     },
     "g6": {
      "correct": "generation",
      "accept": [
       "generation"
      ],
-     "label": "6 Each"
+     "label": "6. Each ___ has a responsibility",
+     "why": "A generation is all the people born around the same time."
     },
     "g7": {
      "correct": "community",
      "accept": [
       "community"
      ],
-     "label": "7 A strong"
+     "label": "7. A strong ___",
+     "why": "A community is a group of people who live together and support each other."
     },
     "g8": {
      "correct": "language",
      "accept": [
       "language"
      ],
-     "label": "8 A"
+     "label": "8. Carries history and humour",
+     "why": "A language carries a people's history, humour and way of seeing the world."
     }
    }
   },
@@ -72,56 +80,64 @@
      "accept": [
       "are being taught"
      ],
-     "label": "1 Many Indigenous languages"
+     "label": "1. Languages ___ again",
+     "why": "Present progressive passive (are being + past participle) for something happening now."
     },
     "g2": {
      "correct": "is worn",
      "accept": [
       "is worn"
      ],
-     "label": "2 The orange shirt"
+     "label": "2. The orange shirt ___",
+     "why": "Present passive with a singular subject: is + past participle."
     },
     "g3": {
      "correct": "are used",
      "accept": [
       "are used"
      ],
-     "label": "3 Land acknowledgements"
+     "label": "3. Land acknowledgements ___",
+     "why": "Plural subject, general fact: present passive 'are used'."
     },
     "g4": {
      "correct": "have been passed down",
      "accept": [
       "have been passed down"
      ],
-     "label": "4 Stories"
+     "label": "4. Stories ___ from elders",
+     "why": "Present perfect passive: have been + past participle, from the past up to now."
     },
     "g5": {
      "correct": "should be provided",
      "accept": [
       "should be provided"
      ],
-     "label": "5 More resources"
+     "label": "5. More resources ___",
+     "why": "Passive after a modal: should + be + past participle."
     },
     "g6": {
      "correct": "were encouraged",
      "accept": [
       "were encouraged"
      ],
-     "label": "6 Students"
+     "label": "6. Students ___ to listen",
+     "why": "Past passive with a plural subject: were + past participle."
     },
     "g7": {
      "correct": "was opened",
      "accept": [
       "was opened"
      ],
-     "label": "7 A new cultural centre"
+     "label": "7. A cultural centre ___ last year",
+     "why": "'Last year' needs the past passive; singular subject + was opened."
     },
     "g8": {
      "correct": "must be discussed",
      "accept": [
       "must be discussed"
      ],
-     "label": "8 Difficult history"
+     "label": "8. Difficult history ___",
+     "why": "Passive after a modal: must + be + past participle."
     }
    }
   }

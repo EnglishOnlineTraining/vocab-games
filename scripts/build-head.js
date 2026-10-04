@@ -54,10 +54,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 const CHECK = process.argv.includes('--check');
 
 const { unitOf } = require('./extract-graded');
+const { GENERATED_BLOCKS, pageHash, datesFor } = require('./page-hash');
 const NOINDEX = require('./noindex').loadNoindex();
 
 const explanations = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/explanations.json'), 'utf8'));
 const exercises = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/exercises.json'), 'utf8'));
+// Read, never written here: build-lastmod.js owns the store and runs after this.
+// datesFor() gives the answer it will store, so the JSON-LD and the sitemap agree.
+const LASTMOD = (() => {
+  try { return JSON.parse(fs.readFileSync(path.join(ROOT, 'data/lastmod.json'), 'utf8')); }
+  catch (err) { return {}; }
+})();
+// build-lastmod.js only dates sitemap URLs. A page outside the sitemap (the
+// noindex list) gets no stored date, so printing one would mean printing today
+// on every build. Root-level pages only: themen/ carries its own JSON-LD.
+const IN_SITEMAP = new Set(
+  Array.from(fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8').matchAll(/<loc>[^<]*\/([^/<]+\.html)<\/loc>/g), (m) => m[1])
+);
 const topics = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/topics.json'), 'utf8'));
 const EX_BY_FILE = Object.fromEntries(exercises.map((e) => [e.file.toLowerCase(), e]));
 const TOPIC_BY_SLUG = Object.fromEntries(topics.map((t) => [t.slug, t]));
@@ -249,7 +262,7 @@ function hubTitle(f) {
  * LearningResource and FAQPage, and a second block would describe the same page
  * twice under different ids.
  */
-function schemaBlock(file, meta) {
+function schemaBlock(file, meta, html) {
   if (file.startsWith('themen/')) return '';
   if (!meta.canonical || /TODO/i.test(meta.canonical)) return '';
 
@@ -271,7 +284,8 @@ function schemaBlock(file, meta) {
     nodes.push(...S.hubPage(file, meta, hubItems(file), { course: COURSE_HUBS[file] }));
   } else if (ex) {
     const hub = S.hubFor(file);
-    nodes.push(S.learningResource(file, meta, ex, TOPIC_BY_SLUG, hub ? hubTitle(hub) : ''));
+    const dates = IN_SITEMAP.has(file) ? datesFor(LASTMOD[file], pageHash(html)) : null;
+    nodes.push(S.learningResource(file, meta, ex, TOPIC_BY_SLUG, hub ? hubTitle(hub) : '', dates));
   } else {
     nodes.push(S.webPage(file, meta));
   }
@@ -352,7 +366,7 @@ function headBlock(file, html, withSkipStyle, withOverviewStyle, withTipStyle, w
   // Pages outside the exercise.js framework that mark answers only with a
   // colour class get the ✓/✗ marks and live regions from a11y-lite.js.
   if (needsA11yLite(html)) lines.push(`<script src="${rel}a11y-lite.js" defer></script>`);
-  const schema = schemaBlock(file, { lang, title, desc, canonical });
+  const schema = schemaBlock(file, { lang, title, desc, canonical }, html);
   if (schema) lines.push(schema);
   lines.push(
     '<!-- HEAD:END -->'
@@ -967,7 +981,7 @@ function needsA11yLite(html) {
 function processFile(file) {
   const abs = path.join(ROOT, file);
   const original = fs.readFileSync(abs, 'utf8');
-  let html = ['HEAD', 'GTM', 'NOSCRIPT', 'SKIP', 'CRUMB', 'OVERVIEW', 'RELATED', 'TIP', 'FAQ', 'EXPLAIN', 'COUNT'].reduce(stripBlock, original);
+  let html = GENERATED_BLOCKS.reduce(stripBlock, original);
 
   const headEnd = html.search(/<\/head>/i);
   if (headEnd === -1) return { file, skipped: 'no <head>' };

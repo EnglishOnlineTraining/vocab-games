@@ -10,42 +10,48 @@
      "accept": [
       "Ohio"
      ],
-     "label": "1 Where does Ben's host family live?"
+     "label": "1. Where Ben's host family lives",
+     "why": "The text says Ben is spending a school year with a host family in Ohio."
     },
     "g2": {
      "correct": "since the 17th century",
      "accept": [
       "since the 17th century"
      ],
-     "label": "2 Since when have people celebrated Thanksgiving, according to the text?"
+     "label": "2. Since when Thanksgiving is celebrated",
+     "why": "His host family told him people have celebrated it since the 17th century."
     },
     "g3": {
      "correct": "a big parade",
      "accept": [
       "a big parade"
      ],
-     "label": "3 What is always on TV on Thanksgiving morning?"
+     "label": "3. On TV on Thanksgiving morning",
+     "why": "The text says there is always a big parade on TV on Thanksgiving morning."
     },
     "g4": {
      "correct": "a feast",
      "accept": [
       "a feast"
      ],
-     "label": "4 What is the traditional Thanksgiving meal called?"
+     "label": "4. The traditional meal",
+     "why": "The text says the traditional meal is called a feast."
     },
     "g5": {
      "correct": "They said what they were grateful for.",
      "accept": [
       "They said what they were grateful for."
      ],
-     "label": "5 What did the family do before dinner?"
+     "label": "5. Before dinner",
+     "why": "Ben was surprised that the family said what they were grateful for before dinner."
     },
     "g6": {
      "correct": "playing football in the garden",
      "accept": [
       "playing football in the garden"
      ],
-     "label": "6 What was Ben's favourite moment?"
+     "label": "6. Ben's favourite moment",
+     "why": "Ben says his favourite moment was playing American football in the garden with his host cousins."
     }
    }
   },
@@ -58,56 +64,64 @@
      "accept": [
       "parade"
      ],
-     "label": "1 On Thanksgiving morning, many families watch a big"
+     "label": "1. A big ___ through the streets",
+     "why": "A parade is a procession that moves through the streets, like the one on TV in New York."
     },
     "g2": {
      "correct": "feast",
      "accept": [
       "feast"
      ],
-     "label": "2 The traditional Thanksgiving dinner is a real"
+     "label": "2. A real ___",
+     "why": "A feast is a large, special meal with lots of food."
     },
     "g3": {
      "correct": "turkey",
      "accept": [
       "turkey"
      ],
-     "label": "3 Roast"
+     "label": "3. Roast ___",
+     "why": "Roast turkey is the most typical Thanksgiving dish, as the text says."
     },
     "g4": {
      "correct": "Stuffing",
      "accept": [
       "Stuffing"
      ],
-     "label": "4"
+     "label": "4. ___ goes inside the turkey",
+     "why": "Stuffing is a mixture of bread, onions and herbs put inside a bird before cooking."
     },
     "g5": {
      "correct": "gravy",
      "accept": [
       "gravy"
      ],
-     "label": "5 You pour hot"
+     "label": "5. Pour hot ___",
+     "why": "Gravy is a hot meat sauce poured over turkey and potatoes; syrup and jam are sweet."
     },
     "g6": {
      "correct": "grateful",
      "accept": [
       "grateful"
      ],
-     "label": "6 At Thanksgiving, everyone says what they are"
+     "label": "6. What they are ___ for",
+     "why": "To be grateful for something means to be thankful for it, which is what Thanksgiving is about."
     },
     "g7": {
      "correct": "harvest",
      "accept": [
       "harvest"
      ],
-     "label": "7 Thanksgiving started as a celebration of the autumn"
+     "label": "7. The autumn ___",
+     "why": "The harvest is when crops are gathered in autumn; Thanksgiving began as a harvest celebration."
     },
     "g8": {
      "correct": "reunion",
      "accept": [
       "reunion"
      ],
-     "label": "8 The holiday is a big family"
+     "label": "8. A big family ___",
+     "why": "A reunion is when people who live apart come together again."
     }
    }
   },
@@ -120,56 +134,64 @@
      "accept": [
       "vast"
      ],
-     "label": "1 The USA is a"
+     "label": "1. A ___ country",
+     "why": "Vast means extremely large, which fits a country with 50 states that takes days to cross."
     },
     "g2": {
      "correct": "tall",
      "accept": [
       "tall"
      ],
-     "label": "2 New York is famous for its"
+     "label": "2. Its ___ skyscrapers",
+     "why": "Skyscrapers are very tall buildings, so 'tall skyscrapers' is the natural collocation."
     },
     "g3": {
      "correct": "endless",
      "accept": [
       "endless"
      ],
-     "label": "3 We waited for hours, so the wait felt"
+     "label": "3. The wait felt ___",
+     "why": "After 'felt' we need an adjective; 'endless' means it seemed to go on for ever."
     },
     "g4": {
      "correct": "unforgettable",
      "accept": [
       "unforgettable"
      ],
-     "label": "4 Our school trip to London was a"
+     "label": "4. An ___ experience",
+     "why": "Unforgettable means you will never forget it, as the sentence explains."
     },
     "g5": {
      "correct": "warm",
      "accept": [
       "warm"
      ],
-     "label": "5 When I arrived, my host mother gave me a"
+     "label": "5. A ___ welcome",
+     "why": "A 'warm welcome' is a fixed collocation meaning a friendly, kind welcome."
     },
     "g6": {
      "correct": "huge",
      "accept": [
       "huge"
      ],
-     "label": "6 The school play was a"
+     "label": "6. A ___ success",
+     "why": "A 'huge success' means a very big success, and almost the whole school came."
     },
     "g7": {
      "correct": "true",
      "accept": [
       "true"
      ],
-     "label": "7 You can always ask Tom for help — he is a"
+     "label": "7. A ___ friend",
+     "why": "Before a noun we need the adjective 'true'; a true friend is loyal and reliable."
     },
     "g8": {
      "correct": "terrible",
      "accept": [
       "terrible"
      ],
-     "label": "8 Forgetting my homework on the first day was a"
+     "label": "8. A ___ mistake",
+     "why": "Before the noun 'mistake' we need the adjective 'terrible', not the adverb 'terribly'."
     }
    }
   }
