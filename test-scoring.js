@@ -85,4 +85,43 @@ var before = Object.keys(state.scores).length;
 checkDropdowns(['g1'], 'exA-', answers, 'fb');
 assert.strictEqual(Object.keys(state.scores).length, before, 'no scoreKey, no score recorded');
 
+// ── edge cases (engineering backlog) ──
+// Zero attempts: a section never checked has no attempts and records 0 points.
+assert.strictEqual(recordedPoints('exNever'), 0, 'no attempts recorded -> 0 points');
+assert.strictEqual(attemptPoints(0), 1, 'attemptPoints(0) is treated like a 1st attempt');
+
+// Re-checking an already-correct gap neither raises nor lowers its points,
+// and does not count as another attempt.
+el('exE-g1', 'yes');
+el('fbE');
+checkDropdowns(['g1'], 'exE-', { g1: 'yes' }, 'fbE', 'exE');
+checkDropdowns(['g1'], 'exE-', { g1: 'yes' }, 'fbE', 'exE');
+checkDropdowns(['g1'], 'exE-', { g1: 'yes' }, 'fbE', 'exE');
+assert.strictEqual(state.scores.exE.correct, 1, 're-checking a correct gap keeps 1 point');
+assert.strictEqual(state.attempts.exE.g1.n, 1, 're-checking a correct gap adds no attempt');
+
+// After four wrong tries a gap is worth nothing, and stays at 0 once right.
+el('exF-g1', 'no');
+el('fbF');
+for (var t = 0; t < 4; t++) checkDropdowns(['g1'], 'exF-', { g1: 'yes' }, 'fbF', 'exF');
+elements['exF-g1'].value = 'yes';
+checkDropdowns(['g1'], 'exF-', { g1: 'yes' }, 'fbF', 'exF');
+assert.strictEqual(state.scores.exF.correct, 0, 'correct on the 5th attempt scores 0');
+assert.strictEqual(state.attempts.exF.g1.done, true, 'and the gap is still marked done');
+
+// A large section: 200 gaps, alternating right first time and right second time.
+var ids = [], key = {};
+for (var g = 1; g <= 200; g++) {
+  ids.push('g' + g);
+  key['g' + g] = 'yes';
+  el('exG-g' + g, g % 2 ? 'yes' : 'no');
+}
+el('fbG');
+checkDropdowns(ids, 'exG-', key, 'fbG', 'exG');
+ids.forEach(function (k) { elements['exG-' + k].value = 'yes'; });
+checkDropdowns(ids, 'exG-', key, 'fbG', 'exG');
+assert.strictEqual(Object.keys(state.attempts.exG).length, 200, '200 gaps tracked');
+assert.strictEqual(state.scores.exG.correct, 150, '100 × 1 + 100 × ½ = 150');
+assert.strictEqual(state.scores.exG.total, 200, 'total is the gap count');
+
 console.log('✓ test-scoring.js: all graded-attempt scoring checks passed');
