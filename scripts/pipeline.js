@@ -133,8 +133,11 @@ const NODES = [
     // them. Nothing in the graph writes that file (it is hand-authored, via the
     // add-explanations skill), so it needs no edge — only the input.
     needs: ['hub', 'category-hubs', 'topic-pages', 'quizzes', 'review', 'exercise-data'],
+    // data/lastmod.json and sitemap.xml are read for the JSON-LD dates. lastmod
+    // writes both after this runs; head reads the committed store and computes
+    // the same answer with page-hash.js, so the order is safe — see that file.
     inputs: ['*.html', 'themen/*.html', 'data/exercises.json', 'data/topics.json',
-             'data/explanations.json', 'data/noindex.json'],
+             'data/explanations.json', 'data/noindex.json', 'data/lastmod.json', 'sitemap.xml'],
     outputs: ['*.html', 'themen/*.html'],
     // Its outputs are pages people author; it only rewrites the marked blocks.
     // So matching these globs does not make a file generated — the AI review
@@ -181,7 +184,9 @@ const NODES = [
 //                            Make scenarios need no grading module of their own.
 const VALIDATORS = [
   { id: 'validate-explanations', run: 'scripts/validate-explanations.js' },
+  { id: 'validate-data', run: 'scripts/validate-data.js' },
   { id: 'test-scoring', run: 'test-scoring.js' },
+  { id: 'test-grades', run: 'test-grades.js' },
   { id: 'test-payload-flatten', run: 'test-payload-flatten.js' },
   { id: 'test-wrong-summary', run: 'test-wrong-summary.js' },
   { id: 'topic-pool', run: 'topic-pool.js' },
@@ -214,8 +219,10 @@ const VALIDATORS = [
 //                            0/N and the AI told the teacher so.
 const CHECKERS = [
   { id: 'validate-schema', run: 'scripts/validate-schema.js' },
+  { id: 'check-exercises-data', run: 'scripts/check-exercises-data.js' },
   { id: 'check-syntax', run: 'scripts/check-syntax.js' },
   { id: 'check-select-labels', run: 'scripts/check-select-labels.js' },
+  { id: 'check-links', run: 'scripts/check-links.js' },
   { id: 'check-grade-table', run: 'scripts/check-grade-table.js' },
   // A vocab test must not print a word it also asks the student to produce.
   // Both live pages did: 9c's instructions said "type the term" while "term"
