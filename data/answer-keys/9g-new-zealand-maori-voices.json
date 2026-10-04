@@ -10,56 +10,64 @@
      "accept": [
       "bilingual"
      ],
-     "label": "1 A"
+     "label": "1. A ___ school",
+     "why": "Bilingual means using two languages."
     },
     "g2": {
      "correct": "ceremony",
      "accept": [
       "ceremony"
      ],
-     "label": "2 A wedding, welcome or memorial can be called a"
+     "label": "2. A wedding, welcome or memorial",
+     "why": "A ceremony is a formal event such as a wedding, welcome or memorial."
     },
     "g3": {
      "correct": "ancestor",
      "accept": [
       "ancestor"
      ],
-     "label": "3 An"
+     "label": "3. A family member who lived before you",
+     "why": "An ancestor is a family member from an earlier generation."
     },
     "g4": {
      "correct": "guardian",
      "accept": [
       "guardian"
      ],
-     "label": "4 A"
+     "label": "4. Protects something important",
+     "why": "A guardian protects or looks after someone or something."
     },
     "g5": {
      "correct": "revival",
      "accept": [
       "revival"
      ],
-     "label": "5 The growth of te reo Māori is sometimes described as a language"
+     "label": "5. A language ___",
+     "why": "A revival is when something becomes strong or popular again."
     },
     "g6": {
      "correct": "respect",
      "accept": [
       "respect"
      ],
-     "label": "6 Visitors show"
+     "label": "6. Visitors show ___",
+     "why": "You show respect by following local rules and listening carefully."
     },
     "g7": {
      "correct": "treaty",
      "accept": [
       "treaty"
      ],
-     "label": "7 The Treaty of Waitangi is an important"
+     "label": "7. The Treaty of Waitangi is an important ___",
+     "why": "A treaty is a formal agreement; the Treaty of Waitangi was signed in 1840."
     },
     "g8": {
      "correct": "landscape",
      "accept": [
       "landscape"
      ],
-     "label": "8 New Zealand’s mountains, forests and coasts form a dramatic"
+     "label": "8. A dramatic ___",
+     "why": "A landscape is everything you see in an area of land: mountains, forests, coasts."
     }
    }
   },
@@ -72,56 +80,64 @@
      "accept": [
       "where"
      ],
-     "label": "1 A marae is a meeting place"
+     "label": "1. A meeting place ___ people gather",
+     "why": "Use 'where' for a place when the clause already has a subject (people gather)."
     },
     "g2": {
      "correct": "that",
      "accept": [
       "that"
      ],
-     "label": "2 Te reo Māori is a language"
+     "label": "2. A language ___ has become more visible",
+     "why": "'That' refers to a thing and is the subject of 'has become'."
     },
     "g3": {
      "correct": "which",
      "accept": [
       "which"
      ],
-     "label": "3 Kaitiakitanga is an idea"
+     "label": "3. An idea ___ means guardianship",
+     "why": "'Which' refers to a thing (the idea) and is the subject of 'means'."
     },
     "g4": {
      "correct": "which",
      "accept": [
       "which"
      ],
-     "label": "4 The Treaty of Waitangi,"
+     "label": "4. The Treaty of Waitangi, ___ was signed in 1840",
+     "why": "In a non-defining clause between commas, use 'which', never 'that'."
     },
     "g5": {
      "correct": "that",
      "accept": [
       "that"
      ],
-     "label": "5 The haka is a performance"
+     "label": "5. A performance ___ can express welcome",
+     "why": "'That' refers to a thing (the performance); 'who' is only for people."
     },
     "g6": {
      "correct": "where",
      "accept": [
       "where"
      ],
-     "label": "6 Rotorua is a city"
+     "label": "6. A city ___ visitors can learn",
+     "why": "Use 'where' for a place when the clause has its own subject (visitors)."
     },
     "g7": {
      "correct": "who",
      "accept": [
       "who"
      ],
-     "label": "7 An ancestor is a person"
+     "label": "7. A person ___ lived before",
+     "why": "Use 'who' for people."
     },
     "g8": {
      "correct": "whose",
      "accept": [
       "whose"
      ],
-     "label": "8 A speaker"
+     "label": "8. A speaker ___ language carries family history",
+     "why": "'Whose' shows possession: the speaker's language."
     }
    }
   }

@@ -10,56 +10,64 @@
      "accept": [
       "must"
      ],
-     "label": "1. You"
+     "label": "1. You ___ have a valid passport",
+     "why": "A passport is required to travel abroad, so use 'must' for an obligation."
     },
     "g2": {
      "correct": "have to",
      "accept": [
       "have to"
      ],
-     "label": "2. Volunteers"
+     "label": "2. Volunteers ___ follow the safety rules",
+     "why": "'At all times' shows a rule everyone must follow, so use 'have to'."
     },
     "g3": {
      "correct": "mustn't",
      "accept": [
       "mustn't"
      ],
-     "label": "3. You"
+     "label": "3. You ___ touch wild animals",
+     "why": "'Mustn't' means it is not allowed, because it can be dangerous."
     },
     "g4": {
      "correct": "don't have to",
      "accept": [
       "don't have to"
      ],
-     "label": "4. Some projects say you"
+     "label": "4. You ___ speak the local language",
+     "why": "'Don't have to' means it isn't necessary, because English is often enough."
     },
     "g5": {
      "correct": "have to",
      "accept": [
       "have to"
      ],
-     "label": "5. Younger volunteers"
+     "label": "5. Younger volunteers ___ get permission",
+     "why": "Written permission is required, so use 'have to' for the obligation."
     },
     "g6": {
      "correct": "mustn't",
      "accept": [
       "mustn't"
      ],
-     "label": "6. You"
+     "label": "6. You ___ leave the group without telling",
+     "why": "'Mustn't' shows something forbidden: leaving without telling a supervisor."
     },
     "g7": {
      "correct": "don't have to",
      "accept": [
       "don't have to"
      ],
-     "label": "7. Most organisations say volunteers"
+     "label": "7. Volunteers ___ bring their own tools",
+     "why": "The project provides tools, so it isn't necessary: 'don't have to'."
     },
     "g8": {
      "correct": "has to",
      "accept": [
       "has to"
      ],
-     "label": "8. Everyone"
+     "label": "8. Everyone ___ attend the safety briefing",
+     "why": "'Everyone' takes a singular verb, so the obligation is 'has to'."
     }
    }
   },
@@ -72,56 +80,64 @@
      "accept": [
       "should"
      ],
-     "label": "1. You"
+     "label": "1. You ___ research the organisation",
+     "why": "'Should' gives advice; researching first is a good idea."
     },
     "g2": {
      "correct": "shouldn't",
      "accept": [
       "shouldn't"
      ],
-     "label": "2. You"
+     "label": "2. You ___ travel without telling your family",
+     "why": "This is advice, not a rule, so use 'shouldn't' for something that's a bad idea."
     },
     "g3": {
      "correct": "should",
      "accept": [
       "should"
      ],
-     "label": "3. New volunteers"
+     "label": "3. New volunteers ___ ask questions",
+     "why": "'Should' gives advice: asking questions is a good idea when you're unsure."
     },
     "g4": {
      "correct": "should",
      "accept": [
       "should"
      ],
-     "label": "4. You"
+     "label": "4. You ___ learn a few basic phrases",
+     "why": "Learning a few phrases is good advice, so use 'should'."
     },
     "g5": {
      "correct": "shouldn't",
      "accept": [
       "shouldn't"
      ],
-     "label": "5. You"
+     "label": "5. You ___ ignore the advice of local staff",
+     "why": "Ignoring local staff is a bad idea, so the advice is 'shouldn't'."
     },
     "g6": {
      "correct": "should",
      "accept": [
       "should"
      ],
-     "label": "6. It"
+     "label": "6. It ___ be a good idea to pack light",
+     "why": "'Should' recommends something: packing light is sensible advice."
     },
     "g7": {
      "correct": "should",
      "accept": [
       "should"
      ],
-     "label": "7. You"
+     "label": "7. You ___ keep an open mind",
+     "why": "Keeping an open mind about other cultures is good advice: 'should'."
     },
     "g8": {
      "correct": "shouldn't",
      "accept": [
       "shouldn't"
      ],
-     "label": "8. You"
+     "label": "8. You ___ compare everything to home",
+     "why": "Comparing everything to home is a bad idea, so the advice is 'shouldn't'."
     }
    }
   }
