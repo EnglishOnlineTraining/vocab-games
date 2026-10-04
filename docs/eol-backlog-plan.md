@@ -670,6 +670,54 @@ new or contradict those docs are listed here.
 **Not measured:** Core Web Vitals (the PageSpeed API quota was used up) and Search Console data
 (the Ahrefs connector returned "Insufficient plan"). Nothing below has been executed.
 
+**▶ Current status (2026-10-04) — read this first; the dated notes below are the history.**
+
+*Done:*
+- **Repo:** PRs #72, #74–#85 and #87–#90 are all merged and live; `main` builds clean. That covers
+  C12–C13, the explanations gap, the quiz fixes, the tests and validators, the link and select
+  checks, mobile overflow, a11y-lite, the Klett wording, the pre-publish gate, CONTRIBUTING and
+  the Apps Script formula fix (live only after a redeploy).
+- **Activities tracking (#90):** Google Tag Manager now loads only after the visitor opts in
+  (`consent.js`; docs in `exercise-framework.md` §5f-bis).
+- **WordPress theme: EOT Modern 1.3.8 is live.**
+  - German posts and pages carry `lang="de-DE"` and `og:locale de_DE` (A3).
+  - Content H1 blocks render as H2 (B11).
+  - Consent banner; Google Analytics `G-F3E7NK2FVQ` loads only after opt-in, and Jetpack's own
+    GA Measurement ID is cleared.
+  - Plus Jakarta Sans is self-hosted (no Google Fonts request).
+  - `/llms.txt` is served from the theme (P4.3, added by a separate session).
+- **WordPress noindex (B8 + B7):** pages 2272, 1205, 1167 and posts 365, 1238, 523, 2261 have
+  `jetpack_seo_noindex` set. Verified 2026-10-04: each page carries `<meta name="robots"
+  content="noindex">` and is gone from the Jetpack sitemap. **Per-page noindex works on the
+  current plan; use it instead of waiting for 301s.**
+- **AI crawlers (A1):** the block is lifted, and `robots.txt` no longer disallows them.
+- **Accepted, don't re-raise:** the 15 `gr-*` pages keep posting to the template's old Apps
+  Script URL (Shaun, 2026-10-04: leave permanently).
+
+*Waiting on Shaun:*
+1. **Privacy policy.** The draft is in `CLAUDE OUTPUTS/datenschutzerklaerung-entwurf-2026-10-04.md`.
+   Settle its [PRÜFEN] points, then CC publishes it to `/privacy-policy/`. §7 (Google Fonts) can
+   go now that 1.3.8 self-hosts the font.
+2. **WP settings for the homepage entity (A2)**, which the theme can't reach:
+   - Site Title → "EnglishOnline.training";
+   - display name → "Shaun Trezise";
+   - Jetpack business details matched to `scripts/schema.js`.
+3. **Decisions:**
+   - #86 (draft): keyword hub titles. Exercise titles follow whatever he decides.
+   - How the two homepages split their target searches (A4).
+   - The 8 thin testimonial pages and old thin posts: merge, noindex or keep (B9 and the
+     2016–2023 posts).
+   - The title-template separator (B10).
+4. **Small:**
+   - the Make → Excel half of formula injection (needs a change in the Make mapping);
+   - the hotlinked Wikimedia image on `9c-south-africa-revision` (self-host needs his OK);
+   - the remaining `9g-australia-vocab-practice` "Green Line" description (accepted-file list,
+     ask first);
+   - PR #67, which isn't from this work, still needs review.
+5. **Under-16 consent:** the banners ask under-16s to check with their parents, but DSGVO Art. 8
+   means a child's click alone may not be valid consent. Get specialist advice if the analytics
+   numbers matter.
+
 **Progress (2026-10-03, later the same day).** Each item is on its own PR, and none is merged.
 No live WordPress write was made:
 - **C12 + C13 → PR #74.** Dates come from a body-only hash, which also feeds `datePublished`/
@@ -859,9 +907,9 @@ and Tier 4 above for the full executed record. What's left:
    confirmed to exist (8, via the sitemap, 2026-10-03); what to do with them is Tier 8 §B. Items 4 (the 5 proposed service landing pages +
    "8-week plan" Course schema) and 5 (the 1763/1997 CRDT trap, not hit this round) remain open,
    item 4 specifically as a content decision for Shaun rather than a schema task.
-5. **Tier 8 SEO/GEO review (2026-10-03).** Decisions needed before building: keep the AI-crawler
-   block or lift it (A1); how the two homepages split (A4); German text in activities titles
-   (A5); analytics disclosure (D15). Everything else is executable once each WP write is approved.
+5. **Tier 8 SEO/GEO review.** Repo work and the tracking fix are done (2026-10-04). What's left
+   is listed under "▶ Current status" in Tier 8: the privacy policy, WP settings, #86 and the
+   content decisions.
 
 _Closed: T3 approach (2026-08-05, no plan upgrade near-term); Crowdsignal export (not needed —
 T1 rebuilt natively); T5 scope (standalone page); IT email policy (writing tasks only);
@@ -901,18 +949,18 @@ the missing `.comic-img` rule on `7c-robert-the-bruce`.
    textarea lands as a **live formula** in the teacher's sheet. Prefix values starting with
    `= + - @` with `'`. The Make → Excel path for Y7–10 has the same exposure and cannot be fixed
    in Apps Script, so the durable fix is client-side in `exercise.js` before the POST.
-4. **Accessibility for the non-framework pages.** `eolInitA11y` only reaches pages that load
+4. **Accessibility for the non-framework pages.** → **Done** (#89 a11y-lite.js, #83 themen labels). `eolInitA11y` only reaches pages that load
    `exercise.js`. The Abitur packs, quizzes, lead magnets and `klasse7-mini` get a skip link from
    `build-head.js` but no gap labels, no ✓/✗ marks and no live regions.
 
 ### Lower priority · CC
-5. `CONTRIBUTING.md` — short, pointing at `scripts/pipeline.js` and the traps in `CLAUDE.md`.
-6. Internal link checker as a `VALIDATOR`. Measured 2026-08-27: **0 broken of 1,301** internal
+5. **Done (#88).** `CONTRIBUTING.md` — short, pointing at `scripts/pipeline.js` and the traps in `CLAUDE.md`.
+6. **Done (#81, as a post-build check).** Internal link checker as a `VALIDATOR`. Measured 2026-08-27: **0 broken of 1,301** internal
    `.html` links, so this is a regression guard, not a fix.
-7. `9c-south-africa-revision.html:236` hotlinks a 1280px Wikimedia image — an external request
+7. **Open, needs Shaun's OK to download the image.** `9c-south-africa-revision.html:236` hotlinks a 1280px Wikimedia image — an external request
    from a school page, and it can break. It has a text fallback, so this is cosmetic; self-host
    or accept.
-8. **Audit the rest of the corpus for the `.comic-img` class of bug.** That page's images had no
+8. **Audit the rest of the corpus for the `.comic-img` class of bug.** → **Done (#82)**: 61 pages fixed, all 291 fit 390px. That page's images had no
    CSS rule at all, so a 2098px panel dragged the document to 2114px on a 390px phone. Nothing
    would have caught it; a viewport-overflow check across all pages would.
 
@@ -957,7 +1005,7 @@ two of these are latent rather than live.
     corpus. Add a `9c`/`9g` category via the `add-topics` skill. This is the blocker on Year 9
     working like the other active years.
 
-12. **Audit the generators' HTML-parsing regexes.** CodeQL's "bad HTML filtering regexp" query
+12. **Audit the generators' HTML-parsing regexes.** → **Reviewed 2026-10-03, no change** (own HTML only; low value, real risk). CodeQL's "bad HTML filtering regexp" query
     caught a real end-tag bug in `scripts/check-syntax.js` on PR #35 — but it only scans code a PR
     *changes*, so the pre-existing generators have never been checked. Counted 2026-08-28:
     **33 HTML-matching regexes across five scripts** (`build-head.js` 17, `build-exercise-data.js`
