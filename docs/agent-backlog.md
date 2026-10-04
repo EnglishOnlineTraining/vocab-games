@@ -7,7 +7,7 @@ descriptions and the three already delivered.
 
 | # | Agent | What it does | Route | Blocked by |
 |---|-------|-------------|-------|------------|
-| 2 | Pre-publish gate | Runs the 9-point checklist before any page goes live. Confirms grade table, webhook URL, explanations, TOTAL_STEPS. | GitHub Action (on PR) | Nothing |
+| 2 | ~~Pre-publish gate~~ **Done (#87, 2026-10-04)** | `check-generated.yml` runs `verify-exercise.js` (incl. webhook) on pages a PR adds; grade table and explanations are gated by `check-grade-table` / `validate-explanations`. | GitHub Action (on PR) | — |
 | 4 | Weekly prep runner | Sunday: reads A/B week + timetable, picks classes, drafts one exercise per class from the right textbook unit. | Claude Code Routine (cron) | Timetable data |
 
 ## Medium-term
