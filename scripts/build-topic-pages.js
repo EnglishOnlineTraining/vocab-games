@@ -44,11 +44,21 @@ function weiterUebenHtml(slug) {
   return html;
 }
 
+// Tags out, repeated until stable; esc() then escapes whatever is left for the attribute.
+function plainText(s) {
+  let prev, out = String(s == null ? '' : s);
+  do { prev = out; out = out.replace(/<[^<>]*>/g, ''); } while (out !== prev);
+  return out;
+}
+
 function practiceItemsHtml(items) {
   let rows = '';
   items.forEach(it => {
     const opts = it.options.map(o => '<option value="' + esc(o) + '">' + esc(o) + '</option>').join('');
-    const sel = '<select class="pw-sel"><option value="">…</option>' + opts + '</select>';
+    // Without a name a screen reader announces only "combo box". The question,
+    // with the gap shown as "…", tells the student which sentence this is.
+    const label = 'Antwort wählen: ' + plainText(it.q).replace('___', '…');
+    const sel = '<select class="pw-sel" aria-label="' + esc(label) + '"><option value="">…</option>' + opts + '</select>';
     const q = esc(it.q);
     // A question without a ___ used to render with no <select> at all: its
     // options were dropped silently, pwCheck skipped it (`if(!sel)return`) so it
@@ -128,7 +138,7 @@ function contentHtml(t) {
       + 'Unten findest du bereits alle passenden Übungen.</p></section>';
   }
   let html = '';
-  if (t.intro) html += '<section class="card"><h2>' + esc(t.introH2 || ('Was ist das ' + t.de.replace(/ \(.*/, '') + '?')) + '</h2><p>' + t.intro + '</p></section>';
+  if (t.intro) html += '<section class="card"><h2>' + esc(t.introH2 || (t.de.replace(/ \(.*/, '') + ' – kurz erklärt')) + '</h2><p>' + t.intro + '</p></section>';
   if (t.rules && t.rules.length) {
     html += '<section class="card rules-box"><h2>Die wichtigsten Regeln</h2><ul class="rules">';
     t.rules.forEach(r => html += '<li>' + r + '</li>');
@@ -313,7 +323,7 @@ h1{color:var(--blue);font-size:1.6rem;line-height:1.25;margin-bottom:.5rem}
 .pw-item{padding:.6rem 0;border-top:1px solid var(--border)}
 .pw-item:first-of-type{border-top:none}
 .pw-q{font-size:.98rem;line-height:2.1}
-.pw-sel{font-family:inherit;font-size:.95rem;padding:.2rem .4rem;border:1.5px solid var(--border);border-radius:6px;background:#fff;margin:0 .2rem}
+.pw-sel{font-family:inherit;font-size:.95rem;padding:.2rem .4rem;border:1.5px solid var(--border);border-radius:6px;background:#fff;margin:0 .2rem;max-width:100%}
 .pw-sel.pw-right{border-color:var(--green);background:#eafaf0}
 .pw-sel.pw-wrong{border-color:var(--red);background:#fdeeec}
 .pw-fb{display:none;font-size:.85rem;color:var(--muted);margin-top:.25rem}

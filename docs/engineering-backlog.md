@@ -17,7 +17,7 @@ Status key: **Open** (worth doing, not started) · **Already done** (skip) · **
 - **Testing — `test-scoring.js` edge cases.** Add cases for zero-attempts, re-checking an
   already-correct gap (should not raise or lower recorded points, per the locking rule in
   "Standard features" §5), and a large `attempts` object.
-- **CI — require a `why` on every explanation.** `scripts/validate-explanations.js` already checks
+- **CI — require a `why` on every explanation.** → **PR #75** (2026-10-03). `scripts/validate-explanations.js` already checks
   that every `prefix+gap` id exists and that `correct`/`accept` are real options; it does not yet
   fail when a gap's `why` is missing. Extend it and keep it wired into whatever CI already runs it.
 - **Linting — ESLint/Prettier for the repo's JS.** Real work, not a tweak: there is currently no
@@ -29,7 +29,7 @@ Status key: **Open** (worth doing, not started) · **Already done** (skip) · **
   leaving it unrecorded. Related, already-fixed issue in the same area:
   `docs/CODE-REVIEW-FINDINGS.md` #2 (spreadsheet formula injection via unsanitized submitted
   values) — read that first, this is adjacent territory.
-- **Bug triage — CI check for the explanations backlog.** `node scripts/extract-graded.js --todo`
+- **Bug triage — CI check for the explanations backlog.** → **PR #75**. It also found that `--todo` was wrong: 13 graded pages had no explanations, and the PR adds them. `node scripts/extract-graded.js --todo`
   already exists and currently reports 0 outstanding; wiring it into CI so a newly added exercise
   without explanations fails the build (rather than relying on someone remembering to run it) is
   a small, real gap.
