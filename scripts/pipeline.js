@@ -184,6 +184,7 @@ const NODES = [
 //                            Make scenarios need no grading module of their own.
 const VALIDATORS = [
   { id: 'validate-explanations', run: 'scripts/validate-explanations.js' },
+  { id: 'validate-data', run: 'scripts/validate-data.js' },
   { id: 'test-scoring', run: 'test-scoring.js' },
   { id: 'test-grades', run: 'test-grades.js' },
   { id: 'test-payload-flatten', run: 'test-payload-flatten.js' },
@@ -218,6 +219,7 @@ const VALIDATORS = [
 //                            0/N and the AI told the teacher so.
 const CHECKERS = [
   { id: 'validate-schema', run: 'scripts/validate-schema.js' },
+  { id: 'check-exercises-data', run: 'scripts/check-exercises-data.js' },
   { id: 'check-syntax', run: 'scripts/check-syntax.js' },
   { id: 'check-grade-table', run: 'scripts/check-grade-table.js' },
   // A vocab test must not print a word it also asks the student to produce.
