@@ -213,6 +213,23 @@ Two earlier attempts failed and are worth not repeating:
 - **Dating from `git log` breaks on clone depth.** In a shallow checkout `git log` sees one commit, every path resolves to it, and all 257 URLs get the same date — entirely wrong while looking well-formed. `check-generated.yml` checks out at depth 1, so `--check` failed reporting only `M sitemap.xml` with nothing in the diff explaining it. **This container's own clone is shallow too** (186 commits, truncated at 2026-08-13), so local builds never caught it. File mtime is worse — a checkout stamps every file with the checkout time.
 - **Hashing inside `build-topic-pages.js`** is the right signal in the wrong place, for the generator-order reason above.
 
+**The hash covers the page, not its chrome (2026-10-03).** `scripts/page-hash.js` hashes each page
+with every `build-head.js` block stripped (`GENERATED_BLOCKS` — HEAD, GTM, CRUMB, EXPLAIN and the
+rest). Before this, a template change re-dated every page: the 2026-10-01 byline and Person-schema
+commits put 229 of 230 URLs on the same day. Store entries are now `{d, p, h}`. `d` is the last
+change, `p` the first publication, and `h` carries a `b1:` prefix. The store was re-dated once from
+git history with the new hash (155 pages land on 2026-08-31, the real "shorten all titles" PR #41).
+**A new block in `build-head.js` must be added to `GENERATED_BLOCKS`**: `processFile` strips that
+same list, and a block missing from it would re-date its pages on every chrome change.
+
+**Exercise JSON-LD carries the same dates.** `build-head.js` asks `page-hash.js` for
+`datesFor(storedEntry, hash)`, which is exactly what `build-lastmod.js` will store. So each
+`LearningResource` gets `datePublished`/`dateModified` matching its `<lastmod>`, in one build, even
+though `lastmod` runs after `head`. The dates are left out of the hash, which is what makes this
+safe. Only sitemap pages get dates. A noindex page has no stored entry, and would otherwise print
+today's date on every build. `themen/` pages carry no dates: their JSON-LD comes from
+`build-topic-pages.js`, outside the stripped blocks.
+
 **Reseeding.** Deleting `data/lastmod.json` makes every page read as new and stamps the whole site with today — telling Google all 257 URLs changed at once, which is false. It was seeded once from git history at introduction; don't casually regenerate it.
 
 **"Verwandte Themen" links are reciprocal (added 2026-09-05).** `related` in `topics.json` is authored one way round, so a newly added topic pointed at its neighbours and nothing pointed back: five of the six topics added that day had `themen/index.html` as their *only* inbound link, which Search Console reported as "Referring page: None detected". `relatedSlugs()` unions the authored list with the inbound ones, so every relationship is a link in both directions; authored entries stay first. Deliberately **uncapped** — the old `.slice(0, 3)` would stop the most-referenced topics (`present-tenses` is named by nine others) from linking out to the newest ones, which is exactly the link a new page needs. Range is now 3–10 links per page.
