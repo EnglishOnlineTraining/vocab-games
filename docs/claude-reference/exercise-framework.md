@@ -378,6 +378,25 @@ All step-based exercise pages load the **single shared framework** via `<script 
 **Not migrated (different architecture, unchanged):** the non-step pages (`vocab-games.html`/`index.html`, `9g-class-test-9ab.html`, `uni-pm-vocabulary.html`, `uni-writing-task.html`, `uni-presentation-task.html`, `year-7-class-wall.html`, hub pages).
 
 
+### 5f-bis. Analytics only after consent — `consent.js` (added 2026-10-04)
+
+Google Tag Manager (`GTM-5HXNNPCS`, added 2026-08-28) used to load on every page straight from
+an inline snippet in the HEAD block, plus a `<noscript>` iframe after `<body>`. That sets cookies
+and sends data to Google before anyone agrees, which TTDSG §25 forbids. These pages are used by
+schoolchildren. Shaun chose to keep Google and ask first.
+
+- `build-head.js` puts `<script src="consent.js" defer>` in every page's HEAD block, and no
+  longer emits the GTM snippet or the GTM noscript block. `GTM` stays in `GENERATED_BLOCKS` so
+  old copies are stripped.
+- `consent.js` shows a small German/English banner. "Ablehnen" and "Akzeptieren" are equally
+  prominent, and the text includes a line for under-16s. GTM loads only after "Akzeptieren".
+  The choice is stored in `localStorage` as `eol_consent` (`granted` / `denied`).
+- A "Cookie-Einstellungen" button is added to the page footer (`.eol-footer .legal`, else
+  `footer`, else the end of `<body>`). It clears the choice and shows the banner again.
+- Inside an iframe (`klasse7-mini` on WordPress) there is no banner and no GTM.
+- **Don't add GTM, GA or any other tracker back as a plain `<script>`.** Load it from
+  `loadGtm()`-style code behind the choice, and add it to the privacy policy.
+
 ### 5g. Structured data + the "Auf einen Blick" box (added 2026-08-21)
 
 Before this the site had JSON-LD on **10 of 223 pages** — the generated `themen/` topic pages —
