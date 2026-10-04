@@ -335,7 +335,7 @@ function breadcrumb(file, title, url) {
  * every framework page has — better prose than anything derivable from the
  * exercise headings, and it costs no authoring.
  */
-function learningResource(file, meta, ex, topicsBySlug, hubName) {
+function learningResource(file, meta, ex, topicsBySlug, hubName, dates) {
   const url = meta.canonical || SITE + '/' + file;
   const level = levelFor(file);
   const hub = hubFor(file);
@@ -364,6 +364,10 @@ function learningResource(file, meta, ex, topicsBySlug, hubName) {
     provider: { '@id': ORG_ID },
     isPartOf: hubNode ? [{ '@id': WEBSITE_ID }, hubNode] : { '@id': WEBSITE_ID },
   };
+
+  // From data/lastmod.json via page-hash.js: the same dates the sitemap carries.
+  if (dates && dates.p) node.datePublished = dates.p;
+  if (dates && dates.d) node.dateModified = dates.d;
 
   if (level) node.educationalLevel = cefrNode(level);
 
