@@ -978,6 +978,8 @@ the missing `.comic-img` rule on `7c-robert-the-bruce`.
 - **Feature flags / A-B testing.** No traffic split, no infrastructure, no question it answers.
 - **ESLint / Prettier / Jest.** Shaun's call 2026-08-27: the repo stays dependency-free. The
   checks that earn their place are written in plain Node instead — see `scripts/check-syntax.js`.
+  ESLint's most useful rule, `no-undef`, is covered the same way by
+  `scripts/check-undefined-calls.js` (2026-10-05).
 
 ### Added 2026-08-28 · outstanding items swept up after PR #35 merged
 Each verified against the code today, not carried over on trust. Severity is stated honestly —
