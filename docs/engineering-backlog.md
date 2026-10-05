@@ -11,28 +11,25 @@ Status key: **Open** (worth doing, not started) · **Already done** (skip) · **
 
 ## Open
 
-- **Accessibility — unlabelled `<select>` scan.** Extend `eolInitA11y` (or add a standalone scan
-  script) to flag any `<select>` with no accessible name, so a new gap type can't silently ship
-  without one. Builds on the existing labelling work in §5b.
-- **Testing — `test-scoring.js` edge cases.** Add cases for zero-attempts, re-checking an
-  already-correct gap (should not raise or lower recorded points, per the locking rule in
-  "Standard features" §5), and a large `attempts` object.
-- **CI — require a `why` on every explanation.** → **PR #75** (2026-10-03). `scripts/validate-explanations.js` already checks
-  that every `prefix+gap` id exists and that `correct`/`accept` are real options; it does not yet
-  fail when a gap's `why` is missing. Extend it and keep it wired into whatever CI already runs it.
 - **Linting — ESLint/Prettier for the repo's JS.** Real work, not a tweak: there is currently no
   `package.json` at all (confirmed 2026-08-27) — this project is deliberately build-less per its
   own description. Introducing lint/format tooling is a genuine decision, not a drop-in.
-- **Security — document the Apps Script's exposure.** `routeSubmission` accepts unauthenticated,
-  form-encoded POSTs with no CSRF token and no rate limiting. Worth writing up as a known,
-  accepted gap (or fixing with a nonce / `PropertiesService`-backed rate limit) rather than
-  leaving it unrecorded. Related, already-fixed issue in the same area:
-  `docs/CODE-REVIEW-FINDINGS.md` #2 (spreadsheet formula injection via unsanitized submitted
-  values) — read that first, this is adjacent territory.
-- **Bug triage — CI check for the explanations backlog.** → **PR #75**. It also found that `--todo` was wrong: 13 graded pages had no explanations, and the PR adds them. `node scripts/extract-graded.js --todo`
-  already exists and currently reports 0 outstanding; wiring it into CI so a newly added exercise
-  without explanations fails the build (rather than relying on someone remembering to run it) is
-  a small, real gap.
+
+## Done since this list was filed (checked 2026-10-05)
+
+- **Accessibility — unlabelled `<select>` scan.** → **#83**: every `<select>` must have a name;
+  the 18 `themen/` pages were fixed.
+- **Testing — `test-scoring.js` edge cases.** → **#84**: zero attempts, re-checks, late answers,
+  large sections.
+- **CI — require a `why` on every explanation.** → **#75**: `scripts/validate-explanations.js`
+  fails on a gap with no `why`.
+- **Security — document the Apps Script's exposure.** → **#80** (second commit): written up as a
+  known, accepted gap in `docs/CODE-REVIEW-FINDINGS.md` ("What is exposed" / "Why it is
+  accepted"). The formula-injection fix is in the same PR; the Make → Excel half is still open
+  (see `docs/eol-backlog-plan.md`, Tier 8).
+- **Bug triage — CI check for the explanations backlog.** → **#75**: `validate-explanations.js`
+  fails when a graded framework page has no explanations at all. The PR also found 13 such pages
+  that `--todo` had missed, and added them.
 
 ## Already done — don't re-add
 

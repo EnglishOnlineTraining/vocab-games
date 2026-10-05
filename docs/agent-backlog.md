@@ -14,7 +14,7 @@ descriptions and the three already delivered.
 
 | # | Agent | What it does | Route | Blocked by |
 |---|-------|-------------|-------|------------|
-| 6 | Listing builder | Takes a finished unit, produces Eduki/Payhip listing in brand voice. | Claude Code session | Brand voice doc |
+| 6 | Listing builder | Takes a finished unit, produces Eduki/Payhip listing in brand voice. | Claude Code session | — (`VOICE.md` added in #93, 2026-10-05) |
 | 7 | Newsletter writer | Reads what published that week, drafts MailerLite email for the right subscriber group. | Claude Code Routine | MailerLite API access |
 
 ## Long-term / exploratory

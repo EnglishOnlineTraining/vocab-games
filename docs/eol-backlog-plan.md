@@ -670,13 +670,27 @@ new or contradict those docs are listed here.
 **Not measured:** Core Web Vitals (the PageSpeed API quota was used up) and Search Console data
 (the Ahrefs connector returned "Insufficient plan"). Nothing below has been executed.
 
-**▶ Current status (2026-10-04) — read this first; the dated notes below are the history.**
+**▶ Current status (2026-10-05) — read this first; the dated notes below are the history.**
 
 *Done:*
 - **Repo:** PRs #72, #74–#85 and #87–#90 are all merged and live; `main` builds clean. That covers
   C12–C13, the explanations gap, the quiz fixes, the tests and validators, the link and select
   checks, mobile overflow, a11y-lite, the Klett wording, the pre-publish gate, CONTRIBUTING and
   the Apps Script formula fix (live only after a redeploy).
+- **Merged 2026-10-05:**
+  - #86: keyword hub titles (A5, hubs only). Each year hub's `<title>` now ends with the German
+    search query; the abitur, grammar, business, IT and uni hubs have keyword titles. Visible
+    headings are unchanged.
+  - #67: `TOTAL_STEPS` was one too high on 8 pages (7 + `uni-paraphrasing-summarizing`), so the
+    submit step showed as an extra exercise and the review table stayed empty.
+  - #95: `10c-london-slang` could not be finished or submitted; navigation, submission and the
+    score card now use the shared `exercise.js` helpers.
+  - #94: IndexNow backfill. All 312 sitemap URLs (82 WordPress, 230 activities) were submitted
+    by hand on 2026-10-03; notes in `hubs-seo-and-tests.md`.
+  - #93: `VOICE.md` (brand voice guide v1.0).
+  - `business-needs-analysis.html` (`da6edb0`, `093e542`, #96): an unlisted, noindex Business
+    English intake form posting to the Business/University Apps Script. The Business hub pins a
+    card for it (`f760395`).
 - **Activities tracking (#90):** Google Tag Manager now loads only after the visitor opts in
   (`consent.js`; docs in `exercise-framework.md` §5f-bis).
 - **WordPress theme: EOT Modern 1.3.8 is live.**
@@ -703,7 +717,8 @@ new or contradict those docs are listed here.
    - display name → "Shaun Trezise";
    - Jetpack business details matched to `scripts/schema.js`.
 3. **Decisions:**
-   - #86 (draft): keyword hub titles. Exercise titles follow whatever he decides.
+   - Exercise titles: #86 changed the hub titles only. Decide whether exercise `<title>`s get a
+     keyword pattern too (A5).
    - How the two homepages split their target searches (A4).
    - The 8 thin testimonial pages and old thin posts: merge, noindex or keep (B9 and the
      2016–2023 posts).
@@ -713,7 +728,6 @@ new or contradict those docs are listed here.
    - the hotlinked Wikimedia image on `9c-south-africa-revision` (self-host needs his OK);
    - the remaining `9g-australia-vocab-practice` "Green Line" description (accepted-file list,
      ask first);
-   - PR #67, which isn't from this work, still needs review.
 5. **Under-16 consent:** the banners ask under-16s to check with their parents, but DSGVO Art. 8
    means a child's click alone may not be valid consent. Get specialist advice if the analytics
    numbers matter.
@@ -748,7 +762,7 @@ No live WordPress write was made:
   429 words) also describes the Abitur packs as three task types, when there are four
   (mediation is missing). Stub it or noindex it.
 - **D15 is bigger than filed.** See the replacement text under D below.
-- **More PRs from the same session, all open and unmerged:**
+- **More PRs from the same session** (all merged by 2026-10-05; see "Current status"):
   - **#81:** internal link checker (repo-health 6).
   - **#82:** 61 pages scrolled sideways at 390px; all 291 now fit (repo-health 8).
   - **#83:** the 18 `themen/` pages had about 400 unnamed selects; adds a check that every
@@ -907,9 +921,9 @@ and Tier 4 above for the full executed record. What's left:
    confirmed to exist (8, via the sitemap, 2026-10-03); what to do with them is Tier 8 §B. Items 4 (the 5 proposed service landing pages +
    "8-week plan" Course schema) and 5 (the 1763/1997 CRDT trap, not hit this round) remain open,
    item 4 specifically as a content decision for Shaun rather than a schema task.
-5. **Tier 8 SEO/GEO review.** Repo work and the tracking fix are done (2026-10-04). What's left
-   is listed under "▶ Current status" in Tier 8: the privacy policy, WP settings, #86 and the
-   content decisions.
+5. **Tier 8 SEO/GEO review.** Repo work and the tracking fix are done (2026-10-04); #86 (hub
+   titles) merged 2026-10-05. What's left is listed under "▶ Current status" in Tier 8: the
+   privacy policy, WP settings, exercise titles and the content decisions.
 
 _Closed: T3 approach (2026-08-05, no plan upgrade near-term); Crowdsignal export (not needed —
 T1 rebuilt natively); T5 scope (standalone page); IT email policy (writing tasks only);
