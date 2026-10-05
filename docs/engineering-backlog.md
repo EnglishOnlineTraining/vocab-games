@@ -11,9 +11,14 @@ Status key: **Open** (worth doing, not started) · **Already done** (skip) · **
 
 ## Open
 
-- **Linting — ESLint/Prettier for the repo's JS.** Real work, not a tweak: there is currently no
-  `package.json` at all (confirmed 2026-08-27) — this project is deliberately build-less per its
-  own description. Introducing lint/format tooling is a genuine decision, not a drop-in.
+Nothing. Every item filed here is either done (below) or rejected.
+
+## Rejected — don't re-add
+
+- **Linting — ESLint/Prettier for the repo's JS.** Shaun's call 2026-08-27: the repo stays
+  dependency-free (recorded under "Rejected, with reasons" in `docs/eol-backlog-plan.md`; this
+  file listed it as open by mistake until 2026-10-05). Checks that earn their place are written
+  in plain Node instead, in the build graph (`scripts/pipeline.js`).
 
 ## Done since this list was filed (checked 2026-10-05)
 
