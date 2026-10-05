@@ -1134,6 +1134,13 @@
         "heading": null,
         "cards": [
           {
+            "href": "business-needs-analysis.html",
+            "icon": "🧭",
+            "title": "Needs Analysis",
+            "meta": "New course? Tell me about your job, goals &amp; current English (about 15 minutes)",
+            "tag": "Course planning"
+          },
+          {
             "href": "be-job-interviews.html",
             "icon": "💼",
             "title": "Job Interviews",
@@ -1270,6 +1277,7 @@
       }
     ],
     "pinned": [
+      "business-needs-analysis.html",
       "business.html"
     ]
   },
