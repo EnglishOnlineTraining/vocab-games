@@ -20,6 +20,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # the pre-publish gate diffs against the base branch
 
       - uses: actions/setup-node@v4
         with:
@@ -33,3 +35,20 @@ jobs:
       # generators produce — including a stale docs/build-graph.mmd.
       - name: Check generated files are up to date
         run: node scripts/build.js --check
+
+      # The pre-publish gate: a page this PR ADDS gets the per-page checks the
+      # drafting skills run by hand (verify-exercise.js — TOTAL_STEPS, scoreKey,
+      # UNIT, state.scores, leftover TODOs, and the webhook its prefix routes to).
+      # Added pages only: many legacy pages predate these conventions.
+      - name: Verify exercise pages added by this PR
+        if: github.event_name == 'pull_request'
+        env:
+          BASE: ${{ github.base_ref }}
+        run: |
+          fail=0
+          for f in $(git diff --name-only --diff-filter=A "origin/$BASE...HEAD" -- '*.html'); do
+            case "$f" in */*|_*) continue ;; esac
+            grep -q 'exercise\.js' "$f" || continue
+            node scripts/verify-exercise.js "$f" || fail=1
+          done
+          exit $fail

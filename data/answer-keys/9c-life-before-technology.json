@@ -10,56 +10,64 @@
      "accept": [
       "used to"
      ],
-     "label": "1. People"
+     "label": "1. People ___ write letters",
+     "why": "'Used to' describes a past habit; people wrote letters regularly before email."
     },
     "g2": {
      "correct": "didn't use to",
      "accept": [
       "didn't use to"
      ],
-     "label": "2. Children"
+     "label": "2. Children ___ have smartphones",
+     "why": "Smartphones didn't exist, so it's negative; after 'didn't' we write 'use to', not 'used to'."
     },
     "g3": {
      "correct": "used to",
      "accept": [
       "used to"
      ],
-     "label": "3. My grandad"
+     "label": "3. Grandad ___ repair his radio",
+     "why": "A repeated past action is described with 'used to' + infinitive."
     },
     "g4": {
      "correct": "didn't use to",
      "accept": [
       "didn't use to"
      ],
-     "label": "4. Families"
+     "label": "4. Families ___ have the internet",
+     "why": "Before the 1990s they had no internet at home, so use the negative 'didn't use to'."
     },
     "g5": {
      "correct": "used to",
      "accept": [
       "used to"
      ],
-     "label": "5. People"
+     "label": "5. People ___ meet friends in person",
+     "why": "This was a past habit that is less common now, so use 'used to'."
     },
     "g6": {
      "correct": "didn't use to",
      "accept": [
       "didn't use to"
      ],
-     "label": "6. Students"
+     "label": "6. Students ___ type their homework",
+     "why": "They wrote by hand, so it's negative: 'didn't use to' (no -d after didn't)."
     },
     "g7": {
      "correct": "used to",
      "accept": [
       "used to"
      ],
-     "label": "7. My mum"
+     "label": "7. My mum ___ listen to the radio",
+     "why": "'Every morning' shows a past routine, so use 'used to'."
     },
     "g8": {
      "correct": "didn't use to",
      "accept": [
       "didn't use to"
      ],
-     "label": "8. Shops"
+     "label": "8. Shops ___ accept online payments",
+     "why": "Everyone paid with cash, so the sentence is negative: 'didn't use to'."
     }
    }
   },
@@ -72,56 +80,64 @@
      "accept": [
       "used to walk"
      ],
-     "label": "1. My grandmother"
+     "label": "1. My grandmother ___ to school",
+     "why": "'Every day when she was young' is a past habit, so use 'used to walk'."
     },
     "g2": {
      "correct": "walked",
      "accept": [
       "walked"
      ],
-     "label": "2. Yesterday, she"
+     "label": "2. Yesterday, she ___ to the shop",
+     "why": "'Yesterday' is one finished action, so use the simple past, not 'used to'."
     },
     "g3": {
      "correct": "visited",
      "accept": [
       "visited"
      ],
-     "label": "3. Last week, our class"
+     "label": "3. Last week, our class ___ a museum",
+     "why": "'Last week' is a single past event, so use the simple past."
     },
     "g4": {
      "correct": "used to record",
      "accept": [
       "used to record"
      ],
-     "label": "4. In the 1980s, people"
+     "label": "4. In the 1980s, people ___ songs",
+     "why": "This was a common habit over a period of time, so use 'used to'."
     },
     "g5": {
      "correct": "used to write",
      "accept": [
       "used to write"
      ],
-     "label": "5. Grandad"
+     "label": "5. Grandad ___ every month for years",
+     "why": "'Every single month for years' is a repeated past habit: 'used to write'."
     },
     "g6": {
      "correct": "wrote",
      "accept": [
       "wrote"
      ],
-     "label": "6. He"
+     "label": "6. He ___ his last letter in 1995",
+     "why": "One action at a specific time (1995) takes the simple past."
     },
     "g7": {
      "correct": "used to use",
      "accept": [
       "used to use"
      ],
-     "label": "7. Before computers, workers"
+     "label": "7. Before computers, workers ___ typewriters",
+     "why": "A general past situation that is no longer true takes 'used to' + infinitive."
     },
     "g8": {
      "correct": "used a typewriter",
      "accept": [
       "used a typewriter"
      ],
-     "label": "8. On that day, the reporter"
+     "label": "8. On that day, the reporter ___",
+     "why": "'On that day' is one specific occasion, so use the simple past, not 'used to'."
     }
    }
   }

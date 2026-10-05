@@ -186,8 +186,8 @@ function count(n, word, plural) {
 const COLLECTION_YEARS = [
   ['7',  'Year 7',  'Grammar, reading &amp; vocabulary',
                     'Reading, writing &amp; comprehension'],
-  ['8',  'Year 8',  'Green Line 4 · ~B1',
-                    'Orange Line 4 · ~A2'],
+  ['8',  'Year 8',  'USA · ~B1',
+                    'USA regions · ~A2'],
   ['9',  'Year 9',  'California, Australia, Canada, Ireland, India, New Zealand &amp; literature',
                     'South Africa, work, media &amp; grammar'],
   ['10', 'Year 10', 'Scotland, Black America &amp; youth culture',

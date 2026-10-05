@@ -10,42 +10,48 @@
      "accept": [
       "screen"
      ],
-     "label": "…es a day. A recent survey found that students spend almost four hours a day looking at a 1"
+     "label": "1. Looking at a ___",
+     "why": "A screen is the display on a phone or computer; 'scream' and 'scene' don't fit."
     },
     "g2": {
      "correct": "designed",
      "accept": [
       "designed"
      ],
-     "label": "…y they can't stop scrolling even when they want to. Experts say this is because apps are 2"
+     "label": "2. Apps are ___ to keep users interested",
+     "why": "'Designed to' means made on purpose for something."
     },
     "g3": {
      "correct": "concentration",
      "accept": [
       "concentration"
      ],
-     "label": "Too much screen time can affect your 3"
+     "label": "3. Affect your ___ at school",
+     "why": "Concentration is your ability to focus, which too much screen time can affect."
     },
     "g4": {
      "correct": "limit",
      "accept": [
       "limit"
      ],
-     "label": "… teenagers manage to use their phones in a healthy way — for example, by setting a daily 4"
+     "label": "4. Setting a daily ___",
+     "why": "A daily limit is the maximum time you allow yourself on an app."
     },
     "g5": {
      "correct": "suggest",
      "accept": [
       "suggest"
      ],
-     "label": "Doctors also 5"
+     "label": "5. Doctors also ___ putting your phone away",
+     "why": "'Suggest' + -ing means to give advice; 'suspect' and 'support' don't fit."
     },
     "g6": {
      "correct": "tool",
      "accept": [
       "tool"
      ],
-     "label": "In the end, a phone is just a 6"
+     "label": "6. A phone is just a ___",
+     "why": "A tool is something you use to do a job, so it depends on how you use it."
     }
    }
   },
@@ -58,56 +64,64 @@
      "accept": [
       "watching"
      ],
-     "label": "1. I really enjoy"
+     "label": "1. I really enjoy ___ videos",
+     "why": "'Enjoy' is always followed by the -ing form."
     },
     "g2": {
      "correct": "checking",
      "accept": [
       "checking"
      ],
-     "label": "2. She's trying to avoid"
+     "label": "2. She's trying to avoid ___ her phone",
+     "why": "'Avoid' is followed by the -ing form."
     },
     "g3": {
      "correct": "losing",
      "accept": [
       "losing"
      ],
-     "label": "3. He keeps"
+     "label": "3. He keeps ___ track of time",
+     "why": "'Keep' meaning 'continue' is followed by the -ing form."
     },
     "g4": {
      "correct": "uploading",
      "accept": [
       "uploading"
      ],
-     "label": "4. Have you finished"
+     "label": "4. Have you finished ___ the photos?",
+     "why": "'Finish' is followed by the -ing form."
     },
     "g5": {
      "correct": "turning",
      "accept": [
       "turning"
      ],
-     "label": "5. Our teacher suggested"
+     "label": "5. Our teacher suggested ___ off notifications",
+     "why": "'Suggest' is followed by the -ing form, not the to-infinitive."
     },
     "g6": {
      "correct": "lowering",
      "accept": [
       "lowering"
      ],
-     "label": "6. Would you mind"
+     "label": "6. Would you mind ___ the volume?",
+     "why": "'Would you mind' is followed by the -ing form."
     },
     "g7": {
      "correct": "speaking",
      "accept": [
       "speaking"
      ],
-     "label": "7. I practise"
+     "label": "7. I practise ___ English",
+     "why": "'Practise' is followed by the -ing form."
     },
     "g8": {
      "correct": "playing",
      "accept": [
       "playing"
      ],
-     "label": "8. My brother finally gave up"
+     "label": "8. My brother gave up ___ that game",
+     "why": "'Give up' is followed by the -ing form."
     }
    }
   },
@@ -120,56 +134,64 @@
      "accept": [
       "to reduce"
      ],
-     "label": "1. I want"
+     "label": "1. I want ___ my screen time",
+     "why": "'Want' is followed by the to-infinitive."
     },
     "g2": {
      "correct": "to delete",
      "accept": [
       "to delete"
      ],
-     "label": "2. She decided"
+     "label": "2. She decided ___ the app",
+     "why": "'Decide' is followed by the to-infinitive."
     },
     "g3": {
      "correct": "to have",
      "accept": [
       "to have"
      ],
-     "label": "3. We're planning"
+     "label": "3. We're planning ___ a screen-free evening",
+     "why": "'Plan' is followed by the to-infinitive."
     },
     "g4": {
      "correct": "to get",
      "accept": [
       "to get"
      ],
-     "label": "4. He hopes"
+     "label": "4. He hopes ___ better",
+     "why": "'Hope' is followed by the to-infinitive."
     },
     "g5": {
      "correct": "to switch",
      "accept": [
       "to switch"
      ],
-     "label": "5. I promise"
+     "label": "5. I promise ___ my phone off",
+     "why": "'Promise' is followed by the to-infinitive."
     },
     "g6": {
      "correct": "to finish",
      "accept": [
       "to finish"
      ],
-     "label": "6. She finally managed"
+     "label": "6. She finally managed ___ her homework",
+     "why": "'Manage' is followed by the to-infinitive."
     },
     "g7": {
      "correct": "to let",
      "accept": [
       "to let"
      ],
-     "label": "7. My parents refuse"
+     "label": "7. My parents refuse ___ me use my phone",
+     "why": "'Refuse' is followed by the to-infinitive."
     },
     "g8": {
      "correct": "to ignore",
      "accept": [
       "to ignore"
      ],
-     "label": "8. We can't afford"
+     "label": "8. We can't afford ___ how much time",
+     "why": "'Can't afford' is followed by the to-infinitive."
     }
    }
   }

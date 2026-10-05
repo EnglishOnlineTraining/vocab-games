@@ -10,56 +10,64 @@
      "accept": [
       "founded"
      ],
-     "label": "1 Several famous technology companies were"
+     "label": "1. Companies were ___ in California",
+     "why": "To found a company means to start it."
     },
     "g2": {
      "correct": "entrepreneur",
      "accept": [
       "entrepreneur"
      ],
-     "label": "2 An"
+     "label": "2. An ___ starts a business",
+     "why": "An entrepreneur is a person who starts a business and takes the risk."
     },
     "g3": {
      "correct": "venture capital",
      "accept": [
       "venture capital"
      ],
-     "label": "3 Many startups need"
+     "label": "3. Startups need ___",
+     "why": "Venture capital is money that investors put into new, risky companies."
     },
     "g4": {
      "correct": "prototype",
      "accept": [
       "prototype"
      ],
-     "label": "4 The team tested a small"
+     "label": "4. A small ___",
+     "why": "A prototype is an early test version of a product."
     },
     "g5": {
      "correct": "launch",
      "accept": [
       "launch"
      ],
-     "label": "5 The company plans to"
+     "label": "5. Plans to ___ its new product",
+     "why": "To launch a product means to make it available to the public."
     },
     "g6": {
      "correct": "headquarters",
      "accept": [
       "headquarters"
      ],
-     "label": "6 A company’s main office is often called its"
+     "label": "6. A company's main office",
+     "why": "A company's headquarters is its main office."
     },
     "g7": {
      "correct": "commute",
      "accept": [
       "commute"
      ],
-     "label": "7 A long"
+     "label": "7. A long ___",
+     "why": "A commute is the daily journey between home and work."
     },
     "g8": {
      "correct": "regulation",
      "accept": [
       "regulation"
      ],
-     "label": "8 Privacy laws are one kind of government"
+     "label": "8. Government ___",
+     "why": "A regulation is an official rule; privacy laws are one kind."
     }
    }
   },
@@ -72,56 +80,64 @@
      "accept": [
       "would launch"
      ],
-     "label": "1 The founder said the app"
+     "label": "1. The founder said the app ___",
+     "why": "Reported speech: 'will launch' moves back to 'would launch' after 'said'."
     },
     "g2": {
      "correct": "were testing",
      "accept": [
       "were testing"
      ],
-     "label": "2 The engineers explained that they"
+     "label": "2. The engineers explained that they ___",
+     "why": "Reported speech: present progressive 'are testing' becomes 'were testing'."
     },
     "g3": {
      "correct": "will invest",
      "accept": [
       "will invest"
      ],
-     "label": "3 Analysts predict that many companies"
+     "label": "3. Analysts predict that companies ___",
+     "why": "'Predict' is in the present, so the future 'will invest' stays unchanged."
     },
     "g4": {
      "correct": "was applying",
      "accept": [
       "was applying"
      ],
-     "label": "4 A student said she"
+     "label": "4. A student said she ___",
+     "why": "Reported speech: 'I am applying' becomes 'she was applying'."
     },
     "g5": {
      "correct": "had risen",
      "accept": [
       "had risen"
      ],
-     "label": "5 The article reported that rents"
+     "label": "5. The article reported that rents ___",
+     "why": "Reported speech: present perfect 'have risen' moves back to 'had risen'."
     },
     "g6": {
      "correct": "succeeds",
      "accept": [
       "succeeds"
      ],
-     "label": "6 If the trial"
+     "label": "6. If the trial ___, investors will fund",
+     "why": "Conditional type 1: if + present simple, then will + infinitive."
     },
     "g7": {
      "correct": "is going to present",
      "accept": [
       "is going to present"
      ],
-     "label": "7 The team"
+     "label": "7. The team ___ the product next week",
+     "why": "'Going to' describes a plan for the future, here 'next week'."
     },
     "g8": {
      "correct": "had changed",
      "accept": [
       "had changed"
      ],
-     "label": "8 The CEO said remote work"
+     "label": "8. The CEO said remote work ___",
+     "why": "Reported speech: 'has changed' moves back to 'had changed' after 'said'."
     }
    }
   }

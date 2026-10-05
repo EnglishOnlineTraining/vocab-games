@@ -10,6 +10,10 @@ This file is a synthesis of `docs/eol-backlog-plan.md` (Tiers 5, 6, 7 and "Open 
 the full history and reasoning behind any item here. Nothing in this file should be treated as more
 authoritative than those two documents; if anything here seems to conflict with them, trust them.
 
+
+> **2026-10-04:** parts of this brief are stale. The testimonial pages exist (8 of them), and
+> bucket C was resolved on 2026-08-22. For the current list, read "▶ Current status" under
+> Tier 8 in `docs/eol-backlog-plan.md` first.
 ---
 
 ## Read this first — safety rules

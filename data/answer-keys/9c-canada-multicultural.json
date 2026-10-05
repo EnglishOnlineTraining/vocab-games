@@ -10,56 +10,64 @@
      "accept": [
       "are spoken"
      ],
-     "label": "1. English and French"
+     "label": "1. English and French ___ in Canada",
+     "why": "Present passive: plural subject (English and French) + are + past participle."
     },
     "g2": {
      "correct": "is produced",
      "accept": [
       "is produced"
      ],
-     "label": "2. Maple syrup"
+     "label": "2. Maple syrup ___ mostly in Quebec",
+     "why": "Present passive with a singular subject: is + past participle."
     },
     "g3": {
      "correct": "are celebrated",
      "accept": [
       "are celebrated"
      ],
-     "label": "3. Many festivals"
+     "label": "3. Many festivals ___",
+     "why": "'Festivals' is plural, so the present passive is 'are celebrated'."
     },
     "g4": {
      "correct": "is played",
      "accept": [
       "is played"
      ],
-     "label": "4. Ice hockey"
+     "label": "4. Ice hockey ___",
+     "why": "Ice hockey doesn't play itself, so use the passive: singular subject + is + played."
     },
     "g5": {
      "correct": "are welcomed",
      "accept": [
       "are welcomed"
      ],
-     "label": "5. New immigrants"
+     "label": "5. New immigrants ___",
+     "why": "'Immigrants' is plural and receives the action, so use 'are welcomed'."
     },
     "g6": {
      "correct": "is protected",
      "accept": [
       "is protected"
      ],
-     "label": "6. Multiculturalism"
+     "label": "6. Multiculturalism ___ by Canadian law",
+     "why": "'By Canadian law' shows the passive; singular subject + is + protected."
     },
     "g7": {
      "correct": "is seen",
      "accept": [
       "is seen"
      ],
-     "label": "7. Diversity"
+     "label": "7. Diversity ___ as a strength",
+     "why": "Diversity is singular and receives the action, so the present passive is 'is seen'."
     },
     "g8": {
      "correct": "are spoken",
      "accept": [
       "are spoken"
      ],
-     "label": "8. Different languages"
+     "label": "8. Different languages ___ at home",
+     "why": "'Languages' is plural, so the present passive is 'are spoken'."
     }
    }
   },
@@ -72,56 +80,64 @@
      "accept": [
       "was made"
      ],
-     "label": "1. Multiculturalism"
+     "label": "1. ___ official policy in 1971",
+     "why": "'In 1971' needs the past passive; singular subject + was + made."
     },
     "g2": {
      "correct": "was formed",
      "accept": [
       "was formed"
      ],
-     "label": "2. Canada"
+     "label": "2. Canada ___ in 1867",
+     "why": "Past passive with a singular subject: was + past participle."
     },
     "g3": {
      "correct": "were welcomed",
      "accept": [
       "were welcomed"
      ],
-     "label": "3. Thousands of new immigrants"
+     "label": "3. Thousands of new immigrants ___",
+     "why": "'Immigrants' is plural and 'last year' is past, so use 'were welcomed'."
     },
     "g4": {
      "correct": "was organised",
      "accept": [
       "was organised"
      ],
-     "label": "4. The festival"
+     "label": "4. The festival ___ by volunteers",
+     "why": "'By local volunteers' shows the passive; singular past is 'was organised'."
     },
     "g5": {
      "correct": "was passed",
      "accept": [
       "was passed"
      ],
-     "label": "5. The law"
+     "label": "5. The law ___ by parliament",
+     "why": "Singular subject + past passive: was + passed."
     },
     "g6": {
      "correct": "were shared",
      "accept": [
       "were shared"
      ],
-     "label": "6. Traditional foods"
+     "label": "6. Traditional foods ___",
+     "why": "'Foods' is plural, so the past passive is 'were shared'."
     },
     "g7": {
      "correct": "was filmed",
      "accept": [
       "was filmed"
      ],
-     "label": "7. The documentary"
+     "label": "7. The documentary ___",
+     "why": "The documentary is singular and receives the action: was + filmed."
     },
     "g8": {
      "correct": "were invited",
      "accept": [
       "were invited"
      ],
-     "label": "8. The new citizens"
+     "label": "8. The new citizens ___",
+     "why": "'Citizens' is plural, so the past passive is 'were invited'."
     }
    }
   }

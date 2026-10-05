@@ -10,49 +10,56 @@
      "accept": [
       "be picked"
      ],
-     "label": "1. Flowers must not Gap 1 (pick)"
+     "label": "1. Flowers must not ___ (pick)",
+     "why": "Passive after a modal: modal + be + past participle."
     },
     "g2": {
      "correct": "be thrown",
      "accept": [
       "be thrown"
      ],
-     "label": "2. Litter must not Gap 2 (throw)"
+     "label": "2. Litter must not ___ (throw)",
+     "why": "Modal + be + past participle; 'throw' has the irregular participle 'thrown'."
     },
     "g3": {
      "correct": "be disturbed",
      "accept": [
       "be disturbed"
      ],
-     "label": "3. Animals should not Gap 3 (disturb)"
+     "label": "3. Animals should not ___ (disturb)",
+     "why": "Passive after 'should not': be + past participle."
     },
     "g4": {
      "correct": "be left",
      "accept": [
       "be left"
      ],
-     "label": "4. Tracks must not Gap 4 (leave)"
+     "label": "4. Tracks must not ___ (leave)",
+     "why": "Modal + be + past participle; 'leave' becomes 'left'."
     },
     "g5": {
      "correct": "be touched",
      "accept": [
       "be touched"
      ],
-     "label": "5. Aboriginal sites must not Gap 5 (touch)"
+     "label": "5. Aboriginal sites must not ___ (touch)",
+     "why": "The sites receive the action, so use modal + be + past participle."
     },
     "g6": {
      "correct": "be used",
      "accept": [
       "be used"
      ],
-     "label": "6. The bush should not Gap 6 (use)"
+     "label": "6. The bush should not ___ (use)",
+     "why": "Passive after 'should not': be + past participle."
     },
     "g7": {
      "correct": "be damaged",
      "accept": [
       "be damaged"
      ],
-     "label": "7. Trees and plants must not Gap 7 (damage)"
+     "label": "7. Trees and plants must not ___ (damage)",
+     "why": "Modal + be + past participle: must not be damaged."
     }
    },
    "typed": true
@@ -66,14 +73,16 @@
      "accept": [
       "be found"
      ],
-     "label": "1. Snakes can Gap 1 (find)"
+     "label": "1. Snakes can ___ (find)",
+     "why": "Passive after a modal: can + be + past participle."
     },
     "g2": {
      "correct": "to be bitten",
      "accept": [
       "to be bitten"
      ],
-     "label": "…in all parts of Australia. Not all of them are poisonous — but you don’t want Gap 2 (bite)"
+     "label": "2. You don't want ___ (bite)",
+     "why": "'Want' takes the to-infinitive, so the passive is 'to be' + past participle."
     },
     "g3": {
      "correct": "to be left alone",
@@ -81,49 +90,56 @@
       "to be left alone",
       "to be left"
      ],
-     "label": "2. Snakes are shy creatures that like Gap 3 (leave alone)"
+     "label": "3. Snakes like ___ (leave alone)",
+     "why": "'Like' + passive to-infinitive: to be + past participle."
     },
     "g4": {
      "correct": "be given",
      "accept": [
       "be given"
      ],
-     "label": "… Remember that the snake is probably just as frightened as you are and should Gap 4 (give)"
+     "label": "4. The snake should ___ (give) space",
+     "why": "Passive after 'should': be + past participle."
     },
     "g5": {
      "correct": "be shown",
      "accept": [
       "be shown"
      ],
-     "label": "4. Snakes must Gap 5 (show)"
+     "label": "5. Snakes must ___ (show) respect",
+     "why": "Passive after 'must': be + past participle."
     },
     "g6": {
      "correct": "be picked up",
      "accept": [
       "be picked up"
      ],
-     "label": "4. Snakes must Gap 5 (show) (show) respect. They should never Gap 6 (pick up)"
+     "label": "6. They should never ___ (pick up)",
+     "why": "Modal + be + past participle; the particle 'up' stays after the verb."
     },
     "g7": {
      "correct": "be chased",
      "accept": [
       "be chased"
      ],
-     "label": "… Gap 5 (show) (show) respect. They should never Gap 6 (pick up) (pick up) or Gap 7 (chase)"
+     "label": "7. … or ___ (chase)",
+     "why": "Still after 'should never': be + past participle."
     },
     "g8": {
      "correct": "to be taken",
      "accept": [
       "to be taken"
      ],
-     "label": "5. If you’re bitten, you’ll need Gap 8 (take)"
+     "label": "8. You'll need ___ (take) to hospital",
+     "why": "'Need' takes the to-infinitive, so the passive is 'to be taken'."
     },
     "g9": {
      "correct": "be treated",
      "accept": [
       "be treated"
      ],
-     "label": "…en, you’ll need Gap 8 (take) (take) to hospital immediately. Snakebites must Gap 9 (treat)"
+     "label": "9. Snakebites must ___ (treat)",
+     "why": "Passive after 'must': be + past participle."
     }
    },
    "typed": true
@@ -137,14 +153,16 @@
      "accept": [
       "was just told"
      ],
-     "label": "Hey guys! Still hanging out in Sydney?! You won’t believe what I Gap 1 (just / tell)"
+     "label": "1. You won't believe what I ___ (just / tell)",
+     "why": "Past passive: was + told, with 'just' after the auxiliary."
     },
     "g2": {
      "correct": "was last seen",
      "accept": [
       "was last seen"
      ],
-     "label": "He Gap 2 (last / see)"
+     "label": "2. He ___ (last / see)",
+     "why": "Past passive with 'last' after 'was': was last seen."
     },
     "g3": {
      "correct": "will be rescued",
@@ -153,7 +171,8 @@
       "'ll be rescued",
       "is rescued"
      ],
-     "label": "…his tour. And guess what: He’s my age! Isn’t that weird?! Anyway, I hope he Gap 3 (rescue)"
+     "label": "3. I hope he ___ (rescue)",
+     "why": "Hoping about the future: will be + past participle (or present passive 'is rescued')."
     },
     "g4": {
      "correct": "could be smelled",
@@ -161,7 +180,8 @@
       "could be smelled",
       "could be smelt"
      ],
-     "label": "… I still love it! We saw some bushfires in the distance, and the smoke Gap 4 (can – smell)"
+     "label": "4. The smoke ___ (can – smell)",
+     "why": "Past of 'can' in the passive: could be + past participle."
     },
     "g5": {
      "correct": "didn't want to be shown around",
@@ -169,28 +189,32 @@
       "didn't want to be shown around",
       "did not want to be shown around"
      ],
-     "label": "Yesterday I went on my outback tour. You know I Gap 5 (not want – show around)"
+     "label": "5. I ___ (not want – show around)",
+     "why": "Past negative 'didn't want' + passive to-infinitive 'to be shown around'."
     },
     "g6": {
      "correct": "were told",
      "accept": [
       "were told"
      ],
-     "label": "… (not want – show around) in a group, but then I decided to listen to what we Gap 6 (tell)"
+     "label": "6. What we ___ (tell) at the hostel",
+     "why": "Past passive with 'we': were + past participle."
     },
     "g7": {
      "correct": "was told",
      "accept": [
       "was told"
      ],
-     "label": "… so impressed when I saved her from this weird-looking thorny devil lizard. I Gap 7 (tell)"
+     "label": "7. I ___ (tell) by the guide",
+     "why": "'By the guide' shows the passive; past with 'I' is 'was told'."
     },
     "g8": {
      "correct": "were brought",
      "accept": [
       "were brought"
      ],
-     "label": "We saw lots of kangaroos and there are even camels around! They Gap 8 (bring)"
+     "label": "8. They ___ (bring) to Australia",
+     "why": "Past passive: the camels were brought by people a long time ago."
     }
    },
    "typed": true

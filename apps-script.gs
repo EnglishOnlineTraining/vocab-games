@@ -23,6 +23,21 @@ function doPost(e) {
   }
 }
 
+/**
+ * Spreadsheet formula injection (docs/CODE-REVIEW-FINDINGS.md #2). A submitted
+ * value starting with = + - @ (or a tab/CR) would land in the sheet as a live
+ * formula: a student typing =HYPERLINK(...) or =IMPORTRANGE(...) into a textarea.
+ * A leading apostrophe makes Sheets store it as text; the apostrophe itself is
+ * not shown and not part of the cell's value.
+ */
+function safeCell(v) {
+  return (typeof v === 'string' && /^[=+\-@\t\r]/.test(v)) ? "'" + v : v;
+}
+
+function appendRowSafe(sheet, row) {
+  sheet.appendRow(row.map(safeCell));
+}
+
 function getSheet(ss, name, headers) {
   var sheet = ss.getSheetByName(name);
   if (!sheet) { sheet = ss.insertSheet(name); sheet.appendRow(headers); }
@@ -67,7 +82,7 @@ function routeSubmission(ss, data) {
   // ----- Custom layouts (bespoke columns) -----
   if (unit === 'california-exercises') {
     var sheet = getSheet(ss, tabName, ['Timestamp','Name','Class','Ex 12','Ex 13','Ex 14','Ex 15','Ex 18','Ex 19']);
-    sheet.appendRow([new Date(), data.name||'', data.cls||'',
+    appendRowSafe(sheet, [new Date(), data.name||'', data.cls||'',
       JSON.stringify(data.ex12||''), JSON.stringify(data.ex13||''),
       JSON.stringify(data.ex14||''), JSON.stringify(data.ex15||''),
       JSON.stringify(data.ex18||''), JSON.stringify(data.ex19||'')]);
@@ -79,19 +94,19 @@ function routeSubmission(ss, data) {
     var gaps=[1,2,3,4,5,6,7,8].map(function(i){return 'Gap '+i+': '+(exB['g'+i]||'(blank)');}).join('\n');
     var trs=[1,2,3,4,5,6].map(function(i){return i+'. '+(exC['t'+i]||'(blank)');}).join('\n');
     var sheet = getSheet(ss, tabName, ['Timestamp','Name','Class','Ex A – Problems','Ex A – Connection','Ex B – Modal gaps','Ex C – Transforms','Ex D – Paragraph','Ex D – Opinion']);
-    sheet.appendRow([new Date(), data.name||'', data.cls||'', exA.a||'', exA.b||'', gaps, trs, exD.para||'', exD.opinion||'']);
+    appendRowSafe(sheet, [new Date(), data.name||'', data.cls||'', exA.a||'', exA.b||'', gaps, trs, exD.para||'', exD.opinion||'']);
     return;
   }
 
   if (unit === '7g-amazon-rainforest-reading') {
     var sheet = getSheet(ss, tabName, ['Timestamp','Name','Class','Ex A – Finding Facts','Ex B – More Detail']);
-    sheet.appendRow([new Date(), data.name||'', data.cls||'', JSON.stringify(data.exA||{}), JSON.stringify(data.exB||{})]);
+    appendRowSafe(sheet, [new Date(), data.name||'', data.cls||'', JSON.stringify(data.exA||{}), JSON.stringify(data.exB||{})]);
     return;
   }
 
   if (unit === '9g-ev-renewable-energy-reading') {
     var sheet = getSheet(ss, tabName, ['Timestamp','Name','Class','Ex A – Electric Vehicles','Ex B – Renewable Energy']);
-    sheet.appendRow([new Date(), data.name||'', data.cls||'', JSON.stringify(data.exA||{}), JSON.stringify(data.exB||{})]);
+    appendRowSafe(sheet, [new Date(), data.name||'', data.cls||'', JSON.stringify(data.exA||{}), JSON.stringify(data.exB||{})]);
     return;
   }
 
@@ -103,7 +118,7 @@ function routeSubmission(ss, data) {
   var sheet = ss.getSheetByName(tabName);
   if (!sheet) {
     sheet = ss.insertSheet(tabName);
-    sheet.appendRow(headers);
+    appendRowSafe(sheet, headers);   // headers are the submitted keys
   } else {
     // If this exercise introduces answer keys not yet in the header row, append them.
     var existing = sheet.getRange(1, 1, 1, Math.max(sheet.getLastColumn(), 1)).getValues()[0];
@@ -111,7 +126,7 @@ function routeSubmission(ss, data) {
     keys.forEach(function(k){
       if (existing.indexOf(k) === -1) { existing.push(k); added = true; }
     });
-    if (added) sheet.getRange(1, 1, 1, existing.length).setValues([existing]);
+    if (added) sheet.getRange(1, 1, 1, existing.length).setValues([existing.map(safeCell)]);
     headers = existing;
   }
 
@@ -119,5 +134,5 @@ function routeSubmission(ss, data) {
   var rowMap = { 'Timestamp': new Date(), 'Name': data.name||'', 'Class': data.cls||'' };
   keys.forEach(function(k){ rowMap[k] = flatten(data[k]); });
   var row = headers.map(function(h){ return (h in rowMap) ? rowMap[h] : ''; });
-  sheet.appendRow(row);
+  appendRowSafe(sheet, row);
 }
