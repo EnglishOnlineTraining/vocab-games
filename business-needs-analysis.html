@@ -420,7 +420,8 @@ function summaryRows() {
   add('Most difficult', state.hardest); add('Previous learning', state.pastLearning);
   const hw = document.querySelector(`#homework option[value="${CSS.escape(state.homework || '')}"]`);
   add('Time outside lessons', state.homework && hw ? hw.textContent : '');
-  add(`Writing sample (${wordCount(state.writing || '')} words)`, state.writing);
+  add('Writing sample', state.writing);
+  add('Word count', String(wordCount(state.writing || '')));
   return rows;
 }
 
