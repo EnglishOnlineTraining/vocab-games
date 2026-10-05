@@ -1395,6 +1395,25 @@ There is also an **IndexNow plugin active on the WordPress site** (Microsoft Bin
 covers `englishonline.training` only. It cannot see `activities.englishonline.training`, which is
 GitHub Pages — that is what this script is for.
 
+**The plugin only submits a page when it is published or edited** — it never backfills. It was
+installed on 2026-09-03, so on 2026-10-02 Bing's report for `englishonline.training` showed
+~30 URLs: exactly the pages edited since then. Nothing was broken (the plugin's
+`wp_indexnow_passed_submissions` table, visible in the nightly backup stats, had 42 rows and 0
+failures). The fix was a one-off bootstrap on 2026-10-03: all 230 subdomain URLs via
+`indexnow-submit.js --all`, and all 82 WordPress sitemap URLs posted directly to
+`api.indexnow.org` with the plugin's key. Both returned HTTP 200. The snapshot of what was
+submitted is `docs/indexable-urls-2026-10-02.md`.
+
+- **The plugin's key is not shown in its settings UI.** Read it, logged in as admin, from
+  `GET /wp-json/indexnow/v_1.0.4/apiKey` with the `X-WP-Nonce` from
+  `indexnow_wpr_object.api_nonce`. It is served publicly at
+  `https://englishonline.training/<key>.txt`, as the protocol requires.
+- **The plugin's dashboard only lists its own submissions from the last 48 hours**, so a
+  direct API bootstrap never appears there.
+- **Don't test WordPress pages with a spoofed `bingbot` user agent.** WordPress.com returns 403
+  to a client claiming to be a search bot from a non-bot IP, which looks like the whole site is
+  blocked when it is not.
+
 ## Marking handouts — `scripts/marking-handout.js` (added 2026-09-29)
 
 Turns one sitting of one unit into printable A4 feedback sheets:
