@@ -405,6 +405,11 @@ function showStep(n) {
 
 function labelFor(list, v) { const f = list.find(x => x[0] === v); return f ? f[1] : v; }
 
+function homeworkLabel() {
+  const hw = document.querySelector(`#homework option[value="${CSS.escape(state.homework || '')}"]`);
+  return state.homework && hw ? hw.textContent : '';
+}
+
 function summaryRows() {
   const rows = [];
   const add = (q, a) => rows.push([q, a || '—']);
@@ -418,8 +423,7 @@ function summaryRows() {
   add('Main goal', state.mainGoal); add('Upcoming event', state.upcoming);
   add('Focus', (state.focus || []).map(v => labelFor(FOCUS, v)).join(', '));
   add('Most difficult', state.hardest); add('Previous learning', state.pastLearning);
-  const hw = document.querySelector(`#homework option[value="${CSS.escape(state.homework || '')}"]`);
-  add('Time outside lessons', state.homework && hw ? hw.textContent : '');
+  add('Time outside lessons', homeworkLabel());
   add('Writing sample', state.writing);
   add('Word count', String(wordCount(state.writing || '')));
   return rows;
@@ -438,9 +442,36 @@ function submitForm() {
     showError('Please tick the consent box.\nBitte bestätigen Sie die Einwilligung.');
     return;
   }
-  // apps-script.gs fills Name/Class from name/cls and makes one column per other top-level key.
-  const payload = { name: state.name, cls: state.company, unit: UNIT };
-  summaryRows().forEach(([q, a]) => { if (q !== 'Name' && q !== 'Company') payload[q] = a; });
+  // Same shape as the other Business pages: name -> "Name", cls -> "Class",
+  // every other key becomes its own column; objects become "key: value" lines.
+  const pick = (list, fn) => Object.fromEntries(list.map(fn));
+  const payload = {
+    name: state.name,
+    cls: state.company,
+    unit: UNIT,
+    email: state.email,
+    about: {
+      'Job title': state.jobTitle || '—',
+      'Department': state.department || '—',
+      'Job description': state.tasksDesc || '—',
+      'First language(s)': state.firstLang || '—',
+      'Uses English with': (state.partners || []).map(v => labelFor(PARTNERS, v)).join(', ')
+    },
+    tasks: Object.assign(
+      pick(TASKS, ([k, en]) => [en, `${labelFor(FREQ, state['freq-' + k])}; confidence ${state['conf-' + k] || '—'}/5`]),
+      { 'Other tasks': state.otherTasks || '—' }
+    ),
+    canDo: pick(CANDO, ([k, en]) => [en, labelFor(AGREE, state[k])]),
+    goals: {
+      'Main goal': state.mainGoal,
+      'Upcoming event': state.upcoming || '—',
+      'Focus': (state.focus || []).map(v => labelFor(FOCUS, v)).join(', '),
+      'Most difficult': state.hardest || '—',
+      'Previous learning': state.pastLearning || '—',
+      'Time outside lessons': homeworkLabel() || '—'
+    },
+    writing: state.writing
+  };
   const msg = document.getElementById('submitMessage');
   const next = document.getElementById('nextBtn');
   next.disabled = true;
