@@ -58,6 +58,11 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); min-
 .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
 .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
 .header-meta { font-size: .78rem; text-align: right; opacity: .9; }
+/* A page with a back link ("← Grammatik-Übungen") puts two nowrap links and the
+   step counter in one row, which is wider than a 390px phone: the page scrolled
+   sideways on ~55 pages. Let the links shrink and truncate; the counter keeps its width. */
+.header-logo { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.header-meta { flex-shrink: 0; }
 .header-meta strong { display: block; color: var(--gold); }
 .progress-track { height: 6px; background: rgba(255,255,255,.2); }
 .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }

@@ -205,6 +205,9 @@ the "which groups exist" review above rather than staying an ungoverned one-off.
 ## Tier 3 — Small, low-risk cleanups · CC
 - `/wilkommen/` typo — **DONE.** Page 771 verified live at `/willkommen/` (2026-08-07); internal
   links on the referring pages updated. Slug changes auto-redirect, so old links still resolve.
+  **REOPENED 2026-10-03:** `/wilkommen/` does not redirect any more. It returns 200 as a page of
+  its own (title "Willkommen", ~120 words), and both `/wilkommen/` and `/willkommen/` are in the
+  Jetpack sitemap. Something was published at the old slug after the rename. See Tier 8 §B.
 - California – Interactive Exercises — **DONE (2026-08-07), and deliberately NOT a directory
   entry of its own.** `california-exercises.html` is already a card inside `9g-activities.html`
   (Y9 Gymnasium), so listing it separately on WP 1763 double-counted it. The standalone button
@@ -438,6 +441,8 @@ those notes turned out to be wrong (see the 2063–2066 correction above).
   plugins, 301 redirects, SEO control. Until then no real redirects; ads/Subscribe bar stay.
 - One site-wide menu (may be moot after T3); delete orphaned block nav menu 416; replace dated
   `pub/ixion` theme. (Menu delete/assign may be MCP-doable — check when we get there.)
+  **Theme part DONE:** `pub/ixion` was replaced by the custom EOT Modern theme (Claude-maintained
+  since 2026-09-25). The menu items are unchecked.
 
 ## Tier 6 — Internal-linking + link-graph audit (2026-08-08) · CC
 Shaun asked for an internal-linking pass across **both** surfaces (WordPress + activities repo).
@@ -635,6 +640,10 @@ based on a stale picture of the site — verify before building anything, don't 
    have been. **Needs a direct wp-admin sidebar look** (check for a "Testimonials" post-type menu
    item) to settle which before anyone spends time linking them. `/faq/` itself was not linked
    into navigation this round either — schema only, out of scope for a schema-only pass.
+   **SETTLED 2026-10-03: they exist.** The Jetpack sitemap (`/sitemap-1.xml`) lists **8**
+   `/testimonial/<name>/` URLs (not ten), each live and 130–250 words. That fits the Jetpack
+   Testimonials post type, which `pages.list` doesn't return. What to do with them (link, merge
+   into one page, or keep out of search) is now Tier 8 §B.
 4. **Still open, unstarted.** A content decision for Shaun (fold the 5 proposed service pages
    into what already exists at `/business-english/`, or scope real new pages deliberately), not a
    schema task — see the stale-picture note above.
@@ -652,6 +661,232 @@ Calendly widget replaced with a link to the corporate funnel per Shaun's explici
 the backlog itself calls P4.3 "speculative... low-effort future-proofing", and P4.4 is an ongoing
 manual process, not a coding task. Neither blocks P3.
 
+## Tier 8 — SEO/GEO review of both sites (2026-10-03) · Shaun + CC
+On 2026-10-03, every URL in both sitemaps was crawled with curl (82 on `englishonline.training`,
+230 on `activities.englishonline.training`), along with robots.txt and the JSON-LD on each page.
+The findings were then checked against this file, `docs/engineering-backlog.md`,
+`docs/wordpress-todo.md` and `docs/claude-reference/hubs-seo-and-tests.md`. Only items that are
+new or contradict those docs are listed here.
+**Not measured:** Core Web Vitals (the PageSpeed API quota was used up) and Search Console data
+(the Ahrefs connector returned "Insufficient plan"). Nothing below has been executed.
+
+**▶ Current status (2026-10-04) — read this first; the dated notes below are the history.**
+
+*Done:*
+- **Repo:** PRs #72, #74–#85 and #87–#90 are all merged and live; `main` builds clean. That covers
+  C12–C13, the explanations gap, the quiz fixes, the tests and validators, the link and select
+  checks, mobile overflow, a11y-lite, the Klett wording, the pre-publish gate, CONTRIBUTING and
+  the Apps Script formula fix (live only after a redeploy).
+- **Activities tracking (#90):** Google Tag Manager now loads only after the visitor opts in
+  (`consent.js`; docs in `exercise-framework.md` §5f-bis).
+- **WordPress theme: EOT Modern 1.3.8 is live.**
+  - German posts and pages carry `lang="de-DE"` and `og:locale de_DE` (A3).
+  - Content H1 blocks render as H2 (B11).
+  - Consent banner; Google Analytics `G-F3E7NK2FVQ` loads only after opt-in, and Jetpack's own
+    GA Measurement ID is cleared.
+  - Plus Jakarta Sans is self-hosted (no Google Fonts request).
+  - `/llms.txt` is served from the theme (P4.3, added by a separate session).
+- **WordPress noindex (B8 + B7):** pages 2272, 1205, 1167 and posts 365, 1238, 523, 2261 have
+  `jetpack_seo_noindex` set. Verified 2026-10-04: each page carries `<meta name="robots"
+  content="noindex">` and is gone from the Jetpack sitemap. **Per-page noindex works on the
+  current plan; use it instead of waiting for 301s.**
+- **AI crawlers (A1):** the block is lifted, and `robots.txt` no longer disallows them.
+- **Accepted, don't re-raise:** the 15 `gr-*` pages keep posting to the template's old Apps
+  Script URL (Shaun, 2026-10-04: leave permanently).
+
+*Waiting on Shaun:*
+1. **Privacy policy.** The draft is in `CLAUDE OUTPUTS/datenschutzerklaerung-entwurf-2026-10-04.md`.
+   Settle its [PRÜFEN] points, then CC publishes it to `/privacy-policy/`. §7 (Google Fonts) can
+   go now that 1.3.8 self-hosts the font.
+2. **WP settings for the homepage entity (A2)**, which the theme can't reach:
+   - Site Title → "EnglishOnline.training";
+   - display name → "Shaun Trezise";
+   - Jetpack business details matched to `scripts/schema.js`.
+3. **Decisions:**
+   - #86 (draft): keyword hub titles. Exercise titles follow whatever he decides.
+   - How the two homepages split their target searches (A4).
+   - The 8 thin testimonial pages and old thin posts: merge, noindex or keep (B9 and the
+     2016–2023 posts).
+   - The title-template separator (B10).
+4. **Small:**
+   - the Make → Excel half of formula injection (needs a change in the Make mapping);
+   - the hotlinked Wikimedia image on `9c-south-africa-revision` (self-host needs his OK);
+   - the remaining `9g-australia-vocab-practice` "Green Line" description (accepted-file list,
+     ask first);
+   - PR #67, which isn't from this work, still needs review.
+5. **Under-16 consent:** the banners ask under-16s to check with their parents, but DSGVO Art. 8
+   means a child's click alone may not be valid consent. Get specialist advice if the analytics
+   numbers matter.
+
+**Progress (2026-10-03, later the same day).** Each item is on its own PR, and none is merged.
+No live WordPress write was made:
+- **C12 + C13 → PR #74.** Dates come from a body-only hash, which also feeds `datePublished`/
+  `dateModified` into the exercise JSON-LD.
+- **C14 → withdrawn, false positive.** The crawler's regex stopped at the first apostrophe
+  ("Canada's…"), so it compared truncated descriptions. Read in full, the six descriptions differ.
+- **A3 + B11 (H1s) → EOT Modern 1.3.5**, in `CLAUDE OUTPUTS/eot-modern-1.3.5.zip`. **Built, not
+  installed.**
+  - `lang="de-DE"` and `og:locale de_DE` on German posts and pages, detected by counting German
+    vs English function words. On the live site German pages score ≥ 0.54 and English ones
+    ≤ 0.41; the cut-off is 0.5.
+  - H1 heading blocks inside content render as H2.
+- **A2 is not a theme job.** The homepage `Organization`/`WebSite` JSON-LD and the post-byline
+  `Person` are generated by WordPress.com/Jetpack from site settings. The theme prints no JSON-LD.
+  Shaun's settings fixes:
+  - **Settings → General:** Site Title "Improve your English skills" → "EnglishOnline.training"
+    (fixes `WebSite.name` and `og:site_name`).
+  - **Profile:** display name "Shaun" → "Shaun Trezise" (fixes the byline `Person`).
+  - **Jetpack/business details:** the Organization's name, description, phone and street come
+    from a business-details setting. Match them to `scripts/schema.js`.
+- **B6 corrected.** `/wilkommen/` is **page 2272**, a deliberate "this page has moved" stub
+  created 2026-09-03 after the slug redirect stopped holding. It isn't an accident.
+- **New: per-page noindex IS available** without the plan upgrade. Posts and pages carry a
+  `jetpack_seo_noindex` meta field (seen on 2272 and 2261). That changes B8: noindex the stubs
+  (2272, 1205, 1167, 365, 1238, 523) instead of waiting for 301s. This is a live write, so it
+  needs Shaun's OK per page.
+- **B7:** keep **2067** (`/2026/07/31/alle-kostenlosen-…/`, 557 words). **2261** (the `-2` copy,
+  429 words) also describes the Abitur packs as three task types, when there are four
+  (mediation is missing). Stub it or noindex it.
+- **D15 is bigger than filed.** See the replacement text under D below.
+- **More PRs from the same session, all open and unmerged:**
+  - **#81:** internal link checker (repo-health 6).
+  - **#82:** 61 pages scrolled sideways at 390px; all 291 now fit (repo-health 8).
+  - **#83:** the 18 `themen/` pages had about 400 unnamed selects; adds a check that every
+    select has a name.
+  - **#84:** test-scoring edge cases.
+  - **#85:** Klett textbook names taken out of public descriptions and hub cards (CLAUDE.md
+    rule 4).
+  - **#86 (draft, decision A5):** keyword hub titles.
+  - **#87:** pre-publish gate: CI runs `verify-exercise.js` on added pages, plus a webhook
+    check (agent backlog 2).
+  - **#88:** CONTRIBUTING.md (repo-health 5).
+  - **#89:** ✓/✗ marks and live regions on 38 non-framework pages (repo-health 4).
+  - **#80, second commit:** the open submission endpoints written up as a known, accepted gap.
+- **New finding, needs Shaun: all 15 `gr-*` grammar pages post to `_template.html`'s old
+  default Apps Script URL** (`…vLl8gJbHL1UfbKmCP7W/exec`), which CLAUDE.md says must always be
+  replaced. It is still live (a GET answers "doGet not found"), so these submissions land in
+  that old script's sheet. Routing was not changed (rule 7).
+- **Repo-health 12 (regex audit): reviewed, no change recommended.** The generators parse only
+  this repo's own HTML, and an end tag cannot legally carry attributes. Tightening 33 regexes
+  would risk the generators for no real gain.
+- **Repo-health 7 (hotlinked Wikimedia image): not done.** Self-hosting means downloading a file,
+  which needs Shaun's OK first.
+
+**Overall:** the activities host is technically clean. All 230 sitemap URLs return 200 and each
+has a self-canonical, a description, an og:image and JSON-LD. Only one page lacks an `<h1>`:
+`uni-presentation-task.html`, a known logistics screen. Most of the work is on WordPress.
+
+### A. High priority
+1. **AI crawlers are blocked on the main site · Shaun decides.** `englishonline.training/robots.txt`
+   has `Disallow: /` for GPTBot, ClaudeBot, Google-Extended, Applebot-Extended,
+   meta-externalagent, Bytespider, CCBot and Amazonbot. Its comment says "AI crawlers blocked via
+   Jetpack SEO". This works against Tier 7 and PRs #25/#26.
+   - These are mostly *training* crawlers. Search and retrieval agents (OAI-SearchBot,
+     ChatGPT-User, Claude-SearchBot, PerplexityBot) are not listed.
+   - Google AI Overviews use ordinary Googlebot, so they are unaffected.
+   - The cost: models learn about the brand only from other sites, never from its own pages.
+   - The activities host allows everything.
+   - **Not raised before. Ask whether the block was deliberate before changing the setting.**
+2. **The Organization entity on the WP homepage contradicts `scripts/schema.js` · CC (EOT Modern
+   or Jetpack).** Both use `@id` `https://englishonline.training/#organization`, but they say
+   different things:
+
+   | Field | WordPress homepage | Activities (`scripts/schema.js`) |
+   |---|---|---|
+   | Type | `Organization`+`LocalBusiness` | `EducationalOrganization`+`LocalBusiness` |
+   | Name | "English Online Training" | "EnglishOnline.training" |
+   | Description | "Prepare for tests. Improve your grades. Pass exams" | — |
+   | Phone | `017631304449` | `+49 176 3130 4449` |
+   | Logo | the 1106×566 OG card | — |
+   | `sameAs` | — | Impressum only |
+
+   The `WebSite` node and `og:site_name` still say "Improve your English skills", the old tagline.
+   **Fix:** make the WP node identical to `scripts/schema.js`, and give `sameAs` real profiles.
+   Also, WordPress post bylines emit a *second* Person, `/author/shauntrezise/#person`, named only
+   "Shaun". `/about/` and the activities host already share `#shaun` (Tier 7 item 2), so this
+   byline node is the one remaining split.
+3. **German WP posts are marked as English · CC (EOT Modern).** Every main-site page has
+   `<html lang="en-US">` and `og:locale en_US`, including the 2026 German cluster (Abitur, Für
+   Eltern, IT-Englisch). The activities host already sets these per page (`build-head.js` →
+   `de_DE`/`en_GB`). **Fix:** filter `language_attributes` and `og:locale` by category in the
+   theme. The site-level language stays `en`, which Tier 7 item 1 relies on.
+4. **The two homepages compete for one query · Shaun decides.** The WP homepage `<title>` is
+   "Free English Exercises for Years 7–10, MSA & Abitur". That is word for word the activities
+   root `<h1>`. Give each a distinct job: WP is the brand, Shaun, parents and the corporate
+   funnel; activities is the exercises. The WP homepage also has only one link to the activities
+   host.
+5. **Activities hub and exercise titles lack the search terms people use · CC (repo).** No title
+   convention is documented anywhere. Examples:
+   - The year hubs are titled "Year 10 Oberschule" and "Year 7 Gymnasium".
+   - Exercises carry the unit name only, e.g. `10g-civil-rights.html` → "Fight for Your Rights!
+     MLK vs Malcolm X".
+
+   German searchers type *Englisch Übungen Klasse 10*. A generated `<title>` pattern in
+   `build-head.js` could fix all of them, e.g. "Englisch Übungen Klasse 10 Oberschule – kostenlos"
+   for hubs and "<unit> – Englisch Klasse 10 (Gymnasium)" for exercises.
+   - Keep the visible `<h1>` as it is.
+   - This interacts with the 2026-08-27 English-chrome decision: the hubs are `lang="en"`. Shaun
+     should decide on German title text before anything is built.
+   - **This will not fix the 145 "Discovered – currently not indexed" pages.** That is a
+     discovery and authority problem. Titles matter once pages are indexed.
+
+### B. WordPress clean-up · CC via MCP, with Shaun's approval per item
+6. **`/wilkommen/` is live again**, as a page separate from `/willkommen/` (see the Tier 3
+   reopen). Find its ID and either draft it or stub it to `/willkommen/`.
+7. **Duplicate post:** `/2026/07/31/alle-kostenlosen-englisch-ubungen-auf-einen-blick/` (557
+   words) and `/2026/08/24/alle-kostenlosen-englisch-ubungen-auf-einen-blick-2/` (429 words) have
+   near-identical titles. Keep one and stub the other (no 301s; plan upgrade deferred).
+8. **Stub pages are still in the sitemap and indexable.** 365, 1205, 1167, 1238 and 523 were
+   stubbed by design (Tier 3.5/4). Each is now a thin page Google can index. If the plan allows a
+   per-page noindex, use it. Otherwise accept until the plan upgrade (Tier 5).
+9. **The 8 `/testimonial/*/` pages are thin (130–250 words).** Options: one testimonials page,
+   or link them from `/business-english/` (1965). Note that self-serving `Review` markup does not
+   earn star snippets.
+10. **Title-template bug.** 29 of 82 WP titles are over 65 characters. Many end
+    "…English Online Training" with no separator. Page 380 is titled "English Online Training
+    English Online Training", which is probably what the open "380 non-breaking-space title" item
+    is really about. Fix the Jetpack SEO title format (separator + short brand).
+11. **Small fixes:**
+    - More than one `<h1>` on 8 pages: `/privacy-policy/` (8), `/vocabulary-games/`,
+      `/english-for-students/`, `/university-english/`, `/it-english/`,
+      `/2016/04/13/present-simple-or-progressive/`, `/2023/08/28/improving-writing-skills-with-artificial-intelligence/`,
+      `/2026/07/20/kostenlose-abitur-englisch-ubungen-…/`.
+    - The homepage and `/blog-posts/` share a meta description.
+    - `/2016/04/13/present-simple-or-progressive/` is still published; the rest of the 2016 batch
+      was drafted in Tier 3.5.
+    - The WP `og:image` is the portrait with an empty `og:image:alt`.
+
+### C. Activities repo · CC
+12. **Exercise JSON-LD has no `datePublished`/`dateModified`.** The dates are already in
+    `data/lastmod.json`, so emit them on the `LearningResource` node.
+13. **Refine `build-lastmod.js`:** 229 of 230 sitemap entries read `2026-10-01`. That is honest
+    under the current design: the 2026-10-01 byline, Person-schema and school-name commits changed
+    every page's generated `<head>`, so every hash moved. But a template-only change then tells
+    Google the whole site changed. Hashing only the page body would stop this: exclude the
+    generated HEAD/CRUMB blocks. **Don't reseed `data/lastmod.json`** (see the warning in
+    `hubs-seo-and-tests.md`).
+14. **Three pairs of duplicate meta descriptions:** two Year 10 Canada pages, two Year 10
+    Scotland pages and two Year 9 Australia pages, all starting "Free Year N English practice: …".
+
+### D. Decision needed · Shaun
+15. **Tracking and the privacy policy · Shaun (DSGVO/TTDSG).** Checked 2026-10-03:
+    - **Activities host:** Google Tag Manager `GTM-5HXNNPCS` loads on every page from
+      `build-head.js`, **with no consent step**. Shaun added it on 2026-08-28 (commit `92091b9`),
+      the day after repo-health item 9 recorded analytics as deferred. That item is now stale.
+      These pages are used by schoolchildren.
+    - **WordPress:** the site loads Google Analytics (`gtag` `G-F3E7NK2FVQ`), Ahrefs Web
+      Analytics and WordPress.com stats.
+    - **The policy names none of them.** Every "Datenschutz" link, including the activities
+      footer, points to `/privacy-policy/`. That page is a generic English template that still
+      names the business as "Learn English in Berlin, Kranoldstrasse". The JSON-LD and the
+      Impressum say Koloniestr. `/datenschutz/` returns 404.
+    - **Decide:** keep, remove or consent-gate each tracker. Then bring the privacy policy up to
+      date (a German Datenschutzerklärung, the current business name and address, and every
+      tracker). Not a CC change without Shaun: removing or gating trackers is his call.
+
+**Not filed (already decided):** `llms.txt` (P4.3, parked as speculative); 301s for duplicates
+(the plan upgrade is deferred, so stubs are the house pattern).
+
 ## Open decisions gating the plan
 **All six items from the 2026-08-07 audit reconciliation are now resolved and executed** (Shaun
 approved each): 2063–2066 published, "Blog Posts" 70 fixed and 1205 stubbed, 307 unpublished,
@@ -668,11 +903,13 @@ and Tier 4 above for the full executed record. What's left:
    by Shaun). **Bucket B still open**: 1582 and 1715 remain true orphans with no plan to link
    them yet — not raised with Shaun.
 4. **Tier 7 main-site GEO (P3).** Items 1–2 of the recommended scope done 2026-08-22 (`FAQPage`
-   schema on `/faq/`, `Person` schema on `/about/`). Item 3 partially done — the `/testimonial/*/`
-   pages could not be located via the WordPress.com MCP surface at all, so it's unconfirmed
-   whether they exist; needs a wp-admin look. Items 4 (the 5 proposed service landing pages +
+   schema on `/faq/`, `Person` schema on `/about/`). Item 3: the `/testimonial/*/` pages are
+   confirmed to exist (8, via the sitemap, 2026-10-03); what to do with them is Tier 8 §B. Items 4 (the 5 proposed service landing pages +
    "8-week plan" Course schema) and 5 (the 1763/1997 CRDT trap, not hit this round) remain open,
    item 4 specifically as a content decision for Shaun rather than a schema task.
+5. **Tier 8 SEO/GEO review.** Repo work and the tracking fix are done (2026-10-04). What's left
+   is listed under "▶ Current status" in Tier 8: the privacy policy, WP settings, #86 and the
+   content decisions.
 
 _Closed: T3 approach (2026-08-05, no plan upgrade near-term); Crowdsignal export (not needed —
 T1 rebuilt natively); T5 scope (standalone page); IT email policy (writing tasks only);
@@ -700,35 +937,35 @@ Inline per-page explanations (removed a 551 KB download from every framework pag
 the missing `.comic-img` rule on `7c-robert-the-bruce`.
 
 ### Hardening · CC
-1. **Grade-boundary tests.** `test-scoring.js` covers the attempt ladder only. Nothing tests
+1. **Grade-boundary tests.** → **PR #78** (2026-10-03). `test-scoring.js` covers the attempt ladder only. Nothing tests
    `lookupGrade` or `lookupMsaGrade`, and a student's Note comes straight off those thresholds.
    Extend to `node:test` (built into Node 22 — still no npm dependency), covering both tables'
    boundaries, `totalScore()` with a missing `state.scores`, and the practise-mode results path.
-2. **`scripts/validate-data.js`** — shape checks for `data/exercises.json`, `data/topics.json`
+2. **`scripts/validate-data.js`** → **PR #79** (2026-10-03). — shape checks for `data/exercises.json`, `data/topics.json`
    and `data/quizzes.json`. `explanations.json` and the JSON-LD have validators; these three have
    none, so a typo silently breaks a hub card or a topic page.
-3. **Spreadsheet formula injection.** `apps-script.gs` writes student free text into Sheets via
+3. **Spreadsheet formula injection.** → **PR #80** fixes the Apps Script half (live after redeploy). The Make → Excel half is still open. `apps-script.gs` writes student free text into Sheets via
    `appendRow` (lines 70–122). A student typing `=HYPERLINK(...)` or `=IMPORTRANGE(...)` into a
    textarea lands as a **live formula** in the teacher's sheet. Prefix values starting with
    `= + - @` with `'`. The Make → Excel path for Y7–10 has the same exposure and cannot be fixed
    in Apps Script, so the durable fix is client-side in `exercise.js` before the POST.
-4. **Accessibility for the non-framework pages.** `eolInitA11y` only reaches pages that load
+4. **Accessibility for the non-framework pages.** → **Done** (#89 a11y-lite.js, #83 themen labels). `eolInitA11y` only reaches pages that load
    `exercise.js`. The Abitur packs, quizzes, lead magnets and `klasse7-mini` get a skip link from
    `build-head.js` but no gap labels, no ✓/✗ marks and no live regions.
 
 ### Lower priority · CC
-5. `CONTRIBUTING.md` — short, pointing at `scripts/pipeline.js` and the traps in `CLAUDE.md`.
-6. Internal link checker as a `VALIDATOR`. Measured 2026-08-27: **0 broken of 1,301** internal
+5. **Done (#88).** `CONTRIBUTING.md` — short, pointing at `scripts/pipeline.js` and the traps in `CLAUDE.md`.
+6. **Done (#81, as a post-build check).** Internal link checker as a `VALIDATOR`. Measured 2026-08-27: **0 broken of 1,301** internal
    `.html` links, so this is a regression guard, not a fix.
-7. `9c-south-africa-revision.html:236` hotlinks a 1280px Wikimedia image — an external request
+7. **Open, needs Shaun's OK to download the image.** `9c-south-africa-revision.html:236` hotlinks a 1280px Wikimedia image — an external request
    from a school page, and it can break. It has a text fallback, so this is cosmetic; self-host
    or accept.
-8. **Audit the rest of the corpus for the `.comic-img` class of bug.** That page's images had no
+8. **Audit the rest of the corpus for the `.comic-img` class of bug.** → **Done (#82)**: 61 pages fixed, all 291 fit 390px. That page's images had no
    CSS rule at all, so a 2098px panel dragged the document to 2114px on a 390px phone. Nothing
    would have caught it; a viewport-overflow check across all pages would.
 
 ### Decision needed · Shaun
-9. **Analytics.** Deferred 2026-08-27. Site is used by German schoolchildren, so anything
+9. **Analytics.** **Stale: GTM was added site-wide on 2026-08-28. See Tier 8 D15.** Deferred 2026-08-27. Site is used by German schoolchildren, so anything
    tracking is a DSGVO matter. If revisited: cookieless only, and the WordPress Datenschutz page
    needs a matching paragraph **before** anything ships.
 
@@ -746,7 +983,7 @@ the missing `.comic-img` rule on `7c-robert-the-bruce`.
 Each verified against the code today, not carried over on trust. Severity is stated honestly —
 two of these are latent rather than live.
 
-10. **Two quiz questions mark a correct answer wrong.** `data/quizzes.json` → `grammar-hardest`,
+10. **Two quiz questions mark a correct answer wrong.** → **PR #76** (distractors reworded). `data/quizzes.json` → `grammar-hardest`,
     verified 2026-08-28. **Student-facing on a public, no-sign-up page — the highest-priority item
     in this section.**
     - **q1** "Which sentence contains a double negative?" keys *"I didn't see nobody at the
@@ -761,14 +998,14 @@ two of these are latent rather than live.
       would make the third option the only wrong one and lose the question's point.
       Needs Shaun's eye on the replacement wording.
 
-11. **`topic-pool.json` still has no 9c/9g category.** Year 9 went back into the
+11. **`topic-pool.json` still has no 9c/9g category.** → **Done since** (CLAUDE.md, 2026-10-02: both categories exist). Year 9 went back into the
     `daily-exercise-draft` rotation on 2026-08-23, but the registry only carries `8g`, `8c`, `10g`
     and `10c` (confirmed 2026-08-28), so the skill cannot pick a Year 9 topic the registry-driven
     way it uses for the other four — Y9 topics still have to be chosen ad hoc against the existing
     corpus. Add a `9c`/`9g` category via the `add-topics` skill. This is the blocker on Year 9
     working like the other active years.
 
-12. **Audit the generators' HTML-parsing regexes.** CodeQL's "bad HTML filtering regexp" query
+12. **Audit the generators' HTML-parsing regexes.** → **Reviewed 2026-10-03, no change** (own HTML only; low value, real risk). CodeQL's "bad HTML filtering regexp" query
     caught a real end-tag bug in `scripts/check-syntax.js` on PR #35 — but it only scans code a PR
     *changes*, so the pre-existing generators have never been checked. Counted 2026-08-28:
     **33 HTML-matching regexes across five scripts** (`build-head.js` 17, `build-exercise-data.js`
@@ -780,7 +1017,7 @@ two of these are latent rather than live.
     and a miss here fails *visibly* (a mangled hub card title) rather than silently. One audit
     pass, not urgent.
 
-13. **`themen/` fallback `introH2` is ungrammatical for plural topic names** —
+13. **`themen/` fallback `introH2` is ungrammatical for plural topic names** → **PR #77**. —
     `build-topic-pages.js:93` falls back to `'Was ist das ' + de`, which reads wrong for a plural
     slug ("Was ist das Relativsätze?"). **Latent, not live:** every one of the ten current topics
     has an authored `introH2` (verified 2026-08-28), so nothing on the site shows it today. It
