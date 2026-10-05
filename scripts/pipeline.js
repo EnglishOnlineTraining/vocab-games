@@ -203,6 +203,12 @@ const VALIDATORS = [
 //                            inline <script> (the EXPLAIN block) — run before
 //                            the build it would be parsing the previous run's
 //                            output, exactly the trap described above.
+//   check-undefined-calls.js a page must not call a function that exists
+//                            nowhere: check-syntax only parses, so
+//                            10c-london-slang shipped calling submitAnswers()
+//                            and showMsg(), neither defined (fixed in #95).
+//                            Post-build for the same reason as check-syntax:
+//                            it reads the generated inline <script>s too.
 //   check-grade-table.js     exercise.js owns the single shared Punktetabelle,
 //                            but a self-contained timed test (the
 //                            uni-pm-vocabulary.html pattern) cannot load it and
@@ -221,6 +227,7 @@ const CHECKERS = [
   { id: 'validate-schema', run: 'scripts/validate-schema.js' },
   { id: 'check-exercises-data', run: 'scripts/check-exercises-data.js' },
   { id: 'check-syntax', run: 'scripts/check-syntax.js' },
+  { id: 'check-undefined-calls', run: 'scripts/check-undefined-calls.js' },
   { id: 'check-select-labels', run: 'scripts/check-select-labels.js' },
   { id: 'check-links', run: 'scripts/check-links.js' },
   { id: 'check-grade-table', run: 'scripts/check-grade-table.js' },
