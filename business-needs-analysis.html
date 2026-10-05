@@ -405,6 +405,11 @@ function showStep(n) {
 
 function labelFor(list, v) { const f = list.find(x => x[0] === v); return f ? f[1] : v; }
 
+function homeworkLabel() {
+  const hw = document.querySelector(`#homework option[value="${CSS.escape(state.homework || '')}"]`);
+  return state.homework && hw ? hw.textContent : '';
+}
+
 function summaryRows() {
   const rows = [];
   const add = (q, a) => rows.push([q, a || '—']);
@@ -418,8 +423,9 @@ function summaryRows() {
   add('Main goal', state.mainGoal); add('Upcoming event', state.upcoming);
   add('Focus', (state.focus || []).map(v => labelFor(FOCUS, v)).join(', '));
   add('Most difficult', state.hardest); add('Previous learning', state.pastLearning);
-  add('Time outside lessons', state.homework);
-  add(`Writing sample (${wordCount(state.writing || '')} words)`, state.writing);
+  add('Time outside lessons', homeworkLabel());
+  add('Writing sample', state.writing);
+  add('Word count', String(wordCount(state.writing || '')));
   return rows;
 }
 
@@ -462,7 +468,7 @@ function submitForm() {
       'Focus': (state.focus || []).map(v => labelFor(FOCUS, v)).join(', '),
       'Most difficult': state.hardest || '—',
       'Previous learning': state.pastLearning || '—',
-      'Time outside lessons': state.homework || '—'
+      'Time outside lessons': homeworkLabel() || '—'
     },
     writing: state.writing
   };
