@@ -670,6 +670,9 @@ new or contradict those docs are listed here.
 **Not measured:** Core Web Vitals (the PageSpeed API quota was used up) and Search Console data
 (the Ahrefs connector returned "Insufficient plan"). Nothing below has been executed.
 
+**Search Console data (2026-10-06):** baseline numbers and a phased plan built on them are in
+`docs/gsc-review-2026-10-06.md`. Re-pull on 2026-11-06.
+
 **▶ Current status (2026-10-05, evening) — read this first; the dated notes below are the history.**
 
 *Done:*
@@ -700,7 +703,7 @@ new or contradict those docs are listed here.
     GA Measurement ID is cleared.
   - Plus Jakarta Sans is self-hosted (no Google Fonts request).
   - `/llms.txt` is served from the theme (P4.3, added by a separate session).
-- **WordPress noindex (B8 + B7):** pages 2272, 1205, 1167 and posts 365, 1238, 523, 2261 have
+- **WordPress noindex (B8 + B7):** (1167 reversed 2026-10-06, see Tier 9) pages 2272, 1205, 1167 and posts 365, 1238, 523, 2261 have
   `jetpack_seo_noindex` set. Verified 2026-10-04: each page carries `<meta name="robots"
   content="noindex">` and is gone from the Jetpack sitemap. **Per-page noindex works on the
   current plan; use it instead of waiting for 301s.**
@@ -945,6 +948,53 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
 
 **Not filed (already decided):** `llms.txt` (P4.3, parked as speculative); 301s for duplicates
 (the plan upgrade is deferred, so stubs are the house pattern).
+
+## Tier 9 — Search Console follow-up (2026-10-06) · Shaun + CC
+Built on the first real Search Console pull. Data, baseline and reasoning:
+`docs/gsc-review-2026-10-06.md`. Every WordPress write needs Shaun's OK per item and a live check
+afterwards (rule 7).
+
+1. **Snippet rewrites (Phase 1) · DONE 2026-10-06 (Shaun approved), verified live.** New SEO title
+   + meta description on 1061, 2032 (Zusammenfassung), 2038 (Kommentar), 2039 (Kreatives
+   Schreiben), 2066 (MSA) and 965 (business verbs; `/test-your-vocab-knowledge/…` 301s to it).
+   "Beispiel" was dropped from the 2032/2038 drafts: neither post contains a worked example.
+   2066 also got a short paragraph for students under its first line, linking to
+   `msa-activities.html`. Final wording is in the review doc.
+2. **Page 1167 restored · DONE 2026-10-06 (Shaun approved), verified live.**
+   `/good-vs-bad-when-writing-emails-in-english/`: noindex removed (back in `sitemap-1.xml`),
+   rewritten as "Good vs Bad Email Examples: 3 Work Emails Rewritten" with three pairs
+   (meeting request and report request, from the original page; a new complaint reply), a
+   "what changed" note on each, and links to 1061, `be-professional-emails.html` and
+   `lead-business-email-phrasebank.html`. 1061 now keeps one pair, links to 1167 for more, and
+   its intro no longer claims three examples (it had only two). Background: 1167 was stubbed
+   into 1061 on 2026-08-07 and noindexed around 2026-10-04; Shaun didn't ask for the noindex,
+   and it was still the best-ranking page ("good vs bad email examples", pos 7–9). Students at
+   US schools use the business email exercises (Shaun), so the business-email set is worth
+   building out for an English-speaking audience.
+3. **Tutoring-search impressions · Shaun decides what to do with them.** `/welcome/about-me/wilkommen/`
+   ranked ~7.5 for "english tutor", "english teacher berlin", "private english tutors" (628
+   impr/3 months); the URL now lands on noindexed stub 2272. Shaun doesn't tutor. Options: point
+   that URL at a page for adult self-learners (free exercises for adults, the ESL grammar series),
+   or at the team-training offer (`/business-english/`), or let it go. No change until he picks.
+4. **PDF landing pages (Phase 3) · CC.** HTML property-management vocabulary page on the
+   activities host linking to the PDF (`useful-vocabulary-for-property-management.pdf`, the
+   top-clicked URL) and to `be-property-management.html`. Keep the PDF URL. Then the same for
+   `esg-vocabulary.pdf` and `commercial-real-estate-vocabulary.pdf`. Shaun: add a site link
+   inside the PDF on its next revision.
+5. **Get the activities site indexed (Phase 4) · CC + Shaun.** 48 of 265 sitemap pages indexed;
+   every year hub, `activities.html` and 12 `themen/` pages are "Crawled – not indexed".
+   - CC: a unique 150–250-word intro for each year hub, `activities.html` and `themen/index.html`.
+   - CC: link from the WordPress pages that rank to specific activities pages.
+   - Shaun: URL Inspection → Request indexing for the 8 year hubs, `abitur-activities.html` and
+     `esl-grammar-activities.html` (about 10 a day).
+   - Hold off on adding many new pages until indexing improves.
+   - Review the sitemap for pages nobody searches for (reviews, tests) and move them to
+     `data/noindex.json`.
+6. **Grammar explainers to page 1 (Phase 5) · CC drafts, Shaun approves.** Simple past post
+   (580 impr, pos 30.7) and past progressive (413 impr, pos 46.7): a direct answer at the top,
+   a forms table, examples, common mistakes, a short FAQ, and links to the practice pages.
+7. **Re-measure (Phase 6) · CC, 2026-11-06.** Re-pull the same reports and compare against the
+   baseline table in the review doc.
 
 ## Open decisions gating the plan
 **All six items from the 2026-08-07 audit reconciliation are now resolved and executed** (Shaun
