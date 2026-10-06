@@ -447,6 +447,9 @@ const EXTRA_PUBLIC_PAGES = [
   // German explainer for the revised KMK Operatoren list valid from the 2027
   // exam year — same no-exercise.js landing architecture as the pages above.
   'abitur-operatoren.html',
+  // German MSA 2027 page (dates, exam format, links into the msa-c-* units) —
+  // same architecture; the generic exercise loop only sees exercise.js pages.
+  'msa-englisch-2027.html',
   'ielts-vocabulary-glossary.html',
   // English glossary landing page for the 2023 property-management PDF, the
   // top-clicked URL on the main site in Search Console (docs/gsc-review-2026-10-06.md).

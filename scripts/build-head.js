@@ -195,8 +195,8 @@ const COURSE_HUBS = {
   'msa-activities.html': {
     name: 'MSA Englisch — Prüfungsvorbereitung (Mittlerer Schulabschluss)',
     description: 'Kostenloses Prüfungstraining für die MSA-Englischprüfung: Hörverstehen, Leseverstehen '
-      + 'und Schreiben in vollständigen Übungseinheiten mit sofortiger Auswertung nach der offiziellen '
-      + 'Bewertungstabelle.',
+      + 'und Schreiben in vollständigen Übungseinheiten mit sofortiger Auswertung nach der MSA-'
+      + 'Bewertungstabelle von 2018.',
     teaches: ['English listening comprehension', 'English reading comprehension', 'English writing'],
     level: 'B1',
     audience: { framework: 'Mittlerer Schulabschluss (Berlin/Brandenburg)', target: 'MSA Englisch' },

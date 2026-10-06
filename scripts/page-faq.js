@@ -21,14 +21,15 @@ module.exports = {
     {
       q: 'Was ist der MSA?',
       a: 'Der Mittlere Schulabschluss (MSA) ist der Schulabschluss am Ende der 10. Klasse in Berlin '
-        + 'und Brandenburg. Die schriftliche Englischprüfung besteht aus drei Teilen: Hörverstehen, '
-        + 'Leseverstehen und Schreiben.',
+        + 'und Brandenburg. Am Gymnasium wird er ohne Prüfung erworben; an den anderen Schulformen '
+        + 'gehört eine zentrale Englischprüfung mit Hör- und Leseverstehen dazu.',
     },
     {
       q: 'Aus welchen Teilen besteht die MSA-Englischprüfung?',
-      a: 'Aus drei Teilen: Hörverstehen mit zwei Hörtexten, Leseverstehen mit einem oder mehreren '
-        + 'Texten und Aufgaben dazu, und Schreiben — ein zusammenhängender Text wie eine E-Mail, ein '
-        + 'Blogbeitrag oder ein Kommentar. Jede Übungseinheit auf dieser Seite ist genauso aufgebaut.',
+      a: 'Zur zentralen schriftlichen Prüfung gehören Hörverstehen und Leseverstehen, in '
+        + 'Brandenburg je zur Hälfte gewichtet; dazu kommt eine Prüfung im Sprechen. Die '
+        + 'Übungseinheiten auf dieser Seite verbinden Hören und Lesen mit einer Schreibaufgabe wie '
+        + 'einer E-Mail, einem Blogbeitrag oder einem Kommentar.',
     },
     {
       q: 'Wie oft darf ich einen Hörtext hören?',
@@ -37,10 +38,11 @@ module.exports = {
     },
     {
       q: 'Wie wird die MSA-Prüfung bewertet?',
-      a: 'Nach der offiziellen Bewertungstabelle für den MSA in Berlin und Brandenburg (Stand 2018). '
+      a: 'Die Übungen hier nutzen die MSA-Bewertungstabelle für Berlin und Brandenburg von 2018. '
         + 'Die erreichten Punkte werden auf die 75-Punkte-Skala der Prüfung umgerechnet: ab 70 Punkten '
-        + 'Note 1, ab 63 Note 2, ab 55 Note 3, ab 45 Note 4 und ab 23 Note 5. Die Übungen auf dieser '
-        + 'Seite rechnen genau nach dieser Tabelle.',
+        + 'Note 1, ab 63 Note 2, ab 55 Note 3, ab 45 Note 4 und ab 23 Note 5. Die Umrechnung in der '
+        + 'echten Prüfung kann abweichen; Brandenburg rechnet seit 2025/26 nach den allgemeinen '
+        + 'Vorschriften zur Leistungsbewertung um.',
     },
     {
       q: 'Welches Sprachniveau brauche ich für den MSA in Englisch?',
@@ -438,6 +440,57 @@ module.exports = {
       a: 'Beim IQB unter den begleitenden Dokumenten zum Fach Englisch: „Grundstock von '
         + 'Operatoren — neu“, gültig ab Prüfungsjahr 2027. Brandenburg erläutert die Neuerungen '
         + 'zusätzlich im Fachbrief Englisch Nr. 9 auf dem Bildungsserver Berlin-Brandenburg.',
+    },
+  ],
+
+  'msa-englisch-2027.html': [
+    {
+      q: 'Wann ist die schriftliche MSA-Prüfung Englisch 2027 in Berlin?',
+      a: 'Die schriftliche Prüfung Englisch (MSA und eBBR) findet in Berlin am Dienstag, dem '
+        + '13. April 2027, um 10:00 Uhr statt. Der zentrale Nachtermin für alle, die mit '
+        + 'ärztlichem Attest entschuldigt waren, ist der 20. Mai 2027.',
+    },
+    {
+      q: 'Wann ist die Englisch-Abschlussprüfung 2027 in Brandenburg?',
+      a: 'In Brandenburg wird Englisch am Donnerstag, dem 29. April 2027, schriftlich geprüft. '
+        + 'Der zentrale Nachtermin ist der 20. Mai 2027; die Schulen können stattdessen auch '
+        + 'eigene Nachschreibeaufgaben zu einem anderen Termin stellen. Die Ergebnisse werden '
+        + 'frühestens am 7. Juni 2027 bekanntgegeben.',
+    },
+    {
+      q: 'Was wird in der schriftlichen MSA-Prüfung Englisch geprüft?',
+      a: 'In Brandenburg prüft die zentrale schriftliche Prüfung Hörverstehen und Leseverstehen, '
+        + 'je zur Hälfte gewichtet. In Berlin legen die zentralen Prüfungsunterlagen den Aufbau '
+        + 'fest; Lesen und Hören gehören dazu. Deine Lehrkraft kennt die Hefte der letzten Jahre.',
+    },
+    {
+      q: 'Gibt es auch eine mündliche MSA-Prüfung in Englisch?',
+      a: 'In Berlin ja: Die Überprüfung der Sprechfertigkeit ist eine Partnerprüfung von in der '
+        + 'Regel 10 bis 12 Minuten, höchstens 15, ab dem 15. Februar 2027 an der eigenen Schule. '
+        + 'In Brandenburg gibt es eine mündliche Fremdsprachenprüfung ebenfalls ab dem '
+        + '15. Februar; die Sprache wählst du selbst.',
+    },
+    {
+      q: 'Was passiert, wenn ich am Prüfungstag krank bin?',
+      a: 'Du brauchst ein ärztliches Attest, das die Prüfungsunfähigkeit bescheinigt — in Berlin '
+        + 'muss es spätestens drei Unterrichtstage nach dem Prüfungstag in der Schule sein. '
+        + 'Nachgeschrieben wird für Englisch am 20. Mai 2027; in Brandenburg kann die Schule auch '
+        + 'einen eigenen Termin festlegen.',
+    },
+    {
+      q: 'Muss ich am Gymnasium die MSA-Prüfung schreiben?',
+      a: 'Nein. In Berlin gibt es die MSA-Prüfungen am Gymnasium seit dem Schuljahr 2024/25 '
+        + 'nicht mehr; den MSA erhält man mit der Versetzung in die 11. Klasse. In Brandenburg '
+        + 'entfallen die Prüfungen am Ende der 10. Klasse am Gymnasium seit 2025/26. An '
+        + 'Oberschulen, Gesamtschulen, Integrierten Sekundarschulen und Gemeinschaftsschulen '
+        + 'wird weiter geprüft.',
+    },
+    {
+      q: 'Sind die MSA-Übungseinheiten auf dieser Seite kostenlos?',
+      a: 'Ja. Alle 21 Einheiten laufen kostenlos im Browser und brauchen keine Anmeldung. Die '
+        + 'meisten verbinden Hören, Lesen und Schreiben, dazu kommen eine Sprech-Einheit und eine '
+        + 'Wiederholung. Jede gibt Sofort-Feedback und eine Note nach der MSA-Bewertungstabelle '
+        + 'von 2018.',
     },
   ],
 };
