@@ -284,7 +284,7 @@
     <div class="byline">Übersetzt und bearbeitet aus einem deutschen Wissenschaftsmagazin</div>
     <p>Vor fünfzig Jahren gehörte ein Computer, der ein Gespräch führen kann, eindeutig ins Reich der Science-Fiction. Hätte 1975 irgendjemand geglaubt, dass eine Maschine eines Tages Gedichte schreiben, Krankheiten diagnostizieren und philosophische Debatten führen könnte – noch vor dem Frühstück? Heute steckt eine solche Maschine still in Millionen von Hosentaschen.</p>
     <p>Ein Beispiel ist Dr. Amara Okafor, Radiologin in Toronto. Letztes Jahr entdeckte ein KI-System einen Tumor auf einem ihrer Röntgenbilder, den sie selbst bei der ersten Durchsicht übersehen hatte. Seitdem betrachtet sie medizinische Bilder mit anderen Augen. Für sie ist künstliche Intelligenz keine futuristische Spielerei mehr, sondern eine Kollegin, die sie sich nicht ausgesucht hat, auf die sie sich aber inzwischen verlässt.</p>
-    <p>Das Ausmaß dieser Entwicklung ist beachtlich. Ein aktueller Branchenbericht schätzt, dass KI-Systeme mittlerweile bei über 30 Prozent der medizinischen Diagnosen in führenden Krankenhäusern weltweit unterstützend eingesetzt werden. Was einst ein Laborexperiment war, ist inzwischen fest etablierte Infrastruktur.</p>
+    <p>Das Ausmaß dieser Entwicklung ist beachtlich. Laut einer Umfrage der American Medical Association nutzten 2024 bereits 66 Prozent der US-Ärztinnen und -Ärzte KI-Anwendungen in ihrer Arbeit – 2023 waren es 38 Prozent. Was einst ein Laborexperiment war, ist inzwischen fest etablierte Infrastruktur.</p>
     <p>Doch jeder Effizienzgewinn wirft auch Fragen auf. Wir haben Maschinen beigebracht, Muster zu erkennen, die wir selbst nicht sehen konnten – nun müssen wir entscheiden, wie viel von unserem eigenen Urteilsvermögen wir dafür abgeben wollen. Optimisten sehen ein längeres, gesünderes Leben voraus. Skeptiker befürchten einen schleichenden Verlust menschlicher Fachkompetenz und Verantwortlichkeit.</p>
     <p>Beide Seiten sind sich in einem Punkt einig: Die Technologie kommt nicht erst noch – sie ist bereits da. Die eigentliche Frage ist nicht mehr, ob künstliche Intelligenz unsere Zukunft prägen wird, sondern wie klug wir sie mitgestalten.</p>
   </div>
@@ -346,7 +346,7 @@
     <div class="article-box">
       <p>Vor fünfzig Jahren gehörte ein Computer, der ein Gespräch führen kann, eindeutig ins Reich der Science-Fiction. Heute steckt eine solche Maschine still in Millionen von Hosentaschen.</p>
       <p>Dr. Amara Okafor, Radiologin in Toronto, entdeckte letztes Jahr mithilfe eines KI-Systems einen Tumor, den sie selbst übersehen hatte. Für sie ist KI keine Spielerei mehr, sondern eine verlässliche Kollegin.</p>
-      <p>Ein aktueller Bericht schätzt, dass KI-Systeme bei über 30 Prozent der medizinischen Diagnosen in führenden Krankenhäusern weltweit unterstützend eingesetzt werden.</p>
+      <p>Laut einer Umfrage der American Medical Association nutzten 2024 bereits 66 Prozent der US-Ärztinnen und -Ärzte KI-Anwendungen in ihrer Arbeit – 2023 waren es 38 Prozent.</p>
       <p>Optimisten sehen ein längeres, gesünderes Leben voraus. Skeptiker befürchten einen Verlust menschlicher Fachkompetenz und Verantwortlichkeit.</p>
       <p>Die eigentliche Frage ist nicht mehr, ob künstliche Intelligenz unsere Zukunft prägen wird, sondern wie klug wir sie mitgestalten.</p>
     </div>
@@ -363,7 +363,7 @@
     <div class="btn-row"><button class="btn secondary" id="modelBtn" onclick="showModel()">Show model answer</button></div>
     <div class="model-para" id="modelPara" style="display:none">
       <b>Model mediation:</b><br><br>
-      Fifty years ago, a computer capable of holding a conversation was purely science fiction — today, similar technology fits quietly in millions of pockets. Dr. Amara Okafor, a radiologist in Toronto, experienced this shift firsthand last year when an AI system detected a tumour on a scan that she herself had initially missed. For her, artificial intelligence is no longer a novelty but a reliable colleague. According to a recent industry report, AI tools now assist in over 30% of medical diagnoses in leading hospitals worldwide. While optimists expect AI to bring longer, healthier lives, sceptics worry about a loss of human expertise and accountability. Either way, the technology is already here — the real question is how wisely we choose to guide it.
+      Fifty years ago, a computer capable of holding a conversation was purely science fiction — today, similar technology fits quietly in millions of pockets. Dr. Amara Okafor, a radiologist in Toronto, experienced this shift firsthand last year when an AI system detected a tumour on a scan that she herself had initially missed. For her, artificial intelligence is no longer a novelty but a reliable colleague. According to the American Medical Association, 66% of US physicians used AI tools in their work in 2024, up from 38% in 2023. While optimists expect AI to bring longer, healthier lives, sceptics worry about a loss of human expertise and accountability. Either way, the technology is already here — the real question is how wisely we choose to guide it.
     </div>
     <div class="btn-row">
       <button class="btn" id="finalBtn" onclick="showFinal()">See Final Score →</button>
@@ -402,7 +402,7 @@ function showFeedbackBox(id,correct,max){const fb=document.getElementById(id);co
 const ex1Data=[
   {id:'s1', text:'"KI-Systeme werden zunehmend in medizinischen Diagnosen eingesetzt."', answer:'Relevant'},
   {id:'s2', text:'"Dr. Amara Okafor arbeitet als Radiologin in Toronto."', answer:'Relevant'},
-  {id:'s3', text:'"Über 30 Prozent der Diagnosen in führenden Krankenhäusern werden KI-unterstützt (Branchenbericht)."', answer:'Relevant'},
+  {id:'s3', text:'"66 Prozent der US-Ärzte nutzten 2024 KI-Anwendungen, 2023 waren es 38 Prozent (American Medical Association)."', answer:'Relevant'},
   {id:'s4', text:'"Der Artikel stammt aus einem deutschen Wissenschaftsmagazin."', answer:'Not relevant'},
   {id:'s5', text:'"Es gibt eine Debatte zwischen Optimisten und Skeptikern über die Folgen von KI."', answer:'Relevant'},
   {id:'s6', text:'"1975 hätte niemand an sprechende Computer geglaubt."', answer:'Not relevant'}
@@ -459,7 +459,7 @@ function checkMC(containerId,data,scoreKey,fbId,nextId){
 const ex2Data=[
   {q:'Which opening suits a science club newsletter?', opts:['AI is honestly kind of wild if you think about it.','Artificial intelligence has moved from science fiction to everyday medical practice.'], correct:1},
   {q:'Which phrasing best fits an informative newsletter?', opts:['A radiologist in Toronto now relies on AI to help catch things she might miss.','Some doctor or whatever uses a computer thing now to find tumours.'], correct:0},
-  {q:'Which is a natural way to present the industry statistic?', opts:['AI tools now assist in over 30% of medical diagnoses in leading hospitals worldwide.','Statistical estimation suggests a percentage exceeding thirty regarding AI-assisted diagnostic procedures.'], correct:0},
+  {q:'Which is a natural way to present the statistic?', opts:['According to the AMA, 66% of US physicians used AI tools in their work in 2024.','Statistical estimation suggests a percentage exceeding sixty regarding physician utilisation of AI-assisted tools.'], correct:0},
   {q:'Which closing line fits a newsletter for club members?', opts:['The real challenge now is deciding how wisely we use this powerful technology.','Basically it is what it is, technology just does its thing now.'], correct:0}
 ];
 function checkEx2(){checkMC('mcList2',ex2Data,'ex2','fb2','next2');updateProgress(2);}
@@ -495,7 +495,7 @@ const ex4Data=[
   {q:'"Das macht Sinn für mich." — best English version?', opts:['That makes sense to me.','That makes sense for me.'], correct:0},
   {q:'"Sie arbeitet seit 2019 als Radiologin." — best English version?', opts:['She has worked as a radiologist since 2019.','She works since 2019 as a radiologist.'], correct:0},
   {q:'"Ich bin interessiert an KI." — best English version?', opts:['I am interested in AI.','I am interested on AI.'], correct:0},
-  {q:'"Das Krankenhaus hat 30 Prozent." (referring to AI use) — best English version?', opts:['The hospital has 30 percent.','AI is used in around 30% of the hospital\'s diagnoses.'], correct:1}
+  {q:'"Die Ärzte haben 66 Prozent." (referring to AI use) — best English version?', opts:['The doctors have 66 percent.','Around 66% of doctors use AI.'], correct:1}
 ];
 function checkEx4(){checkMC('mcList4',ex4Data,'ex4','fb4','next4');updateProgress(4);}
 
@@ -506,7 +506,7 @@ const rubricCriteria=[
   'I used an appropriate, informative newsletter register.',
   'I avoided Germanisms and false friends.',
   'I explained any technical or culture-specific terms briefly.',
-  'I included the key facts and figures (e.g. the industry statistic).',
+  'I included the key facts and figures (e.g. the AMA statistic).',
   'I organised the information logically, not just in source-text order.',
   'My mediation is within the word range (100–150 words).',
   'My English is grammatically accurate.',
@@ -625,6 +625,7 @@ function submitByEmail(){
   setTimeout(function(){document.body.removeChild(a);},100);
 }
 </script>
+<p class="source-note" style="max-width:760px;margin:24px auto 0;padding:0 16px;font-size:.8rem;color:var(--muted,#6b7a8d);text-align:center">Quellen / Sources: <a href="https://www.ama-assn.org/practice-management/digital-health/2-3-physicians-are-using-health-ai-78-2023">American Medical Association, physician AI survey (Nov. 2024)</a>. Die Personen in den Texten sind erfunden. / The people in the texts are fictional.</p>
 <!-- ABITUR-FOOTER:START -->
 <footer class="abitur-footer">
   <nav aria-label="Pages">

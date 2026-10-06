@@ -284,7 +284,7 @@
     <div class="byline">Übersetzt und bearbeitet aus einem deutschen Wirtschaftsmagazin</div>
     <p>Jahrzehntelang galt in den Vereinigten Staaten eine einfache Formel: harte Arbeit führt zu Erfolg, und Erfolg führt zu einem guten Leben. Diese Vorstellung, oft als „American Dream" bezeichnet, prägte Generationen von Berufstätigen. Doch immer mehr junge Amerikaner stellen dieses Versprechen infrage.</p>
     <p>Ein Beispiel dafür ist Daniel Ruiz, ein 27-jähriger Marketing-Mitarbeiter aus Ohio. Sein Vater arbeitete jahrzehntelang sechzig Stunden pro Woche in einem Stahlwerk, das zweimal schließen musste. Daniel selbst hat sich bewusst für eine Vier-Tage-Woche entschieden, verdient dadurch weniger als sein Vater, beschreibt sich aber als deutlich zufriedener.</p>
-    <p>Diese Entwicklung ist kein Einzelfall. Eine aktuelle Umfrage des Meinungsforschungsinstituts Pew ergab, dass 61 Prozent der amerikanischen Arbeitnehmer unter dreißig Jahren mittlerweile Freizeit höher bewerten als ein hohes Gehalt. Arbeitgeber, die früher mit Titeln und Eckbüros lockten, müssen umdenken.</p>
+    <p>Diese Entwicklung ist kein Einzelfall. Eine aktuelle Umfrage von Economist und YouGov ergab, dass 69 Prozent der Amerikanerinnen und Amerikaner unter dreißig eine Wochenarbeitszeit von höchstens 35 Stunden für ideal halten – bei den über 65-Jährigen sind es nur 36 Prozent. Arbeitgeber, die früher mit Titeln und Eckbüros lockten, müssen umdenken.</p>
     <p>Kritiker sprechen von Faulheit, Soziologen hingegen von einer rationalen Reaktion auf ein gebrochenes Versprechen. Während die Großeltern-Generation Unternehmen aufbaute und die Elterngeneration Vermögen ansammelte, konzentriert sich die junge Generation heute vor allem auf persönliche Grenzen und mentale Gesundheit.</p>
     <p>Ob man diesen Wandel als Rückschritt oder als Weisheit betrachtet, bleibt umstritten. Klar ist jedoch: Das klassische Aufstiegsmodell verliert für junge Amerikaner zunehmend an Attraktivität.</p>
   </div>
@@ -346,7 +346,7 @@
     <div class="article-box">
       <p>Jahrzehntelang galt in den Vereinigten Staaten eine einfache Formel: harte Arbeit führt zu Erfolg, und Erfolg führt zu einem guten Leben. Doch immer mehr junge Amerikaner stellen dieses Versprechen infrage.</p>
       <p>Ein Beispiel dafür ist Daniel Ruiz, ein 27-jähriger Marketing-Mitarbeiter aus Ohio. Sein Vater arbeitete jahrzehntelang sechzig Stunden pro Woche in einem Stahlwerk. Daniel selbst hat sich bewusst für eine Vier-Tage-Woche entschieden und beschreibt sich als deutlich zufriedener als sein Vater.</p>
-      <p>Eine aktuelle Umfrage ergab, dass 61 Prozent der amerikanischen Arbeitnehmer unter dreißig Jahren mittlerweile Freizeit höher bewerten als ein hohes Gehalt.</p>
+      <p>Eine aktuelle Umfrage ergab, dass 69 Prozent der Amerikanerinnen und Amerikaner unter dreißig eine Wochenarbeitszeit von höchstens 35 Stunden für ideal halten – bei den über 65-Jährigen sind es nur 36 Prozent.</p>
       <p>Kritiker sprechen von Faulheit, Soziologen von einer rationalen Reaktion. Die junge Generation konzentriert sich heute vor allem auf persönliche Grenzen und mentale Gesundheit.</p>
       <p>Klar ist: Das klassische Aufstiegsmodell verliert für junge Amerikaner zunehmend an Attraktivität.</p>
     </div>
@@ -363,7 +363,7 @@
     <div class="btn-row"><button class="btn secondary" id="modelBtn" onclick="showModel()">Show model answer</button></div>
     <div class="model-para" id="modelPara" style="display:none">
       <b>Model mediation:</b><br><br>
-      A growing number of young Americans are questioning the traditional idea that hard work automatically leads to success and a good life. Daniel Ruiz, a 27-year-old from Ohio, is one example: unlike his father, who worked sixty-hour weeks in a factory, Daniel deliberately chose a four-day working week and says he is far happier, even though he earns less. This is not an isolated case — a recent survey found that 61% of American workers under thirty now value free time more than a high salary. While some critics call this attitude lazy, sociologists see it as a reasonable response to a broken promise, with younger generations prioritising personal boundaries and mental health over career advancement.
+      A growing number of young Americans are questioning the traditional idea that hard work automatically leads to success and a good life. Daniel Ruiz, a 27-year-old from Ohio, is one example: unlike his father, who worked sixty-hour weeks in a factory, Daniel deliberately chose a four-day working week and says he is far happier, even though he earns less. This is not an isolated case — a recent Economist/YouGov poll found that 69% of Americans under thirty consider a working week of 35 hours or less ideal, compared with 36% of those aged 65 and over. While some critics call this attitude lazy, sociologists see it as a reasonable response to a broken promise, with younger generations prioritising personal boundaries and mental health over career advancement.
     </div>
     <div class="btn-row">
       <button class="btn" id="finalBtn" onclick="showFinal()">See Final Score →</button>
@@ -402,7 +402,7 @@ function showFeedbackBox(id,correct,max){const fb=document.getElementById(id);co
 const ex1Data=[
   {id:'s1', text:'"Viele junge Amerikaner stellen das Versprechen von Erfolg durch harte Arbeit infrage."', answer:'Relevant'},
   {id:'s2', text:'"Daniel Ruiz arbeitet in der Marketingbranche und hat sich für eine Vier-Tage-Woche entschieden."', answer:'Relevant'},
-  {id:'s3', text:'"61 Prozent der Arbeitnehmer unter 30 bewerten Freizeit höher als Gehalt (Pew-Umfrage)."', answer:'Relevant'},
+  {id:'s3', text:'"69 Prozent der unter 30-Jährigen halten höchstens 35 Wochenstunden für ideal (Economist/YouGov-Umfrage)."', answer:'Relevant'},
   {id:'s4', text:'"Das Magazin, aus dem der Artikel stammt, ist ein deutsches Wirtschaftsmagazin."', answer:'Not relevant'},
   {id:'s5', text:'"Die junge Generation legt Wert auf persönliche Grenzen und mentale Gesundheit."', answer:'Relevant'},
   {id:'s6', text:'"Das Stahlwerk von Daniels Vater musste zweimal schließen."', answer:'Not relevant'}
@@ -459,7 +459,7 @@ function checkMC(containerId,data,scoreKey,fbId,nextId){
 const ex2Data=[
   {q:'Which opening is more appropriate for a school website article?', opts:['Yo, so basically Americans are kinda over the whole success thing.','A growing number of young Americans are questioning the traditional link between hard work and success.'], correct:1},
   {q:'Which phrasing better suits a semi-formal school website?', opts:['Daniel earns less but he\'s way happier now, which is pretty cool.','Daniel earns less than his father, yet reports being considerably happier.'], correct:1},
-  {q:'Which is more appropriate register for presenting survey data?', opts:['A survey found that most young workers value free time more than a big paycheck.','Some survey or whatever said people like free time more than money now.'], correct:0},
+  {q:'Which is more appropriate register for presenting survey data?', opts:['A survey found that most young Americans consider a short working week ideal.','Some survey or whatever said people like free time more than money now.'], correct:0},
   {q:'Which conclusion fits the task best?', opts:['Basically, it\'s a whole generation thing, you get it.','This shift suggests that younger generations are redefining what a successful life looks like.'], correct:1}
 ];
 function checkEx2(){checkMC('mcList2',ex2Data,'ex2','fb2','next2');updateProgress(2);}
@@ -625,6 +625,7 @@ function submitByEmail(){
   setTimeout(function(){document.body.removeChild(a);},100);
 }
 </script>
+<p class="source-note" style="max-width:760px;margin:24px auto 0;padding:0 16px;font-size:.8rem;color:var(--muted,#6b7a8d);text-align:center">Quellen / Sources: <a href="https://yougov.com/en-us/articles/55592-r-e-s-p-e-c-t-what-americans-value-in-kids-and-work">Economist/YouGov Poll, Sept. 2026</a>. Die Personen in den Texten sind erfunden. / The people in the texts are fictional.</p>
 <!-- ABITUR-FOOTER:START -->
 <footer class="abitur-footer">
   <nav aria-label="Pages">

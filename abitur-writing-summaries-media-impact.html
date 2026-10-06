@@ -277,7 +277,7 @@
     <div class="byline">Adapted from a US media-affairs feature</div>
     <p>Twenty years ago, the average American got their news from a handful of evening broadcasts and a folded newspaper. Where do you get your news now — and can you honestly say you remember the last time you checked only once a day? The answer, for most people, is no.</p>
     <p>Take Jordan Mills, a 19-year-old college student in Atlanta. He checks his phone within ninety seconds of waking up, scrolls through six different news apps before breakfast, and estimates he sees over 200 headlines before his first class even begins. He is, by his own admission, exhausted by information he never asked for.</p>
-    <p>He is not unusual. A 2023 Pew Research study found that 86% of American adults now get at least some of their news from a smartphone, and nearly half report feeling "worn out" by the sheer volume of news they encounter. The feed, it seems, has become both a lifeline and a burden.</p>
+    <p>He is not unusual. A 2025 Pew Research Center survey found that 86% of American adults at least sometimes get news from a smartphone, computer or tablet, and 53% at least sometimes get news from social media. The feed, it seems, has become both a lifeline and a burden.</p>
     <p>Media companies insist they are simply meeting demand. Critics counter that they have manufactured it. The algorithm does not care whether a headline informs you or merely inflames you — it only cares whether you keep scrolling. Attention, once freely given, is now the most valuable currency in America.</p>
     <p>Whatever side of that argument one takes, one thing is undeniable. The feed never sleeps, and increasingly, neither do we.</p>
   </div>
@@ -299,7 +299,7 @@
     <summary>📄 Read the article again</summary>
     <div class="article-box">
       <p>Jordan Mills checks his phone within ninety seconds of waking up, scrolls through six different news apps before breakfast, and sees over 200 headlines before his first class begins.</p>
-      <p>A 2023 Pew Research study found that 86% of American adults now get at least some of their news from a smartphone, and nearly half report feeling "worn out".</p>
+      <p>A 2025 Pew Research Center survey found that 86% of American adults at least sometimes get news from a smartphone, computer or tablet, and 53% at least sometimes get news from social media.</p>
       <p>Media companies insist they are meeting demand; critics counter that they have manufactured it.</p>
       <p>The feed never sleeps, and increasingly, neither do we.</p>
     </div>
@@ -348,7 +348,7 @@
     <div class="article-box">
       <p>Twenty years ago, the average American got their news from a handful of evening broadcasts and a folded newspaper. Today, most people check the news constantly throughout the day.</p>
       <p>Jordan Mills, a 19-year-old college student in Atlanta, checks his phone within ninety seconds of waking up and sees over 200 headlines before his first class begins.</p>
-      <p>A 2023 Pew Research study found that 86% of American adults now get at least some of their news from a smartphone, and nearly half report feeling "worn out".</p>
+      <p>A 2025 Pew Research Center survey found that 86% of American adults at least sometimes get news from a smartphone, computer or tablet, and 53% at least sometimes get news from social media.</p>
       <p>Media companies insist they are simply meeting demand; critics counter that they have manufactured it, since algorithms are designed to maximise engagement rather than inform.</p>
       <p>The feed never sleeps, and increasingly, neither do we.</p>
     </div>
@@ -365,7 +365,7 @@
     <div class="btn-row"><button class="btn secondary" id="modelBtn" onclick="showModel()">Show model answer</button></div>
     <div class="model-para" id="modelPara" style="display:none">
       <b>Model summary:</b><br><br>
-      The article examines how constant access to news through smartphones has changed media consumption habits in the USA. It uses the example of a college student who checks multiple news apps within minutes of waking up to illustrate how normalised near-constant news consumption has become. The writer cites survey data showing that the majority of American adults now get news from smartphones, and that many feel overwhelmed by its volume. The article also highlights a debate over responsibility: media companies claim they are meeting audience demand, while critics argue that algorithms are designed to maximise attention rather than inform. It concludes that this constant news cycle has become a defining, and demanding, feature of modern life.
+      The article examines how constant access to news through smartphones has changed media consumption habits in the USA. It uses the example of a college student who checks multiple news apps within minutes of waking up to illustrate how normalised near-constant news consumption has become. The writer cites survey data showing that most American adults now get news from digital devices, and that more than half at least sometimes get news from social media. The article also highlights a debate over responsibility: media companies claim they are meeting audience demand, while critics argue that algorithms are designed to maximise attention rather than inform. It concludes that this constant news cycle has become a defining, and demanding, feature of modern life.
     </div>
     <div class="btn-row">
       <button class="btn" id="finalBtn" onclick="showFinal()">See Final Score →</button>
@@ -404,7 +404,7 @@ function showFeedbackBox(id,correct,max){const fb=document.getElementById(id);co
 const ex1Data=[
   {id:'s1', text:'"Constant smartphone access has fundamentally changed how Americans consume news."', answer:'Main idea'},
   {id:'s2', text:'"Jordan Mills is a 19-year-old college student in Atlanta."', answer:'Supporting detail'},
-  {id:'s3', text:'"86% of American adults get at least some news from a smartphone, according to Pew Research."', answer:'Supporting detail'},
+  {id:'s3', text:'"86% of American adults at least sometimes get news from a smartphone, computer or tablet, according to Pew Research."', answer:'Supporting detail'},
   {id:'s4', text:'"Can you honestly say you remember the last time you checked only once a day?"', answer:'Irrelevant for a summary'},
   {id:'s5', text:'"There is disagreement about who is responsible for excessive news consumption."', answer:'Main idea'},
   {id:'s6', text:'"Jordan sees over 200 headlines before his first class."', answer:'Supporting detail'}
@@ -460,7 +460,7 @@ function checkMC(containerId,data,scoreKey,fbId,nextId){
 
 const ex2Data=[
   {q:'Details: Jordan checks his phone quickly, uses six apps, sees 200+ headlines. Best umbrella sentence?', opts:['Jordan Mills is a student who owns a smartphone.','A student\'s daily routine illustrates how normalised constant news consumption has become.','Jordan looks at his phone in the morning.'], correct:1},
-  {q:'Details: 86% of adults use smartphones for news; half feel worn out. Best umbrella sentence?', opts:['A survey was conducted about smartphones in America.','Survey data reveals both the scale and the emotional cost of constant news consumption.','Some adults feel tired sometimes.'], correct:1},
+  {q:'Details: 86% of adults use digital devices for news; 53% use social media. Best umbrella sentence?', opts:['A survey was conducted about smartphones in America.','Survey data reveals how widespread digital and social media news consumption has become.','Some adults feel tired sometimes.'], correct:1},
   {q:'Details: media companies say they meet demand; critics say they created it. Best umbrella sentence?', opts:['There is disagreement over who bears responsibility for excessive news consumption.','Media companies and critics have different opinions about various topics.','Some people work in media companies.'], correct:0},
   {q:'Details: the article ends by paralleling "the feed" never sleeping with human habits. Best umbrella sentence?', opts:['The article ends with a sentence about sleep.','The article closes by suggesting that constant connectivity has reshaped human behaviour.','The feed and people are compared at the end.'], correct:1}
 ];
@@ -469,7 +469,7 @@ function checkEx2(){checkMC('mcList2',ex2Data,'ex2','fb2','next2');updateProgres
 const ex3Data=[
   {q:'Choose the correct summary sentence:', opts:['The article explained how news consumption has changed.','The article explains how news consumption has changed.','The article will explain how news consumption has changed.'], correct:1},
   {q:'Choose the correct summary sentence:', opts:['Jordan checks six different news apps before breakfast.','Jordan checked six different news apps before breakfast.','Jordan has been checking six different news apps since years.'], correct:0},
-  {q:'Choose the correct summary sentence:', opts:['The survey showed that most adults used smartphones for news.','The survey shows that most adults use smartphones for news.','The survey is showing that most adults were using smartphones for news.'], correct:1},
+  {q:'Choose the correct summary sentence:', opts:['The survey showed that most adults used digital devices for news.','The survey shows that most adults use digital devices for news.','The survey is showing that most adults were using digital devices for news.'], correct:1},
   {q:'Choose the correct summary sentence:', opts:['Critics argued that algorithms prioritise engagement over accuracy.','Critics argue that algorithms prioritise engagement over accuracy.','Critics have argued that algorithms had prioritised engagement over accuracy.'], correct:1}
 ];
 function checkEx3(){checkMC('mcList3',ex3Data,'ex3','fb3','next3');updateProgress(3);}
@@ -608,6 +608,7 @@ function submitByEmail(){
   setTimeout(function(){document.body.removeChild(a);},100);
 }
 </script>
+<p class="source-note" style="max-width:760px;margin:24px auto 0;padding:0 16px;font-size:.8rem;color:var(--muted,#6b7a8d);text-align:center">Quellen / Sources: <a href="https://www.pewresearch.org/journalism/fact-sheet/news-platform-fact-sheet/">Pew Research Center, News Platform Fact Sheet (survey of Aug. 2025)</a>. Die Personen in den Texten sind erfunden. / The people in the texts are fictional.</p>
 <!-- ABITUR-FOOTER:START -->
 <footer class="abitur-footer">
   <nav aria-label="Pages">

@@ -284,7 +284,7 @@
     <div class="byline">Übersetzt und bearbeitet aus einem deutschen Medienmagazin</div>
     <p>Vor zwanzig Jahren bezog der durchschnittliche Amerikaner seine Nachrichten aus wenigen Abendsendungen und einer gefalteten Zeitung. Wo informieren Sie sich heute – und können Sie sich ehrlich erinnern, wann Sie zuletzt nur einmal am Tag Nachrichten gecheckt haben? Für die meisten Menschen lautet die Antwort: nie.</p>
     <p>Ein Beispiel ist Jordan Mills, ein neunzehnjähriger Student aus Atlanta. Er greift innerhalb von neunzig Sekunden nach dem Aufwachen zu seinem Handy, scrollt vor dem Frühstück durch sechs verschiedene Nachrichten-Apps und schätzt, dass er über 200 Schlagzeilen sieht, bevor sein erster Kurs überhaupt beginnt. Er gibt selbst zu, von Informationen erschöpft zu sein, die er nie angefordert hat.</p>
-    <p>Er ist damit nicht allein. Eine Pew-Research-Studie aus dem Jahr 2023 ergab, dass 86 Prozent der amerikanischen Erwachsenen mittlerweile zumindest einen Teil ihrer Nachrichten über das Smartphone beziehen, und fast die Hälfte gibt an, sich durch die schiere Menge an Nachrichten „ausgelaugt" zu fühlen.</p>
+    <p>Er ist damit nicht allein. Eine Umfrage des Pew Research Center vom August 2025 ergab, dass 86 Prozent der erwachsenen US-Amerikaner zumindest manchmal Nachrichten über Smartphone, Computer oder Tablet beziehen und 53 Prozent zumindest manchmal über soziale Medien.</p>
     <p>Medienunternehmen behaupten, sie würden lediglich die Nachfrage bedienen. Kritiker entgegnen, dass sie diese Nachfrage selbst geschaffen haben. Dem Algorithmus ist es egal, ob eine Schlagzeile informiert oder lediglich aufregt – wichtig ist nur, dass man weiterscrollt. Aufmerksamkeit, einst freiwillig gegeben, ist heute die wertvollste Währung Amerikas.</p>
     <p>Wie man diese Entwicklung auch bewertet: Der Feed schläft nie – und zunehmend schlafen auch wir immer weniger.</p>
   </div>
@@ -346,7 +346,7 @@
     <div class="article-box">
       <p>Vor zwanzig Jahren bezog der durchschnittliche Amerikaner seine Nachrichten aus wenigen Abendsendungen und einer gefalteten Zeitung. Heute checken die meisten Menschen Nachrichten den ganzen Tag über.</p>
       <p>Jordan Mills, ein neunzehnjähriger Student aus Atlanta, greift innerhalb von neunzig Sekunden nach dem Aufwachen zu seinem Handy und sieht über 200 Schlagzeilen, bevor sein erster Kurs beginnt.</p>
-      <p>Eine Pew-Research-Studie aus 2023 ergab, dass 86 Prozent der amerikanischen Erwachsenen zumindest einen Teil ihrer Nachrichten über das Smartphone beziehen, und fast die Hälfte fühlt sich davon „ausgelaugt".</p>
+      <p>Eine Pew-Umfrage von 2025 ergab, dass 86 Prozent der erwachsenen US-Amerikaner zumindest manchmal Nachrichten über Smartphone, Computer oder Tablet beziehen und 53 Prozent zumindest manchmal über soziale Medien.</p>
       <p>Medienunternehmen behaupten, sie würden die Nachfrage bedienen; Kritiker sagen, sie hätten die Nachfrage selbst geschaffen, da Algorithmen auf Aufmerksamkeit statt Information ausgelegt sind.</p>
       <p>Der Feed schläft nie – und zunehmend schlafen auch wir immer weniger.</p>
     </div>
@@ -363,7 +363,7 @@
     <div class="btn-row"><button class="btn secondary" id="modelBtn" onclick="showModel()">Show model answer</button></div>
     <div class="model-para" id="modelPara" style="display:none">
       <b>Model mediation:</b><br><br>
-      Constant access to news through smartphones has fundamentally changed how Americans stay informed. Jordan Mills, a 19-year-old student from Atlanta, illustrates this well: he checks his phone within ninety seconds of waking up and sees over 200 headlines before his first class even starts. This isn't unusual — a 2023 Pew Research study found that 86% of American adults now get at least some of their news from smartphones, and nearly half feel "worn out" by the sheer volume. Media companies claim they are simply meeting demand, but critics argue that algorithms are designed to maximise attention rather than to inform, meaning the constant news cycle may be as manufactured as it is consumed.
+      Constant access to news through smartphones has fundamentally changed how Americans stay informed. Jordan Mills, a 19-year-old student from Atlanta, illustrates this well: he checks his phone within ninety seconds of waking up and sees over 200 headlines before his first class even starts. This isn't unusual — a 2025 Pew Research Center survey found that 86% of American adults at least sometimes get news from a smartphone, computer or tablet, and 53% at least sometimes get news from social media. Media companies claim they are simply meeting demand, but critics argue that algorithms are designed to maximise attention rather than to inform, meaning the constant news cycle may be as manufactured as it is consumed.
     </div>
     <div class="btn-row">
       <button class="btn" id="finalBtn" onclick="showFinal()">See Final Score →</button>
@@ -402,7 +402,7 @@ function showFeedbackBox(id,correct,max){const fb=document.getElementById(id);co
 const ex1Data=[
   {id:'s1', text:'"Konstanter Handyzugang hat verändert, wie Amerikaner sich über Nachrichten informieren."', answer:'Relevant'},
   {id:'s2', text:'"Jordan Mills ist neunzehn Jahre alt und Student in Atlanta."', answer:'Relevant'},
-  {id:'s3', text:'"86 Prozent der amerikanischen Erwachsenen beziehen Nachrichten über das Smartphone (Pew-Studie 2023)."', answer:'Relevant'},
+  {id:'s3', text:'"86 Prozent der amerikanischen Erwachsenen beziehen zumindest manchmal Nachrichten über Smartphone, Computer oder Tablet (Pew-Umfrage 2025)."', answer:'Relevant'},
   {id:'s4', text:'"Der Artikel stammt aus einem deutschen Medienmagazin."', answer:'Not relevant'},
   {id:'s5', text:'"Es gibt eine Debatte darüber, wer für den Nachrichtenüberkonsum verantwortlich ist."', answer:'Relevant'},
   {id:'s6', text:'"Jordan sieht über 200 Schlagzeilen vor seinem ersten Kurs."', answer:'Relevant'}
@@ -459,7 +459,7 @@ function checkMC(containerId,data,scoreKey,fbId,nextId){
 const ex2Data=[
   {q:'Which opening suits a school blog post?', opts:['News consumption has become a nonstop thing for basically everyone now, ugh.','Constant access to news through smartphones has fundamentally changed how Americans stay informed.'], correct:1},
   {q:'Which phrasing best fits a semi-formal blog post?', opts:['Jordan checks his phone within ninety seconds of waking up.','Jordan is literally glued to his phone the second he wakes up, it\'s kind of intense.'], correct:0},
-  {q:'Which is a natural way to present the Pew Research statistic?', opts:['A 2023 Pew Research study found that 86% of American adults now get at least some news from smartphones.','Research data from Pew suggests a percentage approximating eighty-six regarding smartphone-based news consumption.'], correct:0},
+  {q:'Which is a natural way to present the Pew Research statistic?', opts:['A 2025 Pew Research Center survey found that 86% of American adults at least sometimes get news from a digital device.','Research data from Pew suggests a percentage approximating eighty-six regarding smartphone-based news consumption.'], correct:0},
   {q:'Which closing line fits a blog post for international readers?', opts:['The constant news cycle may be as manufactured as it is consumed.','It is what it is, algorithms gonna algorithm.'], correct:0}
 ];
 function checkEx2(){checkMC('mcList2',ex2Data,'ex2','fb2','next2');updateProgress(2);}
@@ -625,6 +625,7 @@ function submitByEmail(){
   setTimeout(function(){document.body.removeChild(a);},100);
 }
 </script>
+<p class="source-note" style="max-width:760px;margin:24px auto 0;padding:0 16px;font-size:.8rem;color:var(--muted,#6b7a8d);text-align:center">Quellen / Sources: <a href="https://www.pewresearch.org/journalism/fact-sheet/news-platform-fact-sheet/">Pew Research Center, News Platform Fact Sheet (survey of Aug. 2025)</a>. Die Personen in den Texten sind erfunden. / The people in the texts are fictional.</p>
 <!-- ABITUR-FOOTER:START -->
 <footer class="abitur-footer">
   <nav aria-label="Pages">

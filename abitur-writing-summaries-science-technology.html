@@ -277,7 +277,7 @@
     <div class="byline">Adapted from a science and technology feature</div>
     <p>Fifty years ago, a computer that could hold a conversation belonged firmly to science fiction. Would anyone in 1975 have believed that a machine could one day write poetry, diagnose illness, and argue philosophy — all before breakfast? Today, that machine sits quietly in millions of pockets.</p>
     <p>Consider Dr. Amara Okafor, a radiologist in Toronto. Last year, an AI system flagged a tumour on one of her scans that she herself had missed on first review, and she has not looked at a scan the same way since. For her, artificial intelligence is no longer a futuristic curiosity — it is a colleague she did not choose but has come to rely on.</p>
-    <p>The scale of the shift is difficult to overstate. One recent industry report estimates that AI tools now assist in over 30% of medical diagnoses made in leading hospitals worldwide. What began as an experiment in laboratories has quietly become infrastructure.</p>
+    <p>The scale of the shift is difficult to overstate. The American Medical Association reports that 66% of US physicians used AI tools in their work in 2024, up from 38% in 2023. What began as an experiment in laboratories has quietly become infrastructure.</p>
     <p>Yet for every efficiency gained, a question is raised. We taught machines to see patterns we could not; now we must decide how much of our judgement we are willing to hand over in return. Optimists see a future of longer, healthier lives. Sceptics see a slow erosion of human expertise and accountability.</p>
     <p>Both camps agree on one thing: the technology is not coming — it has already arrived. The only real choice left is not whether artificial intelligence will shape our future, but how wisely we choose to shape it back.</p>
   </div>
@@ -299,7 +299,7 @@
     <summary>📄 Read the article again</summary>
     <div class="article-box">
       <p>Consider Dr. Amara Okafor, a radiologist in Toronto. Last year, an AI system flagged a tumour on one of her scans that she herself had missed on first review.</p>
-      <p>One recent industry report estimates that AI tools now assist in over 30% of medical diagnoses made in leading hospitals worldwide.</p>
+      <p>The American Medical Association reports that 66% of US physicians used AI tools in their work in 2024, up from 38% in 2023.</p>
       <p>Optimists see a future of longer, healthier lives. Sceptics see a slow erosion of human expertise and accountability.</p>
       <p>The only real choice left is not whether artificial intelligence will shape our future, but how wisely we choose to shape it back.</p>
     </div>
@@ -348,7 +348,7 @@
     <div class="article-box">
       <p>Fifty years ago, a computer that could hold a conversation belonged firmly to science fiction. Today, that machine sits quietly in millions of pockets.</p>
       <p>Consider Dr. Amara Okafor, a radiologist in Toronto. Last year, an AI system flagged a tumour on one of her scans that she herself had missed on first review, and she has not looked at a scan the same way since.</p>
-      <p>One recent industry report estimates that AI tools now assist in over 30% of medical diagnoses made in leading hospitals worldwide.</p>
+      <p>The American Medical Association reports that 66% of US physicians used AI tools in their work in 2024, up from 38% in 2023.</p>
       <p>We taught machines to see patterns we could not; now we must decide how much of our judgement we are willing to hand over in return. Optimists see a future of longer, healthier lives. Sceptics see a slow erosion of human expertise and accountability.</p>
       <p>The only real choice left is not whether artificial intelligence will shape our future, but how wisely we choose to shape it back.</p>
     </div>
@@ -365,7 +365,7 @@
     <div class="btn-row"><button class="btn secondary" id="modelBtn" onclick="showModel()">Show model answer</button></div>
     <div class="model-para" id="modelPara" style="display:none">
       <b>Model summary:</b><br><br>
-      The article examines the growing role of artificial intelligence in professional fields such as medicine. It describes how a radiologist's diagnosis was improved by an AI system that detected a tumour she had initially missed, illustrating how AI has moved from experimental technology to reliable infrastructure. The writer cites data showing that AI now assists in a significant proportion of medical diagnoses worldwide. However, the article also acknowledges a divide in opinion: some see this development as a path to better healthcare, while others worry about a loss of human expertise and accountability. It concludes that AI's presence is now unavoidable, making thoughtful human oversight essential.
+      The article examines the growing role of artificial intelligence in professional fields such as medicine. It describes how a radiologist's diagnosis was improved by an AI system that detected a tumour she had initially missed, illustrating how AI has moved from experimental technology to reliable infrastructure. The writer cites survey data showing that a large majority of US doctors now use AI tools. However, the article also acknowledges a divide in opinion: some see this development as a path to better healthcare, while others worry about a loss of human expertise and accountability. It concludes that AI's presence is now unavoidable, making thoughtful human oversight essential.
     </div>
     <div class="btn-row">
       <button class="btn" id="finalBtn" onclick="showFinal()">See Final Score →</button>
@@ -404,7 +404,7 @@ function showFeedbackBox(id,correct,max){const fb=document.getElementById(id);co
 const ex1Data=[
   {id:'s1', text:'"Artificial intelligence has moved from science fiction to everyday professional use."', answer:'Main idea'},
   {id:'s2', text:'"Dr. Amara Okafor is a radiologist in Toronto."', answer:'Supporting detail'},
-  {id:'s3', text:'"AI tools now assist in over 30% of medical diagnoses in leading hospitals, according to an industry report."', answer:'Supporting detail'},
+  {id:'s3', text:'"66% of US physicians used AI tools in their work in 2024, up from 38% in 2023, according to the American Medical Association."', answer:'Supporting detail'},
   {id:'s4', text:'"That machine sits quietly in millions of pockets."', answer:'Irrelevant for a summary'},
   {id:'s5', text:'"There is disagreement about whether AI\'s growing role is ultimately beneficial or risky."', answer:'Main idea'},
   {id:'s6', text:'"An AI system flagged a tumour Dr. Okafor had missed."', answer:'Supporting detail'}
@@ -460,7 +460,7 @@ function checkMC(containerId,data,scoreKey,fbId,nextId){
 
 const ex2Data=[
   {q:'Details: AI flagged a tumour Dr. Okafor missed; she now relies on it. Best umbrella sentence?', opts:['Dr. Okafor works as a radiologist in Toronto.','A specific medical case illustrates how AI can support and improve human expert judgement.','A tumour was found by an AI system in Toronto.'], correct:1},
-  {q:'Details: AI assists in 30%+ of diagnoses worldwide. Best umbrella sentence?', opts:['An industry report was published about hospitals.','AI-assisted diagnosis has already become widespread in the healthcare industry.','A report exists somewhere about AI and hospitals.'], correct:1},
+  {q:'Details: 66% of US physicians used AI in 2024, up from 38% in 2023. Best umbrella sentence?', opts:['A survey was published about doctors.','AI has quickly become widespread in everyday medical practice.','A report exists somewhere about AI and doctors.'], correct:1},
   {q:'Details: optimists see health benefits, sceptics see loss of expertise. Best umbrella sentence?', opts:['People have different jobs in healthcare.','Opinion is divided over whether AI\'s benefits outweigh its risks.','Some people are optimists and some are sceptics.'], correct:1},
   {q:'Details: the article ends by saying the real choice is how to guide AI\'s development. Best umbrella sentence?', opts:['The article concludes that responsible human oversight of AI is now essential.','The article has a conclusion at the end.','The article talks about choices.'], correct:0}
 ];
@@ -608,6 +608,7 @@ function submitByEmail(){
   setTimeout(function(){document.body.removeChild(a);},100);
 }
 </script>
+<p class="source-note" style="max-width:760px;margin:24px auto 0;padding:0 16px;font-size:.8rem;color:var(--muted,#6b7a8d);text-align:center">Quellen / Sources: <a href="https://www.ama-assn.org/practice-management/digital-health/2-3-physicians-are-using-health-ai-78-2023">American Medical Association, physician AI survey (Nov. 2024)</a>. Die Personen in den Texten sind erfunden. / The people in the texts are fictional.</p>
 <!-- ABITUR-FOOTER:START -->
 <footer class="abitur-footer">
   <nav aria-label="Pages">

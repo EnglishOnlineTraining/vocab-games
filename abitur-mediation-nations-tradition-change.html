@@ -284,7 +284,7 @@
     <div class="byline">Übersetzt und bearbeitet aus einem deutschen Kulturmagazin</div>
     <p>Wer heute durch eine britische Einkaufsstraße geht, sieht Altes und Neues nebeneinander: eine Dorfkirche neben einem Halal-Metzger, eine rote Telefonzelle neben einem Bubble-Tea-Laden. Ist dieser Kontrast ein Zeichen von Identitätskrise – oder war Identität schon immer so vielschichtig?</p>
     <p>Ein Beispiel liefert die walisische Stadt Wrexham. Die sechzehnjährige Priya Chowdhury singt montags im walisischsprachigen Schulchor und feiert freitags mit ihrer Großmutter das Lichterfest Diwali. Für sie und ihre Generation ist britische Identität kein festes Erbe mehr, sondern setzt sich aus vielen Einzelteilen zusammen.</p>
-    <p>Auch Zahlen bestätigen diesen Trend. Eine Umfrage aus dem Jahr 2024 ergab, dass 57 Prozent der unter 35-Jährigen ihre Identität als „britisch und noch etwas anderes" beschreiben – bei den über 65-Jährigen sind es nur 24 Prozent. Für jüngere Generationen löst sich die klassische Vorstellung von Britishness zunehmend auf.</p>
+    <p>Auch Zahlen bestätigen diesen Trend. Laut dem British Social Attitudes Survey (Bericht von 2024) vertreten nur 14 Prozent der 18- bis 34-Jährigen ein überwiegend ethnisches Verständnis davon, wer britisch ist – bei den über 65-Jährigen sind es 26 Prozent. Für jüngere Generationen löst sich die klassische Vorstellung von Britishness zunehmend auf.</p>
     <p>Dennoch sind die alten Symbole nicht verschwunden. Die Monarchie zieht weiterhin Menschenmengen an, die schottischen Highland Games sind ausverkauft, und der klassische Sonntagsbraten bleibt beliebt. Tradition, so scheint es, ist kein Museumsstück, sondern eine lebendige Verhandlungssache, die jede Generation neu aushandelt.</p>
     <p>Vielleicht geht es in Großbritannien also gar nicht um einen Kampf zwischen Tradition und Wandel. Vielmehr entdeckt das Land langsam, dass es die Krone in der einen Hand und die Zukunft in der anderen halten kann.</p>
   </div>
@@ -346,7 +346,7 @@
     <div class="article-box">
       <p>Wer heute durch eine britische Einkaufsstraße geht, sieht Altes und Neues nebeneinander: eine Dorfkirche neben einem Halal-Metzger, eine rote Telefonzelle neben einem Bubble-Tea-Laden.</p>
       <p>Die sechzehnjährige Priya Chowdhury aus Wrexham singt montags im walisischsprachigen Schulchor und feiert freitags mit ihrer Großmutter das Lichterfest Diwali. Für sie ist britische Identität kein festes Erbe mehr, sondern setzt sich aus vielen Einzelteilen zusammen.</p>
-      <p>Eine Umfrage aus dem Jahr 2024 ergab, dass 57 Prozent der unter 35-Jährigen ihre Identität als „britisch und noch etwas anderes" beschreiben – bei den über 65-Jährigen sind es nur 24 Prozent.</p>
+      <p>Laut dem British Social Attitudes Survey (Bericht von 2024) vertreten nur 14 Prozent der 18- bis 34-Jährigen ein überwiegend ethnisches Verständnis davon, wer britisch ist – bei den über 65-Jährigen sind es 26 Prozent.</p>
       <p>Dennoch sind die alten Symbole nicht verschwunden: Die Monarchie zieht weiterhin Menschenmengen an, und der Sonntagsbraten bleibt beliebt.</p>
       <p>Großbritannien entdeckt langsam, dass es die Krone in der einen Hand und die Zukunft in der anderen halten kann.</p>
     </div>
@@ -363,7 +363,7 @@
     <div class="btn-row"><button class="btn secondary" id="modelBtn" onclick="showModel()">Show model answer</button></div>
     <div class="model-para" id="modelPara" style="display:none">
       <b>Model mediation:</b><br><br>
-      A German cultural magazine recently explored how British identity is changing among younger generations. It describes Priya Chowdhury, a sixteen-year-old from Wrexham, who sings in a Welsh-language choir and celebrates Diwali with her grandmother — for her, being British isn't one fixed tradition but a mix of different cultural influences. This isn't unusual: a 2024 survey found that 57% of under-35s describe their identity as "British and something else", compared to only 24% of over-65s. However, traditional symbols like the monarchy and the Sunday roast haven't disappeared — they simply now exist alongside newer influences, showing that Britain is learning to combine tradition with change rather than choosing between them.
+      A German cultural magazine recently explored how British identity is changing among younger generations. It describes Priya Chowdhury, a sixteen-year-old from Wrexham, who sings in a Welsh-language choir and celebrates Diwali with her grandmother — for her, being British isn't one fixed tradition but a mix of different cultural influences. This isn't unusual: the 2024 British Social Attitudes report found that only 14% of 18- to 34-year-olds hold a mainly ethnic view of what makes someone British, compared to 26% of those aged 65 and over. However, traditional symbols like the monarchy and the Sunday roast haven't disappeared — they simply now exist alongside newer influences, showing that Britain is learning to combine tradition with change rather than choosing between them.
     </div>
     <div class="btn-row">
       <button class="btn" id="finalBtn" onclick="showFinal()">See Final Score →</button>
@@ -402,7 +402,7 @@ function showFeedbackBox(id,correct,max){const fb=document.getElementById(id);co
 const ex1Data=[
   {id:'s1', text:'"Britische Identität wird zunehmend als Mischung verschiedener kultureller Einflüsse verstanden."', answer:'Relevant'},
   {id:'s2', text:'"Priya Chowdhury singt montags im walisischsprachigen Schulchor."', answer:'Relevant'},
-  {id:'s3', text:'"57% der unter 35-Jährigen beschreiben ihre Identität als \\"britisch und noch etwas anderes\\" (Umfrage 2024)."', answer:'Relevant'},
+  {id:'s3', text:'"Nur 14 % der 18- bis 34-Jährigen vertreten ein überwiegend ethnisches Verständnis von Britishness, bei den über 65-Jährigen sind es 26 % (BSA 2024)."', answer:'Relevant'},
   {id:'s4', text:'"Der Artikel stammt aus einem deutschen Kulturmagazin."', answer:'Not relevant'},
   {id:'s5', text:'"Traditionelle Symbole wie die Monarchie sind nicht verschwunden."', answer:'Relevant'},
   {id:'s6', text:'"Eine rote Telefonzelle steht neben einem Bubble-Tea-Laden."', answer:'Not relevant'}
@@ -459,7 +459,7 @@ function checkMC(containerId,data,scoreKey,fbId,nextId){
 const ex2Data=[
   {q:'Which opening suits a friendly message to an exchange partner?', opts:['I read an interesting article about how British identity is changing — thought you\'d find it interesting!','It has been observed that identity constructs within the United Kingdom are undergoing transformation.'], correct:0},
   {q:'Which phrasing fits a message between friends?', opts:['Priya\'s story shows this really well — she\'s part of a Welsh choir but also celebrates Diwali.','The aforementioned individual, Priya Chowdhury, exemplifies this phenomenon through her participation in choral activities.'], correct:0},
-  {q:'Which is a natural way to present the survey statistic?', opts:['A 2024 survey shows that 57% of under-35s see their identity as mixed, compared to 24% of over-65s.','Statistical data indicates a percentage of 57 for identity-related self-classification among younger demographics.'], correct:0},
+  {q:'Which is a natural way to present the survey statistic?', opts:['A 2024 survey shows that only 14% of 18- to 34-year-olds hold a mainly ethnic view of Britishness, compared to 26% of over-65s.','Statistical data indicates a percentage of 14 for ethnic conceptions of national identity among younger demographics.'], correct:0},
   {q:'Which closing line fits a message to a friend?', opts:['So it seems Britain\'s figuring out how to hold onto tradition while still moving forward.','In summation, the aforementioned nation appears to be navigating a dialectic between continuity and transformation.'], correct:0}
 ];
 function checkEx2(){checkMC('mcList2',ex2Data,'ex2','fb2','next2');updateProgress(2);}
@@ -625,6 +625,7 @@ function submitByEmail(){
   setTimeout(function(){document.body.removeChild(a);},100);
 }
 </script>
+<p class="source-note" style="max-width:760px;margin:24px auto 0;padding:0 16px;font-size:.8rem;color:var(--muted,#6b7a8d);text-align:center">Quellen / Sources: <a href="https://natcen.ac.uk/publications/british-social-attitudes-41-national-identity">NatCen, British Social Attitudes 41: National Identity (Curtice &amp; Scholes, Sept. 2024)</a>. Die Personen in den Texten sind erfunden. / The people in the texts are fictional.</p>
 <!-- ABITUR-FOOTER:START -->
 <footer class="abitur-footer">
   <nav aria-label="Pages">
