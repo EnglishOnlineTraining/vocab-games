@@ -1085,3 +1085,58 @@ two of these are latent rather than live.
     has an authored `introH2` (verified 2026-08-28), so nothing on the site shows it today. It
     bites the next slug added without one. Either author `introH2` with each new slug — the
     existing convention — or make the fallback plural-aware.
+
+### Added 2026-10-06 · Abitur 2027 page, pack sourcing and WordPress fact-check pass
+*Done today (context, not backlog):* `abitur-englisch-2027.html` is live (4facf27 and earlier) and linked from
+`abitur-activities.html`; its exam facts were checked against the Berlin Prüfungsschwerpunkte PDFs, Brandenburg
+Fachbrief 9 and the Brandenburg exam calendar. The invented statistics in 14 Abitur packs were replaced with
+sourced figures (Pew, Economist/YouGov, Gallup, NatCen BSA 41, AMA) and each pack carries a source note. WP 1763
+Year 9 and Year 10 Gymnasium counts were set to 23, 16 and 28 for the pages on `main`. Eight recent WP posts
+(2367, 2368, 2374–2377, 2379, 2489) were corrected and the AFB post (2489) was retitled and published. Skill
+`fact-check-blogs` was written (`~/.claude/skills/`, outside this repo).
+
+14. **Port the stranded 10g work to a fresh worktree.** The old `vocab-games/` clone still holds 18 modified and 7
+    untracked files (three new `10g-*` pages with answer keys, hub cards, `explanations.json`, `page-faq.js`,
+    `topic-pool.json`, a `10g-review.html` rewrite) and was 66 commits behind `origin/main` on 2026-10-06.
+    Apply it to a worktree of `origin/main`, **regenerate `sitemap.xml` and `data/lastmod.json` with the build
+    rather than copying them**, review the combined diff, then push. After it is live, re-check WP 1763: the
+    Year 10 Gymnasium count should become 30 (`data/wordpress-1763.json`), applied through the API with
+    `context: "edit"`, changing only the number. CC; needs Shaun's OK before the push.
+
+15. **Finish the fact-check of the Abitur material.** Not yet verified:
+    - Historical and political background claims in the Aims, Nations and Media pack texts (only the statistics were checked).
+    - Whether the IQB link really supports the "Themenfelder" wording on `abitur-englisch-2027.html`.
+    - Berlin's make-up date for English (Brandenburg's is 19 May 2027; the page gives only that one).
+    - **AFB level for each operator.** The official 2027 operator list (IQB, "Grundstock von Operatoren") is organised by
+      competence area and assigns no AFB levels. The level mapping in WP post 2489 rests on the KMK Bildungsstandards
+      (2012) plus secondary teaching sites. Find a primary mapping before relying on it.
+    - The AMA page (the source for 66% / 38% in the science packs) returned 403 to the fetch tool. Open it in a browser and confirm.
+    CC; run with the `fact-check-blogs` skill.
+
+16. **Refresh dated statistics in the packs.** They cite Gallup State of the Global Workplace 2023, Pew *Teens, Social
+    Media and Technology* 2023 and BSA 41 (Sept 2024). Newer Gallup and Pew editions exist (Pew published a 2024
+    teens report). The Economist/YouGov poll (Sept 2026) is labelled "recent". Decide whether to update to the
+    newest editions and set a yearly review date. CC, low priority.
+
+17. **`scripts/verify-exercise.js` fails the Abitur packs (3 of 6 checks).** On `abitur-text-analysis-aims-ambitions.html` it
+    reports no `TOTAL_STEPS`, no `state` literal and no `SHEET_URL`. The packs use a different template, so this is
+    most likely a script/template mismatch, not broken packs. Confirm, then either teach the script about packs or
+    exclude `abitur-*` from the pre-publish gate. CC.
+
+18. **WordPress follow-ups · Shaun.**
+    - Post 2370 (3-Act Structure for student presentations) ends with a newsletter sign-up. The post is written for
+      teachers, so it was left unchanged; Shaun to confirm or give replacement wording.
+    - All the "Get in touch" and sign-up links point at `preview.mailerlite.io/forms/.../share`. Shaun confirmed the
+      forms are the intended ones; confirm that preview-domain links are meant to be permanent.
+    - After each scheduled post goes live (7–16 Oct), spot-check the public page, and check whether Jetpack Social
+      auto-shared the AFB post (2489) and the others.
+
+19. **Housekeeping · CC.** Remove the worktree `vg-abitur-2027` and branch `claude/abitur-englisch-2027` (merged).
+    Save memory notes: the fact-check skill and its lessons, and that the MailerLite form behind "Get in touch" is intended.
+
+20. **Test the `fact-check-blogs` skill.** Written 2026-10-06 and used once on live work, never run through the
+    skill-creator test loop and the description never optimised. Run 2–3 test prompts, then description
+    optimisation. CC.
+
+*Decided not to do:* a fact-check of the ~20 older WordPress drafts (2014–2023, mostly curated links, quizzes and US-focused
+guest posts). Shaun, 2026-10-06.
