@@ -305,4 +305,62 @@ module.exports = {
         + 'next round and is never stored or sent to anyone.',
     },
   ],
+
+  'abitur-englisch-2027.html': [
+    {
+      q: 'Was sind die Schwerpunktthemen im Englisch-Abitur 2027?',
+      a: 'Für Berlin und Brandenburg gelten ab dem Prüfungsjahr 2027 vier Schwerpunktthemen: '
+        + 'Aims and ambitions (Fokus USA), Nations between tradition and change (Fokus '
+        + 'Großbritannien), Science and technology — visions of the future und The impact of the '
+        + 'media on society. Sie folgen den vier Kurshalbjahren der Qualifikationsphase.',
+    },
+    {
+      q: 'Was hat sich im Englisch-Abitur 2027 geändert?',
+      a: 'Die Schwerpunkte folgen jetzt den Themenfeldern des IQB und dem gemeinsamen Aufgabenpool '
+        + 'der Länder. Neu verpflichtend sind die Themenfelder United Kingdom und Science and '
+        + 'technology; der USA-Schwerpunkt bleibt in Aims and ambitions und The impact of the media '
+        + 'on society erhalten. Außerdem gibt es aktualisierte Operatoren und in Brandenburg ein '
+        + 'überarbeitetes Kriterienraster.',
+    },
+    {
+      q: 'Wie ist die schriftliche Englisch-Abiturprüfung aufgebaut?',
+      a: 'Sie besteht aus zwei Teilen mit je zwei Aufgaben zur Auswahl. Teil 1 ist Leseverstehen '
+        + 'und Schreiben — Zusammenfassung, Analyse gestalterischer Mittel und eine Diskussions- '
+        + 'oder Schreibaufgabe — und zählt 70 Prozent der Note. Teil 2 ist Sprachmittlung, die '
+        + 'Übertragung deutscher Inhalte ins Englische, und zählt 30 Prozent.',
+    },
+    {
+      q: 'Wann ist das Englisch-Abitur 2027?',
+      a: 'Die schriftlichen Abiturprüfungen finden im Frühjahr 2027 statt, in Brandenburg vom '
+        + '16. April bis 10. Mai 2027; Berlin prüft im gleichen Zeitraum. Den konkreten '
+        + 'Prüfungstermin für Englisch gibt die Schule bekannt.',
+    },
+    {
+      q: 'Gibt es Unterschiede zwischen dem Abitur in Berlin und Brandenburg?',
+      a: 'In den Fächern Deutsch, Mathematik und den Fremdsprachen — also auch Englisch — nutzen '
+        + 'Berlin und Brandenburg identische Prüfungsaufgaben, koordiniert über das LISUM. '
+        + 'Unterschiede gibt es bei Rahmenlehrplan-Details und Bewertungsrastern, nicht bei der '
+        + 'Aufgabe selbst.',
+    },
+    {
+      q: 'Was ist Sprachmittlung (Mediation) im Abitur?',
+      a: 'Bei der Sprachmittlung gibst du den Inhalt eines deutschen Textes auf Englisch wieder — '
+        + 'für eine bestimmte Leserschaft und einen bestimmten Zweck, die in der Aufgabe genannt '
+        + 'werden. Es ist keine Übersetzung: Du wählst aus, was für den Auftrag relevant ist, und '
+        + 'lässt den Rest weg. Im Zentralabitur bildet sie Teil 2 der Prüfung.',
+    },
+    {
+      q: 'Wo finde ich die offiziellen Prüfungsvorgaben für 2027?',
+      a: 'Berlin veröffentlicht die Prüfungsvorgaben auf berlin.de unter Schule, Prüfungen und '
+        + 'Abschlüsse, Abitur. Brandenburg stellt die Schwerpunkte und das Kriterienraster über '
+        + 'den Bildungsserver Berlin-Brandenburg in den Fachbriefen Englisch bereit, zuletzt '
+        + 'Fachbrief Nr. 9 vom August 2025.',
+    },
+    {
+      q: 'Sind die Übungspakete auf dieser Seite kostenlos?',
+      a: 'Ja. Alle 16 Pakete laufen kostenlos im Browser und brauchen keine Anmeldung. Zu jedem '
+        + 'Schwerpunktthema gibt es je ein Paket für Text Analysis, Argumentative Writing, '
+        + 'Summary und Mediation.',
+    },
+  ],
 };
