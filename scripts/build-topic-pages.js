@@ -444,6 +444,9 @@ const EXTRA_PUBLIC_PAGES = [
   // links all 16 Abitur packs by theme. Same architecture as the task-type
   // landing pages above (no exercise.js, not a *-activities.html hub).
   'abitur-englisch-2027.html',
+  // German explainer for the revised KMK Operatoren list valid from the 2027
+  // exam year — same no-exercise.js landing architecture as the pages above.
+  'abitur-operatoren.html',
   'ielts-vocabulary-glossary.html',
   // uni-presentation-task.html used to be listed here. It is now carried in
   // data/exercises.json via the STANDALONE map in build-exercise-data.js, so the

@@ -365,4 +365,54 @@ module.exports = {
         + 'Summary und Mediation.',
     },
   ],
+
+  'abitur-operatoren.html': [
+    {
+      q: 'Was sind Operatoren im Englisch-Abitur?',
+      a: 'Operatoren sind die Signalverben der Aufgabenstellung, etwa analyze, summarize, comment '
+        + 'oder discuss. Sie legen verbindlich fest, welche Leistung erwartet wird — eine Antwort, '
+        + 'die den Operator verfehlt, erfüllt die inhaltliche Anforderung der Teilaufgabe nicht, '
+        + 'auch wenn sie sprachlich fehlerfrei ist.',
+    },
+    {
+      q: 'Welche Operatoren gelten im Englisch-Abitur ab 2027?',
+      a: 'Im Kompetenzbereich Schreiben gelten ab dem Prüfungsjahr 2027: outline/summarize/sum up, '
+        + 'point out, describe, explain, analyze/examine, compare, comment (on), discuss, '
+        + 'assess/evaluate und write (+ text type). In der Sprachmittlung kommen outline/present/'
+        + 'summarize/sum up und write (+ text type) vor. Grundlage ist der überarbeitete '
+        + 'Grundstock von Operatoren des IQB.',
+    },
+    {
+      q: 'Welche Operatoren wurden 2027 gestrichen?',
+      a: 'Aus dem Grundstock für den ländergemeinsamen Aufgabenpool wurden interpret, illustrate '
+        + 'und give/write a characterization of entfernt. In den neuen Beispielaufgaben laufen '
+        + 'Figurenanalysen über analyze, und wo früher interpret stand, steht im Cartoon-Beispiel jetzt comment.',
+    },
+    {
+      q: 'Was ist der Unterschied zwischen summarize und analyze?',
+      a: 'Summarize gibt die Kernaussagen des Textes knapp und neutral wieder. Analyze untersucht, '
+        + 'wie der Text wirkt — mit Belegen aus dem Text und Bezug zu Sprache und Form, also '
+        + 'Stilmitteln und ihrer Wirkung. Wer bei analyze nur zusammenfasst, verliert Punkte bei '
+        + 'der inhaltlichen Leistung.',
+    },
+    {
+      q: 'Was ist der Unterschied zwischen discuss und comment?',
+      a: 'Bei discuss wägst du Argumente für beide Seiten ab und kommst zu einem begründeten '
+        + 'Urteil. Bei comment legst du deine eigene, begründete Position dar und stützt sie mit '
+        + 'Belegen. Gegenargumente kannst du einbeziehen, musst es aber nicht: Laut Brandenburger '
+        + 'Fachbrief Nr. 9 darf ein Comment eine Seite vertreten, wenn sie gründlich begründet ist.',
+    },
+    {
+      q: 'Gelten die Operatoren für Grundkurs und Leistungskurs gleichermaßen?',
+      a: 'Ja. Die Operatorenliste unterscheidet nicht zwischen Grund- und Leistungskurs: Die '
+        + 'Kurse bearbeiten unterschiedliche Aufgaben, aber jeder Operator verlangt in beiden '
+        + 'dieselbe Leistung.',
+    },
+    {
+      q: 'Wo finde ich die offizielle Operatorenliste für das Abitur 2027?',
+      a: 'Beim IQB unter den begleitenden Dokumenten zum Fach Englisch: „Grundstock von '
+        + 'Operatoren — neu“, gültig ab Prüfungsjahr 2027. Brandenburg erläutert die Neuerungen '
+        + 'zusätzlich im Fachbrief Englisch Nr. 9 auf dem Bildungsserver Berlin-Brandenburg.',
+    },
+  ],
 };
