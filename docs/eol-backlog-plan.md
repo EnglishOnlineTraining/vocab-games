@@ -670,7 +670,7 @@ new or contradict those docs are listed here.
 **Not measured:** Core Web Vitals (the PageSpeed API quota was used up) and Search Console data
 (the Ahrefs connector returned "Insufficient plan"). Nothing below has been executed.
 
-**▶ Current status (2026-10-05) — read this first; the dated notes below are the history.**
+**▶ Current status (2026-10-05, evening) — read this first; the dated notes below are the history.**
 
 *Done:*
 - **Repo:** PRs #72, #74–#85 and #87–#90 are all merged and live; `main` builds clean. That covers
@@ -708,11 +708,20 @@ new or contradict those docs are listed here.
 - **Accepted, don't re-raise:** the 15 `gr-*` pages keep posting to the template's old Apps
   Script URL (Shaun, 2026-10-04: leave permanently).
 
+- **Privacy policy (D15): live.** Checked 2026-10-05: `/privacy-policy/` is the German
+  Datenschutzerklärung (13 sections), gives the Koloniestraße address, names Google Analytics,
+  GTM, Ahrefs, MailerLite and Calendly, and has no Google Fonts section.
+- **Thin pages (B9), 2026-10-05:**
+  - All 9 `/testimonial/*/` pages (IDs 1091, 1108, 1110, 1112, 1118, 1121, 1123, 1125, 1127)
+    have `jetpack_seo_noindex`; each verified live with `content="noindex"`. There are 9, not 8.
+  - Shaun's plugin **EOT SEO Noindex Helper** (v1.0.0, active) noindexes the testimonial
+    *archive*, author and date archives and the share-card page. It does not cover single
+    testimonials or posts.
+  - **Old 2016–2023 posts: keep indexed and improve** (Shaun, 2026-10-05: some are his best
+    performers). Do not noindex them. See "Old-post improvements" below.
+
 *Waiting on Shaun:*
-1. **Privacy policy.** The draft is in `CLAUDE OUTPUTS/datenschutzerklaerung-entwurf-2026-10-04.md`.
-   Settle its [PRÜFEN] points, then CC publishes it to `/privacy-policy/`. §7 (Google Fonts) can
-   go now that 1.3.8 self-hosts the font.
-2. **WP settings for the homepage entity (A2)**, which the theme can't reach:
+1. **WP settings for the homepage entity (A2)**, which the theme can't reach:
    - Site Title → "EnglishOnline.training";
    - display name → "Shaun Trezise";
    - Jetpack business details matched to `scripts/schema.js`.
@@ -720,17 +729,48 @@ new or contradict those docs are listed here.
    - Exercise titles: #86 changed the hub titles only. Decide whether exercise `<title>`s get a
      keyword pattern too (A5).
    - How the two homepages split their target searches (A4).
-   - The 8 thin testimonial pages and old thin posts: merge, noindex or keep (B9 and the
-     2016–2023 posts).
    - The title-template separator (B10).
-4. **Small:**
+3. **Small:**
    - the Make → Excel half of formula injection (needs a change in the Make mapping);
    - the hotlinked Wikimedia image on `9c-south-africa-revision` (self-host needs his OK);
    - the remaining `9g-australia-vocab-practice` "Green Line" description (accepted-file list,
      ask first);
-5. **Under-16 consent:** the banners ask under-16s to check with their parents, but DSGVO Art. 8
+4. **Under-16 consent:** the banners ask under-16s to check with their parents, but DSGVO Art. 8
    means a child's click alone may not be valid consent. Get specialist advice if the analytics
    numbers matter.
+
+**Old-post improvements (2026-10-05) · CC drafts, Shaun approves each before it goes live.**
+The 14 real 2016–2023 posts. Posts 365, 523 and 1238 are deliberate stubs, already noindexed:
+leave them alone.
+
+*Done:* one closing paragraph linking to matching activities pages was added to 13 posts and
+verified live: 261, 267, 516, 574, 601, 1214, 1323, 1342, 1372, 1506, 1599, 1631, 1659. The
+classic-content posts (601, 1323, 1372) were rewritten with `posts.update` after the local copy's
+SHA-1 matched WordPress's `content_hash`; the hash after the write matched the expected value.
+
+*Edits done 2026-10-06 (Shaun approved each draft), verified live:*
+- **516** Talking English to an AI: removed the "best English trainer" question and answer.
+- **32** Present: Simple or Progressive?: rewritten in blocks; lesson offer and old contact form
+  removed; activities links added; manual excerpt updated.
+- **1323** How can I help my career…?: reframed from selling coaching to self-study steps, ending
+  with the team-training offer (links `/business-english/`); manual excerpt updated.
+- **1214** Learning English Online: expanded to five steps around the existing quiz embed (the
+  embed block is unchanged, same block hash). Its meta description still reads "…from English
+  Online Training in Berlin"; left as is.
+- **267** Tips to upgrade your English: old-name byline removed; unsourced "studies have shown"
+  and "100 hours" claims removed; level-test link added; "Go to class" (lesson advice) became
+  "Get feedback".
+- **1659** Breaking the Mould: five-paragraph hype opening replaced with two plain paragraphs;
+  list of 27 formats unchanged. Its meta description ("Enhance… Elevate… sparking your
+  imagination") still needs a rewrite — not part of the approved draft.
+
+*Open — edits, in this order:*
+
+| Post | Problem |
+|---|---|
+| 1631 Improving writing with AI | An H1 inside the content; promotes Paraphrasingtool.ai by name. |
+| 1342 Property manager | Crowdsignal quiz embed (Crowdsignal plugin inactive; embed still renders by script) and a Jetpack Mailchimp block (newsletter is MailerLite). |
+| 1506 Commercial Real Estate | A `bit.ly/3nqI3iZ` link that could not be checked (bit.ly blocked from the CC container). |
 
 **Progress (2026-10-03, later the same day).** Each item is on its own PR, and none is merged.
 No live WordPress write was made:
@@ -922,8 +962,9 @@ and Tier 4 above for the full executed record. What's left:
    "8-week plan" Course schema) and 5 (the 1763/1997 CRDT trap, not hit this round) remain open,
    item 4 specifically as a content decision for Shaun rather than a schema task.
 5. **Tier 8 SEO/GEO review.** Repo work and the tracking fix are done (2026-10-04); #86 (hub
-   titles) merged 2026-10-05. What's left is listed under "▶ Current status" in Tier 8: the
-   privacy policy, WP settings, exercise titles and the content decisions.
+   titles) merged 2026-10-05; the privacy policy is live and the testimonials are noindexed
+   (2026-10-05). What's left is listed under "▶ Current status" in Tier 8: WP settings, exercise
+   titles, the old-post edits and the content decisions.
 
 _Closed: T3 approach (2026-08-05, no plan upgrade near-term); Crowdsignal export (not needed —
 T1 rebuilt natively); T5 scope (standalone page); IT email policy (writing tasks only);
