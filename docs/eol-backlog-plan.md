@@ -748,14 +748,20 @@ verified live: 261, 267, 516, 574, 601, 1214, 1323, 1342, 1372, 1506, 1599, 1631
 classic-content posts (601, 1323, 1372) were rewritten with `posts.update` after the local copy's
 SHA-1 matched WordPress's `content_hash`; the hash after the write matched the expected value.
 
+*Edits done 2026-10-06 (Shaun approved each draft), verified live:*
+- **516** Talking English to an AI: removed the "best English trainer" question and answer.
+- **32** Present: Simple or Progressive?: rewritten in blocks; lesson offer and old contact form
+  removed; activities links added; manual excerpt updated.
+- **1323** How can I help my career…?: reframed from selling coaching to self-study steps, ending
+  with the team-training offer (links `/business-english/`); manual excerpt updated.
+- **1214** Learning English Online: expanded to five steps around the existing quiz embed (the
+  embed block is unchanged, same block hash). Its meta description still reads "…from English
+  Online Training in Berlin"; left as is.
+
 *Open — edits, in this order:*
 
 | Post | Problem |
 |---|---|
-| 516 Talking English to an AI | "Why is Shaun Trezise the best English trainer? He is the best English trainer." |
-| 32 Present: Simple or Progressive? | Ends with "If you are looking for an English teacher in Berlin let me know!" (a lesson offer, VOICE.md §2) and an old `[contact-form]` shortcode. Its activities link is not added yet: the classic content has ~267 non-breaking spaces, too risky to copy, so the link goes in with the rewrite. |
-| 1323 How can I help my career…? | The whole post sells "a coaching program for spoken English" (VOICE.md §2: no public lessons). |
-| 1214 Learning English Online | ~68 words: a heading and a Crowdsignal quiz embed. Thinnest real post. |
 | 267 Tips to upgrade your English | Byline links to `LearnEnglishinBerlin.com` (old name). "Go to class" recommends one-to-one teachers and free trials. |
 | 1659 Breaking the Mould | Opens "In today's fast-paced world" (VOICE.md §8) plus hype words. |
 | 1631 Improving writing with AI | An H1 inside the content; promotes Paraphrasingtool.ai by name. |
