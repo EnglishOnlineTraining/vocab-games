@@ -306,6 +306,31 @@ module.exports = {
     },
   ],
 
+  'property-management-vocabulary.html': [
+    {
+      q: 'What does the property management glossary cover?',
+      a: '159 English terms for managing, renting and maintaining buildings, grouped by topic: '
+        + 'rooms and parts of a building, kitchen and bathroom, fixtures and fittings, heating and '
+        + 'water, repairs, pests, renting and money, legal words, and people and services.',
+    },
+    {
+      q: 'Does it use British or American English?',
+      a: 'Mainly British English. Where American English uses a different word, such as elevator '
+        + 'for lift, faucet for tap or janitor for caretaker, both are listed.',
+    },
+    {
+      q: 'Can I download the glossary as a PDF?',
+      a: 'Yes. The original vocabulary list is available as a free PDF from the link at the top of '
+        + 'the page, so you can print it or keep it on your phone.',
+    },
+    {
+      q: 'Where can I practise these words?',
+      a: 'The free Property Management exercise has a reading text about a property manager\'s '
+        + 'day, a vocabulary task and a short reply to a tenant, at B1 to B2 level. It needs no '
+        + 'sign-up.',
+    },
+  ],
+
   'abitur-englisch-2027.html': [
     {
       q: 'Was sind die Schwerpunktthemen im Englisch-Abitur 2027?',
