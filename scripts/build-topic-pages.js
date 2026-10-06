@@ -448,6 +448,9 @@ const EXTRA_PUBLIC_PAGES = [
   // exam year — same no-exercise.js landing architecture as the pages above.
   'abitur-operatoren.html',
   'ielts-vocabulary-glossary.html',
+  // English glossary landing page for the 2023 property-management PDF, the
+  // top-clicked URL on the main site in Search Console (docs/gsc-review-2026-10-06.md).
+  'property-management-vocabulary.html',
   // uni-presentation-task.html used to be listed here. It is now carried in
   // data/exercises.json via the STANDALONE map in build-exercise-data.js, so the
   // exercises loop above emits it and a second entry here would be redundant.
