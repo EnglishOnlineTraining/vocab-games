@@ -316,31 +316,33 @@ module.exports = {
     },
     {
       q: 'Was hat sich im Englisch-Abitur 2027 geändert?',
-      a: 'Die Schwerpunkte folgen jetzt den Themenfeldern des IQB und dem gemeinsamen Aufgabenpool '
-        + 'der Länder. Neu verpflichtend sind die Themenfelder United Kingdom und Science and '
-        + 'technology; der USA-Schwerpunkt bleibt in Aims and ambitions und The impact of the media '
-        + 'on society erhalten. Außerdem gibt es aktualisierte Operatoren und in Brandenburg ein '
-        + 'überarbeitetes Kriterienraster.',
+      a: 'Nations between tradition and change hat jetzt Großbritannien als Bezugskultur (bisher USA), '
+        + 'und Science and technology löst das Thema Saving the planet ab. Beide Themenfelder '
+        + 'müssen im Unterricht abgedeckt werden. Der USA-Fokus bleibt in Aims and ambitions '
+        + 'bestehen; für The impact of the media on society nennt ihn der Brandenburger Fachbrief, '
+        + 'die Berliner Schwerpunktliste nicht. Außerdem gelten ein aktualisierter Grundstock an '
+        + 'Operatoren und überarbeitete Bewertungskriterien.',
     },
     {
       q: 'Wie ist die schriftliche Englisch-Abiturprüfung aufgebaut?',
-      a: 'Sie besteht aus zwei Teilen mit je zwei Aufgaben zur Auswahl. Teil 1 ist Leseverstehen '
-        + 'und Schreiben — Zusammenfassung, Analyse gestalterischer Mittel und eine Diskussions- '
-        + 'oder Schreibaufgabe — und zählt 70 Prozent der Note. Teil 2 ist Sprachmittlung, die '
-        + 'Übertragung deutscher Inhalte ins Englische, und zählt 30 Prozent.',
+      a: 'Sie besteht aus zwei Teilen mit jeweils zwei gleichwertigen Aufgabenstellungen, von denen '
+        + 'du pro Teil eine auswählst. Teil 1 ist Leseverstehen und Schreiben — Zusammenfassung, '
+        + 'Analyse gestalterischer Mittel und Diskussion oder Stellungnahme. Teil 2 ist '
+        + 'Sprachmittlung: Inhalte aus deutschen Texten auswählen und ins Englische übertragen. '
+        + 'Die Arbeitszeit beträgt im Leistungskurs 285 und im Grundkurs 255 Minuten.',
     },
     {
       q: 'Wann ist das Englisch-Abitur 2027?',
-      a: 'Die schriftlichen Abiturprüfungen finden im Frühjahr 2027 statt, in Brandenburg vom '
-        + '16. April bis 10. Mai 2027; Berlin prüft im gleichen Zeitraum. Den konkreten '
-        + 'Prüfungstermin für Englisch gibt die Schule bekannt.',
+      a: 'Die schriftliche Abiturprüfung Englisch ist am Freitag, 30. April 2027, um 9:00 Uhr — '
+        + 'so steht es in den Prüfungsplänen von Brandenburg und Berlin. Der Nachschreibetermin '
+        + 'in Brandenburg ist der 19. Mai 2027.',
     },
     {
       q: 'Gibt es Unterschiede zwischen dem Abitur in Berlin und Brandenburg?',
-      a: 'In den Fächern Deutsch, Mathematik und den Fremdsprachen — also auch Englisch — nutzen '
-        + 'Berlin und Brandenburg identische Prüfungsaufgaben, koordiniert über das LISUM. '
-        + 'Unterschiede gibt es bei Rahmenlehrplan-Details und Bewertungsrastern, nicht bei der '
-        + 'Aufgabe selbst.',
+      a: 'Beide Länder greifen auf den gemeinsamen Aufgabenpool der Länder zurück, und die '
+        + 'Prüfungsschwerpunkte stimmen weitgehend überein. Ein Unterschied in den veröffentlichten '
+        + 'Unterlagen: Der USA-Fokus im 4. Halbjahr steht im Brandenburger Fachbrief, nicht in der '
+        + 'Berliner Schwerpunktliste. Verbindlich ist die Fassung deines Bundeslandes.',
     },
     {
       q: 'Was ist Sprachmittlung (Mediation) im Abitur?',
@@ -351,10 +353,10 @@ module.exports = {
     },
     {
       q: 'Wo finde ich die offiziellen Prüfungsvorgaben für 2027?',
-      a: 'Berlin veröffentlicht die Prüfungsvorgaben auf berlin.de unter Schule, Prüfungen und '
-        + 'Abschlüsse, Abitur. Brandenburg stellt die Schwerpunkte und das Kriterienraster über '
-        + 'den Bildungsserver Berlin-Brandenburg in den Fachbriefen Englisch bereit, zuletzt '
-        + 'Fachbrief Nr. 9 vom August 2025.',
+      a: 'Berlin veröffentlicht die Prüfungsschwerpunkte für Grund- und Leistungskurs auf berlin.de '
+        + 'unter Schule, Prüfungen und Abschlüsse, Abitur. Brandenburg stellt die Schwerpunkte '
+        + 'und die Bewertungskriterien über den Bildungsserver Berlin-Brandenburg bereit, '
+        + 'insbesondere im Fachbrief Englisch Nr. 9 vom August 2025.',
     },
     {
       q: 'Sind die Übungspakete auf dieser Seite kostenlos?',
