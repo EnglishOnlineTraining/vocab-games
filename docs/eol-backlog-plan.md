@@ -761,16 +761,21 @@ SHA-1 matched WordPress's `content_hash`; the hash after the write matched the e
   and "100 hours" claims removed; level-test link added; "Go to class" (lesson advice) became
   "Get feedback".
 - **1659** Breaking the Mould: five-paragraph hype opening replaced with two plain paragraphs;
-  list of 27 formats unchanged. Its meta description ("Enhance… Elevate… sparking your
-  imagination") still needs a rewrite — not part of the approved draft.
+  list of 27 formats unchanged. Meta description rewritten 2026-10-06 (Shaun approved).
+- **1631** Improving writing skills with AI (2026-10-06): the post promoted Paraphrasingtool.ai,
+  including a screenshot of its "Plagiarism Remover" mode. No contract or payment (Shaun). Rewritten
+  as "use AI as a coach, not a ghostwriter"; tool name, link and both in-post images removed; the
+  H1 is gone. Featured image replaced with a house-style illustration (media 2474); the old
+  images are still in the media library, unused.
+- **1342** Property manager (2026-10-06): empty Jetpack Mailchimp block and two off-topic
+  construction-industry lines removed; broken quiz sentence fixed; "invest in English courses"
+  reworded; empty `<br>` removed from five headings. Crowdsignal quiz and Quizlet links kept
+  (Shaun checked: all work).
+- **1506** Commercial Real Estate (2026-10-06): bit.ly link replaced with its real target (a
+  Quizlet set, tracking parameters dropped); three hard-sell sentences in the opening fixed, ending
+  with the team-training offer; manual excerpt updated.
 
-*Open — edits, in this order:*
-
-| Post | Problem |
-|---|---|
-| 1631 Improving writing with AI | An H1 inside the content; promotes Paraphrasingtool.ai by name. |
-| 1342 Property manager | Crowdsignal quiz embed (Crowdsignal plugin inactive; embed still renders by script) and a Jetpack Mailchimp block (newsletter is MailerLite). |
-| 1506 Commercial Real Estate | A `bit.ly/3nqI3iZ` link that could not be checked (bit.ly blocked from the CC container). |
+All 14 real 2016–2023 posts are now linked to the activities site and the edit list is done.
 
 **Progress (2026-10-03, later the same day).** Each item is on its own PR, and none is merged.
 No live WordPress write was made:
