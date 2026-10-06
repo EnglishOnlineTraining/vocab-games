@@ -757,13 +757,17 @@ SHA-1 matched WordPress's `content_hash`; the hash after the write matched the e
 - **1214** Learning English Online: expanded to five steps around the existing quiz embed (the
   embed block is unchanged, same block hash). Its meta description still reads "…from English
   Online Training in Berlin"; left as is.
+- **267** Tips to upgrade your English: old-name byline removed; unsourced "studies have shown"
+  and "100 hours" claims removed; level-test link added; "Go to class" (lesson advice) became
+  "Get feedback".
+- **1659** Breaking the Mould: five-paragraph hype opening replaced with two plain paragraphs;
+  list of 27 formats unchanged. Its meta description ("Enhance… Elevate… sparking your
+  imagination") still needs a rewrite — not part of the approved draft.
 
 *Open — edits, in this order:*
 
 | Post | Problem |
 |---|---|
-| 267 Tips to upgrade your English | Byline links to `LearnEnglishinBerlin.com` (old name). "Go to class" recommends one-to-one teachers and free trials. |
-| 1659 Breaking the Mould | Opens "In today's fast-paced world" (VOICE.md §8) plus hype words. |
 | 1631 Improving writing with AI | An H1 inside the content; promotes Paraphrasingtool.ai by name. |
 | 1342 Property manager | Crowdsignal quiz embed (Crowdsignal plugin inactive; embed still renders by script) and a Jetpack Mailchimp block (newsletter is MailerLite). |
 | 1506 Commercial Real Estate | A `bit.ly/3nqI3iZ` link that could not be checked (bit.ly blocked from the CC container). |
