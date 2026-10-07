@@ -38,11 +38,10 @@ module.exports = {
     },
     {
       q: 'Wie wird die MSA-Prüfung bewertet?',
-      a: 'Die Übungen hier nutzen die MSA-Bewertungstabelle für Berlin und Brandenburg von 2018. '
-        + 'Die erreichten Punkte werden auf die 75-Punkte-Skala der Prüfung umgerechnet: ab 70 Punkten '
-        + 'Note 1, ab 63 Note 2, ab 55 Note 3, ab 45 Note 4 und ab 23 Note 5. Die Umrechnung in der '
-        + 'echten Prüfung kann abweichen; Brandenburg rechnet seit 2025/26 nach den allgemeinen '
-        + 'Vorschriften zur Leistungsbewertung um.',
+      a: 'Berlin und Brandenburg rechnen unterschiedlich um, deshalb zeigen die Übungen beide Noten. '
+        + 'Brandenburg nutzt seit 2025/26 den Schlüssel der VV-Leistungsbewertung: Note 1 ab 96 %, '
+        + 'Note 2 ab 80 %, Note 3 ab 60 %, Note 4 ab 45 %, Note 5 ab 16 %. Berlin nutzt eine Tabelle '
+        + 'mit 75 Punkten: Note 1 ab 70, Note 2 ab 63, Note 3 ab 55, Note 4 ab 45, Note 5 ab 23 Punkten.',
     },
     {
       q: 'Welches Sprachniveau brauche ich für den MSA in Englisch?',
@@ -489,8 +488,8 @@ module.exports = {
       q: 'Sind die MSA-Übungseinheiten auf dieser Seite kostenlos?',
       a: 'Ja. Alle 21 Einheiten laufen kostenlos im Browser und brauchen keine Anmeldung. Die '
         + 'meisten verbinden Hören, Lesen und Schreiben, dazu kommen eine Sprech-Einheit und eine '
-        + 'Wiederholung. Jede gibt Sofort-Feedback und eine Note nach der MSA-Bewertungstabelle '
-        + 'von 2018.',
+        + 'Wiederholung. Jede gibt Sofort-Feedback und zeigt deine Note nach der Brandenburger und der '
+        + 'Berliner Bewertung.',
     },
   ],
 };
