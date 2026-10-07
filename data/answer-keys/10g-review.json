@@ -6,60 +6,60 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "I think it’s time the school took a closer look at this policy.",
+     "correct": "perspective",
      "accept": [
-      "I think it’s time the school took a closer look at this policy."
+      "perspective"
      ],
-     "label": "… Introducing an opinion about a new school policy — which version sounds like a blog post?"
+     "label": "1. A point of view on a situation"
     },
     "g2": {
-     "correct": "kneeling during the anthem",
+     "correct": "55% voted to remain in the UK",
      "accept": [
-      "kneeling during the anthem"
+      "55% voted to remain in the UK"
      ],
-     "label": "2. Kaepernick protested by"
+     "label": "2. Result of the 2014 referendum"
     },
     "g3": {
-     "correct": "the narrator's inner conflict about what to do",
+     "correct": "might",
      "accept": [
-      "the narrator's inner conflict about what to do"
+      "might"
      ],
-     "label": "3. What the clouds/storm mainly represent"
+     "label": "3. They"
     },
     "g4": {
-     "correct": "insisted",
+     "correct": "teamwork, quick decision-making and problem-solving under pressure",
      "accept": [
-      "insisted"
+      "teamwork, quick decision-making and problem-solving under pressure"
      ],
-     "label": "4. defending himself → he"
+     "label": "4. Skills multiplayer games can teach"
     },
     "g5": {
-     "correct": "echo chamber",
+     "correct": "staying",
      "accept": [
-      "echo chamber"
+      "staying"
      ],
-     "label": "5. mainly meeting similar opinions"
+     "label": "5. Instead of"
     },
     "g6": {
+     "correct": "felt",
+     "accept": [
+      "felt"
+     ],
+     "label": "6. 'I feel nervous' → she"
+    },
+    "g7": {
      "correct": "louder",
      "accept": [
       "louder"
      ],
-     "label": "6. The bagpipes are"
-    },
-    "g7": {
-     "correct": "it must remain in human form",
-     "accept": [
-      "it must remain in human form"
-     ],
-     "label": "7. What happens if a selkie's skin is hidden?"
+     "label": "7. The bagpipes are"
     },
     "g8": {
-     "correct": "In what ways has the club made a difference for your child?",
+     "correct": "Practising",
      "accept": [
-      "In what ways has the club made a difference for your child?"
+      "Practising"
      ],
-     "label": "8. Goal: get a parent’s honest opinion on how the club has helped their child."
+     "label": "8."
     }
    }
   },
@@ -68,11 +68,11 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "perspective",
+     "correct": "such as",
      "accept": [
-      "perspective"
+      "such as"
      ],
-     "label": "1. A point of view on a situation"
+     "label": "1. (example) Unique,"
     },
     "g2": {
      "correct": "leave",
@@ -82,46 +82,46 @@
      "label": "2. Eleven states decided to"
     },
     "g3": {
-     "correct": "faster",
+     "correct": "I think it’s time the school took a closer look at this policy.",
      "accept": [
-      "faster"
+      "I think it’s time the school took a closer look at this policy."
      ],
-     "label": "3. Smartphones have made communication"
+     "label": "… Introducing an opinion about a new school policy — which version sounds like a blog post?"
     },
     "g4": {
-     "correct": "such as",
+     "correct": "sustainable",
      "accept": [
-      "such as"
+      "sustainable"
      ],
-     "label": "4. (example) Unique,"
+     "label": "4. A"
     },
     "g5": {
-     "correct": "for",
+     "correct": "the narrator's inner conflict about what to do",
      "accept": [
-      "for"
+      "the narrator's inner conflict about what to do"
      ],
-     "label": "5. It’s important"
+     "label": "5. What the clouds/storm mainly represent"
     },
     "g6": {
-     "correct": "simile",
+     "correct": "In what ways has the club made a difference for your child?",
      "accept": [
-      "simile"
+      "In what ways has the club made a difference for your child?"
      ],
-     "label": "6. 'as welcome as a wolf at a birthday party'"
+     "label": "6. Goal: get a parent’s honest opinion on how the club has helped their child."
     },
     "g7": {
-     "correct": "right",
+     "correct": "kneeling during the anthem",
      "accept": [
-      "right"
+      "kneeling during the anthem"
      ],
-     "label": "7. a fundamental entitlement"
+     "label": "7. Kaepernick protested by"
     },
     "g8": {
-     "correct": "solidarity",
+     "correct": "echo chamber",
      "accept": [
-      "solidarity"
+      "echo chamber"
      ],
-     "label": "8. supporting a group you are not part of"
+     "label": "8. mainly meeting similar opinions"
     }
    }
   },
@@ -130,60 +130,60 @@
    "multi": false,
    "gaps": {
     "g1": {
+     "correct": "insisted",
+     "accept": [
+      "insisted"
+     ],
+     "label": "1. defending himself → he"
+    },
+    "g2": {
+     "correct": "solidarity",
+     "accept": [
+      "solidarity"
+     ],
+     "label": "2. supporting a group you are not part of"
+    },
+    "g3": {
      "correct": "Passive voice",
      "accept": [
       "Passive voice"
      ],
-     "label": "1. (Review) In \"nobody will be punished\", what voice is the sentence in?"
+     "label": "3. (Review) In \"nobody will be punished\", what voice is the sentence in?"
     },
-    "g2": {
+    "g4": {
+     "correct": "simile",
+     "accept": [
+      "simile"
+     ],
+     "label": "4. 'as welcome as a wolf at a birthday party'"
+    },
+    "g5": {
+     "correct": "faster",
+     "accept": [
+      "faster"
+     ],
+     "label": "5. Smartphones have made communication"
+    },
+    "g6": {
+     "correct": "right",
+     "accept": [
+      "right"
+     ],
+     "label": "6. a fundamental entitlement"
+    },
+    "g7": {
      "correct": "universities",
      "accept": [
       "universities"
      ],
-     "label": "2. Both cities are famous for their"
+     "label": "7. Both cities are famous for their"
     },
-    "g3": {
-     "correct": "Practising",
-     "accept": [
-      "Practising"
-     ],
-     "label": "3."
-    },
-    "g4": {
+    "g8": {
      "correct": "pioneer",
      "accept": [
       "pioneer"
      ],
-     "label": "4. creates a style others follow"
-    },
-    "g5": {
-     "correct": "for",
-     "accept": [
-      "for"
-     ],
-     "label": "5. 8 (review) — “It was surprising"
-    },
-    "g6": {
-     "correct": "staying",
-     "accept": [
-      "staying"
-     ],
-     "label": "6. Instead of"
-    },
-    "g7": {
-     "correct": "teamwork, quick decision-making and problem-solving under pressure",
-     "accept": [
-      "teamwork, quick decision-making and problem-solving under pressure"
-     ],
-     "label": "7. Skills multiplayer games can teach"
-    },
-    "g8": {
-     "correct": "55% voted to remain in the UK",
-     "accept": [
-      "55% voted to remain in the UK"
-     ],
-     "label": "8. Result of the 2014 referendum"
+     "label": "8. creates a style others follow"
     }
    }
   }
