@@ -990,11 +990,42 @@ afterwards (rule 7).
    - Hold off on adding many new pages until indexing improves.
    - Review the sitemap for pages nobody searches for (reviews, tests) and move them to
      `data/noindex.json`.
-6. **Grammar explainers to page 1 (Phase 5) · CC drafts, Shaun approves.** Simple past post
-   (580 impr, pos 30.7) and past progressive (413 impr, pos 46.7): a direct answer at the top,
-   a forms table, examples, common mistakes, a short FAQ, and links to the practice pages.
+6. **Grammar explainers (Phase 5) · DONE 2026-10-07 (Shaun approved), verified live.**
+   - Found first: both posts had already been rewritten around 2026-09-04, but Google had last
+     crawled them on 10–11 Aug, so the "page 3" numbers were for the old versions. Impressions
+     also fell after 2026-09-04 (simple past 609 → 3, past progressive 352 → 33 for the two
+     periods); likely the `/welcome/blog-posts/` → `/blog-posts/` move for 807.
+   - **807** `/blog-posts/what-is-the-simple-past/`: rewritten (~1,140 words): direct definition,
+     examples, full -ed spelling table, -ed pronunciation, subject questions, 28 irregular
+     verbs, "past form but not past time", present perfect / past progressive contrasts,
+     mistakes, practice links. New title, SEO title and meta.
+   - **1097** `/using-past-progressive/`: rewritten (~870 words): definition, 8 examples, full
+     form table, 7 uses, while/when, state verbs, mistakes, practice links (now including
+     `themen/past-progressive.html` and `10c-pair-of-jeans.html`). New title, SEO title, meta.
+   - Both: a 7-question FAQ before the practice links, plus matching `FAQPage` JSON-LD
+     appended in the content (same pattern as `/faq/`), generated from one source.
+   - Request indexing: 807 done 2026-10-07. **1097 still to do**: "Quota exceeded" on both
+     main-site properties (the daily limit is per site). Retry on 2026-10-08.
 7. **Re-measure (Phase 6) · CC, 2026-11-06.** Re-pull the same reports and compare against the
    baseline table in the review doc.
+8. **Search Console emails of 2026-10-07 · read, nothing broken.**
+   - There are **three** properties: `sc-domain:englishonline.training` (both hosts),
+     `https://englishonline.training/` and `sc-domain:activities.englishonline.training`.
+     Alerts arrive once per property, so the same news can come twice.
+   - "Some fixes failed" (activities property) is an **older** validation, started 2026-09-22
+     (before Tier 9) and failed 2026-10-05: 17 URLs re-crawled 22–28 Sept and still rejected:
+     10 `themen/` pages (past-progressive, modalverben, past-perfect, linking-words,
+     gerund-infinitiv, artikel, adjektive-adverbien, future-tenses, if-saetze, phrasal-verbs),
+     `activities.html`, `grammar-activities.html`, `10c-canada-environment`,
+     `10c-canada-schools`, `10g-growing-up-black`, `10g-cultural-diversity`,
+     `uni-describing-data-trends`. The activities **homepage** is also "Crawled – not indexed".
+     The year hubs were not in the failed set (last crawled in August). **Open: find out why
+     Google keeps rejecting the `themen/` pages** (one template, similar pages?) and the homepage.
+   - "Excluded by noindex" (activities): expected, from `data/noindex.json`.
+   - "Excluded by noindex … in a sitemap" (main site, two properties): only `/about-me/` (page 80,
+     a noindexed "Moved" stub). It was in Jetpack's **image** sitemap because two media items
+     were attached to it. **Fixed 2026-10-07:** media 107 and 388 detached (parent 0; files and
+     their other uses untouched); `/about-me/` is gone from `image-sitemap-1.xml`.
 
 ## Open decisions gating the plan
 **All six items from the 2026-08-07 audit reconciliation are now resolved and executed** (Shaun
