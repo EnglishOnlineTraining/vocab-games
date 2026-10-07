@@ -996,6 +996,44 @@ afterwards (rule 7).
 7. **Re-measure (Phase 6) · CC, 2026-11-06.** Re-pull the same reports and compare against the
    baseline table in the review doc.
 
+## Tier 10 — AI search: chunk-ready headings and sub-query coverage (2026-10-07) · Shaun + CC
+Source: Google Cloud Vertex AI Search (Discovery Engine) docs. They list these ranking signals:
+base rank, Gecko embeddings, Jetstream, BM25, pCTR, freshness, boost/bury. The parser splits pages
+into chunks and can attach the parent headings to each chunk. Google has said in public that AI
+Mode splits one query into sub-queries (query fan-out). **Not confirmed:** that AI Mode uses the
+Vertex setup. Treat these items as good practice, and check them against Phase 6 data (Tier 9.7).
+Respect Tier 9.5: no new pages while indexing is poor. Add sections to existing `themen/` pages
+only.
+
+1. **Topic-specific template headings · CC.** `scripts/build-topic-pages.js` hard-codes generic
+   H2s on all 18 topic pages: "Die wichtigsten Regeln", "Beispiele", "Häufige Fragen",
+   "Verwandte Themen", "Weiterüben — alle Übungen zum Thema", and the widget fallback "Übung".
+   Prefix each with the topic label (e.g. "Passiv: die wichtigsten Regeln"). One builder change.
+2. **Generic section headings in `data/topics.json` · CC drafts, Shaun approves.** Most `sections[].h2`
+   values already name their topic. Fix the ones that don't, e.g. "Typische Fehler"
+   (past-perfect, simple-past, linking-words, present-tenses, modalverben), "Signalwörter"
+   (past-perfect, present-perfect, simple-past), "Kommaregel" (if-saetze). Target form:
+   "Typische Fehler beim Past Perfect".
+3. **Heading lint · CC.** Add a check to `scripts/search-opportunities.js` (or `watchdog.js`)
+   that flags any H2/H3 that doesn't contain the topic label or one of its `aliases`. Runs in CI,
+   so new topics can't ship with generic headings.
+4. **Sub-query map per topic · CC drafts, Shaun approves.** Start with `gerund-infinitiv` and
+   `passiv`. List the likely sub-queries (form, which verbs, meaning change, German learners'
+   mistakes, practice) and check each has its own section. Both pages already cover most of
+   these (checked 2026-10-07); the map shows what is still missing. Each section opens
+   with a one-sentence direct answer and makes sense without the rest of the page (no "siehe
+   oben").
+5. **`dateModified` in topic schema · CC.** The `LearningResource` node in `jsonLd()` has no
+   `dateModified`. Take it from `data/lastmod.json` (already used for sitemap `<lastmod>`), so
+   it only changes when the content changes.
+6. **Heading rule in `eol-blog-writer` · Shaun (skill file).** Section headings must name the
+   topic, even inside a storytelling framework.
+7. **AI answer tracking · Shaun, monthly from 2026-11-06 (with Tier 9.7).** Pick 5–10 target
+   queries (e.g. "passiv englisch übungen", "gerund infinitive"). Log for each: AI Overview / AI
+   Mode shown?, our page cited?, which section, which sources win. Keep the log in
+   `docs/gsc-review-*.md` beside the Search Console numbers. Roll items 1–4 out to all topics only
+   after 4–6 weeks of data on the first two.
+
 ## Open decisions gating the plan
 **All six items from the 2026-08-07 audit reconciliation are now resolved and executed** (Shaun
 approved each): 2063–2066 published, "Blog Posts" 70 fixed and 1205 stubbed, 307 unpublished,
