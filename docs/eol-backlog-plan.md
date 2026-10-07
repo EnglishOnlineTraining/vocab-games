@@ -996,6 +996,75 @@ afterwards (rule 7).
 7. **Re-measure (Phase 6) · CC, 2026-11-06.** Re-pull the same reports and compare against the
    baseline table in the review doc.
 
+## Tier 10 — AI search: chunk-ready headings and sub-query coverage (2026-10-07) · Shaun + CC
+Source: Google Cloud Vertex AI Search (Discovery Engine) docs. They list these ranking signals:
+base rank, Gecko embeddings, Jetstream, BM25, pCTR, freshness, boost/bury. The parser splits pages
+into chunks and can attach the parent headings to each chunk. Google has said in public that AI
+Mode splits one query into sub-queries (query fan-out). **Not confirmed:** that AI Mode uses the
+Vertex setup. Treat these items as good practice, and check them against Phase 6 data (Tier 9.7).
+Respect Tier 9.5: no new pages while indexing is poor. Add sections to existing `themen/` pages
+only.
+
+1. **Topic-specific template headings · CC.** `scripts/build-topic-pages.js` hard-codes generic
+   H2s on all 18 topic pages: "Die wichtigsten Regeln", "Beispiele", "Häufige Fragen",
+   "Verwandte Themen", "Weiterüben — alle Übungen zum Thema", and the widget fallback "Übung".
+   Prefix each with the topic label (e.g. "Passiv: die wichtigsten Regeln"). One builder change.
+2. **Generic section headings in `data/topics.json` · CC drafts, Shaun approves.** Most `sections[].h2`
+   values already name their topic. Fix the ones that don't, e.g. "Typische Fehler"
+   (past-perfect, simple-past, linking-words, present-tenses, modalverben), "Signalwörter"
+   (past-perfect, present-perfect, simple-past), "Kommaregel" (if-saetze). Target form:
+   "Typische Fehler beim Past Perfect".
+3. **Heading lint · CC.** Add a check to `scripts/search-opportunities.js` (or `watchdog.js`)
+   that flags any H2/H3 that doesn't contain the topic label or one of its `aliases`. Runs in CI,
+   so new topics can't ship with generic headings.
+4. **Sub-query map per topic · CC drafts, Shaun approves.** Start with `gerund-infinitiv` and
+   `passiv`. List the likely sub-queries (form, which verbs, meaning change, German learners'
+   mistakes, practice) and check each has its own section. Both pages already cover most of
+   these (checked 2026-10-07); the map shows what is still missing. Each section opens
+   with a one-sentence direct answer and makes sense without the rest of the page (no "siehe
+   oben").
+5. **`dateModified` in topic schema · CC.** The `LearningResource` node in `jsonLd()` has no
+   `dateModified`. Take it from `data/lastmod.json` (already used for sitemap `<lastmod>`), so
+   it only changes when the content changes.
+6. **Heading rule in `eol-blog-writer` · Shaun (skill file).** Section headings must name the
+   topic, even inside a storytelling framework.
+7. **AI answer tracking · Shaun, monthly from 2026-11-06 (with Tier 9.7).** Pick 5–10 target
+   queries (e.g. "passiv englisch übungen", "gerund infinitive"). Log for each: AI Overview / AI
+   Mode shown?, our page cited?, which section, which sources win. Keep the log in
+   `docs/gsc-review-*.md` beside the Search Console numbers. Roll items 1–4 out to all topics only
+   after 4–6 weeks of data on the first two.
+
+## Tier 11 — AI Overview targeting (2026-10-07) · Shaun + CC
+Goal: get cited in the Google AI Overview for one buying-intent query, then repeat. Method: capture
+the AI Overview for 7+ days, count recurring claims, entities, formats and sources, study the
+most-cited pages, then build a page that covers the same ground and adds something new (own data,
+first-hand examples, better tables). Every WordPress write needs Shaun's OK and a live check (rule 7).
+
+1. **Capture source · Shaun decides. BLOCKER.** Ahrefs Brand Radar can return AI Overview text,
+   citations and dates, but every Ahrefs call failed on 2026-10-07, including the free account-info
+   call. Tier 8 recorded "Insufficient plan" on 2026-10-03. Brand Radar only covers queries Ahrefs
+   tracks (or a custom prompt report), and its refresh rate per query is not documented. Options:
+   (a) upgrade the Ahrefs plan and retest; (b) manual daily paste; (c) Make scenario + paid SERP API
+   (SerpApi or DataForSEO) writing to a Google Sheet.
+2. **Pick the query · Shaun.** Search each candidate on google.de and keep only those that show an
+   AI Overview. Unverified shortlist (no volume data):
+   - Business English Training für Unternehmen *(recommended first: corporate training is the only
+     live service)*
+   - Englischkurs für Mitarbeiter
+   - Business English Firmenschulung Berlin
+   - Englisch Abitur Vorbereitung Brandenburg
+   - MSA Englisch Prüfung üben
+   "englisch lernen" head terms stay out (see `gsc-review-2026-10-06.md` §6).
+3. **Build the `aio-reverse-engineer` skill · CC.** Modes: setup, daily capture, pattern analysis,
+   citation study, page brief + WordPress draft (via `eol-blog-writer`), post-publish tracking.
+   Log lives in a Google Sheet in Drive. Gated by item 1.
+4. **Track 7+ days, then analyse · CC.**
+5. **Build the page · CC drafts, Shaun approves.** Proposal: improve the existing team-training page
+   (`/business-english/`) rather than add a new page, in line with Tier 9 item 5 ("hold off on
+   adding many new pages"). Shaun to confirm.
+6. **Track after publishing · CC.** Re-capture the AI Overview weekly; record whether the page is
+   cited and which sources keep winning.
+
 ## Open decisions gating the plan
 **All six items from the 2026-08-07 audit reconciliation are now resolved and executed** (Shaun
 approved each): 2063–2066 published, "Blog Posts" 70 fixed and 1205 stubbed, 307 unpublished,
