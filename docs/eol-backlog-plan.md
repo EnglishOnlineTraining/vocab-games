@@ -1034,6 +1034,37 @@ only.
    `docs/gsc-review-*.md` beside the Search Console numbers. Roll items 1–4 out to all topics only
    after 4–6 weeks of data on the first two.
 
+## Tier 11 — AI Overview targeting (2026-10-07) · Shaun + CC
+Goal: get cited in the Google AI Overview for one buying-intent query, then repeat. Method: capture
+the AI Overview for 7+ days, count recurring claims, entities, formats and sources, study the
+most-cited pages, then build a page that covers the same ground and adds something new (own data,
+first-hand examples, better tables). Every WordPress write needs Shaun's OK and a live check (rule 7).
+
+1. **Capture source · Shaun decides. BLOCKER.** Ahrefs Brand Radar can return AI Overview text,
+   citations and dates, but every Ahrefs call failed on 2026-10-07, including the free account-info
+   call. Tier 8 recorded "Insufficient plan" on 2026-10-03. Brand Radar only covers queries Ahrefs
+   tracks (or a custom prompt report), and its refresh rate per query is not documented. Options:
+   (a) upgrade the Ahrefs plan and retest; (b) manual daily paste; (c) Make scenario + paid SERP API
+   (SerpApi or DataForSEO) writing to a Google Sheet.
+2. **Pick the query · Shaun.** Search each candidate on google.de and keep only those that show an
+   AI Overview. Unverified shortlist (no volume data):
+   - Business English Training für Unternehmen *(recommended first: corporate training is the only
+     live service)*
+   - Englischkurs für Mitarbeiter
+   - Business English Firmenschulung Berlin
+   - Englisch Abitur Vorbereitung Brandenburg
+   - MSA Englisch Prüfung üben
+   "englisch lernen" head terms stay out (see `gsc-review-2026-10-06.md` §6).
+3. **Build the `aio-reverse-engineer` skill · CC.** Modes: setup, daily capture, pattern analysis,
+   citation study, page brief + WordPress draft (via `eol-blog-writer`), post-publish tracking.
+   Log lives in a Google Sheet in Drive. Gated by item 1.
+4. **Track 7+ days, then analyse · CC.**
+5. **Build the page · CC drafts, Shaun approves.** Proposal: improve the existing team-training page
+   (`/business-english/`) rather than add a new page, in line with Tier 9 item 5 ("hold off on
+   adding many new pages"). Shaun to confirm.
+6. **Track after publishing · CC.** Re-capture the AI Overview weekly; record whether the page is
+   cited and which sources keep winning.
+
 ## Open decisions gating the plan
 **All six items from the 2026-08-07 audit reconciliation are now resolved and executed** (Shaun
 approved each): 2063–2066 published, "Blog Posts" 70 fixed and 1205 stubbed, 307 unpublished,
