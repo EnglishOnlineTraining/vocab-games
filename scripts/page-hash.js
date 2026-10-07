@@ -22,6 +22,12 @@ const crypto = require('crypto');
 // regenerating, so a block added there must be added here or its pages churn.
 const GENERATED_BLOCKS = ['HEAD', 'GTM', 'NOSCRIPT', 'SKIP', 'CRUMB', 'OVERVIEW', 'RELATED', 'TIP', 'FAQ', 'EXPLAIN', 'COUNT'];
 
+// Blocks another generator owns that the hash must also skip. Kept apart from
+// GENERATED_BLOCKS because build-head.js strips that list and would delete
+// these without regenerating them. TOPICLD is the themen/ JSON-LD, which
+// carries the page's own dates (build-topic-pages.js).
+const HASH_SKIPPED_BLOCKS = ['TOPICLD'];
+
 // Marks a hash taken this way. Store entries without it were hashed over the
 // whole file; build-lastmod.js migrates those without re-dating them.
 const PREFIX = 'b1:';
@@ -31,7 +37,7 @@ function stripBlock(html, name) {
 }
 
 function stripGenerated(html) {
-  return GENERATED_BLOCKS.reduce(stripBlock, html);
+  return GENERATED_BLOCKS.concat(HASH_SKIPPED_BLOCKS).reduce(stripBlock, html);
 }
 
 function pageHash(html) {

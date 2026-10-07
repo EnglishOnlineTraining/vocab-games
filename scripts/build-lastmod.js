@@ -119,6 +119,7 @@ let kept = 0;
 let updated = 0;
 let added = 0;
 let missing = 0;
+const mismatched = [];
 
 for (const u of urls) {
   const rel = urlMap[u];
@@ -128,12 +129,27 @@ for (const u of urls) {
     missing++;
     continue;
   }
-  const h = pageHash(fs.readFileSync(path.join(ROOT, rel), 'utf8'));
+  const html = fs.readFileSync(path.join(ROOT, rel), 'utf8');
+  const h = pageHash(html);
   const prev = store[rel];
   next[rel] = datesFor(prev, h, TODAY);
   if (!prev) added++;
   else if (next[rel].d === prev.d) kept++;
   else updated++;
+  // build-head.js and build-topic-pages.js print the date into the JSON-LD
+  // before this runs, by computing the same hash. If their render ever stops
+  // matching the finished page, the two dates part company with nothing
+  // looking wrong, so check rather than trust it.
+  const ld = html.match(/"dateModified":"([^"]+)"/);
+  if (ld && ld[1] !== next[rel].d) {
+    mismatched.push(rel + ': JSON-LD dateModified ' + ld[1] + ', sitemap ' + next[rel].d);
+  }
+}
+
+if (mismatched.length) {
+  mismatched.forEach((m) => console.error('✗ ' + m));
+  console.error('build-lastmod: ' + mismatched.length + ' page(s) date themselves differently from the sitemap.');
+  process.exit(1);
 }
 
 // Rewrite each <url> entry, replacing any existing <lastmod> so the pass is
