@@ -227,8 +227,16 @@ same list, and a block missing from it would re-date its pages on every chrome c
 `LearningResource` gets `datePublished`/`dateModified` matching its `<lastmod>`, in one build, even
 though `lastmod` runs after `head`. The dates are left out of the hash, which is what makes this
 safe. Only sitemap pages get dates. A noindex page has no stored entry, and would otherwise print
-today's date on every build. `themen/` pages carry no dates: their JSON-LD comes from
-`build-topic-pages.js`, outside the stripped blocks.
+today's date on every build.
+
+**`themen/` pages carry the same dates (2026-10-07, Tier 10.5).** `build-topic-pages.js` wraps
+its `LearningResource` in a `TOPICLD` block, which `page-hash.js` leaves out of the hash
+(`HASH_SKIPPED_BLOCKS`, kept apart from `GENERATED_BLOCKS` because `build-head.js` would delete
+it without regenerating it). The builder hashes a dateless render and asks `datesFor()`, as
+`build-head` does. That only works while its render equals the finished page outside the
+generated blocks, so it writes no `og:` tags (`build-head` writes those) and writes
+`<main id="main">` itself. **`build-lastmod.js` fails the build if any page's JSON-LD
+`dateModified` differs from its sitemap date**, so a drift shows up instead of shipping.
 
 **Reseeding.** Deleting `data/lastmod.json` makes every page read as new and stamps the whole site with today — telling Google all 257 URLs changed at once, which is false. It was seeded once from git history at introduction; don't casually regenerate it.
 
