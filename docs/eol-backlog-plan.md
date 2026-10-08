@@ -1277,7 +1277,14 @@ written to WordPress.
 - **Not done, needs Shaun:**
   - Tier 9.4 (ESG and commercial real estate PDF pages): 3 and 71 impressions, Tier 9.5 says
     no new pages for now, and reading the PDFs means downloading them.
-  - Item 16 (newer statistics editions): a decision, not a fix.
+  - Item 16 (newer statistics editions): a decision, not a fix. What the newer editions say, from
+    search results only (primary pages not read, so check before using):
+    - **Pew, *Teens, Social Media and Technology 2024*** (survey Sept–Oct 2024, 1,391 teens):
+      46% online "almost constantly"; TikTok 16% (the 2023 edition the media pack cites: 17%).
+      The pack's "nearly half" still holds.
+    - **Gallup, *State of the Global Workplace 2025***: 50% of US/Canada employees had a lot of
+      stress the previous day (the aims pack cites 52%, from 2023). A 2026 edition URL also exists.
+    - Updating means changing the figure, the year and the source line in each pack that uses it.
   - Item 20 (skill test loop): not attempted.
 - **Stale, fixed in passing:** Tier 3.6. All five missing topics now have pages (18 in
   `data/topics.json`). `hubs-seo-and-tests.md` still said 1763 links "all 11 topic pages".
