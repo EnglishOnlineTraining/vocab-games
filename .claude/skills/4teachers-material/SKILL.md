@@ -54,7 +54,8 @@ For topics and units use `topic-pool.json` on `origin/main` of the vocab-games r
 
 ## What the 4teachers editors told Shaun (message of 2026-10-03)
 
-Shaun uploaded the 8C worksheet "Arriving in the Northeast", which was already on eduki. The editors deleted it, saying:
+Shaun uploaded the 8C worksheet "Arriving in the Northeast" to 4teachers after submitting it to eduki (neither platform had approved
+it: nothing of Shaun's is live on either). The editors deleted it, saying:
 - Part of it appeared to be taken over from eduki. **They check for duplicates across platforms.** If the author is the author, they
   want an Autorenbestätigung (written confirmation of authorship). This is why the register and the eduki/4teachers split exist.
 - **Since several years, English material is only approved WITH Lösungen / Erwartungshorizont.** Every 4teachers file therefore needs
