@@ -1005,25 +1005,25 @@ Vertex setup. Treat these items as good practice, and check them against Phase 6
 Respect Tier 9.5: no new pages while indexing is poor. Add sections to existing `themen/` pages
 only.
 
-1. **Topic-specific template headings · CC.** `scripts/build-topic-pages.js` hard-codes generic
+1. **Topic-specific template headings · CC.** **→ PR #109, pilot topics only.** `scripts/build-topic-pages.js` hard-codes generic
    H2s on all 18 topic pages: "Die wichtigsten Regeln", "Beispiele", "Häufige Fragen",
    "Verwandte Themen", "Weiterüben — alle Übungen zum Thema", and the widget fallback "Übung".
    Prefix each with the topic label (e.g. "Passiv: die wichtigsten Regeln"). One builder change.
-2. **Generic section headings in `data/topics.json` · CC drafts, Shaun approves.** Most `sections[].h2`
+2. **Generic section headings in `data/topics.json` · CC drafts, Shaun approves.** **→ PR #109, pilot topics only.** Most `sections[].h2`
    values already name their topic. Fix the ones that don't, e.g. "Typische Fehler"
    (past-perfect, simple-past, linking-words, present-tenses, modalverben), "Signalwörter"
    (past-perfect, present-perfect, simple-past), "Kommaregel" (if-saetze). Target form:
    "Typische Fehler beim Past Perfect".
-3. **Heading lint · CC.** Add a check to `scripts/search-opportunities.js` (or `watchdog.js`)
+3. **Heading lint · CC.** **→ PR #109** (`scripts/check-topic-headings.js`, a post-build checker).** Add a check to `scripts/search-opportunities.js` (or `watchdog.js`)
    that flags any H2/H3 that doesn't contain the topic label or one of its `aliases`. Runs in CI,
    so new topics can't ship with generic headings.
-4. **Sub-query map per topic · CC drafts, Shaun approves.** Start with `gerund-infinitiv` and
+4. **Sub-query map per topic · CC drafts, Shaun approves.** **→ PR #109, `docs/topic-subquery-maps.md`, draft sections await approval.** Start with `gerund-infinitiv` and
    `passiv`. List the likely sub-queries (form, which verbs, meaning change, German learners'
    mistakes, practice) and check each has its own section. Both pages already cover most of
    these (checked 2026-10-07); the map shows what is still missing. Each section opens
    with a one-sentence direct answer and makes sense without the rest of the page (no "siehe
    oben").
-5. **`dateModified` in topic schema · CC.** The `LearningResource` node in `jsonLd()` has no
+5. **`dateModified` in topic schema · CC.** **→ PR #109, all 18 topics.** The `LearningResource` node in `jsonLd()` has no
    `dateModified`. Take it from `data/lastmod.json` (already used for sitemap `<lastmod>`), so
    it only changes when the content changes.
 6. **Heading rule in `eol-blog-writer` · Shaun (skill file).** Section headings must name the
@@ -1214,7 +1214,7 @@ Year 9 and Year 10 Gymnasium counts were set to 23, 16 and 28 for the pages on `
 (2367, 2368, 2374–2377, 2379, 2489) were corrected and the AFB post (2489) was retitled and published. Skill
 `fact-check-blogs` was written (`~/.claude/skills/`, outside this repo).
 
-14. **Port the stranded 10g work to a fresh worktree.** The old `vocab-games/` clone still holds 18 modified and 7
+14. **DONE (`15086b1`, 2026-10-07; checked 2026-10-08).** The two 10G pages and the `10g-review` rewrite are on `main`; the old clone is clean; WP 1763 shows Year 10 Gymnasium 30, matching `data/wordpress-1763.json`. **Port the stranded 10g work to a fresh worktree.** The old `vocab-games/` clone still holds 18 modified and 7
     untracked files (three new `10g-*` pages with answer keys, hub cards, `explanations.json`, `page-faq.js`,
     `topic-pool.json`, a `10g-review.html` rewrite) and was 66 commits behind `origin/main` on 2026-10-06.
     Apply it to a worktree of `origin/main`, **regenerate `sitemap.xml` and `data/lastmod.json` with the build
@@ -1222,7 +1222,7 @@ Year 9 and Year 10 Gymnasium counts were set to 23, 16 and 28 for the pages on `
     Year 10 Gymnasium count should become 30 (`data/wordpress-1763.json`), applied through the API with
     `context: "edit"`, changing only the number. CC; needs Shaun's OK before the push.
 
-15. **Finish the fact-check of the Abitur material.** Not yet verified:
+15. **→ PR #112 (2026-10-08).** Berlin make-up date (20 May) and the IQB wording fixed; AMA confirmed via trade press only (primary blocked); no primary AFB mapping exists; texts have no hard historical claims. Open points are in the PR. **Finish the fact-check of the Abitur material.** Not yet verified:
     - Historical and political background claims in the Aims, Nations and Media pack texts (only the statistics were checked).
     - Whether the IQB link really supports the "Themenfelder" wording on `abitur-englisch-2027.html`.
     - Berlin's make-up date for English (Brandenburg's is 19 May 2027; the page gives only that one).
@@ -1237,7 +1237,7 @@ Year 9 and Year 10 Gymnasium counts were set to 23, 16 and 28 for the pages on `
     teens report). The Economist/YouGov poll (Sept 2026) is labelled "recent". Decide whether to update to the
     newest editions and set a yearly review date. CC, low priority.
 
-17. **`scripts/verify-exercise.js` fails the Abitur packs (3 of 6 checks).** On `abitur-text-analysis-aims-ambitions.html` it
+17. **→ PR #110 (2026-10-08).** Confirmed a template mismatch; packs now get their own four checks and the CI gate covers them. **`scripts/verify-exercise.js` fails the Abitur packs (3 of 6 checks).** On `abitur-text-analysis-aims-ambitions.html` it
     reports no `TOTAL_STEPS`, no `state` literal and no `SHEET_URL`. The packs use a different template, so this is
     most likely a script/template mismatch, not broken packs. Confirm, then either teach the script about packs or
     exclude `abitur-*` from the pre-publish gate. CC.
@@ -1250,7 +1250,7 @@ Year 9 and Year 10 Gymnasium counts were set to 23, 16 and 28 for the pages on `
     - After each scheduled post goes live (7–16 Oct), spot-check the public page, and check whether Jetpack Social
       auto-shared the AFB post (2489) and the others.
 
-19. **Housekeeping · CC.** Remove the worktree `vg-abitur-2027` and branch `claude/abitur-englisch-2027` (merged).
+19. **Worktree and branch: already gone (checked 2026-10-08).** Memory notes not written. **Housekeeping · CC.** Remove the worktree `vg-abitur-2027` and branch `claude/abitur-englisch-2027` (merged).
     Save memory notes: the fact-check skill and its lessons, and that the MailerLite form behind "Get in touch" is intended.
 
 20. **Test the `fact-check-blogs` skill.** Written 2026-10-06 and used once on live work, never run through the
@@ -1259,3 +1259,33 @@ Year 9 and Year 10 Gymnasium counts were set to 23, 16 and 28 for the pages on `
 
 *Decided not to do:* a fact-check of the ~20 older WordPress drafts (2014–2023, mostly curated links, quizzes and US-focused
 guest posts). Shaun, 2026-10-06.
+
+### Overnight pass 2026-10-08 · CC
+Worked from this file without Shaun. Every change is a PR; nothing pushed to `main`, nothing
+written to WordPress.
+- **#109:** Tier 10 items 1–3 and 5 (headings on the two pilot topics, heading check, topic
+  `dateModified`), plus the item 4 draft.
+- **#110:** item 17 (`verify-exercise.js` and the Abitur packs).
+- **#111:** the 9G hub description said 23 tasks with 24 on the hub (a build warning).
+- **#112:** item 15 (Abitur 2027 page fact-check).
+- **Tier 9.5, checked:**
+  - The sitemap review for "pages nobody searches for" is already done: every review and test
+    page is in `data/noindex.json` (62 entries). What's left (quizzes, level test, two revision
+    pages) gets searched.
+  - The WordPress → activities link check is in `docs/wp-activities-links-draft.md`: 2032,
+    2038, 2039 and 965 have no activities link. Drafts are there for approval.
+- **Not done, needs Shaun:**
+  - Tier 9.4 (ESG and commercial real estate PDF pages): 3 and 71 impressions, Tier 9.5 says
+    no new pages for now, and reading the PDFs means downloading them.
+  - Item 16 (newer statistics editions): a decision, not a fix. What the newer editions say, from
+    search results only (primary pages not read, so check before using):
+    - **Pew, *Teens, Social Media and Technology 2024*** (survey Sept–Oct 2024, 1,391 teens):
+      46% online "almost constantly"; TikTok 16% (the 2023 edition the media pack cites: 17%).
+      The pack's "nearly half" still holds.
+    - **Gallup, *State of the Global Workplace 2025***: 50% of US/Canada employees had a lot of
+      stress the previous day (the aims pack cites 52%, from 2023). A 2026 edition URL also exists.
+    - Updating means changing the figure, the year and the source line in each pack that uses it.
+  - Item 20 (skill test loop): not attempted.
+- **Stale, fixed in passing:** Tier 3.6. All five missing topics now have pages (18 in
+  `data/topics.json`). `hubs-seo-and-tests.md` still said 1763 links "all 11 topic pages".
+  It links 10 chips plus the `themen/` index; corrected.
