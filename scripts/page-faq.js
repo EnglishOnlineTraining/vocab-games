@@ -470,6 +470,13 @@ module.exports = {
         + '15. Februar; die Sprache wählst du selbst.',
     },
     {
+      q: 'Wie läuft die Sprechprüfung im MSA Englisch in Berlin ab?',
+      a: 'Sie ist eine Partnerprüfung ohne Vorbereitungszeit, in der Regel 10 bis 12 Minuten lang, '
+        + 'höchstens 15. Nach Fragen zu deiner Person einigt ihr euch zu zweit anhand eines Bildes '
+        + 'auf eine Lösung, beschreibt dann jede und jeder ein eigenes Foto und diskutiert zum '
+        + 'Schluss darüber. Die Lehrkraft gibt nur die Impulse.',
+    },
+    {
       q: 'Was passiert, wenn ich am Prüfungstag krank bin?',
       a: 'Du brauchst ein ärztliches Attest, das die Prüfungsunfähigkeit bescheinigt — in Berlin '
         + 'muss es spätestens drei Unterrichtstage nach dem Prüfungstag in der Schule sein. '
