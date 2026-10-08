@@ -18,7 +18,12 @@ const ROOT = path.join(__dirname, '..');
 const PILOT = require('./topic-headings');
 const topics = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'topics.json'), 'utf8'));
 
-function plain(s) { return s.replace(/<[^>]*>/g, '').replace(/&amp;/g, '&').trim(); }
+// Tags out, repeated until stable, so removing one can't splice another together.
+function plain(s) {
+  let prev;
+  do { prev = s; s = s.replace(/<[^<>]*>/g, ''); } while (s !== prev);
+  return s.replace(/&amp;/g, '&').trim();
+}
 
 const errors = [];
 let checked = 0;
