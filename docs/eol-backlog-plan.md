@@ -1004,8 +1004,8 @@ afterwards (rule 7).
      `themen/past-progressive.html` and `10c-pair-of-jeans.html`). New title, SEO title, meta.
    - Both: a 7-question FAQ before the practice links, plus matching `FAQPage` JSON-LD
      appended in the content (same pattern as `/faq/`), generated from one source.
-   - Request indexing: 807 done 2026-10-07. **1097 still to do**: "Quota exceeded" on both
-     main-site properties (the daily limit is per site). Retry on 2026-10-08.
+   - Request indexing: 807 done 2026-10-07; 1097 done 2026-10-08 (the 2026-10-07 attempt hit
+     "Quota exceeded" on both main-site properties; the daily limit is per site).
 7. **Re-measure (Phase 6) · CC, 2026-11-06.** Re-pull the same reports and compare against the
    baseline table in the review doc.
 8. **Search Console emails of 2026-10-07 · read, nothing broken.**
@@ -1019,8 +1019,25 @@ afterwards (rule 7).
      `activities.html`, `grammar-activities.html`, `10c-canada-environment`,
      `10c-canada-schools`, `10g-growing-up-black`, `10g-cultural-diversity`,
      `uni-describing-data-trends`. The activities **homepage** is also "Crawled – not indexed".
-     The year hubs were not in the failed set (last crawled in August). **Open: find out why
-     Google keeps rejecting the `themen/` pages** (one template, similar pages?) and the homepage.
+     The year hubs were not in the failed set (last crawled in August).
+   - **Checked 2026-10-08: no page-level fault found.**
+     - `themen/` pages are not duplicates: each shares only 2–17% of its 8-word sequences with
+       the other 17; each has 5–28 internal links in; Google keeps its own canonical (inspected
+       `themen/modalverben.html`: crawled 24 Sept, fetch OK, user canonical = itself). Two
+       `themen/` pages *are* indexed (`passiv`, `relativsaetze`), plus `themen/` itself.
+     - Indexed vs rejected exercise pages (32 vs 41) look the same: median 770 vs 897 words,
+       36 vs 37 KB, 14 vs 20 selects, and many were crawled on the same days (9–10 Aug).
+       Google is indexing a subset of similar pages. That is a site-level judgment (a young
+       subdomain with few external links), not something one page can fix.
+     - The activities sitemap is fine (read 2026-10-07, 232 URLs). The "Temporary processing
+       error" in URL Inspection is left over from the September crawl.
+     - **The activities homepage is the one real fix.** `index.html` is 381 words of class
+       cards, the same job as `activities.html` (2,497 words), and its H1 "Free English
+       exercises for Years 7–10, MSA & Abitur" is the WordPress homepage's `<title>` word for
+       word. Google likely treats it as a thin duplicate. This is decision A4 in Tier 8 (how the
+       two homepages split their searches) and needs Shaun.
+     - Levers that remain: external links to the activities host (Shaun), and the outcome of
+       the validation started 2026-10-07. Do not rewrite the `themen/` pages on this evidence.
    - "Excluded by noindex" (activities): expected, from `data/noindex.json`.
    - "Excluded by noindex … in a sitemap" (main site, two properties): only `/about-me/` (page 80,
      a noindexed "Moved" stub). It was in Jetpack's **image** sitemap because two media items
