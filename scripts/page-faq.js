@@ -360,8 +360,8 @@ module.exports = {
     {
       q: 'Wann ist das Englisch-Abitur 2027?',
       a: 'Die schriftliche Abiturprüfung Englisch ist am Freitag, 30. April 2027, um 9:00 Uhr — '
-        + 'so steht es in den Prüfungsplänen von Brandenburg und Berlin. Der Nachschreibetermin '
-        + 'in Brandenburg ist der 19. Mai 2027.',
+        + 'so steht es in den Prüfungsplänen von Brandenburg und Berlin. Nachschreibetermin ist '
+        + 'in Brandenburg der 19. Mai 2027, in Berlin der 20. Mai 2027.',
     },
     {
       q: 'Gibt es Unterschiede zwischen dem Abitur in Berlin und Brandenburg?',
