@@ -25,7 +25,8 @@ The two skills share one register: `/Users/strezise/Claude Files/CLAUDE OUTPUTS/
 | **4teachers** | `phrase-bank` | Useful phrases or an English-only glossary a class can keep (discussion, argument, formal letters, a unit's vocabulary) |
 
 Rules that keep them apart:
-- A `pool_id_or_topic` that appears under one platform is never used for the other, whatever the kind.
+- A `pool_id_or_topic` that appears under one platform is never used for the other, whatever the kind. 4teachers' editors compare
+  uploads with eduki and delete duplicates (2026-10-03), so a repeat can cost the upload, not just tidiness.
 - 4teachers never gets a single-topic worksheet, which is eduki's `kind`. If Shaun asks for one for 4teachers, say it
   belongs on eduki, or ask which platform he wants and update the register accordingly.
 - This split is a default chosen on 2026-10-08. If Shaun wants a different one, change this table and the one in the
@@ -50,6 +51,21 @@ For topics and units use `topic-pool.json` on `origin/main` of the vocab-games r
 - **Not found in the terms:** file formats or size limits, the licence the site takes, rules on AI-generated content, and
   rules on links. Re-read `https://www.4teachers.de/?action=static&t=agb` and the upload form before the first upload, and
   put what they say into this file.
+
+## What the 4teachers editors told Shaun (message of 2026-10-03)
+
+Shaun uploaded the 8C worksheet "Arriving in the Northeast", which was already on eduki. The editors deleted it, saying:
+- Part of it appeared to be taken over from eduki. **They check for duplicates across platforms.** If the author is the author, they
+  want an Autorenbestätigung (written confirmation of authorship). This is why the register and the eduki/4teachers split exist.
+- **Since several years, English material is only approved WITH Lösungen / Erwartungshorizont.** Every 4teachers file therefore needs
+  answers, and an Erwartungshorizont wherever a task is open (writing, mediation, discussion). Skills sheets and phrase banks get a key
+  for their practice task and a Musterantwort.
+- A revised version "bitte auch Namen entfernen" would be approved. It is not clear which names they meant. Default for
+  4teachers files: **no author name anywhere** (change the template footer to `Kostenlos für den Unterricht · CC BY-SA 4.0`), no
+  names in examples or sample answers, and keep only the blank Name / Klasse / Datum row. If a file is rejected for names again, ask
+  the editors what they saw before guessing.
+
+If the editors ask for an Autorenbestätigung, tell Shaun and offer to draft the German reply; never send it for him.
 
 ## Hard rules (same hygiene as eduki, because the upload form's own rules are not known)
 
@@ -86,10 +102,10 @@ vocab-games repo) and export the PDF beside it with the headless Chrome command 
 ~/.claude/skills/eduki-worksheet/scripts/check-worksheet.sh <file>.html
 ```
 
-It checks the shared hygiene rules and also expects an answer key, points badges and the online note. A skills sheet or
-phrase bank may legitimately have no points badge or answer key; if those are the only failures, say so rather than
-adding them. Then read the file for student names and confirm every answer is correct. Remind Shaun to virus-scan the PDF
-before uploading, because the terms require it.
+It checks the shared hygiene rules and also expects an answer key, points badges and the online note. 4teachers requires
+solutions for every English item (see the editors' message below), so a missing answer key is never acceptable, whatever the
+kind. A points badge is only needed where the material is scored. Then read the file for names and confirm every answer is
+correct. Remind Shaun to virus-scan the PDF before uploading, because the terms require it.
 
 ## The listing
 

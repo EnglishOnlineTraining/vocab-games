@@ -38,6 +38,7 @@ Difficulty, vocabulary and sentence length must match the level.
 - 4teachers takes the other kinds (test and revision packs, skills sheets, phrase banks: see the `4teachers-material` skill).
 - Never reuse a `pool_id_or_topic` that appears under the other platform, and do not make a second eduki worksheet on a topic
   already listed under eduki unless Shaun asks.
+- 4teachers' editors detect material that is also on eduki and delete it (the 8C worksheet, 2026-10-03). Never hand the same file to both.
 - After building, append one row (`status` drafted; Shaun changes it to submitted or approved). No student names in the register.
 
 ## Choosing the topic
