@@ -1,0 +1,215 @@
+{
+ "unit": "10c-canada-sport-hobbies",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "played",
+     "accept": [
+      "played"
+     ],
+     "label": "1 — First Nations ___ it for hundreds of years",
+     "why": "The text says First Nations played lacrosse for hundreds of years before Europeans arrived."
+    },
+    "g2": {
+     "correct": "invented",
+     "accept": [
+      "invented"
+     ],
+     "label": "2 — who ___ the game in 1891",
+     "why": "The text says James Naismith invented basketball in 1891."
+    },
+    "g3": {
+     "correct": "mountains",
+     "accept": [
+      "mountains"
+     ],
+     "label": "3 — head to the ___ to ski",
+     "why": "The text says families head to the mountains to ski or snowboard."
+    },
+    "g4": {
+     "correct": "Rideau",
+     "accept": [
+      "Rideau"
+     ],
+     "label": "4 — the frozen ___ Canal",
+     "why": "The text names the frozen Rideau Canal in Ottawa."
+    },
+    "g5": {
+     "correct": "canoe",
+     "accept": [
+      "canoe"
+     ],
+     "label": "5 — hike, camp and ___",
+     "why": "The text lists hiking, camping and canoeing as summer activities."
+    },
+    "g6": {
+     "correct": "red",
+     "accept": [
+      "red"
+     ],
+     "label": "6 — forests turn ___ and gold",
+     "why": "The text says the forests turn red and gold in autumn."
+    },
+    "g7": {
+     "correct": "welcome",
+     "accept": [
+      "welcome"
+     ],
+     "label": "7 — visitors are always ___",
+     "why": "The closing paragraph says visitors are always welcome to join in."
+    },
+    "g8": {
+     "correct": "need",
+     "accept": [
+      "need"
+     ],
+     "label": "8 — you will ___ both of them",
+     "why": "The final line says you will need both your skates and your sense of adventure."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "play",
+     "accept": [
+      "play"
+     ],
+     "label": "1 — millions of Canadians ___ ice hockey",
+     "why": "A repeated habit ('every winter') takes the present simple."
+    },
+    "g2": {
+     "correct": "are skating",
+     "accept": [
+      "are skating"
+     ],
+     "label": "2 — the children ___ right now",
+     "why": "'Right now' signals an action in progress — present continuous."
+    },
+    "g3": {
+     "correct": "comes",
+     "accept": [
+      "comes"
+     ],
+     "label": "3 — Lacrosse ___ from an Indigenous game",
+     "why": "A general fact about the sport's origin — present simple."
+    },
+    "g4": {
+     "correct": "are flooding",
+     "accept": [
+      "are flooding"
+     ],
+     "label": "4 — the workers ___ the rink now",
+     "why": "'Right now' — the action is happening at this moment: present continuous."
+    },
+    "g5": {
+     "correct": "freezes",
+     "accept": [
+      "freezes"
+     ],
+     "label": "5 — Water ___ at 0°C",
+     "why": "A scientific fact that is always true — present simple."
+    },
+    "g6": {
+     "correct": "is training",
+     "accept": [
+      "is training"
+     ],
+     "label": "6 — my partner ___ for a marathon",
+     "why": "'At the moment' marks a temporary action in progress."
+    },
+    "g7": {
+     "correct": "watch",
+     "accept": [
+      "watch"
+     ],
+     "label": "7 — fans ___ the NHL every Saturday",
+     "why": "A regular routine ('every Saturday night') — present simple."
+    },
+    "g8": {
+     "correct": "is starting",
+     "accept": [
+      "is starting"
+     ],
+     "label": "8 — the final ___ right now",
+     "why": "Something beginning at this moment — present continuous."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "knows",
+     "accept": [
+      "knows"
+     ],
+     "label": "1 — my friend ___ all the players",
+     "why": "Know is a stative verb (a state of mind) — no continuous form here."
+    },
+    "g2": {
+     "correct": "belong",
+     "accept": [
+      "belong"
+     ],
+     "label": "2 — these skates ___ to my sister",
+     "why": "Belong describes a state, not an action — present simple."
+    },
+    "g3": {
+     "correct": "understand",
+     "accept": [
+      "understand"
+     ],
+     "label": "3 — I ___ what you mean",
+     "why": "Understand is stative — use the present simple."
+    },
+    "g4": {
+     "correct": "want",
+     "accept": [
+      "want"
+     ],
+     "label": "4 — we ___ to watch the final",
+     "why": "Want is a stative verb — no continuous form."
+    },
+    "g5": {
+     "correct": "has protected",
+     "accept": [
+      "has protected"
+     ],
+     "label": "5 — since the 1990s, Canada ___ wilderness (review)",
+     "why": "Review from 'Discover Canada — The Environment': 'since the 1990s' up to now needs the present perfect."
+    },
+    "g6": {
+     "correct": "know",
+     "accept": [
+      "know"
+     ],
+     "label": "6 — do you ___ why Canadians love the cold?",
+     "why": "After 'do you', the verb stays in the base form: know."
+    },
+    "g7": {
+     "correct": "is played",
+     "accept": [
+      "is played"
+     ],
+     "label": "7 — ice hockey ___ in every province (review)",
+     "why": "Review from 'Inside India': the game receives the action — passive: is + past participle."
+    },
+    "g8": {
+     "correct": "feels",
+     "accept": [
+      "feels"
+     ],
+     "label": "8 — this cabin ___ like a second home",
+     "why": "Feel meaning 'gives the impression' is stative — present simple."
+    }
+   }
+  }
+ }
+}
