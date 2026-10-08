@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{TITLE}}</title>
+<style>
+:root{--blue:#1a3a5c;--gold:#c9a227;--gold-lt:#f5e6b0;--teal:#2b7a78;--red:#c0392b;--green:#27ae60;--bg:#f7f9fc;--card:#fff;--text:#1d2b3a;--muted:#6b7a8d;--border:#dce3ec;--radius:4px;--font:'Segoe UI',system-ui,sans-serif}
+@page{size:A4;margin:18mm 16mm 20mm 16mm}
+*{box-sizing:border-box}
+body{font-family:var(--font);color:var(--text);font-size:11pt;line-height:1.45;margin:0;padding:0}
+header{background:var(--blue);color:#fff;padding:12px 16px;border-radius:var(--radius)}
+header h1{margin:0;font-size:18pt}
+header p{margin:2px 0 0;font-size:10pt;opacity:.85}
+.info{display:flex;gap:16px;margin:12px 0}
+.info div{flex:1;border-bottom:1px solid var(--text);padding-bottom:2px;font-size:10pt;color:var(--muted)}
+.section{margin:14px 0;border:1px solid var(--border);border-radius:var(--radius);break-inside:avoid}
+.section-head{background:var(--blue);color:#fff;padding:6px 12px;display:flex;justify-content:space-between;font-weight:600}
+.badge{background:var(--gold);color:var(--blue);border-radius:3px;padding:0 8px;font-weight:700}
+.section-body{padding:10px 12px}
+.instr{color:var(--muted);font-size:10pt;margin:0 0 8px}
+.word-box{background:var(--gold-lt);border:1px solid var(--gold);border-radius:var(--radius);padding:6px 10px;margin:6px 0 10px;font-weight:600}
+.reading-text{border-left:4px solid var(--teal);background:var(--bg);padding:8px 12px;margin:6px 0 10px}
+.line{border-bottom:1px solid var(--border);height:24px}
+ol{margin:0;padding-left:20px} li{margin:4px 0}
+.gap{display:inline-block;min-width:90px;border-bottom:1px solid var(--text)}
+.answer-key{page-break-before:always;font-size:10pt}
+.answer-key-head{background:var(--teal);color:#fff;padding:6px 12px;border-radius:var(--radius);font-weight:700}
+.eh{width:100%;border-collapse:collapse;margin:4px 0 8px;font-size:9.5pt}.eh th,.eh td{border:1px solid var(--border);padding:4px 6px;text-align:left;vertical-align:top}.eh th{background:var(--bg)}
+.answer-key h3{margin:10px 0 2px;color:var(--teal);font-size:10.5pt}
+.online-note{border:1px dashed var(--border);border-radius:var(--radius);text-align:center;color:var(--muted);font-size:9pt;padding:6px;margin:16px 0 8px}
+.sources{border:1px solid var(--border);border-radius:var(--radius);padding:8px 12px;font-size:9pt;color:var(--muted)}
+.sources h3{margin:0 0 4px;font-size:10pt;color:var(--text)}
+footer{text-align:center;font-size:9pt;color:var(--muted);margin-top:10px}
+@media print{body{padding:0}.section-head,.word-box,.reading-text,.answer-key-head,header,.badge{-webkit-print-color-adjust:exact;print-color-adjust:exact}.answer-key{page-break-before:always}}
+</style>
+</head>
+<body>
+<header><h1>{{TITLE}}</h1><p>{{SUBTITLE: topic · Klasse N · Gymnasium/Oberschule · CEFR level — no publisher or textbook names}}</p></header>
+<div class="info"><div>Name:</div><div>Klasse:</div><div>Datum:</div></div>
+
+<!-- 3-4 exercise sections. Instructions and task content in English. -->
+<div class="section"><div class="section-head"><span>Exercise A · {{TYPE}}</span><span class="badge">___ / {{N}}</span></div>
+<div class="section-body"><p class="instr">{{English instruction}}</p>
+<div class="word-box">{{shuffled word box, where the task uses one}}</div>
+<ol><li>{{item with <span class="gap"></span>}}</li></ol></div></div>
+
+<div class="section"><div class="section-head"><span>Exercise B · Reading</span><span class="badge">___ / {{N}}</span></div>
+<div class="section-body"><div class="reading-text">{{reading text}}</div><ol><li>{{question}}</li></ol></div></div>
+
+<div class="section"><div class="section-head"><span>Exercise C · Writing</span><span class="badge">___ / {{N}}</span></div>
+<div class="section-body"><p class="instr">{{task, word count}}</p><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div></div>
+
+<div class="answer-key">
+<div class="answer-key-head">Lösungen / Answer Key</div>
+<h3>Exercise A ({{N}} Punkte)</h3><p>{{every answer; add a one-sentence reason for grammar items}}</p>
+<h3>Exercise C – Musterantwort</h3><p>{{sample answer; invented names only, never a real student}}</p>
+<h3>Erwartungshorizont – Exercise C ({{N}} Punkte)</h3>
+<table class="eh"><tr><th>Kriterium</th><th>Erwartung</th><th>Punkte</th></tr>
+<tr><td>Inhalt</td><td>{{required content points}}</td><td>{{n}}</td></tr>
+<tr><td>Sprache</td><td>{{target structures, number needed; accuracy}}</td><td>{{n}}</td></tr>
+<tr><td>Aufbau und Stil</td><td>{{structure, register, word count}}</td><td>{{n}}</td></tr></table>
+<p>{{full / half / no points: what earns each}}</p>
+</div>
+
+<div class="online-note">Dieses Arbeitsblatt ist auch als interaktive Online-Übung mit automatischer Auswertung verfügbar – kostenlos und ohne Anmeldung.</div>
+
+<div class="sources"><h3>Quellenangaben</h3>
+<p><strong>Texte:</strong> Eigene Erstellung, KI-gestützt mit Claude.ai (Anthropic). Alle Inhalte wurden vom Autor didaktisch geprüft und angepasst.{{ + factual sources if the text states facts}}</p>
+<p><strong>Schrift:</strong> Segoe UI – Microsoft-Systemschrift (Windows). Bei nicht verfügbarer Schrift wird die System-Standardschrift (system-ui, sans-serif) verwendet.</p>
+<p><strong>Layout &amp; Grafik:</strong> Eigenes Design, erstellt mit HTML/CSS. Keine externen Bilder, Cliparts oder Grafiken verwendet.</p></div>
+<footer>© Shaun Trezise · Kostenlos für den Unterricht · CC BY-SA 4.0</footer>
+</body>
+</html>
