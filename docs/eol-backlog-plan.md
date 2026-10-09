@@ -1071,27 +1071,26 @@ and one company's anecdote; Jacky's GEO numbers come from Links Garden, which se
 placements. Only items that are new, fit this site, or correct this file are listed. Respect
 Tier 9.5 (few new pages while indexing is poor) and rule 7 (Shaun approves every live WP write).
 
-**Status correction:** Tier 8 A1 is resolved. Live `robots.txt` on 2026-10-09 no longer blocks any
-AI crawler (only `/wp-admin/`).
-
 ### A. Rules (cheap, do first) · CC drafts, Shaun approves
 1. **Commercial-intent tag on every page brief.** Each new page or rewrite names the money page it
    feeds: `/business-english/` (team training), a Payhip pack, or an Eduki listing. Before
    writing, check the live top 3: blog posts and definition boxes = informational; service,
    product or listing pages = commercial. Informational pages must link to one money page.
 2. **Fixed publishing rate.** At most 2 new indexable pages a week across both sites, every week,
-   no batches. Likely cause of the 160 "Discovered – not indexed" pages: ~250 pages published on a
-   new subdomain in a few weeks (hypothesis, not proven). **Check:** is a scheduled
-   `daily-exercise-draft` run still publishing daily? If yes, publish new exercises as `noindex`
-   until indexing improves, or cut the schedule to 2 a week. Shaun decides.
+   no batches. Possible cause of the 145 "Discovered – currently not indexed" pages (Tier 8) and the
+   48 of 265 sitemap pages indexed (Tier 9.5): many pages added to a new subdomain in a short time
+   (hypothesis, not proven; publish dates not checked). The scheduled `daily-exercise-draft` run is
+   retired (2026-10-06), so the rate now depends on on-request drafting. Keep new exercises to 2 a
+   week; Shaun decides whether to publish extra ones as `noindex` until indexing improves.
 3. **60-day no-touch.** Pages edited 2026-10-05/06 (1061, 1167, 2032, 2038, 2039, 2066, 965) are
    frozen until **2026-12-05**, except for factual errors. The 2026-11-06 re-pull (Tier 9.7) is
    measure-only.
 4. **Diff gate on every rewrite.** Before Shaun approves a WP edit or a skill-built page, CC lists
    every element in the old version that is missing from the new one: exercise links, tables,
    forms, quizzes, schema, internal links, noindex state. First line says "nothing lost" or names
-   what is lost. Precedent: 1167 was stubbed and noindexed without Shaun asking (Tier 9.2). Add to
-   CLAUDE.md rule 7 and to `eol-blog-writer`.
+   what is lost. Precedent: 1167 was noindexed around 2026-10-04 without Shaun asking, and its stub
+   dropped the old "Book a lesson" CTA; restored 2026-10-06 (Tier 9.2). Add to CLAUDE.md rule 7 and
+   to `eol-blog-writer`.
 5. **Delete veto.** CC never deletes, unpublishes, stubs or noindexes a page that has ≥ 600 words
    or any click in the last 90 days without Shaun naming that page. Add to CLAUDE.md.
 6. **Diagnose before fixing a click drop.** Lost position → better page. Same position, lower CTR
