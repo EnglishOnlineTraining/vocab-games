@@ -976,20 +976,35 @@ afterwards (rule 7).
    impr/3 months); the URL now lands on noindexed stub 2272. Shaun doesn't tutor. Options: point
    that URL at a page for adult self-learners (free exercises for adults, the ESL grammar series),
    or at the team-training offer (`/business-english/`), or let it go. No change until he picks.
-4. **PDF landing pages (Phase 3) · CC.** HTML property-management vocabulary page on the
-   activities host linking to the PDF (`useful-vocabulary-for-property-management.pdf`, the
-   top-clicked URL) and to `be-property-management.html`. Keep the PDF URL. Then the same for
-   `esg-vocabulary.pdf` and `commercial-real-estate-vocabulary.pdf`. Shaun: add a site link
-   inside the PDF on its next revision.
-5. **Get the activities site indexed (Phase 4) · CC + Shaun.** 48 of 265 sitemap pages indexed;
-   every year hub, `activities.html` and 12 `themen/` pages are "Crawled – not indexed".
-   - CC: a unique 150–250-word intro for each year hub, `activities.html` and `themen/index.html`.
-   - CC: link from the WordPress pages that rank to specific activities pages.
-   - Shaun: URL Inspection → Request indexing for the 8 year hubs, `abitur-activities.html` and
-     `esl-grammar-activities.html` (about 10 a day).
+4. **PDF landing pages (Phase 3).** **Property-management page DONE (#105, merged 2026-10-06,
+   live).** `property-management-vocabulary.html`: 159 terms in static HTML, a search filter,
+   links to the PDF and `be-property-management.html`, a FAQ, and a button on the Business hub.
+   Still open:
+   - CC: the same for `esg-vocabulary.pdf` and `commercial-real-estate-vocabulary.pdf`.
+   - Shaun: the PDF still has five wrong definitions (cylinder, grout, interior wall, property
+     developer, energy certificate) and lists `shaun@learnenglishinberlin.com` instead of the
+     public address. If it is replaced, keep the same filename and URL.
+5. **Get the activities site indexed (Phase 4).** 48 of 265 sitemap pages indexed (report of
+   2026-09-21). Checked 2026-10-07: the repo side is largely done already.
+   - **Hub intros: already done** in `a4f51cc` (2026-10-05): each year hub has a ~200-word
+     intro of its own. Google rejected the hubs in crawls between 5 and 26 Sept, *before* the
+     intros existed, so it has not seen the new versions yet.
+   - `themen/` pages are ~1,350 words each, so thin content is not why they were rejected.
+   - `activities.html` links all ~250 exercises in static HTML; the sitemap is 231 URLs;
+     robots.txt allows all; 62 low-value pages are already in `data/noindex.json`.
+   - The 160 "Discovered – not indexed" are the core exercise pages (every year, Abitur, BE,
+     MSA, uni). That is crawl priority on a young subdomain with few external links, not a
+     page fault.
+   - **Done 2026-10-07 in Search Console (Shaun approved, CC ran it in his session):**
+     "Validate fix" started on "Crawled – currently not indexed" (138 URLs, both hosts);
+     activities sitemap resubmitted; Request indexing for the 8 year hubs,
+     `abitur-activities.html` and `esl-grammar-activities.html`. All ten returned "URL was
+     added to a priority crawl queue".
+   - Next: check the validation and the ten URLs on the 2026-11-06 re-pull. If the hubs are
+     indexed, request indexing for the most important exercise pages, about 10 a day.
+   - Still open: links from other websites to the activities host (Shaun: school, teacher and
+     education directories). This is the main thing that will speed up crawling.
    - Hold off on adding many new pages until indexing improves.
-   - Review the sitemap for pages nobody searches for (reviews, tests) and move them to
-     `data/noindex.json`.
 6. **Grammar explainers (Phase 5) · DONE 2026-10-07 (Shaun approved), verified live.**
    - Found first: both posts had already been rewritten around 2026-09-04, but Google had last
      crawled them on 10–11 Aug, so the "page 3" numbers were for the old versions. Impressions
