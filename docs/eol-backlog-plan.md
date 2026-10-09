@@ -1124,8 +1124,8 @@ Tier 9.5 (few new pages while indexing is poor) and rule 7 (Shaun approves every
        category, reviews. Likely leftovers of "Learn English in Berlin" / Kranoldstrasse (not
        verified).
     2. **Keep the one with more reviews and history.** Update it: current name, Koloniestr. as on
-       the Impressum and schema (character for character), or service area with the address
-       hidden, phone `+49 176 3130 4449`, website `/business-english/`.
+       the Impressum and schema (character for character; Shaun confirmed 2026-10-09 that the
+       Koloniestr. address is right), or service area with the address hidden, phone `+49 176 3130 4449`, website `/business-english/`.
     3. **The other:** mark "permanently closed", or ask Google support to merge it if both sit at
        the same address. Don't delete it before checking: deleting loses its reviews.
     4. **Fill the kept profile:** 2–4 true categories (pick from Google's list only, never from
