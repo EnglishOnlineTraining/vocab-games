@@ -1065,6 +1065,113 @@ first-hand examples, better tables). Every WordPress write needs Shaun's OK and 
 6. **Track after publishing · CC.** Re-capture the AI Overview weekly; record whether the page is
    cited and which sources keep winning.
 
+## Tier 12 — Lessons from the "SEO with AI" course (2026-10-09) · Shaun + CC
+Source: a long X article by the ChatSEO founders (shared by Shaun 2026-10-09). It is a sales piece
+and one company's anecdote; Jacky's GEO numbers come from Links Garden, which sells link
+placements. Only items that are new, fit this site, or correct this file are listed. Respect
+Tier 9.5 (few new pages while indexing is poor) and rule 7 (Shaun approves every live WP write).
+
+**Status correction:** Tier 8 A1 is resolved. Live `robots.txt` on 2026-10-09 no longer blocks any
+AI crawler (only `/wp-admin/`).
+
+### A. Rules (cheap, do first) · CC drafts, Shaun approves
+1. **Commercial-intent tag on every page brief.** Each new page or rewrite names the money page it
+   feeds: `/business-english/` (team training), a Payhip pack, or an Eduki listing. Before
+   writing, check the live top 3: blog posts and definition boxes = informational; service,
+   product or listing pages = commercial. Informational pages must link to one money page.
+2. **Fixed publishing rate.** At most 2 new indexable pages a week across both sites, every week,
+   no batches. Likely cause of the 160 "Discovered – not indexed" pages: ~250 pages published on a
+   new subdomain in a few weeks (hypothesis, not proven). **Check:** is a scheduled
+   `daily-exercise-draft` run still publishing daily? If yes, publish new exercises as `noindex`
+   until indexing improves, or cut the schedule to 2 a week. Shaun decides.
+3. **60-day no-touch.** Pages edited 2026-10-05/06 (1061, 1167, 2032, 2038, 2039, 2066, 965) are
+   frozen until **2026-12-05**, except for factual errors. The 2026-11-06 re-pull (Tier 9.7) is
+   measure-only.
+4. **Diff gate on every rewrite.** Before Shaun approves a WP edit or a skill-built page, CC lists
+   every element in the old version that is missing from the new one: exercise links, tables,
+   forms, quizzes, schema, internal links, noindex state. First line says "nothing lost" or names
+   what is lost. Precedent: 1167 was stubbed and noindexed without Shaun asking (Tier 9.2). Add to
+   CLAUDE.md rule 7 and to `eol-blog-writer`.
+5. **Delete veto.** CC never deletes, unpublishes, stubs or noindexes a page that has ≥ 600 words
+   or any click in the last 90 days without Shaun naming that page. Add to CLAUDE.md.
+6. **Diagnose before fixing a click drop.** Lost position → better page. Same position, lower CTR
+   → better title, or an AI Overview now sits above us (position 1–3 with falling clicks). Never the
+   same fix for both. Add to the Tier 9.7 measurement steps.
+
+### B. Fix what exists before adding · CC drafts, Shaun decides per page
+7. **Cut list (WordPress only).** Posts with zero clicks and < 50 impressions in 90 days, published
+   more than 3 months ago. For each: stub, merge, rewrite or keep (rule 5 applies). The activities
+   side is done (`data/noindex.json`, 62 entries).
+8. **Repoint pass.** For each WP post at positions 8–15: the query it was written for vs. the query
+   Search Console shows it for. Where they differ, draft new H1, meta description and first 100
+   words, and check the body answers that query. Simple past and past progressive are already
+   Tier 9.6. Pages under rule 3 wait.
+
+### C. The offer · Shaun decides
+9. **Self-qualify step on `/business-english/` (with Tier 11.5).** The article's "one thing the top
+   3 don't have": a face and a 3-question quiz. The trainer photo and client logos exist;
+   `business-needs-analysis.html` exists (noindex). Link or embed a short version on 1965 as the
+   page's original element.
+10. **Industry-vocabulary pattern.** Search Console proves one pattern: the property-management
+    PDF is the top-clicked URL, from many countries. Pattern: "[industry] English vocabulary" /
+    "English for [industry]", each page feeding `/business-english/`. Only industries with real
+    training material (property, commercial real estate, ESG, telecom/fibre, IT). Each variant
+    needs its own terms and examples; a find-and-replace page is doorway spam. One page every two
+    weeks at most (rule 2). Check volumes in Keyword Planner first (Ahrefs connector is broken).
+11. **Google Business Profiles: two old ones exist · Shaun.** (Confirmed by Shaun 2026-10-09.)
+    Google allows one profile per business; two for the same business compete and can be
+    suspended. Steps:
+    1. **Shaun checks both** (business.google.com): which account owns each, name, address,
+       category, reviews. Likely leftovers of "Learn English in Berlin" / Kranoldstrasse (not
+       verified).
+    2. **Keep the one with more reviews and history.** Update it: current name, Koloniestr. as on
+       the Impressum and schema (character for character), or service area with the address
+       hidden, phone `+49 176 3130 4449`, website `/business-english/`.
+    3. **The other:** mark "permanently closed", or ask Google support to merge it if both sit at
+       the same address. Don't delete it before checking: deleting loses its reviews.
+    4. **Fill the kept profile:** 2–4 true categories (pick from Google's list only, never from
+       memory), 20+ services, 750-character description, real photos, a post now and then, and
+       ask clients for reviews that name the training done.
+    5. **Link it:** add the profile URL to `sameAs` in `scripts/schema.js` and the WP Organization
+       node (Tier 8 A2). CC.
+    Target: "Business English Training / Firmenschulung Englisch Berlin", and some of the lost
+    "english teacher berlin" demand (Tier 9.3).
+
+### D. Authority and GEO · Shaun + CC
+12. **Own-data asset.** The grader holds 2,624 graded gaps. "Die häufigsten Fehler deutscher
+    Schüler bei Gerund/Infinitiv und Passiv", aggregate counts only, as a section on the two pilot
+    `themen/` pages. Nobody can copy it; writers and AI answers can cite it. **Gate:** school OK and
+    a DSGVO check (Docemus pupils' work; aggregates only, no names, no small groups). Shaun.
+13. **Unlinked mentions and old-domain links.** Search for "englishonline.training",
+    "learnenglishinberlin" and "Shaun Trezise" mentions without a link; ask each once. Check that
+    backlinks to the old LEB domains land on live pages after the redirect, not on 404s.
+14. **Honest roundup, then list requests.** One WP page "Kostenlose Englisch-Übungen online:
+    Seiten im Vergleich (2026)" with competitors (Lingolia, ego4u, englisch-hilfen, …) placed on
+    merit, **not us first** (self-ranked lists no longer get cited). Refresh yearly with the year in
+    the title. Then third-party lists that rank top 20, were updated in the last 12 months and
+    already include a competitor: one personal note each, no sequences, no sending tools, no
+    lookalike domains (UWG §7, see the 2026-08-29 decision; not legal advice).
+15. **GEO query list (folds into Tier 10.7).** From the money queries, add "beste <query> 2026",
+    "<query> Erfahrungen" and "englishonline.training Erfahrungen" to the monthly log. For each:
+    which pages rank, which are lists, are we in them. Check by hand, logged out (API answers
+    differ from the web app).
+16. **Video layer · Shaun.** The script-to-video pipeline exists. One YouTube video per pilot
+    topic (gerund/infinitive, passive): 200+ word description, the query answered in the first two
+    lines, link to the `themen/` page; 3 Shorts each, reused on TikTok with search-style captions.
+    Shaun decides on time, voice/face, and suitability for a school-age audience.
+
+### Not adopted (with reasons)
+- **ChatSEO subscription:** Search Console + Ahrefs cover the data; fix the Ahrefs connector.
+- **Paid links, PBN placements, "€10 citations":** against Google's link spam policy; the source
+  sells them.
+- **Cold-email outreach machine (Instantly, lookalike domain, 5–10 a day):** UWG §7; rejected
+  2026-08-29.
+- **More `llms.txt` work:** Google says AI features need no special files; the activities file
+  exists, leave it.
+- **Reddit as a channel:** citation share is falling fast and the school audience is not there.
+  Disclosed answers on r/EnglishLearning only if a thread already ranks on a target query.
+- **Company-size pages, link swaps at scale.**
+
 ## Open decisions gating the plan
 **All six items from the 2026-08-07 audit reconciliation are now resolved and executed** (Shaun
 approved each): 2063–2066 published, "Blog Posts" 70 fixed and 1205 stubbed, 307 unpublished,
