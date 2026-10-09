@@ -1,0 +1,213 @@
+{
+ "unit": "9g-australia-two-objects-passive",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "60,000",
+     "accept": [
+      "60,000"
+     ],
+     "label": "1 — for more than ___ years",
+     "why": "The text says Aboriginal and Torres Strait Islander peoples cared for the land for more than 60,000 years."
+    },
+    "g2": {
+     "correct": "1788",
+     "accept": [
+      "1788"
+     ],
+     "label": "2 — after ___, when the British arrived",
+     "why": "The text says the British arrived after 1788."
+    },
+    "g3": {
+     "correct": "count",
+     "accept": [
+      "count"
+     ],
+     "label": "3 — the constitution did not ___",
+     "why": "The text says until 1967 the constitution did not even count Aboriginal people."
+    },
+    "g4": {
+     "correct": "yes",
+     "accept": [
+      "yes"
+     ],
+     "label": "4 — voted ___ to change that",
+     "why": "The text says more than 90 per cent of Australians voted 'yes' in the 1967 referendum."
+    },
+    "g5": {
+     "correct": "native",
+     "accept": [
+      "native"
+     ],
+     "label": "5 — recognised ___ title",
+     "why": "The text says the High Court recognised native title in the famous Mabo decision."
+    },
+    "g6": {
+     "correct": "prime minister",
+     "accept": [
+      "prime minister"
+     ],
+     "label": "6 — the ___ said sorry",
+     "why": "The text says the prime minister said sorry to the Stolen Generations in 2008."
+    },
+    "g7": {
+     "correct": "taken",
+     "accept": [
+      "taken"
+     ],
+     "label": "7 — children who had been ___ from their families",
+     "why": "The Stolen Generations were Aboriginal children taken from their families."
+    },
+    "g8": {
+     "correct": "is celebrated",
+     "accept": [
+      "is celebrated"
+     ],
+     "label": "8 — Aboriginal culture ___ in art and music",
+     "why": "The text says Aboriginal culture is celebrated in art, music and festivals."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "were given",
+     "accept": [
+      "were given"
+     ],
+     "label": "1 — Aboriginal people ___ the right to vote",
+     "why": "Two-object passive: the receiver becomes the subject — plural 'were given'."
+    },
+    "g2": {
+     "correct": "was handed",
+     "accept": [
+      "was handed"
+     ],
+     "label": "2 — the title to Uluru ___ back",
+     "why": "The title (singular) receives the action — 'was handed back'."
+    },
+    "g3": {
+     "correct": "were offered",
+     "accept": [
+      "were offered"
+     ],
+     "label": "3 — the Stolen Generations ___ an apology",
+     "why": "The receiver becomes the subject — plural past passive 'were offered'."
+    },
+    "g4": {
+     "correct": "are shown",
+     "accept": [
+      "are shown"
+     ],
+     "label": "4 — visitors ___ the story",
+     "why": "A general present situation; visitors receive the action — 'are shown'."
+    },
+    "g5": {
+     "correct": "were taught",
+     "accept": [
+      "were taught"
+     ],
+     "label": "5 — children ___ English",
+     "why": "Past passive with the receiver as subject — 'were taught'."
+    },
+    "g6": {
+     "correct": "are given",
+     "accept": [
+      "are given"
+     ],
+     "label": "6 — maps ___ to every visitor",
+     "why": "The thing becomes the subject; the receiver follows 'to' — 'are given'."
+    },
+    "g7": {
+     "correct": "had cared",
+     "accept": [
+      "had cared"
+     ],
+     "label": "7 — ___ for the land for thousands of years (review)",
+     "why": "Review from 'Into the Red Centre': 'by the time' + duration before a past event needs the past perfect."
+    },
+    "g8": {
+     "correct": "was played",
+     "accept": [
+      "was played"
+     ],
+     "label": "8 — the didgeridoo ___ last night (review)",
+     "why": "Review from 'Just Me and My Backpack': 'last night' + a received action — simple past passive."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Aboriginal people were given the right to vote in 1962",
+     "accept": [
+      "Aboriginal people were given the right to vote in 1962",
+      "Aboriginal people were given the vote in 1962"
+     ],
+     "label": "1 — gave Aboriginal people the right",
+     "why": "Person as subject: was/were + past participle; the thing (the right) stays after it."
+    },
+    "g2": {
+     "correct": "The Anangu people were handed the title deeds to Uluru in 1985",
+     "accept": [
+      "The Anangu people were handed the title deeds to Uluru in 1985",
+      "The title deeds to Uluru were handed to the Anangu people in 1985"
+     ],
+     "label": "2 — handed the Anangu people the title deeds",
+     "why": "Two-object passive: the person becomes the subject; the title deeds (the thing) stay after the verb."
+    },
+    "g3": {
+     "correct": "The Stolen Generations were offered a formal apology in 2008",
+     "accept": [
+      "The Stolen Generations were offered a formal apology in 2008"
+     ],
+     "label": "3 — offered the Stolen Generations an apology",
+     "why": "The receiver becomes the subject; the verb keeps both objects in the passive."
+    },
+    "g4": {
+     "correct": "Visitors are shown sacred rock paintings",
+     "accept": [
+      "Visitors are shown sacred rock paintings",
+      "Sacred rock paintings are shown to visitors"
+     ],
+     "label": "4 — shows visitors sacred paintings",
+     "why": "General truth → present passive with the receiver as subject ('Sacred rock paintings are shown to visitors' also fits)."
+    },
+    "g5": {
+     "correct": "The children were taught English at the mission school",
+     "accept": [
+      "The children were taught English at the mission school"
+     ],
+     "label": "5 — taught the children English",
+     "why": "Past passive with the receiver as subject; the second object (English) remains."
+    },
+    "g6": {
+     "correct": "Young artists will be given a grant next year",
+     "accept": [
+      "Young artists will be given a grant next year",
+      "Young artists will be given a grant for their paintings"
+     ],
+     "label": "6 — will give young artists a grant",
+     "why": "Future passive: will be + past participle."
+    },
+    "g7": {
+     "correct": "We were told the story of the Rainbow Serpent",
+     "accept": [
+      "We were told the story of the Rainbow Serpent",
+      "The story of the Rainbow Serpent was told to us"
+     ],
+     "label": "7 — told us the story of the Rainbow Serpent",
+     "why": "Past passive with the person as subject — or 'The story of the Rainbow Serpent was told to us'."
+    }
+   },
+   "typed": true
+  }
+ }
+}

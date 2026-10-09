@@ -1,7 +1,8 @@
 # Sub-query maps — pilot topics (Tier 10.4)
 
-_Drafted 2026-10-07 by CC for Shaun to approve. Nothing in this file is live: the draft
-sections at the end go into `data/topics.json` only after Shaun approves them._
+_Drafted 2026-10-07 by CC. **The four draft sections were approved and added to
+`data/topics.json` on 2026-10-08.** The four replacement opening sentences and the extra FAQ
+entries (see "After approval") are not done yet._
 
 AI search breaks one question into several smaller ones (query fan-out) and answers each
 from whichever page section fits best. A topic page gets cited for a sub-query only if it

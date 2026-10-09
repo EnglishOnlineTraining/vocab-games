@@ -18561,5 +18561,274 @@
     }
    }
   }
+ },
+ "10c-canada-sport-hobbies": {
+  "exA": {
+   "prefix": "exA-",
+   "gaps": {
+    "g1": {
+     "label": "1 — First Nations ___ it for hundreds of years",
+     "correct": "played",
+     "why": "The text says First Nations played lacrosse for hundreds of years before Europeans arrived."
+    },
+    "g2": {
+     "label": "2 — who ___ the game in 1891",
+     "correct": "invented",
+     "why": "The text says James Naismith invented basketball in 1891."
+    },
+    "g3": {
+     "label": "3 — head to the ___ to ski",
+     "correct": "mountains",
+     "why": "The text says families head to the mountains to ski or snowboard."
+    },
+    "g4": {
+     "label": "4 — the frozen ___ Canal",
+     "correct": "Rideau",
+     "why": "The text names the frozen Rideau Canal in Ottawa."
+    },
+    "g5": {
+     "label": "5 — hike, camp and ___",
+     "correct": "canoe",
+     "why": "The text lists hiking, camping and canoeing as summer activities."
+    },
+    "g6": {
+     "label": "6 — forests turn ___ and gold",
+     "correct": "red",
+     "why": "The text says the forests turn red and gold in autumn."
+    },
+    "g7": {
+     "label": "7 — visitors are always ___",
+     "correct": "welcome",
+     "why": "The closing paragraph says visitors are always welcome to join in."
+    },
+    "g8": {
+     "label": "8 — you will ___ both of them",
+     "correct": "need",
+     "why": "The final line says you will need both your skates and your sense of adventure."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1 — millions of Canadians ___ ice hockey",
+     "correct": "play",
+     "why": "A repeated habit ('every winter') takes the present simple."
+    },
+    "g2": {
+     "label": "2 — the children ___ right now",
+     "correct": "are skating",
+     "why": "'Right now' signals an action in progress — present continuous."
+    },
+    "g3": {
+     "label": "3 — Lacrosse ___ from an Indigenous game",
+     "correct": "comes",
+     "why": "A general fact about the sport's origin — present simple."
+    },
+    "g4": {
+     "label": "4 — the workers ___ the rink now",
+     "correct": "are flooding",
+     "why": "'Right now' — the action is happening at this moment: present continuous."
+    },
+    "g5": {
+     "label": "5 — Water ___ at 0°C",
+     "correct": "freezes",
+     "why": "A scientific fact that is always true — present simple."
+    },
+    "g6": {
+     "label": "6 — my partner ___ for a marathon",
+     "correct": "is training",
+     "why": "'At the moment' marks a temporary action in progress."
+    },
+    "g7": {
+     "label": "7 — fans ___ the NHL every Saturday",
+     "correct": "watch",
+     "why": "A regular routine ('every Saturday night') — present simple."
+    },
+    "g8": {
+     "label": "8 — the final ___ right now",
+     "correct": "is starting",
+     "why": "Something beginning at this moment — present continuous."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1 — my friend ___ all the players",
+     "correct": "knows",
+     "why": "Know is a stative verb (a state of mind) — no continuous form here."
+    },
+    "g2": {
+     "label": "2 — these skates ___ to my sister",
+     "correct": "belong",
+     "why": "Belong describes a state, not an action — present simple."
+    },
+    "g3": {
+     "label": "3 — I ___ what you mean",
+     "correct": "understand",
+     "why": "Understand is stative — use the present simple."
+    },
+    "g4": {
+     "label": "4 — we ___ to watch the final",
+     "correct": "want",
+     "why": "Want is a stative verb — no continuous form."
+    },
+    "g5": {
+     "label": "5 — since the 1990s, Canada ___ wilderness (review)",
+     "correct": "has protected",
+     "why": "Review from 'Discover Canada — The Environment': 'since the 1990s' up to now needs the present perfect."
+    },
+    "g6": {
+     "label": "6 — do you ___ why Canadians love the cold?",
+     "correct": "know",
+     "why": "After 'do you', the verb stays in the base form: know."
+    },
+    "g7": {
+     "label": "7 — ice hockey ___ in every province (review)",
+     "correct": "is played",
+     "why": "Review from 'Inside India': the game receives the action — passive: is + past participle."
+    },
+    "g8": {
+     "label": "8 — this cabin ___ like a second home",
+     "correct": "feels",
+     "why": "Feel meaning 'gives the impression' is stative — present simple."
+    }
+   }
+  }
+ },
+ "9g-australia-two-objects-passive": {
+  "exA": {
+   "prefix": "exA-",
+   "gaps": {
+    "g1": {
+     "label": "1 — for more than ___ years",
+     "correct": "60,000",
+     "why": "The text says Aboriginal and Torres Strait Islander peoples cared for the land for more than 60,000 years."
+    },
+    "g2": {
+     "label": "2 — after ___, when the British arrived",
+     "correct": "1788",
+     "why": "The text says the British arrived after 1788."
+    },
+    "g3": {
+     "label": "3 — the constitution did not ___",
+     "correct": "count",
+     "why": "The text says until 1967 the constitution did not even count Aboriginal people."
+    },
+    "g4": {
+     "label": "4 — voted ___ to change that",
+     "correct": "yes",
+     "why": "The text says more than 90 per cent of Australians voted 'yes' in the 1967 referendum."
+    },
+    "g5": {
+     "label": "5 — recognised ___ title",
+     "correct": "native",
+     "why": "The text says the High Court recognised native title in the famous Mabo decision."
+    },
+    "g6": {
+     "label": "6 — the ___ said sorry",
+     "correct": "prime minister",
+     "why": "The text says the prime minister said sorry to the Stolen Generations in 2008."
+    },
+    "g7": {
+     "label": "7 — children who had been ___ from their families",
+     "correct": "taken",
+     "why": "The Stolen Generations were Aboriginal children taken from their families."
+    },
+    "g8": {
+     "label": "8 — Aboriginal culture ___ in art and music",
+     "correct": "is celebrated",
+     "why": "The text says Aboriginal culture is celebrated in art, music and festivals."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1 — Aboriginal people ___ the right to vote",
+     "correct": "were given",
+     "why": "Two-object passive: the receiver becomes the subject — plural 'were given'."
+    },
+    "g2": {
+     "label": "2 — the title to Uluru ___ back",
+     "correct": "was handed",
+     "why": "The title (singular) receives the action — 'was handed back'."
+    },
+    "g3": {
+     "label": "3 — the Stolen Generations ___ an apology",
+     "correct": "were offered",
+     "why": "The receiver becomes the subject — plural past passive 'were offered'."
+    },
+    "g4": {
+     "label": "4 — visitors ___ the story",
+     "correct": "are shown",
+     "why": "A general present situation; visitors receive the action — 'are shown'."
+    },
+    "g5": {
+     "label": "5 — children ___ English",
+     "correct": "were taught",
+     "why": "Past passive with the receiver as subject — 'were taught'."
+    },
+    "g6": {
+     "label": "6 — maps ___ to every visitor",
+     "correct": "are given",
+     "why": "The thing becomes the subject; the receiver follows 'to' — 'are given'."
+    },
+    "g7": {
+     "label": "7 — ___ for the land for thousands of years (review)",
+     "correct": "had cared",
+     "why": "Review from 'Into the Red Centre': 'by the time' + duration before a past event needs the past perfect."
+    },
+    "g8": {
+     "label": "8 — the didgeridoo ___ last night (review)",
+     "correct": "was played",
+     "why": "Review from 'Just Me and My Backpack': 'last night' + a received action — simple past passive."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1 — gave Aboriginal people the right",
+     "correct": "Aboriginal people were given the right to vote in 1962",
+     "why": "Person as subject: was/were + past participle; the thing (the right) stays after it."
+    },
+    "g2": {
+     "label": "2 — handed the Anangu people the title deeds",
+     "correct": "The Anangu people were handed the title deeds to Uluru in 1985",
+     "why": "Two-object passive: the person becomes the subject; the title deeds (the thing) stay after the verb."
+    },
+    "g3": {
+     "label": "3 — offered the Stolen Generations an apology",
+     "correct": "The Stolen Generations were offered a formal apology in 2008",
+     "why": "The receiver becomes the subject; the verb keeps both objects in the passive."
+    },
+    "g4": {
+     "label": "4 — shows visitors sacred paintings",
+     "correct": "Visitors are shown sacred rock paintings",
+     "why": "General truth → present passive with the receiver as subject ('Sacred rock paintings are shown to visitors' also fits)."
+    },
+    "g5": {
+     "label": "5 — taught the children English",
+     "correct": "The children were taught English at the mission school",
+     "why": "Past passive with the receiver as subject; the second object (English) remains."
+    },
+    "g6": {
+     "label": "6 — will give young artists a grant",
+     "correct": "Young artists will be given a grant next year",
+     "why": "Future passive: will be + past participle."
+    },
+    "g7": {
+     "label": "7 — told us the story of the Rainbow Serpent",
+     "correct": "We were told the story of the Rainbow Serpent",
+     "why": "Past passive with the person as subject — or 'The story of the Rainbow Serpent was told to us'."
+    }
+   }
+  }
  }
 }

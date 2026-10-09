@@ -14,6 +14,13 @@ function isTestMode() {
   return window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 }
 
+/* Stop browser auto-translate on English pages. Chrome has misread short
+   dropdown options as Czech and "translated" let → years; options carry no
+   value attribute, so the translated text was also what got marked. */
+if (document.documentElement && /^en\b/i.test(document.documentElement.lang)) {
+  document.documentElement.setAttribute('translate', 'no');
+}
+
 /* ============================================================
    PRACTISE-ONLY MODE (no submission)
    A public visitor can do any exercise without entering a name.
