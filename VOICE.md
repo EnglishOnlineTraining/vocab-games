@@ -75,7 +75,11 @@ German copy follows the same rules: short sentences, common words, no Anglicisms
 - One practice task or next step.
 - For learners: a grammar or usage tip for German speakers where useful.
 - Credit for frameworks and ideas (name the original author).
-- One clear call to action at the end, matched to the audience.
+- One clear call to action at the end, matched to the audience. There is no standard sign-off:
+  - Learners: one free exercise or practice pack to do next.
+  - Parents: the free exercises, and how to use them with their child at home.
+  - Teachers: the free exercises for their class or level.
+  - Professionals, HR, L&D: "Need English training for your team? Get in touch." Use this line only for this audience.
 
 ## 8. Always cut
 
@@ -92,7 +96,9 @@ German copy follows the same rules: short sentences, common words, no Anglicisms
 |---|---|
 | Unlock your English potential with our revolutionary exercises! | Free interactive English exercises for Years 7–10. |
 | Studies show storytelling increases engagement by 300%. | A story with a problem keeps the reader reading. |
-| Book a private lesson today! | Need English training for your team? Get in touch. |
+| Book a private lesson today! | (Professionals, HR, L&D only) Need English training for your team? Get in touch. |
+| Need English training for your team? Get in touch. (on a post for parents) | Suchen Sie mit Ihrem Kind das passende kostenlose Übungspaket aus: [Link]. |
+| Need English training for your team? Get in touch. (on a post for students) | Pick one exercise for this unit and do it today: [link]. |
 | Utilise the aforementioned framework to facilitate improvement. | Use this framework to improve your text. |
 | Unser Angebot revolutioniert das Englischlernen! | Kostenlose Englisch-Übungen für Klasse 7 bis 10. |
 
@@ -103,4 +109,5 @@ German copy follows the same rules: short sentences, common words, no Anglicisms
 - [ ] Is every number real and sourced?
 - [ ] Is there an example and a next step?
 - [ ] Is the language and address right for the audience?
+- [ ] Does the closing call to action fit this audience (not the team-training line on a parent, learner or teacher post)?
 - [ ] Are there no hype words and no lesson offers?

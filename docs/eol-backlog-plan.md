@@ -1005,11 +1005,234 @@ afterwards (rule 7).
    - Still open: links from other websites to the activities host (Shaun: school, teacher and
      education directories). This is the main thing that will speed up crawling.
    - Hold off on adding many new pages until indexing improves.
-6. **Grammar explainers to page 1 (Phase 5) · CC drafts, Shaun approves.** Simple past post
-   (580 impr, pos 30.7) and past progressive (413 impr, pos 46.7): a direct answer at the top,
-   a forms table, examples, common mistakes, a short FAQ, and links to the practice pages.
+6. **Grammar explainers (Phase 5) · DONE 2026-10-07 (Shaun approved), verified live.**
+   - Found first: both posts had already been rewritten around 2026-09-04, but Google had last
+     crawled them on 10–11 Aug, so the "page 3" numbers were for the old versions. Impressions
+     also fell after 2026-09-04 (simple past 609 → 3, past progressive 352 → 33 for the two
+     periods); likely the `/welcome/blog-posts/` → `/blog-posts/` move for 807.
+   - **807** `/blog-posts/what-is-the-simple-past/`: rewritten (~1,140 words): direct definition,
+     examples, full -ed spelling table, -ed pronunciation, subject questions, 28 irregular
+     verbs, "past form but not past time", present perfect / past progressive contrasts,
+     mistakes, practice links. New title, SEO title and meta.
+   - **1097** `/using-past-progressive/`: rewritten (~870 words): definition, 8 examples, full
+     form table, 7 uses, while/when, state verbs, mistakes, practice links (now including
+     `themen/past-progressive.html` and `10c-pair-of-jeans.html`). New title, SEO title, meta.
+   - Both: a 7-question FAQ before the practice links, plus matching `FAQPage` JSON-LD
+     appended in the content (same pattern as `/faq/`), generated from one source.
+   - Request indexing: 807 done 2026-10-07; 1097 done 2026-10-08 (the 2026-10-07 attempt hit
+     "Quota exceeded" on both main-site properties; the daily limit is per site).
 7. **Re-measure (Phase 6) · CC, 2026-11-06.** Re-pull the same reports and compare against the
    baseline table in the review doc.
+8. **Search Console emails of 2026-10-07 · read, nothing broken.**
+   - There are **three** properties: `sc-domain:englishonline.training` (both hosts),
+     `https://englishonline.training/` and `sc-domain:activities.englishonline.training`.
+     Alerts arrive once per property, so the same news can come twice.
+   - "Some fixes failed" (activities property) is an **older** validation, started 2026-09-22
+     (before Tier 9) and failed 2026-10-05: 17 URLs re-crawled 22–28 Sept and still rejected:
+     10 `themen/` pages (past-progressive, modalverben, past-perfect, linking-words,
+     gerund-infinitiv, artikel, adjektive-adverbien, future-tenses, if-saetze, phrasal-verbs),
+     `activities.html`, `grammar-activities.html`, `10c-canada-environment`,
+     `10c-canada-schools`, `10g-growing-up-black`, `10g-cultural-diversity`,
+     `uni-describing-data-trends`. The activities **homepage** is also "Crawled – not indexed".
+     The year hubs were not in the failed set (last crawled in August).
+   - **Checked 2026-10-08: no page-level fault found.**
+     - `themen/` pages are not duplicates: each shares only 2–17% of its 8-word sequences with
+       the other 17; each has 5–28 internal links in; Google keeps its own canonical (inspected
+       `themen/modalverben.html`: crawled 24 Sept, fetch OK, user canonical = itself). Two
+       `themen/` pages *are* indexed (`passiv`, `relativsaetze`), plus `themen/` itself.
+     - Indexed vs rejected exercise pages (32 vs 41) look the same: median 770 vs 897 words,
+       36 vs 37 KB, 14 vs 20 selects, and many were crawled on the same days (9–10 Aug).
+       Google is indexing a subset of similar pages. That is a site-level judgment (a young
+       subdomain with few external links), not something one page can fix.
+     - The activities sitemap is fine (read 2026-10-07, 232 URLs). The "Temporary processing
+       error" in URL Inspection is left over from the September crawl.
+     - **The activities homepage is the one real fix.** `index.html` is 381 words of class
+       cards, the same job as `activities.html` (2,497 words), and its H1 "Free English
+       exercises for Years 7–10, MSA & Abitur" is the WordPress homepage's `<title>` word for
+       word. Google likely treats it as a thin duplicate. This is decision A4 in Tier 8 (how the
+       two homepages split their searches) and needs Shaun.
+     - Levers that remain: external links to the activities host (Shaun), and the outcome of
+       the validation started 2026-10-07. Do not rewrite the `themen/` pages on this evidence.
+   - "Excluded by noindex" (activities): expected, from `data/noindex.json`.
+   - "Excluded by noindex … in a sitemap" (main site, two properties): only `/about-me/` (page 80,
+     a noindexed "Moved" stub). It was in Jetpack's **image** sitemap because two media items
+     were attached to it. **Fixed 2026-10-07:** media 107 and 388 detached (parent 0; files and
+     their other uses untouched); `/about-me/` is gone from `image-sitemap-1.xml`.
+
+## Tier 10 — AI search: chunk-ready headings and sub-query coverage (2026-10-07) · Shaun + CC
+Source: Google Cloud Vertex AI Search (Discovery Engine) docs. They list these ranking signals:
+base rank, Gecko embeddings, Jetstream, BM25, pCTR, freshness, boost/bury. The parser splits pages
+into chunks and can attach the parent headings to each chunk. Google has said in public that AI
+Mode splits one query into sub-queries (query fan-out). **Not confirmed:** that AI Mode uses the
+Vertex setup. Treat these items as good practice, and check them against Phase 6 data (Tier 9.7).
+Respect Tier 9.5: no new pages while indexing is poor. Add sections to existing `themen/` pages
+only.
+
+1. **Topic-specific template headings · CC.** **→ PR #109, pilot topics only.** `scripts/build-topic-pages.js` hard-codes generic
+   H2s on all 18 topic pages: "Die wichtigsten Regeln", "Beispiele", "Häufige Fragen",
+   "Verwandte Themen", "Weiterüben — alle Übungen zum Thema", and the widget fallback "Übung".
+   Prefix each with the topic label (e.g. "Passiv: die wichtigsten Regeln"). One builder change.
+2. **Generic section headings in `data/topics.json` · CC drafts, Shaun approves.** **→ PR #109, pilot topics only.** Most `sections[].h2`
+   values already name their topic. Fix the ones that don't, e.g. "Typische Fehler"
+   (past-perfect, simple-past, linking-words, present-tenses, modalverben), "Signalwörter"
+   (past-perfect, present-perfect, simple-past), "Kommaregel" (if-saetze). Target form:
+   "Typische Fehler beim Past Perfect".
+3. **Heading lint · CC.** **→ PR #109** (`scripts/check-topic-headings.js`, a post-build checker).** Add a check to `scripts/search-opportunities.js` (or `watchdog.js`)
+   that flags any H2/H3 that doesn't contain the topic label or one of its `aliases`. Runs in CI,
+   so new topics can't ship with generic headings.
+4. **Sub-query map per topic · CC drafts, Shaun approves.** **→ PR #109, `docs/topic-subquery-maps.md`, draft sections await approval.** Start with `gerund-infinitiv` and
+   `passiv`. List the likely sub-queries (form, which verbs, meaning change, German learners'
+   mistakes, practice) and check each has its own section. Both pages already cover most of
+   these (checked 2026-10-07); the map shows what is still missing. Each section opens
+   with a one-sentence direct answer and makes sense without the rest of the page (no "siehe
+   oben").
+5. **`dateModified` in topic schema · CC.** **→ PR #109, all 18 topics.** The `LearningResource` node in `jsonLd()` has no
+   `dateModified`. Take it from `data/lastmod.json` (already used for sitemap `<lastmod>`), so
+   it only changes when the content changes.
+6. **Heading rule in `eol-blog-writer` · Shaun (skill file).** Section headings must name the
+   topic, even inside a storytelling framework.
+7. **AI answer tracking · Shaun, monthly from 2026-11-06 (with Tier 9.7).** Pick 5–10 target
+   queries (e.g. "passiv englisch übungen", "gerund infinitive"). Log for each: AI Overview / AI
+   Mode shown?, our page cited?, which section, which sources win. Keep the log in
+   `docs/gsc-review-*.md` beside the Search Console numbers. Roll items 1–4 out to all topics only
+   after 4–6 weeks of data on the first two.
+
+## Tier 11 — AI Overview targeting (2026-10-07) · Shaun + CC
+Goal: get cited in the Google AI Overview for one buying-intent query, then repeat. Method: capture
+the AI Overview for 7+ days, count recurring claims, entities, formats and sources, study the
+most-cited pages, then build a page that covers the same ground and adds something new (own data,
+first-hand examples, better tables). Every WordPress write needs Shaun's OK and a live check (rule 7).
+
+1. **Capture source · Shaun decides. BLOCKER.** Ahrefs Brand Radar can return AI Overview text,
+   citations and dates, but every Ahrefs call failed on 2026-10-07, including the free account-info
+   call. Tier 8 recorded "Insufficient plan" on 2026-10-03. Brand Radar only covers queries Ahrefs
+   tracks (or a custom prompt report), and its refresh rate per query is not documented. Options:
+   (a) upgrade the Ahrefs plan and retest; (b) manual daily paste; (c) Make scenario + paid SERP API
+   (SerpApi or DataForSEO) writing to a Google Sheet.
+2. **Pick the query · Shaun.** Search each candidate on google.de and keep only those that show an
+   AI Overview. Unverified shortlist (no volume data):
+   - Business English Training für Unternehmen *(recommended first: corporate training is the only
+     live service)*
+   - Englischkurs für Mitarbeiter
+   - Business English Firmenschulung Berlin
+   - Englisch Abitur Vorbereitung Brandenburg
+   - MSA Englisch Prüfung üben
+   "englisch lernen" head terms stay out (see `gsc-review-2026-10-06.md` §6).
+3. **Build the `aio-reverse-engineer` skill · CC.** Modes: setup, daily capture, pattern analysis,
+   citation study, page brief + WordPress draft (via `eol-blog-writer`), post-publish tracking.
+   Log lives in a Google Sheet in Drive. Gated by item 1.
+4. **Track 7+ days, then analyse · CC.**
+5. **Build the page · CC drafts, Shaun approves.** Proposal: improve the existing team-training page
+   (`/business-english/`) rather than add a new page, in line with Tier 9 item 5 ("hold off on
+   adding many new pages"). Shaun to confirm.
+6. **Track after publishing · CC.** Re-capture the AI Overview weekly; record whether the page is
+   cited and which sources keep winning.
+
+## Tier 12 — Lessons from the "SEO with AI" course (2026-10-09) · Shaun + CC
+Source: a long X article by the ChatSEO founders (shared by Shaun 2026-10-09). It is a sales piece
+and one company's anecdote; Jacky's GEO numbers come from Links Garden, which sells link
+placements. Only items that are new, fit this site, or correct this file are listed. Respect
+Tier 9.5 (few new pages while indexing is poor) and rule 7 (Shaun approves every live WP write).
+
+### A. Rules (cheap, do first) · CC drafts, Shaun approves
+1. **Commercial-intent tag on every page brief.** Each new page or rewrite names the money page it
+   feeds: `/business-english/` (team training), a Payhip pack, or an Eduki listing. Before
+   writing, check the live top 3: blog posts and definition boxes = informational; service,
+   product or listing pages = commercial. Informational pages must link to one money page.
+2. **Fixed publishing rate.** At most 2 new indexable pages a week across both sites, every week,
+   no batches. Possible cause of the 145 "Discovered – currently not indexed" pages (Tier 8) and the
+   48 of 265 sitemap pages indexed (Tier 9.5): many pages added to a new subdomain in a short time
+   (hypothesis, not proven; publish dates not checked). The scheduled `daily-exercise-draft` run is
+   retired (2026-10-06), so the rate now depends on on-request drafting. Keep new exercises to 2 a
+   week; Shaun decides whether to publish extra ones as `noindex` until indexing improves.
+3. **60-day no-touch.** Pages edited 2026-10-05/06 (1061, 1167, 2032, 2038, 2039, 2066, 965) are
+   frozen until **2026-12-05**, except for factual errors. The 2026-11-06 re-pull (Tier 9.7) is
+   measure-only.
+4. **Diff gate on every rewrite.** Before Shaun approves a WP edit or a skill-built page, CC lists
+   every element in the old version that is missing from the new one: exercise links, tables,
+   forms, quizzes, schema, internal links, noindex state. First line says "nothing lost" or names
+   what is lost. Precedent: 1167 was noindexed around 2026-10-04 without Shaun asking, and its stub
+   dropped the old "Book a lesson" CTA; restored 2026-10-06 (Tier 9.2). Add to CLAUDE.md rule 7 and
+   to `eol-blog-writer`.
+5. **Delete veto.** CC never deletes, unpublishes, stubs or noindexes a page that has ≥ 600 words
+   or any click in the last 90 days without Shaun naming that page. Add to CLAUDE.md.
+6. **Diagnose before fixing a click drop.** Lost position → better page. Same position, lower CTR
+   → better title, or an AI Overview now sits above us (position 1–3 with falling clicks). Never the
+   same fix for both. Add to the Tier 9.7 measurement steps.
+
+### B. Fix what exists before adding · CC drafts, Shaun decides per page
+7. **Cut list (WordPress only).** Posts with zero clicks and < 50 impressions in 90 days, published
+   more than 3 months ago. For each: stub, merge, rewrite or keep (rule 5 applies). The activities
+   side is done (`data/noindex.json`, 62 entries).
+8. **Repoint pass.** For each WP post at positions 8–15: the query it was written for vs. the query
+   Search Console shows it for. Where they differ, draft new H1, meta description and first 100
+   words, and check the body answers that query. Simple past and past progressive are already
+   Tier 9.6. Pages under rule 3 wait.
+
+### C. The offer · Shaun decides
+9. **Self-qualify step on `/business-english/` (with Tier 11.5).** The article's "one thing the top
+   3 don't have": a face and a 3-question quiz. The trainer photo and client logos exist;
+   `business-needs-analysis.html` exists (noindex). Link or embed a short version on 1965 as the
+   page's original element.
+10. **Industry-vocabulary pattern.** Search Console proves one pattern: the property-management
+    PDF is the top-clicked URL, from many countries. Pattern: "[industry] English vocabulary" /
+    "English for [industry]", each page feeding `/business-english/`. Only industries with real
+    training material (property, commercial real estate, ESG, telecom/fibre, IT). Each variant
+    needs its own terms and examples; a find-and-replace page is doorway spam. One page every two
+    weeks at most (rule 2). Check volumes in Keyword Planner first (Ahrefs connector is broken).
+11. **Google Business Profiles: two old ones exist · Shaun.** (Confirmed by Shaun 2026-10-09.)
+    Google allows one profile per business; two for the same business compete and can be
+    suspended. Steps:
+    1. **Shaun checks both** (business.google.com): which account owns each, name, address,
+       category, reviews. Likely leftovers of "Learn English in Berlin" / Kranoldstrasse (not
+       verified).
+    2. **Keep the one with more reviews and history.** Update it: current name, Koloniestr. as on
+       the Impressum and schema (character for character; Shaun confirmed 2026-10-09 that the
+       Koloniestr. address is right), or service area with the address hidden, phone `+49 176 3130 4449`, website `/business-english/`.
+    3. **The other:** mark "permanently closed", or ask Google support to merge it if both sit at
+       the same address. Don't delete it before checking: deleting loses its reviews.
+    4. **Fill the kept profile:** 2–4 true categories (pick from Google's list only, never from
+       memory), 20+ services, 750-character description, real photos, a post now and then, and
+       ask clients for reviews that name the training done.
+    5. **Link it:** add the profile URL to `sameAs` in `scripts/schema.js` and the WP Organization
+       node (Tier 8 A2). CC.
+    Target: "Business English Training / Firmenschulung Englisch Berlin", and some of the lost
+    "english teacher berlin" demand (Tier 9.3).
+
+### D. Authority and GEO · Shaun + CC
+12. **Own-data asset.** The grader holds 2,624 graded gaps. "Die häufigsten Fehler deutscher
+    Schüler bei Gerund/Infinitiv und Passiv", aggregate counts only, as a section on the two pilot
+    `themen/` pages. Nobody can copy it; writers and AI answers can cite it. **Gate:** school OK and
+    a DSGVO check (Docemus pupils' work; aggregates only, no names, no small groups). Shaun.
+13. **Unlinked mentions and old-domain links.** Search for "englishonline.training",
+    "learnenglishinberlin" and "Shaun Trezise" mentions without a link; ask each once. Check that
+    backlinks to the old LEB domains land on live pages after the redirect, not on 404s.
+14. **Honest roundup, then list requests.** One WP page "Kostenlose Englisch-Übungen online:
+    Seiten im Vergleich (2026)" with competitors (Lingolia, ego4u, englisch-hilfen, …) placed on
+    merit, **not us first** (self-ranked lists no longer get cited). Refresh yearly with the year in
+    the title. Then third-party lists that rank top 20, were updated in the last 12 months and
+    already include a competitor: one personal note each, no sequences, no sending tools, no
+    lookalike domains (UWG §7, see the 2026-08-29 decision; not legal advice).
+15. **GEO query list (folds into Tier 10.7).** From the money queries, add "beste <query> 2026",
+    "<query> Erfahrungen" and "englishonline.training Erfahrungen" to the monthly log. For each:
+    which pages rank, which are lists, are we in them. Check by hand, logged out (API answers
+    differ from the web app).
+16. **Video layer · Shaun.** The script-to-video pipeline exists. One YouTube video per pilot
+    topic (gerund/infinitive, passive): 200+ word description, the query answered in the first two
+    lines, link to the `themen/` page; 3 Shorts each, reused on TikTok with search-style captions.
+    Shaun decides on time, voice/face, and suitability for a school-age audience.
+
+### Not adopted (with reasons)
+- **ChatSEO subscription:** Search Console + Ahrefs cover the data; fix the Ahrefs connector.
+- **Paid links, PBN placements, "€10 citations":** against Google's link spam policy; the source
+  sells them.
+- **Cold-email outreach machine (Instantly, lookalike domain, 5–10 a day):** UWG §7; rejected
+  2026-08-29.
+- **More `llms.txt` work:** Google says AI features need no special files; the activities file
+  exists, leave it.
+- **Reddit as a channel:** citation share is falling fast and the school audience is not there.
+  Disclosed answers on r/EnglishLearning only if a thread already ranks on a target query.
+- **Company-size pages, link swaps at scale.**
 
 ## Open decisions gating the plan
 **All six items from the 2026-08-07 audit reconciliation are now resolved and executed** (Shaun
@@ -1160,7 +1383,7 @@ Year 9 and Year 10 Gymnasium counts were set to 23, 16 and 28 for the pages on `
 (2367, 2368, 2374–2377, 2379, 2489) were corrected and the AFB post (2489) was retitled and published. Skill
 `fact-check-blogs` was written (`~/.claude/skills/`, outside this repo).
 
-14. **Port the stranded 10g work to a fresh worktree.** The old `vocab-games/` clone still holds 18 modified and 7
+14. **DONE (`15086b1`, 2026-10-07; checked 2026-10-08).** The two 10G pages and the `10g-review` rewrite are on `main`; the old clone is clean; WP 1763 shows Year 10 Gymnasium 30, matching `data/wordpress-1763.json`. **Port the stranded 10g work to a fresh worktree.** The old `vocab-games/` clone still holds 18 modified and 7
     untracked files (three new `10g-*` pages with answer keys, hub cards, `explanations.json`, `page-faq.js`,
     `topic-pool.json`, a `10g-review.html` rewrite) and was 66 commits behind `origin/main` on 2026-10-06.
     Apply it to a worktree of `origin/main`, **regenerate `sitemap.xml` and `data/lastmod.json` with the build
@@ -1168,7 +1391,7 @@ Year 9 and Year 10 Gymnasium counts were set to 23, 16 and 28 for the pages on `
     Year 10 Gymnasium count should become 30 (`data/wordpress-1763.json`), applied through the API with
     `context: "edit"`, changing only the number. CC; needs Shaun's OK before the push.
 
-15. **Finish the fact-check of the Abitur material.** Not yet verified:
+15. **→ PR #112 (2026-10-08).** Berlin make-up date (20 May) and the IQB wording fixed; AMA confirmed via trade press only (primary blocked); no primary AFB mapping exists; texts have no hard historical claims. Open points are in the PR. **Finish the fact-check of the Abitur material.** Not yet verified:
     - Historical and political background claims in the Aims, Nations and Media pack texts (only the statistics were checked).
     - Whether the IQB link really supports the "Themenfelder" wording on `abitur-englisch-2027.html`.
     - Berlin's make-up date for English (Brandenburg's is 19 May 2027; the page gives only that one).
@@ -1183,7 +1406,7 @@ Year 9 and Year 10 Gymnasium counts were set to 23, 16 and 28 for the pages on `
     teens report). The Economist/YouGov poll (Sept 2026) is labelled "recent". Decide whether to update to the
     newest editions and set a yearly review date. CC, low priority.
 
-17. **`scripts/verify-exercise.js` fails the Abitur packs (3 of 6 checks).** On `abitur-text-analysis-aims-ambitions.html` it
+17. **→ PR #110 (2026-10-08).** Confirmed a template mismatch; packs now get their own four checks and the CI gate covers them. **`scripts/verify-exercise.js` fails the Abitur packs (3 of 6 checks).** On `abitur-text-analysis-aims-ambitions.html` it
     reports no `TOTAL_STEPS`, no `state` literal and no `SHEET_URL`. The packs use a different template, so this is
     most likely a script/template mismatch, not broken packs. Confirm, then either teach the script about packs or
     exclude `abitur-*` from the pre-publish gate. CC.
@@ -1196,7 +1419,7 @@ Year 9 and Year 10 Gymnasium counts were set to 23, 16 and 28 for the pages on `
     - After each scheduled post goes live (7–16 Oct), spot-check the public page, and check whether Jetpack Social
       auto-shared the AFB post (2489) and the others.
 
-19. **Housekeeping · CC.** Remove the worktree `vg-abitur-2027` and branch `claude/abitur-englisch-2027` (merged).
+19. **Worktree and branch: already gone (checked 2026-10-08).** Memory notes not written. **Housekeeping · CC.** Remove the worktree `vg-abitur-2027` and branch `claude/abitur-englisch-2027` (merged).
     Save memory notes: the fact-check skill and its lessons, and that the MailerLite form behind "Get in touch" is intended.
 
 20. **Test the `fact-check-blogs` skill.** Written 2026-10-06 and used once on live work, never run through the
@@ -1205,3 +1428,33 @@ Year 9 and Year 10 Gymnasium counts were set to 23, 16 and 28 for the pages on `
 
 *Decided not to do:* a fact-check of the ~20 older WordPress drafts (2014–2023, mostly curated links, quizzes and US-focused
 guest posts). Shaun, 2026-10-06.
+
+### Overnight pass 2026-10-08 · CC
+Worked from this file without Shaun. Every change is a PR; nothing pushed to `main`, nothing
+written to WordPress.
+- **#109:** Tier 10 items 1–3 and 5 (headings on the two pilot topics, heading check, topic
+  `dateModified`), plus the item 4 draft.
+- **#110:** item 17 (`verify-exercise.js` and the Abitur packs).
+- **#111:** the 9G hub description said 23 tasks with 24 on the hub (a build warning).
+- **#112:** item 15 (Abitur 2027 page fact-check).
+- **Tier 9.5, checked:**
+  - The sitemap review for "pages nobody searches for" is already done: every review and test
+    page is in `data/noindex.json` (62 entries). What's left (quizzes, level test, two revision
+    pages) gets searched.
+  - The WordPress → activities link check is in `docs/wp-activities-links-draft.md`: 2032,
+    2038, 2039 and 965 have no activities link. Drafts are there for approval.
+- **Not done, needs Shaun:**
+  - Tier 9.4 (ESG and commercial real estate PDF pages): 3 and 71 impressions, Tier 9.5 says
+    no new pages for now, and reading the PDFs means downloading them.
+  - Item 16 (newer statistics editions): a decision, not a fix. What the newer editions say, from
+    search results only (primary pages not read, so check before using):
+    - **Pew, *Teens, Social Media and Technology 2024*** (survey Sept–Oct 2024, 1,391 teens):
+      46% online "almost constantly"; TikTok 16% (the 2023 edition the media pack cites: 17%).
+      The pack's "nearly half" still holds.
+    - **Gallup, *State of the Global Workplace 2025***: 50% of US/Canada employees had a lot of
+      stress the previous day (the aims pack cites 52%, from 2023). A 2026 edition URL also exists.
+    - Updating means changing the figure, the year and the source line in each pack that uses it.
+  - Item 20 (skill test loop): not attempted.
+- **Stale, fixed in passing:** Tier 3.6. All five missing topics now have pages (18 in
+  `data/topics.json`). `hubs-seo-and-tests.md` still said 1763 links "all 11 topic pages".
+  It links 10 chips plus the `themen/` index; corrected.

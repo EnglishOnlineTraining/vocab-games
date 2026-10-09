@@ -8,12 +8,27 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 const S = require('./schema');
+const { pageHash, datesFor } = require('./page-hash');
 const BYLINE = 'Geschrieben und unterrichtet von <a href="https://englishonline.training/about/">Shaun Trezise</a> — TEFL-zertifizierter Englischlehrer in Berlin, 10+ Jahre Erfahrung.';
 const ROOT = path.join(__dirname, '..');
 const BASE = 'https://activities.englishonline.training';
 
 const topics = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'topics.json'), 'utf8'));
 const exercises = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'exercises.json'), 'utf8'));
+// Read, never written here: build-lastmod.js owns the store and runs last.
+// datesFor() gives the answer it will store, so the JSON-LD and the sitemap agree.
+const LASTMOD = (() => {
+  try { return JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'lastmod.json'), 'utf8')); }
+  catch (err) { return {}; }
+})();
+
+// Topics whose template H2s name the topic ("Passiv: Beispiele"); see that file.
+const TOPIC_HEADINGS = require('./topic-headings');
+
+// `named` on a pilot topic, `generic` everywhere else.
+function topicHeading(t, generic, named) {
+  return TOPIC_HEADINGS.has(t.slug) ? t.de.replace(/ \(.*/, '') + ': ' + named : generic;
+}
 
 function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
 
@@ -24,12 +39,12 @@ function exercisesForTopic(slug) {
   return exercises.filter(e => (e.topics || []).indexOf(slug) !== -1);
 }
 
-function weiterUebenHtml(slug) {
-  const list = exercisesForTopic(slug);
+function weiterUebenHtml(t) {
+  const list = exercisesForTopic(t.slug);
   if (!list.length) return '';
   const byYear = {};
   list.forEach(e => { (byYear[e.year] = byYear[e.year] || []).push(e); });
-  let html = '<section class="card"><h2>Weiterüben — alle Übungen zum Thema</h2>';
+  let html = '<section class="card"><h2>' + esc(topicHeading(t, 'Weiterüben — alle Übungen zum Thema', 'alle Übungen zum Weiterüben')) + '</h2>';
   YEAR_ORDER.forEach(y => {
     const items = byYear[y];
     if (!items) return;
@@ -87,7 +102,7 @@ function practiceHtml(t) {
   let html = '';
   groups.forEach(g => {
     if (!g.items || !g.items.length) return;
-    html += '<section class="card pw-widget"><h2>' + esc(g.title || 'Übung') + '</h2>'
+    html += '<section class="card pw-widget"><h2>' + esc(g.title || topicHeading(t, 'Übung', 'Übung')) + '</h2>'
       + '<p class="pw-intro">' + (g.intro || 'Wähle für jede Lücke die richtige Form und klicke auf <em>Prüfen</em>.') + '</p>'
       + practiceItemsHtml(g.items)
       + '<button type="button" class="btn" onclick="pwCheck(this)">Prüfen</button>'
@@ -124,7 +139,7 @@ function relatedSlugs(t) {
 function relatedHtml(t) {
   const rel = relatedSlugs(t).map(s => topics.find(x => x.slug === s)).filter(Boolean);
   if (!rel.length) return '';
-  let html = '<section class="card"><h2>Verwandte Themen</h2><ul class="rel-list">';
+  let html = '<section class="card"><h2>' + esc(topicHeading(t, 'Verwandte Themen', 'verwandte Themen')) + '</h2><ul class="rel-list">';
   rel.forEach(r => { html += '<li><a href="' + esc(r.slug) + '.html">' + esc(r.de) + '</a></li>'; });
   html += '</ul></section>';
   return html;
@@ -140,12 +155,12 @@ function contentHtml(t) {
   let html = '';
   if (t.intro) html += '<section class="card"><h2>' + esc(t.introH2 || (t.de.replace(/ \(.*/, '') + ' – kurz erklärt')) + '</h2><p>' + t.intro + '</p></section>';
   if (t.rules && t.rules.length) {
-    html += '<section class="card rules-box"><h2>Die wichtigsten Regeln</h2><ul class="rules">';
+    html += '<section class="card rules-box"><h2>' + esc(topicHeading(t, 'Die wichtigsten Regeln', 'die wichtigsten Regeln')) + '</h2><ul class="rules">';
     t.rules.forEach(r => html += '<li>' + r + '</li>');
     html += '</ul></section>';
   }
   if (t.examples && t.examples.length) {
-    html += '<section class="card"><h2>Beispiele</h2><ul class="examples">';
+    html += '<section class="card"><h2>' + esc(topicHeading(t, 'Beispiele', 'Beispiele')) + '</h2><ul class="examples">';
     t.examples.forEach(e => html += '<li>' + e + '</li>');
     html += '</ul></section>';
   }
@@ -167,7 +182,7 @@ function contentHtml(t) {
 
 function faqHtml(t) {
   if (!t.faq || !t.faq.length) return '';
-  let html = '<section class="card faq-box"><h2>Häufige Fragen</h2><dl class="faq">';
+  let html = '<section class="card faq-box"><h2>' + esc(topicHeading(t, 'Häufige Fragen', 'häufige Fragen')) + '</h2><dl class="faq">';
   t.faq.forEach(f => {
     html += '<dt>' + esc(f.q) + '</dt><dd>' + f.a + '</dd>';
   });
@@ -230,7 +245,7 @@ function topicSubLabel(t) {
  * scripts/schema.js so these pages hang off the same Person and Organization as
  * the rest of the site rather than naming a second, unconnected organisation.
  */
-function jsonLd(t, url) {
+function jsonLd(t, url, dates) {
   const obj = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -253,10 +268,16 @@ function jsonLd(t, url) {
       },
     ],
   };
-  return '<script type="application/ld+json">' + JSON.stringify(obj) + '</script>';
+  // From data/lastmod.json via page-hash.js: the same dates the sitemap carries.
+  const node = obj['@graph'][2];
+  if (dates && dates.p) node.datePublished = dates.p;
+  if (dates && dates.d) node.dateModified = dates.d;
+  // Marked so page-hash.js leaves it out of the hash: a hash that covered the
+  // date would change every time the date did.
+  return '<!-- TOPICLD:START -->\n<script type="application/ld+json">' + JSON.stringify(obj) + '</script>\n<!-- TOPICLD:END -->';
 }
 
-function pageHtml(t) {
+function pageHtml(t, dates) {
   const url = BASE + '/themen/' + t.slug + '.html';
   const h1 = topicLabel(t) + ' — Erklärung und kostenlose Übungen';
   const count = exercisesForTopic(t.slug).length;
@@ -265,18 +286,17 @@ function pageHtml(t) {
     + '<title>' + esc(topicTitle(t)) + '</title>\n'
     + '<meta name="description" content="' + esc(t.metaDescription || '') + '">\n'
     + '<link rel="canonical" href="' + url + '">\n'
-    + '<meta property="og:type" content="article">\n'
-    + '<meta property="og:title" content="' + esc(topicLabel(t)) + ' — Übungen & Erklärung">\n'
-    + '<meta property="og:description" content="' + esc(t.metaDescription || '') + '">\n'
-    + '<meta property="og:url" content="' + url + '">\n'
-    + '<meta property="og:locale" content="de_DE">\n'
-    + jsonLd(t, url) + '\n'
+    // No og: tags here: build-head.js deletes them and writes its own set from
+    // <title>, the description and the canonical. Leaving them out also keeps
+    // this render identical to the finished page outside the generated blocks,
+    // which is what lets the date below be computed before build-head runs.
+    + jsonLd(t, url, dates) + '\n'
     + faqJsonLd(t)
     + '<link rel="stylesheet" href="themen.css">\n</head>\n<body>\n'
     + '<header class="th-header"><div class="th-inner">'
     + '<a class="th-logo" href="https://englishonline.training">englishonline.training</a>'
     + '<a class="th-back" href="../activities.html">Alle Übungen →</a></div></header>\n'
-    + '<main class="wrap">\n'
+    + '<main id="main" class="wrap">\n'
     + '<nav class="crumbs"><a href="../activities.html">Übungen</a> › <span>Grammatik</span> › ' + esc(t.de) + '</nav>\n'
     + '<h1>' + esc(h1) + '</h1>\n'
     + '<p class="lede">Erklärung, Beispiele und <strong>' + count + ' kostenlose Übungen</strong> zum Thema '
@@ -284,7 +304,7 @@ function pageHtml(t) {
     + contentHtml(t)
     + practiceHtml(t)
     + faqHtml(t)
-    + weiterUebenHtml(t.slug)
+    + weiterUebenHtml(t)
     + relatedHtml(t)
     + '<footer class="th-footer">© EnglishOnline.Training · '
     + '<a href="https://englishonline.training/impressum/">Impressum</a> · '
@@ -356,7 +376,15 @@ const outDir = path.join(ROOT, 'themen');
 fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(path.join(outDir, 'themen.css'), THEMEN_CSS);
 let written = 0;
-topics.forEach(t => { fs.writeFileSync(path.join(outDir, t.slug + '.html'), pageHtml(t)); written++; });
+topics.forEach(t => {
+  // The hash ignores the dated JSON-LD block, so hash a dateless render first.
+  // build-head.js adds only blocks page-hash.js strips, so this is the hash
+  // build-lastmod.js will take of the finished file.
+  const rel = 'themen/' + t.slug + '.html';
+  const dates = datesFor(LASTMOD[rel], pageHash(pageHtml(t, null)));
+  fs.writeFileSync(path.join(outDir, t.slug + '.html'), pageHtml(t, dates));
+  written++;
+});
 
 // ---- topic index page (themen/index.html) ----
 

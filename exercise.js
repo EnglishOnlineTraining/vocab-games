@@ -14,6 +14,13 @@ function isTestMode() {
   return window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 }
 
+/* Stop browser auto-translate on English pages. Chrome has misread short
+   dropdown options as Czech and "translated" let → years; options carry no
+   value attribute, so the translated text was also what got marked. */
+if (document.documentElement && /^en\b/i.test(document.documentElement.lang)) {
+  document.documentElement.setAttribute('translate', 'no');
+}
+
 /* ============================================================
    PRACTISE-ONLY MODE (no submission)
    A public visitor can do any exercise without entering a name.
@@ -832,24 +839,41 @@ function lookupGrade(earned, possible) {
 }
 
 /*
- * MSA (Mittlerer Schulabschluss) grading — 2018 Berlin/Brandenburg
- * Bewertungstabelle. The written exam is out of 75 points; a page's
- * auto-graded points are scaled onto that 75-point scale, then the Note
- * (1–6) is read off the official thresholds. Pages opt in with
+ * MSA (Mittlerer Schulabschluss) grading. Pages opt in with
  * `var GRADE_SYSTEM = 'msa';` — everything else keeps the classroom table.
+ * The two states no longer share a table, so the score card shows both:
+ *
+ * - Brandenburg (P10, since 2025/26): the Sek I key of the VV-Leistungsbewertung
+ *   Nr. 6 (3) — Note 1 ab 96 %, 2 ab 80 %, 3 ab 60 %, 4 ab 45 %, 5 ab 16 %
+ *   (Fachbrief Englisch Nr. 10). This is the main grade: lookupMsaGrade feeds
+ *   the score card, the submission payload and the email.
+ * - Berlin (MSA): the 75-point Bewertungstabelle Englisch — Note 1 ab 70,
+ *   2 ab 63, 3 ab 55, 4 ab 45, 5 ab 23. A page's points are scaled onto 75.
  */
-var MSA_MAX_POINTS = 75;
-var MSA_GRADE_THRESHOLDS = [70, 63, 55, 45, 23];   // min points (of 75) for Note 1,2,3,4,5; below 23 → Note 6
 var MSA_GRADE_LABELS = ['Sehr gut', 'Gut', 'Befriedigend', 'Ausreichend', 'Mangelhaft', 'Ungenügend'];
+var MSA_BB_THRESHOLDS = [96, 80, 60, 45, 16];       // min percent for Note 1,2,3,4,5; below 16 % → Note 6
+var MSA_BE_MAX_POINTS = 75;
+var MSA_BE_THRESHOLDS = [70, 63, 55, 45, 23];       // min points (of 75) for Note 1,2,3,4,5; below 23 → Note 6
 
-function lookupMsaGrade(earned, possible) {
-  if (!possible) return null;
-  var pts = Math.round((earned / possible) * MSA_MAX_POINTS);
-  pts = Math.max(0, Math.min(MSA_MAX_POINTS, pts));
-  for (var i = 0; i < MSA_GRADE_THRESHOLDS.length; i++) {
-    if (pts >= MSA_GRADE_THRESHOLDS[i]) return { note: i + 1, label: MSA_GRADE_LABELS[i] };
+function msaNote(value, thresholds) {
+  for (var i = 0; i < thresholds.length; i++) {
+    if (value >= thresholds[i]) return { note: i + 1, label: MSA_GRADE_LABELS[i] };
   }
   return { note: 6, label: MSA_GRADE_LABELS[5] };
+}
+
+// Brandenburg — the main MSA grade.
+function lookupMsaGrade(earned, possible) {
+  if (!possible) return null;
+  // Rounded to 0.01 % so 48/50 is exactly 96, not 95.999…
+  var pct = Math.round((earned / possible) * 10000) / 100;
+  return msaNote(Math.max(0, Math.min(100, pct)), MSA_BB_THRESHOLDS);
+}
+
+function lookupMsaGradeBerlin(earned, possible) {
+  if (!possible) return null;
+  var pts = Math.round((earned / possible) * MSA_BE_MAX_POINTS);
+  return msaNote(Math.max(0, Math.min(MSA_BE_MAX_POINTS, pts)), MSA_BE_THRESHOLDS);
 }
 
 /* Pick the grade table the current page asked for (MSA vs classroom). */
@@ -869,11 +893,20 @@ function renderScore() {
   var sc = totalScore();
   if (!sc.possible) { box.style.display = 'none'; return; }
   var grade = currentGradeLookup(sc.earned, sc.possible);
+  var isMsa = typeof GRADE_SYSTEM !== 'undefined' && GRADE_SYSTEM === 'msa';
+  var gradeHtml = '';
+  if (grade && isMsa) {
+    var be = lookupMsaGradeBerlin(sc.earned, sc.possible);
+    gradeHtml = '<div style="font-size:1rem;color:var(--blue);margin-top:.2rem">Brandenburg: Note ' + grade.note + ' (' + grade.label + ')'
+      + ' · Berlin: Note ' + be.note + ' (' + be.label + ')</div>';
+  } else if (grade) {
+    gradeHtml = '<div style="font-size:1rem;color:var(--blue);margin-top:.2rem">Note ' + grade.note + ' (' + grade.label + ')</div>';
+  }
   box.style.display = 'block';
   box.innerHTML = '<div class="card" style="text-align:center;background:var(--gold-lt);border:1.5px solid var(--gold)">'
     + '<div style="font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--blue);font-weight:700;margin-bottom:.3rem">Your score (auto-graded sections)</div>'
     + '<div style="font-size:1.5rem;font-weight:800;color:var(--blue)">' + fmtPts(sc.earned) + ' / ' + sc.possible + ' points</div>'
-    + (grade ? '<div style="font-size:1rem;color:var(--blue);margin-top:.2rem">Note ' + grade.note + ' (' + grade.label + ')</div>' : '')
+    + gradeHtml
     + '<div style="font-size:.78rem;color:var(--muted);margin-top:.4rem">Each gap scores 1 point if you get it right first time, ½ on the second try and ¼ on the third — so it pays to check carefully. This score is also sent to your teacher. Open-ended writing answers are graded by your teacher separately.</div>'
     + '</div>';
 }

@@ -31,6 +31,21 @@
     "blurb": "Schools in Canada · Modal Verbs: must and have to · Giving Advice — should and shouldn't · Writing: Dear Toronto …"
   },
   {
+    "file": "10c-canada-sport-hobbies.html",
+    "title": "Sport and Free Time in Canada",
+    "year": 10,
+    "schoolType": "oberschule",
+    "lang": "en",
+    "topics": [
+      "present-tenses"
+    ],
+    "skills": [
+      "grammar",
+      "writing"
+    ],
+    "blurb": "A Country Made for Sport · Present Simple or Present Continuous? · Verbs That Describe States · Writing: Dear Jordan …"
+  },
+  {
     "file": "10c-discover-canada.html",
     "title": "Discover Canada",
     "year": 10,
@@ -220,6 +235,32 @@
       "writing"
     ],
     "blurb": "Stereotypes & Cultural Awareness – Reading · Passive Voice – Stereotypes & Prejudice · If-Clauses Type III – What Could Have Been Different? · Writing – Challenging Stereotypes"
+  },
+  {
+    "file": "10g-apartheid-history.html",
+    "title": "From Apartheid to Democracy: Past Tenses",
+    "year": 10,
+    "schoolType": "gymnasium",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "reading",
+      "writing"
+    ],
+    "blurb": "Reading: One Family’s Road to Democracy · The Narrative Past · Timeline Markers · Writing: A Museum Caption"
+  },
+  {
+    "file": "10g-arguing-convincingly.html",
+    "title": "Who Made Your Jeans? Arguing Convincingly",
+    "year": 10,
+    "schoolType": "gymnasium",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "reading",
+      "writing"
+    ],
+    "blurb": "Reading: Who Made Your Jeans? · Persuasive Techniques · Signposting: Moving a Speech Forward · Writing: Your Debate Speech"
   },
   {
     "file": "10g-black-roots-pop.html",
@@ -1555,6 +1596,21 @@
     "blurb": "Living in Australia: Town and country · Rules for Australia’s national parks · Snake safety in Australia · A message from Jim · What’s in the news?"
   },
   {
+    "file": "9g-australia-two-objects-passive.html",
+    "title": "Australia: Rights Recognised — Passive with Two Objects",
+    "year": 9,
+    "schoolType": "gymnasium",
+    "lang": "en",
+    "topics": [
+      "passiv"
+    ],
+    "skills": [
+      "grammar",
+      "writing"
+    ],
+    "blurb": "A Story of Change · The Right Passive · Turn It Round · Writing: A Moment of Change"
+  },
+  {
     "file": "9g-australia-vocab-practice.html",
     "title": "G'day Australia! — Unit 1 Vocabulary Practice",
     "year": 9,
@@ -1652,6 +1708,18 @@
       "grammar"
     ],
     "blurb": "The story: “Famous” · Two words, same meaning? · Jamie’s dilemma & the price of fame · Hollywood Dream Factory · Welcome to the studios! · Talking about future plans"
+  },
+  {
+    "file": "9g-first-contact-sydney-cove.html",
+    "title": "First Contact at Sydney Cove – 9g",
+    "year": 9,
+    "schoolType": "gymnasium",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "grammar"
+    ],
+    "blurb": "Watch the film and take notes · “Both men were terribly wrong.” · Can you trust a re-enactment?"
   },
   {
     "file": "9g-great-barrier-reef.html",
@@ -3104,6 +3172,19 @@
   {
     "file": "abitur-text-analysis-aims-ambitions.html",
     "title": "Text Analysis: Aims and Ambitions",
+    "year": "abitur",
+    "schoolType": "gymnasium",
+    "lang": "de",
+    "topics": [],
+    "skills": [
+      "reading",
+      "writing"
+    ],
+    "blurb": "Text analysis"
+  },
+  {
+    "file": "abitur-text-analysis-gandhi-south-africa.html",
+    "title": "Text Analysis: Gandhi in South Africa",
     "year": "abitur",
     "schoolType": "gymnasium",
     "lang": "de",

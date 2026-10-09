@@ -11,7 +11,14 @@ Status key: **Open** (worth doing, not started) · **Already done** (skip) · **
 
 ## Open
 
-Nothing. Every item filed here is either done (below) or rejected.
+- **SEO — split `sitemap.xml` into child sitemaps per section.** *Low priority* (Shaun,
+  2026-10-07). Today one flat `sitemap.xml` (234 URLs), written by `scripts/build.js`, is
+  submitted to GSC. Proposed: a sitemap index plus children, e.g. school (`7*`–`10*`, `msa-c-`,
+  `abitur-`, class hubs), adult (`be-`, `uni-`, `it-`), ESL grammar, and German (`themen/`,
+  `gr-*`). Point `robots.txt` at the index. Then submit each child in GSC by hand (Shaun), and
+  use "Submitted pages only" to see indexing per section. Why it may matter: the 2026-10-06 GSC
+  review (`docs/gsc-review-2026-10-06.md`) shows only 48 of 265 sitemap pages indexed, with no
+  per-section view.
 
 ## Rejected — don't re-add
 

@@ -39,6 +39,8 @@ jobs:
       # The pre-publish gate: a page this PR ADDS gets the per-page checks the
       # drafting skills run by hand (verify-exercise.js — TOTAL_STEPS, scoreKey,
       # UNIT, state.scores, leftover TODOs, and the webhook its prefix routes to).
+      # Abitur packs get the subset that applies to their template (TODOs, UNIT,
+      # the Abitur webhook, the public teacher email).
       # Added pages only: many legacy pages predate these conventions.
       - name: Verify exercise pages added by this PR
         if: github.event_name == 'pull_request'
@@ -48,7 +50,8 @@ jobs:
           fail=0
           for f in $(git diff --name-only --diff-filter=A "origin/$BASE...HEAD" -- '*.html'); do
             case "$f" in */*|_*) continue ;; esac
-            grep -q 'exercise\.js' "$f" || continue
+            # Framework pages, plus Abitur packs (own template, WEBHOOK_URL).
+            grep -q -e 'exercise\.js' -e 'var WEBHOOK_URL' "$f" || continue
             node scripts/verify-exercise.js "$f" || fail=1
           done
           exit $fail

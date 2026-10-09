@@ -111,7 +111,10 @@ const NODES = [
     // between the two: running them in sequence was a comment's idea, not a
     // dependency.
     needs: ['exercise-data'],
-    inputs: ['data/exercises.json', 'data/topics.json', 'data/noindex.json'],
+    // data/lastmod.json is read for the JSON-LD dates, the same way `head`
+    // reads it: the committed store, with page-hash.js giving the answer
+    // `lastmod` will store. The dated block is left out of the hash.
+    inputs: ['data/exercises.json', 'data/topics.json', 'data/noindex.json', 'data/lastmod.json'],
     outputs: ['themen/*.html', 'themen/themen.css', 'sitemap.xml', 'robots.txt'],
   },
   {
@@ -229,6 +232,9 @@ const CHECKERS = [
   { id: 'check-syntax', run: 'scripts/check-syntax.js' },
   { id: 'check-undefined-calls', run: 'scripts/check-undefined-calls.js' },
   { id: 'check-select-labels', run: 'scripts/check-select-labels.js' },
+  // Tier 10 pilot: every H2/H3 on the topics in topic-headings.js names the
+  // topic, so a chunk AI search lifts out of the page still says what it is.
+  { id: 'check-topic-headings', run: 'scripts/check-topic-headings.js' },
   { id: 'check-links', run: 'scripts/check-links.js' },
   { id: 'check-grade-table', run: 'scripts/check-grade-table.js' },
   // A vocab test must not print a word it also asks the student to produce.

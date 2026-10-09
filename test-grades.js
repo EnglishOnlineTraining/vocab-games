@@ -4,7 +4,7 @@
  *
  * test-scoring.js covers the attempt ladder (1 / ½ / ¼). Nothing covered the
  * step after it: turning points into a Note. A student's Note comes straight
- * off GRADE_TABLE / MSA_GRADE_THRESHOLDS, so an off-by-one there is a wrong
+ * off GRADE_TABLE / MSA_BB_THRESHOLDS / MSA_BE_THRESHOLDS, so an off-by-one there is a wrong
  * grade on every page at once. check-grade-table.js keeps the self-contained
  * test pages in sync with exercise.js; this file checks exercise.js itself.
  */
@@ -97,25 +97,48 @@ test('lookupGrade: out-of-range points are clamped', () => {
   assert.strictEqual(E.lookupGrade(-3, 50).note, 5);
 });
 
-test('lookupMsaGrade: thresholds on the 75-point scale', () => {
+test('lookupMsaGrade: Brandenburg VV-Leistungsbewertung percentages', () => {
   assert.strictEqual(E.lookupMsaGrade(0, 0), null);
-  const cases = [[75, 1], [70, 1], [69, 2], [63, 2], [62, 3], [55, 3], [54, 4], [45, 4], [44, 5], [23, 5], [22, 6], [0, 6]];
+  // Out of 100, so points = percent: Note 1 ab 96, 2 ab 80, 3 ab 60, 4 ab 45, 5 ab 16.
+  const cases = [[100, 1], [96, 1], [95, 2], [80, 2], [79, 3], [60, 3], [59, 4], [45, 4], [44, 5], [16, 5], [15, 6], [0, 6]];
   for (const [pts, note] of cases) {
-    assert.strictEqual(E.lookupMsaGrade(pts, 75).note, note, `${pts}/75 should be MSA Note ${note}`);
+    assert.strictEqual(E.lookupMsaGrade(pts, 100).note, note, `${pts}% should be Brandenburg Note ${note}`);
   }
-  assert.strictEqual(E.lookupMsaGrade(0, 75).label, 'Ungenügend');
-  assert.strictEqual(E.lookupMsaGrade(45, 75).label, 'Ausreichend');
+  assert.strictEqual(E.lookupMsaGrade(0, 100).label, 'Ungenügend');
+  assert.strictEqual(E.lookupMsaGrade(45, 100).label, 'Ausreichend');
 });
 
-test('lookupMsaGrade: page points are scaled to 75 and rounded', () => {
+test('lookupMsaGrade: exact boundaries survive floating point', () => {
+  assert.strictEqual(E.lookupMsaGrade(48, 50).note, 1);     // 96 %
+  assert.strictEqual(E.lookupMsaGrade(47.75, 50).note, 2);  // 95.5 %
+  assert.strictEqual(E.lookupMsaGrade(18, 40).note, 4);     // 45 %
+  assert.strictEqual(E.lookupMsaGrade(60, 50).note, 1);     // clamped
+});
+
+test('lookupMsaGradeBerlin: thresholds on the 75-point scale', () => {
+  assert.strictEqual(E.lookupMsaGradeBerlin(0, 0), null);
+  const cases = [[75, 1], [70, 1], [69, 2], [63, 2], [62, 3], [55, 3], [54, 4], [45, 4], [44, 5], [23, 5], [22, 6], [0, 6]];
+  for (const [pts, note] of cases) {
+    assert.strictEqual(E.lookupMsaGradeBerlin(pts, 75).note, note, `${pts}/75 should be Berlin Note ${note}`);
+  }
+});
+
+test('lookupMsaGradeBerlin: page points are scaled to 75 and rounded', () => {
   // 28/30 -> 70 -> Note 1; 27.5/30 -> 68.75 -> 69 -> Note 2.
-  assert.strictEqual(E.lookupMsaGrade(28, 30).note, 1);
-  assert.strictEqual(E.lookupMsaGrade(27.5, 30).note, 2);
-  assert.strictEqual(E.lookupMsaGrade(40, 30).note, 1);   // clamped
+  assert.strictEqual(E.lookupMsaGradeBerlin(28, 30).note, 1);
+  assert.strictEqual(E.lookupMsaGradeBerlin(27.5, 30).note, 2);
+  assert.strictEqual(E.lookupMsaGradeBerlin(40, 30).note, 1);   // clamped
+});
+
+test('MSA: the two states differ where they should', () => {
+  // 70/75 = 93.3 %: Berlin Note 1, Brandenburg Note 2. 34/75 = 45.3 %: Berlin 5, Brandenburg 4.
+  assert.strictEqual(E.lookupMsaGradeBerlin(70, 75).note, 1);
+  assert.strictEqual(E.lookupMsaGrade(70, 75).note, 2);
+  assert.strictEqual(E.lookupMsaGradeBerlin(34, 75).note, 5);
+  assert.strictEqual(E.lookupMsaGrade(34, 75).note, 4);
 });
 
 test('currentGradeLookup: MSA only when the page opts in', () => {
-  // 45/75 is Note 4 on the MSA table but Note 5 on the classroom 75 row.
   assert.deepStrictEqual(E.currentGradeLookup(45, 75), E.lookupGrade(45, 75));
   const msa = load("var GRADE_SYSTEM = 'msa';");
   assert.deepStrictEqual(msa.currentGradeLookup(45, 75), msa.lookupMsaGrade(45, 75));

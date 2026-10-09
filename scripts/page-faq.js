@@ -38,11 +38,10 @@ module.exports = {
     },
     {
       q: 'Wie wird die MSA-Prüfung bewertet?',
-      a: 'Die Übungen hier nutzen die MSA-Bewertungstabelle für Berlin und Brandenburg von 2018. '
-        + 'Die erreichten Punkte werden auf die 75-Punkte-Skala der Prüfung umgerechnet: ab 70 Punkten '
-        + 'Note 1, ab 63 Note 2, ab 55 Note 3, ab 45 Note 4 und ab 23 Note 5. Die Umrechnung in der '
-        + 'echten Prüfung kann abweichen; Brandenburg rechnet seit 2025/26 nach den allgemeinen '
-        + 'Vorschriften zur Leistungsbewertung um.',
+      a: 'Berlin und Brandenburg rechnen unterschiedlich um, deshalb zeigen die Übungen beide Noten. '
+        + 'Brandenburg nutzt seit 2025/26 den Schlüssel der VV-Leistungsbewertung: Note 1 ab 96 %, '
+        + 'Note 2 ab 80 %, Note 3 ab 60 %, Note 4 ab 45 %, Note 5 ab 16 %. Berlin nutzt eine Tabelle '
+        + 'mit 75 Punkten: Note 1 ab 70, Note 2 ab 63, Note 3 ab 55, Note 4 ab 45, Note 5 ab 23 Punkten.',
     },
     {
       q: 'Welches Sprachniveau brauche ich für den MSA in Englisch?',
@@ -361,8 +360,8 @@ module.exports = {
     {
       q: 'Wann ist das Englisch-Abitur 2027?',
       a: 'Die schriftliche Abiturprüfung Englisch ist am Freitag, 30. April 2027, um 9:00 Uhr — '
-        + 'so steht es in den Prüfungsplänen von Brandenburg und Berlin. Der Nachschreibetermin '
-        + 'in Brandenburg ist der 19. Mai 2027.',
+        + 'so steht es in den Prüfungsplänen von Brandenburg und Berlin. Nachschreibetermin ist '
+        + 'in Brandenburg der 19. Mai 2027, in Berlin der 20. Mai 2027.',
     },
     {
       q: 'Gibt es Unterschiede zwischen dem Abitur in Berlin und Brandenburg?',
@@ -471,6 +470,13 @@ module.exports = {
         + '15. Februar; die Sprache wählst du selbst.',
     },
     {
+      q: 'Wie läuft die Sprechprüfung im MSA Englisch in Berlin ab?',
+      a: 'Sie ist eine Partnerprüfung ohne Vorbereitungszeit, in der Regel 10 bis 12 Minuten lang, '
+        + 'höchstens 15. Nach Fragen zu deiner Person einigt ihr euch zu zweit anhand eines Bildes '
+        + 'auf eine Lösung, beschreibt dann jede und jeder ein eigenes Foto und diskutiert zum '
+        + 'Schluss darüber. Die Lehrkraft gibt nur die Impulse.',
+    },
+    {
       q: 'Was passiert, wenn ich am Prüfungstag krank bin?',
       a: 'Du brauchst ein ärztliches Attest, das die Prüfungsunfähigkeit bescheinigt — in Berlin '
         + 'muss es spätestens drei Unterrichtstage nach dem Prüfungstag in der Schule sein. '
@@ -489,8 +495,8 @@ module.exports = {
       q: 'Sind die MSA-Übungseinheiten auf dieser Seite kostenlos?',
       a: 'Ja. Alle 21 Einheiten laufen kostenlos im Browser und brauchen keine Anmeldung. Die '
         + 'meisten verbinden Hören, Lesen und Schreiben, dazu kommen eine Sprech-Einheit und eine '
-        + 'Wiederholung. Jede gibt Sofort-Feedback und eine Note nach der MSA-Bewertungstabelle '
-        + 'von 2018.',
+        + 'Wiederholung. Jede gibt Sofort-Feedback und zeigt deine Note nach der Brandenburger und der '
+        + 'Berliner Bewertung.',
     },
   ],
 };

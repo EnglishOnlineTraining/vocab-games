@@ -1,0 +1,199 @@
+{
+ "unit": "10g-arguing-convincingly",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "The person at the sewing machine who made their jeans",
+     "accept": [
+      "The person at the sewing machine who made their jeans"
+     ],
+     "label": "1. What does the speaker ask the audience to think about at the beginning?",
+     "why": "The opening lines ask the audience to think of the person at the sewing machine, not the shop."
+    },
+    "g2": {
+     "correct": "A documentary about a garment factory in Dhaka",
+     "accept": [
+      "A documentary about a garment factory in Dhaka"
+     ],
+     "label": "2. What changed the speaker’s view of fashion?",
+     "why": "The speaker says a documentary about a garment factory in Dhaka changed how they see their wardrobe."
+    },
+    "g3": {
+     "correct": "Sign a petition, ask brands who made their clothes, and try second-hand clothes",
+     "accept": [
+      "Sign a petition, ask brands who made their clothes, and try second-hand clothes"
+     ],
+     "label": "3. What does the speaker ask the audience to do at the end?",
+     "why": "The final paragraph challenges listeners to sign the petition, ask brands, and try second-hand clothes."
+    },
+    "g4": {
+     "correct": "In your wardrobe",
+     "accept": [
+      "In your wardrobe"
+     ],
+     "label": "4. Where does the speech say change starts?",
+     "why": "The closing lines say change starts in your wardrobe, not in parliament or boardrooms."
+    },
+    "g5": {
+     "correct": "A rhetorical question",
+     "accept": [
+      "A rhetorical question"
+     ],
+     "label": "5. In \"Who made your jeans?\", which persuasive technique is used?",
+     "why": "The speaker does not want the audience to call out an answer; the question is there to make them think. That is a rhetorical question."
+    },
+    "g6": {
+     "correct": "It is a gerund acting as the subject of the sentence",
+     "accept": [
+      "It is a gerund acting as the subject of the sentence"
+     ],
+     "label": "6. (Review) In \"Wearing a T-shirt twice is not a sacrifice\", what job does \"Wearing\" do?",
+     "why": "Review from “Showing Racism the Red Card: Gerunds”: Wearing is an -ing form used as a noun — the subject of is."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Rhetorical question",
+     "accept": [
+      "Rhetorical question"
+     ],
+     "label": "1. \"Who made your jeans?\"",
+     "why": "A question asked for dramatic effect, with no answer expected, is a rhetorical question."
+    },
+    "g2": {
+     "correct": "Rule of three",
+     "accept": [
+      "Rule of three"
+     ],
+     "label": "2. \"Cheaper, faster, trendier — that is what they promise us.\"",
+     "why": "Three parallel adjectives in a row (cheaper, faster, trendier) form a rule of three."
+    },
+    "g3": {
+     "correct": "Direct address",
+     "accept": [
+      "Direct address"
+     ],
+     "label": "3. \"You have the power to change this.\"",
+     "why": "Speaking directly to the listener with you is the persuasive technique of direct address."
+    },
+    "g4": {
+     "correct": "Emotional appeal",
+     "accept": [
+      "Emotional appeal"
+     ],
+     "label": "4. \"Picture the hands that stitched your jacket — hands just like your mother’s.\"",
+     "why": "The image of a mother’s hands appeals to the audience’s feelings — an emotional appeal."
+    },
+    "g5": {
+     "correct": "Appeal to facts and authority",
+     "accept": [
+      "Appeal to facts and authority"
+     ],
+     "label": "5. \"According to the United Nations, the fashion industry...\"",
+     "why": "Citing the United Nations and a statistic borrows credibility — an appeal to facts and authority."
+    },
+    "g6": {
+     "correct": "Hyperbole",
+     "accept": [
+      "Hyperbole"
+     ],
+     "label": "6. \"We are drowning in clothes we never wear.\"",
+     "why": "Drowning in clothes deliberately exaggerates to make the point — that is hyperbole."
+    },
+    "g7": {
+     "correct": "Repetition (anaphora)",
+     "accept": [
+      "Repetition (anaphora)"
+     ],
+     "label": "7. \"We will ask. We will demand. We will change.\"",
+     "why": "Starting successive sentences with the same words (We will) is repetition, also called anaphora."
+    },
+    "g8": {
+     "correct": "Inclusive we",
+     "accept": [
+      "Inclusive we"
+     ],
+     "label": "8. \"Together, we can build a fairer fashion industry.\"",
+     "why": "We and together include the audience in the cause — the inclusive we."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "First of all",
+     "accept": [
+      "First of all"
+     ],
+     "label": "1. ___ , let me give you the facts.",
+     "why": "First of all introduces the first point of a structured argument."
+    },
+    "g2": {
+     "correct": "However",
+     "accept": [
+      "However"
+     ],
+     "label": "2. The industry is growing fast. ___, that growth comes at a price.",
+     "why": "The second sentence contrasts with the first — however signals a contrast."
+    },
+    "g3": {
+     "correct": "what is worse",
+     "accept": [
+      "what is worse"
+     ],
+     "label": "3. Most garment workers are women, and ___, few earn a living wage.",
+     "why": "What is worse adds a further, stronger point to the argument."
+    },
+    "g4": {
+     "correct": "However",
+     "accept": [
+      "However"
+     ],
+     "label": "4. Some say cheap fashion helps poor families. ___, the workers stay poor.",
+     "why": "The second sentence opposes the claim in the first — however marks the opposition."
+    },
+    "g5": {
+     "correct": "On top of that",
+     "accept": [
+      "On top of that"
+     ],
+     "label": "5. The workers pay the price. ___, the planet pays too.",
+     "why": "On top of that adds a further point to an argument, similar to moreover."
+    },
+    "g6": {
+     "correct": "So",
+     "accept": [
+      "So"
+     ],
+     "label": "6. ___ , what can we actually do?",
+     "why": "So sums up the argument so far and turns to the next step or conclusion."
+    },
+    "g7": {
+     "correct": "To start with",
+     "accept": [
+      "To start with"
+     ],
+     "label": "7. ___ , we can buy less, repair more and swap clothes.",
+     "why": "To start with introduces the first proposal in a list of suggestions."
+    },
+    "g8": {
+     "correct": "In conclusion",
+     "accept": [
+      "In conclusion"
+     ],
+     "label": "8. ___ , change starts in your wardrobe.",
+     "why": "In conclusion signals the closing part of a speech."
+    }
+   }
+  }
+ }
+}

@@ -14527,7 +14527,7 @@
     "g7": {
      "label": "7. You ___ touch the machines",
      "correct": "mustn't",
-     "why": "Review from 8g-school-life-rules: 'mustn't' expresses a prohibition; the if-clause stays present simple."
+     "why": "Review from “School Life: Dos and Don'ts”: 'mustn't' expresses a prohibition; the if-clause stays present simple."
     },
     "g8": {
      "label": "8. You ___ that it is new",
@@ -14669,7 +14669,7 @@
     "g8": {
      "label": "8. Last Saturday, Jake ___ to a baseball game",
      "correct": "went",
-     "why": "Review from 8c-arriving-northeast: the simple past of 'go' is 'went'."
+     "why": "Review from “Arriving in the Northeast — New York”: the simple past of 'go' is 'went'."
     }
    }
   },
@@ -14846,7 +14846,7 @@
     "g7": {
      "label": "7. Canada ___ welcomed students",
      "correct": "has",
-     "why": "Review from 10c-discover-canada: present perfect with a singular subject — 'has'."
+     "why": "Review from “Discover Canada”: present perfect with a singular subject — 'has'."
     },
     "g8": {
      "label": "8. New students ___ worry",
@@ -14975,7 +14975,7 @@
     "g8": {
      "label": "8 (review) — campaigners ___ for equal rights",
      "correct": "had fought",
-     "why": "Review from 10g-slavery-civil-war: past perfect for an action completed before another past event ('by the time the law passed') — 'had fought'."
+     "why": "Review from “Slavery & the Civil War”: past perfect for an action completed before another past event ('by the time the law passed') — 'had fought'."
     }
    }
   }
@@ -15084,12 +15084,12 @@
     "g7": {
      "label": "7 (review) — FSJ volunteers, ___ often work in care homes",
      "correct": "who",
-     "why": "Review from 10g-scottish-lowlands: 'who' is the subject relative pronoun used for people, not 'which' (used for things)."
+     "why": "Review from “Scotland: The Lowlands”: 'who' is the subject relative pronoun used for people, not 'which' (used for things)."
     },
     "g8": {
      "label": "8 (review) — The care home ___ Marie works",
      "correct": "where",
-     "why": "Review from 10g-scottish-lowlands: 'where' is the relative adverb used for a place with no preposition needed ('the care home where Marie works') — 'which' would need a preposition ('at which')."
+     "why": "Review from “Scotland: The Lowlands”: 'where' is the relative adverb used for a place with no preposition needed ('the care home where Marie works') — 'which' would need a preposition ('at which')."
     }
    }
   }
@@ -15461,7 +15461,7 @@
     "g8": {
      "label": "8 (review) — “It was surprising ___ researchers to find that migration figures had barely changed.”",
      "correct": "for",
-     "why": "Review from 10g-digital-footprint: “surprising” comments on the situation itself (like “easy” or “important”), so it takes “for” — “of” is used after adjectives that judge someone's behaviour (careless, kind), which is not the case here."
+     "why": "Review from “Your Digital Footprint: Infinitive Constructions”: “surprising” comments on the situation itself (like “easy” or “important”), so it takes “for” — “of” is used after adjectives that judge someone's behaviour (careless, kind), which is not the case here."
     }
    }
   }
@@ -15497,7 +15497,7 @@
     "g6": {
      "label": "6. (Review) This account of the incident is written from which point of view?",
      "correct": "First person",
-     "why": "Review from 10g-short-story-analysis: the narrator speaks as \"I\" throughout (\"I still remember...\", \"my hands were shaking\"), which marks first-person narration."
+     "why": "Review from “Short Stories: Perspective & Symbolism”: the narrator speaks as \"I\" throughout (\"I still remember...\", \"my hands were shaking\"), which marks first-person narration."
     }
    }
   },
@@ -15622,7 +15622,7 @@
     "g6": {
      "label": "6. Review — which sentence from the interview is written in the passive voice?",
      "correct": "The pitches were donated by the council two years ago.",
-     "why": "Review from 10g-green-scotland: the subject (the pitches) receives the action rather than doing it, shown by was/were + past participle (\"were donated\") — the other two sentences have an active subject doing the action (\"we have\", \"a new arrival tells\")."
+     "why": "Review from “Green Scotland: Renewable Energy & Rewilding”: the subject (the pitches) receives the action rather than doing it, shown by was/were + past participle (\"were donated\") — the other two sentences have an active subject doing the action (\"we have\", \"a new arrival tells\")."
     }
    }
   },
@@ -16629,7 +16629,7 @@
     "g6": {
      "label": "6. (Review) In \"nobody will be punished\", what voice is the sentence in?",
      "correct": "Passive voice",
-     "why": "Review from 10g-scottish-history: the subject receives the action — will be + past participle is passive."
+     "why": "Review from “Scottish History: From Clans to Independence”: the subject receives the action — will be + past participle is passive."
     }
    }
   },
@@ -18304,6 +18304,529 @@
      "label": "8. A speaker ___ language carries family history",
      "correct": "whose",
      "why": "'Whose' shows possession: the speaker's language."
+    }
+   }
+  }
+ },
+ "10g-apartheid-history": {
+  "exA": {
+   "prefix": "exA-",
+   "gaps": {
+    "g1": {
+     "label": "1. Where and when was Naledi born?",
+     "correct": "In Soweto, in 1955",
+     "why": "The opening sentence says Naledi was born in 1955 in Soweto, a township outside Johannesburg."
+    },
+    "g2": {
+     "label": "2. Why couldn’t Naledi train as a nurse?",
+     "correct": "She had to leave school and never got the certificate she needed",
+     "why": "Paragraph two says her school stayed closed after the uprising and she had to leave; paragraph three says that without her certificate she could not get a place at a nursing college."
+    },
+    "g3": {
+     "label": "3. What did Naledi do during the 1976 uprising?",
+     "correct": "She carried a wounded boy to safety",
+     "why": "Paragraph two says Naledi, standing near the front, carried a wounded boy to safety."
+    },
+    "g4": {
+     "label": "4. What does Naledi say about the queue at the 1994 election?",
+     "correct": "She would have waited six days if necessary",
+     "why": "She says she stood in the queue for six hours, but she would have waited six days."
+    },
+    "g5": {
+     "label": "5. In “the government had decided that Black children should be prepared mainly for manual work”, why is had decided in the past perfect?",
+     "correct": "It describes an action completed before another past event",
+     "why": "The past perfect marks an action completed before another past event: the government's decision came before Naledi's wish to become a nurse."
+    },
+    "g6": {
+     "label": "6. (Review) In \"Black families were forced to live separately\", what voice is it?",
+     "correct": "Passive voice",
+     "why": "Review from “Scottish History: From Clans to Independence”: the subject receives the action — were + past participle is passive."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1. By the time Mandela left prison, he ___ 27 years behind bars.",
+     "correct": "had spent",
+     "why": "By the time marks the later past event — the earlier action takes the past perfect."
+    },
+    "g2": {
+     "label": "2. Naledi ___ for the first time in 1994.",
+     "correct": "voted",
+     "why": "A completed single event in the past takes the simple past."
+    },
+    "g3": {
+     "label": "3. While she ___ in the queue, she thought of her father.",
+     "correct": "was standing",
+     "why": "An ongoing background action takes the past continuous: was standing."
+    },
+    "g4": {
+     "label": "4. The apartheid government ___ to power in 1948.",
+     "correct": "came",
+     "why": "A dated event in the past (1948) takes the simple past."
+    },
+    "g5": {
+     "label": "5. Most Black South Africans ___ never voted before 1994.",
+     "correct": "had",
+     "why": "Before 1994 looks back from a past point — the past perfect: had never voted."
+    },
+    "g6": {
+     "label": "6. From 1962 to 1968, she ___ primary school in Soweto.",
+     "correct": "attended",
+     "why": "A finished period in the past with no later past event to look back from takes the simple past: attended."
+    },
+    "g7": {
+     "label": "7. When the radio ___ the results, people ran into the streets.",
+     "correct": "announced",
+     "why": "Two past events in sequence take the simple past: announced, ran."
+    },
+    "g8": {
+     "label": "8. By 1994, Naledi ___ to vote for almost twenty years.",
+     "correct": "had wanted",
+     "why": "By 1994 is a point in the past, and the wanting lasted up to it, so it takes the past perfect: had wanted."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. ___ Mandela became president, he had spent 27 years in prison.",
+     "correct": "Before",
+     "why": "The main clause is past perfect, so the conjunction must mark the later event: before."
+    },
+    "g2": {
+     "label": "2. By the time Naledi voted, she ___ for almost forty years.",
+     "correct": "had waited",
+     "why": "By the time + past takes the past perfect: the waiting was complete by then."
+    },
+    "g3": {
+     "label": "3. It was the first time she ___ in a national election.",
+     "correct": "had voted",
+     "why": "After \"it was the first time\", English uses the past perfect: had voted."
+    },
+    "g4": {
+     "label": "4. ___ the flag rose over Pretoria, the crowd fell silent.",
+     "correct": "As",
+     "why": "Two simultaneous past actions are linked with as, meaning while."
+    },
+    "g5": {
+     "label": "5. ___ the celebrations began, it started to rain.",
+     "correct": "Just as",
+     "why": "Just as marks two events happening at exactly the same moment."
+    },
+    "g6": {
+     "label": "6. Naledi had lived in the same street ___ 1955.",
+     "correct": "since",
+     "why": "A starting point in time takes since; for is used with a duration."
+    },
+    "g7": {
+     "label": "7. Two years ___ the election, South Africa had a new constitution.",
+     "correct": "after",
+     "why": "Two years after the election counts forward from a past event (1994 to 1996). Ago counts back from today, and before would mean 1992."
+    },
+    "g8": {
+     "label": "8. She had never ___ hope before that day.",
+     "correct": "felt",
+     "why": "Had never + past participle — the past perfect needs felt, not the base form."
+    }
+   }
+  }
+ },
+ "10g-arguing-convincingly": {
+  "exA": {
+   "prefix": "exA-",
+   "gaps": {
+    "g1": {
+     "label": "1. What does the speaker ask the audience to think about at the beginning?",
+     "correct": "The person at the sewing machine who made their jeans",
+     "why": "The opening lines ask the audience to think of the person at the sewing machine, not the shop."
+    },
+    "g2": {
+     "label": "2. What changed the speaker’s view of fashion?",
+     "correct": "A documentary about a garment factory in Dhaka",
+     "why": "The speaker says a documentary about a garment factory in Dhaka changed how they see their wardrobe."
+    },
+    "g3": {
+     "label": "3. What does the speaker ask the audience to do at the end?",
+     "correct": "Sign a petition, ask brands who made their clothes, and try second-hand clothes",
+     "why": "The final paragraph challenges listeners to sign the petition, ask brands, and try second-hand clothes."
+    },
+    "g4": {
+     "label": "4. Where does the speech say change starts?",
+     "correct": "In your wardrobe",
+     "why": "The closing lines say change starts in your wardrobe, not in parliament or boardrooms."
+    },
+    "g5": {
+     "label": "5. In \"Who made your jeans?\", which persuasive technique is used?",
+     "correct": "A rhetorical question",
+     "why": "The speaker does not want the audience to call out an answer; the question is there to make them think. That is a rhetorical question."
+    },
+    "g6": {
+     "label": "6. (Review) In \"Wearing a T-shirt twice is not a sacrifice\", what job does \"Wearing\" do?",
+     "correct": "It is a gerund acting as the subject of the sentence",
+     "why": "Review from “Showing Racism the Red Card: Gerunds”: Wearing is an -ing form used as a noun — the subject of is."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1. \"Who made your jeans?\"",
+     "correct": "Rhetorical question",
+     "why": "A question asked for dramatic effect, with no answer expected, is a rhetorical question."
+    },
+    "g2": {
+     "label": "2. \"Cheaper, faster, trendier — that is what they promise us.\"",
+     "correct": "Rule of three",
+     "why": "Three parallel adjectives in a row (cheaper, faster, trendier) form a rule of three."
+    },
+    "g3": {
+     "label": "3. \"You have the power to change this.\"",
+     "correct": "Direct address",
+     "why": "Speaking directly to the listener with you is the persuasive technique of direct address."
+    },
+    "g4": {
+     "label": "4. \"Picture the hands that stitched your jacket — hands just like your mother’s.\"",
+     "correct": "Emotional appeal",
+     "why": "The image of a mother’s hands appeals to the audience’s feelings — an emotional appeal."
+    },
+    "g5": {
+     "label": "5. \"According to the United Nations, the fashion industry...\"",
+     "correct": "Appeal to facts and authority",
+     "why": "Citing the United Nations and a statistic borrows credibility — an appeal to facts and authority."
+    },
+    "g6": {
+     "label": "6. \"We are drowning in clothes we never wear.\"",
+     "correct": "Hyperbole",
+     "why": "Drowning in clothes deliberately exaggerates to make the point — that is hyperbole."
+    },
+    "g7": {
+     "label": "7. \"We will ask. We will demand. We will change.\"",
+     "correct": "Repetition (anaphora)",
+     "why": "Starting successive sentences with the same words (We will) is repetition, also called anaphora."
+    },
+    "g8": {
+     "label": "8. \"Together, we can build a fairer fashion industry.\"",
+     "correct": "Inclusive we",
+     "why": "We and together include the audience in the cause — the inclusive we."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. ___ , let me give you the facts.",
+     "correct": "First of all",
+     "why": "First of all introduces the first point of a structured argument."
+    },
+    "g2": {
+     "label": "2. The industry is growing fast. ___, that growth comes at a price.",
+     "correct": "However",
+     "why": "The second sentence contrasts with the first — however signals a contrast."
+    },
+    "g3": {
+     "label": "3. Most garment workers are women, and ___, few earn a living wage.",
+     "correct": "what is worse",
+     "why": "What is worse adds a further, stronger point to the argument."
+    },
+    "g4": {
+     "label": "4. Some say cheap fashion helps poor families. ___, the workers stay poor.",
+     "correct": "However",
+     "why": "The second sentence opposes the claim in the first — however marks the opposition."
+    },
+    "g5": {
+     "label": "5. The workers pay the price. ___, the planet pays too.",
+     "correct": "On top of that",
+     "why": "On top of that adds a further point to an argument, similar to moreover."
+    },
+    "g6": {
+     "label": "6. ___ , what can we actually do?",
+     "correct": "So",
+     "why": "So sums up the argument so far and turns to the next step or conclusion."
+    },
+    "g7": {
+     "label": "7. ___ , we can buy less, repair more and swap clothes.",
+     "correct": "To start with",
+     "why": "To start with introduces the first proposal in a list of suggestions."
+    },
+    "g8": {
+     "label": "8. ___ , change starts in your wardrobe.",
+     "correct": "In conclusion",
+     "why": "In conclusion signals the closing part of a speech."
+    }
+   }
+  }
+ },
+ "10c-canada-sport-hobbies": {
+  "exA": {
+   "prefix": "exA-",
+   "gaps": {
+    "g1": {
+     "label": "1 — First Nations ___ it for hundreds of years",
+     "correct": "played",
+     "why": "The text says First Nations played lacrosse for hundreds of years before Europeans arrived."
+    },
+    "g2": {
+     "label": "2 — who ___ the game in 1891",
+     "correct": "invented",
+     "why": "The text says James Naismith invented basketball in 1891."
+    },
+    "g3": {
+     "label": "3 — head to the ___ to ski",
+     "correct": "mountains",
+     "why": "The text says families head to the mountains to ski or snowboard."
+    },
+    "g4": {
+     "label": "4 — the frozen ___ Canal",
+     "correct": "Rideau",
+     "why": "The text names the frozen Rideau Canal in Ottawa."
+    },
+    "g5": {
+     "label": "5 — hike, camp and ___",
+     "correct": "canoe",
+     "why": "The text lists hiking, camping and canoeing as summer activities."
+    },
+    "g6": {
+     "label": "6 — forests turn ___ and gold",
+     "correct": "red",
+     "why": "The text says the forests turn red and gold in autumn."
+    },
+    "g7": {
+     "label": "7 — visitors are always ___",
+     "correct": "welcome",
+     "why": "The closing paragraph says visitors are always welcome to join in."
+    },
+    "g8": {
+     "label": "8 — you will ___ both of them",
+     "correct": "need",
+     "why": "The final line says you will need both your skates and your sense of adventure."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1 — millions of Canadians ___ ice hockey",
+     "correct": "play",
+     "why": "A repeated habit ('every winter') takes the present simple."
+    },
+    "g2": {
+     "label": "2 — the children ___ right now",
+     "correct": "are skating",
+     "why": "'Right now' signals an action in progress — present continuous."
+    },
+    "g3": {
+     "label": "3 — Lacrosse ___ from an Indigenous game",
+     "correct": "comes",
+     "why": "A general fact about the sport's origin — present simple."
+    },
+    "g4": {
+     "label": "4 — the workers ___ the rink now",
+     "correct": "are flooding",
+     "why": "'Right now' — the action is happening at this moment: present continuous."
+    },
+    "g5": {
+     "label": "5 — Water ___ at 0°C",
+     "correct": "freezes",
+     "why": "A scientific fact that is always true — present simple."
+    },
+    "g6": {
+     "label": "6 — my partner ___ for a marathon",
+     "correct": "is training",
+     "why": "'At the moment' marks a temporary action in progress."
+    },
+    "g7": {
+     "label": "7 — fans ___ the NHL every Saturday",
+     "correct": "watch",
+     "why": "A regular routine ('every Saturday night') — present simple."
+    },
+    "g8": {
+     "label": "8 — the final ___ right now",
+     "correct": "is starting",
+     "why": "Something beginning at this moment — present continuous."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1 — my friend ___ all the players",
+     "correct": "knows",
+     "why": "Know is a stative verb (a state of mind) — no continuous form here."
+    },
+    "g2": {
+     "label": "2 — these skates ___ to my sister",
+     "correct": "belong",
+     "why": "Belong describes a state, not an action — present simple."
+    },
+    "g3": {
+     "label": "3 — I ___ what you mean",
+     "correct": "understand",
+     "why": "Understand is stative — use the present simple."
+    },
+    "g4": {
+     "label": "4 — we ___ to watch the final",
+     "correct": "want",
+     "why": "Want is a stative verb — no continuous form."
+    },
+    "g5": {
+     "label": "5 — since the 1990s, Canada ___ wilderness (review)",
+     "correct": "has protected",
+     "why": "Review from 'Discover Canada — The Environment': 'since the 1990s' up to now needs the present perfect."
+    },
+    "g6": {
+     "label": "6 — do you ___ why Canadians love the cold?",
+     "correct": "know",
+     "why": "After 'do you', the verb stays in the base form: know."
+    },
+    "g7": {
+     "label": "7 — ice hockey ___ in every province (review)",
+     "correct": "is played",
+     "why": "Review from 'Inside India': the game receives the action — passive: is + past participle."
+    },
+    "g8": {
+     "label": "8 — this cabin ___ like a second home",
+     "correct": "feels",
+     "why": "Feel meaning 'gives the impression' is stative — present simple."
+    }
+   }
+  }
+ },
+ "9g-australia-two-objects-passive": {
+  "exA": {
+   "prefix": "exA-",
+   "gaps": {
+    "g1": {
+     "label": "1 — for more than ___ years",
+     "correct": "60,000",
+     "why": "The text says Aboriginal and Torres Strait Islander peoples cared for the land for more than 60,000 years."
+    },
+    "g2": {
+     "label": "2 — after ___, when the British arrived",
+     "correct": "1788",
+     "why": "The text says the British arrived after 1788."
+    },
+    "g3": {
+     "label": "3 — the constitution did not ___",
+     "correct": "count",
+     "why": "The text says until 1967 the constitution did not even count Aboriginal people."
+    },
+    "g4": {
+     "label": "4 — voted ___ to change that",
+     "correct": "yes",
+     "why": "The text says more than 90 per cent of Australians voted 'yes' in the 1967 referendum."
+    },
+    "g5": {
+     "label": "5 — recognised ___ title",
+     "correct": "native",
+     "why": "The text says the High Court recognised native title in the famous Mabo decision."
+    },
+    "g6": {
+     "label": "6 — the ___ said sorry",
+     "correct": "prime minister",
+     "why": "The text says the prime minister said sorry to the Stolen Generations in 2008."
+    },
+    "g7": {
+     "label": "7 — children who had been ___ from their families",
+     "correct": "taken",
+     "why": "The Stolen Generations were Aboriginal children taken from their families."
+    },
+    "g8": {
+     "label": "8 — Aboriginal culture ___ in art and music",
+     "correct": "is celebrated",
+     "why": "The text says Aboriginal culture is celebrated in art, music and festivals."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1 — Aboriginal people ___ the right to vote",
+     "correct": "were given",
+     "why": "Two-object passive: the receiver becomes the subject — plural 'were given'."
+    },
+    "g2": {
+     "label": "2 — the title to Uluru ___ back",
+     "correct": "was handed",
+     "why": "The title (singular) receives the action — 'was handed back'."
+    },
+    "g3": {
+     "label": "3 — the Stolen Generations ___ an apology",
+     "correct": "were offered",
+     "why": "The receiver becomes the subject — plural past passive 'were offered'."
+    },
+    "g4": {
+     "label": "4 — visitors ___ the story",
+     "correct": "are shown",
+     "why": "A general present situation; visitors receive the action — 'are shown'."
+    },
+    "g5": {
+     "label": "5 — children ___ English",
+     "correct": "were taught",
+     "why": "Past passive with the receiver as subject — 'were taught'."
+    },
+    "g6": {
+     "label": "6 — maps ___ to every visitor",
+     "correct": "are given",
+     "why": "The thing becomes the subject; the receiver follows 'to' — 'are given'."
+    },
+    "g7": {
+     "label": "7 — ___ for the land for thousands of years (review)",
+     "correct": "had cared",
+     "why": "Review from 'Into the Red Centre': 'by the time' + duration before a past event needs the past perfect."
+    },
+    "g8": {
+     "label": "8 — the didgeridoo ___ last night (review)",
+     "correct": "was played",
+     "why": "Review from 'Just Me and My Backpack': 'last night' + a received action — simple past passive."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1 — gave Aboriginal people the right",
+     "correct": "Aboriginal people were given the right to vote in 1962",
+     "why": "Person as subject: was/were + past participle; the thing (the right) stays after it."
+    },
+    "g2": {
+     "label": "2 — handed the Anangu people the title deeds",
+     "correct": "The Anangu people were handed the title deeds to Uluru in 1985",
+     "why": "Two-object passive: the person becomes the subject; the title deeds (the thing) stay after the verb."
+    },
+    "g3": {
+     "label": "3 — offered the Stolen Generations an apology",
+     "correct": "The Stolen Generations were offered a formal apology in 2008",
+     "why": "The receiver becomes the subject; the verb keeps both objects in the passive."
+    },
+    "g4": {
+     "label": "4 — shows visitors sacred paintings",
+     "correct": "Visitors are shown sacred rock paintings",
+     "why": "General truth → present passive with the receiver as subject ('Sacred rock paintings are shown to visitors' also fits)."
+    },
+    "g5": {
+     "label": "5 — taught the children English",
+     "correct": "The children were taught English at the mission school",
+     "why": "Past passive with the receiver as subject; the second object (English) remains."
+    },
+    "g6": {
+     "label": "6 — will give young artists a grant",
+     "correct": "Young artists will be given a grant next year",
+     "why": "Future passive: will be + past participle."
+    },
+    "g7": {
+     "label": "7 — told us the story of the Rainbow Serpent",
+     "correct": "We were told the story of the Rainbow Serpent",
+     "why": "Past passive with the person as subject — or 'The story of the Rainbow Serpent was told to us'."
     }
    }
   }

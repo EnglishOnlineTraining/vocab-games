@@ -80,7 +80,7 @@
         ]
       },
       {
-        "h2": "Der by-Agent — wann nennt man den Täter?",
+        "h2": "Der by-Agent im Passiv — wann nennt man den Täter?",
         "body": "In den meisten Passivsätzen fehlt der Täter völlig. Man nennt ihn nur, wenn er wirklich wichtig ist.",
         "list": [
           "<strong>Nennen</strong>, wenn die Information zählt — „<em>Hamlet</em> was written <strong>by Shakespeare</strong>.“",
@@ -91,7 +91,7 @@
         ]
       },
       {
-        "h2": "Verben mit zwei Objekten",
+        "h2": "Passiv bei Verben mit zwei Objekten",
         "body": "Verben wie <em>give, send, offer, tell, show, teach</em> haben zwei Objekte — eine Person und eine Sache. Meist wird die <strong>Person</strong> zum Subjekt. Das ist die Struktur, die im Deutschen oft zu Fehlern führt.",
         "list": [
           "Aktiv: <em>They gave <strong>her</strong> a prize.</em>",
@@ -121,7 +121,28 @@
         ]
       },
       {
-        "h2": "Typische Fehler deutscher Lernender",
+        "h2": "Fragen und Verneinung im Passiv",
+        "body": "Im Passiv bildet man Fragen und Verneinungen mit der Form von <em>be</em> — ohne <em>do</em> oder <em>did</em>. Für Fragen rückt <em>be</em> vor das Subjekt, für die Verneinung steht <em>not</em> direkt nach <em>be</em>.",
+        "list": [
+          "Frage: „<em>Was</em> the bridge <em>built</em> in 1890?“ — nicht: ✗ „Did the bridge built …?“",
+          "Verneinung: „The bridge <em>wasn't built</em> in 1890.“",
+          "Mit Fragewort: „When <em>was</em> the bridge <em>built</em>?“",
+          "Present Perfect: „<em>Has</em> the letter <em>been sent</em>?“ — „It <em>hasn't been sent</em> yet.“",
+          "Mit Modalverb: „<em>Can</em> it <em>be repaired</em>?“ — „It <em>can't be repaired</em>.“"
+        ]
+      },
+      {
+        "h2": "Passiv mit say, believe und think: „It is said that …“",
+        "body": "Deutsche Sätze wie „Man sagt, dass …“ werden im Englischen zum Passiv: entweder mit <em>It is said that …</em> oder mit der Person als Subjekt und <em>to</em> + Infinitiv. So funktionieren auch <em>believe, think, know, expect</em> und <em>report</em>.",
+        "list": [
+          "„Man sagt, dass er reich ist.“ → „<em>It is said that</em> he is rich.“",
+          "Dasselbe mit der Person als Subjekt: „He <em>is said to be</em> rich.“",
+          "„Man glaubt, dass das Bild gestohlen wurde.“ → „The painting <em>is believed to have been stolen</em>.“",
+          "✗ „Man says that …“ — <em>man</em> gibt es im Englischen nicht."
+        ]
+      },
+      {
+        "h2": "Typische Fehler beim Passiv",
         "body": "Diese fünf Fehler kosten in Klassenarbeiten die meisten Punkte.",
         "list": [
           "✗ „I <em>became</em> a present.“ → ✓ „I <strong>was given</strong> a present.“ (<em>become</em> heißt „werden zu“, nicht Passiv-„werden“.)",
@@ -135,7 +156,7 @@
     ],
     "practiceGroups": [
       {
-        "title": "Übung 1 — Simple Present und Simple Past",
+        "title": "Passiv-Übung 1 — Simple Present und Simple Past",
         "intro": "Wähle die richtige Passivform. Achte auf Singular und Plural bei <em>be</em>.",
         "items": [
           {
@@ -241,7 +262,7 @@
         ]
       },
       {
-        "title": "Übung 2 — Alle Zeiten",
+        "title": "Passiv-Übung 2 — alle Zeiten",
         "intro": "Progressive, Perfect und Zukunft. Nur das <em>be</em> ändert sich — das Partizip bleibt gleich.",
         "items": [
           {
@@ -327,7 +348,7 @@
         ]
       },
       {
-        "title": "Übung 3 — Modalverben und der by-Agent",
+        "title": "Passiv-Übung 3 — Modalverben und der by-Agent",
         "intro": "Nach einem Modalverb steht immer <em>be</em>. Der Täter steht mit <em>by</em>.",
         "items": [
           {
@@ -393,7 +414,7 @@
         ]
       },
       {
-        "title": "Übung 4 — Aktiv ins Passiv umformen",
+        "title": "Passiv-Übung 4 — Aktiv ins Passiv umformen",
         "intro": "Lies den Aktivsatz und wähle die passende Passivform. Die Zeitform bleibt gleich.",
         "items": [
           {
@@ -4049,7 +4070,7 @@
         "highlight": true
       },
       {
-        "h2": "Beide Formen möglich — gleiche Bedeutung",
+        "h2": "Gerundium oder Infinitiv — beide möglich, gleiche Bedeutung",
         "body": "Nach diesen Verben kannst du frei wählen. Beide Varianten sind korrekt und bedeuten dasselbe.",
         "list": [
           "<em>like</em> — „I like <strong>swimming</strong>.“ = „I like <strong>to swim</strong>.“",
@@ -4059,7 +4080,7 @@
         ]
       },
       {
-        "h2": "Beide Formen möglich — aber andere Bedeutung",
+        "h2": "Gerundium oder Infinitiv — beide möglich, aber andere Bedeutung",
         "body": "Diese Gruppe entscheidet oft über die Note. Die Form ändert hier nicht den Stil, sondern die Aussage.",
         "list": [
           "<em>remember + -ing</em> = sich an etwas Vergangenes erinnern — „I remember <strong>locking</strong> the door.“ (Ich habe abgeschlossen und erinnere mich daran.)",
@@ -4084,7 +4105,28 @@
         ]
       },
       {
-        "h2": "Typische Fehler deutscher Lernender",
+        "h2": "Infinitiv nach Adjektiven: „It's easy to learn“",
+        "body": "Nach den meisten Adjektiven steht der Infinitiv mit <em>to</em>: „It's easy <em>to learn</em>“, „I'm happy <em>to help</em>.“ Folgt auf das Adjektiv aber eine Präposition, steht wie immer das Gerundium: „I'm good <em>at learning</em>.“",
+        "list": [
+          "It + Adjektiv + to: „It's important <em>to sleep</em> well.“ · „It was hard <em>to find</em> the house.“",
+          "Person + Adjektiv + to: „I'm glad <em>to hear</em> that.“ · „She was surprised <em>to see</em> him.“",
+          "Adjektiv + Präposition + -ing: „afraid <em>of flying</em>“, „interested <em>in learning</em>“, „tired <em>of waiting</em>“",
+          "✗ „I'm happy helping you.“ → ✓ „I'm happy <em>to help</em> you.“"
+        ]
+      },
+      {
+        "h2": "Infinitiv der Absicht: „to buy“, nicht „for to buy“",
+        "body": "Um auszudrücken, wozu man etwas tut („um … zu“), steht im Englischen einfach der Infinitiv mit <em>to</em>: „I went to the shop <em>to buy</em> milk.“ Formeller geht auch <em>in order to</em>. <em>for</em> + -ing oder <em>for to</em> sind hier falsch.",
+        "list": [
+          "„Ich bin zum Laden gegangen, um Milch zu kaufen.“ → „I went to the shop <em>to buy</em> milk.“",
+          "Formell: „We left early <em>in order to</em> catch the train.“",
+          "Verneint: „We left early <em>so as not to</em> miss the train.“ / „<em>in order not to</em> miss …“",
+          "✗ „I came here for to learn English.“ / ✗ „… for learning English.“ → ✓ „I came here <em>to learn</em> English.“",
+          "<em>for</em> + Nomen ist richtig: „I went to the shop <em>for milk</em>.“"
+        ]
+      },
+      {
+        "h2": "Typische Fehler bei Gerundium und Infinitiv",
         "body": "Diese vier Fehler tauchen in Klassenarbeiten immer wieder auf.",
         "list": [
           "✗ „I look forward to <em>see</em> you.“ → ✓ „I look forward to <strong>seeing</strong> you.“",
@@ -4097,7 +4139,7 @@
     ],
     "practiceGroups": [
       {
-        "title": "Übung 1 — Die Grundregeln",
+        "title": "Gerundium oder Infinitiv? Übung 1 — die Grundregeln",
         "intro": "Verb + Gerundium oder Verb + Infinitiv? Wähle die richtige Form und klicke auf <em>Prüfen</em>.",
         "items": [
           {
@@ -4203,7 +4245,7 @@
         ]
       },
       {
-        "title": "Übung 2 — Nach Präpositionen",
+        "title": "Gerundium oder Infinitiv? Übung 2 — nach Präpositionen",
         "intro": "Nach einer Präposition steht immer die -ing-Form. Achte besonders auf <em>look forward to</em>.",
         "items": [
           {
@@ -4269,7 +4311,7 @@
         ]
       },
       {
-        "title": "Übung 3 — Bedeutungsunterschied",
+        "title": "Gerundium oder Infinitiv? Übung 3 — Bedeutungsunterschied",
         "intro": "Hier ändert die Form die Aussage. Lies den ganzen Satz, bevor du wählst.",
         "items": [
           {
@@ -4345,7 +4387,7 @@
         ]
       },
       {
-        "title": "Übung 4 — Gemischt (Prüfungsniveau)",
+        "title": "Gerundium oder Infinitiv? Übung 4 — gemischt (Prüfungsniveau)",
         "intro": "Alle Regeln gemischt — auch der Infinitiv ohne to und feste Ausdrücke.",
         "items": [
           {

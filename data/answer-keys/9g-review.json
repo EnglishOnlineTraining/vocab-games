@@ -3,111 +3,49 @@
  "sections": {
   "exA": {
    "prefix": "exA-",
-   "multi": false,
+   "multi": true,
    "gaps": {
     "g1": {
-     "correct": "If",
-     "accept": [
-      "If"
-     ],
-     "label": "1."
-    },
-    "g2": {
-     "correct": "guardian",
-     "accept": [
-      "guardian"
-     ],
-     "label": "2. Protects something important"
-    },
-    "g3": {
-     "correct": "learned",
-     "accept": [
-      "learned"
-     ],
-     "label": "3. If more young people"
-    },
-    "g4": {
-     "correct": "go on",
-     "accept": [
-      "go on"
-     ],
-     "label": "4. Diwali celebrations"
-    },
-    "g5": {
      "correct": "were swept out to sea",
      "accept": [
       "were swept out to sea"
      ],
-     "label": "5. Two swimmers"
-    },
-    "g6": {
-     "correct": "were encouraged",
-     "accept": [
-      "were encouraged"
-     ],
-     "label": "6. Students"
-    },
-    "g7": {
-     "correct": "published",
-     "accept": [
-      "published"
-     ],
-     "label": "7. the article"
-    },
-    "g8": {
-     "correct": "would keep",
-     "accept": [
-      "would keep"
-     ],
-     "label": "8. If young people moved abroad today, they"
-    }
-   }
-  },
-  "exB": {
-   "prefix": "exB-",
-   "multi": true,
-   "gaps": {
-    "g1": {
-     "correct": "would go",
-     "accept": [
-      "would go"
-     ],
-     "label": "1. …she"
+     "label": "1. Two swimmers"
     },
     "g2": {
-     "correct": "reach",
-     "accept": [
-      "reach"
-     ],
-     "label": "2. temperatures can"
-    },
-    "g3": {
-     "correct": "day",
-     "accept": [
-      "day"
-     ],
-     "label": "3. what a normal working"
-    },
-    "g4": {
-     "correct": "allowed",
-     "accept": [
-      "allowed"
-     ],
-     "label": "4. Cam’s parents"
-    },
-    "g5": {
-     "correct": "playing",
-     "accept": [
-      "playing"
-     ],
-     "label": "5. Many young Irish people enjoy"
-    },
-    "g6": {
      "correct": "is protected",
      "accept": [
       "is protected"
      ],
-     "label": "6. The kiwi bird"
+     "label": "2. The kiwi bird"
+    },
+    "g3": {
+     "correct": "If",
+     "accept": [
+      "If"
+     ],
+     "label": "3."
+    },
+    "g4": {
+     "correct": "guardian",
+     "accept": [
+      "guardian"
+     ],
+     "label": "4. Protects something important"
+    },
+    "g5": {
+     "correct": "launch",
+     "accept": [
+      "launch"
+     ],
+     "label": "5. Plans to"
+    },
+    "g6": {
+     "correct": "day",
+     "accept": [
+      "day"
+     ],
+     "label": "6. what a normal working"
     },
     "g7": {
      "correct": "who",
@@ -118,73 +56,137 @@
      "label": "7. thousands of people"
     },
     "g8": {
-     "correct": "launch",
+     "correct": "playing",
      "accept": [
-      "launch"
+      "playing"
      ],
-     "label": "8. Plans to"
+     "label": "8. Many young Irish people enjoy"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "reach",
+     "accept": [
+      "reach"
+     ],
+     "label": "1. temperatures can"
+    },
+    "g2": {
+     "correct": "were encouraged",
+     "accept": [
+      "were encouraged"
+     ],
+     "label": "2. Students"
+    },
+    "g3": {
+     "correct": "go on",
+     "accept": [
+      "go on"
+     ],
+     "label": "3. Diwali celebrations"
+    },
+    "g4": {
+     "correct": "would keep",
+     "accept": [
+      "would keep"
+     ],
+     "label": "4. If young people moved abroad today, they"
+    },
+    "g5": {
+     "correct": "would go",
+     "accept": [
+      "would go"
+     ],
+     "label": "5. …she"
+    },
+    "g6": {
+     "correct": "published",
+     "accept": [
+      "published"
+     ],
+     "label": "6. the article"
+    },
+    "g7": {
+     "correct": "taken",
+     "accept": [
+      "taken"
+     ],
+     "label": "7. children who had been"
+    },
+    "g8": {
+     "correct": "allowed",
+     "accept": [
+      "allowed"
+     ],
+     "label": "8. Cam’s parents"
     }
    }
   },
   "exC": {
    "prefix": "exC-",
-   "multi": false,
+   "multi": true,
    "gaps": {
     "g1": {
-     "correct": "drought",
+     "correct": "learned",
      "accept": [
-      "drought"
+      "learned"
      ],
-     "label": "1. A long"
+     "label": "1. If more young people"
     },
     "g2": {
-     "correct": "where",
-     "accept": [
-      "where"
-     ],
-     "label": "2. A meeting place"
-    },
-    "g3": {
-     "correct": "don't protect",
-     "accept": [
-      "don't protect"
-     ],
-     "label": "3. If we"
-    },
-    "g4": {
-     "correct": "go on",
-     "accept": [
-      "go on"
-     ],
-     "label": "4. \"to continue happening\""
-    },
-    "g5": {
      "correct": "giant",
      "accept": [
       "giant"
      ],
-     "label": "5. We saw a"
+     "label": "2. We saw a"
+    },
+    "g3": {
+     "correct": "was signed",
+     "accept": [
+      "was signed"
+     ],
+     "label": "3. The Treaty of Waitangi"
+    },
+    "g4": {
+     "correct": "drought",
+     "accept": [
+      "drought"
+     ],
+     "label": "4. A long"
+    },
+    "g5": {
+     "correct": "where",
+     "accept": [
+      "where"
+     ],
+     "label": "5. A meeting place"
     },
     "g6": {
-     "correct": "have been passed down",
+     "correct": "entrepreneur",
      "accept": [
-      "have been passed down"
+      "entrepreneur"
      ],
-     "label": "6. Stories"
+     "label": "6. An"
     },
     "g7": {
-     "correct": "sources",
+     "correct": "unpaid",
      "accept": [
-      "sources"
+      "unpaid"
      ],
-     "label": "7. two independent"
+     "label": "7. the work is usually"
     },
     "g8": {
-     "correct": "had formed",
+     "correct": "— (not needed)",
      "accept": [
-      "had formed"
+      "— (not needed)",
+      "which",
+      "that"
      ],
-     "label": "8. After emigrants"
+     "label": "8. the competition"
     }
    }
   }
