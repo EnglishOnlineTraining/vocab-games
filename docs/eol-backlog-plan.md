@@ -1234,6 +1234,48 @@ Tier 9.5 (few new pages while indexing is poor) and rule 7 (Shaun approves every
   Disclosed answers on r/EnglishLearning only if a thread already ranks on a target query.
 - **Company-size pages, link swaps at scale.**
 
+## Tier 13 — Lessons from the "everywhere engine" X post (2026-10-10) · Shaun + CC
+Source: an X post by @vengeonsp that retells a Julian Goldie video (shared by Shaun 2026-10-10;
+X blocks automated reading, so Shaun pasted the text). One site, 27,800 clicks in 90 days. The
+post's author says he did not re-check the BrightEdge, Ahrefs, Adobe or SparkToro numbers, and
+the video sells a course. Treat all figures as direction only. Most of the post repeats Tier 9–12.
+Only new items are listed. Respect Tier 9.5, Tier 12.2 (publishing rate) and rule 7.
+
+1. **Open the Search Console "AI performance" report · Shaun.** The post says Google added it in
+   June 2026 (not verified here). Open it for both properties (`englishonline.training`,
+   `activities.englishonline.training`). Note whether it exists and what it shows. Write the
+   baseline in `docs/gsc-review-*.md`. It may give a free signal for Tier 10.7 and may reduce the
+   need for the broken Ahrefs capture in Tier 11.1. It shows visibility, not the AI answer text.
+2. **Split the 2026-11-06 re-pull into gaps and leaks · CC.** The existing `--csv` mode in
+   `scripts/search-opportunities.js` reads a queries-only export and prints one list (CTR under
+   5%, position 4–25). Extend it to read a queries + pages export and print two lists:
+   - **Gaps:** real impressions, position past 10, zero clicks, no page built for the query.
+   - **Leaks:** position 1–10, many impressions, CTR far below normal for that position (use the
+     export's own CTR-by-position, not a fixed 5%).
+   - Rank by impressions, leaks first. Use only numbers in the export; never invent volumes.
+   Apply Tier 12.6 to each leak (AI Overview above us, or a weak title?). Tier 9.1 did leaks by
+   hand; this makes it repeatable. Gaps feed Tier 12.8 and Tier 10 section additions, not new
+   pages (Tier 9.5).
+3. **Real-example rule in `eol-blog-writer` · Shaun (skill file).** Add to the rules: every post
+   opens with one real example from Shaun's own teaching or training work, every fact comes from
+   something that happened, and the end has one clear next step (the money page, Tier 12.1). No
+   student names or identifying detail (rule 1). Same file as Tier 10.6 and Tier 12.4; do together.
+4. **Check ChatGPT referrals · Shaun, then CC.** Shaun has said he sees ChatGPT referral
+   traffic. Find where he sees it. Then check whether the enquiry form, MailerLite sign-ups and
+   exercise starts can be split by referrer. If yes, report once: do these visitors act more than
+   Google visitors? The post claims AI visitors convert better (unverified); our own data beats it.
+
+### Already covered (do not re-add)
+Flywheel of linked posts and pinging: Tier 6 and IndexNow (#94). Own experience and first-hand
+data: Tier 12.12. Brand mentions across the web: Tier 12.13 and 12.15. Flat early months: Tier 12.3.
+Commercial intent and money pages: Tier 12.1. Reddit: Tier 12 "Not adopted". ChatSEO: same list.
+
+### Not adopted (with reasons)
+- **A network of small sites with about 1,500 AI-written posts and no human logging in:** breaks
+  rule 7 and Tier 12.2, and Google's spam policy on scaled content is aimed at exactly this. The
+  post's own author calls the network the riskiest part.
+- **Running a subreddit for views:** Tier 12 already says no; the audience is not there.
+
 ## Open decisions gating the plan
 **All six items from the 2026-08-07 audit reconciliation are now resolved and executed** (Shaun
 approved each): 2063–2066 published, "Blog Posts" 70 fixed and 1205 stubbed, 307 unpublished,
