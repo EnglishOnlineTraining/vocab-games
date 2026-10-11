@@ -27,28 +27,50 @@ ol{margin:0;padding-left:20px} li{margin:4px 0}
 .answer-key-head{background:var(--teal);color:#fff;padding:6px 12px;border-radius:var(--radius);font-weight:700}
 .eh{width:100%;border-collapse:collapse;margin:4px 0 8px;font-size:9.5pt}.eh th,.eh td{border:1px solid var(--border);padding:4px 6px;text-align:left;vertical-align:top}.eh th{background:var(--bg)}
 .answer-key h3{margin:10px 0 2px;color:var(--teal);font-size:10.5pt}
+.goals{border:1px solid var(--teal);border-left:6px solid var(--teal);border-radius:var(--radius);padding:6px 12px;margin:8px 0;font-size:10pt}.goals h2{margin:0 0 2px;font-size:10.5pt;color:var(--teal)}.goals ul{margin:0;padding-left:18px}
+.help{background:var(--bg);border:1px dashed var(--muted);border-radius:var(--radius);padding:4px 10px;margin:6px 0;font-size:10pt}.bonus{border:1px solid var(--gold);border-radius:var(--radius);padding:4px 10px;margin:6px 0;font-size:10pt}.pair{border:1px solid var(--teal);background:#eef6f6;border-radius:var(--radius);padding:4px 10px;margin:6px 0;font-size:10pt}
+.visual{border:1px solid var(--border);border-radius:var(--radius);padding:6px;margin:8px 0;text-align:center}.visual svg{max-width:100%;height:auto}.visual figcaption{font-size:9pt;color:var(--muted)}.group{border:2px solid var(--teal);background:#eef6f6;border-radius:var(--radius);padding:6px 12px;margin:8px 0}.vp{width:100%;border-collapse:collapse;font-size:9.5pt}.vp th,.vp td{border:1px solid var(--border);padding:4px 6px;text-align:left;vertical-align:top}.vp th{background:var(--bg)}
+.selfcheck{border:1px solid var(--border);border-radius:var(--radius);padding:6px 12px;margin:12px 0;font-size:10pt}.selfcheck p{margin:2px 0}
 .online-note{border:1px dashed var(--border);border-radius:var(--radius);text-align:center;color:var(--muted);font-size:9pt;padding:6px;margin:16px 0 8px}
 .sources{border:1px solid var(--border);border-radius:var(--radius);padding:8px 12px;font-size:9pt;color:var(--muted)}
 .sources h3{margin:0 0 4px;font-size:10pt;color:var(--text)}
 footer{text-align:center;font-size:9pt;color:var(--muted);margin-top:10px}
-@media print{body{padding:0}.section-head,.word-box,.reading-text,.answer-key-head,header,.badge{-webkit-print-color-adjust:exact;print-color-adjust:exact}.answer-key{page-break-before:always}}
+@media print{body{padding:0}.section-head,.word-box,.reading-text,.answer-key-head,header,.badge,.help,.bonus,.pair,.group{-webkit-print-color-adjust:exact;print-color-adjust:exact}.answer-key{page-break-before:always}}
 </style>
 </head>
 <body>
 <header><h1>{{TITLE}}</h1><p>{{SUBTITLE: topic · Klasse N · Gymnasium/Oberschule · CEFR level — no publisher or textbook names}}</p></header>
 <div class="info"><div>Name:</div><div>Klasse:</div><div>Datum:</div></div>
+<!-- Learning goals: 2-3 measurable "I can" sentences, English, one per exercise cluster. -->
+<div class="goals"><h2>Learning goals · I can …</h2><ul><li>{{I can + action verb + topic, e.g. explain two effects of …}}</li><li>{{I can …}}</li></ul></div>
 
 <!-- 3-4 exercise sections. Instructions and task content in English. -->
 <div class="section"><div class="section-head"><span>Exercise A · {{TYPE}}</span><span class="badge">___ / {{N}}</span></div>
 <div class="section-body"><p class="instr">{{English instruction}}</p>
 <div class="word-box">{{shuffled word box, where the task uses one}}</div>
-<ol><li>{{item with <span class="gap"></span>}}</li></ol></div></div>
+<ol><li>{{item with <span class="gap"></span>}}</li></ol>
+<!-- Differentiation, per exercise: one support aid AND one challenge. Bonus points are NOT part of the badge total. -->
+<div class="help"><strong>Need help?</strong> {{support aid: first letters, a hint, or a half-filled example}}</div>
+<div class="bonus"><strong>Fast finisher (bonus):</strong> {{extra task, e.g. write your own sentence with two of the words}}</div></div></div>
 
 <div class="section"><div class="section-head"><span>Exercise B · Reading</span><span class="badge">___ / {{N}}</span></div>
-<div class="section-body"><div class="reading-text">{{reading text}}</div><ol><li>{{question}}</li></ol></div></div>
+<div class="section-body"><!-- Own inline SVG/HTML figure (map, timeline, chart). Exercises must use it. No external images. -->
+<figure class="visual"><svg viewBox="0 0 400 200" role="img" aria-label="{{description}}">{{own drawing}}</svg><figcaption>{{Figure 1: caption; source of any real figures in Quellenangaben}}</figcaption></figure>
+<div class="reading-text">{{reading text. Hard words: mark with an asterisk*, e.g. erosion*}}</div>
+<p class="instr"><strong>Glossary:</strong> {{*word = simpler-English definition for the sense used in the text; one line per hard term, no German}}</p>
+<ol><li>{{question}}</li></ol>
+<div class="pair"><strong>Partner check (2 min):</strong> {{compare your answers to questions N–N with a partner; where you differ, find the line in the text that decides it}}</div></div></div>
+
+<div class="group"><strong>Group task (3-4 students, 10 min):</strong> {{roles; the decision the group must reach together; ONE product, e.g. a position paper for the debate. The writing task below uses this product.}}</div>
 
 <div class="section"><div class="section-head"><span>Exercise C · Writing</span><span class="badge">___ / {{N}}</span></div>
-<div class="section-body"><p class="instr">{{task, word count}}</p><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div></div>
+<div class="section-body"><p class="instr">{{situation that the task cannot do without: who you are, who reads it, what position the frame gives you. Task, word count. The opinion must use at least two facts from the reading text (name them)}}</p>
+<div class="help"><strong>Sentence starters:</strong> {{3-5 starters; a structure: opening · reason 1 with a fact from the text · reason 2 · conclusion}}</div>
+<div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+<div class="pair"><strong>Peer feedback:</strong> {{swap texts with a partner. Tick: □ two facts from the text used □ target structure used correctly □ clear opening and conclusion. Write one thing that works well and one thing to improve.}}</div></div></div>
+
+<div class="selfcheck"><strong>Check yourself</strong> (one line per learning goal above)
+<p>☐ {{I can … (goal 1)}}</p><p>☐ {{I can … (goal 2)}}</p></div>
 
 <div class="answer-key">
 <div class="answer-key-head">Lösungen / Answer Key</div>
@@ -60,6 +82,21 @@ footer{text-align:center;font-size:9pt;color:var(--muted);margin-top:10px}
 <tr><td>Sprache</td><td>{{target structures, number needed; accuracy}}</td><td>{{n}}</td></tr>
 <tr><td>Aufbau und Stil</td><td>{{structure, register, word count}}</td><td>{{n}}</td></tr></table>
 <p>{{full / half / no points: what earns each}}</p>
+</div>
+
+<div class="answer-key teacher">
+<div class="answer-key-head">Hinweise für Lehrkräfte</div>
+<h3>Zeitbedarf und Sozialformen</h3><p>{{about N Minuten gesamt; je Aufgabe: Einzelarbeit / Partnerarbeit / Plenum}}</p>
+<h3>Didaktischer Schwerpunkt und Lehrplanbezug</h3><p>{{one or two sentences: skill trained and why; Rahmenlehrplan Berlin-Brandenburg, Englisch, Kompetenzbereich (e.g. Leseverstehen); no publisher names}}</p>
+<h3>Verlaufsplan</h3>
+<table class="vp"><tr><th>Phase</th><th>Min.</th><th>Sozialform</th><th>Ablauf / Lehrkraft</th></tr>
+<tr><td>Einstieg</td><td>{{n}}</td><td>{{Plenum}}</td><td>{{…}}</td></tr>
+<tr><td>Erarbeitung</td><td>{{n}}</td><td>{{Einzel / Partner}}</td><td>{{…}}</td></tr>
+<tr><td>Sicherung</td><td>{{n}}</td><td>{{Gruppe}}</td><td>{{…}}</td></tr>
+<tr><td>Transfer</td><td>{{n}}</td><td>{{Einzel}}</td><td>{{…}}</td></tr></table>
+<h3>Einsatzmöglichkeiten</h3><p>{{z. B. Unterricht, Hausaufgabe, Vertretungsstunde, Wiederholung}}</p>
+<h3>Differenzierung</h3><p>{{which aids and bonus tasks exist and for whom}}</p>
+<h3>Reflexion nach der Stunde</h3><ul><li>{{Welche Aufgabe hat die meisten Fehler verursacht, und warum?}}</li><li>{{Haben die Lernenden die Fakten aus dem Text in ihrer Meinung genutzt?}}</li><li>{{Was ändere ich beim nächsten Einsatz?}}</li></ul>
 </div>
 
 <div class="online-note">Dieses Arbeitsblatt ist auch als interaktive Online-Übung mit automatischer Auswertung verfügbar – kostenlos und ohne Anmeldung.</div>
