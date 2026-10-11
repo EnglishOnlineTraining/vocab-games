@@ -104,6 +104,18 @@ Copy `assets/worksheet-template.html`, fill every `{{...}}`, and keep the struct
      states the roles, the decision to be made and the product.
    - **A Verlaufsplan** in the teacher notes: a short table of phases (Einstieg, Erarbeitung, Sicherung, Transfer) with
      minutes, Sozialform and what the teacher does.
+   **eduki's published quality criteria: tick each before handing over** (the reports above are scored against them):
+   - *Structured:* every exercise badge or heading names the learning goal it trains, and each goal is trained by at least one
+     exercise. Steps run from reproduction to application or transfer. A `Check yourself` line (tick boxes, one per goal,
+     `class="selfcheck"`) closes the student part so learners can see their own progress.
+   - *Differentiated:* help and bonus in every exercise (above), plus visuals, sentence starters or worked examples as support.
+   - *Activating:* varied formats, and at least one task that analyses, applies or transfers (not only recalls).
+   - *Unprejudiced:* invented names and roles are mixed and non-stereotypical (no gendered jobs or hobbies, varied
+     backgrounds, never a real student). Terms are neutral.
+   - *Everyday life:* the topic is tied to something learners meet now (news, school, social media, travel, jobs). Say so in the
+     task, not only in the title.
+   - *Usable:* nothing for the teacher to prepare or look up; clear layout and instructions. The teacher notes name the contexts
+     it suits (lesson, homework, cover lesson, revision).
    Keep it to about 25 points and three to four exercises: these additions are short boxes, not new tasks.
 4. **Answer key on its own page** (mandatory), visually distinct so teachers can remove it. Every answer, a one-sentence
    reason for grammar items (the site's review pages do the same), and a Musterantwort for writing tasks.

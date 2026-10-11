@@ -22,6 +22,8 @@ grep -q 'Hinweise für Lehrkräfte' "$f"                     || fail "teacher no
 grep -q 'Reflexion' "$f"                                   || fail "teacher reflection questions missing"
 grep -q 'Lehrplan' "$f"                                    || fail "curriculum reference missing in teacher notes"
 grep -qE '<svg|class="visual"' "$f"                       || fail "visual artifact (inline SVG figure) missing"
+grep -q 'class="selfcheck"' "$f"                            || fail "Check yourself (self-assessment) missing"
+grep -q 'Einsatzmöglichkeiten' "$f"                      || fail "teaching contexts missing in teacher notes"
 grep -q 'class="group"' "$f"                               || fail "group task with a shared product missing"
 grep -q 'Verlaufsplan' "$f"                                || fail "Verlaufsplan (phases table) missing in teacher notes"
 grep -q 'badge' "$f"                                       || fail "no points badge"
