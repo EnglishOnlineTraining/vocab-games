@@ -82,8 +82,10 @@ Copy `assets/worksheet-template.html`, fill every `{{...}}`, and keep the struct
      defined in simpler English (never German).
    - **Opinion tied to the text:** a task that asks for the student's view must require at least two named facts from the
      reading text, and the Erwartungshorizont must credit that.
-   - **Differentiation in every exercise:** a `Need help?` aid (first letters, hint, worked example) and a `Fast finisher (bonus)`
-     task. Bonus points sit outside the badge total. The writing task gets sentence starters and a paragraph structure.
+   - **Differentiation in every exercise:** a `Fast finisher (bonus)` task in the exercise, and a `Need help?` aid (first letters,
+     hint, worked example) that is *not* shown beside the task: each exercise carries only the line `Need help? Look below for tips:
+     Help corner A`, and the tips sit together in one `Help corner` box after the last exercise, so students try first.
+     The writing task's sentence starters and structure may stay with the task. Bonus points sit outside the badge total. The writing task gets sentence starters and a paragraph structure.
    - **Cooperation:** at least one `Partner check` after a reading or gap task, and a `Peer feedback` checklist after the
      writing task (swap texts, tick criteria, one strength, one improvement).
    - **Page for teachers (`Hinweise für Lehrkräfte`, German, removable with the key):** time needed and social forms per

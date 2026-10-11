@@ -31,6 +31,7 @@ ol{margin:0;padding-left:20px} li{margin:4px 0}
 .help{background:var(--bg);border:1px dashed var(--muted);border-radius:var(--radius);padding:4px 10px;margin:6px 0;font-size:10pt}.bonus{border:1px solid var(--gold);border-radius:var(--radius);padding:4px 10px;margin:6px 0;font-size:10pt}.pair{border:1px solid var(--teal);background:#eef6f6;border-radius:var(--radius);padding:4px 10px;margin:6px 0;font-size:10pt}
 .visual{border:1px solid var(--border);border-radius:var(--radius);padding:6px;margin:8px 0;text-align:center}.visual svg{max-width:100%;height:auto}.visual figcaption{font-size:9pt;color:var(--muted)}.group{border:2px solid var(--teal);background:#eef6f6;border-radius:var(--radius);padding:6px 12px;margin:8px 0}.vp{width:100%;border-collapse:collapse;font-size:9.5pt}.vp th,.vp td{border:1px solid var(--border);padding:4px 6px;text-align:left;vertical-align:top}.vp th{background:var(--bg)}
 .selfcheck{border:1px solid var(--border);border-radius:var(--radius);padding:6px 12px;margin:12px 0;font-size:10pt}.selfcheck p{margin:2px 0}
+.pointer{font-size:9.5pt;color:var(--muted);margin:6px 0;font-style:italic}.helpcorner{border:2px dashed var(--muted);border-radius:var(--radius);padding:6px 12px;margin:12px 0;break-inside:avoid}.helpcorner h2{margin:0 0 4px;font-size:10.5pt;color:var(--muted)}
 .online-note{border:1px dashed var(--border);border-radius:var(--radius);text-align:center;color:var(--muted);font-size:9pt;padding:6px;margin:16px 0 8px}
 .sources{border:1px solid var(--border);border-radius:var(--radius);padding:8px 12px;font-size:9pt;color:var(--muted)}
 .sources h3{margin:0 0 4px;font-size:10pt;color:var(--text)}
@@ -50,7 +51,7 @@ footer{text-align:center;font-size:9pt;color:var(--muted);margin-top:10px}
 <div class="word-box">{{shuffled word box, where the task uses one}}</div>
 <ol><li>{{item with <span class="gap"></span>}}</li></ol>
 <!-- Differentiation, per exercise: one support aid AND one challenge. Bonus points are NOT part of the badge total. -->
-<div class="help"><strong>Need help?</strong> {{support aid: first letters, a hint, or a half-filled example}}</div>
+<div class="pointer">Need help? Look below for tips: <strong>Help corner A</strong> (last page of the exercises).</div>
 <div class="bonus"><strong>Fast finisher (bonus):</strong> {{extra task, e.g. write your own sentence with two of the words}}</div></div></div>
 
 <div class="section"><div class="section-head"><span>Exercise B · Reading</span><span class="badge">___ / {{N}}</span></div>
@@ -68,6 +69,12 @@ footer{text-align:center;font-size:9pt;color:var(--muted);margin-top:10px}
 <div class="help"><strong>Sentence starters:</strong> {{3-5 starters; a structure: opening · reason 1 with a fact from the text · reason 2 · conclusion}}</div>
 <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
 <div class="pair"><strong>Peer feedback:</strong> {{swap texts with a partner. Tick: □ two facts from the text used □ target structure used correctly □ clear opening and conclusion. Write one thing that works well and one thing to improve.}}</div></div></div>
+
+<!-- Help corner: all "Need help?" hints live here, below the exercises, so students try first. One tip per exercise, labelled A, B, C. Exercise boxes only point here. -->
+<div class="helpcorner"><h2>Help corner · tips for Exercises A–C</h2>
+<div class="help"><strong>Help corner A:</strong> {{support aid: first letters, a hint, or a half-filled example}}</div>
+<div class="help"><strong>Help corner B:</strong> {{reading strategy: where to look first, key words}}</div>
+</div>
 
 <div class="selfcheck"><strong>Check yourself</strong> (one line per learning goal above)
 <p>☐ {{I can … (goal 1)}}</p><p>☐ {{I can … (goal 2)}}</p></div>
