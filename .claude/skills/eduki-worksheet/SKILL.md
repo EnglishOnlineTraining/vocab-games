@@ -74,6 +74,37 @@ Copy `assets/worksheet-template.html`, fill every `{{...}}`, and keep the struct
 2. Student info row: Name, Klasse, Datum.
 3. 3 to 4 exercises, each with a coloured bar and a points badge `___ / N`. Mix types: vocabulary matching with a
    shuffled word box, gap fill, reading comprehension, grammar transformation, short writing. About 25 points total.
+   **What eduki's quality review asked for (first worksheet, 2026-10-10: strong on structure, key and activation; "partially met"
+   on the rest).** Every new worksheet needs all of these, using the template's blocks:
+   - **Learning goals:** a `Learning goals · I can …` box under the Name row, 2 to 3 measurable sentences with an action verb
+     ("I can explain two effects of mass tourism"). English, per the language rule.
+   - **Terms explained in context:** mark hard words in the reading text with `*` and add a one-line `Glossary` under it,
+     defined in simpler English (never German).
+   - **Opinion tied to the text:** a task that asks for the student's view must require at least two named facts from the
+     reading text, and the Erwartungshorizont must credit that.
+   - **Differentiation in every exercise:** a `Need help?` aid (first letters, hint, worked example) and a `Fast finisher (bonus)`
+     task. Bonus points sit outside the badge total. The writing task gets sentence starters and a paragraph structure.
+   - **Cooperation:** at least one `Partner check` after a reading or gap task, and a `Peer feedback` checklist after the
+     writing task (swap texts, tick criteria, one strength, one improvement).
+   - **Page for teachers (`Hinweise für Lehrkräfte`, German, removable with the key):** time needed and social forms per
+     exercise, the skill trained and the Rahmenlehrplan Berlin-Brandenburg link (competence area, no publisher names), the
+     differentiation on offer, and 3 reflection questions for after the lesson.
+   **Added after the second review (EU/UK worksheet, same day: same gaps, plus four new ones):**
+   - **A visual artifact in the file:** a map, diagram, timeline or infographic that the exercises actually use (read a figure
+     off it, label it, compare two sources). Draw it as inline SVG or HTML/CSS in the file: no external images, no links, and
+     the Quellenangaben "Layout & Grafik" line must say it is own work. Real figures on it go through `fact-check-blogs`.
+     Teachers should not have to find extra media.
+   - **More than written reproduction and production:** at least one exercise of another kind, e.g. sort or rank, read a
+     chart, decide between options and justify, a short speaking or role-play phase, or a text-with-error hunt.
+   - **The situation must be needed:** if the writing task has a frame (a school debate, a letter, a blog), the task must
+     only work inside it: audience, purpose and position set by the frame, and the Erwartungshorizont marks them. A frame
+     that could be deleted without changing the task is decoration.
+   - **A shared product, not just a swap:** one group phase (3 to 4 students) where the group must agree and produce one
+     thing, e.g. a one-page position paper for the debate or a ranked list with a joint justification. The `Group task` box
+     states the roles, the decision to be made and the product.
+   - **A Verlaufsplan** in the teacher notes: a short table of phases (Einstieg, Erarbeitung, Sicherung, Transfer) with
+     minutes, Sozialform and what the teacher does.
+   Keep it to about 25 points and three to four exercises: these additions are short boxes, not new tasks.
 4. **Answer key on its own page** (mandatory), visually distinct so teachers can remove it. Every answer, a one-sentence
    reason for grammar items (the site's review pages do the same), and a Musterantwort for writing tasks.
    **Erwartungshorizont (mandatory whenever there is a writing or other open task):** after the key, a table with
@@ -108,14 +139,14 @@ No external images, fonts or scripts: a single self-contained file.
 ~/.claude/skills/eduki-worksheet/scripts/check-worksheet.sh <file>.html
 ```
 
-It fails on links, domains, email addresses, publisher names, an unfilled `{{placeholder}}`, or a missing answer key, Erwartungshorizont (when a writing task is present),
+It fails on a missing learning-goals box, help/bonus/partner blocks or teacher notes, and on links, domains, email addresses, publisher names, an unfilled `{{placeholder}}`, or a missing answer key, Erwartungshorizont (when a writing task is present),
 Quellenangaben, student row, points badge, licence line, online note or print CSS. It cannot see student names, so read the
 file once for any. Then confirm the points add up and every answer in the key is actually correct.
 
 ## The listing (give this to Shaun with the PDF)
 
 - **Beschreibung (German):** `Arbeitsblatt zum Thema "[Topic]" für den Englischunterricht Klasse [N]. Enthält [exercise types in
-  German]. Mit Punktevergabe ([total] Punkte) und Lösungen. Auch als kostenlose interaktive Online-Übung verfügbar.`
+  German]. Mit Lernzielen, Differenzierung (Hilfen und Zusatzaufgaben), Partnerphasen, Punktevergabe ([total] Punkte), Lösungen, Erwartungshorizont und Hinweisen für Lehrkräfte. Auch als kostenlose interaktive Online-Übung verfügbar.`
   No URL, no site name, no publisher.
 - **Tags:** Englisch, Klasse [N], school type (Gymnasium or Oberschule, plus Realschule/Hauptschule where it fits), topic
   keywords, Arbeitsblatt, CEFR level, grammar and skill keywords. No publisher or textbook names.
