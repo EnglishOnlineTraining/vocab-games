@@ -909,10 +909,7 @@ function countBlock(file, lang) {
  * Returns null when the page has no subtitle, which is the signal to skip it.
  */
 function insertAfterSubtitle(html, block) {
-  let m = html.match(/<p class="page-subtitle">[\s\S]*?<\/p>/i);
-  // grammar-activities.html predates the shared hub layout and has no
-  // .page-subtitle — its intro sits in a .gr-hub-hero instead.
-  if (!m) m = html.match(/<div class="gr-hub-hero">[\s\S]*?<p>[\s\S]*?<\/p>/i);
+  const m = html.match(/<p class="page-subtitle">[\s\S]*?<\/p>/i);
   if (!m) return null;
   return insertAt(html, m.index + m[0].length, block);
 }
