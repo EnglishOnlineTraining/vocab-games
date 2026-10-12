@@ -6,19 +6,70 @@
   <title>ESL Grammar Exercises</title>
   <meta name="description" content="Free interactive ESL grammar exercises for the topics learners struggle with most — articles, prepositions, tenses, conditionals and more. No sign-up required.">
   <link rel="canonical" href="https://activities.englishonline.training/esl-grammar-activities.html">
-  <link rel="stylesheet" href="style.css">
   <style>
-    .gr-hub-hero{max-width:760px;margin:0 auto;padding:2.5rem 1rem 1.5rem;text-align:center}
-    .gr-hub-hero h1{font-size:1.8rem;font-weight:700;color:var(--ink);margin-bottom:.6rem}
-    .gr-hub-hero p{font-size:1rem;color:var(--muted);max-width:520px;margin:0 auto}
-    .gr-hub-list{max-width:760px;margin:0 auto;padding:0 1rem 3rem;display:grid;gap:1rem}
-    .gr-topic-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.5rem;display:flex;flex-direction:column;gap:.6rem}
-    .gr-topic-card h2{font-size:1.2rem;color:var(--ink);display:flex;align-items:center;gap:.5rem}
-    .gr-topic-card p{font-size:.9rem;color:var(--muted);line-height:1.6}
-    .gr-topic-links{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.4rem}
-    .gr-coming-soon{max-width:760px;margin:0 auto;padding:0 1rem 3rem}
-    .gr-coming-soon ul{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.5rem 1.5rem 1.5rem 2.2rem;margin:0;color:var(--muted);font-size:.95rem;line-height:1.9}
-  </style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1a3a5c;--blue-mid:#1a6eb5;--blue-lt:#e8f2fb;
+  --gold:#c9a227;--gold-lt:#f5e6b0;--teal:#2b7a78;--green:#27ae60;--red:#c0392b;
+  --dark:#1d2b3a;--mid:#4a5568;--muted:#6b7a8d;--border:#dce3ec;--bg:#f0f8ff;--white:#ffffff;
+  --brand-title:#1a3a5c;--hero-from:#12314f;--hero-to:#1a3a5c;
+  --radius:12px;--shadow:0 2px 16px rgba(26,58,92,.1);--shadow-hover:0 4px 20px rgba(26,110,181,.18);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --blue-lt:#14324c;--dark:#e7eef6;--mid:#b3c0cf;--muted:#8a99aa;--border:#28394d;
+    --bg:#0e1620;--white:#16212e;--brand-title:#cfe0f4;--blue-mid:#5aa8f0;
+    --hero-from:#0b1c30;--hero-to:#122a41;
+    --shadow:0 2px 18px rgba(0,0,0,.45);--shadow-hover:0 6px 26px rgba(0,0,0,.6);
+  }
+}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;padding-bottom:clamp(2.5rem,6vw,4rem);line-height:1.5;-webkit-font-smoothing:antialiased}
+.skip-link{position:absolute;left:.5rem;top:-3rem;z-index:100;background:var(--gold);color:#1a1a1a;font-weight:700;padding:.5rem 1rem;border-radius:8px;transition:top .2s}
+.skip-link:focus{top:.5rem}
+.site-header{position:relative;background:linear-gradient(160deg,var(--hero-from),var(--hero-to));color:#fff;padding:clamp(1.8rem,5vw,2.5rem) 1rem clamp(1.6rem,4vw,2rem);text-align:center;overflow:hidden}
+.site-header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--teal))}
+.site-header .logo{font-size:.8rem;font-weight:700;color:var(--gold-lt);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.6rem;display:block}
+.site-header h1{font-size:clamp(1.5rem,4.5vw,2.3rem);font-weight:800;line-height:1.12;margin-bottom:.4rem}
+.site-header p{color:rgba(255,255,255,.8);font-size:clamp(.9rem,2.2vw,1rem);max-width:34rem;margin:0 auto}
+.breadcrumb{background:var(--white);border-bottom:1px solid var(--border);padding:.75rem 1rem;margin-bottom:1rem}
+.breadcrumb a{color:var(--blue-mid);text-decoration:none;font-size:.9rem}
+.breadcrumb a:hover{text-decoration:underline}
+.container{max-width:880px;margin:0 auto;padding:clamp(1.4rem,4vw,2rem) 1rem}
+.page-title{font-size:clamp(1.25rem,3.4vw,1.5rem);font-weight:800;color:var(--brand-title);margin-bottom:.5rem}
+.page-subtitle{font-size:.95rem;color:var(--muted);margin-bottom:1.5rem}
+.info-box{background:var(--gold-lt);border:1.5px solid var(--gold);border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1.75rem;font-size:.85rem;color:#1a3a5c}
+.group-heading{font-size:1.1rem;font-weight:800;color:var(--brand-title);margin:1.5rem 0 .9rem}
+.cta-button{display:inline-block;margin-bottom:2rem;padding:.75rem 1.5rem;background:var(--teal);color:#fff;border-radius:var(--radius);text-decoration:none;font-weight:600;font-size:.95rem;transition:background .2s,transform .15s}
+.cta-button:hover{background:#1f5a57;transform:translateY(-2px)}
+.cards-grid{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:clamp(.7rem,2vw,.9rem);margin-bottom:2rem}
+.cards-grid li{display:flex}
+.activity-card,.exercise-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);border:1.5px solid var(--border);padding:1.2rem 1.25rem;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:.4rem;width:100%;transition:border-color .2s,box-shadow .2s,transform .15s}
+.activity-card:hover,.exercise-card:hover,.activity-card:focus-visible,.exercise-card:focus-visible{border-color:var(--blue-mid);box-shadow:var(--shadow-hover);transform:translateY(-2px);outline:none}
+.activity-card:focus-visible,.exercise-card:focus-visible{outline:3px solid var(--blue-mid);outline-offset:2px}
+.card-icon{font-size:1.5rem;line-height:1}
+.card-title{font-size:.98rem;font-weight:700;color:var(--brand-title)}
+.card-meta{font-size:.78rem;color:var(--muted)}
+.card-tag{display:inline-block;margin-top:.3rem;font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.15rem .55rem;border-radius:20px;background:var(--blue-lt);color:var(--blue-mid)}
+.site-footer{text-align:center;font-size:.8rem;color:var(--muted);margin-top:clamp(2rem,5vw,3rem);padding:0 1rem}
+.site-footer a{color:var(--blue-mid)}
+@media(max-width:480px){.cards-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.activity-card,.exercise-card{transition:none}}
+.gr-hub-list{display:grid;gap:1rem;margin-bottom:2rem}
+.gr-topic-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);border:1.5px solid var(--border);padding:1.2rem 1.25rem;display:flex;flex-direction:column;gap:.5rem}
+.gr-topic-card h2{font-size:1.05rem;font-weight:700;color:var(--brand-title);display:flex;align-items:center;gap:.5rem}
+.gr-topic-card p{font-size:.9rem;color:var(--muted);line-height:1.6}
+.gr-topic-links{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.4rem}
+.btn{display:inline-flex;align-items:center;padding:.5rem 1rem;border-radius:8px;font-size:.85rem;font-weight:600;text-decoration:none;transition:transform .15s,background .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible{outline:3px solid var(--blue-mid);outline-offset:2px}
+.btn-gold{background:var(--gold);color:#1a3a5c}
+.btn-gold:hover{background:#b8911f}
+.btn-outline{border:2px solid var(--blue-mid);color:var(--blue-mid)}
+.btn-outline:hover{background:var(--blue-lt)}
+.gr-coming-soon{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:1.2rem 1.25rem;margin-bottom:2rem;font-size:.9rem;color:var(--muted)}
+.gr-coming-soon ul{margin:.5rem 0 0 1.2rem;line-height:1.8}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}}
+</style>
 <!-- HEAD:START — generated by scripts/build-head.js, do not edit by hand -->
 <script src="consent.js" defer></script>
 <meta name="color-scheme" content="light dark">
@@ -44,34 +95,26 @@
 <!-- HEAD:END -->
 </head>
 <body>
-<!-- NOSCRIPT:START — generated by scripts/build-head.js, do not edit by hand -->
-<noscript>
-  <div style="background:#fdf3d8;border-bottom:2px solid #c9a227;color:#1d2b3a;padding:.9rem 1rem;font:1rem/1.5 'Segoe UI',system-ui,sans-serif;text-align:center">
-    <strong lang="de">Diese Übung braucht JavaScript.</strong>
-    <span lang="de">Bitte aktiviere JavaScript in deinem Browser — sonst bleiben die Aufgaben leer.</span>
-    <br>
-    <strong>This exercise needs JavaScript.</strong>
-    <span>Please switch JavaScript on in your browser, otherwise the tasks stay empty.</span>
-  </div>
-</noscript>
-<!-- NOSCRIPT:END -->
 
-<header class="app-header">
-  <div class="header-inner">
-    <a class="header-logo" href="https://englishonline.training">englishonline.training</a>
-    <a class="header-logo" href="activities.html" style="font-size:.75rem;opacity:.8">&larr; All Exercises</a>
-  </div>
+<a class="skip-link" href="#main">Skip to activities</a>
+
+<header class="site-header">
+  <span class="logo">EnglishOnline.training</span>
+  <h1>🌍 ESL Grammar Exercises</h1>
 </header>
 
-<div class="gr-hub-hero">
-  <h1>🌍 ESL Grammar Exercises</h1>
-  <p>Interactive exercises for the English grammar topics learners search for and get wrong most often — ranked by real search demand, learner-error-corpus data, and teaching attention. Free, no sign-up, for learners anywhere.</p>
+<nav class="breadcrumb">
+  <a href="activities.html">← Back to Activities</a>
+</nav>
+
+<main class="container" id="main">
+
+  <p class="page-subtitle">Interactive exercises for the English grammar topics learners search for and get wrong most often — ranked by real search demand, learner-error-corpus data, and teaching attention. Free, no sign-up, for learners anywhere.</p>
 <!-- COUNT:START — generated by scripts/build-head.js, do not edit by hand -->
   <p class="page-count" style="font-size:.85rem;font-weight:600;color:var(--muted);margin:-1.15rem 0 1.5rem">2 exercises</p>
 <!-- COUNT:END -->
-</div>
 
-<div class="gr-hub-list">
+  <div class="gr-hub-list">
 <!-- HUBCARDS:START — generated by scripts/build-category-hubs.js, do not edit by hand -->
   <div class="gr-topic-card">
     <h2>📰 Articles — a, an, the &amp; zero article</h2>
@@ -89,24 +132,26 @@
     </div>
   </div>
 <!-- HUBCARDS:END -->
-</div>
+  </div>
+  <div class="gr-coming-soon">
+    <p>More exercises coming soon. Still to come from the most common problem areas:</p>
+    <ul>
+      <li>The tense system as a whole</li>
+      <li>Present perfect (vs. past simple)</li>
+      <li>Prepositions</li>
+      <li>Subject-verb agreement</li>
+      <li>Conditionals</li>
+      <li>Passive voice</li>
+      <li>Modal verbs</li>
+    </ul>
+  </div>
 
-<div class="gr-coming-soon">
-  <p style="color:var(--muted);font-size:.9rem;margin-bottom:.8rem">More exercises coming soon. The full topic list — ranked by evidence, Tier 1 first — lives in <code>esl-grammar-pool.json</code>. Remaining Tier 1 ("Big Eight"):</p>
-  <ul>
-    <li>The tense system as a whole</li>
-    <li>Present perfect (vs. past simple)</li>
-    <li>Prepositions</li>
-    <li>Subject-verb agreement</li>
-    <li>Conditionals</li>
-    <li>Passive voice</li>
-    <li>Modal verbs</li>
-  </ul>
-</div>
+</main>
 
-<script src="exercise.js"></script>
-<!-- EXPLAIN:START — generated by scripts/build-head.js from data/explanations.json, do not edit by hand -->
-<script>var EXPLAIN = {};</script>
-<!-- EXPLAIN:END -->
+<footer class="site-footer">
+  <a href="https://englishonline.training">EnglishOnline.training</a>
+  <div style="margin-top:.4rem">Written and taught by <a href="https://englishonline.training/about/">Shaun Trezise</a> — TEFL-certified English teacher in Berlin, 10+ years’ experience.</div>
+</footer>
+
 </body>
 </html>
