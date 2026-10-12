@@ -182,6 +182,7 @@ td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-
 
     <section>
       <div class="sec-head"><h2>Mark the writing</h2><span class="count" id="prog"></span></div>
+      <div id="flags"></div>
       <div id="list"></div>
     </section>
 
@@ -217,18 +218,22 @@ var DATA = /*DATA*/;
    logic, and carrying 700 lines of vocabulary-test code for thirty lines of
    parser would be the worse trade. Excel quotes any cell holding a newline,
    which an essay usually does, so quoted cells must survive intact. */
+/* A quote only opens a quoted cell at the START of a cell, as RFC 4180 and
+   Excel both produce. Student essays quote titles mid-sentence and the
+   quotes are often unbalanced; treating one of those as an opening quote
+   swallows every following tab and newline and merges rows together. */
 function splitDelimited(text, delim) {
-  var rows = [], row = [], cell = '', q = false;
+  var rows = [], row = [], cell = '', q = false, atStart = true;
   for (var i = 0; i < text.length; i++) {
     var c = text[i];
     if (q) {
       if (c === '"') { if (text[i + 1] === '"') { cell += '"'; i++; } else q = false; }
       else cell += c;
-    } else if (c === '"') q = true;
-    else if (c === delim) { row.push(cell); cell = ''; }
+    } else if (c === '"' && atStart) { q = true; atStart = false; }
+    else if (c === delim) { row.push(cell); cell = ''; atStart = true; }
     else if (c === '\r') { /* ignore */ }
-    else if (c === '\n') { row.push(cell); rows.push(row); row = []; cell = ''; }
-    else cell += c;
+    else if (c === '\n') { row.push(cell); rows.push(row); row = []; cell = ''; atStart = true; }
+    else { cell += c; atStart = false; }
   }
   if (cell !== '' || row.length) { row.push(cell); rows.push(row); }
   return rows.filter(function (r) { return r.some(function (c) { return String(c).trim() !== ''; }); });
@@ -323,12 +328,16 @@ function bandClass(np) { return np <= 3 ? 'bad' : np <= 6 ? 'warn' : 'good'; }
 
 /* ── state ── */
 var S = [], U = null, unitKey = '', storeKey = '', M = {};
+function keyOf(s) {
+  var same = S.filter(function (x) { return x.name === s.name; });
+  return same.length > 1 ? s.name + '#' + s.line : s.name;
+}
 function $(id) { return document.getElementById(id); }
 function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 function words(t) { t = String(t || '').trim(); return t ? t.split(/\s+/).length : 0; }
 function save() { try { localStorage.setItem(storeKey, JSON.stringify(M)); } catch (e) {} }
 function markOf(s) {
-  var m = M[s.name] || {};
+  var m = M[keyOf(s)] || {};
   return { inhalt: m.inhalt == null ? null : m.inhalt, sprache: m.sprache == null ? null : m.sprache,
            met: m.met || [], comment: m.comment || '' };
 }
@@ -391,6 +400,8 @@ function render() {
         + '<td class="n">' + (k[0] < 10 ? '0' + k[0] : k[0]) + '</td>'
         + '<td>' + esc(k[1] + ' \u00b7 ' + WORDS[k[0]]) + '</td></tr>';
     }).join('');
+  $('flags').innerHTML = flagBlock(S);
+
   $('list').innerHTML = S.map(function (s, si) {
     var m = markOf(s), n = words(s.essay), range = U && U.words;
     var short = range && n && n < range[0], over = range && n > range[1];
@@ -468,7 +479,7 @@ function upd(si) {
 }
 
 function toggleCrit(si, ci) {
-  var s = S[si], m = M[s.name] = M[s.name] || {};
+  var s = S[si], k = keyOf(s), m = M[k] = M[k] || {};
   m.met = m.met || [];
   var at = m.met.indexOf(ci);
   if (at === -1) m.met.push(ci); else m.met.splice(at, 1);
@@ -480,7 +491,7 @@ function toggleCrit(si, ci) {
   upd(si); renderTable();
 }
 function setPoints(si, which, v) {
-  var s = S[si], m = M[s.name] = M[s.name] || {};
+  var s = S[si], k = keyOf(s), m = M[k] = M[k] || {};
   var key = which === 'i' ? 'inhalt' : 'sprache';
   var max = which === 'i' ? maxima()[0] : maxima()[1];
   var n = v === '' ? null : Number(v);
@@ -490,9 +501,50 @@ function setPoints(si, which, v) {
   save(); upd(si); renderTable();
 }
 function setComment(si, v) {
-  var s = S[si], m = M[s.name] = M[s.name] || {};
+  var s = S[si], k = keyOf(s), m = M[k] = M[k] || {};
   m.comment = v; save(); renderTable();
 }
+
+/* ── rows that need a human eye ──
+   Nothing here is the tool's fault and nothing is corrected automatically: the
+   rows arrive like this. The Class column is the one worth knowing about — it
+   is the only answer column the Make scenario does NOT give Excel's text prefix
+   (Ex1–Ex5 and Score all carry a leading apostrophe), so a student who types
+   "10 a" has it stored as a time. Three classes of problem land a student in the
+   wrong place or get them marked when they should not be, so they are named
+   rather than silently marked. */
+function rowFlags(s, all) {
+  var f = [], cls = String(s.cls || '').trim(), name = String(s.name || '').trim();
+  if (/\d{1,2}:\d{2}/.test(cls) || /\b(AM|PM)\b/i.test(cls))
+    f.push('the class reads as a time — Excel coerced it, it is not what the student typed');
+  else if (cls && !/\d/.test(cls))
+    f.push('the class has no year number in it — a surname in the wrong field?');
+  else if (!cls) f.push('no class given');
+  if (!name) f.push('no name given');
+  else if (name.indexOf(',') !== -1 || name.split(/\s+/).length > 4)
+    f.push('the name field holds a sentence, not a name');
+  if (all.filter(function (x) { return x.name === s.name; }).length > 1)
+    f.push('another row has this name too — marks are kept apart by row number');
+  var w = words(s.essay);
+  if (w && w < 25) f.push('only ' + w + ' words — check this is a real attempt');
+  return f;
+}
+
+function flagBlock(counted) {
+  var rows = counted.map(function (s, i) { return { s: s, i: i, f: rowFlags(s, counted) }; })
+    .filter(function (r) { return r.f.length; });
+  if (!rows.length) return '';
+  return '<section style="margin-top:0"><div class="sec-head"><h2>Check these rows</h2>'
+    + '<span class="count">' + rows.length + ' of ' + counted.length + '</span></div>'
+    + '<p class="note" style="margin-bottom:12px">The rows came in like this \u2014 nothing has been '
+    + 'changed. Worth a look before you mark them.</p>'
+    + '<ul class="plain">' + rows.map(function (r) {
+      return '<li><span class="num" style="color:var(--muted);min-width:2rem">' + (r.i + 1) + '.</span>'
+        + '<span class="who">' + esc(r.s.name || '(no name)') + '</span>'
+        + '<span>' + r.f.map(function (x) { return esc(x); }).join('<br>') + '</span></li>';
+    }).join('') + '</ul></section>';
+}
+
 
 /* ── the feedback line ──
    What goes in column 11 of abitursubs. It names the two marks, the overall
