@@ -1059,6 +1059,30 @@ afterwards (rule 7).
      were attached to it. **Fixed 2026-10-07:** media 107 and 388 detached (parent 0; files and
      their other uses untouched); `/about-me/` is gone from `image-sitemap-1.xml`.
 
+9. **Search Console, 2026-10-12: the activities site is losing indexed pages · open.**
+   - Email "Some fixes failed" (domain property): the validation started 2026-10-07 failed on
+     2026-10-10 with 16 failed, 150 pending. The 16 include **all 10 hubs** (8 year hubs,
+     `abitur-activities`, `esl-grammar-activities`), recrawled 2026-10-07 *with* their new intros
+     and rejected again; `8c-going-west` and `uni-presentation-task`, which **were indexed and
+     have been dropped**; the two blog posts of 2026-10-08/09; and two `/feed/` URLs.
+   - Activities sitemap, indexed pages: **48 (report of 2026-09-21) → 24 (2026-10-09)**;
+     "Crawled – not indexed" 57 → 76. The main site is stable, so the whole fall is on the
+     activities host. The activities property has had no search clicks since late August.
+   - Live test of `8c-going-west.html` (2026-10-12): fetch OK, all resources load, no console
+     errors, "Page can be indexed". Nothing technically broken.
+   - **What Google sees on load:** `style.css` sets `.step { display: none; }`, so only step 0
+     is visible until a student starts. Visible vs hidden words: `8c-going-west` 83 / 964,
+     `10c-canada-schools` 101 / 917, `10g-social-media` 109 / 1,246, `be-property-management`
+     48 / 629. The rendered mobile page is ~1,744 px tall: title, "at a glance" box and the
+     name form, the same on every exercise. Google says it indexes content hidden for UX, so
+     this is a hypothesis, not a proven cause: but the *visible* page is thin and near-identical
+     across ~230 exercises.
+   - Activities homepage (decision A4) went live 2026-10-09 (#116); not recrawled yet.
+   - **Proposed next step (needs Shaun):** a controlled test, not a site-wide change. On ~5
+     rejected exercise pages, make the reading text (or the first exercise) visible on load;
+     request indexing for those 5; compare with 5 untouched rejected pages after 2–3 weeks.
+     Stop requesting indexing for anything else until then: requests are not the bottleneck.
+
 ## Tier 10 — AI search: chunk-ready headings and sub-query coverage (2026-10-07) · Shaun + CC
 Source: Google Cloud Vertex AI Search (Discovery Engine) docs. They list these ranking signals:
 base rank, Gecko embeddings, Jetstream, BM25, pCTR, freshness, boost/bury. The parser splits pages
