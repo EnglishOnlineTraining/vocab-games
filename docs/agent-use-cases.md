@@ -97,6 +97,11 @@ published in the previous month, then creates **one draft campaign** in MailerLi
 *EOL – Teachers* group, in English, colleague to colleague (`VOICE.md`). It never sends or
 schedules: Shaun sends. No new pages means no draft.
 
+Routine `Teachers newsletter draft` (`trig_01FosGo54R1tsTG6jrLBTxKv`) exists but is **disabled**:
+it was created without the MailerLite connector and without the vocab-games repo as a source.
+Add both in the claude.ai Routines settings, then enable it. Merge `scripts/newsletter-digest.js`
+to main first; the Routine stops if the script is missing.
+
 ```bash
 node scripts/newsletter-digest.js                  # last calendar month
 node scripts/newsletter-digest.js --month 2026-09 --json
