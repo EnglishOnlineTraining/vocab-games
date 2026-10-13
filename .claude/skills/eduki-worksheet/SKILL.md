@@ -159,14 +159,5 @@ file once for any. Then confirm the points add up and every answer in the key is
 
 ## The listing (give this to Shaun with the PDF)
 
-- **Beschreibung (German):** `Arbeitsblatt zum Thema "[Topic]" für den Englischunterricht Klasse [N]. Enthält [exercise types in
-  German]. Mit Lernzielen, Differenzierung (Hilfen und Zusatzaufgaben), Partnerphasen, Punktevergabe ([total] Punkte), Lösungen, Erwartungshorizont und Hinweisen für Lehrkräfte. Auch als kostenlose interaktive Online-Übung verfügbar.`
-  No URL, no site name, no publisher.
-- **Tags:** Englisch, Klasse [N], school type (Gymnasium or Oberschule, plus Realschule/Hauptschule where it fits), topic
-  keywords, Arbeitsblatt, CEFR level, grammar and skill keywords. No publisher or textbook names.
-- **eduki upload form answers:**
-  - Quellenverzeichnis: choose "im Material enthalten" and select the last page (the Quellenangaben).
-  - KI-Tools: "Ja, ich habe KI-Tools verwendet", tool **Claude.ai (Anthropic)**, content type **Texte** (reading texts, task
-    wording, gap texts).
-  - Price: free. If eduki still asks to remove a "Claude account link", it means a URL in the file: re-run the check and
-    look at the listing page too.
+Use the `listing-builder` skill (`.claude/skills/listing-builder/SKILL.md`). It holds the eduki title, description, tags
+and upload-form answers, and its own check script. Do not copy those rules back here.

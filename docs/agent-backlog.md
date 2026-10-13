@@ -14,12 +14,12 @@ descriptions and the three already delivered.
 
 | # | Agent | What it does | Route | Blocked by |
 |---|-------|-------------|-------|------------|
-| 6 | Listing builder | Takes a finished unit, produces Eduki/Payhip listing in brand voice. | Claude Code session | — (`VOICE.md` added in #93, 2026-10-05) |
-| 7 | Newsletter writer | Reads what published that week, drafts MailerLite email for the right subscriber group. | Claude Code Routine | MailerLite API access |
+| 6 | ~~Listing builder~~ **Done (2026-10-13)** | `listing-builder` skill; eduki now, Payhip once its fields are confirmed. | Claude Code session | — |
+| 7 | ~~Newsletter writer~~ **Done (2026-10-13)** | Monthly Routine drafts (never sends) a MailerLite campaign for *EOL – Teachers* from `scripts/newsletter-digest.js`. | Claude Code Routine | — |
 
 ## Long-term / exploratory
 
 | # | Agent | What it does | Route | Blocked by |
 |---|-------|-------------|-------|------------|
 | 9 | TED scout | Searches talks against Q1–Q4 Zentralabitur themes, checks licence. | Claude Code Routine | Abitur theme list |
-| 10 | Curriculum watcher | Checks MBJS Fachbrief and Zentralabitur pages monthly. | Claude Code Routine | Nothing (but low frequency) |
+| 10 | ~~Curriculum watcher~~ **Done (2026-10-13)** | `curriculum-watch.yml` checks the Fachbriefe and Abitur pages monthly, opens an issue on change. | GitHub Action (Routines cannot reach the Bildungsserver) | — |

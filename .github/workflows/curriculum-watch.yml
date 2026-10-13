@@ -1,0 +1,61 @@
+name: Curriculum watch
+
+# Agent #10: once a month, checks the official pages that publish English
+# Fachbriefe and Abitur Prüfungsschwerpunkte (scripts/curriculum-watch.js).
+# Opens an issue only when a document link changed or a page could not be read.
+#
+# The snapshot lives on the `curriculum-watch` branch, not main: a push to main
+# publishes to students. Nothing triggers on pushes to that branch.
+on:
+  schedule:
+    - cron: '17 6 1 * *'   # 06:17 UTC on the 1st of each month
+  workflow_dispatch: {}
+
+permissions:
+  contents: write   # push the snapshot to the curriculum-watch branch
+  issues: write     # open the report issue
+
+concurrency:
+  group: curriculum-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Check out the snapshot branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if git ls-remote --exit-code --heads origin curriculum-watch >/dev/null; then
+            git fetch --depth=1 origin curriculum-watch
+            git worktree add state FETCH_HEAD
+            git -C state checkout -B curriculum-watch
+          else
+            git worktree add --detach state
+            git -C state checkout --orphan curriculum-watch
+            git -C state rm -rfq .
+          fi
+
+      - name: Compare pages with the snapshot
+        id: watch
+        run: node scripts/curriculum-watch.js --snapshot state/snapshot.json --report report.md
+
+      - name: Open an issue for the changes
+        if: steps.watch.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create --title "Curriculum watch: changes found $(date -u +%Y-%m)" --body-file report.md
+
+      - name: Save the snapshot
+        run: |
+          git -C state add snapshot.json
+          git -C state commit -qm "Curriculum snapshot $(date -u +%Y-%m-%d)" || exit 0
+          git -C state push origin curriculum-watch
