@@ -1082,6 +1082,47 @@ afterwards (rule 7).
      rejected exercise pages, make the reading text (or the first exercise) visible on load;
      request indexing for those 5; compare with 5 untouched rejected pages after 2–3 weeks.
      Stop requesting indexing for anything else until then: requests are not the bottleneck.
+   - **Test live 2026-10-12 (#126).** A plain preview of the reading text sits below the Start
+     button on the 5 test pages (marked `PREVIEW:START/END`). Pairs, test → control:
+     `10c-canada-schools` → `10c-inside-india`, `10c-canada-environment` → `10c-discover-canada`,
+     `10g-growing-up-black` → `10g-proud-to-be-black`, `10g-cultural-diversity` →
+     `10g-post-racial-obama`, `8c-going-west` → `8c-off-to-midwest`.
+   - **How to read the result** (all in the `sc-domain:activities.englishonline.training`
+     property):
+     1. *Baseline, before any request.* URL Inspection on all 10 pages. Record the coverage
+        state, last crawl date and Google-selected canonical. A control that is already
+        indexed is no use as a control: swap it for another rejected page from the same class.
+     2. *Requests.* Request indexing for **all 10**, test and control, on the same day. If only
+        the test pages get a request, a win could come from the request alone, not the preview.
+        Request nothing else on the activities host until the check.
+     3. *Check, 2026-11-02 (with the Phase 6 re-measure of 2026-11-06).* URL Inspection again
+        on all 10: coverage state and last crawl date. A page only counts if it was recrawled
+        after its request; one that was not recrawled is "no data", not a loss.
+        Also Performance → Pages, filtered to the 10 URLs, 2026-10-12 to the check date:
+        impressions per page (expect small numbers; this is a tie-breaker only).
+     4. *Decision.* Preview helps if, among recrawled pages, **3+ test pages are indexed and at
+        most 1 control**. Then roll the preview out to the rest of the exercises in batches.
+        Same result on both sides (both indexed, or both rejected): the preview is not the
+        cause; remove the `PREVIEW` blocks and go back to external links as the main lever.
+        Fewer than 3 recrawled pairs: inconclusive, check again 2 weeks later.
+   - **Baseline and requests done 2026-10-13.** All 10 were "Crawled – currently not indexed"
+     (Google-selected canonical blank on all), so every control stands. Indexing requested for
+     all 10 the same day; each confirmed "added to a priority crawl queue". Every last crawl
+     predates the preview going live (2026-10-12).
+   - **Results table** (fill in):
+
+     | Page | Role | Baseline state | Requested | Recrawled | State at check | Impr. |
+     |---|---|---|---|---|---|---|
+     | 10c-canada-schools | test | not indexed, crawled 22 Sep | 2026-10-13 | | | |
+     | 10c-inside-india | control | not indexed, crawled 10 Aug | 2026-10-13 | | | |
+     | 10c-canada-environment | test | not indexed, crawled 22 Sep | 2026-10-13 | | | |
+     | 10c-discover-canada | control | not indexed, crawled 9 Aug | 2026-10-13 | | | |
+     | 10g-growing-up-black | test | not indexed, crawled 28 Sep | 2026-10-13 | | | |
+     | 10g-proud-to-be-black | control | not indexed, crawled 10 Aug | 2026-10-13 | | | |
+     | 10g-cultural-diversity | test | not indexed, crawled 28 Sep | 2026-10-13 | | | |
+     | 10g-post-racial-obama | control | not indexed, crawled 22 Aug | 2026-10-13 | | | |
+     | 8c-going-west | test | not indexed, crawled 8 Oct | 2026-10-13 | | | |
+     | 8c-off-to-midwest | control | not indexed, crawled 9 Aug | 2026-10-13 | | | |
 
 ## Tier 10 — AI search: chunk-ready headings and sub-query coverage (2026-10-07) · Shaun + CC
 Source: Google Cloud Vertex AI Search (Discovery Engine) docs. They list these ranking signals:
