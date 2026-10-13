@@ -18,8 +18,12 @@
  *   node scripts/search-opportunities.js --gaps
  *   node scripts/search-opportunities.js --all
  *
- * For Search Console CSV import (when available):
- *   node scripts/search-opportunities.js --csv path/to/queries.csv
+ * Search Console import — the web export (Performance → Export → CSV), unzipped:
+ *   node scripts/search-opportunities.js --csv path/to/export-folder
+ *   node scripts/search-opportunities.js --csv path/to/Queries.csv
+ *   Options: --min-impr N (default 20), --ratio R (default 0.5)
+ *   Prints leaks (page 1, CTR far below the export's own CTR for that
+ *   position) for queries and pages, then gaps (position past 10, zero clicks).
  */
 
 const fs = require('fs');
@@ -188,46 +192,196 @@ function analyseGaps() {
   return { gaps, covered };
 }
 
-// ── CSV import (Search Console export) ──────────────────────────────────────
+// ── Search Console import (--csv) ───────────────────────────────────────────
+// Input is the Search Console web export (Performance → Export → CSV), unzipped:
+// a folder holding Queries.csv (required) and Pages.csv (optional), or one of
+// those two files on its own. The web export never links a query to a page, so
+// leaks are listed twice — per query and per page — and gaps per query only.
+//
+// Every number below comes from the export itself. CTR is recomputed from
+// clicks / impressions, so the export's own CTR column (and its locale format,
+// "1.2%" vs "1,2 %") is never parsed.
 
-function processCSV(csvPath) {
-  if (!fs.existsSync(csvPath)) {
-    console.error(`File not found: ${csvPath}`);
-    process.exit(1);
+const LEAK_DEFAULTS = { minImpr: 20, ratio: 0.5 };
+
+const STOPWORDS = new Set([
+  'the', 'and', 'for', 'with', 'what', 'how', 'are', 'was', 'were', 'you', 'your',
+  'from', 'that', 'this', 'does', 'into', 'der', 'die', 'das', 'und', 'mit', 'für',
+  'ein', 'eine', 'einen', 'wie', 'ist', 'von', 'auf', 'den', 'dem', 'des',
+]);
+
+// RFC 4180: quoted fields, "" escapes, commas and newlines inside quotes, CRLF.
+function parseCsv(text) {
+  const rows = [];
+  let row = [], field = '', inQuotes = false;
+  text = text.replace(/^﻿/, '');
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (inQuotes) {
+      if (c === '"' && text[i + 1] === '"') { field += '"'; i++; }
+      else if (c === '"') inQuotes = false;
+      else field += c;
+    } else if (c === '"') inQuotes = true;
+    else if (c === ',') { row.push(field); field = ''; }
+    else if (c === '\n' || c === '\r') {
+      if (c === '\r' && text[i + 1] === '\n') i++;
+      row.push(field); rows.push(row); row = []; field = '';
+    } else field += c;
   }
+  if (field !== '' || row.length) { row.push(field); rows.push(row); }
+  return rows.filter(r => r.some(f => f.trim() !== ''));
+}
 
-  const lines = fs.readFileSync(csvPath, 'utf8').split('\n').filter(l => l.trim());
-  if (lines.length < 2) {
-    console.error('CSV file appears empty');
-    process.exit(1);
+// Clicks and impressions are whole numbers: drop any thousands separator.
+function toInt(s) {
+  return parseInt(String(s).replace(/[^\d]/g, ''), 10) || 0;
+}
+
+// Position is a decimal; a German-locale export writes "8,5".
+function toDecimal(s) {
+  let t = String(s).replace(/[\s ]/g, '');
+  if (t.includes(',') && !t.includes('.')) t = t.replace(',', '.');
+  return parseFloat(t) || 0;
+}
+
+// Columns are found by position, as Search Console always writes them, and the
+// header is checked against both the English and the German UI wording.
+const HEADER_CHECKS = [/cli|kli/i, /impr/i, /ctr/i, /pos/i];
+
+function readGscCsv(file) {
+  const rows = parseCsv(fs.readFileSync(file, 'utf8'));
+  const header = rows[0] || [];
+  const ok = header.length >= 5 && HEADER_CHECKS.every((re, i) => re.test(header[i + 1]));
+  if (!ok) {
+    throw new Error(`${file}: expected the columns <Query or Page>, Clicks, Impressions, CTR, Position; got: ${header.join(', ')}`);
   }
-
-  // Search Console exports: Top queries → Query, Clicks, Impressions, CTR, Position
-  const header = lines[0].toLowerCase();
-  const isQueries = header.includes('query') || header.includes('queries');
-
-  if (!isQueries) {
-    console.error('CSV does not look like a Search Console Queries export');
-    process.exit(1);
-  }
-
-  const rows = lines.slice(1).map(line => {
-    const parts = line.split(',').map(s => s.replace(/"/g, '').trim());
+  return rows.slice(1).map(r => {
+    const clicks = toInt(r[1]);
+    const impressions = toInt(r[2]);
     return {
-      query: parts[0],
-      clicks: parseInt(parts[1]) || 0,
-      impressions: parseInt(parts[2]) || 0,
-      ctr: parseFloat(parts[3]) || 0,
-      position: parseFloat(parts[4]) || 0,
+      key: r[0].trim(),
+      clicks,
+      impressions,
+      ctr: impressions ? clicks / impressions : 0,
+      position: toDecimal(r[4]),
     };
-  });
+  }).filter(r => r.key && r.impressions > 0);
+}
 
-  // Find opportunities: high impressions, low clicks (CTR < 5%), position 5-20
-  const opportunities = rows.filter(r =>
-    r.impressions > 10 && r.ctr < 0.05 && r.position > 4 && r.position < 25
-  ).sort((a, b) => b.impressions - a.impressions);
+// Find Queries.csv / Pages.csv. A lone file is sorted by its header's first column.
+function locateExport(p) {
+  if (!fs.existsSync(p)) throw new Error(`Not found: ${p}`);
+  if (fs.statSync(p).isDirectory()) {
+    const pick = name => {
+      const f = fs.readdirSync(p).find(n => n.toLowerCase() === name);
+      return f ? path.join(p, f) : null;
+    };
+    const queries = pick('queries.csv');
+    if (!queries) throw new Error(`${p} has no Queries.csv — unzip the Search Console export into it`);
+    return { queries, pages: pick('pages.csv') };
+  }
+  const first = (parseCsv(fs.readFileSync(p, 'utf8'))[0] || [''])[0].toLowerCase();
+  return /page|seite/.test(first) ? { queries: null, pages: p } : { queries: p, pages: null };
+}
 
-  return opportunities;
+// Rows on page 1, bucketed by rounded position (1–10).
+function page1Bucket(position) {
+  const b = Math.round(position);
+  return b >= 1 && b <= 10 ? b : null;
+}
+
+// A leak: page 1, enough impressions, and a CTR below `ratio` × the CTR every
+// OTHER row in the export earns at the same rounded position. The row itself is
+// left out of its own baseline, or one big row would set the bar it is judged by.
+function findLeaks(rows, opts = {}) {
+  const { minImpr, ratio } = { ...LEAK_DEFAULTS, ...opts };
+  const buckets = {};
+  for (const r of rows) {
+    const b = page1Bucket(r.position);
+    if (b === null) continue;
+    buckets[b] = buckets[b] || { clicks: 0, impressions: 0 };
+    buckets[b].clicks += r.clicks;
+    buckets[b].impressions += r.impressions;
+  }
+  const leaks = [];
+  let noBaseline = 0;
+  for (const r of rows) {
+    const b = page1Bucket(r.position);
+    if (b === null || r.impressions < minImpr) continue;
+    const restImpr = buckets[b].impressions - r.impressions;
+    const restClicks = buckets[b].clicks - r.clicks;
+    if (restImpr < minImpr) { noBaseline++; continue; }
+    const expected = restClicks / restImpr;
+    if (expected > 0 && r.ctr < expected * ratio) leaks.push({ ...r, expected });
+  }
+  leaks.sort((a, b) => b.impressions - a.impressions);
+  return { leaks, noBaseline };
+}
+
+function queryWords(q) {
+  return q.toLowerCase().split(/[^a-zäöüß0-9]+/).filter(w => w.length >= 3 && !STOPWORDS.has(w));
+}
+
+// Activities pages whose title holds every word of the query. WordPress pages
+// are not in this repo, so a gap with no match may still have a WP page.
+function titleMatches(query, pages) {
+  const words = queryWords(query);
+  if (!words.length) return [];
+  return pages.filter(p => words.every(w => p.title.toLowerCase().includes(w))).map(p => p.file);
+}
+
+function loadPageTitles() {
+  const read = f => {
+    const p = path.join(ROOT, 'data', f);
+    return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : [];
+  };
+  return [
+    ...read('exercises.json').map(e => ({ file: e.file, title: e.title || '' })),
+    ...read('topics.json').map(t => ({ file: `themen/${t.slug}.html`, title: `${t.de || ''} ${t.en || ''}` })),
+  ];
+}
+
+// A gap: real impressions, average position past 10, no clicks.
+function findGaps(rows, pages, opts = {}) {
+  const { minImpr } = { ...LEAK_DEFAULTS, ...opts };
+  return rows
+    .filter(r => r.position > 10 && r.clicks === 0 && r.impressions >= minImpr)
+    .sort((a, b) => b.impressions - a.impressions)
+    .map(r => ({ ...r, matches: titleMatches(r.key, pages) }));
+}
+
+function pct(x) { return (x * 100).toFixed(1) + '%'; }
+
+function printList(title, items, fmt, limit = 20) {
+  console.log(`${title} (${items.length}):`);
+  if (!items.length) console.log('  none');
+  for (const it of items.slice(0, limit)) console.log('  ' + fmt(it));
+  if (items.length > limit) console.log(`  … and ${items.length - limit} more`);
+  console.log();
+}
+
+function reportGsc(p, opts) {
+  const files = locateExport(p);
+  const fmtLeak = r => `"${r.key}" — ${r.impressions} imp, ${r.clicks} clicks, pos ${r.position.toFixed(1)}, CTR ${pct(r.ctr)} vs ${pct(r.expected)} at that position`;
+  console.log(`Thresholds: at least ${opts.minImpr} impressions; a leak's CTR is under ${opts.ratio} × the export's CTR at the same position.\n`);
+
+  if (files.queries) {
+    const rows = readGscCsv(files.queries);
+    const { leaks, noBaseline } = findLeaks(rows, opts);
+    printList('Leaks — queries (page 1, CTR far below normal for the position)', leaks, fmtLeak);
+    if (noBaseline) console.log(`  (${noBaseline} page-1 queries skipped: too few other impressions at their position to compare)\n`);
+    const gaps = findGaps(rows, loadPageTitles(), opts);
+    printList('Gaps — queries (position past 10, zero clicks)', gaps, r =>
+      `"${r.key}" — ${r.impressions} imp, pos ${r.position.toFixed(1)}` +
+      (r.matches.length ? ` · activities title match: ${r.matches.slice(0, 2).join(', ')}` : ' · no activities title match (WordPress not checked)'));
+  }
+  if (files.pages) {
+    const { leaks, noBaseline } = findLeaks(readGscCsv(files.pages), opts);
+    printList('Leaks — pages', leaks, fmtLeak);
+    if (noBaseline) console.log(`  (${noBaseline} page-1 pages skipped: too few other impressions at their position to compare)\n`);
+  }
+  console.log('Next: for each leak, check whether an AI Overview sits above us or the title is weak (Tier 12.6).');
+  console.log('Gaps feed Tier 12.8 repoints and Tier 10 sections, not new pages (Tier 9.5).');
 }
 
 // ── Main ────────────────────────────────────────────────────────────────────
@@ -235,6 +389,7 @@ function processCSV(csvPath) {
 function main() {
   const args = process.argv.slice(2);
   const runAll = args.includes('--all') || args.length === 0;
+  const ranChecks = runAll || args.includes('--audit') || args.includes('--gaps');
 
   const prev = readState();
   const currentState = {};
@@ -304,19 +459,30 @@ function main() {
   }
 
   if (args.includes('--csv')) {
-    const idx = args.indexOf('--csv');
-    const csvPath = args[idx + 1];
+    const csvPath = args[args.indexOf('--csv') + 1];
+    const num = (flag, dflt) => {
+      const i = args.indexOf(flag);
+      if (i === -1) return dflt;
+      const v = Number(args[i + 1]);
+      if (!(v > 0)) { console.error(`${flag} needs a positive number`); process.exit(1); }
+      return v;
+    };
     console.log('\n## Search Console Import\n');
-    const opps = processCSV(csvPath);
-    if (opps.length === 0) {
-      console.log('No clear opportunities found in the CSV.');
-    } else {
-      console.log(`Top ${Math.min(opps.length, 15)} opportunities (high impressions, low CTR, rankable position):\n`);
-      for (const o of opps.slice(0, 15)) {
-        console.log(`  "${o.query}" — ${o.impressions} imp, ${o.clicks} clicks, pos ${o.position.toFixed(1)}`);
-      }
+    try {
+      reportGsc(csvPath || '', {
+        minImpr: num('--min-impr', LEAK_DEFAULTS.minImpr),
+        ratio: num('--ratio', LEAK_DEFAULTS.ratio),
+      });
+    } catch (err) {
+      console.error(err.message);
+      process.exit(1);
     }
   }
+
+  // The CSV import keeps no state. Writing state after a --csv-only run would
+  // overwrite the last audit/gaps state with nothing, and the next delta would
+  // be empty.
+  if (!ranChecks) return;
 
   // Write state after all checks
   writeState(currentState);
@@ -329,4 +495,6 @@ function main() {
   }
 }
 
-main();
+if (require.main === module) main();
+
+module.exports = { parseCsv, toInt, toDecimal, readGscCsv, locateExport, findLeaks, findGaps, titleMatches };

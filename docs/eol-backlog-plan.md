@@ -1312,7 +1312,7 @@ Only new items are listed. Respect Tier 9.5, Tier 12.2 (publishing rate) and rul
    `activities.englishonline.training`). Note whether it exists and what it shows. Write the
    baseline in `docs/gsc-review-*.md`. It may give a free signal for Tier 10.7 and may reduce the
    need for the broken Ahrefs capture in Tier 11.1. It shows visibility, not the AI answer text.
-2. **Split the 2026-11-06 re-pull into gaps and leaks · CC.** The existing `--csv` mode in
+2. **→ Done 2026-10-13 (this branch).** `--csv` now takes the unzipped web export (Shaun's choice: no query→page link), prints query leaks, page leaks and query gaps; defaults 20 impressions and ratio 0.5, both flags; usage in `docs/agent-use-cases.md`. **Split the 2026-11-06 re-pull into gaps and leaks · CC.** The existing `--csv` mode in
    `scripts/search-opportunities.js` reads a queries-only export and prints one list (CTR under
    5%, position 4–25). Extend it to read a queries + pages export and print two lists:
    - **Gaps:** real impressions, position past 10, zero clicks, no page built for the query.

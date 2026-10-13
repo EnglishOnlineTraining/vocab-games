@@ -185,6 +185,8 @@ const NODES = [
 //   test-wrong-summary.js    reads exercise.js only. Pins eolWrongSummary(), the
 //                            wrong-answer list every submission now carries so the
 //                            Make scenarios need no grading module of their own.
+//   test-search-opportunities.js reads scripts/search-opportunities.js only. Pins
+//                            the Search Console import (CSV parsing, leaks, gaps).
 const VALIDATORS = [
   { id: 'validate-explanations', run: 'scripts/validate-explanations.js' },
   { id: 'validate-data', run: 'scripts/validate-data.js' },
@@ -192,6 +194,7 @@ const VALIDATORS = [
   { id: 'test-grades', run: 'test-grades.js' },
   { id: 'test-payload-flatten', run: 'test-payload-flatten.js' },
   { id: 'test-wrong-summary', run: 'test-wrong-summary.js' },
+  { id: 'test-search-opportunities', run: 'test-search-opportunities.js' },
   { id: 'topic-pool', run: 'topic-pool.js' },
   { id: 'esl-grammar-pool', run: 'esl-grammar-pool.js' },
 ];
