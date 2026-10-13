@@ -282,7 +282,7 @@ module.exports = {
     {
       q: 'How many words does the glossary cover?',
       a: '85 terms often used in IELTS reading, listening and writing tasks, each with a part of '
-        + 'speech and a plain-English definition. A few also have an example sentence.',
+        + 'speech, a plain-English definition and an example sentence showing the word in use.',
     },
     {
       q: 'Is this glossary free? Do I need an account?',
