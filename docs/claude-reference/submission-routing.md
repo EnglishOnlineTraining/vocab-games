@@ -113,9 +113,9 @@ opt-in and double opt-in. So:
   the sign-up. When Claude drafts feedback for a row with Newsletter = `yes` and Added to
   MailerLite blank, it adds the address to the MailerLite IELTS group through the MailerLite
   connector, then the row gets Added to MailerLite = the date. Never add a `no` row.
-  **Open before first use:** create the group (proposed: "EOL – IELTS"; none exists on
-  2026-10-13), and test that a contact added through the connector gets MailerLite's
-  confirmation email. The privacy policy promises double opt-in, so do not add real
+  The group is **"EOL – IELTS"**, id `201247435492688912` (created 2026-10-13).
+  **Open before first use:** test that a contact added through the connector gets
+  MailerLite's confirmation email. The privacy policy promises double opt-in, so do not add real
   learners until that is confirmed.
 - Tested by `test-ielts-email.js` (build validator).
 
