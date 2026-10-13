@@ -1904,5 +1904,58 @@
         ]
       }
     ]
+  },
+  "ielts-activities.html": {
+    "style": "gr-topic-card",
+    "blocks": [
+      {
+        "heading": null,
+        "cards": [
+          {
+            "href": "ielts-reading-true-false-not-given.html",
+            "icon": "🔎",
+            "title": "Reading: True, False or Not Given?",
+            "meta": "Decide what a text really says: True/False/Not Given questions on an original academic text, how small words like “usually” and “only” change the answer, and spotting paraphrase.",
+            "startLabel": "Start exercise →",
+            "extraLinks": []
+          },
+          {
+            "href": "ielts-writing-task1-describing-trends.html",
+            "icon": "📈",
+            "title": "Writing Task 1: Describing Trends",
+            "meta": "Describe a line graph accurately — trend verbs and adverbs, “rose sharply” vs “a sharp rise”, prepositions with numbers — then write your own 150-word report.",
+            "startLabel": "Start exercise →",
+            "extraLinks": []
+          },
+          {
+            "href": "ielts-writing-task2-opinion-essay.html",
+            "icon": "🗣️",
+            "title": "Writing Task 2: The Opinion Essay",
+            "meta": "“To what extent do you agree?” — keep a clear position, choose linkers by their job, write strong topic sentences, then write your own 250-word essay.",
+            "startLabel": "Start exercise →",
+            "extraLinks": []
+          },
+          {
+            "href": "ielts-review.html",
+            "icon": "🔁",
+            "title": "Mixed Revision",
+            "meta": "24 questions drawn from every IELTS exercise — spaced practice to keep what you have learned.",
+            "startLabel": "Start exercise →",
+            "extraLinks": []
+          },
+          {
+            "href": "ielts-vocabulary-glossary.html",
+            "icon": "📖",
+            "title": "IELTS Vocabulary Glossary",
+            "meta": "85 words that come up often in IELTS reading and writing, each with a plain-English definition — search them or practise with the matching game.",
+            "startLabel": "Open glossary →",
+            "extraLinks": []
+          }
+        ]
+      }
+    ],
+    "pinned": [
+      "ielts-vocabulary-glossary.html"
+    ]
   }
 }

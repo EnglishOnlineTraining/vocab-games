@@ -55,7 +55,8 @@ const HUB_CATEGORY = {
   'it-activities.html':          e => e.year === 'it',
   'business-activities.html':    e => e.year === 'business',
   'grammar-activities.html':     e => e.year === 'grammar',
-  'esl-grammar-activities.html': e => e.year === 'esl'
+  'esl-grammar-activities.html': e => e.year === 'esl',
+  'ielts-activities.html':       e => e.year === 'ielts'
 };
 
 // An Abitur pack's writing task, from its filename, decides which group it joins.

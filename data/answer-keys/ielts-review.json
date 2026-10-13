@@ -1,0 +1,191 @@
+{
+ "unit": "ielts-review",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "from",
+     "accept": [
+      "from"
+     ],
+     "label": "1. fell"
+    },
+    "g2": {
+     "correct": "Investing in cycle lanes is one of the most effective ways to reduce traffic.",
+     "accept": [
+      "Investing in cycle lanes is one of the most effective ways to reduce traffic."
+     ],
+     "label": "2. Paragraph on cycle lanes"
+    },
+    "g3": {
+     "correct": "costs nothing to collect",
+     "accept": [
+      "costs nothing to collect"
+     ],
+     "label": "3. free information"
+    },
+    "g4": {
+     "correct": "dwindle",
+     "accept": [
+      "dwindle"
+     ],
+     "label": "4. car use continued to"
+    },
+    "g5": {
+     "correct": "Another benefit is that courses outside a student’s field teach practical skills.",
+     "accept": [
+      "Another benefit is that courses outside a student’s field teach practical skills."
+     ],
+     "label": "5. Paragraph on languages and coding skills"
+    },
+    "g6": {
+     "correct": "the actions taken to deal with the problem",
+     "accept": [
+      "the actions taken to deal with the problem"
+     ],
+     "label": "6. these measures"
+    },
+    "g7": {
+     "correct": "dramatic increase",
+     "accept": [
+      "dramatic increase"
+     ],
+     "label": "7. Cycling saw a"
+    },
+    "g8": {
+     "correct": "Despite",
+     "accept": [
+      "Despite"
+     ],
+     "label": "8."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "1. usually closed → never closed"
+    },
+    "g2": {
+     "correct": "remained stable",
+     "accept": [
+      "remained stable"
+     ],
+     "label": "2. Prices"
+    },
+    "g3": {
+     "correct": "Although",
+     "accept": [
+      "Although"
+     ],
+     "label": "3."
+    },
+    "g4": {
+     "correct": "Not Given",
+     "accept": [
+      "Not Given"
+     ],
+     "label": "4. More common in cities than the countryside"
+    },
+    "g5": {
+     "correct": "sharp fall",
+     "accept": [
+      "sharp fall"
+     ],
+     "label": "5. There was a"
+    },
+    "g6": {
+     "correct": "Moreover",
+     "accept": [
+      "Moreover"
+     ],
+     "label": "6."
+    },
+    "g7": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "7. Takes several years to form"
+    },
+    "g8": {
+     "correct": "sharply",
+     "accept": [
+      "sharply"
+     ],
+     "label": "8. then dropped"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "nevertheless",
+     "accept": [
+      "nevertheless"
+     ],
+     "label": "1."
+    },
+    "g2": {
+     "correct": "more and more",
+     "accept": [
+      "more and more"
+     ],
+     "label": "2. a growing number of"
+    },
+    "g3": {
+     "correct": "fell",
+     "accept": [
+      "fell"
+     ],
+     "label": "3. Overall, car use"
+    },
+    "g4": {
+     "correct": "I support",
+     "accept": [
+      "I support"
+     ],
+     "label": "4. The main reason"
+    },
+    "g5": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "5. still unsure → have proved"
+    },
+    "g6": {
+     "correct": "narrowed",
+     "accept": [
+      "narrowed"
+     ],
+     "label": "6. the gap had"
+    },
+    "g7": {
+     "correct": "In conclusion",
+     "accept": [
+      "In conclusion"
+     ],
+     "label": "7."
+    },
+    "g8": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "8. Paths form where the official route is longer"
+    }
+   }
+  }
+ }
+}

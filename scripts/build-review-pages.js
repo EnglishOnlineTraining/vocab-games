@@ -72,7 +72,8 @@ const CATEGORIES = {
   'msa': { label: 'MSA Exam Practice',    cefr: '~B1',  emoji: '🎧', hub: 'msa-activities.html', sheet: WEBHOOK_Y9, klass: 'MSA' },
   'uni': { label: 'University English', cefr: 'B2+',    emoji: '🎓', hub: 'uni-activities.html', sheet: APPS_SCRIPT, klass: 'Kurs' },
   'it':  { label: 'IT English',         cefr: 'B1/B2',  emoji: '💻', hub: 'it-activities.html',  sheet: APPS_SCRIPT, klass: 'Kurs' },
-  'be':  { label: 'Business English',   cefr: 'B2',     emoji: '💼', hub: 'business-activities.html', sheet: APPS_SCRIPT, klass: 'Kurs' }
+  'be':  { label: 'Business English',   cefr: 'B2',     emoji: '💼', hub: 'business-activities.html', sheet: APPS_SCRIPT, klass: 'Kurs' },
+  'ielts': { label: 'IELTS Academic',   cefr: 'B2/C1',  emoji: '🎯', hub: 'ielts-activities.html', sheet: APPS_SCRIPT, klass: 'Kurs' }
 };
 
 function esc(s) {
@@ -93,7 +94,7 @@ function seededShuffle(arr, seed) {
 }
 
 function categoryOf(file) {
-  var m = file.match(/^(10[gc]|[789][acg]|msa|uni|it|be)-/);
+  var m = file.match(/^(10[gc]|[789][acg]|msa|uni|it|be|ielts)-/);
   return m ? m[1] : null;
 }
 function titleOf(src) {

@@ -53,8 +53,8 @@ function langAttr(lang) { return lang ? ' lang="' + lang + '"' : ''; }
 // pages that carry English titles, and must not be marked.
 function deTitle(e) { return e.lang === 'de' && /[äöüÄÖÜß]/.test(e.title || ''); }
 
-const YEAR_LABEL = { 7: 'Year 7', 8: 'Year 8', 9: 'Year 9', 10: 'Year 10', msa: 'MSA', abitur: 'Abitur', uni: 'University', it: 'IT English', business: 'Business English', grammar: 'Grammar Practice', esl: 'ESL Grammar', quiz: 'Quiz', level: 'Level test', other: 'Other' };
-const YEAR_ORDER = [7, 8, 9, 10, 'abitur', 'msa', 'uni', 'it', 'business', 'grammar', 'esl', 'quiz', 'level', 'other'];
+const YEAR_LABEL = { 7: 'Year 7', 8: 'Year 8', 9: 'Year 9', 10: 'Year 10', msa: 'MSA', abitur: 'Abitur', ielts: 'IELTS Academic', uni: 'University', it: 'IT English', business: 'Business English', grammar: 'Grammar Practice', esl: 'ESL Grammar', quiz: 'Quiz', level: 'Level test', other: 'Other' };
+const YEAR_ORDER = [7, 8, 9, 10, 'abitur', 'msa', 'ielts', 'uni', 'it', 'business', 'grammar', 'esl', 'quiz', 'level', 'other'];
 const SCHOOL_LABEL = { gymnasium: 'Gymnasium', oberschule: 'Oberschule' };
 const SKILL_LABEL = { reading: 'Reading', grammar: 'Grammar', writing: 'Writing', vocabulary: 'Vocabulary', listening: 'Listening' };
 const SKILL_ORDER = ['grammar', 'reading', 'writing', 'vocabulary', 'listening'];
@@ -244,6 +244,14 @@ colBlocks.push(colBlock('msa', '🎧', 'Oberschule · Exam prep', 'MSA ' + de('(
     count(countFor('msa', null), 'Exercise'))
 ]));
 
+colBlocks.push(colBlock('ielts', '🎯', 'Self-study · Exam prep', 'IELTS Academic', [
+  colCard('ielts-activities.html', '🎯', 'IELTS Academic',
+    'Reading question types, Writing Task 1 &amp; Task 2 practice',
+    count(countFor('ielts', null), 'Exercise')),
+  colCard('ielts-vocabulary-glossary.html', '📖', 'IELTS Vocabulary Glossary',
+    'Searchable glossary &amp; matching practice — 85 terms', '1 Resource')
+]));
+
 colBlocks.push(colBlock('grammar-section', '📘', 'All levels · No sign-up', 'Grammar Practice', [
   colCard('grammar-activities.html', '📘', 'Grammar Practice',
     'Interactive practice on one grammar point at a time, explained in German',
@@ -254,8 +262,6 @@ colBlocks.push(colBlock('grammar-section', '📘', 'All levels · No sign-up', '
 ]));
 
 colBlocks.push(colBlock('tools', '🔤', 'Exam prep', 'Vocabulary Tools', [
-  colCard('ielts-vocabulary-glossary.html', '📖', 'IELTS Vocabulary Glossary',
-    'Searchable glossary &amp; matching practice — 85 terms', '1 Resource'),
   colCard('klasse7-mini.html', '⚡', 'Mini-Übung Klasse 7',
     'Four quick questions each for Gymnasium &amp; Oberschule — instant feedback', '1 Quick check')
 ]));
@@ -395,6 +401,16 @@ if (fs.existsSync(path.join(ROOT, 'msa-review.html'))) {
 }
 rootBlocks.push(rootBlock('MSA — ' + de('Mittlerer Schulabschluss'), '🎧', msaCards));
 
+// IELTS Academic — self-study exam practice, its own block like MSA and Abitur.
+const ieltsUnits = countFor('ielts', null);
+rootBlocks.push(rootBlock('IELTS Academic', '🎯', [
+  rootCard('ielts-activities.html', '🎯', 'IELTS Academic',
+    ieltsUnits ? 'Reading question types and Writing Task 1 &amp; 2 practice' : 'Coming soon',
+    rootCount(ieltsUnits, 'Exercise'), ieltsUnits > 0),
+  rootCard('ielts-vocabulary-glossary.html', '📖', 'IELTS Vocabulary Glossary',
+    'Searchable glossary &amp; matching practice — 85 terms', '1 Resource', true)
+]));
+
 // Abitur — its own block, split by the four written task types.
 const abiturTotal = countFor('abitur', null);
 const abiturCards = [
@@ -432,9 +448,6 @@ rootBlocks.push(rootBlock('Quick practice &amp; tools', '', [
   rootCard('level-test.html', '🎯', 'Level test',
     'Adaptive test: your CEFR level (A1–C1) in 15–20 questions — no sign-up',
     rootCount(countFor('level', null), 'Test'), countFor('level', null) > 0),
-  rootCard('ielts-vocabulary-glossary.html', '📖', 'Vocabulary',
-    'Searchable IELTS glossary and interactive vocabulary games',
-    'Glossary &amp; games', true),
   rootCard('klasse7-mini.html', '⚡', 'Mini-Übung Klasse 7',
     'Four quick questions each for Gymnasium and Oberschule — instant feedback',
     '1 Quick check', true)

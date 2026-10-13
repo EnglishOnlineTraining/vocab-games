@@ -128,6 +128,8 @@ function schoolFromPrefix(f) {
   // school year) and has its own hub, so it needs its own category — without one
   // esl-articles.html fell into 'other' and no hub could claim it.
   if (/^esl-/.test(f)) return ['esl', 'esl'];
+  // IELTS Academic practice: a self-study exam audience with its own hub.
+  if (/^ielts-/.test(f)) return ['ielts', 'ielts'];
   return ['other', 'other'];
 }
 function grabTitles(s, cls, tag) {

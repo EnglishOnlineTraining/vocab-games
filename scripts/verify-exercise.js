@@ -98,7 +98,7 @@ function checkStateScores(src) {
 }
 
 // Where each prefix's submissions must go (CLAUDE.md, "Webhooks"). Business,
-// University, IT and ESL use an Apps Script; more than one is in use, so any
+// University, IT, ESL and IELTS use an Apps Script; more than one is in use, so any
 // /exec URL passes for those except the template's own default.
 const HOOK_Y7 = 'https://hook.eu1.make.com/1gx46wea33yguetah95oy4j8asbyafqm';
 const HOOK_Y9 = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj';
@@ -116,7 +116,7 @@ function checkSheetUrl(src, file) {
   if (/^(7[gca]|8[gc])-/.test(f)) want = HOOK_Y7;
   else if (/^(9[gc]|10[gc]|msa)-/.test(f)) want = HOOK_Y9;
   if (want) return { ok: url === want, detail: url === want ? null : 'expected ' + want + ' for this prefix, found ' + url };
-  if (/^(be|uni|it|esl)-/.test(f)) {
+  if (/^(be|uni|it|esl|ielts)-/.test(f)) {
     const ok = /^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(url);
     return { ok: ok, detail: ok ? null : 'expected a Google Apps Script /exec URL, found ' + url };
   }

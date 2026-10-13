@@ -321,7 +321,7 @@ var EOL_RUBRIC_BANDS = {
 function eolRubricBand() {
   var f = eolPageFile();
   if (/^(uni|be|it)-/.test(f)) return EOL_RUBRIC_BANDS.pro;
-  if (/^(10g|abitur)-/.test(f)) return EOL_RUBRIC_BANDS.b2;
+  if (/^(10g|abitur|ielts)-/.test(f)) return EOL_RUBRIC_BANDS.b2;
   if (/^(7c|8c)-/.test(f)) return EOL_RUBRIC_BANDS.a2;
   return EOL_RUBRIC_BANDS.b1;
 }
@@ -1533,6 +1533,7 @@ function eolCrumbLabel() {
   if (/^uni-/.test(f)) return 'Universität';
   if (/^it-/.test(f))  return 'IT English';
   if (/^be-/.test(f))  return 'Business English';
+  if (/^ielts-/.test(f)) return 'IELTS Academic';
   // Without this the three gr-* pages fell through to the default and rendered
   // "Übungen › Übungen › …". Kept in step with crumbLabel() in scripts/schema.js,
   // which builds the BreadcrumbList markup from the same prefixes.

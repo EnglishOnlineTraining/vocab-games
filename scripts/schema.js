@@ -202,6 +202,7 @@ const LEVELS = [
   [/^uni-/, 'B2–C1'],
   [/^be-/, 'B1–B2'],
   [/^it-/, 'B1–B2'],
+  [/^ielts-/, 'B2–C1'],
 ];
 
 /** CEFR band for a page, or '' when the page spans levels (quizzes, gr-*). */
@@ -224,6 +225,7 @@ function crumbLabel(file) {
   if (/^be-/.test(f)) return 'Business English';
   if (/^gr-/.test(f)) return 'Grammatik';
   if (/^esl-/.test(f)) return 'ESL Grammar';
+  if (/^ielts-/.test(f)) return 'IELTS Academic';
   if (/^quiz-/.test(f)) return 'Quiz';
   if (/^level-/.test(f)) return 'Einstufungstest';
   return 'Übungen';
@@ -251,6 +253,7 @@ function hubFor(file) {
   if (/^be-/.test(f)) return 'business-activities.html';
   if (/^gr-/.test(f)) return 'grammar-activities.html';
   if (/^esl-/.test(f)) return 'esl-grammar-activities.html';
+  if (/^ielts-/.test(f)) return 'ielts-activities.html';
   return '';
 }
 

@@ -18830,5 +18830,377 @@
     }
    }
   }
+ },
+ "ielts-reading-true-false-not-given": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. Paths form where the official route is longer",
+     "correct": "True",
+     "why": "Paragraph A: they “usually appear where an official path makes walkers go … the long way round”."
+    },
+    "g2": {
+     "label": "2. Takes several years to form",
+     "correct": "False",
+     "why": "Paragraph A says they “can form in a single season” — the opposite of several years."
+    },
+    "g3": {
+     "label": "3. More common in cities than the countryside",
+     "correct": "Not Given",
+     "why": "The text only talks about city parks and campuses; it never compares them with the countryside."
+    },
+    "g4": {
+     "label": "4. Fences and signs always worked",
+     "correct": "False",
+     "why": "Paragraph B says these measures “sometimes worked” — “always” contradicts that."
+    },
+    "g5": {
+     "label": "5. Most managers now encourage walking on grass",
+     "correct": "Not Given",
+     "why": "Paragraph C is about “a growing number of designers”, not most park managers, and says nothing about encouraging people."
+    },
+    "g6": {
+     "label": "6. Supporters say the resulting paths get used",
+     "correct": "True",
+     "why": "Paragraph C: supporters say it “produces paths that people use instead of ignore”."
+    },
+    "g7": {
+     "label": "7. May not suit every walker",
+     "correct": "True",
+     "why": "Paragraph D: a route that suits commuters “may not suit wheelchair users or parents with buggies”."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. usually closed → never closed",
+     "correct": "False",
+     "why": "“Never closed” contradicts “usually closed”, so the statement is False."
+    },
+    "g2": {
+     "label": "2. free on Sundays → free every day",
+     "correct": "Not Given",
+     "why": "The text says nothing about the other six days, so it neither confirms nor contradicts “every day”."
+    },
+    "g3": {
+     "label": "3. still unsure → have proved",
+     "correct": "False",
+     "why": "If scientists are still unsure, they have not proved it — the statement contradicts the text."
+    },
+    "g4": {
+     "label": "4. most arrive by train → more than any other",
+     "correct": "True",
+     "why": "“Most” means more than half, so train must be the biggest group — the statement agrees."
+    },
+    "g5": {
+     "label": "5. only a few survive → some still standing",
+     "correct": "True",
+     "why": "“A few survive” means some are still standing, even though most are gone."
+    },
+    "g6": {
+     "label": "6. first held in 1998 → every year since",
+     "correct": "Not Given",
+     "why": "The text gives the first year only; it does not say whether the festival was held every year after that."
+    },
+    "g7": {
+     "label": "7. almost all grow rice → rice is the only crop",
+     "correct": "Not Given",
+     "why": "Farmers can grow rice and other crops too; the text does not say what else is grown."
+    },
+    "g8": {
+     "label": "8. more than 50 employees → 20 employees",
+     "correct": "False",
+     "why": "A company with 20 employees is below the limit of 50, so the law does not apply — False."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. a shortcut",
+     "correct": "a quicker way to get somewhere",
+     "why": "A shortcut is a route that is quicker or shorter than the usual one."
+    },
+    "g2": {
+     "label": "2. these measures",
+     "correct": "the actions taken to deal with the problem",
+     "why": "“Measures” here are actions taken to solve a problem — the fences, hedges and signs."
+    },
+    "g3": {
+     "label": "3. a growing number of",
+     "correct": "more and more",
+     "why": "If a number is growing, it is getting bigger: more and more designers."
+    },
+    "g4": {
+     "label": "4. free information",
+     "correct": "costs nothing to collect",
+     "why": "The paths show how people move without anyone paying for a study — the information costs nothing."
+    },
+    "g5": {
+     "label": "5. reflect",
+     "correct": "show",
+     "why": "Here “reflect” means show or represent — the paths show how one group of people walks."
+    },
+    "g6": {
+     "label": "6. hurried",
+     "correct": "in a rush",
+     "why": "Hurried people are in a rush, so they take the quickest route."
+    },
+    "g7": {
+     "label": "7. consensus (IELTS Vocabulary Glossary)",
+     "correct": "generally agree",
+     "why": "A consensus is general agreement — a word from the IELTS Vocabulary Glossary."
+    },
+    "g8": {
+     "label": "8. undermine (IELTS Vocabulary Glossary)",
+     "correct": "makes it weaker",
+     "why": "To undermine something is to make it weaker, often slowly — from the IELTS Vocabulary Glossary."
+    }
+   }
+  }
+ },
+ "ielts-writing-task1-describing-trends": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. Overall, car use ___ over the period",
+     "correct": "fell",
+     "why": "Car journeys went from 52% to 35% — an overall fall."
+    },
+    "g2": {
+     "label": "2. The share of bus journeys ___",
+     "correct": "fluctuated",
+     "why": "Bus use went up and down between 28% and 31%. “Fluctuate” is from the IELTS Vocabulary Glossary."
+    },
+    "g3": {
+     "label": "3. then dropped ___ to 41%",
+     "correct": "sharply",
+     "why": "A fall of 8 points in two years is the biggest drop on the graph — sharply."
+    },
+    "g4": {
+     "label": "4. car use continued to ___",
+     "correct": "dwindle",
+     "why": "It kept getting smaller, 41% → 35%. “Dwindle” is from the IELTS Vocabulary Glossary."
+    },
+    "g5": {
+     "label": "5. cycling ___ at around 13% until 2018",
+     "correct": "remained stable",
+     "why": "It hardly changed (12% → 13% → 13%), so it remained stable."
+    },
+    "g6": {
+     "label": "6. It then increased ___ to 22%",
+     "correct": "dramatically",
+     "why": "From 13% to 22% in two years is a very large jump — dramatically."
+    },
+    "g7": {
+     "label": "7. Bus journeys ___ between 28% and 31%",
+     "correct": "fluctuated",
+     "why": "Moving up and down within a narrow range is fluctuating."
+    },
+    "g8": {
+     "label": "8. the gap had ___ from 40 to 8 points",
+     "correct": "narrowed",
+     "why": "A gap that gets smaller (40 → 8 points) narrows."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. There was a ___ in car use",
+     "correct": "sharp fall",
+     "why": "After “there was a” you need a noun phrase: adjective + noun."
+    },
+    "g2": {
+     "label": "2. Car use ___ after 2018",
+     "correct": "fell sharply",
+     "why": "The sentence needs a verb, and an adverb (sharply) describes a verb."
+    },
+    "g3": {
+     "label": "3. Cycling saw a ___",
+     "correct": "dramatic increase",
+     "why": "“Saw a …” needs a noun, so use adjective + noun."
+    },
+    "g4": {
+     "label": "4. bus journeys ___ over the decade",
+     "correct": "fluctuated slightly",
+     "why": "Verb + adverb: the adverb “slightly” describes how it fluctuated."
+    },
+    "g5": {
+     "label": "5. The figures show a ___",
+     "correct": "steady rise",
+     "why": "After “show a” you need a noun phrase: adjective + noun."
+    },
+    "g6": {
+     "label": "6. Sales ___ in the final year",
+     "correct": "rose gradually",
+     "why": "Verb + adverb: “gradually” describes how sales rose."
+    },
+    "g7": {
+     "label": "7. Prices ___ between 2019 and 2021",
+     "correct": "remained stable",
+     "why": "“Remain” is like “be”: it is followed by an adjective (stable), not an adverb."
+    },
+    "g8": {
+     "label": "8. 2020 saw a ___ in cycling",
+     "correct": "significant rise",
+     "why": "“Saw a …” needs a noun phrase: adjective + noun."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. fell ___ 52% to 35%",
+     "correct": "from",
+     "why": "“From … to …” gives the starting and finishing figures."
+    },
+    "g2": {
+     "label": "2. dropped ___ 41%",
+     "correct": "to",
+     "why": "41% is the new figure it reached, so use “to”."
+    },
+    "g3": {
+     "label": "3. rose ___ 15 percentage points",
+     "correct": "by",
+     "why": "15 points is the size of the change (12% → 27%), so use “by”."
+    },
+    "g4": {
+     "label": "4. peaked ___ 31%",
+     "correct": "at",
+     "why": "A highest point is “at” a figure: peaked at 31%."
+    },
+    "g5": {
+     "label": "5. a rise ___ 9 percentage points",
+     "correct": "of",
+     "why": "After the noun “rise”, the size of the change takes “of”."
+    },
+    "g6": {
+     "label": "6. car use stood ___ 52%",
+     "correct": "at",
+     "why": "“Stand at” gives the level at one point in time."
+    },
+    "g7": {
+     "label": "7. cycling climbed ___ 22%",
+     "correct": "to",
+     "why": "22% is the figure it reached, so use “to”."
+    },
+    "g8": {
+     "label": "8. a fall ___ 3 percentage points",
+     "correct": "of",
+     "why": "After the noun “fall”, the size of the change takes “of” (52% → 49%)."
+    }
+   }
+  }
+ },
+ "ielts-writing-task2-opinion-essay": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. The main reason ___ this idea",
+     "correct": "I support",
+     "why": "The writer “strongly agrees”, so the reasons must support the idea — keep the position consistent."
+    },
+    "g2": {
+     "label": "2. ___, a single extra course can make a graduate more useful",
+     "correct": "For this reason",
+     "why": "This sentence is a result of the point before it, so it needs a result linker."
+    },
+    "g3": {
+     "label": "3. A second argument ___ compulsory courses",
+     "correct": "in favour of",
+     "why": "The paragraph gives another reason to support the courses: an argument in favour of them."
+    },
+    "g4": {
+     "label": "4. ___, some students may feel …",
+     "correct": "Admittedly",
+     "why": "“Admittedly” introduces the other side before the writer answers it with “However”."
+    },
+    "g5": {
+     "label": "5. ___, I believe …",
+     "correct": "In conclusion",
+     "why": "The final paragraph sums up the essay, so it starts with a concluding phrase."
+    },
+    "g6": {
+     "label": "6. the benefits clearly ___ the costs",
+     "correct": "outweigh",
+     "why": "To match “strongly agree”, the benefits must be greater than the costs: they outweigh them."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. ___, they are flexible",
+     "correct": "Moreover",
+     "why": "The second sentence adds another advantage, so it needs an addition linker."
+    },
+    "g2": {
+     "label": "2. ___, many people still prefer to drive",
+     "correct": "nevertheless",
+     "why": "Preferring to drive is surprising after “cheap”, so it needs a contrast linker."
+    },
+    "g3": {
+     "label": "3. ___, more people began cycling",
+     "correct": "As a result",
+     "why": "Cycling more is a consequence of higher fuel prices, so it needs a result linker."
+    },
+    "g4": {
+     "label": "4. Software development, ___, is often done remotely",
+     "correct": "for instance",
+     "why": "Software development is an example of a job done from home."
+    },
+    "g5": {
+     "label": "5. ___ the high cost",
+     "correct": "Despite",
+     "why": "“Despite” is followed by a noun phrase (the high cost); “although” needs a full clause."
+    },
+    "g6": {
+     "label": "6. ___ the course was difficult",
+     "correct": "Although",
+     "why": "A full clause (the course was difficult) after a contrast needs “although”."
+    },
+    "g7": {
+     "label": "7. ___ cities have grown",
+     "correct": "whereas",
+     "why": "“Whereas” compares two opposite facts in one sentence."
+    },
+    "g8": {
+     "label": "8. It ___ reduces stress",
+     "correct": "also",
+     "why": "Reducing stress is a second benefit, so it is an addition: also."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. Paragraph on languages and coding skills",
+     "correct": "Another benefit is that courses outside a student’s field teach practical skills.",
+     "why": "The paragraph gives two examples of practical skills; the topic sentence must name that main idea, not one detail."
+    },
+    "g2": {
+     "label": "2. Paragraph on cycle lanes",
+     "correct": "Investing in cycle lanes is one of the most effective ways to reduce traffic.",
+     "why": "The paragraph explains how cycle lanes cut traffic; the other options are off-topic or too general."
+    },
+    "g3": {
+     "label": "3. Paragraph on part-time work",
+     "correct": "Part-time work has both advantages and disadvantages for students.",
+     "why": "The paragraph gives one benefit and one problem, so the topic sentence must cover both sides."
+    },
+    "g4": {
+     "label": "4. Paragraph on online lessons",
+     "correct": "Online learning makes education more accessible.",
+     "why": "Both details show more people being able to learn — the idea of accessibility."
+    },
+    "g5": {
+     "label": "5. Review (Task 1): fell ___ 52% to 35%",
+     "correct": "from",
+     "why": "“From … to …” gives the start and end figures — from the Writing Task 1 exercise."
+    }
+   }
+  }
  }
 }

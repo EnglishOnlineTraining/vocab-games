@@ -499,4 +499,28 @@ module.exports = {
         + 'Berliner Bewertung.',
     },
   ],
+  'ielts-activities.html': [
+    {
+      q: 'Are these IELTS exercises free?',
+      a: 'Yes. Every exercise is free and needs no sign-up. Use "Just practise" to work through one '
+        + 'without entering a name — you still get instant marking and an explanation for each wrong answer.',
+    },
+    {
+      q: 'Which IELTS test do they prepare me for?',
+      a: 'IELTS Academic, the version most universities ask for. The Writing Task 1 practice uses graphs and '
+        + 'tables, as in the Academic test. General Training practice may follow later.',
+    },
+    {
+      q: 'Will the exercises tell me my band score?',
+      a: 'No. Reading and language questions are marked right or wrong, and the writing tasks come with a '
+        + 'self-check list, but no website can give you a reliable band score. Use the exercises to practise '
+        + 'one skill at a time.',
+    },
+    {
+      q: 'Are these official IELTS materials?',
+      a: 'No. All texts, graphs and questions are written for this site. IELTS is jointly owned by the British '
+        + 'Council, IDP IELTS and Cambridge University Press & Assessment, and EnglishOnline.training is not '
+        + 'affiliated with them. For the official test format, see ielts.org.',
+    },
+  ],
 };

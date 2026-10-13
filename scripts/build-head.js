@@ -643,7 +643,7 @@ ${rows.map(([dt, dd]) => `    <dt>${dt}</dt><dd>${dd}</dd>`).join('\n')}
 // (the gr-*/quiz-* standalone pages) have no real level, so they default to
 // the middle of the ladder rather than skewing the split either way.
 const TOPIC_DIFFICULTY_RANK = {
-  7: 1, 8: 2, 9: 3, 10: 4, msa: 4, business: 5, it: 5, uni: 5, abitur: 6,
+  7: 1, 8: 2, 9: 3, 10: 4, msa: 4, business: 5, it: 5, uni: 5, abitur: 6, ielts: 6,
 };
 function difficultyRank(entry) {
   const base = TOPIC_DIFFICULTY_RANK[entry.year] !== undefined ? TOPIC_DIFFICULTY_RANK[entry.year] : 3;
