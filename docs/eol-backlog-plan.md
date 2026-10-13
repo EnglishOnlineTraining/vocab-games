@@ -1365,6 +1365,11 @@ exercise cannot give one). Decisions are in Claude's memory note `project-ielts-
    IELTS Apps Script with an email field and an unticked newsletter opt-in, with double opt-in on
    in MailerLite. Shaun deploys it. Until then, IELTS pages submit to the shared
    Business/IT/ESL Apps Script.
+   **Privacy policy done 2026-10-13 (live, verified).** WP page 346, §7 now has an "IELTS-Schreibaufgaben"
+   paragraph, mirrored in the English summary. It says no name is submitted, only the text and an
+   email address, that the text is checked once with AI help (Claude, Anthropic PBC, USA) and that a
+   human (Shaun) then checks the feedback, with an unticked opt-in and double opt-in. Next: CC builds the
+   IELTS Apps Script.
 3. **WordPress 1763 button · CC after merge.** Add `🎯 IELTS Academic` through the API.
    `data/wordpress-1763.json` already has it.
 4. **Next exercises · CC on request.** Reading: Matching Headings; sentence and summary
