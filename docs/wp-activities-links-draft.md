@@ -5,6 +5,10 @@ body only (menus and footer left out). Nothing here has been written to WordPres
 needs Shaun's OK, then goes in as one new paragraph block (`post-sections.insert` /
 `page-sections.insert`, additive only) and gets a live check afterwards (CLAUDE.md rule 7)._
 
+**Status 2026-10-13: all four are done.** Checked live: 2032, 2038 and 2039 carry the drafted
+links. 965 links `business-activities`, `be-what-is-management` and `be-management-approaches`
+instead of the negotiation and meeting units. Nothing left to insert.
+
 The ranking pages come from `docs/gsc-review-2026-10-06.md` §1–3.
 
 ## Already linked: no action

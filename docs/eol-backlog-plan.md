@@ -735,7 +735,8 @@ new or contradict those docs are listed here.
    - The title-template separator (B10).
 3. **Small:**
    - the Make → Excel half of formula injection (needs a change in the Make mapping);
-   - the hotlinked Wikimedia image on `9c-south-africa-revision` (self-host needs his OK);
+   - ~~the hotlinked Wikimedia image on `9c-south-africa-revision`~~ self-hosted 2026-10-13
+     (Shaun OK'd it) as `9c-punta-cana-beach.jpg`, with the CC BY 2.0 credit it never had;
    - the remaining `9g-australia-vocab-practice` "Green Line" description (accepted-file list,
      ask first);
 4. **Under-16 consent:** the banners ask under-16s to check with their parents, but DSGVO Art. 8
@@ -1585,6 +1586,11 @@ written to WordPress.
 - **Not done, needs Shaun:**
   - Tier 9.4 (ESG and commercial real estate PDF pages): 3 and 71 impressions, Tier 9.5 says
     no new pages for now, and reading the PDFs means downloading them.
+  - **Item 16 done 2026-10-13 (Shaun: update).** Checked against the primary pages: Pew *Teens,
+    Social Media and Technology 2024* (16% TikTok almost constantly; "nearly half" online almost
+    constantly) in `abitur-argumentative-writing-media-impact`, and Gallup *State of the Global
+    Workplace 2026* (50% US/Canada, data from 2025) in `abitur-argumentative-writing-aims-ambitions`.
+    Notes below kept as history.
   - Item 16 (newer statistics editions): a decision, not a fix. What the newer editions say, from
     search results only (primary pages not read, so check before using):
     - **Pew, *Teens, Social Media and Technology 2024*** (survey Sept–Oct 2024, 1,391 teens):
