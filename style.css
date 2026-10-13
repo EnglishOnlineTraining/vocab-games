@@ -106,6 +106,8 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); min-
 .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--blue); }
 .form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
 .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+.form-check { display: flex; gap: .5rem; align-items: flex-start; font-size: .85rem; color: var(--ink); line-height: 1.5; cursor: pointer; }
+.form-check input { margin-top: .25rem; flex-shrink: 0; }
 
 /* ── Gap-fill (dropdown) ── */
 .gap-text { font-size: .93rem; line-height: 2.6; color: var(--text); }
