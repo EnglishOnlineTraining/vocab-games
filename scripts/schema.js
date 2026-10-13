@@ -531,6 +531,7 @@ function faqPage(url, faq) {
     mainEntity: faq.map((f) => ({
       '@type': 'Question',
       name: f.q,
+      ...(f.lang ? { inLanguage: f.lang } : {}),
       acceptedAnswer: { '@type': 'Answer', text: f.a },
     })),
   };
