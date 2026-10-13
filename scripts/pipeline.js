@@ -237,6 +237,9 @@ const CHECKERS = [
   { id: 'check-topic-headings', run: 'scripts/check-topic-headings.js' },
   { id: 'check-links', run: 'scripts/check-links.js' },
   { id: 'check-grade-table', run: 'scripts/check-grade-table.js' },
+  // The IELTS pages' English-only test is written out in schema.js, exercise.js
+  // and consent.js; this fails the build if the three patterns drift apart.
+  { id: 'check-english-only', run: 'scripts/check-english-only.js' },
   // A vocab test must not print a word it also asks the student to produce.
   // Both live pages did: 9c's instructions said "type the term" while "term"
   // was in its bank, and 9g's heading reads "G'day Australia!" while "G'day"
