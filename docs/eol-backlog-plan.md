@@ -1105,20 +1105,24 @@ afterwards (rule 7).
         Same result on both sides (both indexed, or both rejected): the preview is not the
         cause; remove the `PREVIEW` blocks and go back to external links as the main lever.
         Fewer than 3 recrawled pairs: inconclusive, check again 2 weeks later.
+   - **Baseline and requests done 2026-10-13.** All 10 were "Crawled – currently not indexed"
+     (Google-selected canonical blank on all), so every control stands. Indexing requested for
+     all 10 the same day; each confirmed "added to a priority crawl queue". Every last crawl
+     predates the preview going live (2026-10-12).
    - **Results table** (fill in):
 
      | Page | Role | Baseline state | Requested | Recrawled | State at check | Impr. |
      |---|---|---|---|---|---|---|
-     | 10c-canada-schools | test | | | | | |
-     | 10c-inside-india | control | | | | | |
-     | 10c-canada-environment | test | | | | | |
-     | 10c-discover-canada | control | | | | | |
-     | 10g-growing-up-black | test | | | | | |
-     | 10g-proud-to-be-black | control | | | | | |
-     | 10g-cultural-diversity | test | | | | | |
-     | 10g-post-racial-obama | control | | | | | |
-     | 8c-going-west | test | | | | | |
-     | 8c-off-to-midwest | control | | | | | |
+     | 10c-canada-schools | test | not indexed, crawled 22 Sep | 2026-10-13 | | | |
+     | 10c-inside-india | control | not indexed, crawled 10 Aug | 2026-10-13 | | | |
+     | 10c-canada-environment | test | not indexed, crawled 22 Sep | 2026-10-13 | | | |
+     | 10c-discover-canada | control | not indexed, crawled 9 Aug | 2026-10-13 | | | |
+     | 10g-growing-up-black | test | not indexed, crawled 28 Sep | 2026-10-13 | | | |
+     | 10g-proud-to-be-black | control | not indexed, crawled 10 Aug | 2026-10-13 | | | |
+     | 10g-cultural-diversity | test | not indexed, crawled 28 Sep | 2026-10-13 | | | |
+     | 10g-post-racial-obama | control | not indexed, crawled 22 Aug | 2026-10-13 | | | |
+     | 8c-going-west | test | not indexed, crawled 8 Oct | 2026-10-13 | | | |
+     | 8c-off-to-midwest | control | not indexed, crawled 9 Aug | 2026-10-13 | | | |
 
 ## Tier 10 — AI search: chunk-ready headings and sub-query coverage (2026-10-07) · Shaun + CC
 Source: Google Cloud Vertex AI Search (Discovery Engine) docs. They list these ranking signals:
