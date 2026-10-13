@@ -1,0 +1,175 @@
+{
+ "unit": "ielts-writing-task2-opinion-essay",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "I support",
+     "accept": [
+      "I support"
+     ],
+     "label": "1. The main reason ___ this idea",
+     "why": "The writer “strongly agrees”, so the reasons must support the idea — keep the position consistent."
+    },
+    "g2": {
+     "correct": "For this reason",
+     "accept": [
+      "For this reason"
+     ],
+     "label": "2. ___, a single extra course can make a graduate more useful",
+     "why": "This sentence is a result of the point before it, so it needs a result linker."
+    },
+    "g3": {
+     "correct": "in favour of",
+     "accept": [
+      "in favour of"
+     ],
+     "label": "3. A second argument ___ compulsory courses",
+     "why": "The paragraph gives another reason to support the courses: an argument in favour of them."
+    },
+    "g4": {
+     "correct": "Admittedly",
+     "accept": [
+      "Admittedly"
+     ],
+     "label": "4. ___, some students may feel …",
+     "why": "“Admittedly” introduces the other side before the writer answers it with “However”."
+    },
+    "g5": {
+     "correct": "In conclusion",
+     "accept": [
+      "In conclusion"
+     ],
+     "label": "5. ___, I believe …",
+     "why": "The final paragraph sums up the essay, so it starts with a concluding phrase."
+    },
+    "g6": {
+     "correct": "outweigh",
+     "accept": [
+      "outweigh"
+     ],
+     "label": "6. the benefits clearly ___ the costs",
+     "why": "To match “strongly agree”, the benefits must be greater than the costs: they outweigh them."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Moreover",
+     "accept": [
+      "Moreover"
+     ],
+     "label": "1. ___, they are flexible",
+     "why": "The second sentence adds another advantage, so it needs an addition linker."
+    },
+    "g2": {
+     "correct": "nevertheless",
+     "accept": [
+      "nevertheless"
+     ],
+     "label": "2. ___, many people still prefer to drive",
+     "why": "Preferring to drive is surprising after “cheap”, so it needs a contrast linker."
+    },
+    "g3": {
+     "correct": "As a result",
+     "accept": [
+      "As a result"
+     ],
+     "label": "3. ___, more people began cycling",
+     "why": "Cycling more is a consequence of higher fuel prices, so it needs a result linker."
+    },
+    "g4": {
+     "correct": "for instance",
+     "accept": [
+      "for instance"
+     ],
+     "label": "4. Software development, ___, is often done remotely",
+     "why": "Software development is an example of a job done from home."
+    },
+    "g5": {
+     "correct": "Despite",
+     "accept": [
+      "Despite"
+     ],
+     "label": "5. ___ the high cost",
+     "why": "“Despite” is followed by a noun phrase (the high cost); “although” needs a full clause."
+    },
+    "g6": {
+     "correct": "Although",
+     "accept": [
+      "Although"
+     ],
+     "label": "6. ___ the course was difficult",
+     "why": "A full clause (the course was difficult) after a contrast needs “although”."
+    },
+    "g7": {
+     "correct": "whereas",
+     "accept": [
+      "whereas"
+     ],
+     "label": "7. ___ cities have grown",
+     "why": "“Whereas” compares two opposite facts in one sentence."
+    },
+    "g8": {
+     "correct": "also",
+     "accept": [
+      "also"
+     ],
+     "label": "8. It ___ reduces stress",
+     "why": "Reducing stress is a second benefit, so it is an addition: also."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Another benefit is that courses outside a student’s field teach practical skills.",
+     "accept": [
+      "Another benefit is that courses outside a student’s field teach practical skills."
+     ],
+     "label": "1. Paragraph on languages and coding skills",
+     "why": "The paragraph gives two examples of practical skills; the topic sentence must name that main idea, not one detail."
+    },
+    "g2": {
+     "correct": "Investing in cycle lanes is one of the most effective ways to reduce traffic.",
+     "accept": [
+      "Investing in cycle lanes is one of the most effective ways to reduce traffic."
+     ],
+     "label": "2. Paragraph on cycle lanes",
+     "why": "The paragraph explains how cycle lanes cut traffic; the other options are off-topic or too general."
+    },
+    "g3": {
+     "correct": "Part-time work has both advantages and disadvantages for students.",
+     "accept": [
+      "Part-time work has both advantages and disadvantages for students."
+     ],
+     "label": "3. Paragraph on part-time work",
+     "why": "The paragraph gives one benefit and one problem, so the topic sentence must cover both sides."
+    },
+    "g4": {
+     "correct": "Online learning makes education more accessible.",
+     "accept": [
+      "Online learning makes education more accessible."
+     ],
+     "label": "4. Paragraph on online lessons",
+     "why": "Both details show more people being able to learn — the idea of accessibility."
+    },
+    "g5": {
+     "correct": "from",
+     "accept": [
+      "from"
+     ],
+     "label": "5. Review (Task 1): fell ___ 52% to 35%",
+     "why": "“From … to …” gives the start and end figures — from the Writing Task 1 exercise."
+    }
+   }
+  }
+ }
+}

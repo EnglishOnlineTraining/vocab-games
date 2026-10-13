@@ -1,0 +1,207 @@
+{
+ "unit": "ielts-reading-true-false-not-given",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "1. Paths form where the official route is longer",
+     "why": "Paragraph A: they “usually appear where an official path makes walkers go … the long way round”."
+    },
+    "g2": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "2. Takes several years to form",
+     "why": "Paragraph A says they “can form in a single season” — the opposite of several years."
+    },
+    "g3": {
+     "correct": "Not Given",
+     "accept": [
+      "Not Given"
+     ],
+     "label": "3. More common in cities than the countryside",
+     "why": "The text only talks about city parks and campuses; it never compares them with the countryside."
+    },
+    "g4": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "4. Fences and signs always worked",
+     "why": "Paragraph B says these measures “sometimes worked” — “always” contradicts that."
+    },
+    "g5": {
+     "correct": "Not Given",
+     "accept": [
+      "Not Given"
+     ],
+     "label": "5. Most managers now encourage walking on grass",
+     "why": "Paragraph C is about “a growing number of designers”, not most park managers, and says nothing about encouraging people."
+    },
+    "g6": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "6. Supporters say the resulting paths get used",
+     "why": "Paragraph C: supporters say it “produces paths that people use instead of ignore”."
+    },
+    "g7": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "7. May not suit every walker",
+     "why": "Paragraph D: a route that suits commuters “may not suit wheelchair users or parents with buggies”."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "1. usually closed → never closed",
+     "why": "“Never closed” contradicts “usually closed”, so the statement is False."
+    },
+    "g2": {
+     "correct": "Not Given",
+     "accept": [
+      "Not Given"
+     ],
+     "label": "2. free on Sundays → free every day",
+     "why": "The text says nothing about the other six days, so it neither confirms nor contradicts “every day”."
+    },
+    "g3": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "3. still unsure → have proved",
+     "why": "If scientists are still unsure, they have not proved it — the statement contradicts the text."
+    },
+    "g4": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "4. most arrive by train → more than any other",
+     "why": "“Most” means more than half, so train must be the biggest group — the statement agrees."
+    },
+    "g5": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "5. only a few survive → some still standing",
+     "why": "“A few survive” means some are still standing, even though most are gone."
+    },
+    "g6": {
+     "correct": "Not Given",
+     "accept": [
+      "Not Given"
+     ],
+     "label": "6. first held in 1998 → every year since",
+     "why": "The text gives the first year only; it does not say whether the festival was held every year after that."
+    },
+    "g7": {
+     "correct": "Not Given",
+     "accept": [
+      "Not Given"
+     ],
+     "label": "7. almost all grow rice → rice is the only crop",
+     "why": "Farmers can grow rice and other crops too; the text does not say what else is grown."
+    },
+    "g8": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "8. more than 50 employees → 20 employees",
+     "why": "A company with 20 employees is below the limit of 50, so the law does not apply — False."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "a quicker way to get somewhere",
+     "accept": [
+      "a quicker way to get somewhere"
+     ],
+     "label": "1. a shortcut",
+     "why": "A shortcut is a route that is quicker or shorter than the usual one."
+    },
+    "g2": {
+     "correct": "the actions taken to deal with the problem",
+     "accept": [
+      "the actions taken to deal with the problem"
+     ],
+     "label": "2. these measures",
+     "why": "“Measures” here are actions taken to solve a problem — the fences, hedges and signs."
+    },
+    "g3": {
+     "correct": "more and more",
+     "accept": [
+      "more and more"
+     ],
+     "label": "3. a growing number of",
+     "why": "If a number is growing, it is getting bigger: more and more designers."
+    },
+    "g4": {
+     "correct": "costs nothing to collect",
+     "accept": [
+      "costs nothing to collect"
+     ],
+     "label": "4. free information",
+     "why": "The paths show how people move without anyone paying for a study — the information costs nothing."
+    },
+    "g5": {
+     "correct": "show",
+     "accept": [
+      "show"
+     ],
+     "label": "5. reflect",
+     "why": "Here “reflect” means show or represent — the paths show how one group of people walks."
+    },
+    "g6": {
+     "correct": "in a rush",
+     "accept": [
+      "in a rush"
+     ],
+     "label": "6. hurried",
+     "why": "Hurried people are in a rush, so they take the quickest route."
+    },
+    "g7": {
+     "correct": "generally agree",
+     "accept": [
+      "generally agree"
+     ],
+     "label": "7. consensus (IELTS Vocabulary Glossary)",
+     "why": "A consensus is general agreement — a word from the IELTS Vocabulary Glossary."
+    },
+    "g8": {
+     "correct": "makes it weaker",
+     "accept": [
+      "makes it weaker"
+     ],
+     "label": "8. undermine (IELTS Vocabulary Glossary)",
+     "why": "To undermine something is to make it weaker, often slowly — from the IELTS Vocabulary Glossary."
+    }
+   }
+  }
+ }
+}

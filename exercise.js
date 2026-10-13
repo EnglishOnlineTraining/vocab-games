@@ -37,9 +37,16 @@ function eolUrlMode() {
   catch (e) { return ''; }
 }
 
+/* Pages for an international audience get English-only chrome and no German
+   school grade (an IELTS result is a band, not a Note). Kept in step with
+   englishOnly() in scripts/schema.js, which does the same for generated blocks. */
+function eolEnglishOnly() {
+  try { return /^ielts-/.test(eolPageFile()); } catch (e) { return false; }
+}
+
 function startPractise() {
   practiseMode = true;
-  state.name = 'Übungsmodus';
+  state.name = eolEnglishOnly() ? 'Practice mode' : 'Übungsmodus';
   state.cls  = '';
   var err = document.getElementById('welcome-error');
   if (err) err.classList.remove('show');
@@ -52,7 +59,7 @@ function startPractise() {
 function eolRelabelForPractise() {
   var lastEx = TOTAL_STEPS - 1;
   var btn = document.querySelector('#step-' + lastEx + ' [onclick*="nextStep(' + lastEx + ')"]');
-  if (btn) btn.innerHTML = 'Ergebnis anzeigen &rarr;';
+  if (btn) btn.innerHTML = (eolEnglishOnly() ? 'Show results' : 'Ergebnis anzeigen') + ' &rarr;';
 }
 
 /* Inject the "just practise" button into the welcome gate and honour ?mode=. */
@@ -64,7 +71,9 @@ function eolInitPractise() {
     b.id = 'practise-btn';
     b.className = 'btn btn-outline btn-block';
     b.style.marginTop = '.6rem';
-    b.innerHTML = '<span lang="de">Nur üben — ohne Abgabe</span> &middot; <span style="opacity:.75">Just practise</span>';
+    b.innerHTML = eolEnglishOnly()
+      ? 'Just practise — nothing is sent'
+      : '<span lang="de">Nur üben — ohne Abgabe</span> &middot; <span style="opacity:.75">Just practise</span>';
     b.setAttribute('type', 'button');
     b.setAttribute('onclick', 'startPractise()');
     startBtn.parentNode.insertBefore(b, startBtn.nextSibling);
@@ -84,9 +93,11 @@ function eolPractiseResults() {
     if (card) card.style.display = 'none';
   }
   var head = step.querySelector('.ex-title');
-  if (head) head.textContent = 'Übung abgeschlossen!';
+  var en = eolEnglishOnly();
+  if (head) head.textContent = en ? 'Exercise complete!' : 'Übung abgeschlossen!';
   var sub = step.querySelector('.ex-subtitle');
-  if (sub) sub.textContent = 'Übungsmodus — deine Ergebnisse. Nichts wird abgeschickt.';
+  if (sub) sub.textContent = en ? 'Practice mode — your results. Nothing has been sent.'
+    : 'Übungsmodus — deine Ergebnisse. Nichts wird abgeschickt.';
   renderScore();
   var panel = document.getElementById('practise-results');
   if (panel) panel.remove();
@@ -105,14 +116,18 @@ function eolPractisePanelHtml() {
     return '<div style="display:flex;justify-content:space-between;padding:.4rem 0;border-top:1px solid var(--border)">'
       + '<span>Exercise ' + esc(letter) + '</span><strong>' + fmtPts(s.correct) + ' / ' + s.total + '</strong></div>';
   }).join('');
+  var en = eolEnglishOnly();
   var breakdown = rows
-    ? '<div class="card"><div class="card-title">Deine Punkte pro Übung</div>' + rows + '</div>'
+    ? '<div class="card"><div class="card-title">' + (en ? 'Your points per exercise' : 'Deine Punkte pro Übung') + '</div>' + rows + '</div>'
     : '';
   var selfcheck = eolRubricHtml();   // practise mode only — never sent anywhere
   var buttons = '<div class="card" style="text-align:center">'
-    + '<button class="btn btn-gold" type="button" style="width:100%;max-width:360px;justify-content:center" onclick="eolPractiseRetry()">↻ Nochmal üben · Try again</button>'
-    + '<div style="margin-top:.7rem"><a class="btn btn-outline btn-sm" href="activities.html">← Alle Übungen</a></div>'
-    + '</div>';
+    + '<button class="btn btn-gold" type="button" style="width:100%;max-width:360px;justify-content:center" onclick="eolPractiseRetry()">'
+    + (en ? '↻ Try again' : '↻ Nochmal üben · Try again') + '</button>'
+    + '<div style="margin-top:.7rem">'
+    + (en ? '<a class="btn btn-outline btn-sm" href="ielts-activities.html">← All IELTS exercises</a>'
+          : '<a class="btn btn-outline btn-sm" href="activities.html">← Alle Übungen</a>')
+    + '</div></div>';
   return breakdown + selfcheck + buttons;
 }
 
@@ -321,7 +336,7 @@ var EOL_RUBRIC_BANDS = {
 function eolRubricBand() {
   var f = eolPageFile();
   if (/^(uni|be|it)-/.test(f)) return EOL_RUBRIC_BANDS.pro;
-  if (/^(10g|abitur)-/.test(f)) return EOL_RUBRIC_BANDS.b2;
+  if (/^(10g|abitur|ielts)-/.test(f)) return EOL_RUBRIC_BANDS.b2;
   if (/^(7c|8c)-/.test(f)) return EOL_RUBRIC_BANDS.a2;
   return EOL_RUBRIC_BANDS.b1;
 }
@@ -344,6 +359,7 @@ function eolRubricHtml() {
   var counts = eolWritingCounts().filter(function(c) { return c.words > 0; });
   var total = counts.reduce(function(a, c) { return a + c.words; }, 0);
 
+  if (eolEnglishOnly()) return eolRubricHtmlEn(rows, total);
   var html = '<div class="card eol-rubric" lang="de">'
     + '<div class="card-title">Schreibaufgabe — selbst bewerten</div>'
     + '<p class="eol-rubric-intro">Das ist <strong>keine Note</strong>. Im Übungsmodus korrigiert niemand deinen Text — '
@@ -369,6 +385,35 @@ function eolRubricHtml() {
     + '<p class="eol-rubric-foot">Ein Kriterium bei „Noch nicht“? Überarbeite genau diesen Punkt und übe die Aufgabe noch einmal.</p>'
     + '</div>';
   return html;
+}
+
+/* English version of the self-check for eolEnglishOnly() pages. */
+function eolRubricHtmlEn(rows, total) {
+  var levels = ['Not yet', 'Almost', 'Yes'];
+  var html = '<div class="card eol-rubric">'
+    + '<div class="card-title">Check your own writing</div>'
+    + '<p class="eol-rubric-intro">This is <strong>not a band score</strong> — nobody marks your text in practice mode. '
+    + 'Go through each point and decide what is already good and what you can still improve.'
+    + (total ? ' You wrote <strong>' + total + ' words</strong>.' : '')
+    + '</p>'
+    + '<table class="eol-rubric-table"><caption class="eol-sr-only">Self-check criteria for your writing</caption>'
+    + '<thead><tr><th scope="col">Criterion</th><th scope="col">What I check</th>'
+    + levels.map(function(l) { return '<th scope="col" class="eol-rubric-rate">' + l + '</th>'; }).join('')
+    + '</tr></thead><tbody>';
+  rows.forEach(function(r, i) {
+    var name = 'eol-rub-' + i;
+    html += '<tr><th scope="row">' + esc(r[0]) + '</th><td>' + esc(r[1]) + '</td>';
+    levels.forEach(function(lvl, j) {
+      var id = name + '-' + j;
+      html += '<td class="eol-rubric-rate">'
+        + '<input type="radio" name="' + name + '" id="' + id + '">'
+        + '<label for="' + id + '"><span class="eol-sr-only">' + esc(r[0]) + ': ' + lvl + '</span></label></td>';
+    });
+    html += '</tr>';
+  });
+  return html + '</tbody></table>'
+    + '<p class="eol-rubric-foot">A point at “Not yet”? Rewrite just that part and try the task again.</p>'
+    + '</div>';
 }
 
 function showToast(message, duration) {
@@ -418,11 +463,12 @@ function showStep(n) {
   var meta = document.getElementById('header-meta');
   if (n === 0) { meta.style.display = 'none'; return; }
   meta.style.display = 'block';
+  var en = eolEnglishOnly();
   document.getElementById('header-name').textContent = practiseMode
-    ? 'Übungsmodus' : (state.name + (state.cls ? ' — ' + state.cls : ''));
+    ? (en ? 'Practice mode' : 'Übungsmodus') : (state.name + (state.cls ? ' — ' + state.cls : ''));
   document.getElementById('header-step').textContent = n < TOTAL_STEPS
     ? 'Exercise ' + String.fromCharCode(64 + n) + ' of ' + (TOTAL_STEPS - 1)
-    : (practiseMode ? 'Ergebnis' : 'Submit');
+    : (practiseMode ? (en ? 'Results' : 'Ergebnis') : 'Submit');
   if (n === TOTAL_STEPS) eolApplyExplanations();
   if (practiseMode && n === TOTAL_STEPS) eolPractiseResults();
 }
@@ -903,6 +949,17 @@ function renderScore() {
     gradeHtml = '<div style="font-size:1rem;color:var(--blue);margin-top:.2rem">Note ' + grade.note + ' (' + grade.label + ')</div>';
   }
   box.style.display = 'block';
+  if (eolEnglishOnly()) {
+    box.innerHTML = '<div class="card" style="text-align:center;background:var(--gold-lt);border:1.5px solid var(--gold)">'
+      + '<div style="font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--blue);font-weight:700;margin-bottom:.3rem">Your score (auto-marked questions)</div>'
+      + '<div style="font-size:1.5rem;font-weight:800;color:var(--blue)">' + fmtPts(sc.earned) + ' / ' + sc.possible + ' points'
+      + ' <span style="font-size:1rem;font-weight:700">(' + Math.round(sc.earned / sc.possible * 100) + '%)</span></div>'
+      + '<div style="font-size:.78rem;color:var(--muted);margin-top:.4rem">Each question scores 1 point if you get it right first time, ½ on the second try and ¼ on the third. '
+      + 'IELTS reports results as bands from 1 to 9, worked out from a full test, so a short exercise like this one cannot give you a band — use the score to see which question types need more practice.'
+      + (practiseMode ? '' : ' Your writing is not included in this score.')
+      + '</div></div>';
+    return;
+  }
   box.innerHTML = '<div class="card" style="text-align:center;background:var(--gold-lt);border:1.5px solid var(--gold)">'
     + '<div style="font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--blue);font-weight:700;margin-bottom:.3rem">Your score (auto-graded sections)</div>'
     + '<div style="font-size:1.5rem;font-weight:800;color:var(--blue)">' + fmtPts(sc.earned) + ' / ' + sc.possible + ' points</div>'
@@ -1533,6 +1590,7 @@ function eolCrumbLabel() {
   if (/^uni-/.test(f)) return 'Universität';
   if (/^it-/.test(f))  return 'IT English';
   if (/^be-/.test(f))  return 'Business English';
+  if (/^ielts-/.test(f)) return 'IELTS Academic';
   // Without this the three gr-* pages fell through to the default and rendered
   // "Übungen › Übungen › …". Kept in step with crumbLabel() in scripts/schema.js,
   // which builds the BreadcrumbList markup from the same prefixes.
@@ -1601,8 +1659,12 @@ function eolInjectChrome() {
     skip.id = 'eol-skip';
     skip.className = 'eol-skip';
     skip.href = '#step-0';   // kept in sync with the active step by eolSyncActiveStep
-    skip.textContent = 'Zum Inhalt springen';
-    skip.setAttribute('lang', 'de');
+    if (eolEnglishOnly()) {
+      skip.textContent = 'Skip to content';
+    } else {
+      skip.textContent = 'Zum Inhalt springen';
+      skip.setAttribute('lang', 'de');
+    }
     skip.addEventListener('click', function(e) {
       var active = document.querySelector('.step.active');
       if (!active) return;                 // no active step: let the href do its job
@@ -1633,6 +1695,21 @@ function eolInjectChrome() {
     var f = document.createElement('footer');
     f.id = 'eol-footer';
     f.className = 'eol-footer';
+    if (eolEnglishOnly()) {
+      f.innerHTML =
+        '<nav aria-label="Pages">'
+        + '<a href="ielts-activities.html">IELTS practice</a>'
+        + '<a href="activities.html">All exercises</a>'
+        + '<a href="esl-grammar-activities.html">ESL grammar</a>'
+        + '<a href="mailto:englishonlinetraining@pm.me">Contact</a>'
+        + '</nav>'
+        + '<div class="legal">© EnglishOnline.Training · '
+        + '<a href="https://englishonline.training">Main website</a> · '
+        + '<a href="https://englishonline.training/impressum/">Legal notice</a> · '
+        + '<a href="https://englishonline.training/privacy-policy/">Privacy</a></div>';
+      document.body.appendChild(f);
+      return;
+    }
     f.setAttribute('lang', 'de');   // German chrome inside a lang="en" page
     f.innerHTML =
       '<nav aria-label="Seiten">'

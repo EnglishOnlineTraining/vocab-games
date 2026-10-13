@@ -1300,6 +1300,38 @@ Commercial intent and money pages: Tier 12.1. Reddit: Tier 12 "Not adopted". Cha
   post's own author calls the network the riskiest part.
 - **Running a subreddit for views:** Tier 12 already says no; the audience is not there.
 
+## Tier 14 — IELTS Academic section (2026-10-13) · Shaun + CC
+
+Section added in PR #129: `ielts-activities.html`, three pilot exercises, a review page, and the
+glossary. The audience is self-study learners. "ielts" gets 8.1K searches a month in Germany
+(SE Ranking, KD 63), so pages target narrower question-type searches, not the main term. IELTS
+pages show points and a percentage, never a German Note and never a predicted band (a short
+exercise cannot give one). Decisions are in Claude's memory note `project-ielts-section`.
+
+1. **Full-length Academic Reading practice test with an estimated band · CC, Shaun approves.**
+   One page: three original passages (2,150–2,750 words in all), 40 questions, the question
+   types the section has practised, and an optional 60-minute timer. This is the one place a
+   band is fair to show, because it is a full-length test. Convert the raw score with an
+   indicative Academic Reading table taken from an official source (ielts.org, IDP or the
+   British Council), fact-check it first, cite it on the page, and label the result "estimated
+   band", not a real result. Build it after Matching Headings and the completion question types
+   have their own exercises, so the test does not use question types learners have not met yet.
+   No writing or listening mock: writing cannot be marked automatically, and listening needs audio.
+2. **Writing submissions with email and MailerLite · Shaun first, then CC.** Update the privacy
+   policy first. It must cover the MailerLite list and the fact that submitted writing is
+   processed with AI help (Claude drafts the feedback, Shaun checks it). Then CC builds a separate
+   IELTS Apps Script with an email field and an unticked newsletter opt-in, with double opt-in on
+   in MailerLite. Shaun deploys it. Until then, IELTS pages submit to the shared
+   Business/IT/ESL Apps Script.
+3. **WordPress 1763 button · CC after merge.** Add `🎯 IELTS Academic` through the API.
+   `data/wordpress-1763.json` already has it.
+4. **Next exercises · CC on request.** Reading: Matching Headings; sentence and summary
+   completion. Writing Task 1: tables and bar charts; describing a process. Writing Task 2:
+   discussion and problem–solution essays. The hub's "Coming next" list shows these.
+5. **German FAQ on the hub · Shaun decides.** German searchers often type "IELTS Übungen" or
+   "IELTS Vorbereitung". The exercises stay English-only, but a short German FAQ on
+   `ielts-activities.html` could catch those searches.
+
 ## Open decisions gating the plan
 **All six items from the 2026-08-07 audit reconciliation are now resolved and executed** (Shaun
 approved each): 2063–2066 published, "Blog Posts" 70 fixed and 1205 stubbed, 307 unpublished,

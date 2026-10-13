@@ -72,7 +72,8 @@ const CATEGORIES = {
   'msa': { label: 'MSA Exam Practice',    cefr: '~B1',  emoji: '🎧', hub: 'msa-activities.html', sheet: WEBHOOK_Y9, klass: 'MSA' },
   'uni': { label: 'University English', cefr: 'B2+',    emoji: '🎓', hub: 'uni-activities.html', sheet: APPS_SCRIPT, klass: 'Kurs' },
   'it':  { label: 'IT English',         cefr: 'B1/B2',  emoji: '💻', hub: 'it-activities.html',  sheet: APPS_SCRIPT, klass: 'Kurs' },
-  'be':  { label: 'Business English',   cefr: 'B2',     emoji: '💼', hub: 'business-activities.html', sheet: APPS_SCRIPT, klass: 'Kurs' }
+  'be':  { label: 'Business English',   cefr: 'B2',     emoji: '💼', hub: 'business-activities.html', sheet: APPS_SCRIPT, klass: 'Kurs' },
+  'ielts': { label: 'IELTS Academic',   cefr: 'B2/C1',  emoji: '🎯', hub: 'ielts-activities.html', sheet: APPS_SCRIPT, klass: 'Kurs' }
 };
 
 function esc(s) {
@@ -93,7 +94,7 @@ function seededShuffle(arr, seed) {
 }
 
 function categoryOf(file) {
-  var m = file.match(/^(10[gc]|[789][acg]|msa|uni|it|be)-/);
+  var m = file.match(/^(10[gc]|[789][acg]|msa|uni|it|be|ielts)-/);
   return m ? m[1] : null;
 }
 function titleOf(src) {
@@ -171,6 +172,8 @@ function interleave(byUnit, want, seed) {
 }
 
 function buildPage(cat, cfg, items) {
+  // IELTS reports a band, not a German Note, so its review page sends no grade.
+  var GRADE_EXPR = cat === 'ielts' ? 'null' : 'lookupGrade(sc.earned, sc.possible)';
   var unitId = cat + '-review';
   var file = unitId + '.html';
   var title = cfg.label + ' — Revision';
@@ -401,7 +404,7 @@ function buildPage(cat, cfg, items) {
 + '  renderScore();\n}\n\n'
 + 'function buildEmailBody() {\n'
 + '  var sc = totalScore();\n'
-+ '  var grade = lookupGrade(sc.earned, sc.possible);\n'
++ '  var grade = ' + GRADE_EXPR + ';\n'
 + '  var body = \'Exercise: \' + UNIT\n'
 + '    + \'\\nStudent: \' + state.name\n'
 + '    + \'\\nClass:   \' + state.cls\n'
@@ -414,7 +417,7 @@ function buildPage(cat, cfg, items) {
 + '  return body;\n}\n\n'
 + 'function buildPayload() {\n'
 + '  var sc = totalScore();\n'
-+ '  var grade = lookupGrade(sc.earned, sc.possible);\n'
++ '  var grade = ' + GRADE_EXPR + ';\n'
 + '  return {\n'
 + '    name: state.name, cls: state.cls, unit: UNIT,\n'
 + '    ' + SECTIONS.map(function (l) { return 'ex' + l + ': state.ex' + l; }).join(', ') + ',\n'

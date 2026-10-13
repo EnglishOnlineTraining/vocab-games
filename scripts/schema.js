@@ -202,6 +202,7 @@ const LEVELS = [
   [/^uni-/, 'B2–C1'],
   [/^be-/, 'B1–B2'],
   [/^it-/, 'B1–B2'],
+  [/^ielts-/, 'B2–C1'],
 ];
 
 /** CEFR band for a page, or '' when the page spans levels (quizzes, gr-*). */
@@ -209,6 +210,14 @@ function levelFor(file) {
   const f = file.toLowerCase();
   const hit = LEVELS.find(([re]) => re.test(f));
   return hit ? hit[1] : '';
+}
+
+/**
+ * Pages for an international audience: English-only generated chrome and no
+ * German school grade. Mirrors exercise.js:eolEnglishOnly().
+ */
+function englishOnly(file) {
+  return /^ielts-/.test(String(file).toLowerCase());
 }
 
 /** Mirrors exercise.js:eolCrumbLabel() so the markup and the visible crumb agree. */
@@ -224,6 +233,7 @@ function crumbLabel(file) {
   if (/^be-/.test(f)) return 'Business English';
   if (/^gr-/.test(f)) return 'Grammatik';
   if (/^esl-/.test(f)) return 'ESL Grammar';
+  if (/^ielts-/.test(f)) return 'IELTS Academic';
   if (/^quiz-/.test(f)) return 'Quiz';
   if (/^level-/.test(f)) return 'Einstufungstest';
   return 'Übungen';
@@ -251,6 +261,7 @@ function hubFor(file) {
   if (/^be-/.test(f)) return 'business-activities.html';
   if (/^gr-/.test(f)) return 'grammar-activities.html';
   if (/^esl-/.test(f)) return 'esl-grammar-activities.html';
+  if (/^ielts-/.test(f)) return 'ielts-activities.html';
   return '';
 }
 
@@ -315,7 +326,7 @@ function cefrNode(level) {
  */
 function breadcrumbTrail(file, title, url) {
   const trail = [{ name: 'Start', url: SITE + '/' }];
-  if (file !== 'activities.html') trail.push({ name: 'Übungen', url: SITE + '/activities.html' });
+  if (file !== 'activities.html') trail.push({ name: englishOnly(file) ? 'Exercises' : 'Übungen', url: SITE + '/activities.html' });
   const hub = hubFor(file);
   if (hub && hub !== file) trail.push({ name: crumbLabel(file), url: SITE + '/' + hub });
   trail.push({ name: title, url });
@@ -553,6 +564,7 @@ module.exports = {
   orgStub,
   personStub,
   levelFor,
+  englishOnly,
   crumbLabel,
   hubFor,
   topicLabel,

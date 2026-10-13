@@ -61,14 +61,24 @@
     document.head.appendChild(st);
   }
 
+  // International pages (IELTS) get the banner in English only. Kept in step
+  // with eolEnglishOnly() in exercise.js and englishOnly() in scripts/schema.js.
+  var EN = /^ielts-/.test((location.pathname.split('/').pop() || '').toLowerCase());
+
   function banner() {
     if (document.getElementById('eol-consent')) return;
     style();
     var b = document.createElement('div');
     b.id = 'eol-consent';
     b.setAttribute('role', 'region');
-    b.setAttribute('aria-label', 'Cookie-Einstellungen');
-    b.innerHTML = '<div class="in">'
+    b.setAttribute('aria-label', EN ? 'Cookie settings' : 'Cookie-Einstellungen');
+    b.innerHTML = EN ? '<div class="in">'
+      + '<p>May I use <strong>Google Analytics</strong> to count which exercises are used? '
+      + 'This sets cookies and sends data to Google (USA). Every exercise also works without it. '
+      + 'Under 16? Please ask a parent first. <a href="' + PRIVACY + '">Privacy</a></p>'
+      + '<div class="btns"><button type="button" class="no">Decline</button>'
+      + '<button type="button" class="yes">Accept</button></div></div>'
+      : '<div class="in">'
       + '<p lang="de">Darf ich mit <strong>Google Analytics</strong> zählen, welche Übungen genutzt werden? '
       + 'Dafür werden Cookies gesetzt und Daten an Google (USA) übertragen. Alle Übungen funktionieren auch ohne. '
       + 'Unter 16? Frag bitte vorher deine Eltern. <a href="' + PRIVACY + '">Datenschutz</a>'
@@ -89,7 +99,7 @@
     var btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'eol-consent-link';
-    btn.textContent = 'Cookie-Einstellungen';
+    btn.textContent = EN ? 'Cookie settings' : 'Cookie-Einstellungen';
     btn.addEventListener('click', function () {
       try { localStorage.removeItem(KEY); } catch (e) { /* nothing stored */ }
       banner();
