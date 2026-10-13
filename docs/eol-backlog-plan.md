@@ -1611,3 +1611,17 @@ written to WordPress.
 - **Stale, fixed in passing:** Tier 3.6. All five missing topics now have pages (18 in
   `data/topics.json`). `hubs-seo-and-tests.md` still said 1763 links "all 11 topic pages".
   It links 10 chips plus the `themen/` index; corrected.
+
+### Overnight pass 2026-10-13 · CC
+Worked from this file without Shaun. Every change is a PR; nothing pushed to `main`, nothing
+written to WordPress. One live write, approved by Shaun before the pass: the MailerLite group
+"EOL – IELTS".
+- **#138:** Tier 14.2 (IELTS email + opt-in, one IELTS tab) and Tier 13.2 (gaps and leaks).
+- **#139:** the per-section sitemaps (`docs/engineering-backlog.md`).
+- **#140:** Tier 12.4–12.6 (CLAUDE.md rules 8–9; diagnose-first step in Tier 9.7).
+- **Checked, already done:** Tier 8 §C 12–14 (no duplicate meta descriptions left, 288 pages).
+- **Blocked:** Tier 12.13 (old-domain redirects). The session's network policy denies
+  `learnenglishinberlin.com`, `englishforgermanspeakers.org` and `.wordpress.com` (proxy 403).
+  Allow them in the environment's network settings, or check by hand.
+- **Not started (on request only):** Tier 14.4 next IELTS exercises; Tier 14.1 waits on them.
+
