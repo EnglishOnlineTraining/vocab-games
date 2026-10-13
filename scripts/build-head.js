@@ -824,7 +824,11 @@ function faqSection(file, lang) {
 <section class="eol-faq" lang="${de ? 'de' : 'en'}" aria-labelledby="faq-heading">
   <h2 id="faq-heading">${heading}</h2>
   <dl>
-${faq.map((f) => `    <dt>${escText(f.q)}</dt>\n    <dd>${escText(f.a)}</dd>`).join('\n')}
+${faq.map((f) => {
+    // An entry in another language than the page (the German IELTS FAQs) says so.
+    const l = f.lang && f.lang !== (de ? 'de' : 'en') ? ` lang="${f.lang}"` : '';
+    return `    <dt${l}>${escText(f.q)}</dt>\n    <dd${l}>${escText(f.a)}</dd>`;
+  }).join('\n')}
   </dl>
 </section>
 <!-- FAQ:END -->

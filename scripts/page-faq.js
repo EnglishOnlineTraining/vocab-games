@@ -522,5 +522,22 @@ module.exports = {
         + 'Council, IDP IELTS and Cambridge University Press & Assessment, and EnglishOnline.training is not '
         + 'affiliated with them. For the official test format, see ielts.org.',
     },
+    // German, for searchers who type "IELTS Übungen" or "IELTS Vorbereitung" (Shaun,
+    // 2026-10-13). Only the FAQ is German; the exercises stay English-only.
+    {
+      lang: 'de',
+      q: 'Kostenlose IELTS-Übungen: Was finde ich hier?',
+      a: 'Kostenlose Online-Übungen zur Vorbereitung auf IELTS Academic, ohne Anmeldung: Leseverstehen '
+        + '(True/False/Not Given), Writing Task 1 (Diagramme beschreiben), Writing Task 2 (Meinungsaufsatz), '
+        + 'eine gemischte Wiederholung und ein Wortschatz-Glossar. Die Übungen selbst sind auf Englisch, '
+        + 'denn auch in der Prüfung liest und schreibst du nur Englisch.',
+    },
+    {
+      lang: 'de',
+      q: 'Wie nutze ich die Übungen zur IELTS-Vorbereitung?',
+      a: 'Übe einen Aufgabentyp nach dem anderen. Jede Übung korrigiert deine Antworten sofort und erklärt '
+        + 'deine Fehler. Die Übungen sind für das Selbststudium auf etwa B2–C1 gedacht. Prüfungsformat, '
+        + 'Termine und Anmeldung findest du auf ielts.org.',
+    },
   ],
 };
