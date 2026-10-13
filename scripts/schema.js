@@ -212,6 +212,14 @@ function levelFor(file) {
   return hit ? hit[1] : '';
 }
 
+/**
+ * Pages for an international audience: English-only generated chrome and no
+ * German school grade. Mirrors exercise.js:eolEnglishOnly().
+ */
+function englishOnly(file) {
+  return /^ielts-/.test(String(file).toLowerCase());
+}
+
 /** Mirrors exercise.js:eolCrumbLabel() so the markup and the visible crumb agree. */
 function crumbLabel(file) {
   const f = file.toLowerCase();
@@ -318,7 +326,7 @@ function cefrNode(level) {
  */
 function breadcrumbTrail(file, title, url) {
   const trail = [{ name: 'Start', url: SITE + '/' }];
-  if (file !== 'activities.html') trail.push({ name: 'Übungen', url: SITE + '/activities.html' });
+  if (file !== 'activities.html') trail.push({ name: englishOnly(file) ? 'Exercises' : 'Übungen', url: SITE + '/activities.html' });
   const hub = hubFor(file);
   if (hub && hub !== file) trail.push({ name: crumbLabel(file), url: SITE + '/' + hub });
   trail.push({ name: title, url });
@@ -556,6 +564,7 @@ module.exports = {
   orgStub,
   personStub,
   levelFor,
+  englishOnly,
   crumbLabel,
   hubFor,
   topicLabel,

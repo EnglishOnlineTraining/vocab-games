@@ -172,6 +172,8 @@ function interleave(byUnit, want, seed) {
 }
 
 function buildPage(cat, cfg, items) {
+  // IELTS reports a band, not a German Note, so its review page sends no grade.
+  var GRADE_EXPR = cat === 'ielts' ? 'null' : 'lookupGrade(sc.earned, sc.possible)';
   var unitId = cat + '-review';
   var file = unitId + '.html';
   var title = cfg.label + ' — Revision';
@@ -402,7 +404,7 @@ function buildPage(cat, cfg, items) {
 + '  renderScore();\n}\n\n'
 + 'function buildEmailBody() {\n'
 + '  var sc = totalScore();\n'
-+ '  var grade = lookupGrade(sc.earned, sc.possible);\n'
++ '  var grade = ' + GRADE_EXPR + ';\n'
 + '  var body = \'Exercise: \' + UNIT\n'
 + '    + \'\\nStudent: \' + state.name\n'
 + '    + \'\\nClass:   \' + state.cls\n'
@@ -415,7 +417,7 @@ function buildPage(cat, cfg, items) {
 + '  return body;\n}\n\n'
 + 'function buildPayload() {\n'
 + '  var sc = totalScore();\n'
-+ '  var grade = lookupGrade(sc.earned, sc.possible);\n'
++ '  var grade = ' + GRADE_EXPR + ';\n'
 + '  return {\n'
 + '    name: state.name, cls: state.cls, unit: UNIT,\n'
 + '    ' + SECTIONS.map(function (l) { return 'ex' + l + ': state.ex' + l; }).join(', ') + ',\n'
