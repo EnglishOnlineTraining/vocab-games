@@ -110,10 +110,32 @@ function routeSubmission(ss, data) {
     return;
   }
 
+  // ----- IELTS: one tab for every ielts-* unit -----
+  // IELTS learners send an email address and a newsletter opt-in, never a name
+  // (privacy policy, §7). "Feedback sent" and "Added to MailerLite" are left blank
+  // for the feedback step to fill in: it adds opted-in addresses to MailerLite and
+  // marks the row, so no API key is kept here. See submission-routing.md.
+  if (unit.indexOf('ielts-') === 0) {
+    appendDynamic(ss, 'IELTS',
+      ['Timestamp', 'Unit', 'Email', 'Newsletter', 'Feedback sent', 'Added to MailerLite'],
+      [new Date(), unit, data.email || '', data.newsletter === 'yes' ? 'yes' : 'no', '', ''],
+      data, ['unit', 'email', 'newsletter', 'name', 'cls', 'grade']);
+    return;
+  }
+
   // ----- Universal handler: works for every other unit, no redeploy needed -----
-  // Builds columns dynamically from whatever answer keys the exercise sends.
-  var keys = Object.keys(data).filter(function(k){ return k!=='name' && k!=='cls' && k!=='unit'; });
-  var headers = ['Timestamp','Name','Class'].concat(keys);
+  appendDynamic(ss, tabName, ['Timestamp', 'Name', 'Class'],
+    [new Date(), data.name || '', data.cls || ''], data, ['name', 'cls', 'unit']);
+}
+
+/**
+ * Append one row: the fixed columns first, then one column per answer key the
+ * exercise sends (everything in `data` not listed in `skip`). Builds the header
+ * on first use and adds a column for any key the header does not have yet.
+ */
+function appendDynamic(ss, tabName, fixedHeaders, fixedValues, data, skip) {
+  var keys = Object.keys(data).filter(function(k){ return skip.indexOf(k) === -1; });
+  var headers = fixedHeaders.concat(keys);
 
   var sheet = ss.getSheetByName(tabName);
   if (!sheet) {
@@ -131,7 +153,8 @@ function routeSubmission(ss, data) {
   }
 
   // Map values to the (possibly extended) header order.
-  var rowMap = { 'Timestamp': new Date(), 'Name': data.name||'', 'Class': data.cls||'' };
+  var rowMap = {};
+  fixedHeaders.forEach(function(h, i){ rowMap[h] = fixedValues[i]; });
   keys.forEach(function(k){ rowMap[k] = flatten(data[k]); });
   var row = headers.map(function(h){ return (h in rowMap) ? rowMap[h] : ''; });
   appendRowSafe(sheet, row);

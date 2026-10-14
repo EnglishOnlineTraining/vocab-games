@@ -171,6 +171,37 @@ function interleave(byUnit, want, seed) {
   return out;
 }
 
+// IELTS learners give an email address and an unticked newsletter opt-in, never a
+// name (the privacy policy promises this; exercise.js keys on #inp-email).
+function welcomeCard(cat, cfg) {
+  if (cat === 'ielts') {
+    return ''
+    + '    <div class="card">\n'
+    + '      <div class="card-title">Enter your email to begin</div>\n'
+    + '      <div class="form-group">\n'
+    + '        <label class="form-label" for="inp-email">Your email address</label>\n'
+    + '        <input class="form-input" type="email" id="inp-email" placeholder="e.g. maria@example.com" autocomplete="email">\n'
+    + '        <p class="form-hint">We use this address only to reply to you about your answers. We don&rsquo;t ask for your name.</p>\n'
+    + '      </div>\n'
+    + '      <div class="form-group">\n'
+    + '        <label class="form-check" for="inp-newsletter"><input type="checkbox" id="inp-newsletter"> <span>Also send me the newsletter. You get an email to confirm first, and you can unsubscribe at any time.</span></label>\n'
+    + '      </div>\n'
+    + '      <p class="form-hint" style="margin-bottom:1rem"><a href="https://englishonline.training/privacy-policy/">Privacy policy</a></p>\n'
+    + '      <div id="welcome-error" class="feedback err"></div>\n';
+  }
+  return '    <div class="card">\n'
+    + '      <div class="card-title">Enter your details to begin</div>\n'
+    + '      <div class="form-group">\n'
+    + '        <label class="form-label" for="inp-name">Your name</label>\n'
+    + '        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">\n'
+    + '      </div>\n'
+    + '      <div class="form-group">\n'
+    + '        <label class="form-label" for="inp-class">Your class</label>\n'
+    + '        <input class="form-input" type="text" id="inp-class" placeholder="e.g. ' + esc(cfg.klass) + '" autocomplete="off">\n'
+    + '      </div>\n'
+    + '      <div id="welcome-error" class="feedback err"></div>\n';
+}
+
 function buildPage(cat, cfg, items) {
   // IELTS reports a band, not a German Note, so its review page sends no grade.
   var GRADE_EXPR = cat === 'ielts' ? 'null' : 'lookupGrade(sc.earned, sc.possible)';
@@ -303,17 +334,7 @@ function buildPage(cat, cfg, items) {
       + ' – Revision</strong>' + PER_SECTION + ' mixed questions</div>';
   }).join('\n') + '\n'
 + '    </div>\n\n'
-+ '    <div class="card">\n'
-+ '      <div class="card-title">Enter your details to begin</div>\n'
-+ '      <div class="form-group">\n'
-+ '        <label class="form-label" for="inp-name">Your name</label>\n'
-+ '        <input class="form-input" type="text" id="inp-name" placeholder="e.g. Anna Müller" autocomplete="name">\n'
-+ '      </div>\n'
-+ '      <div class="form-group">\n'
-+ '        <label class="form-label" for="inp-class">Your class</label>\n'
-+ '        <input class="form-input" type="text" id="inp-class" placeholder="e.g. ' + esc(cfg.klass) + '" autocomplete="off">\n'
-+ '      </div>\n'
-+ '      <div id="welcome-error" class="feedback err"></div>\n'
++ welcomeCard(cat, cfg)
 + '      <button class="btn btn-gold btn-block" onclick="startExercises()">Start Exercises &rarr;</button>\n'
 + '    </div>\n'
 + '  </div>\n'
