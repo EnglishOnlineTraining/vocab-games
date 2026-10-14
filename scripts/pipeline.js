@@ -115,7 +115,7 @@ const NODES = [
     // reads it: the committed store, with page-hash.js giving the answer
     // `lastmod` will store. The dated block is left out of the hash.
     inputs: ['data/exercises.json', 'data/topics.json', 'data/noindex.json', 'data/lastmod.json'],
-    outputs: ['themen/*.html', 'themen/themen.css', 'sitemap.xml', 'robots.txt'],
+    outputs: ['themen/*.html', 'themen/themen.css', 'sitemap.xml'],
   },
   {
     id: 'head',
@@ -151,7 +151,8 @@ const NODES = [
   {
     id: 'lastmod',
     run: 'scripts/build-lastmod.js',
-    // Must be last, and that is the whole reason it is a node rather than a few
+    // Must run after every page writer (only sitemap-index, which writes no
+    // page, comes later), and that is the whole reason it is a node rather than a few
     // lines inside build-topic-pages.js. It stamps <lastmod> by hashing each
     // page's final content, so it has to run after every generator that
     // rewrites one — build-head.js rewrites all of them, and runs after
@@ -166,6 +167,18 @@ const NODES = [
     needs: ['head', 'topic-pages'],
     inputs: ['*.html', 'themen/*.html', 'sitemap.xml', 'data/lastmod.json'],
     outputs: ['sitemap.xml', 'data/lastmod.json'],
+  },
+  {
+    id: 'sitemap-index',
+    run: 'scripts/build-sitemap-index.js',
+    // Splits the finished sitemap.xml into one child per section (school, adult,
+    // ielts, esl, de, general) under sitemap-index.xml, so Search Console can
+    // report indexing per section. A real data edge: it copies the <lastmod>
+    // dates `lastmod` stamps, so it must read sitemap.xml after that node.
+    // It is also the only writer of robots.txt, which points at the index.
+    needs: ['lastmod'],
+    inputs: ['sitemap.xml'],
+    outputs: ['sitemap-*.xml', 'robots.txt'],
   },
 ];
 
@@ -189,6 +202,8 @@ const NODES = [
 //                            the Search Console import (CSV parsing, leaks, gaps).
 //   test-ielts-email.js      reads exercise.js + apps-script.gs. Pins the IELTS
 //                            email path: no name or class sent, one IELTS tab.
+//   test-sitemap-index.js    reads scripts/build-sitemap-index.js only (pure
+//                            functions; no generated file). Pins the sections.
 const VALIDATORS = [
   { id: 'validate-explanations', run: 'scripts/validate-explanations.js' },
   { id: 'validate-data', run: 'scripts/validate-data.js' },
@@ -200,6 +215,7 @@ const VALIDATORS = [
   { id: 'test-ielts-email', run: 'test-ielts-email.js' },
   { id: 'topic-pool', run: 'topic-pool.js' },
   { id: 'esl-grammar-pool', run: 'esl-grammar-pool.js' },
+  { id: 'test-sitemap-index', run: 'test-sitemap-index.js' },
 ];
 
 // Checks that run AFTER the build, because they read what the generators wrote

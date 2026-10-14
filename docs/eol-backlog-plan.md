@@ -1024,6 +1024,9 @@ afterwards (rule 7).
      "Quota exceeded" on both main-site properties; the daily limit is per site).
 7. **Re-measure (Phase 6) · CC, 2026-11-06.** Re-pull the same reports and compare against the
    baseline table in the review doc.
+   For each page that lost clicks, diagnose first (Tier 12.6): lost position → improve the page;
+   same position, lower CTR → a better title, or an AI Overview now sits above us. Never the same
+   fix for both. `node scripts/search-opportunities.js --csv <export>` lists the leaks (PR #138).
 8. **Search Console emails of 2026-10-07 · read, nothing broken.**
    - There are **three** properties: `sc-domain:englishonline.training` (both hosts),
      `https://englishonline.training/` and `sc-domain:activities.englishonline.training`.
@@ -1214,15 +1217,15 @@ Tier 9.5 (few new pages while indexing is poor) and rule 7 (Shaun approves every
 3. **60-day no-touch.** Pages edited 2026-10-05/06 (1061, 1167, 2032, 2038, 2039, 2066, 965) are
    frozen until **2026-12-05**, except for factual errors. The 2026-11-06 re-pull (Tier 9.7) is
    measure-only.
-4. **Diff gate on every rewrite.** Before Shaun approves a WP edit or a skill-built page, CC lists
+4. **→ CLAUDE.md rule 8 (2026-10-13, PR).** The `eol-blog-writer` half is Shaun's (the skill is not in this repo). **Diff gate on every rewrite.** Before Shaun approves a WP edit or a skill-built page, CC lists
    every element in the old version that is missing from the new one: exercise links, tables,
    forms, quizzes, schema, internal links, noindex state. First line says "nothing lost" or names
    what is lost. Precedent: 1167 was noindexed around 2026-10-04 without Shaun asking, and its stub
    dropped the old "Book a lesson" CTA; restored 2026-10-06 (Tier 9.2). Add to CLAUDE.md rule 7 and
    to `eol-blog-writer`.
-5. **Delete veto.** CC never deletes, unpublishes, stubs or noindexes a page that has ≥ 600 words
+5. **→ CLAUDE.md rule 9 (2026-10-13, PR).** **Delete veto.** CC never deletes, unpublishes, stubs or noindexes a page that has ≥ 600 words
    or any click in the last 90 days without Shaun naming that page. Add to CLAUDE.md.
-6. **Diagnose before fixing a click drop.** Lost position → better page. Same position, lower CTR
+6. **→ Added to Tier 9.7 (2026-10-13, PR).** **Diagnose before fixing a click drop.** Lost position → better page. Same position, lower CTR
    → better title, or an AI Overview now sits above us (position 1–3 with falling clicks). Never the
    same fix for both. Add to the Tier 9.7 measurement steps.
 
@@ -1613,3 +1616,17 @@ written to WordPress.
 - **Stale, fixed in passing:** Tier 3.6. All five missing topics now have pages (18 in
   `data/topics.json`). `hubs-seo-and-tests.md` still said 1763 links "all 11 topic pages".
   It links 10 chips plus the `themen/` index; corrected.
+
+### Overnight pass 2026-10-13 · CC
+Worked from this file without Shaun. Every change is a PR; nothing pushed to `main`, nothing
+written to WordPress. One live write, approved by Shaun before the pass: the MailerLite group
+"EOL – IELTS".
+- **#138:** Tier 14.2 (IELTS email + opt-in, one IELTS tab) and Tier 13.2 (gaps and leaks).
+- **#139:** the per-section sitemaps (`docs/engineering-backlog.md`).
+- **#140:** Tier 12.4–12.6 (CLAUDE.md rules 8–9; diagnose-first step in Tier 9.7).
+- **Checked, already done:** Tier 8 §C 12–14 (no duplicate meta descriptions left, 288 pages).
+- **Blocked:** Tier 12.13 (old-domain redirects). The session's network policy denies
+  `learnenglishinberlin.com`, `englishforgermanspeakers.org` and `.wordpress.com` (proxy 403).
+  Allow them in the environment's network settings, or check by hand.
+- **Not started (on request only):** Tier 14.4 next IELTS exercises; Tier 14.1 waits on them.
+
