@@ -1,7 +1,13 @@
 /**
  * EnglishOnline.training — Google Sheets submission handler
- * Paste into BOTH the Year 7 sheet and Year 9 sheet (Extensions → Apps Script),
- * then Deploy → Manage deployments → edit → New version (keeps the same URL).
+ * Runs in the sheet the Business, University, IT and IELTS pages post to (the
+ * Apps Script URL in docs/claude-reference/submission-routing.md). Years 7–10,
+ * MSA and Abitur go to Make webhooks instead, not to this script.
+ *
+ * To update: open that sheet → Extensions → Apps Script, replace all the code
+ * with this file, save, then Deploy → Manage deployments → edit (pencil) →
+ * Version: New version → Deploy. Editing the existing deployment keeps the URL;
+ * "New deployment" would create a new one that no page uses.
  *
  * This universal version auto-creates a cleanly-named tab for ANY unit, so
  * newly generated exercises (Business English, University, daily drafts, etc.)
