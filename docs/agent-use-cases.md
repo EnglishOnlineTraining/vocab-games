@@ -71,9 +71,18 @@ node scripts/search-opportunities.js --audit   # page meta tag issues
 node scripts/search-opportunities.js --gaps     # topic coverage gaps
 node scripts/search-opportunities.js --all      # both
 
-# Import Search Console CSV export
-node scripts/search-opportunities.js --csv queries.csv
+# Search Console web export (Performance → Export → CSV), unzipped
+node scripts/search-opportunities.js --csv path/to/export-folder
 ```
+
+`--csv` reads `Queries.csv` (required) and `Pages.csv` (optional) and prints:
+- **Leaks:** page 1, at least 20 impressions, CTR under half of what the export's other
+  rows earn at the same rounded position. Listed per query and per page, by impressions.
+- **Gaps:** position past 10, zero clicks, at least 20 impressions. Each names any
+  activities page whose title holds every word of the query; WordPress is not checked.
+
+The web export never links a query to its page. Change the thresholds with
+`--min-impr N` and `--ratio R`. The import writes no state.
 
 ---
 

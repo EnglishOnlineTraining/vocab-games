@@ -198,8 +198,12 @@ const NODES = [
 //   test-wrong-summary.js    reads exercise.js only. Pins eolWrongSummary(), the
 //                            wrong-answer list every submission now carries so the
 //                            Make scenarios need no grading module of their own.
-// test-sitemap-index.js reads scripts/build-sitemap-index.js only (pure
-// functions; no generated file). Pins which section each page's sitemap is.
+//   test-search-opportunities.js reads scripts/search-opportunities.js only. Pins
+//                            the Search Console import (CSV parsing, leaks, gaps).
+//   test-ielts-email.js      reads exercise.js + apps-script.gs. Pins the IELTS
+//                            email path: no name or class sent, one IELTS tab.
+//   test-sitemap-index.js    reads scripts/build-sitemap-index.js only (pure
+//                            functions; no generated file). Pins the sections.
 const VALIDATORS = [
   { id: 'validate-explanations', run: 'scripts/validate-explanations.js' },
   { id: 'validate-data', run: 'scripts/validate-data.js' },
@@ -207,6 +211,8 @@ const VALIDATORS = [
   { id: 'test-grades', run: 'test-grades.js' },
   { id: 'test-payload-flatten', run: 'test-payload-flatten.js' },
   { id: 'test-wrong-summary', run: 'test-wrong-summary.js' },
+  { id: 'test-search-opportunities', run: 'test-search-opportunities.js' },
+  { id: 'test-ielts-email', run: 'test-ielts-email.js' },
   { id: 'topic-pool', run: 'topic-pool.js' },
   { id: 'esl-grammar-pool', run: 'esl-grammar-pool.js' },
   { id: 'test-sitemap-index', run: 'test-sitemap-index.js' },

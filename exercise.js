@@ -270,6 +270,10 @@ function eolDraftOfferResume() {
     state.name && (function() {
       var nameEl = document.getElementById('inp-name');
       var clsEl = document.getElementById('inp-class');
+      var emailEl = document.getElementById('inp-email');
+      var optEl = document.getElementById('inp-newsletter');
+      if (emailEl && state.email) emailEl.value = state.email;
+      if (optEl) optEl.checked = !!state.newsletter;
       if (nameEl) nameEl.value = state.name;
       if (clsEl) clsEl.value = state.cls || '';
     })();
@@ -538,9 +542,41 @@ function clearErr(n) {
   if (err) err.classList.remove('show');
 }
 
+/* Pages with an #inp-email field (the IELTS section) ask for an email address and
+   an unticked newsletter opt-in instead of a name and class: the privacy policy
+   promises those learners that no name is sent. state.name holds the address so
+   the draft, resume and summary code keeps working; eolEmailPayload() makes sure
+   neither name nor class leaves the page. */
+function eolStartWithEmail(err) {
+  var email = g('inp-email');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    err.textContent = 'Please enter a valid email address. Your feedback is sent to it.';
+    err.classList.add('show');
+    return;
+  }
+  var opt = document.getElementById('inp-newsletter');
+  err.classList.remove('show');
+  state.email = email;
+  state.newsletter = !!(opt && opt.checked);
+  state.name = email;
+  state.cls  = 'Self-study';
+  eolMarkStarted();
+  showStep(1);
+}
+
+function eolEmailPayload(payload) {
+  if (!state || !state.email) return payload;
+  delete payload.name;
+  delete payload.cls;
+  payload.email = state.email;
+  payload.newsletter = state.newsletter ? 'yes' : 'no';
+  return payload;
+}
+
 function startExercises() {
-  var name = g('inp-name'), cls = g('inp-class');
   var err = document.getElementById('welcome-error');
+  if (document.getElementById('inp-email')) return eolStartWithEmail(err);
+  var name = g('inp-name'), cls = g('inp-class');
   if (!name || !cls) {
     err.textContent = 'Please enter both your name and your class.';
     err.classList.add('show');
@@ -1223,6 +1259,7 @@ function submitToSheet() {
   // string, so eolFlattenForMake passes it through untouched.
   var wrongList = eolWrongSummary();
   if (wrongList && payload.wrong == null) payload.wrong = wrongList;
+  payload = eolEmailPayload(payload);
   if (eolIsMakeTarget(SHEET_URL)) payload = eolFlattenForMake(payload);
 
   if (isTestMode()) {

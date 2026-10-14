@@ -93,6 +93,32 @@ https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYB
 ```
 Used by: all Business English, University, and IT English exercises (e.g. `be-professional-emails.html`, `uni-ai-ethics.html`, `uni-writing-task.html`, `uni-pm-vocabulary.html`, the ten `it-*` pages — since 2026-07-17, replacing their old FormSubmit.co email relay — and others — several university exercises use a second Apps Script sheet, `.../AKfycbwwbV6ufw7QX8meNGyOwiVdkqNpQ8yckdXmsbFqysJwWqAfCWaR_eC9RH41LaqmYyZOeA/exec`; check the live file before assuming which one). This still runs the same universal Apps Script, so new units auto-create their own tabs here with no redeploy.
 
+### IELTS — email instead of name, one "IELTS" tab (added 2026-10-13)
+The IELTS pages (`ielts-*`, including the generated `ielts-review.html`) post to the Business
+& University Apps Script URL above. The privacy policy (WP page 346, §7) promises IELTS learners
+that **no name is sent, only their text and an email address**, with an unticked newsletter
+opt-in and double opt-in. So:
+
+- **Page side.** The welcome card has `#inp-email` and `#inp-newsletter` instead of
+  `#inp-name`/`#inp-class`. `exercise.js` sees `#inp-email` and starts in email mode
+  (`eolStartWithEmail`); `submitToSheet()` runs `eolEmailPayload()`, which removes `name` and
+  `cls` and adds `email` and `newsletter` (`yes`/`no`). Each page's `buildPayload` is unchanged.
+  `state.name` holds the address only so drafts and the summary keep working.
+- **Sheet side.** `apps-script.gs` sends every `ielts-*` unit to one tab, **IELTS**: Timestamp,
+  Unit, Email, Newsletter, Feedback sent, Added to MailerLite, then one column per answer key.
+  **Needs a redeploy** (paste `apps-script.gs` into the Business/University sheet's Apps
+  Script → Deploy → Manage deployments → edit → New version, which keeps the URL). Until then,
+  IELTS rows land in per-unit tabs with blank Name/Class and the email in its own column.
+- **Newsletter (Shaun's call 2026-10-13: no API key in Apps Script).** The feedback step does
+  the sign-up. When Claude drafts feedback for a row with Newsletter = `yes` and Added to
+  MailerLite blank, it adds the address to the MailerLite IELTS group through the MailerLite
+  connector, then the row gets Added to MailerLite = the date. Never add a `no` row.
+  The group is **"EOL – IELTS"**, id `201247435492688912` (created 2026-10-13).
+  **Open before first use:** test that a contact added through the connector gets
+  MailerLite's confirmation email. The privacy policy promises double opt-in, so do not add real
+  learners until that is confirmed.
+- Tested by `test-ielts-email.js` (build validator).
+
 ### What the Make scenario does
 Unlike the Apps Script `routeSubmission()` below, the Make scenarios do **not** do per-unit routing — confirmed by inspecting both blueprints directly (2026-06-22). Each scenario is just webhook → one fixed `addATableRow` action writing into one Excel table, with a fixed column mapping (Timestamp, Name, Class, Unit, plus generic `ex1`–`ex48`-style slots, and now Score/Grade — see below). The page just POSTs `{name, cls, unit, ...answers, score, grade}` to the webhook above; every submission (regardless of `unit`) lands in that one table.
 

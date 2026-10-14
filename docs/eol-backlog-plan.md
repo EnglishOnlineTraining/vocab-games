@@ -1315,7 +1315,7 @@ Only new items are listed. Respect Tier 9.5, Tier 12.2 (publishing rate) and rul
    `activities.englishonline.training`). Note whether it exists and what it shows. Write the
    baseline in `docs/gsc-review-*.md`. It may give a free signal for Tier 10.7 and may reduce the
    need for the broken Ahrefs capture in Tier 11.1. It shows visibility, not the AI answer text.
-2. **Split the 2026-11-06 re-pull into gaps and leaks · CC.** The existing `--csv` mode in
+2. **→ Done 2026-10-13 (this branch).** `--csv` now takes the unzipped web export (Shaun's choice: no query→page link), prints query leaks, page leaks and query gaps; defaults 20 impressions and ratio 0.5, both flags; usage in `docs/agent-use-cases.md`. **Split the 2026-11-06 re-pull into gaps and leaks · CC.** The existing `--csv` mode in
    `scripts/search-opportunities.js` reads a queries-only export and prints one list (CTR under
    5%, position 4–25). Extend it to read a queries + pages export and print two lists:
    - **Gaps:** real impressions, position past 10, zero clicks, no page built for the query.
@@ -1373,6 +1373,11 @@ exercise cannot give one). Decisions are in Claude's memory note `project-ielts-
    email address, that the text is checked once with AI help (Claude, Anthropic PBC, USA) and that a
    human (Shaun) then checks the feedback, with an unticked opt-in and double opt-in. Next: CC builds the
    IELTS Apps Script.
+   **Built 2026-10-13 (branch `claude/intelligent-sagan-hejxf5`).** Shaun chose: no separate script and no
+   API key; IELTS rows go to a new "IELTS" tab in the Business/University sheet, and the feedback step adds
+   opted-in addresses through the MailerLite connector. Pages now ask for email + opt-in, never a name.
+   MailerLite group "EOL – IELTS" created 2026-10-13. Left: Shaun redeploys `apps-script.gs`; test double
+   opt-in via the connector. Detail: `submission-routing.md`, "IELTS — email instead of name".
 3. **WordPress 1763 button · CC after merge.** Add `🎯 IELTS Academic` through the API.
    `data/wordpress-1763.json` already has it.
 4. **Next exercises · CC on request.** Reading: Matching Headings; sentence and summary
