@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--
+  Class trip page: HANSA-PARK ride checklist.
+  Standalone: no exercise.js, no submission, no student data leaves the device.
+  Ticks are saved in the student's own browser (localStorage) only.
+  Listed in data/noindex.json (group "class-page"): live for students, out of search and the sitemap.
+  Not linked from any hub. Share the direct URL with the class.
+  Ride list source: official HANSA-PARK 2026 park map (Lageplan), section "Fahrattraktionen".
+-->
+<title>HANSA-PARK Ride Checklist</title>
+<meta name="description" content="Class trip checklist for the rides at HANSA-PARK. Tick off each ride you go on. Works on any phone, no login.">
+<link rel="canonical" href="https://activities.englishonline.training/hansapark-ride-checklist.html">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1a3a5c;--blue-mid:#1a6eb5;--blue-lt:#e8f2fb;
+  --gold:#c9a227;--gold-lt:#f5e6b0;--teal:#2b7a78;--teal-lt:#e3f2f1;
+  --bg:#f7f9fc;--white:#fff;--text:#1d2b3a;--muted:#5f6e80;--border:#dce3ec;
+  --radius:12px;--shadow:0 2px 12px rgba(26,58,92,.08);
+}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;-webkit-text-size-adjust:100%}
+.site-header{background:linear-gradient(135deg,#132b44,var(--blue));color:#fff;padding:1.6rem 1rem 1.4rem;text-align:center;position:relative}
+.site-header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--teal))}
+.site-header h1{font-size:clamp(1.45rem,5vw,2rem);font-weight:800;line-height:1.15;margin-bottom:.35rem}
+.site-header p{color:rgba(255,255,255,.85);font-size:.95rem;max-width:32rem;margin:0 auto}
+main{max-width:640px;margin:0 auto;padding:1rem 1rem 3rem}
+
+.progress-card{position:sticky;top:0;z-index:5;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:.85rem 1rem;margin:-.4rem 0 1rem}
+.progress-top{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem;margin-bottom:.45rem}
+.progress-count{font-size:1.15rem;font-weight:800;color:var(--blue)}
+.progress-pct{font-size:.85rem;color:var(--muted);font-weight:600}
+.bar{height:10px;background:var(--blue-lt);border-radius:99px;overflow:hidden}
+.bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--gold));border-radius:99px;transition:width .3s}
+.filters{display:flex;gap:.4rem;margin-top:.7rem;flex-wrap:wrap}
+.filters button{font:inherit;font-size:.82rem;font-weight:600;padding:.4rem .8rem;border-radius:99px;border:1.5px solid var(--border);background:var(--white);color:var(--blue);cursor:pointer;min-height:36px}
+.filters button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+
+.note{font-size:.85rem;color:var(--muted);background:var(--gold-lt);border-left:4px solid var(--gold);border-radius:8px;padding:.6rem .8rem;margin-bottom:1.2rem}
+
+section{margin-bottom:1.4rem}
+.group-head{display:flex;justify-content:space-between;align-items:baseline;margin:0 .2rem .5rem}
+.group-head h2{font-size:1.05rem;font-weight:800;color:var(--blue)}
+.group-head .count{font-size:.8rem;font-weight:700;color:var(--muted)}
+ul{list-style:none;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+li+li{border-top:1px solid var(--border)}
+li.hidden{display:none}
+label{display:flex;align-items:center;gap:.8rem;padding:.75rem 1rem;cursor:pointer;min-height:52px}
+label:hover{background:#fafcfe}
+input[type=checkbox]{appearance:none;-webkit-appearance:none;flex:none;width:26px;height:26px;border:2px solid #9aabbf;border-radius:7px;background:var(--white);display:grid;place-content:center;cursor:pointer;transition:background .15s,border-color .15s}
+input[type=checkbox]::after{content:"";width:7px;height:13px;border:solid #fff;border-width:0 3px 3px 0;transform:rotate(45deg) translate(-1px,-1px);opacity:0}
+input[type=checkbox]:checked{background:var(--teal);border-color:var(--teal)}
+input[type=checkbox]:checked::after{opacity:1}
+input[type=checkbox]:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.ride{font-size:1rem;font-weight:600}
+li.done{background:var(--teal-lt)}
+li.done .ride{color:var(--teal)}
+
+.empty{display:none;text-align:center;color:var(--muted);font-size:.9rem;padding:1rem}
+.actions{text-align:center;margin-top:1.6rem}
+.reset{font:inherit;font-size:.85rem;color:var(--muted);background:none;border:1.5px solid var(--border);border-radius:99px;padding:.5rem 1.1rem;cursor:pointer}
+.reset:hover{color:#a5342a;border-color:#f3b8b1}
+.done-banner{display:none;text-align:center;background:var(--gold-lt);border:1.5px solid var(--gold);border-radius:var(--radius);padding:1rem;margin-bottom:1rem;font-weight:700;color:var(--blue)}
+.foot{text-align:center;font-size:.78rem;color:var(--muted);margin-top:1.4rem}
+@media(prefers-reduced-motion:reduce){.bar span{transition:none}}
+</style>
+<!-- HEAD:START — generated by scripts/build-head.js, do not edit by hand -->
+<script src="consent.js" defer></script>
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#1a3a5c">
+<meta name="text-scale" content="scale">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EnglishOnline.training">
+<meta property="og:locale" content="en_GB">
+<meta name="robots" content="noindex,follow">
+<meta property="og:title" content="HANSA-PARK Ride Checklist">
+<meta property="og:description" content="Class trip checklist for the rides at HANSA-PARK. Tick off each ride you go on. Works on any phone, no login.">
+<meta property="og:url" content="https://activities.englishonline.training/hansapark-ride-checklist.html">
+<meta property="og:image" content="https://activities.englishonline.training/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="englishonline.training — kostenlose interaktive Englisch-Übungen für Klasse 7–10, MSA, Abitur, Universität, Business und IT English">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@engontraining">
+<style id="eol-skip-style">.eol-skip{position:absolute;left:.5rem;top:-3rem;z-index:1000;background:var(--gold,#c9a227);color:#1a1a1a;font-weight:700;padding:.5rem 1rem;border-radius:8px;text-decoration:none;transition:top .2s;font-family:'Segoe UI',system-ui,sans-serif}.eol-skip:focus{top:.5rem}@media(prefers-reduced-motion:reduce){.eol-skip{transition:none}}</style>
+<style id="eol-crumb-style">
+.eol-crumb{max-width:760px;margin:0 auto;padding:.5rem 1rem;font-size:.76rem;color:var(--muted,#6b7a8d)}
+.eol-crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.1rem 0}
+.eol-crumb li+li::before{content:"\203A";opacity:.5;margin:0 .35rem}
+.eol-crumb a{color:var(--teal,#2b7a78);text-decoration:none}
+.eol-crumb a:hover{text-decoration:underline}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["EducationalOrganization","LocalBusiness"],"@id":"https://englishonline.training/#organization","name":"EnglishOnline.training","url":"https://englishonline.training/"},{"@type":"Person","@id":"https://activities.englishonline.training/#shaun","name":"Shaun Trezise","url":"https://englishonline.training/"},{"@type":"WebSite","@id":"https://activities.englishonline.training/#website","url":"https://activities.englishonline.training/","name":"EnglishOnline.training — kostenlose Englisch-Übungen","description":"Free interactive English exercises with instant feedback, no sign-up required.","inLanguage":["en","de"],"publisher":{"@id":"https://englishonline.training/#organization"},"isAccessibleForFree":true},{"@type":"WebPage","@id":"https://activities.englishonline.training/hansapark-ride-checklist.html#webpage","name":"HANSA-PARK Ride Checklist","description":"Class trip checklist for the rides at HANSA-PARK. Tick off each ride you go on. Works on any phone, no login.","url":"https://activities.englishonline.training/hansapark-ride-checklist.html","inLanguage":"en","isPartOf":{"@id":"https://activities.englishonline.training/#website"},"publisher":{"@id":"https://englishonline.training/#organization"},"author":{"@id":"https://activities.englishonline.training/#shaun"},"isAccessibleForFree":true},{"@type":"BreadcrumbList","@id":"https://activities.englishonline.training/hansapark-ride-checklist.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://activities.englishonline.training/"},{"@type":"ListItem","position":2,"name":"Übungen","item":"https://activities.englishonline.training/activities.html"},{"@type":"ListItem","position":3,"name":"HANSA-PARK Ride Checklist","item":"https://activities.englishonline.training/hansapark-ride-checklist.html"}]}]}</script>
+<!-- HEAD:END -->
+</head>
+<body>
+<!-- SKIP:START — generated by scripts/build-head.js, do not edit by hand -->
+<a class="eol-skip" href="#main">Skip to content</a>
+<!-- SKIP:END -->
+<header class="site-header">
+  <h1>HANSA-PARK Ride Checklist</h1>
+  <p>Tick each ride when you go on it. How many can you do in one day?</p>
+</header>
+<!-- CRUMB:START — generated by scripts/build-head.js, do not edit by hand -->
+<nav class="eol-crumb" aria-label="Breadcrumb"><ol><li><a href="./">Start</a></li><li><a href="activities.html">Übungen</a></li><li aria-current="page">HANSA-PARK Ride Checklist</li></ol></nav>
+<!-- CRUMB:END -->
+
+<main id="main">
+  <div class="progress-card" aria-live="polite">
+    <div class="progress-top">
+      <span class="progress-count" id="count">0 / 0 rides</span>
+      <span class="progress-pct" id="pct">0%</span>
+    </div>
+    <div class="bar" aria-hidden="true"><span id="bar"></span></div>
+    <div class="filters" role="group" aria-label="Show">
+      <button type="button" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" data-filter="todo" aria-pressed="false">Not done yet</button>
+      <button type="button" data-filter="done" aria-pressed="false">Done</button>
+    </div>
+  </div>
+
+  <div class="done-banner" id="doneBanner">You did every ride. Amazing!</div>
+
+  <p class="note">Your ticks stay on this phone only. Nobody else can see them. Some rides can close on the day without warning.</p>
+
+  <div id="list"></div>
+  <p class="empty" id="empty">Nothing to show here.</p>
+
+  <div class="actions"><button type="button" class="reset" id="reset">Clear all ticks</button></div>
+  <p class="foot">Ride list: official HANSA-PARK park map, 2026 season.</p>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  // Source: HANSA-PARK 2026 Lageplan, "Fahrattraktionen". Numbers match the park map.
+  var GROUPS = [
+    { title: 'Roller coasters', rides: [
+      [1, 'Der Schwur des KÄRNAN'], [2, 'Flucht von Novgorod'], [3, 'Cornwall Coaster'],
+      [4, 'Die Schlange von Midgard'], [5, 'NESSIE'], [6, 'Royal Scotsman'],
+      [7, 'Crazy Mine'], [8, 'Der kleine Zar']
+    ]},
+    { title: 'Drop towers', rides: [
+      [9, 'HIGHLANDER'], [10, 'Elins Luftreise'], [11, 'Awildas Ausguck'], [12, 'Turm vom Peterhof']
+    ]},
+    { title: 'Water rides', rides: [
+      [13, 'Störtebekers Kaperfahrt'], [14, 'Awildas Abenteuerfahrt'], [15, 'Sturmfahrt der Drachenboote'],
+      [16, 'Barracuda Slide'], [17, 'Wildwasserfahrt – Der Wasserwolf am Ilmensee'], [18, 'Super Splash']
+    ]},
+    { title: 'More rides', rides: [
+      [19, 'KÄRNAPULTEN'], [20, 'Flying Orcas'], [21, 'Pow Wow'], [22, 'Einars Fjordfahrt'],
+      [23, 'Wikinger-Bootsfahrt'], [24, 'Wellenreiter'], [25, 'Space Scooter'],
+      [26, 'Beach-Trucks im Piraten-Camp'], [27, '1903 Somerset Traffic'], [28, 'Safari-Jeeps'],
+      [29, 'Dr. Livingstone’s Safariflug'], [30, 'Kinder-Schiffschaukeln'], [31, 'Indian River'],
+      [32, 'Pony Post'], [33, 'Luftikus'], [34, 'Schiffschaukel'], [35, 'Barcos del Mar'],
+      [36, 'Blumenmeer-Bootsfahrt'], [37, 'Koggenfahrt'], [38, 'HANSE-Karussell'],
+      [39, 'HANSE-FLIEGER'], [40, 'Carrousel Baltique'], [41, 'Die Tierkinder vom Peterhof'],
+      [42, 'HANSA-PARK-Express']
+    ]}
+  ];
+  var KEY = 'eol-hansapark-ride-checklist-2026';
+
+  var done = {};
+  try { done = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { done = {}; }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(done)); } catch (e) {} }
+
+  var list = document.getElementById('list');
+  var total = 0;
+  var filter = 'all';
+
+  GROUPS.forEach(function (g, gi) {
+    var sec = document.createElement('section');
+    var head = document.createElement('div');
+    head.className = 'group-head';
+    var h2 = document.createElement('h2');
+    h2.id = 'g' + gi;
+    h2.textContent = g.title;
+    var c = document.createElement('span');
+    c.className = 'count';
+    head.appendChild(h2); head.appendChild(c);
+    var ul = document.createElement('ul');
+    ul.setAttribute('aria-labelledby', 'g' + gi);
+    g.rides.forEach(function (r) {
+      total++;
+      var id = 'r' + r[0];
+      var li = document.createElement('li');
+      var label = document.createElement('label');
+      var box = document.createElement('input');
+      box.type = 'checkbox'; box.id = id; box.checked = !!done[id];
+      var span = document.createElement('span');
+      span.className = 'ride'; span.textContent = r[1];
+      label.htmlFor = id;
+      label.appendChild(box); label.appendChild(span);
+      li.appendChild(label);
+      ul.appendChild(li);
+      box.addEventListener('change', function () {
+        if (box.checked) done[id] = 1; else delete done[id];
+        save(); render();
+      });
+    });
+    sec.appendChild(head); sec.appendChild(ul);
+    list.appendChild(sec);
+    g.el = { sec: sec, count: c, ul: ul };
+  });
+
+  function render() {
+    var n = 0, shown = 0;
+    GROUPS.forEach(function (g) {
+      var gd = 0, gs = 0;
+      Array.prototype.forEach.call(g.el.ul.children, function (li) {
+        var on = li.querySelector('input').checked;
+        li.classList.toggle('done', on);
+        if (on) { gd++; n++; }
+        var hide = (filter === 'todo' && on) || (filter === 'done' && !on);
+        li.classList.toggle('hidden', hide);
+        if (!hide) gs++;
+      });
+      g.el.count.textContent = gd + ' / ' + g.rides.length;
+      g.el.sec.style.display = gs ? '' : 'none';
+      shown += gs;
+    });
+    var pct = Math.round(n / total * 100);
+    document.getElementById('count').textContent = n + ' / ' + total + ' rides';
+    document.getElementById('pct').textContent = pct + '%';
+    document.getElementById('bar').style.width = pct + '%';
+    document.getElementById('empty').style.display = shown ? 'none' : 'block';
+    document.getElementById('doneBanner').style.display = n === total ? 'block' : 'none';
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.filters button'), function (b) {
+    b.addEventListener('click', function () {
+      filter = b.getAttribute('data-filter');
+      Array.prototype.forEach.call(document.querySelectorAll('.filters button'), function (x) {
+        x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
+      });
+      render();
+    });
+  });
+
+  document.getElementById('reset').addEventListener('click', function () {
+    if (!confirm('Clear all your ticks?')) return;
+    done = {}; save();
+    Array.prototype.forEach.call(list.querySelectorAll('input'), function (x) { x.checked = false; });
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
