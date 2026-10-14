@@ -37,6 +37,11 @@ sitemap, `<head>`) come from `node scripts/build.js` — see "Adding a new exerc
    push or merge without being asked.
 7. **Don't change production email routing or edit live WordPress pages without asking** (see
    Known traps).
+8. **List what a rewrite loses before Shaun approves it.** For any WordPress edit or rebuilt page,
+   first line: "nothing lost", or name each missing element of the old version (exercise links,
+   tables, forms, quizzes, schema, internal links, CTAs, noindex state).
+9. **Never delete, unpublish, stub or noindex a page with ≥ 600 words or any click in the last
+   90 days** unless Shaun names that page.
 
 ---
 
