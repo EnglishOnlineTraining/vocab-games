@@ -11,6 +11,7 @@ graph TD
   topic_pages["topic-pages<br/><small>scripts/build-topic-pages.js</small>"]
   head["head<br/><small>scripts/build-head.js</small>"]
   lastmod["lastmod<br/><small>scripts/build-lastmod.js</small>"]
+  sitemap_index["sitemap-index<br/><small>scripts/build-sitemap-index.js</small>"]
   quizzes --> exercise_data
   review --> exercise_data
   quizzes --> answer_keys
@@ -27,3 +28,4 @@ graph TD
   exercise_data --> head
   head --> lastmod
   topic_pages --> lastmod
+  lastmod --> sitemap_index

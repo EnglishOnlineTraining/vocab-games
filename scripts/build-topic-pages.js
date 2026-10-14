@@ -1,7 +1,7 @@
 /*
  * build-topic-pages.js — generate German SEO topic landing pages under themen/
- * from data/topics.json + data/exercises.json. Also writes sitemap.xml and
- * robots.txt. Output is plain static HTML (no runtime dependency).
+ * from data/topics.json + data/exercises.json. Also writes sitemap.xml
+ * (robots.txt and the per-section sitemaps come from build-sitemap-index.js). Output is plain static HTML (no runtime dependency).
  * Run: node scripts/build-topic-pages.js
  */
 const fs = require('fs');
@@ -438,7 +438,7 @@ function indexHtml() {
 }
 fs.writeFileSync(path.join(outDir, 'index.html'), indexHtml());
 
-// ---- sitemap.xml + robots.txt ----
+// ---- sitemap.xml ----
 const urls = [];
 // The root landing page is served by index.html but is indexed — and canonicalised
 // in index.html itself — as the bare "/" URL, so the sitemap must declare "/" too.
@@ -519,7 +519,6 @@ const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://w
       : '  <url><loc>' + u + '</loc></url>';
   }).join('\n') + '\n</urlset>\n';
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemap);
-fs.writeFileSync(path.join(ROOT, 'robots.txt'), 'User-agent: *\nAllow: /\n\nSitemap: ' + BASE + '/sitemap.xml\n');
 
 console.log('Wrote', written, 'topic pages to themen/ + themen.css');
-console.log('Wrote sitemap.xml (' + uniq.length + ' urls) + robots.txt');
+console.log('Wrote sitemap.xml (' + uniq.length + ' urls)');
