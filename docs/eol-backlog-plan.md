@@ -1383,8 +1383,8 @@ exercise cannot give one). Decisions are in Claude's memory note `project-ielts-
    **Built 2026-10-13 (branch `claude/intelligent-sagan-hejxf5`).** Shaun chose: no separate script and no
    API key; IELTS rows go to a new "IELTS" tab in the Business/University sheet, and the feedback step adds
    opted-in addresses through the MailerLite connector. Pages now ask for email + opt-in, never a name.
-   MailerLite group "EOL – IELTS" created 2026-10-13. Left: Shaun redeploys `apps-script.gs`; test double
-   opt-in via the connector. Detail: `submission-routing.md`, "IELTS — email instead of name".
+   MailerLite group "EOL – IELTS" created 2026-10-13. **Done (Shaun confirmed 2026-10-15):**
+   `apps-script.gs` redeployed and double opt-in via the connector tested. Detail: `submission-routing.md`, "IELTS — email instead of name".
    A separate-script version (branch `ielts-feedback`) was built in parallel the same day and is
    superseded by this one; the branch was deleted 2026-10-15.
 3. ~~**WordPress 1763 button · CC after merge.**~~ **Done 2026-10-13.** The IELTS Academic card is
