@@ -71,7 +71,7 @@
 .eol-crumb a{color:var(--teal,#2b7a78);text-decoration:none}
 .eol-crumb a:hover{text-decoration:underline}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["EducationalOrganization","LocalBusiness"],"@id":"https://englishonline.training/#organization","name":"EnglishOnline.training","url":"https://englishonline.training/"},{"@type":"Person","@id":"https://activities.englishonline.training/#shaun","name":"Shaun Trezise","url":"https://englishonline.training/"},{"@type":"WebSite","@id":"https://activities.englishonline.training/#website","url":"https://activities.englishonline.training/","name":"EnglishOnline.training — kostenlose Englisch-Übungen","description":"Free interactive English exercises with instant feedback, no sign-up required.","inLanguage":["en","de"],"publisher":{"@id":"https://englishonline.training/#organization"},"isAccessibleForFree":true},{"@type":"LearningResource","@id":"https://activities.englishonline.training/esl-participle-clauses.html#resource","name":"Participle Clauses — -ing, -ed &amp; having + participle","description":"Free interactive exercise on English participle clauses (-ing, -ed/-en, having + participle): reading, gap-fill and free writing. No sign-up.","url":"https://activities.englishonline.training/esl-participle-clauses.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"practice","interactivityType":"active","learningResourceType":["Interactive exercise","Writing task"],"author":{"@id":"https://activities.englishonline.training/#shaun"},"publisher":{"@id":"https://englishonline.training/#organization"},"provider":{"@id":"https://englishonline.training/#organization"},"isPartOf":[{"@id":"https://activities.englishonline.training/#website"},{"@type":"CollectionPage","@id":"https://activities.englishonline.training/esl-grammar-activities.html#collection","name":"ESL Grammar Exercises","url":"https://activities.englishonline.training/esl-grammar-activities.html"}],"datePublished":"2026-09-22","dateModified":"2026-09-22","teaches":["English writing"],"about":["The Night Market","-ing or -ed/-en?","One action after another","An email to your host family"]},{"@type":"BreadcrumbList","@id":"https://activities.englishonline.training/esl-participle-clauses.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://activities.englishonline.training/"},{"@type":"ListItem","position":2,"name":"Übungen","item":"https://activities.englishonline.training/activities.html"},{"@type":"ListItem","position":3,"name":"ESL Grammar","item":"https://activities.englishonline.training/esl-grammar-activities.html"},{"@type":"ListItem","position":4,"name":"Participle Clauses — -ing, -ed &amp; having + participle","item":"https://activities.englishonline.training/esl-participle-clauses.html"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["EducationalOrganization","LocalBusiness"],"@id":"https://englishonline.training/#organization","name":"EnglishOnline.training","url":"https://englishonline.training/"},{"@type":"Person","@id":"https://activities.englishonline.training/#shaun","name":"Shaun Trezise","url":"https://englishonline.training/"},{"@type":"WebSite","@id":"https://activities.englishonline.training/#website","url":"https://activities.englishonline.training/","name":"EnglishOnline.training — kostenlose Englisch-Übungen","description":"Free interactive English exercises with instant feedback, no sign-up required.","inLanguage":["en","de"],"publisher":{"@id":"https://englishonline.training/#organization"},"isAccessibleForFree":true},{"@type":"LearningResource","@id":"https://activities.englishonline.training/esl-participle-clauses.html#resource","name":"Participle Clauses — -ing, -ed &amp; having + participle","description":"Free interactive exercise on English participle clauses (-ing, -ed/-en, having + participle): reading, gap-fill and free writing. No sign-up.","url":"https://activities.englishonline.training/esl-participle-clauses.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"practice","interactivityType":"active","learningResourceType":["Interactive exercise","Writing task"],"author":{"@id":"https://activities.englishonline.training/#shaun"},"publisher":{"@id":"https://englishonline.training/#organization"},"provider":{"@id":"https://englishonline.training/#organization"},"isPartOf":[{"@id":"https://activities.englishonline.training/#website"},{"@type":"CollectionPage","@id":"https://activities.englishonline.training/esl-grammar-activities.html#collection","name":"ESL Grammar Exercises","url":"https://activities.englishonline.training/esl-grammar-activities.html"}],"datePublished":"2026-09-22","dateModified":"2026-10-15","teaches":["English writing"],"about":["The Night Market","-ing or -ed/-en?","One action after another","An email to your host family"]},{"@type":"BreadcrumbList","@id":"https://activities.englishonline.training/esl-participle-clauses.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://activities.englishonline.training/"},{"@type":"ListItem","position":2,"name":"Übungen","item":"https://activities.englishonline.training/activities.html"},{"@type":"ListItem","position":3,"name":"ESL Grammar","item":"https://activities.englishonline.training/esl-grammar-activities.html"},{"@type":"ListItem","position":4,"name":"Participle Clauses — -ing, -ed &amp; having + participle","item":"https://activities.englishonline.training/esl-participle-clauses.html"}]}]}</script>
 <!-- HEAD:END -->
 </head>
 <body>
@@ -539,9 +539,21 @@
     </div>
     <div id="score-display" style="display:none"></div>
     <div id="summary-container"></div>
+    <div class="card">
+      <div class="card-title">Optional: get feedback</div>
+      <div class="form-group">
+        <label class="form-label" for="inp-fb-email">Your email address</label>
+        <input class="form-input" type="email" id="inp-fb-email" placeholder="you@example.com" autocomplete="email">
+        <p style="font-size:.8rem;color:var(--muted);margin-top:.35rem">Leave this empty if you don't want feedback. If you enter your email, your teacher will reply with feedback on your answers.</p>
+      </div>
+      <div class="form-group">
+        <label class="form-check" for="inp-fb-newsletter"><input type="checkbox" id="inp-fb-newsletter"> <span>Also send me the newsletter. You get an email to confirm first, and you can unsubscribe at any time.</span></label>
+      </div>
+      <div id="fb-email-error" class="feedback err"></div>
+    </div>
     <div class="card" style="text-align:center">
       <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Click the button below to send your answers directly to your teacher.</p>
-      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitToSheet()">🚀 Submit to Teacher</button>
+      <button class="btn btn-gold" id="submit-btn" style="justify-content:center;width:100%;max-width:360px;font-size:1rem;padding:.85rem 2rem" onclick="submitWithFeedbackEmail()">🚀 Submit to Teacher</button>
       <div id="submit-success" style="display:none;margin-top:1.25rem">
         <div style="font-size:2rem;margin-bottom:.5rem">✅</div>
         <p style="font-weight:700;color:var(--green-text,#1d7a42);font-size:1rem;margin-bottom:.4rem">Submitted successfully!</p>
@@ -693,7 +705,9 @@ function buildEmailBody() {
     + '\n\n--- Exercise C (Perfect participle) ---'
     + '\n' + ['g1','g2','g3','g4','g5','g6','g7','g8'].map(function(k, i) { return 'Gap ' + (i+1) + ': ' + (state.exC[k] || '(none)'); }).join('\n')
     + '\n\n--- Exercise D (Writing) ---'
-    + '\n' + (state.exD.text || '(none)');
+    + '\n' + (state.exD.text || '(none)')
+    + '\n\nFeedback email: ' + (feedbackEmail() || '(none requested)')
+    + (feedbackOptIn() ? '\nNewsletter: yes' : '');
 }
 
 /* ============================================================
@@ -704,10 +718,40 @@ function buildPayload() {
   var grade = lookupGrade(sc.earned, sc.possible);
   return {
     name: state.name, cls: state.cls, unit: UNIT,
+    email: feedbackEmail(), newsletter: feedbackOptIn() ? 'yes' : 'no',
     exA: state.exA, exB: state.exB, exC: state.exC, exD: state.exD,
     score: sc.possible ? (sc.earned + ' / ' + sc.possible) : '(no auto-graded sections)',
     grade: grade ? ('Note ' + grade.note + ' (' + grade.label + ')') : ''
   };
+}
+
+/* ============================================================
+   OPTIONAL FEEDBACK EMAIL + NEWSLETTER OPT-IN
+   Same idea as the it-* pages. The ids are inp-fb-* on purpose: a field
+   called #inp-email makes exercise.js switch the welcome card into the
+   IELTS email-only mode.
+============================================================ */
+function feedbackEmail() { return g('inp-fb-email'); }
+function feedbackOptIn() {
+  var el = document.getElementById('inp-fb-newsletter');
+  return !!(el && el.checked) && !!feedbackEmail();
+}
+function submitWithFeedbackEmail() {
+  var em  = feedbackEmail();
+  var opt = document.getElementById('inp-fb-newsletter');
+  var err = document.getElementById('fb-email-error');
+  if (em && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) {
+    err.textContent = 'Please enter a valid email address, or leave the field empty.';
+    err.classList.add('show');
+    return;
+  }
+  if (!em && opt && opt.checked) {
+    err.textContent = 'Please enter your email address to get the newsletter, or untick the box.';
+    err.classList.add('show');
+    return;
+  }
+  err.classList.remove('show');
+  submitToSheet();
 }
 
 /* ============================================================
