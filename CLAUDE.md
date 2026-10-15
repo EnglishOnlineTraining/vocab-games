@@ -25,9 +25,10 @@ sitemap, `<head>`) come from `node scripts/build.js` — see "Adding a new exerc
 2. **Learning needs are told per session, not remembered.** When Shaun says a student has dyslexia,
    don't assess spelling in that student's work for that session. The Class Test Marker artifact has
    a dyslexia toggle for this. Don't save who it applies to.
-3. **One public email: `englishonlinetraining@pm.me`.** The school address (`@docemus.de`) is
-   private: never on the website, public pages, outreach or marketplace listings. Personal
-   addresses neither.
+3. **Public contact email: `englishonlinetraining@pm.me`.** MailerLite emails send from
+   `learn@englishonline.training` (domain verified 2026-10-15) with replies to the `pm.me`
+   address; use no other sender. The school address (`@docemus.de`) is private: never on the
+   website, public pages, outreach or marketplace listings. Personal addresses neither.
 4. **Outreach, listings and descriptions never name Klett.** Describe content as aligned to the
    German school curriculum and used or tested in real classrooms. Internal files (the topic
    pools) may keep the textbook names.
