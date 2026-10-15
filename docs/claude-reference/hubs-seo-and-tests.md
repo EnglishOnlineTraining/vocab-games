@@ -211,7 +211,7 @@ index. `sitemap.xml` stays as the full flat list: eight scripts read it, includi
 children sit at the site root because a sitemap may only list URLs at or below its own folder.
 Why: Search Console's page-indexing report filters by sitemap ("Submitted pages only"), so each
 child gives a per-section indexed count. Submitting the index and children in Search Console is
-a manual step (Shaun). `test-sitemap-index.js` pins the sections.
+a manual step (Shaun); done 2026-10-15. `test-sitemap-index.js` pins the sections.
 
 **`sitemap.xml` carries `<lastmod>`, stamped by `scripts/build-lastmod.js` (added 2026-09-05).** Without it all 257 URLs looked equally stale to Google, which is the signal it uses to decide what to re-crawl on a domain where 145 pages sit at "Discovered – currently not indexed".
 
