@@ -5,7 +5,7 @@ _Written 2026-08-22 by a session without WordPress access, for a fresh session t
 the activities repo (`activities.englishonline.training`) has no outstanding work feeding into this
 list; see the one explicit non-item at the end._
 
-This file is a synthesis of `docs/eol-backlog-plan.md` (Tiers 5, 6, 7 and "Open decisions") and the
+This file is a synthesis of `docs/eol-backlog-plan.md` (Tiers 5, 6 and "Open decisions"), `docs/seo-backlog.md` (Tier 7) and the
 "Known traps" section at the top of `CLAUDE.md`. Both are the actual source of truth — read them for
 the full history and reasoning behind any item here. Nothing in this file should be treated as more
 authoritative than those two documents; if anything here seems to conflict with them, trust them.
@@ -13,7 +13,7 @@ authoritative than those two documents; if anything here seems to conflict with 
 
 > **2026-10-04:** parts of this brief are stale. The testimonial pages exist (8 of them), and
 > bucket C was resolved on 2026-08-22. For the current list, read "▶ Current status" under
-> Tier 8 in `docs/eol-backlog-plan.md` first.
+> Tier 8 in `docs/seo-backlog.md` first.
 ---
 
 ## Read this first — safety rules
@@ -50,7 +50,7 @@ These are hard-won. Ignoring them has broken live pages more than once.
 
 ## 1. Tier 7 — Main-site GEO / AI-discoverability (P3)
 
-The newest and largest chunk. Full background: `docs/eol-backlog-plan.md` → "Tier 7". This is
+The newest and largest chunk. Full background: `docs/seo-backlog.md` → "Tier 7". This is
 follow-up from the GEO backlog Shaun uploaded 2026-08-22, after the repo-side items (P0–P2) shipped
 in PRs #25 and #26.
 
@@ -139,7 +139,7 @@ round. (It would need updating if a *new* topic slug is ever added to `data/topi
 For the complete history, reasoning, and everything already resolved (which is most of it — Tiers 0
 through 6 in `docs/eol-backlog-plan.md` are almost entirely done and Shaun-approved), read:
 - `docs/eol-backlog-plan.md` — the full backlog, in particular Tier 5 (manual WordPress UI items),
-  Tier 6 (internal-linking audit), Tier 7 (this session's GEO follow-up), and "Open decisions gating
-  the plan" at the end.
+  Tier 6 (internal-linking audit), and "Open decisions gating the plan" at the end.
+- `docs/seo-backlog.md` — Tier 7 (this session's GEO follow-up) and all later SEO tiers.
 - `CLAUDE.md` → "⚠ Known traps — read before editing live WordPress or testing submissions" — the
   three traps summarised in the safety rules above, in full.

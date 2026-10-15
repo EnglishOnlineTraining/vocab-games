@@ -3,6 +3,9 @@
 _Roadmap for the post-Phase-A backlog. Prioritised by risk + dependency, not by list order.
 Owners: **CC** = Claude Code (repo build + WordPress.com MCP); **Shaun** = decision or WP-admin UI._
 
+**SEO / GEO work lives in `docs/seo-backlog.md`** (Tiers 7–13, moved 2026-10-15). Any "Tier 7"–"Tier 13"
+reference in this file points there.
+
 ## Reachability / unknowns
 - The referenced specs (`eol-wordpress-claude-code-plan.md §B2`, `…-content-audit.md`,
   `…-ux-improvements-brief.md`) are **not in the repo** — Shaun must paste `§B2`/T4 detail.
@@ -589,6 +592,10 @@ this for a whole team…" closing paragraph (which already linked to 1965) was r
 duplicated the new CTA and its old framing ("rather than an individual booking") no longer made
 sense once that individual option was gone.
 
+## Tiers 7–13 — SEO / GEO · moved to `docs/seo-backlog.md` (2026-10-15)
+Main-site GEO (7), SEO/GEO review (8), Search Console follow-up (9), AI-search headings (10),
+AI Overview targeting (11), "SEO with AI" lessons (12), "everywhere engine" lessons (13).
+New SEO items go in that file, not here.
 ## Tier 7 — Main-site GEO / AI-discoverability, P3 (2026-08-22) · Shaun + CC
 Carried over from the GEO backlog Shaun uploaded 2026-08-22 (`GEO_Backlog_EnglishOnlineTraining.md`,
 §P3), after the P0–P2 items were built on the activities repo across two PRs (#25, #26 — entity
@@ -984,6 +991,9 @@ afterwards (rule 7).
    impr/3 months); the URL now lands on noindexed stub 2272. Shaun doesn't tutor. Options: point
    that URL at a page for adult self-learners (free exercises for adults, the ESL grammar series),
    or at the team-training offer (`/business-english/`), or let it go. No change until he picks.
+   - **Shaun, restated 2026-10-16: tutor-search impressions are welcome**, even though he
+     doesn't plan to teach those learners himself. Never strip signals (schema, address,
+     wording) to shed them, on either host.
 4. **PDF landing pages (Phase 3).** **Property-management page DONE (#105, merged 2026-10-06,
    live).** `property-management-vocabulary.html`: 159 terms in static HTML, a search filter,
    links to the PDF and `be-property-management.html`, a FAQ, and a button on the Business hub.
@@ -1012,7 +1022,9 @@ afterwards (rule 7).
      indexed, request indexing for the most important exercise pages, about 10 a day.
    - Still open: links from other websites to the activities host (Shaun: school, teacher and
      education directories). This is the main thing that will speed up crawling.
-   - Hold off on adding many new pages until indexing improves.
+   - ~~Hold off on adding many new pages until indexing improves.~~ Overruled by Shaun
+     2026-10-15: he keeps adding activities as he uses them in lessons. Don't block or
+     delay lesson pages on indexing grounds.
 6. **Grammar explainers (Phase 5) · DONE 2026-10-07 (Shaun approved), verified live.**
    - Found first: both posts had already been rewritten around 2026-09-04, but Google had last
      crawled them on 10–11 Aug, so the "page 3" numbers were for the old versions. Impressions
@@ -1134,6 +1146,41 @@ afterwards (rule 7).
      | 10g-post-racial-obama | control | not indexed, crawled 22 Aug | 2026-10-13 | | | |
      | 8c-going-west | test | not indexed, crawled 8 Oct | 2026-10-13 | | | |
      | 8c-off-to-midwest | control | not indexed, crawled 9 Aug | 2026-10-13 | | | |
+
+10. **Search Console, 2026-10-15: impressions are back, mostly on the homepage · open.**
+    - Activities host, domain property: nothing Jun 2025 – Jul 2026; ~500 impressions 9–23 Aug
+      (the `themen/` grammar pages at positions 50–65: passive, present perfect, modal verbs,
+      relative clauses); ~0 from 24 Aug to 6 Oct; back from **7 Oct**, the day of the Search
+      Console actions in item 5. 7–13 Oct: 30 impressions, 1 click (13 Oct).
+    - Almost all of it is the **homepage at position ~4**, Germany only, for local tutor
+      searches ("tutor in english language" 1.2, "english training", "english tutor",
+      "schöneberg berlin", "termin auf english"). Only three exercise pages had an
+      impression. Indexed pages in the activities property: 24 (9 Oct) → 22 (15 Oct).
+    - **Reverted 2026-10-16.** PR #149 (merged 2026-10-16) removed the `LocalBusiness` type,
+      street address and Berlin `areaServed` from the activities org node to shed the tutor
+      searches. That went against Shaun's standing view that tutor impressions are welcome
+      (item 3), so the markup was restored as it was before #149. Keep it.
+    - **Done 2026-10-15: Request indexing for the `themen/` pages that ranked in August**, all
+      "Crawled – currently not indexed", last crawled 15 Aug – 24 Sept: `modalverben`,
+      `present-perfect`, `gerund-infinitiv`, `present-tenses`, `past-perfect`, `if-saetze`,
+      `relativsaetze` (**indexed on 8 Oct, dropped since**). `passiv` is still indexed.
+      `present-perfect` showed "Referring page: none detected".
+      *Note for the indexing test (item 9):* its protocol said to request nothing else on this
+      host until 2026-11-02. These seven are not test or control pages, and all 10 test pages
+      were treated alike, so the comparison stands; it is one more variable in the crawl.
+    - Interim look at the test, 2026-10-15: `8c-going-west` still "Crawled – not indexed",
+      last crawl 13 Oct (the request day), so no data yet. The 2026-11-02 scheduled check stays.
+    - **Shaun: links from other websites** (the main lever, still open). Candidates, each to
+      check first: the Berlin-Brandenburg Bildungsserver English link collections; Deutscher
+      Bildungsserver (resource suggestions); ZUM / ZUM-Unterrichten; lehrer-online; a link
+      from each 4teachers upload to its matching exercise page; the school's own website, if
+      the school agrees. Link to a specific exercise or `themen/` page, not only the homepage.
+    - **Shaun: the two old Google Business Profiles (Tier 12 item 11).** Also check which
+      website each one lists: if either points at `activities.englishonline.training`, that
+      would explain "schöneberg berlin" at position 1. Point the kept one at
+      `/business-english/`.
+    - Re-measure 2026-11-06: report the homepage tutor searches and the exercise/`themen/`
+      impressions separately, alongside indexed pages, so growth in one doesn't hide the other.
 
 ## Tier 10 — AI search: chunk-ready headings and sub-query coverage (2026-10-07) · Shaun + CC
 Source: Google Cloud Vertex AI Search (Discovery Engine) docs. They list these ranking signals:
