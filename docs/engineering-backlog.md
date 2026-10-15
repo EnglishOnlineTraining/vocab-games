@@ -42,7 +42,7 @@ Status key: **Open** (worth doing, not started) · **Already done** (skip) · **
 - **Security — document the Apps Script's exposure.** → **#80** (second commit): written up as a
   known, accepted gap in `docs/CODE-REVIEW-FINDINGS.md` ("What is exposed" / "Why it is
   accepted"). The formula-injection fix is in the same PR; the Make → Excel half is still open
-  (see `docs/eol-backlog-plan.md`, Tier 8).
+  (see `docs/seo-backlog.md`, Tier 8).
 - **Bug triage — CI check for the explanations backlog.** → **#75**: `validate-explanations.js`
   fails when a graded framework page has no explanations at all. The PR also found 13 such pages
   that `--todo` had missed, and added them.

@@ -194,4 +194,5 @@ Old section names still appear in skills and code comments; this table maps them
 | `docs/claude-reference/hubs-seo-and-tests.md` | "Class review tests", unlisted tests, breadcrumb/footer, filterable index, `index.html`, `themen/`, auto-rebuild, `data/noindex.json`, internal links, IndexNow (not Google), marking handouts |
 | `apps-script.gs` | The Apps Script handler (code is not duplicated in this file) |
 | `style.css` | CSS design tokens (not duplicated in this file) |
+| `docs/seo-backlog.md` | Any SEO, GEO, AI-search or Search Console work — new SEO backlog items go here, not in `eol-backlog-plan.md` |
 | `topic-pool.json`, `STYLE.md`, `docs/ai-workflow.md` | Topic status, the AI-authoring style contract, the Kimi/Claude workflow |

@@ -3,7 +3,7 @@
 Source: Google Search Console, domain property `sc-domain:englishonline.training` (covers both
 `englishonline.training` and `activities.englishonline.training`). Performance window: last 3
 months (≈ 2026-07-06 → 2026-10-04). Indexing report last updated 2026-09-21.
-This fills the gap Tier 8 of `eol-backlog-plan.md` recorded ("Search Console data not measured").
+This fills the gap Tier 8 of `seo-backlog.md` recorded ("Search Console data not measured").
 
 **Timing caveat:** the old-post edits (2026-10-05/06), the hub titles (#86), the theme 1.3.8
 changes and the IndexNow backfill (2026-10-03) all landed *after* most of this window. Treat
@@ -88,7 +88,7 @@ from outside Germany, and most from desktop: adults and professionals, not only 
 
 ## The plan
 
-Owners as in `eol-backlog-plan.md`: **CC** = Claude Code, **Shaun** = decision/approval.
+Owners as in `seo-backlog.md`: **CC** = Claude Code, **Shaun** = decision/approval.
 Every WordPress write is a live edit: CC drafts, Shaun approves each one (CLAUDE.md rule 7), and
 CC verifies it live afterwards. Pages 1763 and 1997 are not involved.
 

@@ -3,7 +3,7 @@
  * scripts/search-opportunities.js (--csv): CSV parsing, leaks and gaps.
  * Run with: node test-search-opportunities.js   (node:test, built in — no npm dependency)
  *
- * The import feeds the monthly Search Console review (eol-backlog-plan.md,
+ * The import feeds the monthly Search Console review (docs/seo-backlog.md,
  * Tier 13.2). A parsing slip here means a wrong list with no error, so the
  * export's real shapes (English and German UI, quoted fields) are pinned.
  */

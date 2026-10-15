@@ -3,6 +3,9 @@
 _Roadmap for the post-Phase-A backlog. Prioritised by risk + dependency, not by list order.
 Owners: **CC** = Claude Code (repo build + WordPress.com MCP); **Shaun** = decision or WP-admin UI._
 
+**SEO / GEO work lives in `docs/seo-backlog.md`** (Tiers 7–13, moved 2026-10-15). Any "Tier 7"–"Tier 13"
+reference in this file points there.
+
 ## Reachability / unknowns
 - The referenced specs (`eol-wordpress-claude-code-plan.md §B2`, `…-content-audit.md`,
   `…-ux-improvements-brief.md`) are **not in the repo** — Shaun must paste `§B2`/T4 detail.
@@ -589,6 +592,10 @@ this for a whole team…" closing paragraph (which already linked to 1965) was r
 duplicated the new CTA and its old framing ("rather than an individual booking") no longer made
 sense once that individual option was gone.
 
+## Tiers 7–13 — SEO / GEO · moved to `docs/seo-backlog.md` (2026-10-15)
+Main-site GEO (7), SEO/GEO review (8), Search Console follow-up (9), AI-search headings (10),
+AI Overview targeting (11), "SEO with AI" lessons (12), "everywhere engine" lessons (13).
+New SEO items go in that file, not here.
 ## Tier 7 — Main-site GEO / AI-discoverability, P3 (2026-08-22) · Shaun + CC
 Carried over from the GEO backlog Shaun uploaded 2026-08-22 (`GEO_Backlog_EnglishOnlineTraining.md`,
 §P3), after the P0–P2 items were built on the activities repo across two PRs (#25, #26 — entity
