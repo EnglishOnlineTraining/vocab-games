@@ -1440,6 +1440,9 @@ exercise cannot give one). Decisions are in Claude's memory note `project-ielts-
 4. **Next exercises · CC on request.** Reading: Matching Headings; sentence and summary
    completion. Writing Task 1: tables and bar charts; describing a process. Writing Task 2:
    discussion and problem–solution essays. The hub's "Coming next" list shows these.
+   **Instructions (2026-10-15):** the `ielts-exercise-draft` skill
+   (`.claude/skills/ielts-exercise-draft/SKILL.md`) has the section rules and one brief per page
+   (B1–B6), in build order. One page per PR.
 5. ~~**German FAQ on the hub · Shaun decides.**~~ **Done 2026-10-13 (#133).** Two German FAQ entries
    on `ielts-activities.html` for "IELTS Übungen" searches; the exercises stay English-only.
 
