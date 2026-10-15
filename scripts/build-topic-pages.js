@@ -489,6 +489,7 @@ const EXTRA_PUBLIC_PAGES = [
   'lead-abitur-textanalyse.html',
   'lead-business-email-phrasebank.html',
   'lead-msa-checkliste.html',
+  'lead-story-structures.html',
   'lead-teachers-three-tasks.html',
 ];
 EXTRA_PUBLIC_PAGES.forEach(f => { if (!NOINDEX.has(f) && fs.existsSync(path.join(ROOT, f))) urls.push(BASE + '/' + f); });
