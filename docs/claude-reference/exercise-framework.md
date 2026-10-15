@@ -404,8 +404,9 @@ and none at all on the 183 exercises, the 15 hubs or the landing page. `build-he
 three more things, all inside blocks it owns; **never hand-edit inside `HEAD:*`, `OVERVIEW:*` or
 `FAQ:*`.**
 
-- **`scripts/schema.js`** builds the nodes. A `Person` (Shaun) and a dual-typed
-  `EducationalOrganization`/`LocalBusiness`, defined in full on `index.html` and `activities.html`
+- **`scripts/schema.js`** builds the nodes. A `Person` (Shaun) and an
+  `EducationalOrganization` (no `LocalBusiness`, street address or Berlin `areaServed` since
+  2026-10-15: those pulled Berlin tutor searches onto this host), defined in full on `index.html` and `activities.html`
   and **stubbed on every other page** so each page's graph resolves on its own. Every value comes
   from the live Impressum and certificates pages — **do not add a claim the site does not make.**
   The organization's `@id` is deliberately `https://englishonline.training/#organization`, the
