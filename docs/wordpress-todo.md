@@ -110,12 +110,10 @@ Pages that work, but leak link equity outward or bypass the corporate funnel. Fu
 - **Page 380's title** — reported to carry a non-breaking-space character; still unconfirmed either
   way (the API layer may normalise it in transit). Needs a direct wp-admin UI look, not another API
   round-trip. Low priority.
-- **MailerLite segmentation** — three purpose-built forms/groups exist and are empty shells
-  (`bHIAs6`/Teachers, `Bp589z`/Business English, `tmhk85`/Abitur); all four `lead-*.html` pages
-  currently point at the shared MSA form instead. Ask whether per-audience segmentation is worth
-  building out now, or whether the shared-form approach stays.
+- **MailerLite segmentation** — done 2026-10-15: each `lead-*.html` page posts to its own
+  MailerLite form and group through `signup.js` (see its header).
 - **MailerLite on more results screens** — the MSA page (`msa-c-american-dream.html`) proves the
-  embed pattern works on an exercise results screen. Ask whether Shaun wants it widened to more
+  signup works on an exercise results screen (add a `.eol-signup` box + `signup.js`). Ask whether Shaun wants it widened to more
   exercises, since that's the highest-volume surface on the site.
 - **Corporate enquiries → MailerLite tagging** — 1965's Jetpack contact form sends to email only, not
   into MailerLite. Ask whether corporate enquiries should also be tagged into a MailerLite group.
