@@ -1385,14 +1385,16 @@ exercise cannot give one). Decisions are in Claude's memory note `project-ielts-
    opted-in addresses through the MailerLite connector. Pages now ask for email + opt-in, never a name.
    MailerLite group "EOL – IELTS" created 2026-10-13. Left: Shaun redeploys `apps-script.gs`; test double
    opt-in via the connector. Detail: `submission-routing.md`, "IELTS — email instead of name".
-3. **WordPress 1763 button · CC after merge.** Add `🎯 IELTS Academic` through the API.
-   `data/wordpress-1763.json` already has it.
+   A separate-script version (branch `ielts-feedback`) was built in parallel the same day and is
+   superseded by this one; the branch was deleted 2026-10-15.
+3. ~~**WordPress 1763 button · CC after merge.**~~ **Done 2026-10-13.** The IELTS Academic card is
+   live on `/activities/` under "Exam preparation", linking `ielts-activities.html` with the count
+   from `data/wordpress-1763.json` (checked 2026-10-15).
 4. **Next exercises · CC on request.** Reading: Matching Headings; sentence and summary
    completion. Writing Task 1: tables and bar charts; describing a process. Writing Task 2:
    discussion and problem–solution essays. The hub's "Coming next" list shows these.
-5. **German FAQ on the hub · Shaun decides.** German searchers often type "IELTS Übungen" or
-   "IELTS Vorbereitung". The exercises stay English-only, but a short German FAQ on
-   `ielts-activities.html` could catch those searches.
+5. ~~**German FAQ on the hub · Shaun decides.**~~ **Done 2026-10-13 (#133).** Two German FAQ entries
+   on `ielts-activities.html` for "IELTS Übungen" searches; the exercises stay English-only.
 
 ## Open decisions gating the plan
 **All six items from the 2026-08-07 audit reconciliation are now resolved and executed** (Shaun
