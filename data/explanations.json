@@ -19202,5 +19202,119 @@
     }
    }
   }
+ },
+ "9g-california-future-meaning": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. How long is Mia staying in California?",
+     "correct": "For the whole autumn term",
+     "why": "The text says she is staying in San Diego for the whole autumn term."
+    },
+    "g2": {
+     "label": "2. What does Mia think of her new timetable?",
+     "correct": "It looks punishing",
+     "why": "She says the timetable looks punishing and leaves far less free time than she is used to."
+    },
+    "g3": {
+     "label": "3. How does Mia feel about the goodbye at the airport?",
+     "correct": "She is dreading it",
+     "why": "She says she is looking forward to the trip but dreading the goodbye at the airport."
+    },
+    "g4": {
+     "label": "4. What does the final sentence suggest about Mia?",
+     "correct": "She suspects she may not want to come home",
+     "why": "The final line wonders whether she will want to come back at all."
+    },
+    "g5": {
+     "label": "5. What \"which\" refers to in the \"welcome a visitor\" sentence",
+     "correct": "Taking her to the beach on Sunday",
+     "why": "The relative pronoun refers back to the Sunday trip to the beach."
+    },
+    "g6": {
+     "label": "6. Why \"School starts\" is written in the present simple",
+     "correct": "Because it is a fixed date on the school calendar",
+     "why": "Present simple expresses fixed dates on a timetable or calendar."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. I'll text you as soon as the plane ___ in San Diego.",
+     "correct": "lands",
+     "why": "After a time word like 'as soon as', the present simple expresses the future."
+    },
+    "g2": {
+     "label": "2. We ___ a barbecue on Saturday.",
+     "correct": "are having",
+     "why": "A fixed arrangement with a time and place takes the present progressive."
+    },
+    "g3": {
+     "label": "3. The last bus back from the beach ___ at midnight.",
+     "correct": "leaves",
+     "why": "Bus times are fixed schedules, so the present simple is used."
+    },
+    "g4": {
+     "label": "4. We won't set off until the fog ___ a little.",
+     "correct": "lifts",
+     "why": "After 'until', the present simple expresses the future."
+    },
+    "g5": {
+     "label": "5. Before you ___ for the airport, check your passport.",
+     "correct": "leave",
+     "why": "After 'before', the present simple expresses the future."
+    },
+    "g6": {
+     "label": "6. Her flight ___ at 6.05 tomorrow morning.",
+     "correct": "departs",
+     "why": "Flight times are fixed schedules, so the present simple is used."
+    },
+    "g7": {
+     "label": "7. I ___ my grandparents on Sunday.",
+     "correct": "am visiting",
+     "why": "A fixed arrangement already agreed takes the present progressive."
+    },
+    "g8": {
+     "label": "8. (Review) If the weather ___ good, we'll go surfing.",
+     "correct": "is",
+     "why": "Review from Canada: Conditionals — after 'if' in a first conditional, use the present simple, not 'will'."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. Wait — I ___ check the date on my phone.",
+     "correct": "will check",
+     "why": "A spontaneous decision made at the moment of speaking takes 'will'."
+    },
+    "g2": {
+     "label": "2. Next year we ___ a road trip down the coast.",
+     "correct": "are going to take",
+     "why": "'Going to' expresses a plan or intention already decided."
+    },
+    "g3": {
+     "label": "3. Look at those dark clouds — it ___ rain.",
+     "correct": "is going to rain",
+     "why": "A prediction based on present evidence takes 'going to'."
+    },
+    "g4": {
+     "label": "4. The concert ___ at eight.",
+     "correct": "starts",
+     "why": "A scheduled start time (a timetable) takes the present simple."
+    },
+    "g5": {
+     "label": "5. I ___ San Francisco next month.",
+     "correct": "am visiting",
+     "why": "A fixed arrangement (flights and hotel booked) takes the present progressive."
+    },
+    "g6": {
+     "label": "6. I ___ you a lift to school.",
+     "correct": "will give",
+     "why": "An offer made on the spot takes 'will'."
+    }
+   }
+  }
  }
 }
