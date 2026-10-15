@@ -31,8 +31,9 @@ sitemap, `<head>`) come from `node scripts/build.js` — see "Adding a new exerc
 4. **Outreach, listings and descriptions never name Klett.** Describe content as aligned to the
    German school curriculum and used or tested in real classrooms. Internal files (the topic
    pools) may keep the textbook names.
-5. **Work in a fresh worktree of `origin/main`, never the local clone.** The clone at
-   `Claude Files/vocab-games` can be far behind and carry uncommitted changes.
+5. **Work in `~/Documents/GitHub/vocab-games` on a new branch from `origin/main`. Do not create git
+   worktrees or new clones.** Run `git fetch` first. If that clone has uncommitted changes, stop and
+   ask. Do not use the old clone at `Claude Files/vocab-games`; it can be far behind.
 6. **Pushing to `main` publishes to students immediately.** Check the changed pages, and don't
    push or merge without being asked.
 7. **Don't change production email routing or edit live WordPress pages without asking** (see
