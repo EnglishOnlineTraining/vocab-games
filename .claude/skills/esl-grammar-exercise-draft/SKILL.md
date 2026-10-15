@@ -95,7 +95,7 @@ Fill in every `TODO` in the template:
       `build-head.js` derives the auto-generated overview box and OG/JSON-LD tags from these.
 - [ ] **`UNIT`** — the pool entry's `id`, matching the filename
 - [ ] **`TOTAL_STEPS`** — number of exercise steps + 1
-- [ ] **`SHEET_URL`** — the Business/University Apps Script URL (see §3 above)
+- [ ] **`SHEET_URL`** — the online-sheet Apps Script URL (see §3 above)
 - [ ] **`TEACHER_EMAIL`** — `'englishonlinetraining@pm.me'`
 - [ ] **Welcome screen** — emoji, title, subtitle, overview cards (steps 2+ get `class="locked"`)
 - [ ] **State object** — one property per exercise section (exA, exB, exC, exD, scores)
@@ -133,7 +133,7 @@ slug, `state` declares `scores: {}`). It must report all checks passed before yo
 
 It cannot check content quality or this series' own conventions, so also verify by hand:
 
-- [ ] `SHEET_URL` is the Business/University Apps Script URL
+- [ ] `SHEET_URL` is the online-sheet Apps Script URL
 - [ ] `<html lang="en">` is set
 - [ ] Every dropdown has 3 options with the correct answer shuffled
 - [ ] Answer keys in `checkExX()` are actually correct

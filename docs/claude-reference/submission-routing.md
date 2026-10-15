@@ -87,7 +87,16 @@ a fresh `name` gives **4 ops / status 1** (row written), the *same* `name` again
 the one that matters: if ParseJSON were broken the dedup key would be the same for everyone and
 the different-name POST would stop at 3 ops too. Verified this way on 2026-09-28.
 
-### Business English & University Sheet URL (Google Apps Script — not part of the Make migration)
+### The two Apps Script sheets: "online" and "university" (not part of the Make migration)
+Shaun's names (confirmed 2026-10-15). Use them — "Business/University sheet" was a docs-only
+label for the **online** sheet and sent instructions to the wrong one.
+
+| Shaun calls it | URL id | Used by |
+|---|---|---|
+| **Online sheet** | `AKfycbxFKA1…` | all `be-`, `it-`, `esl-` and `ielts-` pages (IELTS tab), most `uni-` pages |
+| **University sheet** | `AKfycbwwbV6…` | `uni-pm-vocabulary`, `uni-presentation-task`, `uni-relationships-language`, `-reading`, `-vocab` |
+
+#### Online sheet URL
 ```
 https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec
 ```
@@ -106,7 +115,7 @@ opt-in and double opt-in. So:
   `state.name` holds the address only so drafts and the summary keep working.
 - **Sheet side.** `apps-script.gs` sends every `ielts-*` unit to one tab, **IELTS**: Timestamp,
   Unit, Email, Newsletter, Feedback sent, Added to MailerLite, then one column per answer key.
-  **Needs a redeploy** (paste `apps-script.gs` into the Business/University sheet's Apps
+  **Needs a redeploy** (paste `apps-script.gs` into the **online** sheet's Apps
   Script → Deploy → Manage deployments → edit → New version, which keeps the URL). Until then,
   IELTS rows land in per-unit tabs with blank Name/Class and the email in its own column.
 - **Newsletter (Shaun's call 2026-10-13: no API key in Apps Script).** The feedback step does
