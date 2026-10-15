@@ -37,12 +37,13 @@ issue ("AI Task" template, acceptance criteria filled)
 
 - AI never pushes to `main` directly; patches must apply cleanly or the run fails loudly.
 - Minimal-diff prompt design.
-- Pre-flight: `STYLE.md` must exist.
+- Pre-flight: `STYLE.md` must exist; context-pack integrity verified.
 - Post-apply: `verify-exercise.js` on touched pages, then the **full build graph** —
   a patch that breaks any validator never becomes a PR.
 - `check-generated.yml` rebuilds the graph on every PR and fails on any difference, so
   generated output is verified exactly.
 - Raw model replies and patches are uploaded as artifacts on every run.
+- API calls retry 3× with backoff.
 
 ## What stays manual (deliberately)
 
