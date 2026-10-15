@@ -4,7 +4,7 @@
  *
  * AI search splits a page into chunks and may carry only the nearest headings
  * with each one, so a heading like "Typische Fehler" loses the topic the moment
- * the chunk leaves the page (Tier 10, docs/eol-backlog-plan.md). Applies to the
+ * the chunk leaves the page (Tier 10, docs/seo-backlog.md). Applies to the
  * topics in topic-headings.js; the year headings inside the "alle Übungen" list
  * (h3.wy-year) sit under an H2 that already names the topic and are skipped.
  *

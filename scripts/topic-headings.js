@@ -1,7 +1,7 @@
 /*
  * topic-headings.js — the themen/ topics whose headings must name the topic.
  *
- * Tier 10 pilot (docs/eol-backlog-plan.md). AI search engines split a page into
+ * Tier 10 pilot (docs/seo-backlog.md). AI search engines split a page into
  * chunks and may attach only the nearest headings to each one, so "Beispiele"
  * or "Typische Fehler" on its own says nothing about what the chunk covers.
  * These two topics go first; the rest follow after 4–6 weeks of AI-answer data
