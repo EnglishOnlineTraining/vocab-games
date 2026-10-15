@@ -984,6 +984,9 @@ afterwards (rule 7).
    impr/3 months); the URL now lands on noindexed stub 2272. Shaun doesn't tutor. Options: point
    that URL at a page for adult self-learners (free exercises for adults, the ESL grammar series),
    or at the team-training offer (`/business-english/`), or let it go. No change until he picks.
+   - **Shaun, restated 2026-10-16: tutor-search impressions are welcome**, even though he
+     doesn't plan to teach those learners himself. Never strip signals (schema, address,
+     wording) to shed them, on either host.
 4. **PDF landing pages (Phase 3).** **Property-management page DONE (#105, merged 2026-10-06,
    live).** `property-management-vocabulary.html`: 159 terms in static HTML, a search filter,
    links to the PDF and `be-property-management.html`, a FAQ, and a button on the Business hub.
@@ -1137,7 +1140,7 @@ afterwards (rule 7).
      | 8c-going-west | test | not indexed, crawled 8 Oct | 2026-10-13 | | | |
      | 8c-off-to-midwest | control | not indexed, crawled 9 Aug | 2026-10-13 | | | |
 
-10. **Search Console, 2026-10-15: impressions are back, on the wrong searches · open.**
+10. **Search Console, 2026-10-15: impressions are back, mostly on the homepage · open.**
     - Activities host, domain property: nothing Jun 2025 – Jul 2026; ~500 impressions 9–23 Aug
       (the `themen/` grammar pages at positions 50–65: passive, present perfect, modal verbs,
       relative clauses); ~0 from 24 Aug to 6 Oct; back from **7 Oct**, the day of the Search
@@ -1146,12 +1149,10 @@ afterwards (rule 7).
       searches ("tutor in english language" 1.2, "english training", "english tutor",
       "schöneberg berlin", "termin auf english"). Only three exercise pages had an
       impression. Indexed pages in the activities property: 24 (9 Oct) → 22 (15 Oct).
-    - **Done 2026-10-15 (Shaun approved): Berlin business markup off the activities host**
-      (`b8a3a91`, branch `claude/activities-drop-localbusiness`, not merged). The org node in
-      `scripts/schema.js` is now a plain `EducationalOrganization`: no `LocalBusiness` type,
-      street address or Berlin `areaServed`. The local details stay on WordPress under the
-      same `@id`. Expect the tutor impressions on the activities homepage to fall; that is the
-      point (decision A4).
+    - **Reverted 2026-10-16.** PR #149 (merged 2026-10-16) removed the `LocalBusiness` type,
+      street address and Berlin `areaServed` from the activities org node to shed the tutor
+      searches. That went against Shaun's standing view that tutor impressions are welcome
+      (item 3), so the markup was restored as it was before #149. Keep it.
     - **Done 2026-10-15: Request indexing for the `themen/` pages that ranked in August**, all
       "Crawled – currently not indexed", last crawled 15 Aug – 24 Sept: `modalverben`,
       `present-perfect`, `gerund-infinitiv`, `present-tenses`, `past-perfect`, `if-saetze`,
@@ -1171,8 +1172,8 @@ afterwards (rule 7).
       website each one lists: if either points at `activities.englishonline.training`, that
       would explain "schöneberg berlin" at position 1. Point the kept one at
       `/business-english/`.
-    - Re-measure 2026-11-06: judge by indexed pages and exercise/`themen/` impressions, not
-      total impressions, which the homepage tutor searches inflate.
+    - Re-measure 2026-11-06: report the homepage tutor searches and the exercise/`themen/`
+      impressions separately, alongside indexed pages, so growth in one doesn't hide the other.
 
 ## Tier 10 — AI search: chunk-ready headings and sub-query coverage (2026-10-07) · Shaun + CC
 Source: Google Cloud Vertex AI Search (Discovery Engine) docs. They list these ranking signals:

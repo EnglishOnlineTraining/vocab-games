@@ -105,16 +105,14 @@ function personNode() {
 }
 
 /**
- * The business, as an EducationalOrganization only. No LocalBusiness type, street
- * address or Berlin areaServed here (removed 2026-10-15): this host owns "free English
- * exercises", and the local signals had Google showing its homepage for Berlin tutor
- * searches that belong to the WordPress site. The local details stay on WordPress,
- * under the same @id. alternateName carries the WordPress site title so this node
+ * The business. Typed as both EducationalOrganization and LocalBusiness: it is a
+ * teaching provider *and* a registered Berlin sole trader, and consumers look for
+ * different types. alternateName carries the WordPress site title so this node
  * does not contradict the one Jetpack emits under the same @id.
  */
 function organizationNode() {
   return {
-    '@type': 'EducationalOrganization',
+    '@type': ['EducationalOrganization', 'LocalBusiness'],
     '@id': ORG_ID,
     name: 'EnglishOnline.training',
     legalName: 'English Online Training',
@@ -127,7 +125,17 @@ function organizationNode() {
     email: 'englishonlinetraining@pm.me',
     telephone: '+49 176 3130 4449',
     vatID: 'DE307424159',
-    areaServed: { '@type': 'Country', name: 'Germany' },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Koloniestrasse',
+      postalCode: '13357',
+      addressLocality: 'Berlin',
+      addressCountry: 'DE',
+    },
+    areaServed: [
+      { '@type': 'Country', name: 'Germany' },
+      { '@type': 'AdministrativeArea', name: 'Berlin' },
+    ],
     // knowsLanguage, not availableLanguage: the latter's domain is
     // ContactPoint/Service/LodgingBusiness and does not include Organization.
     knowsLanguage: ['en', 'de'],
@@ -150,7 +158,7 @@ function websiteNode() {
 
 /** Minimal restatements, so every page's graph resolves its own @id references. */
 function orgStub() {
-  return { '@type': 'EducationalOrganization', '@id': ORG_ID, name: 'EnglishOnline.training', url: WP + '/' };
+  return { '@type': ['EducationalOrganization', 'LocalBusiness'], '@id': ORG_ID, name: 'EnglishOnline.training', url: WP + '/' };
 }
 function personStub() {
   return { '@type': 'Person', '@id': PERSON_ID, name: 'Shaun Trezise', url: WP + '/' };
