@@ -45,9 +45,7 @@ const BROWSER = ('window self document navigator location history screen alert c
   'HTMLElement Range Selection SpeechSynthesisUtterance Notification TextEncoder TextDecoder').split(' ');
 // Names a third-party loader snippet creates at runtime under a string name,
 // which no static read can see. Add one only with the snippet that makes it.
-const THIRD_PARTY = [
-  'ml',   // MailerLite Universal: (function(w,d,e,u,f…){w[f]=…})(…,'ml')
-];
+const THIRD_PARTY = [];
 const GLOBALS = new Set([...Object.getOwnPropertyNames(globalThis), ...BROWSER, ...THIRD_PARTY]);
 
 /* ---------- tokenizer ----------

@@ -176,10 +176,17 @@ table above (`bHIAs6`/Teachers, `Bp589z`/Business English, `tmhk85`/Abitur) stil
 and still empty shells, if per-audience segmentation is wanted later; switching back is a
 one-line `data-form` swap per page, no data migration needed since nothing has gone into them yet.
 
+**Superseded 2026-10-15 — own forms, one group per audience.** The dashboard designs were
+MailerLite's default English template ("Signup for news and special offers!", with an
+advertising-consent checkbox), and `universal.js` loaded before any consent. All five pages now
+use `signup.js`: a site-styled form in the page language that posts to each page's own MailerLite
+form (by numeric form ID), so double opt-in and the group still come from MailerLite and no form
+design is needed in the dashboard. The page → form → group table is in the header of `signup.js`.
+Each group has a delivery automation (MSA checklist, Abitur phrase sheet, Business phrase bank,
+Teacher Track), all created inactive. Open: a live test signup per form before switching them on.
+
 To do:
-1. If per-audience segmentation turns out to matter, build out content for the three empty forms
-   (`bHIAs6`, `Bp589z`, `tmhk85`) in the MailerLite dashboard and repoint each page's `data-form`
-   back to its own slug from the table above.
+1. ~~Per-audience segmentation~~ — done 2026-10-15, see above.
 2. Decide whether the exercise results screen should carry it more widely (the MSA page proves
    the pattern works there) — that is the highest-volume surface on the site.
 3. Corporate enquiries from 1965 go via the Jetpack form to email, **not** into MailerLite —
