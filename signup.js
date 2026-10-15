@@ -36,7 +36,8 @@
       label: 'E-Mail-Adresse',
       button: 'Anmelden',
       sending: 'Wird gesendet …',
-      note: 'Du bekommst zuerst eine E-Mail zur Bestätigung. Abmelden geht jederzeit.',
+      // German pages are for students (MSA, Abitur); under 16 needs a parent's OK (DSGVO Art. 8).
+      note: 'Du bekommst zuerst eine E-Mail zur Bestätigung. Abmelden geht jederzeit. Unter 16? Dann melde dich bitte nur mit Erlaubnis deiner Eltern an.',
       privacy: 'Datenschutz',
       done: 'Fast geschafft: Bitte klick auf den Link in der E-Mail, die wir dir gerade geschickt haben. Sie ist nicht da? Schau im Spam-Ordner nach.',
       fail: 'Das hat nicht geklappt. Bitte prüf deine E-Mail-Adresse und versuch es noch einmal.'
