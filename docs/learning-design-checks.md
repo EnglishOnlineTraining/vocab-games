@@ -1,7 +1,8 @@
-# Learning design checks — shared by daily-exercise-draft and esl-grammar-exercise-draft
+# Learning design checks — shared by daily-exercise-draft, esl-grammar-exercise-draft and ielts-exercise-draft
 
-Both skills that build a fresh exercise page from scratch (`daily-exercise-draft` for the
-Klett-textbook series, `esl-grammar-exercise-draft` for the standalone ESL-grammar series) apply
+The skills that build a fresh exercise page from scratch (`daily-exercise-draft` for the
+Klett-textbook series, `esl-grammar-exercise-draft` for the standalone ESL-grammar series, and
+`ielts-exercise-draft` for the IELTS Academic section) apply
 the same nine learning-design requirements while building, and re-verify the same nine items in
 self-review. This file is the single copy; each skill's SKILL.md links here instead of repeating
 the prose, so a wording fix only has to happen once. (`msa-exercise-draft` and the `eol-*` skills
@@ -34,6 +35,9 @@ came from. **Where "earlier already-built page" comes from is series-specific:**
   sequential like a textbook, so there is no "N units back" — pull the point from a *different,
   already-built* `esl-*` page (check `esl-grammar-pool.json` for what's built). Skip only if this
   is the first exercise built in the whole `esl-*` series.
+- **`ielts-exercise-draft` (IELTS Academic section):** no pool file — pull the point from an
+  earlier, already-built `ielts-*` page; the skill's brief for the page you're building names
+  which one. Skip only for the first exercise built in the section.
 
 ## 3. State the outcome as an action
 

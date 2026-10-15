@@ -57,8 +57,9 @@ Note or any grade text.
 - **No affiliation.** Never imply the site is official or endorsed; the hub already carries the
   ownership notice.
 - **Exam facts:** use only these, verified on ielts.org (Academic Reading and Academic Writing
-  format pages) on 2026-10-15. Check again with the `fact-check-blogs` skill if you add any other
-  claim about the exam.
+  format pages) on 2026-10-15. If you build a brief more than two months after that date,
+  spot-check these facts on ielts.org again first — IELTS updates its format pages periodically.
+  Check again with the `fact-check-blogs` skill if you add any other claim about the exam.
   - **Reading:** 60 minutes, 3 sections, 40 questions, 2,150–2,750 words of text in all, 1 mark
     per question.
   - **Matching Headings:** there are always more headings than paragraphs, each heading is used
@@ -96,8 +97,9 @@ Follow `docs/learning-design-checks.md` (all nine checks), with these IELTS spec
   `<label class="sr-only">`. Copy the page-local `checkTyped()` and its `.gap-input` styles from
   `9g-australia-passive-forms.html`; it uses the shared `normAns()`. Give each gap an accept list
   (singular/plural where the text allows it, digits and words for numbers, British and American
-  spelling). The instruction states the word limit, and an answer over the limit is wrong; say so
-  in its explanation.
+  spelling, hyphenated and spaced forms of compound terms, and an optional leading article where
+  the exam would not penalise its omission). The instruction states the word limit, and an answer
+  over the limit is wrong; say so in its explanation.
 - **Ex D** is a writing task with a situation, an audience and a purpose. On Writing pages it is the
   full Task 1 or Task 2. On Reading pages it is a short message (60–100 words) to a study partner
   about the strategy.
@@ -116,15 +118,19 @@ row. Model the rows on the two existing writing pages.
 
 1. **Name and register:** filename = `UNIT` + `.html`, with `UNIT` from the brief. Fill in
    `<title>`, `<meta name="description">` (aim it at the brief's search terms) and
-   `<link rel="canonical">`.
+   `<link rel="canonical">`. IELTS pages are not registered in `topic-pool.json` — that registry
+   covers the textbook-driven `8g/8c/9g/9c/10g/10c` categories only; no entry is needed for
+   `ielts-` units.
 2. **Hub card:** add one to `data/hub-cards.json` under `ielts-activities.html`, keeping the order
    Reading → Writing Task 1 → Writing Task 2 → Mixed Revision → glossary. Write your own title
    and description; the auto-derived card truncates.
-3. **"Coming next":** remove the item you built from the list in `ielts-activities.html`. Once the
-   list is empty, remove the box.
+3. **"Coming next":** remove the item you built from the list in `ielts-activities.html` — each
+   brief has its own bullet, and the box is hand-maintained (outside the HUBCARDS markers). Once
+   the list is empty, remove the box.
 4. **Build:** run `node scripts/build.js`. It regenerates `ielts-review.html` (which now also draws
    from the new page), the hub, the sitemap and the head blocks. Then run
-   `node scripts/verify-exercise.js` on the page and `node scripts/validate-explanations.js`.
+   `node scripts/verify-exercise.js` on the page, `node scripts/validate-explanations.js`, and
+   `node test-ielts-email.js` (pins the email-only, no-name submission path A1 depends on).
 5. **Browser check:** serve over HTTP, not on port 8765, and click through.
    - **Practise mode:** every Check button; one deliberate wrong answer per section shows its
      explanation; the score card reads "points (N%)" with no Note; the rubric is the IELTS one;
@@ -154,8 +160,8 @@ Search terms are what the title, description and h1 should aim at, not keyword s
   (shade trees, light-coloured roofs, cooling centres), with general claims only. Each paragraph
   needs one clear main idea, plus one supporting detail that a wrong heading can latch onto.
 - **Ex A, Matching Headings:** a list of 8 headings (i–viii). Paragraph A is a worked example with
-  its answer given; B–F are the gaps, each showing all 8 headings. So 3 headings are never used,
-  and at least two of those must be "word-match traps" that repeat a word from a paragraph's
+  its answer given; B–F are the gaps, each showing all 8 headings. So 2 headings are never used,
+  and both of those must be "word-match traps" that repeat a word from a paragraph's
   detail.
 - **Ex B, main idea or detail:** 6 items. For each paragraph, choose the sentence that states its
   main idea (3 options: the main idea, a supporting detail, an example).
@@ -177,9 +183,9 @@ Search terms are what the title, description and h1 should aim at, not keyword s
 - **Ex A, sentence completion (typed):** 7 sentences in text order. The instruction reads "Write NO
   MORE THAN TWO WORDS AND/OR A NUMBER from the text." Use typed gaps with `checkTyped()` and
   accept lists. At least one gap has a tempting three-word answer that breaks the limit.
-- **Ex B, predict the word type:** 6 items before a second set of gaps: "What kind of word fits
-  gap 3?" (noun / verb / adjective / number). This is the skill ielts.org names for this question
-  type.
+- **Ex B, predict the word type:** 6 items, one per gap in Ex C's summary, done before attempting
+  Ex C itself: "What kind of word fits gap 3?" (noun / verb / adjective / number). Predicting word
+  type before scanning is a strategy ielts.org itself recommends for this question type.
 - **Ex C, summary completion from a word box:** a 90–110-word summary of 2–3 paragraphs, with
   6 gaps and a box of 10 words or phrases (A–J). Every gap shows the full box. Include
   distractors of the right word type but the wrong meaning. Add 1–2 spaced-recall items from
