@@ -1,0 +1,183 @@
+{
+ "unit": "9g-california-future-meaning",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "For the whole autumn term",
+     "accept": [
+      "For the whole autumn term"
+     ],
+     "label": "1. How long is Mia staying in California?",
+     "why": "The text says she is staying in San Diego for the whole autumn term."
+    },
+    "g2": {
+     "correct": "It looks punishing",
+     "accept": [
+      "It looks punishing"
+     ],
+     "label": "2. What does Mia think of her new timetable?",
+     "why": "She says the timetable looks punishing and leaves far less free time than she is used to."
+    },
+    "g3": {
+     "correct": "She is dreading it",
+     "accept": [
+      "She is dreading it"
+     ],
+     "label": "3. How does Mia feel about the goodbye at the airport?",
+     "why": "She says she is looking forward to the trip but dreading the goodbye at the airport."
+    },
+    "g4": {
+     "correct": "She suspects she may not want to come home",
+     "accept": [
+      "She suspects she may not want to come home"
+     ],
+     "label": "4. What does the final sentence suggest about Mia?",
+     "why": "The final line wonders whether she will want to come back at all."
+    },
+    "g5": {
+     "correct": "Taking her to the beach on Sunday",
+     "accept": [
+      "Taking her to the beach on Sunday"
+     ],
+     "label": "5. What \"which\" refers to in the \"welcome a visitor\" sentence",
+     "why": "The relative pronoun refers back to the Sunday trip to the beach."
+    },
+    "g6": {
+     "correct": "Because it is a fixed date on the school calendar",
+     "accept": [
+      "Because it is a fixed date on the school calendar"
+     ],
+     "label": "6. Why \"School starts\" is written in the present simple",
+     "why": "Present simple expresses fixed dates on a timetable or calendar."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "lands",
+     "accept": [
+      "lands"
+     ],
+     "label": "1. I'll text you as soon as the plane ___ in San Diego.",
+     "why": "After a time word like 'as soon as', the present simple expresses the future."
+    },
+    "g2": {
+     "correct": "are having",
+     "accept": [
+      "are having"
+     ],
+     "label": "2. We ___ a barbecue on Saturday.",
+     "why": "A fixed arrangement with a time and place takes the present progressive."
+    },
+    "g3": {
+     "correct": "leaves",
+     "accept": [
+      "leaves"
+     ],
+     "label": "3. The last bus back from the beach ___ at midnight.",
+     "why": "Bus times are fixed schedules, so the present simple is used."
+    },
+    "g4": {
+     "correct": "lifts",
+     "accept": [
+      "lifts"
+     ],
+     "label": "4. We won't set off until the fog ___ a little.",
+     "why": "After 'until', the present simple expresses the future."
+    },
+    "g5": {
+     "correct": "leave",
+     "accept": [
+      "leave"
+     ],
+     "label": "5. Before you ___ for the airport, check your passport.",
+     "why": "After 'before', the present simple expresses the future."
+    },
+    "g6": {
+     "correct": "departs",
+     "accept": [
+      "departs"
+     ],
+     "label": "6. Her flight ___ at 6.05 tomorrow morning.",
+     "why": "Flight times are fixed schedules, so the present simple is used."
+    },
+    "g7": {
+     "correct": "am visiting",
+     "accept": [
+      "am visiting"
+     ],
+     "label": "7. I ___ my grandparents on Sunday.",
+     "why": "A fixed arrangement already agreed takes the present progressive."
+    },
+    "g8": {
+     "correct": "is",
+     "accept": [
+      "is"
+     ],
+     "label": "8. (Review) If the weather ___ good, we'll go surfing.",
+     "why": "Review from Canada: Conditionals — after 'if' in a first conditional, use the present simple, not 'will'."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "will check",
+     "accept": [
+      "will check"
+     ],
+     "label": "1. Wait — I ___ check the date on my phone.",
+     "why": "A spontaneous decision made at the moment of speaking takes 'will'."
+    },
+    "g2": {
+     "correct": "are going to take",
+     "accept": [
+      "are going to take"
+     ],
+     "label": "2. Next year we ___ a road trip down the coast.",
+     "why": "'Going to' expresses a plan or intention already decided."
+    },
+    "g3": {
+     "correct": "is going to rain",
+     "accept": [
+      "is going to rain"
+     ],
+     "label": "3. Look at those dark clouds — it ___ rain.",
+     "why": "A prediction based on present evidence takes 'going to'."
+    },
+    "g4": {
+     "correct": "starts",
+     "accept": [
+      "starts"
+     ],
+     "label": "4. The concert ___ at eight.",
+     "why": "A scheduled start time (a timetable) takes the present simple."
+    },
+    "g5": {
+     "correct": "am visiting",
+     "accept": [
+      "am visiting"
+     ],
+     "label": "5. I ___ San Francisco next month.",
+     "why": "A fixed arrangement (flights and hotel booked) takes the present progressive."
+    },
+    "g6": {
+     "correct": "will give",
+     "accept": [
+      "will give"
+     ],
+     "label": "6. I ___ you a lift to school.",
+     "why": "An offer made on the spot takes 'will'."
+    }
+   }
+  }
+ }
+}
