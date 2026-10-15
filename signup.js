@@ -22,6 +22,8 @@
  *   lead-abitur-textanalyse.html         194481679194129434   EOL – Abitur
  *   lead-business-email-phrasebank.html  194481682855757151   EOL – Business English
  *   lead-teachers-three-tasks.html       194481686730245820   EOL – Teachers
+ *   it-activities.html, it-*.html        201429308373206244   EOL – IT English (monthly drip)
+ *   lead-story-structures.html           200478242193278763   General
  *
  * The endpoint is the one MailerLite's own embed code posts to. It is not part
  * of their documented API, so if signups stop, check it here first.
