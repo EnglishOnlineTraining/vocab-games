@@ -51,8 +51,8 @@ sitemap, `<head>`) come from `node scripts/build.js` — see "Adding a new exerc
 
 `/kimi fix <task>` on an **issue** → Kimi (author-model) drafts a patch, validates it
 against this repo's own build graph, and opens a PR labelled `ai-authored`.
-`/claude review` (or `/claude security-audit`) on a **PR** → Claude (reviewer-model)
-posts BLOCKERS / SUGGESTIONS / QUESTIONS against `STYLE.md`. Humans merge.
+PRs are reviewed against `STYLE.md` by a Claude Code subagent when Shaun asks (the
+`/claude review` comment workflow was retired 2026-10-16). Humans merge.
 
 - **`STYLE.md` (repo root) is the canonical contract for ALL AI-generated work in this
   repo.** When STYLE.md and habit disagree, STYLE.md wins; deviations belong in the PR's

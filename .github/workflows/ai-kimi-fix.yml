@@ -161,7 +161,7 @@ jobs:
           None (or listed below)
 
           ---
-          Review with: \`/claude review\`" --label "ai-authored"
+          Review: ask Claude to review this PR (subagent review)." --label "ai-authored"
 
       - name: Upload artifacts (reply + patch)
         if: always()

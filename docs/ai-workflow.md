@@ -1,29 +1,27 @@
 # AI authoring workflow (Kimi authors, Claude reviews)
 
-Two GitHub Actions workflows bring the planned author/reviewer loop into this repo:
+One GitHub Actions workflow brings the author half of the loop into this repo:
 
 - **`/kimi fix <task>`** on an **issue** → Kimi (author-model) drafts a patch, applies it
   on a branch, runs the repo's own validators (`verify-exercise.js` + the full
   `scripts/build.js` graph), and opens a PR labelled `ai-authored`.
-- **`/claude review`** on a **PR** → Claude (reviewer-model) checks the diff against
-  `STYLE.md` and `docs/learning-design-checks.md` — mechanically (answer keys match
-  options, scoreKeys, TOTAL_STEPS, UNIT slug, state wiring) and pedagogically (the nine
-  learning-design checks, CEFR fit, English-only) — and posts BLOCKERS / SUGGESTIONS /
-  QUESTIONS as a PR comment.
-- **`/claude security-audit`** on a PR → focused pass: secrets, outbound URLs, injected
-  scripts, submission/grading behaviour, workflow permissions.
+
+**Review is done by a Claude Code subagent, not a GitHub Action.** Shaun asks Claude to
+review the PR; it checks the diff against `STYLE.md` and
+`docs/learning-design-checks.md` — mechanically (answer keys match options, scoreKeys,
+TOTAL_STEPS, UNIT slug, state wiring) and pedagogically (the nine learning-design
+checks, CEFR fit, English-only). The old `/claude review` comment workflow
+(`ai-claude-review.yml`) was retired on 2026-10-16: it needed an Anthropic API key
+secret the repo does not have, and failed with HTTP 401. Nothing auto-merges; Shaun
+merges.
 
 `STYLE.md` (repo root) is the canonical contract both models follow. A change that
 genuinely cannot follow it must be explained under "Deviations" in the PR.
 
 ## Setup (one-time, by the repo owner)
 
-1. **Secrets** (Settings → Secrets and variables → Actions):
-   - `KIMI_API_KEY` — Moonshot API key
-   - `CLAUDE_API_KEY` — Anthropic API key
-2. **Variables (optional):** `KIMI_BASE_URL` / `KIMI_MODEL`,
-   `CLAUDE_BASE_URL` / `CLAUDE_MODEL` (defaults: `kimi-k2-0905-preview`,
-   `claude-sonnet-4-6`).
+1. **Secret** (Settings → Secrets and variables → Actions): `KIMI_API_KEY` — Moonshot API key.
+2. **Variables (optional):** `KIMI_BASE_URL` / `KIMI_MODEL` (default: `kimi-k2-0905-preview`).
 3. The `ai-authored` label is created automatically on first run (pre-creating it,
    colour `#7057ff`, avoids a first-run race).
 
@@ -32,56 +30,23 @@ genuinely cannot follow it must be explained under "Deviations" in the PR.
 ```
 issue ("AI Task" template, acceptance criteria filled)
    └─ /kimi fix …        → PR (branch ai/kimi-issue-<N>, label ai-authored)
-        └─ /claude review → review comment on the PR
-             └─ VERDICT: APPROVE + all CI green → squash auto-merge to main
+        └─ Claude subagent review + all CI green → Shaun merges
 ```
-
-**Auto-merge (no human approval needed)** — after a full `/claude review`, the workflow
-parses the review's final `VERDICT:` line:
-
-- `VERDICT: APPROVE` (emitted only when the review found **no BLOCKERS**) **and** every
-  CI check on the PR passes **and**, when generated files were left out of the review,
-  the **Check generated files** job specifically passed → the workflow enables squash
-  auto-merge. Kimi authored, Claude approved, CI green — it ships.
-- `VERDICT: CHANGES_REQUESTED`, a missing verdict line, failing CI, or a merge conflict
-  → auto-merge is skipped and a comment says why. Nothing merges in that state.
-- `/claude security-audit` never triggers a merge — it is advisory only.
 
 ## Guardrails baked in
 
 - AI never pushes to `main` directly; patches must apply cleanly or the run fails loudly.
-- Minimal-diff prompt design; the reviewer re-checks for unrelated reformatting.
-- The context pack's task-relevant files are read from the **PR head** (fetched, then
-  `git show` by `build-context.sh --ref`), so a page the PR adds reaches the reviewer in
-  full, not just as diff hunks. The PR is never checked out: every script the job runs
-  is the base branch's, because the job holds `CLAUDE_API_KEY` and a write token.
-- Pre-flight: `STYLE.md` must exist; context-pack integrity verified; diff capped at 150 KB
-  **after build-generated files are left out** (see below).
-- Generated files are not model-reviewed. A PR that adds one exercise also carries
-  everything `scripts/build.js` regenerates (hubs, `sitemap.xml`, `data/exercises.json`,
-  `data/answer-keys/*`, `data/lastmod.json`, `themen/*`, …) — 150–300 KB around ~50 KB
-  of authored work, which used to fail the cap on every such PR.
-  `.github/scripts/filter-generated.js` removes them from the reviewed diff and from
-  `changed-files.txt` (so the context pack skips them too) and lists them for the
-  reviewer as "left out". The set is derived from `scripts/pipeline.js`: a path is
-  generated if it matches the `outputs` of any node not marked `editsInPlace`. Only
-  `head` is marked — it rewrites blocks inside authored pages, so exercise pages (and
-  its small edits to sibling pages) stay in the review. A new generator node is left
-  out automatically; a new in-place rewriter must set `editsInPlace: true`.
-  `check-generated.yml` rebuilds the graph and fails on any difference, and auto-merge
-  requires that job by name, so generated output is still verified exactly.
+- Minimal-diff prompt design.
+- Pre-flight: `STYLE.md` must exist.
 - Post-apply: `verify-exercise.js` on touched pages, then the **full build graph** —
   a patch that breaks any validator never becomes a PR.
-- Auto-merge requires **both** signals: the review verdict line *and* green CI; a
-  missing verdict fails safe (no merge).
+- `check-generated.yml` rebuilds the graph on every PR and fails on any difference, so
+  generated output is verified exactly.
 - Raw model replies and patches are uploaded as artifacts on every run.
-- API calls retry 3× with backoff (429-aware for Claude); Claude uses prompt caching
-  on its system prompt.
 
 ## What stays manual (deliberately)
 
-- **Repo setting:** allow auto-merge must be on (Settings → General → Pull Requests).
-  If it is off, the workflow says so in a comment instead of merging.
+- **Review and merge** — see above.
 - **WordPress page 1763** — the repo holds no WP credentials. After an exercise PR
   merges, apply the button labels from `data/wordpress-1763.json` using the documented
   safe procedure (see `CLAUDE.md` "Known traps"). Never open 1763 in the block editor.
