@@ -984,6 +984,9 @@ afterwards (rule 7).
    impr/3 months); the URL now lands on noindexed stub 2272. Shaun doesn't tutor. Options: point
    that URL at a page for adult self-learners (free exercises for adults, the ESL grammar series),
    or at the team-training offer (`/business-english/`), or let it go. No change until he picks.
+   - **Shaun, restated 2026-10-16: tutor-search impressions are welcome**, even though he
+     doesn't plan to teach those learners himself. Never strip signals (schema, address,
+     wording) to shed them, on either host.
 4. **PDF landing pages (Phase 3).** **Property-management page DONE (#105, merged 2026-10-06,
    live).** `property-management-vocabulary.html`: 159 terms in static HTML, a search filter,
    links to the PDF and `be-property-management.html`, a FAQ, and a button on the Business hub.
@@ -1012,7 +1015,9 @@ afterwards (rule 7).
      indexed, request indexing for the most important exercise pages, about 10 a day.
    - Still open: links from other websites to the activities host (Shaun: school, teacher and
      education directories). This is the main thing that will speed up crawling.
-   - Hold off on adding many new pages until indexing improves.
+   - ~~Hold off on adding many new pages until indexing improves.~~ Overruled by Shaun
+     2026-10-15: he keeps adding activities as he uses them in lessons. Don't block or
+     delay lesson pages on indexing grounds.
 6. **Grammar explainers (Phase 5) · DONE 2026-10-07 (Shaun approved), verified live.**
    - Found first: both posts had already been rewritten around 2026-09-04, but Google had last
      crawled them on 10–11 Aug, so the "page 3" numbers were for the old versions. Impressions
@@ -1134,6 +1139,41 @@ afterwards (rule 7).
      | 10g-post-racial-obama | control | not indexed, crawled 22 Aug | 2026-10-13 | | | |
      | 8c-going-west | test | not indexed, crawled 8 Oct | 2026-10-13 | | | |
      | 8c-off-to-midwest | control | not indexed, crawled 9 Aug | 2026-10-13 | | | |
+
+10. **Search Console, 2026-10-15: impressions are back, mostly on the homepage · open.**
+    - Activities host, domain property: nothing Jun 2025 – Jul 2026; ~500 impressions 9–23 Aug
+      (the `themen/` grammar pages at positions 50–65: passive, present perfect, modal verbs,
+      relative clauses); ~0 from 24 Aug to 6 Oct; back from **7 Oct**, the day of the Search
+      Console actions in item 5. 7–13 Oct: 30 impressions, 1 click (13 Oct).
+    - Almost all of it is the **homepage at position ~4**, Germany only, for local tutor
+      searches ("tutor in english language" 1.2, "english training", "english tutor",
+      "schöneberg berlin", "termin auf english"). Only three exercise pages had an
+      impression. Indexed pages in the activities property: 24 (9 Oct) → 22 (15 Oct).
+    - **Reverted 2026-10-16.** PR #149 (merged 2026-10-16) removed the `LocalBusiness` type,
+      street address and Berlin `areaServed` from the activities org node to shed the tutor
+      searches. That went against Shaun's standing view that tutor impressions are welcome
+      (item 3), so the markup was restored as it was before #149. Keep it.
+    - **Done 2026-10-15: Request indexing for the `themen/` pages that ranked in August**, all
+      "Crawled – currently not indexed", last crawled 15 Aug – 24 Sept: `modalverben`,
+      `present-perfect`, `gerund-infinitiv`, `present-tenses`, `past-perfect`, `if-saetze`,
+      `relativsaetze` (**indexed on 8 Oct, dropped since**). `passiv` is still indexed.
+      `present-perfect` showed "Referring page: none detected".
+      *Note for the indexing test (item 9):* its protocol said to request nothing else on this
+      host until 2026-11-02. These seven are not test or control pages, and all 10 test pages
+      were treated alike, so the comparison stands; it is one more variable in the crawl.
+    - Interim look at the test, 2026-10-15: `8c-going-west` still "Crawled – not indexed",
+      last crawl 13 Oct (the request day), so no data yet. The 2026-11-02 scheduled check stays.
+    - **Shaun: links from other websites** (the main lever, still open). Candidates, each to
+      check first: the Berlin-Brandenburg Bildungsserver English link collections; Deutscher
+      Bildungsserver (resource suggestions); ZUM / ZUM-Unterrichten; lehrer-online; a link
+      from each 4teachers upload to its matching exercise page; the school's own website, if
+      the school agrees. Link to a specific exercise or `themen/` page, not only the homepage.
+    - **Shaun: the two old Google Business Profiles (Tier 12 item 11).** Also check which
+      website each one lists: if either points at `activities.englishonline.training`, that
+      would explain "schöneberg berlin" at position 1. Point the kept one at
+      `/business-english/`.
+    - Re-measure 2026-11-06: report the homepage tutor searches and the exercise/`themen/`
+      impressions separately, alongside indexed pages, so growth in one doesn't hide the other.
 
 ## Tier 10 — AI search: chunk-ready headings and sub-query coverage (2026-10-07) · Shaun + CC
 Source: Google Cloud Vertex AI Search (Discovery Engine) docs. They list these ranking signals:
@@ -1383,16 +1423,18 @@ exercise cannot give one). Decisions are in Claude's memory note `project-ielts-
    **Built 2026-10-13 (branch `claude/intelligent-sagan-hejxf5`).** Shaun chose: no separate script and no
    API key; IELTS rows go to a new "IELTS" tab in the Business/University sheet, and the feedback step adds
    opted-in addresses through the MailerLite connector. Pages now ask for email + opt-in, never a name.
-   MailerLite group "EOL – IELTS" created 2026-10-13. Left: Shaun redeploys `apps-script.gs`; test double
-   opt-in via the connector. Detail: `submission-routing.md`, "IELTS — email instead of name".
-3. **WordPress 1763 button · CC after merge.** Add `🎯 IELTS Academic` through the API.
-   `data/wordpress-1763.json` already has it.
+   MailerLite group "EOL – IELTS" created 2026-10-13. **Done (Shaun confirmed 2026-10-15):**
+   `apps-script.gs` redeployed and double opt-in via the connector tested. Detail: `submission-routing.md`, "IELTS — email instead of name".
+   A separate-script version (branch `ielts-feedback`) was built in parallel the same day and is
+   superseded by this one; the branch was deleted 2026-10-15.
+3. ~~**WordPress 1763 button · CC after merge.**~~ **Done 2026-10-13.** The IELTS Academic card is
+   live on `/activities/` under "Exam preparation", linking `ielts-activities.html` with the count
+   from `data/wordpress-1763.json` (checked 2026-10-15).
 4. **Next exercises · CC on request.** Reading: Matching Headings; sentence and summary
    completion. Writing Task 1: tables and bar charts; describing a process. Writing Task 2:
    discussion and problem–solution essays. The hub's "Coming next" list shows these.
-5. **German FAQ on the hub · Shaun decides.** German searchers often type "IELTS Übungen" or
-   "IELTS Vorbereitung". The exercises stay English-only, but a short German FAQ on
-   `ielts-activities.html` could catch those searches.
+5. ~~**German FAQ on the hub · Shaun decides.**~~ **Done 2026-10-13 (#133).** Two German FAQ entries
+   on `ielts-activities.html` for "IELTS Übungen" searches; the exercises stay English-only.
 
 ## Open decisions gating the plan
 **All six items from the 2026-08-07 audit reconciliation are now resolved and executed** (Shaun
