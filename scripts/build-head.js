@@ -234,8 +234,10 @@ function hubItems(file) {
   if (file === 'index.html') {
     return HUB_FILES.map((f) => ({ file: f, name: hubTitle(f) }));
   }
+  // The ESL grammar hub also lists the gr-* pages (see build-category-hubs.js).
+  const alsoHub = file === 'esl-grammar-activities.html' ? 'grammar-activities.html' : null;
   return exercises
-    .filter((e) => S.hubFor(e.file) === file)
+    .filter((e) => S.hubFor(e.file) === file || (alsoHub && S.hubFor(e.file) === alsoHub))
     .map((e) => ({ file: e.file, name: e.title }));
 }
 

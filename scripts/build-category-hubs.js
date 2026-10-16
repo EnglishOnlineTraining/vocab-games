@@ -55,7 +55,9 @@ const HUB_CATEGORY = {
   'it-activities.html':          e => e.year === 'it',
   'business-activities.html':    e => e.year === 'business',
   'grammar-activities.html':     e => e.year === 'grammar',
-  'esl-grammar-activities.html': e => e.year === 'esl',
+  // The ESL hub is the one grammar home: its own English pages first, then the
+  // German-explained gr-* pages in a labelled section (they keep their own hub too).
+  'esl-grammar-activities.html': e => e.year === 'esl' || e.year === 'grammar',
   'ielts-activities.html':       e => e.year === 'ielts'
 };
 
@@ -135,7 +137,10 @@ function renderCard(c, style) {
 function renderHub(hub) {
   const { style, blocks } = hubCards[hub];
   if (style === 'gr-topic-card') {
-    return blocks[0].cards.map(c => renderCard(c, style)).join('\n\n');
+    return blocks.map(b => (b.heading
+      ? '  <h3 class="group-heading"' + (b.heading.id ? ' id="' + b.heading.id + '"' : '')
+        + '>' + b.heading.text + '</h3>\n\n'
+      : '') + b.cards.map(c => renderCard(c, style)).join('\n\n')).join('\n\n');
   }
   return blocks.map(b => {
     const h = b.heading
@@ -167,6 +172,7 @@ for (const hub of Object.keys(HUB_CATEGORY)) {
       const g = abiturGroupFor(e.file);
       if (g != null && entry.blocks[g]) bi = g;
     }
+    if (hub === 'esl-grammar-activities.html' && e.year === 'esl') bi = 0;
     entry.blocks[bi].cards.push(card);
     added++;
     report.push('  + ' + hub.replace('-activities.html', '').padEnd(12) + ' ' + e.file);
