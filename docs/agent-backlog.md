@@ -67,8 +67,10 @@ weak ones, fix them, measure again.
   (`/data/answer-keys/<unit>.json`), marks each gap the way `make-grader.js` does
   (exact match for dropdowns, a copy of `normAns()` for `typed` sections, `(blank)` as
   blank) and returns counts of correct, wrong and blank. A wrong answer is listed by
-  value only when at least 2 learners gave it (after `normAns()`) and it is 40
-  characters or fewer; every other wrong answer is counted under `(other)`. So a
+  value only when at least 2 submissions gave it (3 for typed gaps, since a learner
+  may submit twice; after `normAns()`), it is 40 characters or fewer and has no `@`;
+  every other wrong answer is counted under `(other)`. A section sent as one plain
+  string stays one field (`text`) and is never split into field ids. So a
   one-off typed string (which could be a name) never leaves the sheet. This rule is
   the name-leak defence for `typed: true` sections (the only gaps where a learner
   types freely); dropdown answers can only be option values. Columns that are not in
