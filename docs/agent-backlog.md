@@ -52,11 +52,24 @@ weak ones, fix them, measure again.
 **B. Google Sheets via Apps Script (`be-` `uni-` `it-` `ielts-`, public learners) — automated**
 - The universal handler writes one column per answer key. `flatten()` stores a nested
   answer as `key: value` lines joined by `\n`, with `(blank)` for empty gaps.
-- Add `doGet?action=itemstats` to `apps-script.gs`. It returns counts only:
-  `{ unit: { "exA.g1": { "<answer>": n, … } } }`. No names, emails, classes or
-  timestamps. `doPost` is not changed.
-- Shaun pastes the new handler and redeploys (production change, so his step).
-- The answer keys stay in the repo (`data/answer-keys/`). Apps Script only counts.
+- Add `doGet?action=itemstats` to `apps-script.gs`. It returns counts only, see
+  "Output shapes". No names, emails, classes or timestamps. `doPost` is not changed.
+- **Which columns it counts:** for each unit tab, Apps Script fetches that unit's key
+  from the live site (`/data/answer-keys/<unit>.json`) and counts only the gap ids in
+  it. Free-text answers are never counted, so typed names or emails cannot leak.
+  Units with no key are skipped. The keys stay in the repo as the single source.
+- **Access:** the existing web-app deployment (Execute as: me, Access: anyone), so the
+  URL does not change. `itemstats` also needs `token=<secret>`. The token lives in
+  Script Properties (`ITEMSTATS_TOKEN`) and as GitHub secret `ITEMSTATS_TOKEN`. A wrong
+  or missing token returns `{"error":"forbidden"}`. This blocks casual scraping; the
+  data is counts only, so the token is a light guard, not the main protection.
+- **Two sheets:** the online sheet and the university sheet run separate deployments
+  (see `submission-routing.md`). GitHub secrets `ITEMSTATS_URL_ONLINE` and
+  `ITEMSTATS_URL_UNI` hold the two `/exec` URLs; both use the same token.
+- **Deploy (Shaun):** paste the new `apps-script.gs` into each sheet's Apps Script →
+  Project Settings → Script Properties → add `ITEMSTATS_TOKEN` → Deploy → Manage
+  deployments → edit → New version (keeps the URL). Test with
+  `<exec URL>?action=itemstats&token=…` in a browser before enabling the Action.
 
 ### Script: `scripts/item-analysis.js`
 ```
@@ -75,12 +88,56 @@ Flag a gap only when it has at least `--min` answers (default 15):
 | Distractor | one wrong answer takes > 40 % of all wrong answers |
 
 - Below `--min`: listed as "not enough data", never flagged.
+- **Too easy:** flagged in the report only. No fix is drafted unless Shaun picks the
+  gap (default; see Open questions).
+- **Wrong answers in output:** a wrong answer is shown only when at least 2 learners
+  gave it and it is 40 characters or fewer. Dropdown answers repeat; a one-off typed
+  string (which could be a name) never appears.
 - Results under 30 answers are labelled "early signal".
 - **Pooling:** also report by grammar point, so patterns show across units with
   small samples. `data/explanations.json` has no grammar-point tag yet; v1 needs one
   (a small `data/gap-tags.json`, unit + gap → point), filled for current-class units first.
 - **School vs external:** report separately, then combined. Levels can differ.
   How to tell external rows apart in source A is open (see below).
+
+### Output shapes
+`itemstats` (Apps Script → Action):
+```json
+{
+  "generated": "2026-10-20T06:00:00Z",
+  "units": {
+    "be-meetings": {
+      "rows": 22,
+      "gaps": {
+        "exA.g1": { "agenda": 17, "minutes": 4, "(blank)": 1 }
+      }
+    }
+  }
+}
+```
+`rows` is the tab's submission count. It lets a hand count check the numbers
+during rollout.
+
+`item-analysis.js --json`:
+```json
+{
+  "source": "sheets",
+  "min": 15,
+  "gaps": [
+    { "unit": "be-meetings", "gap": "exA.g1", "n": 22, "correct": 0.77,
+      "topWrong": { "answer": "minutes", "share": 0.80 },
+      "flags": ["distractor"], "signal": "early" }
+  ]
+}
+```
+Exit codes: `0` ran, nothing flagged; `1` ran, gaps flagged; `2` input or fetch error.
+The Action opens or updates its issue on `1` and fails on `2`.
+
+`data/item-changes.json` (one entry per fixed gap):
+```json
+{ "unit": "be-meetings", "gap": "exA.g1", "date": "2026-10-21",
+  "flag": "distractor", "before": { "n": 22, "correct": 0.77 }, "pr": 171 }
+```
 
 ### Uni and business classes
 Too small for statistics. Add one optional feedback question at the end of those
@@ -90,6 +147,11 @@ tasks ("Which question was unclear?"). It goes to the same sheet and is read by 
 - Source A export and its report stay in `CLAUDE OUTPUTS`, never in this repo.
 - The script writes no names. Output is counts and percentages per gap only.
 - Source B never sends names, so its report can go in a GitHub issue.
+- **Test:** `test-item-analysis.js` (repo root, beside `test-make-grader.js`) runs in
+  CI with a fixture CSV and a fixture `itemstats` JSON. The fixtures hold fake names,
+  classes and emails in the Name/Class/Email columns, inside the payload, and as a
+  free-text answer. The test runs the script with `--json` and fails if any of those
+  strings appears in the output. Fixtures use invented names only.
 
 ### Loop
 1. **Source B:** a weekly GitHub Action runs `--sheets` and opens or updates one issue
@@ -103,8 +165,9 @@ tasks ("Which question was unclear?"). It goes to the same sheet and is read by 
    that made it worse is reverted.
 
 ### Done when
-- `--csv` runs on a real export and the output has no names (grep check in a test).
-- `--sheets` returns counts that match a hand count on one sheet tab.
+- `test-item-analysis.js` passes in CI.
+- `--csv` runs on a real export and the output has no names.
+- `--sheets` returns counts and `rows` that match a hand count on one sheet tab.
 - The weekly Action opens an issue on a test run.
 - First fix PR is merged and logged.
 
@@ -112,4 +175,4 @@ tasks ("Which question was unclear?"). It goes to the same sheet and is read by 
 - Source A: how to tell external rows from school rows. `eolEmailPayload()` replaces
   `name`/`cls` with `email` for learners who give an email; check a real export to see
   whether that marks external rows reliably.
-- Should "too easy" gaps be fixed, or kept as confidence builders in early steps?
+- "Too easy" gaps: report only by default. Change if Shaun wants fixes drafted.
