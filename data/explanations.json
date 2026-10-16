@@ -18938,9 +18938,9 @@
      "why": "If many paths connected homes to bus stops, then some paths led to bus stops — the statement agrees."
     },
     "g4": {
-     "label": "4. combined the results of nine experiments → carried out nine new experiments",
+     "label": "4. combined the results of nine experiments → more than ten experiments",
      "correct": "False",
-     "why": "A review combines results that other people already produced; it did not run the experiments itself."
+     "why": "The passage says “nine” experiments, so “more than ten” contradicts it."
     },
     "g5": {
      "label": "5. announced it would pave → paved in 2014",
@@ -18958,9 +18958,9 @@
      "why": "2016 minus 2010 is six years — the statement is a paraphrase of the dates."
     },
     "g8": {
-     "label": "8. a better guide than the number of walkers → had no effect",
-     "correct": "Not Given",
-     "why": "“A better guide” compares two factors; it does not say the number of walkers had no effect at all."
+     "label": "8. plant community a better guide → number of walks the best guide",
+     "correct": "False",
+     "why": "The passage says the type of plant community was a better guide than the number of walks, so the number of walks was not the best guide."
     }
    }
   },

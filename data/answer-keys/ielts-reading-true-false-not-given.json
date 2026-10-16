@@ -153,8 +153,8 @@
      "accept": [
       "False"
      ],
-     "label": "4. combined the results of nine experiments → carried out nine new experiments",
-     "why": "A review combines results that other people already produced; it did not run the experiments itself."
+     "label": "4. combined the results of nine experiments → more than ten experiments",
+     "why": "The passage says “nine” experiments, so “more than ten” contradicts it."
     },
     "g5": {
      "correct": "Not Given",
@@ -181,12 +181,12 @@
      "why": "2016 minus 2010 is six years — the statement is a paraphrase of the dates."
     },
     "g8": {
-     "correct": "Not Given",
+     "correct": "False",
      "accept": [
-      "Not Given"
+      "False"
      ],
-     "label": "8. a better guide than the number of walkers → had no effect",
-     "why": "“A better guide” compares two factors; it does not say the number of walkers had no effect at all."
+     "label": "8. plant community a better guide → number of walks the best guide",
+     "why": "The passage says the type of plant community was a better guide than the number of walks, so the number of walks was not the best guide."
     }
    }
   },
