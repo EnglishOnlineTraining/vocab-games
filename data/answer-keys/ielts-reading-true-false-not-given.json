@@ -10,58 +10,115 @@
      "accept": [
       "True"
      ],
-     "label": "1. Paths form where the official route is longer",
-     "why": "Paragraph A: they “usually appear where an official path makes walkers go … the long way round”."
+     "label": "1. A path can become visible within a few months",
+     "why": "Paragraph A: a path “can establish itself within a single season” — a season is about three months."
     },
     "g2": {
      "correct": "False",
      "accept": [
       "False"
      ],
-     "label": "2. Takes several years to form",
-     "why": "Paragraph A says they “can form in a single season” — the opposite of several years."
+     "label": "2. Fences and hedges usually stopped people",
+     "why": "Paragraph B: such measures “occasionally worked”, but “more often” walkers stepped around them — the opposite of “usually”."
     },
     "g3": {
      "correct": "Not Given",
      "accept": [
       "Not Given"
      ],
-     "label": "3. More common in cities than the countryside",
-     "why": "The text only talks about city parks and campuses; it never compares them with the countryside."
+     "label": "3. Barriers cost more than new paths",
+     "why": "Paragraph B says barriers “had costs of their own” but never compares them with the cost of laying paths."
     },
     "g4": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "4. Supporters say paths on worn routes get used",
+     "why": "Paragraph C: supporters argue the approach “produces paths that are used rather than ignored”."
+    },
+    "g5": {
      "correct": "False",
      "accept": [
       "False"
      ],
-     "label": "4. Fences and signs always worked",
-     "why": "Paragraph B says these measures “sometimes worked” — “always” contradicts that."
+     "label": "5. Detroit: more paths appeared than vanished",
+     "why": "Paragraph D: “far more paths disappeared than were created” between 2010 and 2016."
     },
-    "g5": {
+    "g6": {
      "correct": "Not Given",
      "accept": [
       "Not Given"
      ],
-     "label": "5. Most managers now encourage walking on grass",
-     "why": "Paragraph C is about “a growing number of designers”, not most park managers, and says nothing about encouraging people."
-    },
-    "g6": {
-     "correct": "True",
-     "accept": [
-      "True"
-     ],
-     "label": "6. Supporters say the resulting paths get used",
-     "why": "Paragraph C: supporters say it “produces paths that people use instead of ignore”."
+     "label": "6. The 2014 experiments took place in national parks",
+     "why": "Paragraph E mentions national parks, but it does not say where the nine experiments in the review were carried out."
     },
     "g7": {
-     "correct": "True",
+     "correct": "C",
      "accept": [
-      "True"
+      "C"
      ],
-     "label": "7. May not suit every walker",
-     "why": "Paragraph D: a route that suits commuters “may not suit wheelchair users or parents with buggies”."
+     "label": "7. Waiting until a site is in use before deciding on paths",
+     "why": "Paragraph C: leave the lawns “unpaved for its first months of use” and then lay paths along the worn routes."
+    },
+    "g8": {
+     "correct": "D",
+     "accept": [
+      "D"
+     ],
+     "label": "8. Evidence gathered from the air",
+     "why": "Paragraph D: the Detroit researchers used “aerial images” — pictures taken from the air."
+    },
+    "g9": {
+     "correct": "E",
+     "accept": [
+      "E"
+     ],
+     "label": "9. The same action matters more in one setting",
+     "why": "Paragraph E: a shortcut that “does little harm on a city lawn” may “leave a lasting scar on a mountainside”."
+    },
+    "g10": {
+     "correct": "F",
+     "accept": [
+      "F"
+     ],
+     "label": "10. People for whom an informal route may be unsuitable",
+     "why": "Paragraph F: a line that suits commuters “may be unusable for wheelchair users or parents pushing buggies”."
     }
    }
+  },
+  "exA2": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g11": {
+     "correct": "vacant land",
+     "accept": [
+      "vacant land"
+     ],
+     "label": "11. a city with much ___ after years of population loss",
+     "why": "Paragraph D: decline has “left large areas of vacant land” — two words, copied exactly; a longer answer loses the mark."
+    },
+    "g12": {
+     "correct": "bus stops",
+     "accept": [
+      "bus stops",
+      "bus-stops"
+     ],
+     "label": "12. routes linked homes with ___ and with schools",
+     "why": "Paragraph D: many paths “connected homes to schools and bus stops”, and the summary already names schools; more than two words loses the mark."
+    },
+    "g13": {
+     "correct": "social trails",
+     "accept": [
+      "social trails",
+      "social-trails"
+     ],
+     "label": "13. in protected areas such routes are known as ___",
+     "why": "Paragraph E: in nature reserves and national parks, informal routes “are often called social trails”; more than two words loses the mark."
+    }
+   },
+   "typed": true
   },
   "exB": {
    "prefix": "exB-",
@@ -72,64 +129,64 @@
      "accept": [
       "False"
      ],
-     "label": "1. usually closed → never closed",
-     "why": "“Never closed” contradicts “usually closed”, so the statement is False."
+     "label": "1. occasionally worked → never worked",
+     "why": "“Occasionally worked” means they worked sometimes, so “never worked” contradicts the passage."
     },
     "g2": {
-     "correct": "Not Given",
+     "correct": "True",
      "accept": [
-      "Not Given"
+      "True"
      ],
-     "label": "2. free on Sundays → free every day",
-     "why": "The text says nothing about the other six days, so it neither confirms nor contradicts “every day”."
+     "label": "2. more than 5,000 → over five thousand",
+     "why": "“More than 5,000” and “over five thousand” mean the same — only the way the number is written changes."
     },
     "g3": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "3. connected homes to schools and bus stops → some paths led to bus stops",
+     "why": "If many paths connected homes to bus stops, then some paths led to bus stops — the statement agrees."
+    },
+    "g4": {
      "correct": "False",
      "accept": [
       "False"
      ],
-     "label": "3. still unsure → have proved",
-     "why": "If scientists are still unsure, they have not proved it — the statement contradicts the text."
-    },
-    "g4": {
-     "correct": "True",
-     "accept": [
-      "True"
-     ],
-     "label": "4. most arrive by train → more than any other",
-     "why": "“Most” means more than half, so train must be the biggest group — the statement agrees."
+     "label": "4. combined the results of nine experiments → more than ten experiments",
+     "why": "The passage says “nine” experiments, so “more than ten” contradicts it."
     },
     "g5": {
+     "correct": "Not Given",
+     "accept": [
+      "Not Given"
+     ],
+     "label": "5. announced it would pave → paved in 2014",
+     "why": "The passage gives the 2014 announcement (“would pave”), not whether or when the paving was done."
+    },
+    "g6": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "6. a well-worn track is still dangerous → safe if many people use it",
+     "why": "The passage says a well-worn track can “still” be dangerous, which contradicts “safe if many people use it”."
+    },
+    "g7": {
      "correct": "True",
      "accept": [
       "True"
      ],
-     "label": "5. only a few survive → some still standing",
-     "why": "“A few survive” means some are still standing, even though most are gone."
-    },
-    "g6": {
-     "correct": "Not Given",
-     "accept": [
-      "Not Given"
-     ],
-     "label": "6. first held in 1998 → every year since",
-     "why": "The text gives the first year only; it does not say whether the festival was held every year after that."
-    },
-    "g7": {
-     "correct": "Not Given",
-     "accept": [
-      "Not Given"
-     ],
-     "label": "7. almost all grow rice → rice is the only crop",
-     "why": "Farmers can grow rice and other crops too; the text does not say what else is grown."
+     "label": "7. between 2010 and 2016 → two points six years apart",
+     "why": "2016 minus 2010 is six years — the statement is a paraphrase of the dates."
     },
     "g8": {
      "correct": "False",
      "accept": [
       "False"
      ],
-     "label": "8. more than 50 employees → 20 employees",
-     "why": "A company with 20 employees is below the limit of 50, so the law does not apply — False."
+     "label": "8. plant community a better guide → number of walks the best guide",
+     "why": "The passage says the type of plant community was a better guide than the number of walks, so the number of walks was not the best guide."
     }
    }
   },
@@ -138,27 +195,27 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "a quicker way to get somewhere",
+     "correct": "refuse",
      "accept": [
-      "a quicker way to get somewhere"
+      "refuse"
      ],
-     "label": "1. a shortcut",
-     "why": "A shortcut is a route that is quicker or shorter than the usual one."
+     "label": "1. decline (paragraph A)",
+     "why": "Here “many decline” means many people refuse the long official path."
     },
     "g2": {
      "correct": "the actions taken to deal with the problem",
      "accept": [
       "the actions taken to deal with the problem"
      ],
-     "label": "2. these measures",
-     "why": "“Measures” here are actions taken to solve a problem — the fences, hedges and signs."
+     "label": "2. Such measures (paragraph B)",
+     "why": "“Measures” are actions taken to deal with a problem — here, the fences, hedges and signs."
     },
     "g3": {
      "correct": "more and more",
      "accept": [
       "more and more"
      ],
-     "label": "3. a growing number of",
+     "label": "3. a growing number of (paragraph C)",
      "why": "If a number is growing, it is getting bigger: more and more designers."
     },
     "g4": {
@@ -166,24 +223,24 @@
      "accept": [
       "costs nothing to collect"
      ],
-     "label": "4. free information",
+     "label": "4. free information (paragraph C)",
      "why": "The paths show how people move without anyone paying for a study — the information costs nothing."
     },
     "g5": {
+     "correct": "harmless",
+     "accept": [
+      "harmless"
+     ],
+     "label": "5. benign (paragraph E)",
+     "why": "“Less benign” means less harmless: outside cities, desire paths can do real damage."
+    },
+    "g6": {
      "correct": "show",
      "accept": [
       "show"
      ],
-     "label": "5. reflect",
-     "why": "Here “reflect” means show or represent — the paths show how one group of people walks."
-    },
-    "g6": {
-     "correct": "in a rush",
-     "accept": [
-      "in a rush"
-     ],
-     "label": "6. hurried",
-     "why": "Hurried people are in a rush, so they take the quickest route."
+     "label": "6. reflect (paragraph F)",
+     "why": "Here “reflect” means show: the paths show the choices of the people who walk a route most often."
     },
     "g7": {
      "correct": "generally agree",
