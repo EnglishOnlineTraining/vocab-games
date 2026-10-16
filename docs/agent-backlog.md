@@ -118,7 +118,7 @@ returned. Flags:
 | Flag | Rule (starting values) |
 |---|---|
 | Skipped | > 25 % blank |
-| Thin | median under half the word count the task asks for (when the page states one) |
+| Thin (later) | median under half the word count the task asks for. Needs each page's target word count; not in v1 |
 
 A skipped or thin prompt suggests unclear instructions, too little support, or a task
 placed too late in the unit. For what learners actually get wrong in their writing,
@@ -140,7 +140,7 @@ Flag a gap only when it has at least `--min` answers (default 15):
 | Too easy | > 90 % correct |
 | Too hard | < 30 % correct |
 | Ambiguous | learners in the top third of the unit score get it right no more often than the bottom third (discrimination ≤ 0; source A only, B and C have no per-learner answers) |
-| Distractor | one wrong answer takes > 40 % of all wrong answers |
+| Distractor | one wrong answer takes > 40 % of all wrong answers, with at least 5 wrong answers in all |
 
 - Below `--min`: listed as "not enough data", never flagged.
 - **Too easy:** flagged in the report only. No fix is drafted unless Shaun picks the
@@ -210,9 +210,9 @@ opens or updates its issue when `flagged > 0`, so a normal run never shows red.
   emails in the Name/Class/Email columns, inside the payload, as a one-off typed
   answer and inside a writing field. The test runs the script with `--json` and fails
   if any of those strings appears in the output. Fixtures use invented names only.
-- **CI:** no workflow runs the `test-*.js` files today. Add a step to
-  `check-generated.yml` that runs `node test-item-analysis.js` (and, while there,
-  `node test-make-grader.js`).
+- **CI:** `check-generated.yml` runs `scripts/build.js --check`, which runs every
+  test registered in `scripts/pipeline.js`. Register `test-item-analysis.js` there,
+  next to `test-make-grader.js` (both read `data/answer-keys/`).
 
 ### Loop
 1. **Source B:** a weekly GitHub Action runs `--sheets` and opens or updates one issue
@@ -232,7 +232,7 @@ opens or updates its issue when `flagged > 0`, so a normal run never shows red.
    - otherwise → "inconclusive", keep it and check again on the next run.
 
 ### Done when
-- `test-item-analysis.js` passes in CI.
+- `test-item-analysis.js` passes in CI (via `build.js --check`).
 - `--csv` runs on a real Excel export and on an Abitur export, and the output has no names.
 - `--sheets` returns counts and `rows` that match a hand count on one sheet tab, and
   on the `IELTS` tab for one unit.
