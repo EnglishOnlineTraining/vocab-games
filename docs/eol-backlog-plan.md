@@ -1689,3 +1689,17 @@ written to WordPress. One live write, approved by Shaun before the pass: the Mai
   Allow them in the environment's network settings, or check by hand.
 - **Not started (on request only):** Tier 14.4 next IELTS exercises; Tier 14.1 waits on them.
 
+
+### Contact address switch (added 2026-10-16) · Shaun + CC
+Shaun (2026-10-16): the contact address is now `learn@englishonline.training`, replacing
+`englishonlinetraining@pm.me`. MailerLite already sends from `learn@` (domain verified 2026-10-15),
+with replies going to `pm.me`.
+- **Check first · Shaun:** does `learn@` receive mail (a mailbox, or forwarding to `pm.me`)? Until it
+  does, switching `TEACHER_EMAIL` would send students' results nowhere.
+- **Then · CC:** replace `pm.me` in 267 files on `main` (294 hits): `TEACHER_EMAIL` in about 245
+  exercise pages, 20 footer `mailto:` Contact links, the JSON-LD in `scripts/schema.js`, and the
+  generator scripts (`build-quizzes.js`, `build-review-pages.js`, `verify-exercise.js`,
+  `audit-skills.js`, `curriculum-watch.js`) so rebuilt pages don't bring it back. Rebuild with
+  `node scripts/build.js`.
+- **Also:** `CLAUDE.md` (Teacher email, rule 3), the MailerLite reply-to address, the WordPress
+  contact details, and the Apps Script sheets that email results.
