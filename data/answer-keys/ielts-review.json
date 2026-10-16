@@ -20,11 +20,11 @@
      "label": "2. Paragraph on cycle lanes"
     },
     "g3": {
-     "correct": "costs nothing to collect",
+     "correct": "Not Given",
      "accept": [
-      "costs nothing to collect"
+      "Not Given"
      ],
-     "label": "3. free information"
+     "label": "3. a better guide than the number of walkers → had no effect"
     },
     "g4": {
      "correct": "dwindle",
@@ -41,11 +41,11 @@
      "label": "5. Paragraph on languages and coding skills"
     },
     "g6": {
-     "correct": "the actions taken to deal with the problem",
+     "correct": "True",
      "accept": [
-      "the actions taken to deal with the problem"
+      "True"
      ],
-     "label": "6. these measures"
+     "label": "6. connected homes to schools and bus stops → some paths led to bus stops"
     },
     "g7": {
      "correct": "dramatic increase",
@@ -68,11 +68,11 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "False",
+     "correct": "True",
      "accept": [
-      "False"
+      "True"
      ],
-     "label": "1. usually closed → never closed"
+     "label": "1. more than 5,000 → over five thousand"
     },
     "g2": {
      "correct": "remained stable",
@@ -89,11 +89,11 @@
      "label": "3."
     },
     "g4": {
-     "correct": "Not Given",
+     "correct": "the actions taken to deal with the problem",
      "accept": [
-      "Not Given"
+      "the actions taken to deal with the problem"
      ],
-     "label": "4. More common in cities than the countryside"
+     "label": "4. Such measures (paragraph B)"
     },
     "g5": {
      "correct": "sharp fall",
@@ -114,7 +114,7 @@
      "accept": [
       "False"
      ],
-     "label": "7. Takes several years to form"
+     "label": "7. occasionally worked → never worked"
     },
     "g8": {
      "correct": "sharply",
@@ -141,7 +141,7 @@
      "accept": [
       "more and more"
      ],
-     "label": "2. a growing number of"
+     "label": "2. a growing number of (paragraph C)"
     },
     "g3": {
      "correct": "fell",
@@ -158,11 +158,11 @@
      "label": "4. The main reason"
     },
     "g5": {
-     "correct": "False",
+     "correct": "show",
      "accept": [
-      "False"
+      "show"
      ],
-     "label": "5. still unsure → have proved"
+     "label": "5. reflect (paragraph F)"
     },
     "g6": {
      "correct": "narrowed",
@@ -179,11 +179,11 @@
      "label": "7."
     },
     "g8": {
-     "correct": "True",
+     "correct": "costs nothing to collect",
      "accept": [
-      "True"
+      "costs nothing to collect"
      ],
-     "label": "8. Paths form where the official route is longer"
+     "label": "8. free information (paragraph C)"
     }
    }
   }

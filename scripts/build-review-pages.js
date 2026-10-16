@@ -117,6 +117,10 @@ function itemsForFile(file, expl) {
   X.gradedCalls(src).forEach(function (c) {
     var sec = entry[c.scoreKey];
     if (!sec) return;
+    // A section marked "review": false in data/explanations.json needs its source
+    // passage to make sense (exam-set questions such as "Which paragraph…?" with
+    // options A–F), so it is never pulled into a review page.
+    if (sec.review === false) return;
     var gaps = sec.gaps || sec;
     c.ids.forEach(function (g) {
       var d = gaps[g];
