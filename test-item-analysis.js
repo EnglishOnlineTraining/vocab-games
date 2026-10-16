@@ -19,6 +19,7 @@ const path = require('path');
 const vm = require('vm');
 const { execFileSync } = require('child_process');
 const IA = require('./scripts/item-analysis.js');
+const plain = o => JSON.parse(JSON.stringify(o));   // count maps have no prototype
 
 const SECRETS = ['Zorblax Quentin', 'Mirela Testwood', 'ZZ-TEST-9X', 'fake.learner@example.invalid',
   'Pellucid Okonkwo-Varga', 'my secret diary line'];
@@ -53,13 +54,47 @@ function submissions(n) {
 test('node: counts, wrong-answer filter and writing stats', () => {
   const acc = IA.newUnit();
   submissions(20).forEach(s => IA.addSubmission(acc, KEY, s));
-  const u = IA.finishUnit(acc);
+  const u = plain(IA.finishUnit(acc));
   assert.strictEqual(u.rows, 20);
   assert.deepStrictEqual(u.gaps['exA.g1'], { correct: 12, blank: 0, wrong: { minutes: 8 } });
   assert.deepStrictEqual(u.gaps['exA.g2'], { correct: 16, blank: 4, wrong: {} });
   // typed: normalised; the one-off name goes to (other)
   assert.deepStrictEqual(u.gaps['exB.t1'], { correct: 10, blank: 0, wrong: { dont: 9, '(other)': 1 } });
   assert.deepStrictEqual(u.writing['exD.para'], { n: 20, blank: 5, medianWords: 4 });
+});
+
+test('node: a plain-string writing section stays one field', () => {
+  const leaky = 'Hi, I am ' + SECRETS[0] + ' from class 7b and my favourite food: fish | chips';
+  assert.deepStrictEqual(IA.toSection(leaky), { text: leaky });
+  assert.deepStrictEqual(IA.toSection('g1: agenda | g2: (blank)'), { g1: 'agenda', g2: '(blank)' });
+  const acc = IA.newUnit();
+  for (let i = 0; i < 4; i++) IA.addSubmission(acc, KEY, { exA: { g1: 'agenda' }, exD: IA.toSection(leaky), 'exE': { 'Zorblax Quentin': 'x' } });
+  const u = plain(IA.finishUnit(acc));
+  assert.deepStrictEqual(Object.keys(u.writing), ['exD.text']);
+});
+
+test('node: a typed wrong answer needs 3 submissions; emails never shown', () => {
+  const acc = IA.newUnit();
+  const t1 = [SECRETS[0], SECRETS[0], 'dont', 'dont', 'dont', SECRETS[3], SECRETS[3], SECRETS[3]];
+  t1.forEach(v => IA.addSubmission(acc, KEY, { exB: { t1: v } }));
+  const w = plain(IA.finishUnit(acc)).gaps['exB.t1'].wrong;
+  assert.deepStrictEqual(JSON.parse(JSON.stringify(w)), { '(other)': 5, dont: 3 });
+});
+
+test('node: a quiz section (not ex*) is read, not counted blank', () => {
+  const quizKey = { unit: 'zz-quiz', sections: { quiz: { prefix: 'q-', multi: false, gaps: {
+    g1: { correct: 'a', accept: ['a'], label: '1' } } } } };
+  const acc = IA.newUnit();
+  IA.addSubmission(acc, quizKey, { quiz: IA.toSection('g1: a') });
+  assert.deepStrictEqual(plain(IA.finishUnit(acc)).gaps['quiz.g1'], { correct: 1, blank: 0, wrong: {} });
+});
+
+test('node: an answer named like an Object property does not corrupt counts', () => {
+  const acc = IA.newUnit();
+  ['constructor', 'constructor', '__proto__', '__proto__'].forEach(v => IA.addSubmission(acc, KEY, { exA: { g1: v } }));
+  const w = plain(IA.finishUnit(acc)).gaps['exA.g1'].wrong;
+  assert.strictEqual(w.constructor, 2);
+  assert.strictEqual(Object.keys(w).length, 2);
 });
 
 test('node: flags follow the spec rules', () => {
@@ -189,6 +224,10 @@ test('apps script: itemStats matches the Node counts and leaks nothing', () => {
   }
   ctx.routeSubmission(ss, { unit: 'ielts-other', email: SECRETS[3], exA: { g1: 'agenda' } });
   ctx.routeSubmission(ss, { unit: 'no-key-unit', name: SECRETS[1], exA: { g1: 'x' } });
+  tabs['Marks ' + SECRETS[1]] = Object.assign(Object.create(tabs['No Key Unit']), {
+    getName: () => 'Marks ' + SECRETS[1],
+    getRange: () => ({ getValues: () => [['Pupil', 'Mark', '']] }),
+  });
   // Timestamps: the first 5 rows of the unit tab are old.
   tabs['Zz Test Unit'].rows.slice(1, 6).forEach(r => { r[0] = new Date('2026-09-01T00:00:00Z'); });
 
@@ -201,7 +240,7 @@ test('apps script: itemStats matches the Node counts and leaks nothing', () => {
 
   const acc = IA.newUnit();
   subs.forEach(s => IA.addSubmission(acc, KEY, s));
-  const expected = IA.finishUnit(acc);
+  const expected = plain(IA.finishUnit(acc));
   assert.deepStrictEqual(res.units['zz-test-unit'], expected);
   assert.deepStrictEqual(res.units['ielts-zz-test'], expected);   // the shared tab, filtered by Unit
   assert.deepStrictEqual(Object.keys(res.units).sort(), ['ielts-zz-test', 'zz-test-unit']);
@@ -217,9 +256,31 @@ test('apps script: itemStats matches the Node counts and leaks nothing', () => {
 
 test('apps script: a paragraph with line breaks stays one writing field', () => {
   const { ctx } = loadAppsScript();
-  const cell = ctx.flatten({ para: 'line one\nline two', g1: 'agenda' });
-  assert.deepStrictEqual(JSON.parse(JSON.stringify(ctx.isParseCell_(cell))),
-    { para: 'line one\nline two', g1: 'agenda' });
+  const parse = c => JSON.parse(JSON.stringify(ctx.isParseCell_(c)));
+  const cell = ctx.flatten({ para: 'line one\n' + SECRETS[0] + ': hi\nhttp://x', g1: 'agenda' });
+  assert.deepStrictEqual(parse(cell), { para: 'line one\n' + SECRETS[0] + ': hi\nhttp://x', g1: 'agenda' });
+  // a page that sends exD as one string: flatten() stores it as is
+  const plain = SECRETS[0] + ': my essay\nsecond line';
+  assert.deepStrictEqual(parse(ctx.flatten(plain)), { text: plain });
+  assert.deepStrictEqual(parse(''), {});
+});
+
+test('apps script: a quiz section and old per-unit IELTS tabs are read', () => {
+  const { ctx, ss } = loadAppsScript();
+  const quizKey = { unit: 'zz-quiz', sections: { quiz: { prefix: 'q-', multi: false, gaps: {
+    g1: { correct: 'a', accept: ['a'], label: '1' } } } } };
+  ctx.routeSubmission(ss, { unit: 'zz-quiz', name: SECRETS[0], quiz: { g1: 'a' } });
+  // today's rows go to the shared IELTS tab; older ones sit in a per-unit tab
+  ctx.routeSubmission(ss, { unit: 'ielts-zz-old', email: SECRETS[3], newsletter: 'no', exA: { g1: 'minutes' } });
+  const old = ss.insertSheet('Ielts Zz Old');
+  old.appendRow(['Timestamp', 'Name', 'Class', 'exA']);
+  old.appendRow([new Date(), SECRETS[0], SECRETS[2], 'g1: agenda']);
+  const loader = { index: () => ['zz-quiz', 'ielts-zz-old'],
+    keys: () => ({ 'zz-quiz': quizKey, 'ielts-zz-old': Object.assign({}, KEY, { unit: 'ielts-zz-old' }) }) };
+  const res = JSON.parse(JSON.stringify(ctx.itemStats(ss, '', loader)));
+  assert.deepStrictEqual(res.units['zz-quiz'].gaps['quiz.g1'], { correct: 1, blank: 0, wrong: {} });
+  assert.strictEqual(res.units['ielts-zz-old'].rows, 2);   // one IELTS-tab row, one old-tab row
+  assert.strictEqual(res.units['ielts-zz-old'].gaps['exA.g1'].correct, 1);
 });
 
 test('apps script: doGet refuses a wrong token', () => {
@@ -233,7 +294,7 @@ test('apps script: doGet refuses a wrong token', () => {
 test('stats file: --stats reads a saved itemstats response', () => {
   const acc = IA.newUnit();
   submissions(20).forEach(s => IA.addSubmission(acc, KEY, s));
-  const file = tmp('stats.json', JSON.stringify({ units: { 'zz-test-unit': IA.finishUnit(acc) }, unmatchedTabs: [] }));
+  const file = tmp('stats.json', JSON.stringify({ units: { 'zz-test-unit': plain(IA.finishUnit(acc)) }, unmatchedTabs: [] }));
   const r = JSON.parse(run(['--stats', file, '--json']));
   assert.strictEqual(r.source, 'sheets');
   assert.ok(r.gaps.find(g => g.gap === 'exA.g1').flags.includes('distractor'));

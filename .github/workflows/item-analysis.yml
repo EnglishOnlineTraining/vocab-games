@@ -34,7 +34,16 @@ jobs:
       - name: Run item analysis
         id: ia
         if: env.ITEMSTATS_TOKEN != ''
+        shell: bash   # -eo pipefail: a fetch error (exit 2) must fail the step, not vanish in tee
         run: node scripts/item-analysis.js --sheets | tee report.txt
+
+      - name: Note a clean week on the open issue
+        if: steps.ia.outputs.flagged == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          n=$(gh issue list --state open --search 'in:title "Item analysis: flagged gaps"' --json number -q '.[0].number')
+          [ -z "$n" ] || gh issue comment "$n" --body "$(date -u +%Y-%m-%d): nothing flagged this week. Close this issue once its fixes are merged."
 
       - name: Open or update the report issue
         if: steps.ia.outputs.flagged != '' && steps.ia.outputs.flagged != '0'

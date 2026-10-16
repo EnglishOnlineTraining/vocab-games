@@ -26,8 +26,13 @@ const { normAns, unflat, BLANK, BLANK_LEGACY } = require('../make-grader.js');
 const { parseCsv } = require('./regrade-rows.js');
 
 const KEYS = path.join(__dirname, '..', 'data', 'answer-keys');
-const WRONG_MIN = 2;
+const WRONG_MIN = 2;          // dropdown answers: shown when 2+ submissions gave them
+const WRONG_MIN_TYPED = 3;    // typed: 3+, since one learner may submit twice
 const WRONG_MAX_LEN = 40;
+// A field id (gap or writing field) as pages name them: g1, para, phillipBennelong.
+// Lowercase first letter, so "Name: …" at the start of a learner's line is never one.
+const FIELD = /^[a-z][\w-]{0,30}$/;
+const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
 const OTHER = '(other)';
 
 // distractorMinWrong: below 5 wrong answers in all, one answer taking > 40 % is noise.
@@ -51,6 +56,22 @@ function median(a) {
   return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
 }
 
+/* A payload section as an object of fields. Graded sections arrive as an object or
+   flattened ("g1: x | g2: y"); a writing section may be one plain string, which must
+   stay one field ("text") — splitting it would turn the learner's words into ids. */
+function toSection(v) {
+  if (v && typeof v === 'object' && !Array.isArray(v)) return v;
+  if (v == null) return {};
+  const s = Array.isArray(v) ? v.join(' ') : String(v);
+  const parts = s.split(' | ');
+  if (parts.every(p => { const i = p.indexOf(': '); return i > 0 && FIELD.test(p.slice(0, i)); })) return unflat(s);
+  return { text: s };
+}
+
+/* Sections to read from a payload or sheet row: every graded section in the key
+   (some are not ex*, e.g. the grammar quizzes' "quiz") plus ex* for writing. */
+function isSection(name, key) { return has(key.sections, name) || /^ex/i.test(name); }
+
 /* One accumulator per unit. `sections` per submission: { exA: { g1: 'x' }, … },
    already unflattened. Returns per-gap correctness for the row (for discrimination). */
 function newUnit() { return { rows: 0, gaps: {}, writing: {} }; }
@@ -63,7 +84,7 @@ function addSubmission(acc, key, sections) {
     const given = sections[sk] || {};
     for (const g of Object.keys(sec.gaps)) {
       const gap = sec.gaps[g], id = sk + '.' + g;
-      const c = acc.gaps[id] || (acc.gaps[id] = { correct: 0, blank: 0, wrong: {} });
+      const c = acc.gaps[id] || (acc.gaps[id] = { correct: 0, blank: 0, wrong: Object.create(null), typed: !!sec.typed });
       const v = given[g];
       if (isBlank(v, gap)) { c.blank++; result[id] = false; continue; }
       const shown = sec.typed ? normAns(v) : String(v);
@@ -75,9 +96,9 @@ function addSubmission(acc, key, sections) {
   // Writing: any answer field of an ex* section that the key does not grade.
   for (const sk of Object.keys(sections)) {
     if (!/^ex/i.test(sk)) continue;
-    const graded = (key.sections[sk] && key.sections[sk].gaps) || {};
+    const graded = (has(key.sections, sk) && key.sections[sk].gaps) || {};
     for (const f of Object.keys(sections[sk])) {
-      if (f in graded) continue;
+      if (has(graded, f) || !FIELD.test(f)) continue;
       const id = sk + '.' + f;
       const w = acc.writing[id] || (acc.writing[id] = { n: 0, blank: 0, words: [] });
       w.n++;
@@ -87,20 +108,24 @@ function addSubmission(acc, key, sections) {
   return result;
 }
 
-/* Drop rare or long wrong answers into (other), and words[] into a median.
+/* Drop rare, long or email-like wrong answers into (other), and words[] into a
+   median. A writing field seen in under half the rows is not a real field of the
+   page (a stray "word: " line in a paragraph); it is dropped.
    Same shape as one unit of the itemstats response. */
 function finishUnit(acc) {
   const out = { rows: acc.rows, gaps: {}, writing: {} };
   for (const id of Object.keys(acc.gaps)) {
-    const c = acc.gaps[id], wrong = {};
+    const c = acc.gaps[id], wrong = Object.create(null);
+    const min = c.typed ? WRONG_MIN_TYPED : WRONG_MIN;
     for (const a of Object.keys(c.wrong)) {
-      const k = (c.wrong[a] >= WRONG_MIN && a.length <= WRONG_MAX_LEN) ? a : OTHER;
+      const k = (c.wrong[a] >= min && a.length <= WRONG_MAX_LEN && a.indexOf('@') === -1) ? a : OTHER;
       wrong[k] = (wrong[k] || 0) + c.wrong[a];
     }
     out.gaps[id] = { correct: c.correct, blank: c.blank, wrong };
   }
   for (const id of Object.keys(acc.writing)) {
     const w = acc.writing[id];
+    if (w.n < Math.max(WRONG_MIN, Math.ceil(acc.rows / 2))) continue;
     out.writing[id] = { n: w.n, blank: w.blank, medianWords: median(w.words) };
   }
   return out;
@@ -110,9 +135,10 @@ function finishUnit(acc) {
 
 const keyCache = {};
 function loadKey(unit) {
-  if (unit in keyCache) return keyCache[unit];
+  if (has(keyCache, unit)) return keyCache[unit];
   const p = path.join(KEYS, unit + '.json');
-  return (keyCache[unit] = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : null);
+  const k = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : null;
+  return (keyCache[unit] = k && k.sections ? k : null);   // index.json has no sections
 }
 
 /* Excel exports a date as text or as a serial day number. */
@@ -150,7 +176,7 @@ function fromMakeCsv(rows, since) {
     const key = loadKey(p.unit);
     if (!key) { if (p.unit) noKey.add(p.unit); continue; }
     const sections = {};
-    for (const k of Object.keys(p)) if (/^ex/i.test(k)) sections[k] = unflat(p[k]);
+    for (const k of Object.keys(p)) if (isSection(k, key)) sections[k] = toSection(p[k]);
     const res = addSubmission(units[p.unit] || (units[p.unit] = newUnit()), key, sections);
     (perRow[p.unit] || (perRow[p.unit] = [])).push(res);
   }
@@ -213,7 +239,7 @@ function mergeStats(parts) {
       const t = units[u];
       t.rows += s.rows;
       for (const [id, g] of Object.entries(s.gaps)) {
-        const d = t.gaps[id] || (t.gaps[id] = { correct: 0, blank: 0, wrong: {} });
+        const d = t.gaps[id] || (t.gaps[id] = { correct: 0, blank: 0, wrong: Object.create(null) });
         d.correct += g.correct; d.blank += g.blank;
         for (const [a, n] of Object.entries(g.wrong)) d.wrong[a] = (d.wrong[a] || 0) + n;
       }
@@ -276,7 +302,7 @@ function report(data, min) {
   }
   const flagged = gaps.filter(g => g.flags.length).length + writing.filter(w => w.flags.length).length;
   return { source: data.source, min, flagged, gaps, writing,
-    noKey: data.noKey || [], unmatchedTabs: data.unmatchedTabs || [] };
+    noKey: data.noKey || [], unmatchedTabs: data.unmatchedTabs || [], unreadable: data.bad || 0 };
 }
 
 function round(x) { return Math.round(x * 100) / 100; }
@@ -321,7 +347,9 @@ function printText(r) {
   const thin = r.gaps.filter(g => g.signal === 'not enough data').length;
   lines.push('', 'Not enough data: ' + thin + ' gap(s) under ' + r.min + ' answers.');
   if (r.noKey.length) lines.push('No answer key: ' + r.noKey.join(', '));
-  if (r.unmatchedTabs.length) lines.push('Sheet tabs with no keyed unit: ' + r.unmatchedTabs.join(', '));
+  // unmatchedTabs stays in --json only: tab names are teacher-made and this text
+  // goes into a public issue.
+  if (r.unreadable) lines.push('Unreadable payloads (skipped): ' + r.unreadable + ' row(s), e.g. cut off by Excel\'s cell limit.');
   lines.push('', 'flagged: ' + r.flagged);
   return lines.join('\n');
 }
@@ -358,7 +386,7 @@ async function main() {
   if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, 'flagged=' + r.flagged + '\n');
 }
 
-module.exports = { newUnit, addSubmission, finishUnit, mergeStats, report, discrimination };
+module.exports = { newUnit, addSubmission, finishUnit, mergeStats, report, discrimination, toSection };
 
 if (require.main === module) {
   main().catch(e => { console.error(e.message); process.exit(2); });

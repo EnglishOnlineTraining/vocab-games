@@ -179,7 +179,11 @@ function appendDynamic(ss, tabName, fixedHeaders, fixedValues, data, skip) {
 
 var KEYS_BASE = 'https://activities.englishonline.training/data/answer-keys/';
 var IS_BLANK = '(blank)', IS_BLANK_LEGACY = '—';
-var IS_WRONG_MIN = 2, IS_WRONG_MAX_LEN = 40;
+var IS_WRONG_MIN = 2, IS_WRONG_MIN_TYPED = 3, IS_WRONG_MAX_LEN = 40;
+// A field id as pages name them (g1, para). Lowercase first letter, so a learner's
+// line starting "Name: …" is never read as one.
+var IS_FIELD = /^[a-z][\w-]{0,30}$/;
+function isHas_(o, k) { return Object.prototype.hasOwnProperty.call(o, k); }
 // Bespoke-column units: their cells are JSON or "Gap n:" text, not flatten() output.
 var IS_CUSTOM = ['california-exercises', 'california-hazards', '7g-amazon-rainforest-reading',
                  '9g-ev-renewable-energy-reading'];
@@ -242,47 +246,64 @@ function itemStats(ss, since, loader) {
   var sheets = {};
   ss.getSheets().forEach(function (s) { sheets[s.getName()] = s; });
 
-  // Unit -> tab, the way routeSubmission names it. IELTS units share one tab.
-  var want = [], tabOf = {}, used = {};
+  // Unit -> tabs, the way routeSubmission names them. IELTS units share one tab;
+  // rows sent before that change sit in a per-unit tab, so read both.
+  var want = [], tabsOf = {}, used = {};
   loader.index().forEach(function (u) {
     if (IS_CUSTOM.indexOf(u) !== -1) return;
-    var tab = u.indexOf('ielts-') === 0 ? 'IELTS' : (TAB_NAMES[u] || titleFromUnit(u));
-    if (!sheets[tab]) return;
-    want.push(u); tabOf[u] = tab; used[tab] = true;
+    var own = TAB_NAMES[u] || titleFromUnit(u);
+    var tabs = (u.indexOf('ielts-') === 0 ? ['IELTS', own] : [own])
+      .filter(function (t) { return sheets[t]; });
+    if (!tabs.length) return;
+    want.push(u); tabsOf[u] = tabs;
+    tabs.forEach(function (t) { used[t] = true; });
   });
   var keys = loader.keys(want);
   var values = {};
 
   var units = {};
   want.forEach(function (u) {
-    if (!keys[u]) return;
-    var tab = tabOf[u];
-    var v = values[tab] || (values[tab] = sheets[tab].getDataRange().getValues());
-    var head = v[0].map(String), ti = head.indexOf('Timestamp'), ui = head.indexOf('Unit');
+    var key = keys[u];
+    if (!key || !key.sections) return;
     var subs = [];
-    for (var r = 1; r < v.length; r++) {
-      if (tab === 'IELTS' && String(v[r][ui]) !== u) continue;
-      if (sinceDate && !(v[r][ti] instanceof Date && v[r][ti] >= sinceDate)) continue;
-      var sections = {};
-      head.forEach(function (h, c) { if (/^ex/i.test(h)) sections[h] = isParseCell_(v[r][c]); });
-      subs.push(sections);
-    }
-    if (subs.length) units[u] = itemStatsForUnit(keys[u], subs);
+    tabsOf[u].forEach(function (tab) {
+      var v = values[tab] || (values[tab] = sheets[tab].getDataRange().getValues());
+      var head = v[0].map(String), ti = head.indexOf('Timestamp'), ui = head.indexOf('Unit');
+      for (var r = 1; r < v.length; r++) {
+        if (tab === 'IELTS' && String(v[r][ui]) !== u) continue;
+        if (sinceDate && !(v[r][ti] instanceof Date && v[r][ti] >= sinceDate)) continue;
+        var sections = {};
+        head.forEach(function (h, c) {
+          if (isHas_(key.sections, h) || /^ex/i.test(h)) sections[h] = isParseCell_(v[r][c]);
+        });
+        subs.push(sections);
+      }
+    });
+    if (subs.length) units[u] = itemStatsForUnit(key, subs);
   });
 
+  // Tabs that look like submission tabs (Timestamp, Name, Class) but match no keyed
+  // unit. Other tabs (Shaun's own) are never named in the output.
   var unmatched = Object.keys(sheets).filter(function (t) {
-    return !used[t] && IS_CUSTOM.every(function (u) { return (TAB_NAMES[u] || titleFromUnit(u)) !== t; });
+    if (used[t] || IS_CUSTOM.some(function (u) { return (TAB_NAMES[u] || titleFromUnit(u)) === t; })) return false;
+    var h = sheets[t].getRange(1, 1, 1, 3).getValues()[0].map(String);
+    return h[0] === 'Timestamp' && h[1] === 'Name' && h[2] === 'Class';
   }).sort();
   return { generated: new Date().toISOString(), since: since || null, units: units, unmatchedTabs: unmatched };
 }
 
 /* Reverse of flatten(): "g1: x\ng2: y" -> { g1: 'x', g2: 'y' }. A line that does not
-   start a new "key: " continues the previous value (a paragraph with line breaks). */
+   start a new "field: " continues the previous value (a paragraph with line breaks).
+   A cell that does not start with a field is a plain-string section (a page that
+   sends exD as one text): it stays one field, "text", never split into ids. */
 function isParseCell_(cell) {
-  var out = {}, last = null;
-  String(cell == null ? '' : cell).split('\n').forEach(function (line) {
-    var m = /^([A-Za-z][\w-]{0,30}): ?([\s\S]*)$/.exec(line);
-    if (m) { last = m[1]; out[last] = m[2]; }
+  var s = String(cell == null ? '' : cell), out = {}, last = null;
+  if (!s) return out;
+  var first = /^([^:\n]*): /.exec(s);
+  if (!first || !IS_FIELD.test(first[1])) { out.text = s; return out; }
+  s.split('\n').forEach(function (line) {
+    var m = /^([^:]*): ([\s\S]*)$/.exec(line);   // flatten() always writes ": "
+    if (m && IS_FIELD.test(m[1])) { last = m[1]; out[last] = m[2]; }
     else if (last) out[last] += '\n' + line;
   });
   return out;
@@ -309,7 +330,7 @@ function itemStatsForUnit(key, subs) {
       var sec = key.sections[sk], given = sections[sk] || {};
       Object.keys(sec.gaps).forEach(function (g) {
         var gap = sec.gaps[g], id = sk + '.' + g, v = given[g];
-        var c = gaps[id] || (gaps[id] = { correct: 0, blank: 0, wrong: {} });
+        var c = gaps[id] || (gaps[id] = { correct: 0, blank: 0, wrong: Object.create(null), typed: !!sec.typed });
         if (isBlank_(v, gap)) { c.blank++; return; }
         var shown = sec.typed ? isNormAns_(v) : String(v);
         var ok = sec.typed
@@ -320,9 +341,9 @@ function itemStatsForUnit(key, subs) {
     });
     Object.keys(sections).forEach(function (sk) {
       if (!/^ex/i.test(sk)) return;
-      var graded = (key.sections[sk] && key.sections[sk].gaps) || {};
+      var graded = (isHas_(key.sections, sk) && key.sections[sk].gaps) || {};
       Object.keys(sections[sk]).forEach(function (f) {
-        if (f in graded) return;
+        if (isHas_(graded, f) || !IS_FIELD.test(f)) return;
         var id = sk + '.' + f, t = sections[sk][f];
         var w = writing[id] || (writing[id] = { n: 0, blank: 0, words: [] });
         w.n++;
@@ -334,14 +355,15 @@ function itemStatsForUnit(key, subs) {
 
   var out = { rows: subs.length, gaps: {}, writing: {} };
   Object.keys(gaps).forEach(function (id) {
-    var c = gaps[id], wrong = {};
+    var c = gaps[id], wrong = Object.create(null), min = c.typed ? IS_WRONG_MIN_TYPED : IS_WRONG_MIN;
     Object.keys(c.wrong).forEach(function (a) {
-      var k = (c.wrong[a] >= IS_WRONG_MIN && a.length <= IS_WRONG_MAX_LEN) ? a : '(other)';
+      var k = (c.wrong[a] >= min && a.length <= IS_WRONG_MAX_LEN && a.indexOf('@') === -1) ? a : '(other)';
       wrong[k] = (wrong[k] || 0) + c.wrong[a];
     });
     out.gaps[id] = { correct: c.correct, blank: c.blank, wrong: wrong };
   });
   Object.keys(writing).forEach(function (id) {
+    if (writing[id].n < Math.max(IS_WRONG_MIN, Math.ceil(subs.length / 2))) return;   // stray "word: " line
     var w = writing[id], s = w.words.slice().sort(function (a, b) { return a - b; }), m = s.length >> 1;
     out.writing[id] = { n: w.n, blank: w.blank,
       medianWords: !s.length ? 0 : s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2 };
