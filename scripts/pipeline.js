@@ -263,6 +263,9 @@ const CHECKERS = [
   // was in its bank. Each page declares the offenders in UI_WORDS and keeps
   // them out of Sections B and C; this fails the build on an undeclared one.
   { id: 'check-test-leaks', run: 'scripts/check-test-leaks.js' },
+  // A choice must be undoable until Check: the Abitur click-to-order widget
+  // locked each card on first click with no way back (fixed 2026-10-16).
+  { id: 'check-reversible-choices', run: 'scripts/check-reversible-choices.js' },
   { id: 'test-make-grader', run: 'test-make-grader.js' },
 ];
 

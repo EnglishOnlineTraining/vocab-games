@@ -54,6 +54,7 @@
   .order-pool{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
   .order-item{background:#eaf3fb;border:1px solid var(--accent);color:var(--accent-dark);padding:10px 14px;border-radius:7px;cursor:pointer;font-size:.9rem;}
   .order-item.used{opacity:.35;pointer-events:none;}
+  .order-slot.filled{cursor:pointer;}
   .order-slots{display:flex;flex-direction:column;gap:8px;}
   .order-slot{min-height:44px;border:2px dashed #cbd5e0;border-radius:7px;padding:8px 12px;display:flex;align-items:center;gap:10px;background:#fbfcfd;}
   .order-slot .badge{background:var(--accent);color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;}
@@ -353,7 +354,7 @@
 <!-- EXERCISE 4 -->
 <div class="exercise" id="ex4">
   <h2>Exercise 4 · Order the Analysis Essay</h2>
-  <p class="instructions">Click the paragraph descriptions below in the correct order to build a well-structured analysis essay.</p>
+  <p class="instructions">Click the paragraph descriptions below in the correct order to build a well-structured analysis essay. Click a filled slot to send it back.</p>
   <div class="order-pool" id="orderPool4"></div>
   <div class="order-slots" id="orderSlots4"></div>
   <div class="btn-row">
@@ -507,7 +508,7 @@ const ex4Items=[
   {id:3,text:'Weighs up how convincingly the writer achieves her purpose for the intended audience.'},
   {id:4,text:'Rounds off the essay with a final judgement on the text\'s overall impact.'}
 ];
-let ex4Order=[];
+let ex4Order=[];let ex4Locked=false;
 function buildEx4(){
   const pool=document.getElementById('orderPool4');const slots=document.getElementById('orderSlots4');
   const shuffled=[...ex4Items].sort(()=>Math.random()-0.5);
@@ -516,18 +517,30 @@ function buildEx4(){
     el.onclick=()=>addToOrder(item.id,el);pool.appendChild(el);
   });
   for(let i=0;i<5;i++){
-    const slot=document.createElement('div');slot.className='order-slot';slot.id='slot4_'+i;
+    const slot=document.createElement('div');slot.className='order-slot';slot.id='slot4_'+i;slot.onclick=()=>removeFromOrder(i);
     slot.innerHTML=`<span class="badge">${i+1}</span><span class="slot-text" style="color:var(--muted)">—</span>`;
     slots.appendChild(slot);
   }
 }
 function addToOrder(id,el){
-  if(ex4Order.length>=5)return;el.classList.add('used');ex4Order.push(id);
-  const idx=ex4Order.length-1;const slot=document.getElementById('slot4_'+idx);
-  slot.querySelector('.slot-text').textContent=ex4Items.find(i=>i.id===id).text;
-  slot.querySelector('.slot-text').style.color='var(--text)';slot.dataset.itemId=id;
+  if(ex4Locked||ex4Order.length>=5)return;el.classList.add('used');ex4Order.push(id);renderOrder4();
+}
+function removeFromOrder(idx){
+  if(ex4Locked||idx>=ex4Order.length)return;
+  const id=ex4Order.splice(idx,1)[0];
+  document.querySelector('#orderPool4 .order-item[data-id="'+id+'"]').classList.remove('used');renderOrder4();
+}
+function renderOrder4(){
+  for(let i=0;i<5;i++){
+    const slot=document.getElementById('slot4_'+i);const t=slot.querySelector('.slot-text');const id=ex4Order[i];
+    if(id===undefined){t.textContent='—';t.style.color='var(--muted)';delete slot.dataset.itemId;slot.classList.remove('filled');}
+    else{t.textContent=ex4Items.find(x=>x.id===id).text;t.style.color='var(--text)';slot.dataset.itemId=id;slot.classList.add('filled');}
+  }
 }
 function checkEx4(){
+  if(ex4Locked)return;
+  if(ex4Order.length<5){const fb=document.getElementById('fb4');fb.className='feedback show poor';fb.textContent='Place all five paragraphs before checking.';return;}
+  ex4Locked=true;document.getElementById('orderSlots4').querySelectorAll('.order-slot').forEach(s=>s.classList.remove('filled'));
   let correct=0;
   for(let i=0;i<5;i++){
     const slot=document.getElementById('slot4_'+i);const itemId=parseInt(slot.dataset.itemId);
