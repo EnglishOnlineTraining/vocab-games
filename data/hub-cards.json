@@ -1353,6 +1353,194 @@
             "extraLinks": []
           }
         ]
+      },
+      {
+        "heading": {
+          "text": "More grammar topics — explained in German",
+          "id": "explained-in-german"
+        },
+        "cards": [
+          {
+            "href": "gr-present-tenses.html",
+            "icon": "🔄",
+            "title": "Present Tenses",
+            "meta": "Present simple or present progressive? Habits and facts vs. what is happening now.",
+            "startLabel": "Start exercise →",
+            "extraLinks": [
+              {
+                "cls": "btn btn-outline btn-sm",
+                "href": "themen/present-tenses.html",
+                "label": "Rules (in German)"
+              }
+            ]
+          },
+          {
+            "href": "gr-simple-past.html",
+            "icon": "🕰️",
+            "title": "Simple Past",
+            "meta": "Regular and irregular past forms, questions and negatives with <em>did</em>.",
+            "startLabel": "Start exercise →",
+            "extraLinks": [
+              {
+                "cls": "btn btn-outline btn-sm",
+                "href": "themen/simple-past.html",
+                "label": "Rules (in German)"
+              }
+            ]
+          },
+          {
+            "href": "gr-present-perfect.html",
+            "icon": "⏳",
+            "title": "Present Perfect",
+            "meta": "<em>have/has</em> + past participle, and when to use it instead of the simple past.",
+            "startLabel": "Start exercise →",
+            "extraLinks": [
+              {
+                "cls": "btn btn-outline btn-sm",
+                "href": "themen/present-perfect.html",
+                "label": "Rules (in German)"
+              }
+            ]
+          },
+          {
+            "href": "gr-past-perfect.html",
+            "icon": "⏮️",
+            "title": "Past Perfect",
+            "meta": "<em>had</em> + past participle: which of two past actions happened first.",
+            "startLabel": "Start exercise →",
+            "extraLinks": [
+              {
+                "cls": "btn btn-outline btn-sm",
+                "href": "themen/past-perfect.html",
+                "label": "Rules (in German)"
+              }
+            ]
+          },
+          {
+            "href": "gr-future-tenses.html",
+            "icon": "🔮",
+            "title": "Future Forms",
+            "meta": "<em>will</em>, <em>going to</em> and the present progressive for plans and predictions.",
+            "startLabel": "Start exercise →",
+            "extraLinks": []
+          },
+          {
+            "href": "gr-if-saetze.html",
+            "icon": "🔀",
+            "title": "Conditionals — if-clauses",
+            "meta": "Types 1, 2 and 3: which tense goes in the if-clause and which in the main clause.",
+            "startLabel": "Start exercise →",
+            "extraLinks": [
+              {
+                "cls": "btn btn-outline btn-sm",
+                "href": "themen/if-saetze.html",
+                "label": "Rules (in German)"
+              }
+            ]
+          },
+          {
+            "href": "gr-passiv.html",
+            "icon": "🏗️",
+            "title": "Passive Voice",
+            "meta": "Form the passive in every tense and decide when to use it.",
+            "startLabel": "Start exercise →",
+            "extraLinks": [
+              {
+                "cls": "btn btn-outline btn-sm",
+                "href": "themen/passiv.html",
+                "label": "Rules (in German)"
+              }
+            ]
+          },
+          {
+            "href": "gr-modalverben.html",
+            "icon": "🎛️",
+            "title": "Modal Verbs",
+            "meta": "<em>can, must, may, should, have to</em> and their substitute forms.",
+            "startLabel": "Start exercise →",
+            "extraLinks": [
+              {
+                "cls": "btn btn-outline btn-sm",
+                "href": "themen/modalverben.html",
+                "label": "Rules (in German)"
+              }
+            ]
+          },
+          {
+            "href": "gr-reported-speech.html",
+            "icon": "🗣️",
+            "title": "Reported Speech",
+            "meta": "Backshift of tenses, pronouns and time words when you report what someone said.",
+            "startLabel": "Start exercise →",
+            "extraLinks": []
+          },
+          {
+            "href": "gr-relativsaetze.html",
+            "icon": "🔗",
+            "title": "Relative Clauses",
+            "meta": "<em>who, which, that, whose</em> — and when the relative pronoun can be left out.",
+            "startLabel": "Start exercise →",
+            "extraLinks": [
+              {
+                "cls": "btn btn-outline btn-sm",
+                "href": "themen/relativsaetze.html",
+                "label": "Rules (in German)"
+              }
+            ]
+          },
+          {
+            "href": "gr-gerund-infinitiv.html",
+            "icon": "🔤",
+            "title": "Gerund &amp; Infinitive",
+            "meta": "-ing form or <em>to</em> + verb? Including verbs that change meaning (remember, stop, try).",
+            "startLabel": "Start exercise →",
+            "extraLinks": [
+              {
+                "cls": "btn btn-outline btn-sm",
+                "href": "themen/gerund-infinitiv.html",
+                "label": "Rules (in German)"
+              }
+            ]
+          },
+          {
+            "href": "gr-adjektive-adverbien.html",
+            "icon": "🎨",
+            "title": "Adjectives &amp; Adverbs",
+            "meta": "<em>quick</em> or <em>quickly</em>? Forming adverbs, irregular forms and comparison.",
+            "startLabel": "Start exercise →",
+            "extraLinks": []
+          },
+          {
+            "href": "gr-question-tags.html",
+            "icon": "❓",
+            "title": "Question Tags",
+            "meta": "<em>isn’t it?</em>, <em>didn’t you?</em> — matching the tag to the auxiliary and the tense.",
+            "startLabel": "Start exercise →",
+            "extraLinks": []
+          },
+          {
+            "href": "gr-linking-words.html",
+            "icon": "🔗",
+            "title": "Linking Words",
+            "meta": "<em>although, however, because of, despite</em> — connecting ideas in a text.",
+            "startLabel": "Start exercise →",
+            "extraLinks": [
+              {
+                "cls": "btn btn-outline btn-sm",
+                "href": "themen/linking-words.html",
+                "label": "Rules (in German)"
+              }
+            ]
+          },
+          {
+            "href": "gr-phrasal-verbs.html",
+            "icon": "🧩",
+            "title": "Phrasal Verbs",
+            "meta": "Common phrasal verbs, their meanings and where the object goes.",
+            "startLabel": "Start exercise →",
+            "extraLinks": []
+          }
+        ]
       }
     ]
   },
