@@ -1,6 +1,6 @@
 ---
 name: ielts-exercise-draft
-description: "Build the next IELTS Academic exercise page for activities.englishonline.training (the ielts- section): Reading Matching Headings, sentence and summary completion, Writing Task 1 tables/bar charts and process diagrams, Writing Task 2 discussion and problem–solution essays. Use whenever Shaun asks for a new IELTS exercise, 'the next IELTS page', names one of these question types or tasks, or works through backlog Tier 14 item 4. Holds the section's fixed rules (English only, email gate and no name, no German Note, no band, original texts, verified exam facts) and a detailed brief for each planned page."
+description: "Build the next IELTS Academic exercise page for activities.englishonline.training (the ielts- section): Reading Matching Headings, sentence and summary completion (each with a 700–900-word passage and a 13-question exam-format set), Writing Task 1 tables/bar charts and process diagrams, Writing Task 2 discussion and problem–solution essays. Use whenever Shaun asks for a new IELTS exercise, 'the next IELTS page', names one of these question types or tasks, or works through backlog Tier 14 item 4. Holds the section's fixed rules (English only, email gate and no name, no German Note, no band, original texts, verified exam facts) and a detailed brief for each planned page."
 ---
 
 # IELTS exercise draft
@@ -80,9 +80,21 @@ Note or any grade text.
 - **Facts inside texts:** a reading text or model essay may only state facts you have checked. If
   checking is not practical, keep claims general ("many cities", "in some countries"). Never
   present invented statistics or studies as real.
-- **Level and length:** B2–C1. A reading text is 5–6 short paragraphs of about 70–90 words each.
-  That is longer than STYLE.md's B2/C1 band of 180–250 words, so record it under "Deviations" in
-  the PR. A real IELTS passage is longer still.
+- **Level and length (Reading):** C1 academic. A reading text is **6 paragraphs (A–F) of 110–150
+  words each, 700–900 words in all**: about one third of a real test (Shaun, 2026-10-16). This is
+  far above STYLE.md's B2/C1 band of 180–250 words, so record it under "Deviations" in the PR.
+- **Register (Reading):** write like a popular-science or social-science article, not a textbook
+  for learners.
+  - A title and a subtitle.
+  - Each paragraph has one main idea, stated or clearly implied, plus evidence: a named case, a
+    study described in general terms, a number you have checked, or a contrast.
+  - Define technical terms in the text, once, on first use ("skin cells known as
+    chromatophores").
+  - Use hedging and stance where the evidence needs it (*appears to*, *some researchers argue*,
+    *remains unclear*), and at least one paragraph that sets out an open question or a debate.
+  - Vary the sentence length. Use academic vocabulary at C1 (*correlate*, *autonomy*,
+    *trade-off*, *paradox*), but no word a C1 reader cannot work out from context.
+  - Bold nothing in the text. The exam does not signal answers.
 
 ### A4. Exercise design
 
@@ -91,7 +103,8 @@ Follow `docs/learning-design-checks.md` (all nine checks), with these IELTS spec
 - **One or two spaced-recall items** come from an **earlier built IELTS page**. Say in the
   explanation where each one is from.
 - **Options per gap:** three, as STYLE.md says, except where the exam itself gives a longer list.
-  Matching Headings and summary completion from a word box show the **full list on every gap**,
+  Matching Headings, Matching Information (A–F) and summary completion from a word box show the
+  **full list on every gap**,
   as in the exam. Record that under "Deviations".
 - **Typed answers** (sentence completion): use `<input class="gap-input">` with a bound
   `<label class="sr-only">`. Copy the page-local `checkTyped()` and its `.gap-input` styles from
@@ -106,6 +119,79 @@ Follow `docs/learning-design-checks.md` (all nine checks), with these IELTS spec
 - **Explanations:** every graded gap gets a `{label, correct, why}` entry in
   `data/explanations.json`, keyed by the page's `UNIT`, one sentence each. For Reading, the `why`
   quotes or points to the exact words in the text.
+
+### A4a. Reading pages: exam set first, then drills
+
+Every Reading page has this structure (Shaun, 2026-10-16):
+
+| Section | Content |
+|---|---|
+| Ex A | `exA-recall`, the passage, then the **exam set**: 13 questions on the passage, as in one section of the real test |
+| Ex B, Ex C | **Strategy drills** that teach the skill the exam set tested, on the same passage |
+| Ex D | The message to a study partner (A4) |
+
+The exam set and the drills share the same passage. Learners see the passage again in Ex B and C
+(repeat it, or link back to it with a sticky "Show text" toggle; do not make them scroll up).
+
+**The exam set**
+- 13 questions in **2 or 3 question types**, in exam order. The page's own type (from the brief)
+  has the most items. The other types are ones the section has already built or plans to build:
+  Matching Headings, Matching Information (which paragraph contains…), True/False/Not Given,
+  sentence completion, summary completion.
+- Number the questions as one continuous run from **1 to 13**. Each type has a "Questions X–Y"
+  heading.
+- Write the instructions in exam wording, for example: "Reading passage has six paragraphs, A–F.
+  Which paragraph contains the following information? Write the correct letter, A–F. NB You may
+  use any letter more than once." Do not add tips inside the exam set. Tips go in Ex B and C.
+- The exam set tests the whole passage, so it breaks learning-design check 4 (one target point
+  per section). Record that under "Deviations". Ex B and Ex C still follow check 4.
+- No timer on the drills. An optional timer on the exam set is fine (check 9 allows time limits
+  for exam tasks): suggest about 20 minutes.
+
+**Writing the items**
+
+*Matching Headings*
+- 8 headings for 6 paragraphs, or 2 more headings than paragraphs if a paragraph is the example.
+- Each heading states the **main idea of the whole paragraph**, in different words from the
+  paragraph.
+- Each unused heading is a trap. It echoes a **supporting detail** of a paragraph, or it says the
+  opposite of what the text says (for example "Why cephalopods live longer…" when the text says
+  they live short lives).
+- One heading, and only one, fits each paragraph. If a paragraph has two topics, rewrite the
+  paragraph, not the heading.
+
+*Matching Information*
+- 3–5 items. Each describes a *kind* of information ("an explanation of why…", "a reference
+  to…", "evidence that…"). Each points to one sentence or two in one paragraph.
+- Paraphrase every item. No content word from the target sentence may appear in the item,
+  except a technical term with no common synonym.
+- Spread the answers across the paragraphs. Use "NB You may use any letter more than once" only
+  if a letter really is used more than once; otherwise leave it out.
+
+*Summary completion (words from the text)*
+- The summary covers **2 or 3 paragraphs** and paraphrases them. It is not the text with words
+  removed.
+- Each answer is the exact word or words from the text, within the word limit. The words around
+  the gap must be different from the words around the answer in the text.
+- Each gap has exactly one answer that fits both the grammar and the meaning. Check that no
+  other phrase from the text also fits.
+
+*True/False/Not Given and sentence completion:* follow the existing TFNG page and A3.
+
+**Blocking checks before you build the HTML.** Write the passage and the exam set first, then
+check each line below. Fix the content until every line passes; do not record a failure as a
+deviation.
+1. The paragraph count and the letter range in every instruction match the passage ("six
+   paragraphs, A–F").
+2. The question numbers in every heading and every "Write…" line match the items under them.
+3. The word limit in each instruction is met by every answer in the key.
+4. Every answer in the key is in the text: copy the text span into the explanation's `why`.
+5. **One defensible answer per item.** For every item, try each other option and write down why
+   it is wrong. If you cannot write a one-line reason, the item is ambiguous: rewrite the item or
+   the paragraph.
+6. Every Matching Headings trap is checked against all six paragraphs, not only the one it
+   was written for.
+7. No item can be answered without reading the passage (test it against general knowledge).
 
 ### A5. Writing rubric (Writing pages)
 
@@ -156,16 +242,19 @@ Search terms are what the title, description and h1 should aim at, not keyword s
 - **Aim:** "By the end of this exercise, you can match headings to paragraphs by finding each
   paragraph's main idea and ignoring headings that only repeat its words."
 - **Search terms:** "IELTS matching headings practice", "matching headings strategy".
-- **Text:** 6 paragraphs (A–F), original. Suggested topic: how cities cool themselves in heatwaves
-  (shade trees, light-coloured roofs, cooling centres), with general claims only. Each paragraph
-  needs one clear main idea, plus one supporting detail that a wrong heading can latch onto.
-- **Ex A, Matching Headings:** a list of 8 headings (i–viii). Paragraph A is a worked example with
-  its answer given; B–F are the gaps, each showing all 8 headings. So 2 headings are never used,
-  and both of those must be "word-match traps" that repeat a word from a paragraph's
-  detail.
+- **Text:** 6 paragraphs (A–F), 700–900 words, original (A3 register rules). Suggested topic: how
+  cities cool themselves in heatwaves (shade trees, light-coloured roofs, cooling centres), with
+  facts checked or kept general. Each paragraph needs one clear main idea, plus one supporting
+  detail that a trap heading can latch onto.
+- **Ex A, exam set (13 questions, A4a):**
+  - Questions 1–5, Matching Headings: 8 headings (i–viii). Paragraph A is the example, with its
+    answer given; B–F are the gaps, each showing all 8 headings. So 2 headings are never used,
+    and both are traps (A4a).
+  - Questions 6–9, Matching Information: 4 items, letters A–F.
+  - Questions 10–13, summary completion, NO MORE THAN TWO WORDS from the text, on 2–3 paragraphs.
 - **Ex B, main idea or detail:** 6 items. For each paragraph, choose the sentence that states its
   main idea (3 options: the main idea, a supporting detail, an example).
-- **Ex C, why the trap is wrong:** 5 items. Each names a trap heading and a paragraph: "Why is
+- **Ex C, why the trap is wrong:** 5 items. Each names a heading from Ex A and a paragraph: "Why is
   heading vii wrong for paragraph C?" Options: it matches only one detail / it matches the main
   idea / it is about a different paragraph. Add 1–2 spaced-recall items from
   `ielts-reading-true-false-not-given.html` (qualifiers or paraphrase).
@@ -177,19 +266,24 @@ Search terms are what the title, description and h1 should aim at, not keyword s
 - **Aim:** "By the end of this exercise, you can complete sentences and summaries with the exact
   words from a text, within the word limit."
 - **Search terms:** "IELTS sentence completion practice", "IELTS summary completion".
-- **Text:** 5–6 paragraphs, original, with names, numbers and nouns worth extracting. Suggested
-  topic: the history and workings of a public library system or a seed bank, with facts checked
-  or kept general.
-- **Ex A, sentence completion (typed):** 7 sentences in text order. The instruction reads "Write NO
-  MORE THAN TWO WORDS AND/OR A NUMBER from the text." Use typed gaps with `checkTyped()` and
-  accept lists. At least one gap has a tempting three-word answer that breaks the limit.
-- **Ex B, predict the word type:** 6 items, one per gap in Ex C's summary, done before attempting
-  Ex C itself: "What kind of word fits gap 3?" (noun / verb / adjective / number). Predicting word
-  type before scanning is a strategy ielts.org itself recommends for this question type.
-- **Ex C, summary completion from a word box:** a 90–110-word summary of 2–3 paragraphs, with
-  6 gaps and a box of 10 words or phrases (A–J). Every gap shows the full box. Include
-  distractors of the right word type but the wrong meaning. Add 1–2 spaced-recall items from
-  Matching Headings or True/False/Not Given.
+- **Text:** 6 paragraphs (A–F), 700–900 words, original (A3 register rules), with names, numbers
+  and nouns worth extracting. Suggested topic: the history and workings of a public library system
+  or a seed bank, with facts checked or kept general.
+- **Ex A, exam set (13 questions, A4a):**
+  - Questions 1–7, sentence completion (typed): 7 sentences in text order. The instruction reads
+    "Write NO MORE THAN TWO WORDS AND/OR A NUMBER from the text." Use typed gaps with
+    `checkTyped()` and accept lists. At least one gap has a tempting three-word answer that breaks
+    the limit.
+  - Questions 8–13, summary completion from a word box: a 90–110-word summary of 2–3 paragraphs,
+    with 6 gaps and a box of 10 words or phrases (A–J). Every gap shows the full box. Include
+    distractors of the right word type but the wrong meaning.
+- **Ex B, predict the word type:** 6 items, one per gap in the Ex A summary: "What kind of word
+  fits gap 10?" (noun / verb / adjective / number). The `why` names the grammar clue around the
+  gap. Predicting word type before scanning is a strategy ielts.org itself recommends for this
+  question type.
+- **Ex C, the word limit:** 5 items. Each shows a sentence-completion gap and three candidate
+  answers taken from the text: one correct, one over the limit, one that breaks the grammar of the
+  sentence. Add 1–2 spaced-recall items from Matching Headings or True/False/Not Given.
 - **Ex D:** a message to a study partner explaining the word-limit rule and why copying the exact
   words matters.
 
