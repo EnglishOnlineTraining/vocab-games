@@ -19009,6 +19009,110 @@
    }
   }
  },
+ "ielts-reading-matching-headings": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. Paragraph B",
+     "correct": "v. Two ways trees fight the heat",
+     "why": "Paragraph B: trees “fight the heat in two ways” — shade and water vapour. Heading iv only repeats the detail “in parks”."
+    },
+    "g2": {
+     "label": "2. Paragraph C",
+     "correct": "viii. Reflecting sunlight away",
+     "why": "Paragraph C: surfaces “bounce sunlight back”. Heading vi repeats only the “Mediterranean … for centuries” detail."
+    },
+    "g3": {
+     "label": "3. Paragraph D",
+     "correct": "i. Public places to escape the heat",
+     "why": "Paragraph D: cooling centres are “public buildings … where anyone can sit in air conditioning for free”."
+    },
+    "g4": {
+     "label": "4. Paragraph E",
+     "correct": "iii. Cooling the air with water",
+     "why": "Paragraph E: fountains, mist and uncovered streams all “cool the air as water evaporates”."
+    },
+    "g5": {
+     "label": "5. Paragraph F",
+     "correct": "vii. Help does not reach everyone",
+     "why": "Paragraph F: “Not everyone benefits equally” — the challenge is reaching “the people who need them most”."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. Main idea of paragraph A",
+     "correct": "Cities are hotter than the countryside because of how they are built.",
+     "why": "The paragraph's point is the cause — “The reasons are built into the city itself”. The opening sentence only introduces the phenomenon, and waste heat is just one of the causes."
+    },
+    "g2": {
+     "label": "2. Main idea of paragraph B",
+     "correct": "Street trees cool their surroundings in two ways.",
+     "why": "“Trees fight the heat in two ways” is the point; planting numbers are an example and the slow growth of saplings is a detail."
+    },
+    "g3": {
+     "label": "3. Main idea of paragraph C",
+     "correct": "Reflective surfaces stop heat being absorbed in the first place.",
+     "why": "The paragraph argues for making surfaces “bounce sunlight back”; the Mediterranean towns are evidence and the cool-roof figures are a detail."
+    },
+    "g4": {
+     "label": "4. Main idea of paragraph D",
+     "correct": "Cooling centres give people free, indoor relief from dangerous heat.",
+     "why": "The paragraph introduces cooling centres as free, air-conditioned public spaces; who they serve and the health checks are details."
+    },
+    "g5": {
+     "label": "5. Main idea of paragraph E",
+     "correct": "Water cools city air as it evaporates.",
+     "why": "“Water is the oldest coolant of all” is the point; fountains and mist sprayers are examples, and the cost of stream projects is a detail."
+    },
+    "g6": {
+     "label": "6. Main idea of paragraph F",
+     "correct": "The real challenge is making cooling reach the people who need it most.",
+     "why": "The final sentence states the point — reaching “the people who need them most”. Wealthy districts are an illustration and the budget problem is a detail."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. Heading iv vs paragraph B",
+     "correct": "It matches only one detail",
+     "why": "B mentions “parks” once as a planting location; the paragraph is about how trees cool, not decoration — so iv latches onto a detail."
+    },
+    "g2": {
+     "label": "2. Heading vi vs paragraph C",
+     "correct": "It matches only one detail",
+     "why": "C mentions Mediterranean towns “for centuries” only as evidence; its main idea is reflecting sunlight, which vi turns into architectural history."
+    },
+    "g3": {
+     "label": "3. Heading iii vs paragraph D",
+     "correct": "It is about a different paragraph",
+     "why": "D never mentions water as a coolant; heading iii is the main idea of paragraph E."
+    },
+    "g4": {
+     "label": "4. Heading viii vs paragraph E",
+     "correct": "It is about a different paragraph",
+     "why": "E never mentions reflecting sunlight; heading viii is the main idea of paragraph C."
+    },
+    "g5": {
+     "label": "5. Heading ii vs paragraph F",
+     "correct": "It is about a different paragraph",
+     "why": "F never discusses why cities overheat; heading ii is the main idea of paragraph A."
+    },
+    "g6": {
+     "label": "6. sometimes worked → always worked (review)",
+     "correct": "False",
+     "why": "“Sometimes worked” contradicts “always worked”, so the statement is False — recalled from ielts-reading-true-false-not-given.html (Ex A)."
+    },
+    "g7": {
+     "label": "7. a growing number of (review)",
+     "correct": "more and more",
+     "why": "“A growing number of” means “more and more” — recalled from ielts-reading-true-false-not-given.html (Ex C)."
+    }
+   }
+  }
+ },
  "ielts-writing-task1-describing-trends": {
   "exA": {
    "gaps": {

@@ -105,6 +105,7 @@ const SKILL_OVERRIDES = {
   '9g-canada-indigenous-voices.html':  ['reading', 'writing'],
   '9g-ireland-emigration.html':        ['reading', 'writing', 'grammar'],
   '9g-new-zealand-maori-voices.html':  ['reading', 'writing'],
+  'ielts-reading-matching-headings.html': ['reading'],
 };
 const SKILL_ORDER = ['reading', 'writing', 'listening', 'vocabulary', 'grammar'];
 
@@ -184,6 +185,13 @@ files.forEach(f => {
   topics.forEach(sl => coverage[sl].push(f));
   let skills = skillsFor(points);
   if (SKILL_OVERRIDES[f]) {
+    // skillsFor() falls back to 'grammar' when no heading matches; an entry here
+    // exists exactly because detection failed, so the fallback must not survive it
+    // (a genuinely topic-detected 'grammar' always does).
+    if (skills.length === 1 && skills[0] === 'grammar'
+        && !TOPICS.some(tp => tp.match.some(re => points.some(t => re.test(t))))) {
+      skills = [];
+    }
     const all = new Set(skills.concat(SKILL_OVERRIDES[f]));
     skills = SKILL_ORDER.filter(k => all.has(k));
   }

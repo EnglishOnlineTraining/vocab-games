@@ -6,18 +6,18 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "from",
-     "accept": [
-      "from"
-     ],
-     "label": "1. fell"
-    },
-    "g2": {
      "correct": "Investing in cycle lanes is one of the most effective ways to reduce traffic.",
      "accept": [
       "Investing in cycle lanes is one of the most effective ways to reduce traffic."
      ],
-     "label": "2. Paragraph on cycle lanes"
+     "label": "1. Paragraph on cycle lanes"
+    },
+    "g2": {
+     "correct": "It matches only one detail",
+     "accept": [
+      "It matches only one detail"
+     ],
+     "label": "2. Heading iv vs paragraph B"
     },
     "g3": {
      "correct": "False",
@@ -27,11 +27,11 @@
      "label": "3. plant community a better guide → number of walks the best guide"
     },
     "g4": {
-     "correct": "dwindle",
+     "correct": "from",
      "accept": [
-      "dwindle"
+      "from"
      ],
-     "label": "4. car use continued to"
+     "label": "4. fell"
     },
     "g5": {
      "correct": "Another benefit is that courses outside a student’s field teach practical skills.",
@@ -41,25 +41,25 @@
      "label": "5. Paragraph on languages and coding skills"
     },
     "g6": {
+     "correct": "viii. Reflecting sunlight away",
+     "accept": [
+      "viii. Reflecting sunlight away"
+     ],
+     "label": "6. Paragraph C"
+    },
+    "g7": {
      "correct": "True",
      "accept": [
       "True"
      ],
-     "label": "6. connected homes to schools and bus stops → some paths led to bus stops"
-    },
-    "g7": {
-     "correct": "dramatic increase",
-     "accept": [
-      "dramatic increase"
-     ],
-     "label": "7. Cycling saw a"
+     "label": "7. connected homes to schools and bus stops → some paths led to bus stops"
     },
     "g8": {
-     "correct": "Despite",
+     "correct": "dwindle",
      "accept": [
-      "Despite"
+      "dwindle"
      ],
-     "label": "8."
+     "label": "8. car use continued to"
     }
    }
   },
@@ -68,60 +68,60 @@
    "multi": false,
    "gaps": {
     "g1": {
+     "correct": "Despite",
+     "accept": [
+      "Despite"
+     ],
+     "label": "1."
+    },
+    "g2": {
+     "correct": "Cities are hotter than the countryside because of how they are built.",
+     "accept": [
+      "Cities are hotter than the countryside because of how they are built."
+     ],
+     "label": "2. Main idea of paragraph A"
+    },
+    "g3": {
      "correct": "True",
      "accept": [
       "True"
      ],
-     "label": "1. more than 5,000 → over five thousand"
+     "label": "3. more than 5,000 → over five thousand"
     },
-    "g2": {
-     "correct": "remained stable",
+    "g4": {
+     "correct": "dramatic increase",
      "accept": [
-      "remained stable"
+      "dramatic increase"
      ],
-     "label": "2. Prices"
+     "label": "4. Cycling saw a"
     },
-    "g3": {
+    "g5": {
      "correct": "Although",
      "accept": [
       "Although"
      ],
-     "label": "3."
+     "label": "5."
     },
-    "g4": {
+    "g6": {
+     "correct": "more and more",
+     "accept": [
+      "more and more"
+     ],
+     "label": "6. a growing number of (review)"
+    },
+    "g7": {
      "correct": "the actions taken to deal with the problem",
      "accept": [
       "the actions taken to deal with the problem"
      ],
-     "label": "4. Such measures (paragraph B)"
-    },
-    "g5": {
-     "correct": "sharp fall",
-     "accept": [
-      "sharp fall"
-     ],
-     "label": "5. There was a"
-    },
-    "g6": {
-     "correct": "Moreover",
-     "accept": [
-      "Moreover"
-     ],
-     "label": "6."
-    },
-    "g7": {
-     "correct": "False",
-     "accept": [
-      "False"
-     ],
-     "label": "7. occasionally worked → never worked"
+     "label": "7. Such measures (paragraph B)"
     },
     "g8": {
-     "correct": "sharply",
+     "correct": "remained stable",
      "accept": [
-      "sharply"
+      "remained stable"
      ],
-     "label": "8. then dropped"
+     "label": "8. Prices"
     }
    }
   },
@@ -130,60 +130,60 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "nevertheless",
+     "correct": "Moreover",
      "accept": [
-      "nevertheless"
+      "Moreover"
      ],
      "label": "1."
     },
     "g2": {
+     "correct": "It is about a different paragraph",
+     "accept": [
+      "It is about a different paragraph"
+     ],
+     "label": "2. Heading iii vs paragraph D"
+    },
+    "g3": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "3. occasionally worked → never worked"
+    },
+    "g4": {
+     "correct": "sharp fall",
+     "accept": [
+      "sharp fall"
+     ],
+     "label": "4. There was a"
+    },
+    "g5": {
+     "correct": "nevertheless",
+     "accept": [
+      "nevertheless"
+     ],
+     "label": "5."
+    },
+    "g6": {
+     "correct": "i. Public places to escape the heat",
+     "accept": [
+      "i. Public places to escape the heat"
+     ],
+     "label": "6. Paragraph D"
+    },
+    "g7": {
      "correct": "more and more",
      "accept": [
       "more and more"
      ],
-     "label": "2. a growing number of (paragraph C)"
-    },
-    "g3": {
-     "correct": "fell",
-     "accept": [
-      "fell"
-     ],
-     "label": "3. Overall, car use"
-    },
-    "g4": {
-     "correct": "I support",
-     "accept": [
-      "I support"
-     ],
-     "label": "4. The main reason"
-    },
-    "g5": {
-     "correct": "show",
-     "accept": [
-      "show"
-     ],
-     "label": "5. reflect (paragraph F)"
-    },
-    "g6": {
-     "correct": "narrowed",
-     "accept": [
-      "narrowed"
-     ],
-     "label": "6. the gap had"
-    },
-    "g7": {
-     "correct": "In conclusion",
-     "accept": [
-      "In conclusion"
-     ],
-     "label": "7."
+     "label": "7. a growing number of (paragraph C)"
     },
     "g8": {
-     "correct": "costs nothing to collect",
+     "correct": "sharply",
      "accept": [
-      "costs nothing to collect"
+      "sharply"
      ],
-     "label": "8. free information (paragraph C)"
+     "label": "8. then dropped"
     }
    }
   }
