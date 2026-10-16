@@ -6,11 +6,11 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "from",
+     "correct": "Overall, the Science museum attracted far more visitors than the other two.",
      "accept": [
-      "from"
+      "Overall, the Science museum attracted far more visitors than the other two."
      ],
-     "label": "1. fell"
+     "label": "1. Overview: museum visitors"
     },
     "g2": {
      "correct": "Investing in cycle lanes is one of the most effective ways to reduce traffic.",
@@ -20,46 +20,46 @@
      "label": "2. Paragraph on cycle lanes"
     },
     "g3": {
+     "correct": "from",
+     "accept": [
+      "from"
+     ],
+     "label": "3. fell"
+    },
+    "g4": {
      "correct": "False",
      "accept": [
       "False"
      ],
-     "label": "3. plant community a better guide → number of walks the best guide"
-    },
-    "g4": {
-     "correct": "dwindle",
-     "accept": [
-      "dwindle"
-     ],
-     "label": "4. car use continued to"
+     "label": "4. plant community a better guide → number of walks the best guide"
     },
     "g5": {
+     "correct": "just over half",
+     "accept": [
+      "just over half"
+     ],
+     "label": "5. 52%"
+    },
+    "g6": {
      "correct": "Another benefit is that courses outside a student’s field teach practical skills.",
      "accept": [
       "Another benefit is that courses outside a student’s field teach practical skills."
      ],
-     "label": "5. Paragraph on languages and coding skills"
+     "label": "6. Paragraph on languages and coding skills"
     },
-    "g6": {
+    "g7": {
+     "correct": "dwindle",
+     "accept": [
+      "dwindle"
+     ],
+     "label": "7. car use continued to"
+    },
+    "g8": {
      "correct": "True",
      "accept": [
       "True"
      ],
-     "label": "6. connected homes to schools and bus stops → some paths led to bus stops"
-    },
-    "g7": {
-     "correct": "dramatic increase",
-     "accept": [
-      "dramatic increase"
-     ],
-     "label": "7. Cycling saw a"
-    },
-    "g8": {
-     "correct": "Despite",
-     "accept": [
-      "Despite"
-     ],
-     "label": "8."
+     "label": "8. connected homes to schools and bus stops → some paths led to bus stops"
     }
    }
   },
@@ -68,60 +68,60 @@
    "multi": false,
    "gaps": {
     "g1": {
+     "correct": "three times as many",
+     "accept": [
+      "three times as many"
+     ],
+     "label": "1. 90 compared with 30"
+    },
+    "g2": {
+     "correct": "Despite",
+     "accept": [
+      "Despite"
+     ],
+     "label": "2."
+    },
+    "g3": {
+     "correct": "dramatic increase",
+     "accept": [
+      "dramatic increase"
+     ],
+     "label": "3. Cycling saw a"
+    },
+    "g4": {
      "correct": "True",
      "accept": [
       "True"
      ],
-     "label": "1. more than 5,000 → over five thousand"
+     "label": "4. more than 5,000 → over five thousand"
     },
-    "g2": {
-     "correct": "remained stable",
+    "g5": {
+     "correct": "four times",
      "accept": [
-      "remained stable"
+      "four times"
      ],
-     "label": "2. Prices"
+     "label": "5. the share of car users was"
     },
-    "g3": {
+    "g6": {
      "correct": "Although",
      "accept": [
       "Although"
      ],
-     "label": "3."
+     "label": "6."
     },
-    "g4": {
+    "g7": {
+     "correct": "remained stable",
+     "accept": [
+      "remained stable"
+     ],
+     "label": "7. Prices"
+    },
+    "g8": {
      "correct": "the actions taken to deal with the problem",
      "accept": [
       "the actions taken to deal with the problem"
      ],
-     "label": "4. Such measures (paragraph B)"
-    },
-    "g5": {
-     "correct": "sharp fall",
-     "accept": [
-      "sharp fall"
-     ],
-     "label": "5. There was a"
-    },
-    "g6": {
-     "correct": "Moreover",
-     "accept": [
-      "Moreover"
-     ],
-     "label": "6."
-    },
-    "g7": {
-     "correct": "False",
-     "accept": [
-      "False"
-     ],
-     "label": "7. occasionally worked → never worked"
-    },
-    "g8": {
-     "correct": "sharply",
-     "accept": [
-      "sharply"
-     ],
-     "label": "8. then dropped"
+     "label": "8. Such measures (paragraph B)"
     }
    }
   },
@@ -130,60 +130,60 @@
    "multi": false,
    "gaps": {
     "g1": {
+     "correct": "fewer than one in ten",
+     "accept": [
+      "fewer than one in ten"
+     ],
+     "label": "1. 9%"
+    },
+    "g2": {
+     "correct": "Moreover",
+     "accept": [
+      "Moreover"
+     ],
+     "label": "2."
+    },
+    "g3": {
+     "correct": "sharp fall",
+     "accept": [
+      "sharp fall"
+     ],
+     "label": "3. There was a"
+    },
+    "g4": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "4. occasionally worked → never worked"
+    },
+    "g5": {
+     "correct": "whereas",
+     "accept": [
+      "whereas"
+     ],
+     "label": "5. the car was most common in A,"
+    },
+    "g6": {
      "correct": "nevertheless",
      "accept": [
       "nevertheless"
      ],
-     "label": "1."
+     "label": "6."
     },
-    "g2": {
+    "g7": {
+     "correct": "sharply",
+     "accept": [
+      "sharply"
+     ],
+     "label": "7. then dropped"
+    },
+    "g8": {
      "correct": "more and more",
      "accept": [
       "more and more"
      ],
-     "label": "2. a growing number of (paragraph C)"
-    },
-    "g3": {
-     "correct": "fell",
-     "accept": [
-      "fell"
-     ],
-     "label": "3. Overall, car use"
-    },
-    "g4": {
-     "correct": "I support",
-     "accept": [
-      "I support"
-     ],
-     "label": "4. The main reason"
-    },
-    "g5": {
-     "correct": "show",
-     "accept": [
-      "show"
-     ],
-     "label": "5. reflect (paragraph F)"
-    },
-    "g6": {
-     "correct": "narrowed",
-     "accept": [
-      "narrowed"
-     ],
-     "label": "6. the gap had"
-    },
-    "g7": {
-     "correct": "In conclusion",
-     "accept": [
-      "In conclusion"
-     ],
-     "label": "7."
-    },
-    "g8": {
-     "correct": "costs nothing to collect",
-     "accept": [
-      "costs nothing to collect"
-     ],
-     "label": "8. free information (paragraph C)"
+     "label": "8. a growing number of (paragraph C)"
     }
    }
   }
