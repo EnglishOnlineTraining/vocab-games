@@ -140,4 +140,4 @@ To watch another page, add it to `PAGES` in the script (`match` keeps only relev
 
 ## Backlog
 
-See `docs/agent-backlog.md` for the remaining agents (#4, #9).
+See `docs/agent-backlog.md` for the remaining agents (#4, #9, #11).

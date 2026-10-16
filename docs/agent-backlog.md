@@ -49,7 +49,7 @@ weak ones, fix them, measure again.
   `normAns()` from `make-grader.js`. Make flattens nested answers as `key: value`
   joined by ` | `.
 
-**B. Google Sheets via Apps Script (`be-` `uni-` `it-` `ielts-`, public learners) — automated**
+**B. Google Sheets via Apps Script (`be-` `uni-` `it-` `ielts-` `esl-`, public learners) — automated**
 - The universal handler writes one column per answer key. `flatten()` stores a nested
   answer as `key: value` lines joined by `\n`, with `(blank)` for empty gaps.
 - Add `doGet?action=itemstats` to `apps-script.gs`. It returns counts only, see
@@ -69,8 +69,15 @@ weak ones, fix them, measure again.
   blank) and returns counts of correct, wrong and blank. A wrong answer is listed by
   value only when at least 2 learners gave it (after `normAns()`) and it is 40
   characters or fewer; every other wrong answer is counted under `(other)`. So a
-  one-off typed string (which could be a name) never leaves the sheet. Columns that
-  are not in the key are only counted as writing fields (see "Writing tasks").
+  one-off typed string (which could be a name) never leaves the sheet. This rule is
+  the name-leak defence for `typed: true` sections (the only gaps where a learner
+  types freely); dropdown answers can only be option values. Columns that are not in
+  the key are only counted as writing fields (see "Writing tasks").
+- **Fetch cost:** one `doGet` must stay well inside the Apps Script time limit with
+  30+ units. Fetch `index.json` and all keys in one `UrlFetchApp.fetchAll()` call
+  (parallel), and keep each key in `CacheService` for 6 hours. If it still runs long,
+  add `unit=<id>` so the Action can ask for one unit at a time; a failing unit then
+  does not sink the whole run.
 - **`since`:** `itemstats` accepts `since=<YYYY-MM-DD>` and counts only rows whose
   Timestamp is on or after it. Timestamps are used for filtering only, never returned.
 - **Access:** the existing web-app deployment (Execute as: me, Access: anyone), so the
@@ -84,7 +91,8 @@ weak ones, fix them, measure again.
 - **Deploy (Shaun):** paste the new `apps-script.gs` into each sheet's Apps Script →
   Project Settings → Script Properties → add `ITEMSTATS_TOKEN` → Deploy → Manage
   deployments → edit → New version (keeps the URL). Test with
-  `<exec URL>?action=itemstats&token=…` in a browser before enabling the Action.
+  `curl '<exec URL>?action=itemstats&token=…'` before enabling the Action (not the
+  browser address bar, which keeps the token in its history).
 
 **C. Abitur (`abitur-*`, Make → `abitursubs`) — manual export**
 - The packs send only a score per exercise (`ex1`–`ex5` as `"4/6"`) and the essay,
@@ -131,7 +139,7 @@ Flag a gap only when it has at least `--min` answers (default 15):
 |---|---|
 | Too easy | > 90 % correct |
 | Too hard | < 30 % correct |
-| Ambiguous | learners in the top third of the unit score miss it more often than the middle third (source A only; B and C have no per-learner answers) |
+| Ambiguous | learners in the top third of the unit score get it right no more often than the bottom third (discrimination ≤ 0; source A only, B and C have no per-learner answers) |
 | Distractor | one wrong answer takes > 40 % of all wrong answers |
 
 - Below `--min`: listed as "not enough data", never flagged.
