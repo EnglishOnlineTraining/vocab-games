@@ -9,7 +9,7 @@ descriptions and the three already delivered.
 |---|-------|-------------|-------|------------|
 | 2 | ~~Pre-publish gate~~ **Done (#87, 2026-10-04)** | `check-generated.yml` runs `verify-exercise.js` (incl. webhook) on pages a PR adds; grade table and explanations are gated by `check-grade-table` / `validate-explanations`. | GitHub Action (on PR) | — |
 | 4 | Weekly prep runner | Sunday: reads A/B week + timetable, picks classes, drafts one exercise per class from the right textbook unit. | Claude Code Routine (cron) | Timetable data |
-| 11 | Item analysis (quality loop) | Monthly: reads exported submissions, flags weak gaps per unit, drafts fixes as a PR. Spec below. | Claude Code session (monthly, manual CSV export) | — |
+| 11 | Item analysis (quality loop) | Counts answers per gap, flags weak gaps, drafts fixes as a PR. Spec below. | Weekly GitHub Action (Sheets) + manual CSV run (Excel) | Apps Script redeploy (Shaun) |
 
 ## Medium-term
 
@@ -32,53 +32,84 @@ descriptions and the three already delivered.
 **Goal:** close the quality loop on the activities subdomain. Measure each gap, find the
 weak ones, fix them, measure again.
 
-### Data source
-- Make/Excel rows already store the full raw submission in the last answer column
-  (the `{{1.payload}}` backstop, see `scripts/regrade-rows.js`). That gives the answer
-  for every gap, not only the total.
-- Read it the same way `regrade-rows.js` does: CSV export from Excel, payload column
-  found by content, `unflat()` and `normAns()` from `make-grader.js`, keys from
-  `data/answer-keys/`.
-- Apps Script tracks (`be-` `uni-` `it-` `ielts-`): check what the sheet stores before
-  including them. Out of scope for v1 if it is totals only.
+### Context that shapes the design
+- Most units are built for one class, so a unit gets answers from one class (15–30
+  learners), once. External classes add answers at random. A fixed schedule does not
+  fit, so the agent runs often and acts only where enough answers exist.
+- Six school classes, two university classes and two business classes. Not every
+  lesson has a digital submission.
+
+### Data sources
+**A. Make / Excel (school, `7g`–`10c`, `msa-c-`) — manual export**
+- Rows store the full raw submission in the last answer column (the `{{1.payload}}`
+  backstop, see `scripts/regrade-rows.js`). That gives every gap's answer.
+- Shaun exports the table to CSV and runs the script locally. CI cannot reach Excel,
+  and the export holds names.
+- Parse as `regrade-rows.js` does: payload column found by content, `unflat()` and
+  `normAns()` from `make-grader.js`. Make flattens nested answers as `key: value`
+  joined by ` | `.
+
+**B. Google Sheets via Apps Script (`be-` `uni-` `it-` `ielts-`, public learners) — automated**
+- The universal handler writes one column per answer key. `flatten()` stores a nested
+  answer as `key: value` lines joined by `\n`, with `(blank)` for empty gaps.
+- Add `doGet?action=itemstats` to `apps-script.gs`. It returns counts only:
+  `{ unit: { "exA.g1": { "<answer>": n, … } } }`. No names, emails, classes or
+  timestamps. `doPost` is not changed.
+- Shaun pastes the new handler and redeploys (production change, so his step).
+- The answer keys stay in the repo (`data/answer-keys/`). Apps Script only counts.
 
 ### Script: `scripts/item-analysis.js`
 ```
-node scripts/item-analysis.js <export.csv> [--min 30] [--json]
+node scripts/item-analysis.js --csv <export.csv>     # source A
+node scripts/item-analysis.js --sheets               # source B, fetches itemstats
+options: --min 15  --json  --since <date>
 ```
-Per unit and gap, report: number of answers, % correct, and the most common wrong
-answer. Flag a gap when it has at least `--min` answers (default 30) and:
+Per unit and gap: number of answers, % correct, most common wrong answer.
+Flag a gap only when it has at least `--min` answers (default 15):
 
-| Flag | Rule (starting values, tune after the first report) |
+| Flag | Rule (starting values, tune after the first reports) |
 |---|---|
 | Too easy | > 90 % correct |
 | Too hard | < 30 % correct |
-| Ambiguous | learners in the top third of the unit score miss it more often than the middle third |
+| Ambiguous | learners in the top third of the unit score miss it more often than the middle third (source A only; source B has no per-learner rows) |
 | Distractor | one wrong answer takes > 40 % of all wrong answers |
 
-Gaps below `--min` are listed as "not enough data", never flagged.
+- Below `--min`: listed as "not enough data", never flagged.
+- Results under 30 answers are labelled "early signal".
+- **Pooling:** also report by grammar point, so patterns show across units with
+  small samples. `data/explanations.json` has no grammar-point tag yet; v1 needs one
+  (a small `data/gap-tags.json`, unit + gap → point), filled for current-class units first.
+- **School vs external:** report separately, then combined. Levels can differ.
+  How to tell external rows apart in source A is open (see below).
+
+### Uni and business classes
+Too small for statistics. Add one optional feedback question at the end of those
+tasks ("Which question was unclear?"). It goes to the same sheet and is read by hand.
 
 ### Privacy (CLAUDE.md rule 1)
-- The export holds student names. It stays in `CLAUDE OUTPUTS`, never in this repo.
-- The script reads names nowhere and writes no names. Output is counts and
-  percentages per gap only.
-- The report itself goes to `CLAUDE OUTPUTS` too. Only the fix PR touches the repo.
+- Source A export and its report stay in `CLAUDE OUTPUTS`, never in this repo.
+- The script writes no names. Output is counts and percentages per gap only.
+- Source B never sends names, so its report can go in a GitHub issue.
 
 ### Loop
-1. Monthly: Shaun exports the CSV (no API access to Excel from CI).
-2. Run the script. Claude reads the report and drafts fixes for flagged gaps
-   (stem, options, or the `why` line in `data/explanations.json`).
-3. Fixes go in one PR per run. Shaun reviews and merges. Nothing auto-publishes.
-4. Log each changed gap with its date and old %-correct in `data/item-changes.json`
-   (unit, gap, date, before). No student data.
-5. Next run compares new %-correct against `before`. A fix that made it worse is
-   reverted.
+1. **Source B:** a weekly GitHub Action runs `--sheets` and opens or updates one issue
+   listing the flagged gaps. Nothing else is automatic.
+   **Source A:** Shaun exports and runs `--csv` when a class finishes a unit.
+2. Claude drafts fixes for flagged gaps (stem, options, or the `why` line in
+   `data/explanations.json`) in one PR. Shaun reviews and merges. Nothing auto-publishes.
+3. Log each changed gap in `data/item-changes.json` (unit, gap, date, % correct
+   before). No student data.
+4. Later runs use `--since <date>` to compare the new % correct with `before`. A fix
+   that made it worse is reverted.
 
 ### Done when
-- Script runs on a real export and the output has no names (grep check in a test).
-- Numbers match a hand count on one unit.
-- First PR of fixes is merged and logged.
+- `--csv` runs on a real export and the output has no names (grep check in a test).
+- `--sheets` returns counts that match a hand count on one sheet tab.
+- The weekly Action opens an issue on a test run.
+- First fix PR is merged and logged.
 
 ### Open questions
-- Monthly is the default. Is it enough data per unit at current class sizes?
+- Source A: how to tell external rows from school rows. `eolEmailPayload()` replaces
+  `name`/`cls` with `email` for learners who give an email; check a real export to see
+  whether that marks external rows reliably.
 - Should "too easy" gaps be fixed, or kept as confidence builders in early steps?
