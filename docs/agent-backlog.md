@@ -49,7 +49,10 @@ weak ones, fix them, measure again.
   `normAns()` from `make-grader.js`. Make flattens nested answers as `key: value`
   joined by ` | `.
 
-**B. Google Sheets via Apps Script (`be-` `uni-` `it-` `ielts-` `esl-`, public learners) — automated**
+**B. Google Sheets via Apps Script (`be-` `uni-` `it-` `ielts-` `esl-` `gr-`, public learners) — automated**
+- `gr-*` posted to the old "year 9" sheet (the template's former default URL) until
+  #162 moved them to the Online results sheet; from then on `ITEMSTATS_URL_ONLINE`
+  covers them. Earlier `gr-` rows stay in the old sheet and are not analysed.
 - The universal handler writes one column per answer key. `flatten()` stores a nested
   answer as `key: value` lines joined by `\n`, with `(blank)` for empty gaps.
 - Add `doGet?action=itemstats` to `apps-script.gs`. It returns counts only, see
