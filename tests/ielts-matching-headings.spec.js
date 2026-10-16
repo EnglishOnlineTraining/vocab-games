@@ -1,0 +1,147 @@
+// E2E check for ielts-reading-matching-headings.html (B1 of the ielts-exercise-draft skill).
+// Covers the skill's browser-check list: every Check button, a deliberate wrong answer per
+// section surfacing its explanation, the English-only score card (points (N%), no Note),
+// no sideways scroll at 375px, a clean console, and the email-only submission payload.
+const { test, expect } = require('@playwright/test');
+
+const PAGE = '/ielts-reading-matching-headings.html';
+
+const CORRECT = {
+  exA: {
+    g1: 'v. Two ways trees fight the heat',
+    g2: 'viii. Reflecting sunlight away',
+    g3: 'i. Public places to escape the heat',
+    g4: 'iii. Cooling the air with water',
+    g5: 'vii. Help does not reach everyone',
+  },
+  exB: {
+    g1: 'Cities are hotter than the countryside because of how they are built.',
+    g2: 'Street trees cool their surroundings in two ways.',
+    g3: 'Reflective surfaces stop heat being absorbed in the first place.',
+    g4: 'Cooling centres give people free, indoor relief from dangerous heat.',
+    g5: 'Water cools city air as it evaporates.',
+    g6: 'The real challenge is making cooling reach the people who need it most.',
+  },
+  exC: {
+    g1: 'It matches only one detail',
+    g2: 'It matches only one detail',
+    g3: 'It is about a different paragraph',
+    g4: 'It is about a different paragraph',
+    g5: 'It is about a different paragraph',
+    g6: 'False',
+    g7: 'more and more',
+  },
+};
+
+const EX_D_TEXT = "You picked 'Centuries of Mediterranean architecture' for paragraph C because the words Mediterranean and centuries appear in it. That is exactly the trap: wrong headings repeat words from one detail but miss the paragraph's main idea. Paragraph C is about reflecting sunlight, not architectural history. My tip: after each paragraph, say its point in one short sentence of your own, then find the heading that matches your sentence — not the heading that happens to share words with the text.";
+
+function watchConsole(page, errors) {
+  page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
+  page.on('pageerror', (e) => errors.push(String(e)));
+}
+
+async function answerSection(page, ex, wrong) {
+  for (const [gap, value] of Object.entries(CORRECT[ex])) {
+    await page.selectOption(`#${ex}-${gap}`, wrong && wrong.gap === gap ? wrong.value : value);
+  }
+}
+
+async function expectNoSidewaysScroll(page) {
+  const width = await page.evaluate(() =>
+    Math.max(document.documentElement.scrollWidth, document.body.scrollWidth));
+  expect(width).toBeLessThanOrEqual(375);
+}
+
+test('practise mode: checks, explanations, score card, 375px, clean console', async ({ page }) => {
+  const errors = [];
+  watchConsole(page, errors);
+  await page.setViewportSize({ width: 375, height: 800 });
+
+  await page.goto(`${PAGE}?mode=practise`);
+  await expect(page.locator('#exA-g1')).toBeVisible();
+
+  // Ex A — one deliberate wrong answer (the word-match trap heading)
+  await answerSection(page, 'exA', { gap: 'g2', value: 'iv. Trees as decoration in public parks' });
+  await page.locator('#step-1 button:has-text("Check")').click();
+  await expect(page.locator('#step1-fb')).toContainText('4 / 5 correct');
+  await expect(page.locator('#exA-g2')).toHaveClass(/gap-wrong/);
+  await expectNoSidewaysScroll(page);
+  await page.locator('#step-1 button:has-text("Continue")').click();
+
+  // Ex B — one deliberate wrong answer
+  await answerSection(page, 'exB', { gap: 'g4', value: 'Some centres also offer basic health checks, such as blood-pressure measurements.' });
+  await page.locator('#step-2 button:has-text("Check")').click();
+  await expect(page.locator('#step2-fb')).toContainText('5 / 6 correct');
+  await page.locator('#step-2 button:has-text("Continue")').click();
+
+  // Ex C — one deliberate wrong answer (the spaced-recall item)
+  await answerSection(page, 'exC', { gap: 'g6', value: 'True' });
+  await page.locator('#step-3 button:has-text("Check")').click();
+  await expect(page.locator('#step3-fb')).toContainText('6 / 7 correct');
+  await page.locator('#step-3 button:has-text("Continue")').click();
+
+  // Ex D — free writing, then review
+  await page.locator('#exD-text').fill(EX_D_TEXT);
+  await page.locator('#step-4 button.btn-primary').click();
+
+  // Score card: points (N%), the IELTS band note, and no German Note
+  const score = page.locator('#score-display');
+  await expect(score).toBeVisible();
+  await expect(score).toContainText('15 / 18 points (83%)');
+  await expect(score).toContainText('band');
+  await expect(score).not.toContainText('Note');
+
+  // Each deliberate wrong answer shows its explanation on the review step
+  const expl = page.locator('#explanations');
+  await expect(expl).toContainText('the ones to review (3)');
+  await expect(expl).toContainText('Heading vi repeats only the');      // exA-g2
+  await expect(expl).toContainText('health checks are details');        // exB-g4
+  await expect(expl).toContainText('ielts-reading-true-false-not-given.html'); // exC-g6 spaced recall, labelled
+  await expectNoSidewaysScroll(page);
+
+  expect(errors).toEqual([]);
+});
+
+test('email mode: gate fields and submission payload carry email, never a name', async ({ page }) => {
+  const errors = [];
+  watchConsole(page, errors);
+
+  await page.goto(PAGE);
+  await expect(page.locator('#inp-email')).toBeVisible();
+  await expect(page.locator('#inp-name')).toHaveCount(0);
+  await expect(page.locator('#inp-class')).toHaveCount(0);
+  await expect(page.locator('#inp-newsletter')).not.toBeChecked();
+
+  await page.fill('#inp-email', 'learner@example.com');
+  await page.locator('button:has-text("Start Exercises")').click();
+  await expect(page.locator('#exA-g1')).toBeVisible();
+
+  await answerSection(page, 'exA');
+  await page.locator('#step-1 button:has-text("Continue")').click();
+  await answerSection(page, 'exB');
+  await page.locator('#step-2 button:has-text("Continue")').click();
+  await answerSection(page, 'exC');
+  await page.locator('#step-3 button:has-text("Continue")').click();
+  await page.locator('#exD-text').fill(EX_D_TEXT);
+  await page.locator('#step-4 button.btn-primary').click();
+
+  const payloadPromise = new Promise((resolve) => {
+    page.on('console', async (m) => {
+      if (m.text().includes('TEST MODE - Submission payload')) {
+        resolve(await m.args()[1].jsonValue());
+      }
+    });
+  });
+  await page.locator('#submit-btn').click();
+  const payload = await payloadPromise;
+
+  expect(payload.unit).toBe('ielts-reading-matching-headings');
+  expect(payload.email).toBe('learner@example.com');
+  expect(payload).toHaveProperty('newsletter');
+  expect(payload.name || '').toBe('');
+  expect(payload.cls || '').toBe('');
+  expect(payload.score).toBe('18 / 18');
+  expect(payload.grade || '').toBe('');   // no German Note, ever
+
+  expect(errors).toEqual([]);
+});

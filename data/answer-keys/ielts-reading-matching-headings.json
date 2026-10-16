@@ -1,0 +1,167 @@
+{
+ "unit": "ielts-reading-matching-headings",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "v. Two ways trees fight the heat",
+     "accept": [
+      "v. Two ways trees fight the heat"
+     ],
+     "label": "1. Paragraph B",
+     "why": "Paragraph B: trees “fight the heat in two ways” — shade and water vapour. Heading iv only repeats the detail “in parks”."
+    },
+    "g2": {
+     "correct": "viii. Reflecting sunlight away",
+     "accept": [
+      "viii. Reflecting sunlight away"
+     ],
+     "label": "2. Paragraph C",
+     "why": "Paragraph C: surfaces “bounce sunlight back”. Heading vi repeats only the “Mediterranean … for centuries” detail."
+    },
+    "g3": {
+     "correct": "i. Public places to escape the heat",
+     "accept": [
+      "i. Public places to escape the heat"
+     ],
+     "label": "3. Paragraph D",
+     "why": "Paragraph D: cooling centres are “public buildings … where anyone can sit in air conditioning for free”."
+    },
+    "g4": {
+     "correct": "iii. Cooling the air with water",
+     "accept": [
+      "iii. Cooling the air with water"
+     ],
+     "label": "4. Paragraph E",
+     "why": "Paragraph E: fountains, mist and uncovered streams all “cool the air as water evaporates”."
+    },
+    "g5": {
+     "correct": "vii. Help does not reach everyone",
+     "accept": [
+      "vii. Help does not reach everyone"
+     ],
+     "label": "5. Paragraph F",
+     "why": "Paragraph F: “Not everyone benefits equally” — the challenge is reaching “the people who need them most”."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Cities are hotter than the countryside because of how they are built.",
+     "accept": [
+      "Cities are hotter than the countryside because of how they are built."
+     ],
+     "label": "1. Main idea of paragraph A",
+     "why": "The paragraph's point is the cause — “The reasons are built into the city itself”. The opening sentence only introduces the phenomenon, and waste heat is just one of the causes."
+    },
+    "g2": {
+     "correct": "Street trees cool their surroundings in two ways.",
+     "accept": [
+      "Street trees cool their surroundings in two ways."
+     ],
+     "label": "2. Main idea of paragraph B",
+     "why": "“Trees fight the heat in two ways” is the point; planting numbers are an example and the slow growth of saplings is a detail."
+    },
+    "g3": {
+     "correct": "Reflective surfaces stop heat being absorbed in the first place.",
+     "accept": [
+      "Reflective surfaces stop heat being absorbed in the first place."
+     ],
+     "label": "3. Main idea of paragraph C",
+     "why": "The paragraph argues for making surfaces “bounce sunlight back”; the Mediterranean towns are evidence and the cool-roof figures are a detail."
+    },
+    "g4": {
+     "correct": "Cooling centres give people free, indoor relief from dangerous heat.",
+     "accept": [
+      "Cooling centres give people free, indoor relief from dangerous heat."
+     ],
+     "label": "4. Main idea of paragraph D",
+     "why": "The paragraph introduces cooling centres as free, air-conditioned public spaces; who they serve and the health checks are details."
+    },
+    "g5": {
+     "correct": "Water cools city air as it evaporates.",
+     "accept": [
+      "Water cools city air as it evaporates."
+     ],
+     "label": "5. Main idea of paragraph E",
+     "why": "“Water is the oldest coolant of all” is the point; fountains and mist sprayers are examples, and the cost of stream projects is a detail."
+    },
+    "g6": {
+     "correct": "The real challenge is making cooling reach the people who need it most.",
+     "accept": [
+      "The real challenge is making cooling reach the people who need it most."
+     ],
+     "label": "6. Main idea of paragraph F",
+     "why": "The final sentence states the point — reaching “the people who need them most”. Wealthy districts are an illustration and the budget problem is a detail."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "It matches only one detail",
+     "accept": [
+      "It matches only one detail"
+     ],
+     "label": "1. Heading iv vs paragraph B",
+     "why": "B mentions “parks” once as a planting location; the paragraph is about how trees cool, not decoration — so iv latches onto a detail."
+    },
+    "g2": {
+     "correct": "It matches only one detail",
+     "accept": [
+      "It matches only one detail"
+     ],
+     "label": "2. Heading vi vs paragraph C",
+     "why": "C mentions Mediterranean towns “for centuries” only as evidence; its main idea is reflecting sunlight, which vi turns into architectural history."
+    },
+    "g3": {
+     "correct": "It is about a different paragraph",
+     "accept": [
+      "It is about a different paragraph"
+     ],
+     "label": "3. Heading iii vs paragraph D",
+     "why": "D never mentions water as a coolant; heading iii is the main idea of paragraph E."
+    },
+    "g4": {
+     "correct": "It is about a different paragraph",
+     "accept": [
+      "It is about a different paragraph"
+     ],
+     "label": "4. Heading viii vs paragraph E",
+     "why": "E never mentions reflecting sunlight; heading viii is the main idea of paragraph C."
+    },
+    "g5": {
+     "correct": "It is about a different paragraph",
+     "accept": [
+      "It is about a different paragraph"
+     ],
+     "label": "5. Heading ii vs paragraph F",
+     "why": "F never discusses why cities overheat; heading ii is the main idea of paragraph A."
+    },
+    "g6": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "6. sometimes worked → always worked (review)",
+     "why": "“Sometimes worked” contradicts “always worked”, so the statement is False — recalled from ielts-reading-true-false-not-given.html (Ex A)."
+    },
+    "g7": {
+     "correct": "more and more",
+     "accept": [
+      "more and more"
+     ],
+     "label": "7. a growing number of (review)",
+     "why": "“A growing number of” means “more and more” — recalled from ielts-reading-true-false-not-given.html (Ex C)."
+    }
+   }
+  }
+ }
+}
