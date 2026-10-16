@@ -104,8 +104,15 @@ function build() {
   // file behind for the grader to read.
   fs.mkdirSync(OUTDIR, { recursive: true });
   for (const f of fs.readdirSync(OUTDIR)) {
+    if (f === 'index.json') continue;
     if (f.endsWith('.json') && !keys[f.slice(0, -5)]) fs.unlinkSync(path.join(OUTDIR, f));
   }
+
+  // index.json lists every unit id, for readers that cannot list a directory over
+  // HTTP (apps-script.gs's itemstats, agent #11 in docs/agent-backlog.md).
+  const indexBody = JSON.stringify({ units: Object.keys(keys).sort() }, null, 1) + '\n';
+  const indexDest = path.join(OUTDIR, 'index.json');
+  if (!fs.existsSync(indexDest) || fs.readFileSync(indexDest, 'utf8') !== indexBody) fs.writeFileSync(indexDest, indexBody);
 
   let bytes = 0, biggest = 0;
   for (const u of Object.keys(keys).sort()) {
