@@ -19472,5 +19472,183 @@
     }
    }
   }
+ },
+ "ielts-reading-sentence-summary-completion": {
+  "exA": {
+   "review": false,
+   "typed": true,
+   "gaps": {
+    "g1": {
+     "label": "1. local varieties selected over generations are called ___",
+     "correct": "landraces",
+     "accept": [
+      "landraces",
+      "landrace"
+     ],
+     "why": "Paragraph A: “local varieties, known as landraces, which had been selected over many generations” — one word, copied exactly."
+    },
+    "g2": {
+     "label": "2. a modern variety that fails when a new ___ appears",
+     "correct": "pest",
+     "accept": [
+      "pest"
+     ],
+     "why": "Paragraph A: “A modern variety that fails when a new pest arrives” — “appears” paraphrases “arrives”."
+    },
+    "g3": {
+     "label": "3. drying and cooling slows down the ___ that make them age",
+     "correct": "chemical processes",
+     "accept": [
+      "chemical processes",
+      "chemical process"
+     ],
+     "why": "Paragraph B: drying and cooling “slow down the chemical processes of ageing”; “chemical processes of ageing” is four words and breaks the limit."
+    },
+    "g4": {
+     "label": "4. staff check samples by attempting to ___ some seeds",
+     "correct": "germinate",
+     "accept": [
+      "germinate"
+     ],
+     "why": "Paragraph B: staff test each sample “by trying to germinate a few of its seeds” — the gap after “to” needs a verb."
+    },
+    "g5": {
+     "label": "5. the staff refused to eat the seeds, and ___ of them died",
+     "correct": "several",
+     "accept": [
+      "several"
+     ],
+     "why": "Paragraph C: “they refused to eat them, and several died of hunger”."
+    },
+    "g6": {
+     "label": "6. seeds are stored at minus ___ degrees Celsius",
+     "correct": "18",
+     "accept": [
+      "18",
+      "eighteen"
+     ],
+     "why": "Paragraph D: seeds “are kept at minus 18 degrees Celsius” — a number is allowed by the instruction."
+    },
+    "g7": {
+     "label": "7. after a mild winter in 2017, ___ got into the tunnel",
+     "correct": "meltwater",
+     "accept": [
+      "meltwater",
+      "melt water",
+      "melt-water"
+     ],
+     "why": "Paragraph E: “In 2017, after an unusually warm Arctic winter, meltwater entered the entrance tunnel”."
+    }
+   }
+  },
+  "exA2": {
+   "review": false,
+   "prefix": "exA-",
+   "gaps": {
+    "g8": {
+     "label": "8. the vault holds ___ copies of samples",
+     "correct": "duplicate",
+     "why": "Paragraph D: other gene banks “send duplicate copies of their samples”; “original” is wrong because the originals stay with the depositors."
+    },
+    "g9": {
+     "label": "9. a centre forced out of Syria by ___",
+     "correct": "conflict",
+     "why": "Paragraph E: “the civil war had forced the centre to move its work” — a war is a conflict; “flooding” is the 2017 problem at the vault."
+    },
+    "g10": {
+     "label": "10. oak and cocoa seeds cannot survive being ___",
+     "correct": "dried",
+     "why": "Paragraph F: recalcitrant seeds, such as oak and cocoa, “die if they are dried”."
+    },
+    "g11": {
+     "label": "11. a technique that is still ___ in its results",
+     "correct": "inconsistent",
+     "why": "Paragraph F: cryopreservation “has to be worked out species by species and success remains uneven” — uneven results are inconsistent."
+    },
+    "g12": {
+     "label": "12. frozen seeds cannot ___ as conditions change",
+     "correct": "adapt",
+     "why": "Paragraph F: critics argue “a seed held in a freezer stops adapting”."
+    },
+    "g13": {
+     "label": "13. experts regard field growing and storage as ___ approaches",
+     "correct": "complementary",
+     "why": "Paragraph F: specialists see the two approaches “as complements rather than rivals” — so “competing” says the opposite."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. it holds ___ copies (gap 8)",
+     "correct": "an adjective",
+     "why": "The gap comes before the noun “copies”, so it needs a word that describes it: an adjective."
+    },
+    "g2": {
+     "label": "2. forced out of Syria by ___ (gap 9)",
+     "correct": "a noun",
+     "why": "After the preposition “by” comes a noun: the thing that forced the centre out."
+    },
+    "g3": {
+     "label": "3. cannot survive being ___ (gap 10)",
+     "correct": "a verb form",
+     "why": "After “being” comes a past participle, as in “being dried” — a verb form."
+    },
+    "g4": {
+     "label": "4. a technique that is still ___ (gap 11)",
+     "correct": "an adjective",
+     "why": "After “is still” and before “in its results”, the gap describes the technique: an adjective."
+    },
+    "g5": {
+     "label": "5. frozen seeds cannot ___ (gap 12)",
+     "correct": "a verb form",
+     "why": "After the modal “cannot” comes the base form of a verb."
+    },
+    "g6": {
+     "label": "6. regard them as ___ approaches (gap 13)",
+     "correct": "an adjective",
+     "why": "The gap comes before the noun “approaches”, so it needs an adjective."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. seeds are dried and sealed in ___",
+     "correct": "airtight packets",
+     "why": "Paragraph B: “sealed in airtight packets” — two words; “airtight packets and stored” is over the limit, and “airtight” alone leaves the sentence without a noun."
+    },
+    "g2": {
+     "label": "2. some species produce ___ seeds",
+     "correct": "recalcitrant",
+     "why": "Paragraph F: “recalcitrant seeds” — the sentence already has “seeds”, so the gap takes one word; “what are known as recalcitrant” is over the limit."
+    },
+    "g3": {
+     "label": "3. each gene bank sends the vault ___ of its samples",
+     "correct": "duplicate copies",
+     "why": "Paragraph D: “duplicate copies of their samples” — the gap needs a noun after “sends the vault”, and the full phrase is over the limit."
+    },
+    "g4": {
+     "label": "4. seeds kept in a freezer stop ___",
+     "correct": "adapting",
+     "why": "Paragraph F: a frozen seed “stops adapting”; “stop evolve” breaks the grammar, and “evolve alongside new pests” is four words."
+    },
+    "g5": {
+     "label": "5. regeneration is both slow and ___",
+     "correct": "costly",
+     "why": "Paragraph B: regeneration “is slow and costly”; “slow and costly” repeats “slow and” and is over the limit, and “a process” does not fit after “slow and”."
+    },
+    "g6": {
+     "label": "6. was announced in 2014 → was completed in 2014 (review)",
+     "correct": "Not Given",
+     "why": "An announcement says something will happen, not that it did — recalled from ielts-reading-true-false-not-given.html (Ex B)."
+    },
+    "g7": {
+     "label": "7. a heading that repeats one detail (review)",
+     "correct": "a trap",
+     "why": "Headings that only echo a detail are the traps — recalled from ielts-reading-matching-headings.html (Ex C)."
+    }
+   }
+  }
  }
 }
