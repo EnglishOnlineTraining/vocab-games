@@ -1239,12 +1239,22 @@ function eolIsMakeTarget(url) {
   return String(url || '').indexOf('hook.eu1.make.com') !== -1;
 }
 
+/*
+ * Spreadsheet formula injection, Make → Excel half (apps-script.gs safeCell() covers
+ * the Sheets half server-side). A string starting with = + - @ (or a tab/CR) would
+ * land in the Excel table as a live formula, so prefix it with an apostrophe, which
+ * Excel stores as a text marker and does not display.
+ */
+function eolSafeCell(v) {
+  return (typeof v === 'string' && /^[=+\-@\t\r]/.test(v)) ? "'" + v : v;
+}
+
 function eolFlattenForMake(payload) {
   var out = {}, k, v;
   for (k in payload) {
     if (!Object.prototype.hasOwnProperty.call(payload, k)) continue;
     v = payload[k];
-    out[k] = (v && typeof v === 'object' && !(v instanceof Array)) ? eolFlat(v) : v;
+    out[k] = eolSafeCell((v && typeof v === 'object' && !(v instanceof Array)) ? eolFlat(v) : v);
   }
   return out;
 }
