@@ -15,7 +15,7 @@ const path = require('path');
 const { unflat, gradeSubmission, BLANK, BLANK_LEGACY } = require('./make-grader.js');
 
 const DIR = path.join(__dirname, 'data', 'answer-keys');
-const units = fs.readdirSync(DIR).filter(f => f.endsWith('.json')).sort();
+const units = fs.readdirSync(DIR).filter(f => f.endsWith('.json') && f !== 'index.json').sort();
 
 /* verbatim from exercise.js */
 function eolFlat(o) {

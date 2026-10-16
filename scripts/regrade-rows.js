@@ -106,4 +106,5 @@ function main() {
   }
 }
 
+module.exports = { parseCsv: parseCsv };
 if (require.main === module) main();

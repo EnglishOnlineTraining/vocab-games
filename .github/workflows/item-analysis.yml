@@ -1,0 +1,58 @@
+name: Item analysis
+
+# Agent #11 (docs/agent-backlog.md): once a week, fetches per-gap counts from the
+# Apps Script sheets (itemstats) and keeps one open issue listing flagged gaps and
+# writing fields. Counts only: itemstats never returns names or free text.
+# Does nothing until the ITEMSTATS_* secrets exist (the Apps Script redeploy).
+on:
+  schedule:
+    - cron: '23 5 * * 1'   # 05:23 UTC every Monday
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: item-analysis
+  cancel-in-progress: false
+
+jobs:
+  analyse:
+    runs-on: ubuntu-latest
+    env:
+      ITEMSTATS_TOKEN: ${{ secrets.ITEMSTATS_TOKEN }}
+      ITEMSTATS_URL_ONLINE: ${{ secrets.ITEMSTATS_URL_ONLINE }}
+      ITEMSTATS_URL_UNI: ${{ secrets.ITEMSTATS_URL_UNI }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Run item analysis
+        id: ia
+        if: env.ITEMSTATS_TOKEN != ''
+        run: node scripts/item-analysis.js --sheets | tee report.txt
+
+      - name: Open or update the report issue
+        if: steps.ia.outputs.flagged != '' && steps.ia.outputs.flagged != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo "Weekly item analysis, $(date -u +%Y-%m-%d). Counts only, from the Apps Script sheets."
+            echo "Rules and the fix loop: docs/agent-backlog.md, #11."
+            echo
+            echo '```'
+            cat report.txt
+            echo '```'
+          } > body.md
+          n=$(gh issue list --state open --search 'in:title "Item analysis: flagged gaps"' --json number -q '.[0].number')
+          if [ -n "$n" ]; then
+            gh issue edit "$n" --body-file body.md
+            gh issue comment "$n" --body "Updated $(date -u +%Y-%m-%d): ${{ steps.ia.outputs.flagged }} flagged."
+          else
+            gh issue create --title "Item analysis: flagged gaps" --body-file body.md
+          fi

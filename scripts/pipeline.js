@@ -243,6 +243,10 @@ const VALIDATORS = [
 //                            full marks: the exact regression that shipped on
 //                            2026-09-07, when the live grader scored every paper
 //                            0/N and the AI told the teacher so.
+//   test-item-analysis.js    reads data/answer-keys/ (one real key) plus
+//                            apps-script.gs. Pins agent #11's item analysis:
+//                            the Node and Apps Script counts agree, and no name,
+//                            class, email or one-off typed answer reaches output.
 const CHECKERS = [
   { id: 'validate-schema', run: 'scripts/validate-schema.js' },
   { id: 'check-exercises-data', run: 'scripts/check-exercises-data.js' },
@@ -264,6 +268,7 @@ const CHECKERS = [
   // them out of Sections B and C; this fails the build on an undeclared one.
   { id: 'check-test-leaks', run: 'scripts/check-test-leaks.js' },
   { id: 'test-make-grader', run: 'test-make-grader.js' },
+  { id: 'test-item-analysis', run: 'test-item-analysis.js' },
 ];
 
 // Generators deliberately left outside the graph. Their inputs change roughly
