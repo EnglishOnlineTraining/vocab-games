@@ -17,6 +17,7 @@
  */
 
 const crypto = require('crypto');
+const { stripKeyword } = require('./title-keyword');
 
 // Every block build-head.js owns. build-head strips exactly this list before
 // regenerating, so a block added there must be added here or its pages churn.
@@ -36,8 +37,11 @@ function stripBlock(html, name) {
   return html.replace(new RegExp(`[ \\t]*<!-- ${name}:START[\\s\\S]*?${name}:END -->\\n?`, 'g'), '');
 }
 
+// The title keyword is generated too (title-keyword.js), so it is left out the
+// same way: adding it must not re-date every exercise page.
 function stripGenerated(html) {
-  return GENERATED_BLOCKS.concat(HASH_SKIPPED_BLOCKS).reduce(stripBlock, html);
+  return GENERATED_BLOCKS.concat(HASH_SKIPPED_BLOCKS).reduce(stripBlock, html)
+    .replace(/<title>([\s\S]*?)<\/title>/i, (_, t) => `<title>${stripKeyword(t.trim())}</title>`);
 }
 
 function pageHash(html) {

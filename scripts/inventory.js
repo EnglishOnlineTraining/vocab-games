@@ -1,6 +1,7 @@
 /* Build docs/INVENTORY.md by extracting metadata from every .html file. */
 const fs = require('fs');
 const path = require('path');
+const { stripKeyword } = require('./title-keyword');
 const ROOT = '/home/user/vocab-games';
 
 const files = fs.readdirSync(ROOT).filter(f => f.endsWith('.html')).sort();
@@ -39,7 +40,7 @@ const otherPages = [];      // hubs, leads, template, non-step
 
 files.forEach(f => {
   const s = read(f);
-  const title = decode(m1(/<title>([\s\S]*?)<\/title>/i, s))
+  const title = stripKeyword(decode(m1(/<title>([\s\S]*?)<\/title>/i, s)))
                   .replace(/\s*[|·–-]\s*englishonline\.training\s*$/i, '').trim();
   const isHub = /activities\.html$/.test(f);
   const isLead = /^lead-/.test(f);
