@@ -104,19 +104,21 @@ const HOOK_Y7 = 'https://hook.eu1.make.com/1gx46wea33yguetah95oy4j8asbyafqm';
 const HOOK_Y9 = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj';
 const HOOK_ABITUR = 'https://hook.eu1.make.com/wdia5iljcraay8rfqijkacgb5i9jjfod';
 const TEACHER = 'englishonlinetraining@pm.me';
+// The old Year 9 Apps Script (the "year 9" sheet) — _template.html's default until
+// 2026-10-16. Nothing should post there any more.
 const TEMPLATE_DEFAULT = 'AKfycbw2eqOCB6XKREIOXuqn2fCL067CdMm20MmiTFMt9GmRUEn12vLl8gJbHL1UfbKmCP7W';
 
 function checkSheetUrl(src, file) {
   const url = (src.match(/var\s+SHEET_URL\s*=\s*['"]([^'"]*)['"]/) || [])[1];
   if (!url) return { ok: false, detail: 'no SHEET_URL found' };
-  if (url.indexOf(TEMPLATE_DEFAULT) !== -1) return { ok: false, detail: "still _template.html's old Apps Script URL — replace it" };
+  if (url.indexOf(TEMPLATE_DEFAULT) !== -1) return { ok: false, detail: 'still the old Year 9 Apps Script URL (_template.html\'s former default) — replace it' };
   if (/PASTE|TODO|HERE/.test(url)) return { ok: false, detail: 'placeholder: ' + url };
   const f = path.basename(file).toLowerCase();
   let want = null;
   if (/^(7[gca]|8[gc])-/.test(f)) want = HOOK_Y7;
   else if (/^(9[gc]|10[gc]|msa)-/.test(f)) want = HOOK_Y9;
   if (want) return { ok: url === want, detail: url === want ? null : 'expected ' + want + ' for this prefix, found ' + url };
-  if (/^(be|uni|it|esl|ielts)-/.test(f)) {
+  if (/^(be|uni|it|esl|ielts|gr)-/.test(f)) {
     const ok = /^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(url);
     return { ok: ok, detail: ok ? null : 'expected a Google Apps Script /exec URL, found ' + url };
   }
