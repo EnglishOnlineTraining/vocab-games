@@ -1714,10 +1714,11 @@ Shaun (2026-10-16): the contact address is now `learn@englishonline.training`, r
 with replies going to `pm.me`.
 - **Check first · Shaun:** does `learn@` receive mail (a mailbox, or forwarding to `pm.me`)? Until it
   does, switching `TEACHER_EMAIL` would send students' results nowhere.
-- **Then · CC:** replace `pm.me` in 267 files on `main` (294 hits): `TEACHER_EMAIL` in about 245
+- **Shaun, 2026-10-16:** `learn@` receives mail.
+- **→ Done (#168, 2026-10-17).** **Then · CC:** replace `pm.me` in 267 files on `main` (294 hits): `TEACHER_EMAIL` in about 245
   exercise pages, 20 footer `mailto:` Contact links, the JSON-LD in `scripts/schema.js`, and the
   generator scripts (`build-quizzes.js`, `build-review-pages.js`, `verify-exercise.js`,
   `audit-skills.js`, `curriculum-watch.js`) so rebuilt pages don't bring it back. Rebuild with
   `node scripts/build.js`.
-- **Also:** `CLAUDE.md` (Teacher email, rule 3), the MailerLite reply-to address, the WordPress
+- **Also:** `CLAUDE.md` (Teacher email, rule 3; done in #168), the MailerLite reply-to address, the WordPress
   contact details, and the Apps Script sheets that email results.

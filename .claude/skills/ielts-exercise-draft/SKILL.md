@@ -32,7 +32,7 @@ These already carry what the section needs, and the template does not:
   or `#inp-class`. The privacy policy (WP page 346, §7) promises IELTS learners that no name is
   sent. `test-ielts-email.js` pins this.
 - **`SHEET_URL`**: the **online sheet** Apps Script URL, copied from the page. Rows land in its
-  IELTS tab. **`TEACHER_EMAIL`**: `englishonlinetraining@pm.me`.
+  IELTS tab. **`TEACHER_EMAIL`**: `learn@englishonline.training`.
 - **The "About this task in the exam" card** on the welcome step.
 - **Writing pages:** a page-level `WRITING_RUBRIC` (see A5).
 
@@ -217,7 +217,9 @@ row. Model the rows on the two existing writing pages.
    from the new page), the hub, the sitemap and the head blocks. Then run
    `node scripts/verify-exercise.js` on the page, `node scripts/validate-explanations.js`, and
    `node test-ielts-email.js` (pins the email-only, no-name submission path A1 depends on).
-5. **Browser check:** serve over HTTP, not on port 8765, and click through.
+5. **Browser check, written as a spec:** copy `tests/ielts-matching-headings.spec.js` to
+   `tests/<UNIT>.spec.js` and adapt it, so the check is repeatable (`AGENTS.md`, Testing). Run
+   `npx playwright test tests/<UNIT>.spec.js`; CI runs every spec on each PR. It must cover:
    - **Practise mode:** every Check button; one deliberate wrong answer per section shows its
      explanation; the score card reads "points (N%)" with no Note; the rubric is the IELTS one;
      nothing scrolls sideways at 375 px; the console shows no errors.

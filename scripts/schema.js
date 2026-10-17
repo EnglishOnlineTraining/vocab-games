@@ -69,7 +69,7 @@ function personNode() {
     description: 'English teacher and Business English coach based in Berlin. Writes and teaches the '
       + 'practice material on activities.englishonline.training for German school students (Klasse 7–10, '
       + 'MSA, Abitur) and for university, IT and business learners.',
-    email: 'englishonlinetraining@pm.me',
+    email: 'learn@englishonline.training',
     telephone: '+49 176 3130 4449',
     knowsLanguage: ['en', 'de'],
     knowsAbout: [
@@ -122,7 +122,7 @@ function organizationNode() {
       + 'students, university students and professionals.',
     founder: { '@id': PERSON_ID },
     employee: { '@id': PERSON_ID },
-    email: 'englishonlinetraining@pm.me',
+    email: 'learn@englishonline.training',
     telephone: '+49 176 3130 4449',
     vatID: 'DE307424159',
     address: {

@@ -282,7 +282,7 @@ to prevent — check it against the table above before delivering.
 ## Constants
 
 ```
-TEACHER_EMAIL = 'englishonlinetraining@pm.me'
+TEACHER_EMAIL = 'learn@englishonline.training'
 GitHub repo:   EnglishOnlineTraining/vocab-games
 GitHub Pages:  englishonlinetraining.github.io/vocab-games
 WordPress ID:  1763 (Activities page)
