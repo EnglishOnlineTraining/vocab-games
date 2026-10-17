@@ -203,6 +203,10 @@ It cannot check content quality or the site's business rules, so also verify by 
 - [ ] Grammar content matches the textbook topic's "Key Grammar" column
 - [ ] All state properties have matching save/restore/validate/summary/email/payload entries
 - [ ] `score`/`grade` are included in `buildPayload()` and `buildEmailBody()`
+- [ ] **E2E spec** `tests/<UNIT>.spec.js`, copied from the nearest spec in `tests/` and adapted
+  (`AGENTS.md`, Testing): practise mode with one wrong answer per section showing its
+  explanation, no sideways scroll at 375 px, no console errors, and the test-mode payload carrying
+  `unit`, `score` and `grade`. Run `npx playwright test tests/<UNIT>.spec.js`.
 
 **Learning design:** run the self-review checklist in `docs/learning-design-checks.md` — all nine
 items must pass (or be called out with a reason in the build summary).
