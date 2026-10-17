@@ -13,7 +13,7 @@
       "aktiv passiv englisch",
       "passive voice Regeln"
     ],
-    "metaDescription": "Passiv im Englischen: Bildung mit be + past participle, alle Zeiten, Modalverben und der by-Agent — auf Deutsch erklärt, mit 30 kostenlosen Übungen.",
+    "metaDescription": "Passive Voice auf Deutsch erklärt: be + past participle in allen Zeiten, mit Modalverben und by-Agent. 30 kostenlose Übungen mit sofortigem Feedback.",
     "related": [
       "present-perfect",
       "past-perfect",
@@ -509,7 +509,8 @@
         "q": "Wie sagt man deutsche „man“-Sätze auf Englisch?",
         "a": "Meist mit dem Passiv, denn ein direktes Gegenstück zu „man“ gibt es nicht. „Man spricht hier Englisch“ → <em>English is spoken here.</em> „Man sagt, dass…“ → <em>It is said that…</em> Umgangssprachlich geht auch <em>you</em> oder <em>people</em>."
       }
-    ]
+    ],
+    "seoTitle": "Passiv Englisch: Übungen mit allen Zeiten & Erklärung"
   },
   {
     "slug": "if-saetze",
@@ -1904,7 +1905,7 @@
       "Simple Past Englisch",
       "unregelmäßige Verben Englisch"
     ],
-    "metaDescription": "Simple Past im Englischen erklärt mit kostenlosen Übungen — die einfache Vergangenheit und ihre Signalwörter.",
+    "metaDescription": "Simple Past einfach erklärt: Bildung mit -ed, unregelmäßige Verben, Verneinung, Fragen und Signalwörter, mit kostenlosen Online-Übungen.",
     "related": [
       "present-perfect",
       "past-perfect",
@@ -1936,6 +1937,17 @@
         ]
       },
       {
+        "h2": "Rechtschreibung: Verdopplung und y → ied",
+        "highlight": true,
+        "body": "Bei manchen regelmäßigen Verben ändert sich die Schreibung, wenn <strong>-ed</strong> dazukommt.",
+        "list": [
+          "Endet das Verb auf <strong>-e</strong>, kommt nur <strong>-d</strong> dazu: <em>live → live<strong>d</strong>, like → like<strong>d</strong></em>.",
+          "Konsonant + <strong>y</strong> wird zu <strong>-ied</strong>: <em>study → stud<strong>ied</strong>, try → tr<strong>ied</strong></em>. Aber Vokal + y bleibt: <em>play → play<strong>ed</strong>, enjoy → enjoy<strong>ed</strong></em>.",
+          "Kurzer, betonter Vokal + ein Konsonant am Ende: Der Konsonant wird <strong>verdoppelt</strong>: <em>stop → sto<strong>pp</strong>ed, plan → pla<strong>nn</strong>ed, prefer → prefe<strong>rr</strong>ed</em>.",
+          "Keine Verdopplung, wenn die letzte Silbe unbetont ist (<em>visit → visited, open → opened</em>) und nie bei w, x, y (<em>fix → fixed, show → showed</em>). Im britischen Englisch wird l trotzdem verdoppelt: <em>travel → travelled</em>."
+        ]
+      },
+      {
         "h2": "Aussprache der -ed-Endung",
         "body": "Die Endung -ed wird je nach vorangehendem Laut unterschiedlich ausgesprochen — das hört man im Englischen deutlich, auch wenn es im Deutschen keine Entsprechung gibt.",
         "list": [
@@ -1960,6 +1972,16 @@
           "<em>yesterday, last week/month/year, in 2010, … ago, when</em>.",
           "<em>We visited Rome last summer.</em>",
           "<em>He arrived three hours ago.</em>"
+        ]
+      },
+      {
+        "h2": "Beispieltext im Simple Past",
+        "body": "<em>Last Friday <strong>was</strong> the last day of school before the holidays. I <strong>got</strong> up early and <strong>had</strong> breakfast with my sister. We <strong>walked</strong> to school because the bus <strong>was</strong> late. In the first lesson, our teacher <strong>gave</strong> us our reports. I <strong>was</strong> happy because I <strong>didn't get</strong> a bad mark. After school, my friends and I <strong>went</strong> to the park. We <strong>played</strong> football and <strong>ate</strong> ice cream. <strong>Did</strong> we <strong>do</strong> any homework? No, we <strong>didn't</strong>!</em>",
+        "list": [
+          "Regelmäßig (-ed): <em>walked, played</em>",
+          "Unregelmäßig: <em>was, got, had, gave, went, ate</em>",
+          "Verneinung und Frage mit did: <em>didn't get, Did we do …? – No, we didn't.</em>",
+          "Signalwörter: <em>last Friday, after school</em>"
         ]
       },
       {
@@ -2231,7 +2253,8 @@
         "q": "Welche Signalwörter passen zum Simple Past?",
         "a": "yesterday, last week/month/year, in 2010, … ago, when — sie nennen einen abgeschlossenen, meist konkreten Zeitpunkt in der Vergangenheit."
       }
-    ]
+    ],
+    "seoTitle": "Simple Past Englisch: Erklärung, Regeln & Übungen"
   },
   {
     "slug": "past-progressive",
@@ -2613,7 +2636,7 @@
       "Verknüpfungswörter Englisch",
       "however therefore although"
     ],
-    "metaDescription": "Verknüpfungswörter (linking words) im Englischen erklärt mit kostenlosen Übungen — however, therefore, although und mehr.",
+    "metaDescription": "Linking words im Englischen: Liste mit deutscher Bedeutung, Komma-Regeln (however, therefore, although) und kostenlose Übungen mit sofortigem Feedback.",
     "related": [
       "relativsaetze",
       "passiv",
@@ -2635,6 +2658,140 @@
       "<em>He trained hard. <strong>As a result</strong>, he won.</em>"
     ],
     "sections": [
+      {
+        "h2": "Liste: die wichtigsten linking words mit Bedeutung",
+        "body": "Die Tabelle zeigt, was jedes Wort ausdrückt und was es auf Deutsch heißt. Die Spalte „Satzbau“ ist der Teil, an dem die meisten Fehler entstehen.",
+        "table": {
+          "head": [
+            "Linking word",
+            "Bedeutung",
+            "Funktion",
+            "Satzbau"
+          ],
+          "rows": [
+            [
+              "<strong>however</strong>",
+              "jedoch, allerdings",
+              "Gegensatz",
+              "neuer Satz, Komma danach"
+            ],
+            [
+              "<strong>nevertheless</strong>",
+              "trotzdem, dennoch",
+              "Gegensatz",
+              "neuer Satz, Komma danach"
+            ],
+            [
+              "<strong>on the other hand</strong>",
+              "andererseits",
+              "Gegensatz",
+              "neuer Satz, Komma danach"
+            ],
+            [
+              "<strong>although / even though</strong>",
+              "obwohl",
+              "Gegensatz",
+              "+ Nebensatz"
+            ],
+            [
+              "<strong>whereas / while</strong>",
+              "während, wohingegen",
+              "Gegensatz",
+              "+ Nebensatz"
+            ],
+            [
+              "<strong>despite / in spite of</strong>",
+              "trotz",
+              "Gegensatz",
+              "+ Nomen oder -ing"
+            ],
+            [
+              "<strong>because</strong>",
+              "weil",
+              "Grund",
+              "+ Nebensatz"
+            ],
+            [
+              "<strong>since / as</strong>",
+              "da",
+              "Grund",
+              "+ Nebensatz"
+            ],
+            [
+              "<strong>because of / due to / owing to</strong>",
+              "wegen, aufgrund",
+              "Grund",
+              "+ Nomen"
+            ],
+            [
+              "<strong>therefore</strong>",
+              "deshalb, daher",
+              "Folge",
+              "neuer Satz, Komma danach"
+            ],
+            [
+              "<strong>as a result / consequently</strong>",
+              "folglich, infolgedessen",
+              "Folge",
+              "neuer Satz, Komma danach"
+            ],
+            [
+              "<strong>so</strong>",
+              "also, deshalb",
+              "Folge",
+              "verbindet zwei Hauptsätze"
+            ],
+            [
+              "<strong>in addition / moreover / furthermore</strong>",
+              "außerdem, darüber hinaus",
+              "Ergänzung",
+              "neuer Satz, Komma danach"
+            ],
+            [
+              "<strong>also</strong>",
+              "auch",
+              "Ergänzung",
+              "vor dem Vollverb"
+            ],
+            [
+              "<strong>for example / for instance</strong>",
+              "zum Beispiel",
+              "Beispiel",
+              "meist mit Kommas"
+            ],
+            [
+              "<strong>such as</strong>",
+              "wie (z. B.)",
+              "Beispiel",
+              "+ Nomen"
+            ],
+            [
+              "<strong>as long as</strong>",
+              "solange",
+              "Bedingung",
+              "+ Nebensatz"
+            ],
+            [
+              "<strong>unless</strong>",
+              "es sei denn, wenn … nicht",
+              "Bedingung",
+              "+ Nebensatz"
+            ],
+            [
+              "<strong>firstly / finally</strong>",
+              "erstens / schließlich",
+              "Reihenfolge",
+              "Satzanfang, Komma danach"
+            ],
+            [
+              "<strong>in conclusion / to sum up</strong>",
+              "abschließend, zusammenfassend",
+              "Schluss",
+              "Satzanfang, Komma danach"
+            ]
+          ]
+        }
+      },
       {
         "h2": "Gegensatz ausdrücken",
         "body": "Die häufigste Gruppe — aber Vorsicht, sie folgen nicht alle derselben Satzstruktur.",
@@ -2914,6 +3071,10 @@
     ],
     "faq": [
       {
+        "q": "Was sind linking words?",
+        "a": "Linking words (auf Deutsch <em>Verknüpfungswörter</em> oder <em>Bindewörter</em>) verbinden Sätze und Gedanken und zeigen, wie sie zusammenhängen: als Gegensatz (<em>however</em>), Grund (<em>because</em>), Folge (<em>therefore</em>) oder Ergänzung (<em>moreover</em>). Die Liste oben zeigt die wichtigsten mit Bedeutung."
+      },
+      {
         "q": "Was ist der Unterschied zwischen however und although?",
         "a": "„However“ leitet einen neuen, eigenständigen Satz ein: „It was raining. However, we went out.“ „Although“ leitet einen Nebensatz mit eigenem Subjekt und Verb ein: „Although it was raining, we went out.“ Beide bedeuten inhaltlich einen Gegensatz, aber die Satzstruktur ist unterschiedlich."
       },
@@ -2936,8 +3097,25 @@
       {
         "q": "Welche Wörter drücken eine Ergänzung aus?",
         "a": "furthermore, moreover, in addition, also, besides — sie fügen einen weiteren Punkt hinzu, ohne einen Gegensatz oder eine Folge auszudrücken: „He is clever. Furthermore, he is very kind.“"
+      },
+      {
+        "q": "Kommt nach furthermore ein Komma?",
+        "a": "Ja. Steht <em>furthermore</em> (wie <em>however, moreover, therefore</em>) am Satzanfang, folgt ein Komma: „<em>Furthermore, the plan is cheaper.</em>“ Mitten im Satz steht es zwischen zwei Kommas: „<em>The plan is, furthermore, cheaper.</em>“"
+      },
+      {
+        "q": "Darf although am Satzanfang stehen?",
+        "a": "Ja, das ist sogar sehr häufig. Dann steht nach dem Nebensatz ein Komma: „<em>Although it was late, we kept working.</em>“ Steht <em>although</em> in der Satzmitte, fällt das Komma meist weg: „<em>We kept working although it was late.</em>“"
+      },
+      {
+        "q": "Ist „went“ ein linking word?",
+        "a": "Nein. <em>Went</em> ist die Simple-Past-Form von <em>go</em>, also ein Verb. Linking words verbinden Sätze oder Gedanken (<em>however, because, so</em>). Nicht verwechseln mit <em>linking verbs</em>: Das sind Verben wie <em>be, seem, become</em>, die das Subjekt mit einer Beschreibung verbinden („<em>She seems tired.</em>“)."
+      },
+      {
+        "q": "Welche linking words sind gut für die Oberstufe und das Abitur?",
+        "a": "Im Kommentar und im argumentativen Text punkten Wörter, die die Argumentation ordnen: <em>moreover, furthermore, nevertheless, whereas, consequently, on the other hand, in conclusion</em>. Wichtiger als viele verschiedene Wörter ist, dass jedes richtig sitzt. Üben kannst du das im <a href=\"../abitur-argumentative-writing.html\">Argumentative-Writing-Paket fürs Abitur</a>."
       }
-    ]
+    ],
+    "seoTitle": "Linking Words Englisch: Liste, Erklärung & Übungen"
   },
   {
     "slug": "present-tenses",

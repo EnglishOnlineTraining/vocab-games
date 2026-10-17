@@ -14,6 +14,10 @@ h1{color:var(--blue);font-size:1.6rem;line-height:1.25;margin-bottom:.5rem}
 .card h2{color:var(--blue);font-size:1.15rem;margin-bottom:.7rem}
 .card p{margin-bottom:.4rem}
 .rules-box{background:#eef4fb;border-left:4px solid var(--teal)}
+.topic-table-wrap{overflow-x:auto}
+.topic-table{width:100%;border-collapse:collapse;font-size:.92rem}
+.topic-table th,.topic-table td{text-align:left;padding:.45rem .6rem;border-bottom:1px solid var(--border);vertical-align:top}
+.topic-table th{color:var(--blue);background:#eef4fb}
 .rules,.examples{list-style:none}
 .rules li,.examples li{padding:.4rem 0 .4rem 1.4rem;position:relative;border-top:1px dashed var(--border)}
 .rules li:first-child,.examples li:first-child{border-top:none}
