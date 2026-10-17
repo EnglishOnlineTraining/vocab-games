@@ -1698,11 +1698,17 @@ WordPress, MailerLite or Make.
   that post to Make without `exercise.js` (listed in the PR).
 - **#168:** the contact switch to `learn@` (Shaun confirmed it receives mail). MailerLite reply-to,
   WordPress contact details and the Apps Script result emails are still Shaun's.
-- **#132:** rebased onto `main` and rebuilt; still waits for the 2026-11-02 indexing check.
+- **#132:** rebased onto `main` and rebuilt; waits for the 2026-11-02 indexing check.
 - **#169:** Tier 14.4, IELTS Reading sentence and summary completion (brief B2).
 - **#170:** Tier 14.4, IELTS Writing Task 1 bar charts and tables (brief B3).
-- **Merge order:** #169 and #170 touch the same hub block, so the second needs a rebase and a
-  rebuild. Both still set `TEACHER_EMAIL` to `pm.me`: if #168 merges first, switch them too.
+- **Merged 2026-10-17** (Shaun asked), in this order: #167, #169, #170, #168 (redone on the new
+  `main`, so the two IELTS pages use `learn@` too), #172 (`CLAUDE.md` imports `AGENTS.md`;
+  E2E specs in the drafting skills), then this log. **#132 held** until the 2026-11-02 check.
+- **Also 2026-10-17:** a ruleset on `main` requires the `check` job (it now runs the Playwright
+  specs). Bypass: repository admin. GitHub Actions cannot be added, so if the rebuild bot ever
+  has drift to push, its push is rejected: fix with a PR of the rebuilt files.
+- **After merge, still open:** the IELTS count on WordPress page 1763 (now 7), and ticking B2 and
+  B3 off in Tier 14 item 4.
 - **Found:** 24 duplicate files named "… 2.*" (e.g. `scripts/build-head 2.js`) appeared in the
   worktree on 2026-10-16 at 20:49, probably from Documents sync. The build treated
   `ielts-reading-matching-headings 2.html` as a real page. Moved out of the repo, none committed.
