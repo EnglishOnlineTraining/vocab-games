@@ -1239,12 +1239,28 @@ function eolIsMakeTarget(url) {
   return String(url || '').indexOf('hook.eu1.make.com') !== -1;
 }
 
+/*
+ * Spreadsheet formula injection, Make → Excel half (apps-script.gs safeCell() covers
+ * the Sheets half server-side). A string starting with = + - @ (or a tab/CR) would
+ * land in the Excel table as a live formula, so prefix it with an apostrophe, which
+ * Excel stores as a text marker and does not display.
+ * ponytail: only top-level values are guarded, because flattened objects start
+ * with their key ("text: …"). Ceiling: 23 pages build their own payload and post
+ * to Make without exercise.js (the 18 abitur-* packs, 9g-class-test-9ab,
+ * 9g/9c-australia-vocab-test, 9ab/10a-grammar-literary-review-test), so they are
+ * unguarded. Upgrade path: move them onto exercise.js, or give each submit the
+ * same one-line check. tests/make-formula-guard.spec.js covers this function.
+ */
+function eolSafeCell(v) {
+  return (typeof v === 'string' && /^[=+\-@\t\r]/.test(v)) ? "'" + v : v;
+}
+
 function eolFlattenForMake(payload) {
   var out = {}, k, v;
   for (k in payload) {
     if (!Object.prototype.hasOwnProperty.call(payload, k)) continue;
     v = payload[k];
-    out[k] = (v && typeof v === 'object' && !(v instanceof Array)) ? eolFlat(v) : v;
+    out[k] = eolSafeCell((v && typeof v === 'object' && !(v instanceof Array)) ? eolFlat(v) : v);
   }
   return out;
 }
