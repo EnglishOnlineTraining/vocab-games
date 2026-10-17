@@ -101,7 +101,7 @@ async function loadPage(page, fixtureDir) {
     return fs.readFileSync(path.join(fixtureDir, page.id + '.html'), 'utf8');
   }
   const res = await fetch(page.url, {
-    headers: { 'User-Agent': 'englishonline.training curriculum watcher (monthly; englishonlinetraining@pm.me)' },
+    headers: { 'User-Agent': 'englishonline.training curriculum watcher (monthly; learn@englishonline.training)' },
     redirect: 'follow',
     signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
   });

@@ -380,7 +380,7 @@ function buildPage(cat, cfg, items) {
 + "var UNIT          = '" + unitId + "';\n"
 + 'var TOTAL_STEPS   = ' + totalSteps + ';\n'
 + "var SHEET_URL     = '" + cfg.sheet + "';\n"
-+ "var TEACHER_EMAIL = 'englishonlinetraining@pm.me';\n\n"
++ "var TEACHER_EMAIL = 'learn@englishonline.training';\n\n"
 + 'var state = { name:\'\', cls:\'\', ' + SECTIONS.map(function (l) { return 'ex' + l + ':{}'; }).join(', ') + ', scores:{} };\n'
 + 'var maxStepReached = 0;\n\n'
 + 'var GAPS = [' + gapList.join(',') + '];\n\n'
