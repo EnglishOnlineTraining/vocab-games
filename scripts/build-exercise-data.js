@@ -7,6 +7,7 @@
  */
 const fs = require('fs');
 const path = require('path');
+const { stripKeyword } = require('./title-keyword');
 const ROOT = path.join(__dirname, '..');
 
 // ---- controlled topic vocabulary: slug → { de, en, match(regexes over grammar text) } ----
@@ -167,7 +168,7 @@ files.forEach(f => {
   // classification and leaves the other 192 framework pages untouched.
   if (UNLISTED.has(f)) return;                                                                                      // deliberately not in the public index
   if (!/<script[^>]+src="exercise\.js"/.test(s) || /activities\.html$/.test(f) || f === '_template.html') return;   // exercise pages only
-  const title = decode(m1(/<title>([\s\S]*?)<\/title>/i, s)).replace(/\s*[|·–-]\s*englishonline\.training\s*$/i, '').trim();
+  const title = stripKeyword(decode(m1(/<title>([\s\S]*?)<\/title>/i, s))).replace(/\s*[|·–-]\s*englishonline\.training\s*$/i, '').trim();
   const h1 = decode(m1(/<h1[^>]*class="welcome-title"[^>]*>([\s\S]*?)<\/h1>/i, s));
   const [year, schoolType] = schoolFromPrefix(f);
   // The page's own declared language. Most are English, but the ten gr-* grammar
