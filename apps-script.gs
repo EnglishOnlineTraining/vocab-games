@@ -265,7 +265,7 @@ function itemStats(ss, since, loader) {
   want.forEach(function (u) {
     var key = keys[u];
     if (!key || !key.sections) return;
-    var subs = [];
+    var subs = [], firsts = [];
     tabsOf[u].forEach(function (tab) {
       var v = values[tab] || (values[tab] = sheets[tab].getDataRange().getValues());
       var head = v[0].map(String), ti = head.indexOf('Timestamp'), ui = head.indexOf('Unit');
@@ -277,9 +277,15 @@ function itemStats(ss, since, loader) {
           if (/^ex/i.test(h) || isGradedIn_(h, key, true)) sections[h] = isParseCell_(v[r][c]);
         });
         subs.push(sections);
+        var first = isFirstSections_(key, function (n) { var c = head.indexOf(n); return c === -1 ? null : v[r][c]; });
+        if (first) firsts.push(first);
       }
     });
     if (subs.length) units[u] = itemStatsForUnit(key, subs);
+    if (firsts.length) {
+      var f = itemStatsForUnit(key, firsts);
+      units[u].first = { rows: f.rows, gaps: f.gaps };   // graded gaps only
+    }
   });
 
   // Tabs that look like submission tabs (Timestamp, Name, Class) but match no keyed
@@ -305,6 +311,22 @@ function isParseCell_(cell) {
     var m = /^([^:]*): ([\s\S]*)$/.exec(line);   // flatten() always writes ": "
     if (m && IS_FIELD.test(m[1])) { last = m[1]; out[last] = m[2]; }
     else if (last) out[last] += '\n' + line;
+  });
+  return out;
+}
+
+/* First-try answers (exercise.js sends first_<scoreKey>) as sections keyed like the
+   final answers. null for a row without any (sent before 2026-10-17). Mirrors
+   firstSections() in scripts/item-analysis.js. */
+function isFirstSections_(key, get) {
+  var out = null;
+  Object.keys(key.sections).forEach(function (sk) {
+    var sec = key.sections[sk], v = get('first_' + (sec.scoreKey || sk));
+    if (v == null || v === '') return;
+    var f = sec.field || sk, p = isParseCell_(v);
+    out = out || {};
+    out[f] = out[f] || {};
+    Object.keys(p).forEach(function (k) { out[f][k] = p[k]; });
   });
   return out;
 }
