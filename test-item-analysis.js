@@ -187,6 +187,8 @@ test('csv: a Make export with names in every column never prints them', () => {
   // Excel with German settings: "CSV UTF-8" is ;-separated with a BOM. Same result.
   const semi = tmp('export-de.csv', '\uFEFF' + rows.map(r => r.map(c => /[";\n]/.test(c) ? '"' + String(c).replace(/"/g, '""') + '"' : c).join(';')).join('\n') + '\n');
   assert.deepStrictEqual(JSON.parse(run(['--csv', semi, '--json'])), r);
+  const { parseCsv } = require('./scripts/regrade-rows.js');   // a ; inside a quoted header is text
+  assert.deepStrictEqual(parseCsv('"x;y;z",b\n1,2'), [['x;y;z', 'b'], ['1', '2']]);
   // --since drops the earlier rows by the Timestamp column
   const since = JSON.parse(run(['--csv', file, '--json', '--since', '2026-10-05']));
   assert.strictEqual(since.gaps.find(g => g.gap === first.gap).n, 10);

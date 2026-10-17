@@ -133,7 +133,11 @@ for (const f of units) {
   if (!src) continue;
   for (const [sk, sec] of Object.entries(key.sections)) {
     const field = sec.field || sk;
-    check(new RegExp('[{,\\s]' + field + '\\s*:').test(src), key.unit + ': key section ' + sk + ' reads field ' + field + ', which the page never sends');
+    // The payload literal assigns the field a value (`ex2: eolFlat(state.exB)`,
+    // `exA: answersOf(…)`). The state setup line `exB: {}` does not count: it matched
+    // on 8 pages that send exB's answers as ex2.
+    check(new RegExp('\\b' + field + '\\s*:\\s*(?!\\{)[\\w(]').test(src),
+          key.unit + ': key section ' + sk + ' reads field ' + field + ', which the page never sends');
   }
 }
 

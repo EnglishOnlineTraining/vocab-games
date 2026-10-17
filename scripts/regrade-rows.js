@@ -26,9 +26,10 @@ const KEYS = path.join(__dirname, '..', 'data', 'answer-keys');
 /* RFC4180 CSV: quoted fields may contain commas, newlines and doubled quotes. */
 function parseCsv(text) {
   // Excel with German settings exports "CSV UTF-8" as ;-separated with a BOM.
-  // ponytail: the delimiter is guessed from the header line, which has no quotes.
+  // ponytail: the delimiter is guessed from the header line, quoted parts removed;
+  // a header split over two lines by a quoted newline would fool it.
   text = text.replace(/^\uFEFF/, '');
-  const head = text.slice(0, text.indexOf('\n') >>> 0);
+  const head = text.slice(0, text.indexOf('\n') >>> 0).replace(/"[^"]*"/g, '');
   const sep = (head.split(';').length > head.split(',').length) ? ';' : ',';
   const rows = [];
   let row = [], field = '', inQuotes = false;
