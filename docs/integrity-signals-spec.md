@@ -9,6 +9,32 @@ Give the teacher a few numbers with each submission that show *how* a free-text
 answer was produced. The numbers flag answers to follow up in class. They do not
 prove AI use and must never change a score or grade.
 
+## Who it is for: three levels, set by category
+
+Shaun's own students get real grades, so integrity matters most there. General
+visitors to the site are not graded by Shaun, so there is little to protect. Practice
+work needs less than graded work. So the strictness is set per category, not
+site-wide.
+
+| Level | What it does | Applies to |
+|---|---|---|
+| **Strict** | Paste, copy and drop blocked. All `int_*` counts, plus tab switches, reloads and resumes. `int_flag` filled in. A notice on the start screen. | Graded tests for Shaun's classes: `9g-class-test-9ab`, both `*-australia-vocab-test`, both `*-grammar-literary-review-test`, and any later class test. |
+| **Standard** | Paste, copy and drop blocked (as now, plus drop). `int_*` counts only. No `int_flag`, no tab switches. A one-line notice near the submit button. | Ordinary exercises for Shaun's classes: `8c-`, `9g-`, `9c-`, `10g-`, `10c-`. Also `7g-`/`7c-`/`8g-` and `msa-c-` if those are still set for his classes. |
+| **Off** | Nothing recorded. Paste blocking stays as it is now. | Public pages: `ielts-`, `esl-`, `gr-`, `be-`, `it-`, `abitur-` (Payhip packs), `lead-`, `quiz-`, `level-test`. `uni-` unless Shaun's university courses are graded on them. |
+
+- **Practise mode** (`startPractise()`) submits nothing, so it records nothing, at
+  every level.
+- **How the level is set:** `exercise.js` picks a default from the filename prefix
+  in one table, so phase 1 needs no page edits. A page can override it with
+  `var INTEGRITY_LEVEL = 'strict' | 'standard' | 'off';`. The class tests are
+  standalone pages and set Strict themselves.
+- **Payload:** send `int_level` with the counts, so the sheet shows which rules
+  applied.
+- **Public visitors on class pages:** a `9g-` page is public too, so a visitor
+  there is recorded at Standard. The notice near the submit button covers this.
+  A stricter option is to record only when the class field matches one of Shaun's
+  current classes (see questions).
+
 ## What exists now (checked on `main`, 58161f8)
 
 - `exercise.js` blocks paste in every `INPUT`/`TEXTAREA` and blocks copy on the
@@ -128,8 +154,10 @@ shows many words with almost no keystrokes — the same pattern as retyped AI te
 
 ## Phases
 
-1. `exercise.js` only (all framework pages, no page edits).
-2. The 23 standalone pages. Either move them onto `exercise.js` (already the
+1. `exercise.js` only (all framework pages, no page edits). Ships Standard and
+   Off; no framework page is Strict.
+2. The Strict class tests first, then the rest of the 23 standalone pages (mostly
+   Off: the `abitur-` packs, `business-needs-analysis`, `uni-writing-task`). Either move them onto `exercise.js` (already the
    documented upgrade path in the formula-guard comment) or add the same block.
    Several already collect `tab_switches` / `paste_attempts` / `typing_anomalies`;
    map those onto the `int_*` names or keep both, but do not double-count paste.
@@ -141,11 +169,12 @@ shows many words with almost no keystrokes — the same pattern as retyped AI te
   handout is not in this repo; check it matches the final field list.
 - Counts only, as above. Ask the school data protection officer before turning it
   on for Docemus classes.
-- External classes also submit to these pages. Either add a one-line notice near
-  the submit button on all pages, or record signals only when a class code is set.
-- IELTS pages submit an email address instead of a name, to the Apps Script IELTS
-  tab. If signals go on for them, the privacy policy (§7, see
-  `submission-routing.md`) needs a line on it.
+- External visitors also submit to class pages. The Standard notice near the submit
+  button tells them; the class-code option (questions) would stop recording them
+  at all.
+- IELTS and the other public categories are Off, so the IELTS privacy policy (§7,
+  see `submission-routing.md`) needs no change. If one is ever moved up a level,
+  it does.
 
 ## Open questions for Shaun
 
@@ -155,8 +184,11 @@ shows many words with almost no keystrokes — the same pattern as retyped AI te
 2. **`int_flag` rules:** fixed thresholds (e.g. `int_wpm` > 60, or fewer than one
    delete per 100 words), or raw numbers only for now? Recommendation: raw numbers
    first, set thresholds after one month of real data.
-3. **Scope:** all pages, or only school pages? (Affects the notice text and the
-   IELTS privacy policy.)
+3. **Levels by category:** confirm the table above, especially `uni-` (graded
+   for your university courses?), `msa-c-` and the old `7g-`/`7c-`/`8g-` pages.
+   And on class pages: record everyone (with the notice), or only when the class
+   field matches one of your current classes? Recommendation: match the class,
+   since it also keeps general visitors out of the data.
 4. **Phase 2 route:** migrate the standalone pages to `exercise.js`, or copy the
    block into them?
 5. **Existing test-page signals:** keep `user_agent`, `snapshots` and the
