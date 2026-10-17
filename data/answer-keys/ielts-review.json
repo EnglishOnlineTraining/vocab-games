@@ -20,39 +20,39 @@
      "label": "2. Paragraph on cycle lanes"
     },
     "g3": {
-     "correct": "from",
-     "accept": [
-      "from"
-     ],
-     "label": "3. fell"
-    },
-    "g4": {
      "correct": "False",
      "accept": [
       "False"
      ],
-     "label": "4. plant community a better guide → number of walks the best guide"
+     "label": "3. plant community a better guide → number of walks the best guide"
+    },
+    "g4": {
+     "correct": "airtight packets",
+     "accept": [
+      "airtight packets"
+     ],
+     "label": "4. seeds are dried and sealed in"
     },
     "g5": {
+     "correct": "from",
+     "accept": [
+      "from"
+     ],
+     "label": "5. fell"
+    },
+    "g6": {
      "correct": "just over half",
      "accept": [
       "just over half"
      ],
-     "label": "5. 52%"
+     "label": "6. 52%"
     },
-    "g6": {
+    "g7": {
      "correct": "Another benefit is that courses outside a student’s field teach practical skills.",
      "accept": [
       "Another benefit is that courses outside a student’s field teach practical skills."
      ],
-     "label": "6. Paragraph on languages and coding skills"
-    },
-    "g7": {
-     "correct": "dwindle",
-     "accept": [
-      "dwindle"
-     ],
-     "label": "7. car use continued to"
+     "label": "7. Paragraph on languages and coding skills"
     },
     "g8": {
      "correct": "True",
@@ -68,60 +68,60 @@
    "multi": false,
    "gaps": {
     "g1": {
+     "correct": "Not Given",
+     "accept": [
+      "Not Given"
+     ],
+     "label": "1. was announced in 2014 → was completed in 2014 (review)"
+    },
+    "g2": {
+     "correct": "dwindle",
+     "accept": [
+      "dwindle"
+     ],
+     "label": "2. car use continued to"
+    },
+    "g3": {
      "correct": "three times as many",
      "accept": [
       "three times as many"
      ],
-     "label": "1. 90 compared with 30"
+     "label": "3. 90 compared with 30"
     },
-    "g2": {
+    "g4": {
      "correct": "Despite",
      "accept": [
       "Despite"
      ],
-     "label": "2."
+     "label": "4."
     },
-    "g3": {
-     "correct": "dramatic increase",
-     "accept": [
-      "dramatic increase"
-     ],
-     "label": "3. Cycling saw a"
-    },
-    "g4": {
+    "g5": {
      "correct": "True",
      "accept": [
       "True"
      ],
-     "label": "4. more than 5,000 → over five thousand"
+     "label": "5. more than 5,000 → over five thousand"
     },
-    "g5": {
+    "g6": {
+     "correct": "costly",
+     "accept": [
+      "costly"
+     ],
+     "label": "6. regeneration is both slow and"
+    },
+    "g7": {
+     "correct": "dramatic increase",
+     "accept": [
+      "dramatic increase"
+     ],
+     "label": "7. Cycling saw a"
+    },
+    "g8": {
      "correct": "four times",
      "accept": [
       "four times"
      ],
-     "label": "5. the share of car users was"
-    },
-    "g6": {
-     "correct": "Although",
-     "accept": [
-      "Although"
-     ],
-     "label": "6."
-    },
-    "g7": {
-     "correct": "remained stable",
-     "accept": [
-      "remained stable"
-     ],
-     "label": "7. Prices"
-    },
-    "g8": {
-     "correct": "the actions taken to deal with the problem",
-     "accept": [
-      "the actions taken to deal with the problem"
-     ],
-     "label": "8. Such measures (paragraph B)"
+     "label": "8. the share of car users was"
     }
    }
   },
@@ -130,60 +130,60 @@
    "multi": false,
    "gaps": {
     "g1": {
+     "correct": "Although",
+     "accept": [
+      "Although"
+     ],
+     "label": "1."
+    },
+    "g2": {
+     "correct": "the actions taken to deal with the problem",
+     "accept": [
+      "the actions taken to deal with the problem"
+     ],
+     "label": "2. Such measures (paragraph B)"
+    },
+    "g3": {
+     "correct": "a verb form",
+     "accept": [
+      "a verb form"
+     ],
+     "label": "3. frozen seeds cannot"
+    },
+    "g4": {
+     "correct": "remained stable",
+     "accept": [
+      "remained stable"
+     ],
+     "label": "4. Prices"
+    },
+    "g5": {
      "correct": "fewer than one in ten",
      "accept": [
       "fewer than one in ten"
      ],
-     "label": "1. 9%"
+     "label": "5. 9%"
     },
-    "g2": {
+    "g6": {
      "correct": "Moreover",
      "accept": [
       "Moreover"
      ],
-     "label": "2."
+     "label": "6."
     },
-    "g3": {
-     "correct": "sharp fall",
-     "accept": [
-      "sharp fall"
-     ],
-     "label": "3. There was a"
-    },
-    "g4": {
+    "g7": {
      "correct": "False",
      "accept": [
       "False"
      ],
-     "label": "4. occasionally worked → never worked"
-    },
-    "g5": {
-     "correct": "whereas",
-     "accept": [
-      "whereas"
-     ],
-     "label": "5. the car was most common in A,"
-    },
-    "g6": {
-     "correct": "nevertheless",
-     "accept": [
-      "nevertheless"
-     ],
-     "label": "6."
-    },
-    "g7": {
-     "correct": "sharply",
-     "accept": [
-      "sharply"
-     ],
-     "label": "7. then dropped"
+     "label": "7. occasionally worked → never worked"
     },
     "g8": {
-     "correct": "more and more",
+     "correct": "a trap",
      "accept": [
-      "more and more"
+      "a trap"
      ],
-     "label": "8. a growing number of (paragraph C)"
+     "label": "8. a heading that repeats one detail (review)"
     }
    }
   }
