@@ -13,6 +13,13 @@ sitemap, `<head>`) come from `node scripts/build.js` — see "Adding a new exerc
 **GitHub repo:** `https://github.com/EnglishOnlineTraining/vocab-games`  
 **Teacher email:** `englishonlinetraining@pm.me`
 
+## Coding rules — Ponytail (`AGENTS.md`)
+All code in this repo follows `AGENTS.md`: reuse before writing, the shortest diff that is
+correct, a `ponytail:` comment naming any known ceiling, and one runnable check left behind for
+non-trivial logic — an E2E spec in `tests/` by preference. Imported here so every session loads it:
+
+@AGENTS.md
+
 ---
 
 ## Rules that keep getting missed
