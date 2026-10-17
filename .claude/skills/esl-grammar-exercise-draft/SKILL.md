@@ -136,6 +136,7 @@ It cannot check content quality or this series' own conventions, so also verify 
 - [ ] `SHEET_URL` is the online-sheet Apps Script URL
 - [ ] `<html lang="en">` is set
 - [ ] Every dropdown has 3 options with the correct answer shuffled
+- [ ] Checked against STYLE.md §2.5, "Lessons from item analysis" (payload keys equal scoreKeys; typed keys accept every correct word order)
 - [ ] Answer keys in `checkExX()` are actually correct
 - [ ] Overview cards match the actual exercises; steps 2+ have `class="locked"`
 - [ ] The reading text matches the pool entry's `cefr` level

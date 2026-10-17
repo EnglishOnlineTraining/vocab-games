@@ -236,6 +236,14 @@ opens or updates its issue when `flagged > 0`, so a normal run never shows red.
      revert the fix;
    - otherwise → "inconclusive", keep it and check again on the next run.
 
+   `item-analysis.js` does this itself (2026-10-17): every run reads
+   `data/item-changes.json`, scores each logged gap on answers since its date, and prints
+   "kept", "worse: revert", "inconclusive" or "waiting". A risen score counts as "kept".
+   Flagged gaps that already have a logged fix are marked "(fixed DATE)".
+5. A fix marked "kept" whose cause could recur on new pages becomes a rule in STYLE.md
+   §2.5 "Lessons from item analysis". The drafting skills point there, so new pages start
+   without the problem.
+
 ### Done when
 - `test-item-analysis.js` passes in CI (via `build.js --check`).
 - `--csv` runs on a real Excel export and on an Abitur export, and the output has no names.

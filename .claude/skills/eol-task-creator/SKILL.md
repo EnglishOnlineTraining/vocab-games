@@ -153,6 +153,7 @@ Before presenting the file, check:
 - [ ] `SHEET_URL` correct (Year 7/9 match rows 1–2; Year 9 match rows 3–4)
 - [ ] `TOTAL_STEPS` matches actual step count
 - [ ] Every field has matching save/restore/validate/summary/email entries
+- [ ] Checked against STYLE.md §2.5, "Lessons from item analysis" (payload keys equal scoreKeys; typed keys accept every correct word order)
 - [ ] Overview cards match actual exercises; steps 2+ are `locked`
 - [ ] `TEACHER_EMAIL` unchanged from template
 - [ ] Step 1 has unscored retrieval prompt
