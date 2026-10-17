@@ -6,60 +6,60 @@
    "multi": false,
    "gaps": {
     "g1": {
+     "correct": "Overall, the Science museum attracted far more visitors than the other two.",
+     "accept": [
+      "Overall, the Science museum attracted far more visitors than the other two."
+     ],
+     "label": "1. Overview: museum visitors"
+    },
+    "g2": {
      "correct": "Investing in cycle lanes is one of the most effective ways to reduce traffic.",
      "accept": [
       "Investing in cycle lanes is one of the most effective ways to reduce traffic."
      ],
-     "label": "1. Paragraph on cycle lanes"
+     "label": "2. Paragraph on cycle lanes"
     },
-    "g2": {
+    "g3": {
      "correct": "False",
      "accept": [
       "False"
      ],
-     "label": "2. plant community a better guide → number of walks the best guide"
+     "label": "3. plant community a better guide → number of walks the best guide"
     },
-    "g3": {
+    "g4": {
      "correct": "airtight packets",
      "accept": [
       "airtight packets"
      ],
-     "label": "3. seeds are dried and sealed in"
+     "label": "4. seeds are dried and sealed in"
     },
-    "g4": {
+    "g5": {
      "correct": "from",
      "accept": [
       "from"
      ],
-     "label": "4. fell"
+     "label": "5. fell"
     },
-    "g5": {
+    "g6": {
+     "correct": "just over half",
+     "accept": [
+      "just over half"
+     ],
+     "label": "6. 52%"
+    },
+    "g7": {
      "correct": "Another benefit is that courses outside a student’s field teach practical skills.",
      "accept": [
       "Another benefit is that courses outside a student’s field teach practical skills."
      ],
-     "label": "5. Paragraph on languages and coding skills"
+     "label": "7. Paragraph on languages and coding skills"
     },
-    "g6": {
+    "g8": {
      "correct": "True",
      "accept": [
       "True"
      ],
-     "label": "6. connected homes to schools and bus stops → some paths led to bus stops"
-    },
-    "g7": {
-     "correct": "Not Given",
-     "accept": [
-      "Not Given"
-     ],
-     "label": "7. was announced in 2014 → was completed in 2014 (review)"
-    },
-    "g8": {
-     "correct": "dwindle",
-     "accept": [
-      "dwindle"
-     ],
-     "label": "8. car use continued to"
+     "label": "8. connected homes to schools and bus stops → some paths led to bus stops"
     }
    }
   },
@@ -68,60 +68,60 @@
    "multi": false,
    "gaps": {
     "g1": {
+     "correct": "Not Given",
+     "accept": [
+      "Not Given"
+     ],
+     "label": "1. was announced in 2014 → was completed in 2014 (review)"
+    },
+    "g2": {
+     "correct": "dwindle",
+     "accept": [
+      "dwindle"
+     ],
+     "label": "2. car use continued to"
+    },
+    "g3": {
+     "correct": "three times as many",
+     "accept": [
+      "three times as many"
+     ],
+     "label": "3. 90 compared with 30"
+    },
+    "g4": {
      "correct": "Despite",
      "accept": [
       "Despite"
      ],
-     "label": "1."
+     "label": "4."
     },
-    "g2": {
+    "g5": {
      "correct": "True",
      "accept": [
       "True"
      ],
-     "label": "2. more than 5,000 → over five thousand"
+     "label": "5. more than 5,000 → over five thousand"
     },
-    "g3": {
+    "g6": {
      "correct": "costly",
      "accept": [
       "costly"
      ],
-     "label": "3. regeneration is both slow and"
+     "label": "6. regeneration is both slow and"
     },
-    "g4": {
+    "g7": {
      "correct": "dramatic increase",
      "accept": [
       "dramatic increase"
      ],
-     "label": "4. Cycling saw a"
-    },
-    "g5": {
-     "correct": "Although",
-     "accept": [
-      "Although"
-     ],
-     "label": "5."
-    },
-    "g6": {
-     "correct": "the actions taken to deal with the problem",
-     "accept": [
-      "the actions taken to deal with the problem"
-     ],
-     "label": "6. Such measures (paragraph B)"
-    },
-    "g7": {
-     "correct": "a verb form",
-     "accept": [
-      "a verb form"
-     ],
-     "label": "7. frozen seeds cannot"
+     "label": "7. Cycling saw a"
     },
     "g8": {
-     "correct": "remained stable",
+     "correct": "four times",
      "accept": [
-      "remained stable"
+      "four times"
      ],
-     "label": "8. Prices"
+     "label": "8. the share of car users was"
     }
    }
   },
@@ -130,60 +130,60 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "Moreover",
+     "correct": "Although",
      "accept": [
-      "Moreover"
+      "Although"
      ],
      "label": "1."
     },
     "g2": {
+     "correct": "the actions taken to deal with the problem",
+     "accept": [
+      "the actions taken to deal with the problem"
+     ],
+     "label": "2. Such measures (paragraph B)"
+    },
+    "g3": {
+     "correct": "a verb form",
+     "accept": [
+      "a verb form"
+     ],
+     "label": "3. frozen seeds cannot"
+    },
+    "g4": {
+     "correct": "remained stable",
+     "accept": [
+      "remained stable"
+     ],
+     "label": "4. Prices"
+    },
+    "g5": {
+     "correct": "fewer than one in ten",
+     "accept": [
+      "fewer than one in ten"
+     ],
+     "label": "5. 9%"
+    },
+    "g6": {
+     "correct": "Moreover",
+     "accept": [
+      "Moreover"
+     ],
+     "label": "6."
+    },
+    "g7": {
      "correct": "False",
      "accept": [
       "False"
      ],
-     "label": "2. occasionally worked → never worked"
+     "label": "7. occasionally worked → never worked"
     },
-    "g3": {
+    "g8": {
      "correct": "a trap",
      "accept": [
       "a trap"
      ],
-     "label": "3. a heading that repeats one detail (review)"
-    },
-    "g4": {
-     "correct": "sharp fall",
-     "accept": [
-      "sharp fall"
-     ],
-     "label": "4. There was a"
-    },
-    "g5": {
-     "correct": "nevertheless",
-     "accept": [
-      "nevertheless"
-     ],
-     "label": "5."
-    },
-    "g6": {
-     "correct": "more and more",
-     "accept": [
-      "more and more"
-     ],
-     "label": "6. a growing number of (paragraph C)"
-    },
-    "g7": {
-     "correct": "an adjective",
-     "accept": [
-      "an adjective"
-     ],
-     "label": "7. regard them as"
-    },
-    "g8": {
-     "correct": "sharply",
-     "accept": [
-      "sharply"
-     ],
-     "label": "8. then dropped"
+     "label": "8. a heading that repeats one detail (review)"
     }
    }
   }

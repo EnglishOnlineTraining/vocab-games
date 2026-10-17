@@ -19650,5 +19650,129 @@
     }
    }
   }
+ },
+ "ielts-writing-task1-tables-bar-charts": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. the car was most common in A, ___ bicycles were first in B",
+     "correct": "whereas",
+     "why": "“Whereas” links two contrasting facts in one sentence; “because” and “so” would mean one fact caused the other."
+    },
+    "g2": {
+     "label": "2. the share of car users was ___ that in Country B",
+     "correct": "four times",
+     "why": "48% is four times 12%; “twice” would be 24% and “half” 6%."
+    },
+    "g3": {
+     "label": "3. public transport in Country C: ___ of students (45%)",
+     "correct": "just under half",
+     "why": "45% is a little below 50%, so it is just under half."
+    },
+    "g4": {
+     "label": "4. Country B had ___ of cyclists of the four countries",
+     "correct": "the highest proportion",
+     "why": "At 44%, Country B’s cycling figure is far above A (6%), C (9%) and D (12%)."
+    },
+    "g5": {
+     "label": "5. only 6% cycled in A, ___ 44% in Country B",
+     "correct": "compared with",
+     "why": "“Compared with” sets one figure against another; 6% is not similar to 44%."
+    },
+    "g6": {
+     "label": "6. walking in Country D: ___ of students (28%)",
+     "correct": "just over a quarter",
+     "why": "A quarter is 25%, so 28% is just over a quarter."
+    },
+    "g7": {
+     "label": "7. Countries A and C had ___ of walkers, at 16%",
+     "correct": "the same proportion",
+     "why": "Both countries show 16% for walking."
+    },
+    "g8": {
+     "label": "8. car use in C (30%) was ___ in Country D (24%)",
+     "correct": "slightly higher than",
+     "why": "30% is above 24%, but only by 6 percentage points."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. 26%",
+     "correct": "just over a quarter",
+     "why": "A quarter is 25%, and 26% is one point above it."
+    },
+    "g2": {
+     "label": "2. 49%",
+     "correct": "almost half",
+     "why": "Half is 50%, and 49% is just below it."
+    },
+    "g3": {
+     "label": "3. 90 compared with 30",
+     "correct": "three times as many",
+     "why": "90 ÷ 30 = 3, so it is three times as many; “three more” would be 33."
+    },
+    "g4": {
+     "label": "4. 74%",
+     "correct": "nearly three quarters",
+     "why": "Three quarters is 75%, and 74% is just below it."
+    },
+    "g5": {
+     "label": "5. 32%",
+     "correct": "roughly a third",
+     "why": "A third is about 33%, so 32% is roughly a third."
+    },
+    "g6": {
+     "label": "6. 52%",
+     "correct": "just over half",
+     "why": "Half is 50%, and 52% is a little above it."
+    },
+    "g7": {
+     "label": "7. 9%",
+     "correct": "fewer than one in ten",
+     "why": "One in ten is 10%, so 9% is fewer than one in ten."
+    },
+    "g8": {
+     "label": "8. 20 compared with 40",
+     "correct": "half as many",
+     "why": "20 is half of 40; “twice as many” would be 80."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. Overview: travel to university",
+     "correct": "Overall, travel habits differed widely, with driving most common in Country A, cycling in Country B and public transport in Countries C and D.",
+     "why": "An overview names the main features with no detailed figures; the other options list numbers or give an opinion."
+    },
+    "g2": {
+     "label": "2. Overview: museum visitors",
+     "correct": "Overall, the Science museum attracted far more visitors than the other two.",
+     "why": "It states the biggest difference without figures; Task 1 never asks for your opinion."
+    },
+    "g3": {
+     "label": "3. Overview: homework hours",
+     "correct": "Overall, the older the students were, the more time they spent on homework.",
+     "why": "It sums up the pattern across all three groups; the other options list figures or judge the data."
+    },
+    "g4": {
+     "label": "4. Overview: what adults read",
+     "correct": "Overall, younger adults preferred online news, while older adults read newspapers far more.",
+     "why": "It contrasts the two groups’ main habits without numbers or opinion."
+    },
+    "g5": {
+     "label": "5. rose ___ 12% to 27% (review)",
+     "correct": "from",
+     "why": "“From … to …” gives the start and end figures — recalled from ielts-writing-task1-describing-trends.html (Ex C)."
+    },
+    "g6": {
+     "label": "6. There was a ___ in bus use (review)",
+     "correct": "slight fall",
+     "why": "After “a”, use adjective + noun — recalled from ielts-writing-task1-describing-trends.html (Ex B)."
+    }
+   }
+  }
  }
 }
