@@ -88,7 +88,7 @@ function page(qz) {
     + 'var UNIT          = ' + JSON.stringify(qz.unit) + ';\n'
     + 'var TOTAL_STEPS   = 2;\n'
     + "var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec';\n"
-    + "var TEACHER_EMAIL = 'englishonlinetraining@pm.me';\n\n"
+    + "var TEACHER_EMAIL = 'learn@englishonline.training';\n\n"
     + 'var state = { name: \'\', cls: \'\', quiz: {}, scores: {} };\n'
     + 'var maxStepReached = 0;\n\n'
     + 'var QUIZ_IDS = [' + ids + '];\n'

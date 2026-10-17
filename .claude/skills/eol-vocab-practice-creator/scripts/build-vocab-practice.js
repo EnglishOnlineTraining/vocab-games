@@ -339,7 +339,7 @@ ${cBlocks}
 var UNIT          = ${jsStr(d.unit)};
 var TOTAL_STEPS   = 4;                    /* step-4 is the submit step */
 var SHEET_URL     = ${jsStr(d.sheetUrl)};
-var TEACHER_EMAIL = ${jsStr(d.teacherEmail || 'englishonlinetraining@pm.me')};
+var TEACHER_EMAIL = ${jsStr(d.teacherEmail || 'learn@englishonline.training')};
 
 /* The word list, and the single source of truth for what this page tests. */
 var VOCAB = [

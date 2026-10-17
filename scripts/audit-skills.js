@@ -242,7 +242,7 @@ function checkWebhookUrls(content, skillName) {
 function checkConstants(content, skillName) {
   const issues = [];
   // Check TEACHER_EMAIL consistency
-  if (content.includes('TEACHER_EMAIL') && !content.includes('englishonlinetraining@pm.me')) {
+  if (content.includes('TEACHER_EMAIL') && !content.includes('learn@englishonline.training')) {
     issues.push({ type: 'WARN', msg: 'TEACHER_EMAIL referenced but expected value not found' });
   }
   // Check GitHub repo reference

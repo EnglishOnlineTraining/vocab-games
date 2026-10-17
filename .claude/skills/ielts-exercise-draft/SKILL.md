@@ -32,7 +32,7 @@ These already carry what the section needs, and the template does not:
   or `#inp-class`. The privacy policy (WP page 346, §7) promises IELTS learners that no name is
   sent. `test-ielts-email.js` pins this.
 - **`SHEET_URL`**: the **online sheet** Apps Script URL, copied from the page. Rows land in its
-  IELTS tab. **`TEACHER_EMAIL`**: `englishonlinetraining@pm.me`.
+  IELTS tab. **`TEACHER_EMAIL`**: `learn@englishonline.training`.
 - **The "About this task in the exam" card** on the welcome step.
 - **Writing pages:** a page-level `WRITING_RUBRIC` (see A5).
 

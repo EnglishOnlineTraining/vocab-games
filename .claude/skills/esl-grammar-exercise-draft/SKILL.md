@@ -56,7 +56,7 @@ then `TOTAL_STEPS = N + 1` and the submit section gets `id="step-{N+1}"`. Verify
   shared framework used by every page on the site, not something to patch per-series. Do not edit
   `exercise.js` to change this.
 - **`UNIT`** — the `id` from the pool entry (e.g. `'esl-articles'`).
-- **`TEACHER_EMAIL`** — always `'englishonlinetraining@pm.me'`.
+- **`TEACHER_EMAIL`** — always `'learn@englishonline.training'`.
 - **`SHEET_URL`** — route through the **Business English/University Apps Script URL** (see
   CLAUDE.md's "Submission routing" section for the current value). That handler auto-creates its
   own tab from `unit` with no redeploy needed, which is why it's the right default for a brand-new
@@ -96,7 +96,7 @@ Fill in every `TODO` in the template:
 - [ ] **`UNIT`** — the pool entry's `id`, matching the filename
 - [ ] **`TOTAL_STEPS`** — number of exercise steps + 1
 - [ ] **`SHEET_URL`** — the online-sheet Apps Script URL (see §3 above)
-- [ ] **`TEACHER_EMAIL`** — `'englishonlinetraining@pm.me'`
+- [ ] **`TEACHER_EMAIL`** — `'learn@englishonline.training'`
 - [ ] **Welcome screen** — emoji, title, subtitle, overview cards (steps 2+ get `class="locked"`)
 - [ ] **State object** — one property per exercise section (exA, exB, exC, exD, scores)
 - [ ] **validateStep(n) / saveStep(n) / restoreStep(n) / buildSummary() / buildEmailBody() /
@@ -201,7 +201,7 @@ If Shaun replies with feedback, revise and republish (repeat step 6).
 Registry:       esl-grammar-pool.json  (repo root — NOT topic-pool.json)
 Viewer:         node esl-grammar-pool.js [tier] [--all] [--check]
 Hub:            esl-grammar-activities.html
-TEACHER_EMAIL = 'englishonlinetraining@pm.me'
+TEACHER_EMAIL = 'learn@englishonline.training'
 SHEET_URL     = Business English/University Apps Script URL (see CLAUDE.md)
 GitHub repo:    EnglishOnlineTraining/vocab-games
 GitHub Pages:   activities.englishonline.training

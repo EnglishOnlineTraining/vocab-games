@@ -103,7 +103,7 @@ function checkStateScores(src) {
 const HOOK_Y7 = 'https://hook.eu1.make.com/1gx46wea33yguetah95oy4j8asbyafqm';
 const HOOK_Y9 = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj';
 const HOOK_ABITUR = 'https://hook.eu1.make.com/wdia5iljcraay8rfqijkacgb5i9jjfod';
-const TEACHER = 'englishonlinetraining@pm.me';
+const TEACHER = 'learn@englishonline.training';
 // The old Year 9 Apps Script (the "year 9" sheet) — _template.html's default until
 // 2026-10-16. Nothing should post there any more.
 const TEMPLATE_DEFAULT = 'AKfycbw2eqOCB6XKREIOXuqn2fCL067CdMm20MmiTFMt9GmRUEn12vLl8gJbHL1UfbKmCP7W';
