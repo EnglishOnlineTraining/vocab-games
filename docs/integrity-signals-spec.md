@@ -127,14 +127,18 @@ thresholds (question 2) instead of guessing them.
   class, email, `user_agent`, answers or any free text: free text can identify a
   student.
 - **Where:** its own tab in the Apps Script online sheet (e.g. `Practise
-  baseline`), through the generic `appendDynamic` path. Not the Make → Excel
-  tables, so it cannot mix with graded work and costs no Make operations.
-- **Notice:** one line in practise mode, e.g. "Anonymous usage statistics (no name,
-  no answers) help improve these exercises."
+  baseline`), through the generic `appendDynamic` path. This is a second endpoint
+  used only for these anonymous counts: graded work from school classes still goes
+  only to the Make webhooks, unchanged. Keeping the baseline off Make means it
+  cannot mix with graded rows in the Excel tables and costs no Make operations.
+- **Notice and opt-out:** one line in practise mode, e.g. "Anonymous usage
+  statistics (no name, no answers) help improve these exercises", with a "Don't
+  send" checkbox. The choice is remembered in `localStorage` (wrapped in
+  try/catch); if storage is unavailable, nothing is sent.
 - **Limits:**
   - The request still reaches Google with the visitor's IP address, though the
     sheet does not store it. Many users are minors, so the data protection officer
-    sees this too (question 7).
+    sees this too (question 6).
   - Practise data is a biased baseline: nothing is at stake, runs are rushed or
     abandoned, and many users are public visitors. Check thresholds taken from it
     against the first graded tests.
@@ -162,12 +166,14 @@ thresholds (question 2) instead of guessing them.
   belongs to phase 2. The `abitursubs` table has 12 columns and no raw-payload
   column, so the `int_*` keys are lost unless columns are added (adding a 13th
   `{{1.payload}}` column would cover these and any later fields).
-- **Apps Script routes:** the generic path in `apps-script.gs` (`appendDynamic`)
-  adds a column for any new key, so it needs no change. This includes the IELTS
-  tab. The custom-layout units (around line 88) write fixed columns and will drop
-  the `int_*` fields. These are school pages, not Business/University/IT:
+- **Apps Script routes:** school classes always submit through the Make
+  webhooks; no `7g-`…`10c-`, `msa-c-` or class-test page posts to Apps Script.
+  Apps Script carries only the public categories, which are Off, so it sends no
+  `int_*` fields. The custom-layout units in `apps-script.gs` (around line 88:
   `california-exercises`, `california-hazards`, `7g-amazon-rainforest-reading`,
-  `9g-ev-renewable-energy-reading`. Decide whether that loss is acceptable.
+  `9g-ev-renewable-energy-reading`) are leftovers from before those pages moved to
+  Make and are not affected. The only Apps Script change is the new practise
+  baseline tab, which the generic `appendDynamic` path creates by itself.
 - **`scripts/grade-submission.js` and `make-grader.js`:** both read only the
   answer-key sections of the payload, so `int_*` fields are already ignored. No
   change; add one test assertion that a payload with `int_*` fields grades the same.
@@ -219,7 +225,5 @@ thresholds (question 2) instead of guessing them.
    "devtools open" guess? The devtools guess also fires when a browser side panel
    is open (the panel shrinks the inner window), which may be the more useful
    signal, but it is a guess either way.
-6. **Custom-layout Apps Script units:** accept that the four units above drop the
-   `int_*` fields, or move them to the generic path?
-7. **Practise baseline:** does the data protection officer accept anonymous
-   practise counts, and should practise mode offer an opt-out?
+6. **Practise baseline:** does the data protection officer accept anonymous
+   practise counts? (Opt-out: yes, decided.)
