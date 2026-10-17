@@ -18792,6 +18792,7 @@
   },
   "exC": {
    "prefix": "exC-",
+   "typed": true,
    "gaps": {
     "g1": {
      "label": "1 — gave Aboriginal people the right",
@@ -18806,7 +18807,12 @@
     "g3": {
      "label": "3 — offered the Stolen Generations an apology",
      "correct": "The Stolen Generations were offered a formal apology in 2008",
-     "why": "The receiver becomes the subject; the verb keeps both objects in the passive."
+     "why": "The receiver becomes the subject; the verb keeps both objects in the passive.",
+     "accept": [
+      "The Stolen Generations were offered a formal apology in 2008",
+      "In 2008, the Stolen Generations were offered a formal apology",
+      "A formal apology was offered to the Stolen Generations in 2008"
+     ]
     },
     "g4": {
      "label": "4 — shows visitors sacred paintings",
@@ -18816,17 +18822,44 @@
     "g5": {
      "label": "5 — taught the children English",
      "correct": "The children were taught English at the mission school",
-     "why": "Past passive with the receiver as subject; the second object (English) remains."
+     "why": "Past passive with the receiver as subject; the second object (English) remains.",
+     "accept": [
+      "The children were taught English at the mission school",
+      "The children were taught English by the teachers at the mission school",
+      "English was taught to the children at the mission school",
+      "English was taught to the children by the teachers at the mission school"
+     ]
     },
     "g6": {
      "label": "6 — will give young artists a grant",
      "correct": "Young artists will be given a grant next year",
-     "why": "Future passive: will be + past participle."
+     "why": "Future passive: will be + past participle.",
+     "accept": [
+      "Young artists will be given a grant next year",
+      "Young artists will be given a grant for their paintings",
+      "Young artists will be given a grant for their paintings next year",
+      "Next year, young artists will be given a grant for their paintings",
+      "Young artists will be given a grant for their paintings by the council next year",
+      "Next year, young artists will be given a grant for their paintings by the council",
+      "A grant will be given to young artists for their paintings next year",
+      "Next year, a grant will be given to young artists for their paintings",
+      "Next year, a grant will be given to young artists by the council for their paintings"
+     ]
     },
     "g7": {
      "label": "7 — told us the story of the Rainbow Serpent",
      "correct": "We were told the story of the Rainbow Serpent",
-     "why": "Past passive with the person as subject — or 'The story of the Rainbow Serpent was told to us'."
+     "why": "Past passive with the person as subject — or 'The story of the Rainbow Serpent was told to us'.",
+     "accept": [
+      "We were told the story of the Rainbow Serpent",
+      "The story of the Rainbow Serpent was told to us",
+      "Yesterday, we were told the story of the Rainbow Serpent",
+      "We were told the story of the Rainbow Serpent yesterday",
+      "Yesterday, we were told the story of the Rainbow Serpent by an elder",
+      "We were told the story of the Rainbow Serpent by an elder yesterday",
+      "Yesterday, the story of the Rainbow Serpent was told to us by an elder",
+      "The story of the Rainbow Serpent was told to us by an elder yesterday"
+     ]
     }
    }
   }

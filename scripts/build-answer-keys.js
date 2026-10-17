@@ -76,6 +76,22 @@ function build() {
     }
     seen[unit] = f;
 
+    // A section is keyed by the payload field its answers arrive in, which is what
+    // make-grader.js and item analysis read. That is the scoreKey on almost every
+    // page, but a few store answers in state.ex2 while scoring as 'exB'; keyed by
+    // scoreKey, every gap read blank (0 %). When two calls share one field (IELTS
+    // exA + exA2), the scoreKey stays and `field` names where the answers are.
+    // ponytail: field = prefix minus '-', trusted only when the page has state.<field>
+    // and no state.<scoreKey>; a page that keeps answers elsewhere still needs its
+    // scoreKey to match the payload.
+    const fieldOf = c => {
+      const p = c.prefix.replace(/-$/, '');
+      return p && p !== c.scoreKey && new RegExp('state\\.' + p + '\\b').test(src)
+        && !new RegExp('state\\.' + c.scoreKey + '\\b').test(src) ? p : c.scoreKey;
+    };
+    const fieldUses = {};
+    for (const c of calls) fieldUses[fieldOf(c)] = (fieldUses[fieldOf(c)] || 0) + 1;
+
     const sections = {};
     for (const c of calls) {
       const authoredGaps = (EXPL[unit] && EXPL[unit][c.scoreKey] && EXPL[unit][c.scoreKey].gaps) || {};
@@ -94,7 +110,9 @@ function build() {
       if (Object.keys(out).length) {
         var sec = { prefix: c.prefix, multi: !!c.multi, gaps: out };
         if (c.typed) sec.typed = true;
-        sections[c.scoreKey] = sec;
+        const field = fieldOf(c);
+        if (field === c.scoreKey || fieldUses[field] === 1) sections[field] = sec;
+        else { sec.field = field; sections[c.scoreKey] = sec; }
       }
     }
     if (Object.keys(sections).length) { keys[unit] = sections; units++; }

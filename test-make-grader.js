@@ -37,7 +37,7 @@ function submissionFor(key, pick) {
   for (const [sk, sec] of Object.entries(key.sections)) {
     const o = {};
     for (const [g, gap] of Object.entries(sec.gaps)) o[g] = pick(gap, g, sk);
-    raw[sk] = o;
+    raw[sec.field || sk] = Object.assign(raw[sec.field || sk] || {}, o);
   }
   return eolFlattenForMake(raw);
 }
@@ -117,6 +117,25 @@ check(legacyPerfect.correct === legacyPerfect.total,
 const legacyBlank = gradeSubmission(submissionFor(legacy, g => (g.accept.includes('—') ? '' : g.correct)), legacy);
 check(legacyBlank.correct === legacyBlank.total - 5,
       'esl-articles with the five em-dash gaps blank scored ' + legacyBlank.correct + '/' + legacyBlank.total);
+
+// 7b. Every section must be read from a field the page really sends. The cases above
+//     build their payload from the key, so a key named exB for a page that sends ex2
+//     passed them all while every live submission graded 0 (7g-tudor-past-perfect,
+//     found by item analysis 2026-10-17).
+const X = require('./scripts/extract-graded.js');
+const pageOf = {};
+for (const f of fs.readdirSync(__dirname).filter(f => f.endsWith('.html') && !f.startsWith('_'))) {
+  const src = fs.readFileSync(path.join(__dirname, f), 'utf8'), u = X.unitOf(src);
+  if (u && !pageOf[u]) pageOf[u] = src;
+}
+for (const f of units) {
+  const key = JSON.parse(fs.readFileSync(path.join(DIR, f), 'utf8')), src = pageOf[key.unit];
+  if (!src) continue;
+  for (const [sk, sec] of Object.entries(key.sections)) {
+    const field = sec.field || sk;
+    check(new RegExp('[{,\\s]' + field + '\\s*:').test(src), key.unit + ': key section ' + sk + ' reads field ' + field + ', which the page never sends');
+  }
+}
 
 // 8. An unknown unit must degrade to a message, not throw.
 check(gradeSubmission({ unit: 'nope' }, null).text.startsWith('No answer key'), 'unknown unit not handled');

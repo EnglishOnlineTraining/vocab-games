@@ -70,7 +70,18 @@ function toSection(v) {
 
 /* Sections to read from a payload or sheet row: every graded section in the key
    (some are not ex*, e.g. the grammar quizzes' "quiz") plus ex* for writing. */
-function isSection(name, key) { return has(key.sections, name) || /^ex/i.test(name); }
+function isSection(name, key) {
+  return /^ex/i.test(name) || Object.keys(key.sections).some(sk => (key.sections[sk].field || sk) === name);
+}
+
+/* Gap ids graded inside payload field `name` (two key sections can share one field). */
+function gradedIn(name, key) {
+  const out = {};
+  for (const sk of Object.keys(key.sections)) {
+    if ((key.sections[sk].field || sk) === name) Object.assign(out, key.sections[sk].gaps);
+  }
+  return out;
+}
 
 /* One accumulator per unit. `sections` per submission: { exA: { g1: 'x' }, … },
    already unflattened. Returns per-gap correctness for the row (for discrimination). */
@@ -81,7 +92,7 @@ function addSubmission(acc, key, sections) {
   const result = {};
   for (const sk of Object.keys(key.sections)) {
     const sec = key.sections[sk];
-    const given = sections[sk] || {};
+    const given = sections[sec.field || sk] || {};
     for (const g of Object.keys(sec.gaps)) {
       const gap = sec.gaps[g], id = sk + '.' + g;
       const c = acc.gaps[id] || (acc.gaps[id] = { correct: 0, blank: 0, wrong: Object.create(null), typed: !!sec.typed });
@@ -96,7 +107,7 @@ function addSubmission(acc, key, sections) {
   // Writing: any answer field of an ex* section that the key does not grade.
   for (const sk of Object.keys(sections)) {
     if (!/^ex/i.test(sk)) continue;
-    const graded = (has(key.sections, sk) && key.sections[sk].gaps) || {};
+    const graded = gradedIn(sk, key);
     for (const f of Object.keys(sections[sk])) {
       if (has(graded, f) || !FIELD.test(f)) continue;
       const id = sk + '.' + f;
@@ -313,7 +324,9 @@ function gapEntry(e, min, disc) {
   if (e.n < min) { e.signal = 'not enough data'; return e; }
   if (e.correct > RULES.easy) e.flags.push('too easy');
   if (e.correct < RULES.hard) e.flags.push('too hard');
-  if (disc != null && disc <= 0) e.flags.push('ambiguous');
+  // A gap everyone got right (or wrong) has no spread to compare, so disc is 0
+  // there by arithmetic, not because the gap is ambiguous.
+  if (disc != null && disc <= 0 && e.correct > 0 && e.correct < 1) e.flags.push('ambiguous');
   if (e.topWrong && e.topWrong.wrongN >= RULES.distractorMinWrong && e.topWrong.share > RULES.distractor) e.flags.push('distractor');
   if (disc != null) e.discrimination = round(disc);
   if (e.n < RULES.early) e.signal = 'early';
