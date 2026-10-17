@@ -6,32 +6,32 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "from",
-     "accept": [
-      "from"
-     ],
-     "label": "1. fell"
-    },
-    "g2": {
      "correct": "Investing in cycle lanes is one of the most effective ways to reduce traffic.",
      "accept": [
       "Investing in cycle lanes is one of the most effective ways to reduce traffic."
      ],
-     "label": "2. Paragraph on cycle lanes"
+     "label": "1. Paragraph on cycle lanes"
     },
-    "g3": {
+    "g2": {
      "correct": "False",
      "accept": [
       "False"
      ],
-     "label": "3. plant community a better guide → number of walks the best guide"
+     "label": "2. plant community a better guide → number of walks the best guide"
+    },
+    "g3": {
+     "correct": "airtight packets",
+     "accept": [
+      "airtight packets"
+     ],
+     "label": "3. seeds are dried and sealed in"
     },
     "g4": {
-     "correct": "dwindle",
+     "correct": "from",
      "accept": [
-      "dwindle"
+      "from"
      ],
-     "label": "4. car use continued to"
+     "label": "4. fell"
     },
     "g5": {
      "correct": "Another benefit is that courses outside a student’s field teach practical skills.",
@@ -48,18 +48,18 @@
      "label": "6. connected homes to schools and bus stops → some paths led to bus stops"
     },
     "g7": {
-     "correct": "dramatic increase",
+     "correct": "Not Given",
      "accept": [
-      "dramatic increase"
+      "Not Given"
      ],
-     "label": "7. Cycling saw a"
+     "label": "7. was announced in 2014 → was completed in 2014 (review)"
     },
     "g8": {
-     "correct": "Despite",
+     "correct": "dwindle",
      "accept": [
-      "Despite"
+      "dwindle"
      ],
-     "label": "8."
+     "label": "8. car use continued to"
     }
    }
   },
@@ -68,60 +68,60 @@
    "multi": false,
    "gaps": {
     "g1": {
+     "correct": "Despite",
+     "accept": [
+      "Despite"
+     ],
+     "label": "1."
+    },
+    "g2": {
      "correct": "True",
      "accept": [
       "True"
      ],
-     "label": "1. more than 5,000 → over five thousand"
-    },
-    "g2": {
-     "correct": "remained stable",
-     "accept": [
-      "remained stable"
-     ],
-     "label": "2. Prices"
+     "label": "2. more than 5,000 → over five thousand"
     },
     "g3": {
+     "correct": "costly",
+     "accept": [
+      "costly"
+     ],
+     "label": "3. regeneration is both slow and"
+    },
+    "g4": {
+     "correct": "dramatic increase",
+     "accept": [
+      "dramatic increase"
+     ],
+     "label": "4. Cycling saw a"
+    },
+    "g5": {
      "correct": "Although",
      "accept": [
       "Although"
      ],
-     "label": "3."
+     "label": "5."
     },
-    "g4": {
+    "g6": {
      "correct": "the actions taken to deal with the problem",
      "accept": [
       "the actions taken to deal with the problem"
      ],
-     "label": "4. Such measures (paragraph B)"
-    },
-    "g5": {
-     "correct": "sharp fall",
-     "accept": [
-      "sharp fall"
-     ],
-     "label": "5. There was a"
-    },
-    "g6": {
-     "correct": "Moreover",
-     "accept": [
-      "Moreover"
-     ],
-     "label": "6."
+     "label": "6. Such measures (paragraph B)"
     },
     "g7": {
-     "correct": "False",
+     "correct": "a verb form",
      "accept": [
-      "False"
+      "a verb form"
      ],
-     "label": "7. occasionally worked → never worked"
+     "label": "7. frozen seeds cannot"
     },
     "g8": {
-     "correct": "sharply",
+     "correct": "remained stable",
      "accept": [
-      "sharply"
+      "remained stable"
      ],
-     "label": "8. then dropped"
+     "label": "8. Prices"
     }
    }
   },
@@ -130,60 +130,60 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "nevertheless",
+     "correct": "Moreover",
      "accept": [
-      "nevertheless"
+      "Moreover"
      ],
      "label": "1."
     },
     "g2": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "2. occasionally worked → never worked"
+    },
+    "g3": {
+     "correct": "a trap",
+     "accept": [
+      "a trap"
+     ],
+     "label": "3. a heading that repeats one detail (review)"
+    },
+    "g4": {
+     "correct": "sharp fall",
+     "accept": [
+      "sharp fall"
+     ],
+     "label": "4. There was a"
+    },
+    "g5": {
+     "correct": "nevertheless",
+     "accept": [
+      "nevertheless"
+     ],
+     "label": "5."
+    },
+    "g6": {
      "correct": "more and more",
      "accept": [
       "more and more"
      ],
-     "label": "2. a growing number of (paragraph C)"
-    },
-    "g3": {
-     "correct": "fell",
-     "accept": [
-      "fell"
-     ],
-     "label": "3. Overall, car use"
-    },
-    "g4": {
-     "correct": "I support",
-     "accept": [
-      "I support"
-     ],
-     "label": "4. The main reason"
-    },
-    "g5": {
-     "correct": "show",
-     "accept": [
-      "show"
-     ],
-     "label": "5. reflect (paragraph F)"
-    },
-    "g6": {
-     "correct": "narrowed",
-     "accept": [
-      "narrowed"
-     ],
-     "label": "6. the gap had"
+     "label": "6. a growing number of (paragraph C)"
     },
     "g7": {
-     "correct": "In conclusion",
+     "correct": "an adjective",
      "accept": [
-      "In conclusion"
+      "an adjective"
      ],
-     "label": "7."
+     "label": "7. regard them as"
     },
     "g8": {
-     "correct": "costs nothing to collect",
+     "correct": "sharply",
      "accept": [
-      "costs nothing to collect"
+      "sharply"
      ],
-     "label": "8. free information (paragraph C)"
+     "label": "8. then dropped"
     }
    }
   }
