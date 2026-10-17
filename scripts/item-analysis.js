@@ -36,7 +36,7 @@ const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
 const OTHER = '(other)';
 
 // distractorMinWrong: below 5 wrong answers in all, one answer taking > 40 % is noise.
-const RULES = { easy: 0.9, hard: 0.3, distractor: 0.4, distractorMinWrong: 5, skipped: 0.25, early: 30 };
+const RULES = { easy: 0.9, hard: 0.3, distractor: 0.4, distractorMinWrong: 5, skipped: 0.25, early: 30, revertDrop: 0.2 };
 
 // ── counting (mirrored by itemStatsForUnit in apps-script.gs) ───────────────
 
@@ -342,6 +342,39 @@ function writingEntry(unit, field, n, blank, medianWords, min) {
 
 function pct(x) { return Math.round(x * 100) + '%'; }
 
+// ── the loop: did each logged fix work? ─────────────────────────────────────
+
+const CHANGES = path.join(__dirname, '..', 'data', 'item-changes.json');
+
+/* changes: data/item-changes.json. afterFor(date): report() over rows on or after
+   that date only. A fix is judged on answers given after it, against `before`, by the
+   spec's rule (docs/agent-backlog.md #11, Loop 4): with `min` answers on both sides, a
+   fall of 20 points or more is "worse: revert", a rise is "kept" (its lesson can go
+   into STYLE.md §2.5), anything else "inconclusive".
+   ponytail: a fixed 20-point margin, no significance test; small classes can still
+   swing past it by chance, so the PR reviewer decides. */
+function compareChanges(changes, afterFor, min) {
+  const byDate = {};
+  return changes.map(c => {
+    const r = byDate[c.date] || (byDate[c.date] = afterFor(c.date));
+    const g = r && r.gaps.find(x => x.unit === c.unit && x.gap === c.gap);
+    const out = { unit: c.unit, gap: c.gap, date: c.date, before: c.before };
+    if (!r) return Object.assign(out, { verdict: 'no dates in this input' });
+    if (!g || g.n < min || (c.n != null && c.n < min)) return Object.assign(out, { n: g ? g.n : 0, verdict: 'waiting' });
+    const verdict = round(c.before - g.correct) >= RULES.revertDrop ? 'worse: revert'
+      : g.correct > c.before ? 'kept' : 'inconclusive';
+    return Object.assign(out, { n: g.n, after: g.correct, verdict });
+  });
+}
+
+/* Mark flagged gaps that already have a logged fix, so they are not fixed twice. */
+function markChanged(r, changes) {
+  for (const g of r.gaps) {
+    const c = changes.filter(x => x.unit === g.unit && x.gap === g.gap).pop();
+    if (c) g.changed = c.date;
+  }
+}
+
 function printText(r) {
   const lines = ['Item analysis (' + r.source + '), min ' + r.min + ' answers', ''];
   const flagged = r.gaps.filter(g => g.flags.length);
@@ -349,13 +382,22 @@ function printText(r) {
   for (const g of flagged) {
     lines.push('  ' + g.unit + ' ' + g.gap + '  n=' + g.n + '  ' + pct(g.correct) + ' correct  ['
       + g.flags.join(', ') + ']' + (g.signal ? ' (' + g.signal + ')' : '')
-      + (g.topWrong ? '  top wrong: "' + g.topWrong.answer + '" ' + pct(g.topWrong.share) + ' of wrong' : ''));
+      + (g.topWrong ? '  top wrong: "' + g.topWrong.answer + '" ' + pct(g.topWrong.share) + ' of wrong' : '')
+      + (g.changed ? '  (fixed ' + g.changed + ', see below)' : ''));
   }
   const wf = r.writing.filter(w => w.flags.length);
   lines.push('', 'Flagged writing fields: ' + wf.length);
   for (const w of wf) {
     lines.push('  ' + w.unit + ' ' + w.field + '  n=' + w.n + '  ' + pct(w.blank) + ' blank  median '
       + w.medianWords + ' words  [' + w.flags.join(', ') + ']');
+  }
+  if (r.changes && r.changes.length) {
+    lines.push('', 'Logged fixes (data/item-changes.json), answers since each fix:');
+    for (const c of r.changes) {
+      lines.push('  ' + c.unit + ' ' + c.gap + '  ' + c.date + '  before ' + pct(c.before)
+        + (c.after != null ? '  after ' + pct(c.after) + ' (n=' + c.n + ')' : c.n != null ? '  n=' + c.n + ' so far' : '')
+        + '  [' + c.verdict + ']');
+    }
   }
   const thin = r.gaps.filter(g => g.signal === 'not enough data').length;
   lines.push('', 'Not enough data: ' + thin + ' gap(s) under ' + r.min + ' answers.');
@@ -380,26 +422,42 @@ async function main() {
   const since = sinceArg ? new Date(sinceArg + 'T00:00:00Z') : null;
   if (since && isNaN(since)) throw new Error('--since must be YYYY-MM-DD');
 
-  let data;
+  // load(since) reads the same input again from a date; null when it has no dates.
+  let load;
   if (arg('--csv')) {
     const rows = parseCsv(fs.readFileSync(arg('--csv'), 'utf8'));
     if (rows.length < 2) throw new Error('empty CSV');
-    data = fromMakeCsv(rows, since) || fromAbiturCsv(rows, since);
-    if (!data) throw new Error('No raw-payload column and no Abitur columns (Unit, Ex1–Ex5) found.');
+    load = d => fromMakeCsv(rows, d) || fromAbiturCsv(rows, d);
+    if (!load(null)) throw new Error('No raw-payload column and no Abitur columns (Unit, Ex1–Ex5) found.');
   } else if (arg('--stats')) {
-    data = mergeStats([JSON.parse(fs.readFileSync(arg('--stats'), 'utf8'))]);
+    const stats = JSON.parse(fs.readFileSync(arg('--stats'), 'utf8'));
+    load = d => (d ? null : mergeStats([stats]));
   } else if (process.argv.includes('--sheets')) {
-    data = await fromSheets(since);
+    const cache = {};
+    load = d => cache[d] || (cache[d] = fromSheets(d));
   } else {
     throw new Error('usage: node scripts/item-analysis.js --csv <file> | --sheets | --stats <file> [--min 15] [--json] [--since YYYY-MM-DD]');
   }
 
-  const r = report(data, min);
+  const r = report(await load(since), min);
+  // Only fixes to units this input holds: Excel units never show up in --sheets.
+  const units = new Set(r.gaps.map(g => g.unit));
+  const changes = (fs.existsSync(CHANGES) ? JSON.parse(fs.readFileSync(CHANGES, 'utf8')) : [])
+    .filter(c => units.has(c.unit));
+  if (changes.length) {
+    const after = {};
+    for (const d of new Set(changes.map(c => c.date))) {
+      const from = new Date(d + 'T00:00:00Z'), data = await load(since && since > from ? since : from);
+      after[d] = data ? report(data, min) : null;
+    }
+    r.changes = compareChanges(changes, d => after[d], min);
+    markChanged(r, changes);
+  }
   console.log(process.argv.includes('--json') ? JSON.stringify(r, null, 1) : printText(r));
   if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, 'flagged=' + r.flagged + '\n');
 }
 
-module.exports = { newUnit, addSubmission, finishUnit, mergeStats, report, discrimination, toSection };
+module.exports = { newUnit, addSubmission, finishUnit, mergeStats, report, discrimination, toSection, compareChanges };
 
 if (require.main === module) {
   main().catch(e => { console.error(e.message); process.exit(2); });

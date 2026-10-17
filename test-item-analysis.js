@@ -150,6 +150,23 @@ test('node: two key sections sharing one payload field (`field`) are both read',
   assert.deepStrictEqual(u.writing, {});   // g2 is graded, so not counted as writing
 });
 
+test('loop: a logged fix is judged on answers since its date', () => {
+  const changes = [
+    { unit: 'u', gap: 'exA.g1', date: '2026-10-17', before: 0.3 },
+    { unit: 'u', gap: 'exA.g2', date: '2026-10-17', before: 0.6 },
+    { unit: 'u', gap: 'exA.g3', date: '2026-10-17', before: 0.2 },
+    { unit: 'u', gap: 'exA.g4', date: '2026-10-17', before: 0.5 },
+    { unit: 'u', gap: 'exA.g1', date: '2026-11-01', before: 0.5 },
+  ];
+  const after = { '2026-10-17': { gaps: [
+    { unit: 'u', gap: 'exA.g1', n: 20, correct: 0.55 },
+    { unit: 'u', gap: 'exA.g2', n: 20, correct: 0.4 },
+    { unit: 'u', gap: 'exA.g3', n: 4, correct: 0.9 },
+    { unit: 'u', gap: 'exA.g4', n: 20, correct: 0.45 } ] }, '2026-11-01': null };
+  const v = IA.compareChanges(changes, d => after[d], 15).map(c => c.verdict);
+  assert.deepStrictEqual(v, ['kept', 'worse: revert', 'waiting', 'inconclusive', 'no dates in this input']);
+});
+
 // ── CSV end to end (Make export and Abitur export) ─────────────────────────
 
 function csvCell(s) { return /[",\n]/.test(s) ? '"' + String(s).replace(/"/g, '""') + '"' : s; }

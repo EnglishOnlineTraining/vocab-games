@@ -198,6 +198,7 @@ It cannot check content quality or the site's business rules, so also verify by 
 - [ ] `SHEET_URL` is the correct webhook (Y7/Y8 vs Y9/Y10)
 - [ ] Every dropdown has 3 options with the correct answer shuffled
 - [ ] Answer keys in checkExX() functions are actually correct
+- [ ] Checked against STYLE.md §2.5, "Lessons from item analysis" (payload keys equal scoreKeys; typed keys accept every correct word order)
 - [ ] Overview cards match the actual exercises; steps 2+ have `class="locked"`
 - [ ] The reading text is appropriate for the CEFR level
 - [ ] Grammar content matches the textbook topic's "Key Grammar" column
