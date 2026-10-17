@@ -1,6 +1,7 @@
 # Spec: integrity signals on task submissions
 
-Status: proposal for review — not built.
+Status: phase 1 built in `exercise.js` (2026-10-17), not yet pushed. Phase 2 not
+started. "What exists now" below describes the code before phase 1.
 Owner: Shaun. Builder: Claude Code.
 
 ## Goal
@@ -19,8 +20,8 @@ site-wide.
 | Level | What it does | Applies to |
 |---|---|---|
 | **Strict** | Paste, copy and drop blocked. All `int_*` counts, plus tab switches, reloads and resumes. `int_flag` filled in. A notice on the start screen. | Graded tests for Shaun's classes: `9g-class-test-9ab`, both `*-australia-vocab-test`, both `*-grammar-literary-review-test`, and any later class test. |
-| **Standard** | Paste, copy and drop blocked (as now, plus drop). `int_*` counts only. No `int_flag`, no tab switches. A one-line notice near the submit button. | Ordinary exercises for Shaun's classes: `8c-`, `9g-`, `9c-`, `10g-`, `10c-`. Also `7g-`/`7c-`/`8g-` and `msa-c-` if those are still set for his classes. |
-| **Off** | Nothing recorded. Paste blocking stays as it is now. | Public pages: `ielts-`, `esl-`, `gr-`, `be-`, `it-`, `abitur-` (Payhip packs), `lead-`, `quiz-`, `level-test`. `uni-` unless Shaun's university courses are graded on them. |
+| **Standard** | Paste, copy and drop blocked (as now, plus drop). `int_*` counts only. No `int_flag`, no tab switches. A one-line notice near the submit button. | Ordinary exercises for Shaun's classes: `8c-`, `9g-`, `9c-`, `10g-`, `10c-`, `msa-c-`, and `uni-` (university courses are graded on them). |
+| **Off** | Nothing recorded. Paste blocking stays as it is now. | Public pages: `ielts-`, `esl-`, `gr-`, `be-`, `it-`, `abitur-` (Payhip packs), `lead-`, `quiz-`, `level-test`, and the old `7g-`/`7c-`/`8g-` pages. |
 
 - **Practise mode** (`startPractise()`) submits nothing to the teacher at any
   level. It may send anonymous counts for the practise baseline (below).
@@ -79,7 +80,8 @@ field, to keep the sheet small.
 | `int_paste_tries` | Blocked paste attempts in inputs and textareas. |
 | `int_drop_tries` | Blocked drag-and-drop text drops (see below). |
 | `int_words` | Words in all textareas at submit. |
-| `int_words_restored` | Words already in the textareas when a draft was resumed. |
+| `int_partial` | `1` when a resumed draft was saved before counting began, so its restored text has no counts. |
+| `int_level` | The level that applied (`standard`). |
 | `int_wpm` | `int_words / (int_time_typing / 60)`, rounded; `0` when `int_time_typing` is 0. |
 | `int_resumes` | How many times the work was restored from a saved draft. |
 
@@ -111,8 +113,8 @@ shows many words with almost no keystrokes — the same pattern as retyped AI te
 - Save the `int_*` counters and the first start time inside the draft object, and
   restore them in `eolDraftOfferResume()` instead of letting `eolMarkStarted()`
   reset the clock.
-- Record `int_resumes` and `int_words_restored`, so the teacher can see that text
-  came from a saved draft.
+- Record `int_resumes`, so the teacher can see that text came from a saved draft,
+  and `int_partial` when that draft has no saved counts.
 - The standalone tests already do this (they persist counters and count `reloads`);
   follow their approach.
 
@@ -185,7 +187,14 @@ thresholds (question 2) instead of guessing them.
 ## Phases
 
 1. `exercise.js` only (all framework pages, no page edits). Ships Standard and
-   Off; no framework page is Strict.
+   Off; no framework page is Strict. **Built.** Decisions applied (Shaun,
+   2026-10-17): `uni-` and `msa-c-` are Standard; `7g-`/`7c-`/`8g-` are Off;
+   school pages send counts only when the class field matches `EOL_INT_CLASSES`
+   (8C, 9G, 9C, 10G, 10C; update each school year), `uni-` pages always send;
+   `int_flag` is left out until the baseline has data. Also in phase 1: on
+   Standard pages the practise results line now says "Nichts geht an deine
+   Lehrkraft" instead of "Nichts wird abgeschickt", since anonymous counts may be
+   sent. Test: `tests/integrity-signals.spec.js`.
 2. The Strict class tests first, then the rest of the 23 standalone pages (mostly
    Off: the `abitur-` packs, `business-needs-analysis`, `uni-writing-task`). Either move them onto `exercise.js` (already the
    documented upgrade path in the formula-guard comment) or add the same block.
@@ -211,14 +220,9 @@ thresholds (question 2) instead of guessing them.
 1. **Paste:** keep blocking (current) and count tries, or allow paste and count
    pasted characters? Recommendation: keep blocking. It changes nothing for
    students and the retyping signals still work.
-2. **`int_flag` rules:** fixed thresholds (e.g. `int_wpm` > 60, or fewer than one
-   delete per 100 words), or raw numbers only for now? Recommendation: raw numbers
-   first, set thresholds after one month of real data.
-3. **Levels by category:** confirm the table above, especially `uni-` (graded
-   for your university courses?), `msa-c-` and the old `7g-`/`7c-`/`8g-` pages.
-   And on class pages: record everyone (with the notice), or only when the class
-   field matches one of your current classes? Recommendation: match the class,
-   since it also keeps general visitors out of the data.
+2. **`int_flag` rules:** decided — raw numbers first, thresholds after one month
+   of baseline data.
+3. **Levels by category:** decided — see phase 1.
 4. **Phase 2 route:** migrate the standalone pages to `exercise.js`, or copy the
    block into them?
 5. **Existing test-page signals:** keep `user_agent`, `snapshots` and the
