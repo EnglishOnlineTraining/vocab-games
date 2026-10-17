@@ -42,7 +42,7 @@ different year (`10g-scottish-history.html`), the following is **identical** acr
   var UNIT          = '10g-scottish-history';                 // kebab-case id, routes the data
   var TOTAL_STEPS   = 5;                                      // welcome + N exercises + submit
   var SHEET_URL     = 'https://hook.eu1.make.com/…';          // submission endpoint (see below)
-  var TEACHER_EMAIL = 'englishonlinetraining@pm.me';
+  var TEACHER_EMAIL = 'learn@englishonline.training';
   // MSA pages additionally: var GRADE_SYSTEM = 'msa';
   ```
 - **Exercise content**: the `step-1 … step-(N-1)` sections (`<h2 class="ex-title">` heading +

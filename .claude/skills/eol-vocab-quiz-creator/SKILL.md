@@ -101,7 +101,7 @@ Find this block near the top of the `<script>` section and update only `SHEET_TA
 
 ```js
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwwbV6ufw7QX8meNGyOwiVdkqNpQ8yckdXmsbFqysJwWqAfCWaR_eC9RH41LaqmYyZOeA/exec';
-const EMAIL     = 'englishonlinetraining@pm.me';
+const EMAIL     = 'learn@englishonline.training';
 const BASE_EXAM_MINS = 30;                 // ← 30 is the standard vocab-test length
 let   EXAM_MINS = BASE_EXAM_MINS;          // ← must be `let`: extra time reassigns it
 const GATE_MINS = 2;

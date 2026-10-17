@@ -36,7 +36,7 @@
 var UNIT          = '<prefix>-<topic-slug>';  // kebab-case, must equal the filename slug
 var TOTAL_STEPS   = N;                        // number of exercise sections + 1
 var SHEET_URL     = '<year-correct webhook>'; // Y7/Y8 → Year-7 Make webhook; Y9/Y10/MSA → Year-9 (see CLAUDE.md)
-var TEACHER_EMAIL = 'englishonlinetraining@pm.me';
+var TEACHER_EMAIL = 'learn@englishonline.training';
 ```
 
 `TOTAL_STEPS` must equal the submit section's `id` number. Wrong `TOTAL_STEPS` breaks
