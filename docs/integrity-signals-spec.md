@@ -22,8 +22,8 @@ site-wide.
 | **Standard** | Paste, copy and drop blocked (as now, plus drop). `int_*` counts only. No `int_flag`, no tab switches. A one-line notice near the submit button. | Ordinary exercises for Shaun's classes: `8c-`, `9g-`, `9c-`, `10g-`, `10c-`. Also `7g-`/`7c-`/`8g-` and `msa-c-` if those are still set for his classes. |
 | **Off** | Nothing recorded. Paste blocking stays as it is now. | Public pages: `ielts-`, `esl-`, `gr-`, `be-`, `it-`, `abitur-` (Payhip packs), `lead-`, `quiz-`, `level-test`. `uni-` unless Shaun's university courses are graded on them. |
 
-- **Practise mode** (`startPractise()`) submits nothing, so it records nothing, at
-  every level.
+- **Practise mode** (`startPractise()`) submits nothing to the teacher at any
+  level. It may send anonymous counts for the practise baseline (below).
 - **How the level is set:** `exercise.js` picks a default from the filename prefix
   in one table, so phase 1 needs no page edits. A page can override it with
   `var INTEGRITY_LEVEL = 'strict' | 'standard' | 'off';`. The class tests are
@@ -116,6 +116,30 @@ shows many words with almost no keystrokes — the same pattern as retyped AI te
 - The standalone tests already do this (they persist counters and count `reloads`);
   follow their approach.
 
+## Practise baseline (anonymous)
+
+Purpose: real data on what normal typing looks like, to set the `int_flag`
+thresholds (question 2) instead of guessing them.
+
+- **When:** on finishing a practise-mode run, on any page that is Standard or
+  Strict. Off pages send nothing.
+- **What:** `unit`, `int_level`, the `int_*` counts, and the score. Never name,
+  class, email, `user_agent`, answers or any free text: free text can identify a
+  student.
+- **Where:** its own tab in the Apps Script online sheet (e.g. `Practise
+  baseline`), through the generic `appendDynamic` path. Not the Make → Excel
+  tables, so it cannot mix with graded work and costs no Make operations.
+- **Notice:** one line in practise mode, e.g. "Anonymous usage statistics (no name,
+  no answers) help improve these exercises."
+- **Limits:**
+  - The request still reaches Google with the visitor's IP address, though the
+    sheet does not store it. Many users are minors, so the data protection officer
+    sees this too (question 7).
+  - Practise data is a biased baseline: nothing is at stake, runs are rushed or
+    abandoned, and many users are public visitors. Check thresholds taken from it
+    against the first graded tests.
+  - Calibration only. Not for training an AI model.
+
 ## Display
 
 - Add the fields to the payload in `submitToSheet()`, next to `wrong`.
@@ -197,3 +221,5 @@ shows many words with almost no keystrokes — the same pattern as retyped AI te
    signal, but it is a guess either way.
 6. **Custom-layout Apps Script units:** accept that the four units above drop the
    `int_*` fields, or move them to the generic path?
+7. **Practise baseline:** does the data protection officer accept anonymous
+   practise counts, and should practise mode offer an opt-out?
