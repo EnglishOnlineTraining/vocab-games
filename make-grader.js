@@ -61,7 +61,7 @@ function gradeSubmission(payload, key) {
 
   Object.keys(key.sections).forEach(function (scoreKey) {
     var section = key.sections[scoreKey];
-    var given = unflat(payload[scoreKey]);
+    var given = unflat(payload[section.field || scoreKey]);   // field: two sections share one payload field
     Object.keys(section.gaps).forEach(function (gapId) {
       var gap = section.gaps[gapId];
       totalGaps++;

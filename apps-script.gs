@@ -274,7 +274,7 @@ function itemStats(ss, since, loader) {
         if (sinceDate && !(v[r][ti] instanceof Date && v[r][ti] >= sinceDate)) continue;
         var sections = {};
         head.forEach(function (h, c) {
-          if (isHas_(key.sections, h) || /^ex/i.test(h)) sections[h] = isParseCell_(v[r][c]);
+          if (/^ex/i.test(h) || isGradedIn_(h, key, true)) sections[h] = isParseCell_(v[r][c]);
         });
         subs.push(sections);
       }
@@ -323,11 +323,24 @@ function isBlank_(v, gap) {
   return v === IS_BLANK_LEGACY && !(gap && gap.accept.indexOf(IS_BLANK_LEGACY) !== -1);
 }
 
+/* Gap ids graded inside payload field `name` (two key sections can share one field,
+   `field` in the key). With `any`, only whether the field is graded at all. */
+function isGradedIn_(name, key, any) {
+  var out = {}, hit = false;
+  Object.keys(key.sections).forEach(function (sk) {
+    var sec = key.sections[sk];
+    if ((sec.field || sk) !== name) return;
+    hit = true;
+    Object.keys(sec.gaps).forEach(function (g) { out[g] = sec.gaps[g]; });
+  });
+  return any ? hit : out;
+}
+
 function itemStatsForUnit(key, subs) {
   var gaps = {}, writing = {};
   subs.forEach(function (sections) {
     Object.keys(key.sections).forEach(function (sk) {
-      var sec = key.sections[sk], given = sections[sk] || {};
+      var sec = key.sections[sk], given = sections[sec.field || sk] || {};
       Object.keys(sec.gaps).forEach(function (g) {
         var gap = sec.gaps[g], id = sk + '.' + g, v = given[g];
         var c = gaps[id] || (gaps[id] = { correct: 0, blank: 0, wrong: Object.create(null), typed: !!sec.typed });
@@ -341,7 +354,7 @@ function itemStatsForUnit(key, subs) {
     });
     Object.keys(sections).forEach(function (sk) {
       if (!/^ex/i.test(sk)) return;
-      var graded = (isHas_(key.sections, sk) && key.sections[sk].gaps) || {};
+      var graded = isGradedIn_(sk, key);
       Object.keys(sections[sk]).forEach(function (f) {
         if (isHas_(graded, f) || !IS_FIELD.test(f)) return;
         var id = sk + '.' + f, t = sections[sk][f];

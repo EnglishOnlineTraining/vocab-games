@@ -76,6 +76,27 @@ function build() {
     }
     seen[unit] = f;
 
+    // A section is keyed by the payload field its answers arrive in, which is what
+    // make-grader.js and item analysis read. That is the scoreKey on most pages, but
+    // some score as 'exB' while the answers sit in state.ex2, or sit in state.exB and
+    // are sent as `ex2: eolFlat(state.exB)`; keyed by scoreKey, every gap read blank
+    // (0 %). When two calls share one field (IELTS exA + exA2), the scoreKey stays
+    // and `field` names where the answers are.
+    // ponytail: the state object is the one named by the prefix (ex2- → state.ex2),
+    // else the scoreKey; the field is what the payload literal assigns it to
+    // (`ex2: eolFlat(state.exB)` or `exA: state.exA`). A page that builds its payload
+    // another way keeps the state name; test-make-grader.js 7b catches it.
+    const sent = {};
+    for (const m of src.matchAll(/\b(\w+)\s*:\s*(?:eolFlat\(\s*)?state\.(\w+)\s*[,)\n}]/g)) sent[m[2]] = sent[m[2]] || m[1];
+    const has = n => new RegExp('state\\.' + n + '\\b').test(src);
+    const fieldOf = c => {
+      const p = c.prefix.replace(/-$/, '');
+      const st = p && has(p) ? p : c.scoreKey;
+      return sent[st] || st;
+    };
+    const fieldUses = {};
+    for (const c of calls) c.field = fieldOf(c), fieldUses[c.field] = (fieldUses[c.field] || 0) + 1;
+
     const sections = {};
     for (const c of calls) {
       const authoredGaps = (EXPL[unit] && EXPL[unit][c.scoreKey] && EXPL[unit][c.scoreKey].gaps) || {};
@@ -94,7 +115,9 @@ function build() {
       if (Object.keys(out).length) {
         var sec = { prefix: c.prefix, multi: !!c.multi, gaps: out };
         if (c.typed) sec.typed = true;
-        sections[c.scoreKey] = sec;
+        const field = c.field;
+        if (field === c.scoreKey || fieldUses[field] === 1) sections[field] = sec;
+        else { sec.field = field; sections[c.scoreKey] = sec; }
       }
     }
     if (Object.keys(sections).length) { keys[unit] = sections; units++; }

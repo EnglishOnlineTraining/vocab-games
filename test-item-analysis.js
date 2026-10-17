@@ -131,6 +131,25 @@ test('node: discrimination is top third minus bottom third', () => {
   assert.strictEqual(d.bad, -1);
 });
 
+test('node: a gap everyone got right is not flagged ambiguous', () => {
+  const units = { 'zz-test-unit': { rows: 15, writing: {}, gaps: { 'exA.g1': { correct: 15, blank: 0, wrong: {} } } } };
+  const perRow = { 'zz-test-unit': Array.from({ length: 15 }, (_, i) => ({ 'exA.g1': true, 'exA.g2': i < 8 })) };
+  const g = IA.report({ source: 'csv', units, perRow }, 15).gaps[0];
+  assert.strictEqual(g.discrimination, 0);
+  assert.deepStrictEqual(g.flags, ['too easy']);
+});
+
+test('node: two key sections sharing one payload field (`field`) are both read', () => {
+  const key = { unit: 'zz', sections: {
+    exA: { prefix: 'exA-', gaps: { g1: { correct: 'a', accept: ['a'] } } },
+    exA2: { prefix: 'exA-', field: 'exA', typed: true, gaps: { g2: { correct: 'b', accept: ['b'] } } } } };
+  const acc = IA.newUnit();
+  IA.addSubmission(acc, key, { exA: { g1: 'a', g2: 'B' } });
+  const u = IA.finishUnit(acc);
+  assert.strictEqual(u.gaps['exA2.g2'].correct, 1);
+  assert.deepStrictEqual(u.writing, {});   // g2 is graded, so not counted as writing
+});
+
 // ── CSV end to end (Make export and Abitur export) ─────────────────────────
 
 function csvCell(s) { return /[",\n]/.test(s) ? '"' + String(s).replace(/"/g, '""') + '"' : s; }
@@ -165,6 +184,11 @@ test('csv: a Make export with names in every column never prints them', () => {
   assert.strictEqual(first.n, 18);
   assert.strictEqual(first.correct, 0.94);   // 17 of 18; the name went to (other)
   assert.deepStrictEqual(first.flags, ['too easy']);
+  // Excel with German settings: "CSV UTF-8" is ;-separated with a BOM. Same result.
+  const semi = tmp('export-de.csv', '\uFEFF' + rows.map(r => r.map(c => /[";\n]/.test(c) ? '"' + String(c).replace(/"/g, '""') + '"' : c).join(';')).join('\n') + '\n');
+  assert.deepStrictEqual(JSON.parse(run(['--csv', semi, '--json'])), r);
+  const { parseCsv } = require('./scripts/regrade-rows.js');   // a ; inside a quoted header is text
+  assert.deepStrictEqual(parseCsv('"x;y;z",b\n1,2'), [['x;y;z', 'b'], ['1', '2']]);
   // --since drops the earlier rows by the Timestamp column
   const since = JSON.parse(run(['--csv', file, '--json', '--since', '2026-10-05']));
   assert.strictEqual(since.gaps.find(g => g.gap === first.gap).n, 10);
