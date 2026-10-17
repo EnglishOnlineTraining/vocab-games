@@ -1443,6 +1443,10 @@ exercise cannot give one). Decisions are in Claude's memory note `project-ielts-
    **Instructions (2026-10-15):** the `ielts-exercise-draft` skill
    (`.claude/skills/ielts-exercise-draft/SKILL.md`) has the section rules and one brief per page
    (B1–B6), in build order. One page per PR.
+   **Built:** B1 Matching Headings (#164, 2026-10-16); B2 sentence and summary completion (#169)
+   and B3 tables and bar charts (#170), both 2026-10-17, each with an E2E spec in `tests/`.
+   **Next:** B4 describing a process. B1 and B2 are live, so Tier 14 item 1 (the full Reading
+   test) is no longer blocked by the skill's build order.
 5. ~~**German FAQ on the hub · Shaun decides.**~~ **Done 2026-10-13 (#133).** Two German FAQ entries
    on `ielts-activities.html` for "IELTS Übungen" searches; the exercises stay English-only.
 
@@ -1707,8 +1711,9 @@ WordPress, MailerLite or Make.
 - **Also 2026-10-17:** a ruleset on `main` requires the `check` job (it now runs the Playwright
   specs). Bypass: repository admin. GitHub Actions cannot be added, so if the rebuild bot ever
   has drift to push, its push is rejected: fix with a PR of the rebuilt files.
-- **After merge, still open:** the IELTS count on WordPress page 1763 (now 7), and ticking B2 and
-  B3 off in Tier 14 item 4.
+- **After merge, done 2026-10-17:** WordPress page 1763 updated through the API (IELTS 4 → 7,
+  Year 9 Gymnasium 25 → 26, ESL Grammar 2 → 17; verified in edit and live view), and B2 and B3
+  ticked off in Tier 14 item 4.
 - **Found:** 24 duplicate files named "… 2.*" (e.g. `scripts/build-head 2.js`) appeared in the
   worktree on 2026-10-16 at 20:49, probably from Documents sync. The build treated
   `ielts-reading-matching-headings 2.html` as a real page. Moved out of the repo, none committed.
