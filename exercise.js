@@ -653,6 +653,7 @@ function recordGap(scoreKey, k, ok, given, expected) {
   var gap = tries[k] || (tries[k] = { n: 0, earned: 0, done: false });
   if (gap.done) return;
   gap.n += 1;
+  if (gap.n === 1) gap.first = given;   // sent as first_<scoreKey>, see eolFirstTries
   if (ok) { gap.earned = attemptPoints(gap.n); gap.done = true; gap.given = null; }
   // Keep the latest wrong answer and what was expected, so the submission can carry
   // a ready-made wrong-answer list for the teacher (eolWrongSummary). The page is
@@ -705,6 +706,23 @@ function eolWrongSummary() {
       + (graded === 1 ? '' : 's') + ' took more than one try.';
   }
   return lines.join(' | ') + (unanswered ? (lines.length ? ' | ' : '') + unanswered + ' not answered' : '');
+}
+
+/*
+ * Each gap's first answer, as { first_<scoreKey>: { gap: answer } }, for item analysis
+ * (agent #11, docs/agent-backlog.md). The submitted answers are mostly the ones a
+ * student corrected after Check showed red, so they make every gap look easy; the
+ * first answer is what the student actually knew. A gap never checked has no entry.
+ */
+function eolFirstTries() {
+  var out = {}, attempts = state.attempts || {};
+  Object.keys(attempts).forEach(function(sk) {
+    Object.keys(attempts[sk]).forEach(function(k) {
+      var f = attempts[sk][k].first;
+      if (f != null) (out['first_' + sk] = out['first_' + sk] || {})[k] = f;
+    });
+  });
+  return out;
 }
 
 /* Sum the locked-in points recorded for a scoreKey (may be fractional). */
@@ -1275,6 +1293,8 @@ function submitToSheet() {
   // string, so eolFlattenForMake passes it through untouched.
   var wrongList = eolWrongSummary();
   if (wrongList && payload.wrong == null) payload.wrong = wrongList;
+  var firsts = eolFirstTries();
+  Object.keys(firsts).forEach(function(k) { if (payload[k] == null) payload[k] = firsts[k]; });
   payload = eolEmailPayload(payload);
   if (eolIsMakeTarget(SHEET_URL)) payload = eolFlattenForMake(payload);
 

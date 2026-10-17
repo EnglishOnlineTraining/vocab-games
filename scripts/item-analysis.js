@@ -83,6 +83,21 @@ function gradedIn(name, key) {
   return out;
 }
 
+/* First-try answers (exercise.js sends first_<scoreKey>), as sections keyed like the
+   final answers so addSubmission reads them. get(name) returns a payload field or sheet
+   cell. null when the row has none: sent before first tries were (2026-10-17). */
+function firstSections(key, get) {
+  let out = null;
+  for (const sk of Object.keys(key.sections)) {
+    const sec = key.sections[sk], v = get('first_' + (sec.scoreKey || sk));
+    if (v == null || v === '') continue;
+    const f = sec.field || sk;
+    out = out || {};
+    out[f] = Object.assign(out[f] || {}, toSection(v));
+  }
+  return out;
+}
+
 /* One accumulator per unit. `sections` per submission: { exA: { g1: 'x' }, … },
    already unflattened. Returns per-gap correctness for the row (for discrimination). */
 function newUnit() { return { rows: 0, gaps: {}, writing: {} }; }
@@ -142,6 +157,9 @@ function finishUnit(acc) {
   return out;
 }
 
+/* First tries carry graded gaps only; writing is read from the final answers. */
+function firstOnly(u) { return { rows: u.rows, gaps: u.gaps }; }
+
 // ── inputs ──────────────────────────────────────────────────────────────────
 
 const keyCache = {};
@@ -177,7 +195,7 @@ function fromMakeCsv(rows, since) {
   }
   if (col === -1) return null;
 
-  const units = {}, perRow = {}, noKey = new Set();
+  const units = {}, perRow = {}, firsts = {}, firstPerRow = {}, noKey = new Set();
   let bad = 0;
   for (let r = 1; r < rows.length; r++) {
     const raw = (rows[r][col] || '').trim();
@@ -190,10 +208,14 @@ function fromMakeCsv(rows, since) {
     for (const k of Object.keys(p)) if (isSection(k, key)) sections[k] = toSection(p[k]);
     const res = addSubmission(units[p.unit] || (units[p.unit] = newUnit()), key, sections);
     (perRow[p.unit] || (perRow[p.unit] = [])).push(res);
+    const fs1 = firstSections(key, n => p[n]);
+    if (fs1) (firstPerRow[p.unit] || (firstPerRow[p.unit] = [])).push(
+      addSubmission(firsts[p.unit] || (firsts[p.unit] = newUnit()), key, fs1));
   }
   const out = {};
   for (const u of Object.keys(units)) out[u] = finishUnit(units[u]);
-  return { source: 'csv', units: out, perRow, noKey: [...noKey].sort(), bad };
+  for (const u of Object.keys(firsts)) out[u].first = firstOnly(finishUnit(firsts[u]));
+  return { source: 'csv', units: out, perRow, firstPerRow, noKey: [...noKey].sort(), bad };
 }
 
 /* Abitur (abitursubs): Unit, Ex1–Ex5 as "4/6", Essay. Exercise-level only. */
@@ -248,12 +270,8 @@ function mergeStats(parts) {
     for (const [u, s] of Object.entries(p.units || {})) {
       if (!units[u]) { units[u] = JSON.parse(JSON.stringify(s)); continue; }
       const t = units[u];
-      t.rows += s.rows;
-      for (const [id, g] of Object.entries(s.gaps)) {
-        const d = t.gaps[id] || (t.gaps[id] = { correct: 0, blank: 0, wrong: Object.create(null) });
-        d.correct += g.correct; d.blank += g.blank;
-        for (const [a, n] of Object.entries(g.wrong)) d.wrong[a] = (d.wrong[a] || 0) + n;
-      }
+      mergeGaps(t, s);
+      if (s.first) { if (t.first) mergeGaps(t.first, s.first); else t.first = JSON.parse(JSON.stringify(s.first)); }
       // Medians cannot be merged exactly; keep the one from the larger sample.
       for (const [id, w] of Object.entries(s.writing || {})) {
         const d = t.writing[id];
@@ -263,6 +281,15 @@ function mergeStats(parts) {
     }
   }
   return { source: 'sheets', units, unmatchedTabs: [...unmatched].sort(), noKey: [] };
+}
+
+function mergeGaps(t, s) {
+  t.rows += s.rows;
+  for (const [id, g] of Object.entries(s.gaps)) {
+    const d = t.gaps[id] || (t.gaps[id] = { correct: 0, blank: 0, wrong: Object.create(null) });
+    d.correct += g.correct; d.blank += g.blank;
+    for (const [a, n] of Object.entries(g.wrong)) d.wrong[a] = (d.wrong[a] || 0) + n;
+  }
 }
 
 // ── report ──────────────────────────────────────────────────────────────────
@@ -293,18 +320,18 @@ function report(data, min) {
       if (u.essay.n) writing.push(writingEntry(unit, 'essay', u.essay.n, u.essay.blank, median(u.essay.words), min));
     }
   } else {
+    const discOf = rows => rows && rows[0] && rows.length >= min ? discrimination(rows) : null;
     for (const [unit, u] of Object.entries(data.units)) {
-      const disc = data.perRow && data.perRow[unit] && data.perRow[unit].length >= min
-        ? discrimination(data.perRow[unit]) : null;
+      const disc = discOf(data.perRow && data.perRow[unit]);
+      const fdisc = discOf(data.firstPerRow && data.firstPerRow[unit]);
       for (const [id, g] of Object.entries(u.gaps)) {
-        const wrongN = Object.values(g.wrong).reduce((a, b) => a + b, 0);
-        const n = g.correct + g.blank + wrongN;
-        let top = null;
-        for (const [a, c] of Object.entries(g.wrong)) {
-          if (a !== OTHER && (!top || c > top.count)) top = { answer: a, count: c };
-        }
-        const topWrong = top ? { answer: top.answer, share: round(top.count / wrongN), wrongN } : null;
-        gaps.push(gapEntry({ unit, gap: id, n, correct: n ? g.correct / n : 0, topWrong }, min, disc ? disc[id] : null));
+        // Judge on first tries once a gap has `min` of them; until then on final answers.
+        const fin = gapStats(g), f = u.first && u.first.gaps[id] ? gapStats(u.first.gaps[id]) : null;
+        const e = f && f.n >= min
+          ? Object.assign(f, { basis: 'first', final: { n: fin.n, correct: round(fin.correct) } })
+          : Object.assign(fin, { basis: 'final' });
+        const d = e.basis === 'first' ? fdisc : disc;
+        gaps.push(gapEntry(Object.assign({ unit, gap: id }, e), min, d ? d[id] : null));
       }
       for (const [id, w] of Object.entries(u.writing || {})) {
         writing.push(writingEntry(unit, id, w.n, w.blank, w.medianWords, min));
@@ -318,11 +345,26 @@ function report(data, min) {
 
 function round(x) { return Math.round(x * 100) / 100; }
 
+/* One gap's counts → n, share correct and the most common wrong answer. */
+function gapStats(g) {
+  const wrongN = Object.values(g.wrong).reduce((a, b) => a + b, 0);
+  const n = g.correct + g.blank + wrongN;
+  let top = null;
+  for (const [a, c] of Object.entries(g.wrong)) {
+    if (a !== OTHER && (!top || c > top.count)) top = { answer: a, count: c };
+  }
+  const topWrong = top ? { answer: top.answer, share: round(top.count / wrongN), wrongN } : null;
+  return { n, correct: n ? g.correct / n : 0, topWrong };
+}
+
 function gapEntry(e, min, disc) {
   e.correct = round(e.correct);
   e.flags = [];
   if (e.n < min) { e.signal = 'not enough data'; return e; }
-  if (e.correct > RULES.easy) e.flags.push('too easy');
+  // Final answers are mostly fixed after Check showed red, so they are high on every
+  // gap: "too easy" is judged on first tries only. (Abitur scores have no basis.)
+  if (e.correct > RULES.easy && e.basis !== 'final') e.flags.push('too easy');
+  else if (e.correct > RULES.easy) e.easyFinal = true;
   if (e.correct < RULES.hard) e.flags.push('too hard');
   // A gap everyone got right (or wrong) has no spread to compare, so disc is 0
   // there by arithmetic, not because the gap is ambiguous.
@@ -357,7 +399,9 @@ function compareChanges(changes, afterFor, min) {
   const byDate = {};
   return changes.map(c => {
     const r = byDate[c.date] || (byDate[c.date] = afterFor(c.date));
-    const g = r && r.gaps.find(x => x.unit === c.unit && x.gap === c.gap);
+    // Compare like with like: `before` was measured on c.basis (default final answers).
+    const want = c.basis || 'final', x = r && r.gaps.find(x => x.unit === c.unit && x.gap === c.gap);
+    const g = !x ? null : (x.basis || 'final') === want ? x : want === 'final' ? x.final : null;
     const out = { unit: c.unit, gap: c.gap, date: c.date, before: c.before };
     if (!r) return Object.assign(out, { verdict: 'no dates in this input' });
     if (!g || g.n < min || (c.n != null && c.n < min)) return Object.assign(out, { n: g ? g.n : 0, verdict: 'waiting' });
@@ -380,7 +424,8 @@ function printText(r) {
   const flagged = r.gaps.filter(g => g.flags.length);
   lines.push('Flagged gaps: ' + flagged.length);
   for (const g of flagged) {
-    lines.push('  ' + g.unit + ' ' + g.gap + '  n=' + g.n + '  ' + pct(g.correct) + ' correct  ['
+    lines.push('  ' + g.unit + ' ' + g.gap + '  n=' + g.n + '  ' + pct(g.correct)
+      + (g.basis === 'first' ? ' right first try' : ' correct') + '  ['
       + g.flags.join(', ') + ']' + (g.signal ? ' (' + g.signal + ')' : '')
       + (g.topWrong ? '  top wrong: "' + g.topWrong.answer + '" ' + pct(g.topWrong.share) + ' of wrong' : '')
       + (g.changed ? '  (fixed ' + g.changed + ', see below)' : ''));
@@ -401,6 +446,10 @@ function printText(r) {
   }
   const thin = r.gaps.filter(g => g.signal === 'not enough data').length;
   lines.push('', 'Not enough data: ' + thin + ' gap(s) under ' + r.min + ' answers.');
+  const easyFinal = r.gaps.filter(g => g.easyFinal).length;
+  if (easyFinal) lines.push('Over ' + pct(RULES.easy) + ' correct on final answers only: ' + easyFinal
+    + ' gap(s), not flagged. Learners fix answers after Check; "too easy" waits for '
+    + r.min + ' first tries (sent since 2026-10-17).');
   if (r.noKey.length) lines.push('No answer key: ' + r.noKey.join(', '));
   // unmatchedTabs stays in --json only: tab names are teacher-made and this text
   // goes into a public issue.
@@ -457,7 +506,7 @@ async function main() {
   if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, 'flagged=' + r.flagged + '\n');
 }
 
-module.exports = { newUnit, addSubmission, finishUnit, mergeStats, report, discrimination, toSection, compareChanges };
+module.exports = { newUnit, addSubmission, finishUnit, firstOnly, firstSections, mergeStats, report, discrimination, toSection, compareChanges };
 
 if (require.main === module) {
   main().catch(e => { console.error(e.message); process.exit(2); });

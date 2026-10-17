@@ -116,7 +116,9 @@ function build() {
         var sec = { prefix: c.prefix, multi: !!c.multi, gaps: out };
         if (c.typed) sec.typed = true;
         const field = c.field;
-        if (field === c.scoreKey || fieldUses[field] === 1) sections[field] = sec;
+        // scoreKey: first-try answers arrive as first_<scoreKey> (exercise.js eolFirstTries).
+        if (field === c.scoreKey) sections[field] = sec;
+        else if (fieldUses[field] === 1) { sec.scoreKey = c.scoreKey; sections[field] = sec; }
         else { sec.field = field; sections[c.scoreKey] = sec; }
       }
     }

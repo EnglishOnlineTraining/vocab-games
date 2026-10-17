@@ -47,6 +47,11 @@ function submissions(n) {
       exB: { t1: i === 0 ? SECRETS[4] : i % 2 ? "Don't." : 'dont' },
       exD: { para: i % 4 === 0 ? '(blank)' : 'one two three ' + (i === 1 ? SECRETS[5] : 'four') },
     });
+    // First tries (exercise.js eolFirstTries) from the 6th row on: older rows predate them.
+    if (i >= 5) Object.assign(out[i], {
+      first_exA: { g1: i < 9 ? 'agenda' : 'minutes', g2: 'minutes' },
+      first_exB: { t1: i === 6 ? SECRETS[1] : 'dont' },
+    });
   }
   return out;
 }
@@ -109,14 +114,15 @@ test('node: flags follow the spec rules', () => {
   } };
   const r = IA.report({ source: 'sheets', units }, 15);
   const by = id => r.gaps.find(g => g.gap === id);
-  assert.deepStrictEqual(by('exA.easy').flags, ['too easy']);
+  assert.deepStrictEqual(by('exA.easy').flags, []);   // final answers: not judged too easy
+  assert.strictEqual(by('exA.easy').easyFinal, true);
   assert.deepStrictEqual(by('exA.hard').flags, ['too hard', 'distractor']);
   assert.strictEqual(by('exA.hard').topWrong.share, 0.86);
   assert.strictEqual(by('exA.hard').signal, 'early');
   assert.deepStrictEqual(by('exA.thin').flags, []);
   assert.strictEqual(by('exA.thin').signal, 'not enough data');
   assert.deepStrictEqual(r.writing[0].flags, ['skipped']);
-  assert.strictEqual(r.flagged, 3);
+  assert.strictEqual(r.flagged, 2);
 });
 
 test('node: discrimination is top third minus bottom third', () => {
@@ -136,7 +142,7 @@ test('node: a gap everyone got right is not flagged ambiguous', () => {
   const perRow = { 'zz-test-unit': Array.from({ length: 15 }, (_, i) => ({ 'exA.g1': true, 'exA.g2': i < 8 })) };
   const g = IA.report({ source: 'csv', units, perRow }, 15).gaps[0];
   assert.strictEqual(g.discrimination, 0);
-  assert.deepStrictEqual(g.flags, ['too easy']);
+  assert.deepStrictEqual(g.flags, []);
 });
 
 test('node: two key sections sharing one payload field (`field`) are both read', () => {
@@ -167,6 +173,45 @@ test('loop: a logged fix is judged on answers since its date', () => {
   assert.deepStrictEqual(v, ['kept', 'worse: revert', 'waiting', 'inconclusive', 'no dates in this input']);
 });
 
+test('first tries: read by scoreKey, merged into a shared field, absent on old rows', () => {
+  const key = { unit: 'zz', sections: {
+    ex2: { prefix: 'ex2-', scoreKey: 'exB', gaps: { g1: { correct: 'a', accept: ['a'] } } },   // sent as ex2, scored as exB
+    exA: { prefix: 'exA-', gaps: { g1: { correct: 'a', accept: ['a'] } } },
+    exA2: { prefix: 'exA-', field: 'exA', gaps: { g2: { correct: 'b', accept: ['b'] } } } } };
+  const row = { exA: 'g1: a | g2: b', first_exB: { g1: 'x' }, first_exA: { g1: 'a' }, first_exA2: 'g2: c' };
+  assert.deepStrictEqual(IA.firstSections(key, n => row[n]), { ex2: { g1: 'x' }, exA: { g1: 'a', g2: 'c' } });
+  assert.strictEqual(IA.firstSections(key, n => ({ exA: 'g1: a' })[n]), null);
+});
+
+test('first tries: a gap with min first tries is judged on them, too easy included', () => {
+  const units = { u: { rows: 20, writing: {},
+    gaps: { 'exA.g1': { correct: 20, blank: 0, wrong: {} }, 'exA.g2': { correct: 20, blank: 0, wrong: {} } },
+    first: { rows: 16, gaps: {
+      'exA.g1': { correct: 4, blank: 0, wrong: { x: 12 } },    // hard on first try, hidden by Check
+      'exA.g2': { correct: 16, blank: 0, wrong: {} } } } } };
+  const r = IA.report({ source: 'sheets', units }, 15);
+  const by = id => r.gaps.find(g => g.gap === id);
+  assert.strictEqual(by('exA.g1').basis, 'first');
+  assert.deepStrictEqual(by('exA.g1').flags, ['too hard', 'distractor']);
+  assert.deepStrictEqual(by('exA.g1').final, { n: 20, correct: 1 });
+  assert.deepStrictEqual(by('exA.g2').flags, ['too easy']);
+  // under min first tries: final answers, too easy not flagged
+  const thin = IA.report({ source: 'sheets', units: { u: Object.assign({}, units.u,
+    { first: { rows: 3, gaps: { 'exA.g1': { correct: 1, blank: 0, wrong: { x: 2 } } } } }) } }, 15);
+  assert.strictEqual(thin.gaps[0].basis, 'final');
+  assert.deepStrictEqual(thin.gaps[0].flags, []);
+});
+
+test('loop: a fix is judged on the basis its before was measured on', () => {
+  const after = { gaps: [{ unit: 'u', gap: 'exA.g1', n: 16, correct: 0.5, basis: 'first', final: { n: 20, correct: 0.95 } }] };
+  const v = (c) => IA.compareChanges([Object.assign({ unit: 'u', gap: 'exA.g1', date: 'd' }, c)], () => after, 15)[0];
+  assert.strictEqual(v({ before: 0.3 }).after, 0.95);                   // logged on final answers
+  assert.strictEqual(v({ before: 0.3, basis: 'first' }).after, 0.5);    // logged on first tries
+  const finalOnly = { gaps: [{ unit: 'u', gap: 'exA.g1', n: 20, correct: 0.9, basis: 'final' }] };
+  assert.strictEqual(IA.compareChanges([{ unit: 'u', gap: 'exA.g1', date: 'd', before: 0.3, basis: 'first' }],
+    () => finalOnly, 15)[0].verdict, 'waiting');
+});
+
 // ── CSV end to end (Make export and Abitur export) ─────────────────────────
 
 function csvCell(s) { return /[",\n]/.test(s) ? '"' + String(s).replace(/"/g, '""') + '"' : s; }
@@ -190,6 +235,10 @@ test('csv: a Make export with names in every column never prints them', () => {
     const ans = gaps.map((g, j) => g + ': ' + (j === 0 && i === 0 ? SECRETS[0] : key.sections[sk].gaps[g].correct)).join(' | ');
     const payload = { name: SECRETS[i % 2], cls: SECRETS[2], email: SECRETS[3], unit, [sk]: ans,
       exZ: 'note: ' + SECRETS[5] };
+    // first tries on every row: the first gap right for 9 of 18, a name once
+    if (key.sections[sk].scoreKey) throw new Error('fixture expects a section keyed by its scoreKey');
+    payload['first_' + sk] = gaps.map((g, j) => g + ': ' + (j === 0 && i === 1 ? SECRETS[0]
+      : j === 0 && i % 2 ? 'zzwrong' : key.sections[sk].gaps[g].correct)).join(' | ');
     rows.push(['2026-10-0' + (1 + (i % 9)), SECRETS[i % 2], SECRETS[2], SECRETS[3], unit, JSON.stringify(payload)]);
   }
   const file = tmp('export.csv', rows.map(r => r.map(csvCell).join(',')).join('\n') + '\n');
@@ -199,8 +248,10 @@ test('csv: a Make export with names in every column never prints them', () => {
   const r = JSON.parse(run(['--csv', file, '--json']));
   const first = r.gaps.find(g => g.gap === sk + '.' + gaps[0]);
   assert.strictEqual(first.n, 18);
-  assert.strictEqual(first.correct, 0.94);   // 17 of 18; the name went to (other)
-  assert.deepStrictEqual(first.flags, ['too easy']);
+  assert.strictEqual(first.basis, 'first');
+  assert.strictEqual(first.correct, 0.5);    // 9 of 18 first tries; final answers were 94 %
+  assert.deepStrictEqual(first.final, { n: 18, correct: 0.94 });
+  assert.deepStrictEqual(first.flags, ['distractor']);   // "zzwrong" is 8 of 9 wrong first tries
   // Excel with German settings: "CSV UTF-8" is ;-separated with a BOM. Same result.
   const semi = tmp('export-de.csv', '\uFEFF' + rows.map(r => r.map(c => /[";\n]/.test(c) ? '"' + String(c).replace(/"/g, '""') + '"' : c).join(';')).join('\n') + '\n');
   assert.deepStrictEqual(JSON.parse(run(['--csv', semi, '--json'])), r);
@@ -279,9 +330,12 @@ test('apps script: itemStats matches the Node counts and leaks nothing', () => {
   };
   const res = JSON.parse(JSON.stringify(ctx.itemStats(ss, '', loader)));
 
-  const acc = IA.newUnit();
+  const acc = IA.newUnit(), facc = IA.newUnit();
   subs.forEach(s => IA.addSubmission(acc, KEY, s));
-  const expected = plain(IA.finishUnit(acc));
+  subs.forEach(s => { const f = IA.firstSections(KEY, n => s[n]); if (f) IA.addSubmission(facc, KEY, f); });
+  const expected = plain(Object.assign(IA.finishUnit(acc), { first: IA.firstOnly(IA.finishUnit(facc)) }));
+  assert.strictEqual(expected.first.rows, 15);
+  assert.deepStrictEqual(expected.first.gaps['exA.g1'], { correct: 4, blank: 0, wrong: { minutes: 11 } });
   assert.deepStrictEqual(res.units['zz-test-unit'], expected);
   assert.deepStrictEqual(res.units['ielts-zz-test'], expected);   // the shared tab, filtered by Unit
   assert.deepStrictEqual(Object.keys(res.units).sort(), ['ielts-zz-test', 'zz-test-unit']);

@@ -53,7 +53,8 @@
      "label": "6. First Wimbledon Championship",
      "why": "The first Wimbledon Championship was played in 1877."
     }
-   }
+   },
+   "scoreKey": "exA"
   },
   "ex2": {
    "prefix": "exB-",
@@ -123,7 +124,8 @@
      "label": "8. Wimbledon is a famous tennis ___",
      "why": "A tournament is a whole series of matches, not just one."
     }
-   }
+   },
+   "scoreKey": "exB"
   }
  }
 }
