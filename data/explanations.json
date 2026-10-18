@@ -19969,5 +19969,119 @@
     }
    }
   }
+ },
+ "ielts-writing-task2-discussion-essay": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. ___ free entry argue that culture belongs to everyone",
+     "correct": "Supporters of",
+     "why": "The paragraph gives the case for free entry, so it reports the people who support it."
+    },
+    "g2": {
+     "label": "2. ___ free entry encourages people to return",
+     "correct": "It is also claimed that",
+     "why": "A second argument from the same side, reported without naming who holds it; “also” adds it to the first."
+    },
+    "g3": {
+     "label": "3. ___, those who favour charging point out …",
+     "correct": "On the other hand",
+     "why": "The essay now turns to the opposite view, so it needs a contrast linker."
+    },
+    "g4": {
+     "label": "4. ___ people value what they pay for",
+     "correct": "Critics of free entry also argue that",
+     "why": "This is still the other side’s argument; “In my opinion” would contradict the writer’s view in the introduction."
+    },
+    "g5": {
+     "label": "5. ___, although charging would raise money …",
+     "correct": "In conclusion",
+     "why": "The final paragraph sums up and gives the writer’s view, so it opens with a concluding phrase."
+    },
+    "g6": {
+     "label": "6. ___ entry should remain free for everyone",
+     "correct": "I would therefore argue that",
+     "why": "The conclusion must give the writer’s own view; “Some people argue” only reports others again."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. Report one side: ___ argue that it builds good study habits",
+     "correct": "Supporters of homework",
+     "why": "“Argue” needs a subject that names the group holding the view; “In my view” gives your own."
+    },
+    "g2": {
+     "label": "2. Report the other side: ___ point out that …",
+     "correct": "Critics",
+     "why": "“Critics point out” reports the opposing side; the other options give your own view and do not fit “point out”."
+    },
+    "g3": {
+     "label": "3. Report a common view: ___ that cities are lonelier …",
+     "correct": "It is often claimed",
+     "why": "The passive “It is often claimed that” reports a view without saying who holds it."
+    },
+    "g4": {
+     "label": "4. Give your own view: ___, the advantages outweigh …",
+     "correct": "In my view",
+     "why": "“In my view” states your own opinion; “Many people argue” reports someone else’s."
+    },
+    "g5": {
+     "label": "5. Many people ___ that technology makes us less sociable",
+     "correct": "believe",
+     "why": "“People” is plural, and “believe” is a state verb, so present simple: people believe."
+    },
+    "g6": {
+     "label": "6. ___ this argument to some extent",
+     "correct": "I agree with",
+     "why": "We agree with an argument or a person; “I am agree” is wrong because “agree” is already a verb."
+    },
+    "g7": {
+     "label": "7. Some researchers ___ that short breaks …",
+     "correct": "suggest",
+     "why": "“Researchers” is plural: they suggest. “Suggest” is a cautious way to report a claim."
+    },
+    "g8": {
+     "label": "8. ___ that cars are convenient, I believe …",
+     "correct": "While it is true",
+     "why": "“While it is true that …” accepts the other side’s point before your view; the other two are not correct English."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. Conclusion: free museums",
+     "correct": "In conclusion, although charging would raise money, I believe free entry is better because museums exist to share knowledge.",
+     "why": "It sums up both sides and gives the writer’s opinion; the first option has no opinion and the last adds a new argument."
+    },
+    "g2": {
+     "label": "2. Conclusion: school starting age",
+     "correct": "To sum up, while starting early has some benefits, I believe most children gain more from starting at seven, when they are ready to learn.",
+     "why": "Only this one gives an opinion; the others list advantages with no view or bring in a new topic."
+    },
+    "g3": {
+     "label": "3. Conclusion: home or office",
+     "correct": "To conclude, although offices help teamwork, in my view most employees work best with a mix of home and office days.",
+     "why": "It states the writer’s view; “it depends on each person” avoids an answer, and internet costs are a new argument."
+    },
+    "g4": {
+     "label": "4. Conclusion: tourist tax",
+     "correct": "In conclusion, I believe a small tourist tax is fair, as long as the money is spent on the places that visitors use.",
+     "why": "It answers the question with the writer’s view; the others add a new idea or only say people disagree."
+    },
+    "g5": {
+     "label": "5. Review (Opinion Essay): ___ the rain, the match went ahead",
+     "correct": "Despite",
+     "why": "“Despite” takes a noun (the rain); “although” needs a full clause — from the Opinion Essay exercise."
+    },
+    "g6": {
+     "label": "6. Review (Opinion Essay): ___, more people began cycling",
+     "correct": "As a result",
+     "why": "Cycling more is a consequence of higher fuel prices, so a result linker — from the Opinion Essay exercise."
+    }
+   }
+  }
  }
 }

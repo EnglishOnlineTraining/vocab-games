@@ -20,9 +20,9 @@
      "label": "2. plant community a better guide → number of walks the best guide"
     },
     "g3": {
-     "correct": "Finally",
+     "correct": "I would therefore argue that",
      "accept": [
-      "Finally"
+      "I would therefore argue that"
      ],
      "label": "3."
     },
@@ -34,32 +34,32 @@
      "label": "4. Paragraph on cycle lanes"
     },
     "g5": {
+     "correct": "Finally",
+     "accept": [
+      "Finally"
+     ],
+     "label": "5."
+    },
+    "g6": {
      "correct": "airtight packets",
      "accept": [
       "airtight packets"
      ],
-     "label": "5. seeds are dried and sealed in"
+     "label": "6. seeds are dried and sealed in"
     },
-    "g6": {
+    "g7": {
      "correct": "from",
      "accept": [
       "from"
      ],
-     "label": "6. fell"
+     "label": "7. fell"
     },
-    "g7": {
+    "g8": {
      "correct": "just over half",
      "accept": [
       "just over half"
      ],
-     "label": "7. 52%"
-    },
-    "g8": {
-     "correct": "True",
-     "accept": [
-      "True"
-     ],
-     "label": "8. connected homes to schools and bus stops → some paths led to bus stops"
+     "label": "8. 52%"
     }
    }
   },
@@ -68,60 +68,60 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "are removed",
-     "accept": [
-      "are removed"
-     ],
-     "label": "1. The labels"
-    },
-    "g2": {
-     "correct": "Another benefit is that courses outside a student’s field teach practical skills.",
-     "accept": [
-      "Another benefit is that courses outside a student’s field teach practical skills."
-     ],
-     "label": "2. Paragraph on languages and coding skills"
-    },
-    "g3": {
-     "correct": "Not Given",
-     "accept": [
-      "Not Given"
-     ],
-     "label": "3. was announced in 2014 → was completed in 2014 (review)"
-    },
-    "g4": {
-     "correct": "dwindle",
-     "accept": [
-      "dwindle"
-     ],
-     "label": "4. car use continued to"
-    },
-    "g5": {
-     "correct": "three times as many",
-     "accept": [
-      "three times as many"
-     ],
-     "label": "5. 90 compared with 30"
-    },
-    "g6": {
      "correct": "True",
      "accept": [
       "True"
      ],
-     "label": "6. more than 5,000 → over five thousand"
+     "label": "1. connected homes to schools and bus stops → some paths led to bus stops"
+    },
+    "g2": {
+     "correct": "To sum up, while starting early has some benefits, I believe most children gain more from starting at seven, when they are ready to learn.",
+     "accept": [
+      "To sum up, while starting early has some benefits, I believe most children gain more from starting at seven, when they are ready to learn."
+     ],
+     "label": "2. Conclusion: school starting age"
+    },
+    "g3": {
+     "correct": "Another benefit is that courses outside a student’s field teach practical skills.",
+     "accept": [
+      "Another benefit is that courses outside a student’s field teach practical skills."
+     ],
+     "label": "3. Paragraph on languages and coding skills"
+    },
+    "g4": {
+     "correct": "are removed",
+     "accept": [
+      "are removed"
+     ],
+     "label": "4. The labels"
+    },
+    "g5": {
+     "correct": "Not Given",
+     "accept": [
+      "Not Given"
+     ],
+     "label": "5. was announced in 2014 → was completed in 2014 (review)"
+    },
+    "g6": {
+     "correct": "dwindle",
+     "accept": [
+      "dwindle"
+     ],
+     "label": "6. car use continued to"
     },
     "g7": {
-     "correct": "is then heated",
+     "correct": "three times as many",
      "accept": [
-      "is then heated"
+      "three times as many"
      ],
-     "label": "7. The mixture"
+     "label": "7. 90 compared with 30"
     },
     "g8": {
-     "correct": "Despite",
+     "correct": "True",
      "accept": [
-      "Despite"
+      "True"
      ],
-     "label": "8."
+     "label": "8. more than 5,000 → over five thousand"
     }
    }
   },
@@ -130,60 +130,60 @@
    "multi": false,
    "gaps": {
     "g1": {
+     "correct": "In my view",
+     "accept": [
+      "In my view"
+     ],
+     "label": "1. Give your own view:"
+    },
+    "g2": {
+     "correct": "Despite",
+     "accept": [
+      "Despite"
+     ],
+     "label": "2."
+    },
+    "g3": {
+     "correct": "is then heated",
+     "accept": [
+      "is then heated"
+     ],
+     "label": "3. The mixture"
+    },
+    "g4": {
      "correct": "costly",
      "accept": [
       "costly"
      ],
-     "label": "1. regeneration is both slow and"
+     "label": "4. regeneration is both slow and"
     },
-    "g2": {
+    "g5": {
      "correct": "dramatic increase",
      "accept": [
       "dramatic increase"
      ],
-     "label": "2. Cycling saw a"
+     "label": "5. Cycling saw a"
     },
-    "g3": {
+    "g6": {
      "correct": "four times",
      "accept": [
       "four times"
      ],
-     "label": "3. the share of car users was"
+     "label": "6. the share of car users was"
     },
-    "g4": {
+    "g7": {
      "correct": "the actions taken to deal with the problem",
      "accept": [
       "the actions taken to deal with the problem"
      ],
-     "label": "4. Such measures (paragraph B)"
-    },
-    "g5": {
-     "correct": "First",
-     "accept": [
-      "First"
-     ],
-     "label": "5."
-    },
-    "g6": {
-     "correct": "Although",
-     "accept": [
-      "Although"
-     ],
-     "label": "6."
-    },
-    "g7": {
-     "correct": "a verb form",
-     "accept": [
-      "a verb form"
-     ],
-     "label": "7. frozen seeds cannot"
+     "label": "7. Such measures (paragraph B)"
     },
     "g8": {
-     "correct": "remained stable",
+     "correct": "In conclusion",
      "accept": [
-      "remained stable"
+      "In conclusion"
      ],
-     "label": "8. Prices"
+     "label": "8."
     }
    }
   }
