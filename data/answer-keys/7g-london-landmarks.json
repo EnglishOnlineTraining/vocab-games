@@ -1,7 +1,7 @@
 {
  "unit": "7g-london-landmarks",
  "sections": {
-  "exC": {
+  "ex3": {
    "prefix": "ex3-",
    "multi": false,
    "gaps": {
@@ -53,7 +53,8 @@
      "label": "6. a beautiful view ___ the Houses of Parliament",
      "why": "Fixed phrase: a view of something → of."
     }
-   }
+   },
+   "scoreKey": "exC"
   }
  }
 }

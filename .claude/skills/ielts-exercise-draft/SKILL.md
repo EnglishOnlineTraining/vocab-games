@@ -49,6 +49,8 @@ Note or any grade text.
 ### A3. Content rules
 
 - **English only.** No German anywhere in the task content.
+- **Lessons from item analysis:** follow STYLE.md §2.5 (payload keys equal scoreKeys; typed keys
+  accept every correct word order).
 - **No band scores, ever.** Do not predict or imply one ("this is a band 7 answer"). Model answers
   are "a model answer", nothing more.
 - **Everything original.** Write your own texts, graphs, tables, diagrams and questions. Never copy

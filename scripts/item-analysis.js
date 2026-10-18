@@ -36,7 +36,7 @@ const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
 const OTHER = '(other)';
 
 // distractorMinWrong: below 5 wrong answers in all, one answer taking > 40 % is noise.
-const RULES = { easy: 0.9, hard: 0.3, distractor: 0.4, distractorMinWrong: 5, skipped: 0.25, early: 30 };
+const RULES = { easy: 0.9, hard: 0.3, distractor: 0.4, distractorMinWrong: 5, skipped: 0.25, early: 30, revertDrop: 0.2 };
 
 // ── counting (mirrored by itemStatsForUnit in apps-script.gs) ───────────────
 
@@ -70,7 +70,33 @@ function toSection(v) {
 
 /* Sections to read from a payload or sheet row: every graded section in the key
    (some are not ex*, e.g. the grammar quizzes' "quiz") plus ex* for writing. */
-function isSection(name, key) { return has(key.sections, name) || /^ex/i.test(name); }
+function isSection(name, key) {
+  return /^ex/i.test(name) || Object.keys(key.sections).some(sk => (key.sections[sk].field || sk) === name);
+}
+
+/* Gap ids graded inside payload field `name` (two key sections can share one field). */
+function gradedIn(name, key) {
+  const out = {};
+  for (const sk of Object.keys(key.sections)) {
+    if ((key.sections[sk].field || sk) === name) Object.assign(out, key.sections[sk].gaps);
+  }
+  return out;
+}
+
+/* First-try answers (exercise.js sends first_<scoreKey>), as sections keyed like the
+   final answers so addSubmission reads them. get(name) returns a payload field or sheet
+   cell. null when the row has none: sent before first tries were (2026-10-17). */
+function firstSections(key, get) {
+  let out = null;
+  for (const sk of Object.keys(key.sections)) {
+    const sec = key.sections[sk], v = get('first_' + (sec.scoreKey || sk));
+    if (v == null || v === '') continue;
+    const f = sec.field || sk;
+    out = out || {};
+    out[f] = Object.assign(out[f] || {}, toSection(v));
+  }
+  return out;
+}
 
 /* One accumulator per unit. `sections` per submission: { exA: { g1: 'x' }, … },
    already unflattened. Returns per-gap correctness for the row (for discrimination). */
@@ -81,7 +107,7 @@ function addSubmission(acc, key, sections) {
   const result = {};
   for (const sk of Object.keys(key.sections)) {
     const sec = key.sections[sk];
-    const given = sections[sk] || {};
+    const given = sections[sec.field || sk] || {};
     for (const g of Object.keys(sec.gaps)) {
       const gap = sec.gaps[g], id = sk + '.' + g;
       const c = acc.gaps[id] || (acc.gaps[id] = { correct: 0, blank: 0, wrong: Object.create(null), typed: !!sec.typed });
@@ -96,7 +122,7 @@ function addSubmission(acc, key, sections) {
   // Writing: any answer field of an ex* section that the key does not grade.
   for (const sk of Object.keys(sections)) {
     if (!/^ex/i.test(sk)) continue;
-    const graded = (has(key.sections, sk) && key.sections[sk].gaps) || {};
+    const graded = gradedIn(sk, key);
     for (const f of Object.keys(sections[sk])) {
       if (has(graded, f) || !FIELD.test(f)) continue;
       const id = sk + '.' + f;
@@ -130,6 +156,9 @@ function finishUnit(acc) {
   }
   return out;
 }
+
+/* First tries carry graded gaps only; writing is read from the final answers. */
+function firstOnly(u) { return { rows: u.rows, gaps: u.gaps }; }
 
 // ── inputs ──────────────────────────────────────────────────────────────────
 
@@ -166,7 +195,7 @@ function fromMakeCsv(rows, since) {
   }
   if (col === -1) return null;
 
-  const units = {}, perRow = {}, noKey = new Set();
+  const units = {}, perRow = {}, firsts = {}, firstPerRow = {}, noKey = new Set();
   let bad = 0;
   for (let r = 1; r < rows.length; r++) {
     const raw = (rows[r][col] || '').trim();
@@ -179,10 +208,14 @@ function fromMakeCsv(rows, since) {
     for (const k of Object.keys(p)) if (isSection(k, key)) sections[k] = toSection(p[k]);
     const res = addSubmission(units[p.unit] || (units[p.unit] = newUnit()), key, sections);
     (perRow[p.unit] || (perRow[p.unit] = [])).push(res);
+    const fs1 = firstSections(key, n => p[n]);
+    if (fs1) (firstPerRow[p.unit] || (firstPerRow[p.unit] = [])).push(
+      addSubmission(firsts[p.unit] || (firsts[p.unit] = newUnit()), key, fs1));
   }
   const out = {};
   for (const u of Object.keys(units)) out[u] = finishUnit(units[u]);
-  return { source: 'csv', units: out, perRow, noKey: [...noKey].sort(), bad };
+  for (const u of Object.keys(firsts)) out[u].first = firstOnly(finishUnit(firsts[u]));
+  return { source: 'csv', units: out, perRow, firstPerRow, noKey: [...noKey].sort(), bad };
 }
 
 /* Abitur (abitursubs): Unit, Ex1–Ex5 as "4/6", Essay. Exercise-level only. */
@@ -237,12 +270,8 @@ function mergeStats(parts) {
     for (const [u, s] of Object.entries(p.units || {})) {
       if (!units[u]) { units[u] = JSON.parse(JSON.stringify(s)); continue; }
       const t = units[u];
-      t.rows += s.rows;
-      for (const [id, g] of Object.entries(s.gaps)) {
-        const d = t.gaps[id] || (t.gaps[id] = { correct: 0, blank: 0, wrong: Object.create(null) });
-        d.correct += g.correct; d.blank += g.blank;
-        for (const [a, n] of Object.entries(g.wrong)) d.wrong[a] = (d.wrong[a] || 0) + n;
-      }
+      mergeGaps(t, s);
+      if (s.first) { if (t.first) mergeGaps(t.first, s.first); else t.first = JSON.parse(JSON.stringify(s.first)); }
       // Medians cannot be merged exactly; keep the one from the larger sample.
       for (const [id, w] of Object.entries(s.writing || {})) {
         const d = t.writing[id];
@@ -252,6 +281,15 @@ function mergeStats(parts) {
     }
   }
   return { source: 'sheets', units, unmatchedTabs: [...unmatched].sort(), noKey: [] };
+}
+
+function mergeGaps(t, s) {
+  t.rows += s.rows;
+  for (const [id, g] of Object.entries(s.gaps)) {
+    const d = t.gaps[id] || (t.gaps[id] = { correct: 0, blank: 0, wrong: Object.create(null) });
+    d.correct += g.correct; d.blank += g.blank;
+    for (const [a, n] of Object.entries(g.wrong)) d.wrong[a] = (d.wrong[a] || 0) + n;
+  }
 }
 
 // ── report ──────────────────────────────────────────────────────────────────
@@ -282,18 +320,18 @@ function report(data, min) {
       if (u.essay.n) writing.push(writingEntry(unit, 'essay', u.essay.n, u.essay.blank, median(u.essay.words), min));
     }
   } else {
+    const discOf = rows => rows && rows[0] && rows.length >= min ? discrimination(rows) : null;
     for (const [unit, u] of Object.entries(data.units)) {
-      const disc = data.perRow && data.perRow[unit] && data.perRow[unit].length >= min
-        ? discrimination(data.perRow[unit]) : null;
+      const disc = discOf(data.perRow && data.perRow[unit]);
+      const fdisc = discOf(data.firstPerRow && data.firstPerRow[unit]);
       for (const [id, g] of Object.entries(u.gaps)) {
-        const wrongN = Object.values(g.wrong).reduce((a, b) => a + b, 0);
-        const n = g.correct + g.blank + wrongN;
-        let top = null;
-        for (const [a, c] of Object.entries(g.wrong)) {
-          if (a !== OTHER && (!top || c > top.count)) top = { answer: a, count: c };
-        }
-        const topWrong = top ? { answer: top.answer, share: round(top.count / wrongN), wrongN } : null;
-        gaps.push(gapEntry({ unit, gap: id, n, correct: n ? g.correct / n : 0, topWrong }, min, disc ? disc[id] : null));
+        // Judge on first tries once a gap has `min` of them; until then on final answers.
+        const fin = gapStats(g), f = u.first && u.first.gaps[id] ? gapStats(u.first.gaps[id]) : null;
+        const e = f && f.n >= min
+          ? Object.assign(f, { basis: 'first', final: { n: fin.n, correct: round(fin.correct) } })
+          : Object.assign(fin, { basis: 'final' });
+        const d = e.basis === 'first' ? fdisc : disc;
+        gaps.push(gapEntry(Object.assign({ unit, gap: id }, e), min, d ? d[id] : null));
       }
       for (const [id, w] of Object.entries(u.writing || {})) {
         writing.push(writingEntry(unit, id, w.n, w.blank, w.medianWords, min));
@@ -307,13 +345,30 @@ function report(data, min) {
 
 function round(x) { return Math.round(x * 100) / 100; }
 
+/* One gap's counts → n, share correct and the most common wrong answer. */
+function gapStats(g) {
+  const wrongN = Object.values(g.wrong).reduce((a, b) => a + b, 0);
+  const n = g.correct + g.blank + wrongN;
+  let top = null;
+  for (const [a, c] of Object.entries(g.wrong)) {
+    if (a !== OTHER && (!top || c > top.count)) top = { answer: a, count: c };
+  }
+  const topWrong = top ? { answer: top.answer, share: round(top.count / wrongN), wrongN } : null;
+  return { n, correct: n ? g.correct / n : 0, topWrong };
+}
+
 function gapEntry(e, min, disc) {
   e.correct = round(e.correct);
   e.flags = [];
   if (e.n < min) { e.signal = 'not enough data'; return e; }
-  if (e.correct > RULES.easy) e.flags.push('too easy');
+  // Final answers are mostly fixed after Check showed red, so they are high on every
+  // gap: "too easy" is judged on first tries only. (Abitur scores have no basis.)
+  if (e.correct > RULES.easy && e.basis !== 'final') e.flags.push('too easy');
+  else if (e.correct > RULES.easy) e.easyFinal = true;
   if (e.correct < RULES.hard) e.flags.push('too hard');
-  if (disc != null && disc <= 0) e.flags.push('ambiguous');
+  // A gap everyone got right (or wrong) has no spread to compare, so disc is 0
+  // there by arithmetic, not because the gap is ambiguous.
+  if (disc != null && disc <= 0 && e.correct > 0 && e.correct < 1) e.flags.push('ambiguous');
   if (e.topWrong && e.topWrong.wrongN >= RULES.distractorMinWrong && e.topWrong.share > RULES.distractor) e.flags.push('distractor');
   if (disc != null) e.discrimination = round(disc);
   if (e.n < RULES.early) e.signal = 'early';
@@ -329,14 +384,51 @@ function writingEntry(unit, field, n, blank, medianWords, min) {
 
 function pct(x) { return Math.round(x * 100) + '%'; }
 
+// ── the loop: did each logged fix work? ─────────────────────────────────────
+
+const CHANGES = path.join(__dirname, '..', 'data', 'item-changes.json');
+
+/* changes: data/item-changes.json. afterFor(date): report() over rows on or after
+   that date only. A fix is judged on answers given after it, against `before`, by the
+   spec's rule (docs/agent-backlog.md #11, Loop 4): with `min` answers on both sides, a
+   fall of 20 points or more is "worse: revert", a rise is "kept" (its lesson can go
+   into STYLE.md §2.5), anything else "inconclusive".
+   ponytail: a fixed 20-point margin, no significance test; small classes can still
+   swing past it by chance, so the PR reviewer decides. */
+function compareChanges(changes, afterFor, min) {
+  const byDate = {};
+  return changes.map(c => {
+    const r = byDate[c.date] || (byDate[c.date] = afterFor(c.date));
+    // Compare like with like: `before` was measured on c.basis (default final answers).
+    const want = c.basis || 'final', x = r && r.gaps.find(x => x.unit === c.unit && x.gap === c.gap);
+    const g = !x ? null : (x.basis || 'final') === want ? x : want === 'final' ? x.final : null;
+    const out = { unit: c.unit, gap: c.gap, date: c.date, before: c.before };
+    if (!r) return Object.assign(out, { verdict: 'no dates in this input' });
+    if (!g || g.n < min || (c.n != null && c.n < min)) return Object.assign(out, { n: g ? g.n : 0, verdict: 'waiting' });
+    const verdict = round(c.before - g.correct) >= RULES.revertDrop ? 'worse: revert'
+      : g.correct > c.before ? 'kept' : 'inconclusive';
+    return Object.assign(out, { n: g.n, after: g.correct, verdict });
+  });
+}
+
+/* Mark flagged gaps that already have a logged fix, so they are not fixed twice. */
+function markChanged(r, changes) {
+  for (const g of r.gaps) {
+    const c = changes.filter(x => x.unit === g.unit && x.gap === g.gap).pop();
+    if (c) g.changed = c.date;
+  }
+}
+
 function printText(r) {
   const lines = ['Item analysis (' + r.source + '), min ' + r.min + ' answers', ''];
   const flagged = r.gaps.filter(g => g.flags.length);
   lines.push('Flagged gaps: ' + flagged.length);
   for (const g of flagged) {
-    lines.push('  ' + g.unit + ' ' + g.gap + '  n=' + g.n + '  ' + pct(g.correct) + ' correct  ['
+    lines.push('  ' + g.unit + ' ' + g.gap + '  n=' + g.n + '  ' + pct(g.correct)
+      + (g.basis === 'first' ? ' right first try' : ' correct') + '  ['
       + g.flags.join(', ') + ']' + (g.signal ? ' (' + g.signal + ')' : '')
-      + (g.topWrong ? '  top wrong: "' + g.topWrong.answer + '" ' + pct(g.topWrong.share) + ' of wrong' : ''));
+      + (g.topWrong ? '  top wrong: "' + g.topWrong.answer + '" ' + pct(g.topWrong.share) + ' of wrong' : '')
+      + (g.changed ? '  (fixed ' + g.changed + ', see below)' : ''));
   }
   const wf = r.writing.filter(w => w.flags.length);
   lines.push('', 'Flagged writing fields: ' + wf.length);
@@ -344,8 +436,20 @@ function printText(r) {
     lines.push('  ' + w.unit + ' ' + w.field + '  n=' + w.n + '  ' + pct(w.blank) + ' blank  median '
       + w.medianWords + ' words  [' + w.flags.join(', ') + ']');
   }
+  if (r.changes && r.changes.length) {
+    lines.push('', 'Logged fixes (data/item-changes.json), answers since each fix:');
+    for (const c of r.changes) {
+      lines.push('  ' + c.unit + ' ' + c.gap + '  ' + c.date + '  before ' + pct(c.before)
+        + (c.after != null ? '  after ' + pct(c.after) + ' (n=' + c.n + ')' : c.n != null ? '  n=' + c.n + ' so far' : '')
+        + '  [' + c.verdict + ']');
+    }
+  }
   const thin = r.gaps.filter(g => g.signal === 'not enough data').length;
   lines.push('', 'Not enough data: ' + thin + ' gap(s) under ' + r.min + ' answers.');
+  const easyFinal = r.gaps.filter(g => g.easyFinal).length;
+  if (easyFinal) lines.push('Over ' + pct(RULES.easy) + ' correct on final answers only: ' + easyFinal
+    + ' gap(s), not flagged. Learners fix answers after Check; "too easy" waits for '
+    + r.min + ' first tries (sent since 2026-10-17).');
   if (r.noKey.length) lines.push('No answer key: ' + r.noKey.join(', '));
   // unmatchedTabs stays in --json only: tab names are teacher-made and this text
   // goes into a public issue.
@@ -367,26 +471,42 @@ async function main() {
   const since = sinceArg ? new Date(sinceArg + 'T00:00:00Z') : null;
   if (since && isNaN(since)) throw new Error('--since must be YYYY-MM-DD');
 
-  let data;
+  // load(since) reads the same input again from a date; null when it has no dates.
+  let load;
   if (arg('--csv')) {
     const rows = parseCsv(fs.readFileSync(arg('--csv'), 'utf8'));
     if (rows.length < 2) throw new Error('empty CSV');
-    data = fromMakeCsv(rows, since) || fromAbiturCsv(rows, since);
-    if (!data) throw new Error('No raw-payload column and no Abitur columns (Unit, Ex1–Ex5) found.');
+    load = d => fromMakeCsv(rows, d) || fromAbiturCsv(rows, d);
+    if (!load(null)) throw new Error('No raw-payload column and no Abitur columns (Unit, Ex1–Ex5) found.');
   } else if (arg('--stats')) {
-    data = mergeStats([JSON.parse(fs.readFileSync(arg('--stats'), 'utf8'))]);
+    const stats = JSON.parse(fs.readFileSync(arg('--stats'), 'utf8'));
+    load = d => (d ? null : mergeStats([stats]));
   } else if (process.argv.includes('--sheets')) {
-    data = await fromSheets(since);
+    const cache = {};
+    load = d => cache[d] || (cache[d] = fromSheets(d));
   } else {
     throw new Error('usage: node scripts/item-analysis.js --csv <file> | --sheets | --stats <file> [--min 15] [--json] [--since YYYY-MM-DD]');
   }
 
-  const r = report(data, min);
+  const r = report(await load(since), min);
+  // Only fixes to units this input holds: Excel units never show up in --sheets.
+  const units = new Set(r.gaps.map(g => g.unit));
+  const changes = (fs.existsSync(CHANGES) ? JSON.parse(fs.readFileSync(CHANGES, 'utf8')) : [])
+    .filter(c => units.has(c.unit));
+  if (changes.length) {
+    const after = {};
+    for (const d of new Set(changes.map(c => c.date))) {
+      const from = new Date(d + 'T00:00:00Z'), data = await load(since && since > from ? since : from);
+      after[d] = data ? report(data, min) : null;
+    }
+    r.changes = compareChanges(changes, d => after[d], min);
+    markChanged(r, changes);
+  }
   console.log(process.argv.includes('--json') ? JSON.stringify(r, null, 1) : printText(r));
   if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, 'flagged=' + r.flagged + '\n');
 }
 
-module.exports = { newUnit, addSubmission, finishUnit, mergeStats, report, discrimination, toSection };
+module.exports = { newUnit, addSubmission, finishUnit, firstOnly, firstSections, mergeStats, report, discrimination, toSection, compareChanges };
 
 if (require.main === module) {
   main().catch(e => { console.error(e.message); process.exit(2); });

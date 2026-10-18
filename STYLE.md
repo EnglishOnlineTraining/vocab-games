@@ -78,6 +78,27 @@ step navigation, the progress bar, and the submit screen.
   After building, flip the entry to `"status": "built"` with its `"file"`.
 - `node topic-pool.js --check` must pass before committing.
 
+### 2.5 Lessons from item analysis
+
+Rules learned from real submissions (agent #11, `docs/agent-backlog.md`). When a fix in
+`data/item-changes.json` is confirmed "kept", its lesson is added here, so new pages start
+without the problem. Check every new graded page against this list.
+
+- **Send each section under the name it is scored by** (2026-10-17). The payload key for
+  a section must equal its `scoreKey`: `exB: eolFlat(state.exB)` with `checkDropdowns(…, 'exB')`.
+  Thirteen pages sent `ex2` for `exB`, and their answers were read as blank when re-graded
+  or analysed. `build-answer-keys.js` now copes with a mismatch, and `node test-make-grader.js`
+  fails if a key reads a field the page never sends, but keep the names equal so the key,
+  `data/explanations.json` and the Excel row all use one name.
+- **Typed transformation keys accept every correct word order** (2026-10-17). When the
+  source sentence has a time phrase ("Next year, …", "Yesterday, …", "in 2008"), accept it at
+  the start (with and without the comma) and at the end. When the source names an agent,
+  accept the answer with and without "by …". When a verb takes two objects, accept both
+  passives ("Young artists were given a grant" / "A grant was given to young artists").
+  Students wrote these, and the key marked 0 % of them right. Put the same list in the
+  page key and in `data/explanations.json` (section `typed: true`), or the review page
+  disagrees with the Check button.
+
 ## 3. Definition of done
 
 - [ ] `node scripts/verify-exercise.js <new-file>.html` — all checks pass
