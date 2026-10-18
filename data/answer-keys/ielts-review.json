@@ -13,46 +13,46 @@
      "label": "1. Overview: museum visitors"
     },
     "g2": {
-     "correct": "Investing in cycle lanes is one of the most effective ways to reduce traffic.",
-     "accept": [
-      "Investing in cycle lanes is one of the most effective ways to reduce traffic."
-     ],
-     "label": "2. Paragraph on cycle lanes"
-    },
-    "g3": {
      "correct": "False",
      "accept": [
       "False"
      ],
-     "label": "3. plant community a better guide → number of walks the best guide"
+     "label": "2. plant community a better guide → number of walks the best guide"
+    },
+    "g3": {
+     "correct": "Finally",
+     "accept": [
+      "Finally"
+     ],
+     "label": "3."
     },
     "g4": {
+     "correct": "Investing in cycle lanes is one of the most effective ways to reduce traffic.",
+     "accept": [
+      "Investing in cycle lanes is one of the most effective ways to reduce traffic."
+     ],
+     "label": "4. Paragraph on cycle lanes"
+    },
+    "g5": {
      "correct": "airtight packets",
      "accept": [
       "airtight packets"
      ],
-     "label": "4. seeds are dried and sealed in"
+     "label": "5. seeds are dried and sealed in"
     },
-    "g5": {
+    "g6": {
      "correct": "from",
      "accept": [
       "from"
      ],
-     "label": "5. fell"
+     "label": "6. fell"
     },
-    "g6": {
+    "g7": {
      "correct": "just over half",
      "accept": [
       "just over half"
      ],
-     "label": "6. 52%"
-    },
-    "g7": {
-     "correct": "Another benefit is that courses outside a student’s field teach practical skills.",
-     "accept": [
-      "Another benefit is that courses outside a student’s field teach practical skills."
-     ],
-     "label": "7. Paragraph on languages and coding skills"
+     "label": "7. 52%"
     },
     "g8": {
      "correct": "True",
@@ -68,60 +68,60 @@
    "multi": false,
    "gaps": {
     "g1": {
+     "correct": "are removed",
+     "accept": [
+      "are removed"
+     ],
+     "label": "1. The labels"
+    },
+    "g2": {
+     "correct": "Another benefit is that courses outside a student’s field teach practical skills.",
+     "accept": [
+      "Another benefit is that courses outside a student’s field teach practical skills."
+     ],
+     "label": "2. Paragraph on languages and coding skills"
+    },
+    "g3": {
      "correct": "Not Given",
      "accept": [
       "Not Given"
      ],
-     "label": "1. was announced in 2014 → was completed in 2014 (review)"
+     "label": "3. was announced in 2014 → was completed in 2014 (review)"
     },
-    "g2": {
+    "g4": {
      "correct": "dwindle",
      "accept": [
       "dwindle"
      ],
-     "label": "2. car use continued to"
+     "label": "4. car use continued to"
     },
-    "g3": {
+    "g5": {
      "correct": "three times as many",
      "accept": [
       "three times as many"
      ],
-     "label": "3. 90 compared with 30"
+     "label": "5. 90 compared with 30"
     },
-    "g4": {
-     "correct": "Despite",
-     "accept": [
-      "Despite"
-     ],
-     "label": "4."
-    },
-    "g5": {
+    "g6": {
      "correct": "True",
      "accept": [
       "True"
      ],
-     "label": "5. more than 5,000 → over five thousand"
-    },
-    "g6": {
-     "correct": "costly",
-     "accept": [
-      "costly"
-     ],
-     "label": "6. regeneration is both slow and"
+     "label": "6. more than 5,000 → over five thousand"
     },
     "g7": {
-     "correct": "dramatic increase",
+     "correct": "is then heated",
      "accept": [
-      "dramatic increase"
+      "is then heated"
      ],
-     "label": "7. Cycling saw a"
+     "label": "7. The mixture"
     },
     "g8": {
-     "correct": "four times",
+     "correct": "Despite",
      "accept": [
-      "four times"
+      "Despite"
      ],
-     "label": "8. the share of car users was"
+     "label": "8."
     }
    }
   },
@@ -130,60 +130,60 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "Although",
+     "correct": "costly",
      "accept": [
-      "Although"
+      "costly"
      ],
-     "label": "1."
+     "label": "1. regeneration is both slow and"
     },
     "g2": {
+     "correct": "dramatic increase",
+     "accept": [
+      "dramatic increase"
+     ],
+     "label": "2. Cycling saw a"
+    },
+    "g3": {
+     "correct": "four times",
+     "accept": [
+      "four times"
+     ],
+     "label": "3. the share of car users was"
+    },
+    "g4": {
      "correct": "the actions taken to deal with the problem",
      "accept": [
       "the actions taken to deal with the problem"
      ],
-     "label": "2. Such measures (paragraph B)"
-    },
-    "g3": {
-     "correct": "a verb form",
-     "accept": [
-      "a verb form"
-     ],
-     "label": "3. frozen seeds cannot"
-    },
-    "g4": {
-     "correct": "remained stable",
-     "accept": [
-      "remained stable"
-     ],
-     "label": "4. Prices"
+     "label": "4. Such measures (paragraph B)"
     },
     "g5": {
-     "correct": "fewer than one in ten",
+     "correct": "First",
      "accept": [
-      "fewer than one in ten"
+      "First"
      ],
-     "label": "5. 9%"
+     "label": "5."
     },
     "g6": {
-     "correct": "Moreover",
+     "correct": "Although",
      "accept": [
-      "Moreover"
+      "Although"
      ],
      "label": "6."
     },
     "g7": {
-     "correct": "False",
+     "correct": "a verb form",
      "accept": [
-      "False"
+      "a verb form"
      ],
-     "label": "7. occasionally worked → never worked"
+     "label": "7. frozen seeds cannot"
     },
     "g8": {
-     "correct": "a trap",
+     "correct": "remained stable",
      "accept": [
-      "a trap"
+      "remained stable"
      ],
-     "label": "8. a heading that repeats one detail (review)"
+     "label": "8. Prices"
     }
    }
   }
