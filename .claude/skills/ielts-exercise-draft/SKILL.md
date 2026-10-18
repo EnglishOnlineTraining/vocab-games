@@ -121,6 +121,10 @@ Follow `docs/learning-design-checks.md` (all nine checks), with these IELTS spec
 - **Explanations:** every graded gap gets a `{label, correct, why}` entry in
   `data/explanations.json`, keyed by the page's `UNIT`, one sentence each. For Reading, the `why`
   quotes or points to the exact words in the text.
+  **Writing pages:** set `"review": false` on Ex A (the model report or essay). Its gaps depend on the
+  chart, diagram or model text, and `ielts-review.html` builds each item from the label alone, so
+  out of context a wrong option can become defensible ("Firstly", "Some people argue that").
+  Ex B and Ex C must make sense on their own, because the review page draws on them.
 
 ### A4a. Reading pages: exam set first, then drills
 
@@ -215,7 +219,8 @@ row. Model the rows on the two existing writing pages.
 3. **"Coming next":** remove the item you built from the list in `ielts-activities.html` — each
    brief has its own bullet, and the box is hand-maintained (outside the HUBCARDS markers). Once
    the list is empty, remove the box.
-4. **Build:** run `node scripts/build.js`. It regenerates `ielts-review.html` (which now also draws
+4. **Build:** run `node scripts/build.js` twice before committing (the first run of a new page writes its
+   `data/lastmod.json` entry, the second settles its key order, or `build.js --check` fails). It regenerates `ielts-review.html` (which now also draws
    from the new page), the hub, the sitemap and the head blocks. Then run
    `node scripts/verify-exercise.js` on the page, `node scripts/validate-explanations.js`, and
    `node test-ielts-email.js` (pins the email-only, no-name submission path A1 depends on).
