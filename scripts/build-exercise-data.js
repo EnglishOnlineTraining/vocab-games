@@ -182,6 +182,10 @@ files.forEach(f => {
   const grSlug = (f.match(/^gr-([a-z-]+)\.html$/) || [])[1];
   if (grSlug && TOPICS.some(t => t.slug === grSlug)) topics = [grSlug];
   if (TOPIC_OVERRIDES[f]) topics = Array.from(new Set(topics.concat(TOPIC_OVERRIDES[f])));
+  // IELTS pages are English-only. A grammar topic (e.g. "The passive" → passiv) would give
+  // them the German topic box ("Weiterüben", "Grammatik nachlesen") and list them on the
+  // German themen/ pages, so they get none and keep the IELTS sibling links instead.
+  if (year === 'ielts') topics = [];
   topics.forEach(sl => coverage[sl].push(f));
   let skills = skillsFor(points);
   if (SKILL_OVERRIDES[f]) {
