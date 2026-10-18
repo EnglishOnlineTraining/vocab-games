@@ -164,7 +164,7 @@ function contentHtml(t) {
     t.examples.forEach(e => html += '<li>' + e + '</li>');
     html += '</ul></section>';
   }
-  // Extra explanation sections: { h2, body?, list?, listClass? }
+  // Extra explanation sections: { h2, body?, list?, listClass?, table?: { head[], rows[][] } }
   if (t.sections && t.sections.length) {
     t.sections.forEach(sec => {
       html += '<section class="card' + (sec.highlight ? ' rules-box' : '') + '"><h2>' + esc(sec.h2) + '</h2>';
@@ -173,6 +173,12 @@ function contentHtml(t) {
         html += '<ul class="' + (sec.listClass || 'rules') + '">';
         sec.list.forEach(li => html += '<li>' + li + '</li>');
         html += '</ul>';
+      }
+      if (sec.table) {
+        html += '<div class="topic-table-wrap"><table class="topic-table"><thead><tr>'
+          + sec.table.head.map(h => '<th>' + esc(h) + '</th>').join('') + '</tr></thead><tbody>'
+          + sec.table.rows.map(r => '<tr>' + r.map(c => '<td>' + c + '</td>').join('') + '</tr>').join('')
+          + '</tbody></table></div>';
       }
       html += '</section>';
     });
@@ -222,6 +228,9 @@ function topicLabel(t) {
 }
 
 function topicTitle(t) {
+  // An authored seoTitle wins: Bing/Search Console data showed the generated
+  // "Deutsch (English) — Übungen & Erklärung" missing the words people search for.
+  if (t.seoTitle) return t.seoTitle;
   const label = topicLabel(t);
   const full = label + ' — Übungen & Erklärung';
   if (full.length <= 60) return full;
@@ -333,6 +342,10 @@ h1{color:var(--blue);font-size:1.6rem;line-height:1.25;margin-bottom:.5rem}
 .card h2{color:var(--blue);font-size:1.15rem;margin-bottom:.7rem}
 .card p{margin-bottom:.4rem}
 .rules-box{background:#eef4fb;border-left:4px solid var(--teal)}
+.topic-table-wrap{overflow-x:auto}
+.topic-table{width:100%;border-collapse:collapse;font-size:.92rem}
+.topic-table th,.topic-table td{text-align:left;padding:.45rem .6rem;border-bottom:1px solid var(--border);vertical-align:top}
+.topic-table th{color:var(--blue);background:#eef4fb}
 .rules,.examples{list-style:none}
 .rules li,.examples li{padding:.4rem 0 .4rem 1.4rem;position:relative;border-top:1px dashed var(--border)}
 .rules li:first-child,.examples li:first-child{border-top:none}
