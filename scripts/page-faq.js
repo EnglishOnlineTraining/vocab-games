@@ -528,8 +528,10 @@ module.exports = {
       lang: 'de',
       q: 'Kostenlose IELTS-Übungen: Was finde ich hier?',
       a: 'Kostenlose Online-Übungen zur Vorbereitung auf IELTS Academic, ohne Anmeldung: Leseverstehen '
-        + '(True/False/Not Given), Writing Task 1 (Diagramme beschreiben), Writing Task 2 (Meinungsaufsatz), '
-        + 'eine gemischte Wiederholung und ein Wortschatz-Glossar. Die Übungen selbst sind auf Englisch, '
+        + '(True/False/Not Given, Matching Headings, Satz- und Zusammenfassungs-Ergänzung), Writing Task 1 '
+        + '(Liniendiagramme, Balkendiagramme und Tabellen, Prozessdiagramme), Writing Task 2 (Meinungsaufsatz, '
+        + 'Diskussionsaufsatz, Problem-Lösungs-Aufsatz), eine gemischte Wiederholung und ein Wortschatz-Glossar. '
+        + 'Die Übungen selbst sind auf Englisch, '
         + 'denn auch in der Prüfung liest und schreibst du nur Englisch.',
     },
     {

@@ -16,7 +16,7 @@ const CORRECT = {
     g3: 'Parents and schools could set daily screen-time limits and plan outdoor activities.',
     g4: 'Supermarkets could sell more loose fruit and vegetables.',
     g5: 'Bus lanes could be added so that buses are quicker than cars.',
-    g6: 'Critics',
+    g6: 'Opponents',
     g7: 'Although',
   },
 };
