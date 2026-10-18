@@ -400,9 +400,11 @@ body.exam-mode input, body.exam-mode textarea, body.exam-mode select { -webkit-u
 </div>
 </main>
 
+<script src="integrity.js"></script>
 <script>
 /* ===================== CONFIG ===================== */
 var UNIT          = '10a-grammar-literary-review-test';
+var INTEGRITY_LEVEL = 'strict';   // integrity.js: counts sent with this test
 var SHEET_URL     = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj';
 var TEACHER_EMAIL = 'learn@englishonline.training';
 var TOTAL_STEPS   = 3;
@@ -620,6 +622,7 @@ function buildExam(){
 function startExam(){
   sid = 'SID-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).substr(2,5).toUpperCase();
   t0 = Date.now();
+  eolIntStart();
   document.body.classList.add('exam-mode');
   document.getElementById('header-meta').style.display='block';
   document.getElementById('header-name').textContent = name + (cls ? ' — '+cls : '');
@@ -817,6 +820,7 @@ function doSubmit(){
     ex4: 'AUTO-GRADE '+grade.score+'/'+grade.max+' — breakdown: Passive Voice '+grade.details.s1+'/10, Conditionals '+grade.details.s2+'/10, Literary Devices '+grade.details.s3+'/22',
     ex5: 'INTEGRITY session='+sid+' time='+m+'m'+s+'s tab_switches='+tabN+' paste_attempts='+pasteN+' typing_anomalies='+anomalyN+' devtools_flagged='+devToolsFlagged+' translation_flagged='+translationFlagged
   };
+  var intF = eolIntFields(); for (var ik in intF) payload[ik] = intF[ik];   // integrity.js counts
   lastPayload = payload;
 
   fetch(SHEET_URL, {

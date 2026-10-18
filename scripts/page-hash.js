@@ -36,8 +36,13 @@ function stripBlock(html, name) {
   return html.replace(new RegExp(`[ \\t]*<!-- ${name}:START[\\s\\S]*?${name}:END -->\\n?`, 'g'), '');
 }
 
+// The shared integrity.js tag was added to every framework page at once on
+// 2026-10-18. It is site-wide plumbing, like the blocks above, so it must not
+// re-date the pages it was added to.
+const INTEGRITY_TAG = /<script src="integrity\.js"><\/script>\n?/g;
+
 function stripGenerated(html) {
-  return GENERATED_BLOCKS.concat(HASH_SKIPPED_BLOCKS).reduce(stripBlock, html);
+  return GENERATED_BLOCKS.concat(HASH_SKIPPED_BLOCKS).reduce(stripBlock, html).replace(INTEGRITY_TAG, '');
 }
 
 function pageHash(html) {
