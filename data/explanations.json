@@ -19179,6 +19179,7 @@
  },
  "ielts-writing-task1-describing-trends": {
   "exA": {
+   "review": false,
    "gaps": {
     "g1": {
      "label": "1. Overall, car use ___ over the period",
@@ -19313,6 +19314,7 @@
  },
  "ielts-writing-task2-opinion-essay": {
   "exA": {
+   "review": false,
    "gaps": {
     "g1": {
      "label": "1. The main reason ___ this idea",
@@ -19714,6 +19716,7 @@
  },
  "ielts-writing-task1-tables-bar-charts": {
   "exA": {
+   "review": false,
    "gaps": {
     "g1": {
      "label": "1. the car was most common in A, ___ bicycles were first in B",
@@ -19838,6 +19841,7 @@
  },
  "ielts-writing-task1-process-diagram": {
   "exA": {
+   "review": false,
    "gaps": {
     "g1": {
      "label": "1. They ___ to a recycling plant",
@@ -19972,6 +19976,7 @@
  },
  "ielts-writing-task2-discussion-essay": {
   "exA": {
+   "review": false,
    "gaps": {
     "g1": {
      "label": "1. ___ free entry argue that culture belongs to everyone",
@@ -20035,7 +20040,7 @@
     "g6": {
      "label": "6. ___ this argument to some extent",
      "correct": "I agree with",
-     "why": "We agree with an argument or a person; “I am agree” is wrong because “agree” is already a verb."
+     "why": "We agree with an argument or a person (we agree to a plan or proposal); “I am agree” is wrong because “agree” is already a verb."
     },
     "g7": {
      "label": "7. Some researchers ___ that short breaks …",
@@ -20054,7 +20059,7 @@
     "g1": {
      "label": "1. Conclusion: free museums",
      "correct": "In conclusion, although charging would raise money, I believe free entry is better because museums exist to share knowledge.",
-     "why": "It sums up both sides and gives the writer’s opinion; the first option has no opinion and the last adds a new argument."
+     "why": "It sums up both sides and gives the writer’s opinion; the first option has no opinion and the last adds a new idea."
     },
     "g2": {
      "label": "2. Conclusion: school starting age",
@@ -20064,7 +20069,7 @@
     "g3": {
      "label": "3. Conclusion: home or office",
      "correct": "To conclude, although offices help teamwork, in my view most employees work best with a mix of home and office days.",
-     "why": "It states the writer’s view; “it depends on each person” avoids an answer, and internet costs are a new argument."
+     "why": "It states the writer’s view; “both have advantages and disadvantages” gives no answer, and internet costs are a new idea."
     },
     "g4": {
      "label": "4. Conclusion: tourist tax",

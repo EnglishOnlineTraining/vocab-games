@@ -6,11 +6,11 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "Overall, the Science museum attracted far more visitors than the other two.",
+     "correct": "slight fall",
      "accept": [
-      "Overall, the Science museum attracted far more visitors than the other two."
+      "slight fall"
      ],
-     "label": "1. Overview: museum visitors"
+     "label": "1. There was a"
     },
     "g2": {
      "correct": "False",
@@ -20,25 +20,25 @@
      "label": "2. plant community a better guide → number of walks the best guide"
     },
     "g3": {
-     "correct": "I would therefore argue that",
+     "correct": "I agree with",
      "accept": [
-      "I would therefore argue that"
+      "I agree with"
      ],
      "label": "3."
     },
     "g4": {
-     "correct": "Investing in cycle lanes is one of the most effective ways to reduce traffic.",
+     "correct": "Part-time work has both advantages and disadvantages for students.",
      "accept": [
-      "Investing in cycle lanes is one of the most effective ways to reduce traffic."
+      "Part-time work has both advantages and disadvantages for students."
      ],
-     "label": "4. Paragraph on cycle lanes"
+     "label": "4. Paragraph on part-time work"
     },
     "g5": {
-     "correct": "Finally",
+     "correct": "is made",
      "accept": [
-      "Finally"
+      "is made"
      ],
-     "label": "5."
+     "label": "5. Paper"
     },
     "g6": {
      "correct": "airtight packets",
@@ -48,18 +48,18 @@
      "label": "6. seeds are dried and sealed in"
     },
     "g7": {
-     "correct": "from",
+     "correct": "fluctuated slightly",
      "accept": [
-      "from"
+      "fluctuated slightly"
      ],
-     "label": "7. fell"
+     "label": "7. bus journeys"
     },
     "g8": {
-     "correct": "just over half",
+     "correct": "Overall, the older the students were, the more time they spent on homework.",
      "accept": [
-      "just over half"
+      "Overall, the older the students were, the more time they spent on homework."
      ],
-     "label": "8. 52%"
+     "label": "8. Overview: homework hours"
     }
    }
   },
@@ -82,18 +82,18 @@
      "label": "2. Conclusion: school starting age"
     },
     "g3": {
-     "correct": "Another benefit is that courses outside a student’s field teach practical skills.",
+     "correct": "Online learning makes education more accessible.",
      "accept": [
-      "Another benefit is that courses outside a student’s field teach practical skills."
+      "Online learning makes education more accessible."
      ],
-     "label": "3. Paragraph on languages and coding skills"
+     "label": "3. Paragraph on online lessons"
     },
     "g4": {
-     "correct": "are removed",
+     "correct": "before being",
      "accept": [
-      "are removed"
+      "before being"
      ],
-     "label": "4. The labels"
+     "label": "4. The bottles are cleaned"
     },
     "g5": {
      "correct": "Not Given",
@@ -103,18 +103,18 @@
      "label": "5. was announced in 2014 → was completed in 2014 (review)"
     },
     "g6": {
-     "correct": "dwindle",
+     "correct": "by",
      "accept": [
-      "dwindle"
+      "by"
      ],
-     "label": "6. car use continued to"
+     "label": "6. rose"
     },
     "g7": {
-     "correct": "three times as many",
+     "correct": "almost half",
      "accept": [
-      "three times as many"
+      "almost half"
      ],
-     "label": "7. 90 compared with 30"
+     "label": "7. 49%"
     },
     "g8": {
      "correct": "True",
@@ -130,25 +130,25 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "In my view",
+     "correct": "believe",
      "accept": [
-      "In my view"
+      "believe"
      ],
-     "label": "1. Give your own view:"
+     "label": "1. Many people"
     },
     "g2": {
-     "correct": "Despite",
+     "correct": "whereas",
      "accept": [
-      "Despite"
+      "whereas"
      ],
      "label": "2."
     },
     "g3": {
-     "correct": "is then heated",
+     "correct": "At the next stage",
      "accept": [
-      "is then heated"
+      "At the next stage"
      ],
-     "label": "3. The mixture"
+     "label": "3. The bottles are sorted."
     },
     "g4": {
      "correct": "costly",
@@ -158,18 +158,18 @@
      "label": "4. regeneration is both slow and"
     },
     "g5": {
-     "correct": "dramatic increase",
+     "correct": "to",
      "accept": [
-      "dramatic increase"
+      "to"
      ],
-     "label": "5. Cycling saw a"
+     "label": "5. cycling climbed"
     },
     "g6": {
-     "correct": "four times",
+     "correct": "just over a quarter",
      "accept": [
-      "four times"
+      "just over a quarter"
      ],
-     "label": "6. the share of car users was"
+     "label": "6. 26%"
     },
     "g7": {
      "correct": "the actions taken to deal with the problem",
@@ -179,11 +179,11 @@
      "label": "7. Such measures (paragraph B)"
     },
     "g8": {
-     "correct": "In conclusion",
+     "correct": "To conclude, although offices help teamwork, in my view most employees work best with a mix of home and office days.",
      "accept": [
-      "In conclusion"
+      "To conclude, although offices help teamwork, in my view most employees work best with a mix of home and office days."
      ],
-     "label": "8."
+     "label": "8. Conclusion: home or office"
     }
    }
   }
