@@ -119,12 +119,12 @@ Follow `docs/learning-design-checks.md` (all nine checks), with these IELTS spec
   full Task 1 or Task 2. On Reading pages it is a short message (60–100 words) to a study partner
   about the strategy.
 - **Explanations:** every graded gap gets a `{label, correct, why}` entry in
-  `data/explanations.json`, keyed by the page's `UNIT`, one sentence each.
+  `data/explanations.json`, keyed by the page's `UNIT`, one sentence each. For Reading, the `why`
+  quotes or points to the exact words in the text.
   **Writing pages:** set `"review": false` on Ex A (the model report or essay). Its gaps depend on the
   chart, diagram or model text, and `ielts-review.html` builds each item from the label alone, so
   out of context a wrong option can become defensible ("Firstly", "Some people argue that").
-  Ex B and Ex C must make sense on their own, because the review page draws on them. For Reading, the `why`
-  quotes or points to the exact words in the text.
+  Ex B and Ex C must make sense on their own, because the review page draws on them.
 
 ### A4a. Reading pages: exam set first, then drills
 
