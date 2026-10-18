@@ -79,6 +79,7 @@ field, to keep the sheet small.
 | `int_deletes` | `input` events that deleted text in textareas. |
 | `int_paste_tries` | Blocked paste attempts in inputs and textareas. |
 | `int_drop_tries` | Blocked drag-and-drop text drops (see below). |
+| `int_bulk_inserts` | Single input events that inserted more than 20 characters (more than a word): text injected by an extension, autotyper or tool. Added after the live test, where the browser tool typed a whole sentence as one event. |
 | `int_words` | Words in all textareas at submit. |
 | `int_partial` | `1` when a resumed draft was saved before counting began, so its restored text has no counts. |
 | `int_level` | The level that applied (`standard`). |
@@ -194,7 +195,10 @@ thresholds (question 2) instead of guessing them.
    `int_flag` is left out until the baseline has data. Also in phase 1: on
    Standard pages the practise results line now says "Nichts geht an deine
    Lehrkraft" instead of "Nichts wird abgeschickt", since anonymous counts may be
-   sent. Test: `tests/integrity-signals.spec.js`.
+   sent. Test: `tests/integrity-signals.spec.js`. Live test 2026-10-18 from a
+   non-localhost host: a class submission ran the full Year 9 Make path (4
+   operations, success), and a practise run created the `Practise Baseline` tab in
+   the "Online results" sheet with counts and no name or class.
 2. The Strict class tests first, then the rest of the 23 standalone pages (mostly
    Off: the `abitur-` packs, `business-needs-analysis`, `uni-writing-task`). Either move them onto `exercise.js` (already the
    documented upgrade path in the formula-guard comment) or add the same block.

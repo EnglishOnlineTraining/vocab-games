@@ -48,11 +48,24 @@ test('a matching class sends the counts with the submission', async ({ page }) =
   expect(p.int_deletes).toBe(2);
   expect(p.int_paste_tries).toBe(1);
   expect(p.int_drop_tries).toBe(1);
+  expect(p.int_bulk_inserts).toBe(0);
   expect(p.int_words).toBe(4);   // "the outback is h"; the read-only copy-block is not counted
   expect(p.int_resumes).toBe(0);
   expect(p.int_partial).toBe(0);
   expect(p.int_time_total).toBeGreaterThanOrEqual(0);
   expect(typeof p.int_wpm).toBe('number');
+});
+
+test('text inserted in one go counts as a bulk insert', async ({ page }) => {
+  await start(page, '9g');
+  await page.locator('#exD-para').click();
+  await page.keyboard.insertText('This whole sentence arrives as a single input event.');
+  const logged = nextLog(page, 'TEST MODE - Submission payload');
+  await page.evaluate(() => submitToSheet());
+  const p = await logged;
+  expect(p.int_bulk_inserts).toBe(1);
+  expect(p.int_keys).toBe(1);
+  expect(p.int_words).toBe(9);
 });
 
 test('a class that is not one of Shaun\'s sends no counts', async ({ page }) => {

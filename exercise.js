@@ -1468,7 +1468,7 @@ var EOL_INT_CLASSES = ['8C', '9G', '9C', '10G', '10C'];   // update each school 
 var EOL_BASELINE_URL = 'https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec';
 var EOL_BASELINE_OPTOUT_KEY = 'eol_baseline_optout';
 var eolInt = { elapsedMs: 0, sessionStart: 0, typingMs: 0, lastInput: 0, keys: 0, deletes: 0,
-               pasteTries: 0, dropTries: 0, resumes: 0, partial: 0 };
+               pasteTries: 0, dropTries: 0, bulkInserts: 0, resumes: 0, partial: 0 };
 
 function eolIntLevel() {
   if (typeof INTEGRITY_LEVEL !== 'undefined') return INTEGRITY_LEVEL;
@@ -1536,6 +1536,7 @@ function eolIntFields() {
     int_deletes: s.deletes,
     int_paste_tries: s.pasteTries,
     int_drop_tries: s.dropTries,
+    int_bulk_inserts: s.bulkInserts,
     int_words: words,
     int_wpm: typingSec ? Math.round(words / (typingSec / 60)) : 0,
     int_resumes: s.resumes,
@@ -1548,6 +1549,8 @@ function eolIntFields() {
 document.addEventListener('input', function(e) {
   if (!e.target || e.target.tagName !== 'TEXTAREA') return;
   var type = e.inputType || 'insertText';
+  // More than a word in one event: an extension, autotyper or tool inserting text.
+  if (type.indexOf('insert') === 0 && e.data && e.data.length > 20) eolInt.bulkInserts++;
   if (type.indexOf('delete') === 0) eolInt.deletes++;
   else if (type === 'insertText' || type === 'insertCompositionText'
         || type === 'insertLineBreak' || type === 'insertParagraph') eolInt.keys++;

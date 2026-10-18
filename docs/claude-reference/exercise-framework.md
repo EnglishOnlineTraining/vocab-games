@@ -24,7 +24,7 @@ Both blocks are injected by the shared `exercise.js`; nothing to add per page. T
 
 **Drop block and integrity counts (added 2026-10-17).** `exercise.js` also blocks text
 dropped into an input or textarea, and counts how free text was produced: typing time,
-keystrokes and deletions (from `input` events), blocked pastes and drops, words, and
+keystrokes and deletions (from `input` events), blocked pastes and drops, bulk inserts (over 20 characters in one event), words, and
 reloads/resumes (the counts ride in the autosave draft). On `8c-`, `9g-`, `9c-`, `10g-`,
 `10c-`, `msa-c-` and `uni-` pages the counts go into the payload as `int_*` fields, for
 school pages only when the class field matches `EOL_INT_CLASSES` (**update that list
