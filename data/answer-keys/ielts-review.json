@@ -13,53 +13,53 @@
      "label": "1. There was a"
     },
     "g2": {
+     "correct": "Critics",
+     "accept": [
+      "Critics"
+     ],
+     "label": "2. Review (Discussion Essay):"
+    },
+    "g3": {
      "correct": "False",
      "accept": [
       "False"
      ],
-     "label": "2. plant community a better guide → number of walks the best guide"
+     "label": "3. plant community a better guide → number of walks the best guide"
     },
-    "g3": {
+    "g4": {
      "correct": "I agree with",
      "accept": [
       "I agree with"
      ],
-     "label": "3."
+     "label": "4."
     },
-    "g4": {
+    "g5": {
      "correct": "Part-time work has both advantages and disadvantages for students.",
      "accept": [
       "Part-time work has both advantages and disadvantages for students."
      ],
-     "label": "4. Paragraph on part-time work"
+     "label": "5. Paragraph on part-time work"
     },
-    "g5": {
+    "g6": {
      "correct": "is made",
      "accept": [
       "is made"
      ],
-     "label": "5. Paper"
+     "label": "6. Paper"
     },
-    "g6": {
+    "g7": {
      "correct": "airtight packets",
      "accept": [
       "airtight packets"
      ],
-     "label": "6. seeds are dried and sealed in"
+     "label": "7. seeds are dried and sealed in"
     },
-    "g7": {
+    "g8": {
      "correct": "fluctuated slightly",
      "accept": [
       "fluctuated slightly"
      ],
-     "label": "7. bus journeys"
-    },
-    "g8": {
-     "correct": "Overall, the older the students were, the more time they spent on homework.",
-     "accept": [
-      "Overall, the older the students were, the more time they spent on homework."
-     ],
-     "label": "8. Overview: homework hours"
+     "label": "8. bus journeys"
     }
    }
   },
@@ -68,60 +68,60 @@
    "multi": false,
    "gaps": {
     "g1": {
+     "correct": "Overall, the older the students were, the more time they spent on homework.",
+     "accept": [
+      "Overall, the older the students were, the more time they spent on homework."
+     ],
+     "label": "1. Overview: homework hours"
+    },
+    "g2": {
+     "correct": "because",
+     "accept": [
+      "because"
+     ],
+     "label": "2. Flights were cancelled"
+    },
+    "g3": {
      "correct": "True",
      "accept": [
       "True"
      ],
-     "label": "1. connected homes to schools and bus stops → some paths led to bus stops"
+     "label": "3. connected homes to schools and bus stops → some paths led to bus stops"
     },
-    "g2": {
+    "g4": {
      "correct": "To sum up, while starting early has some benefits, I believe most children gain more from starting at seven, when they are ready to learn.",
      "accept": [
       "To sum up, while starting early has some benefits, I believe most children gain more from starting at seven, when they are ready to learn."
      ],
-     "label": "2. Conclusion: school starting age"
+     "label": "4. Conclusion: school starting age"
     },
-    "g3": {
+    "g5": {
      "correct": "Online learning makes education more accessible.",
      "accept": [
       "Online learning makes education more accessible."
      ],
-     "label": "3. Paragraph on online lessons"
+     "label": "5. Paragraph on online lessons"
     },
-    "g4": {
+    "g6": {
      "correct": "before being",
      "accept": [
       "before being"
      ],
-     "label": "4. The bottles are cleaned"
+     "label": "6. The bottles are cleaned"
     },
-    "g5": {
+    "g7": {
      "correct": "Not Given",
      "accept": [
       "Not Given"
      ],
-     "label": "5. was announced in 2014 → was completed in 2014 (review)"
+     "label": "7. was announced in 2014 → was completed in 2014 (review)"
     },
-    "g6": {
+    "g8": {
      "correct": "by",
      "accept": [
       "by"
      ],
-     "label": "6. rose"
-    },
-    "g7": {
-     "correct": "almost half",
-     "accept": [
-      "almost half"
-     ],
-     "label": "7. 49%"
-    },
-    "g8": {
-     "correct": "True",
-     "accept": [
-      "True"
-     ],
-     "label": "8. more than 5,000 → over five thousand"
+     "label": "8. rose"
     }
    }
   },
@@ -130,60 +130,60 @@
    "multi": false,
    "gaps": {
     "g1": {
+     "correct": "almost half",
+     "accept": [
+      "almost half"
+     ],
+     "label": "1. 49%"
+    },
+    "g2": {
+     "correct": "Although",
+     "accept": [
+      "Although"
+     ],
+     "label": "2. Review (Opinion Essay):"
+    },
+    "g3": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "3. more than 5,000 → over five thousand"
+    },
+    "g4": {
      "correct": "believe",
      "accept": [
       "believe"
      ],
-     "label": "1. Many people"
+     "label": "4. Many people"
     },
-    "g2": {
+    "g5": {
      "correct": "whereas",
      "accept": [
       "whereas"
      ],
-     "label": "2."
+     "label": "5."
     },
-    "g3": {
+    "g6": {
      "correct": "At the next stage",
      "accept": [
       "At the next stage"
      ],
-     "label": "3. The bottles are sorted."
+     "label": "6. The bottles are sorted."
     },
-    "g4": {
+    "g7": {
      "correct": "costly",
      "accept": [
       "costly"
      ],
-     "label": "4. regeneration is both slow and"
+     "label": "7. regeneration is both slow and"
     },
-    "g5": {
+    "g8": {
      "correct": "to",
      "accept": [
       "to"
      ],
-     "label": "5. cycling climbed"
-    },
-    "g6": {
-     "correct": "just over a quarter",
-     "accept": [
-      "just over a quarter"
-     ],
-     "label": "6. 26%"
-    },
-    "g7": {
-     "correct": "the actions taken to deal with the problem",
-     "accept": [
-      "the actions taken to deal with the problem"
-     ],
-     "label": "7. Such measures (paragraph B)"
-    },
-    "g8": {
-     "correct": "To conclude, although offices help teamwork, in my view most employees work best with a mix of home and office days.",
-     "accept": [
-      "To conclude, although offices help teamwork, in my view most employees work best with a mix of home and office days."
-     ],
-     "label": "8. Conclusion: home or office"
+     "label": "8. cycling climbed"
     }
    }
   }
