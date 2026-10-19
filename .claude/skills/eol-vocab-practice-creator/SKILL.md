@@ -1,9 +1,18 @@
 ---
 name: eol-vocab-practice-creator
-description: "Build a vocabulary PRACTICE page for englishonline.training from a word list — the revision page students work through before a vocab test. Use this skill whenever Shaun provides a word list (typed, pasted, or photographed from a textbook) and wants somewhere for students to practise it: 'vocab practice page', 'practise page for these words', 'revision page for this unit's vocabulary', 'somewhere to learn these words', 'make a practice version of the test', or names a unit and asks for vocabulary practice. Use it too when he asks for a practice page to go alongside a vocab test, or to rebuild an existing vocabulary practice page. Every page it builds has the same four parts: the word list with meanings, a multiple-choice meaning exercise, a cloze exercise, and an end review naming the words the student still needs to learn — with every word on the list used in both exercises, and English throughout whatever language the source list was in. This is the PRACTICE half of the pair: for the timed, anti-cheat, randomised TEST students sit afterwards, use eol-vocab-quiz-creator instead."
+description: "Build a vocabulary PRACTICE page for englishonline.training from a word list — the revision page students work through before a vocab test. Use this skill whenever Shaun provides a word list (typed, pasted, or photographed from a textbook) and wants somewhere for students to practise it: 'vocab practice page', 'practise page for these words', 'revision page for this unit's vocabulary', 'somewhere to learn these words', 'make a practice version of the test', or names a unit and asks for vocabulary practice. Use it too when he asks for a practice page to go alongside a vocab test, or to rebuild an existing vocabulary practice page. Every page it builds has the same four parts: the word list with meanings, a multiple-choice meaning exercise, a cloze exercise, and an end review naming the words the student still needs to learn — with every word on the list used in both exercises, and English throughout whatever language the source list was in. It also builds the second kind of practice page, a spaced-repetition learning page (vocab-srs.js): 10 words per session, a multiple-choice round then a typing round, missed words repeated, progress saved on the student's device, and the list downloadable as a Word document. Use that kind when Shaun asks for rounds, '10 words per round', staggered or spaced repetition, saved progress, learning a long list over several sittings, or gives a term–definition list with no sentences to build cloze gaps from (the uni C1/C2 lists). This is the PRACTICE half of the pair: for the timed, anti-cheat, randomised TEST students sit afterwards, use eol-vocab-quiz-creator instead."
 ---
 
-## What this skill builds
+## What this skill builds — two kinds of page
+
+| Kind | Use it when | Built by |
+|------|-------------|----------|
+| **A · Four-part practice page** | A unit's word list before a vocab test, with sentences you can gap (most school lists) | `build-vocab-practice.js` from a data file — Steps 1–5 below |
+| **B · Spaced-repetition page** | Shaun asks for rounds, 10 words at a time, staggered/spaced repetition or saved progress, or the list is terms and definitions only (uni C1/C2) | Copy of `uni-c1-vocab-practice.html` + the shared `vocab-srs.js` — see "Kind B" below |
+
+If the request does not say, Kind A is the default for a school unit list.
+
+### Kind A — the four-part practice page
 
 One HTML page on the shared `exercise.js` framework, always in four parts:
 
@@ -174,6 +183,116 @@ explanations to the wrong sentences.
 ---
 
 
+## Kind B — the spaced-repetition page (`vocab-srs.js`)
+
+Built 2026-10-19 for the university C1 and C2 lists: `uni-c1-vocab-practice.html` and
+`uni-c2-vocab-practice.html`. Students learn a long list over several sittings instead of
+working through it once.
+
+### What a student gets
+
+- **A start screen** with their progress (new / learning / getting there / known), the full
+  word list in a `<details>` table with each word's level, a **Download the word list (Word
+  document)** button, and Reset my progress.
+- **Sessions of 10 words, two rounds.** Round 1 *Choose the word*: the meaning, four words to
+  pick from (distractors are random words from the same list). Round 2 *Write the word*: the
+  meaning and a text box.
+- **Repetition inside a round:** a missed word goes back into the queue 3 cards later
+  (`REQUEUE_GAP`), and the round ends only when every word has been answered correctly.
+- **Repetition across sessions:** right first time in *both* rounds moves a word up a level, and
+  its next review comes after 1, 3, 7, 14, then 30 days (`DAYS`). Level 4+ counts as known. Any
+  slip sends it back to level 1, due in the very next session. A session takes due words first
+  (weakest first), then new words in list order, then the words due soonest.
+- **An end screen** with first-try scores per round, each word and when it comes back, and the
+  **words to focus on**, followed by an optional **Send my progress** (name, class).
+- **Forgiving typing:** case, spaces, hyphens, apostrophes and punctuation are ignored. A
+  `X / Y` entry accepts either half or the whole; `Full Name (ABBR)` accepts the full name, the
+  abbreviation, or both. This is automatic: `accepted()` in `vocab-srs.js` derives it from
+  the word as written.
+
+Progress lives in `localStorage` (key `eol_srs_<PAGE_UNIT>`), so it is per device and browser.
+Say so to Shaun when you build one; Send my progress is how the teacher sees it. The payload goes to
+the page's `SHEET_URL` as `{name, cls, unit, session, practised, round1, round2, focus, known,
+notStarted}`, and the Apps Script universal handler makes one tab per unit with no redeploy.
+Kind B pages post to an Apps Script, so the Make fixed-column trap (below) does not apply to
+them. For a school prefix that posts to Make, check the Make scenario before reusing this
+payload.
+
+### Where things live
+
+- **`vocab-srs.js`** (repo root): the whole engine and its CSS, injected as a `<style>`. Every
+  Kind B page shares it, so a fix or feature goes here once. It needs `exercise.js` loaded
+  first (`esc`, `normAns`, `g`, `set`, `isTestMode`, and the site chrome).
+- **The page** holds only its words and settings, in one inline script before `vocab-srs.js`:
+  `PAGE_UNIT`, `SHEET_URL` and `WORDS` (an array of `[word, meaning]` pairs). The markup
+  (`#scr-start`, `#scr-round`, `#scr-end`) is the same on every page.
+- **`tests/uni-vocab-practice.spec.js`** runs every check on every page in its `PAGES` list:
+  that each word and meaning is unique, that each word accepts itself, two full sessions
+  (requeue, focus words, payload, saved levels and due dates, session 2 order), and that the
+  Word download unzips and contains every word and meaning.
+
+### Building a new one
+
+1. **Copy `uni-c1-vocab-practice.html`** to `<prefix><slug>.html` (e.g. `uni-c2-vocab-practice.html`).
+   Change only the `<title>`, meta description, canonical, `<h1>`, `welcome-sub`,
+   `welcome-flag` emoji, the "The word list (N words)" summary, and the inline script.
+   Leave the generated marker blocks (`HEAD`, `OVERVIEW`, `RELATED`, `CRUMB`) alone, because the build rewrites them.
+2. **`PAGE_UNIT` = the filename slug.** Do not rename it to `UNIT`: `exercise.js` shows its
+   draft-resume prompt on any page that defines `UNIT`. `SHEET_URL` follows the routing table in
+   Step 1.
+3. **`WORDS`: parse the pasted list with a script, never retype it** (split each line on
+   `" — "` and `json.dumps` the pairs, keeping curly quotes). Keep Shaun's wording, including
+   `X / Y` and `(ABBR)` forms. **Every meaning must be unique**, because the test finds the right word
+   by its meaning. Rule 0 (English only) still applies. If a meaning contains part of
+   its own word ("Bar chart — A chart using bars"), keep it, but tell Shaun it makes that word
+   easier to type.
+4. **Keep the two `<h2 class="ex-title">` round headings** in the "How this vocabulary practice
+   works" card. `build-exercise-data.js` reads `ex-title` headings for the "At a glance"
+   tasks line and the index blurb. Without them it falls back to every `card-title`, and the
+   box then lists six "tasks", including the end-screen cards.
+5. **Tag it Vocabulary:** add the file to `SKILL_OVERRIDES` in `scripts/build-exercise-data.js`
+   with `['vocabulary']`. The headings don't say "vocab", so the skill tag otherwise falls
+   back to Grammar.
+6. **Level:** `scripts/schema.js` `LEVELS` gives a page its prefix's CEFR band (`uni-` = B2–C1).
+   If the list is a different level, add a rule *above* the prefix rule, because the first match wins.
+   `uni-c1-` (C1) and `uni-c2-` (C2) are there already.
+7. **`node scripts/build.js`**, then fix the page's entry in `data/hub-cards.json`. The build
+   writes `meta` as the description cut at the colon, which reads badly. Use the house
+   pattern, e.g. `"75 work & project words, 10 at a time · choose, then type · progress saved"`,
+   tag `Vocabulary`, then rebuild.
+8. **Add the slug to `PAGES`** in `tests/uni-vocab-practice.spec.js` and run it. The spec reads
+   the list length from the page, so any list of 20+ words works.
+9. **Checks, in this order:** `node scripts/verify-exercise.js <file>` (Kind B pages get 4
+   checks: no TODO, `PAGE_UNIT` matches the filename, `WORDS` declared, `SHEET_URL` routing),
+   then the full `npx playwright test` (CI runs all of it), commit, then `node scripts/build.js
+   --check`. **`--check` fails on uncommitted generated files**, so run it after the commit,
+   not before.
+10. **WordPress 1763**: see below. A new Kind B page is a normal listed exercise and moves a count.
+
+### Changing the engine
+
+Edit `vocab-srs.js` only, never a page, and run the spec, which covers every page in
+`PAGES`. If you add a button or element, add its markup to **every** Kind B page (grep for
+`src="vocab-srs.js"`).
+
+### Things that went wrong once (Kind B)
+
+- **The Word download was first a `.doc` made of HTML.** macOS showed it as raw HTML code
+  (`textutil` and Quick Look both did), so Pages, TextEdit and phone previews would have shown the
+  same. It is now a real `.docx` (three XML parts zipped by `zipStore()`). Verify any change with
+  `textutil -convert txt <file>.docx` and `qlmanage -t -s 1000 -o <dir> <file>.docx`, not
+  by checking that a file downloaded.
+- **CI failed on `verify-exercise.js`** because it expected `TOTAL_STEPS`, `UNIT` and
+  `state.scores`. It now has a `vocab-srs.js` branch (like the Abitur one). Keep `PAGE_UNIT` and
+  `WORDS` spelled exactly that way, or that branch fails.
+- **Typing "On the Beach / On the Bench" in full was marked wrong**, and so was "birds eye view" for
+  "Bird's Eye View". Both are fixed in `accepted()`/`clean()`. The spec checks that every
+  word accepts its own full form.
+- **The hub card said "Grammar"**, **"At a glance" listed six tasks** and **the level said B2–C1**
+  until steps 4–6 above were done. Check the built page's "At a glance" box, not just the hub.
+
+---
+
 ## Update WordPress page 1763
 
 A practice page is a normal entry in `data/exercises.json`, so it moves its year's count on
@@ -187,10 +306,17 @@ Fetch with **`context: "edit"`**, change only the label strings that differ, wri
 the "Known traps" section at the top of CLAUDE.md for why, and note `page-sections.list` errors
 on this page before any write, so it proves nothing.
 
+Since its rebuild, 1763 is a single `wp:html` block, and the counts are not "(N exercises)"
+labels any more: they are `<span>N exercises</span>` on the class and University/Business/IT/ESL
+cards, and `N exercises →` on the MSA, Abitur and IELTS cards. Several cards share the same number
+(10c and University both read 15 on 2026-10-19), so replace the count inside the specific
+card's `<a href=…>` and never by the number alone. **Compare every count**, not only the one you
+changed: on 2026-10-19 IELTS still read 7 against a real 9.
+
 A vocabulary **test** is different: it is deliberately unlisted and absent from
 `data/exercises.json`, so it moves no count and needs no WordPress change.
 
-## Things that have already gone wrong once
+## Things that have already gone wrong once (Kind A)
 
 - **The words-to-focus-on panel needs `state.attempts`, which only fills when the student presses Check.** A student who selects answers and clicks straight through gets an honest "you did not check any answers" rather than a false "nothing to focus on". Keep that message; it is not a bug.
 - **Don't add the focus words to `buildPayload()`.** The Make scenarios write fixed columns (`Timestamp, Name, Class, Unit, ex1…exN, Score, Grade`) and silently drop every key they have no column for, so it would look like it worked and arrive nowhere. The generated page puts them in the email fallback body instead, which is free text.
