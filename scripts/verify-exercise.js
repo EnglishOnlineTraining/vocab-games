@@ -176,6 +176,20 @@ function main() {
     return report(rel, results, ' (Abitur pack template: step, state and dropdown checks do not apply)');
   }
 
+  // A spaced-repetition vocab page: vocab-srs.js runs it, so there are no steps,
+  // no state object and no dropdowns. It names its unit PAGE_UNIT (not UNIT, which
+  // would switch on exercise.js's draft-resume prompt).
+  if (/<script[^>]+src=["'][./]*vocab-srs\.js/.test(src)) {
+    const pu = (src.match(/var\s+PAGE_UNIT\s*=\s*['"]([^'"]*)['"]/) || [])[1];
+    const slug = path.basename(file, '.html');
+    results.push({ name: 'PAGE_UNIT matches filename slug', ok: pu === slug,
+      detail: 'PAGE_UNIT = ' + (pu ? "'" + pu + "'" : '(not found)') + ", filename slug = '" + slug + "'" });
+    results.push({ name: 'WORDS list declared', ok: /var\s+WORDS\s*=\s*\[/.test(src), detail: null });
+    const hook = checkSheetUrl(src, file);
+    results.push({ name: 'SHEET_URL routes to the right webhook', ok: hook.ok, detail: hook.detail });
+    return report(rel, results, ' (vocab-srs.js page: step, state and dropdown checks do not apply)');
+  }
+
   const steps = checkTotalSteps(src);
   results.push({ name: 'TOTAL_STEPS matches highest id="step-N"', ok: steps.ok,
     detail: 'TOTAL_STEPS = ' + (steps.declared == null ? '(not found)' : steps.declared) +
