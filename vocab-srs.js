@@ -275,6 +275,78 @@ function sendProgress() {
   });
 }
 
+/* The whole list as a Word document (.docx), for revising on paper or offline.
+   A .docx is a zip of three XML files; zipStore() writes it uncompressed, so no
+   library is needed. Opens in Word, Pages, LibreOffice, Google Docs and phone
+   previews. */
+function xmlEsc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+
+var DOCX_FONT = '<w:rFonts w:ascii="Arial" w:hAnsi="Arial" w:cs="Arial"/>';
+
+function docxCell(text, bold) {
+  return '<w:tc><w:p><w:r><w:rPr>' + DOCX_FONT + (bold ? '<w:b/>' : '') + '<w:sz w:val="20"/></w:rPr>'
+    + '<w:t xml:space="preserve">' + xmlEsc(text) + '</w:t></w:r></w:p></w:tc>';
+}
+
+function downloadWordList() {
+  var W = 'http://schemas.openxmlformats.org/';
+  var title = document.querySelector('.welcome-title').textContent + ': word list';
+  var border = ['top', 'left', 'bottom', 'right', 'insideH', 'insideV'].map(function(b) {
+    return '<w:' + b + ' w:val="single" w:sz="4" w:space="0" w:color="999999"/>';
+  }).join('');
+  var rows = '<w:tr>' + docxCell('Word', true) + docxCell('Meaning', true) + '</w:tr>'
+    + WORDS.map(function(w) { return '<w:tr>' + docxCell(w[0], true) + docxCell(w[1], false) + '</w:tr>'; }).join('');
+  var files = {
+    '[Content_Types].xml': '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="' + W + 'package/2006/content-types">'
+      + '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'
+      + '<Default Extension="xml" ContentType="application/xml"/>'
+      + '<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>',
+    '_rels/.rels': '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="' + W + 'package/2006/relationships">'
+      + '<Relationship Id="rId1" Type="' + W + 'officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>',
+    'word/document.xml': '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="' + W + 'wordprocessingml/2006/main"><w:body>'
+      + '<w:p><w:r><w:rPr>' + DOCX_FONT + '<w:b/><w:sz w:val="32"/></w:rPr><w:t>' + xmlEsc(title) + '</w:t></w:r></w:p>'
+      + '<w:tbl><w:tblPr><w:tblW w:w="5000" w:type="pct"/><w:tblBorders>' + border + '</w:tblBorders>'
+      + '<w:tblCellMar><w:top w:w="60" w:type="dxa"/><w:left w:w="100" w:type="dxa"/><w:bottom w:w="60" w:type="dxa"/><w:right w:w="100" w:type="dxa"/></w:tblCellMar></w:tblPr>'
+      + '<w:tblGrid><w:gridCol w:w="3000"/><w:gridCol w:w="6000"/></w:tblGrid>' + rows + '</w:tbl>'
+      + '<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134" w:header="0" w:footer="0" w:gutter="0"/></w:sectPr>'
+      + '</w:body></w:document>'
+  };
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([zipStore(files)], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' }));
+  a.download = PAGE_UNIT.replace(/^uni-/, '').replace(/-practice$/, '') + '-word-list.docx';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(function() { URL.revokeObjectURL(a.href); }, 1000);
+}
+
+/* Minimal zip writer: stored (method 0) entries, CRC-32, one central directory.
+   ponytail: no compression, so the file is ~3x bigger than Word's own (about
+   30 KB here). Fine for a word list; use a zip library if it ever holds images. */
+function zipStore(files) {
+  var enc = new TextEncoder(), parts = [], central = [], offset = 0, n = 0;
+  var crcTable = [];
+  for (var i = 0; i < 256; i++) { var c = i; for (var k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; crcTable[i] = c >>> 0; }
+  function crc32(b) { var c = 0xFFFFFFFF; for (var i = 0; i < b.length; i++) c = crcTable[(c ^ b[i]) & 255] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; }
+  function header(sig, fields) {   // fields: [value, bytes] pairs, little-endian
+    var len = 4 + fields.reduce(function(t, f) { return t + f[1]; }, 0), v = new DataView(new ArrayBuffer(len)), p = 4;
+    v.setUint32(0, sig, true);
+    fields.forEach(function(f) { if (f[1] === 2) v.setUint16(p, f[0], true); else v.setUint32(p, f[0], true); p += f[1]; });
+    return new Uint8Array(v.buffer);
+  }
+  Object.keys(files).forEach(function(name) {
+    var nm = enc.encode(name), data = enc.encode(files[name]), crc = crc32(data);
+    var common = [[20, 2], [0x0800, 2], [0, 2], [0, 2], [33, 2], [crc, 4], [data.length, 4], [data.length, 4], [nm.length, 2], [0, 2]];
+    var local = header(0x04034b50, common);
+    parts.push(local, nm, data);
+    central.push(header(0x02014b50, [[20, 2]].concat(common, [[0, 2], [0, 2], [0, 2], [0, 4], [offset, 4]])), nm);
+    offset += local.length + nm.length + data.length;
+    n++;
+  });
+  var cdSize = central.reduce(function(t, b) { return t + b.length; }, 0);
+  return new Blob(parts.concat(central, [header(0x06054b50, [[0, 2], [0, 2], [n, 2], [n, 2], [cdSize, 4], [offset, 4], [0, 2]])]));
+}
+
 function resetProgress() {
   if (!confirm('Delete all your saved progress for this word list?')) return;
   prog = { name: prog.name, cls: prog.cls, sessions: 0, w: {} };

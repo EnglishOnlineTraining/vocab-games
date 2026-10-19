@@ -103,3 +103,19 @@ for (const unit of PAGES) test(unit + ': two sessions, requeue, focus words, sav
   const fresh = await page.evaluate(n => WORDS.slice(10, 10 + n).map(w => w[0]), 10 - expected.length);
   expect(next.slice(expected.length)).toEqual(fresh);
 });
+
+for (const unit of PAGES) test(unit + ': word list downloads as a Word file with every word', async ({ page }) => {
+  await page.goto('/' + unit + '.html');
+  const [dl] = await Promise.all([page.waitForEvent('download'), page.click('#download-btn')]);
+  expect(dl.suggestedFilename()).toBe(unit.replace(/^uni-/, '').replace(/-practice$/, '') + '-word-list.docx');
+  const path = 'test-results/' + dl.suggestedFilename();
+  await dl.saveAs(path);
+  // Unzip document.xml with the system unzip (proves the zip is valid) and
+  // check every word and meaning is in the table.
+  const xml = require('child_process').execFileSync('unzip', ['-p', path, 'word/document.xml']).toString();
+  const xmlEsc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const words = await page.evaluate(() => WORDS);
+  expect(words.filter(([w, d]) => !xml.includes('<w:t xml:space="preserve">' + xmlEsc(w) + '</w:t>')
+    || !xml.includes('<w:t xml:space="preserve">' + xmlEsc(d) + '</w:t>'))).toEqual([]);
+  require('child_process').execFileSync('unzip', ['-tq', path]);
+});
