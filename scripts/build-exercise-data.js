@@ -107,6 +107,7 @@ const SKILL_OVERRIDES = {
   '9g-new-zealand-maori-voices.html':  ['reading', 'writing'],
   'ielts-reading-matching-headings.html': ['reading'],
   'uni-c1-vocab-practice.html':        ['vocabulary'],
+  'uni-c2-vocab-practice.html':        ['vocabulary'],
 };
 const SKILL_ORDER = ['reading', 'writing', 'listening', 'vocabulary', 'grammar'];
 

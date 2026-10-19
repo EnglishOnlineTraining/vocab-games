@@ -199,6 +199,8 @@ const LEVELS = [
   [/^10c-/, 'B1–B2'],
   [/^msa-/, 'B1'],
   [/^abitur-/, 'B2–C1'],
+  [/^uni-c1-/, 'C1'],     // first match wins: these two before the uni- default
+  [/^uni-c2-/, 'C2'],
   [/^uni-/, 'B2–C1'],
   [/^be-/, 'B1–B2'],
   [/^it-/, 'B1–B2'],

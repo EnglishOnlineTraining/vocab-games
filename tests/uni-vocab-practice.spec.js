@@ -2,14 +2,23 @@
 const { test, expect } = require('@playwright/test');
 
 /*
- * E2E for the spaced-repetition vocabulary practice page. Plays two whole
+ * E2E for the spaced-repetition vocabulary practice pages (both share
+ * vocab-srs.js, so each runs the same flow). Plays two whole
  * sessions and checks what the page promises: a missed word comes back later in
  * the same round, the end screen names exactly the missed words, progress
  * survives a reload, and the next session starts with the missed words.
- * Artifact: test-results/uni-c1-vocab-practice-end.png (the end screen).
+ * Artifact: test-results/uni-c1-vocab-practice-end.png and -c2- (end screens).
  */
 
-const PAGE = '/uni-c1-vocab-practice.html';
+const PAGES = ['uni-c1-vocab-practice', 'uni-c2-vocab-practice'];
+
+// The form a student might type: the last "/" alternative, the abbreviation
+// in brackets, then case, hyphen and apostrophe changes. All must count.
+function typedForm(word) {
+  const alt = word.split(' / ').pop();
+  const abbr = (alt.match(/\(([^)]+)\)$/) || [])[1];
+  return (abbr || alt).toUpperCase().replace(/-/g, ' ').replace(/[\u2019']/g, '');
+}
 
 // Answers the current card. wrong=true picks a wrong option / types nonsense.
 async function answerCard(page, wrong) {
@@ -23,19 +32,29 @@ async function answerCard(page, wrong) {
       if ((w === word) !== wrong) { await opts.nth(i).click(); break; }
     }
   } else {
-    // A case/hyphen/space variant must still count as right.
-    await page.fill('#typed', wrong ? 'not the word' : word.toUpperCase().replace(/-/g, ' '));
+    await page.fill('#typed', wrong ? 'not the word' : typedForm(word));
     await page.click('#check-btn');
   }
   await page.click('#next-btn');
   return word;
 }
 
-test('two sessions: requeue, focus words, saved progress', async ({ page }) => {
+for (const unit of PAGES) test(unit + ': word list is complete and unambiguous', async ({ page }) => {
+  await page.goto('/' + unit + '.html');
+  const r = await page.evaluate(() => ({
+    n: WORDS.length,
+    defs: new Set(WORDS.map(w => w[1])).size,
+    words: new Set(WORDS.map(w => w[0])).size,
+    selfAccepted: WORDS.every(w => accepted(w[0]).includes(clean(w[0]))),
+  }));
+  expect(r).toEqual({ n: 75, defs: 75, words: 75, selfAccepted: true });
+});
+
+for (const unit of PAGES) test(unit + ': two sessions, requeue, focus words, saved progress', async ({ page }) => {
   const logs = [];
   page.on('console', m => logs.push(m.text()));
   await page.route('**/script.google.com/**', r => r.abort());
-  await page.goto(PAGE);
+  await page.goto('/' + unit + '.html');
   await page.evaluate(() => localStorage.clear());
   await page.reload();
 
@@ -57,7 +76,7 @@ test('two sessions: requeue, focus words, saved progress', async ({ page }) => {
   const focus = await page.locator('#focus-words').textContent();
   const expected = [...new Set([missed1, missed2])];
   for (const w of first10) expect(focus.includes(w)).toBe(expected.includes(w));
-  await page.screenshot({ path: 'test-results/uni-c1-vocab-practice-end.png', fullPage: true });
+  await page.screenshot({ path: 'test-results/' + unit + '-end.png', fullPage: true });
 
   // Send progress (test mode on localhost logs the payload instead of posting).
   await page.fill('#inp-name', 'Test Student');
