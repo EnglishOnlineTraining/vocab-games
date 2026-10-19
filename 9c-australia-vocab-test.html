@@ -854,7 +854,7 @@ function send(data){
   var intF=eolIntFields();for(var ik in intF)p[ik]=intF[ik];   // integrity.js counts
   fetch(SHEET_URL,{method:'POST',mode:'no-cors',
     headers:{'Content-Type':'application/x-www-form-urlencoded'},
-    body:'payload='+encodeURIComponent(JSON.stringify(p))});
+    body:'payload='+encodeURIComponent(JSON.stringify(p, function (k, v) { return this === p && typeof v === 'string' && /^[=+\-@\t\r]/.test(v) ? "'" + v : v; }))});
 }
 
 /* ── BACKUPS ── */

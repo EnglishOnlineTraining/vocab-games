@@ -1269,11 +1269,11 @@ function eolIsMakeTarget(url) {
  * land in the Excel table as a live formula, so prefix it with an apostrophe, which
  * Excel stores as a text marker and does not display.
  * ponytail: only top-level values are guarded, because flattened objects start
- * with their key ("text: …"). Ceiling: 23 pages build their own payload and post
- * to Make without exercise.js (the 18 abitur-* packs, 9g-class-test-9ab,
- * 9g/9c-australia-vocab-test, 9ab/10a-grammar-literary-review-test), so they are
- * unguarded. Upgrade path: move them onto exercise.js, or give each submit the
- * same one-line check. tests/make-formula-guard.spec.js covers this function.
+ * with their key ("text: …"). 23 pages post to Make without exercise.js (the 18
+ * abitur-* packs, 9g-class-test-9ab, 9g/9c-australia-vocab-test,
+ * 9ab/10a-grammar-literary-review-test); each inlines this same rule as a
+ * JSON.stringify replacer. Ceiling: a change here must be copied there too.
+ * tests/make-formula-guard.spec.js covers this function and one of those pages.
  */
 function eolSafeCell(v) {
   return (typeof v === 'string' && /^[=+\-@\t\r]/.test(v)) ? "'" + v : v;
