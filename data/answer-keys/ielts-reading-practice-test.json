@@ -18,7 +18,7 @@
      "accept": [
       "False"
      ],
-     "label": "2. Drais’s first recorded ride took him several hours.",
+     "label": "2. Drais’s ride on 12 June 1817 took him several hours.",
      "why": "Paragraph B: there and back “in a little over an hour” — not several hours."
     },
     "g3": {
@@ -66,8 +66,8 @@
      "accept": [
       "E"
      ],
-     "label": "8. A reference to an invention that was not taken up when it first appeared",
-     "why": "Paragraph E: Thomson’s 1845 tyre “was never developed for everyday use and was largely forgotten.”"
+     "label": "8. The name of an inventor whose idea was not taken up when it first appeared",
+     "why": "Paragraph E names Thomson, whose 1845 tyre “was never developed for everyday use and was largely forgotten”; paragraph A names no inventor."
     },
     "g9": {
      "correct": "D",
@@ -82,7 +82,7 @@
      "accept": [
       "B"
      ],
-     "label": "10. A mention of complaints about an early machine from members of the public",
+     "label": "10. A mention of the danger an early machine posed to people who were not riding it",
      "why": "Paragraph B: riders on crowded pavements were “regarded as a danger to people on foot.”"
     }
    }
@@ -94,7 +94,9 @@
     "g11": {
      "correct": "safety bicycle",
      "accept": [
-      "safety bicycle"
+      "safety bicycle",
+      "\"safety bicycle\"",
+      "“safety bicycle”"
      ],
      "label": "11. The Rover was given the name ___ because its rider sat low",
      "why": "Paragraph D: “The design became known as the “safety bicycle”” — two words, copied exactly."
@@ -111,7 +113,8 @@
     "g13": {
      "correct": "chaperone",
      "accept": [
-      "chaperone"
+      "chaperone",
+      "chaperon"
      ],
      "label": "13. travel alone, without a ___ to supervise them",
      "why": "Paragraph F: “without a horse, a carriage or a chaperone” — only a chaperone supervises a person."
@@ -186,7 +189,7 @@
       "Not Given"
      ],
      "label": "25. The robot bee recruited more bees than a real dancer.",
-     "why": "Paragraph E says real bees followed the robot’s direction, but never compares how many it recruited with a real dancer."
+     "why": "Paragraph E says bees that followed the robot searched in the direction it indicated, but never compares how many it recruited with a real dancer."
     },
     "g13": {
      "correct": "False",
@@ -266,7 +269,7 @@
       "E"
      ],
      "label": "29. Evidence that learners can misjudge how much they will retain",
-     "why": "Paragraph E: restudying students “felt more confident” but remembered less after a delay."
+     "why": "Paragraph E: students who had only restudied “predicted that they would remember more”, yet tested students remembered more after a delay."
     },
     "g4": {
      "correct": "F",
@@ -297,7 +300,7 @@
      "accept": [
       "confirmed"
      ],
-     "label": "33. Later research has ___ this finding many times",
+     "label": "33. Many later studies have ___ that spacing works",
      "why": "Paragraph D: the spacing effect “has been confirmed many times since.”"
     },
     "g8": {
@@ -322,7 +325,7 @@
       "confident"
      ],
      "label": "36. despite feeling less ___ about it",
-     "why": "Paragraph E: the students who restudied “felt more confident”, so the tested students felt less confident."
+     "why": "Paragraph E: the restudying students “predicted that they would remember more”, so the tested students felt less confident."
     }
    }
   },
@@ -358,7 +361,9 @@
     "g14": {
      "correct": "desirable difficulties",
      "accept": [
-      "desirable difficulties"
+      "desirable difficulties",
+      "\"desirable difficulties\"",
+      "“desirable difficulties”"
      ],
      "label": "40. Bjork calls techniques that are effortful but effective “___”.",
      "why": "Paragraph F: Bjork “has described techniques of this kind as “desirable difficulties”.”"

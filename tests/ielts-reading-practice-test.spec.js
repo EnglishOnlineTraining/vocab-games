@@ -19,12 +19,13 @@ function watchConsole(page, errors) {
 }
 
 // Fill every gap from the page's own answer key (EXPLAIN), with the chosen wrong/blank ones.
-async function answerAll(page, wrong = [], blank = []) {
-  await page.evaluate(({ wrong, blank }) => {
+async function answerAll(page, wrong = [], blank = [], only = '') {
+  await page.evaluate(({ wrong, blank, only }) => {
     for (const [sk, sec] of Object.entries(window.EXPLAIN)) {
       const prefix = sec.prefix || sk + '-';
       for (const [gk, gv] of Object.entries(sec.gaps)) {
         const id = prefix + gk;
+        if (only && !id.startsWith(only)) continue;
         const el = document.getElementById(id);
         if (blank.includes(id)) { el.value = ''; continue; }
         if (wrong.includes(id)) {
@@ -36,7 +37,7 @@ async function answerAll(page, wrong = [], blank = []) {
         }
       }
     }
-  }, { wrong, blank });
+  }, { wrong, blank, only });
 }
 
 async function finish(page) {
@@ -130,6 +131,40 @@ test('email mode: gate fields and submission payload carry email, never a name',
   expect(payload.cls || '').toBe('');
   expect(payload.score).toBe('40 / 40');
   expect(payload.grade || '').toBe('');   // no German Note, ever
+
+  expect(errors).toEqual([]);
+});
+
+test('resume: reload mid-test, resume, finish — earlier passages keep their answers and score', async ({ page }) => {
+  const errors = [];
+  watchConsole(page, errors);
+
+  await page.goto(`${PAGE}?mode=class`);
+  await page.fill('#inp-email', 'learner@example.com');
+  await page.locator('button:has-text("Start Exercises")').click();
+  await answerAll(page, WRONG, BLANK);
+  // Passages 1 and 2, then reload while on Passage 3
+  for (const n of [1, 2]) {
+    await page.locator(`#step-${n} button.btn-primary`).click();
+    const go = page.locator('#eol-skip-go');
+    if (await go.isVisible().catch(() => false)) await go.click();
+  }
+  await expect(page.locator('#step-3')).toHaveClass(/active/);
+  await page.reload();
+  const resume = page.locator('button:has-text("Resume"), button:has-text("Continue where")').first();
+  await expect(resume).toBeVisible();
+  await resume.click();
+  await expect(page.locator('#step-3')).toHaveClass(/active/);
+  // Passages 1 and 2 survived the reload in the page itself, not only in saved state
+  expect(await page.locator('#exA-g4').inputValue()).toBe('True');
+  expect(await page.locator('#exB-g1').inputValue()).toBe('ii');
+  // Passage 3 was never left before the reload, so (as on every page) it was not
+  // saved yet: answer it again, then finish. 26 marks would be lost if 1–2 had not come back.
+  await answerAll(page, WRONG, BLANK, 'exC-');
+  await page.locator('#step-3 button.btn-primary').click();
+  const go = page.locator('#eol-skip-go');
+  if (await go.isVisible().catch(() => false)) await go.click();
+  await expect(page.locator('#score-display')).toContainText('30 / 40 marks');
 
   expect(errors).toEqual([]);
 });
