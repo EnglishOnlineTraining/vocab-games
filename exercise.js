@@ -113,12 +113,24 @@ function eolPractiseResults() {
 
 function eolPractisePanelHtml() {
   var keys = Object.keys(state.scores || {});
-  var rows = keys.map(function(k) {
-    var s = state.scores[k];
-    var letter = k.replace(/^ex/i, '');
+  var row = function(label, correct, total) {
     return '<div style="display:flex;justify-content:space-between;padding:.4rem 0;border-top:1px solid var(--border)">'
-      + '<span>Exercise ' + esc(letter) + '</span><strong>' + fmtPts(s.correct) + ' / ' + s.total + '</strong></div>';
-  }).join('');
+      + '<span>' + esc(label) + '</span><strong>' + fmtPts(correct) + ' / ' + total + '</strong></div>';
+  };
+  var rows;
+  if (typeof SCORE_GROUPS !== 'undefined' && SCORE_GROUPS.length) {
+    /* A page may name its own groups, e.g. [['Passage 1', ['exA','exA2']], …]. */
+    rows = SCORE_GROUPS.map(function(grp) {
+      var c = 0, t = 0;
+      grp[1].forEach(function(k) { var s = state.scores[k]; if (s) { c += s.correct; t += s.total; } });
+      return row(grp[0], c, t);
+    }).join('');
+  } else {
+    rows = keys.map(function(k) {
+      var s = state.scores[k];
+      return row('Exercise ' + k.replace(/^ex/i, ''), s.correct, s.total);
+    }).join('');
+  }
   var en = eolEnglishOnly();
   var breakdown = rows
     ? '<div class="card"><div class="card-title">' + (en ? 'Your points per exercise' : 'Deine Punkte pro Übung') + '</div>' + rows + '</div>'
@@ -362,8 +374,19 @@ function eolWritingCounts() {
   return out;
 }
 
+/* A real writing task: a textarea other than the copy-to-clipboard block every page
+   carries and the optional, unmarked warm-up box (exA-recall). Without this filter the
+   copy block alone made pages with no writing task show a writing self-check. */
+function eolHasWritingTask() {
+  var boxes = document.querySelectorAll('.step textarea');
+  for (var i = 0; i < boxes.length; i++) {
+    if (boxes[i].id !== 'copy-block' && !/-recall$/.test(boxes[i].id)) return true;
+  }
+  return false;
+}
+
 function eolRubricHtml() {
-  if (!document.querySelector('.step textarea')) return '';
+  if (!eolHasWritingTask()) return '';
   var rows = (typeof WRITING_RUBRIC !== 'undefined' && WRITING_RUBRIC.length)
     ? WRITING_RUBRIC : eolRubricBand().rows;
   var counts = eolWritingCounts().filter(function(c) { return c.words > 0; });
@@ -989,6 +1012,39 @@ function currentGradeLookup(earned, possible) {
     : lookupGrade(earned, possible);
 }
 
+/* ============================================================
+   IELTS READING PRACTICE TEST — estimated band
+   Only for a full 40-question page that sets IELTS_BAND_ESTIMATE = true.
+   ielts.org publishes just four reference points for Academic Reading:
+   on average 15/40 = band 5, 23/40 = band 6, 30/40 = band 7, 35/40 = band 8,
+   and says the exact marks "will vary slightly from test version to test
+   version" (ielts.org, "IELTS scoring in detail", checked 2026-10-19). So the
+   card gives a range between those points, never a single official-looking
+   band, and links to the source.
+============================================================ */
+var EOL_IELTS_SCORING_URL = 'https://ielts.org/take-a-test/your-results/ielts-scoring-in-detail';
+
+function eolIeltsReadingBand(raw) {
+  if (raw >= 35) return 'about 8 or higher';
+  if (raw >= 30) return 'about 7–7.5';
+  if (raw >= 23) return 'about 6–6.5';
+  if (raw >= 15) return 'about 5–5.5';
+  return 'below 5';
+}
+
+function eolIeltsBandCard(raw) {
+  var marks = Math.floor(raw);   // one attempt per question, so marks are whole numbers
+  return '<div class="card" style="text-align:center;background:var(--gold-lt);border:1.5px solid var(--gold)">'
+    + '<div style="font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--blue);font-weight:700;margin-bottom:.3rem">Your score</div>'
+    + '<div style="font-size:1.5rem;font-weight:800;color:var(--blue)">' + marks + ' / 40 marks</div>'
+    + '<div style="font-size:1.05rem;font-weight:700;color:var(--blue);margin-top:.3rem">Estimated band: ' + eolIeltsReadingBand(marks) + '</div>'
+    + '<div style="font-size:.78rem;color:var(--muted);margin-top:.5rem;line-height:1.5">Each question is worth 1 mark, as in the exam. '
+    + 'ielts.org gives these averages for Academic Reading: 15 marks &asymp; band 5, 23 &asymp; band 6, 30 &asymp; band 7 and 35 &asymp; band 8, '
+    + 'and the exact marks vary slightly between test versions. This is a practice test, not an official one, so treat the band as a rough guide only. '
+    + '<a href="' + EOL_IELTS_SCORING_URL + '" target="_blank" rel="noopener">Source: ielts.org</a></div>'
+    + '</div>';
+}
+
 function renderScore() {
   // Render review-page explanations here too: some pages override showStep
   // (bypassing that hook) but still call the shared renderScore from buildSummary.
@@ -1009,6 +1065,10 @@ function renderScore() {
     gradeHtml = '<div style="font-size:1rem;color:var(--blue);margin-top:.2rem">Note ' + grade.note + ' (' + grade.label + ')</div>';
   }
   box.style.display = 'block';
+  if (eolEnglishOnly() && typeof IELTS_BAND_ESTIMATE !== 'undefined' && IELTS_BAND_ESTIMATE && sc.possible === 40) {
+    box.innerHTML = eolIeltsBandCard(sc.earned);
+    return;
+  }
   if (eolEnglishOnly()) {
     box.innerHTML = '<div class="card" style="text-align:center;background:var(--gold-lt);border:1.5px solid var(--gold)">'
       + '<div style="font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--blue);font-weight:700;margin-bottom:.3rem">Your score (auto-marked questions)</div>'

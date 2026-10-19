@@ -1408,6 +1408,9 @@ pages show points and a percentage, never a German Note and never a predicted ba
 exercise cannot give one). Decisions are in Claude's memory note `project-ielts-section`.
 
 1. **Full-length Academic Reading practice test with an estimated band · CC, Shaun approves.**
+   **Built 2026-10-19** (`ielts-reading-practice-test.html`, with an E2E spec). Shaun chose: marked
+   once at the end (no Check buttons, blanks allowed); an estimated band given as a range between
+   ielts.org's four published averages (15 ≈ 5, 23 ≈ 6, 30 ≈ 7, 35 ≈ 8), cited on the page; one PR.
    One page: three original passages (2,150–2,750 words in all), 40 questions, the question
    types the section has practised, and an optional 60-minute timer. This is the one place a
    band is fair to show, because it is a full-length test. Convert the raw score with an
@@ -1448,7 +1451,7 @@ exercise cannot give one). Decisions are in Claude's memory note `project-ielts-
    B4 describing a process (2026-10-18, with `tests/ielts-writing-task1-process-diagram.spec.js`).
    B5 discussion essay (2026-10-18, with `tests/ielts-writing-task2-discussion-essay.spec.js`).
    B6 problem–solution essay (2026-10-18, with `tests/ielts-writing-task2-problem-solution-essay.spec.js`).
-   **All six briefs are built.** Next: Tier 14 item 1, the full Reading practice test. B1 and B2 are live, so Tier 14 item 1 (the full Reading
+   **All six briefs are built**, and item 1 (the full Reading test) followed on 2026-10-19. B1 and B2 are live, so Tier 14 item 1 (the full Reading
    test) is no longer blocked by the skill's build order.
 5. ~~**German FAQ on the hub · Shaun decides.**~~ **Done 2026-10-13 (#133).** Two German FAQ entries
    on `ielts-activities.html` for "IELTS Übungen" searches; the exercises stay English-only.
