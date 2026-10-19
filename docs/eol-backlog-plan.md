@@ -1447,7 +1447,8 @@ exercise cannot give one). Decisions are in Claude's memory note `project-ielts-
    and B3 tables and bar charts (#170), both 2026-10-17, each with an E2E spec in `tests/`.
    B4 describing a process (2026-10-18, with `tests/ielts-writing-task1-process-diagram.spec.js`).
    B5 discussion essay (2026-10-18, with `tests/ielts-writing-task2-discussion-essay.spec.js`).
-   **Next:** B6 problem–solution essay. B1 and B2 are live, so Tier 14 item 1 (the full Reading
+   B6 problem–solution essay (2026-10-18, with `tests/ielts-writing-task2-problem-solution-essay.spec.js`).
+   **All six briefs are built.** Next: Tier 14 item 1, the full Reading practice test. B1 and B2 are live, so Tier 14 item 1 (the full Reading
    test) is no longer blocked by the skill's build order.
 5. ~~**German FAQ on the hub · Shaun decides.**~~ **Done 2026-10-13 (#133).** Two German FAQ entries
    on `ielts-activities.html` for "IELTS Übungen" searches; the exercises stay English-only.

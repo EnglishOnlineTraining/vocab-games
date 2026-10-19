@@ -20088,5 +20088,125 @@
     }
    }
   }
+ },
+ "ielts-writing-task2-problem-solution-essay": {
+  "exA": {
+   "review": false,
+   "gaps": {
+    "g1": {
+     "label": "1. big packs and deals: this ___ people buying more than they can eat",
+     "correct": "leads to",
+     "why": "The deals are the cause and over-buying the effect: cause + “leads to” + effect."
+    },
+    "g2": {
+     "label": "2. people throw food away ___ an expired “best before” date",
+     "correct": "due to",
+     "why": "“Due to” is followed by a noun phrase (a date); “because” would need a full clause."
+    },
+    "g3": {
+     "label": "3. busy working lives ___ meals are often not planned",
+     "correct": "mean that",
+     "why": "“Mean that” + clause gives a consequence; “mean to” means “intend to”."
+    },
+    "g4": {
+     "label": "4. ___, supermarkets could sell more loose fruit",
+     "correct": "To address the problem of large packs",
+     "why": "This solution answers the first cause, so it says which problem it addresses."
+    },
+    "g5": {
+     "label": "5. ___ labels explained the difference, fewer products would be thrown away",
+     "correct": "if",
+     "why": "Second conditional for an imagined solution: if + past simple, … would + verb."
+    },
+    "g6": {
+     "label": "6. teaching these skills, which ___ less waste at home",
+     "correct": "would result in",
+     "why": "The skills are the cause and less waste the effect: cause + “result in” + effect."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. Heavy traffic ___ air pollution",
+     "correct": "leads to",
+     "why": "The cause (traffic) comes first, so use “leads to” before the effect."
+    },
+    "g2": {
+     "label": "2. Air pollution ___ heavy traffic",
+     "correct": "is caused by",
+     "why": "The effect comes first, so use the passive “is caused by” before the cause."
+    },
+    "g3": {
+     "label": "3. Flights were cancelled ___ the storm",
+     "correct": "due to",
+     "why": "“The storm” is a noun phrase, so “due to”; “because” needs a full clause."
+    },
+    "g4": {
+     "label": "4. Flights were cancelled ___ there was a storm",
+     "correct": "because",
+     "why": "“There was a storm” is a full clause, so “because”; “due to” needs a noun."
+    },
+    "g5": {
+     "label": "5. Prices rose sharply. ___, many families spent less",
+     "correct": "As a result",
+     "why": "A linker that starts a new sentence about the effect: “As a result,”."
+    },
+    "g6": {
+     "label": "6. Lack of sleep can ___ poor concentration",
+     "correct": "result in",
+     "why": "The cause comes first: cause + “result in” + effect."
+    },
+    "g7": {
+     "label": "7. Poor concentration in class can ___ staying up too late",
+     "correct": "result from",
+     "why": "The effect comes first: effect + “result from” + cause."
+    },
+    "g8": {
+     "label": "8. The rise in obesity is partly ___ to a lack of exercise",
+     "correct": "due",
+     "why": "“Be due to” + noun names a cause: is partly due to a lack of exercise."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. Cause: older people live alone and rarely go out",
+     "correct": "Local councils could run free weekly clubs where older people can meet.",
+     "why": "Clubs give them a reason and a place to meet others, so this fixes the cause."
+    },
+    "g2": {
+     "label": "2. Cause: young people cannot afford to rent near work",
+     "correct": "Cities could build more affordable housing near business districts.",
+     "why": "Cheaper homes near work answer this cause directly; cinema tickets and holidays do not."
+    },
+    "g3": {
+     "label": "3. Cause: children spend hours on screens, not outside",
+     "correct": "Parents and schools could set daily screen-time limits and plan outdoor activities.",
+     "why": "It cuts screen time and gives an outdoor alternative; more computers would make it worse."
+    },
+    "g4": {
+     "label": "4. Cause (Exercise A): large packs lead to food being thrown away",
+     "correct": "Supermarkets could sell more loose fruit and vegetables.",
+     "why": "Loose food lets shoppers buy only what they need; label print size is a different cause."
+    },
+    "g5": {
+     "label": "5. Cause: people drive short trips because buses are slow",
+     "correct": "Bus lanes could be added so that buses are quicker than cars.",
+     "why": "Faster buses remove the reason for driving; cheaper parking would encourage more driving."
+    },
+    "g6": {
+     "label": "6. Review (Discussion Essay): ___ of the new tax argue that it will hurt small shops",
+     "correct": "Opponents",
+     "why": "“Opponents of … argue” reports the side against the tax; “In my view” and “I believe” give your own — from the Discussion Essay exercise."
+    },
+    "g7": {
+     "label": "7. Review (Opinion Essay): ___ the plan was expensive, the council approved it",
+     "correct": "Although",
+     "why": "A full clause follows (the plan was expensive), so “although”, not “despite” — from the Opinion Essay exercise."
+    }
+   }
+  }
  }
 }
