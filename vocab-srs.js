@@ -191,14 +191,15 @@ function clean(s) { return normAns(s).replace(/'/g, '').replace(/[^a-z0-9]+/g, '
 
 /* Every typed form that counts as right. "On the Beach / On the Bench" takes
    either half or both; "Corporate Social Responsibility (CSR)" takes the full
-   name, the abbreviation alone, or both. */
+   name, the abbreviation alone, or both; "to ban" takes "ban" too. */
 function accepted(word) {
   var out = [word];
   word.split(' / ').forEach(function(t) {
     var m = t.match(/^(.*?)\s*\(([^)]+)\)$/);
     if (m) out.push(m[1], m[2], t); else out.push(t);
   });
-  return out.map(clean);
+  // "to set up" also takes "set up": students often leave out the infinitive "to".
+  return out.concat(out.map(function(t) { return t.replace(/^to /i, ''); })).map(clean);
 }
 
 function checkTyped() {
