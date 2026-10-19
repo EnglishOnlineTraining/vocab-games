@@ -99,7 +99,7 @@ function eolPractiseResults() {
   // Pages with integrity counts send anonymous practise statistics (opt-out below),
   // so "nothing is sent" would be untrue there; nothing reaches the teacher.
   if (sub) sub.textContent = en ? 'Practice mode — your results. Nothing has been sent.'
-    : eolIntLevel() === 'off' ? 'Übungsmodus — deine Ergebnisse. Nichts wird abgeschickt.'
+    : !eolIntReady() || eolIntLevel() === 'off' ? 'Übungsmodus — deine Ergebnisse. Nichts wird abgeschickt.'
     : 'Übungsmodus — deine Ergebnisse. Nichts geht an deine Lehrkraft.';
   renderScore();
   var panel = document.getElementById('practise-results');
@@ -155,7 +155,7 @@ function eolToday() {
 function eolMarkStarted() {
   if (typeof UNIT === 'undefined') return;
   eolExerciseStartTime = Date.now();
-  eolIntStart();
+  if (eolIntReady()) eolIntStart();
   try {
     var data = JSON.parse(localStorage.getItem('eol_progress') || '{}');
     if (!data[UNIT]) {
@@ -227,7 +227,7 @@ function eolDraftSave() {
       state: state,
       maxStep: maxStepReached,
       curStep: curStep,
-      int: eolIntSnapshot(),
+      int: eolIntReady() ? eolIntSnapshot() : undefined,
       ts: Date.now()
     };
     localStorage.setItem(EOL_DRAFT_KEY, JSON.stringify(draft));
@@ -271,7 +271,7 @@ function eolDraftOfferResume() {
   document.getElementById('eol-resume-yes').onclick = function() {
     banner.remove();
     state = d.state;
-    eolIntRestore(d.int);
+    if (eolIntReady()) eolIntRestore(d.int);
     if (typeof maxStepReached !== 'undefined') maxStepReached = d.maxStep || 0;
     state.name && (function() {
       var nameEl = document.getElementById('inp-name');
@@ -1454,7 +1454,8 @@ function initListening(elementId, script, opts) {
 /* ============================================================
    INTEGRITY SIGNALS (docs/integrity-signals-spec.md)
    Counts how free text was produced, so the teacher can follow up in
-   class. Counts only: no content, no per-key timestamps, no device data.
+   class. The counters themselves live in integrity.js (shared with the
+   standalone class tests); this part decides who gets them. Counts only: no content, no per-key timestamps, no device data.
    Never changes a score or grade.
      Level by filename prefix: 'standard' for Shaun's class pages,
      'off' for public pages. A page can override with
@@ -1467,14 +1468,9 @@ function initListening(elementId, script, opts) {
 var EOL_INT_CLASSES = ['8C', '9G', '9C', '10G', '10C'];   // update each school year
 var EOL_BASELINE_URL = 'https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec';
 var EOL_BASELINE_OPTOUT_KEY = 'eol_baseline_optout';
-var eolInt = { elapsedMs: 0, sessionStart: 0, typingMs: 0, lastInput: 0, keys: 0, deletes: 0,
-               pasteTries: 0, dropTries: 0, bulkInserts: 0, resumes: 0, partial: 0 };
-
-function eolIntLevel() {
-  if (typeof INTEGRITY_LEVEL !== 'undefined') return INTEGRITY_LEVEL;
-  var unit = (typeof UNIT !== 'undefined') ? String(UNIT) : '';
-  return /^(8c|9g|9c|10g|10c|msa-c|uni)-/.test(unit) ? 'standard' : 'off';
-}
+/* integrity.js holds the counters; it loads before this file on every framework
+   page. Checked so a page or tool that loads exercise.js alone still works. */
+function eolIntReady() { return typeof eolInt !== 'undefined'; }
 
 /* "9g", "9 G", "Klasse 10c" all match; anything else does not. */
 function eolIntClassMatches(cls) {
@@ -1483,97 +1479,15 @@ function eolIntClassMatches(cls) {
 }
 
 function eolIntSendsToTeacher() {
-  if (practiseMode || eolIntLevel() === 'off') return false;
+  if (!eolIntReady() || practiseMode || eolIntLevel() === 'off') return false;
   if (/^uni-/.test(String(UNIT))) return true;
   return eolIntClassMatches(state && state.cls);
 }
 
-function eolIntStart() {
-  if (!eolInt.sessionStart) eolInt.sessionStart = Date.now();
-}
-
-/* Saved inside the autosave draft, so a reload or resume keeps the counts. */
-function eolIntSnapshot() {
-  var s = {};
-  for (var k in eolInt) s[k] = eolInt[k];
-  s.elapsedMs = eolInt.elapsedMs + (eolInt.sessionStart ? Date.now() - eolInt.sessionStart : 0);
-  s.sessionStart = 0;
-  s.lastInput = 0;
-  return s;
-}
-
-function eolIntRestore(saved) {
-  if (saved && typeof saved === 'object') {
-    for (var k in eolInt) if (typeof saved[k] === 'number') eolInt[k] = saved[k];
-  } else {
-    eolInt.partial = 1;   // draft from before counting began: restored text has no counts
-  }
-  eolInt.sessionStart = 0;
-  eolInt.lastInput = 0;
-  eolInt.resumes++;
-}
-
-function eolIntWords() {
-  var n = 0;
-  var tas = document.querySelectorAll('textarea');
-  for (var i = 0; i < tas.length; i++) {
-    if (tas[i].readOnly) continue;   // the hidden copy-block summary, not the student's typing
-    var w = tas[i].value.trim();
-    if (w) n += w.split(/\s+/).length;
-  }
-  return n;
-}
-
-function eolIntFields() {
-  var s = eolIntSnapshot();
-  var words = eolIntWords();
-  var typingSec = Math.round(s.typingMs / 1000);
-  return {
-    int_level: eolIntLevel(),
-    int_time_total: Math.round(s.elapsedMs / 1000),
-    int_time_typing: typingSec,
-    int_keys: s.keys,
-    int_deletes: s.deletes,
-    int_paste_tries: s.pasteTries,
-    int_drop_tries: s.dropTries,
-    int_bulk_inserts: s.bulkInserts,
-    int_words: words,
-    int_wpm: typingSec ? Math.round(words / (typingSec / 60)) : 0,
-    int_resumes: s.resumes,
-    int_partial: s.partial
-  };
-}
-
-/* Count input events, not keydown: Android reports key 229 for every key, and
-   IME/autocorrect change text without a matching key. Gaps over 30 s are idle. */
-document.addEventListener('input', function(e) {
-  if (!e.target || e.target.tagName !== 'TEXTAREA') return;
-  var type = e.inputType || 'insertText';
-  // More than a word in one event: an extension, autotyper or tool inserting text.
-  if (type.indexOf('insert') === 0 && e.data && e.data.length > 20) eolInt.bulkInserts++;
-  if (type.indexOf('delete') === 0) eolInt.deletes++;
-  else if (type === 'insertText' || type === 'insertCompositionText'
-        || type === 'insertLineBreak' || type === 'insertParagraph') eolInt.keys++;
-  else return;   // spellcheck replacement etc.: neither typed nor deleted
-  var now = Date.now();
-  if (eolInt.lastInput && now - eolInt.lastInput <= 30000) eolInt.typingMs += now - eolInt.lastInput;
-  eolInt.lastInput = now;
-});
-
-/* Text dragged from a side panel would bypass the paste block. */
-document.addEventListener('drop', function(e) {
-  var t = e.target;
-  if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA')) {
-    e.preventDefault();
-    eolInt.dropTries++;
-    showToast('✏️ Dropping text is not allowed', 2000);
-  }
-});
-
 /* One line under the submit button on pages that send counts. */
 function eolIntNotice() {
   var btn = document.getElementById('submit-btn');
-  if (!btn || eolIntLevel() === 'off' || document.getElementById('eol-int-notice')) return;
+  if (!btn || !eolIntReady() || eolIntLevel() === 'off' || document.getElementById('eol-int-notice')) return;
   var p = document.createElement('p');
   p.id = 'eol-int-notice';
   p.style.cssText = 'font-size:.78rem;color:var(--muted,#6b7a8d);margin:.5rem 0 0;text-align:center';
@@ -1589,7 +1503,7 @@ function eolBaselineOptedOut() {
 }
 
 function eolBaselineHtml() {
-  if (eolIntLevel() === 'off') return '';
+  if (!eolIntReady() || eolIntLevel() === 'off') return '';
   return '<p id="eol-baseline-note" style="font-size:.78rem;color:var(--muted,#6b7a8d);text-align:center;margin:.8rem 0">'
     + 'Anonymous usage statistics (no name, no answers) help improve these exercises. '
     + '<label style="white-space:nowrap"><input type="checkbox" id="eol-baseline-optout"'
@@ -1602,7 +1516,7 @@ function eolBaselineSetOptOut(on) {
 
 var _eolBaselineSent = false;
 function eolBaselineSend() {
-  if (_eolBaselineSent || !practiseMode || eolIntLevel() === 'off') return;
+  if (_eolBaselineSent || !practiseMode || !eolIntReady() || eolIntLevel() === 'off') return;
   if (!document.getElementById('practise-results') || eolBaselineOptedOut()) return;
   _eolBaselineSent = true;
   var sc = (typeof totalScore === 'function') ? totalScore() : { earned: 0, possible: 0 };
@@ -1626,7 +1540,6 @@ document.addEventListener('paste', function(e) {
   var t = e.target;
   if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
     e.preventDefault();
-    eolInt.pasteTries++;
     var msg = document.createElement('div');
     msg.textContent = '✏️ Pasting is not allowed';
     msg.style.cssText = 'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;font-family:inherit;z-index:9999;pointer-events:none;opacity:1;transition:opacity .4s';

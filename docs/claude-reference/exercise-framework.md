@@ -22,8 +22,11 @@
 
 Both blocks are injected by the shared `exercise.js`; nothing to add per page. The native `copy` listener in `exercise.js` is what blocks right-click → Copy / menu copy, not just Ctrl/Cmd+C — every exercise needs both the `copy` and `paste` listeners, not just a `keydown` check. (Audit note: `uni-pm-vocabulary.html` and `uni-writing-task.html` were missing the native `copy` listener and have been fixed; `uni-presentation-task.html` has no free-text fields — it's a logistics/confirmation screen, not a graded exercise — so blocking was judged not applicable there.)
 
-**Drop block and integrity counts (added 2026-10-17).** `exercise.js` also blocks text
-dropped into an input or textarea, and counts how free text was produced: typing time,
+**Drop block and integrity counts (added 2026-10-17; counters in `integrity.js` since
+2026-10-18).** Every framework page loads `integrity.js` right before `exercise.js`
+(`_template.html`, `build-review-pages.js` and `build-quizzes.js` write the tag; keep
+it on new pages). It blocks text dropped into an input or textarea, and counts how
+free text was produced: typing time,
 keystrokes and deletions (from `input` events), blocked pastes and drops, bulk inserts (over 20 characters in one event), words, and
 reloads/resumes (the counts ride in the autosave draft). On `8c-`, `9g-`, `9c-`, `10g-`,
 `10c-`, `msa-c-` and `uni-` pages the counts go into the payload as `int_*` fields, for
@@ -31,7 +34,9 @@ school pages only when the class field matches `EOL_INT_CLASSES` (**update that 
 each school year**). Every other prefix is off; a page can override with
 `var INTEGRITY_LEVEL`. Practise mode sends anonymous counts to the `Practise Baseline`
 tab of the Apps Script online sheet, with an opt-out on the results screen. Rules and
-open questions: `docs/integrity-signals-spec.md`. Test: `tests/integrity-signals.spec.js`.
+open questions: `docs/integrity-signals-spec.md`. Tests: `tests/integrity-signals.spec.js`,
+`tests/integrity-standalone.spec.js`. The 5 class tests and `uni-writing-task` load
+`integrity.js` on their own and add `eolIntFields()` to their payloads.
 
 ### 4. Step navigation
 A clickable step-jump bar (`<nav class="step-nav" id="step-nav"></nav>`) sits right after the sticky header. It's rendered by `renderStepNav(current)` and lets a student click back to any step they've already visited (tracked via `maxStepReached`); jumping ahead to a step not yet reached is blocked. `showStep(n)` calls `renderStepNav` automatically — nothing to wire up per-exercise. Pre-built in `_template.html`.

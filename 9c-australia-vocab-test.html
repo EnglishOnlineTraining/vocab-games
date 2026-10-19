@@ -351,6 +351,7 @@ body.exam-mode input[type=text],body.exam-mode textarea{-webkit-user-select:text
 </div>
 </main>
 
+<script src="integrity.js"></script>
 <script>
 /* ── CONFIG ── */
 const SHEET_URL = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj'; // Year 9 Make webhook
@@ -363,6 +364,7 @@ const GATE_MINS = 2;
    string for each sitting. */
 const RELEASE_CODE = 'AUS9C2026';
 const UNIT      = '9c-australia-vocab-test'; // Make routes on `unit`, not a sheet tab
+var INTEGRITY_LEVEL = 'strict';   // integrity.js: counts sent with this test
 const Q_TOTAL   = 20;
 const MATCH_N   = 10;
 const FILL_N    = 10;
@@ -547,6 +549,7 @@ function startExam(){
   document.getElementById('sid-disp').textContent=sid;
   buildQuestions();
   t0=Date.now();
+  eolIntStart();
   startTimer();
   setTimeout(()=>{gateOpen=true;document.getElementById('time-gate-msg').textContent='✅ You may submit from Section C.';checkReady();saveState()},GATE_MINS*60*1000);
   setInterval(snap,3*60*1000);
@@ -571,7 +574,7 @@ function saveState(){
     sel:[...document.querySelectorAll('.qa-select')].map(e=>e.value),
     inp:[...document.querySelectorAll('.qa-input')].map(e=>e.value),
     txt:[...document.querySelectorAll('#use-list textarea')].map(e=>e.value),
-    tabN,pasteN,anomalyN,reloads,snapshots}))}catch(e){}
+    tabN,pasteN,anomalyN,reloads,snapshots,int:eolIntSnapshot()}))}catch(e){}
 }
 function loadState(){try{const s=JSON.parse(localStorage.getItem(SAVE_KEY)||'null');return s&&s.v===1&&!s.submitted?s:null}catch(e){return null}}
 function markSubmitted(){try{const s=JSON.parse(localStorage.getItem(SAVE_KEY)||'null');if(s){s.submitted=true;s.submittedAt=Date.now();localStorage.setItem(SAVE_KEY,JSON.stringify(s))}}catch(e){}}
@@ -588,6 +591,7 @@ function resumeExam(s){
   curPane=s.curPane||'a';
   ['a','b','c'].forEach(p=>{document.getElementById('pane-'+p).hidden=(p!==curPane)});
   t0=s.t0;
+  eolIntRestore(s.int);eolIntStart();
   const elapsed=Date.now()-t0;
   gateOpen=!!s.gateOpen||elapsed>=GATE_MINS*60*1000;
   if(gateOpen)document.getElementById('time-gate-msg').textContent='✅ You may submit from Section C.';
@@ -784,7 +788,7 @@ function doSubmit(){
   });
   const pct=Math.round(correct/Q_TOTAL*100);
   const el=Math.round((Date.now()-t0)/1000);
-  payload={timestamp:new Date().toISOString(),name:sName,group:sGroup,session_id:sid,score:correct,total:Q_TOTAL,percent:pct,grade:(function(){const g=lookupGrade(correct,Q_TOTAL);return g?'Note '+g.note+' ('+g.label+')':''})(),extra_time:extraTime,time_spent_s:el,tab_switches:tabN,paste_attempts:pasteN,typing_anomalies:anomalyN,devtools_flagged:devToolsFlagged,reloads:reloads,use_checks_passed:useOk,use_total:USE_N,answers:JSON.stringify(results),snapshots:JSON.stringify(snapshots),user_agent:navigator.userAgent};
+  payload={timestamp:new Date().toISOString(),name:sName,group:sGroup,session_id:sid,score:correct,total:Q_TOTAL,percent:pct,grade:(function(){const g=lookupGrade(correct,Q_TOTAL);return g?'Note '+g.note+' ('+g.label+')':''})(),extra_time:extraTime,time_spent_s:el,tab_switches:tabN,paste_attempts:pasteN,typing_anomalies:anomalyN,devtools_flagged:devToolsFlagged,reloads:reloads,use_checks_passed:useOk,use_total:USE_N,answers:JSON.stringify(results),snapshots:JSON.stringify(snapshots)};
   clearInterval(timerID);document.getElementById('timer-wrap').style.display='none';
   buildReview(results);
   show('s-done');
@@ -847,6 +851,7 @@ function send(data){
   p['ex'+(Q_TOTAL+USE_N+2)]='integrity | time '+data.time_spent_s+'s | tab-switches '+data.tab_switches
         +' | paste '+data.paste_attempts+' | typing '+data.typing_anomalies
         +' | devtools '+data.devtools_flagged+' | reloads '+data.reloads+' | session '+data.session_id;
+  var intF=eolIntFields();for(var ik in intF)p[ik]=intF[ik];   // integrity.js counts
   fetch(SHEET_URL,{method:'POST',mode:'no-cors',
     headers:{'Content-Type':'application/x-www-form-urlencoded'},
     body:'payload='+encodeURIComponent(JSON.stringify(p))});
