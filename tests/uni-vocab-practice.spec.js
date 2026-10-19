@@ -47,7 +47,8 @@ for (const unit of PAGES) test(unit + ': word list is complete and unambiguous',
     words: new Set(WORDS.map(w => w[0])).size,
     selfAccepted: WORDS.every(w => accepted(w[0]).includes(clean(w[0]))),
   }));
-  expect(r).toEqual({ n: 75, defs: 75, words: 75, selfAccepted: true });
+  expect(r.n).toBeGreaterThanOrEqual(20);   // enough for distractors and two 10-word sessions
+  expect(r).toEqual({ n: r.n, defs: r.n, words: r.n, selfAccepted: true });
 });
 
 for (const unit of PAGES) test(unit + ': two sessions, requeue, focus words, saved progress', async ({ page }) => {
@@ -94,7 +95,8 @@ for (const unit of PAGES) test(unit + ': two sessions, requeue, focus words, sav
     expect(saved.p.w[w].lvl).toBe(1);
     expect(saved.p.w[w].due).toBe(expected.includes(w) ? saved.t : saved.t + 1);
   }
-  await expect(page.locator('#levels')).toContainText('65new');
+  const total = await page.evaluate(() => WORDS.length);
+  await expect(page.locator('#levels')).toContainText((total - 10) + 'new');
 
   // Session 2: the missed words first, then new words from the list.
   await page.click('text=Start a 10-word session');
