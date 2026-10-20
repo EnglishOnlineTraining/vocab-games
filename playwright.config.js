@@ -10,7 +10,12 @@ module.exports = defineConfig({
     screenshot: 'only-on-failure',
   },
   webServer: {
-    command: 'python3 -m http.server 8791',
+    // python3 -m http.server, but with a listen backlog of 128 instead of
+    // socketserver's default 5. With several workers loading pages at once the
+    // short queue overflowed and the OS reset connections: a page could lose
+    // one of its scripts (losing exercise.js leaves it stuck on step 0), and a
+    // random test failed.
+    command: 'python3 -c "import runpy, socketserver, sys; socketserver.TCPServer.request_queue_size = 128; sys.argv = [\'http.server\', \'8791\']; runpy.run_module(\'http.server\', run_name=\'__main__\')"',
     port: 8791,
     reuseExistingServer: false,
   },
