@@ -93,14 +93,14 @@ label for the **online** sheet and sent instructions to the wrong one.
 
 | Shaun calls it | URL id | Used by |
 |---|---|---|
-| **Online sheet** | `AKfycbxFKA1…` | all `be-`, `it-`, `esl-` and `ielts-` pages (IELTS tab), most `uni-` pages |
-| **University sheet** | `AKfycbwwbV6…` | `uni-pm-vocabulary`, `uni-presentation-task`, `uni-relationships-language`, `-reading`, `-vocab`, `uni-b2-introduce-yourself` |
+| **Online sheet** | `AKfycbxFKA1…` | all `be-`, `it-`, `esl-` and `ielts-` pages (IELTS tab) |
+| **University sheet** | `AKfycbwwbV6…` | every `uni-` page and `uni-review`, except `uni-roleplay-building-relationships` and `uni-writing-task` (own Apps Scripts). Since 2026-10-20; `verify-exercise.js` enforces it |
 
 #### Online sheet URL
 ```
 https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec
 ```
-Used by: all Business English, University, and IT English exercises (e.g. `be-professional-emails.html`, `uni-ai-ethics.html`, `uni-writing-task.html`, `uni-pm-vocabulary.html`, the ten `it-*` pages — since 2026-07-17, replacing their old FormSubmit.co email relay — and others — several university exercises use a second Apps Script sheet, `.../AKfycbwwbV6ufw7QX8meNGyOwiVdkqNpQ8yckdXmsbFqysJwWqAfCWaR_eC9RH41LaqmYyZOeA/exec`; check the live file before assuming which one). This still runs the same universal Apps Script, so new units auto-create their own tabs here with no redeploy.
+Used by: all Business English, IT English, ESL and IELTS exercises (e.g. `be-professional-emails.html`, and the ten `it-*` pages, which moved here from FormSubmit.co on 2026-07-17). **Not University:** since 2026-10-20 every `uni-` page posts to the university sheet (`.../AKfycbwwbV6ufw7QX8meNGyOwiVdkqNpQ8yckdXmsbFqysJwWqAfCWaR_eC9RH41LaqmYyZOeA/exec`), except the two pages above. Before that, nine `uni-` pages posted here by mistake; their older rows stay in this sheet. Both sheets run the same universal Apps Script, so new units auto-create their own tabs with no redeploy.
 
 ### IELTS — email instead of name, one "IELTS" tab (added 2026-10-13)
 The IELTS pages (`ielts-*`, including the generated `ielts-review.html`) post to the Business
