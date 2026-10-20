@@ -53,6 +53,10 @@ Note or any grade text.
   accept every correct word order).
 - **No band scores, ever.** Do not predict or imply one ("this is a band 7 answer"). Model answers
   are "a model answer", nothing more.
+  **The one exception** is the full 40-question Reading practice test (`ielts-reading-practice-test.html`,
+  backlog Tier 14 item 1). It sets `IELTS_BAND_ESTIMATE = true`, and `exercise.js` shows an
+  *estimated band range* between ielts.org's four published averages (15 ≈ 5, 23 ≈ 6, 30 ≈ 7,
+  35 ≈ 8), with their caveat and a link to the source. Only a full-length test may do this.
 - **Everything original.** Write your own texts, graphs, tables, diagrams and questions. Never copy
   or closely paraphrase official IELTS or Cambridge material. Label invented data **"(Invented
   practice data.)"** next to the task.

@@ -1,0 +1,376 @@
+{
+ "unit": "ielts-reading-practice-test",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "1. Drais’s machine was moved by the rider pushing against the ground with his feet.",
+     "why": "Paragraph B: the rider “sat on and pushed along the ground with his feet. There were no pedals.”"
+    },
+    "g2": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "2. Drais’s ride on 12 June 1817 took him several hours.",
+     "why": "Paragraph B: there and back “in a little over an hour” — not several hours."
+    },
+    "g3": {
+     "correct": "Not Given",
+     "accept": [
+      "Not Given"
+     ],
+     "label": "3. Running machines cost more to buy than a horse.",
+     "why": "Paragraph B says the machines were “expensive” but never compares them with a horse."
+    },
+    "g4": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "4. On a high-wheeler, a bigger front wheel meant a greater distance for each turn of the pedals.",
+     "why": "Paragraph C: “the only way to travel further with every turn was to make the wheel bigger.”"
+    },
+    "g5": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "5. In the 1870s, high-wheelers were popular with most women.",
+     "why": "Paragraph C: “most people, including most women, regarded the machine as far too dangerous to ride.”"
+    },
+    "g6": {
+     "correct": "Not Given",
+     "accept": [
+      "Not Given"
+     ],
+     "label": "6. Starley sold the Rover only in England.",
+     "why": "Paragraph D says Starley began selling the Rover in Coventry, but says nothing about where else it was sold."
+    },
+    "g7": {
+     "correct": "C",
+     "accept": [
+      "C"
+     ],
+     "label": "7. A reason why riders of one design were often hurt",
+     "why": "Paragraph C: a stone or sudden stop “could throw him forward over the handlebars.”"
+    },
+    "g8": {
+     "correct": "E",
+     "accept": [
+      "E"
+     ],
+     "label": "8. The name of an inventor whose idea was not taken up when it first appeared",
+     "why": "Paragraph E names Thomson, whose 1845 tyre “was never developed for everyday use and was largely forgotten”; paragraph A names no inventor."
+    },
+    "g9": {
+     "correct": "D",
+     "accept": [
+      "D"
+     ],
+     "label": "9. An explanation of how ordinary-sized wheels could cover the same ground as very large ones",
+     "why": "Paragraph D: the chain from a large toothed wheel to a smaller one let “a wheel of ordinary size” travel as far as “a giant one”."
+    },
+    "g10": {
+     "correct": "B",
+     "accept": [
+      "B"
+     ],
+     "label": "10. A mention of the danger an early machine posed to people who were not riding it",
+     "why": "Paragraph B: riders on crowded pavements were “regarded as a danger to people on foot.”"
+    }
+   }
+  },
+  "exA2": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g11": {
+     "correct": "safety bicycle",
+     "accept": [
+      "safety bicycle",
+      "\"safety bicycle\"",
+      "“safety bicycle”"
+     ],
+     "label": "11. The Rover was given the name ___ because its rider sat low",
+     "why": "Paragraph D: “The design became known as the “safety bicycle”” — two words, copied exactly."
+    },
+    "g12": {
+     "correct": "solid rubber",
+     "accept": [
+      "solid rubber",
+      "solid"
+     ],
+     "label": "12. air-filled tyres replaced ___ ones",
+     "why": "Paragraph E: “Solid rubber tyres passed every bump in the road straight to the rider.”"
+    },
+    "g13": {
+     "correct": "chaperone",
+     "accept": [
+      "chaperone",
+      "chaperon"
+     ],
+     "label": "13. travel alone, without a ___ to supervise them",
+     "why": "Paragraph F: “without a horse, a carriage or a chaperone” — only a chaperone supervises a person."
+    }
+   },
+   "typed": true,
+   "field": "exA"
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "ii",
+     "accept": [
+      "ii"
+     ],
+     "label": "14. Heading for paragraph A",
+     "why": "Paragraph A explains why the colony needs information “shared inside the hive”; vi only echoes the detail about flowers."
+    },
+    "g2": {
+     "correct": "viii",
+     "accept": [
+      "viii"
+     ],
+     "label": "15. Heading for paragraph B",
+     "why": "Paragraph B: “the dance turned a direction and a distance into a pattern of movement.”"
+    },
+    "g3": {
+     "correct": "iv",
+     "accept": [
+      "iv"
+     ],
+     "label": "16. Heading for paragraph C",
+     "why": "Paragraph C covers both problems: the dance “takes place in near darkness” and bees “adjust the angle … as the day goes on.”"
+    },
+    "g4": {
+     "correct": "vii",
+     "accept": [
+      "vii"
+     ],
+     "label": "17. Heading for paragraph D",
+     "why": "Paragraph D: Wenner argued that recruits “found food by smell”; the Nobel Prize (iii) is only a detail."
+    },
+    "g5": {
+     "correct": "i",
+     "accept": [
+      "i"
+     ],
+     "label": "18. Heading for paragraph E",
+     "why": "Paragraph E: experiments “in which the dance and the smell could be separated.”"
+    },
+    "g6": {
+     "correct": "v",
+     "accept": [
+      "v"
+     ],
+     "label": "19. Heading for paragraph F",
+     "why": "Paragraph F: the dance is “one important tool” used “with other cues, including scent.”"
+    },
+    "g11": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "24. Von Frisch received his Nobel Prize after Wenner’s challenge had begun.",
+     "why": "Paragraph D: the 1973 prize came when “it had already been seriously challenged” — Wenner’s challenge began in 1967."
+    },
+    "g12": {
+     "correct": "Not Given",
+     "accept": [
+      "Not Given"
+     ],
+     "label": "25. The robot bee recruited more bees than a real dancer.",
+     "why": "Paragraph E says bees that followed the robot searched in the direction it indicated, but never compares how many it recruited with a real dancer."
+    },
+    "g13": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "26. Experienced foragers always follow the most recent dance they meet.",
+     "why": "Paragraph F: experienced foragers “sometimes ignore dances entirely.”"
+    }
+   }
+  },
+  "exB2": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g7": {
+     "correct": "straight line",
+     "accept": [
+      "straight line"
+     ],
+     "label": "20. In a waggle run, the bee shakes her body while moving in a ___.",
+     "why": "Paragraph B: “the bee moves forward in a straight line while shaking her body.”"
+    },
+    "g8": {
+     "correct": "air currents",
+     "accept": [
+      "air currents"
+     ],
+     "label": "21. Bees following a dance sense it through contact and through ___ and vibrations.",
+     "why": "Paragraph C: “through contact and through the air currents and vibrations that she produces.”"
+    },
+    "g9": {
+     "correct": "odours",
+     "accept": [
+      "odours",
+      "odors"
+     ],
+     "label": "22. According to Wenner, recruits used the scent on the dancer’s body and ___ along the route.",
+     "why": "Paragraph D: “the scent of the flowers clinging to the dancer’s body together with odours along the route.”"
+    },
+    "g10": {
+     "correct": "radar transponders",
+     "accept": [
+      "radar transponders",
+      "transponders"
+     ],
+     "label": "23. In 2005, researchers followed recruits’ flights by attaching tiny ___ to them.",
+     "why": "Paragraph E: researchers “fitted recruit bees with tiny radar transponders.”"
+    }
+   },
+   "typed": true,
+   "field": "exB"
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "B",
+     "accept": [
+      "B"
+     ],
+     "label": "27. A method that showed knowledge had survived even when none of it came to mind",
+     "why": "Paragraph B: savings revealed traces of learning “even when he could not produce a single syllable.”"
+    },
+    "g2": {
+     "correct": "C",
+     "accept": [
+      "C"
+     ],
+     "label": "28. A reason to doubt whether an early result applies to people in general",
+     "why": "Paragraph C: “the original study had a single participant.”"
+    },
+    "g3": {
+     "correct": "E",
+     "accept": [
+      "E"
+     ],
+     "label": "29. Evidence that learners can misjudge how much they will retain",
+     "why": "Paragraph E: students who had only restudied “predicted that they would remember more”, yet tested students remembered more after a delay."
+    },
+    "g4": {
+     "correct": "F",
+     "accept": [
+      "F"
+     ],
+     "label": "30. A suggestion that effective methods may be unpopular with the people who would benefit",
+     "why": "Paragraph F: spaced and retrieval practice “feel harder than rereading, so students may resist them.”"
+    },
+    "g5": {
+     "correct": "arrangement",
+     "accept": [
+      "arrangement"
+     ],
+     "label": "31. the ___ of practice sessions affected memory",
+     "why": "Paragraph D: “the way practice is arranged matters” — spreading sessions out, not adding more."
+    },
+    "g6": {
+     "correct": "retention",
+     "accept": [
+      "retention"
+     ],
+     "label": "32. repetitions spread over several days led to better ___",
+     "why": "Paragraph D: spacing “produced better retention.”"
+    },
+    "g7": {
+     "correct": "confirmed",
+     "accept": [
+      "confirmed"
+     ],
+     "label": "33. Many later studies have ___ that spacing works",
+     "why": "Paragraph D: the spacing effect “has been confirmed many times since.”"
+    },
+    "g8": {
+     "correct": "obvious",
+     "accept": [
+      "obvious"
+     ],
+     "label": "34. Retrieval practice works in a less ___ way",
+     "why": "Paragraph E: retrieval practice “works in a less obvious way.”"
+    },
+    "g9": {
+     "correct": "tested",
+     "accept": [
+      "tested"
+     ],
+     "label": "35. those who had ___ themselves remembered more a week later",
+     "why": "Paragraph E: students who took “a test” in which they recalled the passages remembered more after a week."
+    },
+    "g10": {
+     "correct": "confident",
+     "accept": [
+      "confident"
+     ],
+     "label": "36. despite feeling less ___ about it",
+     "why": "Paragraph E: the restudying students “predicted that they would remember more”, so the tested students felt less confident."
+    }
+   }
+  },
+  "exC2": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g11": {
+     "correct": "nonsense syllables",
+     "accept": [
+      "nonsense syllables"
+     ],
+     "label": "37. Ebbinghaus used ___ so that meaning would not affect his results.",
+     "why": "Paragraph A: “he invented thousands of nonsense syllables.”"
+    },
+    "g12": {
+     "correct": "1885",
+     "accept": [
+      "1885"
+     ],
+     "label": "38. Ebbinghaus’s book on memory was published in ___.",
+     "why": "Paragraph A: his findings were “published in 1885.”"
+    },
+    "g13": {
+     "correct": "seventy hours",
+     "accept": [
+      "seventy hours",
+      "70 hours"
+     ],
+     "label": "39. The participant in the 2015 study spent about ___ learning and relearning lists.",
+     "why": "Paragraph C: “One participant spent about seventy hours learning and relearning lists.”"
+    },
+    "g14": {
+     "correct": "desirable difficulties",
+     "accept": [
+      "desirable difficulties",
+      "\"desirable difficulties\"",
+      "“desirable difficulties”"
+     ],
+     "label": "40. Bjork calls techniques that are effortful but effective “___”.",
+     "why": "Paragraph F: Bjork “has described techniques of this kind as “desirable difficulties”.”"
+    }
+   },
+   "typed": true,
+   "field": "exC"
+  }
+ }
+}
