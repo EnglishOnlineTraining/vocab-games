@@ -575,9 +575,11 @@ body.exam-mode input, body.exam-mode textarea, body.exam-mode select { -webkit-u
 </div>
 </main>
 
+<script src="integrity.js"></script>
 <script>
 /* ===================== CONFIG ===================== */
 var UNIT          = '9g-class-test-9ab';
+var INTEGRITY_LEVEL = 'strict';   // integrity.js: counts sent with this test
 var SHEET_URL     = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj';
 var TEACHER_EMAIL = 'learn@englishonline.training';
 var maxStepReached = 0;
@@ -628,6 +630,7 @@ function goRules(){
 function startExam(){
   sid = 'SID-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).substr(2,5).toUpperCase();
   t0 = Date.now();
+  eolIntStart();
   document.body.classList.add('exam-mode');
   document.getElementById('header-meta').style.display='block';
   document.getElementById('header-name').textContent = name + (cls ? ' — '+cls : '');
@@ -831,13 +834,14 @@ function doSubmit(){
     ex9: 'AUTO-GRADE '+grade.score+'/'+grade.max+' (objective sections only; '+grade.manualMax+' pts still need manual marking — Section 2, Part B, Part C) — breakdown: Articles '+grade.details.s1+'/10, Matching '+grade.details.s3a+'/5, Gap-fill '+grade.details.s3b+'/7, Future tenses '+grade.details.s4+'/10, Right-Wrong-NotInText '+grade.details.s5a+'/6',
     ex10: 'INTEGRITY session='+sid+' time='+m+'m'+s+'s tab_switches='+tabN+' paste_attempts='+pasteN+' typing_anomalies='+anomalyN+' devtools_flagged='+devToolsFlagged
   };
+  var intF = eolIntFields(); for (var ik in intF) payload[ik] = intF[ik];   // integrity.js counts
   lastPayload = payload;
 
   fetch(SHEET_URL, {
     method: 'POST',
     mode: 'no-cors',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+    body: 'payload=' + encodeURIComponent(JSON.stringify(payload, function (k, v) { return this === payload && typeof v === 'string' && /^[=+\-@\t\r]/.test(v) ? "'" + v : v; }))
   }).then(function(){
     finishSubmit(elapsed);
   }).catch(function(){

@@ -599,7 +599,7 @@ function submitToTeacher(){
     essay:essayEl?essayEl.value.trim():''};
   fetch(WEBHOOK_URL,{method:'POST',mode:'no-cors',
     headers:{'Content-Type':'application/x-www-form-urlencoded'},
-    body:'payload='+encodeURIComponent(JSON.stringify(payload))
+    body:'payload='+encodeURIComponent(JSON.stringify(payload, function (k, v) { return this === payload && typeof v === 'string' && /^[=+\-@\t\r]/.test(v) ? "'" + v : v; }))
   }).then(function(){
     btn.style.display='none';
     document.getElementById('submitSuccess').style.display='block';

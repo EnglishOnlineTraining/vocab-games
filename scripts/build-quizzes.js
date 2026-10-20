@@ -84,7 +84,7 @@ function page(qz) {
     + '    <div class="card" style="text-align:center;display:none" id="submit-card">\n'
     + '      <button class="btn btn-gold" id="submit-btn" onclick="submitToSheet()">Submit</button>\n'
     + '    </div>\n  </div>\n</section>\n\n'
-    + '<script src="exercise.js"></script>\n<script>\n'
+    + '<script src="integrity.js"></script>\n<script src="exercise.js"></script>\n<script>\n'
     + 'var UNIT          = ' + JSON.stringify(qz.unit) + ';\n'
     + 'var TOTAL_STEPS   = 2;\n'
     + "var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec';\n"

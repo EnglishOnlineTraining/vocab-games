@@ -1,7 +1,8 @@
 # Spec: integrity signals on task submissions
 
-Status: phase 1 built in `exercise.js` (2026-10-17), not yet pushed. Phase 2 not
-started. "What exists now" below describes the code before phase 1.
+Status: phase 1 live (PR #175, merged 2026-10-18). Phase 2 built 2026-10-18 (the
+5 class tests and `uni-writing-task`), not yet merged. "What exists now" below
+describes the code before phase 1.
 Owner: Shaun. Builder: Claude Code.
 
 ## Goal
@@ -199,12 +200,28 @@ thresholds (question 2) instead of guessing them.
    non-localhost host: a class submission ran the full Year 9 Make path (4
    operations, success), and a practise run created the `Practise Baseline` tab in
    the "Online results" sheet with counts and no name or class.
-2. The Strict class tests first, then the rest of the 23 standalone pages (mostly
-   Off: the `abitur-` packs, `business-needs-analysis`, `uni-writing-task`). Either move them onto `exercise.js` (already the
-   documented upgrade path in the formula-guard comment) or add the same block.
-   Several already collect `tab_switches` / `paste_attempts` / `typing_anomalies`;
-   map those onto the `int_*` names or keep both, but do not double-count paste.
-   `business-needs-analysis` also needs a paste block first.
+2. **Built (Shaun's decisions, 2026-10-18).** Scope: the 5 class tests (Strict) and
+   `uni-writing-task` (Standard). The Abitur packs and `business-needs-analysis`
+   stay as they are: they are Off, so counts would add nothing.
+   - The class tests are full exam apps (access codes, timers with auto-submit,
+     fullscreen, shuffled pools, crash resume, email backup), so they were not
+     rebuilt on `exercise.js`. Instead the counters moved out of `exercise.js`
+     into a shared `integrity.js`. Every framework page loads it before
+     `exercise.js` (the build's generators write the tag too), and the 6 pages
+     load it on their own, call `eolIntStart()` when the exam starts and add
+     `eolIntFields()` to their payload. The two Australia tests also save and
+     restore the counts with their crash-resume state.
+   - `exercise.js` keeps who receives the counts (levels, class matching, practise
+     baseline) and still works if `integrity.js` is missing.
+   - The pages' own `tab_switches`, `paste_attempts`, `typing_anomalies`,
+     `snapshots` and devtools guess stay; `int_paste_tries` counts the same
+     attempts as `paste_attempts`. `user_agent` was removed (decision: no device
+     data).
+   - The two literary-review tests have no free-text fields (gap-fill inputs
+     only), so they send time, paste and drop tries but no keystrokes or words.
+   - `scripts/page-hash.js` ignores the `integrity.js` tag, so adding it to 227
+     pages did not re-date them in the sitemap.
+   - Test: `tests/integrity-standalone.spec.js`.
 
 ## Data protection
 

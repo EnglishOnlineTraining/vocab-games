@@ -316,11 +316,13 @@ body.exam-mode textarea{-webkit-user-select:text;user-select:text}
 </div>
 </main>
 
+<script src="integrity.js"></script>
 <script>
 /* ================================================================
    CONFIG
 ================================================================ */
 const UNIT        = 'uni-writing-task';
+var INTEGRITY_LEVEL = 'standard';   // integrity.js: counts sent with this test
 const SHEET_URL   = 'https://script.google.com/macros/s/AKfycbxaeNN6hO0dIXhpROUBoMWWHWBPLcKCRw6bNsygWHQPRFtlhf0ccIuv60MTB0xNeE6l/exec';
 const EMAIL       = 'sptrezise@proton.me';
 const BASE_EXAM_MINS = 60;
@@ -424,6 +426,7 @@ function startExam(){
   document.getElementById('wm').textContent=sName;
 
   t0=Date.now();
+  eolIntStart();
   startTimer();
 
   // Time gate
@@ -634,9 +637,9 @@ function doSubmit(){
     mv_used:vc.mvF.join(', '),
     rv_used:vc.rvF.join(', '),
     lk_used:vc.lkF.join(', '),
-    snapshots:JSON.stringify(snapshots),
-    user_agent:navigator.userAgent
+    snapshots:JSON.stringify(snapshots)
   };
+  const intF=eolIntFields();for(const ik in intF)payload[ik]=intF[ik];   // integrity.js counts
 
   clearInterval(timerID);
   document.getElementById('timer-wrap').style.display='none';

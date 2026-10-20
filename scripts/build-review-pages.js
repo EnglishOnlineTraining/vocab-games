@@ -372,7 +372,7 @@ function buildPage(cat, cfg, items) {
 + '    </div>\n'
 + '  </div>\n'
 + '</section>\n\n\n'
-+ '<script src="exercise.js"></script>\n<script>\n'
++ '<script src="integrity.js"></script>\n<script src="exercise.js"></script>\n<script>\n'
 + '/* ============================================================\n'
 + '   GENERATED review unit — see scripts/build-review-pages.js\n'
 + '   Questions are drawn from ' + srcTitles.length + ' earlier units and interleaved.\n'
