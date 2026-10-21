@@ -82,7 +82,7 @@ own fallback. T4 can now proceed (it depended on T3 moving 1019/915/939).
   "do not touch"** — all 175 media items serve from `englishforgermanspeakers.wordpress.com`,
   including uploads from July 2026. That is permanent WordPress.com CDN behaviour, not migration
   debris, so there is nothing to rehost.
-- **T5 — IT English: extended production task.** None of the ten `it-*` pages has a free-text
+- **T5 — DONE (2026-08-07).** IT English: extended production task. None of the ten `it-*` pages has a free-text
   field (`grep -c form-textarea it-*.html` → 0 across the board), so the series stops at
   recognition: reading comprehension, gapped vocabulary, register multiple-choice. The artefact
   the job actually produces — a written ticket, an incident report, a reply to a user — is never
