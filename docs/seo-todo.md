@@ -31,7 +31,7 @@ Priorities updated with Bing data for 10–17 Oct 2026 (7-day impressions in bra
 
 ## 5. Content additions
 - [x] A `themen/simple-past.html`: add a short Beispieltext and a visible "Verdopplung & y → ied" box
-- [ ] A `themen/passiv.html`: add links to the Year 9 passive pages ("Mehr Übungen (Klasse 9)")
+- [x] A `themen/passiv.html`: add links to the Year 9 passive pages ("Mehr Übungen (Klasse 9)")
 - [ ] M good-vs-bad email page: add a side-by-side image per email pair, with alt text, and a printable worksheet
 - [x] A `be-professional-emails.html`, A `be-property-management.html`, A `abitur-activities.html`: done on the branch, not pushed yet
 - [ ] 10-tips email post: skipped, it is set to noindex on purpose (decide whether that stays)
