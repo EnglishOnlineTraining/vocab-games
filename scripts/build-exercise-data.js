@@ -91,6 +91,7 @@ const UNLISTED = new Set(JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'unl
 const TOPIC_OVERRIDES = {
   '9g-australia-outback-past-perfect.html':     ['past-perfect', 'simple-past'],
   '9g-work-experience-indirect-questions.html': ['reported-speech', 'question-tags'],
+  '9g-australia-passive-infinitive.html':       ['passiv'],
 };
 
 // Skill tags the heading rules cannot see, merged into what skillsFor() finds.
