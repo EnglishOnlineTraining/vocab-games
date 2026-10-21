@@ -57,7 +57,7 @@ in PRs #25 and #26.
 **Do:**
 - **`FAQPage` schema on `/faq/`.** It already has real bilingual Q&A content live — this is markup
   only, no new copy. Confirm the page ID first (`pages.list` filtered by slug, or search).
-- **`Person` + `EducationalOccupationalCredential` schema on `/about/` or `/about-me/`** (page **80** —
+- [x] **`Person` + `EducationalOccupationalCredential` schema on `/about/` or `/about-me/`** — done. The schema was already live on `/about/` (page **2224**; page 80 is a noindex "moved" stub); 2026-10-21 its `email` and the visible mailto links were changed from the old `pm.me` address to `learn@englishonline.training`. Original note: (page **80** —
   already touched once, see item 3 below, for its broken WhatsApp button). Source every claim only
   from what the Impressum/certificates pages already state on the live site — do not assert a
   credential, years-of-experience figure, or claim the site doesn't already make. Add `Speakable`
