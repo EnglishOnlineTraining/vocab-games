@@ -35,7 +35,7 @@ Priorities updated with Bing data for 10–17 Oct 2026 (7-day impressions in bra
 - [ ] M good-vs-bad email page: add a side-by-side image per email pair, with alt text, and a printable worksheet
 - [x] A `be-professional-emails.html`, A `be-property-management.html`, A `abitur-activities.html`: done on the branch, not pushed yet
 - [ ] 10-tips email post: skipped, it is set to noindex on purpose (decide whether that stays)
-- [ ] Link the 4 property pages to each other and to `/business-english/`
+- [x] Link the 4 property pages to each other and to `/business-english/` (only 2 are repo pages: `be-property-management.html` and `property-management-vocabulary.html`, now linked both ways and to `/business-english/`; the 2023 WordPress articles were not touched)
 
 ## 6. Lower priority (demand quieter this week)
 - [ ] M Kommentar guide: title tweak, plus a Gliederung/Vorlage and FAQ on "eigene Meinung"
