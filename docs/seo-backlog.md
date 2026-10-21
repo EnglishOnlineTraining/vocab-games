@@ -269,16 +269,31 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
 `uni-presentation-task.html`, a known logistics screen. Most of the work is on WordPress.
 
 ### A. High priority
-1. **AI crawlers are blocked on the main site · Shaun decides.** `englishonline.training/robots.txt`
-   has `Disallow: /` for GPTBot, ClaudeBot, Google-Extended, Applebot-Extended,
-   meta-externalagent, Bytespider, CCBot and Amazonbot. Its comment says "AI crawlers blocked via
-   Jetpack SEO". This works against Tier 7 and PRs #25/#26.
-   - These are mostly *training* crawlers. Search and retrieval agents (OAI-SearchBot,
-     ChatGPT-User, Claude-SearchBot, PerplexityBot) are not listed.
-   - Google AI Overviews use ordinary Googlebot, so they are unaffected.
-   - The cost: models learn about the brand only from other sites, never from its own pages.
-   - The activities host allows everything.
-   - **Not raised before. Ask whether the block was deliberate before changing the setting.**
+1. **AI crawlers are blocked on the main site · resolved, no change needed (checked 2026-10-21).**
+   The 2026-10-03 finding was that `englishonline.training/robots.txt` had `Disallow: /` for GPTBot,
+   ClaudeBot, Google-Extended, Applebot-Extended, meta-externalagent, Bytespider, CCBot and Amazonbot.
+   - **Live now:** `robots.txt` (default user agent, HTTP 200) has only `User-agent: *` with
+     `Disallow: /wp-admin/`, `Allow: /wp-admin/admin-ajax.php` and two `Sitemap:` lines. No AI bot is
+     disallowed. The 2026-10-04 status note in this tier already records the block as lifted, so this
+     item needs no WordPress change.
+   - **Deliberate or not:** the repo holds no record of the block. `git log -S GPTBot` finds only
+     backlog text, never a robots rule, because WordPress.com serves this file, not the repo. The
+     block was most likely a WordPress.com/Jetpack setting, not a project decision, and no document
+     records a choice to keep AI bots out. The project's GEO work (Tiers 7, 10, 11) wants AI-search
+     visibility, so keeping the block lifted matches the strategy.
+   - The activities host (`activities.englishonline.training/robots.txt`) allows everything.
+   - Not covered by `robots.txt`: AI search agents (OAI-SearchBot, ChatGPT-User, Claude-SearchBot,
+     PerplexityBot) are not disallowed either, so they are allowed too.
+   - **New finding, open, not changed (Shaun to check):** the main site answers any request with a
+     crawler-style user agent with HTTP 403 and a JavaScript "Checking search engine crawler…" challenge
+     page. Measured with curl on 2026-10-21: `/`, `/about/`, `/sitemap.xml` and `/robots.txt` all
+     return 403 to Googlebot, GPTBot, ClaudeBot, OAI-SearchBot and PerplexityBot user agents, and 200
+     to the default user agent. The activities host returns 200 to the same agents. This is the
+     WordPress.com edge bot protection, not `robots.txt`, so editing `robots.txt` cannot fix it. It
+     cannot be confirmed from here: real Googlebot comes from Google IP addresses, which this test does
+     not use. **Check Search Console (Settings → Crawl stats, and URL Inspection → Live test on `/`) for
+     the main property to see whether Google gets through.** If it does not, the bot-protection setting
+     must be changed in the WordPress.com dashboard, which is not reachable from this repo.
 2. **The Organization entity on the WP homepage contradicts `scripts/schema.js` · CC (EOT Modern
    or Jetpack).** Both use `@id` `https://englishonline.training/#organization`, but they say
    different things:
