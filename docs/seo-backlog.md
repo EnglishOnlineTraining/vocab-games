@@ -216,8 +216,10 @@ No live WordPress write was made:
   `dateModified` into the exercise JSON-LD.
 - **C14 → withdrawn, false positive.** The crawler's regex stopped at the first apostrophe
   ("Canada's…"), so it compared truncated descriptions. Read in full, the six descriptions differ.
-- **A3 + B11 (H1s) → EOT Modern 1.3.5**, in `CLAUDE OUTPUTS/eot-modern-1.3.5.zip`. **Built, not
-  installed.**
+- **A3 + B11 (H1s) → EOT Modern 1.3.5**, in `CLAUDE OUTPUTS/eot-modern-1.3.5.zip`. **Installed
+  (1.3.8 is live). A3 verified live 2026-10-21:** all 21 German pages in `sitemap-1.xml` serve
+  `<html lang="de-DE">` and `og:locale de_DE`; the other 55 serve `en-US`; no German slug is
+  mislabelled. No per-post edit was needed.
   - `lang="de-DE"` and `og:locale de_DE` on German posts and pages, detected by counting German
     vs English function words. On the live site German pages score ≥ 0.54 and English ones
     ≤ 0.41; the cut-off is 0.5.
