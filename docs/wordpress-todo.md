@@ -87,18 +87,18 @@ the live site and found to not match it):
 Pages that work, but leak link equity outward or bypass the corporate funnel. Full detail:
 `docs/eol-backlog-plan.md` → "Tier 6" → bucket C.
 
-- **1133, 1019, 651** — the "why learn (business) English" cluster. Generic pre-strategy content;
+- [x] **1133, 1019, 651** — done (verified live 2026-10-21: 1133 and 651 end with a CTA group to `/business-english/` (1965) / the Activity Directory; 1019 links to 1965 and `business-activities.html`). Original note: the "why learn (business) English" cluster. Generic pre-strategy content;
   **1133 has zero internal links of any kind**, 1019 links only to 978, none link to **1965** (the
   corporate funnel) or to any interactive exercise on the activities host. Add links to both.
 - **1393 (Business English Vocabulary sets)** — links out to 20 third-party Quizlet flashcard sets via
   `bit.ly` and links to nothing on the site itself. Add links to
   `ielts-vocabulary-glossary.html`-equivalent content and to `business-activities.html`'s own
   vocabulary exercises on the activities host.
-- **939 (Group Online English Courses)** — Tier 4 flagged this as worth *promoting* (its group format
+- [x] **939 (Group Online English Courses)** — done (verified live 2026-10-21: no Calendly; its only CTA is "Corporate Business English training →" to `/business-english/` (1965); the page is a draft). Original note: Tier 4 flagged this as worth *promoting* (its group format
   fits the corporate strategy better than 915's individual one, which was unpublished), but its only
   CTA still routes straight to Calendly at an individual rate, bypassing the corporate enquiry funnel
   (1965) entirely. Reroute the CTA.
-- **1757 (Vocabulary Games)** — ends with a "Book a lesson with me here" link straight to
+- [x] **1757 (Vocabulary Games)** — done (verified live 2026-10-21: no Calendly link left; it links to the Activity Directory and `vocab-games.html`). Original note: ends with a "Book a lesson with me here" link straight to
   `calendly.com/sptrezise`, bypassing the site's own `/book-a-lesson/` page (**168**) entirely.
   Reroute to 168 (or reconsider whether Calendly is the right destination at all, matching whatever
   the current thinking on 168/939 above lands on).
