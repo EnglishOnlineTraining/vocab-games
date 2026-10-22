@@ -24,9 +24,9 @@ Priorities updated with Bing data for 10–17 Oct 2026 (7-day impressions in bra
 - [x] Homepage: set its own meta description
 
 ## 4. PDFs (they rank on their own)
-- [ ] Update `useful-phrases-for-business-emails.pdf`: add the englishonline.training URL and a link to the phrase bank, and set its Title metadata
-- [ ] Link that PDF from A `lead-business-email-phrasebank.html` and M `/writing-emails-in-english/`
-- [ ] → then set the phrase bank title to "Business Email Phrases PDF: 40 Phrases by Situation"
+- [x] Update `useful-phrases-for-business-emails.pdf`: add the englishonline.training URL and a link to the phrase bank, and set its Title metadata
+- [x] Link that PDF from A `lead-business-email-phrasebank.html` and M `/writing-emails-in-english/`
+- [x] → then set the phrase bank title to "Business Email Phrases PDF: 40 Phrases by Situation"
 - [ ] Link the property PDF from A `be-property-management.html` and the commercial real estate PDF from its blog post
 
 ## 5. Content additions
