@@ -40,7 +40,7 @@ Priorities updated with Bing data for 10–17 Oct 2026 (7-day impressions in bra
 ## 6. Lower priority (demand quieter this week)
 - [ ] M Kommentar guide: title tweak, plus a Gliederung/Vorlage and FAQ on "eigene Meinung"
 - [ ] Link the Kommentar guide, `/comment-on-task-english-abitur/` and A `abitur-argumentative-writing.html` to each other
-- [ ] Rewrite M `/2023/04/05/learning-english-online/` as "Learning English Online vs in Class: Pros and Cons", and link it to `/business-english/`
+- [x] Rewrite M `/2023/04/05/learning-english-online/` as "Learning English Online vs in Class: Pros and Cons", and link it to `/business-english/` (done 2026-10-22, post 1214: new title and meta description, Pros/Cons sections, business-english link; old steps, quiz and links kept)
 
 ## 7. Measure
 - [ ] Every Friday: export the 7-day keyword and page reports, and track the pages in groups 1 and 2
