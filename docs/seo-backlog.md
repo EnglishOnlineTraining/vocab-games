@@ -364,6 +364,11 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
     - `/2016/04/13/present-simple-or-progressive/` is still published; the rest of the 2016 batch
       was drafted in Tier 3.5.
     - The WP `og:image` is the portrait with an empty `og:image:alt`.
+    - **2026-10-23 status (CC, verified live):** the 8-page H1 count is already 1 on every page, so nothing to fix.
+      Homepage `og:image:alt` is set (media 1654). The homepage meta description is now the page-60 text.
+      `/blog-posts/` still repeats the homepage description, because Jetpack uses the front-page
+      description for the posts page and the page's own meta is ignored. Needs a theme/SEO setting
+      Shaun controls, or accept it. The 2016 post (ID 32) is still published; left for Shaun.
 
 ### C. Activities repo · CC
 12. **→ Done (verified 2026-10-23).** Exercise JSON-LD has no `datePublished`/`dateModified`.
