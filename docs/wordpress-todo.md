@@ -112,9 +112,9 @@ Pages that work, but leak link equity outward or bypass the corporate funnel. Fu
   round-trip. Low priority.
 - **MailerLite segmentation** — done 2026-10-15: each `lead-*.html` page posts to its own
   MailerLite form and group through `signup.js` (see its header).
-- **MailerLite on more results screens** — the MSA page (`msa-c-american-dream.html`) proves the
-  signup works on an exercise results screen (add a `.eol-signup` box + `signup.js`). Ask whether Shaun wants it widened to more
-  exercises, since that's the highest-volume surface on the site.
+- **MailerLite on more results screens** — done on the branch `claude/msa-results-signup` (PR): `exercise.js`
+  adds the MSA signup box to the practise results of all `msa-c-*` units, via the `EOL_SIGNUP_FORMS` prefix map.
+  No new group. Still open: whether to widen it to other prefixes (each needs an existing group).
 - **Corporate enquiries → MailerLite tagging** — 1965's Jetpack contact form sends to email only, not
   into MailerLite. Ask whether corporate enquiries should also be tagged into a MailerLite group.
 - **Homepage hero button copy** — the "Let's start a conversation" button (fixed 2026-08-08 to point

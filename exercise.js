@@ -109,6 +109,34 @@ function eolPractiseResults() {
   panel.innerHTML = eolPractisePanelHtml();
   var inner = step.querySelector('.step-inner') || step;
   inner.appendChild(panel);   // at the end, below summary + explanations
+  eolPractiseSignup(inner);
+}
+
+/* Unit-prefix → MailerLite form ID (same IDs as signup.js's header). Each prefix's
+   audience already has its group, so no new group is created. */
+var EOL_SIGNUP_FORMS = { 'msa-c-': '194481680761750752' };
+
+/* Opt-in newsletter box under the practise results. It is added by this function, not
+   the page, so every unit with a prefix above gets it. Pages that already carry a
+   .eol-signup box (msa-c-american-dream) keep their own. Moved to the end on each call,
+   so it stays below the results panel when the learner comes back to step 4. */
+function eolPractiseSignup(inner) {
+  var box = document.getElementById('eol-signup-card');
+  if (box) { inner.appendChild(box); return; }
+  var formId = '';
+  for (var p in EOL_SIGNUP_FORMS) if (String(UNIT).indexOf(p) === 0) formId = EOL_SIGNUP_FORMS[p];
+  if (!formId || document.querySelector('.eol-signup')) return;
+  box = document.createElement('div');
+  box.id = 'eol-signup-card';
+  box.className = 'card';
+  box.style.marginTop = '1.25rem';
+  box.innerHTML = '<h3 style="color:var(--blue);font-size:1.05rem;margin-bottom:.4rem;text-align:center">📧 Gratis MSA-Prüfungs-Checkliste</h3>'
+    + '<p style="font-size:.88rem;color:var(--muted);text-align:center;margin-bottom:1rem">Trag dich ein, und wir schicken dir eine kostenlose MSA-Prüfungs-Checkliste per E-Mail. Freiwillig — du kannst diesen Schritt überspringen.</p>'
+    + '<div class="eol-signup" data-ml-form="' + formId + '" data-lang="de"></div>';
+  inner.appendChild(box);
+  var script = document.createElement('script');
+  script.src = 'signup.js';   // renders every .eol-signup box on the page, so it runs after the box exists
+  document.body.appendChild(script);
 }
 
 function eolPractisePanelHtml() {
