@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 const S = require('./schema');
-const { pageImages } = require('./page-image');
+const { pageImages, NO_PROMOTE } = require('./page-image');
 const { pageHash, datesFor } = require('./page-hash');
 const BYLINE = 'Geschrieben und unterrichtet von <a href="https://englishonline.training/about/">Shaun Trezise</a> — TEFL-zertifizierter Englischlehrer in Berlin, 10+ Jahre Erfahrung.';
 const ROOT = path.join(__dirname, '..');
@@ -528,7 +528,7 @@ function gitLastmod(file) {
 
 // <image:image> for each content <img> on the page, so image search finds the page's real pictures.
 function sitemapImages(f) {
-  if (!/\.html$/.test(f) || !fs.existsSync(path.join(ROOT, f))) return '';
+  if (!/\.html$/.test(f) || NO_PROMOTE.has(f) || !fs.existsSync(path.join(ROOT, f))) return '';
   return pageImages(fs.readFileSync(path.join(ROOT, f), 'utf8'))
     .map(i => '<image:image><image:loc>' + BASE + '/' + i.src + '</image:loc></image:image>').join('');
 }

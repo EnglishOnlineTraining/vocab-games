@@ -10,16 +10,14 @@
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
-const { pageImages } = require('./page-image');
+const { pageImages, NO_PROMOTE } = require('./page-image');
 
 const ROOT = path.join(__dirname, '..');
-// Klett material: these pages keep the site card (Shaun, 2026-10-23).
-const SKIP = new Set(['7c-robert-the-bruce.html', '8c-taxi-ride-nyc.html']);
 
 (async () => {
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1200, height: 630 } });
-  for (const f of fs.readdirSync(ROOT).filter((n) => n.endsWith('.html') && !SKIP.has(n))) {
+  for (const f of fs.readdirSync(ROOT).filter((n) => n.endsWith('.html') && !NO_PROMOTE.has(n))) {
     const first = pageImages(fs.readFileSync(path.join(ROOT, f), 'utf8'))[0];
     if (!first) continue;
     // Written beside the image: a file:// image cannot load into an about:blank page.

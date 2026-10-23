@@ -9,6 +9,8 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
+// Klett material: these pages keep the site card and stay out of the image sitemap (Shaun, 2026-10-23).
+const NO_PROMOTE = new Set(['7c-robert-the-bruce.html', '8c-taxi-ride-nyc.html']);
 const attr = (tag, name) => { const m = tag.match(new RegExp('\\s' + name + '="([^"]*)"')); return m ? m[1] : ''; };
 
 // ponytail: regex, not a parser — fine while <img> alt text holds no ">"; check-images.js fails the build on a tag it cannot read.
@@ -24,4 +26,4 @@ function pageCard(file, html) {
   return { file: card, alt: first.alt };
 }
 
-module.exports = { pageImages, pageCard };
+module.exports = { pageImages, pageCard, NO_PROMOTE };
