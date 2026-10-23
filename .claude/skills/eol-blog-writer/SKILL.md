@@ -16,6 +16,38 @@ on a framework holds the reader to the end. Shaun wants the second kind. So
 the framework decides the order of ideas and where the tension sits, but its
 name and its stage labels never appear in the post.
 
+## Step 0 - Choose a topic (only when Shaun gives none)
+
+If Shaun names a topic, skip to Step 1. If he asks for "a post" or "something
+for the blog" with no topic, propose three and let him pick. Do not write
+until he has picked.
+
+1. **Check the publishing limit.** At most 2 new indexable pages a week
+   across both sites (seo-backlog Tier 12 A2). Count what went live or is
+   scheduled in the last 7 days and the next 7: WordPress posts and pages
+   (`posts.list`, `status: ["publish","future"]`) plus new exercise pages
+   (`git log origin/main --since=7.days --diff-filter=A --name-only -- '*.html'`).
+   If the limit is already reached, say so and give the first free slot.
+   Shaun may still go ahead; the limit is his to break.
+2. **Find demand.** Pull the Search Console queries for the last 28 days
+   (Ahrefs `gsc-keywords`; if it is not connected, use the newest
+   `docs/gsc-review-*.md`). Look for queries with impressions but position
+   worse than 10 and no page that answers them directly. Note the number of
+   impressions and the position for each one.
+3. **Tag the commercial intent.** Each candidate names the paid page it
+   feeds: `/business-english/` (team training), a Payhip pack, or an eduki
+   listing. Check the live top 3 for the query: blog posts and definition
+   boxes mean informational, service or product pages mean commercial. An
+   informational post must link to one paid page. Drop a candidate that
+   feeds none.
+4. **Drop overlaps.** Drop a candidate a recent post or an existing page
+   already answers; propose improving that page instead.
+
+Send the three candidates as a table:
+
+| Topic | Query (impressions, position) | Audience | Feeds | Intent |
+|---|---|---|---|---|
+
 ## Step 1 - Get the brief
 
 You need four things. Take them from the conversation if they are there. Ask
@@ -43,8 +75,8 @@ run `categories.list` and use the current one.
 ## Step 1b - Critique the brief before you write
 
 A weak brief gives a weak post, and fixing the brief is cheaper than
-rewriting the draft. Topics come from Shaun's existing topic process, so do
-not suggest new topics here. Check only the brief you have.
+rewriting the draft. Do not suggest new topics here (that is Step 0). Check
+only the brief you have.
 
 First list the five most recent posts (`posts.list`, `per_page: 5`,
 `status: ["draft","publish"]`). Step 2 uses the same list.
