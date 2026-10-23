@@ -55,8 +55,13 @@ follow-up from the GEO backlog Shaun uploaded 2026-08-22, after the repo-side it
 in PRs #25 and #26.
 
 **Do:**
-- **`FAQPage` schema on `/faq/`.** It already has real bilingual Q&A content live — this is markup
-  only, no new copy. Confirm the page ID first (`pages.list` filtered by slug, or search).
+- [x] **`FAQPage` schema on `/faq/`** — done 2026-10-23 (Shaun). The old FAQ (page **351**) was an
+  unpublished tutoring-era draft (€50/€100/€200 prices, booking links, cancellation terms), so it was
+  rewritten from the live About and Business English pages (9 bilingual Q&As, contact
+  `learn@englishonline.training`), its meta description and excerpt updated, and published. `/faq/`
+  returns 200 with one `FAQPage` block built from the visible English text. Dropped on purpose: booking,
+  prices for lessons, cancellation and availability. Keep the FAQ in step with `/about/` and
+  `/business-english/` when prices or offer change.
 - [x] **`Person` + `EducationalOccupationalCredential` schema on `/about/` or `/about-me/`** — done. The schema was already live on `/about/` (page **2224**; page 80 is a noindex "moved" stub); 2026-10-21 its `email` and the visible mailto links were changed from the old `pm.me` address to `learn@englishonline.training`. Original note: (page **80** —
   already touched once, see item 3 below, for its broken WhatsApp button). Source every claim only
   from what the Impressum/certificates pages already state on the live site — do not assert a
