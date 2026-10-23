@@ -260,6 +260,8 @@ const CHECKERS = [
   // Every <img> carries alt, width and height (layout shift, accessibility, image search).
   { id: 'check-images', run: 'scripts/check-images.js' },
   { id: 'check-grade-table', run: 'scripts/check-grade-table.js' },
+  // Indexable pages keep <meta name="description"> at ≤ 160 characters (Tier 15).
+  { id: 'check-meta-descriptions', run: 'scripts/check-meta-descriptions.js' },
   // The IELTS pages' English-only test is written out in schema.js, exercise.js
   // and consent.js; this fails the build if the three patterns drift apart.
   { id: 'check-english-only', run: 'scripts/check-english-only.js' },

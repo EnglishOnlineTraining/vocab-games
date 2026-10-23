@@ -878,7 +878,7 @@ which listed six gaps. Each was re-checked against `origin/main` at `ec1bef0` on
 get a close-out line, not work. Ranked by value for effort. **Agent-safe** = repo-only, on a
 branch, no rule 8/9 page and no VOICE.md decision.
 
-1. **Meta descriptions over 160 characters · agent-safe · effort S (about 1 hour).** Re-verified:
+1. **→ Done (2026-10-23). Meta descriptions over 160 characters · agent-safe · effort S.** Re-verified:
    **15** now, not 16 (161–188 characters; the audit's count was one higher; one page has since been fixed or shortened). `10g-proud-to-be-black`, `10g-south-africa-vocab-practice`,
    `9g-california-future-meaning`, `uni-c1-vocab-practice`, `uni-c2-vocab-practice`, and 10 IELTS
    pages: `ielts-activities`, `ielts-reading-practice-test`,
@@ -890,6 +890,9 @@ branch, no rule 8/9 page and no VOICE.md decision.
    characters by hand (keep the keyword and the level), run `node scripts/build.js`, and add a
    length check to `scripts/verify-exercise.js` or `build.js` so it can't regress. Descriptions are
    not titles, URLs or indexing, so rules 8/9 don't apply. English only for IELTS (no German).
+   **Done 2026-10-23:** 17 pages shortened (the 15 plus `ielts-reading-matching-headings` and
+   `lead-story-structures`, over since the re-check); `scripts/check-meta-descriptions.js` now fails
+   the build on any indexable page over 160 (decoded length).
 2. **Four pages "without an overview box" · close as by design, unless Shaun wants hubs covered ·
    effort none.** Re-verified: the audit's "250 of 254" is wrong. `overviewBlock()` in
    `scripts/build-head.js` deliberately emits the box only for exercise pages in
