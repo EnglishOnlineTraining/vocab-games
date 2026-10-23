@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" role="img" aria-labelledby="t d">
+<title id="t">Past progressive and simple past on a timeline</title>
+<desc id="d">Two timelines. First: a long bar for "I was reading" is interrupted by a single point, "the phone rang". The long action is past progressive, the short event is simple past. Second: two points in a row, "She opened the door" then "She walked in", both simple past because each action finished before the next began.</desc>
+<style>
+.bg{fill:#fff;stroke:#dce3ec}.h{fill:#1a3a5c;font-weight:700}.tx{fill:#1d2b3a}.ln{stroke:#1a3a5c;stroke-width:3;fill:none}.bar{fill:#2b7a78}.bt{fill:#fff;font-weight:700}.ev{fill:#c9a227;stroke:#1a3a5c;stroke-width:2}.sep{stroke:#dce3ec}
+text{font-family:'Segoe UI',system-ui,sans-serif;font-size:23px}
+</style>
+<rect class="bg" x="1" y="1" width="638" height="378" rx="12"/>
+<text class="h" x="24" y="38">1 · A long action is interrupted</text>
+<line class="ln" x1="24" y1="130" x2="600" y2="130"/><path class="ln" d="M590 120 L604 130 L590 140"/>
+<text class="tx" x="24" y="162">past</text><text class="tx" x="548" y="162">now</text>
+<rect class="bar" x="70" y="100" width="330" height="30" rx="6"/>
+<text class="bt" x="86" y="122">was reading</text>
+<circle class="ev" cx="290" cy="130" r="11"/>
+<text class="tx" x="290" y="76" text-anchor="middle">the phone rang</text>
+<path class="ln" d="M290 82 L290 114" stroke-width="2"/>
+<text class="tx" x="24" y="196">Bar = in progress. Dot = one event.</text>
+<line class="sep" x1="24" y1="216" x2="616" y2="216"/>
+<text class="h" x="24" y="250">2 · Finished actions, one after another</text>
+<line class="ln" x1="24" y1="316" x2="600" y2="316"/><path class="ln" d="M590 306 L604 316 L590 326"/>
+<circle class="ev" cx="170" cy="316" r="11"/><circle class="ev" cx="400" cy="316" r="11"/>
+<text class="tx" x="170" y="290" text-anchor="middle">opened the door</text>
+<text class="tx" x="400" y="290" text-anchor="middle">walked in</text>
+<text class="tx" x="24" y="354">Each action ends before the next begins.</text>
+</svg>
