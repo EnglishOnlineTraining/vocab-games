@@ -157,7 +157,7 @@ if (mismatched.length) {
 // <lastmod> is valid and honest, an invented one teaches Google the field
 // cannot be trusted.
 const out = xml.replace(
-  /<url><loc>([^<]+)<\/loc>(?:<lastmod>[^<]*<\/lastmod>)?((?:<image:image>.*?<\/image:image>)*)<\/url>/g,
+  /<url><loc>([^<]+)<\/loc>(?:<lastmod>[^<]*<\/lastmod>)?((?:<image:image>(?:[^<]|<(?!\/image:image>))*<\/image:image>)*)<\/url>/g,
   (whole, u, imgs) => {
     const rel = urlMap[u];
     const e = rel && next[rel];
