@@ -378,6 +378,8 @@ function learningResource(file, meta, ex, topicsBySlug, hubName, dates) {
     isPartOf: hubNode ? [{ '@id': WEBSITE_ID }, hubNode] : { '@id': WEBSITE_ID },
   };
 
+  if (meta.image) node.image = { '@type': 'ImageObject', url: meta.image.url, width: 1200, height: 630, caption: meta.image.alt };
+
   // From data/lastmod.json via page-hash.js: the same dates the sitemap carries.
   if (dates && dates.p) node.datePublished = dates.p;
   if (dates && dates.d) node.dateModified = dates.d;

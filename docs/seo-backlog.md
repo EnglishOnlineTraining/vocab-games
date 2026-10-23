@@ -366,16 +366,26 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
     - The WP `og:image` is the portrait with an empty `og:image:alt`.
 
 ### C. Activities repo · CC
-12. **Exercise JSON-LD has no `datePublished`/`dateModified`.** The dates are already in
-    `data/lastmod.json`, so emit them on the `LearningResource` node.
-13. **Refine `build-lastmod.js`:** 229 of 230 sitemap entries read `2026-10-01`. That is honest
+12. **→ Done (verified 2026-10-23).** Exercise JSON-LD has no `datePublished`/`dateModified`.
+    The dates are already in `data/lastmod.json`, so emit them on the `LearningResource` node.
+    Evidence: `scripts/schema.js:381-383` sets both from `datesFor()`; live
+    `10c-canada-schools.html` carries `datePublished` 2026-08-24 and `dateModified` 2026-10-17
+    (same for `9g-australia-outback`, `10g-scottish-history`, `9c-canada-multicultural`).
+13. **→ Done (verified 2026-10-23).** Refine `build-lastmod.js`: 229 of 230 sitemap entries read `2026-10-01`. That is honest
     under the current design: the 2026-10-01 byline, Person-schema and school-name commits changed
     every page's generated `<head>`, so every hash moved. But a template-only change then tells
     Google the whole site changed. Hashing only the page body would stop this: exclude the
     generated HEAD/CRUMB blocks. **Don't reseed `data/lastmod.json`** (see the warning in
     `hubs-seo-and-tests.md`).
-14. **Three pairs of duplicate meta descriptions:** two Year 10 Canada pages, two Year 10
+    Evidence: `scripts/page-hash.js` strips every generated block (HEAD, CRUMB, …) before hashing.
+    Editing the HEAD and CRUMB blocks of `9g-australia-outback.html` in place leaves its hash
+    unchanged; editing body text changes it. `build.js --check` passes. The live sitemap now
+    spreads dates (180 at 2026-10-17, 12 at 2026-10-20, 11 at 2026-10-04, and so on).
+    `data/lastmod.json` was not touched.
+14. **→ Done (verified 2026-10-23).** Three pairs of duplicate meta descriptions: two Year 10 Canada pages, two Year 10
     Scotland pages and two Year 9 Australia pages, all starting "Free Year N English practice: …".
+    Evidence: a scan of all root and `themen/` HTML finds 0 duplicate `<meta name="description">`
+    values. The live Canada, Scotland and Australia pages carry distinct text.
 
 ### D. Decision needed · Shaun
 15. **Tracking and the privacy policy · Shaun (DSGVO/TTDSG).** Checked 2026-10-03:
@@ -790,3 +800,52 @@ Commercial intent and money pages: Tier 12.1. Reddit: Tier 12 "Not adopted". Cha
   rule 7 and Tier 12.2, and Google's spam policy on scaled content is aimed at exactly this. The
   post's own author calls the network the riskiest part.
 - **Running a subreddit for views:** Tier 12 already says no; the audience is not there.
+
+## Tier 14 — Image SEO plan review (2026-10-23) · Shaun + CC
+Source: a generic image-SEO plan Shaun pasted 2026-10-23 ("Close the visual SEO gap"). It was
+written without knowing the stack, so most of it is already done or doesn't fit. Checked live and
+in the repo the same day:
+- **Activities host:** `build-head.js` already emits a 1200×630 `og:image` (`og-card.png`), its
+  alt text and `twitter:card summary_large_image` on every page. `build-og-card.js` renders
+  cards with Playwright, and `optimise-images.js` makes WebP. Only three pages have content
+  images: `7c-robert-the-bruce` (picture + WebP), `8c-taxi-ride-nyc`, `9c-south-africa-revision`.
+  All three still share the site-wide card as their `og:image`, and none has an `image` in its JSON-LD.
+- **WordPress (Simple plan):** Jetpack sets `og:image` and makes the image sitemap
+  (`image-sitemap-1.xml`). `/university-english/` already uses the branded card
+  (`ogcardsite.png`). The **homepage's `og:image` is the 828×816 portrait with empty alt**
+  (already B11 above). Custom `<head>` and JSON-LD can't be injected on this plan.
+
+1. **Per-page `og:image` and JSON-LD `image` for pages with real content images · CC.** In
+   `build-head.js` (and `schema.js`), when a page has a content `<img>`, use it for `og:image`
+   and add `image` to its `LearningResource`. Otherwise keep the site card. Render a 1200×630
+   PNG crop if the source isn't one, and reuse `build-og-card.js`. Add `<image:image>` to those
+   pages' sitemap entries. One check: a test that fails if any `<img>` lacks `alt`, `width` or
+   `height`. Fix those three pages' tags to pass (lazy loading below the fold, a `<picture>`
+   WebP for the taxi PNG).
+2. **Two original teaching diagrams (SVG), placed where they teach · CC.** For example, an
+   essay-structure diagram on a writing page and a tense timeline on an ESL grammar page.
+   Pick the pages from Search Console demand, not from the plan's guesses. English only. Use
+   `<title>`/`<desc>`, real `<text>`, colours from the `style.css` tokens, under 50 KB, and
+   explicit `width`/`height`. These double as the page's `og:image` via item 1 (PNG render).
+   Never show student work or names in a diagram or screenshot (rule 1).
+3. **Homepage `og:image` alt and card · Shaun (WP media/Jetpack).** Already B11. Set the alt
+   text, or switch to the 1200×630 card. A live WordPress edit, so needs Shaun's approval.
+4. **A diagram on `/university-english/` · Shaun.** After item 2, the PNG (WP.com may not take
+   SVG uploads) can go into the page through the API, with alt text and a caption. Live edit:
+   rule 7, and rule 8's "nothing lost" first.
+
+### Not adopted (with reasons)
+- **Phase 0 recon, `IMAGE-REGISTRY.md`, `IMAGE-SEO-RECON.md` and `IMAGE-SEO-QA.md`:** the stack is
+  known (above). Alt text lives in the markup, and the check lives in the test from item 1. Three
+  more docs would drift.
+- **`og:image` on every page:** already live on both sites.
+- **A custom `sitemap-images.xml` and `robots.txt` line:** Jetpack does WordPress, and item 1
+  adds image entries to the existing activities sitemap.
+- **`primaryImageOfPage` on WordPress:** you can't inject JSON-LD on the Simple plan.
+  "Rich Results Test" also doesn't report it (it isn't a rich-result type); use the Schema
+  Markup Validator.
+- **Stock hero image and new portrait:** a hero photo adds LCP weight and no ranking gain on
+  exercise pages. The portrait already exists.
+- **`srcset` on SVG:** SVG is resolution-independent.
+- **"A1→C1 course pathway" infographic:** only if it shows a real offer. That's Shaun's call
+  (see A4 / Tier 12 "The offer").

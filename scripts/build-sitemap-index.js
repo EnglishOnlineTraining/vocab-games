@@ -47,7 +47,7 @@ function sectionFor(urlPath) {
 // Each <url> line of sitemap.xml, with its path and lastmod.
 function readUrls(xml) {
   const out = [];
-  const re = /^\s*<url><loc>([^<]+)<\/loc>(?:<lastmod>([^<]+)<\/lastmod>)?<\/url>\s*$/gm;
+  const re = /^\s*<url><loc>([^<]+)<\/loc>(?:<lastmod>([^<]+)<\/lastmod>)?(?:<image:image>(?:[^<]|<(?!\/image:image>))*<\/image:image>)*<\/url>\s*$/gm;
   let m;
   while ((m = re.exec(xml))) {
     if (!m[1].startsWith(BASE + '/')) throw new Error('sitemap.xml URL outside ' + BASE + ': ' + m[1]);
@@ -64,7 +64,7 @@ function split(urls) {
 }
 
 function urlset(urls) {
-  return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+  return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
     + urls.map(u => '  ' + u.line).join('\n') + '\n</urlset>\n';
 }
 

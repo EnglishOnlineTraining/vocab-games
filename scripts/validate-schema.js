@@ -40,7 +40,7 @@ const HOSTS = ['https://activities.englishonline.training', 'https://englishonli
  * change actually produces. Add to it deliberately.
  */
 const KNOWN_TYPES = new Set([
-  'Person', 'EducationalOrganization', 'LocalBusiness', 'Organization',
+  'Person', 'ImageObject', 'EducationalOrganization', 'LocalBusiness', 'Organization',
   'PostalAddress', 'Country', 'AdministrativeArea', 'EducationalOccupationalCredential',
   'WebSite', 'WebPage', 'CollectionPage', 'Course', 'LearningResource',
   'ItemList', 'ListItem', 'BreadcrumbList',
