@@ -116,7 +116,12 @@ Pages that work, but leak link equity outward or bypass the corporate funnel. Fu
   adds the MSA signup box to the practise results of all `msa-c-*` units, via the `EOL_SIGNUP_FORMS` prefix map.
   No new group. Still open: whether to widen it to other prefixes (each needs an existing group).
 - **Corporate enquiries → MailerLite tagging** — 1965's Jetpack contact form sends to email only, not
-  into MailerLite. Ask whether corporate enquiries should also be tagged into a MailerLite group.
+  into MailerLite. Shaun chose to tag them. Status 2026-10-23: MailerLite group **"Corporate
+  enquiries"** created (id `202123515747370132`, no subscribers). The form is not wired: Jetpack
+  has no MailerLite connection, and a consent box alone would not subscribe anyone. Needed before
+  wiring: a consent field (unticked, wording from privacy policy §9, double opt-in) plus a
+  middleman such as Make, or a decision to use a MailerLite form instead. Also open: 1965 posts to
+  `englishonlinetraining@pm.me`, while CLAUDE.md names `learn@` as the public address.
 - **Homepage hero button copy** — the "Let's start a conversation" button (fixed 2026-08-08 to point
   at a MailerLite hosted form instead of a stray Google Form) still has placeholder copy on both the
   button label and/or the MailerLite hosted-page itself. Needs Shaun's real copy before it's genuinely
