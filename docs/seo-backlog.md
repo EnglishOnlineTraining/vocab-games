@@ -14,7 +14,7 @@ References to Tiers 0–6, 14+, "Open decisions" or "above" in an older note poi
 ## Tier 7 — Main-site GEO / AI-discoverability, P3 (2026-08-22) · Shaun + CC
 Carried over from the GEO backlog Shaun uploaded 2026-08-22 (`GEO_Backlog_EnglishOnlineTraining.md`,
 §P3), after the P0–P2 items were built on the activities repo across two PRs (#25, #26 — entity
-graph + `LearningResource`/`Course`/`Speakable` schema, Quick Overview boxes, the Abitur/MSA/
+graph + `LearningResource`/`Course` schema (`Speakable` removed again, see item 2), Quick Overview boxes, the Abitur/MSA/
 Business/IT/vocabulary hub pages, Exam Tip boxes, Related-Exercises cross-links).
 
 **P3.1 (5 new service landing pages) and P3.2 (Course schema on an "8-week learning plan") are
@@ -43,7 +43,7 @@ based on a stale picture of the site — verify before building anything, don't 
    Fragen`) was deliberately left out of the schema — the site's declared language
    (`settings.get` → `"language":"en"`) is English, so only the English content was marked up.
    Verified via the response's `_content_warnings` field, which was absent (nothing stripped).
-2. **DONE.** `Person` + `EducationalOccupationalCredential` (+ `Speakable`) schema added to
+2. **DONE.** `Person` + `EducationalOccupationalCredential` schema added to
    `/about/` (page **2224** — a newer, richer About page than **80**/`/about-me/`, which is just
    a name; found via `pages.list` and read in full before deciding which page to use). Clean
    Gutenberg content, so added as one new `core/html` block via `page-sections.insert`
@@ -58,8 +58,10 @@ based on a stale picture of the site — verify before building anything, don't 
    the richer claims that are only on the live `/about/` page itself (SRH lecturer role since
    2017, Docemus role since 2025, "10+ years"), to keep this node identical to the one already
    live on the activities host rather than forking it into a second, slightly-different Person. A
-   small `WebPage` node alongside it carries `speakable: {cssSelector: ["h2"]}` and `mainEntity`
-   pointing at the Person node's `@id`.
+   small `WebPage` node alongside it carries `mainEntity` pointing at the Person node's `@id`.
+   It also carried `speakable: {cssSelector: ["h2"]}`; **removed 2026-10-23** (page 2224, one
+   `pages.update`, nothing else changed) because `SpeakableSpecification` site-wide on the
+   activities host coincided with that subdomain's deindexing (~2026-08-24, removed in `d7e4bf6d`).
 3. **Partially done.** **Could not find the `/testimonial/*/` pages at all.** `pages.list` (all
    43 published pages, unfiltered) and `content.search` (subtype `any`) both return nothing with
    "testimonial" in the slug or title. Either they're a custom post type this MCP surface doesn't
