@@ -1741,3 +1741,8 @@ with replies going to `pm.me`.
   `node scripts/build.js`.
 - **Also:** `CLAUDE.md` (Teacher email, rule 3; done in #168), the MailerLite reply-to address, the WordPress
   contact details, and the Apps Script sheets that email results.
+- **Status (2026-10-23, `vg-eol-contact-switch-rest`):**
+  - **Repo:** nothing live still shows `pm.me`; the remaining hits are historical notes, which stay.
+  - **WordPress:** the contact form on `/english-for-students/` (page 1966) now sends to `learn@`, verified by read-back. The About page (2224) was done 2026-10-21.
+  - **MailerLite reply-to (still `pm.me`), Shaun to change in the dashboard:** the draft campaign "Neue interaktive Übungspakete fürs Abitur" and the emails in Welcome Sequence — Website Subscribers (3) and Lead Magnet Delivery — all groups (6). The API accepted a reply-to write but ignored it, so it can't be changed through the connector. IT English — Exercise of the Month already uses `learn@`.
+  - **Apps Script:** the deployed script editor is Shaun's to change; the repo copies (`apps-script.gs`, `level-test-apps-script.gs`) have no `pm.me`.
