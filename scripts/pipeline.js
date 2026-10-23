@@ -257,6 +257,8 @@ const CHECKERS = [
   // topic, so a chunk AI search lifts out of the page still says what it is.
   { id: 'check-topic-headings', run: 'scripts/check-topic-headings.js' },
   { id: 'check-links', run: 'scripts/check-links.js' },
+  // Every <img> carries alt, width and height (layout shift, accessibility, image search).
+  { id: 'check-images', run: 'scripts/check-images.js' },
   { id: 'check-grade-table', run: 'scripts/check-grade-table.js' },
   // The IELTS pages' English-only test is written out in schema.js, exercise.js
   // and consent.js; this fails the build if the three patterns drift apart.

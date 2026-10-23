@@ -8,6 +8,7 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 const S = require('./schema');
+const { pageImages } = require('./page-image');
 const { pageHash, datesFor } = require('./page-hash');
 const BYLINE = 'Geschrieben und unterrichtet von <a href="https://englishonline.training/about/">Shaun Trezise</a> — TEFL-zertifizierter Englischlehrer in Berlin, 10+ Jahre Erfahrung.';
 const ROOT = path.join(__dirname, '..');
@@ -525,12 +526,18 @@ function gitLastmod(file) {
   } catch { return ''; }
 }
 
-const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+// <image:image> for each content <img> on the page, so image search finds the page's real pictures.
+function sitemapImages(f) {
+  if (!/\.html$/.test(f) || !fs.existsSync(path.join(ROOT, f))) return '';
+  return pageImages(fs.readFileSync(path.join(ROOT, f), 'utf8'))
+    .map(i => '<image:image><image:loc>' + BASE + '/' + i.src + '</image:loc></image:image>').join('');
+}
+
+const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
   + uniq.map(u => {
-    const mod = gitLastmod(urlToFile(u));
-    return mod
-      ? '  <url><loc>' + u + '</loc><lastmod>' + mod + '</lastmod></url>'
-      : '  <url><loc>' + u + '</loc></url>';
+    const f = urlToFile(u);
+    const mod = gitLastmod(f);
+    return '  <url><loc>' + u + '</loc>' + (mod ? '<lastmod>' + mod + '</lastmod>' : '') + sitemapImages(f) + '</url>';
   }).join('\n') + '\n</urlset>\n';
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemap);
 
