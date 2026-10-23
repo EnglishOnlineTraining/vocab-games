@@ -870,3 +870,60 @@ in the repo the same day:
 - **`srcset` on SVG:** SVG is resolution-independent.
 - **"A1→C1 course pathway" infographic:** only if it shows a real offer. That's Shaun's call
   (see A4 / Tier 12 "The offer").
+
+## Tier 15 — GEO audit gaps, re-verified (2026-10-23) · Shaun + CC
+Source: the read-only GEO audit of the activities host dated 2026-10-21 (repo at `35941ee`),
+which listed six gaps. Each was re-checked against `origin/main` at `ec1bef0` on 2026-10-23
+(256 indexable pages, noindex and `_template.html` dropped). Two were already fixed, so they
+get a close-out line, not work. Ranked by value for effort. **Agent-safe** = repo-only, on a
+branch, no rule 8/9 page and no VOICE.md decision.
+
+1. **Meta descriptions over 160 characters · agent-safe · effort S (about 1 hour).** Re-verified:
+   **15** now, not 16 (161–188 characters; the audit's count was one higher; one page has since been fixed or shortened). `10g-proud-to-be-black`, `10g-south-africa-vocab-practice`,
+   `9g-california-future-meaning`, `uni-c1-vocab-practice`, `uni-c2-vocab-practice`, and 10 IELTS
+   pages: `ielts-activities`, `ielts-reading-practice-test`,
+   `ielts-reading-sentence-summary-completion`, `ielts-reading-true-false-not-given`,
+   `ielts-writing-task1-describing-trends`, `ielts-writing-task1-process-diagram`,
+   `ielts-writing-task1-tables-bar-charts`, `ielts-writing-task2-discussion-essay`,
+   `ielts-writing-task2-opinion-essay`, `ielts-writing-task2-problem-solution-essay`. The description is also the Quick
+   Overview lede, so one edit shortens both. Shorten each `<meta name="description">` to ≤ 160
+   characters by hand (keep the keyword and the level), run `node scripts/build.js`, and add a
+   length check to `scripts/verify-exercise.js` or `build.js` so it can't regress. Descriptions are
+   not titles, URLs or indexing, so rules 8/9 don't apply. English only for IELTS (no German).
+2. **Four pages "without an overview box" · close as by design, unless Shaun wants hubs covered ·
+   effort none.** Re-verified: the audit's "250 of 254" is wrong. `overviewBlock()` in
+   `scripts/build-head.js` deliberately emits the box only for exercise pages in
+   `data/exercises.json`; hubs, lead magnets, `themen/` pages, standalone tools and Abitur
+   landing pages are skipped by design, and `themen/` carries its own intro. Measured: **44**
+   indexable files have no box, including the audit's four (`abitur-activities`, `msa-activities`,
+   `grammar-activities`, `uni-presentation-task`). Recommendation: do nothing. If Shaun does want
+   hubs covered, that is a build-head change, M effort, and a separate decision (agent-safe once
+   decided).
+3. **`themen/` openers over 45 words · agent-safe to draft, Shaun approves · effort M.**
+   Re-verified: 207 H2-then-paragraph openers across the 18 topic pages, **14 over 45 words** (in
+   13 files) and **7 over 60**: `gerund-infinitiv` (173), `passiv` (171), `artikel` (132),
+   `praepositionen` (105), `simple-past` (76), `phrasal-verbs` (64), `relativsaetze` (62).
+   The audit said 6 over 60; the 7th is `relativsaetze` at 62. This is the roll-out list for
+   Tier 10 item 4 (one-sentence direct answer first, drafts in `docs/topic-subquery-maps.md`
+   from PR #109 for `gerund-infinitiv` and `passiv`). Rule 9 applies: these pages have ≥ 600
+   words, so keep every existing sentence and add the direct answer above it; do not rewrite.
+   Per Tier 10.7, hold the roll-out beyond the first two until the 4–6 week AI-answer data is in.
+   `themen/` is German by design (the language rule exempts it).
+4. **Em dashes, arrows and stars in body copy · Shaun decides, otherwise skip · effort L if
+   done.** Re-verified: em dash is in body text on **all 256** indexable pages (mostly the
+   generated "Aufgaben: 3 — A · B" row and cards), arrow characters on 106, star symbols on 4
+   (`9c-melbourne-job-application`, `be-company-culture`, `business-activities`,
+   `california-exercises`). `VOICE.md` has no rule on them, so it is a style call with no
+   retrieval evidence (the checklist source is a vendor blog). Recommendation: skip the dashes and
+   arrows; the 4 star pages are cheap to fix on a branch if Shaun wants them gone.
+5. **Stale `Speakable` lines in this file · already done, close.** Tier 7's intro and item 2 now
+   say `Speakable` was removed, and item 2 records the `/about/` node removed 2026-10-23
+   (page 2224). Nothing left to do; do not re-add `Speakable`.
+6. **27 emoji-prefixed H1s · already done, close.** Re-verified: 0 indexable pages now start
+   their `<h1>` with an emoji. Fixed by PR #215 ("Strip leading emoji from 27 indexable H1s").
+   No VOICE.md change needed.
+
+**Recommended order.** 1 (meta descriptions, the only clear agent-safe win), then 3 (with the
+Tier 10 item 4 approval and the 4–6 week data gate), then 4 only if Shaun asks. Items 2, 5 and 6
+need no work. Net open work: one agent-safe fix, one Shaun-approved content roll-out, one optional
+style decision.
