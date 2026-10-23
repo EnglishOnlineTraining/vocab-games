@@ -170,6 +170,8 @@ function contentHtml(t) {
     t.sections.forEach(sec => {
       html += '<section class="card' + (sec.highlight ? ' rules-box' : '') + '"><h2>' + esc(sec.h2) + '</h2>';
       if (sec.body) html += '<p>' + sec.body + '</p>';
+      if (sec.figure) html += '<figure class="topic-fig"><img src="' + esc(sec.figure.src) + '" width="' + sec.figure.width + '" height="' + sec.figure.height
+        + '" alt="' + esc(sec.figure.alt) + '" loading="lazy" decoding="async"><figcaption>' + sec.figure.caption + '</figcaption></figure>';
       if (sec.list && sec.list.length) {
         html += '<ul class="' + (sec.listClass || 'rules') + '">';
         sec.list.forEach(li => html += '<li>' + li + '</li>');
@@ -343,6 +345,7 @@ h1{color:var(--blue);font-size:1.6rem;line-height:1.25;margin-bottom:.5rem}
 .card h2{color:var(--blue);font-size:1.15rem;margin-bottom:.7rem}
 .card p{margin-bottom:.4rem}
 .rules-box{background:#eef4fb;border-left:4px solid var(--teal)}
+.topic-fig{margin:.6rem 0 1rem}.topic-fig img{display:block;width:100%;max-width:640px;height:auto;margin:0 auto;border-radius:8px}.topic-fig figcaption{font-size:.8rem;color:var(--muted);margin-top:.4rem;text-align:center}
 .topic-table-wrap{overflow-x:auto}
 .topic-table{width:100%;border-collapse:collapse;font-size:.92rem}
 .topic-table th,.topic-table td{text-align:left;padding:.45rem .6rem;border-bottom:1px solid var(--border);vertical-align:top}
