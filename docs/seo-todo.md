@@ -39,8 +39,8 @@ Priorities updated with Bing data for 10–17 Oct 2026 (7-day impressions in bra
 
 ## 6. Lower priority (demand quieter this week)
 - [x] M Kommentar guide (post 2038): title tweak, Gliederung section and FAQ on "eigene Meinung" (done 2026-10-23; all old content kept; guide now links to `/comment-on-task-english-abitur/` and the pack)
-- [ ] Link the Kommentar guide, `/comment-on-task-english-abitur/` and A `abitur-argumentative-writing.html` to each other
-  - Guide to comment-on-task and guide to pack done 2026-10-23 (post 2038). Still open: the reverse links, from `/comment-on-task-english-abitur/` and `abitur-argumentative-writing.html` to the guide.
+- [x] Link the Kommentar guide, `/comment-on-task-english-abitur/` and A `abitur-argumentative-writing.html` to each other
+  - Done 2026-10-23: guide links to both; `abitur-argumentative-writing.html` and the comment-on-task post (WP 2368) link back to the guide. Note: 2368 is still scheduled for 2026-10-27, so the guide's link to it only works once it publishes.
 - [x] Rewrite M `/2023/04/05/learning-english-online/` as "Learning English Online vs in Class: Pros and Cons", and link it to `/business-english/` (done 2026-10-22, post 1214: new title and meta description, Pros/Cons sections, business-english link; old steps, quiz and links kept)
 
 ## 7. Measure
