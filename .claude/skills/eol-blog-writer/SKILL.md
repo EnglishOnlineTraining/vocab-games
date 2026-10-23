@@ -40,6 +40,33 @@ Language and address follow the audience (from VOICE.md):
 Category IDs were correct in October 2026. If a create call refuses an ID,
 run `categories.list` and use the current one.
 
+## Step 1b - Critique the brief before you write
+
+A weak brief gives a weak post, and fixing the brief is cheaper than
+rewriting the draft. Topics come from Shaun's existing topic process, so do
+not suggest new topics here. Check only the brief you have.
+
+First list the five most recent posts (`posts.list`, `per_page: 5`,
+`status: ["draft","publish"]`). Step 2 uses the same list.
+
+Then check:
+
+| Check | Weak sign |
+|---|---|
+| Angle | A broad topic ("email tips") with no single point the reader should remember |
+| Reader | No specific moment or problem the reader is in |
+| Hook | You cannot write a first sentence with a concrete moment or tension |
+| Goal and CTA | The call to action does not follow from the goal |
+| Overlap | A recent post already makes the same point |
+| Facts | A claim or number with no source |
+
+If nothing is weak, say "Brief OK" in one line and go on.
+
+If something is weak, name at most three problems. Give each one a proposed
+fix. Send them in the same message as any missing brief items from Step 1.
+Wait for Shaun's answer before you plan the post. Do not apply a fix he has
+not approved.
+
 ## Step 2 - Choose the framework
 
 Pick one framework from the goal. If Shaun names one, use it.
@@ -53,8 +80,7 @@ Pick one framework from the goal. If Shaun names one, use it.
 | Short post, grammar point, news, update | And-But-Therefore | - |
 | Make a non-specialist care (parents, HR) | Pixar Spine | Before-After-Bridge |
 
-Vary the framework across posts. Before you choose, list the five most
-recent posts (`posts.list`, `per_page: 5`, `status: ["draft","publish"]`) and
+Vary the framework across posts. Use the five recent posts from Step 1b and
 avoid the framework that the most recent post clearly used, unless it is the
 only good fit.
 
@@ -81,11 +107,13 @@ payoff, not an appendix:
 - A concrete example the reader can copy.
 - One practice task or next step.
 - For learners: a grammar or usage tip for German speakers, where useful.
-- One call to action at the end, matched to the audience:
-  - Learners: free interactive exercises at englishonline.training.
-  - HR/L&D: corporate English training, online or in person. Get in touch.
-  - Teachers: free interactive exercises for Years 7–10.
-  - Parents: kostenlose interaktive Englisch-Übungen für Klasse 7 bis 10.
+- One call to action at the end, matched to the audience (VOICE.md §7):
+  - Learners: one free exercise or practice pack to do next, linked.
+  - HR/L&D: "Need English training for your team? Get in touch." Use this
+    line only for this audience.
+  - Teachers: the free exercises for their class or level.
+  - Parents: die kostenlosen Übungen, und wie Sie sie zu Hause mit Ihrem Kind
+    nutzen.
 
 ## Step 4 - Write
 
@@ -131,6 +159,19 @@ Read the post as the reader, then check:
       alt text, caption and a link to the exercise, and no student data in it.
 
 Fix anything that fails before saving.
+
+### Score hook, value and CTA
+
+A pass/fail list hides a weak part. Score each part from 1 to 5, separately:
+
+| Part | 5 | 3 | 1 |
+|---|---|---|---|
+| Hook (first two sentences) | A specific reader in a specific moment or problem | Clear topic, but generic | Filler or a general statement |
+| Value | The reader can copy the example and do the task today, with no other source | Useful, but abstract | No usable example |
+| CTA | One action, right for the audience, follows from the post's point | Right audience, but generic | Missing, wrong audience, or more than one |
+
+Rewrite any part that scores below 4, then score it again. Give one reason
+for each score. Show the final scores in Step 7.
 
 ## Step 6 - Metadata and featured image
 
@@ -222,7 +263,8 @@ a simpler scene.
 ## Step 7 - Save as a WordPress draft
 
 Show Shaun, in one message: the title, audience, framework, beat-to-section
-map, all metadata from Step 6, the image prompt, and each in-post image
+map, the hook, value and CTA scores with their reasons (Step 5), all metadata
+from Step 6, the image prompt, and each in-post image
 (source, filename, alt text, caption, link). Ask for one approval to
 generate and upload the images and save the draft. The site connector requires approval
 before any create call.
