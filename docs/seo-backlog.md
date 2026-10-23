@@ -366,16 +366,26 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
     - The WP `og:image` is the portrait with an empty `og:image:alt`.
 
 ### C. Activities repo · CC
-12. **Exercise JSON-LD has no `datePublished`/`dateModified`.** The dates are already in
-    `data/lastmod.json`, so emit them on the `LearningResource` node.
-13. **Refine `build-lastmod.js`:** 229 of 230 sitemap entries read `2026-10-01`. That is honest
+12. **→ Done (verified 2026-10-23).** Exercise JSON-LD has no `datePublished`/`dateModified`.
+    The dates are already in `data/lastmod.json`, so emit them on the `LearningResource` node.
+    Evidence: `scripts/schema.js:381-383` sets both from `datesFor()`; live
+    `10c-canada-schools.html` carries `datePublished` 2026-08-24 and `dateModified` 2026-10-17
+    (same for `9g-australia-outback`, `10g-scottish-history`, `9c-canada-multicultural`).
+13. **→ Done (verified 2026-10-23).** Refine `build-lastmod.js`: 229 of 230 sitemap entries read `2026-10-01`. That is honest
     under the current design: the 2026-10-01 byline, Person-schema and school-name commits changed
     every page's generated `<head>`, so every hash moved. But a template-only change then tells
     Google the whole site changed. Hashing only the page body would stop this: exclude the
     generated HEAD/CRUMB blocks. **Don't reseed `data/lastmod.json`** (see the warning in
     `hubs-seo-and-tests.md`).
-14. **Three pairs of duplicate meta descriptions:** two Year 10 Canada pages, two Year 10
+    Evidence: `scripts/page-hash.js` strips every generated block (HEAD, CRUMB, …) before hashing.
+    Editing the HEAD and CRUMB blocks of `9g-australia-outback.html` in place leaves its hash
+    unchanged; editing body text changes it. `build.js --check` passes. The live sitemap now
+    spreads dates (180 at 2026-10-17, 12 at 2026-10-20, 11 at 2026-10-04, and so on).
+    `data/lastmod.json` was not touched.
+14. **→ Done (verified 2026-10-23).** Three pairs of duplicate meta descriptions: two Year 10 Canada pages, two Year 10
     Scotland pages and two Year 9 Australia pages, all starting "Free Year N English practice: …".
+    Evidence: a scan of all root and `themen/` HTML finds 0 duplicate `<meta name="description">`
+    values. The live Canada, Scotland and Australia pages carry distinct text.
 
 ### D. Decision needed · Shaun
 15. **Tracking and the privacy policy · Shaun (DSGVO/TTDSG).** Checked 2026-10-03:
