@@ -836,14 +836,14 @@ in the repo the same day:
   (`ogcardsite.png`). The **homepage's `og:image` is the 828×816 portrait with empty alt**
   (already B11 above). Custom `<head>` and JSON-LD can't be injected on this plan.
 
-1. **Per-page `og:image` and JSON-LD `image` for pages with real content images · CC.** In
+1. **DONE (2026-10-23, PR #204).** **Per-page `og:image` and JSON-LD `image` for pages with real content images · CC.** In
    `build-head.js` (and `schema.js`), when a page has a content `<img>`, use it for `og:image`
    and add `image` to its `LearningResource`. Otherwise keep the site card. Render a 1200×630
    PNG crop if the source isn't one, and reuse `build-og-card.js`. Add `<image:image>` to those
    pages' sitemap entries. One check: a test that fails if any `<img>` lacks `alt`, `width` or
    `height`. Fix those three pages' tags to pass (lazy loading below the fold, a `<picture>`
    WebP for the taxi PNG).
-2. **Two original teaching diagrams (SVG), placed where they teach · CC.** For example, an
+2. **DONE (2026-10-23, PR #205: IELTS essay structure, past progressive timeline).** **Two original teaching diagrams (SVG), placed where they teach · CC.** For example, an
    essay-structure diagram on a writing page and a tense timeline on an ESL grammar page.
    Pick the pages from Search Console demand, not from the plan's guesses. English only. Use
    `<title>`/`<desc>`, real `<text>`, colours from the `style.css` tokens, under 50 KB, and
