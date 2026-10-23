@@ -86,6 +86,10 @@ above for the full record (1019/1393/1757 already fixed by an earlier undocument
 1133/651 already had links hidden behind a `page-sections.list` preview-truncation trap, 939's
 Calendly widget replaced with a link to the corporate funnel per Shaun's explicit confirmation).
 
+**Tier 6 bucket B re-checked (2026-10-23): no edits needed.** Crawling the sitemap found 1582
+linked from `/about/` and 1715 linked from `/business-english/`, so neither is a true orphan any
+more. Both stay published and unchanged.
+
 **P4.3 (`/llm-content.txt`) and P4.4 (manual AI-citation monitoring)** remain out of scope too —
 the backlog itself calls P4.3 "speculative... low-effort future-proofing", and P4.4 is an ongoing
 manual process, not a coding task. Neither blocks P3.

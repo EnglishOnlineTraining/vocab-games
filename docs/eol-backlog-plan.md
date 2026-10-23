@@ -1469,8 +1469,10 @@ and Tier 4 above for the full executed record. What's left:
 3. **Tier 6 internal-linking audit.** Bucket A resolved 2026-08-08 (Shaun approved) and bucket C
    resolved 2026-08-22 (mostly already fixed by an earlier undocumented session — see Tier 6 for
    the full record; 939's Calendly widget replaced with a link to the corporate funnel, confirmed
-   by Shaun). **Bucket B still open**: 1582 and 1715 remain true orphans with no plan to link
-   them yet — not raised with Shaun.
+   by Shaun). **Bucket B re-checked 2026-10-23: no longer orphans, no edits made.** 1582 is linked
+   from `/about/` ("See certificates and full training timeline"); 1715 is linked from
+   `/business-english/` (one button). Both are published, not noindexed, and substantive enough to
+   keep. Left as they are.
 4. **Tier 7 main-site GEO (P3).** Items 1–2 of the recommended scope done 2026-08-22 (`FAQPage`
    schema on `/faq/`, `Person` schema on `/about/`). Item 3: the `/testimonial/*/` pages are
    confirmed to exist (8, via the sitemap, 2026-10-03); what to do with them is Tier 8 §B. Items 4 (the 5 proposed service landing pages +
