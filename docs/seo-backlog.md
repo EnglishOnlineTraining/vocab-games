@@ -316,6 +316,16 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
    | `sameAs` | — | Impressum only |
 
    The `WebSite` node and `og:site_name` still say "Improve your English skills", the old tagline.
+   **Re-checked 2026-10-23 (CC), no live write made.** Settled by these docs: `scripts/schema.js` is
+   correct (Tier 8 A2 above and the Shaun-confirmed address/phone), so the WP node should change, not
+   schema.js. Differences still live: `@type`, name, description, phone format (same number), email
+   (the node still carries `englishonlinetraining@pm.me`, not `learn@englishonline.training`: a
+   Tier 8 A2 must-fix), `sameAs` (LinkedIn and Facebook, no Impressum), address `Koloniestr.` vs
+   `Koloniestrasse`, and `WebSite` name/description. **Blocker:** the WP MCP exposes only
+   `settings.get/update` (title, tagline, timezone); the Organization node's name, type, phone, email,
+   logo and address are not in it, so they are Jetpack/WordPress.com business details Shaun must set in
+   the dashboard. Site Title is writable, but it also changes every `<title>`, feed and `og:site_name`,
+   so it was left for Shaun's go-ahead (rule 8: not a "nothing lost" edit).
    **Fix:** make the WP node identical to `scripts/schema.js`, and give `sameAs` real profiles.
    Also, WordPress post bylines emit a *second* Person, `/author/shauntrezise/#person`, named only
    "Shaun". `/about/` and the activities host already share `#shaun` (Tier 7 item 2), so this
