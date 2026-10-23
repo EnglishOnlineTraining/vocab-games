@@ -55,8 +55,9 @@ follow-up from the GEO backlog Shaun uploaded 2026-08-22, after the repo-side it
 in PRs #25 and #26.
 
 **Do:**
-- **`FAQPage` schema on `/faq/`.** It already has real bilingual Q&A content live — this is markup
-  only, no new copy. Confirm the page ID first (`pages.list` filtered by slug, or search).
+- [x] **`FAQPage` schema on `/faq/`** — dropped (Shaun, 2026-10-23). The FAQ page (ID **351**) is an
+  unpublished draft (set to draft on or after 2026-10-13), so `/faq/` returns 404 and there is nothing
+  live to mark up. Not republished. Original note: markup only, no new copy.
 - [x] **`Person` + `EducationalOccupationalCredential` schema on `/about/` or `/about-me/`** — done. The schema was already live on `/about/` (page **2224**; page 80 is a noindex "moved" stub); 2026-10-21 its `email` and the visible mailto links were changed from the old `pm.me` address to `learn@englishonline.training`. Original note: (page **80** —
   already touched once, see item 3 below, for its broken WhatsApp button). Source every claim only
   from what the Impressum/certificates pages already state on the live site — do not assert a
