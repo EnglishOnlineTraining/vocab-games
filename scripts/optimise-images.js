@@ -31,6 +31,8 @@ const TARGETS = [
   { src: 'rtb-1.png', maxWidth: 1200, quality: 0.82 },
   { src: 'rtb-2.png', maxWidth: 1200, quality: 0.82 },
   { src: 'rtb-3.png', maxWidth: 1200, quality: 0.82 },
+  // Photo, shown at 496px wide: no resize, only the format change.
+  { src: '8c-taxi-ride-street.png', maxWidth: 1200, quality: 0.82 },
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

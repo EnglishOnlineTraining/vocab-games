@@ -40,6 +40,7 @@
 const fs = require('fs');
 const path = require('path');
 const S = require('./schema');
+const { pageCard } = require('./page-image');
 
 const ROOT = path.join(__dirname, '..');
 const SITE = 'https://activities.englishonline.training';
@@ -347,13 +348,16 @@ function headBlock(file, html, withSkipStyle, withOverviewStyle, withTipStyle, w
   if (title) lines.push(`<meta property="og:title" content="${esc(title)}">`);
   if (desc) lines.push(`<meta property="og:description" content="${esc(desc)}">`);
   if (canonical && !/TODO/i.test(canonical)) lines.push(`<meta property="og:url" content="${esc(canonical)}">`);
+  const card = pageCard(file, html);
   lines.push(
     // 1200x630 branded card (scripts/build-og-card.js) — the square icon was too
     // small and the wrong ratio, so shares showed a blurry crop of the favicon.
-    `<meta property="og:image" content="${SITE}/og-card.png">`,
+    `<meta property="og:image" content="${SITE}/${card ? card.file : 'og-card.png'}">`,
     '<meta property="og:image:width" content="1200">',
     '<meta property="og:image:height" content="630">',
-    S.englishOnly(file)
+    card
+      ? `<meta property="og:image:alt" content="${esc(card.alt)}">`
+      : S.englishOnly(file)
       ? '<meta property="og:image:alt" content="englishonline.training — free interactive English exercises with instant feedback">'
       : '<meta property="og:image:alt" content="englishonline.training — kostenlose interaktive Englisch-Übungen für Klasse 7–10, MSA, Abitur, Universität, Business und IT English">',
     '<meta name="twitter:card" content="summary_large_image">',
@@ -368,7 +372,7 @@ function headBlock(file, html, withSkipStyle, withOverviewStyle, withTipStyle, w
   // Pages outside the exercise.js framework that mark answers only with a
   // colour class get the ✓/✗ marks and live regions from a11y-lite.js.
   if (needsA11yLite(html)) lines.push(`<script src="${rel}a11y-lite.js" defer></script>`);
-  const schema = schemaBlock(file, { lang, title, desc, canonical }, html);
+  const schema = schemaBlock(file, { lang, title, desc, canonical, image: card && { url: `${SITE}/${card.file}`, alt: card.alt } }, html);
   if (schema) lines.push(schema);
   lines.push(
     '<!-- HEAD:END -->'
