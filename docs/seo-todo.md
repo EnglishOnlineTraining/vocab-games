@@ -38,8 +38,9 @@ Priorities updated with Bing data for 10–17 Oct 2026 (7-day impressions in bra
 - [x] Link the 4 property pages to each other and to `/business-english/` (only 2 are repo pages: `be-property-management.html` and `property-management-vocabulary.html`, now linked both ways and to `/business-english/`; the 2023 WordPress articles were not touched)
 
 ## 6. Lower priority (demand quieter this week)
-- [ ] M Kommentar guide: title tweak, plus a Gliederung/Vorlage and FAQ on "eigene Meinung"
-- [ ] Link the Kommentar guide, `/comment-on-task-english-abitur/` and A `abitur-argumentative-writing.html` to each other
+- [x] M Kommentar guide (post 2038): title tweak, Gliederung section and FAQ on "eigene Meinung" (done 2026-10-23; all old content kept; guide now links to `/comment-on-task-english-abitur/` and the pack)
+- [x] Link the Kommentar guide, `/comment-on-task-english-abitur/` and A `abitur-argumentative-writing.html` to each other
+  - Done 2026-10-23: guide links to both; `abitur-argumentative-writing.html` and the comment-on-task post (WP 2368) link back to the guide. Note: 2368 is still scheduled for 2026-10-27, so the guide's link to it only works once it publishes.
 - [x] Rewrite M `/2023/04/05/learning-english-online/` as "Learning English Online vs in Class: Pros and Cons", and link it to `/business-english/` (done 2026-10-22, post 1214: new title and meta description, Pros/Cons sections, business-english link; old steps, quiz and links kept)
 
 ## 7. Measure
