@@ -28,12 +28,15 @@ Status: `todo` · `PR #n` · `done`
 
 | Item | Check | Status |
 |---|---|---|
-| Group cards under named-unit headings, in textbook order; Review/Writing/extra pages last | 8c, 9g, 10g hubs show headings; every card still present | todo |
-| Fix 🦘 icon shown as `&#x1F998;` on 9g hub | no `&amp;#x` in any hub | todo |
-| One icon style: emoji, not text badges (AU, CA, IE, NZ) | no two-letter text icons in `data/hub-cards.json` | todo |
-| Tags name the skill, not the unit (heading now carries the unit) | no "Unit n" / "Focus n" tags | todo |
-| Card description: two-line CSS clamp, no "…" cut at 107 characters | build no longer truncates; long text clamps to 2 lines | todo |
-| Exercise cards before the German intro text; intro links styled | first card above the fold-ish at 390px; no default blue links | todo |
+| Group cards under named-unit headings, in textbook order; Review/Writing/extra pages last | 8c, 9g, 10g hubs show headings; every card still present | PR |
+| Fix 🦘 icon shown as `&#x1F998;` on 9g hub | no `&amp;#x` in any hub | PR |
+| One icon style: emoji, not text badges (AU, CA, IE, NZ) | no two-letter text icons in `data/hub-cards.json` | PR |
+| Tags name the skill, not the unit (heading now carries the unit) | no "Unit n" / "Focus n" tags | PR |
+| Card description: two-line CSS clamp, no "…" cut at 107 characters | build no longer truncates; long text clamps to 2 lines | PR |
+| Exercise cards before the German intro text; intro links styled | first card above the fold-ish at 390px; no default blue links | PR |
+
+Draft unit names are for Shaun's review (`data/hub-cards.json`, `heading.text`). 7g/7c are not
+grouped: no unit data and not current classes. New exercises land in "More practice" until filed.
 
 ## A2. Exercise page
 
