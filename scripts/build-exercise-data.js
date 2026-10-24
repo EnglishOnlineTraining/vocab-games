@@ -49,9 +49,9 @@ function skillsFor(points) {
 
 // ---- reuse the inventory extraction (title, prefix, ex-titles) ----
 function decode(s) {
-  return s.replace(/&rsquo;|&#8217;/g, '’').replace(/&amp;/g, '&').replace(/&ldquo;/g, '“')
+  return s.replace(/&rsquo;|&#8217;/g, '’').replace(/&ldquo;/g, '“')
           .replace(/&rdquo;/g, '”').replace(/&mdash;/g, '—').replace(/&ndash;/g, '–')
-          .replace(/&nbsp;/g, ' ').replace(/&#39;/g, "'").replace(/&quot;/g, '"')
+          .replace(/&nbsp;/g, ' ').replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, '&')
           .replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 }
 function m1(re, s) { const m = s.match(re); return m ? m[1].trim() : ''; }
