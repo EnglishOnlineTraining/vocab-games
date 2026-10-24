@@ -54,11 +54,14 @@ separate cleanup.
 
 | Item | Check | Status |
 |---|---|---|
-| ✓ on class hub cards (today only on `activities.html`) | finish an exercise → ✓ on its hub card | todo |
-| "3/12 done" on homepage class cards | count goes up after finishing an 8c exercise | todo |
-| "Weitermachen: <title> — Exercise B" card on the homepage | shows only with an unfinished started exercise | todo |
-| Dashboard: "Progress is saved on this device" + Reset button with confirm | reset clears `eol_progress`, `eol_streak` | todo |
-| One E2E spec covering the above | `tests/progress-visibility.spec.js` passes | todo |
+| ✓ on class hub cards (today only on `activities.html`) | finish an exercise → ✓ on its hub card | PR |
+| "3/12 done" on homepage class cards | count goes up after finishing an 8c exercise | PR |
+| "Continue where you left off: <title> — Exercise B" card on the homepage (English: the homepage is `lang="en"`) | shows only with an unfinished started exercise | PR |
+| Dashboard: "Progress is saved on this device" + Reset button with confirm | reset clears `eol_progress`, `eol_streak` | PR |
+| One E2E spec covering the above | `tests/progress-visibility.spec.js` passes | PR |
+
+Found on the way and fixed: after a submit or a practise finish, the 30-second autosave wrote the
+draft back, so the next visit offered "Unfinished work found" for finished work.
 
 ## C. Homepage and header
 

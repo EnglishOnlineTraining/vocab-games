@@ -182,6 +182,7 @@ body{
   cursor:pointer;font-family:inherit;
 }
 .export-btn:hover{filter:brightness(1.15)}
+.reset-btn{margin-top:.6rem;background:none;color:var(--muted);border:1.5px solid var(--border)}
 .export-result{
   margin-top:.5rem;padding:.5rem;font-size:.72rem;
   background:var(--blue-lt);border-radius:6px;color:var(--dark);
@@ -233,7 +234,7 @@ body{
 <header class="site-header">
   <a class="logo" href="https://englishonline.training">englishonline.training</a>
   <h1>My Progress</h1>
-  <p class="tagline">Track your exercises, streaks, and scores.</p>
+  <p class="tagline">Track your exercises, streaks, and scores. Saved on this device only — nothing is sent.</p>
   <nav class="header-nav">
     <a href="activities.html">All Exercises</a>
     <a href="themen/index.html">Grammar Topics</a>
@@ -421,11 +422,19 @@ body{
       + '<p style="font-size:.78rem;color:var(--muted);margin-bottom:.6rem">Copy your progress data to share with your teacher.</p>'
       + '<button class="export-btn" id="export-btn">Copy Progress to Clipboard</button>'
       + '<div class="export-result" id="export-result"></div>'
+      + '<button class="export-btn reset-btn" id="reset-btn" type="button">Reset progress on this device</button>'
       + '</div>';
 
     html += '</div></div>'; // close sidebar + columns
 
     container.innerHTML = html;
+
+    // Reset: progress and streak only. Unsent work (eol_draft_*) is the student's, so it stays.
+    document.getElementById('reset-btn').addEventListener('click', function() {
+      if (!confirm('Clear your progress and streak on this device? Unsent work inside exercises is kept.')) return;
+      try { localStorage.removeItem('eol_progress'); localStorage.removeItem('eol_streak'); } catch (e) {}
+      location.reload();
+    });
 
     // Export handler
     var exportBtn = document.getElementById('export-btn');
