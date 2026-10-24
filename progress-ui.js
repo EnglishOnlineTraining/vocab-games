@@ -76,7 +76,7 @@
     // "Continue where you left off" above the class list
     if (!draft || !years) return;
     var ex = exercises.filter(function (e) { return unitOf(e.file) === draft.unit; })[0];
-    if (!ex) return;
+    if (!ex || !/^[a-z0-9-]+\.html$/.test(ex.file)) return;   // only a plain page name becomes a link
     var where = draft.total && draft.step >= draft.total ? 'ready to submit'
       : draft.step >= 1 ? 'Exercise ' + String.fromCharCode(64 + draft.step) : '';
     var c = document.createElement('a');
