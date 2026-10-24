@@ -6,7 +6,7 @@
  */
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 const S = require('./schema');
 const { pageImages, NO_PROMOTE } = require('./page-image');
 const { pageHash, datesFor } = require('./page-hash');
@@ -199,7 +199,11 @@ function faqHtml(t) {
   return html;
 }
 
-function stripTags(x) { return String(x == null ? '' : x).replace(/<[^>]+>/g, ''); }
+function stripTags(x) {
+  let s = String(x == null ? '' : x), prev;
+  do { prev = s; s = s.replace(/<[^>]*>/g, ''); } while (s !== prev);   // until no tag is left, nested ones included
+  return s;
+}
 
 function faqJsonLd(t) {
   if (!t.faq || !t.faq.length) return '';
@@ -524,7 +528,7 @@ function urlToFile(u) {
 
 function gitLastmod(file) {
   try {
-    const out = execSync('git log --format=%aI -1 -- ' + JSON.stringify(file), { cwd: ROOT, encoding: 'utf8', stdio: ['pipe','pipe','pipe'] }).trim();
+    const out = execFileSync('git', ['log', '--format=%aI', '-1', '--', file], { cwd: ROOT, encoding: 'utf8', stdio: ['pipe','pipe','pipe'] }).trim();
     return out ? out.slice(0, 10) : '';
   } catch { return ''; }
 }

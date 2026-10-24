@@ -45,8 +45,8 @@ function uiText(html) {
     // the study list on the register screen — lists every word deliberately
     .replace(/<div class="wl-card">[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/, ' ')
     .replace(/<div class="wl-box">[\s\S]*?<\/div>\s*<\/div>/, ' ')
-    .replace(/<script[\s\S]*?<\/script>/g, ' ')
-    .replace(/<style[\s\S]*?<\/style>/g, ' ')
+    .replace(/<script\b[\s\S]*?<\/script\b[^>]*>/gi, ' ')
+    .replace(/<style\b[\s\S]*?<\/style\b[^>]*>/gi, ' ')
     .replace(/<[^>]+>/g, ' ')
     .replace(/&[a-z]+;/gi, ' ')
     .replace(/\s+/g, ' ')

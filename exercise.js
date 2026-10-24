@@ -1348,7 +1348,7 @@ function eolCollectExplanations() {
  * objects, so those sheets are byte-identical to before.
  */
 function eolIsMakeTarget(url) {
-  return String(url || '').indexOf('hook.eu1.make.com') !== -1;
+  try { return new URL(url).hostname === 'hook.eu1.make.com'; } catch (e) { return false; }
 }
 
 /*

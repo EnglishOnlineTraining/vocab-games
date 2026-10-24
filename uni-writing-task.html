@@ -410,7 +410,7 @@ function goFullscreen(){
    START EXAM
 ================================================================ */
 function startExam(){
-  sid='SID-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).substr(2,5).toUpperCase();
+  sid='SID-'+Date.now().toString(36).toUpperCase()+'-'+crypto.getRandomValues(new Uint32Array(1))[0].toString(36).slice(0,5).toUpperCase();
   document.getElementById('sid-disp').textContent=sid;
 
   // Assign scenario by name hash (same name always → same scenario)

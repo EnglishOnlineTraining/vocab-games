@@ -613,7 +613,7 @@ function renderMC() {
   document.getElementById('mc-progress').textContent = `Question ${mcIndex + 1} of ${mcItems.length}`;
   document.getElementById('mc-question').innerHTML = `What does <span class="mc-word">"${item.word}"</span> mean?`;
   document.getElementById('mc-options').innerHTML = opts.map(o =>
-    `<button class="mc-opt" onclick="mcAnswer(this,'${o.replace(/'/g,"\\'")}','${item.correct.replace(/'/g,"\\'")}')"> ${o}</button>`
+    `<button class="mc-opt" onclick="mcAnswer(this,'${o.replace(/\\/g,'\\\\').replace(/'/g,"\\'")}','${item.correct.replace(/\\/g,'\\\\').replace(/'/g,"\\'")}')"> ${o}</button>`
   ).join('');
   document.getElementById('mc-feedback').textContent = '';
   document.getElementById('mc-feedback').className = 'mc-feedback';
