@@ -221,15 +221,16 @@ function checkWebhookUrls(content, skillName) {
   const Y9_WEBHOOK = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj';
 
   // If skill mentions a webhook, verify it matches CLAUDE.md
-  if (content.includes('hook.eu1.make.com')) {
-    if (content.includes(Y7_WEBHOOK)) {
+  const allUrls = content.match(/https:\/\/hook\.eu1\.make\.com\/[a-z0-9]+/g) || [];
+  const found = new Set(allUrls);   // whole URLs, compared exactly
+  if (allUrls.length) {
+    if (found.has(Y7_WEBHOOK)) {
       issues.push({ type: 'OK', msg: 'Year 7/8 webhook URL matches CLAUDE.md' });
     }
-    if (content.includes(Y9_WEBHOOK)) {
+    if (found.has(Y9_WEBHOOK)) {
       issues.push({ type: 'OK', msg: 'Year 9/10 webhook URL matches CLAUDE.md' });
     }
     // Check for any OTHER make.com URLs that might be stale
-    const allUrls = content.match(/https:\/\/hook\.eu1\.make\.com\/[a-z0-9]+/g) || [];
     for (const url of allUrls) {
       if (url !== Y7_WEBHOOK && url !== Y9_WEBHOOK) {
         issues.push({ type: 'WARN', msg: `Unknown Make webhook: ${url}` });
