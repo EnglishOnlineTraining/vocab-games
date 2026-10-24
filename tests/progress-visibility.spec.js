@@ -21,6 +21,11 @@ test('progress is visible on the homepage, hubs and dashboard', async ({ page },
   await expect(cont).toHaveAttribute('href', `${UNIT}.html`);
   await page.screenshot({ path: testInfo.outputPath('home-continue.png') });
 
+  // Resuming a practise draft (from Continue or the banner) stays in practise mode.
+  await cont.click();
+  await page.click('#eol-resume-yes');
+  expect(await page.evaluate(() => [practiseMode, document.querySelector('.step.active').id])).toEqual([true, 'step-2']);
+
   // Finish: the results step saves progress and clears the draft, and a later
   // autosave must not write the draft back.
   await page.goto(`/${UNIT}.html`);

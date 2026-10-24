@@ -272,6 +272,7 @@ function eolDraftSave() {
       maxStep: maxStepReached,
       curStep: curStep,
       total: TOTAL_STEPS,   // lets the homepage tell "Exercise B" from "ready to submit"
+      practise: practiseMode,   // a practise draft must resume in practise mode, never offer Submit
       int: eolIntReady() ? eolIntSnapshot() : undefined,
       ts: Date.now()
     };
@@ -316,6 +317,7 @@ function eolDraftOfferResume() {
   document.getElementById('eol-resume-yes').onclick = function() {
     banner.remove();
     state = d.state;
+    if (d.practise) { practiseMode = true; eolRelabelForPractise(); }
     if (eolIntReady()) eolIntRestore(d.int);
     if (typeof maxStepReached !== 'undefined') maxStepReached = d.maxStep || 0;
     state.name && (function() {
