@@ -151,6 +151,8 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); min-
 .btn-outline:hover { background: var(--blue); color: #fff; }
 .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
 .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+/* eolSyncActiveStep() focuses the step heading for screen readers; it is not a control, so no ring. */
+[tabindex="-1"]:focus { outline: none; }
 .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
 
 /* ── Welcome screen ── */

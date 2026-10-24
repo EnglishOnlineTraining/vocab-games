@@ -73,7 +73,8 @@ function eolInitPractise() {
     b.style.marginTop = '.6rem';
     b.innerHTML = eolEnglishOnly()
       ? 'Just practise — nothing is sent'
-      : '<span lang="de">Nur üben — ohne Abgabe</span> &middot; <span style="opacity:.75">Just practise</span>';
+      : '<span lang="de">Nur üben — ohne Abgabe</span><span style="opacity:.75;font-size:.85em">Just practise</span>';
+    if (!eolEnglishOnly()) { b.style.flexDirection = 'column'; b.style.gap = '.1rem'; }   // German over English, never a mid-phrase wrap
     b.setAttribute('type', 'button');
     b.setAttribute('onclick', 'startPractise()');
     startBtn.parentNode.insertBefore(b, startBtn.nextSibling);
