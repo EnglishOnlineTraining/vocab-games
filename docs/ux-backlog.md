@@ -31,7 +31,7 @@ Status: `todo` · `PR #n` · `done`
 | Group cards under named-unit headings, in textbook order; Review/Writing/extra pages last | 8c, 9g, 10g hubs show headings; every card still present | PR |
 | Fix 🦘 icon shown as `&#x1F998;` on 9g hub | no `&amp;#x` in any hub | PR |
 | One icon style: emoji, not text badges (AU, CA, IE, NZ) | no two-letter text icons in `data/hub-cards.json` | PR |
-| Tags name the skill, not the unit (heading now carries the unit) | no "Unit n" / "Focus n" tags | PR |
+| Tags name the skill, not the unit (heading now carries the unit) | no "Unit n" / "Focus n" tags on the six grouped class hubs (ungrouped hubs such as `it-activities` keep theirs) | PR |
 | Card description: two-line CSS clamp, no "…" cut at 107 characters | build no longer truncates; long text clamps to 2 lines | PR |
 | Exercise cards before the German intro text; intro links styled | first card above the fold-ish at 390px; no default blue links | PR |
 
