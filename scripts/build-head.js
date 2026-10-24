@@ -989,6 +989,31 @@ function insertAfterWelcomeHero(html, block) {
   return null;                                   // unbalanced markup: leave it alone
 }
 
+/**
+ * Insert a block as the last thing in the welcome step (#step-0 .step-inner),
+ * after the name form and Start button, so a student reaches Start without
+ * scrolling past "At a glance" and "Keep practising". Lands at the start of the
+ * line holding the closing </div>, the same inverse-of-stripBlock rule as
+ * insertAt(). Null when the page has no such step (Abitur packs): the caller
+ * then falls back to insertAfterWelcomeHero().
+ */
+function insertAtEndOfWelcome(html, block) {
+  const open = html.match(/<section id="step-0"[^>]*>\s*<div class="step-inner">/i);
+  if (!open) return null;
+  let depth = 1;
+  const TAG = /<div\b[^>]*>|<\/div>/gi;
+  TAG.lastIndex = open.index + open[0].length;
+  let m;
+  while ((m = TAG.exec(html)) !== null) {
+    depth += m[0][1] === '/' ? -1 : 1;
+    if (depth === 0) {
+      const at = html.lastIndexOf('\n', m.index) + 1;
+      return html.slice(0, at) + block + html.slice(at);
+    }
+  }
+  return null;
+}
+
 function needsA11yLite(html) {
   if (/<script[^>]+src=["']\.{0,2}\/?exercise\.js/.test(html)) return false;
   return /classList\.add\(\s*['"](?:correct|wrong|right|pw-right|pw-wrong)['"]/.test(html);
@@ -1036,7 +1061,7 @@ function processFile(file) {
   let hasRelated = false;
   const heroBlock = (overview || '') + (related || '');
   if (heroBlock) {
-    const withBox = insertAfterWelcomeHero(html, heroBlock);
+    const withBox = insertAtEndOfWelcome(html, heroBlock) || insertAfterWelcomeHero(html, heroBlock);
     if (withBox) { html = withBox; hasOverview = !!overview; hasRelated = !!related; }
   }
 

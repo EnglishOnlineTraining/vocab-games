@@ -46,9 +46,13 @@ exercises land in "More practice" until filed.
 
 | Item | Check | Status |
 |---|---|---|
-| Name box and Start before "At a glance" and "Keep practising" | Start button visible much higher at 390px | todo |
-| "At a glance" in a collapsed `<details>` | still in the HTML (search engines read it) | todo |
-| "Keep practising" moves to the end of the page | — | todo |
+| "At a glance" and "Keep practising" move to the end of the welcome step, after the name form and Start | 390px: Start ~1,850px → ~800–870px down on `style.css` pages | PR |
+| Phone: smaller hero, Ex A–D cards two across | — | PR |
+| "At a glance" in a collapsed `<details>` | not done: once below Start it no longer blocks anything | dropped |
+
+20 older pages carry their own copy of the welcome CSS and don't load `style.css`, so they get
+the move but not the phone tightening (Start ~1,150px). Moving them onto `style.css` is a
+separate cleanup.
 
 ## A3. Progress where students decide
 
