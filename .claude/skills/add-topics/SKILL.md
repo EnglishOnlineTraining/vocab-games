@@ -1,6 +1,6 @@
 ---
 name: add-topics
-description: "Propose and register new exercise topics for englishonline.training's topic pool (topic-pool.json). Use this skill whenever Shaun says \"add topics\", \"build up the topic pool\", \"top up 8g/8c/10g/10c\", \"more topics for [category]\", \"the pool is running low\", \"expand the pool\", or asks for new exercise ideas without wanting them built yet. This skill only GROWS the pool of ideas — it does not build exercises. To actually build one of the ideas, use daily-exercise-draft."
+description: "Propose and register new exercise topics for englishonline.training's topic pool (topic-pool.json). Use this skill whenever Shaun says \"add topics\", \"build up the topic pool\", \"top up 8g/8c/9g/9c/10g/10c\", \"more topics for [category]\", \"the pool is running low\", \"expand the pool\", or asks for new exercise ideas without wanting them built yet. This skill only GROWS the pool of ideas — it does not build exercises. To actually build one of the ideas, use daily-exercise-draft."
 ---
 
 # Add Topics
@@ -17,12 +17,14 @@ see what is open and to confirm the registry matches the repo.
 
 ## When this skill applies
 
-- Shaun asks to add/expand/top-up topics for one or more categories (8g, 8c, 10g, 10c).
+- Shaun asks to add/expand/top-up topics for one or more categories (8g, 8c, 9g, 9c, 10g, 10c).
 - A category's open count is low (check with `node topic-pool.js`).
 - Shaun wants a backlog of ideas ready before the next drafting session.
 
 Not for building a page (that's `daily-exercise-draft`) or turning a photo into a task
-(`eol-task-creator`). MSA topics are open-ended and handled by `msa-exercise-draft`, not tracked here.
+(`eol-task-creator`). MSA topics are open-ended and are not tracked in this registry. (On Shaun's
+Mac they are handled by a local-only `msa-exercise-draft` skill that is not committed to this
+repo.)
 
 ---
 
@@ -89,6 +91,6 @@ and remind him he can build any of them with `daily-exercise-draft`.
 ```
 Registry:     topic-pool.json  (repo root)
 Viewer:       node topic-pool.js [category] [--all] [--check]
-Categories:   8g, 8c, 10g, 10c
+Categories:   8g, 8c, 9g, 9c, 10g, 10c
 GitHub repo:  EnglishOnlineTraining/vocab-games
 ```

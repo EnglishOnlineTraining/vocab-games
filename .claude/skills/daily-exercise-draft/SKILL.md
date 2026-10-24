@@ -1,6 +1,6 @@
 ---
 name: daily-exercise-draft
-description: "Draft and publish a new English exercise page for englishonline.training based on the Klett textbook topic pools. Use this skill whenever Shaun says \"draft an exercise\", \"create an exercise for [year/class]\", \"daily exercise\", \"new exercise for 8c/8g/10c/10g\", or when a scheduled task triggers exercise creation. Also triggers when Shaun provides a year group and school type and wants an exercise built from scratch (not from an image — that's eol-task-creator). This skill covers the full lifecycle: topic selection, HTML construction from the shared template, self-review, automatic GitHub publishing, and hub page updates."
+description: "Draft and publish a new English exercise page for englishonline.training based on the Klett textbook topic pools. Use this skill whenever Shaun says \"draft an exercise\", \"create an exercise for [year/class]\", \"daily exercise\", \"new exercise for 8c/8g/9c/9g/10c/10g\", or when a scheduled task triggers exercise creation. Also triggers when Shaun provides a year group and school type and wants an exercise built from scratch (not from an image — that's eol-task-creator). This skill covers the full lifecycle: topic selection, HTML construction from the shared template, self-review, automatic GitHub publishing, and hub page updates."
 ---
 
 # Daily Exercise Draft
@@ -27,17 +27,17 @@ The caller (scheduled task or Shaun) provides the category. Valid categories:
 |--------|----------|------|----------|
 | `8g-`  | Year 8 Gymnasium | ~B1 | Klett Green Line 4 |
 | `8c-`  | Year 8 Oberschule | ~A2 | Klett Orange Line 4 |
+| `9g-`  | Year 9 Gymnasium | ~B1/B2 | see CLAUDE.md |
+| `9c-`  | Year 9 Oberschule | ~A2/B1 | see CLAUDE.md |
 | `10g-` | Year 10 Gymnasium | ~B2/C1 | Klett Green Line Transitions (changed 2026-08-28; was Green Line 6 — see CLAUDE.md) |
 | `10c-` | Year 10 Oberschule | ~B1/B2 | Klett Orange Line 6 |
 
 Year 7 drafting is **paused** (see CLAUDE.md). If asked for Y7, remind Shaun and ask which
 active category to use instead.
 
-**Year 9 resumed 2026-08-23** (9c and 9g), but `topic-pool.json` has no 9c/9g category yet —
-step 2 below can't pick a Year 9 topic the registry-driven way until one is added (via the
-`add-topics` skill or by hand). Until then, build Year 9 exercises the way the 2026-08-13 batch
-was: check the existing 9c/9g corpus for what's already covered and pick a topic against the
-standard Year 9 syllabus that doesn't overlap, rather than reading from the registry.
+**Year 9 resumed 2026-08-23** (9c and 9g). Both categories are now registered in
+`topic-pool.json`, so step 2 picks Year 9 topics the standard registry-driven way, and the
+`add-topics` skill can top them up like any other category.
 
 ### 2. Pick a topic
 
@@ -254,47 +254,39 @@ Commit these via git push or the GitHub MCP fallback (same approach as 6a).
 
 #### 6c. Update WordPress
 
-The WordPress Activities page (ID `1763`) carries one button per category with an
-`(N exercises)` count. Nothing in the repo can push it — GitHub Actions holds no WordPress
-credentials — so this step is manual, but **the numbers are not**.
+The WordPress Activities page (ID `1763`) carries one card per category with an exercise count.
+Nothing in the repo can push it — GitHub Actions holds no WordPress credentials — so this step
+is manual, but **the numbers are not**.
 
 **`node scripts/build.js` has already computed them.** It writes `data/wordpress-1763.json`
-with the desired label for all fourteen counted buttons, straight from `data/exercises.json`.
+with the desired count for every counted card, straight from `data/exercises.json`.
 Read that file and make the live page match it. Never count exercises by hand: that is how six
 of the fourteen counts came to be wrong by 2026-09-09, Year 10 Gymnasium reading 20 against a
 real 27.
 
 **Do not use `page-sections.list`/`page-sections.replace` on this page — it always errors.**
-1763's live content is plain HTML with `wp-block-*` classes and no `<!-- wp:… -->` block
-delimiters at all (confirmed 2026-08-13, see CLAUDE.md's "Known traps"), so block-level ops can
-never target it; the error is not evidence of anything wrong, it's just the wrong tool for this
-page. Use the documented safe procedure instead:
+Since its rebuild, 1763's live content is a single `wp:html` block (see CLAUDE.md's "Known
+traps"), so block-level ops can never target it; the error is not evidence of anything wrong,
+it's just the wrong tool for this page. Use the documented safe procedure instead:
 
 1. Fetch the page with `pages.get` (or equivalent) using **`context: "edit"`** — never without
    it, or dynamic blocks come back as flattened front-end fallbacks and writing that back
    destroys them (this has broken live contact forms twice; see CLAUDE.md).
-2. Change only the label strings that differ from `data/wordpress-1763.json` — check all
-   fourteen, not just this category's, since the others drift silently too. Leave the
-   Grammatik-Themen, quiz and vocabulary buttons alone; that file does not describe them.
+2. The counts are **not** "(N exercises)" button labels any more: they are
+   `<span>N exercises</span>` on the class and University/Business/IT/ESL cards, and
+   `N exercises →` on the MSA, Abitur and IELTS cards. Change only the count strings that
+   differ from `data/wordpress-1763.json` — check all of them, not just this category's, since
+   the others drift silently too (on 2026-10-19 IELTS still read 7 against a real 9). Several
+   cards can share the same number, so replace the count **inside the specific card's
+   `<a href=…>`** — never by the number alone. Leave the Grammatik-Themen, quiz and vocabulary
+   buttons alone; that file does not describe them.
 3. Call `pages.update` with the **full edited content string** (the API only writes fields you
    send, but `content` must be the complete page, not a fragment).
 4. Verify by re-fetching with `context: "edit"` again and diffing against what you intended to
-   send, and a `context: "view"` fetch to confirm the buttons still render as real links.
+   send, and a `context: "view"` fetch to confirm the cards still render as real links.
 
 Never open 1763 in the WordPress block editor — its `_crdt_document` holds a much older
 snapshot and opening the editor risks restoring that over the live page.
-
-The button format is:
-
-```html
-<div class="wp-block-button">
-  <a class="wp-block-button__link wp-element-button"
-     href="https://activities.englishonline.training/<prefix>-activities.html"
-     target="_blank" rel="noreferrer noopener">
-    icon Category (N exercises)
-  </a>
-</div>
-```
 
 #### 6d. Update the topic registry
 

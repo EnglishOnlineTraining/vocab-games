@@ -39,7 +39,7 @@ Before writing code, confirm with Shaun:
 | Field | Example |
 |---|---|
 | Filename (UNIT slug) | `9g-new-topic` |
-| Year group | Year 7 or Year 9 |
+| Year group | Year 7, 8, 9 or 10 |
 | School type | Gymnasium or Oberschule |
 | Title shown to students | `New Topic – 9g` |
 | Emoji for welcome screen | 📝 |
@@ -57,7 +57,7 @@ Read `_template.html` (repo root) and replace every `TODO`.
 
 - `<title>` — title + ` | englishonline.training`
 - `UNIT` — filename slug, e.g. `'9g-new-topic'`
-- `SHEET_URL` — pick by year (see Sheet URLs below)
+- `SHEET_URL` — pick by year (see Submission URLs below)
 - `TOTAL_STEPS` — number of exercises + 1 (for the submit step)
 - Welcome: emoji, title, subtitle, overview cards (steps 2+ get `class="locked"`)
 - Each exercise: label, title, instructions, content
@@ -150,7 +150,7 @@ Before presenting the file, check:
 
 - [ ] No `TODO` comments left
 - [ ] `UNIT` matches the filename slug exactly
-- [ ] `SHEET_URL` correct (Year 7/9 match rows 1–2; Year 9 match rows 3–4)
+- [ ] `SHEET_URL` matches the routing table below (Make webhook for Years 7–10/MSA; Apps Script for Business/University/IT)
 - [ ] `TOTAL_STEPS` matches actual step count
 - [ ] Every field has matching save/restore/validate/summary/email entries
 - [ ] Checked against STYLE.md §2.5, "Lessons from item analysis" (payload keys equal scoreKeys; typed keys accept every correct word order)
@@ -226,26 +226,30 @@ These steps are Shaun's responsibility:
 
 ### Step 8 — Update WordPress page 1763
 
-WordPress page `1763` (`englishonline.training/activities/`) carries one **button per
-category** with an `(N exercises)` count — it does **not** carry a card per exercise. A new
+WordPress page `1763` (`englishonline.training/activities/`) carries one **card per
+category** with an exercise count — it does **not** carry a card per exercise. A new
 exercise therefore changes exactly one number, and nothing in the repo can push it: GitHub
 Actions holds no WordPress credentials, so this step is yours to run.
 
 **`node scripts/build.js` computes the answer.** It writes `data/wordpress-1763.json`, the
-desired label for all fourteen counted buttons, straight from `data/exercises.json`. Your
+desired count for every counted card, straight from `data/exercises.json`. Your
 job is to make the live page match that file. Do not count anything by hand.
 
 1. Read the desired state: `cat data/wordpress-1763.json`.
 2. Fetch the live page **with `context: "edit"`** — `pages.get` with `id: 1763`. Without
    that flag the API returns rendered HTML and writing it back destroys dynamic blocks.
-3. For each button whose label differs, replace **just that label string** in the content.
+3. Since its rebuild, 1763 is a single `wp:html` block: the counts are
+   `<span>N exercises</span>` on the class and University/Business/IT/ESL cards, and
+   `N exercises →` on the MSA, Abitur and IELTS cards. For each card whose count differs,
+   replace **just that count string**, inside the specific card's `<a href=…>` — several
+   cards can show the same number, so never replace by the number alone. Compare **every**
+   count, not only the one you changed: on 2026-10-19 IELTS still read 7 against a real 9.
    Change nothing else; the page also holds the Grammatik-Themen block and the quiz and
    vocabulary buttons, none of which this file describes.
 4. Write it back with `pages.update`, sending `content` plus `id` only.
 5. **Verify**: re-fetch with `context: "edit"` and diff against what you intended to send.
    `page-sections.list` is useless on 1763 — it errors with "classic/freeform" *before* any
-   write, because the live content is plain HTML with `wp-block-*` classes and no
-   `<!-- wp:… -->` delimiters.
+   write, because the live content is a single `wp:html` block.
 
 **Never open 1763 in the WordPress block editor.** Its `_crdt_document` still holds an
 ancient snapshot (Year 7 "6 exercises", no Y8/Y10/Abitur/MSA sections) and opening it risks
