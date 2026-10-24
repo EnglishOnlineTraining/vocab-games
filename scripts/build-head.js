@@ -374,6 +374,8 @@ function headBlock(file, html, withSkipStyle, withOverviewStyle, withTipStyle, w
     '<meta name="twitter:site" content="@engontraining">'
   );
   lines.push(TAP_STYLE);
+  // ✓ badges, class-card counts and the homepage "Continue" card (progress-ui.js).
+  if (/^(?:index|activities|[a-z0-9-]+-activities)\.html$/.test(file)) lines.push(`<script src="${rel}progress-ui.js" defer></script>`);
   if (withSkipStyle) lines.push(SKIP_STYLE);
   if (withOverviewStyle) lines.push(QO_STYLE);
   if (withRelatedStyle) lines.push(RELATED_STYLE);

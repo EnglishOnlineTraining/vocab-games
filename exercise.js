@@ -88,6 +88,7 @@ function eolPractiseResults() {
   var step = document.getElementById('step-' + TOTAL_STEPS);
   if (!step) return;
   eolSaveProgress();
+  eolDraftClear();   // finished: nothing left to resume
   var submitBtn = document.getElementById('submit-btn');
   if (submitBtn && submitBtn.closest) {
     var card = submitBtn.closest('.card');
@@ -208,6 +209,7 @@ function eolMarkStarted() {
 
 function eolSaveProgress() {
   if (typeof UNIT === 'undefined') return;
+  eolFinished = true;   // stops the autosave writing back the draft the finish just cleared
   try {
     var data = JSON.parse(localStorage.getItem('eol_progress') || '{}');
     var sc = (typeof totalScore === 'function') ? totalScore() : { earned: 0, possible: 0 };
@@ -249,6 +251,7 @@ function eolUpdateStreak() {
 ============================================================ */
 var EOL_DRAFT_KEY = '';
 var _eolDraftTimer = 0;
+var eolFinished = false;   // set by eolSaveProgress() on submit or practise results
 
 function eolDraftInit() {
   if (typeof UNIT === 'undefined') return;
@@ -259,7 +262,7 @@ function eolDraftInit() {
 }
 
 function eolDraftSave() {
-  if (!EOL_DRAFT_KEY || !state || !state.name) return;
+  if (eolFinished || !EOL_DRAFT_KEY || !state || !state.name) return;
   try {
     var cur = document.querySelector('.step.active');
     var curStep = cur ? parseInt(cur.id.replace('step-', ''), 10) : 0;
@@ -268,6 +271,8 @@ function eolDraftSave() {
       state: state,
       maxStep: maxStepReached,
       curStep: curStep,
+      total: TOTAL_STEPS,   // lets the homepage tell "Exercise B" from "ready to submit"
+      practise: practiseMode,   // a practise draft must resume in practise mode, never offer Submit
       int: eolIntReady() ? eolIntSnapshot() : undefined,
       ts: Date.now()
     };
@@ -312,6 +317,7 @@ function eolDraftOfferResume() {
   document.getElementById('eol-resume-yes').onclick = function() {
     banner.remove();
     state = d.state;
+    if (d.practise) { practiseMode = true; eolRelabelForPractise(); }
     if (eolIntReady()) eolIntRestore(d.int);
     if (typeof maxStepReached !== 'undefined') maxStepReached = d.maxStep || 0;
     state.name && (function() {
