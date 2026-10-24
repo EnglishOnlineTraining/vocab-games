@@ -8,9 +8,11 @@ const files = fs.readdirSync(ROOT).filter(f => f.endsWith('.html')).sort();
 function read(f) { return fs.readFileSync(path.join(ROOT, f), 'utf8'); }
 function m1(re, s) { const m = s.match(re); return m ? m[1].trim() : ''; }
 function decode(s) {
-  return s.replace(/&rsquo;/g,'’').replace(/&amp;/g,'&').replace(/&ldquo;/g,'“')
+  let prev;
+  do { prev = s; s = s.replace(/<[^>]*>/g,''); } while (s !== prev);
+  return s.replace(/&rsquo;/g,'’').replace(/&ldquo;/g,'“')
           .replace(/&rdquo;/g,'”').replace(/&mdash;/g,'—').replace(/&nbsp;/g,' ')
-          .replace(/&#39;/g,"'").replace(/&quot;/g,'"').replace(/<[^>]+>/g,'').trim();
+          .replace(/&#39;/g,"'").replace(/&quot;/g,'"').replace(/&amp;/g,'&').trim();
 }
 
 function schoolFromPrefix(f) {

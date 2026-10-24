@@ -9,7 +9,7 @@ const NOINDEX = require('./noindex').loadNoindex();
 
 const ROOT = path.join(__dirname, '..');
 const MAX = 160;
-const decode = (s) => s.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+const decode = (s) => s.replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
 
 const files = [
   ...fs.readdirSync(ROOT).filter((f) => f.endsWith('.html')),
