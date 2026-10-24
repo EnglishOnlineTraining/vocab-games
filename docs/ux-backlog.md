@@ -71,7 +71,8 @@ draft back, so the next visit offered "Unfinished work found" for finished work.
 
 | Item | Check | Status |
 |---|---|---|
-| Level test as a second button under Search | visible in first screen at 390px | todo |
-| "Also: IELTS · University · Business · IT" line under the hero | links work | todo |
-| No section heading that repeats its only card (MSA, IELTS) | — | todo |
-| One header style across homepage, hubs and exercise pages | screenshots of all three | todo |
+| Level test as a second button under Search | 390px: button ends at 284px, first screen | PR |
+| Keep "takes about six minutes" in the homepage About text | Shaun, 2026-10-24 | kept |
+| "Also: IELTS · University · Business · IT English · Grammar topics" line under the buttons | links work | PR |
+| No section heading that repeats its only card: MSA + IELTS in one "Exam practice" block; no emoji badges on section headings | — | PR |
+| One header style across homepage, hubs and exercise pages | proposed in #229; Shaun declined (2026-10-24) | declined |

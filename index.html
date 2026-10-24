@@ -35,7 +35,10 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 .site-header p{color:rgba(255,255,255,.8);font-size:1rem;max-width:34rem;margin:0 auto}
 .header-cta{display:inline-block;margin-top:1.4rem;background:var(--gold);color:#1a3a5c;font-weight:800;font-size:.95rem;padding:.75rem 1.4rem;border-radius:10px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.18);transition:transform .15s}
 .header-cta:hover{transform:translateY(-1px)}
-.header-nav{display:flex;justify-content:center;gap:1.2rem;margin-top:1rem;font-size:.85rem}
+.header-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem 1rem;margin-top:1.4rem}
+.header-ctas .header-cta{margin-top:0}
+.header-cta-alt{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px var(--gold)}
+.header-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.3rem 1.2rem;margin-top:1rem;font-size:.85rem;color:rgba(255,255,255,.75)}
 .header-nav a{color:var(--gold-lt);font-weight:600;text-decoration:none}
 .header-nav a:hover{text-decoration:underline}
 .header-divider{height:4px;background:linear-gradient(90deg,var(--gold),var(--teal))}
@@ -124,9 +127,16 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
   </div>
   <h1>Free English exercises for Years 7–10, MSA &amp; Abitur</h1>
   <p>Pick your class and start. Instant feedback and a grade (Note 1–5), no sign-up.</p>
-  <a class="header-cta" href="activities.html">🔎 Search all exercises</a>
+  <div class="header-ctas">
+    <a class="header-cta" href="activities.html">🔎 Search all exercises</a>
+    <a class="header-cta header-cta-alt" href="level-test.html">🎯 Not sure of your level? Level test</a>
+  </div>
   <nav class="header-nav" aria-label="Quick links">
-    <a href="level-test.html">Level test</a>
+    <span>Also:</span>
+    <a href="ielts-activities.html">IELTS</a>
+    <a href="uni-activities.html">University</a>
+    <a href="business-activities.html">Business</a>
+    <a href="it-activities.html">IT English</a>
     <a href="themen/index.html">Grammar topics</a>
   </nav>
 </header>
@@ -195,34 +205,24 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 
   <section class="year-block">
     <h2 class="year-heading">
-      <span class="year-badge">🎧</span>
-      MSA — <span lang="de">Mittlerer Schulabschluss</span>
+      Exam practice: MSA &amp; IELTS
     </h2>
 
     <div class="cards-grid">
       <a class="group-card" href="msa-activities.html">
         <span class="group-icon">🎧</span>
         <span class="group-title">MSA English</span>
-        <span class="group-meta">Full-skills exam practice: listening, reading &amp; writing</span>
+        <span class="group-meta"><span lang="de">Mittlerer Schulabschluss</span>: listening, reading &amp; writing exam practice</span>
         <span class="exercise-count">20 Exercises</span>
       </a>
 
       <a class="group-card" href="msa-review.html">
         <span class="group-icon">🔁</span>
-        <span class="group-title">Mixed Revision</span>
+        <span class="group-title">MSA Mixed Revision</span>
         <span class="group-meta">Mixed questions revisiting earlier MSA units</span>
         <span class="exercise-count">Revision</span>
       </a>
-    </div>
-  </section>
 
-  <section class="year-block">
-    <h2 class="year-heading">
-      <span class="year-badge">🎯</span>
-      IELTS Academic
-    </h2>
-
-    <div class="cards-grid">
       <a class="group-card" href="ielts-activities.html">
         <span class="group-icon">🎯</span>
         <span class="group-title">IELTS Academic</span>
@@ -241,7 +241,6 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 
   <section class="year-block">
     <h2 class="year-heading">
-      <span class="year-badge">🎓</span>
       Abitur
     </h2>
 
