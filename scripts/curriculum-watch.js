@@ -67,14 +67,14 @@ function parseArgs(argv) {
 function decodeEntities(s) {
   return s
     .replace(/&nbsp;/g, ' ')
-    .replace(/&amp;/g, '&')
     .replace(/&quot;/g, '"')
     .replace(/&#0?39;|&apos;/g, "'")
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
     .replace(/&([aou])uml;/gi, (m, c) => ({ a: 'ä', o: 'ö', u: 'ü', A: 'Ä', O: 'Ö', U: 'Ü' })[c])
     .replace(/&szlig;/g, 'ß')
-    .replace(/&#(\d+);/g, (m, n) => String.fromCodePoint(Number(n)));
+    .replace(/&#(\d+);/g, (m, n) => String.fromCodePoint(Number(n)))
+    .replace(/&amp;/g, '&');
 }
 
 // Returns [{ href, text }] sorted by href, one entry per href.
