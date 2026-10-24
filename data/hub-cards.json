@@ -3,57 +3,84 @@
     "style": "activity-card",
     "blocks": [
       {
-        "heading": null,
+        "heading": {
+          "text": "England and Britain",
+          "id": "unit-england-and-britain"
+        },
         "cards": [
-          {
-            "href": "7c-holidays.html",
-            "icon": "🏖️",
-            "title": "7C – Where can we stay?",
-            "meta": "Holidays vocabulary &amp; comprehension",
-            "tag": "Reading &amp; exercises"
-          },
-          {
-            "href": "7c-robert-the-bruce.html",
-            "icon": "⚔️",
-            "title": "7C – Robert the Bruce",
-            "meta": "Who is it?, comprehension questions &amp; writing task",
-            "tag": "Reading &amp; writing"
-          },
-          {
-            "href": "7c-made-in-scotland.html",
-            "icon": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
-            "title": "7C – Made in Scotland",
-            "meta": "Vocabulary, grammar &amp; writing – Unit 3",
-            "tag": "Vocabulary &amp; writing"
-          },
           {
             "href": "7c-england-now-and-then.html",
             "icon": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-            "title": "7C – England: Now and Then",
+            "title": "England: Now and Then",
             "meta": "Vocabulary, directions &amp; writing",
             "tag": "Vocabulary &amp; writing"
           },
           {
-            "href": "7c-dictionary-skills.html",
-            "icon": "📖",
-            "title": "7C – Avalanche! Dictionary Skills",
-            "meta": "Finding German meanings &amp; using words in context",
-            "tag": "Vocabulary &amp; dictionary"
-          },
-          {
             "href": "7c-british-school-day.html",
             "icon": "🏫",
-            "title": "7C – A British School Day",
+            "title": "A British School Day",
             "meta": "Reading comprehension &amp; vocabulary exercises",
             "tag": "Reading &amp; comprehension"
           },
           {
             "href": "7c-school-day-in-britain.html",
             "icon": "🎒",
-            "title": "7C – School Day in Britain",
+            "title": "School Day in Britain",
             "meta": "Vocabulary, gap-fill &amp; writing tasks",
             "tag": "Vocabulary &amp; writing"
+          }
+        ]
+      },
+      {
+        "heading": {
+          "text": "Scotland",
+          "id": "unit-scotland"
+        },
+        "cards": [
+          {
+            "href": "7c-robert-the-bruce.html",
+            "icon": "⚔️",
+            "title": "Robert the Bruce",
+            "meta": "Who is it?, comprehension questions &amp; writing task",
+            "tag": "Reading &amp; writing"
           },
+          {
+            "href": "7c-made-in-scotland.html",
+            "icon": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+            "title": "Made in Scotland",
+            "meta": "Vocabulary, grammar &amp; writing – Unit 3",
+            "tag": "Vocabulary &amp; writing"
+          }
+        ]
+      },
+      {
+        "heading": {
+          "text": "More practice",
+          "id": "unit-more-practice"
+        },
+        "cards": [
+          {
+            "href": "7c-holidays.html",
+            "icon": "🏖️",
+            "title": "Where can we stay?",
+            "meta": "Holidays vocabulary &amp; comprehension",
+            "tag": "Reading &amp; exercises"
+          },
+          {
+            "href": "7c-dictionary-skills.html",
+            "icon": "📖",
+            "title": "Avalanche! Dictionary Skills",
+            "meta": "Finding German meanings &amp; using words in context",
+            "tag": "Vocabulary &amp; dictionary"
+          }
+        ]
+      },
+      {
+        "heading": {
+          "text": "Revision",
+          "id": "unit-revision"
+        },
+        "cards": [
           {
             "href": "7c-review.html",
             "icon": "🔁",
@@ -69,43 +96,11 @@
     "style": "activity-card",
     "blocks": [
       {
-        "heading": null,
+        "heading": {
+          "text": "Britain",
+          "id": "unit-britain"
+        },
         "cards": [
-          {
-            "href": "vocab-games.html",
-            "icon": "🎮",
-            "title": "Vocabulary Games",
-            "meta": "Matching, fill-in-blank, multiple choice &amp; word scramble",
-            "tag": "Interactive games"
-          },
-          {
-            "href": "7g-tudor-past-perfect.html",
-            "icon": "🏰",
-            "title": "Tudor England – The Past Perfect",
-            "meta": "Sentence matching, gap-fill &amp; Francis Drake story",
-            "tag": "Grammar &amp; writing"
-          },
-          {
-            "href": "7g-tudor-conditionals.html",
-            "icon": "👑",
-            "title": "Tudor Conditionals – Type 3",
-            "meta": "Conditional clauses type 3 with English history sentences",
-            "tag": "Grammar &amp; writing"
-          },
-          {
-            "href": "7g-present-perfect-1.html",
-            "icon": "✨",
-            "title": "Present Perfect – Been &amp; Gone",
-            "meta": "Verb forms, just/already/yet, ever/never with instant grading",
-            "tag": "Grammar"
-          },
-          {
-            "href": "7a-what-was-it-like.html",
-            "icon": "🏺",
-            "title": "7A – What was it like?",
-            "meta": "Vocabulary, past tenses &amp; descriptive writing about the past",
-            "tag": "Vocabulary &amp; writing"
-          },
           {
             "href": "7g-london-landmarks.html",
             "icon": "🇬🇧",
@@ -121,13 +116,6 @@
             "tag": "Reading &amp; vocabulary"
           },
           {
-            "href": "7g-amazon-rainforest-reading.html",
-            "icon": "🌳",
-            "title": "The Amazon Rainforest",
-            "meta": "Reading comprehension — find facts about location, size &amp; biodiversity",
-            "tag": "Reading &amp; comprehension"
-          },
-          {
             "href": "7g-british-sports.html",
             "icon": "⚽",
             "title": "British Sports",
@@ -140,6 +128,28 @@
             "title": "British Wildlife",
             "meta": "Wildlife reading, choose the right word &amp; write about a favourite wild animal",
             "tag": "Reading &amp; vocabulary"
+          }
+        ]
+      },
+      {
+        "heading": {
+          "text": "Tudor England",
+          "id": "unit-tudor-england"
+        },
+        "cards": [
+          {
+            "href": "7g-tudor-past-perfect.html",
+            "icon": "🏰",
+            "title": "Tudor England – The Past Perfect",
+            "meta": "Sentence matching, gap-fill &amp; Francis Drake story",
+            "tag": "Grammar &amp; writing"
+          },
+          {
+            "href": "7g-tudor-conditionals.html",
+            "icon": "👑",
+            "title": "Tudor Conditionals – Type 3",
+            "meta": "Conditional clauses type 3 with English history sentences",
+            "tag": "Grammar &amp; writing"
           },
           {
             "href": "7g-tudor-conditionals-2.html",
@@ -147,7 +157,51 @@
             "title": "Tudor Conditionals – Type 3 (Part 2)",
             "meta": "Jay's London adventure, Shakespeare's Globe &amp; conditional type 3 practice",
             "tag": "Grammar &amp; reading"
+          }
+        ]
+      },
+      {
+        "heading": {
+          "text": "More practice",
+          "id": "unit-more-practice"
+        },
+        "cards": [
+          {
+            "href": "7a-what-was-it-like.html",
+            "icon": "🏺",
+            "title": "What was it like?",
+            "meta": "Vocabulary, past tenses &amp; descriptive writing about the past",
+            "tag": "Vocabulary &amp; writing"
           },
+          {
+            "href": "7g-present-perfect-1.html",
+            "icon": "✨",
+            "title": "Present Perfect – Been &amp; Gone",
+            "meta": "Verb forms, just/already/yet, ever/never with instant grading",
+            "tag": "Grammar"
+          },
+          {
+            "href": "7g-amazon-rainforest-reading.html",
+            "icon": "🌳",
+            "title": "The Amazon Rainforest",
+            "meta": "Reading comprehension — find facts about location, size &amp; biodiversity",
+            "tag": "Reading &amp; comprehension"
+          },
+          {
+            "href": "vocab-games.html",
+            "icon": "🎮",
+            "title": "Vocabulary Games",
+            "meta": "Matching, fill-in-blank, multiple choice &amp; word scramble",
+            "tag": "Interactive games"
+          }
+        ]
+      },
+      {
+        "heading": {
+          "text": "Revision",
+          "id": "unit-revision"
+        },
+        "cards": [
           {
             "href": "7g-review.html",
             "icon": "🔁",
@@ -167,8 +221,8 @@
     "blocks": [
       {
         "heading": {
-          "text": "The Northeast",
-          "id": "unit-the-northeast"
+          "text": "New York City",
+          "id": "unit-new-york-city"
         },
         "cards": [
           {
@@ -196,10 +250,17 @@
       },
       {
         "heading": {
-          "text": "The Midwest",
-          "id": "unit-the-midwest"
+          "text": "Around the USA",
+          "id": "unit-around-the-usa"
         },
         "cards": [
+          {
+            "href": "8c-five-teenagers.html",
+            "icon": "🇺🇸",
+            "title": "Five Teenagers from the USA",
+            "meta": "American teens · Present simple &amp; personal profiles",
+            "tag": "Grammar & writing"
+          },
           {
             "href": "8c-off-to-midwest.html",
             "icon": "🌽",
@@ -213,15 +274,7 @@
             "title": "Midwest Festivals",
             "meta": "State Fair &amp; Thanksgiving · Holiday &amp; festival vocabulary",
             "tag": "Vocabulary & writing"
-          }
-        ]
-      },
-      {
-        "heading": {
-          "text": "The West",
-          "id": "unit-the-west"
-        },
-        "cards": [
+          },
           {
             "href": "8c-going-west.html",
             "icon": "🏔️",
@@ -235,15 +288,7 @@
             "title": "Volunteering Out West",
             "meta": "National parks &amp; volunteering · Gerunds after verbs",
             "tag": "Grammar & writing"
-          }
-        ]
-      },
-      {
-        "heading": {
-          "text": "The Southwest and the South",
-          "id": "unit-the-southwest-and-the-south"
-        },
-        "cards": [
+          },
           {
             "href": "8c-around-southwest.html",
             "icon": "🌵",
@@ -256,21 +301,6 @@
             "icon": "🎷",
             "title": "Settling in the South",
             "meta": "Music &amp; culture · Defining relative clauses",
-            "tag": "Grammar & writing"
-          }
-        ]
-      },
-      {
-        "heading": {
-          "text": "Teen life in the USA",
-          "id": "unit-teen-life-in-the-usa"
-        },
-        "cards": [
-          {
-            "href": "8c-five-teenagers.html",
-            "icon": "🇺🇸",
-            "title": "Five Teenagers from the USA",
-            "meta": "American teens · Present simple &amp; personal profiles",
             "tag": "Grammar & writing"
           },
           {
@@ -304,51 +334,8 @@
     "blocks": [
       {
         "heading": {
-          "text": "American life",
-          "id": "unit-american-life"
-        },
-        "cards": [
-          {
-            "href": "8g-usa-contrasts.html",
-            "icon": "🇺🇸",
-            "title": "The USA: Country of Contrasts",
-            "meta": "Reading about US diversity &amp; adjective + noun collocations",
-            "tag": "Vocabulary & grammar"
-          },
-          {
-            "href": "8g-kids-in-america.html",
-            "icon": "🇺🇸",
-            "title": "Kids in America",
-            "meta": "Exchange year reading, gerunds &amp; infinitives, object + infinitive",
-            "tag": "Reading & grammar"
-          },
-          {
-            "href": "8g-kids-in-america-thanksgiving.html",
-            "icon": "🦃",
-            "title": "Thanksgiving in America",
-            "meta": "a German exchange student's first Thanksgiving in the USA, plus festival and food vocabulary, B1 level.",
-            "tag": "Reading & vocabulary"
-          },
-          {
-            "href": "8g-school-life-rules.html",
-            "icon": "🏫",
-            "title": "School Life: Dos and Don'ts",
-            "meta": "US school rules, modal verbs of obligation &amp; persuasive writing",
-            "tag": "Grammar & writing"
-          },
-          {
-            "href": "8g-american-family.html",
-            "icon": "🏡",
-            "title": "At Home with an American Family",
-            "meta": "Host family life, household &amp; chores vocabulary",
-            "tag": "Writing"
-          }
-        ]
-      },
-      {
-        "heading": {
-          "text": "New York and the Northwest",
-          "id": "unit-new-york-and-the-northwest"
+          "text": "New York City",
+          "id": "unit-new-york-city"
         },
         "cards": [
           {
@@ -356,14 +343,78 @@
             "icon": "🗽",
             "title": "City of Dreams: New York",
             "meta": "NYC boroughs &amp; culture, relative clauses, present &amp; past perfect progressive",
-            "tag": "Reading & grammar"
+            "tag": "Reading &amp; grammar"
+          }
+        ]
+      },
+      {
+        "heading": {
+          "text": "Around the USA",
+          "id": "unit-around-the-usa"
+        },
+        "cards": [
+          {
+            "href": "8g-usa-contrasts.html",
+            "icon": "🇺🇸",
+            "title": "The USA: Country of Contrasts",
+            "meta": "Reading about US diversity &amp; adjective + noun collocations",
+            "tag": "Reading &amp; vocabulary"
           },
           {
-            "href": "8g-pacific-northwest.html",
-            "icon": "🌲",
-            "title": "The Pacific Northwest",
-            "meta": "Forests &amp; national parks, question tags &amp; blog writing",
-            "tag": "Grammar & writing"
+            "href": "8g-kids-in-america.html",
+            "icon": "🇺🇸",
+            "title": "Kids in America",
+            "meta": "Exchange year reading, gerunds &amp; infinitives, object + infinitive",
+            "tag": "Reading &amp; grammar"
+          },
+          {
+            "href": "8g-kids-in-america-thanksgiving.html",
+            "icon": "🦃",
+            "title": "Thanksgiving in America",
+            "meta": "a German exchange student's first Thanksgiving in the USA, plus festival and food vocabulary, B1 level.",
+            "tag": "Reading & Vocabulary"
+          },
+          {
+            "href": "8g-advertisements.html",
+            "icon": "📣",
+            "title": "Advertisements",
+            "meta": "How adverts persuade us, slogans &amp; writing your own advert",
+            "tag": "Reading &amp; writing"
+          },
+          {
+            "href": "8g-school-life-rules.html",
+            "icon": "🏫",
+            "title": "School Life: Dos and Don'ts",
+            "meta": "US school rules, modal verbs of obligation &amp; persuasive writing",
+            "tag": "Reading &amp; grammar"
+          },
+          {
+            "href": "8g-internet-texts.html",
+            "icon": "🌐",
+            "title": "Internet Texts",
+            "meta": "Reliable sources, hoaxes &amp; fake reviews, digital vocabulary",
+            "tag": "Reading &amp; vocabulary"
+          },
+          {
+            "href": "8g-american-british-english.html",
+            "icon": "🇬🇧",
+            "title": "American vs British English",
+            "meta": "Vocabulary differences, spelling, register &amp; reading gap-fill",
+            "tag": "Vocabulary &amp; register"
+          },
+          {
+            "href": "8g-american-inventions.html",
+            "icon": "💡",
+            "title": "A Nation Invents Itself",
+            "meta": "American inventions reading, adjectives &amp; adverbs, participles as adjectives &amp; linking words",
+            "tag": "Reading &amp; grammar"
+          },
+          {
+            "href": "8g-american-inventions-conditionals.html",
+            "icon": "🔢",
+            "title": "American Inventions in Numbers",
+            "meta": "American inventions in numbers, conditionals type 1 &amp; 2",
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "8g-travel-texts.html",
@@ -371,57 +422,20 @@
             "title": "Travel Texts",
             "meta": "Travel blogs &amp; guides · Montana · Collocations for travel writing",
             "tag": "Reading & writing"
-          }
-        ]
-      },
-      {
-        "heading": {
-          "text": "History and inventions",
-          "id": "unit-history-and-inventions"
-        },
-        "cards": [
-          {
-            "href": "8g-american-inventions.html",
-            "icon": "💡",
-            "title": "A Nation Invents Itself",
-            "meta": "American inventions reading, adjectives &amp; adverbs, participles as adjectives &amp; linking words",
-            "tag": "Reading & grammar"
           },
           {
-            "href": "8g-american-inventions-conditionals.html",
-            "icon": "🔢",
-            "title": "American Inventions in Numbers",
-            "meta": "American inventions in numbers, conditionals type 1 &amp; 2",
-            "tag": "Grammar & writing"
-          }
-        ]
-      },
-      {
-        "heading": {
-          "text": "Language and media",
-          "id": "unit-language-and-media"
-        },
-        "cards": [
-          {
-            "href": "8g-american-british-english.html",
-            "icon": "🇬🇧",
-            "title": "American vs British English",
-            "meta": "Vocabulary differences, spelling, register &amp; reading gap-fill",
-            "tag": "Vocabulary & reading"
+            "href": "8g-american-family.html",
+            "icon": "🏡",
+            "title": "At Home with an American Family",
+            "meta": "Host family life, household &amp; chores vocabulary",
+            "tag": "Reading &amp; vocabulary"
           },
           {
-            "href": "8g-advertisements.html",
-            "icon": "📣",
-            "title": "Advertisements",
-            "meta": "How adverts persuade us, slogans &amp; writing your own advert",
-            "tag": "Writing"
-          },
-          {
-            "href": "8g-internet-texts.html",
-            "icon": "🌐",
-            "title": "Internet Texts",
-            "meta": "Reliable sources, hoaxes &amp; fake reviews, digital vocabulary",
-            "tag": "Vocabulary & writing"
+            "href": "8g-pacific-northwest.html",
+            "icon": "🌲",
+            "title": "The Pacific Northwest",
+            "meta": "Forests &amp; national parks, question tags &amp; blog writing",
+            "tag": "Reading &amp; grammar"
           }
         ]
       },
@@ -456,7 +470,7 @@
             "icon": "🏨",
             "title": "A Job in Melbourne: Reading a Job Ad and Application",
             "meta": "read a hotel job advertisement and application letter, match jobs to definitions, and learn key vocabulary for applying.",
-            "tag": "Vocabulary & writing"
+            "tag": "Vocabulary & Writing"
           },
           {
             "href": "9c-australia-vocab-practice.html",
@@ -476,23 +490,23 @@
           {
             "href": "sport-south-africa.html",
             "icon": "🏉",
-            "title": "9C – Sport in South Africa",
+            "title": "Sport in South Africa",
             "meta": "Pre-reading, true/false/NG, multiple choice &amp; vocabulary",
-            "tag": "Vocabulary"
+            "tag": "Reading &amp; exercises"
           },
           {
             "href": "9c-mandela-rainbow-nation.html",
             "icon": "🇿🇦",
-            "title": "9C – Mandela and the Rainbow Nation",
+            "title": "Mandela and the Rainbow Nation",
             "meta": "Mandela's life, apartheid vocabulary &amp; relative clauses",
-            "tag": "Grammar & writing"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "9c-south-africa-revision.html",
             "icon": "🇿🇦",
-            "title": "9C – South Africa Revision",
+            "title": "South Africa Revision",
             "meta": "Revision exercises on South Africa",
-            "tag": "Grammar"
+            "tag": "Revision"
           }
         ]
       },
@@ -507,7 +521,7 @@
             "icon": "🍁",
             "title": "Canada: A Multicultural Country",
             "meta": "Canada and multiculturalism, with the passive voice, self-marking gap-fills and a writing task.",
-            "tag": "Grammar & writing"
+            "tag": "Grammar & Writing"
           }
         ]
       },
@@ -520,16 +534,16 @@
           {
             "href": "9c-work-experience-jobs.html",
             "icon": "🧰",
-            "title": "9C – Work Experience",
+            "title": "Work Experience",
             "meta": "A work placement, job vocabulary &amp; present perfect vs simple past",
-            "tag": "Grammar & writing"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "9c-future-plans-school.html",
             "icon": "🎓",
-            "title": "9C – After Year 10: Plans and Predictions",
+            "title": "After Year 10: Plans and Predictions",
             "meta": "Apprenticeships, careers &amp; future tenses",
-            "tag": "Grammar & writing"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "9c-volunteering-abroad.html",
@@ -541,44 +555,44 @@
           {
             "href": "9c-media-reported-speech.html",
             "icon": "📱",
-            "title": "9C – Social Media: Say It Again",
+            "title": "Social Media: Say It Again",
             "meta": "Fake news, cyberbullying &amp; reported speech",
-            "tag": "Writing & grammar"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "9c-life-before-technology.html",
             "icon": "📼",
             "title": "Life Before Technology",
             "meta": "life before smartphones and the internet, with used to / didn't use to, self-marking gap-fills and a writing task.",
-            "tag": "Grammar & writing"
+            "tag": "Grammar & Writing"
           },
           {
             "href": "9c-teen-screen-time.html",
             "icon": "📱",
             "title": "Teenagers and Screen Time",
             "meta": "teenagers and screen time, with gerunds and infinitives, self-marking gap-fills and a writing task.",
-            "tag": "Grammar & writing"
+            "tag": "Grammar & Writing"
           },
           {
             "href": "9c-plastic-pollution.html",
             "icon": "♻️",
-            "title": "9C – Plastic Pollution",
+            "title": "Plastic Pollution",
             "meta": "Environmental reading, passive voice &amp; comprehension",
-            "tag": "Reading & vocabulary"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "9c-healthy-living-conditionals.html",
             "icon": "🥗",
-            "title": "9C – Healthy Living: What If?",
+            "title": "Healthy Living: What If?",
             "meta": "Sleep, food &amp; sport with if-clauses type I and II",
-            "tag": "Grammar & writing"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "9c-question-tags-small-talk.html",
             "icon": "💬",
             "title": "Small Talk: Question Tags",
             "meta": "small talk and question tags, with a dialogue reading, self-marking gap-fills and a writing task.",
-            "tag": "Grammar & writing"
+            "tag": "Grammar & Writing"
           }
         ]
       },
@@ -591,7 +605,7 @@
           {
             "href": "9c-review.html",
             "icon": "🔁",
-            "title": "9C – Mixed Revision",
+            "title": "Mixed Revision",
             "meta": "24 questions from every unit &middot; spaced practice",
             "tag": "Review"
           }
@@ -613,21 +627,21 @@
             "icon": "🐠",
             "title": "Australia – Great Barrier Reef",
             "meta": "Reading, reported speech &amp; environmental writing",
-            "tag": "Reading & writing"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "9g-australia-outback-past-perfect.html",
             "icon": "🏜️",
             "title": "Into the Red Centre",
             "meta": "Uluru and the Outback — past perfect vs simple past, time clauses &amp; a travel diary",
-            "tag": "Writing"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "9g-australia-passive-forms.html",
             "icon": "🎒",
             "title": "Just Me and My Backpack",
             "meta": "Travelling in Australia — passive forms in six tenses, the passive infinitive &amp; a safety page",
-            "tag": "Grammar"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "9g-australia-passive-infinitive.html",
@@ -648,14 +662,14 @@
             "icon": "🪃",
             "title": "Australia: Rights Recognised",
             "meta": "Indigenous history &amp; the passive with two objects",
-            "tag": "Grammar & writing"
+            "tag": "Grammar"
           },
           {
             "href": "9g-australia-outback.html",
             "icon": "🦘",
             "title": "Australia – Outback and Identity",
             "meta": "The Outback: More Than an Empty Space · Outback Vocabulary · Modal Verbs and Conditionals",
-            "tag": "Reading & writing"
+            "tag": "Vocabulary & Grammar"
           },
           {
             "href": "9g-australia-vocab-practice.html",
@@ -684,35 +698,35 @@
             "icon": "🌴",
             "title": "California Exercises",
             "meta": "Economy, articles, abstract nouns &amp; collective nouns",
-            "tag": "Reading"
+            "tag": "Exercises"
           },
           {
             "href": "9g-california-hazards.html",
             "icon": "🔥",
             "title": "California – Environment &amp; Hazards",
             "meta": "Wildfires, modal verbs, cause &amp; effect writing",
-            "tag": "Grammar"
+            "tag": "Reading &amp; writing"
           },
           {
             "href": "9g-famous-hollywood.html",
             "icon": "📸",
             "title": "Famous &amp; Hollywood",
             "meta": "Todd Strasser&apos;s &ldquo;Famous&rdquo;, relative pronouns &amp; future tenses",
-            "tag": "Grammar"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "9g-california-silicon-valley.html",
             "icon": "💻",
             "title": "California – Silicon Valley",
             "meta": "Silicon Valley: Ideas, Money and Pressure · Technology and Business Vocabulary · Reported Speech and Future Forms",
-            "tag": "Reading & writing"
+            "tag": "Vocabulary & Writing"
           },
           {
             "href": "9g-california-future-meaning.html",
             "icon": "🌴",
             "title": "California Dreaming: Talking About the Future",
             "meta": "present simple and progressive with future meaning (timetables, time clauses, arrangements), then write about a trip. B1/B2.",
-            "tag": "Reading & grammar"
+            "tag": "Reading & Grammar"
           }
         ]
       },
@@ -727,14 +741,14 @@
             "icon": "🍀",
             "title": "Ireland – Gerunds &amp; Infinitives",
             "meta": "Irish culture, gerunds, infinitives &amp; reading comprehension",
-            "tag": "Reading & grammar"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "9g-ireland-emigration.html",
             "icon": "☘️",
             "title": "Ireland – Emigration and Storytelling",
             "meta": "Leaving and Remembering Ireland · Migration and Identity Vocabulary · Narrative Tenses",
-            "tag": "Reading & writing"
+            "tag": "Vocabulary"
           }
         ]
       },
@@ -749,14 +763,14 @@
             "icon": "🍁",
             "title": "Canada – Conditionals",
             "meta": "Canadian culture, conditional sentences &amp; hypothetical scenarios",
-            "tag": "Reading & grammar"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "9g-canada-indigenous-voices.html",
             "icon": "🪶",
             "title": "Canada – Indigenous Voices",
             "meta": "Listening to Indigenous Voices in Canada · Identity and History Vocabulary · Passive Voice",
-            "tag": "Reading & writing"
+            "tag": "Listening & Vocabulary"
           }
         ]
       },
@@ -771,14 +785,14 @@
             "icon": "🥝",
             "title": "New Zealand – Passive Voice",
             "meta": "New Zealand culture, passive constructions &amp; environmental topics",
-            "tag": "Reading & grammar"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "9g-new-zealand-maori-voices.html",
             "icon": "🛶",
             "title": "New Zealand – Māori Culture and Language",
             "meta": "Aotearoa: Language, Land and Identity · Culture and Landscape Vocabulary · Relative Clauses",
-            "tag": "Reading & writing"
+            "tag": "Vocabulary & Grammar"
           }
         ]
       },
@@ -793,7 +807,7 @@
             "icon": "🇮🇳",
             "title": "India – Phrasal Verbs",
             "meta": "Reading, comprehension, gap-fill, definitions &amp; writing with phrasal verbs",
-            "tag": "Reading & grammar"
+            "tag": "Reading &amp; grammar"
           }
         ]
       },
@@ -808,21 +822,21 @@
             "icon": "📰",
             "title": "Behind the Headlines",
             "meta": "How news and fake news are made — participle clauses &amp; a news report",
-            "tag": "Writing"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "9g-work-experience-indirect-questions.html",
             "icon": "💼",
             "title": "Two Weeks in the Real World",
             "meta": "Work experience &amp; job interviews — indirect questions, question tags &amp; a placement email",
-            "tag": "Writing"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "9g-ev-renewable-energy-reading.html",
             "icon": "⚡",
             "title": "Electric Vehicles &amp; Renewable Energy",
             "meta": "Reading comprehension on EVs and the global push for renewable energy",
-            "tag": "Grammar"
+            "tag": "Reading &amp; comprehension"
           }
         ]
       },
@@ -837,7 +851,7 @@
             "icon": "☀️",
             "title": "Summer Revision – Class Test",
             "meta": "Articles, relative clauses, vocabulary, future tenses &amp; reading",
-            "tag": "Revision & self-check"
+            "tag": "Revision &amp; self-check"
           },
           {
             "href": "9g-review.html",
@@ -864,28 +878,28 @@
             "icon": "🍁",
             "title": "Discover Canada",
             "meta": "Reading, present tenses, present perfect &amp; writing",
-            "tag": "Grammar & writing"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "10c-canada-environment.html",
             "icon": "🌲",
             "title": "Discover Canada: The Environment",
             "meta": "Climate &amp; the Arctic · present perfect vs past simple &amp; time words",
-            "tag": "Grammar & writing"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "10c-canada-schools.html",
             "icon": "🏫",
             "title": "School in Canada: Rules and Education",
             "meta": "Canadian school system · modal verbs must, have to &amp; should",
-            "tag": "Grammar & writing"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "10c-canada-sport-hobbies.html",
             "icon": "🏒",
             "title": "Sport & Free Time in Canada",
             "meta": "Ice hockey, lacrosse &amp; present simple vs present continuous",
-            "tag": "Grammar & writing"
+            "tag": "Reading &amp; grammar"
           }
         ]
       },
@@ -900,14 +914,14 @@
             "icon": "🇮🇳",
             "title": "Inside India",
             "meta": "Reading, if-clauses I &amp; II, passive voice &amp; writing",
-            "tag": "Reading & grammar"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "10c-india-mumbai.html",
             "icon": "🇮🇳",
             "title": "Inside India: Mumbai &amp; Fair Wages",
             "meta": "City life &amp; fair trade · present &amp; past passive voice",
-            "tag": "Grammar & writing"
+            "tag": "Reading &amp; grammar"
           }
         ]
       },
@@ -922,7 +936,7 @@
             "icon": "🇳🇿",
             "title": "New Zealand News",
             "meta": "Reading, past tenses, past perfect, if-clauses III &amp; writing",
-            "tag": "Reading & grammar"
+            "tag": "Reading &amp; grammar"
           }
         ]
       },
@@ -937,28 +951,28 @@
             "icon": "🇬🇧",
             "title": "London Slang &amp; Language Change",
             "meta": "Reading, vocabulary, slang &amp; discussing language evolution",
-            "tag": "Reading & vocabulary"
+            "tag": "Vocabulary &amp; Discussion"
           },
           {
             "href": "10c-eu-and-uk.html",
             "icon": "🇪🇺",
             "title": "The EU and the UK",
             "meta": "Europe &amp; Brexit · present perfect vs past simple &amp; linking words",
-            "tag": "Grammar & writing"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "10c-government-systems.html",
             "icon": "🏛️",
             "title": "Government Systems: UK &amp; USA",
             "meta": "Compare the UK &amp; US systems · passive voice &amp; active→passive",
-            "tag": "Grammar & writing"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "10c-mlk-biography.html",
             "icon": "✊",
             "title": "Martin Luther King Jr.",
             "meta": "Reading, passive voice, civil rights vocabulary &amp; writing",
-            "tag": "Reading & grammar"
+            "tag": "Reading &amp; grammar"
           }
         ]
       },
@@ -973,21 +987,21 @@
             "icon": "🌍",
             "title": "Faces of the Commonwealth",
             "meta": "Reading, present tenses revision &amp; vocabulary",
-            "tag": "Reading & grammar"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "10c-stereotypes.html",
             "icon": "🌍",
             "title": "Stereotypes &amp; Cultural Awareness",
             "meta": "Reading, passive voice, if-clauses III &amp; writing",
-            "tag": "Reading & grammar"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "10c-pair-of-jeans.html",
             "icon": "👖",
             "title": "A Pair of Jeans",
             "meta": "A short story about family &amp; fitting in · narrative tenses",
-            "tag": "Grammar & writing"
+            "tag": "Reading &amp; grammar"
           }
         ]
       },
@@ -1022,7 +1036,7 @@
             "icon": "🗳️",
             "title": "From Apartheid to Democracy: Past Tenses",
             "meta": "a family story from apartheid to the 1994 election, drills on narrative past tenses, and a caption to write. B2/C1.",
-            "tag": "Reading & writing"
+            "tag": "Reading & Writing"
           },
           {
             "href": "10g-south-africa-vocab-practice.html",
@@ -1044,14 +1058,14 @@
             "icon": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
             "title": "Scottish History: From Clans to Independence",
             "meta": "Passive voice · Linking ideas · Argumentative writing",
-            "tag": "Reading & writing"
+            "tag": "Grammar & writing"
           },
           {
             "href": "10g-scottish-highlands.html",
             "icon": "🏔️",
             "title": "The Scottish Highlands",
             "meta": "Highland life, kelpies &amp; selkies · Past tenses &amp; diary writing",
-            "tag": "Reading & writing"
+            "tag": "Reading &amp; grammar"
           },
           {
             "href": "10g-scottish-lowlands.html",
@@ -1072,7 +1086,7 @@
             "icon": "🌿",
             "title": "Green Scotland: Renewable Energy &amp; Rewilding",
             "meta": "Conditionals · Environmental vocabulary · Blog writing",
-            "tag": "Reading & grammar"
+            "tag": "Grammar & writing"
           },
           {
             "href": "10g-scottish-identity.html",
@@ -1086,7 +1100,7 @@
             "icon": "🎻",
             "title": "Folk &amp; Folk-Inspired Music",
             "meta": "Celtic &amp; modern folk · Comparatives &amp; comparing / contrasting",
-            "tag": "Writing"
+            "tag": "Grammar & writing"
           }
         ]
       },
@@ -1172,7 +1186,7 @@
             "icon": "🎙️",
             "title": "Making a Podcast About Integration",
             "meta": "Interview technique &amp; active listening · Speaking skills",
-            "tag": "Reading & listening"
+            "tag": "Listening & speaking"
           }
         ]
       },
@@ -1201,7 +1215,7 @@
             "icon": "🧑‍🤝‍🧑",
             "title": "My Generation?",
             "meta": "Youth subcultures · Comparatives &amp; contrast",
-            "tag": "Vocabulary & writing"
+            "tag": "Grammar & writing"
           }
         ]
       },
@@ -1259,7 +1273,7 @@
             "icon": "👕",
             "title": "Who Made Your Jeans? Arguing Convincingly",
             "meta": "a fast-fashion speech, drills on persuasive techniques and signposting, plus a debate speech to write. B2/C1.",
-            "tag": "Reading & writing"
+            "tag": "Reading & Writing"
           },
           {
             "href": "10g-cultural-diversity.html",
