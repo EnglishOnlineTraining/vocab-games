@@ -390,7 +390,7 @@ body{
       if (resumeEx) {
         html += '<div class="panel resume"><h3>Continue Where You Left Off</h3>'
           + '<p>' + esc(resumeEx.title) + '</p>'
-          + '<a href="' + resumeEx.file + '?mode=practise">Resume &rarr;</a>'
+          + '<a href="' + resumeEx.file + '">Resume &rarr;</a>'   // plain page: its resume banner offers the draft, in the mode it was saved in
           + '</div>';
       }
     }

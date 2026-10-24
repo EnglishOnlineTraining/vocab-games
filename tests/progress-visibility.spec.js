@@ -21,6 +21,12 @@ test('progress is visible on the homepage, hubs and dashboard', async ({ page },
   await expect(cont).toHaveAttribute('href', `${UNIT}.html`);
   await page.screenshot({ path: testInfo.outputPath('home-continue.png') });
 
+  // The dashboard's Resume link opens the plain page, so the resume banner (not
+  // a forced practise start) decides; ?mode=practise used to skip the banner.
+  await page.goto('/dashboard.html');
+  await expect(page.locator('.panel.resume a')).toHaveAttribute('href', `${UNIT}.html`);
+  await page.goto('/index.html');
+
   // Resuming a practise draft (from Continue or the banner) stays in practise mode.
   await cont.click();
   await page.click('#eol-resume-yes');
