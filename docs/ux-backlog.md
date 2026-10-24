@@ -9,8 +9,10 @@ Status: `todo` · `PR #n` · `done`
 ## Decided
 
 - Cookie banner stays as it is (Shaun, 2026-10-24).
-- Hubs group exercises by **named** unit ("Scotland", not "Unit 1"). "Focus" and "Across
-  cultures" pages get their own named heading too. Claude drafts the names, Shaun reviews.
+- Hubs group exercises by **country** ("Scotland", "Australia"), as the German curriculum does
+  (Shaun, 2026-10-24, replacing the first per-unit grouping, which made too many groups). Where a
+  class is all one country, it uses two groups: "New York City" and "Around the USA" (8C, 8G).
+  Year 7 is grouped by place too (Shaun, 2026-10-24). Claude drafts, Shaun reviews.
 - Not taken from the reviews: a React/Context/Zod progress rewrite (wrong stack, new
   dependencies), softer grade framing (the Note scale is fixed and the "to review" list
   already comes before it), "6-minute" level test copy (the test is 15–20 questions),
@@ -28,12 +30,17 @@ Status: `todo` · `PR #n` · `done`
 
 | Item | Check | Status |
 |---|---|---|
-| Group cards under named-unit headings, in textbook order; Review/Writing/extra pages last | 8c, 9g, 10g hubs show headings; every card still present | todo |
-| Fix 🦘 icon shown as `&#x1F998;` on 9g hub | no `&amp;#x` in any hub | todo |
-| One icon style: emoji, not text badges (AU, CA, IE, NZ) | no two-letter text icons in `data/hub-cards.json` | todo |
-| Tags name the skill, not the unit (heading now carries the unit) | no "Unit n" / "Focus n" tags | todo |
-| Card description: two-line CSS clamp, no "…" cut at 107 characters | build no longer truncates; long text clamps to 2 lines | todo |
-| Exercise cards before the German intro text; intro links styled | first card above the fold-ish at 390px; no default blue links | todo |
+| Group cards under country headings (regions/themes on the all-USA 8C/8G hubs); "More practice" and "Revision" last | 8c, 9g, 10g hubs show headings; every card still present | PR |
+| Fix 🦘 icon shown as `&#x1F998;` on 9g hub | no `&amp;#x` in any hub | PR |
+| One icon style: emoji, not text badges (AU, CA, IE, NZ) | no two-letter text icons in `data/hub-cards.json` | PR |
+| Tags: hand-written tags kept; only textbook labels ("Unit n", "Focus n"…) replaced, checked against each card's description. `exercises.json` skills are not reliable enough to derive tags from | no "Unit n" / "Focus n" tags on the class hubs (ungrouped hubs such as `it-activities` keep theirs) | PR |
+| Card description: two-line CSS clamp, no "…" cut at 107 characters | build no longer truncates; long text clamps to 2 lines | PR |
+| Exercise cards before the German intro text; intro links styled | first card above the fold-ish at 390px; no default blue links | PR |
+
+Draft group names are for Shaun's review (`data/hub-cards.json`, `heading.text`). Card titles drop
+class prefixes ("7C –", "9C –"); cards inside a group follow textbook order where known. Pages that
+fit no place (Vocabulary Games, 7A, Present Perfect drill, Amazon) sit in "More practice". New
+exercises land in "More practice" until filed.
 
 ## A2. Exercise page
 

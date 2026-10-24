@@ -73,6 +73,9 @@ const TAG_STYLE = 'display:inline-block;margin-top:.4rem;font-size:.7rem;font-we
   + 'letter-spacing:.05em;text-transform:uppercase;padding:.25rem .75rem;border-radius:20px;'
   + 'background:var(--blue-lt,#e8f2fb);color:var(--blue-mid,#1a6eb5)';
 
+// Long descriptions stay whole in the HTML and are cut to two lines on screen.
+const CLAMP = 'display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden';
+
 const SKILL_TAG = {
   grammar: 'Grammar', reading: 'Reading', writing: 'Writing',
   vocabulary: 'Vocabulary', listening: 'Listening'
@@ -98,7 +101,6 @@ function derive(e) {
   // The meta description is written for search results and opens with boilerplate
   // ("Free Year 9 English practice: ..."). The card wants the part after that.
   meta = meta.replace(/^[^:]{0,60}:\s*/, '').replace(/\s*$/, '');
-  if (meta.length > 110) meta = meta.slice(0, 107).replace(/[\s,;]+\S*$/, '') + '…';
   if (!meta) meta = (e.blurb || '').split(' · ').slice(0, 3).join(' · ');
 
   const tag = (e.skills || []).map(s => SKILL_TAG[s]).filter(Boolean).slice(0, 2).join(' & ')
@@ -127,10 +129,11 @@ function renderCard(c, style) {
   const f = style === 'exercise-card'
     ? [['font-size:1.8rem', 'icon'],
        ['font-size:1.05rem;font-weight:700;color:var(--blue)', 'title'],
-       ['font-size:.85rem;color:var(--muted)', 'meta'],
+       ['font-size:.85rem;color:var(--muted);' + CLAMP, 'meta'],
        [TAG_STYLE, 'tag']].map(([st, k]) => '      <span style="' + st + '">' + esc(c[k]) + '</span>')
     : ['icon', 'title', 'meta', 'tag'].map(k =>
-        '      <span class="card-' + k + '">' + esc(c[k]) + '</span>');
+        '      <span class="card-' + k + '"' + (k === 'meta' ? ' style="' + CLAMP + '"' : '') + '>'
+        + esc(c[k]) + '</span>');
   return '    <li><a class="' + style + '" href="' + c.href + '">\n' + f.join('\n') + '\n    </a></li>';
 }
 
@@ -142,7 +145,7 @@ function renderHub(hub) {
         + '>' + b.heading.text + '</h3>\n\n'
       : '') + b.cards.map(c => renderCard(c, style)).join('\n\n')).join('\n\n');
   }
-  return blocks.map(b => {
+  return blocks.filter(b => b.cards.length).map(b => {
     const h = b.heading
       ? '  <h3 class="group-heading"' + (b.heading.id ? ' id="' + b.heading.id + '"' : '')
         + '>' + b.heading.text + '</h3>\n\n'
@@ -167,7 +170,17 @@ for (const hub of Object.keys(HUB_CATEGORY)) {
   const missing = mine.filter(e => !have.has(e.file));
   for (const e of missing) {
     const card = derive(e);
-    let bi = entry.blocks.length - 1;
+    // Class hubs are grouped by named unit and end with "Revision". A new exercise
+    // waits in "More practice" (made if missing) until someone files it under its
+    // unit in data/hub-cards.json. ponytail: no auto-filing — topic-pool.json's
+    // "Unit 1" means different units in 10g's two textbooks, so it can't be trusted.
+    let bi = entry.blocks.findIndex(b => b.heading && b.heading.text === 'More practice');
+    const last = entry.blocks[entry.blocks.length - 1];
+    if (bi === -1 && last.heading && last.heading.text === 'Revision') {
+      entry.blocks.splice(entry.blocks.length - 1, 0, { heading: { text: 'More practice', id: 'unit-more-practice' }, cards: [] });
+      bi = entry.blocks.length - 2;
+    }
+    if (bi === -1) bi = entry.blocks.length - 1;
     if (hub === 'abitur-activities.html') {
       const g = abiturGroupFor(e.file);
       if (g != null && entry.blocks[g]) bi = g;
