@@ -78,9 +78,8 @@ Difficulty, vocabulary and sentence length must match the level.
   simpler English follows the site's language rule (Gymnasium: never German; Oberschule: German only if Shaun asks).
   Apparatus is German: `Name / Klasse / Datum`, `Lösungen`, `Punkte`, `Quellenangaben`, and the listing.
   This replaces the older habit of English-German matching tasks.
-- **Facts:** if a reading text states real facts (places, dates, figures), verify them and cite what was verified in
-  Quellenangaben. Use the `fact-check-blogs` skill where it is installed (it lives on Shaun's Mac and is not committed
-  to this repo); in a session without it, check each claim against a reliable source directly. Do not invent statistics.
+- **Facts:** if a reading text states real facts (places, dates, figures), run the `fact-check-blogs` skill on it and cite what
+  it verified in Quellenangaben. Do not invent statistics.
 
 ## Build
 
@@ -155,6 +154,9 @@ No external images, fonts or scripts: a single self-contained file.
   scratchpad**: it is wiped at the end of the session (the first two worksheets were lost that way). **Never the
   vocab-games repo**, which publishes to GitHub Pages. (In a web/remote session these Mac paths do not exist — see
   "Where this skill runs".)
+- **Keep the HTML.** It is the permanent editable build source: every future revision edits the HTML, re-runs the
+  check, and re-exports the PDF (Shaun, 2026-10-11 — an earlier "PDF only" instruction is rescinded; do not delete
+  the HTML after exporting).
 - Export the PDF next to it (A4, no header or footer):
 
 ```bash
