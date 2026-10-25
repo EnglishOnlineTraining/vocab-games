@@ -577,6 +577,7 @@ body.exam-mode input, body.exam-mode textarea, body.exam-mode select { -webkit-u
 </main>
 
 <script src="integrity.js"></script>
+<script src="exam.js"></script>
 <script>
 /* ===================== CONFIG ===================== */
 var UNIT          = '9g-class-test-9ab';
@@ -585,7 +586,6 @@ var SHEET_URL     = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj'
 var TEACHER_EMAIL = 'learn@englishonline.training';
 var maxStepReached = 0;
 var BASE_EXAM_MINS = 60;
-var EXAM_MINS     = BASE_EXAM_MINS;   // +10% when extra time is approved
 var TOTAL_STEPS   = 5;
 
 /* ===================== ANSWER KEYS (auto-graded sections) ===================== */
@@ -603,45 +603,30 @@ var S4_KEY = {
 var S5A_KEY = { 1:'right', 2:'wrong', 3:'right', 4:'notintext', 5:'right', 6:'right' };
 
 /* ===================== STATE ===================== */
-var name='', cls='', extraTime=false, currentStep=1;
-var sid='', t0=null, tabN=0, pasteN=0, anomalyN=0, devToolsFlagged=false, timerID=null;
+var name='', cls='', currentStep=1;
 var snapshots=[];
 
 /* ===================== HELPERS ===================== */
 function g(id){ var el=document.getElementById(id); return el ? el.value.trim() : ''; }
 function gRadio(name){ var els=document.getElementsByName(name); for(var i=0;i<els.length;i++){ if(els[i].checked) return els[i].value; } return ''; }
-function esc(s){ var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
 function norm(s){ return (s||'').toLowerCase().replace(/['’]/g,'').replace(/\s+/g,' ').trim(); }
 
 /* ===================== NAVIGATION: WELCOME -> RULES -> EXAM ===================== */
-function show(id){ document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); }); document.getElementById(id).classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
-
 function goRules(){
   name = g('inp-name'); cls = g('inp-class');
   var err = document.getElementById('welcome-error');
   if(!name || !cls){ err.textContent='Please enter both your name and your class.'; err.classList.add('show'); return; }
   err.classList.remove('show');
-  extraTime = document.getElementById('inp-extra-time').checked;
-  EXAM_MINS = extraTime ? Math.round(BASE_EXAM_MINS * 1.1) : BASE_EXAM_MINS;
-  document.getElementById('rules-time').textContent = EXAM_MINS + ' minutes';
-  document.getElementById('start-btn-mins').textContent = EXAM_MINS;
+  examSetup();
   show('s-rules');
 }
 
 function startExam(){
-  sid = 'SID-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).substr(2,5).toUpperCase();
-  t0 = Date.now();
-  eolIntStart();
-  document.body.classList.add('exam-mode');
+  examStart(forceSubmit);
   document.getElementById('header-meta').style.display='block';
   document.getElementById('header-name').textContent = name + (cls ? ' — '+cls : '');
-  document.getElementById('timer-wrap').style.display='flex';
   show('s-exam');
   goStep(1, true);
-  startTimer();
-  setInterval(snap, 3*60*1000);
-  setInterval(checkDevTools, 4000);
-  if(navigator.webdriver) anomalyN++;
 }
 
 /* ===================== EXAM STEP NAVIGATION ===================== */
@@ -660,18 +645,6 @@ function goReview(){
   show('s-review');
 }
 
-/* ===================== TIMER ===================== */
-function startTimer(){
-  timerID = setInterval(function(){
-    var rem = EXAM_MINS*60*1000 - (Date.now()-t0);
-    if(rem<=0){ clearInterval(timerID); document.getElementById('timer-display').textContent='00:00'; forceSubmit(); return; }
-    var m = Math.floor(rem/60000), s = Math.floor((rem%60000)/1000);
-    var td = document.getElementById('timer-display');
-    td.textContent = String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
-    td.className = m<5 ? 'danger' : (m<10 ? 'warning' : '');
-  }, 500);
-}
-
 function forceSubmit(){
   if(document.getElementById('s-done').classList.contains('active')) return;
   buildSummary();
@@ -679,46 +652,6 @@ function forceSubmit(){
   doSubmit();
 }
 
-/* ===================== ANTI-CHEAT ===================== */
-document.addEventListener('visibilitychange', function(){ if(!t0) return; if(document.hidden){ tabN++; } else if(tabN>0) flash('alert-tab'); });
-window.addEventListener('blur', function(){ if(!t0) return; tabN++; });
-
-document.addEventListener('paste', function(e){
-  if(!t0) return;
-  var t = e.target;
-  if(t.tagName==='INPUT' || t.tagName==='TEXTAREA' || t.tagName==='SELECT'){ e.preventDefault(); pasteN++; flash('alert-paste'); }
-});
-document.addEventListener('copy', function(e){ if(!t0) return; e.preventDefault(); });
-document.addEventListener('keydown', function(e){
-  if(!t0) return;
-  if((e.ctrlKey||e.metaKey) && (e.key==='v'||e.key==='V')){ e.preventDefault(); pasteN++; flash('alert-paste'); }
-  if((e.ctrlKey||e.metaKey) && e.shiftKey && ['i','I','j','J'].indexOf(e.key)>-1) e.preventDefault();
-  if(e.key==='F12') e.preventDefault();
-  if((e.ctrlKey||e.metaKey) && (e.key==='u'||e.key==='U')) e.preventDefault();
-  if((e.ctrlKey||e.metaKey) && (e.key==='c'||e.key==='C') && ['INPUT','TEXTAREA'].indexOf(document.activeElement.tagName)===-1) e.preventDefault();
-});
-document.addEventListener('contextmenu', function(e){ if(t0) e.preventDefault(); });
-
-function checkDevTools(){
-  if(!t0 || devToolsFlagged) return;
-  if(window.outerWidth-window.innerWidth>160 || window.outerHeight-window.innerHeight>160){ devToolsFlagged=true; anomalyN++; flash('alert-devtools'); }
-}
-
-document.addEventListener('input', function(e){
-  if(!t0) return;
-  var t = e.target;
-  if(t.tagName!=='INPUT' && t.tagName!=='TEXTAREA') return;
-  var now = Date.now();
-  var len = t.value.length;
-  var prevLen = parseInt(t.dataset.prevLen||'0',10);
-  var prevT = parseInt(t.dataset.prevT||now,10);
-  var diff = len-prevLen, dt = now-prevT;
-  if(diff>60 && dt<500) anomalyN++;
-  t.dataset.prevLen = len;
-  t.dataset.prevT = now;
-});
-
-function flash(id){ var el=document.getElementById(id); el.classList.add('show'); setTimeout(function(){ el.classList.remove('show'); }, 6000); }
 function snap(){ if(t0) snapshots.push({ t: Math.round((Date.now()-t0)/1000), step: currentStep }); }
 
 /* ===================== COLLECT ANSWERS ===================== */
@@ -759,7 +692,7 @@ function gradeAll(ans){
   details.s3a = s3aPts; score += s3aPts;
 
   var s3bPts=0;
-  for(i=1;i<=7;i++){ if(norm(ans.s3b[i])===S3B_KEY[i]) s3bPts++; }
+  for(i=1;i<=7;i++){ var v=norm(ans.s3b[i]); if(v===S3B_KEY[i] || examSpellingOk(v, S3B_KEY[i])) s3bPts++; }   // vocabulary: dyslexia box ignores spelling
   details.s3b = s3bPts; score += s3bPts;
 
   var s4Pts=0;
@@ -838,12 +771,7 @@ function doSubmit(){
   var intF = eolIntFields(); for (var ik in intF) payload[ik] = intF[ik];   // integrity.js counts
   lastPayload = payload;
 
-  fetch(SHEET_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: 'payload=' + encodeURIComponent(JSON.stringify(payload, function (k, v) { return this === payload && typeof v === 'string' && /^[=+\-@\t\r]/.test(v) ? "'" + v : v; }))
-  }).then(function(){
+  examPostMake(examMark(payload, 'ex10')).then(function(){
     finishSubmit(elapsed);
   }).catch(function(){
     if(btn){ btn.disabled=false; btn.textContent='🚀 Submit Test'; }
@@ -852,8 +780,7 @@ function doSubmit(){
 }
 
 function finishSubmit(elapsed){
-  clearInterval(timerID);
-  document.getElementById('timer-wrap').style.display='none';
+  examStop();
   document.body.classList.remove('exam-mode');
   var m = Math.floor(elapsed/60), s = elapsed%60;
   document.getElementById('done-meta').textContent = 'Time used: '+m+'m '+s+'s · Session: '+sid;
@@ -882,11 +809,6 @@ function copyAnswers(){
 /* ===================== INIT ===================== */
 document.addEventListener('DOMContentLoaded', function(){
   show('s-welcome');
-  document.getElementById('inp-extra-time').addEventListener('change', function(){
-    var note = document.getElementById('extra-time-note');
-    if(this.checked){ note.textContent = 'Your test time will be extended by 10% — '+Math.round(BASE_EXAM_MINS*1.1)+' minutes.'; note.style.display='block'; }
-    else { note.style.display='none'; }
-  });
 });
 </script>
 

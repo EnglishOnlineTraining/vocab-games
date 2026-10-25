@@ -318,6 +318,7 @@ body.exam-mode textarea{-webkit-user-select:text;user-select:text}
 </main>
 
 <script src="integrity.js"></script>
+<script src="exam.js"></script>
 <script>
 /* ================================================================
    CONFIG
@@ -327,7 +328,6 @@ var INTEGRITY_LEVEL = 'standard';   // integrity.js: counts sent with this test
 const SHEET_URL   = 'https://script.google.com/macros/s/AKfycbxaeNN6hO0dIXhpROUBoMWWHWBPLcKCRw6bNsygWHQPRFtlhf0ccIuv60MTB0xNeE6l/exec';
 const EMAIL       = 'sptrezise@proton.me';
 const BASE_EXAM_MINS = 60;
-let EXAM_MINS = BASE_EXAM_MINS;   // +10% when extra time is approved
 const GATE_MINS   = 10;
 const MIN_W       = 200;
 const MAX_W       = 320;
@@ -364,17 +364,10 @@ const SCENARIOS = [
 /* ================================================================
    STATE
 ================================================================ */
-let sName='', sGroup='', sid='', scenario=null, extraTime=false;
-let t0=null, tabN=0, pasteN=0, anomalyN=0;
-let gateOpen=false, timerID=null;
-let lastLen=0, lastT=Date.now();
+let sName='', sGroup='', scenario=null;
+let gateOpen=false;
 let snapshots=[];
 let payload=null;
-
-/* ================================================================
-   SCREEN HELPER
-================================================================ */
-function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active')}
 
 /* ================================================================
    SCREEN 1 → 2
@@ -384,35 +377,16 @@ function goRules(){
   sGroup=document.getElementById('inp-group').value.trim();
   if(!sName||!sGroup){document.getElementById('reg-err').classList.add('show');return}
   document.getElementById('reg-err').classList.remove('show');
-  extraTime=document.getElementById('inp-extra-time').checked;
-  EXAM_MINS=extraTime?Math.round(BASE_EXAM_MINS*1.1):BASE_EXAM_MINS;
-  document.getElementById('rules-time').textContent=EXAM_MINS+' minutes';
-  document.getElementById('start-btn-mins').textContent=EXAM_MINS;
-  document.getElementById('timer-display').textContent=String(EXAM_MINS).padStart(2,'0')+':00';
+  examSetup();
   show('s-rules');
 }
 document.getElementById('inp-group').addEventListener('keydown',e=>{if(e.key==='Enter')goRules()});
-document.getElementById('inp-extra-time').addEventListener('change',function(){
-  const note=document.getElementById('extra-time-note');
-  if(this.checked){note.textContent='Your test time will be extended by 10% — '+Math.round(BASE_EXAM_MINS*1.1)+' minutes.';note.style.display='block'}
-  else{note.style.display='none'}
-});
-
-/* ================================================================
-   FULL SCREEN
-================================================================ */
-function goFullscreen(){
-  const el=document.documentElement;
-  (el.requestFullscreen||el.webkitRequestFullscreen||el.mozRequestFullScreen||el.msRequestFullscreen||function(){}).call(el);
-  document.getElementById('fs-btn').textContent='✅ Full screen active';
-}
 
 /* ================================================================
    START EXAM
 ================================================================ */
 function startExam(){
-  sid='SID-'+Date.now().toString(36).toUpperCase()+'-'+crypto.getRandomValues(new Uint32Array(1))[0].toString(36).slice(0,5).toUpperCase();
-  document.getElementById('sid-disp').textContent=sid;
+  examStart(autoSubmit);
 
   // Assign scenario by name hash (same name always → same scenario)
   const h=Math.abs(hashStr(sName+sGroup))%SCENARIOS.length;
@@ -426,10 +400,6 @@ function startExam(){
   buildChips('chips-lk',LK);
   document.getElementById('wm').textContent=sName;
 
-  t0=Date.now();
-  eolIntStart();
-  startTimer();
-
   // Time gate
   setTimeout(()=>{
     gateOpen=true;
@@ -437,16 +407,8 @@ function startExam(){
     checkReady();
   }, GATE_MINS*60*1000);
 
-  // Snapshots every 3 min
-  setInterval(snap, 3*60*1000);
-
-  document.body.classList.add('exam-mode');
   show('s-exam');
   document.getElementById('essay').focus();
-  document.getElementById('timer-wrap').style.display='flex';
-
-  // DevTools size check (runs periodically)
-  setInterval(checkDevTools,4000);
 }
 
 function hashStr(s){let h=0;for(let i=0;i<s.length;i++)h=Math.imul(31,h)+s.charCodeAt(i)|0;return h}
@@ -457,95 +419,10 @@ function buildChips(id,words){
 }
 
 /* ================================================================
-   TIMER
-================================================================ */
-function startTimer(){
-  timerID=setInterval(()=>{
-    const rem=EXAM_MINS*60*1000-(Date.now()-t0);
-    if(rem<=0){clearInterval(timerID);document.getElementById('timer-display').textContent='00:00';autoSubmit();return}
-    const m=Math.floor(rem/60000),s=Math.floor((rem%60000)/1000);
-    const td=document.getElementById('timer-display');
-    td.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
-    td.className=m<5?'danger':m<10?'warning':'';
-  },500);
-}
-
-/* ================================================================
-   TAB / FOCUS DETECTION
-================================================================ */
-document.addEventListener('visibilitychange',()=>{
-  if(!t0)return;
-  if(document.hidden){
-    tabN++;
-    document.getElementById('ts-disp').textContent=tabN;
-  } else if(tabN>0){
-    flash('alert-tab');
-  }
-});
-window.addEventListener('blur',()=>{
-  if(!t0)return;
-  tabN++;
-  document.getElementById('ts-disp').textContent=tabN;
-});
-
-/* ================================================================
-   PASTE BLOCKING
-================================================================ */
-document.addEventListener('paste',e=>{
-  if(!t0)return;
-  e.preventDefault();
-  pasteN++;
-  document.getElementById('pa-disp').textContent=pasteN;
-  flash('alert-paste');
-});
-/* Native copy event (covers right-click "Copy" / menu, not just Ctrl/Cmd+C) */
-document.addEventListener('copy',e=>{ e.preventDefault(); });
-document.addEventListener('keydown',e=>{
-  if(!t0)return;
-  // Block Ctrl/Cmd+V
-  if((e.ctrlKey||e.metaKey)&&(e.key==='v'||e.key==='V')){
-    e.preventDefault();pasteN++;document.getElementById('pa-disp').textContent=pasteN;flash('alert-paste');
-  }
-  // Block Ctrl/Cmd+C (copying question to put in AI)
-  if((e.ctrlKey||e.metaKey)&&(e.key==='c'||e.key==='C')&&document.activeElement!==document.getElementById('essay')){
-    e.preventDefault();
-  }
-  // Block F12, Ctrl+Shift+I/J/U
-  if(e.key==='F12'){e.preventDefault()}
-  if((e.ctrlKey||e.metaKey)&&e.shiftKey&&['i','I','j','J'].includes(e.key)){e.preventDefault()}
-  if((e.ctrlKey||e.metaKey)&&(e.key==='u'||e.key==='U')){e.preventDefault()}
-});
-
-/* ================================================================
-   RIGHT-CLICK DISABLE (during exam)
-================================================================ */
-document.addEventListener('contextmenu',e=>{if(t0)e.preventDefault()});
-
-/* ================================================================
-   DEVTOOLS DETECTION (size heuristic)
-================================================================ */
-let devToolsFlagged=false;
-function checkDevTools(){
-  if(!t0||devToolsFlagged)return;
-  const threshold=160;
-  if((window.outerWidth-window.innerWidth>threshold)||(window.outerHeight-window.innerHeight>threshold)){
-    devToolsFlagged=true;
-    anomalyN++;
-    flash('alert-devtools');
-  }
-}
-// Also detect via navigator
-if(navigator.webdriver){anomalyN++}
-
-/* ================================================================
-   TYPING SPEED ANOMALY
+   ESSAY INPUT
 ================================================================ */
 const essay=document.getElementById('essay');
-essay.addEventListener('input',()=>{
-  const now=Date.now(), len=essay.value.length;
-  const diff=len-lastLen, dt=now-lastT;
-  if(diff>60&&dt<500)anomalyN++;  // >60 chars in <0.5s = suspicious
-  lastLen=len; lastT=now;
+essay.addEventListener('input',()=>{   // exam.js counts typing bursts
   updateWC(); updateChips(); checkReady();
 });
 
@@ -642,8 +519,7 @@ function doSubmit(){
   };
   const intF=eolIntFields();for(const ik in intF)payload[ik]=intF[ik];   // integrity.js counts
 
-  clearInterval(timerID);
-  document.getElementById('timer-wrap').style.display='none';
+  examStop();
 
   const m=Math.floor(el/60),s=el%60;
   document.getElementById('done-meta').textContent=
@@ -659,7 +535,7 @@ function autoSubmit(){if(document.getElementById('s-exam').classList.contains('a
    SEND TO SHEET
 ================================================================ */
 function send(data){
-  const payload={unit:UNIT,name:data.name,cls:data.group,...data};
+  const payload=examMark({unit:UNIT,name:data.name,cls:data.group,...data});
   fetch(SHEET_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(payload)})
     .then(function(response){console.log('✅ Submission sent');})
     .catch(function(err){console.error('❌ Submission failed:',err);});
@@ -693,14 +569,6 @@ function doCopyBackup(){
   });
 }
 
-/* ================================================================
-   FLASH HELPER
-================================================================ */
-function flash(id){
-  const el=document.getElementById(id);
-  el.classList.add('show');
-  setTimeout(()=>el.classList.remove('show'),7000);
-}
 </script>
 </body>
 </html>

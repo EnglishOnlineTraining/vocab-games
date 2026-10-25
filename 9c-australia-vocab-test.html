@@ -353,12 +353,13 @@ body.exam-mode input[type=text],body.exam-mode textarea{-webkit-user-select:text
 </main>
 
 <script src="integrity.js"></script>
+<script src="exam.js"></script>
 <script>
 /* ── CONFIG ── */
 const SHEET_URL = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj'; // Year 9 Make webhook
 const EMAIL     = 'learn@englishonline.training';
 const BASE_EXAM_MINS = 30;
-let EXAM_MINS = BASE_EXAM_MINS;   // +10% when extra time is approved
+const EXAM_WARN = [5, 2];   // exam.js: timer amber, then red, at these minutes left
 const GATE_MINS = 2;
 /* Soft timing gate: stops a class starting before the teacher says so.
    It is visible in the page source, so it is not security — change the
@@ -371,68 +372,14 @@ const MATCH_N   = 10;
 const FILL_N    = 10;
 
 /* ── VOCABULARY BANK (26 terms) ── */
-/* --- Punktetabelle (PMG/BAO Sek I) — copied VERBATIM from exercise.js.
-   This page is self-contained and does not load exercise.js, so the table
-   must live here. Regenerate with scripts/check-grade-table.js if the
-   shared table ever changes; that checker fails the build on drift. --- */
-const GRADE_TABLE = [
-  [100,96,80,60,45,16],[99,96,80,60,45,16],[98,95,79,59,45,16],[97,94,78,59,44,16],
-  [96,93,77,58,44,16],[95,92,76,57,43,16],[94,91,76,57,43,16],[93,90,75,56,42,15],
-  [92,89,74,56,42,15],[91,88,73,55,41,15],[90,87,72,54,41,15],[89,86,72,54,41,15],
-  [88,85,71,53,40,15],[87,84,70,53,40,14],[86,83,69,52,39,14],[85,82,68,51,39,14],
-  [84,81,68,51,38,14],[83,80,67,50,38,14],[82,79,66,50,37,14],[81,78,65,49,37,13],
-  [80,77,64,48,36,13],[79,76,64,48,36,13],[78,75,63,47,36,13],[77,74,62,47,35,13],
-  [76,73,61,46,35,13],[75,72,60,45,34,12],[74,72,60,45,34,12],[73,71,59,44,33,12],
-  [72,70,58,44,33,12],[71,69,57,43,32,12],[70,68,56,42,32,12],[69,67,56,42,32,12],
-  [68,66,55,41,31,11],[67,65,54,41,31,11],[66,64,53,40,30,11],[65,63,52,39,30,11],
-  [64,62,52,39,29,11],[63,61,51,38,29,11],[62,60,50,38,28,10],[61,59,49,37,28,10],
-  [60,58,48,36,27,10],[59,57,48,36,27,10],[58,56,47,35,27,10],[57,55,46,35,26,10],
-  [56,54,45,34,26,9],[55,53,44,33,25,9],[54,52,44,33,25,9],[53,51,43,32,24,9],
-  [52,50,42,32,24,9],[51,49,41,31,23,9],[50,48,40,30,23,8],[49,48,40,30,23,8],
-  [48,47,39,29,22,8],[47,46,38,29,22,8],[46,45,37,28,21,8],[45,44,36,27,21,8],
-  [44,43,36,27,20,8],[43,42,35,26,20,7],[42,41,34,26,19,7],[41,40,33,25,19,7],
-  [40,39,32,24,18,7],[39,38,32,24,18,7],[38,37,31,23,18,7],[37,36,30,23,17,6],
-  [36,35,29,22,17,6],[35,34,28,21,16,6],[34,33,28,21,16,6],[33,32,27,20,15,6],
-  [32,31,26,20,15,6],[31,30,25,19,14,5],[30,29,24,18,14,5],[29,28,24,18,14,5],
-  [28,27,23,17,13,5],[27,26,22,17,13,5],[26,25,21,16,12,5],[25,24,20,15,12,4],
-  [24,24,20,15,11,4],[23,23,19,14,11,4],[22,22,18,14,10,4],[21,21,17,13,10,4],
-  [20,20,16,12,9,4],[19,19,16,12,9,4],[18,18,15,11,9,3],[17,17,14,11,8,3],
-  [16,16,13,10,8,3],[15,15,12,9,7,3],[14,14,12,9,7,3],[13,13,11,8,6,3],
-  [12,12,10,8,6,2],[11,11,9,7,5,2],[10,10,8,6,5,2]
-];
-const GRADE_LABELS = ['Sehr gut', 'Gut', 'Befriedigend', 'Genügend', 'Nicht genügend'];
-function lookupGrade(earned, possible) {
-  if (!possible) return null;
-  var score, maxPts;
-  if (possible < 10) {
-    maxPts = 10;
-    score = Math.round((earned / possible) * 10);
-  } else if (possible > 100) {
-    maxPts = 100;
-    score = Math.round((earned / possible) * 100);
-  } else {
-    maxPts = possible;
-    score = earned;
-  }
-  score = Math.max(0, Math.min(maxPts, score));
-  var row = GRADE_TABLE.filter(function(r) { return r[0] === maxPts; })[0];
-  if (!row) return null;
-  for (var i = 1; i <= 5; i++) {
-    if (score >= row[i]) return { note: i, label: GRADE_LABELS[i - 1] };
-  }
-  return { note: 5, label: GRADE_LABELS[4] };
-}
 const vnorm=s=>String(s).trim().toLowerCase().replace(/[‘’ʼ`´]/g,"'").replace(/^to\s+/,'').replace(/\s+/g,' ');
 const VOCAB_BANK = [{"t":"Aboriginal people","d":"the first people who lived in Australia"},{"t":"to struggle","d":"to try very hard to do something difficult"},{"t":"to be known as","d":"to be called this name by everyone"},{"t":"the outback","d":"the dry, empty land in the middle of Australia"},{"t":"great","d":"very big, or very good"},{"t":"to attend","d":"to go to a school, class or event"},{"t":"satellite dish","d":"a round dish that receives TV or internet signals"},{"t":"necessary","d":"something you must have or must do"},{"t":"up to","d":"as far as, but no further"},{"t":"boarding school","d":"a school where the students also live"},{"t":"term","d":"one of the parts a school year is divided into"},{"t":"in addition","d":"as well as something else"},{"t":"Australian","d":"from Australia, or a person from Australia"},{"t":"easy-going","d":"relaxed and not easily worried"},{"t":"continent","d":"one of the seven big land areas of the world"},{"t":"Antarctica","d":"the frozen land at the South Pole"},{"t":"isolation","d":"being far away from other people"},{"t":"unusual","d":"not normal; not what you often see"},{"t":"species","d":"one kind of animal or plant"},{"t":"to exist","d":"to be real and be there"},{"t":"koala","d":"a grey Australian animal that lives in trees"},{"t":"kangaroo","d":"an Australian animal that jumps on strong back legs"},{"t":"available","d":"that you can get or use"},{"t":"skilled","d":"trained and good at a job"},{"t":"carpenter","d":"a person who makes things from wood"},{"t":"nurse","d":"a person who looks after sick people in a hospital"}];
 
 /* ── STATE ── */
-let sName='',sGroup='',sid='',extraTime=false;
-let t0=null,tabN=0,pasteN=0,anomalyN=0,reloads=0;
-let gateOpen=false,timerID=null;
-let lastLen=0,lastT=Date.now();
+let sName='',sGroup='',reloads=0;
+let gateOpen=false;
 let snapshots=[];
 let payload=null;
-let devToolsFlagged=false;
 let matchItems=[],fillItems=[],matchOptions=[],useItems=[];
 let curPane='a';
 const USE_N=3;
@@ -440,31 +387,16 @@ const USE_N=3;
    Sections B and C so a student is never asked to type a word that is on screen. */
 const UI_WORDS=[];
 
-/* ── SCREENS ── */
-function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active')}
-
-/* ── ESCAPE ── */
-function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
-
 /* ── REGISTER ── */
 function goRules(){
   sName=document.getElementById('inp-name').value.trim();
   sGroup=document.getElementById('inp-group').value.trim();
   if(!sName||!sGroup){document.getElementById('reg-err').classList.add('show');return}
   document.getElementById('reg-err').classList.remove('show');
-  extraTime=document.getElementById('inp-extra-time').checked;
-  EXAM_MINS=extraTime?Math.round(BASE_EXAM_MINS*1.1):BASE_EXAM_MINS;
-  document.getElementById('rules-time').textContent=EXAM_MINS+' minutes';
-  document.getElementById('timer-display').textContent=String(EXAM_MINS).padStart(2,'0')+':00';
-  document.getElementById('start-btn-mins').textContent=EXAM_MINS;
+  examSetup();
   show('s-lock');
 }
 document.getElementById('inp-group').addEventListener('keydown',e=>{if(e.key==='Enter')goRules()});
-document.getElementById('inp-extra-time').addEventListener('change',function(){
-  const note=document.getElementById('extra-time-note');
-  if(this.checked){note.textContent='Your test time will be extended by 10% — '+Math.round(BASE_EXAM_MINS*1.1)+' minutes.';note.style.display='block'}
-  else{note.style.display='none'}
-});
 
 /* ── RELEASE CODE ── */
 function checkCode(){
@@ -475,16 +407,6 @@ function checkCode(){
   show('s-rules');
 }
 document.getElementById('inp-code').addEventListener('keydown',e=>{if(e.key==='Enter')checkCode()});
-
-/* ── FULLSCREEN ── */
-function goFullscreen(){
-  const el=document.documentElement;
-  (el.requestFullscreen||el.webkitRequestFullscreen||el.mozRequestFullScreen||el.msRequestFullscreen||function(){}).call(el);
-  document.getElementById('fs-btn').textContent='✅ Full screen active';
-}
-
-/* ── SHUFFLE ── */
-function shuffle(arr){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 
 /* ── BUILD QUESTIONS ── */
 function buildQuestions(preset){
@@ -546,19 +468,10 @@ function buildQuestions(preset){
 /* ── START ── */
 function startExam(){
   try{const o=loadState();if(o)localStorage.setItem(SAVE_KEY+'_abandoned',JSON.stringify(o))}catch(e){}
-  sid='SID-'+Date.now().toString(36).toUpperCase()+'-'+crypto.getRandomValues(new Uint32Array(1))[0].toString(36).slice(0,5).toUpperCase();
-  document.getElementById('sid-disp').textContent=sid;
+  examStart(autoSubmit);
   buildQuestions();
-  t0=Date.now();
-  eolIntStart();
-  startTimer();
   setTimeout(()=>{gateOpen=true;document.getElementById('time-gate-msg').textContent='✅ You may submit from Section C.';checkReady();saveState()},GATE_MINS*60*1000);
-  setInterval(snap,3*60*1000);
-  setInterval(checkDevTools,4000);
-  document.body.classList.add('exam-mode');
   show('s-exam');
-  document.getElementById('timer-wrap').style.display='flex';
-  if(navigator.webdriver)anomalyN++;
   saveState();
 }
 
@@ -570,7 +483,7 @@ function startExam(){
 const SAVE_KEY='eol_test_'+UNIT;
 function saveState(){
   if(!t0)return;
-  try{localStorage.setItem(SAVE_KEY,JSON.stringify({v:1,sid,name:sName,group:sGroup,extraTime,examMins:EXAM_MINS,t0,curPane,gateOpen,submitWarned,
+  try{localStorage.setItem(SAVE_KEY,JSON.stringify({v:1,sid,name:sName,group:sGroup,extraTime,dyslexia,examMins:EXAM_MINS,t0,curPane,gateOpen,submitWarned,
     match:matchItems.map(x=>x.t),fill:fillItems.map(x=>x.t),use:useItems.map(x=>x.t),options:matchOptions,
     sel:[...document.querySelectorAll('.qa-select')].map(e=>e.value),
     inp:[...document.querySelectorAll('.qa-input')].map(e=>e.value),
@@ -581,9 +494,8 @@ function loadState(){try{const s=JSON.parse(localStorage.getItem(SAVE_KEY)||'nul
 function markSubmitted(){try{const s=JSON.parse(localStorage.getItem(SAVE_KEY)||'null');if(s){s.submitted=true;s.submittedAt=Date.now();localStorage.setItem(SAVE_KEY,JSON.stringify(s))}}catch(e){}}
 function resumeExam(s){
   if(!s)return;
-  sName=s.name;sGroup=s.group;sid=s.sid;extraTime=!!s.extraTime;EXAM_MINS=s.examMins||BASE_EXAM_MINS;
+  sName=s.name;sGroup=s.group;sid=s.sid;extraTime=!!s.extraTime;dyslexia=!!s.dyslexia;document.body.classList.toggle('exam-dyslexia',dyslexia);EXAM_MINS=s.examMins||BASE_EXAM_MINS;
   tabN=s.tabN||0;pasteN=s.pasteN||0;anomalyN=s.anomalyN||0;reloads=(s.reloads||0)+1;snapshots=s.snapshots||[];submitWarned=!!s.submitWarned;
-  document.getElementById('sid-disp').textContent=sid;
   document.getElementById('ts-disp').textContent=tabN;
   buildQuestions({match:s.match,fill:s.fill,use:s.use,options:s.options});
   document.querySelectorAll('.qa-select').forEach((e,i)=>{e.value=(s.sel||[])[i]||''});
@@ -591,19 +503,14 @@ function resumeExam(s){
   document.querySelectorAll('#use-list textarea').forEach((e,i)=>{e.value=(s.txt||[])[i]||''});
   curPane=s.curPane||'a';
   ['a','b','c'].forEach(p=>{document.getElementById('pane-'+p).hidden=(p!==curPane)});
-  t0=s.t0;
-  eolIntRestore(s.int);eolIntStart();
+  eolIntRestore(s.int);
+  examStart(autoSubmit,s.t0);   // the saved clock: if the time has already run out, the first tick hands the test in
   const elapsed=Date.now()-t0;
   gateOpen=!!s.gateOpen||elapsed>=GATE_MINS*60*1000;
   if(gateOpen)document.getElementById('time-gate-msg').textContent='✅ You may submit from Section C.';
   else setTimeout(()=>{gateOpen=true;document.getElementById('time-gate-msg').textContent='✅ You may submit from Section C.';checkReady();saveState()},GATE_MINS*60*1000-elapsed);
-  setInterval(snap,3*60*1000);
-  setInterval(checkDevTools,4000);
-  document.body.classList.add('exam-mode');
   show('s-exam');
-  document.getElementById('timer-wrap').style.display='flex';
   updateProgress();onUseInput();checkReady();
-  startTimer();   // if the time has already run out, the first tick hands the test in
   saveState();
 }
 (function offerResume(){
@@ -621,47 +528,8 @@ function resumeExam(s){
   const reg=document.querySelector('#s-register .container');reg.insertBefore(card,reg.firstChild);
 })();
 
-/* ── TIMER ── */
-function startTimer(){
-  timerID=setInterval(()=>{
-    const rem=EXAM_MINS*60*1000-(Date.now()-t0);
-    if(rem<=0){clearInterval(timerID);document.getElementById('timer-display').textContent='00:00';autoSubmit();return}
-    const m=Math.floor(rem/60000),s=Math.floor((rem%60000)/1000);
-    const td=document.getElementById('timer-display');
-    td.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
-    td.className=m<2?'danger':m<5?'warning':'';
-  },500);
-}
-
-/* ── TAB DETECTION ── */
-document.addEventListener('visibilitychange',()=>{if(!t0)return;if(document.hidden){tabN++;document.getElementById('ts-disp').textContent=tabN}else if(tabN>0)flash('alert-tab')});
-window.addEventListener('blur',()=>{if(!t0)return;tabN++;document.getElementById('ts-disp').textContent=tabN});
-
-/* ── PASTE BLOCKING ── */
-document.addEventListener('paste',e=>{if(!t0)return;e.preventDefault();pasteN++;document.getElementById('pa-disp').textContent=pasteN;flash('alert-paste')});
-/* Native copy event (covers right-click "Copy" / menu, not just Ctrl/Cmd+C) */
-document.addEventListener('copy',e=>{e.preventDefault();});
-document.addEventListener('keydown',e=>{
-  if(!t0)return;
-  if((e.ctrlKey||e.metaKey)&&(e.key==='v'||e.key==='V')){e.preventDefault();pasteN++;document.getElementById('pa-disp').textContent=pasteN;flash('alert-paste')}
-  if((e.ctrlKey||e.metaKey)&&e.shiftKey&&['i','I','j','J'].includes(e.key))e.preventDefault();
-  if(e.key==='F12')e.preventDefault();
-  if((e.ctrlKey||e.metaKey)&&(e.key==='u'||e.key==='U'))e.preventDefault();
-  if((e.ctrlKey||e.metaKey)&&(e.key==='c'||e.key==='C')&&document.activeElement.tagName!=='INPUT')e.preventDefault();
-});
-document.addEventListener('contextmenu',e=>{if(t0)e.preventDefault()});
-
-/* ── DEVTOOLS ── */
-function checkDevTools(){if(!t0||devToolsFlagged)return;if(window.outerWidth-window.innerWidth>160||window.outerHeight-window.innerHeight>160){devToolsFlagged=true;anomalyN++;flash('alert-devtools')}}
-
-/* ── TYPING SPEED ANOMALY (fill-in inputs) ── */
+/* ── ANSWERS (exam.js counts typing bursts) ── */
 function onAnswerInput(){
-  const now=Date.now();
-  let totalLen=0;
-  document.querySelectorAll('.qa-input').forEach(i=>totalLen+=i.value.length);
-  const diff=totalLen-lastLen,dt=now-lastT;
-  if(diff>40&&dt<500)anomalyN++;
-  lastLen=totalLen;lastT=now;
   updateProgress();checkReady();saveState();
 }
 function onAnswerChange(){updateProgress();checkReady();saveState()}
@@ -777,9 +645,10 @@ function doSubmit(){
     results.push({type:'match',term:item.t,definition:item.d,given:given||'(blank)',isCorrect:isOk});
   });
   document.querySelectorAll('.qa-input').forEach((inp,i)=>{
-    const item=fillItems[i],given=inp.value.trim(),isOk=vnorm(given)===vnorm(item.t);
+    const item=fillItems[i],given=inp.value.trim(),exact=vnorm(given)===vnorm(item.t);
+    const spelling=!exact&&examSpellingOk(vnorm(given),vnorm(item.t)),isOk=exact||spelling;   // dyslexia box: spelling not marked
     if(isOk)correct++;
-    results.push({type:'fill',term:item.t,definition:item.d,given:given||'(blank)',isCorrect:isOk});
+    results.push({type:'fill',term:item.t,definition:item.d,given:given||'(blank)',isCorrect:isOk,spelling});
   });
   let useOk=0;
   document.querySelectorAll('#use-list textarea').forEach((ta,i)=>{
@@ -790,7 +659,7 @@ function doSubmit(){
   const pct=Math.round(correct/Q_TOTAL*100);
   const el=Math.round((Date.now()-t0)/1000);
   payload={timestamp:new Date().toISOString(),name:sName,group:sGroup,session_id:sid,score:correct,total:Q_TOTAL,percent:pct,grade:(function(){const g=lookupGrade(correct,Q_TOTAL);return g?'Note '+g.note+' ('+g.label+')':''})(),extra_time:extraTime,time_spent_s:el,tab_switches:tabN,paste_attempts:pasteN,typing_anomalies:anomalyN,devtools_flagged:devToolsFlagged,reloads:reloads,use_checks_passed:useOk,use_total:USE_N,answers:JSON.stringify(results),snapshots:JSON.stringify(snapshots)};
-  clearInterval(timerID);document.getElementById('timer-wrap').style.display='none';
+  examStop();
   buildReview(results);
   show('s-done');
   const m=Math.floor(el/60),s=el%60;
@@ -845,7 +714,7 @@ function send(data){
         p['ex'+(i+1)]=a.type==='use'
           ? 'C '+a.term+' -> '+a.given+(a.isCorrect?' [form ok, mark me]':' [form check failed, mark me]')
           : (a.type==='match'?'A ':'B ')+a.definition+' -> '+a.given
-            +(a.isCorrect?' [correct]':' [wrong: '+a.term+']');});
+            +(a.spelling?' [correct, spelling not marked: '+a.term+']':a.isCorrect?' [correct]':' [wrong: '+a.term+']');});
   }catch(e){}
   p['ex'+(Q_TOTAL+USE_N+1)]='SECTION C is teacher-marked and is NOT in Score/Grade. '
         +'Automatic form checks passed: '+data.use_checks_passed+' / '+data.use_total;
@@ -853,9 +722,7 @@ function send(data){
         +' | paste '+data.paste_attempts+' | typing '+data.typing_anomalies
         +' | devtools '+data.devtools_flagged+' | reloads '+data.reloads+' | session '+data.session_id;
   var intF=eolIntFields();for(var ik in intF)p[ik]=intF[ik];   // integrity.js counts
-  fetch(SHEET_URL,{method:'POST',mode:'no-cors',
-    headers:{'Content-Type':'application/x-www-form-urlencoded'},
-    body:'payload='+encodeURIComponent(JSON.stringify(p, function (k, v) { return this === p && typeof v === 'string' && /^[=+\-@\t\r]/.test(v) ? "'" + v : v; }))});
+  examPostMake(examMark(p,'ex'+(Q_TOTAL+USE_N+2)));
 }
 
 /* ── BACKUPS ── */
@@ -871,8 +738,6 @@ function doCopyBackup(){
   navigator.clipboard.writeText(txt).then(()=>{document.getElementById('copy-btn').textContent='✅ Copied!'});
 }
 
-/* ── FLASH ── */
-function flash(id){const el=document.getElementById(id);el.classList.add('show');setTimeout(()=>el.classList.remove('show'),7000)}
 </script>
 </body>
 </html>
