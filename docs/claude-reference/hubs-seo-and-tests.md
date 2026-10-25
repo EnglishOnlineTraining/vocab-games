@@ -172,8 +172,8 @@ pack is counted automatically and a new task type needs a row in `ABITUR_TASKS` 
 hand-edit between the markers** — and because the auto-rebuild workflow runs the generators on every
 push to `main`, the root page now self-corrects.
 
-**Related fix — three legacy pages were misfiled.** `california-exercises.html` (Y9 Gymnasium),
-`sport-south-africa.html` (Y9 Oberschule) and `eurofiber-online.html` (Business) predate the
+**Related fix — legacy pages were misfiled.** `california-exercises.html` (Y9 Gymnasium) and
+`sport-south-africa.html` (Y9 Oberschule) predate the
 filename-prefix convention, so `schoolFromPrefix()` bucketed them as `other`: they were missing from
 the Klasse 9 / Business filters and undercounted everywhere. `build-exercise-data.js` now carries a
 `LEGACY_UNPREFIXED` override map. Add to it if another unprefixed page ever appears.

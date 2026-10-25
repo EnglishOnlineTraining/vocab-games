@@ -241,12 +241,11 @@ function crumbLabel(file) {
   return 'Übungen';
 }
 
-// Three pages predate the filename-prefix convention, exactly as in
+// Two pages predate the filename-prefix convention, exactly as in
 // build-exercise-data.js:LEGACY_UNPREFIXED. Kept in step with that map.
 const LEGACY_HUBS = {
   'california-exercises.html': '9g-activities.html',
   'sport-south-africa.html': '9c-activities.html',
-  'eurofiber-online.html': 'business-activities.html',
 };
 
 /** The hub page an exercise belongs to, or '' if it is not filed under one. */

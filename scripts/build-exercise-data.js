@@ -61,8 +61,7 @@ function m1(re, s) { const m = s.match(re); return m ? m[1].trim() : ''; }
 // file-structure table and the per-year hub pages already give them.
 const LEGACY_UNPREFIXED = {
   'california-exercises.html': [9, 'gymnasium'],
-  'sport-south-africa.html':   [9, 'oberschule'],
-  'eurofiber-online.html':     ['business', 'business']
+  'sport-south-africa.html':   [9, 'oberschule']
 };
 
 // Pages that are deliberately NOT in the public index. Everything downstream

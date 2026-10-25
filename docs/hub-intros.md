@@ -11,7 +11,7 @@ The pages stay live and linked.
 ```json
 { "file": "7a-what-was-it-like.html", "indexedInstead": null, "group": "class-page" },
 { "file": "klasse7-mini.html", "indexedInstead": null, "group": "class-page" },
-{ "file": "eurofiber-online.html", "indexedInstead": null, "group": "client-page" }
+{ "file": "be-meetings-schedules.html", "indexedInstead": null, "group": "client-page" }
 ```
 
 ## 2. Hub intros

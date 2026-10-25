@@ -91,7 +91,7 @@ Regenerate with `node scripts/inventory.js`.
 | be-recruitment-hiring.html | Recruitment & Hiring | Business | Business English | BE/Uni | 3 | Reading: Job Advertisement · Vocabulary: Recruitment Terms · Writing: The Ideal Candidate |
 | be-what-is-management.html | What is Management? | Business | Business English | BE/Uni | 3 | Reading: Management Functions · Vocabulary: Key Management Terms · Discussion: Why is Management Important? |
 | california-exercises.html | California – Interactive Exercises | — | — | Klass. | 6 | Before You Read · Understanding the Text · Language: Using the, a/an or No Article · Abstract Nouns: Article or No Article? · Trendsetting California · My Life as a Farm Worker |
-| eurofiber-online.html | Eurofiber Online – Business English | — | — | Klass. | 4 | Company Changes · Types of Meeting · Meeting Vocabulary · Talking about Schedules |
+| be-meetings-schedules.html | Meetings and Schedules – Business English | — | — | Klass. | 4 | Company Changes · Types of Meeting · Meeting Vocabulary · Talking about Schedules |
 | it-ai-industry4.html | Smart Tech, AI & Industry 4.0 | IT | Vocational IT | BE/Uni | 3 | Reading: The CTO’s Three-Year Roadmap · Vocabulary: AI and Industry 4.0 Terms · Grammar: Talking About Technological Change |
 | it-ai-programming.html | Conventional & AI-Assisted Programming | IT | Vocational IT | BE/Uni | 3 | Reading: Should We Adopt AI Coding Assistants? · Vocabulary: Programming and AI Tool Terms · Grammar: Defining and Comparing Tools |
 | it-apprenticeships.html | IT Apprenticeships | IT | Vocational IT | BE/Uni | 3 | Reading: A Day in the Life of an IT Apprentice · Vocabulary: Training and Work Terms · Grammar: Defining IT Roles with Relative Clauses |
