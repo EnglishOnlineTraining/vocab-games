@@ -8,6 +8,7 @@
 const { test, expect } = require('@playwright/test');
 
 const START = new Date('2026-11-02T09:00:00Z');
+const SHEETS = ['hook.eu1.make.com', 'script.google.com'];   // where the tests submit
 
 // The words the uni writing task checks for (MV, RV, LK in the page), padded to 220 words.
 const ESSAY = ('I count on my friends and we meet up after work. Although it rained, we did not sever ties; '
@@ -31,7 +32,7 @@ function parseBody(body) {
 async function sit(page, p, { dyslexia = false, answer = '', timeUp = false } = {}) {
   const sent = [], mail = [];
   page.on('request', (r) => { if (r.url().startsWith('mailto:')) mail.push(decodeURIComponent(r.url())); });
-  await page.route(/hook\.eu1\.make\.com|script\.google\.com/, (route) => {
+  await page.route((url) => SHEETS.includes(url.hostname), (route) => {
     sent.push(parseBody(route.request().postData()));
     route.fulfill({ status: 200, body: 'OK' });
   });
