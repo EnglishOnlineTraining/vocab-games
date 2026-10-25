@@ -1024,6 +1024,8 @@ function needsA11yLite(html) {
 function processFile(file) {
   const abs = path.join(ROOT, file);
   const original = fs.readFileSync(abs, 'utf8');
+  // A forwarding page (an old address kept for saved links) is not a site page: leave it bare.
+  if (/<meta\s+http-equiv=["']refresh["']/i.test(original)) return { file, skipped: 'redirect' };
   let html = GENERATED_BLOCKS.reduce(stripBlock, original);
 
   const headEnd = html.search(/<\/head>/i);

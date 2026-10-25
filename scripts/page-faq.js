@@ -233,9 +233,9 @@ module.exports = {
     },
     {
       q: 'Are the exercises based on real business situations?',
-      a: 'Several are: the Mercedes exercise works through a real change-management case, and Eurofiber '
-        + 'Online is built around an actual internal-communications scenario at a fibre-network provider, '
-        + 'rather than a generic textbook dialogue.',
+      a: 'Several are: the Mercedes exercise works through a real change-management case, and Meetings '
+        + 'and Schedules is built around a real internal-communications scenario at a company going through '
+        + 'change, rather than a generic textbook dialogue.',
     },
     {
       q: 'How are the exercises scored?',

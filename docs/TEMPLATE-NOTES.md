@@ -66,7 +66,7 @@ different year (`10g-scottish-history.html`), the following is **identical** acr
 - **111 of the 128 framework pages have zero inline `<style>`** — pure `style.css`.
 - **17 framework pages keep a small inline `<style>`** for genuinely page-specific styling
   (allowed by CLAUDE.md — "keep page-specific overrides inline"):
-  `10g-scottish-highlands`, `8g-american-british-english`, four `be-*`, `eurofiber-online`,
+  `10g-scottish-highlands`, `8g-american-british-english`, four `be-*`, `be-meetings-schedules`,
   and nine `uni-*` pages.
 - 45 files in total contain a `<style>` block — the remainder are the bespoke pages below.
 
