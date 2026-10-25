@@ -107,6 +107,8 @@
     --teal-text:  #6fd3d0;
 }
 }
+    /* style.css's phone sizes again: this page's own rules above would otherwise win. */
+    @media (max-width: 480px) { .gap-select { max-width: 150px; font-size: .75rem; } }
     /* This page's :root sets --ink after style.css, so dark mode needs it again. */
     @media (prefers-color-scheme: dark) { :root { --ink: #cfe0f4; } }
 </style>
