@@ -14,6 +14,21 @@ Free, print-ready worksheets for upload to eduki.com, one per topic. Shaun uploa
 upload, create an account or submit anything on eduki. Your job ends with the PDF, the listing text and the
 checks below.
 
+## Where this skill runs
+
+This skill runs on Shaun's Mac and in Claude Code web/remote sessions. The paths
+`/Users/strezise/Claude Files/CLAUDE OUTPUTS/...` and `~/.claude/skills/...` exist **only on the Mac**.
+In a web/remote session:
+
+- The template and check script are committed in this repo. Use
+  `.claude/skills/eduki-worksheet/assets/worksheet-template.html` and run
+  `bash .claude/skills/eduki-worksheet/scripts/check-worksheet.sh <file>.html` from the repo root.
+- The material register and the `CLAUDE OUTPUTS` folders are Mac-local. Save the HTML and PDF to the
+  session's output folder, give Shaun the path, and ask him to confirm the register state instead of
+  reading or writing the CSV yourself.
+- The PDF export command below is the Mac one; in a Linux session use the installed Chromium/Chrome
+  binary with the same flags.
+
 ## Who and for which classes
 
 - **Author:** Shaun Trezise, English teacher from Berlin working in Brandenburg. Author name appears only in the footer.
@@ -63,8 +78,9 @@ Difficulty, vocabulary and sentence length must match the level.
   simpler English follows the site's language rule (Gymnasium: never German; Oberschule: German only if Shaun asks).
   Apparatus is German: `Name / Klasse / Datum`, `Lösungen`, `Punkte`, `Quellenangaben`, and the listing.
   This replaces the older habit of English-German matching tasks.
-- **Facts:** if a reading text states real facts (places, dates, figures), run the `fact-check-blogs` skill on it and cite what
-  it verified in Quellenangaben. Do not invent statistics.
+- **Facts:** if a reading text states real facts (places, dates, figures), verify them and cite what was verified in
+  Quellenangaben. Use the `fact-check-blogs` skill where it is installed (it lives on Shaun's Mac and is not committed
+  to this repo); in a session without it, check each claim against a reliable source directly. Do not invent statistics.
 
 ## Build
 
@@ -94,8 +110,8 @@ Copy `assets/worksheet-template.html`, fill every `{{...}}`, and keep the struct
    **Added after the second review (EU/UK worksheet, same day: same gaps, plus four new ones):**
    - **A visual artifact in the file:** a map, diagram, timeline or infographic that the exercises actually use (read a figure
      off it, label it, compare two sources). Draw it as inline SVG or HTML/CSS in the file: no external images, no links, and
-     the Quellenangaben "Layout & Grafik" line must say it is own work. Real figures on it go through `fact-check-blogs`.
-     Teachers should not have to find extra media.
+     the Quellenangaben "Layout & Grafik" line must say it is own work. Real figures on it go through the same fact check
+     as reading-text facts (see Hard rules). Teachers should not have to find extra media.
    - **More than written reproduction and production:** at least one exercise of another kind, e.g. sort or rank, read a
      chart, decide between options and justify, a short speaking or role-play phase, or a text-with-error hunt.
    - **The situation must be needed:** if the writing task has a frame (a school debate, a letter, a blog), the task must
@@ -137,7 +153,8 @@ No external images, fonts or scripts: a single self-contained file.
 
 - Save to `/Users/strezise/Claude Files/CLAUDE OUTPUTS/eduki/` as `worksheet-<prefix>-<topic-slug>.html`. **Never the
   scratchpad**: it is wiped at the end of the session (the first two worksheets were lost that way). **Never the
-  vocab-games repo**, which publishes to GitHub Pages.
+  vocab-games repo**, which publishes to GitHub Pages. (In a web/remote session these Mac paths do not exist — see
+  "Where this skill runs".)
 - Export the PDF next to it (A4, no header or footer):
 
 ```bash
@@ -152,6 +169,9 @@ No external images, fonts or scripts: a single self-contained file.
 ```bash
 ~/.claude/skills/eduki-worksheet/scripts/check-worksheet.sh <file>.html
 ```
+
+(on the Mac; in a web/remote session run `bash .claude/skills/eduki-worksheet/scripts/check-worksheet.sh <file>.html`
+from the repo root)
 
 It fails on a missing learning-goals box, help/bonus/partner blocks or teacher notes, and on links, domains, email addresses, publisher names, an unfilled `{{placeholder}}`, or a missing answer key, Erwartungshorizont (when a writing task is present),
 Quellenangaben, student row, points badge, licence line, online note or print CSS. It cannot see student names, so read the

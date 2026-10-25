@@ -22,6 +22,10 @@ check below. Never upload, create an account, or submit anything on a marketplac
    for this platform. If it is registered for a different platform, stop and tell Shaun: the same material must never be on
    two platforms.
 
+The `/Users/strezise/...` paths exist only on Shaun's Mac. In a Claude Code web/remote session, read the worksheet and
+the register from wherever Shaun provides them (or ask him to confirm the platform), and save the listing to the
+session's output folder.
+
 If the unit is not finished (no answer key, failing its own check script), say so and stop.
 
 ## Rules for every listing
@@ -68,6 +72,9 @@ Save the listing as `listing-<worksheet file stem>.md` next to the worksheet in 
 ```bash
 ~/.claude/skills/listing-builder/scripts/check-listing.sh <listing>.md
 ```
+
+(on the Mac; in a web/remote session run `bash .claude/skills/listing-builder/scripts/check-listing.sh <listing>.md`
+from the repo root)
 
 It fails on a URL, domain, email address, publisher name, VOICE.md hype word or promise, exclamation mark, unfilled
 `{{placeholder}}`, or a missing Titel, Beschreibung, Tags or KI-Tools field. It cannot see student names, so read the text
