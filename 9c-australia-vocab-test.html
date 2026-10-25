@@ -6,42 +6,16 @@
 <title>Australia — Vocabulary Test</title>
 <meta name="description" content="Timed vocabulary test on the Australia unit for Year 9 Oberschule — 20 of 26 terms picked at random, 30 minutes on the clock.">
 <link rel="canonical" href="https://activities.englishonline.training/9c-australia-vocab-test.html">
+<link rel="stylesheet" href="vocab-test.css">
+<link rel="stylesheet" href="exam.css">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f0f4f8;color:#1a202c;min-height:100vh}
 header{background:#1b4332;color:white;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.25)}
-header a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.88rem}
-header .title{font-size:.95rem;font-weight:600}
-#timer-wrap{display:none;align-items:center;gap:8px}
-#timer-label{font-size:.75rem;opacity:.7;text-transform:uppercase;letter-spacing:.05em}
-#timer-display{font-size:1.1rem;font-weight:700;background:rgba(255,255,255,.2);padding:3px 12px;border-radius:20px;font-variant-numeric:tabular-nums;min-width:68px;text-align:center}
-#timer-display.warning{background:#f6ad55;color:#7b341e}
-#timer-display.danger{background:#fc8181;color:#742a2a;animation:pulse 1s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
-.screen{display:none}.screen.active{display:block}
 .container{max-width:780px;margin:0 auto;padding:24px 16px}
-.card{background:white;border-radius:12px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,.07);margin-bottom:20px}
-h2{font-size:1.35rem;margin-bottom:14px;color:#1a202c}
-h3{font-size:1rem;margin-bottom:8px;color:#276749}
-p{margin-bottom:10px;line-height:1.65;font-size:.95rem}
-.form-group{margin-bottom:16px}
-label{display:block;font-weight:600;margin-bottom:5px;font-size:.88rem;color:#4a5568}
-input[type=text]{width:100%;padding:10px 14px;border:2px solid #e2e8f0;border-radius:8px;font-size:1rem;transition:border-color .2s}
-input[type=text]:focus{outline:none;border-color:#2d6a4f}
 select{width:100%;padding:10px 12px;border:2px solid #e2e8f0;border-radius:8px;font-size:.95rem;background:white}
 select:focus{outline:none;border-color:#2d6a4f}
 .btn{display:inline-block;padding:11px 26px;border:none;border-radius:8px;font-size:.95rem;font-weight:600;cursor:pointer;transition:all .2s}
-.btn-primary{background:#2d6a4f;color:white}
-.btn-primary:hover{background:#1b4332}
-.btn-primary:disabled{background:#a0aec0;cursor:not-allowed;opacity:.7}
-.btn-secondary{background:#e2e8f0;color:#4a5568}
-.btn-secondary:hover{background:#cbd5e0}
 .btn-outline{background:transparent;border:2px solid #2d6a4f;color:#2d6a4f}
-.btn-outline:hover{background:#f0fff4}
-.rule-list{list-style:none;padding:0;margin:12px 0}
-.rule-list li{padding:9px 14px;border-left:3px solid #2d6a4f;margin-bottom:7px;background:#f7fafc;border-radius:0 7px 7px 0;font-size:.9rem;line-height:1.5}
-.rule-list li.red{border-color:#e53e3e;background:#fff5f5}
-.notice{background:#fffff0;border:1px solid #ecc94b;border-radius:8px;padding:13px 16px;font-size:.88rem;line-height:1.5;margin-top:12px}
 .section-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:#2b6cb0;font-weight:700;margin-bottom:10px}
 .qa-row{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid #edf2f7}
 .qa-row:last-child{border-bottom:none}
@@ -51,22 +25,9 @@ select:focus{outline:none;border-color:#2d6a4f}
 .qa-row.correct .qa-def{color:#276749}
 .qa-row.incorrect .qa-def{color:#c53030}
 .qa-answer-tag{font-size:.78rem;margin-top:4px;color:#718096}
-.alert{border-radius:8px;padding:11px 16px;margin-bottom:14px;font-size:.9rem;display:none}
-.alert.show{display:block}
-.alert-warn{background:#fffbeb;border:1px solid #f6e05e;color:#744210}
-.alert-danger{background:#fff5f5;border:1px solid #feb2b2;color:#742a2a}
 .integrity-strip{font-size:.78rem;color:#a0aec0;margin-top:10px;text-align:right}
-#submit-area{text-align:center;padding:8px 0 20px}
-#time-gate-msg{font-size:.82rem;color:#718096;margin-top:7px}
 .progress-strip{font-size:.82rem;color:#4a5568;margin-bottom:6px}
-.done-card{text-align:center;padding:36px 28px}
-.done-card .big-icon{font-size:3.5rem;margin-bottom:14px}
-.done-card h2{color:#276749;margin-bottom:8px}
 .score-big{font-size:2.4rem;font-weight:800;color:#2d6a4f;margin:10px 0}
-.done-meta{font-size:.85rem;color:#718096;margin-top:10px}
-.backup-bar{margin-top:20px;background:#f7fafc;border-radius:8px;padding:14px;text-align:left;font-size:.88rem}
-.backup-bar p{margin-bottom:10px;font-weight:600}
-.backup-btns{display:flex;gap:10px;flex-wrap:wrap}
 .review-toggle{margin-top:18px}
 .exam-pane[hidden]{display:none}
 .pane-nav{margin-top:20px;padding-top:16px;border-top:1px solid #edf2f7;text-align:right}
@@ -85,9 +46,8 @@ select:focus{outline:none;border-color:#2d6a4f}
 .use-flag{font-size:.8rem;margin-top:5px;min-height:1.1em}
 .use-flag.ok{color:#276749}
 .use-flag.no{color:#975a16}
-body.exam-mode{-webkit-user-select:none;user-select:none}
 body.exam-mode input[type=text],body.exam-mode textarea{-webkit-user-select:text;user-select:text}
-@media(max-width:600px){.card{padding:18px 14px}.btn{padding:10px 18px}.qa-row{flex-wrap:wrap}.qa-select,.qa-input{flex:1 1 100%}}
+@media(max-width:600px){.btn{padding:10px 18px}.qa-row{flex-wrap:wrap}.qa-select,.qa-input{flex:1 1 100%}}
 </style>
 <!-- HEAD:START — generated by scripts/build-head.js, do not edit by hand -->
 <script src="consent.js" defer></script>
@@ -117,17 +77,6 @@ body.exam-mode input[type=text],body.exam-mode textarea{-webkit-user-select:text
 <!-- HEAD:END -->
 </head>
 <body>
-<!-- NOSCRIPT:START — generated by scripts/build-head.js, do not edit by hand -->
-<noscript>
-  <div style="background:#fdf3d8;border-bottom:2px solid #c9a227;color:#1d2b3a;padding:.9rem 1rem;font:1rem/1.5 'Segoe UI',system-ui,sans-serif;text-align:center">
-    <strong lang="de">Diese Übung braucht JavaScript.</strong>
-    <span lang="de">Bitte aktiviere JavaScript in deinem Browser — sonst bleiben die Aufgaben leer.</span>
-    <br>
-    <strong>This exercise needs JavaScript.</strong>
-    <span>Please switch JavaScript on in your browser, otherwise the tasks stay empty.</span>
-  </div>
-</noscript>
-<!-- NOSCRIPT:END -->
 <!-- SKIP:START — generated by scripts/build-head.js, do not edit by hand -->
 <a class="eol-skip" href="#main">Skip to content</a>
 <!-- SKIP:END -->
@@ -494,7 +443,7 @@ function loadState(){try{const s=JSON.parse(localStorage.getItem(SAVE_KEY)||'nul
 function markSubmitted(){try{const s=JSON.parse(localStorage.getItem(SAVE_KEY)||'null');if(s){s.submitted=true;s.submittedAt=Date.now();localStorage.setItem(SAVE_KEY,JSON.stringify(s))}}catch(e){}}
 function resumeExam(s){
   if(!s)return;
-  sName=s.name;sGroup=s.group;sid=s.sid;extraTime=!!s.extraTime;dyslexia=!!s.dyslexia;document.body.classList.toggle('exam-dyslexia',dyslexia);EXAM_MINS=s.examMins||BASE_EXAM_MINS;
+  sName=s.name;sGroup=s.group;sid=s.sid;extraTime=!!s.extraTime;examDyslexia(!!s.dyslexia);EXAM_MINS=s.examMins||BASE_EXAM_MINS;
   tabN=s.tabN||0;pasteN=s.pasteN||0;anomalyN=s.anomalyN||0;reloads=(s.reloads||0)+1;snapshots=s.snapshots||[];submitWarned=!!s.submitWarned;
   document.getElementById('ts-disp').textContent=tabN;
   buildQuestions({match:s.match,fill:s.fill,use:s.use,options:s.options});

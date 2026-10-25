@@ -6,6 +6,7 @@
  * The page calls:
  *   examSetup()              on the register screen, once name and class are valid:
  *                            reads the extra-time and dyslexia boxes, sets EXAM_MINS
+ *   examDyslexia(on)         turns the dyslexia arrangement on or off (a resumed test)
  *   examStart(onTimeUp)      when the test starts: session id, clock, timer, signals.
  *                            onTimeUp runs when the time is over. examStart(fn, t0)
  *                            resumes a saved test on its original clock.
@@ -61,12 +62,18 @@ function goFullscreen() {
    The dyslexia box is added here, under the extra-time box, so every test has it
    without its own markup. It changes three things for that student on that sitting:
    typed vocabulary answers are marked without spelling (examSpellingOk), the page
-   switches to the easier-to-read display (body.exam-dyslexia, exam.css), and the
+   switches to the easier-to-read display (html.exam-dyslexia, exam.css), and the
    submission sent to the sheet says dyslexia=yes (examMark). Nothing else gets it:
    not the screen, not the email or copy backups. */
+/* On <html>, so the larger text size in exam.css scales every rem on the page. */
+function examDyslexia(on) {
+  dyslexia = on;
+  document.documentElement.classList.toggle('exam-dyslexia', on);
+}
+
 function examSetup() {
   extraTime = !!(examEl('inp-extra-time') && examEl('inp-extra-time').checked);
-  dyslexia = !!(examEl('inp-dyslexia') && examEl('inp-dyslexia').checked);
+  examDyslexia(!!(examEl('inp-dyslexia') && examEl('inp-dyslexia').checked));
   EXAM_MINS = extraTime ? Math.round(BASE_EXAM_MINS * 1.1) : BASE_EXAM_MINS;
   examText('rules-time', EXAM_MINS + ' minutes');
   examText('start-btn-mins', EXAM_MINS);
@@ -89,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
   label.textContent = 'I have an approved dyslexia arrangement: spelling is not marked, and the text is easier to read.';
   var after = examEl('extra-time-note') || extra.parentNode;
   after.parentNode.insertBefore(row, after.nextSibling);
-  box.addEventListener('change', function () { document.body.classList.toggle('exam-dyslexia', this.checked); });
+  box.addEventListener('change', function () { examDyslexia(this.checked); });
 });
 
 /* Spelling-tolerant match for dyslexia: one slip in a word of 4–6 letters, two in
