@@ -24,3 +24,6 @@ html.exam-dyslexia main {
 html.exam-dyslexia main * { line-height: 1.7; font-style: normal; }
 html.exam-dyslexia main :is(input, textarea, select, button) { font-family: inherit; letter-spacing: inherit; word-spacing: inherit; }
 html.exam-dyslexia .card { background: #fffdf5; }
+/* Answer tables (radio grids) keep normal spacing: their cells are short labels, and
+   the extra spacing pushed 9g-class-test-9ab's Section 5 table off a 360px phone. */
+html.exam-dyslexia main :is(th, td) { letter-spacing: normal; word-spacing: normal; padding-inline: .4rem; }
