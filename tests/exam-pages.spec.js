@@ -90,7 +90,9 @@ async function sit(page, p, { dyslexia = false, answer = '', timeUp = false } = 
 for (const p of PAGES) {
   test(`${p.file}: a full sitting sends the same submission as before`, async ({ page }) => {
     const got = await sit(page, p);
-    expect(JSON.stringify(got, null, 2)).toMatchSnapshot(`${p.file}.json`);
+    // user_agent names the browser version, which differs between machines and CI
+    const fixed = JSON.stringify(got, (k, v) => (k === 'user_agent' ? '<browser>' : v), 2);
+    expect(fixed).toMatchSnapshot(`${p.file}.json`);
   });
 }
 
