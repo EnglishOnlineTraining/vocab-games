@@ -7,55 +7,9 @@
   <meta name="description" content="Free university Business English practice: project planning discussion, scheduling techniques and vocabulary in context.">
   <link rel="canonical" href="https://activities.englishonline.training/uni-project-management.html">
 
+  <link rel="stylesheet" href="style.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --blue:    #1a3a5c;
-      --gold:    #c9a227;
-      --gold-lt: #f5e6b0;
-      --teal:    #2b7a78;
-      --red:     #c0392b;
-      --green:   #27ae60;
-      --bg:      #f7f9fc;
-      --card:    #ffffff;
-      --text:    #1d2b3a;
-      --muted:   #6b7a8d;
-      --border:  #dce3ec;
-      --radius:  12px;
-      --shadow:  0 2px 16px rgba(26,58,92,.1);
-      --font:    'Segoe UI', system-ui, sans-serif;
-      --green-text: #1d7a42;
-  --red-text:   #c0392b;
-  --teal-text:  #1f5d5b;
-}
-    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
-
-    .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
-    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
-    .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
-    .header-meta { font-size: .78rem; text-align: right; opacity: .9; }
-    .header-meta strong { display: block; color: var(--gold); }
-    .progress-track { height: 6px; background: rgba(255,255,255,.2); }
-    .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
-
-    .step { display: none; }
-    .step.active { display: block; }
-    .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
-
-    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
-    .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
-    .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
-
-    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
-    .card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
-
-    .reading-text { font-size: .93rem; line-height: 1.85; color: var(--text); }
-    .reading-text p { margin-bottom: .85rem; }
-    .reading-text p:last-child { margin-bottom: 0; }
-    .reading-text h4 { color: var(--blue); font-size: .85rem; text-transform: uppercase; letter-spacing: .04em; margin: 1rem 0 .5rem; }
-
-    .form-group { margin-bottom: 1.1rem; }
-    .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+    .reading-text h4 { color: var(--ink); font-size: .85rem; text-transform: uppercase; letter-spacing: .04em; margin: 1rem 0 .5rem; }
     .form-input, .form-textarea, .form-select {
       width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
       padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
@@ -63,76 +17,22 @@
     }
     .form-input:focus, .form-textarea:focus, .form-select:focus { outline: none; border-color: var(--blue); }
     .form-textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
-    .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
-
-    .word-bank { background: var(--gold-lt); border: 1.5px solid var(--gold); border-radius: 8px; padding: .75rem 1rem; margin-bottom: 1.25rem; }
-    .word-bank strong { display: block; color: var(--blue); margin-bottom: .5rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; }
-    .word-bank span { display: inline-block; margin: .2rem .3rem; background: var(--blue); color: #fff; border-radius: 4px; padding: .18rem .55rem; font-size: .8rem; font-weight: 600; }
 
     .statement-item, .def-item, .tech-item { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: .85rem; background: #fafbfc; }
-    .statement-num, .def-num, .tech-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 800; flex-shrink: 0; margin-bottom: .5rem; }
+    .statement-num, .def-num, .tech-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--ink); font-size: .75rem; font-weight: 800; flex-shrink: 0; margin-bottom: .5rem; }
     .statement-text { font-size: .92rem; color: var(--text); margin-bottom: .65rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); }
     .row-2 { display: grid; grid-template-columns: 160px 1fr; gap: .6rem; align-items: start; }
-
-    .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
-    .feedback.show { display: block; }
-    .feedback.ok   { background: #d4edda; color: #155724; }
-    .feedback.warn { background: #fff3cd; color: #856404; }
-    .feedback.err  { background: #fde8e8; color: #721c24; }
-
-    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
-    .btn:active { transform: scale(.97); }
-    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
-    .btn-primary:hover { background: #15304f; }
-    .btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
-    .btn-gold:hover { background: #b8911f; }
-    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
-    .btn-outline:hover { background: var(--blue); color: #fff; }
-    .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
-    .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
-    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
-
-    .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
-    .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
-    .welcome-title { font-size: 1.7rem; font-weight: 700; color: var(--blue); margin-bottom: .5rem; }
+    .welcome-title { font-size: 1.7rem; font-weight: 700; color: var(--ink); margin-bottom: .5rem; }
     .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto; }
     .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
-    .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .82rem; }
-    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .88rem; }
-    .ov-card.locked { opacity: .5; }
-    .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
-
-    .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
-    .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
-    .summary-row:last-child { border-bottom: none; }
-    .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
-    .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
-    .summary-a  { color: var(--text); white-space: pre-wrap; }
 
     .copy-block { width: 100%; min-height: 260px; border: 1.5px solid var(--border); border-radius: 8px; padding: .85rem; font-family: 'Courier New', monospace; font-size: .8rem; line-height: 1.5; color: var(--text); background: #fafbfc; resize: vertical; }
 
     @media (max-width: 480px) {
       .ex-title { font-size: 1.2rem; }
-      .btn { padding: .65rem 1.1rem; }
       .welcome-title { font-size: 1.3rem; }
       .row-2 { grid-template-columns: 1fr; }
     }
-  
-/* ── Automatic dark mode (added; light values untouched) ── */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0e1620;
-    --blue: #4a86c9;
-    --border: #28394d;
-    --card: #16212e;
-    --muted: #8a99aa;
-    --shadow: 0 2px 18px rgba(0,0,0,.45);
-    --text: #e7eef6;
-      --green-text: #7fe0a0;
-    --red-text:   #f3a3b0;
-    --teal-text:  #6fd3d0;
-}
-}
 </style>
 <!-- HEAD:START — generated by scripts/build-head.js, do not edit by hand -->
 <script src="consent.js" defer></script>
@@ -197,7 +97,7 @@
 .eol-crumb a{color:var(--teal,#2b7a78);text-decoration:none}
 .eol-crumb a:hover{text-decoration:underline}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["EducationalOrganization","LocalBusiness"],"@id":"https://englishonline.training/#organization","name":"EnglishOnline.training","url":"https://englishonline.training/"},{"@type":"Person","@id":"https://activities.englishonline.training/#shaun","name":"Shaun Trezise","url":"https://englishonline.training/"},{"@type":"WebSite","@id":"https://activities.englishonline.training/#website","url":"https://activities.englishonline.training/","name":"EnglishOnline.training — kostenlose Englisch-Übungen","description":"Free interactive English exercises with instant feedback, no sign-up required.","inLanguage":["en","de"],"publisher":{"@id":"https://englishonline.training/#organization"},"isAccessibleForFree":true},{"@type":"LearningResource","@id":"https://activities.englishonline.training/uni-project-management.html#resource","name":"Project Management: Fine-Tuning Your Schedule","description":"Free university Business English practice: project planning discussion, scheduling techniques and vocabulary in context.","url":"https://activities.englishonline.training/uni-project-management.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"practice","interactivityType":"active","learningResourceType":["Interactive exercise","Reading comprehension","Vocabulary practice"],"author":{"@id":"https://activities.englishonline.training/#shaun"},"publisher":{"@id":"https://englishonline.training/#organization"},"provider":{"@id":"https://englishonline.training/#organization"},"isPartOf":[{"@id":"https://activities.englishonline.training/#website"},{"@type":"CollectionPage","@id":"https://activities.englishonline.training/uni-activities.html#collection","name":"University English Exercises – Free Practice","url":"https://activities.englishonline.training/uni-activities.html"}],"datePublished":"2026-06-25","dateModified":"2026-10-20","educationalLevel":{"@type":"DefinedTerm","name":"B2–C1","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Common European Framework of Reference for Languages","url":"https://www.coe.int/en/web/common-european-framework-reference-languages"}},"teaches":["English reading","English vocabulary"],"about":["Discussion","Agree or disagree?","Reading","Vocabulary: Match the words","Style: formal, informal or neutral?","The writer's techniques","Roleplay: how (not) to do it"]},{"@type":"BreadcrumbList","@id":"https://activities.englishonline.training/uni-project-management.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://activities.englishonline.training/"},{"@type":"ListItem","position":2,"name":"Übungen","item":"https://activities.englishonline.training/activities.html"},{"@type":"ListItem","position":3,"name":"Universität","item":"https://activities.englishonline.training/uni-activities.html"},{"@type":"ListItem","position":4,"name":"Project Management: Fine-Tuning Your Schedule","item":"https://activities.englishonline.training/uni-project-management.html"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["EducationalOrganization","LocalBusiness"],"@id":"https://englishonline.training/#organization","name":"EnglishOnline.training","url":"https://englishonline.training/"},{"@type":"Person","@id":"https://activities.englishonline.training/#shaun","name":"Shaun Trezise","url":"https://englishonline.training/"},{"@type":"WebSite","@id":"https://activities.englishonline.training/#website","url":"https://activities.englishonline.training/","name":"EnglishOnline.training — kostenlose Englisch-Übungen","description":"Free interactive English exercises with instant feedback, no sign-up required.","inLanguage":["en","de"],"publisher":{"@id":"https://englishonline.training/#organization"},"isAccessibleForFree":true},{"@type":"LearningResource","@id":"https://activities.englishonline.training/uni-project-management.html#resource","name":"Project Management: Fine-Tuning Your Schedule","description":"Free university Business English practice: project planning discussion, scheduling techniques and vocabulary in context.","url":"https://activities.englishonline.training/uni-project-management.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"practice","interactivityType":"active","learningResourceType":["Interactive exercise","Reading comprehension","Vocabulary practice"],"author":{"@id":"https://activities.englishonline.training/#shaun"},"publisher":{"@id":"https://englishonline.training/#organization"},"provider":{"@id":"https://englishonline.training/#organization"},"isPartOf":[{"@id":"https://activities.englishonline.training/#website"},{"@type":"CollectionPage","@id":"https://activities.englishonline.training/uni-activities.html#collection","name":"University English Exercises – Free Practice","url":"https://activities.englishonline.training/uni-activities.html"}],"datePublished":"2026-06-25","dateModified":"2026-10-25","educationalLevel":{"@type":"DefinedTerm","name":"B2–C1","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Common European Framework of Reference for Languages","url":"https://www.coe.int/en/web/common-european-framework-reference-languages"}},"teaches":["English reading","English vocabulary"],"about":["Discussion","Agree or disagree?","Reading","Vocabulary: Match the words","Style: formal, informal or neutral?","The writer's techniques","Roleplay: how (not) to do it"]},{"@type":"BreadcrumbList","@id":"https://activities.englishonline.training/uni-project-management.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://activities.englishonline.training/"},{"@type":"ListItem","position":2,"name":"Übungen","item":"https://activities.englishonline.training/activities.html"},{"@type":"ListItem","position":3,"name":"Universität","item":"https://activities.englishonline.training/uni-activities.html"},{"@type":"ListItem","position":4,"name":"Project Management: Fine-Tuning Your Schedule","item":"https://activities.englishonline.training/uni-project-management.html"}]}]}</script>
 <!-- HEAD:END -->
 </head>
 <body>
