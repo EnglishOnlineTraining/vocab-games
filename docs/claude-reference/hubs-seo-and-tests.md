@@ -109,6 +109,10 @@ formula guard, and the **one** copy of the Punktetabelle the tests use
 marking, payload and backups. The API is listed at the top of `exam.js`.
 `uni-presentation-task` is not a timed test and does not load it.
 
+**Devices (Shaun, 2026-10-25): the tests are sat on laptops, occasionally tablets, not
+phones.** Check layout at 768px and up; a phone-width layout problem on a test is not a bug
+to fix unless Shaun asks.
+
 CSS: a class test links `class-test.css`, a vocab or uni test `vocab-test.css`, then every
 test links `exam.css`; the page's own `<style>` keeps only its own rules. The two looks use
 the same class names (`.card`, `.btn`) differently, so they cannot share one file.
