@@ -65,9 +65,8 @@ Note or any grade text.
 - **Exam facts:** use only these, verified on ielts.org (Academic Reading and Academic Writing
   format pages) on 2026-10-15. If you build a brief more than two months after that date,
   spot-check these facts on ielts.org again first — IELTS updates its format pages periodically.
-  If you add any other claim about the exam, verify it the same way — with the `fact-check-blogs`
-  skill where it is installed (it is local to Shaun's Mac and not committed to this repo),
-  otherwise directly on ielts.org.
+  If you add any other claim about the exam, verify it the same way, with the `fact-check-blogs`
+  skill.
   - **Reading:** 60 minutes, 3 sections, 40 questions, 2,150–2,750 words of text in all, 1 mark
     per question.
   - **Matching Headings:** there are always more headings than paragraphs, each heading is used

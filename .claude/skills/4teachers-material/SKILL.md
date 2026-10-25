@@ -84,8 +84,7 @@ If the editors ask for an Autorenbestätigung, tell Shaun and offer to draft the
   `Lösungen`, `Erwartungshorizont`, `Quellenangaben` in German.
 - Sources: text is `Eigene Erstellung, KI-gestützt mit Claude.ai (Anthropic)`, reviewed by the author. 4teachers' AI rule
   is unknown, so state it in the file and in the listing; do not hide it. Run `fact-check-blogs` on any text that states
-  facts and cite what it verified; where that skill is not installed (it is local to Shaun's Mac, not committed to this
-  repo), check each claim against a reliable source directly and cite that.
+  facts and cite what it verified.
 - Free of charge.
 
 ## Build
