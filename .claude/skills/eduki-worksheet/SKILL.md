@@ -154,6 +154,9 @@ No external images, fonts or scripts: a single self-contained file.
   scratchpad**: it is wiped at the end of the session (the first two worksheets were lost that way). **Never the
   vocab-games repo**, which publishes to GitHub Pages. (In a web/remote session these Mac paths do not exist — see
   "Where this skill runs".)
+- **Keep the HTML.** It is the permanent editable build source: every future revision edits the HTML, re-runs the
+  check, and re-exports the PDF (Shaun, 2026-10-11 — an earlier "PDF only" instruction is rescinded; do not delete
+  the HTML after exporting).
 - Export the PDF next to it (A4, no header or footer):
 
 ```bash
