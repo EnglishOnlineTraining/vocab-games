@@ -50,9 +50,11 @@ exercises land in "More practice" until filed.
 | Phone: smaller hero, Ex A–D cards two across | — | PR |
 | "At a glance" in a collapsed `<details>` | not done: once below Start it no longer blocks anything | dropped |
 
-20 older pages carry their own copy of the welcome CSS and don't load `style.css`, so they get
-the move but not the phone tightening (Start ~1,150px). Moving them onto `style.css` is a
-separate cleanup.
+The 17 older exercise pages that carried their own copy of the CSS now load `style.css` (Shaun,
+2026-10-25): copies of shared rules removed, page-specific rules kept. They get the phone layout
+(Start ~1,150px → ~800–900px) and the shared dark mode. The 3 standalone class tests
+(`9g-class-test-9ab`, `9ab-` / `10a-grammar-literary-review-test`) don't use `exercise.js` and keep
+their own CSS.
 
 ## A3. Progress where students decide
 
