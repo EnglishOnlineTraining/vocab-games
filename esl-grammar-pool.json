@@ -1,5 +1,5 @@
 {
-  "_readme": "Single source of truth for the standalone ESL grammar topic pool — English-first exercises for a global ESL/EFL audience, NOT tied to the Klett textbook/Jahrgang system in topic-pool.json. status:'idea' = not built yet; status:'built' = live (with its 'file'). WORKFLOW: the esl-grammar-exercise-draft skill reads this file, picks the next 'idea' in tier order (1 before 2 before 3), builds it, then flips status to 'built' and fills in 'file'. Source: data/../second-brain ingest of a compiled ESL grammar topic pool triangulating search demand (SpyFu/Google Trends), learner-error-frequency corpora (NUCLE, Cambridge Learner Corpus, TOEFL11, ICLE, NICT JLE), and teaching attention (Murphy/Azar unit counts, British Council engagement, engVid views). Run `node esl-grammar-pool.js` to see what's open and to check the registry against the repo.",
+  "_readme": "Single source of truth for the standalone ESL grammar topic pool — English-first exercises for a global ESL/EFL audience, NOT tied to the Klett textbook/Jahrgang system in topic-pool.json. status:'idea' = not built yet; status:'built' = live (with its 'file'). WORKFLOW: the esl-grammar-exercise-draft skill reads this file, picks the next 'idea': entries with a 'priority' number first (lowest first), then tier order (1 before 2 before 3), builds it, then flips status to 'built' and fills in 'file'. Source: data/../second-brain ingest of a compiled ESL grammar topic pool triangulating search demand (SpyFu/Google Trends), learner-error-frequency corpora (NUCLE, Cambridge Learner Corpus, TOEFL11, ICLE, NICT JLE), and teaching attention (Murphy/Azar unit counts, British Council engagement, engVid views). Run `node esl-grammar-pool.js` to see what's open and to check the registry against the repo.",
   "tiers": {
     "1": "the \"Big Eight\": confirmed by all three evidence streams (search demand + learner-error frequency + teaching attention). Build these first.",
     "2": "very high demand: confirmed by two streams, or one very strong.",
@@ -129,20 +129,22 @@
     {
       "id": "esl-question-formation",
       "tier": 2,
+      "priority": 1,
       "topic": "Question formation, word order & embedded questions",
       "grammar": "Question inversion, embedded questions",
       "cefr": "A1-B2",
-      "evidence": "Inversion errors in both Spanish & Chinese learners; #2 on ESL mistakes lists.",
+      "evidence": "Inversion errors in both Spanish & Chinese learners; #2 on ESL mistakes lists. AI-citation query data (2026-10-23 export): 'wh questions' 5K-10K, 'wh words' 1K-5K, 'question words in english' 500-1K.",
       "status": "idea",
       "file": null
     },
     {
       "id": "esl-countable-uncountable",
       "tier": 2,
+      "priority": 4,
       "topic": "Countable vs. uncountable nouns & quantifiers (much/many, few/little)",
       "grammar": "Countability, quantifiers",
       "cefr": "A1-B1",
-      "evidence": "NUCLE noun-number errors 8.5%; CLC countability errors persist at C2.",
+      "evidence": "NUCLE noun-number errors 8.5%; CLC countability errors persist at C2. AI-citation query data (2026-10-23 export): 'much and many' 500-1K.",
       "status": "idea",
       "file": null
     },
@@ -239,10 +241,11 @@
     {
       "id": "esl-pronouns",
       "tier": 2,
+      "priority": 2,
       "topic": "Pronouns (he/she confusion, possessives, reflexives)",
       "grammar": "Pronoun system",
       "cefr": "A1-B1",
-      "evidence": "13.9% of errors in Turkish corpus; genderless-pronoun L1s (Turkish, Chinese, Korean) affected most.",
+      "evidence": "13.9% of errors in Turkish corpus; genderless-pronoun L1s (Turkish, Chinese, Korean) affected most. AI-citation query data (2026-10-23 export): 'subject pronouns' and 'object pronouns' 1K-5K each.",
       "status": "idea",
       "file": null
     },
@@ -309,10 +312,11 @@
     {
       "id": "esl-present-simple-continuous",
       "tier": 3,
+      "priority": 3,
       "topic": "Present simple vs. present continuous",
       "grammar": "Present simple/continuous contrast",
       "cefr": "A1-A2",
-      "evidence": "First contrast learners ever search for.",
+      "evidence": "First contrast learners ever search for. AI-citation query data (2026-10-23 export): 'present simple', 'simple present tense', 'present continuous tense' 1K-5K; 'present simple rules' 500-1K; 'present simple negative' 101-500; 'present simple interrogative' 51-100.",
       "status": "idea",
       "file": null
     },

@@ -930,3 +930,63 @@ branch, no rule 8/9 page and no VOICE.md decision.
 Tier 10 item 4 approval and the 4–6 week data gate), then 4 only if Shaun asks. Items 2, 5 and 6
 need no work. Net open work: one agent-safe fix, one Shaun-approved content roll-out, one optional
 style decision.
+
+## Tier 15 — AI-citation query gaps (2026-10-25) · Shaun + CC
+Source: Shaun's export `activities.englishonline.train_AITopicsTopOpportunityQueries_10_23_2026.csv`
+(49 queries, all tagged "Grammar & Language Structure", each with a "Citation Range" band). The
+source tool and the exact meaning of "Citation Range" are not confirmed: read the bands as
+relative demand, not as our traffic. **Scope (Shaun, 2026-10-25):** English grammar, asked in
+English or German, only. Out: the 12 queries about Spanish, French, German, Italian or Vietnamese
+grammar, and the 9 English-grammar queries written in Spanish (*verbo to be en inglés* etc.).
+Respect Tier 9.5 (no new `themen/` pages), Tier 12.1 (commercial-intent tag) and 12.2 (at most 2
+new indexable pages a week across both sites).
+
+### Already covered (no action)
+*linking words* (5K–10K) → `themen/linking-words`; *relative pronouns exercises*, *defining
+relative clauses* → `themen/relativsaetze`; *present perfect continuous* → `themen/present-perfect`;
+*past perfect continuous* → `themen/past-perfect`; *present perfect passive* → `themen/passiv`;
+*past continuous tense* → `themen/past-progressive`; *past tense*, *simple past* →
+`themen/simple-past`.
+
+### Done in PR (this tier's branch)
+1. **`present-tenses`: negatives and questions · CC.** *present simple negative / interrogative /
+   rules* had no section of their own (◐: one rule line). Added the section "Simple Present:
+   Verneinung und Fragen mit do/does", one FAQ entry and "Übung 5" (5 items).
+2. **`future-tenses`: the name learners search for · CC.** *simple future tense*, *future simple*
+   (1K–5K) never appeared on the page. First H2 is now "Das will-future (Simple Future): …", plus
+   one FAQ entry. `aliases` updated on both topics.
+3. **ESL grammar pool order · CC.** New optional `priority` field in `esl-grammar-pool.json`,
+   built first, lowest number first. Tiers are unchanged (they record evidence). Set:
+   1 `esl-question-formation` (*wh questions* 5K–10K, *wh words* 1K–5K) · 2 `esl-pronouns`
+   (*subject/object pronouns* 1K–5K) · 3 `esl-present-simple-continuous` (tier 3 → priority,
+   the largest group in the file) · 4 `esl-countable-uncountable` (*much and many* 500–1K).
+   `esl-grammar-pool.js` lists them as "Next up" and checks the field; the
+   `esl-grammar-exercise-draft` skill reads it.
+
+### Open
+4. **Build the four priority ESL pages · CC, Shaun approves each publish.** One a week (see
+   item 7 for the pairing), via `esl-grammar-exercise-draft`.
+5. **`gr-past-progressive.html` · CC.** *past continuous exercises* (1K–5K): `themen/past-progressive`
+   exists but has no `gr-*` exercise page. `noindex` like the other `gr-*` pages, so it does not
+   count toward 12.2. Blocked by the open `SHEET_URL` finding on all `gr-*` pages (Tier 8, "New finding, needs Shaun") —
+   Shaun decides the endpoint first.
+6. **Three blog posts · CC via `eol-blog-writer`, Shaun approves each WP draft.** One framework
+   each; each links to one topic page and one money page (12.1).
+   - Learners (EN): wh-question word order — *Where you are going?* → *Where are you going?* Links
+     to `esl-question-formation`; money page `/business-english/`.
+   - Parents (DE): linking words for the Abitur. Links to `themen/linking-words`; money page an
+     Abitur Payhip pack.
+   - Teachers (EN): why German speakers say *Play you football?* Links to
+     `esl-present-simple-continuous`; money page an Eduki listing.
+7. **Schedule (7 new indexable pages, 2 a week) · Shaun confirms.** Week 1:
+   `esl-question-formation` + learner post. Week 2: `esl-pronouns` + parents post. Week 3:
+   `esl-present-simple-continuous` + teachers post. Week 4: `esl-countable-uncountable`. Each
+   post goes live after the page it links to.
+8. **Measure · Shaun.** Re-export the same report on 2026-11-23 and compare the bands for the
+   queries in items 1–5. Measure only, like Tier 9.7.
+
+### Not adopted (with reasons)
+- **Queries about other languages' grammar, and English-grammar queries written in Spanish:** out
+  of scope (Shaun, 2026-10-25). The site serves English and German readers.
+- **New `themen/` pages for wh-questions, pronouns or *much/many*:** Tier 9.5. The English ESL
+  pages in item 4 cover these queries.

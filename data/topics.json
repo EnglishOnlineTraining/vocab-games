@@ -3131,7 +3131,10 @@
     "aliases": [
       "Simple Present Übungen",
       "Present Progressive Übungen",
-      "present tenses Englisch"
+      "present tenses Englisch",
+      "present simple negative",
+      "present simple questions",
+      "do does Englisch"
     ],
     "metaDescription": "Present Tenses im Englischen erklärt mit kostenlosen Übungen — Simple Present und Present Progressive.",
     "related": [
@@ -3162,6 +3165,19 @@
           "Infinitiv für alle Personen — nur die 3. Person Singular bekommt <strong>-s</strong>: „she work<strong>s</strong>“, „he play<strong>s</strong>“.",
           "Verneinung: <strong>don't/doesn't</strong> + Infinitiv. Frage: <strong>Do/Does</strong> + Subjekt + Infinitiv?",
           "<em>The sun <strong>rises</strong> in the east.</em> — feste Tatsache. <em>She <strong>works</strong> every day.</em> — Gewohnheit."
+        ]
+      },
+      {
+        "h2": "Simple Present: Verneinung und Fragen mit do/does",
+        "body": "Verneinung und Frage brauchen im Simple Present ein Hilfsverb: <strong>do</strong> oder <strong>does</strong>. Das -s der 3. Person Singular steht dann im Hilfsverb — das Hauptverb bleibt im Infinitiv.",
+        "list": [
+          "Verneinung: <strong>don't</strong> (I/you/we/they) oder <strong>doesn't</strong> (he/she/it) + Infinitiv — „She <strong>doesn't like</strong> fish.“",
+          "Ja/Nein-Frage: <strong>Do/Does</strong> + Subjekt + Infinitiv — „<strong>Does</strong> he <strong>play</strong> football?“",
+          "W-Frage: Fragewort + <strong>do/does</strong> + Subjekt + Infinitiv — „Where <strong>do</strong> you <strong>live</strong>?“",
+          "Kurzantwort mit dem Hilfsverb: „Yes, I <strong>do</strong>.“ / „No, she <strong>doesn't</strong>.“",
+          "Ohne do: Sätze mit <em>be</em> und mit Modalverben — „<strong>Are</strong> you tired?“, „He <strong>isn't</strong> here.“, „<strong>Can</strong> you swim?“",
+          "✗ <em>Play you football?</em> → ✓ <em><strong>Do</strong> you play football?</em> — im Deutschen reicht die Umstellung, im Englischen braucht die Frage do.",
+          "✗ <em>She doesn't likes fish.</em> → ✓ <em>She doesn't <strong>like</strong> fish.</em> — das -s steht schon in doesn't."
         ]
       },
       {
@@ -3432,12 +3448,72 @@
             "why": "Das Hilfsverb „be“ fehlt — Present Progressive braucht am/is/are + -ing."
           }
         ]
+      },
+      {
+        "title": "Übung 5 — Simple Present: Verneinung und Fragen mit do/does",
+        "intro": "Wähle die richtige Form. Frage dich zuerst: Braucht der Satz do/does, oder steht be?",
+        "items": [
+          {
+            "q": "___ you live near here?",
+            "options": [
+              "Do",
+              "Does",
+              "Are"
+            ],
+            "answer": "Do",
+            "why": "Frage mit you → Do + Subjekt + Infinitiv."
+          },
+          {
+            "q": "She ___ coffee in the evening.",
+            "options": [
+              "doesn't drink",
+              "don't drink",
+              "doesn't drinks"
+            ],
+            "answer": "doesn't drink",
+            "why": "3. Person Singular → doesn't. Das -s steht schon im Hilfsverb, deshalb drink ohne -s."
+          },
+          {
+            "q": "Where ___ your brother work?",
+            "options": [
+              "does",
+              "do",
+              "is"
+            ],
+            "answer": "does",
+            "why": "Fragewort + does (he/she/it) + Subjekt + Infinitiv."
+          },
+          {
+            "q": "___ they tired after school?",
+            "options": [
+              "Are",
+              "Do",
+              "Does"
+            ],
+            "answer": "Are",
+            "why": "Mit be braucht man kein do: Are + Subjekt."
+          },
+          {
+            "q": "Does he play the guitar? — Yes, he ___.",
+            "options": [
+              "does",
+              "plays",
+              "is"
+            ],
+            "answer": "does",
+            "why": "Die Kurzantwort nimmt das Hilfsverb aus der Frage: Yes, he does."
+          }
+        ]
       }
     ],
     "faq": [
       {
         "q": "Wie bildet man das Simple Present?",
         "a": "Mit dem Infinitiv für alle Personen — nur die 3. Person Singular (he/she/it) bekommt ein -s: „she works“, „he plays“. Verneinung: don't/doesn't + Infinitiv."
+      },
+      {
+        "q": "Wie bildet man Verneinung und Fragen im Simple Present?",
+        "a": "Mit dem Hilfsverb do, in der 3. Person Singular does, und dem Infinitiv: „I don't know.“, „Does she work here?“, „Where do you live?“. Das -s steht nur einmal — in does/doesn't, nicht im Hauptverb. Sätze mit be oder mit Modalverben brauchen kein do: „Are you tired?“, „Can you swim?“."
       },
       {
         "q": "Wie bildet man das Present Progressive?",
@@ -3469,7 +3545,9 @@
       "will future Übungen",
       "going to future Englisch",
       "will oder going to",
-      "Zukunft Englisch Übungen"
+      "Zukunft Englisch Übungen",
+      "simple future tense",
+      "future simple tense"
     ],
     "metaDescription": "Future Tenses im Englischen: will-future, going-to-future, Present Progressive und Simple Present für die Zukunft — erklärt, mit 21 kostenlosen Übungen.",
     "related": [
@@ -3497,7 +3575,7 @@
     ],
     "sections": [
       {
-        "h2": "Das will-future: Bildung und Gebrauch",
+        "h2": "Das will-future (Simple Future): Bildung und Gebrauch",
         "body": "Gebildet wird das will-future mit <strong>will + Infinitiv ohne to</strong> — in jeder Person gleich, ohne -s in der 3. Person Singular.",
         "list": [
           "Aussage: <em>I <strong>will</strong> phone her.</em> Kurzform: <em>I<strong>'ll</strong> phone her.</em>",
@@ -3802,6 +3880,10 @@
       {
         "q": "Wann benutzt man will und wann going to?",
         "a": "will steht für spontane Entschlüsse, Versprechen, Angebote und Vorhersagen ohne Beweis. going to steht für Absichten, die schon vor dem Gespräch feststanden, und für Vorhersagen mit sichtbarem Anzeichen. Vergleiche: I'll buy some milk (jetzt entschieden) und I'm going to buy some milk (war schon geplant)."
+      },
+      {
+        "q": "Ist das will-future dasselbe wie das Simple Future?",
+        "a": "Ja. Simple Future, Future Simple und will-future sind drei Namen für dieselbe Form: will + Infinitiv ohne to — „I will help you.“, „She won't come.“, „Will it rain?“. In deutschen Schulbüchern heißt sie meist will-future."
       },
       {
         "q": "Wie bildet man das will-future?",
