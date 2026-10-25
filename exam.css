@@ -1,0 +1,29 @@
+/* exam.css — what every timed test shares, whichever look it has (class-test.css or
+   vocab-test.css). Today that is the dyslexia display.
+
+   Easier-to-read display, on when the student ticks the dyslexia box (exam.js sets
+   html.exam-dyslexia). Follows the British Dyslexia Association style guide: a plain
+   sans-serif font, larger text (the test only, not the header), 1.5+ line spacing, a little extra letter and word
+   spacing, dark grey text on cream instead of black on white, no italics. Light in
+   both colour schemes: cream is the point. */
+html.exam-dyslexia {
+  color-scheme: light;
+  /* class-test.css palette, held light */
+  --bg: #faf6e9; --card: #fffdf5; --text: #26303b; --muted: #55606c; --border: #ddd5bf;
+  --blue: #1a3a5c; --shadow: 0 2px 16px rgba(26,58,92,.1);
+  --green-text: #1d7a42; --red-text: #c0392b; --teal-text: #1f5d5b;
+}
+html.exam-dyslexia body { background: #faf6e9; color: #26303b; }
+/* Only the test itself: the header with the timer and the site's banners keep their size. */
+html.exam-dyslexia main {
+  zoom: 1.125;
+  font-family: Verdana, Tahoma, Arial, sans-serif;
+  letter-spacing: .03em;
+  word-spacing: .12em;
+}
+html.exam-dyslexia main * { line-height: 1.7; font-style: normal; }
+html.exam-dyslexia main :is(input, textarea, select, button) { font-family: inherit; letter-spacing: inherit; word-spacing: inherit; }
+html.exam-dyslexia .card { background: #fffdf5; }
+/* Answer tables (radio grids) keep normal spacing: their cells are short labels, and
+   the extra spacing pushed 9g-class-test-9ab's Section 5 table off a 360px phone. */
+html.exam-dyslexia main :is(th, td) { letter-spacing: normal; word-spacing: normal; padding-inline: .4rem; }
