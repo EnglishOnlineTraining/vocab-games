@@ -85,6 +85,20 @@ Shaun's Mac and in Claude Code web/remote sessions, where the container has no
 `/Users/strezise/...` at all. The template is committed to the repo, so the bare
 filename resolves everywhere.
 
+The template loads the shared test files; keep all four in this order, and never copy
+their code into the page:
+
+```html
+<link rel="stylesheet" href="vocab-test.css">   <!-- the look every vocab test shares -->
+<link rel="stylesheet" href="exam.css">         <!-- the dyslexia display -->
+...
+<script src="exam.js"></script>                 <!-- timer, extra time, dyslexia box, anti-cheat, Punktetabelle -->
+<script> /* the page's own script */ </script>
+```
+
+The page's own `<style>` holds only its own rules. A school-class test also loads
+`integrity.js` before `exam.js` (see `9g-australia-vocab-test.html`).
+
 Make exactly these changes:
 
 ### 3a. Replace the vocab bank
@@ -97,13 +111,13 @@ Replace the entire array (from `[` to the closing `];`) with the new JSON array 
 
 ### 3b. Update the config block
 
-Find this block near the top of the `<script>` section and update only `SHEET_TAB` (and optionally `EXAM_MINS` if Shaun requests a different duration):
+Find this block near the top of the `<script>` section and update only `SHEET_TAB` (and optionally `BASE_EXAM_MINS` if Shaun requests a different duration):
 
 ```js
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwwbV6ufw7QX8meNGyOwiVdkqNpQ8yckdXmsbFqysJwWqAfCWaR_eC9RH41LaqmYyZOeA/exec';
 const EMAIL     = 'learn@englishonline.training';
 const BASE_EXAM_MINS = 30;                 // ← 30 is the standard vocab-test length
-let   EXAM_MINS = BASE_EXAM_MINS;          // ← must be `let`: extra time reassigns it
+const EXAM_WARN = [5, 2];                 // ← timer turns amber, then red, at these minutes left
 const GATE_MINS = 2;
 const SHEET_TAB = 'PM Vocabulary Quiz';  // ← update to new tab name
 const Q_TOTAL   = 20;
@@ -111,8 +125,9 @@ const MATCH_N   = 10;
 const FILL_N    = 10;
 ```
 
-`EXAM_MINS` **must** be declared with `let`, not `const` — the extra-time checkbox in
-Step 3e reassigns it. A `const` here throws at runtime the moment a student ticks the box.
+Do **not** declare `EXAM_MINS`, `sid`, `t0`, `tabN`, `pasteN`, `anomalyN`, `extraTime`,
+`dyslexia` or `timerID`: `exam.js` owns them, and a second declaration stops the page's
+script with a SyntaxError.
 
 ### 3c. Update the title
 
@@ -146,15 +161,10 @@ labels in step with it. On the register screen, just above `#reg-err`:
 <div id="extra-time-note" style="font-size:.8rem;color:#2b7a78;margin-top:-8px;margin-bottom:12px;display:none"></div>
 ```
 
-Apply it where the student leaves the register screen, in `goRules()`:
-
-```js
-extraTime=document.getElementById('inp-extra-time').checked;
-EXAM_MINS=extraTime?Math.round(BASE_EXAM_MINS*1.1):BASE_EXAM_MINS;
-document.getElementById('rules-time').textContent=EXAM_MINS+' minutes';
-document.getElementById('start-btn-mins').textContent=EXAM_MINS;
-document.getElementById('timer-display').textContent=String(EXAM_MINS).padStart(2,'0')+':00';
-```
+Apply it where the student leaves the register screen: `goRules()` calls `examSetup()`
+once name and group are valid. It reads the extra-time and dyslexia boxes, sets
+`EXAM_MINS` and fills the three ids below. `exam.js` adds the **dyslexia box** under
+this row by itself: nothing to add to the page.
 
 Three bits of copy state the duration and **all three need an id**, or the page
 promises 30 minutes while the clock runs 33:
@@ -211,7 +221,7 @@ term count in the blurb equals `VOCAB_BANK.length`.
 grep -n "BASE_EXAM_MINS\|rules-time\|start-btn-mins\|timer-display\"" <file>
 ```
 The number in the blurb, the rules item, the start button and the header clock must
-all equal `BASE_EXAM_MINS`, and `EXAM_MINS` must be declared `let`.
+all equal `BASE_EXAM_MINS`, and the page must not declare `EXAM_MINS` (exam.js does).
 
 **Check 2 — JS syntax:**
 ```bash
@@ -269,6 +279,11 @@ Assert all five:
 - the intercepted payload contains no `undefined`
 - ticking extra time before Continue makes `rules-time`, `start-btn-mins` and
   `timer-display` all read `Math.round(BASE_EXAM_MINS * 1.1)`
+- with the dyslexia box ticked, a fill-in answer with one letter swapped counts as
+  correct, and the payload carries `dyslexia: 'yes'`; unticked, the same answer is wrong
+
+Then add the page to `PAGES` in `tests/exam-pages.spec.js` and run it with `-u` once to
+record its submission; after that the spec fails if a later change alters it.
 
 Serve on the container IP (`hostname -I`), **not localhost** — pages guard
 submission behind a localhost test-mode check, so a localhost run proves nothing.
@@ -305,18 +320,20 @@ hub card by hand.
 
 ---
 
-## Reference: anti-cheat features in the template
+## Reference: anti-cheat features (exam.js)
 
-The canonical template includes all of the following. Do not remove any of them:
+These all live in `exam.js`, which the template loads; the page calls `examStart(autoSubmit)`
+in `startExam()` and `examStop()` when it hands in. Do not copy them into the page:
 
 - Paste event blocking + Ctrl/Cmd+V keydown blocking
 - Right-click / context menu disabled
 - F12 and common devtools keyboard shortcuts blocked
 - Devtools window-size heuristic (polls every 4 seconds; flags if devtools panel is open)
 - `visibilitychange` + `blur` tab-switch counter
-- Typing speed anomaly detection on fill-in inputs (>40 characters in <500 ms flagged)
-- 2-minute time gate before the submit button unlocks
-- Periodic answer snapshots every 3 minutes
+- Typing speed anomaly detection, per field (>40 characters in <500 ms in an answer box, >60 in a writing box)
+- Periodic answer snapshots every 3 minutes (the page's own `snap()`)
+
+The page itself keeps the 2-minute time gate before the submit button unlocks.
 - `user-select: none` on definition text in both sections
 
 ## Reference: scoring logic
@@ -328,8 +345,12 @@ The canonical template includes all of the following. Do not remove any of them:
   const vnorm = s => String(s).trim().toLowerCase()
     .replace(/[\u2018\u2019\u02BC`\u00B4]/g, "'")
     .replace(/^to\s+/, '').replace(/\s+/g, ' ');
-  const isOk = vnorm(given) === vnorm(item.t);
+  const exact = vnorm(given) === vnorm(item.t);
+  const spelling = !exact && examSpellingOk(vnorm(given), vnorm(item.t));   // dyslexia box
+  const isOk = exact || spelling;
   ```
+  `examSpellingOk` is false unless the student ticked the dyslexia box. Use it on
+  vocabulary answers only, never on grammar answers, where the form is what is tested.
   A bare exact match is wrong for German-school word lists, which record verbs as
   infinitives: Green Line 5 Unit 1 has 12 of 42 terms starting `to `. Marking a
   student wrong for typing `gleam` instead of `to gleam` tests a typing convention,
@@ -341,7 +362,7 @@ The canonical template includes all of the following. Do not remove any of them:
 fetch(SHEET_URL, {
   method: 'POST',
   mode: 'no-cors',
-  body: JSON.stringify({ tab: SHEET_TAB, data: payload })
+  body: JSON.stringify({ tab: SHEET_TAB, data: examMark(payload) })   // adds dyslexia: 'yes' when ticked
 });
 ```
 
@@ -350,14 +371,13 @@ Payload fields sent per submission:
 
 `grade` and `extra_time` are easy to leave out and the loss is silent — the Excel
 table has a **Grade** column, and a payload key that isn't sent just arrives blank.
-Build `grade` from the Punktetabelle already inlined in the template:
+Build `grade` from the Punktetabelle in `exam.js`:
 
 ```js
 grade:(function(){const g=lookupGrade(correct,Q_TOTAL);return g?'Note '+g.note+' ('+g.label+')':''})(),
 extra_time:extraTime,
 ```
 
-A self-contained quiz does not load `exercise.js`, so it inlines `GRADE_TABLE` /
-`GRADE_LABELS` / `lookupGrade` **verbatim** from `exercise.js`.
-`scripts/check-grade-table.js` fails the build on any drift, so never retype the
-table — copy it, and make corrections in `exercise.js`.
+A quiz does not load `exercise.js`; `exam.js` holds the one copy of `GRADE_TABLE` /
+`GRADE_LABELS` / `lookupGrade` the tests use, and `scripts/check-grade-table.js` fails
+the build if it drifts from `exercise.js`. Never inline the table in a page.

@@ -98,6 +98,38 @@ them — leave the decision to Shaun if one of them is ever reused.
 
 ---
 
+## Shared test files: `exam.js`, `exam.css`, `class-test.css`, `vocab-test.css` (Shaun, 2026-10-25)
+
+The seven timed tests (the three class tests, `9c-`/`9g-australia-vocab-test`,
+`uni-pm-vocabulary`, `uni-writing-task`) load **`exam.js`** after `integrity.js`. It holds
+what every test shares: extra time, the timer, the anti-cheat signals (tab, paste, copy,
+dev tools, typing bursts, translation), the flash banners, fullscreen, the Make POST with the
+formula guard, and the **one** copy of the Punktetabelle the tests use
+(`check-grade-table.js` checks it against `exercise.js`). The page keeps its questions,
+marking, payload and backups. The API is listed at the top of `exam.js`.
+`uni-presentation-task` is not a timed test and does not load it.
+
+CSS: a class test links `class-test.css`, a vocab or uni test `vocab-test.css`, then every
+test links `exam.css`; the page's own `<style>` keeps only its own rules. The two looks use
+the same class names (`.card`, `.btn`) differently, so they cannot share one file.
+
+**Dyslexia box.** `exam.js` adds it under the extra-time box on every test; nothing to add
+per page. Ticked, it (1) marks typed **vocabulary** answers without spelling: the page calls
+`examSpellingOk(given, key)` on those answers only, never on grammar answers, where the form
+is what is tested; (2) switches the test to the easier-to-read display in `exam.css`; (3) sends
+`dyslexia: yes` to the results sheet only, through `examMark(payload, slot)`: a `dyslexia`
+key, and `dyslexia=yes` added to the page's integrity slot so it shows in the Make Excel
+table. It is never on screen and never in the email or copy backups. Self-declared, like
+extra time. Spelling slips that passed are marked `[correct, spelling not marked: <word>]`
+in the vocab tests' answer columns.
+
+`tests/exam-pages.spec.js` sits every test through to submission with fixed random and a
+paused clock and compares what it sends (sheet, email, copy) against a recorded copy, so a
+change to `exam.js` that alters a test's submission fails there. It also covers the dyslexia
+box, the signals and the time-up hand-in.
+
+---
+
 ## Unified breadcrumb + footer (site chrome, added 2026-08-05)
 
 `exercise.js` injects a **breadcrumb** (Übungen › Jahrgang/Schulart or MSA/Uni/IT/Business › page title, derived from the filename prefix + `.welcome-title`) below the sticky `app-header`, and a **unified footer** (section nav: Alle Übungen · Grammatik-Themen · Universität · Business · IT · Kontakt; legal: Zur Website · Impressum · Datenschutz) at the end of `<body>` — on all 167 framework pages, with **zero per-page edits** (`eolInjectChrome` on `DOMContentLoaded`). Styles are self-contained (injected `<style id="eol-chrome-style">` with `var(--token, fallback)`) so they render even on the framework pages that don't load `style.css`. Guarded against double-injection by element id. `activities.html` carries a matching footer (`.site-footer-nav` + legal line). The per-year hub pages and `themen/` pages keep their own existing footers/back-links.

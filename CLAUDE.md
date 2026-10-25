@@ -31,7 +31,8 @@ non-trivial logic — an E2E spec in `tests/` by preference. Imported here so ev
    publishes to GitHub Pages.
 2. **Learning needs are told per session, not remembered.** When Shaun says a student has dyslexia,
    don't assess spelling in that student's work for that session. The Class Test Marker artifact has
-   a dyslexia toggle for this. Don't save who it applies to.
+   a dyslexia toggle for this, and every timed test has a dyslexia box the student ticks (`exam.js`).
+   Don't save who it applies to.
 3. **Public contact email: `learn@englishonline.training`** (replaced `englishonlinetraining@pm.me`,
    2026-10-16). MailerLite emails send from it (domain verified 2026-10-15); use no other
    sender. The school address (`@docemus.de`) is private: never on the website, public pages,
@@ -198,7 +199,7 @@ Old section names still appear in skills and code comments; this table maps them
 | `docs/claude-reference/years-and-topics.md` | Year 7/9 status, "Year 8 & Year 10", CEFR levels, textbook "Topic pools" |
 | `docs/claude-reference/submission-routing.md` | "Submission routing", Make scenarios, MSA grading, Abitur webhook, Apps Script URLs |
 | `docs/claude-reference/exercise-framework.md` | "Standard features", Score + Note, "Review-page explanations", practise mode, accessibility, writing rubric, spaced-review pages, shared `<head>`, hub cards, WordPress hub, build graph, `exercise.js`, structured data |
-| `docs/claude-reference/hubs-seo-and-tests.md` | "Class review tests", unlisted tests, breadcrumb/footer, filterable index, `index.html`, `themen/`, auto-rebuild, `data/noindex.json`, internal links, IndexNow (not Google), marking handouts |
+| `docs/claude-reference/hubs-seo-and-tests.md` | "Class review tests", unlisted tests, timed tests' shared files (`exam.js`, `exam.css`, `class-test.css`, `vocab-test.css`) and dyslexia box, breadcrumb/footer, filterable index, `index.html`, `themen/`, auto-rebuild, `data/noindex.json`, internal links, IndexNow (not Google), marking handouts |
 | `apps-script.gs` | The Apps Script handler (code is not duplicated in this file) |
 | `style.css` | CSS design tokens (not duplicated in this file) |
 | `docs/seo-backlog.md` | Any SEO, GEO, AI-search or Search Console work — new SEO backlog items go here, not in `eol-backlog-plan.md` |
