@@ -39,8 +39,9 @@ async function sit(page, p, { dyslexia = false, answer = '', timeUp = false } = 
   await page.clock.install({ time: START });
   await page.addInitScript(() => {
     let seed = 42;   // fixed random: same paper, same session id, every run
-    Math.random = () => ((seed = (seed * 1103515245 + 12345) >>> 0) % 1e6) / 1e6;
-    crypto.getRandomValues = (a) => { for (let i = 0; i < a.length; i++) a[i] = Math.floor(Math.random() * 2 ** 32) >>> 0; return a; };
+    const next = () => (seed = (seed * 1103515245 + 12345) >>> 0);
+    Math.random = () => (next() % 1e6) / 1e6;
+    crypto.getRandomValues = (a) => { for (let i = 0; i < a.length; i++) a[i] = next(); return a; };
     window.__out = { copy: [] };
     navigator.clipboard.writeText = (t) => { window.__out.copy.push(t); return Promise.resolve(); };
     window.alert = () => {};
