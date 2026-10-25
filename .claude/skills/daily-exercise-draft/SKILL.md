@@ -274,12 +274,13 @@ it's just the wrong tool for this page. Use the documented safe procedure instea
    destroys them (this has broken live contact forms twice; see CLAUDE.md).
 2. The counts are **not** "(N exercises)" button labels any more: they are
    `<span>N exercises</span>` on the class and University/Business/IT/ESL cards, and
-   `N exercises →` on the MSA, Abitur and IELTS cards. Change only the count strings that
+   `N exercises →` on the MSA, Abitur and IELTS cards, and `Grammar practice: N exercises →` on
+   the `grammar-activities.html` link under the grammar topics. Change only the count strings that
    differ from `data/wordpress-1763.json` — check all of them, not just this category's, since
    the others drift silently too (on 2026-10-19 IELTS still read 7 against a real 9). Several
    cards can share the same number, so replace the count **inside the specific card's
-   `<a href=…>`** — never by the number alone. Leave the Grammatik-Themen, quiz and vocabulary
-   buttons alone; that file does not describe them.
+   `<a href=…>`** — never by the number alone. Leave the grammar topic chips, quizzes and
+   vocabulary links alone; that file does not describe them.
 3. Call `pages.update` with the **full edited content string** (the API only writes fields you
    send, but `content` must be the complete page, not a fragment).
 4. Verify by re-fetching with `context: "edit"` again and diffing against what you intended to

@@ -22,9 +22,8 @@ see what is open and to confirm the registry matches the repo.
 - Shaun wants a backlog of ideas ready before the next drafting session.
 
 Not for building a page (that's `daily-exercise-draft`) or turning a photo into a task
-(`eol-task-creator`). MSA topics are open-ended and are not tracked in this registry. (On Shaun's
-Mac they are handled by a local-only `msa-exercise-draft` skill that is not committed to this
-repo.)
+(`eol-task-creator`). MSA topics are open-ended and are not tracked in this registry. They are
+handled by the account-level `msa-exercise-draft` skill, which is not committed to this repo.
 
 ---
 

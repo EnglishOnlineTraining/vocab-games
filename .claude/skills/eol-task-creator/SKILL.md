@@ -240,12 +240,13 @@ job is to make the live page match that file. Do not count anything by hand.
    that flag the API returns rendered HTML and writing it back destroys dynamic blocks.
 3. Since its rebuild, 1763 is a single `wp:html` block: the counts are
    `<span>N exercises</span>` on the class and University/Business/IT/ESL cards, and
-   `N exercises →` on the MSA, Abitur and IELTS cards. For each card whose count differs,
+   `N exercises →` on the MSA, Abitur and IELTS cards, and `Grammar practice: N exercises →`
+   on the `grammar-activities.html` link under the grammar topics. For each card whose count differs,
    replace **just that count string**, inside the specific card's `<a href=…>` — several
    cards can show the same number, so never replace by the number alone. Compare **every**
    count, not only the one you changed: on 2026-10-19 IELTS still read 7 against a real 9.
-   Change nothing else; the page also holds the Grammatik-Themen block and the quiz and
-   vocabulary buttons, none of which this file describes.
+   Change nothing else; the page also holds the grammar topic chips and the quiz and
+   vocabulary links, none of which this file describes.
 4. Write it back with `pages.update`, sending `content` plus `id` only.
 5. **Verify**: re-fetch with `context: "edit"` and diff against what you intended to send.
    `page-sections.list` is useless on 1763 — it errors with "classic/freeform" *before* any
