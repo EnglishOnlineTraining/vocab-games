@@ -867,9 +867,12 @@ in the repo the same day:
    Never show student work or names in a diagram or screenshot (rule 1).
 3. **Homepage `og:image` alt and card · Shaun (WP media/Jetpack).** Already B11. Set the alt
    text, or switch to the 1200×630 card. A live WordPress edit, so needs Shaun's approval.
-4. **A diagram on `/university-english/` · Shaun.** After item 2, the PNG (WP.com may not take
+4. **DONE (2026-10-26).** **A diagram on `/university-english/` · Shaun.** After item 2, the PNG (WP.com may not take
    SVG uploads) can go into the page through the API, with alt text and a caption. Live edit:
    rule 7, and rule 8's "nothing lost" first.
+   Done: the PR #205 opinion-essay diagram (1200×630 PNG, media 2706) sits under the "What the
+   exercises cover" grid with alt text and a caption. One `page-sections.insert`; all 19 existing
+   blocks keep their hashes (nothing lost).
 
 ### Not adopted (with reasons)
 - **Phase 0 recon, `IMAGE-REGISTRY.md`, `IMAGE-SEO-RECON.md` and `IMAGE-SEO-QA.md`:** the stack is
