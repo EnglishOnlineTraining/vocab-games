@@ -20524,5 +20524,25 @@
     }
    }
   }
+ },
+ "be-meetings-action-points": {
+  "exA": {
+   "gaps": {
+    "g1": {"label": "1. Jonas’s concern", "correct": "New colleagues may feel isolated", "why": "Jonas says new colleagues may feel isolated when working remotely."},
+    "g2": {"label": "2. Lena’s change", "correct": "She extends the pilot to eight weeks", "why": "Lena suggests running the pilot for eight weeks instead of six."},
+    "g3": {"label": "3. Jonas’s Friday task", "correct": "Prepare the feedback questions", "why": "Maya asks Jonas to prepare the feedback questions by Friday."},
+    "g4": {"label": "4. Purpose of Maya’s summary", "correct": "To confirm the decisions and responsibilities", "why": "Her summary confirms the agreed pilot and each person’s responsibility."}
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {"label": "1. Acknowledge before disagreeing", "correct": "I see your point, but have we considered the cost?", "why": "Acknowledging the other view before raising cost keeps the disagreement diplomatic."},
+    "g2": {"label": "2. Soften a disagreement", "correct": "I’m not sure that would work for our clients.", "why": "“I’m not sure” softens the disagreement while giving a client-related reason."},
+    "g3": {"label": "3. Offer an alternative", "correct": "What if we tried a two-week pilot instead?", "why": "“What if” introduces a concrete alternative without imposing it."},
+    "g4": {"label": "4. Assign an owner", "correct": "Could you prepare the draft by Tuesday?", "why": "This polite request names the listener, task and deadline."},
+    "g5": {"label": "5. Specific action point", "correct": "Nina will send the revised quote to the client by 3 p.m. on Friday.", "why": "The action point includes an owner, task, recipient and exact deadline."},
+    "g6": {"label": "6. Spaced recall from Business Meetings", "correct": "Let’s move on to the next item on the agenda.", "why": "Business Meetings used this phrase to move to the next agenda item."}
+   }
+  }
  }
 }
