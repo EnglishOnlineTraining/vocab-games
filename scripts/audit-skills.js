@@ -133,6 +133,7 @@ const IGNORE_PATHS = new Set([
   'prefix-topic-slug.html', // pattern, not real file
   'esl-topic-slug.html', // pattern
   'esl-articles.html',   // example in esl-grammar-exercise-draft
+  'past-progressive-gap-fill-exercise.png', // naming example in eol-blog-writer
 ]);
 
 // WordPress MCP / API references that look like file paths but aren't
