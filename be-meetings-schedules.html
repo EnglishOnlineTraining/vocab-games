@@ -529,11 +529,11 @@ var state = {
 };
 
 function nextStep(n) {
-  if (!validateStep(n)) {
-    var err = document.getElementById('step' + n + '-error');
-    if (err) { err.textContent = 'Please answer every question before continuing.'; err.classList.add('show'); }
-    return;
-  }
+  // Unfinished steps get the shared "Continue anyway" dialog, as on every other page.
+  if (!validateStep(n)) { eolSkipModal(function() { goNext(n); }); return; }
+  goNext(n);
+}
+function goNext(n) {
   clearErr(n);
   saveStep(n);
   if (n === TOTAL_STEPS - 1) {
