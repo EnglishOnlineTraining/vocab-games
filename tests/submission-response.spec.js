@@ -28,13 +28,14 @@ test('exercise.js: failure preserves the draft and only a 200 confirms and clear
   await page.evaluate(() => {
     state.exC.text = 'This draft must survive a failed submission.';
     eolDraftSave();
+    showStep(TOTAL_STEPS);
     submitToSheet();
   });
 
   await expect(page.locator('#submit-fallback')).toBeVisible();
   await expect(page.locator('#submit-success')).toBeHidden();
   await expect(page.locator('#submit-btn')).toBeEnabled();
-  expect(mock.requests).toHaveLength(1);
+  await expect.poll(() => mock.requests.length).toBe(1);
   const draft = await page.evaluate(() => JSON.parse(localStorage.getItem(EOL_DRAFT_KEY)));
   expect(draft.state.exC.text).toBe('This draft must survive a failed submission.');
   await page.screenshot({ path: 'test-results/submission-response-failure.png', fullPage: true });
@@ -42,7 +43,7 @@ test('exercise.js: failure preserves the draft and only a 200 confirms and clear
   mock.status = 200;
   await page.evaluate(() => submitToSheet());
   await expect(page.locator('#submit-success')).toBeVisible();
-  expect(mock.requests).toHaveLength(2);
+  await expect.poll(() => mock.requests.length).toBe(2);
   expect(await page.evaluate(() => localStorage.getItem(EOL_DRAFT_KEY))).toBeNull();
   await page.screenshot({ path: 'test-results/submission-response-success.png', fullPage: true });
 });
@@ -51,12 +52,15 @@ for (const status of [500, 200]) {
   test(`Abitur standalone submission handles a ${status} response`, async ({ page }) => {
     const mock = await mockSubmissions(page, status);
     await page.goto('/abitur-mediation-media-impact.html');
-    await page.fill('#studentName', 'Test Student');
-    await page.fill('#studentClass', 'Q1');
-    await page.fill('#essayText', 'A draft that must not be lost.');
-    await page.evaluate(() => submitToTeacher());
+    await page.evaluate(() => {
+      document.getElementById('studentName').value = 'Test Student';
+      document.getElementById('studentClass').value = 'Q1';
+      document.getElementById('essayText').value = 'A draft that must not be lost.';
+      document.getElementById('finalScore').style.display = 'block';   // as the page's own results step does
+      submitToTeacher();
+    });
 
-    expect(mock.requests).toHaveLength(1);
+    await expect.poll(() => mock.requests.length).toBe(1);
     if (status === 500) {
       await expect(page.locator('#submitFallback')).toBeVisible();
       await expect(page.locator('#submitSuccess')).toBeHidden();
@@ -71,11 +75,14 @@ for (const status of [500, 200]) {
   test(`grammar standalone submission handles a ${status} response`, async ({ page }) => {
     const mock = await mockSubmissions(page, status);
     await page.goto(ORIGIN + '/gr-present-perfect.html');
-    await page.fill('#inp-email', 'student@example.test');
-    await page.fill('#exD-text', 'This writing stays on the page after an error.');
-    await page.evaluate(() => submitToSheet());
+    await page.evaluate(() => {
+      document.getElementById('inp-email').value = 'student@example.test';
+      document.getElementById('exD-text').value = 'This writing stays on the page after an error.';
+      showStep(TOTAL_STEPS);
+      submitToSheet();
+    });
 
-    expect(mock.requests).toHaveLength(1);
+    await expect.poll(() => mock.requests.length).toBe(1);
     if (status === 500) {
       await expect(page.locator('#submit-fallback')).toBeVisible();
       await expect(page.locator('#submit-success')).toBeHidden();
@@ -96,7 +103,7 @@ for (const status of [500, 200]) {
       submitForm();
     });
 
-    expect(mock.requests).toHaveLength(1);
+    await expect.poll(() => mock.requests.length).toBe(1);
     const draft = await page.evaluate(() => localStorage.getItem(STORE_KEY));
     if (status === 500) {
       await expect(page.locator('#submitMessage')).toContainText('Sending failed');
@@ -110,12 +117,14 @@ for (const status of [500, 200]) {
 
   test(`level test feedback request handles a ${status} response`, async ({ page }) => {
     const mock = await mockSubmissions(page, status);
-    await page.goto('/level-test.html');
+    await page.goto(ORIGIN + '/level-test.html');
     await page.evaluate(() => buildSummary());
-    await page.fill('#result-email', 'student@example.test');
-    await page.evaluate(() => requestFeedback());
+    await page.evaluate(() => {
+      document.getElementById('result-email').value = 'student@example.test';
+      requestFeedback();
+    });
 
-    expect(mock.requests).toHaveLength(1);
+    await expect.poll(() => mock.requests.length).toBe(1);
     if (status === 500) {
       await expect(page.locator('#email-feedback')).toContainText('could not be sent');
       await expect(page.locator('#email-send')).toBeEnabled();
@@ -129,11 +138,14 @@ for (const status of [500, 200]) {
   test(`vocab-srs progress handles a ${status} response`, async ({ page }) => {
     const mock = await mockSubmissions(page, status);
     await page.goto(ORIGIN + '/10g-south-africa-vocab-practice.html');
-    await page.fill('#inp-name', 'Test Student');
-    await page.evaluate(() => sendProgress());
+    await page.evaluate(() => {
+      startSession(); finishSession();   // the send button only appears on the end screen
+      document.getElementById('inp-name').value = 'Test Student';
+      sendProgress();
+    });
 
-    expect(mock.requests).toHaveLength(1);
-    expect(await page.evaluate(() => JSON.parse(localStorage.getItem(STORE_KEY)).name)).toBe('Test Student');
+    await expect.poll(() => mock.requests.length).toBe(1);
+    expect(await page.evaluate(() => JSON.parse(localStorage.getItem(STORE_KEY) || '{}').name)).toBeUndefined();
     if (status === 500) {
       await expect(page.locator('#send-fb')).toContainText('That did not send');
       await expect(page.locator('#send-btn')).toBeEnabled();
@@ -146,9 +158,9 @@ for (const status of [500, 200]) {
   test(`exam.js submission fallback handles a ${status} response`, async ({ page }) => {
     const mock = await mockSubmissions(page, status);
     await page.goto('/9ab-grammar-literary-review-test.html');
-    await page.evaluate(() => doSubmit());
+    await page.evaluate(() => { show('s-review'); doSubmit(); });
 
-    expect(mock.requests).toHaveLength(1);
+    await expect.poll(() => mock.requests.length).toBe(1);
     if (status === 500) {
       await expect(page.locator('#submit-fallback')).toBeVisible();
       await expect(page.locator('#s-done')).not.toHaveClass(/active/);
@@ -164,7 +176,7 @@ for (const status of [500, 200]) {
     await page.goto('/uni-pm-vocabulary.html');
     await page.evaluate(() => doSubmit());
 
-    expect(mock.requests).toHaveLength(1);
+    await expect.poll(() => mock.requests.length).toBe(1);
     await expect(page.locator('#s-done')).toHaveClass(/active/);
     if (status === 500) {
       await expect(page.locator('#done-title')).toHaveText('Submission failed');

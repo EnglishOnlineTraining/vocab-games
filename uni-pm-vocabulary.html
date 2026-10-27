@@ -332,7 +332,19 @@ function toggleReview(){
 }
 
 /* ── SEND ── */
-function send(data){fetch(SHEET_URL,{method:'POST',mode:'no-cors',body:JSON.stringify({tab:SHEET_TAB,data:examMark(data)})})}
+function send(data){
+  fetch(SHEET_URL,{method:'POST',body:JSON.stringify({tab:SHEET_TAB,data:examMark(data)})})
+    .then(function(response){
+      if(!response.ok)throw new Error('Submission failed with HTTP '+response.status);
+      show('s-done');
+    })
+    .catch(function(err){
+      document.getElementById('done-title').textContent='Submission failed';
+      document.getElementById('done-message').textContent='Your result has not been sent. Use one of the backups below.';
+      show('s-done');
+      console.error('❌ Submission failed:',err);
+    });
+}
 
 /* ── BACKUPS ── */
 function doEmailBackup(){
