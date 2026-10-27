@@ -61,9 +61,9 @@
     document.head.appendChild(st);
   }
 
-  // International pages (IELTS) get the banner in English only. Kept in step
+  // International pages (IELTS, University) get the banner in English only. Kept in step
   // with eolEnglishOnly() in exercise.js and englishOnly() in scripts/schema.js.
-  var EN = /^ielts-/.test((location.pathname.split('/').pop() || '').toLowerCase());
+  var EN = /^(ielts|uni)-/.test((location.pathname.split('/').pop() || '').toLowerCase());
 
   function banner() {
     if (document.getElementById('eol-consent')) return;
