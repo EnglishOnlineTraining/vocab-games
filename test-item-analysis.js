@@ -212,6 +212,17 @@ test('loop: a fix is judged on the basis its before was measured on', () => {
     () => finalOnly, 15)[0].verdict, 'waiting');
 });
 
+test('loop: a writing-field fix is judged on share blank, lower is better', () => {
+  const after = { gaps: [{ unit: 'u', gap: 'exA.g1', n: 20, correct: 0.4 }],
+    writing: [{ unit: 'u', field: 'exA.recall', n: 20, blank: 0.2 }, { unit: 'u', field: 'exD.text', n: 9, blank: 0 }] };
+  const v = (c) => IA.compareChanges([Object.assign({ unit: 'u', date: 'd' }, c)], () => after, 15)[0];
+  assert.deepStrictEqual([v({ field: 'exA.recall', before: 0.48 }).verdict, v({ field: 'exA.recall', before: 0.48 }).after], ['kept', 0.2]);
+  assert.strictEqual(v({ field: 'exA.recall', before: 0 }).verdict, 'worse: revert');    // blank rose 20 points
+  assert.strictEqual(v({ field: 'exA.recall', before: 0.1 }).verdict, 'inconclusive');
+  assert.strictEqual(v({ field: 'exD.text', before: 0.32 }).verdict, 'waiting');         // n under min
+  assert.strictEqual(v({ gap: 'exA.g1', before: 0.84 }).verdict, 'worse: revert');      // gaps still read correct
+});
+
 // ── CSV end to end (Make export and Abitur export) ─────────────────────────
 
 function csvCell(s) { return /[",\n]/.test(s) ? '"' + String(s).replace(/"/g, '""') + '"' : s; }

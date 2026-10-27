@@ -393,28 +393,38 @@ const CHANGES = path.join(__dirname, '..', 'data', 'item-changes.json');
    spec's rule (docs/agent-backlog.md #11, Loop 4): with `min` answers on both sides, a
    fall of 20 points or more is "worse: revert", a rise is "kept" (its lesson can go
    into STYLE.md §2.5), anything else "inconclusive".
+   A writing field is logged with `field` instead of `gap`; its `before`/`after` are the
+   share left blank, so the same rule runs the other way (a rise of 20 points reverts).
    ponytail: a fixed 20-point margin, no significance test; small classes can still
    swing past it by chance, so the PR reviewer decides. */
 function compareChanges(changes, afterFor, min) {
   const byDate = {};
   return changes.map(c => {
     const r = byDate[c.date] || (byDate[c.date] = afterFor(c.date));
-    // Compare like with like: `before` was measured on c.basis (default final answers).
-    const want = c.basis || 'final', x = r && r.gaps.find(x => x.unit === c.unit && x.gap === c.gap);
-    const g = !x ? null : (x.basis || 'final') === want ? x : want === 'final' ? x.final : null;
-    const out = { unit: c.unit, gap: c.gap, date: c.date, before: c.before };
+    let g;
+    if (c.field) {
+      const w = r && r.writing.find(x => x.unit === c.unit && x.field === c.field);
+      g = w && { n: w.n, score: -w.blank, after: w.blank };
+    } else {
+      // Compare like with like: `before` was measured on c.basis (default final answers).
+      const want = c.basis || 'final', x = r && r.gaps.find(x => x.unit === c.unit && x.gap === c.gap);
+      const y = !x ? null : (x.basis || 'final') === want ? x : want === 'final' ? x.final : null;
+      g = y && { n: y.n, score: y.correct, after: y.correct };
+    }
+    const before = c.field ? -c.before : c.before;
+    const out = Object.assign({ unit: c.unit }, c.field ? { field: c.field } : { gap: c.gap }, { date: c.date, before: c.before });
     if (!r) return Object.assign(out, { verdict: 'no dates in this input' });
     if (!g || g.n < min || (c.n != null && c.n < min)) return Object.assign(out, { n: g ? g.n : 0, verdict: 'waiting' });
-    const verdict = round(c.before - g.correct) >= RULES.revertDrop ? 'worse: revert'
-      : g.correct > c.before ? 'kept' : 'inconclusive';
-    return Object.assign(out, { n: g.n, after: g.correct, verdict });
+    const verdict = round(before - g.score) >= RULES.revertDrop ? 'worse: revert'
+      : g.score > before ? 'kept' : 'inconclusive';
+    return Object.assign(out, { n: g.n, after: g.after, verdict });
   });
 }
 
-/* Mark flagged gaps that already have a logged fix, so they are not fixed twice. */
+/* Mark flagged gaps and writing fields that already have a logged fix, so they are not fixed twice. */
 function markChanged(r, changes) {
-  for (const g of r.gaps) {
-    const c = changes.filter(x => x.unit === g.unit && x.gap === g.gap).pop();
+  for (const g of r.gaps.concat(r.writing)) {
+    const c = changes.filter(x => x.unit === g.unit && (g.field ? x.field === g.field : x.gap === g.gap)).pop();
     if (c) g.changed = c.date;
   }
 }
@@ -434,13 +444,15 @@ function printText(r) {
   lines.push('', 'Flagged writing fields: ' + wf.length);
   for (const w of wf) {
     lines.push('  ' + w.unit + ' ' + w.field + '  n=' + w.n + '  ' + pct(w.blank) + ' blank  median '
-      + w.medianWords + ' words  [' + w.flags.join(', ') + ']');
+      + w.medianWords + ' words  [' + w.flags.join(', ') + ']'
+      + (w.changed ? '  (fixed ' + w.changed + ', see below)' : ''));
   }
   if (r.changes && r.changes.length) {
     lines.push('', 'Logged fixes (data/item-changes.json), answers since each fix:');
     for (const c of r.changes) {
-      lines.push('  ' + c.unit + ' ' + c.gap + '  ' + c.date + '  before ' + pct(c.before)
-        + (c.after != null ? '  after ' + pct(c.after) + ' (n=' + c.n + ')' : c.n != null ? '  n=' + c.n + ' so far' : '')
+      const unit = c.field ? ' blank' : '';
+      lines.push('  ' + c.unit + ' ' + (c.field || c.gap) + '  ' + c.date + '  before ' + pct(c.before) + unit
+        + (c.after != null ? '  after ' + pct(c.after) + unit + ' (n=' + c.n + ')' : c.n != null ? '  n=' + c.n + ' so far' : '')
         + '  [' + c.verdict + ']');
     }
   }
@@ -490,7 +502,7 @@ async function main() {
 
   const r = report(await load(since), min);
   // Only fixes to units this input holds: Excel units never show up in --sheets.
-  const units = new Set(r.gaps.map(g => g.unit));
+  const units = new Set(r.gaps.concat(r.writing).map(g => g.unit));
   const changes = (fs.existsSync(CHANGES) ? JSON.parse(fs.readFileSync(CHANGES, 'utf8')) : [])
     .filter(c => units.has(c.unit));
   if (changes.length) {

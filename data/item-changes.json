@@ -2,5 +2,8 @@
  { "unit": "9g-australia-two-objects-passive", "gap": "exC.g3", "date": "2026-10-17", "before": 0.33, "n": 15, "change": "accept the fronted time phrase and the other passive" },
  { "unit": "9g-australia-two-objects-passive", "gap": "exC.g5", "date": "2026-10-17", "before": 0.27, "n": 15, "change": "accept 'by the teachers' and the other passive" },
  { "unit": "9g-australia-two-objects-passive", "gap": "exC.g6", "date": "2026-10-17", "before": 0, "n": 15, "change": "accept the time phrase at either end, 'by the council' and the other passive" },
- { "unit": "9g-australia-two-objects-passive", "gap": "exC.g7", "date": "2026-10-17", "before": 0, "n": 15, "change": "accept 'yesterday' at either end and 'by an elder'" }
+ { "unit": "9g-australia-two-objects-passive", "gap": "exC.g7", "date": "2026-10-17", "before": 0, "n": 15, "change": "accept 'yesterday' at either end and 'by an elder'" },
+ { "unit": "esl-articles", "gap": "exB.g6", "date": "2026-10-27", "before": 0.84, "n": 31, "change": "why line names the trap: 'It' is the dog again, but the ball is a first mention" },
+ { "unit": "esl-articles", "field": "exA.recall", "date": "2026-10-27", "before": 0.48, "n": 31, "change": "optional prompt gets two sentence frames and 'a guess is fine'" },
+ { "unit": "esl-articles", "field": "exD.text", "date": "2026-10-27", "before": 0.32, "n": 31, "change": "instructions stated once; Useful phrases card with a/an, the and no-article starters" }
 ]
