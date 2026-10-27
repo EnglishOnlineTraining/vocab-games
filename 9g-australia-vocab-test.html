@@ -6,42 +6,16 @@
 <title>G'day Australia! — Unit 1 Vocabulary Test</title>
 <meta name="description" content="Timed vocabulary test on Klett Green Line 5 Unit 1 &quot;G'day Australia!&quot; — 20 of 42 terms picked at random, 30 minutes on the clock.">
 <link rel="canonical" href="https://activities.englishonline.training/9g-australia-vocab-test.html">
+<link rel="stylesheet" href="vocab-test.css">
+<link rel="stylesheet" href="exam.css">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f0f4f8;color:#1a202c;min-height:100vh}
 header{background:#1b4332;color:white;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.25)}
-header a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.88rem}
-header .title{font-size:.95rem;font-weight:600}
-#timer-wrap{display:none;align-items:center;gap:8px}
-#timer-label{font-size:.75rem;opacity:.7;text-transform:uppercase;letter-spacing:.05em}
-#timer-display{font-size:1.1rem;font-weight:700;background:rgba(255,255,255,.2);padding:3px 12px;border-radius:20px;font-variant-numeric:tabular-nums;min-width:68px;text-align:center}
-#timer-display.warning{background:#f6ad55;color:#7b341e}
-#timer-display.danger{background:#fc8181;color:#742a2a;animation:pulse 1s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
-.screen{display:none}.screen.active{display:block}
 .container{max-width:780px;margin:0 auto;padding:24px 16px}
-.card{background:white;border-radius:12px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,.07);margin-bottom:20px}
-h2{font-size:1.35rem;margin-bottom:14px;color:#1a202c}
-h3{font-size:1rem;margin-bottom:8px;color:#276749}
-p{margin-bottom:10px;line-height:1.65;font-size:.95rem}
-.form-group{margin-bottom:16px}
-label{display:block;font-weight:600;margin-bottom:5px;font-size:.88rem;color:#4a5568}
-input[type=text]{width:100%;padding:10px 14px;border:2px solid #e2e8f0;border-radius:8px;font-size:1rem;transition:border-color .2s}
-input[type=text]:focus{outline:none;border-color:#2d6a4f}
 select{width:100%;padding:10px 12px;border:2px solid #e2e8f0;border-radius:8px;font-size:.95rem;background:white}
 select:focus{outline:none;border-color:#2d6a4f}
 .btn{display:inline-block;padding:11px 26px;border:none;border-radius:8px;font-size:.95rem;font-weight:600;cursor:pointer;transition:all .2s}
-.btn-primary{background:#2d6a4f;color:white}
-.btn-primary:hover{background:#1b4332}
-.btn-primary:disabled{background:#a0aec0;cursor:not-allowed;opacity:.7}
-.btn-secondary{background:#e2e8f0;color:#4a5568}
-.btn-secondary:hover{background:#cbd5e0}
 .btn-outline{background:transparent;border:2px solid #2d6a4f;color:#2d6a4f}
-.btn-outline:hover{background:#f0fff4}
-.rule-list{list-style:none;padding:0;margin:12px 0}
-.rule-list li{padding:9px 14px;border-left:3px solid #2d6a4f;margin-bottom:7px;background:#f7fafc;border-radius:0 7px 7px 0;font-size:.9rem;line-height:1.5}
-.rule-list li.red{border-color:#e53e3e;background:#fff5f5}
-.notice{background:#fffff0;border:1px solid #ecc94b;border-radius:8px;padding:13px 16px;font-size:.88rem;line-height:1.5;margin-top:12px}
 .section-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:#2b6cb0;font-weight:700;margin-bottom:10px}
 .qa-row{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid #edf2f7}
 .qa-row:last-child{border-bottom:none}
@@ -51,22 +25,9 @@ select:focus{outline:none;border-color:#2d6a4f}
 .qa-row.correct .qa-def{color:#276749}
 .qa-row.incorrect .qa-def{color:#c53030}
 .qa-answer-tag{font-size:.78rem;margin-top:4px;color:#718096}
-.alert{border-radius:8px;padding:11px 16px;margin-bottom:14px;font-size:.9rem;display:none}
-.alert.show{display:block}
-.alert-warn{background:#fffbeb;border:1px solid #f6e05e;color:#744210}
-.alert-danger{background:#fff5f5;border:1px solid #feb2b2;color:#742a2a}
 .integrity-strip{font-size:.78rem;color:#a0aec0;margin-top:10px;text-align:right}
-#submit-area{text-align:center;padding:8px 0 20px}
-#time-gate-msg{font-size:.82rem;color:#718096;margin-top:7px}
 .progress-strip{font-size:.82rem;color:#4a5568;margin-bottom:6px}
-.done-card{text-align:center;padding:36px 28px}
-.done-card .big-icon{font-size:3.5rem;margin-bottom:14px}
-.done-card h2{color:#276749;margin-bottom:8px}
 .score-big{font-size:2.4rem;font-weight:800;color:#2d6a4f;margin:10px 0}
-.done-meta{font-size:.85rem;color:#718096;margin-top:10px}
-.backup-bar{margin-top:20px;background:#f7fafc;border-radius:8px;padding:14px;text-align:left;font-size:.88rem}
-.backup-bar p{margin-bottom:10px;font-weight:600}
-.backup-btns{display:flex;gap:10px;flex-wrap:wrap}
 .review-toggle{margin-top:18px}
 .exam-pane[hidden]{display:none}
 .pane-nav{margin-top:20px;padding-top:16px;border-top:1px solid #edf2f7;text-align:right}
@@ -85,9 +46,8 @@ select:focus{outline:none;border-color:#2d6a4f}
 .use-flag{font-size:.8rem;margin-top:5px;min-height:1.1em}
 .use-flag.ok{color:#276749}
 .use-flag.no{color:#975a16}
-body.exam-mode{-webkit-user-select:none;user-select:none}
 body.exam-mode input[type=text],body.exam-mode textarea{-webkit-user-select:text;user-select:text}
-@media(max-width:600px){.card{padding:18px 14px}.btn{padding:10px 18px}.qa-row{flex-wrap:wrap}.qa-select,.qa-input{flex:1 1 100%}}
+@media(max-width:600px){.btn{padding:10px 18px}.qa-row{flex-wrap:wrap}.qa-select,.qa-input{flex:1 1 100%}}
 </style>
 <!-- HEAD:START — generated by scripts/build-head.js, do not edit by hand -->
 <script src="consent.js" defer></script>
@@ -117,17 +77,6 @@ body.exam-mode input[type=text],body.exam-mode textarea{-webkit-user-select:text
 <!-- HEAD:END -->
 </head>
 <body>
-<!-- NOSCRIPT:START — generated by scripts/build-head.js, do not edit by hand -->
-<noscript>
-  <div style="background:#fdf3d8;border-bottom:2px solid #c9a227;color:#1d2b3a;padding:.9rem 1rem;font:1rem/1.5 'Segoe UI',system-ui,sans-serif;text-align:center">
-    <strong lang="de">Diese Übung braucht JavaScript.</strong>
-    <span lang="de">Bitte aktiviere JavaScript in deinem Browser — sonst bleiben die Aufgaben leer.</span>
-    <br>
-    <strong>This exercise needs JavaScript.</strong>
-    <span>Please switch JavaScript on in your browser, otherwise the tasks stay empty.</span>
-  </div>
-</noscript>
-<!-- NOSCRIPT:END -->
 <!-- SKIP:START — generated by scripts/build-head.js, do not edit by hand -->
 <a class="eol-skip" href="#main">Skip to content</a>
 <!-- SKIP:END -->
@@ -380,12 +329,13 @@ body.exam-mode input[type=text],body.exam-mode textarea{-webkit-user-select:text
 </main>
 
 <script src="integrity.js"></script>
+<script src="exam.js"></script>
 <script>
 /* ── CONFIG ── */
 const SHEET_URL = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj'; // Year 9 Make webhook
 const EMAIL     = 'learn@englishonline.training';
 const BASE_EXAM_MINS = 30;
-let EXAM_MINS = BASE_EXAM_MINS;   // +10% when extra time is approved
+const EXAM_WARN = [5, 2];   // exam.js: timer amber, then red, at these minutes left
 const GATE_MINS = 2;
 /* Soft timing gate: stops a class starting before the teacher says so.
    It is visible in the page source, so it is not security — change the
@@ -398,68 +348,14 @@ const MATCH_N   = 10;
 const FILL_N    = 10;
 
 /* ── VOCABULARY BANK (236 terms) ── */
-/* --- Punktetabelle (PMG/BAO Sek I) — copied VERBATIM from exercise.js.
-   This page is self-contained and does not load exercise.js, so the table
-   must live here. Regenerate with scripts/check-grade-table.js if the
-   shared table ever changes; that checker fails the build on drift. --- */
-const GRADE_TABLE = [
-  [100,96,80,60,45,16],[99,96,80,60,45,16],[98,95,79,59,45,16],[97,94,78,59,44,16],
-  [96,93,77,58,44,16],[95,92,76,57,43,16],[94,91,76,57,43,16],[93,90,75,56,42,15],
-  [92,89,74,56,42,15],[91,88,73,55,41,15],[90,87,72,54,41,15],[89,86,72,54,41,15],
-  [88,85,71,53,40,15],[87,84,70,53,40,14],[86,83,69,52,39,14],[85,82,68,51,39,14],
-  [84,81,68,51,38,14],[83,80,67,50,38,14],[82,79,66,50,37,14],[81,78,65,49,37,13],
-  [80,77,64,48,36,13],[79,76,64,48,36,13],[78,75,63,47,36,13],[77,74,62,47,35,13],
-  [76,73,61,46,35,13],[75,72,60,45,34,12],[74,72,60,45,34,12],[73,71,59,44,33,12],
-  [72,70,58,44,33,12],[71,69,57,43,32,12],[70,68,56,42,32,12],[69,67,56,42,32,12],
-  [68,66,55,41,31,11],[67,65,54,41,31,11],[66,64,53,40,30,11],[65,63,52,39,30,11],
-  [64,62,52,39,29,11],[63,61,51,38,29,11],[62,60,50,38,28,10],[61,59,49,37,28,10],
-  [60,58,48,36,27,10],[59,57,48,36,27,10],[58,56,47,35,27,10],[57,55,46,35,26,10],
-  [56,54,45,34,26,9],[55,53,44,33,25,9],[54,52,44,33,25,9],[53,51,43,32,24,9],
-  [52,50,42,32,24,9],[51,49,41,31,23,9],[50,48,40,30,23,8],[49,48,40,30,23,8],
-  [48,47,39,29,22,8],[47,46,38,29,22,8],[46,45,37,28,21,8],[45,44,36,27,21,8],
-  [44,43,36,27,20,8],[43,42,35,26,20,7],[42,41,34,26,19,7],[41,40,33,25,19,7],
-  [40,39,32,24,18,7],[39,38,32,24,18,7],[38,37,31,23,18,7],[37,36,30,23,17,6],
-  [36,35,29,22,17,6],[35,34,28,21,16,6],[34,33,28,21,16,6],[33,32,27,20,15,6],
-  [32,31,26,20,15,6],[31,30,25,19,14,5],[30,29,24,18,14,5],[29,28,24,18,14,5],
-  [28,27,23,17,13,5],[27,26,22,17,13,5],[26,25,21,16,12,5],[25,24,20,15,12,4],
-  [24,24,20,15,11,4],[23,23,19,14,11,4],[22,22,18,14,10,4],[21,21,17,13,10,4],
-  [20,20,16,12,9,4],[19,19,16,12,9,4],[18,18,15,11,9,3],[17,17,14,11,8,3],
-  [16,16,13,10,8,3],[15,15,12,9,7,3],[14,14,12,9,7,3],[13,13,11,8,6,3],
-  [12,12,10,8,6,2],[11,11,9,7,5,2],[10,10,8,6,5,2]
-];
-const GRADE_LABELS = ['Sehr gut', 'Gut', 'Befriedigend', 'Genügend', 'Nicht genügend'];
-function lookupGrade(earned, possible) {
-  if (!possible) return null;
-  var score, maxPts;
-  if (possible < 10) {
-    maxPts = 10;
-    score = Math.round((earned / possible) * 10);
-  } else if (possible > 100) {
-    maxPts = 100;
-    score = Math.round((earned / possible) * 100);
-  } else {
-    maxPts = possible;
-    score = earned;
-  }
-  score = Math.max(0, Math.min(maxPts, score));
-  var row = GRADE_TABLE.filter(function(r) { return r[0] === maxPts; })[0];
-  if (!row) return null;
-  for (var i = 1; i <= 5; i++) {
-    if (score >= row[i]) return { note: i, label: GRADE_LABELS[i - 1] };
-  }
-  return { note: 5, label: GRADE_LABELS[4] };
-}
 const vnorm=s=>String(s).trim().toLowerCase().replace(/[\u2018\u2019\u02BC`\u00B4]/g,"'").replace(/^to\s+/,'').replace(/\s+/g,' ');
 const VOCAB_BANK = [{"t":"G'day","d":"the Australian way of saying hello"},{"t":"youth hostel","d":"a cheap place where young travellers can sleep"},{"t":"to gleam","d":"to shine softly"},{"t":"cluster","d":"a small group of things close together"},{"t":"giant","d":"extremely large"},{"t":"seashell","d":"the hard cover of a small sea animal"},{"t":"to overhear","d":"to hear something by accident, not on purpose"},{"t":"owner","d":"the person something belongs to"},{"t":"terrace","d":"a flat area outside a house where you can sit"},{"t":"snake","d":"a long reptile with no legs"},{"t":"air ambulance","d":"an aircraft that takes ill or injured people to hospital"},{"t":"satellite","d":"a machine sent into space to send signals back"},{"t":"to go off","d":"to leave a place"},{"t":"on one's own","d":"with nobody else"},{"t":"bushwalking","d":"walking in the Australian countryside for pleasure"},{"t":"box jellyfish","d":"a square-shaped jellyfish whose sting can kill"},{"t":"marine stinger","d":"the Australian name for any stinging sea creature"},{"t":"to net off","d":"to close an area with a net"},{"t":"to be likely","d":"to probably happen"},{"t":"rip current","d":"water that pulls swimmers away from the beach"},{"t":"to be swept out to sea","d":"to be carried away from the shore by the water"},{"t":"comforting","d":"making a worried person feel better"},{"t":"safety","d":"being free from danger"},{"t":"to call off","d":"to stop or cancel something you planned"},{"t":"risk","d":"the chance that something bad happens"},{"t":"spokesperson","d":"a person who speaks officially for a group"},{"t":"association","d":"an organised group of people with a shared aim"},{"t":"survival","d":"staying alive in a dangerous situation"},{"t":"climatic","d":"to do with the weather in a region"},{"t":"mostly","d":"in most cases; usually"},{"t":"interior","d":"the inland part of a country, away from the coast"},{"t":"to show sb around","d":"to take someone through a place and explain it"},{"t":"barbie","d":"the Australian word for a barbecue"},{"t":"to serve","d":"to give food or drink to someone"},{"t":"to pick","d":"to take fruit or flowers from a plant by hand"},{"t":"litter","d":"rubbish left lying in a public place"},{"t":"track","d":"a rough path through the countryside"},{"t":"to disturb","d":"to interrupt someone or something"},{"t":"site","d":"a place where something important happens or stands"},{"t":"to damage","d":"to harm something so it no longer works well"},{"t":"lizard","d":"a small reptile with four legs and a long tail"},{"t":"deadly","d":"able to kill you"}];
 
 /* ── STATE ── */
-let sName='',sGroup='',sid='',extraTime=false;
-let t0=null,tabN=0,pasteN=0,anomalyN=0,reloads=0;
-let gateOpen=false,timerID=null;
-let lastLen=0,lastT=Date.now();
+let sName='',sGroup='',reloads=0;
+let gateOpen=false;
 let snapshots=[];
 let payload=null;
-let devToolsFlagged=false;
 let matchItems=[],fillItems=[],matchOptions=[],useItems=[];
 let curPane='a';
 const USE_N=5;
@@ -467,31 +363,16 @@ const USE_N=5;
    Sections B and C so a student is never asked to type a word that is on screen. */
 const UI_WORDS=["G'day"];
 
-/* ── SCREENS ── */
-function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active')}
-
-/* ── ESCAPE ── */
-function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
-
 /* ── REGISTER ── */
 function goRules(){
   sName=document.getElementById('inp-name').value.trim();
   sGroup=document.getElementById('inp-group').value.trim();
   if(!sName||!sGroup){document.getElementById('reg-err').classList.add('show');return}
   document.getElementById('reg-err').classList.remove('show');
-  extraTime=document.getElementById('inp-extra-time').checked;
-  EXAM_MINS=extraTime?Math.round(BASE_EXAM_MINS*1.1):BASE_EXAM_MINS;
-  document.getElementById('rules-time').textContent=EXAM_MINS+' minutes';
-  document.getElementById('timer-display').textContent=String(EXAM_MINS).padStart(2,'0')+':00';
-  document.getElementById('start-btn-mins').textContent=EXAM_MINS;
+  examSetup();
   show('s-lock');
 }
 document.getElementById('inp-group').addEventListener('keydown',e=>{if(e.key==='Enter')goRules()});
-document.getElementById('inp-extra-time').addEventListener('change',function(){
-  const note=document.getElementById('extra-time-note');
-  if(this.checked){note.textContent='Your test time will be extended by 10% — '+Math.round(BASE_EXAM_MINS*1.1)+' minutes.';note.style.display='block'}
-  else{note.style.display='none'}
-});
 
 /* ── RELEASE CODE ── */
 function checkCode(){
@@ -502,16 +383,6 @@ function checkCode(){
   show('s-rules');
 }
 document.getElementById('inp-code').addEventListener('keydown',e=>{if(e.key==='Enter')checkCode()});
-
-/* ── FULLSCREEN ── */
-function goFullscreen(){
-  const el=document.documentElement;
-  (el.requestFullscreen||el.webkitRequestFullscreen||el.mozRequestFullScreen||el.msRequestFullscreen||function(){}).call(el);
-  document.getElementById('fs-btn').textContent='✅ Full screen active';
-}
-
-/* ── SHUFFLE ── */
-function shuffle(arr){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 
 /* ── BUILD QUESTIONS ── */
 function buildQuestions(preset){
@@ -573,19 +444,10 @@ function buildQuestions(preset){
 /* ── START ── */
 function startExam(){
   try{const o=loadState();if(o)localStorage.setItem(SAVE_KEY+'_abandoned',JSON.stringify(o))}catch(e){}
-  sid='SID-'+Date.now().toString(36).toUpperCase()+'-'+crypto.getRandomValues(new Uint32Array(1))[0].toString(36).slice(0,5).toUpperCase();
-  document.getElementById('sid-disp').textContent=sid;
+  examStart(autoSubmit);
   buildQuestions();
-  t0=Date.now();
-  eolIntStart();
-  startTimer();
   setTimeout(()=>{gateOpen=true;document.getElementById('time-gate-msg').textContent='✅ You may submit from Section C.';checkReady();saveState()},GATE_MINS*60*1000);
-  setInterval(snap,3*60*1000);
-  setInterval(checkDevTools,4000);
-  document.body.classList.add('exam-mode');
   show('s-exam');
-  document.getElementById('timer-wrap').style.display='flex';
-  if(navigator.webdriver)anomalyN++;
   saveState();
 }
 
@@ -597,7 +459,7 @@ function startExam(){
 const SAVE_KEY='eol_test_'+UNIT;
 function saveState(){
   if(!t0)return;
-  try{localStorage.setItem(SAVE_KEY,JSON.stringify({v:1,sid,name:sName,group:sGroup,extraTime,examMins:EXAM_MINS,t0,curPane,gateOpen,submitWarned,
+  try{localStorage.setItem(SAVE_KEY,JSON.stringify({v:1,sid,name:sName,group:sGroup,extraTime,dyslexia,examMins:EXAM_MINS,t0,curPane,gateOpen,submitWarned,
     match:matchItems.map(x=>x.t),fill:fillItems.map(x=>x.t),use:useItems.map(x=>x.t),options:matchOptions,
     sel:[...document.querySelectorAll('.qa-select')].map(e=>e.value),
     inp:[...document.querySelectorAll('.qa-input')].map(e=>e.value),
@@ -608,9 +470,8 @@ function loadState(){try{const s=JSON.parse(localStorage.getItem(SAVE_KEY)||'nul
 function markSubmitted(){try{const s=JSON.parse(localStorage.getItem(SAVE_KEY)||'null');if(s){s.submitted=true;s.submittedAt=Date.now();localStorage.setItem(SAVE_KEY,JSON.stringify(s))}}catch(e){}}
 function resumeExam(s){
   if(!s)return;
-  sName=s.name;sGroup=s.group;sid=s.sid;extraTime=!!s.extraTime;EXAM_MINS=s.examMins||BASE_EXAM_MINS;
+  sName=s.name;sGroup=s.group;sid=s.sid;extraTime=!!s.extraTime;examDyslexia(!!s.dyslexia);EXAM_MINS=s.examMins||BASE_EXAM_MINS;
   tabN=s.tabN||0;pasteN=s.pasteN||0;anomalyN=s.anomalyN||0;reloads=(s.reloads||0)+1;snapshots=s.snapshots||[];submitWarned=!!s.submitWarned;
-  document.getElementById('sid-disp').textContent=sid;
   document.getElementById('ts-disp').textContent=tabN;
   buildQuestions({match:s.match,fill:s.fill,use:s.use,options:s.options});
   document.querySelectorAll('.qa-select').forEach((e,i)=>{e.value=(s.sel||[])[i]||''});
@@ -618,19 +479,14 @@ function resumeExam(s){
   document.querySelectorAll('#use-list textarea').forEach((e,i)=>{e.value=(s.txt||[])[i]||''});
   curPane=s.curPane||'a';
   ['a','b','c'].forEach(p=>{document.getElementById('pane-'+p).hidden=(p!==curPane)});
-  t0=s.t0;
-  eolIntRestore(s.int);eolIntStart();
+  eolIntRestore(s.int);
+  examStart(autoSubmit,s.t0);   // the saved clock: if the time has already run out, the first tick hands the test in
   const elapsed=Date.now()-t0;
   gateOpen=!!s.gateOpen||elapsed>=GATE_MINS*60*1000;
   if(gateOpen)document.getElementById('time-gate-msg').textContent='✅ You may submit from Section C.';
   else setTimeout(()=>{gateOpen=true;document.getElementById('time-gate-msg').textContent='✅ You may submit from Section C.';checkReady();saveState()},GATE_MINS*60*1000-elapsed);
-  setInterval(snap,3*60*1000);
-  setInterval(checkDevTools,4000);
-  document.body.classList.add('exam-mode');
   show('s-exam');
-  document.getElementById('timer-wrap').style.display='flex';
   updateProgress();onUseInput();checkReady();
-  startTimer();   // if the time has already run out, the first tick hands the test in
   saveState();
 }
 (function offerResume(){
@@ -648,47 +504,8 @@ function resumeExam(s){
   const reg=document.querySelector('#s-register .container');reg.insertBefore(card,reg.firstChild);
 })();
 
-/* ── TIMER ── */
-function startTimer(){
-  timerID=setInterval(()=>{
-    const rem=EXAM_MINS*60*1000-(Date.now()-t0);
-    if(rem<=0){clearInterval(timerID);document.getElementById('timer-display').textContent='00:00';autoSubmit();return}
-    const m=Math.floor(rem/60000),s=Math.floor((rem%60000)/1000);
-    const td=document.getElementById('timer-display');
-    td.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
-    td.className=m<2?'danger':m<5?'warning':'';
-  },500);
-}
-
-/* ── TAB DETECTION ── */
-document.addEventListener('visibilitychange',()=>{if(!t0)return;if(document.hidden){tabN++;document.getElementById('ts-disp').textContent=tabN}else if(tabN>0)flash('alert-tab')});
-window.addEventListener('blur',()=>{if(!t0)return;tabN++;document.getElementById('ts-disp').textContent=tabN});
-
-/* ── PASTE BLOCKING ── */
-document.addEventListener('paste',e=>{if(!t0)return;e.preventDefault();pasteN++;document.getElementById('pa-disp').textContent=pasteN;flash('alert-paste')});
-/* Native copy event (covers right-click "Copy" / menu, not just Ctrl/Cmd+C) */
-document.addEventListener('copy',e=>{e.preventDefault();});
-document.addEventListener('keydown',e=>{
-  if(!t0)return;
-  if((e.ctrlKey||e.metaKey)&&(e.key==='v'||e.key==='V')){e.preventDefault();pasteN++;document.getElementById('pa-disp').textContent=pasteN;flash('alert-paste')}
-  if((e.ctrlKey||e.metaKey)&&e.shiftKey&&['i','I','j','J'].includes(e.key))e.preventDefault();
-  if(e.key==='F12')e.preventDefault();
-  if((e.ctrlKey||e.metaKey)&&(e.key==='u'||e.key==='U'))e.preventDefault();
-  if((e.ctrlKey||e.metaKey)&&(e.key==='c'||e.key==='C')&&document.activeElement.tagName!=='INPUT')e.preventDefault();
-});
-document.addEventListener('contextmenu',e=>{if(t0)e.preventDefault()});
-
-/* ── DEVTOOLS ── */
-function checkDevTools(){if(!t0||devToolsFlagged)return;if(window.outerWidth-window.innerWidth>160||window.outerHeight-window.innerHeight>160){devToolsFlagged=true;anomalyN++;flash('alert-devtools')}}
-
-/* ── TYPING SPEED ANOMALY (fill-in inputs) ── */
+/* ── ANSWERS (exam.js counts typing bursts) ── */
 function onAnswerInput(){
-  const now=Date.now();
-  let totalLen=0;
-  document.querySelectorAll('.qa-input').forEach(i=>totalLen+=i.value.length);
-  const diff=totalLen-lastLen,dt=now-lastT;
-  if(diff>40&&dt<500)anomalyN++;
-  lastLen=totalLen;lastT=now;
   updateProgress();checkReady();saveState();
 }
 function onAnswerChange(){updateProgress();checkReady();saveState()}
@@ -804,9 +621,10 @@ function doSubmit(){
     results.push({type:'match',term:item.t,definition:item.d,given:given||'(blank)',isCorrect:isOk});
   });
   document.querySelectorAll('.qa-input').forEach((inp,i)=>{
-    const item=fillItems[i],given=inp.value.trim(),isOk=vnorm(given)===vnorm(item.t);
+    const item=fillItems[i],given=inp.value.trim(),exact=vnorm(given)===vnorm(item.t);
+    const spelling=!exact&&examSpellingOk(vnorm(given),vnorm(item.t)),isOk=exact||spelling;   // dyslexia box: spelling not marked
     if(isOk)correct++;
-    results.push({type:'fill',term:item.t,definition:item.d,given:given||'(blank)',isCorrect:isOk});
+    results.push({type:'fill',term:item.t,definition:item.d,given:given||'(blank)',isCorrect:isOk,spelling});
   });
   let useOk=0;
   document.querySelectorAll('#use-list textarea').forEach((ta,i)=>{
@@ -817,7 +635,7 @@ function doSubmit(){
   const pct=Math.round(correct/Q_TOTAL*100);
   const el=Math.round((Date.now()-t0)/1000);
   payload={timestamp:new Date().toISOString(),name:sName,group:sGroup,session_id:sid,score:correct,total:Q_TOTAL,percent:pct,grade:(function(){const g=lookupGrade(correct,Q_TOTAL);return g?'Note '+g.note+' ('+g.label+')':''})(),extra_time:extraTime,time_spent_s:el,tab_switches:tabN,paste_attempts:pasteN,typing_anomalies:anomalyN,devtools_flagged:devToolsFlagged,reloads:reloads,use_checks_passed:useOk,use_total:USE_N,answers:JSON.stringify(results),snapshots:JSON.stringify(snapshots)};
-  clearInterval(timerID);document.getElementById('timer-wrap').style.display='none';
+  examStop();
   buildReview(results);
   show('s-done');
   const m=Math.floor(el/60),s=el%60;
@@ -872,7 +690,7 @@ function send(data){
         p['ex'+(i+1)]=a.type==='use'
           ? 'C '+a.term+' -> '+a.given+(a.isCorrect?' [form ok, mark me]':' [form check failed, mark me]')
           : (a.type==='match'?'A ':'B ')+a.definition+' -> '+a.given
-            +(a.isCorrect?' [correct]':' [wrong: '+a.term+']');});
+            +(a.spelling?' [correct, spelling not marked: '+a.term+']':a.isCorrect?' [correct]':' [wrong: '+a.term+']');});
   }catch(e){}
   p['ex'+(Q_TOTAL+USE_N+1)]='SECTION C is teacher-marked and is NOT in Score/Grade. '
         +'Automatic form checks passed: '+data.use_checks_passed+' / '+data.use_total;
@@ -880,9 +698,7 @@ function send(data){
         +' | paste '+data.paste_attempts+' | typing '+data.typing_anomalies
         +' | devtools '+data.devtools_flagged+' | reloads '+data.reloads+' | session '+data.session_id;
   var intF=eolIntFields();for(var ik in intF)p[ik]=intF[ik];   // integrity.js counts
-  fetch(SHEET_URL,{method:'POST',mode:'no-cors',
-    headers:{'Content-Type':'application/x-www-form-urlencoded'},
-    body:'payload='+encodeURIComponent(JSON.stringify(p, function (k, v) { return this === p && typeof v === 'string' && /^[=+\-@\t\r]/.test(v) ? "'" + v : v; }))});
+  examPostMake(examMark(p,'ex'+(Q_TOTAL+USE_N+2)));
 }
 
 /* ── BACKUPS ── */
@@ -898,8 +714,6 @@ function doCopyBackup(){
   navigator.clipboard.writeText(txt).then(()=>{document.getElementById('copy-btn').textContent='✅ Copied!'});
 }
 
-/* ── FLASH ── */
-function flash(id){const el=document.getElementById(id);el.classList.add('show');setTimeout(()=>el.classList.remove('show'),7000)}
 </script>
 </body>
 </html>

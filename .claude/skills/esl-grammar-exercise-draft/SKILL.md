@@ -103,6 +103,10 @@ Fill in every `TODO` in the template:
 - [ ] **State object** — one property per exercise section (exA, exB, exC, exD, scores)
 - [ ] **validateStep(n) / saveStep(n) / restoreStep(n) / buildSummary() / buildEmailBody() /
       buildPayload()** — same conventions as every other framework page
+- [ ] **Optional feedback email + newsletter opt-in** — copy the "Optional: get feedback" card,
+      `submitWithFeedbackEmail()` and the `email`/`newsletter` payload keys from `esl-articles.html`.
+      Keep the `inp-fb-*` ids: a field called `#inp-email` switches the welcome card into the
+      IELTS email-only mode in `exercise.js`.
 - [ ] **checkExX() functions** — one per dropdown exercise, each calling `checkDropdowns()` with a
       unique `scoreKey`
 

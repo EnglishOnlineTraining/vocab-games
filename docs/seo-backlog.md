@@ -326,6 +326,22 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
    logo and address are not in it, so they are Jetpack/WordPress.com business details Shaun must set in
    the dashboard. Site Title is writable, but it also changes every `<title>`, feed and `og:site_name`,
    so it was left for Shaun's go-ahead (rule 8: not a "nothing lost" edit).
+   **Re-checked 2026-10-26 (CC), no live write made.** The live node is unchanged (curl of `/`):
+   `@type` Organization+LocalBusiness, name "English Online Training", description "Prepare for
+   tests. Improve your grades. Pass exams", email `englishonlinetraining@pm.me`, telephone
+   `017631304449`, street "Koloniestr."; `WebSite` name and `og:site_name` "Improve your English
+   skills". WP settings now: blogname "Improve your English skills", tagline "Better results, Better
+   grades", admin email a personal address (leave). The wpcom MCP site tool has no operation for
+   business details (only `settings.get/update` for title, tagline and similar), so none of the node
+   could be changed from here. Site Title left as is (Shaun's instruction). The node is not derived
+   from a core WP setting I could find, so Shaun should look for where it is set (Jetpack → Settings,
+   the theme's Customizer, or a code-snippet plugin) and set the values below; if none exposes them,
+   the node comes from theme/plugin code and needs a code change instead.
+   **Targets for Shaun** (from `scripts/schema.js`): type EducationalOrganization+LocalBusiness;
+   name "EnglishOnline.training"; description "Online English teaching and free interactive
+   practice material for German school students, university students and professionals."; email
+   `learn@englishonline.training`; telephone `+49 176 3130 4449`; street "Koloniestrasse";
+   display name (Users → Profile) "Shaun Trezise".
    **Fix:** make the WP node identical to `scripts/schema.js`, and give `sameAs` real profiles.
    Also, WordPress post bylines emit a *second* Person, `/author/shauntrezise/#person`, named only
    "Shaun". `/about/` and the activities host already share `#shaun` (Tier 7 item 2), so this
@@ -851,9 +867,12 @@ in the repo the same day:
    Never show student work or names in a diagram or screenshot (rule 1).
 3. **Homepage `og:image` alt and card · Shaun (WP media/Jetpack).** Already B11. Set the alt
    text, or switch to the 1200×630 card. A live WordPress edit, so needs Shaun's approval.
-4. **A diagram on `/university-english/` · Shaun.** After item 2, the PNG (WP.com may not take
+4. **DONE (2026-10-26).** **A diagram on `/university-english/` · Shaun.** After item 2, the PNG (WP.com may not take
    SVG uploads) can go into the page through the API, with alt text and a caption. Live edit:
    rule 7, and rule 8's "nothing lost" first.
+   Done: the PR #205 opinion-essay diagram (1200×630 PNG, media 2706) sits under the "What the
+   exercises cover" grid with alt text and a caption. One `page-sections.insert`; all 19 existing
+   blocks keep their hashes (nothing lost).
 
 ### Not adopted (with reasons)
 - **Phase 0 recon, `IMAGE-REGISTRY.md`, `IMAGE-SEO-RECON.md` and `IMAGE-SEO-QA.md`:** the stack is

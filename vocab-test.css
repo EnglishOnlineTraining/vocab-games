@@ -1,0 +1,51 @@
+/* vocab-test.css — the look the vocabulary and uni tests share (9c- and
+   9g-australia-vocab-test, uni-pm-vocabulary, uni-writing-task). A new vocab test
+   links it, then exam.css, then keeps only its own rules in its <style>. The
+   page's rules come after this file, so a page rule wins over a shared one. */
+* { box-sizing:border-box;margin:0;padding:0 }
+body { font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f0f4f8;color:#1a202c;min-height:100vh }
+header a { color:rgba(255,255,255,.85);text-decoration:none;font-size:.88rem }
+header .title { font-size:.95rem;font-weight:600 }
+#timer-wrap { display:none;align-items:center;gap:8px }
+#timer-label { font-size:.75rem;opacity:.7;text-transform:uppercase;letter-spacing:.05em }
+#timer-display { font-size:1.1rem;font-weight:700;background:rgba(255,255,255,.2);padding:3px 12px;border-radius:20px;font-variant-numeric:tabular-nums;min-width:68px;text-align:center }
+#timer-display.warning { background:#f6ad55;color:#7b341e }
+#timer-display.danger { background:#fc8181;color:#742a2a;animation:pulse 1s infinite }
+@keyframes pulse { 0%,100%{opacity:1}50%{opacity:.7} }
+.screen { display:none }
+.screen.active { display:block }
+.card { background:white;border-radius:12px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,.07);margin-bottom:20px }
+h2 { font-size:1.35rem;margin-bottom:14px;color:#1a202c }
+h3 { font-size:1rem;margin-bottom:8px;color:#276749 }
+p { margin-bottom:10px;line-height:1.65;font-size:.95rem }
+.form-group { margin-bottom:16px }
+label { display:block;font-weight:600;margin-bottom:5px;font-size:.88rem;color:#4a5568 }
+input[type=text] { width:100%;padding:10px 14px;border:2px solid #e2e8f0;border-radius:8px;font-size:1rem;transition:border-color .2s }
+input[type=text]:focus { outline:none;border-color:#2d6a4f }
+.btn-primary { background:#2d6a4f;color:white }
+.btn-primary:hover { background:#1b4332 }
+.btn-primary:disabled { background:#a0aec0;cursor:not-allowed;opacity:.7 }
+.btn-secondary { background:#e2e8f0;color:#4a5568 }
+.btn-secondary:hover { background:#cbd5e0 }
+.btn-outline:hover { background:#f0fff4 }
+.rule-list { list-style:none;padding:0;margin:12px 0 }
+.rule-list li { padding:9px 14px;border-left:3px solid #2d6a4f;margin-bottom:7px;background:#f7fafc;border-radius:0 7px 7px 0;font-size:.9rem;line-height:1.5 }
+.rule-list li.red { border-color:#e53e3e;background:#fff5f5 }
+.notice { background:#fffff0;border:1px solid #ecc94b;border-radius:8px;padding:13px 16px;font-size:.88rem;line-height:1.5;margin-top:12px }
+.alert { border-radius:8px;padding:11px 16px;margin-bottom:14px;font-size:.9rem;display:none }
+.alert.show { display:block }
+.alert-warn { background:#fffbeb;border:1px solid #f6e05e;color:#744210 }
+.alert-danger { background:#fff5f5;border:1px solid #feb2b2;color:#742a2a }
+#submit-area { text-align:center;padding:8px 0 20px }
+#time-gate-msg { font-size:.82rem;color:#718096;margin-top:7px }
+.done-card { text-align:center;padding:36px 28px }
+.done-card .big-icon { font-size:3.5rem;margin-bottom:14px }
+.done-card h2 { color:#276749;margin-bottom:8px }
+.done-meta { font-size:.85rem;color:#718096;margin-top:10px }
+.backup-bar { margin-top:20px;background:#f7fafc;border-radius:8px;padding:14px;text-align:left;font-size:.88rem }
+.backup-bar p { margin-bottom:10px;font-weight:600 }
+.backup-btns { display:flex;gap:10px;flex-wrap:wrap }
+body.exam-mode { -webkit-user-select:none;user-select:none }
+@media(max-width:600px) {
+  .card { padding:18px 14px }
+}

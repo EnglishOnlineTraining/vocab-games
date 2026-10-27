@@ -3174,6 +3174,7 @@
           "Verneinung: <strong>don't</strong> (I/you/we/they) oder <strong>doesn't</strong> (he/she/it) + Infinitiv — „She <strong>doesn't like</strong> fish.“",
           "Ja/Nein-Frage: <strong>Do/Does</strong> + Subjekt + Infinitiv — „<strong>Does</strong> he <strong>play</strong> football?“",
           "W-Frage: Fragewort + <strong>do/does</strong> + Subjekt + Infinitiv — „Where <strong>do</strong> you <strong>live</strong>?“",
+          "Ohne do: Fragen nach dem <strong>Subjekt</strong>. Ist <em>who</em> oder <em>what</em> selbst das Subjekt, bleibt die Wortstellung wie im Aussagesatz, und das Verb bekommt das -s — „<strong>Who lives</strong> here?“, „<strong>What happens</strong> next?“. Vergleiche: „Who <strong>does</strong> Tom <strong>visit</strong>?“ — hier ist Tom das Subjekt, also mit does.",
           "Kurzantwort mit dem Hilfsverb: „Yes, I <strong>do</strong>.“ / „No, she <strong>doesn't</strong>.“",
           "Ohne do: Sätze mit <em>be</em> und mit Modalverben — „<strong>Are</strong> you tired?“, „He <strong>isn't</strong> here.“, „<strong>Can</strong> you swim?“",
           "✗ <em>Play you football?</em> → ✓ <em><strong>Do</strong> you play football?</em> — im Deutschen reicht die Umstellung, im Englischen braucht die Frage do.",
@@ -3451,7 +3452,7 @@
       },
       {
         "title": "Übung 5 — Simple Present: Verneinung und Fragen mit do/does",
-        "intro": "Wähle die richtige Form. Frage dich zuerst: Braucht der Satz do/does, oder steht be?",
+        "intro": "Wähle die richtige Form. Frage dich zuerst: Braucht der Satz do/does, oder steht be? Und fragt who nach dem Subjekt?",
         "items": [
           {
             "q": "___ you live near here?",
@@ -3502,6 +3503,16 @@
             ],
             "answer": "does",
             "why": "Die Kurzantwort nimmt das Hilfsverb aus der Frage: Yes, he does."
+          },
+          {
+            "q": "Who ___ next to you in class?",
+            "options": [
+              "do sit",
+              "sits",
+              "does sits"
+            ],
+            "answer": "sits",
+            "why": "Who ist hier das Subjekt → kein do, und das Verb bekommt das -s wie im Aussagesatz."
           }
         ]
       }
@@ -3513,7 +3524,7 @@
       },
       {
         "q": "Wie bildet man Verneinung und Fragen im Simple Present?",
-        "a": "Mit dem Hilfsverb do, in der 3. Person Singular does, und dem Infinitiv: „I don't know.“, „Does she work here?“, „Where do you live?“. Das -s steht nur einmal — in does/doesn't, nicht im Hauptverb. Sätze mit be oder mit Modalverben brauchen kein do: „Are you tired?“, „Can you swim?“."
+        "a": "Mit dem Hilfsverb do, in der 3. Person Singular does, und dem Infinitiv: „I don't know.“, „Does she work here?“, „Where do you live?“. Das -s steht nur einmal — in does/doesn't, nicht im Hauptverb. Sätze mit be oder mit Modalverben brauchen kein do: „Are you tired?“, „Can you swim?“. Fragen nach dem Subjekt auch nicht: „Who lives here?“."
       },
       {
         "q": "Wie bildet man das Present Progressive?",
