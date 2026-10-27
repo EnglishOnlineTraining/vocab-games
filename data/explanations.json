@@ -20544,5 +20544,51 @@
     "g6": {"label": "6. Spaced recall from Business Meetings", "correct": "Let’s move on to the next item on the agenda.", "why": "Business Meetings used this phrase to move to the next agenda item."}
    }
   }
+ },
+ "uni-fix-our-campus": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. We recommend ___ a second silent room",
+     "correct": "opening",
+     "why": "After “recommend” use the -ing form, not “to” + verb."
+    },
+    "g2": {
+     "label": "2. We suggest that the cafeteria ___",
+     "correct": "offer",
+     "why": "“Suggest that” + subject takes the base verb: “that the cafeteria offer”."
+    },
+    "g3": {
+     "label": "3. One advantage ___ that…",
+     "correct": "is",
+     "why": "The fixed frame is “One advantage is that…”."
+    },
+    "g4": {
+     "label": "4. A buddy system ___ help new students",
+     "correct": "could",
+     "why": "“Could” presents a possible result; “will definitely” and “must” claim too much."
+    },
+    "g5": {
+     "label": "5. One possible ___ is that buddies stop answering",
+     "correct": "risk",
+     "why": "Buddies stopping is a problem, so it is a risk, not an advantage or benefit."
+    },
+    "g6": {
+     "label": "6. This could be improved ___ giving training",
+     "correct": "by",
+     "why": "“Improved by + -ing” names the method of improving something."
+    },
+    "g7": {
+     "label": "7. The library ___ open empty lecture rooms",
+     "correct": "should",
+     "why": "“Should” + base verb gives advice; “is open” and “has open” are ungrammatical here."
+    },
+    "g8": {
+     "label": "8. ___, a third of assignments are late",
+     "correct": "As a result",
+     "why": "“As a result” introduces a consequence of the sentence before it."
+    }
+   }
+  }
  }
 }
