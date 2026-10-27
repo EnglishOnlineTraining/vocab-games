@@ -228,7 +228,9 @@ opens or updates its issue when `flagged > 0`, so a normal run never shows red.
    A fix that changes options or the answer changes the key: rerun `scripts/build.js`
    so `data/answer-keys/` is rebuilt in the same PR.
 3. Log each changed gap in `data/item-changes.json` (unit, gap, date, % correct
-   before). No student data.
+   before). No student data. A changed writing field is logged with `field` instead
+   of `gap`, and `before` is its share left blank; step 4 then reads a rise in blanks
+   as worse (2026-10-27).
 4. Later runs use `--since <fix date>`, so only answers given after the fix count
    (older rows would be marked against the new key). Compare the new % correct with
    `before`:
