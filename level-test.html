@@ -53,7 +53,7 @@
 .eol-crumb a{color:var(--teal,#2b7a78);text-decoration:none}
 .eol-crumb a:hover{text-decoration:underline}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["EducationalOrganization","LocalBusiness"],"@id":"https://englishonline.training/#organization","name":"EnglishOnline.training","url":"https://englishonline.training/"},{"@type":"Person","@id":"https://activities.englishonline.training/#shaun","name":"Shaun Trezise","url":"https://englishonline.training/"},{"@type":"WebSite","@id":"https://activities.englishonline.training/#website","url":"https://activities.englishonline.training/","name":"EnglishOnline.training — kostenlose Englisch-Übungen","description":"Free interactive English exercises with instant feedback, no sign-up required.","inLanguage":["en","de"],"publisher":{"@id":"https://englishonline.training/#organization"},"isAccessibleForFree":true},{"@type":"LearningResource","@id":"https://activities.englishonline.training/level-test.html#resource","name":"English Level Test — Find Your CEFR Level (A1–C1)","description":"Free adaptive English placement test: questions adjust to your level in real time. Instant CEFR result (A1–C1) and matching exercises. No sign-up.","url":"https://activities.englishonline.training/level-test.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"practice","interactivityType":"active","learningResourceType":["Interactive exercise","Grammar exercise"],"author":{"@id":"https://activities.englishonline.training/#shaun"},"publisher":{"@id":"https://englishonline.training/#organization"},"provider":{"@id":"https://englishonline.training/#organization"},"isPartOf":{"@id":"https://activities.englishonline.training/#website"},"datePublished":"2026-09-24","dateModified":"2026-10-03","teaches":["English grammar"],"about":["English Level Test"]},{"@type":"BreadcrumbList","@id":"https://activities.englishonline.training/level-test.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://activities.englishonline.training/"},{"@type":"ListItem","position":2,"name":"Übungen","item":"https://activities.englishonline.training/activities.html"},{"@type":"ListItem","position":3,"name":"English Level Test — Find Your CEFR Level (A1–C1)","item":"https://activities.englishonline.training/level-test.html"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["EducationalOrganization","LocalBusiness"],"@id":"https://englishonline.training/#organization","name":"EnglishOnline.training","url":"https://englishonline.training/"},{"@type":"Person","@id":"https://activities.englishonline.training/#shaun","name":"Shaun Trezise","url":"https://englishonline.training/"},{"@type":"WebSite","@id":"https://activities.englishonline.training/#website","url":"https://activities.englishonline.training/","name":"EnglishOnline.training — kostenlose Englisch-Übungen","description":"Free interactive English exercises with instant feedback, no sign-up required.","inLanguage":["en","de"],"publisher":{"@id":"https://englishonline.training/#organization"},"isAccessibleForFree":true},{"@type":"LearningResource","@id":"https://activities.englishonline.training/level-test.html#resource","name":"English Level Test — Find Your CEFR Level (A1–C1)","description":"Free adaptive English placement test: questions adjust to your level in real time. Instant CEFR result (A1–C1) and matching exercises. No sign-up.","url":"https://activities.englishonline.training/level-test.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"practice","interactivityType":"active","learningResourceType":["Interactive exercise","Grammar exercise"],"author":{"@id":"https://activities.englishonline.training/#shaun"},"publisher":{"@id":"https://englishonline.training/#organization"},"provider":{"@id":"https://englishonline.training/#organization"},"isPartOf":{"@id":"https://activities.englishonline.training/#website"},"datePublished":"2026-09-24","dateModified":"2026-10-27","teaches":["English grammar"],"about":["English Level Test"]},{"@type":"BreadcrumbList","@id":"https://activities.englishonline.training/level-test.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://activities.englishonline.training/"},{"@type":"ListItem","position":2,"name":"Übungen","item":"https://activities.englishonline.training/activities.html"},{"@type":"ListItem","position":3,"name":"English Level Test — Find Your CEFR Level (A1–C1)","item":"https://activities.englishonline.training/level-test.html"}]}]}</script>
 <!-- HEAD:END -->
 </head>
 <body>
@@ -512,9 +512,20 @@ function requestFeedback() {
     fb.textContent = 'Please enter a valid email address.';
     return;
   }
-  emailSentTo = email;
-  sendResults(email);
-  showEmailSent();
+  var btn = document.getElementById('email-send');
+  btn.disabled = true;
+  fb.style.background = 'rgba(39,174,96,.1)';
+  fb.style.color = 'var(--green)';
+  fb.textContent = 'Sending request…';
+  sendResults(email).then(function() {
+    emailSentTo = email;
+    showEmailSent();
+  }).catch(function() {
+    btn.disabled = false;
+    fb.style.background = 'rgba(192,57,43,.1)';
+    fb.style.color = 'var(--red)';
+    fb.textContent = 'The request could not be sent. Please check your connection and try again.';
+  });
 }
 
 // Also called by buildSummary(), which re-renders the email card whenever the
@@ -553,17 +564,16 @@ function sendResults(email) {
 
   if (typeof isTestMode === 'function' && isTestMode()) {
     console.log('[test-mode] level-test email payload:', JSON.stringify(payload));
-    return;
+    return Promise.resolve();
   }
 
-  try {
-    fetch(SHEET_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
-    }).catch(function() {});
-  } catch (e) {}
+  return fetch(SHEET_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+  }).then(function(response) {
+    if (!response.ok) throw new Error('Feedback request failed with HTTP ' + response.status);
+  });
 }
 
 // ─── Start / Finish ───────────────────────────────────────────────

@@ -266,8 +266,8 @@ Then tell Shaun the live URL.
 
 Years 7–10 submit to **Make.com webhooks, not Google Sheets**. The Apps Script URLs
 that used to be listed here were retired in the Make migration; a page pointing at
-them posts into an orphaned sheet nobody reads, and the loss is silent because
-submission is `mode: 'no-cors'` and never reports failure.
+them posts into an orphaned sheet nobody reads. Submissions must check `response.ok`
+and show the fallback on HTTP or network errors.
 
 | Prefixes | Webhook |
 |---|---|

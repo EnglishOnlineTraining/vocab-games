@@ -496,6 +496,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <script>
 document.addEventListener('paste', function(e) {
   var t = e.target;
+  if (t.id === 'copy-block') return;
   if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
     e.preventDefault();
     var msg = document.createElement('div');
@@ -507,6 +508,7 @@ document.addEventListener('paste', function(e) {
 });
 
 document.addEventListener('copy', function(e) {
+  if (e.target.id === 'copy-block') return;
   e.preventDefault();
   var msg = document.createElement('div');
   msg.textContent = '🚫 Copying is not allowed';
