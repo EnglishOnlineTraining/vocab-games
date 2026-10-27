@@ -177,8 +177,8 @@
       <div class="card-title">Before you read <span style="font-weight:400;color:var(--muted);font-size:.85rem">— optional, not marked</span></div>
       <div class="form-group">
         <label class="form-label" for="exA-recall">Finish these two sentences in your own words. A guess is fine: "We use <em>a</em> or <em>an</em> when …" and "We use <em>the</em> when …"</label>
-        <textarea class="form-textarea" id="exA-recall" placeholder="We use 'a' or 'an' when ... We use 'the' when ..." rows="3"></textarea>
-        <div class="form-hint">One sentence each is enough.</div>
+        <textarea class="form-textarea" id="exA-recall" aria-describedby="exA-recall-hint" placeholder="We use 'a' or 'an' when ... We use 'the' when ..." rows="3"></textarea>
+        <div class="form-hint" id="exA-recall-hint">One sentence each is enough.</div>
       </div>
     </div>
 
@@ -448,7 +448,7 @@
   <div class="step-inner">
     <span class="ex-badge">Exercise D</span>
     <h2 class="ex-title">Describe your neighbourhood</h2>
-    <p class="ex-subtitle">A new student in your English class has never visited your area and asks: "What is your neighbourhood like?" Write 6–8 sentences (about 60 words) to answer. Use <em>a</em>, <em>an</em>, <em>the</em> and no article at least once each.</p>
+    <p class="ex-subtitle" id="exD-task">A new student in your English class has never visited your area and asks: "What is your neighbourhood like?" Write 6–8 sentences (about 60 words) to answer. Use <em>a</em>, <em>an</em>, <em>the</em> and no article at least once each.</p>
 
     <div class="card">
       <div class="card-title">Useful phrases</div>
@@ -463,7 +463,7 @@
       <div class="card-title">Your description</div>
       <div class="form-group">
         <label class="form-label" for="exD-text">Write your answer here:</label>
-        <textarea class="form-textarea" id="exD-text" placeholder="I live in a small town near..." rows="8"></textarea>
+        <textarea class="form-textarea" id="exD-text" aria-describedby="exD-task" placeholder="I live in a small town near..." rows="8"></textarea>
       </div>
     </div>
 
