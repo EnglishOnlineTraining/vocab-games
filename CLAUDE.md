@@ -127,6 +127,9 @@ Each has cost real time or broken live pages. Full detail: `docs/claude-referenc
   message its own element id.
 - **Six live `uni-*` pages submit to a personal Proton address, not the canonical teacher email.**
   Open discrepancy — don't "fix" it without asking.
+- **Merging `main` into a branch leaves generated files stale.** Sitemaps and other build output
+  merge line by line into a set that disagrees, and CI's check fails. After any merge (including
+  "Update branch"), run `node scripts/build.js` and commit. Details: `build-and-sitemaps.md`.
 - **The Make webhook payload arrives as ONE field called `payload`.** Read "The webhook payload
   arrives as ONE field…" in `submission-routing.md` before touching either Make scenario; getting it
   wrong silently wrote blank rows and dropped most submissions from June to 2026-09-04.
@@ -199,6 +202,7 @@ Old section names still appear in skills and code comments; this table maps them
 | `docs/claude-reference/years-and-topics.md` | Year 7/9 status, "Year 8 & Year 10", CEFR levels, textbook "Topic pools" |
 | `docs/claude-reference/submission-routing.md` | "Submission routing", Make scenarios, MSA grading, Abitur webhook, Apps Script URLs |
 | `docs/claude-reference/exercise-framework.md` | "Standard features", Score + Note, "Review-page explanations", practise mode, accessibility, writing rubric, spaced-review pages, shared `<head>`, hub cards, WordPress hub, build graph, `exercise.js`, structured data |
+| `docs/claude-reference/build-and-sitemaps.md` | Generated files and what to edit instead, the `<!-- NAME:START -->` blocks in pages, merging `main` into a branch, sitemaps and `robots.txt`, `build.js --check` / `--write-graph` |
 | `docs/claude-reference/hubs-seo-and-tests.md` | "Class review tests", unlisted tests, timed tests' shared files (`exam.js`, `exam.css`, `class-test.css`, `vocab-test.css`) and dyslexia box, breadcrumb/footer, filterable index, `index.html`, `themen/`, auto-rebuild, `data/noindex.json`, internal links, IndexNow (not Google), marking handouts |
 | `apps-script.gs` | The Apps Script handler (code is not duplicated in this file) |
 | `style.css` | CSS design tokens (not duplicated in this file) |
