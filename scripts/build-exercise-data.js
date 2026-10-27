@@ -100,6 +100,7 @@ const TOPIC_OVERRIDES = {
 // pages share one layout — reading text, vocabulary gaps, grammar gaps,
 // 90–120-word writing task — so each gets whatever its headings missed.
 const SKILL_OVERRIDES = {
+  'be-meetings-action-points.html':    ['reading', 'writing', 'vocabulary'],
   '9g-australia-outback.html':         ['reading', 'writing'],
   '9g-california-silicon-valley.html': ['reading'],
   '9g-canada-indigenous-voices.html':  ['reading', 'writing'],

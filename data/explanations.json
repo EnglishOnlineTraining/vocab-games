@@ -20536,11 +20536,11 @@
   },
   "exB": {
    "gaps": {
-    "g1": {"label": "1. Acknowledge before disagreeing", "correct": "I see your point, but have we considered the cost?", "why": "Acknowledging the other view before raising cost keeps the disagreement diplomatic."},
-    "g2": {"label": "2. Soften a disagreement", "correct": "I’m not sure that would work for our clients.", "why": "“I’m not sure” softens the disagreement while giving a client-related reason."},
-    "g3": {"label": "3. Offer an alternative", "correct": "What if we tried a two-week pilot instead?", "why": "“What if” introduces a concrete alternative without imposing it."},
-    "g4": {"label": "4. Assign an owner", "correct": "Could you prepare the draft by Tuesday?", "why": "This polite request names the listener, task and deadline."},
-    "g5": {"label": "5. Specific action point", "correct": "Nina will send the revised quote to the client by 3 p.m. on Friday.", "why": "The action point includes an owner, task, recipient and exact deadline."},
+    "g1": {"label": "1. Acknowledge before disagreeing", "correct": "I see your point, but have we considered the cost?", "why": "Only this one does both: it acknowledges the other view (“I see your point”) and then raises a different one."},
+    "g2": {"label": "2. Soften a disagreement", "correct": "I’m not sure that would work for our clients.", "why": "“I’m not sure” disagrees without sounding certain; “That won’t work” sounds certain."},
+    "g3": {"label": "3. Offer an alternative", "correct": "What if we tried a two-week pilot instead?", "why": "“What if … instead?” offers a concrete alternative; the other two only question the idea."},
+    "g4": {"label": "4. Assign an owner", "correct": "Could you prepare the draft by Tuesday?", "why": "“Could you” gives the task to one person, with a deadline; “someone” leaves it to nobody."},
+    "g5": {"label": "5. Specific action point", "correct": "Nina will send the revised quote to the client by 3 p.m. on Friday.", "why": "Only this one has an owner (Nina), a clear task and an exact deadline."},
     "g6": {"label": "6. Spaced recall from Business Meetings", "correct": "Let’s move on to the next item on the agenda.", "why": "Business Meetings used this phrase to move to the next agenda item."}
    }
   }
