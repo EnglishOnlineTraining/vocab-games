@@ -72,7 +72,7 @@ const CATEGORIES = {
   '10c': { label: 'Year 10 Oberschule', cefr: '~B1/B2', emoji: '🧭', hub: '10c-activities.html', sheet: WEBHOOK_Y9, klass: '10c' },
   '10g': { label: 'Year 10 Gymnasium',  cefr: '~B2/C1', emoji: '🧭', hub: '10g-activities.html', sheet: WEBHOOK_Y9, klass: '10g' },
   'msa': { label: 'MSA Exam Practice',    cefr: '~B1',  emoji: '🎧', hub: 'msa-activities.html', sheet: WEBHOOK_Y9, klass: 'MSA' },
-  'uni': { label: 'University English', cefr: 'B2+',    emoji: '🎓', hub: 'uni-activities.html', sheet: UNI_SHEET, klass: 'Kurs' },
+  'uni': { label: 'University English', cefr: 'B2+',    emoji: '🎓', hub: 'uni-activities.html', sheet: UNI_SHEET, klass: 'Academic English' },
   'it':  { label: 'IT English',         cefr: 'B1/B2',  emoji: '💻', hub: 'it-activities.html',  sheet: APPS_SCRIPT, klass: 'Kurs' },
   'be':  { label: 'Business English',   cefr: 'B2',     emoji: '💼', hub: 'business-activities.html', sheet: APPS_SCRIPT, klass: 'Kurs' },
   'ielts': { label: 'IELTS Academic',   cefr: 'B2/C1',  emoji: '🎯', hub: 'ielts-activities.html', sheet: APPS_SCRIPT, klass: 'Kurs' }
@@ -210,7 +210,7 @@ function welcomeCard(cat, cfg) {
 
 function buildPage(cat, cfg, items) {
   // IELTS reports a band, not a German Note, so its review page sends no grade.
-  var GRADE_EXPR = cat === 'ielts' ? 'null' : 'lookupGrade(sc.earned, sc.possible)';
+  var GRADE_EXPR = (cat === 'ielts' || cat === 'uni') ? 'null' : 'lookupGrade(sc.earned, sc.possible)';  // English-only: no German Note
   var unitId = cat + '-review';
   var file = unitId + '.html';
   var title = cfg.label + ' — Revision';

@@ -38,10 +38,18 @@ function eolUrlMode() {
 }
 
 /* Pages for an international audience get English-only chrome and no German
-   school grade (an IELTS result is a band, not a Note). Kept in step with
-   englishOnly() in scripts/schema.js, which does the same for generated blocks. */
+   school grade (an IELTS result is a band, not a Note). University learners
+   often speak no German, so uni- pages count too (Shaun, 2026-10-27). Kept in
+   step with englishOnly() in scripts/schema.js, which does the same for
+   generated blocks. */
 function eolEnglishOnly() {
-  try { return /^ielts-/.test(eolPageFile()); } catch (e) { return false; }
+  try { return /^(ielts|uni)-/.test(eolPageFile()); } catch (e) { return false; }
+}
+
+/* The hub an English-only page links back to: [href, label]. */
+function eolEnglishHub() {
+  try { if (/^uni-/.test(eolPageFile())) return ['uni-activities.html', 'University English']; } catch (e) {}
+  return ['ielts-activities.html', 'IELTS'];
 }
 
 function startPractise() {
@@ -170,7 +178,7 @@ function eolPractisePanelHtml() {
     + '<button class="btn btn-gold" type="button" style="width:100%;max-width:360px;justify-content:center" onclick="eolPractiseRetry()">'
     + (en ? '↻ Try again' : '↻ Nochmal üben · Try again') + '</button>'
     + '<div style="margin-top:.7rem">'
-    + (en ? '<a class="btn btn-outline btn-sm" href="ielts-activities.html">← All IELTS exercises</a>'
+    + (en ? '<a class="btn btn-outline btn-sm" href="' + eolEnglishHub()[0] + '">← All ' + eolEnglishHub()[1] + ' exercises</a>'
           : '<a class="btn btn-outline btn-sm" href="activities.html">← Alle Übungen</a>')
     + '</div></div>';
   return breakdown + selfcheck + buttons + eolBaselineHtml();
@@ -460,7 +468,7 @@ function eolRubricHtmlEn(rows, total) {
   var levels = ['Not yet', 'Almost', 'Yes'];
   var html = '<div class="card eol-rubric">'
     + '<div class="card-title">Check your own writing</div>'
-    + '<p class="eol-rubric-intro">This is <strong>not a band score</strong> — nobody marks your text in practice mode. '
+    + '<p class="eol-rubric-intro">This is <strong>not a ' + (/^ielts-/.test(eolPageFile()) ? 'band score' : 'mark') + '</strong> — nobody marks your text in practice mode. '
     + 'Go through each point and decide what is already good and what you can still improve.'
     + (total ? ' You wrote <strong>' + total + ' words</strong>.' : '')
     + '</p>'
@@ -1110,7 +1118,7 @@ function renderScore() {
       + '<div style="font-size:1.5rem;font-weight:800;color:var(--blue)">' + fmtPts(sc.earned) + ' / ' + sc.possible + ' points'
       + ' <span style="font-size:1rem;font-weight:700">(' + Math.round(sc.earned / sc.possible * 100) + '%)</span></div>'
       + '<div style="font-size:.78rem;color:var(--muted);margin-top:.4rem">Each question scores 1 point if you get it right first time, ½ on the second try and ¼ on the third. '
-      + 'IELTS reports results as bands from 1 to 9, worked out from a full test, so a short exercise like this one cannot give you a band — use the score to see which question types need more practice.'
+      + (/^ielts-/.test(eolPageFile()) ? 'IELTS reports results as bands from 1 to 9, worked out from a full test, so a short exercise like this one cannot give you a band — use the score to see which question types need more practice.' : 'Use the score to see which parts need more practice.')
       + (practiseMode ? '' : ' Your writing is not included in this score.')
       + '</div></div>';
     return;
@@ -1853,7 +1861,7 @@ function eolCrumbLabel() {
   if (m) return 'Jahrgang ' + m[1] + ' · ' + (m[2] === 'g' ? 'Gymnasium' : 'Oberschule');
   if (/^7a-/.test(f)) return 'Jahrgang 7 · Gymnasium';
   if (/^msa-/.test(f)) return 'MSA · Prüfungstraining';
-  if (/^uni-/.test(f)) return 'Universität';
+  if (/^uni-/.test(f)) return 'University English';
   if (/^it-/.test(f))  return 'IT English';
   if (/^be-/.test(f))  return 'Business English';
   if (/^ielts-/.test(f)) return 'IELTS Academic';
@@ -1966,7 +1974,7 @@ function eolInjectChrome() {
     if (eolEnglishOnly()) {
       f.innerHTML =
         '<nav aria-label="Pages">'
-        + '<a href="ielts-activities.html">IELTS practice</a>'
+        + '<a href="' + eolEnglishHub()[0] + '">' + eolEnglishHub()[1] + ' practice</a>'
         + '<a href="activities.html">All exercises</a>'
         + '<a href="esl-grammar-activities.html">ESL grammar</a>'
         + '<a href="mailto:learn@englishonline.training">Contact</a>'

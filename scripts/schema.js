@@ -219,7 +219,7 @@ function levelFor(file) {
  * German school grade. Mirrors exercise.js:eolEnglishOnly().
  */
 function englishOnly(file) {
-  return /^ielts-/.test(String(file).toLowerCase());
+  return /^(ielts|uni)-/.test(String(file).toLowerCase());
 }
 
 /** Mirrors exercise.js:eolCrumbLabel() so the markup and the visible crumb agree. */
@@ -230,7 +230,7 @@ function crumbLabel(file) {
   if (/^7a-/.test(f)) return 'Jahrgang 7 · Gymnasium';
   if (/^msa-/.test(f)) return 'MSA · Prüfungstraining';
   if (/^abitur-/.test(f)) return 'Abitur';
-  if (/^uni-/.test(f)) return 'Universität';
+  if (/^uni-/.test(f)) return 'University English';
   if (/^it-/.test(f)) return 'IT English';
   if (/^be-/.test(f)) return 'Business English';
   if (/^gr-/.test(f)) return 'Grammatik';

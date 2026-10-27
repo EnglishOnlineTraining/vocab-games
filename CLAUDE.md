@@ -82,6 +82,12 @@ Applies whatever language the source material is in. Klett word lists are
 English–German; read the German to be sure which sense is meant, then write the
 English definition for that sense and drop the German.
 
+**University (`uni-`) pages contain no German at all** (Shaun, 2026-10-27): not in the task, the
+site chrome, the score card or the backup email. The level is too high for glosses, and many
+university learners don't speak German. Like `ielts-`, they are English-only pages
+(`eolEnglishOnly()` / `englishOnly()` / consent.js `EN`, kept in step by
+`scripts/check-english-only.js`), and they send no German `Note`.
+
 **Not covered by this rule** (deliberate, and documented elsewhere in this file):
 the site chrome `exercise.js` and `build-head.js` inject site-wide (breadcrumb,
 footer, practise button, rubric, the German half of the no-JS banner,
