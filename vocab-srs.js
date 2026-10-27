@@ -42,12 +42,18 @@ var KNOWN = 4;                     // level 4+ counts as "known"
 var DEF = {};
 WORDS.forEach(function(w) { DEF[w[0]] = w[1]; });
 
-/* ── Saved progress: { name, cls, sessions, w: { word: { lvl, due } } } ──
+/* ── Saved progress: { sessions, w: { word: { lvl, due } } } ──
    ponytail: localStorage only, so progress lives on one device and browser and is
    lost if the student clears site data. "Send my progress" gives the teacher a copy;
    upgrade path is a server-side store keyed by name if that is ever not enough. */
-var prog = { name: '', cls: '', sessions: 0, w: {} };
-try { prog = JSON.parse(localStorage.getItem(STORE_KEY)) || prog; } catch (e) {}
+var prog = { sessions: 0, w: {} };
+try {
+  prog = JSON.parse(localStorage.getItem(STORE_KEY)) || prog;
+  if ('name' in prog || 'cls' in prog) {
+    delete prog.name; delete prog.cls;
+    save();
+  }
+} catch (e) {}
 function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify(prog)); } catch (e) {} }
 function today() { var d = new Date(); return Math.floor((d - d.getTimezoneOffset() * 60000) / 864e5); }
 function st(word) { return prog.w[word] || { lvl: 0, due: 0 }; }
@@ -241,7 +247,6 @@ function finishSession() {
     ? 'You missed these at least once. They come back in your next session: <strong>' + slipped.map(esc).join(', ') + '</strong>'
     : 'Nothing to focus on — you got every word right first time in both rounds.';
   renderLevels('levels-end');
-  set('inp-name', prog.name); set('inp-class', prog.cls);
   document.getElementById('send-btn').disabled = false;
   document.getElementById('send-btn').textContent = 'Send my progress';
   document.getElementById('send-fb').textContent = '';
@@ -250,11 +255,11 @@ function finishSession() {
 
 function sendProgress() {
   var fb = document.getElementById('send-fb'), btn = document.getElementById('send-btn');
-  prog.name = g('inp-name'); prog.cls = g('inp-class'); save();
-  if (!prog.name) { fb.className = 'feedback err'; fb.textContent = 'Please enter your name first.'; return; }
+  var name = g('inp-name'), cls = g('inp-class');
+  if (!name) { fb.className = 'feedback err'; fb.textContent = 'Please enter your name first.'; return; }
   var c = counts();
   var payload = {
-    name: prog.name, cls: prog.cls, unit: PAGE_UNIT,
+    name: name, cls: cls, unit: PAGE_UNIT,
     session: prog.sessions,
     practised: S.words.join(', '),
     round1: (S.words.length - Object.keys(S.missed[1]).length) + ' / ' + S.words.length,
@@ -267,10 +272,13 @@ function sendProgress() {
   function done() { btn.textContent = 'Sent ✓'; fb.className = 'feedback ok'; fb.textContent = 'Your teacher has your progress for this session.'; }
   if (isTestMode()) { console.log('TEST MODE - payload:', payload); return done(); }
   fetch(SHEET_URL, {
-    method: 'POST', mode: 'no-cors',
+    method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
-  }).then(done).catch(function() {
+  }).then(function(response) {
+    if (!response.ok) throw new Error('Submission failed with HTTP ' + response.status);
+    done();
+  }).catch(function() {
     btn.disabled = false; btn.textContent = 'Send my progress';
     fb.className = 'feedback err'; fb.textContent = 'That did not send. Check your connection and try again.';
   });
@@ -350,7 +358,7 @@ function zipStore(files) {
 
 function resetProgress() {
   if (!confirm('Delete all your saved progress for this word list?')) return;
-  prog = { name: prog.name, cls: prog.cls, sessions: 0, w: {} };
+  prog = { sessions: 0, w: {} };
   save();
   renderStart();
 }

@@ -361,8 +361,9 @@ The page itself keeps the 2-minute time gate before the submit button unlocks.
 ```js
 fetch(SHEET_URL, {
   method: 'POST',
-  mode: 'no-cors',
   body: JSON.stringify({ tab: SHEET_TAB, data: examMark(payload) })   // adds dyslexia: 'yes' when ticked
+}).then(function(response) {
+  if (!response.ok) throw new Error('Submission failed with HTTP ' + response.status);
 });
 ```
 

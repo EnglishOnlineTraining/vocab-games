@@ -165,9 +165,9 @@ body.exam-mode input[type=text]{-webkit-user-select:text;user-select:text}
   <div class="container">
     <div class="card done-card">
       <div class="big-icon">✅</div>
-      <h2>Submitted successfully!</h2>
+      <h2 id="done-title">Submitted successfully!</h2>
       <div class="score-big" id="score-big"></div>
-      <p>Your result has been sent to your teacher.</p>
+      <p id="done-message">Your result has been sent to your teacher.</p>
       <p class="done-meta" id="done-meta"></p>
       <div class="review-toggle">
         <button class="btn btn-outline" onclick="toggleReview()">📖 Review my answers</button>
@@ -300,7 +300,6 @@ function doSubmit(){
   payload={timestamp:new Date().toISOString(),name:sName,group:sGroup,session_id:sid,score:correct,total:Q_TOTAL,percent:pct,time_spent_s:el,tab_switches:tabN,paste_attempts:pasteN,typing_anomalies:anomalyN,devtools_flagged:devToolsFlagged,answers:JSON.stringify(results),snapshots:JSON.stringify(snapshots),user_agent:navigator.userAgent};
   examStop();
   buildReview(results);
-  show('s-done');
   const m=Math.floor(el/60),s=el%60;
   document.getElementById('score-big').textContent=correct+' / '+Q_TOTAL+' ('+pct+'%)';
   document.getElementById('done-meta').textContent=`${m}m ${s}s · Session: ${sid}`;

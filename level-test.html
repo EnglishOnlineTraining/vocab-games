@@ -512,9 +512,20 @@ function requestFeedback() {
     fb.textContent = 'Please enter a valid email address.';
     return;
   }
-  emailSentTo = email;
-  sendResults(email);
-  showEmailSent();
+  var btn = document.getElementById('email-send');
+  btn.disabled = true;
+  fb.style.background = 'rgba(39,174,96,.1)';
+  fb.style.color = 'var(--green)';
+  fb.textContent = 'Sending request…';
+  sendResults(email).then(function() {
+    emailSentTo = email;
+    showEmailSent();
+  }).catch(function() {
+    btn.disabled = false;
+    fb.style.background = 'rgba(192,57,43,.1)';
+    fb.style.color = 'var(--red)';
+    fb.textContent = 'The request could not be sent. Please check your connection and try again.';
+  });
 }
 
 // Also called by buildSummary(), which re-renders the email card whenever the
@@ -553,17 +564,16 @@ function sendResults(email) {
 
   if (typeof isTestMode === 'function' && isTestMode()) {
     console.log('[test-mode] level-test email payload:', JSON.stringify(payload));
-    return;
+    return Promise.resolve();
   }
 
-  try {
-    fetch(SHEET_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
-    }).catch(function() {});
-  } catch (e) {}
+  return fetch(SHEET_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
+  }).then(function(response) {
+    if (!response.ok) throw new Error('Feedback request failed with HTTP ' + response.status);
+  });
 }
 
 // ─── Start / Finish ───────────────────────────────────────────────

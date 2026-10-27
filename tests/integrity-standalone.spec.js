@@ -48,3 +48,19 @@ for (const p of PAGES) {
     expect(payload).not.toHaveProperty('user_agent');
   });
 }
+
+test('strict standalone copy and paste restrictions stay unchanged', async ({ page }) => {
+  await page.goto('/9g-class-test-9ab.html');
+  const result = await page.evaluate(() => {
+    name = 'Test Student';
+    cls = '9g';
+    startExam();
+    const answer = document.querySelector('textarea');
+    const copy = new ClipboardEvent('copy', { bubbles: true, cancelable: true });
+    const paste = new ClipboardEvent('paste', { bubbles: true, cancelable: true });
+    document.body.dispatchEvent(copy);
+    answer.dispatchEvent(paste);
+    return [copy.defaultPrevented, paste.defaultPrevented, eolInt.pasteTries];
+  });
+  expect(result).toEqual([true, true, 1]);
+});

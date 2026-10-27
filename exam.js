@@ -137,11 +137,13 @@ function examMark(p, slot) {
    formula. A leading apostrophe makes Excel keep it as text (exercise.js eolSafeCell). */
 function examPostMake(p) {
   return fetch(SHEET_URL, {
-    method: 'POST', mode: 'no-cors',
+    method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: 'payload=' + encodeURIComponent(JSON.stringify(p, function (k, v) {
       return this === p && typeof v === 'string' && /^[=+\-@\t\r]/.test(v) ? "'" + v : v;
     }))
+  }).then(function(response) {
+    if (!response.ok) throw new Error('Submission failed with HTTP ' + response.status);
   });
 }
 

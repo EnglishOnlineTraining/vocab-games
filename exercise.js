@@ -261,11 +261,11 @@ function eolDraftInit() {
   document.addEventListener('change', eolDraftSave);
 }
 
-function eolDraftSave() {
+function eolDraftSave(step) {
   if (eolFinished || !EOL_DRAFT_KEY || !state || !state.name) return;
   try {
     var cur = document.querySelector('.step.active');
-    var curStep = cur ? parseInt(cur.id.replace('step-', ''), 10) : 0;
+    var curStep = typeof step === 'number' ? step : cur ? parseInt(cur.id.replace('step-', ''), 10) : 0;
     var draft = {
       v: 2,
       state: state,
@@ -286,7 +286,7 @@ function eolDraftLoad() {
     if (!raw) return null;
     var d = JSON.parse(raw);
     if (!d || d.v !== 2 || !d.state || !d.state.name) return null;
-    if (Date.now() - d.ts > 48 * 60 * 60 * 1000) return null;
+    if (Date.now() - d.ts > 48 * 60 * 60 * 1000) { localStorage.removeItem(EOL_DRAFT_KEY); return null; }
     return d;
   } catch (e) { return null; }
 }
@@ -527,7 +527,7 @@ function showStep(n) {
   restoreStep(n);
   if (n > maxStepReached) maxStepReached = n;
   renderStepNav(n);
-  eolDraftSave();
+  eolDraftSave(n);
   var meta = document.getElementById('header-meta');
   if (n === 0) { meta.style.display = 'none'; return; }
   meta.style.display = 'block';
@@ -1419,10 +1419,10 @@ function submitToSheet() {
 
   fetch(SHEET_URL, {
     method: 'POST',
-    mode: 'no-cors',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
-  }).then(function() {
+  }).then(function(response) {
+    if (!response.ok) throw new Error('Submission failed with HTTP ' + response.status);
     btn.style.display = 'none';
     showToast('✅ Submitted to teacher!');
     document.getElementById('submit-success').style.display = 'block';
@@ -1633,6 +1633,7 @@ document.addEventListener('visibilitychange', function() {
 
 document.addEventListener('paste', function(e) {
   var t = e.target;
+  if (t.id === 'copy-block') return;
   if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
     e.preventDefault();
     var msg = document.createElement('div');
@@ -1647,6 +1648,7 @@ document.addEventListener('paste', function(e) {
 });
 
 document.addEventListener('copy', function(e) {
+  if (e.target.id === 'copy-block') return;
   e.preventDefault();
   var msg = document.createElement('div');
   msg.textContent = '🚫 Copying is not allowed';

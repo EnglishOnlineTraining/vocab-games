@@ -106,7 +106,7 @@ document.addEventListener('drop', function(e) {
 /* Paste is blocked by each page's own handler; this only counts the attempt. */
 document.addEventListener('paste', function(e) {
   var t = e.target;
-  if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA')) eolInt.pasteTries++;
+  if (t && t.id !== 'copy-block' && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA')) eolInt.pasteTries++;
 }, true);
 
 function eolIntToast(text) {

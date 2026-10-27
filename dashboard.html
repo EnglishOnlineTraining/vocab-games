@@ -247,6 +247,12 @@ body{
 
 <main id="main" class="wrap">
   <div id="dashboard-content"></div>
+  <section class="panel export-section" aria-labelledby="local-data-heading">
+    <h2 id="local-data-heading">Using a shared device?</h2>
+    <p style="font-size:.78rem;color:var(--muted);margin-bottom:.6rem">Delete saved exercise drafts and remove names and classes from vocabulary progress. Review schedules are kept.</p>
+    <button class="export-btn reset-btn" id="delete-local-data-btn" type="button">Delete local drafts and personal details</button>
+    <div class="export-result" id="local-data-result" role="status" aria-live="polite"></div>
+  </section>
 </main>
 
 <footer class="site-footer">
@@ -464,6 +470,27 @@ body{
       });
     }
   }
+
+  document.getElementById('delete-local-data-btn').addEventListener('click', function() {
+    if (!confirm('Delete all saved exercise drafts and remove names and classes from vocabulary progress on this device? Vocabulary review schedules are kept.')) return;
+    var result = document.getElementById('local-data-result');
+    try {
+      var keys = [];
+      for (var i = 0; i < localStorage.length; i++) keys.push(localStorage.key(i));
+      keys.forEach(function(k) {
+        if (k.indexOf('eol_draft_') === 0) { localStorage.removeItem(k); return; }
+        if (k.indexOf('eol_srs_') !== 0) return;
+        var p = JSON.parse(localStorage.getItem(k));
+        if (!p) return;
+        delete p.name; delete p.cls;
+        localStorage.setItem(k, JSON.stringify(p));
+      });
+      result.textContent = 'Local drafts and personal details deleted. Vocabulary review schedules were kept.';
+    } catch (e) {
+      result.textContent = 'Some local data could not be deleted. Check your browser settings and try again.';
+    }
+    result.style.display = 'block';
+  });
 
   function esc(s) {
     var d = document.createElement('div');

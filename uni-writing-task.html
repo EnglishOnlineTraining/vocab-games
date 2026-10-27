@@ -234,8 +234,8 @@ body.exam-mode textarea{-webkit-user-select:text;user-select:text}
   <div class="container">
     <div class="card done-card">
       <div class="big-icon">✅</div>
-      <h2>Submitted successfully!</h2>
-      <p>Your writing has been sent to your teacher.</p>
+      <h2 id="done-title">Submitted successfully!</h2>
+      <p id="done-message">Your writing has been sent to your teacher.</p>
       <p class="done-meta" id="done-meta"></p>
       <div class="backup-bar">
         <p>If the automatic submission failed, use one of these backups:</p>
@@ -458,7 +458,6 @@ function doSubmit(){
     `Scenario ${scenario.id} · ${payload.word_count} words · ${m}m ${s}s · Session: ${sid}`;
 
   send(payload);
-  setTimeout(function(){show('s-done');}, 500);
 }
 
 function autoSubmit(){if(document.getElementById('s-exam').classList.contains('active'))doSubmit()}
@@ -468,9 +467,17 @@ function autoSubmit(){if(document.getElementById('s-exam').classList.contains('a
 ================================================================ */
 function send(data){
   const payload=examMark({unit:UNIT,name:data.name,cls:data.group,...data});
-  fetch(SHEET_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(payload)})
-    .then(function(response){console.log('✅ Submission sent');})
-    .catch(function(err){console.error('❌ Submission failed:',err);});
+  fetch(SHEET_URL,{method:'POST',body:JSON.stringify(payload)})
+    .then(function(response){
+      if(!response.ok)throw new Error('Submission failed with HTTP '+response.status);
+      show('s-done');
+    })
+    .catch(function(err){
+      document.getElementById('done-title').textContent='Submission failed';
+      document.getElementById('done-message').textContent='Your writing has not been sent. Use one of the backups below.';
+      show('s-done');
+      console.error('❌ Submission failed:',err);
+    });
 }
 
 /* ================================================================

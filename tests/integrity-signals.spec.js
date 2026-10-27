@@ -130,3 +130,34 @@ test('practise mode sends anonymous counts only, and respects the opt-out', asyn
   await page.waitForTimeout(300);   // console events arrive asynchronously
   expect(sent).toBe(false);
 });
+
+for (const file of [PAGE, '/9g-australia-vocab-practice.html']) {
+  test(`${file} allows clipboard fallback events only on copy-block`, async ({ page }) => {
+    await page.context().grantPermissions(['clipboard-read', 'clipboard-write']);
+    await page.goto(file);
+    await page.evaluate(() => {
+      showStep(TOTAL_STEPS);
+      const ta = document.getElementById('copy-block');
+      ta.style.display = 'block';
+      ta.value = 'Fallback answers';
+      ta.focus();
+      ta.select();
+    });
+    await page.locator('#copy-block').press('ControlOrMeta+C');
+    expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('Fallback answers');
+
+    const result = await page.evaluate(() => {
+      const fallback = document.getElementById('copy-block');
+      const answer = document.querySelector('#exD-para') || document.querySelector('input');
+      const fallbackPaste = new ClipboardEvent('paste', { bubbles: true, cancelable: true });
+      const answerPaste = new ClipboardEvent('paste', { bubbles: true, cancelable: true });
+      const pageCopy = new ClipboardEvent('copy', { bubbles: true, cancelable: true });
+      fallback.dispatchEvent(fallbackPaste);
+      answer.dispatchEvent(answerPaste);
+      document.body.dispatchEvent(pageCopy);
+      return [fallbackPaste.defaultPrevented, answerPaste.defaultPrevented,
+        pageCopy.defaultPrevented, eolInt.pasteTries];
+    });
+    expect(result).toEqual([false, true, true, 1]);
+  });
+}
