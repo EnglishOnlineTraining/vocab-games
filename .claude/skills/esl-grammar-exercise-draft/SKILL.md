@@ -25,9 +25,11 @@ afterwards and can request changes at any time.
 The registry is `esl-grammar-pool.json` (repo root) — **not** `topic-pool.json`. Run
 `node esl-grammar-pool.js` to see what's open.
 
-1. Read `esl-grammar-pool.json` and take the first entry with `status: "idea"`, going **tier order**
-   (all Tier 1 "Big Eight" entries before any Tier 2, all Tier 2 before any Tier 3) unless Shaun
-   names a specific topic.
+1. Read `esl-grammar-pool.json` and take the first entry with `status: "idea"` unless Shaun names
+   a specific topic. Open entries with a `priority` number go first, lowest number first (set from
+   newer demand data; the entry keeps its evidence tier). After those, go **tier order** (all
+   Tier 1 "Big Eight" entries before any Tier 2, all Tier 2 before any Tier 3). When you build a
+   priority entry, delete its `priority` field as you flip it to `built`.
 2. Note its `id`, `topic`, `grammar`, `cefr`, and `evidence`. Build the exercise to that grammar
    focus, at that CEFR level.
 3. If the pool has no open ideas left, do not invent one silently — tell Shaun the pool is
