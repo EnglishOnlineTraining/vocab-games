@@ -1009,3 +1009,47 @@ relative clauses* → `themen/relativsaetze`; *present perfect continuous* → `
   of scope (Shaun, 2026-10-25). The site serves English and German readers.
 - **New `themen/` pages for wh-questions, pronouns or *much/many*:** Tier 9.5. The English ESL
   pages in item 4 cover these queries.
+
+## Tier 16 — LinkedIn as a B2B citation source (2026-10-27) · Shaun + CC
+Source: a LinkedIn marketing blog post on Meltwater's report "How LinkedIn Content Wins in AI
+Search" (shared by Shaun 2026-10-27). It covers 9.5M AI citations across six models (Copilot,
+Google AI Mode, Google AI Overviews, Claude Sonnet 4, ChatGPT-5, Gemini 2.5 Pro) in B2B
+categories, over four weeks. Claims: LinkedIn is the #2 cited source after YouTube; 75% of its
+citations come from member profiles, 25% from company pages; 72% of cited content is original
+and 48% is under three months old. LinkedIn published it and Meltwater sells the tool that
+measured it; corporate language training was not a measured category (HR & Talent is closest).
+Treat all figures as direction only.
+**Scope: B2B only** (Business English team training, money page `/business-english/`). Most of
+the site-side advice (headings, lists, freshness, own data) is already Tiers 10–15. Respect
+rule 1 (no student or client names) and rule 4 (no Klett). LinkedIn posts are not indexable pages
+on our sites, so Tier 12.2 does not apply; Shaun's time does.
+
+1. **Test before investing · Shaun, ~30 min.** Ask ChatGPT, Copilot and Google AI Mode 5 buyer
+   questions, logged out: e.g. "Business English training for German teams", "how to choose a
+   Business English trainer", "Firmenschulung Englisch Berlin". Log which sources each cites.
+   Add the queries to the Tier 12.15 log. If LinkedIn is cited, go on; if not, stop at this item.
+2. **Personal profile, not a company page · Shaun.** Headline names the expertise (e.g.
+   "Business English trainer for German teams · Berlin"); profile links to `/business-english/`.
+   Public contact email only (rule 3). **CC:** once Shaun gives the profile URL, add it to the
+   Person `sameAs` in `scripts/schema.js` (it lists only the certificates page and Impressum; today
+   only the WP Organization node carries a LinkedIn link, Tier 8 B).
+3. **Adapt each B2B blog post as a native LinkedIn article · CC drafts, Shaun posts.** For each
+   `eol-blog-writer` post aimed at HR/L&D buyers: full text on LinkedIn (a shared link counts as a
+   reshare, not original), H2s, one numbered list, real figures, one link to the money page
+   (Tier 12.1). Adapt the wording rather than copy it, since LinkedIn can't carry a canonical.
+4. **Buyer-question formats · CC drafts, Shaun decides.** Decision frameworks and comparisons,
+   e.g. "7 questions to ask before you book Business English training", "In-house vs online team
+   training: cost and results compared", and the Tier 12.14 roundup (us not first). Real prices
+   raise citation odds; publishing them is Shaun's call.
+5. **First-hand detail.** One real, anonymised training example per post (same rule as Tier
+   13.3). Never a student's or client's name or identifying detail (rule 1).
+6. **Cadence · Shaun confirms.** The source suggests 2–3 posts a week plus 3–4 articles a month;
+   too much for one trainer. Start at 1 post a week and 1 article a month; review after 8 weeks.
+7. **Measure · Shaun.** After 8 weeks, re-run the item 1 questions and compare. Check whether
+   LinkedIn appears as a referrer next to ChatGPT (Tier 13.4).
+
+### Not adopted (with reasons)
+- **Company page push:** 25% of citations; Shaun's own profile carries the expertise signal.
+- **LinkedIn for school, ESL or IELTS content:** students and parents aren't there (same reason
+  as Reddit in Tier 12).
+- **Other repo or code changes:** only item 2's `sameAs` line is needed.
