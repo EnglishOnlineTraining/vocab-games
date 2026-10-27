@@ -6,39 +6,39 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "9",
+     "correct": "opening",
      "accept": [
-      "9"
+      "opening"
      ],
-     "label": "1. h) Glad it worked out. Anyway, are you free..."
+     "label": "1. We recommend"
     },
     "g2": {
-     "correct": "8",
+     "correct": "appear to support",
      "accept": [
-      "8"
+      "appear to support"
      ],
-     "label": "2. Chinese businesspeople wanting something in return"
+     "label": "2. The data"
     },
     "g3": {
-     "correct": "d",
-     "accept": [
-      "d"
-     ],
-     "label": "3. The Accounts Department's slow payment..."
-    },
-    "g4": {
      "correct": "brought",
      "accept": [
       "brought"
      ],
-     "label": "4. What"
+     "label": "3. What"
+    },
+    "g4": {
+     "correct": "d",
+     "accept": [
+      "d"
+     ],
+     "label": "4. The Accounts Department's slow payment..."
     },
     "g5": {
-     "correct": "same length",
+     "correct": "8",
      "accept": [
-      "same length"
+      "8"
      ],
-     "label": "5. A good paraphrase is roughly the"
+     "label": "5. Chinese businesspeople wanting something in return"
     },
     "g6": {
      "correct": "anecdotal",
@@ -48,18 +48,18 @@
      "label": "6. Personal stories rather than systematic research"
     },
     "g7": {
-     "correct": "appear to support",
-     "accept": [
-      "appear to support"
-     ],
-     "label": "7. The data"
-    },
-    "g8": {
      "correct": "a basic structure of ideas or rules that provides guidance",
      "accept": [
       "a basic structure of ideas or rules that provides guidance"
      ],
-     "label": "8. framework"
+     "label": "7. framework"
+    },
+    "g8": {
+     "correct": "9",
+     "accept": [
+      "9"
+     ],
+     "label": "8. h) Glad it worked out. Anyway, are you free..."
     }
    }
   },
@@ -68,39 +68,39 @@
    "multi": false,
    "gaps": {
     "g1": {
+     "correct": "same length",
+     "accept": [
+      "same length"
+     ],
+     "label": "1. A good paraphrase is roughly the"
+    },
+    "g2": {
      "correct": "rose steadily",
      "accept": [
       "rose steadily"
      ],
-     "label": "1. Usage"
+     "label": "2. Usage"
     },
-    "g2": {
+    "g3": {
      "correct": "Since",
      "accept": [
       "Since"
      ],
-     "label": "2."
-    },
-    "g3": {
-     "correct": "8",
-     "accept": [
-      "8"
-     ],
-     "label": "3. i) Well, I had to build up my relationship again..."
+     "label": "3."
     },
     "g4": {
-     "correct": "2",
+     "correct": "by",
      "accept": [
-      "2"
+      "by"
      ],
-     "label": "4. talks about how guanxi is changing"
+     "label": "4. This could be improved"
     },
     "g5": {
-     "correct": "establish",
+     "correct": "could be",
      "accept": [
-      "establish"
+      "could be"
      ],
-     "label": "5. Planning to"
+     "label": "5. Climate change"
     },
     "g6": {
      "correct": "do you study",
@@ -110,18 +110,18 @@
      "label": "6. What"
     },
     "g7": {
-     "correct": "synonyms",
+     "correct": "establish",
      "accept": [
-      "synonyms"
+      "establish"
      ],
-     "label": "7. Techniques include using"
+     "label": "7. Planning to"
     },
     "g8": {
-     "correct": "methodology",
+     "correct": "2",
      "accept": [
-      "methodology"
+      "2"
      ],
-     "label": "8. The detailed plan of how a study was conducted"
+     "label": "8. talks about how guanxi is changing"
     }
    }
   },
@@ -130,11 +130,11 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "could be",
+     "correct": "methodology",
      "accept": [
-      "could be"
+      "methodology"
      ],
-     "label": "1. Climate change"
+     "label": "1. The detailed plan of how a study was conducted"
     },
     "g2": {
      "correct": "detection",
@@ -144,46 +144,46 @@
      "label": "2. AI"
     },
     "g3": {
+     "correct": "8",
+     "accept": [
+      "8"
+     ],
+     "label": "3. i) Well, I had to build up my relationship again..."
+    },
+    "g4": {
+     "correct": "synonyms",
+     "accept": [
+      "synonyms"
+     ],
+     "label": "4. Techniques include using"
+    },
+    "g5": {
      "correct": "rapid",
      "accept": [
       "rapid"
      ],
-     "label": "3. The most"
+     "label": "5. The most"
     },
-    "g4": {
+    "g6": {
      "correct": "leading to",
      "accept": [
       "leading to"
      ],
-     "label": "4. Deforestation has accelerated,"
-    },
-    "g5": {
-     "correct": "5",
-     "accept": [
-      "5"
-     ],
-     "label": "5. j) Was he annoyed?"
-    },
-    "g6": {
-     "correct": "6",
-     "accept": [
-      "6"
-     ],
-     "label": "6. networking through multinational companies"
+     "label": "6. Deforestation has accelerated,"
     },
     "g7": {
-     "correct": "building up",
+     "correct": "should",
      "accept": [
-      "building up"
+      "should"
      ],
-     "label": "7. We are"
+     "label": "7. The library"
     },
     "g8": {
-     "correct": "your ideal job is",
+     "correct": "suggest",
      "accept": [
-      "your ideal job is"
+      "suggest"
      ],
-     "label": "8. Can you tell me what"
+     "label": "8. The results"
     }
    }
   }

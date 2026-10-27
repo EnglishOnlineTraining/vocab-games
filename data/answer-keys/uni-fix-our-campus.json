@@ -1,0 +1,75 @@
+{
+ "unit": "uni-fix-our-campus",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "opening",
+     "accept": [
+      "opening"
+     ],
+     "label": "1. We recommend ___ a second silent room",
+     "why": "After “recommend” use the -ing form, not “to” + verb."
+    },
+    "g2": {
+     "correct": "offer",
+     "accept": [
+      "offer"
+     ],
+     "label": "2. We suggest that the cafeteria ___",
+     "why": "“Suggest that” + subject takes the base verb: “that the cafeteria offer”."
+    },
+    "g3": {
+     "correct": "is",
+     "accept": [
+      "is"
+     ],
+     "label": "3. One advantage ___ that…",
+     "why": "The fixed frame is “One advantage is that…”."
+    },
+    "g4": {
+     "correct": "could",
+     "accept": [
+      "could"
+     ],
+     "label": "4. A buddy system ___ help new students",
+     "why": "“Could” presents a possible result; “will definitely” and “must” claim too much."
+    },
+    "g5": {
+     "correct": "risk",
+     "accept": [
+      "risk"
+     ],
+     "label": "5. One possible ___ is that buddies stop answering",
+     "why": "Buddies stopping is a problem, so it is a risk, not an advantage or benefit."
+    },
+    "g6": {
+     "correct": "by",
+     "accept": [
+      "by"
+     ],
+     "label": "6. This could be improved ___ giving training",
+     "why": "“Improved by + -ing” names the method of improving something."
+    },
+    "g7": {
+     "correct": "should",
+     "accept": [
+      "should"
+     ],
+     "label": "7. The library ___ open empty lecture rooms",
+     "why": "“Should” + base verb gives advice; “is open” and “has open” are ungrammatical here."
+    },
+    "g8": {
+     "correct": "As a result",
+     "accept": [
+      "As a result"
+     ],
+     "label": "8. ___, a third of assignments are late",
+     "why": "“As a result” introduces a consequence of the sentence before it."
+    }
+   }
+  }
+ }
+}
