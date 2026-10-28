@@ -20591,6 +20591,133 @@
    }
   }
  },
+ "9c-halloween": {
+  "exA": {
+   "prefix": "exA-",
+   "gaps": {
+    "g1": {
+     "label": "1. Samhain marked the start of …",
+     "correct": "winter",
+     "why": "The text says Samhain marked the start of winter in the traditional Irish calendar."
+    },
+    "g2": {
+     "label": "2. Early lanterns were made from …",
+     "correct": "turnips",
+     "why": "The first paragraph says people carved turnips into frightening lanterns."
+    },
+    "g3": {
+     "label": "3. Customs travelled with …",
+     "correct": "Irish and Scottish immigrants",
+     "why": "Irish and Scottish immigrants took Halloween customs to North America."
+    },
+    "g4": {
+     "label": "4. People chose pumpkins because …",
+     "correct": "easier to carve",
+     "why": "Pumpkins were larger and softer than turnips, so they were easier to carve."
+    },
+    "g5": {
+     "label": "5. Modern Halloween is …",
+     "correct": "a mixture of old and new traditions",
+     "why": "The final paragraph directly calls modern Halloween a mixture of old and new traditions."
+    },
+    "g6": {
+     "label": "6. Trick-or-treating brings people together because …",
+     "correct": "meet, talk and share treats",
+     "why": "The text describes neighbours meeting, talking and sharing treats."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1. A candle inside the pumpkin",
+     "correct": "lantern",
+     "why": "A lantern gives light, often through a candle or lamp inside a cover."
+    },
+    "g2": {
+     "label": "2. Maya wore a vampire …",
+     "correct": "costume",
+     "why": "A costume is clothing that makes you look like a different person or character."
+    },
+    "g3": {
+     "label": "3. A small … when we knocked",
+     "correct": "treat",
+     "why": "A treat is something pleasant, such as sweets given at Halloween."
+    },
+    "g4": {
+     "label": "4. … a face in your pumpkin",
+     "correct": "carve",
+     "why": "To carve means to cut a pattern or shape into a hard material."
+    },
+    "g5": {
+     "label": "5. A … returns to the house",
+     "correct": "spirit",
+     "why": "A spirit is the part of a dead person that some stories imagine still exists."
+    },
+    "g6": {
+     "label": "6. His mask was a clever …",
+     "correct": "disguise",
+     "why": "A disguise changes your appearance so other people do not recognise you."
+    },
+    "g7": {
+     "label": "7. Sweets on the …",
+     "correct": "porch",
+     "why": "A porch is a covered area at the entrance to a house."
+    },
+    "g8": {
+     "label": "8. The empty house looked …",
+     "correct": "spooky",
+     "why": "Spooky means strange and frightening in a way connected with ghosts."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. Last Halloween, we …",
+     "correct": "decorated",
+     "why": "Last Halloween is a finished past time, so use the simple past."
+    },
+    "g2": {
+     "label": "2. Three lanterns so far",
+     "correct": "has carved",
+     "why": "So far connects an unfinished period to the present, so use the present perfect."
+    },
+    "g3": {
+     "label": "3. In 2024, our neighbours …",
+     "correct": "organised",
+     "why": "In 2024 names a finished past year, so use the simple past."
+    },
+    "g4": {
+     "label": "4. Never in my life",
+     "correct": "have never worn",
+     "why": "In my life describes experience up to now, so use the present perfect."
+    },
+    "g5": {
+     "label": "5. The film … ten minutes ago",
+     "correct": "started",
+     "why": "Ago names a finished past time, so use the simple past."
+    },
+    "g6": {
+     "label": "6. In this house since 2020",
+     "correct": "have lived",
+     "why": "Since 2020 continues up to now; this reviews Work Experience with the present perfect."
+    },
+    "g7": {
+     "label": "7. When I was younger, I …",
+     "correct": "told",
+     "why": "When I was younger describes a finished past period, so use the simple past."
+    },
+    "g8": {
+     "label": "8. Someone … a bag on our porch",
+     "correct": "has left",
+     "why": "The visible result matters now and no finished past time is given, so use the present perfect."
+    }
+   }
+  }
+ },
  "esl-question-formation": {
   "exA": {
    "gaps": {
