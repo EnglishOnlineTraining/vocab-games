@@ -47,3 +47,9 @@ Priorities updated with Bing data for 10–17 Oct 2026 (7-day impressions in bra
 ## 7. Measure
 - [ ] Every Friday: export the 7-day keyword and page reports, and track the pages in groups 1 and 2
 - [ ] Around 21 Nov 2026: compare CTR per page against this week's baseline (simple past 0.8%, linking words 0.9%, passive 0%, good vs bad email 0%)
+
+## Blog queue notes
+- 2026-10-28: scheduled two blog posts (status `future`, site time 10:54).
+  - WP 2710 "A Halloween English Lesson That Goes Beyond Word Lists", 29 Oct (time-bound to 31 Oct). Links to `9c-halloween.html`; lesson claims fact-checked against the page and its worksheet PDF. Category Teacher Notes.
+  - WP 2703 "Property Management in English: 12 Words That Do Most of the Work", 26 Nov (next free slot after post 560 on 23 Nov).
+  - The site clock is a fixed UTC+2, so after the clocks change 10:54 on the site is 09:54 in Berlin. The existing queue has the same offset.
