@@ -53,7 +53,7 @@ the cheapest time to break these buried URLs). Old → new URLs:
 | ID | Title | Old URL | New URL |
 |---|---|---|---|
 | 70 | Blog Posts | `/welcome/blog-posts/` | `/blog-posts/` |
-| 168 | Book a lesson | `/welcome/book-a-lesson/` | `/book-a-lesson/` — **now a draft (found 404 on 2026-10-28; Shaun: keep it unpublished).** No public page links to it. `/contact/` still 301s to it, so that redirect must point at `/business-english/` instead (a redirect rule in wp-admin; the MCP cannot edit it). |
+| 168 | Book a lesson | `/welcome/book-a-lesson/` | `/book-a-lesson/` — **now a draft (found 404 on 2026-10-28; Shaun: keep it unpublished).** No public page links to it. `/contact/` used to 301 to it; Shaun repointed that Redirection rule to `/business-english/` on 2026-10-28 (wp-admin, Tools → Redirection; the MCP cannot edit it) and confirmed it works. |
 | 307 | Special offer! | `/welcome/what-i-offer/` | `/what-i-offer/` |
 | 651 | Common questions about learning English | `/welcome/common-questions-about-learning-english/` | `/common-questions-about-learning-english/` |
 | 978 | Finding the Right English Speaking Class For You | `/welcome/finding-the-right-english-speaking-class-for-you/` | `/finding-the-right-english-speaking-class-for-you/` |
