@@ -1,6 +1,6 @@
 # Draft: WordPress post 32 "Present: Simple or Progressive?" (published 2016-04-13)
 
-Status: DRAFT for Shaun's approval. Nothing was written to WordPress (read only).
+Status: APPLIED to WordPress on 2026-10-28 (items 1, 2, 4 and the SEO title and social message of item 5). Item 4 deviates: the 8c link was kept and `gr-present-tenses.html` left out (noindex, German interface). Item 6: Shaun kept the 2016 image.
 
 ## Finding first: the post is not untouched
 Post 32 is the only 2016 present-simple post (13 other 2016 items are drafts of clipped links).

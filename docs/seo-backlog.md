@@ -401,6 +401,11 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
       `/blog-posts/` still repeats the homepage description, because Jetpack uses the front-page
       description for the posts page and the page's own meta is ignored. Needs a theme/SEO setting
       Shaun controls, or accept it. The 2016 post (ID 32) is still published; left for Shaun.
+    - **2026-10-28 (CC):** post 32 improved from `docs/blog-drafts/wp-32-present-simple-or-progressive.md`
+      (PR #212). Applied block by block: fixed the "now" example, reworded "German has no separate
+      progressive form", Practise paragraph (kept the 8c exercise link, added the German guide link, kept the ESL
+      link), SEO title and social message set. Not applied: the `gr-present-tenses.html` link (noindex, German
+      interface). Featured image 1517 kept (Shaun, 2026-10-28). Verified live: 200, title tag, new text present.
 
 ### C. Activities repo · CC
 12. **→ Done (verified 2026-10-23).** Exercise JSON-LD has no `datePublished`/`dateModified`.
