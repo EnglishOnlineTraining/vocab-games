@@ -136,6 +136,11 @@ Pages that work, but leak link equity outward or bypass the corporate funnel. Fu
      would no longer reach `learn@`. Changes how enquiries are delivered.
   3. **Separate opt-in beside the form** (a `signup.js`-style box posting to a MailerLite form). No new service
      or Make change, but it is a second step for the visitor, so it would not tag the enquirers who skip it.
+  **2026-10-28: Shaun chose option 3.** Make cannot do option 1 (Jetpack has no webhook, Make has no MailerLite
+  or enquiry-inbox connection). Option 3 needs a MailerLite form attached to the "Corporate enquiries" group
+  (none exists yet; the form list has only the EOL Task Capture / General / Eltern forms). Creating it was blocked
+  by the permission check, so page 1965 is unchanged. Next: create the form (double opt-in, group 202123515747370132),
+  then add a `signup.js` box (`data-lang="en"`, new form ID added to its header table) plus `to` = learn@ in one edit.
   Also approved but not yet done: set the form's `to` to `learn@englishonline.training`, together with whichever
   route is chosen. Page 1965 was modified 2026-10-28 14:32, so re-read it before any edit.
 - **Homepage hero button copy** — the "Let's start a conversation" button (fixed 2026-08-08 to point
