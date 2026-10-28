@@ -931,13 +931,14 @@ branch, no rule 8/9 page and no VOICE.md decision.
    words, so keep every existing sentence and add the direct answer above it; do not rewrite.
    Per Tier 10.7, hold the roll-out beyond the first two until the 4–6 week AI-answer data is in.
    `themen/` is German by design (the language rule exempts it).
-4. **Em dashes, arrows and stars in body copy · Shaun decides, otherwise skip · effort L if
-   done.** Re-verified: em dash is in body text on **all 256** indexable pages (mostly the
+4. **Em dashes, arrows and stars in body copy · done for stars, dashes and arrows skipped by design.**
+   Stars: the 4 pages are fixed (the `⭐` and `★` glyphs became "(4-star)", "Note:" and "🏢"
+   icons); dashes and arrows stay as they are. Re-verified: em dash is in body text on **all 256** indexable pages (mostly the
    generated "Aufgaben: 3 — A · B" row and cards), arrow characters on 106, star symbols on 4
    (`9c-melbourne-job-application`, `be-company-culture`, `business-activities`,
    `california-exercises`). `VOICE.md` has no rule on them, so it is a style call with no
-   retrieval evidence (the checklist source is a vendor blog). Recommendation: skip the dashes and
-   arrows; the 4 star pages are cheap to fix on a branch if Shaun wants them gone.
+   retrieval evidence (the checklist source is a vendor blog). Skipped by design: the dashes and
+   arrows.
 5. **Stale `Speakable` lines in this file · already done, close.** Tier 7's intro and item 2 now
    say `Speakable` was removed, and item 2 records the `/about/` node removed 2026-10-23
    (page 2224). Nothing left to do; do not re-add `Speakable`.
