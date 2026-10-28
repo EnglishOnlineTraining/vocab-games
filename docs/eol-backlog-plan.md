@@ -218,6 +218,7 @@ the "which groups exist" review above rather than staying an ungoverned one-off.
   **REOPENED 2026-10-03:** `/wilkommen/` does not redirect any more. It returns 200 as a page of
   its own (title "Willkommen", ~120 words), and both `/wilkommen/` and `/willkommen/` are in the
   Jetpack sitemap. Something was published at the old slug after the rename. See Tier 8 §B.
+  **Resolved 2026-10-28:** it is the noindexed stub 2272, kept on purpose (Tier 8 B6).
 - California – Interactive Exercises — **DONE (2026-08-07), and deliberately NOT a directory
   entry of its own.** `california-exercises.html` is already a card inside `9g-activities.html`
   (Y9 Gymnasium), so listing it separately on WP 1763 double-counted it. The standalone button
@@ -908,8 +909,11 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
      discovery and authority problem. Titles matter once pages are indexed.
 
 ### B. WordPress clean-up · CC via MCP, with Shaun's approval per item
-6. **`/wilkommen/` is live again**, as a page separate from `/willkommen/` (see the Tier 3
-   reopen). Find its ID and either draft it or stub it to `/willkommen/`.
+6. **`/wilkommen/` — resolved 2026-10-28: leave as is.** It is page 2272, the deliberate
+   noindexed "this page has moved" stub (one paragraph and a button to `/willkommen/`; nothing
+   unique, but it is the 301 target of `/welcome/about-me/wilkommen/`). Drafting it would break
+   that chain, so it stays until the Phase 2 decision in `gsc-review-2026-10-06.md`. No repo links
+   point at it. Shaun confirmed leaving it.
 7. **Duplicate post:** `/2026/07/31/alle-kostenlosen-englisch-ubungen-auf-einen-blick/` (557
    words) and `/2026/08/24/alle-kostenlosen-englisch-ubungen-auf-einen-blick-2/` (429 words) have
    near-identical titles. Keep one and stub the other (no 301s; plan upgrade deferred).
