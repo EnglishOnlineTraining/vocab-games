@@ -382,7 +382,8 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
    per-page noindex, use it. Otherwise accept until the plan upgrade (Tier 5).
 9. **The 8 `/testimonial/*/` pages are thin (130–250 words).** Options: one testimonials page,
    or link them from `/business-english/` (1965). Note that self-serving `Review` markup does not
-   earn star snippets.
+   earn star snippets. **Linking done 2026-10-28:** `/testimonial/` is linked from 1965 and
+   `/about/`; the pages stay noindex, so this is for visitors, not search.
 10. **Title-template bug.** 29 of 82 WP titles are over 65 characters. Many end
     "…English Online Training" with no separator. Page 380 is titled "English Online Training
     English Online Training", which is probably what the open "380 non-breaking-space title" item
