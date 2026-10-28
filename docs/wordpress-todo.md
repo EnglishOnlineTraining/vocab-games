@@ -127,6 +127,17 @@ Pages that work, but leak link equity outward or bypass the corporate funnel. Fu
   wiring: a consent field (unticked, wording from privacy policy §9, double opt-in) plus a
   middleman such as Make, or a decision to use a MailerLite form instead. Also open: 1965 posts to
   `englishonlinetraining@pm.me`, while CLAUDE.md names `learn@` as the public address.
+  **Options checked 2026-10-28 (nothing changed on 1965; its form block still has `to` = the old pm.me address).**
+  All three need Shaun's call, so no route was built:
+  1. **Make middleman** (Jetpack form → webhook → MailerLite add-to-group). Needs a new Make scenario and a
+     consent field with wording from privacy policy §9. Make is already used, but this is a Make change.
+  2. **Swap the Jetpack form for a MailerLite form.** Gives double opt-in and the group for free, but MailerLite
+     forms do not email the enquiry, so the message would have to go through an automation or the enquiry
+     would no longer reach `learn@`. Changes how enquiries are delivered.
+  3. **Separate opt-in beside the form** (a `signup.js`-style box posting to a MailerLite form). No new service
+     or Make change, but it is a second step for the visitor, so it would not tag the enquirers who skip it.
+  Also approved but not yet done: set the form's `to` to `learn@englishonline.training`, together with whichever
+  route is chosen. Page 1965 was modified 2026-10-28 14:32, so re-read it before any edit.
 - **Homepage hero button copy** — the "Let's start a conversation" button (fixed 2026-08-08 to point
   at a MailerLite hosted form instead of a stray Google Form) still has placeholder copy on both the
   button label and/or the MailerLite hosted-page itself. Needs Shaun's real copy before it's genuinely
