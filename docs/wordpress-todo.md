@@ -70,6 +70,9 @@ in PRs #25 and #26.
   P3.3.
 - **Link the 10 orphaned `/testimonial/*/` pages into navigation or a relevant hub page.** Found via
   the Tier 6 audit with zero inbound links from anywhere on the site.
+  **Done 2026-10-28:** `/testimonial/` (which lists all the pages) is now linked from
+  `/business-english/` (1965, "Read what learners say" under the client logos) and `/about/`
+  (2224, under "Corporate clients trained"). Menus untouched.
 
 **Flag to Shaun, don't build blindly** (both from the original backlog's P3.1/P3.2 — checked against
 the live site and found to not match it):
