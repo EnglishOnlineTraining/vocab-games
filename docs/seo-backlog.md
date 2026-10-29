@@ -995,6 +995,11 @@ relative clauses* → `themen/relativsaetze`; *present perfect continuous* → `
      to `esl-question-formation`; money page `/business-english/`.
    - Parents (DE): linking words for the Abitur. Links to `themen/linking-words`; money page an
      Abitur Payhip pack.
+     **Draft saved 2026-10-29: WordPress post 2765** (status `draft`, not scheduled; next free slot
+     29 Nov, after `esl-pronouns`, per item 7). Pixar Story Spine; links `themen/linking-words` and the
+     Payhip Kommentar-Training (`payhip.com/b/wXjUl`). Text: `docs/blog-drafts/wp-parents-abitur-linking-words.html`.
+     Fact-checked against the Berlin-Brandenburg 2025 Deskriptoren (60 % sprachlich incl. Textaufbau/Kohäsion,
+     40 % inhaltlich). Featured image (media 2763) awaits Shaun's approval.
    - Teachers (EN): why German speakers say *Play you football?* Links to
      `esl-present-simple-continuous`; money page an Eduki listing.
 7. **Schedule (7 new indexable pages, 2 a week) · Shaun confirms.** Week 1:
