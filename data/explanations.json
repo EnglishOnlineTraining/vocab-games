@@ -20717,5 +20717,129 @@
     }
    }
   }
+ },
+ "esl-pronouns": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. ___ works at a hospital",
+     "correct": "she",
+     "why": "The subject of the sentence is Ana, a woman. A subject pronoun for one woman is \"she\", not the object form \"her\"."
+    },
+    "g2": {
+     "label": "2. ___ studies music",
+     "correct": "he",
+     "why": "The subject is Tom, a man, so use \"he\". \"Him\" is for objects and \"his\" shows ownership."
+    },
+    "g3": {
+     "label": "3. bought ___ a blue scarf",
+     "correct": "her",
+     "why": "The grandmother receives the scarf, so she is the object of \"bought\". Use the object pronoun \"her\", not \"she\"."
+    },
+    "g4": {
+     "label": "4. ___ gave it to her",
+     "correct": "They",
+     "why": "Ana and Tom together are the subject of the sentence, so use \"They\". \"Them\" is only for objects."
+    },
+    "g5": {
+     "label": "5. she loved ___",
+     "correct": "it",
+     "why": "The scarf is the object of \"loved\", and one thing is \"it\". \"Them\" would mean more than one thing."
+    },
+    "g6": {
+     "label": "6. Tom took ___ photo",
+     "correct": "a",
+     "why": "Spaced review from the Articles exercise: the photo is mentioned for the first time, so use \"a\"."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. My sister and ___ share a room.",
+     "correct": "I",
+     "why": "\"I\" is a subject pronoun. In a pair like \"My sister and I\", check by removing the other person: \"I share a room\"."
+    },
+    "g2": {
+     "label": "2. The teacher likes Mia. She often helps ___ with her homework.",
+     "correct": "her",
+     "why": "\"Helps\" needs an object after it, and Mia is one woman. Use the object pronoun \"her\", not \"she\"."
+    },
+    "g3": {
+     "label": "3. ___ are late for the bus again.",
+     "correct": "We",
+     "why": "The pronoun is the subject of \"are\", so use \"We\". \"Us\" is the object form."
+    },
+    "g4": {
+     "label": "4. Sam and I need help. Can you help ___?",
+     "correct": "us",
+     "why": "\"Help\" needs an object. \"Us\" means Sam and me, as the object of \"help\"."
+    },
+    "g5": {
+     "label": "5. My parents are strict, but I love ___ very much.",
+     "correct": "them",
+     "why": "\"Love\" needs an object, and \"my parents\" is plural. The object pronoun for more than one person is \"them\"."
+    },
+    "g6": {
+     "label": "6. Where is Ben? I can't find ___ anywhere.",
+     "correct": "him",
+     "why": "\"Find\" needs an object, and Ben is a man. The object pronoun is \"him\", not \"he\"."
+    },
+    "g7": {
+     "label": "7. Dan and Eva are friends. ___ play tennis together.",
+     "correct": "They",
+     "why": "Dan and Eva are the subject of \"play\", so use the subject pronoun \"They\"."
+    },
+    "g8": {
+     "label": "8. Between you and ___, the film was boring.",
+     "correct": "me",
+     "why": "After a preposition such as \"between\" use the object form: \"between you and me\", not \"between you and I\"."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. This isn't my pen. ___ is on the desk.",
+     "correct": "Mine",
+     "why": "No noun follows the gap, so we need a possessive pronoun. \"Mine\" means \"my pen\". \"My\" always needs a noun after it."
+    },
+    "g2": {
+     "label": "2. I cut ___ while I was cooking.",
+     "correct": "myself",
+     "why": "The person who cuts and the person who is cut are the same, so use the reflexive pronoun \"myself\"."
+    },
+    "g3": {
+     "label": "3. Is this your bag? No, the red one is ___.",
+     "correct": "mine",
+     "why": "\"The red one\" is the thing, so no noun follows the gap. Use the possessive pronoun \"mine\", not \"my\"."
+    },
+    "g4": {
+     "label": "4. She hurt ___ at football practice.",
+     "correct": "herself",
+     "why": "She is both the person who hurts and the person who is hurt, so use the reflexive \"herself\"."
+    },
+    "g5": {
+     "label": "5. Tom lost his phone, so I lent him ___.",
+     "correct": "mine",
+     "why": "\"Lent him mine\" means \"lent him my phone\". With no noun after the gap, use the possessive pronoun \"mine\"."
+    },
+    "g6": {
+     "label": "6. We built the tree house ___.",
+     "correct": "ourselves",
+     "why": "We built it with our own hands, so the reflexive \"ourselves\" fits. \"Ours\" means \"belonging to us\"."
+    },
+    "g7": {
+     "label": "7. The house on the corner is ___.",
+     "correct": "theirs",
+     "why": "There is no noun after the gap, so use the possessive pronoun \"theirs\" (= belonging to them). \"Their\" needs a noun."
+    },
+    "g8": {
+     "label": "8. The dog hurt ___ leg yesterday.",
+     "correct": "its",
+     "why": "\"Leg\" follows the gap, and the leg belongs to the dog. \"Its\" has no apostrophe when it shows ownership; \"it's\" means \"it is\"."
+    }
+   }
+  }
  }
 }
