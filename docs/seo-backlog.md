@@ -143,8 +143,8 @@ new or contradict those docs are listed here.
   content="noindex">` and is gone from the Jetpack sitemap. **Per-page noindex works on the
   current plan; use it instead of waiting for 301s.**
 - **AI crawlers (A1):** the block is lifted, and `robots.txt` no longer disallows them.
-- **Accepted, don't re-raise:** the 15 `gr-*` pages keep posting to the template's old Apps
-  Script URL (Shaun, 2026-10-04: leave permanently).
+- **Superseded:** the 15 `gr-*` pages once kept posting to the template's old Apps Script URL
+  (Shaun, 2026-10-04). They post to the online sheet since #162; see Tier 8, 2026-10-29.
 
 - **Privacy policy (D15): live.** Checked 2026-10-05: `/privacy-policy/` is the German
   Datenschutzerklärung (13 sections), gives the Koloniestraße address, names Google Analytics,
@@ -262,10 +262,11 @@ No live WordPress write was made:
   - **#88:** CONTRIBUTING.md (repo-health 5).
   - **#89:** ✓/✗ marks and live regions on 38 non-framework pages (repo-health 4).
   - **#80, second commit:** the open submission endpoints written up as a known, accepted gap.
-- **New finding, needs Shaun: all 15 `gr-*` grammar pages post to `_template.html`'s old
-  default Apps Script URL** (`…vLl8gJbHL1UfbKmCP7W/exec`), which CLAUDE.md says must always be
-  replaced. It is still live (a GET answers "doGet not found"), so these submissions land in
-  that old script's sheet. Routing was not changed (rule 7).
+- **Resolved 2026-10-29: the `gr-*` pages post to the online sheet.** The finding was already out
+  of date: #162 (2026-10-16) had switched `_template.html` and all 15 `gr-*` pages to the online
+  Apps Script URL, and Shaun confirmed "Online Apps Script sheet" on 2026-10-28. Checked on
+  2026-10-29: all 15 pages carry it, and `apps-script.gs` takes their payload (`unit`, `email`,
+  `date`, `retrieval`, `exA`–`exD`, `score`) through its universal handler. No Apps Script change.
 - **Repo-health 12 (regex audit): reviewed, no change recommended.** The generators parse only
   this repo's own HTML, and an end tag cannot legally carry attributes. Tightening 33 regexes
   would risk the generators for no real gain.
@@ -985,10 +986,9 @@ relative clauses* → `themen/relativsaetze`; *present perfect continuous* → `
 ### Open
 4. **Build the four priority ESL pages · CC, Shaun approves each publish.** One a week (see
    item 7 for the pairing), via `esl-grammar-exercise-draft`.
-5. **`gr-past-progressive.html` · CC.** *past continuous exercises* (1K–5K): `themen/past-progressive`
-   exists but has no `gr-*` exercise page. `noindex` like the other `gr-*` pages, so it does not
-   count toward 12.2. Blocked by the open `SHEET_URL` finding on all `gr-*` pages (Tier 8, "New finding, needs Shaun") —
-   Shaun decides the endpoint first.
+5. **`gr-past-progressive.html` · CC. Built 2026-10-29 (PR open).** *past continuous exercises*
+   (1K–5K): four exercises, `noindex` like the other `gr-*` pages, so it does not count toward 12.2.
+   Linked from `themen/past-progressive` and `grammar-activities.html`; posts to the online sheet.
 6. **Three blog posts · CC via `eol-blog-writer`, Shaun approves each WP draft.** One framework
    each; each links to one topic page and one money page (12.1).
    - Learners (EN): wh-question word order — *Where you are going?* → *Where are you going?* Links
