@@ -519,7 +519,7 @@ awaiting triage.**
   cluster — NOT yet examined", now examined). Generic AI-listicle content from the pre-strategy
   era; 1133 has **zero** internal links of any kind, 1019 links only to 978, none link to 1965
   (the corporate funnel) or to any interactive exercise.
-- **1393 (Business English Vocabulary sets)** links out to **20 third-party Quizlet flashcard
+- [x] **1393 (Business English Vocabulary sets)** — done 29 Oct 2026 (six `be-*` links added, Quizlet kept). Original note: links out to **20 third-party Quizlet flashcard
   sets** via `bit.ly` and links to nothing on the site itself — not the IELTS glossary, not
   `business-activities.html`'s own vocab exercises. Same shape of problem 460 had before T2
   rebuilt it natively.

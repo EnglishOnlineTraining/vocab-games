@@ -9,7 +9,7 @@ Priorities updated with Bing data for 10–17 Oct 2026 (7-day impressions in bra
 - [x] A `themen/passiv.html` (46, 0 clicks): "Passiv Englisch: Übungen mit allen Zeiten & Erklärung"
 - [x] M `/good-vs-bad-when-writing-emails-in-english/` (30, 0 clicks): "Good vs Bad Email Examples: 3 Work Emails Side by Side"
 - [x] M `/2023/11/01/breaking-the-mould-…/` (19, 0 clicks): "Public Speaking Alternatives: 27 Ways to Present" (title + description live 17 Oct)
-- [x] Same post: use "public speaking" in the intro (live 29 Oct). The post has no H2, so none was changed; add one only if wanted
+- [x] Same post: use "public speaking" in the intro and one H2 (live 29 Oct; the post had no H2, so a new one was added: "27 public speaking formats to try instead of slides")
 - [x] M `/2026/07/09/abitur-englisch-so-sehen-die-interaktiven-ubungspakete-aus-…/` (13, 0 clicks): "Abitur Englisch Beispielaufgaben: So sehen die Übungen aus", and link it to and from `/2026/08/17/abitur-englisch-ubungen-kostenlos-…/`
 - [ ] Push the vocab-games branch, then submit every changed URL in Bing Webmaster (URL Submission) or turn on IndexNow
 
