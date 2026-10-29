@@ -246,7 +246,7 @@ No live WordPress write was made:
   needs Shaun's OK per page.
 - **B7:** keep **2067** (`/2026/07/31/alle-kostenlosen-…/`, 557 words). **2261** (the `-2` copy,
   429 words) also describes the Abitur packs as three task types, when there are four
-  (mediation is missing). Stub it or noindex it.
+  (mediation is missing). **Done 2026-10-29: 2261 set to draft** (Shaun chose "keep original, draft -2"; nothing unique lost; its URL now returns 404).
 - **D15 is bigger than filed.** See the replacement text under D below.
 - **More PRs from the same session** (all merged by 2026-10-05; see "Current status"):
   - **#81:** internal link checker (repo-health 6).
@@ -374,7 +374,7 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
 ### B. WordPress clean-up · CC via MCP, with Shaun's approval per item
 6. **`/wilkommen/` is live again**, as a page separate from `/willkommen/` (see the Tier 3
    reopen). Find its ID and either draft it or stub it to `/willkommen/`.
-7. **Duplicate post:** `/2026/07/31/alle-kostenlosen-englisch-ubungen-auf-einen-blick/` (557
+7. **Duplicate post (done 2026-10-29, 2261 drafted):** `/2026/07/31/alle-kostenlosen-englisch-ubungen-auf-einen-blick/` (557
    words) and `/2026/08/24/alle-kostenlosen-englisch-ubungen-auf-einen-blick-2/` (429 words) have
    near-identical titles. Keep one and stub the other (no 301s; plan upgrade deferred).
 8. **Stub pages are still in the sitemap and indexable.** 365, 1205, 1167, 1238 and 523 were
