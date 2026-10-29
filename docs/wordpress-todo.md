@@ -141,6 +141,11 @@ Pages that work, but leak link equity outward or bypass the corporate funnel. Fu
   (none exists yet; the form list has only the EOL Task Capture / General / Eltern forms). Creating it was blocked
   by the permission check, so page 1965 is unchanged. Next: create the form (double opt-in, group 202123515747370132),
   then add a `signup.js` box (`data-lang="en"`, new form ID added to its header table) plus `to` = learn@ in one edit.
+  **2026-10-29: DONE.** Page 1965 now has the form's `to` = learn@englishonline.training and, right after the form,
+  an optional opt-in box (form `202582978405074821`, via `signup.js`). Verified live; the form kept all five fields
+  and its button. Test signup landed as unconfirmed in the group (double opt-in works) and was deleted. The
+  "Prefer email?" line still shows the pm.me address. Enquiries are NOT tagged automatically: only visitors who
+  also use the opt-in box join the group.
   **2026-10-28 later:** the MailerLite form "EOL Task Capture — Corporate enquiries" now exists (id
   `202582978405074821`, double opt-in, group "Corporate enquiries"; no subscribers). The 1965 write (form `to` =
   learn@ plus a core/html block after the form: `<div class="eol-signup" data-ml-form="202582978405074821"
