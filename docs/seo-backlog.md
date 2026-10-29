@@ -1059,3 +1059,36 @@ on our sites, so Tier 12.2 does not apply; Shaun's time does.
 - **LinkedIn for school, ESL or IELTS content:** students and parents aren't there (same reason
   as Reddit in Tier 12).
 - **Other repo or code changes:** only item 2's `sameAs` line is needed.
+
+## Tier 17 — Issue #73 Search Console follow-ups (2026-10-28) · Shaun + CC
+Source: the Search Console list in GitHub issue #73 (2026-10-12), last 28 days to that date. Figures
+are direction only. Items already tracked elsewhere are mapped in that issue's comment and not
+repeated here.
+
+1. **301 the `/welcome/` copy of the Business English Skills article · CC via MCP, Shaun OK per item.**
+   `/welcome/essential-business-english-skills-to-acquire-today/` serves alongside
+   `/essential-business-english-skills-to-acquire-today/` (WP 1019, the same duplicate pattern as
+   Tier 8 B7). Redirect the `/welcome/` copy and trim the duplicated paragraph in the body. Issue #73
+   also drafted a title and meta rewrite for this page; neither is recorded here as approved or applied.
+   `docs/eol-backlog-plan.md` lists 1019 under "Why-learn-BE cluster, NOT yet examined"; this is the
+   decision entry.
+2. **Business-email pairs beyond 1167 · extends Tier 9.2 · Shaun picks the first, CC drafts.**
+   "Good vs bad" pages are the format that is gaining (+60% clicks; "good email vs bad email examples"
+   at 47 impressions). Next pages, one at a time (rule 2): meeting requests, follow-up emails,
+   complaints, LinkedIn messages, out-of-office replies. Each pair must be a real example, not a template.
+3. **Industry-vocabulary candidates from issue #73 · extends Tier 12.10 · Shaun decides.** Issue #73
+   proposed HR, project management, accounting/finance, hospitality and IT/UX. Tier 12.10 only builds
+   industries with real training material, so Shaun confirms which of these qualify. HR already has a
+   Quizlet set that could become its own page.
+4. **Scale up the German Abitur and MSA pages · Shaun decides volume, CC drafts.** "Abitur Übungen"
+   rose 400% (10 clicks) in the same period, and issue #73 calls Abitur the strongest GEO asset. Plan
+   more Abitur packs and MSA pages, starting from the queries that already land. Check volumes in
+   Keyword Planner first (Ahrefs connector is broken).
+5. **Internal links into the Business English money page · CC.** Link the business verbs page (965),
+   the email pages (1061, 1167), the skills article and the industry vocabulary pages to each other,
+   using descriptive anchors, and each into `/business-english/` (1965). Keep to Tier 12.1: an
+   informational page links to one money page, not several.
+6. **Re-check the "ielts" query after the IELTS vocabulary hub article ships · Shaun decides the article.**
+   "ielts" had 135 impressions and 1 click on the same pull. Issue #73 planned a main-domain IELTS hub
+   article. Once it is live, compare the CTR for "ielts" in Search Console at the Tier 9.7 re-measure
+   (2026-11-06).
