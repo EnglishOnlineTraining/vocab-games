@@ -140,13 +140,12 @@
     {
       "id": "esl-countable-uncountable",
       "tier": 2,
-      "priority": 4,
       "topic": "Countable vs. uncountable nouns & quantifiers (much/many, few/little)",
       "grammar": "Countability, quantifiers",
       "cefr": "A1-B1",
       "evidence": "NUCLE noun-number errors 8.5%; CLC countability errors persist at C2. AI-citation query data (2026-10-23 export): 'much and many' 500-1K.",
-      "status": "idea",
-      "file": null
+      "status": "built",
+      "file": "esl-countable-uncountable.html"
     },
     {
       "id": "esl-gerund-infinitive",
