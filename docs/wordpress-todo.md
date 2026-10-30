@@ -98,7 +98,7 @@ Pages that work, but leak link equity outward or bypass the corporate funnel. Fu
 - [x] **1133, 1019, 651** — done (verified live 2026-10-21: 1133 and 651 end with a CTA group to `/business-english/` (1965) / the Activity Directory; 1019 links to 1965 and `business-activities.html`). Original note: the "why learn (business) English" cluster. Generic pre-strategy content;
   **1133 has zero internal links of any kind**, 1019 links only to 978, none link to **1965** (the
   corporate funnel) or to any interactive exercise on the activities host. Add links to both.
-- **1393 (Business English Vocabulary sets)** — links out to 20 third-party Quizlet flashcard sets via
+- [x] **1393 (Business English Vocabulary sets)** — done (29 Oct 2026: six `be-*` links added, Quizlet links kept). Original note: links out to 20 third-party Quizlet flashcard sets via
   `bit.ly` and links to nothing on the site itself. Add links to
   `ielts-vocabulary-glossary.html`-equivalent content and to `business-activities.html`'s own
   vocabulary exercises on the activities host.
