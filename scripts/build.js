@@ -282,11 +282,14 @@ function restoreShared(base) {
   });
   write(LM, lm);
 
-  // ponytail: a card is "derived" if its href is not a page at base. A hand-written
-  // card for a brand-new page is dropped too; main derives one from the page.
+  // ponytail: a card is "derived" if base's hub-cards.json has no entry with its
+  // href (not "if the page is new": main can hold a page whose card the bot has
+  // not written yet). A hand-written card for such a page is dropped too; main
+  // derives one from the page.
   const HC = 'data/hub-cards.json';
+  const baseHrefs = new Set(JSON.stringify(json(HC, true)).match(/"href":"[^"]*"/g) || []);
   const isNew = (x) => x && typeof x.href === 'string' && /^[^:]+\.html(#|$)/.test(x.href) &&
-    !atBase.includes(x.href.split('#')[0]);
+    !baseHrefs.has(JSON.stringify({ href: x.href }).slice(1, -1));
   const strip = (v) => Array.isArray(v)
     ? v.filter((x) => !isNew(x)).map(strip)
     : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, strip(x)])) : v;
