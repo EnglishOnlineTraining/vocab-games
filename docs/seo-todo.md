@@ -28,7 +28,7 @@ Priorities updated with Bing data for 10–17 Oct 2026 (7-day impressions in bra
 - [x] Link that PDF from A `lead-business-email-phrasebank.html` and M `/writing-emails-in-english/`
 - [x] → then set the phrase bank title to "Business Email Phrases PDF: 40 Phrases by Situation"
 - [x] Link the property PDF from A `be-property-management.html` (done 2026-10-23)
-- [ ] Link the commercial real estate PDF from its blog post (WordPress edit, still open)
+- [x] Link the commercial real estate PDF from its blog post (done 2026-10-28: post 1506 already embedded the PDF; the file-block link text is now "Commercial real estate vocabulary list (PDF)")
 
 ## 5. Content additions
 - [x] A `themen/simple-past.html`: add a short Beispieltext and a visible "Verdopplung & y → ied" box
