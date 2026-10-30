@@ -1,0 +1,207 @@
+{
+ "unit": "esl-present-simple-continuous",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "am visiting",
+     "accept": [
+      "am visiting"
+     ],
+     "label": "1. today I ___ my family",
+     "why": "\"today\" contrasts with \"usually\" — it is a temporary activity, so use the present continuous."
+    },
+    "g2": {
+     "correct": "is cooking",
+     "accept": [
+      "is cooking"
+     ],
+     "label": "2. My grandmother ___ soup right now",
+     "why": "\"right now\" shows an action in progress at this moment — use the present continuous."
+    },
+    "g3": {
+     "correct": "makes",
+     "accept": [
+      "makes"
+     ],
+     "label": "3. She ___ soup every Saturday",
+     "why": "\"every Saturday\" is a regular habit — use the present simple, with -s for \"she\"."
+    },
+    "g4": {
+     "correct": "comes",
+     "accept": [
+      "comes"
+     ],
+     "label": "4. the whole family ___ to her house",
+     "why": "A repeated weekly event takes the present simple. \"Family\" is singular, so add -s."
+    },
+    "g5": {
+     "correct": "helps",
+     "accept": [
+      "helps"
+     ],
+     "label": "5. My brother never ___ in the kitchen",
+     "why": "\"never\" is a frequency word, so use the present simple. \"He\" needs -s."
+    },
+    "g6": {
+     "correct": "is playing",
+     "accept": [
+      "is playing"
+     ],
+     "label": "6. Right now he ___ football",
+     "why": "\"Right now\" means this moment — use am/is/are + -ing."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "works",
+     "accept": [
+      "works"
+     ],
+     "label": "1. My sister ___ in a hospital",
+     "why": "A fact about her job: present simple. With \"she\", the verb ends in -s."
+    },
+    "g2": {
+     "correct": "don't watch",
+     "accept": [
+      "don't watch"
+     ],
+     "label": "2. They ___ TV in the morning",
+     "why": "Negative with \"they\": don't + base verb. The verb after don't has no -s."
+    },
+    "g3": {
+     "correct": "Do",
+     "accept": [
+      "Do"
+     ],
+     "label": "3. ___ you like pizza?",
+     "why": "Questions with \"you\" use Do + subject + base verb. \"Are\" is only for be."
+    },
+    "g4": {
+     "correct": "goes",
+     "accept": [
+      "goes"
+     ],
+     "label": "4. Tom ___ to school by bike",
+     "why": "Daily habit with \"he\": the verb takes -es after go."
+    },
+    "g5": {
+     "correct": "Does",
+     "accept": [
+      "Does"
+     ],
+     "label": "5. ___ she speak French?",
+     "why": "Questions with \"she\" use Does + base verb. After Does, \"speak\" has no -s."
+    },
+    "g6": {
+     "correct": "boils",
+     "accept": [
+      "boils"
+     ],
+     "label": "6. Water ___ at 100 degrees",
+     "why": "A scientific fact is always present simple. \"Water\" is it, so add -s."
+    },
+    "g7": {
+     "correct": "doesn't rain",
+     "accept": [
+      "doesn't rain"
+     ],
+     "label": "7. It ___ much in Cairo",
+     "why": "Negative with \"it\": doesn't + base verb. Never \"doesn't rains\"."
+    },
+    "g8": {
+     "correct": "an",
+     "accept": [
+      "an"
+     ],
+     "label": "8. My uncle is ___ engineer",
+     "why": "Spaced recall from esl-articles: a job takes \"a/an\", and \"an\" goes before the vowel sound in \"engineer\"."
+    },
+    "g9": {
+     "correct": "never drink",
+     "accept": [
+      "never drink"
+     ],
+     "label": "9. My parents ___ coffee in the evening",
+     "why": "Frequency words like \"never\" go before the main verb. \"Parents\" is plural, so no -s."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "is sleeping",
+     "accept": [
+      "is sleeping"
+     ],
+     "label": "1. The baby ___",
+     "why": "\"Be quiet!\" tells you it is happening now — use the present continuous."
+    },
+    "g2": {
+     "correct": "eat",
+     "accept": [
+      "eat"
+     ],
+     "label": "2. I ___ cereal every day",
+     "why": "\"every day\" signals a habit — use the present simple. \"I\" takes no -s."
+    },
+    "g3": {
+     "correct": "is snowing",
+     "accept": [
+      "is snowing"
+     ],
+     "label": "3. Look! It ___ outside",
+     "why": "\"Look!\" points to something happening now — use the present continuous."
+    },
+    "g4": {
+     "correct": "knows",
+     "accept": [
+      "knows"
+     ],
+     "label": "4. She ___ the answer",
+     "why": "\"Know\" is a state verb. We do not use state verbs in the continuous, even right now."
+    },
+    "g5": {
+     "correct": "are having",
+     "accept": [
+      "are having"
+     ],
+     "label": "5. We ___ dinner at the moment",
+     "why": "Here \"have\" means eating, an action, and \"at the moment\" shows it is in progress — use the continuous."
+    },
+    "g6": {
+     "correct": "wears",
+     "accept": [
+      "wears"
+     ],
+     "label": "6. He usually ___ jeans",
+     "why": "\"usually\" signals a habit — present simple, with -s for \"he\"."
+    },
+    "g7": {
+     "correct": "is wearing",
+     "accept": [
+      "is wearing"
+     ],
+     "label": "6. today he ___ a suit",
+     "why": "\"today\" contrasts with \"usually\" — a temporary situation, so use the present continuous."
+    },
+    "g8": {
+     "correct": "love",
+     "accept": [
+      "love"
+     ],
+     "label": "7. I ___ this song",
+     "why": "\"Love\" is a state verb (a feeling), so use the present simple: \"I love\", not \"I am loving\"."
+    }
+   }
+  }
+ }
+}
