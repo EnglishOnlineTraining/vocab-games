@@ -380,17 +380,28 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
 7. **Duplicate post (done 2026-10-29, 2261 drafted):** `/2026/07/31/alle-kostenlosen-englisch-ubungen-auf-einen-blick/` (557
    words) and `/2026/08/24/alle-kostenlosen-englisch-ubungen-auf-einen-blick-2/` (429 words) have
    near-identical titles. Keep one and stub the other (no 301s; plan upgrade deferred).
-8. **Stub pages are still in the sitemap and indexable.** 365, 1205, 1167, 1238 and 523 were
-   stubbed by design (Tier 3.5/4). Each is now a thin page Google can index. If the plan allows a
-   per-page noindex, use it. Otherwise accept until the plan upgrade (Tier 5).
+8. **Closed 2026-10-29 (CC, verified live): no indexable stubs remain.** Checked every one of
+   the 78 URLs in `sitemap-1.xml` (curl, `<meta name="robots">`, rough main-text word count).
+   None carries `noindex`, and none is under 150 words apart from `/impressum/` (111 words, a
+   legal page that must stay). The stubs are all noindexed (`jetpack_seo_noindex`) and absent
+   from the sitemap: 365, 523, 1238 (posts), 1205 (`/blog-posts-page/`), 2272 (`/wilkommen/`).
+   **1167 is not a stub:** it is `/good-vs-bad-when-writing-emails-in-english/` (774 words),
+   indexable, and is in the sitemap. Its noindex was reversed (see Tier 9).
+   **Found while checking (not a stub; not in this item):** `/book-a-lesson/` and
+   `/california-interactive-exercises/` are listed in `sitemap-1.xml` but return HTTP 404
+   ("Page not found"). Fix in WordPress (Shaun decides: remove from the sitemap or restore).
 9. **The 8 `/testimonial/*/` pages are thin (130–250 words).** Options: one testimonials page,
    or link them from `/business-english/` (1965). Note that self-serving `Review` markup does not
    earn star snippets. **Linking done 2026-10-28:** `/testimonial/` is linked from 1965 and
    `/about/`; the pages stay noindex, so this is for visitors, not search.
-10. **Title-template bug.** 29 of 82 WP titles are over 65 characters. Many end
-    "…English Online Training" with no separator. Page 380 is titled "English Online Training
-    English Online Training", which is probably what the open "380 non-breaking-space title" item
-    is really about. Fix the Jetpack SEO title format (separator + short brand).
+10. **Title-template: length fixed, brand suffix still open (measured 2026-10-29).** Every
+    rendered `<title>` in `sitemap-1.xml` (78 URLs, curl) is 65 characters or fewer; the longest
+    is 65 (`/2023/05/09/english-for-commercial-real-estate/`). The old "29 of 82 over 65" is gone.
+    **Still open:** 56 of 78 titles lack the `| English Online Training` suffix. 22 have it.
+    3 end with `– Improve your English skills`. 53 have neither: most are the bare post or
+    page title, e.g. `/why-learn-with-english-online-training/` (39 characters, no suffix) and
+    the German `/willkommen/` pages. Which pattern to use is Shaun's decision (A5 and the
+    "Waiting on Shaun" list above).
 11. **Small fixes:**
     - More than one `<h1>` on 8 pages: `/privacy-policy/` (8), `/vocabulary-games/`,
       `/english-for-students/`, `/university-english/`, `/it-english/`,
