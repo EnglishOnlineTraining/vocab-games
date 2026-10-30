@@ -453,7 +453,9 @@ those notes turned out to be wrong (see the 2063–2066 correction above).
 - One site-wide menu (may be moot after T3); delete orphaned block nav menu 416; replace dated
   `pub/ixion` theme. (Menu delete/assign may be MCP-doable — check when we get there.)
   **Theme part DONE:** `pub/ixion` was replaced by the custom EOT Modern theme (Claude-maintained
-  since 2026-09-25). The menu items are unchecked.
+  since 2026-09-25). **Menu DONE (2026-10-29):** the header already used the one classic menu
+  ("claude", `primary` location); unused block nav menu 416 moved to trash via the API (restore:
+  `navigation.update` with status `publish`).
 
 ## Tier 6 — Internal-linking + link-graph audit (2026-08-08) · CC
 Shaun asked for an internal-linking pass across **both** surfaces (WordPress + activities repo).
