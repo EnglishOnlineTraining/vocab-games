@@ -36,3 +36,6 @@ playwright-report/
 
 # Finder / iCloud duplicates ("page 2.html") that `git add -A` sweeps in
 * [0-9].*
+
+# iCloud also makes "pre-push 2" with no extension
+* [0-9]

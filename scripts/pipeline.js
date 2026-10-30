@@ -294,4 +294,25 @@ const MANUAL = [
   { id: 'marking-handout', run: 'scripts/marking-handout.js' },
 ];
 
-module.exports = { NODES, VALIDATORS, CHECKERS, MANUAL };
+// Aggregate outputs: files every page-adding PR used to rewrite, so any two open
+// PRs conflicted in them (15 open PRs on 2026-10-30, conflicts daily). Off main,
+// build.js builds and checks the full tree, then puts these back to the
+// branch's merge-base, so a PR never carries them. rebuild-indices.yml rebuilds
+// them on main after every merge (`build.js --full`).
+//
+// Two files are part-authored, so build.js restores only their aggregate part:
+//   data/lastmod.json   — entries for the pages below go back to the base value;
+//                         the PR's own pages keep theirs, or their dates would
+//                         move to "today" every time CI runs.
+//   data/hub-cards.json — cards the build derived for pages new on the branch
+//                         are dropped (main derives them again); hand edits to
+//                         existing cards stay in the PR.
+const SHARED = [
+  'sitemap.xml', 'sitemap-*.xml', 'robots.txt',
+  'data/exercises.json', 'data/wordpress-1763.json',
+  'data/answer-keys/index.json', 'data/answer-keys/*-review.json',
+  'activities.html', 'index.html', '*-activities.html', '*-review.html',
+  'themen/*.html',
+];
+
+module.exports = { NODES, VALIDATORS, CHECKERS, MANUAL, SHARED };
