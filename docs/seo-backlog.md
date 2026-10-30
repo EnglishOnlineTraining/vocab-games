@@ -1117,3 +1117,40 @@ repeated here.
    "ielts" had 135 impressions and 1 click on the same pull. Issue #73 planned a main-domain IELTS hub
    article. Once it is live, compare the CTR for "ielts" in Search Console at the Tier 9.7 re-measure
    (2026-11-06).
+
+## Tier 18 — Bing SEO report and Ahrefs crawl (2026-10-30) · Shaun + CC
+
+Sources: Bing Webmaster "SEO Analysis Summary" for `englishonline.training` (2026-10-28), Bing
+IndexNow coverage for the activities site (5 Sep – 28 Oct), and the Ahrefs Site Audit email for the
+activities site (crawl 2026-10-30, health 99). The Ahrefs connector still returns "Insufficient
+plan", so the Ahrefs URL lists were not available; the live pages were crawled instead.
+
+1. **→ Done (2026-10-30, Shaun approved, verified live). Titles too long (Bing: 3).** Bing flagged
+   the three posts whose `<title>` ran 76–91 characters; 2379 (78, published 2026-10-30) would have
+   been next. Set `jetpack_seo_html_title`, which replaces the whole `<title>` including the
+   "| English Online Training" suffix: 2367 "Why Your Team's Emails Are Too Long (It's Not the
+   English)", 2370 "American or British English: What Matters in Class", 2368 "How to Answer
+   "Comment on…" Tasks in the English Abitur", 2379 "A 10-Minute Task-Decoding Warm-Up for Abitur
+   Classes". Unflagged titles were 65 characters or less, so Bing's limit sits between 66 and 76.
+2. **→ Partly done (2026-10-30, Shaun approved, verified live). Meta descriptions too short
+   (Bing: 15).** Every sitemap page is 118–160 characters. The short ones are archives, where
+   Jetpack falls back to "Posts about X written by Shaun Trezise" (~45 chars). Added term
+   descriptions to the four categories with posts and none: `abitur`, `business-english`,
+   `it-englisch`, `writing`. **Open:** ~110 tag pages and the date archives use the same fallback;
+   the author page reads "…on Improve your English skills" (the site tagline, a setting). Not worth
+   110 descriptions — get Bing's URL list for the issue first and see what it actually counts.
+3. **Open · Shaun exports the URL list. Multiple H1 (1 page), missing alt (2 images).** Not
+   reproducible on 2026-10-30: all 83 sitemap URLs, the categories, author and paged archives have
+   one `<h1>` and no `<img>` without `alt`. Likely a crawl from before the 2026-10-23 H1 and alt-text
+   fixes.
+4. **Open · Shaun decides. IndexNow resubmits the whole activities site on template changes.**
+   The big coverage-report days (542, 517, 484, 291 URLs) match site-wide chrome commits that touched
+   200–320 pages (schema, consent, contact email, layout). The LocalBusiness drop on 10-15 and its
+   restore on 10-16 sent everything twice with no content change. Indexed counts did not scale (542 →
+   5, 517 → 13; a 10-URL day also got 5). Proposed: skip a push in `scripts/indexnow-submit.js` when
+   it changes more than ~50 pages, unless `--all`.
+5. **No action. Ahrefs notices.** "Main content requires JS" (3, probably `vocab-games.html`,
+   `level-test.html` and a `uni-c*-vocab-practice` page: interactive by design); "H1/meta description
+   changed" (last week's edits); "Page in multiple sitemaps" (flat `sitemap.xml` overlaps the section
+   sitemaps on purpose — eight scripts read it); "Changed pages not submitted to IndexNow" (counts
+   only Ahrefs' own IndexNow add-on; the CI job submits).
