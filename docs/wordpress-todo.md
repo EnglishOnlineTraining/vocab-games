@@ -130,7 +130,6 @@ Pages that work, but leak link equity outward or bypass the corporate funnel. Fu
   wiring: a consent field (unticked, wording from privacy policy §9, double opt-in) plus a
   middleman such as Make, or a decision to use a MailerLite form instead. Also open: 1965 posts to
   `englishonlinetraining@pm.me`, while CLAUDE.md names `learn@` as the public address.
-<<<<<<< HEAD
   **Options checked 2026-10-28 (nothing changed on 1965; its form block still has `to` = the old pm.me address).**
   All three need Shaun's call, so no route was built:
   1. **Make middleman** (Jetpack form → webhook → MailerLite add-to-group). Needs a new Make scenario and a
@@ -158,9 +157,7 @@ Pages that work, but leak link equity outward or bypass the corporate funnel. Fu
   still shows the pm.me address.
   Also approved but not yet done: set the form's `to` to `learn@englishonline.training`, together with whichever
   route is chosen. Page 1965 was modified 2026-10-28 14:32, so re-read it before any edit.
-=======
 - [x] **`/university-english/` contact form still sent to `pm.me`** — done 2026-10-28 (page **1996**, block 19, `jetpack/contact-form`). Its `to` is now `learn@englishonline.training`. Changed with `page-sections.replace` on that one block; a re-fetch with `context: "edit"` showed the form still a dynamic block with its four inner blocks (name, email, message, button) and every other block's hash unchanged. Subject line unchanged. Page 1965's form (above) is a separate item and still open.
->>>>>>> origin/main
 - **Homepage hero button copy** — the "Let's start a conversation" button (fixed 2026-08-08 to point
   at a MailerLite hosted form instead of a stray Google Form) still has placeholder copy on both the
   button label and/or the MailerLite hosted-page itself. Needs Shaun's real copy before it's genuinely
