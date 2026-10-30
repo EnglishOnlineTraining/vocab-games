@@ -1,0 +1,163 @@
+{
+ "unit": "gr-past-progressive",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "was cooking",
+     "accept": [
+      "was cooking"
+     ],
+     "label": "1 At eight o’clock last night, Maya"
+    },
+    "g2": {
+     "correct": "were playing",
+     "accept": [
+      "were playing"
+     ],
+     "label": "2 Her brothers"
+    },
+    "g3": {
+     "correct": "was stirring",
+     "accept": [
+      "was stirring"
+     ],
+     "label": "3 While she"
+    },
+    "g4": {
+     "correct": "was paying",
+     "accept": [
+      "was paying"
+     ],
+     "label": "4 Nobody"
+    },
+    "g5": {
+     "correct": "were watching",
+     "accept": [
+      "were watching"
+     ],
+     "label": "5 When the lights went out, the boys"
+    },
+    "g6": {
+     "correct": "Were",
+     "accept": [
+      "Were"
+     ],
+     "label": "6 Maya shouted, “"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "was running",
+     "accept": [
+      "was running"
+     ],
+     "label": "1 I (run)"
+    },
+    "g2": {
+     "correct": "was writing",
+     "accept": [
+      "was writing"
+     ],
+     "label": "2 She (write)"
+    },
+    "g3": {
+     "correct": "were waiting",
+     "accept": [
+      "were waiting"
+     ],
+     "label": "3 They (wait)"
+    },
+    "g4": {
+     "correct": "weren’t listening",
+     "accept": [
+      "weren’t listening"
+     ],
+     "label": "4 We (not / listen)"
+    },
+    "g5": {
+     "correct": "was swimming",
+     "accept": [
+      "was swimming"
+     ],
+     "label": "5 He (swim)"
+    },
+    "g6": {
+     "correct": "Were you sleeping",
+     "accept": [
+      "Were you sleeping"
+     ],
+     "label": "6 (you / sleep)"
+    },
+    "g7": {
+     "correct": "wasn’t raining",
+     "accept": [
+      "wasn’t raining"
+     ],
+     "label": "7 It (not / rain)"
+    },
+    "g8": {
+     "correct": "were lying",
+     "accept": [
+      "were lying"
+     ],
+     "label": "8 The children (lie)"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "was reading",
+     "accept": [
+      "was reading"
+     ],
+     "label": "1 I"
+    },
+    "g2": {
+     "correct": "was riding",
+     "accept": [
+      "was riding"
+     ],
+     "label": "2 Tom"
+    },
+    "g3": {
+     "correct": "went",
+     "accept": [
+      "went"
+     ],
+     "label": "3 Suddenly the lights"
+    },
+    "g4": {
+     "correct": "were walking",
+     "accept": [
+      "were walking"
+     ],
+     "label": "4 While they"
+    },
+    "g5": {
+     "correct": "knew",
+     "accept": [
+      "knew"
+     ],
+     "label": "5 I"
+    },
+    "g6": {
+     "correct": "were",
+     "accept": [
+      "were"
+     ],
+     "label": "6 What"
+    }
+   }
+  }
+ }
+}
