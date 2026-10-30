@@ -20970,5 +20970,129 @@
     }
    }
   }
+ },
+ "esl-countable-uncountable": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. There is ___ milk",
+     "correct": "some",
+     "why": "\"Milk\" is uncountable, so it cannot take \"many\" or \"a few\". \"Some\" works with uncountable nouns in a positive sentence."
+    },
+    "g2": {
+     "label": "2. there aren't ___ eggs",
+     "correct": "many",
+     "why": "\"Eggs\" is countable (one egg, two eggs). Use \"many\" in a negative sentence with a countable noun."
+    },
+    "g3": {
+     "label": "3. How ___ bread",
+     "correct": "much",
+     "why": "\"Bread\" is uncountable. In a \"How … ?\" question, use \"much\" with uncountable nouns."
+    },
+    "g4": {
+     "label": "4. Only ___",
+     "correct": "a little",
+     "why": "\"Bread\" is uncountable, so use \"a little\", not \"a few\". \"A little\" means a small amount, but enough."
+    },
+    "g5": {
+     "label": "5. ___ drinks",
+     "correct": "a lot of",
+     "why": "\"Drinks\" is countable. \"A lot of\" works with countable and uncountable nouns; \"much\" is unusual in a positive sentence, and \"a little\" is only for uncountable nouns."
+    },
+    "g6": {
+     "label": "6. How ___ bottles",
+     "correct": "many",
+     "why": "\"Bottles\" is countable (one bottle, two bottles). In a \"How … ?\" question, use \"many\"."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. How ___ water",
+     "correct": "much",
+     "why": "\"Water\" is uncountable: you cannot count \"one water, two waters\" as a substance. Use \"much\"."
+    },
+    "g2": {
+     "label": "2. aren't ___ chairs",
+     "correct": "many",
+     "why": "\"Chairs\" is countable. Use \"many\" in a negative sentence."
+    },
+    "g3": {
+     "label": "3. How ___ students",
+     "correct": "many",
+     "why": "\"Students\" is countable (one student, two students). Use \"many\"."
+    },
+    "g4": {
+     "label": "4. don't have ___ time",
+     "correct": "much",
+     "why": "\"Time\" is uncountable here. Use \"much\" in a negative sentence."
+    },
+    "g5": {
+     "label": "5. Is there ___ sugar",
+     "correct": "much",
+     "why": "\"Sugar\" is uncountable. Use \"much\" in a question."
+    },
+    "g6": {
+     "label": "6. haven't got ___ apples",
+     "correct": "many",
+     "why": "\"Apples\" is countable. Use \"many\" in a negative sentence."
+    },
+    "g7": {
+     "label": "7. How ___ people",
+     "correct": "many",
+     "why": "\"People\" is countable (one person, two people). Use \"many\"."
+    },
+    "g8": {
+     "label": "8. doesn't eat ___ meat",
+     "correct": "much",
+     "why": "\"Meat\" is uncountable. Use \"much\" in a negative sentence."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. I have ___ time",
+     "correct": "little",
+     "why": "\"Little\" + an uncountable noun means almost none, which fits \"I can't talk now\"."
+    },
+    "g2": {
+     "label": "2. ___ sugar",
+     "correct": "a little",
+     "why": "\"A little\" + an uncountable noun means a small amount. \"Just a spoonful\" shows the amount is small but welcome."
+    },
+    "g3": {
+     "label": "3. He has ___ friends",
+     "correct": "few",
+     "why": "\"Few\" + a countable noun means almost none, which fits \"he often feels lonely\". \"A few\" would be positive."
+    },
+    "g4": {
+     "label": "4. We have ___ eggs",
+     "correct": "a few",
+     "why": "\"A few\" + a countable noun means some, enough to do something. It fits \"I can make an omelette\"."
+    },
+    "g5": {
+     "label": "5. ___ people came",
+     "correct": "Few",
+     "why": "\"Few\" + a countable noun means almost none, which fits \"the hall was nearly empty\"."
+    },
+    "g6": {
+     "label": "6. ___ advice",
+     "correct": "a little",
+     "why": "\"Advice\" is uncountable, so use \"a little\", not \"a few\". It asks for a small amount."
+    },
+    "g7": {
+     "label": "7. ___ apple",
+     "correct": "an",
+     "why": "Recall from the Articles page: \"apple\" starts with a vowel sound, so use \"an\". \"Bread\" is uncountable, so it takes \"some\", not \"a\"."
+    },
+    "g8": {
+     "label": "8. ___ time before the film",
+     "correct": "a little",
+     "why": "\"Time\" is uncountable and positive here: there is some, enough for a coffee. Use \"a little\"."
+    }
+   }
+  }
  }
 }
