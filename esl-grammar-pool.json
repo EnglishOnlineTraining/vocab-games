@@ -239,13 +239,12 @@
     {
       "id": "esl-pronouns",
       "tier": 2,
-      "priority": 2,
       "topic": "Pronouns (he/she confusion, possessives, reflexives)",
       "grammar": "Pronoun system",
       "cefr": "A1-B1",
       "evidence": "13.9% of errors in Turkish corpus; genderless-pronoun L1s (Turkish, Chinese, Korean) affected most. AI-citation query data (2026-10-23 export): 'subject pronouns' and 'object pronouns' 1K-5K each.",
-      "status": "idea",
-      "file": null
+      "status": "built",
+      "file": "esl-pronouns.html"
     },
     {
       "id": "esl-adjective-adverb",
