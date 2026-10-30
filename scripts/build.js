@@ -9,6 +9,9 @@
  *   node scripts/build.js --check         build, then fail if the tree is dirty
  *                                         or docs/build-graph.mmd is stale
  *   node scripts/build.js --write-graph   refresh docs/build-graph.mmd
+ *   node scripts/build.js --full          on a branch, keep the SHARED aggregates
+ *                                         (pipeline.js) too; the default off main
+ *                                         resets them to the merge-base
  *   node scripts/build.js hub head        run these nodes and everything
  *                                         downstream of them
  *
@@ -22,7 +25,7 @@
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
-const { NODES, VALIDATORS, CHECKERS, MANUAL } = require('./pipeline.js');
+const { NODES, VALIDATORS, CHECKERS, MANUAL, SHARED } = require('./pipeline.js');
 
 const ROOT = path.join(__dirname, '..');
 const GRAPH_FILE = path.join(ROOT, 'docs', 'build-graph.mmd');
@@ -242,6 +245,55 @@ function generatedDirty() {
     .join('\n');
 }
 
+// ---- branch mode --------------------------------------------------------
+// Off main, put the SHARED aggregates (pipeline.js) back to the merge-base so a
+// PR never carries them; main's rebuild bot owns them. Returns the base, or
+// null when this is a full build.
+function git(...args) {
+  return execFileSync('git', args, { cwd: ROOT, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
+}
+function branchBase() {
+  if (flags.has('--full')) return null;
+  try {
+    if (git('rev-parse', '--abbrev-ref', 'HEAD').trim() === 'main') return null;
+    return git('merge-base', 'HEAD', 'origin/main').trim();
+  } catch (e) {
+    console.warn('\n⚠ no origin/main to compare with — building everything (as on main).');
+    return null;
+  }
+}
+function restoreShared(base) {
+  const res = SHARED.map(toRe);
+  const atBase = git('ls-tree', '-r', '--name-only', base).split('\n').filter(Boolean);
+  const files = new Set([...atBase, ...filesUnder(ROOT, '')].filter((f) => res.some((re) => re.test(f))));
+  const baseFile = (f) => execFileSync('git', ['show', `${base}:${f}`], { cwd: ROOT, maxBuffer: 1 << 28 });
+  files.forEach((f) => {
+    const abs = path.join(ROOT, f);
+    if (atBase.includes(f)) fs.writeFileSync(abs, baseFile(f));
+    else fs.rmSync(abs, { force: true });
+  });
+  const json = (f, from) => JSON.parse(from ? baseFile(f) : fs.readFileSync(path.join(ROOT, f), 'utf8'));
+  const write = (f, v) => fs.writeFileSync(path.join(ROOT, f), JSON.stringify(v, null, 2) + '\n');
+
+  const LM = 'data/lastmod.json';
+  const lm = json(LM), lmBase = json(LM, true);
+  Object.keys(lm).filter((k) => res.some((re) => re.test(k))).forEach((k) => {
+    if (k in lmBase) lm[k] = lmBase[k]; else delete lm[k];
+  });
+  write(LM, lm);
+
+  // ponytail: a card is "derived" if its href is not a page at base. A hand-written
+  // card for a brand-new page is dropped too; main derives one from the page.
+  const HC = 'data/hub-cards.json';
+  const isNew = (x) => x && typeof x.href === 'string' && /^[^:]+\.html(#|$)/.test(x.href) &&
+    !atBase.includes(x.href.split('#')[0]);
+  const strip = (v) => Array.isArray(v)
+    ? v.filter((x) => !isNew(x)).map(strip)
+    : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, strip(x)])) : v;
+  write(HC, strip(json(HC)));
+  console.log(`\n↺ branch build: shared aggregates kept at ${base.slice(0, 8)} (main rebuilds them after merge)`);
+}
+
 // ---- main ---------------------------------------------------------------
 const argv = process.argv.slice(2);
 const flags = new Set(argv.filter((a) => a.startsWith('--')));
@@ -311,6 +363,9 @@ if (!wanted.length) {
   console.log('\nChecking output…');
   CHECKERS.forEach((c) => run(c.run));
 }
+
+const base = branchBase();
+if (base) restoreShared(base);
 
 if (flags.has('--check')) {
   const expected = mermaid();

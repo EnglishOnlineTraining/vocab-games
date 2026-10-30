@@ -29,6 +29,27 @@ exercise page freely *outside* the marked blocks. Never edit between
 script that writes the block. Review-page explanations come from
 `data/explanations.json`, not the `EXPLAIN` block.
 
+## Branches don't carry the shared aggregates (since 2026-10-30)
+
+Off `main`, `node scripts/build.js` builds and checks the whole tree as before,
+then resets the aggregate outputs every page touches (the `SHARED` list in
+`scripts/pipeline.js`: sitemaps, `activities.html`, `index.html`, the category
+and review hubs, `themen/`, `data/exercises.json`, the hub pages' entries in
+`data/lastmod.json`, and cards derived for new pages in `data/hub-cards.json`)
+to the branch's merge-base. A PR commits only its own pages and data, so two
+page PRs no longer conflict in generated files. `rebuild-indices.yml` runs
+`build.js --full` on `main` after each merge and commits the aggregates.
+
+- On a branch, the local hub and sitemap don't list a new page. That is expected;
+  open the page itself. `node scripts/build.js --full` shows the full result,
+  but don't commit what it changes.
+- A PR that commits a shared file fails CI's check. Run `node scripts/build.js`
+  and commit: that puts them back.
+- Two PRs editing the same authored lines (a "related" link list, the end of
+  `data/explanations.json`) can still conflict. Keep both sides.
+- After a merge to `main` the live hub lacks the new page for the minute or two
+  the bot takes.
+
 ## Merging main into a branch
 
 Generated files never merge correctly line by line. Each file can merge without
@@ -45,8 +66,9 @@ After every merge of `main` (including GitHub's "Update branch" button):
 `.githooks/pre-push` runs step 3 on every push from this Mac and refuses a
 stale push. It is on once `git config core.hooksPath .githooks` has been run in
 the main clone (all worktrees share it). GitHub's "Update branch" button and
-CI-authored PRs bypass it. `.gitignore` also ignores Finder duplicates
-(`page 2.html`), which `git add -A` used to commit and the pool check rejects.
+CI-authored PRs bypass it. `.gitignore` also ignores the duplicates iCloud makes
+in `~/Documents` (`page 2.html`, `pre-push 2`), which `git add -A` used to
+commit and the pool check rejects.
 
 ## Sitemaps
 
