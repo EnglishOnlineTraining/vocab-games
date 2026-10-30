@@ -20718,6 +20718,130 @@
    }
   }
  },
+ "esl-question-formation": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. ___ does the course start?",
+     "correct": "When",
+     "why": "The answer is a time (\"In September\"), so the question word is \"When\"."
+    },
+    "g2": {
+     "label": "2. ___ is the teacher?",
+     "correct": "Who",
+     "why": "The answer is a person (\"Ms Hart\"), so the question word is \"Who\"."
+    },
+    "g3": {
+     "label": "3. ___ is the school?",
+     "correct": "Where",
+     "why": "The answer is a place (\"Near the main station\"), so the question word is \"Where\"."
+    },
+    "g4": {
+     "label": "4. ___ many students are in each class?",
+     "correct": "How",
+     "why": "\"How many\" asks about a number. \"Twelve\" answers it."
+    },
+    "g5": {
+     "label": "5. ___ book do I need?",
+     "correct": "Which",
+     "why": "\"Which\" asks about a choice from a small group (the blue book or the red one). The answer is \"the blue one\"."
+    },
+    "g6": {
+     "label": "6. ___ do you want to study English?",
+     "correct": "Why",
+     "why": "The answer gives a reason (\"For my new job\"), so the question word is \"Why\"."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. Where ___ ?",
+     "correct": "does Tom work",
+     "why": "After a question word, put the auxiliary \"does\" before the subject. The main verb stays in its base form: \"does Tom work\"."
+    },
+    "g2": {
+     "label": "2. What time ___ ?",
+     "correct": "did the film start",
+     "why": "Past simple questions use \"did\" + subject + base verb. \"Did\" already shows the past, so the verb is \"start\", not \"started\"."
+    },
+    "g3": {
+     "label": "3. Why ___ so late?",
+     "correct": "are you",
+     "why": "\"Be\" is the main verb here, so it moves before the subject: \"are you\". We do not add \"do\" with \"be\"."
+    },
+    "g4": {
+     "label": "4. How long ___ in Berlin?",
+     "correct": "have they lived",
+     "why": "In the present perfect, the auxiliary \"have\" moves before the subject: \"have they lived\"."
+    },
+    "g5": {
+     "label": "5. What ___ for dinner tonight?",
+     "correct": "can we cook",
+     "why": "A modal verb goes before the subject, and the main verb follows it without \"to\": \"can we cook\"."
+    },
+    "g6": {
+     "label": "6. Who ___ to at the party?",
+     "correct": "did she talk",
+     "why": "Past simple questions use \"did\" + subject + base verb: \"did she talk\"."
+    },
+    "g7": {
+     "label": "7. How often ___ to the gym?",
+     "correct": "do you go",
+     "why": "Present simple questions with \"you\" use \"do\" before the subject: \"do you go\"."
+    },
+    "g8": {
+     "label": "8. Excuse me, what time does ___ train to Leeds leave?",
+     "correct": "the",
+     "why": "Recall from the English Articles page: both people mean the one scheduled train, so we use \"the\"."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. Could you tell me where ___ ?",
+     "correct": "the station is",
+     "why": "In a polite embedded question, the word order goes back to a statement: where + subject + verb. No inversion: \"the station is\"."
+    },
+    "g2": {
+     "label": "2. Do you know what time ___ ?",
+     "correct": "the shop opens",
+     "why": "After \"Do you know\", use statement order and no \"does\": \"the shop opens\"."
+    },
+    "g3": {
+     "label": "3. I don't know why ___ so late.",
+     "correct": "he is",
+     "why": "This is a statement, not a direct question, so the subject comes first: \"he is\"."
+    },
+    "g4": {
+     "label": "4. Can you tell me how much ___ ?",
+     "correct": "this costs",
+     "why": "Embedded questions keep statement order and the verb takes its normal -s form: \"this costs\"."
+    },
+    "g5": {
+     "label": "5. Do you know ___ the library is open on Sundays?",
+     "correct": "if",
+     "why": "A yes/no question has no question word, so we use \"if\" (or \"whether\") to embed it."
+    },
+    "g6": {
+     "label": "6. Please tell me who ___ at the conference.",
+     "correct": "you met",
+     "why": "Statement order again: subject + verb. \"Did\" is only needed in direct questions."
+    },
+    "g7": {
+     "label": "7. He wants to know where ___ now.",
+     "correct": "I live",
+     "why": "The embedded question uses statement order: \"I live\". We do not use \"do\"."
+    },
+    "g8": {
+     "label": "8. I wonder whether ___ to the party.",
+     "correct": "she will come",
+     "why": "After \"whether\" the subject comes before the auxiliary: \"she will come\"."
+    }
+   }
+  }
+ },
  "esl-pronouns": {
   "exA": {
    "gaps": {
