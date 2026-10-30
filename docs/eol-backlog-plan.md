@@ -218,6 +218,7 @@ the "which groups exist" review above rather than staying an ungoverned one-off.
   **REOPENED 2026-10-03:** `/wilkommen/` does not redirect any more. It returns 200 as a page of
   its own (title "Willkommen", ~120 words), and both `/wilkommen/` and `/willkommen/` are in the
   Jetpack sitemap. Something was published at the old slug after the rename. See Tier 8 §B.
+  **Resolved 2026-10-28:** it is the noindexed stub 2272, kept on purpose (Tier 8 B6).
 - California – Interactive Exercises — **DONE (2026-08-07), and deliberately NOT a directory
   entry of its own.** `california-exercises.html` is already a card inside `9g-activities.html`
   (Y9 Gymnasium), so listing it separately on WP 1763 double-counted it. The standalone button
@@ -452,7 +453,9 @@ those notes turned out to be wrong (see the 2063–2066 correction above).
 - One site-wide menu (may be moot after T3); delete orphaned block nav menu 416; replace dated
   `pub/ixion` theme. (Menu delete/assign may be MCP-doable — check when we get there.)
   **Theme part DONE:** `pub/ixion` was replaced by the custom EOT Modern theme (Claude-maintained
-  since 2026-09-25). The menu items are unchecked.
+  since 2026-09-25). **Menu DONE (2026-10-29):** the header already used the one classic menu
+  ("claude", `primary` location); unused block nav menu 416 moved to trash via the API (restore:
+  `navigation.update` with status `publish`).
 
 ## Tier 6 — Internal-linking + link-graph audit (2026-08-08) · CC
 Shaun asked for an internal-linking pass across **both** surfaces (WordPress + activities repo).
@@ -519,7 +522,7 @@ awaiting triage.**
   cluster — NOT yet examined", now examined). Generic AI-listicle content from the pre-strategy
   era; 1133 has **zero** internal links of any kind, 1019 links only to 978, none link to 1965
   (the corporate funnel) or to any interactive exercise.
-- **1393 (Business English Vocabulary sets)** links out to **20 third-party Quizlet flashcard
+- [x] **1393 (Business English Vocabulary sets)** — done 29 Oct 2026 (six `be-*` links added, Quizlet kept). Original note: links out to **20 third-party Quizlet flashcard
   sets** via `bit.ly` and links to nothing on the site itself — not the IELTS glossary, not
   `business-activities.html`'s own vocab exercises. Same shape of problem 460 had before T2
   rebuilt it natively.
@@ -908,8 +911,11 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
      discovery and authority problem. Titles matter once pages are indexed.
 
 ### B. WordPress clean-up · CC via MCP, with Shaun's approval per item
-6. **`/wilkommen/` is live again**, as a page separate from `/willkommen/` (see the Tier 3
-   reopen). Find its ID and either draft it or stub it to `/willkommen/`.
+6. **`/wilkommen/` — resolved 2026-10-28: leave as is.** It is page 2272, the deliberate
+   noindexed "this page has moved" stub (one paragraph and a button to `/willkommen/`; nothing
+   unique, but it is the 301 target of `/welcome/about-me/wilkommen/`). Drafting it would break
+   that chain, so it stays until the Phase 2 decision in `gsc-review-2026-10-06.md`. No repo links
+   point at it. Shaun confirmed leaving it.
 7. **Duplicate post:** `/2026/07/31/alle-kostenlosen-englisch-ubungen-auf-einen-blick/` (557
    words) and `/2026/08/24/alle-kostenlosen-englisch-ubungen-auf-einen-blick-2/` (429 words) have
    near-identical titles. Keep one and stub the other (no 301s; plan upgrade deferred).
@@ -1475,9 +1481,16 @@ and Tier 4 above for the full executed record. What's left:
    keep. Left as they are.
 4. **Tier 7 main-site GEO (P3).** Items 1–2 of the recommended scope done 2026-08-22 (`FAQPage`
    schema on `/faq/`, `Person` schema on `/about/`). Item 3: the `/testimonial/*/` pages are
-   confirmed to exist (8, via the sitemap, 2026-10-03); what to do with them is Tier 8 §B. Items 4 (the 5 proposed service landing pages +
-   "8-week plan" Course schema) and 5 (the 1763/1997 CRDT trap, not hit this round) remain open,
-   item 4 specifically as a content decision for Shaun rather than a schema task.
+   confirmed to exist (8, via the sitemap, 2026-10-03); what to do with them is Tier 8 §B. Item 5 (the 1763/1997 CRDT trap, not hit this round) remains open.
+   **Item 4 (the 5 proposed service landing pages + "8-week plan" Course schema) CLOSED 2026-10-28
+   (Shaun): build nothing.** Corporate is not a main focus; `/business-english/` stays as a light funnel.
+   - `/business-english-berlin` → covered by `/business-english/` (1965): live title "Business English
+     Training for Companies in Berlin & Online"; the proposed slug is 404.
+   - `/ielts-preparation-online` → covered by the activities-host IELTS hub (`ielts-activities.html`);
+     IELTS prep is online-only and delivered through the activities, so no WordPress service page.
+   - Other three pages: never named anywhere in the repo (only "etc." in `wordpress-todo.md`); dropped with the rest.
+   - 8-week plan Course schema → no page exists; its predecessor was cut on purpose in the 2026-08-07
+     corporate pivot (Tier 4), and rebuilding it only to hold schema would undo that.
 5. **Tier 8 SEO/GEO review.** Repo work and the tracking fix are done (2026-10-04); #86 (hub
    titles) merged 2026-10-05; the privacy policy is live and the testimonials are noindexed
    (2026-10-05). What's left is listed under "▶ Current status" in Tier 8: WP settings, exercise

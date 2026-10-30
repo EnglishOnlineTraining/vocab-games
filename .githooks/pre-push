@@ -1,0 +1,13 @@
+#!/bin/sh
+# Runs CI's "Check generated files" gate before the push leaves this machine.
+# Enable once per clone: git config core.hooksPath .githooks
+# Skip in an emergency: git push --no-verify
+#
+# ponytail: checks the working tree, not the commits being pushed, so an
+# uncommitted page edit can fail it. Commit or stash first. CI stays the real
+# gate; this only saves a red PR round trip.
+node scripts/build.js --check >/dev/null 2>&1 && exit 0
+echo "pre-push: generated files are stale or the build failed." >&2
+echo "Run: node scripts/build.js, commit what it changes, then push again." >&2
+echo "(Details: node scripts/build.js --check)" >&2
+exit 1
