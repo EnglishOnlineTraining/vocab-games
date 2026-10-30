@@ -32,7 +32,10 @@ jobs:
         run: node scripts/build.js --explain
 
       # Rebuilds, then fails if anything committed differs from what the
-      # generators produce — including a stale docs/build-graph.mmd.
+      # generators produce — including a stale docs/build-graph.mmd. On a PR
+      # (detached HEAD, not main) build.js resets the SHARED aggregates to the
+      # merge-base after its checks, so a PR that commits them fails here:
+      # rebuild-indices.yml writes those on main after the merge.
       - name: Check generated files are up to date
         run: node scripts/build.js --check
 
