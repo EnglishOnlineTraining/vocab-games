@@ -1475,9 +1475,16 @@ and Tier 4 above for the full executed record. What's left:
    keep. Left as they are.
 4. **Tier 7 main-site GEO (P3).** Items 1–2 of the recommended scope done 2026-08-22 (`FAQPage`
    schema on `/faq/`, `Person` schema on `/about/`). Item 3: the `/testimonial/*/` pages are
-   confirmed to exist (8, via the sitemap, 2026-10-03); what to do with them is Tier 8 §B. Items 4 (the 5 proposed service landing pages +
-   "8-week plan" Course schema) and 5 (the 1763/1997 CRDT trap, not hit this round) remain open,
-   item 4 specifically as a content decision for Shaun rather than a schema task.
+   confirmed to exist (8, via the sitemap, 2026-10-03); what to do with them is Tier 8 §B. Item 5 (the 1763/1997 CRDT trap, not hit this round) remains open.
+   **Item 4 (the 5 proposed service landing pages + "8-week plan" Course schema) CLOSED 2026-10-28
+   (Shaun): build nothing.** Corporate is not a main focus; `/business-english/` stays as a light funnel.
+   - `/business-english-berlin` → covered by `/business-english/` (1965): live title "Business English
+     Training for Companies in Berlin & Online"; the proposed slug is 404.
+   - `/ielts-preparation-online` → covered by the activities-host IELTS hub (`ielts-activities.html`);
+     IELTS prep is online-only and delivered through the activities, so no WordPress service page.
+   - Other three pages: never named anywhere in the repo (only "etc." in `wordpress-todo.md`); dropped with the rest.
+   - 8-week plan Course schema → no page exists; its predecessor was cut on purpose in the 2026-08-07
+     corporate pivot (Tier 4), and rebuilding it only to hold schema would undo that.
 5. **Tier 8 SEO/GEO review.** Repo work and the tracking fix are done (2026-10-04); #86 (hub
    titles) merged 2026-10-05; the privacy policy is live and the testimonials are noindexed
    (2026-10-05). What's left is listed under "▶ Current status" in Tier 8: WP settings, exercise
