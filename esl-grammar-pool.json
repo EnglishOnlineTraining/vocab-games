@@ -129,13 +129,12 @@
     {
       "id": "esl-question-formation",
       "tier": 2,
-      "priority": 1,
       "topic": "Question formation, word order & embedded questions",
       "grammar": "Question inversion, embedded questions",
       "cefr": "A1-B2",
       "evidence": "Inversion errors in both Spanish & Chinese learners; #2 on ESL mistakes lists. AI-citation query data (2026-10-23 export): 'wh questions' 5K-10K, 'wh words' 1K-5K, 'question words in english' 500-1K.",
-      "status": "idea",
-      "file": null
+      "status": "built",
+      "file": "esl-question-formation.html"
     },
     {
       "id": "esl-countable-uncountable",
