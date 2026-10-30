@@ -937,6 +937,11 @@ branch, no rule 8/9 page and no VOICE.md decision.
    words, so keep every existing sentence and add the direct answer above it; do not rewrite.
    Per Tier 10.7, hold the roll-out beyond the first two until the 4–6 week AI-answer data is in.
    `themen/` is German by design (the language rule exempts it).
+   **Done 2026-10-30 (PR open, Shaun approves):** all 14 over-45 openers (13 files) now start
+   with a direct answer of 14 to 40 words. Rule 9 respected: no sentence was removed or reworded;
+   each long opener was split into consecutive paragraphs at a sentence boundary, edited in
+   `data/topics.json` (the `themen/` HTML is generated). Post-change check: 0 of 209 openers over
+   45 words. The gate in Tier 10.7 on rolling out beyond the first two still stands for rewrites.
 4. **Em dashes, arrows and stars in body copy · Shaun decides, otherwise skip · effort L if
    done.** Re-verified: em dash is in body text on **all 256** indexable pages (mostly the
    generated "Aufgaben: 3 — A · B" row and cards), arrow characters on 106, star symbols on 4
