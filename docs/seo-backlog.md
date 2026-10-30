@@ -246,7 +246,7 @@ No live WordPress write was made:
   needs Shaun's OK per page.
 - **B7:** keep **2067** (`/2026/07/31/alle-kostenlosen-…/`, 557 words). **2261** (the `-2` copy,
   429 words) also describes the Abitur packs as three task types, when there are four
-  (mediation is missing). Stub it or noindex it.
+  (mediation is missing). **Done 2026-10-29: 2261 set to draft** (Shaun chose "keep original, draft -2"; nothing unique lost; its URL now returns 404).
 - **D15 is bigger than filed.** See the replacement text under D below.
 - **More PRs from the same session** (all merged by 2026-10-05; see "Current status"):
   - **#81:** internal link checker (repo-health 6).
@@ -377,7 +377,7 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
    unique, but it is the 301 target of `/welcome/about-me/wilkommen/`). Drafting it would break
    that chain, so it stays until the Phase 2 decision in `gsc-review-2026-10-06.md`. No repo links
    point at it. Shaun confirmed leaving it.
-7. **Duplicate post:** `/2026/07/31/alle-kostenlosen-englisch-ubungen-auf-einen-blick/` (557
+7. **Duplicate post (done 2026-10-29, 2261 drafted):** `/2026/07/31/alle-kostenlosen-englisch-ubungen-auf-einen-blick/` (557
    words) and `/2026/08/24/alle-kostenlosen-englisch-ubungen-auf-einen-blick-2/` (429 words) have
    near-identical titles. Keep one and stub the other (no 301s; plan upgrade deferred).
 8. **Stub pages are still in the sitemap and indexable.** 365, 1205, 1167, 1238 and 523 were
@@ -385,7 +385,8 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
    per-page noindex, use it. Otherwise accept until the plan upgrade (Tier 5).
 9. **The 8 `/testimonial/*/` pages are thin (130–250 words).** Options: one testimonials page,
    or link them from `/business-english/` (1965). Note that self-serving `Review` markup does not
-   earn star snippets.
+   earn star snippets. **Linking done 2026-10-28:** `/testimonial/` is linked from 1965 and
+   `/about/`; the pages stay noindex, so this is for visitors, not search.
 10. **Title-template bug.** 29 of 82 WP titles are over 65 characters. Many end
     "…English Online Training" with no separator. Page 380 is titled "English Online Training
     English Online Training", which is probably what the open "380 non-breaking-space title" item
@@ -404,6 +405,11 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
       `/blog-posts/` still repeats the homepage description, because Jetpack uses the front-page
       description for the posts page and the page's own meta is ignored. Needs a theme/SEO setting
       Shaun controls, or accept it. The 2016 post (ID 32) is still published; left for Shaun.
+    - **2026-10-28 (CC):** post 32 improved from `docs/blog-drafts/wp-32-present-simple-or-progressive.md`
+      (PR #212). Applied block by block: fixed the "now" example, reworded "German has no separate
+      progressive form", Practise paragraph (kept the 8c exercise link, added the German guide link, kept the ESL
+      link), SEO title and social message set. Not applied: the `gr-present-tenses.html` link (noindex, German
+      interface). Featured image 1517 kept (Shaun, 2026-10-28). Verified live: 200, title tag, new text present.
 
 ### C. Activities repo · CC
 12. **→ Done (verified 2026-10-23).** Exercise JSON-LD has no `datePublished`/`dateModified`.
@@ -934,6 +940,11 @@ branch, no rule 8/9 page and no VOICE.md decision.
    words, so keep every existing sentence and add the direct answer above it; do not rewrite.
    Per Tier 10.7, hold the roll-out beyond the first two until the 4–6 week AI-answer data is in.
    `themen/` is German by design (the language rule exempts it).
+   **Done 2026-10-30 (PR open, Shaun approves):** all 14 over-45 openers (13 files) now start
+   with a direct answer of 14 to 40 words. Rule 9 respected: no sentence was removed or reworded;
+   each long opener was split into consecutive paragraphs at a sentence boundary, edited in
+   `data/topics.json` (the `themen/` HTML is generated). Post-change check: 0 of 209 openers over
+   45 words. The gate in Tier 10.7 on rolling out beyond the first two still stands for rewrites.
 4. **Em dashes, arrows and stars in body copy · Shaun decides, otherwise skip · effort L if
    done.** Re-verified: em dash is in body text on **all 256** indexable pages (mostly the
    generated "Aufgaben: 3 — A · B" row and cards), arrow characters on 106, star symbols on 4
@@ -1056,3 +1067,36 @@ on our sites, so Tier 12.2 does not apply; Shaun's time does.
 - **LinkedIn for school, ESL or IELTS content:** students and parents aren't there (same reason
   as Reddit in Tier 12).
 - **Other repo or code changes:** only item 2's `sameAs` line is needed.
+
+## Tier 17 — Issue #73 Search Console follow-ups (2026-10-28) · Shaun + CC
+Source: the Search Console list in GitHub issue #73 (2026-10-12), last 28 days to that date. Figures
+are direction only. Items already tracked elsewhere are mapped in that issue's comment and not
+repeated here.
+
+1. **301 the `/welcome/` copy of the Business English Skills article · CC via MCP, Shaun OK per item.**
+   `/welcome/essential-business-english-skills-to-acquire-today/` serves alongside
+   `/essential-business-english-skills-to-acquire-today/` (WP 1019, the same duplicate pattern as
+   Tier 8 B7). Redirect the `/welcome/` copy and trim the duplicated paragraph in the body. Issue #73
+   also drafted a title and meta rewrite for this page; neither is recorded here as approved or applied.
+   `docs/eol-backlog-plan.md` lists 1019 under "Why-learn-BE cluster, NOT yet examined"; this is the
+   decision entry.
+2. **Business-email pairs beyond 1167 · extends Tier 9.2 · Shaun picks the first, CC drafts.**
+   "Good vs bad" pages are the format that is gaining (+60% clicks; "good email vs bad email examples"
+   at 47 impressions). Next pages, one at a time (rule 2): meeting requests, follow-up emails,
+   complaints, LinkedIn messages, out-of-office replies. Each pair must be a real example, not a template.
+3. **Industry-vocabulary candidates from issue #73 · extends Tier 12.10 · Shaun decides.** Issue #73
+   proposed HR, project management, accounting/finance, hospitality and IT/UX. Tier 12.10 only builds
+   industries with real training material, so Shaun confirms which of these qualify. HR already has a
+   Quizlet set that could become its own page.
+4. **Scale up the German Abitur and MSA pages · Shaun decides volume, CC drafts.** "Abitur Übungen"
+   rose 400% (10 clicks) in the same period, and issue #73 calls Abitur the strongest GEO asset. Plan
+   more Abitur packs and MSA pages, starting from the queries that already land. Check volumes in
+   Keyword Planner first (Ahrefs connector is broken).
+5. **Internal links into the Business English money page · CC.** Link the business verbs page (965),
+   the email pages (1061, 1167), the skills article and the industry vocabulary pages to each other,
+   using descriptive anchors, and each into `/business-english/` (1965). Keep to Tier 12.1: an
+   informational page links to one money page, not several.
+6. **Re-check the "ielts" query after the IELTS vocabulary hub article ships · Shaun decides the article.**
+   "ielts" had 135 impressions and 1 click on the same pull. Issue #73 planned a main-domain IELTS hub
+   article. Once it is live, compare the CTR for "ielts" in Search Console at the Tier 9.7 re-measure
+   (2026-11-06).
