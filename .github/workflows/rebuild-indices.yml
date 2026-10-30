@@ -39,10 +39,17 @@ jobs:
       # The tip of main, not the commit that triggered this run: when two merges
       # land close together the second run is queued behind the first, and
       # building its own (older) commit would make its push non-fast-forward.
+      #
+      # ADMIN_PAT: main's ruleset requires a passing "check" on every commit and
+      # GITHUB_TOKEN can't be put on its bypass list; a repository admin is on
+      # it. Fine-grained PAT, this repo only, Contents: read and write. It
+      # expires: when the push step fails with GH013 again, renew the secret.
+      # Without the secret this falls back to GITHUB_TOKEN and the push fails.
       - uses: actions/checkout@v4
         with:
           ref: main
           fetch-depth: 0
+          token: ${{ secrets.ADMIN_PAT || github.token }}
 
       - uses: actions/setup-node@v4
         with:
