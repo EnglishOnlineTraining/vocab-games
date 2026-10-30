@@ -130,6 +130,33 @@ Pages that work, but leak link equity outward or bypass the corporate funnel. Fu
   wiring: a consent field (unticked, wording from privacy policy §9, double opt-in) plus a
   middleman such as Make, or a decision to use a MailerLite form instead. Also open: 1965 posts to
   `englishonlinetraining@pm.me`, while CLAUDE.md names `learn@` as the public address.
+  **Options checked 2026-10-28 (nothing changed on 1965; its form block still has `to` = the old pm.me address).**
+  All three need Shaun's call, so no route was built:
+  1. **Make middleman** (Jetpack form → webhook → MailerLite add-to-group). Needs a new Make scenario and a
+     consent field with wording from privacy policy §9. Make is already used, but this is a Make change.
+  2. **Swap the Jetpack form for a MailerLite form.** Gives double opt-in and the group for free, but MailerLite
+     forms do not email the enquiry, so the message would have to go through an automation or the enquiry
+     would no longer reach `learn@`. Changes how enquiries are delivered.
+  3. **Separate opt-in beside the form** (a `signup.js`-style box posting to a MailerLite form). No new service
+     or Make change, but it is a second step for the visitor, so it would not tag the enquirers who skip it.
+  **2026-10-28: Shaun chose option 3.** Make cannot do option 1 (Jetpack has no webhook, Make has no MailerLite
+  or enquiry-inbox connection). Option 3 needs a MailerLite form attached to the "Corporate enquiries" group
+  (none exists yet; the form list has only the EOL Task Capture / General / Eltern forms). Creating it was blocked
+  by the permission check, so page 1965 is unchanged. Next: create the form (double opt-in, group 202123515747370132),
+  then add a `signup.js` box (`data-lang="en"`, new form ID added to its header table) plus `to` = learn@ in one edit.
+  **2026-10-29: DONE.** Page 1965 now has the form's `to` = learn@englishonline.training and, right after the form,
+  an optional opt-in box (form `202582978405074821`, via `signup.js`). Verified live; the form kept all five fields
+  and its button. Test signup landed as unconfirmed in the group (double opt-in works) and was deleted. The
+  "Prefer email?" line still shows the pm.me address. Enquiries are NOT tagged automatically: only visitors who
+  also use the opt-in box join the group.
+  **2026-10-28 later:** the MailerLite form "EOL Task Capture — Corporate enquiries" now exists (id
+  `202582978405074821`, double opt-in, group "Corporate enquiries"; no subscribers). The 1965 write (form `to` =
+  learn@ plus a core/html block after the form: `<div class="eol-signup" data-ml-form="202582978405074821"
+  data-lang="en"></div><script src="https://activities.englishonline.training/signup.js" defer></script>`)
+  was blocked by the permission check, so page 1965 is unchanged. The "Prefer email?" line under the form
+  still shows the pm.me address.
+  Also approved but not yet done: set the form's `to` to `learn@englishonline.training`, together with whichever
+  route is chosen. Page 1965 was modified 2026-10-28 14:32, so re-read it before any edit.
 - [x] **`/university-english/` contact form still sent to `pm.me`** — done 2026-10-28 (page **1996**, block 19, `jetpack/contact-form`). Its `to` is now `learn@englishonline.training`. Changed with `page-sections.replace` on that one block; a re-fetch with `context: "edit"` showed the form still a dynamic block with its four inner blocks (name, email, message, button) and every other block's hash unchanged. Subject line unchanged. Page 1965's form (above) is a separate item and still open.
 - **Homepage hero button copy** — the "Let's start a conversation" button (fixed 2026-08-08 to point
   at a MailerLite hosted form instead of a stray Google Form) still has placeholder copy on both the
