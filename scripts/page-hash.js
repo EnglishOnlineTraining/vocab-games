@@ -60,7 +60,7 @@ const today = () => new Date().toISOString().slice(0, 10);
  */
 function datesFor(prev, hash, now) {
   now = now || today();
-  if (!prev) return { d: now, p: now, h: hash };
+  if (!prev) return { d: now, h: hash, p: now }; // same key order as below, or the next build reorders it
   const unchanged = prev.h === hash || !String(prev.h).startsWith(PREFIX);
   const e = { d: unchanged ? prev.d : now, h: hash };
   if (prev.p) e.p = prev.p;

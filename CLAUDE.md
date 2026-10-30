@@ -133,9 +133,10 @@ Each has cost real time or broken live pages. Full detail: `docs/claude-referenc
   message its own element id.
 - **Six live `uni-*` pages submit to a personal Proton address, not the canonical teacher email.**
   Open discrepancy — don't "fix" it without asking.
-- **Merging `main` into a branch leaves generated files stale.** Sitemaps and other build output
-  merge line by line into a set that disagrees, and CI's check fails. After any merge (including
-  "Update branch"), run `node scripts/build.js` and commit. Details: `build-and-sitemaps.md`.
+- **On a branch, `build.js` leaves the shared aggregates (sitemaps, hubs, `exercises.json`) at the
+  merge-base; `main`'s bot rebuilds them after the merge.** So a new page is missing from the local
+  hub: that is expected, don't "fix" it or commit `--full` output. After merging `main` into a
+  branch, still run `node scripts/build.js` and commit. Details: `build-and-sitemaps.md`.
 - **The Make webhook payload arrives as ONE field called `payload`.** Read "The webhook payload
   arrives as ONE field…" in `submission-routing.md` before touching either Make scenario; getting it
   wrong silently wrote blank rows and dropped most submissions from June to 2026-09-04.
@@ -191,9 +192,11 @@ sheet** (Shaun's names; both in `submission-routing.md`; `verify-exercise.js` fa
 5. **Fill in `<meta name="description">` and `<link rel="canonical">`** (placeholders in the template; the
    canonical must match the filename exactly).
 6. **Run `node scripts/build.js`** before committing. It regenerates `data/exercises.json`, the filterable
-   index, hubs, `<head>` and `sitemap.xml`; the order lives in `scripts/pipeline.js`. Also run
+   index, hubs, `<head>` and `sitemap.xml`; the order lives in `scripts/pipeline.js`. On a branch the
+   index, hubs and sitemaps are checked but not kept: `main`'s bot writes them after the merge. Also run
    `node scripts/verify-exercise.js <file>`.
-7. **Update WordPress page 1763** through the API only, and spot-check its "(N exercises)" counts.
+7. **Update WordPress page 1763** through the API only, once the page is on `main` (its counts come
+   from `data/wordpress-1763.json`, which the bot writes then), and spot-check its "(N exercises)" counts.
 8. **Commit and push.** `main` is what GitHub Pages serves. Never put student data in the commit.
 
 ---

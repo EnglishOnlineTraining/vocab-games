@@ -19,6 +19,7 @@ on:
       - 'data/noindex.json'        # feeds build-head (robots meta) + sitemap
       - 'data/explanations.json'   # feeds build-review-pages
       - 'data/quizzes.json'        # feeds build-quizzes
+      - 'data/hub-cards.json'      # feeds build-category-hubs
       - 'scripts/**.js'
       - 'topic-pool.json'
       - 'exercise.js'
@@ -35,8 +36,12 @@ jobs:
   rebuild:
     runs-on: ubuntu-latest
     steps:
+      # The tip of main, not the commit that triggered this run: when two merges
+      # land close together the second run is queued behind the first, and
+      # building its own (older) commit would make its push non-fast-forward.
       - uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
 
       - uses: actions/setup-node@v4
@@ -46,14 +51,16 @@ jobs:
       # No --check here, ever. This job's purpose is to regenerate and push, so
       # it must not fail on a dirty tree — a dirty tree is the case it exists to
       # fix. --check belongs on the PR gate (check-generated.yml).
+      # --full: PR branches leave the SHARED aggregates (scripts/pipeline.js) at
+      # their merge-base, so this job is now the only thing that writes them.
       - name: Run the build graph
-        run: node scripts/build.js
+        run: node scripts/build.js --full
 
       - name: Commit regenerated files if changed
         run: |
           git config user.name "eol-index-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/exercises.json sitemap.xml 'sitemap-*.xml' robots.txt themen/ docs/build-graph.mmd '*.html'
+          git add -A
           if git diff --cached --quiet; then
             echo "Generated files already up to date — nothing to commit."
           else
