@@ -598,6 +598,21 @@
       },
       {
         "heading": {
+          "text": "More practice",
+          "id": "unit-more-practice"
+        },
+        "cards": [
+          {
+            "href": "9c-halloween.html",
+            "icon": "🎃",
+            "title": "Halloween: From Turnips to Jack-o'-Lanterns",
+            "meta": "reading, vocabulary, simple past and present perfect, instant feedback, creative writing and a printable PDF.",
+            "tag": "Reading & Vocabulary"
+          }
+        ]
+      },
+      {
+        "heading": {
           "text": "Revision",
           "id": "unit-revision"
         },
@@ -1643,6 +1658,14 @@
             "icon": "📰",
             "title": "Articles — a, an, the &amp; zero article",
             "meta": "When to use <em>a/an</em>, <em>the</em> or no article — the single most common ESL error across all levels (A1–C1). Reading, gap-fill and free writing.",
+            "startLabel": "Start exercise →",
+            "extraLinks": []
+          },
+          {
+            "href": "esl-question-formation.html",
+            "icon": "❓",
+            "title": "Wh-Questions — question words, word order &amp; embedded questions",
+            "meta": "Choose the right wh-word (<em>what, where, when, who, why, how</em>), put questions in the correct word order and ask polite embedded questions (<em>Could you tell me where …?</em>). A1–B2. Reading, gap-fill and free writing.",
             "startLabel": "Start exercise →",
             "extraLinks": []
           },
