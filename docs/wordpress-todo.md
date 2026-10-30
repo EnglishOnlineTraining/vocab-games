@@ -70,6 +70,9 @@ in PRs #25 and #26.
   P3.3.
 - **Link the 10 orphaned `/testimonial/*/` pages into navigation or a relevant hub page.** Found via
   the Tier 6 audit with zero inbound links from anywhere on the site.
+  **Done 2026-10-28:** `/testimonial/` (which lists all the pages) is now linked from
+  `/business-english/` (1965, "Read what learners say" under the client logos) and `/about/`
+  (2224, under "Corporate clients trained"). Menus untouched.
 
 **Flag to Shaun, don't build blindly** (both from the original backlog's P3.1/P3.2 — checked against
 the live site and found to not match it):
@@ -127,6 +130,7 @@ Pages that work, but leak link equity outward or bypass the corporate funnel. Fu
   wiring: a consent field (unticked, wording from privacy policy §9, double opt-in) plus a
   middleman such as Make, or a decision to use a MailerLite form instead. Also open: 1965 posts to
   `englishonlinetraining@pm.me`, while CLAUDE.md names `learn@` as the public address.
+- [x] **`/university-english/` contact form still sent to `pm.me`** — done 2026-10-28 (page **1996**, block 19, `jetpack/contact-form`). Its `to` is now `learn@englishonline.training`. Changed with `page-sections.replace` on that one block; a re-fetch with `context: "edit"` showed the form still a dynamic block with its four inner blocks (name, email, message, button) and every other block's hash unchanged. Subject line unchanged. Page 1965's form (above) is a separate item and still open.
 - **Homepage hero button copy** — the "Let's start a conversation" button (fixed 2026-08-08 to point
   at a MailerLite hosted form instead of a stray Google Form) still has placeholder copy on both the
   button label and/or the MailerLite hosted-page itself. Needs Shaun's real copy before it's genuinely
