@@ -104,14 +104,16 @@ for (const status of [500, 200]) {
     });
 
     await expect.poll(() => mock.requests.length).toBe(1);
-    const draft = await page.evaluate(() => localStorage.getItem(STORE_KEY));
+    // Read the draft only after the page has reacted: the request is counted when it is sent,
+    // before the response handler clears or keeps the draft.
     if (status === 500) {
       await expect(page.locator('#submitMessage')).toContainText('Sending failed');
+      const draft = await page.evaluate(() => localStorage.getItem(STORE_KEY));
       expect(JSON.parse(draft).writing).toBe('Keep this draft.');
       await expect(page.locator('#nextBtn')).toBeEnabled();
     } else {
       await expect(page.locator('#submitMessage')).toContainText('Your answers have been sent');
-      expect(draft).toBeNull();
+      expect(await page.evaluate(() => localStorage.getItem(STORE_KEY))).toBeNull();
     }
   });
 

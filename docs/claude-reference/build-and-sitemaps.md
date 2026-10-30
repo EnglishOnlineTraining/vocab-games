@@ -42,6 +42,12 @@ After every merge of `main` (including GitHub's "Update branch" button):
 2. Run `node scripts/build.js` and commit what it changes.
 3. Run `node scripts/build.js --check` before relying on CI.
 
+`.githooks/pre-push` runs step 3 on every push from this Mac and refuses a
+stale push. It is on once `git config core.hooksPath .githooks` has been run in
+the main clone (all worktrees share it). GitHub's "Update branch" button and
+CI-authored PRs bypass it. `.gitignore` also ignores Finder duplicates
+(`page 2.html`), which `git add -A` used to commit and the pool check rejects.
+
 ## Sitemaps
 
 `scripts/build-topic-pages.js` writes a flat `sitemap.xml`, `scripts/build-lastmod.js`

@@ -25,6 +25,7 @@
  *   lead-teachers-three-tasks.html       194481686730245820   EOL – Teachers
  *   it-activities.html, it-*.html        201429308373206244   EOL – IT English (monthly drip)
  *   lead-story-structures.html           200478242193278763   General
+ *   WP /business-english/ (page 1965)    202582978405074821   Corporate enquiries (opt-in box beside the enquiry form)
  *
  * The endpoint is the one MailerLite's own embed code posts to. It is not part
  * of their documented API, so if signups stop, check it here first.

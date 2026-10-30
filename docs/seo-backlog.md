@@ -373,22 +373,36 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
      discovery and authority problem. Titles matter once pages are indexed.
 
 ### B. WordPress clean-up · CC via MCP, with Shaun's approval per item
-6. **`/wilkommen/` is live again**, as a page separate from `/willkommen/` (see the Tier 3
-   reopen). Find its ID and either draft it or stub it to `/willkommen/`.
+6. **`/wilkommen/` — resolved 2026-10-28: leave as is.** It is page 2272, the deliberate
+   noindexed "this page has moved" stub (one paragraph and a button to `/willkommen/`; nothing
+   unique, but it is the 301 target of `/welcome/about-me/wilkommen/`). Drafting it would break
+   that chain, so it stays until the Phase 2 decision in `gsc-review-2026-10-06.md`. No repo links
+   point at it. Shaun confirmed leaving it.
 7. **Duplicate post (done 2026-10-29, 2261 drafted):** `/2026/07/31/alle-kostenlosen-englisch-ubungen-auf-einen-blick/` (557
    words) and `/2026/08/24/alle-kostenlosen-englisch-ubungen-auf-einen-blick-2/` (429 words) have
    near-identical titles. Keep one and stub the other (no 301s; plan upgrade deferred).
-8. **Stub pages are still in the sitemap and indexable.** 365, 1205, 1167, 1238 and 523 were
-   stubbed by design (Tier 3.5/4). Each is now a thin page Google can index. If the plan allows a
-   per-page noindex, use it. Otherwise accept until the plan upgrade (Tier 5).
+8. **Closed 2026-10-29 (CC, verified live): no indexable stubs remain.** Checked every one of
+   the 78 URLs in `sitemap-1.xml` (curl, `<meta name="robots">`, rough main-text word count).
+   None carries `noindex`, and none is under 150 words apart from `/impressum/` (111 words, a
+   legal page that must stay). The stubs are all noindexed (`jetpack_seo_noindex`) and absent
+   from the sitemap: 365, 523, 1238 (posts), 1205 (`/blog-posts-page/`), 2272 (`/wilkommen/`).
+   **1167 is not a stub:** it is `/good-vs-bad-when-writing-emails-in-english/` (774 words),
+   indexable, and is in the sitemap. Its noindex was reversed (see Tier 9).
+   **Found while checking (not a stub; not in this item):** `/book-a-lesson/` and
+   `/california-interactive-exercises/` are listed in `sitemap-1.xml` but return HTTP 404
+   ("Page not found"). Fix in WordPress (Shaun decides: remove from the sitemap or restore).
 9. **The 8 `/testimonial/*/` pages are thin (130–250 words).** Options: one testimonials page,
    or link them from `/business-english/` (1965). Note that self-serving `Review` markup does not
    earn star snippets. **Linking done 2026-10-28:** `/testimonial/` is linked from 1965 and
    `/about/`; the pages stay noindex, so this is for visitors, not search.
-10. **Title-template bug.** 29 of 82 WP titles are over 65 characters. Many end
-    "…English Online Training" with no separator. Page 380 is titled "English Online Training
-    English Online Training", which is probably what the open "380 non-breaking-space title" item
-    is really about. Fix the Jetpack SEO title format (separator + short brand).
+10. **Title-template: length fixed, brand suffix still open (measured 2026-10-29).** Every
+    rendered `<title>` in `sitemap-1.xml` (78 URLs, curl) is 65 characters or fewer; the longest
+    is 65 (`/2023/05/09/english-for-commercial-real-estate/`). The old "29 of 82 over 65" is gone.
+    **Still open:** 56 of 78 titles lack the `| English Online Training` suffix. 22 have it.
+    3 end with `– Improve your English skills`. 53 have neither: most are the bare post or
+    page title, e.g. `/why-learn-with-english-online-training/` (39 characters, no suffix) and
+    the German `/willkommen/` pages. Which pattern to use is Shaun's decision (A5 and the
+    "Waiting on Shaun" list above).
 11. **Small fixes:**
     - More than one `<h1>` on 8 pages: `/privacy-policy/` (8), `/vocabulary-games/`,
       `/english-for-students/`, `/university-english/`, `/it-english/`,
@@ -943,13 +957,14 @@ branch, no rule 8/9 page and no VOICE.md decision.
    each long opener was split into consecutive paragraphs at a sentence boundary, edited in
    `data/topics.json` (the `themen/` HTML is generated). Post-change check: 0 of 209 openers over
    45 words. The gate in Tier 10.7 on rolling out beyond the first two still stands for rewrites.
-4. **Em dashes, arrows and stars in body copy · Shaun decides, otherwise skip · effort L if
-   done.** Re-verified: em dash is in body text on **all 256** indexable pages (mostly the
+4. **Em dashes, arrows and stars in body copy · done for stars, dashes and arrows skipped by design.**
+   Stars: the 4 pages are fixed (the `⭐` and `★` glyphs became "(4-star)", "Note:" and "🏢"
+   icons); dashes and arrows stay as they are. Re-verified: em dash is in body text on **all 256** indexable pages (mostly the
    generated "Aufgaben: 3 — A · B" row and cards), arrow characters on 106, star symbols on 4
    (`9c-melbourne-job-application`, `be-company-culture`, `business-activities`,
    `california-exercises`). `VOICE.md` has no rule on them, so it is a style call with no
-   retrieval evidence (the checklist source is a vendor blog). Recommendation: skip the dashes and
-   arrows; the 4 star pages are cheap to fix on a branch if Shaun wants them gone.
+   retrieval evidence (the checklist source is a vendor blog). Skipped by design: the dashes and
+   arrows.
 5. **Stale `Speakable` lines in this file · already done, close.** Tier 7's intro and item 2 now
    say `Speakable` was removed, and item 2 records the `/about/` node removed 2026-10-23
    (page 2224). Nothing left to do; do not re-add `Speakable`.
@@ -1006,6 +1021,11 @@ relative clauses* → `themen/relativsaetze`; *present perfect continuous* → `
      to `esl-question-formation`; money page `/business-english/`.
    - Parents (DE): linking words for the Abitur. Links to `themen/linking-words`; money page an
      Abitur Payhip pack.
+     **Draft saved 2026-10-29: WordPress post 2765** (scheduled for 29 Nov 2026, 10:54, per item 7:
+     it should go live after `esl-pronouns`). Pixar Story Spine; links `themen/linking-words` and the
+     Payhip Kommentar-Training (`payhip.com/b/wXjUl`). Text: `docs/blog-drafts/wp-parents-abitur-linking-words.html`.
+     Fact-checked against the Berlin-Brandenburg 2025 Deskriptoren (60 % sprachlich incl. Textaufbau/Kohäsion,
+     40 % inhaltlich). Featured image (media 2763) approved by Shaun.
    - Teachers (EN): why German speakers say *Play you football?* Links to
      `esl-present-simple-continuous`; money page an Eduki listing.
 7. **Schedule (7 new indexable pages, 2 a week) · Shaun confirms.** Week 1:
@@ -1039,7 +1059,7 @@ on our sites, so Tier 12.2 does not apply; Shaun's time does.
    questions, logged out: e.g. "Business English training for German teams", "how to choose a
    Business English trainer", "Firmenschulung Englisch Berlin". Log which sources each cites.
    Add the queries to the Tier 12.15 log. If LinkedIn is cited, go on; if not, stop at this item.
-2. **Personal profile, not a company page · Shaun.** Headline names the expertise (e.g.
+2. **Personal profile, not a company page · Shaun.** *(CC part: profile URL added to Person `sameAs` 2026-10-28. `/business-english/` already links to the profile in the trainer bio and Key facts.)* Headline names the expertise (e.g.
    "Business English trainer for German teams · Berlin"); profile links to `/business-english/`.
    Public contact email only (rule 3). **CC:** once Shaun gives the profile URL, add it to the
    Person `sameAs` in `scripts/schema.js` (it lists only the certificates page and Impressum; today

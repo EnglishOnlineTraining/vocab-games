@@ -9,7 +9,7 @@ Priorities updated with Bing data for 10–17 Oct 2026 (7-day impressions in bra
 - [x] A `themen/passiv.html` (46, 0 clicks): "Passiv Englisch: Übungen mit allen Zeiten & Erklärung"
 - [x] M `/good-vs-bad-when-writing-emails-in-english/` (30, 0 clicks): "Good vs Bad Email Examples: 3 Work Emails Side by Side"
 - [x] M `/2023/11/01/breaking-the-mould-…/` (19, 0 clicks): "Public Speaking Alternatives: 27 Ways to Present" (title + description live 17 Oct)
-- [ ] Same post: use "public speaking" in the intro and one H2 (content edit, not done)
+- [x] Same post: use "public speaking" in the intro and one H2 (live 29 Oct; the post had no H2, so a new one was added: "27 public speaking formats to try instead of slides")
 - [x] M `/2026/07/09/abitur-englisch-so-sehen-die-interaktiven-ubungspakete-aus-…/` (13, 0 clicks): "Abitur Englisch Beispielaufgaben: So sehen die Übungen aus", and link it to and from `/2026/08/17/abitur-englisch-ubungen-kostenlos-…/`
 - [ ] Push the vocab-games branch, then submit every changed URL in Bing Webmaster (URL Submission) or turn on IndexNow
 
@@ -47,3 +47,9 @@ Priorities updated with Bing data for 10–17 Oct 2026 (7-day impressions in bra
 ## 7. Measure
 - [ ] Every Friday: export the 7-day keyword and page reports, and track the pages in groups 1 and 2
 - [ ] Around 21 Nov 2026: compare CTR per page against this week's baseline (simple past 0.8%, linking words 0.9%, passive 0%, good vs bad email 0%)
+
+## Blog queue notes
+- 2026-10-28: scheduled two blog posts (status `future`, site time 10:54).
+  - WP 2710 "A Halloween English Lesson That Goes Beyond Word Lists", 29 Oct (time-bound to 31 Oct). Links to `9c-halloween.html`; lesson claims fact-checked against the page and its worksheet PDF. Category Teacher Notes.
+  - WP 2703 "Property Management in English: 12 Words That Do Most of the Work", 26 Nov (next free slot after post 560 on 23 Nov).
+  - The site clock is a fixed UTC+2, so after the clocks change 10:54 on the site is 09:54 in Berlin. The existing queue has the same offset.
