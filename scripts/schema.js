@@ -100,6 +100,7 @@ function personNode() {
     sameAs: [
       WP + '/shaun-trezise-certificates-and-training-programmes-completed/',
       WP + '/impressum/',
+      'https://www.linkedin.com/in/shaunptrezise',
     ],
   };
 }

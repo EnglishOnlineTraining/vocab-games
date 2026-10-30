@@ -1042,7 +1042,7 @@ on our sites, so Tier 12.2 does not apply; Shaun's time does.
    questions, logged out: e.g. "Business English training for German teams", "how to choose a
    Business English trainer", "Firmenschulung Englisch Berlin". Log which sources each cites.
    Add the queries to the Tier 12.15 log. If LinkedIn is cited, go on; if not, stop at this item.
-2. **Personal profile, not a company page · Shaun.** Headline names the expertise (e.g.
+2. **Personal profile, not a company page · Shaun.** *(CC part: profile URL added to Person `sameAs` 2026-10-28. `/business-english/` already links to the profile in the trainer bio and Key facts.)* Headline names the expertise (e.g.
    "Business English trainer for German teams · Berlin"); profile links to `/business-english/`.
    Public contact email only (rule 3). **CC:** once Shaun gives the profile URL, add it to the
    Person `sameAs` in `scripts/schema.js` (it lists only the certificates page and Impressum; today
