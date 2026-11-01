@@ -1019,6 +1019,9 @@ relative clauses* → `themen/relativsaetze`; *present perfect continuous* → `
    each; each links to one topic page and one money page (12.1).
    - Learners (EN): wh-question word order — *Where you are going?* → *Where are you going?* Links
      to `esl-question-formation`; money page `/business-english/`.
+     **Draft saved 2026-11-01: WordPress post 2799** (scheduled for 2 Dec 2026, 10:54; image approved, media 2797;
+     exercise screenshot media 2801 added; scheduled `future`, 10:54 Berlin). Before-After-Bridge; links `esl-question-formation` and an in-text
+     link to `/business-english/`. Text: `docs/blog-drafts/wp-wh-question-word-order.html`.
    - Parents (DE): linking words for the Abitur. Links to `themen/linking-words`; money page an
      Abitur Payhip pack.
      **Draft saved 2026-10-29: WordPress post 2765** (scheduled for 29 Nov 2026, 10:54, per item 7:
@@ -1027,7 +1030,11 @@ relative clauses* → `themen/relativsaetze`; *present perfect continuous* → `
      Fact-checked against the Berlin-Brandenburg 2025 Deskriptoren (60 % sprachlich incl. Textaufbau/Kohäsion,
      40 % inhaltlich). Featured image (media 2763) approved by Shaun.
    - Teachers (EN): why German speakers say *Play you football?* Links to
-     `esl-present-simple-continuous`; money page an Eduki listing.
+     `esl-present-simple-continuous`; money page the Payhip store.
+     **Draft saved 2026-11-01: WordPress post 2800** (scheduled for 5 Dec 2026, 10:54; image approved, media 2798;
+     exercise screenshot media 2802 added; scheduled `future`, 10:54 Berlin). And-But-Therefore; links `esl-present-simple-continuous` and
+     `payhip.com/EnglishOnlineTraining`. Fact-checked: the German *am*-progressive is labelled colloquial by Duden.
+     Text: `docs/blog-drafts/wp-german-speakers-play-you-football.html`.
 7. **Schedule (7 new indexable pages, 2 a week) · Shaun confirms.** Week 1:
    `esl-question-formation` + learner post. Week 2: `esl-pronouns` + parents post. Week 3:
    `esl-present-simple-continuous` + teachers post. Week 4: `esl-countable-uncountable`. Each
@@ -1155,51 +1162,54 @@ plan", so the Ahrefs URL lists were not available; the live pages were crawled i
    sitemaps on purpose — eight scripts read it); "Changed pages not submitted to IndexNow" (counts
    only Ahrefs' own IndexNow add-on; the CI job submits).
 
-## Tier 19 — GEO re-audit gaps (2026-11-01) · Shaun + CC
-Source: the live GEO re-check of both hosts dated 2026-11-01 (20 pages), in second-brain
-`pages/mem-projects-geo-for-eot-audit-2026-11-01.md` (PR #4, section "New gaps"). Gaps 1–7 are new.
-Gap 8 is the open main-site 403 for crawler user agents, already in Tier 8 A1; Shaun decided the
-fix on 2026-11-01. Gaps 3, 4 and 8 point at items already tracked, so each only adds the part that
-is new. Items on the WordPress site (3, 5, 7, 8) need Shaun: no live WordPress edit from the repo
-(rule 7). Rule 8 applies to 5: list what the old page has before the rewrite.
+## Tier 19 — Search Console audit: activities indexing drop (2026-11-01) · Shaun + CC
 
-1. **`themen/` ledes show the wrong exercise count · CC · effort S.** The lede says "0 kostenlose
-   Übungen" on `artikel` and `praepositionen`, while the page's meta description says 24 and 30.
-   8 more disagree, e.g. `passiv` lede 17 vs description 30, `gerund-infinitiv` 9 vs 30. Fix: the lede
-   and the description use one count (`scripts/build-topic-pages.js:299` reads
-   `exercisesForTopic(slug).length`), and the build fails on a count of 0. Evidence:
-   `https://activities.englishonline.training/themen/artikel.html`. The lede is German by design.
-2. **Four ESL pages lead with a learning objective, not an answer · CC · effort S.** The Quick
-   Overview of `esl-pronouns`, `esl-question-formation`, `esl-present-simple-continuous` and
-   `esl-countable-uncountable` opens "By the end of this exercise, you can…". Fix: add one answer
-   sentence above it in each page (the rule, in English). Evidence:
-   `https://activities.englishonline.training/esl-pronouns.html`.
-3. **Homepage title promises "Teams", the H1 does not · Shaun · effort S.** Title "EnglishOnline.training:
-   English for Schools and Teams"; H1 "Free English practice for German schools." Fix: add "and teams"
-   to the H1 subline, or drop it from the title. The `WebSite` and Organization name and description
-   mismatch is already tracked in Tier 8 A2 and B2; do not re-open it here. Evidence:
-   `https://englishonline.training/`.
-4. **LinkedIn `sameAs` on the WordPress Organization carries `?isSelfProfile=true` · Shaun · effort XS.**
-   Fix: set it to `https://www.linkedin.com/in/shaunptrezise` in the Jetpack business details (the
-   Tier 8 B2 setting). `scripts/schema.js` already has the clean URL (Tier 16 item 2). Evidence: the
-   homepage JSON-LD `sameAs` on `https://englishonline.training/`.
-5. **`/english-for-students/` opens with three questions, has one star glyph, and has no FAQ ·
-   Shaun · effort M.** `/fuer-eltern/` has the answer-first opener but no FAQ block. Fix: replace the
-   opener with one answer sentence (who, what, how much); remove the star; add a 4 to 5 question FAQ
-   with `FAQPage` markup on both pages. Rule 8: list what the old page has (the links, PDFs and CTAs)
-   before the edit. Evidence: `https://englishonline.training/english-for-students/`.
-6. **No `FAQPage` on `abitur-activities.html`, `uni-activities.html` or the four ESL pages · CC ·
-   effort M.** `msa-`, `business-`, `ielts-` and `it-activities` already have one. Fix: a 4 to 5
-   question FAQ block with matching JSON-LD on the Abitur and university hubs and on
-   `esl-grammar-activities.html`; per-exercise FAQs on the ESL pages are optional. Language: the Abitur
-   hub may use German; `uni-activities.html` is English only, with no German. Evidence:
-   `https://activities.englishonline.training/abitur-activities.html` (no `FAQPage`).
-7. **Empty `alt` on the content image of `/common-questions-about-learning-english/` · Shaun · effort XS.**
-   The image shows a student writing an email and has `alt=""`. Fix: a plain alt text for it. Optional
-   for Shaun to decide: a lead-in sentence that answers the page title, since the page is a 1,800-word
-   essay with no FAQ markup. Evidence: `https://englishonline.training/common-questions-about-learning-english/`.
-8. **AI crawlers get 403 on englishonline.training · Shaun · effort S.** Decided 2026-11-01. The main
-   site returns HTTP 403 to GPTBot, ClaudeBot, OAI-SearchBot and PerplexityBot user agents; the
-   activities host returns 200 to them (Tier 8 A1 has the 2026-10-21 measurements). Shaun checks Search
-   Console URL Inspection live test on `/`, then asks WordPress.com support to allow GPTBot, ClaudeBot,
-   OAI-SearchBot, PerplexityBot (decided 2026-11-01). Nothing in the repo changes.
+Read in Search Console (domain property) on 2026-10-30 and 2026-11-01. Baseline:
+`docs/gsc-review-2026-10-06.md`.
+
+**Headline numbers.** Last 28 days vs the 28 before: clicks 85 vs 63, impressions 4.67k vs 2.56k,
+position 15.4 vs 16.2; the October Abitur posts drove it. Indexed, whole property: 124 (148 on
+10-06). **Activities sitemap: 17 of 255 indexed (48 on 10-06)**, 83 "Crawled – currently not
+indexed", 155 "Discovered – not indexed".
+
+**Diagnosis: quality/authority, not technical.**
+- URL inspection of `10c-discover-canada.html` (dropped): fetched 13 Oct, indexing allowed,
+  self-canonical; live test "URL is available to Google". Filtered to the sitemap, no page is
+  excluded by noindex, canonical, robots or errors.
+- No traffic was lost. Activities impressions by week: 221 (10 Aug) and 257 (17 Aug), the trial
+  after page 1763 started linking `themen/` on 16 Aug; 0–41 a week since 24 Aug. The 48 → 17 drop
+  is Google pruning pages that earned nothing (`modalverben`, `present-perfect` were indexed at
+  positions 36–63, recrawled 15 Oct, dropped).
+- Not thinness: dropped pages are longer (median 1,364 words, 943 unique to the page) than the
+  indexed ones (886 / 526).
+- **Zero external links to the subdomain**: Search Console lists 22, all to the main site.
+- ~260 templated pages in three months, and 15+ site-wide commits since 18 Aug each rewrote
+  200–320 pages, so Google keeps reassessing.
+- Survivors are adult/IT/uni/IELTS pages with search-shaped titles ("English for Property
+  Management: Vocabulary & Reading", "IELTS Vocabulary Glossary"). Dropped: textbook-unit school
+  pages ("Discover Canada", "Going to the West"), `themen/` and card-list hubs.
+
+**Proposed, in order:**
+1. **Pause site-wide template changes on the activities site · Shaun decides.** Batch the ones that
+   must happen.
+2. **About 20 target pages with search demand · CC drafts, Shaun approves the WP edits.** `themen/`,
+   ESL grammar, IELTS, business. Link each from a WordPress post that already ranks, e.g.
+   `/using-past-progressive/` (348 impr) → `themen/past-progressive.html` and
+   `gr-past-progressive.html`. The main domain carries the authority.
+3. **First external links to the subdomain · Shaun.** 4teachers/eduki listings, LinkedIn, a guest
+   post for eltabbjournal.com (already links to the main site).
+4. **School-page titles get search terms · Shaun decides** (open item A5).
+5. **Optional · Shaun names pages (rule 9).** Noindex textbook-unit pages that students reach by
+   direct link, not search. `10g-cultural-diversity` had a click in the last 90 days, so it stays.
+
+**Also found:**
+- **Page 842** ("Pros & cons of learning English online…") has been a draft since 2026-09-22; its
+  old `/welcome/blog-posts/…` URL 404s yet still had 73 impressions at 7.9, likely for "is it better
+  to study english online or on campus…" (pos 4.2). No note says why it was unpublished. Republish,
+  or 301 to `/2023/04/05/learning-english-online/` (Redirection, wp-admin) · Shaun decides.
+- **Page-1 rankings with low CTR:** Zusammenfassung post (470 impr, pos 9.8, 3 clicks), Abitur 2027
+  Änderungen (267, 6.1, 3), common business verbs (232, 8.1, 6). Snippet rewrites, as in Tier 9.1.
+- **Page 2–3 with demand:** `/writing-emails-in-english/` (419 impr, 18.5, 0 clicks; Search Console
+  flags −79% recently), `/using-past-progressive/` (348, 22.1), homepage (219, 38.7).
+- Housekeeping: one unused verification token; a "Crawled – not indexed" validation shows Failed;
+  the other 404s are `?share=` links, deleted 2016 posts and old tags. All 9 sitemaps read 28–30 Oct.
