@@ -1154,3 +1154,52 @@ plan", so the Ahrefs URL lists were not available; the live pages were crawled i
    changed" (last week's edits); "Page in multiple sitemaps" (flat `sitemap.xml` overlaps the section
    sitemaps on purpose — eight scripts read it); "Changed pages not submitted to IndexNow" (counts
    only Ahrefs' own IndexNow add-on; the CI job submits).
+
+## Tier 19 — GEO re-audit gaps (2026-11-01) · Shaun + CC
+Source: the live GEO re-check of both hosts dated 2026-11-01 (20 pages), in second-brain
+`pages/mem-projects-geo-for-eot-audit-2026-11-01.md` (PR #4, section "New gaps"). Gaps 1–7 are new.
+Gap 8 is the open main-site 403 for crawler user agents, already in Tier 8 A1; Shaun decided the
+fix on 2026-11-01. Gaps 3, 4 and 8 point at items already tracked, so each only adds the part that
+is new. Items on the WordPress site (3, 5, 7, 8) need Shaun: no live WordPress edit from the repo
+(rule 7). Rule 8 applies to 5: list what the old page has before the rewrite.
+
+1. **`themen/` ledes show the wrong exercise count · CC · effort S.** The lede says "0 kostenlose
+   Übungen" on `artikel` and `praepositionen`, while the page's meta description says 24 and 30.
+   8 more disagree, e.g. `passiv` lede 17 vs description 30, `gerund-infinitiv` 9 vs 30. Fix: the lede
+   and the description use one count (`scripts/build-topic-pages.js:299` reads
+   `exercisesForTopic(slug).length`), and the build fails on a count of 0. Evidence:
+   `https://activities.englishonline.training/themen/artikel.html`. The lede is German by design.
+2. **Four ESL pages lead with a learning objective, not an answer · CC · effort S.** The Quick
+   Overview of `esl-pronouns`, `esl-question-formation`, `esl-present-simple-continuous` and
+   `esl-countable-uncountable` opens "By the end of this exercise, you can…". Fix: add one answer
+   sentence above it in each page (the rule, in English). Evidence:
+   `https://activities.englishonline.training/esl-pronouns.html`.
+3. **Homepage title promises "Teams", the H1 does not · Shaun · effort S.** Title "EnglishOnline.training:
+   English for Schools and Teams"; H1 "Free English practice for German schools." Fix: add "and teams"
+   to the H1 subline, or drop it from the title. The `WebSite` and Organization name and description
+   mismatch is already tracked in Tier 8 A2 and B2; do not re-open it here. Evidence:
+   `https://englishonline.training/`.
+4. **LinkedIn `sameAs` on the WordPress Organization carries `?isSelfProfile=true` · Shaun · effort XS.**
+   Fix: set it to `https://www.linkedin.com/in/shaunptrezise` in the Jetpack business details (the
+   Tier 8 B2 setting). `scripts/schema.js` already has the clean URL (Tier 16 item 2). Evidence: the
+   homepage JSON-LD `sameAs` on `https://englishonline.training/`.
+5. **`/english-for-students/` opens with three questions, has one star glyph, and has no FAQ ·
+   Shaun · effort M.** `/fuer-eltern/` has the answer-first opener but no FAQ block. Fix: replace the
+   opener with one answer sentence (who, what, how much); remove the star; add a 4 to 5 question FAQ
+   with `FAQPage` markup on both pages. Rule 8: list what the old page has (the links, PDFs and CTAs)
+   before the edit. Evidence: `https://englishonline.training/english-for-students/`.
+6. **No `FAQPage` on `abitur-activities.html`, `uni-activities.html` or the four ESL pages · CC ·
+   effort M.** `msa-`, `business-`, `ielts-` and `it-activities` already have one. Fix: a 4 to 5
+   question FAQ block with matching JSON-LD on the Abitur and university hubs and on
+   `esl-grammar-activities.html`; per-exercise FAQs on the ESL pages are optional. Language: the Abitur
+   hub may use German; `uni-activities.html` is English only, with no German. Evidence:
+   `https://activities.englishonline.training/abitur-activities.html` (no `FAQPage`).
+7. **Empty `alt` on the content image of `/common-questions-about-learning-english/` · Shaun · effort XS.**
+   The image shows a student writing an email and has `alt=""`. Fix: a plain alt text for it. Optional
+   for Shaun to decide: a lead-in sentence that answers the page title, since the page is a 1,800-word
+   essay with no FAQ markup. Evidence: `https://englishonline.training/common-questions-about-learning-english/`.
+8. **AI crawlers get 403 on englishonline.training · Shaun · effort S.** Decided 2026-11-01. The main
+   site returns HTTP 403 to GPTBot, ClaudeBot, OAI-SearchBot and PerplexityBot user agents; the
+   activities host returns 200 to them (Tier 8 A1 has the 2026-10-21 measurements). Shaun checks Search
+   Console URL Inspection live test on `/`, then asks WordPress.com support to allow GPTBot, ClaudeBot,
+   OAI-SearchBot, PerplexityBot (decided 2026-11-01). Nothing in the repo changes.
