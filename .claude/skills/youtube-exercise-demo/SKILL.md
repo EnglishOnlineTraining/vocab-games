@@ -9,7 +9,7 @@ One run produces, for one exercise page:
 
 | File | Made by |
 |---|---|
-| `<unit>-demo.mp4` (1280×720, H.264, plays in QuickTime) | `record-demo.js` |
+| `<unit>-demo.mp4` (1920×1080, H.264, plays in QuickTime) | `record-demo.js` |
 | `chapters.txt`, `timeline.json` | `record-demo.js` |
 | `youtube.md` — title, description, tags, quiz | you |
 | `<unit>-demo.en.srt` (or `.de.srt` for `gr-`) | you |
@@ -41,13 +41,24 @@ Optional boxes ("Before you read", not marked) can be left out.
 Run from the repo root (`~/Documents/GitHub/vocab-games`):
 
 ```bash
-node .claude/skills/youtube-exercise-demo/record-demo.js <unit> ~/Movies/eol-demos/<unit> ~/Movies/eol-demos/<unit>/writing.json
+node .claude/skills/youtube-exercise-demo/record-demo.js <unit> ~/Movies/eol-demos/<unit> ~/Movies/eol-demos/<unit>/writing.json --keep-frames
 ```
 
-It serves the repo on port 8795, opens the page in practise mode, glides a red cursor dot over
-each gap, answers **one select gap wrong on purpose** (one that has an explanation), presses
-Check, holds every step at least 11 s (YouTube ignores chapters under 10 s), then ends on the
-score card and the explanation for the wrong gap. It prints the chapters.
+It serves the repo on port 8795, opens the page in practise mode (this also skips the email
+gate on `ielts-` pages), glides a red cursor dot over each gap, answers **one select gap wrong
+on purpose** (one that has an explanation), presses Check, holds every step at least 11 s
+(YouTube ignores chapters under 10 s), then ends on the score card and the explanation for the
+wrong gap. It prints the chapters, and warns when there are fewer than 3.
+
+The page is laid out at 1280×720 and captured at 1.5×, so the video is 1920×1080 with the
+layout students see on a laptop. Capture runs at about 19 fps, and encoding takes a few
+minutes. `--keep-frames` keeps `frames/` (about 160 MB a minute) so
+a bitrate change or trim doesn't need a re-record:
+`swift -suppress-warnings .claude/skills/youtube-exercise-demo/frames2mp4.swift <out dir>/frames <out.mp4>`.
+Delete `frames/` once the stills check in step 4 passes.
+
+If anything fails, the scripts print a one-line reason and exit non-zero; no MP4 or chapters
+are written for a failed encode.
 
 If it stops with `Step N would not continue`, a required writing box had no text: add it to
 `writing.json` and run again. "Not found on the page, skipped" lists answer-key gaps the page
@@ -80,7 +91,8 @@ Base every claim on what the video shows: `timeline.json` and the stills, not th
 - 2–3 sentences on how the exercise works.
 - `⏱️ CHAPTERS`: copy `chapters.txt` exactly, rewording titles into plain descriptions if
   needed but **keeping every timestamp**. Chapters only work with ≥ 3 entries, the first at
-  0:00, each ≥ 10 s.
+  0:00, each ≥ 10 s. **If `chapters.txt` has fewer than 3 lines, leave the CHAPTERS block
+  out**: YouTube would show the timestamps as dead text.
 - `✅ WHAT YOU GET` bullets, `👩‍🏫 WHO IT'S FOR` (for `esl-` pages take the `cefr` field
   from `esl-grammar-pool.json`; for other pages name the audience, not a level, unless
   `docs/claude-reference/years-and-topics.md` states one; don't guess), link to `https://activities.englishonline.training/`,

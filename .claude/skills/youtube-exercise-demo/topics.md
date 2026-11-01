@@ -18,9 +18,10 @@ don't mention explanations in the captions, description or quiz.
 
 ## Tier 2 — IELTS Academic (global, English only) · why ✓
 
-These pages are long (700–900-word passages), so the videos will run 2–4 minutes. They are
-untested with the recorder: they have an email gate (no name), so check `?mode=practise` gets
-past it before the first full run.
+These pages are long (700–900-word passages), so the videos will run 2–4 minutes. The email
+gate is no blocker: checked 2026-11-01 on true-false-not-given and task2-opinion-essay,
+`?mode=practise` opens straight on Exercise A and the recorder finds every answer-key gap
+(29/29, 19/19). Each needs a `writing.json` answer for `exD-text`. Not yet recorded end to end.
 
 - [ ] ielts-reading-true-false-not-given — True / False / Not Given
 - [ ] ielts-reading-matching-headings — Matching headings

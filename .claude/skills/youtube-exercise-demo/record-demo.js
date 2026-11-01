@@ -1,9 +1,11 @@
 // Records a demo walkthrough of one exercise page as an MP4, plus timeline.json and
 // chapters.txt for the YouTube description and subtitles.
-// Usage: node record-demo.js <unit> [out dir] [writing.json]
+// Usage: node record-demo.js <unit> [out dir] [writing.json] [--keep-frames]
 //   <unit>        page name without .html, e.g. esl-pronouns
 //   [out dir]     default ~/Movies/eol-demos/<unit> — never inside the repo (it publishes)
 //   [writing.json] { "<textarea or input id>": "text to type" } for free-writing boxes
+//   --keep-frames keep frames/ (~160 MB a minute) so the MP4 can be re-encoded without
+//                 re-recording: swift frames2mp4.swift <out dir>/frames <out.mp4>
 // Right answers come from data/answer-keys/<unit>.json; one gap is answered wrong on purpose
 // so the results screen shows an explanation.
 const { spawn, execFileSync } = require('child_process');
@@ -13,8 +15,9 @@ const path = require('path');
 
 const REPO = path.resolve(__dirname, '../../..');
 const { chromium } = require(require.resolve('playwright', { paths: [REPO] }));
-const [unit, outArg, writingArg] = process.argv.slice(2);
-if (!unit) { console.error('Usage: node record-demo.js <unit> [out dir] [writing.json]'); process.exit(1); }
+const keepFrames = process.argv.includes('--keep-frames');
+const [unit, outArg, writingArg] = process.argv.slice(2).filter((a) => a !== '--keep-frames');
+if (!unit) { console.error('Usage: node record-demo.js <unit> [out dir] [writing.json] [--keep-frames]'); process.exit(1); }
 const out = outArg || path.join(os.homedir(), 'Movies/eol-demos', unit);
 const writing = writingArg ? JSON.parse(fs.readFileSync(writingArg, 'utf8')) : {};
 const KEY = JSON.parse(fs.readFileSync(path.join(REPO, 'data/answer-keys', unit + '.json'), 'utf8')).sections;
@@ -32,12 +35,15 @@ const CURSOR = () => addEventListener('DOMContentLoaded', () => {
 });
 
 const server = spawn('python3', ['-m', 'http.server', String(PORT)], { cwd: REPO, stdio: 'ignore' });
+server.unref(); // otherwise the server keeps node alive after the recording is done
 process.on('exit', () => server.kill());
 
 (async () => {
   await new Promise((r) => setTimeout(r, 800));
   const browser = await chromium.launch();
-  const page = await (await browser.newContext({ viewport: { width: 1280, height: 720 } })).newPage();
+  // 1280×720 layout captured at 1.5× = 1920×1080 frames: sharper text for YouTube's 1080p
+  // tier without spreading the page out the way a 1920-px-wide viewport would.
+  const page = await (await browser.newContext({ viewport: { width: 1280, height: 720 }, deviceScaleFactor: 1.5 })).newPage();
   await page.addInitScript(CURSOR);
   // Pre-decline the analytics banner so it doesn't cover the bottom of every frame.
   await page.addInitScript(() => { try { localStorage.setItem('eol_consent', 'denied'); } catch (e) {} });
@@ -47,8 +53,8 @@ process.on('exit', () => server.kill());
 
   // ponytail: Playwright's recordVideo keeps only the first frame on this macOS, so we
   // screenshot in a loop and frames2mp4.swift encodes the shots at their real timestamps.
-  // No ffmpeg needed and the MP4 plays in QuickTime. Ceiling: ~20-40 fps, as fast as
-  // screenshots come back.
+  // No ffmpeg needed and the MP4 plays in QuickTime. Ceiling: ~19 fps at 1080p (~37 at
+  // 720p), as fast as screenshots come back.
   const frames = path.join(out, 'frames');
   fs.rmSync(frames, { recursive: true, force: true });
   fs.mkdirSync(frames, { recursive: true });
@@ -58,11 +64,14 @@ process.on('exit', () => server.kill());
   const capture = (async () => {
     while (recording) {
       // Shots fail on about:blank and mid-navigation; skip those.
+      const before = Date.now();
       const shot = await page.screenshot({ type: 'jpeg', quality: 90 }).catch(() => null);
       if (!shot) { await new Promise((r) => setTimeout(r, 50)); continue; }
+      // The page is captured somewhere inside the await, so stamp the midpoint.
+      const at = Math.round((before + Date.now()) / 2) - t0;
       const name = String(times.length).padStart(6, '0') + '.jpg';
       fs.writeFileSync(path.join(frames, name), shot);
-      times.push(`${name} ${times.length ? Date.now() - t0 : 0}`);
+      times.push(`${name} ${times.length ? at : 0}`);
     }
   })();
 
@@ -162,11 +171,13 @@ process.on('exit', () => server.kill());
   await browser.close();
   fs.writeFileSync(path.join(frames, 'times.txt'), times.join('\n'));
   const file = path.join(out, unit + '-demo.mp4');
+  // Throws (and so exits non-zero) when the encoder fails.
   execFileSync('swift', ['-suppress-warnings', path.join(__dirname, 'frames2mp4.swift'), frames, file], { stdio: 'inherit' });
-  fs.rmSync(frames, { recursive: true, force: true });
+  if (!keepFrames) fs.rmSync(frames, { recursive: true, force: true });
 
   const ts = (ms) => { const s = Math.floor(ms / 1000); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
   timeline[0].ms = 0; // YouTube needs the first chapter at 0:00
+  if (timeline.length < 3) console.warn(`Only ${timeline.length} chapters: YouTube needs 3, so leave CHAPTERS out of the description.`);
   fs.writeFileSync(path.join(out, 'timeline.json'), JSON.stringify({ unit, durationMs: end, wrongGap: wrongId, explanationShown, timeline }, null, 2));
   fs.writeFileSync(path.join(out, 'chapters.txt'), timeline.map((t) => `${ts(t.ms)} ${t.title}`).join('\n') + '\n');
   console.log(fs.readFileSync(path.join(out, 'chapters.txt'), 'utf8'));
