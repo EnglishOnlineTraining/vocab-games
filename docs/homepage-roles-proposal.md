@@ -237,7 +237,7 @@ host can be read before the other changes.
 
 1. **The lead on the WP homepage.** The teacher and lessons (tutor searches, parents, teams), as
    proposed, or keep school practice first?
-2. **Where "Get in touch" goes.** `/book-a-lesson/` returns 404 (it is a draft, #252), and the
+2. **Where "Get in touch" goes.** `/book-a-lesson/` returns 404 (it is a draft by Shaun's choice, kept unpublished), and the
    current button opens a MailerLite *preview* link. Choose one: publish `/book-a-lesson/`, point to
    `/about/`, or use the live MailerLite form URL.
 3. **Where WP's exercise links point.** The activities homepage, as proposed (it gives the
