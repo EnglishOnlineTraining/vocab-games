@@ -1019,6 +1019,9 @@ relative clauses* → `themen/relativsaetze`; *present perfect continuous* → `
    each; each links to one topic page and one money page (12.1).
    - Learners (EN): wh-question word order — *Where you are going?* → *Where are you going?* Links
      to `esl-question-formation`; money page `/business-english/`.
+     **Draft saved 2026-11-01: WordPress post 2799** (scheduled for 2 Dec 2026, 10:54; image approved, media 2797;
+     exercise screenshot media 2801 added; scheduled `future`, 10:54 Berlin). Before-After-Bridge; links `esl-question-formation` and an in-text
+     link to `/business-english/`. Text: `docs/blog-drafts/wp-wh-question-word-order.html`.
    - Parents (DE): linking words for the Abitur. Links to `themen/linking-words`; money page an
      Abitur Payhip pack.
      **Draft saved 2026-10-29: WordPress post 2765** (scheduled for 29 Nov 2026, 10:54, per item 7:
@@ -1027,7 +1030,11 @@ relative clauses* → `themen/relativsaetze`; *present perfect continuous* → `
      Fact-checked against the Berlin-Brandenburg 2025 Deskriptoren (60 % sprachlich incl. Textaufbau/Kohäsion,
      40 % inhaltlich). Featured image (media 2763) approved by Shaun.
    - Teachers (EN): why German speakers say *Play you football?* Links to
-     `esl-present-simple-continuous`; money page an Eduki listing.
+     `esl-present-simple-continuous`; money page the Payhip store.
+     **Draft saved 2026-11-01: WordPress post 2800** (scheduled for 5 Dec 2026, 10:54; image approved, media 2798;
+     exercise screenshot media 2802 added; scheduled `future`, 10:54 Berlin). And-But-Therefore; links `esl-present-simple-continuous` and
+     `payhip.com/EnglishOnlineTraining`. Fact-checked: the German *am*-progressive is labelled colloquial by Duden.
+     Text: `docs/blog-drafts/wp-german-speakers-play-you-football.html`.
 7. **Schedule (7 new indexable pages, 2 a week) · Shaun confirms.** Week 1:
    `esl-question-formation` + learner post. Week 2: `esl-pronouns` + parents post. Week 3:
    `esl-present-simple-continuous` + teachers post. Week 4: `esl-countable-uncountable`. Each
