@@ -385,6 +385,8 @@ function headBlock(file, html, withSkipStyle, withOverviewStyle, withTipStyle, w
   // Pages outside the exercise.js framework that mark answers only with a
   // colour class get the ✓/✗ marks and live regions from a11y-lite.js.
   if (needsA11yLite(html)) lines.push(`<script src="${rel}a11y-lite.js" defer></script>`);
+  // The dyslexia option's spelling check, shared by timed tests and the SRS practice pages.
+  if (/<script[^>]+src=["'](?:\.\.\/)?(?:exam|vocab-srs)\.js/.test(html)) lines.push(`<script src="${rel}spelling.js" defer></script>`);
   const schema = schemaBlock(file, { lang, title, desc, canonical, image: card && { url: `${SITE}/${card.file}`, alt: card.alt } }, html);
   if (schema) lines.push(schema);
   lines.push(

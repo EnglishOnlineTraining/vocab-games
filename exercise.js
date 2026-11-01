@@ -91,6 +91,44 @@ function eolInitPractise() {
 }
 document.addEventListener('DOMContentLoaded', eolInitPractise);
 
+/* ── Easier-to-read display (the dyslexia option on practice pages) ──
+   An "Easier to read" button in the header. Any student can switch it on; it is
+   saved on this device (eol_dyslexia) and stays on for every practice page. It
+   loads exam.css, the timed tests' display, and sets html.eol-dyslexia.
+   vocab-srs.js reads eolDyslexiaOn() to accept small spelling slips in its typing
+   round. Nothing is sent from here. Timed tests have their own box (exam.js),
+   because there it changes the marking the teacher sees. */
+function eolDyslexiaOn() { return document.documentElement.classList.contains('eol-dyslexia'); }
+
+function eolDyslexia(on) {
+  if (on && !document.getElementById('eol-dyslexia-css')) {
+    var l = document.createElement('link');
+    l.id = 'eol-dyslexia-css'; l.rel = 'stylesheet'; l.href = 'exam.css';
+    document.head.appendChild(l);
+  }
+  document.documentElement.classList.toggle('eol-dyslexia', on);
+  var b = document.getElementById('dyslexia-btn');
+  if (b) b.setAttribute('aria-pressed', String(on));
+  try { if (on) localStorage.setItem('eol_dyslexia', '1'); else localStorage.removeItem('eol_dyslexia'); } catch (e) {}
+}
+
+// At parse time, not on DOMContentLoaded, so a saved choice shows as early as it can.
+// ponytail: the stylesheet still loads after the page, so a slow connection can show
+// the normal display for a moment. Upgrade path: a <link> in build-head.js.
+try { if (localStorage.getItem('eol_dyslexia') === '1') eolDyslexia(true); } catch (e) {}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var inner = document.querySelector('.app-header .header-inner');
+  if (!inner || document.getElementById('dyslexia-btn')) return;
+  var b = document.createElement('button');
+  b.type = 'button'; b.id = 'dyslexia-btn'; b.className = 'dyslexia-btn';
+  b.setAttribute('aria-label', 'Easier to read: dyslexia-friendly text');
+  b.setAttribute('aria-pressed', String(eolDyslexiaOn()));
+  b.innerHTML = 'Aa<span> Easier to read</span>';
+  b.onclick = function() { eolDyslexia(!eolDyslexiaOn()); };
+  inner.insertBefore(b, document.getElementById('header-meta'));
+});
+
 /* Turn the submit step into a results screen when practising. Called from showStep. */
 function eolPractiseResults() {
   var step = document.getElementById('step-' + TOTAL_STEPS);
