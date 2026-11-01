@@ -1512,6 +1512,64 @@ function copyAnswers() {
  * If the browser has no speech synthesis, a clear fallback message is shown
  * instead of a silent, broken player.
  */
+function eolPickVoice(kind) {
+  var voices = window.speechSynthesis.getVoices() || [];
+  var en = voices.filter(function(v) { return /^en(-|_|$)/i.test(v.lang); });
+  if (!en.length) en = voices;
+  if (!en.length) return null;
+  var wantFemale = kind !== 'male';
+  var hint = wantFemale ? /female|zira|samantha|susan|karen|serena|fiona|moira|tessa|hazel|amelia/i
+                        : /male|david|daniel|george|fred|alex|arthur|oliver/i;
+  var match = en.filter(function(v) { return hint.test(v.name); })[0];
+  return match || en[0];
+}
+
+/* ── Listen to a word ──
+   A 🔊 button with data-say="text" speaks that text with the device's own voice
+   (British English if the device has one). One click handler on the document
+   serves every button, including ones vocab-srs.js adds later. exercise.js adds
+   a button to each word in a static word list (td.wl-en); vocab-srs.js adds them
+   to its word list and to the feedback after each answer.
+   ponytail: some devices have speech synthesis but no voices (Firefox on Linux).
+   The buttons are hidden if no voice has loaded 2 s after the page, and shown
+   again if one arrives later. */
+function eolCanSpeak() { return ('speechSynthesis' in window) && (typeof SpeechSynthesisUtterance !== 'undefined'); }
+
+function eolSayBtn(text) {
+  if (!eolCanSpeak()) return '';
+  var t = esc(text).replace(/"/g, '&quot;');   // esc() leaves quotes; this goes in attributes
+  return '<button type="button" class="say-btn" data-say="' + t + '" aria-label="Listen: ' + t + '">🔊</button>';
+}
+
+function eolSpeak(text) {
+  if (!eolCanSpeak()) return;
+  window.speechSynthesis.cancel();
+  // "On the Beach / On the Bench": a pause, not "slash".
+  var u = new SpeechSynthesisUtterance(String(text).replace(/\s+\/\s+/g, ', '));
+  u.lang = 'en-GB';
+  u.rate = 0.9;
+  var gb = (window.speechSynthesis.getVoices() || []).filter(function(v) { return /^en[-_]GB/i.test(v.lang); })[0];
+  var v = gb || eolPickVoice();
+  if (v) u.voice = v;
+  window.speechSynthesis.speak(u);
+}
+
+document.addEventListener('click', function(e) {
+  var b = e.target && e.target.closest && e.target.closest('[data-say]');
+  if (b) eolSpeak(b.getAttribute('data-say'));
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (!eolCanSpeak()) return;
+  Array.prototype.forEach.call(document.querySelectorAll('td.wl-en'), function(td) {
+    if (!td.querySelector('.say-btn')) td.insertAdjacentHTML('beforeend', ' ' + eolSayBtn(td.textContent.trim()));
+  });
+  var html = document.documentElement;
+  function check() { html.classList.toggle('no-voices', !(window.speechSynthesis.getVoices() || []).length); }
+  setTimeout(check, 2000);
+  if (window.speechSynthesis.addEventListener) window.speechSynthesis.addEventListener('voiceschanged', check);
+});
+
 function initListening(elementId, script, opts) {
   opts = opts || {};
   var maxPlays = opts.maxPlays || 2;
@@ -1536,18 +1594,6 @@ function initListening(elementId, script, opts) {
   var btn    = document.getElementById(elementId + '-play');
   var status = document.getElementById(elementId + '-status');
   var plays  = document.getElementById(elementId + '-plays');
-
-  function pickVoice(kind) {
-    var voices = window.speechSynthesis.getVoices() || [];
-    var en = voices.filter(function(v) { return /^en(-|_|$)/i.test(v.lang); });
-    if (!en.length) en = voices;
-    if (!en.length) return null;
-    var wantFemale = kind !== 'male';
-    var hint = wantFemale ? /female|zira|samantha|susan|karen|serena|fiona|moira|tessa|hazel|amelia/i
-                          : /male|david|daniel|george|fred|alex|arthur|oliver/i;
-    var match = en.filter(function(v) { return hint.test(v.name); })[0];
-    return match || en[0];
-  }
 
   function render() {
     var left = maxPlays - playsUsed;
@@ -1576,7 +1622,7 @@ function initListening(elementId, script, opts) {
       var u = new SpeechSynthesisUtterance(seg.text);
       u.rate = seg.rate || 1;
       u.lang = 'en-GB';
-      var v = pickVoice(seg.voice);
+      var v = eolPickVoice(seg.voice);
       if (v) u.voice = v;
       u.onend = next;
       u.onerror = next;
@@ -1587,7 +1633,7 @@ function initListening(elementId, script, opts) {
   btn.addEventListener('click', speak);
   // Voices can load asynchronously; refresh the (already-correct) UI when they arrive.
   if (typeof window.speechSynthesis.onvoiceschanged !== 'undefined') {
-    window.speechSynthesis.onvoiceschanged = function() { /* voices now available for pickVoice */ };
+    window.speechSynthesis.onvoiceschanged = function() { /* voices now available for eolPickVoice */ };
   }
   render();
 }

@@ -139,6 +139,13 @@ spelling, the word keeps its level, and the progress payload's `round2` says sli
 accepted. Anyone can switch it on: it changes no class-submission marking. Covered by
 `tests/dyslexia-practice.spec.js`.
 
+**🔊 Listen buttons** (added 2026-11-01). `eolSayBtn(text)` / `eolSpeak(text)` in `exercise.js`
+speak a word with the device's own voice (British English if it has one; nothing hosted).
+`exercise.js` adds a button to every `td.wl-en` in a static word list; `vocab-srs.js` adds
+them to its word list and to the feedback after each answer, never before an answer in the
+typing round (that would turn it into dictation). Hidden (`html.no-voices`) when the device
+has no voice. Covered by `tests/listen-buttons.spec.js`.
+
 `tests/exam-pages.spec.js` sits every test through to submission with fixed random and a
 paused clock and compares what it sends (sheet, email, copy) against a recorded copy, so a
 change to `exam.js` that alters a test's submission fails there. It also covers the dyslexia

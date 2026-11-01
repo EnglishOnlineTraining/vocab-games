@@ -3,8 +3,8 @@
  * pages (uni-c1-vocab-practice, uni-c2-vocab-practice). Each page defines
  * PAGE_UNIT, SHEET_URL and WORDS ([word, meaning] pairs) in an inline script,
  * then loads this file after exercise.js (uses its esc, normAns, g, set,
- * isTestMode, eolDyslexiaOn) and spelling.js (eolSpellingClose). The page markup (#scr-start, #scr-round, #scr-end) is the same
- * on every page. Tested by tests/uni-vocab-practice.spec.js.
+ * isTestMode, eolDyslexiaOn, eolSayBtn) and spelling.js (eolSpellingClose).
+ * The page markup (#scr-start, #scr-round, #scr-end) is the same on every page. Tested by tests/uni-vocab-practice.spec.js.
  */
 (function() {
   var st = document.createElement('style');
@@ -107,7 +107,7 @@ function renderStart() {
     : c.due + ' word' + (c.due === 1 ? ' is' : 's are') + ' due for review today. Sessions done: ' + prog.sessions + '.';
   var label = ['new', 'learning', 'getting there', 'getting there', 'known', 'known'];
   document.getElementById('wordlist').innerHTML = WORDS.map(function(w) {
-    return '<tr><td>' + esc(w[0]) + '</td><td>' + esc(w[1]) + '</td><td>' + label[st(w[0]).lvl] + '</td></tr>';
+    return '<tr><td>' + esc(w[0]) + ' ' + eolSayBtn(w[0]) + '</td><td>' + esc(w[1]) + '</td><td>' + label[st(w[0]).lvl] + '</td></tr>';
   }).join('');
 }
 
@@ -187,6 +187,7 @@ function answer(ok, btn, given, slip) {
     fb.className = 'err';
     fb.textContent = '✗ ' + (given ? 'You wrote “' + given + '”. ' : '') + 'The word is: ' + word + '. It will come back in a moment.';
   }
+  fb.insertAdjacentHTML('beforeend', ' ' + eolSayBtn(word));   // hear it once answered, never before
   document.getElementById('next-btn').style.display = '';
   document.getElementById('next-btn').focus();
 }
