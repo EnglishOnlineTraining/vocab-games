@@ -99,29 +99,12 @@ document.addEventListener('DOMContentLoaded', function () {
   box.addEventListener('change', function () { examDyslexia(this.checked); });
 });
 
-/* Spelling-tolerant match for dyslexia: one slip in a word of 4–6 letters, two in
-   a longer one (a swapped pair counts as one), none in a word under 4 letters.
+/* Spelling-tolerant match for dyslexia (eolSpellingClose, spelling.js).
    Pages use it on vocabulary answers only. In grammar answers the form is what is
-   tested: "will have rised" is a grammar error, not a spelling slip.
-   ponytail: edit distance is a heuristic. It can pass a different real word that
-   is close in spelling (dessert / desert); the teacher sees dyslexia=yes and
-   "[spelling not marked]" on those answers and can check. */
+   tested: "will have rised" is a grammar error, not a spelling slip. The teacher
+   sees dyslexia=yes and "[spelling not marked]" on those answers and can check. */
 function examSpellingOk(given, key) {
-  if (!dyslexia) return false;
-  var a = String(given || ''), b = String(key || '');
-  var max = b.length < 4 ? 0 : b.length <= 6 ? 1 : 2;
-  if (!a || Math.abs(a.length - b.length) > max) return false;
-  var d = [], i, j;
-  for (i = 0; i <= a.length; i++) { d[i] = [i]; }
-  for (j = 0; j <= b.length; j++) { d[0][j] = j; }
-  for (i = 1; i <= a.length; i++) {
-    for (j = 1; j <= b.length; j++) {
-      var cost = a[i - 1] === b[j - 1] ? 0 : 1;
-      d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + cost);
-      if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + 1);
-    }
-  }
-  return d[a.length][b.length] <= max;
+  return dyslexia && eolSpellingClose(given, key);
 }
 
 function examMark(p, slot) {

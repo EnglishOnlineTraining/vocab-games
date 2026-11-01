@@ -459,6 +459,24 @@
       "status": "idea"
     },
     {
+      "id": "8c-prefixes-un-re-dis",
+      "category": "8c",
+      "unit": "Supplementary",
+      "topic": "Word building: un-, re- and dis-",
+      "grammar": "Prefixes un-, re-, dis- (happy → unhappy, do → redo, like → dislike)",
+      "angle": "vocab",
+      "status": "idea"
+    },
+    {
+      "id": "8c-compound-nouns",
+      "category": "8c",
+      "unit": "Supplementary",
+      "topic": "Long words in two parts: compound nouns",
+      "grammar": "Compound nouns: split long words into known parts (sunflower, classroom)",
+      "angle": "vocab",
+      "status": "idea"
+    },
+    {
       "id": "10g-cultural-diversity",
       "category": "10g",
       "unit": "Across cultures 1",
@@ -777,6 +795,33 @@
       "status": "idea"
     },
     {
+      "id": "10g-latin-greek-roots",
+      "category": "10g",
+      "unit": "Supplementary",
+      "topic": "Latin and Greek roots: working out new words",
+      "grammar": "Roots -dict-, -port-, -spect-, -graph- as a strategy for unknown words",
+      "angle": "skills",
+      "status": "idea"
+    },
+    {
+      "id": "10g-abstract-nouns",
+      "category": "10g",
+      "unit": "Supplementary",
+      "topic": "Abstract nouns and verbs from adjectives",
+      "grammar": "Suffixes -ity / -ism / -ance / -ence and -ise / -ify (responsible → responsibility, global → globalise)",
+      "angle": "vocab",
+      "status": "idea"
+    },
+    {
+      "id": "10g-stress-shift",
+      "category": "10g",
+      "unit": "Supplementary",
+      "topic": "Word families that change stress",
+      "grammar": "Stress shift in word families (PHOtograph, phoTOgraphy, photoGRAPHic): spelling and pronunciation",
+      "angle": "skills",
+      "status": "idea"
+    },
+    {
       "id": "10c-faces-commonwealth",
       "category": "10c",
       "unit": "Zoom in",
@@ -1012,6 +1057,24 @@
       "unit": "Extra",
       "topic": "The Commonwealth & the British monarchy today",
       "grammar": "Present perfect vs past simple (recent events)",
+      "angle": "reading",
+      "status": "idea"
+    },
+    {
+      "id": "10c-meaning-prefixes",
+      "category": "10c",
+      "unit": "Supplementary",
+      "topic": "Prefixes that change meaning: over-, under-, pre-, post-, re-, co-",
+      "grammar": "Meaning prefixes over- / under- / pre- / post- / re- / co-",
+      "angle": "vocab",
+      "status": "idea"
+    },
+    {
+      "id": "10c-word-formation-text",
+      "category": "10c",
+      "unit": "Supplementary",
+      "topic": "Word families in a reading text",
+      "grammar": "Word formation in context: the right form of a word family in a text",
       "angle": "reading",
       "status": "idea"
     },
@@ -1679,6 +1742,24 @@
       "status": "idea"
     },
     {
+      "id": "9g-word-families",
+      "category": "9g",
+      "unit": "Supplementary",
+      "topic": "Word families: noun, verb, adjective, adverb",
+      "grammar": "Word formation by part of speech (decide, decision, decisive, decisively) in a gap text",
+      "angle": "vocab",
+      "status": "idea"
+    },
+    {
+      "id": "9g-negative-prefixes",
+      "category": "9g",
+      "unit": "Supplementary",
+      "topic": "Negative prefixes: un-, in-, im-, il-, ir-, dis-, mis-",
+      "grammar": "Choosing the right negative prefix (impossible, illegal, irregular)",
+      "angle": "vocab",
+      "status": "idea"
+    },
+    {
       "id": "9c-do-you-speak-english",
       "category": "9c",
       "unit": "Zoom in",
@@ -1937,6 +2018,24 @@
       "topic": "Writing a book or film review",
       "grammar": "Review language",
       "angle": "writing",
+      "status": "idea"
+    },
+    {
+      "id": "9c-adjective-suffixes",
+      "category": "9c",
+      "unit": "Supplementary",
+      "topic": "Word building: adjectives with -ful, -less, -y, -able",
+      "grammar": "Adjective suffixes -ful / -less / -y / -able",
+      "angle": "vocab",
+      "status": "idea"
+    },
+    {
+      "id": "9c-noun-suffixes",
+      "category": "9c",
+      "unit": "Supplementary",
+      "topic": "Word building: nouns with -ment, -ness, -tion",
+      "grammar": "Noun suffixes -ment / -ness / -tion (enjoyment, kindness)",
+      "angle": "vocab",
       "status": "idea"
     }
   ]

@@ -125,7 +125,26 @@ is what is tested; (2) switches the test to the easier-to-read display in `exam.
 key, and `dyslexia=yes` added to the page's integrity slot so it shows in the Make Excel
 table. It is never on screen and never in the email or copy backups. Self-declared, like
 extra time. Spelling slips that passed are marked `[correct, spelling not marked: <word>]`
-in the vocab tests' answer columns.
+in the vocab tests' answer columns. The edit-distance rule itself is `eolSpellingClose` in
+`spelling.js`, which `build-head.js` adds to every page that loads `exam.js` or `vocab-srs.js`.
+
+**Easier-to-read option on practice pages** (added 2026-11-01). `exercise.js` adds an
+"Aa Easier to read" button to the header of every framework page. It loads `exam.css` and
+sets `html.eol-dyslexia`, so the page gets the same font, size and spacing as a test with
+the dyslexia box ticked. Cream colours apply in the light scheme only, because style.css
+and the generated blocks have dark-scheme colours that assume a dark background. The choice
+is saved on the device (`eol_dyslexia`). On the SRS pages (`vocab-srs.js`) it also makes a
+small spelling slip in the typing round count as right: the student sees the correct
+spelling, the word keeps its level, and the progress payload's `round2` says slips were
+accepted. Anyone can switch it on: it changes no class-submission marking. Covered by
+`tests/dyslexia-practice.spec.js`.
+
+**🔊 Listen buttons** (added 2026-11-01). `eolSayBtn(text)` / `eolSpeak(text)` in `exercise.js`
+speak a word with the device's own voice (British English if it has one; nothing hosted).
+`exercise.js` adds a button to every `td.wl-en` in a static word list; `vocab-srs.js` adds
+them to its word list and to the feedback after each answer, never before an answer in the
+typing round (that would turn it into dictation). Hidden (`html.no-voices`) when the device
+has no voice. Covered by `tests/listen-buttons.spec.js`.
 
 `tests/exam-pages.spec.js` sits every test through to submission with fixed random and a
 paused clock and compares what it sends (sheet, email, copy) against a recorded copy, so a
