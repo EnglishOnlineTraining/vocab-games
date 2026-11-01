@@ -134,6 +134,8 @@ const IGNORE_PATHS = new Set([
   'esl-topic-slug.html', // pattern
   'esl-articles.html',   // example in esl-grammar-exercise-draft
   'past-progressive-gap-fill-exercise.png', // naming example in eol-blog-writer
+  // youtube-exercise-demo: per-video files in ~/Movies/eol-demos/<unit>/, not the repo
+  'chapters.txt', 'timeline.json', 'writing.json', 'youtube.md',
 ]);
 
 // WordPress MCP / API references that look like file paths but aren't
