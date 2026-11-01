@@ -135,7 +135,7 @@ the dyslexia box ticked. Cream colours apply in the light scheme only, because s
 and the generated blocks have dark-scheme colours that assume a dark background. The choice
 is saved on the device (`eol_dyslexia`). On the SRS pages (`vocab-srs.js`) it also makes a
 small spelling slip in the typing round count as right: the student sees the correct
-spelling, the word keeps its level, and the progress payload's `round2` says slips were
+spelling, the word keeps its level (it neither drops to 1 nor moves up), and the progress payload's `round2` says slips were
 accepted. Anyone can switch it on: it changes no class-submission marking. Covered by
 `tests/dyslexia-practice.spec.js`.
 

@@ -55,7 +55,7 @@ async function playWithSlips(page) {
     const def = await page.locator('#def').textContent();
     const word = await page.evaluate(d => WORDS.find(w => w[1] === d)[0], def);
     if (await page.locator('#mc').isVisible()) {
-      await page.locator('.mc-opt[data-w="' + word.replace(/"/g, '\\"') + '"]').click();
+      await page.locator('#mc').getByRole('button', { name: word, exact: true }).click();
     } else {
       const base = word.split(' / ')[0].replace(/^to /, '');
       if (base.length >= 4 && !slipped.includes(word)) { slipped.push(word); await page.fill('#typed', slip(word)); }
@@ -70,7 +70,14 @@ async function playWithSlips(page) {
 
 test('SRS typing round: a slip counts with the option on, not with it off', async ({ page }) => {
   await page.goto(SRS);
-  await page.evaluate(() => { localStorage.clear(); localStorage.setItem('eol_dyslexia', '1'); });
+  // Every word already at level 2 and due today, so a level change either way shows.
+  await page.evaluate(() => {
+    localStorage.clear();
+    localStorage.setItem('eol_dyslexia', '1');
+    const w = {};
+    WORDS.forEach(x => { w[x[0]] = { lvl: 2, due: 0 }; });
+    localStorage.setItem(STORE_KEY, JSON.stringify({ sessions: 1, w }));
+  });
   await page.reload();
 
   // Option on: the first slip is accepted, and the session ends with nothing to focus on.
@@ -85,9 +92,12 @@ test('SRS typing round: a slip counts with the option on, not with it off', asyn
     await page.click('#next-btn');
   }
   await expect(page.locator('#focus-words')).toContainText('Nothing to focus on');
-  // Level 1 either way after a first session; a missed word is due today, a right one tomorrow.
-  const due = await page.evaluate(w => JSON.parse(localStorage.getItem(STORE_KEY)).w[w].due - today(), on.slipped[0]);
-  expect(due).toBe(1);
+  // The slipped word keeps level 2 (due in DAYS[2] = 3 days); a word typed right moves to 3.
+  const saved = await page.evaluate(() => ({ p: JSON.parse(localStorage.getItem(STORE_KEY)).w, t: today(), words: S.words }));
+  expect(saved.p[on.slipped[0]]).toEqual({ lvl: 2, due: saved.t + 3 });
+  const right = saved.words.find(w => w !== on.slipped[0]);
+  expect(saved.p[right].lvl).toBe(3);
+  await expect(page.locator('#end-words')).toContainText(on.slipped[0] + ' (check the spelling)');
 
   // The teacher's copy says spelling was not marked.
   let body = '';
