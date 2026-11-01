@@ -1154,3 +1154,55 @@ plan", so the Ahrefs URL lists were not available; the live pages were crawled i
    changed" (last week's edits); "Page in multiple sitemaps" (flat `sitemap.xml` overlaps the section
    sitemaps on purpose — eight scripts read it); "Changed pages not submitted to IndexNow" (counts
    only Ahrefs' own IndexNow add-on; the CI job submits).
+
+## Tier 19 — Search Console audit: activities indexing drop (2026-11-01) · Shaun + CC
+
+Read in Search Console (domain property) on 2026-10-30 and 2026-11-01. Baseline:
+`docs/gsc-review-2026-10-06.md`.
+
+**Headline numbers.** Last 28 days vs the 28 before: clicks 85 vs 63, impressions 4.67k vs 2.56k,
+position 15.4 vs 16.2; the October Abitur posts drove it. Indexed, whole property: 124 (148 on
+10-06). **Activities sitemap: 17 of 255 indexed (48 on 10-06)**, 83 "Crawled – currently not
+indexed", 155 "Discovered – not indexed".
+
+**Diagnosis: quality/authority, not technical.**
+- URL inspection of `10c-discover-canada.html` (dropped): fetched 13 Oct, indexing allowed,
+  self-canonical; live test "URL is available to Google". Filtered to the sitemap, no page is
+  excluded by noindex, canonical, robots or errors.
+- No traffic was lost. Activities impressions by week: 221 (10 Aug) and 257 (17 Aug), the trial
+  after page 1763 started linking `themen/` on 16 Aug; 0–41 a week since 24 Aug. The 48 → 17 drop
+  is Google pruning pages that earned nothing (`modalverben`, `present-perfect` were indexed at
+  positions 36–63, recrawled 15 Oct, dropped).
+- Not thinness: dropped pages are longer (median 1,364 words, 943 unique to the page) than the
+  indexed ones (886 / 526).
+- **Zero external links to the subdomain**: Search Console lists 22, all to the main site.
+- ~260 templated pages in three months, and 15+ site-wide commits since 18 Aug each rewrote
+  200–320 pages, so Google keeps reassessing.
+- Survivors are adult/IT/uni/IELTS pages with search-shaped titles ("English for Property
+  Management: Vocabulary & Reading", "IELTS Vocabulary Glossary"). Dropped: textbook-unit school
+  pages ("Discover Canada", "Going to the West"), `themen/` and card-list hubs.
+
+**Proposed, in order:**
+1. **Pause site-wide template changes on the activities site · Shaun decides.** Batch the ones that
+   must happen.
+2. **About 20 target pages with search demand · CC drafts, Shaun approves the WP edits.** `themen/`,
+   ESL grammar, IELTS, business. Link each from a WordPress post that already ranks, e.g.
+   `/using-past-progressive/` (348 impr) → `themen/past-progressive.html` and
+   `gr-past-progressive.html`. The main domain carries the authority.
+3. **First external links to the subdomain · Shaun.** 4teachers/eduki listings, LinkedIn, a guest
+   post for eltabbjournal.com (already links to the main site).
+4. **School-page titles get search terms · Shaun decides** (open item A5).
+5. **Optional · Shaun names pages (rule 9).** Noindex textbook-unit pages that students reach by
+   direct link, not search. `10g-cultural-diversity` had a click in the last 90 days, so it stays.
+
+**Also found:**
+- **Page 842** ("Pros & cons of learning English online…") has been a draft since 2026-09-22; its
+  old `/welcome/blog-posts/…` URL 404s yet still had 73 impressions at 7.9, likely for "is it better
+  to study english online or on campus…" (pos 4.2). No note says why it was unpublished. Republish,
+  or 301 to `/2023/04/05/learning-english-online/` (Redirection, wp-admin) · Shaun decides.
+- **Page-1 rankings with low CTR:** Zusammenfassung post (470 impr, pos 9.8, 3 clicks), Abitur 2027
+  Änderungen (267, 6.1, 3), common business verbs (232, 8.1, 6). Snippet rewrites, as in Tier 9.1.
+- **Page 2–3 with demand:** `/writing-emails-in-english/` (419 impr, 18.5, 0 clicks; Search Console
+  flags −79% recently), `/using-past-progressive/` (348, 22.1), homepage (219, 38.7).
+- Housekeeping: one unused verification token; a "Crawled – not indexed" validation shows Failed;
+  the other 404s are `?share=` links, deleted 2016 posts and old tags. All 9 sitemaps read 28–30 Oct.
