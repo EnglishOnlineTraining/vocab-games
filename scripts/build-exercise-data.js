@@ -28,6 +28,9 @@ const TOPICS = [
   { slug: 'reported-speech',   de: 'Indirekte Rede',                en: 'Reported speech',             match: [/reported speech/i, /indirect speech/i] },
   { slug: 'adjektive-adverbien', de: 'Adjektive & Adverbien',       en: 'Adjectives and adverbs',      match: [/adjective|adverb/i] },
   { slug: 'phrasal-verbs',     de: 'Phrasal Verbs',                 en: 'Phrasal verbs',               match: [/phrasal verb|multi-word verb/i] },
+  // No heading rule: "article" also means a newspaper article, so these are tagged by TOPIC_OVERRIDES only.
+  { slug: 'artikel',           de: 'Artikel (a / an / the)',        en: 'Articles',                    match: [] },
+  { slug: 'praepositionen',    de: 'Präpositionen',                 en: 'Prepositions',                match: [] },
 ];
 
 // ---- skills vocabulary ----
@@ -86,11 +89,17 @@ const UNLISTED = new Set(JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'unl
 // Topic tags for pages whose section headings name the story, not the grammar,
 // so the regex match below finds nothing. Without a tag the page gets no link
 // up to its themen/ pillar and is missing from that pillar's practice list.
-// Each entry is backed by the page's own meta description.
+// Each entry is backed by the page's own meta description or its exercise headings.
+// The article and preposition tags are for pages whose exercises practise those words.
 const TOPIC_OVERRIDES = {
   '9g-australia-outback-past-perfect.html':     ['past-perfect', 'simple-past'],
   '9g-work-experience-indirect-questions.html': ['reported-speech', 'question-tags'],
   '9g-australia-passive-infinitive.html':       ['passiv'],
+  '9g-summer-revision.html':                    ['artikel'],
+  'california-exercises.html':                  ['artikel'],
+  'esl-articles.html':                          ['artikel'],
+  '7g-london-landmarks.html':                   ['praepositionen'],
+  '10g-digital-footprint.html':                 ['praepositionen'],
 };
 
 // Skill tags the heading rules cannot see, merged into what skillsFor() finds.

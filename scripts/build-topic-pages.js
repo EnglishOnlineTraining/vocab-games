@@ -40,6 +40,18 @@ function exercisesForTopic(slug) {
   return exercises.filter(e => (e.topics || []).indexOf(slug) !== -1);
 }
 
+// The exercise count is the one number the lede and the meta description share.
+// topics.json writes it as {count}; a topic with no tagged exercise fails the build
+// instead of printing "0 kostenlose Übungen".
+function topicCount(t) {
+  const n = exercisesForTopic(t.slug).length;
+  if (!n) throw new Error('themen/' + t.slug + '.html: no exercise is tagged to this topic (see TOPIC_OVERRIDES in build-exercise-data.js)');
+  return n;
+}
+function topicDescription(t) {
+  return (t.metaDescription || '').replace(/\{count\}/g, String(topicCount(t)));
+}
+
 function weiterUebenHtml(t) {
   const list = exercisesForTopic(t.slug);
   if (!list.length) return '';
@@ -271,7 +283,7 @@ function jsonLd(t, url, dates) {
         '@type': 'LearningResource',
         '@id': url + '#resource',
         'name': topicLabel(t) + ' — Erklärung und kostenlose Übungen',
-        'description': t.metaDescription || '',
+        'description': topicDescription(t),
         'inLanguage': 'de',
         'isAccessibleForFree': true,
         'learningResourceType': ['Erklärung', 'Übung'],
@@ -296,11 +308,11 @@ function jsonLd(t, url, dates) {
 function pageHtml(t, dates) {
   const url = BASE + '/themen/' + t.slug + '.html';
   const h1 = topicLabel(t) + ' — Erklärung und kostenlose Übungen';
-  const count = exercisesForTopic(t.slug).length;
+  const count = topicCount(t);
   return '<!DOCTYPE html>\n<html lang="de">\n<head>\n'
     + '<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
     + '<title>' + esc(topicTitle(t)) + '</title>\n'
-    + '<meta name="description" content="' + esc(t.metaDescription || '') + '">\n'
+    + '<meta name="description" content="' + esc(topicDescription(t)) + '">\n'
     + '<link rel="canonical" href="' + url + '">\n'
     // No og: tags here: build-head.js deletes them and writes its own set from
     // <title>, the description and the canonical. Leaving them out also keeps
