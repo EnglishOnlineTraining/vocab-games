@@ -542,4 +542,75 @@ module.exports = {
         + 'Termine und Anmeldung findest du auf ielts.org.',
     },
   ],
+
+  // Abitur hub: German content on a page whose <html lang> is "en", so each entry says so.
+  'abitur-activities.html': [
+    {
+      lang: 'de',
+      q: 'Was finde ich auf dieser Seite?',
+      a: 'Interaktive Übungen zu den vier Schreibaufgaben im Englisch-Abitur: Text Analysis, Argumentative '
+        + 'Writing, Writing Summaries und Mediation. Insgesamt 18 Übungen zu den vier Zentralabitur-Themen, '
+        + 'jede mit fünf Schritten und sofortigem Feedback.',
+    },
+    {
+      lang: 'de',
+      q: 'Welche Themen decken die Übungen ab?',
+      a: 'Die vier Themen des Zentralabiturs in Berlin und Brandenburg: Aims and Ambitions, Nations Between '
+        + 'Tradition and Change, Science and Technology und The Impact of the Media on Society.',
+    },
+    {
+      lang: 'de',
+      q: 'Sind die Abitur-Übungen kostenlos?',
+      a: 'Ja, die Übungen sind kostenlos.',
+    },
+    {
+      lang: 'de',
+      q: 'Bekomme ich hier eine Abiturnote?',
+      a: 'Nein. Du bekommst Sofort-Feedback zu jedem Schritt. Am Ende prüfst du deinen eigenen Text mit '
+        + 'einem Bewertungsbogen; die Seite vergibt keine Note.',
+    },
+  ],
+
+  'uni-activities.html': [
+    {
+      q: 'What do these exercises cover?',
+      a: 'Academic writing (hedging, cause and effect, paraphrasing and summarising, describing data and '
+        + 'trends, evaluating sources) and professional communication (business relationships, multi-word '
+        + 'verbs, a hotel case study, project management vocabulary and presentation skills).',
+    },
+    {
+      q: 'Who are they for?',
+      a: 'University students who study or work in English.',
+    },
+    {
+      q: 'Do I need to sign up?',
+      a: 'No. Use "Just practise" to work through an exercise without entering your name.',
+    },
+    {
+      q: 'How should I use them before an exam?',
+      a: 'Start with the skill you need for your next assignment. Before an exam, use the mixed revision, '
+        + 'which takes questions from several exercises.',
+    },
+  ],
+
+  'esl-grammar-activities.html': [
+    {
+      q: 'Which grammar topics are covered?',
+      a: 'Articles, wh-questions, participle clauses, present simple vs present continuous, countable and '
+        + 'uncountable nouns, pronouns, present tenses, simple past, present perfect, past perfect, future '
+        + 'forms, conditionals, the passive, modal verbs and reported speech.',
+    },
+    {
+      q: 'Are the exercises free?',
+      a: 'Yes. Every exercise is free and needs no sign-up.',
+    },
+    {
+      q: 'Who are these exercises for?',
+      a: 'English learners who want practice on the grammar points that cause them the most trouble.',
+    },
+    {
+      q: 'Which topic should I start with?',
+      a: 'Start with the structure you get wrong most often.',
+    },
+  ],
 };
