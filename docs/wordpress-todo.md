@@ -149,6 +149,9 @@ Pages that work, but leak link equity outward or bypass the corporate funnel. Fu
   and its button. Test signup landed as unconfirmed in the group (double opt-in works) and was deleted. The
   "Prefer email?" line still shows the pm.me address. Enquiries are NOT tagged automatically: only visitors who
   also use the opt-in box join the group.
+  **2026-11-02: "Prefer email?" line DONE.** Page 1965 block 78 (`core/paragraph`) now shows `learn@englishonline.training`
+  in both the mailto link and the visible text (subject parameter kept). Changed with `page-sections.replace` on that one
+  block; a re-fetch listing showed every other block's hash unchanged and the form still `jetpack/contact-form`.
   **2026-10-28 later:** the MailerLite form "EOL Task Capture — Corporate enquiries" now exists (id
   `202582978405074821`, double opt-in, group "Corporate enquiries"; no subscribers). The 1965 write (form `to` =
   learn@ plus a core/html block after the form: `<div class="eol-signup" data-ml-form="202582978405074821"

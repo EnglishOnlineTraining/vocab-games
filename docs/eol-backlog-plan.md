@@ -245,6 +245,12 @@ the "which groups exist" review above rather than staying an ungoverned one-off.
   both caught with a clear message before either could reach `topoSort()`.
 
 ## Tier 3.6 — `themen/` topic coverage (found 2026-08-20) · CC
+**Done 2026-11-02 (live, verified):** WP page 1763 now links all 18 `themen/` topic pages. The 8 missing chips
+(adjektive-adverbien, artikel, future-tenses, past-progressive, phrasal-verbs, praepositionen, question-tags,
+reported-speech) were added after "Linking Words" with one `pages.update`; each target returned 200 first. A re-fetch
+with `context: "edit"` showed one Custom HTML block with the rest of the content unchanged. Count drift fixed in a second
+write the same day (re-fetched, verified): ESL Grammar 17 → 22, "Grammar practice" 15 → 16, matching `data/wordpress-1763.json`.
+
 Found while adding the build graph; **nothing is broken and no link 404s**, which is why this is
 Tier 3 rather than urgent. Three related facts, verified against the repo on 2026-08-20:
 
