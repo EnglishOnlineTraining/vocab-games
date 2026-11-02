@@ -138,6 +138,9 @@ new or contradict those docs are listed here.
     GA Measurement ID is cleared.
   - Plus Jakarta Sans is self-hosted (no Google Fonts request).
   - `/llms.txt` is served from the theme (P4.3, added by a separate session).
+    Its "Book a lesson" link pointed at `/book-a-lesson/`, a draft page that returns 404. Shaun edited the theme
+    file on 2026-11-02: it now points at `/business-english/` (wording unchanged). Verified live with curl.
+    The wpcom API cannot edit theme files, so a change to this file is a manual wp-admin edit.
 - **WordPress noindex (B8 + B7):** (1167 reversed 2026-10-06, see Tier 9) pages 2272, 1205, 1167 and posts 365, 1238, 523, 2261 have
   `jetpack_seo_noindex` set. Verified 2026-10-04: each page carries `<meta name="robots"
   content="noindex">` and is gone from the Jetpack sitemap. **Per-page noindex works on the
