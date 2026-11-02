@@ -1150,12 +1150,13 @@ plan", so the Ahrefs URL lists were not available; the live pages were crawled i
    reproducible on 2026-10-30: all 83 sitemap URLs, the categories, author and paged archives have
    one `<h1>` and no `<img>` without `alt`. Likely a crawl from before the 2026-10-23 H1 and alt-text
    fixes.
-4. **Open · Shaun decides. IndexNow resubmits the whole activities site on template changes.**
+4. **Done (2026-11-01, Shaun approved the threshold). IndexNow resubmits the whole activities site on template changes.**
    The big coverage-report days (542, 517, 484, 291 URLs) match site-wide chrome commits that touched
    200–320 pages (schema, consent, contact email, layout). The LocalBusiness drop on 10-15 and its
    restore on 10-16 sent everything twice with no content change. Indexed counts did not scale (542 →
-   5, 517 → 13; a 10-URL day also got 5). Proposed: skip a push in `scripts/indexnow-submit.js` when
-   it changes more than ~50 pages, unless `--all`.
+   5, 517 → 13; a 10-URL day also got 5). Shipped: `scripts/indexnow-submit.js` skips the push when
+   more than 50 pages change (`MAX_CHANGED_PAGES`), logging one line; `--all` still submits.
+   Check: `node scripts/check-indexnow-threshold.js`.
 5. **No action. Ahrefs notices.** "Main content requires JS" (3, probably `vocab-games.html`,
    `level-test.html` and a `uni-c*-vocab-practice` page: interactive by design); "H1/meta description
    changed" (last week's edits); "Page in multiple sitemaps" (flat `sitemap.xml` overlaps the section
