@@ -353,6 +353,10 @@ Added 2026-09-30 (list now 47): the 9 tests on `teacher-tests.html` (group `test
 `indexedInstead: null`) and `year-7-class-wall.html`. Being unlinked and out of the
 sitemap kept them out of Google only until someone shared a URL; `noindex` holds regardless.
 
+Removed 2026-11-02: `abitur-writing-summaries-{aims-ambitions,media-impact,nations-tradition-change}`
+and `abitur-text-analysis-nations-tradition-change`. Bing Webmaster Tools listed them as important
+pages blocked by noindex, so they are indexed again. The other 12 Abitur packs stay excluded.
+
 ## Internal links — breadcrumb and Keep-practising (added 2026-09-30)
 
 - **Visible breadcrumb.** `build-head.js` prints `nav.eol-crumb` (CRUMB block) under the
