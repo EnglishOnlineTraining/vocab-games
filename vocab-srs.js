@@ -64,14 +64,15 @@ function shuffle(a) {
   return a;
 }
 
-/* Which 10 words: due reviews first (weakest first), then new words in list
-   order, then — if a student keeps going — the words due soonest. */
+/* Which 10 words: due reviews first (weakest first), then new words in random
+   order (the lists are alphabetical, so list order gave a session of A–B words),
+   then — if a student keeps going — the words due soonest. */
 function pickWords() {
   var t = today(), words = WORDS.map(function(w) { return w[0]; });
   var seen = words.filter(function(w) { return st(w).lvl > 0; });
   var due = seen.filter(function(w) { return st(w).due <= t; })
     .sort(function(a, b) { return st(a).lvl - st(b).lvl || st(a).due - st(b).due; });
-  var fresh = words.filter(function(w) { return st(w).lvl === 0; });
+  var fresh = shuffle(words.filter(function(w) { return st(w).lvl === 0; }));
   var later = seen.filter(function(w) { return st(w).due > t; })
     .sort(function(a, b) { return st(a).due - st(b).due; });
   return due.concat(fresh, later).slice(0, PER_SESSION);
@@ -103,7 +104,7 @@ function renderLevels(id) {
 function renderStart() {
   var c = renderLevels('levels');
   document.getElementById('due-line').textContent = prog.sessions === 0
-    ? 'You have not started yet. Your first session uses the first 10 words on the list.'
+    ? 'You have not started yet. Each session takes 10 words from the list at random.'
     : c.due + ' word' + (c.due === 1 ? ' is' : 's are') + ' due for review today. Sessions done: ' + prog.sessions + '.';
   var label = ['new', 'learning', 'getting there', 'getting there', 'known', 'known'];
   document.getElementById('wordlist').innerHTML = WORDS.map(function(w) {
