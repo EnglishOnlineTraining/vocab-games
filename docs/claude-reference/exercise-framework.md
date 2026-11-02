@@ -406,12 +406,16 @@ schoolchildren. Shaun chose to keep Google and ask first.
   old copies are stripped.
 - `consent.js` shows a small German/English banner. "Ablehnen" and "Akzeptieren" are equally
   prominent, and the text includes a line for under-16s. GTM loads only after "Akzeptieren".
-  The choice is stored in `localStorage` as `eol_consent` (`granted` / `denied`).
+  The choice is stored in `localStorage` as `eol_consent` (`granted-clarity` / `denied`).
 - A "Cookie-Einstellungen" button is added to the page footer (`.eol-footer .legal`, else
   `footer`, else the end of `<body>`). It clears the choice and shows the banner again.
 - Inside an iframe (`klasse7-mini` on WordPress) there is no banner and no GTM.
 - **Don't add GTM, GA or any other tracker back as a plain `<script>`.** Load it from
   `loadGtm()`-style code behind the choice, and add it to the privacy policy.
+- **Microsoft Clarity** (project `z7d6a7n9ul`, added 2026-11-02) loads from `loadGtm()` with GTM,
+  and the banner names it. A yes is now stored as `granted-clarity`; an old `granted` predates
+  Clarity, so those visitors are asked again. Clarity masks input boxes in every mode.
+  Check: `tests/consent-clarity.spec.js`.
 
 ### 5g. Structured data + the "Auf einen Blick" box (added 2026-08-21)
 
