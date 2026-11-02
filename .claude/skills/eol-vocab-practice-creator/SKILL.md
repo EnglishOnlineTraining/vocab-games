@@ -202,7 +202,8 @@ working through it once.
 - **Repetition across sessions:** right first time in *both* rounds moves a word up a level, and
   its next review comes after 1, 3, 7, 14, then 30 days (`DAYS`). Level 4+ counts as known. Any
   slip sends it back to level 1, due in the very next session. A session takes due words first
-  (weakest first), then new words in list order, then the words due soonest.
+  (weakest first), then new words in random order, then the words due soonest. Never hand out
+  new words in list order: word lists are usually alphabetical, so every session would be one letter.
 - **An end screen** with first-try scores per round, each word and when it comes back, and the
   **words to focus on**, followed by an optional **Send my progress** (name, class).
 - **Forgiving typing:** case, spaces, hyphens, apostrophes and punctuation are ignored. A

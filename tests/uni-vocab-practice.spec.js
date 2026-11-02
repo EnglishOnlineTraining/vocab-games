@@ -62,8 +62,11 @@ for (const unit of PAGES) test(unit + ': two sessions, requeue, focus words, sav
   await page.reload();
 
   await page.click('text=Start a 10-word session');
-  const first10 = await page.evaluate(() => WORDS.slice(0, 10).map(w => w[0]));
-  expect((await page.evaluate(() => S.words)).sort()).toEqual(first10.slice().sort());
+  // New words come at random, not in (alphabetical) list order.
+  const first10 = await page.evaluate(() => S.words.slice());
+  const listOrder = await page.evaluate(() => WORDS.slice(0, 10).map(w => w[0]));
+  expect(new Set(first10).size).toBe(10);
+  expect(first10.slice().sort()).not.toEqual(listOrder.slice().sort());
 
   // Round 1: miss the first card, then it must come back within 4 cards.
   const missed1 = await answerCard(page, true);
@@ -100,12 +103,12 @@ for (const unit of PAGES) test(unit + ': two sessions, requeue, focus words, sav
   const total = await page.evaluate(() => WORDS.length);
   await expect(page.locator('#levels')).toContainText((total - 10) + 'new');
 
-  // Session 2: the missed words first, then new words from the list.
+  // Session 2: the missed words first, then new words not met yet.
   await page.click('text=Start a 10-word session');
   const next = await page.evaluate(() => S.words);
   expect(next.slice(0, expected.length).sort()).toEqual(expected.slice().sort());
-  const fresh = await page.evaluate(n => WORDS.slice(10, 10 + n).map(w => w[0]), 10 - expected.length);
-  expect(next.slice(expected.length, expected.length + fresh.length)).toEqual(fresh);
+  const freshCount = Math.min(10 - expected.length, total - 10);   // a short list runs out of new words
+  for (const w of next.slice(expected.length, expected.length + freshCount)) expect(first10).not.toContain(w);
 });
 
 for (const unit of PAGES) test(unit + ': word list downloads as a Word file with every word', async ({ page }) => {
