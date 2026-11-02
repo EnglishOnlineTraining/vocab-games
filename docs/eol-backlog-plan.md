@@ -53,7 +53,7 @@ the cheapest time to break these buried URLs). Old → new URLs:
 | ID | Title | Old URL | New URL |
 |---|---|---|---|
 | 70 | Blog Posts | `/welcome/blog-posts/` | `/blog-posts/` |
-| 168 | Book a lesson | `/welcome/book-a-lesson/` | `/book-a-lesson/` — **now a draft (found 404 on 2026-10-28; Shaun: keep it unpublished).** No public page links to it. `/contact/` used to 301 to it; Shaun repointed that Redirection rule to `/business-english/` on 2026-10-28 (wp-admin, Tools → Redirection; the MCP cannot edit it) and confirmed it works. |
+| 168 | Book a lesson | `/welcome/book-a-lesson/` | `/book-a-lesson/` — **now a draft (found 404 on 2026-10-28; Shaun: keep it unpublished).** No public page links to it. `/contact/` used to 301 to it; Shaun repointed that Redirection rule to `/business-english/` on 2026-10-28 (wp-admin, Tools → Redirection; the MCP cannot edit it) and confirmed it works. **Re-checked 2026-11-01: the 404 is intended** (draft, not in `sitemap.xml`/`sitemap-1.xml`, no link from the home, `/business-english/` or `/about/` pages, no navigation menus). No WordPress change needed; closed. |
 | 307 | Special offer! | `/welcome/what-i-offer/` | `/what-i-offer/` |
 | 651 | Common questions about learning English | `/welcome/common-questions-about-learning-english/` | `/common-questions-about-learning-english/` |
 | 978 | Finding the Right English Speaking Class For You | `/welcome/finding-the-right-english-speaking-class-for-you/` | `/finding-the-right-english-speaking-class-for-you/` |

@@ -389,8 +389,8 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
    **1167 is not a stub:** it is `/good-vs-bad-when-writing-emails-in-english/` (774 words),
    indexable, and is in the sitemap. Its noindex was reversed (see Tier 9).
    **Found while checking (not a stub; not in this item):** `/book-a-lesson/` and
-   `/california-interactive-exercises/` are listed in `sitemap-1.xml` but return HTTP 404
-   ("Page not found"). Fix in WordPress (Shaun decides: remove from the sitemap or restore).
+   `/california-interactive-exercises/` were listed in `sitemap-1.xml` but return HTTP 404
+   ("Page not found"; `/book-a-lesson/` is an intended draft and is out of the sitemap as of 2026-11-01). Fix in WordPress (Shaun decides: remove from the sitemap or restore).
 9. **The 8 `/testimonial/*/` pages are thin (130–250 words).** Options: one testimonials page,
    or link them from `/business-english/` (1965). Note that self-serving `Review` markup does not
    earn star snippets. **Linking done 2026-10-28:** `/testimonial/` is linked from 1965 and
