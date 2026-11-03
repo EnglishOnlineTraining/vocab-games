@@ -21779,5 +21779,66 @@
     }
    }
   }
+ },
+ "uni-b2-past-perfect-stories": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. When we got to the library, all the desks ___ (go).",
+     "correct": "had gone",
+     "why": "The desks were taken before we arrived: had + past participle."
+    },
+    "g2": {
+     "label": "2. By the time I started university, I ___ English for eight years.",
+     "correct": "had already studied",
+     "why": "By the time + past simple points to the earlier past: past perfect."
+    },
+    "g3": {
+     "label": "3. While I ___ (wait) for the bus…",
+     "correct": "was waiting",
+     "why": "After while, the longer action in progress takes the past continuous."
+    },
+    "g4": {
+     "label": "3. … I ___ (realise)…",
+     "correct": "realised",
+     "why": "The sudden short action during the wait takes the past simple."
+    },
+    "g5": {
+     "label": "3. … that I ___ (leave) my laptop at home.",
+     "correct": "had left",
+     "why": "I left the laptop before I realised it: past perfect."
+    },
+    "g6": {
+     "label": "4. By the time the lecturer ___ (arrive)…",
+     "correct": "arrived",
+     "why": "After by the time, the later point in the story takes the past simple."
+    },
+    "g7": {
+     "label": "4. … we ___ (finish) our slide.",
+     "correct": "had finished",
+     "why": "Finishing came before the lecturer arrived: past perfect."
+    },
+    "g8": {
+     "label": "5. She ___ (feel) nervous…",
+     "correct": "felt",
+     "why": "The main situation in a past story takes the past simple."
+    },
+    "g9": {
+     "label": "5. … because she ___ (not / prepare) her notes.",
+     "correct": "hadn't prepared",
+     "why": "Not preparing came before feeling nervous: hadn't + past participle."
+    },
+    "g10": {
+     "label": "6. What ___ (you / do) when the fire alarm went off?",
+     "correct": "were you doing",
+     "why": "A question about an action in progress: was/were + subject + -ing."
+    },
+    "g11": {
+     "label": "6. … when the fire alarm ___ (go) off?",
+     "correct": "went",
+     "why": "The short interrupting action takes the past simple; go → went."
+    }
+   }
+  }
  }
 }
