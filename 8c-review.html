@@ -187,7 +187,7 @@
         <p>4. Jake’s mum <select class="gap-select" id="exA-g4"><option value="">— choose —</option><option value="are preparing">are preparing</option><option value="prepares">prepares</option><option value="is preparing">is preparing</option></select> the turkey (prepare) <span class="rev-src">Off to the Midwest</span></p>
         <p>5. Blues is a type of music <select class="gap-select" id="exA-g5"><option value="">— choose —</option><option value="where">where</option><option value="which">which</option><option value="who">who</option></select> started in the South <span class="rev-src">Settling in the South</span></p>
         <p>6. A famous <select class="gap-select" id="exA-g6"><option value="">— choose —</option><option value="rose">rose</option><option value="role">role</option><option value="rope">rope</option></select> model <span class="rev-src">Around the Southwest</span></p>
-        <p>7. I <select class="gap-select" id="exA-g7"><option value="">— choose —</option><option value="lived">lived</option><option value="lives">lives</option><option value="live">live</option></select> (live) in Brooklyn now <span class="rev-src">My First Day in New York</span></p>
+        <p>7. Lena <select class="gap-select" id="exA-g7"><option value="">— choose —</option><option value="write">write</option><option value="wrote">wrote</option><option value="writed">writed</option></select> (write) postcards <span class="rev-src">My First Day in New York</span></p>
         <p>8. Tyler <select class="gap-select" id="exA-g8"><option value="">— choose —</option><option value="like">like</option><option value="liked">liked</option><option value="likes">likes</option></select> science best <span class="rev-src">Five Teenagers from the USA</span></p>
       </div>
     </div>
@@ -249,7 +249,7 @@
       <div class="gap-text" style="line-height:2.8">
         <p>1. Louis Armstrong was a musician <select class="gap-select" id="exC-g1"><option value="">— choose —</option><option value="what">what</option><option value="who">who</option><option value="which">which</option></select> came from New Orleans <span class="rev-src">Settling in the South</span></p>
         <p>2. A rich <select class="gap-select" id="exC-g2"><option value="">— choose —</option><option value="history">history</option><option value="holiday">holiday</option><option value="hospital">hospital</option></select> <span class="rev-src">Around the Southwest</span></p>
-        <p>3. We <select class="gap-select" id="exC-g3"><option value="">— choose —</option><option value="didn't take">didn't take</option><option value="didn't took">didn't took</option><option value="not took">not took</option></select> a taxi <span class="rev-src">My First Day in New York</span></p>
+        <p>3. I <select class="gap-select" id="exC-g3"><option value="">— choose —</option><option value="lived">lived</option><option value="lives">lives</option><option value="live">live</option></select> (live) in Brooklyn now <span class="rev-src">My First Day in New York</span></p>
         <p>4. Maria wants to be a <select class="gap-select" id="exC-g4"><option value="">— choose —</option><option value="pilot">pilot</option><option value="singer">singer</option><option value="vet">vet</option></select> <span class="rev-src">Five Teenagers from the USA</span></p>
         <p>5. Our guide suggested <select class="gap-select" id="exC-g5"><option value="">— choose —</option><option value="cleaning">cleaning</option><option value="to clean">to clean</option><option value="clean">clean</option></select> <span class="rev-src">Volunteering Out West</span></p>
         <p>6. a long <select class="gap-select" id="exC-g6"><option value="">— choose —</option><option value="palace">palace</option><option value="pancake">pancake</option><option value="parade">parade</option></select> through the town <span class="rev-src">Midwest Festivals</span></p>
@@ -355,9 +355,9 @@ var EXPLAIN = {
         "why": "“Role model” is the fixed phrase describing Ellen Ochoa, not “rope” or “rose”. (Around the Southwest)"
       },
       "g7": {
-        "label": "7. I ___ (live) in Brooklyn now",
-        "correct": "live",
-        "why": "Review from 'Five teenagers': 'now' needs the simple present, and with 'I' there is no -s. (My First Day in New York)"
+        "label": "7. Lena ___ (write) postcards",
+        "correct": "wrote",
+        "why": "'Write' is irregular: the simple past is 'wrote'. (My First Day in New York)"
       },
       "g8": {
         "label": "8. Tyler ___ science best",
@@ -425,9 +425,9 @@ var EXPLAIN = {
         "why": "The text says the Southwest has a rich history shaped by Native American and Mexican cultures. (Around the Southwest)"
       },
       "g3": {
-        "label": "3. We ___ a taxi",
-        "correct": "didn't take",
-        "why": "After didn't, use the base form: take, not took. (My First Day in New York)"
+        "label": "3. I ___ (live) in Brooklyn now",
+        "correct": "live",
+        "why": "Review from 'Five teenagers': 'now' needs the simple present, and with 'I' there is no -s. (My First Day in New York)"
       },
       "g4": {
         "label": "4. Maria wants to be a ___",
@@ -544,7 +544,7 @@ function checkExA() {
     g4: "is preparing",
     g5: "which",
     g6: "role",
-    g7: "live",
+    g7: "wrote",
     g8: "likes"
   };
   checkDropdowns(GAPS, 'exA-', answers, 'step1-fb', 'exA');
@@ -568,7 +568,7 @@ function checkExC() {
   var answers = {
     g1: "who",
     g2: "history",
-    g3: "didn't take",
+    g3: "live",
     g4: "vet",
     g5: "cleaning",
     g6: "parade",
