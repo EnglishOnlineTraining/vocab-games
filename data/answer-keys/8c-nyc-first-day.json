@@ -194,6 +194,292 @@
      "why": "What + did + you + base form (buy)."
     }
    }
+  },
+  "exD": {
+   "prefix": "exD-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "met",
+     "accept": [
+      "met"
+     ],
+     "label": "1. On Sunday we ___ (meet)",
+     "why": "'Meet' is irregular: the simple past is 'met'."
+    },
+    "g2": {
+     "correct": "rode",
+     "accept": [
+      "rode"
+     ],
+     "label": "2. We ___ (ride) bikes",
+     "why": "'Ride' is irregular: the simple past is 'rode'."
+    },
+    "g3": {
+     "correct": "lost",
+     "accept": [
+      "lost"
+     ],
+     "label": "3. Lena ___ (lose) her phone",
+     "why": "'Lose' is irregular: the simple past is 'lost'."
+    },
+    "g4": {
+     "correct": "found",
+     "accept": [
+      "found"
+     ],
+     "label": "4. A police officer ___ (find) it",
+     "why": "'Find' is irregular: the simple past is 'found'."
+    },
+    "g5": {
+     "correct": "sat",
+     "accept": [
+      "sat"
+     ],
+     "label": "5. We ___ (sit) in a café",
+     "why": "'Sit' is irregular: the simple past is 'sat'."
+    },
+    "g6": {
+     "correct": "drank",
+     "accept": [
+      "drank"
+     ],
+     "label": "6. I ___ (drink) a milkshake",
+     "why": "'Drink' is irregular: the simple past is 'drank'."
+    },
+    "g7": {
+     "correct": "gave",
+     "accept": [
+      "gave"
+     ],
+     "label": "7. Maya's friend ___ (give) Lena a T-shirt",
+     "why": "'Give' is irregular: the simple past is 'gave'."
+    },
+    "g8": {
+     "correct": "wrote",
+     "accept": [
+      "wrote"
+     ],
+     "label": "8. Lena ___ (write) postcards",
+     "why": "'Write' is irregular: the simple past is 'wrote'."
+    }
+   }
+  },
+  "exE": {
+   "prefix": "exE-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "did you pay",
+     "accept": [
+      "did you pay"
+     ],
+     "label": "1. How much ___ for the bikes?",
+     "why": "Question word + did + subject + base form: How much did you pay?"
+    },
+    "g2": {
+     "correct": "didn't find",
+     "accept": [
+      "didn't find"
+     ],
+     "label": "2. At first, Lena ___ her phone",
+     "why": "After didn't, use the base form: find, not found."
+    },
+    "g3": {
+     "correct": "Did you like",
+     "accept": [
+      "Did you like"
+     ],
+     "label": "3. ___ the milkshake?",
+     "why": "Did + you + base form (like); the past is already in 'did'."
+    },
+    "g4": {
+     "correct": "didn't need",
+     "accept": [
+      "didn't need"
+     ],
+     "label": "4. We ___ the bus home",
+     "why": "After didn't, the verb has no -ed: didn't need."
+    },
+    "g5": {
+     "correct": "did you get",
+     "accept": [
+      "did you get"
+     ],
+     "label": "5. When ___ home?",
+     "why": "When + did + you + base form (get)."
+    },
+    "g6": {
+     "correct": "didn't buy",
+     "accept": [
+      "didn't buy"
+     ],
+     "label": "6. Maya ___ the T-shirt",
+     "why": "Negative in the past: didn't + base form (buy)."
+    },
+    "g7": {
+     "correct": "Did you walk across",
+     "accept": [
+      "Did you walk across"
+     ],
+     "label": "7. ___ the bridge?",
+     "why": "Did + you + base form (walk); 'walked' is wrong after did."
+    },
+    "g8": {
+     "correct": "didn't want",
+     "accept": [
+      "didn't want"
+     ],
+     "label": "8. The police officer ___ any money",
+     "why": "After didn't, the verb has no -ed: didn't want."
+    }
+   }
+  },
+  "exF": {
+   "prefix": "exF-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "had",
+     "accept": [
+      "had"
+     ],
+     "label": "1. Lena ___ (have) breakfast",
+     "why": "'Have' is irregular: the simple past is 'had'."
+    },
+    "g2": {
+     "correct": "felt",
+     "accept": [
+      "felt"
+     ],
+     "label": "2. She ___ (feel) sad",
+     "why": "'Feel' is irregular: the simple past is 'felt'."
+    },
+    "g3": {
+     "correct": "thought",
+     "accept": [
+      "thought"
+     ],
+     "label": "3. At first I ___ (think)",
+     "why": "'Think' is irregular: the simple past is 'thought'."
+    },
+    "g4": {
+     "correct": "slept",
+     "accept": [
+      "slept"
+     ],
+     "label": "4. She ___ (sleep) very well",
+     "why": "'Sleep' is irregular: the simple past is 'slept'."
+    },
+    "g5": {
+     "correct": "ran",
+     "accept": [
+      "ran"
+     ],
+     "label": "5. Maya ___ (run) to the shop",
+     "why": "'Run' is irregular: the simple past is 'ran'."
+    },
+    "g6": {
+     "correct": "spoke",
+     "accept": [
+      "spoke"
+     ],
+     "label": "6. The girls ___ (speak)",
+     "why": "'Speak' is irregular: the simple past is 'spoke'."
+    },
+    "g7": {
+     "correct": "left",
+     "accept": [
+      "left"
+     ],
+     "label": "7. The plane ___ (leave)",
+     "why": "'Leave' is irregular: the simple past is 'left'."
+    },
+    "g8": {
+     "correct": "began",
+     "accept": [
+      "began"
+     ],
+     "label": "8. The film ___ (begin)",
+     "why": "'Begin' is irregular: the simple past is 'began'."
+    }
+   },
+   "typed": true
+  },
+  "exG": {
+   "prefix": "exG-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Where did you go yesterday?",
+     "accept": [
+      "Where did you go yesterday?",
+      "Yesterday, where did you go?",
+      "Yesterday where did you go?"
+     ],
+     "label": "1. you / did / where / go / yesterday",
+     "why": "Question word + did + subject + base form; the time phrase goes at the end or the start."
+    },
+    "g2": {
+     "correct": "I didn't like the subway.",
+     "accept": [
+      "I didn't like the subway."
+     ],
+     "label": "2. didn't / I / the subway / like",
+     "why": "Negative: subject + didn't + base form + object."
+    },
+    "g3": {
+     "correct": "Did you take the ferry?",
+     "accept": [
+      "Did you take the ferry?"
+     ],
+     "label": "3. the ferry / did / take / you",
+     "why": "Yes/no question: Did + subject + base form + object."
+    },
+    "g4": {
+     "correct": "We didn't have time.",
+     "accept": [
+      "We didn't have time."
+     ],
+     "label": "4. we / have / didn't / time",
+     "why": "Negative: subject + didn't + base form + object."
+    },
+    "g5": {
+     "correct": "What did she see?",
+     "accept": [
+      "What did she see?"
+     ],
+     "label": "5. what / see / did / she",
+     "why": "Question word + did + subject + base form."
+    },
+    "g6": {
+     "correct": "Lena didn't sleep last night.",
+     "accept": [
+      "Lena didn't sleep last night.",
+      "Last night, Lena didn't sleep.",
+      "Last night Lena didn't sleep."
+     ],
+     "label": "6. last night / didn't / sleep / Lena",
+     "why": "Subject + didn't + base form; the time phrase goes at the end or the start."
+    },
+    "g7": {
+     "correct": "When did the plane arrive?",
+     "accept": [
+      "When did the plane arrive?"
+     ],
+     "label": "7. when / arrive / did / the plane",
+     "why": "Question word + did + subject (the plane) + base form."
+    },
+    "g8": {
+     "correct": "They didn't like the noise.",
+     "accept": [
+      "They didn't like the noise."
+     ],
+     "label": "8. the noise / like / didn't / they",
+     "why": "Negative: subject + didn't + base form + object."
+    }
+   },
+   "typed": true
   }
  }
 }
