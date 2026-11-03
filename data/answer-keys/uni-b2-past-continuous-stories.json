@@ -3,15 +3,16 @@
  "sections": {
   "exA": {
    "prefix": "exA-",
-   "multi": false,
+   "multi": true,
    "gaps": {
     "g1": {
      "correct": "was walking",
      "accept": [
-      "was walking"
+      "was walking",
+      "walked"
      ],
      "label": "1. While I ___ (walk) to the station…",
-     "why": "After while, the longer action in progress takes the past continuous."
+     "why": "Both work after while: the past continuous stresses the walk in progress, the past simple is also fine."
     },
     "g2": {
      "correct": "started",
