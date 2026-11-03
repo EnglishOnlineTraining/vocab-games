@@ -114,14 +114,14 @@ body.print-mode .app-header, body.print-mode main { display:none; }
     <div class="welcome-hero">
       <div class="welcome-flag">🦘</div>
       <h1 class="welcome-title">Class Test: 9G — The Passive in Australia</h1>
-      <p class="welcome-sub">This test checks the passive: passive forms in different tenses, the passive infinitive and the passive with two objects. It is monitored and timed, so please read the rules carefully before you begin.</p>
+      <p class="welcome-sub">This test is monitored and timed, so please read the rules carefully before you begin.</p>
     </div>
 
     <div class="exercise-overview">
-      <div class="ov-card"><div class="ov-icon">🔄</div><strong>S1 — Passive forms</strong>10 points</div>
-      <div class="ov-card"><div class="ov-icon">📋</div><strong>S2 — Passive infinitive</strong>6 points</div>
-      <div class="ov-card"><div class="ov-icon">🎁</div><strong>S3 — Two objects</strong>6 points</div>
-      <div class="ov-card"><div class="ov-icon">📰</div><strong>S4 — Active or passive?</strong>8 points</div>
+      <div class="ov-card"><div class="ov-icon">🔄</div><strong>S1 — Sentences</strong>10 points</div>
+      <div class="ov-card"><div class="ov-icon">📋</div><strong>S2 — Rules</strong>8 points</div>
+      <div class="ov-card"><div class="ov-icon">🎁</div><strong>S3 — Same meaning</strong>8 points</div>
+      <div class="ov-card"><div class="ov-icon">📰</div><strong>S4 — Text</strong>12 points</div>
     </div>
 
     <div class="card">
@@ -194,7 +194,7 @@ body.print-mode .app-header, body.print-mode main { display:none; }
 
     <section id="step-1" class="step active">
       <span class="ex-badge">Section 1 · 10 points</span>
-      <h2 class="ex-title">Passive forms</h2>
+      <h2 class="ex-title">Complete the sentences</h2>
       <p class="ex-subtitle" id="instr-1"></p>
       <div class="card"><div class="item-pool" id="pool-1"></div></div>
       <div class="btn-row">
@@ -204,8 +204,8 @@ body.print-mode .app-header, body.print-mode main { display:none; }
     </section>
 
     <section id="step-2" class="step">
-      <span class="ex-badge">Section 2 · 6 points</span>
-      <h2 class="ex-title">Rules for the outback: the passive infinitive</h2>
+      <span class="ex-badge">Section 2 · 8 points</span>
+      <h2 class="ex-title">Rules for the outback</h2>
       <p class="ex-subtitle" id="instr-2"></p>
       <div class="card"><div class="item-pool" id="pool-2"></div></div>
       <div class="btn-row">
@@ -215,8 +215,8 @@ body.print-mode .app-header, body.print-mode main { display:none; }
     </section>
 
     <section id="step-3" class="step">
-      <span class="ex-badge">Section 3 · 6 points</span>
-      <h2 class="ex-title">The passive with two objects</h2>
+      <span class="ex-badge">Section 3 · 8 points</span>
+      <h2 class="ex-title">Same meaning</h2>
       <p class="ex-subtitle" id="instr-3"></p>
       <div class="card"><div class="item-pool" id="pool-3"></div></div>
       <div class="btn-row">
@@ -226,8 +226,8 @@ body.print-mode .app-header, body.print-mode main { display:none; }
     </section>
 
     <section id="step-4" class="step">
-      <span class="ex-badge">Section 4 · 8 points</span>
-      <h2 class="ex-title">Active or passive?</h2>
+      <span class="ex-badge">Section 4 · 12 points</span>
+      <h2 class="ex-title">Complete the text</h2>
       <p class="ex-subtitle" id="instr-4"></p>
       <div class="card"><div class="text-title" id="text-title"></div><div class="text-body" id="pool-4"></div></div>
       <div class="btn-row">
@@ -312,15 +312,15 @@ var RELEASE_CODE  = 'PASSIVE9G';
 var BASE_EXAM_MINS = 45;
 
 var INSTR = [
-  'Complete each sentence with the passive form of the verb in brackets. Look at the time words to choose the tense.',
-  'Complete each rule with the passive infinitive of the verb in brackets (be + past participle).',
-  'Read the active sentence. Then complete the passive sentence below it.',
-  'Complete the text with the correct form of the verb in brackets. Some gaps need the active, some the passive.'
+  'Complete each sentence with the correct form of the verb in brackets.',
+  'Complete each rule with the correct form of the verb in brackets.',
+  'Complete the second sentence so that it means the same as the first.',
+  'Complete the text with the correct form of the verb in brackets.'
 ];
 
 /* ===================== QUESTION POOLS ===================== */
 /* One paper, online or printed, = Section 1: 10 items drawn by tense (S1_TAKE)
-   + Section 2: 6 of 12 + Section 3: 6 of 12 + Section 4: one of three texts.
+   + Section 2: 8 of 16 + Section 3: 8 of 16 + Section 4: one of three texts.
    Keys list every accepted answer; norm() handles case, spacing and apostrophes. */
 var S1_GROUPS = {
   presentSimple: [
@@ -378,7 +378,11 @@ var S2_POOL = [
   {id:'p9',  before:'In the evening, kangaroos can often ', hint:'see', after:' near the road.', key:['be seen']},
   {id:'p10', before:'The walk to the waterfall can ', hint:'do', after:' in about two hours.', key:['be done']},
   {id:'p11', before:'Some beaches can\'t ', hint:'use', after:' in summer because of jellyfish.', key:['be used']},
-  {id:'p12', before:'A hat ought to ', hint:'wear', after:' in the sun at all times.', key:['be worn']}
+  {id:'p12', before:'A hat ought to ', hint:'wear', after:' in the sun at all times.', key:['be worn']},
+  {id:'p13', before:'Crocodile warning signs must not ', hint:'ignore', after:'.', key:['be ignored']},
+  {id:'p14', before:'Tents may only ', hint:'put up', after:' at the campsite.', key:['be put up']},
+  {id:'p15', before:'Park fees must ', hint:'pay', after:' at the entrance.', key:['be paid']},
+  {id:'p16', before:'Remote parts of the outback can only ', hint:'reach', after:' by four-wheel drive.', key:['be reached']}
 ];
 
 var S3_POOL = [
@@ -393,39 +397,55 @@ var S3_POOL = [
   {id:'t9',  verb:'lend', active:'Someone has lent Jim a surfboard.', before:'Jim ', after:' a surfboard.', key:['has been lent']},
   {id:'t10', verb:'pay', active:'The mining company paid the workers very good money.', before:'The workers ', after:' very good money.', key:['were paid']},
   {id:'t11', verb:'read', active:'The teacher is reading the class a Dreamtime story.', before:'The class ', after:' a Dreamtime story.', key:['is being read']},
-  {id:'t12', verb:'award', active:'The judges awarded the young swimmer a gold medal.', before:'A gold medal ', after:' to the young swimmer.', key:['was awarded']}
+  {id:'t12', verb:'award', active:'The judges awarded the young swimmer a gold medal.', before:'A gold medal ', after:' to the young swimmer.', key:['was awarded']},
+  {id:'t13', verb:'give', active:'The tour company will give every passenger a map of the reef.', before:'Every passenger ', after:' a map of the reef.', key:['will be given']},
+  {id:'t14', verb:'send', active:'The park has sent the volunteers new uniforms.', before:'New uniforms ', after:' to the volunteers.', key:['have been sent']},
+  {id:'t15', verb:'teach', active:'A local guide taught us some Aboriginal words.', before:'We ', after:' some Aboriginal words.', key:['were taught']},
+  {id:'t16', verb:'show', active:'The zookeeper is showing the children a baby wombat.', before:'A baby wombat ', after:' to the children.', key:['is being shown']}
 ];
 
-/* Each text: plain strings, and gaps as {hint, key}. Every text has 8 gaps. */
+/* Each text: plain strings, and gaps as {hint, key}. Every text has 12 gaps. */
 var TEXTS = [
   {id:'uluru', title:'Uluru', parts:[
     'Uluru, a huge red rock in the Northern Territory, ', {hint:'visit', key:['is visited']},
-    ' by hundreds of thousands of people every year. For more than a century it ', {hint:'know', key:['was known']},
-    ' as Ayers Rock, after a South Australian politician. For the Anangu people, who ', {hint:'live', key:['have lived','have been living']},
+    ' by hundreds of thousands of people every year. The first European to see it was the explorer William Gosse, who ', {hint:'reach', key:['reached']},
+    ' it in 1873 and ', {hint:'name', key:['named']},
+    ' it after a South Australian politician. For more than a century it ', {hint:'know', key:['was known']},
+    ' as Ayers Rock. For the Anangu people, who ', {hint:'live', key:['have lived','have been living']},
     ' in the area for tens of thousands of years, the rock is sacred. In 1985 the land ', {hint:'hand', key:['was handed']},
-    ' back to the Anangu, and today the national park ', {hint:'run', key:['is run']},
+    ' back to the Anangu, who ', {hint:'lease', key:['leased']},
+    ' it back to the government for 99 years. Today the national park ', {hint:'run', key:['is run']},
     ' by the Anangu and Parks Australia together. For many years, tourists ', {hint:'climb', key:['climbed']},
-    ' the rock, although the Anangu asked them not to. Since October 2019, climbing ', {hint:'ban', key:['has been banned']},
-    '. Instead, visitors ', {hint:'ask', key:['are asked']}, ' to walk around the base.'
+    ' the rock, although the Anangu asked them not to. In 2017 the park\'s board ', {hint:'vote', key:['voted']},
+    ' to close the climb, and since October 2019 climbing ', {hint:'ban', key:['has been banned']},
+    '. Today visitors ', {hint:'ask', key:['are asked']}, ' to walk around the base.'
   ]},
   {id:'opera', title:'The Sydney Opera House', parts:[
     'The Sydney Opera House ', {hint:'recognise', key:['is recognised','is recognized']},
-    ' all over the world. It ', {hint:'design', key:['was designed']},
-    ' by the Danish architect Jørn Utzon, who ', {hint:'win', key:['won']},
-    ' an international competition in 1957. The building work ', {hint:'take', key:['took']},
-    ' much longer than planned, and in 1966 Utzon ', {hint:'leave', key:['left']},
-    ' the project. The building ', {hint:'finish', key:['was finished']},
-    ' by a team of Australian architects. It ', {hint:'open', key:['was opened']},
+    ' all over the world. In 1956 an international design competition ', {hint:'launch', key:['was launched']},
+    ', and the next year a design by the Danish architect Jørn Utzon ', {hint:'choose', key:['was chosen']},
+    ' from more than 200 entries. At first, the building ', {hint:'estimate', key:['was estimated']},
+    ' to cost 7 million dollars, but the work ', {hint:'take', key:['took']},
+    ' much longer than planned, and the final bill ', {hint:'reach', key:['reached']},
+    ' 102 million dollars. Most of the money ', {hint:'raise', key:['was raised']},
+    ' by a state lottery. In 1966 Utzon ', {hint:'leave', key:['left']},
+    ' the project, and the building ', {hint:'finish', key:['was finished']},
+    ' by a team of Australian architects. Utzon never ', {hint:'see', key:['saw']},
+    ' the finished building. It ', {hint:'open', key:['was opened']},
     ' by Queen Elizabeth II in 1973, and in 2007 it ', {hint:'add', key:['was added']},
     ' to the UNESCO World Heritage List.'
   ]},
   {id:'reef', title:'The Great Barrier Reef', parts:[
     'The Great Barrier Reef ', {hint:'stretch', key:['stretches']},
-    ' for more than 2,300 kilometres along the coast of Queensland. It ', {hint:'make', key:['is made']},
-    ' up of thousands of separate reefs. In 1981 it ', {hint:'list', key:['was listed']},
+    ' for more than 2,300 kilometres along the coast of Queensland and ', {hint:'cover', key:['covers']},
+    ' an area bigger than Italy. It ', {hint:'make', key:['is made']},
+    ' up of thousands of separate reefs. In 1975 a marine park ', {hint:'create', key:['was created']},
+    ' to protect it, and in 1981 it ', {hint:'list', key:['was listed']},
     ' as a World Heritage Site. Today the reef ', {hint:'threaten', key:['is threatened']},
     ' by rising sea temperatures, and in recent years large parts of the coral ', {hint:'damage', key:['have been damaged']},
-    ' by bleaching. Scientists ', {hint:'study', key:['study']},
+    ' by bleaching. In 2024 bleaching ', {hint:'find', key:['was found']},
+    ' on most of the reefs that scientists ', {hint:'check', key:['checked','had checked']},
+    '. Researchers ', {hint:'study', key:['study']},
     ' the reef every year, and new ways of protecting it ', {hint:'test', key:['are being tested']},
     ' right now. Visitors ', {hint:'tell', key:['are told']}, ' never to touch the coral.'
   ]}
@@ -455,8 +475,8 @@ function drawPaper(seedStr){
   Object.keys(S1_TAKE).forEach(function(g){ s1 = s1.concat(shuffleArray(S1_GROUPS[g].slice(), rand).slice(0, S1_TAKE[g])); });
   return {
     s1: shuffleArray(s1, rand),
-    s2: shuffleArray(S2_POOL.slice(), rand).slice(0,6),
-    s3: shuffleArray(S3_POOL.slice(), rand).slice(0,6),
+    s2: shuffleArray(S2_POOL.slice(), rand).slice(0,8),
+    s3: shuffleArray(S3_POOL.slice(), rand).slice(0,8),
     text: TEXTS[Math.floor(rand()*TEXTS.length)]
   };
 }
@@ -497,7 +517,7 @@ function gapMark(key, val, verb){
     return AUX.indexOf(want) < 0 && AUX.indexOf(got) < 0 && !wrongForm && examSpellingOk(got, want);
   }) ? 'spelling' : '';
 }
-function gapInput(id, hint){ return '<input class="gap-input" type="text" id="'+id+'" placeholder="'+esc(hint)+'" aria-label="'+esc(hint)+'" autocomplete="off" spellcheck="false">'; }
+function gapInput(id, hint){ return '<input class="gap-input" type="text" id="'+id+'" placeholder="'+esc(hint)+'" aria-label="'+esc(hint||'Your answer')+'" autocomplete="off" spellcheck="false">'; }
 
 /* ===================== NAVIGATION ===================== */
 function goLock(){
@@ -532,7 +552,7 @@ function buildExam(){
   document.getElementById('pool-3').innerHTML = PAPER.s3.map(function(it,i){
     return '<div class="numbered-item"><span class="item-num">'+(i+1)+'</span>'
       + '<div class="item-active">'+esc(it.active)+'</div>'
-      + '<div class="item-sentence">'+esc(it.before)+gapInput('s3-'+it.id, 'passive')+esc(it.after)+'</div></div>';
+      + '<div class="item-sentence">'+esc(it.before)+gapInput('s3-'+it.id, '')+esc(it.after)+'</div></div>';
   }).join('');
   var n = 0;
   document.getElementById('text-title').textContent = PAPER.text.title;
@@ -593,7 +613,7 @@ function gradeAll(ans){
   ['s1','s2','s3','s4'].forEach(function(s){
     d[s] = ans[s].filter(function(a){ a.mark = gapMark(a.key, a.val, a.verb || a.hint); return a.mark; }).length;
   });
-  return { score:d.s1+d.s2+d.s3+d.s4, max:30, details:d };
+  return { score:d.s1+d.s2+d.s3+d.s4, max:38, details:d };
 }
 
 /* Shown to the student: their answers only, no marking. */
@@ -637,7 +657,7 @@ function doSubmit(){
     extra_time: extraTime,
     score: grade.score + ' / ' + grade.max,
     grade: note ? ('Note ' + note.note + ' (' + note.label + ')') : '',
-    ex5: 'AUTO-GRADE '+grade.score+'/'+grade.max+' — breakdown: Passive forms '+grade.details.s1+'/10, Passive infinitive '+grade.details.s2+'/6, Two objects '+grade.details.s3+'/6, Active or passive '+grade.details.s4+'/8',
+    ex5: 'AUTO-GRADE '+grade.score+'/'+grade.max+' — breakdown: Passive forms '+grade.details.s1+'/10, Passive infinitive '+grade.details.s2+'/8, Two objects '+grade.details.s3+'/8, Active or passive '+grade.details.s4+'/12',
     ex6: 'INTEGRITY session='+sid+' time='+m+'m'+s+'s tab_switches='+tabN+' paste_attempts='+pasteN+' typing_anomalies='+anomalyN+' devtools_flagged='+devToolsFlagged+' translation_flagged='+translationFlagged
   };
   var intF = eolIntFields(); for (var ik in intF) payload[ik] = intF[ik];   // integrity.js counts
@@ -687,18 +707,18 @@ function paperHTML(code){
   return '<section class="paper'+(isLRS(code)?' lrs':'')+'">'
     + '<div class="paper-head"><h1>'+esc(TITLE)+'</h1><span class="code">Version '+esc(code)+'</span></div>'
     + '<div class="paper-fields"><span>Name:</span><span>Class:</span><span>Date:</span></div>'
-    + '<p class="instr">'+BASE_EXAM_MINS+' minutes · 30 points · Write only the missing words.</p>'
-    + '<h2>1 Passive forms (10 points)</h2><p class="instr">'+INSTR[0]+'</p>'
+    + '<p class="instr">'+BASE_EXAM_MINS+' minutes · 38 points · Write only the missing words.</p>'
+    + '<h2>1 Complete the sentences (10 points)</h2><p class="instr">'+INSTR[0]+'</p>'
     + '<ol>'+P.s1.map(function(it){ return li(it, it.hint); }).join('')+'</ol>'
-    + '<h2>2 Rules for the outback: the passive infinitive (6 points)</h2><p class="instr">'+INSTR[1]+'</p>'
+    + '<h2>2 Rules for the outback (8 points)</h2><p class="instr">'+INSTR[1]+'</p>'
     + '<ol>'+P.s2.map(function(it){ return li(it, it.hint); }).join('')+'</ol>'
-    + '<h2>3 The passive with two objects (6 points)</h2><p class="instr">'+INSTR[2]+'</p>'
+    + '<h2>3 Same meaning (8 points)</h2><p class="instr">'+INSTR[2]+'</p>'
     + '<ol>'+P.s3.map(function(it){ return '<li><span class="pa">'+esc(it.active)+'</span>'+esc(it.before)+PGAP+esc(it.after)+'</li>'; }).join('')+'</ol>'
-    + '<h2>4 Active or passive? (8 points)</h2><p class="instr">'+INSTR[3]+'</p>'
+    + '<h2>4 Complete the text (12 points)</h2><p class="instr">'+INSTR[3]+'</p>'
     + '<p class="ptext"><strong>'+esc(P.text.title)+'.</strong> '+P.text.parts.map(function(p){
         return typeof p === 'string' ? esc(p) : '('+(++n)+') '+PGAP+' ('+esc(p.hint)+')';
       }).join('')+'</p>'
-    + '<p class="paper-foot">Points: ____ / 30</p>'
+    + '<p class="paper-foot">Points: ____ / 38</p>'
     + '</section>';
 }
 

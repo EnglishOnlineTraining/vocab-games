@@ -1,12 +1,12 @@
 // E2E: 9g-australia-passive-test. Online, a full sitting answered from the page's own
-// keys scores 30/30 and is sent to the sheet (intercepted, never leaves the machine).
+// keys scores 38/38 and is sent to the sheet (intercepted, never leaves the machine).
 // In print mode (?print), every paper in a batch is different, a code rebuilt on its
 // own gives the same paper as in the batch, and the key printed for it is that paper's.
 const { test, expect } = require('@playwright/test');
 
 const FILE = '/9g-australia-passive-test.html';
 
-test('pools: every paper has 10 + 6 + 6 + 8 gaps, each with a key', async ({ page }) => {
+test('pools: every paper has 10 + 8 + 8 + 12 gaps, each with a key', async ({ page }) => {
   await page.goto(FILE);
   const r = await page.evaluate(() => {
     const out = [];
@@ -17,10 +17,10 @@ test('pools: every paper has 10 + 6 + 6 + 8 gaps, each with a key', async ({ pag
     }
     return [...new Set(out)];
   });
-  expect(r).toEqual(['10,6,6,8,true']);
+  expect(r).toEqual(['10,8,8,12,true']);
 });
 
-test('online: a sitting answered from the keys scores 30/30 and is sent once', async ({ page }) => {
+test('online: a sitting answered from the keys scores 38/38 and is sent once', async ({ page }) => {
   const sent = [];
   await page.route(/hook\.eu1\.make\.com/, (route) => {
     sent.push(JSON.parse(decodeURIComponent(route.request().postData().slice(8).replace(/\+/g, ' '))));
@@ -34,7 +34,7 @@ test('online: a sitting answered from the keys scores 30/30 and is sent once', a
   await page.evaluate(() => checkCode());
   await page.evaluate(() => startExam());
   await expect(page.locator('#pool-1 .gap-input')).toHaveCount(10);
-  await expect(page.locator('#pool-4 .gap-input')).toHaveCount(8);
+  await expect(page.locator('#pool-4 .gap-input')).toHaveCount(12);
 
   // Type the first accepted answer into every gap, with a German-keyboard apostrophe.
   await page.evaluate(() => {
@@ -49,7 +49,7 @@ test('online: a sitting answered from the keys scores 30/30 and is sent once', a
   });
   await expect.poll(() => sent.length).toBe(1);
   expect(sent[0].unit).toBe('9g-australia-passive-test');
-  expect(sent[0].score).toBe('30 / 30');
+  expect(sent[0].score).toBe('38 / 38');
   expect(sent[0].ex5).toContain('Passive forms 10/10');
   expect(sent[0].ex4).toMatch(/^Text: (Uluru|The Sydney Opera House|The Great Barrier Reef) \| 1\. /);
   await expect(page.locator('#s-done')).toHaveClass(/active/);
@@ -142,7 +142,7 @@ test('LRS sitting: slips score, only the sheet is told', async ({ page }) => {
     return out;
   });
   await expect.poll(() => sent.length).toBe(1);
-  expect(Number(sent[0].score.split(' ')[0])).toBeGreaterThanOrEqual(25);   // short words (< 4 letters) can't slip
+  expect(Number(sent[0].score.split(' ')[0])).toBeGreaterThanOrEqual(32);   // short words (< 4 letters) can't slip
   expect(sent[0].dyslexia).toBe('yes');
   expect(sent[0].ex1).toContain('[spelling not marked]');
   expect(mail.join('') + copy).not.toMatch(/dyslexi|spelling not marked/i);
