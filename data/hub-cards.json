@@ -2365,14 +2365,66 @@
     "style": "activity-card",
     "blocks": [
       {
-        "heading": null,
+        "heading": {
+          "text": "B2 · Upper intermediate",
+          "id": "level-b2"
+        },
         "cards": [
           {
-            "href": "uni-cause-effect.html",
-            "icon": "🔗",
-            "title": "Cause &amp; Effect in Academic Writing",
-            "meta": "Cause-effect connectors, register &amp; formality, academic writing · B2–C1",
-            "tag": "Academic writing"
+            "href": "uni-b2-narrative-tenses.html",
+            "icon": "📖",
+            "title": "Narrative Tenses 3: Practice with All Three Tenses",
+            "meta": "choose between the past simple, past continuous and past perfect in three short stories, then plan a story of your own.",
+            "tag": "Grammar"
+          },
+          {
+            "href": "uni-b2-past-perfect-stories.html",
+            "icon": "📖",
+            "title": "Narrative Tenses 2: The Past Perfect",
+            "meta": "choose the past simple, past continuous or past perfect in eleven gaps, then plan, tell and write a short story from your life.",
+            "tag": "Grammar"
+          },
+          {
+            "href": "uni-b2-past-continuous-stories.html",
+            "icon": "📖",
+            "title": "Narrative Tenses 1: Past Simple and Past Continuous",
+            "meta": "choose the past simple or past continuous in twelve gaps, then write a short story with your group.",
+            "tag": "Grammar"
+          },
+          {
+            "href": "uni-fix-our-campus.html",
+            "icon": "🏫",
+            "title": "Fix Our Campus: A Problem-Solving Proposal",
+            "meta": "Group task, pitch, peer feedback & writing — propose two solutions to a campus problem and justify them",
+            "tag": "Writing"
+          },
+          {
+            "href": "uni-b2-introduce-yourself.html",
+            "icon": "👋",
+            "title": "Introduce Yourself: Questions and a Short Profile",
+            "meta": "check your question forms, then write a 120–150 word introduction about your studies, your background and…",
+            "tag": "Grammar"
+          },
+          {
+            "href": "uni-roleplay-building-relationships.html",
+            "icon": "🎭",
+            "title": "Building Relationships: A Roleplay",
+            "meta": "Group roleplay: plan how (not) to communicate and reflect on relationship-building",
+            "tag": "Roleplay"
+          },
+          {
+            "href": "uni-al-munir-relationships.html",
+            "icon": "🏨",
+            "title": "Al-Munir Hotel Group: Customer Relationships",
+            "meta": "Case study: survey analysis, group discussion, action planning &amp; sales letter writing",
+            "tag": "Case study"
+          },
+          {
+            "href": "uni-building-relationships.html",
+            "icon": "🤝",
+            "title": "Building Business Relationships",
+            "meta": "Reading order, true/false, multi-word verbs, linkers &amp; writing — with self-check",
+            "tag": "Reading &amp; writing"
           },
           {
             "href": "uni-relationships-vocab.html",
@@ -2394,47 +2446,27 @@
             "title": "Relationships – Multi-word Verbs",
             "meta": "Order a conversation, match meanings &amp; rephrase sentences",
             "tag": "Language &amp; grammar"
+          }
+        ]
+      },
+      {
+        "heading": {
+          "text": "C1 · Advanced",
+          "id": "level-c1"
+        },
+        "cards": [
+          {
+            "href": "uni-c1-vocab-practice.html",
+            "icon": "📚",
+            "title": "C1 English Vocabulary Practice",
+            "meta": "75 work & project words, 10 at a time · choose, then type · progress saved",
+            "tag": "Vocabulary"
           },
           {
-            "href": "uni-building-relationships.html",
-            "icon": "🤝",
-            "title": "Building Business Relationships",
-            "meta": "Reading order, true/false, multi-word verbs, linkers &amp; writing — with self-check",
-            "tag": "Reading &amp; writing"
-          },
-          {
-            "href": "uni-al-munir-relationships.html",
-            "icon": "🏨",
-            "title": "Al-Munir Hotel Group: Customer Relationships",
-            "meta": "Case study: survey analysis, group discussion, action planning &amp; sales letter writing",
-            "tag": "Case study"
-          },
-          {
-            "href": "uni-roleplay-building-relationships.html",
-            "icon": "🎭",
-            "title": "Building Relationships: A Roleplay",
-            "meta": "Group roleplay: plan how (not) to communicate and reflect on relationship-building",
-            "tag": "Roleplay"
-          },
-          {
-            "href": "uni-hedging-language.html",
-            "icon": "🎯",
-            "title": "Hedging Language in Academic Writing",
-            "meta": "Reading, gap-fill, transformation &amp; writing — learn to use cautious language in academic contexts",
-            "tag": "Academic writing"
-          },
-          {
-            "href": "uni-project-management.html",
-            "icon": "📊",
-            "title": "Project Management: Fine-Tuning Your Schedule",
-            "meta": "Discussion, reading, vocabulary, style &amp; roleplay — project planning and scheduling techniques",
-            "tag": "Professional skills"
-          },
-          {
-            "href": "uni-describing-data-trends.html",
-            "icon": "📊",
-            "title": "Describing Data &amp; Trends",
-            "meta": "Trend verbs, modifiers, graph description gap-fill &amp; writing practice — academic vocabulary for graphs and statistics",
+            "href": "uni-cause-effect.html",
+            "icon": "🔗",
+            "title": "Cause &amp; Effect in Academic Writing",
+            "meta": "Cause-effect connectors, register &amp; formality, academic writing · B2–C1",
             "tag": "Academic writing"
           },
           {
@@ -2445,17 +2477,31 @@
             "tag": "Academic skills"
           },
           {
-            "href": "uni-ai-ethics.html",
-            "icon": "🤖",
-            "title": "AI Ethics in Higher Education",
-            "meta": "Academic vocabulary, reading &amp; gap-fill, paraphrasing and critical writing on AI and academic integrity",
-            "tag": "Academic skills"
-          },
-          {
             "href": "uni-paraphrasing-summarizing.html",
             "icon": "✍️",
             "title": "Paraphrasing &amp; Summarizing",
             "meta": "Key concepts, recognising good paraphrases, paraphrasing practice &amp; summarizing a passage",
+            "tag": "Academic writing"
+          },
+          {
+            "href": "uni-describing-data-trends.html",
+            "icon": "📊",
+            "title": "Describing Data &amp; Trends",
+            "meta": "Trend verbs, modifiers, graph description gap-fill &amp; writing practice — academic vocabulary for graphs and statistics",
+            "tag": "Academic writing"
+          },
+          {
+            "href": "uni-project-management.html",
+            "icon": "📊",
+            "title": "Project Management: Fine-Tuning Your Schedule",
+            "meta": "Discussion, reading, vocabulary, style &amp; roleplay — project planning and scheduling techniques",
+            "tag": "Professional skills"
+          },
+          {
+            "href": "uni-hedging-language.html",
+            "icon": "🎯",
+            "title": "Hedging Language in Academic Writing",
+            "meta": "Reading, gap-fill, transformation &amp; writing — learn to use cautious language in academic contexts",
             "tag": "Academic writing"
           },
           {
@@ -2466,60 +2512,41 @@
             "tag": "Academic skills"
           },
           {
-            "href": "uni-review.html",
-            "icon": "🔁",
-            "title": "Mixed Revision",
-            "meta": "24 questions from every unit · spaced practice",
-            "tag": "Review"
-          },
-          {
-            "href": "uni-c1-vocab-practice.html",
-            "icon": "📚",
-            "title": "C1 English Vocabulary Practice",
-            "meta": "75 work & project words, 10 at a time · choose, then type · progress saved",
-            "tag": "Vocabulary"
-          },
+            "href": "uni-ai-ethics.html",
+            "icon": "🤖",
+            "title": "AI Ethics in Higher Education",
+            "meta": "Academic vocabulary, reading &amp; gap-fill, paraphrasing and critical writing on AI and academic integrity",
+            "tag": "Academic skills"
+          }
+        ]
+      },
+      {
+        "heading": {
+          "text": "C2 · Proficiency",
+          "id": "level-c2"
+        },
+        "cards": [
           {
             "href": "uni-c2-vocab-practice.html",
             "icon": "🎯",
             "title": "C2 English Vocabulary Practice",
             "meta": "75 consulting & sustainability words, 10 at a time · choose, then type · progress saved",
             "tag": "Vocabulary"
-          },
+          }
+        ]
+      },
+      {
+        "heading": {
+          "text": "Revision",
+          "id": "unit-revision"
+        },
+        "cards": [
           {
-            "href": "uni-b2-introduce-yourself.html",
-            "icon": "👋",
-            "title": "Introduce Yourself: Questions and a Short Profile",
-            "meta": "check your question forms, then write a 120–150 word introduction about your studies, your background and…",
-            "tag": "Grammar"
-          },
-          {
-            "href": "uni-fix-our-campus.html",
-            "icon": "🏫",
-            "title": "Fix Our Campus: A Problem-Solving Proposal",
-            "meta": "Group task, pitch, peer feedback & writing — propose two solutions to a campus problem and justify them",
-            "tag": "Writing"
-          },
-          {
-            "href": "uni-b2-narrative-tenses.html",
-            "icon": "📖",
-            "title": "Narrative Tenses: Telling a Story in the Past",
-            "meta": "choose between the past simple, past continuous and past perfect in three short stories, then plan a story of your own.",
-            "tag": "Grammar"
-          },
-          {
-            "href": "uni-b2-past-continuous-stories.html",
-            "icon": "📖",
-            "title": "Telling Stories: Past Simple and Past Continuous",
-            "meta": "choose the past simple or past continuous in twelve gaps, then write a short story with your group.",
-            "tag": "Grammar"
-          },
-          {
-            "href": "uni-b2-past-perfect-stories.html",
-            "icon": "📖",
-            "title": "Telling Stories: The Past Perfect",
-            "meta": "choose the past simple, past continuous or past perfect in eleven gaps, then plan, tell and write a short story from your life.",
-            "tag": "Grammar"
+            "href": "uni-review.html",
+            "icon": "🔁",
+            "title": "Mixed Revision",
+            "meta": "24 questions from every unit · spaced practice",
+            "tag": "Review"
           }
         ]
       }
