@@ -1,0 +1,199 @@
+{
+ "unit": "8c-nyc-first-day",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Hamburg",
+     "accept": [
+      "Hamburg"
+     ],
+     "label": "1. Lena comes from ___",
+     "why": "The first sentence says 'Lena from Hamburg'. Brooklyn is where Maya lives."
+    },
+    "g2": {
+     "correct": "at ten at night",
+     "accept": [
+      "at ten at night"
+     ],
+     "label": "2. She got to the airport ___",
+     "why": "The plane was late, so she got there at ten at night."
+    },
+    "g3": {
+     "correct": "subway",
+     "accept": [
+      "subway"
+     ],
+     "label": "3. They went to Brooklyn by ___",
+     "why": "Maya and her dad took her home by subway."
+    },
+    "g4": {
+     "correct": "bagels",
+     "accept": [
+      "bagels"
+     ],
+     "label": "4. For breakfast the girls ate ___",
+     "why": "In Central Park they ate bagels for breakfast."
+    },
+    "g5": {
+     "correct": "noise",
+     "accept": [
+      "noise"
+     ],
+     "label": "5. In Times Square, Lena didn't like the ___",
+     "why": "She didn't like the noise, but she loved the lights."
+    },
+    "g6": {
+     "correct": "brother",
+     "accept": [
+      "brother"
+     ],
+     "label": "6. A small statue for her ___",
+     "why": "Lena bought the statue for her brother."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "went",
+     "accept": [
+      "went"
+     ],
+     "label": "1. Yesterday we ___ (go)",
+     "why": "'Go' is irregular: go → went. There is no form 'goed'."
+    },
+    "g2": {
+     "correct": "bought",
+     "accept": [
+      "bought"
+     ],
+     "label": "2. My dad ___ (buy) the tickets",
+     "why": "'Buy' is irregular: buy → bought."
+    },
+    "g3": {
+     "correct": "saw",
+     "accept": [
+      "saw"
+     ],
+     "label": "3. We ___ (see) the whole city",
+     "why": "'See' is irregular: see → saw."
+    },
+    "g4": {
+     "correct": "took",
+     "accept": [
+      "took"
+     ],
+     "label": "4. Lena ___ (take) lots of photos",
+     "why": "'Take' is irregular: take → took."
+    },
+    "g5": {
+     "correct": "ate",
+     "accept": [
+      "ate"
+     ],
+     "label": "5. Then we ___ (eat) pizza",
+     "why": "'Eat' is irregular: eat → ate."
+    },
+    "g6": {
+     "correct": "made",
+     "accept": [
+      "made"
+     ],
+     "label": "6. I ___ (make) a short video",
+     "why": "'Make' is irregular: make → made."
+    },
+    "g7": {
+     "correct": "came",
+     "accept": [
+      "came"
+     ],
+     "label": "7. We ___ (come) home at nine",
+     "why": "'Come' is irregular: come → came."
+    },
+    "g8": {
+     "correct": "live",
+     "accept": [
+      "live"
+     ],
+     "label": "8. I ___ (live) in Brooklyn now",
+     "why": "Review from 'Five teenagers': 'now' means the present, so use the simple present. With 'I' there is no -s."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "didn't like",
+     "accept": [
+      "didn't like"
+     ],
+     "label": "1. I ___ the noise",
+     "why": "After didn't, use the base form: didn't like, not didn't liked."
+    },
+    "g2": {
+     "correct": "Did you visit",
+     "accept": [
+      "Did you visit"
+     ],
+     "label": "2. ___ the Statue of Liberty?",
+     "why": "Past questions start with Did + subject + base form."
+    },
+    "g3": {
+     "correct": "didn't take",
+     "accept": [
+      "didn't take"
+     ],
+     "label": "3. We ___ a taxi",
+     "why": "After didn't, use the base form: take, not took."
+    },
+    "g4": {
+     "correct": "did you go",
+     "accept": [
+      "did you go"
+     ],
+     "label": "4. Where ___ for lunch?",
+     "why": "Question word + did + subject + base form: Where did you go?"
+    },
+    "g5": {
+     "correct": "didn't come",
+     "accept": [
+      "didn't come"
+     ],
+     "label": "5. Maya's dad ___ with us",
+     "why": "Negative in the past: didn't + base form (come)."
+    },
+    "g6": {
+     "correct": "Did you see",
+     "accept": [
+      "Did you see"
+     ],
+     "label": "6. ___ Maya's school?",
+     "why": "Did + you + base form (see). The past is already in 'did'."
+    },
+    "g7": {
+     "correct": "didn't stop",
+     "accept": [
+      "didn't stop"
+     ],
+     "label": "7. The subway ___ at our station",
+     "why": "After didn't, the verb has no -ed: didn't stop."
+    },
+    "g8": {
+     "correct": "did you buy",
+     "accept": [
+      "did you buy"
+     ],
+     "label": "8. What ___ for your brother?",
+     "why": "What + did + you + base form (buy)."
+    }
+   }
+  }
+ }
+}
