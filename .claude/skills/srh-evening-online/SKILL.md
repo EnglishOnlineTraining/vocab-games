@@ -1,5 +1,5 @@
 ---
-name: srh-b2-week
+name: srh-evening-online
 description: "Build a week of Shaun's SRH B2 course 'English Communication Skills — Evening Online' (Tuesday and Thursday, 18:15–19:45, online): check the week's info with Shaun first, then make the Google Slides deck for both sessions and the in-class online pages (uni-b2-*.html) that students work through and submit during the lesson, with homework kept minimal and optional. Use this whenever Shaun asks for B2 slides, 'week N slides for the evening course', 'the online evening B2 course', the next B2 lesson, or B2 in-class or homework pages, even if he only says 'slides for Tuesday' and the context is the B2 group. Not for the Monday C1–C2 Professional English course or for the school year groups."
 ---
 
