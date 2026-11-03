@@ -21713,5 +21713,71 @@
     }
    }
   }
+ },
+ "uni-b2-past-continuous-stories": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. While I ___ (walk) to the station…",
+     "correct": "was walking",
+     "why": "After while, the longer action in progress takes the past continuous."
+    },
+    "g2": {
+     "label": "1. … it ___ (start) to rain.",
+     "correct": "started",
+     "why": "The short action that happens during the walk takes the past simple."
+    },
+    "g3": {
+     "label": "2. While we ___ (plan) our pitch…",
+     "correct": "were planning",
+     "why": "After while, the longer action in progress takes the past continuous."
+    },
+    "g4": {
+     "label": "2. … the internet ___ (stop).",
+     "correct": "stopped",
+     "why": "The sudden short action takes the past simple."
+    },
+    "g5": {
+     "label": "3. While she ___ (check) her phone…",
+     "correct": "was checking",
+     "why": "After while, the longer action in progress takes the past continuous."
+    },
+    "g6": {
+     "label": "3. … the lecturer ___ (give) the deadline.",
+     "correct": "gave",
+     "why": "The short action that happens during the longer one takes the past simple."
+    },
+    "g7": {
+     "label": "4. They ___ (eat) lunch at their desks…",
+     "correct": "were eating",
+     "why": "They were in the middle of lunch when the librarian came: past continuous."
+    },
+    "g8": {
+     "label": "4. … when the librarian ___ (come) over.",
+     "correct": "came",
+     "why": "After when, the interrupting action takes the past simple."
+    },
+    "g9": {
+     "label": "5. Our reporter ___ (present) our idea…",
+     "correct": "was presenting",
+     "why": "The pitch was in progress when the card went up: past continuous."
+    },
+    "g10": {
+     "label": "5. … when the timekeeper ___ (hold) up the card.",
+     "correct": "held",
+     "why": "The short interrupting action takes the past simple; hold → held."
+    },
+    "g11": {
+     "label": "6. What ___ (you / do) when I called?",
+     "correct": "were you doing",
+     "why": "A question about an action in progress: was/were + subject + -ing."
+    },
+    "g12": {
+     "label": "6. … when I ___ (call) you last night?",
+     "correct": "called",
+     "why": "The short action that interrupts takes the past simple."
+    }
+   }
+  }
  }
 }
