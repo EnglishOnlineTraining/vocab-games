@@ -79,9 +79,11 @@ for (const unit of PAGES) test(unit + ': two sessions, requeue, focus words, sav
   const missed2 = await answerCard(page, true);
   while (await page.locator('#scr-round').evaluate(e => e.classList.contains('active'))) await answerCard(page, false);
 
-  const focus = await page.locator('#focus-words').textContent();
+  // Whole-entry match: a plain includes() let "Project" match inside a missed
+  // "Project manager" and failed at random, depending on which words were drawn.
+  const focus = ', ' + await page.locator('#focus-words strong').textContent() + ', ';
   const expected = [...new Set([missed1, missed2])];
-  for (const w of first10) expect(focus.includes(w)).toBe(expected.includes(w));
+  for (const w of first10) expect(focus.includes(', ' + w + ', '), w).toBe(expected.includes(w));
   await page.screenshot({ path: 'test-results/' + unit + '-end.png', fullPage: true });
 
   // Send progress (test mode on localhost logs the payload instead of posting).
