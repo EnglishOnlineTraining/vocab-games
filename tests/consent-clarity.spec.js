@@ -17,7 +17,14 @@ test('no choice: banner names Clarity, nothing loads until Akzeptieren', async (
   expect(hits).toEqual([]);
   await page.locator('#eol-consent .yes').click();
   await expect.poll(() => hits.some((u) => u.includes('clarity.ms/tag/z7d6a7n9ul'))).toBe(true);
-  expect(hits.some((u) => u.includes('googletagmanager.com'))).toBe(true);
+  expect(hits.some((u) => {
+    try {
+      const host = new URL(u).hostname;
+      return host === 'googletagmanager.com' || host.endsWith('.googletagmanager.com');
+    } catch {
+      return false;
+    }
+  })).toBe(true);
   expect(await page.evaluate(() => localStorage.getItem('eol_consent'))).toBe('granted-clarity');
 });
 
