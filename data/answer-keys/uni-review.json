@@ -6,73 +6,11 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "rose steadily",
-     "accept": [
-      "rose steadily"
-     ],
-     "label": "1. Usage"
-    },
-    "g2": {
-     "correct": "got",
-     "accept": [
-      "got"
-     ],
-     "label": "2. When I"
-    },
-    "g3": {
-     "correct": "anecdotal",
-     "accept": [
-      "anecdotal"
-     ],
-     "label": "3. Personal stories rather than systematic research"
-    },
-    "g4": {
-     "correct": "brought",
-     "accept": [
-      "brought"
-     ],
-     "label": "4. What"
-    },
-    "g5": {
-     "correct": "9",
-     "accept": [
-      "9"
-     ],
-     "label": "5. h) Glad it worked out. Anyway, are you free..."
-    },
-    "g6": {
      "correct": "appear to support",
      "accept": [
       "appear to support"
      ],
-     "label": "6. The data"
-    },
-    "g7": {
-     "correct": "opening",
-     "accept": [
-      "opening"
-     ],
-     "label": "7. We recommend"
-    },
-    "g8": {
-     "correct": "a basic structure of ideas or rules that provides guidance",
-     "accept": [
-      "a basic structure of ideas or rules that provides guidance"
-     ],
-     "label": "8. framework"
-    }
-   }
-  },
-  "exB": {
-   "prefix": "exB-",
-   "multi": false,
-   "gaps": {
-    "g1": {
-     "correct": "gave",
-     "accept": [
-      "gave"
-     ],
-     "label": "1. … the lecturer"
+     "label": "1. The data"
     },
     "g2": {
      "correct": "same length",
@@ -82,46 +20,108 @@
      "label": "2. A good paraphrase is roughly the"
     },
     "g3": {
-     "correct": "d",
+     "correct": "rose steadily",
      "accept": [
-      "d"
+      "rose steadily"
      ],
-     "label": "3. The Accounts Department's slow payment..."
+     "label": "3. Usage"
     },
     "g4": {
-     "correct": "Since",
+     "correct": "got",
      "accept": [
-      "Since"
+      "got"
      ],
-     "label": "4."
+     "label": "4. When I"
     },
     "g5": {
+     "correct": "brought",
+     "accept": [
+      "brought"
+     ],
+     "label": "5. What"
+    },
+    "g6": {
      "correct": "8",
      "accept": [
       "8"
      ],
-     "label": "5. Chinese businesspeople wanting something in return"
-    },
-    "g6": {
-     "correct": "rapid",
-     "accept": [
-      "rapid"
-     ],
-     "label": "6. The most"
+     "label": "6. Chinese businesspeople wanting something in return"
     },
     "g7": {
-     "correct": "rang",
+     "correct": "d",
      "accept": [
-      "rang"
+      "d"
      ],
-     "label": "7. I was sleeping deeply when my alarm"
+     "label": "7. The Accounts Department's slow payment..."
     },
     "g8": {
-     "correct": "methodology",
+     "correct": "anecdotal",
      "accept": [
-      "methodology"
+      "anecdotal"
      ],
-     "label": "8. The detailed plan of how a study was conducted"
+     "label": "8. Personal stories rather than systematic research"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "was waiting",
+     "accept": [
+      "was waiting"
+     ],
+     "label": "1. While I"
+    },
+    "g2": {
+     "correct": "opening",
+     "accept": [
+      "opening"
+     ],
+     "label": "2. We recommend"
+    },
+    "g3": {
+     "correct": "a basic structure of ideas or rules that provides guidance",
+     "accept": [
+      "a basic structure of ideas or rules that provides guidance"
+     ],
+     "label": "3. framework"
+    },
+    "g4": {
+     "correct": "gave",
+     "accept": [
+      "gave"
+     ],
+     "label": "4. … the lecturer"
+    },
+    "g5": {
+     "correct": "Since",
+     "accept": [
+      "Since"
+     ],
+     "label": "5."
+    },
+    "g6": {
+     "correct": "9",
+     "accept": [
+      "9"
+     ],
+     "label": "6. h) Glad it worked out. Anyway, are you free..."
+    },
+    "g7": {
+     "correct": "could be",
+     "accept": [
+      "could be"
+     ],
+     "label": "7. Climate change"
+    },
+    "g8": {
+     "correct": "synonyms",
+     "accept": [
+      "synonyms"
+     ],
+     "label": "8. Techniques include using"
     }
    }
   },
@@ -130,60 +130,60 @@
    "multi": false,
    "gaps": {
     "g1": {
+     "correct": "rapid",
+     "accept": [
+      "rapid"
+     ],
+     "label": "1. The most"
+    },
+    "g2": {
+     "correct": "rang",
+     "accept": [
+      "rang"
+     ],
+     "label": "2. I was sleeping deeply when my alarm"
+    },
+    "g3": {
      "correct": "do you study",
      "accept": [
       "do you study"
      ],
-     "label": "1. What"
-    },
-    "g2": {
-     "correct": "8",
-     "accept": [
-      "8"
-     ],
-     "label": "2. i) Well, I had to build up my relationship again..."
-    },
-    "g3": {
-     "correct": "could be",
-     "accept": [
-      "could be"
-     ],
-     "label": "3. Climate change"
+     "label": "3. What"
     },
     "g4": {
-     "correct": "by",
+     "correct": "2",
      "accept": [
-      "by"
+      "2"
      ],
-     "label": "4. This could be improved"
+     "label": "4. talks about how guanxi is changing"
     },
     "g5": {
-     "correct": "detection",
-     "accept": [
-      "detection"
-     ],
-     "label": "5. AI"
-    },
-    "g6": {
-     "correct": "was checking",
-     "accept": [
-      "was checking"
-     ],
-     "label": "6. While she"
-    },
-    "g7": {
-     "correct": "synonyms",
-     "accept": [
-      "synonyms"
-     ],
-     "label": "7. Techniques include using"
-    },
-    "g8": {
      "correct": "establish",
      "accept": [
       "establish"
      ],
-     "label": "8. Planning to"
+     "label": "5. Planning to"
+    },
+    "g6": {
+     "correct": "methodology",
+     "accept": [
+      "methodology"
+     ],
+     "label": "6. The detailed plan of how a study was conducted"
+    },
+    "g7": {
+     "correct": "arrived",
+     "accept": [
+      "arrived"
+     ],
+     "label": "7. By the time the lecturer"
+    },
+    "g8": {
+     "correct": "by",
+     "accept": [
+      "by"
+     ],
+     "label": "8. This could be improved"
     }
    }
   }
