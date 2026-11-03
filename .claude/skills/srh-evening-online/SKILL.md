@@ -91,12 +91,13 @@ those after Week 1.
 goes into the class page, and a set time for one group to present (e.g. 19:30).
 
 **The class-page slide** is a numbered list of steps:
-1. Open the class page (link in the chat).
+1. Open Narrative Tenses 1 (link in the chat).
 2. Enter your name and B2 Evening Online.
 3. Do Exercise A on your own: N gaps, 10 minutes.
 4. Press Check. Then we go through the answers together.
 
-Link the first 19 characters ("Open the class page") to the page.
+Name the page by its title (see "Name the week's pages as a series" in Step 4), and link the page
+name to the page.
 
 **Build by duplicating the copied deck's own slides** and replacing their text. Don't draw new
 shapes: the copied slides are the design system. The method that worked:
@@ -132,6 +133,12 @@ Copy the newest in-class page, `uni-b2-past-continuous-stories.html`, and keep i
 
 Pages are English only: no German anywhere, no Note.
 
+**Name the week's pages as a series.** Week 3's three pages became "Narrative Tenses 1: Past
+Simple and Past Continuous" (Tuesday), "… 2: The Past Perfect" (Thursday) and "… 3: Practice with
+All Three Tenses" (optional). Shaun asked for this so students can see the order. Number them in
+teaching order, with the optional page last, in both `<title>` and the welcome `<h1>`. Once a page is
+live, keep its URL even when the title changes, because slide links and submissions point at it.
+
 **The usual parts:**
 - **Ex A, graded:** the session's grammar as 10–12 dropdown gaps with 3 options. Vary the position
   of the correct answer. Add the optional "Before you start" retrieval box (never validated), and 1–2
@@ -148,6 +155,12 @@ so only one form fits ("While I ___ (walk)…", "…when the librarian came over
 stop"). If casual English accepts a past simple where you want a past perfect, add *by the time* or
 *before*, or drop that distractor.
 
+**No repeated items across the week.** Students meet the same grammar on two or three pages in one
+week. Before building, list every gap sentence on the week's pages and the optional practice page,
+and compare them. No sentence should appear twice, and none should be the same situation reworded
+(the same library, the same bus, the same answer for the same reason). A recall item may come back
+on purpose, but give it a new situation each time.
+
 **Explanations:** add one sentence of 20 words or fewer per graded gap to `data/explanations.json`
 under the page's UNIT. Append it as text before the file's final `}` and check the JSON still
 parses. Don't re-dump the file: that rewrites thousands of lines.
@@ -160,15 +173,17 @@ parses. Don't re-dump the file: that rewrites thousands of lines.
 
 **Test the page in the browser over HTTP.** It won't run from `file://`, and the pane may show it as
 a data: URL.
-- Port 3721 may belong to another worktree's server, so don't kill it. Add a temporary
-  `.claude/launch.json` entry on a free port (e.g. 3741), test, stop the server, then
-  `git checkout -- .claude/launch.json`.
+- Port 3721 may belong to another worktree's server, so don't kill it. Other sessions may also hold
+  3741. Add a temporary `.claude/launch.json` entry on a port that `lsof -iTCP:<port> -sTCP:LISTEN`
+  shows as free, test, stop the server, then `git checkout -- .claude/launch.json`.
 - Click through: empty steps blocked, every Check grading the right answers, the score card, a
   payload with every field, the `EXPLAIN` keys, and no horizontal scroll at 375 px.
 - Submission can't be tested on localhost (`isTestMode`). Say so.
 
 **Shipping:**
-- Work on a branch from `origin/main` and open a PR with Summary, Test plan and Deviations.
+- Work on a branch from `origin/main` and open a PR with Summary, Test plan and Deviations. If git
+  says the branch name is already used by another worktree, pick a new name. Never check out or
+  delete another session's branch.
 - Merge only when Shaun has said so for this work. "Tonight's page first" or "yes, merge it" counts.
 - Wait for the `check` CI job, squash-merge, then poll the live URL until it returns 200.
 - Pushing to `main` publishes to students straight away.
@@ -176,6 +191,21 @@ a data: URL.
 An existing page that the week's plan changes, such as a homework page turned into optional
 practice, is edited in the same PR. Remove what moves to an in-class page rather than leaving it
 twice.
+
+**File the page on the university hub.** `uni-activities.html` is grouped by CEFR level (B2 · Upper
+intermediate, C1 · Advanced, C2 · Proficiency, then Revision), newest page first in each level. A new
+page lands in a generated "More practice" section until you file it. In `data/hub-cards.json`, under
+`uni-activities.html`, move its card to the top of the B2 block. Pages published the same day go
+highest series number first. The card's `title` is its own copy, not read from the page, so when you
+rename a page, change its card title too. On a branch the hub HTML stays at the merge-base: commit
+only `hub-cards.json`, and `main`'s bot renders the hub after the merge. To preview it, run
+`node scripts/build-category-hubs.js`, look, then `git checkout -- uni-activities.html`.
+
+**Fixing an answer after students have submitted.** If an answer key turns out to be wrong after
+students have submitted (Week 3: "While I walked…" was marked wrong), add the second correct answer
+as accepted rather than swapping it for the original. Do the same in the page key and in
+`data/explanations.json`. Tell Shaun that rows already in the sheet were scored the old way and need
+re-grading. Ask before changing a key during a class that is in progress.
 
 ## Rules that always apply
 
