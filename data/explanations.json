@@ -21719,8 +21719,12 @@
    "gaps": {
     "g1": {
      "label": "1. While I ___ (walk) to the station…",
-     "correct": "was walking",
-     "why": "After while, the longer action in progress takes the past continuous."
+     "correct": "was walking / walked",
+     "accept": [
+      "was walking",
+      "walked"
+     ],
+     "why": "Both work after while: the past continuous stresses the walk in progress, the past simple is also fine."
     },
     "g2": {
      "label": "1. … it ___ (start) to rain.",
