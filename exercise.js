@@ -139,6 +139,9 @@ function eolPractiseResults() {
   if (submitBtn && submitBtn.closest) {
     var card = submitBtn.closest('.card');
     if (card) card.style.display = 'none';
+    // The feedback email box goes with it: nothing is sent, so it would only sit there unused.
+    var emailCard = card && card.previousElementSibling;
+    if (emailCard && emailCard.matches('.card') && emailCard.querySelector('input[type="email"]')) emailCard.style.display = 'none';
   }
   var head = step.querySelector('.ex-title');
   var en = eolEnglishOnly();
@@ -1429,6 +1432,23 @@ function eolFlattenForMake(payload) {
   }
   return out;
 }
+
+/* Put the submit card at the top of the final step, above the score, answers and
+   explanations, so nobody has to scroll past them to find it. Moved here rather than in
+   each page's HTML so every framework page gets it. An email box directly above the
+   card moves with it: the button reads that box. */
+document.addEventListener('DOMContentLoaded', function() {
+  var btn = document.getElementById('submit-btn');
+  var card = btn && btn.closest('.card');
+  var anchor = document.getElementById('score-display') || document.getElementById('summary-container');
+  if (!card || !anchor) return;
+  var parent = card.parentNode;
+  while (anchor && anchor.parentNode !== parent) anchor = anchor.parentNode;   // 10c-london-slang wraps them in a card
+  if (!anchor) return;
+  var emailCard = card.previousElementSibling;
+  if (emailCard && emailCard.matches('.card') && emailCard.querySelector('input[type="email"]')) parent.insertBefore(emailCard, anchor);
+  parent.insertBefore(card, anchor);
+});
 
 function submitToSheet() {
   buildSummary();
