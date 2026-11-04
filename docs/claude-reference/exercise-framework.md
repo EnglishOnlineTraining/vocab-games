@@ -414,7 +414,10 @@ schoolchildren. Shaun chose to keep Google and ask first.
   `loadGtm()`-style code behind the choice, and add it to the privacy policy.
 - **Microsoft Clarity** (project `z7d6a7n9ul`, added 2026-11-02) loads from `loadGtm()` with GTM,
   and the banner names it. A yes is now stored as `granted-clarity`; an old `granted` predates
-  Clarity, so those visitors are asked again. Clarity masks input boxes in every mode.
+  Clarity, so those visitors are asked again. Clarity masks input boxes in every mode. Declining
+  on a page where Clarity runs calls `clarity('consent', false)`, which erases its cookies and
+  stops it (`consentv2` "denied" would only switch it to cookieless tracking). While the banner is
+  open, `<body>` gets bottom padding of the banner's height so the last buttons can scroll clear.
   Check: `tests/consent-clarity.spec.js`.
 
 ### 5g. Structured data + the "Auf einen Blick" box (added 2026-08-21)

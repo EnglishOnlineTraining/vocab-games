@@ -21,6 +21,7 @@
  * Microsoft Clarity (heatmaps and session recordings, added 2026-11-02) loads
  * with GTM. A yes stored as "granted" was given before Clarity was named in
  * the banner, so it no longer counts: those visitors see the banner again.
+ * Declining through "Cookie-Einstellungen" stops Clarity on the current page too.
  */
 (function () {
   'use strict';
@@ -101,9 +102,18 @@
       + 'Everything works if you say no.</span></p>'
       + '<div class="btns"><button type="button" class="no">Ablehnen</button>'
       + '<button type="button" class="yes">Akzeptieren</button></div></div>';
-    b.querySelector('.no').addEventListener('click', function () { set('denied'); b.remove(); });
-    b.querySelector('.yes').addEventListener('click', function () { set(GRANTED); b.remove(); loadGtm(); });
+    function close() { b.remove(); document.body.style.paddingBottom = ''; }
+    b.querySelector('.no').addEventListener('click', function () {
+      set('denied');
+      close();
+      // Withdrawn on a page where Clarity is running. consentv2 "denied" would only switch it to
+      // cookieless tracking; this erases its cookies and stops it.
+      if (loaded) window.clarity('consent', false);
+    });
+    b.querySelector('.yes').addEventListener('click', function () { set(GRANTED); close(); loadGtm(); });
     document.body.appendChild(b);
+    // The banner is fixed over the page: leave room so the last buttons can scroll clear of it.
+    document.body.style.paddingBottom = b.offsetHeight + 'px';
   }
 
   // A way back to the banner, in whatever footer the page has.

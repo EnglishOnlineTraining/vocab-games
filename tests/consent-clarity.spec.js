@@ -46,3 +46,33 @@ test('new yes: Clarity loads on the next visit without a banner', async ({ page 
   await expect(page.locator('#eol-consent')).toHaveCount(0);
   await expect.poll(() => hits.some((u) => u.includes('clarity.ms/tag/'))).toBe(true);
 });
+
+test('decline with no earlier yes: no Clarity call, nothing loads', async ({ page }) => {
+  const hits = await open(page);
+  await page.locator('#eol-consent .no').click();
+  expect(await page.evaluate(() => localStorage.getItem('eol_consent'))).toBe('denied');
+  expect(await page.evaluate(() => typeof window.clarity)).toBe('undefined');
+  expect(hits).toEqual([]);
+});
+
+test('withdrawing through Cookie-Einstellungen stops Clarity on the current page', async ({ page }) => {
+  await open(page, 'granted-clarity');
+  await page.locator('.eol-consent-link').click();
+  await page.locator('#eol-consent .no').click();
+  expect(await page.evaluate(() => localStorage.getItem('eol_consent'))).toBe('denied');
+  // The tag is blocked here, so the stub's queue shows what Clarity would receive.
+  const calls = await page.evaluate(() => window.clarity.q.map((a) => Array.from(a)));
+  expect(calls).toContainEqual(['consent', false]);
+});
+
+test('open banner at phone width: the end of the page scrolls clear, padding goes on dismissal', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 800 });
+  await open(page);
+  const banner = page.locator('#eol-consent');
+  const height = await banner.evaluate((e) => e.offsetHeight);
+  expect(await page.evaluate(() => parseFloat(document.body.style.paddingBottom))).toBe(height);
+  await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+  await page.locator('.eol-consent-link').click({ trial: true, timeout: 5000 });
+  await page.locator('#eol-consent .no').click();
+  expect(await page.evaluate(() => document.body.style.paddingBottom)).toBe('');
+});
