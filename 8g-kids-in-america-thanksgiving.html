@@ -496,7 +496,7 @@
       <div class="card-title">Ideas to help you</div>
       <div class="reading-text">
         <p>Think about a celebration you know well — for example Christmas, Easter, a birthday or a local festival. Describe the food (is there a special meal or traditional dishes?) and the activities (what does your family do?). Try to use some festival vocabulary from Exercise B, for example:</p>
-        <p style="color:var(--blue);font-style:italic">"We have a big feast with the whole family." / "I am grateful that you can visit us." / "Would you like to join our family reunion?"</p>
+        <p style="color:var(--ink);font-style:italic">"We have a big feast with the whole family." / "I am grateful that you can visit us." / "Would you like to join our family reunion?"</p>
       </div>
     </div>
 
@@ -671,10 +671,10 @@ function renderScore() {
   if (!sc.possible) { box.style.display = 'none'; return; }
   var grade = lookupGrade(sc.earned, sc.possible);
   box.style.display = 'block';
-  box.innerHTML = '<div class="card" style="text-align:center;background:var(--gold-lt);border:1.5px solid var(--gold)">'
-    + '<div style="font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--blue);font-weight:700;margin-bottom:.3rem">Your score (auto-graded sections)</div>'
-    + '<div style="font-size:1.5rem;font-weight:800;color:var(--blue)">' + sc.earned + ' / ' + sc.possible + ' points</div>'
-    + (grade ? '<div style="font-size:1rem;color:var(--blue);margin-top:.2rem">Note ' + grade.note + ' (' + grade.label + ')</div>' : '')
+  box.innerHTML = '<div class="card" style="text-align:center;background:var(--callout);border:1.5px solid var(--gold)">'
+    + '<div style="font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink);font-weight:700;margin-bottom:.3rem">Your score (auto-graded sections)</div>'
+    + '<div style="font-size:1.5rem;font-weight:800;color:var(--ink)">' + sc.earned + ' / ' + sc.possible + ' points</div>'
+    + (grade ? '<div style="font-size:1rem;color:var(--ink);margin-top:.2rem">Note ' + grade.note + ' (' + grade.label + ')</div>' : '')
     + '<div style="font-size:.78rem;color:var(--muted);margin-top:.4rem">Scores count the first answer you checked for each gap — changing an answer later does not change the score. This score covers Exercises A–C. Your writing (Exercise D) is graded by your teacher separately.</div>'
     + '</div>';
 }

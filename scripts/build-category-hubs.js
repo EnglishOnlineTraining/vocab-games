@@ -128,7 +128,7 @@ function renderCard(c, style) {
   // identically; <span> is the majority form and is now the only one emitted.
   const f = style === 'exercise-card'
     ? [['font-size:1.8rem', 'icon'],
-       ['font-size:1.05rem;font-weight:700;color:var(--blue)', 'title'],
+       ['font-size:1.05rem;font-weight:700;color:var(--brand-title,var(--blue))', 'title'],
        ['font-size:.85rem;color:var(--muted);' + CLAMP, 'meta'],
        [TAG_STYLE, 'tag']].map(([st, k]) => '      <span style="' + st + '">' + esc(c[k]) + '</span>')
     : ['icon', 'title', 'meta', 'tag'].map(k =>

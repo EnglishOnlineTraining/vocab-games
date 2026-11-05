@@ -2,8 +2,10 @@
    9ab- and 10a-grammar-literary-review-test). A new class test links it, then
    exam.css, then keeps only its own rules in its <style>. The page's rules come
    after this file, so a page rule wins over a shared one of equal weight. */
+/* Light on every device, never dark: tests/dark-mode.spec.js checks it. */
+:root { color-scheme: only light; }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root { --blue: #1a3a5c; --gold: #c9a227; --gold-lt: #f5e6b0; --teal: #2b7a78; --red: #c0392b; --green: #27ae60; --bg: #f7f9fc; --card: #ffffff; --text: #1d2b3a; --muted: #6b7a8d; --border: #dce3ec; --radius: 12px; --shadow: 0 2px 16px rgba(26,58,92,.1); --font: 'Segoe UI', system-ui, sans-serif; --green-text: #1d7a42; --red-text: #c0392b; --teal-text: #1f5d5b; }
+:root { --blue: #1a3a5c; --gold: #c9a227; --gold-lt: #f5e6b0; --teal: #2b7a78; --red: #c0392b; --green: #27ae60; --bg: #f7f9fc; --card: #ffffff; --text: #1d2b3a; --muted: #5f6e80; --border: #dce3ec; --radius: 12px; --shadow: 0 2px 16px rgba(26,58,92,.1); --font: 'Segoe UI', system-ui, sans-serif; --green-text: #1d7a42; --red-text: #c0392b; --teal-text: #1f5d5b; }
 body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
 .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; flex-wrap: wrap; }
@@ -85,7 +87,4 @@ body.exam-mode input, body.exam-mode textarea, body.exam-mode select { -webkit-u
   .ex-title { font-size: 1.2rem; }
   .btn { padding: .65rem 1.1rem; }
   .welcome-title { font-size: 1.35rem; }
-}
-@media (prefers-color-scheme: dark) {
-  :root { --bg: #0e1620; --blue: #4a86c9; --border: #28394d; --card: #16212e; --muted: #8a99aa; --shadow: 0 2px 18px rgba(0,0,0,.45); --text: #e7eef6; --green-text: #7fe0a0; --red-text: #f3a3b0; --teal-text: #6fd3d0; }
 }

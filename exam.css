@@ -10,7 +10,7 @@
    Practice pages are cream in the light scheme only: style.css and their generated
    blocks have dark-scheme colours that assume a dark background. */
 html.exam-dyslexia {
-  color-scheme: light;
+  color-scheme: only light;
   /* class-test.css palette, held light */
   --bg: #faf6e9; --card: #fffdf5; --text: #26303b; --muted: #55606c; --border: #ddd5bf;
   --blue: #1a3a5c; --shadow: 0 2px 16px rgba(26,58,92,.1);
