@@ -179,6 +179,11 @@ page 404'd on `/favicon.ico`), `theme-color` on 14 of 222 pages, Open Graph tags
 telling a phone which colour scheme the design supports. **`node scripts/build-head.js`** owns a
 `HEAD:START`/`HEAD:END` block just before `</head>` on every page:
 
+- **Dark mode: don't hard-code colours that only work in light.** For text use `--ink`, not
+  `--blue` (`--blue` stays navy in dark, so it is for backgrounds and for text on gold). For boxes
+  use `--inset`, `--info`, `--nav-bg` or `--callout`, not `#fafbfc` or `--gold-lt`; a tint of your
+  own needs a `prefers-color-scheme: dark` rule. `tests/dark-mode.spec.js` fails any page under
+  3:1 in dark mode, but only for what is on screen before an answer: not score cards or marking.
 - `<meta name="color-scheme">` — **per page, from what the CSS actually implements**. `style.css`
   (and most standalone pages) carry a `prefers-color-scheme: dark` block that redefines the whole
   token set, so those 201 pages declare `light dark`; the 21 that are genuinely light-only

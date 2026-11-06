@@ -2,6 +2,8 @@
    9g-australia-vocab-test, uni-pm-vocabulary, uni-writing-task). A new vocab test
    links it, then exam.css, then keeps only its own rules in its <style>. The
    page's rules come after this file, so a page rule wins over a shared one. */
+/* Light on every device, never dark: tests/dark-mode.spec.js checks it. */
+:root { color-scheme:only light }
 * { box-sizing:border-box;margin:0;padding:0 }
 body { font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f0f4f8;color:#1a202c;min-height:100vh }
 header a { color:rgba(255,255,255,.85);text-decoration:none;font-size:.88rem }
@@ -37,11 +39,11 @@ input[type=text]:focus { outline:none;border-color:#2d6a4f }
 .alert-warn { background:#fffbeb;border:1px solid #f6e05e;color:#744210 }
 .alert-danger { background:#fff5f5;border:1px solid #feb2b2;color:#742a2a }
 #submit-area { text-align:center;padding:8px 0 20px }
-#time-gate-msg { font-size:.82rem;color:#718096;margin-top:7px }
+#time-gate-msg { font-size:.82rem;color:#4a5568;margin-top:7px }
 .done-card { text-align:center;padding:36px 28px }
 .done-card .big-icon { font-size:3.5rem;margin-bottom:14px }
 .done-card h2 { color:#276749;margin-bottom:8px }
-.done-meta { font-size:.85rem;color:#718096;margin-top:10px }
+.done-meta { font-size:.85rem;color:#4a5568;margin-top:10px }
 .backup-bar { margin-top:20px;background:#f7fafc;border-radius:8px;padding:14px;text-align:left;font-size:.88rem }
 .backup-bar p { margin-bottom:10px;font-weight:600 }
 .backup-btns { display:flex;gap:10px;flex-wrap:wrap }

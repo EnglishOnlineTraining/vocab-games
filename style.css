@@ -21,6 +21,7 @@
   --nav-bg:  #f0f3f8;   /* step-nav strip */
   --inset:   #fafbfc;   /* inset panels (transform items) */
   --info:    #edf3fa;   /* section-instructions panel */
+  --callout: #f5e6b0;   /* highlighted box: --gold-lt in light, a dark amber in dark */
   --text:    #1d2b3a;
   --muted:   #6b7a8d;
   --border:  #dce3ec;
@@ -38,6 +39,7 @@
     --nav-bg: #131f2b;
     --inset:  #1b2735;
     --info:   #152435;
+    --callout: #3a3212;
     --text:   #e7eef6;
     --muted:  #8a99aa;
     --border: #28394d;

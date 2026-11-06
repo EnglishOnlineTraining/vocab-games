@@ -117,6 +117,11 @@ CSS: a class test links `class-test.css`, a vocab or uni test `vocab-test.css`, 
 test links `exam.css`; the page's own `<style>` keeps only its own rules. The two looks use
 the same class names (`.card`, `.btn`) differently, so they cannot share one file.
 
+**Tests are light on every device, never dark.** Both stylesheets set `color-scheme: only light`,
+which also opts out of phone browsers' automatic darkening. `tests/dark-mode.spec.js` opens every
+page that loads `exam.js` in dark mode, sits it to the exam screen and requires 4.5:1 on all text
+and fields. A new test is covered automatically, provided it loads `exam.js`.
+
 **Dyslexia box.** `exam.js` adds it under the extra-time box on every test; nothing to add
 per page. Ticked, it (1) marks typed **vocabulary** answers without spelling: the page calls
 `examSpellingOk(given, key)` on those answers only, never on grammar answers, where the form

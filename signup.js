@@ -59,7 +59,7 @@
 
   var CSS = ''
     + '.eol-signup form{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin:0}'
-    + '.eol-signup label{flex-basis:100%;font-size:.88rem;font-weight:600;color:var(--text,#1d2b3a);text-align:center}'
+    + '.eol-signup label{flex-basis:100%;font-size:.88rem;font-weight:600;color:var(--text,var(--dark,#1d2b3a));text-align:center}'
     + '.eol-signup input[type=email]{flex:1 1 14rem;max-width:22rem;min-height:2.75rem;padding:.55rem .75rem;font:inherit;font-size:1rem;'
     + 'color:var(--text,#1d2b3a);background:var(--card,#fff);border:1px solid var(--border,#dce3ec);border-radius:8px}'
     + '.eol-signup button{min-height:2.75rem;padding:.55rem 1.2rem;font:inherit;font-size:1rem;font-weight:600;color:#fff;'
@@ -68,7 +68,7 @@
     + '.eol-signup .eol-signup-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}'
     + '.eol-signup .eol-signup-note{margin:.6rem 0 0;font-size:.8rem;color:var(--muted,#6b7a8d);text-align:center}'
     + '.eol-signup .eol-signup-note a{color:inherit}'
-    + '.eol-signup .eol-signup-status{margin:.6rem 0 0;font-size:.9rem;text-align:center;color:var(--text,#1d2b3a)}'
+    + '.eol-signup .eol-signup-status{margin:.6rem 0 0;font-size:.9rem;text-align:center;color:var(--text,var(--dark,#1d2b3a))}'
     + '.eol-signup .eol-signup-status:empty{display:none}';
 
   function el(tag, attrs, text) {
