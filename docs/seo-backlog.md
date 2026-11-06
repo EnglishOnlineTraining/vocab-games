@@ -1256,28 +1256,42 @@ task on the Mac with this prompt, then delete or disable the cloud one so there 
 
 **Runs:**
 
-- **Run 1 · draft, 2026-11-06 · waiting for Shaun's OK per row · no edits made.**
-  Built in a cloud session without Search Console. Positions are the latest recorded ones:
-  (a) Tier 19, 28 days to 2026-11-01; (b) `gsc-review-2026-10-06.md`, 3 months. **Refresh each
-  target's position on the Mac before approving.** Every source was read with `context: "edit"`:
-  none of them links to its target yet. Brackets mark the anchor; no sentence is rewritten.
+- **Run 1 · 2026-11-06 · four links live, row 4 skipped.** Drafted in a cloud session;
+  numbers refreshed on the Mac the same day from Search Console (last 3 months, data 2026-08-05 to
+  2026-11-04). Each source was re-read with `context: "edit"` before and after its write, and none
+  linked to its target before. Brackets mark the anchor; no sentence is rewritten.
 
-  | # | Source (WP id) | Sentence, [anchor] | Target (WP id) | Query · pos · impr |
-  |---|---|---|---|---|
-  | 1 | `/2026/11/02/englisch-aufsatz-fehler-vermeiden/` (2536), Fehler 4 | „Über einen Text schreibt man im Präsens — in der [Zusammenfassung] und in der Analyse." | Summary auf Englisch (2032) | Zusammenfassung Englisch · 9.8 · 470 (a) |
-  | 2 | `/2026/07/20/kostenlose-abitur-englisch-ubungen-…/` (2050), list | „Ein gelungener [Kommentar] zeigt deine Fähigkeit, Position zu beziehen …" | Kommentar auf Englisch (2038) | Kommentar Abitur · 8.2 · 197 (b) |
-  | 3 | same (2050), list | „Lerne, längere Texte präzise und strukturiert [zusammenzufassen]." | 2032 | as row 1 |
-  | 4 | `/2026/08/17/abitur-englisch-ubungen-kostenlos-…/` (2217), para 1, sentence 2 | „… wie baut man einen [überzeugenden Kommentar] auf …" | 2038 | as row 2 |
-  | 5 | same (2217), para 2 | „Text Analysis, Argumentative Writing, [Writing Summaries] und Mediation verlangen …" | 2032 | as row 1 · weaker: "Writing Summaries" is also the name of the activities pack |
-  | 6 | `/2023/04/05/learning-english-online/` (1214), Step 2 list | „[write a clear work email];" | `/writing-emails-in-english/` (1061) | writing emails in English · 18.5 · 419 (a) |
-  | 7 | `/2026/10/15/team-emails-too-long/` (2367), "The next step" | „[Clear emails] are a team habit, and habits can be trained." | 1061 | as row 6 |
+  Baseline is **page totals**: Search Console hides most queries, so no visible query reaches
+  50 impressions, and the draft's "query" figures (470, 197) were page totals too. To undo an edit,
+  restore the "Before" revision. The targets are under the Tier 12.3 no-touch until 2026-12-05, but
+  only the sources were edited.
+
+  | # | Source (WP id) | Sentence, [anchor] | Target (WP id) | Target position · impressions | WP revision · Before | Status |
+  |---|---|---|---|---|---|---|
+  | 1 | `/2026/11/02/englisch-aufsatz-fehler-vermeiden/` (2536), Fehler 4 | „Über einen Text schreibt man im Präsens — in der [Zusammenfassung] und in der Analyse." | Summary auf Englisch (2032) | 9.5 · 1,040 | 2843 · 2819 | Live |
+  | 2 | `/2026/07/20/kostenlose-abitur-englisch-ubungen-…/` (2050), list | „Ein gelungener [Kommentar] zeigt deine Fähigkeit, Position zu beziehen …" | Kommentar auf Englisch (2038) | 8.0 · 224 | 2841 · 2071 | Live |
+  | 3 | same (2050), list | „Lerne, längere Texte präzise und strukturiert [zusammenzufassen]." | 2032 | 9.5 · 1,040 | 2841 · 2071 (same save as row 2) | Live |
+  | 4 | `/2026/08/17/abitur-englisch-ubungen-kostenlos-…/` (2217), para 1 | „… wie baut man einen [überzeugenden Kommentar] auf …" | 2038 | 8.0 · 224 | none | Skipped by Shaun: the anchor is in the post's first sentence, which the rules exclude |
+  | 5 | same (2217), para 2 | „Text Analysis, Argumentative Writing, [Writing Summaries] und Mediation verlangen …" | 2032 | 9.5 · 1,040 | 2842 · 2332 | Live; "Writing Summaries" is also the name of the activities pack; Shaun approved it knowing that |
+
+  **Main queries at baseline:** zusammenfassung englisch 13.8 (13 impressions), zusammenfassen
+  englisch 11.3 (3). The Kommentar post (2038) shows no query rows.
+
+  **Dropped on refresh:** rows 6 and 7 (1214 and 2367 → `/writing-emails-in-english/`, 1061). The page
+  is at 22.4 (575 impressions), outside 4–20. "writing emails in english" is at 56.7 (9); "how to
+  write a professional email" is at 7.2 but only 25 impressions.
+
+  **Re-measure** 2032 and 2038 from 2026-12-04, 4 weeks after this run.
 
   **No natural anchor found (don't force one):**
   - Business verbs (965, 8.1): no post or page mentions business verbs in its text. Tier 17.5 needs a
     sentence written for it, so that is a content change for Shaun to decide, not a link pass.
   - Abitur 2027 Änderungen (2520, 6.1): only English posts (2521, 2379) mention the 2027 exam year;
     linking them to a German page reads badly.
-  - MSA post (2066, 8.7, English, for teachers): only German parent/student posts mention MSA. The new
-    German MSA post (2538) may compete with it for "MSA Englisch"; check both in Search Console first.
+  - MSA post (2066, 8.2, 351 impressions, English, for teachers): only German parent/student posts
+    mention MSA. No competition with the German post (2538) so far: it went live 2026-11-05 and has no
+    data yet. About 50 of 2066's impressions come from queries containing "msa", and some look like
+    MSA University in Egypt, not the German exam ("msa english test" 7.9; an Arabic query names the
+    university). "msa englisch" has one impression, at 62. Re-check both at the next run.
   - Kreatives Schreiben (2039, 9.2) and Good vs bad emails (1167): every post that mentions them already
     links to them.
