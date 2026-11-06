@@ -1254,4 +1254,30 @@ the 3rd of each month at 10:47 Berlin time (first run 2026-12-03). It only remin
 have no connectors, repo or Search Console. To make the pass run on its own, create a Cowork scheduled
 task on the Mac with this prompt, then delete or disable the cloud one so there aren't two.
 
-**Runs:** none yet.
+**Runs:**
+
+- **Run 1 · draft, 2026-11-06 · waiting for Shaun's OK per row · no edits made.**
+  Built in a cloud session without Search Console. Positions are the latest recorded ones:
+  (a) Tier 19, 28 days to 2026-11-01; (b) `gsc-review-2026-10-06.md`, 3 months. **Refresh each
+  target's position on the Mac before approving.** Every source was read with `context: "edit"`:
+  none of them links to its target yet. Brackets mark the anchor; no sentence is rewritten.
+
+  | # | Source (WP id) | Sentence, [anchor] | Target (WP id) | Query · pos · impr |
+  |---|---|---|---|---|
+  | 1 | `/2026/11/02/englisch-aufsatz-fehler-vermeiden/` (2536), Fehler 4 | „Über einen Text schreibt man im Präsens — in der [Zusammenfassung] und in der Analyse." | Summary auf Englisch (2032) | Zusammenfassung Englisch · 9.8 · 470 (a) |
+  | 2 | `/2026/07/20/kostenlose-abitur-englisch-ubungen-…/` (2050), list | „Ein gelungener [Kommentar] zeigt deine Fähigkeit, Position zu beziehen …" | Kommentar auf Englisch (2038) | Kommentar Abitur · 8.2 · 197 (b) |
+  | 3 | same (2050), list | „Lerne, längere Texte präzise und strukturiert [zusammenzufassen]." | 2032 | as row 1 |
+  | 4 | `/2026/08/17/abitur-englisch-ubungen-kostenlos-…/` (2217), para 1, sentence 2 | „… wie baut man einen [überzeugenden Kommentar] auf …" | 2038 | as row 2 |
+  | 5 | same (2217), para 2 | „Text Analysis, Argumentative Writing, [Writing Summaries] und Mediation verlangen …" | 2032 | as row 1 · weaker: "Writing Summaries" is also the name of the activities pack |
+  | 6 | `/2023/04/05/learning-english-online/` (1214), Step 2 list | „[write a clear work email];" | `/writing-emails-in-english/` (1061) | writing emails in English · 18.5 · 419 (a) |
+  | 7 | `/2026/10/15/team-emails-too-long/` (2367), "The next step" | „[Clear emails] are a team habit, and habits can be trained." | 1061 | as row 6 |
+
+  **No natural anchor found (don't force one):**
+  - Business verbs (965, 8.1): no post or page mentions business verbs in its text. Tier 17.5 needs a
+    sentence written for it, so that is a content change for Shaun to decide, not a link pass.
+  - Abitur 2027 Änderungen (2520, 6.1): only English posts (2521, 2379) mention the 2027 exam year;
+    linking them to a German page reads badly.
+  - MSA post (2066, 8.7, English, for teachers): only German parent/student posts mention MSA. The new
+    German MSA post (2538) may compete with it for "MSA Englisch"; check both in Search Console first.
+  - Kreatives Schreiben (2039, 9.2) and Good vs bad emails (1167): every post that mentions them already
+    links to them.
