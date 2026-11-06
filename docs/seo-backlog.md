@@ -1217,3 +1217,67 @@ indexed", 155 "Discovered – not indexed".
   flags −79% recently), `/using-past-progressive/` (348, 22.1), homepage (219, 38.7).
 - Housekeeping: one unused verification token; a "Crawled – not indexed" validation shows Failed;
   the other 404s are `?share=` links, deleted 2016 posts and old tags. All 9 sitemaps read 28–30 Oct.
+
+## Tier 20 — Monthly internal-link pass on the main site (2026-11-06) · Shaun + CC
+
+Carries out Tier 17.5 and Tier 19.2. Source: an X post ("internal linking… every week"); adopted
+with changes. **Main site only.** The activities site already links itself through the build
+(breadcrumb, Keep-practising, reciprocal "Verwandte Themen"), and Tier 19.1 pauses site-wide churn there.
+
+**Run on the Mac**, where Search Console is open in the browser. The Ahrefs GSC tools still return
+"Insufficient plan" (checked 2026-11-06), and cloud sessions can't reach Search Console.
+**Monthly, not weekly**: positions need weeks to settle. Next run: when Shaun starts it; re-measure the
+targets 4 weeks after each run, before the next one.
+
+**Prompt (paste into the Mac session):**
+
+> Read `docs/seo-backlog.md` Tier 12.1, 17.5, 19.2 and 20, and CLAUDE.md "Known traps".
+> 1. In Search Console (domain property `englishonline.training`, last 3 months), export
+>    Performance → Queries and Pages for the main domain. Save the export outside the repo.
+> 2. Targets: main-site pages with a query at position 4–20 and ≥ 50 impressions. Each target's
+>    anchors are its top 1–3 queries, or a close natural variant in the post's language.
+> 3. Sources: published WordPress posts and pages (site 65893384). Skip pages 1763 and 1997.
+> 4. Rules: 3–5 new links per source at most; body text only (no headings, no first sentence,
+>    no text that is already a link); never self-links; each target at most once per source;
+>    don't rewrite sentences to force an anchor; an informational page links to one money page
+>    only (Tier 12.1); prefer targets at positions 4–15.
+> 5. Before any edit, show one table: source URL → anchor (with its sentence) → target URL →
+>    target query, position, impressions. Wait for Shaun's OK per row.
+> 6. After OK: edit with the post-sections tools, or with content fetched with
+>    `context: "edit"`. Never write back rendered HTML. Re-read each post after the write and
+>    confirm the link and the rest of the post are intact.
+> 7. Append a changelog here under "Runs" (date, source, anchor, target, WP revision id) so
+>    each edit can be reverted, and note each target's position and impressions as the baseline.
+
+**Reminder:** a cloud scheduled task, "Monthly internal-link pass (main site)", pushes a reminder on
+the 3rd of each month at 10:47 Berlin time (first run 2026-12-03). It only reminds: cloud sessions
+have no connectors, repo or Search Console. To make the pass run on its own, create a Cowork scheduled
+task on the Mac with this prompt, then delete or disable the cloud one so there aren't two.
+
+**Runs:**
+
+- **Run 1 · draft, 2026-11-06 · waiting for Shaun's OK per row · no edits made.**
+  Built in a cloud session without Search Console. Positions are the latest recorded ones:
+  (a) Tier 19, 28 days to 2026-11-01; (b) `gsc-review-2026-10-06.md`, 3 months. **Refresh each
+  target's position on the Mac before approving.** Every source was read with `context: "edit"`:
+  none of them links to its target yet. Brackets mark the anchor; no sentence is rewritten.
+
+  | # | Source (WP id) | Sentence, [anchor] | Target (WP id) | Query · pos · impr |
+  |---|---|---|---|---|
+  | 1 | `/2026/11/02/englisch-aufsatz-fehler-vermeiden/` (2536), Fehler 4 | „Über einen Text schreibt man im Präsens — in der [Zusammenfassung] und in der Analyse." | Summary auf Englisch (2032) | Zusammenfassung Englisch · 9.8 · 470 (a) |
+  | 2 | `/2026/07/20/kostenlose-abitur-englisch-ubungen-…/` (2050), list | „Ein gelungener [Kommentar] zeigt deine Fähigkeit, Position zu beziehen …" | Kommentar auf Englisch (2038) | Kommentar Abitur · 8.2 · 197 (b) |
+  | 3 | same (2050), list | „Lerne, längere Texte präzise und strukturiert [zusammenzufassen]." | 2032 | as row 1 |
+  | 4 | `/2026/08/17/abitur-englisch-ubungen-kostenlos-…/` (2217), para 1, sentence 2 | „… wie baut man einen [überzeugenden Kommentar] auf …" | 2038 | as row 2 |
+  | 5 | same (2217), para 2 | „Text Analysis, Argumentative Writing, [Writing Summaries] und Mediation verlangen …" | 2032 | as row 1 · weaker: "Writing Summaries" is also the name of the activities pack |
+  | 6 | `/2023/04/05/learning-english-online/` (1214), Step 2 list | „[write a clear work email];" | `/writing-emails-in-english/` (1061) | writing emails in English · 18.5 · 419 (a) |
+  | 7 | `/2026/10/15/team-emails-too-long/` (2367), "The next step" | „[Clear emails] are a team habit, and habits can be trained." | 1061 | as row 6 |
+
+  **No natural anchor found (don't force one):**
+  - Business verbs (965, 8.1): no post or page mentions business verbs in its text. Tier 17.5 needs a
+    sentence written for it, so that is a content change for Shaun to decide, not a link pass.
+  - Abitur 2027 Änderungen (2520, 6.1): only English posts (2521, 2379) mention the 2027 exam year;
+    linking them to a German page reads badly.
+  - MSA post (2066, 8.7, English, for teachers): only German parent/student posts mention MSA. The new
+    German MSA post (2538) may compete with it for "MSA Englisch"; check both in Search Console first.
+  - Kreatives Schreiben (2039, 9.2) and Good vs bad emails (1167): every post that mentions them already
+    links to them.
