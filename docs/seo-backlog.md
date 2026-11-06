@@ -296,16 +296,13 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
    - The activities host (`activities.englishonline.training/robots.txt`) allows everything.
    - Not covered by `robots.txt`: AI search agents (OAI-SearchBot, ChatGPT-User, Claude-SearchBot,
      PerplexityBot) are not disallowed either, so they are allowed too.
-   - **New finding, open, not changed (Shaun to check):** the main site answers any request with a
-     crawler-style user agent with HTTP 403 and a JavaScript "Checking search engine crawler…" challenge
-     page. Measured with curl on 2026-10-21: `/`, `/about/`, `/sitemap.xml` and `/robots.txt` all
-     return 403 to Googlebot, GPTBot, ClaudeBot, OAI-SearchBot and PerplexityBot user agents, and 200
-     to the default user agent. The activities host returns 200 to the same agents. This is the
-     WordPress.com edge bot protection, not `robots.txt`, so editing `robots.txt` cannot fix it. It
-     cannot be confirmed from here: real Googlebot comes from Google IP addresses, which this test does
-     not use. **Check Search Console (Settings → Crawl stats, and URL Inspection → Live test on `/`) for
-     the main property to see whether Google gets through.** If it does not, the bot-protection setting
-     must be changed in the WordPress.com dashboard, which is not reachable from this repo.
+   - **Closed 2026-11-06, false alarm: a crawler user agent sent with curl gets a 403 on the main
+     site, but that is not a crawler block.** The main site answers such a request with a JavaScript
+     "Checking search engine crawler…" challenge page, from the WordPress.com edge. A fake Googlebot
+     gets it too (re-checked 2026-11-06), so it says how a claimed crawler from an ordinary IP address
+     is treated, not what real crawlers get. Shaun is being cited by LLMs and `robots.txt` blocks none
+     of them. **Don't report this curl result as a block or contact WordPress.com about it.** A real
+     block would need evidence from real crawler traffic, such as Search Console crawl stats.
 2. **The Organization entity on the WP homepage contradicts `scripts/schema.js` · CC (EOT Modern
    or Jetpack).** Both use `@id` `https://englishonline.training/#organization`, but they say
    different things:
