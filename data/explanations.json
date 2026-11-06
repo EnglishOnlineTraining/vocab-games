@@ -21844,5 +21844,304 @@
     }
    }
   }
+ },
+ "10c-sport-vocab-practice": {
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. The fans ______ a better performance after three losses.",
+     "correct": "demand",
+     "why": "To demand is to ask for something strongly; the fans want a better performance."
+    },
+    "g2": {
+     "label": "2. In Canada, many children play ______ with a stick that has a small net.",
+     "correct": "lacrosse",
+     "why": "Lacrosse is the team sport played with a stick that has a small net."
+    },
+    "g3": {
+     "label": "3. Ten teams ______ for the national title every year.",
+     "correct": "compete",
+     "why": "Teams compete when they try to beat each other, here for the national title."
+    },
+    "g4": {
+     "label": "4. Despite the loss, the team's ______ was great: everyone sang together on the bus.",
+     "correct": "spirit",
+     "why": "Team spirit is the strong feeling of unity in a group, shown by singing together."
+    },
+    "g5": {
+     "label": "5. Everyone should ______ in the discussion today.",
+     "correct": "participate",
+     "why": "To participate in something is to take part in it."
+    },
+    "g6": {
+     "label": "6. ______, that was an amazing goal! I cannot believe it!",
+     "correct": "Man",
+     "why": "'Man' is an exclamation showing surprise, here at an amazing goal."
+    },
+    "g7": {
+     "label": "7. My job as a nurse is very ______: I work long hours and have little time to rest.",
+     "correct": "demanding",
+     "why": "A demanding job needs a lot of effort and energy, so there is little time to rest."
+    },
+    "g8": {
+     "label": "8. Sorry, I was in a bad ______ yesterday. I did not mean to shout.",
+     "correct": "mood",
+     "why": "Your mood is how you feel at a given time; a bad mood explains shouting."
+    },
+    "g9": {
+     "label": "9. In basketball, you must ______ the ball to a team-mate before you can shoot.",
+     "correct": "pass",
+     "why": "To pass the ball is to give it to a team-mate."
+    },
+    "g10": {
+     "label": "10. The match has three ______ of twenty minutes each.",
+     "correct": "periods",
+     "why": "A match is divided into equal parts called periods, as in ice hockey."
+    },
+    "g11": {
+     "label": "11. You need a lot of ______ to get up at six and train every day.",
+     "correct": "discipline",
+     "why": "Discipline is control over yourself; it helps you get up early and train every day."
+    },
+    "g12": {
+     "label": "12. She was tired of losing, so she decided to ______ the team and never come back.",
+     "correct": "quit",
+     "why": "To quit is to stop and leave for good; 'never come back' shows she left the team."
+    },
+    "g13": {
+     "label": "13. He was ______ to speak in front of the class, so he stayed quiet.",
+     "correct": "reluctant",
+     "why": "Reluctant means not wanting to do something; he stayed quiet instead of speaking."
+    },
+    "g14": {
+     "label": "14. Berlin in summer is ______: long evenings, open-air concerts and full parks.",
+     "correct": "at its best",
+     "why": "'At its best' means as good as it can be, which fits a lovely summer in Berlin."
+    },
+    "g15": {
+     "label": "15. The ______ told the players to run faster in the second half.",
+     "correct": "coach",
+     "why": "A coach is the person who trains a team and tells the players what to do."
+    },
+    "g16": {
+     "label": "16. She stayed in and read a book ______ going to the party, because she wanted a quiet evening.",
+     "correct": "instead of",
+     "why": "'Instead of' means in place of; she chose a book rather than the party."
+    },
+    "g17": {
+     "label": "17. She was ______ to win the race, so she trained every morning before school.",
+     "correct": "determined",
+     "why": "Determined means having decided to succeed, so she trained every morning."
+    },
+    "g18": {
+     "label": "18. She is a very ______ player. She never misses practice and always gives 100%.",
+     "correct": "committed",
+     "why": "A committed player gives a lot of time and effort, so she never misses practice."
+    },
+    "g19": {
+     "label": "19. He lost his ______ after five defeats and stopped going to practice.",
+     "correct": "motivation",
+     "why": "Motivation is the reason you want to do something; after defeats he lost it."
+    },
+    "g20": {
+     "label": "20. The referee gave a ______ because the player pushed an opponent.",
+     "correct": "penalty",
+     "why": "A penalty is the punishment a referee gives when a player breaks a rule."
+    },
+    "g21": {
+     "label": "21. Playing professional sport takes a lot of time and ______.",
+     "correct": "commitment",
+     "why": "Commitment is giving your time and effort to something, which professional sport needs."
+    },
+    "g22": {
+     "label": "22. You can borrow my phone ______ you give it back tomorrow.",
+     "correct": "as long as",
+     "why": "'As long as' means 'only if', so she must give the phone back to borrow it."
+    },
+    "g23": {
+     "label": "23. Tonight there is a ______ broadcast of the match, so you can watch it as it happens.",
+     "correct": "live",
+     "why": "A live broadcast is shown as it happens, not recorded earlier."
+    },
+    "g24": {
+     "label": "24. My morning ______ is hard: push-ups, sit-ups and a long run. I am tired after it.",
+     "correct": "workout",
+     "why": "A workout is a session of hard exercise, such as push-ups and a long run."
+    },
+    "g25": {
+     "label": "25. Small children are ______: they cannot look after themselves.",
+     "correct": "dependent",
+     "why": "Dependent means needing others for help; small children cannot look after themselves."
+    },
+    "g26": {
+     "label": "26. The teacher wanted to ______ all the students in the project, so everyone had a job.",
+     "correct": "involve",
+     "why": "To involve people is to make them part of an activity, so everyone had a job."
+    },
+    "g27": {
+     "label": "27. That was a great lesson. ______, did you hear that the test is on Friday?",
+     "correct": "By the way",
+     "why": "'By the way' adds something you just thought of, such as the test on Friday."
+    },
+    "g28": {
+     "label": "28. The young man jumped over walls and ran along roofs in a ______ video.",
+     "correct": "parkour",
+     "why": "Parkour is the sport of running, jumping and climbing over walls and roofs."
+    },
+    "g29": {
+     "label": "29. You can always ______ him. He never breaks a promise.",
+     "correct": "rely on",
+     "why": "To rely on someone is to trust that they will help, because he keeps his promises."
+    },
+    "g30": {
+     "label": "30. I always ______ my local team and go to every home match.",
+     "correct": "support",
+     "why": "To support a team is to cheer for it, for example at every home match."
+    },
+    "g31": {
+     "label": "31. I am ______ the rain. It has rained every day for two weeks!",
+     "correct": "sick of",
+     "why": "To be sick of something is to be tired of it; it rained for two weeks."
+    },
+    "g32": {
+     "label": "32. I am ______ my homework, so I can go out now.",
+     "correct": "done with",
+     "why": "To be done with something is to have finished it, so she can go out."
+    },
+    "g33": {
+     "label": "33. The team's 4–1 ______ over Sweden put them top of the table.",
+     "correct": "win",
+     "why": "A win is a victory; 4–1 means the team won the match."
+    },
+    "g34": {
+     "label": "34. Our team ______ in the gym three times a week to get fitter.",
+     "correct": "trains",
+     "why": "To train is to practise regularly to get better and fitter."
+    }
+   }
+  }
+ },
+ "10c-canada-vocab-practice": {
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. Good roads, railways and airports make up a country's ______.",
+     "correct": "infrastructure",
+     "why": "Infrastructure means roads, railways, airports and other basic systems a country needs."
+    },
+    "g2": {
+     "label": "2. French and English are the two ______ of Canada.",
+     "correct": "official languages",
+     "why": "Official languages are the languages the law accepts, here French and English in Canada."
+    },
+    "g3": {
+     "label": "3. The ______ crossed the ice for months to reach the North Pole.",
+     "correct": "explorer",
+     "why": "An explorer travels to learn about new places, such as the North Pole."
+    },
+    "g4": {
+     "label": "4. He plays hockey ______ baseball.",
+     "correct": "as well as",
+     "why": "'As well as' means 'and also', so he plays both hockey and baseball."
+    },
+    "g5": {
+     "label": "5. Before giving evidence, the witness had to swear an ______.",
+     "correct": "oath",
+     "why": "An oath is a serious promise, such as a witness makes in court."
+    },
+    "g6": {
+     "label": "6. The Arctic winter is ______: it can be minus 40 degrees for weeks.",
+     "correct": "harsh",
+     "why": "Harsh means cold, rough and unpleasant, like minus 40 degrees for weeks."
+    },
+    "g7": {
+     "label": "7. ______ in Canada have lived there for thousands of years.",
+     "correct": "Indigenous people",
+     "why": "Indigenous people were the first people to live in a place, for thousands of years."
+    },
+    "g8": {
+     "label": "8. Under colonial rule, many people suffered years of ______.",
+     "correct": "oppression",
+     "why": "Oppression is cruel treatment that takes away freedom, as under colonial rule."
+    },
+    "g9": {
+     "label": "9. In Québec they speak French, ______ most people in the rest of Canada speak English.",
+     "correct": "whereas",
+     "why": "'Whereas' shows a clear difference: French in Québec, English in the rest of Canada."
+    },
+    "g10": {
+     "label": "10. Oil, wood and iron are important ______ in Canada.",
+     "correct": "natural resources",
+     "why": "Natural resources, such as oil, wood and iron, come from nature and are useful."
+    },
+    "g11": {
+     "label": "11. People in Québec speak ______ French, but many also speak English.",
+     "correct": "mainly",
+     "why": "'Mainly' means mostly; most people there speak French, but many also speak English."
+    },
+    "g12": {
+     "label": "12. Learning two languages at school can be ______, but it is rewarding.",
+     "correct": "challenging",
+     "why": "Challenging means difficult but rewarding, like learning two languages at school."
+    },
+    "g13": {
+     "label": "13. Their wedding ______ took place in a small church by the lake.",
+     "correct": "ceremony",
+     "why": "A ceremony is a formal event, such as a wedding in a church."
+    },
+    "g14": {
+     "label": "14. Québec is the biggest ______ in Canada, and most people there speak French.",
+     "correct": "province",
+     "why": "A province is one of the large regions of Canada; Québec is the biggest."
+    },
+    "g15": {
+     "label": "15. He came second in the race, so he got a ______ medal.",
+     "correct": "silver",
+     "why": "Silver is the shiny grey-white metal of the second-place medal."
+    },
+    "g16": {
+     "label": "16. A ______ can weigh over 300 kilograms and loves to catch fish and eat berries.",
+     "correct": "grizzly bear",
+     "why": "A grizzly bear is a large brown North American bear that catches fish and eats berries."
+    },
+    "g17": {
+     "label": "17. We saw a ______ with huge antlers standing in the lake.",
+     "correct": "moose",
+     "why": "A moose is a huge animal with wide, flat antlers."
+    },
+    "g18": {
+     "label": "18. After living in Canada for five years, she applied for Canadian ______.",
+     "correct": "citizenship",
+     "why": "Citizenship is the legal right to belong to a country, which she applied for."
+    },
+    "g19": {
+     "label": "19. The country has huge oil ______ under the desert.",
+     "correct": "reserves",
+     "why": "Reserves are large amounts of oil or gas stored in the ground."
+    },
+    "g20": {
+     "label": "20. Snow and ice have always ______ me. I could watch them for hours.",
+     "correct": "fascinated",
+     "why": "To fascinate is to interest strongly; you could watch something fascinating for hours."
+    },
+    "g21": {
+     "label": "21. Canada ______ wood and oil to many countries.",
+     "correct": "exports",
+     "why": "To export is to sell goods, such as wood and oil, to other countries."
+    },
+    "g22": {
+     "label": "22. In winter, we ______ on the frozen lake every weekend.",
+     "correct": "skate",
+     "why": "To skate is to move on ice with blades on your shoes, such as on a frozen lake."
+    },
+    "g23": {
+     "label": "23. Cars and bridges are made of steel, which comes from ______.",
+     "correct": "iron",
+     "why": "Steel is made from iron, a hard grey metal."
+    }
+   }
+  }
  }
 }
