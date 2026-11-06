@@ -346,6 +346,15 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
    practice material for German school students, university students and professionals."; email
    `learn@englishonline.training`; telephone `+49 176 3130 4449`; street "Koloniestrasse";
    display name (Users → Profile) "Shaun Trezise".
+   **Re-checked 2026-11-06 (CC), approval to edit given, no live write made.** The live node is still
+   unchanged (email `englishonlinetraining@pm.me`, name "English Online Training", street
+   "Koloniestr.", `sameAs` LinkedIn + Facebook). The WP MCP exposes no field that feeds it: settings
+   show `blogname` "Improve your English skills" (so the node name is not derived from Site Title),
+   admin email a personal address, and SEO front-page formats that are literal strings. Changing Site
+   Title or display name would not move the Organization node, so neither was touched. **Remaining
+   dashboard step for Shaun:** find the source of the node (Jetpack → Settings, the theme's
+   Customizer, or a code-snippet plugin) and set the targets above; if none exposes them it is theme or
+   plugin code and needs a code change.
    **Fix:** make the WP node identical to `scripts/schema.js`, and give `sameAs` real profiles.
    Also, WordPress post bylines emit a *second* Person, `/author/shauntrezise/#person`, named only
    "Shaun". `/about/` and the activities host already share `#shaun` (Tier 7 item 2), so this
