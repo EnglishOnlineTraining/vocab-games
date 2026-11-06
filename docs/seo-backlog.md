@@ -1249,4 +1249,9 @@ targets 4 weeks after each run, before the next one.
 > 7. Append a changelog here under "Runs" (date, source, anchor, target, WP revision id) so
 >    each edit can be reverted, and note each target's position and impressions as the baseline.
 
+**Reminder:** a cloud scheduled task, "Monthly internal-link pass (main site)", pushes a reminder on
+the 3rd of each month at 10:47 Berlin time (first run 2026-12-03). It only reminds: cloud sessions
+have no connectors, repo or Search Console. To make the pass run on its own, create a Cowork scheduled
+task on the Mac with this prompt, then delete or disable the cloud one so there aren't two.
+
 **Runs:** none yet.
