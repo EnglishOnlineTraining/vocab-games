@@ -198,7 +198,7 @@ page lands in a generated "More practice" section until you file it. In `data/hu
 `uni-activities.html`, move its card to the top of the B2 block. Pages published the same day go
 highest series number first. The card's `title` is its own copy, not read from the page, so when you
 rename a page, change its card title too. On a branch the hub HTML stays at the merge-base: commit
-only `hub-cards.json`, and `main`'s bot renders the hub after the merge. To preview it, run
+only `data/hub-cards.json`, and `main`'s bot renders the hub after the merge. To preview it, run
 `node scripts/build-category-hubs.js`, look, then `git checkout -- uni-activities.html`.
 
 **Fixing an answer after students have submitted.** If an answer key turns out to be wrong after
