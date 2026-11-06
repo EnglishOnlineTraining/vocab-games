@@ -504,7 +504,12 @@ afterwards (rule 7).
    live).** `property-management-vocabulary.html`: 159 terms in static HTML, a search filter,
    links to the PDF and `be-property-management.html`, a FAQ, and a button on the Business hub.
    Still open:
-   - CC: the same for `esg-vocabulary.pdf` and `commercial-real-estate-vocabulary.pdf`.
+   - ~~CC: the same for `esg-vocabulary.pdf` and `commercial-real-estate-vocabulary.pdf`.~~ **DONE
+     (2026-11-06, PR open).** `esg-vocabulary.html` (30 terms) and
+     `commercial-real-estate-vocabulary.html` (92 terms), same build as the property page.
+     **Still to do after the merge:** the two Business hub buttons (a branch build resets
+     `business-activities.html`, so they can only be added on `main`). The ESG page has no matching `be-` exercise to link. Definitions were
+     rewritten and doubtful ones fixed; the PR lists them. The PDFs are unchanged.
    - Shaun: the PDF still has five wrong definitions (cylinder, grout, interior wall, property
      developer, energy certificate) and lists `shaun@learnenglishinberlin.com` instead of the
      public address. If it is replaced, keep the same filename and URL.

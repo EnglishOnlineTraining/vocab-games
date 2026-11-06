@@ -31,7 +31,7 @@ const SECTIONS = [
                            || /^(california-exercises|sport-south-africa|klasse7-mini)\.html$/.test(p)
                            || /^lead-(abitur|msa)-/.test(p) },
   { id: 'adult',   test: p => /^(be|uni|it)-/.test(p)
-                           || /^(business|business-activities|property-management-vocabulary|lead-business-email-phrasebank)\.html$/.test(p) },
+                           || /^(business|business-activities|property-management-vocabulary|commercial-real-estate-vocabulary|esg-vocabulary|lead-business-email-phrasebank)\.html$/.test(p) },
   { id: 'ielts',   test: p => /^ielts-/.test(p) },
   { id: 'esl',     test: p => /^(esl-|quiz-)/.test(p) || p === 'level-test.html' },
   { id: 'de',      test: p => /^themen\//.test(p) || /^gr-/.test(p) || p === 'grammar-activities.html' },

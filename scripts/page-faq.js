@@ -332,6 +332,57 @@ module.exports = {
     },
   ],
 
+  'commercial-real-estate-vocabulary.html': [
+    {
+      q: 'What does the commercial real estate glossary cover?',
+      a: '92 English terms for commercial property, grouped by topic: leases and rent, people and '
+        + 'management, loans and finance, value and returns, buying and legal words, and building '
+        + 'operations.',
+    },
+    {
+      q: 'Does it use British or American English?',
+      a: 'Both. Most of the list comes from the US market, so where British English uses a '
+        + 'different word, such as service charge for CAM charges or heads of terms for letter of '
+        + 'intent, the British term is given too.',
+    },
+    {
+      q: 'Can I download the glossary as a PDF?',
+      a: 'Yes. The original vocabulary list is available as a free PDF from the link at the top '
+        + 'of the page, so you can print it or keep it on your phone.',
+    },
+    {
+      q: 'Where can I practise these words?',
+      a: 'The free Property Management exercise has a reading text about a property manager\'s '
+        + 'day, a vocabulary task and a short reply to a tenant, at B1 to B2 level. The article '
+        + 'English for commercial real estate adds example sentences and phrases for viewings and '
+        + 'negotiations.',
+    },
+  ],
+
+  'esg-vocabulary.html': [
+    {
+      q: 'What does ESG stand for?',
+      a: 'Environmental, social and governance. The three areas are used to judge how responsibly '
+        + 'a company is run, and by investors who want to put money into responsible companies.',
+    },
+    {
+      q: 'What does the ESG glossary cover?',
+      a: '30 English terms in plain English, grouped by topic: core ideas such as sustainability '
+        + 'and the circular economy, ESG investing and finance, and company practice and '
+        + 'reporting.',
+    },
+    {
+      q: 'Can I download the glossary as a PDF?',
+      a: 'Yes. The original vocabulary list is available as a free PDF from the link at the top '
+        + 'of the page, so you can print it or keep it on your phone.',
+    },
+    {
+      q: 'What is greenwashing?',
+      a: 'Making false or exaggerated claims about a product\'s environmental benefits to attract '
+        + 'customers who care about the environment.',
+    },
+  ],
+
   'abitur-englisch-2027.html': [
     {
       q: 'Was sind die Schwerpunktthemen im Englisch-Abitur 2027?',
