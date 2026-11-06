@@ -1121,6 +1121,8 @@ repeated here.
    "Good vs bad" pages are the format that is gaining (+60% clicks; "good email vs bad email examples"
    at 47 impressions). Next pages, one at a time (rule 2): meeting requests, follow-up emails,
    complaints, LinkedIn messages, out-of-office replies. Each pair must be a real example, not a template.
+   **Drafted 2026-11-06:** recommendation, one drafted pair (follow-up after no reply) and live-placement
+   notes are in `docs/business-email-pairs.md`. Meeting requests are already on 1167 (it has four pairs now).
 3. **Industry-vocabulary candidates from issue #73 · extends Tier 12.10 · Shaun decides.** Issue #73
    proposed HR, project management, accounting/finance, hospitality and IT/UX. Tier 12.10 only builds
    industries with real training material, so Shaun confirms which of these qualify. HR already has a
