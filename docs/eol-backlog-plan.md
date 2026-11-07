@@ -1492,6 +1492,11 @@ and Tier 4 above for the full executed record. What's left:
    (Shaun): build nothing.** Corporate is not a main focus; `/business-english/` stays as a light funnel.
    - `/business-english-berlin` → covered by `/business-english/` (1965): live title "Business English
      Training for Companies in Berlin & Online"; the proposed slug is 404.
+     **New evidence for Shaun to decide on (2026-11-07):** in the AI answer test
+     (`docs/gsc-review-2026-11-07-ai-answers.md`), every page cited for "Firmenschulung Englisch
+     Berlin, vor Ort" was a dedicated Berlin in-house page, and a small provider's page with a
+     stated price was quoted in 4 of 12 answers. Options: leave it closed; add a Berlin in-house
+     section with a price to 1965; or build the page. Publishing a price is Shaun's call.
    - `/ielts-preparation-online` → covered by the activities-host IELTS hub (`ielts-activities.html`);
      IELTS prep is online-only and delivered through the activities, so no WordPress service page.
    - Other three pages: never named anywhere in the repo (only "etc." in `wordpress-todo.md`); dropped with the rest.

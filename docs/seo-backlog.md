@@ -693,6 +693,11 @@ only.
    Mode shown?, our page cited?, which section, which sources win. Keep the log in
    `docs/gsc-review-*.md` beside the Search Console numbers. Roll items 1–4 out to all topics only
    after 4–6 weeks of data on the first two.
+   **First run 2026-11-07** (`docs/gsc-review-2026-11-07-ai-answers.md`): ChatGPT recommended
+   `8g-new-york.html` once a student named the unit. **Also export monthly** Bing Webmaster → AI
+   Performance (overview, pages, grounding queries, topics) for the `englishonline.training`
+   property, which includes the activities subdomain. First export: about 80 citations a day,
+   mostly `themen/` and Abitur pages.
 
 ## Tier 11 — AI Overview targeting (2026-10-07) · Shaun + CC
 Goal: get cited in the Google AI Overview for one buying-intent query, then repeat. Method: capture
@@ -1084,6 +1089,10 @@ on our sites, so Tier 12.2 does not apply; Shaun's time does.
    questions, logged out: e.g. "Business English training for German teams", "how to choose a
    Business English trainer", "Firmenschulung Englisch Berlin". Log which sources each cites.
    Add the queries to the Tier 12.15 log. If LinkedIn is cited, go on; if not, stop at this item.
+   **Done 2026-11-07:** LinkedIn cited in 1 of 12 answers (Google AI Mode, "how to choose a
+   trainer": a profile's long article), we in 0. Go on, narrowly: items 3–4 first, as one
+   "what to check before booking" article on our site plus a LinkedIn version. Full log:
+   `docs/gsc-review-2026-11-07-ai-answers.md`. Shaun: the activities site stays the main focus.
 2. **Personal profile, not a company page · Shaun.** *(CC part: profile URL added to Person `sameAs` 2026-10-28. `/business-english/` already links to the profile in the trainer bio and Key facts.)* Headline names the expertise (e.g.
    "Business English trainer for German teams · Berlin"); profile links to `/business-english/`.
    Public contact email only (rule 3). **CC:** once Shaun gives the profile URL, add it to the
