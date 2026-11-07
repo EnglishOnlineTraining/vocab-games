@@ -1474,3 +1474,25 @@ after the schedule pattern is ~17 Dec (every ~3 days at 10:54). **Shaun decides 
   2025 IQB revision and Fachbrief Nr. 9 for the sentence each guide quotes.**
 - **Not claimed:** exam weighting, length, or which task types appear in which Prüfung. Draft 1–3 without
   those or verify them first (exam-length and weighting figures have gone wrong before).
+
+### Drafted 2026-11-07 (Shaun approved all three; WordPress drafts only, nothing scheduled or published)
+
+| # | Draft | Title | Proposed slot | Links to |
+|---|---|---|---|---|
+| 1 | WP 2854 | Textanalyse auf Englisch schreiben: Aufbau, Stilmittel und Formulierungen fürs Abitur | 20 Dec, 10:54 | `abitur-text-analysis` |
+| 2 | WP 2855 | Discuss, assess, evaluate: Eine Erörterung auf Englisch schreiben | 23 Dec, 10:54 | `abitur-argumentative-writing` |
+| 3 | WP 2856 | Letter to the Editor, Blog Entry, Article: Textsorten im Englisch-Abitur schreiben | 26 Dec, 10:54 | `abitur-argumentative-writing` |
+
+- Slots checked free: the schedule ends 14 Dec (WP 2839); 17 Dec is held for draft 2849.
+- All three: German, "du", categories Abitur (163133) + English Learning (9490), no featured image yet
+  (approval pending), 2038 and 2032 linked and not edited. Examples are invented and labelled as such.
+- **Fact-check against primary sources (read 2026-11-07):** IQB Grundstock ab 2027 (Stand 29.01.2025) and
+  Fachbrief Englisch Nr. 9 (Aug 2025, Brandenburg). Confirmed: the analyze/examine, compare, discuss, assess,
+  comment and write definitions; no interpret/illustrate/characterization in the new list; discuss and assess
+  always expect the other side, comment may take one side (Fachbrief 4.1); the Erwartungshorizont forms
+  (pro/contra list, "BUT", "AND/OR"); the Brandenburg content criteria for Textanalyse and gestaltendes Schreiben.
+  **No difference from the live `abitur-operatoren` page was found.** Not checked: Berlin's own criteria, so the
+  guides attribute criteria to Brandenburg. The 30/30/40 weighting in the Fachbrief is an example, so it is not used.
+- **Search Console for "letter to the editor englisch" was not readable** (Ahrefs returns "Insufficient plan");
+  draft 3 was written without that check.
+- Draft 3 links the scheduled Mediation post (WP 2559) by slug; check the link after 11 Nov.
