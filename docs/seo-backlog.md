@@ -694,7 +694,10 @@ only.
    `docs/gsc-review-*.md` beside the Search Console numbers. Roll items 1–4 out to all topics only
    after 4–6 weeks of data on the first two.
    **First run 2026-11-07** (`docs/gsc-review-2026-11-07-ai-answers.md`): ChatGPT recommended
-   `8g-new-york.html` once a student named the unit; requests for exercises get generated, not cited.
+   `8g-new-york.html` once a student named the unit. **Also export monthly** Bing Webmaster → AI
+   Performance (overview, pages, grounding queries, topics) for the `englishonline.training`
+   property, which includes the activities subdomain. First export: about 80 citations a day,
+   mostly `themen/` and Abitur pages.
 
 ## Tier 11 — AI Overview targeting (2026-10-07) · Shaun + CC
 Goal: get cited in the Google AI Overview for one buying-intent query, then repeat. Method: capture

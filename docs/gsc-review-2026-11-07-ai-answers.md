@@ -70,8 +70,9 @@ That proves nothing: only blind questions count.
 
 ### What it says
 
-1. **Requests for exercises get generated, not cited.** For "Übungen zu X" ChatGPT writes its own
-   exercises. Generic exercise queries will not send AI traffic, whatever the SEO.
+1. **ChatGPT generated its own if-clause exercises instead of citing.** One question only.
+   **Corrected by the Bing data below:** in Bing/Copilot, "passiv englisch übungen" and "simple past
+   englisch übungen" do cite our `themen/` pages. Don't treat exercise queries as lost.
 2. **Generic "free practice" queries belong to old, heavily linked sites.** Smaller German sites
    (Übungskönig, Calmino) do get in at the school-year level.
 3. **The unit topic is the way in.** ChatGPT learned "Unit 1 = New York" from klett.de, then matched
@@ -88,3 +89,44 @@ That proves nothing: only blind questions count.
 
 One conversation only. Next month: the same chain for another unit topic (e.g. 9g or 10g), and
 the same questions in Copilot.
+
+## Bing Webmaster AI Performance (31 Oct – 4 Nov 2026)
+
+Exported by Shaun from Bing Webmaster Tools (AI Performance: overview, pages, grounding queries,
+topics) for both properties. **The `englishonline.training` property includes the activities
+subdomain**, so its totals are the whole site: don't add the two together.
+
+- **343 citations in 5 days, about 80 a day from 1 Nov** (31 Oct is a partial first day:
+  17 citations, of which 0 on activities). Of these, 124 were for activities pages (about 31 a day).
+- **Topics:** Grammar & Language Structure; Public Speaking & Presentations; Language Courses & Tutoring.
+
+| Group | Citations | Pages |
+|---|---|---|
+| Breaking the Mould (2023 post) | 80 | "public speaking alternatives" and 4 variants, up to 52% citation share |
+| Abitur guides and pages | about 129 | Kommentar 42 (20 post + 22 `/comment-page-1/`), Zusammenfassung 32, `abitur-operatoren` 18, Pixar stories 14, `abitur-englisch-2027` 13, kreatives Schreiben 9, `abitur-text-analysis` 5 |
+| `themen/` grammar pages | 82 | Passiv 27, Simple Past 25, Linking Words 23, Reported Speech 7 |
+| Business English | 29 | writing emails 13, business verbs 6, good vs bad emails 5, Dogme 5 |
+| MSA, university | 8 | MSA practice exam 4, `msa-c-smart-home-demo` 3, `/university-english/` 1 |
+
+Grounding queries (the ones Bing lists): "public speaking alternatives" (42), "passiv englisch
+übungen" (24), "wie schreibt man eine summary in englisch" (21, 41% share), "linking words englisch
+liste" (16, 36%), "simple past englisch übungen" (12, 32%).
+
+### What it says
+
+1. **German pages answering a German search get cited:** `themen/` and the Abitur guides make up
+   about 210 of 343 citations. The year exercise pages get none in Bing; they're reached through the
+   `themen/` pages, which link to them.
+2. **Only 4 of the 19 `themen/` pages are cited.** The winners' titles match the query word for word
+   ("Passiv Englisch: Übungen mit allen Zeiten & Erklärung"). Audit running (themen-audit session).
+3. **The Abitur cluster is the strongest group.** Next guides being proposed (abitur-gaps session).
+   Posts 2032 and 2038 are under the 60-day no-touch rule until 2026-12-05.
+4. **`/business-english/` gets no citations,** which matches the buyer test above.
+5. **The Kommentar post is split across two URLs:** `/comment-page-1/` has a self-referencing
+   canonical (`…/comment-page-1/#comments`). Fix: WordPress Settings → Discussion → turn off "Break
+   comments into pages" (Shaun).
+6. **Bing is the activities site's AI channel today:** about 31 a day while Google has the hubs
+   unindexed (Tier 19 item 9).
+
+**Export the same four reports monthly** for both properties and log them here beside the Tier
+10.7 manual questions.
