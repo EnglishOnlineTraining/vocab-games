@@ -1398,3 +1398,103 @@ mistake (Tier 12.4). Automate the analysis and the changelog, not the live write
 workflow for other sites or customers is outside this repo: it needs its own copy of the prompt.
 
 **Runs:** none yet.
+
+## Tier 22 — Next Abitur writing guides (2026-11-07) · Shaun decides, CC drafts
+
+Source: Bing AI Performance report (31 Oct – 4 Nov 2026): the Abitur cluster is the strongest group of
+AI-cited pages, about 130 citations over both sites. Cited: Kommentar guide (2038, 42), Zusammenfassung
+guide (2032, 32), Pixar story writing (2372, 14), kreatives Schreiben (2039, 9), `abitur-operatoren` (18),
+`abitur-englisch-2027` (13), `abitur-text-analysis` (5). **Proposal only: no post written, no WordPress
+change.** Citation counts are Shaun's figures from the report; this tier re-checked none of them.
+
+### Mapping: task type → what exists
+
+Operators from `abitur-operatoren.html` (IQB Grundstock for Prüfungsjahr 2027). Pack = the 4 themed
+`abitur-*` pages per type (science and technology, media impact, aims and ambitions, nations).
+WP status read 2026-11-07 (publish / `future` = scheduled).
+
+| Task type (operators) | Activities page | WordPress guide | Gap |
+|---|---|---|---|
+| Summary (outline, summarize, sum up, point out) | `abitur-writing-summaries` + 4 packs | 2032 Summary (publish) | none |
+| Text analysis (analyze, examine, compare, describe, explain) | `abitur-text-analysis` + 5 packs | **none.** Only 2042 (overview) and 2520/2521 (what changed) touch it | **biggest** |
+| Comment (comment on) | `abitur-argumentative-writing` + 4 packs | 2038 Kommentar (publish); 2368 EN for teachers (publish) | none |
+| Discuss / assess / evaluate | same argumentative pack (shared with comment) | **none.** 2038 covers comment only | **gap** |
+| Write + text type (letter to the editor, blog entry, article, speech) | none dedicated; text types sit inside the packs | **none** (2039 is creative writing, not exam text types) | **gap** |
+| Mediation (Sprachmittlung) | `abitur-mediation` + 4 packs | 2559 (scheduled 11 Nov) | covered, not yet live |
+| Operators overall / AFB | `abitur-operatoren`, 2489 (EN) | 2521 (EN), 2520 (DE) | none |
+| Vocabulary by theme | science and technology only in packs | 2837 (scheduled 8 Dec) | other themes open |
+| Study plan | `abitur-englisch-2027` | 2839 (scheduled 14 Dec) | covered |
+| Linking words | `themen/linking-words` | 2765 (scheduled 29 Nov, for parents) | covered |
+| Closed reading/listening formats (decide, match, give evidence) | none | none | **skip**: the page says Fachbrief Nr. 9 lists them as not in the Brandenburg written exam |
+
+### Proposals (ranked)
+
+Demand is an **estimate** throughout: no volumes were pulled (Keyword Planner not checked, Ahrefs
+connector returns "Insufficient plan"). Evidence used: the Bing citation pattern above (every
+cited guide is a "how to write X" German guide for an operator, and the text-analysis page already earns
+AI citations with no guide behind it) and the German query forms in the Bing report titles. Confirm the
+query wording in Search Console / Bing before drafting (Tier 21 step 5).
+
+1. **Textanalyse auf Englisch schreiben (analyze / examine / compare).**
+   - Working title: „Textanalyse auf Englisch schreiben: Aufbau, Stilmittel und Formulierungen fürs Abitur"
+   - Target query (estimate): „textanalyse englisch abitur", „text analysis englisch schreiben", „stilmittel englisch analyse".
+   - Why: the same format as 2032 and 2038 (step-by-step guide per operator), and the largest task type
+     with no guide. `abitur-text-analysis` gets 5 citations with no German explainer to feed it. The 2027
+     list tightened analyze/examine and compare to require evidence and language/form, which is a
+     fresh angle no competitor page can copy without the IQB text. Existing lead magnet
+     `lead-abitur-textanalyse.html` (10 Redemittel) can be the hand-off.
+   - Format: **WordPress guide**, linking to `abitur-text-analysis` (one money page, Tier 12.1).
+2. **Discuss und assess im Englisch-Abitur (Erörterung).**
+   - Working title: „Discuss, assess, evaluate: Eine Erörterung auf Englisch schreiben"
+   - Target query (estimate): „erörterung englisch abitur", „discuss englisch schreiben", „to what extent aufsatz".
+   - Why: 2038 ranks and is cited for comment; discuss and assess/evaluate are the next two argumentative
+     operators and students confuse them (the operators page lists "discuss statt assess" as a common
+     mix-up). The guide can carry the comment/discuss/assess comparison no page has.
+   - Format: **WordPress guide**, linking to `abitur-argumentative-writing`. Cross-link 2038 both ways.
+3. **Letter to the editor, blog entry, article: Textsorten im Englisch-Abitur.**
+   - Working title: „Letter to the Editor, Blog Entry, Article: Textsorten im Englisch-Abitur schreiben"
+   - Target query (estimate): „letter to the editor englisch schreiben", „blog entry englisch abitur", „textsorten englisch".
+   - Why: "write + text type" is the one operator with no page of its own, and the text type decides
+     register and format marks. Query is specific and probably less competitive than 1 and 2 (estimate).
+   - Format: **start as a WordPress guide**; after it ranks, add an activities page with a text-type
+     checklist and model texts, because format drills fit exercises better than prose. Lower confidence
+     than 1 and 2: check Search Console for any existing impressions first.
+
+Order: 1, then 2, then 3. Slots: three posts are already scheduled to 14 Dec; the next free slot
+after the schedule pattern is ~17 Dec (every ~3 days at 10:54). **Shaun decides slot and order.**
+
+### Exam-rule claims relied on (fact-check-blogs)
+
+- **Confirmed:** the IQB Grundstock (2019 edition, `E_Grundstock_von_Operatoren.pdf`) lists interpret, illustrate
+  and give/write a characterization of, and defines discuss as "give arguments or reasons for and against,
+  especially to come to a well-founded conclusion".
+- **Not re-checked here (rests on `abitur-operatoren.html`, which cites the 2025 IQB revision and Fachbrief
+  Nr. 9; the three posts scheduled 2026-11-05 were checked against the Berlin/Brandenburg 2027 documents):** the 2027 deletions, the
+  tightened analyze/compare definitions, and comment allowing one side. **Before drafting, re-read the
+  2025 IQB revision and Fachbrief Nr. 9 for the sentence each guide quotes.**
+- **Not claimed:** exam weighting, length, or which task types appear in which Prüfung. Draft 1–3 without
+  those or verify them first (exam-length and weighting figures have gone wrong before).
+
+### Drafted 2026-11-07 (Shaun approved all three)
+
+| # | Draft | Title | Proposed slot | Links to |
+|---|---|---|---|---|
+| 1 | WP 2854 (**scheduled**) | Textanalyse auf Englisch schreiben: Aufbau, Stilmittel und Formulierungen fürs Abitur | 20 Dec, 10:54 | `abitur-text-analysis` |
+| 2 | WP 2855 (**scheduled**) | Discuss, assess, evaluate: Eine Erörterung auf Englisch schreiben | 29 Dec, 10:54 | `abitur-argumentative-writing` |
+| 3 | WP 2856 (**scheduled**) | Letter to the Editor, Blog Entry, Article: Textsorten im Englisch-Abitur schreiben | 3 Jan 2027, 10:54 | `abitur-argumentative-writing` |
+
+- **Scheduled by Shaun's decision (2026-11-07):** 2854 on 20 Dec and 2855 on 29 Dec, both 10:54, status `future`.
+  **No posts 21–28 Dec** (Shaun doesn't post over Christmas). 2856 on 3 Jan 2027 at 10:54 (Shaun's date, set later the same day). Slots were free (the schedule
+  ended 14 Dec, WP 2839); 17 Dec is held for draft 2849.
+- Featured images (house style, no text, checked): 2859 on 2854, 2860 on 2855, 2861 on 2856, with German alt text.
+- All three: German, "du", categories Abitur (163133) + English Learning (9490), 2038 and 2032 linked and not edited. Examples are invented and labelled as such.
+- **Fact-check against primary sources (read 2026-11-07):** IQB Grundstock ab 2027 (Stand 29.01.2025) and
+  Fachbrief Englisch Nr. 9 (Aug 2025, Brandenburg). Confirmed: the analyze/examine, compare, discuss, assess,
+  comment and write definitions; no interpret/illustrate/characterization in the new list; discuss and assess
+  always expect the other side, comment may take one side (Fachbrief 4.1); the Erwartungshorizont forms
+  (pro/contra list, "BUT", "AND/OR"); the Brandenburg content criteria for Textanalyse and gestaltendes Schreiben.
+  **No difference from the live `abitur-operatoren` page was found.** Not checked: Berlin's own criteria, so the
+  guides attribute criteria to Brandenburg. The 30/30/40 weighting in the Fachbrief is an example, so it is not used.
+- **Search Console for "letter to the editor englisch" was not readable** (Ahrefs returns "Insufficient plan");
+  draft 3 was written without that check.
+- Draft 3 links the scheduled Mediation post (WP 2559) by slug; check the link after 11 Nov.
