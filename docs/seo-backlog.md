@@ -554,6 +554,7 @@ afterwards (rule 7).
    For each page that lost clicks, diagnose first (Tier 12.6): lost position → improve the page;
    same position, lower CTR → a better title, or an AI Overview now sits above us. Never the same
    fix for both. `node scripts/search-opportunities.js --csv <export>` lists the leaks (PR #138).
+   **Run 2026-11-06 for the ten hubs and "ielts": see Tier 19, "Re-pull of 2026-11-06". Hubs not recovered.**
 8. **Search Console emails of 2026-10-07 · read, nothing broken.**
    - There are **three** properties: `sc-domain:englishonline.training` (both hosts),
      `https://englishonline.training/` and `sc-domain:activities.englishonline.training`.
@@ -1138,7 +1139,7 @@ repeated here.
 6. **Re-check the "ielts" query after the IELTS vocabulary hub article ships · Shaun decides the article.**
    "ielts" had 135 impressions and 1 click on the same pull. Issue #73 planned a main-domain IELTS hub
    article. Once it is live, compare the CTR for "ielts" in Search Console at the Tier 9.7 re-measure
-   (2026-11-06).
+   (2026-11-06). **Checked 2026-11-06: article not live; "ielts" 1 click / 141 impressions (0.7%), no change. Detail in Tier 19.**
 
 ## Tier 18 — Bing SEO report and Ahrefs crawl (2026-10-30) · Shaun + CC
 
@@ -1229,6 +1230,30 @@ indexed", 155 "Discovered – not indexed".
   flags −79% recently), `/using-past-progressive/` (348, 22.1), homepage (219, 38.7).
 - Housekeeping: one unused verification token; a "Crawled – not indexed" validation shows Failed;
   the other 404s are `?share=` links, deleted 2016 posts and old tags. All 9 sitemaps read 28–30 Oct.
+
+**Re-pull of 2026-11-06 (CC, read in Shaun's signed-in Search Console, read-only; no setting changed, no indexing requested).**
+- **Ten hubs, URL Inspection, activities property.** All ten read "URL is not on Google · Crawled – currently not indexed",
+  and every one shows **last crawl 7 Oct 2026** (the day Request indexing was clicked). Not recrawled in the month since.
+  `7g-activities` 06:01, `7c-activities` 06:05, `8c-activities` 06:06, `8g-activities` 06:07, `9g-activities` 06:09,
+  `9c-activities` 06:25, `10g-activities` 06:12, `10c-activities` 06:12, `abitur-activities` 06:10,
+  `esl-grammar-activities` 06:11. `7g-activities` lists the sitemaps and two main-site referring pages (the homepage and a July post).
+- **Activities property, Page indexing (report last updated 23 Oct 2026, the same date as 1 Nov):** 17 indexed,
+  248 not indexed. Reasons: Crawled – not indexed 89 (validation **Failed**), Discovered – not indexed 155 (Not Started),
+  noindex 2, 404 1, alternate canonical 1. The index count did not move.
+- **Main-domain property, last 3 months to 4 Nov:** 211 clicks, 12.9k impressions, CTR 1.6%, position 22.2
+  (baseline 126, 11.1k, 1.1%, 32.9; the windows differ in length and the Abitur posts drove most of the gain).
+- **"ielts" (Tier 17.6), same window:** 1 click, 141 impressions, so CTR 0.7% (baseline: 1 click, 135 impressions).
+  **The hub article is not live**: the main site's search lists only the existing "IELTS Vocabulary Glossary" page (460),
+  and nothing with "ielts" in the sitemap. So this is a no-change baseline, not a result of the article.
+  What the numbers can't show: whether the query's CTR moved after anything (the 3-month window mixes before and after,
+  and one click on 141 impressions is noise), which page the impressions land on, and the position.
+- **Reading.** The hubs did not recover. Google has not recrawled them since the 7 Oct requests, so the new hub intros
+  have still only been judged once, on the day they were requested, and the activities index is stuck at 17. The
+  frozen-change rule (item 1) and the wait for links from other sites (item 3) both stand. For the homepage-roles item
+  (`docs/homepage-roles-proposal.md`): its premise that the hubs own their queries has no indexed hubs behind it, so
+  treat the proposal as unmeasured. Don't change the WordPress homepage on the strength of hub rankings; revisit once
+  the hubs are recrawled and indexed, or once a link from another site lands (item 3). Not obtained: per-page
+  impressions for the hubs (none are indexed, so none expected), and "ielts" position.
 
 ## Tier 20 — Monthly internal-link pass on the main site (2026-11-06) · Shaun + CC
 
