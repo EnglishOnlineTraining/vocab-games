@@ -58,9 +58,9 @@ first paragraph of the intro (column "Answer").
 | artikel | **Discovered but not crawled** since 23 Sept 2026; "URL cannot appear on Bing" |
 | past-perfect | **Discovered but not crawled** since 23 Aug 2026 (11 weeks); "URL cannot appear on Bing"; SEO/GEO and markup not processed |
 
-Shaun then reported the other 16 pages as fine (indexed); per-page screens not pasted. So **16 of
+Shaun then confirmed in Bing URL Inspection (2026-11-07) that the other 16 pages are indexed, the only two exceptions being `artikel` and `past-perfect` (both screens above); the coordinator's relay briefly named `if-saetze` and `present-perfect`, which was a mistake and is corrected. So **16 of
 18 are indexed and only `artikel` and `past-perfect` are not**. Indexing explains those two, not
-the rest: 13 pages are indexed but uncited, and for them the title difference (below) is again the
+the rest: 12 pages are indexed but uncited (14 uncited minus the 2), and for them the title difference (below) is again the
 leading, still unproven, lead. Request indexing for the two first; retitle them with the rest so
 the new title is what Bing crawls first.
 
@@ -104,7 +104,7 @@ changes `scripts/build-topic-pages.js` or shared CSS/JS, so it touches all 19 (a
 | # | Proposal | Type | Expected effect | Basis |
 |---|---|---|---|---|
 | 1 | In Bing Webmaster Tools, click Request indexing on `artikel` and `past-perfect` (uncrawled since 23 Sept and 23 Aug); look at the Sitemaps report for why they were not fetched (Shaun, nothing in the repo) | Check, no edit | Needed before those two can be cited at all | URL Inspection, 2026-11-07 |
-| 2 | Add a search-led `seoTitle` ("<Topic> Englisch: Übungen & Erklärung") to the 15, the 13 indexed-but-uncited pages first (the 2 uncrawled ones can follow), starting with the highest-demand topics: `present-perfect`, `if-saetze`, `modalverben`, `past-perfect`, `present-tenses`, `future-tenses`, `relativsaetze` | Page copy, 15 small edits (do 5–7 first) | Highest. Same lever as the three winners; low cost, reversible | The one visible difference between cited and uncited. Demand order is an estimate |
+| 2 | Add a search-led `seoTitle` ("<Topic> Englisch: Übungen & Erklärung") to the 15, the 12 indexed-but-uncited pages first (the 2 uncrawled ones can follow), starting with the highest-demand topics: `present-perfect`, `if-saetze`, `modalverben`, `past-perfect`, `present-tenses`, `future-tenses`, `relativsaetze` | Page copy, 15 small edits (do 5–7 first) | Highest. Same lever as the three winners; low cost, reversible | The one visible difference between cited and uncited. Demand order is an estimate |
 | 3 | Make the title phrase match the query shape per topic: "… Englisch: Übungen" for drill topics, "… Englisch: Liste, Erklärung & Übungen" where a list is the intent (`phrasal-verbs`, `modalverben`, `praepositionen`); e.g. "phrasal verbs englisch liste" | Page copy | Medium | Mirrors "linking words englisch liste" (23 citations) |
 | 4 | Put a topic-specific one-sentence answer in the `lede` under the H1 (e.g. "Das Present Perfect bildet man mit have/has + 3. Verbform …") instead of the boilerplate "Erklärung, Beispiele und N Übungen …", 45 words or fewer | Page copy for one page; **the boilerplate comes from the template**, so doing it for all 15 at once is a template change | Medium; unproven. AI answers quote the first answer-like text, and the boilerplate carries none | Tier 15 item 3 produced the same 15–20 word sentence on every page |
 | 5 | Add a table or quick-reference near the top for pages whose intent is a list or comparison (forms, irregular verbs, conditional types) | Page copy (`table` field exists since 17 Oct) | Low–medium | Only `linking-words` has one; it is a winner, but it is also a list-intent topic |
@@ -125,3 +125,39 @@ for timing.
 Whether to start proposal 2 (a first batch of 5–7 titles) before or after Tier 19.1 is decided.
 Per-page `seoTitle` edits are not site-wide template changes, so I read them as outside the
 freeze, but the freeze wording ("batch the ones that must happen") should be Shaun's call.
+
+## Batch 1 of the title edits (2026-11-07, approved by Shaun)
+
+Only `seoTitle` in `data/topics.json` changed. The 7 `themen/*.html` pages are not in the diff (branch builds keep them at the merge-base);
+`main`'s bot regenerates them after the merge. A local `build.js --full` showed exactly those 7
+pages change, and only in `<title>`, `og:title` and the JSON-LD block. No template, lede or site-wide change (Tier 19.1 untouched).
+
+| Page | New title |
+|---|---|
+| present-perfect | Present Perfect Englisch: Übungen & Erklärung |
+| if-saetze | If-Sätze Englisch: Übungen zu Typ 1, 2 & 3 mit Erklärung |
+| modalverben | Modalverben Englisch: Liste, Erklärung & Übungen |
+| relativsaetze | Relativsätze Englisch: Übungen & Erklärung |
+| past-progressive | Past Progressive Englisch: Übungen & Erklärung |
+| phrasal-verbs | Phrasal Verbs Englisch: Liste, Erklärung & Übungen |
+| question-tags | Question Tags Englisch: Übungen & Erklärung |
+
+Chosen across the estimated demand range (two high, three mid, two low), all indexed on Bing.
+
+**Held back as the control, batch 2 about 2026-11-14 (a week after this merges):** present-tenses,
+future-tenses (both higher-demand), gerund-infinitiv, adjektive-adverbien, praepositionen,
+reported-speech (cited already; retitle last), plus the two uncrawled pages `artikel` and
+`past-perfect` once Bing has crawled them.
+
+**Re-measure about 2026-12-05 (four weeks after batch 1 is live)** against the next monthly Bing
+AI Performance export: citations per page for batch 1 vs the held-back pages. A rise in batch 1
+only, with held-back pages flat, supports the title lever; both rising or both flat does not.
+Titles need a recrawl first, so check each batch-1 page's "last crawled" date in URL Inspection.
+
+**Index status and the batch-1 test.** All 7 batch-1 pages are indexed, and both unindexed pages
+(`artikel`, `past-perfect`) are held back, so batch 1 is a clean test of the title with no
+"newly indexed" effect mixed in: the 7 batch-1 pages against the indexed held-back pages
+(`present-tenses`, `future-tenses`, `gerund-infinitiv`, `adjektive-adverbien`, `praepositionen`).
+Measure `artikel` and `past-perfect` apart, and only after Bing has crawled them; their result
+mixes indexing with title and is not evidence for the title. Indexing alone explains why those two
+are uncited; the title explanation applies to the 12 indexed-but-uncited pages.
