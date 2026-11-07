@@ -1481,11 +1481,10 @@ after the schedule pattern is ~17 Dec (every ~3 days at 10:54). **Shaun decides 
 |---|---|---|---|---|
 | 1 | WP 2854 (**scheduled**) | Textanalyse auf Englisch schreiben: Aufbau, Stilmittel und Formulierungen fürs Abitur | 20 Dec, 10:54 | `abitur-text-analysis` |
 | 2 | WP 2855 (**scheduled**) | Discuss, assess, evaluate: Eine Erörterung auf Englisch schreiben | 29 Dec, 10:54 | `abitur-argumentative-writing` |
-| 3 | WP 2856 (draft) | Letter to the Editor, Blog Entry, Article: Textsorten im Englisch-Abitur schreiben | none yet | `abitur-argumentative-writing` |
+| 3 | WP 2856 (**scheduled**) | Letter to the Editor, Blog Entry, Article: Textsorten im Englisch-Abitur schreiben | 3 Jan 2027, 10:54 | `abitur-argumentative-writing` |
 
 - **Scheduled by Shaun's decision (2026-11-07):** 2854 on 20 Dec and 2855 on 29 Dec, both 10:54, status `future`.
-  **No posts 21–28 Dec** (Shaun doesn't post over Christmas). **2856 stays a draft**; its date field still reads
-  26 Dec but a draft does not publish, so set a real date when Shaun picks one. Slots were free (the schedule
+  **No posts 21–28 Dec** (Shaun doesn't post over Christmas). 2856 on 3 Jan 2027 at 10:54 (Shaun's date, set later the same day). Slots were free (the schedule
   ended 14 Dec, WP 2839); 17 Dec is held for draft 2849.
 - Featured images (house style, no text, checked): 2859 on 2854, 2860 on 2855, 2861 on 2856, with German alt text.
 - All three: German, "du", categories Abitur (163133) + English Learning (9490), 2038 and 2032 linked and not edited. Examples are invented and labelled as such.
