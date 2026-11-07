@@ -125,3 +125,30 @@ for timing.
 Whether to start proposal 2 (a first batch of 5–7 titles) before or after Tier 19.1 is decided.
 Per-page `seoTitle` edits are not site-wide template changes, so I read them as outside the
 freeze, but the freeze wording ("batch the ones that must happen") should be Shaun's call.
+
+## Batch 1 of the title edits (2026-11-07, approved by Shaun)
+
+Only `seoTitle` in `data/topics.json` changed (plus the 7 regenerated `themen/*.html`: `<title>`,
+`og:title` and the JSON-LD block). No template, lede or site-wide change (Tier 19.1 untouched).
+
+| Page | New title |
+|---|---|
+| present-perfect | Present Perfect Englisch: Übungen & Erklärung |
+| if-saetze | If-Sätze Englisch: Übungen zu Typ 1, 2 & 3 mit Erklärung |
+| modalverben | Modalverben Englisch: Liste, Erklärung & Übungen |
+| relativsaetze | Relativsätze Englisch: Übungen & Erklärung |
+| past-progressive | Past Progressive Englisch: Übungen & Erklärung |
+| phrasal-verbs | Phrasal Verbs Englisch: Liste, Erklärung & Übungen |
+| question-tags | Question Tags Englisch: Übungen & Erklärung |
+
+Chosen across the estimated demand range (two high, three mid, two low), all indexed on Bing.
+
+**Held back as the control, batch 2 about 2026-11-14 (a week after this merges):** present-tenses,
+future-tenses (both higher-demand), gerund-infinitiv, adjektive-adverbien, praepositionen,
+reported-speech (cited already; retitle last), plus the two uncrawled pages `artikel` and
+`past-perfect` once Bing has crawled them.
+
+**Re-measure about 2026-12-05 (four weeks after batch 1 is live)** against the next monthly Bing
+AI Performance export: citations per page for batch 1 vs the held-back pages. A rise in batch 1
+only, with held-back pages flat, supports the title lever; both rising or both flat does not.
+Titles need a recrawl first, so check each batch-1 page's "last crawled" date in URL Inspection.
