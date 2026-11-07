@@ -52,3 +52,39 @@ keeps a light presence; act on this log with small, cheap steps only.
    2–3 posts a week and a Company Page is not supported by anything here.
 
 Re-run the same five questions in 8 weeks (Tier 16 item 7), with the article live.
+
+## Activities site: learner questions (2026-11-07)
+
+The first run of the Tier 10.7 AI answer log for the activities site. Asked by Shaun in ChatGPT
+(logged out). First he asked the tools directly whether they would cite the site. ChatGPT said
+yes; Google and Copilot said only when relevant, and Copilot "very rarely".
+That proves nothing: only blind questions count.
+
+| Question (as typed) | Result |
+|---|---|
+| Übungen zu if-Sätzen Englisch | No search, no sources: ChatGPT wrote its own explanation, tasks and quiz |
+| Where can I practise English grammar for free online? | British Council, Cambridge, Perfect English Grammar, AgendaWeb, ego4u, Test-English; not us |
+| Wo kann ich kostenlos Englisch üben für Klasse 8? Gibt es Seiten mit Übungen passend zum Lehrplan? | Englisch-Hilfen, LearningApps, British Council Teens, Schlaukopf, Westermann, Übungskönig, Calmino, bildungsserver.berlin-brandenburg.de (+4 not opened); not us |
+| Follow-up in the same chat: "Gymnasium, Green Line, Berlin", then "Green Line 4 (ab 2021), Unit 1, Klassenarbeit" | Klett pages, Bildungsserver, the sites above, plus a generated practice test; not us |
+| Follow-up: "Gibt es Webseite wo ich kann diese Thema üben?" | **`8g-new-york.html` ("City of Dreams: New York") recommended first: "Besonders passend … Hier anfangen!"**, then British Council Teens, Lingolia, Englisch-Hilfen, Klett |
+
+### What it says
+
+1. **Requests for exercises get generated, not cited.** For "Übungen zu X" ChatGPT writes its own
+   exercises. Generic exercise queries will not send AI traffic, whatever the SEO.
+2. **Generic "free practice" queries belong to old, heavily linked sites.** Smaller German sites
+   (Übungskönig, Calmino) do get in at the school-year level.
+3. **The unit topic is the way in.** ChatGPT learned "Unit 1 = New York" from klett.de, then matched
+   that topic to our page. It repeated our meta description almost word for word ("Free Year 8
+   English practice: New York's boroughs … relative clauses and perfect progressive tenses, B1
+   level"). Our pages never name the textbook (rule 4), and the topic in the title and description
+   was enough. Keep every page's description to that pattern: topic, year, grammar, level.
+4. **It worked through ChatGPT, whose search uses Bing, while Google indexes none of the activities
+   hubs** (Tier 19 item 9, re-pull 2026-11-06). Google AI Mode cannot cite these pages until they
+   are indexed.
+5. **What AI can't replace is the teacher-set, graded page**, with results sent to the teacher, a
+   Note and a dyslexia option. That is the activities site's lasting value. Search traffic is a
+   bonus on top.
+
+One conversation only. Next month: the same chain for another unit topic (e.g. 9g or 10g), and
+the same questions in Copilot.
