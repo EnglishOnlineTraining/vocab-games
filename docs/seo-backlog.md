@@ -1052,6 +1052,10 @@ relative clauses* → `themen/relativsaetze`; *present perfect continuous* → `
    `esl-question-formation` + learner post. Week 2: `esl-pronouns` + parents post. Week 3:
    `esl-present-simple-continuous` + teachers post. Week 4: `esl-countable-uncountable`. Each
    post goes live after the page it links to.
+   **Blog queue, 2026-11-07:** three German drafts saved 5 Nov were fact-checked against the
+   Berlin and Brandenburg 2027 exam documents (no changes needed) and scheduled `future`, 10:54:
+   WP 2837 Abitur science and technology vocabulary on 8 Dec, WP 2838 oral MSA in Berlin on 11 Dec,
+   WP 2839 Abitur 12-week study plan on 14 Dec. Draft 2560 stays on skip.
 8. **Measure · Shaun.** Re-export the same report on 2026-11-23 and compare the bands for the
    queries in items 1–5. Measure only, like Tier 9.7.
 
