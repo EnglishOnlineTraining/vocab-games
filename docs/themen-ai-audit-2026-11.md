@@ -128,8 +128,9 @@ freeze, but the freeze wording ("batch the ones that must happen") should be Sha
 
 ## Batch 1 of the title edits (2026-11-07, approved by Shaun)
 
-Only `seoTitle` in `data/topics.json` changed (plus the 7 regenerated `themen/*.html`: `<title>`,
-`og:title` and the JSON-LD block). No template, lede or site-wide change (Tier 19.1 untouched).
+Only `seoTitle` in `data/topics.json` changed. The 7 `themen/*.html` pages are not in the diff (branch builds keep them at the merge-base);
+`main`'s bot regenerates them after the merge. A local `build.js --full` showed exactly those 7
+pages change, and only in `<title>`, `og:title` and the JSON-LD block. No template, lede or site-wide change (Tier 19.1 untouched).
 
 | Page | New title |
 |---|---|
