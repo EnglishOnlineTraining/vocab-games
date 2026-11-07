@@ -55,11 +55,11 @@ first paragraph of the intro (column "Answer").
 | artikel | **Discovered but not crawled** since 23 Sept 2026; "URL cannot appear on Bing" |
 | past-perfect | **Discovered but not crawled** since 23 Aug 2026 (11 weeks); "URL cannot appear on Bing"; SEO/GEO and markup not processed |
 
-`artikel` and `past-perfect` have the same template, sitemap entry and structure as the winners, so a page on this
-site can sit uncrawled for six weeks. That makes **indexing the first suspect for the uncited
-pages**, ahead of titles: the other 12 are unchecked. If several read "Discovered but not
-crawled", use Request indexing in Bing Webmaster Tools (or IndexNow) before any copy change, and
-retitle only the pages that are indexed but uncited.
+Shaun then reported the other 16 pages as fine (indexed); per-page screens not pasted. So **16 of
+18 are indexed and only `artikel` and `past-perfect` are not**. Indexing explains those two, not
+the rest: 13 pages are indexed but uncited, and for them the title difference (below) is again the
+leading, still unproven, lead. Request indexing for the two first; retitle them with the rest so
+the new title is what Bing crawls first.
 
 ## What the winners share, and what they do not
 
@@ -85,9 +85,9 @@ others still carry the generated "<German> (<English>) — Übungen & Erklärung
    together. With 4 cited pages out of 19 the data cannot separate the two.
 2. **Counterexample.** `reported-speech` is cited (7) with an old-style title. So the title is not
    required; it may be what lifts a page from rare to frequent citation.
-3. **Index state is the unknown that matters most.** Google's activities index is stuck at 17 of
-   255 pages (Tier 19). Bing's is not known. If a page is not in Bing's index it cannot be cited,
-   whatever its title. Check this first (see proposal 1).
+3. **Index state.** Google's activities index is stuck at 17 of 255 pages (Tier 19), but Bing has
+   16 of the 18 topic pages indexed (see "Bing index checks"); `artikel` and `past-perfect` are
+   uncrawled and cannot be cited.
 4. Two weeks passed between the retitle (17 Oct) and the Bing window (31 Oct – 4 Nov), enough
    for a recrawl, so the timing is plausible but not proof.
 
@@ -100,8 +100,8 @@ changes `scripts/build-topic-pages.js` or shared CSS/JS, so it touches all 19 (a
 
 | # | Proposal | Type | Expected effect | Basis |
 |---|---|---|---|---|
-| 1 | In Bing Webmaster Tools, URL-inspect the 15 uncited pages and confirm each is indexed; submit any that are not (Shaun, nothing in the repo) | Check, no edit | Decides whether copy changes can matter at all | An unindexed page cannot be cited; not checkable here |
-| 2 | Add a search-led `seoTitle` ("<Topic> Englisch: Übungen & Erklärung") to the 15, starting with the highest-demand topics: `present-perfect`, `if-saetze`, `modalverben`, `past-perfect`, `present-tenses`, `future-tenses`, `relativsaetze` | Page copy, 15 small edits (do 5–7 first) | Highest. Same lever as the three winners; low cost, reversible | The one visible difference between cited and uncited. Demand order is an estimate |
+| 1 | In Bing Webmaster Tools, click Request indexing on `artikel` and `past-perfect` (uncrawled since 23 Sept and 23 Aug); look at the Sitemaps report for why they were not fetched (Shaun, nothing in the repo) | Check, no edit | Needed before those two can be cited at all | URL Inspection, 2026-11-07 |
+| 2 | Add a search-led `seoTitle` ("<Topic> Englisch: Übungen & Erklärung") to the 15, the 13 indexed-but-uncited pages first (the 2 uncrawled ones can follow), starting with the highest-demand topics: `present-perfect`, `if-saetze`, `modalverben`, `past-perfect`, `present-tenses`, `future-tenses`, `relativsaetze` | Page copy, 15 small edits (do 5–7 first) | Highest. Same lever as the three winners; low cost, reversible | The one visible difference between cited and uncited. Demand order is an estimate |
 | 3 | Make the title phrase match the query shape per topic: "… Englisch: Übungen" for drill topics, "… Englisch: Liste, Erklärung & Übungen" where a list is the intent (`phrasal-verbs`, `modalverben`, `praepositionen`); e.g. "phrasal verbs englisch liste" | Page copy | Medium | Mirrors "linking words englisch liste" (23 citations) |
 | 4 | Put a topic-specific one-sentence answer in the `lede` under the H1 (e.g. "Das Present Perfect bildet man mit have/has + 3. Verbform …") instead of the boilerplate "Erklärung, Beispiele und N Übungen …", 45 words or fewer | Page copy for one page; **the boilerplate comes from the template**, so doing it for all 15 at once is a template change | Medium; unproven. AI answers quote the first answer-like text, and the boilerplate carries none | Tier 15 item 3 produced the same 15–20 word sentence on every page |
 | 5 | Add a table or quick-reference near the top for pages whose intent is a list or comparison (forms, irregular verbs, conditional types) | Page copy (`table` field exists since 17 Oct) | Low–medium | Only `linking-words` has one; it is a winner, but it is also a list-intent topic |
