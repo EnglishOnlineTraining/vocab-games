@@ -53,10 +53,11 @@ first paragraph of the intro (column "Answer").
 |---|---|
 | passiv | Indexed successfully, can appear on Bing; no SEO/GEO issues; JSON-LD and OpenGraph found |
 | artikel | **Discovered but not crawled** since 23 Sept 2026; "URL cannot appear on Bing" |
+| past-perfect | **Discovered but not crawled** since 23 Aug 2026 (11 weeks); "URL cannot appear on Bing"; SEO/GEO and markup not processed |
 
-`artikel` has the same template, sitemap entry and structure as the winners, so a page on this
+`artikel` and `past-perfect` have the same template, sitemap entry and structure as the winners, so a page on this
 site can sit uncrawled for six weeks. That makes **indexing the first suspect for the uncited
-pages**, ahead of titles: the other 13 are unchecked. If several read "Discovered but not
+pages**, ahead of titles: the other 12 are unchecked. If several read "Discovered but not
 crawled", use Request indexing in Bing Webmaster Tools (or IndexNow) before any copy change, and
 retitle only the pages that are indexed but uncited.
 
