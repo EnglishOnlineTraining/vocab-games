@@ -10,7 +10,7 @@ Question: Bing Webmaster Tools' AI Performance report (31 Oct – 4 Nov 2026) sh
 | Item | Status |
 |---|---|
 | Page facts (title, H1, description, opener, lists, tables, words, FAQ) | Read from the files on `origin/main` (commit e9f4a780, 2026-11-07) |
-| Which pages Bing has indexed | **Not obtained.** `bing.com` showed a CAPTCHA to the built-in browser on `site:`; not bypassed (rule). A first, differently shaped query returned unrelated Google Docs results. Shaun can check in Bing Webmaster Tools → URL Inspection, or the Sitemaps / Site Explorer report |
+| Which pages Bing has indexed | **Partly obtained (see "Bing index checks").** `site:` search was blocked: `bing.com` showed a CAPTCHA to the built-in browser on `site:`; not bypassed (rule). A first, differently shaped query returned unrelated Google Docs results. Shaun can check in Bing Webmaster Tools → URL Inspection, or the Sitemaps / Site Explorer report |
 | Query demand per topic | **Not obtained.** No Bing query export or Search Console per-page data was readable. Demand below is *estimated* from the topic (how common the German search is), not measured |
 | `docs/gsc-review-2026-11-07-ai-answers.md` | Not on `main` (PR for it still open), not read |
 | Citation counts for the 15 uncited pages | Only the four in the brief; the other 15 are "no citation", not a measured zero impressions |
@@ -46,6 +46,19 @@ first paragraph of the intro (column "Answer").
 
 (Lists = `ul`/`ol`/`table` elements after the H1. Meta descriptions are 102–159 characters on all
 19 and all mention "kostenlose Übungen"; they do not separate winners from the rest.)
+
+## Bing index checks (URL Inspection, pasted by Shaun, 2026-11-07)
+
+| Page | Bing status |
+|---|---|
+| passiv | Indexed successfully, can appear on Bing; no SEO/GEO issues; JSON-LD and OpenGraph found |
+| artikel | **Discovered but not crawled** since 23 Sept 2026; "URL cannot appear on Bing" |
+
+`artikel` has the same template, sitemap entry and structure as the winners, so a page on this
+site can sit uncrawled for six weeks. That makes **indexing the first suspect for the uncited
+pages**, ahead of titles: the other 13 are unchecked. If several read "Discovered but not
+crawled", use Request indexing in Bing Webmaster Tools (or IndexNow) before any copy change, and
+retitle only the pages that are indexed but uncited.
 
 ## What the winners share, and what they do not
 
