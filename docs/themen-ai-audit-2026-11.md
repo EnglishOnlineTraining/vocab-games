@@ -5,6 +5,9 @@ Question: Bing Webmaster Tools' AI Performance report (31 Oct – 4 Nov 2026) sh
 ("simple past englisch übungen"), `linking-words` 23 ("linking words englisch liste"),
 `reported-speech` 7 — and 15 not. Why, and what would change it? Report only: no page was edited.
 
+**Count note:** `themen/` holds 18 topic pages plus `index.html` (the topic index, not audited), so the
+brief's "19 pages / 15 uncited" is 18 pages / 14 uncited below; "the 15" in the text means those 14.
+
 ## What was and was not obtainable
 
 | Item | Status |
