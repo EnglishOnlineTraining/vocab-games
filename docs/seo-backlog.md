@@ -1332,3 +1332,65 @@ task on the Mac with this prompt, then delete or disable the cloud one so there 
     university). "msa englisch" has one impression, at 62. Re-check both at the next run.
   - Kreatives Schreiben (2039, 9.2) and Good vs bad emails (1167): every post that mentions them already
     links to them.
+
+## Tier 21 — Bing queries as a second demand signal (2026-11-07) · Shaun + CC
+
+Source: a social post Shaun shared on 2026-11-07. Claim: pages with no data in Search Console
+often show queries in Bing Webmaster Tools. Fits this site: Tier 20 found that Search Console hides
+most queries, so no visible query reached 50 impressions. Bing shows more query rows. Extends
+Tier 9.7, Tier 12.8 (repoint pass) and Tier 18 (Bing report). The post's advice to automate "but not
+100%" matches Tier 12 and CLAUDE.md rules 7–9: **CC analyses and proposes; Shaun approves every
+live edit.**
+
+**Run on the Mac**, where both consoles are open in the browser. Cloud sessions can't reach Search
+Console or Bing, and the Ahrefs connector returns "Insufficient plan".
+
+1. **Rule: Bing joins Search Console as a query source.** Merge both exports per page. Mark each
+   query GSC only, Bing only or both. Bing-only queries are real demand, but Bing's audience and
+   ranking differ from Google's. Check the Google top 3 before acting on a Bing-only query.
+2. **Export (Shaun).** Last 3 months, per page, from both tools: Search Console → Performance →
+   Queries and Pages; Bing Webmaster → Search Performance → Queries and Pages. Save outside the
+   repo. Start with pages that have Bing data and little or no Search Console data.
+3. **Targets.** Main-site pages and `themen/` pages with a cluster at position 5–20, or high
+   impressions and low CTR (title/meta problem, not a content problem; see Tier 9.7). Pages edited
+   2026-10-05/06 (1061, 1167, 2032, 2038, 2039, 2066, 965) are measure-only until **2026-12-05**
+   (Tier 12.3), except for factual errors.
+4. **Filter out of scope.** Drop queries outside English grammar and English-for-work for English-
+   and German-speaking readers (no other languages, no Spanish queries; see the language decision in
+   the platform notes). Drop brand-confusion queries (e.g. "msa" meaning the Egyptian university;
+   Tier 20 run 1).
+5. **Per-page analysis (CC, in the Mac session).** Prompt, adapted from the post:
+
+   > Read `docs/seo-backlog.md` Tiers 12, 20 and 21, and CLAUDE.md rules 7–9. For ONE page I give you
+   > (URL, primary keyword, which money page it feeds — Tier 12.1), the page text, and the Search
+   > Console and Bing query exports:
+   > 1. Merge both lists. Group close variants into clusters. Mark GSC only / Bing only / both.
+   > 2. Per cluster, classify: covered well / covered weakly / not covered / wrong intent (needs
+   >    another page). Quote the part of the page that covers it, or say "none".
+   > 3. For clusters with real impressions, search Google and read the top results. Report dominant
+   >    intent, dominant format, what they have that we don't (sections, tables, FAQ, examples),
+   >    and SERP features worth targeting.
+   > 4. Rank by impressions across both engines, position (5–20 first), CTR gap, and effort.
+   > 5. Output: summary (3–5 sentences); coverage table; recommendations in priority order (target
+   >    queries, change, where it goes, suggested heading with 2–3 sentences); 2–3 title and meta
+   >    options.
+   > 6. Do not edit anything. Start with "nothing lost" or list what the rewrite would remove
+   >    (rule 8). Keep the page's own voice (VOICE.md). Never add a claim you can't source.
+
+6. **Gate.** Shaun approves per row. Then edit through the WordPress tools with content fetched
+   using `context: "edit"` (Known traps). Re-read after every write. Never write back rendered HTML.
+   Pages with ≥ 600 words or clicks in 90 days are never stubbed or noindexed (rule 9).
+7. **After the edit.** Resubmit: Bing URL Submission or IndexNow; Google URL Inspection → Request
+   indexing (manual, a few URLs per day). Then run the Tier 20 internal-link pass for the page. Note
+   each page's baseline (Bing and GSC impressions, position, CTR) under "Runs" and re-measure after
+   4 weeks.
+8. **Open · Shaun decides: `--bing` import.** `scripts/search-opportunities.js --csv` reads the
+   Search Console export. A Bing import would merge both with a source column. Check the real Bing
+   CSV column names first; don't assume they match Search Console's. Not needed for the first run
+   (the prompt works on pasted exports).
+
+**Not adopted:** a fully automated edit-and-publish loop. It breaks rules 7–9 and repeats the 1167
+mistake (Tier 12.4). Automate the analysis and the changelog, not the live write. Running the same
+workflow for other sites or customers is outside this repo: it needs its own copy of the prompt.
+
+**Runs:** none yet.
