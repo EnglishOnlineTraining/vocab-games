@@ -16569,7 +16569,12 @@
     "g4": {
      "label": "We ___ (tell) so many stories about crocodile attacks.",
      "correct": "were told",
-     "why": "Simple past passive with plural subject \"we\": were + told."
+     "why": "Past passive with plural subject \"we\": were + told. \"have been told\" also works: the stories add up to now (\"it now seems a wonder\").",
+     "accept": [
+      "were told",
+      "have been told",
+      "'ve been told"
+     ]
     },
     "g5": {
      "label": "It now seems a wonder he ___ (not hurt).",
@@ -16583,7 +16588,11 @@
     "g6": {
      "label": "More warning signs ___ (put up) soon.",
      "correct": "will be put up",
-     "why": "Future passive: will + be + past participle. The signs will be put up in the future."
+     "why": "Future passive: will + be + past participle. The present progressive passive \"are being put up\" also works for a planned future with \"soon\".",
+     "accept": [
+      "will be put up",
+      "are being put up"
+     ]
     },
     "g7": {
      "label": "The kid who ___ (kill) by a croc just last week.",
@@ -16593,7 +16602,11 @@
     "g8": {
      "label": "Let’s hope he ___ (find) very soon!",
      "correct": "will be found",
-     "why": "Future passive after \"hope\": will + be + past participle."
+     "why": "Future passive after \"hope\": will + be + past participle. After \"hope\" the present can also mean the future, so \"is found\" is right too.",
+     "accept": [
+      "will be found",
+      "is found"
+     ]
     }
    }
   }
