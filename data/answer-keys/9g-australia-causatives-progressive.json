@@ -157,10 +157,12 @@
     "g4": {
      "correct": "were told",
      "accept": [
-      "were told"
+      "were told",
+      "have been told",
+      "'ve been told"
      ],
      "label": "We ___ (tell) so many stories about crocodile attacks.",
-     "why": "Simple past passive with plural subject \"we\": were + told."
+     "why": "Past passive with plural subject \"we\": were + told. \"have been told\" also works: the stories add up to now (\"it now seems a wonder\")."
     },
     "g5": {
      "correct": "wasn't hurt",
@@ -174,10 +176,11 @@
     "g6": {
      "correct": "will be put up",
      "accept": [
-      "will be put up"
+      "will be put up",
+      "are being put up"
      ],
      "label": "More warning signs ___ (put up) soon.",
-     "why": "Future passive: will + be + past participle. The signs will be put up in the future."
+     "why": "Future passive: will + be + past participle. The present progressive passive \"are being put up\" also works for a planned future with \"soon\"."
     },
     "g7": {
      "correct": "was killed",
@@ -190,10 +193,11 @@
     "g8": {
      "correct": "will be found",
      "accept": [
-      "will be found"
+      "will be found",
+      "is found"
      ],
      "label": "Let’s hope he ___ (find) very soon!",
-     "why": "Future passive after \"hope\": will + be + past participle."
+     "why": "Future passive after \"hope\": will + be + past participle. After \"hope\" the present can also mean the future, so \"is found\" is right too."
     }
    },
    "typed": true
