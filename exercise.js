@@ -752,6 +752,19 @@ function eolFlat(o) {
 /* Points awarded for a correct answer on attempt n: 1st=1, 2nd=½, 3rd=¼, later=0. */
 function attemptPoints(n) { return n <= 1 ? 1 : n === 2 ? 0.5 : n === 3 ? 0.25 : 0; }
 
+/* The visible text of a <select> option, for the teacher's wrong-answer line. Pages
+   with option values a/b/c (the it-, esl-, be- quizzes) otherwise send "gave c,
+   expected b". Anything that is not a select, or a value with no option, comes back
+   unchanged. first_<scoreKey> keeps the raw value: item-analysis.js grades it against
+   data/answer-keys, which hold the option values. */
+function eolOptText(el, v) {
+  if (!el || !el.options || v == null) return v;
+  for (var i = 0; i < el.options.length; i++) {
+    if (el.options[i].value === v) return el.options[i].text.trim() || v;
+  }
+  return v;
+}
+
 /*
  * Record one check of a single gap for graded-attempt scoring.
  * A gap is tracked in state.attempts[scoreKey][k] as { n, earned, done }.
@@ -759,7 +772,7 @@ function attemptPoints(n) { return n <= 1 ? 1 : n === 2 ? 0.5 : n === 3 ? 0.25 :
  * is a real attempt. Once the gap is correct (done) it is frozen: further
  * checks neither add attempts nor change its earned points.
  */
-function recordGap(scoreKey, k, ok, given, expected) {
+function recordGap(scoreKey, k, ok, given, expected, shown) {
   if (!scoreKey) return;
   if (!state.attempts) state.attempts = {};
   var tries = state.attempts[scoreKey] = state.attempts[scoreKey] || {};
@@ -772,7 +785,7 @@ function recordGap(scoreKey, k, ok, given, expected) {
   // a ready-made wrong-answer list for the teacher (eolWrongSummary). The page is
   // the only place that reliably knows both, which is why this is not recomputed
   // server-side — see the note on eolWrongSummary.
-  else { gap.given = given; gap.expected = expected; }
+  else { gap.given = shown != null ? shown : given; gap.expected = expected; }
 }
 
 /*
@@ -895,7 +908,7 @@ function eolAutoScoreUnchecked() {
       var ok = section.typed
         ? accept.some(function(a) { return normAns(given) === normAns(a); })
         : accept.some(function(a) { return given === String(a).trim(); });
-      recordGap(sk, k, ok, given, gaps[k].correct);
+      recordGap(sk, k, ok, given, eolOptText(el, gaps[k].correct), eolOptText(el, given));
     });
     if (seen) state.scores[sk] = { correct: recordedPoints(sk), total: ids.length };
   });
@@ -913,7 +926,7 @@ function checkDropdowns(ids, prefix, answers, fbId, scoreKey) {
     if (ok) { sel.className += ' gap-correct'; correct++; }
     else    { sel.className += ' gap-wrong';   wrong++;   }
     eolMarkGap(sel, ok);
-    recordGap(scoreKey, k, ok, sel.value, answers[k]);
+    recordGap(scoreKey, k, ok, sel.value, eolOptText(sel, answers[k]), eolOptText(sel, sel.value));
   });
   var total = ids.length;
   var recorded = correct;
@@ -964,7 +977,7 @@ function checkDropdownsMulti(ids, prefix, answers, fbId, scoreKey) {
     if (ok) { sel.className += ' gap-correct'; correct++; }
     else    { sel.className += ' gap-wrong';   wrong++;   }
     eolMarkGap(sel, ok);
-    recordGap(scoreKey, k, ok, sel.value, acc.join(' / '));
+    recordGap(scoreKey, k, ok, sel.value, acc.map(function(a) { return eolOptText(sel, a); }).join(' / '), eolOptText(sel, sel.value));
   });
   var total = ids.length;
   var recorded = correct;
@@ -1450,6 +1463,8 @@ document.addEventListener('DOMContentLoaded', function() {
   parent.insertBefore(card, anchor);
 });
 
+var EOL_SID = Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+
 function submitToSheet() {
   buildSummary();
   var btn = document.getElementById('submit-btn');
@@ -1469,6 +1484,11 @@ function submitToSheet() {
   }
   payload = eolEmailPayload(payload);
   if (eolIsMakeTarget(SHEET_URL)) payload = eolFlattenForMake(payload);
+  // One id per page load, kept across retries. A slow or dropped Apps Script reply
+  // after the row was written showed "Submission failed", and students sent the same
+  // row up to 6 times (2026-11-03). apps-script.gs skips an sid it has already written.
+  // Make targets dedupe on their own (submission-routing.md), so they get none.
+  if (!eolIsMakeTarget(SHEET_URL)) payload.sid = EOL_SID;
 
   if (isTestMode()) {
     console.log('📝 TEST MODE - Submission payload:', payload);

@@ -21,8 +21,19 @@ function doPost(e) {
       ? e.parameter.payload
       : (e.postData ? e.postData.contents : '');
     var data = JSON.parse(raw);
+    // Retry guard: exercise.js sends the same sid when a student re-sends after a reply
+    // that never arrived, so a second copy of a written row is skipped.
+    // ponytail: CacheService keeps an sid for 6 hours and two copies arriving in the same
+    // second can both pass; a LockService section around the check is the upgrade.
+    var sid = data.sid;
+    delete data.sid;
+    var cache = CacheService.getScriptCache();
+    if (sid && cache.get('sid:' + sid)) {
+      return ContentService.createTextOutput('OK').setMimeType(ContentService.MimeType.TEXT);
+    }
     var ss = SpreadsheetApp.getActiveSpreadsheet();
     routeSubmission(ss, data);
+    if (sid) cache.put('sid:' + sid, '1', 21600);
     return ContentService.createTextOutput('OK').setMimeType(ContentService.MimeType.TEXT);
   } catch (err) {
     return ContentService.createTextOutput('Error: ' + err.message).setMimeType(ContentService.MimeType.TEXT);
