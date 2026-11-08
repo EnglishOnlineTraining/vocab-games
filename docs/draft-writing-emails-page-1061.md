@@ -1,6 +1,6 @@
 # Draft: `/writing-emails-in-english/` (WordPress page 1061)
 
-**Status: DRAFT. Not applied. The live page is unchanged.**
+**Status: LIVE since 2026-11-08 (approved by Shaun). Applied to page 1061 exactly as drafted below. New revision 2867. To revert, restore revision 2682 (2026-10-22, the previous version).**
 Source: "Next round" in the Nov 2026 quick-wins report. Live page read on 2026-11-07
 (`context: "edit"`, last modified 2026-10-22). Sister page 1167 read the same day.
 
