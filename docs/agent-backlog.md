@@ -8,8 +8,13 @@ descriptions and the three already delivered.
 | # | Agent | What it does | Route | Blocked by |
 |---|-------|-------------|-------|------------|
 | 2 | ~~Pre-publish gate~~ **Done (#87, 2026-10-04)** | `check-generated.yml` runs `verify-exercise.js` (incl. webhook) on pages a PR adds; grade table and explanations are gated by `check-grade-table` / `validate-explanations`. | GitHub Action (on PR) | — |
-| 4 | Weekly prep runner | Sunday: reads A/B week + timetable, picks classes, drafts one exercise per class from the right textbook unit. | Claude Code Routine (cron) | Timetable data |
 | 11 | Item analysis (quality loop) | Counts answers per gap, flags weak gaps, drafts fixes as a PR. Spec below. | Weekly GitHub Action (Sheets) + manual CSV run (Excel) | Apps Script redeploy (Shaun) |
+
+## Declined
+
+| # | Agent | Why |
+|---|-------|-----|
+| 4 | Weekly prep runner | Shaun doesn't want it (2026-11-09). Was blocked on timetable data anyway; not pursuing. |
 
 ## Medium-term
 
