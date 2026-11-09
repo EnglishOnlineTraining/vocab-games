@@ -26,8 +26,13 @@
  *
  * Shared state the page reads for its payload: sid, t0, tabN, pasteN, anomalyN,
  * devToolsFlagged, translationFlagged, extraTime, dyslexia, EXAM_MINS, timerID.
+ *
+ * examPhase: 'idle' → 'running' (examStart) → 'stopped' (examStop). The test rules
+ * (paste and copy blocked, tab switches counted) and the timers run only while
+ * 'running'. t0 is kept after examStop, for the time-spent figures pages compute.
  */
 var sid = '', t0 = null, timerID = null, EXAM_MINS = 0, extraTime = false, dyslexia = false;
+var examPhase = 'idle', examLoops = [];
 var tabN = 0, pasteN = 0, anomalyN = 0, devToolsFlagged = false, translationFlagged = false;
 var examOnTimeUp = null;
 
@@ -137,11 +142,14 @@ function examStart(onTimeUp, since) {
   t0 = since || Date.now();
   if (typeof eolIntStart === 'function') eolIntStart();
   examOnTimeUp = onTimeUp;
+  examPhase = 'running';
   document.body.classList.add('exam-mode');
   var wrap = examEl('timer-wrap'); if (wrap) wrap.style.display = 'flex';
   examStartTimer();
-  if (typeof snap === 'function') setInterval(snap, 3 * 60 * 1000);
-  setInterval(checkDevTools, 4000);
+  // Cleared by examStop: a snap() after hand-in rewrote the vocab tests' saved copy
+  // without its `submitted` mark, and the device offered the test again.
+  if (typeof snap === 'function') examLoops.push(setInterval(snap, 3 * 60 * 1000));
+  examLoops.push(setInterval(checkDevTools, 4000));
   if (navigator.webdriver) anomalyN++;
 }
 
@@ -159,30 +167,33 @@ function examStartTimer() {
 }
 
 function examStop() {
+  examPhase = 'stopped';
   clearInterval(timerID);
+  examLoops.forEach(clearInterval);
+  examLoops = [];
   var wrap = examEl('timer-wrap'); if (wrap) wrap.style.display = 'none';
 }
 
 /* ── SIGNALS ──
    Counted for the teacher, never a block on the student's work. All start with the
-   test (t0) and only count; the score never changes. */
+   test and stop at hand-in (examPhase); they only count, the score never changes. */
 function examField(el) { return el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT'); }
 
 document.addEventListener('visibilitychange', function () {
-  if (!t0) return;
+  if (examPhase !== 'running') return;
   if (document.hidden) { tabN++; examText('ts-disp', tabN); } else if (tabN > 0) flash('alert-tab');
 });
-window.addEventListener('blur', function () { if (!t0) return; tabN++; examText('ts-disp', tabN); });
+window.addEventListener('blur', function () { if (examPhase !== 'running') return; tabN++; examText('ts-disp', tabN); });
 
 function examPasteTry() { pasteN++; examText('pa-disp', pasteN); flash('alert-paste'); }
 document.addEventListener('paste', function (e) {
-  if (!t0) return;
+  if (examPhase !== 'running') return;
   e.preventDefault();
   if (examField(e.target)) examPasteTry();
 });
-document.addEventListener('copy', function (e) { if (t0) e.preventDefault(); });
+document.addEventListener('copy', function (e) { if (examPhase === 'running') e.preventDefault(); });
 document.addEventListener('keydown', function (e) {
-  if (!t0) return;
+  if (examPhase !== 'running') return;
   var mod = e.ctrlKey || e.metaKey, k = String(e.key).toLowerCase();
   if (mod && k === 'v') { e.preventDefault(); examPasteTry(); }
   if (mod && e.shiftKey && (k === 'i' || k === 'j')) e.preventDefault();
@@ -190,10 +201,10 @@ document.addEventListener('keydown', function (e) {
   if (mod && k === 'u') e.preventDefault();
   if (mod && k === 'c' && ['INPUT', 'TEXTAREA'].indexOf(document.activeElement.tagName) === -1) e.preventDefault();
 });
-document.addEventListener('contextmenu', function (e) { if (t0) e.preventDefault(); });
+document.addEventListener('contextmenu', function (e) { if (examPhase === 'running') e.preventDefault(); });
 
 function checkDevTools() {
-  if (!t0 || devToolsFlagged) return;
+  if (examPhase !== 'running' || devToolsFlagged) return;
   if (window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) {
     devToolsFlagged = true; anomalyN++; flash('alert-devtools');
   }
@@ -203,7 +214,7 @@ function checkDevTools() {
    types (40 characters in an answer box, 60 in a writing box). */
 document.addEventListener('input', function (e) {
   var t = e.target;
-  if (!t0 || (t.tagName !== 'INPUT' && t.tagName !== 'TEXTAREA')) return;
+  if (examPhase !== 'running' || (t.tagName !== 'INPUT' && t.tagName !== 'TEXTAREA')) return;
   var now = Date.now(), len = t.value.length;
   var prevLen = parseInt(t.dataset.prevLen || '0', 10), prevT = parseInt(t.dataset.prevT || now, 10);
   if (len - prevLen > (t.tagName === 'TEXTAREA' ? 60 : 40) && now - prevT < 500) anomalyN++;
