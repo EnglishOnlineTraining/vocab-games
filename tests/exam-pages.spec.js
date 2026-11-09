@@ -183,3 +183,22 @@ test('a vocab test resumed after a reload keeps the dyslexia arrangement', async
   await expect(page.locator('html')).toHaveClass(/exam-dyslexia/);
   expect(await page.evaluate(() => dyslexia)).toBe(true);
 });
+
+// exam.js phase: idle → running (examStart) → stopped (examStop). After hand-in the
+// 3-minute snap() kept firing and rewrote the saved test without its `submitted` mark,
+// so the next person on the device was offered "A test is still open" in the last
+// student's name, and the paste/copy/tab rules stayed on over the results screen.
+test('exam.js: a handed-in test stays handed in, and the test rules end with it', async ({ page }) => {
+  await sit(page, VOCAB);
+  await page.clock.runFor(10 * 60 * 1000);   // three more snap() ticks
+  const after = await page.evaluate(() => {
+    const ev = new ClipboardEvent('paste', { bubbles: true, cancelable: true });
+    document.body.dispatchEvent(ev);
+    window.dispatchEvent(new Event('blur'));
+    return { pasteBlocked: ev.defaultPrevented, tabN, phase: examPhase };
+  });
+  expect(after).toEqual({ pasteBlocked: false, tabN: 0, phase: 'stopped' });
+  await page.reload();
+  await expect(page.locator('#s-register')).toHaveClass(/active/);
+  await expect(page.locator('#resume-card')).toHaveCount(0);
+});

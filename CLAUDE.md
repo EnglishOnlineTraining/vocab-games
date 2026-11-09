@@ -213,6 +213,7 @@ Old section names still appear in skills and code comments; this table maps them
 | `docs/claude-reference/exercise-framework.md` | "Standard features", Score + Note, "Review-page explanations", practise mode, accessibility, writing rubric, spaced-review pages, shared `<head>`, hub cards, WordPress hub, build graph, `exercise.js`, structured data |
 | `docs/claude-reference/build-and-sitemaps.md` | Generated files and what to edit instead, the `<!-- NAME:START -->` blocks in pages, merging `main` into a branch, sitemaps and `robots.txt`, `build.js --check` / `--write-graph` |
 | `docs/claude-reference/hubs-seo-and-tests.md` | "Class review tests", unlisted tests, timed tests' shared files (`exam.js`, `exam.css`, `class-test.css`, `vocab-test.css`) and dyslexia box, breadcrumb/footer, filterable index, `index.html`, `themen/`, auto-rebuild, `data/noindex.json`, internal links, IndexNow (not Google), marking handouts |
+| `docs/claude-reference/state-machines.md` | Changing a page lifecycle: steps, submit, practise results, drafts, a timed test's start/stop (`examPhase`) |
 | `apps-script.gs` | The Apps Script handler (code is not duplicated in this file) |
 | `style.css` | CSS design tokens (not duplicated in this file) |
 | `docs/seo-backlog.md` | Any SEO, GEO, AI-search or Search Console work — new SEO backlog items go here, not in `eol-backlog-plan.md` |
