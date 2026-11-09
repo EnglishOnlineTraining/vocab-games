@@ -21857,5 +21857,107 @@
     }
    }
   }
+ },
+ "be-decision-making": {
+  "exA": {
+   "prefix": "exA-",
+   "gaps": {
+    "g1": {
+     "label": "1. Why does time saved carry the highest weighting?",
+     "correct": "Because finishing late would mean paying a penalty",
+     "why": "The email says a late handover would trigger the £5,000-a-week penalty, so time saved carries 40%."
+    },
+    "g2": {
+     "label": "2. Who approves longer working hours on site?",
+     "correct": "The health and safety manager",
+     "why": "The email says the health and safety manager has to approve any plan that increases working hours on site."
+    },
+    "g3": {
+     "label": "3. Trade-off with the second subcontractor?",
+     "correct": "It saves the most time, but it is also the most expensive",
+     "why": "The email names a trade-off between speed and cost: it saves the most time but is the most expensive option."
+    },
+    "g4": {
+     "label": "4. What does Daniel recommend?",
+     "correct": "Getting quotes from two subcontractors before making a final decision",
+     "why": "Daniel recommends getting quotes from two steelwork subcontractors this week before committing."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1. agree on the ___ to judge the tenders",
+     "correct": "criteria",
+     "why": "Criteria are the standards you use to judge or compare options."
+    },
+    "g2": {
+     "label": "2. client, architect and residents are all ___",
+     "correct": "stakeholders",
+     "why": "Stakeholders are the people or groups a project or decision affects."
+    },
+    "g3": {
+     "label": "3. only three made it onto the ___",
+     "correct": "shortlist",
+     "why": "A shortlist is the small group of best options chosen from a longer list."
+    },
+    "g4": {
+     "label": "4. gave safety a high ___ in the matrix",
+     "correct": "weighting",
+     "why": "In a decision matrix, the weighting shows how important a criterion is compared with the others."
+    },
+    "g5": {
+     "label": "5. the ___ we accept to stay on budget",
+     "correct": "trade-off",
+     "why": "A trade-off is something you give up (time) to get something else (a lower cost)."
+    },
+    "g6": {
+     "label": "6. the team finally reached a ___",
+     "correct": "consensus",
+     "why": "You reach a consensus when everyone in a group agrees."
+    },
+    "g7": {
+     "label": "7. 15 November is a ___ we cannot miss",
+     "correct": "deadline",
+     "why": "A deadline is the latest date by which something must be finished."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. Everyone on site ___ wear a hard hat (legal requirement)",
+     "correct": "has to",
+     "why": "‘Has to’ expresses an obligation that comes from a rule or law."
+    },
+    "g2": {
+     "label": "2. We ___ check the forecast (sensible idea)",
+     "correct": "should",
+     "why": "‘Should’ gives advice or a recommendation."
+    },
+    "g3": {
+     "label": "3. Workers ___ walk under the crane (dangerous)",
+     "correct": "mustn't",
+     "why": "‘Mustn't’ means something is not allowed. ‘Don't have to’ would mean it is optional."
+    },
+    "g4": {
+     "label": "4. The new subcontractor ___ be faster (we won't know yet)",
+     "correct": "might",
+     "why": "‘Might’ expresses a possibility we are not sure about."
+    },
+    "g5": {
+     "label": "5. If the weather stays dry, the frame ___ be finished",
+     "correct": "ought to",
+     "why": "‘Ought to’ expresses what we expect to happen if things go to plan."
+    },
+    "g6": {
+     "label": "6. We ___ order more bricks (there are enough)",
+     "correct": "don't have to",
+     "why": "‘Don't have to’ means it is not necessary. ‘Mustn't’ would mean it is forbidden."
+    }
+   }
+  }
  }
 }
