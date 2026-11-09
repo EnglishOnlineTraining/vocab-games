@@ -181,7 +181,7 @@
         <p>Thanks for joining yesterday's site meeting. Here is a summary of where we are.</p>
         <p>Heavy rain in October has put the Riverside Offices project three weeks behind schedule. The client expects the building to be handed over on 28 February, and the contract includes a penalty of £5,000 for every week we finish late.</p>
         <p>We have a shortlist of three options: adding weekend shifts for the current team, bringing in a second steelwork subcontractor, or asking the client to move the handover date.</p>
-        <p>To keep the decision objective, we agreed to use a <strong>weighted decision matrix</strong>. Each option is scored from 1 to 5 against four criteria: time saved, cost, site safety and build quality. Because a late handover would trigger the penalty, time saved carries the highest weighting (40%). Safety carries 30%.</p>
+        <p>To keep the decision objective, we agreed to use a <strong>weighted decision matrix</strong>. Each option is scored from 1 to 5 against four criteria: time saved, cost, site safety and build quality. Because a late handover would trigger the penalty, time saved carries the highest weighting (40%), followed by safety (30%), cost (20%) and build quality (10%).</p>
         <p>We also identified the key stakeholders. The client, the subcontractors and our health and safety manager must all be consulted, and the health and safety manager has to approve any plan that increases working hours on site.</p>
         <p>At this stage, the second subcontractor has the highest overall score (4.2), mainly because it saves the most time. However, it is also the most expensive option, so there is a clear trade-off between speed and cost. Weekend shifts scored 3.6 and cost about 40% less, but tired workers increase the risk of accidents.</p>
         <p>My recommendation is that we should get quotes from two steelwork subcontractors this week before we commit. We ought to have the quotes by Friday, which still leaves time to start work on site in early December.</p>
@@ -386,7 +386,8 @@
       <div class="card-title">Tasks</div>
       <div class="form-group">
         <label class="form-label" for="exD-q1">1. Reply to Daniel (80–120 words). Say which option you would choose (weekend shifts, a second subcontractor or a later handover date) and why. Mention at least one risk or trade-off.</label>
-        <textarea class="form-textarea" id="exD-q1" placeholder="Hi Daniel, thanks for the summary. In my opinion, we should..." rows="7"></textarea>
+        <textarea class="form-textarea" id="exD-q1" aria-describedby="exD-count" oninput="updateWordCount()" placeholder="Hi Daniel, thanks for the summary. In my opinion, we should..." rows="7"></textarea>
+        <div class="form-hint" id="exD-count">0 words</div>
       </div>
       <div class="form-group">
         <label class="form-label" for="exD-q2">2. Describe a difficult decision on a project you have worked on or know about. Who were the stakeholders, and which criteria mattered most?</label>
@@ -461,7 +462,7 @@ function validateStep(n) {
   case 1: return allSet('exA-', A_KEYS);
   case 2: return allSet('exB-', B_KEYS);
   case 3: return allSet('exC-', C_KEYS);
-  case 4: return g('exD-q1').length > 60 && g('exD-q2').length > 20;
+  case 4: return countWords(g('exD-q1')) >= 80 && g('exD-q2').length > 20;
   default: return true;
   }
 }
@@ -486,8 +487,17 @@ function restoreStep(n) {
   case 4:
     set('exD-q1', state.exD.q1);
     set('exD-q2', state.exD.q2);
+    updateWordCount();
     break;
   }
+}
+
+function countWords(t) { return t.trim() ? t.trim().split(/\s+/).length : 0; }
+
+function updateWordCount() {
+  var w = countWords(g('exD-q1')), el = document.getElementById('exD-count');
+  el.textContent = w + ' word' + (w !== 1 ? 's' : '') + (w < 80 ? ' (write at least 80)' : w > 120 ? ' (too long: 120 at most)' : ' ✓');
+  el.style.color = w > 120 ? 'var(--red)' : w >= 80 ? 'var(--green)' : 'var(--muted)';
 }
 
 function labelText(id) {

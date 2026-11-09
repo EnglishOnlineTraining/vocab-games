@@ -77,9 +77,13 @@ related exercises, explanations).
 
 ## Step 4 — Register the page
 
-1. **Hub card:** add an entry in the Business English section of `data/hub-cards.json`
-   (`href`, `icon`, `title`, `meta`, `tag`; follow the `be-` entries there). `business-activities.html`
-   is generated from it, so don't hand-edit the hub.
+1. **Hub card: nothing to add.** After the merge, `main`'s build derives the card from the page
+   (emoji from `.welcome-flag`, the title, the meta description) and writes it to
+   `data/hub-cards.json`. A branch build strips any hand-written card for a new page
+   (`scripts/build.js`), so a card added on the branch never reaches the PR. To check it would
+   appear, run `node scripts/build-exercise-data.js && node scripts/build-category-hubs.js`, grep
+   `business-activities.html` for the file, then `git checkout -- .` to throw that output away.
+   Change the card's wording in `data/hub-cards.json` in a later PR, once it exists on `main`.
 2. **Explanations:** add `"<UNIT>": { "exA": { "prefix": "exA-", "gaps": { "g1": { "label", "correct", "why" } } } }`
    to `data/explanations.json` for every graded gap, then run `node scripts/validate-explanations.js`.
 
