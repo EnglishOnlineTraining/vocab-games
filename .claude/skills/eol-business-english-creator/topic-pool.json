@@ -1,0 +1,415 @@
+{
+  "domains": [
+    {
+      "id": "general-management",
+      "name": "General Management",
+      "topics": [
+        {
+          "slug": "be-what-is-management",
+          "title": "What is Management?",
+          "level": "B2",
+          "grammar_focus": "Defining and explaining business concepts",
+          "vocabulary": [
+            "management",
+            "planning",
+            "organizing",
+            "directing",
+            "controlling",
+            "resource",
+            "goal",
+            "objective"
+          ],
+          "exercise_idea": "Reading: definition of management + discussion of why management is needed; vocabulary: management functions; grammar: explaining purpose and function",
+          "status": "built"
+        },
+        {
+          "slug": "be-management-approaches",
+          "title": "Management Approaches: Theory X, Y, MBWA",
+          "level": "B2",
+          "grammar_focus": "Conditional sentences (Type II/III) for evaluating management styles",
+          "vocabulary": [
+            "Theory X",
+            "Theory Y",
+            "MBWA",
+            "management by walking about",
+            "authoritarian",
+            "participative",
+            "employee empowerment",
+            "motivation"
+          ],
+          "exercise_idea": "Reading: management approaches text; case study: Hartley Health Group crisis management failure; grammar: conditionals (If they'd issued an apology...); free-write: which approach you'd adopt and why",
+          "status": "built"
+        },
+        {
+          "slug": "be-key-expressions-management",
+          "title": "Key Expressions in Management",
+          "level": "B2",
+          "grammar_focus": "Professional business language and collocations",
+          "vocabulary": [
+            "strategic planning",
+            "decision-making",
+            "leadership",
+            "organizational development",
+            "performance management",
+            "change management",
+            "resource allocation",
+            "budgeting",
+            "risk management",
+            "stakeholder management"
+          ],
+          "exercise_idea": "Vocabulary: matching management terms to definitions; gap-fill: using management expressions in context sentences",
+          "status": "open"
+        },
+        {
+          "slug": "be-decision-making",
+          "title": "Decision-Making on a Construction Project",
+          "level": "B2",
+          "grammar_focus": "Modal verbs (has to, should, mustn't, don't have to, might, ought to)",
+          "vocabulary": [
+            "framework",
+            "criterion",
+            "stakeholder",
+            "recommendation",
+            "analysis"
+          ],
+          "status": "built"
+        },
+        {
+          "slug": "be-strategic-planning",
+          "title": "Strategic Planning & Goal-Setting",
+          "level": "C1",
+          "grammar_focus": "Present perfect, future planning",
+          "vocabulary": [
+            "strategy",
+            "objective",
+            "milestone",
+            "KPI",
+            "alignment"
+          ],
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "id": "company-organisation",
+      "name": "Company Organisation & Structure",
+      "topics": [
+        {
+          "slug": "be-company-structure",
+          "title": "Company Structure & Organisation",
+          "level": "B1",
+          "grammar_focus": "Describing organizational hierarchy and roles",
+          "vocabulary": [
+            "organization",
+            "structure",
+            "hierarchy",
+            "department",
+            "function",
+            "responsibility",
+            "reporting line",
+            "manager",
+            "team",
+            "division"
+          ],
+          "exercise_idea": "Reading: organizational chart description; vocabulary: company structure terminology; grammar: relative clauses for defining roles (A manager is someone who...)",
+          "status": "built"
+        },
+        {
+          "slug": "be-company-culture",
+          "title": "Company Culture & Values",
+          "level": "B2",
+          "grammar_focus": "Passive voice for describing organizational characteristics",
+          "vocabulary": [
+            "culture",
+            "value",
+            "mission",
+            "vision",
+            "employer brand",
+            "engagement",
+            "company identity",
+            "organizational climate"
+          ],
+          "exercise_idea": "Case study: developing employer brand; reading: company mission/vision statements; free-write: describing your company's culture",
+          "status": "built"
+        },
+        {
+          "slug": "be-mergers-acquisitions",
+          "title": "Mergers, Acquisitions & Expansion",
+          "level": "C1",
+          "grammar_focus": "Past perfect, complex sentences",
+          "vocabulary": [
+            "merge",
+            "acquire",
+            "integrate",
+            "synergy",
+            "due diligence"
+          ],
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "id": "human-resources",
+      "name": "Human Resources",
+      "topics": [
+        {
+          "slug": "be-recruitment-hiring",
+          "title": "Recruitment & Hiring Process",
+          "level": "B1",
+          "grammar_focus": "Job description language and qualifications",
+          "vocabulary": [
+            "recruit",
+            "candidate",
+            "job description",
+            "qualifications",
+            "competency",
+            "interview",
+            "hiring",
+            "shortlist",
+            "assessment"
+          ],
+          "exercise_idea": "Reading: job advertisement; gap-fill: required qualifications and responsibilities; vocabulary: recruitment process terms",
+          "status": "built"
+        },
+        {
+          "slug": "be-employee-development",
+          "title": "Employee Development & Training",
+          "level": "B2",
+          "grammar_focus": "Modal verbs (should, could, ought to) for recommendations; conditionals for developmental outcomes",
+          "vocabulary": [
+            "develop",
+            "mentor",
+            "coach",
+            "train",
+            "training program",
+            "competency",
+            "feedback",
+            "career path",
+            "professional development"
+          ],
+          "exercise_idea": "Case study: employee training needs; dialogue: coaching conversation; recommendations using modal verbs",
+          "status": "open"
+        },
+        {
+          "slug": "be-performance-management",
+          "title": "Performance Management & KPIs",
+          "level": "B2",
+          "grammar_focus": "Present perfect for achievements; comparative language for metrics",
+          "vocabulary": [
+            "performance",
+            "appraisal",
+            "KPI",
+            "target",
+            "achievement",
+            "metrics",
+            "turnover",
+            "sickness rate",
+            "employee engagement"
+          ],
+          "exercise_idea": "Reading: KPI definitions and business function matching; case study: employee performance review; calculation and analysis of HR metrics",
+          "status": "open"
+        },
+        {
+          "slug": "be-compensation",
+          "title": "Compensation, Benefits & Retention",
+          "level": "B2",
+          "grammar_focus": "Comparative language",
+          "vocabulary": [
+            "salary",
+            "benefit",
+            "retention",
+            "incentive",
+            "package"
+          ],
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "id": "international-business",
+      "name": "International Business",
+      "topics": [
+        {
+          "slug": "be-market-entry-pestel",
+          "title": "Market Entry & PESTEL Analysis",
+          "level": "B2",
+          "grammar_focus": "Analytical language and conditionals for scenario planning",
+          "vocabulary": [
+            "market entry",
+            "PESTEL",
+            "political",
+            "economic",
+            "social",
+            "technological",
+            "environmental",
+            "legal",
+            "opportunity",
+            "threat",
+            "risk"
+          ],
+          "exercise_idea": "Case study: entering a new market; PESTEL analysis framework; gap-fill: PESTEL factors; free-write: market recommendation based on analysis",
+          "status": "built"
+        },
+        {
+          "slug": "be-cross-cultural-communication",
+          "title": "Cross-Cultural Communication",
+          "level": "B2",
+          "grammar_focus": "Polite conditional forms and indirect requests",
+          "vocabulary": [
+            "culture",
+            "cross-cultural",
+            "norm",
+            "expectation",
+            "adaptation",
+            "perspective",
+            "stereotype",
+            "cultural awareness",
+            "business etiquette"
+          ],
+          "exercise_idea": "Dialogue: cross-cultural business interaction; gap-fill: culturally appropriate communication phrases; case study: cultural misunderstanding and solution",
+          "status": "built"
+        },
+        {
+          "slug": "be-international-teams",
+          "title": "International Teams & Collaboration",
+          "level": "B2",
+          "grammar_focus": "Present continuous",
+          "vocabulary": [
+            "remote",
+            "time zone",
+            "collaboration",
+            "alignment",
+            "challenge"
+          ],
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "id": "international-marketing",
+      "name": "International Marketing",
+      "topics": [
+        {
+          "slug": "be-marketing-mix-4ps",
+          "title": "Marketing Mix: The 4 Ps",
+          "level": "B1",
+          "grammar_focus": "Comparatives and present simple for describing products/services",
+          "vocabulary": [
+            "product",
+            "price",
+            "place",
+            "promotion",
+            "positioning",
+            "target market",
+            "customer",
+            "competitor",
+            "feature",
+            "benefit"
+          ],
+          "exercise_idea": "Reading: marketing mix application; matching: Ps to definitions; case study: marketing strategy for a product",
+          "status": "open"
+        },
+        {
+          "slug": "be-brand-positioning",
+          "title": "Brand Positioning & Messaging",
+          "level": "B2",
+          "grammar_focus": "Persuasive language and passive voice",
+          "vocabulary": [
+            "brand",
+            "positioning",
+            "USP",
+            "unique selling proposition",
+            "target audience",
+            "segment",
+            "value proposition",
+            "brand identity",
+            "messaging"
+          ],
+          "exercise_idea": "Case study: brand positioning strategy; gap-fill: persuasive marketing language; free-write: brand positioning statement",
+          "status": "built"
+        },
+        {
+          "slug": "be-digital-marketing",
+          "title": "Digital Marketing & Social Media Strategy",
+          "level": "B2",
+          "grammar_focus": "Present continuous, analytics language",
+          "vocabulary": [
+            "digital",
+            "campaign",
+            "engagement",
+            "conversion",
+            "ROI"
+          ],
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "id": "economics-legislation",
+      "name": "Economics & Legislation",
+      "topics": [
+        {
+          "slug": "be-supply-demand-pricing",
+          "title": "Supply & Demand, Pricing Models",
+          "level": "B2",
+          "grammar_focus": "Economic explanations using conditionals and comparatives",
+          "vocabulary": [
+            "supply",
+            "demand",
+            "equilibrium",
+            "elastic",
+            "inelastic",
+            "pricing",
+            "margin",
+            "cost",
+            "revenue",
+            "profit",
+            "competition"
+          ],
+          "exercise_idea": "Reading: supply and demand economics; gap-fill: pricing terminology; case study: pricing strategy decisions",
+          "status": "open"
+        },
+        {
+          "slug": "be-gdpr-compliance",
+          "title": "GDPR, Compliance & Business Ethics",
+          "level": "C1",
+          "grammar_focus": "Obligation (must, have to); passive voice for regulations",
+          "vocabulary": [
+            "GDPR",
+            "compliance",
+            "regulation",
+            "data protection",
+            "breach",
+            "consent",
+            "privacy",
+            "ethics",
+            "accountability",
+            "transparency"
+          ],
+          "exercise_idea": "Reading: GDPR requirements; case study: data breach scenario and response; gap-fill: obligation language (must, must not, should)",
+          "status": "built"
+        },
+        {
+          "slug": "be-financial-management",
+          "title": "Financial Management & KPIs",
+          "level": "B2",
+          "grammar_focus": "Financial analysis language; comparatives for ratio interpretation",
+          "vocabulary": [
+            "revenue",
+            "cost",
+            "profit",
+            "ROI",
+            "ratio",
+            "forecast",
+            "financial statement",
+            "cash flow",
+            "break-even",
+            "budget"
+          ],
+          "exercise_idea": "Reading: financial KPIs; matching: business functions to KPIs (from course); gap-fill: financial terminology; case study: interpreting financial data",
+          "status": "open"
+        }
+      ]
+    }
+  ]
+}
