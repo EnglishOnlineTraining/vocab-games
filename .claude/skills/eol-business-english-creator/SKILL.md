@@ -63,7 +63,7 @@ related exercises, explanations).
 | Ex A | Reading: a 150–300 word authentic business text (email, minutes, report, case study) + 3–4 comprehension dropdowns |
 | Ex B | Vocabulary: 6–8 gap sentences with the topic's key terms; word bank with 1–2 distractors |
 | Ex C | Grammar or functional language in a business context (conditionals, modals, email phrases, negotiation language) |
-| Ex D (optional) | Free writing: email, recommendation, presentation outline (textarea, min length in `validateStep`) |
+| Ex D (optional) | Free writing: email, recommendation, presentation outline (textarea; see the word-count rule below) |
 
 - Dropdowns: `<select class="gap-select" id="exA-g1">`, a blank first option, three options:
   one correct and two plausible distractors. Vary the correct position.
@@ -74,6 +74,12 @@ related exercises, explanations).
 - Every input appears in `validateStep`, `saveStep`, `restoreStep`, `buildSummary`,
   `buildEmailBody` and `buildPayload`.
 - English only in the task content: no German glosses.
+- If a task states a word range ("80–120 words"), `validateStep` checks words, not characters:
+  `countWords(g(id)) >= min`, with a live counter under the textarea. Copy `countWords` and
+  `updateWordCount` from `be-decision-making.html` and call `updateWordCount()` in `restoreStep`.
+- Numbers in the reading must add up. If the text gives weights, percentages or totals, give all
+  of them (a weighted matrix lists every criterion's weight, and they sum to 100%). Don't quote
+  a figure the reader is meant to check without giving what they'd need to check it.
 
 ## Step 4 — Register the page
 
