@@ -1,0 +1,107 @@
+{
+ "unit": "uni-b2-email-register",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": true,
+   "gaps": {
+    "g1": {
+     "correct": "Dear",
+     "accept": [
+      "Dear"
+     ],
+     "label": "Greeting: ___ Dr Hall,",
+     "why": "Dear is the neutral greeting for a lecturer; Hey and Yo are too informal."
+    },
+    "g2": {
+     "correct": "to ask",
+     "accept": [
+      "to ask"
+     ],
+     "label": "I am writing ___ you about…",
+     "why": "Use to + infinitive to give the reason for writing: I am writing to ask."
+    },
+    "g3": {
+     "correct": "tell",
+     "accept": [
+      "tell"
+     ],
+     "label": "Could you ___ me how…",
+     "why": "Tell takes a person directly (tell me). We do not say say me or explain me."
+    },
+    "g4": {
+     "correct": "if",
+     "accept": [
+      "if"
+     ],
+     "label": "I was wondering ___ you could…",
+     "why": "I was wondering if + a past form is a soft, polite way to ask."
+    },
+    "g5": {
+     "correct": "to meet",
+     "accept": [
+      "to meet"
+     ],
+     "label": "Would it be possible ___ on Thursday?",
+     "why": "Would it be possible + to + infinitive is a polite request."
+    },
+    "g6": {
+     "correct": "in",
+     "accept": [
+      "in"
+     ],
+     "label": "Thank you ___ advance.",
+     "why": "The fixed phrase is thank you in advance."
+    },
+    "g7": {
+     "correct": "Would it be possible to put up a sign about noise on the second floor?",
+     "accept": [
+      "Would it be possible to put up a sign about noise on the second floor?"
+     ],
+     "label": "7. To the library office, about noise",
+     "why": "It is polite and clear. The others are an order and a very stiff demand."
+    },
+    "g8": {
+     "correct": "Could I possibly have until Friday to hand in the task?",
+     "accept": [
+      "Could I possibly have until Friday to hand in the task?"
+     ],
+     "label": "8. To a lecturer, about a deadline",
+     "why": "Could I possibly… softens the request. The others are an order and old-fashioned wording."
+    },
+    "g9": {
+     "correct": "The heating has stopped working. I would be grateful if you could send someone to look at it.",
+     "accept": [
+      "The heating has stopped working. I would be grateful if you could send someone to look at it."
+     ],
+     "label": "9. To a landlord, about the heating",
+     "why": "It states the problem neutrally and makes a polite request. The others are rude or far too formal."
+    },
+    "g10": {
+     "correct": "Could you tell me how the cafeteria decides how much food to prepare?",
+     "accept": [
+      "Could you tell me how the cafeteria decides how much food to prepare?"
+     ],
+     "label": "10. To the cafeteria office, about waste",
+     "why": "A polite question with could you. The others accuse or sound like a legal demand."
+    },
+    "g11": {
+     "correct": "I am writing to follow up on my email from Monday. I would appreciate a reply when you have time.",
+     "accept": [
+      "I am writing to follow up on my email from Monday. I would appreciate a reply when you have time."
+     ],
+     "label": "11. A reminder to a lecturer",
+     "why": "It refers to the earlier email and asks politely. The others sound rude or too stiff."
+    },
+    "g12": {
+     "correct": "Kind regards,",
+     "accept": [
+      "Kind regards,"
+     ],
+     "label": "12. The ending of an email to a landlord",
+     "why": "Kind regards is the neutral closing. Cheers is too casual and the other is far too formal."
+    }
+   }
+  }
+ }
+}

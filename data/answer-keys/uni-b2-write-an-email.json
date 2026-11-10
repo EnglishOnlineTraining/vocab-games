@@ -1,0 +1,91 @@
+{
+ "unit": "uni-b2-write-an-email",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": true,
+   "gaps": {
+    "g1": {
+     "correct": "Heating problem in Flat 4",
+     "accept": [
+      "Heating problem in Flat 4"
+     ],
+     "label": "Subject: ___",
+     "why": "A subject line should say clearly what the email is about."
+    },
+    "g2": {
+     "correct": "so",
+     "accept": [
+      "so"
+     ],
+     "label": "…since Monday, ___ the flat is very cold.",
+     "why": "So introduces the result: the heating is broken, so the flat is cold."
+    },
+    "g3": {
+     "correct": "but",
+     "accept": [
+      "but"
+     ],
+     "label": "…called the helpline, ___ nobody has come yet.",
+     "why": "But shows contrast: you called, and nobody came."
+    },
+    "g4": {
+     "correct": "by",
+     "accept": [
+      "by"
+     ],
+     "label": "Could you please send someone ___ Friday?",
+     "why": "By Friday means no later than Friday."
+    },
+    "g5": {
+     "correct": "to",
+     "accept": [
+      "to"
+     ],
+     "label": "I look forward ___ hearing from you.",
+     "why": "The fixed phrase is look forward to + -ing."
+    },
+    "g6": {
+     "correct": "because",
+     "accept": [
+      "because"
+     ],
+     "label": "6. …move my seminar group, ___ we have a clash…",
+     "why": "Because gives the reason for the request."
+    },
+    "g7": {
+     "correct": "However",
+     "accept": [
+      "However"
+     ],
+     "label": "7. … ___, it is booked all day on Tuesday.",
+     "why": "However shows contrast with the sentence before."
+    },
+    "g8": {
+     "correct": "Also",
+     "accept": [
+      "Also"
+     ],
+     "label": "8. … ___, could you send me the slides?",
+     "why": "Also adds a second request to the first."
+    },
+    "g9": {
+     "correct": "attached",
+     "accept": [
+      "attached"
+     ],
+     "label": "9. Please find the form ___ to this email.",
+     "why": "The fixed phrase is please find the form attached."
+    },
+    "g10": {
+     "correct": "inconvenience",
+     "accept": [
+      "inconvenience"
+     ],
+     "label": "10. I apologise for any ___.",
+     "why": "After any, use the noun inconvenience."
+    }
+   }
+  }
+ }
+}
