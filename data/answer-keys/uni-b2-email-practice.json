@@ -1,0 +1,91 @@
+{
+ "unit": "uni-b2-email-practice",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": true,
+   "gaps": {
+    "g1": {
+     "correct": "about",
+     "accept": [
+      "about"
+     ],
+     "label": "1. I am writing ___ the internship…",
+     "why": "Write about + a topic to say what the email is about."
+    },
+    "g2": {
+     "correct": "give",
+     "accept": [
+      "give"
+     ],
+     "label": "2. Could you ___ me some information…",
+     "why": "We give information. We do not say say me or explain me."
+    },
+    "g3": {
+     "correct": "whether",
+     "accept": [
+      "whether"
+     ],
+     "label": "3. I was wondering ___ it is possible…",
+     "why": "Whether introduces an indirect question after wondering."
+    },
+    "g4": {
+     "correct": "sending",
+     "accept": [
+      "sending"
+     ],
+     "label": "4. Would you mind ___ me the form?",
+     "why": "After would you mind, use the -ing form."
+    },
+    "g5": {
+     "correct": "help",
+     "accept": [
+      "help"
+     ],
+     "label": "5. Thank you for your ___.",
+     "why": "After your, use the noun help."
+    },
+    "g6": {
+     "correct": "Could you tell me how to cancel my membership?",
+     "accept": [
+      "Could you tell me how to cancel my membership?"
+     ],
+     "label": "6. To a gym manager",
+     "why": "It is a polite question. The others are an order and a legal-sounding demand."
+    },
+    "g7": {
+     "correct": "I was wondering if it would be possible to move my exam to a later date.",
+     "accept": [
+      "I was wondering if it would be possible to move my exam to a later date."
+     ],
+     "label": "7. To the exam office",
+     "why": "It is polite and clear. The others are an order and far too stiff."
+    },
+    "g8": {
+     "correct": "Would it be possible to extend the loan of this book?",
+     "accept": [
+      "Would it be possible to extend the loan of this book?"
+     ],
+     "label": "8. To the library",
+     "why": "Would it be possible to… is a polite request. The others are blunt or stiff."
+    },
+    "g9": {
+     "correct": "I am writing to ask whether you have a room available in March.",
+     "accept": [
+      "I am writing to ask whether you have a room available in March."
+     ],
+     "label": "9. The first line of an email to a landlord",
+     "why": "It gives the reason neutrally. The others are slang and over-formal."
+    },
+    "g10": {
+     "correct": "for",
+     "accept": [
+      "for"
+     ],
+     "label": "10. Thank you ___ your quick reply.",
+     "why": "The fixed phrase is thank you for + noun."
+    }
+   }
+  }
+ }
+}

@@ -22203,5 +22203,183 @@
     }
    }
   }
+ },
+ "uni-b2-email-register": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "Greeting: ___ Dr Hall,",
+     "correct": "Dear",
+     "why": "Dear is the neutral greeting for a lecturer; Hey and Yo are too informal."
+    },
+    "g2": {
+     "label": "I am writing ___ you about…",
+     "correct": "to ask",
+     "why": "Use to + infinitive to give the reason for writing: I am writing to ask."
+    },
+    "g3": {
+     "label": "Could you ___ me how…",
+     "correct": "tell",
+     "why": "Tell takes a person directly (tell me). We do not say say me or explain me."
+    },
+    "g4": {
+     "label": "I was wondering ___ you could…",
+     "correct": "if",
+     "why": "I was wondering if + a past form is a soft, polite way to ask."
+    },
+    "g5": {
+     "label": "Would it be possible ___ on Thursday?",
+     "correct": "to meet",
+     "why": "Would it be possible + to + infinitive is a polite request."
+    },
+    "g6": {
+     "label": "Thank you ___ advance.",
+     "correct": "in",
+     "why": "The fixed phrase is thank you in advance."
+    },
+    "g7": {
+     "label": "7. To the library office, about noise",
+     "correct": "Would it be possible to put up a sign about noise on the second floor?",
+     "why": "It is polite and clear. The others are an order and a very stiff demand."
+    },
+    "g8": {
+     "label": "8. To a lecturer, about a deadline",
+     "correct": "Could I possibly have until Friday to hand in the task?",
+     "why": "Could I possibly… softens the request. The others are an order and old-fashioned wording."
+    },
+    "g9": {
+     "label": "9. To a landlord, about the heating",
+     "correct": "The heating has stopped working. I would be grateful if you could send someone to look at it.",
+     "why": "It states the problem neutrally and makes a polite request. The others are rude or far too formal."
+    },
+    "g10": {
+     "label": "10. To the cafeteria office, about waste",
+     "correct": "Could you tell me how the cafeteria decides how much food to prepare?",
+     "why": "A polite question with could you. The others accuse or sound like a legal demand."
+    },
+    "g11": {
+     "label": "11. A reminder to a lecturer",
+     "correct": "I am writing to follow up on my email from Monday. I would appreciate a reply when you have time.",
+     "why": "It refers to the earlier email and asks politely. The others sound rude or too stiff."
+    },
+    "g12": {
+     "label": "12. The ending of an email to a landlord",
+     "correct": "Kind regards,",
+     "why": "Kind regards is the neutral closing. Cheers is too casual and the other is far too formal."
+    }
+   }
+  }
+ },
+ "uni-b2-write-an-email": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "Subject: ___",
+     "correct": "Heating problem in Flat 4",
+     "why": "A subject line should say clearly what the email is about."
+    },
+    "g2": {
+     "label": "…since Monday, ___ the flat is very cold.",
+     "correct": "so",
+     "why": "So introduces the result: the heating is broken, so the flat is cold."
+    },
+    "g3": {
+     "label": "…called the helpline, ___ nobody has come yet.",
+     "correct": "but",
+     "why": "But shows contrast: you called, and nobody came."
+    },
+    "g4": {
+     "label": "Could you please send someone ___ Friday?",
+     "correct": "by",
+     "why": "By Friday means no later than Friday."
+    },
+    "g5": {
+     "label": "I look forward ___ hearing from you.",
+     "correct": "to",
+     "why": "The fixed phrase is look forward to + -ing."
+    },
+    "g6": {
+     "label": "6. …move my seminar group, ___ we have a clash…",
+     "correct": "because",
+     "why": "Because gives the reason for the request."
+    },
+    "g7": {
+     "label": "7. … ___, it is booked all day on Tuesday.",
+     "correct": "However",
+     "why": "However shows contrast with the sentence before."
+    },
+    "g8": {
+     "label": "8. … ___, could you send me the slides?",
+     "correct": "Also",
+     "why": "Also adds a second request to the first."
+    },
+    "g9": {
+     "label": "9. Please find the form ___ to this email.",
+     "correct": "attached",
+     "why": "The fixed phrase is please find the form attached."
+    },
+    "g10": {
+     "label": "10. I apologise for any ___.",
+     "correct": "inconvenience",
+     "why": "After any, use the noun inconvenience."
+    }
+   }
+  }
+ },
+ "uni-b2-email-practice": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. I am writing ___ the internship…",
+     "correct": "about",
+     "why": "Write about + a topic to say what the email is about."
+    },
+    "g2": {
+     "label": "2. Could you ___ me some information…",
+     "correct": "give",
+     "why": "We give information. We do not say say me or explain me."
+    },
+    "g3": {
+     "label": "3. I was wondering ___ it is possible…",
+     "correct": "whether",
+     "why": "Whether introduces an indirect question after wondering."
+    },
+    "g4": {
+     "label": "4. Would you mind ___ me the form?",
+     "correct": "sending",
+     "why": "After would you mind, use the -ing form."
+    },
+    "g5": {
+     "label": "5. Thank you for your ___.",
+     "correct": "help",
+     "why": "After your, use the noun help."
+    },
+    "g6": {
+     "label": "6. To a gym manager",
+     "correct": "Could you tell me how to cancel my membership?",
+     "why": "It is a polite question. The others are an order and a legal-sounding demand."
+    },
+    "g7": {
+     "label": "7. To the exam office",
+     "correct": "I was wondering if it would be possible to move my exam to a later date.",
+     "why": "It is polite and clear. The others are an order and far too stiff."
+    },
+    "g8": {
+     "label": "8. To the library",
+     "correct": "Would it be possible to extend the loan of this book?",
+     "why": "Would it be possible to… is a polite request. The others are blunt or stiff."
+    },
+    "g9": {
+     "label": "9. The first line of an email to a landlord",
+     "correct": "I am writing to ask whether you have a room available in March.",
+     "why": "It gives the reason neutrally. The others are slang and over-formal."
+    },
+    "g10": {
+     "label": "10. Thank you ___ your quick reply.",
+     "correct": "for",
+     "why": "The fixed phrase is thank you for + noun."
+    }
+   }
+  }
  }
 }

@@ -2392,6 +2392,27 @@
         },
         "cards": [
           {
+            "href": "uni-b2-email-practice.html",
+            "icon": "✉️",
+            "title": "Email Writing 3: Practice Mix",
+            "meta": "choose polite, neutral wording in ten gaps, then write a short reply to an email.",
+            "tag": "Grammar"
+          },
+          {
+            "href": "uni-b2-write-an-email.html",
+            "icon": "✉️",
+            "title": "Email Writing 2: Write an Email",
+            "meta": "choose the right structure and linking words in ten gaps, then write a 100–130 word email and give a partner feedback.",
+            "tag": "Writing"
+          },
+          {
+            "href": "uni-b2-email-register.html",
+            "icon": "✉️",
+            "title": "Email Writing 1: Neutral Register and Polite Requests",
+            "meta": "choose neutral, polite wording in twelve gaps, then rewrite blunt messages and write your own polite request.",
+            "tag": "Grammar"
+          },
+          {
             "href": "uni-b2-narrative-tenses.html",
             "icon": "📖",
             "title": "Narrative Tenses 3: Practice with All Three Tenses",
@@ -2555,6 +2576,13 @@
             "tag": "Vocabulary"
           }
         ]
+      },
+      {
+        "heading": {
+          "text": "More practice",
+          "id": "unit-more-practice"
+        },
+        "cards": []
       },
       {
         "heading": {
