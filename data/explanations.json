@@ -21959,5 +21959,249 @@
     }
    }
   }
+ },
+ "9c-australia-environment-dangers": {
+  "exA": {
+   "prefix": "exA-",
+   "gaps": {
+    "g1": {
+     "label": "1. Lost their ___",
+     "correct": "homes",
+     "why": "Fires destroyed the places where animals live, so they lost their homes."
+    },
+    "g2": {
+     "label": "2. When the ocean gets too ___",
+     "correct": "warm",
+     "why": "The text says coral turns white and can die when the ocean gets too warm."
+    },
+    "g3": {
+     "label": "3. A farmer ___ 24 rabbits",
+     "correct": "released",
+     "why": "To release an animal means to let it go free in nature."
+    },
+    "g4": {
+     "label": "4. They eat the ___",
+     "correct": "plants",
+     "why": "Rabbits eat plants; you can't eat 'planets' or 'plans'."
+    },
+    "g5": {
+     "label": "5. Beetles on sugar cane ___",
+     "correct": "farms",
+     "why": "Sugar cane grows on farms, and the beetles were eating it there."
+    },
+    "g6": {
+     "label": "6. Their skin is ___",
+     "correct": "poisonous",
+     "why": "Poisonous means it can make you very ill or kill you, so the snakes die."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1. Droughts are rare in Australia",
+     "correct": "False",
+     "why": "The text says droughts are common in Australia."
+    },
+    "g2": {
+     "label": "2. Bushfires spread fast when the land is hot and dry",
+     "correct": "True",
+     "why": "The text says fires start easily and spread fast when the land is hot and dry."
+    },
+    "g3": {
+     "label": "3. The Black Summer fires burned in the north-west",
+     "correct": "False",
+     "why": "The Black Summer fires burned across the south-east, not the north-west."
+    },
+    "g4": {
+     "label": "4. Coral can die when the ocean is too warm",
+     "correct": "True",
+     "why": "The text says the coral turns white and can die when the ocean gets too warm."
+    },
+    "g5": {
+     "label": "5. The farmer brought the rabbits from England",
+     "correct": "Not in the text",
+     "why": "The text says a farmer released 24 rabbits, but not where they came from."
+    },
+    "g6": {
+     "label": "6. The cane toads solved the beetle problem",
+     "correct": "False",
+     "why": "The toads didn't eat the beetles, so they didn't solve the problem."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. A drought is ___",
+     "correct": "a long time with little or no rain",
+     "why": "A drought is a long period with little or no rain."
+    },
+    "g2": {
+     "label": "2. A bushfire is ___",
+     "correct": "a fire that burns trees and land",
+     "why": "A bushfire burns trees and land in the countryside, often in hot, dry weather."
+    },
+    "g3": {
+     "label": "3. Invasive species are ___",
+     "correct": "animals or plants that come from other places and cause problems",
+     "why": "Invasive species come from other places and cause problems, like rabbits and cane toads."
+    },
+    "g4": {
+     "label": "4. To release an animal means ___",
+     "correct": "to let it go free",
+     "why": "To release means to let go free, like the farmer did with the rabbits."
+    },
+    "g5": {
+     "label": "5. Coral is made by ___",
+     "correct": "tiny sea animals",
+     "why": "The text says the reef is built by tiny sea animals called coral."
+    },
+    "g6": {
+     "label": "6. Something poisonous ___",
+     "correct": "can make you very ill or kill you",
+     "why": "Poisonous means it can make you very ill or kill you."
+    },
+    "g7": {
+     "label": "7. 24 rabbits ___ into the wild",
+     "correct": "were released",
+     "why": "Remember 'Canada': past passive with a plural subject is were + past participle."
+    },
+    "g8": {
+     "label": "8. If we ___ the reef",
+     "correct": "protect",
+     "why": "Remember 'Healthy living': if + simple present, then will in the main clause."
+    }
+   }
+  }
+ },
+ "9c-animals-down-under": {
+  "exA": {
+   "prefix": "exA-",
+   "gaps": {
+    "g1": {
+     "label": "1. It grows in a ___",
+     "correct": "pouch",
+     "why": "A pouch is the pocket of skin where a baby marsupial grows."
+    },
+    "g2": {
+     "label": "2. Eat only eucalyptus ___",
+     "correct": "leaves",
+     "why": "Koalas eat the leaves of eucalyptus trees."
+    },
+    "g3": {
+     "label": "3. But it lays ___",
+     "correct": "eggs",
+     "why": "The platypus is strange because it is a mammal that lays eggs."
+    },
+    "g4": {
+     "label": "4. They use it to ___ their area",
+     "correct": "mark",
+     "why": "Wombats leave their poo to mark (show) their area to other wombats."
+    },
+    "g5": {
+     "label": "5. It can ___ at up to 50 km an hour",
+     "correct": "run",
+     "why": "Emus can't fly, but they can run fast: up to 50 kilometres an hour."
+    },
+    "g6": {
+     "label": "6. Make swimming ___",
+     "correct": "risky",
+     "why": "Risky means dangerous; box jellyfish can hurt swimmers in summer."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1. It lays eggs",
+     "correct": "platypus",
+     "why": "The text says the platypus is a mammal that lays eggs."
+    },
+    "g2": {
+     "label": "2. Its baby is called a joey",
+     "correct": "kangaroo",
+     "why": "The text says a baby kangaroo is called a joey."
+    },
+    "g3": {
+     "label": "3. It eats only eucalyptus leaves",
+     "correct": "koala",
+     "why": "The text says koalas eat only eucalyptus leaves."
+    },
+    "g4": {
+     "label": "4. A bird that cannot fly",
+     "correct": "emu",
+     "why": "The text says the emu is a big bird that cannot fly."
+    },
+    "g5": {
+     "label": "5. Its poo is cube-shaped",
+     "correct": "wombat",
+     "why": "The text says wombats are famous for their cube-shaped poo."
+    },
+    "g6": {
+     "label": "6. The biggest reptile",
+     "correct": "saltwater crocodile",
+     "why": "The text says saltwater crocodiles are the biggest reptiles in the world."
+    },
+    "g7": {
+     "label": "7. It sleeps 18 to 20 hours a day",
+     "correct": "koala",
+     "why": "The text says koalas sleep 18 to 20 hours a day."
+    },
+    "g8": {
+     "label": "8. It makes swimming risky",
+     "correct": "box jellyfish",
+     "why": "The text says box jellyfish make swimming in the north risky in summer."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. A marsupial baby ___",
+     "correct": "grows in its mother's pouch",
+     "why": "A marsupial baby is born very small and grows in its mother's pouch."
+    },
+    "g2": {
+     "label": "2. Koalas sleep so much because ___",
+     "correct": "their food gives them little energy",
+     "why": "Koalas sleep a lot because eucalyptus leaves give them very little energy."
+    },
+    "g3": {
+     "label": "3. A venomous animal ___",
+     "correct": "can hurt you with poison",
+     "why": "Venomous animals can hurt you with poison from a bite, sting or spike."
+    },
+    "g4": {
+     "label": "4. Wombats use their poo to ___",
+     "correct": "mark their area",
+     "why": "The text says wombats use their poo to mark their area."
+    },
+    "g5": {
+     "label": "5. The platypus is strange because ___",
+     "correct": "it is a mammal that lays eggs",
+     "why": "A platypus is a mammal, and mammals don't usually lay eggs."
+    },
+    "g6": {
+     "label": "6. Many of these animals ___",
+     "correct": "live nowhere else",
+     "why": "The text says many of these animals live nowhere else in the world."
+    },
+    "g7": {
+     "label": "7. Long periods without rain",
+     "correct": "droughts",
+     "why": "Remember Part 1: a drought is a long period without rain."
+    },
+    "g8": {
+     "label": "8. A bird ___ cannot fly",
+     "correct": "which",
+     "why": "Remember 'Mandela': use 'which' for animals and things, 'who' for people."
+    }
+   }
+  }
  }
 }

@@ -1,0 +1,199 @@
+{
+ "unit": "9c-animals-down-under",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "pouch",
+     "accept": [
+      "pouch"
+     ],
+     "label": "1. It grows in a ___",
+     "why": "A pouch is the pocket of skin where a baby marsupial grows."
+    },
+    "g2": {
+     "correct": "leaves",
+     "accept": [
+      "leaves"
+     ],
+     "label": "2. Eat only eucalyptus ___",
+     "why": "Koalas eat the leaves of eucalyptus trees."
+    },
+    "g3": {
+     "correct": "eggs",
+     "accept": [
+      "eggs"
+     ],
+     "label": "3. But it lays ___",
+     "why": "The platypus is strange because it is a mammal that lays eggs."
+    },
+    "g4": {
+     "correct": "mark",
+     "accept": [
+      "mark"
+     ],
+     "label": "4. They use it to ___ their area",
+     "why": "Wombats leave their poo to mark (show) their area to other wombats."
+    },
+    "g5": {
+     "correct": "run",
+     "accept": [
+      "run"
+     ],
+     "label": "5. It can ___ at up to 50 km an hour",
+     "why": "Emus can't fly, but they can run fast: up to 50 kilometres an hour."
+    },
+    "g6": {
+     "correct": "risky",
+     "accept": [
+      "risky"
+     ],
+     "label": "6. Make swimming ___",
+     "why": "Risky means dangerous; box jellyfish can hurt swimmers in summer."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "platypus",
+     "accept": [
+      "platypus"
+     ],
+     "label": "1. It lays eggs",
+     "why": "The text says the platypus is a mammal that lays eggs."
+    },
+    "g2": {
+     "correct": "kangaroo",
+     "accept": [
+      "kangaroo"
+     ],
+     "label": "2. Its baby is called a joey",
+     "why": "The text says a baby kangaroo is called a joey."
+    },
+    "g3": {
+     "correct": "koala",
+     "accept": [
+      "koala"
+     ],
+     "label": "3. It eats only eucalyptus leaves",
+     "why": "The text says koalas eat only eucalyptus leaves."
+    },
+    "g4": {
+     "correct": "emu",
+     "accept": [
+      "emu"
+     ],
+     "label": "4. A bird that cannot fly",
+     "why": "The text says the emu is a big bird that cannot fly."
+    },
+    "g5": {
+     "correct": "wombat",
+     "accept": [
+      "wombat"
+     ],
+     "label": "5. Its poo is cube-shaped",
+     "why": "The text says wombats are famous for their cube-shaped poo."
+    },
+    "g6": {
+     "correct": "saltwater crocodile",
+     "accept": [
+      "saltwater crocodile"
+     ],
+     "label": "6. The biggest reptile",
+     "why": "The text says saltwater crocodiles are the biggest reptiles in the world."
+    },
+    "g7": {
+     "correct": "koala",
+     "accept": [
+      "koala"
+     ],
+     "label": "7. It sleeps 18 to 20 hours a day",
+     "why": "The text says koalas sleep 18 to 20 hours a day."
+    },
+    "g8": {
+     "correct": "box jellyfish",
+     "accept": [
+      "box jellyfish"
+     ],
+     "label": "8. It makes swimming risky",
+     "why": "The text says box jellyfish make swimming in the north risky in summer."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "grows in its mother's pouch",
+     "accept": [
+      "grows in its mother's pouch"
+     ],
+     "label": "1. A marsupial baby ___",
+     "why": "A marsupial baby is born very small and grows in its mother's pouch."
+    },
+    "g2": {
+     "correct": "their food gives them little energy",
+     "accept": [
+      "their food gives them little energy"
+     ],
+     "label": "2. Koalas sleep so much because ___",
+     "why": "Koalas sleep a lot because eucalyptus leaves give them very little energy."
+    },
+    "g3": {
+     "correct": "can hurt you with poison",
+     "accept": [
+      "can hurt you with poison"
+     ],
+     "label": "3. A venomous animal ___",
+     "why": "Venomous animals can hurt you with poison from a bite, sting or spike."
+    },
+    "g4": {
+     "correct": "mark their area",
+     "accept": [
+      "mark their area"
+     ],
+     "label": "4. Wombats use their poo to ___",
+     "why": "The text says wombats use their poo to mark their area."
+    },
+    "g5": {
+     "correct": "it is a mammal that lays eggs",
+     "accept": [
+      "it is a mammal that lays eggs"
+     ],
+     "label": "5. The platypus is strange because ___",
+     "why": "A platypus is a mammal, and mammals don't usually lay eggs."
+    },
+    "g6": {
+     "correct": "live nowhere else",
+     "accept": [
+      "live nowhere else"
+     ],
+     "label": "6. Many of these animals ___",
+     "why": "The text says many of these animals live nowhere else in the world."
+    },
+    "g7": {
+     "correct": "droughts",
+     "accept": [
+      "droughts"
+     ],
+     "label": "7. Long periods without rain",
+     "why": "Remember Part 1: a drought is a long period without rain."
+    },
+    "g8": {
+     "correct": "which",
+     "accept": [
+      "which"
+     ],
+     "label": "8. A bird ___ cannot fly",
+     "why": "Remember 'Mandela': use 'which' for animals and things, 'who' for people."
+    }
+   }
+  }
+ }
+}
