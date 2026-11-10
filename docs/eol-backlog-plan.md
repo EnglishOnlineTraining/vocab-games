@@ -1144,20 +1144,32 @@ afterwards (rule 7).
      (Google-selected canonical blank on all), so every control stands. Indexing requested for
      all 10 the same day; each confirmed "added to a priority crawl queue". Every last crawl
      predates the preview going live (2026-10-12).
-   - **Results table** (fill in):
+   - **Results table:**
 
      | Page | Role | Baseline state | Requested | Recrawled | State at check | Impr. |
      |---|---|---|---|---|---|---|
-     | 10c-canada-schools | test | not indexed, crawled 22 Sep | 2026-10-13 | | | |
-     | 10c-inside-india | control | not indexed, crawled 10 Aug | 2026-10-13 | | | |
-     | 10c-canada-environment | test | not indexed, crawled 22 Sep | 2026-10-13 | | | |
-     | 10c-discover-canada | control | not indexed, crawled 9 Aug | 2026-10-13 | | | |
-     | 10g-growing-up-black | test | not indexed, crawled 28 Sep | 2026-10-13 | | | |
-     | 10g-proud-to-be-black | control | not indexed, crawled 10 Aug | 2026-10-13 | | | |
-     | 10g-cultural-diversity | test | not indexed, crawled 28 Sep | 2026-10-13 | | | |
-     | 10g-post-racial-obama | control | not indexed, crawled 22 Aug | 2026-10-13 | | | |
-     | 8c-going-west | test | not indexed, crawled 8 Oct | 2026-10-13 | | | |
-     | 8c-off-to-midwest | control | not indexed, crawled 9 Aug | 2026-10-13 | | | |
+     | 10c-canada-schools | test | not indexed, crawled 22 Sep | 2026-10-13 | 13 Oct 07:20 | Crawled – currently not indexed | n/a |
+     | 10c-inside-india | control | not indexed, crawled 10 Aug | 2026-10-13 | 13 Oct 07:20 | Crawled – currently not indexed | n/a |
+     | 10c-canada-environment | test | not indexed, crawled 22 Sep | 2026-10-13 | 13 Oct 07:19 | Crawled – currently not indexed | n/a |
+     | 10c-discover-canada | control | not indexed, crawled 9 Aug | 2026-10-13 | 13 Oct 07:22 | Crawled – currently not indexed | n/a |
+     | 10g-growing-up-black | test | not indexed, crawled 28 Sep | 2026-10-13 | 13 Oct 07:22 | Crawled – currently not indexed | n/a |
+     | 10g-proud-to-be-black | control | not indexed, crawled 10 Aug | 2026-10-13 | 13 Oct 07:22 | Crawled – currently not indexed | n/a |
+     | 10g-cultural-diversity | test | not indexed, crawled 28 Sep | 2026-10-13 | 13 Oct 07:22 | Crawled – currently not indexed | n/a (1 click, 1 impression in the 3-month table) |
+     | 10g-post-racial-obama | control | not indexed, crawled 22 Aug | 2026-10-13 | 13 Oct 07:26 | Crawled – currently not indexed | n/a |
+     | 8c-going-west | test | not indexed, crawled 8 Oct | 2026-10-13 | 13 Oct 07:19 | Crawled – currently not indexed | n/a |
+     | 8c-off-to-midwest | control | not indexed, crawled 9 Aug | 2026-10-13 | 13 Oct 07:17 | Crawled – currently not indexed | n/a |
+
+   - **Checked 2026-11-10** in Search Console URL Inspection (domain property), all 10 pages.
+     No "Request indexing" was clicked. **0 of 5 test pages and 0 of 5 controls are indexed**:
+     all 10 are still "Crawled – currently not indexed".
+   - **Reading.** All 10 were recrawled once, on 13 Oct between 07:17 and 07:26, and not since.
+     Each baseline crawl was older and the requests were made the same day, so these look like the
+     request-triggered crawls. The exact request time was not recorded, so "after the request" is
+     inferred, not proven. Same result on both sides: by the decision rule the preview is not the
+     cause. If the 13 Oct crawls are not accepted as "after the request", fewer than 3 pairs count
+     and the rule gives "inconclusive, recheck in 2 weeks". Impressions per page for 12 Oct to
+     8 Nov were not captured (the date filter did not apply). The `PREVIEW` blocks stay for now:
+     removing them is Shaun's call.
 
 10. **Search Console, 2026-10-15: impressions are back, mostly on the homepage · open.**
     - Activities host, domain property: nothing Jun 2025 – Jul 2026; ~500 impressions 9–23 Aug
@@ -1740,6 +1752,7 @@ WordPress, MailerLite or Make.
 - **Merged 2026-10-17** (Shaun asked), in this order: #167, #169, #170, #168 (redone on the new
   `main`, so the two IELTS pages use `learn@` too), #172 (`CLAUDE.md` imports `AGENTS.md`;
   E2E specs in the drafting skills), then this log. **#132 held** until the 2026-11-02 check.
+  *2026-11-10:* the indexing check is recorded in item 9 (0/5 test, 0/5 control indexed); whether to keep holding #132 is now Shaun's call (he is also waiting on a separate renaming experiment).
 - **Also 2026-10-17:** a ruleset on `main` requires the `check` job (it now runs the Playwright
   specs). Bypass: repository admin. GitHub Actions cannot be added, so if the rebuild bot ever
   has drift to push, its push is rejected: fix with a PR of the rebuilt files.
