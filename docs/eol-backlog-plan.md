@@ -1752,7 +1752,9 @@ WordPress, MailerLite or Make.
 - **Merged 2026-10-17** (Shaun asked), in this order: #167, #169, #170, #168 (redone on the new
   `main`, so the two IELTS pages use `learn@` too), #172 (`CLAUDE.md` imports `AGENTS.md`;
   E2E specs in the drafting skills), then this log. **#132 held** until the 2026-11-02 check.
-  *2026-11-10:* the indexing check is recorded in item 9 (0/5 test, 0/5 control indexed); whether to keep holding #132 is now Shaun's call (he is also waiting on a separate renaming experiment).
+  *2026-11-10:* the indexing check is recorded in item 9 (0/5 test, 0/5 control indexed);
+  whether to keep holding #132 is now Shaun's call (he is also waiting on a separate renaming
+  experiment).
 - **Also 2026-10-17:** a ruleset on `main` requires the `check` job (it now runs the Playwright
   specs). Bypass: repository admin. GitHub Actions cannot be added, so if the rebuild bot ever
   has drift to push, its push is rejected: fix with a PR of the rebuilt files.
