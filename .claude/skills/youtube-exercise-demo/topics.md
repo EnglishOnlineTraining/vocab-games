@@ -12,7 +12,7 @@ don't mention explanations in the captions, description or quiz.
 - [ ] esl-pronouns — Pronouns: I/me, he/she, my/mine, myself (first test video 2026-10-30 ended on the answer list; re-record for the score-card + explanation ending)
 - [ ] esl-articles — Articles: a, an, the, zero article (test-recorded 2026-10-30 with a placeholder writing answer; re-record)
 - [ ] esl-present-simple-continuous — Present simple vs present continuous
-- [ ] esl-countable-uncountable — Countable and uncountable nouns: much, many, few, little
+- [x] esl-countable-uncountable — Countable and uncountable nouns: much, many, few, little — 2026-11-10
 - [ ] esl-question-formation — Wh-questions: question words, word order, embedded questions
 - [ ] esl-participle-clauses — Participle clauses: -ing, -ed, having + participle
 
