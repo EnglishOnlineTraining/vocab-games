@@ -1,0 +1,183 @@
+{
+ "unit": "9c-australia-environment-dangers",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "homes",
+     "accept": [
+      "homes"
+     ],
+     "label": "1. Lost their ___",
+     "why": "Fires destroyed the places where animals live, so they lost their homes."
+    },
+    "g2": {
+     "correct": "warm",
+     "accept": [
+      "warm"
+     ],
+     "label": "2. When the ocean gets too ___",
+     "why": "The text says coral turns white and can die when the ocean gets too warm."
+    },
+    "g3": {
+     "correct": "released",
+     "accept": [
+      "released"
+     ],
+     "label": "3. A farmer ___ 24 rabbits",
+     "why": "To release an animal means to let it go free in nature."
+    },
+    "g4": {
+     "correct": "plants",
+     "accept": [
+      "plants"
+     ],
+     "label": "4. They eat the ___",
+     "why": "Rabbits eat plants; you can't eat 'planets' or 'plans'."
+    },
+    "g5": {
+     "correct": "farms",
+     "accept": [
+      "farms"
+     ],
+     "label": "5. Beetles on sugar cane ___",
+     "why": "Sugar cane grows on farms, and the beetles were eating it there."
+    },
+    "g6": {
+     "correct": "poisonous",
+     "accept": [
+      "poisonous"
+     ],
+     "label": "6. Their skin is ___",
+     "why": "Poisonous means it can make you very ill or kill you, so the snakes die."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "1. Droughts are rare in Australia",
+     "why": "The text says droughts are common in Australia."
+    },
+    "g2": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "2. Bushfires spread fast when the land is hot and dry",
+     "why": "The text says fires start easily and spread fast when the land is hot and dry."
+    },
+    "g3": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "3. The Black Summer fires burned in the north-west",
+     "why": "The Black Summer fires burned across the south-east, not the north-west."
+    },
+    "g4": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "4. Coral can die when the ocean is too warm",
+     "why": "The text says the coral turns white and can die when the ocean gets too warm."
+    },
+    "g5": {
+     "correct": "Not in the text",
+     "accept": [
+      "Not in the text"
+     ],
+     "label": "5. The farmer brought the rabbits from England",
+     "why": "The text says a farmer released 24 rabbits, but not where they came from."
+    },
+    "g6": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "6. The cane toads solved the beetle problem",
+     "why": "The toads didn't eat the beetles, so they didn't solve the problem."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "a long time with little or no rain",
+     "accept": [
+      "a long time with little or no rain"
+     ],
+     "label": "1. A drought is ___",
+     "why": "A drought is a long period with little or no rain."
+    },
+    "g2": {
+     "correct": "a fire that burns trees and land",
+     "accept": [
+      "a fire that burns trees and land"
+     ],
+     "label": "2. A bushfire is ___",
+     "why": "A bushfire burns trees and land in the countryside, often in hot, dry weather."
+    },
+    "g3": {
+     "correct": "animals or plants that come from other places and cause problems",
+     "accept": [
+      "animals or plants that come from other places and cause problems"
+     ],
+     "label": "3. Invasive species are ___",
+     "why": "Invasive species come from other places and cause problems, like rabbits and cane toads."
+    },
+    "g4": {
+     "correct": "to let it go free",
+     "accept": [
+      "to let it go free"
+     ],
+     "label": "4. To release an animal means ___",
+     "why": "To release means to let go free, like the farmer did with the rabbits."
+    },
+    "g5": {
+     "correct": "tiny sea animals",
+     "accept": [
+      "tiny sea animals"
+     ],
+     "label": "5. Coral is made by ___",
+     "why": "The text says the reef is built by tiny sea animals called coral."
+    },
+    "g6": {
+     "correct": "can make you very ill or kill you",
+     "accept": [
+      "can make you very ill or kill you"
+     ],
+     "label": "6. Something poisonous ___",
+     "why": "Poisonous means it can make you very ill or kill you."
+    },
+    "g7": {
+     "correct": "were released",
+     "accept": [
+      "were released"
+     ],
+     "label": "7. 24 rabbits ___ into the wild",
+     "why": "Remember 'Canada': past passive with a plural subject is were + past participle."
+    },
+    "g8": {
+     "correct": "protect",
+     "accept": [
+      "protect"
+     ],
+     "label": "8. If we ___ the reef",
+     "why": "Remember 'Healthy living': if + simple present, then will in the main clause."
+    }
+   }
+  }
+ }
+}
