@@ -339,7 +339,7 @@ ${cBlocks}
 var UNIT          = ${jsStr(d.unit)};
 var TOTAL_STEPS   = 4;                    /* step-4 is the submit step */
 var SHEET_URL     = ${jsStr(d.sheetUrl)};
-var TEACHER_EMAIL = ${jsStr(d.teacherEmail || 'englishonlinetraining@pm.me')};
+var TEACHER_EMAIL = ${jsStr(d.teacherEmail || 'learn@englishonline.training')};
 
 /* The word list, and the single source of truth for what this page tests. */
 var VOCAB = [
@@ -496,6 +496,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <script>
 document.addEventListener('paste', function(e) {
   var t = e.target;
+  if (t.id === 'copy-block') return;
   if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
     e.preventDefault();
     var msg = document.createElement('div');
@@ -507,6 +508,7 @@ document.addEventListener('paste', function(e) {
 });
 
 document.addEventListener('copy', function(e) {
+  if (e.target.id === 'copy-block') return;
   e.preventDefault();
   var msg = document.createElement('div');
   msg.textContent = '🚫 Copying is not allowed';

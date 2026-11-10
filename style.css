@@ -21,6 +21,7 @@
   --nav-bg:  #f0f3f8;   /* step-nav strip */
   --inset:   #fafbfc;   /* inset panels (transform items) */
   --info:    #edf3fa;   /* section-instructions panel */
+  --callout: #f5e6b0;   /* highlighted box: --gold-lt in light, a dark amber in dark */
   --text:    #1d2b3a;
   --muted:   #6b7a8d;
   --border:  #dce3ec;
@@ -38,6 +39,7 @@
     --nav-bg: #131f2b;
     --inset:  #1b2735;
     --info:   #152435;
+    --callout: #3a3212;
     --text:   #e7eef6;
     --muted:  #8a99aa;
     --border: #28394d;
@@ -64,6 +66,14 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); min-
 .header-logo { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 .header-meta { flex-shrink: 0; }
 .header-meta strong { display: block; color: var(--gold); }
+/* "Easier to read" toggle (exercise.js). Short label on phones; the aria-label keeps the full name. */
+.dyslexia-btn { flex-shrink: 0; margin-left: auto; background: none; border: 1px solid rgba(255,255,255,.55); border-radius: 20px; color: #fff; font: 600 .75rem var(--font); padding: .3rem .65rem; cursor: pointer; white-space: nowrap; }
+.dyslexia-btn[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: #1a3a5c; }
+@media (max-width: 480px) { .dyslexia-btn span { display: none; } }
+/* 🔊 listen buttons (eolSayBtn in exercise.js). Hidden when the device has no voice. */
+.say-btn { background: none; border: 1px solid var(--border); border-radius: 6px; padding: .1rem .35rem; min-width: 1.9rem; min-height: 1.6rem; font-size: .85rem; line-height: 1; cursor: pointer; vertical-align: middle; }
+.say-btn:hover { border-color: var(--teal); }
+html.no-voices .say-btn { display: none; }
 .progress-track { height: 6px; background: rgba(255,255,255,.2); }
 .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
 
@@ -151,6 +161,8 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); min-
 .btn-outline:hover { background: var(--blue); color: #fff; }
 .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
 .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
+/* eolSyncActiveStep() focuses the step heading for screen readers; it is not a control, so no ring. */
+[tabindex="-1"]:focus { outline: none; }
 .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
 
 /* ── Welcome screen ── */
@@ -176,6 +188,11 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); min-
   .ex-title { font-size: 1.25rem; }
   .btn { padding: .65rem 1.1rem; }
   .welcome-title { font-size: 1.4rem; }
+  /* Keep the name form and Start in reach on a phone: smaller hero, Ex cards two across. */
+  .welcome-hero { padding: 1.25rem 1rem 1rem; }
+  .welcome-flag { font-size: 2.25rem; margin-bottom: .5rem; }
+  .exercise-overview { grid-template-columns: 1fr 1fr; gap: .5rem; margin-bottom: 1.25rem; }
+  .ov-card { padding: .6rem .7rem; font-size: .75rem; }
   .gap-select { max-width: 150px; font-size: .75rem; }
 }
 

@@ -3,16 +3,18 @@ name: Site Watchdog
 # Agent #8: runs after every deploy-triggering push and on the rebuild bot's
 # auto-commit. Catches dead links, missing index entries, stale sitemap refs,
 # and duplicate ids before students hit them.
+#
+# Runs after the rebuild bot, not on the merge commit: since branches stopped
+# carrying the shared aggregates (2026-10-30), a merged page is missing from
+# exercises.json until the bot's commit, so checking the merge commit always
+# failed. The bot's commit carries [skip ci], so it can't trigger this itself.
 on:
+  workflow_run:
+    workflows: ['Rebuild generated indices']
+    types: [completed]
   push:
     branches: [main]
-    paths:
-      - '**.html'
-      - 'data/**'
-      - 'scripts/**'
-      - 'exercise.js'
-      - 'style.css'
-      - 'sitemap.xml'
+    paths: ['style.css']   # ponytail: other data/** edits outside the bot's paths go unwatched until the next bot run
   workflow_dispatch: {}
 
 permissions:
@@ -23,6 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
 
       - uses: actions/setup-node@v4
         with:

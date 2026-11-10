@@ -1,5 +1,5 @@
 /*
- * consent.js — Google Tag Manager only after the visitor says yes.
+ * consent.js — Google Tag Manager and Microsoft Clarity only after the visitor says yes.
  *
  * GTM (and the Google Analytics it loads) sets cookies and sends data to
  * Google, which German law (TTDSG §25, DSGVO) allows only after opt-in. Until
@@ -17,11 +17,18 @@
  * and no GTM: the host page is responsible for its own consent.
  * The choice is kept in localStorage under "eol_consent". If storage is blocked,
  * the banner simply appears again on the next page.
+ *
+ * Microsoft Clarity (heatmaps and session recordings, added 2026-11-02) loads
+ * with GTM. A yes stored as "granted" was given before Clarity was named in
+ * the banner, so it no longer counts: those visitors see the banner again.
+ * Declining through "Cookie-Einstellungen" stops Clarity on the current page too.
  */
 (function () {
   'use strict';
   var KEY = 'eol_consent';
   var GTM_ID = 'GTM-5HXNNPCS';
+  var CLARITY_ID = 'z7d6a7n9ul';
+  var GRANTED = 'granted-clarity';
   var PRIVACY = 'https://englishonline.training/privacy-policy/';
 
   if (window.self !== window.top) return;
@@ -39,6 +46,13 @@
     s.async = true;
     s.src = 'https://www.googletagmanager.com/gtm.js?id=' + GTM_ID;
     document.head.appendChild(s);
+    // Clarity's own snippet, unrolled. consentv2 tells it the visitor agreed to analytics, not ads.
+    window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
+    var c = document.createElement('script');
+    c.async = true;
+    c.src = 'https://www.clarity.ms/tag/' + CLARITY_ID + '?ref=bwt';
+    document.head.appendChild(c);
+    window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
   }
 
   function style() {
@@ -61,9 +75,9 @@
     document.head.appendChild(st);
   }
 
-  // International pages (IELTS) get the banner in English only. Kept in step
+  // International pages (IELTS, University) get the banner in English only. Kept in step
   // with eolEnglishOnly() in exercise.js and englishOnly() in scripts/schema.js.
-  var EN = /^ielts-/.test((location.pathname.split('/').pop() || '').toLowerCase());
+  var EN = /^(ielts|uni)-/.test((location.pathname.split('/').pop() || '').toLowerCase());
 
   function banner() {
     if (document.getElementById('eol-consent')) return;
@@ -73,22 +87,33 @@
     b.setAttribute('role', 'region');
     b.setAttribute('aria-label', EN ? 'Cookie settings' : 'Cookie-Einstellungen');
     b.innerHTML = EN ? '<div class="in">'
-      + '<p>May I use <strong>Google Analytics</strong> to count which exercises are used? '
-      + 'This sets cookies and sends data to Google (USA). Every exercise also works without it. '
+      + '<p>May I use <strong>Google Analytics</strong> and <strong>Microsoft Clarity</strong> to see which exercises are used and how? '
+      + 'Clarity records clicks and scrolling on the page; what you type is hidden. '
+      + 'This sets cookies and sends data to Google and Microsoft (USA). Every exercise also works without it. '
       + 'Under 16? Please ask a parent first. <a href="' + PRIVACY + '">Privacy</a></p>'
       + '<div class="btns"><button type="button" class="no">Decline</button>'
       + '<button type="button" class="yes">Accept</button></div></div>'
       : '<div class="in">'
-      + '<p lang="de">Darf ich mit <strong>Google Analytics</strong> zählen, welche Übungen genutzt werden? '
-      + 'Dafür werden Cookies gesetzt und Daten an Google (USA) übertragen. Alle Übungen funktionieren auch ohne. '
+      + '<p lang="de">Darf ich mit <strong>Google Analytics</strong> und <strong>Microsoft Clarity</strong> sehen, welche Übungen wie genutzt werden? '
+      + 'Clarity zeichnet Klicks und Scrollen auf der Seite auf; was du eintippst, wird ausgeblendet. '
+      + 'Dafür werden Cookies gesetzt und Daten an Google und Microsoft (USA) übertragen. Alle Übungen funktionieren auch ohne. '
       + 'Unter 16? Frag bitte vorher deine Eltern. <a href="' + PRIVACY + '">Datenschutz</a>'
-      + '<br><span lang="en" style="opacity:.85">May I use Google Analytics to count which exercises are used? '
+      + '<br><span lang="en" style="opacity:.85">May I use Google Analytics and Microsoft Clarity to see which exercises are used and how? '
       + 'Everything works if you say no.</span></p>'
       + '<div class="btns"><button type="button" class="no">Ablehnen</button>'
       + '<button type="button" class="yes">Akzeptieren</button></div></div>';
-    b.querySelector('.no').addEventListener('click', function () { set('denied'); b.remove(); });
-    b.querySelector('.yes').addEventListener('click', function () { set('granted'); b.remove(); loadGtm(); });
+    function close() { b.remove(); document.body.style.paddingBottom = ''; }
+    b.querySelector('.no').addEventListener('click', function () {
+      set('denied');
+      close();
+      // Withdrawn on a page where Clarity is running. consentv2 "denied" would only switch it to
+      // cookieless tracking; this erases its cookies and stops it.
+      if (loaded) window.clarity('consent', false);
+    });
+    b.querySelector('.yes').addEventListener('click', function () { set(GRANTED); close(); loadGtm(); });
     document.body.appendChild(b);
+    // The banner is fixed over the page: leave room so the last buttons can scroll clear of it.
+    document.body.style.paddingBottom = b.offsetHeight + 'px';
   }
 
   // A way back to the banner, in whatever footer the page has.
@@ -114,10 +139,10 @@
   }
 
   var choice = get();
-  if (choice === 'granted') loadGtm();
+  if (choice === GRANTED) loadGtm();
 
   function ready() {
-    if (choice !== 'granted' && choice !== 'denied') banner();
+    if (choice !== GRANTED && choice !== 'denied') banner();
     // exercise.js injects its footer on DOMContentLoaded; wait a tick for it.
     setTimeout(settingsLink, 0);
   }

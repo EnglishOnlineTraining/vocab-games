@@ -1,0 +1,108 @@
+{
+ "unit": "uni-b2-past-continuous-stories",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": true,
+   "gaps": {
+    "g1": {
+     "correct": "was walking",
+     "accept": [
+      "was walking",
+      "walked"
+     ],
+     "label": "1. While I ___ (walk) to the station…",
+     "why": "Both work after while: the past continuous stresses the walk in progress, the past simple is also fine."
+    },
+    "g2": {
+     "correct": "started",
+     "accept": [
+      "started"
+     ],
+     "label": "1. … it ___ (start) to rain.",
+     "why": "The short action that happens during the walk takes the past simple."
+    },
+    "g3": {
+     "correct": "were planning",
+     "accept": [
+      "were planning"
+     ],
+     "label": "2. While we ___ (plan) our pitch…",
+     "why": "After while, the longer action in progress takes the past continuous."
+    },
+    "g4": {
+     "correct": "stopped",
+     "accept": [
+      "stopped"
+     ],
+     "label": "2. … the internet ___ (stop).",
+     "why": "The sudden short action takes the past simple."
+    },
+    "g5": {
+     "correct": "was checking",
+     "accept": [
+      "was checking"
+     ],
+     "label": "3. While she ___ (check) her phone…",
+     "why": "After while, the longer action in progress takes the past continuous."
+    },
+    "g6": {
+     "correct": "gave",
+     "accept": [
+      "gave"
+     ],
+     "label": "3. … the lecturer ___ (give) the deadline.",
+     "why": "The short action that happens during the longer one takes the past simple."
+    },
+    "g7": {
+     "correct": "were eating",
+     "accept": [
+      "were eating"
+     ],
+     "label": "4. They ___ (eat) lunch at their desks…",
+     "why": "They were in the middle of lunch when the librarian came: past continuous."
+    },
+    "g8": {
+     "correct": "came",
+     "accept": [
+      "came"
+     ],
+     "label": "4. … when the librarian ___ (come) over.",
+     "why": "After when, the interrupting action takes the past simple."
+    },
+    "g9": {
+     "correct": "was presenting",
+     "accept": [
+      "was presenting"
+     ],
+     "label": "5. Our reporter ___ (present) our idea…",
+     "why": "The pitch was in progress when the card went up: past continuous."
+    },
+    "g10": {
+     "correct": "held",
+     "accept": [
+      "held"
+     ],
+     "label": "5. … when the timekeeper ___ (hold) up the card.",
+     "why": "The short interrupting action takes the past simple; hold → held."
+    },
+    "g11": {
+     "correct": "were you doing",
+     "accept": [
+      "were you doing"
+     ],
+     "label": "6. What ___ (you / do) when I called?",
+     "why": "A question about an action in progress: was/were + subject + -ing."
+    },
+    "g12": {
+     "correct": "called",
+     "accept": [
+      "called"
+     ],
+     "label": "6. … when I ___ (call) you last night?",
+     "why": "The short action that interrupts takes the past simple."
+    }
+   }
+  }
+ }
+}

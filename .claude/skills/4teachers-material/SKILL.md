@@ -12,6 +12,13 @@ description: >
 Free material shared with other teachers on 4teachers.de. Shaun uploads it himself: never upload, register or
 submit anything on the site for him.
 
+## Where this skill runs
+
+Same convention as the `eduki-worksheet` skill: the `/Users/strezise/...` and `~/.claude/skills/...` paths below exist
+only on Shaun's Mac. In a Claude Code web/remote session, the eduki template and the shared check script are committed
+in this repo under `.claude/skills/eduki-worksheet/` — use those paths instead, save outputs to the session's output
+folder, and ask Shaun to confirm the register state rather than reading or writing the CSV yourself.
+
 ## What goes here, and what does not (the split with eduki)
 
 The two skills share one register: `/Users/strezise/Claude Files/CLAUDE OUTPUTS/platform-materials-register.csv`
@@ -82,7 +89,8 @@ If the editors ask for an Autorenbestätigung, tell Shaun and offer to draft the
 
 ## Build
 
-Start from the eduki template (`~/.claude/skills/eduki-worksheet/assets/worksheet-template.html`) for styling, print CSS,
+Start from the eduki template (`~/.claude/skills/eduki-worksheet/assets/worksheet-template.html` on the Mac;
+`.claude/skills/eduki-worksheet/assets/worksheet-template.html` in this repo) for styling, print CSS,
 points badges, Quellenangaben and footer, and adapt the body to the kind:
 
 - `test-pack`: 4 to 5 sections across skills (vocabulary, reading, grammar, writing or mediation), 40 to 50 points, a
@@ -102,6 +110,9 @@ vocab-games repo) and export the PDF beside it with the headless Chrome command 
 ```bash
 ~/.claude/skills/eduki-worksheet/scripts/check-worksheet.sh <file>.html
 ```
+
+(on the Mac; in a web/remote session run `bash .claude/skills/eduki-worksheet/scripts/check-worksheet.sh <file>.html`
+from the repo root)
 
 It checks the shared hygiene rules and also expects an answer key, points badges and the online note. 4teachers requires
 solutions for every English item (see the editors' message below), so a missing answer key is never acceptable, whatever the

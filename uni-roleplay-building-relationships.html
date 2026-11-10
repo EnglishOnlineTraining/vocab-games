@@ -8,8 +8,10 @@
   <meta name="description" content="University Business English roleplay: groups of three explore how communication makes or breaks a professional relationship.">
   <link rel="canonical" href="https://activities.englishonline.training/uni-roleplay-building-relationships.html">
 
+  <link rel="stylesheet" href="style.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* .role-block stays light in dark mode, so its labels stay navy. */
+    .role-block .form-label { color:var(--ink); }
     :root {
       --blue:    #1a3a5c;
       --gold:    #c9a227;
@@ -30,42 +32,15 @@
   --red-text:   #c0392b;
   --teal-text:  #1f5d5b;
 }
-    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 3rem; }
-
-    .app-header { background: var(--blue); color: #fff; padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
-    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1.25rem; gap: 1rem; }
-    .header-logo { font-size: .8rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; }
-    .header-meta { font-size: .78rem; text-align: right; opacity: .9; }
-    .header-meta strong { display: block; color: var(--gold); }
-    .progress-track { height: 6px; background: rgba(255,255,255,.2); }
-    .progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0%; }
-
-    .step { display: none; }
-    .step.active { display: block; }
-    .step-inner { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
-
-    .ex-badge { display: inline-block; background: var(--gold); color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem; }
-    .ex-title { font-size: 1.5rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
-    .ex-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
-
-    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.25rem; }
-    .card-title { font-size: 1rem; font-weight: 600; color: var(--blue); margin-bottom: .75rem; }
-
-    .reading-text { font-size: .93rem; line-height: 1.85; color: var(--text); }
-    .reading-text p { margin-bottom: .85rem; }
-    .reading-text p:last-child { margin-bottom: 0; }
     .reading-text ul { margin: .25rem 0 .85rem 1.25rem; }
     .reading-text li { margin-bottom: .4rem; }
     .reading-text ol { margin: .25rem 0 .85rem 1.25rem; }
     .reading-text ol li { margin-bottom: .55rem; }
 
-    .info-banner { background: var(--teal-lt); border: 1.5px solid var(--teal); border-radius: 8px; padding: .7rem 1rem; margin-bottom: 1.1rem; font-size: .85rem; color: var(--blue); }
+    .info-banner { background: var(--teal-lt); border: 1.5px solid var(--teal); border-radius: 8px; padding: .7rem 1rem; margin-bottom: 1.1rem; font-size: .85rem; color: var(--ink); }
     .info-banner strong { color: var(--teal-text,#1f5d5b); }
 
-    .goal-banner { background: var(--gold-lt); border: 1.5px solid var(--gold); border-radius: 8px; padding: .7rem 1rem; margin-top: .25rem; font-size: .85rem; color: var(--blue); }
-
-    .form-group { margin-bottom: 1.1rem; }
-    .form-label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue); margin-bottom: .4rem; }
+    .goal-banner { background: var(--callout); border: 1.5px solid var(--gold); border-radius: 8px; padding: .7rem 1rem; margin-top: .25rem; font-size: .85rem; color:var(--ink); }
     .form-input, .form-textarea, .form-select {
       width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
       padding: .65rem .85rem; font-family: var(--font); font-size: .92rem;
@@ -73,73 +48,31 @@
     }
     .form-input:focus, .form-textarea:focus, .form-select:focus { outline: none; border-color: var(--blue); }
     .form-textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
-    .form-hint { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
 
     .role-block { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.1rem; margin-bottom: .85rem; background: #fafbfc; }
-    .role-letter { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: var(--gold); color: var(--blue); font-size: .85rem; font-weight: 800; flex-shrink: 0; margin-bottom: .5rem; }
+    .role-letter { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: var(--gold); color:var(--blue); font-size: .85rem; font-weight: 800; flex-shrink: 0; margin-bottom: .5rem; }
     .role-desc { font-size: .85rem; color: var(--muted); margin-bottom: .6rem; }
 
     .check-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: .55rem; margin-bottom: .5rem; }
     .check-item { display: flex; align-items: flex-start; gap: .55rem; font-size: .87rem; background: #fafbfc; border: 1px solid var(--border); border-radius: 8px; padding: .6rem .75rem; cursor: pointer; }
     .check-item input { margin-top: .2rem; flex-shrink: 0; }
     .check-item:hover { border-color: var(--gold); }
-
-    .word-bank { background: var(--gold-lt); border: 1.5px solid var(--gold); border-radius: 8px; padding: .75rem 1rem; margin-bottom: 1.25rem; }
-    .word-bank strong { display: block; color: var(--blue); margin-bottom: .5rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; }
-    .word-bank span { display: inline-block; margin: .2rem .3rem; background: var(--blue); color: #fff; border-radius: 4px; padding: .18rem .55rem; font-size: .8rem; font-weight: 600; }
-
-    .feedback { padding: .8rem 1rem; border-radius: 8px; font-size: .88rem; font-weight: 500; margin-top: 1rem; display: none; }
-    .feedback.show { display: block; }
-    .feedback.ok   { background: #d4edda; color: #155724; }
-    .feedback.warn { background: #fff3cd; color: #856404; }
-    .feedback.err  { background: #fde8e8; color: #721c24; }
-
-    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: 8px; font-family: var(--font); font-size: .9rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: transform .15s, box-shadow .15s; }
-    .btn:active { transform: scale(.97); }
-    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(26,58,92,.3); }
-    .btn-primary:hover { background: #15304f; }
-    .btn-gold { background: var(--gold); color: var(--blue); box-shadow: 0 2px 8px rgba(201,162,39,.3); }
-    .btn-gold:hover { background: #b8911f; }
-    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
-    .btn-outline:hover { background: var(--blue); color: #fff; }
-    .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
-    .btn-block { width: 100%; justify-content: center; margin-top: 1.25rem; }
-    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
-
-    .welcome-hero { text-align: center; padding: 2.5rem 1rem 2rem; }
-    .welcome-flag { font-size: 3rem; margin-bottom: 1rem; }
-    .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--blue); margin-bottom: .4rem; }
+    .welcome-title { font-size: 1.8rem; font-weight: 700; color: var(--ink); margin-bottom: .4rem; }
     .welcome-kicker { font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin-bottom: .6rem; }
     .welcome-sub { font-size: 1rem; color: var(--muted); margin-bottom: 1.5rem; max-width: 480px; margin-left: auto; margin-right: auto; }
     .welcome-focus { text-align: left; max-width: 420px; margin: 0 auto 2rem; background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; }
-    .welcome-focus strong { display: block; color: var(--blue); font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .5rem; }
+    .welcome-focus strong { display: block; color: var(--ink); font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .5rem; }
     .welcome-focus ul { margin-left: 1.1rem; font-size: .9rem; }
     .welcome-focus li { margin-bottom: .25rem; }
 
     .exercise-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
     .ov-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-size: .8rem; }
-    .ov-card strong { display: block; color: var(--blue); margin-bottom: .2rem; font-size: .86rem; }
-    .ov-card.locked { opacity: .5; }
-    .ov-icon { font-size: 1.1rem; margin-bottom: .3rem; }
-
-    .submit-summary { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
-    .summary-row { border-bottom: 1px solid var(--border); padding: .75rem 0; font-size: .875rem; }
-    .summary-row:last-child { border-bottom: none; }
-    .summary-ex { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: .2rem; }
-    .summary-q  { font-weight: 600; color: var(--blue); margin-bottom: .3rem; }
-    .summary-a  { color: var(--text); white-space: pre-wrap; }
-
-    @media (max-width: 480px) {
-      .ex-title { font-size: 1.25rem; }
-      .btn { padding: .65rem 1.1rem; }
-      .welcome-title { font-size: 1.4rem; }
-    }
+    .ov-card strong { display: block; color: var(--ink); margin-bottom: .2rem; font-size: .86rem; }
   
 /* ── Automatic dark mode (added; light values untouched) ── */
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #0e1620;
-    --blue: #4a86c9;
     --border: #28394d;
     --card: #16212e;
     --muted: #8a99aa;
@@ -149,6 +82,16 @@
     --red-text:   #f3a3b0;
     --teal-text:  #6fd3d0;
 }
+}
+    /* style.css's phone sizes again: this page's own rules above would otherwise win. */
+    @media (max-width: 480px) { .welcome-title { font-size: 1.4rem; } .exercise-overview { grid-template-columns: 1fr 1fr; gap: .5rem; margin-bottom: 1.25rem; } .ov-card { padding: .6rem .7rem; font-size: .75rem; } }
+@media (prefers-color-scheme: dark) {
+  .role-block { background: #1b2735; }
+  .check-item { background: #1b2735; }
+  .form-input, .form-textarea, .form-select { background: #1b2735; }
+}
+@media (prefers-color-scheme: dark) {
+  .info-banner { background: #1b2735; }
 }
 </style>
 <!-- HEAD:START — generated by scripts/build-head.js, do not edit by hand -->
@@ -169,9 +112,10 @@
 <meta property="og:image" content="https://activities.englishonline.training/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="englishonline.training — kostenlose interaktive Englisch-Übungen für Klasse 7–10, MSA, Abitur, Universität, Business und IT English">
+<meta property="og:image:alt" content="englishonline.training — free interactive English exercises with instant feedback">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@engontraining">
+<style id="eol-tap-style">.top-bar a,.header-nav a,.app-header a,nav.breadcrumb a{padding-block:.6rem;margin-block:-.6rem}.eol-crumb a,.eol-crumbs a,.eol-footer a,.site-footer a{padding-block:.35rem;margin-block:-.35rem}</style>
 <style id="eol-qo-style">
 .qo-box{background:var(--card,#fff);border:1.5px solid var(--border,#dce3ec);border-left:4px solid var(--gold,#c9a227);border-radius:10px;padding:1rem 1.2rem;margin:0 0 1.5rem;font-size:.9rem;color:var(--text,#1d2b3a)}
 .qo-box h2{font-size:.95rem;font-weight:700;margin:0 0 .6rem;color:var(--blue,#1a3a5c)}
@@ -213,16 +157,13 @@
 .eol-crumb a{color:var(--teal,#2b7a78);text-decoration:none}
 .eol-crumb a:hover{text-decoration:underline}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["EducationalOrganization","LocalBusiness"],"@id":"https://englishonline.training/#organization","name":"EnglishOnline.training","url":"https://englishonline.training/"},{"@type":"Person","@id":"https://activities.englishonline.training/#shaun","name":"Shaun Trezise","url":"https://englishonline.training/"},{"@type":"WebSite","@id":"https://activities.englishonline.training/#website","url":"https://activities.englishonline.training/","name":"EnglishOnline.training — kostenlose Englisch-Übungen","description":"Free interactive English exercises with instant feedback, no sign-up required.","inLanguage":["en","de"],"publisher":{"@id":"https://englishonline.training/#organization"},"isAccessibleForFree":true},{"@type":"LearningResource","@id":"https://activities.englishonline.training/uni-roleplay-building-relationships.html#resource","name":"Building Relationships Through Communication","description":"University Business English roleplay: groups of three explore how communication makes or breaks a professional relationship.","url":"https://activities.englishonline.training/uni-roleplay-building-relationships.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"practice","interactivityType":"active","learningResourceType":["Interactive exercise","Grammar exercise"],"author":{"@id":"https://activities.englishonline.training/#shaun"},"publisher":{"@id":"https://englishonline.training/#organization"},"provider":{"@id":"https://englishonline.training/#organization"},"isPartOf":[{"@id":"https://activities.englishonline.training/#website"},{"@type":"CollectionPage","@id":"https://activities.englishonline.training/uni-activities.html#collection","name":"University English Exercises – Free Practice","url":"https://activities.englishonline.training/uni-activities.html"}],"datePublished":"2026-06-23","dateModified":"2026-08-31","educationalLevel":{"@type":"DefinedTerm","name":"B2–C1","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Common European Framework of Reference for Languages","url":"https://www.coe.int/en/web/common-european-framework-reference-languages"}},"teaches":["English grammar"],"about":["Learning Objectives","The Task","Choose a Scenario","Character Roles","Part 1 – The Wrong Way","Part 2 – The Right Way","Effective Communication Skills","Useful Expressions","Planning Time","Reflection Questions","Key Takeaway"]},{"@type":"BreadcrumbList","@id":"https://activities.englishonline.training/uni-roleplay-building-relationships.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://activities.englishonline.training/"},{"@type":"ListItem","position":2,"name":"Übungen","item":"https://activities.englishonline.training/activities.html"},{"@type":"ListItem","position":3,"name":"Universität","item":"https://activities.englishonline.training/uni-activities.html"},{"@type":"ListItem","position":4,"name":"Building Relationships Through Communication","item":"https://activities.englishonline.training/uni-roleplay-building-relationships.html"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["EducationalOrganization","LocalBusiness"],"@id":"https://englishonline.training/#organization","name":"EnglishOnline.training","url":"https://englishonline.training/"},{"@type":"Person","@id":"https://activities.englishonline.training/#shaun","name":"Shaun Trezise","url":"https://englishonline.training/"},{"@type":"WebSite","@id":"https://activities.englishonline.training/#website","url":"https://activities.englishonline.training/","name":"EnglishOnline.training — kostenlose Englisch-Übungen","description":"Free interactive English exercises with instant feedback, no sign-up required.","inLanguage":["en","de"],"publisher":{"@id":"https://englishonline.training/#organization"},"isAccessibleForFree":true},{"@type":"LearningResource","@id":"https://activities.englishonline.training/uni-roleplay-building-relationships.html#resource","name":"Building Relationships Through Communication","description":"University Business English roleplay: groups of three explore how communication makes or breaks a professional relationship.","url":"https://activities.englishonline.training/uni-roleplay-building-relationships.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"practice","interactivityType":"active","learningResourceType":["Interactive exercise","Grammar exercise"],"author":{"@id":"https://activities.englishonline.training/#shaun"},"publisher":{"@id":"https://englishonline.training/#organization"},"provider":{"@id":"https://englishonline.training/#organization"},"isPartOf":[{"@id":"https://activities.englishonline.training/#website"},{"@type":"CollectionPage","@id":"https://activities.englishonline.training/uni-activities.html#collection","name":"University English Exercises – Free Practice","url":"https://activities.englishonline.training/uni-activities.html"}],"datePublished":"2026-06-23","dateModified":"2026-11-05","educationalLevel":{"@type":"DefinedTerm","name":"B2–C1","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Common European Framework of Reference for Languages","url":"https://www.coe.int/en/web/common-european-framework-reference-languages"}},"teaches":["English grammar"],"about":["Learning Objectives","The Task","Choose a Scenario","Character Roles","Part 1 – The Wrong Way","Part 2 – The Right Way","Effective Communication Skills","Useful Expressions","Planning Time","Reflection Questions","Key Takeaway"]},{"@type":"BreadcrumbList","@id":"https://activities.englishonline.training/uni-roleplay-building-relationships.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://activities.englishonline.training/"},{"@type":"ListItem","position":2,"name":"Exercises","item":"https://activities.englishonline.training/activities.html"},{"@type":"ListItem","position":3,"name":"University English","item":"https://activities.englishonline.training/uni-activities.html"},{"@type":"ListItem","position":4,"name":"Building Relationships Through Communication","item":"https://activities.englishonline.training/uni-roleplay-building-relationships.html"}]}]}</script>
 <!-- HEAD:END -->
 </head>
 <body>
 <!-- NOSCRIPT:START — generated by scripts/build-head.js, do not edit by hand -->
 <noscript>
   <div style="background:#fdf3d8;border-bottom:2px solid #c9a227;color:#1d2b3a;padding:.9rem 1rem;font:1rem/1.5 'Segoe UI',system-ui,sans-serif;text-align:center">
-    <strong lang="de">Diese Übung braucht JavaScript.</strong>
-    <span lang="de">Bitte aktiviere JavaScript in deinem Browser — sonst bleiben die Aufgaben leer.</span>
-    <br>
     <strong>This exercise needs JavaScript.</strong>
     <span>Please switch JavaScript on in your browser, otherwise the tasks stay empty.</span>
   </div>
@@ -241,7 +182,7 @@
   <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
 </header>
 <!-- CRUMB:START — generated by scripts/build-head.js, do not edit by hand -->
-<nav class="eol-crumb" aria-label="Breadcrumb"><ol><li><a href="./">Start</a></li><li><a href="activities.html">Übungen</a></li><li><a href="uni-activities.html">Universität</a></li><li aria-current="page">Building Relationships Through Communication</li></ol></nav>
+<nav class="eol-crumb" aria-label="Breadcrumb"><ol><li><a href="./">Start</a></li><li><a href="activities.html">Exercises</a></li><li><a href="uni-activities.html">University English</a></li><li aria-current="page">Building Relationships Through Communication</li></ol></nav>
 <!-- CRUMB:END -->
 
 
@@ -265,33 +206,6 @@
         </ul>
       </div>
     </div>
-<!-- OVERVIEW:START — generated by scripts/build-head.js, do not edit by hand -->
-<div class="qo-box" role="note" aria-labelledby="qo-heading">
-  <h2 id="qo-heading" lang="de">Auf einen Blick <span class="qo-en" lang="en">/ At a glance</span></h2>
-  <p class="qo-lede">University Business English roleplay: groups of three explore how communication makes or breaks a professional relationship.</p>
-  <dl class="qo-facts" lang="de">
-    <dt>Niveau <span class="qo-en" lang="en">/ Level</span></dt><dd>B2–C1 (GER/CEFR)</dd>
-    <dt>Für <span class="qo-en" lang="en">/ For</span></dt><dd>Universität</dd>
-    <dt>Fertigkeiten <span class="qo-en" lang="en">/ Skills</span></dt><dd>Grammatik <span class="qo-en" lang="en">/ Grammar</span></dd>
-    <dt>Aufgaben <span class="qo-en" lang="en">/ Tasks</span></dt><dd>11 — Learning Objectives · The Task · Choose a Scenario · Character Roles · Part 1 – The Wrong Way · Part 2 – The Right Way · Effective Communication Skills · Useful Expressions · Planning Time · Reflection Questions · Key Takeaway</dd>
-    <dt>Kosten <span class="qo-en" lang="en">/ Cost</span></dt><dd>kostenlos, ohne Anmeldung <span class="qo-en" lang="en">/ free, no sign-up</span></dd>
-  </dl>
-</div>
-<!-- OVERVIEW:END -->
-<!-- RELATED:START — generated by scripts/build-head.js, do not edit by hand -->
-<div class="related-ex" role="note" aria-labelledby="related-ex-heading">
-  <h2 id="related-ex-heading">Weiterüben <span class="related-ex-en">/ Keep practising</span></h2>
-  <div class="related-ex-col">
-    <h3>Mehr in diesem Kurs <span class="related-ex-en">/ More from this course</span></h3>
-    <ul>
-      <li><a href="uni-building-relationships.html">Building Business Relationships</a></li>
-      <li><a href="uni-al-munir-relationships.html">Al-Munir Hotel Group – Building Customer Relationships</a></li>
-      <li><a href="uni-relationships-language.html">Building Relationships: Multi-word Verbs</a></li>
-      <li><a href="uni-relationships-reading.html">Building Relationships: Reading (Guanxi)</a></li>
-    </ul>
-  </div>
-</div>
-<!-- RELATED:END -->
 
     <div class="exercise-overview">
       <div class="ov-card"><div class="ov-icon">🎯</div><strong>Learn</strong>Objectives &amp; task</div>
@@ -313,6 +227,33 @@
       <div id="welcome-error" class="feedback err"></div>
       <button class="btn btn-gold btn-block" onclick="startExercises()">Start →</button>
     </div>
+<!-- OVERVIEW:START — generated by scripts/build-head.js, do not edit by hand -->
+<div class="qo-box" role="note" aria-labelledby="qo-heading">
+  <h2 id="qo-heading">At a glance</h2>
+  <p class="qo-lede">University Business English roleplay: groups of three explore how communication makes or breaks a professional relationship.</p>
+  <dl class="qo-facts">
+    <dt>Level</dt><dd>B2–C1 (CEFR)</dd>
+    <dt>For</dt><dd>University English</dd>
+    <dt>Skills</dt><dd>Grammar</dd>
+    <dt>Tasks</dt><dd>11 — Learning Objectives · The Task · Choose a Scenario · Character Roles · Part 1 – The Wrong Way · Part 2 – The Right Way · Effective Communication Skills · Useful Expressions · Planning Time · Reflection Questions · Key Takeaway</dd>
+    <dt>Cost</dt><dd>free, no sign-up</dd>
+  </dl>
+</div>
+<!-- OVERVIEW:END -->
+<!-- RELATED:START — generated by scripts/build-head.js, do not edit by hand -->
+<div class="related-ex" role="note" aria-labelledby="related-ex-heading">
+  <h2 id="related-ex-heading">Keep practising</h2>
+  <div class="related-ex-col">
+    <h3>More from this course</h3>
+    <ul>
+      <li><a href="uni-building-relationships.html">Building Business Relationships</a></li>
+      <li><a href="uni-al-munir-relationships.html">Al-Munir Hotel Group – Building Customer Relationships</a></li>
+      <li><a href="uni-relationships-language.html">Building Relationships: Multi-word Verbs</a></li>
+      <li><a href="uni-relationships-reading.html">Building Relationships: Reading (Guanxi)</a></li>
+    </ul>
+  </div>
+</div>
+<!-- RELATED:END -->
   </div>
 </section>
 
@@ -358,7 +299,7 @@
     <div class="card">
       <div class="reading-text">
         <p>Create and perform a roleplay that demonstrates:</p>
-        <p style="font-weight:700;color:var(--blue)">How to build professional relationships<br>OR<br>How NOT to build professional relationships</p>
+        <p style="font-weight:700;color:var(--ink)">How to build professional relationships<br>OR<br>How NOT to build professional relationships</p>
         <p>Your roleplay should clearly show the difference between effective and ineffective communication.</p>
       </div>
     </div>
@@ -675,7 +616,7 @@
   <div class="step-inner">
     <span class="ex-badge">Slide 12</span>
     <h2 class="ex-title">Key Takeaway</h2>
-    <p class="ex-subtitle" style="font-weight:700;color:var(--blue)">Strong Relationships Start with Strong Communication</p>
+    <p class="ex-subtitle" style="font-weight:700;color:var(--ink)">Strong Relationships Start with Strong Communication</p>
 
     <div class="card">
       <div class="card-title">Remember</div>
@@ -728,6 +669,7 @@
 </section>
 
 
+<script src="integrity.js"></script>
 <script src="exercise.js"></script>
 <script>
 /* ============================================================
@@ -736,7 +678,7 @@
 var UNIT          = 'uni-roleplay-building-relationships';
 var TOTAL_STEPS   = 12;   /* index of the final Review & Submit step */
 var SHEET_URL     = 'https://script.google.com/macros/s/AKfycbzCj-D1jWSMW7ep1IRBN_Nu_gLBrLq077UPl2ml9AXavgA5aEcC1VNko2TUJZiuVF9mGg/exec';
-var TEACHER_EMAIL = 'englishonlinetraining@pm.me';
+var TEACHER_EMAIL = 'learn@englishonline.training';
 var maxStepReached = 0;
 
 /* ============================================================

@@ -1,7 +1,7 @@
 {
  "unit": "7g-british-sports",
  "sections": {
-  "exA": {
+  "ex1": {
    "prefix": "exA-",
    "multi": false,
    "gaps": {
@@ -53,9 +53,10 @@
      "label": "6. First Wimbledon Championship",
      "why": "The first Wimbledon Championship was played in 1877."
     }
-   }
+   },
+   "scoreKey": "exA"
   },
-  "exB": {
+  "ex2": {
    "prefix": "exB-",
    "multi": false,
    "gaps": {
@@ -123,7 +124,8 @@
      "label": "8. Wimbledon is a famous tennis ___",
      "why": "A tournament is a whole series of matches, not just one."
     }
-   }
+   },
+   "scoreKey": "exB"
   }
  }
 }

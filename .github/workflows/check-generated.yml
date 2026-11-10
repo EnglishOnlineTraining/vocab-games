@@ -32,7 +32,10 @@ jobs:
         run: node scripts/build.js --explain
 
       # Rebuilds, then fails if anything committed differs from what the
-      # generators produce — including a stale docs/build-graph.mmd.
+      # generators produce — including a stale docs/build-graph.mmd. On a PR
+      # (detached HEAD, not main) build.js resets the SHARED aggregates to the
+      # merge-base after its checks, so a PR that commits them fails here:
+      # rebuild-indices.yml writes those on main after the merge.
       - name: Check generated files are up to date
         run: node scripts/build.js --check
 
@@ -55,3 +58,11 @@ jobs:
             node scripts/verify-exercise.js "$f" || fail=1
           done
           exit $fail
+
+      # The E2E specs in tests/ (Playwright). They drive real pages in Chromium,
+      # so a broken score card, submission payload or answer key fails the PR.
+      - name: Run the E2E specs
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+          npx playwright test

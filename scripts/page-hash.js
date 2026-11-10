@@ -37,11 +37,13 @@ function stripBlock(html, name) {
   return html.replace(new RegExp(`[ \\t]*<!-- ${name}:START[\\s\\S]*?${name}:END -->\\n?`, 'g'), '');
 }
 
-// The title keyword is generated too (title-keyword.js), so it is left out the
-// same way: adding it must not re-date every exercise page.
+// The shared integrity.js tag was added to every framework page at once on
+// 2026-10-18. It is site-wide plumbing, like the blocks above, so it must not
+// re-date the pages it was added to.
+const INTEGRITY_TAG = /<script src="integrity\.js"><\/script>\n?/g;
+
 function stripGenerated(html) {
-  return GENERATED_BLOCKS.concat(HASH_SKIPPED_BLOCKS).reduce(stripBlock, html)
-    .replace(/<title>([\s\S]*?)<\/title>/i, (_, t) => `<title>${stripKeyword(t.trim())}</title>`);
+  return GENERATED_BLOCKS.concat(HASH_SKIPPED_BLOCKS).reduce(stripBlock, html).replace(INTEGRITY_TAG, '');
 }
 
 function pageHash(html) {
@@ -59,7 +61,7 @@ const today = () => new Date().toISOString().slice(0, 10);
  */
 function datesFor(prev, hash, now) {
   now = now || today();
-  if (!prev) return { d: now, p: now, h: hash };
+  if (!prev) return { d: now, h: hash, p: now }; // same key order as below, or the next build reorders it
   const unchanged = prev.h === hash || !String(prev.h).startsWith(PREFIX);
   const e = { d: unchanged ? prev.d : now, h: hash };
   if (prev.p) e.p = prev.p;

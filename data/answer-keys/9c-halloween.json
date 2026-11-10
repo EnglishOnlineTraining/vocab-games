@@ -1,0 +1,199 @@
+{
+ "unit": "9c-halloween",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "winter",
+     "accept": [
+      "winter"
+     ],
+     "label": "1. Samhain marked the start of …",
+     "why": "The text says Samhain marked the start of winter in the traditional Irish calendar."
+    },
+    "g2": {
+     "correct": "turnips",
+     "accept": [
+      "turnips"
+     ],
+     "label": "2. Early lanterns were made from …",
+     "why": "The first paragraph says people carved turnips into frightening lanterns."
+    },
+    "g3": {
+     "correct": "Irish and Scottish immigrants",
+     "accept": [
+      "Irish and Scottish immigrants"
+     ],
+     "label": "3. Customs travelled with …",
+     "why": "Irish and Scottish immigrants took Halloween customs to North America."
+    },
+    "g4": {
+     "correct": "easier to carve",
+     "accept": [
+      "easier to carve"
+     ],
+     "label": "4. People chose pumpkins because …",
+     "why": "Pumpkins were larger and softer than turnips, so they were easier to carve."
+    },
+    "g5": {
+     "correct": "a mixture of old and new traditions",
+     "accept": [
+      "a mixture of old and new traditions"
+     ],
+     "label": "5. Modern Halloween is …",
+     "why": "The final paragraph directly calls modern Halloween a mixture of old and new traditions."
+    },
+    "g6": {
+     "correct": "meet, talk and share treats",
+     "accept": [
+      "meet, talk and share treats"
+     ],
+     "label": "6. Trick-or-treating brings people together because …",
+     "why": "The text describes neighbours meeting, talking and sharing treats."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "lantern",
+     "accept": [
+      "lantern"
+     ],
+     "label": "1. A candle inside the pumpkin",
+     "why": "A lantern gives light, often through a candle or lamp inside a cover."
+    },
+    "g2": {
+     "correct": "costume",
+     "accept": [
+      "costume"
+     ],
+     "label": "2. Maya wore a vampire …",
+     "why": "A costume is clothing that makes you look like a different person or character."
+    },
+    "g3": {
+     "correct": "treat",
+     "accept": [
+      "treat"
+     ],
+     "label": "3. A small … when we knocked",
+     "why": "A treat is something pleasant, such as sweets given at Halloween."
+    },
+    "g4": {
+     "correct": "carve",
+     "accept": [
+      "carve"
+     ],
+     "label": "4. … a face in your pumpkin",
+     "why": "To carve means to cut a pattern or shape into a hard material."
+    },
+    "g5": {
+     "correct": "spirit",
+     "accept": [
+      "spirit"
+     ],
+     "label": "5. A … returns to the house",
+     "why": "A spirit is the part of a dead person that some stories imagine still exists."
+    },
+    "g6": {
+     "correct": "disguise",
+     "accept": [
+      "disguise"
+     ],
+     "label": "6. His mask was a clever …",
+     "why": "A disguise changes your appearance so other people do not recognise you."
+    },
+    "g7": {
+     "correct": "porch",
+     "accept": [
+      "porch"
+     ],
+     "label": "7. Sweets on the …",
+     "why": "A porch is a covered area at the entrance to a house."
+    },
+    "g8": {
+     "correct": "spooky",
+     "accept": [
+      "spooky"
+     ],
+     "label": "8. The empty house looked …",
+     "why": "Spooky means strange and frightening in a way connected with ghosts."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "decorated",
+     "accept": [
+      "decorated"
+     ],
+     "label": "1. Last Halloween, we …",
+     "why": "Last Halloween is a finished past time, so use the simple past."
+    },
+    "g2": {
+     "correct": "has carved",
+     "accept": [
+      "has carved"
+     ],
+     "label": "2. Three lanterns so far",
+     "why": "So far connects an unfinished period to the present, so use the present perfect."
+    },
+    "g3": {
+     "correct": "organised",
+     "accept": [
+      "organised"
+     ],
+     "label": "3. In 2024, our neighbours …",
+     "why": "In 2024 names a finished past year, so use the simple past."
+    },
+    "g4": {
+     "correct": "have never worn",
+     "accept": [
+      "have never worn"
+     ],
+     "label": "4. Never in my life",
+     "why": "In my life describes experience up to now, so use the present perfect."
+    },
+    "g5": {
+     "correct": "started",
+     "accept": [
+      "started"
+     ],
+     "label": "5. The film … ten minutes ago",
+     "why": "Ago names a finished past time, so use the simple past."
+    },
+    "g6": {
+     "correct": "have lived",
+     "accept": [
+      "have lived"
+     ],
+     "label": "6. In this house since 2020",
+     "why": "Since 2020 continues up to now; this reviews Work Experience with the present perfect."
+    },
+    "g7": {
+     "correct": "told",
+     "accept": [
+      "told"
+     ],
+     "label": "7. When I was younger, I …",
+     "why": "When I was younger describes a finished past period, so use the simple past."
+    },
+    "g8": {
+     "correct": "has left",
+     "accept": [
+      "has left"
+     ],
+     "label": "8. Someone … a bag on our porch",
+     "why": "The visible result matters now and no finished past time is given, so use the present perfect."
+    }
+   }
+  }
+ }
+}

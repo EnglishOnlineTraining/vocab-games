@@ -1,7 +1,7 @@
 {
  "unit": "7g-british-wildlife",
  "sections": {
-  "exB": {
+  "ex2": {
    "prefix": "exB-",
    "multi": false,
    "gaps": {
@@ -69,7 +69,8 @@
      "label": "8. Hedgehog habitats are getting ___",
      "why": "Habitats shrink as towns and cities grow and take over the space."
     }
-   }
+   },
+   "scoreKey": "exB"
   }
  }
 }

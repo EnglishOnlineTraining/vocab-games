@@ -394,24 +394,23 @@ rootBlocks.push('  <section class="year-block" id="years">\n'
 const msaUnits = exercises.filter(e => String(e.year) === 'msa' && e.file !== 'msa-review.html').length;
 const msaCards = [
   rootCard('msa-activities.html', '🎧', 'MSA English',
-    msaUnits ? 'Full-skills exam practice: listening, reading &amp; writing' : 'Coming soon',
+    msaUnits ? de('Mittlerer Schulabschluss') + ': listening, reading &amp; writing exam practice' : 'Coming soon',
     rootCount(msaUnits, 'Exercise'), msaUnits > 0)
 ];
 if (fs.existsSync(path.join(ROOT, 'msa-review.html'))) {
-  msaCards.push(rootCard('msa-review.html', '🔁', 'Mixed Revision',
+  msaCards.push(rootCard('msa-review.html', '🔁', 'MSA Mixed Revision',
     'Mixed questions revisiting earlier MSA units', 'Revision', true));
 }
-rootBlocks.push(rootBlock('MSA — ' + de('Mittlerer Schulabschluss'), '🎧', msaCards));
-
-// IELTS Academic — self-study exam practice, its own block like MSA and Abitur.
+// MSA and IELTS share one block: a block per exam put a heading over a single
+// card with the same icon and name ("🎧 MSA" over "🎧 MSA English").
 const ieltsUnits = countFor('ielts', null);
-rootBlocks.push(rootBlock('IELTS Academic', '🎯', [
+rootBlocks.push(rootBlock('Exam practice: MSA &amp; IELTS', '', msaCards.concat([
   rootCard('ielts-activities.html', '🎯', 'IELTS Academic',
     ieltsUnits ? 'Reading question types and Writing Task 1 &amp; 2 practice' : 'Coming soon',
     rootCount(ieltsUnits, 'Exercise'), ieltsUnits > 0),
   rootCard('ielts-vocabulary-glossary.html', '📖', 'IELTS Vocabulary Glossary',
     'Searchable glossary &amp; matching practice — 85 terms', '1 Resource', true)
-]));
+])));
 
 // Abitur — its own block, split by the four written task types.
 const abiturTotal = countFor('abitur', null);
@@ -426,7 +425,7 @@ ABITUR_TASKS.forEach(([slug, icon, title, meta, page]) => {
   const href = page && fs.existsSync(path.join(ROOT, page)) ? page : 'abitur-activities.html#' + slug;
   abiturCards.push(rootCard(href, icon, title, meta, rootCount(n, 'Pack'), true));
 });
-rootBlocks.push(rootBlock('Abitur', '🎓', abiturCards));
+rootBlocks.push(rootBlock('Abitur', '', abiturCards));
 
 // Counted from data/topics.json, not from themen/ on disk. build-topic-pages.js
 // writes exactly one page per topic (plus index.html), so the two agree — but

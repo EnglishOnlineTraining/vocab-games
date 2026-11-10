@@ -6,25 +6,25 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "has to",
+     "correct": "is protected",
      "accept": [
-      "has to"
+      "is protected"
      ],
-     "label": "1. Everyone"
+     "label": "1. Multiculturalism"
     },
     "g2": {
-     "correct": "company",
+     "correct": "gap",
      "accept": [
-      "company"
+      "gap"
      ],
-     "label": "2. work in a real"
+     "label": "2. take a"
     },
     "g3": {
-     "correct": "lawyer",
+     "correct": "platypus",
      "accept": [
-      "lawyer"
+      "platypus"
      ],
-     "label": "3. he became a"
+     "label": "3. It lays eggs"
     },
     "g4": {
      "correct": "drink",
@@ -34,32 +34,32 @@
      "label": "4. if you"
     },
     "g5": {
-     "correct": "carpenter",
-     "accept": [
-      "carpenter"
-     ],
-     "label": "5. Builds things out of wood"
-    },
-    "g6": {
      "correct": "wrote",
      "accept": [
       "wrote"
      ],
-     "label": "6. He"
+     "label": "5. He"
+    },
+    "g6": {
+     "correct": "lawyer",
+     "accept": [
+      "lawyer"
+     ],
+     "label": "6. he became a"
     },
     "g7": {
-     "correct": "did they",
+     "correct": "carpenter",
      "accept": [
-      "did they"
+      "carpenter"
      ],
-     "label": "7. Nobody called,"
+     "label": "7. Builds things out of wood"
     },
     "g8": {
-     "correct": "gap",
+     "correct": "released",
      "accept": [
-      "gap"
+      "released"
      ],
-     "label": "8. take a"
+     "label": "8. A farmer"
     }
    }
   },
@@ -68,60 +68,60 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "is protected",
+     "correct": "has to",
      "accept": [
-      "is protected"
+      "has to"
      ],
-     "label": "1. Multiculturalism"
+     "label": "1. Everyone"
     },
     "g2": {
+     "correct": "did they",
+     "accept": [
+      "did they"
+     ],
+     "label": "2. Nobody called,"
+    },
+    "g3": {
      "correct": "was",
      "accept": [
       "was"
      ],
-     "label": "2. she said she"
+     "label": "3. she said she"
     },
-    "g3": {
+    "g4": {
+     "correct": "company",
+     "accept": [
+      "company"
+     ],
+     "label": "4. work in a real"
+    },
+    "g5": {
      "correct": "to let",
      "accept": [
       "to let"
      ],
-     "label": "3. My parents refuse"
-    },
-    "g4": {
-     "correct": "shouldn't",
-     "accept": [
-      "shouldn't"
-     ],
-     "label": "4. You"
-    },
-    "g5": {
-     "correct": "punctual",
-     "accept": [
-      "punctual"
-     ],
-     "label": "5. always be"
+     "label": "5. My parents refuse"
     },
     "g6": {
-     "correct": "whose",
+     "correct": "disguise",
      "accept": [
-      "whose"
+      "disguise"
      ],
-     "label": "6. families"
+     "label": "6. His mask was a clever …"
     },
     "g7": {
-     "correct": "were",
+     "correct": "were invited",
      "accept": [
-      "were"
+      "were invited"
      ],
-     "label": "7. if I"
+     "label": "7. The new citizens"
     },
     "g8": {
-     "correct": "travel agent",
+     "correct": "tests",
      "accept": [
-      "travel agent"
+      "tests"
      ],
-     "label": "8. Books holidays and flights"
+     "label": "8. free"
     }
    }
   },
@@ -130,60 +130,60 @@
    "multi": false,
    "gaps": {
     "g1": {
+     "correct": "leaves",
+     "accept": [
+      "leaves"
+     ],
+     "label": "1. Eat only eucalyptus"
+    },
+    "g2": {
+     "correct": "were",
+     "accept": [
+      "were"
+     ],
+     "label": "2. if I"
+    },
+    "g3": {
      "correct": "didn't use to",
      "accept": [
       "didn't use to"
      ],
-     "label": "1. Students"
+     "label": "3. Students"
     },
-    "g2": {
+    "g4": {
+     "correct": "whose",
+     "accept": [
+      "whose"
+     ],
+     "label": "4. families"
+    },
+    "g5": {
+     "correct": "travel agent",
+     "accept": [
+      "travel agent"
+     ],
+     "label": "5. Books holidays and flights"
+    },
+    "g6": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "6. Coral can die when the ocean is too warm"
+    },
+    "g7": {
+     "correct": "shouldn't",
+     "accept": [
+      "shouldn't"
+     ],
+     "label": "7. You"
+    },
+    "g8": {
      "correct": "can they",
      "accept": [
       "can they"
      ],
-     "label": "2. They can't come tonight,"
-    },
-    "g3": {
-     "correct": "tests",
-     "accept": [
-      "tests"
-     ],
-     "label": "3. free"
-    },
-    "g4": {
-     "correct": "were invited",
-     "accept": [
-      "were invited"
-     ],
-     "label": "4. The new citizens"
-    },
-    "g5": {
-     "correct": "was posting",
-     "accept": [
-      "was posting"
-     ],
-     "label": "5. he"
-    },
-    "g6": {
-     "correct": "watching",
-     "accept": [
-      "watching"
-     ],
-     "label": "6. I really enjoy"
-    },
-    "g7": {
-     "correct": "have to",
-     "accept": [
-      "have to"
-     ],
-     "label": "7. Volunteers"
-    },
-    "g8": {
-     "correct": "interview",
-     "accept": [
-      "interview"
-     ],
-     "label": "8. they invite you to an"
+     "label": "8. They can't come tonight,"
     }
    }
   }

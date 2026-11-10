@@ -36,3 +36,8 @@ Not lazy about: understanding the problem (read it fully and trace the real flow
 - Never write unit tests after you write code.
 - Highly prefer E2E tests as the sole testing mechanism. Use them to verify complex features work. At the end of E2E tests, produce a verifiable and repeatable artifact.
 - If you must test a system in isolation, first write down all the ways it could fail, then write the code.
+
+## Housekeeping
+
+- Session branches are deleted right after their PR merges — the PR is the record, the branch is not.
+- Before deleting any branch with unique commits, verify the work is actually on main (diff the changed files' blobs, not just the commit titles). If it isn't, cherry-pick or flag it — never delete unverified work.

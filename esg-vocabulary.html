@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="30 ESG terms in plain English: sustainability, ESG investing, governance, reporting and greenwashing. Free glossary and PDF for English learners."/>
+<title>ESG Vocabulary — 30-Term Glossary</title>
+<link rel="canonical" href="https://activities.englishonline.training/esg-vocabulary.html">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1a3a5c;--blue-mid:#1a6eb5;--blue-lt:#e8f2fb;
+  --gold:#c9a227;--gold-lt:#f5e6b0;--teal:#2b7a78;
+  --dark:#1d2b3a;--mid:#4a5568;--muted:#6b7a8d;--border:#dce3ec;--bg:#f0f8ff;--white:#ffffff;
+  --brand-title:#1a3a5c;--hero-from:#12314f;--hero-to:#1a3a5c;
+  --radius:12px;--shadow:0 2px 16px rgba(26,58,92,.1);--shadow-hover:0 4px 20px rgba(26,110,181,.18);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --blue-lt:#14324c;--dark:#e7eef6;--mid:#b3c0cf;--muted:#8a99aa;--border:#28394d;
+    --bg:#0e1620;--white:#16212e;--brand-title:#cfe0f4;--blue-mid:#5aa8f0;
+    --hero-from:#0b1c30;--hero-to:#122a41;
+    --shadow:0 2px 18px rgba(0,0,0,.45);--shadow-hover:0 6px 26px rgba(0,0,0,.6);
+  }
+}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;padding-bottom:clamp(2.5rem,6vw,4rem);line-height:1.5;-webkit-font-smoothing:antialiased}
+.site-header{position:relative;background:linear-gradient(160deg,var(--hero-from),var(--hero-to));color:#fff;padding:clamp(1.8rem,5vw,2.5rem) 1rem clamp(1.6rem,4vw,2rem);text-align:center;overflow:hidden}
+.site-header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--teal))}
+.site-header .logo{font-size:.8rem;font-weight:700;color:var(--gold-lt);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.6rem;display:block;text-decoration:none}
+.site-header h1{font-size:clamp(1.5rem,4.5vw,2.3rem);font-weight:800;line-height:1.12;margin-bottom:.4rem}
+.site-header p{color:rgba(255,255,255,.85);font-size:clamp(.9rem,2.2vw,1rem);max-width:36rem;margin:0 auto}
+.container{max-width:880px;margin:0 auto;padding:clamp(1.4rem,4vw,2rem) 1rem}
+.prose{margin-bottom:1.5rem;font-size:.95rem;line-height:1.65;color:var(--mid)}
+.prose p{margin-bottom:.9rem}
+.prose a{color:var(--blue-mid)}
+.actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.75rem}
+.btn{display:inline-block;padding:.7rem 1.3rem;border-radius:var(--radius);text-decoration:none;font-weight:600;font-size:.92rem;transition:background .2s,transform .15s}
+.btn-primary{background:var(--teal);color:#fff}
+.btn-primary:hover{background:#1f5a57;transform:translateY(-2px)}
+.btn-secondary{background:var(--white);color:var(--brand-title);border:1.5px solid var(--border)}
+.btn-secondary:hover{border-color:var(--blue-mid);transform:translateY(-2px)}
+.toc{font-size:.85rem;color:var(--muted);margin-bottom:1rem;line-height:1.9}
+.toc a{color:var(--blue-mid);text-decoration:none}
+.toc a:hover{text-decoration:underline}
+.search{position:sticky;top:0;z-index:5;background:var(--bg);padding:.6rem 0 .4rem;margin-bottom:.5rem}
+.search label{display:block;font-size:.8rem;font-weight:700;color:var(--muted);margin-bottom:.3rem}
+.search input{width:100%;border:2px solid var(--border);border-radius:var(--radius);padding:.65rem .9rem;font-size:1rem;font-family:inherit;background:var(--white);color:var(--dark)}
+.search input:focus{outline:none;border-color:var(--blue-mid)}
+.search-count{font-size:.8rem;color:var(--muted);margin-top:.35rem;min-height:1.2em}
+.group{margin-bottom:1.5rem}
+.group-heading{font-size:1.15rem;font-weight:800;color:var(--brand-title);margin:1.25rem 0 .75rem;scroll-margin-top:6rem}
+.group-count{font-weight:600;color:var(--muted);font-size:.9rem}
+.gloss{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:.6rem}
+.entry{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:.8rem 1rem;box-shadow:var(--shadow)}
+.entry dt{font-weight:700;color:var(--brand-title);margin-bottom:.2rem}
+.entry dd{font-size:.88rem;color:var(--mid);line-height:1.5}
+.entry[hidden],.group[hidden]{display:none}
+.no-results{display:none;text-align:center;color:var(--muted);padding:2rem 1rem}
+.cards-grid{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:.8rem;margin-bottom:2rem}
+.cards-grid li{display:flex}
+.activity-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);border:1.5px solid var(--border);padding:1.1rem 1.2rem;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:.35rem;width:100%;transition:border-color .2s,box-shadow .2s,transform .15s}
+.activity-card:hover,.activity-card:focus-visible{border-color:var(--blue-mid);box-shadow:var(--shadow-hover);transform:translateY(-2px)}
+.activity-card:focus-visible{outline:3px solid var(--blue-mid);outline-offset:2px}
+.card-icon{font-size:1.4rem;line-height:1}
+.card-title{font-size:.98rem;font-weight:700;color:var(--brand-title)}
+.card-meta{font-size:.8rem;color:var(--muted)}
+.site-footer{text-align:center;font-size:.8rem;color:var(--muted);margin-top:clamp(2rem,5vw,3rem);padding:0 1rem}
+.site-footer a{color:var(--blue-mid)}
+@media (prefers-reduced-motion:reduce){.btn,.activity-card{transition:none}}
+@media print{.search,.actions,.cards-grid,.site-footer{display:none}.entry{box-shadow:none;break-inside:avoid}}
+</style>
+<!-- HEAD:START — generated by scripts/build-head.js, do not edit by hand -->
+<script src="consent.js" defer></script>
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#1a3a5c">
+<meta name="text-scale" content="scale">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EnglishOnline.training">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="ESG Vocabulary — 30-Term Glossary">
+<meta property="og:description" content="30 ESG terms in plain English: sustainability, ESG investing, governance, reporting and greenwashing. Free glossary and PDF for English learners.">
+<meta property="og:url" content="https://activities.englishonline.training/esg-vocabulary.html">
+<meta property="og:image" content="https://activities.englishonline.training/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="englishonline.training — kostenlose interaktive Englisch-Übungen für Klasse 7–10, MSA, Abitur, Universität, Business und IT English">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@engontraining">
+<style id="eol-tap-style">.top-bar a,.header-nav a,.app-header a,nav.breadcrumb a{padding-block:.6rem;margin-block:-.6rem}.eol-crumb a,.eol-crumbs a,.eol-footer a,.site-footer a{padding-block:.35rem;margin-block:-.35rem}</style>
+<style id="eol-skip-style">.eol-skip{position:absolute;left:.5rem;top:-3rem;z-index:1000;background:var(--gold,#c9a227);color:#1a1a1a;font-weight:700;padding:.5rem 1rem;border-radius:8px;text-decoration:none;transition:top .2s;font-family:'Segoe UI',system-ui,sans-serif}.eol-skip:focus{top:.5rem}@media(prefers-reduced-motion:reduce){.eol-skip{transition:none}}</style>
+<style id="eol-crumb-style">
+.eol-crumb{max-width:760px;margin:0 auto;padding:.5rem 1rem;font-size:.76rem;color:var(--muted,#6b7a8d)}
+.eol-crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.1rem 0}
+.eol-crumb li+li::before{content:"\203A";opacity:.5;margin:0 .35rem}
+.eol-crumb a{color:var(--teal,#2b7a78);text-decoration:none}
+.eol-crumb a:hover{text-decoration:underline}
+</style>
+<style id="eol-faq-style">
+.eol-faq{margin:2.5rem 0 0}
+.eol-faq h2{font-size:1.15rem;color:var(--blue,#1a3a5c);margin:0 0 1rem}
+.eol-faq dt{font-weight:700;color:var(--blue,#1a3a5c);margin-top:1rem}
+.eol-faq dt:first-of-type{margin-top:0}
+.eol-faq dd{margin:.3rem 0 0;padding-bottom:.9rem;border-bottom:1px dashed var(--border,#dce3ec);line-height:1.6}
+.eol-faq dd:last-child{border-bottom:none}
+@media (prefers-color-scheme:dark){
+.eol-faq h2,.eol-faq dt{color:var(--gold-lt,#f5e6b0)}
+.eol-faq dd{border-bottom-color:var(--border,#2f3d4d)}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["EducationalOrganization","LocalBusiness"],"@id":"https://englishonline.training/#organization","name":"EnglishOnline.training","url":"https://englishonline.training/"},{"@type":"Person","@id":"https://activities.englishonline.training/#shaun","name":"Shaun Trezise","url":"https://englishonline.training/"},{"@type":"WebSite","@id":"https://activities.englishonline.training/#website","url":"https://activities.englishonline.training/","name":"EnglishOnline.training — kostenlose Englisch-Übungen","description":"Free interactive English exercises with instant feedback, no sign-up required.","inLanguage":["en","de"],"publisher":{"@id":"https://englishonline.training/#organization"},"isAccessibleForFree":true},{"@type":"WebPage","@id":"https://activities.englishonline.training/esg-vocabulary.html#webpage","name":"ESG Vocabulary — 30-Term Glossary","description":"30 ESG terms in plain English: sustainability, ESG investing, governance, reporting and greenwashing. Free glossary and PDF for English learners.","url":"https://activities.englishonline.training/esg-vocabulary.html","inLanguage":"en","isPartOf":{"@id":"https://activities.englishonline.training/#website"},"publisher":{"@id":"https://englishonline.training/#organization"},"author":{"@id":"https://activities.englishonline.training/#shaun"},"isAccessibleForFree":true},{"@type":"BreadcrumbList","@id":"https://activities.englishonline.training/esg-vocabulary.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://activities.englishonline.training/"},{"@type":"ListItem","position":2,"name":"Übungen","item":"https://activities.englishonline.training/activities.html"},{"@type":"ListItem","position":3,"name":"ESG Vocabulary — 30-Term Glossary","item":"https://activities.englishonline.training/esg-vocabulary.html"}]},{"@type":"FAQPage","@id":"https://activities.englishonline.training/esg-vocabulary.html#faq","mainEntity":[{"@type":"Question","name":"What does ESG stand for?","acceptedAnswer":{"@type":"Answer","text":"Environmental, social and governance. The three areas are used to judge how responsibly a company is run, and by investors who want to put money into responsible companies."}},{"@type":"Question","name":"What does the ESG glossary cover?","acceptedAnswer":{"@type":"Answer","text":"30 English terms in plain English, grouped by topic: core ideas such as sustainability and the circular economy, ESG investing and finance, and company practice and reporting."}},{"@type":"Question","name":"Can I download the glossary as a PDF?","acceptedAnswer":{"@type":"Answer","text":"Yes. The original vocabulary list is available as a free PDF from the link at the top of the page, so you can print it or keep it on your phone."}},{"@type":"Question","name":"What is greenwashing?","acceptedAnswer":{"@type":"Answer","text":"Making false or exaggerated claims about a product's environmental benefits to attract customers who care about the environment."}}]}]}</script>
+<!-- HEAD:END -->
+</head>
+<body>
+<!-- SKIP:START — generated by scripts/build-head.js, do not edit by hand -->
+<a class="eol-skip" href="#main">Skip to content</a>
+<!-- SKIP:END -->
+
+<header class="site-header">
+  <a class="logo" href="https://englishonline.training">EnglishOnline.training</a>
+  <h1>ESG Vocabulary</h1>
+  <p>30 English words for environmental, social and governance topics, each explained in plain English.</p>
+</header>
+<!-- CRUMB:START — generated by scripts/build-head.js, do not edit by hand -->
+<nav class="eol-crumb" aria-label="Breadcrumb"><ol><li><a href="./">Start</a></li><li><a href="activities.html">Übungen</a></li><li aria-current="page">ESG Vocabulary — 30-Term Glossary</li></ol></nav>
+<!-- CRUMB:END -->
+
+<main class="container" id="main">
+
+  <section class="prose">
+    <p>ESG stands for environmental, social and governance: the three areas investors and companies use to judge how responsibly a business is run. This glossary is for anyone who reads, writes or talks about sustainability at work in English, from sustainability reports to investor meetings. It covers the core ideas, ESG investing and finance, and company practice and reporting.</p>
+    <p>The original list is also available as a PDF to print or keep on your phone.</p>
+  </section>
+
+  <div class="actions">
+    <a class="btn btn-primary" href="https://englishonline.training/wp-content/uploads/2023/04/esg-vocabulary.pdf">Download the PDF</a>
+    <a class="btn btn-secondary" href="business-activities.html">Business English exercises</a>
+  </div>
+
+  <nav class="toc" aria-label="Topics"><a href="#concepts">Core ideas</a> · <a href="#investing">Investing and finance</a> · <a href="#governance">Company practice and reporting</a></nav>
+
+  <div class="search" role="search">
+    <label for="gloss-search">Search the glossary</label>
+    <input id="gloss-search" type="search" placeholder="Type a word, e.g. carbon, greenwashing, stakeholder…" autocomplete="off">
+    <div class="search-count" id="search-count" aria-live="polite"></div>
+  </div>
+
+  <section class="group" id="concepts" aria-labelledby="h-concepts">
+    <h2 class="group-heading" id="h-concepts">Core ideas <span class="group-count">(10)</span></h2>
+    <dl class="gloss">
+      <div class="entry"><dt>carbon footprint</dt><dd>The amount of greenhouse gas that a person, product or company releases, for example through transport and energy use.</dd></div>
+      <div class="entry"><dt>circular economy</dt><dd>An economic system that cuts waste and makes the most of resources by reusing and recycling materials.</dd></div>
+      <div class="entry"><dt>climate change</dt><dd>The long-term shift in weather patterns: higher temperatures, more frequent extreme weather and rising sea levels.</dd></div>
+      <div class="entry"><dt>diversity, equity and inclusion (DEI)</dt><dd>Respecting and valuing differences such as race, gender, age, ability and sexual orientation, and making sure everyone is treated fairly at work and in society.</dd></div>
+      <div class="entry"><dt>environmental justice</dt><dd>Fair treatment and real involvement of all people, whatever their race, origin or income, in making and enforcing environmental laws and policies.</dd></div>
+      <div class="entry"><dt>human rights</dt><dd>The basic rights and freedoms every person has, such as the right to life, liberty and security, and freedom from discrimination and torture.</dd></div>
+      <div class="entry"><dt>renewable energy</dt><dd>Energy from sources that are naturally replaced, such as solar, wind and hydropower.</dd></div>
+      <div class="entry"><dt>social responsibility</dt><dd>A company's duty to act fairly towards its stakeholders: employees, customers, communities and the environment.</dd></div>
+      <div class="entry"><dt>sustainability</dt><dd>The ability to meet today's needs without harming the environment, society or the economy for future generations.</dd></div>
+      <div class="entry"><dt>sustainable development goals (SDGs)</dt><dd>17 goals set by the United Nations to build a more sustainable future by 2030, including ending poverty, reducing inequality and fighting climate change.</dd></div>
+    </dl>
+  </section>
+  <section class="group" id="investing" aria-labelledby="h-investing">
+    <h2 class="group-heading" id="h-investing">Investing and finance <span class="group-count">(8)</span></h2>
+    <dl class="gloss">
+      <div class="entry"><dt>climate risk</dt><dd>The possible financial and non-financial harm that climate change can cause to a company or an investment portfolio.</dd></div>
+      <div class="entry"><dt>ESG investing</dt><dd>Investing that looks at a company's environmental, social and governance practices as well as its financial results.</dd></div>
+      <div class="entry"><dt>governance risk</dt><dd>The possible harm caused by poor corporate governance, such as fraud, corruption and conflicts of interest.</dd></div>
+      <div class="entry"><dt>green bonds</dt><dd>Bonds sold to pay for projects with environmental or climate benefits, such as renewable energy or energy-saving work.</dd></div>
+      <div class="entry"><dt>impact investing</dt><dd>Investing in companies or projects that aim to create a measurable social or environmental benefit as well as a financial return.</dd></div>
+      <div class="entry"><dt>socially responsible investing (SRI)</dt><dd>Investing only in companies that meet ethical or social standards, for example avoiding tobacco, alcohol or weapons.</dd></div>
+      <div class="entry"><dt>stakeholder capitalism</dt><dd>A view of business that creates value for all stakeholders (employees, customers, communities and the environment), not just shareholders' profits.</dd></div>
+      <div class="entry"><dt>sustainable investing</dt><dd>Putting money into companies with sustainable business practices and a good record on environmental, social and governance issues.</dd></div>
+    </dl>
+  </section>
+  <section class="group" id="governance" aria-labelledby="h-governance">
+    <h2 class="group-heading" id="h-governance">Company practice and reporting <span class="group-count">(12)</span></h2>
+    <dl class="gloss">
+      <div class="entry"><dt>carbon disclosure</dt><dd>Reporting a company's carbon emissions and other environmental figures to investors, customers and regulators.</dd></div>
+      <div class="entry"><dt>corporate governance</dt><dd>The rules and processes that make sure a company is run in an ethical, responsible way, including board oversight, executive pay and shareholder rights.</dd></div>
+      <div class="entry"><dt>corporate social responsibility (CSR)</dt><dd>Voluntary actions a company takes to benefit society and the environment, often going beyond what the law requires.</dd></div>
+      <div class="entry"><dt>environmental impact assessment (EIA)</dt><dd>A study of the likely effects of a project on the environment, done before the project is approved or started.</dd></div>
+      <div class="entry"><dt>environmental management system (EMS)</dt><dd>A structured way of managing a company's effect on the environment, with policies, procedures and performance measures.</dd></div>
+      <div class="entry"><dt>greenwashing</dt><dd>Making false or exaggerated claims about a product's environmental benefits to attract customers who care about the environment.</dd></div>
+      <div class="entry"><dt>impact measurement and management</dt><dd>Assessing, tracking and reporting the social and environmental effects of a company's activities.</dd></div>
+      <div class="entry"><dt>social entrepreneurship</dt><dd>Using business methods to create lasting social or environmental change.</dd></div>
+      <div class="entry"><dt>social impact</dt><dd>The positive effects a company's activities have on society, such as creating jobs, developing communities and reducing poverty.</dd></div>
+      <div class="entry"><dt>stakeholder engagement</dt><dd>Involving stakeholders such as customers, employees and local communities in a company's decisions.</dd></div>
+      <div class="entry"><dt>supply chain sustainability</dt><dd>Building environmental, social and governance standards into a company's supply chain, including responsible sourcing of raw materials and fair treatment of workers.</dd></div>
+      <div class="entry"><dt>water stewardship</dt><dd>Using and managing water responsibly, including protecting water quality and using less of it.</dd></div>
+    </dl>
+  </section>
+
+  <p class="no-results" id="no-results">No terms match your search.</p>
+
+  <h2 class="group-heading">Keep practising</h2>
+  <ul class="cards-grid">
+    <li><a class="activity-card" href="business-activities.html">
+      <span class="card-icon">💼</span>
+      <span class="card-title">All Business English exercises</span>
+      <span class="card-meta">Emails, meetings, negotiations and more, free and without sign-up.</span>
+    </a></li>
+    <li><a class="activity-card" href="https://englishonline.training/business-english-vocabulary-sets/">
+      <span class="card-icon">📚</span>
+      <span class="card-title">Business English vocabulary sets</span>
+      <span class="card-meta">More vocabulary lists for work, with flashcards.</span>
+    </a></li>
+    <li><a class="activity-card" href="commercial-real-estate-vocabulary.html">
+      <span class="card-icon">🏬</span>
+      <span class="card-title">Commercial Real Estate Vocabulary</span>
+      <span class="card-meta">A glossary of leases, loans, returns and legal words for commercial property.</span>
+    </a></li>
+    <li><a class="activity-card" href="https://englishonline.training/business-english/">
+      <span class="card-icon">🎓</span>
+      <span class="card-title">Business English training</span>
+      <span class="card-meta">Paid courses for companies, run by the site owner.</span>
+    </a></li>
+  </ul>
+
+<!-- FAQ:START — generated by scripts/build-head.js from scripts/page-faq.js, do not edit by hand -->
+<section class="eol-faq" lang="en" aria-labelledby="faq-heading">
+  <h2 id="faq-heading">Frequently Asked Questions</h2>
+  <dl>
+    <dt>What does ESG stand for?</dt>
+    <dd>Environmental, social and governance. The three areas are used to judge how responsibly a company is run, and by investors who want to put money into responsible companies.</dd>
+    <dt>What does the ESG glossary cover?</dt>
+    <dd>30 English terms in plain English, grouped by topic: core ideas such as sustainability and the circular economy, ESG investing and finance, and company practice and reporting.</dd>
+    <dt>Can I download the glossary as a PDF?</dt>
+    <dd>Yes. The original vocabulary list is available as a free PDF from the link at the top of the page, so you can print it or keep it on your phone.</dd>
+    <dt>What is greenwashing?</dt>
+    <dd>Making false or exaggerated claims about a product's environmental benefits to attract customers who care about the environment.</dd>
+  </dl>
+</section>
+<!-- FAQ:END -->
+</main>
+
+<footer class="site-footer">
+  <a href="https://englishonline.training">EnglishOnline.training</a> · <a href="activities.html">All exercises</a> · <a href="mailto:learn@englishonline.training">Contact</a>
+</footer>
+
+<script>
+(function () {
+  var input = document.getElementById('gloss-search');
+  var count = document.getElementById('search-count');
+  var none = document.getElementById('no-results');
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.group'));
+  function filter() {
+    var q = input.value.trim().toLowerCase();
+    var shown = 0;
+    groups.forEach(function (g) {
+      var visible = 0;
+      g.querySelectorAll('.entry').forEach(function (e) {
+        var hit = !q || e.textContent.toLowerCase().indexOf(q) !== -1;
+        e.hidden = !hit;
+        if (hit) visible++;
+      });
+      g.hidden = visible === 0;
+      shown += visible;
+    });
+    none.style.display = shown === 0 ? 'block' : 'none';
+    count.textContent = q ? shown + (shown === 1 ? ' term matches' : ' terms match') : '';
+  }
+  input.addEventListener('input', filter);
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { input.value = ''; filter(); }
+  });
+})();
+</script>
+</body>
+</html>

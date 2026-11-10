@@ -1,0 +1,159 @@
+{
+ "unit": "be-decision-making",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Because finishing late would mean paying a penalty",
+     "accept": [
+      "Because finishing late would mean paying a penalty"
+     ],
+     "label": "1. Why does time saved carry the highest weighting?",
+     "why": "The email says a late handover would trigger the £5,000-a-week penalty, so time saved carries 40%."
+    },
+    "g2": {
+     "correct": "The health and safety manager",
+     "accept": [
+      "The health and safety manager"
+     ],
+     "label": "2. Who approves longer working hours on site?",
+     "why": "The email says the health and safety manager has to approve any plan that increases working hours on site."
+    },
+    "g3": {
+     "correct": "It saves the most time, but it is also the most expensive",
+     "accept": [
+      "It saves the most time, but it is also the most expensive"
+     ],
+     "label": "3. Trade-off with the second subcontractor?",
+     "why": "The email names a trade-off between speed and cost: it saves the most time but is the most expensive option."
+    },
+    "g4": {
+     "correct": "Getting quotes from two subcontractors before making a final decision",
+     "accept": [
+      "Getting quotes from two subcontractors before making a final decision"
+     ],
+     "label": "4. What does Daniel recommend?",
+     "why": "Daniel recommends getting quotes from two steelwork subcontractors this week before committing."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "criteria",
+     "accept": [
+      "criteria"
+     ],
+     "label": "1. agree on the ___ to judge the tenders",
+     "why": "Criteria are the standards you use to judge or compare options."
+    },
+    "g2": {
+     "correct": "stakeholders",
+     "accept": [
+      "stakeholders"
+     ],
+     "label": "2. client, architect and residents are all ___",
+     "why": "Stakeholders are the people or groups a project or decision affects."
+    },
+    "g3": {
+     "correct": "shortlist",
+     "accept": [
+      "shortlist"
+     ],
+     "label": "3. only three made it onto the ___",
+     "why": "A shortlist is the small group of best options chosen from a longer list."
+    },
+    "g4": {
+     "correct": "weighting",
+     "accept": [
+      "weighting"
+     ],
+     "label": "4. gave safety a high ___ in the matrix",
+     "why": "In a decision matrix, the weighting shows how important a criterion is compared with the others."
+    },
+    "g5": {
+     "correct": "trade-off",
+     "accept": [
+      "trade-off"
+     ],
+     "label": "5. the ___ we accept to stay on budget",
+     "why": "A trade-off is something you give up (time) to get something else (a lower cost)."
+    },
+    "g6": {
+     "correct": "consensus",
+     "accept": [
+      "consensus"
+     ],
+     "label": "6. the team finally reached a ___",
+     "why": "You reach a consensus when everyone in a group agrees."
+    },
+    "g7": {
+     "correct": "deadline",
+     "accept": [
+      "deadline"
+     ],
+     "label": "7. 15 November is a ___ we cannot miss",
+     "why": "A deadline is the latest date by which something must be finished."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "has to",
+     "accept": [
+      "has to"
+     ],
+     "label": "1. Everyone on site ___ wear a hard hat (legal requirement)",
+     "why": "‘Has to’ expresses an obligation that comes from a rule or law."
+    },
+    "g2": {
+     "correct": "should",
+     "accept": [
+      "should"
+     ],
+     "label": "2. We ___ check the forecast (sensible idea)",
+     "why": "‘Should’ gives advice or a recommendation."
+    },
+    "g3": {
+     "correct": "mustn't",
+     "accept": [
+      "mustn't"
+     ],
+     "label": "3. Workers ___ walk under the crane (dangerous)",
+     "why": "‘Mustn't’ means something is not allowed. ‘Don't have to’ would mean it is optional."
+    },
+    "g4": {
+     "correct": "might",
+     "accept": [
+      "might"
+     ],
+     "label": "4. The new subcontractor ___ be faster (we won't know yet)",
+     "why": "‘Might’ expresses a possibility we are not sure about."
+    },
+    "g5": {
+     "correct": "ought to",
+     "accept": [
+      "ought to"
+     ],
+     "label": "5. If the weather stays dry, the frame ___ be finished",
+     "why": "‘Ought to’ expresses what we expect to happen if things go to plan."
+    },
+    "g6": {
+     "correct": "don't have to",
+     "accept": [
+      "don't have to"
+     ],
+     "label": "6. We ___ order more bricks (there are enough)",
+     "why": "‘Don't have to’ means it is not necessary. ‘Mustn't’ would mean it is forbidden."
+    }
+   }
+  }
+ }
+}

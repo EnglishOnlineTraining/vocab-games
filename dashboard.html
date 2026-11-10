@@ -182,6 +182,7 @@ body{
   cursor:pointer;font-family:inherit;
 }
 .export-btn:hover{filter:brightness(1.15)}
+.reset-btn{margin-top:.6rem;background:none;color:var(--muted);border:1.5px solid var(--border)}
 .export-result{
   margin-top:.5rem;padding:.5rem;font-size:.72rem;
   background:var(--blue-lt);border-radius:6px;color:var(--dark);
@@ -216,6 +217,7 @@ body{
 <meta property="og:image:alt" content="englishonline.training — kostenlose interaktive Englisch-Übungen für Klasse 7–10, MSA, Abitur, Universität, Business und IT English">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@engontraining">
+<style id="eol-tap-style">.top-bar a,.header-nav a,.app-header a,nav.breadcrumb a{padding-block:.6rem;margin-block:-.6rem}.eol-crumb a,.eol-crumbs a,.eol-footer a,.site-footer a{padding-block:.35rem;margin-block:-.35rem}</style>
 <style id="eol-crumb-style">
 .eol-crumb{max-width:760px;margin:0 auto;padding:.5rem 1rem;font-size:.76rem;color:var(--muted,#6b7a8d)}
 .eol-crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.1rem 0}
@@ -232,7 +234,7 @@ body{
 <header class="site-header">
   <a class="logo" href="https://englishonline.training">englishonline.training</a>
   <h1>My Progress</h1>
-  <p class="tagline">Track your exercises, streaks, and scores.</p>
+  <p class="tagline">Track your exercises, streaks, and scores. Saved on this device only — nothing is sent.</p>
   <nav class="header-nav">
     <a href="activities.html">All Exercises</a>
     <a href="themen/index.html">Grammar Topics</a>
@@ -245,6 +247,12 @@ body{
 
 <main id="main" class="wrap">
   <div id="dashboard-content"></div>
+  <section class="panel export-section" aria-labelledby="local-data-heading">
+    <h2 id="local-data-heading">Using a shared device?</h2>
+    <p style="font-size:.78rem;color:var(--muted);margin-bottom:.6rem">Delete saved exercise drafts and remove names and classes from vocabulary progress. Review schedules are kept.</p>
+    <button class="export-btn reset-btn" id="delete-local-data-btn" type="button">Delete local drafts and personal details</button>
+    <div class="export-result" id="local-data-result" role="status" aria-live="polite"></div>
+  </section>
 </main>
 
 <footer class="site-footer">
@@ -255,7 +263,7 @@ body{
     <a href="uni-activities.html">Universität</a>
     <a href="business-activities.html">Business English</a>
     <a href="it-activities.html">IT English</a>
-    <a href="mailto:englishonlinetraining@pm.me">Kontakt</a>
+    <a href="mailto:learn@englishonline.training">Kontakt</a>
   </nav>
   <div>© EnglishOnline.Training ·
     <a href="https://englishonline.training">Zur Website</a> ·
@@ -388,7 +396,7 @@ body{
       if (resumeEx) {
         html += '<div class="panel resume"><h3>Continue Where You Left Off</h3>'
           + '<p>' + esc(resumeEx.title) + '</p>'
-          + '<a href="' + resumeEx.file + '?mode=practise">Resume &rarr;</a>'
+          + '<a href="' + resumeEx.file + '">Resume &rarr;</a>'   // plain page: its resume banner offers the draft, in the mode it was saved in
           + '</div>';
       }
     }
@@ -420,11 +428,19 @@ body{
       + '<p style="font-size:.78rem;color:var(--muted);margin-bottom:.6rem">Copy your progress data to share with your teacher.</p>'
       + '<button class="export-btn" id="export-btn">Copy Progress to Clipboard</button>'
       + '<div class="export-result" id="export-result"></div>'
+      + '<button class="export-btn reset-btn" id="reset-btn" type="button">Reset progress on this device</button>'
       + '</div>';
 
     html += '</div></div>'; // close sidebar + columns
 
     container.innerHTML = html;
+
+    // Reset: progress and streak only. Unsent work (eol_draft_*) is the student's, so it stays.
+    document.getElementById('reset-btn').addEventListener('click', function() {
+      if (!confirm('Clear your progress and streak on this device? Unsent work inside exercises is kept.')) return;
+      try { localStorage.removeItem('eol_progress'); localStorage.removeItem('eol_streak'); } catch (e) {}
+      location.reload();
+    });
 
     // Export handler
     var exportBtn = document.getElementById('export-btn');
@@ -454,6 +470,27 @@ body{
       });
     }
   }
+
+  document.getElementById('delete-local-data-btn').addEventListener('click', function() {
+    if (!confirm('Delete all saved exercise drafts and remove names and classes from vocabulary progress on this device? Vocabulary review schedules are kept.')) return;
+    var result = document.getElementById('local-data-result');
+    try {
+      var keys = [];
+      for (var i = 0; i < localStorage.length; i++) keys.push(localStorage.key(i));
+      keys.forEach(function(k) {
+        if (k.indexOf('eol_draft_') === 0) { localStorage.removeItem(k); return; }
+        if (k.indexOf('eol_srs_') !== 0) return;
+        var p = JSON.parse(localStorage.getItem(k));
+        if (!p) return;
+        delete p.name; delete p.cls;
+        localStorage.setItem(k, JSON.stringify(p));
+      });
+      result.textContent = 'Local drafts and personal details deleted. Vocabulary review schedules were kept.';
+    } catch (e) {
+      result.textContent = 'Some local data could not be deleted. Check your browser settings and try again.';
+    }
+    result.style.display = 'block';
+  });
 
   function esc(s) {
     var d = document.createElement('div');

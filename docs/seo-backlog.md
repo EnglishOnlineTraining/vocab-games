@@ -14,7 +14,7 @@ References to Tiers 0–6, 14+, "Open decisions" or "above" in an older note poi
 ## Tier 7 — Main-site GEO / AI-discoverability, P3 (2026-08-22) · Shaun + CC
 Carried over from the GEO backlog Shaun uploaded 2026-08-22 (`GEO_Backlog_EnglishOnlineTraining.md`,
 §P3), after the P0–P2 items were built on the activities repo across two PRs (#25, #26 — entity
-graph + `LearningResource`/`Course`/`Speakable` schema, Quick Overview boxes, the Abitur/MSA/
+graph + `LearningResource`/`Course` schema (`Speakable` removed again, see item 2), Quick Overview boxes, the Abitur/MSA/
 Business/IT/vocabulary hub pages, Exam Tip boxes, Related-Exercises cross-links).
 
 **P3.1 (5 new service landing pages) and P3.2 (Course schema on an "8-week learning plan") are
@@ -43,7 +43,7 @@ based on a stale picture of the site — verify before building anything, don't 
    Fragen`) was deliberately left out of the schema — the site's declared language
    (`settings.get` → `"language":"en"`) is English, so only the English content was marked up.
    Verified via the response's `_content_warnings` field, which was absent (nothing stripped).
-2. **DONE.** `Person` + `EducationalOccupationalCredential` (+ `Speakable`) schema added to
+2. **DONE.** `Person` + `EducationalOccupationalCredential` schema added to
    `/about/` (page **2224** — a newer, richer About page than **80**/`/about-me/`, which is just
    a name; found via `pages.list` and read in full before deciding which page to use). Clean
    Gutenberg content, so added as one new `core/html` block via `page-sections.insert`
@@ -58,8 +58,10 @@ based on a stale picture of the site — verify before building anything, don't 
    the richer claims that are only on the live `/about/` page itself (SRH lecturer role since
    2017, Docemus role since 2025, "10+ years"), to keep this node identical to the one already
    live on the activities host rather than forking it into a second, slightly-different Person. A
-   small `WebPage` node alongside it carries `speakable: {cssSelector: ["h2"]}` and `mainEntity`
-   pointing at the Person node's `@id`.
+   small `WebPage` node alongside it carries `mainEntity` pointing at the Person node's `@id`.
+   It also carried `speakable: {cssSelector: ["h2"]}`; **removed 2026-10-23** (page 2224, one
+   `pages.update`, nothing else changed) because `SpeakableSpecification` site-wide on the
+   activities host coincided with that subdomain's deindexing (~2026-08-24, removed in `d7e4bf6d`).
 3. **Partially done.** **Could not find the `/testimonial/*/` pages at all.** `pages.list` (all
    43 published pages, unfiltered) and `content.search` (subtype `any`) both return nothing with
    "testimonial" in the slug or title. Either they're a custom post type this MCP surface doesn't
@@ -85,6 +87,10 @@ based on a stale picture of the site — verify before building anything, don't 
 above for the full record (1019/1393/1757 already fixed by an earlier undocumented session,
 1133/651 already had links hidden behind a `page-sections.list` preview-truncation trap, 939's
 Calendly widget replaced with a link to the corporate funnel per Shaun's explicit confirmation).
+
+**Tier 6 bucket B re-checked (2026-10-23): no edits needed.** Crawling the sitemap found 1582
+linked from `/about/` and 1715 linked from `/business-english/`, so neither is a true orphan any
+more. Both stay published and unchanged.
 
 **P4.3 (`/llm-content.txt`) and P4.4 (manual AI-citation monitoring)** remain out of scope too —
 the backlog itself calls P4.3 "speculative... low-effort future-proofing", and P4.4 is an ongoing
@@ -132,13 +138,16 @@ new or contradict those docs are listed here.
     GA Measurement ID is cleared.
   - Plus Jakarta Sans is self-hosted (no Google Fonts request).
   - `/llms.txt` is served from the theme (P4.3, added by a separate session).
+    Its "Book a lesson" link pointed at `/book-a-lesson/`, a draft page that returns 404. Shaun edited the theme
+    file on 2026-11-02: it now points at `/business-english/` (wording unchanged). Verified live with curl.
+    The wpcom API cannot edit theme files, so a change to this file is a manual wp-admin edit.
 - **WordPress noindex (B8 + B7):** (1167 reversed 2026-10-06, see Tier 9) pages 2272, 1205, 1167 and posts 365, 1238, 523, 2261 have
   `jetpack_seo_noindex` set. Verified 2026-10-04: each page carries `<meta name="robots"
   content="noindex">` and is gone from the Jetpack sitemap. **Per-page noindex works on the
   current plan; use it instead of waiting for 301s.**
 - **AI crawlers (A1):** the block is lifted, and `robots.txt` no longer disallows them.
-- **Accepted, don't re-raise:** the 15 `gr-*` pages keep posting to the template's old Apps
-  Script URL (Shaun, 2026-10-04: leave permanently).
+- **Superseded:** the 15 `gr-*` pages once kept posting to the template's old Apps Script URL
+  (Shaun, 2026-10-04). They post to the online sheet since #162; see Tier 8, 2026-10-29.
 
 - **Privacy policy (D15): live.** Checked 2026-10-05: `/privacy-policy/` is the German
   Datenschutzerklärung (13 sections), gives the Koloniestraße address, names Google Analytics,
@@ -216,8 +225,10 @@ No live WordPress write was made:
   `dateModified` into the exercise JSON-LD.
 - **C14 → withdrawn, false positive.** The crawler's regex stopped at the first apostrophe
   ("Canada's…"), so it compared truncated descriptions. Read in full, the six descriptions differ.
-- **A3 + B11 (H1s) → EOT Modern 1.3.5**, in `CLAUDE OUTPUTS/eot-modern-1.3.5.zip`. **Built, not
-  installed.**
+- **A3 + B11 (H1s) → EOT Modern 1.3.5**, in `CLAUDE OUTPUTS/eot-modern-1.3.5.zip`. **Installed
+  (1.3.8 is live). A3 verified live 2026-10-21:** all 21 German pages in `sitemap-1.xml` serve
+  `<html lang="de-DE">` and `og:locale de_DE`; the other 55 serve `en-US`; no German slug is
+  mislabelled. No per-post edit was needed.
   - `lang="de-DE"` and `og:locale de_DE` on German posts and pages, detected by counting German
     vs English function words. On the live site German pages score ≥ 0.54 and English ones
     ≤ 0.41; the cut-off is 0.5.
@@ -238,7 +249,7 @@ No live WordPress write was made:
   needs Shaun's OK per page.
 - **B7:** keep **2067** (`/2026/07/31/alle-kostenlosen-…/`, 557 words). **2261** (the `-2` copy,
   429 words) also describes the Abitur packs as three task types, when there are four
-  (mediation is missing). Stub it or noindex it.
+  (mediation is missing). **Done 2026-10-29: 2261 set to draft** (Shaun chose "keep original, draft -2"; nothing unique lost; its URL now returns 404).
 - **D15 is bigger than filed.** See the replacement text under D below.
 - **More PRs from the same session** (all merged by 2026-10-05; see "Current status"):
   - **#81:** internal link checker (repo-health 6).
@@ -254,10 +265,11 @@ No live WordPress write was made:
   - **#88:** CONTRIBUTING.md (repo-health 5).
   - **#89:** ✓/✗ marks and live regions on 38 non-framework pages (repo-health 4).
   - **#80, second commit:** the open submission endpoints written up as a known, accepted gap.
-- **New finding, needs Shaun: all 15 `gr-*` grammar pages post to `_template.html`'s old
-  default Apps Script URL** (`…vLl8gJbHL1UfbKmCP7W/exec`), which CLAUDE.md says must always be
-  replaced. It is still live (a GET answers "doGet not found"), so these submissions land in
-  that old script's sheet. Routing was not changed (rule 7).
+- **Resolved 2026-10-29: the `gr-*` pages post to the online sheet.** The finding was already out
+  of date: #162 (2026-10-16) had switched `_template.html` and all 15 `gr-*` pages to the online
+  Apps Script URL, and Shaun confirmed "Online Apps Script sheet" on 2026-10-28. Checked on
+  2026-10-29: all 15 pages carry it, and `apps-script.gs` takes their payload (`unit`, `email`,
+  `date`, `retrieval`, `exA`–`exD`, `score`) through its universal handler. No Apps Script change.
 - **Repo-health 12 (regex audit): reviewed, no change recommended.** The generators parse only
   this repo's own HTML, and an end tag cannot legally carry attributes. Tightening 33 regexes
   would risk the generators for no real gain.
@@ -269,16 +281,28 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
 `uni-presentation-task.html`, a known logistics screen. Most of the work is on WordPress.
 
 ### A. High priority
-1. **AI crawlers are blocked on the main site · Shaun decides.** `englishonline.training/robots.txt`
-   has `Disallow: /` for GPTBot, ClaudeBot, Google-Extended, Applebot-Extended,
-   meta-externalagent, Bytespider, CCBot and Amazonbot. Its comment says "AI crawlers blocked via
-   Jetpack SEO". This works against Tier 7 and PRs #25/#26.
-   - These are mostly *training* crawlers. Search and retrieval agents (OAI-SearchBot,
-     ChatGPT-User, Claude-SearchBot, PerplexityBot) are not listed.
-   - Google AI Overviews use ordinary Googlebot, so they are unaffected.
-   - The cost: models learn about the brand only from other sites, never from its own pages.
-   - The activities host allows everything.
-   - **Not raised before. Ask whether the block was deliberate before changing the setting.**
+1. **AI crawlers are blocked on the main site · resolved, no change needed (checked 2026-10-21).**
+   The 2026-10-03 finding was that `englishonline.training/robots.txt` had `Disallow: /` for GPTBot,
+   ClaudeBot, Google-Extended, Applebot-Extended, meta-externalagent, Bytespider, CCBot and Amazonbot.
+   - **Live now:** `robots.txt` (default user agent, HTTP 200) has only `User-agent: *` with
+     `Disallow: /wp-admin/`, `Allow: /wp-admin/admin-ajax.php` and two `Sitemap:` lines. No AI bot is
+     disallowed. The 2026-10-04 status note in this tier already records the block as lifted, so this
+     item needs no WordPress change.
+   - **Deliberate or not:** the repo holds no record of the block. `git log -S GPTBot` finds only
+     backlog text, never a robots rule, because WordPress.com serves this file, not the repo. The
+     block was most likely a WordPress.com/Jetpack setting, not a project decision, and no document
+     records a choice to keep AI bots out. The project's GEO work (Tiers 7, 10, 11) wants AI-search
+     visibility, so keeping the block lifted matches the strategy.
+   - The activities host (`activities.englishonline.training/robots.txt`) allows everything.
+   - Not covered by `robots.txt`: AI search agents (OAI-SearchBot, ChatGPT-User, Claude-SearchBot,
+     PerplexityBot) are not disallowed either, so they are allowed too.
+   - **Closed 2026-11-06, false alarm: a crawler user agent sent with curl gets a 403 on the main
+     site, but that is not a crawler block.** The main site answers such a request with a JavaScript
+     "Checking search engine crawler…" challenge page, from the WordPress.com edge. A fake Googlebot
+     gets it too (re-checked 2026-11-06), so it says how a claimed crawler from an ordinary IP address
+     is treated, not what real crawlers get. Shaun is being cited by LLMs and `robots.txt` blocks none
+     of them. **Don't report this curl result as a block or contact WordPress.com about it.** A real
+     block would need evidence from real crawler traffic, such as Search Console crawl stats.
 2. **The Organization entity on the WP homepage contradicts `scripts/schema.js` · CC (EOT Modern
    or Jetpack).** Both use `@id` `https://englishonline.training/#organization`, but they say
    different things:
@@ -293,6 +317,41 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
    | `sameAs` | — | Impressum only |
 
    The `WebSite` node and `og:site_name` still say "Improve your English skills", the old tagline.
+   **Re-checked 2026-10-23 (CC), no live write made.** Settled by these docs: `scripts/schema.js` is
+   correct (Tier 8 A2 above and the Shaun-confirmed address/phone), so the WP node should change, not
+   schema.js. Differences still live: `@type`, name, description, phone format (same number), email
+   (the node still carries `englishonlinetraining@pm.me`, not `learn@englishonline.training`: a
+   Tier 8 A2 must-fix), `sameAs` (LinkedIn and Facebook, no Impressum), address `Koloniestr.` vs
+   `Koloniestrasse`, and `WebSite` name/description. **Blocker:** the WP MCP exposes only
+   `settings.get/update` (title, tagline, timezone); the Organization node's name, type, phone, email,
+   logo and address are not in it, so they are Jetpack/WordPress.com business details Shaun must set in
+   the dashboard. Site Title is writable, but it also changes every `<title>`, feed and `og:site_name`,
+   so it was left for Shaun's go-ahead (rule 8: not a "nothing lost" edit).
+   **Re-checked 2026-10-26 (CC), no live write made.** The live node is unchanged (curl of `/`):
+   `@type` Organization+LocalBusiness, name "English Online Training", description "Prepare for
+   tests. Improve your grades. Pass exams", email `englishonlinetraining@pm.me`, telephone
+   `017631304449`, street "Koloniestr."; `WebSite` name and `og:site_name` "Improve your English
+   skills". WP settings now: blogname "Improve your English skills", tagline "Better results, Better
+   grades", admin email a personal address (leave). The wpcom MCP site tool has no operation for
+   business details (only `settings.get/update` for title, tagline and similar), so none of the node
+   could be changed from here. Site Title left as is (Shaun's instruction). The node is not derived
+   from a core WP setting I could find, so Shaun should look for where it is set (Jetpack → Settings,
+   the theme's Customizer, or a code-snippet plugin) and set the values below; if none exposes them,
+   the node comes from theme/plugin code and needs a code change instead.
+   **Targets for Shaun** (from `scripts/schema.js`): type EducationalOrganization+LocalBusiness;
+   name "EnglishOnline.training"; description "Online English teaching and free interactive
+   practice material for German school students, university students and professionals."; email
+   `learn@englishonline.training`; telephone `+49 176 3130 4449`; street "Koloniestrasse";
+   display name (Users → Profile) "Shaun Trezise".
+   **Re-checked 2026-11-06 (CC), approval to edit given, no live write made.** The live node is still
+   unchanged (email `englishonlinetraining@pm.me`, name "English Online Training", street
+   "Koloniestr.", `sameAs` LinkedIn + Facebook). The WP MCP exposes no field that feeds it: settings
+   show `blogname` "Improve your English skills" (so the node name is not derived from Site Title),
+   admin email a personal address, and SEO front-page formats that are literal strings. Changing Site
+   Title or display name would not move the Organization node, so neither was touched. **Remaining
+   dashboard step for Shaun:** find the source of the node (Jetpack → Settings, the theme's
+   Customizer, or a code-snippet plugin) and set the targets above; if none exposes them it is theme or
+   plugin code and needs a code change.
    **Fix:** make the WP node identical to `scripts/schema.js`, and give `sameAs` real profiles.
    Also, WordPress post bylines emit a *second* Person, `/author/shauntrezise/#person`, named only
    "Shaun". `/about/` and the activities host already share `#shaun` (Tier 7 item 2), so this
@@ -323,21 +382,36 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
      discovery and authority problem. Titles matter once pages are indexed.
 
 ### B. WordPress clean-up · CC via MCP, with Shaun's approval per item
-6. **`/wilkommen/` is live again**, as a page separate from `/willkommen/` (see the Tier 3
-   reopen). Find its ID and either draft it or stub it to `/willkommen/`.
-7. **Duplicate post:** `/2026/07/31/alle-kostenlosen-englisch-ubungen-auf-einen-blick/` (557
+6. **`/wilkommen/` — resolved 2026-10-28: leave as is.** It is page 2272, the deliberate
+   noindexed "this page has moved" stub (one paragraph and a button to `/willkommen/`; nothing
+   unique, but it is the 301 target of `/welcome/about-me/wilkommen/`). Drafting it would break
+   that chain, so it stays until the Phase 2 decision in `gsc-review-2026-10-06.md`. No repo links
+   point at it. Shaun confirmed leaving it.
+7. **Duplicate post (done 2026-10-29, 2261 drafted):** `/2026/07/31/alle-kostenlosen-englisch-ubungen-auf-einen-blick/` (557
    words) and `/2026/08/24/alle-kostenlosen-englisch-ubungen-auf-einen-blick-2/` (429 words) have
    near-identical titles. Keep one and stub the other (no 301s; plan upgrade deferred).
-8. **Stub pages are still in the sitemap and indexable.** 365, 1205, 1167, 1238 and 523 were
-   stubbed by design (Tier 3.5/4). Each is now a thin page Google can index. If the plan allows a
-   per-page noindex, use it. Otherwise accept until the plan upgrade (Tier 5).
+8. **Closed 2026-10-29 (CC, verified live): no indexable stubs remain.** Checked every one of
+   the 78 URLs in `sitemap-1.xml` (curl, `<meta name="robots">`, rough main-text word count).
+   None carries `noindex`, and none is under 150 words apart from `/impressum/` (111 words, a
+   legal page that must stay). The stubs are all noindexed (`jetpack_seo_noindex`) and absent
+   from the sitemap: 365, 523, 1238 (posts), 1205 (`/blog-posts-page/`), 2272 (`/wilkommen/`).
+   **1167 is not a stub:** it is `/good-vs-bad-when-writing-emails-in-english/` (774 words),
+   indexable, and is in the sitemap. Its noindex was reversed (see Tier 9).
+   **Found while checking (not a stub; not in this item):** `/book-a-lesson/` and
+   `/california-interactive-exercises/` were listed in `sitemap-1.xml` but return HTTP 404
+   ("Page not found"; `/book-a-lesson/` is an intended draft and is out of the sitemap as of 2026-11-01). Fix in WordPress (Shaun decides: remove from the sitemap or restore).
 9. **The 8 `/testimonial/*/` pages are thin (130–250 words).** Options: one testimonials page,
    or link them from `/business-english/` (1965). Note that self-serving `Review` markup does not
-   earn star snippets.
-10. **Title-template bug.** 29 of 82 WP titles are over 65 characters. Many end
-    "…English Online Training" with no separator. Page 380 is titled "English Online Training
-    English Online Training", which is probably what the open "380 non-breaking-space title" item
-    is really about. Fix the Jetpack SEO title format (separator + short brand).
+   earn star snippets. **Linking done 2026-10-28:** `/testimonial/` is linked from 1965 and
+   `/about/`; the pages stay noindex, so this is for visitors, not search.
+10. **Title-template: length fixed, brand suffix still open (measured 2026-10-29).** Every
+    rendered `<title>` in `sitemap-1.xml` (78 URLs, curl) is 65 characters or fewer; the longest
+    is 65 (`/2023/05/09/english-for-commercial-real-estate/`). The old "29 of 82 over 65" is gone.
+    **Still open:** 56 of 78 titles lack the `| English Online Training` suffix. 22 have it.
+    3 end with `– Improve your English skills`. 53 have neither: most are the bare post or
+    page title, e.g. `/why-learn-with-english-online-training/` (39 characters, no suffix) and
+    the German `/willkommen/` pages. Which pattern to use is Shaun's decision (A5 and the
+    "Waiting on Shaun" list above).
 11. **Small fixes:**
     - More than one `<h1>` on 8 pages: `/privacy-policy/` (8), `/vocabulary-games/`,
       `/english-for-students/`, `/university-english/`, `/it-english/`,
@@ -347,18 +421,38 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
     - `/2016/04/13/present-simple-or-progressive/` is still published; the rest of the 2016 batch
       was drafted in Tier 3.5.
     - The WP `og:image` is the portrait with an empty `og:image:alt`.
+    - **2026-10-23 status (CC, verified live):** the 8-page H1 count is already 1 on every page, so nothing to fix.
+      Homepage `og:image:alt` is set (media 1654). The homepage meta description is now the page-60 text.
+      `/blog-posts/` still repeats the homepage description, because Jetpack uses the front-page
+      description for the posts page and the page's own meta is ignored. Needs a theme/SEO setting
+      Shaun controls, or accept it. The 2016 post (ID 32) is still published; left for Shaun.
+    - **2026-10-28 (CC):** post 32 improved from `docs/blog-drafts/wp-32-present-simple-or-progressive.md`
+      (PR #212). Applied block by block: fixed the "now" example, reworded "German has no separate
+      progressive form", Practise paragraph (kept the 8c exercise link, added the German guide link, kept the ESL
+      link), SEO title and social message set. Not applied: the `gr-present-tenses.html` link (noindex, German
+      interface). Featured image 1517 kept (Shaun, 2026-10-28). Verified live: 200, title tag, new text present.
 
 ### C. Activities repo · CC
-12. **Exercise JSON-LD has no `datePublished`/`dateModified`.** The dates are already in
-    `data/lastmod.json`, so emit them on the `LearningResource` node.
-13. **Refine `build-lastmod.js`:** 229 of 230 sitemap entries read `2026-10-01`. That is honest
+12. **→ Done (verified 2026-10-23).** Exercise JSON-LD has no `datePublished`/`dateModified`.
+    The dates are already in `data/lastmod.json`, so emit them on the `LearningResource` node.
+    Evidence: `scripts/schema.js:381-383` sets both from `datesFor()`; live
+    `10c-canada-schools.html` carries `datePublished` 2026-08-24 and `dateModified` 2026-10-17
+    (same for `9g-australia-outback`, `10g-scottish-history`, `9c-canada-multicultural`).
+13. **→ Done (verified 2026-10-23).** Refine `build-lastmod.js`: 229 of 230 sitemap entries read `2026-10-01`. That is honest
     under the current design: the 2026-10-01 byline, Person-schema and school-name commits changed
     every page's generated `<head>`, so every hash moved. But a template-only change then tells
     Google the whole site changed. Hashing only the page body would stop this: exclude the
     generated HEAD/CRUMB blocks. **Don't reseed `data/lastmod.json`** (see the warning in
     `hubs-seo-and-tests.md`).
-14. **Three pairs of duplicate meta descriptions:** two Year 10 Canada pages, two Year 10
+    Evidence: `scripts/page-hash.js` strips every generated block (HEAD, CRUMB, …) before hashing.
+    Editing the HEAD and CRUMB blocks of `9g-australia-outback.html` in place leaves its hash
+    unchanged; editing body text changes it. `build.js --check` passes. The live sitemap now
+    spreads dates (180 at 2026-10-17, 12 at 2026-10-20, 11 at 2026-10-04, and so on).
+    `data/lastmod.json` was not touched.
+14. **→ Done (verified 2026-10-23).** Three pairs of duplicate meta descriptions: two Year 10 Canada pages, two Year 10
     Scotland pages and two Year 9 Australia pages, all starting "Free Year N English practice: …".
+    Evidence: a scan of all root and `themen/` HTML finds 0 duplicate `<meta name="description">`
+    values. The live Canada, Scotland and Australia pages carry distinct text.
 
 ### D. Decision needed · Shaun
 15. **Tracking and the privacy policy · Shaun (DSGVO/TTDSG).** Checked 2026-10-03:
@@ -410,7 +504,11 @@ afterwards (rule 7).
    live).** `property-management-vocabulary.html`: 159 terms in static HTML, a search filter,
    links to the PDF and `be-property-management.html`, a FAQ, and a button on the Business hub.
    Still open:
-   - CC: the same for `esg-vocabulary.pdf` and `commercial-real-estate-vocabulary.pdf`.
+   - ~~CC: the same for `esg-vocabulary.pdf` and `commercial-real-estate-vocabulary.pdf`.~~ **DONE
+     (2026-11-06, PR open).** `esg-vocabulary.html` (30 terms) and
+     `commercial-real-estate-vocabulary.html` (92 terms), same build as the property page.
+     The two Business hub buttons were added after the merge. The ESG page has no matching `be-` exercise to link. Definitions were
+     rewritten and doubtful ones fixed; the PR lists them. The PDFs are unchanged.
    - Shaun: the PDF still has five wrong definitions (cylinder, grout, interior wall, property
      developer, energy certificate) and lists `shaun@learnenglishinberlin.com` instead of the
      public address. If it is replaced, keep the same filename and URL.
@@ -456,6 +554,7 @@ afterwards (rule 7).
    For each page that lost clicks, diagnose first (Tier 12.6): lost position → improve the page;
    same position, lower CTR → a better title, or an AI Overview now sits above us. Never the same
    fix for both. `node scripts/search-opportunities.js --csv <export>` lists the leaks (PR #138).
+   **Run 2026-11-06 for the ten hubs and "ielts": see Tier 19, "Re-pull of 2026-11-06". Hubs not recovered.**
 8. **Search Console emails of 2026-10-07 · read, nothing broken.**
    - There are **three** properties: `sc-domain:englishonline.training` (both hosts),
      `https://englishonline.training/` and `sc-domain:activities.englishonline.training`.
@@ -542,20 +641,32 @@ afterwards (rule 7).
      (Google-selected canonical blank on all), so every control stands. Indexing requested for
      all 10 the same day; each confirmed "added to a priority crawl queue". Every last crawl
      predates the preview going live (2026-10-12).
-   - **Results table** (fill in):
+   - **Results table:**
 
      | Page | Role | Baseline state | Requested | Recrawled | State at check | Impr. |
      |---|---|---|---|---|---|---|
-     | 10c-canada-schools | test | not indexed, crawled 22 Sep | 2026-10-13 | | | |
-     | 10c-inside-india | control | not indexed, crawled 10 Aug | 2026-10-13 | | | |
-     | 10c-canada-environment | test | not indexed, crawled 22 Sep | 2026-10-13 | | | |
-     | 10c-discover-canada | control | not indexed, crawled 9 Aug | 2026-10-13 | | | |
-     | 10g-growing-up-black | test | not indexed, crawled 28 Sep | 2026-10-13 | | | |
-     | 10g-proud-to-be-black | control | not indexed, crawled 10 Aug | 2026-10-13 | | | |
-     | 10g-cultural-diversity | test | not indexed, crawled 28 Sep | 2026-10-13 | | | |
-     | 10g-post-racial-obama | control | not indexed, crawled 22 Aug | 2026-10-13 | | | |
-     | 8c-going-west | test | not indexed, crawled 8 Oct | 2026-10-13 | | | |
-     | 8c-off-to-midwest | control | not indexed, crawled 9 Aug | 2026-10-13 | | | |
+     | 10c-canada-schools | test | not indexed, crawled 22 Sep | 2026-10-13 | 13 Oct 07:20 | Crawled – currently not indexed | n/a |
+     | 10c-inside-india | control | not indexed, crawled 10 Aug | 2026-10-13 | 13 Oct 07:20 | Crawled – currently not indexed | n/a |
+     | 10c-canada-environment | test | not indexed, crawled 22 Sep | 2026-10-13 | 13 Oct 07:19 | Crawled – currently not indexed | n/a |
+     | 10c-discover-canada | control | not indexed, crawled 9 Aug | 2026-10-13 | 13 Oct 07:22 | Crawled – currently not indexed | n/a |
+     | 10g-growing-up-black | test | not indexed, crawled 28 Sep | 2026-10-13 | 13 Oct 07:22 | Crawled – currently not indexed | n/a |
+     | 10g-proud-to-be-black | control | not indexed, crawled 10 Aug | 2026-10-13 | 13 Oct 07:22 | Crawled – currently not indexed | n/a |
+     | 10g-cultural-diversity | test | not indexed, crawled 28 Sep | 2026-10-13 | 13 Oct 07:22 | Crawled – currently not indexed | n/a (1 click, 1 impression in the 3-month table) |
+     | 10g-post-racial-obama | control | not indexed, crawled 22 Aug | 2026-10-13 | 13 Oct 07:26 | Crawled – currently not indexed | n/a |
+     | 8c-going-west | test | not indexed, crawled 8 Oct | 2026-10-13 | 13 Oct 07:19 | Crawled – currently not indexed | n/a |
+     | 8c-off-to-midwest | control | not indexed, crawled 9 Aug | 2026-10-13 | 13 Oct 07:17 | Crawled – currently not indexed | n/a |
+
+   - **Checked 2026-11-10** in Search Console URL Inspection (domain property), all 10 pages.
+     No "Request indexing" was clicked. **0 of 5 test pages and 0 of 5 controls are indexed**:
+     all 10 are still "Crawled – currently not indexed".
+   - **Reading.** All 10 were recrawled once, on 13 Oct between 07:17 and 07:26, and not since.
+     Each baseline crawl was older and the requests were made the same day, so these look like the
+     request-triggered crawls. The exact request time was not recorded, so "after the request" is
+     inferred, not proven. Same result on both sides: by the decision rule the preview is not the
+     cause. If the 13 Oct crawls are not accepted as "after the request", fewer than 3 pairs count
+     and the rule gives "inconclusive, recheck in 2 weeks". Impressions per page for 12 Oct to
+     8 Nov were not captured (the date filter did not apply). The `PREVIEW` blocks stay for now:
+     removing them is Shaun's call.
 
 ## Tier 10 — AI search: chunk-ready headings and sub-query coverage (2026-10-07) · Shaun + CC
 Source: Google Cloud Vertex AI Search (Discovery Engine) docs. They list these ranking signals:
@@ -594,6 +705,11 @@ only.
    Mode shown?, our page cited?, which section, which sources win. Keep the log in
    `docs/gsc-review-*.md` beside the Search Console numbers. Roll items 1–4 out to all topics only
    after 4–6 weeks of data on the first two.
+   **First run 2026-11-07** (`docs/gsc-review-2026-11-07-ai-answers.md`): ChatGPT recommended
+   `8g-new-york.html` once a student named the unit. **Also export monthly** Bing Webmaster → AI
+   Performance (overview, pages, grounding queries, topics) for the `englishonline.training`
+   property, which includes the activities subdomain. First export: about 80 citations a day,
+   mostly `themen/` and Abitur pages.
 
 ## Tier 11 — AI Overview targeting (2026-10-07) · Shaun + CC
 Goal: get cited in the Google AI Overview for one buying-intent query, then repeat. Method: capture
@@ -773,3 +889,633 @@ Commercial intent and money pages: Tier 12.1. Reddit: Tier 12 "Not adopted". Cha
   rule 7 and Tier 12.2, and Google's spam policy on scaled content is aimed at exactly this. The
   post's own author calls the network the riskiest part.
 - **Running a subreddit for views:** Tier 12 already says no; the audience is not there.
+
+## Tier 14 — Image SEO plan review (2026-10-23) · Shaun + CC
+Source: a generic image-SEO plan Shaun pasted 2026-10-23 ("Close the visual SEO gap"). It was
+written without knowing the stack, so most of it is already done or doesn't fit. Checked live and
+in the repo the same day:
+- **Activities host:** `build-head.js` already emits a 1200×630 `og:image` (`og-card.png`), its
+  alt text and `twitter:card summary_large_image` on every page. `build-og-card.js` renders
+  cards with Playwright, and `optimise-images.js` makes WebP. Only three pages have content
+  images: `7c-robert-the-bruce` (picture + WebP), `8c-taxi-ride-nyc`, `9c-south-africa-revision`.
+  All three still share the site-wide card as their `og:image`, and none has an `image` in its JSON-LD.
+- **WordPress (Simple plan):** Jetpack sets `og:image` and makes the image sitemap
+  (`image-sitemap-1.xml`). `/university-english/` already uses the branded card
+  (`ogcardsite.png`). The **homepage's `og:image` is the 828×816 portrait with empty alt**
+  (already B11 above). Custom `<head>` and JSON-LD can't be injected on this plan.
+
+1. **DONE (2026-10-23, PR #204).** **Per-page `og:image` and JSON-LD `image` for pages with real content images · CC.** In
+   `build-head.js` (and `schema.js`), when a page has a content `<img>`, use it for `og:image`
+   and add `image` to its `LearningResource`. Otherwise keep the site card. Render a 1200×630
+   PNG crop if the source isn't one, and reuse `build-og-card.js`. Add `<image:image>` to those
+   pages' sitemap entries. One check: a test that fails if any `<img>` lacks `alt`, `width` or
+   `height`. Fix those three pages' tags to pass (lazy loading below the fold, a `<picture>`
+   WebP for the taxi PNG).
+2. **DONE (2026-10-23, PR #205: IELTS essay structure, past progressive timeline).** **Two original teaching diagrams (SVG), placed where they teach · CC.** For example, an
+   essay-structure diagram on a writing page and a tense timeline on an ESL grammar page.
+   Pick the pages from Search Console demand, not from the plan's guesses. English only. Use
+   `<title>`/`<desc>`, real `<text>`, colours from the `style.css` tokens, under 50 KB, and
+   explicit `width`/`height`. These double as the page's `og:image` via item 1 (PNG render).
+   Never show student work or names in a diagram or screenshot (rule 1).
+3. **Homepage `og:image` alt and card · Shaun (WP media/Jetpack).** Already B11. Set the alt
+   text, or switch to the 1200×630 card. A live WordPress edit, so needs Shaun's approval.
+4. **DONE (2026-10-26).** **A diagram on `/university-english/` · Shaun.** After item 2, the PNG (WP.com may not take
+   SVG uploads) can go into the page through the API, with alt text and a caption. Live edit:
+   rule 7, and rule 8's "nothing lost" first.
+   Done: the PR #205 opinion-essay diagram (1200×630 PNG, media 2706) sits under the "What the
+   exercises cover" grid with alt text and a caption. One `page-sections.insert`; all 19 existing
+   blocks keep their hashes (nothing lost).
+
+### Not adopted (with reasons)
+- **Phase 0 recon, `IMAGE-REGISTRY.md`, `IMAGE-SEO-RECON.md` and `IMAGE-SEO-QA.md`:** the stack is
+  known (above). Alt text lives in the markup, and the check lives in the test from item 1. Three
+  more docs would drift.
+- **`og:image` on every page:** already live on both sites.
+- **A custom `sitemap-images.xml` and `robots.txt` line:** Jetpack does WordPress, and item 1
+  adds image entries to the existing activities sitemap.
+- **`primaryImageOfPage` on WordPress:** you can't inject JSON-LD on the Simple plan.
+  "Rich Results Test" also doesn't report it (it isn't a rich-result type); use the Schema
+  Markup Validator.
+- **Stock hero image and new portrait:** a hero photo adds LCP weight and no ranking gain on
+  exercise pages. The portrait already exists.
+- **`srcset` on SVG:** SVG is resolution-independent.
+- **"A1→C1 course pathway" infographic:** only if it shows a real offer. That's Shaun's call
+  (see A4 / Tier 12 "The offer").
+
+## Tier 15 — GEO audit gaps, re-verified (2026-10-23) · Shaun + CC
+Source: the read-only GEO audit of the activities host dated 2026-10-21 (repo at `35941ee`),
+which listed six gaps. Each was re-checked against `origin/main` at `ec1bef0` on 2026-10-23
+(256 indexable pages, noindex and `_template.html` dropped). Two were already fixed, so they
+get a close-out line, not work. Ranked by value for effort. **Agent-safe** = repo-only, on a
+branch, no rule 8/9 page and no VOICE.md decision.
+
+1. **→ Done (2026-10-23). Meta descriptions over 160 characters · agent-safe · effort S.** Re-verified:
+   **15** now, not 16 (161–188 characters; the audit's count was one higher; one page has since been fixed or shortened). `10g-proud-to-be-black`, `10g-south-africa-vocab-practice`,
+   `9g-california-future-meaning`, `uni-c1-vocab-practice`, `uni-c2-vocab-practice`, and 10 IELTS
+   pages: `ielts-activities`, `ielts-reading-practice-test`,
+   `ielts-reading-sentence-summary-completion`, `ielts-reading-true-false-not-given`,
+   `ielts-writing-task1-describing-trends`, `ielts-writing-task1-process-diagram`,
+   `ielts-writing-task1-tables-bar-charts`, `ielts-writing-task2-discussion-essay`,
+   `ielts-writing-task2-opinion-essay`, `ielts-writing-task2-problem-solution-essay`. The description is also the Quick
+   Overview lede, so one edit shortens both. Shorten each `<meta name="description">` to ≤ 160
+   characters by hand (keep the keyword and the level), run `node scripts/build.js`, and add a
+   length check to `scripts/verify-exercise.js` or `build.js` so it can't regress. Descriptions are
+   not titles, URLs or indexing, so rules 8/9 don't apply. English only for IELTS (no German).
+   **Done 2026-10-23:** 17 pages shortened (the 15 plus `ielts-reading-matching-headings` and
+   `lead-story-structures`, over since the re-check); `scripts/check-meta-descriptions.js` now fails
+   the build on any indexable page over 160 (decoded length).
+2. **Four pages "without an overview box" · close as by design, unless Shaun wants hubs covered ·
+   effort none.** Re-verified: the audit's "250 of 254" is wrong. `overviewBlock()` in
+   `scripts/build-head.js` deliberately emits the box only for exercise pages in
+   `data/exercises.json`; hubs, lead magnets, `themen/` pages, standalone tools and Abitur
+   landing pages are skipped by design, and `themen/` carries its own intro. Measured: **44**
+   indexable files have no box, including the audit's four (`abitur-activities`, `msa-activities`,
+   `grammar-activities`, `uni-presentation-task`). Recommendation: do nothing. If Shaun does want
+   hubs covered, that is a build-head change, M effort, and a separate decision (agent-safe once
+   decided).
+3. **`themen/` openers over 45 words · agent-safe to draft, Shaun approves · effort M.**
+   Re-verified: 207 H2-then-paragraph openers across the 18 topic pages, **14 over 45 words** (in
+   13 files) and **7 over 60**: `gerund-infinitiv` (173), `passiv` (171), `artikel` (132),
+   `praepositionen` (105), `simple-past` (76), `phrasal-verbs` (64), `relativsaetze` (62).
+   The audit said 6 over 60; the 7th is `relativsaetze` at 62. This is the roll-out list for
+   Tier 10 item 4 (one-sentence direct answer first, drafts in `docs/topic-subquery-maps.md`
+   from PR #109 for `gerund-infinitiv` and `passiv`). Rule 9 applies: these pages have ≥ 600
+   words, so keep every existing sentence and add the direct answer above it; do not rewrite.
+   Per Tier 10.7, hold the roll-out beyond the first two until the 4–6 week AI-answer data is in.
+   `themen/` is German by design (the language rule exempts it).
+   **Done 2026-10-30 (PR open, Shaun approves):** all 14 over-45 openers (13 files) now start
+   with a direct answer of 14 to 40 words. Rule 9 respected: no sentence was removed or reworded;
+   each long opener was split into consecutive paragraphs at a sentence boundary, edited in
+   `data/topics.json` (the `themen/` HTML is generated). Post-change check: 0 of 209 openers over
+   45 words. The gate in Tier 10.7 on rolling out beyond the first two still stands for rewrites.
+4. **Em dashes, arrows and stars in body copy · done for stars, dashes and arrows skipped by design.**
+   Stars: the 4 pages are fixed (the `⭐` and `★` glyphs became "(4-star)", "Note:" and "🏢"
+   icons); dashes and arrows stay as they are. Re-verified: em dash is in body text on **all 256** indexable pages (mostly the
+   generated "Aufgaben: 3 — A · B" row and cards), arrow characters on 106, star symbols on 4
+   (`9c-melbourne-job-application`, `be-company-culture`, `business-activities`,
+   `california-exercises`). `VOICE.md` has no rule on them, so it is a style call with no
+   retrieval evidence (the checklist source is a vendor blog). Skipped by design: the dashes and
+   arrows.
+5. **Stale `Speakable` lines in this file · already done, close.** Tier 7's intro and item 2 now
+   say `Speakable` was removed, and item 2 records the `/about/` node removed 2026-10-23
+   (page 2224). Nothing left to do; do not re-add `Speakable`.
+6. **27 emoji-prefixed H1s · already done, close.** Re-verified: 0 indexable pages now start
+   their `<h1>` with an emoji. Fixed by PR #215 ("Strip leading emoji from 27 indexable H1s").
+   No VOICE.md change needed.
+
+**Recommended order.** 1 (meta descriptions, the only clear agent-safe win), then 3 (with the
+Tier 10 item 4 approval and the 4–6 week data gate), then 4 only if Shaun asks. Items 2, 5 and 6
+need no work. Net open work: one agent-safe fix, one Shaun-approved content roll-out, one optional
+style decision.
+
+## Tier 15 — AI-citation query gaps (2026-10-25) · Shaun + CC
+Source: Shaun's export `activities.englishonline.train_AITopicsTopOpportunityQueries_10_23_2026.csv`
+(49 queries, all tagged "Grammar & Language Structure", each with a "Citation Range" band). The
+source tool and the exact meaning of "Citation Range" are not confirmed: read the bands as
+relative demand, not as our traffic. **Scope (Shaun, 2026-10-25):** English grammar, asked in
+English or German, only. Out: the 12 queries about Spanish, French, German, Italian or Vietnamese
+grammar, and the 9 English-grammar queries written in Spanish (*verbo to be en inglés* etc.).
+Respect Tier 9.5 (no new `themen/` pages), Tier 12.1 (commercial-intent tag) and 12.2 (at most 2
+new indexable pages a week across both sites).
+
+### Already covered (no action)
+*linking words* (5K–10K) → `themen/linking-words`; *relative pronouns exercises*, *defining
+relative clauses* → `themen/relativsaetze`; *present perfect continuous* → `themen/present-perfect`;
+*past perfect continuous* → `themen/past-perfect`; *present perfect passive* → `themen/passiv`;
+*past continuous tense* → `themen/past-progressive`; *past tense*, *simple past* →
+`themen/simple-past`.
+
+### Done in PR (this tier's branch)
+1. **`present-tenses`: negatives and questions · CC.** *present simple negative / interrogative /
+   rules* had no section of their own (◐: one rule line). Added the section "Simple Present:
+   Verneinung und Fragen mit do/does", one FAQ entry and "Übung 5" (5 items).
+2. **`future-tenses`: the name learners search for · CC.** *simple future tense*, *future simple*
+   (1K–5K) never appeared on the page. First H2 is now "Das will-future (Simple Future): …", plus
+   one FAQ entry. `aliases` updated on both topics.
+3. **ESL grammar pool order · CC.** New optional `priority` field in `esl-grammar-pool.json`,
+   built first, lowest number first. Tiers are unchanged (they record evidence). Set:
+   1 `esl-question-formation` (*wh questions* 5K–10K, *wh words* 1K–5K) · 2 `esl-pronouns`
+   (*subject/object pronouns* 1K–5K) · 3 `esl-present-simple-continuous` (tier 3 → priority,
+   the largest group in the file) · 4 `esl-countable-uncountable` (*much and many* 500–1K).
+   `esl-grammar-pool.js` lists them as "Next up" and checks the field; the
+   `esl-grammar-exercise-draft` skill reads it.
+
+### Open
+4. **Build the four priority ESL pages · CC, Shaun approves each publish.** One a week (see
+   item 7 for the pairing), via `esl-grammar-exercise-draft`.
+5. **`gr-past-progressive.html` · CC. Built 2026-10-29 (PR open).** *past continuous exercises*
+   (1K–5K): four exercises, `noindex` like the other `gr-*` pages, so it does not count toward 12.2.
+   Linked from `themen/past-progressive` and `grammar-activities.html`; posts to the online sheet.
+6. **Three blog posts · CC via `eol-blog-writer`, Shaun approves each WP draft.** One framework
+   each; each links to one topic page and one money page (12.1).
+   - Learners (EN): wh-question word order — *Where you are going?* → *Where are you going?* Links
+     to `esl-question-formation`; money page `/business-english/`.
+     **Draft saved 2026-11-01: WordPress post 2799** (scheduled for 2 Dec 2026, 10:54; image approved, media 2797;
+     exercise screenshot media 2801 added; scheduled `future`, 10:54 Berlin). Before-After-Bridge; links `esl-question-formation` and an in-text
+     link to `/business-english/`. Text: `docs/blog-drafts/wp-wh-question-word-order.html`.
+   - Parents (DE): linking words for the Abitur. Links to `themen/linking-words`; money page an
+     Abitur Payhip pack.
+     **Draft saved 2026-10-29: WordPress post 2765** (scheduled for 29 Nov 2026, 10:54, per item 7:
+     it should go live after `esl-pronouns`). Pixar Story Spine; links `themen/linking-words` and the
+     Payhip Kommentar-Training (`payhip.com/b/wXjUl`). Text: `docs/blog-drafts/wp-parents-abitur-linking-words.html`.
+     Fact-checked against the Berlin-Brandenburg 2025 Deskriptoren (60 % sprachlich incl. Textaufbau/Kohäsion,
+     40 % inhaltlich). Featured image (media 2763) approved by Shaun.
+   - Teachers (EN): why German speakers say *Play you football?* Links to
+     `esl-present-simple-continuous`; money page the Payhip store.
+     **Draft saved 2026-11-01: WordPress post 2800** (scheduled for 5 Dec 2026, 10:54; image approved, media 2798;
+     exercise screenshot media 2802 added; scheduled `future`, 10:54 Berlin). And-But-Therefore; links `esl-present-simple-continuous` and
+     `payhip.com/EnglishOnlineTraining`. Fact-checked: the German *am*-progressive is labelled colloquial by Duden.
+     Text: `docs/blog-drafts/wp-german-speakers-play-you-football.html`.
+7. **Schedule (7 new indexable pages, 2 a week) · Shaun confirms.** Week 1:
+   `esl-question-formation` + learner post. Week 2: `esl-pronouns` + parents post. Week 3:
+   `esl-present-simple-continuous` + teachers post. Week 4: `esl-countable-uncountable`. Each
+   post goes live after the page it links to.
+   **Blog queue, 2026-11-07:** three German drafts saved 5 Nov were fact-checked against the
+   Berlin and Brandenburg 2027 exam documents (no changes needed) and scheduled `future`, 10:54:
+   WP 2837 Abitur science and technology vocabulary on 8 Dec, WP 2838 oral MSA in Berlin on 11 Dec,
+   WP 2839 Abitur 12-week study plan on 14 Dec. Draft 2560 stays on skip.
+8. **Measure · Shaun.** Re-export the same report on 2026-11-23 and compare the bands for the
+   queries in items 1–5. Measure only, like Tier 9.7.
+
+### Not adopted (with reasons)
+- **Queries about other languages' grammar, and English-grammar queries written in Spanish:** out
+  of scope (Shaun, 2026-10-25). The site serves English and German readers.
+- **New `themen/` pages for wh-questions, pronouns or *much/many*:** Tier 9.5. The English ESL
+  pages in item 4 cover these queries.
+
+## Tier 16 — LinkedIn as a B2B citation source (2026-10-27) · Shaun + CC
+Source: a LinkedIn marketing blog post on Meltwater's report "How LinkedIn Content Wins in AI
+Search" (shared by Shaun 2026-10-27). It covers 9.5M AI citations across six models (Copilot,
+Google AI Mode, Google AI Overviews, Claude Sonnet 4, ChatGPT-5, Gemini 2.5 Pro) in B2B
+categories, over four weeks. Claims: LinkedIn is the #2 cited source after YouTube; 75% of its
+citations come from member profiles, 25% from company pages; 72% of cited content is original
+and 48% is under three months old. LinkedIn published it and Meltwater sells the tool that
+measured it; corporate language training was not a measured category (HR & Talent is closest).
+Treat all figures as direction only.
+**Scope: B2B only** (Business English team training, money page `/business-english/`). Most of
+the site-side advice (headings, lists, freshness, own data) is already Tiers 10–15. Respect
+rule 1 (no student or client names) and rule 4 (no Klett). LinkedIn posts are not indexable pages
+on our sites, so Tier 12.2 does not apply; Shaun's time does.
+
+1. **Test before investing · Shaun, ~30 min.** Ask ChatGPT, Copilot and Google AI Mode 5 buyer
+   questions, logged out: e.g. "Business English training for German teams", "how to choose a
+   Business English trainer", "Firmenschulung Englisch Berlin". Log which sources each cites.
+   Add the queries to the Tier 12.15 log. If LinkedIn is cited, go on; if not, stop at this item.
+   **Done 2026-11-07:** LinkedIn cited in 1 of 12 answers (Google AI Mode, "how to choose a
+   trainer": a profile's long article), we in 0. Go on, narrowly: items 3–4 first, as one
+   "what to check before booking" article on our site plus a LinkedIn version. Full log:
+   `docs/gsc-review-2026-11-07-ai-answers.md`. Shaun: the activities site stays the main focus.
+2. **Personal profile, not a company page · Shaun.** *(CC part: profile URL added to Person `sameAs` 2026-10-28. `/business-english/` already links to the profile in the trainer bio and Key facts.)* Headline names the expertise (e.g.
+   "Business English trainer for German teams · Berlin"); profile links to `/business-english/`.
+   Public contact email only (rule 3). **CC:** once Shaun gives the profile URL, add it to the
+   Person `sameAs` in `scripts/schema.js` (it lists only the certificates page and Impressum; today
+   only the WP Organization node carries a LinkedIn link, Tier 8 B).
+3. **Adapt each B2B blog post as a native LinkedIn article · CC drafts, Shaun posts.** For each
+   `eol-blog-writer` post aimed at HR/L&D buyers: full text on LinkedIn (a shared link counts as a
+   reshare, not original), H2s, one numbered list, real figures, one link to the money page
+   (Tier 12.1). Adapt the wording rather than copy it, since LinkedIn can't carry a canonical.
+4. **Buyer-question formats · CC drafts, Shaun decides.** Decision frameworks and comparisons,
+   e.g. "7 questions to ask before you book Business English training", "In-house vs online team
+   training: cost and results compared", and the Tier 12.14 roundup (us not first). Real prices
+   raise citation odds; publishing them is Shaun's call.
+5. **First-hand detail.** One real, anonymised training example per post (same rule as Tier
+   13.3). Never a student's or client's name or identifying detail (rule 1).
+6. **Cadence · Shaun confirms.** The source suggests 2–3 posts a week plus 3–4 articles a month;
+   too much for one trainer. Start at 1 post a week and 1 article a month; review after 8 weeks.
+7. **Measure · Shaun.** After 8 weeks, re-run the item 1 questions and compare. Check whether
+   LinkedIn appears as a referrer next to ChatGPT (Tier 13.4).
+
+### Not adopted (with reasons)
+- **Company page push:** 25% of citations; Shaun's own profile carries the expertise signal.
+- **LinkedIn for school, ESL or IELTS content:** students and parents aren't there (same reason
+  as Reddit in Tier 12).
+- **Other repo or code changes:** only item 2's `sameAs` line is needed.
+
+## Tier 17 — Issue #73 Search Console follow-ups (2026-10-28) · Shaun + CC
+Source: the Search Console list in GitHub issue #73 (2026-10-12), last 28 days to that date. Figures
+are direction only. Items already tracked elsewhere are mapped in that issue's comment and not
+repeated here.
+
+1. **301 the `/welcome/` copy of the Business English Skills article · CC via MCP, Shaun OK per item.**
+   `/welcome/essential-business-english-skills-to-acquire-today/` serves alongside
+   `/essential-business-english-skills-to-acquire-today/` (WP 1019, the same duplicate pattern as
+   Tier 8 B7). Redirect the `/welcome/` copy and trim the duplicated paragraph in the body. Issue #73
+   also drafted a title and meta rewrite for this page; neither is recorded here as approved or applied.
+   `docs/eol-backlog-plan.md` lists 1019 under "Why-learn-BE cluster, NOT yet examined"; this is the
+   decision entry.
+2. **Business-email pairs beyond 1167 · extends Tier 9.2 · Shaun picks the first, CC drafts.**
+   "Good vs bad" pages are the format that is gaining (+60% clicks; "good email vs bad email examples"
+   at 47 impressions). Next pages, one at a time (rule 2): meeting requests, follow-up emails,
+   complaints, LinkedIn messages, out-of-office replies. Each pair must be a real example, not a template.
+   **Drafted 2026-11-06:** recommendation, one drafted pair (follow-up after no reply) and live-placement
+   notes are in `docs/business-email-pairs.md`. Meeting requests are already on 1167 (it has four pairs now).
+3. **Industry-vocabulary candidates from issue #73 · extends Tier 12.10 · Shaun decides.** Issue #73
+   proposed HR, project management, accounting/finance, hospitality and IT/UX. Tier 12.10 only builds
+   industries with real training material, so Shaun confirms which of these qualify. HR already has a
+   Quizlet set that could become its own page.
+4. **Scale up the German Abitur and MSA pages · Shaun decides volume, CC drafts.** "Abitur Übungen"
+   rose 400% (10 clicks) in the same period, and issue #73 calls Abitur the strongest GEO asset. Plan
+   more Abitur packs and MSA pages, starting from the queries that already land. Check volumes in
+   Keyword Planner first (Ahrefs connector is broken).
+5. **Internal links into the Business English money page · CC.** Link the business verbs page (965),
+   the email pages (1061, 1167), the skills article and the industry vocabulary pages to each other,
+   using descriptive anchors, and each into `/business-english/` (1965). Keep to Tier 12.1: an
+   informational page links to one money page, not several.
+6. **Re-check the "ielts" query after the IELTS vocabulary hub article ships · Shaun decides the article.**
+   "ielts" had 135 impressions and 1 click on the same pull. Issue #73 planned a main-domain IELTS hub
+   article. Once it is live, compare the CTR for "ielts" in Search Console at the Tier 9.7 re-measure
+   (2026-11-06). **Checked 2026-11-06: article not live; "ielts" 1 click / 141 impressions (0.7%), no change. Detail in Tier 19.**
+
+## Tier 18 — Bing SEO report and Ahrefs crawl (2026-10-30) · Shaun + CC
+
+Sources: Bing Webmaster "SEO Analysis Summary" for `englishonline.training` (2026-10-28), Bing
+IndexNow coverage for the activities site (5 Sep – 28 Oct), and the Ahrefs Site Audit email for the
+activities site (crawl 2026-10-30, health 99). The Ahrefs connector still returns "Insufficient
+plan", so the Ahrefs URL lists were not available; the live pages were crawled instead.
+
+1. **→ Done (2026-10-30, Shaun approved, verified live). Titles too long (Bing: 3).** Bing flagged
+   the three posts whose `<title>` ran 76–91 characters; 2379 (78, published 2026-10-30) would have
+   been next. Set `jetpack_seo_html_title`, which replaces the whole `<title>` including the
+   "| English Online Training" suffix: 2367 "Why Your Team's Emails Are Too Long (It's Not the
+   English)", 2370 "American or British English: What Matters in Class", 2368 "How to Answer
+   "Comment on…" Tasks in the English Abitur", 2379 "A 10-Minute Task-Decoding Warm-Up for Abitur
+   Classes". Unflagged titles were 65 characters or less, so Bing's limit sits between 66 and 76.
+2. **→ Partly done (2026-10-30, Shaun approved, verified live). Meta descriptions too short
+   (Bing: 15).** Every sitemap page is 118–160 characters. The short ones are archives, where
+   Jetpack falls back to "Posts about X written by Shaun Trezise" (~45 chars). Added term
+   descriptions to the four categories with posts and none: `abitur`, `business-english`,
+   `it-englisch`, `writing`. **Open:** ~110 tag pages and the date archives use the same fallback;
+   the author page reads "…on Improve your English skills" (the site tagline, a setting). Not worth
+   110 descriptions — get Bing's URL list for the issue first and see what it actually counts.
+3. **Open · Shaun exports the URL list. Multiple H1 (1 page), missing alt (2 images).** Not
+   reproducible on 2026-10-30: all 83 sitemap URLs, the categories, author and paged archives have
+   one `<h1>` and no `<img>` without `alt`. Likely a crawl from before the 2026-10-23 H1 and alt-text
+   fixes.
+4. **Done (2026-11-01, Shaun approved the threshold). IndexNow resubmits the whole activities site on template changes.**
+   The big coverage-report days (542, 517, 484, 291 URLs) match site-wide chrome commits that touched
+   200–320 pages (schema, consent, contact email, layout). The LocalBusiness drop on 10-15 and its
+   restore on 10-16 sent everything twice with no content change. Indexed counts did not scale (542 →
+   5, 517 → 13; a 10-URL day also got 5). Shipped: `scripts/indexnow-submit.js` skips the push when
+   more than 50 pages change (`MAX_CHANGED_PAGES`), logging one line; `--all` still submits.
+   Check: `node scripts/check-indexnow-threshold.js`.
+5. **No action. Ahrefs notices.** "Main content requires JS" (3, probably `vocab-games.html`,
+   `level-test.html` and a `uni-c*-vocab-practice` page: interactive by design); "H1/meta description
+   changed" (last week's edits); "Page in multiple sitemaps" (flat `sitemap.xml` overlaps the section
+   sitemaps on purpose — eight scripts read it); "Changed pages not submitted to IndexNow" (counts
+   only Ahrefs' own IndexNow add-on; the CI job submits).
+
+## Tier 19 — Search Console audit: activities indexing drop (2026-11-01) · Shaun + CC
+
+Read in Search Console (domain property) on 2026-10-30 and 2026-11-01. Baseline:
+`docs/gsc-review-2026-10-06.md`.
+
+**Headline numbers.** Last 28 days vs the 28 before: clicks 85 vs 63, impressions 4.67k vs 2.56k,
+position 15.4 vs 16.2; the October Abitur posts drove it. Indexed, whole property: 124 (148 on
+10-06). **Activities sitemap: 17 of 255 indexed (48 on 10-06)**, 83 "Crawled – currently not
+indexed", 155 "Discovered – not indexed".
+
+**Diagnosis: quality/authority, not technical.**
+- URL inspection of `10c-discover-canada.html` (dropped): fetched 13 Oct, indexing allowed,
+  self-canonical; live test "URL is available to Google". Filtered to the sitemap, no page is
+  excluded by noindex, canonical, robots or errors.
+- No traffic was lost. Activities impressions by week: 221 (10 Aug) and 257 (17 Aug), the trial
+  after page 1763 started linking `themen/` on 16 Aug; 0–41 a week since 24 Aug. The 48 → 17 drop
+  is Google pruning pages that earned nothing (`modalverben`, `present-perfect` were indexed at
+  positions 36–63, recrawled 15 Oct, dropped).
+- Not thinness: dropped pages are longer (median 1,364 words, 943 unique to the page) than the
+  indexed ones (886 / 526).
+- **Zero external links to the subdomain**: Search Console lists 22, all to the main site.
+- ~260 templated pages in three months, and 15+ site-wide commits since 18 Aug each rewrote
+  200–320 pages, so Google keeps reassessing.
+- Survivors are adult/IT/uni/IELTS pages with search-shaped titles ("English for Property
+  Management: Vocabulary & Reading", "IELTS Vocabulary Glossary"). Dropped: textbook-unit school
+  pages ("Discover Canada", "Going to the West"), `themen/` and card-list hubs.
+
+**Proposed, in order:**
+1. **Pause site-wide template changes on the activities site · Shaun decides.** Batch the ones that
+   must happen.
+2. **About 20 target pages with search demand · CC drafts, Shaun approves the WP edits.** `themen/`,
+   ESL grammar, IELTS, business. Link each from a WordPress post that already ranks, e.g.
+   `/using-past-progressive/` (348 impr) → `themen/past-progressive.html` and
+   `gr-past-progressive.html`. The main domain carries the authority.
+3. **First external links to the subdomain · Shaun.** 4teachers/eduki listings, LinkedIn, a guest
+   post for eltabbjournal.com (already links to the main site).
+4. **School-page titles get search terms · Shaun decides** (open item A5).
+5. **Optional · Shaun names pages (rule 9).** Noindex textbook-unit pages that students reach by
+   direct link, not search. `10g-cultural-diversity` had a click in the last 90 days, so it stays.
+
+**Also found:**
+- **Page 842** ("Pros & cons of learning English online…") has been a draft since 2026-09-22; its
+  old `/welcome/blog-posts/…` URL 404s yet still had 73 impressions at 7.9, likely for "is it better
+  to study english online or on campus…" (pos 4.2). No note says why it was unpublished. Republish,
+  or 301 to `/2023/04/05/learning-english-online/` (Redirection, wp-admin) · Shaun decides.
+- **Page-1 rankings with low CTR:** Zusammenfassung post (470 impr, pos 9.8, 3 clicks), Abitur 2027
+  Änderungen (267, 6.1, 3), common business verbs (232, 8.1, 6). Snippet rewrites, as in Tier 9.1.
+- **Page 2–3 with demand:** `/writing-emails-in-english/` (419 impr, 18.5, 0 clicks; Search Console
+  flags −79% recently), `/using-past-progressive/` (348, 22.1), homepage (219, 38.7).
+- Housekeeping: one unused verification token; a "Crawled – not indexed" validation shows Failed;
+  the other 404s are `?share=` links, deleted 2016 posts and old tags. All 9 sitemaps read 28–30 Oct.
+
+**Re-pull of 2026-11-06 (CC, read in Shaun's signed-in Search Console, read-only; no setting changed, no indexing requested).**
+- **Ten hubs, URL Inspection, activities property.** All ten read "URL is not on Google · Crawled – currently not indexed",
+  and every one shows **last crawl 7 Oct 2026** (the day Request indexing was clicked). Not recrawled in the month since.
+  `7g-activities` 06:01, `7c-activities` 06:05, `8c-activities` 06:06, `8g-activities` 06:07, `9g-activities` 06:09,
+  `9c-activities` 06:25, `10g-activities` 06:12, `10c-activities` 06:12, `abitur-activities` 06:10,
+  `esl-grammar-activities` 06:11. `7g-activities` lists the sitemaps and two main-site referring pages (the homepage and a July post).
+- **Activities property, Page indexing (report last updated 23 Oct 2026, the same date as 1 Nov):** 17 indexed,
+  248 not indexed. Reasons: Crawled – not indexed 89 (validation **Failed**), Discovered – not indexed 155 (Not Started),
+  noindex 2, 404 1, alternate canonical 1. The index count did not move.
+- **Main-domain property, last 3 months to 4 Nov:** 211 clicks, 12.9k impressions, CTR 1.6%, position 22.2
+  (baseline 126, 11.1k, 1.1%, 32.9; the windows differ in length and the Abitur posts drove most of the gain).
+- **"ielts" (Tier 17.6), same window:** 1 click, 141 impressions, so CTR 0.7% (baseline: 1 click, 135 impressions).
+  **The hub article is not live**: the main site's search lists only the existing "IELTS Vocabulary Glossary" page (460),
+  and nothing with "ielts" in the sitemap. So this is a no-change baseline, not a result of the article.
+  What the numbers can't show: whether the query's CTR moved after anything (the 3-month window mixes before and after,
+  and one click on 141 impressions is noise), which page the impressions land on, and the position.
+- **Reading.** The hubs did not recover. Google has not recrawled them since the 7 Oct requests, so the new hub intros
+  have still only been judged once, on the day they were requested, and the activities index is stuck at 17. The
+  frozen-change rule (item 1) and the wait for links from other sites (item 3) both stand. For the homepage-roles item
+  (`docs/homepage-roles-proposal.md`): its premise that the hubs own their queries has no indexed hubs behind it, so
+  treat the proposal as unmeasured. Don't change the WordPress homepage on the strength of hub rankings; revisit once
+  the hubs are recrawled and indexed, or once a link from another site lands (item 3). Not obtained: per-page
+  impressions for the hubs (none are indexed, so none expected), and "ielts" position.
+
+## Tier 20 — Monthly internal-link pass on the main site (2026-11-06) · Shaun + CC
+
+Carries out Tier 17.5 and Tier 19.2. Source: an X post ("internal linking… every week"); adopted
+with changes. **Main site only.** The activities site already links itself through the build
+(breadcrumb, Keep-practising, reciprocal "Verwandte Themen"), and Tier 19.1 pauses site-wide churn there.
+
+**Run on the Mac**, where Search Console is open in the browser. The Ahrefs GSC tools still return
+"Insufficient plan" (checked 2026-11-06), and cloud sessions can't reach Search Console.
+**Monthly, not weekly**: positions need weeks to settle. Next run: when Shaun starts it; re-measure the
+targets 4 weeks after each run, before the next one.
+
+**Prompt (paste into the Mac session):**
+
+> Read `docs/seo-backlog.md` Tier 12.1, 17.5, 19.2 and 20, and CLAUDE.md "Known traps".
+> 1. In Search Console (domain property `englishonline.training`, last 3 months), export
+>    Performance → Queries and Pages for the main domain. Save the export outside the repo.
+> 2. Targets: main-site pages with a query at position 4–20 and ≥ 50 impressions. Each target's
+>    anchors are its top 1–3 queries, or a close natural variant in the post's language.
+> 3. Sources: published WordPress posts and pages (site 65893384). Skip pages 1763 and 1997.
+> 4. Rules: 3–5 new links per source at most; body text only (no headings, no first sentence,
+>    no text that is already a link); never self-links; each target at most once per source;
+>    don't rewrite sentences to force an anchor; an informational page links to one money page
+>    only (Tier 12.1); prefer targets at positions 4–15.
+> 5. Before any edit, show one table: source URL → anchor (with its sentence) → target URL →
+>    target query, position, impressions. Wait for Shaun's OK per row.
+> 6. After OK: edit with the post-sections tools, or with content fetched with
+>    `context: "edit"`. Never write back rendered HTML. Re-read each post after the write and
+>    confirm the link and the rest of the post are intact.
+> 7. Append a changelog here under "Runs" (date, source, anchor, target, WP revision id) so
+>    each edit can be reverted, and note each target's position and impressions as the baseline.
+
+**Reminder:** a cloud scheduled task, "Monthly internal-link pass (main site)", pushes a reminder on
+the 3rd of each month at 10:47 Berlin time (first run 2026-12-03). It only reminds: cloud sessions
+have no connectors, repo or Search Console. To make the pass run on its own, create a Cowork scheduled
+task on the Mac with this prompt, then delete or disable the cloud one so there aren't two.
+
+**Runs:**
+
+- **Run 1 · 2026-11-06 · four links live, row 4 skipped.** Drafted in a cloud session;
+  numbers refreshed on the Mac the same day from Search Console (last 3 months, data 2026-08-05 to
+  2026-11-04). Each source was re-read with `context: "edit"` before and after its write, and none
+  linked to its target before. Brackets mark the anchor; no sentence is rewritten.
+
+  Baseline is **page totals**: Search Console hides most queries, so no visible query reaches
+  50 impressions, and the draft's "query" figures (470, 197) were page totals too. To undo an edit,
+  restore the "Before" revision. The targets are under the Tier 12.3 no-touch until 2026-12-05, but
+  only the sources were edited.
+
+  | # | Source (WP id) | Sentence, [anchor] | Target (WP id) | Target position · impressions | WP revision · Before | Status |
+  |---|---|---|---|---|---|---|
+  | 1 | `/2026/11/02/englisch-aufsatz-fehler-vermeiden/` (2536), Fehler 4 | „Über einen Text schreibt man im Präsens — in der [Zusammenfassung] und in der Analyse." | Summary auf Englisch (2032) | 9.5 · 1,040 | 2843 · 2819 | Live |
+  | 2 | `/2026/07/20/kostenlose-abitur-englisch-ubungen-…/` (2050), list | „Ein gelungener [Kommentar] zeigt deine Fähigkeit, Position zu beziehen …" | Kommentar auf Englisch (2038) | 8.0 · 224 | 2841 · 2071 | Live |
+  | 3 | same (2050), list | „Lerne, längere Texte präzise und strukturiert [zusammenzufassen]." | 2032 | 9.5 · 1,040 | 2841 · 2071 (same save as row 2) | Live |
+  | 4 | `/2026/08/17/abitur-englisch-ubungen-kostenlos-…/` (2217), para 1 | „… wie baut man einen [überzeugenden Kommentar] auf …" | 2038 | 8.0 · 224 | none | Skipped by Shaun: the anchor is in the post's first sentence, which the rules exclude |
+  | 5 | same (2217), para 2 | „Text Analysis, Argumentative Writing, [Writing Summaries] und Mediation verlangen …" | 2032 | 9.5 · 1,040 | 2842 · 2332 | Live; "Writing Summaries" is also the name of the activities pack; Shaun approved it knowing that |
+
+  **Main queries at baseline:** zusammenfassung englisch 13.8 (13 impressions), zusammenfassen
+  englisch 11.3 (3). The Kommentar post (2038) shows no query rows.
+
+  **Dropped on refresh:** rows 6 and 7 (1214 and 2367 → `/writing-emails-in-english/`, 1061). The page
+  is at 22.4 (575 impressions), outside 4–20. "writing emails in english" is at 56.7 (9); "how to
+  write a professional email" is at 7.2 but only 25 impressions.
+
+  **Re-measure** 2032 and 2038 from 2026-12-04, 4 weeks after this run.
+
+  **No natural anchor found (don't force one):**
+  - Business verbs (965, 8.1): no post or page mentions business verbs in its text. Tier 17.5 needs a
+    sentence written for it, so that is a content change for Shaun to decide, not a link pass.
+  - Abitur 2027 Änderungen (2520, 6.1): only English posts (2521, 2379) mention the 2027 exam year;
+    linking them to a German page reads badly.
+  - MSA post (2066, 8.2, 351 impressions, English, for teachers): only German parent/student posts
+    mention MSA. No competition with the German post (2538) so far: it went live 2026-11-05 and has no
+    data yet. About 50 of 2066's impressions come from queries containing "msa", and some look like
+    MSA University in Egypt, not the German exam ("msa english test" 7.9; an Arabic query names the
+    university). "msa englisch" has one impression, at 62. Re-check both at the next run.
+  - Kreatives Schreiben (2039, 9.2) and Good vs bad emails (1167): every post that mentions them already
+    links to them.
+
+## Tier 21 — Bing queries as a second demand signal (2026-11-07) · Shaun + CC
+
+Source: a social post Shaun shared on 2026-11-07. Claim: pages with no data in Search Console
+often show queries in Bing Webmaster Tools. Fits this site: Tier 20 found that Search Console hides
+most queries, so no visible query reached 50 impressions. Bing shows more query rows. Extends
+Tier 9.7, Tier 12.8 (repoint pass) and Tier 18 (Bing report). The post's advice to automate "but not
+100%" matches Tier 12 and CLAUDE.md rules 7–9: **CC analyses and proposes; Shaun approves every
+live edit.**
+
+**Run on the Mac**, where both consoles are open in the browser. Cloud sessions can't reach Search
+Console or Bing, and the Ahrefs connector returns "Insufficient plan".
+
+1. **Rule: Bing joins Search Console as a query source.** Merge both exports per page. Mark each
+   query GSC only, Bing only or both. Bing-only queries are real demand, but Bing's audience and
+   ranking differ from Google's. Check the Google top 3 before acting on a Bing-only query.
+2. **Export (Shaun).** Last 3 months, per page, from both tools: Search Console → Performance →
+   Queries and Pages; Bing Webmaster → Search Performance → Queries and Pages. Save outside the
+   repo. Start with pages that have Bing data and little or no Search Console data.
+3. **Targets.** Main-site pages and `themen/` pages with a cluster at position 5–20, or high
+   impressions and low CTR (title/meta problem, not a content problem; see Tier 9.7). Pages edited
+   2026-10-05/06 (1061, 1167, 2032, 2038, 2039, 2066, 965) are measure-only until **2026-12-05**
+   (Tier 12.3), except for factual errors.
+4. **Filter out of scope.** Drop queries outside English grammar and English-for-work for English-
+   and German-speaking readers (no other languages, no Spanish queries; see the language decision in
+   the platform notes). Drop brand-confusion queries (e.g. "msa" meaning the Egyptian university;
+   Tier 20 run 1).
+5. **Per-page analysis (CC, in the Mac session).** Prompt, adapted from the post:
+
+   > Read `docs/seo-backlog.md` Tiers 12, 20 and 21, and CLAUDE.md rules 7–9. For ONE page I give you
+   > (URL, primary keyword, which money page it feeds — Tier 12.1), the page text, and the Search
+   > Console and Bing query exports:
+   > 1. Merge both lists. Group close variants into clusters. Mark GSC only / Bing only / both.
+   > 2. Per cluster, classify: covered well / covered weakly / not covered / wrong intent (needs
+   >    another page). Quote the part of the page that covers it, or say "none".
+   > 3. For clusters with real impressions, search Google and read the top results. Report dominant
+   >    intent, dominant format, what they have that we don't (sections, tables, FAQ, examples),
+   >    and SERP features worth targeting.
+   > 4. Rank by impressions across both engines, position (5–20 first), CTR gap, and effort.
+   > 5. Output: summary (3–5 sentences); coverage table; recommendations in priority order (target
+   >    queries, change, where it goes, suggested heading with 2–3 sentences); 2–3 title and meta
+   >    options.
+   > 6. Do not edit anything. Start with "nothing lost" or list what the rewrite would remove
+   >    (rule 8). Keep the page's own voice (VOICE.md). Never add a claim you can't source.
+
+6. **Gate.** Shaun approves per row. Then edit through the WordPress tools with content fetched
+   using `context: "edit"` (Known traps). Re-read after every write. Never write back rendered HTML.
+   Pages with ≥ 600 words or clicks in 90 days are never stubbed or noindexed (rule 9).
+7. **After the edit.** Resubmit: Bing URL Submission or IndexNow; Google URL Inspection → Request
+   indexing (manual, a few URLs per day). Then run the Tier 20 internal-link pass for the page. Note
+   each page's baseline (Bing and GSC impressions, position, CTR) under "Runs" and re-measure after
+   4 weeks.
+8. **Open · Shaun decides: `--bing` import.** `scripts/search-opportunities.js --csv` reads the
+   Search Console export. A Bing import would merge both with a source column. Check the real Bing
+   CSV column names first; don't assume they match Search Console's. Not needed for the first run
+   (the prompt works on pasted exports).
+
+**Not adopted:** a fully automated edit-and-publish loop. It breaks rules 7–9 and repeats the 1167
+mistake (Tier 12.4). Automate the analysis and the changelog, not the live write. Running the same
+workflow for other sites or customers is outside this repo: it needs its own copy of the prompt.
+
+**Runs:** none yet.
+
+## Tier 22 — Next Abitur writing guides (2026-11-07) · Shaun decides, CC drafts
+
+Source: Bing AI Performance report (31 Oct – 4 Nov 2026): the Abitur cluster is the strongest group of
+AI-cited pages, about 130 citations over both sites. Cited: Kommentar guide (2038, 42), Zusammenfassung
+guide (2032, 32), Pixar story writing (2372, 14), kreatives Schreiben (2039, 9), `abitur-operatoren` (18),
+`abitur-englisch-2027` (13), `abitur-text-analysis` (5). **Proposal only: no post written, no WordPress
+change.** Citation counts are Shaun's figures from the report; this tier re-checked none of them.
+
+### Mapping: task type → what exists
+
+Operators from `abitur-operatoren.html` (IQB Grundstock for Prüfungsjahr 2027). Pack = the 4 themed
+`abitur-*` pages per type (science and technology, media impact, aims and ambitions, nations).
+WP status read 2026-11-07 (publish / `future` = scheduled).
+
+| Task type (operators) | Activities page | WordPress guide | Gap |
+|---|---|---|---|
+| Summary (outline, summarize, sum up, point out) | `abitur-writing-summaries` + 4 packs | 2032 Summary (publish) | none |
+| Text analysis (analyze, examine, compare, describe, explain) | `abitur-text-analysis` + 5 packs | **none.** Only 2042 (overview) and 2520/2521 (what changed) touch it | **biggest** |
+| Comment (comment on) | `abitur-argumentative-writing` + 4 packs | 2038 Kommentar (publish); 2368 EN for teachers (publish) | none |
+| Discuss / assess / evaluate | same argumentative pack (shared with comment) | **none.** 2038 covers comment only | **gap** |
+| Write + text type (letter to the editor, blog entry, article, speech) | none dedicated; text types sit inside the packs | **none** (2039 is creative writing, not exam text types) | **gap** |
+| Mediation (Sprachmittlung) | `abitur-mediation` + 4 packs | 2559 (scheduled 11 Nov) | covered, not yet live |
+| Operators overall / AFB | `abitur-operatoren`, 2489 (EN) | 2521 (EN), 2520 (DE) | none |
+| Vocabulary by theme | science and technology only in packs | 2837 (scheduled 8 Dec) | other themes open |
+| Study plan | `abitur-englisch-2027` | 2839 (scheduled 14 Dec) | covered |
+| Linking words | `themen/linking-words` | 2765 (scheduled 29 Nov, for parents) | covered |
+| Closed reading/listening formats (decide, match, give evidence) | none | none | **skip**: the page says Fachbrief Nr. 9 lists them as not in the Brandenburg written exam |
+
+### Proposals (ranked)
+
+Demand is an **estimate** throughout: no volumes were pulled (Keyword Planner not checked, Ahrefs
+connector returns "Insufficient plan"). Evidence used: the Bing citation pattern above (every
+cited guide is a "how to write X" German guide for an operator, and the text-analysis page already earns
+AI citations with no guide behind it) and the German query forms in the Bing report titles. Confirm the
+query wording in Search Console / Bing before drafting (Tier 21 step 5).
+
+1. **Textanalyse auf Englisch schreiben (analyze / examine / compare).**
+   - Working title: „Textanalyse auf Englisch schreiben: Aufbau, Stilmittel und Formulierungen fürs Abitur"
+   - Target query (estimate): „textanalyse englisch abitur", „text analysis englisch schreiben", „stilmittel englisch analyse".
+   - Why: the same format as 2032 and 2038 (step-by-step guide per operator), and the largest task type
+     with no guide. `abitur-text-analysis` gets 5 citations with no German explainer to feed it. The 2027
+     list tightened analyze/examine and compare to require evidence and language/form, which is a
+     fresh angle no competitor page can copy without the IQB text. Existing lead magnet
+     `lead-abitur-textanalyse.html` (10 Redemittel) can be the hand-off.
+   - Format: **WordPress guide**, linking to `abitur-text-analysis` (one money page, Tier 12.1).
+2. **Discuss und assess im Englisch-Abitur (Erörterung).**
+   - Working title: „Discuss, assess, evaluate: Eine Erörterung auf Englisch schreiben"
+   - Target query (estimate): „erörterung englisch abitur", „discuss englisch schreiben", „to what extent aufsatz".
+   - Why: 2038 ranks and is cited for comment; discuss and assess/evaluate are the next two argumentative
+     operators and students confuse them (the operators page lists "discuss statt assess" as a common
+     mix-up). The guide can carry the comment/discuss/assess comparison no page has.
+   - Format: **WordPress guide**, linking to `abitur-argumentative-writing`. Cross-link 2038 both ways.
+3. **Letter to the editor, blog entry, article: Textsorten im Englisch-Abitur.**
+   - Working title: „Letter to the Editor, Blog Entry, Article: Textsorten im Englisch-Abitur schreiben"
+   - Target query (estimate): „letter to the editor englisch schreiben", „blog entry englisch abitur", „textsorten englisch".
+   - Why: "write + text type" is the one operator with no page of its own, and the text type decides
+     register and format marks. Query is specific and probably less competitive than 1 and 2 (estimate).
+   - Format: **start as a WordPress guide**; after it ranks, add an activities page with a text-type
+     checklist and model texts, because format drills fit exercises better than prose. Lower confidence
+     than 1 and 2: check Search Console for any existing impressions first.
+
+Order: 1, then 2, then 3. Slots: three posts are already scheduled to 14 Dec; the next free slot
+after the schedule pattern is ~17 Dec (every ~3 days at 10:54). **Shaun decides slot and order.**
+
+### Exam-rule claims relied on (fact-check-blogs)
+
+- **Confirmed:** the IQB Grundstock (2019 edition, `E_Grundstock_von_Operatoren.pdf`) lists interpret, illustrate
+  and give/write a characterization of, and defines discuss as "give arguments or reasons for and against,
+  especially to come to a well-founded conclusion".
+- **Not re-checked here (rests on `abitur-operatoren.html`, which cites the 2025 IQB revision and Fachbrief
+  Nr. 9; the three posts scheduled 2026-11-05 were checked against the Berlin/Brandenburg 2027 documents):** the 2027 deletions, the
+  tightened analyze/compare definitions, and comment allowing one side. **Before drafting, re-read the
+  2025 IQB revision and Fachbrief Nr. 9 for the sentence each guide quotes.**
+- **Not claimed:** exam weighting, length, or which task types appear in which Prüfung. Draft 1–3 without
+  those or verify them first (exam-length and weighting figures have gone wrong before).
+
+### Drafted 2026-11-07 (Shaun approved all three)
+
+| # | Draft | Title | Proposed slot | Links to |
+|---|---|---|---|---|
+| 1 | WP 2854 (**scheduled**) | Textanalyse auf Englisch schreiben: Aufbau, Stilmittel und Formulierungen fürs Abitur | 20 Dec, 10:54 | `abitur-text-analysis` |
+| 2 | WP 2855 (**scheduled**) | Discuss, assess, evaluate: Eine Erörterung auf Englisch schreiben | 29 Dec, 10:54 | `abitur-argumentative-writing` |
+| 3 | WP 2856 (**scheduled**) | Letter to the Editor, Blog Entry, Article: Textsorten im Englisch-Abitur schreiben | 3 Jan 2027, 10:54 | `abitur-argumentative-writing` |
+
+- **Scheduled by Shaun's decision (2026-11-07):** 2854 on 20 Dec and 2855 on 29 Dec, both 10:54, status `future`.
+  **No posts 21–28 Dec** (Shaun doesn't post over Christmas). 2856 on 3 Jan 2027 at 10:54 (Shaun's date, set later the same day). Slots were free (the schedule
+  ended 14 Dec, WP 2839); 17 Dec is held for draft 2849.
+- Featured images (house style, no text, checked): 2859 on 2854, 2860 on 2855, 2861 on 2856, with German alt text.
+- All three: German, "du", categories Abitur (163133) + English Learning (9490), 2038 and 2032 linked and not edited. Examples are invented and labelled as such.
+- **Fact-check against primary sources (read 2026-11-07):** IQB Grundstock ab 2027 (Stand 29.01.2025) and
+  Fachbrief Englisch Nr. 9 (Aug 2025, Brandenburg). Confirmed: the analyze/examine, compare, discuss, assess,
+  comment and write definitions; no interpret/illustrate/characterization in the new list; discuss and assess
+  always expect the other side, comment may take one side (Fachbrief 4.1); the Erwartungshorizont forms
+  (pro/contra list, "BUT", "AND/OR"); the Brandenburg content criteria for Textanalyse and gestaltendes Schreiben.
+  **No difference from the live `abitur-operatoren` page was found.** Not checked: Berlin's own criteria, so the
+  guides attribute criteria to Brandenburg. The 30/30/40 weighting in the Fachbrief is an example, so it is not used.
+- **Search Console for "letter to the editor englisch" was not readable** (Ahrefs returns "Insufficient plan");
+  draft 3 was written without that check.
+- Draft 3 links the scheduled Mediation post (WP 2559) by slug; check the link after 11 Nov.

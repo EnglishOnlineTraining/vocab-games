@@ -133,6 +133,9 @@ const IGNORE_PATHS = new Set([
   'prefix-topic-slug.html', // pattern, not real file
   'esl-topic-slug.html', // pattern
   'esl-articles.html',   // example in esl-grammar-exercise-draft
+  'past-progressive-gap-fill-exercise.png', // naming example in eol-blog-writer
+  // youtube-exercise-demo: per-video files in ~/Movies/eol-demos/<unit>/, not the repo
+  'chapters.txt', 'timeline.json', 'writing.json', 'youtube.md',
 ]);
 
 // WordPress MCP / API references that look like file paths but aren't
@@ -221,15 +224,16 @@ function checkWebhookUrls(content, skillName) {
   const Y9_WEBHOOK = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj';
 
   // If skill mentions a webhook, verify it matches CLAUDE.md
-  if (content.includes('hook.eu1.make.com')) {
-    if (content.includes(Y7_WEBHOOK)) {
+  const allUrls = content.match(/https:\/\/hook\.eu1\.make\.com\/[a-z0-9]+/g) || [];
+  const found = new Set(allUrls);   // whole URLs, compared exactly
+  if (allUrls.length) {
+    if (found.has(Y7_WEBHOOK)) {
       issues.push({ type: 'OK', msg: 'Year 7/8 webhook URL matches CLAUDE.md' });
     }
-    if (content.includes(Y9_WEBHOOK)) {
+    if (found.has(Y9_WEBHOOK)) {
       issues.push({ type: 'OK', msg: 'Year 9/10 webhook URL matches CLAUDE.md' });
     }
     // Check for any OTHER make.com URLs that might be stale
-    const allUrls = content.match(/https:\/\/hook\.eu1\.make\.com\/[a-z0-9]+/g) || [];
     for (const url of allUrls) {
       if (url !== Y7_WEBHOOK && url !== Y9_WEBHOOK) {
         issues.push({ type: 'WARN', msg: `Unknown Make webhook: ${url}` });
@@ -242,7 +246,7 @@ function checkWebhookUrls(content, skillName) {
 function checkConstants(content, skillName) {
   const issues = [];
   // Check TEACHER_EMAIL consistency
-  if (content.includes('TEACHER_EMAIL') && !content.includes('englishonlinetraining@pm.me')) {
+  if (content.includes('TEACHER_EMAIL') && !content.includes('learn@englishonline.training')) {
     issues.push({ type: 'WARN', msg: 'TEACHER_EMAIL referenced but expected value not found' });
   }
   // Check GitHub repo reference

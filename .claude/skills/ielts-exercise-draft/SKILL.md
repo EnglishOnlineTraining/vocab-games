@@ -32,7 +32,7 @@ These already carry what the section needs, and the template does not:
   or `#inp-class`. The privacy policy (WP page 346, §7) promises IELTS learners that no name is
   sent. `test-ielts-email.js` pins this.
 - **`SHEET_URL`**: the **online sheet** Apps Script URL, copied from the page. Rows land in its
-  IELTS tab. **`TEACHER_EMAIL`**: `englishonlinetraining@pm.me`.
+  IELTS tab. **`TEACHER_EMAIL`**: `learn@englishonline.training`.
 - **The "About this task in the exam" card** on the welcome step.
 - **Writing pages:** a page-level `WRITING_RUBRIC` (see A5).
 
@@ -49,8 +49,14 @@ Note or any grade text.
 ### A3. Content rules
 
 - **English only.** No German anywhere in the task content.
+- **Lessons from item analysis:** follow STYLE.md §2.5 (payload keys equal scoreKeys; typed keys
+  accept every correct word order).
 - **No band scores, ever.** Do not predict or imply one ("this is a band 7 answer"). Model answers
   are "a model answer", nothing more.
+  **The one exception** is the full 40-question Reading practice test (`ielts-reading-practice-test.html`,
+  backlog Tier 14 item 1). It sets `IELTS_BAND_ESTIMATE = true`, and `exercise.js` shows an
+  *estimated band range* between ielts.org's four published averages (15 ≈ 5, 23 ≈ 6, 30 ≈ 7,
+  35 ≈ 8), with their caveat and a link to the source. Only a full-length test may do this.
 - **Everything original.** Write your own texts, graphs, tables, diagrams and questions. Never copy
   or closely paraphrase official IELTS or Cambridge material. Label invented data **"(Invented
   practice data.)"** next to the task.
@@ -59,7 +65,8 @@ Note or any grade text.
 - **Exam facts:** use only these, verified on ielts.org (Academic Reading and Academic Writing
   format pages) on 2026-10-15. If you build a brief more than two months after that date,
   spot-check these facts on ielts.org again first — IELTS updates its format pages periodically.
-  Check again with the `fact-check-blogs` skill if you add any other claim about the exam.
+  If you add any other claim about the exam, verify it the same way, with the `fact-check-blogs`
+  skill.
   - **Reading:** 60 minutes, 3 sections, 40 questions, 2,150–2,750 words of text in all, 1 mark
     per question.
   - **Matching Headings:** there are always more headings than paragraphs, each heading is used
@@ -119,6 +126,10 @@ Follow `docs/learning-design-checks.md` (all nine checks), with these IELTS spec
 - **Explanations:** every graded gap gets a `{label, correct, why}` entry in
   `data/explanations.json`, keyed by the page's `UNIT`, one sentence each. For Reading, the `why`
   quotes or points to the exact words in the text.
+  **Writing pages:** set `"review": false` on Ex A (the model report or essay). Its gaps depend on the
+  chart, diagram or model text, and `ielts-review.html` builds each item from the label alone, so
+  out of context a wrong option can become defensible ("Firstly", "Some people argue that").
+  Ex B and Ex C must make sense on their own, because the review page draws on them.
 
 ### A4a. Reading pages: exam set first, then drills
 
@@ -213,11 +224,14 @@ row. Model the rows on the two existing writing pages.
 3. **"Coming next":** remove the item you built from the list in `ielts-activities.html` — each
    brief has its own bullet, and the box is hand-maintained (outside the HUBCARDS markers). Once
    the list is empty, remove the box.
-4. **Build:** run `node scripts/build.js`. It regenerates `ielts-review.html` (which now also draws
+4. **Build:** run `node scripts/build.js` twice before committing (the first run of a new page writes its
+   `data/lastmod.json` entry, the second settles its key order, or `build.js --check` fails). It regenerates `ielts-review.html` (which now also draws
    from the new page), the hub, the sitemap and the head blocks. Then run
    `node scripts/verify-exercise.js` on the page, `node scripts/validate-explanations.js`, and
    `node test-ielts-email.js` (pins the email-only, no-name submission path A1 depends on).
-5. **Browser check:** serve over HTTP, not on port 8765, and click through.
+5. **Browser check, written as a spec:** copy `tests/ielts-matching-headings.spec.js` to
+   `tests/<UNIT>.spec.js` and adapt it, so the check is repeatable (`AGENTS.md`, Testing). Run
+   `npx playwright test tests/<UNIT>.spec.js`; CI runs every spec on each PR. It must cover:
    - **Practise mode:** every Check button; one deliberate wrong answer per section shows its
      explanation; the score card reads "points (N%)" with no Note; the rubric is the IELTS one;
      nothing scrolls sideways at 375 px; the console shows no errors.

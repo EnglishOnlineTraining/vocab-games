@@ -20,7 +20,23 @@
 ### 2. Paste-block and 3. Copy-block — code lives in `exercise.js`
 *(snippets removed 2026-10-02: the working copy is in `exercise.js`, the shared framework, which is authoritative; `_template.html` just says so in its header comment.)*
 
-Both blocks are injected by the shared `exercise.js`; nothing to add per page. The native `copy` listener in `exercise.js` is what blocks right-click → Copy / menu copy, not just Ctrl/Cmd+C — every exercise needs both the `copy` and `paste` listeners, not just a `keydown` check. (Audit note: `uni-pm-vocabulary.html` and `uni-writing-task.html` were missing the native `copy` listener and have been fixed; `uni-presentation-task.html` has no free-text fields — it's a logistics/confirmation screen, not a graded exercise — so blocking was judged not applicable there.)
+Both blocks are injected by the shared `exercise.js`; nothing to add per page. The native `copy` listener in `exercise.js` is what blocks right-click → Copy / menu copy, not just Ctrl/Cmd+C — every exercise needs both the `copy` and `paste` listeners, not just a `keydown` check. The only exception is an event whose target is `#copy-block`, the read-only fallback textarea populated by `copyAnswers`: copying from and pasting into that textarea must work, and fallback pastes do not increment integrity attempt counters. Copying elsewhere on the page and pasting into every normal answer field remain blocked. (Audit note: `uni-pm-vocabulary.html` and `uni-writing-task.html` were missing the native `copy` listener and have been fixed; `uni-presentation-task.html` has no free-text fields — it's a logistics/confirmation screen, not a graded exercise — so blocking was judged not applicable there.)
+
+**Drop block and integrity counts (added 2026-10-17; counters in `integrity.js` since
+2026-10-18).** Every framework page loads `integrity.js` right before `exercise.js`
+(`_template.html`, `build-review-pages.js` and `build-quizzes.js` write the tag; keep
+it on new pages). It blocks text dropped into an input or textarea, and counts how
+free text was produced: typing time,
+keystrokes and deletions (from `input` events), blocked pastes and drops, bulk inserts (over 20 characters in one event), words, and
+reloads/resumes (the counts ride in the autosave draft). On `8c-`, `9g-`, `9c-`, `10g-`,
+`10c-`, `msa-c-` and `uni-` pages the counts go into the payload as `int_*` fields, for
+school pages only when the class field matches `EOL_INT_CLASSES` (**update that list
+each school year**). Every other prefix is off; a page can override with
+`var INTEGRITY_LEVEL`. Practise mode sends anonymous counts to the `Practise Baseline`
+tab of the Apps Script online sheet, with an opt-out on the results screen. Rules and
+open questions: `docs/integrity-signals-spec.md`. Tests: `tests/integrity-signals.spec.js`,
+`tests/integrity-standalone.spec.js`. The 5 class tests and `uni-writing-task` load
+`integrity.js` on their own and add `eolIntFields()` to their payloads.
 
 ### 4. Step navigation
 A clickable step-jump bar (`<nav class="step-nav" id="step-nav"></nav>`) sits right after the sticky header. It's rendered by `renderStepNav(current)` and lets a student click back to any step they've already visited (tracked via `maxStepReached`); jumping ahead to a step not yet reached is blocked. `showStep(n)` calls `renderStepNav` automatically — nothing to wire up per-exercise. Pre-built in `_template.html`.
@@ -29,6 +45,8 @@ A clickable step-jump bar (`<nav class="step-nav" id="step-nav"></nav>`) sits ri
 Each `checkDropdowns(ids, prefix, answers, fbId, scoreKey)` call now takes a `scoreKey` (e.g. `'exA'`) and records `{correct, total}` into `state.scores[scoreKey]`. At submit time, `totalScore()` sums every recorded `scoreKey`, and `lookupGrade(earned, possible)` looks the raw point totals up against `GRADE_TABLE` — the same 91-row Punktetabelle (PMG/BAO Sek I, max points 10–100 → Note 1–5) used by the "Notengrenzen Rechner" artifact. If the total possible points fall in the 10–100 range the table row is used directly; fewer than 10 points are scaled up to 10, more than 100 scaled down to 100. Returns a Note (1–5) and label (Sehr gut … Nicht genügend). The result is shown to the student on the summary screen (`renderScore()`) and included in both the Sheet/Make payload and the email fallback as `score` and `grade` fields. If an exercise has no auto-gradable sections (no `scoreKey`s passed), the score card stays hidden — this is optional, not mandatory, for exercises that are pure free-text/discussion. Pre-built in `_template.html`; the only thing a new exercise needs to do is pass a unique `scoreKey` string to each `checkDropdowns()` call it wants graded.
 
 **Graded-attempt scoring (added 2026-07-17 as first-answer; changed to graded attempts 2026-08-05).** Each gap now earns **partial credit by how many tries it took**: correct on the **1st** check = **1 point**, **2nd** = **½**, **3rd** = **¼**, 4th or later = **0**. A "check" only counts as an attempt when the gap has a **non-blank** value (blank gaps burn no attempts), and once a gap is answered correctly its points are **locked** — later re-checks can't raise *or* lower them. Re-checking still recolours the gaps and shows current feedback, so students can learn from mistakes. Tracked per-gap in `state.attempts[scoreKey][gapKey]` as `{n, earned, done}`; `recordedPoints(scoreKey)` sums the earned points (which may be fractional, e.g. `4.5`). The shared helpers `attemptPoints(n)`, `recordGap(scoreKey, k, ok)`, `recordedPoints(scoreKey)` and `fmtPts(x)` (fractional display) live in `exercise.js` right above `checkDropdowns`. The recorded total flows through `lookupGrade`/`lookupMsaGrade` unchanged (both compare `>=`, so fractional points grade correctly with no rounding). When the recorded points differ from the count of currently-green gaps, the feedback line says so ("Recorded so far: X / Y points (1st try = 1, 2nd = ½, 3rd = ¼)") and the score card explains the ladder. This lives in both `checkDropdowns()` and `checkDropdownsMulti()` in `exercise.js` (the single shared copy — see "Shared framework" below); `9g-india-phrasal-verbs.html` additionally has a bespoke multiple-choice checker in its `checkExA()`. Pages that pass no `scoreKey` never record or send a score, so they are unaffected. `test-scoring.js` (run with `node test-scoring.js`) is the self-check for this logic.
+
+**Submit card position (Shaun, 2026-11-04).** On the final step the submit card goes at the top, above the score, answers and explanations. `exercise.js` moves it there on load, along with an email card directly above it, so a page's HTML can keep the old order. Timed tests (`exam.js`) and Abitur packs don't load `exercise.js` and aren't moved. Check: `tests/submit-card-top.spec.js`.
 
 **Review-page explanations (added 2026-08-05; moved to a data file 2026-08-05).** Wrong answers get a one-line reason on the **review/results screen** (not inline during the exercise). The shared `renderExplanations()` in `exercise.js` lists the gaps the student got **wrong** by default, with a **"Show all explanations"** toggle revealing every item. Explanations are **English on every page, site-wide** (Shaun's decision — the brief's "German for Y7–9" rule is overridden), one short sentence. Styles are `.expl-*` in `style.css`; the same code shows the explanations in practise mode too.
 
@@ -161,6 +179,11 @@ page 404'd on `/favicon.ico`), `theme-color` on 14 of 222 pages, Open Graph tags
 telling a phone which colour scheme the design supports. **`node scripts/build-head.js`** owns a
 `HEAD:START`/`HEAD:END` block just before `</head>` on every page:
 
+- **Dark mode: don't hard-code colours that only work in light.** For text use `--ink`, not
+  `--blue` (`--blue` stays navy in dark, so it is for backgrounds and for text on gold). For boxes
+  use `--inset`, `--info`, `--nav-bg` or `--callout`, not `#fafbfc` or `--gold-lt`; a tint of your
+  own needs a `prefers-color-scheme: dark` rule. `tests/dark-mode.spec.js` fails any page under
+  3:1 in dark mode, but only for what is on screen before an answer: not score cards or marking.
 - `<meta name="color-scheme">` — **per page, from what the CSS actually implements**. `style.css`
   (and most standalone pages) carry a `prefers-color-scheme: dark` block that redefines the whole
   token set, so those 201 pages declare `light dark`; the 21 that are genuinely light-only
@@ -363,7 +386,7 @@ All step-based exercise pages load the **single shared framework** via `<script 
 - **Config:** `UNIT`, `TOTAL_STEPS`, `SHEET_URL`, `TEACHER_EMAIL`
 - **State:** `state = {...}`, `var maxStepReached = 0;`
 - **Page logic:** `validateStep`, `saveStep`, `restoreStep`, `buildSummary`, `buildEmailBody`, `buildPayload`, one `checkExX()` per gradable step, plus any bespoke renderers/helpers
-- **Optional overrides:** a page may redefine a framework function *after* the include when it genuinely needs different behaviour (e.g. bespoke header labels in `showStep` on `7c-dictionary-skills`/`7c-robert-the-bruce`/`9g-famous-hollywood`/`7c-holidays`/`california-exercises`/`uni-al-munir`/`uni-relationships-reading`/`uni-roleplay`/`uni-project-management`, custom `startExercises` wording on the uni/eurofiber pages, per-page `renderScore` note text on `8g-kids-in-america`/`8g-new-york`/`uni-describing-data-trends`). Later declarations win, so overrides just work — never edit `exercise.js` for one page.
+- **Optional overrides:** a page may redefine a framework function *after* the include when it genuinely needs different behaviour (e.g. bespoke header labels in `showStep` on `7c-dictionary-skills`/`7c-robert-the-bruce`/`9g-famous-hollywood`/`7c-holidays`/`california-exercises`/`uni-al-munir`/`uni-relationships-reading`/`uni-roleplay`/`uni-project-management`, custom `startExercises` wording on the uni pages and `be-meetings-schedules`, per-page `renderScore` note text on `8g-kids-in-america`/`8g-new-york`/`uni-describing-data-trends`). Later declarations win, so overrides just work — never edit `exercise.js` for one page.
 
 **Convention:** sections are `step-0` (welcome) … `step-TOTAL_STEPS` (submit); exercises occupy steps `1..TOTAL_STEPS-1`. Step labels A, B, C… are generated (`String.fromCharCode`), so any number of steps works. `submitToSheet()` in the shared file handles the button/test-mode/fetch/fallback flow and calls the page's `buildPayload()` — a new page never writes its own fetch.
 
@@ -390,12 +413,19 @@ schoolchildren. Shaun chose to keep Google and ask first.
   old copies are stripped.
 - `consent.js` shows a small German/English banner. "Ablehnen" and "Akzeptieren" are equally
   prominent, and the text includes a line for under-16s. GTM loads only after "Akzeptieren".
-  The choice is stored in `localStorage` as `eol_consent` (`granted` / `denied`).
+  The choice is stored in `localStorage` as `eol_consent` (`granted-clarity` / `denied`).
 - A "Cookie-Einstellungen" button is added to the page footer (`.eol-footer .legal`, else
   `footer`, else the end of `<body>`). It clears the choice and shows the banner again.
 - Inside an iframe (`klasse7-mini` on WordPress) there is no banner and no GTM.
 - **Don't add GTM, GA or any other tracker back as a plain `<script>`.** Load it from
   `loadGtm()`-style code behind the choice, and add it to the privacy policy.
+- **Microsoft Clarity** (project `z7d6a7n9ul`, added 2026-11-02) loads from `loadGtm()` with GTM,
+  and the banner names it. A yes is now stored as `granted-clarity`; an old `granted` predates
+  Clarity, so those visitors are asked again. Clarity masks input boxes in every mode. Declining
+  on a page where Clarity runs calls `clarity('consent', false)`, which erases its cookies and
+  stops it (`consentv2` "denied" would only switch it to cookieless tracking). While the banner is
+  open, `<body>` gets bottom padding of the banner's height so the last buttons can scroll clear.
+  Check: `tests/consent-clarity.spec.js`.
 
 ### 5g. Structured data + the "Auf einen Blick" box (added 2026-08-21)
 

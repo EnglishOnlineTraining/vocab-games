@@ -98,6 +98,66 @@ them — leave the decision to Shaun if one of them is ever reused.
 
 ---
 
+## Shared test files: `exam.js`, `exam.css`, `class-test.css`, `vocab-test.css` (Shaun, 2026-10-25)
+
+The seven timed tests (the three class tests, `9c-`/`9g-australia-vocab-test`,
+`uni-pm-vocabulary`, `uni-writing-task`) load **`exam.js`** after `integrity.js`. It holds
+what every test shares: extra time, the timer, the anti-cheat signals (tab, paste, copy,
+dev tools, typing bursts, translation), the flash banners, fullscreen, the Make POST with the
+formula guard, and the **one** copy of the Punktetabelle the tests use
+(`check-grade-table.js` checks it against `exercise.js`). The page keeps its questions,
+marking, payload and backups. The API is listed at the top of `exam.js`.
+`uni-presentation-task` is not a timed test and does not load it.
+
+**Devices (Shaun, 2026-10-25): the tests are sat on laptops, occasionally tablets, not
+phones.** Check layout at 768px and up; a phone-width layout problem on a test is not a bug
+to fix unless Shaun asks.
+
+CSS: a class test links `class-test.css`, a vocab or uni test `vocab-test.css`, then every
+test links `exam.css`; the page's own `<style>` keeps only its own rules. The two looks use
+the same class names (`.card`, `.btn`) differently, so they cannot share one file.
+
+**Tests are light on every device, never dark.** Both stylesheets set `color-scheme: only light`,
+which also opts out of phone browsers' automatic darkening. `tests/dark-mode.spec.js` opens every
+page that loads `exam.js` in dark mode, sits it to the exam screen and requires 4.5:1 on all text
+and fields. A new test is covered automatically, provided it loads `exam.js`.
+
+**Dyslexia box.** `exam.js` adds it under the extra-time box on every test; nothing to add
+per page. Ticked, it (1) marks typed **vocabulary** answers without spelling: the page calls
+`examSpellingOk(given, key)` on those answers only, never on grammar answers, where the form
+is what is tested; (2) switches the test to the easier-to-read display in `exam.css`; (3) sends
+`dyslexia: yes` to the results sheet only, through `examMark(payload, slot)`: a `dyslexia`
+key, and `dyslexia=yes` added to the page's integrity slot so it shows in the Make Excel
+table. It is never on screen and never in the email or copy backups. Self-declared, like
+extra time. Spelling slips that passed are marked `[correct, spelling not marked: <word>]`
+in the vocab tests' answer columns. The edit-distance rule itself is `eolSpellingClose` in
+`spelling.js`, which `build-head.js` adds to every page that loads `exam.js` or `vocab-srs.js`.
+
+**Easier-to-read option on practice pages** (added 2026-11-01). `exercise.js` adds an
+"Aa Easier to read" button to the header of every framework page. It loads `exam.css` and
+sets `html.eol-dyslexia`, so the page gets the same font, size and spacing as a test with
+the dyslexia box ticked. Cream colours apply in the light scheme only, because style.css
+and the generated blocks have dark-scheme colours that assume a dark background. The choice
+is saved on the device (`eol_dyslexia`). On the SRS pages (`vocab-srs.js`) it also makes a
+small spelling slip in the typing round count as right: the student sees the correct
+spelling, the word keeps its level, and the progress payload's `round2` says slips were
+accepted. Anyone can switch it on: it changes no class-submission marking. Covered by
+`tests/dyslexia-practice.spec.js`.
+
+**🔊 Listen buttons** (added 2026-11-01). `eolSayBtn(text)` / `eolSpeak(text)` in `exercise.js`
+speak a word with the device's own voice (British English if it has one; nothing hosted).
+`exercise.js` adds a button to every `td.wl-en` in a static word list; `vocab-srs.js` adds
+them to its word list and to the feedback after each answer, never before an answer in the
+typing round (that would turn it into dictation). Hidden (`html.no-voices`) when the device
+has no voice. Covered by `tests/listen-buttons.spec.js`.
+
+`tests/exam-pages.spec.js` sits every test through to submission with fixed random and a
+paused clock and compares what it sends (sheet, email, copy) against a recorded copy, so a
+change to `exam.js` that alters a test's submission fails there. It also covers the dyslexia
+box, the signals and the time-up hand-in.
+
+---
+
 ## Unified breadcrumb + footer (site chrome, added 2026-08-05)
 
 `exercise.js` injects a **breadcrumb** (Übungen › Jahrgang/Schulart or MSA/Uni/IT/Business › page title, derived from the filename prefix + `.welcome-title`) below the sticky `app-header`, and a **unified footer** (section nav: Alle Übungen · Grammatik-Themen · Universität · Business · IT · Kontakt; legal: Zur Website · Impressum · Datenschutz) at the end of `<body>` — on all 167 framework pages, with **zero per-page edits** (`eolInjectChrome` on `DOMContentLoaded`). Styles are self-contained (injected `<style id="eol-chrome-style">` with `var(--token, fallback)`) so they render even on the framework pages that don't load `style.css`. Guarded against double-injection by element id. `activities.html` carries a matching footer (`.site-footer-nav` + legal line). The per-year hub pages and `themen/` pages keep their own existing footers/back-links.
@@ -172,8 +232,8 @@ pack is counted automatically and a new task type needs a row in `ABITUR_TASKS` 
 hand-edit between the markers** — and because the auto-rebuild workflow runs the generators on every
 push to `main`, the root page now self-corrects.
 
-**Related fix — three legacy pages were misfiled.** `california-exercises.html` (Y9 Gymnasium),
-`sport-south-africa.html` (Y9 Oberschule) and `eurofiber-online.html` (Business) predate the
+**Related fix — legacy pages were misfiled.** `california-exercises.html` (Y9 Gymnasium) and
+`sport-south-africa.html` (Y9 Oberschule) predate the
 filename-prefix convention, so `schoolFromPrefix()` bucketed them as `other`: they were missing from
 the Klasse 9 / Business filters and undercounted everywhere. `build-exercise-data.js` now carries a
 `LEGACY_UNPREFIXED` override map. Add to it if another unprefixed page ever appears.
@@ -251,6 +311,7 @@ generated blocks, so it writes no `og:` tags (`build-head` writes those) and wri
 **Reseeding.** Deleting `data/lastmod.json` makes every page read as new and stamps the whole site with today — telling Google all 257 URLs changed at once, which is false. It was seeded once from git history at introduction; don't casually regenerate it.
 
 **"Verwandte Themen" links are reciprocal (added 2026-09-05).** `related` in `topics.json` is authored one way round, so a newly added topic pointed at its neighbours and nothing pointed back: five of the six topics added that day had `themen/index.html` as their *only* inbound link, which Search Console reported as "Referring page: None detected". `relatedSlugs()` unions the authored list with the inbound ones, so every relationship is a link in both directions; authored entries stay first. Deliberately **uncapped** — the old `.slice(0, 3)` would stop the most-referenced topics (`present-tenses` is named by nine others) from linking out to the newest ones, which is exactly the link a new page needs. Range is now 3–10 links per page.
+- **Optional per-topic fields (added 2026-10-17):** `seoTitle` replaces the generated `<title>`/og:title (set on `linking-words`, `passiv`, `simple-past` after Bing showed 0–1% CTR at positions 6–8), and a section may carry `table: { head[], rows[][] }` (cells are HTML).
 - **To add/expand a topic:** edit `data/topics.json` (add the slug + German content), then rerun both scripts. Never hand-edit files in `themen/` — they are overwritten. Grammar prose is Shaun-reviewed before it counts as final; scaffolds keep the marker until then.
 
 ## Auto-rebuild workflow (added 2026-08-13)
@@ -296,6 +357,10 @@ the JSON and run `node scripts/build.js`.
 Added 2026-09-30 (list now 47): the 9 tests on `teacher-tests.html` (group `test`,
 `indexedInstead: null`) and `year-7-class-wall.html`. Being unlinked and out of the
 sitemap kept them out of Google only until someone shared a URL; `noindex` holds regardless.
+
+Removed 2026-11-02: `abitur-writing-summaries-{aims-ambitions,media-impact,nations-tradition-change}`
+and `abitur-text-analysis-nations-tradition-change`. Bing Webmaster Tools listed them as important
+pages blocked by noindex, so they are indexed again. The other 12 Abitur packs stay excluded.
 
 ## Internal links — breadcrumb and Keep-practising (added 2026-09-30)
 

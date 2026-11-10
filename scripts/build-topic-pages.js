@@ -6,8 +6,9 @@
  */
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 const S = require('./schema');
+const { pageImages, NO_PROMOTE } = require('./page-image');
 const { pageHash, datesFor } = require('./page-hash');
 const BYLINE = 'Geschrieben und unterrichtet von <a href="https://englishonline.training/about/">Shaun Trezise</a> — TEFL-zertifizierter Englischlehrer in Berlin, 10+ Jahre Erfahrung.';
 const ROOT = path.join(__dirname, '..');
@@ -37,6 +38,18 @@ const YEAR_ORDER = [7, 8, 9, 10, 'msa', 'abitur', 'ielts', 'uni', 'it', 'busines
 
 function exercisesForTopic(slug) {
   return exercises.filter(e => (e.topics || []).indexOf(slug) !== -1);
+}
+
+// The exercise count is the one number the lede and the meta description share.
+// topics.json writes it as {count}; a topic with no tagged exercise fails the build
+// instead of printing "0 kostenlose Übungen".
+function topicCount(t) {
+  const n = exercisesForTopic(t.slug).length;
+  if (!n) throw new Error('themen/' + t.slug + '.html: no exercise is tagged to this topic (see TOPIC_OVERRIDES in build-exercise-data.js)');
+  return n;
+}
+function topicDescription(t) {
+  return (t.metaDescription || '').replace(/\{count\}/g, String(topicCount(t)));
 }
 
 function weiterUebenHtml(t) {
@@ -164,15 +177,23 @@ function contentHtml(t) {
     t.examples.forEach(e => html += '<li>' + e + '</li>');
     html += '</ul></section>';
   }
-  // Extra explanation sections: { h2, body?, list?, listClass? }
+  // Extra explanation sections: { h2, body?, list?, listClass?, table?: { head[], rows[][] } }
   if (t.sections && t.sections.length) {
     t.sections.forEach(sec => {
       html += '<section class="card' + (sec.highlight ? ' rules-box' : '') + '"><h2>' + esc(sec.h2) + '</h2>';
       if (sec.body) html += '<p>' + sec.body + '</p>';
+      if (sec.figure) html += '<figure class="topic-fig"><img src="' + esc(sec.figure.src) + '" width="' + sec.figure.width + '" height="' + sec.figure.height
+        + '" alt="' + esc(sec.figure.alt) + '" loading="lazy" decoding="async"><figcaption>' + sec.figure.caption + '</figcaption></figure>';
       if (sec.list && sec.list.length) {
         html += '<ul class="' + (sec.listClass || 'rules') + '">';
         sec.list.forEach(li => html += '<li>' + li + '</li>');
         html += '</ul>';
+      }
+      if (sec.table) {
+        html += '<div class="topic-table-wrap"><table class="topic-table"><thead><tr>'
+          + sec.table.head.map(h => '<th>' + esc(h) + '</th>').join('') + '</tr></thead><tbody>'
+          + sec.table.rows.map(r => '<tr>' + r.map(c => '<td>' + c + '</td>').join('') + '</tr>').join('')
+          + '</tbody></table></div>';
       }
       html += '</section>';
     });
@@ -190,7 +211,11 @@ function faqHtml(t) {
   return html;
 }
 
-function stripTags(x) { return String(x == null ? '' : x).replace(/<[^>]+>/g, ''); }
+function stripTags(x) {
+  let s = String(x == null ? '' : x), prev;
+  do { prev = s; s = s.replace(/<[^>]*>/g, ''); } while (s !== prev);   // until no tag is left, nested ones included
+  return s;
+}
 
 function faqJsonLd(t) {
   if (!t.faq || !t.faq.length) return '';
@@ -222,6 +247,9 @@ function topicLabel(t) {
 }
 
 function topicTitle(t) {
+  // An authored seoTitle wins: Bing/Search Console data showed the generated
+  // "Deutsch (English) — Übungen & Erklärung" missing the words people search for.
+  if (t.seoTitle) return t.seoTitle;
   const label = topicLabel(t);
   const full = label + ' — Übungen & Erklärung';
   if (full.length <= 60) return full;
@@ -255,7 +283,7 @@ function jsonLd(t, url, dates) {
         '@type': 'LearningResource',
         '@id': url + '#resource',
         'name': topicLabel(t) + ' — Erklärung und kostenlose Übungen',
-        'description': t.metaDescription || '',
+        'description': topicDescription(t),
         'inLanguage': 'de',
         'isAccessibleForFree': true,
         'learningResourceType': ['Erklärung', 'Übung'],
@@ -280,11 +308,11 @@ function jsonLd(t, url, dates) {
 function pageHtml(t, dates) {
   const url = BASE + '/themen/' + t.slug + '.html';
   const h1 = topicLabel(t) + ' — Erklärung und kostenlose Übungen';
-  const count = exercisesForTopic(t.slug).length;
+  const count = topicCount(t);
   return '<!DOCTYPE html>\n<html lang="de">\n<head>\n'
     + '<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
     + '<title>' + esc(topicTitle(t)) + '</title>\n'
-    + '<meta name="description" content="' + esc(t.metaDescription || '') + '">\n'
+    + '<meta name="description" content="' + esc(topicDescription(t)) + '">\n'
     + '<link rel="canonical" href="' + url + '">\n'
     // No og: tags here: build-head.js deletes them and writes its own set from
     // <title>, the description and the canonical. Leaving them out also keeps
@@ -333,6 +361,11 @@ h1{color:var(--blue);font-size:1.6rem;line-height:1.25;margin-bottom:.5rem}
 .card h2{color:var(--blue);font-size:1.15rem;margin-bottom:.7rem}
 .card p{margin-bottom:.4rem}
 .rules-box{background:#eef4fb;border-left:4px solid var(--teal)}
+.topic-fig{margin:.6rem 0 1rem}.topic-fig img{display:block;width:100%;max-width:640px;height:auto;margin:0 auto;border-radius:8px}.topic-fig figcaption{font-size:.8rem;color:var(--muted);margin-top:.4rem;text-align:center}
+.topic-table-wrap{overflow-x:auto}
+.topic-table{width:100%;border-collapse:collapse;font-size:.92rem}
+.topic-table th,.topic-table td{text-align:left;padding:.45rem .6rem;border-bottom:1px solid var(--border);vertical-align:top}
+.topic-table th{color:var(--blue);background:#eef4fb}
 .rules,.examples{list-style:none}
 .rules li,.examples li{padding:.4rem 0 .4rem 1.4rem;position:relative;border-top:1px dashed var(--border)}
 .rules li:first-child,.examples li:first-child{border-top:none}
@@ -482,6 +515,9 @@ const EXTRA_PUBLIC_PAGES = [
   // English glossary landing page for the 2023 property-management PDF, the
   // top-clicked URL on the main site in Search Console (docs/gsc-review-2026-10-06.md).
   'property-management-vocabulary.html',
+  // Glossary landing pages for the 2023 commercial-real-estate and ESG PDFs (same architecture).
+  'commercial-real-estate-vocabulary.html',
+  'esg-vocabulary.html',
   // uni-presentation-task.html used to be listed here. It is now carried in
   // data/exercises.json via the STANDALONE map in build-exercise-data.js, so the
   // exercises loop above emits it and a second entry here would be redundant.
@@ -507,17 +543,23 @@ function urlToFile(u) {
 
 function gitLastmod(file) {
   try {
-    const out = execSync('git log --format=%aI -1 -- ' + JSON.stringify(file), { cwd: ROOT, encoding: 'utf8', stdio: ['pipe','pipe','pipe'] }).trim();
+    const out = execFileSync('git', ['log', '--format=%aI', '-1', '--', file], { cwd: ROOT, encoding: 'utf8', stdio: ['pipe','pipe','pipe'] }).trim();
     return out ? out.slice(0, 10) : '';
   } catch { return ''; }
 }
 
-const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+// <image:image> for each content <img> on the page, so image search finds the page's real pictures.
+function sitemapImages(f) {
+  if (!/\.html$/.test(f) || NO_PROMOTE.has(f) || !fs.existsSync(path.join(ROOT, f))) return '';
+  return pageImages(fs.readFileSync(path.join(ROOT, f), 'utf8'))
+    .map(i => '<image:image><image:loc>' + BASE + '/' + i.src + '</image:loc></image:image>').join('');
+}
+
+const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
   + uniq.map(u => {
-    const mod = gitLastmod(urlToFile(u));
-    return mod
-      ? '  <url><loc>' + u + '</loc><lastmod>' + mod + '</lastmod></url>'
-      : '  <url><loc>' + u + '</loc></url>';
+    const f = urlToFile(u);
+    const mod = gitLastmod(f);
+    return '  <url><loc>' + u + '</loc>' + (mod ? '<lastmod>' + mod + '</lastmod>' : '') + sitemapImages(f) + '</url>';
   }).join('\n') + '\n</urlset>\n';
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemap);
 

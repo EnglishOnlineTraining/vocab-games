@@ -103,7 +103,11 @@ function checkStateScores(src) {
 const HOOK_Y7 = 'https://hook.eu1.make.com/1gx46wea33yguetah95oy4j8asbyafqm';
 const HOOK_Y9 = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj';
 const HOOK_ABITUR = 'https://hook.eu1.make.com/wdia5iljcraay8rfqijkacgb5i9jjfod';
-const TEACHER = 'englishonlinetraining@pm.me';
+const TEACHER = 'learn@englishonline.training';
+// University English pages post to the university sheet (Shaun, 2026-10-20). The roleplay
+// page runs its own Apps Script and stays as it is unless Shaun says otherwise.
+const UNI_SHEET = 'https://script.google.com/macros/s/AKfycbwwbV6ufw7QX8meNGyOwiVdkqNpQ8yckdXmsbFqysJwWqAfCWaR_eC9RH41LaqmYyZOeA/exec';
+const UNI_OWN_SCRIPT = ['uni-roleplay-building-relationships.html'];
 // The old Year 9 Apps Script (the "year 9" sheet) — _template.html's default until
 // 2026-10-16. Nothing should post there any more.
 const TEMPLATE_DEFAULT = 'AKfycbw2eqOCB6XKREIOXuqn2fCL067CdMm20MmiTFMt9GmRUEn12vLl8gJbHL1UfbKmCP7W';
@@ -117,6 +121,7 @@ function checkSheetUrl(src, file) {
   let want = null;
   if (/^(7[gca]|8[gc])-/.test(f)) want = HOOK_Y7;
   else if (/^(9[gc]|10[gc]|msa)-/.test(f)) want = HOOK_Y9;
+  else if (/^uni-/.test(f) && UNI_OWN_SCRIPT.indexOf(f) === -1) want = UNI_SHEET;
   if (want) return { ok: url === want, detail: url === want ? null : 'expected ' + want + ' for this prefix, found ' + url };
   if (/^(be|uni|it|esl|ielts|gr)-/.test(f)) {
     const ok = /^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(url);
@@ -174,6 +179,20 @@ function main() {
     const mail = checkTeacherEmail(src);
     results.push({ name: 'TEACHER_EMAIL is the public teacher address', ok: mail.ok, detail: mail.detail });
     return report(rel, results, ' (Abitur pack template: step, state and dropdown checks do not apply)');
+  }
+
+  // A spaced-repetition vocab page: vocab-srs.js runs it, so there are no steps,
+  // no state object and no dropdowns. It names its unit PAGE_UNIT (not UNIT, which
+  // would switch on exercise.js's draft-resume prompt).
+  if (/<script[^>]+src=["'][./]*vocab-srs\.js/.test(src)) {
+    const pu = (src.match(/var\s+PAGE_UNIT\s*=\s*['"]([^'"]*)['"]/) || [])[1];
+    const slug = path.basename(file, '.html');
+    results.push({ name: 'PAGE_UNIT matches filename slug', ok: pu === slug,
+      detail: 'PAGE_UNIT = ' + (pu ? "'" + pu + "'" : '(not found)') + ", filename slug = '" + slug + "'" });
+    results.push({ name: 'WORDS list declared', ok: /var\s+WORDS\s*=\s*\[/.test(src), detail: null });
+    const hook = checkSheetUrl(src, file);
+    results.push({ name: 'SHEET_URL routes to the right webhook', ok: hook.ok, detail: hook.detail });
+    return report(rel, results, ' (vocab-srs.js page: step, state and dropdown checks do not apply)');
   }
 
   const steps = checkTotalSteps(src);

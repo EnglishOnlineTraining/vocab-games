@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 560" role="img" aria-labelledby="t d">
+<title id="t">Structure of an IELTS opinion essay</title>
+<desc id="d">Four stacked blocks from top to bottom. Introduction: paraphrase the question and state your opinion. Body paragraph 1: topic sentence, reason, example. Body paragraph 2: topic sentence, reason, example. Conclusion: restate your opinion in new words, with no new ideas. A side bracket shows that the same opinion runs through all four blocks.</desc>
+<style>
+.bg{fill:#fff;stroke:#dce3ec}.h{fill:#fff;font-weight:700}.tx{fill:#1d2b3a}.box{fill:#edf3fa;stroke:#2b7a78;stroke-width:2}.head{fill:#2b7a78}.ar{stroke:#1a3a5c;stroke-width:3;fill:none}.br{stroke:#c9a227;stroke-width:4;fill:none}.ct{fill:#1a3a5c;font-weight:700}
+@media (prefers-color-scheme:dark){.bg{fill:#16212e;stroke:#28394d}.tx{fill:#e7eef6}.box{fill:#1b2735;stroke:#6fd3d0}.ar{stroke:#cfe0f4}.ct{fill:#cfe0f4}}
+text{font-family:'Segoe UI',system-ui,sans-serif;font-size:22px}
+</style>
+<rect class="bg" x="1" y="1" width="638" height="558" rx="12"/>
+<g>
+<rect class="box" x="24" y="24" width="500" height="106" rx="8"/><path class="head" d="M24 32a8 8 0 0 1 8-8h484a8 8 0 0 1 8 8v22H24z"/>
+<text class="h" x="40" y="46">Introduction</text>
+<text class="tx" x="40" y="80">Paraphrase the question.</text><text class="tx" x="40" y="108">State your opinion clearly.</text>
+<path class="ar" d="M274 134 V148 M266 142 L274 150 L282 142"/>
+<rect class="box" x="24" y="154" width="500" height="126" rx="8"/><path class="head" d="M24 162a8 8 0 0 1 8-8h484a8 8 0 0 1 8 8v22H24z"/>
+<text class="h" x="40" y="176">Body paragraph 1</text>
+<text class="tx" x="40" y="210">Topic sentence: your first reason.</text><text class="tx" x="40" y="238">Explain it.</text><text class="tx" x="40" y="266">Give an example.</text>
+<path class="ar" d="M274 284 V298 M266 292 L274 300 L282 292"/>
+<rect class="box" x="24" y="304" width="500" height="126" rx="8"/><path class="head" d="M24 312a8 8 0 0 1 8-8h484a8 8 0 0 1 8 8v22H24z"/>
+<text class="h" x="40" y="326">Body paragraph 2</text>
+<text class="tx" x="40" y="360">Topic sentence: your second reason.</text><text class="tx" x="40" y="388">Explain it.</text><text class="tx" x="40" y="416">Give an example.</text>
+<path class="ar" d="M274 434 V448 M266 442 L274 450 L282 442"/>
+<rect class="box" x="24" y="454" width="500" height="82" rx="8"/><path class="head" d="M24 462a8 8 0 0 1 8-8h484a8 8 0 0 1 8 8v22H24z"/>
+<text class="h" x="40" y="476">Conclusion</text>
+<text class="tx" x="40" y="510">Restate your opinion in new words.</text>
+</g>
+<path class="br" d="M540 40 H552 V520 H540"/>
+<text class="ct" transform="translate(588 280) rotate(90)" text-anchor="middle">one opinion throughout</text>
+</svg>

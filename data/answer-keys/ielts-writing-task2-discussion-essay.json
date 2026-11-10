@@ -1,0 +1,183 @@
+{
+ "unit": "ielts-writing-task2-discussion-essay",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Supporters of",
+     "accept": [
+      "Supporters of"
+     ],
+     "label": "1. ___ free entry argue that culture belongs to everyone",
+     "why": "The paragraph gives the case for free entry, so it reports the people who support it."
+    },
+    "g2": {
+     "correct": "It is also claimed that",
+     "accept": [
+      "It is also claimed that"
+     ],
+     "label": "2. ___ free entry encourages people to return",
+     "why": "A second argument from the same side, reported without naming who holds it; “also” adds it to the first."
+    },
+    "g3": {
+     "correct": "On the other hand",
+     "accept": [
+      "On the other hand"
+     ],
+     "label": "3. ___, those who favour charging point out …",
+     "why": "The essay now turns to the opposite view, so it needs a contrast linker."
+    },
+    "g4": {
+     "correct": "Critics of free entry also argue that",
+     "accept": [
+      "Critics of free entry also argue that"
+     ],
+     "label": "4. ___ people value what they pay for",
+     "why": "This is still the other side’s argument; “In my opinion” would contradict the writer’s view in the introduction."
+    },
+    "g5": {
+     "correct": "In conclusion",
+     "accept": [
+      "In conclusion"
+     ],
+     "label": "5. ___, although charging would raise money …",
+     "why": "The final paragraph sums up and gives the writer’s view, so it opens with a concluding phrase."
+    },
+    "g6": {
+     "correct": "I would therefore argue that",
+     "accept": [
+      "I would therefore argue that"
+     ],
+     "label": "6. ___ entry should remain free for everyone",
+     "why": "The conclusion must give the writer’s own view; “Some people argue” only reports others again."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Supporters of homework",
+     "accept": [
+      "Supporters of homework"
+     ],
+     "label": "1. Report one side: ___ argue that it builds good study habits",
+     "why": "“Argue” needs a subject that names the group holding the view; “In my view” gives your own."
+    },
+    "g2": {
+     "correct": "Critics",
+     "accept": [
+      "Critics"
+     ],
+     "label": "2. Report the other side: ___ point out that …",
+     "why": "“Critics point out” reports the opposing side; the other options give your own view and do not fit “point out”."
+    },
+    "g3": {
+     "correct": "It is often claimed",
+     "accept": [
+      "It is often claimed"
+     ],
+     "label": "3. Report a common view: ___ that cities are lonelier …",
+     "why": "The passive “It is often claimed that” reports a view without saying who holds it."
+    },
+    "g4": {
+     "correct": "In my view",
+     "accept": [
+      "In my view"
+     ],
+     "label": "4. Give your own view: ___, the advantages outweigh …",
+     "why": "“In my view” states your own opinion; “Many people argue” reports someone else’s."
+    },
+    "g5": {
+     "correct": "believe",
+     "accept": [
+      "believe"
+     ],
+     "label": "5. Many people ___ that technology makes us less sociable",
+     "why": "“People” is plural, and “believe” is a state verb, so present simple: people believe."
+    },
+    "g6": {
+     "correct": "I agree with",
+     "accept": [
+      "I agree with"
+     ],
+     "label": "6. ___ this argument to some extent",
+     "why": "We agree with an argument or a person (we agree to a plan or proposal); “I am agree” is wrong because “agree” is already a verb."
+    },
+    "g7": {
+     "correct": "suggest",
+     "accept": [
+      "suggest"
+     ],
+     "label": "7. Some researchers ___ that short breaks …",
+     "why": "“Researchers” is plural: they suggest. “Suggest” is a cautious way to report a claim."
+    },
+    "g8": {
+     "correct": "While it is true",
+     "accept": [
+      "While it is true"
+     ],
+     "label": "8. ___ that cars are convenient, I believe …",
+     "why": "“While it is true that …” accepts the other side’s point before your view; the other two are not correct English."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "In conclusion, although charging would raise money, I believe free entry is better because museums exist to share knowledge.",
+     "accept": [
+      "In conclusion, although charging would raise money, I believe free entry is better because museums exist to share knowledge."
+     ],
+     "label": "1. Conclusion: free museums",
+     "why": "It sums up both sides and gives the writer’s opinion; the first option has no opinion and the last adds a new idea."
+    },
+    "g2": {
+     "correct": "To sum up, while starting early has some benefits, I believe most children gain more from starting at seven, when they are ready to learn.",
+     "accept": [
+      "To sum up, while starting early has some benefits, I believe most children gain more from starting at seven, when they are ready to learn."
+     ],
+     "label": "2. Conclusion: school starting age",
+     "why": "Only this one gives an opinion; the others list advantages with no view or bring in a new topic."
+    },
+    "g3": {
+     "correct": "To conclude, although offices help teamwork, in my view most employees work best with a mix of home and office days.",
+     "accept": [
+      "To conclude, although offices help teamwork, in my view most employees work best with a mix of home and office days."
+     ],
+     "label": "3. Conclusion: home or office",
+     "why": "It states the writer’s view; “both have advantages and disadvantages” gives no answer, and internet costs are a new idea."
+    },
+    "g4": {
+     "correct": "In conclusion, I believe a small tourist tax is fair, as long as the money is spent on the places that visitors use.",
+     "accept": [
+      "In conclusion, I believe a small tourist tax is fair, as long as the money is spent on the places that visitors use."
+     ],
+     "label": "4. Conclusion: tourist tax",
+     "why": "It answers the question with the writer’s view; the others add a new idea or only say people disagree."
+    },
+    "g5": {
+     "correct": "Despite",
+     "accept": [
+      "Despite"
+     ],
+     "label": "5. Review (Opinion Essay): ___ the rain, the match went ahead",
+     "why": "“Despite” takes a noun (the rain); “although” needs a full clause — from the Opinion Essay exercise."
+    },
+    "g6": {
+     "correct": "As a result",
+     "accept": [
+      "As a result"
+     ],
+     "label": "6. Review (Opinion Essay): ___, more people began cycling",
+     "why": "Cycling more is a consequence of higher fuel prices, so a result linker — from the Opinion Essay exercise."
+    }
+   }
+  }
+ }
+}

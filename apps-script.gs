@@ -21,8 +21,19 @@ function doPost(e) {
       ? e.parameter.payload
       : (e.postData ? e.postData.contents : '');
     var data = JSON.parse(raw);
+    // Retry guard: exercise.js sends the same sid when a student re-sends after a reply
+    // that never arrived, so a second copy of a written row is skipped.
+    // ponytail: CacheService keeps an sid for 6 hours and two copies arriving in the same
+    // second can both pass; a LockService section around the check is the upgrade.
+    var sid = data.sid;
+    delete data.sid;
+    var cache = CacheService.getScriptCache();
+    if (sid && cache.get('sid:' + sid)) {
+      return ContentService.createTextOutput('OK').setMimeType(ContentService.MimeType.TEXT);
+    }
     var ss = SpreadsheetApp.getActiveSpreadsheet();
     routeSubmission(ss, data);
+    if (sid) cache.put('sid:' + sid, '1', 21600);
     return ContentService.createTextOutput('OK').setMimeType(ContentService.MimeType.TEXT);
   } catch (err) {
     return ContentService.createTextOutput('Error: ' + err.message).setMimeType(ContentService.MimeType.TEXT);
@@ -265,7 +276,7 @@ function itemStats(ss, since, loader) {
   want.forEach(function (u) {
     var key = keys[u];
     if (!key || !key.sections) return;
-    var subs = [];
+    var subs = [], firsts = [];
     tabsOf[u].forEach(function (tab) {
       var v = values[tab] || (values[tab] = sheets[tab].getDataRange().getValues());
       var head = v[0].map(String), ti = head.indexOf('Timestamp'), ui = head.indexOf('Unit');
@@ -274,12 +285,18 @@ function itemStats(ss, since, loader) {
         if (sinceDate && !(v[r][ti] instanceof Date && v[r][ti] >= sinceDate)) continue;
         var sections = {};
         head.forEach(function (h, c) {
-          if (isHas_(key.sections, h) || /^ex/i.test(h)) sections[h] = isParseCell_(v[r][c]);
+          if (/^ex/i.test(h) || isGradedIn_(h, key, true)) sections[h] = isParseCell_(v[r][c]);
         });
         subs.push(sections);
+        var first = isFirstSections_(key, function (n) { var c = head.indexOf(n); return c === -1 ? null : v[r][c]; });
+        if (first) firsts.push(first);
       }
     });
     if (subs.length) units[u] = itemStatsForUnit(key, subs);
+    if (firsts.length) {
+      var f = itemStatsForUnit(key, firsts);
+      units[u].first = { rows: f.rows, gaps: f.gaps };   // graded gaps only
+    }
   });
 
   // Tabs that look like submission tabs (Timestamp, Name, Class) but match no keyed
@@ -309,6 +326,22 @@ function isParseCell_(cell) {
   return out;
 }
 
+/* First-try answers (exercise.js sends first_<scoreKey>) as sections keyed like the
+   final answers. null for a row without any (sent before 2026-10-17). Mirrors
+   firstSections() in scripts/item-analysis.js. */
+function isFirstSections_(key, get) {
+  var out = null;
+  Object.keys(key.sections).forEach(function (sk) {
+    var sec = key.sections[sk], v = get('first_' + (sec.scoreKey || sk));
+    if (v == null || v === '') return;
+    var f = sec.field || sk, p = isParseCell_(v);
+    out = out || {};
+    out[f] = out[f] || {};
+    Object.keys(p).forEach(function (k) { out[f][k] = p[k]; });
+  });
+  return out;
+}
+
 function isNormAns_(s) {
   return String(s == null ? '' : s)
     .replace(/[‘’ʼ´`]/g, "'")
@@ -323,11 +356,24 @@ function isBlank_(v, gap) {
   return v === IS_BLANK_LEGACY && !(gap && gap.accept.indexOf(IS_BLANK_LEGACY) !== -1);
 }
 
+/* Gap ids graded inside payload field `name` (two key sections can share one field,
+   `field` in the key). With `any`, only whether the field is graded at all. */
+function isGradedIn_(name, key, any) {
+  var out = {}, hit = false;
+  Object.keys(key.sections).forEach(function (sk) {
+    var sec = key.sections[sk];
+    if ((sec.field || sk) !== name) return;
+    hit = true;
+    Object.keys(sec.gaps).forEach(function (g) { out[g] = sec.gaps[g]; });
+  });
+  return any ? hit : out;
+}
+
 function itemStatsForUnit(key, subs) {
   var gaps = {}, writing = {};
   subs.forEach(function (sections) {
     Object.keys(key.sections).forEach(function (sk) {
-      var sec = key.sections[sk], given = sections[sk] || {};
+      var sec = key.sections[sk], given = sections[sec.field || sk] || {};
       Object.keys(sec.gaps).forEach(function (g) {
         var gap = sec.gaps[g], id = sk + '.' + g, v = given[g];
         var c = gaps[id] || (gaps[id] = { correct: 0, blank: 0, wrong: Object.create(null), typed: !!sec.typed });
@@ -341,7 +387,7 @@ function itemStatsForUnit(key, subs) {
     });
     Object.keys(sections).forEach(function (sk) {
       if (!/^ex/i.test(sk)) return;
-      var graded = (isHas_(key.sections, sk) && key.sections[sk].gaps) || {};
+      var graded = isGradedIn_(sk, key);
       Object.keys(sections[sk]).forEach(function (f) {
         if (isHas_(graded, f) || !IS_FIELD.test(f)) return;
         var id = sk + '.' + f, t = sections[sk][f];

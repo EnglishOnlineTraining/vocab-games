@@ -19,10 +19,10 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 
 function decode(s) {
-  return s.replace(/&rsquo;|&#8217;/g, '’').replace(/&lsquo;/g, '‘').replace(/&amp;/g, '&')
+  return s.replace(/&rsquo;|&#8217;/g, '’').replace(/&lsquo;/g, '‘')
           .replace(/&ldquo;/g, '“').replace(/&rdquo;/g, '”').replace(/&mdash;/g, '—')
           .replace(/&ndash;/g, '–').replace(/&nbsp;/g, ' ').replace(/&hellip;/g, '…')
-          .replace(/&rarr;/g, '→').replace(/&#39;/g, "'").replace(/&quot;/g, '"')
+          .replace(/&rarr;/g, '→').replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, '&')
           .replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 }
 function unitOf(src) { return (src.match(/var\s+UNIT\s*=\s*['"]([^'"]+)['"]/) || [])[1] || ''; }

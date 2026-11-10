@@ -1,0 +1,215 @@
+{
+ "unit": "uni-b2-narrative-tenses",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "rang",
+     "accept": [
+      "rang"
+     ],
+     "label": "1. I was sleeping deeply when my alarm ___ at seven.",
+     "why": "A short action that interrupts a longer one takes the past simple."
+    },
+    "g2": {
+     "correct": "noticed",
+     "accept": [
+      "noticed"
+     ],
+     "label": "2. While I was getting dressed, I ___ that my battery was empty.",
+     "why": "Notice is a sudden, short action, so it takes the past simple."
+    },
+    "g3": {
+     "correct": "were waiting",
+     "accept": [
+      "were waiting"
+     ],
+     "label": "3. Lots of students ___ for the bus.",
+     "why": "They were already waiting when I arrived: an action in progress takes the past continuous."
+    },
+    "g4": {
+     "correct": "arrived",
+     "accept": [
+      "arrived"
+     ],
+     "label": "4. When the bus finally ___, it was full.",
+     "why": "A single main event in the story takes the past simple."
+    },
+    "g5": {
+     "correct": "was walking",
+     "accept": [
+      "was walking"
+     ],
+     "label": "5. I ___ past the cafeteria when I saw my friend.",
+     "why": "The longer background action, interrupted by “saw”, takes the past continuous."
+    },
+    "g6": {
+     "correct": "was drinking",
+     "accept": [
+      "was drinking"
+     ],
+     "label": "6. When I saw her, she ___ a coffee.",
+     "why": "She was in the middle of drinking when I saw her: past continuous."
+    },
+    "g7": {
+     "correct": "got",
+     "accept": [
+      "got"
+     ],
+     "label": "7. When I ___ to the library, every desk was full.",
+     "why": "Arriving is a short, finished event: past simple."
+    },
+    "g8": {
+     "correct": "was looking",
+     "accept": [
+      "was looking"
+     ],
+     "label": "8. While I ___ for a seat, my phone rang.",
+     "why": "After while, the longer action in progress takes the past continuous."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "had never lived",
+     "accept": [
+      "had never lived"
+     ],
+     "label": "1. When she arrived, she ___ abroad before.",
+     "why": "“Before” her arrival points to the earlier past: had + past participle."
+    },
+    "g2": {
+     "correct": "had forgotten",
+     "accept": [
+      "had forgotten"
+     ],
+     "label": "2. By the time it finished, she ___ most of the information.",
+     "why": "By the time + past simple shows the other action happened earlier: past perfect."
+    },
+    "g3": {
+     "correct": "didn't know",
+     "accept": [
+      "didn't know"
+     ],
+     "label": "3. Two weeks later, she still ___ how to register.",
+     "why": "This is the situation at that point in the story, so it takes the past simple."
+    },
+    "g4": {
+     "correct": "had already closed",
+     "accept": [
+      "had already closed"
+     ],
+     "label": "4. She went at five, but it ___ for the day.",
+     "why": "The office closed before she got there: past perfect with already."
+    },
+    "g5": {
+     "correct": "queued",
+     "accept": [
+      "queued"
+     ],
+     "label": "5. The next morning she ___ for 45 minutes.",
+     "why": "The next main event in order takes the past simple."
+    },
+    "g6": {
+     "correct": "had missed",
+     "accept": [
+      "had missed"
+     ],
+     "label": "6. The adviser told her that she ___ the deadline.",
+     "why": "She missed the deadline before the adviser told her: past perfect."
+    },
+    "g7": {
+     "correct": "helped",
+     "accept": [
+      "helped"
+     ],
+     "label": "7. Luckily, the adviser ___ her to register late.",
+     "why": "The story moves forward again, so use the past simple."
+    },
+    "g8": {
+     "correct": "had happened",
+     "accept": [
+      "had happened"
+     ],
+     "label": "8. … because the same thing ___ to her before she joined.",
+     "why": "It happened before she joined the team: past perfect."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "did your group choose",
+     "accept": [
+      "did your group choose"
+     ],
+     "label": "1. What ___? (the case)",
+     "why": "Past simple questions use did + subject + base verb."
+    },
+    "g2": {
+     "correct": "were you doing",
+     "accept": [
+      "were you doing"
+     ],
+     "label": "2. What ___ when the timekeeper gave the warning?",
+     "why": "A question about an action in progress: was/were + subject + -ing."
+    },
+    "g3": {
+     "correct": "chose",
+     "accept": [
+      "chose"
+     ],
+     "label": "3. First we ___ Case D.",
+     "why": "The first main event in the story takes the past simple."
+    },
+    "g4": {
+     "correct": "were writing",
+     "accept": [
+      "were writing"
+     ],
+     "label": "4. While we ___ our slide, the timekeeper said…",
+     "why": "After while, the longer action in progress takes the past continuous."
+    },
+    "g5": {
+     "correct": "had already practised",
+     "accept": [
+      "had already practised"
+     ],
+     "label": "5. Luckily, our reporter ___ the start of the pitch.",
+     "why": "She practised before the warning came: past perfect with already."
+    },
+    "g6": {
+     "correct": "asked",
+     "accept": [
+      "asked"
+     ],
+     "label": "6. During the pitch, another group ___ a difficult question.",
+     "why": "A single main event in the story takes the past simple."
+    },
+    "g7": {
+     "correct": "had not thought",
+     "accept": [
+      "had not thought"
+     ],
+     "label": "7. … because we ___ about money at all.",
+     "why": "Not thinking about money came before the pitch: past perfect."
+    },
+    "g8": {
+     "correct": "voted",
+     "accept": [
+      "voted"
+     ],
+     "label": "8. In the end, the class ___ for our idea.",
+     "why": "The final event of the story takes the past simple."
+    }
+   }
+  }
+ }
+}

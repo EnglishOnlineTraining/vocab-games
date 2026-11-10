@@ -8,8 +8,13 @@ descriptions and the three already delivered.
 | # | Agent | What it does | Route | Blocked by |
 |---|-------|-------------|-------|------------|
 | 2 | ~~Pre-publish gate~~ **Done (#87, 2026-10-04)** | `check-generated.yml` runs `verify-exercise.js` (incl. webhook) on pages a PR adds; grade table and explanations are gated by `check-grade-table` / `validate-explanations`. | GitHub Action (on PR) | — |
-| 4 | Weekly prep runner | Sunday: reads A/B week + timetable, picks classes, drafts one exercise per class from the right textbook unit. | Claude Code Routine (cron) | Timetable data |
 | 11 | Item analysis (quality loop) | Counts answers per gap, flags weak gaps, drafts fixes as a PR. Spec below. | Weekly GitHub Action (Sheets) + manual CSV run (Excel) | Apps Script redeploy (Shaun) |
+
+## Declined
+
+| # | Agent | Why |
+|---|-------|-----|
+| 4 | Weekly prep runner | Shaun doesn't want it (2026-11-09). Was blocked on timetable data anyway; not pursuing. |
 
 ## Medium-term
 
@@ -228,13 +233,31 @@ opens or updates its issue when `flagged > 0`, so a normal run never shows red.
    A fix that changes options or the answer changes the key: rerun `scripts/build.js`
    so `data/answer-keys/` is rebuilt in the same PR.
 3. Log each changed gap in `data/item-changes.json` (unit, gap, date, % correct
-   before). No student data.
+   before). No student data. A changed writing field is logged with `field` instead
+   of `gap`, and `before` is its share left blank; step 4 then reads a rise in blanks
+   as worse (2026-10-27).
 4. Later runs use `--since <fix date>`, so only answers given after the fix count
    (older rows would be marked against the new key). Compare the new % correct with
    `before`:
    - both sides have at least 15 answers and % correct fell by 20 points or more →
      revert the fix;
    - otherwise → "inconclusive", keep it and check again on the next run.
+
+   `item-analysis.js` does this itself (2026-10-17): every run reads
+   `data/item-changes.json`, scores each logged gap on answers since its date, and prints
+   "kept", "worse: revert", "inconclusive" or "waiting". A risen score counts as "kept".
+   Flagged gaps that already have a logged fix are marked "(fixed DATE)".
+   **First tries (2026-10-17).** Final answers are mostly corrected after Check shows
+   red, so on the first run 33 of 34 flags were "too easy" at 91–100 %. Pages now send
+   each gap's first answer as `first_<scoreKey>` (`eolFirstTries` in `exercise.js`;
+   Make keeps it in the raw-payload column, Apps Script adds a column). A gap with
+   `--min` first tries is judged on them (`basis: "first"`, final figures under
+   `final`); otherwise on final answers, where "too easy" is not flagged. A log entry
+   in `item-changes.json` may carry `"basis": "first"`; without it, `before` is read as
+   final answers and compared with final answers.
+5. A fix marked "kept" whose cause could recur on new pages becomes a rule in STYLE.md
+   §2.5 "Lessons from item analysis". The drafting skills point there, so new pages start
+   without the problem.
 
 ### Done when
 - `test-item-analysis.js` passes in CI (via `build.js --check`).

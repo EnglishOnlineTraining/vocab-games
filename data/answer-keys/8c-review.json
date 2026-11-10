@@ -6,18 +6,18 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "campsite",
-     "accept": [
-      "campsite"
-     ],
-     "label": "1. Odd one out 3: intersection · campsite · roadwork · road sign"
-    },
-    "g2": {
      "correct": "Anchorage, Alaska",
      "accept": [
       "Anchorage, Alaska"
      ],
-     "label": "2. Where does Maria live?"
+     "label": "1. Where does Maria live?"
+    },
+    "g2": {
+     "correct": "went",
+     "accept": [
+      "went"
+     ],
+     "label": "2. Last Saturday, Jake"
     },
     "g3": {
      "correct": "gift",
@@ -34,25 +34,25 @@
      "label": "4. Jake’s mum"
     },
     "g5": {
-     "correct": "role",
-     "accept": [
-      "role"
-     ],
-     "label": "5. A famous"
-    },
-    "g6": {
      "correct": "which",
      "accept": [
       "which"
      ],
-     "label": "6. Blues is a type of music"
+     "label": "5. Blues is a type of music"
+    },
+    "g6": {
+     "correct": "role",
+     "accept": [
+      "role"
+     ],
+     "label": "6. A famous"
     },
     "g7": {
-     "correct": "went",
+     "correct": "wrote",
      "accept": [
-      "went"
+      "wrote"
      ],
-     "label": "7. Last Saturday, Jake"
+     "label": "7. Lena"
     },
     "g8": {
      "correct": "likes",
@@ -82,18 +82,18 @@
      "label": "2. lights and colours you put up"
     },
     "g3": {
+     "correct": "campsite",
+     "accept": [
+      "campsite"
+     ],
+     "label": "3. Odd one out 3: intersection · campsite · roadwork · road sign"
+    },
+    "g4": {
      "correct": "It was exciting",
      "accept": [
       "It was exciting"
      ],
-     "label": "3. What did Lisa think about Times Square?"
-    },
-    "g4": {
-     "correct": "right",
-     "accept": [
-      "right"
-     ],
-     "label": "4. David thinks you can buy the best hot dogs from a hot dog cart."
+     "label": "4. What did Lisa think about Times Square?"
     },
     "g5": {
      "correct": "Raw materials are collected",
@@ -103,25 +103,25 @@
      "label": "5. First step of a product life cycle"
     },
     "g6": {
+     "correct": "Does",
+     "accept": [
+      "Does"
+     ],
+     "label": "6."
+    },
+    "g7": {
      "correct": "parks",
      "accept": [
       "parks"
      ],
-     "label": "6. bigger than many"
+     "label": "7. bigger than many"
     },
-    "g7": {
+    "g8": {
      "correct": "play",
      "accept": [
       "play"
      ],
-     "label": "7. Jake and his friends"
-    },
-    "g8": {
-     "correct": "history",
-     "accept": [
-      "history"
-     ],
-     "label": "8. A rich"
+     "label": "8. Jake and his friends"
     }
    }
   },
@@ -137,53 +137,53 @@
      "label": "1. Louis Armstrong was a musician"
     },
     "g2": {
-     "correct": "Does",
+     "correct": "history",
      "accept": [
-      "Does"
+      "history"
      ],
-     "label": "2."
+     "label": "2. A rich"
     },
     "g3": {
+     "correct": "live",
+     "accept": [
+      "live"
+     ],
+     "label": "3. I"
+    },
+    "g4": {
      "correct": "vet",
      "accept": [
       "vet"
      ],
-     "label": "3. Maria wants to be a"
+     "label": "4. Maria wants to be a"
     },
-    "g4": {
+    "g5": {
      "correct": "cleaning",
      "accept": [
       "cleaning"
      ],
-     "label": "4. Our guide suggested"
+     "label": "5. Our guide suggested"
     },
-    "g5": {
+    "g6": {
      "correct": "parade",
      "accept": [
       "parade"
      ],
-     "label": "5. a long"
+     "label": "6. a long"
     },
-    "g6": {
+    "g7": {
+     "correct": "right",
+     "accept": [
+      "right"
+     ],
+     "label": "7. David thinks you can buy the best hot dogs from a hot dog cart."
+    },
+    "g8": {
      "correct": "ate",
      "accept": [
       "ate"
      ],
-     "label": "6. Her brother"
-    },
-    "g7": {
-     "correct": "Thanksgiving",
-     "accept": [
-      "Thanksgiving"
-     ],
-     "label": "7. Revision 2: American holiday in November"
-    },
-    "g8": {
-     "correct": "using",
-     "accept": [
-      "using"
-     ],
-     "label": "8. We should avoid"
+     "label": "8. Her brother"
     }
    }
   }

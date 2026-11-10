@@ -233,9 +233,9 @@ module.exports = {
     },
     {
       q: 'Are the exercises based on real business situations?',
-      a: 'Several are: the Mercedes exercise works through a real change-management case, and Eurofiber '
-        + 'Online is built around an actual internal-communications scenario at a fibre-network provider, '
-        + 'rather than a generic textbook dialogue.',
+      a: 'Several are: the Mercedes exercise works through a real change-management case, and Meetings '
+        + 'and Schedules is built around a real internal-communications scenario at a company going through '
+        + 'change, rather than a generic textbook dialogue.',
     },
     {
       q: 'How are the exercises scored?',
@@ -329,6 +329,57 @@ module.exports = {
       a: 'The free Property Management exercise has a reading text about a property manager\'s '
         + 'day, a vocabulary task and a short reply to a tenant, at B1 to B2 level. It needs no '
         + 'sign-up.',
+    },
+  ],
+
+  'commercial-real-estate-vocabulary.html': [
+    {
+      q: 'What does the commercial real estate glossary cover?',
+      a: '92 English terms for commercial property, grouped by topic: leases and rent, people and '
+        + 'management, loans and finance, value and returns, buying and legal words, and building '
+        + 'operations.',
+    },
+    {
+      q: 'Does it use British or American English?',
+      a: 'Both. Most of the list comes from the US market, so where British English uses a '
+        + 'different word, such as service charge for CAM charges or heads of terms for letter of '
+        + 'intent, the British term is given too.',
+    },
+    {
+      q: 'Can I download the glossary as a PDF?',
+      a: 'Yes. The original vocabulary list is available as a free PDF from the link at the top '
+        + 'of the page, so you can print it or keep it on your phone.',
+    },
+    {
+      q: 'Where can I practise these words?',
+      a: 'The free Property Management exercise has a reading text about a property manager\'s '
+        + 'day, a vocabulary task and a short reply to a tenant, at B1 to B2 level. The article '
+        + 'English for commercial real estate adds example sentences and phrases for viewings and '
+        + 'negotiations.',
+    },
+  ],
+
+  'esg-vocabulary.html': [
+    {
+      q: 'What does ESG stand for?',
+      a: 'Environmental, social and governance. The three areas are used to judge how responsibly '
+        + 'a company is run, and by investors who want to put money into responsible companies.',
+    },
+    {
+      q: 'What does the ESG glossary cover?',
+      a: '30 English terms in plain English, grouped by topic: core ideas such as sustainability '
+        + 'and the circular economy, ESG investing and finance, and company practice and '
+        + 'reporting.',
+    },
+    {
+      q: 'Can I download the glossary as a PDF?',
+      a: 'Yes. The original vocabulary list is available as a free PDF from the link at the top '
+        + 'of the page, so you can print it or keep it on your phone.',
+    },
+    {
+      q: 'What is greenwashing?',
+      a: 'Making false or exaggerated claims about a product\'s environmental benefits to attract '
+        + 'customers who care about the environment.',
     },
   ],
 
@@ -528,8 +579,10 @@ module.exports = {
       lang: 'de',
       q: 'Kostenlose IELTS-Übungen: Was finde ich hier?',
       a: 'Kostenlose Online-Übungen zur Vorbereitung auf IELTS Academic, ohne Anmeldung: Leseverstehen '
-        + '(True/False/Not Given), Writing Task 1 (Diagramme beschreiben), Writing Task 2 (Meinungsaufsatz), '
-        + 'eine gemischte Wiederholung und ein Wortschatz-Glossar. Die Übungen selbst sind auf Englisch, '
+        + '(True/False/Not Given, Matching Headings, Satz- und Zusammenfassungs-Ergänzung), Writing Task 1 '
+        + '(Liniendiagramme, Balkendiagramme und Tabellen, Prozessdiagramme), Writing Task 2 (Meinungsaufsatz, '
+        + 'Diskussionsaufsatz, Problem-Lösungs-Aufsatz), eine gemischte Wiederholung und ein Wortschatz-Glossar. '
+        + 'Die Übungen selbst sind auf Englisch, '
         + 'denn auch in der Prüfung liest und schreibst du nur Englisch.',
     },
     {
@@ -538,6 +591,77 @@ module.exports = {
       a: 'Übe einen Aufgabentyp nach dem anderen. Jede Übung korrigiert deine Antworten sofort und erklärt '
         + 'deine Fehler. Die Übungen sind für das Selbststudium auf etwa B2–C1 gedacht. Prüfungsformat, '
         + 'Termine und Anmeldung findest du auf ielts.org.',
+    },
+  ],
+
+  // Abitur hub: German content on a page whose <html lang> is "en", so each entry says so.
+  'abitur-activities.html': [
+    {
+      lang: 'de',
+      q: 'Was finde ich auf dieser Seite?',
+      a: 'Interaktive Übungen zu den vier Schreibaufgaben im Englisch-Abitur: Text Analysis, Argumentative '
+        + 'Writing, Writing Summaries und Mediation. Insgesamt 18 Übungen zu den vier Zentralabitur-Themen, '
+        + 'jede mit fünf Schritten und sofortigem Feedback.',
+    },
+    {
+      lang: 'de',
+      q: 'Welche Themen decken die Übungen ab?',
+      a: 'Die vier Themen des Zentralabiturs in Berlin und Brandenburg: Aims and Ambitions, Nations Between '
+        + 'Tradition and Change, Science and Technology und The Impact of the Media on Society.',
+    },
+    {
+      lang: 'de',
+      q: 'Sind die Abitur-Übungen kostenlos?',
+      a: 'Ja, die Übungen sind kostenlos.',
+    },
+    {
+      lang: 'de',
+      q: 'Bekomme ich hier eine Abiturnote?',
+      a: 'Nein. Du bekommst Sofort-Feedback zu jedem Schritt. Am Ende prüfst du deinen eigenen Text mit '
+        + 'einem Bewertungsbogen; die Seite vergibt keine Note.',
+    },
+  ],
+
+  'uni-activities.html': [
+    {
+      q: 'What do these exercises cover?',
+      a: 'Academic writing (hedging, cause and effect, paraphrasing and summarising, describing data and '
+        + 'trends, evaluating sources) and professional communication (business relationships, multi-word '
+        + 'verbs, a hotel case study, project management vocabulary and presentation skills).',
+    },
+    {
+      q: 'Who are they for?',
+      a: 'University students who study or work in English.',
+    },
+    {
+      q: 'Do I need to sign up?',
+      a: 'No. Use "Just practise" to work through an exercise without entering your name.',
+    },
+    {
+      q: 'How should I use them before an exam?',
+      a: 'Start with the skill you need for your next assignment. Before an exam, use the mixed revision, '
+        + 'which takes questions from several exercises.',
+    },
+  ],
+
+  'esl-grammar-activities.html': [
+    {
+      q: 'Which grammar topics are covered?',
+      a: 'Articles, wh-questions, participle clauses, present simple vs present continuous, countable and '
+        + 'uncountable nouns, pronouns, present tenses, simple past, present perfect, past perfect, future '
+        + 'forms, conditionals, the passive, modal verbs and reported speech.',
+    },
+    {
+      q: 'Are the exercises free?',
+      a: 'Yes. Every exercise is free and needs no sign-up.',
+    },
+    {
+      q: 'Who are these exercises for?',
+      a: 'English learners who want practice on the grammar points that cause them the most trouble.',
+    },
+    {
+      q: 'Which topic should I start with?',
+      a: 'Start with the structure you get wrong most often.',
     },
   ],
 };

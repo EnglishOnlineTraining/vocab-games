@@ -124,4 +124,11 @@ assert.strictEqual(Object.keys(state.attempts.exG).length, 200, '200 gaps tracke
 assert.strictEqual(state.scores.exG.correct, 150, '100 × 1 + 100 × ½ = 150');
 assert.strictEqual(state.scores.exG.total, 200, 'total is the gap count');
 
+// ── first tries for item analysis: the first non-blank answer, never overwritten ──
+var ft = eolFirstTries();
+assert.deepStrictEqual(ft.first_exA, { g1: 'cat', g2: 'cow', g3: 'fox' }, 'exA: first answers, not the corrected ones');
+assert.deepStrictEqual(ft.first_exB, { g1: 'no' }, 'exB: wrong twice, then right: first stays "no"');
+assert.deepStrictEqual(ft.first_exC, { g1: 'yes' }, 'blank checks are not a first try');
+assert.strictEqual(ft.exA, undefined, 'only first_* keys, so no payload field is overwritten');
+
 console.log('✓ test-scoring.js: all graded-attempt scoring checks passed');

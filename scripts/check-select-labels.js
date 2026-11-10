@@ -32,7 +32,7 @@ function stripScripts(src) {
   let prev;
   do {
     prev = src;
-    src = src.replace(/<script\b[\s\S]*?<\/script\s*>/gi, '');
+    src = src.replace(/<script\b[\s\S]*?<\/script\b[^>]*>/gi, '');
   } while (src !== prev);
   return src;
 }

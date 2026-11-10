@@ -55,9 +55,14 @@ follow-up from the GEO backlog Shaun uploaded 2026-08-22, after the repo-side it
 in PRs #25 and #26.
 
 **Do:**
-- **`FAQPage` schema on `/faq/`.** It already has real bilingual Q&A content live — this is markup
-  only, no new copy. Confirm the page ID first (`pages.list` filtered by slug, or search).
-- **`Person` + `EducationalOccupationalCredential` schema on `/about/` or `/about-me/`** (page **80** —
+- [x] **`FAQPage` schema on `/faq/`** — done 2026-10-23 (Shaun). The old FAQ (page **351**) was an
+  unpublished tutoring-era draft (€50/€100/€200 prices, booking links, cancellation terms), so it was
+  rewritten from the live About and Business English pages (9 bilingual Q&As, contact
+  `learn@englishonline.training`), its meta description and excerpt updated, and published. `/faq/`
+  returns 200 with one `FAQPage` block built from the visible English text. Dropped on purpose: booking,
+  prices for lessons, cancellation and availability. Keep the FAQ in step with `/about/` and
+  `/business-english/` when prices or offer change.
+- [x] **`Person` + `EducationalOccupationalCredential` schema on `/about/` or `/about-me/`** — done. The schema was already live on `/about/` (page **2224**; page 80 is a noindex "moved" stub); 2026-10-21 its `email` and the visible mailto links were changed from the old `pm.me` address to `learn@englishonline.training`. Original note: (page **80** —
   already touched once, see item 3 below, for its broken WhatsApp button). Source every claim only
   from what the Impressum/certificates pages already state on the live site — do not assert a
   credential, years-of-experience figure, or claim the site doesn't already make. Add `Speakable`
@@ -65,6 +70,9 @@ in PRs #25 and #26.
   P3.3.
 - **Link the 10 orphaned `/testimonial/*/` pages into navigation or a relevant hub page.** Found via
   the Tier 6 audit with zero inbound links from anywhere on the site.
+  **Done 2026-10-28:** `/testimonial/` (which lists all the pages) is now linked from
+  `/business-english/` (1965, "Read what learners say" under the client logos) and `/about/`
+  (2224, under "Corporate clients trained"). Menus untouched.
 
 **Flag to Shaun, don't build blindly** (both from the original backlog's P3.1/P3.2 — checked against
 the live site and found to not match it):
@@ -87,18 +95,18 @@ the live site and found to not match it):
 Pages that work, but leak link equity outward or bypass the corporate funnel. Full detail:
 `docs/eol-backlog-plan.md` → "Tier 6" → bucket C.
 
-- **1133, 1019, 651** — the "why learn (business) English" cluster. Generic pre-strategy content;
+- [x] **1133, 1019, 651** — done (verified live 2026-10-21: 1133 and 651 end with a CTA group to `/business-english/` (1965) / the Activity Directory; 1019 links to 1965 and `business-activities.html`). Original note: the "why learn (business) English" cluster. Generic pre-strategy content;
   **1133 has zero internal links of any kind**, 1019 links only to 978, none link to **1965** (the
   corporate funnel) or to any interactive exercise on the activities host. Add links to both.
-- **1393 (Business English Vocabulary sets)** — links out to 20 third-party Quizlet flashcard sets via
+- [x] **1393 (Business English Vocabulary sets)** — done (29 Oct 2026: six `be-*` links added, Quizlet links kept). Original note: links out to 20 third-party Quizlet flashcard sets via
   `bit.ly` and links to nothing on the site itself. Add links to
   `ielts-vocabulary-glossary.html`-equivalent content and to `business-activities.html`'s own
   vocabulary exercises on the activities host.
-- **939 (Group Online English Courses)** — Tier 4 flagged this as worth *promoting* (its group format
+- [x] **939 (Group Online English Courses)** — done (verified live 2026-10-21: no Calendly; its only CTA is "Corporate Business English training →" to `/business-english/` (1965); the page is a draft). Original note: Tier 4 flagged this as worth *promoting* (its group format
   fits the corporate strategy better than 915's individual one, which was unpublished), but its only
   CTA still routes straight to Calendly at an individual rate, bypassing the corporate enquiry funnel
   (1965) entirely. Reroute the CTA.
-- **1757 (Vocabulary Games)** — ends with a "Book a lesson with me here" link straight to
+- [x] **1757 (Vocabulary Games)** — done (verified live 2026-10-21: no Calendly link left; it links to the Activity Directory and `vocab-games.html`). Original note: ends with a "Book a lesson with me here" link straight to
   `calendly.com/sptrezise`, bypassing the site's own `/book-a-lesson/` page (**168**) entirely.
   Reroute to 168 (or reconsider whether Calendly is the right destination at all, matching whatever
   the current thinking on 168/939 above lands on).
@@ -112,11 +120,47 @@ Pages that work, but leak link equity outward or bypass the corporate funnel. Fu
   round-trip. Low priority.
 - **MailerLite segmentation** — done 2026-10-15: each `lead-*.html` page posts to its own
   MailerLite form and group through `signup.js` (see its header).
-- **MailerLite on more results screens** — the MSA page (`msa-c-american-dream.html`) proves the
-  signup works on an exercise results screen (add a `.eol-signup` box + `signup.js`). Ask whether Shaun wants it widened to more
-  exercises, since that's the highest-volume surface on the site.
+- **MailerLite on more results screens** — done on the branch `claude/msa-results-signup` (PR): `exercise.js`
+  adds the MSA signup box to the practise results of all `msa-c-*` units, via the `EOL_SIGNUP_FORMS` prefix map.
+  No new group. Still open: whether to widen it to other prefixes (each needs an existing group).
 - **Corporate enquiries → MailerLite tagging** — 1965's Jetpack contact form sends to email only, not
-  into MailerLite. Ask whether corporate enquiries should also be tagged into a MailerLite group.
+  into MailerLite. Shaun chose to tag them. Status 2026-10-23: MailerLite group **"Corporate
+  enquiries"** created (id `202123515747370132`, no subscribers). The form is not wired: Jetpack
+  has no MailerLite connection, and a consent box alone would not subscribe anyone. Needed before
+  wiring: a consent field (unticked, wording from privacy policy §9, double opt-in) plus a
+  middleman such as Make, or a decision to use a MailerLite form instead. Also open: 1965 posts to
+  `englishonlinetraining@pm.me`, while CLAUDE.md names `learn@` as the public address.
+  **Options checked 2026-10-28 (nothing changed on 1965; its form block still has `to` = the old pm.me address).**
+  All three need Shaun's call, so no route was built:
+  1. **Make middleman** (Jetpack form → webhook → MailerLite add-to-group). Needs a new Make scenario and a
+     consent field with wording from privacy policy §9. Make is already used, but this is a Make change.
+  2. **Swap the Jetpack form for a MailerLite form.** Gives double opt-in and the group for free, but MailerLite
+     forms do not email the enquiry, so the message would have to go through an automation or the enquiry
+     would no longer reach `learn@`. Changes how enquiries are delivered.
+  3. **Separate opt-in beside the form** (a `signup.js`-style box posting to a MailerLite form). No new service
+     or Make change, but it is a second step for the visitor, so it would not tag the enquirers who skip it.
+  **2026-10-28: Shaun chose option 3.** Make cannot do option 1 (Jetpack has no webhook, Make has no MailerLite
+  or enquiry-inbox connection). Option 3 needs a MailerLite form attached to the "Corporate enquiries" group
+  (none exists yet; the form list has only the EOL Task Capture / General / Eltern forms). Creating it was blocked
+  by the permission check, so page 1965 is unchanged. Next: create the form (double opt-in, group 202123515747370132),
+  then add a `signup.js` box (`data-lang="en"`, new form ID added to its header table) plus `to` = learn@ in one edit.
+  **2026-10-29: DONE.** Page 1965 now has the form's `to` = learn@englishonline.training and, right after the form,
+  an optional opt-in box (form `202582978405074821`, via `signup.js`). Verified live; the form kept all five fields
+  and its button. Test signup landed as unconfirmed in the group (double opt-in works) and was deleted. The
+  "Prefer email?" line still shows the pm.me address. Enquiries are NOT tagged automatically: only visitors who
+  also use the opt-in box join the group.
+  **2026-11-02: "Prefer email?" line DONE.** Page 1965 block 78 (`core/paragraph`) now shows `learn@englishonline.training`
+  in both the mailto link and the visible text (subject parameter kept). Changed with `page-sections.replace` on that one
+  block; a re-fetch listing showed every other block's hash unchanged and the form still `jetpack/contact-form`.
+  **2026-10-28 later:** the MailerLite form "EOL Task Capture — Corporate enquiries" now exists (id
+  `202582978405074821`, double opt-in, group "Corporate enquiries"; no subscribers). The 1965 write (form `to` =
+  learn@ plus a core/html block after the form: `<div class="eol-signup" data-ml-form="202582978405074821"
+  data-lang="en"></div><script src="https://activities.englishonline.training/signup.js" defer></script>`)
+  was blocked by the permission check, so page 1965 is unchanged. The "Prefer email?" line under the form
+  still shows the pm.me address.
+  Also approved but not yet done: set the form's `to` to `learn@englishonline.training`, together with whichever
+  route is chosen. Page 1965 was modified 2026-10-28 14:32, so re-read it before any edit.
+- [x] **`/university-english/` contact form still sent to `pm.me`** — done 2026-10-28 (page **1996**, block 19, `jetpack/contact-form`). Its `to` is now `learn@englishonline.training`. Changed with `page-sections.replace` on that one block; a re-fetch with `context: "edit"` showed the form still a dynamic block with its four inner blocks (name, email, message, button) and every other block's hash unchanged. Subject line unchanged. Page 1965's form (above) is a separate item and still open.
 - **Homepage hero button copy** — the "Let's start a conversation" button (fixed 2026-08-08 to point
   at a MailerLite hosted form instead of a stray Google Form) still has placeholder copy on both the
   button label and/or the MailerLite hosted-page itself. Needs Shaun's real copy before it's genuinely

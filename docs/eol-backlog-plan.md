@@ -53,7 +53,7 @@ the cheapest time to break these buried URLs). Old → new URLs:
 | ID | Title | Old URL | New URL |
 |---|---|---|---|
 | 70 | Blog Posts | `/welcome/blog-posts/` | `/blog-posts/` |
-| 168 | Book a lesson | `/welcome/book-a-lesson/` | `/book-a-lesson/` |
+| 168 | Book a lesson | `/welcome/book-a-lesson/` | `/book-a-lesson/` — **now a draft (found 404 on 2026-10-28; Shaun: keep it unpublished).** No public page links to it. `/contact/` used to 301 to it; Shaun repointed that Redirection rule to `/business-english/` on 2026-10-28 (wp-admin, Tools → Redirection; the MCP cannot edit it) and confirmed it works. **Re-checked 2026-11-01: the 404 is intended** (draft, not in `sitemap.xml`/`sitemap-1.xml`, no link from the home, `/business-english/` or `/about/` pages, no navigation menus). No WordPress change needed; closed. |
 | 307 | Special offer! | `/welcome/what-i-offer/` | `/what-i-offer/` |
 | 651 | Common questions about learning English | `/welcome/common-questions-about-learning-english/` | `/common-questions-about-learning-english/` |
 | 978 | Finding the Right English Speaking Class For You | `/welcome/finding-the-right-english-speaking-class-for-you/` | `/finding-the-right-english-speaking-class-for-you/` |
@@ -82,7 +82,7 @@ own fallback. T4 can now proceed (it depended on T3 moving 1019/915/939).
   "do not touch"** — all 175 media items serve from `englishforgermanspeakers.wordpress.com`,
   including uploads from July 2026. That is permanent WordPress.com CDN behaviour, not migration
   debris, so there is nothing to rehost.
-- **T5 — IT English: extended production task.** None of the ten `it-*` pages has a free-text
+- **T5 — DONE (2026-08-07).** IT English: extended production task. None of the ten `it-*` pages has a free-text
   field (`grep -c form-textarea it-*.html` → 0 across the board), so the series stops at
   recognition: reading comprehension, gapped vocabulary, register multiple-choice. The artefact
   the job actually produces — a written ticket, an incident report, a reply to a user — is never
@@ -218,6 +218,7 @@ the "which groups exist" review above rather than staying an ungoverned one-off.
   **REOPENED 2026-10-03:** `/wilkommen/` does not redirect any more. It returns 200 as a page of
   its own (title "Willkommen", ~120 words), and both `/wilkommen/` and `/willkommen/` are in the
   Jetpack sitemap. Something was published at the old slug after the rename. See Tier 8 §B.
+  **Resolved 2026-10-28:** it is the noindexed stub 2272, kept on purpose (Tier 8 B6).
 - California – Interactive Exercises — **DONE (2026-08-07), and deliberately NOT a directory
   entry of its own.** `california-exercises.html` is already a card inside `9g-activities.html`
   (Y9 Gymnasium), so listing it separately on WP 1763 double-counted it. The standalone button
@@ -244,6 +245,12 @@ the "which groups exist" review above rather than staying an ungoverned one-off.
   both caught with a clear message before either could reach `topoSort()`.
 
 ## Tier 3.6 — `themen/` topic coverage (found 2026-08-20) · CC
+**Done 2026-11-02 (live, verified):** WP page 1763 now links all 18 `themen/` topic pages. The 8 missing chips
+(adjektive-adverbien, artikel, future-tenses, past-progressive, phrasal-verbs, praepositionen, question-tags,
+reported-speech) were added after "Linking Words" with one `pages.update`; each target returned 200 first. A re-fetch
+with `context: "edit"` showed one Custom HTML block with the rest of the content unchanged. Count drift fixed in a second
+write the same day (re-fetched, verified): ESL Grammar 17 → 22, "Grammar practice" 15 → 16, matching `data/wordpress-1763.json`.
+
 Found while adding the build graph; **nothing is broken and no link 404s**, which is why this is
 Tier 3 rather than urgent. Three related facts, verified against the repo on 2026-08-20:
 
@@ -452,7 +459,9 @@ those notes turned out to be wrong (see the 2063–2066 correction above).
 - One site-wide menu (may be moot after T3); delete orphaned block nav menu 416; replace dated
   `pub/ixion` theme. (Menu delete/assign may be MCP-doable — check when we get there.)
   **Theme part DONE:** `pub/ixion` was replaced by the custom EOT Modern theme (Claude-maintained
-  since 2026-09-25). The menu items are unchecked.
+  since 2026-09-25). **Menu DONE (2026-10-29):** the header already used the one classic menu
+  ("claude", `primary` location); unused block nav menu 416 moved to trash via the API (restore:
+  `navigation.update` with status `publish`).
 
 ## Tier 6 — Internal-linking + link-graph audit (2026-08-08) · CC
 Shaun asked for an internal-linking pass across **both** surfaces (WordPress + activities repo).
@@ -519,7 +528,7 @@ awaiting triage.**
   cluster — NOT yet examined", now examined). Generic AI-listicle content from the pre-strategy
   era; 1133 has **zero** internal links of any kind, 1019 links only to 978, none link to 1965
   (the corporate funnel) or to any interactive exercise.
-- **1393 (Business English Vocabulary sets)** links out to **20 third-party Quizlet flashcard
+- [x] **1393 (Business English Vocabulary sets)** — done 29 Oct 2026 (six `be-*` links added, Quizlet kept). Original note: links out to **20 third-party Quizlet flashcard
   sets** via `bit.ly` and links to nothing on the site itself — not the IELTS glossary, not
   `business-activities.html`'s own vocab exercises. Same shape of problem 460 had before T2
   rebuilt it natively.
@@ -908,8 +917,11 @@ has a self-canonical, a description, an og:image and JSON-LD. Only one page lack
      discovery and authority problem. Titles matter once pages are indexed.
 
 ### B. WordPress clean-up · CC via MCP, with Shaun's approval per item
-6. **`/wilkommen/` is live again**, as a page separate from `/willkommen/` (see the Tier 3
-   reopen). Find its ID and either draft it or stub it to `/willkommen/`.
+6. **`/wilkommen/` — resolved 2026-10-28: leave as is.** It is page 2272, the deliberate
+   noindexed "this page has moved" stub (one paragraph and a button to `/willkommen/`; nothing
+   unique, but it is the 301 target of `/welcome/about-me/wilkommen/`). Drafting it would break
+   that chain, so it stays until the Phase 2 decision in `gsc-review-2026-10-06.md`. No repo links
+   point at it. Shaun confirmed leaving it.
 7. **Duplicate post:** `/2026/07/31/alle-kostenlosen-englisch-ubungen-auf-einen-blick/` (557
    words) and `/2026/08/24/alle-kostenlosen-englisch-ubungen-auf-einen-blick-2/` (429 words) have
    near-identical titles. Keep one and stub the other (no 301s; plan upgrade deferred).
@@ -1132,20 +1144,32 @@ afterwards (rule 7).
      (Google-selected canonical blank on all), so every control stands. Indexing requested for
      all 10 the same day; each confirmed "added to a priority crawl queue". Every last crawl
      predates the preview going live (2026-10-12).
-   - **Results table** (fill in):
+   - **Results table:**
 
      | Page | Role | Baseline state | Requested | Recrawled | State at check | Impr. |
      |---|---|---|---|---|---|---|
-     | 10c-canada-schools | test | not indexed, crawled 22 Sep | 2026-10-13 | | | |
-     | 10c-inside-india | control | not indexed, crawled 10 Aug | 2026-10-13 | | | |
-     | 10c-canada-environment | test | not indexed, crawled 22 Sep | 2026-10-13 | | | |
-     | 10c-discover-canada | control | not indexed, crawled 9 Aug | 2026-10-13 | | | |
-     | 10g-growing-up-black | test | not indexed, crawled 28 Sep | 2026-10-13 | | | |
-     | 10g-proud-to-be-black | control | not indexed, crawled 10 Aug | 2026-10-13 | | | |
-     | 10g-cultural-diversity | test | not indexed, crawled 28 Sep | 2026-10-13 | | | |
-     | 10g-post-racial-obama | control | not indexed, crawled 22 Aug | 2026-10-13 | | | |
-     | 8c-going-west | test | not indexed, crawled 8 Oct | 2026-10-13 | | | |
-     | 8c-off-to-midwest | control | not indexed, crawled 9 Aug | 2026-10-13 | | | |
+     | 10c-canada-schools | test | not indexed, crawled 22 Sep | 2026-10-13 | 13 Oct 07:20 | Crawled – currently not indexed | n/a |
+     | 10c-inside-india | control | not indexed, crawled 10 Aug | 2026-10-13 | 13 Oct 07:20 | Crawled – currently not indexed | n/a |
+     | 10c-canada-environment | test | not indexed, crawled 22 Sep | 2026-10-13 | 13 Oct 07:19 | Crawled – currently not indexed | n/a |
+     | 10c-discover-canada | control | not indexed, crawled 9 Aug | 2026-10-13 | 13 Oct 07:22 | Crawled – currently not indexed | n/a |
+     | 10g-growing-up-black | test | not indexed, crawled 28 Sep | 2026-10-13 | 13 Oct 07:22 | Crawled – currently not indexed | n/a |
+     | 10g-proud-to-be-black | control | not indexed, crawled 10 Aug | 2026-10-13 | 13 Oct 07:22 | Crawled – currently not indexed | n/a |
+     | 10g-cultural-diversity | test | not indexed, crawled 28 Sep | 2026-10-13 | 13 Oct 07:22 | Crawled – currently not indexed | n/a (1 click, 1 impression in the 3-month table) |
+     | 10g-post-racial-obama | control | not indexed, crawled 22 Aug | 2026-10-13 | 13 Oct 07:26 | Crawled – currently not indexed | n/a |
+     | 8c-going-west | test | not indexed, crawled 8 Oct | 2026-10-13 | 13 Oct 07:19 | Crawled – currently not indexed | n/a |
+     | 8c-off-to-midwest | control | not indexed, crawled 9 Aug | 2026-10-13 | 13 Oct 07:17 | Crawled – currently not indexed | n/a |
+
+   - **Checked 2026-11-10** in Search Console URL Inspection (domain property), all 10 pages.
+     No "Request indexing" was clicked. **0 of 5 test pages and 0 of 5 controls are indexed**:
+     all 10 are still "Crawled – currently not indexed".
+   - **Reading.** All 10 were recrawled once, on 13 Oct between 07:17 and 07:26, and not since.
+     Each baseline crawl was older and the requests were made the same day, so these look like the
+     request-triggered crawls. The exact request time was not recorded, so "after the request" is
+     inferred, not proven. Same result on both sides: by the decision rule the preview is not the
+     cause. If the 13 Oct crawls are not accepted as "after the request", fewer than 3 pairs count
+     and the rule gives "inconclusive, recheck in 2 weeks". Impressions per page for 12 Oct to
+     8 Nov were not captured (the date filter did not apply). The `PREVIEW` blocks stay for now:
+     removing them is Shaun's call.
 
 10. **Search Console, 2026-10-15: impressions are back, mostly on the homepage · open.**
     - Activities host, domain property: nothing Jun 2025 – Jul 2026; ~500 impressions 9–23 Aug
@@ -1408,6 +1432,9 @@ pages show points and a percentage, never a German Note and never a predicted ba
 exercise cannot give one). Decisions are in Claude's memory note `project-ielts-section`.
 
 1. **Full-length Academic Reading practice test with an estimated band · CC, Shaun approves.**
+   **Built 2026-10-19** (`ielts-reading-practice-test.html`, with an E2E spec). Shaun chose: marked
+   once at the end (no Check buttons, blanks allowed); an estimated band given as a range between
+   ielts.org's four published averages (15 ≈ 5, 23 ≈ 6, 30 ≈ 7, 35 ≈ 8), cited on the page; one PR.
    One page: three original passages (2,150–2,750 words in all), 40 questions, the question
    types the section has practised, and an optional 60-minute timer. This is the one place a
    band is fair to show, because it is a full-length test. Convert the raw score with an
@@ -1443,6 +1470,13 @@ exercise cannot give one). Decisions are in Claude's memory note `project-ielts-
    **Instructions (2026-10-15):** the `ielts-exercise-draft` skill
    (`.claude/skills/ielts-exercise-draft/SKILL.md`) has the section rules and one brief per page
    (B1–B6), in build order. One page per PR.
+   **Built:** B1 Matching Headings (#164, 2026-10-16); B2 sentence and summary completion (#169)
+   and B3 tables and bar charts (#170), both 2026-10-17, each with an E2E spec in `tests/`.
+   B4 describing a process (2026-10-18, with `tests/ielts-writing-task1-process-diagram.spec.js`).
+   B5 discussion essay (2026-10-18, with `tests/ielts-writing-task2-discussion-essay.spec.js`).
+   B6 problem–solution essay (2026-10-18, with `tests/ielts-writing-task2-problem-solution-essay.spec.js`).
+   **All six briefs are built**, and item 1 (the full Reading test) followed on 2026-10-19. B1 and B2 are live, so Tier 14 item 1 (the full Reading
+   test) is no longer blocked by the skill's build order.
 5. ~~**German FAQ on the hub · Shaun decides.**~~ **Done 2026-10-13 (#133).** Two German FAQ entries
    on `ielts-activities.html` for "IELTS Übungen" searches; the exercises stay English-only.
 
@@ -1459,13 +1493,27 @@ and Tier 4 above for the full executed record. What's left:
 3. **Tier 6 internal-linking audit.** Bucket A resolved 2026-08-08 (Shaun approved) and bucket C
    resolved 2026-08-22 (mostly already fixed by an earlier undocumented session — see Tier 6 for
    the full record; 939's Calendly widget replaced with a link to the corporate funnel, confirmed
-   by Shaun). **Bucket B still open**: 1582 and 1715 remain true orphans with no plan to link
-   them yet — not raised with Shaun.
+   by Shaun). **Bucket B re-checked 2026-10-23: no longer orphans, no edits made.** 1582 is linked
+   from `/about/` ("See certificates and full training timeline"); 1715 is linked from
+   `/business-english/` (one button). Both are published, not noindexed, and substantive enough to
+   keep. Left as they are.
 4. **Tier 7 main-site GEO (P3).** Items 1–2 of the recommended scope done 2026-08-22 (`FAQPage`
    schema on `/faq/`, `Person` schema on `/about/`). Item 3: the `/testimonial/*/` pages are
-   confirmed to exist (8, via the sitemap, 2026-10-03); what to do with them is Tier 8 §B. Items 4 (the 5 proposed service landing pages +
-   "8-week plan" Course schema) and 5 (the 1763/1997 CRDT trap, not hit this round) remain open,
-   item 4 specifically as a content decision for Shaun rather than a schema task.
+   confirmed to exist (8, via the sitemap, 2026-10-03); what to do with them is Tier 8 §B. Item 5 (the 1763/1997 CRDT trap, not hit this round) remains open.
+   **Item 4 (the 5 proposed service landing pages + "8-week plan" Course schema) CLOSED 2026-10-28
+   (Shaun): build nothing.** Corporate is not a main focus; `/business-english/` stays as a light funnel.
+   - `/business-english-berlin` → covered by `/business-english/` (1965): live title "Business English
+     Training for Companies in Berlin & Online"; the proposed slug is 404.
+     **New evidence for Shaun to decide on (2026-11-07):** in the AI answer test
+     (`docs/gsc-review-2026-11-07-ai-answers.md`), every page cited for "Firmenschulung Englisch
+     Berlin, vor Ort" was a dedicated Berlin in-house page, and a small provider's page with a
+     stated price was quoted in 4 of 12 answers. Options: leave it closed; add a Berlin in-house
+     section with a price to 1965; or build the page. Publishing a price is Shaun's call.
+   - `/ielts-preparation-online` → covered by the activities-host IELTS hub (`ielts-activities.html`);
+     IELTS prep is online-only and delivered through the activities, so no WordPress service page.
+   - Other three pages: never named anywhere in the repo (only "etc." in `wordpress-todo.md`); dropped with the rest.
+   - 8-week plan Course schema → no page exists; its predecessor was cut on purpose in the 2026-08-07
+     corporate pivot (Tier 4), and rebuilding it only to hold schema would undo that.
 5. **Tier 8 SEO/GEO review.** Repo work and the tracking fix are done (2026-10-04); #86 (hub
    titles) merged 2026-10-05; the privacy policy is live and the testimonials are noindexed
    (2026-10-05). What's left is listed under "▶ Current status" in Tier 8: WP settings, exercise
@@ -1690,16 +1738,51 @@ written to WordPress. One live write, approved by Shaun before the pass: the Mai
 - **Not started (on request only):** Tier 14.4 next IELTS exercises; Tier 14.1 waits on them.
 
 
+### Overnight pass 2026-10-16 · CC
+Shaun picked the items. Every change is a PR; nothing pushed to `main`, nothing written to
+WordPress, MailerLite or Make.
+- **#167:** Repo-health item 3, Make → Excel half: `exercise.js` prefixes `= + - @` in student
+  text with an apostrophe before the POST. Not covered: the 18 Abitur packs and 5 bespoke tests
+  that post to Make without `exercise.js` (listed in the PR).
+- **#168:** the contact switch to `learn@` (Shaun confirmed it receives mail). MailerLite reply-to,
+  WordPress contact details and the Apps Script result emails are still Shaun's.
+- **#132:** rebased onto `main` and rebuilt; waits for the 2026-11-02 indexing check.
+- **#169:** Tier 14.4, IELTS Reading sentence and summary completion (brief B2).
+- **#170:** Tier 14.4, IELTS Writing Task 1 bar charts and tables (brief B3).
+- **Merged 2026-10-17** (Shaun asked), in this order: #167, #169, #170, #168 (redone on the new
+  `main`, so the two IELTS pages use `learn@` too), #172 (`CLAUDE.md` imports `AGENTS.md`;
+  E2E specs in the drafting skills), then this log. **#132 held** until the 2026-11-02 check.
+  *2026-11-10:* the indexing check is recorded in item 9 (0/5 test, 0/5 control indexed);
+  whether to keep holding #132 is now Shaun's call (he is also waiting on a separate renaming
+  experiment).
+- **Also 2026-10-17:** a ruleset on `main` requires the `check` job (it now runs the Playwright
+  specs). Bypass: repository admin. GitHub Actions cannot be added, so if the rebuild bot ever
+  has drift to push, its push is rejected: fix with a PR of the rebuilt files.
+- **After merge, done 2026-10-17:** WordPress page 1763 updated through the API (IELTS 4 → 7,
+  Year 9 Gymnasium 25 → 26, ESL Grammar 2 → 17; verified in edit and live view), and B2 and B3
+  ticked off in Tier 14 item 4.
+- **Found:** 24 duplicate files named "… 2.*" (e.g. `scripts/build-head 2.js`) appeared in the
+  worktree on 2026-10-16 at 20:49, probably from Documents sync. The build treated
+  `ielts-reading-matching-headings 2.html` as a real page. Moved out of the repo, none committed.
+  Check whether the main clone has them too.
+
 ### Contact address switch (added 2026-10-16) · Shaun + CC
 Shaun (2026-10-16): the contact address is now `learn@englishonline.training`, replacing
 `englishonlinetraining@pm.me`. MailerLite already sends from `learn@` (domain verified 2026-10-15),
 with replies going to `pm.me`.
 - **Check first · Shaun:** does `learn@` receive mail (a mailbox, or forwarding to `pm.me`)? Until it
   does, switching `TEACHER_EMAIL` would send students' results nowhere.
-- **Then · CC:** replace `pm.me` in 267 files on `main` (294 hits): `TEACHER_EMAIL` in about 245
+- **Shaun, 2026-10-16:** `learn@` receives mail.
+- **→ Done (#168, 2026-10-17).** **Then · CC:** replace `pm.me` in 267 files on `main` (294 hits): `TEACHER_EMAIL` in about 245
   exercise pages, 20 footer `mailto:` Contact links, the JSON-LD in `scripts/schema.js`, and the
   generator scripts (`build-quizzes.js`, `build-review-pages.js`, `verify-exercise.js`,
   `audit-skills.js`, `curriculum-watch.js`) so rebuilt pages don't bring it back. Rebuild with
   `node scripts/build.js`.
-- **Also:** `CLAUDE.md` (Teacher email, rule 3), the MailerLite reply-to address, the WordPress
+- **Also:** `CLAUDE.md` (Teacher email, rule 3; done in #168), the MailerLite reply-to address, the WordPress
   contact details, and the Apps Script sheets that email results.
+- **Status (2026-10-23, `vg-eol-contact-switch-rest`):**
+  - **Repo:** nothing live still shows `pm.me`; the remaining hits are historical notes, which stay.
+  - **WordPress:** the contact form on `/english-for-students/` (page 1966) now sends to `learn@`, verified by read-back. The About page (2224) was done 2026-10-21.
+  - **MailerLite reply-to (still `pm.me`), Shaun to change in the dashboard:** the draft campaign "Neue interaktive Übungspakete fürs Abitur" and the emails in Welcome Sequence — Website Subscribers (3) and Lead Magnet Delivery — all groups (6). The API accepted a reply-to write but ignored it, so it can't be changed through the connector. IT English — Exercise of the Month already uses `learn@`.
+  - **MailerLite audit, 2026-10-25 (read-only, nothing sent or saved):** the campaign and automation tools have no reply-to field, so none of the 10 items below could be changed through the connector. Found, all `reply_to` = `pm.me`: 1 draft campaign (192552823035004068, not sent, not scheduled); Welcome Sequence — Website Subscribers (192173602814035925): 3 emails; Lead Magnet Delivery — all groups (201426472817133336): 6 emails. Not affected: IT English — Exercise of the Month (201429998876231012, 12 emails, all `learn@`); EOL Task Capture — IT English Workflow (201430616215914185, draft, no steps). Dashboard click-path for each: open the campaign or automation email in MailerLite → Settings (or the email's From/Reply-to fields) → set Reply-to to `learn@englishonline.training` → save. Account-level sender defaults were not visible through the connector; check Settings → Account → Default sender / Reply-to in the dashboard too.
+  - **Apps Script:** the deployed script editor is Shaun's to change; the repo copies (`apps-script.gs`, `level-test-apps-script.gs`) have no `pm.me`.

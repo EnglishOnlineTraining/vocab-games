@@ -38,10 +38,18 @@ function eolUrlMode() {
 }
 
 /* Pages for an international audience get English-only chrome and no German
-   school grade (an IELTS result is a band, not a Note). Kept in step with
-   englishOnly() in scripts/schema.js, which does the same for generated blocks. */
+   school grade (an IELTS result is a band, not a Note). University learners
+   often speak no German, so uni- pages count too (Shaun, 2026-10-27). Kept in
+   step with englishOnly() in scripts/schema.js, which does the same for
+   generated blocks. */
 function eolEnglishOnly() {
-  try { return /^ielts-/.test(eolPageFile()); } catch (e) { return false; }
+  try { return /^(ielts|uni)-/.test(eolPageFile()); } catch (e) { return false; }
+}
+
+/* The hub an English-only page links back to: [href, label]. */
+function eolEnglishHub() {
+  try { if (/^uni-/.test(eolPageFile())) return ['uni-activities.html', 'University English']; } catch (e) {}
+  return ['ielts-activities.html', 'IELTS'];
 }
 
 function startPractise() {
@@ -73,7 +81,8 @@ function eolInitPractise() {
     b.style.marginTop = '.6rem';
     b.innerHTML = eolEnglishOnly()
       ? 'Just practise — nothing is sent'
-      : '<span lang="de">Nur üben — ohne Abgabe</span> &middot; <span style="opacity:.75">Just practise</span>';
+      : '<span lang="de">Nur üben — ohne Abgabe</span><span style="opacity:.75;font-size:.85em">Just practise</span>';
+    if (!eolEnglishOnly()) { b.style.flexDirection = 'column'; b.style.gap = '.1rem'; }   // German over English, never a mid-phrase wrap
     b.setAttribute('type', 'button');
     b.setAttribute('onclick', 'startPractise()');
     startBtn.parentNode.insertBefore(b, startBtn.nextSibling);
@@ -82,22 +91,67 @@ function eolInitPractise() {
 }
 document.addEventListener('DOMContentLoaded', eolInitPractise);
 
+/* ── Easier-to-read display (the dyslexia option on practice pages) ──
+   An "Easier to read" button in the header. Any student can switch it on; it is
+   saved on this device (eol_dyslexia) and stays on for every practice page. It
+   loads exam.css, the timed tests' display, and sets html.eol-dyslexia.
+   vocab-srs.js reads eolDyslexiaOn() to accept small spelling slips in its typing
+   round. Nothing is sent from here. Timed tests have their own box (exam.js),
+   because there it changes the marking the teacher sees. */
+function eolDyslexiaOn() { return document.documentElement.classList.contains('eol-dyslexia'); }
+
+function eolDyslexia(on) {
+  if (on && !document.getElementById('eol-dyslexia-css')) {
+    var l = document.createElement('link');
+    l.id = 'eol-dyslexia-css'; l.rel = 'stylesheet'; l.href = 'exam.css';
+    document.head.appendChild(l);
+  }
+  document.documentElement.classList.toggle('eol-dyslexia', on);
+  var b = document.getElementById('dyslexia-btn');
+  if (b) b.setAttribute('aria-pressed', String(on));
+  try { if (on) localStorage.setItem('eol_dyslexia', '1'); else localStorage.removeItem('eol_dyslexia'); } catch (e) {}
+}
+
+// At parse time, not on DOMContentLoaded, so a saved choice shows as early as it can.
+// ponytail: the stylesheet still loads after the page, so a slow connection can show
+// the normal display for a moment. Upgrade path: a <link> in build-head.js.
+try { if (localStorage.getItem('eol_dyslexia') === '1') eolDyslexia(true); } catch (e) {}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var inner = document.querySelector('.app-header .header-inner');
+  if (!inner || document.getElementById('dyslexia-btn')) return;
+  var b = document.createElement('button');
+  b.type = 'button'; b.id = 'dyslexia-btn'; b.className = 'dyslexia-btn';
+  b.setAttribute('aria-label', 'Easier to read: dyslexia-friendly text');
+  b.setAttribute('aria-pressed', String(eolDyslexiaOn()));
+  b.innerHTML = 'Aa<span> Easier to read</span>';
+  b.onclick = function() { eolDyslexia(!eolDyslexiaOn()); };
+  inner.insertBefore(b, document.getElementById('header-meta'));
+});
+
 /* Turn the submit step into a results screen when practising. Called from showStep. */
 function eolPractiseResults() {
   var step = document.getElementById('step-' + TOTAL_STEPS);
   if (!step) return;
   eolSaveProgress();
+  eolDraftClear();   // finished: nothing left to resume
   var submitBtn = document.getElementById('submit-btn');
   if (submitBtn && submitBtn.closest) {
     var card = submitBtn.closest('.card');
     if (card) card.style.display = 'none';
+    // The feedback email box goes with it: nothing is sent, so it would only sit there unused.
+    var emailCard = card && card.previousElementSibling;
+    if (emailCard && emailCard.matches('.card') && emailCard.querySelector('input[type="email"]')) emailCard.style.display = 'none';
   }
   var head = step.querySelector('.ex-title');
   var en = eolEnglishOnly();
   if (head) head.textContent = en ? 'Exercise complete!' : 'Übung abgeschlossen!';
   var sub = step.querySelector('.ex-subtitle');
+  // Pages with integrity counts send anonymous practise statistics (opt-out below),
+  // so "nothing is sent" would be untrue there; nothing reaches the teacher.
   if (sub) sub.textContent = en ? 'Practice mode — your results. Nothing has been sent.'
-    : 'Übungsmodus — deine Ergebnisse. Nichts wird abgeschickt.';
+    : !eolIntReady() || eolIntLevel() === 'off' ? 'Übungsmodus — deine Ergebnisse. Nichts wird abgeschickt.'
+    : 'Übungsmodus — deine Ergebnisse. Nichts geht an deine Lehrkraft.';
   renderScore();
   var panel = document.getElementById('practise-results');
   if (panel) panel.remove();
@@ -106,16 +160,56 @@ function eolPractiseResults() {
   panel.innerHTML = eolPractisePanelHtml();
   var inner = step.querySelector('.step-inner') || step;
   inner.appendChild(panel);   // at the end, below summary + explanations
+  eolPractiseSignup(inner);
+}
+
+/* Unit-prefix → MailerLite form ID (same IDs as signup.js's header). Each prefix's
+   audience already has its group, so no new group is created. */
+var EOL_SIGNUP_FORMS = { 'msa-c-': '194481680761750752' };
+
+/* Opt-in newsletter box under the practise results. It is added by this function, not
+   the page, so every unit with a prefix above gets it. Pages that already carry a
+   .eol-signup box (msa-c-american-dream) keep their own. Moved to the end on each call,
+   so it stays below the results panel when the learner comes back to step 4. */
+function eolPractiseSignup(inner) {
+  var box = document.getElementById('eol-signup-card');
+  if (box) { inner.appendChild(box); return; }
+  var formId = '';
+  for (var p in EOL_SIGNUP_FORMS) if (String(UNIT).indexOf(p) === 0) formId = EOL_SIGNUP_FORMS[p];
+  if (!formId || document.querySelector('.eol-signup')) return;
+  box = document.createElement('div');
+  box.id = 'eol-signup-card';
+  box.className = 'card';
+  box.style.marginTop = '1.25rem';
+  box.innerHTML = '<h3 style="color:var(--blue);font-size:1.05rem;margin-bottom:.4rem;text-align:center">📧 Gratis MSA-Prüfungs-Checkliste</h3>'
+    + '<p style="font-size:.88rem;color:var(--muted);text-align:center;margin-bottom:1rem">Trag dich ein, und wir schicken dir eine kostenlose MSA-Prüfungs-Checkliste per E-Mail. Freiwillig — du kannst diesen Schritt überspringen.</p>'
+    + '<div class="eol-signup" data-ml-form="' + formId + '" data-lang="de"></div>';
+  inner.appendChild(box);
+  var script = document.createElement('script');
+  script.src = 'signup.js';   // renders every .eol-signup box on the page, so it runs after the box exists
+  document.body.appendChild(script);
 }
 
 function eolPractisePanelHtml() {
   var keys = Object.keys(state.scores || {});
-  var rows = keys.map(function(k) {
-    var s = state.scores[k];
-    var letter = k.replace(/^ex/i, '');
+  var row = function(label, correct, total) {
     return '<div style="display:flex;justify-content:space-between;padding:.4rem 0;border-top:1px solid var(--border)">'
-      + '<span>Exercise ' + esc(letter) + '</span><strong>' + fmtPts(s.correct) + ' / ' + s.total + '</strong></div>';
-  }).join('');
+      + '<span>' + esc(label) + '</span><strong>' + fmtPts(correct) + ' / ' + total + '</strong></div>';
+  };
+  var rows;
+  if (typeof SCORE_GROUPS !== 'undefined' && SCORE_GROUPS.length) {
+    /* A page may name its own groups, e.g. [['Passage 1', ['exA','exA2']], …]. */
+    rows = SCORE_GROUPS.map(function(grp) {
+      var c = 0, t = 0;
+      grp[1].forEach(function(k) { var s = state.scores[k]; if (s) { c += s.correct; t += s.total; } });
+      return row(grp[0], c, t);
+    }).join('');
+  } else {
+    rows = keys.map(function(k) {
+      var s = state.scores[k];
+      return row('Exercise ' + k.replace(/^ex/i, ''), s.correct, s.total);
+    }).join('');
+  }
   var en = eolEnglishOnly();
   var breakdown = rows
     ? '<div class="card"><div class="card-title">' + (en ? 'Your points per exercise' : 'Deine Punkte pro Übung') + '</div>' + rows + '</div>'
@@ -125,10 +219,10 @@ function eolPractisePanelHtml() {
     + '<button class="btn btn-gold" type="button" style="width:100%;max-width:360px;justify-content:center" onclick="eolPractiseRetry()">'
     + (en ? '↻ Try again' : '↻ Nochmal üben · Try again') + '</button>'
     + '<div style="margin-top:.7rem">'
-    + (en ? '<a class="btn btn-outline btn-sm" href="ielts-activities.html">← All IELTS exercises</a>'
+    + (en ? '<a class="btn btn-outline btn-sm" href="' + eolEnglishHub()[0] + '">← All ' + eolEnglishHub()[1] + ' exercises</a>'
           : '<a class="btn btn-outline btn-sm" href="activities.html">← Alle Übungen</a>')
     + '</div></div>';
-  return breakdown + selfcheck + buttons;
+  return breakdown + selfcheck + buttons + eolBaselineHtml();
 }
 
 function eolPractiseRetry() {
@@ -152,6 +246,7 @@ function eolToday() {
 function eolMarkStarted() {
   if (typeof UNIT === 'undefined') return;
   eolExerciseStartTime = Date.now();
+  if (eolIntReady()) eolIntStart();
   try {
     var data = JSON.parse(localStorage.getItem('eol_progress') || '{}');
     if (!data[UNIT]) {
@@ -163,6 +258,7 @@ function eolMarkStarted() {
 
 function eolSaveProgress() {
   if (typeof UNIT === 'undefined') return;
+  eolFinished = true;   // stops the autosave writing back the draft the finish just cleared
   try {
     var data = JSON.parse(localStorage.getItem('eol_progress') || '{}');
     var sc = (typeof totalScore === 'function') ? totalScore() : { earned: 0, possible: 0 };
@@ -204,6 +300,7 @@ function eolUpdateStreak() {
 ============================================================ */
 var EOL_DRAFT_KEY = '';
 var _eolDraftTimer = 0;
+var eolFinished = false;   // set by eolSaveProgress() on submit or practise results
 
 function eolDraftInit() {
   if (typeof UNIT === 'undefined') return;
@@ -213,16 +310,19 @@ function eolDraftInit() {
   document.addEventListener('change', eolDraftSave);
 }
 
-function eolDraftSave() {
-  if (!EOL_DRAFT_KEY || !state || !state.name) return;
+function eolDraftSave(step) {
+  if (eolFinished || !EOL_DRAFT_KEY || !state || !state.name) return;
   try {
     var cur = document.querySelector('.step.active');
-    var curStep = cur ? parseInt(cur.id.replace('step-', ''), 10) : 0;
+    var curStep = typeof step === 'number' ? step : cur ? parseInt(cur.id.replace('step-', ''), 10) : 0;
     var draft = {
       v: 2,
       state: state,
       maxStep: maxStepReached,
       curStep: curStep,
+      total: TOTAL_STEPS,   // lets the homepage tell "Exercise B" from "ready to submit"
+      practise: practiseMode,   // a practise draft must resume in practise mode, never offer Submit
+      int: eolIntReady() ? eolIntSnapshot() : undefined,
       ts: Date.now()
     };
     localStorage.setItem(EOL_DRAFT_KEY, JSON.stringify(draft));
@@ -235,7 +335,7 @@ function eolDraftLoad() {
     if (!raw) return null;
     var d = JSON.parse(raw);
     if (!d || d.v !== 2 || !d.state || !d.state.name) return null;
-    if (Date.now() - d.ts > 48 * 60 * 60 * 1000) return null;
+    if (Date.now() - d.ts > 48 * 60 * 60 * 1000) { localStorage.removeItem(EOL_DRAFT_KEY); return null; }
     return d;
   } catch (e) { return null; }
 }
@@ -266,6 +366,8 @@ function eolDraftOfferResume() {
   document.getElementById('eol-resume-yes').onclick = function() {
     banner.remove();
     state = d.state;
+    if (d.practise) { practiseMode = true; eolRelabelForPractise(); }
+    if (eolIntReady()) eolIntRestore(d.int);
     if (typeof maxStepReached !== 'undefined') maxStepReached = d.maxStep || 0;
     state.name && (function() {
       var nameEl = document.getElementById('inp-name');
@@ -356,8 +458,19 @@ function eolWritingCounts() {
   return out;
 }
 
+/* A real writing task: a textarea other than the copy-to-clipboard block every page
+   carries and the optional, unmarked warm-up box (exA-recall). Without this filter the
+   copy block alone made pages with no writing task show a writing self-check. */
+function eolHasWritingTask() {
+  var boxes = document.querySelectorAll('.step textarea');
+  for (var i = 0; i < boxes.length; i++) {
+    if (boxes[i].id !== 'copy-block' && !/-recall$/.test(boxes[i].id)) return true;
+  }
+  return false;
+}
+
 function eolRubricHtml() {
-  if (!document.querySelector('.step textarea')) return '';
+  if (!eolHasWritingTask()) return '';
   var rows = (typeof WRITING_RUBRIC !== 'undefined' && WRITING_RUBRIC.length)
     ? WRITING_RUBRIC : eolRubricBand().rows;
   var counts = eolWritingCounts().filter(function(c) { return c.words > 0; });
@@ -396,7 +509,7 @@ function eolRubricHtmlEn(rows, total) {
   var levels = ['Not yet', 'Almost', 'Yes'];
   var html = '<div class="card eol-rubric">'
     + '<div class="card-title">Check your own writing</div>'
-    + '<p class="eol-rubric-intro">This is <strong>not a band score</strong> — nobody marks your text in practice mode. '
+    + '<p class="eol-rubric-intro">This is <strong>not a ' + (/^ielts-/.test(eolPageFile()) ? 'band score' : 'mark') + '</strong> — nobody marks your text in practice mode. '
     + 'Go through each point and decide what is already good and what you can still improve.'
     + (total ? ' You wrote <strong>' + total + ' words</strong>.' : '')
     + '</p>'
@@ -463,7 +576,7 @@ function showStep(n) {
   restoreStep(n);
   if (n > maxStepReached) maxStepReached = n;
   renderStepNav(n);
-  eolDraftSave();
+  eolDraftSave(n);
   var meta = document.getElementById('header-meta');
   if (n === 0) { meta.style.display = 'none'; return; }
   meta.style.display = 'block';
@@ -639,6 +752,19 @@ function eolFlat(o) {
 /* Points awarded for a correct answer on attempt n: 1st=1, 2nd=½, 3rd=¼, later=0. */
 function attemptPoints(n) { return n <= 1 ? 1 : n === 2 ? 0.5 : n === 3 ? 0.25 : 0; }
 
+/* The visible text of a <select> option, for the teacher's wrong-answer line. Pages
+   with option values a/b/c (the it-, esl-, be- quizzes) otherwise send "gave c,
+   expected b". Anything that is not a select, or a value with no option, comes back
+   unchanged. first_<scoreKey> keeps the raw value: item-analysis.js grades it against
+   data/answer-keys, which hold the option values. */
+function eolOptText(el, v) {
+  if (!el || !el.options || v == null) return v;
+  for (var i = 0; i < el.options.length; i++) {
+    if (el.options[i].value === v) return el.options[i].text.trim() || v;
+  }
+  return v;
+}
+
 /*
  * Record one check of a single gap for graded-attempt scoring.
  * A gap is tracked in state.attempts[scoreKey][k] as { n, earned, done }.
@@ -646,19 +772,20 @@ function attemptPoints(n) { return n <= 1 ? 1 : n === 2 ? 0.5 : n === 3 ? 0.25 :
  * is a real attempt. Once the gap is correct (done) it is frozen: further
  * checks neither add attempts nor change its earned points.
  */
-function recordGap(scoreKey, k, ok, given, expected) {
+function recordGap(scoreKey, k, ok, given, expected, shown) {
   if (!scoreKey) return;
   if (!state.attempts) state.attempts = {};
   var tries = state.attempts[scoreKey] = state.attempts[scoreKey] || {};
   var gap = tries[k] || (tries[k] = { n: 0, earned: 0, done: false });
   if (gap.done) return;
   gap.n += 1;
+  if (gap.n === 1) gap.first = given;   // sent as first_<scoreKey>, see eolFirstTries
   if (ok) { gap.earned = attemptPoints(gap.n); gap.done = true; gap.given = null; }
   // Keep the latest wrong answer and what was expected, so the submission can carry
   // a ready-made wrong-answer list for the teacher (eolWrongSummary). The page is
   // the only place that reliably knows both, which is why this is not recomputed
   // server-side — see the note on eolWrongSummary.
-  else { gap.given = given; gap.expected = expected; }
+  else { gap.given = shown != null ? shown : given; gap.expected = expected; }
 }
 
 /*
@@ -705,6 +832,23 @@ function eolWrongSummary() {
       + (graded === 1 ? '' : 's') + ' took more than one try.';
   }
   return lines.join(' | ') + (unanswered ? (lines.length ? ' | ' : '') + unanswered + ' not answered' : '');
+}
+
+/*
+ * Each gap's first answer, as { first_<scoreKey>: { gap: answer } }, for item analysis
+ * (agent #11, docs/agent-backlog.md). The submitted answers are mostly the ones a
+ * student corrected after Check showed red, so they make every gap look easy; the
+ * first answer is what the student actually knew. A gap never checked has no entry.
+ */
+function eolFirstTries() {
+  var out = {}, attempts = state.attempts || {};
+  Object.keys(attempts).forEach(function(sk) {
+    Object.keys(attempts[sk]).forEach(function(k) {
+      var f = attempts[sk][k].first;
+      if (f != null) (out['first_' + sk] = out['first_' + sk] || {})[k] = f;
+    });
+  });
+  return out;
 }
 
 /* Sum the locked-in points recorded for a scoreKey (may be fractional). */
@@ -764,7 +908,7 @@ function eolAutoScoreUnchecked() {
       var ok = section.typed
         ? accept.some(function(a) { return normAns(given) === normAns(a); })
         : accept.some(function(a) { return given === String(a).trim(); });
-      recordGap(sk, k, ok, given, gaps[k].correct);
+      recordGap(sk, k, ok, given, eolOptText(el, gaps[k].correct), eolOptText(el, given));
     });
     if (seen) state.scores[sk] = { correct: recordedPoints(sk), total: ids.length };
   });
@@ -782,7 +926,7 @@ function checkDropdowns(ids, prefix, answers, fbId, scoreKey) {
     if (ok) { sel.className += ' gap-correct'; correct++; }
     else    { sel.className += ' gap-wrong';   wrong++;   }
     eolMarkGap(sel, ok);
-    recordGap(scoreKey, k, ok, sel.value, answers[k]);
+    recordGap(scoreKey, k, ok, sel.value, eolOptText(sel, answers[k]), eolOptText(sel, sel.value));
   });
   var total = ids.length;
   var recorded = correct;
@@ -833,7 +977,7 @@ function checkDropdownsMulti(ids, prefix, answers, fbId, scoreKey) {
     if (ok) { sel.className += ' gap-correct'; correct++; }
     else    { sel.className += ' gap-wrong';   wrong++;   }
     eolMarkGap(sel, ok);
-    recordGap(scoreKey, k, ok, sel.value, acc.join(' / '));
+    recordGap(scoreKey, k, ok, sel.value, acc.map(function(a) { return eolOptText(sel, a); }).join(' / '), eolOptText(sel, sel.value));
   });
   var total = ids.length;
   var recorded = correct;
@@ -965,6 +1109,39 @@ function currentGradeLookup(earned, possible) {
     : lookupGrade(earned, possible);
 }
 
+/* ============================================================
+   IELTS READING PRACTICE TEST — estimated band
+   Only for a full 40-question page that sets IELTS_BAND_ESTIMATE = true.
+   ielts.org publishes just four reference points for Academic Reading:
+   on average 15/40 = band 5, 23/40 = band 6, 30/40 = band 7, 35/40 = band 8,
+   and says the exact marks "will vary slightly from test version to test
+   version" (ielts.org, "IELTS scoring in detail", checked 2026-10-19). So the
+   card gives a range between those points, never a single official-looking
+   band, and links to the source.
+============================================================ */
+var EOL_IELTS_SCORING_URL = 'https://ielts.org/take-a-test/your-results/ielts-scoring-in-detail';
+
+function eolIeltsReadingBand(raw) {
+  if (raw >= 35) return 'about 8 or higher';
+  if (raw >= 30) return 'about 7–7.5';
+  if (raw >= 23) return 'about 6–6.5';
+  if (raw >= 15) return 'about 5–5.5';
+  return 'below 5';
+}
+
+function eolIeltsBandCard(raw) {
+  var marks = Math.floor(raw);   // one attempt per question, so marks are whole numbers
+  return '<div class="card" style="text-align:center;background:var(--gold-lt);border:1.5px solid var(--gold)">'
+    + '<div style="font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--blue);font-weight:700;margin-bottom:.3rem">Your score</div>'
+    + '<div style="font-size:1.5rem;font-weight:800;color:var(--blue)">' + marks + ' / 40 marks</div>'
+    + '<div style="font-size:1.05rem;font-weight:700;color:var(--blue);margin-top:.3rem">Estimated band: ' + eolIeltsReadingBand(marks) + '</div>'
+    + '<div style="font-size:.78rem;color:var(--muted);margin-top:.5rem;line-height:1.5">Each question is worth 1 mark, as in the exam. '
+    + 'ielts.org gives these averages for Academic Reading: 15 marks &asymp; band 5, 23 &asymp; band 6, 30 &asymp; band 7 and 35 &asymp; band 8, '
+    + 'and the exact marks vary slightly between test versions. This is a practice test, not an official one, so treat the band as a rough guide only. '
+    + '<a href="' + EOL_IELTS_SCORING_URL + '" target="_blank" rel="noopener">Source: ielts.org</a></div>'
+    + '</div>';
+}
+
 function renderScore() {
   // Render review-page explanations here too: some pages override showStep
   // (bypassing that hook) but still call the shared renderScore from buildSummary.
@@ -985,13 +1162,17 @@ function renderScore() {
     gradeHtml = '<div style="font-size:1rem;color:var(--blue);margin-top:.2rem">Note ' + grade.note + ' (' + grade.label + ')</div>';
   }
   box.style.display = 'block';
+  if (eolEnglishOnly() && typeof IELTS_BAND_ESTIMATE !== 'undefined' && IELTS_BAND_ESTIMATE && sc.possible === 40) {
+    box.innerHTML = eolIeltsBandCard(sc.earned);
+    return;
+  }
   if (eolEnglishOnly()) {
     box.innerHTML = '<div class="card" style="text-align:center;background:var(--gold-lt);border:1.5px solid var(--gold)">'
       + '<div style="font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--blue);font-weight:700;margin-bottom:.3rem">Your score (auto-marked questions)</div>'
       + '<div style="font-size:1.5rem;font-weight:800;color:var(--blue)">' + fmtPts(sc.earned) + ' / ' + sc.possible + ' points'
       + ' <span style="font-size:1rem;font-weight:700">(' + Math.round(sc.earned / sc.possible * 100) + '%)</span></div>'
       + '<div style="font-size:.78rem;color:var(--muted);margin-top:.4rem">Each question scores 1 point if you get it right first time, ½ on the second try and ¼ on the third. '
-      + 'IELTS reports results as bands from 1 to 9, worked out from a full test, so a short exercise like this one cannot give you a band — use the score to see which question types need more practice.'
+      + (/^ielts-/.test(eolPageFile()) ? 'IELTS reports results as bands from 1 to 9, worked out from a full test, so a short exercise like this one cannot give you a band — use the score to see which question types need more practice.' : 'Use the score to see which parts need more practice.')
       + (practiseMode ? '' : ' Your writing is not included in this score.')
       + '</div></div>';
     return;
@@ -1236,7 +1417,23 @@ function eolCollectExplanations() {
  * objects, so those sheets are byte-identical to before.
  */
 function eolIsMakeTarget(url) {
-  return String(url || '').indexOf('hook.eu1.make.com') !== -1;
+  try { return new URL(url).hostname === 'hook.eu1.make.com'; } catch (e) { return false; }
+}
+
+/*
+ * Spreadsheet formula injection, Make → Excel half (apps-script.gs safeCell() covers
+ * the Sheets half server-side). A string starting with = + - @ (or a tab/CR) would
+ * land in the Excel table as a live formula, so prefix it with an apostrophe, which
+ * Excel stores as a text marker and does not display.
+ * ponytail: only top-level values are guarded, because flattened objects start
+ * with their key ("text: …"). 23 pages post to Make without exercise.js (the 18
+ * abitur-* packs, 9g-class-test-9ab, 9g/9c-australia-vocab-test,
+ * 9ab/10a-grammar-literary-review-test); each inlines this same rule as a
+ * JSON.stringify replacer. Ceiling: a change here must be copied there too.
+ * tests/make-formula-guard.spec.js covers this function and one of those pages.
+ */
+function eolSafeCell(v) {
+  return (typeof v === 'string' && /^[=+\-@\t\r]/.test(v)) ? "'" + v : v;
 }
 
 function eolFlattenForMake(payload) {
@@ -1244,10 +1441,29 @@ function eolFlattenForMake(payload) {
   for (k in payload) {
     if (!Object.prototype.hasOwnProperty.call(payload, k)) continue;
     v = payload[k];
-    out[k] = (v && typeof v === 'object' && !(v instanceof Array)) ? eolFlat(v) : v;
+    out[k] = eolSafeCell((v && typeof v === 'object' && !(v instanceof Array)) ? eolFlat(v) : v);
   }
   return out;
 }
+
+/* Put the submit card at the top of the final step, above the score, answers and
+   explanations, so nobody has to scroll past them to find it. Moved here rather than in
+   each page's HTML so every framework page gets it. An email box directly above the
+   card moves with it: the button reads that box. */
+document.addEventListener('DOMContentLoaded', function() {
+  var btn = document.getElementById('submit-btn');
+  var card = btn && btn.closest('.card');
+  var anchor = document.getElementById('score-display') || document.getElementById('summary-container');
+  if (!card || !anchor) return;
+  var parent = card.parentNode;
+  while (anchor && anchor.parentNode !== parent) anchor = anchor.parentNode;   // 10c-london-slang wraps them in a card
+  if (!anchor) return;
+  var emailCard = card.previousElementSibling;
+  if (emailCard && emailCard.matches('.card') && emailCard.querySelector('input[type="email"]')) parent.insertBefore(emailCard, anchor);
+  parent.insertBefore(card, anchor);
+});
+
+var EOL_SID = Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
 
 function submitToSheet() {
   buildSummary();
@@ -1259,8 +1475,20 @@ function submitToSheet() {
   // string, so eolFlattenForMake passes it through untouched.
   var wrongList = eolWrongSummary();
   if (wrongList && payload.wrong == null) payload.wrong = wrongList;
+  var firsts = eolFirstTries();
+  Object.keys(firsts).forEach(function(k) { if (payload[k] == null) payload[k] = firsts[k]; });
+  // Integrity counts: numbers and one short string, so they also pass through unchanged.
+  if (eolIntSendsToTeacher()) {
+    var intFields = eolIntFields();
+    for (var ik in intFields) payload[ik] = intFields[ik];
+  }
   payload = eolEmailPayload(payload);
   if (eolIsMakeTarget(SHEET_URL)) payload = eolFlattenForMake(payload);
+  // One id per page load, kept across retries. A slow or dropped Apps Script reply
+  // after the row was written showed "Submission failed", and students sent the same
+  // row up to 6 times (2026-11-03). apps-script.gs skips an sid it has already written.
+  // Make targets dedupe on their own (submission-routing.md), so they get none.
+  if (!eolIsMakeTarget(SHEET_URL)) payload.sid = EOL_SID;
 
   if (isTestMode()) {
     console.log('📝 TEST MODE - Submission payload:', payload);
@@ -1277,10 +1505,10 @@ function submitToSheet() {
 
   fetch(SHEET_URL, {
     method: 'POST',
-    mode: 'no-cors',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: 'payload=' + encodeURIComponent(JSON.stringify(payload))
-  }).then(function() {
+  }).then(function(response) {
+    if (!response.ok) throw new Error('Submission failed with HTTP ' + response.status);
     btn.style.display = 'none';
     showToast('✅ Submitted to teacher!');
     document.getElementById('submit-success').style.display = 'block';
@@ -1324,6 +1552,64 @@ function copyAnswers() {
  * If the browser has no speech synthesis, a clear fallback message is shown
  * instead of a silent, broken player.
  */
+function eolPickVoice(kind) {
+  var voices = window.speechSynthesis.getVoices() || [];
+  var en = voices.filter(function(v) { return /^en(-|_|$)/i.test(v.lang); });
+  if (!en.length) en = voices;
+  if (!en.length) return null;
+  var wantFemale = kind !== 'male';
+  var hint = wantFemale ? /female|zira|samantha|susan|karen|serena|fiona|moira|tessa|hazel|amelia/i
+                        : /male|david|daniel|george|fred|alex|arthur|oliver/i;
+  var match = en.filter(function(v) { return hint.test(v.name); })[0];
+  return match || en[0];
+}
+
+/* ── Listen to a word ──
+   A 🔊 button with data-say="text" speaks that text with the device's own voice
+   (British English if the device has one). One click handler on the document
+   serves every button, including ones vocab-srs.js adds later. exercise.js adds
+   a button to each word in a static word list (td.wl-en); vocab-srs.js adds them
+   to its word list and to the feedback after each answer.
+   ponytail: some devices have speech synthesis but no voices (Firefox on Linux).
+   The buttons are hidden if no voice has loaded 2 s after the page, and shown
+   again if one arrives later. */
+function eolCanSpeak() { return ('speechSynthesis' in window) && (typeof SpeechSynthesisUtterance !== 'undefined'); }
+
+function eolSayBtn(text) {
+  if (!eolCanSpeak()) return '';
+  var t = esc(text).replace(/"/g, '&quot;');   // esc() leaves quotes; this goes in attributes
+  return '<button type="button" class="say-btn" data-say="' + t + '" aria-label="Listen: ' + t + '">🔊</button>';
+}
+
+function eolSpeak(text) {
+  if (!eolCanSpeak()) return;
+  window.speechSynthesis.cancel();
+  // "On the Beach / On the Bench": a pause, not "slash".
+  var u = new SpeechSynthesisUtterance(String(text).replace(/\s+\/\s+/g, ', '));
+  u.lang = 'en-GB';
+  u.rate = 0.9;
+  var gb = (window.speechSynthesis.getVoices() || []).filter(function(v) { return /^en[-_]GB/i.test(v.lang); })[0];
+  var v = gb || eolPickVoice();
+  if (v) u.voice = v;
+  window.speechSynthesis.speak(u);
+}
+
+document.addEventListener('click', function(e) {
+  var b = e.target && e.target.closest && e.target.closest('[data-say]');
+  if (b) eolSpeak(b.getAttribute('data-say'));
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (!eolCanSpeak()) return;
+  Array.prototype.forEach.call(document.querySelectorAll('td.wl-en'), function(td) {
+    if (!td.querySelector('.say-btn')) td.insertAdjacentHTML('beforeend', ' ' + eolSayBtn(td.textContent.trim()));
+  });
+  var html = document.documentElement;
+  function check() { html.classList.toggle('no-voices', !(window.speechSynthesis.getVoices() || []).length); }
+  setTimeout(check, 2000);
+  if (window.speechSynthesis.addEventListener) window.speechSynthesis.addEventListener('voiceschanged', check);
+});
+
 function initListening(elementId, script, opts) {
   opts = opts || {};
   var maxPlays = opts.maxPlays || 2;
@@ -1348,18 +1634,6 @@ function initListening(elementId, script, opts) {
   var btn    = document.getElementById(elementId + '-play');
   var status = document.getElementById(elementId + '-status');
   var plays  = document.getElementById(elementId + '-plays');
-
-  function pickVoice(kind) {
-    var voices = window.speechSynthesis.getVoices() || [];
-    var en = voices.filter(function(v) { return /^en(-|_|$)/i.test(v.lang); });
-    if (!en.length) en = voices;
-    if (!en.length) return null;
-    var wantFemale = kind !== 'male';
-    var hint = wantFemale ? /female|zira|samantha|susan|karen|serena|fiona|moira|tessa|hazel|amelia/i
-                          : /male|david|daniel|george|fred|alex|arthur|oliver/i;
-    var match = en.filter(function(v) { return hint.test(v.name); })[0];
-    return match || en[0];
-  }
 
   function render() {
     var left = maxPlays - playsUsed;
@@ -1388,7 +1662,7 @@ function initListening(elementId, script, opts) {
       var u = new SpeechSynthesisUtterance(seg.text);
       u.rate = seg.rate || 1;
       u.lang = 'en-GB';
-      var v = pickVoice(seg.voice);
+      var v = eolPickVoice(seg.voice);
       if (v) u.voice = v;
       u.onend = next;
       u.onerror = next;
@@ -1399,13 +1673,99 @@ function initListening(elementId, script, opts) {
   btn.addEventListener('click', speak);
   // Voices can load asynchronously; refresh the (already-correct) UI when they arrive.
   if (typeof window.speechSynthesis.onvoiceschanged !== 'undefined') {
-    window.speechSynthesis.onvoiceschanged = function() { /* voices now available for pickVoice */ };
+    window.speechSynthesis.onvoiceschanged = function() { /* voices now available for eolPickVoice */ };
   }
   render();
 }
 
+/* ============================================================
+   INTEGRITY SIGNALS (docs/integrity-signals-spec.md)
+   Counts how free text was produced, so the teacher can follow up in
+   class. The counters themselves live in integrity.js (shared with the
+   standalone class tests); this part decides who gets them. Counts only: no content, no per-key timestamps, no device data.
+   Never changes a score or grade.
+     Level by filename prefix: 'standard' for Shaun's class pages,
+     'off' for public pages. A page can override with
+     var INTEGRITY_LEVEL = 'standard' | 'off';
+     School pages send counts only when the class field matches
+     EOL_INT_CLASSES; uni- pages always send.
+     Practise mode sends anonymous counts to the practise-baseline tab
+     (opt-out on the results screen), never to the teacher.
+============================================================ */
+var EOL_INT_CLASSES = ['8C', '9G', '9C', '10G', '10C'];   // update each school year
+var EOL_BASELINE_URL = 'https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec';
+var EOL_BASELINE_OPTOUT_KEY = 'eol_baseline_optout';
+/* integrity.js holds the counters; it loads before this file on every framework
+   page. Checked so a page or tool that loads exercise.js alone still works. */
+function eolIntReady() { return typeof eolInt !== 'undefined'; }
+
+/* "9g", "9 G", "Klasse 10c" all match; anything else does not. */
+function eolIntClassMatches(cls) {
+  var m = String(cls || '').toUpperCase().match(/(\d{1,2})\s*([A-Z])/);
+  return !!m && EOL_INT_CLASSES.indexOf(m[1] + m[2]) !== -1;
+}
+
+function eolIntSendsToTeacher() {
+  if (!eolIntReady() || practiseMode || eolIntLevel() === 'off') return false;
+  if (/^uni-/.test(String(UNIT))) return true;
+  return eolIntClassMatches(state && state.cls);
+}
+
+/* One line under the submit button on pages that send counts. */
+function eolIntNotice() {
+  var btn = document.getElementById('submit-btn');
+  if (!btn || !eolIntReady() || eolIntLevel() === 'off' || document.getElementById('eol-int-notice')) return;
+  var p = document.createElement('p');
+  p.id = 'eol-int-notice';
+  p.style.cssText = 'font-size:.78rem;color:var(--muted,#6b7a8d);margin:.5rem 0 0;text-align:center';
+  p.textContent = 'Typing counts (time, keystrokes, deletions, blocked pastes) are sent with your answers. Never your keystrokes themselves.';
+  btn.parentNode.insertBefore(p, btn.nextSibling);
+}
+document.addEventListener('DOMContentLoaded', eolIntNotice);
+
+/* ----- Practise baseline: anonymous counts for setting thresholds ----- */
+function eolBaselineOptedOut() {
+  try { return localStorage.getItem(EOL_BASELINE_OPTOUT_KEY) === '1'; }
+  catch (e) { return true; }   // cannot remember a choice, so send nothing
+}
+
+function eolBaselineHtml() {
+  if (!eolIntReady() || eolIntLevel() === 'off') return '';
+  return '<p id="eol-baseline-note" style="font-size:.78rem;color:var(--muted,#6b7a8d);text-align:center;margin:.8rem 0">'
+    + 'Anonymous usage statistics (no name, no answers) help improve these exercises. '
+    + '<label style="white-space:nowrap"><input type="checkbox" id="eol-baseline-optout"'
+    + (eolBaselineOptedOut() ? ' checked' : '') + ' onchange="eolBaselineSetOptOut(this.checked)"> Don\'t send</label></p>';
+}
+
+function eolBaselineSetOptOut(on) {
+  try { localStorage.setItem(EOL_BASELINE_OPTOUT_KEY, on ? '1' : '0'); } catch (e) {}
+}
+
+var _eolBaselineSent = false;
+function eolBaselineSend() {
+  if (_eolBaselineSent || !practiseMode || !eolIntReady() || eolIntLevel() === 'off') return;
+  if (!document.getElementById('practise-results') || eolBaselineOptedOut()) return;
+  _eolBaselineSent = true;
+  var sc = (typeof totalScore === 'function') ? totalScore() : { earned: 0, possible: 0 };
+  var p = eolIntFields();
+  p.unit = 'practise-baseline';   // routes to its own tab in the Apps Script sheet
+  p.page = UNIT;
+  p.score = sc.earned;
+  p.total = sc.possible;
+  if (isTestMode()) { console.log('📊 TEST MODE - Practise baseline:', p); return; }
+  try {
+    navigator.sendBeacon(EOL_BASELINE_URL, new URLSearchParams({ payload: JSON.stringify(p) }));
+  } catch (e) {}
+}
+/* Sent when the learner leaves the results screen (closing, navigating or switching
+   tab all hide the page), so the opt-out box is seen first. */
+document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'hidden') eolBaselineSend();
+});
+
 document.addEventListener('paste', function(e) {
   var t = e.target;
+  if (t.id === 'copy-block') return;
   if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') {
     e.preventDefault();
     var msg = document.createElement('div');
@@ -1420,6 +1780,7 @@ document.addEventListener('paste', function(e) {
 });
 
 document.addEventListener('copy', function(e) {
+  if (e.target.id === 'copy-block') return;
   e.preventDefault();
   var msg = document.createElement('div');
   msg.textContent = '🚫 Copying is not allowed';
@@ -1624,7 +1985,7 @@ function eolCrumbLabel() {
   if (m) return 'Jahrgang ' + m[1] + ' · ' + (m[2] === 'g' ? 'Gymnasium' : 'Oberschule');
   if (/^7a-/.test(f)) return 'Jahrgang 7 · Gymnasium';
   if (/^msa-/.test(f)) return 'MSA · Prüfungstraining';
-  if (/^uni-/.test(f)) return 'Universität';
+  if (/^uni-/.test(f)) return 'University English';
   if (/^it-/.test(f))  return 'IT English';
   if (/^be-/.test(f))  return 'Business English';
   if (/^ielts-/.test(f)) return 'IELTS Academic';
@@ -1737,10 +2098,10 @@ function eolInjectChrome() {
     if (eolEnglishOnly()) {
       f.innerHTML =
         '<nav aria-label="Pages">'
-        + '<a href="ielts-activities.html">IELTS practice</a>'
+        + '<a href="' + eolEnglishHub()[0] + '">' + eolEnglishHub()[1] + ' practice</a>'
         + '<a href="activities.html">All exercises</a>'
         + '<a href="esl-grammar-activities.html">ESL grammar</a>'
-        + '<a href="mailto:englishonlinetraining@pm.me">Contact</a>'
+        + '<a href="mailto:learn@englishonline.training">Contact</a>'
         + '</nav>'
         + '<div class="legal">© EnglishOnline.Training · '
         + '<a href="https://englishonline.training">Main website</a> · '
@@ -1758,7 +2119,7 @@ function eolInjectChrome() {
       + '<a href="uni-activities.html">Universität</a>'
       + '<a href="business-activities.html">Business</a>'
       + '<a href="it-activities.html">IT</a>'
-      + '<a href="mailto:englishonlinetraining@pm.me">Kontakt</a>'
+      + '<a href="mailto:learn@englishonline.training">Kontakt</a>'
       + '</nav>'
       + '<div class="legal">© EnglishOnline.Training · '
       + '<a href="https://englishonline.training">Zur Website</a> · '

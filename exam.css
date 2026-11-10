@@ -1,0 +1,37 @@
+/* exam.css — the easier-to-read display. Timed tests load it (with class-test.css or
+   vocab-test.css) and turn it on with the dyslexia box (exam.js sets
+   html.exam-dyslexia). Practice pages load it on demand from the "Easier to read"
+   header button (exercise.js sets html.eol-dyslexia).
+
+   Follows the British Dyslexia Association style guide: a plain sans-serif font,
+   larger text (the content only, not the header), 1.5+ line spacing, a little
+   extra letter and word spacing, dark grey text on cream instead of black on
+   white, no italics. Tests are cream in both colour schemes: cream is the point.
+   Practice pages are cream in the light scheme only: style.css and their generated
+   blocks have dark-scheme colours that assume a dark background. */
+html.exam-dyslexia {
+  color-scheme: only light;
+  /* class-test.css palette, held light */
+  --bg: #faf6e9; --card: #fffdf5; --text: #26303b; --muted: #55606c; --border: #ddd5bf;
+  --blue: #1a3a5c; --shadow: 0 2px 16px rgba(26,58,92,.1);
+  --green-text: #1d7a42; --red-text: #c0392b; --teal-text: #1f5d5b;
+}
+html.exam-dyslexia body { background: #faf6e9; color: #26303b; }
+html.exam-dyslexia .card { background: #fffdf5; }
+@media (prefers-color-scheme: light) {
+  html.eol-dyslexia { --bg: #faf6e9; --card: #fffdf5; --text: #26303b; --muted: #55606c; --border: #ddd5bf; }
+}
+/* Only the content: the header, the timer and the site's banners keep their size.
+   Tests wrap it in <main>; practice pages have their steps directly in <body>.
+   body > .step, not .step: a test's steps sit inside <main> and would be zoomed twice. */
+html.exam-dyslexia main, html.eol-dyslexia body > .step {
+  zoom: 1.125;
+  font-family: Verdana, Tahoma, Arial, sans-serif;
+  letter-spacing: .03em;
+  word-spacing: .12em;
+}
+html.exam-dyslexia main *, html.eol-dyslexia body > .step * { line-height: 1.7; font-style: normal; }
+html.exam-dyslexia main :is(input, textarea, select, button), html.eol-dyslexia body > .step :is(input, textarea, select, button) { font-family: inherit; letter-spacing: inherit; word-spacing: inherit; }
+/* Answer tables (radio grids) keep normal spacing: their cells are short labels, and
+   the extra spacing pushed 9g-class-test-9ab's Section 5 table off a 360px phone. */
+html.exam-dyslexia main :is(th, td), html.eol-dyslexia body > .step :is(th, td) { letter-spacing: normal; word-spacing: normal; padding-inline: .4rem; }

@@ -97,7 +97,7 @@ its own wording, give the message its own element id** and omit `#step<n>-error`
 harmless.
 
 ### 4. Six live `uni-*` pages submit to `sptrezise@proton.me`, not the canonical teacher email — confirmed 2026-08-29
-This file states the canonical `Teacher email: englishonlinetraining@pm.me` at the top, and both
+This file states the canonical `Teacher email: learn@englishonline.training` at the top, and both
 `daily-exercise-draft` and `esl-grammar-exercise-draft` correctly hardcode that value for every
 new page — **this is not a skill bug**. But six live pages set a different address: `var
 TEACHER_EMAIL = 'sptrezise@proton.me'` on `uni-relationships-language.html`,

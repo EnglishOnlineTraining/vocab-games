@@ -3,9 +3,9 @@
    check-grade-table.js — guard the Punktetabelle against drift.
 
    exercise.js holds the single shared copy of GRADE_TABLE /
-   GRADE_LABELS / lookupGrade. Self-contained pages (the timed tests
-   built on the uni-pm-vocabulary.html pattern) do NOT load
-   exercise.js, so they must inline that table to grade at all.
+   GRADE_LABELS / lookupGrade. The timed tests do NOT load exercise.js:
+   they grade with the one copy in exam.js. Any other page that does
+   not load exercise.js must inline the table to grade at all.
 
    A copy is a liability: edit the shared table and the inlined ones
    silently keep grading on the old thresholds, and nothing on screen
@@ -43,19 +43,14 @@ function extract(src, label, file) {
 const shared = extract(fs.readFileSync(path.join(ROOT, 'exercise.js'), 'utf8'),
                        'exercise.js', 'exercise.js');
 
-// Pages that inline the table: have GRADE_TABLE in their own markup and do
-// not load the shared framework.
-const pages = fs.readdirSync(ROOT)
+// exam.js (the timed tests' copy), plus any page that inlines the table: has
+// GRADE_TABLE in its own markup and does not load the shared framework.
+const pages = ['exam.js'].concat(fs.readdirSync(ROOT)
   .filter(f => f.endsWith('.html'))
   .filter(f => {
     const s = fs.readFileSync(path.join(ROOT, f), 'utf8');
     return /GRADE_TABLE\s*=/.test(s) && !/src="exercise\.js"/.test(s);
-  });
-
-if (!pages.length) {
-  console.log('check-grade-table: no self-contained page inlines the Punktetabelle — nothing to check.');
-  process.exit(0);
-}
+  }));
 
 let bad = 0;
 for (const f of pages) {

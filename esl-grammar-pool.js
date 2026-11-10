@@ -46,6 +46,7 @@ topics.forEach(function (t) {
   } else if (t.file) {
     problems.push(t.id + ': status idea but has a file (' + t.file + ')');
   }
+  if (t.priority != null && !(Number.isInteger(t.priority) && t.priority > 0)) problems.push(t.id + ': bad priority "' + t.priority + '"');
 });
 
 /* built esl-*.html on disk with no registry entry */
@@ -61,8 +62,16 @@ fs.readdirSync(ROOT).forEach(function (f) {
 /* ---------- reporting ---------- */
 function line(n) { return new Array(n + 1).join('─'); }
 
+/* open ideas with a priority are built first, lowest number first, ahead of tier order */
+var nextUp = topics.filter(function (t) { return t.status === 'idea' && t.priority; })
+  .sort(function (a, b) { return a.priority - b.priority; });
+
 if (!checkOnly) {
   console.log('\n🌍  EnglishOnline.training — ESL Grammar Topic Pool\n' + line(50));
+  if (nextUp.length) {
+    console.log('\nNext up (priority, ahead of tier order):');
+    nextUp.forEach(function (t) { console.log('   ' + t.priority + '. ' + t.id + '  —  ' + t.topic + '  [tier ' + t.tier + ']'); });
+  }
   tiers.forEach(function (tier) {
     if (tierFilter && tier !== tierFilter) return;
     var mine = topics.filter(function (t) { return String(t.tier) === tier; });

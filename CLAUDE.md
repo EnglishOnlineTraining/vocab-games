@@ -11,7 +11,14 @@ sitemap, `<head>`) come from `node scripts/build.js` — see "Adding a new exerc
 **Live URL:** `https://activities.englishonline.training/` (fallback `https://englishonlinetraining.github.io/vocab-games/`)  
 **WordPress site:** `englishonline.training` (blog ID `65893384`, Simple plan — no SFTP)  
 **GitHub repo:** `https://github.com/EnglishOnlineTraining/vocab-games`  
-**Teacher email:** `englishonlinetraining@pm.me`
+**Teacher email:** `learn@englishonline.training`
+
+## Coding rules — Ponytail (`AGENTS.md`)
+All code in this repo follows `AGENTS.md`: reuse before writing, the shortest diff that is
+correct, a `ponytail:` comment naming any known ceiling, and one runnable check left behind for
+non-trivial logic — an E2E spec in `tests/` by preference. Imported here so every session loads it:
+
+@AGENTS.md
 
 ---
 
@@ -24,11 +31,12 @@ sitemap, `<head>`) come from `node scripts/build.js` — see "Adding a new exerc
    publishes to GitHub Pages.
 2. **Learning needs are told per session, not remembered.** When Shaun says a student has dyslexia,
    don't assess spelling in that student's work for that session. The Class Test Marker artifact has
-   a dyslexia toggle for this. Don't save who it applies to.
-3. **Public contact email: `englishonlinetraining@pm.me`.** MailerLite emails send from
-   `learn@englishonline.training` (domain verified 2026-10-15) with replies to the `pm.me`
-   address; use no other sender. The school address (`@docemus.de`) is private: never on the
-   website, public pages, outreach or marketplace listings. Personal addresses neither.
+   a dyslexia toggle for this, and every timed test has a dyslexia box the student ticks (`exam.js`).
+   Don't save who it applies to.
+3. **Public contact email: `learn@englishonline.training`** (replaced `englishonlinetraining@pm.me`,
+   2026-10-16). MailerLite emails send from it (domain verified 2026-10-15); use no other
+   sender. The school address (`@docemus.de`) is private: never on the website, public pages,
+   outreach or marketplace listings. Personal addresses neither.
 4. **Outreach, listings and descriptions never name Klett.** Describe content as aligned to the
    German school curriculum and used or tested in real classrooms. Internal files (the topic
    pools) may keep the textbook names.
@@ -73,6 +81,12 @@ so define an English word with simpler English words instead of translating it.
 Applies whatever language the source material is in. Klett word lists are
 English–German; read the German to be sure which sense is meant, then write the
 English definition for that sense and drop the German.
+
+**University (`uni-`) pages contain no German at all** (Shaun, 2026-10-27): not in the task, the
+site chrome, the score card or the backup email. The level is too high for glosses, and many
+university learners don't speak German. Like `ielts-`, they are English-only pages
+(`eolEnglishOnly()` / `englishOnly()` / consent.js `EN`, kept in step by
+`scripts/check-english-only.js`), and they send no German `Note`.
 
 **Not covered by this rule** (deliberate, and documented elsewhere in this file):
 the site chrome `exercise.js` and `build-head.js` inject site-wide (breadcrumb,
@@ -119,6 +133,10 @@ Each has cost real time or broken live pages. Full detail: `docs/claude-referenc
   message its own element id.
 - **Six live `uni-*` pages submit to a personal Proton address, not the canonical teacher email.**
   Open discrepancy — don't "fix" it without asking.
+- **On a branch, `build.js` leaves the shared aggregates (sitemaps, hubs, `exercises.json`) at the
+  merge-base; `main`'s bot rebuilds them after the merge.** So a new page is missing from the local
+  hub: that is expected, don't "fix" it or commit `--full` output. After merging `main` into a
+  branch, still run `node scripts/build.js` and commit. Details: `build-and-sitemaps.md`.
 - **The Make webhook payload arrives as ONE field called `payload`.** Read "The webhook payload
   arrives as ONE field…" in `submission-routing.md` before touching either Make scenario; getting it
   wrong silently wrote blank rows and dropped most submissions from June to 2026-09-04.
@@ -156,8 +174,8 @@ Year 7 / Y8   https://hook.eu1.make.com/1gx46wea33yguetah95oy4j8asbyafqm
 Year 9 / Y10 / MSA   https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj
 Abitur   https://hook.eu1.make.com/wdia5iljcraay8rfqijkacgb5i9jjfod
 ```
-Business / University / IT / ESL / IELTS use a Google Apps Script URL: the **online** sheet, except five
-`uni-` pages on the **university** sheet (Shaun's names; both in `submission-routing.md`).
+Business / IT / ESL / IELTS use the **online** Apps Script sheet. **Every `uni-` page uses the university
+sheet** (Shaun's names; both in `submission-routing.md`; `verify-exercise.js` fails a `uni-` page that doesn't).
 **`_template.html`'s default `SHEET_URL` is an old Apps Script URL — always replace it.**
 
 ---
@@ -174,9 +192,11 @@ Business / University / IT / ESL / IELTS use a Google Apps Script URL: the **onl
 5. **Fill in `<meta name="description">` and `<link rel="canonical">`** (placeholders in the template; the
    canonical must match the filename exactly).
 6. **Run `node scripts/build.js`** before committing. It regenerates `data/exercises.json`, the filterable
-   index, hubs, `<head>` and `sitemap.xml`; the order lives in `scripts/pipeline.js`. Also run
+   index, hubs, `<head>` and `sitemap.xml`; the order lives in `scripts/pipeline.js`. On a branch the
+   index, hubs and sitemaps are checked but not kept: `main`'s bot writes them after the merge. Also run
    `node scripts/verify-exercise.js <file>`.
-7. **Update WordPress page 1763** through the API only, and spot-check its "(N exercises)" counts.
+7. **Update WordPress page 1763** through the API only, once the page is on `main` (its counts come
+   from `data/wordpress-1763.json`, which the bot writes then), and spot-check its "(N exercises)" counts.
 8. **Commit and push.** `main` is what GitHub Pages serves. Never put student data in the commit.
 
 ---
@@ -191,7 +211,9 @@ Old section names still appear in skills and code comments; this table maps them
 | `docs/claude-reference/years-and-topics.md` | Year 7/9 status, "Year 8 & Year 10", CEFR levels, textbook "Topic pools" |
 | `docs/claude-reference/submission-routing.md` | "Submission routing", Make scenarios, MSA grading, Abitur webhook, Apps Script URLs |
 | `docs/claude-reference/exercise-framework.md` | "Standard features", Score + Note, "Review-page explanations", practise mode, accessibility, writing rubric, spaced-review pages, shared `<head>`, hub cards, WordPress hub, build graph, `exercise.js`, structured data |
-| `docs/claude-reference/hubs-seo-and-tests.md` | "Class review tests", unlisted tests, breadcrumb/footer, filterable index, `index.html`, `themen/`, auto-rebuild, `data/noindex.json`, internal links, IndexNow (not Google), marking handouts |
+| `docs/claude-reference/build-and-sitemaps.md` | Generated files and what to edit instead, the `<!-- NAME:START -->` blocks in pages, merging `main` into a branch, sitemaps and `robots.txt`, `build.js --check` / `--write-graph` |
+| `docs/claude-reference/hubs-seo-and-tests.md` | "Class review tests", unlisted tests, timed tests' shared files (`exam.js`, `exam.css`, `class-test.css`, `vocab-test.css`) and dyslexia box, breadcrumb/footer, filterable index, `index.html`, `themen/`, auto-rebuild, `data/noindex.json`, internal links, IndexNow (not Google), marking handouts |
+| `docs/claude-reference/state-machines.md` | Changing a page lifecycle: steps, submit, practise results, drafts, a timed test's start/stop (`examPhase`) |
 | `apps-script.gs` | The Apps Script handler (code is not duplicated in this file) |
 | `style.css` | CSS design tokens (not duplicated in this file) |
 | `docs/seo-backlog.md` | Any SEO, GEO, AI-search or Search Console work — new SEO backlog items go here, not in `eol-backlog-plan.md` |

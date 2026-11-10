@@ -1,0 +1,97 @@
+{
+ "unit": "be-meetings-action-points",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "New colleagues may feel isolated",
+     "accept": [
+      "New colleagues may feel isolated"
+     ],
+     "label": "1. Jonas’s concern",
+     "why": "Jonas says new colleagues may feel isolated when working remotely."
+    },
+    "g2": {
+     "correct": "She extends the pilot to eight weeks",
+     "accept": [
+      "She extends the pilot to eight weeks"
+     ],
+     "label": "2. Lena’s change",
+     "why": "Lena suggests running the pilot for eight weeks instead of six."
+    },
+    "g3": {
+     "correct": "Prepare the feedback questions",
+     "accept": [
+      "Prepare the feedback questions"
+     ],
+     "label": "3. Jonas’s Friday task",
+     "why": "Maya asks Jonas to prepare the feedback questions by Friday."
+    },
+    "g4": {
+     "correct": "To confirm the decisions and responsibilities",
+     "accept": [
+      "To confirm the decisions and responsibilities"
+     ],
+     "label": "4. Purpose of Maya’s summary",
+     "why": "Her summary confirms the agreed pilot and each person’s responsibility."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "I see your point, but have we considered the cost?",
+     "accept": [
+      "I see your point, but have we considered the cost?"
+     ],
+     "label": "1. Acknowledge before disagreeing",
+     "why": "Only this one does both: it acknowledges the other view (“I see your point”) and then raises a different one."
+    },
+    "g2": {
+     "correct": "I’m not sure that would work for our clients.",
+     "accept": [
+      "I’m not sure that would work for our clients."
+     ],
+     "label": "2. Soften a disagreement",
+     "why": "“I’m not sure” disagrees without sounding certain; “That won’t work” sounds certain."
+    },
+    "g3": {
+     "correct": "What if we tried a two-week pilot instead?",
+     "accept": [
+      "What if we tried a two-week pilot instead?"
+     ],
+     "label": "3. Offer an alternative",
+     "why": "“What if … instead?” offers a concrete alternative; the other two only question the idea."
+    },
+    "g4": {
+     "correct": "Could you prepare the draft by Tuesday?",
+     "accept": [
+      "Could you prepare the draft by Tuesday?"
+     ],
+     "label": "4. Assign an owner",
+     "why": "“Could you” gives the task to one person, with a deadline; “someone” leaves it to nobody."
+    },
+    "g5": {
+     "correct": "Nina will send the revised quote to the client by 3 p.m. on Friday.",
+     "accept": [
+      "Nina will send the revised quote to the client by 3 p.m. on Friday."
+     ],
+     "label": "5. Specific action point",
+     "why": "Only this one has an owner (Nina), a clear task and an exact deadline."
+    },
+    "g6": {
+     "correct": "Let’s move on to the next item on the agenda.",
+     "accept": [
+      "Let’s move on to the next item on the agenda."
+     ],
+     "label": "6. Spaced recall from Business Meetings",
+     "why": "Business Meetings used this phrase to move to the next agenda item."
+    }
+   }
+  }
+ }
+}

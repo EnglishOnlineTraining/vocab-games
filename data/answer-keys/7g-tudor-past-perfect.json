@@ -1,7 +1,7 @@
 {
  "unit": "7g-tudor-past-perfect",
  "sections": {
-  "exB": {
+  "ex2": {
    "prefix": "ex2-",
    "multi": false,
    "gaps": {
@@ -45,9 +45,10 @@
      "label": "5. By 1588, the Spanish ___ the largest fleet",
      "why": "Completed before 1588 → past perfect: had built."
     }
-   }
+   },
+   "scoreKey": "exB"
   },
-  "exC": {
+  "ex3": {
    "prefix": "ex3-",
    "multi": false,
    "gaps": {
@@ -115,7 +116,8 @@
      "label": "8. By 1580, …",
      "why": "Completed by that date → past perfect: had sailed."
     }
-   }
+   },
+   "scoreKey": "exC"
   }
  }
 }

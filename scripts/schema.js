@@ -69,7 +69,7 @@ function personNode() {
     description: 'English teacher and Business English coach based in Berlin. Writes and teaches the '
       + 'practice material on activities.englishonline.training for German school students (Klasse 7–10, '
       + 'MSA, Abitur) and for university, IT and business learners.',
-    email: 'englishonlinetraining@pm.me',
+    email: 'learn@englishonline.training',
     telephone: '+49 176 3130 4449',
     knowsLanguage: ['en', 'de'],
     knowsAbout: [
@@ -100,6 +100,7 @@ function personNode() {
     sameAs: [
       WP + '/shaun-trezise-certificates-and-training-programmes-completed/',
       WP + '/impressum/',
+      'https://www.linkedin.com/in/shaunptrezise',
     ],
   };
 }
@@ -122,7 +123,7 @@ function organizationNode() {
       + 'students, university students and professionals.',
     founder: { '@id': PERSON_ID },
     employee: { '@id': PERSON_ID },
-    email: 'englishonlinetraining@pm.me',
+    email: 'learn@englishonline.training',
     telephone: '+49 176 3130 4449',
     vatID: 'DE307424159',
     address: {
@@ -199,6 +200,8 @@ const LEVELS = [
   [/^10c-/, 'B1–B2'],
   [/^msa-/, 'B1'],
   [/^abitur-/, 'B2–C1'],
+  [/^uni-c1-/, 'C1'],     // first match wins: these two before the uni- default
+  [/^uni-c2-/, 'C2'],
   [/^uni-/, 'B2–C1'],
   [/^be-/, 'B1–B2'],
   [/^it-/, 'B1–B2'],
@@ -217,7 +220,7 @@ function levelFor(file) {
  * German school grade. Mirrors exercise.js:eolEnglishOnly().
  */
 function englishOnly(file) {
-  return /^ielts-/.test(String(file).toLowerCase());
+  return /^(ielts|uni)-/.test(String(file).toLowerCase());
 }
 
 /** Mirrors exercise.js:eolCrumbLabel() so the markup and the visible crumb agree. */
@@ -228,7 +231,7 @@ function crumbLabel(file) {
   if (/^7a-/.test(f)) return 'Jahrgang 7 · Gymnasium';
   if (/^msa-/.test(f)) return 'MSA · Prüfungstraining';
   if (/^abitur-/.test(f)) return 'Abitur';
-  if (/^uni-/.test(f)) return 'Universität';
+  if (/^uni-/.test(f)) return 'University English';
   if (/^it-/.test(f)) return 'IT English';
   if (/^be-/.test(f)) return 'Business English';
   if (/^gr-/.test(f)) return 'Grammatik';
@@ -239,12 +242,11 @@ function crumbLabel(file) {
   return 'Übungen';
 }
 
-// Three pages predate the filename-prefix convention, exactly as in
+// Two pages predate the filename-prefix convention, exactly as in
 // build-exercise-data.js:LEGACY_UNPREFIXED. Kept in step with that map.
 const LEGACY_HUBS = {
   'california-exercises.html': '9g-activities.html',
   'sport-south-africa.html': '9c-activities.html',
-  'eurofiber-online.html': 'business-activities.html',
 };
 
 /** The hub page an exercise belongs to, or '' if it is not filed under one. */
@@ -375,6 +377,8 @@ function learningResource(file, meta, ex, topicsBySlug, hubName, dates) {
     provider: { '@id': ORG_ID },
     isPartOf: hubNode ? [{ '@id': WEBSITE_ID }, hubNode] : { '@id': WEBSITE_ID },
   };
+
+  if (meta.image) node.image = { '@type': 'ImageObject', url: meta.image.url, width: 1200, height: 630, caption: meta.image.alt };
 
   // From data/lastmod.json via page-hash.js: the same dates the sitemap carries.
   if (dates && dates.p) node.datePublished = dates.p;

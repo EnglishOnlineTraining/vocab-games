@@ -1,0 +1,59 @@
+{
+ "unit": "uni-b2-introduce-yourself",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "are you",
+     "accept": [
+      "are you"
+     ],
+     "label": "1. Where ___ from?",
+     "why": "With be, the verb comes before the subject: “Where are you from?”"
+    },
+    "g2": {
+     "correct": "do you study",
+     "accept": [
+      "do you study"
+     ],
+     "label": "2. What ___ at university?",
+     "why": "Present simple questions need do + subject + base verb."
+    },
+    "g3": {
+     "correct": "have you lived",
+     "accept": [
+      "have you lived"
+     ],
+     "label": "3. How long ___ in Germany?",
+     "why": "“How long” up to now takes the present perfect: have + subject + past participle."
+    },
+    "g4": {
+     "correct": "Do you use",
+     "accept": [
+      "Do you use"
+     ],
+     "label": "4. ___ English at work?",
+     "why": "A yes/no question in the present simple starts with Do + subject + base verb."
+    },
+    "g5": {
+     "correct": "brought",
+     "accept": [
+      "brought"
+     ],
+     "label": "5. What ___ you to this course?",
+     "why": "“What” is the subject here, so there is no did: “What brought you…?”"
+    },
+    "g6": {
+     "correct": "your ideal job is",
+     "accept": [
+      "your ideal job is"
+     ],
+     "label": "6. Can you tell me what ___?",
+     "why": "Indirect questions keep statement word order: subject before verb."
+    }
+   }
+  }
+ }
+}

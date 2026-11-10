@@ -31,6 +31,9 @@ const KEY = '1d6c87cae1f19b13380c4a66042fe8d9';
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 const ENDPOINT = 'https://api.indexnow.org/indexnow';
 const MAX_URLS = 10000; // protocol limit per request
+// ponytail: a flat count, not a diff of what changed. Ceiling: a real batch of
+// more than 50 new pages in one push is skipped too; a `--force` flag is the upgrade path.
+const MAX_CHANGED_PAGES = 50;
 
 const ROOT = path.join(__dirname, '..');
 
@@ -52,6 +55,11 @@ function fileToUrl(file) {
   if (file === 'index.html') return `https://${HOST}/`;
   if (file.endsWith('/index.html')) return `https://${HOST}/${file.slice(0, -'index.html'.length)}`;
   return `https://${HOST}/${file}`;
+}
+
+/** A site-wide template change touches 300+ pages; resubmitting them gains nothing. */
+function shouldSkip(urls) {
+  return urls.length > MAX_CHANGED_PAGES;
 }
 
 function changedFiles(since, until) {
@@ -85,6 +93,10 @@ async function main() {
     if (skipped.length) {
       console.log(`indexnow: ${skipped.length} changed page(s) not in sitemap — deliberately not submitted:`);
       skipped.forEach(u => console.log(`  - ${u}`));
+    }
+    if (shouldSkip(urls)) {
+      console.log(`indexnow: ${urls.length} pages changed (over ${MAX_CHANGED_PAGES}), skipping the push. Use --all to resubmit the whole sitemap.`);
+      return;
     }
   }
 
@@ -126,7 +138,11 @@ async function main() {
   }
 }
 
-main().catch(err => {
-  // Never break a deploy because Bing was unreachable.
-  console.error('indexnow: submission failed —', err.message);
-});
+if (require.main === module) {
+  main().catch(err => {
+    // Never break a deploy because Bing was unreachable.
+    console.error('indexnow: submission failed —', err.message);
+  });
+}
+
+module.exports = { MAX_CHANGED_PAGES, shouldSkip };

@@ -132,6 +132,7 @@
 <meta property="og:image:alt" content="englishonline.training — kostenlose interaktive Englisch-Übungen für Klasse 7–10, MSA, Abitur, Universität, Business und IT English">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@engontraining">
+<style id="eol-tap-style">.top-bar a,.header-nav a,.app-header a,nav.breadcrumb a{padding-block:.6rem;margin-block:-.6rem}.eol-crumb a,.eol-crumbs a,.eol-footer a,.site-footer a{padding-block:.35rem;margin-block:-.35rem}</style>
 <style id="eol-skip-style">.eol-skip{position:absolute;left:.5rem;top:-3rem;z-index:1000;background:var(--gold,#c9a227);color:#1a1a1a;font-weight:700;padding:.5rem 1rem;border-radius:8px;text-decoration:none;transition:top .2s;font-family:'Segoe UI',system-ui,sans-serif}.eol-skip:focus{top:.5rem}@media(prefers-reduced-motion:reduce){.eol-skip{transition:none}}</style>
 <style id="eol-qo-style">
 .qo-box{background:var(--card,#fff);border:1.5px solid var(--border,#dce3ec);border-left:4px solid var(--gold,#c9a227);border-radius:10px;padding:1rem 1.2rem;margin:0 0 1.5rem;font-size:.9rem;color:var(--text,#1d2b3a)}
@@ -578,11 +579,14 @@ buildEx1();buildMC('mcList2',ex2Data);buildEx3();buildMC('mcList4',ex4Data);
 @media(prefers-color-scheme:dark){
   #studentName,#studentClass{background:#16212e;border-color:#3a4a5e;color:#e2e8f0;}
 }
+@media (prefers-color-scheme: dark) {
+  .task-box { background: #1b2735; }
+}
 </style>
 <script>
 var WEBHOOK_URL='https://hook.eu1.make.com/wdia5iljcraay8rfqijkacgb5i9jjfod';
 var UNIT='abitur-mediation-aims-ambitions';
-var TEACHER_EMAIL='englishonlinetraining@pm.me';
+var TEACHER_EMAIL='learn@englishonline.training';
 function submitToTeacher(){
   var nm=document.getElementById('studentName').value.trim();
   var cls=document.getElementById('studentClass').value.trim();
@@ -597,10 +601,11 @@ function submitToTeacher(){
     ex3:scores.ex3+'/'+maxScores.ex3,ex4:scores.ex4+'/'+maxScores.ex4,
     ex5:scores.ex5+'/'+maxScores.ex5,score:total+'/'+max,
     essay:essayEl?essayEl.value.trim():''};
-  fetch(WEBHOOK_URL,{method:'POST',mode:'no-cors',
+  fetch(WEBHOOK_URL,{method:'POST',
     headers:{'Content-Type':'application/x-www-form-urlencoded'},
-    body:'payload='+encodeURIComponent(JSON.stringify(payload))
-  }).then(function(){
+    body:'payload='+encodeURIComponent(JSON.stringify(payload, function (k, v) { return this === payload && typeof v === 'string' && /^[=+\-@\t\r]/.test(v) ? "'" + v : v; }))
+  }).then(function(response){
+    if(!response.ok)throw new Error('Submission failed with HTTP '+response.status);
     btn.style.display='none';
     document.getElementById('submitSuccess').style.display='block';
     document.getElementById('submitFallback').style.display='block';
@@ -636,7 +641,7 @@ function submitByEmail(){
     <a href="uni-activities.html">University</a>
     <a href="business-activities.html">Business</a>
     <a href="it-activities.html">IT</a>
-    <a href="mailto:englishonlinetraining@pm.me">Contact</a>
+    <a href="mailto:learn@englishonline.training">Contact</a>
   </nav>
   <div class="legal">© EnglishOnline.Training ·
     <a href="https://englishonline.training">Website</a> ·

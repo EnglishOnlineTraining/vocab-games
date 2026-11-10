@@ -349,7 +349,8 @@
     "lang": "en",
     "topics": [
       "gerund-infinitiv",
-      "adjektive-adverbien"
+      "adjektive-adverbien",
+      "praepositionen"
     ],
     "skills": [
       "reading",
@@ -651,6 +652,18 @@
     "blurb": "How Teenagers Choose Their Apps – Reading · Talking About the Future · Digital Wellbeing Vocabulary · Writing – The Future of Social Media"
   },
   {
+    "file": "10g-south-africa-vocab-practice.html",
+    "title": "South Africa Vocabulary Practice",
+    "year": 10,
+    "schoolType": "gymnasium",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "vocabulary"
+    ],
+    "blurb": "Round 1 — Choose the word · Round 2 — Write the word"
+  },
+  {
     "file": "10g-teenage-lifestyles.html",
     "title": "Teenage Lifestyles: Finding Your Voice",
     "year": 10,
@@ -854,7 +867,9 @@
     "year": 7,
     "schoolType": "gymnasium",
     "lang": "en",
-    "topics": [],
+    "topics": [
+      "praepositionen"
+    ],
     "skills": [
       "reading",
       "vocabulary",
@@ -1034,6 +1049,21 @@
       "writing"
     ],
     "blurb": "Arriving in the Northeast · Comparative Adjectives: -er or more ? · Superlative Adjectives: the -est or the most ? · Writing: My Town and New York"
+  },
+  {
+    "file": "8c-nyc-first-day.html",
+    "title": "My First Day in New York",
+    "year": 8,
+    "schoolType": "oberschule",
+    "lang": "en",
+    "topics": [
+      "simple-past"
+    ],
+    "skills": [
+      "grammar",
+      "writing"
+    ],
+    "blurb": "Lena's First Day in New York · Irregular Verbs in the Simple Past · Questions and Negatives with did / didn't · Round 1: More Irregular Verbs · Round 1: More did / didn't · Round 2: Write the Past Form · Round 2: Word Order · Writing: A Message to Sam"
   },
   {
     "file": "8c-off-to-midwest.html",
@@ -1309,6 +1339,32 @@
     "blurb": "A Land of Contrasts · Adjective + Noun Collocations · Writing: Contrasts in the USA"
   },
   {
+    "file": "9c-animals-down-under.html",
+    "title": "Australia Part 2: Animals Down Under",
+    "year": 9,
+    "schoolType": "oberschule",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "reading",
+      "writing"
+    ],
+    "blurb": "Strange and Wonderful · Which Animal Is It? · Understanding the Text · Writing: An Email to Melbourne"
+  },
+  {
+    "file": "9c-australia-environment-dangers.html",
+    "title": "Australia Part 1: Dangers to the Environment",
+    "year": 9,
+    "schoolType": "oberschule",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "reading",
+      "writing"
+    ],
+    "blurb": "Australia in Danger · True, False or Not in the Text? · What Does It Mean? · Writing: Save Australia's Nature"
+  },
+  {
     "file": "9c-australia-vocab-practice.html",
     "title": "Australia — Vocabulary Practice",
     "year": 9,
@@ -1351,6 +1407,24 @@
       "writing"
     ],
     "blurb": "What Comes Next? · Future Tenses: will, going to or present progressive? · No will after when · Writing: My Plans"
+  },
+  {
+    "file": "9c-halloween.html",
+    "title": "Halloween: From Turnips to Jack-o'-Lanterns",
+    "year": 9,
+    "schoolType": "oberschule",
+    "lang": "en",
+    "topics": [
+      "present-perfect",
+      "simple-past"
+    ],
+    "skills": [
+      "reading",
+      "vocabulary",
+      "grammar",
+      "writing"
+    ],
+    "blurb": "A Festival That Travelled · Halloween Vocabulary in Context · Simple Past or Present Perfect? · Writing: The Lantern in the Window"
   },
   {
     "file": "9c-healthy-living-conditionals.html",
@@ -1589,7 +1663,9 @@
     "year": 9,
     "schoolType": "gymnasium",
     "lang": "en",
-    "topics": [],
+    "topics": [
+      "passiv"
+    ],
     "skills": [
       "grammar"
     ],
@@ -1865,7 +1941,8 @@
     "lang": "en",
     "topics": [
       "relativsaetze",
-      "future-tenses"
+      "future-tenses",
+      "artikel"
     ],
     "skills": [
       "grammar",
@@ -1956,6 +2033,23 @@
     "blurb": "Reading: Cultural Scenarios · Meeting Dialogue: Polite Forms · Vocabulary: Cultural Terms"
   },
   {
+    "file": "be-decision-making.html",
+    "title": "Decision-Making on a Construction Project",
+    "year": "business",
+    "schoolType": "business",
+    "lang": "en",
+    "topics": [
+      "modalverben"
+    ],
+    "skills": [
+      "reading",
+      "writing",
+      "vocabulary",
+      "grammar"
+    ],
+    "blurb": "Reading: The Project Manager's Email · Decision-Making Vocabulary · Modal Verbs: Obligation, Advice & Possibility · Write a Recommendation"
+  },
+  {
     "file": "be-gdpr-compliance.html",
     "title": "GDPR Compliance",
     "year": "business",
@@ -2007,6 +2101,32 @@
     "blurb": "Reading: PESTEL Analysis · Matching: PESTEL Categories · Case Study: Market Entry Analysis"
   },
   {
+    "file": "be-meetings-action-points.html",
+    "title": "Diplomatic Meetings & Action Points",
+    "year": "business",
+    "schoolType": "business",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "reading",
+      "writing",
+      "vocabulary"
+    ],
+    "blurb": "A Meeting That Moves Forward · Choose the Diplomatic Response · Turn Decisions into Action"
+  },
+  {
+    "file": "be-meetings-schedules.html",
+    "title": "Meetings and Schedules – Business English",
+    "year": "business",
+    "schoolType": "business",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "vocabulary"
+    ],
+    "blurb": "Company Changes · Types of Meeting · Meeting Vocabulary · Talking about Schedules"
+  },
+  {
     "file": "be-mercedes-change-turnaround.html",
     "title": "Mercedes: Change & Turnaround",
     "year": "business",
@@ -2046,7 +2166,7 @@
   },
   {
     "file": "be-professional-emails.html",
-    "title": "Professional Email Writing",
+    "title": "Professional Email Writing: Phrases & Register Practice",
     "year": "business",
     "schoolType": "business",
     "lang": "en",
@@ -2060,7 +2180,7 @@
   },
   {
     "file": "be-property-management.html",
-    "title": "Property Management",
+    "title": "English for Property Management: Vocabulary & Reading",
     "year": "business",
     "schoolType": "business",
     "lang": "en",
@@ -2117,7 +2237,9 @@
     "year": 9,
     "schoolType": "gymnasium",
     "lang": "en",
-    "topics": [],
+    "topics": [
+      "artikel"
+    ],
     "skills": [
       "reading"
     ],
@@ -2129,11 +2251,25 @@
     "year": "esl",
     "schoolType": "esl",
     "lang": "en",
-    "topics": [],
+    "topics": [
+      "artikel"
+    ],
     "skills": [
       "grammar"
     ],
     "blurb": "A Weekend in London · Indefinite vs. definite article · The or no article? · Describe your neighbourhood"
+  },
+  {
+    "file": "esl-countable-uncountable.html",
+    "title": "Countable and Uncountable Nouns — much, many, few, little",
+    "year": "esl",
+    "schoolType": "esl",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "grammar"
+    ],
+    "blurb": "At the Party Shop · Much or many? · Few, a few, little, a little · What is in your kitchen?"
   },
   {
     "file": "esl-participle-clauses.html",
@@ -2148,16 +2284,42 @@
     "blurb": "The Night Market · -ing or -ed/-en? · One action after another · An email to your host family"
   },
   {
-    "file": "eurofiber-online.html",
-    "title": "Eurofiber Online – Business English",
-    "year": "business",
-    "schoolType": "business",
+    "file": "esl-present-simple-continuous.html",
+    "title": "Present Simple vs Present Continuous — habits and now",
+    "year": "esl",
+    "schoolType": "esl",
+    "lang": "en",
+    "topics": [
+      "present-tenses"
+    ],
+    "skills": [
+      "grammar"
+    ],
+    "blurb": "A Message from My Grandmother's Kitchen · The present simple · Simple or continuous? · Write to a pen friend"
+  },
+  {
+    "file": "esl-pronouns.html",
+    "title": "Pronouns — I/me, he/she, my/mine, myself",
+    "year": "esl",
+    "schoolType": "esl",
     "lang": "en",
     "topics": [],
     "skills": [
-      "vocabulary"
+      "grammar"
     ],
-    "blurb": "Company Changes · Types of Meeting · Meeting Vocabulary · Talking about Schedules"
+    "blurb": "Ana and Tom · Subject or object? · My, mine or myself? · Introduce two people"
+  },
+  {
+    "file": "esl-question-formation.html",
+    "title": "Wh-Questions — Question Words, Word Order & Embedded Questions",
+    "year": "esl",
+    "schoolType": "esl",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "grammar"
+    ],
+    "blurb": "A Phone Call to a Language School · Word order in direct questions · Polite embedded questions · Write to a language school"
   },
   {
     "file": "gr-adjektive-adverbien.html",
@@ -2274,6 +2436,20 @@
     "blurb": "Lesen & Erkennen · Vorher oder nachher? · Signalwörter · Schreiben"
   },
   {
+    "file": "gr-past-progressive.html",
+    "title": "Past Progressive – Interaktive Übung",
+    "year": "grammar",
+    "schoolType": "grammar",
+    "lang": "de",
+    "topics": [
+      "past-progressive"
+    ],
+    "skills": [
+      "grammar"
+    ],
+    "blurb": "Lesen & Erkennen · was/were + -ing · Progressive oder Simple Past? · Schreiben"
+  },
+  {
     "file": "gr-phrasal-verbs.html",
     "title": "Phrasal Verbs – Interactive Exercise",
     "year": "grammar",
@@ -2384,6 +2560,30 @@
     "blurb": "Matching Headings · Main idea or detail · Why the trap is wrong · Advise a study partner"
   },
   {
+    "file": "ielts-reading-practice-test.html",
+    "title": "IELTS Academic Reading Practice Test — Free Full Test",
+    "year": "ielts",
+    "schoolType": "ielts",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "reading"
+    ],
+    "blurb": "Reading Passage 1 · Reading Passage 2 · Reading Passage 3"
+  },
+  {
+    "file": "ielts-reading-sentence-summary-completion.html",
+    "title": "IELTS Sentence and Summary Completion Practice — Free Academic Reading",
+    "year": "ielts",
+    "schoolType": "ielts",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "reading"
+    ],
+    "blurb": "Exam practice: Reading passage · Predict the word type · The word limit · Explain it to a study partner"
+  },
+  {
     "file": "ielts-reading-true-false-not-given.html",
     "title": "IELTS True False Not Given Practice — Free Academic Reading Exercise",
     "year": "ielts",
@@ -2421,6 +2621,43 @@
     "blurb": "A model report · Rose sharply or a sharp rise? · Numbers and prepositions · Write your own Task 1 report"
   },
   {
+    "file": "ielts-writing-task1-process-diagram.html",
+    "title": "IELTS Writing Task 1 Process Diagram — Describing a Process Practice",
+    "year": "ielts",
+    "schoolType": "ielts",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "writing",
+      "grammar"
+    ],
+    "blurb": "A model report · The passive · Sequencing language · Write your own Task 1 report"
+  },
+  {
+    "file": "ielts-writing-task1-tables-bar-charts.html",
+    "title": "IELTS Writing Task 1 Bar Chart and Table — Comparing Data Practice",
+    "year": "ielts",
+    "schoolType": "ielts",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "writing"
+    ],
+    "blurb": "A model report · Proportions and approximations · The overview · Write your own Task 1 report"
+  },
+  {
+    "file": "ielts-writing-task2-discussion-essay.html",
+    "title": "IELTS Writing Task 2 Discussion Essay — Discuss Both Views Practice",
+    "year": "ielts",
+    "schoolType": "ielts",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "writing"
+    ],
+    "blurb": "A model essay · Reporting views · The conclusion · Write your own discussion essay"
+  },
+  {
     "file": "ielts-writing-task2-opinion-essay.html",
     "title": "IELTS Writing Task 2 Opinion Essay — Agree or Disagree Practice",
     "year": "ielts",
@@ -2431,6 +2668,18 @@
       "writing"
     ],
     "blurb": "A model essay · Choose the linker by its job · Strong topic sentences · Write your own opinion essay"
+  },
+  {
+    "file": "ielts-writing-task2-problem-solution-essay.html",
+    "title": "IELTS Writing Task 2 Problem–Solution Essay Practice",
+    "year": "ielts",
+    "schoolType": "ielts",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "writing"
+    ],
+    "blurb": "A model essay · Cause and effect · Solutions that fit the cause · Write your own problem–solution essay"
   },
   {
     "file": "it-ai-industry4.html",
@@ -2992,6 +3241,90 @@
     "blurb": "Background & Customer Satisfaction Survey · Listen & Compare · Meeting Agenda – Group Discussion · Live Meeting & Action Plan · Writing Task: Sales Letter"
   },
   {
+    "file": "uni-b2-email-practice.html",
+    "title": "Email Writing 3: Practice Mix",
+    "year": "uni",
+    "schoolType": "university",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "writing"
+    ],
+    "blurb": "Polite or too blunt? · Reply to an email"
+  },
+  {
+    "file": "uni-b2-email-register.html",
+    "title": "Email Writing 1: Neutral Register and Polite Requests",
+    "year": "uni",
+    "schoolType": "university",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "grammar"
+    ],
+    "blurb": "Neutral or too blunt? · Make it polite · Your own request"
+  },
+  {
+    "file": "uni-b2-introduce-yourself.html",
+    "title": "Introduce Yourself: Questions and a Short Profile",
+    "year": "uni",
+    "schoolType": "university",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "grammar"
+    ],
+    "blurb": "Questions for a new classmate · Introduce yourself to the class"
+  },
+  {
+    "file": "uni-b2-narrative-tenses.html",
+    "title": "Narrative Tenses 3: Practice with All Three Tenses",
+    "year": "uni",
+    "schoolType": "university",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "grammar"
+    ],
+    "blurb": "Simple or continuous? · The earlier past · All three tenses"
+  },
+  {
+    "file": "uni-b2-past-continuous-stories.html",
+    "title": "Narrative Tenses 1: Past Simple and Past Continuous",
+    "year": "uni",
+    "schoolType": "university",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "grammar"
+    ],
+    "blurb": "Simple or continuous? · Finish the story"
+  },
+  {
+    "file": "uni-b2-past-perfect-stories.html",
+    "title": "Narrative Tenses 2: The Past Perfect",
+    "year": "uni",
+    "schoolType": "university",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "grammar"
+    ],
+    "blurb": "Simple, continuous or perfect? · Plan your story · Write your story"
+  },
+  {
+    "file": "uni-b2-write-an-email.html",
+    "title": "Email Writing 2: Write an Email",
+    "year": "uni",
+    "schoolType": "university",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "writing"
+    ],
+    "blurb": "Structure and linking · Write your email · Check a partner's email"
+  },
+  {
     "file": "uni-building-relationships.html",
     "title": "Building Business Relationships",
     "year": "uni",
@@ -3005,6 +3338,30 @@
       "writing"
     ],
     "blurb": "Put the conversation in order · True or false? Justify your answer · Multiword verbs · Relationship verbs · Linking ideas · Writing: a business relationship"
+  },
+  {
+    "file": "uni-c1-vocab-practice.html",
+    "title": "C1 English Vocabulary Practice",
+    "year": "uni",
+    "schoolType": "university",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "vocabulary"
+    ],
+    "blurb": "Round 1 — Choose the word · Round 2 — Write the word"
+  },
+  {
+    "file": "uni-c2-vocab-practice.html",
+    "title": "C2 English Vocabulary Practice",
+    "year": "uni",
+    "schoolType": "university",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "vocabulary"
+    ],
+    "blurb": "Round 1 — Choose the word · Round 2 — Write the word"
   },
   {
     "file": "uni-cause-effect.html",
@@ -3047,6 +3404,18 @@
       "writing"
     ],
     "blurb": "Trend Verbs · Modifiers & Collocations · Describing a Graph · Writing Practice"
+  },
+  {
+    "file": "uni-fix-our-campus.html",
+    "title": "Fix Our Campus: A Problem-Solving Proposal",
+    "year": "uni",
+    "schoolType": "university",
+    "lang": "en",
+    "topics": [],
+    "skills": [
+      "grammar"
+    ],
+    "blurb": "Language for Proposals · Your Case and Your Role · Our Proposal · Pitch and Peer Feedback · Exit Ticket · Your 150-Word Rationale"
   },
   {
     "file": "uni-hedging-language.html",

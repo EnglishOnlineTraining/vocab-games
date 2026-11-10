@@ -377,6 +377,16 @@
       "file": "8c-going-west-gerunds.html"
     },
     {
+      "id": "8c-nyc-first-day",
+      "category": "8c",
+      "unit": "Unit 1",
+      "topic": "Arriving in the Northeast — first day in NYC",
+      "grammar": "Simple past: irregular verbs; questions & negatives with did / didn't",
+      "angle": "grammar",
+      "status": "built",
+      "file": "8c-nyc-first-day.html"
+    },
+    {
       "id": "8c-american-food",
       "category": "8c",
       "unit": "Supplementary",
@@ -455,6 +465,24 @@
       "unit": "Supplementary",
       "topic": "Family & friends — descriptions",
       "grammar": "Possessive 's & family vocabulary",
+      "angle": "vocab",
+      "status": "idea"
+    },
+    {
+      "id": "8c-prefixes-un-re-dis",
+      "category": "8c",
+      "unit": "Supplementary",
+      "topic": "Word building: un-, re- and dis-",
+      "grammar": "Prefixes un-, re-, dis- (happy → unhappy, do → redo, like → dislike)",
+      "angle": "vocab",
+      "status": "idea"
+    },
+    {
+      "id": "8c-compound-nouns",
+      "category": "8c",
+      "unit": "Supplementary",
+      "topic": "Long words in two parts: compound nouns",
+      "grammar": "Compound nouns: split long words into known parts (sunflower, classroom)",
       "angle": "vocab",
       "status": "idea"
     },
@@ -758,12 +786,49 @@
       "file": "10g-apartheid-history.html"
     },
     {
+      "id": "10g-south-africa-vocab-practice",
+      "category": "10g",
+      "unit": "Unit 6",
+      "topic": "South Africa vocabulary practice (Spot on facts)",
+      "grammar": "Unit 6 vocabulary",
+      "angle": "vocab",
+      "status": "built",
+      "file": "10g-south-africa-vocab-practice.html"
+    },
+    {
       "id": "10g-film-review",
       "category": "10g",
       "unit": "Unit 6",
       "topic": "Become a film critic — writing a film review",
       "grammar": "Review writing: adjectives & adverbs of comment",
       "angle": "writing",
+      "status": "idea"
+    },
+    {
+      "id": "10g-latin-greek-roots",
+      "category": "10g",
+      "unit": "Supplementary",
+      "topic": "Latin and Greek roots: working out new words",
+      "grammar": "Roots -dict-, -port-, -spect-, -graph- as a strategy for unknown words",
+      "angle": "skills",
+      "status": "idea"
+    },
+    {
+      "id": "10g-abstract-nouns",
+      "category": "10g",
+      "unit": "Supplementary",
+      "topic": "Abstract nouns and verbs from adjectives",
+      "grammar": "Suffixes -ity / -ism / -ance / -ence and -ise / -ify (responsible → responsibility, global → globalise)",
+      "angle": "vocab",
+      "status": "idea"
+    },
+    {
+      "id": "10g-stress-shift",
+      "category": "10g",
+      "unit": "Supplementary",
+      "topic": "Word families that change stress",
+      "grammar": "Stress shift in word families (PHOtograph, phoTOgraphy, photoGRAPHic): spelling and pronunciation",
+      "angle": "skills",
       "status": "idea"
     },
     {
@@ -1006,6 +1071,24 @@
       "status": "idea"
     },
     {
+      "id": "10c-meaning-prefixes",
+      "category": "10c",
+      "unit": "Supplementary",
+      "topic": "Prefixes that change meaning: over-, under-, pre-, post-, re-, co-",
+      "grammar": "Meaning prefixes over- / under- / pre- / post- / re- / co-",
+      "angle": "vocab",
+      "status": "idea"
+    },
+    {
+      "id": "10c-word-formation-text",
+      "category": "10c",
+      "unit": "Supplementary",
+      "topic": "Word families in a reading text",
+      "grammar": "Word formation in context: the right form of a word family in a text",
+      "angle": "reading",
+      "status": "idea"
+    },
+    {
       "id": "9g-australia-vocab-practice",
       "category": "9g",
       "unit": "Unit 1",
@@ -1024,6 +1107,16 @@
       "angle": "skills",
       "status": "built",
       "file": "9g-australia-vocab-test.html"
+    },
+    {
+      "id": "9g-australia-passive-test",
+      "category": "9g",
+      "unit": "Unit 1",
+      "topic": "The passive in Australia: class test",
+      "grammar": "Passive forms, passive infinitive, passive with two objects",
+      "angle": "skills",
+      "status": "built",
+      "file": "9g-australia-passive-test.html"
     },
     {
       "id": "9g-australia-outback",
@@ -1264,6 +1357,16 @@
       "angle": "skills",
       "status": "built",
       "file": "9c-australia-vocab-test.html"
+    },
+    {
+      "id": "9c-halloween",
+      "category": "9c",
+      "unit": "Seasonal",
+      "topic": "Halloween: From Turnips to Jack-o'-Lanterns",
+      "grammar": "Simple past vs present perfect",
+      "angle": "skills",
+      "status": "built",
+      "file": "9c-halloween.html"
     },
     {
       "id": "9c-canada-multicultural",
@@ -1659,6 +1762,24 @@
       "status": "idea"
     },
     {
+      "id": "9g-word-families",
+      "category": "9g",
+      "unit": "Supplementary",
+      "topic": "Word families: noun, verb, adjective, adverb",
+      "grammar": "Word formation by part of speech (decide, decision, decisive, decisively) in a gap text",
+      "angle": "vocab",
+      "status": "idea"
+    },
+    {
+      "id": "9g-negative-prefixes",
+      "category": "9g",
+      "unit": "Supplementary",
+      "topic": "Negative prefixes: un-, in-, im-, il-, ir-, dis-, mis-",
+      "grammar": "Choosing the right negative prefix (impossible, illegal, irregular)",
+      "angle": "vocab",
+      "status": "idea"
+    },
+    {
       "id": "9c-do-you-speak-english",
       "category": "9c",
       "unit": "Zoom in",
@@ -1692,7 +1813,7 @@
       "topic": "Dangers to the environment in Australia",
       "grammar": "Reading comprehension",
       "angle": "reading",
-      "status": "idea"
+      "status": "built", "file": "9c-australia-environment-dangers.html"
     },
     {
       "id": "9c-australia-signs-mediation",
@@ -1710,7 +1831,7 @@
       "topic": "Animals down under",
       "grammar": "Reading comprehension",
       "angle": "reading",
-      "status": "idea"
+      "status": "built", "file": "9c-animals-down-under.html"
     },
     {
       "id": "9c-caribbean-way-in",
@@ -1917,6 +2038,24 @@
       "topic": "Writing a book or film review",
       "grammar": "Review language",
       "angle": "writing",
+      "status": "idea"
+    },
+    {
+      "id": "9c-adjective-suffixes",
+      "category": "9c",
+      "unit": "Supplementary",
+      "topic": "Word building: adjectives with -ful, -less, -y, -able",
+      "grammar": "Adjective suffixes -ful / -less / -y / -able",
+      "angle": "vocab",
+      "status": "idea"
+    },
+    {
+      "id": "9c-noun-suffixes",
+      "category": "9c",
+      "unit": "Supplementary",
+      "topic": "Word building: nouns with -ment, -ness, -tion",
+      "grammar": "Noun suffixes -ment / -ness / -tion (enjoyment, kindness)",
+      "angle": "vocab",
       "status": "idea"
     }
   ]

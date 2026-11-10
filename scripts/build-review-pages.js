@@ -53,6 +53,8 @@ const MIN_UNITS = 2;
 const WEBHOOK_Y7 = 'https://hook.eu1.make.com/1gx46wea33yguetah95oy4j8asbyafqm';
 const WEBHOOK_Y9 = 'https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj';
 const APPS_SCRIPT = 'https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec';
+// University English pages post to the university sheet, not the online one (Shaun, 2026-10-20).
+const UNI_SHEET = 'https://script.google.com/macros/s/AKfycbwwbV6ufw7QX8meNGyOwiVdkqNpQ8yckdXmsbFqysJwWqAfCWaR_eC9RH41LaqmYyZOeA/exec';
 
 /* Year 7 and Year 9 are included on Shaun's explicit instruction (2026-08-12).
    The documented pause covers *drafting new topic exercises* for those years;
@@ -70,7 +72,7 @@ const CATEGORIES = {
   '10c': { label: 'Year 10 Oberschule', cefr: '~B1/B2', emoji: '🧭', hub: '10c-activities.html', sheet: WEBHOOK_Y9, klass: '10c' },
   '10g': { label: 'Year 10 Gymnasium',  cefr: '~B2/C1', emoji: '🧭', hub: '10g-activities.html', sheet: WEBHOOK_Y9, klass: '10g' },
   'msa': { label: 'MSA Exam Practice',    cefr: '~B1',  emoji: '🎧', hub: 'msa-activities.html', sheet: WEBHOOK_Y9, klass: 'MSA' },
-  'uni': { label: 'University English', cefr: 'B2+',    emoji: '🎓', hub: 'uni-activities.html', sheet: APPS_SCRIPT, klass: 'Kurs' },
+  'uni': { label: 'University English', cefr: 'B2+',    emoji: '🎓', hub: 'uni-activities.html', sheet: UNI_SHEET, klass: 'Academic English' },
   'it':  { label: 'IT English',         cefr: 'B1/B2',  emoji: '💻', hub: 'it-activities.html',  sheet: APPS_SCRIPT, klass: 'Kurs' },
   'be':  { label: 'Business English',   cefr: 'B2',     emoji: '💼', hub: 'business-activities.html', sheet: APPS_SCRIPT, klass: 'Kurs' },
   'ielts': { label: 'IELTS Academic',   cefr: 'B2/C1',  emoji: '🎯', hub: 'ielts-activities.html', sheet: APPS_SCRIPT, klass: 'Kurs' }
@@ -208,7 +210,7 @@ function welcomeCard(cat, cfg) {
 
 function buildPage(cat, cfg, items) {
   // IELTS reports a band, not a German Note, so its review page sends no grade.
-  var GRADE_EXPR = cat === 'ielts' ? 'null' : 'lookupGrade(sc.earned, sc.possible)';
+  var GRADE_EXPR = (cat === 'ielts' || cat === 'uni') ? 'null' : 'lookupGrade(sc.earned, sc.possible)';  // English-only: no German Note
   var unitId = cat + '-review';
   var file = unitId + '.html';
   var title = cfg.label + ' — Revision';
@@ -372,7 +374,7 @@ function buildPage(cat, cfg, items) {
 + '    </div>\n'
 + '  </div>\n'
 + '</section>\n\n\n'
-+ '<script src="exercise.js"></script>\n<script>\n'
++ '<script src="integrity.js"></script>\n<script src="exercise.js"></script>\n<script>\n'
 + '/* ============================================================\n'
 + '   GENERATED review unit — see scripts/build-review-pages.js\n'
 + '   Questions are drawn from ' + srcTitles.length + ' earlier units and interleaved.\n'
@@ -380,7 +382,7 @@ function buildPage(cat, cfg, items) {
 + "var UNIT          = '" + unitId + "';\n"
 + 'var TOTAL_STEPS   = ' + totalSteps + ';\n'
 + "var SHEET_URL     = '" + cfg.sheet + "';\n"
-+ "var TEACHER_EMAIL = 'englishonlinetraining@pm.me';\n\n"
++ "var TEACHER_EMAIL = 'learn@englishonline.training';\n\n"
 + 'var state = { name:\'\', cls:\'\', ' + SECTIONS.map(function (l) { return 'ex' + l + ':{}'; }).join(', ') + ', scores:{} };\n'
 + 'var maxStepReached = 0;\n\n'
 + 'var GAPS = [' + gapList.join(',') + '];\n\n'

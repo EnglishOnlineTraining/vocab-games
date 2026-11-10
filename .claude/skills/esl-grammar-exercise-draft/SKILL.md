@@ -25,9 +25,11 @@ afterwards and can request changes at any time.
 The registry is `esl-grammar-pool.json` (repo root) — **not** `topic-pool.json`. Run
 `node esl-grammar-pool.js` to see what's open.
 
-1. Read `esl-grammar-pool.json` and take the first entry with `status: "idea"`, going **tier order**
-   (all Tier 1 "Big Eight" entries before any Tier 2, all Tier 2 before any Tier 3) unless Shaun
-   names a specific topic.
+1. Read `esl-grammar-pool.json` and take the first entry with `status: "idea"` unless Shaun names
+   a specific topic. Open entries with a `priority` number go first, lowest number first (set from
+   newer demand data; the entry keeps its evidence tier). After those, go **tier order** (all
+   Tier 1 "Big Eight" entries before any Tier 2, all Tier 2 before any Tier 3). When you build a
+   priority entry, delete its `priority` field as you flip it to `built`.
 2. Note its `id`, `topic`, `grammar`, `cefr`, and `evidence`. Build the exercise to that grammar
    focus, at that CEFR level.
 3. If the pool has no open ideas left, do not invent one silently — tell Shaun the pool is
@@ -56,7 +58,7 @@ then `TOTAL_STEPS = N + 1` and the submit section gets `id="step-{N+1}"`. Verify
   shared framework used by every page on the site, not something to patch per-series. Do not edit
   `exercise.js` to change this.
 - **`UNIT`** — the `id` from the pool entry (e.g. `'esl-articles'`).
-- **`TEACHER_EMAIL`** — always `'englishonlinetraining@pm.me'`.
+- **`TEACHER_EMAIL`** — always `'learn@englishonline.training'`.
 - **`SHEET_URL`** — route through the **Business English/University Apps Script URL** (see
   CLAUDE.md's "Submission routing" section for the current value). That handler auto-creates its
   own tab from `unit` with no redeploy needed, which is why it's the right default for a brand-new
@@ -96,11 +98,15 @@ Fill in every `TODO` in the template:
 - [ ] **`UNIT`** — the pool entry's `id`, matching the filename
 - [ ] **`TOTAL_STEPS`** — number of exercise steps + 1
 - [ ] **`SHEET_URL`** — the online-sheet Apps Script URL (see §3 above)
-- [ ] **`TEACHER_EMAIL`** — `'englishonlinetraining@pm.me'`
+- [ ] **`TEACHER_EMAIL`** — `'learn@englishonline.training'`
 - [ ] **Welcome screen** — emoji, title, subtitle, overview cards (steps 2+ get `class="locked"`)
 - [ ] **State object** — one property per exercise section (exA, exB, exC, exD, scores)
 - [ ] **validateStep(n) / saveStep(n) / restoreStep(n) / buildSummary() / buildEmailBody() /
       buildPayload()** — same conventions as every other framework page
+- [ ] **Optional feedback email + newsletter opt-in** — copy the "Optional: get feedback" card,
+      `submitWithFeedbackEmail()` and the `email`/`newsletter` payload keys from `esl-articles.html`.
+      Keep the `inp-fb-*` ids: a field called `#inp-email` switches the welcome card into the
+      IELTS email-only mode in `exercise.js`.
 - [ ] **checkExX() functions** — one per dropdown exercise, each calling `checkDropdowns()` with a
       unique `scoreKey`
 
@@ -136,12 +142,17 @@ It cannot check content quality or this series' own conventions, so also verify 
 - [ ] `SHEET_URL` is the online-sheet Apps Script URL
 - [ ] `<html lang="en">` is set
 - [ ] Every dropdown has 3 options with the correct answer shuffled
+- [ ] Checked against STYLE.md §2.5, "Lessons from item analysis" (payload keys equal scoreKeys; typed keys accept every correct word order)
 - [ ] Answer keys in `checkExX()` are actually correct
 - [ ] Overview cards match the actual exercises; steps 2+ have `class="locked"`
 - [ ] The reading text matches the pool entry's `cefr` level
 - [ ] Grammar content matches the pool entry's `grammar` field
 - [ ] All state properties have matching save/restore/validate/summary/email/payload entries
 - [ ] `score`/`grade` are included in `buildPayload()` and `buildEmailBody()`
+- [ ] **E2E spec** `tests/<UNIT>.spec.js`, copied from the nearest spec in `tests/` and adapted
+  (`AGENTS.md`, Testing): practise mode with one wrong answer per section showing its
+  explanation, no sideways scroll at 375 px, no console errors, and the test-mode payload carrying
+  `unit`, `score` and `grade`. Run `npx playwright test tests/<UNIT>.spec.js`.
 
 **Learning design:** run the self-review checklist in `docs/learning-design-checks.md` — all nine
 items must pass (or be called out with a reason in the build summary).
@@ -197,7 +208,7 @@ If Shaun replies with feedback, revise and republish (repeat step 6).
 Registry:       esl-grammar-pool.json  (repo root — NOT topic-pool.json)
 Viewer:         node esl-grammar-pool.js [tier] [--all] [--check]
 Hub:            esl-grammar-activities.html
-TEACHER_EMAIL = 'englishonlinetraining@pm.me'
+TEACHER_EMAIL = 'learn@englishonline.training'
 SHEET_URL     = Business English/University Apps Script URL (see CLAUDE.md)
 GitHub repo:    EnglishOnlineTraining/vocab-games
 GitHub Pages:   activities.englishonline.training

@@ -6,18 +6,18 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "from",
+     "correct": "slight fall",
      "accept": [
-      "from"
+      "slight fall"
      ],
-     "label": "1. fell"
+     "label": "1. There was a"
     },
     "g2": {
-     "correct": "Investing in cycle lanes is one of the most effective ways to reduce traffic.",
+     "correct": "Opponents",
      "accept": [
-      "Investing in cycle lanes is one of the most effective ways to reduce traffic."
+      "Opponents"
      ],
-     "label": "2. Paragraph on cycle lanes"
+     "label": "2. Review (Discussion Essay):"
     },
     "g3": {
      "correct": "False",
@@ -27,39 +27,39 @@
      "label": "3. plant community a better guide → number of walks the best guide"
     },
     "g4": {
-     "correct": "dwindle",
+     "correct": "I agree with",
      "accept": [
-      "dwindle"
+      "I agree with"
      ],
-     "label": "4. car use continued to"
+     "label": "4."
     },
     "g5": {
-     "correct": "Another benefit is that courses outside a student’s field teach practical skills.",
+     "correct": "Part-time work has both advantages and disadvantages for students.",
      "accept": [
-      "Another benefit is that courses outside a student’s field teach practical skills."
+      "Part-time work has both advantages and disadvantages for students."
      ],
-     "label": "5. Paragraph on languages and coding skills"
+     "label": "5. Paragraph on part-time work"
     },
     "g6": {
-     "correct": "True",
+     "correct": "is made",
      "accept": [
-      "True"
+      "is made"
      ],
-     "label": "6. connected homes to schools and bus stops → some paths led to bus stops"
+     "label": "6. Paper"
     },
     "g7": {
-     "correct": "dramatic increase",
+     "correct": "airtight packets",
      "accept": [
-      "dramatic increase"
+      "airtight packets"
      ],
-     "label": "7. Cycling saw a"
+     "label": "7. seeds are dried and sealed in"
     },
     "g8": {
-     "correct": "Despite",
+     "correct": "fluctuated slightly",
      "accept": [
-      "Despite"
+      "fluctuated slightly"
      ],
-     "label": "8."
+     "label": "8. bus journeys"
     }
    }
   },
@@ -68,60 +68,60 @@
    "multi": false,
    "gaps": {
     "g1": {
+     "correct": "Overall, the older the students were, the more time they spent on homework.",
+     "accept": [
+      "Overall, the older the students were, the more time they spent on homework."
+     ],
+     "label": "1. Overview: homework hours"
+    },
+    "g2": {
+     "correct": "because",
+     "accept": [
+      "because"
+     ],
+     "label": "2. Flights were cancelled"
+    },
+    "g3": {
      "correct": "True",
      "accept": [
       "True"
      ],
-     "label": "1. more than 5,000 → over five thousand"
-    },
-    "g2": {
-     "correct": "remained stable",
-     "accept": [
-      "remained stable"
-     ],
-     "label": "2. Prices"
-    },
-    "g3": {
-     "correct": "Although",
-     "accept": [
-      "Although"
-     ],
-     "label": "3."
+     "label": "3. connected homes to schools and bus stops → some paths led to bus stops"
     },
     "g4": {
-     "correct": "the actions taken to deal with the problem",
+     "correct": "To sum up, while starting early has some benefits, I believe most children gain more from starting at seven, when they are ready to learn.",
      "accept": [
-      "the actions taken to deal with the problem"
+      "To sum up, while starting early has some benefits, I believe most children gain more from starting at seven, when they are ready to learn."
      ],
-     "label": "4. Such measures (paragraph B)"
+     "label": "4. Conclusion: school starting age"
     },
     "g5": {
-     "correct": "sharp fall",
+     "correct": "Online learning makes education more accessible.",
      "accept": [
-      "sharp fall"
+      "Online learning makes education more accessible."
      ],
-     "label": "5. There was a"
+     "label": "5. Paragraph on online lessons"
     },
     "g6": {
-     "correct": "Moreover",
+     "correct": "before being",
      "accept": [
-      "Moreover"
+      "before being"
      ],
-     "label": "6."
+     "label": "6. The bottles are cleaned"
     },
     "g7": {
-     "correct": "False",
+     "correct": "Not Given",
      "accept": [
-      "False"
+      "Not Given"
      ],
-     "label": "7. occasionally worked → never worked"
+     "label": "7. was announced in 2014 → was completed in 2014 (review)"
     },
     "g8": {
-     "correct": "sharply",
+     "correct": "by",
      "accept": [
-      "sharply"
+      "by"
      ],
-     "label": "8. then dropped"
+     "label": "8. rose"
     }
    }
   },
@@ -130,60 +130,60 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "nevertheless",
+     "correct": "almost half",
      "accept": [
-      "nevertheless"
+      "almost half"
      ],
-     "label": "1."
+     "label": "1. 49%"
     },
     "g2": {
-     "correct": "more and more",
+     "correct": "Although",
      "accept": [
-      "more and more"
+      "Although"
      ],
-     "label": "2. a growing number of (paragraph C)"
+     "label": "2. Review (Opinion Essay):"
     },
     "g3": {
-     "correct": "fell",
+     "correct": "True",
      "accept": [
-      "fell"
+      "True"
      ],
-     "label": "3. Overall, car use"
+     "label": "3. more than 5,000 → over five thousand"
     },
     "g4": {
-     "correct": "I support",
+     "correct": "believe",
      "accept": [
-      "I support"
+      "believe"
      ],
-     "label": "4. The main reason"
+     "label": "4. Many people"
     },
     "g5": {
-     "correct": "show",
+     "correct": "whereas",
      "accept": [
-      "show"
+      "whereas"
      ],
-     "label": "5. reflect (paragraph F)"
+     "label": "5."
     },
     "g6": {
-     "correct": "narrowed",
+     "correct": "At the next stage",
      "accept": [
-      "narrowed"
+      "At the next stage"
      ],
-     "label": "6. the gap had"
+     "label": "6. The bottles are sorted."
     },
     "g7": {
-     "correct": "In conclusion",
+     "correct": "costly",
      "accept": [
-      "In conclusion"
+      "costly"
      ],
-     "label": "7."
+     "label": "7. regeneration is both slow and"
     },
     "g8": {
-     "correct": "costs nothing to collect",
+     "correct": "to",
      "accept": [
-      "costs nothing to collect"
+      "to"
      ],
-     "label": "8. free information (paragraph C)"
+     "label": "8. cycling climbed"
     }
    }
   }

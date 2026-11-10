@@ -35,7 +35,10 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 .site-header p{color:rgba(255,255,255,.8);font-size:1rem;max-width:34rem;margin:0 auto}
 .header-cta{display:inline-block;margin-top:1.4rem;background:var(--gold);color:#1a3a5c;font-weight:800;font-size:.95rem;padding:.75rem 1.4rem;border-radius:10px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.18);transition:transform .15s}
 .header-cta:hover{transform:translateY(-1px)}
-.header-nav{display:flex;justify-content:center;gap:1.2rem;margin-top:1rem;font-size:.85rem}
+.header-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem 1rem;margin-top:1.4rem}
+.header-ctas .header-cta{margin-top:0}
+.header-cta-alt{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px var(--gold)}
+.header-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.3rem 1.2rem;margin-top:1rem;font-size:.85rem;color:rgba(255,255,255,.75)}
 .header-nav a{color:var(--gold-lt);font-weight:600;text-decoration:none}
 .header-nav a:hover{text-decoration:underline}
 .header-divider{height:4px;background:linear-gradient(90deg,var(--gold),var(--teal))}
@@ -106,8 +109,10 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 <meta property="og:image:alt" content="englishonline.training — kostenlose interaktive Englisch-Übungen für Klasse 7–10, MSA, Abitur, Universität, Business und IT English">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@engontraining">
+<style id="eol-tap-style">.top-bar a,.header-nav a,.app-header a,nav.breadcrumb a{padding-block:.6rem;margin-block:-.6rem}.eol-crumb a,.eol-crumbs a,.eol-footer a,.site-footer a{padding-block:.35rem;margin-block:-.35rem}</style>
+<script src="progress-ui.js" defer></script>
 <style id="eol-skip-style">.eol-skip{position:absolute;left:.5rem;top:-3rem;z-index:1000;background:var(--gold,#c9a227);color:#1a1a1a;font-weight:700;padding:.5rem 1rem;border-radius:8px;text-decoration:none;transition:top .2s;font-family:'Segoe UI',system-ui,sans-serif}.eol-skip:focus{top:.5rem}@media(prefers-reduced-motion:reduce){.eol-skip{transition:none}}</style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["EducationalOrganization","LocalBusiness"],"@id":"https://englishonline.training/#organization","name":"EnglishOnline.training","legalName":"English Online Training","alternateName":["Improve your English skills","Learn English in Berlin"],"url":"https://englishonline.training/","description":"Online English teaching and free interactive practice material for German school students, university students and professionals.","founder":{"@id":"https://activities.englishonline.training/#shaun"},"employee":{"@id":"https://activities.englishonline.training/#shaun"},"email":"englishonlinetraining@pm.me","telephone":"+49 176 3130 4449","vatID":"DE307424159","address":{"@type":"PostalAddress","streetAddress":"Koloniestrasse","postalCode":"13357","addressLocality":"Berlin","addressCountry":"DE"},"areaServed":[{"@type":"Country","name":"Germany"},{"@type":"AdministrativeArea","name":"Berlin"}],"knowsLanguage":["en","de"],"sameAs":["https://englishonline.training/impressum/"]},{"@type":"Person","@id":"https://activities.englishonline.training/#shaun","name":"Shaun Trezise","url":"https://englishonline.training/","mainEntityOfPage":"https://englishonline.training/about/","jobTitle":"English language teacher and Business English coach","description":"English teacher and Business English coach based in Berlin. Writes and teaches the practice material on activities.englishonline.training for German school students (Klasse 7–10, MSA, Abitur) and for university, IT and business learners.","email":"englishonlinetraining@pm.me","telephone":"+49 176 3130 4449","knowsLanguage":["en","de"],"knowsAbout":["English as a foreign language","Business English","English for IT professionals","Abitur English (Berlin/Brandenburg)","Mittlerer Schulabschluss (MSA) English","English language assessment"],"worksFor":{"@id":"https://englishonline.training/#organization"},"hasCredential":[{"@type":"EducationalOccupationalCredential","credentialCategory":"degree","name":"Bachelor of Arts"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Teaching English as a Foreign Language (100 hours)","dateCreated":"2013"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Representing Communicative Competence","dateCreated":"2015"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"The Flipped Classroom","dateCreated":"2015"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Power, confusion and offence: Systemic Functional Linguistics and Business Email Writing","dateCreated":"2015"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"High Order Thinking – Listening","dateCreated":"2016"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Personalisation: The Final Frontier?","dateCreated":"2016"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Tips and techniques for developing as BE trainer","dateCreated":"2016"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Developing fluency in ESP classroom","dateCreated":"2017"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Integrating language and content in EAP","dateCreated":"2018"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Lernen und Lehren in CORE-Prinzip","dateCreated":"2018"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Intro to Agile","dateCreated":"2019"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Project Management Online","dateCreated":"2020"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Foundations of Project Management","dateCreated":"2023"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Project Initiation: Starting a Successful Project"}],"sameAs":["https://englishonline.training/shaun-trezise-certificates-and-training-programmes-completed/","https://englishonline.training/impressum/"]},{"@type":"WebSite","@id":"https://activities.englishonline.training/#website","url":"https://activities.englishonline.training/","name":"EnglishOnline.training — kostenlose Englisch-Übungen","description":"Free interactive English exercises with instant feedback, no sign-up required.","inLanguage":["en","de"],"publisher":{"@id":"https://englishonline.training/#organization"},"isAccessibleForFree":true},{"@type":"CollectionPage","@id":"https://activities.englishonline.training/#collection","name":"Free English Exercises for Years 7–10, MSA &amp; Abitur","description":"Free English exercises for school and university learners: pick a year group or subject to start practising, no sign-up required.","url":"https://activities.englishonline.training/","inLanguage":"en","isPartOf":{"@id":"https://activities.englishonline.training/#website"},"publisher":{"@id":"https://englishonline.training/#organization"},"author":{"@id":"https://activities.englishonline.training/#shaun"},"isAccessibleForFree":true,"mainEntity":{"@type":"ItemList","numberOfItems":16,"itemListElement":[{"@type":"ListItem","position":1,"name":"Year 10 Oberschule English Exercises – Englisch Klasse 10","url":"https://activities.englishonline.training/10c-activities.html"},{"@type":"ListItem","position":2,"name":"Year 10 Gymnasium English Exercises – Englisch Klasse 10","url":"https://activities.englishonline.training/10g-activities.html"},{"@type":"ListItem","position":3,"name":"Year 7 Oberschule English Exercises – Englisch Klasse 7","url":"https://activities.englishonline.training/7c-activities.html"},{"@type":"ListItem","position":4,"name":"Year 7 Gymnasium English Exercises – Englisch Klasse 7","url":"https://activities.englishonline.training/7g-activities.html"},{"@type":"ListItem","position":5,"name":"Year 8 Oberschule English Exercises – Englisch Klasse 8","url":"https://activities.englishonline.training/8c-activities.html"},{"@type":"ListItem","position":6,"name":"Year 8 Gymnasium English Exercises – Englisch Klasse 8","url":"https://activities.englishonline.training/8g-activities.html"},{"@type":"ListItem","position":7,"name":"Year 9 Oberschule English Exercises – Englisch Klasse 9","url":"https://activities.englishonline.training/9c-activities.html"},{"@type":"ListItem","position":8,"name":"Year 9 Gymnasium English Exercises – Englisch Klasse 9","url":"https://activities.englishonline.training/9g-activities.html"},{"@type":"ListItem","position":9,"name":"Abitur English Practice Packs – Abitur Englisch üben","url":"https://activities.englishonline.training/abitur-activities.html"},{"@type":"ListItem","position":10,"name":"Business English Exercises – Free Online Practice","url":"https://activities.englishonline.training/business-activities.html"},{"@type":"ListItem","position":11,"name":"ESL Grammar Exercises","url":"https://activities.englishonline.training/esl-grammar-activities.html"},{"@type":"ListItem","position":12,"name":"Grammatik-Übungen Englisch – kostenlos und interaktiv","url":"https://activities.englishonline.training/grammar-activities.html"},{"@type":"ListItem","position":13,"name":"IELTS Academic Practice — Free Reading &amp; Writing Exercises","url":"https://activities.englishonline.training/ielts-activities.html"},{"@type":"ListItem","position":14,"name":"IT English Exercises for Vocational Trainees","url":"https://activities.englishonline.training/it-activities.html"},{"@type":"ListItem","position":15,"name":"MSA Englisch üben — kostenlose Prüfungsvorbereitung","url":"https://activities.englishonline.training/msa-activities.html"},{"@type":"ListItem","position":16,"name":"University English Exercises – Free Practice","url":"https://activities.englishonline.training/uni-activities.html"}]}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["EducationalOrganization","LocalBusiness"],"@id":"https://englishonline.training/#organization","name":"EnglishOnline.training","legalName":"English Online Training","alternateName":["Improve your English skills","Learn English in Berlin"],"url":"https://englishonline.training/","description":"Online English teaching and free interactive practice material for German school students, university students and professionals.","founder":{"@id":"https://activities.englishonline.training/#shaun"},"employee":{"@id":"https://activities.englishonline.training/#shaun"},"email":"learn@englishonline.training","telephone":"+49 176 3130 4449","vatID":"DE307424159","address":{"@type":"PostalAddress","streetAddress":"Koloniestrasse","postalCode":"13357","addressLocality":"Berlin","addressCountry":"DE"},"areaServed":[{"@type":"Country","name":"Germany"},{"@type":"AdministrativeArea","name":"Berlin"}],"knowsLanguage":["en","de"],"sameAs":["https://englishonline.training/impressum/"]},{"@type":"Person","@id":"https://activities.englishonline.training/#shaun","name":"Shaun Trezise","url":"https://englishonline.training/","mainEntityOfPage":"https://englishonline.training/about/","jobTitle":"English language teacher and Business English coach","description":"English teacher and Business English coach based in Berlin. Writes and teaches the practice material on activities.englishonline.training for German school students (Klasse 7–10, MSA, Abitur) and for university, IT and business learners.","email":"learn@englishonline.training","telephone":"+49 176 3130 4449","knowsLanguage":["en","de"],"knowsAbout":["English as a foreign language","Business English","English for IT professionals","Abitur English (Berlin/Brandenburg)","Mittlerer Schulabschluss (MSA) English","English language assessment"],"worksFor":{"@id":"https://englishonline.training/#organization"},"hasCredential":[{"@type":"EducationalOccupationalCredential","credentialCategory":"degree","name":"Bachelor of Arts"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Teaching English as a Foreign Language (100 hours)","dateCreated":"2013"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Representing Communicative Competence","dateCreated":"2015"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"The Flipped Classroom","dateCreated":"2015"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Power, confusion and offence: Systemic Functional Linguistics and Business Email Writing","dateCreated":"2015"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"High Order Thinking – Listening","dateCreated":"2016"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Personalisation: The Final Frontier?","dateCreated":"2016"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Tips and techniques for developing as BE trainer","dateCreated":"2016"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Developing fluency in ESP classroom","dateCreated":"2017"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Integrating language and content in EAP","dateCreated":"2018"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Lernen und Lehren in CORE-Prinzip","dateCreated":"2018"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Intro to Agile","dateCreated":"2019"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Project Management Online","dateCreated":"2020"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Foundations of Project Management","dateCreated":"2023"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certificate","name":"Project Initiation: Starting a Successful Project"}],"sameAs":["https://englishonline.training/shaun-trezise-certificates-and-training-programmes-completed/","https://englishonline.training/impressum/","https://www.linkedin.com/in/shaunptrezise"]},{"@type":"WebSite","@id":"https://activities.englishonline.training/#website","url":"https://activities.englishonline.training/","name":"EnglishOnline.training — kostenlose Englisch-Übungen","description":"Free interactive English exercises with instant feedback, no sign-up required.","inLanguage":["en","de"],"publisher":{"@id":"https://englishonline.training/#organization"},"isAccessibleForFree":true},{"@type":"CollectionPage","@id":"https://activities.englishonline.training/#collection","name":"Free English Exercises for Years 7–10, MSA &amp; Abitur","description":"Free English exercises for school and university learners: pick a year group or subject to start practising, no sign-up required.","url":"https://activities.englishonline.training/","inLanguage":"en","isPartOf":{"@id":"https://activities.englishonline.training/#website"},"publisher":{"@id":"https://englishonline.training/#organization"},"author":{"@id":"https://activities.englishonline.training/#shaun"},"isAccessibleForFree":true,"mainEntity":{"@type":"ItemList","numberOfItems":16,"itemListElement":[{"@type":"ListItem","position":1,"name":"Year 10 Oberschule English Exercises – Englisch Klasse 10","url":"https://activities.englishonline.training/10c-activities.html"},{"@type":"ListItem","position":2,"name":"Year 10 Gymnasium English Exercises – Englisch Klasse 10","url":"https://activities.englishonline.training/10g-activities.html"},{"@type":"ListItem","position":3,"name":"Year 7 Oberschule English Exercises – Englisch Klasse 7","url":"https://activities.englishonline.training/7c-activities.html"},{"@type":"ListItem","position":4,"name":"Year 7 Gymnasium English Exercises – Englisch Klasse 7","url":"https://activities.englishonline.training/7g-activities.html"},{"@type":"ListItem","position":5,"name":"Year 8 Oberschule English Exercises – Englisch Klasse 8","url":"https://activities.englishonline.training/8c-activities.html"},{"@type":"ListItem","position":6,"name":"Year 8 Gymnasium English Exercises – Englisch Klasse 8","url":"https://activities.englishonline.training/8g-activities.html"},{"@type":"ListItem","position":7,"name":"Year 9 Oberschule English Exercises – Englisch Klasse 9","url":"https://activities.englishonline.training/9c-activities.html"},{"@type":"ListItem","position":8,"name":"Year 9 Gymnasium English Exercises – Englisch Klasse 9","url":"https://activities.englishonline.training/9g-activities.html"},{"@type":"ListItem","position":9,"name":"Abitur English Practice Packs – Abitur Englisch üben","url":"https://activities.englishonline.training/abitur-activities.html"},{"@type":"ListItem","position":10,"name":"Business English Exercises – Free Online Practice","url":"https://activities.englishonline.training/business-activities.html"},{"@type":"ListItem","position":11,"name":"ESL Grammar Exercises","url":"https://activities.englishonline.training/esl-grammar-activities.html"},{"@type":"ListItem","position":12,"name":"Grammatik-Übungen Englisch – kostenlos und interaktiv","url":"https://activities.englishonline.training/grammar-activities.html"},{"@type":"ListItem","position":13,"name":"IELTS Academic Practice — Free Reading &amp; Writing Exercises","url":"https://activities.englishonline.training/ielts-activities.html"},{"@type":"ListItem","position":14,"name":"IT English Exercises for Vocational Trainees","url":"https://activities.englishonline.training/it-activities.html"},{"@type":"ListItem","position":15,"name":"MSA Englisch üben — kostenlose Prüfungsvorbereitung","url":"https://activities.englishonline.training/msa-activities.html"},{"@type":"ListItem","position":16,"name":"University English Exercises – Free Practice","url":"https://activities.englishonline.training/uni-activities.html"}]}}]}</script>
 <!-- HEAD:END -->
 </head>
 <body>
@@ -122,9 +127,16 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
   </div>
   <h1>Free English exercises for Years 7–10, MSA &amp; Abitur</h1>
   <p>Pick your class and start. Instant feedback and a grade (Note 1–5), no sign-up.</p>
-  <a class="header-cta" href="activities.html">🔎 Search all exercises</a>
+  <div class="header-ctas">
+    <a class="header-cta" href="activities.html">🔎 Search all exercises</a>
+    <a class="header-cta header-cta-alt" href="level-test.html">🎯 Not sure of your level? Level test</a>
+  </div>
   <nav class="header-nav" aria-label="Quick links">
-    <a href="level-test.html">Level test</a>
+    <span>Also:</span>
+    <a href="ielts-activities.html">IELTS</a>
+    <a href="uni-activities.html">University</a>
+    <a href="business-activities.html">Business</a>
+    <a href="it-activities.html">IT English</a>
     <a href="themen/index.html">Grammar topics</a>
   </nav>
 </header>
@@ -159,7 +171,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
         <a class="school-link" href="8c-activities.html">
           <span class="school-name">Oberschule</span>
           <span class="school-meta">US regions, festivals &amp; everyday English</span>
-          <span class="school-count">12 exercises</span>
+          <span class="school-count">13 exercises</span>
         </a>
       </div>
       <div class="year-card">
@@ -172,7 +184,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
         <a class="school-link" href="9c-activities.html">
           <span class="school-name">Oberschule</span>
           <span class="school-meta">South Africa, work, media &amp; grammar</span>
-          <span class="school-count">16 exercises</span>
+          <span class="school-count">19 exercises</span>
         </a>
       </div>
       <div class="year-card">
@@ -180,7 +192,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
         <a class="school-link" href="10g-activities.html">
           <span class="school-name">Gymnasium</span>
           <span class="school-meta">Scotland, Black America &amp; youth culture</span>
-          <span class="school-count">30 exercises</span>
+          <span class="school-count">31 exercises</span>
         </a>
         <a class="school-link" href="10c-activities.html">
           <span class="school-name">Oberschule</span>
@@ -193,39 +205,29 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 
   <section class="year-block">
     <h2 class="year-heading">
-      <span class="year-badge">🎧</span>
-      MSA — <span lang="de">Mittlerer Schulabschluss</span>
+      Exam practice: MSA &amp; IELTS
     </h2>
 
     <div class="cards-grid">
       <a class="group-card" href="msa-activities.html">
         <span class="group-icon">🎧</span>
         <span class="group-title">MSA English</span>
-        <span class="group-meta">Full-skills exam practice: listening, reading &amp; writing</span>
+        <span class="group-meta"><span lang="de">Mittlerer Schulabschluss</span>: listening, reading &amp; writing exam practice</span>
         <span class="exercise-count">20 Exercises</span>
       </a>
 
       <a class="group-card" href="msa-review.html">
         <span class="group-icon">🔁</span>
-        <span class="group-title">Mixed Revision</span>
+        <span class="group-title">MSA Mixed Revision</span>
         <span class="group-meta">Mixed questions revisiting earlier MSA units</span>
         <span class="exercise-count">Revision</span>
       </a>
-    </div>
-  </section>
 
-  <section class="year-block">
-    <h2 class="year-heading">
-      <span class="year-badge">🎯</span>
-      IELTS Academic
-    </h2>
-
-    <div class="cards-grid">
       <a class="group-card" href="ielts-activities.html">
         <span class="group-icon">🎯</span>
         <span class="group-title">IELTS Academic</span>
         <span class="group-meta">Reading question types and Writing Task 1 &amp; 2 practice</span>
-        <span class="exercise-count">5 Exercises</span>
+        <span class="exercise-count">11 Exercises</span>
       </a>
 
       <a class="group-card" href="ielts-vocabulary-glossary.html">
@@ -239,7 +241,6 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 
   <section class="year-block">
     <h2 class="year-heading">
-      <span class="year-badge">🎓</span>
       Abitur
     </h2>
 
@@ -291,14 +292,14 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
         <span class="group-icon">🔎</span>
         <span class="group-title">All exercises</span>
         <span class="group-meta">Search and filter by year, school type, skill or grammar topic</span>
-        <span class="exercise-count">243 Exercises</span>
+        <span class="exercise-count">271 Exercises</span>
       </a>
 
       <a class="group-card" href="esl-grammar-activities.html">
         <span class="group-icon">🌍</span>
         <span class="group-title">ESL Grammar</span>
         <span class="group-meta">Every grammar exercise in one place — tenses, conditionals, articles and more</span>
-        <span class="exercise-count">17 Exercises</span>
+        <span class="exercise-count">22 Exercises</span>
       </a>
 
       <a class="group-card" href="themen/index.html">
@@ -341,14 +342,14 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
         <span class="group-icon">🎓</span>
         <span class="group-title">University English</span>
         <span class="group-meta">Academic writing, case studies &amp; vocabulary</span>
-        <span class="exercise-count">15 Exercises</span>
+        <span class="exercise-count">25 Exercises</span>
       </a>
 
       <a class="group-card" href="business-activities.html">
         <span class="group-icon">💼</span>
         <span class="group-title">Business English</span>
         <span class="group-meta">Meetings, emails &amp; professional skills</span>
-        <span class="exercise-count">18 Exercises</span>
+        <span class="exercise-count">20 Exercises</span>
       </a>
 
       <a class="group-card" href="it-activities.html">

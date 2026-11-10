@@ -80,6 +80,7 @@ section.active{display:block}
 <meta property="og:image:alt" content="englishonline.training — kostenlose interaktive Englisch-Übungen für Klasse 7–10, MSA, Abitur, Universität, Business und IT English">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@engontraining">
+<style id="eol-tap-style">.top-bar a,.header-nav a,.app-header a,nav.breadcrumb a{padding-block:.6rem;margin-block:-.6rem}.eol-crumb a,.eol-crumbs a,.eol-footer a,.site-footer a{padding-block:.35rem;margin-block:-.35rem}</style>
 <style id="eol-skip-style">.eol-skip{position:absolute;left:.5rem;top:-3rem;z-index:1000;background:var(--gold,#c9a227);color:#1a1a1a;font-weight:700;padding:.5rem 1rem;border-radius:8px;text-decoration:none;transition:top .2s;font-family:'Segoe UI',system-ui,sans-serif}.eol-skip:focus{top:.5rem}@media(prefers-reduced-motion:reduce){.eol-skip{transition:none}}</style>
 <!-- HEAD:END -->
 </head>
@@ -217,7 +218,7 @@ section.active{display:block}
 const UNIT = 'business-needs-analysis';
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxFKA1KdGkMZTdf0PrFITnpOiUdI2v2--PRlNTYBlBg1ZJ0k7rZm8T4aCzu6IQ-c2ye1A/exec';
 const TOTAL_STEPS = 6; // = id of the submit step
-const TEACHER_EMAIL = 'englishonlinetraining@pm.me';
+const TEACHER_EMAIL = 'learn@englishonline.training';
 const STORE_KEY = 'eol-' + UNIT;
 
 const PARTNERS = [
@@ -477,14 +478,13 @@ function submitForm() {
   next.disabled = true;
   msg.style.display = 'block';
   msg.innerHTML = '<div class="scenario-context">Sending… / Wird gesendet…</div>';
-  // no-cors: the response is opaque, so success means "request sent", not "row confirmed".
   fetch(SHEET_URL, {
     method: 'POST',
-    mode: 'no-cors',
     headers: { 'Content-Type': 'text/plain;charset=utf-8' },
     body: JSON.stringify(payload)
   })
-  .then(() => {
+  .then(response => {
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
     submitted = true;
     try { localStorage.removeItem(STORE_KEY); } catch (e) {}
     msg.innerHTML = '<div class="ok-message">✓ Thank you! Your answers have been sent.<span class="de">Vielen Dank! Ihre Antworten wurden gesendet.</span></div>';

@@ -15785,7 +15785,7 @@
     "g6": {
      "label": "4. It was chasing ___ ball",
      "correct": "a",
-     "why": "First mention of an unspecified ball — introduced for the first time, so use \"a\"."
+     "why": "\"It\" is the dog again, but the ball is new — first mention, so \"a\", not \"the\"."
     },
     "g7": {
      "label": "5. My brother is ___ tallest person",
@@ -16569,7 +16569,12 @@
     "g4": {
      "label": "We ___ (tell) so many stories about crocodile attacks.",
      "correct": "were told",
-     "why": "Simple past passive with plural subject \"we\": were + told."
+     "why": "Past passive with plural subject \"we\": were + told. \"have been told\" also works: the stories add up to now (\"it now seems a wonder\").",
+     "accept": [
+      "were told",
+      "have been told",
+      "'ve been told"
+     ]
     },
     "g5": {
      "label": "It now seems a wonder he ___ (not hurt).",
@@ -16583,7 +16588,11 @@
     "g6": {
      "label": "More warning signs ___ (put up) soon.",
      "correct": "will be put up",
-     "why": "Future passive: will + be + past participle. The signs will be put up in the future."
+     "why": "Future passive: will + be + past participle. The present progressive passive \"are being put up\" also works for a planned future with \"soon\".",
+     "accept": [
+      "will be put up",
+      "are being put up"
+     ]
     },
     "g7": {
      "label": "The kid who ___ (kill) by a croc just last week.",
@@ -16593,7 +16602,11 @@
     "g8": {
      "label": "Let’s hope he ___ (find) very soon!",
      "correct": "will be found",
-     "why": "Future passive after \"hope\": will + be + past participle."
+     "why": "Future passive after \"hope\": will + be + past participle. After \"hope\" the present can also mean the future, so \"is found\" is right too.",
+     "accept": [
+      "will be found",
+      "is found"
+     ]
     }
    }
   }
@@ -18792,41 +18805,102 @@
   },
   "exC": {
    "prefix": "exC-",
+   "typed": true,
    "gaps": {
     "g1": {
      "label": "1 — gave Aboriginal people the right",
      "correct": "Aboriginal people were given the right to vote in 1962",
-     "why": "Person as subject: was/were + past participle; the thing (the right) stays after it."
+     "why": "Person as subject: was/were + past participle; the thing (the right) stays after it.",
+     "accept": [
+      "Aboriginal people were given the right to vote in 1962",
+      "Aboriginal people were given the vote in 1962"
+     ]
     },
     "g2": {
      "label": "2 — handed the Anangu people the title deeds",
      "correct": "The Anangu people were handed the title deeds to Uluru in 1985",
-     "why": "Two-object passive: the person becomes the subject; the title deeds (the thing) stay after the verb."
+     "why": "Two-object passive: the person becomes the subject; the title deeds (the thing) stay after the verb.",
+     "accept": [
+      "The Anangu people were handed the title deeds to Uluru in 1985",
+      "The title deeds to Uluru were handed to the Anangu people in 1985"
+     ]
     },
     "g3": {
      "label": "3 — offered the Stolen Generations an apology",
      "correct": "The Stolen Generations were offered a formal apology in 2008",
-     "why": "The receiver becomes the subject; the verb keeps both objects in the passive."
+     "why": "The receiver becomes the subject; the verb keeps both objects in the passive.",
+     "accept": [
+      "The Stolen Generations were offered a formal apology in 2008",
+      "In 2008, the Stolen Generations were offered a formal apology",
+      "A formal apology was offered to the Stolen Generations in 2008",
+      "The Stolen Generations were offered a formal apology by the prime minister in 2008",
+      "In 2008, the Stolen Generations were offered a formal apology by the prime minister",
+      "A formal apology was offered to the Stolen Generations by the prime minister in 2008",
+      "In 2008 the Stolen Generations were offered a formal apology",
+      "In 2008 the Stolen Generations were offered a formal apology by the prime minister"
+     ]
     },
     "g4": {
      "label": "4 — shows visitors sacred paintings",
      "correct": "Visitors are shown sacred rock paintings",
-     "why": "General truth → present passive with the receiver as subject ('Sacred rock paintings are shown to visitors' also fits)."
+     "why": "General truth → present passive with the receiver as subject ('Sacred rock paintings are shown to visitors' also fits).",
+     "accept": [
+      "Visitors are shown sacred rock paintings",
+      "Sacred rock paintings are shown to visitors"
+     ]
     },
     "g5": {
      "label": "5 — taught the children English",
      "correct": "The children were taught English at the mission school",
-     "why": "Past passive with the receiver as subject; the second object (English) remains."
+     "why": "Past passive with the receiver as subject; the second object (English) remains.",
+     "accept": [
+      "The children were taught English at the mission school",
+      "The children were taught English by the teachers at the mission school",
+      "English was taught to the children at the mission school",
+      "English was taught to the children by the teachers at the mission school"
+     ]
     },
     "g6": {
      "label": "6 — will give young artists a grant",
      "correct": "Young artists will be given a grant next year",
-     "why": "Future passive: will be + past participle."
+     "why": "Future passive: will be + past participle.",
+     "accept": [
+      "Young artists will be given a grant next year",
+      "Young artists will be given a grant for their paintings",
+      "Young artists will be given a grant for their paintings next year",
+      "Next year, young artists will be given a grant for their paintings",
+      "Young artists will be given a grant for their paintings by the council next year",
+      "Next year, young artists will be given a grant for their paintings by the council",
+      "A grant will be given to young artists for their paintings next year",
+      "Next year, a grant will be given to young artists for their paintings",
+      "Next year, a grant will be given to young artists by the council for their paintings",
+      "A grant will be given to young artists for their paintings",
+      "Next year young artists will be given a grant for their paintings",
+      "Next year young artists will be given a grant for their paintings by the council",
+      "Next year a grant will be given to young artists for their paintings",
+      "Next year a grant will be given to young artists by the council for their paintings"
+     ]
     },
     "g7": {
      "label": "7 — told us the story of the Rainbow Serpent",
      "correct": "We were told the story of the Rainbow Serpent",
-     "why": "Past passive with the person as subject — or 'The story of the Rainbow Serpent was told to us'."
+     "why": "Past passive with the person as subject — or 'The story of the Rainbow Serpent was told to us'.",
+     "accept": [
+      "We were told the story of the Rainbow Serpent",
+      "The story of the Rainbow Serpent was told to us",
+      "Yesterday, we were told the story of the Rainbow Serpent",
+      "We were told the story of the Rainbow Serpent yesterday",
+      "Yesterday, we were told the story of the Rainbow Serpent by an elder",
+      "We were told the story of the Rainbow Serpent by an elder yesterday",
+      "Yesterday, the story of the Rainbow Serpent was told to us by an elder",
+      "The story of the Rainbow Serpent was told to us by an elder yesterday",
+      "The story of the Rainbow Serpent was told to us yesterday",
+      "Yesterday, the story of the Rainbow Serpent was told to us",
+      "Yesterday we were told the story of the Rainbow Serpent",
+      "Yesterday we were told the story of the Rainbow Serpent by an elder",
+      "Yesterday the story of the Rainbow Serpent was told to us by an elder",
+      "Yesterday the story of the Rainbow Serpent was told to us"
+     ]
     }
    }
   }
@@ -19118,6 +19192,7 @@
  },
  "ielts-writing-task1-describing-trends": {
   "exA": {
+   "review": false,
    "gaps": {
     "g1": {
      "label": "1. Overall, car use ___ over the period",
@@ -19252,6 +19327,7 @@
  },
  "ielts-writing-task2-opinion-essay": {
   "exA": {
+   "review": false,
    "gaps": {
     "g1": {
      "label": "1. The main reason ___ this idea",
@@ -19469,6 +19545,2839 @@
      "label": "6. I ___ you a lift to school.",
      "correct": "will give",
      "why": "An offer made on the spot takes 'will'."
+    }
+   }
+  }
+ },
+ "ielts-reading-sentence-summary-completion": {
+  "exA": {
+   "review": false,
+   "typed": true,
+   "gaps": {
+    "g1": {
+     "label": "1. local varieties selected over generations are called ___",
+     "correct": "landraces",
+     "accept": [
+      "landraces",
+      "landrace"
+     ],
+     "why": "Paragraph A: “local varieties, known as landraces, which had been selected over many generations” — one word, copied exactly."
+    },
+    "g2": {
+     "label": "2. a modern variety that fails when a new ___ appears",
+     "correct": "pest",
+     "accept": [
+      "pest"
+     ],
+     "why": "Paragraph A: “A modern variety that fails when a new pest arrives” — “appears” paraphrases “arrives”."
+    },
+    "g3": {
+     "label": "3. drying and cooling slows down the ___ that make them age",
+     "correct": "chemical processes",
+     "accept": [
+      "chemical processes",
+      "chemical process"
+     ],
+     "why": "Paragraph B: drying and cooling “slow down the chemical processes of ageing”; “chemical processes of ageing” is four words and breaks the limit."
+    },
+    "g4": {
+     "label": "4. staff check samples by attempting to ___ some seeds",
+     "correct": "germinate",
+     "accept": [
+      "germinate"
+     ],
+     "why": "Paragraph B: staff test each sample “by trying to germinate a few of its seeds” — the gap after “to” needs a verb."
+    },
+    "g5": {
+     "label": "5. the staff refused to eat the seeds, and ___ of them died",
+     "correct": "several",
+     "accept": [
+      "several"
+     ],
+     "why": "Paragraph C: “they refused to eat them, and several died of hunger”."
+    },
+    "g6": {
+     "label": "6. seeds are stored at minus ___ degrees Celsius",
+     "correct": "18",
+     "accept": [
+      "18",
+      "eighteen"
+     ],
+     "why": "Paragraph D: seeds “are kept at minus 18 degrees Celsius” — a number is allowed by the instruction."
+    },
+    "g7": {
+     "label": "7. after a mild winter in 2017, ___ got into the tunnel",
+     "correct": "meltwater",
+     "accept": [
+      "meltwater",
+      "melt water",
+      "melt-water"
+     ],
+     "why": "Paragraph E: “In 2017, after an unusually warm Arctic winter, meltwater entered the entrance tunnel”."
+    }
+   }
+  },
+  "exA2": {
+   "review": false,
+   "prefix": "exA-",
+   "gaps": {
+    "g8": {
+     "label": "8. the vault holds ___ copies of samples",
+     "correct": "duplicate",
+     "why": "Paragraph D: other gene banks “send duplicate copies of their samples”; “original” is wrong because the originals stay with the depositors."
+    },
+    "g9": {
+     "label": "9. a centre forced out of Syria by ___",
+     "correct": "conflict",
+     "why": "Paragraph E: “the civil war had forced the centre to move its work” — a war is a conflict; “flooding” is the 2017 problem at the vault."
+    },
+    "g10": {
+     "label": "10. oak and cocoa seeds cannot survive being ___",
+     "correct": "dried",
+     "why": "Paragraph F: recalcitrant seeds, such as oak and cocoa, “die if they are dried”."
+    },
+    "g11": {
+     "label": "11. a technique that is still ___ in its results",
+     "correct": "inconsistent",
+     "why": "Paragraph F: cryopreservation “has to be worked out species by species and success remains uneven” — uneven results are inconsistent."
+    },
+    "g12": {
+     "label": "12. frozen seeds cannot ___ as conditions change",
+     "correct": "adapt",
+     "why": "Paragraph F: critics argue “a seed held in a freezer stops adapting”."
+    },
+    "g13": {
+     "label": "13. experts regard field growing and storage as ___ approaches",
+     "correct": "complementary",
+     "why": "Paragraph F: specialists see the two approaches “as complements rather than rivals” — so “competing” says the opposite."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. it holds ___ copies (gap 8)",
+     "correct": "an adjective",
+     "why": "The gap comes before the noun “copies”, so it needs a word that describes it: an adjective."
+    },
+    "g2": {
+     "label": "2. forced out of Syria by ___ (gap 9)",
+     "correct": "a noun",
+     "why": "After the preposition “by” comes a noun: the thing that forced the centre out."
+    },
+    "g3": {
+     "label": "3. cannot survive being ___ (gap 10)",
+     "correct": "a verb form",
+     "why": "After “being” comes a past participle, as in “being dried” — a verb form."
+    },
+    "g4": {
+     "label": "4. a technique that is still ___ (gap 11)",
+     "correct": "an adjective",
+     "why": "After “is still” and before “in its results”, the gap describes the technique: an adjective."
+    },
+    "g5": {
+     "label": "5. frozen seeds cannot ___ (gap 12)",
+     "correct": "a verb form",
+     "why": "After the modal “cannot” comes the base form of a verb."
+    },
+    "g6": {
+     "label": "6. regard them as ___ approaches (gap 13)",
+     "correct": "an adjective",
+     "why": "The gap comes before the noun “approaches”, so it needs an adjective."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. seeds are dried and sealed in ___",
+     "correct": "airtight packets",
+     "why": "Paragraph B: “sealed in airtight packets” — two words; “airtight packets and stored” is over the limit, and “airtight” alone leaves the sentence without a noun."
+    },
+    "g2": {
+     "label": "2. some species produce ___ seeds",
+     "correct": "recalcitrant",
+     "why": "Paragraph F: “recalcitrant seeds” — the sentence already has “seeds”, so the gap takes one word; “what are known as recalcitrant” is over the limit."
+    },
+    "g3": {
+     "label": "3. each gene bank sends the vault ___ of its samples",
+     "correct": "duplicate copies",
+     "why": "Paragraph D: “duplicate copies of their samples” — the gap needs a noun after “sends the vault”, and the full phrase is over the limit."
+    },
+    "g4": {
+     "label": "4. seeds kept in a freezer stop ___",
+     "correct": "adapting",
+     "why": "Paragraph F: a frozen seed “stops adapting”; “stop evolve” breaks the grammar, and “evolve alongside new pests” is four words."
+    },
+    "g5": {
+     "label": "5. regeneration is both slow and ___",
+     "correct": "costly",
+     "why": "Paragraph B: regeneration “is slow and costly”; “slow and costly” repeats “slow and” and is over the limit, and “a process” does not fit after “slow and”."
+    },
+    "g6": {
+     "label": "6. was announced in 2014 → was completed in 2014 (review)",
+     "correct": "Not Given",
+     "why": "An announcement says something will happen, not that it did — recalled from ielts-reading-true-false-not-given.html (Ex B)."
+    },
+    "g7": {
+     "label": "7. a heading that repeats one detail (review)",
+     "correct": "a trap",
+     "why": "Headings that only echo a detail are the traps — recalled from ielts-reading-matching-headings.html (Ex C)."
+    }
+   }
+  }
+ },
+ "ielts-writing-task1-tables-bar-charts": {
+  "exA": {
+   "review": false,
+   "gaps": {
+    "g1": {
+     "label": "1. the car was most common in A, ___ bicycles were first in B",
+     "correct": "whereas",
+     "why": "“Whereas” links two contrasting facts in one sentence; “because” and “so” would mean one fact caused the other."
+    },
+    "g2": {
+     "label": "2. the share of car users was ___ that in Country B",
+     "correct": "four times",
+     "why": "48% is four times 12%; “twice” would be 24% and “half” 6%."
+    },
+    "g3": {
+     "label": "3. public transport in Country C: ___ of students (45%)",
+     "correct": "just under half",
+     "why": "45% is a little below 50%, so it is just under half."
+    },
+    "g4": {
+     "label": "4. Country B had ___ of cyclists of the four countries",
+     "correct": "the highest proportion",
+     "why": "At 44%, Country B’s cycling figure is far above A (6%), C (9%) and D (12%)."
+    },
+    "g5": {
+     "label": "5. only 6% cycled in A, ___ 44% in Country B",
+     "correct": "compared with",
+     "why": "“Compared with” sets one figure against another; 6% is not similar to 44%."
+    },
+    "g6": {
+     "label": "6. walking in Country D: ___ of students (28%)",
+     "correct": "just over a quarter",
+     "why": "A quarter is 25%, so 28% is just over a quarter."
+    },
+    "g7": {
+     "label": "7. Countries A and C had ___ of walkers, at 16%",
+     "correct": "the same proportion",
+     "why": "Both countries show 16% for walking."
+    },
+    "g8": {
+     "label": "8. car use in C (30%) was ___ in Country D (24%)",
+     "correct": "slightly higher than",
+     "why": "30% is above 24%, but only by 6 percentage points."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. 26%",
+     "correct": "just over a quarter",
+     "why": "A quarter is 25%, and 26% is one point above it."
+    },
+    "g2": {
+     "label": "2. 49%",
+     "correct": "almost half",
+     "why": "Half is 50%, and 49% is just below it."
+    },
+    "g3": {
+     "label": "3. 90 compared with 30",
+     "correct": "three times as many",
+     "why": "90 ÷ 30 = 3, so it is three times as many; “three more” would be 33."
+    },
+    "g4": {
+     "label": "4. 74%",
+     "correct": "nearly three quarters",
+     "why": "Three quarters is 75%, and 74% is just below it."
+    },
+    "g5": {
+     "label": "5. 32%",
+     "correct": "roughly a third",
+     "why": "A third is about 33%, so 32% is roughly a third."
+    },
+    "g6": {
+     "label": "6. 52%",
+     "correct": "just over half",
+     "why": "Half is 50%, and 52% is a little above it."
+    },
+    "g7": {
+     "label": "7. 9%",
+     "correct": "fewer than one in ten",
+     "why": "One in ten is 10%, so 9% is fewer than one in ten."
+    },
+    "g8": {
+     "label": "8. 20 compared with 40",
+     "correct": "half as many",
+     "why": "20 is half of 40; “twice as many” would be 80."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. Overview: travel to university",
+     "correct": "Overall, travel habits differed widely, with driving most common in Country A, cycling in Country B and public transport in Countries C and D.",
+     "why": "An overview names the main features with no detailed figures; the other options list numbers or give an opinion."
+    },
+    "g2": {
+     "label": "2. Overview: museum visitors",
+     "correct": "Overall, the Science museum attracted far more visitors than the other two.",
+     "why": "It states the biggest difference without figures; Task 1 never asks for your opinion."
+    },
+    "g3": {
+     "label": "3. Overview: homework hours",
+     "correct": "Overall, the older the students were, the more time they spent on homework.",
+     "why": "It sums up the pattern across all three groups; the other options list figures or judge the data."
+    },
+    "g4": {
+     "label": "4. Overview: what adults read",
+     "correct": "Overall, younger adults preferred online news, while older adults read newspapers far more.",
+     "why": "It contrasts the two groups’ main habits without numbers or opinion."
+    },
+    "g5": {
+     "label": "5. rose ___ 12% to 27% (review)",
+     "correct": "from",
+     "why": "“From … to …” gives the start and end figures — recalled from ielts-writing-task1-describing-trends.html (Ex C)."
+    },
+    "g6": {
+     "label": "6. There was a ___ in bus use (review)",
+     "correct": "slight fall",
+     "why": "After “a”, use adjective + noun — recalled from ielts-writing-task1-describing-trends.html (Ex B)."
+    }
+   }
+  }
+ },
+ "ielts-writing-task1-process-diagram": {
+  "exA": {
+   "review": false,
+   "gaps": {
+    "g1": {
+     "label": "1. They ___ to a recycling plant",
+     "correct": "are then taken",
+     "why": "The bottles do not move themselves: someone takes them, so use the passive “are taken”, with “then” after “are”."
+    },
+    "g2": {
+     "label": "2. where they ___ by colour",
+     "correct": "are sorted",
+     "why": "The bottles are the thing that is sorted, so the passive “are sorted” is needed (stage 3)."
+    },
+    "g3": {
+     "label": "3. ___ they have been sorted, the bottles are cleaned",
+     "correct": "Once",
+     "why": "“Once” means “as soon as / after”; sorting (stage 3) comes before cleaning (stage 4)."
+    },
+    "g4": {
+     "label": "4. ___, the clean glass is crushed",
+     "correct": "After that",
+     "why": "Crushing is stage 5, straight after cleaning, so “After that”; “Firstly” would mean the start of the process."
+    },
+    "g5": {
+     "label": "5. the clean glass ___ into small pieces",
+     "correct": "is crushed",
+     "why": "Glass is uncountable and something is done to it: singular passive “is crushed”."
+    },
+    "g6": {
+     "label": "6. these pieces ___ with raw materials",
+     "correct": "are mixed",
+     "why": "The subject is plural (“these pieces”), and they are mixed by someone: “are mixed”."
+    },
+    "g7": {
+     "label": "7. The molten glass ___ in moulds",
+     "correct": "is then shaped",
+     "why": "Glass cannot shape itself, so use the passive; “then” goes after “is”."
+    },
+    "g8": {
+     "label": "8. ___, the new bottles are filled and sent to shops",
+     "correct": "Finally",
+     "why": "Filling and sending to shops is the last stage (8); “Meanwhile” would mean at the same time."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. Used bottles ___ from bottle banks",
+     "correct": "are collected",
+     "why": "“Bottles” is plural and someone collects them: plural passive “are collected”."
+    },
+    "g2": {
+     "label": "2. The glass ___ into small pieces",
+     "correct": "is crushed",
+     "why": "“Glass” is uncountable, so it takes the singular “is crushed”."
+    },
+    "g3": {
+     "label": "3. After the bottles ___, they are cleaned",
+     "correct": "have been sorted",
+     "why": "Present perfect passive for a finished earlier stage: have + been + past participle, plural for “bottles”."
+    },
+    "g4": {
+     "label": "4. The mixture ___ in a furnace",
+     "correct": "is then heated",
+     "why": "“The mixture” is singular, so “is”, and the passive needs the past participle: is then heated."
+    },
+    "g5": {
+     "label": "5. The labels ___ before the glass is crushed",
+     "correct": "are removed",
+     "why": "Labels do not remove themselves: plural passive “are removed”."
+    },
+    "g6": {
+     "label": "6. water vapour ___ and forms clouds",
+     "correct": "rises",
+     "why": "A natural process with no human agent uses the active; “rise” has no object, so it cannot be passive (“raise” needs one)."
+    },
+    "g7": {
+     "label": "7. The new bottles ___ and sent to shops",
+     "correct": "are filled",
+     "why": "Plural passive “are filled”, matching “sent” (= are sent) later in the sentence."
+    },
+    "g8": {
+     "label": "8. Paper ___ from wood",
+     "correct": "is made",
+     "why": "People make paper, so describe it with the passive “is made”."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. ___, used bottles are collected",
+     "correct": "First",
+     "why": "Collection is where the process starts, so “First”."
+    },
+    "g2": {
+     "label": "2. ___ the glass has been cleaned, it is crushed",
+     "correct": "Once",
+     "why": "“Once” + present perfect means “after this has happened”; “Firstly” and “Finally” cannot join two clauses."
+    },
+    "g3": {
+     "label": "3. The pieces are melted. ___, the molten glass is shaped",
+     "correct": "After that",
+     "why": "Shaping comes after melting, so “After that”; “Before that” reverses the order."
+    },
+    "g4": {
+     "label": "4. The bottles are sorted. ___, they are cleaned",
+     "correct": "At the next stage",
+     "why": "Cleaning follows sorting directly, so “At the next stage”."
+    },
+    "g5": {
+     "label": "5. The bottles are cleaned ___ crushed",
+     "correct": "before being",
+     "why": "“Before being + past participle” is the passive -ing form: before (they are) crushed."
+    },
+    "g6": {
+     "label": "6. ___ the glass has melted, it is shaped in moulds",
+     "correct": "When",
+     "why": "“When” links the two stages in time; “Unless” and “Although” do not show order."
+    },
+    "g7": {
+     "label": "7. Review (Describing Trends): climbed from 13% ___ 22%",
+     "correct": "to",
+     "why": "After “from 13%”, the figure it reached takes “to” — from the Describing Trends exercise."
+    },
+    "g8": {
+     "label": "8. Review (Bar Charts): most common in A, ___ bicycles first in B",
+     "correct": "whereas",
+     "why": "“Whereas” contrasts two facts in one sentence — from the Bar Charts and Tables exercise."
+    }
+   }
+  }
+ },
+ "ielts-writing-task2-discussion-essay": {
+  "exA": {
+   "review": false,
+   "gaps": {
+    "g1": {
+     "label": "1. ___ free entry argue that culture belongs to everyone",
+     "correct": "Supporters of",
+     "why": "The paragraph gives the case for free entry, so it reports the people who support it."
+    },
+    "g2": {
+     "label": "2. ___ free entry encourages people to return",
+     "correct": "It is also claimed that",
+     "why": "A second argument from the same side, reported without naming who holds it; “also” adds it to the first."
+    },
+    "g3": {
+     "label": "3. ___, those who favour charging point out …",
+     "correct": "On the other hand",
+     "why": "The essay now turns to the opposite view, so it needs a contrast linker."
+    },
+    "g4": {
+     "label": "4. ___ people value what they pay for",
+     "correct": "Critics of free entry also argue that",
+     "why": "This is still the other side’s argument; “In my opinion” would contradict the writer’s view in the introduction."
+    },
+    "g5": {
+     "label": "5. ___, although charging would raise money …",
+     "correct": "In conclusion",
+     "why": "The final paragraph sums up and gives the writer’s view, so it opens with a concluding phrase."
+    },
+    "g6": {
+     "label": "6. ___ entry should remain free for everyone",
+     "correct": "I would therefore argue that",
+     "why": "The conclusion must give the writer’s own view; “Some people argue” only reports others again."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. Report one side: ___ argue that it builds good study habits",
+     "correct": "Supporters of homework",
+     "why": "“Argue” needs a subject that names the group holding the view; “In my view” gives your own."
+    },
+    "g2": {
+     "label": "2. Report the other side: ___ point out that …",
+     "correct": "Critics",
+     "why": "“Critics point out” reports the opposing side; the other options give your own view and do not fit “point out”."
+    },
+    "g3": {
+     "label": "3. Report a common view: ___ that cities are lonelier …",
+     "correct": "It is often claimed",
+     "why": "The passive “It is often claimed that” reports a view without saying who holds it."
+    },
+    "g4": {
+     "label": "4. Give your own view: ___, the advantages outweigh …",
+     "correct": "In my view",
+     "why": "“In my view” states your own opinion; “Many people argue” reports someone else’s."
+    },
+    "g5": {
+     "label": "5. Many people ___ that technology makes us less sociable",
+     "correct": "believe",
+     "why": "“People” is plural, and “believe” is a state verb, so present simple: people believe."
+    },
+    "g6": {
+     "label": "6. ___ this argument to some extent",
+     "correct": "I agree with",
+     "why": "We agree with an argument or a person (we agree to a plan or proposal); “I am agree” is wrong because “agree” is already a verb."
+    },
+    "g7": {
+     "label": "7. Some researchers ___ that short breaks …",
+     "correct": "suggest",
+     "why": "“Researchers” is plural: they suggest. “Suggest” is a cautious way to report a claim."
+    },
+    "g8": {
+     "label": "8. ___ that cars are convenient, I believe …",
+     "correct": "While it is true",
+     "why": "“While it is true that …” accepts the other side’s point before your view; the other two are not correct English."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. Conclusion: free museums",
+     "correct": "In conclusion, although charging would raise money, I believe free entry is better because museums exist to share knowledge.",
+     "why": "It sums up both sides and gives the writer’s opinion; the first option has no opinion and the last adds a new idea."
+    },
+    "g2": {
+     "label": "2. Conclusion: school starting age",
+     "correct": "To sum up, while starting early has some benefits, I believe most children gain more from starting at seven, when they are ready to learn.",
+     "why": "Only this one gives an opinion; the others list advantages with no view or bring in a new topic."
+    },
+    "g3": {
+     "label": "3. Conclusion: home or office",
+     "correct": "To conclude, although offices help teamwork, in my view most employees work best with a mix of home and office days.",
+     "why": "It states the writer’s view; “both have advantages and disadvantages” gives no answer, and internet costs are a new idea."
+    },
+    "g4": {
+     "label": "4. Conclusion: tourist tax",
+     "correct": "In conclusion, I believe a small tourist tax is fair, as long as the money is spent on the places that visitors use.",
+     "why": "It answers the question with the writer’s view; the others add a new idea or only say people disagree."
+    },
+    "g5": {
+     "label": "5. Review (Opinion Essay): ___ the rain, the match went ahead",
+     "correct": "Despite",
+     "why": "“Despite” takes a noun (the rain); “although” needs a full clause — from the Opinion Essay exercise."
+    },
+    "g6": {
+     "label": "6. Review (Opinion Essay): ___, more people began cycling",
+     "correct": "As a result",
+     "why": "Cycling more is a consequence of higher fuel prices, so a result linker — from the Opinion Essay exercise."
+    }
+   }
+  }
+ },
+ "ielts-writing-task2-problem-solution-essay": {
+  "exA": {
+   "review": false,
+   "gaps": {
+    "g1": {
+     "label": "1. big packs and deals: this ___ people buying more than they can eat",
+     "correct": "leads to",
+     "why": "The deals are the cause and over-buying the effect: cause + “leads to” + effect."
+    },
+    "g2": {
+     "label": "2. people throw food away ___ an expired “best before” date",
+     "correct": "due to",
+     "why": "“Due to” is followed by a noun phrase (a date); “because” would need a full clause."
+    },
+    "g3": {
+     "label": "3. busy working lives ___ meals are often not planned",
+     "correct": "mean that",
+     "why": "“Mean that” + clause gives a consequence; “mean to” means “intend to”."
+    },
+    "g4": {
+     "label": "4. ___, supermarkets could sell more loose fruit",
+     "correct": "To address the problem of large packs",
+     "why": "This solution answers the first cause, so it says which problem it addresses."
+    },
+    "g5": {
+     "label": "5. ___ labels explained the difference, fewer products would be thrown away",
+     "correct": "if",
+     "why": "Second conditional for an imagined solution: if + past simple, … would + verb."
+    },
+    "g6": {
+     "label": "6. teaching these skills, which ___ less waste at home",
+     "correct": "would result in",
+     "why": "The skills are the cause and less waste the effect: cause + “result in” + effect."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. Heavy traffic ___ air pollution",
+     "correct": "leads to",
+     "why": "The cause (traffic) comes first, so use “leads to” before the effect."
+    },
+    "g2": {
+     "label": "2. Air pollution ___ heavy traffic",
+     "correct": "is caused by",
+     "why": "The effect comes first, so use the passive “is caused by” before the cause."
+    },
+    "g3": {
+     "label": "3. Flights were cancelled ___ the storm",
+     "correct": "due to",
+     "why": "“The storm” is a noun phrase, so “due to”; “because” needs a full clause."
+    },
+    "g4": {
+     "label": "4. Flights were cancelled ___ there was a storm",
+     "correct": "because",
+     "why": "“There was a storm” is a full clause, so “because”; “due to” needs a noun."
+    },
+    "g5": {
+     "label": "5. Prices rose sharply. ___, many families spent less",
+     "correct": "As a result",
+     "why": "A linker that starts a new sentence about the effect: “As a result,”."
+    },
+    "g6": {
+     "label": "6. Lack of sleep can ___ poor concentration",
+     "correct": "result in",
+     "why": "The cause comes first: cause + “result in” + effect."
+    },
+    "g7": {
+     "label": "7. Poor concentration in class can ___ staying up too late",
+     "correct": "result from",
+     "why": "The effect comes first: effect + “result from” + cause."
+    },
+    "g8": {
+     "label": "8. The rise in obesity is partly ___ to a lack of exercise",
+     "correct": "due",
+     "why": "“Be due to” + noun names a cause: is partly due to a lack of exercise."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. Cause: older people live alone and rarely go out",
+     "correct": "Local councils could run free weekly clubs where older people can meet.",
+     "why": "Clubs give them a reason and a place to meet others, so this fixes the cause."
+    },
+    "g2": {
+     "label": "2. Cause: young people cannot afford to rent near work",
+     "correct": "Cities could build more affordable housing near business districts.",
+     "why": "Cheaper homes near work answer this cause directly; cinema tickets and holidays do not."
+    },
+    "g3": {
+     "label": "3. Cause: children spend hours on screens, not outside",
+     "correct": "Parents and schools could set daily screen-time limits and plan outdoor activities.",
+     "why": "It cuts screen time and gives an outdoor alternative; more computers would make it worse."
+    },
+    "g4": {
+     "label": "4. Cause (Exercise A): large packs lead to food being thrown away",
+     "correct": "Supermarkets could sell more loose fruit and vegetables.",
+     "why": "Loose food lets shoppers buy only what they need; label print size is a different cause."
+    },
+    "g5": {
+     "label": "5. Cause: people drive short trips because buses are slow",
+     "correct": "Bus lanes could be added so that buses are quicker than cars.",
+     "why": "Faster buses remove the reason for driving; cheaper parking would encourage more driving."
+    },
+    "g6": {
+     "label": "6. Review (Discussion Essay): ___ of the new tax argue that it will hurt small shops",
+     "correct": "Opponents",
+     "why": "“Opponents of … argue” reports the side against the tax; “In my view” and “I believe” give your own — from the Discussion Essay exercise."
+    },
+    "g7": {
+     "label": "7. Review (Opinion Essay): ___ the plan was expensive, the council approved it",
+     "correct": "Although",
+     "why": "A full clause follows (the plan was expensive), so “although”, not “despite” — from the Opinion Essay exercise."
+    }
+   }
+  }
+ },
+ "ielts-reading-practice-test": {
+  "exA": {
+   "review": false,
+   "gaps": {
+    "g1": {
+     "label": "1. Drais’s machine was moved by the rider pushing against the ground with his feet.",
+     "correct": "True",
+     "why": "Paragraph B: the rider “sat on and pushed along the ground with his feet. There were no pedals.”"
+    },
+    "g2": {
+     "label": "2. Drais’s ride on 12 June 1817 took him several hours.",
+     "correct": "False",
+     "why": "Paragraph B: there and back “in a little over an hour” — not several hours."
+    },
+    "g3": {
+     "label": "3. Running machines cost more to buy than a horse.",
+     "correct": "Not Given",
+     "why": "Paragraph B says the machines were “expensive” but never compares them with a horse."
+    },
+    "g4": {
+     "label": "4. On a high-wheeler, a bigger front wheel meant a greater distance for each turn of the pedals.",
+     "correct": "True",
+     "why": "Paragraph C: “the only way to travel further with every turn was to make the wheel bigger.”"
+    },
+    "g5": {
+     "label": "5. In the 1870s, high-wheelers were popular with most women.",
+     "correct": "False",
+     "why": "Paragraph C: “most people, including most women, regarded the machine as far too dangerous to ride.”"
+    },
+    "g6": {
+     "label": "6. Starley sold the Rover only in England.",
+     "correct": "Not Given",
+     "why": "Paragraph D says Starley began selling the Rover in Coventry, but says nothing about where else it was sold."
+    },
+    "g7": {
+     "label": "7. A reason why riders of one design were often hurt",
+     "correct": "C",
+     "why": "Paragraph C: a stone or sudden stop “could throw him forward over the handlebars.”"
+    },
+    "g8": {
+     "label": "8. The name of an inventor whose idea was not taken up when it first appeared",
+     "correct": "E",
+     "why": "Paragraph E names Thomson, whose 1845 tyre “was never developed for everyday use and was largely forgotten”; paragraph A names no inventor."
+    },
+    "g9": {
+     "label": "9. An explanation of how ordinary-sized wheels could cover the same ground as very large ones",
+     "correct": "D",
+     "why": "Paragraph D: the chain from a large toothed wheel to a smaller one let “a wheel of ordinary size” travel as far as “a giant one”."
+    },
+    "g10": {
+     "label": "10. A mention of the danger an early machine posed to people who were not riding it",
+     "correct": "B",
+     "why": "Paragraph B: riders on crowded pavements were “regarded as a danger to people on foot.”"
+    }
+   }
+  },
+  "exA2": {
+   "review": false,
+   "prefix": "exA-",
+   "typed": true,
+   "gaps": {
+    "g11": {
+     "label": "11. The Rover was given the name ___ because its rider sat low",
+     "correct": "safety bicycle",
+     "accept": [
+      "safety bicycle",
+      "\"safety bicycle\"",
+      "“safety bicycle”"
+     ],
+     "why": "Paragraph D: “The design became known as the “safety bicycle”” — two words, copied exactly."
+    },
+    "g12": {
+     "label": "12. air-filled tyres replaced ___ ones",
+     "correct": "solid rubber",
+     "accept": [
+      "solid rubber",
+      "solid"
+     ],
+     "why": "Paragraph E: “Solid rubber tyres passed every bump in the road straight to the rider.”"
+    },
+    "g13": {
+     "label": "13. travel alone, without a ___ to supervise them",
+     "correct": "chaperone",
+     "accept": [
+      "chaperone",
+      "chaperon"
+     ],
+     "why": "Paragraph F: “without a horse, a carriage or a chaperone” — only a chaperone supervises a person."
+    }
+   }
+  },
+  "exB": {
+   "review": false,
+   "gaps": {
+    "g1": {
+     "label": "14. Heading for paragraph A",
+     "correct": "ii",
+     "why": "Paragraph A explains why the colony needs information “shared inside the hive”; vi only echoes the detail about flowers."
+    },
+    "g2": {
+     "label": "15. Heading for paragraph B",
+     "correct": "viii",
+     "why": "Paragraph B: “the dance turned a direction and a distance into a pattern of movement.”"
+    },
+    "g3": {
+     "label": "16. Heading for paragraph C",
+     "correct": "iv",
+     "why": "Paragraph C covers both problems: the dance “takes place in near darkness” and bees “adjust the angle … as the day goes on.”"
+    },
+    "g4": {
+     "label": "17. Heading for paragraph D",
+     "correct": "vii",
+     "why": "Paragraph D: Wenner argued that recruits “found food by smell”; the Nobel Prize (iii) is only a detail."
+    },
+    "g5": {
+     "label": "18. Heading for paragraph E",
+     "correct": "i",
+     "why": "Paragraph E: experiments “in which the dance and the smell could be separated.”"
+    },
+    "g6": {
+     "label": "19. Heading for paragraph F",
+     "correct": "v",
+     "why": "Paragraph F: the dance is “one important tool” used “with other cues, including scent.”"
+    },
+    "g11": {
+     "label": "24. Von Frisch received his Nobel Prize after Wenner’s challenge had begun.",
+     "correct": "True",
+     "why": "Paragraph D: the 1973 prize came when “it had already been seriously challenged” — Wenner’s challenge began in 1967."
+    },
+    "g12": {
+     "label": "25. The robot bee recruited more bees than a real dancer.",
+     "correct": "Not Given",
+     "why": "Paragraph E says bees that followed the robot searched in the direction it indicated, but never compares how many it recruited with a real dancer."
+    },
+    "g13": {
+     "label": "26. Experienced foragers always follow the most recent dance they meet.",
+     "correct": "False",
+     "why": "Paragraph F: experienced foragers “sometimes ignore dances entirely.”"
+    }
+   }
+  },
+  "exB2": {
+   "review": false,
+   "prefix": "exB-",
+   "typed": true,
+   "gaps": {
+    "g7": {
+     "label": "20. In a waggle run, the bee shakes her body while moving in a ___.",
+     "correct": "straight line",
+     "accept": [
+      "straight line"
+     ],
+     "why": "Paragraph B: “the bee moves forward in a straight line while shaking her body.”"
+    },
+    "g8": {
+     "label": "21. Bees following a dance sense it through contact and through ___ and vibrations.",
+     "correct": "air currents",
+     "accept": [
+      "air currents"
+     ],
+     "why": "Paragraph C: “through contact and through the air currents and vibrations that she produces.”"
+    },
+    "g9": {
+     "label": "22. According to Wenner, recruits used the scent on the dancer’s body and ___ along the route.",
+     "correct": "odours",
+     "accept": [
+      "odours",
+      "odors"
+     ],
+     "why": "Paragraph D: “the scent of the flowers clinging to the dancer’s body together with odours along the route.”"
+    },
+    "g10": {
+     "label": "23. In 2005, researchers followed recruits’ flights by attaching tiny ___ to them.",
+     "correct": "radar transponders",
+     "accept": [
+      "radar transponders",
+      "transponders"
+     ],
+     "why": "Paragraph E: researchers “fitted recruit bees with tiny radar transponders.”"
+    }
+   }
+  },
+  "exC": {
+   "review": false,
+   "gaps": {
+    "g1": {
+     "label": "27. A method that showed knowledge had survived even when none of it came to mind",
+     "correct": "B",
+     "why": "Paragraph B: savings revealed traces of learning “even when he could not produce a single syllable.”"
+    },
+    "g2": {
+     "label": "28. A reason to doubt whether an early result applies to people in general",
+     "correct": "C",
+     "why": "Paragraph C: “the original study had a single participant.”"
+    },
+    "g3": {
+     "label": "29. Evidence that learners can misjudge how much they will retain",
+     "correct": "E",
+     "why": "Paragraph E: students who had only restudied “predicted that they would remember more”, yet tested students remembered more after a delay."
+    },
+    "g4": {
+     "label": "30. A suggestion that effective methods may be unpopular with the people who would benefit",
+     "correct": "F",
+     "why": "Paragraph F: spaced and retrieval practice “feel harder than rereading, so students may resist them.”"
+    },
+    "g5": {
+     "label": "31. the ___ of practice sessions affected memory",
+     "correct": "arrangement",
+     "why": "Paragraph D: “the way practice is arranged matters” — spreading sessions out, not adding more."
+    },
+    "g6": {
+     "label": "32. repetitions spread over several days led to better ___",
+     "correct": "retention",
+     "why": "Paragraph D: spacing “produced better retention.”"
+    },
+    "g7": {
+     "label": "33. Many later studies have ___ that spacing works",
+     "correct": "confirmed",
+     "why": "Paragraph D: the spacing effect “has been confirmed many times since.”"
+    },
+    "g8": {
+     "label": "34. Retrieval practice works in a less ___ way",
+     "correct": "obvious",
+     "why": "Paragraph E: retrieval practice “works in a less obvious way.”"
+    },
+    "g9": {
+     "label": "35. those who had ___ themselves remembered more a week later",
+     "correct": "tested",
+     "why": "Paragraph E: students who took “a test” in which they recalled the passages remembered more after a week."
+    },
+    "g10": {
+     "label": "36. despite feeling less ___ about it",
+     "correct": "confident",
+     "why": "Paragraph E: the restudying students “predicted that they would remember more”, so the tested students felt less confident."
+    }
+   }
+  },
+  "exC2": {
+   "review": false,
+   "prefix": "exC-",
+   "typed": true,
+   "gaps": {
+    "g11": {
+     "label": "37. Ebbinghaus used ___ so that meaning would not affect his results.",
+     "correct": "nonsense syllables",
+     "accept": [
+      "nonsense syllables"
+     ],
+     "why": "Paragraph A: “he invented thousands of nonsense syllables.”"
+    },
+    "g12": {
+     "label": "38. Ebbinghaus’s book on memory was published in ___.",
+     "correct": "1885",
+     "accept": [
+      "1885"
+     ],
+     "why": "Paragraph A: his findings were “published in 1885.”"
+    },
+    "g13": {
+     "label": "39. The participant in the 2015 study spent about ___ learning and relearning lists.",
+     "correct": "seventy hours",
+     "accept": [
+      "seventy hours",
+      "70 hours"
+     ],
+     "why": "Paragraph C: “One participant spent about seventy hours learning and relearning lists.”"
+    },
+    "g14": {
+     "label": "40. Bjork calls techniques that are effortful but effective “___”.",
+     "correct": "desirable difficulties",
+     "accept": [
+      "desirable difficulties",
+      "\"desirable difficulties\"",
+      "“desirable difficulties”"
+     ],
+     "why": "Paragraph F: Bjork “has described techniques of this kind as “desirable difficulties”.”"
+    }
+   }
+  }
+ },
+ "uni-b2-introduce-yourself": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. Where ___ from?",
+     "correct": "are you",
+     "why": "With be, the verb comes before the subject: “Where are you from?”"
+    },
+    "g2": {
+     "label": "2. What ___ at university?",
+     "correct": "do you study",
+     "why": "Present simple questions need do + subject + base verb."
+    },
+    "g3": {
+     "label": "3. How long ___ in Germany?",
+     "correct": "have you lived",
+     "why": "“How long” up to now takes the present perfect: have + subject + past participle."
+    },
+    "g4": {
+     "label": "4. ___ English at work?",
+     "correct": "Do you use",
+     "why": "A yes/no question in the present simple starts with Do + subject + base verb."
+    },
+    "g5": {
+     "label": "5. What ___ you to this course?",
+     "correct": "brought",
+     "why": "“What” is the subject here, so there is no did: “What brought you…?”"
+    },
+    "g6": {
+     "label": "6. Can you tell me what ___?",
+     "correct": "your ideal job is",
+     "why": "Indirect questions keep statement word order: subject before verb."
+    }
+   }
+  }
+ },
+ "be-meetings-action-points": {
+  "exA": {
+   "gaps": {
+    "g1": {"label": "1. Jonas’s concern", "correct": "New colleagues may feel isolated", "why": "Jonas says new colleagues may feel isolated when working remotely."},
+    "g2": {"label": "2. Lena’s change", "correct": "She extends the pilot to eight weeks", "why": "Lena suggests running the pilot for eight weeks instead of six."},
+    "g3": {"label": "3. Jonas’s Friday task", "correct": "Prepare the feedback questions", "why": "Maya asks Jonas to prepare the feedback questions by Friday."},
+    "g4": {"label": "4. Purpose of Maya’s summary", "correct": "To confirm the decisions and responsibilities", "why": "Her summary confirms the agreed pilot and each person’s responsibility."}
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {"label": "1. Acknowledge before disagreeing", "correct": "I see your point, but have we considered the cost?", "why": "Only this one does both: it acknowledges the other view (“I see your point”) and then raises a different one."},
+    "g2": {"label": "2. Soften a disagreement", "correct": "I’m not sure that would work for our clients.", "why": "“I’m not sure” disagrees without sounding certain; “That won’t work” sounds certain."},
+    "g3": {"label": "3. Offer an alternative", "correct": "What if we tried a two-week pilot instead?", "why": "“What if … instead?” offers a concrete alternative; the other two only question the idea."},
+    "g4": {"label": "4. Assign an owner", "correct": "Could you prepare the draft by Tuesday?", "why": "“Could you” gives the task to one person, with a deadline; “someone” leaves it to nobody."},
+    "g5": {"label": "5. Specific action point", "correct": "Nina will send the revised quote to the client by 3 p.m. on Friday.", "why": "Only this one has an owner (Nina), a clear task and an exact deadline."},
+    "g6": {"label": "6. Spaced recall from Business Meetings", "correct": "Let’s move on to the next item on the agenda.", "why": "Business Meetings used this phrase to move to the next agenda item."}
+   }
+  }
+ },
+ "uni-fix-our-campus": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. We recommend ___ a second silent room",
+     "correct": "opening",
+     "why": "After “recommend” use the -ing form, not “to” + verb."
+    },
+    "g2": {
+     "label": "2. We suggest that the cafeteria ___",
+     "correct": "offer",
+     "why": "“Suggest that” + subject takes the base verb: “that the cafeteria offer”."
+    },
+    "g3": {
+     "label": "3. One advantage ___ that…",
+     "correct": "is",
+     "why": "The fixed frame is “One advantage is that…”."
+    },
+    "g4": {
+     "label": "4. A buddy system ___ help new students",
+     "correct": "could",
+     "why": "“Could” presents a possible result; “will definitely” and “must” claim too much."
+    },
+    "g5": {
+     "label": "5. One possible ___ is that buddies stop answering",
+     "correct": "risk",
+     "why": "Buddies stopping is a problem, so it is a risk, not an advantage or benefit."
+    },
+    "g6": {
+     "label": "6. This could be improved ___ giving training",
+     "correct": "by",
+     "why": "“Improved by + -ing” names the method of improving something."
+    },
+    "g7": {
+     "label": "7. The library ___ open empty lecture rooms",
+     "correct": "should",
+     "why": "“Should” + base verb gives advice; “is open” and “has open” are ungrammatical here."
+    },
+    "g8": {
+     "label": "8. ___, a third of assignments are late",
+     "correct": "As a result",
+     "why": "“As a result” introduces a consequence of the sentence before it."
+    }
+   }
+  }
+ },
+ "9c-halloween": {
+  "exA": {
+   "prefix": "exA-",
+   "gaps": {
+    "g1": {
+     "label": "1. Samhain marked the start of …",
+     "correct": "winter",
+     "why": "The text says Samhain marked the start of winter in the traditional Irish calendar."
+    },
+    "g2": {
+     "label": "2. Early lanterns were made from …",
+     "correct": "turnips",
+     "why": "The first paragraph says people carved turnips into frightening lanterns."
+    },
+    "g3": {
+     "label": "3. Customs travelled with …",
+     "correct": "Irish and Scottish immigrants",
+     "why": "Irish and Scottish immigrants took Halloween customs to North America."
+    },
+    "g4": {
+     "label": "4. People chose pumpkins because …",
+     "correct": "easier to carve",
+     "why": "Pumpkins were larger and softer than turnips, so they were easier to carve."
+    },
+    "g5": {
+     "label": "5. Modern Halloween is …",
+     "correct": "a mixture of old and new traditions",
+     "why": "The final paragraph directly calls modern Halloween a mixture of old and new traditions."
+    },
+    "g6": {
+     "label": "6. Trick-or-treating brings people together because …",
+     "correct": "meet, talk and share treats",
+     "why": "The text describes neighbours meeting, talking and sharing treats."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1. A candle inside the pumpkin",
+     "correct": "lantern",
+     "why": "A lantern gives light, often through a candle or lamp inside a cover."
+    },
+    "g2": {
+     "label": "2. Maya wore a vampire …",
+     "correct": "costume",
+     "why": "A costume is clothing that makes you look like a different person or character."
+    },
+    "g3": {
+     "label": "3. A small … when we knocked",
+     "correct": "treat",
+     "why": "A treat is something pleasant, such as sweets given at Halloween."
+    },
+    "g4": {
+     "label": "4. … a face in your pumpkin",
+     "correct": "carve",
+     "why": "To carve means to cut a pattern or shape into a hard material."
+    },
+    "g5": {
+     "label": "5. A … returns to the house",
+     "correct": "spirit",
+     "why": "A spirit is the part of a dead person that some stories imagine still exists."
+    },
+    "g6": {
+     "label": "6. His mask was a clever …",
+     "correct": "disguise",
+     "why": "A disguise changes your appearance so other people do not recognise you."
+    },
+    "g7": {
+     "label": "7. Sweets on the …",
+     "correct": "porch",
+     "why": "A porch is a covered area at the entrance to a house."
+    },
+    "g8": {
+     "label": "8. The empty house looked …",
+     "correct": "spooky",
+     "why": "Spooky means strange and frightening in a way connected with ghosts."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. Last Halloween, we …",
+     "correct": "decorated",
+     "why": "Last Halloween is a finished past time, so use the simple past."
+    },
+    "g2": {
+     "label": "2. Three lanterns so far",
+     "correct": "has carved",
+     "why": "So far connects an unfinished period to the present, so use the present perfect."
+    },
+    "g3": {
+     "label": "3. In 2024, our neighbours …",
+     "correct": "organised",
+     "why": "In 2024 names a finished past year, so use the simple past."
+    },
+    "g4": {
+     "label": "4. Never in my life",
+     "correct": "have never worn",
+     "why": "In my life describes experience up to now, so use the present perfect."
+    },
+    "g5": {
+     "label": "5. The film … ten minutes ago",
+     "correct": "started",
+     "why": "Ago names a finished past time, so use the simple past."
+    },
+    "g6": {
+     "label": "6. In this house since 2020",
+     "correct": "have lived",
+     "why": "Since 2020 continues up to now; this reviews Work Experience with the present perfect."
+    },
+    "g7": {
+     "label": "7. When I was younger, I …",
+     "correct": "told",
+     "why": "When I was younger describes a finished past period, so use the simple past."
+    },
+    "g8": {
+     "label": "8. Someone … a bag on our porch",
+     "correct": "has left",
+     "why": "The visible result matters now and no finished past time is given, so use the present perfect."
+    }
+   }
+  }
+ },
+ "esl-question-formation": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. ___ does the course start?",
+     "correct": "When",
+     "why": "The answer is a time (\"In September\"), so the question word is \"When\"."
+    },
+    "g2": {
+     "label": "2. ___ is the teacher?",
+     "correct": "Who",
+     "why": "The answer is a person (\"Ms Hart\"), so the question word is \"Who\"."
+    },
+    "g3": {
+     "label": "3. ___ is the school?",
+     "correct": "Where",
+     "why": "The answer is a place (\"Near the main station\"), so the question word is \"Where\"."
+    },
+    "g4": {
+     "label": "4. ___ many students are in each class?",
+     "correct": "How",
+     "why": "\"How many\" asks about a number. \"Twelve\" answers it."
+    },
+    "g5": {
+     "label": "5. ___ book do I need?",
+     "correct": "Which",
+     "why": "\"Which\" asks about a choice from a small group (the blue book or the red one). The answer is \"the blue one\"."
+    },
+    "g6": {
+     "label": "6. ___ do you want to study English?",
+     "correct": "Why",
+     "why": "The answer gives a reason (\"For my new job\"), so the question word is \"Why\"."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. Where ___ ?",
+     "correct": "does Tom work",
+     "why": "After a question word, put the auxiliary \"does\" before the subject. The main verb stays in its base form: \"does Tom work\"."
+    },
+    "g2": {
+     "label": "2. What time ___ ?",
+     "correct": "did the film start",
+     "why": "Past simple questions use \"did\" + subject + base verb. \"Did\" already shows the past, so the verb is \"start\", not \"started\"."
+    },
+    "g3": {
+     "label": "3. Why ___ so late?",
+     "correct": "are you",
+     "why": "\"Be\" is the main verb here, so it moves before the subject: \"are you\". We do not add \"do\" with \"be\"."
+    },
+    "g4": {
+     "label": "4. How long ___ in Berlin?",
+     "correct": "have they lived",
+     "why": "In the present perfect, the auxiliary \"have\" moves before the subject: \"have they lived\"."
+    },
+    "g5": {
+     "label": "5. What ___ for dinner tonight?",
+     "correct": "can we cook",
+     "why": "A modal verb goes before the subject, and the main verb follows it without \"to\": \"can we cook\"."
+    },
+    "g6": {
+     "label": "6. Who ___ to at the party?",
+     "correct": "did she talk",
+     "why": "Past simple questions use \"did\" + subject + base verb: \"did she talk\"."
+    },
+    "g7": {
+     "label": "7. How often ___ to the gym?",
+     "correct": "do you go",
+     "why": "Present simple questions with \"you\" use \"do\" before the subject: \"do you go\"."
+    },
+    "g8": {
+     "label": "8. Excuse me, what time does ___ train to Leeds leave?",
+     "correct": "the",
+     "why": "Recall from the English Articles page: both people mean the one scheduled train, so we use \"the\"."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. Could you tell me where ___ ?",
+     "correct": "the station is",
+     "why": "In a polite embedded question, the word order goes back to a statement: where + subject + verb. No inversion: \"the station is\"."
+    },
+    "g2": {
+     "label": "2. Do you know what time ___ ?",
+     "correct": "the shop opens",
+     "why": "After \"Do you know\", use statement order and no \"does\": \"the shop opens\"."
+    },
+    "g3": {
+     "label": "3. I don't know why ___ so late.",
+     "correct": "he is",
+     "why": "This is a statement, not a direct question, so the subject comes first: \"he is\"."
+    },
+    "g4": {
+     "label": "4. Can you tell me how much ___ ?",
+     "correct": "this costs",
+     "why": "Embedded questions keep statement order and the verb takes its normal -s form: \"this costs\"."
+    },
+    "g5": {
+     "label": "5. Do you know ___ the library is open on Sundays?",
+     "correct": "if",
+     "why": "A yes/no question has no question word, so we use \"if\" (or \"whether\") to embed it."
+    },
+    "g6": {
+     "label": "6. Please tell me who ___ at the conference.",
+     "correct": "you met",
+     "why": "Statement order again: subject + verb. \"Did\" is only needed in direct questions."
+    },
+    "g7": {
+     "label": "7. He wants to know where ___ now.",
+     "correct": "I live",
+     "why": "The embedded question uses statement order: \"I live\". We do not use \"do\"."
+    },
+    "g8": {
+     "label": "8. I wonder whether ___ to the party.",
+     "correct": "she will come",
+     "why": "After \"whether\" the subject comes before the auxiliary: \"she will come\"."
+    }
+   }
+  }
+ },
+ "esl-present-simple-continuous": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. today I ___ my family",
+     "correct": "am visiting",
+     "why": "\"today\" contrasts with \"usually\" — it is a temporary activity, so use the present continuous."
+    },
+    "g2": {
+     "label": "2. My grandmother ___ soup right now",
+     "correct": "is cooking",
+     "why": "\"right now\" shows an action in progress at this moment — use the present continuous."
+    },
+    "g3": {
+     "label": "3. She ___ soup every Saturday",
+     "correct": "makes",
+     "why": "\"every Saturday\" is a regular habit — use the present simple, with -s for \"she\"."
+    },
+    "g4": {
+     "label": "4. the whole family ___ to her house",
+     "correct": "comes",
+     "why": "A repeated weekly event takes the present simple. \"Family\" is singular, so add -s."
+    },
+    "g5": {
+     "label": "5. My brother never ___ in the kitchen",
+     "correct": "helps",
+     "why": "\"never\" is a frequency word, so use the present simple. \"He\" needs -s."
+    },
+    "g6": {
+     "label": "6. Right now he ___ football",
+     "correct": "is playing",
+     "why": "\"Right now\" means this moment — use am/is/are + -ing."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. My sister ___ in a hospital",
+     "correct": "works",
+     "why": "A fact about her job: present simple. With \"she\", the verb ends in -s."
+    },
+    "g2": {
+     "label": "2. They ___ TV in the morning",
+     "correct": "don't watch",
+     "why": "Negative with \"they\": don't + base verb. The verb after don't has no -s."
+    },
+    "g3": {
+     "label": "3. ___ you like pizza?",
+     "correct": "Do",
+     "why": "Questions with \"you\" use Do + subject + base verb. \"Are\" is only for be."
+    },
+    "g4": {
+     "label": "4. Tom ___ to school by bike",
+     "correct": "goes",
+     "why": "Daily habit with \"he\": the verb takes -es after go."
+    },
+    "g5": {
+     "label": "5. ___ she speak French?",
+     "correct": "Does",
+     "why": "Questions with \"she\" use Does + base verb. After Does, \"speak\" has no -s."
+    },
+    "g6": {
+     "label": "6. Water ___ at 100 degrees",
+     "correct": "boils",
+     "why": "A scientific fact is always present simple. \"Water\" is it, so add -s."
+    },
+    "g7": {
+     "label": "7. It ___ much in Cairo",
+     "correct": "doesn't rain",
+     "why": "Negative with \"it\": doesn't + base verb. Never \"doesn't rains\"."
+    },
+    "g8": {
+     "label": "8. My uncle is ___ engineer",
+     "correct": "an",
+     "why": "Spaced recall from esl-articles: a job takes \"a/an\", and \"an\" goes before the vowel sound in \"engineer\"."
+    },
+    "g9": {
+     "label": "9. My parents ___ coffee in the evening",
+     "correct": "never drink",
+     "why": "Frequency words like \"never\" go before the main verb. \"Parents\" is plural, so no -s."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. The baby ___",
+     "correct": "is sleeping",
+     "why": "\"Be quiet!\" tells you it is happening now — use the present continuous."
+    },
+    "g2": {
+     "label": "2. I ___ cereal every day",
+     "correct": "eat",
+     "why": "\"every day\" signals a habit — use the present simple. \"I\" takes no -s."
+    },
+    "g3": {
+     "label": "3. Look! It ___ outside",
+     "correct": "is snowing",
+     "why": "\"Look!\" points to something happening now — use the present continuous."
+    },
+    "g4": {
+     "label": "4. She ___ the answer",
+     "correct": "knows",
+     "why": "\"Know\" is a state verb. We do not use state verbs in the continuous, even right now."
+    },
+    "g5": {
+     "label": "5. We ___ dinner at the moment",
+     "correct": "are having",
+     "why": "Here \"have\" means eating, an action, and \"at the moment\" shows it is in progress — use the continuous."
+    },
+    "g6": {
+     "label": "6. He usually ___ jeans",
+     "correct": "wears",
+     "why": "\"usually\" signals a habit — present simple, with -s for \"he\"."
+    },
+    "g7": {
+     "label": "6. today he ___ a suit",
+     "correct": "is wearing",
+     "why": "\"today\" contrasts with \"usually\" — a temporary situation, so use the present continuous."
+    },
+    "g8": {
+     "label": "7. I ___ this song",
+     "correct": "love",
+     "why": "\"Love\" is a state verb (a feeling), so use the present simple: \"I love\", not \"I am loving\"."
+    }
+   }
+  }
+ },
+ "esl-countable-uncountable": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. There is ___ milk",
+     "correct": "some",
+     "why": "\"Milk\" is uncountable, so it cannot take \"many\" or \"a few\". \"Some\" works with uncountable nouns in a positive sentence."
+    },
+    "g2": {
+     "label": "2. there aren't ___ eggs",
+     "correct": "many",
+     "why": "\"Eggs\" is countable (one egg, two eggs). Use \"many\" in a negative sentence with a countable noun."
+    },
+    "g3": {
+     "label": "3. How ___ bread",
+     "correct": "much",
+     "why": "\"Bread\" is uncountable. In a \"How … ?\" question, use \"much\" with uncountable nouns."
+    },
+    "g4": {
+     "label": "4. Only ___",
+     "correct": "a little",
+     "why": "\"Bread\" is uncountable, so use \"a little\", not \"a few\". \"A little\" means a small amount, but enough."
+    },
+    "g5": {
+     "label": "5. ___ drinks",
+     "correct": "a lot of",
+     "why": "\"Drinks\" is countable. \"A lot of\" works with countable and uncountable nouns; \"much\" is unusual in a positive sentence, and \"a little\" is only for uncountable nouns."
+    },
+    "g6": {
+     "label": "6. How ___ bottles",
+     "correct": "many",
+     "why": "\"Bottles\" is countable (one bottle, two bottles). In a \"How … ?\" question, use \"many\"."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. How ___ water",
+     "correct": "much",
+     "why": "\"Water\" is uncountable: you cannot count \"one water, two waters\" as a substance. Use \"much\"."
+    },
+    "g2": {
+     "label": "2. aren't ___ chairs",
+     "correct": "many",
+     "why": "\"Chairs\" is countable. Use \"many\" in a negative sentence."
+    },
+    "g3": {
+     "label": "3. How ___ students",
+     "correct": "many",
+     "why": "\"Students\" is countable (one student, two students). Use \"many\"."
+    },
+    "g4": {
+     "label": "4. don't have ___ time",
+     "correct": "much",
+     "why": "\"Time\" is uncountable here. Use \"much\" in a negative sentence."
+    },
+    "g5": {
+     "label": "5. Is there ___ sugar",
+     "correct": "much",
+     "why": "\"Sugar\" is uncountable. Use \"much\" in a question."
+    },
+    "g6": {
+     "label": "6. haven't got ___ apples",
+     "correct": "many",
+     "why": "\"Apples\" is countable. Use \"many\" in a negative sentence."
+    },
+    "g7": {
+     "label": "7. How ___ people",
+     "correct": "many",
+     "why": "\"People\" is countable (one person, two people). Use \"many\"."
+    },
+    "g8": {
+     "label": "8. doesn't eat ___ meat",
+     "correct": "much",
+     "why": "\"Meat\" is uncountable. Use \"much\" in a negative sentence."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. I have ___ time",
+     "correct": "little",
+     "why": "\"Little\" + an uncountable noun means almost none, which fits \"I can't talk now\"."
+    },
+    "g2": {
+     "label": "2. ___ sugar",
+     "correct": "a little",
+     "why": "\"A little\" + an uncountable noun means a small amount. \"Just a spoonful\" shows the amount is small but welcome."
+    },
+    "g3": {
+     "label": "3. He has ___ friends",
+     "correct": "few",
+     "why": "\"Few\" + a countable noun means almost none, which fits \"he often feels lonely\". \"A few\" would be positive."
+    },
+    "g4": {
+     "label": "4. We have ___ eggs",
+     "correct": "a few",
+     "why": "\"A few\" + a countable noun means some, enough to do something. It fits \"I can make an omelette\"."
+    },
+    "g5": {
+     "label": "5. ___ people came",
+     "correct": "Few",
+     "why": "\"Few\" + a countable noun means almost none, which fits \"the hall was nearly empty\"."
+    },
+    "g6": {
+     "label": "6. ___ advice",
+     "correct": "a little",
+     "why": "\"Advice\" is uncountable, so use \"a little\", not \"a few\". It asks for a small amount."
+    },
+    "g7": {
+     "label": "7. ___ apple",
+     "correct": "an",
+     "why": "Recall from the Articles page: \"apple\" starts with a vowel sound, so use \"an\". \"Bread\" is uncountable, so it takes \"some\", not \"a\"."
+    },
+    "g8": {
+     "label": "8. ___ time before the film",
+     "correct": "a little",
+     "why": "\"Time\" is uncountable and positive here: there is some, enough for a coffee. Use \"a little\"."
+    }
+   }
+  }
+ },
+ "esl-pronouns": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. ___ works at a hospital",
+     "correct": "she",
+     "why": "The subject of the sentence is Ana, a woman. A subject pronoun for one woman is \"she\", not the object form \"her\"."
+    },
+    "g2": {
+     "label": "2. ___ studies music",
+     "correct": "he",
+     "why": "The subject is Tom, a man, so use \"he\". \"Him\" is for objects and \"his\" shows ownership."
+    },
+    "g3": {
+     "label": "3. bought ___ a blue scarf",
+     "correct": "her",
+     "why": "The grandmother receives the scarf, so she is the object of \"bought\". Use the object pronoun \"her\", not \"she\"."
+    },
+    "g4": {
+     "label": "4. ___ gave it to her",
+     "correct": "They",
+     "why": "Ana and Tom together are the subject of the sentence, so use \"They\". \"Them\" is only for objects."
+    },
+    "g5": {
+     "label": "5. she loved ___",
+     "correct": "it",
+     "why": "The scarf is the object of \"loved\", and one thing is \"it\". \"Them\" would mean more than one thing."
+    },
+    "g6": {
+     "label": "6. Tom took ___ photo",
+     "correct": "a",
+     "why": "Spaced review from the Articles exercise: the photo is mentioned for the first time, so use \"a\"."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. My sister and ___ share a room.",
+     "correct": "I",
+     "why": "\"I\" is a subject pronoun. In a pair like \"My sister and I\", check by removing the other person: \"I share a room\"."
+    },
+    "g2": {
+     "label": "2. The teacher likes Mia. She often helps ___ with her homework.",
+     "correct": "her",
+     "why": "\"Helps\" needs an object after it, and Mia is one woman. Use the object pronoun \"her\", not \"she\"."
+    },
+    "g3": {
+     "label": "3. ___ are late for the bus again.",
+     "correct": "We",
+     "why": "The pronoun is the subject of \"are\", so use \"We\". \"Us\" is the object form."
+    },
+    "g4": {
+     "label": "4. Sam and I need help. Can you help ___?",
+     "correct": "us",
+     "why": "\"Help\" needs an object. \"Us\" means Sam and me, as the object of \"help\"."
+    },
+    "g5": {
+     "label": "5. My parents are strict, but I love ___ very much.",
+     "correct": "them",
+     "why": "\"Love\" needs an object, and \"my parents\" is plural. The object pronoun for more than one person is \"them\"."
+    },
+    "g6": {
+     "label": "6. Where is Ben? I can't find ___ anywhere.",
+     "correct": "him",
+     "why": "\"Find\" needs an object, and Ben is a man. The object pronoun is \"him\", not \"he\"."
+    },
+    "g7": {
+     "label": "7. Dan and Eva are friends. ___ play tennis together.",
+     "correct": "They",
+     "why": "Dan and Eva are the subject of \"play\", so use the subject pronoun \"They\"."
+    },
+    "g8": {
+     "label": "8. Between you and ___, the film was boring.",
+     "correct": "me",
+     "why": "After a preposition such as \"between\" use the object form: \"between you and me\", not \"between you and I\"."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. This isn't my pen. ___ is on the desk.",
+     "correct": "Mine",
+     "why": "No noun follows the gap, so we need a possessive pronoun. \"Mine\" means \"my pen\". \"My\" always needs a noun after it."
+    },
+    "g2": {
+     "label": "2. I cut ___ while I was cooking.",
+     "correct": "myself",
+     "why": "The person who cuts and the person who is cut are the same, so use the reflexive pronoun \"myself\"."
+    },
+    "g3": {
+     "label": "3. Is this your bag? No, the red one is ___.",
+     "correct": "mine",
+     "why": "\"The red one\" is the thing, so no noun follows the gap. Use the possessive pronoun \"mine\", not \"my\"."
+    },
+    "g4": {
+     "label": "4. She hurt ___ at football practice.",
+     "correct": "herself",
+     "why": "She is both the person who hurts and the person who is hurt, so use the reflexive \"herself\"."
+    },
+    "g5": {
+     "label": "5. Tom lost his phone, so I lent him ___.",
+     "correct": "mine",
+     "why": "\"Lent him mine\" means \"lent him my phone\". With no noun after the gap, use the possessive pronoun \"mine\"."
+    },
+    "g6": {
+     "label": "6. We built the tree house ___.",
+     "correct": "ourselves",
+     "why": "We built it with our own hands, so the reflexive \"ourselves\" fits. \"Ours\" means \"belonging to us\"."
+    },
+    "g7": {
+     "label": "7. The house on the corner is ___.",
+     "correct": "theirs",
+     "why": "There is no noun after the gap, so use the possessive pronoun \"theirs\" (= belonging to them). \"Their\" needs a noun."
+    },
+    "g8": {
+     "label": "8. The dog hurt ___ leg yesterday.",
+     "correct": "its",
+     "why": "\"Leg\" follows the gap, and the leg belongs to the dog. \"Its\" has no apostrophe when it shows ownership; \"it's\" means \"it is\"."
+    }
+   }
+  }
+ },
+ "8c-nyc-first-day": {
+  "exA": {
+   "prefix": "exA-",
+   "gaps": {
+    "g1": {
+     "label": "1. Lena comes from ___",
+     "correct": "Hamburg",
+     "why": "The first sentence says 'Lena from Hamburg'; Brooklyn is where her cousin Maya lives."
+    },
+    "g2": {
+     "label": "2. She got to the airport ___",
+     "correct": "at ten at night",
+     "why": "The plane was late, so she got there at ten at night."
+    },
+    "g3": {
+     "label": "3. They went to Brooklyn by ___",
+     "correct": "subway",
+     "why": "Maya and her dad took her home by subway."
+    },
+    "g4": {
+     "label": "4. For breakfast the girls ate ___",
+     "correct": "bagels",
+     "why": "In Central Park they ate bagels for breakfast."
+    },
+    "g5": {
+     "label": "5. In Times Square, Lena didn't like the ___",
+     "correct": "noise",
+     "why": "She didn't like the noise, but she loved the lights."
+    },
+    "g6": {
+     "label": "6. A small statue for her ___",
+     "correct": "brother",
+     "why": "Lena bought the statue for her brother."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1. Yesterday we ___ (go)",
+     "correct": "went",
+     "why": "'Go' is irregular, so the past is 'went', never 'goed'."
+    },
+    "g2": {
+     "label": "2. My dad ___ (buy) the tickets",
+     "correct": "bought",
+     "why": "'Buy' is irregular: buy → bought."
+    },
+    "g3": {
+     "label": "3. We ___ (see) the whole city",
+     "correct": "saw",
+     "why": "'See' is irregular: see → saw."
+    },
+    "g4": {
+     "label": "4. Lena ___ (take) lots of photos",
+     "correct": "took",
+     "why": "'Take' is irregular: take → took."
+    },
+    "g5": {
+     "label": "5. Then we ___ (eat) pizza",
+     "correct": "ate",
+     "why": "'Eat' is irregular: eat → ate."
+    },
+    "g6": {
+     "label": "6. I ___ (make) a short video",
+     "correct": "made",
+     "why": "'Make' is irregular: make → made."
+    },
+    "g7": {
+     "label": "7. We ___ (come) home at nine",
+     "correct": "came",
+     "why": "'Come' is irregular: come → came."
+    },
+    "g8": {
+     "label": "8. I ___ (live) in Brooklyn now",
+     "correct": "live",
+     "why": "Review from 'Five teenagers': 'now' needs the simple present, and with 'I' there is no -s."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. I ___ the noise",
+     "correct": "didn't like",
+     "why": "After didn't, use the base form: didn't like, not didn't liked."
+    },
+    "g2": {
+     "label": "2. ___ the Statue of Liberty?",
+     "correct": "Did you visit",
+     "why": "Past questions start with Did + subject + base form."
+    },
+    "g3": {
+     "label": "3. We ___ a taxi",
+     "correct": "didn't take",
+     "why": "After didn't, use the base form: take, not took."
+    },
+    "g4": {
+     "label": "4. Where ___ for lunch?",
+     "correct": "did you go",
+     "why": "Question word + did + subject + base form: Where did you go?"
+    },
+    "g5": {
+     "label": "5. Maya's dad ___ with us",
+     "correct": "didn't come",
+     "why": "Negative in the past: didn't + base form (come)."
+    },
+    "g6": {
+     "label": "6. ___ Maya's school?",
+     "correct": "Did you see",
+     "why": "Did + you + base form (see). The past is already in 'did'."
+    },
+    "g7": {
+     "label": "7. The subway ___ at our station",
+     "correct": "didn't stop",
+     "why": "After didn't, the verb has no -ed: didn't stop."
+    },
+    "g8": {
+     "label": "8. What ___ for your brother?",
+     "correct": "did you buy",
+     "why": "What + did + you + base form (buy)."
+    }
+   }
+  },
+  "exD": {
+   "prefix": "exD-",
+   "gaps": {
+    "g1": {
+     "label": "1. On Sunday we ___ (meet)",
+     "correct": "met",
+     "why": "'Meet' is irregular: the simple past is 'met'."
+    },
+    "g2": {
+     "label": "2. We ___ (ride) bikes",
+     "correct": "rode",
+     "why": "'Ride' is irregular: the simple past is 'rode'."
+    },
+    "g3": {
+     "label": "3. Lena ___ (lose) her phone",
+     "correct": "lost",
+     "why": "'Lose' is irregular: the simple past is 'lost'."
+    },
+    "g4": {
+     "label": "4. A police officer ___ (find) it",
+     "correct": "found",
+     "why": "'Find' is irregular: the simple past is 'found'."
+    },
+    "g5": {
+     "label": "5. We ___ (sit) in a café",
+     "correct": "sat",
+     "why": "'Sit' is irregular: the simple past is 'sat'."
+    },
+    "g6": {
+     "label": "6. I ___ (drink) a milkshake",
+     "correct": "drank",
+     "why": "'Drink' is irregular: the simple past is 'drank'."
+    },
+    "g7": {
+     "label": "7. Maya's friend ___ (give) Lena a T-shirt",
+     "correct": "gave",
+     "why": "'Give' is irregular: the simple past is 'gave'."
+    },
+    "g8": {
+     "label": "8. Lena ___ (write) postcards",
+     "correct": "wrote",
+     "why": "'Write' is irregular: the simple past is 'wrote'."
+    }
+   }
+  },
+  "exE": {
+   "prefix": "exE-",
+   "gaps": {
+    "g1": {
+     "label": "1. How much ___ for the bikes?",
+     "correct": "did you pay",
+     "why": "Question word + did + subject + base form: How much did you pay?"
+    },
+    "g2": {
+     "label": "2. At first, Lena ___ her phone",
+     "correct": "didn't find",
+     "why": "After didn't, use the base form: find, not found."
+    },
+    "g3": {
+     "label": "3. ___ the milkshake?",
+     "correct": "Did you like",
+     "why": "Did + you + base form (like); the past is already in 'did'."
+    },
+    "g4": {
+     "label": "4. We ___ the bus home",
+     "correct": "didn't need",
+     "why": "After didn't, the verb has no -ed: didn't need."
+    },
+    "g5": {
+     "label": "5. When ___ home?",
+     "correct": "did you get",
+     "why": "When + did + you + base form (get)."
+    },
+    "g6": {
+     "label": "6. Maya ___ the T-shirt",
+     "correct": "didn't buy",
+     "why": "Negative in the past: didn't + base form (buy)."
+    },
+    "g7": {
+     "label": "7. ___ the bridge?",
+     "correct": "Did you walk across",
+     "why": "Did + you + base form (walk); 'walked' is wrong after did."
+    },
+    "g8": {
+     "label": "8. The police officer ___ any money",
+     "correct": "didn't want",
+     "why": "After didn't, the verb has no -ed: didn't want."
+    }
+   }
+  },
+  "exF": {
+   "prefix": "exF-",
+   "typed": true,
+   "gaps": {
+    "g1": {
+     "label": "1. Lena ___ (have) breakfast",
+     "correct": "had",
+     "accept": [
+      "had"
+     ],
+     "why": "'Have' is irregular: the simple past is 'had'."
+    },
+    "g2": {
+     "label": "2. She ___ (feel) sad",
+     "correct": "felt",
+     "accept": [
+      "felt"
+     ],
+     "why": "'Feel' is irregular: the simple past is 'felt'."
+    },
+    "g3": {
+     "label": "3. At first I ___ (think)",
+     "correct": "thought",
+     "accept": [
+      "thought"
+     ],
+     "why": "'Think' is irregular: the simple past is 'thought'."
+    },
+    "g4": {
+     "label": "4. She ___ (sleep) very well",
+     "correct": "slept",
+     "accept": [
+      "slept"
+     ],
+     "why": "'Sleep' is irregular: the simple past is 'slept'."
+    },
+    "g5": {
+     "label": "5. Maya ___ (run) to the shop",
+     "correct": "ran",
+     "accept": [
+      "ran"
+     ],
+     "why": "'Run' is irregular: the simple past is 'ran'."
+    },
+    "g6": {
+     "label": "6. The girls ___ (speak)",
+     "correct": "spoke",
+     "accept": [
+      "spoke"
+     ],
+     "why": "'Speak' is irregular: the simple past is 'spoke'."
+    },
+    "g7": {
+     "label": "7. The plane ___ (leave)",
+     "correct": "left",
+     "accept": [
+      "left"
+     ],
+     "why": "'Leave' is irregular: the simple past is 'left'."
+    },
+    "g8": {
+     "label": "8. The film ___ (begin)",
+     "correct": "began",
+     "accept": [
+      "began"
+     ],
+     "why": "'Begin' is irregular: the simple past is 'began'."
+    }
+   }
+  },
+  "exG": {
+   "prefix": "exG-",
+   "typed": true,
+   "gaps": {
+    "g1": {
+     "label": "1. you / did / where / go / yesterday",
+     "correct": "Where did you go yesterday?",
+     "accept": [
+      "Where did you go yesterday?",
+      "Yesterday, where did you go?",
+      "Yesterday where did you go?"
+     ],
+     "why": "Question word + did + subject + base form; the time phrase goes at the end or the start."
+    },
+    "g2": {
+     "label": "2. didn't / I / the subway / like",
+     "correct": "I didn't like the subway.",
+     "accept": [
+      "I didn't like the subway."
+     ],
+     "why": "Negative: subject + didn't + base form + object."
+    },
+    "g3": {
+     "label": "3. the ferry / did / take / you",
+     "correct": "Did you take the ferry?",
+     "accept": [
+      "Did you take the ferry?"
+     ],
+     "why": "Yes/no question: Did + subject + base form + object."
+    },
+    "g4": {
+     "label": "4. we / have / didn't / time",
+     "correct": "We didn't have time.",
+     "accept": [
+      "We didn't have time."
+     ],
+     "why": "Negative: subject + didn't + base form + object."
+    },
+    "g5": {
+     "label": "5. what / see / did / she",
+     "correct": "What did she see?",
+     "accept": [
+      "What did she see?"
+     ],
+     "why": "Question word + did + subject + base form."
+    },
+    "g6": {
+     "label": "6. last night / didn't / sleep / Lena",
+     "correct": "Lena didn't sleep last night.",
+     "accept": [
+      "Lena didn't sleep last night.",
+      "Last night, Lena didn't sleep.",
+      "Last night Lena didn't sleep."
+     ],
+     "why": "Subject + didn't + base form; the time phrase goes at the end or the start."
+    },
+    "g7": {
+     "label": "7. when / arrive / did / the plane",
+     "correct": "When did the plane arrive?",
+     "accept": [
+      "When did the plane arrive?"
+     ],
+     "why": "Question word + did + subject (the plane) + base form."
+    },
+    "g8": {
+     "label": "8. the noise / like / didn't / they",
+     "correct": "They didn't like the noise.",
+     "accept": [
+      "They didn't like the noise."
+     ],
+     "why": "Negative: subject + didn't + base form + object."
+    }
+   }
+  }
+ },
+ "uni-b2-narrative-tenses": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. I was sleeping deeply when my alarm ___ at seven.",
+     "correct": "rang",
+     "why": "A short action that interrupts a longer one takes the past simple."
+    },
+    "g2": {
+     "label": "2. While I was getting dressed, I ___ that my battery was empty.",
+     "correct": "noticed",
+     "why": "Notice is a sudden, short action, so it takes the past simple."
+    },
+    "g3": {
+     "label": "3. Lots of students ___ for the bus.",
+     "correct": "were waiting",
+     "why": "They were already waiting when I arrived: an action in progress takes the past continuous."
+    },
+    "g4": {
+     "label": "4. When the bus finally ___, it was full.",
+     "correct": "arrived",
+     "why": "A single main event in the story takes the past simple."
+    },
+    "g5": {
+     "label": "5. I ___ past the cafeteria when I saw my friend.",
+     "correct": "was walking",
+     "why": "The longer background action, interrupted by “saw”, takes the past continuous."
+    },
+    "g6": {
+     "label": "6. When I saw her, she ___ a coffee.",
+     "correct": "was drinking",
+     "why": "She was in the middle of drinking when I saw her: past continuous."
+    },
+    "g7": {
+     "label": "7. When I ___ to the library, every desk was full.",
+     "correct": "got",
+     "why": "Arriving is a short, finished event: past simple."
+    },
+    "g8": {
+     "label": "8. While I ___ for a seat, my phone rang.",
+     "correct": "was looking",
+     "why": "After while, the longer action in progress takes the past continuous."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. When she arrived, she ___ abroad before.",
+     "correct": "had never lived",
+     "why": "“Before” her arrival points to the earlier past: had + past participle."
+    },
+    "g2": {
+     "label": "2. By the time it finished, she ___ most of the information.",
+     "correct": "had forgotten",
+     "why": "By the time + past simple shows the other action happened earlier: past perfect."
+    },
+    "g3": {
+     "label": "3. Two weeks later, she still ___ how to register.",
+     "correct": "didn't know",
+     "why": "This is the situation at that point in the story, so it takes the past simple."
+    },
+    "g4": {
+     "label": "4. She went at five, but it ___ for the day.",
+     "correct": "had already closed",
+     "why": "The office closed before she got there: past perfect with already."
+    },
+    "g5": {
+     "label": "5. The next morning she ___ for 45 minutes.",
+     "correct": "queued",
+     "why": "The next main event in order takes the past simple."
+    },
+    "g6": {
+     "label": "6. The adviser told her that she ___ the deadline.",
+     "correct": "had missed",
+     "why": "She missed the deadline before the adviser told her: past perfect."
+    },
+    "g7": {
+     "label": "7. Luckily, the adviser ___ her to register late.",
+     "correct": "helped",
+     "why": "The story moves forward again, so use the past simple."
+    },
+    "g8": {
+     "label": "8. … because the same thing ___ to her before she joined.",
+     "correct": "had happened",
+     "why": "It happened before she joined the team: past perfect."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. What ___? (the case)",
+     "correct": "did your group choose",
+     "why": "Past simple questions use did + subject + base verb."
+    },
+    "g2": {
+     "label": "2. What ___ when the timekeeper gave the warning?",
+     "correct": "were you doing",
+     "why": "A question about an action in progress: was/were + subject + -ing."
+    },
+    "g3": {
+     "label": "3. First we ___ Case D.",
+     "correct": "chose",
+     "why": "The first main event in the story takes the past simple."
+    },
+    "g4": {
+     "label": "4. While we ___ our slide, the timekeeper said…",
+     "correct": "were writing",
+     "why": "After while, the longer action in progress takes the past continuous."
+    },
+    "g5": {
+     "label": "5. Luckily, our reporter ___ the start of the pitch.",
+     "correct": "had already practised",
+     "why": "She practised before the warning came: past perfect with already."
+    },
+    "g6": {
+     "label": "6. During the pitch, another group ___ a difficult question.",
+     "correct": "asked",
+     "why": "A single main event in the story takes the past simple."
+    },
+    "g7": {
+     "label": "7. … because we ___ about money at all.",
+     "correct": "had not thought",
+     "why": "Not thinking about money came before the pitch: past perfect."
+    },
+    "g8": {
+     "label": "8. In the end, the class ___ for our idea.",
+     "correct": "voted",
+     "why": "The final event of the story takes the past simple."
+    }
+   }
+  }
+ },
+ "uni-b2-past-continuous-stories": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. While I ___ (walk) to the station…",
+     "correct": "was walking / walked",
+     "accept": [
+      "was walking",
+      "walked"
+     ],
+     "why": "Both work after while: the past continuous stresses the walk in progress, the past simple is also fine."
+    },
+    "g2": {
+     "label": "1. … it ___ (start) to rain.",
+     "correct": "started",
+     "why": "The short action that happens during the walk takes the past simple."
+    },
+    "g3": {
+     "label": "2. While we ___ (plan) our pitch…",
+     "correct": "were planning",
+     "why": "After while, the longer action in progress takes the past continuous."
+    },
+    "g4": {
+     "label": "2. … the internet ___ (stop).",
+     "correct": "stopped",
+     "why": "The sudden short action takes the past simple."
+    },
+    "g5": {
+     "label": "3. While she ___ (check) her phone…",
+     "correct": "was checking",
+     "why": "After while, the longer action in progress takes the past continuous."
+    },
+    "g6": {
+     "label": "3. … the lecturer ___ (give) the deadline.",
+     "correct": "gave",
+     "why": "The short action that happens during the longer one takes the past simple."
+    },
+    "g7": {
+     "label": "4. They ___ (eat) lunch at their desks…",
+     "correct": "were eating",
+     "why": "They were in the middle of lunch when the librarian came: past continuous."
+    },
+    "g8": {
+     "label": "4. … when the librarian ___ (come) over.",
+     "correct": "came",
+     "why": "After when, the interrupting action takes the past simple."
+    },
+    "g9": {
+     "label": "5. Our reporter ___ (present) our idea…",
+     "correct": "was presenting",
+     "why": "The pitch was in progress when the card went up: past continuous."
+    },
+    "g10": {
+     "label": "5. … when the timekeeper ___ (hold) up the card.",
+     "correct": "held",
+     "why": "The short interrupting action takes the past simple; hold → held."
+    },
+    "g11": {
+     "label": "6. What ___ (you / do) when I called?",
+     "correct": "were you doing",
+     "why": "A question about an action in progress: was/were + subject + -ing."
+    },
+    "g12": {
+     "label": "6. … when I ___ (call) you last night?",
+     "correct": "called",
+     "why": "The short action that interrupts takes the past simple."
+    }
+   }
+  }
+ },
+ "uni-b2-past-perfect-stories": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. When we got to the library, all the desks ___ (go).",
+     "correct": "had gone",
+     "why": "The desks were taken before we arrived: had + past participle."
+    },
+    "g2": {
+     "label": "2. By the time I started university, I ___ English for eight years.",
+     "correct": "had already studied",
+     "why": "By the time + past simple points to the earlier past: past perfect."
+    },
+    "g3": {
+     "label": "3. While I ___ (wait) for the bus…",
+     "correct": "was waiting",
+     "why": "After while, the longer action in progress takes the past continuous."
+    },
+    "g4": {
+     "label": "3. … I ___ (realise)…",
+     "correct": "realised",
+     "why": "The sudden short action during the wait takes the past simple."
+    },
+    "g5": {
+     "label": "3. … that I ___ (leave) my laptop at home.",
+     "correct": "had left",
+     "why": "I left the laptop before I realised it: past perfect."
+    },
+    "g6": {
+     "label": "4. By the time the lecturer ___ (arrive)…",
+     "correct": "arrived",
+     "why": "After by the time, the later point in the story takes the past simple."
+    },
+    "g7": {
+     "label": "4. … we ___ (finish) our slide.",
+     "correct": "had finished",
+     "why": "Finishing came before the lecturer arrived: past perfect."
+    },
+    "g8": {
+     "label": "5. She ___ (feel) nervous…",
+     "correct": "felt",
+     "why": "The main situation in a past story takes the past simple."
+    },
+    "g9": {
+     "label": "5. … because she ___ (not / prepare) her notes.",
+     "correct": "hadn't prepared",
+     "why": "Not preparing came before feeling nervous: hadn't + past participle."
+    },
+    "g10": {
+     "label": "6. What ___ (you / do) when the fire alarm went off?",
+     "correct": "were you doing",
+     "why": "A question about an action in progress: was/were + subject + -ing."
+    },
+    "g11": {
+     "label": "6. … when the fire alarm ___ (go) off?",
+     "correct": "went",
+     "why": "The short interrupting action takes the past simple; go → went."
+    }
+   }
+  }
+ },
+ "be-decision-making": {
+  "exA": {
+   "prefix": "exA-",
+   "gaps": {
+    "g1": {
+     "label": "1. Why does time saved carry the highest weighting?",
+     "correct": "Because finishing late would mean paying a penalty",
+     "why": "The email says a late handover would trigger the £5,000-a-week penalty, so time saved carries 40%."
+    },
+    "g2": {
+     "label": "2. Who approves longer working hours on site?",
+     "correct": "The health and safety manager",
+     "why": "The email says the health and safety manager has to approve any plan that increases working hours on site."
+    },
+    "g3": {
+     "label": "3. Trade-off with the second subcontractor?",
+     "correct": "It saves the most time, but it is also the most expensive",
+     "why": "The email names a trade-off between speed and cost: it saves the most time but is the most expensive option."
+    },
+    "g4": {
+     "label": "4. What does Daniel recommend?",
+     "correct": "Getting quotes from two subcontractors before making a final decision",
+     "why": "Daniel recommends getting quotes from two steelwork subcontractors this week before committing."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1. agree on the ___ to judge the tenders",
+     "correct": "criteria",
+     "why": "Criteria are the standards you use to judge or compare options."
+    },
+    "g2": {
+     "label": "2. client, architect and residents are all ___",
+     "correct": "stakeholders",
+     "why": "Stakeholders are the people or groups a project or decision affects."
+    },
+    "g3": {
+     "label": "3. only three made it onto the ___",
+     "correct": "shortlist",
+     "why": "A shortlist is the small group of best options chosen from a longer list."
+    },
+    "g4": {
+     "label": "4. gave safety a high ___ in the matrix",
+     "correct": "weighting",
+     "why": "In a decision matrix, the weighting shows how important a criterion is compared with the others."
+    },
+    "g5": {
+     "label": "5. the ___ we accept to stay on budget",
+     "correct": "trade-off",
+     "why": "A trade-off is something you give up (time) to get something else (a lower cost)."
+    },
+    "g6": {
+     "label": "6. the team finally reached a ___",
+     "correct": "consensus",
+     "why": "You reach a consensus when everyone in a group agrees."
+    },
+    "g7": {
+     "label": "7. 15 November is a ___ we cannot miss",
+     "correct": "deadline",
+     "why": "A deadline is the latest date by which something must be finished."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. Everyone on site ___ wear a hard hat (legal requirement)",
+     "correct": "has to",
+     "why": "‘Has to’ expresses an obligation that comes from a rule or law."
+    },
+    "g2": {
+     "label": "2. We ___ check the forecast (sensible idea)",
+     "correct": "should",
+     "why": "‘Should’ gives advice or a recommendation."
+    },
+    "g3": {
+     "label": "3. Workers ___ walk under the crane (dangerous)",
+     "correct": "mustn't",
+     "why": "‘Mustn't’ means something is not allowed. ‘Don't have to’ would mean it is optional."
+    },
+    "g4": {
+     "label": "4. The new subcontractor ___ be faster (we won't know yet)",
+     "correct": "might",
+     "why": "‘Might’ expresses a possibility we are not sure about."
+    },
+    "g5": {
+     "label": "5. If the weather stays dry, the frame ___ be finished",
+     "correct": "ought to",
+     "why": "‘Ought to’ expresses what we expect to happen if things go to plan."
+    },
+    "g6": {
+     "label": "6. We ___ order more bricks (there are enough)",
+     "correct": "don't have to",
+     "why": "‘Don't have to’ means it is not necessary. ‘Mustn't’ would mean it is forbidden."
+    }
+   }
+  }
+ },
+ "9c-australia-environment-dangers": {
+  "exA": {
+   "prefix": "exA-",
+   "gaps": {
+    "g1": {
+     "label": "1. Lost their ___",
+     "correct": "homes",
+     "why": "Fires destroyed the places where animals live, so they lost their homes."
+    },
+    "g2": {
+     "label": "2. When the ocean gets too ___",
+     "correct": "warm",
+     "why": "The text says coral turns white and can die when the ocean gets too warm."
+    },
+    "g3": {
+     "label": "3. A farmer ___ 24 rabbits",
+     "correct": "released",
+     "why": "To release an animal means to let it go free in nature."
+    },
+    "g4": {
+     "label": "4. They eat the ___",
+     "correct": "plants",
+     "why": "Rabbits eat plants; you can't eat 'planets' or 'plans'."
+    },
+    "g5": {
+     "label": "5. Beetles on sugar cane ___",
+     "correct": "farms",
+     "why": "Sugar cane grows on farms, and the beetles were eating it there."
+    },
+    "g6": {
+     "label": "6. Their skin is ___",
+     "correct": "poisonous",
+     "why": "Poisonous means it can make you very ill or kill you, so the snakes die."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1. Droughts are rare in Australia",
+     "correct": "False",
+     "why": "The text says droughts are common in Australia."
+    },
+    "g2": {
+     "label": "2. Bushfires spread fast when the land is hot and dry",
+     "correct": "True",
+     "why": "The text says fires start easily and spread fast when the land is hot and dry."
+    },
+    "g3": {
+     "label": "3. The Black Summer fires burned in the north-west",
+     "correct": "False",
+     "why": "The Black Summer fires burned across the south-east, not the north-west."
+    },
+    "g4": {
+     "label": "4. Coral can die when the ocean is too warm",
+     "correct": "True",
+     "why": "The text says the coral turns white and can die when the ocean gets too warm."
+    },
+    "g5": {
+     "label": "5. The farmer brought the rabbits from England",
+     "correct": "Not in the text",
+     "why": "The text says a farmer released 24 rabbits, but not where they came from."
+    },
+    "g6": {
+     "label": "6. The cane toads solved the beetle problem",
+     "correct": "False",
+     "why": "The toads didn't eat the beetles, so they didn't solve the problem."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. A drought is ___",
+     "correct": "a long time with little or no rain",
+     "why": "A drought is a long period with little or no rain."
+    },
+    "g2": {
+     "label": "2. A bushfire is ___",
+     "correct": "a fire that burns trees and land",
+     "why": "A bushfire burns trees and land in the countryside, often in hot, dry weather."
+    },
+    "g3": {
+     "label": "3. Invasive species are ___",
+     "correct": "animals or plants that come from other places and cause problems",
+     "why": "Invasive species come from other places and cause problems, like rabbits and cane toads."
+    },
+    "g4": {
+     "label": "4. To release an animal means ___",
+     "correct": "to let it go free",
+     "why": "To release means to let go free, like the farmer did with the rabbits."
+    },
+    "g5": {
+     "label": "5. Coral is made by ___",
+     "correct": "tiny sea animals",
+     "why": "The text says the reef is built by tiny sea animals called coral."
+    },
+    "g6": {
+     "label": "6. Something poisonous ___",
+     "correct": "can make you very ill or kill you",
+     "why": "Poisonous means it can make you very ill or kill you."
+    },
+    "g7": {
+     "label": "7. 24 rabbits ___ into the wild",
+     "correct": "were released",
+     "why": "Remember 'Canada': past passive with a plural subject is were + past participle."
+    },
+    "g8": {
+     "label": "8. If we ___ the reef",
+     "correct": "protect",
+     "why": "Remember 'Healthy living': if + simple present, then will in the main clause."
+    }
+   }
+  }
+ },
+ "9c-animals-down-under": {
+  "exA": {
+   "prefix": "exA-",
+   "gaps": {
+    "g1": {
+     "label": "1. It grows in a ___",
+     "correct": "pouch",
+     "why": "A pouch is the pocket of skin where a baby marsupial grows."
+    },
+    "g2": {
+     "label": "2. Eat only eucalyptus ___",
+     "correct": "leaves",
+     "why": "Koalas eat the leaves of eucalyptus trees."
+    },
+    "g3": {
+     "label": "3. But it lays ___",
+     "correct": "eggs",
+     "why": "The platypus is strange because it is a mammal that lays eggs."
+    },
+    "g4": {
+     "label": "4. They use it to ___ their area",
+     "correct": "mark",
+     "why": "Wombats leave their poo to mark (show) their area to other wombats."
+    },
+    "g5": {
+     "label": "5. It can ___ at up to 50 km an hour",
+     "correct": "run",
+     "why": "Emus can't fly, but they can run fast: up to 50 kilometres an hour."
+    },
+    "g6": {
+     "label": "6. Make swimming ___",
+     "correct": "risky",
+     "why": "Risky means dangerous; box jellyfish can hurt swimmers in summer."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {
+     "label": "1. It lays eggs",
+     "correct": "platypus",
+     "why": "The text says the platypus is a mammal that lays eggs."
+    },
+    "g2": {
+     "label": "2. Its baby is called a joey",
+     "correct": "kangaroo",
+     "why": "The text says a baby kangaroo is called a joey."
+    },
+    "g3": {
+     "label": "3. It eats only eucalyptus leaves",
+     "correct": "koala",
+     "why": "The text says koalas eat only eucalyptus leaves."
+    },
+    "g4": {
+     "label": "4. A bird that cannot fly",
+     "correct": "emu",
+     "why": "The text says the emu is a big bird that cannot fly."
+    },
+    "g5": {
+     "label": "5. Its poo is cube-shaped",
+     "correct": "wombat",
+     "why": "The text says wombats are famous for their cube-shaped poo."
+    },
+    "g6": {
+     "label": "6. The biggest reptile",
+     "correct": "saltwater crocodile",
+     "why": "The text says saltwater crocodiles are the biggest reptiles in the world."
+    },
+    "g7": {
+     "label": "7. It sleeps 18 to 20 hours a day",
+     "correct": "koala",
+     "why": "The text says koalas sleep 18 to 20 hours a day."
+    },
+    "g8": {
+     "label": "8. It makes swimming risky",
+     "correct": "box jellyfish",
+     "why": "The text says box jellyfish make swimming in the north risky in summer."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "gaps": {
+    "g1": {
+     "label": "1. A marsupial baby ___",
+     "correct": "grows in its mother's pouch",
+     "why": "A marsupial baby is born very small and grows in its mother's pouch."
+    },
+    "g2": {
+     "label": "2. Koalas sleep so much because ___",
+     "correct": "their food gives them little energy",
+     "why": "Koalas sleep a lot because eucalyptus leaves give them very little energy."
+    },
+    "g3": {
+     "label": "3. A venomous animal ___",
+     "correct": "can hurt you with poison",
+     "why": "Venomous animals can hurt you with poison from a bite, sting or spike."
+    },
+    "g4": {
+     "label": "4. Wombats use their poo to ___",
+     "correct": "mark their area",
+     "why": "The text says wombats use their poo to mark their area."
+    },
+    "g5": {
+     "label": "5. The platypus is strange because ___",
+     "correct": "it is a mammal that lays eggs",
+     "why": "A platypus is a mammal, and mammals don't usually lay eggs."
+    },
+    "g6": {
+     "label": "6. Many of these animals ___",
+     "correct": "live nowhere else",
+     "why": "The text says many of these animals live nowhere else in the world."
+    },
+    "g7": {
+     "label": "7. Long periods without rain",
+     "correct": "droughts",
+     "why": "Remember Part 1: a drought is a long period without rain."
+    },
+    "g8": {
+     "label": "8. A bird ___ cannot fly",
+     "correct": "which",
+     "why": "Remember 'Mandela': use 'which' for animals and things, 'who' for people."
+    }
+   }
+  }
+ },
+ "uni-b2-email-register": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "Greeting: ___ Dr Hall,",
+     "correct": "Dear",
+     "why": "Dear is the neutral greeting for a lecturer; Hey and Yo are too informal."
+    },
+    "g2": {
+     "label": "I am writing ___ you about…",
+     "correct": "to ask",
+     "why": "Use to + infinitive to give the reason for writing: I am writing to ask."
+    },
+    "g3": {
+     "label": "Could you ___ me how…",
+     "correct": "tell",
+     "why": "Tell takes a person directly (tell me). We do not say say me or explain me."
+    },
+    "g4": {
+     "label": "I was wondering ___ you could…",
+     "correct": "if",
+     "why": "I was wondering if + a past form is a soft, polite way to ask."
+    },
+    "g5": {
+     "label": "Would it be possible ___ on Thursday?",
+     "correct": "to meet",
+     "why": "Would it be possible + to + infinitive is a polite request."
+    },
+    "g6": {
+     "label": "Thank you ___ advance.",
+     "correct": "in",
+     "why": "The fixed phrase is thank you in advance."
+    },
+    "g7": {
+     "label": "7. To the library office, about noise",
+     "correct": "Would it be possible to put up a sign about noise on the second floor?",
+     "why": "It is polite and clear. The others are an order and a very stiff demand."
+    },
+    "g8": {
+     "label": "8. To a lecturer, about a deadline",
+     "correct": "Could I possibly have until Friday to hand in the task?",
+     "why": "Could I possibly… softens the request. The others are an order and old-fashioned wording."
+    },
+    "g9": {
+     "label": "9. To a landlord, about the heating",
+     "correct": "The heating has stopped working. I would be grateful if you could send someone to look at it.",
+     "why": "It states the problem neutrally and makes a polite request. The others are rude or far too formal."
+    },
+    "g10": {
+     "label": "10. To the cafeteria office, about waste",
+     "correct": "Could you tell me how the cafeteria decides how much food to prepare?",
+     "why": "A polite question with could you. The others accuse or sound like a legal demand."
+    },
+    "g11": {
+     "label": "11. A reminder to a lecturer",
+     "correct": "I am writing to follow up on my email from Monday. I would appreciate a reply when you have time.",
+     "why": "It refers to the earlier email and asks politely. The others sound rude or too stiff."
+    },
+    "g12": {
+     "label": "12. The ending of an email to a landlord",
+     "correct": "Kind regards,",
+     "why": "Kind regards is the neutral closing. Cheers is too casual and the other is far too formal."
+    }
+   }
+  }
+ },
+ "uni-b2-write-an-email": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "Subject: ___",
+     "correct": "Heating problem in Flat 4",
+     "why": "A subject line should say clearly what the email is about."
+    },
+    "g2": {
+     "label": "…since Monday, ___ the flat is very cold.",
+     "correct": "so",
+     "why": "So introduces the result: the heating is broken, so the flat is cold."
+    },
+    "g3": {
+     "label": "…called the helpline, ___ nobody has come yet.",
+     "correct": "but",
+     "why": "But shows contrast: you called, and nobody came."
+    },
+    "g4": {
+     "label": "Could you please send someone ___ Friday?",
+     "correct": "by",
+     "why": "By Friday means no later than Friday."
+    },
+    "g5": {
+     "label": "I look forward ___ hearing from you.",
+     "correct": "to",
+     "why": "The fixed phrase is look forward to + -ing."
+    },
+    "g6": {
+     "label": "6. …move my seminar group, ___ we have a clash…",
+     "correct": "because",
+     "why": "Because gives the reason for the request."
+    },
+    "g7": {
+     "label": "7. … ___, it is booked all day on Tuesday.",
+     "correct": "However",
+     "why": "However shows contrast with the sentence before."
+    },
+    "g8": {
+     "label": "8. … ___, could you send me the slides?",
+     "correct": "Also",
+     "why": "Also adds a second request to the first."
+    },
+    "g9": {
+     "label": "9. Please find the form ___ to this email.",
+     "correct": "attached",
+     "why": "The fixed phrase is please find the form attached."
+    },
+    "g10": {
+     "label": "10. I apologise for any ___.",
+     "correct": "inconvenience",
+     "why": "After any, use the noun inconvenience."
+    }
+   }
+  }
+ },
+ "uni-b2-email-practice": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. I am writing ___ the internship…",
+     "correct": "about",
+     "why": "Write about + a topic to say what the email is about."
+    },
+    "g2": {
+     "label": "2. Could you ___ me some information…",
+     "correct": "give",
+     "why": "We give information. We do not say say me or explain me."
+    },
+    "g3": {
+     "label": "3. I was wondering ___ it is possible…",
+     "correct": "whether",
+     "why": "Whether introduces an indirect question after wondering."
+    },
+    "g4": {
+     "label": "4. Would you mind ___ me the form?",
+     "correct": "sending",
+     "why": "After would you mind, use the -ing form."
+    },
+    "g5": {
+     "label": "5. Thank you for your ___.",
+     "correct": "help",
+     "why": "After your, use the noun help."
+    },
+    "g6": {
+     "label": "6. To a gym manager",
+     "correct": "Could you tell me how to cancel my membership?",
+     "why": "It is a polite question. The others are an order and a legal-sounding demand."
+    },
+    "g7": {
+     "label": "7. To the exam office",
+     "correct": "I was wondering if it would be possible to move my exam to a later date.",
+     "why": "It is polite and clear. The others are an order and far too stiff."
+    },
+    "g8": {
+     "label": "8. To the library",
+     "correct": "Would it be possible to extend the loan of this book?",
+     "why": "Would it be possible to… is a polite request. The others are blunt or stiff."
+    },
+    "g9": {
+     "label": "9. The first line of an email to a landlord",
+     "correct": "I am writing to ask whether you have a room available in March.",
+     "why": "It gives the reason neutrally. The others are slang and over-formal."
+    },
+    "g10": {
+     "label": "10. Thank you ___ your quick reply.",
+     "correct": "for",
+     "why": "The fixed phrase is thank you for + noun."
     }
    }
   }

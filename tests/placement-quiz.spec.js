@@ -350,7 +350,7 @@ test.describe('Level Test — no data submission', () => {
     await answerAllCorrect(page);
     await waitForResults(page);
     const webhookPosts = posts.filter(
-      url => url.includes('make.com') || url.includes('google.com/macros')
+      url => { const u = new URL(url); return u.hostname === 'make.com' || u.hostname.endsWith('.make.com') || (u.hostname === 'script.google.com' && u.pathname.startsWith('/macros')); }
     );
     expect(webhookPosts).toHaveLength(0);
   });

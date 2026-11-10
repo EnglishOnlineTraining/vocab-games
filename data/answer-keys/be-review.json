@@ -6,11 +6,11 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "Social",
+     "correct": "look forward to hearing from you",
      "accept": [
-      "Social"
+      "look forward to hearing from you"
      ],
-     "label": "1. Rising eco-friendly product preference"
+     "label": "1. Formal closing"
     },
     "g2": {
      "correct": "3+ years of marketing experience",
@@ -20,39 +20,39 @@
      "label": "2. Experience required?"
     },
     "g3": {
-     "correct": "Values, behaviors, and work environment",
+     "correct": "trade-off",
      "accept": [
-      "Values, behaviors, and work environment"
+      "trade-off"
      ],
-     "label": "3. What is company culture?"
+     "label": "3. the"
     },
     "g4": {
-     "correct": "The CEO",
+     "correct": "must",
      "accept": [
-      "The CEO"
+      "must"
      ],
-     "label": "4. Who is at the top?"
+     "label": "4. Breach notifications"
     },
     "g5": {
-     "correct": "Unique Selling Proposition",
-     "accept": [
-      "Unique Selling Proposition"
-     ],
-     "label": "5. What does USP stand for?"
-    },
-    "g6": {
-     "correct": "To show you are genuinely interested",
-     "accept": [
-      "To show you are genuinely interested"
-     ],
-     "label": "6. Why research the company?"
-    },
-    "g7": {
      "correct": "Reaching agreement",
      "accept": [
       "Reaching agreement"
      ],
-     "label": "7. \"A solution that works for both sides.\""
+     "label": "5. \"A solution that works for both sides.\""
+    },
+    "g6": {
+     "correct": "Values, behaviors, and work environment",
+     "accept": [
+      "Values, behaviors, and work environment"
+     ],
+     "label": "6. What is company culture?"
+    },
+    "g7": {
+     "correct": "The CEO",
+     "accept": [
+      "The CEO"
+     ],
+     "label": "7. Who is at the top?"
     },
     "g8": {
      "correct": "deposit",
@@ -68,60 +68,60 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "must",
-     "accept": [
-      "must"
-     ],
-     "label": "1. Breach notifications"
-    },
-    "g2": {
-     "correct": "look forward to hearing from you",
-     "accept": [
-      "look forward to hearing from you"
-     ],
-     "label": "2. Formal closing"
-    },
-    "g3": {
-     "correct": "coordination",
-     "accept": [
-      "coordination"
-     ],
-     "label": "3. Good"
-    },
-    "g4": {
-     "correct": "Transition",
-     "accept": [
-      "Transition"
-     ],
-     "label": "4. \"Now let's turn to the budget forecast...\""
-    },
-    "g5": {
-     "correct": "Two",
-     "accept": [
-      "Two"
-     ],
-     "label": "5. How many will attend the workshop?"
-    },
-    "g6": {
-     "correct": "Would",
-     "accept": [
-      "Would"
-     ],
-     "label": "6. \""
-    },
-    "g7": {
      "correct": "It increases engagement and innovation",
      "accept": [
       "It increases engagement and innovation"
      ],
-     "label": "7. Main benefit of Theory Y?"
+     "label": "1. Main benefit of Theory Y?"
+    },
+    "g2": {
+     "correct": "Transition",
+     "accept": [
+      "Transition"
+     ],
+     "label": "2. \"Now let's turn to the budget forecast...\""
+    },
+    "g3": {
+     "correct": "Unique Selling Proposition",
+     "accept": [
+      "Unique Selling Proposition"
+     ],
+     "label": "3. What does USP stand for?"
+    },
+    "g4": {
+     "correct": "coordination",
+     "accept": [
+      "coordination"
+     ],
+     "label": "4. Good"
+    },
+    "g5": {
+     "correct": "Social",
+     "accept": [
+      "Social"
+     ],
+     "label": "5. Rising eco-friendly product preference"
+    },
+    "g6": {
+     "correct": "To confirm the decisions and responsibilities",
+     "accept": [
+      "To confirm the decisions and responsibilities"
+     ],
+     "label": "6. Purpose of Maya’s summary"
+    },
+    "g7": {
+     "correct": "To show you are genuinely interested",
+     "accept": [
+      "To show you are genuinely interested"
+     ],
+     "label": "7. Why research the company?"
     },
     "g8": {
-     "correct": "Technological",
+     "correct": "Two",
      "accept": [
-      "Technological"
+      "Two"
      ],
-     "label": "8. Investment in AI and automation"
+     "label": "8. How many will attend the workshop?"
     }
    }
   },
@@ -130,39 +130,39 @@
    "multi": false,
    "gaps": {
     "g1": {
+     "correct": "Would",
+     "accept": [
+      "Would"
+     ],
+     "label": "1. \""
+    },
+    "g2": {
+     "correct": "attached",
+     "accept": [
+      "attached"
+     ],
+     "label": "2. Please find the report"
+    },
+    "g3": {
      "correct": "competency",
      "accept": [
       "competency"
      ],
-     "label": "1. An important"
-    },
-    "g2": {
-     "correct": "vision",
-     "accept": [
-      "vision"
-     ],
-     "label": "2. Describes what the company wants to become"
-    },
-    "g3": {
-     "correct": "department",
-     "accept": [
-      "department"
-     ],
-     "label": "3. Finance"
+     "label": "3. An important"
     },
     "g4": {
-     "correct": "target",
+     "correct": "deadline",
      "accept": [
-      "target"
+      "deadline"
      ],
-     "label": "4. Companies"
+     "label": "4. 15 November is a"
     },
     "g5": {
-     "correct": "To show you are engaged and serious about the role",
+     "correct": "should",
      "accept": [
-      "To show you are engaged and serious about the role"
+      "should"
      ],
-     "label": "5. Why prepare questions?"
+     "label": "5. Employees"
     },
     "g6": {
      "correct": "Making a proposal",
@@ -172,18 +172,18 @@
      "label": "6. \"We'd like to suggest a price of €50...\""
     },
     "g7": {
-     "correct": "eviction",
+     "correct": "vision",
      "accept": [
-      "eviction"
+      "vision"
      ],
-     "label": "7. The landlord began"
+     "label": "7. Describes what the company wants to become"
     },
     "g8": {
-     "correct": "should",
+     "correct": "department",
      "accept": [
-      "should"
+      "department"
      ],
-     "label": "8. Employees"
+     "label": "8. Finance"
     }
    }
   }

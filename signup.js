@@ -18,12 +18,14 @@
  *
  *   Page                                 Form ID              Group
  *   msa-c-american-dream.html            194481680761750752   EOL – MSA
+ *   msa-c-*.html, practise results       194481680761750752   EOL – MSA (added by exercise.js)
  *   lead-msa-checkliste.html             194481680761750752   EOL – MSA
  *   lead-abitur-textanalyse.html         194481679194129434   EOL – Abitur
  *   lead-business-email-phrasebank.html  194481682855757151   EOL – Business English
  *   lead-teachers-three-tasks.html       194481686730245820   EOL – Teachers
  *   it-activities.html, it-*.html        201429308373206244   EOL – IT English (monthly drip)
  *   lead-story-structures.html           200478242193278763   General
+ *   WP /business-english/ (page 1965)    202582978405074821   Corporate enquiries (opt-in box beside the enquiry form)
  *
  * The endpoint is the one MailerLite's own embed code posts to. It is not part
  * of their documented API, so if signups stop, check it here first.
@@ -57,7 +59,7 @@
 
   var CSS = ''
     + '.eol-signup form{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin:0}'
-    + '.eol-signup label{flex-basis:100%;font-size:.88rem;font-weight:600;color:var(--text,#1d2b3a);text-align:center}'
+    + '.eol-signup label{flex-basis:100%;font-size:.88rem;font-weight:600;color:var(--text,var(--dark,#1d2b3a));text-align:center}'
     + '.eol-signup input[type=email]{flex:1 1 14rem;max-width:22rem;min-height:2.75rem;padding:.55rem .75rem;font:inherit;font-size:1rem;'
     + 'color:var(--text,#1d2b3a);background:var(--card,#fff);border:1px solid var(--border,#dce3ec);border-radius:8px}'
     + '.eol-signup button{min-height:2.75rem;padding:.55rem 1.2rem;font:inherit;font-size:1rem;font-weight:600;color:#fff;'
@@ -66,7 +68,7 @@
     + '.eol-signup .eol-signup-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}'
     + '.eol-signup .eol-signup-note{margin:.6rem 0 0;font-size:.8rem;color:var(--muted,#6b7a8d);text-align:center}'
     + '.eol-signup .eol-signup-note a{color:inherit}'
-    + '.eol-signup .eol-signup-status{margin:.6rem 0 0;font-size:.9rem;text-align:center;color:var(--text,#1d2b3a)}'
+    + '.eol-signup .eol-signup-status{margin:.6rem 0 0;font-size:.9rem;text-align:center;color:var(--text,var(--dark,#1d2b3a))}'
     + '.eol-signup .eol-signup-status:empty{display:none}';
 
   function el(tag, attrs, text) {
