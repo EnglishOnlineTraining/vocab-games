@@ -53,6 +53,11 @@ non-trivial logic — an E2E spec in `tests/` by preference. Imported here so ev
 9. **Never delete, unpublish, stub or noindex a page with ≥ 600 words or any click in the last
    90 days** unless Shaun names that page.
 
+10. **Printable means black and white.** Every handout, worksheet, pack, test paper or PDF for
+    printing uses black on white only: no colour, no grey fills, no `print-color-adjust: exact`.
+    Tell boxes apart with solid, dashed or dotted borders and bold text. Start from the black-and-white
+    eduki template; `check-worksheet.sh` fails on any colour.
+
 ---
 
 ## AI authoring workflow — Kimi authors, Claude reviews (added 2026-09-22)

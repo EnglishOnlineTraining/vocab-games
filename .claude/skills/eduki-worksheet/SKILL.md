@@ -87,7 +87,7 @@ Copy `assets/worksheet-template.html`, fill every `{{...}}`, and keep the struct
 
 1. Header: title and subtitle (topic, Klasse, school type, level). No domain, no publisher.
 2. Student info row: Name, Klasse, Datum.
-3. 3 to 4 exercises, each with a coloured bar and a points badge `___ / N`. Mix types: vocabulary matching with a
+3. 3 to 4 exercises, each with a heading bar and a points badge `___ / N`. Mix types: vocabulary matching with a
    shuffled word box, gap fill, reading comprehension, grammar transformation, short writing. About 25 points total.
    **What eduki's quality review asked for (first worksheet, 2026-10-10: strong on structure, key and activation; "partially met"
    on the rest).** Every new worksheet needs all of these, using the template's blocks:
@@ -147,6 +147,10 @@ Copy `assets/worksheet-template.html`, fill every `{{...}}`, and keep the struct
 7. Footer: `© Shaun Trezise · Kostenlos für den Unterricht · CC BY-SA 4.0`.
 
 No external images, fonts or scripts: a single self-contained file.
+
+**Black and white only** (Shaun's rule for all printable work, CLAUDE.md rule 10): black on white, no colour, no grey
+fills, no `print-color-adjust`. Figures too: tell parts apart with solid, dashed or dotted lines, never colour. The
+check script fails on any colour.
 
 ## Save and export
 
