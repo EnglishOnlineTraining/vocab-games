@@ -53,10 +53,10 @@ non-trivial logic — an E2E spec in `tests/` by preference. Imported here so ev
 9. **Never delete, unpublish, stub or noindex a page with ≥ 600 words or any click in the last
    90 days** unless Shaun names that page.
 
-10. **Printable means black and white.** Every handout, worksheet, pack, test paper or PDF for
-    printing uses black on white only: no colour, no grey fills, no `print-color-adjust: exact`.
-    Tell boxes apart with solid, dashed or dotted borders and bold text. Start from the black-and-white
-    eduki template; `check-worksheet.sh` fails on any colour.
+10. **"Printable" means black and white.** When Shaun asks for printable material, use black on white
+    only: no colour, no grey fills, no `print-color-adjust: exact`; tell boxes apart with solid, dashed or
+    dotted borders. Use the template's PRINTABLE block and `check-worksheet.sh <file> --bw`. Otherwise
+    colour is fine.
 
 ---
 

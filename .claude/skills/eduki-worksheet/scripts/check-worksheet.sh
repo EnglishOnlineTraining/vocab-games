@@ -1,6 +1,6 @@
 #!/bin/sh
-# Usage: check-worksheet.sh worksheet.html
-# Fails (exit 1) if the file breaks an eduki rule or is not black and white. Prints what it found.
+# Usage: check-worksheet.sh worksheet.html [--bw]
+# Fails (exit 1) if the file breaks an eduki rule; with --bw, also if it is not black and white. Prints what it found.
 f="$1"; bad=0
 [ -f "$f" ] || { echo "usage: $0 file.html"; exit 2; }
 fail() { echo "FAIL: $1"; bad=1; }
@@ -28,9 +28,14 @@ grep -q 'class="group"' "$f"                               || fail "group task w
 grep -q 'Verlaufsplan' "$f"                                || fail "Verlaufsplan (phases table) missing in teacher notes"
 grep -q 'badge' "$f"                                       || fail "no points badge"
 grep -q 'CC BY-SA 4.0' "$f"                                || fail "licence line missing"
-grep -q '@media print' "$f"                               || fail "print CSS missing"
-grep -q 'print-color-adjust' "$f"                          && fail "print-color-adjust forces colour printing (printable = black and white)"
-grep -oE '#[0-9a-fA-F]{3,6}\b|rgba?\(' "$f" | grep -viE '^#(000|000000|fff|ffffff)$' >/dev/null && fail "colour present (printable = black and white): $(grep -oE '#[0-9a-fA-F]{3,6}\b|rgba?\(' "$f" | grep -viE '^#(000|000000|fff|ffffff)$' | sort -u | tr '\n' ' ')"
+if [ "$2" = --bw ]; then  # printable = black and white, only when Shaun asks for printable (CLAUDE.md rule 10)
+  grep -q '@media print' "$f"                             || fail "print CSS missing"
+  grep -q 'print-color-adjust' "$f"                        && fail "print-color-adjust forces colour printing (--bw)"
+  c=$(grep -oE '#[0-9a-fA-F]{3,6}\b|rgba?\(' "$f" | grep -viE '^#(000|000000|fff|ffffff)$' | sort -u | tr '\n' ' ')
+  [ -n "$c" ] && fail "colour present (--bw): $c"
+else
+  grep -q 'print-color-adjust' "$f"                        || fail "print CSS missing"
+fi
 grep -q 'interaktive Online-Übung' "$f"                    || fail "online note missing"
 grep -q '{{' "$f"                                          && fail "unfilled {{placeholder}}"
 [ $bad -eq 0 ] && echo "OK: $f passes the eduki checks (student names are not checked: read the file for them)"

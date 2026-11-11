@@ -91,7 +91,7 @@ If the editors ask for an Autorenbestätigung, tell Shaun and offer to draft the
 
 Start from the eduki template (`~/.claude/skills/eduki-worksheet/assets/worksheet-template.html` on the Mac;
 `.claude/skills/eduki-worksheet/assets/worksheet-template.html` in this repo) for styling, print CSS,
-points badges, Quellenangaben and footer, and adapt the body to the kind. Keep it black and white (CLAUDE.md rule 10):
+points badges, Quellenangaben and footer, and adapt the body to the kind. If Shaun asks for printable, make it black and white (CLAUDE.md rule 10):
 
 - `test-pack`: 4 to 5 sections across skills (vocabulary, reading, grammar, writing or mediation), 40 to 50 points, a
   timing suggestion, answer key, and an **Erwartungshorizont table for every open task** (Inhalt, Sprache, Aufbau und

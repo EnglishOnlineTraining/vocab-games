@@ -148,9 +148,9 @@ Copy `assets/worksheet-template.html`, fill every `{{...}}`, and keep the struct
 
 No external images, fonts or scripts: a single self-contained file.
 
-**Black and white only** (Shaun's rule for all printable work, CLAUDE.md rule 10): black on white, no colour, no grey
-fills, no `print-color-adjust`. Figures too: tell parts apart with solid, dashed or dotted lines, never colour. The
-check script fails on any colour.
+**Printable = black and white** (CLAUDE.md rule 10): only when Shaun asks for printable material. Then use the
+template's PRINTABLE block, draw figures as black lines (solid, dashed or dotted, never colour), and run the check
+with `--bw`. Otherwise the colour template is fine.
 
 ## Save and export
 
