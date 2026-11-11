@@ -37,6 +37,14 @@ ol{margin:0;padding-left:20px} li{margin:4px 0}
 .sources h3{margin:0 0 4px;font-size:10pt;color:var(--text)}
 footer{text-align:center;font-size:9pt;color:var(--muted);margin-top:10px}
 @media print{body{padding:0}.section-head,.word-box,.reading-text,.answer-key-head,header,.badge,.help,.bonus,.pair,.group{-webkit-print-color-adjust:exact;print-color-adjust:exact}.answer-key{page-break-before:always}}
+/* PRINTABLE (black and white): only when Shaun asks for printable material (CLAUDE.md rule 10).
+   Then: delete the @media print rule above, uncomment this block, make every inline SVG black lines on white
+   (solid/dashed/dotted instead of colours), and run check-worksheet.sh with --bw.
+:root{--blue:#000;--gold:#000;--gold-lt:#fff;--teal:#000;--red:#000;--green:#000;--bg:#fff;--card:#fff;--text:#000;--muted:#000;--border:#000}
+header,.section-head,.answer-key-head{background:#fff!important;color:#000!important;border:2px solid #000}.section-head{border-width:0 0 2px}
+.badge{background:#fff;color:#000;border:1.5px solid #000}.pair,.group,.word-box,.reading-text,.eh th,.vp th{background:#fff!important}
+.bonus{border:2px dotted #000}header p{opacity:1}
+*/
 </style>
 </head>
 <body>

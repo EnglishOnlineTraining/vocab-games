@@ -53,6 +53,11 @@ non-trivial logic — an E2E spec in `tests/` by preference. Imported here so ev
 9. **Never delete, unpublish, stub or noindex a page with ≥ 600 words or any click in the last
    90 days** unless Shaun names that page.
 
+10. **"Printable" means black and white.** When Shaun asks for printable material, use black on white
+    only: no colour, no grey fills, no `print-color-adjust: exact`; tell boxes apart with solid, dashed or
+    dotted borders. Use the template's PRINTABLE block and `check-worksheet.sh <file> --bw`. Otherwise
+    colour is fine.
+
 ---
 
 ## AI authoring workflow — Kimi authors, Claude reviews (added 2026-09-22)
