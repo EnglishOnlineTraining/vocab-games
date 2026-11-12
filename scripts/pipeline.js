@@ -199,6 +199,8 @@ const NODES = [
 //                            email path: no name or class sent, one IELTS tab.
 //   test-sitemap-index.js    reads scripts/build-sitemap-index.js only (pure
 //                            functions; no generated file). Pins the sections.
+//   test-title-keyword.js    reads scripts/title-keyword.js only (pure functions).
+//                            Pins the once-only "– Englisch Klasse N" title ending.
 const VALIDATORS = [
   { id: 'validate-explanations', run: 'scripts/validate-explanations.js' },
   { id: 'validate-data', run: 'scripts/validate-data.js' },
@@ -211,6 +213,7 @@ const VALIDATORS = [
   { id: 'topic-pool', run: 'topic-pool.js' },
   { id: 'esl-grammar-pool', run: 'esl-grammar-pool.js' },
   { id: 'test-sitemap-index', run: 'test-sitemap-index.js' },
+  { id: 'test-title-keyword', run: 'test-title-keyword.js' },
 ];
 
 // Checks that run AFTER the build, because they read what the generators wrote
