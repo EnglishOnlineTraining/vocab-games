@@ -77,3 +77,14 @@ test('keywordFor: hubs, reviews, noindexed pages and non-exercise pages get none
   assert.strictEqual(keywordFor('11g-something.html', EX, none), '');
   assert.strictEqual(keywordFor('index.html', EX, none), '');
 });
+
+test('pageHash: adding or removing the keyword does not re-date a page', () => {
+  const { pageHash } = require('./scripts/page-hash.js');
+  const body = '<body><h1>Civil Rights</h1></body>';
+  const plain = `<head><title>Civil Rights</title></head>${body}`;
+  const withKw = `<head><title>Civil Rights – ${KW}</title></head>${body}`;
+  const branded = `<head><title>Civil Rights – ${KW} | englishonline.training</title></head>${body}`;
+  assert.strictEqual(pageHash(withKw), pageHash(plain));
+  assert.strictEqual(pageHash(branded), pageHash(`<head><title>Civil Rights | englishonline.training</title></head>${body}`));
+  assert.notStrictEqual(pageHash(plain), pageHash(plain.replace('Civil Rights</h1>', 'Civil War</h1>')));
+});

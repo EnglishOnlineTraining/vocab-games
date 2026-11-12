@@ -42,8 +42,12 @@ function stripBlock(html, name) {
 // re-date the pages it was added to.
 const INTEGRITY_TAG = /<script src="integrity\.js"><\/script>\n?/g;
 
+// The title keyword is generated too (title-keyword.js), so it is left out the
+// same way: adding it must not re-date every exercise page.
 function stripGenerated(html) {
-  return GENERATED_BLOCKS.concat(HASH_SKIPPED_BLOCKS).reduce(stripBlock, html).replace(INTEGRITY_TAG, '');
+  return GENERATED_BLOCKS.concat(HASH_SKIPPED_BLOCKS).reduce(stripBlock, html)
+    .replace(INTEGRITY_TAG, '')
+    .replace(/<title>([\s\S]*?)<\/title>/i, (_, t) => `<title>${stripKeyword(t.trim())}</title>`);
 }
 
 function pageHash(html) {
