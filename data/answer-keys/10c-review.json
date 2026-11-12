@@ -6,11 +6,11 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "experience other cultures first-hand",
+     "correct": "was opened",
      "accept": [
-      "experience other cultures first-hand"
+      "was opened"
      ],
-     "label": "1. Exchange programmes let young people"
+     "label": "1. A new community centre"
     },
     "g2": {
      "correct": "was built",
@@ -20,73 +20,11 @@
      "label": "2. The White House"
     },
     "g3": {
-     "correct": "had promised",
+     "correct": "as well as",
      "accept": [
-      "had promised"
+      "as well as"
      ],
-     "label": "3. Earlier that week, she"
-    },
-    "g4": {
-     "correct": "little",
-     "accept": [
-      "little"
-     ],
-     "label": "4. Workers are paid very"
-    },
-    "g5": {
-     "correct": "never",
-     "accept": [
-      "never"
-     ],
-     "label": "5. I have"
-    },
-    "g6": {
-     "correct": "wouldn't have grown",
-     "accept": [
-      "wouldn't have grown"
-     ],
-     "label": "6. Tourism"
-    },
-    "g7": {
-     "correct": "was opened",
-     "accept": [
-      "was opened"
-     ],
-     "label": "7. A new community centre"
-    },
-    "g8": {
-     "correct": "camouflage",
-     "accept": [
-      "camouflage"
-     ],
-     "label": "8. The Arctic fox changes colour for"
-    }
-   }
-  },
-  "exB": {
-   "prefix": "exB-",
-   "multi": false,
-   "gaps": {
-    "g1": {
-     "correct": "nonviolent resistance",
-     "accept": [
-      "nonviolent resistance"
-     ],
-     "label": "1. Fighting for change without violence"
-    },
-    "g2": {
-     "correct": "have won",
-     "accept": [
-      "have won"
-     ],
-     "label": "2. Kenyan athletes"
-    },
-    "g3": {
-     "correct": "is played",
-     "accept": [
-      "is played"
-     ],
-     "label": "3. ice hockey"
+     "label": "3. He plays hockey"
     },
     "g4": {
      "correct": "because",
@@ -96,32 +34,94 @@
      "label": "4. Created"
     },
     "g5": {
+     "correct": "wouldn't have grown",
+     "accept": [
+      "wouldn't have grown"
+     ],
+     "label": "5. Tourism"
+    },
+    "g6": {
+     "correct": "little",
+     "accept": [
+      "little"
+     ],
+     "label": "6. Workers are paid very"
+    },
+    "g7": {
+     "correct": "never",
+     "accept": [
+      "never"
+     ],
+     "label": "7. I have"
+    },
+    "g8": {
+     "correct": "had promised",
+     "accept": [
+      "had promised"
+     ],
+     "label": "8. Earlier that week, she"
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "experience other cultures first-hand",
+     "accept": [
+      "experience other cultures first-hand"
+     ],
+     "label": "1. Exchange programmes let young people"
+    },
+    "g2": {
+     "correct": "is played",
+     "accept": [
+      "is played"
+     ],
+     "label": "2. ice hockey"
+    },
+    "g3": {
+     "correct": "camouflage",
+     "accept": [
+      "camouflage"
+     ],
+     "label": "3. The Arctic fox changes colour for"
+    },
+    "g4": {
+     "correct": "have won",
+     "accept": [
+      "have won"
+     ],
+     "label": "4. Kenyan athletes"
+    },
+    "g5": {
+     "correct": "compete",
+     "accept": [
+      "compete"
+     ],
+     "label": "5. Ten teams"
+    },
+    "g6": {
+     "correct": "nonviolent resistance",
+     "accept": [
+      "nonviolent resistance"
+     ],
+     "label": "6. Fighting for change without violence"
+    },
+    "g7": {
      "correct": "have to",
      "accept": [
       "have to"
      ],
-     "label": "5."
-    },
-    "g6": {
-     "correct": "as if they still live like their ancestors",
-     "accept": [
-      "as if they still live like their ancestors"
-     ],
-     "label": "6. Indigenous peoples portrayed as"
-    },
-    "g7": {
-     "correct": "are made",
-     "accept": [
-      "are made"
-     ],
-     "label": "7. Many important decisions"
+     "label": "7."
     },
     "g8": {
-     "correct": "cycling",
+     "correct": "invests",
      "accept": [
-      "cycling"
+      "invests"
      ],
-     "label": "8. Aisha was"
+     "label": "8. If the government"
     }
    }
   },
@@ -130,60 +130,60 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "largest",
+     "correct": "are made",
      "accept": [
-      "largest"
+      "are made"
      ],
-     "label": "1. Mumbai is the"
+     "label": "1. Many important decisions"
     },
     "g2": {
-     "correct": "yet",
+     "correct": "skate",
      "accept": [
-      "yet"
+      "skate"
      ],
-     "label": "2. Has not reached its goals"
+     "label": "2. In winter, we"
     },
     "g3": {
+     "correct": "have studied",
+     "accept": [
+      "have studied"
+     ],
+     "label": "3. Many students"
+    },
+    "g4": {
      "correct": "was searching",
      "accept": [
       "was searching"
      ],
-     "label": "3. Jackson"
-    },
-    "g4": {
-     "correct": "invests",
-     "accept": [
-      "invests"
-     ],
-     "label": "4. If the government"
+     "label": "4. Jackson"
     },
     "g5": {
-     "correct": "is swimming",
+     "correct": "largest",
      "accept": [
-      "is swimming"
+      "largest"
      ],
-     "label": "5. \"Look! A polar bear"
+     "label": "5. Mumbai is the"
     },
     "g6": {
-     "correct": "is celebrated",
+     "correct": "yet",
      "accept": [
-      "is celebrated"
+      "yet"
      ],
-     "label": "6. MLK Day"
+     "label": "6. Has not reached its goals"
     },
     "g7": {
-     "correct": "produces",
+     "correct": "cycling",
      "accept": [
-      "produces"
+      "cycling"
      ],
-     "label": "7. Bollywood"
+     "label": "7. Aisha was"
     },
     "g8": {
-     "correct": "canoe",
+     "correct": "as if they still live like their ancestors",
      "accept": [
-      "canoe"
+      "as if they still live like their ancestors"
      ],
-     "label": "8. hike, camp and"
+     "label": "8. Indigenous peoples portrayed as"
     }
    }
   }
