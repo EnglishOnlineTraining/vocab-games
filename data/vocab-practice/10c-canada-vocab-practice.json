@@ -1,0 +1,379 @@
+{
+  "file": "10c-canada-vocab-practice.html",
+  "unit": "10c-canada-vocab-practice",
+  "title": "Canada — Vocabulary Practice",
+  "description": "Practise the 23 Canada words for Year 10 Oberschule: what each word means and how to use it in a sentence, with instant feedback.",
+  "flag": "🍁",
+  "classHint": "10c",
+  "words": [
+    {
+      "w": "to skate",
+      "def": "to move on ice wearing shoes with blades",
+      "mcWrong": [
+        "used to show a clear difference between two things",
+        "a huge animal with wide, flat antlers",
+        "something useful that comes from nature, like wood"
+      ],
+      "cloze": "In winter, we ___ on the frozen lake every weekend.",
+      "answer": "skate",
+      "clozeWrong": [
+        "export",
+        "fascinate",
+        "involve"
+      ]
+    },
+    {
+      "w": "to fascinate",
+      "def": "to interest someone very strongly",
+      "mcWrong": [
+        "the legal right to belong to a country",
+        "and also; in addition to",
+        "a large, strong brown bear from North America"
+      ],
+      "cloze": "Snow and ice have always ___ me. I could watch them for hours.",
+      "answer": "fascinated",
+      "clozeWrong": [
+        "skated",
+        "exported",
+        "supported"
+      ]
+    },
+    {
+      "w": "explorer",
+      "def": "a person who travels to learn about new places",
+      "mcWrong": [
+        "cruel treatment that takes away people's freedom",
+        "a huge animal with wide, flat antlers",
+        "something useful that comes from nature, like wood"
+      ],
+      "cloze": "The ___ crossed the ice for months to reach the North Pole.",
+      "answer": "explorer",
+      "clozeWrong": [
+        "oath",
+        "ceremony",
+        "province"
+      ]
+    },
+    {
+      "w": "as well as",
+      "def": "and also; in addition to",
+      "mcWrong": [
+        "a serious promise, often made in court",
+        "to interest someone very strongly",
+        "cruel treatment that takes away people's freedom"
+      ],
+      "cloze": "He plays hockey ___ baseball.",
+      "answer": "as well as",
+      "clozeWrong": [
+        "whereas",
+        "mainly",
+        "as long as"
+      ]
+    },
+    {
+      "w": "grizzly bear",
+      "def": "a large, strong brown bear from North America",
+      "mcWrong": [
+        "a language that the law of a country accepts",
+        "to interest someone very strongly",
+        "a person who travels to learn about new places"
+      ],
+      "cloze": "A ___ can weigh over 300 kilograms and loves to catch fish and eat berries.",
+      "answer": "grizzly bear",
+      "clozeWrong": [
+        "moose",
+        "province",
+        "ceremony"
+      ]
+    },
+    {
+      "w": "moose",
+      "def": "a huge animal with wide, flat antlers",
+      "mcWrong": [
+        "a shiny grey-white metal used for jewellery",
+        "the legal right to belong to a country",
+        "a person who travels to learn about new places"
+      ],
+      "cloze": "We saw a ___ with huge antlers standing in the lake.",
+      "answer": "moose",
+      "clozeWrong": [
+        "province",
+        "ceremony",
+        "grizzly bear"
+      ]
+    },
+    {
+      "w": "harsh",
+      "def": "cold, rough and unpleasant",
+      "mcWrong": [
+        "one of the large regions that make up Canada",
+        "a person who travels to learn about new places",
+        "cruel treatment that takes away people's freedom"
+      ],
+      "cloze": "The Arctic winter is ___: it can be minus 40 degrees for weeks.",
+      "answer": "harsh",
+      "clozeWrong": [
+        "official",
+        "indigenous",
+        "silver"
+      ]
+    },
+    {
+      "w": "challenging",
+      "def": "difficult in a way that tests your skills",
+      "mcWrong": [
+        "a shiny grey-white metal used for jewellery",
+        "to interest someone very strongly",
+        "a formal event for something important, such as a wedding"
+      ],
+      "cloze": "Learning two languages at school can be ___, but it is rewarding.",
+      "answer": "challenging",
+      "clozeWrong": [
+        "indigenous",
+        "official",
+        "silver"
+      ]
+    },
+    {
+      "w": "official language",
+      "def": "a language that the law of a country accepts",
+      "mcWrong": [
+        "and also; in addition to",
+        "difficult in a way that tests your skills",
+        "a serious promise, often made in court"
+      ],
+      "cloze": "French and English are the two ___ of Canada.",
+      "answer": "official languages",
+      "clozeWrong": [
+        "indigenous peoples",
+        "natural resources",
+        "grizzly bears"
+      ]
+    },
+    {
+      "w": "province",
+      "def": "one of the large regions that make up Canada",
+      "mcWrong": [
+        "a serious promise, often made in court",
+        "cruel treatment that takes away people's freedom",
+        "to interest someone very strongly"
+      ],
+      "cloze": "Québec is the biggest ___ in Canada, and most people there speak French.",
+      "answer": "province",
+      "clozeWrong": [
+        "citizenship",
+        "ceremony",
+        "oath"
+      ]
+    },
+    {
+      "w": "mainly",
+      "def": "mostly; in most cases",
+      "mcWrong": [
+        "a serious promise, often made in court",
+        "the legal right to belong to a country",
+        "a shiny grey-white metal used for jewellery"
+      ],
+      "cloze": "People in Québec speak ___ French, but many also speak English.",
+      "answer": "mainly",
+      "clozeWrong": [
+        "as well as",
+        "whereas",
+        "harsh"
+      ]
+    },
+    {
+      "w": "whereas",
+      "def": "used to show a clear difference between two things",
+      "mcWrong": [
+        "to interest someone very strongly",
+        "a language that the law of a country accepts",
+        "the legal right to belong to a country"
+      ],
+      "cloze": "In Québec they speak French, ___ most people in the rest of Canada speak English.",
+      "answer": "whereas",
+      "clozeWrong": [
+        "as long as",
+        "as well as",
+        "by the way"
+      ]
+    },
+    {
+      "w": "indigenous people",
+      "def": "the first people who lived in a place",
+      "mcWrong": [
+        "roads, railways and the basic systems a country needs",
+        "a large, strong brown bear from North America",
+        "one of the large regions that make up Canada"
+      ],
+      "cloze": "___ in Canada have lived there for thousands of years.",
+      "answer": "Indigenous people",
+      "clozeWrong": [
+        "Explorers",
+        "Provinces",
+        "Ceremonies"
+      ]
+    },
+    {
+      "w": "natural resource",
+      "def": "something useful that comes from nature, like wood",
+      "mcWrong": [
+        "to sell goods to other countries",
+        "a large, strong brown bear from North America",
+        "and also; in addition to"
+      ],
+      "cloze": "Oil, wood and iron are important ___ in Canada.",
+      "answer": "natural resources",
+      "clozeWrong": [
+        "provinces",
+        "ceremonies",
+        "oaths"
+      ]
+    },
+    {
+      "w": "iron",
+      "def": "a hard grey metal used to make steel",
+      "mcWrong": [
+        "the legal right to belong to a country",
+        "one of the large regions that make up Canada",
+        "a huge animal with wide, flat antlers"
+      ],
+      "cloze": "Cars and bridges are made of steel, which comes from ___.",
+      "answer": "iron",
+      "clozeWrong": [
+        "silver",
+        "moose",
+        "citizenship"
+      ]
+    },
+    {
+      "w": "silver",
+      "def": "a shiny grey-white metal used for jewellery",
+      "mcWrong": [
+        "and also; in addition to",
+        "cold, rough and unpleasant",
+        "used to show a clear difference between two things"
+      ],
+      "cloze": "He came second in the race, so he got a ___ medal.",
+      "answer": "silver",
+      "clozeWrong": [
+        "harsh",
+        "indigenous",
+        "challenging"
+      ]
+    },
+    {
+      "w": "reserve",
+      "def": "a large amount of oil or gas stored in the ground",
+      "mcWrong": [
+        "and also; in addition to",
+        "a serious promise, often made in court",
+        "a person who travels to learn about new places"
+      ],
+      "cloze": "The country has huge oil ___ under the desert.",
+      "answer": "reserves",
+      "clozeWrong": [
+        "provinces",
+        "ceremonies",
+        "oaths"
+      ]
+    },
+    {
+      "w": "to export",
+      "def": "to sell goods to other countries",
+      "mcWrong": [
+        "cruel treatment that takes away people's freedom",
+        "to interest someone very strongly",
+        "a formal event for something important, such as a wedding"
+      ],
+      "cloze": "Canada ___ wood and oil to many countries.",
+      "answer": "exports",
+      "clozeWrong": [
+        "skates",
+        "fascinates",
+        "supports"
+      ]
+    },
+    {
+      "w": "infrastructure",
+      "def": "roads, railways and the basic systems a country needs",
+      "mcWrong": [
+        "cold, rough and unpleasant",
+        "a shiny grey-white metal used for jewellery",
+        "the legal right to belong to a country"
+      ],
+      "cloze": "Good roads, railways and airports make up a country's ___.",
+      "answer": "infrastructure",
+      "clozeWrong": [
+        "oath",
+        "ceremony",
+        "province"
+      ]
+    },
+    {
+      "w": "oppression",
+      "def": "cruel treatment that takes away people's freedom",
+      "mcWrong": [
+        "to sell goods to other countries",
+        "something useful that comes from nature, like wood",
+        "mostly; in most cases"
+      ],
+      "cloze": "Under colonial rule, many people suffered years of ___.",
+      "answer": "oppression",
+      "clozeWrong": [
+        "ceremony",
+        "citizenship",
+        "infrastructure"
+      ]
+    },
+    {
+      "w": "ceremony",
+      "def": "a formal event for something important, such as a wedding",
+      "mcWrong": [
+        "a hard grey metal used to make steel",
+        "roads, railways and the basic systems a country needs",
+        "cruel treatment that takes away people's freedom"
+      ],
+      "cloze": "Their wedding ___ took place in a small church by the lake.",
+      "answer": "ceremony",
+      "clozeWrong": [
+        "oath",
+        "citizenship",
+        "infrastructure"
+      ]
+    },
+    {
+      "w": "oath",
+      "def": "a serious promise, often made in court",
+      "mcWrong": [
+        "used to show a clear difference between two things",
+        "one of the large regions that make up Canada",
+        "difficult in a way that tests your skills"
+      ],
+      "cloze": "Before giving evidence, the witness had to swear an ___.",
+      "answer": "oath",
+      "clozeWrong": [
+        "oppression",
+        "infrastructure",
+        "explorer"
+      ]
+    },
+    {
+      "w": "citizenship",
+      "def": "the legal right to belong to a country",
+      "mcWrong": [
+        "a huge animal with wide, flat antlers",
+        "difficult in a way that tests your skills",
+        "a person who travels to learn about new places"
+      ],
+      "cloze": "After living in Canada for five years, she applied for Canadian ___.",
+      "answer": "citizenship",
+      "clozeWrong": [
+        "oath",
+        "ceremony",
+        "infrastructure"
+      ]
+    }
+  ],
+  "sheetUrl": "https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj"
+}

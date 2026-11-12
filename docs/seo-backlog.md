@@ -942,7 +942,7 @@ in the repo the same day:
 - **"A1→C1 course pathway" infographic:** only if it shows a real offer. That's Shaun's call
   (see A4 / Tier 12 "The offer").
 
-## Tier 15 — GEO audit gaps, re-verified (2026-10-23) · Shaun + CC
+## Tier 15a — GEO audit gaps, re-verified (2026-10-23) · Shaun + CC
 Source: the read-only GEO audit of the activities host dated 2026-10-21 (repo at `35941ee`),
 which listed six gaps. Each was re-checked against `origin/main` at `ec1bef0` on 2026-10-23
 (256 indexable pages, noindex and `_template.html` dropped). Two were already fixed, so they
@@ -1008,7 +1008,7 @@ Tier 10 item 4 approval and the 4–6 week data gate), then 4 only if Shaun asks
 need no work. Net open work: one agent-safe fix, one Shaun-approved content roll-out, one optional
 style decision.
 
-## Tier 15 — AI-citation query gaps (2026-10-25) · Shaun + CC
+## Tier 15b — AI-citation query gaps (2026-10-25) · Shaun + CC
 Source: Shaun's export `activities.englishonline.train_AITopicsTopOpportunityQueries_10_23_2026.csv`
 (49 queries, all tagged "Grammar & Language Structure", each with a "Citation Range" band). The
 source tool and the exact meaning of "Citation Range" are not confirmed: read the bands as
@@ -1041,9 +1041,9 @@ relative clauses* → `themen/relativsaetze`; *present perfect continuous* → `
    `esl-grammar-exercise-draft` skill reads it.
 
 ### Open
-4. **Build the four priority ESL pages · CC, Shaun approves each publish.** One a week (see
+4. **Build the four priority ESL pages · CC, Shaun approves each publish. → Done (checked 2026-11-12: `esl-question-formation`, `esl-pronouns`, `esl-present-simple-continuous` and `esl-countable-uncountable` all exist on `origin/main`).** One a week (see
    item 7 for the pairing), via `esl-grammar-exercise-draft`.
-5. **`gr-past-progressive.html` · CC. Built 2026-10-29 (PR open).** *past continuous exercises*
+5. **`gr-past-progressive.html` · CC. → Done (live, checked 2026-11-12: the page returns 200).** Built 2026-10-29. *past continuous exercises*
    (1K–5K): four exercises, `noindex` like the other `gr-*` pages, so it does not count toward 12.2.
    Linked from `themen/past-progressive` and `grammar-activities.html`; posts to the online sheet.
 6. **Three blog posts · CC via `eol-blog-writer`, Shaun approves each WP draft.** One framework
@@ -1238,8 +1238,11 @@ indexed", 155 "Discovered – not indexed".
    ESL grammar, IELTS, business. Link each from a WordPress post that already ranks, e.g.
    `/using-past-progressive/` (348 impr) → `themen/past-progressive.html` and
    `gr-past-progressive.html`. The main domain carries the authority.
-3. **First external links to the subdomain · Shaun.** 4teachers/eduki listings, LinkedIn, a guest
-   post for eltabbjournal.com (already links to the main site).
+3. **More external links to the subdomain from other sites · Shaun.** 4teachers/eduki listings,
+   LinkedIn, a guest post for eltabbjournal.com (already links to the main site).
+   *Note 2026-11-12 (Shaun):* external links to the subdomain already exist from 4teachers, LinkedIn
+   and Bildungsserver, so "first" was wrong. This item is about getting more, and is not done. Which
+   pages those links point to has not been checked.
 4. **School-page titles get search terms · Shaun decides** (open item A5).
 5. **Optional · Shaun names pages (rule 9).** Noindex textbook-unit pages that students reach by
    direct link, not search. `10g-cultural-diversity` had a click in the last 90 days, so it stays.

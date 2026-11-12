@@ -11,7 +11,7 @@ Priorities updated with Bing data for 10–17 Oct 2026 (7-day impressions in bra
 - [x] M `/2023/11/01/breaking-the-mould-…/` (19, 0 clicks): "Public Speaking Alternatives: 27 Ways to Present" (title + description live 17 Oct)
 - [x] Same post: use "public speaking" in the intro and one H2 (live 29 Oct; the post had no H2, so a new one was added: "27 public speaking formats to try instead of slides")
 - [x] M `/2026/07/09/abitur-englisch-so-sehen-die-interaktiven-ubungspakete-aus-…/` (13, 0 clicks): "Abitur Englisch Beispielaufgaben: So sehen die Übungen aus", and link it to and from `/2026/08/17/abitur-englisch-ubungen-kostenlos-…/`
-- [ ] Push the vocab-games branch, then submit every changed URL in Bing Webmaster (URL Submission) or turn on IndexNow
+- [x] Push the vocab-games branch, then submit every changed URL in Bing Webmaster (URL Submission) or turn on IndexNow (IndexNow is on: `rebuild-indices.yml` runs `scripts/indexnow-submit.js` on each push to `main`, checked 2026-11-12)
 
 ## 2. Linking words (115 impressions; head term still at position 8 with 0 clicks after the rewrite)
 - [x] A `themen/linking-words.html`: add a list table (linking word · function · German meaning)
@@ -35,7 +35,7 @@ Priorities updated with Bing data for 10–17 Oct 2026 (7-day impressions in bra
 - [x] A `themen/passiv.html`: add links to the Year 9 passive pages ("Mehr Übungen (Klasse 9)")
 - [ ] M good-vs-bad email page: add a side-by-side image per email pair, with alt text, and a printable worksheet
 - [x] A `be-professional-emails.html`, A `be-property-management.html`, A `abitur-activities.html`: done on the branch, not pushed yet
-- [ ] 10-tips email post: skipped, it is set to noindex on purpose (decide whether that stays)
+- [x] 10-tips email post: decided 2026-10-29. Post 523 is a stub pointing to `/writing-emails-in-english/`; the noindex stays
 - [x] Link the 4 property pages to each other and to `/business-english/` (only 2 are repo pages: `be-property-management.html` and `property-management-vocabulary.html`, now linked both ways and to `/business-english/`; the 2023 WordPress articles were not touched)
 
 ## 6. Lower priority (demand quieter this week)

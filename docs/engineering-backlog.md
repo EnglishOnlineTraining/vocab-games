@@ -11,10 +11,10 @@ Status key: **Open** (worth doing, not started) · **Already done** (skip) · **
 
 ## Open
 
-- **→ Built 2026-10-13 (branch `claude/sitemap-split`, PR pending).** Six children (school, adult,
-  ielts, esl, de, general) under `sitemap-index.xml`; `robots.txt` points at the index;
-  `sitemap.xml` kept as the flat list the scripts read. Left for Shaun after merge: submit the
-  index in Search Console, then filter page indexing by each child.
+- **→ Build done; live (checked 2026-11-12: `sitemap-index.xml` returns 200).** Six children
+  (school, adult, ielts, esl, de, general) under `sitemap-index.xml`; `robots.txt` points at the
+  index; `sitemap.xml` kept as the flat list the scripts read. **Still open, Shaun only:** submit
+  the index in Search Console, then filter page indexing by each child.
   **SEO — split `sitemap.xml` into child sitemaps per section.** *Low priority* (Shaun,
   2026-10-07). Today one flat `sitemap.xml` (234 URLs), written by `scripts/build.js`, is
   submitted to GSC. Proposed: a sitemap index plus children, e.g. school (`7*`–`10*`, `msa-c-`,
