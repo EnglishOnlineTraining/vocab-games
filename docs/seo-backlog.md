@@ -1041,7 +1041,7 @@ relative clauses* → `themen/relativsaetze`; *present perfect continuous* → `
    `esl-grammar-exercise-draft` skill reads it.
 
 ### Open
-4. **Build the four priority ESL pages · CC, Shaun approves each publish.** One a week (see
+4. **Build the four priority ESL pages · CC, Shaun approves each publish. → Done (checked 2026-11-12: `esl-question-formation`, `esl-pronouns`, `esl-present-simple-continuous` and `esl-countable-uncountable` all exist on `origin/main`).** One a week (see
    item 7 for the pairing), via `esl-grammar-exercise-draft`.
 5. **`gr-past-progressive.html` · CC. → Done (live, checked 2026-11-12: the page returns 200).** Built 2026-10-29. *past continuous exercises*
    (1K–5K): four exercises, `noindex` like the other `gr-*` pages, so it does not count toward 12.2.
