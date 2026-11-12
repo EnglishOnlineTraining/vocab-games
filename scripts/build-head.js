@@ -55,6 +55,7 @@ const CHECK = process.argv.includes('--check');
 const { unitOf } = require('./extract-graded');
 const { GENERATED_BLOCKS, pageHash, datesFor } = require('./page-hash');
 const NOINDEX = require('./noindex').loadNoindex();
+const TK = require('./title-keyword');
 
 const explanations = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/explanations.json'), 'utf8'));
 const exercises = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/exercises.json'), 'utf8'));
@@ -1031,6 +1032,10 @@ function processFile(file) {
   // A forwarding page (an old address kept for saved links) is not a site page: leave it bare.
   if (/<meta\s+http-equiv=["']refresh["']/i.test(original)) return { file, skipped: 'redirect' };
   let html = GENERATED_BLOCKS.reduce(stripBlock, original);
+  // Strip the title keyword first so everything derived from the title (og:title,
+  // JSON-LD, breadcrumbs) uses the plain unit name; it goes back on before writing.
+  const keyword = TK.keywordFor(file, html, NOINDEX);
+  if (keyword) html = html.replace(/<title>([\s\S]*?)<\/title>/i, (_, t) => `<title>${TK.stripKeyword(t.trim())}</title>`);
 
   const headEnd = html.search(/<\/head>/i);
   if (headEnd === -1) return { file, skipped: 'no <head>' };
@@ -1119,6 +1124,8 @@ function processFile(file) {
     html = html.replace(/<\/body>/i, explainBlock(html) + '</body>');
     hasExplain = true;
   }
+
+  html = TK.applyKeyword(html, keyword);
 
   if (!CHECK && html !== original) fs.writeFileSync(abs, html);
   return { file, changed: html !== original, noscript: needsNoscript, skip: wantsSkip, noLandmark, explain: hasExplain, staleDesc };
