@@ -37,26 +37,48 @@ body.print-mode .app-header, body.print-mode main { display:none; }
 .paper-fields span { border-bottom:1px solid #000; padding-top:1.1rem; }
 .paper h2 { font-size:11.5pt; margin:.9rem 0 .2rem; }
 #print-out .instr { font-size:10pt; font-style:italic; margin:0 0 .3rem; }
-.paper ol { margin:0; padding-left:1.4rem; font-size:10.5pt; line-height:2.1; }
-.paper .pa { font-style:italic; font-size:9.5pt; line-height:1.4; display:block; margin-top:.3rem; }
-.paper .ptext { font-size:10.5pt; line-height:2.2; }
+.paper ol { margin:0; padding-left:1.4rem; font-size:10.5pt; line-height:2.8; }
+.paper .pa { font-style:italic; font-size:9.5pt; line-height:1.4; display:block; margin-top:.5rem; }
+.paper .ptext { font-size:10.5pt; line-height:3; }
 .pgap { display:inline-block; min-width:30mm; border-bottom:1px solid #000; }
+/* Gap width per section, sized for the longest handwritten answer in that section's pool
+   (one width per section, so a gap never hints at its answer's length). */
+.psec { break-inside:avoid; page-break-inside:avoid; }
+.psec li { break-inside:avoid; page-break-inside:avoid; }
+.s1 .pgap { min-width:58mm; }
+.s2 .pgap { min-width:34mm; }
+.s3 .pgap { min-width:42mm; }
+.s4 .pgap { min-width:40mm; }
+.s3 ol { line-height:2.4; }
+.s3 .pa { margin-top:.3rem; }
+.s4 .ptext { line-height:2.5; }
 /* LRS papers: the same layout ideas as html.exam-dyslexia in exam.css, sized for paper. */
 .paper.lrs { font-family:Verdana, Geneva, sans-serif; letter-spacing:.02em; word-spacing:.1em; }
-.paper.lrs ol, .paper.lrs .ptext { font-size:12.5pt; line-height:2.6; }
+.paper.lrs ol, .paper.lrs .ptext { font-size:12pt; line-height:2.8; }
 #print-out .paper.lrs .instr, .paper.lrs .pa { font-style:normal; font-size:11pt; }
 .paper.lrs .pa { font-weight:700; }
-.paper.lrs .pgap { min-width:40mm; }
+.paper.lrs .s1 .pgap { min-width:66mm; }
+.paper.lrs .s2 .pgap { min-width:42mm; }
+.paper.lrs .s3 .pgap { min-width:52mm; }
+.paper.lrs .s4 .pgap { min-width:54mm; }
 .paper-foot { font-size:10pt; margin-top:.8rem; text-align:right; }
 .keys h1 { font-size:14pt; margin:1rem 0 .2rem; }
 .key-block { border:1px solid #000; padding:.4rem .6rem; margin:.5rem 0; font-size:9.5pt; line-height:1.45; break-inside:avoid; page-break-inside:avoid; }
 .key-block strong { font-size:10.5pt; }
 @media print {
-  @page { size:A4; margin:14mm; }
-  body { background:#fff; }
+  @page { size:A4; margin:12mm; }
+  body { background:#fff; padding:0 !important; min-height:0; }   /* consent.js pads body inline for its banner: a blank last page */
   .print-panel, body.print-mode > :not(#print-mode) { display:none !important; }   /* consent banner, skip link */
   #print-out { padding:0; max-width:none; }
-  .paper { border:0; padding:0; break-after:page; page-break-after:always; }
+  .paper { border:0; padding:0; }
+  .paper + .paper { break-before:page; page-break-before:always; }   /* not break-after: that left a blank last page */
+  /* Normal paper = 2 pages (Sections 1–2, then 3–4): one double-sided sheet.
+     LRS paper = 4 pages, one section per page, so it also stays an even count.
+     ponytail: fixed breaks, sized by hand. Page 2 of a normal paper has ~5 mm spare with the
+     current pools; a longer Section 3 item or text overflows to a 3rd page. The spec's
+     page-count test catches that; then tighten .s3/.s4 line-height. */
+  .paper .s3, .paper.lrs .psec + .psec { break-before:page; page-break-before:always; }
+  .paper .s3 h2, .paper.lrs .psec + .psec h2 { margin-top:0; }   /* starts a page */
   .keys { break-before:page; }
 }
 </style>
@@ -708,17 +730,17 @@ function paperHTML(code){
     + '<div class="paper-head"><h1>'+esc(TITLE)+'</h1><span class="code">Version '+esc(code)+'</span></div>'
     + '<div class="paper-fields"><span>Name:</span><span>Class:</span><span>Date:</span></div>'
     + '<p class="instr">'+BASE_EXAM_MINS+' minutes · 38 points · Write only the missing words.</p>'
-    + '<h2>1 Complete the sentences (10 points)</h2><p class="instr">'+INSTR[0]+'</p>'
-    + '<ol>'+P.s1.map(function(it){ return li(it, it.hint); }).join('')+'</ol>'
-    + '<h2>2 Rules for the outback (8 points)</h2><p class="instr">'+INSTR[1]+'</p>'
-    + '<ol>'+P.s2.map(function(it){ return li(it, it.hint); }).join('')+'</ol>'
-    + '<h2>3 Same meaning (8 points)</h2><p class="instr">'+INSTR[2]+'</p>'
-    + '<ol>'+P.s3.map(function(it){ return '<li><span class="pa">'+esc(it.active)+'</span>'+esc(it.before)+PGAP+esc(it.after)+'</li>'; }).join('')+'</ol>'
-    + '<h2>4 Complete the text (12 points)</h2><p class="instr">'+INSTR[3]+'</p>'
+    + '<div class="psec s1"><h2>1 Complete the sentences (10 points)</h2><p class="instr">'+INSTR[0]+'</p>'
+    + '<ol>'+P.s1.map(function(it){ return li(it, it.hint); }).join('')+'</ol></div>'
+    + '<div class="psec s2"><h2>2 Rules for the outback (8 points)</h2><p class="instr">'+INSTR[1]+'</p>'
+    + '<ol>'+P.s2.map(function(it){ return li(it, it.hint); }).join('')+'</ol></div>'
+    + '<div class="psec s3"><h2>3 Same meaning (8 points)</h2><p class="instr">'+INSTR[2]+'</p>'
+    + '<ol>'+P.s3.map(function(it){ return '<li><span class="pa">'+esc(it.active)+'</span>'+esc(it.before)+PGAP+esc(it.after)+'</li>'; }).join('')+'</ol></div>'
+    + '<div class="psec s4"><h2>4 Complete the text (12 points)</h2><p class="instr">'+INSTR[3]+'</p>'
     + '<p class="ptext"><strong>'+esc(P.text.title)+'.</strong> '+P.text.parts.map(function(p){
         return typeof p === 'string' ? esc(p) : '('+(++n)+') '+PGAP+' ('+esc(p.hint)+')';
       }).join('')+'</p>'
-    + '<p class="paper-foot">Points: ____ / 38</p>'
+    + '<p class="paper-foot">Points: ____ / 38</p></div>'
     + '</section>';
 }
 
