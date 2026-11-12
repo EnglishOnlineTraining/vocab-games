@@ -101,7 +101,7 @@ node scripts/verify-exercise.js be-<topic>.html
 node scripts/validate-explanations.js
 ```
 
-On a branch, `build.js` leaves hubs, sitemaps and `exercises.json` at the merge-base, so the new
+On a branch, `build.js` leaves hubs, sitemaps and `data/exercises.json` at the merge-base, so the new
 card missing from the local hub is expected. `main`'s bot rebuilds them after the merge.
 
 Then load the page over HTTP and click through it: the empty name is refused, every step

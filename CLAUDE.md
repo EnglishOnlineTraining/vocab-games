@@ -41,7 +41,8 @@ non-trivial logic — an E2E spec in `tests/` by preference. Imported here so ev
    German school curriculum and used or tested in real classrooms. Internal files (the topic
    pools) may keep the textbook names.
 5. **Work in `~/Documents/GitHub/vocab-games` on a new branch from `origin/main`. Do not create git
-   worktrees or new clones.** Run `git fetch` first. If that clone has uncommitted changes, stop and
+   worktrees or new clones by hand.** A session the desktop app or `/coordinate` starts in its own
+   worktree is fine (Shaun, 2026-11-12): it lets sessions run side by side. Run `git fetch` first. If that clone has uncommitted changes, stop and
    ask. Do not use the old clone at `Claude Files/vocab-games`; it can be far behind.
 6. **Pushing to `main` publishes to students immediately.** Check the changed pages, and don't
    push or merge without being asked.
@@ -52,6 +53,11 @@ non-trivial logic — an E2E spec in `tests/` by preference. Imported here so ev
    tables, forms, quizzes, schema, internal links, CTAs, noindex state).
 9. **Never delete, unpublish, stub or noindex a page with ≥ 600 words or any click in the last
    90 days** unless Shaun names that page.
+
+10. **"Printable" means black and white.** When Shaun asks for printable material, use black on white
+    only: no colour, no grey fills, no `print-color-adjust: exact`; tell boxes apart with solid, dashed or
+    dotted borders. Use the template's PRINTABLE block and `check-worksheet.sh <file> --bw`. Otherwise
+    colour is fine.
 
 ---
 
