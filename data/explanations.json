@@ -22680,5 +22680,61 @@
     }
    }
   }
+ },
+ "uni-b2-problem-calls": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "Hello… I'm calling ___ the heating.",
+     "correct": "about",
+     "why": "Use calling about + topic to say why you are phoning."
+    },
+    "g2": {
+     "label": "Could you possibly ___ someone round today?",
+     "correct": "send",
+     "why": "After could you (possibly), use the base form of the verb."
+    },
+    "g3": {
+     "label": "I'm afraid that ___ be possible this week.",
+     "correct": "won't",
+     "why": "Won't + be is the future; doesn't and isn't cannot go before be."
+    },
+    "g4": {
+     "label": "I understand that, ___ the flat is really cold…",
+     "correct": "but",
+     "why": "But adds your counter-argument after you show you understand."
+    },
+    "g5": {
+     "label": "What ___ I bring you an electric heater…?",
+     "correct": "if",
+     "why": "What if + clause makes a suggestion; what about needs a noun or -ing."
+    },
+    "g6": {
+     "label": "6. Sorry, I didn't quite ___ that.",
+     "correct": "catch",
+     "why": "Catch means hear or understand, a fixed phrase on the phone."
+    },
+    "g7": {
+     "label": "7. So, ___ I understand you correctly, …",
+     "correct": "if",
+     "why": "If I understand you correctly checks that you heard the details right."
+    },
+    "g8": {
+     "label": "8. I completely ___ why you are upset.",
+     "correct": "understand",
+     "why": "Understand why shows empathy; accept and allow do not fit here."
+    },
+    "g9": {
+     "label": "9. I'd really ___ it if you could call me back today.",
+     "correct": "appreciate",
+     "why": "The fixed phrase is I'd appreciate it if you could…"
+    },
+    "g10": {
+     "label": "10. I'll send you a short email to ___ what we agreed.",
+     "correct": "confirm",
+     "why": "To confirm means to make an agreement clear and sure in writing."
+    }
+   }
+  }
  }
 }
