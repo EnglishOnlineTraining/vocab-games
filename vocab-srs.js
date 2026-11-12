@@ -127,7 +127,7 @@ var S = null;
 
 function startSession() {
   var words = pickWords();
-  S = { words: words, round: 1, missed: { 1: {}, 2: {} }, queue: shuffle(words), cleared: 0, answered: false };
+  S = { words: words, round: 1, missed: { 1: {}, 2: {} }, spelt: {}, queue: shuffle(words), cleared: 0, answered: false };
   show('scr-round');
   showCard();
 }
@@ -180,6 +180,7 @@ function answer(ok, btn, given, slip) {
   S.queue.shift();
   if (ok) {
     S.cleared++;
+    if (slip) S.spelt[word] = true;
     fb.className = 'ok';
     fb.textContent = slip ? '✓ Right word. Check the spelling: ' + word : '✓ Right: ' + word;
   } else {
@@ -212,7 +213,8 @@ function accepted(word) {
 
 /* With the easier-to-read option on (exercise.js), a small spelling slip
    (eolSpellingClose, spelling.js) counts as right: the student sees the correct
-   spelling, and the word keeps its level instead of going back to level 1. */
+   spelling, and the word keeps its level: it neither goes back to level 1 nor
+   moves up (finishSession). */
 function checkTyped() {
   var given = document.getElementById('typed').value;
   if (!given.trim() || S.answered) return;
@@ -233,12 +235,15 @@ function nextCard() {
 
 /* Across sessions: right first time in BOTH rounds moves a word up a level and
    pushes its next review further away; any slip sends it back to level 1, due
-   again in the very next session. */
+   again in the very next session. A spelling slip accepted with the
+   easier-to-read option on keeps the word's level (at least 1): known in
+   meaning, not yet in spelling. */
 function finishSession() {
   var t = today(), slipped = [];
   S.words.forEach(function(w) {
     var s = st(w), miss = S.missed[1][w] || S.missed[2][w];
     if (miss) { slipped.push(w); prog.w[w] = { lvl: 1, due: t }; }
+    else if (S.spelt[w]) { var keep = Math.max(s.lvl, 1); prog.w[w] = { lvl: keep, due: t + DAYS[keep] }; }
     else { var lvl = Math.min(s.lvl + 1, DAYS.length - 1); prog.w[w] = { lvl: lvl, due: t + DAYS[lvl] }; }
   });
   prog.sessions++;
@@ -249,7 +254,7 @@ function finishSession() {
   document.getElementById('end-score').innerHTML = 'Right first time: <strong>' + r1 + ' / ' + S.words.length + '</strong> in Round 1 (choose) and <strong>' + r2 + ' / ' + S.words.length + '</strong> in Round 2 (write).';
   document.getElementById('end-words').innerHTML = S.words.map(function(w) {
     var s = prog.w[w], when = s.due === t ? 'next session' : 'in ' + (s.due - t) + ' day' + (s.due - t === 1 ? '' : 's');
-    return '<li>' + (slipped.indexOf(w) === -1 ? '✓ ' : '✗ ') + '<strong>' + esc(w) + '</strong> — comes back ' + when + '</li>';
+    return '<li>' + (slipped.indexOf(w) === -1 ? '✓ ' : '✗ ') + '<strong>' + esc(w) + '</strong>' + (S.spelt[w] ? ' (check the spelling)' : '') + ' — comes back ' + when + '</li>';
   }).join('');
   document.getElementById('focus-words').innerHTML = slipped.length
     ? 'You missed these at least once. They come back in your next session: <strong>' + slipped.map(esc).join(', ') + '</strong>'
