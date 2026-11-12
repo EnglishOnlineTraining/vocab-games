@@ -55,19 +55,6 @@ follow-up from the GEO backlog Shaun uploaded 2026-08-22, after the repo-side it
 in PRs #25 and #26.
 
 **Do:**
-- [x] **`FAQPage` schema on `/faq/`** — done 2026-10-23 (Shaun). The old FAQ (page **351**) was an
-  unpublished tutoring-era draft (€50/€100/€200 prices, booking links, cancellation terms), so it was
-  rewritten from the live About and Business English pages (9 bilingual Q&As, contact
-  `learn@englishonline.training`), its meta description and excerpt updated, and published. `/faq/`
-  returns 200 with one `FAQPage` block built from the visible English text. Dropped on purpose: booking,
-  prices for lessons, cancellation and availability. Keep the FAQ in step with `/about/` and
-  `/business-english/` when prices or offer change.
-- [x] **`Person` + `EducationalOccupationalCredential` schema on `/about/` or `/about-me/`** — done. The schema was already live on `/about/` (page **2224**; page 80 is a noindex "moved" stub); 2026-10-21 its `email` and the visible mailto links were changed from the old `pm.me` address to `learn@englishonline.training`. Original note: (page **80** —
-  already touched once, see item 3 below, for its broken WhatsApp button). Source every claim only
-  from what the Impressum/certificates pages already state on the live site — do not assert a
-  credential, years-of-experience figure, or claim the site doesn't already make. Add `Speakable`
-  schema (`cssSelector` on the credentials/bio sections) while you're in there, per the backlog's
-  P3.3.
 - **Link the 10 orphaned `/testimonial/*/` pages into navigation or a relevant hub page.** Found via
   the Tier 6 audit with zero inbound links from anywhere on the site.
   **Done 2026-10-28:** `/testimonial/` (which lists all the pages) is now linked from
@@ -95,21 +82,6 @@ the live site and found to not match it):
 Pages that work, but leak link equity outward or bypass the corporate funnel. Full detail:
 `docs/eol-backlog-plan.md` → "Tier 6" → bucket C.
 
-- [x] **1133, 1019, 651** — done (verified live 2026-10-21: 1133 and 651 end with a CTA group to `/business-english/` (1965) / the Activity Directory; 1019 links to 1965 and `business-activities.html`). Original note: the "why learn (business) English" cluster. Generic pre-strategy content;
-  **1133 has zero internal links of any kind**, 1019 links only to 978, none link to **1965** (the
-  corporate funnel) or to any interactive exercise on the activities host. Add links to both.
-- [x] **1393 (Business English Vocabulary sets)** — done (29 Oct 2026: six `be-*` links added, Quizlet links kept). Original note: links out to 20 third-party Quizlet flashcard sets via
-  `bit.ly` and links to nothing on the site itself. Add links to
-  `ielts-vocabulary-glossary.html`-equivalent content and to `business-activities.html`'s own
-  vocabulary exercises on the activities host.
-- [x] **939 (Group Online English Courses)** — done (verified live 2026-10-21: no Calendly; its only CTA is "Corporate Business English training →" to `/business-english/` (1965); the page is a draft). Original note: Tier 4 flagged this as worth *promoting* (its group format
-  fits the corporate strategy better than 915's individual one, which was unpublished), but its only
-  CTA still routes straight to Calendly at an individual rate, bypassing the corporate enquiry funnel
-  (1965) entirely. Reroute the CTA.
-- [x] **1757 (Vocabulary Games)** — done (verified live 2026-10-21: no Calendly link left; it links to the Activity Directory and `vocab-games.html`). Original note: ends with a "Book a lesson with me here" link straight to
-  `calendly.com/sptrezise`, bypassing the site's own `/book-a-lesson/` page (**168**) entirely.
-  Reroute to 168 (or reconsider whether Calendly is the right destination at all, matching whatever
-  the current thinking on 168/939 above lands on).
 
 ---
 
@@ -160,7 +132,6 @@ Pages that work, but leak link equity outward or bypass the corporate funnel. Fu
   still shows the pm.me address.
   Also approved but not yet done: set the form's `to` to `learn@englishonline.training`, together with whichever
   route is chosen. Page 1965 was modified 2026-10-28 14:32, so re-read it before any edit.
-- [x] **`/university-english/` contact form still sent to `pm.me`** — done 2026-10-28 (page **1996**, block 19, `jetpack/contact-form`). Its `to` is now `learn@englishonline.training`. Changed with `page-sections.replace` on that one block; a re-fetch with `context: "edit"` showed the form still a dynamic block with its four inner blocks (name, email, message, button) and every other block's hash unchanged. Subject line unchanged. Page 1965's form (above) is a separate item and still open.
 - **Homepage hero button copy** — the "Let's start a conversation" button (fixed 2026-08-08 to point
   at a MailerLite hosted form instead of a stray Google Form) still has placeholder copy on both the
   button label and/or the MailerLite hosted-page itself. Needs Shaun's real copy before it's genuinely
@@ -187,3 +158,37 @@ through 6 in `docs/eol-backlog-plan.md` are almost entirely done and Shaun-appro
 - `docs/seo-backlog.md` — Tier 7 (this session's GEO follow-up) and all later SEO tiers.
 - `CLAUDE.md` → "⚠ Known traps — read before editing live WordPress or testing submissions" — the
   three traps summarised in the safety rules above, in full.
+
+---
+
+## Done (moved here 2026-11-12; kept for the record)
+
+- [x] **`FAQPage` schema on `/faq/`** — done 2026-10-23 (Shaun). The old FAQ (page **351**) was an
+  unpublished tutoring-era draft (€50/€100/€200 prices, booking links, cancellation terms), so it was
+  rewritten from the live About and Business English pages (9 bilingual Q&As, contact
+  `learn@englishonline.training`), its meta description and excerpt updated, and published. `/faq/`
+  returns 200 with one `FAQPage` block built from the visible English text. Dropped on purpose: booking,
+  prices for lessons, cancellation and availability. Keep the FAQ in step with `/about/` and
+  `/business-english/` when prices or offer change.
+- [x] **`Person` + `EducationalOccupationalCredential` schema on `/about/` or `/about-me/`** — done. The schema was already live on `/about/` (page **2224**; page 80 is a noindex "moved" stub); 2026-10-21 its `email` and the visible mailto links were changed from the old `pm.me` address to `learn@englishonline.training`. Original note: (page **80** —
+  already touched once, see item 3 below, for its broken WhatsApp button). Source every claim only
+  from what the Impressum/certificates pages already state on the live site — do not assert a
+  credential, years-of-experience figure, or claim the site doesn't already make. Add `Speakable`
+  schema (`cssSelector` on the credentials/bio sections) while you're in there, per the backlog's
+  P3.3.
+- [x] **1133, 1019, 651** — done (verified live 2026-10-21: 1133 and 651 end with a CTA group to `/business-english/` (1965) / the Activity Directory; 1019 links to 1965 and `business-activities.html`). Original note: the "why learn (business) English" cluster. Generic pre-strategy content;
+  **1133 has zero internal links of any kind**, 1019 links only to 978, none link to **1965** (the
+  corporate funnel) or to any interactive exercise on the activities host. Add links to both.
+- [x] **1393 (Business English Vocabulary sets)** — done (29 Oct 2026: six `be-*` links added, Quizlet links kept). Original note: links out to 20 third-party Quizlet flashcard sets via
+  `bit.ly` and links to nothing on the site itself. Add links to
+  `ielts-vocabulary-glossary.html`-equivalent content and to `business-activities.html`'s own
+  vocabulary exercises on the activities host.
+- [x] **939 (Group Online English Courses)** — done (verified live 2026-10-21: no Calendly; its only CTA is "Corporate Business English training →" to `/business-english/` (1965); the page is a draft). Original note: Tier 4 flagged this as worth *promoting* (its group format
+  fits the corporate strategy better than 915's individual one, which was unpublished), but its only
+  CTA still routes straight to Calendly at an individual rate, bypassing the corporate enquiry funnel
+  (1965) entirely. Reroute the CTA.
+- [x] **1757 (Vocabulary Games)** — done (verified live 2026-10-21: no Calendly link left; it links to the Activity Directory and `vocab-games.html`). Original note: ends with a "Book a lesson with me here" link straight to
+  `calendly.com/sptrezise`, bypassing the site's own `/book-a-lesson/` page (**168**) entirely.
+  Reroute to 168 (or reconsider whether Calendly is the right destination at all, matching whatever
+  the current thinking on 168/939 above lands on).
+- [x] **`/university-english/` contact form still sent to `pm.me`** — done 2026-10-28 (page **1996**, block 19, `jetpack/contact-form`). Its `to` is now `learn@englishonline.training`. Changed with `page-sections.replace` on that one block; a re-fetch with `context: "edit"` showed the form still a dynamic block with its four inner blocks (name, email, message, button) and every other block's hash unchanged. Subject line unchanged. Page 1965's form (above) is a separate item and still open.
