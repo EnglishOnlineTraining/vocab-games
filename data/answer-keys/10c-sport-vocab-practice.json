@@ -1,0 +1,527 @@
+{
+ "unit": "10c-sport-vocab-practice",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "a person who teaches a sports team",
+     "accept": [
+      "a person who teaches a sports team"
+     ],
+     "label": "…e second half a point. Every word from the list comes up once. Choose the meaning 1. coach"
+    },
+    "g2": {
+     "correct": "one of the equal parts of a match",
+     "accept": [
+      "one of the equal parts of a match"
+     ],
+     "label": "…sed or annoyed only if; on the condition that a person who teaches a sports team 2. period"
+    },
+    "g3": {
+     "correct": "to stop doing something and leave it",
+     "accept": [
+      "to stop doing something and leave it"
+     ],
+     "label": "…rly to improve only if; on the condition that one of the equal parts of a match 3. to quit"
+    },
+    "g4": {
+     "correct": "a sport of running and jumping over obstacles",
+     "accept": [
+      "a sport of running and jumping over obstacles"
+     ],
+     "label": "…o do something to stop doing something and leave it to take part in an activity 4. parkour"
+    },
+    "g5": {
+     "correct": "needing someone else to look after you",
+     "accept": [
+      "needing someone else to look after you"
+     ],
+     "label": "…ay when you are surprised or annoyed to practise a sport regularly to improve 5. dependent"
+    },
+    "g6": {
+     "correct": "ready to give a lot of time and effort",
+     "accept": [
+      "ready to give a lot of time and effort"
+     ],
+     "label": "…fter you to take part in an activity a punishment when a player breaks a rule 6. committed"
+    },
+    "g7": {
+     "correct": "to trust someone to help you",
+     "accept": [
+      "to trust someone to help you"
+     ],
+     "label": "…cular time to help a person or cheer for a team in place of something else 7. to rely (on)"
+    },
+    "g8": {
+     "correct": "a punishment when a player breaks a rule",
+     "accept": [
+      "a punishment when a player breaks a rule"
+     ],
+     "label": "…hed doing or using something words you use to add something you just thought of 8. penalty"
+    },
+    "g9": {
+     "correct": "needing a lot of effort and energy",
+     "accept": [
+      "needing a lot of effort and energy"
+     ],
+     "label": "…punishment when a player breaks a rule needing someone else to look after you 9. demanding"
+    },
+    "g10": {
+     "correct": "the ability to control yourself and follow rules",
+     "accept": [
+      "the ability to control yourself and follow rules"
+     ],
+     "label": "…a punishment when a player breaks a rule needing a lot of effort and energy 10. discipline"
+    },
+    "g11": {
+     "correct": "a session of hard physical exercise",
+     "accept": [
+      "a session of hard physical exercise"
+     ],
+     "label": "…to control yourself and follow rules to have finished doing or using something 11. workout"
+    },
+    "g12": {
+     "correct": "to kick or throw the ball to a team-mate",
+     "accept": [
+      "to kick or throw the ball to a team-mate"
+     ],
+     "label": "… it is a session of hard physical exercise happening now, not recorded earlier 12. to pass"
+    },
+    "g13": {
+     "correct": "to practise a sport regularly to improve",
+     "accept": [
+      "to practise a sport regularly to improve"
+     ],
+     "label": "… kick or throw the ball to a team-mate a promise to give your time and effort 13. to train"
+    },
+    "g14": {
+     "correct": "to try to beat other people or teams",
+     "accept": [
+      "to try to beat other people or teams"
+     ],
+     "label": "…rove a person who teaches a sports team to make someone part of an activity 14. to compete"
+    },
+    "g15": {
+     "correct": "to ask for something in a strong way",
+     "accept": [
+      "to ask for something in a strong way"
+     ],
+     "label": "… doing something and leave it a team sport played with sticks that have nets 15. to demand"
+    },
+    "g16": {
+     "correct": "a promise to give your time and effort",
+     "accept": [
+      "a promise to give your time and effort"
+     ],
+     "label": "…ready to give a lot of time and effort to ask for something in a strong way 16. commitment"
+    },
+    "g17": {
+     "correct": "the reason why you want to do something",
+     "accept": [
+      "the reason why you want to do something"
+     ],
+     "label": "…ick or throw the ball to a team-mate a promise to give your time and effort 17. motivation"
+    },
+    "g18": {
+     "correct": "a victory in a game or competition",
+     "accept": [
+      "a victory in a game or competition"
+     ],
+     "label": "…cise happening now, not recorded earlier to have finished doing or using something 18. win"
+    },
+    "g19": {
+     "correct": "having decided to succeed, however hard it is",
+     "accept": [
+      "having decided to succeed, however hard it is"
+     ],
+     "label": "…ion to stop doing something and leave it a person who teaches a sports team 19. determined"
+    },
+    "g20": {
+     "correct": "to make someone part of an activity",
+     "accept": [
+      "to make someone part of an activity"
+     ],
+     "label": "…o succeed, however hard it is a sport of running and jumping over obstacles 20. to involve"
+    },
+    "g21": {
+     "correct": "not wanting to do something",
+     "accept": [
+      "not wanting to do something"
+     ],
+     "label": "…o make someone part of an activity to have finished doing or using something 21. reluctant"
+    },
+    "g22": {
+     "correct": "to take part in an activity",
+     "accept": [
+      "to take part in an activity"
+     ],
+     "label": "…rong feeling of energy and unity in a group not wanting to do something 22. to participate"
+    },
+    "g23": {
+     "correct": "happening now, not recorded earlier",
+     "accept": [
+      "happening now, not recorded earlier"
+     ],
+     "label": "… in an activity only if; on the condition that a person who teaches a sports team 23. live"
+    },
+    "g24": {
+     "correct": "to help a person or cheer for a team",
+     "accept": [
+      "to help a person or cheer for a team"
+     ],
+     "label": "…cles a person who teaches a sports team happening now, not recorded earlier 24. to support"
+    },
+    "g25": {
+     "correct": "a team sport played with sticks that have nets",
+     "accept": [
+      "a team sport played with sticks that have nets"
+     ],
+     "label": "…feeling of energy and unity in a group a promise to give your time and effort 25. lacrosse"
+    },
+    "g26": {
+     "correct": "a strong feeling of energy and unity in a group",
+     "accept": [
+      "a strong feeling of energy and unity in a group"
+     ],
+     "label": "…of a team sport played with sticks that have nets as good as it can possibly be 26. spirit"
+    },
+    "g27": {
+     "correct": "as good as it can possibly be",
+     "accept": [
+      "as good as it can possibly be"
+     ],
+     "label": "…o take part in an activity a strong feeling of energy and unity in a group 27. at its best"
+    },
+    "g28": {
+     "correct": "words you use to add something you just thought of",
+     "accept": [
+      "words you use to add something you just thought of"
+     ],
+     "label": "…f time and effort as good as it can possibly be to take part in an activity 28. by the way"
+    },
+    "g29": {
+     "correct": "the way you feel at a particular time",
+     "accept": [
+      "the way you feel at a particular time"
+     ],
+     "label": "…thought of a punishment when a player breaks a rule as good as it can possibly be 29. mood"
+    },
+    "g30": {
+     "correct": "a word you say when you are surprised or annoyed",
+     "accept": [
+      "a word you say when you are surprised or annoyed"
+     ],
+     "label": "…help you a promise to give your time and effort needing a lot of effort and energy 30. man"
+    },
+    "g31": {
+     "correct": "to have finished doing or using something",
+     "accept": [
+      "to have finished doing or using something"
+     ],
+     "label": "…are surprised or annoyed a sport of running and jumping over obstacles 31. to be done with"
+    },
+    "g32": {
+     "correct": "in place of something else",
+     "accept": [
+      "in place of something else"
+     ],
+     "label": "…ing as good as it can possibly be to have finished doing or using something 32. instead of"
+    },
+    "g33": {
+     "correct": "to be tired of something and want it to stop",
+     "accept": [
+      "to be tired of something and want it to stop"
+     ],
+     "label": "… an activity to trust someone to help you in place of something else 33. to be sick of sth"
+    },
+    "g34": {
+     "correct": "only if; on the condition that",
+     "accept": [
+      "only if; on the condition that"
+     ],
+     "label": "…omise to give your time and effort a punishment when a player breaks a rule 34. as long as"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "demand",
+     "accept": [
+      "demand"
+     ],
+     "label": "1. The fans ______ a better performance after three losses.",
+     "why": "To demand is to ask for something strongly; the fans want a better performance."
+    },
+    "g2": {
+     "correct": "lacrosse",
+     "accept": [
+      "lacrosse"
+     ],
+     "label": "2. In Canada, many children play ______ with a stick that has a small net.",
+     "why": "Lacrosse is the team sport played with a stick that has a small net."
+    },
+    "g3": {
+     "correct": "compete",
+     "accept": [
+      "compete"
+     ],
+     "label": "3. Ten teams ______ for the national title every year.",
+     "why": "Teams compete when they try to beat each other, here for the national title."
+    },
+    "g4": {
+     "correct": "spirit",
+     "accept": [
+      "spirit"
+     ],
+     "label": "4. Despite the loss, the team's ______ was great: everyone sang together on the bus.",
+     "why": "Team spirit is the strong feeling of unity in a group, shown by singing together."
+    },
+    "g5": {
+     "correct": "participate",
+     "accept": [
+      "participate"
+     ],
+     "label": "5. Everyone should ______ in the discussion today.",
+     "why": "To participate in something is to take part in it."
+    },
+    "g6": {
+     "correct": "Man",
+     "accept": [
+      "Man"
+     ],
+     "label": "6. ______, that was an amazing goal! I cannot believe it!",
+     "why": "'Man' is an exclamation showing surprise, here at an amazing goal."
+    },
+    "g7": {
+     "correct": "demanding",
+     "accept": [
+      "demanding"
+     ],
+     "label": "7. My job as a nurse is very ______: I work long hours and have little time to rest.",
+     "why": "A demanding job needs a lot of effort and energy, so there is little time to rest."
+    },
+    "g8": {
+     "correct": "mood",
+     "accept": [
+      "mood"
+     ],
+     "label": "8. Sorry, I was in a bad ______ yesterday. I did not mean to shout.",
+     "why": "Your mood is how you feel at a given time; a bad mood explains shouting."
+    },
+    "g9": {
+     "correct": "pass",
+     "accept": [
+      "pass"
+     ],
+     "label": "9. In basketball, you must ______ the ball to a team-mate before you can shoot.",
+     "why": "To pass the ball is to give it to a team-mate."
+    },
+    "g10": {
+     "correct": "periods",
+     "accept": [
+      "periods"
+     ],
+     "label": "10. The match has three ______ of twenty minutes each.",
+     "why": "A match is divided into equal parts called periods, as in ice hockey."
+    },
+    "g11": {
+     "correct": "discipline",
+     "accept": [
+      "discipline"
+     ],
+     "label": "11. You need a lot of ______ to get up at six and train every day.",
+     "why": "Discipline is control over yourself; it helps you get up early and train every day."
+    },
+    "g12": {
+     "correct": "quit",
+     "accept": [
+      "quit"
+     ],
+     "label": "12. She was tired of losing, so she decided to ______ the team and never come back.",
+     "why": "To quit is to stop and leave for good; 'never come back' shows she left the team."
+    },
+    "g13": {
+     "correct": "reluctant",
+     "accept": [
+      "reluctant"
+     ],
+     "label": "13. He was ______ to speak in front of the class, so he stayed quiet.",
+     "why": "Reluctant means not wanting to do something; he stayed quiet instead of speaking."
+    },
+    "g14": {
+     "correct": "at its best",
+     "accept": [
+      "at its best"
+     ],
+     "label": "14. Berlin in summer is ______: long evenings, open-air concerts and full parks.",
+     "why": "'At its best' means as good as it can be, which fits a lovely summer in Berlin."
+    },
+    "g15": {
+     "correct": "coach",
+     "accept": [
+      "coach"
+     ],
+     "label": "15. The ______ told the players to run faster in the second half.",
+     "why": "A coach is the person who trains a team and tells the players what to do."
+    },
+    "g16": {
+     "correct": "instead of",
+     "accept": [
+      "instead of"
+     ],
+     "label": "16. She stayed in and read a book ______ going to the party, because she wanted a quiet evening.",
+     "why": "'Instead of' means in place of; she chose a book rather than the party."
+    },
+    "g17": {
+     "correct": "determined",
+     "accept": [
+      "determined"
+     ],
+     "label": "17. She was ______ to win the race, so she trained every morning before school.",
+     "why": "Determined means having decided to succeed, so she trained every morning."
+    },
+    "g18": {
+     "correct": "committed",
+     "accept": [
+      "committed"
+     ],
+     "label": "18. She is a very ______ player. She never misses practice and always gives 100%.",
+     "why": "A committed player gives a lot of time and effort, so she never misses practice."
+    },
+    "g19": {
+     "correct": "motivation",
+     "accept": [
+      "motivation"
+     ],
+     "label": "19. He lost his ______ after five defeats and stopped going to practice.",
+     "why": "Motivation is the reason you want to do something; after defeats he lost it."
+    },
+    "g20": {
+     "correct": "penalty",
+     "accept": [
+      "penalty"
+     ],
+     "label": "20. The referee gave a ______ because the player pushed an opponent.",
+     "why": "A penalty is the punishment a referee gives when a player breaks a rule."
+    },
+    "g21": {
+     "correct": "commitment",
+     "accept": [
+      "commitment"
+     ],
+     "label": "21. Playing professional sport takes a lot of time and ______.",
+     "why": "Commitment is giving your time and effort to something, which professional sport needs."
+    },
+    "g22": {
+     "correct": "as long as",
+     "accept": [
+      "as long as"
+     ],
+     "label": "22. You can borrow my phone ______ you give it back tomorrow.",
+     "why": "'As long as' means 'only if', so she must give the phone back to borrow it."
+    },
+    "g23": {
+     "correct": "live",
+     "accept": [
+      "live"
+     ],
+     "label": "23. Tonight there is a ______ broadcast of the match, so you can watch it as it happens.",
+     "why": "A live broadcast is shown as it happens, not recorded earlier."
+    },
+    "g24": {
+     "correct": "workout",
+     "accept": [
+      "workout"
+     ],
+     "label": "24. My morning ______ is hard: push-ups, sit-ups and a long run. I am tired after it.",
+     "why": "A workout is a session of hard exercise, such as push-ups and a long run."
+    },
+    "g25": {
+     "correct": "dependent",
+     "accept": [
+      "dependent"
+     ],
+     "label": "25. Small children are ______: they cannot look after themselves.",
+     "why": "Dependent means needing others for help; small children cannot look after themselves."
+    },
+    "g26": {
+     "correct": "involve",
+     "accept": [
+      "involve"
+     ],
+     "label": "26. The teacher wanted to ______ all the students in the project, so everyone had a job.",
+     "why": "To involve people is to make them part of an activity, so everyone had a job."
+    },
+    "g27": {
+     "correct": "By the way",
+     "accept": [
+      "By the way"
+     ],
+     "label": "27. That was a great lesson. ______, did you hear that the test is on Friday?",
+     "why": "'By the way' adds something you just thought of, such as the test on Friday."
+    },
+    "g28": {
+     "correct": "parkour",
+     "accept": [
+      "parkour"
+     ],
+     "label": "28. The young man jumped over walls and ran along roofs in a ______ video.",
+     "why": "Parkour is the sport of running, jumping and climbing over walls and roofs."
+    },
+    "g29": {
+     "correct": "rely on",
+     "accept": [
+      "rely on"
+     ],
+     "label": "29. You can always ______ him. He never breaks a promise.",
+     "why": "To rely on someone is to trust that they will help, because he keeps his promises."
+    },
+    "g30": {
+     "correct": "support",
+     "accept": [
+      "support"
+     ],
+     "label": "30. I always ______ my local team and go to every home match.",
+     "why": "To support a team is to cheer for it, for example at every home match."
+    },
+    "g31": {
+     "correct": "sick of",
+     "accept": [
+      "sick of"
+     ],
+     "label": "31. I am ______ the rain. It has rained every day for two weeks!",
+     "why": "To be sick of something is to be tired of it; it rained for two weeks."
+    },
+    "g32": {
+     "correct": "done with",
+     "accept": [
+      "done with"
+     ],
+     "label": "32. I am ______ my homework, so I can go out now.",
+     "why": "To be done with something is to have finished it, so she can go out."
+    },
+    "g33": {
+     "correct": "win",
+     "accept": [
+      "win"
+     ],
+     "label": "33. The team's 4–1 ______ over Sweden put them top of the table.",
+     "why": "A win is a victory; 4–1 means the team won the match."
+    },
+    "g34": {
+     "correct": "trains",
+     "accept": [
+      "trains"
+     ],
+     "label": "34. Our team ______ in the gym three times a week to get fitter.",
+     "why": "To train is to practise regularly to get better and fitter."
+    }
+   }
+  }
+ }
+}
