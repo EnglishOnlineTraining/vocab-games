@@ -13,53 +13,53 @@
      "label": "1. h) Glad it worked out. Anyway, are you free..."
     },
     "g2": {
-     "correct": "8",
+     "correct": "Since",
      "accept": [
-      "8"
+      "Since"
      ],
-     "label": "2. Chinese businesspeople wanting something in return"
+     "label": "2."
     },
     "g3": {
-     "correct": "same length",
-     "accept": [
-      "same length"
-     ],
-     "label": "3. A good paraphrase is roughly the"
-    },
-    "g4": {
      "correct": "got",
      "accept": [
       "got"
      ],
-     "label": "4. When I"
+     "label": "3. When I"
     },
-    "g5": {
+    "g4": {
      "correct": "d",
      "accept": [
       "d"
      ],
-     "label": "5. The Accounts Department's slow payment..."
+     "label": "4. The Accounts Department's slow payment..."
+    },
+    "g5": {
+     "correct": "same length",
+     "accept": [
+      "same length"
+     ],
+     "label": "5. A good paraphrase is roughly the"
     },
     "g6": {
-     "correct": "appear to support",
-     "accept": [
-      "appear to support"
-     ],
-     "label": "6. The data"
-    },
-    "g7": {
      "correct": "was waiting",
      "accept": [
       "was waiting"
      ],
-     "label": "7. While I"
+     "label": "6. While I"
     },
-    "g8": {
+    "g7": {
      "correct": "rose steadily",
      "accept": [
       "rose steadily"
      ],
-     "label": "8. Usage"
+     "label": "7. Usage"
+    },
+    "g8": {
+     "correct": "because",
+     "accept": [
+      "because"
+     ],
+     "label": "8. …move my seminar group,"
     }
    }
   },
@@ -82,46 +82,46 @@
      "label": "2. framework"
     },
     "g3": {
-     "correct": "gave",
-     "accept": [
-      "gave"
-     ],
-     "label": "3. … the lecturer"
-    },
-    "g4": {
-     "correct": "Would it be possible to extend the loan of this book?",
-     "accept": [
-      "Would it be possible to extend the loan of this book?"
-     ],
-     "label": "4. To the library"
-    },
-    "g5": {
      "correct": "anecdotal",
      "accept": [
       "anecdotal"
      ],
-     "label": "5. Personal stories rather than systematic research"
+     "label": "3. Personal stories rather than systematic research"
+    },
+    "g4": {
+     "correct": "gave",
+     "accept": [
+      "gave"
+     ],
+     "label": "4. … the lecturer"
+    },
+    "g5": {
+     "correct": "8",
+     "accept": [
+      "8"
+     ],
+     "label": "5. Chinese businesspeople wanting something in return"
     },
     "g6": {
-     "correct": "opening",
+     "correct": "Would it be possible to extend the loan of this book?",
      "accept": [
-      "opening"
+      "Would it be possible to extend the loan of this book?"
      ],
-     "label": "6. We recommend"
+     "label": "6. To the library"
     },
     "g7": {
-     "correct": "because",
-     "accept": [
-      "because"
-     ],
-     "label": "7. …move my seminar group,"
-    },
-    "g8": {
      "correct": "brought",
      "accept": [
       "brought"
      ],
-     "label": "8. What"
+     "label": "7. What"
+    },
+    "g8": {
+     "correct": "appear to support",
+     "accept": [
+      "appear to support"
+     ],
+     "label": "8. The data"
     }
    }
   },
@@ -130,32 +130,32 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "Since",
+     "correct": "opening",
      "accept": [
-      "Since"
+      "opening"
      ],
-     "label": "1."
+     "label": "1. We recommend"
     },
     "g2": {
+     "correct": "catch",
+     "accept": [
+      "catch"
+     ],
+     "label": "2. Sorry, I didn't quite"
+    },
+    "g3": {
      "correct": "8",
      "accept": [
       "8"
      ],
-     "label": "2. i) Well, I had to build up my relationship again..."
-    },
-    "g3": {
-     "correct": "2",
-     "accept": [
-      "2"
-     ],
-     "label": "3. talks about how guanxi is changing"
+     "label": "3. i) Well, I had to build up my relationship again..."
     },
     "g4": {
-     "correct": "synonyms",
+     "correct": "leading to",
      "accept": [
-      "synonyms"
+      "leading to"
      ],
-     "label": "4. Techniques include using"
+     "label": "4. Deforestation has accelerated,"
     },
     "g5": {
      "correct": "rang",
@@ -172,11 +172,11 @@
      "label": "6. Planning to"
     },
     "g7": {
-     "correct": "could be",
+     "correct": "synonyms",
      "accept": [
-      "could be"
+      "synonyms"
      ],
-     "label": "7. Climate change"
+     "label": "7. Techniques include using"
     },
     "g8": {
      "correct": "arrived",
