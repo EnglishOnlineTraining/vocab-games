@@ -1,0 +1,91 @@
+{
+ "unit": "uni-b2-problem-calls",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": true,
+   "gaps": {
+    "g1": {
+     "correct": "about",
+     "accept": [
+      "about"
+     ],
+     "label": "Hello… I'm calling ___ the heating.",
+     "why": "Use calling about + topic to say why you are phoning."
+    },
+    "g2": {
+     "correct": "send",
+     "accept": [
+      "send"
+     ],
+     "label": "Could you possibly ___ someone round today?",
+     "why": "After could you (possibly), use the base form of the verb."
+    },
+    "g3": {
+     "correct": "won't",
+     "accept": [
+      "won't"
+     ],
+     "label": "I'm afraid that ___ be possible this week.",
+     "why": "Won't + be is the future; doesn't and isn't cannot go before be."
+    },
+    "g4": {
+     "correct": "but",
+     "accept": [
+      "but"
+     ],
+     "label": "I understand that, ___ the flat is really cold…",
+     "why": "But adds your counter-argument after you show you understand."
+    },
+    "g5": {
+     "correct": "if",
+     "accept": [
+      "if"
+     ],
+     "label": "What ___ I bring you an electric heater…?",
+     "why": "What if + clause makes a suggestion; what about needs a noun or -ing."
+    },
+    "g6": {
+     "correct": "catch",
+     "accept": [
+      "catch"
+     ],
+     "label": "6. Sorry, I didn't quite ___ that.",
+     "why": "Catch means hear or understand, a fixed phrase on the phone."
+    },
+    "g7": {
+     "correct": "if",
+     "accept": [
+      "if"
+     ],
+     "label": "7. So, ___ I understand you correctly, …",
+     "why": "If I understand you correctly checks that you heard the details right."
+    },
+    "g8": {
+     "correct": "understand",
+     "accept": [
+      "understand"
+     ],
+     "label": "8. I completely ___ why you are upset.",
+     "why": "Understand why shows empathy; accept and allow do not fit here."
+    },
+    "g9": {
+     "correct": "appreciate",
+     "accept": [
+      "appreciate"
+     ],
+     "label": "9. I'd really ___ it if you could call me back today.",
+     "why": "The fixed phrase is I'd appreciate it if you could…"
+    },
+    "g10": {
+     "correct": "confirm",
+     "accept": [
+      "confirm"
+     ],
+     "label": "10. I'll send you a short email to ___ what we agreed.",
+     "why": "To confirm means to make an agreement clear and sure in writing."
+    }
+   }
+  }
+ }
+}
