@@ -1238,8 +1238,11 @@ indexed", 155 "Discovered – not indexed".
    ESL grammar, IELTS, business. Link each from a WordPress post that already ranks, e.g.
    `/using-past-progressive/` (348 impr) → `themen/past-progressive.html` and
    `gr-past-progressive.html`. The main domain carries the authority.
-3. **First external links to the subdomain · Shaun.** 4teachers/eduki listings, LinkedIn, a guest
-   post for eltabbjournal.com (already links to the main site).
+3. **More external links to the subdomain from other sites · Shaun.** 4teachers/eduki listings,
+   LinkedIn, a guest post for eltabbjournal.com (already links to the main site).
+   *Note 2026-11-12 (Shaun):* external links to the subdomain already exist from 4teachers, LinkedIn
+   and Bildungsserver, so "first" was wrong. This item is about getting more, and is not done. Which
+   pages those links point to has not been checked.
 4. **School-page titles get search terms · Shaun decides** (open item A5).
 5. **Optional · Shaun names pages (rule 9).** Noindex textbook-unit pages that students reach by
    direct link, not search. `10g-cultural-diversity` had a click in the last 90 days, so it stays.
