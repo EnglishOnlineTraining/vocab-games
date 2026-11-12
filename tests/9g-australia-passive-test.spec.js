@@ -182,4 +182,8 @@ test('print: every paper fills a fixed number of A4 pages, no section split', as
   for (let i = 1; i <= 30; i++) counts['A-' + two(i)] = await pages('A-' + two(i));
   for (let i = 1; i <= 20; i++) counts['A-L' + two(i)] = await pages('A-L' + two(i));
   expect(Object.entries(counts).filter(([c, n]) => n !== (/-L/.test(c) ? 4 : 2))).toEqual([]);
+  // A batch: papers start a new page each, with no blank page between or after them.
+  await page.evaluate(() => { document.getElementById('pr-n').value = 1; document.getElementById('pr-lrs').value = 1; printBatch(); });
+  const batch = (await page.pdf({ format: 'A4', preferCSSPageSize: true })).toString('latin1');
+  expect((batch.match(/\/Type\s*\/Page[^s]/g) || []).length).toBe(6);
 });
