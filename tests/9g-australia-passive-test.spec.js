@@ -162,3 +162,24 @@ test('print: LRS papers get their own codes, layout and key note', async ({ page
   await page.evaluate(() => printOne());
   await expect(page.locator('#print-out .paper.lrs')).toHaveCount(1);
 });
+
+// Each paper prints as whole sections on a fixed page count, so a batch prints double-sided:
+// normal = 2 pages (Sections 1–2, then 3–4), LRS = 4 pages (one section per page).
+// One PDF per paper, over 30 normal and 20 LRS versions, so the longest texts are covered.
+test('print: every paper fills a fixed number of A4 pages, no section split', async ({ page, browserName }) => {
+  test.skip(browserName !== 'chromium', 'page.pdf() is Chromium-only');
+  test.setTimeout(120000);
+  await page.goto(FILE + '?print');
+  await page.emulateMedia({ media: 'print' });   // hides the panel, so set it from script
+  await page.evaluate(() => { document.getElementById('pr-keys').checked = false; });
+  const pages = async (code) => {
+    await page.evaluate((c) => { document.getElementById('pr-code').value = c; printOne(); }, code);
+    const pdf = (await page.pdf({ format: 'A4', preferCSSPageSize: true })).toString('latin1');
+    return (pdf.match(/\/Type\s*\/Page[^s]/g) || []).length;
+  };
+  const two = (i) => (i < 10 ? '0' : '') + i;
+  const counts = {};
+  for (let i = 1; i <= 30; i++) counts['A-' + two(i)] = await pages('A-' + two(i));
+  for (let i = 1; i <= 20; i++) counts['A-L' + two(i)] = await pages('A-L' + two(i));
+  expect(Object.entries(counts).filter(([c, n]) => n !== (/-L/.test(c) ? 4 : 2))).toEqual([]);
+});
