@@ -430,7 +430,8 @@ without meanings. Ask only about what the request leaves open: which list, and t
 5. `node scripts/build.js`, then copy `tests/uni-c1-c2-vocab-test.spec.js` (university) or
    `tests/10c-canada-vocab-test.spec.js` (school, Make) for the new unit. Both check the
    same-paper rule and the log records; count results by `unit`, because the log sends
-   more than one request per sitting and run it with `npx playwright test <spec>`. It sits a whole
+   more than one request per sitting. Add the new unit to `PAGES` in `tests/vocab-test-attempts.spec.js`, which pins
+   the paper contract (which names count as the same student) and the restart and resume flows and run it with `npx playwright test <spec>`. It sits a whole
    test with submissions intercepted. **Never submit from a local page without intercepting
    `script.google.com` and `hook.eu1.make.com`**: these pages have no test mode, so a local submission lands in the real sheet.
 6. `scripts/verify-exercise.js` does not apply (it fails every exam.js test on framework checks).
