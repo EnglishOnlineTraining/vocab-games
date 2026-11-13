@@ -88,7 +88,8 @@ would advertise the URL it is meant to protect.
 **Release codes.** Most tests have the soft `RELEASE_CODE` gate (a screen
 between registration and the rules): `9ab-` `REVIEW9AB2026`, `10a-` `REVIEW10A2026`,
 `9c-australia-vocab-test` `AUS9C2026`, `9g-australia-vocab-test` `AUS9G2026`,
-`uni-c1-vocab-test` `C1VOCAB2026`, `uni-c2-vocab-test` `C2VOCAB2026`. Change the
+`uni-c1-vocab-test` `C1VOCAB2026`, `uni-c2-vocab-test` `C2VOCAB2026`,
+`10c-canada-vocab-test` `CAN10C2026`. Change the
 string for a new sitting; no redeploy needed beyond the push. It is a timing gate, not
 security — the code is readable in page source.
 
@@ -102,7 +103,7 @@ them — leave the decision to Shaun if one of them is ever reused.
 ## Shared test files: `exam.js`, `exam.css`, `class-test.css`, `vocab-test.css` (Shaun, 2026-10-25)
 
 The timed tests (the three class tests, `9c-`/`9g-australia-vocab-test`,
-`uni-pm-vocabulary`, `uni-writing-task`, `uni-c1-`/`uni-c2-vocab-test`) load **`exam.js`** after `integrity.js`. It holds
+`uni-pm-vocabulary`, `uni-writing-task`, `uni-c1-`/`uni-c2-`/`10c-canada-vocab-test`) load **`exam.js`** after `integrity.js`. It holds
 what every test shares: extra time, the timer, the anti-cheat signals (tab, paste, copy,
 dev tools, typing bursts, translation), the flash banners, fullscreen, the Make POST with the
 formula guard, and the **one** copy of the Punktetabelle the tests use
