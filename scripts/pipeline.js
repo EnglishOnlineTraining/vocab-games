@@ -259,6 +259,8 @@ const CHECKERS = [
   // Tier 10 pilot: every H2/H3 on the topics in topic-headings.js names the
   // topic, so a chunk AI search lifts out of the page still says what it is.
   { id: 'check-topic-headings', run: 'scripts/check-topic-headings.js' },
+  // themen/ ledes and descriptions state the count of exercises the page really lists (Tier 19b item 1).
+  { id: 'check-topic-counts', run: 'scripts/check-topic-counts.js' },
   { id: 'check-links', run: 'scripts/check-links.js' },
   // Every <img> carries alt, width and height (layout shift, accessibility, image search).
   { id: 'check-images', run: 'scripts/check-images.js' },

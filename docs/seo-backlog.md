@@ -1299,12 +1299,15 @@ fix on 2026-11-01. Gaps 3, 4 and 8 point at items already tracked, so each only 
 is new. Items on the WordPress site (3, 5, 7, 8) need Shaun: no live WordPress edit from the repo
 (rule 7). Rule 8 applies to 5: list what the old page has before the rewrite.
 
-1. **`themen/` ledes show the wrong exercise count · CC · effort S.** The lede says "0 kostenlose
+1. **DONE 2026-11-13 (PR PRNUM).** **`themen/` ledes show the wrong exercise count · CC · effort S.** The lede says "0 kostenlose
    Übungen" on `artikel` and `praepositionen`, while the page's meta description says 24 and 30.
    8 more disagree, e.g. `passiv` lede 17 vs description 30, `gerund-infinitiv` 9 vs 30. Fix: the lede
    and the description use one count (`scripts/build-topic-pages.js:299` reads
    `exercisesForTopic(slug).length`), and the build fails on a count of 0. Evidence:
    `https://activities.englishonline.training/themen/artikel.html`. The lede is German by design.
+   Root cause found 2026-11-13: lede and description already shared one count, but `artikel` and
+   `present-tenses` counted `esl` exercises the page never listed (`YEAR_ORDER` lacked `esl`); fixed, and
+   `scripts/check-topic-counts.js` (in `pipeline.js` CHECKERS) fails the build if a count differs from the links.
 2. **Four ESL pages lead with a learning objective, not an answer · CC · effort S.** The Quick
    Overview of `esl-pronouns`, `esl-question-formation`, `esl-present-simple-continuous` and
    `esl-countable-uncountable` opens "By the end of this exercise, you can…". Fix: add one answer
