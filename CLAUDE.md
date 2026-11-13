@@ -119,8 +119,8 @@ carries `score`/`grade`"; "fix the bug" becomes "reproduce it, then confirm the 
 Weak criteria ("make it work") lead to false-done reports; a stated check makes verification
 happen instead of being assumed. Run `node scripts/build.js` and `node test-scoring.js` /
 `node scripts/validate-explanations.js` where relevant, and for UI changes, load the page over
-HTTP and click through it — see "For UI or frontend changes" at the top of this session's
-instructions.
+HTTP and click through it. Browser checks are the Playwright specs in `tests/` (`npm test`; see
+`docs/claude-reference/build-and-sitemaps.md`).
 
 ---
 
@@ -182,7 +182,7 @@ Abitur   https://hook.eu1.make.com/wdia5iljcraay8rfqijkacgb5i9jjfod
 ```
 Business / IT / ESL / IELTS use the **online** Apps Script sheet. **Every `uni-` page uses the university
 sheet** (Shaun's names; both in `submission-routing.md`; `verify-exercise.js` fails a `uni-` page that doesn't).
-**`_template.html`'s default `SHEET_URL` is an old Apps Script URL — always replace it.**
+**`_template.html`'s default `SHEET_URL` is the Online sheet, right only for `be-`, `it-`, `esl-` and `ielts-` pages — for any other prefix replace it with the webhook above.** `verify-exercise.js` checks this by prefix.
 
 ---
 
