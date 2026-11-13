@@ -379,7 +379,7 @@ without meanings. Ask only about what the request leaves open: which list, and t
   does this; it needs the bank to be well over B + C words.
 - `uiWords` lists bank words the page furniture prints ("Tools" in "developer tools"); they
   only go to Section A. `node scripts/check-test-leaks.js` names any you missed. The filename
-  must end `-vocab-test.html` or that checker skips it.
+  must end in -vocab-test.html or that checker skips it.
 
 **Steps**
 1. Write `data/vocab-tests/<prefix>-<level>-vocab-test.json`. Take the words from the practice
