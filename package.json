@@ -9,7 +9,8 @@
   },
   "scripts": {
     "test": "npx playwright test",
-    "test:placement": "npx playwright test tests/placement-quiz.spec.js"
+    "test:placement": "npx playwright test tests/placement-quiz.spec.js",
+    "check": "node scripts/build.js --check && npx playwright test"
   },
   "repository": {
     "type": "git",
