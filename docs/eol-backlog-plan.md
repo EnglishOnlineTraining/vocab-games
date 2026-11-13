@@ -1186,7 +1186,7 @@ the missing `.comic-img` rule on `7c-robert-the-bruce`.
 2. **`scripts/validate-data.js`** → **PR #79** (2026-10-03). — shape checks for `data/exercises.json`, `data/topics.json`
    and `data/quizzes.json`. `explanations.json` and the JSON-LD have validators; these three have
    none, so a typo silently breaks a hub card or a topic page.
-3. **Spreadsheet formula injection.** → **PR #80** fixes the Apps Script half (live after redeploy). The Make → Excel half is still open. `apps-script.gs` writes student free text into Sheets via
+3. **Spreadsheet formula injection.** → **Done.** **PR #80** fixes the Apps Script half (live after redeploy). The Make → Excel half is closed by **#167** (`exercise.js` `eolSafeCell`) and **#181** (the 18 `abitur-*` packs inline the rule; the timed tests post through `exam.js` `examPostMake`); `tests/make-formula-guard.spec.js` covers it. Re-checked 2026-11-13: every page that posts to Make is guarded. Original note: `apps-script.gs` writes student free text into Sheets via
    `appendRow` (lines 70–122). A student typing `=HYPERLINK(...)` or `=IMPORTRANGE(...)` into a
    textarea lands as a **live formula** in the teacher's sheet. Prefix values starting with
    `= + - @` with `'`. The Make → Excel path for Y7–10 has the same exposure and cannot be fixed
