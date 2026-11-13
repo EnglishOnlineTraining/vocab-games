@@ -16,6 +16,43 @@ Two formats. Pick one before anything else:
 
 ---
 
+## Every test, both formats: same paper, and an attempt log (Shaun, 2026-11-13)
+
+A student who closes the window must not be able to fish for an easier paper, and a
+restart must be visible to Shaun. Every test this skill builds has both of these:
+
+1. **Same paper for the same student.** The paper is drawn from a seeded random generator
+   keyed on `UNIT | RELEASE_CODE | name | class` (lower case, accents and punctuation
+   stripped), never from `Math.random`. Starting again gives the same questions; a new
+   release code gives everyone a new paper.
+2. **Attempt log.** Besides the result, the page sends a record when a test is
+   **started**, **resumed**, **left** (`pagehide` while running, via `sendBeacon`: window
+   closed or reloaded) and **abandoned** (an unfinished test on this device replaced by a
+   new start; it carries the answers so far). Two "started" rows for one name, or a start
+   with no result, is a restart.
+
+The log must never touch the result, and the two backends need different shapes for it:
+
+- **Apps Script sheet** (university, Business, IT): unit `<unit>-log`, so the records get
+  their own tab, and a `sid` that is unique per record (`<session>-<event>-<time>`).
+  `apps-script.gs` skips a repeated `sid` for 6 hours: reusing the session id would drop
+  the real result.
+- **Make** (school years): Unit `<unit>-log <event> <session>`, Score
+  `LOG <EVENT> (not a result)`, the details in `ex1`. Make keeps **one row per
+  class + name + unit + day** (dedup key `{{cls}}_{{name}}_{{unit}}_{{date}}`): a log row
+  under the test's own unit would block that student's result for the day.
+
+Format B has both built in (`pickPaper(rnd)`, `paperRandom`, `sendLog` in the template).
+For Format A, copy those functions from `assets/uni-vocab-test.tpl.html`, draw the paper
+and the dropdown order with `paperRandom(name, group)`, call `sendLog('started' …)` after
+`examStart`, `sendLog('abandoned' …)` where `startExam` finds an unsubmitted saved test,
+`sendLog('resumed' …)` in the resume path, and add the `pagehide` listener. A Format A
+page with no release code keys the seed on `UNIT | name | class`.
+
+Tell Shaun how to read it: filter the Unit column (Make) or open the `-log` tab (sheet).
+
+---
+
 ## Step 1 — Clarify before building
 
 Ask Shaun two things if not already provided:
@@ -391,7 +428,9 @@ without meanings. Ask only about what the request leaves open: which list, and t
    of `data/noindex.json` (not the `_comment` array at the top)
    and a row with the code to the vocabulary table in `teacher-tests.html`. Never a hub card.
 5. `node scripts/build.js`, then copy `tests/uni-c1-c2-vocab-test.spec.js` (university) or
-   `tests/10c-canada-vocab-test.spec.js` (school, Make) for the new unit and run it with `npx playwright test <spec>`. It sits a whole
+   `tests/10c-canada-vocab-test.spec.js` (school, Make) for the new unit. Both check the
+   same-paper rule and the log records; count results by `unit`, because the log sends
+   more than one request per sitting and run it with `npx playwright test <spec>`. It sits a whole
    test with submissions intercepted. **Never submit from a local page without intercepting
    `script.google.com` and `hook.eu1.make.com`**: these pages have no test mode, so a local submission lands in the real sheet.
 6. `scripts/verify-exercise.js` does not apply (it fails every exam.js test on framework checks).

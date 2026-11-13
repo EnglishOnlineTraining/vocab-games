@@ -66,8 +66,13 @@ for (const level of ['c1', 'c2']) {
     await expect(page.locator('#sub-btn')).toBeEnabled();
     await page.evaluate(() => doSubmit());
 
-    await expect.poll(() => sent.length).toBe(1);
-    const p = sent[0];
+    const results = () => sent.filter((x) => x.unit === `uni-${level}-vocab-test`);
+    await expect.poll(() => results().length).toBe(1);
+    const p = results()[0];
+    // the start went to its own log tab, with its own sid (the Apps Script skips a repeated sid)
+    const logs = sent.filter((x) => x.unit === `uni-${level}-vocab-test-log`);
+    expect(logs.map((x) => x.event)).toEqual(['started']);
+    expect(logs[0].sid).not.toBe(p.sid);
     expect(p.unit).toBe(`uni-${level}-vocab-test`);
     expect(p.cls).toBe('T1');
     expect(p.score).toMatch(/^25 \/ 25 \(100%\)/);
@@ -95,3 +100,42 @@ test('alternative forms: abbreviation, either half, the twin, not a stranger', a
   });
   expect(r).toEqual([true, true, true, true, true, false, true]);
 });
+
+for (const level of ['c1', 'c2']) {
+  test(`${level}: the same student gets the same paper; another student a different one`, async ({ page }) => {
+    await page.goto(`/uni-${level}-vocab-test.html`);
+    const r = await page.evaluate(() => {
+      const paper = (n, g) => { sName = n; sGroup = g; buildQuestions(); return JSON.stringify([matchItems, fillItems, useItems, matchOptions].map((a) => a.map((x) => x.t || x))); };
+      return [paper('Maria Schmidt', 'C1 English'), paper('  maria   SCHMIDT ', 'c1 english'), paper('Jonas Weber', 'C1 English')];
+    });
+    expect(r[1]).toBe(r[0]);
+    expect(r[2]).not.toBe(r[0]);
+  });
+
+  test(`${level}: restarting on the device logs the abandoned attempt; leaving logs a beacon`, async ({ page }) => {
+    const sent = [];
+    await page.route((url) => url.hostname === 'script.google.com', (route) => {
+      sent.push(JSON.parse(route.request().postData()));
+      route.fulfill({ status: 200, body: 'OK' });
+    });
+    await page.goto(`/uni-${level}-vocab-test.html`);
+    const start = async () => {
+      await page.fill('#inp-name', 'Test Student');
+      await page.fill('#inp-group', 'T1');
+      await page.evaluate(() => goRules());
+      await page.fill('#inp-code', await page.evaluate(() => RELEASE_CODE));
+      await page.evaluate(() => checkCode());
+      await page.evaluate(() => startExam());
+    };
+    await start();
+    await page.evaluate(() => { const s = document.querySelector('.qa-select'); s.value = matchItems[0].t; s.dispatchEvent(new Event('change')); });
+    await page.evaluate(() => window.dispatchEvent(new Event('pagehide')));
+    await page.reload();
+    await start();   // "Not me — start a new test", or just registering again
+    const ev = () => sent.filter((x) => /-log$/.test(x.unit)).map((x) => x.event);
+    await expect.poll(ev).toEqual(['started', 'left', 'abandoned', 'started']);
+    const ab = sent.find((x) => x.event === 'abandoned');
+    expect(ab.detail).toMatch(/answered A\+B 1 \/ 25, C 0 \/ 5 \| A1 /);
+    expect(sent.filter((x) => x.unit === `uni-${level}-vocab-test`)).toHaveLength(0);   // no result was sent
+  });
+}

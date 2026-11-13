@@ -344,21 +344,31 @@ document.getElementById('inp-code').addEventListener('keydown',e=>{if(e.key==='E
    vocabulary defines itself with its own neighbours ("Team": "...a shared project
    or goal"), so a B answer must not appear in any meaning shown in Section A or B.
    B is picked first, then A from words whose meanings print no B answer. */
-function pickPaper(){
+/* ── SAME PAPER FOR THE SAME STUDENT ──
+   The paper is drawn from the student's name and class (and this sitting's release
+   code), not at random: closing the window and starting again gives the same questions,
+   so there is no easier paper to fish for. A new code gives everyone a new paper. */
+function seedFrom(str){let h=2166136261>>>0;for(let i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+function seededRandom(seed){let a=seed;return function(){a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const keyPart=v=>String(v).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
+function paperRandom(name,group){return seededRandom(seedFrom(UNIT+'|'+RELEASE_CODE.toUpperCase()+'|'+keyPart(name)+'|'+keyPart(group)))}
+function shuffleWith(arr,rnd){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));const t=a[i];a[i]=a[j];a[j]=t}return a}
+function pickPaper(rnd){
+  rnd=rnd||Math.random;
   const uiSet=new Set(UI_WORDS);
-  const pool=shuffle(VOCAB_BANK.filter(x=>!uiSet.has(x.t)));
+  const pool=shuffleWith(VOCAB_BANK.filter(x=>!uiSet.has(x.t)),rnd);
   const fill=[],rest=[];
   pool.forEach(x=>{
     if(fill.length<FILL_N&&!fill.some(b=>termIn(x,b.d)||termIn(b,x.d)))fill.push(x);else rest.push(x);
   });
   const use=rest.splice(0,USE_N);
-  const match=shuffle(rest.concat(VOCAB_BANK.filter(x=>uiSet.has(x.t))))
+  const match=shuffleWith(rest.concat(VOCAB_BANK.filter(x=>uiSet.has(x.t))),rnd)
     .filter(x=>!fill.some(b=>termIn(b,x.d))).slice(0,MATCH_N);
   return {fill,use,match};
 }
 function buildQuestions(preset){
   if(preset){
-    // Resuming after a reload: the paper is random per attempt, so rebuild the
+    // Resuming after a reload: rebuild the
     // exact items (and dropdown order) the student already had, or nothing lines up.
     const byT={};VOCAB_BANK.forEach(x=>byT[x.t]=x);
     matchItems=preset.match.map(t=>byT[t]).filter(Boolean);
@@ -366,9 +376,9 @@ function buildQuestions(preset){
     useItems=preset.use.map(t=>byT[t]).filter(Boolean);
     matchOptions=preset.options.slice();
   }else{
-    const p=pickPaper();
+    const rnd=paperRandom(sName,sGroup),p=pickPaper(rnd);
     fillItems=p.fill;useItems=p.use;matchItems=p.match;
-    matchOptions=shuffle(matchItems.map(x=>x.t));
+    matchOptions=shuffleWith(matchItems.map(x=>x.t),rnd);
   }
 
   const mWrap=document.getElementById('match-list');
@@ -409,12 +419,58 @@ function buildQuestions(preset){
   });
 }
 
+/* ── ATTEMPT LOG ──
+   Besides the result, the page sends a short record when a test is started, resumed,
+   left (window closed or reloaded) or abandoned (an unfinished test on this device was
+   replaced by a new start). A restart then shows: two "started" rows for one name, or a
+   start with no result. The records never touch the result itself:
+   - university sheet: their own tab, `<unit>-log`; `sid` is unique per record, because
+     the Apps Script skips a repeated sid and would otherwise drop the real result.
+   - Make: Unit is `<unit>-log <event> <session>`, because Make keeps one row per
+     class + name + unit + day and a log row under the test's own unit would block the result. */
+function attemptSummary(match,sel,fill,inp,use,txt){
+  const pair=(terms,vals,tag)=>terms.map((t,i)=>(vals||[])[i]?tag+(i+1)+' '+t+' = '+(vals[i]||'').trim():'').filter(Boolean);
+  const a=pair(match,sel,'A'),b=pair(fill,inp,'B'),c=pair(use,txt,'C');
+  return 'answered A+B '+(a.length+b.length)+' / '+Q_TOTAL+', C '+c.length+' / '+USE_N
+    +(a.length+b.length+c.length?' | '+a.concat(b,c).join(' ; '):'');
+}
+function currentSummary(){
+  return attemptSummary(matchItems.map(x=>x.t),[...document.querySelectorAll('.qa-select')].map(e=>e.value),
+    fillItems.map(x=>x.t),[...document.querySelectorAll('.qa-input')].map(e=>e.value),
+    useItems.map(x=>x.t),[...document.querySelectorAll('#use-list textarea')].map(e=>e.value));
+}
+function sendLog(event,who,detail,beacon){
+  const guard=v=>typeof v==='string'&&/^[=+\-@\t\r]/.test(v)?"'"+v:v;   // no formulas in Excel/Sheets
+  const line=event.toUpperCase()+' | session '+who.sid+' | '+new Date().toISOString()+(detail?' | '+detail:'');
+  let body,type;
+  if(SEND_TO==='make'){
+    const p={name:guard(who.name),cls:guard(who.group),unit:UNIT+'-log '+event+' '+who.sid,
+      score:'LOG '+event.toUpperCase()+' (not a result)',grade:'',ex1:guard(line)};
+    body='payload='+encodeURIComponent(JSON.stringify(p));type='application/x-www-form-urlencoded';
+  }else{
+    body=JSON.stringify({unit:UNIT+'-log',name:who.name,cls:who.group,sid:who.sid+'-'+event+'-'+Date.now(),event:event,detail:line});
+    type='text/plain;charset=UTF-8';
+  }
+  try{
+    if(beacon&&navigator.sendBeacon&&navigator.sendBeacon(SHEET_URL,new Blob([body],{type})))return;
+    fetch(SHEET_URL,{method:'POST',headers:{'Content-Type':type},body,keepalive:true}).catch(()=>{});
+  }catch(e){}
+}
+window.addEventListener('pagehide',()=>{
+  if(examPhase==='running')sendLog('left',{name:sName,group:sGroup,sid},'closed or reloaded with '+Math.max(0,Math.round((EXAM_MINS*60000-(Date.now()-t0))/60000))+' min left | '+currentSummary(),true);
+});
+
 /* ── START ── */
 function openGate(){gateOpen=true;document.getElementById('time-gate-msg').textContent='✅ You may submit from Section C.';checkReady();saveState()}
 function startExam(){
-  try{const o=loadState();if(o)localStorage.setItem(SAVE_KEY+'_abandoned',JSON.stringify(o))}catch(e){}
+  try{const o=loadState();if(o){
+    localStorage.setItem(SAVE_KEY+'_abandoned',JSON.stringify(o));
+    sendLog('abandoned',{name:o.name,group:o.group,sid:o.sid},'replaced by a new start on this device by '+sName+' ('+sGroup+') | '
+      +attemptSummary(o.match||[],o.sel,o.fill||[],o.inp,o.use||[],o.txt));
+  }}catch(e){}
   examStart(autoSubmit);
   buildQuestions();
+  sendLog('started',{name:sName,group:sGroup,sid},'B words: '+fillItems.map(x=>x.t).join(', '));
   setTimeout(openGate,GATE_MINS*60*1000);
   show('s-exam');
   updateProgress();
@@ -452,6 +508,7 @@ function resumeExam(s){
   const elapsed=Date.now()-t0;
   if(s.gateOpen||elapsed>=GATE_MINS*60*1000)openGate();
   else setTimeout(openGate,GATE_MINS*60*1000-elapsed);
+  sendLog('resumed',{name:sName,group:sGroup,sid},'reload '+reloads+' | '+currentSummary());
   show('s-exam');
   updateProgress();onUseInput();checkReady();
   saveState();
