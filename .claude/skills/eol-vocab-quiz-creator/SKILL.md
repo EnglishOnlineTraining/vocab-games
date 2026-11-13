@@ -1,11 +1,18 @@
 ---
 name: eol-vocab-quiz-creator
-description: "Build an anti-cheat interactive vocabulary quiz HTML file for englishonline.training from a term-definition list. Use this skill whenever Shaun provides a vocabulary list and wants it turned into an online test or quiz, says 'vocab test', 'anti-cheat quiz', 'make a vocabulary quiz', 'quiz from this list', 'build a vocab test', or similar. Also triggers when he names a topic and asks for a vocabulary test or quiz, and when the list comes from a textbook unit or a photo of a wordlist. Works for any section of the site — university, Business English, IT English and the school year groups — picking the filename prefix and the submission backend to match. Covers the full lifecycle: clarifying quiz details, parsing the vocabulary list, building and configuring the HTML file, verifying it in a browser, and delivering it ready to deploy."
+description: "Build an anti-cheat interactive vocabulary quiz HTML file for englishonline.training from a term-definition list. Use this skill whenever Shaun provides a vocabulary list and wants it turned into an online test or quiz, says 'vocab test', 'anti-cheat quiz', 'make a vocabulary quiz', 'quiz from this list', 'build a vocab test', or similar. Also triggers when he names a topic and asks for a vocabulary test or quiz, and when the list comes from a textbook unit or a photo of a wordlist. Works for any section of the site — university, Business English, IT English and the school year groups — picking the filename prefix and the submission backend to match. For a university group whose words are on a practice page (uni-c1/c2-vocab-practice and the like), or when he asks for a C1, C2 or other university vocab test, build Format B: the generated three-section test (choose, type, use in a sentence) with a release code. Covers the full lifecycle: clarifying quiz details, parsing the vocabulary list, building and configuring the HTML file, verifying it in a browser, and delivering it ready to deploy."
 ---
 
 ## What this skill builds
 
-A self-contained anti-cheat HTML vocabulary quiz — same architecture as `uni-pm-vocabulary.html`. Takes a raw vocabulary list, produces a randomised 20-question quiz (10 matching dropdowns + 10 fill-in-the-blank), and delivers a verified, deploy-ready HTML file.
+Two formats. Pick one before anything else:
+
+| Format | Use it for | Built how |
+|---|---|---|
+| **A · 20-question quiz** | A raw list for school, Business or IT English | By hand from `uni-pm-vocabulary.html` — Steps 1–5 below |
+| **B · University three-section test** | A university group (C1, C2, B2 …), especially when the words are already on a practice page | Generated from a config file — see "Format B" below |
+
+**Format A** is a self-contained anti-cheat HTML vocabulary quiz — same architecture as `uni-pm-vocabulary.html`. Takes a raw vocabulary list, produces a randomised 20-question quiz (10 matching dropdowns + 10 fill-in-the-blank), and delivers a verified, deploy-ready HTML file.
 
 ---
 
@@ -317,6 +324,64 @@ arrives. See "Submission routing" in CLAUDE.md.
 `build-exercise-data.js` will not index it and it stays unlisted — the same handling
 as the class tests. That is usually right for a test. If Shaun wants it listed, add a
 hub card by hand.
+
+---
+
+## Format B — University three-section test (added 2026-11-13)
+
+The format of `uni-c1-vocab-test.html` and `uni-c2-vocab-test.html`. Both pages are
+**generated**: never hand-edit one, change its config or the template and rebuild.
+
+- `assets/uni-vocab-test.tpl.html` — the page, with `%PLACEHOLDERS%`
+- `scripts/build-vocab-test.js` — fills it from `data/vocab-tests/<unit>.json` (the config
+  fields are listed at the top of the script)
+
+**What a student gets.** The register screen shows the whole word list. After the release
+code and the rules, one-way panes:
+
+| Section | Task | Marked |
+|---|---|---|
+| A | choose the word for each meaning from a dropdown (default 15) | automatically |
+| B | type the word for each meaning (default 10) | automatically |
+| C | write a sentence with the word; **the word only, never its meaning** (default 5) | by Shaun; the page only checks the sentence uses the word, has 8+ words and is not the meaning copied |
+
+The score is A + B only and there is **no German Note** (university pages are English-only).
+Results go to the **university sheet** as one flat object with `unit` at the top level,
+because the Apps Script names the tab from `unit`. Columns: name, cls, sid, score, A01…, B…,
+C…, section_c, integrity, the integrity.js counts. Backups go to `learn@englishonline.training`.
+
+**Settled defaults (Shaun, 2026-11-13).** 30 minutes, release code on, 15 + 10 + 5, Section C
+without meanings. Ask only about what the request leaves open: which list, and the code.
+
+**Marking rules the template already handles** — know them so a config can lean on them:
+- Section B accepts either side of `A / B` (`On the Beach / On the Bench`) and, for
+  `Full Name (ABBR)`, the name, the abbreviation or both. Hyphens, curly quotes and case are ignored.
+- `also` in the config lists near-twins whose meanings overlap so much that either is fair
+  in Section B (C1: Goal/Objective; C2: Capacity/Bandwidth, Bird's Eye View/High-Level,
+  Crisp/Buttoned-Up). Read every pair of meanings in a new list for these; Section A still
+  wants the exact word.
+- A Section B answer is never printed inside another meaning shown in Section A or B: business
+  lists define words with each other ("Team" … "a shared project or goal"). `pickPaper()`
+  does this; it needs the bank to be well over B + C words.
+- `uiWords` lists bank words the page furniture prints ("Tools" in "developer tools"); they
+  only go to Section A. `node scripts/check-test-leaks.js` names any you missed. The filename
+  must end `-vocab-test.html` or that checker skips it.
+
+**Steps**
+1. Write `data/vocab-tests/<prefix>-<level>-vocab-test.json`. Take the words from the practice
+   page (`"practice": "<file>.html"`, which must define `var WORDS = [[term, meaning], …]`), or
+   give them inline as `"words"`. One wording for practice and test, so they agree.
+2. `node .claude/skills/eol-vocab-quiz-creator/scripts/build-vocab-test.js data/vocab-tests/<unit>.json`
+3. `node scripts/check-test-leaks.js`; add any word it names to `uiWords` and rebuild.
+4. Add `{ "file": "<unit>.html", "indexedInstead": null, "group": "test" }` to `data/noindex.json`
+   and a row with the code to the vocabulary table in `teacher-tests.html`. Never a hub card.
+5. `node scripts/build.js`, then copy `tests/uni-c1-c2-vocab-test.spec.js` for the new unit (or
+   add it to that spec's loop) and run it with `npx playwright test <spec>`. It sits a whole
+   test with submissions intercepted. **Never submit from a local page without intercepting
+   `script.google.com`**: these pages have no test mode, so a local submission lands in the real sheet.
+6. `scripts/verify-exercise.js` does not apply (it fails every exam.js test on framework checks).
+
+**A new sitting** of an existing test: change `code` in its config, rebuild, commit.
 
 ---
 
