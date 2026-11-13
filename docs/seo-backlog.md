@@ -1305,7 +1305,7 @@ is new. Items on the WordPress site (3, 5, 7, 8) need Shaun: no live WordPress e
    and the description use one count (`scripts/build-topic-pages.js:299` reads
    `exercisesForTopic(slug).length`), and the build fails on a count of 0. Evidence:
    `https://activities.englishonline.training/themen/artikel.html`. The lede is German by design.
-2. **Four ESL pages lead with a learning objective, not an answer · CC · effort S.** The Quick
+2. **DONE 2026-11-13 (PR #352).** **Four ESL pages lead with a learning objective, not an answer · CC · effort S.** The Quick
    Overview of `esl-pronouns`, `esl-question-formation`, `esl-present-simple-continuous` and
    `esl-countable-uncountable` opens "By the end of this exercise, you can…". Fix: add one answer
    sentence above it in each page (the rule, in English). Evidence:
