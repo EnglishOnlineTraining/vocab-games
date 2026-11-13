@@ -25,9 +25,9 @@ jobs:
       ITEMSTATS_URL_ONLINE: ${{ secrets.ITEMSTATS_URL_ONLINE }}
       ITEMSTATS_URL_UNI: ${{ secrets.ITEMSTATS_URL_UNI }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
 
