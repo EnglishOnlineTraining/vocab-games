@@ -1579,3 +1579,31 @@ after the schedule pattern is ~17 Dec (every ~3 days at 10:54). **Shaun decides 
 - **Search Console for "letter to the editor englisch" was not readable** (Ahrefs returns "Insufficient plan");
   draft 3 was written without that check.
 - Draft 3 links the scheduled Mediation post (WP 2559) by slug; check the link after 11 Nov.
+
+## Tier 23 — Blog keyword loop follow-ups (2026-11-13) · Shaun + CC
+From the weekly blog-keyword-drafts run of 2026-11-11 (report and drafts in Shaun's local
+`blog-loop/reports/`, outside the repo). Snapshot: Search Console, 90 days to 2026-11-08.
+
+1. **Post 2032 "Zusammenfassung" refresh · after 2026-12-05.** "zusammenfassung englisch" rose
+   9 → 25 impressions in a week (position 14.6); 2032 is the only ranking page. The 2026-11-05 edit
+   retitled the post "Summary auf Englisch schreiben", taking "Zusammenfassung" out of the title and
+   SEO title, while "summary englisch" ranks at 53. A fact-checked refresh draft exists (title, SEO
+   title, meta, lead and 13 wording fixes). It waits for the Tier 12.3 no-touch to end on
+   2026-12-05 and for the Tier 20 re-measure from 2026-12-04, so the two changes are measured apart.
+   Two items count as factual errors and may go in earlier if Shaun wants: Fehler 3 calls the Simple
+   Past "falsch" against the tense section, and the pack paragraph says the pack has students write
+   overview sentences (exercise 2 is a choice task). Shaun decides.
+2. **2032 CTA button goes to the paid packs.** "✍️ Zum Übungspaket →" links
+   `/english-for-students/#packs` (two paid Payhip packs) right under text about the free activities
+   packs. Relabel it, or point it at `abitur-writing-summaries.html`. Shaun decides; include it in item 1.
+3. **Check a citation on `abitur-writing-summaries-aims-ambitions.html`.** Its footer cites an
+   "Economist/YouGov Poll, Sept. 2026". Confirm the poll exists and says what the page uses, or
+   remove the citation. CC.
+4. **"esg terminology" (25 impressions, 21.9, rising 7 → 12 → 25)** still reaches only
+   `esg-vocabulary.pdf`. `esg-vocabulary.html` (Tier 9.4) should take it over; check in December
+   whether it does before writing a post. CC, at the next loop run.
+5. **The blog loop must read this file's no-touch lists before choosing a refresh.** The 2026-11-11
+   run picked 2032 without seeing Tier 12.3. Fix: add a line to the scheduled task's step 3
+   (`~/.claude/scheduled-tasks/blog-keyword-drafts/SKILL.md`, outside the repo) to check
+   `docs/seo-backlog.md` on origin/main for no-touch and measurement windows. Shaun approves the
+   prompt change.
