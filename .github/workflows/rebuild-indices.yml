@@ -45,13 +45,13 @@ jobs:
       # it. Fine-grained PAT, this repo only, Contents: read and write. It
       # expires: when the push step fails with GH013 again, renew the secret.
       # Without the secret this falls back to GITHUB_TOKEN and the push fails.
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: main
           fetch-depth: 0
           token: ${{ secrets.ADMIN_PAT || github.token }}
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
 
