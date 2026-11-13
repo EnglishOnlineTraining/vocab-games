@@ -1,6 +1,6 @@
 ---
 name: eol-vocab-quiz-creator
-description: "Build an anti-cheat interactive vocabulary quiz HTML file for englishonline.training from a term-definition list. Use this skill whenever Shaun provides a vocabulary list and wants it turned into an online test or quiz, says 'vocab test', 'anti-cheat quiz', 'make a vocabulary quiz', 'quiz from this list', 'build a vocab test', or similar. Also triggers when he names a topic and asks for a vocabulary test or quiz, and when the list comes from a textbook unit or a photo of a wordlist. Works for any section of the site — university, Business English, IT English and the school year groups — picking the filename prefix and the submission backend to match. For a university group whose words are on a practice page (uni-c1/c2-vocab-practice and the like), or when he asks for a C1, C2 or other university vocab test, build Format B: the generated three-section test (choose, type, use in a sentence) with a release code. Covers the full lifecycle: clarifying quiz details, parsing the vocabulary list, building and configuring the HTML file, verifying it in a browser, and delivering it ready to deploy."
+description: "Build an anti-cheat interactive vocabulary quiz HTML file for englishonline.training from a term-definition list. Use this skill whenever Shaun provides a vocabulary list and wants it turned into an online test or quiz, says 'vocab test', 'anti-cheat quiz', 'make a vocabulary quiz', 'quiz from this list', 'build a vocab test', or similar. Also triggers when he names a topic and asks for a vocabulary test or quiz, and when the list comes from a textbook unit or a photo of a wordlist. Works for any section of the site — university, Business English, IT English and the school year groups — picking the filename prefix and the submission backend to match. For a university group or a school class whose words are on practice pages (uni-c1/c2-vocab-practice, data/vocab-practice/*.json), or when he asks for a C1, C2, 10C or other class vocab test, build Format B: the generated three-section test (choose, type, use in a sentence) with a release code, optionally a word box in Section B. Covers the full lifecycle: clarifying quiz details, parsing the vocabulary list, building and configuring the HTML file, verifying it in a browser, and delivering it ready to deploy."
 ---
 
 ## What this skill builds
@@ -9,8 +9,8 @@ Two formats. Pick one before anything else:
 
 | Format | Use it for | Built how |
 |---|---|---|
-| **A · 20-question quiz** | A raw list for school, Business or IT English | By hand from `uni-pm-vocabulary.html` — Steps 1–5 below |
-| **B · University three-section test** | A university group (C1, C2, B2 …), especially when the words are already on a practice page | Generated from a config file — see "Format B" below |
+| **A · 20-question quiz** | A raw list for Business or IT English | By hand from `uni-pm-vocabulary.html` — Steps 1–5 below |
+| **B · Three-section test** | A university group (C1, C2, B2 …) or a school class, especially when the words are already on a practice page | Generated from a config file — see "Format B" below |
 
 **Format A** is a self-contained anti-cheat HTML vocabulary quiz — same architecture as `uni-pm-vocabulary.html`. Takes a raw vocabulary list, produces a randomised 20-question quiz (10 matching dropdowns + 10 fill-in-the-blank), and delivers a verified, deploy-ready HTML file.
 
@@ -327,10 +327,10 @@ hub card by hand.
 
 ---
 
-## Format B — University three-section test (added 2026-11-13)
+## Format B — Three-section test, university or school (added 2026-11-13)
 
-The format of `uni-c1-vocab-test.html` and `uni-c2-vocab-test.html`. Both pages are
-**generated**: never hand-edit one, change its config or the template and rebuild.
+The format of `uni-c1-vocab-test.html`, `uni-c2-vocab-test.html` and
+`10c-canada-vocab-test.html`. All three are **generated**: never hand-edit one, change its config or the template and rebuild.
 
 - `assets/uni-vocab-test.tpl.html` — the page, with `%PLACEHOLDERS%`
 - `scripts/build-vocab-test.js` — fills it from `data/vocab-tests/<unit>.json` (the config
@@ -350,12 +350,26 @@ Results go to the **university sheet** as one flat object with `unit` at the top
 because the Apps Script names the tab from `unit`. Columns: name, cls, sid, score, A01…, B…,
 C…, section_c, integrity, the integrity.js counts. Backups go to `learn@englishonline.training`.
 
+**School tests** (first: `10c-canada-vocab-test`) set extra config fields, listed at the
+top of the script: `sendTo: "make"` with the year's Make webhook as `sheetUrl` (results go
+to the fixed `ex1…ex47` columns, with Score and the German Note), and the wording fields
+(`title`, `short`, `icon`, `description`, `listName`, `groupLabel` "Class", `groupEg`,
+`groupWord`). A `practice` value can be a `data/vocab-practice/*.json` file or an array of
+them, joined into one bank. A `10c-`/`9c-`… page also needs a `topic-pool.json` entry
+(`angle: "skills"`) or the build fails, like any page with a class prefix.
+
+**Section B word box** (`"wordBox": true`; Shaun asked for it on 10C): a box at the top of
+Section B lists that paper's ten answer words, alphabetically, each used once.
+
 **Settled defaults (Shaun, 2026-11-13).** 30 minutes, release code on, 15 + 10 + 5, Section C
 without meanings. Ask only about what the request leaves open: which list, and the code.
 
 **Marking rules the template already handles** — know them so a config can lean on them:
-- Section B accepts either side of `A / B` (`On the Beach / On the Bench`) and, for
-  `Full Name (ABBR)`, the name, the abbreviation or both. Hyphens, curly quotes and case are ignored.
+- Section B accepts either side of `A / B` (`On the Beach / On the Bench`); for
+  `Full Name (ABBR)` (capital abbreviation) the name, the abbreviation or both; for
+  `to rely (on)` (lower-case bracket) the form with or without the bracketed word; and the
+  form without a leading `to` or a trailing `sb`/`sth` (`skate`, `be sick of`). Hyphens,
+  curly quotes and case are ignored. Section C also accepts `be …` phrases used as `am/is/are …`.
 - `also` in the config lists near-twins whose meanings overlap so much that either is fair
   in Section B (C1: Goal/Objective; C2: Capacity/Bandwidth, Bird's Eye View/High-Level,
   Crisp/Buttoned-Up). Read every pair of meanings in a new list for these; Section A still
@@ -373,15 +387,18 @@ without meanings. Ask only about what the request leaves open: which list, and t
    give them inline as `"words"`. One wording for practice and test, so they agree.
 2. `node .claude/skills/eol-vocab-quiz-creator/scripts/build-vocab-test.js data/vocab-tests/<unit>.json`
 3. `node scripts/check-test-leaks.js`; add any word it names to `uiWords` and rebuild.
-4. Add `{ "file": "<unit>.html", "indexedInstead": null, "group": "test" }` to `data/noindex.json`
+4. Add `{ "file": "<unit>.html", "indexedInstead": null, "group": "test" }` to the `pages` array
+   of `data/noindex.json` (not the `_comment` array at the top)
    and a row with the code to the vocabulary table in `teacher-tests.html`. Never a hub card.
-5. `node scripts/build.js`, then copy `tests/uni-c1-c2-vocab-test.spec.js` for the new unit (or
-   add it to that spec's loop) and run it with `npx playwright test <spec>`. It sits a whole
+5. `node scripts/build.js`, then copy `tests/uni-c1-c2-vocab-test.spec.js` (university) or
+   `tests/10c-canada-vocab-test.spec.js` (school, Make) for the new unit and run it with `npx playwright test <spec>`. It sits a whole
    test with submissions intercepted. **Never submit from a local page without intercepting
-   `script.google.com`**: these pages have no test mode, so a local submission lands in the real sheet.
+   `script.google.com` and `hook.eu1.make.com`**: these pages have no test mode, so a local submission lands in the real sheet.
 6. `scripts/verify-exercise.js` does not apply (it fails every exam.js test on framework checks).
 
 **A new sitting** of an existing test: change `code` in its config, rebuild, commit.
+**Changing the template**: rebuild every config in `data/vocab-tests/` and check the other
+pages' visible text did not change (diff them), then run both specs.
 
 ---
 

@@ -10,12 +10,21 @@
      level      "C1"                 — title, header, email subject
      topic      "work and projects"  — shown in the opening blurb
      code       "C1VOCAB2026"        — release code; change it for each sitting
-     practice   "uni-c1-vocab-practice.html"  — take the words from this page's `var WORDS`
+     practice   "uni-c1-vocab-practice.html"  — take the words from this page's `var WORDS`,
+                or "data/vocab-practice/<unit>.json" (Kind A practice data), or an array of
+                either to join several lists into one bank
        or words [{"t":"term","d":"meaning"}, …]  — when there is no practice page
      sizes      {"a":15,"b":10,"c":5}  — questions per section
      minutes    30
      also       {"Goal":["Objective"], …}  — near-twins accepted for each other in Section B
      uiWords    ["Tools"]  — bank words printed in the page furniture (check-test-leaks.js names them)
+     wordBox    true       — Section B shows its answer words in a box at the top (default false)
+
+   University tests need nothing more. A school test also sets:
+     sendTo     "make"     — Make webhook with the Note (default "sheet": the university Apps Script)
+     sheetUrl   the Make webhook for the year (CLAUDE.md "Webhooks"); required with "make"
+     title, short, icon, description, listName, groupLabel, groupEg, groupWord
+                — the page wording; the defaults below are the university ones
 */
 const fs = require('fs');
 const path = require('path');
@@ -28,12 +37,14 @@ if (!cfgPath) { console.error('usage: build-vocab-test.js data/vocab-tests/<unit
 const c = JSON.parse(fs.readFileSync(cfgPath, 'utf8'));
 const fail = (m) => { console.error('✗ ' + c.unit + ': ' + m); process.exit(1); };
 
-let bank = c.words;
-if (c.practice) {
-  const m = fs.readFileSync(c.practice, 'utf8').match(/var WORDS = (\[[\s\S]*?\n\]);/);
-  if (!m) fail('no `var WORDS = [...]` in ' + c.practice);
-  bank = Function('return ' + m[1])().map(([t, d]) => ({ t, d }));
+function readList(f) {
+  if (/\.json$/.test(f)) return JSON.parse(fs.readFileSync(f, 'utf8')).words.map((w) => ({ t: w.w, d: w.def }));
+  const m = fs.readFileSync(f, 'utf8').match(/var WORDS = (\[[\s\S]*?\n\]);/);
+  if (!m) fail('no `var WORDS = [...]` in ' + f);
+  return Function('return ' + m[1])().map(([t, d]) => ({ t, d }));
 }
+let bank = c.words;
+if (c.practice) bank = [].concat(c.practice).flatMap(readList);
 if (!Array.isArray(bank) || !bank.length) fail('no words: give `practice` or `words`');
 const terms = new Set(bank.map((x) => x.t));
 if (terms.size !== bank.length) fail('a term appears twice in the bank');
@@ -42,11 +53,25 @@ const also = c.also || {}, ui = c.uiWords || [];
 const { a, b, c: u } = c.sizes;
 // Section B and C draw only from non-UI words, and B skips words that print each other.
 if (b + u > bank.length - ui.length - 10) fail('sections B + C need more words than the bank can safely give');
-if (a + b + u > bank.length) fail('the paper is longer than the bank');
-
+const sendTo = c.sendTo || 'sheet';
+if (!['sheet', 'make'].includes(sendTo)) fail('sendTo must be "sheet" or "make"');
+if (sendTo === 'make' && !/^https:\/\/hook\.eu1\.make\.com\//.test(c.sheetUrl || '')) fail('sendTo "make" needs the Make webhook as sheetUrl');
+const UNI_SHEET = 'https://script.google.com/macros/s/AKfycbwwbV6ufw7QX8meNGyOwiVdkqNpQ8yckdXmsbFqysJwWqAfCWaR_eC9RH41LaqmYyZOeA/exec';
+const paper = a + b + u;
+if (paper > bank.length) fail('the paper is longer than the bank');
+if (sendTo === 'make' && paper + 2 > 47) fail('Make has answer columns ex1..ex47: the paper plus 2 must fit');
 const rep = {
-  LEVEL: c.level, UNIT: c.unit, CODE: c.code, TOPIC: c.topic, PRACTICE: c.practice || 'the list on this page',
-  N: bank.length, PAPER: a + b + u, MINS: c.minutes, A: a, B: b, C: u,
+  TITLE: c.title || c.level + ' English Vocabulary — Test',
+  SHORT: c.short || c.level + ' Vocabulary Test',
+  ICON: c.icon || '🎓',
+  DESCRIPTION: c.description || `Timed, invigilated ${c.level} vocabulary test for university students: ${paper} of the ${bank.length} words from the ${c.level} practice list, picked at random, ${c.minutes} minutes on the clock.`,
+  LIST_NAME: c.listName || 'the ' + c.level + ' practice list',
+  GROUP_LABEL: c.groupLabel || 'Course / group', GROUP_EG: c.groupEg || c.level + ' English', GROUP_WORD: c.groupWord || 'course',
+  SEND_TO: sendTo, SHEET_URL: c.sheetUrl || UNI_SHEET,
+  SHEET_NOTE: sendTo === 'make' ? 'Make webhook' : 'university sheet',
+  B_WORD_BOX: c.wordBox ? 'true' : 'false',
+  LEVEL: c.level, UNIT: c.unit, CODE: c.code, TOPIC: c.topic, PRACTICE: [].concat(c.practice || 'the list on this page').join(' + '),
+  N: bank.length, PAPER: paper, MINS: c.minutes, A: a, B: b, C: u,
   A_WORD: NUM[a] || a, B_WORD: NUM[b] || b,
   A_RANGE: '1–' + a, B_RANGE: (a + 1) + '–' + (a + b), C_RANGE: (a + b + 1) + '–' + (a + b + u),
   BANK: JSON.stringify(bank), ALSO: JSON.stringify(also), UI_WORDS: JSON.stringify(ui),

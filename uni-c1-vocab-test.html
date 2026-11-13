@@ -47,6 +47,9 @@ select:focus{outline:none;border-color:#2d6a4f}
 .use-flag.ok{color:#276749}
 .use-flag.no{color:#975a16}
 body.exam-mode input[type=text],body.exam-mode textarea{-webkit-user-select:text;user-select:text}
+.word-box{border:2px dashed #2d6a4f;border-radius:10px;padding:12px 14px;margin:6px 0 14px;display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center}
+.word-box strong{flex:1 0 100%;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:#276749}
+.word-box span{background:#f0fff4;border:1px solid #9ae6b4;border-radius:6px;padding:3px 10px;font-weight:600;color:#1a202c}
 .wl-card{background:#fff;border-radius:12px;padding:24px 28px;box-shadow:0 2px 8px rgba(0,0,0,.07);margin-bottom:20px;border-left:4px solid #2d6a4f}
 .wl-head{font-size:1.15rem;margin-bottom:6px;color:#1a202c}
 .wl-sub{font-size:.88rem;color:#4a5568;margin-bottom:16px;line-height:1.6}
@@ -208,7 +211,8 @@ body.exam-mode input[type=text],body.exam-mode textarea{-webkit-user-select:text
 
     <div class="card exam-pane" id="pane-b" hidden>
       <div class="section-label">Section B — Type the Word (16–25)</div>
-      <p>Type the word for each meaning.</p>
+      <p id="b-intro">Type the word for each meaning.</p>
+      <div class="word-box" id="b-wordbox" hidden></div>
       <div id="fill-list"></div>
       <div class="pane-nav">
         <div class="pane-warn">⚠️ <strong>You cannot come back to Section B.</strong> Check your ten answers before you continue — Next is one-way.</div>
@@ -272,6 +276,7 @@ body.exam-mode input[type=text],body.exam-mode textarea{-webkit-user-select:text
 <script>
 /* ── CONFIG ── */
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwwbV6ufw7QX8meNGyOwiVdkqNpQ8yckdXmsbFqysJwWqAfCWaR_eC9RH41LaqmYyZOeA/exec'; // university sheet
+const SEND_TO   = 'sheet';   // 'sheet': Apps Script, one tab per unit · 'make': Make webhook, fixed ex1..ex47 columns, with the Note
 const EMAIL     = 'learn@englishonline.training';
 const BASE_EXAM_MINS = 30;
 const EXAM_WARN = [5, 2];   // exam.js: timer amber, then red, at these minutes left
@@ -280,7 +285,7 @@ const GATE_MINS = 2;
    It is visible in the page source, so it is not security — change the
    string for each sitting. */
 const RELEASE_CODE = 'C1VOCAB2026';
-const UNIT      = 'uni-c1-vocab-test';   // the university sheet makes a tab per unit
+const UNIT      = 'uni-c1-vocab-test';
 var INTEGRITY_LEVEL = 'strict';   // integrity.js: counts sent with this test
 const MATCH_N   = 15;
 const FILL_N    = 10;
@@ -296,18 +301,27 @@ const ALSO_OK = {"Goal":["Objective"],"Objective":["Goal"]};
    Sections B and C so a student is never asked to type a word that is on screen.
    scripts/check-test-leaks.js fails the build if a new one appears. */
 const UI_WORDS = ["Tools"];
+/* Section B shows the words its answers use, in a box at the top (Shaun, 2026-11-13: 10C). */
+const B_WORD_BOX = false;
 
 /* ── MATCHING ── */
 const vnorm=s=>String(s).toLowerCase().replace(/[‘’ʼ`´]/g,"'").replace(/[“”"]/g,'').replace(/[-‐-–]/g,' ').replace(/\s+/g,' ').trim();
-/* Every form of a term a student may give: either side of "A / B", and for
-   "Full name (ABBR)" the full name, the abbreviation, or both. */
+/* Every form of a term a student may give: either side of "A / B"; for
+   "Full name (ABBR)" the full name, the abbreviation, or both; for "to rely (on)"
+   with or without the bracketed word. School lists write verbs as "to skate" and
+   objects as sb/sth, so the form without "to" and without sb/sth counts too. */
 function forms(t){
   const out=[];
   t.split(' / ').forEach(p=>{
-    const m=p.match(/^(.*?)\s*\(([^)]+)\)$/);
-    if(m)out.push(m[1],m[2],p);else out.push(p);
+    const ab=p.match(/^(.*?)\s*\(([A-Z][A-Za-z0-9]*)\)$/);
+    if(ab){out.push(ab[1],ab[2],p);return}
+    const opt=p.match(/^(.*?)\s*\(([^)]+)\)$/);
+    if(opt){out.push(opt[1],opt[1]+' '+opt[2]);return}
+    out.push(p);
   });
-  return out.map(vnorm);
+  const all=[];
+  out.forEach(f=>{const g=f.replace(/\s+(sb|sth|somebody|something)$/i,'');[f,g].forEach(h=>all.push(h,h.replace(/^to\s+/i,'')))});
+  return [...new Set(all.map(vnorm))];
 }
 function typedForms(item){return forms(item.t).concat(...(ALSO_OK[item.t]||[]).map(forms))}
 const reEsc=w=>w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
@@ -402,6 +416,12 @@ function buildQuestions(preset){
       <input type="text" class="qa-input" data-idx="${i}" aria-label="Answer ${MATCH_N+i+1}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Type the word…" oninput="onAnswerInput()">`;
     fWrap.appendChild(row);
   });
+  if(B_WORD_BOX){
+    const box=document.getElementById('b-wordbox');
+    box.hidden=false;
+    box.innerHTML='<strong>Words to use</strong>'+fillItems.map(x=>x.t).sort((a,b)=>a.localeCompare(b)).map(t=>'<span>'+esc(t)+'</span>').join('');
+    document.getElementById('b-intro').textContent='Type the word for each meaning. Each word in the box is used once.';
+  }
 
   const uWrap=document.getElementById('use-list');
   uWrap.innerHTML='';
@@ -513,7 +533,7 @@ function checkUse(item,text){
   const t=String(text||'').trim();
   if(!t) return {ok:false,why:''};
   const n=vnorm(t);
-  if(!forms(item.t).some(f=>useHasForm(f,n))) return {ok:false,why:'Your sentence does not use "'+item.t+'" yet.'};
+  if(!forms(item.t).some(f=>useHasForm(f,n)||useHasForm(f.replace(/^be /,''),n))) return {ok:false,why:'Your sentence does not use "'+item.t+'" yet.'};
   if(t.split(/\s+/).filter(Boolean).length<8) return {ok:false,why:'Too short — write a full sentence (at least 8 words).'};
   if(n.indexOf(vnorm(item.d).replace(/[.]$/,''))!==-1) return {ok:false,why:'That copies the meaning — use the word in a situation of your own.'};
   if(!/[.!?]$/.test(t)) return {ok:false,why:'End your sentence with a full stop.'};
@@ -608,7 +628,8 @@ function doSubmit(){
   document.getElementById('score-big').textContent=correct+' / '+Q_TOTAL+' ('+pct+'%)';
   document.getElementById('sec-c-line').textContent='Sections A + B only. Section C: '+useOk+' / '+USE_N
     +' sentences passed the automatic checks — your teacher marks this section.';
-  document.getElementById('done-meta').textContent=`${m}m ${s}s · Session: ${sid}`;
+  const g=SEND_TO==='make'?lookupGrade(correct,Q_TOTAL):null;   // the Note: school tests only
+  document.getElementById('done-meta').textContent=(g?'Note '+g.note+' ('+g.label+') · ':'')+`${m}m ${s}s · Session: ${sid}`;
   send(payload);
   markSubmitted();
 }
@@ -646,6 +667,7 @@ function toggleReview(){
    The university sheet's Apps Script makes one tab per `unit` and one column per
    key, in the order sent: name and class first, then one column per question. */
 function send(data){
+  if(SEND_TO==='make')return sendMake(data);
   var p={unit:UNIT,name:data.name,cls:data.group,sid:data.session_id,
          score:data.score+' / '+data.total+' ('+data.percent+'%) [Sections A+B; Section C teacher-marked]'};
   data.results.forEach(function(a,i){
@@ -670,6 +692,30 @@ function send(data){
       document.getElementById('done-message').textContent='Your result has not been sent. Use one of the backups below.';
       console.error('Submission failed:',err);
     });
+}
+
+/* Make (school tests): the Excel table has FIXED columns (Timestamp, Name, Class, Unit,
+   ex1..ex48, Score, Grade). Unmapped keys are dropped, so answers go into the ex slots
+   and the integrity line into one slot after them. ex48 is Make's raw backstop: stay below it. */
+function sendMake(data){
+  var g=lookupGrade(data.score,data.total);
+  var p={name:data.name,cls:data.group,unit:UNIT,
+         score:data.score+' / '+data.total+' ('+data.percent+'%) [Sections A+B; Section C teacher-marked]',
+         grade:g?'Note '+g.note+' ('+g.label+')':''};
+  data.results.forEach(function(a,i){
+    p['ex'+(i+1)]=a.type==='use'
+      ? 'C '+a.term+' -> '+a.given+(a.isCorrect?' [form ok, mark me]':' [form check failed, mark me]')
+      : (a.type==='match'?'A ':'B ')+a.definition+' -> '+a.given
+        +(a.spelling?' [correct, spelling not marked: '+a.term+']':a.isCorrect?' [correct]':' [wrong: '+a.term+']');
+  });
+  var n=data.results.length;
+  p['ex'+(n+1)]='SECTION C is teacher-marked and is NOT in Score/Grade. Automatic form checks passed: '+data.use_checks_passed+' / '+data.use_total;
+  p['ex'+(n+2)]='integrity | time '+data.time_spent_s+'s | extra time '+(data.extra_time?'yes':'no')+' | tab-switches '+data.tab_switches
+        +' | paste '+data.paste_attempts+' | typing '+data.typing_anomalies
+        +' | devtools '+data.devtools_flagged+' | reloads '+data.reloads+' | session '+data.session_id;
+  var intF=eolIntFields();for(var ik in intF)p[ik]=intF[ik];   // integrity.js counts
+  examPostMake(examMark(p,'ex'+(n+2)));
+  document.getElementById('done-message').textContent='Your result has been sent to your teacher.';
 }
 
 /* ── BACKUPS ── */

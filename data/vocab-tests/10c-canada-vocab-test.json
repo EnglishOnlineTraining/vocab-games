@@ -1,0 +1,22 @@
+{
+  "unit": "10c-canada-vocab-test",
+  "level": "10C",
+  "title": "Canada — Vocabulary Test",
+  "short": "Canada Vocabulary Test",
+  "icon": "🇨🇦",
+  "description": "Timed vocabulary test for class 10C: 30 of the 57 words from the Canada and sport practice lists, picked at random, 30 minutes on the clock.",
+  "listName": "the two practice lists",
+  "topic": "Canada, and talking about sport",
+  "groupLabel": "Class",
+  "groupEg": "10c",
+  "groupWord": "class",
+  "code": "CAN10C2026",
+  "practice": ["data/vocab-practice/10c-canada-vocab-practice.json", "data/vocab-practice/10c-sport-vocab-practice.json"],
+  "sendTo": "make",
+  "sheetUrl": "https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj",
+  "sizes": { "a": 15, "b": 10, "c": 5 },
+  "minutes": 30,
+  "wordBox": true,
+  "also": { "challenging": ["demanding"], "demanding": ["challenging"], "committed": ["determined"], "determined": ["committed"] },
+  "uiWords": []
+}
