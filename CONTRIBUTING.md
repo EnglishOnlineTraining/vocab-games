@@ -37,3 +37,5 @@ Never hand-edit between `<!-- NAME:START -->` / `<!-- NAME:END -->` markers or i
 No npm, no dependencies: everything runs on plain Node 22.
 `node test-scoring.js`, the other `test-*.js` files, and the checks in
 `scripts/pipeline.js` (`VALIDATORS`, `CHECKERS`) all run as part of `build.js`.
+`npm run check` runs `node scripts/build.js --check` and then the Playwright suite: the
+one command for "am I done?" before a PR.

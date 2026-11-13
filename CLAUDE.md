@@ -120,7 +120,8 @@ Weak criteria ("make it work") lead to false-done reports; a stated check makes 
 happen instead of being assumed. Run `node scripts/build.js` and `node test-scoring.js` /
 `node scripts/validate-explanations.js` where relevant, and for UI changes, load the page over
 HTTP and click through it. Browser checks are the Playwright specs in `tests/` (`npm test`; see
-`docs/claude-reference/build-and-sitemaps.md`).
+`docs/claude-reference/build-and-sitemaps.md`). Before a PR, `npm run check` runs `build.js --check` (which includes those
+checks) and the Playwright suite: commit first, since `--check` fails on uncommitted generated files.
 
 ---
 
