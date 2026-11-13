@@ -93,6 +93,14 @@ between registration and the rules): `9ab-` `REVIEW9AB2026`, `10a-` `REVIEW10A20
 string for a new sitting; no redeploy needed beyond the push. It is a timing gate, not
 security — the code is readable in page source.
 
+**Same paper and attempt log (Shaun, 2026-11-13).** The generated tests (`uni-c1-`,
+`uni-c2-`, `10c-canada-vocab-test`) draw each student's paper from their name, class and the
+release code, so a restart gives the same questions, and send log records (started, resumed,
+left, abandoned) beside the result: a `<unit>-log` tab on the university sheet, Unit
+`<unit>-log <event> <session>` rows in the Make Excel table (never the test's own unit: Make
+keeps one row per class + name + unit + day). The other tests do not have this yet. Details:
+the "Every test" section of the `eol-vocab-quiz-creator` skill.
+
 **`uni-pm-vocabulary.html`, `9g-class-test-9ab.html` and `uni-writing-task.html` have no
 gate, and that is deliberate** (Shaun, 2026-09-03): they are unlikely to be sat again, so
 the gate would be work spent on tests with no next sitting to protect. Don't add it to

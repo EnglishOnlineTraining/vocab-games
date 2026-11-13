@@ -48,8 +48,14 @@ test('a correct sitting scores 25/25, Note 1, and is sent once to Make', async (
   await page.clock.runFor(2 * 60 * 1000 + 1000);
   await page.evaluate(() => doSubmit());
 
-  await expect.poll(() => sent.length).toBe(1);
-  const p = sent[0];
+  const results = () => sent.filter((x) => x.unit === '10c-canada-vocab-test');
+  await expect.poll(() => results().length).toBe(1);
+  const p = results()[0];
+  // the start has its own Unit, so Make's one-row-per-class+name+unit+day rule cannot drop the result
+  const logs = sent.filter((x) => x.unit !== '10c-canada-vocab-test');
+  expect(logs).toHaveLength(1);
+  expect(logs[0].unit).toMatch(/^10c-canada-vocab-test-log started SID-/);
+  expect(logs[0].score).toBe('LOG STARTED (not a result)');
   expect(p.unit).toBe('10c-canada-vocab-test');
   expect(p.cls).toBe('10c');
   expect(p.score).toMatch(/^25 \/ 25 \(100%\)/);
@@ -75,4 +81,14 @@ test('school forms: without "to", optional bracket, sb/sth, and Section C with "
     ];
   });
   expect(r).toEqual([true, true, true, true, true, false, true, false, true, true]);
+});
+
+test('the same student gets the same paper, whatever the spacing and case', async ({ page }) => {
+  await page.goto(FILE);
+  const r = await page.evaluate(() => {
+    const paper = (n, g) => { sName = n; sGroup = g; buildQuestions(); return JSON.stringify([matchItems, fillItems, useItems].map((a) => a.map((x) => x.t))); };
+    return [paper('Lena Müller', '10c'), paper('lena mueller', '10C'), paper('Lena  MÜLLER', '10C '), paper('Tom Becker', '10c')];
+  });
+  expect(r[2]).toBe(r[0]);
+  expect(r[3]).not.toBe(r[0]);
 });
