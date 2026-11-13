@@ -80,7 +80,7 @@ calls `fetch`**. So any test of submission behaviour — webhook routing, Apps S
 gate on `it-writing-task.html` — run against `localhost` proves nothing, and looks like a pass.
 On 2026-08-07 this produced "zero POSTs for valid email addresses", which read as the gate
 working when in fact nothing ever fetched. **Serve the test on a non-localhost host** (use the
-container IP from `hostname -I`, e.g. `http://192.0.2.2:8765/`).
+LAN IP from `ipconfig getifaddr en0` on macOS, e.g. `http://192.168.1.20:8765/`).
 
 ### 3. `nextStep()` clobbers any message `validateStep()` sets
 ```js
