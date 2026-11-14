@@ -1227,7 +1227,7 @@ the missing `.comic-img` rule on `7c-robert-the-bruce`.
 Each verified against the code today, not carried over on trust. Severity is stated honestly —
 two of these are latent rather than live.
 
-10. **Two quiz questions mark a correct answer wrong.** → **PR #76** (distractors reworded). `data/quizzes.json` → `grammar-hardest`,
+10. **Two quiz questions mark a correct answer wrong.** → **PR #76** (q9 reworded) · **q1 fixed 2026-11-14, PR #358** (distractor "I can hardly hear you." replaced with "I saw nobody at the party."; Shaun to approve wording). `data/quizzes.json` → `grammar-hardest`,
     verified 2026-08-28. **Student-facing on a public, no-sign-up page — the highest-priority item
     in this section.**
     - **q1** "Which sentence contains a double negative?" keys *"I didn't see nobody at the
