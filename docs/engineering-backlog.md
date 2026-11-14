@@ -112,7 +112,7 @@ needs a decision. Status: `todo` unless marked.
 | 8 | Main site `/llms.txt` gives the retired contact address | `https://englishonline.training/llms.txt`, "Contact": the old pm.me address (rule 3 says `learn@` only). Not the same item as the JSON-LD address in `seo-backlog.md` Tier 8 A2 | One line in the theme's llms.txt; goes out with the next theme zip. **Shaun uploads** |
 | 9 | WordPress traps are prose only | Pages 1763 and 1997 are guarded by `CLAUDE.md` and six skills; there are no hooks in the project or global settings | One `PreToolUse` hook on the WordPress page-write tools that asks when the input names 1763 or 1997. Whether the hook can match the tool input is not yet tested |
 | 10 | No permission allowlist for the routine checks | Tracked `.claude/settings.json` holds plugin config only | Allow `node scripts/build.js --check`, `--explain`, `node scripts/verify-exercise.js *`, `node test-*.js`, `npx playwright test *`. Friction is inferred, not measured |
-| 11 | CI's Playwright version floats | `package-lock.json` is gitignored, CI runs `npm install` on `^1.63.0`, and `tests/exam-pages.spec.js-snapshots` holds 14 screenshots | Pin the exact version in `package.json`. No failure seen yet |
+| 11 | ✅ Done 2026-11-14 in [#360](https://github.com/EnglishOnlineTraining/vocab-games/pull/360). CI's Playwright version floats | `package-lock.json` is gitignored, CI runs `npm install` on `^1.63.0`, and `tests/exam-pages.spec.js-snapshots` holds 14 screenshots | Pin the exact version in `package.json`. No failure seen yet |
 
 ### P3
 
