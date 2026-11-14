@@ -161,3 +161,26 @@ Titles need a recrawl first, so check each batch-1 page's "last crawled" date in
 Measure `artikel` and `past-perfect` apart, and only after Bing has crawled them; their result
 mixes indexing with title and is not evidence for the title. Indexing alone explains why those two
 are uncited; the title explanation applies to the 12 indexed-but-uncited pages.
+
+## Batch 2 of the title edits (2026-11-14, PR number: see the PR that added this section)
+
+Only `seoTitle` in `data/topics.json` changed, six pages, same method as batch 1. Meta descriptions,
+ledes and template untouched. The titles state no figures or dates, so there was nothing to fact-check
+beyond "will / going to", which is the page's own topic.
+
+| Page | New title |
+|---|---|
+| present-tenses | Present Tenses Englisch: Übungen & Erklärung |
+| future-tenses | Future Tenses Englisch: Übungen zu will & going to |
+| gerund-infinitiv | Gerundium & Infinitiv Englisch: Übungen & Erklärung |
+| adjektive-adverbien | Adjektive & Adverbien Englisch: Übungen & Erklärung |
+| praepositionen | Präpositionen Englisch: Liste, Erklärung & Übungen (list intent, per proposal 3) |
+| reported-speech | Indirekte Rede Englisch: Übungen & Erklärung (proposal 7; already cited, so retitled last) |
+
+**Still held back:** `artikel` and `past-perfect`, until Bing has crawled them (URL Inspection "last
+crawled" date; no export in the repo says so). All 18 pages are now retitled except those two.
+
+**Consequence for the test:** the held-back control no longer exists for the 12 indexed pages. The
+re-measure (about 2026-12-05) therefore compares batch 1 (live since 2026-11-09) against batch 2
+(live from this merge) as a timing comparison, plus `artikel`/`past-perfect` apart. Batch-1 vs
+batch-2 citation counts in the next Bing AI Performance export are the evidence.
