@@ -162,7 +162,7 @@ Measure `artikel` and `past-perfect` apart, and only after Bing has crawled them
 mixes indexing with title and is not evidence for the title. Indexing alone explains why those two
 are uncited; the title explanation applies to the 12 indexed-but-uncited pages.
 
-## Batch 2 of the title edits (2026-11-14, PR number: see the PR that added this section)
+## Batch 2 of the title edits (2026-11-14, PR #356)
 
 Only `seoTitle` in `data/topics.json` changed, six pages, same method as batch 1. Meta descriptions,
 ledes and template untouched. The titles state no figures or dates, so there was nothing to fact-check
