@@ -224,7 +224,13 @@ function mermaid() {
 // ---- running ------------------------------------------------------------
 function run(script) {
   process.stdout.write(`\n▸ ${script}\n`);
-  execFileSync(process.execPath, [path.join(ROOT, script)], { cwd: ROOT, stdio: 'inherit' });
+  try {
+    execFileSync(process.execPath, [path.join(ROOT, script)], { cwd: ROOT, stdio: 'inherit' });
+  } catch (e) {
+    // The step already printed its own errors above; name it instead of dumping a stack trace.
+    console.error(`\n✗ ${script} failed (exit ${e.status}). Read the lines above this one, then re-run: node ${script}`);
+    process.exit(1);
+  }
 }
 
 // Only files the graph claims to produce count as "stale". Scoping this to the
