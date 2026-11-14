@@ -281,6 +281,9 @@ const CHECKERS = [
   { id: 'check-reversible-choices', run: 'scripts/check-reversible-choices.js' },
   { id: 'test-make-grader', run: 'test-make-grader.js' },
   { id: 'test-item-analysis', run: 'test-item-analysis.js' },
+  // Every file a skill names must exist (a missing one was only caught after merge
+  // by the Site Watchdog, 13 Nov, fixed in #349). Exits 1 on any MISS.
+  { id: 'audit-skills', run: 'scripts/audit-skills.js' },
 ];
 
 // Generators deliberately left outside the graph. Their inputs change roughly
