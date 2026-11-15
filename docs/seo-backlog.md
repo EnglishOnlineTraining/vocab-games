@@ -232,8 +232,9 @@ Baseline and reasoning: `docs/gsc-review-2026-10-06.md`.
    doesn't tutor, but the impressions are welcome (Standing rules). Options: point the URL at an
    adult self-learner page or at `/business-english/`.
 4. **PDF landing pages.** Done: property management (#105), ESG and commercial real estate (#313).
-   **Open:** the property PDF's five wrong definitions (cylinder, grout, interior wall, property
-   developer, energy certificate) and its `shaun@learnenglishinberlin.com` address (P2 #12); a page
+   Done 2026-11-15 (PR #PRNUM): the three PDFs rebuilt from the HTML glossaries (five wrong
+   property definitions fixed, old `shaun@` address gone, `learn@` only); Shaun uploads them over
+   media 1358, 1369, 1514 (same URLs). **Open:** a page
    for `useful-phrases-for-business-emails.pdf` (P2 #11).
 5. **Get the activities site indexed.** Hub intros done; 62 low-value pages noindexed; hubs and
    sitemap resubmitted 10-07; seven `themen/` pages re-requested 10-15. The lever left is links
