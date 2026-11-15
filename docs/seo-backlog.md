@@ -518,7 +518,7 @@ text analysis, discuss/assess, and write + text type had no guide; mediation (25
   the Fachbrief's 30/30/40 weighting is an example and is not used.
 - 2856's Mediation link (`/mediation-englisch-abitur-verstehen/`) resolves by 301 to the live post (checked 11-15).
 - [x] **Vocabulary by theme: media impact · 2026-11-15** — draft 2920 (not scheduled; Shaun picks the
-  slot, after 2837 goes live on 8 Dec because it links 2837). PR #PRNUM. Theme, 4. Kurshalbjahr and
+  slot, after 2837 goes live on 8 Dec because it links 2837). PR #379. Theme, 4. Kurshalbjahr and
   the US focus checked against Fachbrief Englisch Nr. 9 and PS Englisch LK 2027 (Brandenburg).
 - **Next themes (P1 #5):** "Vocabulary by theme" exists for science and technology (2837) and media
   impact (draft 2920); aims and ambitions, and nations are open. Skip closed reading/listening formats
