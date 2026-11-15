@@ -10,13 +10,33 @@
   "groupLabel": "Class",
   "groupEg": "10c",
   "groupWord": "class",
-  "code": "CAN10C2026",
-  "practice": ["data/vocab-practice/10c-canada-vocab-practice.json", "data/vocab-practice/10c-sport-vocab-practice.json"],
+  "practice": [
+    "data/vocab-practice/10c-canada-vocab-practice.json",
+    "data/vocab-practice/10c-sport-vocab-practice.json"
+  ],
   "sendTo": "make",
   "sheetUrl": "https://hook.eu1.make.com/c7l77qol3rrinfo0qjjol38uy1flvkhj",
-  "sizes": { "a": 15, "b": 10, "c": 5 },
+  "sizes": {
+    "a": 15,
+    "b": 10,
+    "c": 5
+  },
   "minutes": 30,
   "wordBox": true,
-  "also": { "challenging": ["demanding"], "demanding": ["challenging"], "committed": ["determined"], "determined": ["committed"] },
-  "uiWords": []
+  "also": {
+    "challenging": [
+      "demanding"
+    ],
+    "demanding": [
+      "challenging"
+    ],
+    "committed": [
+      "determined"
+    ],
+    "determined": [
+      "committed"
+    ]
+  },
+  "uiWords": [],
+  "codeHash": "a9571aea0b1ba6715285a8df56ba03614a171623fc1ff8836af5f51feea27de4"
 }

@@ -22,9 +22,13 @@ A student who closes the window must not be able to fish for an easier paper, an
 restart must be visible to Shaun. Every test this skill builds has both of these:
 
 1. **Same paper for the same student.** The paper is drawn from a seeded random generator
-   keyed on `UNIT | RELEASE_CODE | name | class` (lower case, accents and punctuation
-   stripped), never from `Math.random`. Starting again gives the same questions; a new
-   release code gives everyone a new paper.
+   keyed on `UNIT | typed release code | name | class`, never from `Math.random`. The name is
+   reduced first (`nameKey`: lower case, ü/ö/ä/ß as ue/oe/ae/ss, punctuation stripped, words
+   sorted), so Müller/Mueller and "Schmidt, Maria"/"Maria Schmidt" draw one paper. The page
+   holds only a hash of the code (`--code` on the builder; never write the code in a file,
+   this repo is public), so the paper cannot be worked out at home. Starting again gives the
+   same questions; a new release code gives everyone a new paper. The result row carries
+   `starts`: how many times this paper was started on this device.
 2. **Attempt log.** Besides the result, the page sends a record when a test is
    **started**, **resumed**, **left** (`pagehide` while running, via `sendBeacon`: window
    closed or reloaded) and **abandoned** (an unfinished test on this device replaced by a

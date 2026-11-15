@@ -4,6 +4,7 @@
 // the listed twin) scores 25/25 and is sent once to the university sheet
 // (intercepted, never leaves the machine).
 const { test, expect } = require('@playwright/test');
+const { unlock } = require('./helpers/vocab-code');
 
 for (const level of ['c1', 'c2']) {
   const FILE = `/uni-${level}-vocab-test.html`;
@@ -40,8 +41,7 @@ for (const level of ['c1', 'c2']) {
     await page.fill('#inp-code', 'wrong');
     await page.evaluate(() => checkCode());
     await expect(page.locator('#lock-err')).toHaveClass(/show/);
-    await page.fill('#inp-code', (await page.evaluate(() => RELEASE_CODE)).toLowerCase());   // case does not matter
-    await page.evaluate(() => checkCode());
+    await unlock(page, 'testcode1 ');   // case and spaces do not matter
     await expect(page.locator('#s-rules')).toHaveClass(/active/);
     await page.evaluate(() => startExam());
     // Section C gives the word only, never its meaning.
@@ -106,7 +106,7 @@ for (const level of ['c1', 'c2']) {
     await page.goto(`/uni-${level}-vocab-test.html`);
     const r = await page.evaluate(() => {
       const paper = (n, g) => { sName = n; sGroup = g; buildQuestions(); return JSON.stringify([matchItems, fillItems, useItems, matchOptions].map((a) => a.map((x) => x.t || x))); };
-      return [paper('Maria Schmidt', 'C1 English'), paper('  maria   SCHMIDT ', 'c1 english'), paper('Jonas Weber', 'C1 English')];
+      return [paper('Test Student A', 'C1 English'), paper('  test   STUDENT a ', 'c1 english'), paper('Test Student B', 'C1 English')];
     });
     expect(r[1]).toBe(r[0]);
     expect(r[2]).not.toBe(r[0]);
@@ -123,8 +123,7 @@ for (const level of ['c1', 'c2']) {
       await page.fill('#inp-name', 'Test Student');
       await page.fill('#inp-group', 'T1');
       await page.evaluate(() => goRules());
-      await page.fill('#inp-code', await page.evaluate(() => RELEASE_CODE));
-      await page.evaluate(() => checkCode());
+      await unlock(page);
       await page.evaluate(() => startExam());
     };
     await start();

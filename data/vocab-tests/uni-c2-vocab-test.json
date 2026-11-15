@@ -2,10 +2,33 @@
   "unit": "uni-c2-vocab-test",
   "level": "C2",
   "topic": "consulting, business and sustainability",
-  "code": "C2VOCAB2026",
   "practice": "uni-c2-vocab-practice.html",
-  "sizes": { "a": 15, "b": 10, "c": 5 },
+  "sizes": {
+    "a": 15,
+    "b": 10,
+    "c": 5
+  },
   "minutes": 30,
-  "also": { "Capacity": ["Bandwidth"], "Bandwidth": ["Capacity"], "Bird’s Eye View": ["High-Level"], "High-Level": ["Bird’s Eye View"], "Crisp": ["Buttoned-Up"], "Buttoned-Up": ["Crisp"] },
-  "uiWords": []
+  "also": {
+    "Capacity": [
+      "Bandwidth"
+    ],
+    "Bandwidth": [
+      "Capacity"
+    ],
+    "Bird’s Eye View": [
+      "High-Level"
+    ],
+    "High-Level": [
+      "Bird’s Eye View"
+    ],
+    "Crisp": [
+      "Buttoned-Up"
+    ],
+    "Buttoned-Up": [
+      "Crisp"
+    ]
+  },
+  "uiWords": [],
+  "codeHash": "81b82c76e99439f604a9ab1c58cc677507b78b8f45e844b7719aaadedd68b285"
 }
