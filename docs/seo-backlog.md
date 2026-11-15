@@ -39,7 +39,7 @@ Only the tiers' own open markers were read, so a quiet tier may still hold an it
 | `/english-for-students/` and `/fuer-eltern/`: opener and FAQ | 19b.5 | Shaun | Rule 8 list needed first; not re-checked |
 | Empty `alt` on the `/common-questions-about-learning-english/` image | 19b.7 | Shaun | Not re-checked |
 | Monthly internal-link pass | 20 | Shaun starts it | Run 1 done 2026-11-06; next run 2026-12-03; re-measure 2032 and 2038 from 2026-12-04 |
-| Bing queries as a second demand signal; `--bing` import | 21.8 | Shaun | Runs: none yet; import is a decision |
+| Bing queries as a second demand signal; `--bing` import | 21.8 | Shaun | Run 1 (site-wide) 2026-11-15; per-page analysis of four `themen/` "erklärung" pages next; import is a decision |
 | Re-measure the five-query bands | 15b.8 | Shaun | Re-export on 2026-11-23 |
 | Blog queue: WP 2765, 2799, 2800, 2837, 2838, 2839, 2854, 2855, 2856 | 15b.6, 22 | Shaun | Scheduled 29 Nov to 3 Jan 2027; spot-check each after it goes live |
 | Abitur guides from Tier 22 | 22 | Shaun | Drafted and scheduled; check the 2559 link after 11 Nov |
@@ -754,6 +754,14 @@ only.
    Performance (overview, pages, grounding queries, topics) for the `englishonline.training`
    property, which includes the activities subdomain. First export: about 80 citations a day,
    mostly `themen/` and Abitur pages.
+   **Second export, 2026-11-15** (overview 16 Oct – 12 Nov, topics). Citations per day by week:
+   72, 60, 77, **101**; cited pages per day 8.7 → 11.3; citations per page flat (~8–9), so the
+   growth is more pages being cited, not more citations per page. Peak 12 Nov: 155 citations, 17 pages. School-week
+   pattern: Mon 100, Thu 112, Fri–Sun ~55. Topics (Bing's bands): Grammar & Language Structure
+   100–500M volume vs 10K–50K sites (best ratio); Education and Dictionaries & Thesaurus 100–500M
+   vs 100K–500K sites (crowded); Public Speaking & Presentations 5–10M vs 10K–50K (earned by the
+   2023 presentation-alternatives post, Tier 21 run 1). No Abitur topic: Bing likely files it under
+   Education.
 
 ## Tier 11 — AI Overview targeting (2026-10-07) · Shaun + CC
 Goal: get cited in the Google AI Overview for one buying-intent query, then repeat. Method: capture
@@ -1247,6 +1255,36 @@ plan", so the Ahrefs URL lists were not available; the live pages were crawled i
    changed" (last week's edits); "Page in multiple sitemaps" (flat `sitemap.xml` overlaps the section
    sitemaps on purpose — eight scripts read it); "Changed pages not submitted to IndexNow" (counts
    only Ahrefs' own IndexNow add-on; the CI job submits).
+6. **No code action. IndexNow coverage for `englishonline.training` (WordPress, 22 Sep – 12 Nov;
+   read 2026-11-15).** First look at the main site; item 4 covered the activities subdomain.
+   379 submissions, 87 indexed (23%): Sep 18%, Oct 23%, Nov 37%.
+   - **Crawling is the bottleneck, not quality.** Indexed = crawled on every day except 10-04
+     (5 crawled, 1 indexed). The other 77% were never fetched, not rejected; links and
+     authority raise crawl rate, content edits don't.
+   - **Submissions are not pages.** The sitemap has ~83 URLs; the plugin resubmits on every save,
+     API SEO-field edits included. Spikes: 10-03 82 (the bootstrap, 25 indexed), 10-05/06 58 + 25
+     (old-post improvements, Phase 1 snippet rewrites), 10-13 63 (no logged edit matches).
+   - **Small days index worse (14%) than batches (26%)**, the reverse of the activities site:
+     batches were URLs Bing hadn't seen, small days are re-saves of pages it already holds, which it
+     likely doesn't re-count. 22 of 39 days indexed nothing (54 URLs, all 1–6-URL days).
+   - **Habit:** batch metadata edits to several posts into one session rather than over several
+     days. `MAX_CHANGED_PAGES` doesn't apply; the plugin is behaving as designed.
+   - **Not answered by this export:** distinct pages indexed (no URL column; use Bing Site
+     Explorer). Google is unaffected (no IndexNow).
+7. **Open · Shaun exports Bing's URL list; re-check in December. IndexNow, both sites compared
+   (activities 5 Sep – 13 Nov, read 2026-11-15).** Activities: 4,233 submitted, 170 crawled, 137
+   indexed (3.2%). WordPress (item 6): 379, 91, 87 (23%).
+   - **Bing indexes ~2–3 pages a day per site regardless of volume** (2.7 activities, 2.2 WordPress
+     per submission day). ~255 activities URLs were each sent ~16 times. 150+-URL days got ~7
+     indexed vs ~2 on others, at ~2% efficiency. Keep the 50-page cap (item 4).
+   - **Activities has crawl-then-reject; WordPress doesn't.** 33 of 170 crawled activities pages
+     were not indexed (20 days) vs 4 on one WordPress day. Matches Google's 83 "Crawled – currently
+     not indexed" (Tier 19): likely thin or JS-rendered exercise pages.
+   - **November drop is Bing-side.** Indexed per day fell to 0.89 (activities) and 0.88
+     (WordPress, not capped) in the same weeks, so the 11-01 cap didn't cause it.
+   - **Next:** get Bing's URL list for the 33 rejected pages and compare with Google's crawled-not-
+     indexed list; overlap = pages to improve first. Re-check both exports in December: if both
+     stay under 1/day, it's Bing's crawl rate.
 
 ## Tier 19 — Search Console audit: activities indexing drop (2026-11-01) · Shaun + CC
 
@@ -1522,7 +1560,35 @@ Console or Bing, and the Ahrefs connector returns "Insufficient plan".
 mistake (Tier 12.4). Automate the analysis and the changelog, not the live write. Running the same
 workflow for other sites or customers is outside this repo: it needs its own copy of the prompt.
 
-**Runs:** none yet.
+**Runs:**
+
+- **Run 1, site-wide only (2026-11-15, CC, read only).** Bing Keyword and Page Traffic exports for
+  the `englishonline.training` property (both sites; the export does not state its period). No
+  Search Console merge and no per-page analysis yet, so this sets targets, not edits. **Bing column
+  names (item 8):** `Keyword` or `Page`, then `Impressions`, `Clicks`, `CTR` (e.g. `"1.32%"`),
+  `Avg. Position`, all quoted; file starts with a BOM; some keywords contain commas.
+  - **Totals (pages):** 2,256 impressions, 87 clicks, CTR 3.9%, weighted position 6.5. 2,058 of the
+    impressions sit at positions 5–10 (CTR 3.2%).
+  - **`themen/` pages: high impressions, low CTR (item 3 target).** 11 pages, 1,341 impressions
+    (59%), 21 clicks (1.6%): `linking-words` 607/8 (pos 6.8), `simple-past` 400/1 (7.6), `passiv`
+    214/5 (7.2), `reported-speech` 85/1 (6.9). Queries are "… erklärung" at pos 6–9, all 0 clicks:
+    "simple past erklärung" 36, "reported speech erklärung" 36, "past simple erklärung" 31,
+    "present perfect erklärung" 15. The bare English "linking words" has 140 impressions, 0 clicks
+    (pos 8.1) on a `lang="de"` page: possible intent mismatch. These are also the most AI-cited
+    pages (Tier 10.7), so the citation-to-click gap is widest here. **Next:** per-page analysis
+    (item 5) for the four "erklärung" pages, title and meta first.
+  - **Abitur turns impressions into clicks best.** `abitur-operatoren` 89/10 (11%), Abitur Übungen
+    post 46/7, kreatives Schreiben 23/5, packs post 21/5. Queries on KMK/IQB operators 2027 click.
+    Matches Tier 22.
+  - **`/2023/11/01/breaking-the-mould-exploring-alternatives-to-traditional-presentations/`:**
+    142 impressions, 1 click, pos 5.1, from "public speaking alternatives" (30) and variants.
+    Snippet problem (Tier 9.7 rule). Check it isn't measure-only before proposing a rewrite.
+  - **Business pages steady:** `common-business-english-verbs` 90/5; the
+    `useful-phrases-for-business-emails.pdf` ranks on its own (45/4). Landing-page candidate, like
+    the property-management PDF (Tier 9 Phase 3).
+  - **`…/kommentar-…-furs-abitur/comment-page-1/`** shows separately (23/4). Checked live
+    2026-11-15: it 301s to the post, canonical correct. No action.
+  - **Out of scope (item 4):** Polish article queries landing on `esl-articles.html`.
 
 ## Tier 22 — Next Abitur writing guides (2026-11-07) · Shaun decides, CC drafts
 
