@@ -1249,7 +1249,7 @@ two of these are latent rather than live.
     corpus. Add a `9c`/`9g` category via the `add-topics` skill. This is the blocker on Year 9
     working like the other active years.
 
-12. **Audit the generators' HTML-parsing regexes.** → **Reviewed 2026-10-03, no change** (own HTML only; low value, real risk). CodeQL's "bad HTML filtering regexp" query
+12. **Audit the generators' HTML-parsing regexes.** → **Done 2026-11-15 (see audit below)**; earlier: reviewed 2026-10-03, no change (own HTML only; low value, real risk). CodeQL's "bad HTML filtering regexp" query
     caught a real end-tag bug in `scripts/check-syntax.js` on PR #35 — but it only scans code a PR
     *changes*, so the pre-existing generators have never been checked. Counted 2026-08-28:
     **33 HTML-matching regexes across five scripts** (`build-head.js` 17, `build-exercise-data.js`
@@ -1260,6 +1260,24 @@ two of these are latent rather than live.
     an alarm: these parse the repo's own self-authored HTML, where nobody writes `</title foo>`,
     and a miss here fails *visibly* (a mangled hub card title) rather than silently. One audit
     pass, not urgent.
+    **Audited 2026-11-15 → PR (this PR).** Method: each regex run against all 331 pages, comparing
+    the strict shape with a loose one; no live page diverged, and `build.js` output is
+    byte-identical before and after. Findings, by shape:
+    - *Exact `class="x"` matchers* (miss `class="x y"`, a reordered attribute, a second class):
+      `grabTitles` (`ex-title`, `card-title`) and the `section-badge` strip in
+      `build-exercise-data.js`, `page-subtitle` in `build-head.js`, `welcome-title` in
+      `build-review-pages.js` → **fixed** via `scripts/html-class.js` (self-check:
+      `node scripts/html-class.js`).
+    - *Attribute-order matchers*: the exercise-div count and the Abitur `#main.wrap` landing in
+      `build-head.js` → **fixed** with lookaheads. `#step-0 > .step-inner` stays order- and
+      adjacency-dependent (`ponytail:` — fails visibly, caller falls back).
+    - *End-tag matchers* (`</title>`, `</h1>`, `</p>`, `</span>`): `</h1>`, `</p>`, `</span>` and the
+      dynamic tag now allow `\s*`; `</title>` and the first `</head>`/`</main>`/`</body>` anchors
+      stay (checked: each is unique and never inside a script/comment on any page).
+    - *Tag-open `[^>]*>`* (body, main, welcome-hero, charset): ends early on a `>` inside an
+      attribute value; no page has one. Left, with a `ponytail:` note in `html-class.js`.
+    - *Text stripping* `/<[^>]+>/g` (`extract-graded.js`, `build-exercise-data.js`) and the
+      `EXPLAIN`/`NAME:START` block regexes: fine for own HTML; no change.
 
 13. **`themen/` fallback `introH2` is ungrammatical for plural topic names** → **PR #77**. —
     `build-topic-pages.js:93` falls back to `'Was ist das ' + de`, which reads wrong for a plural
