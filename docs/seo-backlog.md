@@ -304,7 +304,8 @@ Source is a sales piece; only what fits this site.
   13. **Unlinked mentions and old-domain links** ("englishonline.training", "learnenglishinberlin",
       "Shaun Trezise"; old LEB backlinks landing on 404s) · parked.
   14. **Honest roundup** "Kostenlose Englisch-Übungen online: Seiten im Vergleich (2026)", us not
-      first; then one personal note to each third-party list (no sequences, UWG §7) · parked.
+      first; then one personal note to each third-party list (no sequences, UWG §7) · **draft done 2026-11-15**
+      (WordPress draft 2921, five providers, sourced; waits on Shaun's review and featured image; PR #378). Outreach not started.
   15. **GEO queries** ("beste <query> 2026", "<query> Erfahrungen", "englishonline.training
       Erfahrungen") join the 10.7 log; check by hand, logged out.
   16. **Video layer** (one video + 3 Shorts per pilot topic) · Shaun decides time, voice and suitability.
