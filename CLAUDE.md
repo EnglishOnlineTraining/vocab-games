@@ -40,10 +40,13 @@ non-trivial logic — an E2E spec in `tests/` by preference. Imported here so ev
 4. **Outreach, listings and descriptions never name Klett.** Describe content as aligned to the
    German school curriculum and used or tested in real classrooms. Internal files (the topic
    pools) may keep the textbook names.
-5. **Work in `~/Documents/GitHub/vocab-games` on a new branch from `origin/main`. Do not create git
-   worktrees or new clones by hand.** A session the desktop app or `/coordinate` starts in its own
-   worktree is fine (Shaun, 2026-11-12): it lets sessions run side by side. Run `git fetch` first. If that clone has uncommitted changes, stop and
-   ask. Do not use the old clone at `Claude Files/vocab-games`; it can be far behind.
+5. **Work in your own worktree on a new branch from `origin/main`. Never switch, create or commit on a
+   branch in the main clone (`~/Documents/GitHub/vocab-games`)** (Shaun, 2026-11-15): another session's
+   uncommitted work may be there, and on 2026-11-12 two sessions switched it between their branches twice in
+   an hour. A session the desktop app or `/coordinate` starts already has a worktree. Any other session
+   enters one with the app's `EnterWorktree`. Do not create git worktrees or new clones by hand. A read-only
+   look at main needs no branch: use `git show origin/main:<path>`. Run `git fetch` first. Do not use the old
+   clone at `Claude Files/vocab-games`; it can be far behind.
 6. **Pushing to `main` publishes to students immediately.** Check the changed pages, and don't
    push or merge without being asked.
 7. **Don't change production email routing or edit live WordPress pages without asking** (see
