@@ -15,7 +15,6 @@ text: `git show dda0f4a1:docs/engineering-backlog.md` and `…:docs/eol-backlog-
 | 4 | **Two sessions in the main clone change each other's branch** | Seen 2026-11-12: the clone switched between sessions' branches twice in an hour, with uncommitted files. `playwright.config.js` fixes port 8791 | Rule 5 in `CLAUDE.md`: read-only sessions use `git show origin/main:<path>`; never `git switch` a dirty clone or another session's branch. Test port from an env var, default 8791 | Shaun approves the wording |
 | 6 | **Merged branches and worktrees pile up** | 282 remote branches (116 merged), 27 of 37 worktrees on deleted branches, `.claude/worktrees` 882 MB | Turn on "Automatically delete head branches" (Shaun), then one prune pass under the `AGENTS.md` Housekeeping rule | Shaun first |
 | 8 | **Main-site `/llms.txt` gives the retired pm.me contact** (still live, checked 11-15) | rule 3 says `learn@` only | One line in the theme's `llms.txt`, shipped with the next theme zip | Shaun uploads |
-| 9 | **WordPress traps are prose only** | 1763 and 1997 are guarded by `CLAUDE.md` and six skills, no hooks | A `PreToolUse` hook that asks when a WordPress page write names 1763 or 1997 (test that the hook can match the tool input first) | CC |
 | 10 | **No permission allowlist for routine checks** | `.claude/settings.json` holds plugin config only | Allow `node scripts/build.js --check`, `--explain`, `node scripts/verify-exercise.js *`, `node test-*.js`, `npx playwright test *` (friction inferred, not measured) | CC |
 | 13 | **Local preview serves where submissions do nothing** | `.claude/launch.json` serves `localhost:3721`; `isTestMode()` no-ops there | Document the macOS LAN-address one-liner in `traps.md` next to trap 2 | CC |
 | 14 | **GitHub Pages serves internal files** | `/CLAUDE.md`, `/docs/…`, `/fetch_gsc.py`, `/competitor-feature-ideas.md` return 200; three loose files are referenced nowhere | Leave (the repo is public) or move the three loose files under `docs/` | Shaun decides |
@@ -57,6 +56,7 @@ text: `git show dda0f4a1:docs/engineering-backlog.md` and `…:docs/eol-backlog-
 - **DX/AX review 2026-11-12:** #1 `audit-skills.js` in the PR gate (#357); #2 `npm run check` (#355);
   #5 docs that misled agents (#354); #7 "Open now" tables and the Tiers 7–8 move (#362); #11 Playwright
   pinned (#360); #12 style-reviewer agent (#361).
+  #9 `PreToolUse` hook `.claude/hooks/wp-trap-guard.js` asks before a WordPress write names page 1763 or 1997 (2026-11-15, PR TBD; check: `node scripts/test-wp-trap-guard.js`).
 - **Repo-health (2026-08-27 →):** grade-boundary tests (#78); `validate-data.js` (#79); spreadsheet
   formula injection, Apps Script (#80) and Make → Excel (#167, #181, `tests/make-formula-guard.spec.js`);
   a11y on non-framework pages (#89, #83); `CONTRIBUTING.md` (#88); internal link checker (#81);

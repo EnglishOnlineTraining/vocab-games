@@ -20,7 +20,22 @@
       "Bash(node test-*.js)",
       "Bash(npm test)",
       "Bash(npm run check)",
-      "Bash(npx playwright test:*)"
+      "Bash(npx playwright test:*)",
+      "Bash(node scripts/test-wp-trap-guard.js)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "mcp__.*__wpcom-(mcp-pages-update|mcp-posts-update|content-items-update|page-sections-.*|post-sections-.*)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/wp-trap-guard.js\"",
+            "timeout": 10
+          }
+        ]
+      }
     ]
   }
 }
