@@ -40,6 +40,7 @@
 const fs = require('fs');
 const path = require('path');
 const X = require('./extract-graded.js');
+const { classAttr } = require('./html-class');
 
 const ROOT = path.join(__dirname, '..');
 const PER_SECTION = 8;
@@ -100,7 +101,7 @@ function categoryOf(file) {
   return m ? m[1] : null;
 }
 function titleOf(src) {
-  var m = src.match(/<h1 class="welcome-title">([\s\S]*?)<\/h1>/);
+  var m = src.match(new RegExp('<h1\\b[^>]*' + classAttr('welcome-title') + '[^>]*>([\\s\\S]*?)</h1\\s*>'));
   return m ? X.decode(m[1]) : '';
 }
 /* "3. A rich ___" → "A rich ___" (the number belonged to the old page's order) */

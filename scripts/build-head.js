@@ -56,6 +56,7 @@ const { unitOf } = require('./extract-graded');
 const { GENERATED_BLOCKS, pageHash, datesFor } = require('./page-hash');
 const NOINDEX = require('./noindex').loadNoindex();
 const TK = require('./title-keyword');
+const { classAttr } = require('./html-class');
 
 const explanations = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/explanations.json'), 'utf8'));
 const exercises = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/exercises.json'), 'utf8'));
@@ -633,7 +634,7 @@ function overviewBlock(file, meta, html) {
   } else {
     if (parts.length === 1) rows.push([bi('Schwerpunkt', 'Focus'), escText(parts[0])]);
     // `class="exercise active"` on the first one, so match the class loosely.
-    const n = (html.match(/<div class="exercise\b[^"]*"\s+id="ex\d+"/gi) || []).length;
+    const n = (html.match(/<div\b(?=[^>]*\bclass="exercise\b)(?=[^>]*\bid="ex\d+")[^>]*>/gi) || []).length;
     if (n) rows.push([bi('Aufgaben', 'Tasks'), String(n)]);
   }
 
@@ -945,7 +946,7 @@ function countBlock(file, lang) {
  * Returns null when the page has no subtitle, which is the signal to skip it.
  */
 function insertAfterSubtitle(html, block) {
-  const m = html.match(/<p class="page-subtitle">[\s\S]*?<\/p>/i);
+  const m = html.match(new RegExp('<p\\b[^>]*' + classAttr('page-subtitle') + '[^>]*>[\\s\\S]*?</p\\s*>', 'i'));
   if (!m) return null;
   return insertAt(html, m.index + m[0].length, block);
 }
@@ -980,7 +981,7 @@ function insertAfterWelcomeHero(html, block) {
     // their h1 is in the header and the content starts straight in .wrap. Land
     // the box at the top of the main landmark instead, which is the same place
     // on screen.
-    const wrap = html.match(/<div id="main"[^>]*class="wrap"[^>]*>/i);
+    const wrap = html.match(/<div\b(?=[^>]*\bid="main")(?=[^>]*\bclass="wrap")[^>]*>/i);
     if (!wrap) return null;
     return insertAt(html, wrap.index + wrap[0].length, block);
   }

@@ -8,6 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 const { stripKeyword } = require('./title-keyword');
+const { classAttr } = require('./html-class');
 const ROOT = path.join(__dirname, '..');
 
 // ---- controlled topic vocabulary: slug → { de, en, match(regexes over grammar text) } ----
@@ -149,9 +150,9 @@ function schoolFromPrefix(f) {
 }
 function grabTitles(s, cls, tag) {
   const out = [];
-  const re = new RegExp('<' + tag + '[^>]*class="' + cls + '"[^>]*>([\\s\\S]*?)</' + tag + '>', 'gi');
+  const re = new RegExp('<' + tag + '\\b[^>]*' + classAttr(cls) + '[^>]*>([\\s\\S]*?)</' + tag + '\\s*>', 'gi');
   let mm; while ((mm = re.exec(s))) {
-    const inner = mm[1].replace(/<span[^>]*class="section-badge"[^>]*>[\s\S]*?<\/span>/gi, '');
+    const inner = mm[1].replace(new RegExp('<span\\b[^>]*' + classAttr('section-badge') + '[^>]*>[\\s\\S]*?</span\\s*>', 'gi'), '');
     const t = decode(inner);
     if (/all exercises complete|complete!|enter your details|review & submit|optional:?\s*get feedback|^geschafft!?$/i.test(t)) continue;
     if (t) out.push(t);

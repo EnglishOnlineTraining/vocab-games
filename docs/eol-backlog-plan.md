@@ -6,6 +6,29 @@ Owners: **CC** = Claude Code (repo build + WordPress.com MCP); **Shaun** = decis
 **SEO / GEO work lives in `docs/seo-backlog.md`** (Tiers 7–13, moved 2026-10-15). Any "Tier 7"–"Tier 13"
 reference in this file points there.
 
+## Open now (checked 2026-11-15)
+
+Items still open in this file, one line each. The detailed sections stay the record; if a row and
+its section disagree, the section wins, so fix the row. Items done in PRs #349–#360 are not listed.
+SEO and Search Console work is in the "Open now" table of `docs/seo-backlog.md`. "Waits on" is
+**Shaun** or **CC** (a session can do it). Live WordPress edits need Shaun's OK (`CLAUDE.md` rule 7).
+
+| Item | Section | Waits on | State |
+|---|---|---|---|
+| `uni-al-munir-relationships.html` audio placeholder (`PASTE_AUDIO_URL_HERE.mp3`) | Tier 6 | Shaun | Still in the file (checked 2026-11-15); needs the real MP3 URL, or drop the audio |
+| Plan upgrade (301s, no ads, plugins) | Tier 5 | Shaun | Deferred until daily users grow |
+| 380's non-breaking-space title | Open decisions 2 | Shaun | Needs a direct wp-admin look; low priority |
+| Berlin in-house page or price on 1965 | Open decisions 4 | Shaun | Evidence dated 2026-11-07; options listed there; a price is Shaun's call |
+| Tier 8 leftovers: WP settings, exercise titles, old-post edits, content decisions | Open decisions 5 | Shaun | Listed in `docs/seo-backlog.md` "Current status" |
+| Corporate enquiries from 1965: tag into a MailerLite group? | Email capture | Shaun | Question open |
+| Results-screen sign-up prompt wider than MSA | Email capture | Shaun | Question open |
+| Post 2370 ends with a newsletter sign-up | Repo-health 18 | Shaun | Confirm or give new wording |
+| MailerLite `preview.mailerlite.io` links: permanent? | Repo-health 18 | Shaun | Confirm |
+| Spot-check each scheduled post and Jetpack auto-share after it goes live | Repo-health 18 | Shaun | Applies to the posts scheduled in `docs/seo-backlog.md` |
+| Refresh dated statistics in the packs (Gallup 2023, Pew 2023, BSA 41) | Repo-health 16 | Shaun decides, CC | Low priority; set a yearly review date |
+| Test the `fact-check-blogs` skill with the skill-creator loop | Repo-health 20 | CC | Never run through the test loop |
+| Housekeeping notes: memory notes for the fact-check skill and the MailerLite form | Repo-health 19 | CC | Branch and worktree already gone; notes not written |
+
 ## Reachability / unknowns
 - The referenced specs (`eol-wordpress-claude-code-plan.md §B2`, `…-content-audit.md`,
   `…-ux-improvements-brief.md`) are **not in the repo** — Shaun must paste `§B2`/T4 detail.
@@ -949,6 +972,7 @@ Tier 9.5 (few new pages while indexing is poor) and rule 7 (Shaun approves every
    Search Console shows it for. Where they differ, draft new H1, meta description and first 100
    words, and check the body answers that query. Simple past and past progressive are already
    Tier 9.6. Pages under rule 3 wait.
+   **→ Proposal drafted 2026-11-15 (PR #365): `docs/repoint-pass-2026-11.md`.** Four posts (2066, 2038, 2032, 2039) and page 965 sit at 8–15 in the 2026-10-06 data; all are under the freeze, so every edit waits until 2026-12-05. Needs Shaun's 2026-11-06 Search Console export first (Ahrefs GSC returns "Insufficient plan"). No WordPress writes made.
 
 ### C. The offer · Shaun decides
 9. **Self-qualify step on `/business-english/` (with Tier 11.5).** The article's "one thing the top
@@ -1249,7 +1273,7 @@ two of these are latent rather than live.
     corpus. Add a `9c`/`9g` category via the `add-topics` skill. This is the blocker on Year 9
     working like the other active years.
 
-12. **Audit the generators' HTML-parsing regexes.** → **Reviewed 2026-10-03, no change** (own HTML only; low value, real risk). CodeQL's "bad HTML filtering regexp" query
+12. **Audit the generators' HTML-parsing regexes.** → **Done 2026-11-15 (see audit below)**; earlier: reviewed 2026-10-03, no change (own HTML only; low value, real risk). CodeQL's "bad HTML filtering regexp" query
     caught a real end-tag bug in `scripts/check-syntax.js` on PR #35 — but it only scans code a PR
     *changes*, so the pre-existing generators have never been checked. Counted 2026-08-28:
     **33 HTML-matching regexes across five scripts** (`build-head.js` 17, `build-exercise-data.js`
@@ -1260,6 +1284,24 @@ two of these are latent rather than live.
     an alarm: these parse the repo's own self-authored HTML, where nobody writes `</title foo>`,
     and a miss here fails *visibly* (a mangled hub card title) rather than silently. One audit
     pass, not urgent.
+    **Audited 2026-11-15 → PR #363.** Method: each regex run against all 331 pages, comparing
+    the strict shape with a loose one; no live page diverged, and `build.js` output is
+    byte-identical before and after. Findings, by shape:
+    - *Exact `class="x"` matchers* (miss `class="x y"`, a reordered attribute, a second class):
+      `grabTitles` (`ex-title`, `card-title`) and the `section-badge` strip in
+      `build-exercise-data.js`, `page-subtitle` in `build-head.js`, `welcome-title` in
+      `build-review-pages.js` → **fixed** via `scripts/html-class.js` (self-check:
+      `node scripts/html-class.js`).
+    - *Attribute-order matchers*: the exercise-div count and the Abitur `#main.wrap` landing in
+      `build-head.js` → **fixed** with lookaheads. `#step-0 > .step-inner` stays order- and
+      adjacency-dependent (`ponytail:` — fails visibly, caller falls back).
+    - *End-tag matchers* (`</title>`, `</h1>`, `</p>`, `</span>`): `</h1>`, `</p>`, `</span>` and the
+      dynamic tag now allow `\s*`; `</title>` and the first `</head>`/`</main>`/`</body>` anchors
+      stay (checked: each is unique and never inside a script/comment on any page).
+    - *Tag-open `[^>]*>`* (body, main, welcome-hero, charset): ends early on a `>` inside an
+      attribute value; no page has one. Left, with a `ponytail:` note in `html-class.js`.
+    - *Text stripping* `/<[^>]+>/g` (`extract-graded.js`, `build-exercise-data.js`) and the
+      `EXPLAIN`/`NAME:START` block regexes: fine for own HTML; no change.
 
 13. **`themen/` fallback `introH2` is ungrammatical for plural topic names** → **PR #77**. —
     `build-topic-pages.js:93` falls back to `'Was ist das ' + de`, which reads wrong for a plural
@@ -1286,7 +1328,7 @@ Year 9 and Year 10 Gymnasium counts were set to 23, 16 and 28 for the pages on `
     `context: "edit"`, changing only the number. CC; needs Shaun's OK before the push.
 
 15. **→ PR #112 (2026-10-08).** Berlin make-up date (20 May) and the IQB wording fixed; AMA confirmed via trade press only (primary blocked); no primary AFB mapping exists; texts have no hard historical claims. Open points are in the PR. **Finish the fact-check of the Abitur material.** Not yet verified:
-    - Historical and political background claims in the Aims, Nations and Media pack texts (only the statistics were checked).
+    - ~~Historical and political background claims in the Aims, Nations and Media pack texts~~ **Done 2026-11-15 (PR #364):** all 12 packs re-checked; every statistic confirmed at its primary source; the texts hold no hard historical claims; the false "Adapted from a … feature" bylines now read "Written for this exercise, in the style of …".
     - Whether the IQB link really supports the "Themenfelder" wording on `abitur-englisch-2027.html`.
     - Berlin's make-up date for English (Brandenburg's is 19 May 2027; the page gives only that one).
     - **AFB level for each operator.** The official 2027 operator list (IQB, "Grundstock von Operatoren") is organised by
