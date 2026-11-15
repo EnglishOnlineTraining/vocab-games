@@ -15,6 +15,8 @@ checks, CEFR fit, English-only). The old `/claude review` comment workflow
 secret the repo does not have, and failed with HTTP 401. Nothing auto-merges; Shaun
 merges.
 
+The saved reviewer is the project agent `style-reviewer` (`.claude/agents/style-reviewer.md`): read-only, it reports findings against `STYLE.md`, `AGENTS.md` and the CLAUDE.md rules and never edits.
+
 `STYLE.md` (repo root) is the canonical contract both models follow. A change that
 genuinely cannot follow it must be explained under "Deviations" in the PR.
 
