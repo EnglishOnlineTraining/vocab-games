@@ -350,7 +350,7 @@ Scope: Business English team training only. Source figures are direction only.
 1. **301 the `/welcome/` copy of 1019 · Shaun OK, CC (P2 #8).** Trim the duplicated paragraph too.
 2. **Business-email pairs · Shaun picks (P2 #10).** 1167 has four pairs. Follow-up-after-no-reply pair
    **built 2026-11-15 as WordPress draft 2934** (`/good-vs-bad-follow-up-emails-in-english/`, not live;
-   PR PRNUM; text in `docs/business-email-pairs.md`). Held until Shaun publishes it: one new indexable page a
+   PR #385; text in `docs/business-email-pairs.md`). Held until Shaun publishes it: one new indexable page a
    week (12 rule 2); link from 1167 and 1061 only after 2026-12-05. Next: LinkedIn messages, out-of-office.
    Real examples only, one at a time.
 3. **Industry vocabulary candidates** (HR, PM, finance, hospitality, IT/UX) · Shaun says which
