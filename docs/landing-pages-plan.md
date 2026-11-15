@@ -145,8 +145,8 @@ a new page has no clicks to lose).
 - **A page per city, per industry or per company size** (the old "5 pages" template). Thin and
   repeats 1965.
 - **Course schema on an "8-week plan".** Deliberately cut with the corporate pivot (Tier 7, Not adopted).
-- **"Online Business English for teams"** page. The evidence says platforms own that question (Tier 7
-  review 7 Nov, point 4). Revisit if the 8-week re-run shows otherwise.
+- **"Online Business English for teams"** page. The evidence says platforms own that question (`docs/gsc-review-2026-11-07-ai-answers.md`,
+  point 4). Revisit if the 8-week re-run shows otherwise.
 - **Case studies naming clients.** The logos are public, but a page that describes work for a named
   client needs that client's OK. Use anonymised examples (rule 1).
 - **Anything for the school students or parents.** Outside the paid offer.
