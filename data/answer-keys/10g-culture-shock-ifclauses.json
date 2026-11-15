@@ -1,0 +1,199 @@
+{
+ "unit": "10g-culture-shock-ifclauses",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "She had learned the language and read guidebooks",
+     "accept": [
+      "She had learned the language and read guidebooks"
+     ],
+     "label": "1. How had the narrator prepared?",
+     "why": "The text says she had studied Japanese for three years and read every guidebook she could find."
+    },
+    "g2": {
+     "correct": "Please sit down — no help was needed",
+     "accept": [
+      "Please sit down — no help was needed"
+     ],
+     "label": "2. What did “It’s fine” mean?",
+     "why": "The text says her host mother’s gentle “It’s fine” actually meant “Please sit down”."
+    },
+    "g3": {
+     "correct": "She watched people instead of translating everything",
+     "accept": [
+      "She watched people instead of translating everything"
+     ],
+     "label": "3. What changed things?",
+     "why": "Things changed when she stopped translating every sentence and started watching people instead."
+    },
+    "g4": {
+     "correct": "With soft, polite phrases instead of direct questions",
+     "accept": [
+      "With soft, polite phrases instead of direct questions"
+     ],
+     "label": "4. How did she ask for help?",
+     "why": "She asked softly, “Would you mind showing me…?”, instead of “What does this mean?”"
+    },
+    "g5": {
+     "correct": "An inverted if-clause — the “if” is dropped",
+     "accept": [
+      "An inverted if-clause — the “if” is dropped"
+     ],
+     "label": "5. What structure is “Had I understood”?",
+     "why": "“Had I understood” means “If I had understood”: the if is dropped and had moves first."
+    },
+    "g6": {
+     "correct": "A gerund after the verb “remember”",
+     "accept": [
+      "A gerund after the verb “remember”"
+     ],
+     "label": "6. What job does “asking” do?",
+     "why": "Remember + -ing (a gerund) means remembering something you did earlier."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "move",
+     "accept": [
+      "move"
+     ],
+     "label": "1. If you ___ to a country…, you will notice",
+     "why": "First conditional: if + present simple, then will in the main clause."
+    },
+    "g2": {
+     "correct": "wouldn’t have bought",
+     "accept": [
+      "wouldn’t have bought"
+     ],
+     "label": "2. If I had known…, I ___ such an expensive present",
+     "why": "Third conditional: if + past perfect, then would have + past participle."
+    },
+    "g3": {
+     "correct": "paid",
+     "accept": [
+      "paid"
+     ],
+     "label": "3. If she ___ more attention…, she would learn",
+     "why": "Second conditional: if + past simple, then would + infinitive."
+    },
+    "g4": {
+     "correct": "practise",
+     "accept": [
+      "practise"
+     ],
+     "label": "4. You will settle in faster if you ___",
+     "why": "First conditional: the if-clause uses the present simple, not will."
+    },
+    "g5": {
+     "correct": "wouldn’t have felt",
+     "accept": [
+      "wouldn’t have felt"
+     ],
+     "label": "5. If they had warned me…, I ___ so nervous",
+     "why": "Third conditional: if + past perfect, then would have + past participle."
+    },
+    "g6": {
+     "correct": "feel",
+     "accept": [
+      "feel"
+     ],
+     "label": "6. If you ___ homesick, call a friend",
+     "why": "If + present simple with an imperative gives advice for situations that really happen."
+    },
+    "g7": {
+     "correct": "would have missed",
+     "accept": [
+      "would have missed"
+     ],
+     "label": "7. We ___ the festival if our host brother hadn’t explained",
+     "why": "Third conditional: if + past perfect (hadn’t explained), then would have + past participle."
+    },
+    "g8": {
+     "correct": "would be",
+     "accept": [
+      "would be"
+     ],
+     "label": "8. If I could give one piece of advice, it ___ this",
+     "why": "Second conditional: if + past (could), then would + infinitive for an imagined situation."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Would",
+     "accept": [
+      "Would"
+     ],
+     "label": "1. ___ you mind if I sat here?",
+     "why": "“Would you mind if I + past simple?” is the polite way to ask permission."
+    },
+    "g2": {
+     "correct": "tell",
+     "accept": [
+      "tell"
+     ],
+     "label": "2. Could you ___ me where…?",
+     "why": "Modal verbs like could are followed by the infinitive without to."
+    },
+    "g3": {
+     "correct": "could",
+     "accept": [
+      "could"
+     ],
+     "label": "3. I was wondering if you ___ help me",
+     "why": "“I was wondering if you could…” is a very polite request; could + infinitive."
+    },
+    "g4": {
+     "correct": "taking",
+     "accept": [
+      "taking"
+     ],
+     "label": "4. Would you mind ___ a photo of us?",
+     "why": "“Would you mind” is followed by the -ing form."
+    },
+    "g5": {
+     "correct": "Would",
+     "accept": [
+      "Would"
+     ],
+     "label": "5. ___ it be all right if I came later?",
+     "why": "“Would it be all right if I + past simple?” politely asks permission."
+    },
+    "g6": {
+     "correct": "could",
+     "accept": [
+      "could"
+     ],
+     "label": "6. Do you think you ___ speak more slowly?",
+     "why": "“Do you think you could…?” is a polite request; could + infinitive without to."
+    },
+    "g7": {
+     "correct": "to open",
+     "accept": [
+      "to open"
+     ],
+     "label": "7. Could I ask you ___ the window?",
+     "why": "Ask someone + to-infinitive: could I ask you to open…?"
+    },
+    "g8": {
+     "correct": "as",
+     "accept": [
+      "as"
+     ],
+     "label": "8. Would you be so kind ___ to write…?",
+     "why": "The fixed polite phrase is “Would you be so kind as to…?”"
+    }
+   }
+  }
+ }
+}
