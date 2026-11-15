@@ -9,5 +9,18 @@
   },
   "enabledPlugins": {
     "html-plan@claude-community": true
+  },
+  "permissions": {
+    "allow": [
+      "Bash(node scripts/build.js)",
+      "Bash(node scripts/build.js --check)",
+      "Bash(node scripts/build.js --explain)",
+      "Bash(node scripts/verify-exercise.js:*)",
+      "Bash(node scripts/validate-explanations.js)",
+      "Bash(node test-*.js)",
+      "Bash(npm test)",
+      "Bash(npm run check)",
+      "Bash(npx playwright test:*)"
+    ]
   }
 }
