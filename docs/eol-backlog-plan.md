@@ -972,6 +972,7 @@ Tier 9.5 (few new pages while indexing is poor) and rule 7 (Shaun approves every
    Search Console shows it for. Where they differ, draft new H1, meta description and first 100
    words, and check the body answers that query. Simple past and past progressive are already
    Tier 9.6. Pages under rule 3 wait.
+   **→ Proposal drafted 2026-11-15 (PR #365): `docs/repoint-pass-2026-11.md`.** Four posts (2066, 2038, 2032, 2039) and page 965 sit at 8–15 in the 2026-10-06 data; all are under the freeze, so every edit waits until 2026-12-05. Needs Shaun's 2026-11-06 Search Console export first (Ahrefs GSC returns "Insufficient plan"). No WordPress writes made.
 
 ### C. The offer · Shaun decides
 9. **Self-qualify step on `/business-english/` (with Tier 11.5).** The article's "one thing the top
