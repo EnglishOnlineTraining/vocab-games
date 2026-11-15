@@ -144,7 +144,8 @@ a new page has no clicks to lose).
   them.
 - **A page per city, per industry or per company size** (the old "5 pages" template). Thin and
   repeats 1965.
-- **Course schema on an "8-week plan".** Deliberately cut with the corporate pivot (Tier 7, Not adopted).
+- **Course schema on an "8-week plan".** Cut with the corporate pivot (Tier 7). **Reversed by Shaun 2026-11-15:** revived as a
+  free self-study plan, saved as WordPress draft 2933 (`business-english-8-week-plan`), unpublished. Publishing is his call.
 - **"Online Business English for teams"** page. The evidence says platforms own that question (`docs/gsc-review-2026-11-07-ai-answers.md`,
   point 4). Revisit if the 8-week re-run shows otherwise.
 - **Case studies naming clients.** The logos are public, but a page that describes work for a named

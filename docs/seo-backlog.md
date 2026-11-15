@@ -167,7 +167,8 @@ Apply to every item. Most come from earlier tiers; the tier is named so the reas
 - **`Speakable` schema:** coincided with the activities deindexing; removed, don't re-add (7, 15a).
 - **Self-serving `Review` markup:** earns no star snippets (8 B9).
 - **5 new service landing pages (P3.1) and Course schema on an "8-week plan" (P3.2):** would
-  compete with `/business-english/` (1965); the plan page was cut deliberately (7).
+  compete with `/business-english/` (1965); the plan page was cut deliberately (7). **Course half reversed 2026-11-15** (Shaun):
+  draft page 2933 with `Course` JSON-LD exists, unpublished; the 5 landing pages stay not adopted.
 - **New `themen/` pages for wh-questions, pronouns, much/many:** the ESL pages cover them (15b).
 - **Image-SEO registries, custom image sitemap, `primaryImageOfPage`, stock heroes, SVG `srcset`** (14).
 - **Overview box on hubs; replacing em dashes and arrows:** by design (15a.2, 15a.4).
