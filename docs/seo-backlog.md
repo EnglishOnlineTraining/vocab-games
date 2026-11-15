@@ -57,7 +57,7 @@ disagree, the tier wins. Every live WordPress edit needs Shaun's OK (rule 7).
 | 7 | Page 842 (draft since 22 Sep, old URL still had 73 impr): republish or 301 | Shaun | 19 |
 | 8 | 301 the `/welcome/` copy of the Business English Skills article (1019) and trim the duplicate paragraph | Shaun OK, CC | 17.1 |
 | 9 | `/writing-emails-in-english/` (1061): 419–575 impr at pos ~22, falling. Tier 21 per-page analysis after 12-05 | CC, after freeze | 19, 21 |
-| 10 | Business-email pairs beyond 1167: one pair drafted | Shaun picks | 17.2 |
+| 10 | Business-email pairs beyond 1167: follow-up pair built as WP draft 2934 | Shaun picks | 17.2 |
 | 11 | Landing page for `useful-phrases-for-business-emails.pdf` (ranks on its own), same build as the vocabulary pages | Shaun OK, CC | 9.4, 21 |
 | 12 | Fix the property-management PDF: five wrong definitions and an old address (keep filename and URL) | Shaun | 9.4 |
 | 13 | Tutoring-search impressions on `/welcome/about-me/wilkommen/`: point at an adult-learner page or `/business-english/` (they're welcome: don't shed them) | Shaun | 9.3 |
@@ -348,8 +348,10 @@ Scope: Business English team training only. Source figures are direction only.
 
 ### Tier 17 — Issue #73 Search Console follow-ups (2026-10-28)
 1. **301 the `/welcome/` copy of 1019 · Shaun OK, CC (P2 #8).** Trim the duplicated paragraph too.
-2. **Business-email pairs · Shaun picks (P2 #10).** 1167 has four pairs; a follow-up pair is drafted
-   in `docs/business-email-pairs.md`. Next: follow-ups, complaints, LinkedIn messages, out-of-office.
+2. **Business-email pairs · Shaun picks (P2 #10).** 1167 has four pairs. Follow-up-after-no-reply pair
+   **built 2026-11-15 as WordPress draft 2934** (`/good-vs-bad-follow-up-emails-in-english/`, not live;
+   PR PRNUM; text in `docs/business-email-pairs.md`). Held until Shaun publishes it: one new indexable page a
+   week (12 rule 2); link from 1167 and 1061 only after 2026-12-05. Next: LinkedIn messages, out-of-office.
    Real examples only, one at a time.
 3. **Industry vocabulary candidates** (HR, PM, finance, hospitality, IT/UX) · Shaun says which
    qualify. HR has a Quizlet set.
