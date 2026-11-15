@@ -15,7 +15,7 @@ old text: `git show dda0f4a1:docs/eol-backlog-plan.md` and `…:docs/wordpress-t
 | # | Item | Waits on | Section |
 |---|---|---|---|
 | 1 | **Retire `englishonlinetraining@pm.me` everywhere it still shows** (rule 3): MailerLite reply-to on 10 emails (1 draft campaign, Welcome Sequence × 3, Lead Magnet Delivery × 6) and the account default; the Apps Script sheets that email results; the WordPress Organization node (`seo-backlog.md` 8 A2); the main-site `/llms.txt` (`engineering-backlog.md`) | Shaun | Contact address |
-| 2 | `uni-al-munir-relationships.html` audio placeholder (`PASTE_AUDIO_URL_HERE.mp3`): give the MP3 URL or drop the audio | Shaun | Tier 6 |
+| 2 | ✅ 2026-11-15 (#375) `uni-al-munir-relationships.html` audio placeholder: listening step dropped | done | Tier 6 |
 | 3 | MailerLite delivery automations (MSA checklist, Abitur phrase sheet, Business phrase bank, Teacher Track) were created inactive: test one signup per form, then switch them on | Shaun | Email capture |
 | 4 | Results-screen signup beyond `msa-c-` (each prefix needs an existing group) | Shaun | Email capture |
 | 5 | Berlin in-house section or a price on `/business-english/` (1965): leave closed, add a section, or build a page | Shaun | Decisions |
@@ -75,11 +75,12 @@ contact form); teacher-notes posts 2063–2066 published; Vocabulary Games (1757
 Theme replaced by EOT Modern (Claude-maintained since 2026-09-25); one menu; nav menu 416 trashed
 (2026-10-29). **Open:** plan upgrade (Open #9).
 
-### Tier 6 — internal-linking audit (2026-08-08) · done except one
+### Tier 6 — internal-linking audit (2026-08-08) · done
 Buckets A (1966 form and subscribe block, 915 unpublished, 168's dead links, 80's empty WhatsApp
 button), B (lead magnets linked; 1582 and 1715 now linked) and C (1019, 1133, 651, 1393, 939, 1757)
-are all fixed and verified (last 2026-10-29). **Open:** the al-munir audio placeholder (Open #2), the
-only `PASTE_*`/`TODO` placeholder across all framework pages.
+are all fixed and verified (last 2026-10-29). The al-munir audio placeholder (Open #2), the
+only `PASTE_*`/`TODO` placeholder across all framework pages, went when the listening step was
+dropped (2026-11-15, #375).
 
 ### Tiers 7–13 — SEO / GEO
 In `docs/seo-backlog.md`. Tier 9 item 9 (the preview test named in five pages' `PREVIEW` comments)
