@@ -118,7 +118,7 @@ needs a decision. Status: `todo` unless marked.
 
 | # | Item | Evidence | Change |
 |---|---|---|---|
-| 12 | No saved reviewer agent | No `.claude/agents`; each PR review is prompted from scratch | `.claude/agents/style-reviewer.md`, about 30 lines: `STYLE.md` plus the check commands |
+| 12 | ✅ Done 2026-11-15 in [#361](https://github.com/EnglishOnlineTraining/vocab-games/pull/361). No saved reviewer agent | No `.claude/agents`; each PR review is prompted from scratch | `.claude/agents/style-reviewer.md`, about 30 lines: `STYLE.md` plus the check commands |
 | 13 | Local preview serves on the host where submissions do nothing | `.claude/launch.json` serves `localhost:3721`; `isTestMode()` makes submit a no-op there | Document the macOS LAN-address one-liner in `traps.md` next to trap 2 |
 | 14 | GitHub Pages serves internal files | `/CLAUDE.md`, `/docs/engineering-backlog.md`, `/competitor-feature-ideas.md`, `/fetch_gsc.py`, `/scripts/build.js` return 200 on the live domain; `fetch_gsc.py`, `FCC-SETUP.md` and `competitor-feature-ideas.md` are referenced nowhere | **Shaun decides**: leave (the repo is public anyway) or move the three loose files under `docs/` |
 | 15 | No-JS banner says "the tasks stay empty" | `curl` of `10c-canada-environment.html` returns the reading text, 24 selects with options and the buttons | Reword in `build-head.js`. Template-wide, so after the `seo-backlog.md` Tier 19.1 freeze |
