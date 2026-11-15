@@ -1,11 +1,17 @@
-// Records a demo walkthrough of one exercise page as an MP4, plus timeline.json and
-// chapters.txt for the YouTube description and subtitles.
-// Usage: node record-demo.js <unit> [out dir] [writing.json] [--keep-frames]
+// Records a demo walkthrough of one exercise page as an MP4, plus timeline.json (and
+// chapters.txt in --horizontal mode) for the YouTube metadata.
+// Usage: node record-demo.js <unit> [out dir] [writing.json] [--keep-frames] [--horizontal]
 //   <unit>        page name without .html, e.g. esl-pronouns
 //   [out dir]     default ~/Movies/eol-demos/<unit> — never inside the repo (it publishes)
-//   [writing.json] { "<textarea or input id>": "text to type" } for free-writing boxes
+//   [writing.json] { "<textarea or input id>": "text to type" } for free-writing boxes,
+//                 plus "hook": "…" — the 2-second text card a Short opens with
 //   --keep-frames keep frames/ (~160 MB a minute) so the MP4 can be re-encoded without
 //                 re-recording: swift frames2mp4.swift <out dir>/frames <out.mp4>
+//   --horizontal  the old long-form 1920×1080 walkthrough with chapter pacing
+// Default is a vertical 1080×1920 Short: feed rules are vertical, sound-off, 2-second hook,
+// so it opens on a bold text hook card, shows a burned-in caption bar the whole way through
+// (viewers watch muted) and paces steps for a feed, not chapters. Shorts ignore chapters,
+// so chapters.txt is only written in --horizontal mode.
 // Right answers come from data/answer-keys/<unit>.json; one gap is answered wrong on purpose
 // so the results screen shows an explanation.
 const { spawn, execFileSync } = require('child_process');
@@ -16,13 +22,19 @@ const path = require('path');
 const REPO = path.resolve(__dirname, '../../..');
 const { chromium } = require(require.resolve('playwright', { paths: [REPO] }));
 const keepFrames = process.argv.includes('--keep-frames');
-const [unit, outArg, writingArg] = process.argv.slice(2).filter((a) => a !== '--keep-frames');
-if (!unit) { console.error('Usage: node record-demo.js <unit> [out dir] [writing.json] [--keep-frames]'); process.exit(1); }
+const horizontal = process.argv.includes('--horizontal');
+const VERT = !horizontal;
+const [unit, outArg, writingArg] = process.argv.slice(2).filter((a) => !a.startsWith('--'));
+if (!unit) { console.error('Usage: node record-demo.js <unit> [out dir] [writing.json] [--keep-frames] [--horizontal]'); process.exit(1); }
 const out = outArg || path.join(os.homedir(), 'Movies/eol-demos', unit);
 const writing = writingArg ? JSON.parse(fs.readFileSync(writingArg, 'utf8')) : {};
+const hook = typeof writing.hook === 'string' ? writing.hook : null;
 const KEY = JSON.parse(fs.readFileSync(path.join(REPO, 'data/answer-keys', unit + '.json'), 'utf8')).sections;
 const PORT = 8795;
-const MIN_STEP_MS = 11000; // YouTube ignores chapters shorter than 10 s
+// Horizontal pacing exists for YouTube chapters (ignored under 10 s). A Short has no
+// chapters: 4 s per step keeps it moving, and the whole thing must stay under 3 minutes.
+const MIN_STEP_MS = VERT ? 4000 : 11000;
+const SHORT_MAX_MS = 175000;
 
 // A visible cursor dot, since screenshots show no mouse pointer.
 const CURSOR = () => addEventListener('DOMContentLoaded', () => {
@@ -41,15 +53,49 @@ process.on('exit', () => server.kill());
 (async () => {
   await new Promise((r) => setTimeout(r, 800));
   const browser = await chromium.launch();
-  // 1280×720 layout captured at 1.5× = 1920×1080 frames: sharper text for YouTube's 1080p
-  // tier without spreading the page out the way a 1920-px-wide viewport would.
-  const page = await (await browser.newContext({ viewport: { width: 1280, height: 720 }, deviceScaleFactor: 1.5 })).newPage();
+  // Horizontal: 1280×720 layout captured at 1.5× = 1920×1080 frames: sharper text for
+  // YouTube's 1080p tier without spreading the page out the way a 1920-px-wide viewport
+  // would. Vertical: 720×1280 at 1.5× = 1080×1920, the Shorts size, same pixel count so
+  // the capture rate is unchanged.
+  const page = await (await browser.newContext(VERT
+    ? { viewport: { width: 720, height: 1280 }, deviceScaleFactor: 1.5 }
+    : { viewport: { width: 1280, height: 720 }, deviceScaleFactor: 1.5 })).newPage();
   await page.addInitScript(CURSOR);
   // Pre-decline the analytics banner so it doesn't cover the bottom of every frame.
   await page.addInitScript(() => { try { localStorage.setItem('eol_consent', 'denied'); } catch (e) {} });
   await page.route('**/script.google.com/**', (r) => r.abort());
   await page.route('**/hook.eu1.make.com/**', (r) => r.abort());
   const pause = (ms) => page.waitForTimeout(ms);
+
+  // Sound-off overlays (vertical only): a full-screen hook card and a caption bar. Both are
+  // DOM elements, so they land in the screenshots for free — no text pass in the encoder.
+  const showHook = (text) => page.evaluate((t) => {
+    const d = document.createElement('div');
+    d.id = 'eol-hook';
+    d.style.cssText = 'position:fixed;inset:0;z-index:99998;background:#1a1a2e;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:70px 50px;text-align:center;font-family:system-ui,sans-serif';
+    const q = document.createElement('div');
+    q.style.cssText = 'font-size:46px;font-weight:800;line-height:1.25';
+    q.textContent = t;
+    const sub = document.createElement('div');
+    sub.style.cssText = 'font-size:24px;font-weight:600;opacity:.75';
+    sub.textContent = 'Watch how it works ▼';
+    d.append(q, sub);
+    document.body.appendChild(d);
+  }, text);
+  const hideHook = () => page.evaluate(() => document.getElementById('eol-hook')?.remove());
+  // Caption bar sits at bottom:200px — above the Shorts UI (title, like buttons) that
+  // covers the lower strip, so captions stay readable in the feed.
+  const caption = (text) => page.evaluate((t) => {
+    let d = document.getElementById('eol-caption');
+    if (!d) {
+      d = document.createElement('div');
+      d.id = 'eol-caption';
+      d.style.cssText = 'position:fixed;left:24px;right:24px;bottom:200px;z-index:99998;background:rgba(0,0,0,.78);color:#fff;padding:14px 20px;border-radius:14px;text-align:center;font:600 26px/1.35 system-ui,sans-serif;pointer-events:none';
+      document.body.appendChild(d);
+    }
+    d.style.display = t ? 'block' : 'none';
+    d.textContent = t || '';
+  }, text);
 
   // ponytail: Playwright's recordVideo keeps only the first frame on this macOS, so we
   // screenshot in a loop and frames2mp4.swift encodes the shots at their real timestamps.
@@ -85,7 +131,16 @@ process.on('exit', () => server.kill());
   const click = async (loc) => { await glide(loc); await pause(200); await loc.click(); };
 
   await page.goto(`http://localhost:${PORT}/${unit}.html?mode=practise`);
-  await pause(2500);
+
+  // The 2-second hook decides the swipe. It covers the page while it loads underneath.
+  if (VERT && hook) {
+    await showHook(hook);
+    await pause(2600);
+    await hideHook();
+  } else {
+    if (VERT) console.warn('No "hook" in writing.json: a Short without a 2-second hook gets swiped past. Pass one.');
+    await pause(2500);
+  }
 
   const total = await page.evaluate(() => TOTAL_STEPS);
   // Which step each gap sits on, and whether it is a select, a text box or a radio group.
@@ -110,6 +165,7 @@ process.on('exit', () => server.kill());
     const stepStart = Date.now();
     const title = await page.locator(`#step-${n} h2`).first().textContent().catch(() => `Step ${n}`);
     timeline.push({ ms: stepStart - t0, step: n, title: title.trim() });
+    if (VERT) await caption(title.trim());
     await page.evaluate(() => scrollTo({ top: 0, behavior: 'smooth' }));
     await pause(1200);
     for (const g of gaps.filter((x) => x.step === n)) {
@@ -129,6 +185,7 @@ process.on('exit', () => server.kill());
       await pause(400);
     }
     for (const [id, text] of Object.entries(writing)) {
+      if (id === 'hook') continue;
       const box = page.locator(`#step-${n} #${id}`);
       if (!(await box.count())) continue;
       await click(box);
@@ -136,7 +193,12 @@ process.on('exit', () => server.kill());
       await pause(800);
     }
     const check = page.locator(`#step-${n} button:has-text("Check")`).first();
-    if (await check.count()) { await click(check); await pause(2500); }
+    if (await check.count()) {
+      const wrongHere = gaps.some((g) => g.step === n && g.id === wrongId);
+      if (VERT) await caption(wrongHere ? 'One of these is wrong on purpose…' : 'Checking the answers');
+      await click(check);
+      await pause(2500);
+    }
     const left = MIN_STEP_MS - (Date.now() - stepStart);
     if (left > 0) await pause(left);
     await click(page.locator(`#step-${n} button[onclick^="nextStep(${n})"]`).first());
@@ -148,21 +210,28 @@ process.on('exit', () => server.kill());
   }
 
   // Results: hold on the score card, then on the explanation for the deliberate mistake.
-  // One chapter for both, so it stays over YouTube's 10-second minimum.
   timeline.push({ ms: Date.now() - t0, step: total, title: 'Your score' });
   await page.evaluate(() => scrollTo({ top: 0 }));
   await glide(page.locator('#score-display')).catch(() => {});
-  await pause(4000);
+  if (VERT) await caption('Your score');
+  await pause(VERT ? 3000 : 4000);
   const expl = page.locator('#explanations .expl-why').first();
   const explanationShown = (await expl.count()) > 0 && await expl.isVisible();
   if (explanationShown) {
     await expl.evaluate((e) => e.scrollIntoView({ behavior: 'smooth', block: 'center' }));
     await pause(800);
     await glide(expl);
-    await pause(7000);
+    if (VERT) await caption("Here's why it's wrong");
+    await pause(VERT ? 5000 : 7000);
   } else {
     console.warn('No explanation on the results screen: do not mention explanations in captions.');
-    await pause(7000);
+    await pause(VERT ? 3000 : 7000);
+  }
+  // End card for sound-off viewers: the CTA has to be visible, not spoken.
+  if (VERT) {
+    await caption(`Try it free → activities.englishonline.training/${unit}.html`);
+    await pause(2600);
+    await caption('');
   }
 
   recording = false;
@@ -170,15 +239,20 @@ process.on('exit', () => server.kill());
   const end = Date.now() - t0;
   await browser.close();
   fs.writeFileSync(path.join(frames, 'times.txt'), times.join('\n'));
-  const file = path.join(out, unit + '-demo.mp4');
+  const file = path.join(out, unit + (VERT ? '-short.mp4' : '-demo.mp4'));
   // Throws (and so exits non-zero) when the encoder fails.
   execFileSync('swift', ['-suppress-warnings', path.join(__dirname, 'frames2mp4.swift'), frames, file], { stdio: 'inherit' });
   if (!keepFrames) fs.rmSync(frames, { recursive: true, force: true });
 
   const ts = (ms) => { const s = Math.floor(ms / 1000); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
   timeline[0].ms = 0; // YouTube needs the first chapter at 0:00
-  if (timeline.length < 3) console.warn(`Only ${timeline.length} chapters: YouTube needs 3, so leave CHAPTERS out of the description.`);
-  fs.writeFileSync(path.join(out, 'timeline.json'), JSON.stringify({ unit, durationMs: end, wrongGap: wrongId, explanationShown, timeline }, null, 2));
-  fs.writeFileSync(path.join(out, 'chapters.txt'), timeline.map((t) => `${ts(t.ms)} ${t.title}`).join('\n') + '\n');
-  console.log(fs.readFileSync(path.join(out, 'chapters.txt'), 'utf8'));
+  if (VERT && end > SHORT_MAX_MS) console.warn(`Video is ${Math.round(end / 1000)} s: over the 3-minute Shorts limit — trim steps or drop one.`);
+  if (!VERT && timeline.length < 3) console.warn(`Only ${timeline.length} chapters: YouTube needs 3, so leave CHAPTERS out of the description.`);
+  fs.writeFileSync(path.join(out, 'timeline.json'), JSON.stringify({ unit, vertical: VERT, durationMs: end, wrongGap: wrongId, explanationShown, timeline }, null, 2));
+  if (!VERT) {
+    fs.writeFileSync(path.join(out, 'chapters.txt'), timeline.map((t) => `${ts(t.ms)} ${t.title}`).join('\n') + '\n');
+    console.log(fs.readFileSync(path.join(out, 'chapters.txt'), 'utf8'));
+  } else {
+    console.log(`Vertical Short: ${Math.round(end / 1000)} s, ${file}`);
+  }
 })().catch((e) => { console.error(e.message); process.exit(1); });
