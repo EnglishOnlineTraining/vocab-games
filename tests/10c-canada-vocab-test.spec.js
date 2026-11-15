@@ -3,6 +3,7 @@
 // correctly, with B typed without "to" / sb / sth, scores 25/25 with Note 1 and is sent
 // once to the Year 9 Make webhook (intercepted, never leaves the machine).
 const { test, expect } = require('@playwright/test');
+const { unlock } = require('./helpers/vocab-code');
 
 const FILE = '/10c-canada-vocab-test.html';
 
@@ -30,8 +31,7 @@ test('a correct sitting scores 25/25, Note 1, and is sent once to Make', async (
   await page.fill('#inp-name', 'Test Student');
   await page.fill('#inp-group', '10c');
   await page.evaluate(() => goRules());
-  await page.fill('#inp-code', 'can10c2026');
-  await page.evaluate(() => checkCode());
+  await unlock(page);
   await page.evaluate(() => startExam());
   await page.evaluate(() => {
     const fire = (el) => el.dispatchEvent(new Event('input', { bubbles: true }));
@@ -87,8 +87,8 @@ test('the same student gets the same paper, whatever the spacing and case', asyn
   await page.goto(FILE);
   const r = await page.evaluate(() => {
     const paper = (n, g) => { sName = n; sGroup = g; buildQuestions(); return JSON.stringify([matchItems, fillItems, useItems].map((a) => a.map((x) => x.t))); };
-    return [paper('Lena Müller', '10c'), paper('lena mueller', '10C'), paper('Lena  MÜLLER', '10C '), paper('Tom Becker', '10c')];
+    return [paper('Test Müller', '10c'), paper('test mueller', '10C'), paper('Test  MÜLLER', '10C '), paper('Müller, Test', '10c'), paper('Test Student B', '10c')];
   });
-  expect(r[2]).toBe(r[0]);
-  expect(r[3]).not.toBe(r[0]);
+  expect(r.slice(1, 4)).toEqual([r[0], r[0], r[0]]);   // ü = ue, case, spacing, word order
+  expect(r[4]).not.toBe(r[0]);
 });

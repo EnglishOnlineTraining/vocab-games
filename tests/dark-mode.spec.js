@@ -75,8 +75,12 @@ for (const file of EXAMS) {
     await page.fill('#inp-name', 'Test Student');
     await page.locator('#inp-class, #inp-group').first().fill('T1');
     await page.evaluate(() => { for (const fn of ['goRules', 'goLock']) if (window[fn]) window[fn](); });
-    if (await page.locator('#inp-code').count()) await page.fill('#inp-code', await page.evaluate(() => RELEASE_CODE));
-    await page.evaluate(() => { for (const fn of ['checkCode', 'startExam']) if (window[fn]) window[fn](); });
+    if (await page.locator('#inp-code').count()) {
+      // generated vocab tests hold a hash, not the code: give them one of ours
+      if (await page.evaluate(() => typeof codeHash === 'function')) await require('./helpers/vocab-code').unlock(page);
+      else await page.fill('#inp-code', await page.evaluate(() => RELEASE_CODE));
+    }
+    await page.evaluate(() => { for (const fn of ['checkCode', 'startExam']) if (window[fn] && !(fn === 'checkCode' && typeof codeHash === 'function')) window[fn](); });
     // The questions must really be on the page, or this test proves nothing.
     expect(await page.locator('#s-exam').locator('input, select, textarea').count()).toBeGreaterThan(0);
 

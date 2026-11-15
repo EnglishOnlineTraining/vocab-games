@@ -3,13 +3,17 @@
    (A choose · B type · C use in a sentence) from a config file.
 
    Run from the repo root:
-     node .claude/skills/eol-vocab-quiz-creator/scripts/build-vocab-test.js data/vocab-tests/<unit>.json
+     node .claude/skills/eol-vocab-quiz-creator/scripts/build-vocab-test.js data/vocab-tests/<unit>.json [--code <code>]
+
+   --code     the release code for this sitting. Only its hash is written to the page and to
+              the config (`codeHash`): this repo is public, so the code itself never goes in a
+              file. Tell the students the code in class. Without --code the stored hash is reused.
 
    Config (data/vocab-tests/<unit>.json):
      unit       "uni-c1-vocab-test"  — also the filename and the sheet tab
      level      "C1"                 — title, header, email subject
      topic      "work and projects"  — shown in the opening blurb
-     code       "C1VOCAB2026"        — release code; change it for each sitting
+     codeHash   written by --code      — PBKDF2 hash of the release code (never the code)
      practice   "uni-c1-vocab-practice.html"  — take the words from this page's `var WORDS`,
                 or "data/vocab-practice/<unit>.json" (Kind A practice data), or an array of
                 either to join several lists into one bank
@@ -33,8 +37,12 @@ const NUM = ['zero','one','two','three','four','five','six','seven','eight','nin
   'thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty'];
 
 const cfgPath = process.argv[2];
+const ci = process.argv.indexOf('--code');
 if (!cfgPath) { console.error('usage: build-vocab-test.js data/vocab-tests/<unit>.json'); process.exit(1); }
 const c = JSON.parse(fs.readFileSync(cfgPath, 'utf8'));
+const crypto = require('crypto');
+// Same recipe as codeHash() in the template: upper-case, no spaces, PBKDF2-SHA256, salt = unit, 100000 rounds.
+const hashCode = (code) => crypto.pbkdf2Sync(String(code).replace(/\s+/g, '').toUpperCase(), c.unit, 100000, 32, 'sha256').toString('hex');
 const fail = (m) => { console.error('✗ ' + c.unit + ': ' + m); process.exit(1); };
 
 function readList(f) {
@@ -43,6 +51,14 @@ function readList(f) {
   if (!m) fail('no `var WORDS = [...]` in ' + f);
   return Function('return ' + m[1])().map(([t, d]) => ({ t, d }));
 }
+if (ci > 0) {
+  const code = process.argv[ci + 1];
+  if (!code || code.replace(/\s+/g, '').length < 8) fail('--code needs a code of 8+ characters');
+  c.codeHash = hashCode(code);
+  delete c.code;
+  fs.writeFileSync(cfgPath, JSON.stringify(c, null, 2) + '\n');
+}
+if (!/^[0-9a-f]{64}$/.test(c.codeHash || '')) fail('no codeHash: run with --code <code>');
 let bank = c.words;
 if (c.practice) bank = [].concat(c.practice).flatMap(readList);
 if (!Array.isArray(bank) || !bank.length) fail('no words: give `practice` or `words`');
@@ -70,7 +86,7 @@ const rep = {
   SEND_TO: sendTo, SHEET_URL: c.sheetUrl || UNI_SHEET,
   SHEET_NOTE: sendTo === 'make' ? 'Make webhook' : 'university sheet',
   B_WORD_BOX: c.wordBox ? 'true' : 'false',
-  LEVEL: c.level, UNIT: c.unit, CODE: c.code, TOPIC: c.topic, PRACTICE: [].concat(c.practice || 'the list on this page').join(' + '),
+  LEVEL: c.level, UNIT: c.unit, CODE_HASH: c.codeHash, TOPIC: c.topic, PRACTICE: [].concat(c.practice || 'the list on this page').join(' + '),
   N: bank.length, PAPER: paper, MINS: c.minutes, A: a, B: b, C: u,
   A_WORD: NUM[a] || a, B_WORD: NUM[b] || b,
   A_RANGE: '1–' + a, B_RANGE: (a + 1) + '–' + (a + b), C_RANGE: (a + b + 1) + '–' + (a + b + u),
@@ -80,4 +96,4 @@ const out = fs.readFileSync(TPL, 'utf8').replace(/%([A-Z_]+)%/g, (m, k) => (k in
 const left = out.match(/%[A-Z_]{2,}%/);
 if (left) fail('unfilled placeholder ' + left[0]);
 fs.writeFileSync(c.unit + '.html', out);
-console.log(`✓ ${c.unit}.html — ${bank.length} words, paper ${a}+${b}+${u}, ${c.minutes} min, code ${c.code}`);
+console.log(`✓ ${c.unit}.html — ${bank.length} words, paper ${a}+${b}+${u}, ${c.minutes} min`);

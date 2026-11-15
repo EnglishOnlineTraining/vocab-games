@@ -87,18 +87,19 @@ would advertise the URL it is meant to protect.
 
 **Release codes.** Most tests have the soft `RELEASE_CODE` gate (a screen
 between registration and the rules): `9ab-` `REVIEW9AB2026`, `10a-` `REVIEW10A2026`,
-`9c-australia-vocab-test` `AUS9C2026`, `9g-australia-vocab-test` `AUS9G2026`,
-`uni-c1-vocab-test` `C1VOCAB2026`, `uni-c2-vocab-test` `C2VOCAB2026`,
-`10c-canada-vocab-test` `CAN10C2026`. Change the
+`9c-australia-vocab-test` `AUS9C2026`, `9g-australia-vocab-test` `AUS9G2026`. Change the
 string for a new sitting; no redeploy needed beyond the push. It is a timing gate, not
-security — the code is readable in page source.
+security — the code is readable in page source. The generated tests (`uni-c1-`, `uni-c2-`,
+`10c-canada-vocab-test`) are different: the page holds only a PBKDF2 hash of the code
+(`CODE_HASH`) and the paper is seeded from the code the student types, so the code is never
+in a file. Set a new one with `build-vocab-test.js <config> --code <8+ characters>`.
 
 **Same paper and attempt log (Shaun, 2026-11-13).** The generated tests (`uni-c1-`,
-`uni-c2-`, `10c-canada-vocab-test`) draw each student's paper from their name, class and the
-release code, so a restart gives the same questions, and send log records (started, resumed,
+`uni-c2-`, `10c-canada-vocab-test`) draw each student's paper from their name (spelling variants such as
+Müller/Mueller and "Schmidt, Maria" count as one), class and the typed release code, so a restart gives the same questions, and send log records (started, resumed,
 left, abandoned) beside the result: a `<unit>-log` tab on the university sheet, Unit
-`<unit>-log <event> <session>` rows in the Make Excel table (never the test's own unit: Make
-keeps one row per class + name + unit + day). The other tests do not have this yet. Details:
+`<unit>-log <event> <session> <time>` rows in the Make Excel table (never the test's own unit: Make
+keeps one row per class + name + unit + day). The other tests do not have this yet. The result row also carries `starts` (starts of that paper on this device). Details:
 the "Every test" section of the `eol-vocab-quiz-creator` skill.
 
 **`uni-pm-vocabulary.html`, `9g-class-test-9ab.html` and `uni-writing-task.html` have no
