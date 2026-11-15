@@ -11,6 +11,50 @@ Rule numbers (e.g. "rule 7") refer to `CLAUDE.md`._
 References to Tiers 0–6, 14+, "Open decisions" or "above" in an older note point to
 `docs/eol-backlog-plan.md`.
 
+## Open now (checked 2026-11-15)
+
+Items still open in the tiers below, one line each. The detailed tiers stay the record; if a row
+and its tier disagree, the tier wins, so fix the row. Items done in PRs #349–#360 are not listed.
+"Waits on" is **Shaun** (decision, WP-admin or Search Console UI) or **CC** (a session can draft or
+build it). Every live WordPress edit still needs Shaun's OK (`CLAUDE.md` rule 7).
+Only the tiers' own open markers were read, so a quiet tier may still hold an item.
+
+| Item | Tier | Waits on | State |
+|---|---|---|---|
+| Homepage entity settings: Site Title, display name, Jetpack business details | 8 "Current status" | Shaun | WP settings the theme cannot reach |
+| Exercise `<title>` keyword pattern; homepage split (A4); title separator (B10) | 8 "Current status" | Shaun | Decisions not made; hub titles done in #86 |
+| Under-16 consent wording | 8 "Current status" | Shaun | Specialist advice if analytics matter |
+| Title-template brand suffix | 8 B10 | Shaun | Length fixed; suffix still open |
+| Tutoring-search impressions (`/welcome/about-me/wilkommen/`) | 9.3 | Shaun | Point at an adult-learner page, `/business-english/`, or leave |
+| Activities indexing: 17 of 255 pages indexed, hubs not recrawled since 7 Oct | 9.5, 9.9, 19 | Shaun | Waiting on links from other sites; recheck after a hub recrawl |
+| Pause site-wide template changes on the activities site | 19.1 | Shaun | Decision not recorded; the no-touch rule stands meanwhile |
+| About 20 target pages linked from ranking WP posts | 19.2 | CC drafts, Shaun OKs edits | Not started |
+| More external links to `activities.` (4teachers, LinkedIn, Bildungsserver exist) | 19.3 | Shaun | Which pages they point to is unchecked |
+| School-page titles get search terms (A5) | 19.4 | Shaun | Open decision |
+| Page 842 (draft since 22 Sep): republish or 301 | 19 "Also found" | Shaun | Decision not made |
+| Snippet rewrites for three page-1 posts with low CTR | 19 "Also found" | CC drafts, Shaun OKs | Not started |
+| AI crawlers get 403 on the main site | 19b.8, 8 A1 | Shaun | Ask WordPress.com support to allow the four bots (decided 2026-11-01) |
+| Homepage title says "Teams", H1 does not | 19b.3 | Shaun | Not re-checked since 2026-11-01 |
+| LinkedIn `sameAs` has `?isSelfProfile=true` | 19b.4 | Shaun | Jetpack business details setting; not re-checked |
+| `/english-for-students/` and `/fuer-eltern/`: opener and FAQ | 19b.5 | Shaun | Rule 8 list needed first; not re-checked |
+| Empty `alt` on the `/common-questions-about-learning-english/` image | 19b.7 | Shaun | Not re-checked |
+| Monthly internal-link pass | 20 | Shaun starts it | Run 1 done 2026-11-06; next run 2026-12-03; re-measure 2032 and 2038 from 2026-12-04 |
+| Bing queries as a second demand signal; `--bing` import | 21.8 | Shaun | Runs: none yet; import is a decision |
+| Re-measure the five-query bands | 15b.8 | Shaun | Re-export on 2026-11-23 |
+| Blog queue: WP 2765, 2799, 2800, 2837, 2838, 2839, 2854, 2855, 2856 | 15b.6, 22 | Shaun | Scheduled 29 Nov to 3 Jan 2027; spot-check each after it goes live |
+| Abitur guides from Tier 22 | 22 | Shaun | Drafted and scheduled; check the 2559 link after 11 Nov |
+| Business-email pairs beyond 1167 | 17.2 | Shaun picks the first | One pair drafted in `docs/business-email-pairs.md` |
+| Industry-vocabulary candidates (HR, PM, finance, hospitality, IT/UX) | 17.3 | Shaun | Which qualify is undecided |
+| IELTS hub article; "ielts" CTR | 17.6, 19 | Shaun | Article not live; CTR 0.7% on 141 impressions |
+| Google Business Profiles: two old ones | 12.11 | Shaun | Shaun checks both accounts first |
+| Own-data asset (aggregate grader errors) | 12.12 | Shaun | Needs school OK and a DSGVO check |
+| AI answer tracking and Bing AI Performance export | 10.7, 13.1 | Shaun | Monthly; first run 2026-11-07 |
+| Check ChatGPT referrals against sign-ups | 13.4 | Shaun, then CC | Not started |
+| Real-example rule and heading rule in `eol-blog-writer` | 10.6, 13.3 | Shaun | Skill file lives outside this repo |
+| AI Overview capture source (Ahrefs returns "Insufficient plan") | 11.1 | Shaun | Blocker for Tier 11 |
+| LinkedIn as a B2B citation source | 16 | Shaun | Items 1, 2, 6, 7 are Shaun's; test first |
+| Bing: ~110 tag pages with the fallback meta description; multiple H1 / missing alt | 18.2, 18.3 | Shaun | Needs Bing's own URL list |
+
 ## Tier 7 — Main-site GEO / AI-discoverability, P3 (2026-08-22) · Shaun + CC
 Carried over from the GEO backlog Shaun uploaded 2026-08-22 (`GEO_Backlog_EnglishOnlineTraining.md`,
 §P3), after the P0–P2 items were built on the activities repo across two PRs (#25, #26 — entity
