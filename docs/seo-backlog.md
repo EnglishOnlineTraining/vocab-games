@@ -3,11 +3,14 @@
 _All SEO, AI-search and Search Console work for both sites. **New SEO items go in this file only**,
 as a new tier at the end, plus a line in "Priorities". Owners: **CC** = Claude Code (repo build +
 WordPress.com MCP); **Shaun** = decision, WP-admin or console UI. "Rule N" = `CLAUDE.md` rule N.
-Tier numbers are cited from code comments and other docs, so they never change. Tiers 0–6, 14+
-of the older numbering and "Open decisions" live in `docs/eol-backlog-plan.md`._
+Tier numbers are cited from code comments and other docs, so they never change. Other areas
+(content and WordPress, engineering, UX, agents) have their own files; `docs/backlog.md` is the
+index and holds the cross-area top items._
 
 _Condensed 2026-11-15: done items keep one line each; the full history (dated re-checks, evidence
-tables, run notes) is in git at commit `1c68c944` (`git show 1c68c944:docs/seo-backlog.md`)._
+tables, run notes) is in git at commit `1c68c944` (`git show 1c68c944:docs/seo-backlog.md`).
+`docs/seo-todo.md` and `docs/seo-titles-plan.md` were folded in as Tier 17b the same day (full
+text: `git show dda0f4a1:docs/seo-todo.md`, `…:docs/seo-titles-plan.md`)._
 
 **Where things stand (2026-11-15).** Google indexes **17 of 255** activities pages (48 on 10-06);
 the cause is authority and links, not a page fault (Tiers 9.8, 19). The main domain is growing:
@@ -26,6 +29,7 @@ disagree, the tier wins. Every live WordPress edit needs Shaun's OK (rule 7).
 
 | Date | What | Tier |
 |---|---|---|
+| ~2026-11-21 | Bing keyword and page export vs the 17 Oct baseline CTR: simple past 0.8%, linking words 0.9%, passive 0%, good vs bad email 0% | 17b |
 | 2026-11-23 | Re-export the Bing AI-topics opportunity queries; compare bands | 15b.8 |
 | 2026-11-24 | Preview test: recheck the 10 pages *or* accept the 11-10 result and remove the `PREVIEW` blocks (Shaun) | 9.9 |
 | 2026-12-03 | Internal-link pass, run 2 (reminder fires) | 20 |
@@ -33,14 +37,14 @@ disagree, the tier wins. Every live WordPress edit needs Shaun's OK (rule 7).
 | 2026-12-05 | Freeze on 1061, 1167, 2032, 2038, 2039, 2066, 965 ends; repoint pass and snippet rewrites can go live after a fresh export | 12.3, 12.8, 19 |
 | 2026-12-05 | `themen/` title test: batch 1 vs control in the monthly Bing AI export (batch 2 ~12-12) | 10.7, `docs/themen-ai-audit-2026-11.md` |
 | Early Dec | Monthly Bing exports (AI Performance, keywords, pages, IndexNow both sites) and Search Console re-pull | 10.7, 18.7, 21 |
-| 29 Nov – 3 Jan | Blog queue goes live: 2765 (29 Nov), 2799 (2 Dec), 2800 (5 Dec), 2837 (8 Dec), 2838 (11 Dec), 2839 (14 Dec), 2849 (17 Dec, held), 2854 (20 Dec), 2855 (29 Dec), 2856 (3 Jan). Spot-check each live | 15b.6, 22 |
+| 26 Nov – 3 Jan | Blog queue goes live: 2703 (26 Nov), 2765 (29 Nov), 2799 (2 Dec), 2800 (5 Dec), 2837 (8 Dec), 2838 (11 Dec), 2839 (14 Dec), 2849 (17 Dec, held), 2854 (20 Dec), 2855 (29 Dec), 2856 (3 Jan). Spot-check each live | 15b.6, 22 |
 
 ### P1 — highest value, do next
 
 | # | Item | Waits on | Tier |
 |---|---|---|---|
 | 1 | **Links into the activities site from WordPress posts that already rank** (~20 targets: `themen/`, ESL, IELTS, business). The main domain holds the authority; this is the lever CC can draft | CC drafts, Shaun OKs per row | 19.2, 20 |
-| 2 | **More links from other sites to `activities.`** (4teachers, LinkedIn, Bildungsserver exist; check which pages they hit, then add more) | Shaun | 19.3 |
+| 2 | **More links from other sites to `activities.`** (4teachers, LinkedIn, Bildungsserver exist; check which pages they hit, then add more; candidate list in 19.3) | Shaun | 19.3 |
 | 3 | **Decide the template pause on the activities site** (one decision unblocks or settles several items) | Shaun | 19.1 |
 | 4 | **WordPress Organization node still shows the retired `englishonlinetraining@pm.me`** (rule 3), the old name and `?isSelfProfile=true` on LinkedIn. Find where the node is set and enter the `scripts/schema.js` values | Shaun | 8 A2, 19b.4 |
 | 5 | **Keep the Abitur cluster growing**: it is the best-clicked and most-cited group. Next: vocabulary guides for the other three themes; more MSA pages from queries that land | Shaun picks, CC drafts | 17.4, 22 |
@@ -56,8 +60,8 @@ disagree, the tier wins. Every live WordPress edit needs Shaun's OK (rule 7).
 | 10 | Business-email pairs beyond 1167: one pair drafted | Shaun picks | 17.2 |
 | 11 | Landing page for `useful-phrases-for-business-emails.pdf` (ranks on its own), same build as the vocabulary pages | Shaun OK, CC | 9.4, 21 |
 | 12 | Fix the property-management PDF: five wrong definitions and an old address (keep filename and URL) | Shaun | 9.4 |
-| 13 | Tutoring-search impressions on `/welcome/about-me/wilkommen/`: point at an adult-learner page, `/business-english/`, or let go | Shaun | 9.3 |
-| 14 | Title decisions: exercise `<title>` pattern and school-page search terms (A5); WP title suffix (B10) | Shaun | 8 A5, 8 B10, 19.4 |
+| 13 | Tutoring-search impressions on `/welcome/about-me/wilkommen/`: point at an adult-learner page or `/business-english/` (they're welcome: don't shed them) | Shaun | 9.3 |
+| 14 | WordPress title suffix pattern (B10); exercise titles are done (#132) | Shaun | 8 B10 |
 | 15 | Main-site page fixes: homepage title says "Teams", H1 doesn't; `/english-for-students/` and `/fuer-eltern/` opener + FAQ (rule 8 list first); empty `alt` on `/common-questions-about-learning-english/` | Shaun | 19b.3, 19b.5, 19b.7 |
 | 16 | LinkedIn article "what to check before booking" (drafted in `docs/linkedin/`): Shaun posts; re-run the item-1 questions 8 weeks later | Shaun | 16 |
 | 17 | Real-example rule in `eol-blog-writer` (the skill is in this repo; the heading rule is already there) | CC drafts, Shaun OKs | 13.3 |
@@ -74,6 +78,8 @@ disagree, the tier wins. Every live WordPress edit needs Shaun's OK (rule 7).
 - **Industry-vocabulary pages** beyond property/CRE/ESG: Shaun names which qualify (12.10, 17.3).
 - **IELTS hub article** on the main site; "ielts" CTR 0.7% (17.6).
 - **Cut list** of zero-click WordPress posts (12.7).
+- **Good-vs-bad email page (1167):** a side-by-side image per pair with alt text, and a printable
+  worksheet (image search is a second way in). Frozen until 12-05 (17b).
 - **Bing URL lists**: tag-page meta fallback, multiple-H1/alt flags, the 33 crawled-not-indexed
   activities pages (18.2, 18.3, 18.7).
 - **Homepage split** (8 A4, `docs/homepage-roles-proposal.md`): unmeasured until the hubs are indexed.
@@ -91,8 +97,12 @@ Apply to every item. Most come from earlier tiers; the tier is named so the reas
   content fetched using `context: "edit"`, re-read after every write. Pages 1763 and 1997: API only.
 - **Money page per brief (12.1).** Every new page or rewrite names the one money page it feeds
   (`/business-english/`, a Payhip pack, an eduki listing) and links to it.
-- **Publishing rate (12.2).** At most 2 new indexable pages a week across both sites, no batches.
+- **Publishing rate (12.2).** At most 2 new indexable *SEO-driven* pages a week across both sites,
+  no batches. **Lesson pages are exempt** (Shaun, 2026-10-15): he adds activities as he uses them
+  in class; never block or delay one on indexing grounds.
 - **No new `themen/` pages while indexing is poor (9.5).** Add sections to existing ones.
+- **Tutor-search impressions are welcome** (Shaun, 2026-10-16). Never strip signals (schema,
+  `LocalBusiness`, address, wording) to shed them, on either host. #149 did and was reverted.
 - **Freeze (12.3).** 1061, 1167, 2032, 2038, 2039, 2066, 965 are measure-only until **2026-12-05**
   except for factual errors. It has been broken twice (2038 modified 10-23, 2032 on 11-05): don't add a third.
 - **Diagnose before fixing a click drop (12.6).** Lost position → better page. Same position, lower
@@ -142,6 +152,10 @@ Apply to every item. Most come from earlier tiers; the tier is named so the reas
   `Avg. Position`, all quoted, BOM at the start, commas inside some keywords. Bing indexes ~2–3
   pages a day per site regardless of how many are submitted (18.7).
 - **Old posts.** The 2016–2023 posts stay indexed and get improved, not cut (Shaun, 2026-10-05).
+- **Scheduling.** The WordPress site clock is a fixed UTC+2, so 10:54 on the site is 09:54 in
+  Berlin in winter. Attachment pages (`/img_3015/` etc.) now 301 to the file (checked 11-15).
+- **Bing hides most queries** behind a page: the 17 Oct keyword report showed ~35 of the simple
+  past page's 129 impressions. Long prompt-style queries come from Copilot and win no clicks.
 
 ## Not adopted (with reasons)
 
@@ -191,10 +205,8 @@ Crawl of every sitemap URL on both hosts. Activities host is technically clean; 
 - **A3. German posts marked English:** done (1.3.8, verified 10-21).
 - **A4. Two homepages compete for one query · Shaun · parked.** Activities homepage rebuilt 10-09
   (#116); `docs/homepage-roles-proposal.md` is unmeasured until hubs are indexed.
-- **A5. Search terms in exercise titles · Shaun · open (P2 #14).** Hubs done in #86. A generated
-  pattern in `build-head.js` (e.g. "<unit> – Englisch Klasse 10 (Gymnasium)") would cover the
-  exercises; decide German title text first (hubs are `lang="en"`). Titles won't fix indexing on
-  their own, but survivors have search-shaped titles (Tier 19).
+- **A5. Search terms in titles:** done. Hubs in #86; exercises get "– Englisch Klasse N" (#132,
+  merged 2026-11-12). Measure at the December re-pull.
 - **B6 `/wilkommen/`:** leave (2272 is the 301 target of the old URL).
 - **B9 testimonials:** done (noindexed, linked).
 - **B10. Title suffix · Shaun · open (P2 #14).** Lengths fixed (all ≤ 65). 22 of 78 titles end
@@ -217,13 +229,17 @@ Baseline and reasoning: `docs/gsc-review-2026-10-06.md`.
    Shaun asking: the origin of rules 8 and 9).
 3. **Tutoring impressions · Shaun · open (P2 #13).** `/welcome/about-me/wilkommen/` ranked ~7.5 for
    "english tutor", "english teacher berlin" (628 impr / 3 months); it lands on stub 2272. Shaun
-   doesn't tutor. Options: an adult self-learner page, `/business-english/`, or let it go.
+   doesn't tutor, but the impressions are welcome (Standing rules). Options: point the URL at an
+   adult self-learner page or at `/business-english/`.
 4. **PDF landing pages.** Done: property management (#105), ESG and commercial real estate (#313).
    **Open:** the property PDF's five wrong definitions (cylinder, grout, interior wall, property
    developer, energy certificate) and its `shaun@learnenglishinberlin.com` address (P2 #12); a page
    for `useful-phrases-for-business-emails.pdf` (P2 #11).
 5. **Get the activities site indexed.** Hub intros done; 62 low-value pages noindexed; hubs and
-   sitemap resubmitted 10-07. The lever left is links (P1 #1, #2). Hold off on many new pages.
+   sitemap resubmitted 10-07; seven `themen/` pages re-requested 10-15. The lever left is links
+   (P1 #1, #2). Lesson pages are not held back (Standing rules).
+   Shaun still has to submit `sitemap-index.xml` (six section sitemaps, live) in Search Console,
+   then read page indexing per section.
 6. Done 10-07: grammar explainers 807 (simple past) and 1097 (past progressive) rewritten with FAQ + `FAQPage`.
 7. **Re-measure monthly** with `node scripts/search-opportunities.js --csv <export>`, diagnosing per
    12.6. 11-06 run: hubs not recovered (Tier 19).
@@ -277,8 +293,9 @@ Source is a sales piece; only what fits this site.
   9. **Self-qualify step on `/business-english/`** (link or embed a short `business-needs-analysis`) · parked.
   10. **Industry-vocabulary pattern** ("[industry] English vocabulary", feeding `/business-english/`):
       only industries with real material; one page every two weeks at most; check volumes first.
-  11. **Two old Google Business Profiles · Shaun.** Check both accounts; keep the one with more
-      reviews; update it (current name, Koloniestr. exactly as the Impressum, `+49 176 3130 4449`,
+  11. **Two old Google Business Profiles · Shaun.** Check both accounts, including which website each
+      lists (one pointing at `activities.` would explain "schöneberg berlin" at position 1); keep the
+      one with more reviews; update it (current name, Koloniestr. exactly as the Impressum, `+49 176 3130 4449`,
       website `/business-english/`); mark the other permanently closed (don't delete: it loses
       reviews); then add the profile URL to `sameAs` (CC).
 - **D. Authority and GEO:**
@@ -338,6 +355,21 @@ Scope: Business English team training only. Source figures are direction only.
 5. Business-page internal links: carried by Tier 20 (965 has no natural anchor yet: needs a sentence written for it).
 6. **"ielts" query** re-check once the IELTS hub article ships (not live; 0.7% CTR on 141 impr).
 
+### Tier 17b — Bing keyword review and title plan (2026-10-17) · folded in 2026-11-15
+Was `docs/seo-todo.md` and `docs/seo-titles-plan.md`. Bing keyword reports (main 484 queries / 833
+impr / 62 clicks; activities 157 / 322 / 14) matched to pages, with a title and meta plan.
+- **Done (17 Oct – 12 Nov):** search-led titles and descriptions on `themen/simple-past`, `passiv`
+  and `linking-words` (plus its list table and FAQ), 1167, post 1659 ("Public Speaking
+  Alternatives: 27 Ways to Present", with "public speaking" in the intro and a new H2), the two
+  Abitur pack posts (distinct angle, linked both ways), the phrase bank ("Business Email Phrases
+  PDF: 40 Phrases by Situation") and its PDF (URL, link back, Title metadata), the homepage meta;
+  simple-past example text and spelling box; passive → Year 9 pages; Kommentar guide 2038 (Gliederung,
+  FAQ, links); post 1214 rewritten as online vs in class; property pages linked; IndexNow on;
+  attachment pages redirect to their files.
+- **Open:** good-vs-bad images and worksheet on 1167 (P3, after the freeze); the ~21 Nov CTR
+  comparison (Calendar). The weekly Friday export is replaced by the monthly one (Tier 10.7, 21).
+- **Not acted on:** "msa" queries about Modern Standard Arabic; prompt-style Copilot queries.
+
 ### Tier 18 — Bing SEO report, Ahrefs crawl and IndexNow (2026-10-30)
 1. Done: three over-long titles shortened via `jetpack_seo_html_title`.
 2. Partly done: category descriptions added. **Open (P3):** ~110 tag pages and date archives use
@@ -361,9 +393,12 @@ indexed. No technical fault; Google pruned pages that earned nothing. No traffic
 2. **~20 target pages linked from ranking WordPress posts · CC drafts (P1 #1).** E.g.
    `/using-past-progressive/` → `themen/past-progressive.html` and `gr-past-progressive.html`.
 3. **More links from other sites · Shaun (P1 #2).** 4teachers, LinkedIn and Bildungsserver links
-   exist (Shaun, 11-12); which pages they point to is unchecked. Also eduki listings, a guest post for
-   eltabbjournal.com.
-4. School-page titles get search terms → 8 A5.
+   exist (Shaun, 11-12); which pages they point to is unchecked. Candidates, each to check first:
+   Berlin-Brandenburg Bildungsserver English link collections, Deutscher Bildungsserver (resource
+   suggestions), ZUM / ZUM-Unterrichten, lehrer-online, a link from each 4teachers and eduki upload
+   to its matching exercise, the school's website (if the school agrees), a guest post for
+   eltabbjournal.com. Link to a specific exercise or `themen/` page, not only the homepage.
+4. School-page titles get search terms: done (#132, see 8 A5).
 5. Optional noindex of textbook-unit pages · Shaun names them (rule 9; `10g-cultural-diversity` stays).
 - **Also found:** page 842 draft (P2 #7: republish or 301 to `/2023/04/05/learning-english-online/`);
   low-CTR page-1 posts 2032, 2520, 965 (P1 #6); page 2–3 with demand: `/writing-emails-in-english/`

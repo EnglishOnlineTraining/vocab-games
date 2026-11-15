@@ -1,34 +1,29 @@
 # Agent Backlog
 
-Agents not yet built — ranked by payoff. See `docs/agent-use-cases.md` for the full
-descriptions and the three already delivered.
+Agents for this repo, ranked by payoff. `docs/agent-use-cases.md` has the full descriptions;
+`docs/backlog.md` is the index of all backlogs. Condensed 2026-11-15.
 
-## Ready to build next
+## Running
+
+| # | Agent | Notes |
+|---|-------|-------|
+| 11 | Item analysis (quality loop) | Built (#178); weekly `item-analysis.yml` plus manual `--csv` runs; fixes land as PRs (e.g. #242, #366). Spec below. Open questions at the end of the spec |
+
+## Not started
 
 | # | Agent | What it does | Route | Blocked by |
 |---|-------|-------------|-------|------------|
-| 2 | ~~Pre-publish gate~~ **Done (#87, 2026-10-04)** | `check-generated.yml` runs `verify-exercise.js` (incl. webhook) on pages a PR adds; grade table and explanations are gated by `check-grade-table` / `validate-explanations`. | GitHub Action (on PR) | — |
-| 11 | Item analysis (quality loop) | Counts answers per gap, flags weak gaps, drafts fixes as a PR. Spec below. | Weekly GitHub Action (Sheets) + manual CSV run (Excel) | Apps Script redeploy (Shaun) |
+| 9 | TED scout | Searches talks against Q1–Q4 Zentralabitur themes, checks licence | Claude Code Routine | Abitur theme list |
+
+## Done
+
+#2 pre-publish gate (#87, 2026-10-04) · #6 listing builder (`listing-builder` skill, 2026-10-13) ·
+#7 newsletter writer (monthly Routine, drafts only, 2026-10-13) · #10 curriculum watcher
+(`curriculum-watch.yml`, 2026-10-13).
 
 ## Declined
 
-| # | Agent | Why |
-|---|-------|-----|
-| 4 | Weekly prep runner | Shaun doesn't want it (2026-11-09). Was blocked on timetable data anyway; not pursuing. |
-
-## Medium-term
-
-| # | Agent | What it does | Route | Blocked by |
-|---|-------|-------------|-------|------------|
-| 6 | ~~Listing builder~~ **Done (2026-10-13)** | `listing-builder` skill; eduki now, Payhip once its fields are confirmed. | Claude Code session | — |
-| 7 | ~~Newsletter writer~~ **Done (2026-10-13)** | Monthly Routine drafts (never sends) a MailerLite campaign for *EOL – Teachers* from `scripts/newsletter-digest.js`. | Claude Code Routine | — |
-
-## Long-term / exploratory
-
-| # | Agent | What it does | Route | Blocked by |
-|---|-------|-------------|-------|------------|
-| 9 | TED scout | Searches talks against Q1–Q4 Zentralabitur themes, checks licence. | Claude Code Routine | Abitur theme list |
-| 10 | ~~Curriculum watcher~~ **Done (2026-10-13)** | `curriculum-watch.yml` checks the Fachbriefe and Abitur pages monthly, opens an issue on change. | GitHub Action (Routines cannot reach the Bildungsserver) | — |
+#4 weekly prep runner (Shaun, 2026-11-09).
 
 ---
 

@@ -1,6 +1,6 @@
 # Repoint pass: WordPress posts at positions 8–15 (2026-11-15)
 
-Backlog: `docs/eol-backlog-plan.md` Tier 12 B, item 8. **Drafts only. Nothing here has been written
+Backlog: `docs/seo-backlog.md` Tier 12 B, item 8. **Drafts only. Nothing here has been written
 to WordPress.** Every edit below is a live edit: Shaun approves each one (CLAUDE.md rule 7), and CC
 verifies it live afterwards. Pages 1763 and 1997 are not involved.
 

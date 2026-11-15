@@ -46,7 +46,7 @@ keeps a light presence; act on this log with small, cheap steps only.
    That is a Google Business Profile lever, not LinkedIn. Shaun did not pick it up (2026-11-07).
 3. **Plain specifics get quoted.** Simmonds is in 4 of 12 answers, twice with its price
    ("90 € pro 90 Minuten") and with its format stated on Berlin and in-house pages. See the
-   eol-backlog-plan "Open decisions" item 4 note.
+   `eol-backlog-plan.md` Open #5 (Berlin in-house page or price on 1965).
 4. **Online-platform questions belong to the platforms** (Babbel, Lingoda, Preply, EF). Not worth effort.
 5. **No posting volume needed.** One year-old article was cited; the LinkedIn Ads advice of
    2–3 posts a week and a Company Page is not supported by anything here.

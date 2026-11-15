@@ -69,6 +69,20 @@ links directly in the relevant `*-activities.html`/`grammar-activities.html`) ra
 assuming only the CRDT snapshot can be stale — the live button text can drift too, silently, with
 nothing to catch it.
 
+**Two more pages carry the same stale `_crdt_document` (added 2026-11-15 from the retired
+`docs/wordpress-todo.md`):** **70** (`/blog-posts/`, still holds the old sundial-image snapshot
+from before its query loop was added, 2026-08-07) and **1760** (California – Interactive
+Exercises, still holds the old `github.io` URL). API only, as for 1763.
+
+**`page-sections.list` hides what is inside a group block.** Its `inner_html_preview` for a
+`core/group` with no top-level text reads `<div class="wp-block-group">\n\n\n\n</div>`, even when
+the group holds a heading, a paragraph and a button. Trusting it led to a duplicate CTA on 1133
+and 651 (2026-08-22, reverted). When a block has `has_inner_blocks: true`, fetch the full page
+with `context: "edit"` before deciding a page "has no links".
+
+**If a WordPress MCP tool can't reach something** (widgets, the Customizer, some settings), say so
+and flag it as a wp-admin job for Shaun. Don't route around it.
+
 ### 2. `isTestMode()` makes submissions silently no-op on localhost
 ```js
 function isTestMode() {
