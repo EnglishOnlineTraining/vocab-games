@@ -1260,7 +1260,7 @@ two of these are latent rather than live.
     an alarm: these parse the repo's own self-authored HTML, where nobody writes `</title foo>`,
     and a miss here fails *visibly* (a mangled hub card title) rather than silently. One audit
     pass, not urgent.
-    **Audited 2026-11-15 → PR (this PR).** Method: each regex run against all 331 pages, comparing
+    **Audited 2026-11-15 → PR #363.** Method: each regex run against all 331 pages, comparing
     the strict shape with a loose one; no live page diverged, and `build.js` output is
     byte-identical before and after. Findings, by shape:
     - *Exact `class="x"` matchers* (miss `class="x y"`, a reordered attribute, a second class):
