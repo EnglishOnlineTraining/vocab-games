@@ -290,7 +290,7 @@ Source is a sales piece; only what fits this site.
   8. **Repoint pass · CC drafted, waits on 12-05.** `docs/repoint-pass-2026-11.md` (#365): every
      candidate is frozen; confirm positions with a fresh export first.
 - **C. The offer:**
-  9. **Self-qualify step on `/business-english/`** (link or embed a short `business-needs-analysis`) · parked.
+  9. **Self-qualify step on `/business-english/`** (link or embed a short `business-needs-analysis`) · **draft built 2026-11-15**: WP draft page 2925, noindex, not live. The 1965 link block waits on Shaun.
   10. **Industry-vocabulary pattern** ("[industry] English vocabulary", feeding `/business-english/`):
       only industries with real material; one page every two weeks at most; check volumes first.
   11. **Two old Google Business Profiles · Shaun.** Check both accounts, including which website each
