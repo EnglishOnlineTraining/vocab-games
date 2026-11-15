@@ -170,6 +170,13 @@ person, quote, result or testimonial as real. Use one of these:
 
 Credit any idea or source by name. If unsure of a fact, leave it out.
 
+### Real-example rule
+
+Open each post with one real example from Shaun's work, anonymised: no
+student or client names, nothing that identifies them. Every fact in it comes
+from something that happened; ask Shaun if you have none. End on one next
+step: the money page the brief names (seo-backlog 13.3).
+
 ### Format
 
 Gutenberg block markup: `wp:paragraph`, `wp:heading` (h2 only), `wp:list`,
@@ -293,6 +300,10 @@ If the generated image contains text, a face or a logo, generate again with
 a simpler scene.
 
 ## Step 7 - Save as a WordPress draft
+
+**Diff gate.** Before any API edit of an existing ranking page or post, fetch
+the live version with `context: "edit"`, list what the edit changes or
+removes against it (CLAUDE.md rule 8), and edit only that diff.
 
 Show Shaun, in one message: the title, audience, framework, beat-to-section
 map, the hook, value and CTA scores with their reasons (Step 5), all metadata
