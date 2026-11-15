@@ -6,6 +6,29 @@ Owners: **CC** = Claude Code (repo build + WordPress.com MCP); **Shaun** = decis
 **SEO / GEO work lives in `docs/seo-backlog.md`** (Tiers 7–13, moved 2026-10-15). Any "Tier 7"–"Tier 13"
 reference in this file points there.
 
+## Open now (checked 2026-11-15)
+
+Items still open in this file, one line each. The detailed sections stay the record; if a row and
+its section disagree, the section wins, so fix the row. Items done in PRs #349–#360 are not listed.
+SEO and Search Console work is in the "Open now" table of `docs/seo-backlog.md`. "Waits on" is
+**Shaun** or **CC** (a session can do it). Live WordPress edits need Shaun's OK (`CLAUDE.md` rule 7).
+
+| Item | Section | Waits on | State |
+|---|---|---|---|
+| `uni-al-munir-relationships.html` audio placeholder (`PASTE_AUDIO_URL_HERE.mp3`) | Tier 6 | Shaun | Still in the file (checked 2026-11-15); needs the real MP3 URL, or drop the audio |
+| Plan upgrade (301s, no ads, plugins) | Tier 5 | Shaun | Deferred until daily users grow |
+| 380's non-breaking-space title | Open decisions 2 | Shaun | Needs a direct wp-admin look; low priority |
+| Berlin in-house page or price on 1965 | Open decisions 4 | Shaun | Evidence dated 2026-11-07; options listed there; a price is Shaun's call |
+| Tier 8 leftovers: WP settings, exercise titles, old-post edits, content decisions | Open decisions 5 | Shaun | Listed in `docs/seo-backlog.md` "Current status" |
+| Corporate enquiries from 1965: tag into a MailerLite group? | Email capture | Shaun | Question open |
+| Results-screen sign-up prompt wider than MSA | Email capture | Shaun | Question open |
+| Post 2370 ends with a newsletter sign-up | Repo-health 18 | Shaun | Confirm or give new wording |
+| MailerLite `preview.mailerlite.io` links: permanent? | Repo-health 18 | Shaun | Confirm |
+| Spot-check each scheduled post and Jetpack auto-share after it goes live | Repo-health 18 | Shaun | Applies to the posts scheduled in `docs/seo-backlog.md` |
+| Refresh dated statistics in the packs (Gallup 2023, Pew 2023, BSA 41) | Repo-health 16 | Shaun decides, CC | Low priority; set a yearly review date |
+| Test the `fact-check-blogs` skill with the skill-creator loop | Repo-health 20 | CC | Never run through the test loop |
+| Housekeeping notes: memory notes for the fact-check skill and the MailerLite form | Repo-health 19 | CC | Branch and worktree already gone; notes not written |
+
 ## Reachability / unknowns
 - The referenced specs (`eol-wordpress-claude-code-plan.md §B2`, `…-content-audit.md`,
   `…-ux-improvements-brief.md`) are **not in the repo** — Shaun must paste `§B2`/T4 detail.
