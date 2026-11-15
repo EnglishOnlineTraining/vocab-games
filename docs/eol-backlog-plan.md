@@ -1286,7 +1286,7 @@ Year 9 and Year 10 Gymnasium counts were set to 23, 16 and 28 for the pages on `
     `context: "edit"`, changing only the number. CC; needs Shaun's OK before the push.
 
 15. **→ PR #112 (2026-10-08).** Berlin make-up date (20 May) and the IQB wording fixed; AMA confirmed via trade press only (primary blocked); no primary AFB mapping exists; texts have no hard historical claims. Open points are in the PR. **Finish the fact-check of the Abitur material.** Not yet verified:
-    - Historical and political background claims in the Aims, Nations and Media pack texts (only the statistics were checked).
+    - ~~Historical and political background claims in the Aims, Nations and Media pack texts~~ **Done 2026-11-15 (PR pending number):** all 12 packs re-checked; every statistic confirmed at its primary source; the texts hold no hard historical claims; the false "Adapted from a … feature" bylines now read "Written for this exercise, in the style of …".
     - Whether the IQB link really supports the "Themenfelder" wording on `abitur-englisch-2027.html`.
     - Berlin's make-up date for English (Brandenburg's is 19 May 2027; the page gives only that one).
     - **AFB level for each operator.** The official 2027 operator list (IQB, "Grundstock von Operatoren") is organised by
