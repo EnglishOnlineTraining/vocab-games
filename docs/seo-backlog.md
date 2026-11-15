@@ -232,7 +232,7 @@ Baseline and reasoning: `docs/gsc-review-2026-10-06.md`.
    doesn't tutor, but the impressions are welcome (Standing rules). Options: point the URL at an
    adult self-learner page or at `/business-english/`.
 4. **PDF landing pages.** Done: property management (#105), ESG and commercial real estate (#313).
-   Done 2026-11-15 (PR #PRNUM): the three PDFs rebuilt from the HTML glossaries (five wrong
+   Done 2026-11-15 (PR #381): the three PDFs rebuilt from the HTML glossaries (five wrong
    property definitions fixed, old `shaun@` address gone, `learn@` only); Shaun uploads them over
    media 1358, 1369, 1514 (same URLs). **Open:** a page
    for `useful-phrases-for-business-emails.pdf` (P2 #11).
