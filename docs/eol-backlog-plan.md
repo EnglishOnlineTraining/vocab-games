@@ -17,7 +17,7 @@ old text: `git show dda0f4a1:docs/eol-backlog-plan.md` and `…:docs/wordpress-t
 | 1 | **Retire `englishonlinetraining@pm.me` everywhere it still shows** (rule 3): MailerLite reply-to on 10 emails (1 draft campaign, Welcome Sequence × 3, Lead Magnet Delivery × 6) and the account default; the Apps Script sheets that email results; the WordPress Organization node (`seo-backlog.md` 8 A2); the main-site `/llms.txt` (`engineering-backlog.md`) | Shaun | Contact address |
 | 2 | `uni-al-munir-relationships.html` audio placeholder (`PASTE_AUDIO_URL_HERE.mp3`): give the MP3 URL or drop the audio | Shaun | Tier 6 |
 | 3 | MailerLite delivery automations (MSA checklist, Abitur phrase sheet, Business phrase bank, Teacher Track) were created inactive: test one signup per form, then switch them on | Shaun | Email capture |
-| 4 | ~~Results-screen signup beyond `msa-c-`~~ Abitur: static box on pack pages (2026-11-15, PR pending); Year 9/10 later, need a lead magnet | Shaun | Email capture |
+| 4 | ~~Results-screen signup beyond `msa-c-`~~ Abitur: static box on pack pages (2026-11-15, PR #377); Year 9/10 later, need a lead magnet | Shaun | Email capture |
 | 5 | Berlin in-house section or a price on `/business-english/` (1965): leave closed, add a section, or build a page | Shaun | Decisions |
 | 6 | Abitur fact-check leftovers: a primary source for the AFB level per operator (post 2489 rests on the 2012 KMK standards); the AMA page (66% / 38%) confirmed via trade press only | CC with `fact-check-blogs` | Exam material |
 | 7 | Yearly review date for the statistics in the Abitur packs (last refreshed 2026-10-13) | Shaun sets a date | Exam material |
