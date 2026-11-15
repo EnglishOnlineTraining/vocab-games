@@ -223,5 +223,6 @@ Old section names still appear in skills and code comments; this table maps them
 | `docs/claude-reference/state-machines.md` | Changing a page lifecycle: steps, submit, practise results, drafts, a timed test's start/stop (`examPhase`) |
 | `apps-script.gs` | The Apps Script handler (code is not duplicated in this file) |
 | `style.css` | CSS design tokens (not duplicated in this file) |
+| `docs/backlog.md` | "What's open", or adding any backlog item: it names the one file per area (SEO, content/WordPress, engineering, UX, agents) and lists the top items |
 | `docs/seo-backlog.md` | Any SEO, GEO, AI-search or Search Console work — new SEO backlog items go here, not in `eol-backlog-plan.md` |
 | `topic-pool.json`, `STYLE.md`, `docs/ai-workflow.md` | Topic status, the AI-authoring style contract, the Kimi/Claude workflow |
