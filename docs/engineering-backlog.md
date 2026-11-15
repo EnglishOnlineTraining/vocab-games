@@ -56,7 +56,7 @@ text: `git show dda0f4a1:docs/engineering-backlog.md` and `…:docs/eol-backlog-
 - **DX/AX review 2026-11-12:** #1 `audit-skills.js` in the PR gate (#357); #2 `npm run check` (#355);
   #5 docs that misled agents (#354); #7 "Open now" tables and the Tiers 7–8 move (#362); #11 Playwright
   pinned (#360); #12 style-reviewer agent (#361).
-  #9 `PreToolUse` hook `.claude/hooks/wp-trap-guard.js` asks before a WordPress write names page 1763 or 1997 (2026-11-15, PR TBD; check: `node scripts/test-wp-trap-guard.js`).
+  #9 `PreToolUse` hook `.claude/hooks/wp-trap-guard.js` asks before a WordPress write names page 1763 or 1997 (2026-11-15, #371; check: `node scripts/test-wp-trap-guard.js`).
 - **Repo-health (2026-08-27 →):** grade-boundary tests (#78); `validate-data.js` (#79); spreadsheet
   formula injection, Apps Script (#80) and Make → Excel (#167, #181, `tests/make-formula-guard.spec.js`);
   a11y on non-framework pages (#89, #83); `CONTRIBUTING.md` (#88); internal link checker (#81);
