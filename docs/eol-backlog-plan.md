@@ -24,6 +24,7 @@ old text: `git show dda0f4a1:docs/eol-backlog-plan.md` and `…:docs/wordpress-t
 | 8 | Post 2370 ends with a newsletter sign-up: keep or reword. 2026-11-15: proposal in `post-2370-newsletter-line.md` (the post is learner-facing, not for teachers; the sign-up is not in its stored content; the preview links' permanence is unanswered in the MailerLite docs). Decisions for Shaun are listed there. Proposal: [PR 388](https://github.com/EnglishOnlineTraining/vocab-games/pull/388) | Shaun | WordPress |
 | 9 | Plan upgrade (301s, no ads, plugins): deferred until daily users grow | Shaun | Decisions |
 | 10 | Page 380's title may carry a non-breaking space: one wp-admin look | Shaun, low | WordPress |
+| 11 | **Calendly is still live outside the site.** GA4 (19 Oct – 15 Nov) logged `calendly.com/sptrezise`, `/60min` and `/free-trial`: 54 opens of the event-type page, 15 of the scheduling page, 1 booking. No WordPress page embeds Calendly any more (`/book-a-lesson/`, page 168, books by message since 2026-11-15), so visitors reach it through outside links (profiles, signatures, old posts). Decide: close the Calendly events or point them at `/book-a-lesson/`, or keep them and find the links in GA (Acquisition, filter page path `sptrezise`). The 6 "Page not found" views are likely `/book-a-lesson/` while it was a draft (Tier B8 in `seo-backlog.md` is now out of date: the page is live) | Shaun | Decisions |
 
 ## Decisions that stand
 
