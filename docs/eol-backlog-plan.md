@@ -21,7 +21,7 @@ old text: `git show dda0f4a1:docs/eol-backlog-plan.md` and `…:docs/wordpress-t
 | 5 | Berlin in-house section or a price on `/business-english/` (1965): leave closed, add a section, or build a page | Shaun | Decisions |
 | 6 | Abitur fact-check leftovers: a primary source for the AFB level per operator (post 2489 rests on the 2012 KMK standards); the AMA page (66% / 38%) confirmed via trade press only | CC with `fact-check-blogs` | Exam material |
 | 7 | Yearly review date for the statistics in the Abitur packs (last refreshed 2026-10-13) | Shaun sets a date | Exam material |
-| 8 | Post 2370 (for teachers) ends with a newsletter sign-up: keep or reword | Shaun | WordPress |
+| 8 | Post 2370 ends with a newsletter sign-up: keep or reword. 2026-11-15: proposal in `post-2370-newsletter-line.md` (the post is learner-facing, not for teachers; the sign-up is not in its stored content; the preview links' permanence is unanswered in the MailerLite docs). Decisions for Shaun are listed there. Proposal: [PR 388](https://github.com/EnglishOnlineTraining/vocab-games/pull/388) | Shaun | WordPress |
 | 9 | Plan upgrade (301s, no ads, plugins): deferred until daily users grow | Shaun | Decisions |
 | 10 | Page 380's title may carry a non-breaking space: one wp-admin look | Shaun, low | WordPress |
 
