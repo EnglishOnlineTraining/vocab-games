@@ -421,6 +421,11 @@ indexed. No technical fault; Google pruned pages that earned nothing. No traffic
 5. **`/english-for-students/` and `/fuer-eltern/` · Shaun (P2 #15).** One answer-sentence opener,
    remove the star glyph, a 4–5 question FAQ with `FAQPage` on both. Rule 8 list first.
 7. **Empty `alt` on `/common-questions-about-learning-english/` · Shaun (P2 #15).**
+- **Triage 11-16:** the audit's eight gaps are exactly 19b.1–8 (same numbers); none is new. Live
+  check: 1, 2, 6 done; 8 closed; 3 and 4 still open (title still says "Schools, plus Business
+  English", `isSelfProfile=true` still in the homepage markup); 5 half live (`/english-for-students/`
+  has `FAQPage`, no star; `/fuer-eltern/` has none yet); 7 not re-checked (`<img alt="">` is lightbox
+  markup, not the content image).
 
 ### Tier 20 — Monthly internal-link pass on the main site (2026-11-06)
 Main site only; monthly (positions need weeks). Run on the Mac. A cloud task reminds on the 3rd at
