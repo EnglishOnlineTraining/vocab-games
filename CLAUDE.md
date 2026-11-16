@@ -61,6 +61,10 @@ non-trivial logic — an E2E spec in `tests/` by preference. Imported here so ev
     only: no colour, no grey fills, no `print-color-adjust: exact`; tell boxes apart with solid, dashed or
     dotted borders. Use the template's PRINTABLE block and `check-worksheet.sh <file> --bw`. Otherwise
     colour is fine.
+11. **Every page brief carries a commercial-intent tag:** the one money page it feeds (`/business-english/`,
+    a Payhip pack, an eduki listing), linked from the new page. Backlog Tier 12.1 in `docs/seo-backlog.md`.
+12. **Publishing cap: 2 new indexable SEO-driven pages a week across both sites, no batches.** Lesson pages
+    are exempt (Shaun, 2026-10-15). Backlog Tier 12.2 in `docs/seo-backlog.md`.
 
 ---
 

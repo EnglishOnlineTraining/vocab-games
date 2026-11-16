@@ -284,8 +284,9 @@ Capture an AI Overview for 7+ days, study who is cited, then improve one page to
 
 ### Tier 12 — Lessons from the "SEO with AI" course (2026-10-09)
 Source is a sales piece; only what fits this site.
-- **A. Rules:** 1 money page per brief, 2 publishing rate, 3 freeze, 6 diagnose first → "Standing
-  rules". 4 and 5 became `CLAUDE.md` rules 8 and 9.
+- **A. Rules:** [x] 1 money page per brief · 2026-11-15 (`CLAUDE.md` rule 11, #384); [x] 2 publishing
+  rate · 2026-11-15 (`CLAUDE.md` rule 12, #384); 3 freeze, 6 diagnose first → "Standing rules". 4 and 5
+  became `CLAUDE.md` rules 8 and 9.
 - **B. Fix what exists:**
   7. **Cut list (WordPress) · parked.** Zero clicks and < 50 impressions in 90 days, published > 3
      months ago: stub, merge, rewrite or keep (rule 9 applies).
