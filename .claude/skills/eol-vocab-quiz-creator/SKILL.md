@@ -26,8 +26,10 @@ restart must be visible to Shaun. Every test this skill builds has both of these
    reduced first (`nameKey`: lower case, ü/ö/ä/ß as ue/oe/ae/ss, punctuation stripped, words
    sorted), so Müller/Mueller and "Schmidt, Maria"/"Maria Schmidt" draw one paper. The page
    holds only a hash of the code (`--code` on the builder), so the paper cannot be worked out
-   from the test page. The builder also writes the code into the test's row on
-   `teacher-tests.html`, where Shaun looks it up (his call, 2026-11-16, knowing that page is public). Starting again gives the
+   from the test page. The builder also writes the code, encrypted, into the test's row on
+   `teacher-tests.html` (`scripts/teacher-codes.js`), where Shaun unlocks it with the teacher
+   password. `--code` needs that password in `TEACHER_PASS` or `~/.eol-teacher-pass`; never write
+   it in a repo file, chat summary or commit. Starting again gives the
    same questions; a new release code gives everyone a new paper. The result row carries
    `starts`: how many times this paper was started on this device.
 2. **Attempt log.** Besides the result, the page sends a record when a test is

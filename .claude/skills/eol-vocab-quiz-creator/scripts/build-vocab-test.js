@@ -6,10 +6,9 @@
      node .claude/skills/eol-vocab-quiz-creator/scripts/build-vocab-test.js data/vocab-tests/<unit>.json [--code <code>]
 
    --code     the release code for this sitting. Only its hash goes in the test page and the
-              config (`codeHash`); the code itself goes in the test's row on teacher-tests.html
-              (Shaun, 2026-11-16), so it can be looked up later. Without --code the stored hash is
-              reused. ponytail: teacher-tests.html is public (noindex only), so a student who finds
-              it can read the code; upgrade path is a private store for codes.
+              config (`codeHash`); the code itself goes, encrypted, in the test's row on
+              teacher-tests.html (scripts/teacher-codes.js; needs the teacher password in
+              TEACHER_PASS or ~/.eol-teacher-pass). Without --code the stored hash is reused.
 
    Config (data/vocab-tests/<unit>.json):
      unit       "uni-c1-vocab-test"  — also the filename and the sheet tab
@@ -56,14 +55,12 @@ function readList(f) {
 if (ci > 0) {
   const code = process.argv[ci + 1];
   if (!code || code.replace(/\s+/g, '').length < 8) fail('--code needs a code of 8+ characters');
+  // Saved first: a wrong password stops here, before the page's hash changes.
+  try { require('../../../../scripts/teacher-codes.js').setCode(c.unit, code.replace(/\s+/g, '').toUpperCase()); }
+  catch (e) { fail(e.message); }
   c.codeHash = hashCode(code);
   delete c.code;
   fs.writeFileSync(cfgPath, JSON.stringify(c, null, 2) + '\n');
-  // The code cell is the last <td> of the row that links to this test.
-  const tp = 'teacher-tests.html', th = fs.readFileSync(tp, 'utf8');
-  const row = new RegExp('(<tr>\\s*<td><a href="' + c.unit + '\\.html">[\\s\\S]*?)<td>[^\\n]*</td>(\\s*</tr>)');
-  if (!row.test(th)) fail('no row for ' + c.unit + ' in ' + tp);
-  fs.writeFileSync(tp, th.replace(row, (_, a, b) => a + '<td><code>' + code.replace(/\s+/g, '').toUpperCase() + '</code></td>' + b));
 }
 if (!/^[0-9a-f]{64}$/.test(c.codeHash || '')) fail('no codeHash: run with --code <code>');
 let bank = c.words;

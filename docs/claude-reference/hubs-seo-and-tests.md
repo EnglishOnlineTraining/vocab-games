@@ -92,7 +92,10 @@ string for a new sitting; no redeploy needed beyond the push. It is a timing gat
 security — the code is readable in page source. The generated tests (`uni-c1-`, `uni-c2-`,
 `10c-canada-vocab-test`) are different: the page holds only a PBKDF2 hash of the code
 (`CODE_HASH`) and the paper is seeded from the code the student types. The code itself is
-listed only on `teacher-tests.html` (the builder writes it there). Set a new one with `build-vocab-test.js <config> --code <8+ characters>`.
+listed only on `teacher-tests.html`, encrypted: every release code there is a `data-enc` cell
+that the page decrypts once the teacher password is typed (`scripts/teacher-codes.js`: `set
+<unit> <code>` for a test not built by the builder, `init` after re-adding plain cells). The
+password lives in `~/.eol-teacher-pass`, outside the repo. Set a new one with `build-vocab-test.js <config> --code <8+ characters>`.
 
 **Same paper and attempt log (Shaun, 2026-11-13).** The generated tests (`uni-c1-`,
 `uni-c2-`, `10c-canada-vocab-test`) draw each student's paper from their name (spelling variants such as

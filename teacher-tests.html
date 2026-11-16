@@ -19,6 +19,7 @@
   It is deliberately NOT disallowed in robots.txt: that file is public, so a
   Disallow line would advertise the very URL it is trying to protect.
 -->
+<meta name="code-salt" content="T3mxzBom6lmazeilVp7oJw==">
 <meta name="robots" content="noindex,nofollow"/>
 <meta name="description" content="Unlisted teacher index of the tests on activities.englishonline.training."/>
 <title>Test index — teacher only</title>
@@ -44,6 +45,11 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 .page-subtitle{font-size:.95rem;color:var(--muted);margin-bottom:1.5rem}
 .warn-box{background:#fff5f5;border:1.5px solid #f3b8b1;border-left:5px solid var(--red);border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1.75rem;font-size:.88rem}
 .warn-box strong{color:var(--red)}
+.unlock{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:1.75rem;font-size:.88rem}
+.unlock label{width:100%;font-weight:700;color:var(--blue)}
+.unlock input{padding:.45rem .6rem;border:1.5px solid var(--border);border-radius:6px;font:inherit}
+.unlock button{padding:.45rem 1rem;border:0;border-radius:6px;background:var(--blue);color:#fff;font:inherit;font-weight:700;cursor:pointer}
+.unlock p{width:100%;color:var(--muted)}
 .info-box{background:var(--gold-lt);border:1.5px solid var(--gold);border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1.75rem;font-size:.85rem;color:#1a3a5c}
 .group-heading{font-size:1.1rem;font-weight:800;color:var(--brand-title);margin:1.9rem 0 .9rem}
 .t-scroll{overflow-x:auto;margin-bottom:.5rem}
@@ -103,12 +109,20 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--bl
     <strong>Do not share this URL with a class.</strong> It lists every test together with its release
     code. The codes are a timing gate, not security — each one is readable in its test's page source,
     so treat a code as "stops a class starting early", never as "keeps a determined student out".
-    Change the code between sittings by editing <code>RELEASE_CODE</code> in the test file.
+    Change the code between sittings by editing <code>RELEASE_CODE</code> in the test file, then
+    <code>node scripts/teacher-codes.js set &lt;test&gt; &lt;code&gt;</code> to update it here.
     The 10C, C1 and C2 tests hold only a hash of their code, and the code also decides each
     student's paper. Set a new one with <code>--code</code> when you rebuild the page (see the
-    eol-vocab-quiz-creator skill); the builder writes it into the table below. A row that says
-    "Your own code" was set before 16 Nov 2026 and its code was not kept.
+    eol-vocab-quiz-creator skill); the builder writes it, encrypted, into the table below. A row
+    that says "Your own code" was set before 16 Nov 2026 and its code was not kept.
   </div>
+
+  <form class="unlock" id="unlock">
+    <label for="code-pass">Teacher password, to show the release codes</label>
+    <input type="password" id="code-pass" autocomplete="current-password" required>
+    <button type="submit">Show codes</button>
+    <p id="unlock-msg" role="status"></p>
+  </form>
 
   <h3 class="group-heading">Vocabulary tests</h3>
   <div class="t-scroll">
@@ -119,13 +133,13 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--bl
         <td><a href="9c-australia-vocab-test.html">Australia — Vocabulary Test</a></td>
         <td>9C · Oberschule</td>
         <td>20 of 26 words, random each sitting · 15 min</td>
-        <td><code>AUS9C2026</code></td>
+        <td><code data-enc="iA9Wk5+LjSYO/faWpY7tAVNjWRQlHntHlDI0z7fWA6ghB/FWlA==">locked</code></td>
       </tr>
       <tr>
         <td><a href="9g-australia-vocab-test.html">G'day Australia! — Unit 1 Vocabulary Test</a></td>
         <td>9G · Gymnasium</td>
         <td>20 of 42 words, random each sitting · 15 min</td>
-        <td><code>AUS9G2026</code></td>
+        <td><code data-enc="oNEztjmufXJJSoKfKMBfxpuh6ZSCXHkxoBwS4CyeigNkQICLSA==">locked</code></td>
       </tr>
       <tr>
         <td><a href="10c-canada-vocab-test.html">Canada — Vocabulary Test</a></td>
@@ -149,7 +163,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--bl
         <td><a href="uni-c2-vocab-test.html">C2 English Vocabulary — Test</a></td>
         <td>University · C2</td>
         <td>30 of 75 words (C2 practice list), random each sitting · 30 min</td>
-        <td><code>7BEAMZGA9A</code></td>
+        <td><code data-enc="j4NxTBZYd8idN1RvhjXNWWpTNzr91+QSf7luaWi45kZQqII8Dpg=">locked</code></td>
       </tr>
     </tbody>
   </table>
@@ -169,19 +183,19 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--bl
         <td><a href="9ab-grammar-literary-review-test.html">Grammar &amp; Literary Devices Review</a></td>
         <td>9A / 9B · Gymnasium</td>
         <td>36 points · gerund/infinitive, conditionals 2 &amp; 3, 8 literary devices</td>
-        <td><code>REVIEW9AB2026</code></td>
+        <td><code data-enc="fH0k4gjNYOrJXFp+y24QD29mrjcp+q0tf/WdYpU8JTPyJi4rhgRqrME=">locked</code></td>
       </tr>
       <tr>
         <td><a href="10a-grammar-literary-review-test.html">Grammar &amp; Literary Devices Review</a></td>
         <td>10A · Gymnasium</td>
         <td>42 points · passive, conditionals, 11 literary devices</td>
-        <td><code>REVIEW10A2026</code></td>
+        <td><code data-enc="ExWWnCSMfndeS4A8e+SSRA0E1QS5e40JqZ9f0mb+5ofHyUaWJYhqDlo=">locked</code></td>
       </tr>
       <tr>
         <td><a href="9g-australia-passive-test.html">The Passive in Australia</a><br><a href="9g-australia-passive-test.html?print">Printable papers + keys</a></td>
         <td>9G · Gymnasium</td>
         <td>38 points · 45 min · passive forms, passive infinitive, two objects, active or passive. Every student and every printed paper gets its own questions; a paper's version code rebuilds its key.</td>
-        <td><code>PASSIVE9G</code></td>
+        <td><code data-enc="EL7jSbU5fTvOWMYKvp4p/zzRF668GhiaX6S+t+y2nzbSatLQGQ==">locked</code></td>
       </tr>
       <tr>
         <td><a href="9g-class-test-9ab.html">Class Test: 9AB</a></td>
@@ -227,5 +241,27 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--bl
   </footer>
 
 </main>
+<script>
+/* Release codes are encrypted (scripts/teacher-codes.js): AES-GCM, key = PBKDF2-SHA256 of the
+   teacher password with the code-salt meta, ROUNDS rounds. Decrypted here, never sent anywhere. */
+const ROUNDS = 600000;   // must match ROUNDS in scripts/teacher-codes.js
+const b64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+document.getElementById('unlock').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const msg = document.getElementById('unlock-msg'), te = new TextEncoder();
+  msg.textContent = 'Checking…';
+  const salt = b64(document.querySelector('meta[name="code-salt"]').content);
+  const raw = await crypto.subtle.importKey('raw', te.encode(document.getElementById('code-pass').value), 'PBKDF2', false, ['deriveKey']);
+  const key = await crypto.subtle.deriveKey({ name: 'PBKDF2', hash: 'SHA-256', salt, iterations: ROUNDS }, raw, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+  try {
+    for (const el of document.querySelectorAll('code[data-enc]')) {
+      const b = b64(el.dataset.enc);
+      el.textContent = new TextDecoder().decode(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b.slice(0, 12) }, key, b.slice(12)));
+      el.removeAttribute('data-enc');
+    }
+    msg.textContent = 'Codes shown.';
+  } catch (err) { msg.textContent = 'Wrong password.'; }
+});
+</script>
 </body>
 </html>
