@@ -1,8 +1,8 @@
 # Proposal: FAQ with `FAQPage` schema on `/fuer-eltern/` (WP page 2359)
 
 Backlog: `docs/seo-backlog.md` Tier 19b item 5 (P2 #15). Model: the FAQ added to page 1966
-(`/english-for-students/`) on 2026-11-15. Drafted 2026-11-15. **Nothing has been written to
-WordPress.** Page 2359 was read with `context: "edit"` (last modified 2026-10-15); the live page
+(`/english-for-students/`) on 2026-11-15. Drafted 2026-11-15. **APPLIED live on 2026-11-16 (Shaun approved the FAQ plus fixes 1 and 2; fix 3 still open).**
+Originally drafted as a proposal. Page 2359 was read with `context: "edit"` (last modified 2026-10-15); the live page
 has no `FAQPage` yet (only a `BreadcrumbList`), and 1966's `FAQPage` is live, so the `wp:html`
 JSON-LD approach works on this plan.
 
@@ -110,3 +110,7 @@ Schema text matches the visible answers (links dropped, wording identical), as G
    `learn@englishonline.training` (item 1) and the "Über 200" figure (item 2) if approved.
 3. `pages.update` with the full edited raw content; re-read and confirm the old blocks are intact,
    then check the live HTML contains one `"@type":"FAQPage"`.
+
+## Applied 2026-11-16
+
+Done with `wpcom-page-sections-*` (no whole-page rewrite): `mailto` now `learn@englishonline.training`; "Über 200" is now "Über 130"; the FAQ went in as one plain `core/group` wrapping the block above, before "Fragen?". Live HTML checked: one `FAQPage`, no `pm.me`, `#ratgeber` anchor intact. Still open: degree line (item 3).
