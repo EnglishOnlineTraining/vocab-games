@@ -497,8 +497,10 @@ Bing shows query rows Search Console hides. CC analyses and proposes; Shaun appr
 6. **Gate:** Shaun approves per row; edit with `context: "edit"`; re-read after every write.
 7. **After the edit:** resubmit (IndexNow / Bing URL Submission; Google Request indexing, a few a
    day), run the Tier 20 pass for the page, note the baseline under "Runs", re-measure after 4 weeks.
-8. **`--bing` import for `search-opportunities.js` · Shaun decides.** Column names are now known
-   (Facts learned); not needed while exports are pasted.
+8. **Done 2026-11-16 (#391): `--bing` import for `search-opportunities.js`.** Takes a folder or file of
+   Bing CSVs and sorts each by header. Keyword and Page columns are the known ones (Facts learned);
+   the AI Performance tab headers are **assumed** (Page or Grounding Query, plus Citations) until a
+   real export is checked against it. Check: `node test-search-opportunities.js`.
 
 **Runs:**
 

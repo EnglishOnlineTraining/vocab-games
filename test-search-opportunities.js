@@ -110,3 +110,36 @@ test('titleMatches: every content word must be in the title', () => {
   assert.deepStrictEqual(titleMatches('property law english', pages), []);
   assert.deepStrictEqual(titleMatches('the and', pages), []);
 });
+
+// ── Bing import (--bing). Keyword/Page columns are from real exports; the AI
+// Performance headers are ASSUMED (Page or Grounding Query + Citations). Fake rows only.
+const { readBingCsv, readBingAiCsv, readBingExport } = require('./scripts/search-opportunities.js');
+
+test('readBingCsv: BOM, quoted fields, "1.32%" CTR ignored, columns found by name', () => {
+  const dir = tmpDir({ 'k.csv': '﻿"Keyword","Impressions","Clicks","CTR","Avg. Position"\n"good, bad emails","100","3","99%","7.9"\n"none","0","0","0%","3"\n' });
+  const rows = readBingCsv(path.join(dir, 'k.csv'));
+  assert.deepStrictEqual(rows, [{ key: 'good, bad emails', clicks: 3, impressions: 100, ctr: 0.03, position: 7.9 }]);
+});
+
+test('readBingCsv: a header it does not know is an error, not an empty list', () => {
+  const dir = tmpDir({ 'x.csv': 'Keyword,Foo\na,1\n' });
+  assert.throws(() => readBingCsv(path.join(dir, 'x.csv')), /expected the Bing columns/);
+});
+
+test('readBingAiCsv: grounding queries with a citations column (assumed headers)', () => {
+  const dir = tmpDir({ 'g.csv': 'Grounding Query,Citations\n"passiv übungen",24\nunused,0\n' });
+  assert.deepStrictEqual(readBingAiCsv(path.join(dir, 'g.csv')), [{ key: 'passiv übungen', citations: 24 }]);
+});
+
+test('readBingExport: a folder is sorted by header; Bing rows feed findLeaks like GSC rows', () => {
+  const dir = tmpDir({
+    'q.csv': 'Keyword,Impressions,Clicks,CTR,Avg. Position\nleaky,100,0,0%,3\nfine a,100,20,20%,3\nfine b,100,20,20%,3\n',
+    'p.csv': 'Page,Impressions,Clicks,CTR,Avg. Position\nhttps://x.test/a,50,1,2%,4\n',
+    'ai.csv': 'Page,Citations\nhttps://x.test/a,9\n',
+  });
+  const out = readBingExport(dir);
+  assert.strictEqual(out.queries.length, 3);
+  assert.strictEqual(out.pages.length, 1);
+  assert.strictEqual(out.ai[0].rows[0].citations, 9);
+  assert.deepStrictEqual(findLeaks(out.queries).leaks.map(r => r.key), ['leaky']);
+});

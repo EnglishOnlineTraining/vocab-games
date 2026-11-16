@@ -24,6 +24,11 @@
  *   Options: --min-impr N (default 20), --ratio R (default 0.5)
  *   Prints leaks (page 1, CTR far below the export's own CTR for that
  *   position) for queries and pages, then gaps (position past 10, zero clicks).
+ *
+ * Bing Webmaster import (Tier 21.8): the same report from Bing's exports.
+ *   node scripts/search-opportunities.js --bing path/to/folder-or-file.csv
+ *   Takes a folder of CSVs or one file; each is sorted by its header (Keyword =
+ *   queries, Page = pages, a Citations column = AI Performance tab).
  */
 
 const fs = require('fs');
@@ -268,6 +273,63 @@ function readGscCsv(file) {
   }).filter(r => r.key && r.impressions > 0);
 }
 
+// ── Bing Webmaster import (--bing) ──────────────────────────────────────────
+// Keyword and Page Traffic exports: Keyword|Page, Impressions, Clicks, CTR,
+// Avg. Position (known from real exports, docs/seo-backlog.md "Bing exports").
+// Columns are found by NAME because the order differs from Search Console's.
+// They come out in the Search Console row shape, so findLeaks/findGaps run as is.
+// AI Performance tabs (pages, grounding queries): ASSUMED columns, no real export
+// seen yet: a Page or Grounding Query column plus a Citations column (any header
+// containing "citation"). They carry no clicks, so they stay a separate list.
+
+function bingHeader(rows) {
+  const header = (rows[0] || []).map(h => h.trim().toLowerCase());
+  const col = re => header.findIndex(h => re.test(h));
+  return { header, col };
+}
+
+function readBingCsv(file) {
+  const rows = parseCsv(fs.readFileSync(file, 'utf8'));
+  const { header, col } = bingHeader(rows);
+  const [k, imp, clk, pos] = [col(/^(keyword|page)/), col(/^impr/), col(/^click/), col(/pos/)];
+  if ([k, imp, clk, pos].includes(-1)) {
+    throw new Error(`${file}: expected the Bing columns Keyword or Page, Impressions, Clicks, Avg. Position; got: ${header.join(', ')}`);
+  }
+  return rows.slice(1).map(r => {
+    const clicks = toInt(r[clk]);
+    const impressions = toInt(r[imp]);
+    return { key: r[k].trim(), clicks, impressions, ctr: impressions ? clicks / impressions : 0, position: toDecimal(r[pos]) };
+  }).filter(r => r.key && r.impressions > 0);
+}
+
+function readBingAiCsv(file) {
+  const rows = parseCsv(fs.readFileSync(file, 'utf8'));
+  const { header, col } = bingHeader(rows);
+  const [k, c] = [col(/^(grounding|query|page|url)/), col(/citation/)];
+  if (k === -1 || c === -1) {
+    throw new Error(`${file}: expected a Page or Grounding Query column and a Citations column; got: ${header.join(', ')}`);
+  }
+  return rows.slice(1).map(r => ({ key: r[k].trim(), citations: toInt(r[c]) })).filter(r => r.key && r.citations > 0);
+}
+
+// Sort a Bing file or folder of CSVs into { queries: [], pages: [], ai: [] } by header.
+function readBingExport(p) {
+  if (!fs.existsSync(p)) throw new Error(`Not found: ${p}`);
+  const files = fs.statSync(p).isDirectory()
+    ? fs.readdirSync(p).filter(n => /\.csv$/i.test(n)).map(n => path.join(p, n))
+    : [p];
+  const out = { queries: [], pages: [], ai: [] };
+  for (const f of files) {
+    const header = (parseCsv(fs.readFileSync(f, 'utf8'))[0] || []).join(',').toLowerCase();
+    if (/citation/.test(header)) out.ai.push({ file: f, rows: readBingAiCsv(f) });
+    else if (/^keyword/.test(header)) out.queries.push(...readBingCsv(f));
+    else if (/^page/.test(header)) out.pages.push(...readBingCsv(f));
+    else throw new Error(`${f}: first column is neither Keyword nor Page: ${header}`);
+  }
+  if (!files.length) throw new Error(`${p} holds no CSV files`);
+  return out;
+}
+
 // Find Queries.csv / Pages.csv. A lone file is sorted by its header's first column.
 function locateExport(p) {
   if (!fs.existsSync(p)) throw new Error(`Not found: ${p}`);
@@ -360,13 +422,17 @@ function printList(title, items, fmt, limit = 20) {
   console.log();
 }
 
-function reportGsc(p, opts) {
-  const files = locateExport(p);
+function reportGsc(p, opts, bing) {
+  const files = bing ? null : locateExport(p);
+  const data = bing ? readBingExport(p) : null;
   const fmtLeak = r => `"${r.key}" — ${r.impressions} imp, ${r.clicks} clicks, pos ${r.position.toFixed(1)}, CTR ${pct(r.ctr)} vs ${pct(r.expected)} at that position`;
   console.log(`Thresholds: at least ${opts.minImpr} impressions; a leak's CTR is under ${opts.ratio} × the export's CTR at the same position.\n`);
 
-  if (files.queries) {
-    const rows = readGscCsv(files.queries);
+  if (data) for (const a of data.ai) {
+    printList(`AI citations — ${path.basename(a.file)}`, a.rows.sort((x, y) => y.citations - x.citations), r => `"${r.key}" — ${r.citations} citations`);
+  }
+  if (data ? data.queries.length : files.queries) {
+    const rows = data ? data.queries : readGscCsv(files.queries);
     const { leaks, noBaseline } = findLeaks(rows, opts);
     printList('Leaks — queries (page 1, CTR far below normal for the position)', leaks, fmtLeak);
     if (noBaseline) console.log(`  (${noBaseline} page-1 queries skipped: too few other impressions at their position to compare)\n`);
@@ -375,13 +441,21 @@ function reportGsc(p, opts) {
       `"${r.key}" — ${r.impressions} imp, pos ${r.position.toFixed(1)}` +
       (r.matches.length ? ` · activities title match: ${r.matches.slice(0, 2).join(', ')}` : ' · no activities title match (WordPress not checked)'));
   }
-  if (files.pages) {
-    const { leaks, noBaseline } = findLeaks(readGscCsv(files.pages), opts);
+  if (data ? data.pages.length : files.pages) {
+    const { leaks, noBaseline } = findLeaks(data ? data.pages : readGscCsv(files.pages), opts);
     printList('Leaks — pages', leaks, fmtLeak);
     if (noBaseline) console.log(`  (${noBaseline} page-1 pages skipped: too few other impressions at their position to compare)\n`);
   }
   console.log('Next: for each leak, check whether an AI Overview sits above us or the title is weak (Tier 12.6).');
   console.log('Gaps feed Tier 12.8 repoints and Tier 10 sections, not new pages (Tier 9.5).');
+}
+
+function numFlag(args, flag, dflt) {
+  const i = args.indexOf(flag);
+  if (i === -1) return dflt;
+  const v = Number(args[i + 1]);
+  if (!(v > 0)) { console.error(`${flag} needs a positive number`); process.exit(1); }
+  return v;
 }
 
 // ── Main ────────────────────────────────────────────────────────────────────
@@ -460,19 +534,25 @@ function main() {
 
   if (args.includes('--csv')) {
     const csvPath = args[args.indexOf('--csv') + 1];
-    const num = (flag, dflt) => {
-      const i = args.indexOf(flag);
-      if (i === -1) return dflt;
-      const v = Number(args[i + 1]);
-      if (!(v > 0)) { console.error(`${flag} needs a positive number`); process.exit(1); }
-      return v;
-    };
     console.log('\n## Search Console Import\n');
     try {
       reportGsc(csvPath || '', {
-        minImpr: num('--min-impr', LEAK_DEFAULTS.minImpr),
-        ratio: num('--ratio', LEAK_DEFAULTS.ratio),
+        minImpr: numFlag(args, '--min-impr', LEAK_DEFAULTS.minImpr),
+        ratio: numFlag(args, '--ratio', LEAK_DEFAULTS.ratio),
       });
+    } catch (err) {
+      console.error(err.message);
+      process.exit(1);
+    }
+  }
+
+  if (args.includes('--bing')) {
+    console.log('\n## Bing Webmaster Import\n');
+    try {
+      reportGsc(args[args.indexOf('--bing') + 1] || '', {
+        minImpr: numFlag(args, '--min-impr', LEAK_DEFAULTS.minImpr),
+        ratio: numFlag(args, '--ratio', LEAK_DEFAULTS.ratio),
+      }, true);
     } catch (err) {
       console.error(err.message);
       process.exit(1);
@@ -497,4 +577,4 @@ function main() {
 
 if (require.main === module) main();
 
-module.exports = { parseCsv, toInt, toDecimal, readGscCsv, locateExport, findLeaks, findGaps, titleMatches };
+module.exports = { parseCsv, toInt, toDecimal, readGscCsv, readBingCsv, readBingAiCsv, readBingExport, locateExport, findLeaks, findGaps, titleMatches };
