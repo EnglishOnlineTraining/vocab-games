@@ -54,7 +54,7 @@ Recommendation: do not rely on `preview.mailerlite.io` share links for anything 
 
 ## Decisions for Shaun
 
-1. **Newsletter line:** approve option A (keep it, second CTA), option B (drop it), or reword.
+1. **Newsletter line: option A approved** (Shaun, 2026-11-16): keep it as the second call to action. The live edit is not made yet; it needs a separate go-ahead.
 2. **Confirm** the General group sends new exercises by email, or drop that clause.
 3. **Check the live page** (browser, not curl) for a popup or widget that shows the sign-up. If a popup is the sign-up, the body line may be unnecessary.
 4. **Boston English Center paragraph:** keep, move or remove.
