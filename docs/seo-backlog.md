@@ -64,7 +64,6 @@ disagree, the tier wins. Every live WordPress edit needs Shaun's OK (rule 7).
 | 14 | WordPress title suffix pattern (B10); exercise titles are done (#132) | Shaun | 8 B10 |
 | 15 | Main-site page fixes: homepage title says "Teams", H1 doesn't; `/english-for-students/` and `/fuer-eltern/` opener + FAQ (rule 8 list first); empty `alt` on `/common-questions-about-learning-english/` | Shaun | 19b.3, 19b.5, 19b.7 |
 | 16 | LinkedIn article "what to check before booking" (drafted in `docs/linkedin/`): Shaun posts; re-run the item-1 questions 8 weeks later | Shaun | 16 |
-| 17 | Real-example rule in `eol-blog-writer` (the skill is in this repo; the heading rule is already there) | CC drafts, Shaun OKs | 13.3 |
 | 18 | `9g-australia-vocab-practice` description names the textbook (rule 4); it also ranks for the unit's searches. Ask before changing | Shaun | 8 |
 
 ### P3 — parked (low value now, or blocked)
@@ -316,7 +315,7 @@ Source is a sales piece; only what fits this site.
 ### Tier 13 — Lessons from the "everywhere engine" post (2026-10-10)
 1. **Open the Search Console "AI performance" report · Shaun · open.** Baseline it in `docs/gsc-review-*.md`.
 2. Done 10-13: `search-opportunities.js --csv` prints gaps and leaks.
-3. **Real-example rule in `eol-blog-writer` · open (P2 #17).** Each post opens with one real,
+3. **Real-example rule in `eol-blog-writer` · done 2026-11-15 (PR pending Shaun's review; diff-gate rule added with it).** Each post opens with one real,
    anonymised example from Shaun's work, every fact from something that happened, one next step
    (the money page). No student or client names (rule 1).
 4. **ChatGPT referrals vs sign-ups · parked.** Find where Shaun sees them; can enquiries, MailerLite
