@@ -91,8 +91,8 @@ between registration and the rules): `9ab-` `REVIEW9AB2026`, `10a-` `REVIEW10A20
 string for a new sitting; no redeploy needed beyond the push. It is a timing gate, not
 security — the code is readable in page source. The generated tests (`uni-c1-`, `uni-c2-`,
 `10c-canada-vocab-test`) are different: the page holds only a PBKDF2 hash of the code
-(`CODE_HASH`) and the paper is seeded from the code the student types, so the code is never
-in a file. Set a new one with `build-vocab-test.js <config> --code <8+ characters>`.
+(`CODE_HASH`) and the paper is seeded from the code the student types. The code itself is
+listed only on `teacher-tests.html` (the builder writes it there). Set a new one with `build-vocab-test.js <config> --code <8+ characters>`.
 
 **Same paper and attempt log (Shaun, 2026-11-13).** The generated tests (`uni-c1-`,
 `uni-c2-`, `10c-canada-vocab-test`) draw each student's paper from their name (spelling variants such as

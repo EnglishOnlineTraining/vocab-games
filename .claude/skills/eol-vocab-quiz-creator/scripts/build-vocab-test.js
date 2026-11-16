@@ -5,9 +5,11 @@
    Run from the repo root:
      node .claude/skills/eol-vocab-quiz-creator/scripts/build-vocab-test.js data/vocab-tests/<unit>.json [--code <code>]
 
-   --code     the release code for this sitting. Only its hash is written to the page and to
-              the config (`codeHash`): this repo is public, so the code itself never goes in a
-              file. Tell the students the code in class. Without --code the stored hash is reused.
+   --code     the release code for this sitting. Only its hash goes in the test page and the
+              config (`codeHash`); the code itself goes in the test's row on teacher-tests.html
+              (Shaun, 2026-11-16), so it can be looked up later. Without --code the stored hash is
+              reused. ponytail: teacher-tests.html is public (noindex only), so a student who finds
+              it can read the code; upgrade path is a private store for codes.
 
    Config (data/vocab-tests/<unit>.json):
      unit       "uni-c1-vocab-test"  — also the filename and the sheet tab
@@ -57,6 +59,11 @@ if (ci > 0) {
   c.codeHash = hashCode(code);
   delete c.code;
   fs.writeFileSync(cfgPath, JSON.stringify(c, null, 2) + '\n');
+  // The code cell is the last <td> of the row that links to this test.
+  const tp = 'teacher-tests.html', th = fs.readFileSync(tp, 'utf8');
+  const row = new RegExp('(<tr>\\s*<td><a href="' + c.unit + '\\.html">[\\s\\S]*?)<td>[^\\n]*</td>(\\s*</tr>)');
+  if (!row.test(th)) fail('no row for ' + c.unit + ' in ' + tp);
+  fs.writeFileSync(tp, th.replace(row, (_, a, b) => a + '<td><code>' + code.replace(/\s+/g, '').toUpperCase() + '</code></td>' + b));
 }
 if (!/^[0-9a-f]{64}$/.test(c.codeHash || '')) fail('no codeHash: run with --code <code>');
 let bank = c.words;
