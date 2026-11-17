@@ -359,6 +359,32 @@ module.exports = {
     },
   ],
 
+  'useful-phrases-for-business-emails.html': [
+    {
+      q: 'What phrases does the PDF contain?',
+      a: '18 phrases for the six parts of a business email: opening lines, giving information, '
+        + 'making a request, confirming arrangements, apologizing and closing. Each is a '
+        + 'complete sentence you can copy and adapt.',
+    },
+    {
+      q: 'Can I download the phrases as a PDF?',
+      a: 'Yes. The list is available as a free PDF from the button at the top of the page, so '
+        + 'you can print it or keep it on your phone.',
+    },
+    {
+      q: 'Which phrases are formal and which are friendly?',
+      a: '"I would like to inform you that" and "I apologize for any inconvenience caused" are '
+        + 'formal. "Just a quick note to let you know that" and "Just a reminder that" are '
+        + 'friendlier and fit people you already work with. The notes next to each phrase say '
+        + 'which is which.',
+    },
+    {
+      q: 'Where can I find more email phrases?',
+      a: 'The free Business Email Phrase Bank has 40 phrases sorted by situation. The Business '
+        + 'English exercises let you practise writing emails with instant feedback.',
+    },
+  ],
+
   'esg-vocabulary.html': [
     {
       q: 'What does ESG stand for?',
