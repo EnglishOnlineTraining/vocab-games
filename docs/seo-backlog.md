@@ -233,11 +233,10 @@ Baseline and reasoning: `docs/gsc-review-2026-10-06.md`.
    "english tutor", "english teacher berlin" (628 impr / 3 months); it lands on stub 2272. Shaun
    doesn't tutor, but the impressions are welcome (Standing rules). Options: point the URL at an
    adult self-learner page or at `/business-english/`.
-4. **PDF landing pages.** Done: property management (#105), ESG and commercial real estate (#313).
+4. **PDF landing pages.** Done: property management (#105), ESG and commercial real estate (#313), `useful-phrases-for-business-emails` (2026-11-17, PR #403).
    Done 2026-11-15 (PR #381): the three PDFs rebuilt from the HTML glossaries (five wrong
    property definitions fixed, old `shaun@` address gone, `learn@` only); Shaun uploads them over
-   media 1358, 1369, 1514 (same URLs). **Open:** a page
-   for `useful-phrases-for-business-emails.pdf` (P2 #11).
+   media 1358, 1369, 1514 (same URLs).
 5. **Get the activities site indexed.** Hub intros done; 62 low-value pages noindexed; hubs and
    sitemap resubmitted 10-07; seven `themen/` pages re-requested 10-15. The lever left is links
    (P1 #1, #2). Lesson pages are not held back (Standing rules).
