@@ -557,6 +557,13 @@ From the weekly blog-keyword-drafts run of 2026-11-11 (report and drafts in Shau
 3. **Check a citation on `abitur-writing-summaries-aims-ambitions.html`.** Its footer cites an
    "Economist/YouGov Poll, Sept. 2026". Confirm the poll exists and says what the page uses, or
    remove the citation. CC.
+   **Done 2026-11-17: confirmed, no page change.** The YouGov article (David Montgomery, 18 Sept 2026,
+   from the 4-8 and 11-14 Sept 2026 Economist/YouGov Polls) says "69% of adults under 30 say the ideal
+   work week is 35 hours or less, compared to 36% of those 65 and older". All three Aims pages
+   (text analysis, writing summaries, mediation) use exactly those figures and link that URL, so the
+   citation stays. Only wording nuance: the question asked for the "normal work week for a healthy
+   work-life balance"; "ideal" is YouGov's own paraphrase. (Only the Abitur pages cite YouGov; no
+   other repo page does.)
 4. **"esg terminology" (25 impressions, 21.9, rising 7 → 12 → 25)** still reaches only
    `esg-vocabulary.pdf`. `esg-vocabulary.html` (Tier 9.4) should take it over; check in December
    whether it does before writing a post. CC, at the next loop run.
