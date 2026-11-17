@@ -222,11 +222,16 @@ function mermaid() {
 }
 
 // ---- running ------------------------------------------------------------
+// --check stays quiet on success: step output is held back and shown only for
+// the step that fails. BUILD_VERBOSE=1 restores the full stream.
+let quiet = false, stepsRun = 0;
 function run(script) {
-  process.stdout.write(`\n▸ ${script}\n`);
+  if (!quiet) process.stdout.write(`\n▸ ${script}\n`);
+  stepsRun++;
   try {
-    execFileSync(process.execPath, [path.join(ROOT, script)], { cwd: ROOT, stdio: 'inherit' });
+    execFileSync(process.execPath, [path.join(ROOT, script)], { cwd: ROOT, stdio: quiet ? 'pipe' : 'inherit' });
   } catch (e) {
+    if (quiet) { process.stdout.write(`\n▸ ${script}\n`); process.stdout.write(e.stdout || ''); process.stderr.write(e.stderr || ''); }
     // The step already printed its own errors above; name it instead of dumping a stack trace.
     console.error(`\n✗ ${script} failed (exit ${e.status}). Read the lines above this one, then re-run: node ${script}`);
     process.exit(1);
@@ -238,18 +243,19 @@ function run(script) {
 // answering the question it is asked: are the GENERATED files up to date? An
 // unrelated work-in-progress edit is not a stale index, and failing on it would
 // make the gate untrustworthy in exactly the situations people run it.
-function generatedDirty() {
+function dirtyAmong(key) {
   const out = execFileSync('git', ['status', '--porcelain'], { cwd: ROOT, encoding: 'utf8' });
-  const globs = NODES.flatMap((n) => n.outputs || []).map(toRe);
+  const globs = NODES.flatMap((n) => n[key] || []).map(toRe);
   return out
     .split('\n')
     .filter(Boolean)
     .filter((line) => {
       const file = line.slice(3).replace(/^"|"$/g, '');
-      return file === 'docs/build-graph.mmd' || globs.some((re) => re.test(file));
+      return (key === 'outputs' && file === 'docs/build-graph.mmd') || globs.some((re) => re.test(file));
     })
     .join('\n');
 }
+const generatedDirty = () => dirtyAmong('outputs');
 
 // ---- branch mode --------------------------------------------------------
 // Off main, put the SHARED aggregates (pipeline.js) back to the merge-base so a
@@ -300,13 +306,17 @@ function restoreShared(base) {
     ? v.filter((x) => !isNew(x)).map(strip)
     : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, strip(x)])) : v;
   write(HC, strip(json(HC)));
-  console.log(`\n↺ branch build: shared aggregates kept at ${base.slice(0, 8)} (main rebuilds them after merge)`);
+  if (!quiet) console.log(`\n↺ branch build: shared aggregates kept at ${base.slice(0, 8)} (main rebuilds them after merge)`);
 }
 
 // ---- main ---------------------------------------------------------------
 const argv = process.argv.slice(2);
 const flags = new Set(argv.filter((a) => a.startsWith('--')));
 const wanted = argv.filter((a) => !a.startsWith('--'));
+
+// Taken before anything runs: tells "you have uncommitted edits" apart from "a generated file is stale".
+const uncommittedBefore = flags.has('--check') ? [dirtyAmong('inputs'), dirtyAmong('outputs')].filter(Boolean).join('\n') : '';
+quiet = flags.has('--check') && !process.env.BUILD_VERBOSE;
 
 assertNodeShapes();
 assertKnownIds();
@@ -358,18 +368,18 @@ if (wanted.length) {
 }
 
 if (!wanted.length) {
-  console.log('Validating inputs…');
+  if (!quiet) console.log('Validating inputs…');
   VALIDATORS.forEach((v) => run(v.run));
 }
 
-console.log(`\nBuilding ${toRun.length} node(s): ${toRun.map((n) => n.id).join(' → ')}`);
+if (!quiet) console.log(`\nBuilding ${toRun.length} node(s): ${toRun.map((n) => n.id).join(' → ')}`);
 toRun.forEach((n) => run(n.run));
 
 // Post-build checks read the generated tree, so they only make sense once the
 // whole graph has run — a partial `build.js <node>` run would fail them for
 // reasons that are not errors.
 if (!wanted.length) {
-  console.log('\nChecking output…');
+  if (!quiet) console.log('\nChecking output…');
   CHECKERS.forEach((c) => run(c.run));
 }
 
@@ -384,10 +394,15 @@ if (flags.has('--check')) {
     process.exit(1);
   }
   const dirty = generatedDirty();
+  if (dirty && uncommittedBefore) {
+    console.error('\n✗ The working tree has uncommitted changes to generated files or their sources, so --check cannot tell whether they are up to date. Commit first (`node scripts/build.js`, then commit), then re-run:\n');
+    console.error(uncommittedBefore);
+    process.exit(1);
+  }
   if (dirty) {
     console.error('\n✗ Generated files are out of date. Run `node scripts/build.js` and commit:\n');
     console.error(dirty);
     process.exit(1);
   }
-  console.log('\n✓ generated files are up to date');
+  console.log(`${quiet ? '' : '\n'}✓ generated files are up to date (${stepsRun} build/check steps passed; BUILD_VERBOSE=1 for full output)`);
 }
