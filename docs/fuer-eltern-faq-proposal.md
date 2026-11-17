@@ -113,4 +113,4 @@ Schema text matches the visible answers (links dropped, wording identical), as G
 
 ## Applied 2026-11-16
 
-Done with `wpcom-page-sections-*` (no whole-page rewrite): `mailto` now `learn@englishonline.training`; "Über 200" is now "Über 130"; the FAQ went in as one plain `core/group` wrapping the block above, before "Fragen?". Live HTML checked: one `FAQPage`, no `pm.me`, `#ratgeber` anchor intact. Still open: degree line (item 3).
+Done with `wpcom-page-sections-*` (no whole-page rewrite): `mailto` now `learn@englishonline.training`; "Über 200" is now "Über 130"; the FAQ went in as one plain `core/group` wrapping the block above, before "Fragen?". Live HTML checked: one `FAQPage`, no `pm.me`, `#ratgeber` anchor intact. Degree line (item 3) set to "BA Linguistics with Business & German" on 2026-11-16 to match page 1966.
