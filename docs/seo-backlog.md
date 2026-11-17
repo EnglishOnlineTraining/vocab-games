@@ -65,6 +65,8 @@ disagree, the tier wins. Every live WordPress edit needs Shaun's OK (rule 7).
 | 15 | Main-site page fixes: homepage title says "Teams", H1 doesn't; `/english-for-students/` and `/fuer-eltern/` opener + FAQ (rule 8 list first); empty `alt` on `/common-questions-about-learning-english/` | Shaun | 19b.3, 19b.5, 19b.7 |
 | 16 | LinkedIn article "what to check before booking" (drafted in `docs/linkedin/`): Shaun posts; re-run the item-1 questions 8 weeks later | Shaun | 16 |
 | 18 | `9g-australia-vocab-practice` description names the textbook (rule 4); it also ranks for the unit's searches. Ask before changing | Shaun | 8 |
+| 19 | Image attachments hold four posts' bare slugs, so clicks land on a PNG (mediation post: 2 clicks): rename the attachment slugs | Shaun OK, CC | 24.1 |
+| 20 | `/wilkommen/vor-und-nachteile-…-unterricht/` 404s (15 impr); the live `/willkommen/` page needs the redirect, or accept | Shaun | 24.2 |
 
 ### P3 — parked (low value now, or blocked)
 
@@ -563,3 +565,25 @@ From the weekly blog-keyword-drafts run of 2026-11-11 (report and drafts in Shau
    (`~/.claude/scheduled-tasks/blog-keyword-drafts/SKILL.md`, outside the repo) to check
    `docs/seo-backlog.md` on origin/main for no-touch and measurement windows. Shaun approves the
    prompt change.
+
+### Tier 24 — URL faults from the Search Console exports (2026-11-16) · Shaun + CC
+From Shaun's two exports of 2026-11-16 (Performance, last 28 days; Generative AI features, last
+3 months). Each URL checked live with `curl -L` the same day.
+
+1. **Image attachments hold the posts' bare slugs, so clicks land on a PNG.** `/abitur-task-decoding-warm-up/`,
+   `/mediation-englisch-abitur-verstehen-2/`, `/american-british-english-what-matters/` and
+   `/interactive-exercises-in-class-screens/` are the attachment pages of each post's image; since
+   attachment pages 301 to their files (Tier 17b, checked 11-15) they now open the bare PNG. Google
+   ranks some of them: the mediation one 2 clicks / 23 impr (pos 12.7), the warm-up one 5 impr at
+   pos 2.2 and 3 AI-feature impressions. The posts live at their dated URLs (`/2026/10/30/…`,
+   `/2026/11/11/…`, `/2026/10/21/…`, `/2026/10/18/…`). Fix: rename each attachment's slug (e.g. add
+   `-image`) in WP Media, so the bare slug falls through to the post; recheck with `curl -L`.
+   Check new featured images for the same clash before scheduling. Shaun OKs the WP edits (rule 7).
+2. **`/wilkommen/vor-und-nachteile-des-online-englischlernens-im-vergleich-zum-traditionellen-unterricht/`
+   is a 404** (12 AI-feature and 3 web impressions). The other `/wilkommen/` URLs 301 to `/willkommen/`
+   (B6); this one has no redirect, while the `/willkommen/` page gets 139 web impressions at pos 5.0
+   and 35 AI-feature impressions. Fix: give the live page the old URL as a redirect (WordPress keeps
+   old slugs, but the `/wilkommen/` parent path needs checking first), or accept the loss. Shaun.
+   Not acted on: five single-impression 404s with garbled slugs (`…schritt-fur-fur…`, `…in-la-schule…`,
+   `wie-schreibst-man…`, `kreatives-schreiben-englisch-abitur-tipps-techniken…`,
+   `alle-kostenlosen-…-2`) appear only in the AI-features export.
