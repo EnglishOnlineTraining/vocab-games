@@ -24,6 +24,39 @@ Shaun's priorities, learned building Week 3:
   autosave a draft through `eolDraftSave` in `exercise.js`, but don't plan a page that spans two
   sessions.)
 
+## Level and task design (added after Weeks 4–5)
+
+Weeks 4 and 5 shipped below the level Shaun wants: gap-fill led, the group task was bolted on, and he had
+to ask for a rewrite after merge ("this is B2 at a university, and I need a focus on communicative
+tasks"). Design every week against this standard. The patterns come from Shaun's own B2 quizzes and the
+IU Business English II decks he named as the right level (take the patterns only; never copy IU or Klett
+text into the repo).
+
+- **Start from a real input and an applied task.** The centrepiece is an authentic text, news item, chart
+  or short case, plus a breakout task that uses it. The grammar is a short toolkit slide that serves the
+  task, matched to the content (narrative tenses with a company's story, future forms with a plan).
+- **Every task has steps and ends in a decision with reasons.** For example: explain the option, give its
+  advantages and disadvantages, say who it suits, then decide for your own case and defend it. Role cards
+  or an information gap beat "compare and write 6–8 sentences".
+- **One running case across the weeks**, and one named framework a week applied to it (a structure, a
+  comparison grid, PESTEL, a simple matrix). The Fix Our Campus pitches are the ready-made case.
+- **Vocabulary is production.** Teach 8–10 professional terms a week. Tasks make students use them: write
+  a paragraph with 5–6 of the terms, or give the term from a real-world definition with no word bank.
+  Shaun's quizzes score "use the term in a sentence" 3/2/1 (no faults / mostly correct / something
+  correct) and it is the largest section; build page tasks that prepare for it. Pick terms from work
+  English (consulting, HR, management), not general words.
+- **The gap-fill (Ex A) is short and hard**: 8–10 items on modifiers, collocations, error correction and
+  transformations, not single-word picks like *cheaper* or *best*. If a student could do it without
+  reading the sentence, raise it.
+- **Discussion questions are critical, not recall**: "Can a company work without managers?", "Should X be
+  taught in school?".
+- **Every slide must make sense without you explaining it**: one instruction line, short questions, a
+  stated outcome and time. Shaun didn't understand a Week 5 warm-up slide with a long intro and five vague
+  questions.
+- **Session shape (90 min):** personal warm-up (10) → input + key expressions (20) → breakout task (30)
+  → present and discuss (20) → summary and optional self-study (10).
+- **Before you build**, check the draft against the **Level check** in Step 1b.
+
 ## Step 1 — Check the info before building
 
 Shaun asked for this check explicitly. The syllabus and what actually happened in class can differ:
@@ -50,6 +83,22 @@ questions as `AskUserQuestion` pop-ups, not as chat prose. Typical questions:
 
 Shaun's answers are often free text that changes the plan, so read them carefully. Restate the plan
 in a few lines and wait for "yes, build it".
+
+## Step 1b — Show the plan and the level check before building
+
+Weeks 4 and 5 went build → PR → merge with Shaun seeing the level only when live. Don't repeat that.
+Before building anything, post and get a "yes" on:
+- the week's **input** (the text, chart or case) and the **breakout task** with its steps and decision
+- **two sample Ex A items** and **two sample vocabulary tasks**, written out
+- the 8–10 terms, and which running-case thread the week continues
+- which framework or model the week applies
+
+**Level check** (answer each in the plan): Is the centrepiece a real input plus a communicative task?
+Does the task end in a decision with reasons? Would a B2 university student need to read, not guess, to do
+Ex A? Do the slides read without explanation? If any answer is no, redesign before showing it.
+
+For inspiration, read two or three of Shaun's named older B2 quizzes on Drive (e.g. "B2 Class Quiz #1/#2/3")
+before designing; the old B2 decks are image-only and give little text.
 
 ## Step 2 — Link the week to last week
 
@@ -140,10 +189,15 @@ teaching order, with the optional page last, in both `<title>` and the welcome `
 live, keep its URL even when the title changes, because slide links and submissions point at it.
 
 **The usual parts:**
-- **Ex A, graded:** the session's grammar as 10–12 dropdown gaps with 3 options. Vary the position
+- **The breakout task comes first on the page**, built from the week's input (see "Level and task
+  design"): the input, role cards or an information gap, then a typed output with a decision and reasons.
+- **Ex A, graded:** the session's grammar as 8–12 dropdown gaps with 3 options at the level in "Level and
+  task design" (modifiers, collocations, error correction, transformations). Vary the position
   of the correct answer. Add the optional "Before you start" retrieval box (never validated), and 1–2
-  recall items from an earlier B2 week. Base the sentences on last week's activity and the course's
-  campus cases.
+  recall items from an earlier B2 week (don't skip them). Base the sentences on last week's activity and
+  the running case.
+- **Vocabulary production:** one ungraded-or-graded task that makes students use the week's terms in
+  sentences or a short paragraph.
 - **Ex B and further, ungraded but required:** the in-class writing, such as the group's story,
   a plan before speaking, or a write-up after speaking. Give each a clear audience and purpose, a
   `<label>` on every field, and a word count where length matters.
@@ -185,6 +239,7 @@ a data: URL.
   says the branch name is already used by another worktree, pick a new name. Never check out or
   delete another session's branch.
 - Merge only when Shaun has said so for this work. "Tonight's page first" or "yes, merge it" counts.
+  The plan approval in Step 1b is not a merge approval: show him the built pages and deck first.
 - Wait for the `check` CI job, squash-merge, then poll the live URL until it returns 200.
 - Pushing to `main` publishes to students straight away.
 
@@ -221,8 +276,40 @@ re-grading. Ask before changing a key during a class that is in progress.
 
 ## Wrap-up
 
-Tell Shaun:
+Do the deck's visual check (overflow, links, readability) before you report; don't hand it over
+unchecked. Then tell Shaun:
 - the deck's link and its slide list per session
 - the page URLs, and whether they're live or only in a PR
-- the answer key for each in-class quiz, since the answers aren't on the slides
+- the answer key for **every** graded page, **including the optional one**, since the answers aren't on
+  the slides
+- the level check from Step 1b, answered for what was built
 - anything left as is that he may want to change (e.g. the syllabus row, a hidden slide)
+
+## Topic pool
+
+Communicative topics with a real input and a breakout task ending in a decision. Pick the week's topic
+from here when the syllabus leaves it open, and record it as used in the log below. Names of frameworks
+are generic; write original inputs and tasks.
+
+| Topic | Input | Group task |
+|---|---|---|
+| Describing trends | a real chart | explain the curve to a partner, then forecast |
+| Organisation structures | four structures | choose one for a student organisation and defend it |
+| Management style and team culture | short culture descriptions | choose a style as the boss, with reasons |
+| Employer branding and motivation | a short article | build an employer brand for the running case |
+| Mission and brand | real mission statements | write one for the running case |
+| Pros and cons of a policy | a short article | debate, then agree a recommendation |
+| Globalisation and climate | a text with two charts | take an evidence-based stance |
+| Choosing a country (PESTEL) | country facts | pitch a market for the running case |
+| Product portfolio (matrix) | product lists | place real products, then recommend investment |
+| Marketing pitch | a model pitch | tagline and call to action, 3-minute pitch with Q&A |
+| Contracts and rules | a plain-English excerpt | draft three house rules |
+| An organisation's story | a founder's timeline | present the case's history (narrative tenses; Week 3) |
+
+## Lessons log
+
+Add one line per week: what Shaun corrected, so the next week starts better.
+- **Week 4 (emails):** recall item skipped; optional page had no answer key; deck never checked
+  visually; submission untested.
+- **Week 5 (comparing):** first build too easy and not communicative enough; warm-up slide unclear;
+  Shaun merged before seeing the level, so a second PR rewrote it. Fixed by Step 1b.
