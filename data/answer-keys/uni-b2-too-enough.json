@@ -1,0 +1,107 @@
+{
+ "unit": "uni-b2-too-enough",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": true,
+   "gaps": {
+    "g1": {
+     "correct": "too",
+     "accept": [
+      "too"
+     ],
+     "label": "1. The flat is ___ small for four people.",
+     "why": "Too before an adjective means more than is good: too small."
+    },
+    "g2": {
+     "correct": "enough",
+     "accept": [
+      "enough"
+     ],
+     "label": "2. The room is not big ___ for a desk and a bed.",
+     "why": "Enough comes after an adjective: big enough."
+    },
+    "g3": {
+     "correct": "enough",
+     "accept": [
+      "enough"
+     ],
+     "label": "3. I don’t have ___ time to finish the course this term.",
+     "why": "Enough comes before a noun: enough time."
+    },
+    "g4": {
+     "correct": "too",
+     "accept": [
+      "too"
+     ],
+     "label": "4. It is ___ cold to study in the library without a jacket.",
+     "why": "Too goes before an adjective, and too much needs a noun."
+    },
+    "g5": {
+     "correct": "too",
+     "accept": [
+      "too"
+     ],
+     "label": "5. There are ___ many people on the bus, so we can’t sit down.",
+     "why": "Too many goes with countable nouns, so too + many fits here."
+    },
+    "g6": {
+     "correct": "easy enough",
+     "accept": [
+      "easy enough"
+     ],
+     "label": "6. This app is ___ to use, so even beginners can try it.",
+     "why": "Enough follows the adjective: easy enough."
+    },
+    "g7": {
+     "correct": "not old enough",
+     "accept": [
+      "not old enough"
+     ],
+     "label": "7. She is ___ to live alone yet.",
+     "why": "Not + adjective + enough: not old enough."
+    },
+    "g8": {
+     "correct": "for",
+     "accept": [
+      "for"
+     ],
+     "label": "8. The rent is too high ___ me to pay.",
+     "why": "Too high for me to pay: for + person, then to-infinitive."
+    },
+    "g9": {
+     "correct": "too much",
+     "accept": [
+      "too much"
+     ],
+     "label": "9. There is ___ noise at night, so I can’t sleep.",
+     "why": "Noise is uncountable, so use too much."
+    },
+    "g10": {
+     "correct": "enough",
+     "accept": [
+      "enough"
+     ],
+     "label": "10. Are there ___ chairs for everyone in the room?",
+     "why": "Enough before a noun in a question: enough chairs."
+    },
+    "g11": {
+     "correct": "most interesting",
+     "accept": [
+      "most interesting"
+     ],
+     "label": "11. Out of all the courses I have taken, this is the ___ (interesting).",
+     "why": "Longer adjectives form the superlative with the most."
+    },
+    "g12": {
+     "correct": "had left",
+     "accept": [
+      "had left"
+     ],
+     "label": "12. By the time we arrived, the agent ___ (leave).",
+     "why": "By the time shows the agent left first: past perfect."
+    }
+   }
+  }
+ }
+}
