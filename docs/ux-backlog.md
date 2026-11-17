@@ -8,7 +8,6 @@ Condensed 2026-11-15: sections A–C are done (full tables: `git show dda0f4a1:d
 
 | P | Item | Evidence | Change | Check | Waits on |
 |---|---|---|---|---|---|
-| P1 | Own 404 page | A wrong URL on `activities.` shows GitHub's "File not found"; no `404.html` | `404.html` in the site chrome: "Page not found", Search, the class links from `index.html`; `noindex` | a wrong URL shows the header and a link home | CC |
 | P1 | "Search all exercises" lands on the search box | The homepage button opens `activities.html`, where `#hub-q` is 971px down under three promo cards (page 36,549px) | Link to `activities.html#hub-q`, or move "Find your exercise" above the promo cards | 375px: search box on the first screen | CC |
 | P2 | Jump links on class hubs | `9g-activities.html` is ~9 screens for 26 cards; group headings already have ids | A chip row under the count, one per heading, built in `build-category-hubs.js` | tap a chip → that group at the top; none on ungrouped hubs | CC |
 | P2 | Small tap targets left on hubs | 9g hub: intro grammar links 19px, "Cookie-Einstellungen" 19px, "Datenschutz" 17px | Same padding rule as #225 for hub intro links and the hub footer | no link under 24px on a hub at 375px | CC |
@@ -32,6 +31,7 @@ Condensed 2026-11-15: sections A–C are done (full tables: `git show dda0f4a1:d
 
 ## Done
 
+- **P1. Own 404 page (#394, 2026-11-16):** `404.html` at the root: "Page not found", links to the home page and `activities.html`, `noindex`, shared `style.css`, not in any sitemap. Scope cut: no Search box and no class links (the task named only the home and hub links). Build-generated head uses relative paths; see the PR.
 - **B. Polish (#225):** chrome links ≥ 24px (WCAG 2.2 SC 2.5.8), no focus ring on the step heading,
   practise button text on two clean lines.
 - **A1. Class hubs (#226):** country groups, emoji icons only, textbook tags replaced, two-line clamp

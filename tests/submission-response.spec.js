@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-const ORIGIN = 'http://eol.test:8791';
+const ORIGIN = `http://eol.test:${process.env.TEST_PORT || 8791}`;
 
 test.use({
   launchOptions: { args: ['--host-resolver-rules=MAP eol.test 127.0.0.1'] },

@@ -18,6 +18,7 @@
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
+const { execSync } = require('child_process');
 
 const ROOT = path.join(__dirname, '..');
 
@@ -122,7 +123,16 @@ function selfTest() {
     console.error(`check-syntax self-test failed: expected 2 scripts, got ${two.length}`);
     process.exit(1);
   }
+  if (!SYNC_COPY.test('scripts/build-head 2.js') || SYNC_COPY.test('scripts/build-head.js')) {
+    console.error('check-syntax self-test failed: sync-copy pattern');
+    process.exit(1);
+  }
 }
+
+/* Documents-sync copies such as "build-head 2.js" appeared in a worktree in
+   Oct 2026, and build.js read one as a page. Only tracked files matter: an
+   untracked copy on a local disk is not a commit. */
+const SYNC_COPY = /\s\d+\.[^/]+$/;
 selfTest();
 
 const failures = [];
@@ -157,6 +167,13 @@ for (const file of htmlFiles()) {
     console.error(`  ✗ ${file}: uses class="sr-only" but no .sr-only CSS rule is defined`);
     cssFailures++;
   }
+}
+
+const syncCopies = execSync('git ls-files -z', { cwd: ROOT }).toString().split('\0').filter((f) => SYNC_COPY.test(f));
+if (syncCopies.length) {
+  syncCopies.forEach((f) => console.error(`  ✗ ${f}: looks like a Documents-sync copy; do not commit it`));
+  console.error(`check-syntax: ${syncCopies.length} tracked sync-copy file(s)`);
+  process.exit(1);
 }
 
 if (failures.length || cssFailures) {
