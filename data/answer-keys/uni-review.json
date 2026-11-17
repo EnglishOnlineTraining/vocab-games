@@ -6,60 +6,60 @@
    "multi": false,
    "gaps": {
     "g1": {
+     "correct": "was cooking",
+     "accept": [
+      "was cooking"
+     ],
+     "label": "1. At eight o’clock last night I"
+    },
+    "g2": {
+     "correct": "most interesting",
+     "accept": [
+      "most interesting"
+     ],
+     "label": "2. Out of all the courses I have taken, this is the"
+    },
+    "g3": {
      "correct": "9",
      "accept": [
       "9"
      ],
-     "label": "1. h) Glad it worked out. Anyway, are you free..."
+     "label": "3. h) Glad it worked out. Anyway, are you free..."
     },
-    "g2": {
-     "correct": "Since",
-     "accept": [
-      "Since"
-     ],
-     "label": "2."
-    },
-    "g3": {
+    "g4": {
      "correct": "got",
      "accept": [
       "got"
      ],
-     "label": "3. When I"
-    },
-    "g4": {
-     "correct": "d",
-     "accept": [
-      "d"
-     ],
-     "label": "4. The Accounts Department's slow payment..."
+     "label": "4. When I"
     },
     "g5": {
-     "correct": "same length",
-     "accept": [
-      "same length"
-     ],
-     "label": "5. A good paraphrase is roughly the"
-    },
-    "g6": {
      "correct": "was waiting",
      "accept": [
       "was waiting"
      ],
-     "label": "6. While I"
+     "label": "5. While I"
+    },
+    "g6": {
+     "correct": "Since",
+     "accept": [
+      "Since"
+     ],
+     "label": "6."
     },
     "g7": {
-     "correct": "rose steadily",
+     "correct": "appear to support",
      "accept": [
-      "rose steadily"
+      "appear to support"
      ],
-     "label": "7. Usage"
+     "label": "7. The data"
     },
     "g8": {
-     "correct": "because",
+     "correct": "brought",
      "accept": [
-      "because"
+      "brought"
      ],
-     "label": "8. …move my seminar group,"
+     "label": "8. What"
     }
    }
   },
@@ -68,60 +68,60 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "if",
-     "accept": [
-      "if"
-     ],
-     "label": "1. I was wondering"
-    },
-    "g2": {
-     "correct": "a basic structure of ideas or rules that provides guidance",
-     "accept": [
-      "a basic structure of ideas or rules that provides guidance"
-     ],
-     "label": "2. framework"
-    },
-    "g3": {
-     "correct": "anecdotal",
-     "accept": [
-      "anecdotal"
-     ],
-     "label": "3. Personal stories rather than systematic research"
-    },
-    "g4": {
-     "correct": "gave",
-     "accept": [
-      "gave"
-     ],
-     "label": "4. … the lecturer"
-    },
-    "g5": {
      "correct": "8",
      "accept": [
       "8"
      ],
-     "label": "5. Chinese businesspeople wanting something in return"
+     "label": "1. Chinese businesspeople wanting something in return"
+    },
+    "g2": {
+     "correct": "gave",
+     "accept": [
+      "gave"
+     ],
+     "label": "2. … the lecturer"
+    },
+    "g3": {
+     "correct": "d",
+     "accept": [
+      "d"
+     ],
+     "label": "3. The Accounts Department's slow payment..."
+    },
+    "g4": {
+     "correct": "same length",
+     "accept": [
+      "same length"
+     ],
+     "label": "4. A good paraphrase is roughly the"
+    },
+    "g5": {
+     "correct": "opening",
+     "accept": [
+      "opening"
+     ],
+     "label": "5. We recommend"
     },
     "g6": {
-     "correct": "Would it be possible to extend the loan of this book?",
+     "correct": "rose steadily",
      "accept": [
-      "Would it be possible to extend the loan of this book?"
+      "rose steadily"
      ],
-     "label": "6. To the library"
+     "label": "6. Usage"
     },
     "g7": {
-     "correct": "brought",
+     "correct": "a basic structure of ideas or rules that provides guidance",
      "accept": [
-      "brought"
+      "a basic structure of ideas or rules that provides guidance"
      ],
-     "label": "7. What"
+     "label": "7. framework"
     },
     "g8": {
-     "correct": "appear to support",
+     "correct": "anecdotal",
      "accept": [
-      "appear to support"
+      "anecdotal"
      ],
-     "label": "8. The data"
+     "label": "8. Personal stories rather than systematic research"
     }
    }
   },
@@ -130,60 +130,60 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "opening",
+     "correct": "Would it be possible to extend the loan of this book?",
      "accept": [
-      "opening"
+      "Would it be possible to extend the loan of this book?"
      ],
-     "label": "1. We recommend"
+     "label": "1. To the library"
     },
     "g2": {
+     "correct": "because",
+     "accept": [
+      "because"
+     ],
+     "label": "2. …move my seminar group,"
+    },
+    "g3": {
+     "correct": "if",
+     "accept": [
+      "if"
+     ],
+     "label": "3. I was wondering"
+    },
+    "g4": {
      "correct": "catch",
      "accept": [
       "catch"
      ],
-     "label": "2. Sorry, I didn't quite"
+     "label": "4. Sorry, I didn't quite"
     },
-    "g3": {
+    "g5": {
+     "correct": "quiet",
+     "accept": [
+      "quiet"
+     ],
+     "label": "5. Our new flat is not as"
+    },
+    "g6": {
+     "correct": "better",
+     "accept": [
+      "better"
+     ],
+     "label": "6. Which app is"
+    },
+    "g7": {
+     "correct": "for",
+     "accept": [
+      "for"
+     ],
+     "label": "7. The rent is too high"
+    },
+    "g8": {
      "correct": "8",
      "accept": [
       "8"
      ],
-     "label": "3. i) Well, I had to build up my relationship again..."
-    },
-    "g4": {
-     "correct": "leading to",
-     "accept": [
-      "leading to"
-     ],
-     "label": "4. Deforestation has accelerated,"
-    },
-    "g5": {
-     "correct": "rang",
-     "accept": [
-      "rang"
-     ],
-     "label": "5. I was sleeping deeply when my alarm"
-    },
-    "g6": {
-     "correct": "establish",
-     "accept": [
-      "establish"
-     ],
-     "label": "6. Planning to"
-    },
-    "g7": {
-     "correct": "synonyms",
-     "accept": [
-      "synonyms"
-     ],
-     "label": "7. Techniques include using"
-    },
-    "g8": {
-     "correct": "arrived",
-     "accept": [
-      "arrived"
-     ],
-     "label": "8. By the time the lecturer"
+     "label": "8. i) Well, I had to build up my relationship again..."
     }
    }
   }
