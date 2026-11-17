@@ -518,6 +518,8 @@ const EXTRA_PUBLIC_PAGES = [
   // Glossary landing pages for the 2023 commercial-real-estate and ESG PDFs (same architecture).
   'commercial-real-estate-vocabulary.html',
   'esg-vocabulary.html',
+  // Landing page for the 2023 useful-phrases PDF (ranks on its own in Search Console; same architecture).
+  'useful-phrases-for-business-emails.html',
   // uni-presentation-task.html used to be listed here. It is now carried in
   // data/exercises.json via the STANDALONE map in build-exercise-data.js, so the
   // exercises loop above emits it and a second entry here would be redundant.
