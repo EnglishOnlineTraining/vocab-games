@@ -1,0 +1,107 @@
+{
+ "unit": "uni-b2-comparing-practice",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": true,
+   "gaps": {
+    "g1": {
+     "correct": "better",
+     "accept": [
+      "better"
+     ],
+     "label": "1. Which app is ___ (good), Duolingo or Babbel?",
+     "why": "Two things compared: good → better."
+    },
+    "g2": {
+     "correct": "not warm enough",
+     "accept": [
+      "not warm enough"
+     ],
+     "label": "2. This jacket is ___ for a winter in Hamburg.",
+     "why": "Not + adjective + enough: not warm enough."
+    },
+    "g3": {
+     "correct": "more dangerous",
+     "accept": [
+      "more dangerous"
+     ],
+     "label": "3. Cycling at night is ___ (dangerous) than cycling in the day.",
+     "why": "Long adjective + than: more dangerous."
+    },
+    "g4": {
+     "correct": "most beautiful",
+     "accept": [
+      "most beautiful"
+     ],
+     "label": "4. Of all the cities I have visited, Lisbon is the ___ (beautiful).",
+     "why": "Superlative of a long adjective: the most beautiful."
+    },
+    "g5": {
+     "correct": "too",
+     "accept": [
+      "too"
+     ],
+     "label": "5. The seminar room was ___ crowded for everyone to hear the speaker.",
+     "why": "Too goes before an adjective: too crowded."
+    },
+    "g6": {
+     "correct": "too many",
+     "accept": [
+      "too many"
+     ],
+     "label": "6. I have ___ books on my desk, so I can’t find my laptop.",
+     "why": "Books are countable, so use too many."
+    },
+    "g7": {
+     "correct": "hard",
+     "accept": [
+      "hard"
+     ],
+     "label": "7. The exam was not as ___ (hard) as I feared.",
+     "why": "In not as … as the adjective keeps its basic form."
+    },
+    "g8": {
+     "correct": "cheaper",
+     "accept": [
+      "cheaper"
+     ],
+     "label": "8. Studying at home is much ___ (cheap) than renting a study room.",
+     "why": "Much + comparative: cheap → cheaper."
+    },
+    "g9": {
+     "correct": "enough",
+     "accept": [
+      "enough"
+     ],
+     "label": "9. Is the café quiet ___ to work in?",
+     "why": "Enough follows an adjective: quiet enough."
+    },
+    "g10": {
+     "correct": "enough",
+     "accept": [
+      "enough"
+     ],
+     "label": "10. There isn’t ___ space in my room for a second desk.",
+     "why": "Enough comes before a noun: enough space."
+    },
+    "g11": {
+     "correct": "was cooking",
+     "accept": [
+      "was cooking"
+     ],
+     "label": "11. At eight o’clock last night I ___ (cook) when my flatmate came home.",
+     "why": "The cooking was in progress when the flatmate arrived: past continuous."
+    },
+    "g12": {
+     "correct": "if",
+     "accept": [
+      "if"
+     ],
+     "label": "12. I would be grateful ___ you could confirm the date.",
+     "why": "I would be grateful if you could… is a polite request."
+    }
+   }
+  }
+ }
+}

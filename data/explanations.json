@@ -22865,5 +22865,203 @@
     }
    }
   }
+ },
+ "uni-b2-comparatives": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. The flat near the station is ___ (cheap) than the flat in the city centre.",
+     "correct": "cheaper",
+     "why": "A short adjective adds -er before than: cheap → cheaper."
+    },
+    "g2": {
+     "label": "2. Online lectures are ___ (convenient) than lectures on campus.",
+     "correct": "more convenient",
+     "why": "Long adjectives take more + adjective before than."
+    },
+    "g3": {
+     "label": "3. Of all the vocabulary apps I have tried, this is the ___ (good).",
+     "correct": "best",
+     "why": "Superlative of good is irregular: good → better → best."
+    },
+    "g4": {
+     "label": "4. Our new flat is not as ___ (quiet) as the old one.",
+     "correct": "quiet",
+     "why": "In “not as … as” the adjective stays in its basic form."
+    },
+    "g5": {
+     "label": "5. The more I practise, the ___ (easy) it gets.",
+     "correct": "easier",
+     "why": "The comparative + the comparative: the more…, the easier."
+    },
+    "g6": {
+     "label": "6. Her presentation was ___ (good) than mine, so her group won.",
+     "correct": "better",
+     "why": "Compare two things with the irregular comparative: good → better."
+    },
+    "g7": {
+     "label": "7. Of the three modules this term, Business English is the ___ (useful).",
+     "correct": "most useful",
+     "why": "Among three or more, a long adjective takes the most."
+    },
+    "g8": {
+     "label": "8. Prices in Munich are a lot ___ (high) than in Leipzig.",
+     "correct": "higher",
+     "why": "A lot + comparative: high → higher, followed by than."
+    },
+    "g9": {
+     "label": "9. This café is the ___ (noisy) place on campus, so I never study there.",
+     "correct": "noisiest",
+     "why": "Noisy ends in -y: change y to i and add -est."
+    },
+    "g10": {
+     "label": "10. Student flats in this city are getting ___ (expensive) every year.",
+     "correct": "more and more expensive",
+     "why": "More and more + adjective describes a change that keeps growing."
+    },
+    "g11": {
+     "label": "11. This time yesterday, we ___ (look) at flats in the city centre.",
+     "correct": "were looking",
+     "why": "This time yesterday describes an action in progress: past continuous."
+    },
+    "g12": {
+     "label": "12. Would it be possible ___ move the viewing to Friday?",
+     "correct": "to",
+     "why": "Would it be possible + to-infinitive is a polite request."
+    }
+   }
+  }
+ },
+ "uni-b2-too-enough": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. The flat is ___ small for four people.",
+     "correct": "too",
+     "why": "Too before an adjective means more than is good: too small."
+    },
+    "g2": {
+     "label": "2. The room is not big ___ for a desk and a bed.",
+     "correct": "enough",
+     "why": "Enough comes after an adjective: big enough."
+    },
+    "g3": {
+     "label": "3. I don’t have ___ time to finish the course this term.",
+     "correct": "enough",
+     "why": "Enough comes before a noun: enough time."
+    },
+    "g4": {
+     "label": "4. It is ___ cold to study in the library without a jacket.",
+     "correct": "too",
+     "why": "Too goes before an adjective, and too much needs a noun."
+    },
+    "g5": {
+     "label": "5. There are ___ many people on the bus, so we can’t sit down.",
+     "correct": "too",
+     "why": "Too many goes with countable nouns, so too + many fits here."
+    },
+    "g6": {
+     "label": "6. This app is ___ to use, so even beginners can try it.",
+     "correct": "easy enough",
+     "why": "Enough follows the adjective: easy enough."
+    },
+    "g7": {
+     "label": "7. She is ___ to live alone yet.",
+     "correct": "not old enough",
+     "why": "Not + adjective + enough: not old enough."
+    },
+    "g8": {
+     "label": "8. The rent is too high ___ me to pay.",
+     "correct": "for",
+     "why": "Too high for me to pay: for + person, then to-infinitive."
+    },
+    "g9": {
+     "label": "9. There is ___ noise at night, so I can’t sleep.",
+     "correct": "too much",
+     "why": "Noise is uncountable, so use too much."
+    },
+    "g10": {
+     "label": "10. Are there ___ chairs for everyone in the room?",
+     "correct": "enough",
+     "why": "Enough before a noun in a question: enough chairs."
+    },
+    "g11": {
+     "label": "11. Out of all the courses I have taken, this is the ___ (interesting).",
+     "correct": "most interesting",
+     "why": "Longer adjectives form the superlative with the most."
+    },
+    "g12": {
+     "label": "12. By the time we arrived, the agent ___ (leave).",
+     "correct": "had left",
+     "why": "By the time shows the agent left first: past perfect."
+    }
+   }
+  }
+ },
+ "uni-b2-comparing-practice": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. Which app is ___ (good), Duolingo or Babbel?",
+     "correct": "better",
+     "why": "Two things compared: good → better."
+    },
+    "g2": {
+     "label": "2. This jacket is ___ for a winter in Hamburg.",
+     "correct": "not warm enough",
+     "why": "Not + adjective + enough: not warm enough."
+    },
+    "g3": {
+     "label": "3. Cycling at night is ___ (dangerous) than cycling in the day.",
+     "correct": "more dangerous",
+     "why": "Long adjective + than: more dangerous."
+    },
+    "g4": {
+     "label": "4. Of all the cities I have visited, Lisbon is the ___ (beautiful).",
+     "correct": "most beautiful",
+     "why": "Superlative of a long adjective: the most beautiful."
+    },
+    "g5": {
+     "label": "5. The seminar room was ___ crowded for everyone to hear the speaker.",
+     "correct": "too",
+     "why": "Too goes before an adjective: too crowded."
+    },
+    "g6": {
+     "label": "6. I have ___ books on my desk, so I can’t find my laptop.",
+     "correct": "too many",
+     "why": "Books are countable, so use too many."
+    },
+    "g7": {
+     "label": "7. The exam was not as ___ (hard) as I feared.",
+     "correct": "hard",
+     "why": "In not as … as the adjective keeps its basic form."
+    },
+    "g8": {
+     "label": "8. Studying at home is much ___ (cheap) than renting a study room.",
+     "correct": "cheaper",
+     "why": "Much + comparative: cheap → cheaper."
+    },
+    "g9": {
+     "label": "9. Is the café quiet ___ to work in?",
+     "correct": "enough",
+     "why": "Enough follows an adjective: quiet enough."
+    },
+    "g10": {
+     "label": "10. There isn’t ___ space in my room for a second desk.",
+     "correct": "enough",
+     "why": "Enough comes before a noun: enough space."
+    },
+    "g11": {
+     "label": "11. At eight o’clock last night I ___ (cook) when my flatmate came home.",
+     "correct": "was cooking",
+     "why": "The cooking was in progress when the flatmate arrived: past continuous."
+    },
+    "g12": {
+     "label": "12. I would be grateful ___ you could confirm the date.",
+     "correct": "if",
+     "why": "I would be grateful if you could… is a polite request."
+    }
+   }
+  }
  }
 }

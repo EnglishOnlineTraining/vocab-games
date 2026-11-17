@@ -1,0 +1,107 @@
+{
+ "unit": "uni-b2-comparatives",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": true,
+   "gaps": {
+    "g1": {
+     "correct": "cheaper",
+     "accept": [
+      "cheaper"
+     ],
+     "label": "1. The flat near the station is ___ (cheap) than the flat in the city centre.",
+     "why": "A short adjective adds -er before than: cheap → cheaper."
+    },
+    "g2": {
+     "correct": "more convenient",
+     "accept": [
+      "more convenient"
+     ],
+     "label": "2. Online lectures are ___ (convenient) than lectures on campus.",
+     "why": "Long adjectives take more + adjective before than."
+    },
+    "g3": {
+     "correct": "best",
+     "accept": [
+      "best"
+     ],
+     "label": "3. Of all the vocabulary apps I have tried, this is the ___ (good).",
+     "why": "Superlative of good is irregular: good → better → best."
+    },
+    "g4": {
+     "correct": "quiet",
+     "accept": [
+      "quiet"
+     ],
+     "label": "4. Our new flat is not as ___ (quiet) as the old one.",
+     "why": "In “not as … as” the adjective stays in its basic form."
+    },
+    "g5": {
+     "correct": "easier",
+     "accept": [
+      "easier"
+     ],
+     "label": "5. The more I practise, the ___ (easy) it gets.",
+     "why": "The comparative + the comparative: the more…, the easier."
+    },
+    "g6": {
+     "correct": "better",
+     "accept": [
+      "better"
+     ],
+     "label": "6. Her presentation was ___ (good) than mine, so her group won.",
+     "why": "Compare two things with the irregular comparative: good → better."
+    },
+    "g7": {
+     "correct": "most useful",
+     "accept": [
+      "most useful"
+     ],
+     "label": "7. Of the three modules this term, Business English is the ___ (useful).",
+     "why": "Among three or more, a long adjective takes the most."
+    },
+    "g8": {
+     "correct": "higher",
+     "accept": [
+      "higher"
+     ],
+     "label": "8. Prices in Munich are a lot ___ (high) than in Leipzig.",
+     "why": "A lot + comparative: high → higher, followed by than."
+    },
+    "g9": {
+     "correct": "noisiest",
+     "accept": [
+      "noisiest"
+     ],
+     "label": "9. This café is the ___ (noisy) place on campus, so I never study there.",
+     "why": "Noisy ends in -y: change y to i and add -est."
+    },
+    "g10": {
+     "correct": "more and more expensive",
+     "accept": [
+      "more and more expensive"
+     ],
+     "label": "10. Student flats in this city are getting ___ (expensive) every year.",
+     "why": "More and more + adjective describes a change that keeps growing."
+    },
+    "g11": {
+     "correct": "were looking",
+     "accept": [
+      "were looking"
+     ],
+     "label": "11. This time yesterday, we ___ (look) at flats in the city centre.",
+     "why": "This time yesterday describes an action in progress: past continuous."
+    },
+    "g12": {
+     "correct": "to",
+     "accept": [
+      "to"
+     ],
+     "label": "12. Would it be possible ___ move the viewing to Friday?",
+     "why": "Would it be possible + to-infinitive is a polite request."
+    }
+   }
+  }
+ }
+}
