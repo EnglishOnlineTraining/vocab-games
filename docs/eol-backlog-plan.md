@@ -14,7 +14,7 @@ old text: `git show dda0f4a1:docs/eol-backlog-plan.md` and `…:docs/wordpress-t
 
 | # | Item | Waits on | Section |
 |---|---|---|---|
-| 1 | **Retire `englishonlinetraining@pm.me` everywhere it still shows** (rule 3): MailerLite reply-to on 10 emails (1 draft campaign, Welcome Sequence × 3, Lead Magnet Delivery × 6) and the account default; the Apps Script sheets that email results; the WordPress Organization node (`seo-backlog.md` 8 A2); the main-site `/llms.txt` (`engineering-backlog.md`) | Shaun | Contact address |
+| 1 | **Retire `englishonlinetraining@pm.me` everywhere it still shows** (rule 3): MailerLite reply-to on 10 emails (1 draft campaign, Welcome Sequence × 3, Lead Magnet Delivery × 6) and the account default; the Apps Script sheets that email results; the WordPress Organization node (`seo-backlog.md` 8 A2); ✅ privacy policy (page 346) done 2026-11-16; the main-site `/llms.txt` (`engineering-backlog.md`) | Shaun | Contact address |
 | 2 | ✅ 2026-11-15 (#375) `uni-al-munir-relationships.html` audio placeholder: listening step dropped | done | Tier 6 |
 | 3 | MailerLite delivery automations (MSA checklist, Abitur phrase sheet, Business phrase bank, Teacher Track) were created inactive: test one signup per form, then switch them on | Shaun | Email capture |
 | 4 | ~~Results-screen signup beyond `msa-c-`~~ Abitur: static box on pack pages (2026-11-15, PR #377); Year 9/10 later, need a lead magnet | Shaun | Email capture |
@@ -24,9 +24,12 @@ old text: `git show dda0f4a1:docs/eol-backlog-plan.md` and `…:docs/wordpress-t
 | 8 | Post 2370 ends with a newsletter sign-up: keep or reword. 2026-11-15: proposal in `post-2370-newsletter-line.md` (the post is learner-facing, not for teachers; the sign-up is not in its stored content; the preview links' permanence is unanswered in the MailerLite docs). Decisions for Shaun are listed there. Proposal: [PR 388](https://github.com/EnglishOnlineTraining/vocab-games/pull/388) | Shaun | WordPress |
 | 9 | Plan upgrade (301s, no ads, plugins): deferred until daily users grow | Shaun | Decisions |
 | 10 | Page 380's title may carry a non-breaking space: one wp-admin look | Shaun, low | WordPress |
+| 11 | **Retire Calendly** (decided 2026-11-16, see "Decisions that stand"). GA4 (19 Oct – 15 Nov) still logged `calendly.com/sptrezise`, `/60min` and `/free-trial`: 54 opens of the event-type page, 15 of the scheduling page, 1 booking, reached through links outside the site (no WordPress page or repo file embeds it; `/book-a-lesson/`, page 168, books by message since 2026-11-15). Left to do: (a) ✅ 2026-11-16: Calendly switched off (Shaun); (b) Shaun finds and repoints outside links (profiles, email signature, directory listings) to `/book-a-lesson/` or a MailerLite form; GA Acquisition filtered to page path `sptrezise` shows the sources; (c) ✅ 2026-11-16: privacy policy (page 346) Calendly section and summary line removed, sections renumbered 1–13, Stand November 2026. The 6 "Page not found" views were likely `/book-a-lesson/` while it was a draft; Tier B8 in `seo-backlog.md` is out of date (the page is live) | Shaun | Decisions |
 
 ## Decisions that stand
 
+- **No Calendly; every funnel ends in email or MailerLite** (Shaun, 2026-11-16): booking and enquiry
+  paths go to `learn@englishonline.training` (contact or enquiry form) or a MailerLite form. No scheduling tools.
 - **Business English is a corporate funnel** (Shaun, 2026-08-07): no 1:1 coaching, no Calendly for
   BE. `/business-english/` (1965) is the money page and stays a light funnel; no new service landing
   pages (closed 2026-10-28).
