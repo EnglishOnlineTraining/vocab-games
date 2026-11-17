@@ -10,96 +10,96 @@
      "accept": [
       "too"
      ],
-     "label": "1. The flat is ___ small for four people.",
-     "why": "Too before an adjective means more than is good: too small."
+     "label": "1. The flat is far ___ small for four people.",
+     "why": "Far too + adjective: far makes too stronger."
     },
     "g2": {
      "correct": "enough",
      "accept": [
       "enough"
      ],
-     "label": "2. The room is not big ___ for a desk and a bed.",
-     "why": "Enough comes after an adjective: big enough."
+     "label": "2. The room isn’t big ___ for two desks and a bed.",
+     "why": "Enough follows the adjective: big enough for."
     },
     "g3": {
      "correct": "enough",
      "accept": [
       "enough"
      ],
-     "label": "3. I don’t have ___ time to finish the course this term.",
-     "why": "Enough comes before a noun: enough time."
+     "label": "3. There is more than ___ space for a desk and a sofa.",
+     "why": "More than enough + noun means a lot more than needed."
     },
     "g4": {
      "correct": "too",
      "accept": [
       "too"
      ],
-     "label": "4. It is ___ cold to study in the library without a jacket.",
-     "why": "Too goes before an adjective, and too much needs a noun."
+     "label": "4. The seminar is ___ good to miss.",
+     "why": "Too good to miss: too + adjective + to-infinitive."
     },
     "g5": {
      "correct": "too",
      "accept": [
       "too"
      ],
-     "label": "5. There are ___ many people on the bus, so we can’t sit down.",
-     "why": "Too many goes with countable nouns, so too + many fits here."
+     "label": "5. He speaks ___ quickly for most of us to follow.",
+     "why": "Too + adverb + for + person + to-infinitive."
     },
     "g6": {
-     "correct": "easy enough",
+     "correct": "so",
      "accept": [
-      "easy enough"
+      "so"
      ],
-     "label": "6. This app is ___ to use, so even beginners can try it.",
-     "why": "Enough follows the adjective: easy enough."
+     "label": "6. She was ___ tired that she fell asleep during the seminar.",
+     "why": "So + adjective + that-clause shows the result."
     },
     "g7": {
-     "correct": "not old enough",
+     "correct": "such",
      "accept": [
-      "not old enough"
+      "such"
      ],
-     "label": "7. She is ___ to live alone yet.",
-     "why": "Not + adjective + enough: not old enough."
+     "label": "7. It was ___ a long journey that we booked a hotel.",
+     "why": "Such + a + adjective + noun, then a that-clause."
     },
     "g8": {
-     "correct": "for",
-     "accept": [
-      "for"
-     ],
-     "label": "8. The rent is too high ___ me to pay.",
-     "why": "Too high for me to pay: for + person, then to-infinitive."
-    },
-    "g9": {
-     "correct": "too much",
-     "accept": [
-      "too much"
-     ],
-     "label": "9. There is ___ noise at night, so I can’t sleep.",
-     "why": "Noise is uncountable, so use too much."
-    },
-    "g10": {
      "correct": "enough",
      "accept": [
       "enough"
      ],
-     "label": "10. Are there ___ chairs for everyone in the room?",
-     "why": "Enough before a noun in a question: enough chairs."
+     "label": "8. I haven’t got ___ money to pay the deposit.",
+     "why": "Enough comes before a noun: enough money."
+    },
+    "g9": {
+     "correct": "too many",
+     "accept": [
+      "too many"
+     ],
+     "label": "9. We received ___ complaints about the noise to ignore them.",
+     "why": "Complaints are countable, so use too many."
+    },
+    "g10": {
+     "correct": "quiet enough",
+     "accept": [
+      "quiet enough"
+     ],
+     "label": "10. The library is ___ to work in, but the chairs are uncomfortable.",
+     "why": "Quiet enough: enough follows the adjective."
     },
     "g11": {
-     "correct": "most interesting",
+     "correct": "far",
      "accept": [
-      "most interesting"
+      "far"
      ],
-     "label": "11. Out of all the courses I have taken, this is the ___ (interesting).",
-     "why": "Longer adjectives form the superlative with the most."
+     "label": "11. The lecture was ___ less interesting than I had hoped.",
+     "why": "Far + less + adjective modifies the comparison strongly."
     },
     "g12": {
-     "correct": "had left",
+     "correct": "was signing",
      "accept": [
-      "had left"
+      "was signing"
      ],
-     "label": "12. By the time we arrived, the agent ___ (leave).",
-     "why": "By the time shows the agent left first: past perfect."
+     "label": "12. At that moment she ___ the contract, so we waited outside.",
+     "why": "At that moment describes an action in progress: past continuous."
     }
    }
   }

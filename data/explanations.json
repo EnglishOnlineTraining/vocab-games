@@ -22870,62 +22870,62 @@
   "exA": {
    "gaps": {
     "g1": {
-     "label": "1. The flat near the station is ___ (cheap) than the flat in the city centre.",
-     "correct": "cheaper",
-     "why": "A short adjective adds -er before than: cheap → cheaper."
+     "label": "1. Rent in the centre is ___ higher than in the suburbs: almost €150 more a month.",
+     "correct": "considerably",
+     "why": "Considerably is a modifier before a comparative: considerably higher."
     },
     "g2": {
-     "label": "2. Online lectures are ___ (convenient) than lectures on campus.",
-     "correct": "more convenient",
-     "why": "Long adjectives take more + adjective before than."
+     "label": "2. The new flat is not nearly ___ noisy as the old one.",
+     "correct": "as",
+     "why": "Not nearly as … as means much less than; the adjective stays basic."
     },
     "g3": {
-     "label": "3. Of all the vocabulary apps I have tried, this is the ___ (good).",
-     "correct": "best",
-     "why": "Superlative of good is irregular: good → better → best."
+     "label": "3. Of the three flats we saw, this is by far ___ best option for a group.",
+     "correct": "the",
+     "why": "By far goes with a superlative, which takes the: by far the best."
     },
     "g4": {
-     "label": "4. Our new flat is not as ___ (quiet) as the old one.",
-     "correct": "quiet",
-     "why": "In “not as … as” the adjective stays in its basic form."
+     "label": "4. The ___ I think about it, the less convinced I am.",
+     "correct": "longer",
+     "why": "The + comparative, then the + comparative: the longer I think, the less…"
     },
     "g5": {
-     "label": "5. The more I practise, the ___ (easy) it gets.",
-     "correct": "easier",
-     "why": "The comparative + the comparative: the more…, the easier."
+     "label": "5. Flat B costs twice ___ much as Flat A.",
+     "correct": "as",
+     "why": "Twice as … as shows a multiple: twice as much as."
     },
     "g6": {
-     "label": "6. Her presentation was ___ (good) than mine, so her group won.",
-     "correct": "better",
-     "why": "Compare two things with the irregular comparative: good → better."
+     "label": "6. Of the three, Flat A is the ___ convenient for the university.",
+     "correct": "least",
+     "why": "Of three or more, the least + adjective is the lowest degree."
     },
     "g7": {
-     "label": "7. Of the three modules this term, Business English is the ___ (useful).",
-     "correct": "most useful",
-     "why": "Among three or more, a long adjective takes the most."
+     "label": "7. Living with flatmates is ___ stressful than I had expected.",
+     "correct": "less",
+     "why": "Less + adjective than compares two things downward: less stressful than."
     },
     "g8": {
-     "label": "8. Prices in Munich are a lot ___ (high) than in Leipzig.",
-     "correct": "higher",
-     "why": "A lot + comparative: high → higher, followed by than."
+     "label": "8. Flat A is in one of the ___ parts of the city.",
+     "correct": "quietest",
+     "why": "One of the + superlative: one of the quietest parts."
     },
     "g9": {
-     "label": "9. This café is the ___ (noisy) place on campus, so I never study there.",
-     "correct": "noisiest",
-     "why": "Noisy ends in -y: change y to i and add -est."
+     "label": "9. Rents are rising ___ than wages, so students are struggling.",
+     "correct": "more quickly",
+     "why": "Rising is a verb, so use the adverb comparative: more quickly."
     },
     "g10": {
-     "label": "10. Student flats in this city are getting ___ (expensive) every year.",
-     "correct": "more and more expensive",
-     "why": "More and more + adjective describes a change that keeps growing."
+     "label": "10. The more flats we saw, ___ we liked the first one.",
+     "correct": "the more",
+     "why": "The more…, the more… links two changes that grow together."
     },
     "g11": {
-     "label": "11. This time yesterday, we ___ (look) at flats in the city centre.",
-     "correct": "were looking",
-     "why": "This time yesterday describes an action in progress: past continuous."
+     "label": "11. By the time we reached the second flat, someone had already ___ it.",
+     "correct": "taken",
+     "why": "Had already + past participle shows it was taken before we arrived."
     },
     "g12": {
-     "label": "12. Would it be possible ___ move the viewing to Friday?",
+     "label": "12. Would it be possible ___ see Flat B once more before we decide?",
      "correct": "to",
      "why": "Would it be possible + to-infinitive is a polite request."
     }
@@ -22936,64 +22936,64 @@
   "exA": {
    "gaps": {
     "g1": {
-     "label": "1. The flat is ___ small for four people.",
+     "label": "1. The flat is far ___ small for four people.",
      "correct": "too",
-     "why": "Too before an adjective means more than is good: too small."
+     "why": "Far too + adjective: far makes too stronger."
     },
     "g2": {
-     "label": "2. The room is not big ___ for a desk and a bed.",
+     "label": "2. The room isn’t big ___ for two desks and a bed.",
      "correct": "enough",
-     "why": "Enough comes after an adjective: big enough."
+     "why": "Enough follows the adjective: big enough for."
     },
     "g3": {
-     "label": "3. I don’t have ___ time to finish the course this term.",
+     "label": "3. There is more than ___ space for a desk and a sofa.",
      "correct": "enough",
-     "why": "Enough comes before a noun: enough time."
+     "why": "More than enough + noun means a lot more than needed."
     },
     "g4": {
-     "label": "4. It is ___ cold to study in the library without a jacket.",
+     "label": "4. The seminar is ___ good to miss.",
      "correct": "too",
-     "why": "Too goes before an adjective, and too much needs a noun."
+     "why": "Too good to miss: too + adjective + to-infinitive."
     },
     "g5": {
-     "label": "5. There are ___ many people on the bus, so we can’t sit down.",
+     "label": "5. He speaks ___ quickly for most of us to follow.",
      "correct": "too",
-     "why": "Too many goes with countable nouns, so too + many fits here."
+     "why": "Too + adverb + for + person + to-infinitive."
     },
     "g6": {
-     "label": "6. This app is ___ to use, so even beginners can try it.",
-     "correct": "easy enough",
-     "why": "Enough follows the adjective: easy enough."
+     "label": "6. She was ___ tired that she fell asleep during the seminar.",
+     "correct": "so",
+     "why": "So + adjective + that-clause shows the result."
     },
     "g7": {
-     "label": "7. She is ___ to live alone yet.",
-     "correct": "not old enough",
-     "why": "Not + adjective + enough: not old enough."
+     "label": "7. It was ___ a long journey that we booked a hotel.",
+     "correct": "such",
+     "why": "Such + a + adjective + noun, then a that-clause."
     },
     "g8": {
-     "label": "8. The rent is too high ___ me to pay.",
-     "correct": "for",
-     "why": "Too high for me to pay: for + person, then to-infinitive."
+     "label": "8. I haven’t got ___ money to pay the deposit.",
+     "correct": "enough",
+     "why": "Enough comes before a noun: enough money."
     },
     "g9": {
-     "label": "9. There is ___ noise at night, so I can’t sleep.",
-     "correct": "too much",
-     "why": "Noise is uncountable, so use too much."
+     "label": "9. We received ___ complaints about the noise to ignore them.",
+     "correct": "too many",
+     "why": "Complaints are countable, so use too many."
     },
     "g10": {
-     "label": "10. Are there ___ chairs for everyone in the room?",
-     "correct": "enough",
-     "why": "Enough before a noun in a question: enough chairs."
+     "label": "10. The library is ___ to work in, but the chairs are uncomfortable.",
+     "correct": "quiet enough",
+     "why": "Quiet enough: enough follows the adjective."
     },
     "g11": {
-     "label": "11. Out of all the courses I have taken, this is the ___ (interesting).",
-     "correct": "most interesting",
-     "why": "Longer adjectives form the superlative with the most."
+     "label": "11. The lecture was ___ less interesting than I had hoped.",
+     "correct": "far",
+     "why": "Far + less + adjective modifies the comparison strongly."
     },
     "g12": {
-     "label": "12. By the time we arrived, the agent ___ (leave).",
-     "correct": "had left",
-     "why": "By the time shows the agent left first: past perfect."
+     "label": "12. At that moment she ___ the contract, so we waited outside.",
+     "correct": "was signing",
+     "why": "At that moment describes an action in progress: past continuous."
     }
    }
   }
@@ -23002,59 +23002,59 @@
   "exA": {
    "gaps": {
     "g1": {
-     "label": "1. Which app is ___ (good), Duolingo or Babbel?",
-     "correct": "better",
-     "why": "Two things compared: good → better."
+     "label": "1. Cycling at night is ___ more dangerous than cycling in the day.",
+     "correct": "far",
+     "why": "Far + comparative strengthens the difference: far more dangerous."
     },
     "g2": {
-     "label": "2. This jacket is ___ for a winter in Hamburg.",
-     "correct": "not warm enough",
-     "why": "Not + adjective + enough: not warm enough."
+     "label": "2. The exam was not nearly ___ hard as we feared.",
+     "correct": "as",
+     "why": "Not nearly as … as: the adjective keeps its basic form."
     },
     "g3": {
-     "label": "3. Cycling at night is ___ (dangerous) than cycling in the day.",
-     "correct": "more dangerous",
-     "why": "Long adjective + than: more dangerous."
+     "label": "3. This is the ___ expensive of the three phones.",
+     "correct": "least",
+     "why": "The least + adjective is the lowest of three."
     },
     "g4": {
-     "label": "4. Of all the cities I have visited, Lisbon is the ___ (beautiful).",
-     "correct": "most beautiful",
-     "why": "Superlative of a long adjective: the most beautiful."
+     "label": "4. The city is ___ big to explore in a single weekend.",
+     "correct": "too",
+     "why": "Too + adjective + to-infinitive: too big to explore."
     },
     "g5": {
-     "label": "5. The seminar room was ___ crowded for everyone to hear the speaker.",
-     "correct": "too",
-     "why": "Too goes before an adjective: too crowded."
+     "label": "5. Is the flat quiet ___ to study in?",
+     "correct": "enough",
+     "why": "Enough follows the adjective: quiet enough."
     },
     "g6": {
-     "label": "6. I have ___ books on my desk, so I can’t find my laptop.",
-     "correct": "too many",
-     "why": "Books are countable, so use too many."
+     "label": "6. The more you practise, ___ you will become.",
+     "correct": "the more fluent",
+     "why": "The more …, the more + adjective: the more fluent."
     },
     "g7": {
-     "label": "7. The exam was not as ___ (hard) as I feared.",
-     "correct": "hard",
-     "why": "In not as … as the adjective keeps its basic form."
+     "label": "7. It was ___ a good offer that we accepted immediately.",
+     "correct": "such",
+     "why": "Such + a + adjective + noun: such a good offer."
     },
     "g8": {
-     "label": "8. Studying at home is much ___ (cheap) than renting a study room.",
-     "correct": "cheaper",
-     "why": "Much + comparative: cheap → cheaper."
+     "label": "8. Rents have risen twice ___ fast as salaries.",
+     "correct": "as",
+     "why": "Twice as + adjective + as shows a multiple."
     },
     "g9": {
-     "label": "9. Is the café quiet ___ to work in?",
-     "correct": "enough",
-     "why": "Enough follows an adjective: quiet enough."
+     "label": "9. There was ___ little time to answer all the questions.",
+     "correct": "too",
+     "why": "Too little: too goes before little, an uncountable amount."
     },
     "g10": {
-     "label": "10. There isn’t ___ space in my room for a second desk.",
-     "correct": "enough",
-     "why": "Enough comes before a noun: enough space."
+     "label": "10. She is ___ the most experienced person in the team.",
+     "correct": "by far",
+     "why": "By far the + superlative: by far the most experienced."
     },
     "g11": {
-     "label": "11. At eight o’clock last night I ___ (cook) when my flatmate came home.",
+     "label": "11. At eight o’clock last night I ___ when my flatmate came home.",
      "correct": "was cooking",
-     "why": "The cooking was in progress when the flatmate arrived: past continuous."
+     "why": "The cooking was in progress when the flatmate came: past continuous."
     },
     "g12": {
      "label": "12. I would be grateful ___ you could confirm the date.",

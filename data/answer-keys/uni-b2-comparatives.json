@@ -6,99 +6,99 @@
    "multi": true,
    "gaps": {
     "g1": {
-     "correct": "cheaper",
+     "correct": "considerably",
      "accept": [
-      "cheaper"
+      "considerably"
      ],
-     "label": "1. The flat near the station is ___ (cheap) than the flat in the city centre.",
-     "why": "A short adjective adds -er before than: cheap → cheaper."
+     "label": "1. Rent in the centre is ___ higher than in the suburbs: almost €150 more a month.",
+     "why": "Considerably is a modifier before a comparative: considerably higher."
     },
     "g2": {
-     "correct": "more convenient",
+     "correct": "as",
      "accept": [
-      "more convenient"
+      "as"
      ],
-     "label": "2. Online lectures are ___ (convenient) than lectures on campus.",
-     "why": "Long adjectives take more + adjective before than."
+     "label": "2. The new flat is not nearly ___ noisy as the old one.",
+     "why": "Not nearly as … as means much less than; the adjective stays basic."
     },
     "g3": {
-     "correct": "best",
+     "correct": "the",
      "accept": [
-      "best"
+      "the"
      ],
-     "label": "3. Of all the vocabulary apps I have tried, this is the ___ (good).",
-     "why": "Superlative of good is irregular: good → better → best."
+     "label": "3. Of the three flats we saw, this is by far ___ best option for a group.",
+     "why": "By far goes with a superlative, which takes the: by far the best."
     },
     "g4": {
-     "correct": "quiet",
+     "correct": "longer",
      "accept": [
-      "quiet"
+      "longer"
      ],
-     "label": "4. Our new flat is not as ___ (quiet) as the old one.",
-     "why": "In “not as … as” the adjective stays in its basic form."
+     "label": "4. The ___ I think about it, the less convinced I am.",
+     "why": "The + comparative, then the + comparative: the longer I think, the less…"
     },
     "g5": {
-     "correct": "easier",
+     "correct": "as",
      "accept": [
-      "easier"
+      "as"
      ],
-     "label": "5. The more I practise, the ___ (easy) it gets.",
-     "why": "The comparative + the comparative: the more…, the easier."
+     "label": "5. Flat B costs twice ___ much as Flat A.",
+     "why": "Twice as … as shows a multiple: twice as much as."
     },
     "g6": {
-     "correct": "better",
+     "correct": "least",
      "accept": [
-      "better"
+      "least"
      ],
-     "label": "6. Her presentation was ___ (good) than mine, so her group won.",
-     "why": "Compare two things with the irregular comparative: good → better."
+     "label": "6. Of the three, Flat A is the ___ convenient for the university.",
+     "why": "Of three or more, the least + adjective is the lowest degree."
     },
     "g7": {
-     "correct": "most useful",
+     "correct": "less",
      "accept": [
-      "most useful"
+      "less"
      ],
-     "label": "7. Of the three modules this term, Business English is the ___ (useful).",
-     "why": "Among three or more, a long adjective takes the most."
+     "label": "7. Living with flatmates is ___ stressful than I had expected.",
+     "why": "Less + adjective than compares two things downward: less stressful than."
     },
     "g8": {
-     "correct": "higher",
+     "correct": "quietest",
      "accept": [
-      "higher"
+      "quietest"
      ],
-     "label": "8. Prices in Munich are a lot ___ (high) than in Leipzig.",
-     "why": "A lot + comparative: high → higher, followed by than."
+     "label": "8. Flat A is in one of the ___ parts of the city.",
+     "why": "One of the + superlative: one of the quietest parts."
     },
     "g9": {
-     "correct": "noisiest",
+     "correct": "more quickly",
      "accept": [
-      "noisiest"
+      "more quickly"
      ],
-     "label": "9. This café is the ___ (noisy) place on campus, so I never study there.",
-     "why": "Noisy ends in -y: change y to i and add -est."
+     "label": "9. Rents are rising ___ than wages, so students are struggling.",
+     "why": "Rising is a verb, so use the adverb comparative: more quickly."
     },
     "g10": {
-     "correct": "more and more expensive",
+     "correct": "the more",
      "accept": [
-      "more and more expensive"
+      "the more"
      ],
-     "label": "10. Student flats in this city are getting ___ (expensive) every year.",
-     "why": "More and more + adjective describes a change that keeps growing."
+     "label": "10. The more flats we saw, ___ we liked the first one.",
+     "why": "The more…, the more… links two changes that grow together."
     },
     "g11": {
-     "correct": "were looking",
+     "correct": "taken",
      "accept": [
-      "were looking"
+      "taken"
      ],
-     "label": "11. This time yesterday, we ___ (look) at flats in the city centre.",
-     "why": "This time yesterday describes an action in progress: past continuous."
+     "label": "11. By the time we reached the second flat, someone had already ___ it.",
+     "why": "Had already + past participle shows it was taken before we arrived."
     },
     "g12": {
      "correct": "to",
      "accept": [
       "to"
      ],
-     "label": "12. Would it be possible ___ move the viewing to Friday?",
+     "label": "12. Would it be possible ___ see Flat B once more before we decide?",
      "why": "Would it be possible + to-infinitive is a polite request."
     }
    }
