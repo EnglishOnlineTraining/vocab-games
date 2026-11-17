@@ -92,7 +92,7 @@ Pages that should not be indexed go in `data/noindex.json`; see
 | `node scripts/build.js` | runs the validators (including `test-sitemap-index.js`), then every generator in graph order |
 | `node scripts/build.js --check` | the same, then fails if any generated file differs from what is committed. CI runs this; run it before every push |
 | `node scripts/build.js --write-graph` | refreshes `docs/build-graph.mmd`; only after changing `scripts/pipeline.js` |
-| `npm test` | the full Playwright E2E suite (needs no running server; it starts its own) |
+| `npm test` | the full Playwright E2E suite (needs no running server; it starts its own on port 8791). Two sessions at once: `TEST_PORT=8792 npm test` |
 
 If `--check` fails, read the files it lists. If a rebuild changes them, commit
 the rebuild. If a second build still changes them, the generator is not
