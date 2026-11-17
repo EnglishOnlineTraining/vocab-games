@@ -20,7 +20,7 @@ text: `git show dda0f4a1:docs/engineering-backlog.md` and `…:docs/eol-backlog-
 | 14 | **GitHub Pages serves internal files** | `/CLAUDE.md`, `/docs/…`, `/fetch_gsc.py`, `/competitor-feature-ideas.md` return 200; three loose files are referenced nowhere | Leave (the repo is public) or move the three loose files under `docs/` | Shaun decides |
 | 15 | **No-JS banner says "the tasks stay empty"** | curl of `10c-canada-environment.html` returns the text, 24 selects and the buttons | Reword in `build-head.js`; template-wide, so after the activities template pause is decided (`seo-backlog.md` 19.1) | After 19.1 |
 | 16 | **Test the `fact-check-blogs` skill** | Written 2026-10-06, used on live work, never run through the skill-creator test loop | 2–3 test prompts, then description optimisation | CC |
-| 17 | **Duplicate "… 2.*" files from Documents sync** | 24 appeared in a worktree on 2026-10-16 (e.g. `scripts/build-head 2.js`); the build treated one as a page | Check the main clone for them; consider a build check that fails on `* 2.*` | CC |
+| 17 | **Duplicate "… 2.*" files from Documents sync** (done 2026-11-17, #399) | 24 appeared in a worktree on 2026-10-16 (e.g. `scripts/build-head 2.js`); the build treated one as a page. Nothing tracked on `origin/main` matches on 2026-11-17 | Done: `scripts/check-syntax.js` (run by `build.js --check`) fails on a tracked `name 2.ext` file; untracked copies are already ignored by `.gitignore` | — |
 | 18 | **Submit `sitemap-index.xml` in Search Console** | Six section sitemaps live since 2026-10-13 (#139) | Submit the index, then read indexing per section | Shaun |
 
 ## Decisions and constraints (don't re-propose)
