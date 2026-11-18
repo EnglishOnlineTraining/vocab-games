@@ -720,10 +720,14 @@ function slugWords(file) {
  */
 function siblingBlock(file, ex) {
   const mine = new Set(slugWords(file));
+  const n = exercises.length;
+  const self = exercises.indexOf(ex);
   const picks = exercises
     .filter((c) => c.file.toLowerCase() !== file.toLowerCase()
       && String(c.year) === String(ex.year) && c.schoolType === ex.schoolType)
-    .map((c, i) => ({ c, i, score: slugWords(c.file).filter((w) => mine.has(w)).length }))
+    // Ties rotate from this page's own position, so every page in a course
+    // collects links; with plain list order the first four files got them all.
+    .map((c) => ({ c, i: (exercises.indexOf(c) - self + n) % n, score: slugWords(c.file).filter((w) => mine.has(w)).length }))
     .sort((a, b) => b.score - a.score || a.i - b.i)
     .slice(0, 4)
     .map((x) => x.c);
