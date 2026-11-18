@@ -14,10 +14,10 @@ const SHEETS = ['hook.eu1.make.com', 'script.google.com'];   // where the tests 
 const ESSAY = ('I count on my friends and we meet up after work. Although it rained, we did not sever ties; '
   + 'we tried to strengthen and restore the team. ').repeat(10).trim();
 
-// The report page checks the headings, a SMART goal label and its language banks, padded to 272 words.
+// The report page checks the headings, a SMART goal label and its language banks, padded to about 300 words.
 const REPORT = ('Problem\nAnna and Kenji did not understand each other.\nAnalysis\nKenji is indirect and works in a high context style; '
   + 'silence and interrupt habits made it worse.\nRecommendations\nI would suggest a weekly check. Perhaps we could ask: would it be possible to finish by Friday? '
-  + 'I\'m not sure we can wait. SMART goal: owner Anna, deadline 1 March. We have agreed on the owner and the deadline.\n').repeat(4).trim();
+  + 'I\'m not sure we can wait. SMART goal: owner Anna, deadline 1 March. We have agreed on the owner and the deadline.\n').repeat(4).trim() + '\nThis plan is clear, fair and realistic for every person on the team, and it can start next week without any extra cost or help from outside.';
 
 const PAGES = [
   { file: '9g-class-test-9ab', cls: '#inp-class', steps: ['goRules()', 'startExam()'], end: ['goReview()', 'doSubmit()'] },

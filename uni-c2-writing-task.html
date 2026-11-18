@@ -148,7 +148,7 @@ body.exam-mode textarea{-webkit-user-select:text;user-select:text}
         <li class="red">🚫 <strong>Copy and paste is disabled.</strong> All text must be typed by hand.</li>
         <li class="red">🚫 <strong>Do not switch tabs, open other windows, or use other applications.</strong> Every tab switch is logged and sent to your teacher.</li>
         <li class="red">🚫 <strong>Do not use AI tools</strong> (ChatGPT, translation engines, grammar checkers, etc.) during the assessment.</li>
-        <li>📝 Write a report of <strong>250–320 words</strong> about your assigned case. Use the headings <strong>Problem</strong>, <strong>Analysis</strong> and <strong>Recommendations</strong>.</li>
+        <li>📝 Write a report of <strong>about 300 words (270–330)</strong> about your assigned case. Use the headings <strong>Problem</strong>, <strong>Analysis</strong> and <strong>Recommendations</strong>.</li>
         <li>✅ Give <strong>3 recommendations</strong>. Each has an owner and a deadline. Write one as a <strong>SMART goal</strong>. Use the language banks shown on screen.</li>
         <li>⏳ The Submit button unlocks after <strong>15 minutes</strong> of writing time.</li>
         <li>🔒 Your session is monitored. Integrity data (tab switches, paste attempts, typing patterns) is submitted alongside your writing.</li>
@@ -205,7 +205,7 @@ body.exam-mode textarea{-webkit-user-select:text;user-select:text}
       <div class="wc-row">
         <span id="wc-num">0 words</span>
         <div class="wc-bar-outer"><div class="wc-bar-inner" id="wc-bar" style="width:0%"></div></div>
-        <span class="wc-hint">Target: 250–320 words</span>
+        <span class="wc-hint">Target: about 300 words (270–330)</span>
       </div>
 
       <div class="integrity-strip">
@@ -262,8 +262,8 @@ const SHEET_URL   = 'https://script.google.com/macros/s/AKfycbwwbV6ufw7QX8meNGyO
 const EMAIL       = 'learn@englishonline.training';
 const BASE_EXAM_MINS = 60;
 const GATE_MINS   = 15;
-const MIN_W       = 250;
-const MAX_W       = 320;
+const MIN_W       = 270;
+const MAX_W       = 330;
 
 /* ================================================================
    VOCABULARY
@@ -327,7 +327,7 @@ function startExam(){
 
   // Render
   const sb=document.getElementById('scenario-box');
-  sb.innerHTML=`<div class="scenario-label">📄 ${scenario.title}</div>${scenario.html}<p><strong>Your task:</strong> You advise the team. Write a report of <strong>250–320 words</strong> for the project sponsor. Use three headings: <strong>Problem</strong>, <strong>Analysis</strong> and <strong>Recommendations</strong>. In <em>Analysis</em>, explain what each person said, what the others heard, and why. In <em>Recommendations</em>, give three steps. Each step needs an owner and a deadline. Label one of them <strong>SMART goal</strong>.</p>`;
+  sb.innerHTML=`<div class="scenario-label">📄 ${scenario.title}</div>${scenario.html}<p><strong>Your task:</strong> You advise the team. Write a report of <strong>about 300 words (270–330)</strong> for the project sponsor. Use three headings: <strong>Problem</strong>, <strong>Analysis</strong> and <strong>Recommendations</strong>. In <em>Analysis</em>, explain what each person said, what the others heard, and why. In <em>Recommendations</em>, give three steps. Each step needs an owner and a deadline. Label one of them <strong>SMART goal</strong>.</p>`;
   buildChips('chips-cn',CN);
   buildChips('chips-sf',SF);
   buildChips('chips-dc',DC);
