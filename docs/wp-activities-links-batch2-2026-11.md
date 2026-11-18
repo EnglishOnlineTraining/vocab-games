@@ -1,6 +1,6 @@
 # WordPress → activities links, batch 2 (Tier 19.2, P1 #1)
 
-_Drafted 2026-11-18 by CC, read-only. Source: live public HTML of the 45 published posts and four
+_Drafted 2026-11-18 by CC, read-only. Source: live public HTML of 45 of the 56 published posts and four
 main-site pages, links to `activities.englishonline.training` counted in the page. **Nothing is
 written to WordPress.** Each row needs Shaun's OK (rule 7), then goes in as one new closing paragraph
 block (`post-sections.insert`, additive only), re-read after the write. Each row loses nothing: no
@@ -18,7 +18,7 @@ Batch 1 (2032, 2038, 2039, 965) is done: `docs/wp-activities-links-draft.md`.
 - **Frozen until 2026-12-05, so not touched:** 1061, 1167, 2032, 2038, 2039, 2066, 965.
 - **Already well linked, no action:** 32, 807, 1097, 1323, 1342, 1506, 1599, 1631, 2207, 2368, 2379,
   2489, 2536, 2538, 2562, 2520 (links the pack variants on purpose; they are noindexed, the parents
-  are not: optional, add the four indexed parents), 2050.
+  are not: optional, add the four indexed parents).
 - **No fitting page, skipped:** 1715 (no IFRS or finance exercise exists), 601, 574, 1214
   (generic posts; a link would be forced).
 
