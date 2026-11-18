@@ -399,6 +399,7 @@ indexed. No technical fault; Google pruned pages that earned nothing. No traffic
 1. **Pause site-wide template changes on activities · Shaun decides (P1 #3).** Batch the ones that must happen.
 2. **~20 target pages linked from ranking WordPress posts · CC drafts (P1 #1).** E.g.
    `/using-past-progressive/` → `themen/past-progressive.html` and `gr-past-progressive.html`.
+   Batch 2 drafted 2026-11-18 (10 posts, 28 links): `docs/wp-activities-links-batch2-2026-11.md`. Shaun OKs per row.
 3. **More links from other sites · Shaun (P1 #2).** 4teachers, LinkedIn and Bildungsserver links
    exist (Shaun, 11-12); which pages they point to is unchecked. Candidates, each to check first:
    Berlin-Brandenburg Bildungsserver English link collections, Deutscher Bildungsserver (resource
