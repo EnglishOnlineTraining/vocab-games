@@ -14,6 +14,11 @@ const SHEETS = ['hook.eu1.make.com', 'script.google.com'];   // where the tests 
 const ESSAY = ('I count on my friends and we meet up after work. Although it rained, we did not sever ties; '
   + 'we tried to strengthen and restore the team. ').repeat(10).trim();
 
+// The report page checks the headings, a SMART goal label and its language banks, padded to 272 words.
+const REPORT = ('Problem\nAnna and Kenji did not understand each other.\nAnalysis\nKenji is indirect and works in a high context style; '
+  + 'silence and interrupt habits made it worse.\nRecommendations\nI would suggest a weekly check. Perhaps we could ask: would it be possible to finish by Friday? '
+  + 'I\'m not sure we can wait. SMART goal: owner Anna, deadline 1 March. We have agreed on the owner and the deadline.\n').repeat(4).trim();
+
 const PAGES = [
   { file: '9g-class-test-9ab', cls: '#inp-class', steps: ['goRules()', 'startExam()'], end: ['goReview()', 'doSubmit()'] },
   { file: '9ab-grammar-literary-review-test', cls: '#inp-class', steps: ['goLock()', 'checkCode()', 'startExam()'], end: ['goReview()', 'doSubmit()'] },
@@ -22,6 +27,7 @@ const PAGES = [
   { file: '9g-australia-vocab-test', cls: '#inp-group', steps: ['goRules()', 'checkCode()', 'startExam()'], panes: true, gate: 2 },
   { file: 'uni-pm-vocabulary', cls: '#inp-group', steps: ['goRules()', 'startExam()'], gate: 2 },
   { file: 'uni-writing-task', cls: '#inp-group', steps: ['goRules()', 'startExam()'], gate: 10, essay: true },
+  { file: 'uni-c2-writing-task', cls: '#inp-group', steps: ['goRules()', 'startExam()'], gate: 15, essay: REPORT },
 ];
 
 function parseBody(body) {
@@ -66,7 +72,7 @@ async function sit(page, p, { dyslexia = false, answer = '', timeUp = false } = 
     document.querySelectorAll('#s-exam input[type="radio"]').forEach((r) => { if (!done.has(r.name)) { done.add(r.name); r.checked = true; fire(r); } });
     document.querySelectorAll('#s-exam input[type="text"]').forEach((t, i) => { t.value = i % 3 ? 'drought' : 'will be living'; fire(t); });
     document.querySelectorAll('#s-exam textarea').forEach((t) => { t.value = essay || 'People in Australia like the outback and the beach a lot.'; fire(t); });
-  }, { essay: p.essay ? ESSAY : '' });
+  }, { essay: p.essay === true ? ESSAY : p.essay || '' });
   if (answer) await page.evaluate(answer);
 
   if (p.panes) for (const pane of ['a', 'b']) { await page.evaluate(`nextPane('${pane}')`); await page.evaluate(`nextPane('${pane}')`); }

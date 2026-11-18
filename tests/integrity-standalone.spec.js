@@ -13,6 +13,8 @@ const PAGES = [
   { file: '9g-australia-vocab-test', level: 'strict', setup: "sName = 'Test Student'; sGroup = '9g';" },
   { file: 'uni-writing-task', level: 'standard',
     setup: "sName = 'Test Student'; sGroup = 'Test'; vocabCheck = () => ({ ok: true, mvF: [], rvF: [], lkF: [] });" },
+  { file: 'uni-c2-writing-task', level: 'standard',
+    setup: "sName = 'Test Student'; sGroup = 'Test'; vocabCheck = () => ({ ok: true, cnF: [], sfF: [], dcF: [] });" },
 ];
 
 function parseBody(body) {
