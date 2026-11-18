@@ -27,7 +27,7 @@ const PAGES = [
   { file: '9g-australia-vocab-test', cls: '#inp-group', steps: ['goRules()', 'checkCode()', 'startExam()'], panes: true, gate: 2 },
   { file: 'uni-pm-vocabulary', cls: '#inp-group', steps: ['goRules()', 'startExam()'], gate: 2 },
   { file: 'uni-writing-task', cls: '#inp-group', steps: ['goRules()', 'startExam()'], gate: 10, essay: true },
-  { file: 'uni-c2-writing-task', cls: '#inp-group', steps: ['goRules()', 'startExam()'], gate: 15, essay: REPORT },
+  { file: 'uni-c2-writing-task', cls: '#inp-group', steps: ['goRules()', 'checkCode()', 'startExam()'], gate: 15, essay: REPORT },
 ];
 
 function parseBody(body) {
@@ -59,7 +59,11 @@ async function sit(page, p, { dyslexia = false, answer = '', timeUp = false } = 
   await page.fill(p.cls, 'T1');
   if (dyslexia) await page.check('#inp-dyslexia');
   for (const step of p.steps) {
-    if (step === 'checkCode()') await page.fill('#inp-code', await page.evaluate(() => RELEASE_CODE));
+    if (step === 'checkCode()') {
+      // generated tests hold a hash, not the code: give them one of ours
+      if (await page.evaluate(() => typeof codeHash === 'function')) await require('./helpers/vocab-code').unlock(page);
+      else await page.fill('#inp-code', await page.evaluate(() => RELEASE_CODE));
+    }
     await page.evaluate(step);
   }
 
@@ -207,4 +211,16 @@ test('exam.js: a handed-in test stays handed in, and the test rules end with it'
   await page.reload();
   await expect(page.locator('#s-register')).toHaveClass(/active/);
   await expect(page.locator('#resume-card')).toHaveCount(0);
+});
+
+test('uni-c2-writing-task: a wrong release code keeps the assessment locked', async ({ page }) => {
+  await page.goto('/uni-c2-writing-task.html');
+  await page.fill('#inp-name', 'Test Student');
+  await page.fill('#inp-group', 'T1');
+  await page.evaluate('goRules()');
+  await page.fill('#inp-code', 'WRONG');
+  await page.evaluate('checkCode()');
+  await expect(page.locator('#lock-err')).toHaveClass(/show/);
+  await expect(page.locator('#s-lock')).toHaveClass(/active/);
+  await expect(page.locator('#s-rules')).not.toHaveClass(/active/);
 });

@@ -136,6 +136,24 @@ body.exam-mode textarea{-webkit-user-select:text;user-select:text}
   </div>
 </div>
 
+<!-- SCREEN 1b: RELEASE-CODE LOCK -->
+<div id="s-lock" class="screen">
+  <div class="container">
+    <div class="card">
+      <div style="font-size:2.6rem;text-align:center;margin-bottom:.4rem">🔒</div>
+      <h2 style="text-align:center">This assessment is locked</h2>
+      <p style="text-align:center;color:#4a5568">Your teacher will give you a code in class when it is time to start. Enter it below to continue.</p>
+      <div class="form-group" style="margin-top:18px">
+        <label for="inp-code">Release code</label>
+        <input type="text" id="inp-code" placeholder="Enter the code your teacher gave you" autocomplete="off" spellcheck="false">
+      </div>
+      <div id="lock-err" class="alert alert-danger">That code is not correct. Ask your teacher for today's code.</div>
+      <button class="btn btn-primary" onclick="checkCode()">Unlock →</button>
+      <button class="btn btn-outline" onclick="show('s-register')" style="margin-left:10px">← Back</button>
+    </div>
+  </div>
+</div>
+
 <!-- ══════════════════════════════════════ SCREEN 2: RULES -->
 <div id="s-rules" class="screen">
   <div class="container">
@@ -311,9 +329,31 @@ function goRules(){
   if(!sName||!sGroup){document.getElementById('reg-err').classList.add('show');return}
   document.getElementById('reg-err').classList.remove('show');
   examSetup();
-  show('s-rules');
+  show('s-lock');
 }
 document.getElementById('inp-group').addEventListener('keydown',e=>{if(e.key==='Enter')goRules()});
+
+/* Release code: stops a group starting before the teacher says so. The page holds only a slow
+   hash of the code (PBKDF2, salted with the unit); the code is told in class and typed in.
+   ponytail: a short or word-like code can be guessed offline against the hash, so use a random
+   8+ character code per sitting. Full fix: check the code on a server. */
+let CODE_HASH = 'c3e3e38457a043d863744a37059859c141f61ebd871a3365e63faf30085def3f';
+const codeNorm=c=>String(c).replace(/\s+/g,'').toUpperCase();
+async function codeHash(code){
+  const k=await crypto.subtle.importKey('raw',new TextEncoder().encode(codeNorm(code)),'PBKDF2',false,['deriveBits']);
+  const b=await crypto.subtle.deriveBits({name:'PBKDF2',hash:'SHA-256',salt:new TextEncoder().encode(UNIT),iterations:100000},k,256);
+  return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('');
+}
+async function checkCode(){
+  const code=codeNorm(document.getElementById('inp-code').value);
+  const err=document.getElementById('lock-err');
+  let ok=false;
+  try{ok=!!code&&await codeHash(code)===CODE_HASH}catch(e){}
+  if(!ok){err.classList.add('show');return}
+  err.classList.remove('show');
+  show('s-rules');
+}
+document.getElementById('inp-code').addEventListener('keydown',e=>{if(e.key==='Enter')checkCode()});
 
 /* ================================================================
    START EXAM
