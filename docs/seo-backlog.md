@@ -67,6 +67,7 @@ disagree, the tier wins. Every live WordPress edit needs Shaun's OK (rule 7).
 | 18 | `9g-australia-vocab-practice` description names the textbook (rule 4); it also ranks for the unit's searches. Ask before changing | Shaun | 8 |
 | 19 | Image attachments hold four posts' bare slugs, so clicks land on a PNG (mediation post: 2 clicks): rename the attachment slugs | Shaun OK, CC | 24.1 |
 | 20 | `/wilkommen/vor-und-nachteile-…-unterricht/` 404s (15 impr); the live `/willkommen/` page needs the redirect, or accept | Shaun | 24.2 |
+| 21 | Ideas from an outside SEO plan (2026-11-18): read the 9.9 preview test at 8–12 weeks, audit how the 155 discovered pages are linked, add OER directories and the repo link to the outside-link work | Shaun, CC | 25 |
 
 ### P3 — parked (low value now, or blocked)
 
@@ -593,3 +594,20 @@ From Shaun's two exports of 2026-11-16 (Performance, last 28 days; Generative AI
    Not acted on: five single-impression 404s with garbled slugs (`…schritt-fur-fur…`, `…in-la-schule…`,
    `wie-schreibst-man…`, `kreatives-schreiben-englisch-abitur-tipps-techniken…`,
    `alle-kostenlosen-…-2`) appear only in the AI-features export.
+
+### Tier 25 — Ideas from an outside SEO plan (2026-11-18) · Shaun + CC
+Compared "SEO Improvement Plan v2" with this file. Most of it repeats done work (two-problem split,
+noindexed surface, `lastmod` from a body hash, section sitemaps, hub rewrites, control pilot). Not
+adopted: Tier B merges (rule 9; GitHub Pages has no 301s) and site-wide template work (Tier 19.1 pause).
+1. **Read the 9.9 preview test later.** 0 of 5 test and 0 of 5 control pages indexed, each crawled once.
+   Recrawl on a site with low crawl demand takes weeks to months, so treat 11-24 as an early read and
+   decide at 8–12 weeks from 10-12 (about 2026-12-07 to 2027-01-04). Shaun decides when to remove the
+   `PREVIEW` blocks. Don't judge the test sooner.
+2. **Audit discovery of the 155 discovered-not-indexed pages · CC.** For each, list the pages that link
+   to it in the raw HTML (not after JavaScript). Flag any reached only through JavaScript-built card
+   lists. Raw HTML links fix a discovery gap; if all have raw links, drop this item.
+3. **Add OER and ESL directories to the outside-link list (19.3) · Shaun.** The content is CC BY 4.0, so
+   OER directories, ESL teacher resource lists and German school link collections are a real fit. Only
+   genuine editorial listings; no mass submissions or link swaps (Not adopted).
+4. **Link the public repository from `/about/` (2224) · Shaun OKs, CC drafts.** It shows a maintained
+   educational project. Rule 8 list first; use `context: "edit"`.
