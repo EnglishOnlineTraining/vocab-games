@@ -58,11 +58,10 @@ disagree, the tier wins. Every live WordPress edit needs Shaun's OK (rule 7).
 | 8 | 301 the `/welcome/` copy of the Business English Skills article (1019) and trim the duplicate paragraph | Shaun OK, CC | 17.1 |
 | 9 | `/writing-emails-in-english/` (1061): 419–575 impr at pos ~22, falling. Tier 21 per-page analysis after 12-05 | CC, after freeze | 19, 21 |
 | 10 | Business-email pairs beyond 1167: follow-up pair built as WP draft 2934 | Shaun picks | 17.2 |
-| 11 | Landing page for `useful-phrases-for-business-emails.pdf` (ranks on its own), same build as the vocabulary pages | Shaun OK, CC | 9.4, 21 |
 | 12 | Fix the property-management PDF: five wrong definitions and an old address (keep filename and URL) | Shaun | 9.4 |
 | 13 | Tutoring-search impressions on `/welcome/about-me/wilkommen/`: point at an adult-learner page or `/business-english/` (they're welcome: don't shed them) | Shaun | 9.3 |
 | 14 | WordPress title suffix pattern (B10); exercise titles are done (#132) | Shaun | 8 B10 |
-| 15 | Main-site page fixes: homepage title says "Teams", H1 doesn't; `/english-for-students/` and `/fuer-eltern/` opener + FAQ (rule 8 list first); empty `alt` on `/common-questions-about-learning-english/` | Shaun | 19b.3, 19b.5, 19b.7 |
+| 15 | Main-site page fixes: homepage title says "Teams", H1 doesn't; `/fuer-eltern/` degree mismatch (fix 3 in `docs/fuer-eltern-faq-proposal.md`); empty `alt` on `/common-questions-about-learning-english/`. Both FAQs are live (checked 11-19) | Shaun | 19b.3, 19b.5, 19b.7 |
 | 16 | LinkedIn article "what to check before booking" (drafted in `docs/linkedin/`): Shaun posts; re-run the item-1 questions 8 weeks later | Shaun | 16 |
 | 18 | `9g-australia-vocab-practice` description names the textbook (rule 4); it also ranks for the unit's searches. Ask before changing | Shaun | 8 |
 | 19 | Image attachments hold four posts' bare slugs, so clicks land on a PNG (mediation post: 2 clicks): rename the attachment slugs | Shaun OK, CC | 24.1 |
@@ -425,7 +424,7 @@ indexed. No technical fault; Google pruned pages that earned nothing. No traffic
 - **Triage 11-16:** the audit's eight gaps are exactly 19b.1–8 (same numbers); none is new. Live
   check: 1, 2, 6 done; 8 closed; 3 and 4 still open (title still says "Schools, plus Business
   English", `isSelfProfile=true` still in the homepage markup); 5 half live (`/english-for-students/`
-  has `FAQPage`, no star; `/fuer-eltern/` has none yet); 7 not re-checked (`<img alt="">` is lightbox
+  has `FAQPage`, no star; `/fuer-eltern/` has none yet — **live since 11-16, checked 11-19**; fix 3, the degree wording, still open); 7 not re-checked (`<img alt="">` is lightbox
   markup, not the content image).
 
 ### Tier 20 — Monthly internal-link pass on the main site (2026-11-06)
