@@ -41,6 +41,8 @@ disagree, the tier wins. Every live WordPress edit needs Shaun's OK (rule 7).
 
 ### P1 — highest value, do next
 
+_2026-11-19 drafts (read-only, nothing applied): #1 → `docs/wp-activities-links-run2.md` (23 rows); #2 → `docs/backlink-candidates-2026-11.md`; #4, P2 #15 title/H1 and P2 #19 → `docs/wp-fixes-2026-11-19.md` (the Organization node is hard-coded in the EOT Modern theme, so it needs a theme edit); #6 → `docs/snippet-drafts-2026-11.md` (2520 and 1659). Ahrefs GSC is "Insufficient plan", so the positions come from older exports._
+
 | # | Item | Waits on | Tier |
 |---|---|---|---|
 | 1 | **Links into the activities site from WordPress posts that already rank** (~20 targets: `themen/`, ESL, IELTS, business). The main domain holds the authority; this is the lever CC can draft | CC drafts, Shaun OKs per row | 19.2, 20 |
