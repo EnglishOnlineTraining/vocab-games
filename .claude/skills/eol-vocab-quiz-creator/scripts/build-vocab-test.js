@@ -93,6 +93,7 @@ const rep = {
   LEVEL: c.level, UNIT: c.unit, CODE_HASH: c.codeHash, TOPIC: c.topic, PRACTICE: [].concat(c.practice || 'the list on this page').join(' + '),
   N: bank.length, PAPER: paper, MINS: c.minutes, A: a, B: b, C: u,
   A_WORD: NUM[a] || a, B_WORD: NUM[b] || b,
+  AB_PTS: a + b, C_PTS: 2 * u, TOTAL_PTS: a + b + 2 * u, // ponytail: points are fixed (1/1/2); config if a test ever needs others
   A_RANGE: '1–' + a, B_RANGE: (a + 1) + '–' + (a + b), C_RANGE: (a + b + 1) + '–' + (a + b + u),
   BANK: JSON.stringify(bank), ALSO: JSON.stringify(also), UI_WORDS: JSON.stringify(ui),
 };
