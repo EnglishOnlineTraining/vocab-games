@@ -408,6 +408,14 @@ Section B lists that paper's ten answer words, alphabetically, each used once.
 **Settled defaults (Shaun, 2026-11-13).** 30 minutes, release code on, 15 + 10 + 5, Section C
 without meanings. Ask only about what the request leaves open: which list, and the code.
 
+**Open questions are worth 2 points each (Shaun, 2026-11-19).** Each Section C sentence, and any
+other free-writing item, scores 0–2: **2** = the word is used in a real context, with the right
+meaning and no errors; **1** = right meaning, but a grammar, spelling or punctuation error, or the
+answer only defines the word; **0** = wrong meaning, too vague, a definition copied from the test,
+or blank. So 15 + 10 + 5 is 25 auto points + 10 teacher points = 35. Mark strictly for university
+groups. The page does not yet print points per section; state them in the test's instructions
+when the template is next changed.
+
 **Marking rules the template already handles** — know them so a config can lean on them:
 - Section B accepts either side of `A / B` (`On the Beach / On the Bench`); for
   `Full Name (ABBR)` (capital abbreviation) the name, the abbreviation or both; for
