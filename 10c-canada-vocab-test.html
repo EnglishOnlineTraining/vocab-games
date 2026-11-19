@@ -171,9 +171,9 @@ body.exam-mode input[type=text],body.exam-mode textarea{-webkit-user-select:text
         <li class="red">🚫 <strong>Copy and paste is disabled.</strong> All answers must be typed or selected by hand.</li>
         <li class="red">🚫 <strong>Do not switch tabs, open other windows, or use other applications.</strong> Every tab switch is logged and sent to your teacher.</li>
         <li class="red">🚫 <strong>Do not use AI, dictionaries, or translation engines</strong> during the test.</li>
-        <li>📝 The test has <strong>three sections</strong>, shown one at a time: <strong>A</strong> — choose the word for each meaning from a list (15); <strong>B</strong> — type the word for each meaning (10); <strong>C</strong> — write your own sentence for 5 more words.</li>
+        <li>📝 The test has <strong>three sections</strong>, shown one at a time: <strong>A</strong> — choose the word for each meaning from a list (15 questions, 1 point each); <strong>B</strong> — type the word for each meaning (10 questions, 1 point each); <strong>C</strong> — write your own sentence for 5 more words (2 points each). <strong>Total: 35 points.</strong></li>
         <li class="red">➡️ <strong>Next is one-way.</strong> When you leave a section you cannot go back to it, so check your answers before you continue.</li>
-        <li>✍️ <strong>Sections A and B are marked automatically</strong> and give you your score. <strong>Section C is marked by your teacher</strong> — the page only checks that your sentence really uses the word and is a full sentence.</li>
+        <li>✍️ <strong>Sections A and B (25 points) are marked automatically</strong> and give you your score at the end. <strong>Section C (10 points) is marked by your teacher</strong> — the page only checks that your sentence really uses the word and is a full sentence.</li>
         <li>⏳ The Submit button unlocks after <strong>2 minutes</strong>.</li>
         <li>🔒 Your session is monitored. Tab switches, paste attempts and typing patterns are sent with your answers.</li>
         <li>🖥 Entering <strong>full screen</strong> is strongly recommended.</li>
@@ -199,7 +199,7 @@ body.exam-mode input[type=text],body.exam-mode textarea{-webkit-user-select:text
     <div class="pane-steps" id="pane-steps"></div>
 
     <div class="card exam-pane" id="pane-a">
-      <div class="section-label">Section A — Matching (1–15)</div>
+      <div class="section-label">Section A — Matching (1–15) · 1 point each</div>
       <p>Select the word for each meaning.</p>
       <div id="match-list"></div>
       <div class="pane-nav">
@@ -210,7 +210,7 @@ body.exam-mode input[type=text],body.exam-mode textarea{-webkit-user-select:text
     </div>
 
     <div class="card exam-pane" id="pane-b" hidden>
-      <div class="section-label">Section B — Type the Word (16–25)</div>
+      <div class="section-label">Section B — Type the Word (16–25) · 1 point each</div>
       <p id="b-intro">Type the word for each meaning.</p>
       <div class="word-box" id="b-wordbox" hidden></div>
       <div id="fill-list"></div>
@@ -222,9 +222,9 @@ body.exam-mode input[type=text],body.exam-mode textarea{-webkit-user-select:text
     </div>
 
     <div class="card exam-pane" id="pane-c" hidden>
-      <div class="section-label">Section C — Use the word (26–30)</div>
+      <div class="section-label">Section C — Use the word (26–30) · 2 points each</div>
       <p>Write <strong>one sentence of your own</strong> for each word, showing you know what it means. Do not just write a definition — use the word in a real situation.</p>
-      <p><strong>All 5 sentences are part of the test.</strong> Your teacher marks this section — the page only checks that your sentence really uses the word and is a full sentence.</p>
+      <p><strong>All 5 sentences are part of the test.</strong> Each sentence scores 2 points if it uses the word with the right meaning and has no mistakes, 1 point if the meaning is right but there are mistakes or it only explains the word, and 0 points if the meaning is wrong. Your teacher marks this section — the page only checks that your sentence really uses the word and is a full sentence.</p>
       <div id="use-list"></div>
     </div>
 
