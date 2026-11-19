@@ -66,7 +66,7 @@ _2026-11-19 drafts (read-only, nothing applied): #1 → `docs/wp-activities-link
 | 15 | Main-site page fixes: homepage title says "Teams", H1 doesn't; `/fuer-eltern/` degree mismatch (fix 3 in `docs/fuer-eltern-faq-proposal.md`); empty `alt` on `/common-questions-about-learning-english/`. Both FAQs are live (checked 11-19) | Shaun | 19b.3, 19b.5, 19b.7 |
 | 16 | LinkedIn article "what to check before booking" (drafted in `docs/linkedin/`): Shaun posts; re-run the item-1 questions 8 weeks later | Shaun | 16 |
 | 18 | `9g-australia-vocab-practice` description names the textbook (rule 4); it also ranks for the unit's searches. Ask before changing | Shaun | 8 |
-| 19 | Image attachments hold four posts' bare slugs, so clicks land on a PNG (mediation post: 2 clicks): rename the attachment slugs | Shaun OK, CC | 24.1 |
+| 19 | Image-slug clashes: **fixed in the theme 11-19** (redirect prefers a same-slug post). Left: one Redirection rule for `/interactive-exercises-in-class-screens/`; check `/ielts-vocabulary/` after post 2565 publishes 11-20 | Shaun | 24.1 |
 | 20 | `/wilkommen/vor-und-nachteile-…-unterricht/` 404s (15 impr); the live `/willkommen/` page needs the redirect, or accept | Shaun | 24.2 |
 
 ### P3 — parked (low value now, or blocked)
