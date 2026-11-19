@@ -413,8 +413,8 @@ other free-writing item, scores 0–2: **2** = the word is used in a real contex
 meaning and no errors; **1** = right meaning, but a grammar, spelling or punctuation error, or the
 answer only defines the word; **0** = wrong meaning, too vague, a definition copied from the test,
 or blank. So 15 + 10 + 5 is 25 auto points + 10 teacher points = 35. Mark strictly for university
-groups. The page does not yet print points per section; state them in the test's instructions
-when the template is next changed.
+groups. The template prints these points in the rules, on each section label and in Section C
+(`AB_PTS`, `C_PTS`, `TOTAL_PTS` in `build-vocab-test.js`).
 
 **Marking rules the template already handles** — know them so a config can lean on them:
 - Section B accepts either side of `A / B` (`On the Beach / On the Bench`); for
