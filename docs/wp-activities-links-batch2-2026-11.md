@@ -8,6 +8,18 @@ existing text or link is removed._
 
 Batch 1 (2032, 2038, 2039, 965) is done: `docs/wp-activities-links-draft.md`.
 
+## Status
+
+| Row | Post | Result |
+|---|---|---|
+| 1 | 2042 | **Live 2026-11-18.** Paragraph before "Weitere Artikel", 4 links. Revision before: modified 2026-11-16T19:29:03. Checked live: 3 Payhip links and 8 headings unchanged. |
+| 2 | 2035 | **Live 2026-11-19.** Paragraph before "Weitere Artikel", 3 links. Revision before: modified 2026-10-17T10:30:30. Checked live: 4 Payhip links and 7 headings unchanged. |
+| 3 | 523 | **Skipped.** The post is a stub ("This content has moved") that points at the main guide. Linking from a stub does nothing. Rows 3 and 4 still stand for `useful-phrases-for-business-emails` via 1238. |
+
+Both written posts are classic-editor posts, so section tools can't edit them. They were saved with
+`posts-update` and the full raw content from `context: "edit"`. Both pages carry paid Payhip pack
+CTAs; the free-exercise paragraph sits after them. Rows 4–10 not started.
+
 ## Findings
 
 - **Four posts have no link to the activities site:** 2042 (Abitur guide), 2035 (Übungspakete),
