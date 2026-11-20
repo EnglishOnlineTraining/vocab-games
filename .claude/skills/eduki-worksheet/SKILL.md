@@ -58,7 +58,7 @@ Year 10 picture-description pack for the oral exam, `worksheet-10c-msa-describin
 
 Photos in a paid pack: use CC0 or Public Domain Mark images only (search Openverse with `license=cc0,pdm`), embed
 them in the HTML, and list each one in Quellenangaben (title, creator, source site, licence) **without a URL**, because
-eduki rejects links. Keep the URLs in a `credits.md` next to the build files. Check the licence on each source page, and
+eduki rejects links. Keep the URLs in a credits file next to the build files in CLAUDE OUTPUTS. Check the licence on each source page, and
 avoid photos where children or other private people are the main subject when a scene without them works.
 
 ## Material register (read before choosing, update after building)
