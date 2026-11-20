@@ -93,7 +93,7 @@ retired (2026-11-20). **eduki and 4teachers must never carry the same material.*
   universal in the German school system.
 - **No student names or identifying detail**, in the worksheet, sample answers, listing or this skill. Invent names for
   examples. The Name/Klasse/Datum row stays blank.
-- **Price:** see "Free worksheet or paid pack" below. Never invent a price: Shaun sets it.
+- **Price:** see "Free worksheet or paid pack" above. Never invent a price: Shaun sets it.
 - **Language:** exercise instructions and task content are in English, with no German glosses. Defining an English word in
   simpler English follows the site's language rule (Gymnasium: never German; Oberschule: German only if Shaun asks).
   Apparatus is German: `Name / Klasse / Datum`, `Lösungen`, `Punkte`, `Quellenangaben`, and the listing.
@@ -164,6 +164,8 @@ Copy `assets/worksheet-template.html`, fill every `{{...}}`, and keep the struct
    automatischer Auswertung verfügbar – kostenlos und ohne Anmeldung.* No name, no URL.
 6. **Quellenangaben** (mandatory), the three entries as in the template: Texte (Claude.ai, Anthropic, reviewed by the
    author), Schrift (Segoe UI), Layout und Grafik (own HTML/CSS, no external images). eduki asks for all three.
+   A paid pack with photos adds a fourth entry, `Fotos` (title, creator, source site, licence, no URL), and its
+   Layout und Grafik line must not say "keine externen Bilder".
 7. Footer: free worksheet `© Shaun Trezise · Kostenlos für den Unterricht · CC BY-SA 4.0`; paid pack
    `© <year> Shaun Trezise · Alle Rechte vorbehalten · Lizenz zur Nutzung im eigenen Unterricht der erwerbenden Lehrkraft`
    (a CC BY-SA licence would let anyone give a paid pack away).
@@ -171,7 +173,8 @@ Copy `assets/worksheet-template.html`, fill every `{{...}}`, and keep the struct
    centre. Keep it; Chrome prints it even with `--no-pdf-header-footer`. Contents lines and cross-references (`p. N`) must
    match the exported PDF: check them after export.
 
-No external images, fonts or scripts: a single self-contained file.
+No externally loaded images, fonts or scripts: a single self-contained file (embedded CC0 / Public Domain Mark photos in a
+paid pack are fine).
 
 **Printable = black and white** (CLAUDE.md rule 10): only when Shaun asks for printable material. Then use the
 template's PRINTABLE block, draw figures as black lines (solid, dashed or dotted, never colour), and run the check
@@ -205,8 +208,9 @@ with `--bw`. Otherwise the colour template is fine.
 from the repo root)
 
 It fails on a missing learning-goals box, help/bonus/partner blocks or teacher notes, and on links, domains, email addresses, publisher names, an unfilled `{{placeholder}}`, or a missing answer key, Erwartungshorizont (when a writing task is present),
-Quellenangaben, student row, points badge, licence line, online note, page numbers or print CSS. With `--paid` it expects the
-all-rights-reserved footer instead of CC BY-SA and does not ask for the online note. It cannot see student names, so read the
+Quellenangaben, student row, points badge, licence line, page numbers or print CSS. A missing online note only prints a
+reminder. With `--paid` it expects the all-rights-reserved footer and fails if a CC BY line is left in; without it, it fails
+on an all-rights-reserved footer. Unknown options stop the script. It cannot see student names, so read the
 file once for any. Then confirm the points add up and every answer in the key is actually correct.
 
 ## The listing (give this to Shaun with the PDF)

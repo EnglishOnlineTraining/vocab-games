@@ -1,8 +1,10 @@
 #!/bin/sh
 # Usage: check-worksheet.sh worksheet.html [--bw] [--paid]
 # Fails (exit 1) if the file breaks an eduki rule; with --bw, also if it is not black and white. With --paid (a paid pack),
-# it expects the all-rights-reserved footer instead of CC BY-SA and does not require the online note. Prints what it found.
-bw=0; paid=0; for a in "$2" "$3"; do [ "$a" = --bw ] && bw=1; [ "$a" = --paid ] && paid=1; done
+# it expects the all-rights-reserved footer instead of CC BY-SA. The online note is never required (only when a free online
+# version exists), so a missing note prints a reminder, not a failure. Prints what it found.
+bw=0; paid=0
+for a in "$2" "$3"; do case "$a" in --bw) bw=1;; --paid) paid=1;; "") ;; *) echo "unknown option: $a (use --bw and/or --paid)"; exit 2;; esac; done
 f="$1"; bad=0
 [ -f "$f" ] || { echo "usage: $0 file.html"; exit 2; }
 fail() { echo "FAIL: $1"; bad=1; }
@@ -29,9 +31,14 @@ grep -q 'Einsatzmöglichkeiten' "$f"                      || fail "teaching cont
 grep -q 'class="group"' "$f"                               || fail "group task with a shared product missing"
 grep -q 'Verlaufsplan' "$f"                                || fail "Verlaufsplan (phases table) missing in teacher notes"
 grep -q 'badge' "$f"                                       || fail "no points badge"
-if [ $paid -eq 1 ]; then grep -q 'Alle Rechte vorbehalten' "$f" || fail "paid-pack footer (Alle Rechte vorbehalten) missing"
-else grep -q 'CC BY-SA 4.0' "$f"                          || fail "licence line missing"; fi
-grep -q 'counter(page)' "$f"                              || fail "page numbers (@page counter(page)) missing"
+if [ $paid -eq 1 ]; then
+  grep -q 'Alle Rechte vorbehalten' "$f"                   || fail "paid-pack footer (Alle Rechte vorbehalten) missing"
+  grep -q 'CC BY' "$f"                                     && fail "CC BY licence left in a paid pack (anyone could give it away)"
+else
+  grep -q 'CC BY-SA 4.0' "$f"                              || fail "licence line missing"
+  grep -q 'Alle Rechte vorbehalten' "$f"                   && fail "all-rights-reserved footer in a free worksheet (use --paid for a pack)"
+fi
+grep -qE '@bottom-(left|center|right)[^}]*counter\(page\)' "$f" || fail "page numbers (@page @bottom-center counter(page)) missing"
 if [ $bw -eq 1 ]; then  # printable = black and white, only when Shaun asks for printable (CLAUDE.md rule 10)
   grep -q '@media print' "$f"                             || fail "print CSS missing"
   grep -q 'print-color-adjust' "$f"                        && fail "print-color-adjust forces colour printing (--bw)"
@@ -40,7 +47,7 @@ if [ $bw -eq 1 ]; then  # printable = black and white, only when Shaun asks for 
 else
   grep -q 'print-color-adjust' "$f"                        || fail "print CSS missing"
 fi
-[ $paid -eq 1 ] || grep -q 'interaktive Online-Übung' "$f" || fail "online note missing"
+grep -q 'interaktive Online-Übung' "$f" || echo "NOTE: no online note (correct only if no free online version exists)"
 grep -q '{{' "$f"                                          && fail "unfilled {{placeholder}}"
 [ $bad -eq 0 ] && echo "OK: $f passes the eduki checks (student names are not checked: read the file for them)"
 exit $bad
