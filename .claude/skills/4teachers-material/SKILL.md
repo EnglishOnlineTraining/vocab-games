@@ -17,12 +17,14 @@ submit anything on the site for him.
 Same convention as the `eduki-worksheet` skill: the `/Users/strezise/...` and `~/.claude/skills/...` paths below exist
 only on Shaun's Mac. In a Claude Code web/remote session, the eduki template and the shared check script are committed
 in this repo under `.claude/skills/eduki-worksheet/` — use those paths instead, save outputs to the session's output
-folder, and ask Shaun to confirm the register state rather than reading or writing the CSV yourself.
+folder. The register is a Google Sheet, so read and update it with the Google Sheets tools in any session.
 
 ## What goes here, and what does not (the split with eduki)
 
-The two skills share one register: `/Users/strezise/Claude Files/CLAUDE OUTPUTS/platform-materials-register.csv`
-(`date,platform,class,pool_id_or_topic,kind,title,file,status`). **Read it before choosing anything.**
+The two skills share one register: the Google Sheet **Product register — eduki, Payhip, 4teachers, website** (https://docs.google.com/spreadsheets/d/1nOqePnZMdymFCNCI_Pw1eftmc9Ll4CAupu1QRICXKcM/edit), tab `Register`
+(columns `date, platform, price, audience, format, class_or_level, topic, kind, title, link_or_file, linked_free_page,
+status, notes`; column N is an automatic clash check). It also lists Payhip and website products, and its `Rules` tab holds
+the split for all four platforms. **Read it before choosing anything.** The old Mac CSV of the same name is retired (2026-11-20).
 
 | Platform | `kind` | What it is |
 |---|---|---|
@@ -32,13 +34,14 @@ The two skills share one register: `/Users/strezise/Claude Files/CLAUDE OUTPUTS/
 | **4teachers** | `phrase-bank` | Useful phrases or an English-only glossary a class can keep (discussion, argument, formal letters, a unit's vocabulary) |
 
 Rules that keep them apart:
-- A `pool_id_or_topic` that appears under one platform is never used for the other, whatever the kind. 4teachers' editors compare
+- A `topic` that appears under one platform is never used for the other, whatever the kind. 4teachers' editors compare
   uploads with eduki and delete duplicates (2026-10-03), so a repeat can cost the upload, not just tidiness.
 - 4teachers never gets a single-topic worksheet, which is eduki's `kind`. If Shaun asks for one for 4teachers, say it
   belongs on eduki, or ask which platform he wants and update the register accordingly.
 - This split is a default chosen on 2026-10-08. If Shaun wants a different one, change this table and the one in the
   `eduki-worksheet` skill together.
-- After building, append one row to the register (`status` drafted). No student names in it.
+- After building, append one row to the register (`platform` 4teachers, `price` free, `format` pdf, `status` drafted), then
+  check that column N says `ok`. No student names in it.
 
 ## Classes and levels
 

@@ -23,9 +23,8 @@ In a web/remote session:
 - The template and check script are committed in this repo. Use
   `.claude/skills/eduki-worksheet/assets/worksheet-template.html` and run
   `bash .claude/skills/eduki-worksheet/scripts/check-worksheet.sh <file>.html` from the repo root.
-- The material register and the `CLAUDE OUTPUTS` folders are Mac-local. Save the HTML and PDF to the
-  session's output folder, give Shaun the path, and ask him to confirm the register state instead of
-  reading or writing the CSV yourself.
+- The `CLAUDE OUTPUTS` folders are Mac-local. Save the HTML and PDF to the session's output folder and give
+  Shaun the path. The material register is a Google Sheet: read and update it with the Google Sheets tools.
 - The PDF export command below is the Mac one; in a Linux session use the installed Chromium/Chrome
   binary with the same flags.
 
@@ -47,14 +46,18 @@ Difficulty, vocabulary and sentence length must match the level.
 
 ## Material register (read before choosing, update after building)
 
-`/Users/strezise/Claude Files/CLAUDE OUTPUTS/platform-materials-register.csv` lists everything made for eduki and 4teachers
-(`date,platform,class,pool_id_or_topic,kind,title,file,status`). **The two platforms must never carry the same material.**
-- eduki takes only `kind = worksheet`: a single-topic printable sheet (grammar, vocabulary or reading around one topic).
+The Google Sheet **Product register — eduki, Payhip, 4teachers, website** (https://docs.google.com/spreadsheets/d/1nOqePnZMdymFCNCI_Pw1eftmc9Ll4CAupu1QRICXKcM/edit), tab `Register` lists everything made for eduki, 4teachers,
+Payhip and the website (column N is an automatic clash check; the `Rules` tab holds the split). The old Mac CSV is
+retired (2026-11-20). **eduki and 4teachers must never carry the same material.**
+- eduki is PDF only, for teachers. Single-topic worksheets are free; packs are for sale (Shaun, 2026-11-20).
+- Payhip is for paid HTML products for self-learners. A paid product must give clearly more than any free page on the same topic.
+- This skill builds `kind = worksheet`: a single-topic printable sheet (grammar, vocabulary or reading around one topic).
 - 4teachers takes the other kinds (test and revision packs, skills sheets, phrase banks: see the `4teachers-material` skill).
-- Never reuse a `pool_id_or_topic` that appears under the other platform, and do not make a second eduki worksheet on a topic
+- Never reuse a `topic` that appears under the other platform, and do not make a second eduki worksheet on a topic
   already listed under eduki unless Shaun asks.
 - 4teachers' editors detect material that is also on eduki and delete it (the 8C worksheet, 2026-10-03). Never hand the same file to both.
-- After building, append one row (`status` drafted; Shaun changes it to submitted or approved). No student names in the register.
+- After building, append one row (`platform` eduki, `price` free, `format` pdf, `status` drafted; Shaun changes the status later),
+  then check that column N says `ok`. No student names in the register.
 
 ## Choosing the topic
 

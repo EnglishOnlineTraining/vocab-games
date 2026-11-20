@@ -18,12 +18,12 @@ check below. Never upload, create an account, or submit anything on a marketplac
    (made by the `eduki-worksheet` skill). Read it: the listing must describe what is really in the file (exercise types,
    points total, class, level, whether there is an Erwartungshorizont).
 2. **`VOICE.md`** at the vocab-games repo root. Read sections 4, 5, 6 and 8 before writing.
-3. **`/Users/strezise/Claude Files/CLAUDE OUTPUTS/platform-materials-register.csv`**, to confirm the unit is registered
+3. **The register: the Google Sheet **Product register — eduki, Payhip, 4teachers, website** (https://docs.google.com/spreadsheets/d/1nOqePnZMdymFCNCI_Pw1eftmc9Ll4CAupu1QRICXKcM/edit), tab `Register`**, to confirm the unit is registered
    for this platform. If it is registered for a different platform, stop and tell Shaun: the same material must never be on
    two platforms.
 
 The `/Users/strezise/...` paths exist only on Shaun's Mac. In a Claude Code web/remote session, read the worksheet and
-the register from wherever Shaun provides them (or ask him to confirm the platform), and save the listing to the
+the worksheet from wherever Shaun provides it, read the register with the Google Sheets tools, and save the listing to the
 session's output folder.
 
 If the unit is not finished (no answer key, failing its own check script), say so and stop.
@@ -60,9 +60,11 @@ a common German word exists). Write it in this order:
 
 ## Payhip
 
-Not set up yet: there are no Payhip products, and the Payhip form fields, audience and language are not confirmed.
-Before the first Payhip listing, ask Shaun for the audience, the language and the fields the Payhip product form asks
-for, then add them here as a section like the eduki one. Do not guess them.
+Payhip sells paid HTML products for self-learners (one PDF, Writing Summaries, is an agreed experiment). The live
+products are listed in the register. When a product is added or its price changes, the Google Merchant Center feed sheet
+**Merchant Center product feed (Abitur packs)** must be updated too (link in the register's `Rules` tab).
+The Payhip product form fields and listing language are not documented yet: before the next Payhip listing, ask Shaun for
+them and add them here as a section like the eduki one. Do not guess them.
 
 ## Check before handing over
 
