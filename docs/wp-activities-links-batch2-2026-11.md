@@ -7,6 +7,8 @@ block (`post-sections.insert`, additive only), re-read after the write. Each row
 existing text or link is removed._
 
 Batch 1 (2032, 2038, 2039, 965) is done: `docs/wp-activities-links-draft.md`.
+A separate round on 2026-11-15 added 20 links on 11 other posts (1599, 32, 807, 1097, 1631, 460, 1323, 1342, 1506,
+1019, 267); its record is in the same file, section "Tier 19.2". None of those posts is in this batch.
 
 ## Status
 
