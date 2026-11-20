@@ -10,7 +10,7 @@ description: >
 
 # eduki worksheets
 
-Free, print-ready worksheets for upload to eduki.com, one per topic. Shaun uploads them himself: never
+Print-ready worksheets for upload to eduki.com, one per topic (free), and larger packs (paid; see "Free worksheet or paid pack" below). Shaun uploads them himself: never
 upload, create an account or submit anything on eduki. Your job ends with the PDF, the listing text and the
 checks below.
 
@@ -44,6 +44,23 @@ In a web/remote session:
 
 Difficulty, vocabulary and sentence length must match the level.
 
+## Free worksheet or paid pack
+
+eduki is not free-only (Shaun, 2026-11-20). Single-topic worksheets stay free; multi-section packs (for example the
+Year 10 picture-description pack for the oral exam, `worksheet-10c-msa-describing-pictures`) are sold.
+
+| | Free worksheet | Paid pack |
+|---|---|---|
+| Price | kostenlos | set by Shaun; never invent one (a suggestion in the listing is fine) |
+| Footer | `© Shaun Trezise · Kostenlos für den Unterricht · CC BY-SA 4.0` | `© <year> Shaun Trezise · Alle Rechte vorbehalten · Lizenz zur Nutzung im eigenen Unterricht der erwerbenden Lehrkraft` |
+| Online note | only if a free online version exists | only if a free online version exists |
+| Check | `check-worksheet.sh <file>.html` | `check-worksheet.sh <file>.html --paid` |
+
+Photos in a paid pack: use CC0 or Public Domain Mark images only (search Openverse with `license=cc0,pdm`), embed
+them in the HTML, and list each one in Quellenangaben (title, creator, source site, licence) **without a URL**, because
+eduki rejects links. Keep the URLs in a `credits.md` next to the build files. Check the licence on each source page, and
+avoid photos where children or other private people are the main subject when a scene without them works.
+
 ## Material register (read before choosing, update after building)
 
 The Google Sheet **Product register — eduki, Payhip, 4teachers, website** (https://docs.google.com/spreadsheets/d/1nOqePnZMdymFCNCI_Pw1eftmc9Ll4CAupu1QRICXKcM/edit), tab `Register` lists everything made for eduki, 4teachers,
@@ -56,7 +73,7 @@ retired (2026-11-20). **eduki and 4teachers must never carry the same material.*
 - Never reuse a `topic` that appears under the other platform, and do not make a second eduki worksheet on a topic
   already listed under eduki unless Shaun asks.
 - 4teachers' editors detect material that is also on eduki and delete it (the 8C worksheet, 2026-10-03). Never hand the same file to both.
-- After building, append one row (`platform` eduki, `price` free, `format` pdf, `status` drafted; Shaun changes the status later),
+- After building, append one row (`platform` eduki, `price` free for a worksheet or the price Shaun sets for a pack, `format` pdf, `status` drafted; Shaun changes the status later),
   then check that column N says `ok`. No student names in the register.
 
 ## Choosing the topic
@@ -76,7 +93,7 @@ retired (2026-11-20). **eduki and 4teachers must never carry the same material.*
   universal in the German school system.
 - **No student names or identifying detail**, in the worksheet, sample answers, listing or this skill. Invent names for
   examples. The Name/Klasse/Datum row stays blank.
-- **Price: free (kostenlos).** eduki needs the same price on every platform, and the exercises are free on the site.
+- **Price:** see "Free worksheet or paid pack" below. Never invent a price: Shaun sets it.
 - **Language:** exercise instructions and task content are in English, with no German glosses. Defining an English word in
   simpler English follows the site's language rule (Gymnasium: never German; Oberschule: German only if Shaun asks).
   Apparatus is German: `Name / Klasse / Datum`, `Lösungen`, `Punkte`, `Quellenangaben`, and the listing.
@@ -143,11 +160,16 @@ Copy `assets/worksheet-template.html`, fill every `{{...}}`, and keep the struct
    Kriterium (Inhalt, Sprache, Aufbau und Stil), the concrete expectation for each, the points available and what earns
    full, half or no points. Say which content points the text must contain, how many correct target structures are
    needed, and the word count. Points must add up to the task's badge. Teacher-facing wording is German; sample texts are English.
-5. Online note, exactly this text and nothing more: *Dieses Arbeitsblatt ist auch als interaktive Online-Übung mit
+5. Online note, only when a free online version of this material exists, exactly this text and nothing more: *Dieses Arbeitsblatt ist auch als interaktive Online-Übung mit
    automatischer Auswertung verfügbar – kostenlos und ohne Anmeldung.* No name, no URL.
 6. **Quellenangaben** (mandatory), the three entries as in the template: Texte (Claude.ai, Anthropic, reviewed by the
    author), Schrift (Segoe UI), Layout und Grafik (own HTML/CSS, no external images). eduki asks for all three.
-7. Footer: `© Shaun Trezise · Kostenlos für den Unterricht · CC BY-SA 4.0`.
+7. Footer: free worksheet `© Shaun Trezise · Kostenlos für den Unterricht · CC BY-SA 4.0`; paid pack
+   `© <year> Shaun Trezise · Alle Rechte vorbehalten · Lizenz zur Nutzung im eigenen Unterricht der erwerbenden Lehrkraft`
+   (a CC BY-SA licence would let anyone give a paid pack away).
+8. **Page numbers on every page** (Shaun, 2026-11-20): the template's `@page` rule prints `Seite N von M` at the bottom
+   centre. Keep it; Chrome prints it even with `--no-pdf-header-footer`. Contents lines and cross-references (`p. N`) must
+   match the exported PDF: check them after export.
 
 No external images, fonts or scripts: a single self-contained file.
 
@@ -183,7 +205,8 @@ with `--bw`. Otherwise the colour template is fine.
 from the repo root)
 
 It fails on a missing learning-goals box, help/bonus/partner blocks or teacher notes, and on links, domains, email addresses, publisher names, an unfilled `{{placeholder}}`, or a missing answer key, Erwartungshorizont (when a writing task is present),
-Quellenangaben, student row, points badge, licence line, online note or print CSS. It cannot see student names, so read the
+Quellenangaben, student row, points badge, licence line, online note, page numbers or print CSS. With `--paid` it expects the
+all-rights-reserved footer instead of CC BY-SA and does not ask for the online note. It cannot see student names, so read the
 file once for any. Then confirm the points add up and every answer in the key is actually correct.
 
 ## The listing (give this to Shaun with the PDF)
