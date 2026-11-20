@@ -6,6 +6,7 @@
 <style>
 :root{--blue:#1a3a5c;--gold:#c9a227;--gold-lt:#f5e6b0;--teal:#2b7a78;--red:#c0392b;--green:#27ae60;--bg:#f7f9fc;--card:#fff;--text:#1d2b3a;--muted:#6b7a8d;--border:#dce3ec;--radius:4px;--font:'Segoe UI',system-ui,sans-serif}
 @page{size:A4;margin:18mm 16mm 20mm 16mm}
+@page{@bottom-center{content:"Seite " counter(page) " von " counter(pages);font-family:'Segoe UI',system-ui,sans-serif;font-size:9pt;color:#000}}
 *{box-sizing:border-box}
 body{font-family:var(--font);color:var(--text);font-size:11pt;line-height:1.45;margin:0;padding:0}
 header{background:var(--blue);color:#fff;padding:12px 16px;border-radius:var(--radius)}
