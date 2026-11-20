@@ -43,7 +43,7 @@ disagree, the tier wins. Every live WordPress edit needs Shaun's OK (rule 7).
 
 | # | Item | Waits on | Tier |
 |---|---|---|---|
-| 1 | **Links into the activities site from WordPress posts that already rank** (~20 targets: `themen/`, ESL, IELTS, business). The main domain holds the authority; this is the lever CC can draft | CC drafts, Shaun OKs per row | 19.2, 20 |
+| 1 | **Links into the activities site from WordPress posts that already rank** (~20 targets: `themen/`, ESL, IELTS, business). The main domain holds the authority; this is the lever CC can draft. 15 Nov round (20 links, 11 posts) done; batch 2 drafted | CC drafts, Shaun OKs per row | 19.2, 20 |
 | 2 | **More links from other sites to `activities.`** (4teachers, LinkedIn, Bildungsserver exist; check which pages they hit, then add more; candidate list in 19.3) | Shaun | 19.3 |
 | 3 | **Decide the template pause on the activities site** (one decision unblocks or settles several items) | Shaun | 19.1 |
 | 4 | **WordPress Organization node still shows the retired `englishonlinetraining@pm.me`** (rule 3), the old name and `?isSelfProfile=true` on LinkedIn. Find where the node is set and enter the `scripts/schema.js` values | Shaun | 8 A2, 19b.4 |
@@ -399,6 +399,8 @@ indexed. No technical fault; Google pruned pages that earned nothing. No traffic
 1. **Pause site-wide template changes on activities · Shaun decides (P1 #3).** Batch the ones that must happen.
 2. **~20 target pages linked from ranking WordPress posts · CC drafts (P1 #1).** E.g.
    `/using-past-progressive/` → `themen/past-progressive.html` and `gr-past-progressive.html`.
+   **15 Nov round done 2026-11-15:** 20 links on 11 posts (4 `themen/`, 5 ESL, 5 IELTS, 6 Business), all live and
+   checked; record in `docs/wp-activities-links-draft.md`, "Tier 19.2".
    Batch 2 drafted 2026-11-18 (10 posts, 28 links): `docs/wp-activities-links-batch2-2026-11.md`. Shaun OKs per row.
 3. **More links from other sites · Shaun (P1 #2).** 4teachers, LinkedIn and Bildungsserver links
    exist (Shaun, 11-12); which pages they point to is unchecked. Candidates, each to check first:
