@@ -384,6 +384,7 @@ impr / 62 clicks; activities 157 / 322 / 14) matched to pages, with a title and 
 2. Partly done: category descriptions added. **Open (P3):** ~110 tag pages and date archives use
    Jetpack's ~45-character fallback; get Bing's URL list before writing any.
 3. **Open (P3):** Bing's multiple-H1 and missing-alt flags don't reproduce; needs Bing's URL list.
+   **Crawled 2026-11-23 (PR #TBD, `docs/seo-crawl-h1-alt-2026-11-23.md`):** 0 multiple-H1 and 0 missing alt on 382 sitemap pages; 13 WordPress pages have empty `alt=""` on content images (fix after 5 Dec).
 4. Done 11-01: IndexNow skips pushes over 50 changed pages (`check-indexnow-threshold.js`).
 5. No action: Ahrefs notices are by design.
 6. No code action (read 11-15). WordPress IndexNow, 22 Sep – 12 Nov: 379 submissions, 87 indexed
@@ -650,7 +651,7 @@ Checked the backlog against open-source tools on GitHub; this was the one clear 
    - Bing AI Performance (Tier 10.7) has no API. The tool's `genai_query_insights` only guesses
      which queries come from AI chats; keep the manual AI Performance export.
 3. **GitHub comparison (2026-11-23, stars that day; nothing installed but this tool).**
-   - **Worth trying once:** `harlan-zw/unlighthouse` (★5.0k) or `PhialsBasement/LibreCrawl`
+   - **Done 2026-11-23 (PR #TBD): crawled with `scripts/crawl-h1-alt.js` instead (see 18.3).** Was: `harlan-zw/unlighthouse` (★5.0k) or `PhialsBasement/LibreCrawl`
      (★1.1k): one crawl of the main site to reproduce Bing's multiple-H1, missing-alt and tag-meta
      flags (18.2, 18.3) without waiting for Bing's URL list. Not in the build.
    - **Limited:** `elmohq/elmo` (★721), `limelit-co/open` (★456) track ChatGPT, Perplexity and
