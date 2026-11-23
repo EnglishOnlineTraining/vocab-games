@@ -17,7 +17,7 @@ const strip = (s) => { let p; do { p = s; s = s.replace(/<script\b[\s\S]*?<\/scr
       const u = urls[i++];
       try {
         const h = strip(await (await fetch(u, { headers: { 'user-agent': 'eol-audit' } })).text());
-        const h1s = [...h.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)].map((m) => m[1].replace(/<[^>]+>/g, '').trim().slice(0, 50));
+        const h1s = [...h.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)].map((m) => m[1].trim().slice(0, 50));
         const imgs = h.match(/<img\b[^>]*>/gi) || [];
         const noAlt = imgs.filter((t) => !/\salt=/i.test(t));
         const emptyAlt = imgs.filter((t) => /\salt=(""|'')/i.test(t) && !/aria-hidden|role=["']presentation/i.test(t));
