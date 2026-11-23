@@ -77,7 +77,7 @@ so these were indexed and then dropped, as Tier 19 reads it (Google pruned pages
    `themen/linking-words`, `themen/present-tenses`, `themen/simple-past`, `abitur-operatoren`, plus the
    Abitur writing pages once recrawled. For those, add outside links first (Tier 19.3, OER and teacher
    directories), then "Request indexing" in URL Inspection (manual; the API cannot do it).
-2. **Done 2026-11-23 on a 5-page sample (PR #): reading text on the visible start screen.** Pages:
+2. **Done 2026-11-23 on a 5-page sample (PR #433): reading text on the visible start screen.** Pages:
    `10g-green-scotland`, `10g-slavery-civil-war`, `10g-social-media`, `be-management-approaches`,
    `be-property-management`; each has a `READING-PREVIEW:START/END` block (delete it to undo). Why this
    sample: pages that earned Google impressions, are not preview-test pages or controls (so that test stays
