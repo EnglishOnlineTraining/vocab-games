@@ -16,7 +16,8 @@ const pages = [
   ...fs.readdirSync(ROOT).filter((f) => f.endsWith('.html') && !f.startsWith('_')),
   ...fs.readdirSync(path.join(ROOT, 'themen')).filter((f) => f.endsWith('.html')).map((f) => 'themen/' + f),
 ];
-const strip = (s) => s.replace(/<script\b[\s\S]*?<\/script\b[^>]*>/gi, '');
+// Repeated until stable (same as check-links.js) so a removal can't splice a new "<script" together.
+const strip = (s) => { let p; do { p = s; s = s.replace(/<script\b[\s\S]*?<\/script\b[^>]*>/gi, ''); } while (s !== p); return s; };
 const norm = (from, href) => {
   href = href.trim().split('#')[0].split('?')[0];
   if (!href || /^(mailto:|tel:|javascript:)/i.test(href)) return null;
