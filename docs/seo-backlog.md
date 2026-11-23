@@ -649,6 +649,26 @@ Checked the backlog against open-source tools on GitHub; this was the one clear 
      `sc-domain:englishonline.training` (both hosts) or `sc-domain:activities.englishonline.training`.
    - Bing AI Performance (Tier 10.7) has no API. The tool's `genai_query_insights` only guesses
      which queries come from AI chats; keep the manual AI Performance export.
-3. **Moved to the tool:** the Tier 20 and 21 pulls and the monthly re-pull (Calendar).
+3. **GitHub comparison (2026-11-23, stars that day; nothing installed but this tool).**
+   - **Worth trying once:** `harlan-zw/unlighthouse` (★5.0k) or `PhialsBasement/LibreCrawl`
+     (★1.1k): one crawl of the main site to reproduce Bing's multiple-H1, missing-alt and tag-meta
+     flags (18.2, 18.3) without waiting for Bing's URL list. Not in the build.
+   - **Limited:** `elmohq/elmo` (★721), `limelit-co/open` (★456) track ChatGPT, Perplexity and
+     Claude citations, not Google AI Overviews, so Tier 11 still needs a paid SERP API (same for
+     `towfiqi/serpbear`, ★2.2k). `eliasdabbas/advertools` (★1.5k) could do the 25.2 raw-HTML audit,
+     but extending `check-links.js` is shorter. `lycheeverse/lychee-action` (★531) would add
+     external-link checks, which `check-links.js` skips.
+   - **Keep ours:** `check-links.js` (also checks `#fragment` ids), `validate-schema.js` (`@id`
+     graph, FAQ in body; `google/schemarama` does less and is stale), `indexnow-submit.js` (50-page
+     cap; `bojieyang/indexnow-action` has none), the meta/heading/image/sitemap/og/lastmod
+     checks, `search-opportunities.js`.
+   - **No established tool:** internal-link pass (20), unlinked mentions (12.13), cut list
+     (12.7), title and preview split tests (9.9, 10.7), OER directory lists (25.3). Strategy and
+     WordPress-admin items have no tool by nature.
+4. **Remote Control from cloud sessions: not available (2026-11-23).** The MacBook-Air lists
+   `vocab-games`, `Claude Files` and `second-brain` for Remote Control, but offers none of them to
+   cloud sessions (no reason given; an app update is the usual fix). So a cloud session can't run
+   the tool. Run Search Console and Bing work in a local Mac session.
+5. **Moved to the tool:** the Tier 20 and 21 pulls and the monthly re-pull (Calendar).
    `search-opportunities.js` still reads CSV exports; whether the tool's `--format=csv` output
    fits it is unchecked.
