@@ -8,7 +8,7 @@
 const sm = process.argv[2];
 if (!sm) { console.error('usage: crawl-h1-alt.js <sitemap-url>'); process.exit(1); }
 // Repeated until stable so a removal can't splice a new "<script" together (CodeQL).
-const strip = (s) => { let p; do { p = s; s = s.replace(/<(script|style|noscript)\b[\s\S]*?<\/\1[^>]*>/gi, ''); } while (s !== p); return s; };
+const strip = (s) => { let p; do { p = s; s = s.replace(/<script\b[\s\S]*?<\/script\b[^>]*>/gi, ''); } while (s !== p); return s; };
 (async () => {
   const urls = [...(await (await fetch(sm)).text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
   const out = []; let i = 0;
