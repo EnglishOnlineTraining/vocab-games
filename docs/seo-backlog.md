@@ -404,6 +404,7 @@ indexed. No technical fault; Google pruned pages that earned nothing. No traffic
    **15 Nov round done 2026-11-15:** 20 links on 11 posts (4 `themen/`, 5 ESL, 5 IELTS, 6 Business), all live and
    checked; record in `docs/wp-activities-links-draft.md`, "Tier 19.2".
    Batch 2 drafted 2026-11-18 (10 posts, 28 links): `docs/wp-activities-links-batch2-2026-11.md`. Shaun OKs per row.
+3a. **Manual indexing requests prepared 2026-11-23 (PR #PRN):** 36 URLs over 4 days (about 10 a day) in `docs/gsc-indexing-requests-2026-11.md`; day 4 waits for PR #433. Re-check 2026-12-07 and 2026-12-21. Shaun makes the requests.
 3. **More links from other sites · Shaun (P1 #2).** 4teachers, LinkedIn and Bildungsserver links
    exist (Shaun, 11-12); which pages they point to is unchecked. Candidates, each to check first:
    Berlin-Brandenburg Bildungsserver English link collections, Deutscher Bildungsserver (resource
