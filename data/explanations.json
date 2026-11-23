@@ -23068,34 +23068,34 @@
   "exA": {
    "gaps": {
     "g1": {
-     "label": "1. The event director chooses the venue alone: “Book it today.”",
+     "label": "1. The manager does the admin and asks: “How can I help?”",
+     "correct": "servant",
+     "why": "Putting the team’s needs first and removing obstacles is servant leadership."
+    },
+    "g2": {
+     "label": "2. The event director chooses the venue alone: “Book it today.”",
      "correct": "autocratic",
      "why": "The director decides alone and gives an instruction: autocratic."
     },
-    "g2": {
-     "label": "2. The manager asks everyone’s view and the team decides together.",
-     "correct": "democratic",
-     "why": "The team is involved in the decision: democratic (participative)."
-    },
     "g3": {
-     "label": "3. “You know this better than I do. Decide, and tell me afterwards.”",
-     "correct": "laissez-faire",
-     "why": "The manager hands the decision to the experts: laissez-faire (delegative)."
-    },
-    "g4": {
-     "label": "4. A bonus for 200 tickets; no place next year if you miss it.",
-     "correct": "transactional",
-     "why": "Targets, rewards and consequences are the transactional style."
-    },
-    "g5": {
-     "label": "5. The greenest festival in Europe; each person takes on a new challenge.",
+     "label": "3. The greenest festival in Europe; each person takes on a new challenge.",
      "correct": "transformational",
      "why": "A vision that inspires people to grow is transformational."
     },
+    "g4": {
+     "label": "4. The manager asks everyone’s view and the team decides together.",
+     "correct": "democratic",
+     "why": "The team is involved in the decision: democratic (participative)."
+    },
+    "g5": {
+     "label": "5. A bonus for 200 tickets; no place next year if you miss it.",
+     "correct": "transactional",
+     "why": "Targets, rewards and consequences are the transactional style."
+    },
     "g6": {
-     "label": "6. The manager does the admin and asks: “How can I help?”",
-     "correct": "servant",
-     "why": "Putting the team’s needs first and removing obstacles is servant leadership."
+     "label": "6. “You know this better than I do. Decide, and tell me afterwards.”",
+     "correct": "laissez-faire",
+     "why": "The manager hands the decision to the experts: laissez-faire (delegative)."
     },
     "g7": {
      "label": "7. According to the text, most good managers ___.",
