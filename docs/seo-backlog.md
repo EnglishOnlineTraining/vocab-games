@@ -48,7 +48,7 @@ disagree, the tier wins. Every live WordPress edit needs Shaun's OK (rule 7).
 | 3 | **Decide the template pause on the activities site** (one decision unblocks or settles several items) | Shaun | 19.1 |
 | 4 | **WordPress Organization node still shows the retired `englishonlinetraining@pm.me`** (rule 3), the old name and `?isSelfProfile=true` on LinkedIn. Find where the node is set and enter the `scripts/schema.js` values | Shaun | 8 A2, 19b.4 |
 | 5 | **Keep the Abitur cluster growing**: it is the best-clicked and most-cited group. Next: vocabulary guides for the other three themes; more MSA pages from queries that land | Shaun picks, CC drafts | 17.4, 22 |
-| 6 | **Snippet and repoint rewrites after the freeze** (12-05; **drafted 2026-11-23, PR #427**: `docs/wp-pending-edits-2026-12-05-snippets.md` for 2032, 965, 1659): Zusammenfassung 2032 (pos 9.8), Abitur 2027 Änderungen 2520 (6.1, not frozen: can go now), business verbs 965, the presentation-alternatives post 1659 (Bing: 142 impr, 1 click). Run the fresh export through `search-opportunities.js --csv` first | CC drafts, Shaun OKs | 12.8, 19, 21 |
+| 6 | **Snippet and repoint rewrites after the freeze** (12-05; **drafted 2026-11-23, PR #428**: `docs/wp-pending-edits-2026-12-05-snippets.md` for 2032, 965, 1659): Zusammenfassung 2032 (pos 9.8), Abitur 2027 Änderungen 2520 (6.1, not frozen: can go now), business verbs 965, the presentation-alternatives post 1659 (Bing: 142 impr, 1 click). Run the fresh export through `search-opportunities.js --csv` first | CC drafts, Shaun OKs | 12.8, 19, 21 |
 
 ### P2 — worth doing, waits on a decision
 
@@ -560,7 +560,7 @@ From the weekly blog-keyword-drafts run of 2026-11-11 (report and drafts in Shau
    Two items count as factual errors and may go in earlier if Shaun wants: Fehler 3 calls the Simple
    Past "falsch" against the tense section, and the pack paragraph says the pack has students write
    overview sentences (exercise 2 is a choice task). Shaun decides.
-   **Drafted 2026-11-23 (PR #427):** exact title, SEO title, meta, lead, CTA and the factual fixes in
+   **Drafted 2026-11-23 (PR #428):** exact title, SEO title, meta, lead, CTA and the factual fixes in
    `docs/wp-pending-edits-2026-12-05-snippets.md` §2. Nothing applied. Note: 2032 and 965 both show
    `modified` 2026-11-23 20:45–20:46; check their revisions first.
 2. **2032 CTA button goes to the paid packs.** "✍️ Zum Übungspaket →" links
