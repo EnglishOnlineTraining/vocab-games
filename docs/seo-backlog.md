@@ -644,7 +644,9 @@ Checked the backlog against open-source tools on GitHub; this was the one clear 
      top 10 pages by clicks are on `activities.` (`abitur-operatoren`, `themen/linking-words`,
      `present-tenses`, `passiv`); on Google, `activities.` showed only its home page (1 impression).
    - Bing positions read 0 for every query, so its "ranking divergence" flags are wrong. Bing
-     clicks and impressions are fine. Keep the Bing CSV export for positions.
+     clicks and impressions are fine. Keep the Bing CSV export for positions. Likely cause (from
+     the package code, v2.1.4): it reads `AvgPosition`, which Bing's API probably doesn't send.
+     Its Bing `analytics_query` also passes no dates, so it always returns the full history.
    - The Google `https://englishonline.training/` property covers the main site only. Use
      `sc-domain:englishonline.training` (both hosts) or `sc-domain:activities.englishonline.training`.
    - Bing AI Performance (Tier 10.7) has no API. The tool's `genai_query_insights` only guesses
@@ -670,5 +672,23 @@ Checked the backlog against open-source tools on GitHub; this was the one clear 
    cloud sessions (no reason given; an app update is the usual fix). So a cloud session can't run
    the tool. Run Search Console and Bing work in a local Mac session.
 5. **Moved to the tool:** the Tier 20 and 21 pulls and the monthly re-pull (Calendar).
-   `search-opportunities.js` still reads CSV exports; whether the tool's `--format=csv` output
-   fits it is unchecked.
+6. **Tool → `search-opportunities.js`: works via JSON (tested on the Mac 2026-11-23).** The
+   tool's `--format=csv` doesn't fit: it writes one column `google` holding all rows as JSON.
+   Use `--format=json` and convert (Google only; Bing keeps its own exports with `--bing`):
+
+   ```bash
+   npx -y search-console-mcp run analytics_query --siteUrl=sc-domain:englishonline.training \
+     --engine=google --startDate=<from> --endDate=<to> --dimensions=query --rowLimit=25000 \
+     --format=json > q.json
+   node -e 'const r=JSON.parse(require("fs").readFileSync(0,"utf8")).google;const q=s=>`"${String(s).replace(/"/g,"\"\"")}"`;console.log("Query,Clicks,Impressions,CTR,Position\n"+r.map(x=>[q(x.keys[0]),x.clicks,x.impressions,x.ctr,x.position].join(",")).join("\n"))' < q.json > Queries.csv
+   node scripts/search-opportunities.js --csv <folder with Queries.csv>
+   ```
+
+   For pages: `--dimensions=page`, header `Page,…`, file `Pages.csv`. Keep the folder outside
+   the repo. CTR comes out as a fraction; the script ignores that column and recomputes it.
+   - **Run 1 (24 Aug – 22 Nov, read only):** 878 queries → 10 leaks, 43 gaps; 161 pages → 16
+     page leaks. Top leak: "was ist besser zum englischlernen: online oder präsenzkurse?" (115
+     impr, pos 4.6, 0 clicks): probably the German `/willkommen/` page (Tier 24.2), else post
+     1214; per 12.6 that's a title/meta fix, neither page frozen. Top gap: "english for real
+     estate" (170 impr, pos 22.3): fits the commercial real estate post and the CRE vocabulary
+     page (9.4), so a 12.8 repoint, not a new page. Both unchecked; Shaun picks.
