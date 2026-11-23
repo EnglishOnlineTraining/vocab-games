@@ -1,9 +1,8 @@
 # WordPress → activities links: check and drafts (Tier 9.5, item 2)
 
-_Checked 2026-10-08 by CC, read-only: the live public HTML of each page, links inside the post
-body only (menus and footer left out). Nothing here has been written to WordPress. Each draft
-needs Shaun's OK, then goes in as one new paragraph block (`post-sections.insert` /
-`page-sections.insert`, additive only) and gets a live check afterwards (CLAUDE.md rule 7)._
+_Initial check 2026-10-08 by CC, read-only: the live public HTML of each page, links inside the
+post body only (menus and footer left out). Live-edit and verification records are kept in the
+relevant sections below._
 
 **Status 2026-10-13: all four are done.** Checked live: 2032, 2038 and 2039 carry the drafted
 links. 965 links `business-activities`, `be-what-is-management` and `be-management-approaches`
@@ -81,3 +80,163 @@ only the units that really use several of its verbs. If neither does, link
 
 2032 first (most impressions and closest to page 1), then 965, 2038, 2039. One write per
 approval, each checked live (the link shows in the post body and goes to the right page).
+
+---
+
+## Tier 19.2 — 20 target pages (done 2026-11-15)
+
+**Done 2026-11-15:** Shaun approved all 11 source blocks. Each edit added only the approved
+paragraph and changed no existing text, link or metadata. All 20 links occur exactly once in
+their intended public source HTML, all 11 sources returned HTTP 200, and the five contextual
+placement checks passed. The WordPress editor exposed revision counts but no revision IDs.
+
+Sources 807 and 1097 use classic/freeform HTML, so their paragraphs were added without
+Gutenberg comment wrappers. The other additions use normal paragraph blocks.
+
+Audited the current WordPress sitemap and every source's existing activities links on
+2026-11-15. None of the 20 source → target pairs below already existed at the audit. Every
+target returned HTTP 200 with a self-canonical and no `noindex`. The split is 4 `themen/`, 5
+ESL, 5 IELTS and 6 Business targets. No source is on the Tier 12.3 no-touch list.
+
+Ranking evidence came from the repo's existing Search Console reviews, not a fresh export:
+807, 1097, 1342 and 1506 have page-level figures there, and the IELTS query has 141 impressions
+in the 2026-11-06 review. The other sources are established posts/pages already used in the
+old-post authority pass. No fresh page-level ranking pull was made; no ranking numbers have
+been invented here.
+
+### 1. Post 1599 — What are conditional sentences? (2 targets)
+
+Source: `/2023/08/07/what-are-conditional-sentences/`
+Placement: after the existing closing practice paragraph.
+
+```html
+<!-- wp:paragraph -->
+<p>For a German-language overview and more practice, see <a href="https://activities.englishonline.training/themen/if-saetze.html">If-Sätze (Conditionals): Erklärung und Übungen</a> and review the <a href="https://activities.englishonline.training/themen/past-perfect.html">Past Perfect</a> used in third conditionals. Both include free exercises with instant feedback.</p>
+<!-- /wp:paragraph -->
+```
+
+### 2. Post 32 — Present: Simple or Progressive? (1 target)
+
+Source: `/2016/04/13/present-simple-or-progressive/`
+Placement: at the end of the existing Practise section.
+
+```html
+<!-- wp:paragraph -->
+<p>For focused practice on the exact contrast in this post, try <a href="https://activities.englishonline.training/esl-present-simple-continuous.html">Present Simple vs Present Continuous</a>. It combines gap-fill, reading and writing, with instant feedback and no sign-up.</p>
+<!-- /wp:paragraph -->
+```
+
+### 3. Post 807 — Simple Past Tense: Definition, Rules and Examples (2 targets)
+
+Source: `/blog-posts/what-is-the-simple-past/`
+Placement: at the end of the existing practice list.
+
+```html
+<!-- wp:paragraph -->
+<p>Practise the sentence patterns from this guide with free exercises on <a href="https://activities.englishonline.training/esl-question-formation.html">wh-questions and word order</a> and <a href="https://activities.englishonline.training/esl-pronouns.html">subject and object pronouns</a>. Both give instant feedback and require no sign-up.</p>
+<!-- /wp:paragraph -->
+```
+
+### 4. Post 1097 — Past Progressive (Past Continuous): Rules and Examples (1 target)
+
+Source: `/using-past-progressive/`
+Placement: after the existing practice section.
+
+```html
+<!-- wp:paragraph -->
+<p>When you are ready for a more advanced use of participles, practise <a href="https://activities.englishonline.training/esl-participle-clauses.html">-ing, -ed and having + participle clauses</a> with a free reading, gap-fill and writing exercise.</p>
+<!-- /wp:paragraph -->
+```
+
+### 5. Post 1631 — Improving writing skills with AI (3 targets)
+
+Source: `/2023/08/28/improving-writing-skills-with-artificial-intelligence/`
+Placement: after the existing closing practice paragraph.
+
+```html
+<!-- wp:paragraph -->
+<p>To practise the issues your AI feedback may flag, use the free German-language guides to <a href="https://activities.englishonline.training/themen/linking-words.html">linking words</a> and <a href="https://activities.englishonline.training/themen/artikel.html">articles</a>, or the English exercise on <a href="https://activities.englishonline.training/esl-articles.html">a, an, the and zero article</a>.</p>
+<!-- /wp:paragraph -->
+```
+
+### 6. Page 460 — IELTS Vocabulary Glossary (4 targets)
+
+Source: `/test-your-vocab-knowledge/`
+Placement: after the glossary.
+
+```html
+<!-- wp:paragraph -->
+<p>After the glossary, practise with a <a href="https://activities.englishonline.training/ielts-reading-practice-test.html">full IELTS Academic Reading test</a>, focused <a href="https://activities.englishonline.training/ielts-reading-true-false-not-given.html">True/False/Not Given practice</a>, an <a href="https://activities.englishonline.training/ielts-writing-task2-opinion-essay.html">opinion essay task</a>, or <a href="https://activities.englishonline.training/ielts-writing-task1-describing-trends.html">describing trends for Writing Task 1</a>. All are free and need no sign-up.</p>
+<!-- /wp:paragraph -->
+```
+
+### 7. Post 1323 — How can I help my career by improving my English skills? (2 targets)
+
+Source: `/2023/04/26/how-can-i-help-my-career-by-improving-my-english-skills/`
+Placement: before the existing team-training CTA.
+
+```html
+<!-- wp:paragraph -->
+<p>If IELTS is your goal, use the free <a href="https://activities.englishonline.training/ielts-activities.html">IELTS Academic practice hub</a> for reading and writing tasks. If you are preparing for applications, practise the language of <a href="https://activities.englishonline.training/be-recruitment-hiring.html">job adverts and recruitment</a>.</p>
+<!-- /wp:paragraph -->
+```
+
+### 8. Post 1342 — Using English as a property manager (1 target)
+
+Source: `/2023/04/24/using-english-as-a-property-manager/`
+Placement: after the existing interactive-exercise link.
+
+```html
+<!-- wp:paragraph -->
+<p>For a fuller reference, use the free <a href="https://activities.englishonline.training/property-management-vocabulary.html">property management vocabulary glossary</a>: 159 terms in plain English, with a PDF and a link to the interactive exercise.</p>
+<!-- /wp:paragraph -->
+```
+
+### 9. Post 1506 — English for Commercial Real Estate (1 target)
+
+Source: `/2023/05/09/english-for-commercial-real-estate/`
+Placement: at the end of the Business English learning materials section.
+
+```html
+<!-- wp:paragraph -->
+<p>Build on this article with the free <a href="https://activities.englishonline.training/commercial-real-estate-vocabulary.html">commercial real estate vocabulary glossary</a>: 92 terms covering leases, rent, loans, returns and building operations, plus the PDF and practice.</p>
+<!-- /wp:paragraph -->
+```
+
+### 10. Page 1019 — Business English Skills: 4 Essentials for Work (2 targets)
+
+Source: `/essential-business-english-skills-to-acquire-today/`
+Placement: before the existing corporate-training CTA.
+
+```html
+<!-- wp:paragraph -->
+<p>To turn these skills into practice, try the free exercises on <a href="https://activities.englishonline.training/be-cross-cultural-communication.html">cross-cultural communication</a> and <a href="https://activities.englishonline.training/be-presentations.html">business presentations</a>. Both use realistic workplace situations and need no sign-up.</p>
+<!-- /wp:paragraph -->
+```
+
+### 11. Post 267 — Tips to upgrade your English (1 target)
+
+Source: `/2021/01/13/learn-english-tips/`
+Placement: after the existing closing exercise paragraph.
+
+```html
+<!-- wp:paragraph -->
+<p>If a job interview is your next goal, prepare with the free <a href="https://activities.englishonline.training/be-job-interviews.html">English job-interview exercise</a>: vocabulary, useful phrases and strategies for common interview situations.</p>
+<!-- /wp:paragraph -->
+```
+
+### Approval and live-check record
+
+| Source | Targets | Shaun's approval | WP revision | Live check |
+|---|---:|---|---|---|
+| 1599 | 2 | approved 2026-11-15 | not exposed | pass (2/2) |
+| 32 | 1 | approved 2026-11-15 | not exposed | pass (1/1) |
+| 807 | 2 | approved 2026-11-15 | not exposed | pass (2/2) |
+| 1097 | 1 | approved 2026-11-15 | not exposed | pass (1/1) |
+| 1631 | 3 | approved 2026-11-15 | not exposed | pass (3/3) |
+| 460 | 4 | approved 2026-11-15 | not exposed | pass (4/4) |
+| 1323 | 2 | approved 2026-11-15 | not exposed | pass (2/2), before team CTA |
+| 1342 | 1 | approved 2026-11-15 | not exposed | pass (1/1), after exercise link |
+| 1506 | 1 | approved 2026-11-15 | not exposed | pass (1/1), before team CTA |
+| 1019 | 2 | approved 2026-11-15 | not exposed | pass (2/2), before corporate CTA |
+| 267 | 1 | approved 2026-11-15 | not exposed | pass (1/1), after closing exercise |
