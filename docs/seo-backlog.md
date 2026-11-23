@@ -413,7 +413,7 @@ indexed. No technical fault; Google pruned pages that earned nothing. No traffic
 4. School-page titles get search terms: done (#132, see 8 A5).
 5. Optional noindex of textbook-unit pages · Shaun names them (rule 9; `10g-cultural-diversity` stays).
 6. **Root cause of "Crawled – not indexed" · 2026-11-23 (PR #431):** `docs/gsc-review-2026-11-24-root-cause.md`. No technical fault; host-level judgment plus no outside links, form-style start screens and near-zero crawl demand. Numbered fixes split into page-content (Shaun picks) and template (wait for the 19.1 pause). Nothing applied.
-   **Fix 2 (page content) applied 2026-11-23 to a 5-page sample (PR #PRN):** reading preview on the start screen of `10g-green-scotland`, `10g-slavery-civil-war`, `10g-social-media`, `be-management-approaches`, `be-property-management`. Measure on recrawl before any rollout. Fixes 1 and 3 are Shaun's (outside links, manual indexing requests); 5–8 wait for the pause.
+   **Fix 2 (page content) applied 2026-11-23 to a 5-page sample (PR #):** reading preview on the start screen of `10g-green-scotland`, `10g-slavery-civil-war`, `10g-social-media`, `be-management-approaches`, `be-property-management`. Measure on recrawl before any rollout. Fixes 1 and 3 are Shaun's (outside links, manual indexing requests); 5–8 wait for the pause.
 - **Also found:** page 842 draft (P2 #7: republish or 301 to `/2023/04/05/learning-english-online/`);
   low-CTR page-1 posts 2032, 2520, 965 (P1 #6); page 2–3 with demand: `/writing-emails-in-english/`
   (P2 #9), `/using-past-progressive/` (348, 22.1), homepage (219, 38.7).
