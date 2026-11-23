@@ -64,7 +64,6 @@ disagree, the tier wins. Every live WordPress edit needs Shaun's OK (rule 7).
 | 14 | WordPress title suffix pattern (B10); exercise titles are done (#132) | Shaun | 8 B10 |
 | 15 | Main-site page fixes: homepage title says "Teams", H1 doesn't; `/english-for-students/` and `/fuer-eltern/` opener + FAQ (rule 8 list first); empty `alt` on `/common-questions-about-learning-english/` | Shaun | 19b.3, 19b.5, 19b.7 |
 | 16 | LinkedIn article "what to check before booking" (drafted in `docs/linkedin/`): Shaun posts; re-run the item-1 questions 8 weeks later | Shaun | 16 |
-| 18 | `9g-australia-vocab-practice` description names the textbook (rule 4); it also ranks for the unit's searches. Ask before changing | Shaun | 8 |
 | 19 | Image attachments hold four posts' bare slugs, so clicks land on a PNG (mediation post: 2 clicks): rename the attachment slugs | Shaun OK, CC | 24.1 |
 | 20 | `/wilkommen/vor-und-nachteile-…-unterricht/` 404s (15 impr); the live `/willkommen/` page needs the redirect, or accept | Shaun | 24.2 |
 | 21 | Ideas from an outside SEO plan (2026-11-18): read the 9.9 preview test at 8–12 weeks, audit how the 155 discovered pages are linked, add OER directories and the repo link to the outside-link work | Shaun, CC | 25 |
@@ -223,8 +222,10 @@ Crawl of every sitemap URL on both hosts. Activities host is technically clean; 
 - **C12–C14:** done or false positive (C14: the crawler regex stopped at an apostrophe).
 - **D15 tracking and privacy policy:** done (GTM consent-gated #90; GA after opt-in; policy names
   every tracker).
-- **Still open, Shaun:** under-16 consent wording (P3); the `9g-australia-vocab-practice`
-  description names the textbook (P2 #18). The Make → Excel formula-injection half is tracked in
+- **Still open, Shaun:** under-16 consent wording (P3). **Done 2026-11-23 (PR #426):** the
+  `9g-australia-vocab-practice` description no longer names the textbook (P2 #18; "Australia unit"
+  wording). Still naming it: the description of `9g-australia-vocab-test.html` ("Klett Green Line 5
+  Unit 1"); its own file, unlisted test, left for Shaun. The Make → Excel formula-injection half is tracked in
   `docs/engineering-backlog.md`.
 
 ### Tier 9 — Search Console follow-up (2026-10-06)
