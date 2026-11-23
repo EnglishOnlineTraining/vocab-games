@@ -692,4 +692,4 @@ Checked the backlog against open-source tools on GitHub; this was the one clear 
      1214; per 12.6 that's a title/meta fix, neither page frozen. Top gap: "english for real
      estate" (170 impr, pos 22.3): fits the commercial real estate post and the CRE vocabulary
      page (9.4), so a 12.8 repoint, not a new page. Both unchecked; Shaun picks.
-6. **Per-page WordPress text drafted 2026-11-23 (PR #PRN):** exact titles, metas, one H2 and two links for 12 posts/pages from the `gsc-review-2026-11-24-per-page` rows marked "WordPress, after 5 Dec", in `docs/wp-pending-edits-2026-12-05-per-page.md`. Apply after 5 Dec, one change per page. The "30. April 2027" in post 2520's meta is unconfirmed.
+6. **Per-page WordPress text drafted 2026-11-23 (PR #435):** exact titles, metas, one H2 and two links for 12 posts/pages from the `gsc-review-2026-11-24-per-page` rows marked "WordPress, after 5 Dec", in `docs/wp-pending-edits-2026-12-05-per-page.md`. Apply after 5 Dec, one change per page. The "30. April 2027" in post 2520's meta is unconfirmed.
