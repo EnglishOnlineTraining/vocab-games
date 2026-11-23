@@ -1,7 +1,7 @@
 # Why activities pages are "Crawled – currently not indexed" (read 2026-11-23)
 
-Read-only. Google URL Inspection (`sc-domain:activities.englishonline.training`) on 54 URLs across this
-session (10 preview-test pages, 18 hub URLs incl. home, 12 pages with impressions, 14 others), Google performance by page
+Read-only. Google URL Inspection (`sc-domain:activities.englishonline.training`) on 52 existing URLs across this
+session (10 preview-test pages, 18 hub URLs incl. home, 12 pages with impressions, 12 others; two further URLs I tried do not exist and are excluded), Google performance by page
 (25 Aug – 21 Nov), the sitemap report, `curl -I`, and a local scan of all 287 sitemap pages (scratch scripts,
 not committed). Nothing was changed. See also `docs/gsc-review-2026-11-24-index-recheck.md` and
 `docs/seo-discovery-audit-2026-11-23.md`.
@@ -9,8 +9,8 @@ not committed). Nothing was changed. See also `docs/gsc-review-2026-11-24-index-
 ## What the data says
 
 **Result first:** no technical fault, and the pages are not thin overall. Google is rejecting the host as a
-whole. I could not find a single indexed activities page: **0 of 54 inspected are indexed.** 46 are
-"Crawled – currently not indexed", 7 "URL is unknown to Google", 1 "Discovered – not indexed". (The 17 indexed
+whole. I could not find a single indexed activities page: **0 of 52 inspected are indexed.** 46 are
+"Crawled – currently not indexed", 5 "URL is unknown to Google", 1 "Discovered – not indexed". (The 17 indexed
 pages in Search Console's coverage report cannot be listed through the API; the sitemap report's `indexed`
 column reads 0 for all 287 URLs, which is that field's known unreliability, not a count.)
 
@@ -49,8 +49,8 @@ so these were indexed and then dropped, as Tier 19 reads it (Google pruned pages
    other at 19:01–19:02 UTC today, and are still not indexed.
 4. **Crawl demand is near zero.** The hubs and home page were last fetched 22 Sep–7 Oct (older for adult
    hubs); the 10 preview-test pages were fetched once on 13 Oct (the day indexing was requested); a spread of
-   pages was last fetched in August. Six pages from the 14-page sample, for instance `abitur-writing-summaries`,
-   `esl-question-formation`, `ielts-matching-headings`, `be-email-writing`, `uni-critical-thinking` and
+   pages was last fetched in August. Five pages, `ielts-activities`, `abitur-writing-summaries`,
+   `esl-question-formation`, `uni-critical-thinking` and
    `msa-c-school-trip-announcement`, are "URL is unknown to Google" despite being in the sitemap for weeks.
 5. **Many near-identical page shells.** About 77% of the pages (221 of 287) follow one template (name form, Exercise A–C,
    submit block); lines found on 15%+ of pages make up a median 181 words per page. With no duplicate titles this is a weaker
@@ -103,7 +103,7 @@ main cause. None guarantees indexing, and the first sign would be a recrawl, not
 
 ## Limits
 
-- I could not list indexed pages, only inspect chosen ones; "0 of 54" is a sample that includes every page with
+- I could not list indexed pages, only inspect chosen ones; "0 of 52" is a sample that includes every page with
   impressions, not the whole host.
 - URL Inspection shows Google's stored state, which can lag by days.
 - Causes 2 and 4 are inference from patterns, not tested. Cause 1 is the best-supported reading, not proven.
