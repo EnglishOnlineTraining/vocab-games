@@ -1,7 +1,7 @@
 # Manual indexing requests for the activities site (prepared 2026-11-23)
 
 Root-cause fix 3 from `docs/gsc-review-2026-11-24-root-cause.md` (PR #431). **A list for Shaun only: nothing was
-submitted to Google or Bing.** 36 URLs in 4 days at about 10 a day.
+submitted to Google or Bing.** 35 URLs in 4 days at about 10 a day (plus 3 optional on day 4).
 
 ## How to request
 
@@ -95,5 +95,5 @@ Also on day 4 if the quota allows (not changed by #433; had impressions): `.../i
 - **2026-12-07** (the start of the 8–12-week window in Tier 25.1): run URL Inspection on the days 1–4 URLs
   (a read-only pass can be done by a session with the Search Console tool). Record for each: last crawl date and
   coverage state. A new crawl date after the request is the success signal; "indexed" is a bonus.
-- **2026-12-21:** second look. If fewer than 5 of the 36 show a crawl after their request date, requests do not
+- **2026-12-21:** second look. If fewer than 5 of the 35 show a crawl after their request date, requests do not
   move this host, and the lever is outside links (Tier 19.3).
