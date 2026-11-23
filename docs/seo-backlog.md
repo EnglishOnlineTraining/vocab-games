@@ -480,7 +480,7 @@ Main site only; monthly (positions need weeks). Run on the Mac. A cloud task rem
 ### Tier 21 — Bing queries as a second demand signal (2026-11-07)
 Bing shows query rows Search Console hides. CC analyses and proposes; Shaun approves every live edit.
 1. Merge both exports per page; mark each query GSC only / Bing only / both.
-2. **Google pull done 2026-11-23 (PR #431):** 28 days to 2026-11-21, `page` and `page,query`, in
+2. **Google pull done 2026-11-23 (PR #432):** 28 days to 2026-11-21, `page` and `page,query`, in
    `docs/gsc-review-2026-11-24-per-page.md`. Bing positions still wait on the Bing CSV export. **Pull (Shaun, Mac):** last 3 months, with the `search-console` tool (Tier 26): Google
    `analytics_query` on the `sc-domain:` property, dimensions `page` and `page,query`; Bing
    clicks and impressions the same way. **Bing positions still come from the Bing CSV export**
@@ -488,7 +488,7 @@ Bing shows query rows Search Console hides. CC analyses and proposes; Shaun appr
 3. **Targets:** main-site and `themen/` pages with a cluster at 5–20, or high impressions and low CTR.
    Respect the freeze (12.3).
 4. Filter out of scope (see "Standing rules").
-5. **Per-page analysis prompt (CC, Mac session).** First pass done 2026-11-23 (PR #431): top 15
+5. **Per-page analysis prompt (CC, Mac session).** First pass done 2026-11-23 (PR #432): top 15
    opportunities, 13 WordPress (after 5 Dec) and 2 with a repo part; the activities host had 1 impression
    in Google. Deep dives still to run for rows 1, 2 and 5 after the Bing merge:
 
