@@ -77,7 +77,13 @@ so these were indexed and then dropped, as Tier 19 reads it (Google pruned pages
    `themen/linking-words`, `themen/present-tenses`, `themen/simple-past`, `abitur-operatoren`, plus the
    Abitur writing pages once recrawled. For those, add outside links first (Tier 19.3, OER and teacher
    directories), then "Request indexing" in URL Inspection (manual; the API cannot do it).
-2. **Put the reading text, or its first 150 words, in the visible start screen of the strongest
+2. **Done 2026-11-23 on a 5-page sample (PR #PRN): reading text on the visible start screen.** Pages:
+   `10g-green-scotland`, `10g-slavery-civil-war`, `10g-social-media`, `be-management-approaches`,
+   `be-property-management`; each has a `READING-PREVIEW:START/END` block (delete it to undo). Why this
+   sample: pages that earned Google impressions, are not preview-test pages or controls (so that test stays
+   clean), and have a plain reading text; two sections (school, business) to compare. Not done: `uni-ai-ethics`,
+   `it-working-in-it` (text markup differs) and the other ~210 step pages: wait for a recrawl of these five.
+   Original fix: **Put the reading text, or its first 150 words, in the visible start screen of the strongest
    exercise pages.** This is what the `PREVIEW` test did on five pages. It has **not been read**: none of the 10
    pages was recrawled after 13 Oct, so the 0 of 5 / 0 of 5 result says nothing about the idea. Treat the
    recommendation in the index recheck (remove the blocks after 7 Dec) as "no evidence either way": the cost of
