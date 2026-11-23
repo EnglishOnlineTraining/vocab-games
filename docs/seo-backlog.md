@@ -253,6 +253,7 @@ Baseline and reasoning: `docs/gsc-review-2026-10-06.md`.
 9. **Preview test (5 test + 5 control pages, live 10-12, #126) · Shaun decides.** Checked 11-10:
    0 of 5 test and 0 of 5 control indexed, all recrawled once on 13 Oct. By the decision rule the
    preview is not the cause (or, if the 13 Oct crawls don't count, inconclusive: recheck from 11-24).
+   **Recheck 2026-11-23 (PR #PRN): recommendation in doc** (`docs/gsc-review-2026-11-24-index-recheck.md`): still 0/5 and 0/5, no recrawl since 13 Oct; remove the blocks on or after 7 Dec. Hubs: 0 of 17 indexed.
    Next: remove the `PREVIEW:START/END` blocks from `10c-canada-schools`, `10c-canada-environment`,
    `10g-growing-up-black`, `10g-cultural-diversity`, `8c-going-west` once Shaun accepts the result.
 
@@ -399,6 +400,7 @@ impr / 62 clicks; activities 157 / 322 / 14) matched to pages, with a title and 
 Activities sitemap 17 of 255 indexed (48 on 10-06); 89 crawled-not-indexed, 155 discovered-not-
 indexed. No technical fault; Google pruned pages that earned nothing. No traffic was lost.
 1. **Pause site-wide template changes on activities · Shaun decides (P1 #3).** Batch the ones that must happen.
+   **2026-11-23 (PR #PRN): recommendation in doc** (`docs/gsc-review-2026-11-24-index-recheck.md`): end the pause after 7 Dec, then batch.
 2. **~20 target pages linked from ranking WordPress posts · CC drafts (P1 #1).** E.g.
    `/using-past-progressive/` → `themen/past-progressive.html` and `gr-past-progressive.html`.
    **15 Nov round done 2026-11-15:** 20 links on 11 posts (4 `themen/`, 5 ESL, 5 IELTS, 6 Business), all live and
