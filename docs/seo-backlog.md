@@ -630,12 +630,22 @@ Checked the backlog against open-source tools on GitHub; this was the one clear 
    cloud sessions: Google needs a browser sign-in or a key file, and Bing sends its key in the URL,
    which the cloud key store can't inject. Test run (`sites_list`, `compare_engines`) passed.
 2. **Limits found in the test (keep):**
-   - Totals by query undercount Google badly: most Google queries are hidden. The test showed 4
-     Google clicks in 28 days by query, against ~70 a month by page. Use dimension `page` or
-     `date` for totals, `query` only for which queries show.
+   - Totals by query undercount Google badly: most Google queries are hidden. 26 Oct – 22 Nov,
+     `sc-domain:englishonline.training`: 4 clicks by query, **126 clicks / 6,967 impressions by
+     date** (CTR 1.8%, position 15.3). Use dimension `date` or `page` for Google totals, `query`
+     only for which queries show. `compare_engines` sums query rows, so never use it for totals.
+   - Bing: `analytics_query` ignores the `date` and `page` dimensions and returns query rows in
+     weekly batches; `compare_engines` with dimension `page` gives page totals. Same 28 days:
+     100 clicks / 869 impressions by query, **102 clicks / 2,241 impressions by page** (page rows
+     include searches Bing ties to no query). Bing has no `sc-domain:` property; the
+     `https://englishonline.training/` site was used, and its page rows included `activities.`
+     pages (unchecked whether that covers the whole host).
+   - So Google sends slightly more clicks than Bing (126 vs ~102), not fewer. On Bing, 4 of the
+     top 10 pages by clicks are on `activities.` (`abitur-operatoren`, `themen/linking-words`,
+     `present-tenses`, `passiv`); on Google, `activities.` showed only its home page (1 impression).
    - Bing positions read 0 for every query, so its "ranking divergence" flags are wrong. Bing
      clicks and impressions are fine. Keep the Bing CSV export for positions.
-   - The `https://englishonline.training/` property covers the main site only. Use
+   - The Google `https://englishonline.training/` property covers the main site only. Use
      `sc-domain:englishonline.training` (both hosts) or `sc-domain:activities.englishonline.training`.
    - Bing AI Performance (Tier 10.7) has no API. The tool's `genai_query_insights` only guesses
      which queries come from AI chats; keep the manual AI Performance export.
