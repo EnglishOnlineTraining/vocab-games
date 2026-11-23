@@ -361,6 +361,7 @@ Scope: Business English team training only. Source figures are direction only.
 3. **Industry vocabulary candidates** (HR, PM, finance, hospitality, IT/UX) · Shaun says which
    qualify. HR has a Quizlet set.
 4. **Scale Abitur and MSA · Shaun decides volume (P1 #5).** Tier 22 did the writing guides.
+   **MSA page 1 drafted 2026-11-23 (PR #PRN):** `msa-c-online-safety-workshop` (listening, tips matching, forum-reply writing). Rule 12 cap: merge after the week's other new pages are counted.
 5. **Done 2026-11-15 (PR #387).** Business-page internal links: proposal in `docs/business-english-link-edits.md`. Live check: 965, 1061 and 1019 already link to `/business-english/`; only 1167 needs one link (new sentence, apply after 5 Dec, Shaun OK). No live edit made.
 6. **"ielts" query** re-check once the IELTS hub article ships (not live; 0.7% CTR on 141 impr).
 

@@ -1,0 +1,145 @@
+{
+ "unit": "msa-c-online-safety-workshop",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "1:15",
+     "accept": [
+      "1:15"
+     ],
+     "label": "1. What time does the workshop start?",
+     "why": "The recording says the workshop starts at one fifteen."
+    },
+    "g2": {
+     "correct": "library",
+     "accept": [
+      "library"
+     ],
+     "label": "2. Where is the workshop?",
+     "why": "The recording says the workshop takes place in the library."
+    },
+    "g3": {
+     "correct": "police expert",
+     "accept": [
+      "police expert"
+     ],
+     "label": "3. Who leads the workshop?",
+     "why": "The recording says Ms Carter is an expert from a local police team."
+    },
+    "g4": {
+     "correct": "phone or tablet",
+     "accept": [
+      "phone or tablet"
+     ],
+     "label": "4. What to bring",
+     "why": "The recording says students should bring their own phone or tablet, not laptops."
+    },
+    "g5": {
+     "correct": "office list",
+     "accept": [
+      "office list"
+     ],
+     "label": "5. How to sign up",
+     "why": "The recording says to put your name on the list in the school office before Monday."
+    },
+    "g6": {
+     "correct": "strangers messaged",
+     "accept": [
+      "strangers messaged"
+     ],
+     "label": "6. What happened to Sam last month",
+     "why": "Sam says someone he did not know sent him messages."
+    },
+    "g7": {
+     "correct": "blocked",
+     "accept": [
+      "blocked"
+     ],
+     "label": "7. What Sam did",
+     "why": "Sam says he blocked the account but did not tell anyone."
+    },
+    "g8": {
+     "correct": "same password",
+     "accept": [
+      "same password"
+     ],
+     "label": "8. The girl's mistake",
+     "why": "The girl says she uses the same password for everything, and Ms Carter says that is a big mistake."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Strong passwords",
+     "accept": [
+      "Strong passwords"
+     ],
+     "label": "1. Jonas — one password everywhere",
+     "why": "The text says you should never use the same password twice."
+    },
+    "g2": {
+     "correct": "Privacy settings",
+     "accept": [
+      "Privacy settings"
+     ],
+     "label": "2. Priya — public profile",
+     "why": "The text says to set your profile to private so only friends can look at it."
+    },
+    "g3": {
+     "correct": "Think before you post",
+     "accept": [
+      "Think before you post"
+     ],
+     "label": "3. Tom — picture of a classmate",
+     "why": "The text says to always ask before you post a photo of someone else."
+    },
+    "g4": {
+     "correct": "Block and report",
+     "accept": [
+      "Block and report"
+     ],
+     "label": "4. Ella — rude message",
+     "why": "The text says to block the account, report it and tell an adult."
+    },
+    "g5": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "5. Club meets after school",
+     "why": "The text says the club meets at lunchtime."
+    },
+    "g6": {
+     "correct": "False",
+     "accept": [
+      "False"
+     ],
+     "label": "6. Members pay a fee",
+     "why": "The text says the club is free."
+    },
+    "g7": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "7. No sign-up needed",
+     "why": "The text says you do not need to sign up."
+    },
+    "g8": {
+     "correct": "True",
+     "accept": [
+      "True"
+     ],
+     "label": "8. Monthly poster",
+     "why": "The text says members make a poster each month."
+    }
+   }
+  }
+ }
+}
