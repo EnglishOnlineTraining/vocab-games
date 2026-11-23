@@ -23063,5 +23063,124 @@
     }
    }
   }
+ },
+ "uni-management-styles": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. The event director chooses the venue alone: “Book it today.”",
+     "correct": "autocratic",
+     "why": "The director decides alone and gives an instruction: autocratic."
+    },
+    "g2": {
+     "label": "2. The manager asks everyone’s view and the team decides together.",
+     "correct": "democratic",
+     "why": "The team is involved in the decision: democratic (participative)."
+    },
+    "g3": {
+     "label": "3. “You know this better than I do. Decide, and tell me afterwards.”",
+     "correct": "laissez-faire",
+     "why": "The manager hands the decision to the experts: laissez-faire (delegative)."
+    },
+    "g4": {
+     "label": "4. A bonus for 200 tickets; no place next year if you miss it.",
+     "correct": "transactional",
+     "why": "Targets, rewards and consequences are the transactional style."
+    },
+    "g5": {
+     "label": "5. The greenest festival in Europe; each person takes on a new challenge.",
+     "correct": "transformational",
+     "why": "A vision that inspires people to grow is transformational."
+    },
+    "g6": {
+     "label": "6. The manager does the admin and asks: “How can I help?”",
+     "correct": "servant",
+     "why": "Putting the team’s needs first and removing obstacles is servant leadership."
+    },
+    "g7": {
+     "label": "7. According to the text, most good managers ___.",
+     "correct": "adapt their style to the situation",
+     "why": "The last paragraph says they adapt to the situation, the task and the people."
+    }
+   }
+  },
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. Nobody likes a boss who checks every email. She tends to ___ her team.",
+     "correct": "micromanage",
+     "why": "To micromanage is to control every small detail of other people’s work."
+    },
+    "g2": {
+     "label": "2. She knows when to ___ tasks to others.",
+     "correct": "delegate",
+     "why": "To delegate a task to someone is to give it to them to do."
+    },
+    "g3": {
+     "label": "3. If the team doesn’t agree with the plan, you won’t get their ___.",
+     "correct": "buy-in",
+     "why": "Buy-in is people’s agreement and support for a plan."
+    },
+    "g4": {
+     "label": "4. Our manager gives us a lot of ___: we choose how and when we work.",
+     "correct": "autonomy",
+     "why": "Autonomy is the freedom to decide for yourself."
+    },
+    "g5": {
+     "label": "5. In a ___ organisation, decisions are made by senior management and passed down.",
+     "correct": "top-down",
+     "why": "Top-down: decisions come from the top and go down to staff."
+    },
+    "g6": {
+     "label": "6. She is very ___: she helps set up the stalls herself.",
+     "correct": "hands-on",
+     "why": "A hands-on manager is personally involved in the work."
+    },
+    "g7": {
+     "label": "7. Good training and trust ___ staff to solve problems without permission.",
+     "correct": "empower",
+     "why": "To empower someone is to give them the confidence and authority to act."
+    },
+    "g8": {
+     "label": "8. Before he changes the budget, the director will ___ the finance team.",
+     "correct": "consult",
+     "why": "To consult people is to ask for their views before deciding."
+    },
+    "g9": {
+     "label": "9. If something goes wrong, there is clear ___: everyone knows who is responsible.",
+     "correct": "accountability",
+     "why": "Accountability means being responsible for results and able to explain them."
+    },
+    "g10": {
+     "label": "10. The CEO can ___ a decision made by the team.",
+     "correct": "overrule",
+     "why": "To overrule a decision is to cancel it using higher authority."
+    }
+   }
+  },
+  "exC": {
+   "gaps": {
+    "g1": {
+     "label": "1. An autocratic manager usually makes a ___ decision.",
+     "correct": "top-down",
+     "why": "The autocratic manager decides alone, so the decision comes from the top."
+    },
+    "g2": {
+     "label": "2. Asks for everyone’s views, then decides alone: the manager is being ___.",
+     "correct": "consultative",
+     "why": "Listening first and then deciding alone is a consultative decision."
+    },
+    "g3": {
+     "label": "3. Keeps talking until every person agrees: the team is aiming for ___.",
+     "correct": "consensus",
+     "why": "Consensus means everyone agrees."
+    },
+    "g4": {
+     "label": "4. A laissez-faire manager often ___ the decision to the people who do the work.",
+     "correct": "delegates",
+     "why": "Laissez-faire managers give decisions to the team: they delegate."
+    }
+   }
+  }
  }
 }

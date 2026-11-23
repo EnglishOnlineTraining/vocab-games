@@ -1,0 +1,191 @@
+{
+ "unit": "uni-management-styles",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": true,
+   "gaps": {
+    "g1": {
+     "correct": "autocratic",
+     "accept": [
+      "autocratic"
+     ],
+     "label": "1. The event director chooses the venue alone: “Book it today.”",
+     "why": "The director decides alone and gives an instruction: autocratic."
+    },
+    "g2": {
+     "correct": "democratic",
+     "accept": [
+      "democratic"
+     ],
+     "label": "2. The manager asks everyone’s view and the team decides together.",
+     "why": "The team is involved in the decision: democratic (participative)."
+    },
+    "g3": {
+     "correct": "laissez-faire",
+     "accept": [
+      "laissez-faire"
+     ],
+     "label": "3. “You know this better than I do. Decide, and tell me afterwards.”",
+     "why": "The manager hands the decision to the experts: laissez-faire (delegative)."
+    },
+    "g4": {
+     "correct": "transactional",
+     "accept": [
+      "transactional"
+     ],
+     "label": "4. A bonus for 200 tickets; no place next year if you miss it.",
+     "why": "Targets, rewards and consequences are the transactional style."
+    },
+    "g5": {
+     "correct": "transformational",
+     "accept": [
+      "transformational"
+     ],
+     "label": "5. The greenest festival in Europe; each person takes on a new challenge.",
+     "why": "A vision that inspires people to grow is transformational."
+    },
+    "g6": {
+     "correct": "servant",
+     "accept": [
+      "servant"
+     ],
+     "label": "6. The manager does the admin and asks: “How can I help?”",
+     "why": "Putting the team’s needs first and removing obstacles is servant leadership."
+    },
+    "g7": {
+     "correct": "adapt their style to the situation",
+     "accept": [
+      "adapt their style to the situation"
+     ],
+     "label": "7. According to the text, most good managers ___.",
+     "why": "The last paragraph says they adapt to the situation, the task and the people."
+    }
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "multi": true,
+   "gaps": {
+    "g1": {
+     "correct": "micromanage",
+     "accept": [
+      "micromanage"
+     ],
+     "label": "1. Nobody likes a boss who checks every email. She tends to ___ her team.",
+     "why": "To micromanage is to control every small detail of other people’s work."
+    },
+    "g2": {
+     "correct": "delegate",
+     "accept": [
+      "delegate"
+     ],
+     "label": "2. She knows when to ___ tasks to others.",
+     "why": "To delegate a task to someone is to give it to them to do."
+    },
+    "g3": {
+     "correct": "buy-in",
+     "accept": [
+      "buy-in"
+     ],
+     "label": "3. If the team doesn’t agree with the plan, you won’t get their ___.",
+     "why": "Buy-in is people’s agreement and support for a plan."
+    },
+    "g4": {
+     "correct": "autonomy",
+     "accept": [
+      "autonomy"
+     ],
+     "label": "4. Our manager gives us a lot of ___: we choose how and when we work.",
+     "why": "Autonomy is the freedom to decide for yourself."
+    },
+    "g5": {
+     "correct": "top-down",
+     "accept": [
+      "top-down"
+     ],
+     "label": "5. In a ___ organisation, decisions are made by senior management and passed down.",
+     "why": "Top-down: decisions come from the top and go down to staff."
+    },
+    "g6": {
+     "correct": "hands-on",
+     "accept": [
+      "hands-on"
+     ],
+     "label": "6. She is very ___: she helps set up the stalls herself.",
+     "why": "A hands-on manager is personally involved in the work."
+    },
+    "g7": {
+     "correct": "empower",
+     "accept": [
+      "empower"
+     ],
+     "label": "7. Good training and trust ___ staff to solve problems without permission.",
+     "why": "To empower someone is to give them the confidence and authority to act."
+    },
+    "g8": {
+     "correct": "consult",
+     "accept": [
+      "consult"
+     ],
+     "label": "8. Before he changes the budget, the director will ___ the finance team.",
+     "why": "To consult people is to ask for their views before deciding."
+    },
+    "g9": {
+     "correct": "accountability",
+     "accept": [
+      "accountability"
+     ],
+     "label": "9. If something goes wrong, there is clear ___: everyone knows who is responsible.",
+     "why": "Accountability means being responsible for results and able to explain them."
+    },
+    "g10": {
+     "correct": "overrule",
+     "accept": [
+      "overrule"
+     ],
+     "label": "10. The CEO can ___ a decision made by the team.",
+     "why": "To overrule a decision is to cancel it using higher authority."
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": true,
+   "gaps": {
+    "g1": {
+     "correct": "top-down",
+     "accept": [
+      "top-down"
+     ],
+     "label": "1. An autocratic manager usually makes a ___ decision.",
+     "why": "The autocratic manager decides alone, so the decision comes from the top."
+    },
+    "g2": {
+     "correct": "consultative",
+     "accept": [
+      "consultative"
+     ],
+     "label": "2. Asks for everyone’s views, then decides alone: the manager is being ___.",
+     "why": "Listening first and then deciding alone is a consultative decision."
+    },
+    "g3": {
+     "correct": "consensus",
+     "accept": [
+      "consensus"
+     ],
+     "label": "3. Keeps talking until every person agrees: the team is aiming for ___.",
+     "why": "Consensus means everyone agrees."
+    },
+    "g4": {
+     "correct": "delegates",
+     "accept": [
+      "delegates"
+     ],
+     "label": "4. A laissez-faire manager often ___ the decision to the people who do the work.",
+     "why": "Laissez-faire managers give decisions to the team: they delegate."
+    }
+   }
+  }
+ }
+}
