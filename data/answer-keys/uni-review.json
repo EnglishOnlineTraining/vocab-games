@@ -68,60 +68,60 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "8",
-     "accept": [
-      "8"
-     ],
-     "label": "1. Chinese businesspeople wanting something in return"
-    },
-    "g2": {
      "correct": "gave",
      "accept": [
       "gave"
      ],
-     "label": "2. … the lecturer"
+     "label": "1. … the lecturer"
     },
-    "g3": {
-     "correct": "d",
-     "accept": [
-      "d"
-     ],
-     "label": "3. The Accounts Department's slow payment..."
-    },
-    "g4": {
-     "correct": "same length",
-     "accept": [
-      "same length"
-     ],
-     "label": "4. A good paraphrase is roughly the"
-    },
-    "g5": {
+    "g2": {
      "correct": "opening",
      "accept": [
       "opening"
      ],
-     "label": "5. We recommend"
+     "label": "2. We recommend"
     },
-    "g6": {
+    "g3": {
      "correct": "rose steadily",
      "accept": [
       "rose steadily"
      ],
-     "label": "6. Usage"
+     "label": "3. Usage"
     },
-    "g7": {
+    "g4": {
+     "correct": "accountability",
+     "accept": [
+      "accountability"
+     ],
+     "label": "4. If something goes wrong, there is clear"
+    },
+    "g5": {
      "correct": "a basic structure of ideas or rules that provides guidance",
      "accept": [
       "a basic structure of ideas or rules that provides guidance"
      ],
-     "label": "7. framework"
+     "label": "5. framework"
     },
-    "g8": {
+    "g6": {
      "correct": "anecdotal",
      "accept": [
       "anecdotal"
      ],
-     "label": "8. Personal stories rather than systematic research"
+     "label": "6. Personal stories rather than systematic research"
+    },
+    "g7": {
+     "correct": "d",
+     "accept": [
+      "d"
+     ],
+     "label": "7. The Accounts Department's slow payment..."
+    },
+    "g8": {
+     "correct": "Would it be possible to extend the loan of this book?",
+     "accept": [
+      "Would it be possible to extend the loan of this book?"
+     ],
+     "label": "8. To the library"
     }
    }
   },
@@ -130,60 +130,60 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "Would it be possible to extend the loan of this book?",
-     "accept": [
-      "Would it be possible to extend the loan of this book?"
-     ],
-     "label": "1. To the library"
-    },
-    "g2": {
      "correct": "because",
      "accept": [
       "because"
      ],
-     "label": "2. …move my seminar group,"
+     "label": "1. …move my seminar group,"
     },
-    "g3": {
+    "g2": {
      "correct": "if",
      "accept": [
       "if"
      ],
-     "label": "3. I was wondering"
+     "label": "2. I was wondering"
+    },
+    "g3": {
+     "correct": "same length",
+     "accept": [
+      "same length"
+     ],
+     "label": "3. A good paraphrase is roughly the"
     },
     "g4": {
-     "correct": "catch",
-     "accept": [
-      "catch"
-     ],
-     "label": "4. Sorry, I didn't quite"
-    },
-    "g5": {
-     "correct": "longer",
-     "accept": [
-      "longer"
-     ],
-     "label": "5. The"
-    },
-    "g6": {
-     "correct": "far",
-     "accept": [
-      "far"
-     ],
-     "label": "6. Cycling at night is"
-    },
-    "g7": {
-     "correct": "enough",
-     "accept": [
-      "enough"
-     ],
-     "label": "7. I haven’t got"
-    },
-    "g8": {
      "correct": "8",
      "accept": [
       "8"
      ],
-     "label": "8. i) Well, I had to build up my relationship again..."
+     "label": "4. Chinese businesspeople wanting something in return"
+    },
+    "g5": {
+     "correct": "catch",
+     "accept": [
+      "catch"
+     ],
+     "label": "5. Sorry, I didn't quite"
+    },
+    "g6": {
+     "correct": "longer",
+     "accept": [
+      "longer"
+     ],
+     "label": "6. The"
+    },
+    "g7": {
+     "correct": "far",
+     "accept": [
+      "far"
+     ],
+     "label": "7. Cycling at night is"
+    },
+    "g8": {
+     "correct": "enough",
+     "accept": [
+      "enough"
+     ],
+     "label": "8. I haven’t got"
     }
    }
   }
