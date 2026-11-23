@@ -670,7 +670,7 @@ Checked the backlog against open-source tools on GitHub; this was the one clear 
    cloud sessions (no reason given; an app update is the usual fix). So a cloud session can't run
    the tool. Run Search Console and Bing work in a local Mac session.
 5. **Moved to the tool:** the Tier 20 and 21 pulls and the monthly re-pull (Calendar).
-   `search-opportunities.js` still reads CSV exports. **Checked 2026-11-23 (PR #PRN):** the tool's
+   `search-opportunities.js` still reads CSV exports. **Checked 2026-11-23 (PR #423):** the tool's
    `--format=csv` does NOT fit: it writes the whole result as one JSON cell (columns `google,bing` by
    default; `--limit` is ignored, use `--rowLimit`). The importer now reads the tool's default JSON
    instead: `npx search-console-mcp run analytics_query --siteUrl=sc-domain:englishonline.training
