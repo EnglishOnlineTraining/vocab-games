@@ -37,7 +37,8 @@ If the unit is not finished (no answer key, failing its own check script), say s
 - **VOICE.md:** short sentences, one idea each, common words, lead with what the material is. No hype words, no
   promises of results, no exclamation marks, no lesson offers. Every claim must be true of the file.
 - **AI use is always disclosed**, in the form answers. Never hide it.
-- **Price: free (kostenlos)**, because the exercises are free on the site and eduki needs the same price everywhere.
+- **Price:** free (kostenlos) for single-topic worksheets; paid packs carry the price Shaun sets (see the
+  `eduki-worksheet` skill, "Free worksheet or paid pack"). Never invent a price; a clearly marked suggestion is fine.
 
 ## eduki
 
@@ -48,6 +49,7 @@ a common German word exists). Write it in this order:
 - **Beschreibung:** `Arbeitsblatt zum Thema "[Topic]" für den Englischunterricht Klasse [N]. Enthält [exercise types in
   German]. Mit Lernzielen, Differenzierung (Hilfen und Zusatzaufgaben), Partnerphasen, Punktevergabe ([total] Punkte),
   Lösungen, Erwartungshorizont und Hinweisen für Lehrkräfte. Auch als kostenlose interaktive Online-Übung verfügbar.`
+  The last sentence only when a free online version exists. For a paid pack, describe each section and give the page count.
   Drop any item the file does not contain (for example "Erwartungshorizont" when there is no open task).
 - **Tags:** Englisch, Klasse [N], school type (Gymnasium or Oberschule, plus Realschule/Hauptschule where it fits), topic
   keywords, Arbeitsblatt, CEFR level, grammar and skill keywords. No publisher or textbook names.
@@ -55,7 +57,7 @@ a common German word exists). Write it in this order:
   - Quellenverzeichnis: choose "im Material enthalten" and select the last page (the Quellenangaben).
   - KI-Tools: "Ja, ich habe KI-Tools verwendet", tool **Claude.ai (Anthropic)**, content type **Texte** (reading texts,
     task wording, gap texts).
-  - Preis: kostenlos.
+  - Preis: kostenlos (worksheet) or the price Shaun sets (pack).
 - If eduki asks to remove a "Claude account link", it means a URL in the file or the listing: re-run both check scripts.
 
 ## Payhip
