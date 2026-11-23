@@ -410,6 +410,8 @@ indexed. No technical fault; Google pruned pages that earned nothing. No traffic
    suggestions), ZUM / ZUM-Unterrichten, lehrer-online, a link from each 4teachers and eduki upload
    to its matching exercise, the school's website (if the school agrees), a guest post for
    eltabbjournal.com. Link to a specific exercise or `themen/` page, not only the homepage.
+   **Submission material ready 2026-11-23 (PR pending):** `docs/outside-links-submission-pack-2026-11.md`
+   ranks nine candidates by value and effort, with URL, process, copy and tags each. Shaun submits; none sent.
 4. School-page titles get search terms: done (#132, see 8 A5).
 5. Optional noindex of textbook-unit pages · Shaun names them (rule 9; `10g-cultural-diversity` stays).
 - **Also found:** page 842 draft (P2 #7: republish or 301 to `/2023/04/05/learning-english-online/`);
