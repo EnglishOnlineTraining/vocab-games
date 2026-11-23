@@ -36,7 +36,7 @@ disagree, the tier wins. Every live WordPress edit needs Shaun's OK (rule 7).
 | 2026-12-04 | Re-measure 2032 and 2038 after link-pass run 1 | 20 |
 | 2026-12-05 | Freeze on 1061, 1167, 2032, 2038, 2039, 2066, 965 ends; repoint pass and snippet rewrites can go live after a fresh export | 12.3, 12.8, 19 |
 | 2026-12-05 | `themen/` title test: batch 1 vs control in the monthly Bing AI export (batch 2 ~12-12) | 10.7, `docs/themen-ai-audit-2026-11.md` |
-| Early Dec | Monthly Bing exports (AI Performance, keywords, pages, IndexNow both sites) and Search Console re-pull | 10.7, 18.7, 21 |
+| Early Dec | Monthly pull: Search Console and Bing clicks/impressions through the `search-console` tool (Tier 26); Bing exports still for AI Performance, positions and IndexNow | 10.7, 18.7, 21, 26 |
 | 26 Nov – 3 Jan | Blog queue goes live: 2703 (26 Nov), 2765 (29 Nov), 2799 (2 Dec), 2800 (5 Dec), 2837 (8 Dec), 2838 (11 Dec), 2839 (14 Dec), 2849 (17 Dec, held), 2854 (20 Dec), 2855 (29 Dec), 2856 (3 Jan). Spot-check each live | 15b.6, 22 |
 
 ### P1 — highest value, do next
@@ -68,6 +68,7 @@ disagree, the tier wins. Every live WordPress edit needs Shaun's OK (rule 7).
 | 19 | Image attachments hold four posts' bare slugs, so clicks land on a PNG (mediation post: 2 clicks): rename the attachment slugs | Shaun OK, CC | 24.1 |
 | 20 | `/wilkommen/vor-und-nachteile-…-unterricht/` 404s (15 impr); the live `/willkommen/` page needs the redirect, or accept | Shaun | 24.2 |
 | 21 | Ideas from an outside SEO plan (2026-11-18): read the 9.9 preview test at 8–12 weeks, audit how the 155 discovered pages are linked, add OER directories and the repo link to the outside-link work | Shaun, CC | 25 |
+| 22 | Use the `search-console` tool for the December pull; check whether a newer version fixes Bing positions (they read 0) | Shaun, Mac | 26 |
 
 ### P3 — parked (low value now, or blocked)
 
@@ -120,8 +121,9 @@ Apply to every item. Most come from earlier tiers; the tier is named so the reas
   state weighting, length or which task types appear without a primary source (Tier 22).
 - **IndexNow.** Activities pushes skip when more than 50 pages change (`MAX_CHANGED_PAGES`, 18.4);
   on WordPress, batch metadata edits into one session (18.6). Google ignores IndexNow.
-- **Where to run.** Search Console and Bing work runs on the Mac (signed-in browser); cloud
-  sessions can't reach them and the Ahrefs connector returns "Insufficient plan".
+- **Where to run.** Search Console and Bing work runs on the Mac, through the `search-console`
+  tool (Tier 26). Cloud sessions can't reach either: the tool's keys live on the Mac, and the
+  Ahrefs connector returns "Insufficient plan".
 - **Duplicates.** Stub + `jetpack_seo_noindex` is the house pattern; a 301 needs Shaun in wp-admin.
 
 ## Facts learned (non-obvious, keep)
@@ -439,8 +441,9 @@ Main site only; monthly (positions need weeks). Run on the Mac. A cloud task rem
 **Prompt (paste into the Mac session):**
 
 > Read `docs/seo-backlog.md` Tier 12.1, 17.5, 19.2 and 20, and CLAUDE.md "Known traps".
-> 1. In Search Console (domain property `englishonline.training`, last 3 months), export
->    Performance → Queries and Pages for the main domain. Save the export outside the repo.
+> 1. With the `search-console` tool (Tier 26), `analytics_query` on `sc-domain:englishonline.training`,
+>    last 3 months: once with dimension `page` (page totals), once with `page,query`. Keep main-site
+>    rows only. If the tool is unavailable, export Performance → Queries and Pages instead, outside the repo.
 > 2. Targets: main-site pages with a query at position 4–20 and ≥ 50 impressions (use page totals
 >    where queries are hidden). Each target's anchors are its top 1–3 queries, or a close natural
 >    variant in the post's language.
@@ -477,7 +480,10 @@ Main site only; monthly (positions need weeks). Run on the Mac. A cloud task rem
 ### Tier 21 — Bing queries as a second demand signal (2026-11-07)
 Bing shows query rows Search Console hides. CC analyses and proposes; Shaun approves every live edit.
 1. Merge both exports per page; mark each query GSC only / Bing only / both.
-2. **Export (Shaun):** last 3 months, Queries and Pages, from both tools; save outside the repo.
+2. **Pull (Shaun, Mac):** last 3 months, with the `search-console` tool (Tier 26): Google
+   `analytics_query` on the `sc-domain:` property, dimensions `page` and `page,query`; Bing
+   clicks and impressions the same way. **Bing positions still come from the Bing CSV export**
+   (the tool returns 0). Save any export outside the repo.
 3. **Targets:** main-site and `themen/` pages with a cluster at 5–20, or high impressions and low CTR.
    Respect the freeze (12.3).
 4. Filter out of scope (see "Standing rules").
@@ -485,7 +491,7 @@ Bing shows query rows Search Console hides. CC analyses and proposes; Shaun appr
 
    > Read `docs/seo-backlog.md` Tiers 12, 20 and 21, and CLAUDE.md rules 7–9. For ONE page I give you
    > (URL, primary keyword, which money page it feeds — Tier 12.1), the page text, and the Search
-   > Console and Bing query exports:
+   > Console and Bing query data (`search-console` tool; Bing positions from the CSV export):
    > 1. Merge both lists. Group close variants into clusters. Mark GSC only / Bing only / both.
    > 2. Per cluster, classify: covered well / covered weakly / not covered / wrong intent (needs
    >    another page). Quote the part of the page that covers it, or say "none".
@@ -614,3 +620,25 @@ adopted: Tier B merges (rule 9; GitHub Pages has no 301s) and site-wide template
    genuine editorial listings; no mass submissions or link swaps (Not adopted).
 4. **Link the public repository from `/about/` (2224) · Shaun OKs, CC drafts.** It shows a maintained
    educational project. Rule 8 list first; use `context: "edit"`.
+
+### Tier 26 — Search Console and Bing through an API tool (2026-11-23) · Shaun + CC
+Checked the backlog against open-source tools on GitHub; this was the one clear gain. The others
+(link, schema, IndexNow and meta checks) are already covered by this repo's own scripts.
+1. **Done 2026-11-23: `search-console-mcp` (npm, MIT, v2.1.4) on the Mac.** Set up with
+   `npx -y search-console-mcp setup` (Google sign-in) and `setup --engine=bing` (API key), added to
+   Claude Code as `search-console`. Read-only by default; keys stored encrypted on the Mac. Not in
+   cloud sessions: Google needs a browser sign-in or a key file, and Bing sends its key in the URL,
+   which the cloud key store can't inject. Test run (`sites_list`, `compare_engines`) passed.
+2. **Limits found in the test (keep):**
+   - Totals by query undercount Google badly: most Google queries are hidden. The test showed 4
+     Google clicks in 28 days by query, against ~70 a month by page. Use dimension `page` or
+     `date` for totals, `query` only for which queries show.
+   - Bing positions read 0 for every query, so its "ranking divergence" flags are wrong. Bing
+     clicks and impressions are fine. Keep the Bing CSV export for positions.
+   - The `https://englishonline.training/` property covers the main site only. Use
+     `sc-domain:englishonline.training` (both hosts) or `sc-domain:activities.englishonline.training`.
+   - Bing AI Performance (Tier 10.7) has no API. The tool's `genai_query_insights` only guesses
+     which queries come from AI chats; keep the manual AI Performance export.
+3. **Moved to the tool:** the Tier 20 and 21 pulls and the monthly re-pull (Calendar).
+   `search-opportunities.js` still reads CSV exports; whether the tool's `--format=csv` output
+   fits it is unchecked.
