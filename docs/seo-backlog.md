@@ -672,3 +672,20 @@ Checked the backlog against open-source tools on GitHub; this was the one clear 
 5. **Moved to the tool:** the Tier 20 and 21 pulls and the monthly re-pull (Calendar).
    `search-opportunities.js` still reads CSV exports; whether the tool's `--format=csv` output
    fits it is unchecked.
+
+### Tier 27 — Blog keyword loop open items (2026-11-19) · CC
+From the weekly blog-keyword-drafts run of 2026-11-18 (queue full to 2027-01-09, so no drafts).
+Snapshot: Search Console, 90 days to 2026-11-18, in Shaun's local `blog-loop/keywords/`. Post 2032
+and "esg terminology" stay in Tier 23 items 1 and 4. _Brought onto main 2026-11-23, renumbered from 25 (taken by PR #406)._
+
+1. **Re-measure the two refreshes.** Post 1506 ("english for real estate", 171 impr, pos 22.4,
+   refreshed 2026-10-28): measure from 2026-12-09. Page 1036 ("false friends german english",
+   18 impr, pos 18.9, refreshed 2026-11-06): measure from 2026-12-18. Baselines are in `posts.json`.
+2. **Email cluster.** "bad email examples" 53 impr at pos 19.6 and "example of a poorly written
+   business email" 25 at 28.6, while "good vs bad email examples" is at 5 to 8. Find which page ranks
+   for each (`query=!…&breakdown=page`) before deciding new post or refresh. After 2026-12-05 if
+   it is 1061 (Tier 12.3 freeze).
+3. **"corporate english training" (29 impr, pos 19.7) and "mobile corporate english training" (46,
+   25.3).** HR/L&D audience. Find the ranking page; if none is ours, a new post once the queue has room.
+4. **"past continuous" (28, 17.7) and "past progressive examples" (66, 44.5).** Check whether an
+   activities exercise page ranks; if so a post may target it and link to it.
