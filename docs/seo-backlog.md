@@ -41,7 +41,7 @@ disagree, the tier wins. Every live WordPress edit needs Shaun's OK (rule 7).
 
 ### P1 — highest value, do next
 
-_2026-11-19 drafts (read-only, nothing applied; PR #418): WP→activities links run 2 → `docs/wp-activities-links-run2.md` (23 rows); backlink candidates (19.3) → `docs/backlink-candidates-2026-11.md`; snippet drafts for posts 2520 and 1659 → `docs/snippet-drafts-2026-11.md`; Organization node, title/H1 and slug clashes → `docs/wp-fixes-2026-11-19.md`._
+_2026-11-19 drafts (read-only, nothing applied; PR #419): WP→activities links run 2 → `docs/wp-activities-links-run2.md` (23 rows); backlink candidates (19.3) → `docs/backlink-candidates-2026-11.md`; snippet drafts for posts 2520 and 1659 → `docs/snippet-drafts-2026-11.md`; Organization node, title/H1 and slug clashes → `docs/wp-fixes-2026-11-19.md`._
 
 | # | Item | Waits on | Tier |
 |---|---|---|---|
@@ -67,7 +67,7 @@ _2026-11-19 drafts (read-only, nothing applied; PR #418): WP→activities links 
 | 15 | Main-site page fixes: homepage title says "Teams", H1 doesn't; `/english-for-students/` and `/fuer-eltern/` opener + FAQ (rule 8 list first); empty `alt` on `/common-questions-about-learning-english/` | Shaun | 19b.3, 19b.5, 19b.7 |
 | 16 | LinkedIn article "what to check before booking" (drafted in `docs/linkedin/`): Shaun posts; re-run the item-1 questions 8 weeks later | Shaun | 16 |
 | 18 | `9g-australia-vocab-practice` description names the textbook (rule 4); it also ranks for the unit's searches. Ask before changing | Shaun | 8 |
-| 19 | Image-slug clashes: **fixed in the theme 2026-11-19** (1.3.13 redirect prefers a same-slug post); re-checked 2026-11-23 (PR #418): 4 of 5 bare slugs land on their post. **Left, Shaun in wp-admin:** one Redirection 301 `/interactive-exercises-in-class-screens/` → `/2026/10/18/interactive-exercises-classroom-screens/` (still returns the PNG). Detail: `docs/wp-fixes-2026-11-19.md` §2 | Shaun | 24.1 |
+| 19 | Image-slug clashes: **fixed in the theme 2026-11-19** (1.3.13 redirect prefers a same-slug post); re-checked 2026-11-23 (PR #419): 4 of 5 bare slugs land on their post. **Left, Shaun in wp-admin:** one Redirection 301 `/interactive-exercises-in-class-screens/` → `/2026/10/18/interactive-exercises-classroom-screens/` (still returns the PNG). Detail: `docs/wp-fixes-2026-11-19.md` §2 | Shaun | 24.1 |
 | 20 | `/wilkommen/vor-und-nachteile-…-unterricht/` 404s (15 impr); the live `/willkommen/` page needs the redirect, or accept | Shaun | 24.2 |
 | 21 | Ideas from an outside SEO plan (2026-11-18): read the 9.9 preview test at 8–12 weeks, audit how the 155 discovered pages are linked, add OER directories and the repo link to the outside-link work | Shaun, CC | 25 |
 | 22 | Use the `search-console` tool for the December pull; check whether a newer version fixes Bing positions (they read 0) | Shaun, Mac | 26 |
