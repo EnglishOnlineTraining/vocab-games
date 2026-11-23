@@ -612,7 +612,7 @@ adopted: Tier B merges (rule 9; GitHub Pages has no 301s) and site-wide template
    Recrawl on a site with low crawl demand takes weeks to months, so treat 11-24 as an early read and
    decide at 8–12 weeks from 10-12 (about 2026-12-07 to 2027-01-04). Shaun decides when to remove the
    `PREVIEW` blocks. Don't judge the test sooner.
-2. **Done 2026-11-23 (PR #TBD): audit of discovery of the 155 discovered-not-indexed pages · CC.** Result in
+2. **Done 2026-11-23 (PR #418): audit of discovery of the 155 discovered-not-indexed pages · CC.** Result in
    `docs/seo-discovery-audit-2026-11-23.md`: none JS-only; one orphan fixed; template proposals listed. Original brief: For each, list the pages that link
    to it in the raw HTML (not after JavaScript). Flag any reached only through JavaScript-built card
    lists. Raw HTML links fix a discovery gap; if all have raw links, drop this item.
