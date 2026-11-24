@@ -8,6 +8,7 @@ Agents for this repo, ranked by payoff. `docs/agent-use-cases.md` has the full d
 | # | Agent | Notes |
 |---|-------|-------|
 | 11 | Item analysis (quality loop) | Built (#178); weekly `item-analysis.yml` plus manual `--csv` runs; fixes land as PRs (e.g. #242, #366). Spec below. Open questions at the end of the spec |
+| 12 | Social posts (weekly loop) | Set up 2026-11-24. Sunday scheduled task `social-weekly` follows the `social-posts` skill: checks last week's sends, learns from Shaun's edits, reads GA4 UTM results, opens one PR of next week's posts (Facebook 3, LinkedIn 2, X 2). Merging = approval; Make (scenario 8779277) starts `social-post.yml` hourly 07–21. Log: `_social/results.md`. Setup and tokens: `docs/social-media-setup.md` |
 
 ## Not started
 

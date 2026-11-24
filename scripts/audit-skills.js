@@ -136,6 +136,8 @@ const IGNORE_PATHS = new Set([
   'past-progressive-gap-fill-exercise.png', // naming example in eol-blog-writer
   // youtube-exercise-demo: per-video files in ~/Movies/eol-demos/<unit>/, not the repo
   'chapters.txt', 'timeline.json', 'writing.json', 'youtube.md',
+  // social-posts: the blog loop's log in ~/Claude Files/blog-loop/, not the repo
+  'posts.json',
 ]);
 
 // WordPress MCP / API references that look like file paths but aren't

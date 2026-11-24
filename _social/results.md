@@ -4,6 +4,12 @@ What each week's posts brought, from the GA4 "Social campaigns" report (sessions
 `utm_campaign`). The weekly run appends one short section and uses it to pick the next posts.
 Credits and token events go here too.
 
+## Lessons
+
+One line each, from posts Shaun deleted or rewrote before merging. Follow all of them.
+
+- (none yet)
+
 ## 2026-11-24 — setup
 
 - Test posts sent: Facebook (London slang), LinkedIn (Abitur packs), X (articles). Sent before UTM

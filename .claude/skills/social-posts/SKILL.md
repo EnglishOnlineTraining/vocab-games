@@ -49,28 +49,44 @@ Work in your own worktree on a new branch from `origin/main` (CLAUDE.md rule 5).
 
 1. **Check last week.** `git show origin/main:_social/posted.json` against the files in
    `_social/posts/`: list anything `missed` or still unsent past its time. Read the last runs:
-   `gh run list --workflow social-post --limit 30` and `gh run view <id> --log` for failures.
+   `gh run list --workflow "Social media posts" --limit 30` and `gh run view <id> --log` for failures.
    Fix code problems in the same PR if small; otherwise report them.
-2. **Warnings** (in the PR body and the report, from 14 days before):
+2. **Learn from Shaun's edits.** For last week's merged PR (`gh pr list --search "Social posts, week of"
+   --state merged --limit 1`), compare what you proposed with what was merged
+   (`gh pr view <n> --json commits`, `git diff <first commit> <merge commit> -- _social/posts`).
+   Every post he deleted or rewrote is a lesson: add one line to the "Lessons" list in
+   `_social/results.md` and follow every lesson there from now on.
+3. **Warnings** (in the PR body and the report, from 14 days before):
    LinkedIn token expires about 60 days after it was set (`gh secret list`, `LINKEDIN_TOKEN` date);
    GitHub token in the Make scenario expires 2027-11-24; X credits: ask Shaun to glance at
    Billing → Credits if more than 15 X posts went out since the last top-up noted in
-   `_social/results.md`.
-3. **What worked.** If the GA4 "Social campaigns" scheduled email exists (Gmail:
+   `_social/results.md`. Also say if the Make scenario "Social posts: start GitHub workflow hourly
+   07-21" (ID 8779277) shows errors (Make connector, `executions_list`, status 3).
+4. **What worked.** If the GA4 "Social campaigns" scheduled email exists (Gmail connector:
    `from:noreply-analytics@google.com "Social" newer_than:8d`), read its `report.csv`: sessions by
    `utm_source` and `utm_campaign` (= post file name). Note the top and bottom posts in
    `_social/results.md` (append one dated section; keep it short). Use it: more of what brought visits,
-   less of what didn't. GA4 Direct traffic is mostly students in class, so ignore it here.
-4. **Pick content** for next Mon–Fri, in this order: pages and blog posts that went live in the last
-   two weeks (`git log --since='14 days ago' --diff-filter=A --name-only origin/main -- '*.html'`,
-   and the WordPress posts published or scheduled for the week); a seasonal hook; then evergreen pages
-   that did well in `_social/results.md` or in Search Console. Don't repeat a page posted to the same
-   network in the last 6 weeks (`_social/posts/` file names).
-5. **Write** the posts (table above), then `node scripts/social-post.js --check` and the fact-check.
-6. **Open one PR**: "Social posts, week of <Monday date>". Body: a table (when, network, page, text),
-   the step-1 findings and step-2 warnings. Shaun edits or deletes files in the PR before merging.
+   less of what didn't. GA4 Direct traffic is mostly students in class, so ignore it here. If the email
+   doesn't exist yet, say so in the report once.
+5. **Pick content** for next Mon–Fri, from these sources in this order:
+   - Exercise pages that went live in the last two weeks:
+     `git log --since='14 days ago' --diff-filter=A --name-only origin/main -- '*.html'`.
+   - Blog posts published or scheduled for the coming week: the blog loop's log
+     (posts.json in the blog-loop folder of ~/Claude Files), checked against WordPress (WordPress.com connector,
+     site 65893384, posts with status `publish` or `future`). Post a scheduled blog post only on or
+     after its publish date, and link its real URL.
+   - A seasonal hook (exam dates, holidays), dates checked.
+   - Evergreen pages: the best in `_social/results.md`, then pages with Search Console impressions
+     (Search Console connector, last 28 days, `activities.englishonline.training` and
+     `englishonline.training`). Skip anything in `data/noindex.json`, timed tests and class-only
+     unit pages for X and LinkedIn.
+   Don't repeat a page posted to the same network in the last 6 weeks (`_social/posts/` file names).
+6. **Write** the posts (table above), then `node scripts/social-post.js --check` and the fact-check.
+7. **Open one PR**: "Social posts, week of <Monday date>". Body: a table (when, network, page, text),
+   the step-1 findings and step-3 warnings. Shaun edits or deletes files in the PR before merging.
    Don't push to `main`, don't merge.
-7. **Report** in 3–5 lines: PR link, what's in it, anything that needs Shaun.
+8. **Report** in 3–5 lines: PR link, what's in it, anything that needs Shaun. Questions for Shaun go
+   in the report (the coordinator asks him), never in a pop-up from a scheduled run.
 
 ## When Shaun asks for a single post
 
