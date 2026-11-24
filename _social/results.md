@@ -8,7 +8,7 @@ Credits and token events go here too.
 
 One line each, from posts Shaun deleted or rewrote before merging. Follow all of them.
 
-- (none yet)
+- 2026-11-24: business-English pages (e.g. useful phrases for business emails) suit LinkedIn as well as Facebook: LinkedIn is for professionals too, not only teachers.
 
 ## 2026-11-24 — setup
 

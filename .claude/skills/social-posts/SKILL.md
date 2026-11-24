@@ -16,7 +16,7 @@ through an API directly. Claude owns everything up to the PR, and the checks aft
 | Network | Audience | Posts a week | Voice |
 |---|---|---|---|
 | `facebook` | learners (school and adult), English | 3 | "you"; one skill or task; CTA = the free exercise |
-| `linkedin` | teachers, English, colleague to colleague | 2 | classroom use, level, assessment; CTA = free exercises for their class |
+| `linkedin` | teachers **and** professionals/HR, English | 2 | teachers: classroom use, level, assessment, CTA = free exercises for their class; professionals: business English pages (`be-*`, business emails, meetings), CTA = "Need English training for your team? Get in touch." Aim for one of each a week |
 | `x` | learners and teachers, English | 2 | more casual allowed, max one emoji, ≤ 280 chars (a link counts 23) |
 
 - One file per network when the audiences differ (they usually do). Same page on two networks is fine
