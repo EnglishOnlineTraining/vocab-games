@@ -21,6 +21,7 @@
  * Search Console import — the web export (Performance → Export → CSV), unzipped:
  *   node scripts/search-opportunities.js --csv path/to/export-folder
  *   node scripts/search-opportunities.js --csv path/to/Queries.csv
+ *   A search-console-mcp JSON file works too (see readToolJson); its CSV output does not.
  *   Options: --min-impr N (default 20), --ratio R (default 0.5)
  *   Prints leaks (page 1, CTR far below the export's own CTR for that
  *   position) for queries and pages, then gaps (position past 10, zero clicks).
@@ -253,7 +254,23 @@ function toDecimal(s) {
 // header is checked against both the English and the German UI wording.
 const HEADER_CHECKS = [/cli|kli/i, /impr/i, /ctr/i, /pos/i];
 
+// search-console-mcp (Tier 26.5): `run analytics_query --engine=google --dimensions=query|page`
+// prints {"google":[{keys:[k],clicks,impressions,ctr,position}]} as JSON. Its --format=csv puts that whole
+// array in ONE cell, so it can't be imported; save the default JSON output to a .json file instead.
+// One dimension only: a row with several keys can't say which is the query.
+function readToolJson(file) {
+  const j = JSON.parse(fs.readFileSync(file, 'utf8'));
+  const rows = Array.isArray(j) ? j : j.google;
+  if (!Array.isArray(rows)) throw new Error(`${file}: expected an array or {"google": [...]} (run with --engine=google)`);
+  return rows.map(r => {
+    if (!Array.isArray(r.keys) || r.keys.length !== 1) throw new Error(`${file}: export one dimension (query or page), not ${JSON.stringify(r.keys)}`);
+    return { key: String(r.keys[0]).trim(), clicks: r.clicks || 0, impressions: r.impressions || 0,
+      ctr: r.impressions ? r.clicks / r.impressions : 0, position: r.position || 0 };
+  }).filter(r => r.key && r.impressions > 0);
+}
+
 function readGscCsv(file) {
+  if (/\.json$/i.test(file)) return readToolJson(file);
   const rows = parseCsv(fs.readFileSync(file, 'utf8'));
   const header = rows[0] || [];
   const ok = header.length >= 5 && HEADER_CHECKS.every((re, i) => re.test(header[i + 1]));
@@ -342,6 +359,7 @@ function locateExport(p) {
     if (!queries) throw new Error(`${p} has no Queries.csv — unzip the Search Console export into it`);
     return { queries, pages: pick('pages.csv') };
   }
+  if (/\.json$/i.test(p)) return /^https?:/.test(readToolJson(p)[0]?.key || '') ? { queries: null, pages: p } : { queries: p, pages: null };
   const first = (parseCsv(fs.readFileSync(p, 'utf8'))[0] || [''])[0].toLowerCase();
   return /page|seite/.test(first) ? { queries: null, pages: p } : { queries: p, pages: null };
 }
