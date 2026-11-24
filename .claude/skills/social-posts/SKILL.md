@@ -19,6 +19,8 @@ through an API directly. Claude owns everything up to the PR, and the checks aft
 | `linkedin` | teachers **and** professionals/HR, English | 2 | teachers: classroom use, level, assessment, CTA = free exercises for their class; professionals: business English pages (`be-*`, business emails, meetings), CTA = "Need English training for your team? Get in touch." Aim for one of each a week |
 | `x` | learners and teachers, English | 2 | more casual allowed, max one emoji, ≤ 280 chars (a link counts 23) |
 
+- Not covered: Reddit and YouTube (see `docs/social-media-setup.md`), and XING (skipped, Shaun
+  2026-11-24: no posting API, and no manual drafts wanted). Don't propose them again.
 - One file per network when the audiences differ (they usually do). Same page on two networks is fine
   with different text; never the same text twice.
 - X costs about $0.20 per post with a link (pay-per-use credits). Don't add X posts beyond the plan.
