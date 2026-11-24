@@ -26,7 +26,7 @@ through an API directly. Claude owns everything up to the PR, and the checks aft
 - X costs about $0.20 per post with a link (pay-per-use credits). Don't add X posts beyond the plan.
 - `at:` times: Berlin time with offset (`+01:00` winter, `+02:00` from the last Sunday of March to the
   last Sunday of October), **between 07:00 and 21:00** (the Make timer runs hourly 07–21, so a post goes
-  out up to an hour after its time). Spread across Mon–Fri; at most one post per network a day.
+  out up to an hour after its time). Spread across weekdays; at most one post per network a day.
   Good slots: Facebook 17:00–19:00, LinkedIn 08:00–09:00 or 12:00, X 12:00–18:00.
 - File name `YYYY-MM-DD-short-name-<network>.txt` (date = the `at:` date).
 
@@ -45,7 +45,11 @@ through an API directly. Claude owns everything up to the PR, and the checks aft
   Submissions go to Shaun, not to other teachers: never tell teachers the work "comes back to you".
 - Seasonal hooks only when real: exam dates, holidays, Halloween etc. Check dates before using them.
 
-## Weekly run (Sunday)
+## Weekly run (Monday 08:00)
+
+Shaun's Mac is often off at weekends, so the run is on Monday, after the GA4 email (Mondays 07:00).
+It covers the 7 days from Tuesday to the following Monday, weekdays only. Shaun merges the PR on
+Monday; never time a post for the run day itself.
 
 Work in your own worktree on a new branch from `origin/main` (CLAUDE.md rule 5). Then:
 
@@ -79,7 +83,7 @@ Work in your own worktree on a new branch from `origin/main` (CLAUDE.md rule 5).
    Write each change and the numbers behind it in `_social/results.md` and in the PR body
    ("Mix change: … because …"), so Shaun sees it before merging. If a change is big (dropping a
    network, adding a new audience), propose it in the report instead of doing it.
-5. **Pick content** for next Mon–Fri, from these sources in this order:
+5. **Pick content** for Tuesday to the following Monday, from these sources in this order:
    - Exercise pages that went live in the last two weeks:
      `git log --since='14 days ago' --diff-filter=A --name-only origin/main -- '*.html'`.
    - Blog posts published or scheduled for the coming week: the blog loop's log
@@ -93,7 +97,7 @@ Work in your own worktree on a new branch from `origin/main` (CLAUDE.md rule 5).
      unit pages for X and LinkedIn.
    Don't repeat a page posted to the same network in the last 6 weeks (`_social/posts/` file names).
 6. **Write** the posts (table above), then `node scripts/social-post.js --check` and the fact-check.
-7. **Open one PR**: "Social posts, week of <Monday date>". Body: a table (when, network, page, text),
+7. **Open one PR**: "Social posts, week of <Tuesday date>". Body: a table (when, network, page, text),
    the step-1 findings and step-3 warnings. Shaun edits or deletes files in the PR before merging.
    Don't push to `main`, don't merge.
 8. **Report** in 3–5 lines: PR link, what's in it, anything that needs Shaun. Questions for Shaun go
