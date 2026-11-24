@@ -417,6 +417,10 @@ schoolchildren. Shaun chose to keep Google and ask first.
 - A "Cookie-Einstellungen" button is added to the page footer (`.eol-footer .legal`, else
   `footer`, else the end of `<body>`). It clears the choice and shows the banner again.
 - Inside an iframe (`klasse7-mini` on WordPress) there is no banner and no GTM.
+- **What GTM sends (2026-11-24):** the container held no tags until 2026-11-24, so the activities
+  site sent nothing to GA4. It now has one Google Tag, `G-433XX61W7J`: the "Activities" web stream of
+  the englishonline.training GA4 property (Shaun set it up in Tag Manager; nothing changed here).
+  GA4 records only visitors who accept the banner.
 - **Don't add GTM, GA or any other tracker back as a plain `<script>`.** Load it from
   `loadGtm()`-style code behind the choice, and add it to the privacy policy.
 - **Microsoft Clarity** (project `z7d6a7n9ul`, added 2026-11-02) loads from `loadGtm()` with GTM,
