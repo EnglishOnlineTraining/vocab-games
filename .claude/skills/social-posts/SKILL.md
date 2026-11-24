@@ -122,7 +122,9 @@ nothing adds them on the way: `?utm_source=xing&utm_medium=social&utm_campaign=<
   offer: "Sie suchen Englischtraining für Ihr Team? Schreiben Sie mir." Same fact-check as every post.
 - **LinkedIn group: at most one suggestion a week, only when it fits.** Groups come from
   `_social/linkedin-groups.md`, which lists the groups Shaun has joined and each group's rules. Suggest
-  only a listed group whose rules allow this kind of post, and say in one line why it fits. Write it as
+  only a group in its table, matched to the page by the "Fits" column, and say in one line why it fits.
+  Rules "not checked": add "Check the group rules before posting." Don't suggest the same group two
+  weeks running, and rotate through the groups. Write it as
   a question or useful tip for that group, with the link last, not a plain ad. If the file lists no
   groups, skip the suggestion and say once in the report that Shaun can add groups there.
 
