@@ -17,6 +17,8 @@ The post text. Blank lines are kept.
 - `to:` any of `facebook`, `linkedin`, `x`. Write a separate file per network when the audiences
   need different text (Facebook = learners, LinkedIn = teachers).
 - `link:` optional. Facebook and LinkedIn show it as a preview card; on X it is added after the text.
+  Links to our own sites get `utm_source=<network>&utm_medium=social&utm_campaign=<file name>` added
+  when sent, so GA4 shows which post brought each visit. Write the plain URL.
 - X: 280 characters, a link counts as 23. `node scripts/social-post.js --check` tests every file.
 - To cancel a post before it goes out, delete its file on `main`.
 - Reddit and YouTube are not automated: Reddit's learner communities ban scheduled self-promotion,

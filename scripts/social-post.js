@@ -77,7 +77,19 @@ function need(env, ...names) {
   return names.map(n => env[n]);
 }
 
+// Tags links to our own sites so GA4 shows which network and post brought each visit.
+function utm(link, network, file) {
+  if (!link) return link;
+  const u = new URL(link);
+  if (!/(^|\.)englishonline\.training$/.test(u.hostname) || u.searchParams.has('utm_source')) return link;
+  u.searchParams.set('utm_source', network);
+  u.searchParams.set('utm_medium', 'social');
+  u.searchParams.set('utm_campaign', file.replace(/\.txt$/, ''));
+  return u.toString();
+}
+
 async function send(network, post, env, fetch) {
+  post = { ...post, link: utm(post.link, network, post.file) };
   let res;
   if (network === 'facebook') {
     const [page, token] = need(env, 'FB_PAGE_ID', 'FB_PAGE_TOKEN');
@@ -150,4 +162,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { parse, oauthHeader, run };
+module.exports = { parse, oauthHeader, run, utm };
