@@ -98,7 +98,7 @@ request via `ielts-exercise-draft`.
 ### Email capture · mostly done
 Own `signup.js` forms on all lead magnets (2026-10-15, #145); MSA practise results carry a signup
 (#211); corporate opt-in on 1965 (2026-10-29). **Open:** Open #3 and #4. The old homepage hero
-button ("Let's start a conversation") went with the `pub/ixion` theme.
+button ("Let's start a conversation") went with the `pub/ixion` theme. Hero button to a MailerLite form: proposal 2026-11-23 (PR #430), `docs/wp-hero-button-proposal.md`; switch on Welcome Sequence — Website Subscribers first.
 
 ### Exam material (Abitur) · mostly done
 `abitur-englisch-2027.html` checked against the Berlin Prüfungsschwerpunkte, Fachbrief 9 and the
