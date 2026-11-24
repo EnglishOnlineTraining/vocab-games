@@ -1,0 +1,91 @@
+{
+ "unit": "uni-b2-project-plan",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": true,
+   "gaps": {
+    "g1": {
+     "correct": "'ll have sent",
+     "accept": [
+      "'ll have sent"
+     ],
+     "label": "1. By 17 December we ___ the survey to all 200 students, so the results will be ready after the break.",
+     "why": "By + a deadline takes the future perfect: the sending is finished by then."
+    },
+    "g2": {
+     "correct": "'ll be training",
+     "accept": [
+      "'ll be training"
+     ],
+     "label": "2. Please don't call on Monday morning: I ___ the volunteers from nine until twelve.",
+     "why": "The future continuous describes an action in progress at a future time."
+    },
+    "g3": {
+     "correct": "on",
+     "accept": [
+      "on"
+     ],
+     "label": "3. The signs are already up and the rules are agreed, so we are well ___ track.",
+     "why": "The fixed phrase is on track: making the expected progress."
+    },
+    "g4": {
+     "correct": "due",
+     "accept": [
+      "due"
+     ],
+     "label": "4. The final report is ___ on 31 January, so we need a first draft before the exams.",
+     "why": "Due on a date means it must be handed in by then."
+    },
+    "g5": {
+     "correct": "schedule",
+     "accept": [
+      "schedule"
+     ],
+     "label": "5. The booths took two weeks longer than planned. We are now behind ___, so something has to go.",
+     "why": "Behind schedule means later than planned; a calendar or agenda is not a plan's timing."
+    },
+    "g6": {
+     "correct": "delegate",
+     "accept": [
+      "delegate"
+     ],
+     "label": "6. You have too much to do. Why don't you ___ the poster design to one of the volunteers?",
+     "why": "Delegate a task to someone means give them the work and responsibility."
+    },
+    "g7": {
+     "correct": "'ll have been waiting",
+     "accept": [
+      "'ll have been waiting"
+     ],
+     "label": "7. By the time the campus reopens on 12 January, we ___ for the noise data for almost a month.",
+     "why": "By the time + a duration up to a future point needs the future perfect continuous."
+    },
+    "g8": {
+     "correct": "stakeholder",
+     "accept": [
+      "stakeholder"
+     ],
+     "label": "8. The library staff are a key ___: nothing changes in the reading room unless they agree.",
+     "why": "A stakeholder is a person or group affected by the project."
+    },
+    "g9": {
+     "correct": "deliverable",
+     "accept": [
+      "deliverable"
+     ],
+     "label": "9. The report is the main ___ of the pilot: it is the one thing we have promised to hand over.",
+     "why": "A deliverable is a finished piece of work you promised to hand over."
+    },
+    "g10": {
+     "correct": "far",
+     "accept": [
+      "far"
+     ],
+     "label": "10. The booths cost ___ more than all the other milestones together.",
+     "why": "Far is a modifier before more; very cannot modify a comparative."
+    }
+   }
+  }
+ }
+}
