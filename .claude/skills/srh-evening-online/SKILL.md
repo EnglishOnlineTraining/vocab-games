@@ -247,14 +247,25 @@ An existing page that the week's plan changes, such as a homework page turned in
 practice, is edited in the same PR. Remove what moves to an in-class page rather than leaving it
 twice.
 
-**File the page on the university hub.** `uni-activities.html` is grouped by CEFR level (B2 · Upper
-intermediate, C1 · Advanced, C2 · Proficiency, then Revision), newest page first in each level. A new
-page lands in a generated "More practice" section until you file it. In `data/hub-cards.json`, under
-`uni-activities.html`, move its card to the top of the B2 block. Pages published the same day go
-highest series number first. The card's `title` is its own copy, not read from the page, so when you
-rename a page, change its card title too. On a branch the hub HTML stays at the merge-base: commit
-only `data/hub-cards.json`, and `main`'s bot renders the hub after the merge. To preview it, run
-`node scripts/build-category-hubs.js`, look, then `git checkout -- uni-activities.html`.
+**File the page on the university hub, after the merge.** `uni-activities.html` is grouped by CEFR level
+(B2 · Upper intermediate, C1 · Advanced, C2 · Proficiency, then Revision), newest week first in each level,
+and **each numbered series in teaching order 1, 2, 3** (Shaun, 2026-11-24). A new page lands in a generated
+"More practice" section until you file it.
+- **You can't file it in the page's own PR.** On a branch, `build.js` strips a hand-written card for a page
+  that is new to the branch (`main`'s bot derives one after the merge). So once the page PR is merged, open
+  a small follow-up PR from `origin/main` that moves the card in `data/hub-cards.json` (under
+  `uni-activities.html`) into the right block, and drops the "More practice" block if it is left empty (the
+  build makes it again when needed).
+- **Ask before placing anything that isn't obvious:** list the proposed order, plus any other card still in
+  "More practice" and the block you'd put it in, as an `AskUserQuestion` pop-up. Don't leave a card unfiled
+  or pick its block without asking.
+- The card's `title` is its own copy, not read from the page, so when you rename a page, change its card
+  title too.
+- On a branch the hub HTML stays at the merge-base: commit only `data/hub-cards.json`. To preview, run
+  `node scripts/build-category-hubs.js`, look, then `git checkout -- uni-activities.html`.
+- After the merge, check that an "Auto-rebuild generated indices" commit followed it and that the live hub
+  shows the new order. If another PR merged within seconds, the bot's push can be rejected ("cannot lock
+  ref"); re-run it with `gh workflow run rebuild-indices.yml --ref main` (it builds the current `main`).
 
 **Fixing an answer after students have submitted.** If an answer key turns out to be wrong after
 students have submitted (Week 3: "While I walked…" was marked wrong), add the second correct answer
@@ -313,3 +324,7 @@ Add one line per week: what Shaun corrected, so the next week starts better.
   visually; submission untested.
 - **Week 5 (comparing):** first build too easy and not communicative enough; warm-up slide unclear;
   Shaun merged before seeing the level, so a second PR rewrote it. Fixed by Step 1b.
+- **Week 6 (plans and arrangements):** Shaun asked to move from a grammar focus to a skills focus; grammar
+  became one toolkit slide per session. Hub cards went in 3, 2, 1 and two old cards were left unfiled
+  without asking; he wants 1, 2, 3 and a question before any placement. Deck check caught a numbered
+  warm-up instruction, tiny email text and wrapping chips.
