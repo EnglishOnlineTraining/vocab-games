@@ -49,7 +49,7 @@ Work in your own worktree on a new branch from `origin/main` (CLAUDE.md rule 5).
 
 1. **Check last week.** `git show origin/main:_social/posted.json` against the files in
    `_social/posts/`: list anything `missed` or still unsent past its time. Read the last runs:
-   `gh run list --workflow social-post.yml --limit 30` and `gh run view <id> --log` for failures.
+   `gh run list --workflow social-post --limit 30` and `gh run view <id> --log` for failures.
    Fix code problems in the same PR if small; otherwise report them.
 2. **Warnings** (in the PR body and the report, from 14 days before):
    LinkedIn token expires about 60 days after it was set (`gh secret list`, `LINKEDIN_TOKEN` date);
