@@ -56,6 +56,9 @@ step navigation, the progress bar, and the submit screen.
 
 - **Dropdowns:** 3 options per gap; the correct answer's position varies across gaps —
   not the same slot every time.
+- **Exactly one right answer.** Every wrong option must be wrong in this sentence and
+  this text, not just different from the key ("train" next to "subway" is also right).
+  Read each distractor into the gap before keeping it.
 - **Reading texts:** bold the target structure on its first 2–3 occurrences and nothing
   else. Keep texts within the CEFR length band (A2 80–120 words, B1 120–180, B1/B2
   150–200, B2/C1 180–250).
