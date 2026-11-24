@@ -19,8 +19,9 @@ through an API directly. Claude owns everything up to the PR, and the checks aft
 | `linkedin` | teachers **and** professionals/HR, English | 2 | teachers: classroom use, level, assessment, CTA = free exercises for their class; professionals: business English pages (`be-*`, business emails, meetings), CTA = "Need English training for your team? Get in touch." Aim for one of each a week |
 | `x` | learners and teachers, English | 2 | more casual allowed, max one emoji, ≤ 280 chars (a link counts 23) |
 
-- Not covered: Reddit and YouTube (see `docs/social-media-setup.md`), and XING (skipped, Shaun
-  2026-11-24: no posting API, and no manual drafts wanted). Don't propose them again.
+- Not covered: Reddit and YouTube (see `docs/social-media-setup.md`).
+- XING and LinkedIn groups have no posting API: they get **manual drafts** that Shaun pastes himself
+  (see "Manual posts" below), never files in `_social/posts/`.
 - One file per network when the audiences differ (they usually do). Same page on two networks is fine
   with different text; never the same text twice.
 - X costs about $0.20 per post with a link (pay-per-use credits). Don't add X posts beyond the plan.
@@ -97,11 +98,33 @@ Work in your own worktree on a new branch from `origin/main` (CLAUDE.md rule 5).
      unit pages for X and LinkedIn.
    Don't repeat a page posted to the same network in the last 6 weeks (`_social/posts/` file names).
 6. **Write** the posts (table above), then `node scripts/social-post.js --check` and the fact-check.
-7. **Open one PR**: "Social posts, week of <Tuesday date>". Body: a table (when, network, page, text),
-   the step-1 findings and step-3 warnings. Shaun edits or deletes files in the PR before merging.
+7. **Write the manual posts** (section below) into `_social/manual/`.
+8. **Open one PR**: "Social posts, week of <Tuesday date>". Body: a table (when, network, page, text),
+   then a "To post by hand" section with each manual post's full text ready to copy, then the step-1
+   findings and step-3 warnings. Shaun edits or deletes files in the PR before merging.
    Don't push to `main`, don't merge.
-8. **Report** in 3–5 lines: PR link, what's in it, anything that needs Shaun. Questions for Shaun go
+9. **Report** in 3–5 lines: PR link, what's in it, anything that needs Shaun. Questions for Shaun go
    in the report (the coordinator asks him), never in a pop-up from a scheduled run.
+
+## Manual posts (Shaun pastes them; added 2026-11-24)
+
+One file each in `_social/manual/`, named like the scheduled ones
+(date, short name, then `-xing` or `-linkedin-group`, with the .md extension), so Shaun's edits in the PR become lessons
+in the same way. The scheduler never reads this folder. Write the link **with** its UTM tags, since
+nothing adds them on the way: `?utm_source=xing&utm_medium=social&utm_campaign=<file name without .md>`
+(for a group: `utm_source=linkedin-group`).
+
+- **XING: one post a week, in German** (Shaun's request, 2026-11-24), for German professionals, HR
+  and L&D. Use "Sie", short sentences, common words, no Anglicisms where a common German word exists
+  (VOICE.md section 6). Topic: the week's professional LinkedIn post or another business-English
+  page (`be-*`, business emails, meetings); not school pages. The linked page stays English: say so
+  if it matters ("Die Übungen sind auf Englisch."). Closing line may be the German team-training
+  offer: "Sie suchen Englischtraining für Ihr Team? Schreiben Sie mir." Same fact-check as every post.
+- **LinkedIn group: at most one suggestion a week, only when it fits.** Groups come from
+  `_social/linkedin-groups.md`, which lists the groups Shaun has joined and each group's rules. Suggest
+  only a listed group whose rules allow this kind of post, and say in one line why it fits. Write it as
+  a question or useful tip for that group, with the link last, not a plain ad. If the file lists no
+  groups, skip the suggestion and say once in the report that Shaun can add groups there.
 
 ## When Shaun asks for a single post
 
