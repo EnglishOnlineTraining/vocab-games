@@ -36,7 +36,7 @@ disagree, the tier wins. Every live WordPress edit needs Shaun's OK (rule 7).
 | 2026-12-04 | Re-measure 2032 and 2038 after link-pass run 1 | 20 |
 | 2026-12-05 | Freeze on 1061, 1167, 2032, 2038, 2039, 2066, 965 ends; repoint pass and snippet rewrites can go live after a fresh export | 12.3, 12.8, 19 |
 | 2026-12-05 | `themen/` title test: batch 1 vs control in the monthly Bing AI export (batch 2 ~12-12) | 10.7, `docs/themen-ai-audit-2026-11.md` |
-| Early Dec | Monthly pull: Search Console and Bing clicks/impressions through the `search-console` tool (Tier 26); Bing exports still for AI Performance, positions and IndexNow | 10.7, 18.7, 21, 26 |
+| Early Dec | Monthly pull: Search Console and Bing clicks/impressions through the `search-console` tool (Tier 26); Bing exports still for AI Performance, positions and IndexNow; plus the long-query pull (26.7) | 10.7, 18.7, 21, 26 |
 | 26 Nov – 3 Jan | Blog queue goes live: 2703 (26 Nov), 2765 (29 Nov), 2799 (2 Dec), 2800 (5 Dec), 2837 (8 Dec), 2838 (11 Dec), 2839 (14 Dec), 2849 (17 Dec, held), 2854 (20 Dec), 2855 (29 Dec), 2856 (3 Jan). Spot-check each live | 15b.6, 22 |
 
 ### P1 — highest value, do next
@@ -645,6 +645,9 @@ adopted: Tier B merges (rule 9; GitHub Pages has no 301s) and site-wide template
    genuine editorial listings; no mass submissions or link swaps (Not adopted).
 4. **Link the public repository from `/about/` (2224) · Shaun OKs, CC drafts.** It shows a maintained
    educational project. Rule 8 list first; use `context: "edit"`.
+   **Repo side done 2026-11-24:** the GitHub repo now has the website `https://activities.englishonline.training/`,
+   a one-line description (no textbook name, rule 4) and topics (english-exercises, esl, efl, english-grammar,
+   abitur, oer, open-educational-resources, education). It was empty before. The `/about/` link still waits on Shaun.
 
 ### Tier 26 — Search Console and Bing through an API tool (2026-11-23) · Shaun + CC
 Checked the backlog against open-source tools on GitHub; this was the one clear gain. The others
@@ -718,3 +721,10 @@ Checked the backlog against open-source tools on GitHub; this was the one clear 
      estate" (170 impr, pos 22.3): fits the commercial real estate post and the CRE vocabulary
      page (9.4), so a 12.8 repoint, not a new page. Both unchecked; Shaun picks.
 6. **Per-page WordPress text drafted 2026-11-23 (PR #435):** exact titles, metas, one H2 and two links for 12 posts/pages from the `gsc-review-2026-11-24-per-page` rows marked "WordPress, after 5 Dec", in `docs/wp-pending-edits-2026-12-05-per-page.md`. Apply after 5 Dec, one change per page. The "30. April 2027" in post 2520's meta is unconfirmed.
+7. **Long-query pull (added 2026-11-24, from an outside "SEO tricks" list) · CC, at the December pull.**
+   Filter Google queries to 8+ words (regex `^(?:\S+\s+){7,}\S+$`) and, separately, to queries that
+   start with how/what/why/wie/was/warum, over the longest range the API gives (16 months). These
+   are the chat-style questions people type word for word; feed them to Tier 10 (chunk-ready
+   headings) and 15b (AI-citation gaps), answering on the page that already ranks, in its first
+   lines. High impressions + zero clicks = a question we rank for but don't answer. Query scope
+   rules (15b, 21.4) apply. Run on the Mac (`analytics_query`, dimension `query`, then filter the JSON).
