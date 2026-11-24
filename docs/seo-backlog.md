@@ -415,6 +415,8 @@ indexed. No technical fault; Google pruned pages that earned nothing. No traffic
    suggestions), ZUM / ZUM-Unterrichten, lehrer-online, a link from each 4teachers and eduki upload
    to its matching exercise, the school's website (if the school agrees), a guest post for
    eltabbjournal.com. Link to a specific exercise or `themen/` page, not only the homepage.
+   **Submission material ready 2026-11-23 (PR #437):** `docs/outside-links-submission-pack-2026-11.md`
+   ranks nine candidates by value and effort, with URL, process, copy and tags each. Shaun submits; none sent.
 4. School-page titles get search terms: done (#132, see 8 A5).
 5. Optional noindex of textbook-unit pages · Shaun names them (rule 9; `10g-cultural-diversity` stays).
 6. **Root cause of "Crawled – not indexed" · 2026-11-23 (PR #431):** `docs/gsc-review-2026-11-24-root-cause.md`. No technical fault; host-level judgment plus no outside links, form-style start screens and near-zero crawl demand. Numbered fixes split into page-content (Shaun picks) and template (wait for the 19.1 pause). Nothing applied.
