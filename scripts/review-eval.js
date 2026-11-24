@@ -66,7 +66,7 @@ for (const c of run) {
   const reply = (r.stdout || '') + (r.stderr || '');
   if (r.status !== 0) {   // auth expired, CLI missing, timeout: stop, don't score it as a miss
     console.error(`\nclaude exited ${r.status}: ${reply.split('\n')[0] || r.error}`);
-    console.error('Fix: run `claude` in a terminal and log in, then re-run.');
+    console.error('Fix: a usage limit → wait for the reset; an expired login → run `claude` and /login. Then re-run.');
     fs.rmSync(tmp, { recursive: true, force: true });
     process.exit(2);
   }

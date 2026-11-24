@@ -4,7 +4,7 @@ Status: DRAFT for Shaun to post himself from his personal profile. Not posted.
 Audience: HR and L&D buyers of corporate language training. Money page: `/business-english/`.
 Source: EF Language Abroad's public job ad "AI Product Manager" (Zurich, seen 2026-11-24). Paraphrased; one short quote.
 Before posting: (1) decide whether to name EF or say "one of the largest language-travel companies";
-(2) fill the [catch rate] gap after the first `node scripts/review-eval.js` run, or delete that sentence.
+(2) the catch rate (14/14, 2/2 controls, Sonnet, 2026-11-24) is real; re-run before posting if the rules changed.
 
 ---
 
@@ -27,7 +27,7 @@ AI makes practice material fast and cheap. It also makes mistakes that look corr
 I use AI every day to build practice material. Every piece goes through three checks before a learner sees it:
 
 1. **Automatic checks.** Software rejects a page if the answer key does not match the options, if the scoring is missing, or if the wrong language appears.
-2. **An AI reviewer with a test.** A second AI model reviews each page against a written style contract. I test that reviewer with 16 pages that contain planted mistakes: a wrong answer key, a second correct option, a wrong fact, a text above the learners' level. [catch rate: "It currently catches N of 14."]
+2. **An AI reviewer with a test.** A second AI model reviews each page against a written style contract. I test that reviewer with 16 pages that contain planted mistakes: a wrong answer key, a second correct option, a wrong fact, a text above the learners' level. It catches all 14 planted mistakes and approves the 2 harmless changes.
 3. **A teacher.** I read the result. When AI drafts written feedback for a learner, I check it before it is sent.
 
 ## Five questions to ask your provider
