@@ -17,6 +17,15 @@ merges.
 
 The saved reviewer is the project agent `style-reviewer` (`.claude/agents/style-reviewer.md`): read-only, it reports findings against `STYLE.md`, `AGENTS.md` and the CLAUDE.md rules and never edits.
 
+**Is the reviewer any good? `node scripts/review-eval.js`** runs it against a fixed test set
+(`data/review-eval.json`): real pages with one planted flaw each (wrong key, a second correct
+option, wrong rule in an explanation, German gloss, wrong fact, text above the CEFR level,
+Klett named, a student named, missing scoreKey, wrong webhook, wrong register, wrong exam
+fact) plus harmless controls that must be approved. Re-run it after changing `STYLE.md`, the
+reviewer agent or the model, and add a case whenever a real review misses something.
+`--check` (no Claude) confirms every case still applies after pages change. It needs the
+`claude` CLI logged in.
+
 `STYLE.md` (repo root) is the canonical contract both models follow. A change that
 genuinely cannot follow it must be explained under "Deviations" in the PR.
 

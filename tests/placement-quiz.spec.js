@@ -492,3 +492,16 @@ test.describe('Level Test — randomization', () => {
     expect(unique.size).toBeGreaterThanOrEqual(2);
   });
 });
+
+// Money page (CLAUDE.md rule 11): Business English link shows at B1 and up only.
+test('Business English next step shows for a high result, not a low one', async ({ page }) => {
+  await clickStart(page);
+  await answerAllCorrect(page);
+  await waitForResults(page);
+  await expect(page.locator('#money-link')).toHaveAttribute('href', 'https://englishonline.training/business-english/');
+
+  await clickStart(page);
+  await answerAllWrong(page);
+  await waitForResults(page);
+  await expect(page.locator('#money-link')).toHaveCount(0);
+});

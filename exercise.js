@@ -395,6 +395,32 @@ function eolDraftOfferResume() {
 
 document.addEventListener('DOMContentLoaded', eolDraftInit);
 
+/* Live writing checklist: any <textarea data-min-words="N"> gets a line under it with
+   its word count against N, paragraphs and linking words. Instant, in the browser,
+   nothing sent. ponytail: linking words are a fixed list matched as whole words, so it
+   counts uses, not whether they are used well; the teacher feedback covers that. */
+var EOL_LINKERS = /\b(however|therefore|moreover|furthermore|in addition|for example|for instance|as a result|on the other hand|in contrast|consequently|although|while|whereas|firstly|secondly|finally|in conclusion|overall|because|since|such as)\b/gi;
+function eolWritingCheck(ta) {
+  var min = +ta.getAttribute('data-min-words'), v = ta.value.trim();
+  var words = v ? v.split(/\s+/).length : 0;
+  var paras = v ? v.split(/\n\s*\n/).filter(function(p) { return p.trim(); }).length : 0;
+  var links = (v.match(EOL_LINKERS) || []).length;
+  return (words >= min ? '✓ ' : '') + words + ' / ' + min + ' words · ' + paras
+    + (paras === 1 ? ' paragraph' : ' paragraphs') + ' · ' + links + (links === 1 ? ' linking word' : ' linking words');
+}
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('textarea[data-min-words]').forEach(function(ta) {
+    var out = document.createElement('p');
+    out.className = 'form-hint eol-wcheck';
+    out.setAttribute('aria-live', 'polite');
+    ta.insertAdjacentElement('afterend', out);
+    var upd = function() { out.textContent = eolWritingCheck(ta); };
+    ta.addEventListener('input', upd);
+    ta.addEventListener('focus', upd);
+    setTimeout(upd, 0);   // after a saved draft is restored
+  });
+});
+
 /* ============================================================
    WRITING RUBRIC — PRACTISE MODE ONLY
    Class submissions are marked by the teacher, so the rubric is
