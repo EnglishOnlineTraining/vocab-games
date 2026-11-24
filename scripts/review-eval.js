@@ -9,7 +9,7 @@
  * Cases live in data/review-eval.json. Each plants one flaw in a copy of the repo
  * (git archive HEAD into a temp folder, so the real checkout is never touched), asks
  * `claude -p --agent style-reviewer` to review the diff, and scores the reply:
- *   flaw case  → pass if the reply matches `expect` and the verdict is not "Approve"
+ *   flaw case  → pass if the reply matches `expect` and the verdict is "Changes needed"
  *   control    → pass if the verdict is "Approve"
  * Results print as a table and are saved to <tmp>/review-eval-results.json.
  * Re-run after any change to STYLE.md, the reviewer agent or the model.
@@ -55,7 +55,10 @@ for (const c of run) {
   const diff = spawnSync('diff', ['-u', '--label', 'a/' + c.file, '--label', 'b/' + c.file, '-', file],
     { input: original, encoding: 'utf8' }).stdout;
   const prompt = `Review this change. It is already applied in the working tree (there is no git here, so read files directly). Diff:\n\n${diff}`;
-  const cli = ['-p', '--agent', 'style-reviewer', prompt];
+  // The temp copy is an untrusted folder, so settings.json's allow list is ignored:
+  // allow the reviewer's two scripts here, or it answers "Cannot judge" every time.
+  const cli = ['-p', '--agent', 'style-reviewer', '--allowedTools',
+    'Bash(node scripts/verify-exercise.js:*)', 'Bash(node scripts/validate-explanations.js:*)', '--', prompt];
   if (opt('--model')) cli.push('--model', opt('--model'));
   process.stdout.write(`… ${c.id} `);
   const r = spawnSync('claude', cli, { cwd: tmp, encoding: 'utf8', maxBuffer: 1 << 24, timeout: 600000 });
@@ -70,7 +73,7 @@ for (const c of run) {
   const verdicts = reply.match(/\b(Approve|Changes needed|Cannot judge)\b/g) || [];
   const verdict = verdicts.length ? verdicts[verdicts.length - 1] : 'none';
   const pass = c.control ? verdict === 'Approve'
-    : verdict !== 'Approve' && new RegExp(c.expect, 'i').test(reply);
+    : verdict === 'Changes needed' && new RegExp(c.expect, 'i').test(reply);
   console.log(pass ? '✓' : '✗', verdict);
   results.push({ id: c.id, control: !!c.control, pass, verdict, flaw: c.flaw, reply });
 }

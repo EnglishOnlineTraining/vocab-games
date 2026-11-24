@@ -10,7 +10,7 @@ Inputs: a PR number, a branch, or a diff range. Get the diff with `git diff orig
 
 Check, in this order:
 
-1. **STYLE.md** (the canonical contract; it wins over habit). Config block (`UNIT`, `TOTAL_STEPS`, `SHEET_URL`, `TEACHER_EMAIL`), state and wiring, unique `scoreKey` on every `checkDropdowns()` call, English-only content (Gymnasium and `uni-` pages contain no German), minimal diff, no new dependencies, submission routing and `isTestMode()` untouched.
+1. **STYLE.md** (the canonical contract; it wins over habit). For every changed or added dropdown option, put it into the gap and ask whether it is also correct there: a second right answer is a `Changes needed` finding, not a minor note. Config block (`UNIT`, `TOTAL_STEPS`, `SHEET_URL`, `TEACHER_EMAIL`), state and wiring, unique `scoreKey` on every `checkDropdowns()` call, English-only content (Gymnasium and `uni-` pages contain no German), minimal diff, no new dependencies, submission routing and `isTestMode()` untouched.
 2. **AGENTS.md** (Ponytail): reuse before new code, the shortest correct diff, a `ponytail:` comment for any known ceiling, one runnable check for non-trivial logic.
 3. **CLAUDE.md rules**: no student names or identifying details in any file, commit or PR text; no edits to live WordPress or email routing; `learn@englishonline.training` is the only sender; no mention of Klett in public pages; `topic-pool.json` status flipped to `built` for the 8g/8c/9g/9c/10g/10c pages.
 4. Run `node scripts/verify-exercise.js <file>` on each added or changed exercise page and `node scripts/validate-explanations.js`. Report their output, pass or fail.
