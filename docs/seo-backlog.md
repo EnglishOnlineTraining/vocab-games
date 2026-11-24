@@ -60,7 +60,6 @@ _2026-11-19 drafts (read-only, nothing applied; PR #419): WP→activities links 
 | 8 | 301 the `/welcome/` copy of the Business English Skills article (1019) and trim the duplicate paragraph | Shaun OK, CC | 17.1 |
 | 9 | `/writing-emails-in-english/` (1061): 419–575 impr at pos ~22, falling. Tier 21 per-page analysis after 12-05 | CC, after freeze | 19, 21 |
 | 10 | Business-email pairs beyond 1167: follow-up pair built as WP draft 2934 | Shaun picks | 17.2 |
-| 11 | Landing page for `useful-phrases-for-business-emails.pdf` (ranks on its own), same build as the vocabulary pages | Shaun OK, CC | 9.4, 21 |
 | 12 | Fix the property-management PDF: five wrong definitions and an old address (keep filename and URL) | Shaun | 9.4 |
 | 13 | Tutoring-search impressions on `/welcome/about-me/wilkommen/`: point at an adult-learner page or `/business-english/` (they're welcome: don't shed them) | Shaun | 9.3 |
 | 14 | WordPress title suffix pattern (B10); exercise titles are done (#132) | Shaun | 8 B10 |
@@ -589,7 +588,8 @@ From the weekly blog-keyword-drafts run of 2026-11-11 (report and drafts in Shau
    run picked 2032 without seeing Tier 12.3. Fix: add a line to the scheduled task's step 3
    (`~/.claude/scheduled-tasks/blog-keyword-drafts/SKILL.md`, outside the repo) to check
    `docs/seo-backlog.md` on origin/main for no-touch and measurement windows. Shaun approves the
-   prompt change.
+   prompt change. **Done (checked 2026-11-23):** the scheduled task's `SKILL.md` already reads
+   `docs/seo-backlog.md` on origin/main before choosing a refresh and skips no-touch posts.
 
 ### Tier 24 — URL faults from the Search Console exports (2026-11-16) · Shaun + CC
 From Shaun's two exports of 2026-11-16 (Performance, last 28 days; Generative AI features, last
