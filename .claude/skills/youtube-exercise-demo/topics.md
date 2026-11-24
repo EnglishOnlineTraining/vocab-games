@@ -23,7 +23,7 @@ gate is no blocker: checked 2026-11-01 on true-false-not-given and task2-opinion
 `?mode=practise` opens straight on Exercise A and the recorder finds every answer-key gap
 (29/29, 19/19). Each needs a `writing.json` answer for `exD-text`. Not yet recorded end to end.
 
-- [ ] ielts-reading-true-false-not-given — True / False / Not Given
+- [x] ielts-reading-true-false-not-given — True / False / Not Given — 2026-11-24 (88 s, English UI except the German self-check rubric on the results screen)
 - [ ] ielts-reading-matching-headings — Matching headings
 - [ ] ielts-reading-sentence-summary-completion — Sentence and summary completion
 - [ ] ielts-writing-task1-describing-trends — Task 1 line graph: describing trends
