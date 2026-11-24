@@ -477,6 +477,12 @@ Main site only; monthly (positions need weeks). Run on the Mac. A cloud task rem
   only English posts mention 2027), 2066 (MSA; some impressions are the Egyptian university),
   2039 and 1167 (already linked everywhere they're mentioned).
 
+- **Activities-site link pass · 2026-11-23 · PR #417.** Hand-placed links from the 18 Nov branch brought over: vocab games
+  from nine Year 7 pages, the 7C hub and the home page; ESG vocabulary from the PESTEL, property-management and
+  real-estate pages; the MSA 2027 dates page from every `msa-c-` page and the 10C hub; the operators page from three Abitur
+  pages; the business-email phrases button on the business hub. **Left out (Tier 19.1 pause):** the `siblingBlock` tie-break
+  in `scripts/build-head.js` and the regenerated "More from this course" lists it produced; re-apply after the pause lifts.
+
 ### Tier 21 — Bing queries as a second demand signal (2026-11-07)
 Bing shows query rows Search Console hides. CC analyses and proposes; Shaun approves every live edit.
 1. Merge both exports per page; mark each query GSC only / Bing only / both.
