@@ -6,60 +6,60 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "was cooking",
+     "correct": "opening",
      "accept": [
-      "was cooking"
+      "opening"
      ],
-     "label": "1. At eight o’clock last night I"
+     "label": "1. We recommend"
     },
     "g2": {
-     "correct": "far",
+     "correct": "same length",
      "accept": [
-      "far"
+      "same length"
      ],
-     "label": "2. The lecture was"
+     "label": "2. A good paraphrase is roughly the"
     },
     "g3": {
-     "correct": "9",
-     "accept": [
-      "9"
-     ],
-     "label": "3. h) Glad it worked out. Anyway, are you free..."
-    },
-    "g4": {
-     "correct": "got",
-     "accept": [
-      "got"
-     ],
-     "label": "4. When I"
-    },
-    "g5": {
-     "correct": "was waiting",
-     "accept": [
-      "was waiting"
-     ],
-     "label": "5. While I"
-    },
-    "g6": {
      "correct": "Since",
      "accept": [
       "Since"
      ],
-     "label": "6."
+     "label": "3."
     },
-    "g7": {
-     "correct": "appear to support",
+    "g4": {
+     "correct": "because",
      "accept": [
-      "appear to support"
+      "because"
      ],
-     "label": "7. The data"
+     "label": "4. …move my seminar group,"
     },
-    "g8": {
+    "g5": {
      "correct": "brought",
      "accept": [
       "brought"
      ],
-     "label": "8. What"
+     "label": "5. What"
+    },
+    "g6": {
+     "correct": "far",
+     "accept": [
+      "far"
+     ],
+     "label": "6. The lecture was"
+    },
+    "g7": {
+     "correct": "gave",
+     "accept": [
+      "gave"
+     ],
+     "label": "7. … the lecturer"
+    },
+    "g8": {
+     "correct": "appear to support",
+     "accept": [
+      "appear to support"
+     ],
+     "label": "8. The data"
     }
    }
   },
@@ -68,18 +68,18 @@
    "multi": false,
    "gaps": {
     "g1": {
-     "correct": "gave",
+     "correct": "if",
      "accept": [
-      "gave"
+      "if"
      ],
-     "label": "1. … the lecturer"
+     "label": "1. I was wondering"
     },
     "g2": {
-     "correct": "opening",
+     "correct": "was cooking",
      "accept": [
-      "opening"
+      "was cooking"
      ],
-     "label": "2. We recommend"
+     "label": "2. At eight o’clock last night I"
     },
     "g3": {
      "correct": "rose steadily",
@@ -89,80 +89,18 @@
      "label": "3. Usage"
     },
     "g4": {
-     "correct": "accountability",
-     "accept": [
-      "accountability"
-     ],
-     "label": "4. If something goes wrong, there is clear"
-    },
-    "g5": {
-     "correct": "a basic structure of ideas or rules that provides guidance",
-     "accept": [
-      "a basic structure of ideas or rules that provides guidance"
-     ],
-     "label": "5. framework"
-    },
-    "g6": {
-     "correct": "anecdotal",
-     "accept": [
-      "anecdotal"
-     ],
-     "label": "6. Personal stories rather than systematic research"
-    },
-    "g7": {
-     "correct": "d",
-     "accept": [
-      "d"
-     ],
-     "label": "7. The Accounts Department's slow payment..."
-    },
-    "g8": {
-     "correct": "Would it be possible to extend the loan of this book?",
-     "accept": [
-      "Would it be possible to extend the loan of this book?"
-     ],
-     "label": "8. To the library"
-    }
-   }
-  },
-  "exC": {
-   "prefix": "exC-",
-   "multi": false,
-   "gaps": {
-    "g1": {
-     "correct": "because",
-     "accept": [
-      "because"
-     ],
-     "label": "1. …move my seminar group,"
-    },
-    "g2": {
      "correct": "if",
      "accept": [
       "if"
      ],
-     "label": "2. I was wondering"
-    },
-    "g3": {
-     "correct": "same length",
-     "accept": [
-      "same length"
-     ],
-     "label": "3. A good paraphrase is roughly the"
-    },
-    "g4": {
-     "correct": "8",
-     "accept": [
-      "8"
-     ],
-     "label": "4. Chinese businesspeople wanting something in return"
+     "label": "4. I would be grateful"
     },
     "g5": {
-     "correct": "catch",
+     "correct": "was waiting",
      "accept": [
-      "catch"
+      "was waiting"
      ],
-     "label": "5. Sorry, I didn't quite"
+     "label": "5. While I"
     },
     "g6": {
      "correct": "longer",
@@ -172,18 +110,80 @@
      "label": "6. The"
     },
     "g7": {
-     "correct": "far",
+     "correct": "a basic structure of ideas or rules that provides guidance",
      "accept": [
-      "far"
+      "a basic structure of ideas or rules that provides guidance"
      ],
-     "label": "7. Cycling at night is"
+     "label": "7. framework"
     },
     "g8": {
-     "correct": "enough",
+     "correct": "8",
      "accept": [
-      "enough"
+      "8"
      ],
-     "label": "8. I haven’t got"
+     "label": "8. Chinese businesspeople wanting something in return"
+    }
+   }
+  },
+  "exC": {
+   "prefix": "exC-",
+   "multi": false,
+   "gaps": {
+    "g1": {
+     "correct": "Would it be possible to extend the loan of this book?",
+     "accept": [
+      "Would it be possible to extend the loan of this book?"
+     ],
+     "label": "1. To the library"
+    },
+    "g2": {
+     "correct": "d",
+     "accept": [
+      "d"
+     ],
+     "label": "2. The Accounts Department's slow payment..."
+    },
+    "g3": {
+     "correct": "got",
+     "accept": [
+      "got"
+     ],
+     "label": "3. When I"
+    },
+    "g4": {
+     "correct": "catch",
+     "accept": [
+      "catch"
+     ],
+     "label": "4. Sorry, I didn't quite"
+    },
+    "g5": {
+     "correct": "9",
+     "accept": [
+      "9"
+     ],
+     "label": "5. h) Glad it worked out. Anyway, are you free..."
+    },
+    "g6": {
+     "correct": "accountability",
+     "accept": [
+      "accountability"
+     ],
+     "label": "6. If something goes wrong, there is clear"
+    },
+    "g7": {
+     "correct": "anecdotal",
+     "accept": [
+      "anecdotal"
+     ],
+     "label": "7. Personal stories rather than systematic research"
+    },
+    "g8": {
+     "correct": "by",
+     "accept": [
+      "by"
+     ],
+     "label": "8. This could be improved"
     }
    }
   }
