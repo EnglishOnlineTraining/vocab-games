@@ -224,8 +224,10 @@ Crawl of every sitemap URL on both hosts. Activities host is technically clean; 
 - **C12–C14:** done or false positive (C14: the crawler regex stopped at an apostrophe).
 - **D15 tracking and privacy policy:** done (GTM consent-gated #90; GA after opt-in; policy names
   every tracker).
-- **Still open, Shaun:** under-16 consent wording (P3); the `9g-australia-vocab-practice`
-  description names the textbook (P2 #18). The Make → Excel formula-injection half is tracked in
+- **Still open, Shaun:** under-16 consent wording (P3). **Done 2026-11-23 (PR #426):** the
+  `9g-australia-vocab-practice` description no longer names the textbook (P2 #18; "Australia unit"
+  wording). Still naming it: the description of `9g-australia-vocab-test.html` ("Klett Green Line 5
+  Unit 1"); its own file, unlisted test, left for Shaun. The Make → Excel formula-injection half is tracked in
   `docs/engineering-backlog.md`.
 
 ### Tier 9 — Search Console follow-up (2026-10-06)
