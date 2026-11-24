@@ -1,0 +1,11 @@
+# Social results
+
+What each week's posts brought, from the GA4 "Social campaigns" report (sessions by `utm_source` and
+`utm_campaign`). The weekly run appends one short section and uses it to pick the next posts.
+Credits and token events go here too.
+
+## 2026-11-24 — setup
+
+- Test posts sent: Facebook (London slang), LinkedIn (Abitur packs), X (articles). Sent before UTM
+  tagging, so no campaign data.
+- X credits topped up 2026-11-24 (Shaun). LinkedIn token set 2026-11-24 (expires about 2027-01-23).

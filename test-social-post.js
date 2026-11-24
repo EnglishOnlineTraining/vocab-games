@@ -7,7 +7,7 @@ const assert = require('assert');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
-const { parse, oauthHeader, run } = require('./scripts/social-post.js');
+const { parse, oauthHeader, run, utm } = require('./scripts/social-post.js');
 
 // X signature: the worked example from X's "Creating a signature" docs.
 const h = oauthHeader('POST', 'https://api.twitter.com/1.1/statuses/update.json',
@@ -70,6 +70,13 @@ assert.doesNotThrow(() => parse('a.txt', 'at: 2026-12-01T17:00+01:00\nto: x\nlin
   await run({ now: Date.parse('2026-12-03T18:00+01:00'), dryRun: true, ...quiet });
   assert.deepStrictEqual(calls, []);
   assert.strictEqual(fs.readFileSync(statePath, 'utf8'), before);
+
+  // UTM tags: our own links only, never twice, nothing for no link.
+  assert.strictEqual(utm('https://activities.englishonline.training/a.html', 'x', '2026-12-01-a.txt'),
+    'https://activities.englishonline.training/a.html?utm_source=x&utm_medium=social&utm_campaign=2026-12-01-a');
+  assert.strictEqual(utm('https://e.com/p', 'x', 'f.txt'), 'https://e.com/p');
+  assert.strictEqual(utm('https://englishonline.training/b/?utm_source=nl', 'x', 'f.txt'), 'https://englishonline.training/b/?utm_source=nl');
+  assert.strictEqual(utm('', 'x', 'f.txt'), '');
 
   fs.rmSync(dir, { recursive: true });
   console.log('✓ test-social-post.js: all scheduler checks passed');
