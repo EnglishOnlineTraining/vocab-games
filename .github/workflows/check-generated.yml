@@ -39,6 +39,10 @@ jobs:
       - name: Check generated files are up to date
         run: node scripts/build.js --check
 
+      # A bad date, unknown network or over-long X post fails here, before merge approves it.
+      - name: Validate social posts
+        run: node scripts/social-post.js --check && node test-social-post.js
+
       # The pre-publish gate: a page this PR ADDS gets the per-page checks the
       # drafting skills run by hand (verify-exercise.js — TOTAL_STEPS, scoreKey,
       # UNIT, state.scores, leftover TODOs, and the webhook its prefix routes to).
