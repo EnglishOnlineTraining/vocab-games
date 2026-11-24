@@ -27,7 +27,7 @@ AI makes practice material fast and cheap. It also makes mistakes that look corr
 I use AI every day to build practice material. Every piece goes through three checks before a learner sees it:
 
 1. **Automatic checks.** Software rejects a page if the answer key does not match the options, if the scoring is missing, or if the wrong language appears.
-2. **An AI reviewer with a test.** A second AI model reviews each page against a written style contract. I test that reviewer with 16 pages that contain planted mistakes: a wrong answer key, a second correct option, a wrong fact, a text above the learners' level. It catches all 14 planted mistakes and approves the 2 harmless changes.
+2. **An AI reviewer with a test.** A second AI model reviews each page against a written style contract. I test that reviewer with 14 pages that each contain a planted mistake (a wrong answer key, a second correct option, a wrong fact, a text above the learners' level) and 2 with a harmless change. It flags all 14 mistakes and approves both harmless changes.
 3. **A teacher.** I read the result. When AI drafts written feedback for a learner, I check it before it is sent.
 
 ## Five questions to ask your provider
