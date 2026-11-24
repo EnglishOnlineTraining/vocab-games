@@ -9,7 +9,7 @@ don't mention explanations in the captions, description or quiz.
 
 ## Tier 1 — ESL grammar (global, English only) · why ✓
 
-- [ ] esl-pronouns — Pronouns: I/me, he/she, my/mine, myself (first test video 2026-10-30 ended on the answer list; re-record for the score-card + explanation ending)
+- [x] esl-pronouns — Pronouns: I/me, he/she, my/mine, myself — 2026-11-23 (re-recorded: score-card + explanation ending, 68 s)
 - [x] esl-articles — Articles: a, an, the, zero article — 2026-11-01 (re-recorded at 1080p, real writing answer)
 - [x] esl-present-simple-continuous — Present simple vs present continuous — 2026-11-02
 - [x] esl-countable-uncountable — Countable and uncountable nouns: much, many, few, little — 2026-11-10

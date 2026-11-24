@@ -23182,5 +23182,33 @@
     }
    }
   }
+ },
+ "msa-c-online-safety-workshop": {
+  "exA": {
+   "prefix": "exA-",
+   "gaps": {
+    "g1": {"label": "1. What time does the workshop start?", "correct": "1:15", "why": "The recording says the workshop starts at one fifteen."},
+    "g2": {"label": "2. Where is the workshop?", "correct": "library", "why": "The recording says the workshop takes place in the library."},
+    "g3": {"label": "3. Who leads the workshop?", "correct": "police expert", "why": "The recording says Ms Carter is an expert from a local police team."},
+    "g4": {"label": "4. What to bring", "correct": "phone or tablet", "why": "The recording says students should bring their own phone or tablet, not laptops."},
+    "g5": {"label": "5. How to sign up", "correct": "office list", "why": "The recording says to put your name on the list in the school office before Monday."},
+    "g6": {"label": "6. What happened to Sam last month", "correct": "strangers messaged", "why": "Sam says someone he did not know sent him messages."},
+    "g7": {"label": "7. What Sam did", "correct": "blocked", "why": "Sam says he blocked the account but did not tell anyone."},
+    "g8": {"label": "8. The girl's mistake", "correct": "same password", "why": "The girl says she uses the same password for everything, and Ms Carter says that is a big mistake."}
+   }
+  },
+  "exB": {
+   "prefix": "exB-",
+   "gaps": {
+    "g1": {"label": "1. Jonas — one password everywhere", "correct": "Strong passwords", "why": "The text says you should never use the same password twice."},
+    "g2": {"label": "2. Priya — public profile", "correct": "Privacy settings", "why": "The text says to set your profile to private so only friends can look at it."},
+    "g3": {"label": "3. Tom — picture of a classmate", "correct": "Think before you post", "why": "The text says to always ask before you post a photo of someone else."},
+    "g4": {"label": "4. Ella — rude message", "correct": "Block and report", "why": "The text says to block the account, report it and tell an adult."},
+    "g5": {"label": "5. Club meets after school", "correct": "False", "why": "The text says the club meets at lunchtime."},
+    "g6": {"label": "6. Members pay a fee", "correct": "False", "why": "The text says the club is free."},
+    "g7": {"label": "7. No sign-up needed", "correct": "True", "why": "The text says you do not need to sign up."},
+    "g8": {"label": "8. Monthly poster", "correct": "True", "why": "The text says members make a poster each month."}
+   }
+  }
  }
 }

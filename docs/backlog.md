@@ -30,10 +30,10 @@ reviews (`gsc-review-*.md`, `repoint-pass-2026-11.md`, `themen-ai-audit-2026-11.
 | 4 | Retire `englishonlinetraining@pm.me`: WordPress Organization node, MailerLite reply-to (10 emails), Apps Script result emails, main-site `/llms.txt` | Shaun | Content Open #1, SEO P1 #4, Engineering #8 |
 | 5 | Grow the Abitur cluster (best-clicked, most-cited): next vocabulary guides, MSA pages | Shaun picks, CC drafts | SEO P1 #5 |
 | 6 | Snippet and repoint rewrites after the freeze ends on 5 Dec | CC drafts, Shaun OKs | SEO P1 #6 |
-| 7 | Own 404 page; "Search all exercises" lands on the search box | CC | UX P1 |
+| 7 | ~~Own 404 page~~ done (#394, restyled #414). Left: "Search all exercises" still opens `activities.html` above the search box (`index.html` line 131) | CC | UX P1 |
 | 8 | Switch on the MailerLite delivery automations after a test signup each | Shaun | Content Open #3 |
-| 9 | Branch and worktree clean-up (turn on auto-delete, then prune) | Shaun first | Engineering #6 |
-| 10 | al-munir audio placeholder: MP3 URL or drop the audio | Shaun | Content Open #2 |
+| 9 | ✅ 2026-11-15 branch clean-up: auto-delete on merge is on (checked 2026-11-23), 202 refs pruned | done | Engineering #6 |
+| 10 | ✅ 2026-11-15 (#375) al-munir audio placeholder: listening step dropped | done | Content Open #2 |
 
 Dated checks (21 Nov, 23 Nov, 24 Nov, 3–5 Dec, the blog queue to 3 Jan) are in the calendar at the
 top of `seo-backlog.md`.
