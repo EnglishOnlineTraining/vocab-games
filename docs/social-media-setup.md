@@ -54,6 +54,23 @@ expired". Repeat step 3, then `gh secret set LINKEDIN_TOKEN`. The person ID neve
    Secret**. Do this *after* step 2, or the token is read-only.
 4. Save them: `gh secret set X_API_KEY`, `X_API_SECRET`, `X_ACCESS_TOKEN`, `X_ACCESS_SECRET`.
 
+## Timer: Make starts the workflow (set up 2026-11-24)
+
+GitHub's own `schedule:` timer is best effort and on this repo runs hours late or not at all (in its
+first four hours, the `:07`/`:37` cron never fired; other scheduled jobs here start 7–11 hours late).
+So the Make scenario **"Social posts: start GitHub workflow hourly 07-21"** (ID 8779277, team
+"My Team") POSTs to GitHub's `workflow_dispatch` endpoint every hour from 07:00 to 21:00 Berlin time,
+about 450 Make credits a month. A post goes out at the first run after its `at:` time, so up to an hour
+late; one timed after 21:00 goes out at 07:00 the next morning. Give posts an `at:` between 07:00
+and 21:00. The cron in `social-post.yml` stays as a backup; `concurrency` stops two runs sending twice.
+
+- The scenario's `Authorization` header holds a fine-grained GitHub token, `make-social-trigger`:
+  repository `vocab-games` only, permission **Actions: Read and write**, valid one year (created
+  2026-11-24). When it expires the scenario fails with HTTP 401: create a new one with the same
+  settings and replace the value after `Bearer ` in the HTTP module's header.
+- If posts stop going out, check the scenario's history in Make first, then the workflow's runs on
+  GitHub (they show as `workflow_dispatch`).
+
 ## Test a network
 
 Add a test post with an `at:` time in the past and only that network in `to:`, merge it, then run
