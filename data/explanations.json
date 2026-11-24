@@ -23266,5 +23266,127 @@
     }
    }
   }
+ },
+ "uni-b2-project-plan": {
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. By 17 December we ___ the survey to all 200 students, so the results will be ready after the break.",
+     "correct": "'ll have sent",
+     "why": "By + a deadline takes the future perfect: the sending is finished by then."
+    },
+    "g2": {
+     "label": "2. Please don't call on Monday morning: I ___ the volunteers from nine until twelve.",
+     "correct": "'ll be training",
+     "why": "The future continuous describes an action in progress at a future time."
+    },
+    "g3": {
+     "label": "3. The signs are already up and the rules are agreed, so we are well ___ track.",
+     "correct": "on",
+     "why": "The fixed phrase is on track: making the expected progress."
+    },
+    "g4": {
+     "label": "4. The final report is ___ on 31 January, so we need a first draft before the exams.",
+     "correct": "due",
+     "why": "Due on a date means it must be handed in by then."
+    },
+    "g5": {
+     "label": "5. The booths took two weeks longer than planned. We are now behind ___, so something has to go.",
+     "correct": "schedule",
+     "why": "Behind schedule means later than planned; a calendar or agenda is not a plan's timing."
+    },
+    "g6": {
+     "label": "6. You have too much to do. Why don't you ___ the poster design to one of the volunteers?",
+     "correct": "delegate",
+     "why": "Delegate a task to someone means give them the work and responsibility."
+    },
+    "g7": {
+     "label": "7. By the time the campus reopens on 12 January, we ___ for the noise data for almost a month.",
+     "correct": "'ll have been waiting",
+     "why": "By the time + a duration up to a future point needs the future perfect continuous."
+    },
+    "g8": {
+     "label": "8. The library staff are a key ___: nothing changes in the reading room unless they agree.",
+     "correct": "stakeholder",
+     "why": "A stakeholder is a person or group affected by the project."
+    },
+    "g9": {
+     "label": "9. The report is the main ___ of the pilot: it is the one thing we have promised to hand over.",
+     "correct": "deliverable",
+     "why": "A deliverable is a finished piece of work you promised to hand over."
+    },
+    "g10": {
+     "label": "10. The booths cost ___ more than all the other milestones together.",
+     "correct": "far",
+     "why": "Far is a modifier before more; very cannot modify a comparative."
+    }
+   }
+  }
+ },
+ "uni-b2-plans-practice": {
+  "exA": {
+   "gaps": {
+    "g1": {
+     "label": "1. Sorry, I can’t play football on Sunday. I ___ my grandparents in Leipzig; we booked the train in October.",
+     "correct": "'m visiting",
+     "why": "A fixed personal arrangement, already booked, takes the present continuous."
+    },
+    "g2": {
+     "label": "2. – The printer is broken again. – Don’t worry, I ___ IT services and ask them to come.",
+     "correct": "'ll call",
+     "why": "Will is for a decision made at the moment of speaking, like an offer."
+    },
+    "g3": {
+     "label": "3. Look at those dark clouds. It ___ rain before the barbecue starts.",
+     "correct": "'s going to",
+     "why": "Going to is for a prediction based on what you can see now."
+    },
+    "g4": {
+     "label": "4. Can we ___ the dentist appointment? I have an exam that morning.",
+     "correct": "reschedule",
+     "why": "Reschedule means change the date or time of an appointment."
+    },
+    "g5": {
+     "label": "5. The concert has been ___ until March because the singer is ill.",
+     "correct": "postponed",
+     "why": "Postponed means moved to a later date; until March shows the new time."
+    },
+    "g6": {
+     "label": "6. This time next week I ___ on a beach in Portugal, far away from my desk.",
+     "correct": "'ll be lying",
+     "why": "The future continuous describes an action in progress at a future time."
+    },
+    "g7": {
+     "label": "7. By the end of my degree I ___ in three different countries.",
+     "correct": "'ll have lived",
+     "why": "By the end of + a period takes the future perfect for a finished result."
+    },
+    "g8": {
+     "label": "8. Could you send me your ___ for next week? I’d like to find a time for a call.",
+     "correct": "availability",
+     "why": "After your you need a noun: availability, the times when you are free."
+    },
+    "g9": {
+     "label": "9. After the job interview, send a short ___ email to thank them for their time.",
+     "correct": "follow-up",
+     "why": "A follow-up email continues what happened at a meeting or interview."
+    },
+    "g10": {
+     "label": "10. Before the meeting, please read the ___: there are four points to discuss.",
+     "correct": "agenda",
+     "why": "The agenda lists the points to discuss; minutes record them afterwards."
+    },
+    "g11": {
+     "label": "11. We are ahead ___ schedule: the first two chapters of the thesis are already finished.",
+     "correct": "of",
+     "why": "Ahead of schedule means earlier than planned."
+    },
+    "g12": {
+     "label": "12. When I finally arrived at the study group, the others ___ already left.",
+     "correct": "had",
+     "why": "Already left before I arrived: the earlier past action takes the past perfect."
+    }
+   }
+  }
  }
 }

@@ -1,0 +1,107 @@
+{
+ "unit": "uni-b2-plans-practice",
+ "sections": {
+  "exA": {
+   "prefix": "exA-",
+   "multi": true,
+   "gaps": {
+    "g1": {
+     "correct": "'m visiting",
+     "accept": [
+      "'m visiting"
+     ],
+     "label": "1. Sorry, I can’t play football on Sunday. I ___ my grandparents in Leipzig; we booked the train in October.",
+     "why": "A fixed personal arrangement, already booked, takes the present continuous."
+    },
+    "g2": {
+     "correct": "'ll call",
+     "accept": [
+      "'ll call"
+     ],
+     "label": "2. – The printer is broken again. – Don’t worry, I ___ IT services and ask them to come.",
+     "why": "Will is for a decision made at the moment of speaking, like an offer."
+    },
+    "g3": {
+     "correct": "'s going to",
+     "accept": [
+      "'s going to"
+     ],
+     "label": "3. Look at those dark clouds. It ___ rain before the barbecue starts.",
+     "why": "Going to is for a prediction based on what you can see now."
+    },
+    "g4": {
+     "correct": "reschedule",
+     "accept": [
+      "reschedule"
+     ],
+     "label": "4. Can we ___ the dentist appointment? I have an exam that morning.",
+     "why": "Reschedule means change the date or time of an appointment."
+    },
+    "g5": {
+     "correct": "postponed",
+     "accept": [
+      "postponed"
+     ],
+     "label": "5. The concert has been ___ until March because the singer is ill.",
+     "why": "Postponed means moved to a later date; until March shows the new time."
+    },
+    "g6": {
+     "correct": "'ll be lying",
+     "accept": [
+      "'ll be lying"
+     ],
+     "label": "6. This time next week I ___ on a beach in Portugal, far away from my desk.",
+     "why": "The future continuous describes an action in progress at a future time."
+    },
+    "g7": {
+     "correct": "'ll have lived",
+     "accept": [
+      "'ll have lived"
+     ],
+     "label": "7. By the end of my degree I ___ in three different countries.",
+     "why": "By the end of + a period takes the future perfect for a finished result."
+    },
+    "g8": {
+     "correct": "availability",
+     "accept": [
+      "availability"
+     ],
+     "label": "8. Could you send me your ___ for next week? I’d like to find a time for a call.",
+     "why": "After your you need a noun: availability, the times when you are free."
+    },
+    "g9": {
+     "correct": "follow-up",
+     "accept": [
+      "follow-up"
+     ],
+     "label": "9. After the job interview, send a short ___ email to thank them for their time.",
+     "why": "A follow-up email continues what happened at a meeting or interview."
+    },
+    "g10": {
+     "correct": "agenda",
+     "accept": [
+      "agenda"
+     ],
+     "label": "10. Before the meeting, please read the ___: there are four points to discuss.",
+     "why": "The agenda lists the points to discuss; minutes record them afterwards."
+    },
+    "g11": {
+     "correct": "of",
+     "accept": [
+      "of"
+     ],
+     "label": "11. We are ahead ___ schedule: the first two chapters of the thesis are already finished.",
+     "why": "Ahead of schedule means earlier than planned."
+    },
+    "g12": {
+     "correct": "had",
+     "accept": [
+      "had"
+     ],
+     "label": "12. When I finally arrived at the study group, the others ___ already left.",
+     "why": "Already left before I arrived: the earlier past action takes the past perfect."
+    }
+   }
+  }
+ }
+}
