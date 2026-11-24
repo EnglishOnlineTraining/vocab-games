@@ -265,7 +265,7 @@ and **each numbered series in teaching order 1, 2, 3** (Shaun, 2026-11-24). A ne
   `node scripts/build-category-hubs.js`, look, then `git checkout -- uni-activities.html`.
 - After the merge, check that an "Auto-rebuild generated indices" commit followed it and that the live hub
   shows the new order. If another PR merged within seconds, the bot's push can be rejected ("cannot lock
-  ref"); re-run it with `gh workflow run rebuild-indices.yml --ref main` (it builds the current `main`).
+  ref"); re-run it (`.github/workflows/rebuild-indices.yml`) with `gh workflow run "Rebuild generated indices" --ref main`; it builds the current `main`.
 
 **Fixing an answer after students have submitted.** If an answer key turns out to be wrong after
 students have submitted (Week 3: "While I walked…" was marked wrong), add the second correct answer
