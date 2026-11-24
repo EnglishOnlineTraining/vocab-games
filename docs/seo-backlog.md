@@ -41,6 +41,8 @@ disagree, the tier wins. Every live WordPress edit needs Shaun's OK (rule 7).
 
 ### P1 — highest value, do next
 
+_2026-11-19 drafts (read-only, nothing applied; PR #419): WP→activities links run 2 → `docs/wp-activities-links-run2.md` (23 rows); backlink candidates (19.3) → `docs/backlink-candidates-2026-11.md`; snippet drafts for posts 2520 and 1659 → `docs/snippet-drafts-2026-11.md`; Organization node, title/H1 and slug clashes → `docs/wp-fixes-2026-11-19.md`._
+
 | # | Item | Waits on | Tier |
 |---|---|---|---|
 | 1 | **Links into the activities site from WordPress posts that already rank** (~20 targets: `themen/`, ESL, IELTS, business). The main domain holds the authority; this is the lever CC can draft. 15 Nov round (20 links, 11 posts) done; batch 2 drafted | CC drafts, Shaun OKs per row | 19.2, 20 |
@@ -65,7 +67,7 @@ disagree, the tier wins. Every live WordPress edit needs Shaun's OK (rule 7).
 | 15 | Main-site page fixes: homepage title says "Teams", H1 doesn't; `/english-for-students/` and `/fuer-eltern/` opener + FAQ (rule 8 list first); empty `alt` on `/common-questions-about-learning-english/` | Shaun | 19b.3, 19b.5, 19b.7 |
 | 16 | LinkedIn article "what to check before booking" (drafted in `docs/linkedin/`): Shaun posts; re-run the item-1 questions 8 weeks later | Shaun | 16 |
 | 18 | `9g-australia-vocab-practice` description names the textbook (rule 4); it also ranks for the unit's searches. Ask before changing | Shaun | 8 |
-| 19 | Image attachments hold four posts' bare slugs, so clicks land on a PNG (mediation post: 2 clicks): rename the attachment slugs | Shaun OK, CC | 24.1 |
+| 19 | Image-slug clashes: **fixed in the theme 2026-11-19** (1.3.13 redirect prefers a same-slug post); re-checked 2026-11-23 (PR #419): 4 of 5 bare slugs land on their post. **Left, Shaun in wp-admin:** one Redirection 301 `/interactive-exercises-in-class-screens/` → `/2026/10/18/interactive-exercises-classroom-screens/` (still returns the PNG). Detail: `docs/wp-fixes-2026-11-19.md` §2 | Shaun | 24.1 |
 | 20 | `/wilkommen/vor-und-nachteile-…-unterricht/` 404s (15 impr); the live `/willkommen/` page needs the redirect, or accept | Shaun | 24.2 |
 | 21 | Ideas from an outside SEO plan (2026-11-18): read the 9.9 preview test at 8–12 weeks, audit how the 155 discovered pages are linked, add OER directories and the repo link to the outside-link work | Shaun, CC | 25 |
 | 22 | Use the `search-console` tool for the December pull; check whether a newer version fixes Bing positions (they read 0) | Shaun, Mac | 26 |
@@ -384,6 +386,7 @@ impr / 62 clicks; activities 157 / 322 / 14) matched to pages, with a title and 
 2. Partly done: category descriptions added. **Open (P3):** ~110 tag pages and date archives use
    Jetpack's ~45-character fallback; get Bing's URL list before writing any.
 3. **Open (P3):** Bing's multiple-H1 and missing-alt flags don't reproduce; needs Bing's URL list.
+   **Crawled 2026-11-23 (PR #420, `docs/seo-crawl-h1-alt-2026-11-23.md`):** 0 multiple-H1 and 0 missing alt on 382 sitemap pages; 13 WordPress pages have empty `alt=""` on content images (fix after 5 Dec).
 4. Done 11-01: IndexNow skips pushes over 50 changed pages (`check-indexnow-threshold.js`).
 5. No action: Ahrefs notices are by design.
 6. No code action (read 11-15). WordPress IndexNow, 22 Sep – 12 Nov: 379 submissions, 87 indexed
@@ -476,6 +479,12 @@ Main site only; monthly (positions need weeks). Run on the Mac. A cloud task rem
   and 2038 from 2026-12-04.** No natural anchor yet for 965 (business verbs), 2520 (German page,
   only English posts mention 2027), 2066 (MSA; some impressions are the Egyptian university),
   2039 and 1167 (already linked everywhere they're mentioned).
+
+- **Activities-site link pass · 2026-11-23 · PR #417.** Hand-placed links from the 18 Nov branch brought over: vocab games
+  from nine Year 7 pages, the 7C hub and the home page; ESG vocabulary from the PESTEL, property-management and
+  real-estate pages; the MSA 2027 dates page from every `msa-c-` page and the 10C hub; the operators page from three Abitur
+  pages; the business-email phrases button on the business hub. **Left out (Tier 19.1 pause):** the `siblingBlock` tie-break
+  in `scripts/build-head.js` and the regenerated "More from this course" lists it produced; re-apply after the pause lifts.
 
 ### Tier 21 — Bing queries as a second demand signal (2026-11-07)
 Bing shows query rows Search Console hides. CC analyses and proposes; Shaun approves every live edit.
@@ -612,7 +621,8 @@ adopted: Tier B merges (rule 9; GitHub Pages has no 301s) and site-wide template
    Recrawl on a site with low crawl demand takes weeks to months, so treat 11-24 as an early read and
    decide at 8–12 weeks from 10-12 (about 2026-12-07 to 2027-01-04). Shaun decides when to remove the
    `PREVIEW` blocks. Don't judge the test sooner.
-2. **Audit discovery of the 155 discovered-not-indexed pages · CC.** For each, list the pages that link
+2. **Done 2026-11-23 (PR #418): audit of discovery of the 155 discovered-not-indexed pages · CC.** Result in
+   `docs/seo-discovery-audit-2026-11-23.md`: none JS-only; one orphan fixed; template proposals listed. Original brief: For each, list the pages that link
    to it in the raw HTML (not after JavaScript). Flag any reached only through JavaScript-built card
    lists. Raw HTML links fix a discovery gap; if all have raw links, drop this item.
 3. **Add OER and ESL directories to the outside-link list (19.3) · Shaun.** The content is CC BY 4.0, so
@@ -644,13 +654,15 @@ Checked the backlog against open-source tools on GitHub; this was the one clear 
      top 10 pages by clicks are on `activities.` (`abitur-operatoren`, `themen/linking-words`,
      `present-tenses`, `passiv`); on Google, `activities.` showed only its home page (1 impression).
    - Bing positions read 0 for every query, so its "ranking divergence" flags are wrong. Bing
-     clicks and impressions are fine. Keep the Bing CSV export for positions.
+     clicks and impressions are fine. Keep the Bing CSV export for positions. Likely cause (from
+     the package code, v2.1.4): it reads `AvgPosition`, which Bing's API probably doesn't send.
+     Its Bing `analytics_query` also passes no dates, so it always returns the full history.
    - The Google `https://englishonline.training/` property covers the main site only. Use
      `sc-domain:englishonline.training` (both hosts) or `sc-domain:activities.englishonline.training`.
    - Bing AI Performance (Tier 10.7) has no API. The tool's `genai_query_insights` only guesses
      which queries come from AI chats; keep the manual AI Performance export.
 3. **GitHub comparison (2026-11-23, stars that day; nothing installed but this tool).**
-   - **Worth trying once:** `harlan-zw/unlighthouse` (★5.0k) or `PhialsBasement/LibreCrawl`
+   - **Done 2026-11-23 (PR #420): crawled with `scripts/crawl-h1-alt.js` instead (see 18.3).** Was: `harlan-zw/unlighthouse` (★5.0k) or `PhialsBasement/LibreCrawl`
      (★1.1k): one crawl of the main site to reproduce Bing's multiple-H1, missing-alt and tag-meta
      flags (18.2, 18.3) without waiting for Bing's URL list. Not in the build.
    - **Limited:** `elmohq/elmo` (★721), `limelit-co/open` (★456) track ChatGPT, Perplexity and
@@ -670,22 +682,23 @@ Checked the backlog against open-source tools on GitHub; this was the one clear 
    cloud sessions (no reason given; an app update is the usual fix). So a cloud session can't run
    the tool. Run Search Console and Bing work in a local Mac session.
 5. **Moved to the tool:** the Tier 20 and 21 pulls and the monthly re-pull (Calendar).
-   `search-opportunities.js` still reads CSV exports; whether the tool's `--format=csv` output
-   fits it is unchecked.
+6. **Tool → `search-opportunities.js`: works via JSON (tested on the Mac 2026-11-23).** The
+   tool's `--format=csv` doesn't fit: it writes one column `google` holding all rows as JSON.
+   Use `--format=json` and convert (Google only; Bing keeps its own exports with `--bing`):
 
-### Tier 27 — Blog keyword loop open items (2026-11-19) · CC
-From the weekly blog-keyword-drafts run of 2026-11-18 (queue full to 2027-01-09, so no drafts).
-Snapshot: Search Console, 90 days to 2026-11-18, in Shaun's local `blog-loop/keywords/`. Post 2032
-and "esg terminology" stay in Tier 23 items 1 and 4. _Brought onto main 2026-11-23, renumbered from 25 (taken by PR #406)._
+   ```bash
+   npx -y search-console-mcp run analytics_query --siteUrl=sc-domain:englishonline.training \
+     --engine=google --startDate=<from> --endDate=<to> --dimensions=query --rowLimit=25000 \
+     --format=json > q.json
+   node -e 'const r=JSON.parse(require("fs").readFileSync(0,"utf8")).google;const q=s=>`"${String(s).replace(/"/g,"\"\"")}"`;console.log("Query,Clicks,Impressions,CTR,Position\n"+r.map(x=>[q(x.keys[0]),x.clicks,x.impressions,x.ctr,x.position].join(",")).join("\n"))' < q.json > Queries.csv
+   node scripts/search-opportunities.js --csv <folder with Queries.csv>
+   ```
 
-1. **Re-measure the two refreshes.** Post 1506 ("english for real estate", 171 impr, pos 22.4,
-   refreshed 2026-10-28): measure from 2026-12-09. Page 1036 ("false friends german english",
-   18 impr, pos 18.9, refreshed 2026-11-06): measure from 2026-12-18. Baselines are in `posts.json`.
-2. **Email cluster.** "bad email examples" 53 impr at pos 19.6 and "example of a poorly written
-   business email" 25 at 28.6, while "good vs bad email examples" is at 5 to 8. Find which page ranks
-   for each (`query=!…&breakdown=page`) before deciding new post or refresh. After 2026-12-05 if
-   it is 1061 (Tier 12.3 freeze).
-3. **"corporate english training" (29 impr, pos 19.7) and "mobile corporate english training" (46,
-   25.3).** HR/L&D audience. Find the ranking page; if none is ours, a new post once the queue has room.
-4. **"past continuous" (28, 17.7) and "past progressive examples" (66, 44.5).** Check whether an
-   activities exercise page ranks; if so a post may target it and link to it.
+   For pages: `--dimensions=page`, header `Page,…`, file `Pages.csv`. Keep the folder outside
+   the repo. CTR comes out as a fraction; the script ignores that column and recomputes it.
+   - **Run 1 (24 Aug – 22 Nov, read only):** 878 queries → 10 leaks, 43 gaps; 161 pages → 16
+     page leaks. Top leak: "was ist besser zum englischlernen: online oder präsenzkurse?" (115
+     impr, pos 4.6, 0 clicks): probably the German `/willkommen/` page (Tier 24.2), else post
+     1214; per 12.6 that's a title/meta fix, neither page frozen. Top gap: "english for real
+     estate" (170 impr, pos 22.3): fits the commercial real estate post and the CRE vocabulary
+     page (9.4), so a 12.8 repoint, not a new page. Both unchecked; Shaun picks.
