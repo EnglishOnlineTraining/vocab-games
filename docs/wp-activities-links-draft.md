@@ -83,6 +83,20 @@ approval, each checked live (the link shows in the post body and goes to the rig
 
 ---
 
+## WordPress editing checklist (every batch)
+
+1. Insert the approved paragraph.
+2. Select it explicitly through **Document Overview → List View**.
+3. Move it to the approved position if necessary.
+4. Save.
+5. Add the batch's sources, targets and any placement markers to
+   `scripts/check-wp-activity-links.js`, then run `node scripts/check-wp-activity-links.js`.
+6. Paste the checker's output into the batch's implementation record below, and record the
+   WP revision ID or "not exposed".
+
+The checker is run manually, not in CI: it checks live third-party state, and a network
+failure shouldn't break unrelated deployments.
+
 ## Tier 19.2 — 20 target pages (done 2026-11-15)
 
 **Done 2026-11-15:** Shaun approved all 11 source blocks. Each edit added only the approved
@@ -240,3 +254,26 @@ Placement: after the existing closing exercise paragraph.
 | 1506 | 1 | approved 2026-11-15 | not exposed | pass (1/1), before team CTA |
 | 1019 | 2 | approved 2026-11-15 | not exposed | pass (2/2), before corporate CTA |
 | 267 | 1 | approved 2026-11-15 | not exposed | pass (1/1), after closing exercise |
+
+Re-verified 2026-11-24 with `node scripts/check-wp-activity-links.js` (covers this batch and
+the Tier 9.5 batch above):
+
+```
+PASS 2/2 /2026/07/07/wie-schreibt-man-eine-gute-zusammenfassung-auf-englisch-schritt-fur-schritt-furs-abitur/
+PASS 2/2 /2026/07/09/kommentar-auf-englisch-schreiben-schritt-fur-schritt-anleitung-furs-abitur/
+PASS 2/2 /2026/07/09/kreatives-schreiben-auf-englisch-tipps-und-techniken-furs-abitur/
+PASS 3/3 /common-business-english-verbs/
+PASS 2/2 /2023/08/07/what-are-conditional-sentences/
+PASS 1/1 /2016/04/13/present-simple-or-progressive/
+PASS 2/2 /blog-posts/what-is-the-simple-past/
+PASS 1/1 /using-past-progressive/
+PASS 3/3 /2023/08/28/improving-writing-skills-with-artificial-intelligence/
+PASS 4/4 /test-your-vocab-knowledge/
+PASS 2/2 /2023/04/26/how-can-i-help-my-career-by-improving-my-english-skills/
+PASS 1/1 /2023/04/24/using-english-as-a-property-manager/
+PASS 1/1 /2023/05/09/english-for-commercial-real-estate/
+PASS 2/2 /essential-business-english-skills-to-acquire-today/
+PASS 1/1 /2021/01/13/learn-english-tips/
+
+15/15 sources pass
+```

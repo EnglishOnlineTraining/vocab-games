@@ -465,6 +465,10 @@ Main site only; monthly (positions need weeks). Run on the Mac. A cloud task rem
 >    confirm the link and the rest of the post are intact.
 > 7. Append a changelog here under "Runs" (date, source, anchor, target, WP revision id) so
 >    each edit can be reverted, and note each target's position and impressions as the baseline.
+> 8. For batches of links to the activities site: follow the editing checklist in
+>    `docs/wp-activities-links-draft.md`, add the batch's sources/targets to
+>    `scripts/check-wp-activity-links.js`, run `node scripts/check-wp-activity-links.js`
+>    and paste its output into the batch's implementation record.
 
 **Runs:**
 
