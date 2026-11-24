@@ -45,7 +45,7 @@ assert.doesNotThrow(() => parse('a.txt', 'at: 2026-12-01T17:00+01:00\nto: x\nlin
   let xDown = true;
   const fetch = async (url, opts) => {
     calls.push(url);
-    const fail = url.includes('api.x.com') && xDown;
+    const fail = new URL(url).host === 'api.x.com' && xDown;
     return { ok: !fail, status: fail ? 503 : 200, text: async () => '{}' };
   };
   const now = Date.parse('2026-12-01T17:30+01:00');
