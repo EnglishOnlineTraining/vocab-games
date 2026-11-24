@@ -68,6 +68,15 @@ Work in your own worktree on a new branch from `origin/main` (CLAUDE.md rule 5).
    `_social/results.md` (append one dated section; keep it short). Use it: more of what brought visits,
    less of what didn't. GA4 Direct traffic is mostly students in class, so ignore it here. If the email
    doesn't exist yet, say so in the report once.
+
+   **Adjust the mix from results** (Shaun, 2026-11-24). The audiences and numbers in the table are
+   the starting point, not fixed. Once there are at least 4 weeks of data, shift the mix towards what
+   brings visits: which audience on each network (e.g. more professional posts on LinkedIn if they
+   outperform teacher posts), which page types, which days and times. Limits: the total stays at 7
+   posts a week; X never goes above 2 (it costs money); every post still follows the rules below.
+   Write each change and the numbers behind it in `_social/results.md` and in the PR body
+   ("Mix change: … because …"), so Shaun sees it before merging. If a change is big (dropping a
+   network, adding a new audience), propose it in the report instead of doing it.
 5. **Pick content** for next Mon–Fri, from these sources in this order:
    - Exercise pages that went live in the last two weeks:
      `git log --since='14 days ago' --diff-filter=A --name-only origin/main -- '*.html'`.
