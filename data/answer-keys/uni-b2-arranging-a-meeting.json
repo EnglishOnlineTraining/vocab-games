@@ -1,0 +1,91 @@
+{
+ "unit": "uni-b2-arranging-a-meeting",
+ "sections": {
+  "exB": {
+   "prefix": "exB-",
+   "multi": true,
+   "gaps": {
+    "g1": {
+     "correct": "suit",
+     "accept": [
+      "suit"
+     ],
+     "label": "1. I'm afraid Wednesday afternoon doesn't ___ me: I have a dentist appointment at two.",
+     "why": "A time suits you when it is convenient; match and agree need other patterns."
+    },
+    "g2": {
+     "correct": "'m giving",
+     "accept": [
+      "'m giving"
+     ],
+     "label": "2. I can't make Thursday morning. I ___ a presentation in another course at nine; it was fixed weeks ago.",
+     "why": "A fixed personal arrangement takes the present continuous: I'm giving a presentation."
+    },
+    "g3": {
+     "correct": "bring",
+     "accept": [
+      "bring"
+     ],
+     "label": "3. Could we ___ the meeting forward to Tuesday? Friday is too late for the budget.",
+     "why": "Bring a meeting forward means move it to an earlier time."
+    },
+    "g4": {
+     "correct": "put",
+     "accept": [
+      "put"
+     ],
+     "label": "4. The room is double-booked, so we'll have to ___ the meeting off until the following week.",
+     "why": "Put off means postpone; call off means cancel, which does not go with until."
+    },
+    "g5": {
+     "correct": "diary",
+     "accept": [
+      "diary"
+     ],
+     "label": "5. Let me just check my ___ and I'll get back to you about Monday.",
+     "why": "Your diary shows your appointments; an agenda lists meeting points, minutes record them."
+    },
+    "g6": {
+     "correct": "work",
+     "accept": [
+      "work"
+     ],
+     "label": "6. Does Tuesday at four ___ for everyone, or should we look at Friday?",
+     "why": "A time works for someone when it is possible for them: does it work for everyone?"
+    },
+    "g7": {
+     "correct": "say",
+     "accept": [
+      "say"
+     ],
+     "label": "7. Nobody has a problem with the afternoon? Shall we ___ four o'clock, then?",
+     "why": "Shall we say … ? is the fixed phrase for proposing a time."
+    },
+    "g8": {
+     "correct": "confirm",
+     "accept": [
+      "confirm"
+     ],
+     "label": "8. I am writing to ___ our meeting on Tuesday 1 December at 16:00 in Room B2.14.",
+     "why": "You confirm an arrangement that already exists; assure needs a person as its object."
+    },
+    "g9": {
+     "correct": "by far",
+     "accept": [
+      "by far"
+     ],
+     "label": "9. Tuesday is ___ the most convenient time: it only means one shift swap.",
+     "why": "By far strengthens a superlative: by far the most convenient."
+    },
+    "g10": {
+     "correct": "if",
+     "accept": [
+      "if"
+     ],
+     "label": "10. I would be grateful ___ you could book a projector for the meeting.",
+     "why": "The polite request pattern is I would be grateful if you could …"
+    }
+   }
+  }
+ }
+}

@@ -23210,5 +23210,61 @@
     "g8": {"label": "8. Monthly poster", "correct": "True", "why": "The text says members make a poster each month."}
    }
   }
+ },
+ "uni-b2-arranging-a-meeting": {
+  "exB": {
+   "gaps": {
+    "g1": {
+     "label": "1. I'm afraid Wednesday afternoon doesn't ___ me: I have a dentist appointment at two.",
+     "correct": "suit",
+     "why": "A time suits you when it is convenient; match and agree need other patterns."
+    },
+    "g2": {
+     "label": "2. I can't make Thursday morning. I ___ a presentation in another course at nine; it was fixed weeks ago.",
+     "correct": "'m giving",
+     "why": "A fixed personal arrangement takes the present continuous: I'm giving a presentation."
+    },
+    "g3": {
+     "label": "3. Could we ___ the meeting forward to Tuesday? Friday is too late for the budget.",
+     "correct": "bring",
+     "why": "Bring a meeting forward means move it to an earlier time."
+    },
+    "g4": {
+     "label": "4. The room is double-booked, so we'll have to ___ the meeting off until the following week.",
+     "correct": "put",
+     "why": "Put off means postpone; call off means cancel, which does not go with until."
+    },
+    "g5": {
+     "label": "5. Let me just check my ___ and I'll get back to you about Monday.",
+     "correct": "diary",
+     "why": "Your diary shows your appointments; an agenda lists meeting points, minutes record them."
+    },
+    "g6": {
+     "label": "6. Does Tuesday at four ___ for everyone, or should we look at Friday?",
+     "correct": "work",
+     "why": "A time works for someone when it is possible for them: does it work for everyone?"
+    },
+    "g7": {
+     "label": "7. Nobody has a problem with the afternoon? Shall we ___ four o'clock, then?",
+     "correct": "say",
+     "why": "Shall we say … ? is the fixed phrase for proposing a time."
+    },
+    "g8": {
+     "label": "8. I am writing to ___ our meeting on Tuesday 1 December at 16:00 in Room B2.14.",
+     "correct": "confirm",
+     "why": "You confirm an arrangement that already exists; assure needs a person as its object."
+    },
+    "g9": {
+     "label": "9. Tuesday is ___ the most convenient time: it only means one shift swap.",
+     "correct": "by far",
+     "why": "By far strengthens a superlative: by far the most convenient."
+    },
+    "g10": {
+     "label": "10. I would be grateful ___ you could book a projector for the meeting.",
+     "correct": "if",
+     "why": "The polite request pattern is I would be grateful if you could …"
+    }
+   }
+  }
  }
 }
