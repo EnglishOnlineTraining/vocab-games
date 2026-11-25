@@ -628,6 +628,9 @@ From Shaun's two exports of 2026-11-16 (Performance, last 28 days; Generative AI
    `wie-schreibst-man…`, `kreatives-schreiben-englisch-abitur-tipps-techniken…`,
    `alle-kostenlosen-…-2`) appear only in the AI-features export.
 
+### Pending WordPress edits
+Ready-to-apply text for the Calendly meta, the 2032 CTA (23.2), the `/about/` repo link (25.4), the 24.2 redirect and the 2489 operators column: `docs/wp-pending-edits-2026-11-23.md` (PR #424). Apply after 2026-12-05.
+
 ### Tier 25 — Ideas from an outside SEO plan (2026-11-18) · Shaun + CC
 Compared "SEO Improvement Plan v2" with this file. Most of it repeats done work (two-problem split,
 noindexed surface, `lastmod` from a body hash, section sitemaps, hub rewrites, control pilot). Not
