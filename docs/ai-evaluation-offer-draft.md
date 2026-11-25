@@ -1,14 +1,13 @@
 # Draft: AI output evaluation for language-learning products (offer + positioning line)
 
-Status: DRAFT. Nothing is on WordPress. Shaun decides whether to offer this at all, and where.
+Status: WordPress DRAFT page 3056 `/ai-english-quality-testing/` (2026-11-25). Shaun's calls 2026-11-25:
+offer it, on its own page (not a section on `/business-english/`, which is being measured one change
+at a time), no price. Section A (positioning line) is not used. Publishing counts against the
+2-a-week cap (rule 12).
 Why: EF's AI Product Manager ad (2026-11-24) shows big language companies now need people who judge
 "when a model's output is good enough to ship". For language content that needs a language teacher.
 Money page: `/business-english/` (or its own page later; that would count against the 2-a-week cap).
 
-Open decisions for Shaun:
-1. Offer it at all? (Yes / not now.)
-2. Where: a section on `/business-english/`, or its own page later.
-3. Price: per test set, or per day. Left out on purpose.
 
 ---
 
