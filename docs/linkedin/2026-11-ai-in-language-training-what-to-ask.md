@@ -2,19 +2,18 @@
 
 Status: DRAFT for Shaun to post himself from his personal profile. Not posted.
 Audience: HR and L&D buyers of corporate language training. Money page: `/business-english/`.
-Source: EF Language Abroad's public job ad "AI Product Manager" (Zurich, seen 2026-11-24). Paraphrased; one short quote.
-Before posting: (1) decide whether to name EF or say "one of the largest language-travel companies";
-(2) the catch rate (14/14, 2/2 controls, Sonnet, 2026-11-24) is real; re-run before posting if the rules changed.
+Source: a public "AI Product Manager" job ad from a large language-travel company (seen 2026-11-24). Shaun's call 2026-11-25: do not name the company. Paraphrased, no direct quotes (a quote would make it searchable).
+Before posting: the catch rate (14/14, 2/2 controls, Sonnet, 2026-11-24) is real; re-run before posting if the rules changed.
 
 ---
 
-**Title:** The biggest language school is hiring someone to check its AI. Your provider should be doing the same.
+**Title:** A major language school is hiring someone to check its AI. Your provider should be doing the same.
 
 **Article text:**
 
 If your language-training provider uses AI, ask one question: how do you know the AI output is right? A good provider can show you the checks. A weak one says "a teacher looks at it".
 
-This month EF Language Abroad advertised a new role: an AI Product Manager. The job is to find where AI helps students, from the first enquiry to the booking. But most of the ad is about quality. The person must build test sets, collect failure cases, set guardrails and decide when a model's output is "good enough to ship". The ad even asks for someone who will "bring a prototype where others would bring a slide".
+This month one of the largest language-travel companies advertised a new role: an AI Product Manager. The job is to find where AI helps students, from the first enquiry to the booking. But most of the ad is about quality. The person must build test sets, collect failure cases, set guardrails and decide when a model's output is good enough to ship. The ad even asks for someone who brings a working prototype to a meeting, not a slide.
 
 That is the right order. First prove the output is correct. Then put it in front of learners.
 
