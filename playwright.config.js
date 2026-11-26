@@ -11,6 +11,10 @@ module.exports = defineConfig({
     // would silently test that checkout instead of this one.
     baseURL: `http://localhost:${PORT}`,
     screenshot: 'only-on-failure',
+    // The real submission hosts resolve to nowhere. page.route() catches what a test
+    // checks, but a vocab test's "left" beacon fires as the browser closes, after the
+    // route is gone, and wrote ~400 "Test Student" rows into the Year 9 sheet (Nov 2026).
+    launchOptions: { args: ['--host-resolver-rules=MAP hook.eu1.make.com ~NOTFOUND, MAP script.google.com ~NOTFOUND'] },
   },
   webServer: {
     // python3 -m http.server, but with a listen backlog of 128 instead of
