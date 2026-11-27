@@ -55,6 +55,7 @@ fs.readdirSync(ROOT).forEach(function (f) {
                                                        they revisit topics that are already
                                                        registered, so they are not topics
                                                        of their own */
+  if (/-print\.html$/.test(f)) return;              /* paper version of a registered test */
   if (!registeredFiles[f]) problems.push('orphan file (no registry entry): ' + f);
 });
 
