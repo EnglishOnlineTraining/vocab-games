@@ -7,40 +7,70 @@
   UNLISTED: the paper version of 10c-canada-vocab-test.html, for retests on paper.
   Linked only from teacher-tests.html (see the comment there for why nothing else may link
   here). Same 57 words (the two 10C practice lists), same sections and points as the online
-  test: A 15 x 1, B 10 x 1 with a word box, C 5 x 2 = 35. A new random paper on every load
-  or "New paper"; the answer key prints on its own.
+  test: A 15 x 1, B 10 x 1 with a word box, C 5 x 2 = 35.
+  Like the 9G passive test's print mode: every paper has a version code (A-01, A-02 …) that
+  decides its words, so the same code always gives the same paper and key. LRS papers
+  (A-L01 …) use a larger, easier-to-read layout.
   ponytail: termIn() is a cut-down copy of the online test's overlap check (no "A / B" or
   abbreviation forms, which these two lists don't use). If the test moves to another list,
-  copy its forms() too.
+  copy its forms() too. tests/10c-canada-vocab-test-print.spec.js checks the page counts.
 -->
 <title>Canada — Vocabulary Test (paper)</title>
 <style>
 *{box-sizing:border-box}
-body{font-family:Arial,Helvetica,sans-serif;color:#000;background:#fff;margin:0;font-size:11pt;line-height:1.35}
-.bar{padding:12px 16px;border-bottom:1px solid #000;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.bar button{font:inherit;padding:6px 14px;border:1px solid #000;background:#fff;cursor:pointer}
-.sheet{max-width:18cm;margin:0 auto;padding:16px}
-h1{font-size:15pt;margin:0 0 6px}
-h2{font-size:12pt;margin:14px 0 4px}
-.who{display:flex;gap:18px;margin:6px 0 4px}
-.who span{flex:1;border-bottom:1px solid #000;padding-top:14px}
-.rules{font-size:9.5pt;margin:4px 0 0}
-.box{border:1px dashed #000;padding:6px 8px;margin:4px 0 6px;columns:3;font-size:10pt}
+body{font-family:Arial,Helvetica,sans-serif;color:#000;background:#fff;margin:0}
+.panel{max-width:190mm;margin:0 auto;padding:16px;border-bottom:1px solid #000;font-size:11pt}
+.panel h1{font-size:14pt;margin:0 0 6px}
+.panel p{font-size:10pt;margin:0 0 10px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;margin-bottom:10px}
+.row label{display:flex;flex-direction:column;font-size:10pt;gap:3px}
+.row input[type=text],.row input[type=number]{font:inherit;padding:5px;width:7rem;border:1px solid #000}
+.panel button{font:inherit;padding:6px 14px;border:1px solid #000;background:#fff;cursor:pointer}
+#out{max-width:190mm;margin:0 auto;padding:0 16px 30px}
+.paper{padding:14px 0;border-bottom:2px dashed #000}
+.head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.paper h1{font-size:15pt;margin:0 0 4px}
+.code{border:1.5px solid #000;padding:2px 8px;font-weight:bold;font-size:10.5pt;white-space:nowrap}
+.who{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px;font-size:10.5pt;margin:6px 0}
+.who span{border-bottom:1px solid #000;padding-top:16px}
+.instr{font-size:9.5pt;margin:2px 0 4px}
+.paper h2{font-size:12pt;margin:12px 0 2px;display:flex;justify-content:space-between}
+.box{border:1px dashed #000;padding:5px 8px;margin:4px 0 6px;columns:3;font-size:10.5pt;line-height:1.5}
 .box div{break-inside:avoid}
-ol{margin:0;padding-left:26px}
-ol li{margin:0 0 5px}
-.line{display:inline-block;min-width:4.5cm;border-bottom:1px dotted #000;margin-left:4px}
-.c li{margin-bottom:4px}
-.c .w{font-weight:bold}
-.c .l{border-bottom:1px dotted #000;height:22px}
-.pts{float:right;font-weight:normal;font-size:10pt}
+.paper ol{margin:0;padding-left:26px;font-size:10.5pt}
+.sa li{line-height:1.25;margin-bottom:9px}
+.sb li{line-height:1.25;margin-bottom:11px}
+.gap{display:inline-block;border-bottom:1px solid #000;margin-left:6px;vertical-align:bottom}
+.sa .gap{width:12mm}
+.sb .gap{width:55mm}
+.sc li{margin-bottom:6px}
+.sc .l{border-bottom:1px solid #000;height:9mm}
+.sec{break-inside:avoid}
 .score{margin-top:12px;border:1px solid #000;padding:6px 8px;font-size:10pt}
-#key{display:none}
-#key table{border-collapse:collapse;width:100%;font-size:10pt}
-#key td{border:1px solid #000;padding:1px 5px;vertical-align:top;font-size:9.5pt}
-body.show-key #test{display:none}
-body.show-key #key{display:block}
-@media print{.bar,#eol-consent,body>p{display:none!important}.sheet{padding:0;max-width:none}@page{size:A4;margin:1.4cm}}
+.blank{font-size:9pt;text-align:center;padding-top:40mm}
+/* LRS: the same ideas as html.exam-dyslexia in exam.css, sized for paper */
+.paper.lrs{font-family:Verdana,Geneva,sans-serif;letter-spacing:.02em;word-spacing:.1em}
+.paper.lrs ol,.paper.lrs .box{font-size:12pt}
+.paper.lrs ol{padding-left:38px}
+.paper.lrs .instr{font-size:11pt}
+.paper.lrs .sb .gap{width:48mm}
+.paper.lrs .sc .l{height:11mm}
+.keys h1{font-size:14pt;margin:14px 0 4px}
+.key{border:1px solid #000;padding:5px 8px;margin:6px 0;font-size:9.5pt;line-height:1.45;break-inside:avoid}
+@media print{
+  @page{size:A4;margin:12mm}
+  body{padding:0!important}                     /* consent.js pads body for its banner */
+  .panel,#eol-consent,body>p{display:none!important}
+  #out{padding:0;max-width:none}
+  .paper{border:0;padding:0}
+  .paper+.paper{break-before:page}              /* not break-after: that left a blank last page */
+  /* Normal paper = 2 pages, one double-sided sheet: Section A, then Sections B and C.
+     LRS paper = 4 pages: A, B, C, then a blank back so the next paper starts on a new sheet. */
+  .sb,.lrs .sc,.blank{break-before:page}
+  .sb h2,.lrs .sc h2{margin-top:0}
+  .keys{break-before:page}
+}
+@media screen{.blank{display:none}}
 </style>
 <!-- HEAD:START — generated by scripts/build-head.js, do not edit by hand -->
 <script src="consent.js" defer></script>
@@ -66,78 +96,97 @@ body.show-key #key{display:block}
 <!-- HEAD:END -->
 </head>
 <body>
-<div class="bar">
-  <button onclick="newPaper()">New paper</button>
-  <button onclick="show(false);print()">Print test</button>
-  <button onclick="show(true);print()">Print answer key</button>
-  <button id="toggle" onclick="show(!document.body.classList.contains('show-key'))">Show answer key</button>
-  <span id="ver"></span>
+<div class="panel">
+  <h1>Canada — Vocabulary Test · printable papers (teacher)</h1>
+  <p>Every paper gets its own version code, and the code decides which words are on it, so the same code always gives the same paper and key. Codes run A-01, A-02 …; use another set letter (B, C …) for a different group or a resit. Each paper is one double-sided sheet: Section A on the front, B and C on the back.</p>
+  <div class="row">
+    <label>Set letter<input type="text" id="set" value="A" maxlength="1"></label>
+    <label>Number of papers<input type="number" id="n" min="1" max="60" value="5"></label>
+    <label>+ LRS papers<input type="number" id="lrs" min="0" max="20" value="0"></label>
+    <button onclick="makeBatch()">Make papers</button>
+  </div>
+  <p>LRS papers (A-L01 …) use Verdana, larger text and more room, on two sheets. Their keys say spelling is not assessed.</p>
+  <div class="row">
+    <label>Rebuild one paper from its code<input type="text" id="one" placeholder="e.g. A-03"></label>
+    <button onclick="makeOne()">Show paper + key</button>
+  </div>
+  <div class="row">
+    <label style="flex-direction:row;align-items:center;gap:6px"><input type="checkbox" id="keys" checked> Add the answer keys after the papers (on a new page)</label>
+    <button onclick="print()">Print</button>
+  </div>
 </div>
-
-<div class="sheet" id="test">
-  <h1>Canada — Vocabulary Test <span class="pts" id="ver-t"></span></h1>
-  <div class="who"><span>Name:</span><span>Class:</span><span>Date:</span></div>
-  <p class="rules">30 minutes. Sections A and B: 1 point each. Section C: 2 points each — right meaning and no mistakes = 2, right meaning with mistakes or only a definition = 1, wrong meaning = 0. Total: 35 points.</p>
-
-  <h2>Section A — Choose the word <span class="pts">/ 15</span></h2>
-  <p class="rules">Write the letter of the word that matches each meaning. Use each word once.</p>
-  <div class="box" id="a-box"></div>
-  <ol id="a-list"></ol>
-
-  <h2>Section B — Write the word <span class="pts">/ 10</span></h2>
-  <p class="rules">Write the word for each meaning. The words are in the box.</p>
-  <div class="box" id="b-box"></div>
-  <ol id="b-list" start="16"></ol>
-
-  <h2>Section C — Use the word <span class="pts">/ 10</span></h2>
-  <p class="rules">Write your own full sentence with each word. Show what the word means.</p>
-  <ol id="c-list" class="c" start="26"></ol>
-
-  <div class="score">A ____ / 15 &nbsp;·&nbsp; B ____ / 10 &nbsp;·&nbsp; C ____ / 10 &nbsp;·&nbsp; Total ____ / 35 &nbsp;·&nbsp; Note ____</div>
-</div>
-
-<div class="sheet" id="key">
-  <h1>Answer key — Canada — Vocabulary Test <span class="pts" id="ver-k"></span></h1>
-  <p class="rules">Grade bands (/35): 1 = 35–34 · 2 = 33–28 · 3 = 27–21 · 4 = 20–16 · 5 = 15–6 · 6 = 5–0.
-    Also accept in B: challenging ↔ demanding, committed ↔ determined.</p>
-  <table><tbody id="key-body"></tbody></table>
-</div>
+<div id="out"></div>
 
 <script>
 const FILES=['data/vocab-practice/10c-canada-vocab-practice.json','data/vocab-practice/10c-sport-vocab-practice.json'];
-const A_N=15,B_N=10,C_N=5;
+const TITLE='Canada — Vocabulary Test',A_N=15,B_N=10,C_N=5,MINS=30;
 let BANK=[];
+const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const norm=s=>String(s).toLowerCase().replace(/[‘’`´]/g,"'").replace(/[-–]/g,' ').replace(/\s+/g,' ').trim();
 function forms(t){const p=t.match(/^(.*?)\s*\(([^)]+)\)$/),base=p?[p[1],p[1]+' '+p[2]]:[t];
   return base.flatMap(f=>[f,f.replace(/\s+(sb|sth)$/i,'')]).flatMap(f=>[f,f.replace(/^to\s+/i,'')]).map(norm)}
 function termIn(item,text){const t=norm(text);return forms(item.t).some(f=>f.length>2&&new RegExp('(^|[^a-z0-9])'+f.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'($|[^a-z0-9])').test(t))}
-function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
-function show(k){document.body.classList.toggle('show-key',k);document.getElementById('toggle').textContent=k?'Show test':'Show answer key'}
+/* Same seeded generator as the online test, so a code always draws the same paper. */
+function seedFrom(s){let h=2166136261>>>0;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+function seeded(seed){let a=seed;return()=>{a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function shuffle(arr,rnd){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+const isLRS=code=>/-L\d/i.test(code);
 
-function newPaper(){
+function draw(code){
   // Same picking order as the online test: B first, then C, then A from words whose meaning prints no B answer.
-  const fill=[],rest=[];
-  shuffle(BANK).forEach(x=>{if(fill.length<B_N&&!fill.some(b=>termIn(x,b.d)||termIn(b,x.d)))fill.push(x);else rest.push(x)});
+  const rnd=seeded(seedFrom('print|'+code.toUpperCase())),fill=[],rest=[];
+  shuffle(BANK,rnd).forEach(x=>{if(fill.length<B_N&&!fill.some(b=>termIn(x,b.d)||termIn(b,x.d)))fill.push(x);else rest.push(x)});
   const use=rest.splice(0,C_N);
-  const match=shuffle(rest).filter(x=>!fill.some(b=>termIn(b,x.d))).slice(0,A_N);
-  const opts=shuffle(match),L=i=>String.fromCharCode(97+i);
-  const ver='Paper '+Math.random().toString(36).slice(2,6).toUpperCase();
-  ['ver','ver-t','ver-k'].forEach(id=>document.getElementById(id).textContent=ver);
-  document.getElementById('a-box').innerHTML=opts.map((x,i)=>'<div>'+L(i)+') '+esc(x.t)+'</div>').join('');
-  document.getElementById('a-list').innerHTML=match.map(x=>'<li>'+esc(x.d)+' <span class="line" style="min-width:1.5cm"></span></li>').join('');
-  document.getElementById('b-box').innerHTML=shuffle(fill).map(x=>'<div>'+esc(x.t)+'</div>').join('');
-  document.getElementById('b-list').innerHTML=fill.map(x=>'<li>'+esc(x.d)+' <span class="line"></span></li>').join('');
-  document.getElementById('c-list').innerHTML=use.map(x=>'<li><span class="w">'+esc(x.t)+'</span><div class="l"></div><div class="l"></div></li>').join('');
-  const row=(n,q,a)=>'<tr><td>'+n+'</td><td>'+esc(q)+'</td><td><b>'+a+'</b></td></tr>';
-  document.getElementById('key-body').innerHTML=
-    match.map((x,i)=>row(i+1,x.d,L(opts.indexOf(x))+') '+esc(x.t))).join('')+
-    fill.map((x,i)=>row(A_N+i+1,x.d,esc(x.t))).join('')+
-    use.map((x,i)=>row(A_N+B_N+i+1,'Sentence with: '+x.t,'meaning: '+esc(x.d))).join('');
+  const match=shuffle(rest,rnd).filter(x=>!fill.some(b=>termIn(b,x.d))).slice(0,A_N);
+  return {match,opts:shuffle(match,rnd),fill,fillBox:shuffle(fill,rnd),use};
 }
+const L=i=>String.fromCharCode(97+i);
+function paperHTML(code){
+  const P=draw(code),lrs=isLRS(code);
+  return '<section class="paper'+(lrs?' lrs':'')+'">'
+    +'<div class="head"><h1>'+esc(TITLE)+'</h1><span class="code">Version '+esc(code)+'</span></div>'
+    +'<div class="who"><span>Name:</span><span>Class:</span><span>Date:</span></div>'
+    +'<p class="instr">'+MINS+' minutes · 35 points. Section C: 2 = right meaning and no mistakes · 1 = right meaning with mistakes, or only a definition · 0 = wrong meaning.</p>'
+    +'<div class="sec sa"><h2><span>Section A — Choose the word</span><span>/ 15</span></h2>'
+    +'<p class="instr">Write the letter of the word that matches each meaning. Use each word once.</p>'
+    +'<div class="box">'+P.opts.map((x,i)=>'<div>'+L(i)+') '+esc(x.t)+'</div>').join('')+'</div>'
+    +'<ol>'+P.match.map(x=>'<li>'+esc(x.d)+' <span class="gap"></span></li>').join('')+'</ol></div>'
+    +'<div class="sec sb"><h2><span>Section B — Write the word</span><span>/ 10</span></h2>'
+    +'<p class="instr">Write the word for each meaning. The words are in the box.</p>'
+    +'<div class="box">'+P.fillBox.map(x=>'<div>'+esc(x.t)+'</div>').join('')+'</div>'
+    +'<ol start="16">'+P.fill.map(x=>'<li>'+esc(x.d)+' <span class="gap"></span></li>').join('')+'</ol></div>'
+    +'<div class="sec sc"><h2><span>Section C — Use the word</span><span>/ 10</span></h2>'
+    +'<p class="instr">Write your own full sentence with each word. Show what the word means.</p>'
+    +'<ol start="26">'+P.use.map(x=>'<li><b>'+esc(x.t)+'</b><div class="l"></div><div class="l"></div></li>').join('')+'</ol>'
+    +'<div class="score">A ____ / 15 · B ____ / 10 · C ____ / 10 · Total ____ / 35 · Note ____</div></div>'
+    +(lrs?'<div class="blank">This page is left blank.</div>':'')
+    +'</section>';
+}
+function keyHTML(code){
+  const P=draw(code);
+  return '<div class="key"><b>Version '+esc(code)+'</b>'+(isLRS(code)?' · LRS: spelling is not assessed; meaning and grammar still are.':'')
+    +'<div><b>A</b> '+P.match.map((x,i)=>(i+1)+' '+L(P.opts.indexOf(x))+' ('+esc(x.t)+')').join(' · ')+'</div>'
+    +'<div><b>B</b> '+P.fill.map((x,i)=>(A_N+i+1)+' '+esc(x.t)).join(' · ')+'</div>'
+    +'<div><b>C</b> '+P.use.map((x,i)=>(A_N+B_N+i+1)+' '+esc(x.t)+' = '+esc(x.d)).join(' · ')+'</div></div>';
+}
+function render(codes){
+  $('out').innerHTML=codes.map(paperHTML).join('')
+    +($('keys').checked?'<section class="keys"><h1>Answer key — '+esc(TITLE)+'</h1>'
+      +'<p class="instr">Grade bands (/35): 1 = 35–34 · 2 = 33–28 · 3 = 27–21 · 4 = 20–16 · 5 = 15–6 · 6 = 5–0. '
+      +'Also accept in B: challenging ↔ demanding, committed ↔ determined.</p>'+codes.map(keyHTML).join('')+'</section>':'');
+}
+const two=i=>(i<10?'0':'')+i;
+function makeBatch(){
+  const set=($('set').value||'A').toUpperCase(),n=Math.max(1,Math.min(60,+$('n').value||1)),l=Math.max(0,Math.min(20,+$('lrs').value||0)),codes=[];
+  for(let i=1;i<=n;i++)codes.push(set+'-'+two(i));
+  for(let j=1;j<=l;j++)codes.push(set+'-L'+two(j));
+  render(codes);
+}
+function makeOne(){const c=$('one').value.trim().toUpperCase();if(c)render([c])}
 Promise.all(FILES.map(f=>fetch(f).then(r=>r.json()))).then(ls=>{
   BANK=ls.flatMap(l=>l.words.map(w=>({t:w.w,d:w.def})));
-  newPaper();
+  makeBatch();
 });
 </script>
 </body>
