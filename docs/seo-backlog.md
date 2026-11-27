@@ -36,6 +36,7 @@ disagree, the tier wins. Every live WordPress edit needs Shaun's OK (rule 7).
 | 2026-12-04 | Re-measure 2032 and 2038 after link-pass run 1 | 20 |
 | 2026-12-05 | Freeze on 1061, 1167, 2032, 2038, 2039, 2066, 965 ends; repoint pass and snippet rewrites can go live after a fresh export | 12.3, 12.8, 19 |
 | 2026-12-05 | `themen/` title test: batch 1 vs control in the monthly Bing AI export (batch 2 ~12-12) | 10.7, `docs/themen-ai-audit-2026-11.md` |
+| 2026-12-04 – 12-18 | Blog loop: re-measure 965 (12-04), 1506 (12-09), 1036 (12-18); seasonal New Year post due by 12-11 (needs a free slot) | 27 |
 | Early Dec | Monthly pull: Search Console and Bing clicks/impressions through the `search-console` tool (Tier 26); Bing exports still for AI Performance, positions and IndexNow; plus the long-query pull (26.7) | 10.7, 18.7, 21, 26 |
 | 26 Nov – 3 Jan | Blog queue goes live: 2703 (26 Nov), 2765 (29 Nov), 2799 (2 Dec), 2800 (5 Dec), 2837 (8 Dec), 2838 (11 Dec), 2839 (14 Dec), 2849 (17 Dec, held), 2854 (20 Dec), 2855 (29 Dec), 2856 (3 Jan). Spot-check each live | 15b.6, 22 |
 
@@ -728,3 +729,27 @@ Checked the backlog against open-source tools on GitHub; this was the one clear 
    headings) and 15b (AI-citation gaps), answering on the page that already ranks, in its first
    lines. High impressions + zero clicks = a question we rank for but don't answer. Query scope
    rules (15b, 21.4) apply. Run on the Mac (`analytics_query`, dimension `query`, then filter the JSON).
+
+### Tier 27 — Blog keyword loop follow-ups, run of 2026-11-25 · Shaun + CC
+From the weekly blog-keyword-drafts run of 2026-11-25 (report in Shaun's local
+`blog-loop/reports/2026-11-25-drafts.md`, outside the repo). Snapshot: Search Console, 90 days to
+2026-11-25: 915 queries, 16 clicks, 5,295 impressions. Nothing was drafted: four WordPress drafts
+(2977, 2974, 2849, 2560) wait for Shaun, so the loop's new-post limit was 0. The 2032 refresh and
+"esg terminology" stay under Tier 23.1 and 23.4.
+
+1. **"Past progressive" queries are rising fast · CC, at the next loop run with a free slot.**
+   "past progressive" 63 → 89 impressions (pos 47.7), "past progressive examples" 66 → 81 (40.8),
+   "past progressive tense" 20 → 31 (41.1) in a week; "past continuous" holds at 28 / 17.7. Look up
+   which page ranks (`query=!<q>&breakdown=page`) before choosing between a refresh and a new post
+   that links to the exercise.
+2. **Seasonal post "Learn English in the new year" (learners) · Shaun, then CC.** It has been due
+   since 2026-11-05, with a target publish date of 2026-12-11 (peak 1 Jan). It gets the next free
+   slot, which needs Shaun to publish or decline some of the four waiting drafts. After about
+   2026-12-21 it would land too late; move it to next season then.
+3. **Re-measure the loop's refreshes · CC, monthly blog-keyword-review.** "business verbs" (965) from
+   2026-12-04, "english for real estate" (1506) from 2026-12-09, "false friends german english"
+   (1036) from 2026-12-18. Baselines are in `blog-loop/posts.json`.
+4. **Email cluster: which page ranks for "bad email examples" (56 impr, pos 17.7, rising)?** Also
+   "example of a poorly written business email" (30, 26.4). The good-vs-bad pages rank 5–8 for the
+   "good vs bad" queries. Look up the ranking page before any change; 1167 is frozen until
+   2026-12-05 (Tier 12.3). CC.
